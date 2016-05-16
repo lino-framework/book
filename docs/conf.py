@@ -327,13 +327,15 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 #         intersphinx_mapping[n] = (
 #             'http://%s.readthedocs.org/en/latest/' % n, None)
 
-for n in """python django""".split():
-    intersphinx_mapping[n] = ('http://%s.readthedocs.org/en/latest/' % n, None)
+if on_rtd:
+    for n in """python django lino xl""".split():
+        intersphinx_mapping[n] = ('http://%s.readthedocs.org/en/latest/' % n, None)
 
 
 from importlib import import_module
-for n in ['atelier']:
+for n in ['atelier', 'lino', 'lino_xl']:
     m = import_module(n)
+    n = n.replace('_', "")
     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
 
 autosummary_generate = True
