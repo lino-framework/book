@@ -1,0 +1,1 @@
+.. include:: ../../../lino/THANKS.txt
