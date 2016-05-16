@@ -155,7 +155,7 @@ Generating events between 2016-02-09 and 2019-10-23.
 Reached upper date limit 2019-10-23
 
 >>> wanted[1]
-Event(owner_type=26,start_date=2016-02-09,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EventStates.suggested:10>)
+Event(owner_type=22,start_date=2016-02-09,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EventStates.suggested:10>)
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()

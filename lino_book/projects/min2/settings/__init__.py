@@ -19,7 +19,6 @@ class Site(Site):
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         # yield 'lino.modlib.users'
-        yield 'lino.modlib.changes'
         yield 'lino_xl.lib.excerpts'
         yield 'lino_book.projects.min2.modlib.contacts'
         yield 'lino_xl.lib.addresses'
@@ -37,4 +36,5 @@ class Site(Site):
         yield 'lino.modlib.tinymce'
         yield 'lino.modlib.wkhtmltopdf'
         yield 'lino_xl.lib.appypod'
+        yield 'lino.modlib.changes'
 
