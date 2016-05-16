@@ -332,11 +332,30 @@ if on_rtd:
         intersphinx_mapping[n] = ('http://%s.readthedocs.org/en/latest/' % n, None)
 
 
-from importlib import import_module
-for n in ['atelier', 'lino', 'lino_xl']:
+from atelier.sphinxconf import interproject
+interproject.configure(globals())
+
+if False:
+  from importlib import import_module
+  # for n in ['atelier', 'lino', 'lino_xl']:
+  for n in ['atelier']:
     m = import_module(n)
-    n = n.replace('_', "")
-    intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
+    for k, v in m.intersphinx_urls.items():
+        if k == 'docs':  # backwards compat
+            k = n.replace('_', "")
+        if True:
+            local_file = Path(m.__file__).parent.parent
+            local_file = local_file.child(
+                'docs', '.build', 'objects.inv')
+            if local_file.exists():
+                # local_file = "file://" + local_file
+                local_file = (local_file, v)
+            else:
+                print("20160516 No such file: {}".format(local_file))
+                local_file = None
+            intersphinx_mapping[k] = (v, local_file)
+        else:
+            intersphinx_mapping[k] = (v, None)
 
 autosummary_generate = True
 

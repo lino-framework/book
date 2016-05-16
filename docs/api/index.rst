@@ -17,6 +17,3 @@ Lino book
 
 .. automodule:: lino_book
 
-
-
-
