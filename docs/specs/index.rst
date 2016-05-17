@@ -1,11 +1,13 @@
-.. _xl.specs:
+.. _book.specs:
 
-=======================
-Technical specification
-=======================
+=========================
+Functional specifications
+=========================
 
-This section contains articles which are meant as technical
-specifications.  One of their goal is to get tested.
+This section contains articles which are meant as functional
+specifications.  Their first goal is to provide a tested document
+describing some part of Lino. They are not meant as
+introductions. This section is far from being complete.
 
 
 .. toctree::
