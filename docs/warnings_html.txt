@@ -1,0 +1,25 @@
+/media/dell1tb/luc/work/book/docs/about/thanks.rst:1: SEVERE: Problems with "include" directive path:
+InputError: [Errno 2] No such file or directory: '../THANKS.txt'.
+/media/dell1tb/luc/work/book/docs/tested/min1.rst:131: WARNING: duplicate label invalid_requests, other instance in /media/dell1tb/luc/work/book/docs/specs/export_excel.rst
+/media/dell1tb/luc/work/book/docs/tested/min1.rst:4: WARNING: duplicate label lino.tested.export_excel, other instance in /media/dell1tb/luc/work/book/docs/specs/export_excel.rst
+/media/dell1tb/luc/work/book/docs/admin/xl.rst:: WARNING: document isn't included in any toctree
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated
+/media/dell1tb/luc/work/book/docs/about/more.rst:5: WARNING: toctree contains reference to document u'about/thanks' that doesn't have a title: no link will be generated

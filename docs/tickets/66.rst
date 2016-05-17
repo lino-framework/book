@@ -1,0 +1,6 @@
+:state: sleeping
+:module: lino_book.projects.start
+
+#66 : Content Management à la Lino
+==================================
+
