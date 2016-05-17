@@ -2,8 +2,8 @@
 # Copyright 2002-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-"""This package contains a set of example projects used both for
-testing and explaining Lino framework.
+"""The :mod:`lino_book` package contains a set of example projects
+used both for testing and explaining Lino framework.
 
 .. autosummary::
    :toctree:

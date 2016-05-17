@@ -2,18 +2,38 @@
 API
 ===
 
-Lino
-====
+The Lino core
+=============
+
+.. py2rst::
+
+  import lino
+  print(lino.SETUP_INFO['long_description'])
 
 .. automodule:: lino
 
-Lino-XL
-=======
+Lino Extensions Library
+=======================
+
+
+.. py2rst::
+
+  import lino_xl
+  print(lino_xl.SETUP_INFO['long_description'])
+
 
 .. automodule:: lino_xl
 
-Lino book
-=========
+The Lino book
+=============
+
+.. py2rst::
+
+  import lino_book
+  print(lino_book.SETUP_INFO['long_description'])
+
+
+
 
 .. automodule:: lino_book
 
