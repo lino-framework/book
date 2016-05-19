@@ -169,6 +169,9 @@ class SpecsTests(TestCase):
     def test_holidays(self):
         self.run_simple_doctests('docs/specs/holidays.rst')
 
+    def test_cal(self):
+        self.run_simple_doctests('docs/specs/cal.rst')
+
     def test_cv(self):
         self.run_simple_doctests('docs/specs/cv.rst')
 
