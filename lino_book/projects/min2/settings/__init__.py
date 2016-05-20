@@ -2,7 +2,7 @@
 # Copyright 2012-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 """
-Default settings for a `lino.projects.min2` application.
+Default settings for a :mod:`lino_book.projects.min2` application.
 """
 
 from lino.projects.std.settings import *
@@ -15,6 +15,8 @@ class Site(Site):
     project_model = 'projects.Project'
     languages = 'en et'
     user_profiles_module = 'lino.modlib.office.roles'
+
+    demo_fixtures = """std demo demo2 checkdata""".split()
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

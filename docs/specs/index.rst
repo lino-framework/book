@@ -22,3 +22,4 @@ introductions. This section is far from being complete.
    excerpts
    printing
    html
+   checkdata

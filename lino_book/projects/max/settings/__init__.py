@@ -46,6 +46,7 @@ class Site(Site):
         yield 'lino.modlib.countries'
         yield 'lino_xl.lib.properties'
         yield 'lino.modlib.contacts'
+        yield 'lino.modlib.plausibility'
         yield 'lino_xl.lib.addresses'
         yield 'lino_xl.lib.humanlinks'  # requires Person to be Born
         yield 'lino.modlib.polls'
