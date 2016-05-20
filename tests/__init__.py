@@ -172,6 +172,9 @@ class SpecsTests(TestCase):
     def test_cal(self):
         self.run_simple_doctests('docs/specs/cal.rst')
 
+    def test_checkdata(self):
+        self.run_simple_doctests('docs/specs/checkdata.rst')
+
     def test_cv(self):
         self.run_simple_doctests('docs/specs/cv.rst')
 
