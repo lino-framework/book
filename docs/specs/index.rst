@@ -15,6 +15,7 @@ introductions. This section is far from being complete.
   
    cv
    export_excel
+   cal
    holidays
    households
    tinymce

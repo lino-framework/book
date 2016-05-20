@@ -85,10 +85,13 @@ directory and and do::
   $ mkdir ~/repositories
   $ cd ~/repositories
   $ git clone https://github.com/lsaffre/lino.git
+  $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lsaffre/lino_book.git book
 
-You should now have a directory called `~/repositories/lino`, which
-contains a file :xfile:`setup.py`, a file :xfile:`README.rst` and a
-whole tree of other files and directories.
+You should now have three directories called `~/repositories/lino`,
+`~/repositories/xl` and `~/repositories/book`, each of which contains
+a file :xfile:`setup.py`, a file :xfile:`README.rst` and a whole tree
+of other files and directories.
 
 Installation
 ============
@@ -100,6 +103,8 @@ from within any Python program.
 Commands::
 
   $ pip install -e lino
+  $ pip install -e xl
+  $ pip install -e book
 
 Notes:
 
@@ -144,6 +149,7 @@ often. In order to get the latest version, you just need to run::
 
   $ cd ~/repositories/lino
   $ git pull
+  $ find -name '*.pyc' -exec rm -f {} +
 
 You don't need to reinstall it in Python after such an upgrade since
 you used the ``-e`` option of `pip install` above. The new version
@@ -151,7 +157,6 @@ will automatically become active.
 
 See the documentation of `git pull
 <https://git-scm.com/docs/git-pull>`_ for more information.
-
 
 
 Defining a cache directory for Lino
@@ -166,13 +171,14 @@ You do this by creating an empty directory where you have write
 permission, and then set the :envvar:`LINO_CACHE_ROOT` environment
 variable to point to it.
 
-We recommend to create this directory below your virtual environment::
+The safest place for this directory is below your virtual
+environment::
 
   $ cd ~/virtualenvs/a
   $ mkdir lino_cache
 
 And then to add the following line to your
-:file:`~/virtualenvs/a/bin/activate` script
+:file:`~/virtualenvs/a/bin/activate` script::
 
    export LINO_CACHE_ROOT=$VIRTUAL_ENV/lino_cache
 
@@ -191,7 +197,7 @@ One part of your cache directory are the static files.  When your
 :envvar:`LINO_CACHE_ROOT` is set, you should run Django's
 :manage:`collectstatic` command::
 
-    $ cd lino/projects/polly
+    $ cd ~/repositories/book/lino_book/projects/polly
     $ python manage.py collectstatic
 
 The output should be something like this::
@@ -208,31 +214,24 @@ The output should be something like this::
 
     4688 static files copied to '/home/myname/virtualenvs/a/lino_cache/collectstatic', 0 unmodified.
 
-Note that you can chose an arbitrary project directory for running
+Note that you can chose an arbitrary project directory (any subdir
+below :mod:`lino_book.projects` should do it) for running
 :manage:`collectstatic`, it does not need to be :mod:`polly
-<lino_book.projects.polly>`. That's because all Lino applications have the
-same set of staticfiles.
+<lino_book.projects.polly>`. That's because all Lino applications have
+the same set of staticfiles.
 
 You need to do this only for your first local Lino project because
 static files are the same for every Lino application.  (There are
 exceptions to this rule, but we can ignore them for the moment.)
 
 
-Run Lino's test suite
-=====================
+Initialize the demo databases
+=============================
 
-In order to check to see whether everything worked well, we are now
-going to run the test suite.
+We are now ready to initialize the **demo databases**.  The easiest
+way to do this is to run the :cmd:`inv initdb` command::
 
-And before running the test suite, we must initialize the **demo
-databases** because the test suite has many test cases which would
-fail if these demo databases were missing or not in their virgin
-state.
-
-The easiest way to initialize the demo databases is to run the
-:cmd:`fab initdb` command::
-
-    $ cd ~/repositories/lino
+    $ cd ~/repositories/book
     $ inv initdb
 
 The ``inv`` command has been installed on your system (more precisely:
@@ -240,10 +239,42 @@ into your Python environment) by the invoke_ package, which itself has
 been required by atelier_, which is another Python package developed
 by Luc.
 
-The ``inv`` command is a kind of Make tool which works by looking for
+The ``inv`` command is a kind of make tool which works by looking for
 a file named :xfile:`invoke.yaml`. The Lino repository contains such a
 file, and this file uses :mod:`atelier.fablib`, which defines a whole
 series of tasks like `initdb` and `test`.
+
+
+
+Running your first Lino site
+============================
+
+You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
+a development server ::
+
+  
+    $ cd lino_book/projects/min1
+    $ python manage.py runserver
+
+Now start your browser, point it to http://127.0.0.1:8000/ and play
+around.
+
+Don't stay in :mod:`min1 <lino_book.projects.min1>`, Also try
+:mod:`min2 <lino_book.projects.min2>`, :mod:`min2
+<lino_book.projects.polly>` etc...
+
+
+Run Lino's test suite
+=====================
+
+In order to check whether everything worked well, we are now going to
+run the test suite.
+
+Make sure that your demo databases are initialized and that you did
+not do any manual changes therein.  Because the test suite has many
+test cases which would fail if these demo databases were missing or
+not in their virgin state.  In case you *did* write into some database
+during the previous section, just run :cmd:`inv initdb` once more.
 
 And here we go for the test suite itself::
 
@@ -261,10 +292,6 @@ this::
     Done.
 
 
-Congratulations if you got the test suite to pass!
+Congratulations if you got the test suite to pass!  As your next step,
+we now suggest to :doc:`/tutorials/hello/index`.
 
-- As your next step, we now suggest to :doc:`/tutorials/hello/index`.
-
-- Many Lino applications use :ref:`xl`, so please also check
-  `Installing Lino XL
-  <http://xl.lino-framework.org/install/index.html>`__

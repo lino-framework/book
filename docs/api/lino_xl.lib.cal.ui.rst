@@ -21,6 +21,7 @@ lino_xl.lib.cal.ui
    .. autosummary::
    
       Calendars
+      ConflictingEvents
       EventDetail
       EventEvents
       EventInsert
