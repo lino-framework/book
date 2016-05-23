@@ -19,6 +19,9 @@ only the source code.
 Version 1.7.1 (in development)
 ============================================
 
+- Lino now supports Django's generic relations (`GenericRelation
+  <https://docs.djangoproject.com/ja/1.9/ref/contrib/contenttypes/#reverse-generic-relations>`_).  (:blogref:`20160523`)
+
 - Error messages of style :message:`NotImplementedError: <dl> inside
   <text:p>` are now being shown correctly in the alert box for the
   user.  (:blogref:`20160523`)
