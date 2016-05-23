@@ -19,6 +19,16 @@ only the source code.
 Version 1.7.1 (in development)
 ============================================
 
+- Error messages of style :message:`NotImplementedError: <dl> inside
+  <text:p>` are now being shown correctly in the alert box for the
+  user.  (:blogref:`20160523`)
+
+- When duplicating a database object, Lino now calls the
+  :meth:`on_duplicate <lino.core.model.Model.on_duplicate>` method on
+  the master *before* saving it for a first time. (:blogref:`20160523`)
+
+- New build method :mod:`lino.modlib.weasyprint`.
+
 - :class:`CustomBuildMethod
   <lino.modlib.printing.utils.CustomBuildMethod>` : a new style of
   build method for printables which have a target file to be

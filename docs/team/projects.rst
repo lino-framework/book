@@ -56,12 +56,12 @@ instructed, you can now play with these commands:
 
   - :cmd:`go lino` changes to the main directory of your `lino` project
   - :cmd:`git pull` downloads the latest version of Lino
-  - :cmd:`fab initdb test` (i.e. :cmd:`fab initdb` followed by
-    :cmd:`fab test`)
+  - :cmd:`inv initdb test` (i.e. :cmd:`inv initdb` followed by
+    :cmd:`inv test`)
 
   - :cmd:`go myblog` changes to the main directory of your developer blog
-  - :cmd:`fab blog` launches your editor on today's blog entry
-  - :cmd:`fab bd pd` (i.e. :cmd:`fab bd` followed by :cmd:`fab pd`)
+  - :cmd:`inv blog` launches your editor on today's blog entry
+  - :cmd:`inv bd pd` (i.e. :cmd:`inv bd` followed by :cmd:`inv pd`)
 
 
 This way of working implies that you identify every project by a short
@@ -91,7 +91,7 @@ which you are the author.
 
 Here are some useful functions for your :xfile:`~/.bash_aliases`::
 
-    alias ci='fab ci'
+    alias ci='inv ci'
     alias runserver='python manage.py runserver'
 
     function pywhich() { 
