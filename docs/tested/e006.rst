@@ -30,7 +30,7 @@ How to reproduce it:
   `install_requires=['django<1.7'...` to
   `install_requires=['django'...`.
 
-- In the top-level directory of your Lino repository, run ``$ fab initdb test``
+- In the top-level directory of your Lino repository, run ``$ inv initdb test``
 
 It fails already during *initdb*, more precisely the *initdb_demo* of
 :mod:`lino_book.projects.min2`. So you can avoid running the whole test
