@@ -55,6 +55,14 @@ Lino Presto
 
 http://presto.lino-framework.org/
 
+.. _psico:
+
+Lino Psico
+==========
+
+See :ref:`presto.specs.psico`
+
+
 .. _faggio:
 .. _voga:
 
