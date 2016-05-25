@@ -20,6 +20,17 @@ Installation
     install_mysql
     config_dirs
     xl
+
+Maintenance
+-----------
+
+.. toctree::
+    :maxdepth: 2
+
+    upgrade
+    datamig
+    shell_scripts
+    bash_aliases
    
 
 Java applets included with Lino
@@ -59,8 +70,6 @@ Other
     permissions
     ApacheHttpAuth
     django_tests
-    upgrade
-    datamig
     apache_webdav
     using
     webdav

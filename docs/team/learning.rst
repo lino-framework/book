@@ -25,9 +25,13 @@ Django
 - `First steps <https://docs.djangoproject.com/en/dev/>`_ section of
   the Django documentation.
 
+.. _learning.unix:
 
-UNIX shell
-==========
+Working in a UNIX shell
+=======================
+
+- An in-depth exploration of the art of shell scripting: `Advanced Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_
+  by Mendel Cooper
 
 - `Bash Cheat sheet
   <http://cli.learncodethehardway.org/bash_cheat_sheet.pdf>`__
@@ -38,9 +42,6 @@ UNIX shell
 
 - `BASH Programming - Introduction HOW-TO <http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html>`_
   by Mike G
-
-- An in-depth exploration of the art of shell scripting: `Advanced Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_
-  by Mendel Cooper
 
 
 Sphinx

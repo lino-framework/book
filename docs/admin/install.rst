@@ -7,16 +7,28 @@ Installing a Lino application on a production server
 Before setting up a production server you should be familiar 
 with setting up and running a development server
 as documented in :ref:`lino.dev.install`.
-
-For a Lino production server you'll need shell access to a Linux 
-computer that acts as server.
-
 Basically you do the same as for Django. 
+
+
+On a production server you will do the same, but you must additionally
+decide:
+
+- how to organize your repositories and virtual environmens
+- which web server to use
+
 We recommend the method using `mod_wsgi` and `virtualenv` 
 as described in the following documents:
 
 - https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
 - https://code.google.com/p/modwsgi/wiki/VirtualEnvironments
+
+
+
+Prerequisites
+-------------
+
+For a Lino production server you'll need shell access to a Linux 
+computer that acts as server.
 
 
 Debian packages
@@ -54,6 +66,7 @@ ssl-cert
 
 Install Lino
 ------------
+
 
 - Create a virtualenv for your Lino application
 

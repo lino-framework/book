@@ -1,10 +1,17 @@
+.. _lino.dev:
+
 =================
 Developer's Guide
 =================
 
-This is the central meeting place for Lino application developers.  We
-are doing our best to grow this into a pedagogically meaningful
-sequence of articles.
+This is the central meeting place for :doc:`Lino application
+developers </team/lad>` (people who plan to write their own Lino
+application).
+
+The `Getting started`_ section is for :doc:`system adminstrators
+</team/sysadm>` as well, i.e. for people who plan to install and
+maintain some of the :ref:`lino.apps` on a professional internet
+server.
 
 Getting started
 ===============
@@ -15,29 +22,42 @@ Getting started
    :hidden:
 
    install
-   /tutorials/polls/mysite/index
    /tutorials/hello/index
-   /tutorials/dumpy
-   /tutorials/tables/index
-   layouts
-   /tutorials/lets/index
+   initdb
 
 #.  :doc:`/dev/install` : How to install Lino. System requirements. "Released
     version" versus "Development version". How to run Lino's test
     suite.
-
-#.  :doc:`/tutorials/polls/mysite/index` : In this section we are
-    going to convert the “Polls” application from Django’s tutorial
-    into a Lino application. This will illustrate some differences
-    between Lino and Django.
 
 #.  :doc:`/tutorials/hello/index` : The first Lino application running
     on your machine. It's easier than with Django. A ``settings.py`` and
     a ``manage.py``. Initialize a demo database. Run a development
     server.
 
-#.  :doc:`/tutorials/dumpy` : The ``initdb`` and ``initdb_demo``
-    commands.  Playing with fixtures.  Writing your own fixture.
+#.  :doc:`initdb` : The ``initdb`` and ``initdb_demo`` commands.  
+
+
+Your first application
+======================
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   /tutorials/dumpy
+   /tutorials/polls/mysite/index
+   /tutorials/tables/index
+   layouts
+   /tutorials/lets/index
+
+
+#.  :doc:`/tutorials/dumpy` : Playing with fixtures.  Writing your
+    first own fixture.
+
+#.  :doc:`/tutorials/polls/mysite/index` : In this section we are
+    going to convert the “Polls” application from Django’s tutorial
+    into a Lino application. This will illustrate some differences
+    between Lino and Django.
 
 #.  :doc:`/tutorials/tables/index` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.

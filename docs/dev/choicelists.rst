@@ -1,3 +1,5 @@
+.. _dev.choicelists:
+
 ===========================
 Introduction to choicelists
 ===========================

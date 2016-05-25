@@ -1,50 +1,37 @@
-Upgrading Lino
-==============
+.. _admin.upgrade:
+
+=====================
+Upgrading a Lino site
+=====================
 
 Generic instructions for upgrading an existing Lino site 
 to a new version.
 
 
-- Go to your local directory::
+- Go to your project directory::
 
-    cd /usr/local/django/myproject
-    
-- Stop application services::
+    $ go myproject
 
-    ./stop
+  See :cmd:`go` if you don't know that command.
+
+- Stop the web server::
+
+    $ sudo service apache2 stop
+
+  Or whatever is appropriate on your site.
     
+- Make a snapshot::
+    
+    $ ./make_snapshot.sh
+
+  See :doc:`/admin/snapshot` for details.
+
 - Update the source code::
 
-    ./pull
+    $ ./pull.sh
 
-- Optionally run the test suite using your 
-  local :xfile:`settings.py`::
-  
-    python manage.py test
-    
-- When a data migration is necessary, see 
-  :doc:`/admin/datamig`
+- Restore the snapshot::
 
+    $ python manage.py run snapshot/restore.py
 
-
-How to install updates
-----------------------
-
-Updating Lino::
-
-  cd /var/snapshots/lino
-  hg pull -u
-
-Updating Django::
-
-  cd /var/snapshots/django & svn update
-  
-To run the Django test suite::  
-  
-  cd /var/snapshots/django/tests
-  python runtests.py --settings=test_sqlite
-  
-
-    
-  
-  
+  See :manage:`dump2py` for details.
