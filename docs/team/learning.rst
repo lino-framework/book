@@ -17,6 +17,12 @@ Python
 
 - `Code Academy <http://www.codecademy.com/en/tracks/python>`_
 
+- `Dive Into Python <http://www.diveintopython.net>`__ ("Python from
+  novice to pro") is a free Python book for experienced programmers.
+
+- `Think Python 2e <http://greenteapress.com/wp/think-python-2e/>`__
+  is an introduction to Python programming for beginners.
+
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
 
 Django
