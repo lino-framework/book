@@ -64,3 +64,8 @@ page. It is split into two files
 
 These are obsolete synonyms for :xfile:`linoweb.js`.
 
+
+.. xfile:: .weasy.html
+
+An input template used by :mod:`lino.modlib.weasyprint`. 
+
