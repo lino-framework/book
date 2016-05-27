@@ -1,24 +1,19 @@
 .. _lino.tutorial.dpy:
 
-===============================
-Introduction to Python fixtures
-===============================
-
-.. to run only this test:
-  $ python setup.py test -s tests.DocsTests.test_dumpy
+================================
+Writing your own Python fixtures
+================================
 
 This tutorial shows how to use :doc:`the Python serializer
 </topics/dpy>` for writing and loading demonstration data samples for
 application prototypes and test suites.
 
-
-You know that a *fixture* is a portion of data (a collection of data
-records in one or several tables) which can be loaded into a database.
-Read more about fixtures in the `Providing initial data for models
-<https://docs.djangoproject.com/en/1.6/howto/initial-data/>`_ article
-of the Django documentation.  This article says that "fixtures can be
-written as XML, YAML, or JSON documents".  Well, Lino adds another
-format to this list: Python.
+You know that a *fixture* is a collection of data records in one or
+several tables which can be loaded into a database.  Django's
+`Providing initial data for models
+<https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_ article
+says that "fixtures can be written as XML, YAML, or JSON documents".
+Well, Lino adds another format to this list: Python.
 
 Here is a fictive minimal example of a Python fixture::
 
@@ -38,67 +33,6 @@ no parameters and which must return or yield a list of database
 objects.
 
 
-The :manage:`initdb` and :manage:`initdb_demo` commands
--------------------------------------------------------
-
-Remember that we told you (in :ref:`lino.tutorial.hello`) 
-to "prepare your database" by running the command::
-
-  $ python manage.py initdb_demo
-  
-The :xfile:`manage.py` Python script is the standard Django interface
-for running a so-called **administrative task** (if you did't know
-that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.6/ref/django-admin/>`_).
-
-The :manage:`initdb_demo` command which we used here is a `custom
-django-admin command
-<https://docs.djangoproject.com/en/1.6/howto/custom-management-commands/>`_
-provided by Lino.  
-
-It does nothing else than to call :manage:`initdb`
-with the **demo fixtures**.
-
-The **demo fixtures** is a predefined set of fixture names,
-defined by the application developer in 
-the :attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` setting.
-The `min1` app has the following demo fixtures:
-
->>> from lino import startup
->>> startup('lino_book.projects.docs.settings.demo')
->>> from django.conf import settings
->>> settings.SITE.demo_fixtures
-['std', 'few_countries', 'euvatrates', 'furniture', 'demo', 'demo2']
-
-So the ``initdb_demo`` command above is equivalent to::
-  
-  $ python manage.py initdb std demo demo2
-
-The :manage:`initdb` command
-----------------------------
-
-The :manage:`initdb` command performs three actions in one:
-
-- it flushes the database specified in your :xfile:`settings.py`,
-  i.e. issues a ``DROP TABLE`` for every table used by your application.
- 
-- then runs Django's `syncdb` command to re-create all tables,
-
-- and finally runs Django's `loaddata` command to load the specified
-  fixtures.
-
-So the above line is roughly equivalent to::
-
-  $ python manage.py flush
-  $ python manage.py syncdb
-  $ python manage.py loaddata std demo demo2
-  
-Removing all tables may sound dangerous, but that's what we want when
-we want to "just have a look at this application", or when we are
-developing a prototype and just made some changes to the database
-structure.  We assume that nobody will ever let a Lino application and
-some other application share the same database.
-
 Playing with fixtures
 ---------------------
 
@@ -113,10 +47,10 @@ Have a look at the following fixture files
 - :srcref:`few_cities </lino/modlib/countries/fixtures/few_cities.py>`
   and :srcref:`be </lino/modlib/countries/fixtures/be.py>`.
 
-Play with them::
+Play with them by trying your own combinations::
 
-  python manage.py initdb std all_countries be few_languages props demo 
-  python manage.py initdb std few_languages few_countries few_cities demo 
+  $ python manage.py initdb std all_countries be few_languages props demo 
+  $ python manage.py initdb std few_languages few_countries few_cities demo 
   ...
 
 Note that Python fixtures can also be used manually with

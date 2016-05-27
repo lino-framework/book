@@ -17,6 +17,12 @@ Python
 
 - `Code Academy <http://www.codecademy.com/en/tracks/python>`_
 
+- `Dive Into Python <http://www.diveintopython.net>`__ ("Python from
+  novice to pro") is a free Python book for experienced programmers.
+
+- `Think Python 2e <http://greenteapress.com/wp/think-python-2e/>`__
+  is an introduction to Python programming for beginners.
+
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
 
 Django
@@ -25,9 +31,13 @@ Django
 - `First steps <https://docs.djangoproject.com/en/dev/>`_ section of
   the Django documentation.
 
+.. _learning.unix:
 
-UNIX shell
-==========
+Working in a UNIX shell
+=======================
+
+- An in-depth exploration of the art of shell scripting: `Advanced Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_
+  by Mendel Cooper
 
 - `Bash Cheat sheet
   <http://cli.learncodethehardway.org/bash_cheat_sheet.pdf>`__
@@ -38,9 +48,6 @@ UNIX shell
 
 - `BASH Programming - Introduction HOW-TO <http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html>`_
   by Mike G
-
-- An in-depth exploration of the art of shell scripting: `Advanced Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_
-  by Mendel Cooper
 
 
 Sphinx

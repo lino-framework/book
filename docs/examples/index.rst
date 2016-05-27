@@ -1,7 +1,5 @@
+=======================================
 Example applications included with Lino
 =======================================
 
-.. toctree::
-
-   polly/index
-   belref/index
+Content moved to :doc:`/about/projects`.

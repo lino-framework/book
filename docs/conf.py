@@ -15,7 +15,10 @@ import os
 import sys
 from unipath import Path
 from atelier.sphinxconf import configure
+
 import lino
+import lino_xl
+import lino_book
 
 sys.path.insert(0, Path(__file__).parent.absolute())
 
@@ -297,12 +300,15 @@ latex_documents = [
 #extlinks.update(ticket=('http://bugs.lino-framework.org/ticket/%s', '#'))
 extlinks.update(ticket=('http://bugs.lino-framework.org/tickets/Ticket/%s', '#'))
 
+
 extlinks.update({
     'issue': (
         'http://code.google.com/p/lino/issues/detail?id=%s', '# '),
     'checkin': (
         'http://code.google.com/p/lino/source/detail?r=%s', 'Checkin '),
     'srcref': (lino.srcref_url, ''),
+    'srcref_xl': (lino_xl.srcref_url, ''),
+    'srcref_book': (lino_book.srcref_url, ''),
     'extjs': ('http://www.sencha.com/deploy/dev/docs/?class=%s', ''),
     'extux': ('http://extjs-ux.org/ext-docs/?class=%s', ''),
     'djangoticket': (

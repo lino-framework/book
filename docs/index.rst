@@ -1,13 +1,11 @@
-.. _lino:
 .. _book:
 
-==================
-The Lino framework
-==================
+=============
+The Lino book
+=============
 
-Welcome to the project homepage of the Lino framework.
-
-.. .. admonition:: Job announcement
+Welcome to the online version of the Lino book, the free documentation
+repository about the Lino framework.
 
 .. note::
 
@@ -29,10 +27,15 @@ Sitemap
 
 
 
-
-
 .. toctree::
    :hidden:
 
    copyright
 
+
+.. toctree::
+   :hidden:
+
+   examples/index
+   examples/polly/index
+   examples/belref/index

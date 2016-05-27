@@ -1,4 +1,5 @@
 .. _lino.dev.install:
+.. _dev.install:
 
 ===============
 Installing Lino
@@ -13,17 +14,12 @@ Installing Lino
 .. _git: http://git-scm.com/downloads
 .. _lxml: http://lxml.de/
 
-This document describes how to install Lino.  It is meant for people
-who plan to write their own Lino application.  Alternativaly you might
-prefer to install one of the existing Lino applications, e.g.  `Lino
-Così <http://cosi.lino-framework.org/install/index.html>`__ or `Lino
-Welfare <http://welfare.lino-framework.org/admin/install.html>`__.
+This document describes how to install Lino.  
 
-This tutorial assumes you are familiar with the Linux shell at least
+It assumes you are familiar with the Linux shell at least
 for basic file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`,
-:cmd:`rmdir`, file permissions, environment variables etc. Otherwise
-we suggest to keep Mendel Cooper's `Advanced Bash-Scripting Guide
-<http://tldp.org/LDP/abs/html/>`_ under your pillow.
+:cmd:`rmdir`, file permissions, environment variables, bash scripts
+etc.  Otherwise we suggest to learn about :ref:`Working in a UNIX shell <learning.unix>`.
 
 .. contents::
     :depth: 1
@@ -35,8 +31,8 @@ System requirements
 
 #.  Lino theoretically works under **Python 3**, but we currently
     still recommend **Python 2**.  If you just want it to work, then
-    choose Py2. Otherwise give it a try under Python 3 and report our
-    experience.
+    choose Python 2. Otherwise consider giving it a try under Python 3
+    and report your experiences.
 
 #.  We assume you have pip_ installed. `pip` is not automatically
     bundled with Python 2, but it has become the de-facto standard.
@@ -64,7 +60,8 @@ System requirements
 #.  You will need to install git_ on your computer to get the source
     files.
 
-#.  Lino requires lxml_, which has some extra requirements::
+#.  Lino requires lxml_, which has some extra requirements before you
+    can install it with pip_::
 
       sudo apt-get build-dep lxml
 

@@ -1,5 +1,8 @@
+.. _pull.sh:
+
+===========================================
 How to update your copy of the repositories
--------------------------------------------
+===========================================
 
 Since Lino is in constant development, you will probably often do the
 following::
@@ -19,13 +22,13 @@ same time::
 
   $ cd ~/repositories
   $ cd atelier ; git pull ; cd ..
-  $ cd site ; git pull  ; cd ..
-  $ cd north ; git pull ; cd ..
   $ cd lino ; git pull ; cd ..
+  $ cd xl ; git pull ; cd ..
 
 And (depending on which of the :ref:`lino.projects` you use) maybe one
 or several of the following::
 
+  $ cd noi ; git pull ; cd ..
   $ cd cosi ; git pull ; cd ..
   $ cd welfare ; git pull ; cd ..
   $ cd voga ; git pull ; cd ..

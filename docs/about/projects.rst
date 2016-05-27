@@ -1,59 +1,81 @@
 .. _lino.projects:
 
-==============================
+======================
+Projects that use Lino
+======================
+
+This document gives an overview on existing Lino application.
+
+.. contents::
+    :depth: 2
+    :local:
+
+
+.. _lino.apps:
+
 Ready-to-use Lino applications
 ==============================
 
-Included with Lino
-==================
-
-The Lino book contains a collection of example applications used by
-the test suite and for learning:
-
-- :mod:`lino_book.projects`
-
-
-Separate code repositories
-==========================
-
-The following Lino applications are available as separate projects
-maintained by the same author:
+The following Lino applications are more or less stable:
 
 .. _welfare:
 
 Lino Welfare
 ------------
 
-See `Lino Welfare <http://welfare.lino-framework.org/>`_
+.. py2rst::
+
+  from lino_welfare import SETUP_INFO
+  print(SETUP_INFO['long_description'])
 
 .. _noi:
 
 Lino Noi
 --------
 
-See http://noi.lino-framework.org/
+
+.. py2rst::
+
+  from lino_noi import SETUP_INFO
+  print(SETUP_INFO['long_description'])
 
 .. _care:
 
 Lino Care
 ---------
 
-See `The "Care" variant of Lino Noi <http://noi.lino-framework.org/specs/care.html>`_
-
+See `The "Care" variant of Lino Noi
+<http://noi.lino-framework.org/specs/care.html>`_
 
 .. _cosi:
 
 Lino Così
 ---------
 
-http://cosi.lino-framework.org/
+.. py2rst::
+
+  from lino_cosi import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
 
 .. _presto:
 
 Lino Presto
 ------------
 
-http://presto.lino-framework.org/
+.. py2rst::
+
+  from lino_presto import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+
+.. _psico:
+
+Lino Psico
+----------
+
+See :ref:`presto.specs.psico`
+
 
 .. _faggio:
 .. _voga:
@@ -61,7 +83,15 @@ http://presto.lino-framework.org/
 Lino Voga
 ------------
 
-See http://voga.lino-framework.org/
+.. py2rst::
+
+  from lino_voga import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+
+
+Experimental applications
+=========================
 
 .. _patrols:
 
@@ -77,6 +107,19 @@ Lino Logos
 
 http://logos.lino-framework.org/
 
+
+Lino Polly
+----------
+
+See :doc:`/examples/polly/index`
+
+
+Lino Belref
+-----------
+
+See :doc:`/examples/belref/index`
+
+
 .. _sunto:
 
 Lino Sunto
@@ -87,14 +130,10 @@ somebody else than the author. It is hosted at
 https://github.com/ManuelWeidmann/lino-sunto
 
 
-.. _xl:
+Applications written for learning and testing
+=============================================
 
-Lino Extensions Library
-=======================
+The Lino book contains a collection of example applications used by
+the test suite and for learning. See :mod:`lino_book.projects`.
 
-Most of above projects require the **Lino Extensions Library**, a
-collection of plugins which are not part of the core because they add
-a given set of solutions for "Enterprise" style applications.
-
-http://xl.lino-framework.org/
 

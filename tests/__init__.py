@@ -54,8 +54,8 @@ class DocsTests(LinoTestCase):
     def test_dynamic(self):
         self.run_simple_doctests('docs/tested/dynamic.rst')
 
-    def test_dumpy(self):
-        self.run_simple_doctests("docs/tutorials/dumpy.rst")
+    def test_initdb(self):
+        self.run_simple_doctests("docs/dev/initdb.rst")
 
     def test_polly(self):
         self.run_simple_doctests("docs/tested/polly.rst")

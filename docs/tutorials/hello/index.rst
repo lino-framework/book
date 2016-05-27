@@ -63,12 +63,11 @@ Explanations:
     all required Django settings (e.g. :setting:`DATABASES` and
     :setting:`LOGGING`) into your global namespace.
 
-You might add ``DEBUG = True`` or other settings of your choice after
-these two lines, but it is not necessary.
+You might add ``DEBUG = True`` or other settings of your choice
+*after* these two lines, but it is not necessary.
 
 More about this in :doc:`/dev/settings`.
     
-
 
 The ``manage.py`` file
 =======================
@@ -77,6 +76,10 @@ Now add a :xfile:`manage.py` file with the following content:
 
 .. literalinclude:: manage.py
 
+A :xfile:`manage.py` must do at least two things: it must set the
+:envvar:`DJANGO_SETTINGS_MODULE` environment variable and then call
+Django's `execute_from_command_line` function.
+
 This is plain traditional Django know-how.  There are many opinions,
 tricks, flavors and conventions about Django's :xfile:`manage.py`
 files, partly for historical reasons.  Lino does not add any tricks to
@@ -84,12 +87,12 @@ the :xfile:`manage.py` file, so you can use your own flavour if you
 prefer.
 
 
-Initial data
-=======================
+Loading initial data into your database
+=======================================
 
-Next we create your database and populate it with some demo content.
-
-With a normal Lino application this is just one command to type::
+Next we create your database and populate it with some demo
+content. With a Lino application this is easier than with a plain
+Django project, it is just one command to type::
 
     $ python manage.py initdb_demo
 
@@ -122,11 +125,11 @@ that's what you want. So go on and type ``y``::
 There's a lot to say about what we just did.  Lino applications use to
 make abundant use of so-called *Python fixtures* in order to have a
 rich set of "demo data".  We will come back to this in the next
-chapter, :doc:`/tutorials/dumpy`.
+chapter, :doc:`/dev/initdb`.
 
 
 Start the web server
-=======================
+====================
 
 Now you can start the development server::
 
@@ -140,8 +143,8 @@ which should output something like::
   Development server is running at http://127.0.0.1:8000/
   Quit the server with CTRL-BREAK.
 
-And then point our web browser to http://127.0.0.1:8000 and you should
-see some welcome text and instructions for logging in.
+And then point your web browser to http://127.0.0.1:8000 and you
+should see some welcome text and instructions for logging in.
 
 Congratulations! Enjoy the first Lino application running on your
 machine!

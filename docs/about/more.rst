@@ -10,7 +10,6 @@ More about Lino
    testimonals
    name
    history
-   /examples/index
    lino_and_django
    thanks
 
@@ -22,4 +21,5 @@ More about Lino
    faq
    compared
    why_extjs
+
 
