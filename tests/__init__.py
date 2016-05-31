@@ -190,6 +190,9 @@ class SpecsTests(TestCase):
     def test_html(self):
         self.run_simple_doctests('docs/specs/html.rst')
 
+    def test_countries(self):
+        self.run_simple_doctests('docs/specs/countries.rst')
+
 
 class ProjectsTests(LinoTestCase):
     
