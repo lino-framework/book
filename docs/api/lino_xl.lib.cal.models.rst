@@ -12,9 +12,7 @@ lino_xl.lib.cal.models
    
       default_color
       migrate_reminder
-      pre_analyze
       register_calendartype
-      update_reminders_for_user
    
    
 
@@ -42,7 +40,6 @@ lino_xl.lib.cal.models
       Subscription
       Task
       UpdateGuests
-      UpdateUserReminders
    
    
 
