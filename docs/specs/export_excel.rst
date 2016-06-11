@@ -15,8 +15,8 @@ This document tests this functionality.
     
     doctest init:
 
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = 'lino_book.projects.min1.settings.doctests'
+    >>> from lino import startup
+    >>> startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
 
 
@@ -122,7 +122,7 @@ the table above because our user had changed them manually:
 
 >>> print(s.row(1))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-[text:u'Thu 23/10/2014 (08:30)', text:u'**Suggested** \u2192 `[img flag_green] <...>`__', xldate:..., xldate:..., xldate:...]
+[text:u'Thu 23/10/2014 (08:30)', text:u'**Suggested** \u2192 `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,102,{  })>`__', xldate:..., xldate:..., xldate:...]
 
 
 .. _invalid_requests:
