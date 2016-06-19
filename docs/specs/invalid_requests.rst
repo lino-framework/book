@@ -1,4 +1,5 @@
 .. _invalid_requests:
+.. _lino.specs.invalid_requests:
 
 Answering to invalid requests
 =============================
@@ -50,8 +51,8 @@ response (i.e. status code 400):
 400
 
 Since RolesByPerson has a known master class (i.e. Person), the ``mt``
-url parameter is *ignored*: invalid value for ``mt`` does *not* raise
-an exception:
+url parameter is *ignored*: an invalid value for ``mt`` does *not*
+raise an exception:
 
 >>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8888&mk=114"
 >>> res = test_client.get(url, **headers)
