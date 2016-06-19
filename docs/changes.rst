@@ -16,7 +16,10 @@ only the source code.
     marked_changes
 
 
-Version 1.7.1 (in development)
+Version 1.7.3 (in development)
+============================================
+
+Version 1.7.2 (released :blogref:`20160619`)
 ============================================
 
 - Lino now supports Django's generic relations (`GenericRelation
@@ -43,6 +46,8 @@ Version 1.7.1 (in development)
 - Added `CachedPrintableChecker
   <lino.modlib.printing.mixins.CachedPrintableChecker>` which checks
   for missing cache files (:blogref:`20160427`, :blogref:`20160504`).
+
+- And quite some other.
 
 Version 1.7.0 (released :blogref:`20160426`)
 ============================================
