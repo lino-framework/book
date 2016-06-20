@@ -22,7 +22,7 @@ you load that dump with the new version *after* upgrading.
 
 Disadvantage:
 
-- You cannot migrate a running system. Users must stop to work in your
+- You cannot migrate a running system. Users must stop working in your
   application for a few minutes.
 
 Advantage: 
@@ -34,10 +34,10 @@ Advantage:
 General strategy for handling data migrations
 =============================================
 
-- When you upgrade on a production site, always make a
-  :manage:`dump2py` of your database before the upgrade.
+- When you upgrade on a production site, always make a Python dump
+  (using :manage:`dump2py`) of your database **before** the upgrade.
 
-- After the upgrade, reinitialize your database from that dump by
+- **After** the upgrade, reinitialize your database from that dump by
   running the :xfile:`restore.py` script.
 
 - Certain schema changes don't need a migrator and will work
@@ -71,6 +71,8 @@ See also :doc:`dump2py`.
 
 Writing a migrator
 ==================
+
+(Not finished)
 
 - Increase your version number
 - 

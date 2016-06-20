@@ -1,3 +1,4 @@
+.. _lino.specs.export_excel:
 .. _lino.tested.export_excel:
 
 Exporting to Excel
@@ -15,8 +16,8 @@ This document tests this functionality.
     
     doctest init:
 
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = 'lino_book.projects.min1.settings.doctests'
+    >>> from lino import startup
+    >>> startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
 
 
@@ -32,22 +33,22 @@ My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 ======================== ===================== =============== ================
  When                     Calendar Event Type   Summary         Workflow
 ------------------------ --------------------- --------------- ----------------
- Thu 23/10/2014 (10:20)   Meeting               Meeting         **Took place**
- Fri 24/10/2014 (11:10)   Meeting               Consultation    **Cancelled**
- Sat 25/10/2014 (08:30)   Meeting               Evaluation      **Suggested**
- Sat 25/10/2014 (13:30)   Meeting               Seminar         **Omitted**
- Sun 26/10/2014 (09:40)   Meeting               First meeting   **Draft**
- Mon 27/10/2014 (10:20)   Meeting               Interview       **Took place**
- Mon 27/10/2014 (11:10)   Meeting               Lunch           **Cancelled**
- Tue 28/10/2014 (13:30)   Meeting               Dinner          **Omitted**
- Wed 29/10/2014 (08:30)   Meeting               Breakfast       **Suggested**
- Wed 29/10/2014 (09:40)   Meeting               Meeting         **Draft**
- Thu 30/10/2014 (10:20)   Meeting               Consultation    **Took place**
- Fri 31/10/2014 (11:10)   Meeting               Seminar         **Cancelled**
+ Thu 23/10/2014 (13:30)   Meeting               Evaluation      **Omitted**
+ Fri 24/10/2014 (08:30)   Meeting               First meeting   **Suggested**
+ Sat 25/10/2014 (09:40)   Meeting               Interview       **Draft**
+ Sat 25/10/2014 (10:20)   Meeting               Lunch           **Took place**
+ Sun 26/10/2014 (11:10)   Meeting               Dinner          **Cancelled**
+ Mon 27/10/2014 (08:30)   Meeting               Meeting         **Suggested**
+ Mon 27/10/2014 (13:30)   Meeting               Breakfast       **Omitted**
+ Tue 28/10/2014 (09:40)   Meeting               Consultation    **Draft**
+ Wed 29/10/2014 (10:20)   Meeting               Seminar         **Took place**
+ Wed 29/10/2014 (11:10)   Meeting               Evaluation      **Cancelled**
+ Thu 30/10/2014 (13:30)   Meeting               First meeting   **Omitted**
+ Fri 31/10/2014 (08:30)   Meeting               Interview       **Suggested**
 ======================== ===================== =============== ================
 <BLANKLINE>
 
-Let's import them to `.xls`.
+Let's export them to `.xls`.
 
 When exporting to `.xls`, the URL is rather long because it includes
 detailed information about the grid columns: their widths (``cw``),
@@ -69,8 +70,6 @@ if the client has changed these.
     True
     >>> ba.get_view_permission(u.profile)
     True
-
-A subtlety: the third column (`workflow_buttons`) contains images.
 
 >>> url = "/api/cal/MyEvents?_dc=1414106085710"
 >>> url += "&cw=411&cw=287&cw=411&cw=73&cw=274&cw=140&cw=274&cw=220&cw=220&cw=220&cw=287&cw=181&cw=114&cw=181&cw=114&cw=170&cw=73&cw=73&cw=274&cw=140&cw=274&cw=274&cw=181&cw=274&cw=140"
@@ -100,77 +99,51 @@ True
 
 Now test whether the file is really okay.
 
->>> import xlrd
->>> wb = xlrd.open_workbook(p)
->>> s = wb.sheet_by_index(0)
-
-Note that long titles are truncated:
-
->>> print(s.name.strip())
+>>> from openpyxl import load_workbook
+>>> wb = load_workbook(filename=p)
+>>> print(wb.get_sheet_names())
+[u'My appointments (Managed by Rol']
+>>> ws = wb.active
+>>> print(ws.title)
 My appointments (Managed by Rol
+
+
+Note that long titles are truncated because Excel does not support
+worksheet names longer than 32 characters.
 
 It has 5 columns and 13 rows:
 
->>> print(s.ncols, s.nrows)
+>>> print(len(ws.columns), len(ws.rows))
 (5, 13)
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
 
->>> print(s.row(0))
-[text:u'When', text:u'Workflow', text:u'Created', text:u'Start date', text:u'Start time']
+>>> print(' | '.join([cell.value for cell in ws.rows[0]]))
+When | Workflow | Created | Start date | Start time
 
->>> print(s.row(1))
+>>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-[text:u'Thu 23/10/2014 (08:30)', text:u'**Suggested** \u2192 `[img flag_green] <...>`__', xldate:..., xldate:..., xldate:...]
+Thu 23/10/2014 (10:20) | **Took place** → `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,114,{  })>`__ | ... | 2014-10-23 00:00:00 | 10:20:00
+
+Note that the Workflow column (`workflow_buttons`) contains
+images. Since these are not available in Excel, we made a compromise.
 
 
-.. _invalid_requests:
+Unicode
+=======
 
-Answering to invalid requests
-=============================
-
-We are going to send some invalid AJAX requests to
-:class:`lino.modlib.contacts.models.RolesByPerson`, a slave table on
-person.
-
->>> contacts.RolesByPerson.master
-<class 'lino.modlib.contacts.models.Person'>
-
-Simulate an AJAX request:
-
->>> headers = dict(HTTP_X_REQUESTED_WITH='XMLHttpRequest')
->>> headers.update(REMOTE_USER='robin')
-
-Here is a valid request:
-
->>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114"
->>> res = test_client.get(url, **headers)
+>>> res = test_client.get(url, REMOTE_USER='romain')
 >>> print(res.status_code)
 200
->>> d = AttrDict(json.loads(res.content))
->>> d.count
-1
->>> print(d.title)
-Contact for of Mr Hans Altenberg
+>>> wb = load_workbook(filename=p)
+>>> ws = wb.active
+>>> print(ws.title)
+Mes rendez-vous (Traité par Rol
 
+>>> print(' | '.join([cell.value for cell in ws.rows[0]]))
+Quand | État | Créé | Date début | Heure de début
 
-Specifying an *invalid primary key* for the master (5114 in the
-example below) will internally raise an `ObjectDoesNotExist`
-exception, which in turn will cause an `HttpResponseBadRequest`
-response (i.e. status code 400):
-
->>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114"
->>> res = test_client.get(url, **headers)
->>> print(res.status_code)
-400
-
-Since RolesByPerson has a known master class (i.e. Person), the
-``mt``url parameter is *ignored*: invalid value for ``mt`` does *not*
-raise an exception:
-
->>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8888&mk=114"
->>> res = test_client.get(url, **headers)
->>> print(res.status_code)
-200
-
+>>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+jeu. 23/10/2014 (10:20) | **Terminé** → `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,114,{  })>`__ | ... | 2014-10-23 00:00:00 | 10:20:00

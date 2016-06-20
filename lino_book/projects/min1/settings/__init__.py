@@ -18,11 +18,12 @@ from lino.projects.std.settings import *
 class Site(Site):
     title = "Lino Mini 1"
 
-    languages = "en de"
-
     demo_fixtures = 'std demo demo2'
 
     user_profiles_module = 'lino.modlib.office.roles'
+
+    def setup_workflows(self):
+        import lino_xl.lib.cal.workflows.take
 
     def setup_quicklinks(self, ar, tb):
         tb.add_action(self.modules.contacts.Persons.detail_action)

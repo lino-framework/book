@@ -187,6 +187,9 @@ class SpecsTests(TestCase):
     def test_export_excel(self):
         self.run_simple_doctests("docs/specs/export_excel.rst")
 
+    def test_invalid_requests(self):
+        self.run_simple_doctests("docs/specs/invalid_requests.rst")
+
     def test_html(self):
         self.run_simple_doctests('docs/specs/html.rst')
 

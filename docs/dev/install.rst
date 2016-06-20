@@ -63,7 +63,13 @@ System requirements
 #.  Lino requires lxml_, which has some extra requirements before you
     can install it with pip_::
 
-      sudo apt-get build-dep lxml
+      $ sudo apt-get build-dep lxml
+
+#.  Similar requirement for applications which use
+    :mod:`lino.modlib.weasyprint`::
+
+      $ sudo apt-get install libffi-dev
+
 
 
 Get the sources

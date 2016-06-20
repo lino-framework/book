@@ -24,3 +24,4 @@ introductions. This section is far from being complete.
    html
    checkdata
    countries
+   invalid_requests
