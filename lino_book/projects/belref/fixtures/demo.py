@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """This is Luc's personal collection of Belgian vocabulary.  It is
@@ -119,3 +119,8 @@ def objects():
         "Haushaltsvorstand",
         "Chef de ménage",
         "Haushaltsvorstand")
+    yield C(
+        "CBSS (Crossroads Bank for Social Security)",
+        "ZDSS (Zentrale Datenbank der Sozialen Sicherheit)",
+        "BCSS (Banque Carrefour de la Sécurité Sociale)",
+        "KSZ (Kruispuntbank van de Sociale Zekerheid)")

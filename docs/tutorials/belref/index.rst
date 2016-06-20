@@ -71,7 +71,7 @@ of :mod:`lino.modlib.extjs`
 >>> data.keys()
 [u'count', u'rows', u'success', u'no_data_text', u'title']
 >>> data['count']
-12
+13
 >>> data['rows'][0]
 [u'Institut National de Statistique', u'Nationaal Instituut voor Statistiek', u'Nationales Institut f\xfcr Statistik', 1, u'INS', u'NIS', u'NIS', {u'id': True}, {u'delete_selected': True, u'insert': True}, True]
 
