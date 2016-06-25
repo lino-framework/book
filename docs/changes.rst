@@ -19,6 +19,20 @@ only the source code.
 Version 1.7.3 (in development)
 ============================================
 
+- New module :mod:`lino.sphinxcontrib.help_text_builder`
+  (:blogref:`20160620`).
+
+- When merging database objects (:mod:`lino.core.merge`), Lino did not
+  care at all about objects related to the MTI parents. For example,
+  when merging two participants, then it redirects their enrolments
+  but not e.g. their invoices, bank statements (i.e. objects pointing
+  to this participant as person or partner).
+  (:blogref:`20160621`)
+
+- New site attribute :attr:`lino.core.site.Site.workflows_module`.
+  Lino no longer executes any `setup_workflows`
+  callable. (:blogref:`20160622`)
+
 Version 1.7.2 (released :blogref:`20160619`)
 ============================================
 
