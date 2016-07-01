@@ -163,6 +163,9 @@ class DocsTests(LinoTestCase):
 
 class SpecsTests(TestCase):
 
+    def test_gfks(self):
+        self.run_simple_doctests('docs/specs/gfks.rst')
+
     def test_printing(self):
         self.run_simple_doctests('docs/specs/printing.rst')
 
