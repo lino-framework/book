@@ -1,8 +1,8 @@
 .. _book:
 
-=============
-The Lino book
-=============
+==================
+The Lino framework
+==================
 
 Welcome to the online version of the Lino book, the free documentation
 repository about the Lino framework.
@@ -19,8 +19,8 @@ Sitemap
 .. toctree::
    :maxdepth: 2
 
-   demos
    about/index
+   demos
    documentation
    community/index
    blog

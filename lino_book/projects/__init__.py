@@ -15,10 +15,11 @@ Poorly documented examples at different development states:
 .. autosummary::
    :toctree:
 
-   events
-   max
    min1
    min2
+   max
+   dumps
+   events
    cms
    crl
    homeworkschool

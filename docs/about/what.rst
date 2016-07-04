@@ -3,14 +3,14 @@ What is Lino?
 =============
 
 Lino is a high-level framework for writing :doc:`desktop-like
-<desktop>` :doc:`customized <customized>` database applications.
+<desktop>` :doc:`customized <customized>` database applications, based
+on `Django <https://www.djangoproject.com/>`_ and `Sencha ExtJS
+<http://www.sencha.com/products/extjs/>`_.
 
-Lino applications are based on `Django
-<https://www.djangoproject.com/>`_ and `Sencha ExtJS
-<http://www.sencha.com/products/extjs/>`_: technically they are Django
-projects with an out-of-the box user interface.  For example you don't
-not need to write any URLconf, HTML, CSS nor Javascript.  More about
-this in :doc:`lino_and_django`.
+From the hoster's and system manager's point of view, Lino
+applications are just Django projects.  The difference with plain
+Django projects is that Lino applications have an **out-of-the box
+user interface**.  More about this in :doc:`lino_and_django`.
 
 Advantages: everything gets much easier: writing a prototype, changing
 database structures and business logic, long-term maintenance,

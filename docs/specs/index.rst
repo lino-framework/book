@@ -26,3 +26,4 @@ introductions. This section is far from being complete.
    countries
    invalid_requests
    gfks
+   dumps

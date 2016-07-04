@@ -79,6 +79,9 @@ lino_book
 lino_book.projects
 lino_book.projects.babel_tutorial
 lino_book.projects.babel_tutorial.fixtures
+lino_book.projects.dumps
+lino_book.projects.dumps.fixtures
+lino_book.projects.dumps.settings
 lino_book.projects.belref
 lino_book.projects.belref.fixtures
 lino_book.projects.belref.settings
