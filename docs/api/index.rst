@@ -23,10 +23,6 @@ applicaton.
 Lino Extensions Library
 =======================
 
-Most Lino projects also require the **Lino Extensions Library**, a
-collection of plugins which are not part of the core because they add
-a given set of solutions for "Enterprise" style applications.
-
 .. py2rst::
 
   import lino_xl
