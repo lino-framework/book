@@ -28,15 +28,21 @@ Pro Git book:
 - Create a new branch called "20141022":  ``git branch 20141022``
 - Select a branch : ``git checkout 20141022``
 - Shortcut to create and select : ``git checkout -b 20141022``
+
+- Starting and selecting a branch will not modify your local
+  modifications.
+
 - List all branches: ``git branch`` (``*`` indicates the HEAD)
 - See which branches are already merged into HEAD : ``git branch --merged``
 - See all the branches that contain work you haven’t yet merged :
   ``git branch --merged``
+
 - Merge a branch into current branch:  ``git merge 20141022``
   (in case of a merge conflict, start reading at `Basic Merge Conflicts <http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging#Basic-Merge-Conflicts>`_)
 
 - Delete a branch: ``git branch -d 20141022``
 - Common names for *long-term branches*: *develop*, *proposed*, *next*.
+
 
 
 Remote branches
