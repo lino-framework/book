@@ -21,3 +21,9 @@ Deleted :blogref:`20100803`.
 .. xfile:: fill.py
 
 Old name of :xfile:`initdb.py`.
+
+.. module:: lino.modlib.notifier
+
+Until 20160706 the :mod:`lino.modlib.notify` package was called
+:mod:`lino.modlib.notifier`.
+

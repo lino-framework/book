@@ -35,7 +35,7 @@ This document tests this functionality.
 - contacts.RoleType :
   - PROTECT : contacts.Role.type
 - contenttypes.ContentType :
-  - PROTECT : changes.Change.object_type, gfks.HelpText.content_type, notifier.Notification.owner_type, uploads.Upload.owner_type
+  - PROTECT : changes.Change.object_type, gfks.HelpText.content_type, notify.Notification.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -54,5 +54,5 @@ This document tests this functionality.
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : changes.Change.user, notifier.Notification.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.user
+  - PROTECT : changes.Change.user, notify.Notification.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.user
 <BLANKLINE>

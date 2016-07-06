@@ -135,7 +135,7 @@ lino.modlib.system
 lino.modlib.users
 django.contrib.contenttypes
 lino.modlib.gfks
-lino.modlib.notifier
+lino.modlib.notify
 lino.modlib.changes
 lino.modlib.languages
 lino.modlib.office
