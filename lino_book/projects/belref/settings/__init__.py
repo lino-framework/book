@@ -33,13 +33,13 @@ class Site(Site):
         #~ yield 'lino.modlib.gfks'
         #~ yield 'lino.modlib.users'
         yield 'lino.modlib.system'
-        yield 'lino.modlib.statbel.countries'
-        #~ yield 'lino.modlib.contacts'
+        yield 'lino_xl.lib.statbel.countries'
+        #~ yield 'lino_xl.lib.contacts'
         #~ yield 'lino_xl.lib.outbox'
         #~ yield 'lino_xl.lib.blogs'
         #~ yield 'lino.modlib.tickets'
         #~ yield 'lino_xl.lib.pages'
-        yield 'lino.modlib.concepts'
+        yield 'lino_xl.lib.concepts'
         yield 'lino_book.projects.belref'
 
     def setup_menu(self, profile, main):

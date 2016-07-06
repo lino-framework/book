@@ -130,9 +130,9 @@ Feature requests
 
 #.  :class:´lino.modlib.jobs.Function` : "Funktionen" 
     umbenennen nach "Qualifikationen"?
-    Weil auch :class:´lino.modlib.contacts.RoleType` so übersetzt wird.
+    Weil auch :class:´lino_xl.lib.contacts.RoleType` so übersetzt wird.
     Oder aber Modelle :class:´lino.modlib.jobs.Function` 
-    und :class:´lino.modlib.contacts.RoleType` vereinigen?
+    und :class:´lino_xl.lib.contacts.RoleType` vereinigen?
     Eher Letzteres.
     Aber was passiert dann mit den Sektoren?
     Antwort: Function.sector wird optional. 
@@ -353,7 +353,7 @@ Medium-term
     das Modell wäre lediglich da, um eine Liste aller Gruppen anzeigen 
     und ggf. spezifische Detail-Fenster definieren zu können.
     Die Mitglieder einer Gruppe sind die Kontaktpersonen 
-    (:class:`lino.modlib.contacts.models.Role`).
+    (:class:`lino_xl.lib.contacts.models.Role`).
     Der eigentliche Unterschied ist, dass Gruppen (im Gegensatz zu Firmen) 
     automatisch ihre Mitgliedsadressen expandieren müssen, 
     wenn sie als Recipient einer Email fungieren.

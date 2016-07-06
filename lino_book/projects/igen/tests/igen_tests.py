@@ -8,9 +8,9 @@ logger = logging.getLogger(__name__)
 #~ from django.utils import unittest
 #~ from django.test.client import Client
 #from lino.igen import models
-#from lino.modlib.contacts.models import Contact, Companies
-#from lino.modlib.countries.models import Country
-#~ from lino.modlib.contacts.models import Companies
+#from lino_xl.lib.contacts.models import Contact, Companies
+#from lino_xl.lib.countries.models import Country
+#~ from lino_xl.lib.contacts.models import Companies
 
 from lino.core.utils import resolve_model
 #Companies = resolve_model('contacts.Companies')

@@ -10,6 +10,6 @@ I need to find a user-friendly way for handling this.
 Lino cannot yet render OneToOneFields.
 
 Module :mod:`lino.modlib.partners` 
-(which is going to replace :mod:`lino.modlib.contacts`)
+(which is going to replace :mod:`lino_xl.lib.contacts`)
 is where I am experimenting with this.
 

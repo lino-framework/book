@@ -24,7 +24,7 @@ from lino.api import dd, rt
 
 from lino.utils.instantiator import create_and_get
 
-from lino.modlib.contacts import models as contacts
+from lino_xl.lib.contacts import models as contacts
 from lino.modlib.users.choicelists import UserProfiles
 
 Genders = dd.Genders

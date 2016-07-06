@@ -28,7 +28,7 @@ class Site(Site):
     author_email = 'luc.saffre@gmail.com'
 
     demo_fixtures = 'std demo feedback demo2'.split()
-    user_profiles_module = 'lino.modlib.polls.roles'
+    user_profiles_module = 'lino_xl.lib.polls.roles'
 
     languages = 'en de et'
 
@@ -37,11 +37,11 @@ class Site(Site):
         yield 'lino.modlib.gfks'
         # yield 'lino.modlib.system'
         yield 'lino.modlib.users'
-        #~ yield 'lino.modlib.countries'
+        #~ yield 'lino_xl.lib.countries'
         #~ yield 'lino_xl.lib.properties'
         #~ yield 'lino.modlib.' + self.partners_app_label
         #~ yield 'lino_xl.lib.households'
-        yield 'lino.modlib.polls'
+        yield 'lino_xl.lib.polls'
         #~ yield 'lino_xl.lib.pages'
         #~ yield 'lino.projects.polly'
         # yield 'lino_xl.lib.appypod'

@@ -13,7 +13,7 @@ from django.utils.translation import string_concat
 
 from lino.api import dd, rt
 
-from lino.modlib.contacts.models import *
+from lino_xl.lib.contacts.models import *
 
 from lino_xl.lib.cal.workflows import take, feedback
 

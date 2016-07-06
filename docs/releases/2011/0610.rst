@@ -6,7 +6,7 @@ Revision `7622836fd23c <http://code.google.com/p/lino/source/detail?r=7622836fd2
 New features
 ------------
 
-- New field `street_prefix` in :class:`lino.modlib.contacts.models.Addressable`. 
+- New field `street_prefix` in :class:`lino_xl.lib.contacts.models.Addressable`. 
   See :blogref:`20110609`.
 
 
@@ -32,7 +32,7 @@ Lino site, see :doc:`/admin/upgrade`.
 
 - Database migration: 
 
-  - New field `street_prefix` in :class:`lino.modlib.contacts.models.Addressable`. 
+  - New field `street_prefix` in :class:`lino_xl.lib.contacts.models.Addressable`. 
     See :blogref:`20110609`.
 
   

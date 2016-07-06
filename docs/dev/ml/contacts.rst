@@ -2,4 +2,4 @@
 Contacts
 ========
 
-Content moved to :mod:`lino.modlib.contacts`.
+Content moved to :mod:`lino_xl.lib.contacts`.

@@ -20,7 +20,7 @@ If you set :attr:`lino.core.site.Site.languages` to ``"es en"`` and run
     django.core.exceptions.ValidationError: {'name': [u'Este campo no puede estar vac\xedo.']}
     INFO Done manage.py initdb_demo (PID 6436)
 
-For example :mod:`lino.modlib.contacts.fixtures.std`.
+For example :mod:`lino_xl.lib.contacts.fixtures.std`.
 
 Pages referring to this:
 

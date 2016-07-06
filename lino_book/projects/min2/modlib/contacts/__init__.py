@@ -2,7 +2,7 @@
 # License: BSD, see LICENSE for more details.
 
 """
-Overrides :mod:`lino.modlib.contacts` for :mod:`lino.projects.min2`.
+Overrides :mod:`lino_xl.lib.contacts` for :mod:`lino.projects.min2`.
 
 .. autosummary::
    :toctree:
@@ -11,7 +11,7 @@ Overrides :mod:`lino.modlib.contacts` for :mod:`lino.projects.min2`.
 
 """
 
-from lino.modlib.contacts import Plugin
+from lino_xl.lib.contacts import Plugin
 
 
 class Plugin(Plugin):

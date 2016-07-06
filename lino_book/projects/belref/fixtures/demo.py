@@ -20,7 +20,7 @@ from lino.api import dd
 Concept = dd.resolve_model('concepts.Concept')
 Link = dd.resolve_model('concepts.Link')
 
-from lino.modlib.concepts.models import LinkTypes
+from lino_xl.lib.concepts.models import LinkTypes
 
 
 def C(en, de, fr='', nl='', jargon=None, obsoletes=None, **kw):

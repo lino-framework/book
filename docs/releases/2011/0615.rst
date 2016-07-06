@@ -19,7 +19,7 @@ New features
   Leuten, die Muttersprache Finnisch haben, diese aber kaum schreiben
   können?). Bestehende Daten wurden automatisch übernommen.
   
-.. currentmodule:: lino.modlib.contacts.models  
+.. currentmodule:: lino_xl.lib.contacts.models  
 
 - In Verträgen : "Herr(n)" bzw. "Frau" vor Personennamen; 
   Nachnamen immer in Großbuchstaben.

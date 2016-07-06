@@ -39,8 +39,8 @@ from lino.utils import dblogger
 
 
 from lino.utils import join_words
-from lino.modlib.contacts.utils import name2kw, street2kw
-#~ from lino.modlib.contacts.models import GENDER_MALE, GENDER_FEMALE
+from lino_xl.lib.contacts.utils import name2kw, street2kw
+#~ from lino_xl.lib.contacts.models import GENDER_MALE, GENDER_FEMALE
 from lino.api import dd, rt
 from lino.utils.instantiator import Instantiator
 

@@ -6,4 +6,4 @@ depends on the build method you use, there are some general
 things to know for all cases where a system administrator 
 uses Lino's Python code.
 
-:mod:`lino.modlib.contacts.models.Person`
+:mod:`lino_xl.lib.contacts.models.Person`

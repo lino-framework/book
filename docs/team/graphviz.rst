@@ -20,9 +20,9 @@ Using the :rst:dir:`.. inheritance-diagram::` directive
 ::
 
   .. inheritance-diagram:: 
-    lino.modlib.contacts.models.Contact  dsbe.models.Contact
-    lino.modlib.contacts.models.Person   dsbe.models.Person
-    lino.modlib.contacts.models.Company  dsbe.models.Company
+    lino_xl.lib.contacts.models.Contact  dsbe.models.Contact
+    lino_xl.lib.contacts.models.Person   dsbe.models.Person
+    lino_xl.lib.contacts.models.Company  dsbe.models.Company
 
 
 

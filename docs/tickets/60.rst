@@ -4,7 +4,7 @@
 Ticket reopened :blogref:`20130202` after reading 
 `Two scoops of Django <https://django.2scoops.org/>`_.
 
-We want :mod:`lino.modlib.contacts` to be flexible 
+We want :mod:`lino_xl.lib.contacts` to be flexible 
 enough to handle (or be an extensible base for) any application 
 which deals with "Partners": 
 Organizations, Companies, Persons, 
@@ -94,7 +94,7 @@ Observations
 
 Conclusions
 
-The current :mod:`lino.modlib.contacts` reflects these ideas 
+The current :mod:`lino_xl.lib.contacts` reflects these ideas 
 almost perfectly, except that some names are wrong 
 and some details. To do:
 

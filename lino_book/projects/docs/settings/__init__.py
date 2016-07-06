@@ -41,9 +41,9 @@ class Site(Site):
         yield 'lino.modlib.users'
         yield 'lino.modlib.changes'
         yield 'lino.modlib.languages'
-        yield 'lino.modlib.countries'
+        yield 'lino_xl.lib.countries'
         # yield 'lino_xl.lib.properties'
-        yield 'lino.modlib.contacts'
+        yield 'lino_xl.lib.contacts'
         # yield 'lino_xl.lib.addresses'
         # yield 'lino_xl.lib.humanlinks'  # requires Person to be Born
 
@@ -54,13 +54,13 @@ class Site(Site):
         # yield 'lino_xl.lib.extensible'
         # yield 'lino_xl.lib.reception'
         # yield 'lino_xl.lib.excerpts'
-        yield 'lino.modlib.polls'
+        yield 'lino_xl.lib.polls'
         # yield 'lino_xl.lib.cv'
         # yield 'lino_xl.lib.boards'
         # yield 'lino_xl.lib.postings'
         # yield 'lino_xl.lib.households'
 
-        yield 'lino.modlib.concepts'
+        yield 'lino_xl.lib.concepts'
         # yield 'lino_xl.lib.pages'
         # yield 'lino_xl.lib.beid'
         yield 'lino.modlib.tinymce'

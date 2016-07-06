@@ -86,7 +86,7 @@ Bugfixes
   meldete Lino "Aus TIM importierte Partner dürfen nicht gelöscht werden."
   
 - Traceback "ExtUI instance has no attribute 'href_to'" 
-  in :meth:`lino.modlib.contacts.models.PartnerDocument.summary_row`
+  in :meth:`lino_xl.lib.contacts.models.PartnerDocument.summary_row`
 
 - Wenn watch_tim eine Person ohne Vorname zu speichern versuchte,
   machte der Server einen Traceback 

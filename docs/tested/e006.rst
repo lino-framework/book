@@ -46,10 +46,10 @@ fields::
    contacts.Person.FOO: (models.E006) The field 'FOO' clashes with the field 'addr1' from model 'contacts.partner'.
 
 These are the fields defined in the :class:`AddressLocation
-<lino.modlib.countries.mixins.AddressLocation>` mixin, inherited by
-the abstract :class:`Partner <lino.modlib.contacts.models.Partner>`
-and :class:`Person <lino.modlib.contacts.models.Person>` models of
-:mod:`lino.modlib.contacts`, which are then themselves inherited by
+<lino_xl.lib.countries.mixins.AddressLocation>` mixin, inherited by
+the abstract :class:`Partner <lino_xl.lib.contacts.models.Partner>`
+and :class:`Person <lino_xl.lib.contacts.models.Person>` models of
+:mod:`lino_xl.lib.contacts`, which are then themselves inherited by
 :class:`Partner <lino_book.projects.min2.modlib.contacts.models.Partner>`
 and :class:`Person <lino_book.projects.min2.modlib.contacts.models.Person>`
 in :mod:`lino_book.projects.min2.modlib.contacts`.
