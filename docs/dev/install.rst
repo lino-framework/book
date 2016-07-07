@@ -147,19 +147,28 @@ installation of Lino.  The Lino codebase repository changes almost
 every day, but the version is incremented only when we do an official
 release to PyPI.
 
-as a developer you will simply update your copy of the code repository
-often. In order to get the latest version, you just need to run::
+As a developer you will simply update your copy of the code repository
+often. In order to get the latest version, you need to run::
 
-  $ cd ~/repositories/lino
-  $ git pull
-  $ find -name '*.pyc' -exec rm -f {} +
+  $ cd ~/repositories/lino ; git pull 
+  $ cd ~/repositories/xl ; git pull 
+  $ cd ~/repositories/book ; git pull 
+  $ find ~/repositories -name '*.pyc' -delete
 
-You don't need to reinstall it in Python after such an upgrade since
-you used the ``-e`` option of `pip install` above. The new version
-will automatically become active.
+Note that you **don't need to reinstall** the packages in Python after
+such an upgrade since you used the ``-e`` option of `pip install`
+above. The new versions will automatically become active.
 
 See the documentation of `git pull
 <https://git-scm.com/docs/git-pull>`_ for more information.
+
+The last line runs :cmd:`find` in order to remove all :file:`.pyc`
+(compiled Python) files. See e.g. `here
+<http://stackoverflow.com/questions/785519/how-do-i-remove-all-pyc-files-from-a-project>`_
+for other methods.  This is not necessary most of the time because
+Python automatically recompiles them when needed, but there are
+situations where you get problems caused by dangling :file:`.pyc`
+files.
 
 
 Defining a cache directory for Lino
