@@ -2,6 +2,9 @@
 # blogger_project: blog
 blogref_url: http://luc.lino-framework.org
 revision_control_system: git
+help_texts_source: docs
+help_texts_module: lino_xl.lib.xl
+
 
 cleanable_files:
   - docs/rss_entry_fragments/*
@@ -18,3 +21,4 @@ demo_projects:
     - lino_book.projects.i18n.settings
     - lino_book.projects.min1.settings.demo
     - lino_book.projects.min2.settings.demo
+

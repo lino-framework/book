@@ -13,7 +13,7 @@ from django.utils.translation import string_concat
 
 from lino.api import dd, rt
 
-from lino.modlib.contacts.models import *
+from lino_xl.lib.contacts.models import *
 
 from lino_xl.lib.cal.workflows import take, feedback
 
@@ -209,10 +209,14 @@ class Companies(Companies):
     detail_layout = CompanyDetail()
 
 
-@dd.receiver(dd.post_analyze)
-def my_details(sender, **kw):
-    contacts = sender.modules.contacts
+# @dd.receiver(dd.post_analyze)
+# def my_details(sender, **kw):
+#     contacts = sender.modules.contacts
 
-    contacts.Partners.set_detail_layout(contacts.PartnerDetail())
-    contacts.Companies.set_detail_layout(contacts.CompanyDetail())
+#     contacts.Partners.set_detail_layout(contacts.PartnerDetail())
+#     contacts.Companies.set_detail_layout(contacts.CompanyDetail())
+
+
+Partners.set_detail_layout(PartnerDetail())
+Companies.set_detail_layout(CompanyDetail())
 

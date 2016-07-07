@@ -120,7 +120,7 @@ These will go into the :setting:`INSTALLED_APPS` setting (but
 
 >>> from lino_book.projects.docs.settings import Site
 >>> pseudoglobals = {}
->>> Site(pseudoglobals, "lino.modlib.events")  #doctest: +ELLIPSIS
+>>> Site(pseudoglobals, "lino_xl.lib.events")  #doctest: +ELLIPSIS
 <lino_book.projects.docs.settings.Site object at ...>
 >>> print('\n'.join(pseudoglobals['INSTALLED_APPS']))
 lino.modlib.lino_startup
@@ -129,21 +129,21 @@ lino.modlib.about
 lino.modlib.jinja
 lino.modlib.bootstrap3
 lino.modlib.extjs
-lino.modlib.events
+lino_xl.lib.events
 lino.modlib.printing
 lino.modlib.system
 lino.modlib.users
 django.contrib.contenttypes
 lino.modlib.gfks
-lino.modlib.notifier
+lino.modlib.notify
 lino.modlib.changes
 lino.modlib.languages
 lino.modlib.office
-lino.modlib.countries
-lino.modlib.contacts
+lino_xl.lib.countries
+lino_xl.lib.contacts
 lino.modlib.uploads
-lino.modlib.polls
-lino.modlib.concepts
+lino_xl.lib.polls
+lino_xl.lib.concepts
 lino.modlib.tinymce
 lino.modlib.export_excel
 django.contrib.sessions

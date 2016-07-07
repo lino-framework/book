@@ -1,23 +1,19 @@
 Lino and Django
 ===============
 
-A Lino application is technically speaking just a Django project where
-certain choices have been made for you as the application developer.
-For example you don’t not need to write any URLconf, HTML, CSS nor
-Javascript. A Lino application has an out-of-the box user interface.
+From the hoster's and system manager's point of view, Lino
+applications are just Django projects.  The difference with plain
+Django projects is that Lino applications have an **out-of-the box
+user interface**.
+
+For the application developer this means that certain design choices
+have been made for you.  You don't not need to write any URLconf,
+HTML, CSS nor Javascript.
 
 But Lino is more than a user interface. In fact the current user
 interface is not even the only choice [#ui]_.  This section summarizes
 the differences between Lino and Django.
 
-When I discovered Django in the end of 2008, after having worked many
-months on my own database model, I was quickly fascinated.  The ORM
-and database model based on 'apps' is simply genial.  The way of how
-this is integrated into a web application server system: genial.
-
-But a few things disturbed me, and I felt that I need to change them
-before I can be satisfied.  That's why I started to write Lino.  I
-will try to explain my decisions here.
 
 - Lino adds the concept of an central :doc:`application object
   </dev/application>` while Django is a radically decentralized
@@ -26,10 +22,9 @@ will try to explain my decisions here.
   complex software projects.
 
 - Lino is a replacement for `Django's admin interface
-  <http://docs.djangoproject.com/en/dev/ref/contrib/admin>`__.
-  I believe that `django.contrib.admin` is not a usable base for
-  representing a desktop-style application because it lets you define
-  only one `ModelAdmin` per `Model`.  It has obviously not been
+  <http://docs.djangoproject.com/en/dev/ref/contrib/admin>`__.  I
+  believe that `django.contrib.admin` is not a usable base for
+  representing a desktop-style application.  It has obviously not been
   designed to write complete database applications.
  
 - Lino also replaces `django.contrib.auth

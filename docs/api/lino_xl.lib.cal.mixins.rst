@@ -31,6 +31,7 @@ lino_xl.lib.cal.mixins
       StartedEnded
       StartedSummaryDescription
       UpdateEvents
+      UpdateEventsByEvent
    
    
 

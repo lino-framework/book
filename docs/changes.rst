@@ -1,8 +1,9 @@
+.. _book.changes: 
 .. _lino.changes: 
 
-===============
-Changes in Lino
-===============
+=============
+Release notes
+=============
 
 On this page I try to give a summary of the things which system
 administrators should know when upgrading.  If you want more detailed
@@ -16,11 +17,38 @@ only the source code.
     marked_changes
 
 
-Version 1.7.3 (in development)
+XL 1.0.1 (in development)
+=========================
+
+
+Lino 1.7.3 (in development)
 ============================================
 
-Version 1.7.2 (released :blogref:`20160619`)
+- New module :mod:`lino.sphinxcontrib.help_text_builder`
+  (:blogref:`20160620`).
+
+- When merging database objects (:mod:`lino.core.merge`), Lino did not
+  care at all about objects related to the MTI parents. For example,
+  when merging two participants, then it redirects their enrolments
+  but not e.g. their invoices, bank statements (i.e. objects pointing
+  to this participant as person or partner).
+  (:blogref:`20160621`)
+
+- New site attribute :attr:`lino.core.site.Site.workflows_module`.
+  Lino no longer executes any `setup_workflows`
+  callable. (:blogref:`20160622`)
+
+
+Lino XL 1.0.0 (released :blogref:`20160705`)
 ============================================
+
+The first release on PyPI of the :ref:`xl` which is being used as a
+clone of the GitHub repository on our production sites since its
+creation.
+
+
+Lino 1.7.2 (released :blogref:`20160619`)
+=========================================
 
 - Lino now supports Django's generic relations (`GenericRelation
   <https://docs.djangoproject.com/ja/1.9/ref/contrib/contenttypes/#reverse-generic-relations>`_).  (:blogref:`20160523`)

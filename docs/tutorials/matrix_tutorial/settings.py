@@ -17,8 +17,8 @@ class Site(Site):
         yield 'lino.modlib.users'
         #~ yield 'lino.modlib.changes'
         
-        yield 'lino.modlib.countries'
-        yield 'lino.modlib.contacts'
+        yield 'lino_xl.lib.countries'
+        yield 'lino_xl.lib.contacts'
         #~ yield 'lino_xl.lib.notes'
         
         yield 'matrix_tutorial'

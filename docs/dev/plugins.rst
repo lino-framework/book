@@ -33,7 +33,7 @@ app.  For example::
     class Plugin(ad.Plugin):
         verbose_name = _("Better calendar")
         extends = 'lino.modlib.cal'
-        needs_plugins  = ['lino.modlib.contacts']
+        needs_plugins  = ['lino_xl.lib.contacts']
 
 Note how we recommended to use the :mod:`lino.api.ad` module. If you
 prefer direct imports, you can write for example::
@@ -44,7 +44,7 @@ prefer direct imports, you can write for example::
     class Plugin(Plugin):
         verbose_name = _("Better calendar")
         extends = 'lino.modlib.cal'
-        needs_plugins  = ['lino.modlib.contacts']
+        needs_plugins  = ['lino_xl.lib.contacts']
 
 Some interesting plugin attributes are
 
@@ -129,8 +129,8 @@ following methods:
 - using the :func:`configure_plugin <lino.core.site.configure_plugin>` function.
 
   For example, if you want to set the :attr:`country_code
-  <lino.modlib.countries.Plugin.country_code>` of
-  :mod:`lino.modlib.countries` to `'DE'`::
+  <lino_xl.lib.countries.Plugin.country_code>` of
+  :mod:`lino_xl.lib.countries` to `'DE'`::
 
     from lino_cosi.projects.apc.settings import *
     configure_plugin('countries', country_code='DE')
@@ -154,8 +154,8 @@ and we don't want it to be forbidden.
 
 Uncomplete list of configurable plugin attributes:
 
-- :attr:`lino.modlib.countries.Plugin.country_code` 
-- :attr:`lino.modlib.contacts.Plugin.hide_region`
+- :attr:`lino_xl.lib.countries.Plugin.country_code` 
+- :attr:`lino_xl.lib.contacts.Plugin.hide_region`
 
 See also :doc:`/admin/settings`.
 

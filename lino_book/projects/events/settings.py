@@ -37,8 +37,8 @@ class Site(Site):
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.system'
-        yield 'lino.modlib.countries'
-        yield 'lino.modlib.events'
+        yield 'lino_xl.lib.countries'
+        yield 'lino_xl.lib.events'
 
 
 SITE = Site(globals())

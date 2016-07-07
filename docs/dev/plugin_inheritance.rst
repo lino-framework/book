@@ -23,14 +23,14 @@ Let's take :ref:`voga`.  It uses Lino's standard calendar module
 
 - it adds two fields `tariff` and `calendar`
 - it adds another base class (the :class:`ContactRelated
-  <lino.modlib.contacts.models.ContactRelated>` mixin)
+  <lino_xl.lib.contacts.models.ContactRelated>` mixin)
 - it overrides the `__unicode__` method
 
 Here is the relevant application developer's code which defines the
 *Voga* version of :class:`cal.Room <lino_voga.cal.models.Room>`::
 
     from lino.modlib.cal.models import Room
-    from lino.modlib.contacts.models import ContactRelated
+    from lino_xl.lib.contacts.models import ContactRelated
 
     class Room(Room, ContactRelated):
 

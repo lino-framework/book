@@ -23,7 +23,7 @@ the
 :class:`ChangesByOwner<lino.modlib.changes.models.ChangesByMaster>`
 slave table to some detail layout.
 
-The example in this tutorial uses the :mod:`lino.modlib.contacts`
+The example in this tutorial uses the :mod:`lino_xl.lib.contacts`
 module.  It also adds a model `Entry` as an example of a watched
 model.  Imagine some journal entry to be audited.
 

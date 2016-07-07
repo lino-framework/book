@@ -1,6 +1,6 @@
 from django.db import models
 
-from lino.modlib.countries.mixins import AddressLocation
+from lino_xl.lib.countries.mixins import AddressLocation
 
 
 class Company(AddressLocation):

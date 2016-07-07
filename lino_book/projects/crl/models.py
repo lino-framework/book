@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 
 from lino.api import dd, rt
-from lino.modlib.countries import models as countries
-from lino.modlib.contacts import models as contacts
+from lino_xl.lib.countries import models as countries
+from lino_xl.lib.contacts import models as contacts
 
 from lino.utils import str2hex, hex2str
 

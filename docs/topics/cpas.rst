@@ -32,7 +32,7 @@ Les modules suivants sont utilisés dans Lino pour CPAS,
 mais plutôt d'intérêt général et leur maintenance resterait 
 idéalement plutôt dans le cadre général du framework:
 
-- :mod:`lino.modlib.contacts`
+- :mod:`lino_xl.lib.contacts`
 - :mod:`lino.modlib.cal`
 - :mod:`lino.modlib.outbox`
 - :mod:`lino.modlib.postings`
@@ -43,7 +43,7 @@ Données signalétiques spécifiques aux CPAS
 
 Pour leurs Clients, les CPAS retiennent 
 toute une série de données signalétiques 
-spécifiques (non définies dans :mod:`lino.modlib.contacts`)
+spécifiques (non définies dans :mod:`lino_xl.lib.contacts`)
 tels que 
 `id_card_no` (n° de carte d'identité),
 `national_id` (NISS) 

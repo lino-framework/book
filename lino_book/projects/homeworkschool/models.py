@@ -9,7 +9,7 @@ from lino.api import dd, rt
 from lino import mixins
 #~ from lino.models import SiteConfig
 
-#~ from lino.modlib.contacts import models as contacts
+#~ from lino_xl.lib.contacts import models as contacts
 #~ from lino_xl.lib.cal import models as cal
 
 contacts = dd.resolve_app('contacts')

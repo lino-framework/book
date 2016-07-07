@@ -385,3 +385,5 @@ gettext_compact = True
 
 # autodoc_default_flags = ['no-imported-members']
 
+
+from lino.sphinxcontrib.help_text_builder import setup

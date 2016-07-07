@@ -27,7 +27,7 @@ This system is used by default:
 
 >>> from lino_book.projects.polly.settings import Site
 >>> print(Site.user_profiles_module)
-lino.modlib.polls.roles
+lino_xl.lib.polls.roles
 
 The local roles module
 ======================

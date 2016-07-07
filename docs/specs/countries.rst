@@ -5,7 +5,7 @@ Countries
 ======================
 
 This document describes the functionality implemented by the
-:mod:`lino.modlib.countries` module.
+:mod:`lino_xl.lib.countries` module.
 
 TODO: Write explanations between the examples.
 

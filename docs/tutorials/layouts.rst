@@ -70,7 +70,7 @@ as a tabbed panel.
 Layouts and polymorphism
 ------------------------
 
-:mod:`lino.modlib.contacts` 
+:mod:`lino_xl.lib.contacts` 
 uses MTI to represent the fact that a Partner can be 
 either a Person or a Company. 
 here are the three resulting detail windows.

@@ -52,10 +52,129 @@ datetime.date(2015, 4, 1)
 Recurrencies
 ============
 
->>> from lino_xl.lib.cal.choicelists import Recurrencies
+When generating automatic calendar events, Lino supports the following
+date recurrenies:
+
+>>> rt.show(cal.Recurrencies)
+======= ============= ====================
+ value   name          text
+------- ------------- --------------------
+ O       once          once
+ D       daily         daily
+ W       weekly        weekly
+ M       monthly       monthly
+ Y       yearly        yearly
+ P       per_weekday   per weekday
+ E       easter        Relative to Easter
+======= ============= ====================
+<BLANKLINE>
+
+Addding a duration unit
+
 >>> start_date = i2d(20160327)
->>> Recurrencies.easter.add_duration(start_date, 1)
+>>> cal.Recurrencies.once.add_duration(start_date, 1)
+Traceback (most recent call last):
+...
+Exception: Invalid DurationUnit once
+
+>>> cal.Recurrencies.daily.add_duration(start_date, 1)
+datetime.date(2016, 3, 28)
+
+>>> cal.Recurrencies.weekly.add_duration(start_date, 1)
+datetime.date(2016, 4, 3)
+
+>>> cal.Recurrencies.monthly.add_duration(start_date, 1)
+datetime.date(2016, 4, 27)
+
+>>> cal.Recurrencies.yearly.add_duration(start_date, 1)
+datetime.date(2017, 3, 27)
+
+>>> cal.Recurrencies.easter.add_duration(start_date, 1)
 datetime.date(2017, 4, 16)
+
+
+Recurrent events
+================
+
+In :mod:`lino_book.projects.min2` we have a database model
+:class:`RecurrentEvent <lino_xl.lib.cal.models.RecurrentEvent>` used
+to generate holidays.  See also :ref:`xl.specs.holidays`.
+
+We are going to use this model for demonstrating some more features
+(which it inherits from :class:`RecurrenceSet
+<lino_xl.lib.cal.mixins.RecurrenceSet>` and an :class:`EventGenerator
+<lino_xl.lib.cal.mixins.EventGenerator>`)
+
+
+>>> list(rt.models_by_base(cal.RecurrenceSet))
+[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
+
+>>> list(rt.models_by_base(cal.EventGenerator))
+[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
+
+>>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
+>>> obj.tuesday = True
+>>> obj.every_unit = cal.Recurrencies.weekly
+>>> print(obj.weekdays_text)
+Every Tuesday
+
+>>> obj.every
+1
+
+>>> obj.every = 2
+>>> print(obj.weekdays_text)
+Every 2nd Tuesday
+
+>>> obj.every_unit = cal.Recurrencies.monthly
+>>> print(obj.weekdays_text)
+Every 2nd month
+
+
+>>> rt.show(cal.EventTypes, column_names="id name")
+==== ============= ==================
+ ID   Designation   Designation (et)
+---- ------------- ------------------
+ 1    Holidays      Holidays
+ 2    Meeting       Meeting
+==== ============= ==================
+<BLANKLINE>
+
+>>> obj.event_type = cal.EventType.objects.get(id=1)
+>>> obj.max_events = 5
+
+>>> ses = rt.login('robin')
+>>> for num, e in obj.get_wanted_auto_events(ses).items():
+...     print(dd.fds(e.start_date))
+28/06/2016
+30/08/2016
+01/11/2016
+03/01/2017
+07/03/2017
+
+Note that above dates are not exactly every 2 months because 
+
+- they are only on Tuesdays
+- Lino also avoids conflicts with existing events
+
+>>> cal.Event.objects.order_by('start_date')[0]
+Event #1 ("Event #1 New Year's Day (01.01.2013)")
+
+>>> obj.monday = True
+>>> obj.wednesday = True
+>>> obj.thursday = True
+>>> obj.friday = True
+>>> obj.saturday = True
+>>> obj.sunday = True
+>>> obj.start_date=i2d(20120628)
+>>> for num, e in obj.get_wanted_auto_events(ses).items():
+...     print(dd.fds(e.start_date))
+28/06/2012
+28/08/2012
+28/10/2012
+28/12/2012
+28/02/2013
+
+
 
 
 Conflicting events

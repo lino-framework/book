@@ -20,11 +20,11 @@ combination of modules from :mod:`lino.modlib`.
 Currently Lino has the following minimal applications:
 
 - :mod:`min1 <lino_book.projects.min1>` :
-  Uses only the :mod:`contacts <lino.modlib.contacts>` module.
+  Uses only the :mod:`contacts <lino_xl.lib.contacts>` module.
   
 - :mod:`min2 <lino_book.projects.min2>` :
   Uses 
-  :mod:`contacts <lino.modlib.contacts>`,
+  :mod:`contacts <lino_xl.lib.contacts>`,
   :mod:`projects <lino.modlib.projects>`,
   :mod:`cal <lino.modlib.cal>`,
   :mod:`outbox <lino.modlib.outbox>`

@@ -25,13 +25,13 @@ models which are subclass of a given class.
 
 >>> from lino.mixins.duplicable import Duplicable
 >>> rt.models_by_base(Duplicable)
-[<class 'lino.modlib.countries.models.Place'>, <class 'lino.modlib.polls.models.Choice'>, <class 'lino.modlib.polls.models.Question'>]
+[<class 'lino_xl.lib.countries.models.Place'>, <class 'lino_xl.lib.polls.models.Choice'>, <class 'lino_xl.lib.polls.models.Question'>]
 
 >>> rt.models_by_base(rt.modules.contacts.Partner)
-[<class 'lino.modlib.contacts.models.Company'>, <class 'lino.modlib.contacts.models.Partner'>, <class 'lino.modlib.contacts.models.Person'>]
+[<class 'lino_xl.lib.contacts.models.Company'>, <class 'lino_xl.lib.contacts.models.Partner'>, <class 'lino_xl.lib.contacts.models.Person'>]
 
 >>> rt.models_by_base(rt.modules.contacts.Person)
-[<class 'lino.modlib.contacts.models.Person'>]
+[<class 'lino_xl.lib.contacts.models.Person'>]
 
 .. rubric:: Getting only top-level models
 
@@ -42,8 +42,8 @@ The `toplevel_only` option is used by
 Partner, not also on Person, Company and Household...
 
 >>> rt.models_by_base(rt.modules.contacts.Partner, toplevel_only=True)
-[<class 'lino.modlib.contacts.models.Partner'>]
+[<class 'lino_xl.lib.contacts.models.Partner'>]
 
 >>> rt.models_by_base(rt.modules.contacts.Person, toplevel_only=True)
-[<class 'lino.modlib.contacts.models.Person'>]
+[<class 'lino_xl.lib.contacts.models.Person'>]
 

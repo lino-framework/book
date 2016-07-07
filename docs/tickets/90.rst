@@ -7,7 +7,7 @@
 The problem is subtle: contacts.Person may not have a MergeAction in
 :ref:`welfare` because there it has an MTI (pcsw.Client).
 That's why I cannot simply install MergeAction in 
-:class:`lino.modlib.contacts.Plugin`.
+:class:`lino_xl.lib.contacts.Plugin`.
 
 Pages referring to this:
 

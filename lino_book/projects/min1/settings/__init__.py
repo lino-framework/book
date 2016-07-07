@@ -22,8 +22,7 @@ class Site(Site):
 
     user_profiles_module = 'lino.modlib.office.roles'
 
-    def setup_workflows(self):
-        import lino_xl.lib.cal.workflows.take
+    workflows_module = 'lino_xl.lib.cal.workflows.take'
 
     def setup_quicklinks(self, ar, tb):
         tb.add_action(self.modules.contacts.Persons.detail_action)
@@ -34,7 +33,7 @@ class Site(Site):
 
         yield 'lino.modlib.system'
         yield 'lino.modlib.users'
-        yield 'lino.modlib.contacts'
+        yield 'lino_xl.lib.contacts'
         yield 'lino_xl.lib.cal'
         yield 'lino.modlib.export_excel'
 

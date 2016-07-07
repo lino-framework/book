@@ -16,11 +16,11 @@ Answering to invalid requests
 
 
 We are going to send some invalid AJAX requests to
-:class:`lino.modlib.contacts.models.RolesByPerson`, a slave table on
+:class:`lino_xl.lib.contacts.models.RolesByPerson`, a slave table on
 person.
 
 >>> contacts.RolesByPerson.master
-<class 'lino.modlib.contacts.models.Person'>
+<class 'lino_xl.lib.contacts.models.Person'>
 
 Simulate an AJAX request:
 
