@@ -75,6 +75,6 @@ Other
     webdav
     install_shell_scripts
     oood
-    watch_tim
+    linod
     tim2lino
     mysql_tune
