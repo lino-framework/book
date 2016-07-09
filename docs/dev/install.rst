@@ -96,6 +96,18 @@ You should now have three directories called `~/repositories/lino`,
 a file :xfile:`setup.py`, a file :xfile:`README.rst` and a whole tree
 of other files and directories.
 
+One possible problem here is that the Lino repository has a big
+size. If you just want to try out the latest version and will never
+submit any pull request, then you can reduce this from 300MB to to
+63MB by adding ``--depth 1`` option (as explained in `this question on
+stackoverflow
+<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
+or Nicola Paolucci's blog entry `How to handle big repositories with
+git
+<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
+
+
+
 Installation
 ============
 
@@ -108,6 +120,9 @@ Commands::
   $ pip install -e lino
   $ pip install -e xl
   $ pip install -e book
+
+These commands take some time because they will download and install
+all Python packages needed by Lino.
 
 Notes:
 
