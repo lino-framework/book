@@ -202,6 +202,9 @@ class SpecsTests(TestCase):
     def test_countries(self):
         self.run_simple_doctests('docs/specs/countries.rst')
 
+    def test_help_texts(self):
+        self.run_simple_doctests('docs/specs/help_texts.rst')
+
 
 class ProjectsTests(LinoTestCase):
     
