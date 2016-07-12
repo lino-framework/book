@@ -40,10 +40,11 @@ We initialize our database from our demo fixture:
 
 >>> shell("python manage_a.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
-INFO:lino.api.dd:`initdb demo` started on database .../default.db.
-INFO:lino.utils.dpy:Loading .../lino_book/projects/dumps/fixtures/demo.py...
-INFO:lino.utils.dpy:Loaded 2 objects
-INFO:lino.core.kernel:Done manage_a.py initdb_demo --noinput (PID ...)
+Started manage_a.py initdb_demo --noinput (using lino_book.projects.dumps.settings.a) --> PID ...
+`initdb demo` started on database .../dumps/default.db.
+Loading ...lino_book/projects/dumps/fixtures/demo.py...
+Loaded 2 objects
+Done manage_a.py initdb_demo --noinput (PID ...)
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -60,20 +61,23 @@ demonstrate the possible error messages):
 
 >>> shell("python manage_a.py dump2py")
 ... #doctest: +ELLIPSIS
+Started manage_a.py dump2py (using lino_book.projects.dumps.settings.a) --> PID ...
 CommandError: No output_dir specified.
-INFO:lino.core.kernel:Done manage_a.py dump2py (PID ...)
+Done manage_a.py dump2py (PID ...)
 
 >>> shell("python manage_a.py dump2py a")
 ... #doctest: +ELLIPSIS
+Started manage_a.py dump2py a (using lino_book.projects.dumps.settings.a) --> PID ...
 CommandError: Specified output_dir ...lino_book/projects/dumps/a already exists. Delete it yourself if you dare!
-INFO:lino.core.kernel:Done manage_a.py dump2py a (PID ...)
+Done manage_a.py dump2py a (PID ...)
 
 Here is now a correct call:
 
 >>> shell("python manage_a.py dump2py tmp/a --overwrite")
 ... #doctest: +ELLIPSIS
-INFO:lino.modlib.lino_startup.management.commands.dump2py:Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
-INFO:lino.core.kernel:Done manage_a.py dump2py tmp/a --overwrite (PID ...)
+Started manage_a.py dump2py tmp/a --overwrite (using lino_book.projects.dumps.settings.a) --> PID ...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
+Done manage_a.py dump2py tmp/a --overwrite (PID ...)
 Writing .../lino_book/projects/dumps/tmp/a/restore.py...
 
 Verify that the newly created dump is as expected:
@@ -93,6 +97,12 @@ Load the dump, dump again and verify that both dumps are the same:
 
 >>> shell("python manage_a.py run a/restore.py --noinput")
 ... #doctest: +ELLIPSIS
+Started manage_a.py run a/restore.py --noinput (using lino_book.projects.dumps.settings.a) --> PID ...
+Unversioned Site instance : no database migration
+`initdb ` started on database .../default.db.
+Loading 2 objects to table dumps_foo...
+Loaded 2 objects
+Done manage_a.py run a/restore.py --noinput (PID ...)
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -104,10 +114,12 @@ Running migrations:
   No migrations to apply.
 
 
+
 >>> shell("python manage_a.py dump2py tmp/a --overwrite")
 ... #doctest: +ELLIPSIS
-INFO:lino.modlib.lino_startup.management.commands.dump2py:Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
-INFO:lino.core.kernel:Done manage_a.py dump2py tmp/a --overwrite (PID ...)
+Started manage_a.py dump2py tmp/a --overwrite (using lino_book.projects.dumps.settings.a) --> PID ...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
+Done manage_a.py dump2py tmp/a --overwrite (PID ...)
 Writing .../lino_book/projects/dumps/tmp/a/restore.py...
 
 >>> shell("diff a tmp/a")
@@ -121,10 +133,11 @@ Now the same with `b`, i.e. with :setting:`USE_TZ` enabled:
 
 >>> shell("python manage_b.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
-INFO:lino.api.dd:`initdb demo` started on database .../default.db.
-INFO:lino.utils.dpy:Loading .../lino_book/projects/dumps/fixtures/demo.py...
-INFO:lino.utils.dpy:Loaded 2 objects
-INFO:lino.core.kernel:Done manage_b.py initdb_demo --noinput (PID ...)
+Started manage_b.py initdb_demo --noinput (using lino_book.projects.dumps.settings.b) --> PID ...
+`initdb demo` started on database .../default.db.
+Loading .../lino_book/projects/dumps/fixtures/demo.py...
+Loaded 2 objects
+Done manage_b.py initdb_demo --noinput (PID ...)
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -138,8 +151,9 @@ Installed 2 object(s) from 1 fixture(s)
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
 ... #doctest: +ELLIPSIS
-INFO:lino.modlib.lino_startup.management.commands.dump2py:Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
-INFO:lino.core.kernel:Done manage_b.py dump2py tmp/b --overwrite (PID ...)
+Started manage_b.py dump2py tmp/b --overwrite (using lino_book.projects.dumps.settings.b) --> PID ...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
+Done manage_b.py dump2py tmp/b --overwrite (PID ...)
 Writing .../lino_book/projects/dumps/tmp/b/restore.py...
 
 Verify that the newly created dump is as expected:
@@ -152,6 +166,12 @@ Load the dump, dump again and verify that both dumps are the same:
 
 >>> shell("python manage_b.py run b/restore.py --noinput")
 ... #doctest: +ELLIPSIS
+Started manage_b.py run b/restore.py --noinput (using lino_book.projects.dumps.settings.b) --> PID ...
+Unversioned Site instance : no database migration
+`initdb ` started on database .../dumps/default.db.
+Loading 2 objects to table dumps_foo...
+Loaded 2 objects
+Done manage_b.py run b/restore.py --noinput (PID ...)
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -165,8 +185,9 @@ Running migrations:
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
 ... #doctest: +ELLIPSIS
-INFO:lino.modlib.lino_startup.management.commands.dump2py:Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
-INFO:lino.core.kernel:Done manage_b.py dump2py tmp/b --overwrite (PID ...)
+Started manage_b.py dump2py tmp/b --overwrite (using lino_book.projects.dumps.settings.b) --> PID ...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
+Done manage_b.py dump2py tmp/b --overwrite (PID ...)
 Writing .../lino_book/projects/dumps/tmp/b/restore.py...
 
 >>> shell("diff b tmp/b")
