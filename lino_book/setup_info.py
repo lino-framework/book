@@ -18,7 +18,7 @@ PY3 = sys.version_info[0] == 3
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='1.0.0',
+    version='1.7.3',
     install_requires=['lino'],
     tests_require=[],
     # pisa has a bug which makes it complain that "Reportlab Version

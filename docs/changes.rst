@@ -17,12 +17,15 @@ only the source code.
     marked_changes
 
 
-XL 1.0.1 (in development)
-=========================
-
-
-Lino 1.7.3 (in development)
+Version 1.7.4 (in development)
 ============================================
+
+
+Version 1.7.3 (released :blogref:`20160712`)
+============================================
+
+This is the first time we release three projects at the same time and
+using the same version number: :ref:`lino`, :ref:`xl` and :ref:`book`.
 
 - New module :mod:`lino.sphinxcontrib.help_text_builder`
   (:blogref:`20160620`).
