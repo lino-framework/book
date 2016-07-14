@@ -60,6 +60,7 @@ class Site(Site):
         yield 'lino_xl.lib.excerpts'
         yield 'lino_xl.lib.cv'
         yield 'lino_xl.lib.boards'
+        yield 'lino_xl.lib.topics'
         yield 'lino_xl.lib.postings'
         yield 'lino_xl.lib.households'
 

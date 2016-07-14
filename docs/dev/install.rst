@@ -37,18 +37,6 @@ System requirements
 #.  We assume you have pip_ installed. `pip` is not automatically
     bundled with Python 2, but it has become the de-facto standard.
 
-#.  We recommend to use virtualenv_ and to activate a new environment.
-    On a Debian system this means something like::
-
-        $ sudo pip install virtualenv
-        $ mkdir ~/virtualenvs
-        $ virtualenv ~/virtualenvs/a
-        $ . ~/virtualenvs/a/bin/activate
-
-    Note that the `--no-site-packages
-    <https://virtualenv.pypa.io/en/latest/reference.html?highlight=site-packages#cmdoption--no-site-packages>`__
-    option is needed only if your virtualenv is older than X.
-    
 #.  (Maybe obsolete:) You will need the **Python header files** on
     your system because Lino requires fabric_ which in turn requires
     pycrypto_ which is an `extension module
@@ -106,7 +94,38 @@ or Nicola Paolucci's blog entry `How to handle big repositories with
 git
 <http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
 
+.. _lino.dev.env:
 
+
+Set up a Python environment
+===========================
+
+Before we actually install Lino into your Python, let's speak about
+*Python environments*.  We recommend to use virtualenv_ and to create
+a new Python environment for getting started with Lino.
+
+On a Debian system this means something like::
+
+        $ sudo pip install virtualenv
+        $ mkdir ~/virtualenvs
+        $ virtualenv ~/virtualenvs/a
+
+To activate this environment, you will type::
+
+        $ . ~/virtualenvs/a/bin/activate
+
+You might add above line to your :xfile:`.bashrc` file if you
+currently don't plan to work on any other project which requires a
+different environment.
+
+We chose ``a`` as name for this environment. You might prefer
+``linodev`` or ``my_first_environment``.
+
+You might prefer to create a new environment for every project and
+store it below your project directory (see below `Project
+directories`_).  This makes sense on a production server (more about
+this in :ref:`lino.admin.env`.), but on a developer machine it is
+usually not necessary and would be a waste of disk space.
 
 Installation
 ============
@@ -184,6 +203,21 @@ for other methods.  This is not necessary most of the time because
 Python automatically recompiles them when needed, but there are
 situations where you get problems caused by dangling :file:`.pyc`
 files.
+
+
+Project directories
+===================
+
+You are going to write more than only one Lino applications, aren't
+you? 
+
+Every project has its own **project directory** which contains the
+files necessary for that specific project.  In this chapter we are
+going to use some of the projects defined in the Lino Book, and we are
+going to use them directly from within the code repository.
+
+You will create your first project directory of your own in the next
+chapter (:doc:`/tutorials/hello/index`).
 
 
 Defining a cache directory for Lino

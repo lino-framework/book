@@ -29,6 +29,7 @@ Maintenance
 
     upgrade
     datamig
+    env
     shell_scripts
     bash_aliases
    

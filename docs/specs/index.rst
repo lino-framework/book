@@ -27,3 +27,4 @@ introductions. This section is far from being complete.
    invalid_requests
    gfks
    dumps
+   help_texts
