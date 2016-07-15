@@ -17,8 +17,13 @@ only the source code.
     marked_changes
 
 
-Version 1.7.4 (in development)
+Version 1.7.5 (in development)
 ============================================
+
+Version 1.7.4 (released :blogref:`20160712`)
+============================================
+
+Bugfix release.
 
 
 Version 1.7.3 (released :blogref:`20160712`)
