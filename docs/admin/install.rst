@@ -4,17 +4,19 @@
 Installing a Lino application on a production server
 ====================================================
 
-Before setting up a production server you should be familiar 
-with setting up and running a development server
-as documented in :ref:`lino.dev.install`.
-Basically you do the same as for Django. 
-
+Before setting up a production server you should be familiar with
+setting up and running a development server as documented in
+:ref:`lino.dev.install`.
 
 On a production server you will do the same, but you must additionally
 decide:
 
 - how to organize your repositories and virtual environmens
 - which web server to use
+
+These things are common with all Django sites and therefore we
+recommend to learn from the Django community.  So this section is far
+from being complete and currently not well maintained.
 
 We recommend the method using `mod_wsgi` and `virtualenv` 
 as described in the following documents:
@@ -88,22 +90,12 @@ For example to install :ref:`welfare`, you can just type::
     $ pip install lino-welfare
 
 
-Optional Python packages  
+Optional Python packages
 ------------------------
   
 The following Python packages (to be installed using `pip install`) 
 are optional and therefore not automatically installed:
-
-fabric
-
-    Needed if you do certain development tasks using :mod:`atelier.fablib`
-    
-python-daemon 
-
-    Needed if you run `watch_tim` or some other daemon process
-    (probably not).
-
-
+  
 mysql-python
 
     Needed if you plan to use Django's MySQL backend.
@@ -123,88 +115,40 @@ are usually rather short. Something like::
   SITE = Site(globals())
    
 
-Serving Javascript frameworks
------------------------------
 
-Lino applications need certain third-party Javascript libraries, and
-the Lino server comes with a default configuration which instructs the
-clients to fetch them from some public location::
+Collecting static files
+=======================
 
-  extjs_base_url = "http://extjs-public.googlecode.com/svn/tags/extjs-3.3.1/release/"
-  extensible_base_url = "http://ext.ensible.com/deploy/1.0.2/"
-  bootstrap_base_url = "http://twitter.github.com/bootstrap/assets/"
-  tinymce_base_url = "http://www.tinymce.com/js/tinymce/jscripts/tiny_mce/"
+One part of your cache directory are the static files.  When your
+:envvar:`LINO_CACHE_ROOT` is set, you should run Django's
+:manage:`collectstatic` command::
 
-On a production server you will probably want to serve them yourself.
-Here is how to do this.
+    $ cd ~/repositories/book/lino_book/projects/polly
+    $ python manage.py collectstatic
 
-First you must download them::
+The output should be something like this::
 
-  cd /var/snapshots/
+    You have requested to collect static files at the destination
+    location as specified in your settings:
 
-  wget http://extjs.cachefly.net/ext-3.3.1.zip
-  unzip ext-3.3.1.zip
-  rm ext-3.3.1.zip
-  
-  wget https://github.com/downloads/bmoeskau/Extensible/extensible-1.0.1.zip
-  unzip extensible-1.0.1.zip
-  rm extensible-1.0.1.zip
+        /home/myname/virtualenvs/a/lino_cache/collectstatic
 
-  # wget http://twitter.github.com/bootstrap/assets/bootstrap.zip
-  wget http://getbootstrap.com/2.3.2/assets/bootstrap.zip
-  unzip bootstrap.zip
-  
-Then in your :file:`settings.py` (or your :file:`djangosite_local.py`)
-you must tell Lino to use these files instead of the default
-locations::
+    This will overwrite existing files!
+    Are you sure you want to do this?
 
-  SITE = Site(globals())
-  SITE.extjs_base_url = None
-  SITE.extjs_root = '/var/snapshots/ext-3.3.1'
+    Type 'yes' to continue, or 'no' to cancel: yes
 
-  SITE.extensible_base_url = None
-  SITE.extensible_root = '/var/snapshots/extensible-1.0.1'
+    4688 static files copied to '/home/myname/virtualenvs/a/lino_cache/collectstatic', 0 unmodified.
 
-  SITE.bootstrap_base_url = None
-  SITE.bootstrap_root = '/var/snapshots/bootstrap'
+Note that you can chose an arbitrary project directory (any subdir
+below :mod:`lino_book.projects` should do it) for running
+:manage:`collectstatic`, it does not need to be :mod:`polly
+<lino_book.projects.polly>`. That's because all Lino applications have
+the same set of staticfiles.
 
-  SITE.tinymce_base_url = None
-  SITE.tinymce_root = '/usr/share/tinymce/www'
-
-
-Notes:
-
-- If the `xxx_base_url` is not empty, Lino will use it
-
-- Otherwise, Lino will check (once, at server startup) whether a
-  subdirectory xxx exists in your media directory. If not, it will
-  create symbolic links to `xxx_root` in your media directory.
-
-Attention: In versions after 201401 the configuration has changed,
-these settings are now in their respective plugin (except for tinymce
-which is not yet converted to a plugin). Your :xfile:`settings.py`
-should look like this::
-
-    SITE = Site(globals())
-
-    JSLIBS = '/var/snapshots/'
-
-    SITE.configure_plugin(
-        'extensible',
-        media_root=JSLIBS+'extensible-1.0.1',
-        media_base_url=None)
-
-    SITE.configure_plugin(
-        'plain',
-        media_root=JSLIBS+'bootstrap',
-        media_base_url=None)
-
-    SITE.configure_plugin(
-        'extjs',
-        media_root=JSLIBS+'ext-3.3.1',
-        media_base_url=None)
-
-
+You need to do this only for your first local Lino project because
+static files are the same for every Lino application.  (There are
+exceptions to this rule, but we can ignore them for the moment.)
   
  
   

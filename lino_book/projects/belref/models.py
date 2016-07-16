@@ -20,20 +20,20 @@ class Main(concepts.TopLevelConcepts):
 def my_details(sender, **kw):
     site = sender
 
-    lst = (site.modules.countries.Places,
-           site.modules.countries.Countries,
-           site.modules.concepts.Concepts)
+    lst = (site.models.countries.Places,
+           site.models.countries.Countries,
+           site.models.concepts.Concepts)
     for t in lst:
         t.required_roles.discard(dd.SiteUser)
         t.required_roles.discard(dd.SiteStaff)
 
-    site.modules.countries.Places.set_detail_layout("""
+    site.models.countries.Places.set_detail_layout("""
     name country inscode
     parent type id
     PlacesByPlace
     """)
 
-    site.modules.countries.Countries.set_detail_layout("""
+    site.models.countries.Countries.set_detail_layout("""
     isocode name short_code inscode
     countries.PlacesByCountry
     """)

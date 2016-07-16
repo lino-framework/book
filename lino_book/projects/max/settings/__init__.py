@@ -64,7 +64,7 @@ class Site(Site):
         yield 'lino_xl.lib.postings'
         yield 'lino_xl.lib.households'
 
-        # yield 'lino_xl.lib.concepts'
+        yield 'lino_xl.lib.concepts'
         yield 'lino_xl.lib.pages'
         yield 'lino_xl.lib.beid'
         yield 'lino.modlib.wkhtmltopdf'

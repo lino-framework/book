@@ -28,8 +28,6 @@ lino_xl.lib.cal.mixins
       RecurrenceSet
       Reservation
       Started
-      StartedEnded
-      StartedSummaryDescription
       UpdateEvents
       UpdateEventsByEvent
    
