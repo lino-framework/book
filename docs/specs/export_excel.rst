@@ -1,11 +1,9 @@
 .. _lino.specs.export_excel:
 .. _lino.tested.export_excel:
 
+==================
 Exporting to Excel
 ==================
-
-When :mod:`lino.modlib.export_excel` is installed, every grid view has
-a button `Export to Excel`.
 
 This document tests this functionality.
 
@@ -20,6 +18,12 @@ This document tests this functionality.
     >>> startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
 
+
+Overview
+========
+
+When :mod:`lino.modlib.export_excel` is installed, every grid view has
+a button `Export to Excel`.
 
 Robin has twelve appointments in the period 20141023..20141122:
 
@@ -47,6 +51,10 @@ My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
  Fri 31/10/2014 (08:30)   Meeting               Interview       **Suggested**
 ======================== ===================== =============== ================
 <BLANKLINE>
+
+
+Building the file
+=================
 
 Let's export them to `.xls`.
 
@@ -87,6 +95,10 @@ if the client has changed these.
 [u'open_url', u'success']
 >>> print(result['open_url'])
 /media/cache/appyxlsx/127.0.0.1/cal.MyEvents.xlsx
+
+
+Testing the generated file
+==========================
 
 The action performed without error.
 But does the file exist?
@@ -147,3 +159,18 @@ Quand | État | Créé | Date début | Heure de début
 >>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 jeu. 23/10/2014 (10:20) | **Terminé** → `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,114,{  })>`__ | ... | 2014-10-23 00:00:00 | 10:20:00
+
+
+
+
+More queries
+============
+
+>>> url = "/api/cal/Events?an=export_excel"
+>>> test_client.get(url, REMOTE_USER='robin').status_code
+200
+
+>>> url = "/api/cal/EventsByDay?an=export_excel"
+>>> test_client.get(url, REMOTE_USER='robin').status_code
+200
+
