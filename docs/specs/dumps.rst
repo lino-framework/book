@@ -86,8 +86,7 @@ Verify that the newly created dump is as expected:
 ... #doctest: +ELLIPSIS
 <BLANKLINE>
 
-
-If the following test fails, then (after having checked why the files
+If the above test fails, then (after having checked why the files
 differ) I probably need to run::
 
    $ python manage_a.py dump2py a --overwrite
@@ -161,6 +160,12 @@ Verify that the newly created dump is as expected:
 >>> shell("diff b tmp/b")
 ... #doctest: +ELLIPSIS
 <BLANKLINE>
+
+Again, if the above test fails, then (after having checked why the
+files differ) I probably need to run::
+
+   $ python manage_b.py dump2py b --overwrite
+
 
 Load the dump, dump again and verify that both dumps are the same:
 

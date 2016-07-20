@@ -10,8 +10,6 @@ lino_xl.lib.notes.models
 
    .. autosummary::
    
-      add_system_note
-      customize_siteconfig
       html_text
    
    

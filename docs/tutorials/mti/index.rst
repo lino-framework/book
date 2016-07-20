@@ -3,8 +3,17 @@ Multi-table inheritance (MTI)
 =============================
 
 
-.. how to test:
+.. how to test just this document:
     $ python setup.py test -s tests.DocsTests.test_mti
+    
+    doctest init:
+    >>> from __future__ import print_function
+    >>> from lino.api.shell import *
+    >>> Person = mti.Person
+    >>> Restaurant = mti.Restaurant
+    >>> Place = mti.Place
+    >>> Visit = mti.Visit
+    >>> Meal = mti.Meal
 
 
 
@@ -14,17 +23,7 @@ Multi-table inheritance (MTI)
    :local:
    :depth: 2   
 
-.. The following lines are here for running doctest 
-  on this document. Sphinx removes them because they are a 
-  comment, but doctest executes them.
   
-  >>> from __future__ import print_function
-  >>> from lino.api.shell import *
-  >>> Person = mti.Person
-  >>> Restaurant = mti.Restaurant
-  >>> Place = mti.Place
-  >>> Visit = mti.Visit
-  >>> Meal = mti.Meal
 
 
 The example database
@@ -147,6 +146,8 @@ used by Lino, and thus is Lino-specific.
 
 After the above examples our database looks like this:
 
+>>> Person.objects.all()
+[<Person: Alfred>, <Person: Bert>, <Person: Claude>, <Person: Dirk>]
 >>> Place.objects.all()
 [Place #1 ('#1 (name=First, owners=Alfred, Bert)'), Place #2 ('#2 (name=Second, owners=Bert)')]
 >>> Restaurant.objects.all()
