@@ -19,6 +19,6 @@ class Site(Site):
         yield 'watch_tutorial'
 
 
-SITE = Site(globals(), no_local=True)
+SITE = Site(globals())
 
 DEBUG = True

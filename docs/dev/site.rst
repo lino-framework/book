@@ -57,7 +57,7 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 
 >>> from lino_book.projects.docs.settings import Site
 >>> pseudoglobals = {}
->>> SITE = Site(pseudoglobals, no_local=True)
+>>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 ['DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
