@@ -7,37 +7,23 @@ Installing :manage:`linod` as a daemon
 This document explains how to install :manage:`linod` as a daemon on a
 production server.
 
-- Install the python-daemon package::
+- Install the `Supervisor <http://www.supervisord.org/index.html>`_
+  package::
 
-      $ go myproject
-      $ . env/bin/activate
-      $ pip install python-daemon
+      $ sudo apt-get install supervisor
 
-- Create a directory :file:`/path/to/myproject/linod`.
- 
-  On a server which hosts several Lino applications, you must run one
-  :manage:`linod` per project.
+- Create a file :file:`myprj_linod.conf` in :file:`/etc/supervisor/conf.d/`
 
-- Copy the file :srcref:`bash/run_linod.sh` to this directory and
-  adapt it to your needs.  This file invokes ``python manage.py
-  linod`` with the proper command-line arguments for this project.
+    [program:myprj_linod]
+    command=python /path/to/myprj/manage.py linod
+    username = www-data
 
-- Copy the file :srcref:`bash/linod.sh` to your server's
-  :file:`/etc/init.d` directory and adpt it to your needs.
+  On a server which hosts several Lino applications, we recommend to
+  create one such file per project.
 
-In both files you must edit at least the content of variable
-`PROJECT`.  
+- Restart :program:`supervisord`::
 
-Don't forget to give execution permission for these scripts using
-something like ``chmod 755``.
+    $ sudo service supervisord restart
 
-Check manually whether the script works correctly::
+- Have a look at the log files in :file:`/var/log/supervisord`.
 
-  $ sudo /etc/init.d/linod.sh start
-  $ sudo /etc/init.d/linod.sh stop
-  $ sudo /etc/init.d/linod.sh restart
-
-And finally::
-
-  # update-rc.d linod.sh defaults
-  

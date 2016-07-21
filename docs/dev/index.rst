@@ -211,6 +211,7 @@ Other
    git
    /ref/index
    py3
+   logging
 
 
 
