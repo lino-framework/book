@@ -6,12 +6,6 @@ lino_xl.lib.notes.models
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      html_text
-   
    
 
    

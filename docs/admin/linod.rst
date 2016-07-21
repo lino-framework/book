@@ -12,6 +12,9 @@ a production server.
 
       $ sudo apt-get install supervisor
 
+  The supervisor package is being installed system-wide, it is not
+  related to any specific project.
+
 - Create a file :file:`myprj_linod.conf` in
   :file:`/etc/supervisor/conf.d/` with this content::
 
@@ -27,4 +30,6 @@ a production server.
     $ sudo service supervisord restart
 
 - Have a look at the log files in :file:`/var/log/supervisord`.
+
+
 
