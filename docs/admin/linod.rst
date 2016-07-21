@@ -1,25 +1,26 @@
 .. _admin.linod:
 
-======================================
-Installing :manage:`linod` as a daemon
-======================================
+=======================================
+Installing :manage:`linod` as a service
+=======================================
 
-This document explains how to install :manage:`linod` as a daemon on a
-production server.
+This document explains how to install :manage:`linod` as a service on
+a production server.
 
 - Install the `Supervisor <http://www.supervisord.org/index.html>`_
   package::
 
       $ sudo apt-get install supervisor
 
-- Create a file :file:`myprj_linod.conf` in :file:`/etc/supervisor/conf.d/`
+- Create a file :file:`myprj_linod.conf` in
+  :file:`/etc/supervisor/conf.d/` with this content::
 
     [program:myprj_linod]
     command=python /path/to/myprj/manage.py linod
     username = www-data
 
-  On a server which hosts several Lino applications, we recommend to
-  create one such file per project.
+  On a server which hosts several Lino applications, we use to create
+  one such file per project.
 
 - Restart :program:`supervisord`::
 
