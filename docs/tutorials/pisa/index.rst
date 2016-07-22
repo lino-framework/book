@@ -3,6 +3,10 @@
 Printing using Pisa
 -------------------
 
+.. how to run just this test:
+
+    $ python setup.py test -s tests.DocsTests.test_pisa
+
 Continued from :ref:`lino.tutorial.human` 
 
 We have Person model inherit from :class:`lino.mixins.printable.Printable`:
