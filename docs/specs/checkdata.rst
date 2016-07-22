@@ -90,19 +90,9 @@ Running the :command:`checkdata` command
 
 
 >>> call_command('checkdata')
-Running 3 plausibility checkers on 125 Events...
-Found 3 and fixed 0 plausibility problems in Events.
-Running 1 plausibility checkers on 0 Excerpts...
-No plausibility problems found in Excerpts.
-Running 1 plausibility checkers on 100 Notes...
-No plausibility problems found in Notes.
-Running 1 plausibility checkers on 0 Projects...
-No plausibility problems found in Projects.
-Running 1 plausibility checkers on 78 Places...
-No plausibility problems found in Places.
-Running 2 plausibility checkers on 126 Partners...
-No plausibility problems found in Partners.
 
+(TODO: make output visible here... There is no output visible here
+because it goes to the log file.)
 
 You can see the list of all available checkers also from the command
 line using::
@@ -125,13 +115,16 @@ line using::
 
 
 >>> call_command('checkdata', 'cal.')
-Running 2 plausibility checkers on 125 Events...
-Found 3 and fixed 0 plausibility problems in Events.
+
+The output goes to the logfile::
+
+    Running 2 plausibility checkers on 125 Events...
+    Found 3 and fixed 0 plausibility problems in Events.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):
 ...
-CommandError: No checker matches ('foo',)
+Exception: No checker matches ('foo',)
 
 
 

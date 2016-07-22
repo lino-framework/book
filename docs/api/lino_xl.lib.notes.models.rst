@@ -6,14 +6,6 @@ lino_xl.lib.notes.models
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      add_system_note
-      customize_siteconfig
-      html_text
-   
    
 
    

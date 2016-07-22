@@ -211,6 +211,8 @@ Other
    git
    /ref/index
    py3
+   logging
+   linod
 
 
 
@@ -225,4 +227,3 @@ Other
    mixins
    /tutorials/index
    ml/index
-   

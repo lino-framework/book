@@ -11,7 +11,6 @@ lino_xl.lib.stars.models
    .. autosummary::
    
       get_favourite
-      notify_handler
       welcome_messages
    
    

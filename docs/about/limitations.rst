@@ -13,10 +13,19 @@ Lino is not for you, if...
 
 Note also that...
 
-- Lino does not even *try* to be very easy to learn. There are other
-  frameworks who try to deliver quick visible results. With Lino it
-  may take a day or two before you fall in love with it, but your love
-  will last longer.
+- Lino does not even *try* to be very easy to learn. It is a tool for
+  experienced professional Python developers. There are other
+  frameworks who can deliver quick visible results. With Lino it may
+  take a day or two before you fall in love with it, but there is
+  reason to hope that your love will last longer.
+
+- Lino is not as well documented as Django or PHP. This is a
+  disadvantage of using a young framework with a small community. But
+  Lino is growing, and we are working on it.  Our goal is that every
+  (motivated) beginner experiences joy when walking through the
+  :ref:`lino.dev`. Give it a try, send your feedback, tell us where
+  you got stuck, help us to make it easier for others to get started
+  with Lino.
 
 - Lino has no "visual GUI editor" because one of it's powerful
   features are :ref:`layouts` whose purpose is to describe user
@@ -27,10 +36,6 @@ Note also that...
   Designer
   <http://www.robg3d.com/2014/08/geocities-and-the-qt-designer/>`_
 
-- Lino has no package manager (because we use pip instead of
-  reinventing the wheel)
-
-- Lino is not well documented. This is a disadvantage of using a young
-  framework with a small community. But we are working on it. Give
-  your feedback, tell us where you got stuck, help us to grow!
+- Lino has no package manager because we have pip and git. Note also
+  :ticket:`1053`.
 

@@ -4,5 +4,15 @@
 
 """
 This is the main module of the :ref:`belref` project.
+
+.. autosummary::
+   :toctree:
+
+   models
+   settings
+   settings.demo
+   settings.doctests
+
+
 """
 

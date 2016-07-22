@@ -1,4 +1,4 @@
-## Copyright 2013 Luc Saffre
+## Copyright 2013-2016 Luc Saffre
 ## This file is part of the Lino project.
 
 from lino.api import dd, rt
@@ -44,10 +44,14 @@ class FinishEntry(StartEntry):
     required_states = 'todo started'
     help_text = _("Inherts from StartEntry and thus is not allowed when company, body or subject is empty.")
         
-class WakeupEntry(dd.ChangeStateAction,dd.NotifyingAction):
+
+from lino_xl.lib.notes.actions import NotifyingAction
+
+class WakeupEntry(dd.ChangeStateAction, NotifyingAction):
     label = _("Wake up")
     required_states = 'sleeping'
     # in our example waking up an antry will send a notification
-    def get_notify_subject(self,ar,obj):
+
+    def get_notify_subject(self, ar, obj):
         return _("Entry %s has been reactivated!") % obj
             

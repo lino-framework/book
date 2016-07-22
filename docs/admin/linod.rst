@@ -1,43 +1,39 @@
 .. _admin.linod:
 
-======================================
-Installing :manage:`linod` as a daemon
-======================================
+=======================================
+Installing :manage:`linod` as a service
+=======================================
 
-This document explains how to install :manage:`linod` as a daemon on a
-production server.
+This document explains how to install :manage:`linod` as a service on
+a production server.
 
-- Install the python-daemon package::
+- Install the `Supervisor <http://www.supervisord.org/index.html>`_
+  package::
 
-      $ go myproject
-      $ . env/bin/activate
-      $ pip install python-daemon
+      $ sudo apt-get install supervisor
 
-- Create a directory :file:`/path/to/myproject/linod`.
- 
-  On a server which hosts several Lino applications, you must run one
-  :manage:`linod` per project.
+  The supervisor package is being installed system-wide, it is not
+  related to any specific project.
 
-- Copy the file :srcref:`bash/run_linod.sh` to this directory and
-  adapt it to your needs.  This file invokes ``python manage.py
-  linod`` with the proper command-line arguments for this project.
+- Create a shell script in your project directory::
 
-- Copy the file :srcref:`bash/linod.sh` to your server's
-  :file:`/etc/init.d` directory and adpt it to your needs.
+    #!/bin/bash
+    set -e  # exit on error
+    . /path/to/myprj/env/bin/activate
+    python /path/to/myprj/manage.py linod
 
-In both files you must edit at least the content of variable
-`PROJECT`.  
+- Create a file :file:`myprj_linod.conf` in
+  :file:`/etc/supervisor/conf.d/` with this content::
 
-Don't forget to give execution permission for these scripts using
-something like ``chmod 755``.
+    [program:myprj_linod]
+    command=/path/to/myprj/linod.sh
+    username = www-data
 
-Check manually whether the script works correctly::
+- Restart :program:`supervisord`::
 
-  $ sudo /etc/init.d/linod.sh start
-  $ sudo /etc/init.d/linod.sh stop
-  $ sudo /etc/init.d/linod.sh restart
+    $ sudo service supervisord restart
 
-And finally::
+- Have a look at the log files in :file:`/var/log/supervisord`.
 
-  # update-rc.d linod.sh defaults
-  
+
+

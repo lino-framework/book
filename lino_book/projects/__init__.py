@@ -5,10 +5,12 @@ out.
 
 Examples with their own documentation entry:
 
-- :mod:`lino_book.projects.belref` ---
-  See :ref:`belref`
-- :mod:`lino_book.projects.polly`
-  See :ref:`polly`
+.. autosummary::
+   :toctree:
+
+   polly
+   belref
+
 
 Poorly documented examples at different development states:
 

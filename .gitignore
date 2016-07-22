@@ -13,10 +13,8 @@ lino/ui/qx/app/build/resource
 */SciTE.session
 default.db
 media/cache
-lino/tutorials/*/media
-lino/projects/*/media
-lino/sandbox/*/media
-*/test.db
+lino_book/tutorials/*/media
+lino_book/projects/*/settings/media
 docs/media
 docs/dl/*
 lino_book.egg-info
@@ -29,4 +27,5 @@ docs/api/lino.*
 docs/tutorials/pisa/pisa.Person-1.pdf
 .coverage
 .coverage.*
+.eggs
 
