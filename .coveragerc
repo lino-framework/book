@@ -1,0 +1,7 @@
+# .coveragerc to control coverage.py
+[run]
+#branch = True
+cover_pylib = False
+parallel = True
+source = ../lino/lino;../xl/lino_xl;lino_book
+omit = *test*.py
