@@ -15,15 +15,19 @@ a production server.
   The supervisor package is being installed system-wide, it is not
   related to any specific project.
 
+- Create a shell script in your project directory::
+
+    #!/bin/bash
+    set -e  # exit on error
+    . /path/to/myprj/env/bin/activate
+    python /path/to/myprj/manage.py linod
+
 - Create a file :file:`myprj_linod.conf` in
   :file:`/etc/supervisor/conf.d/` with this content::
 
     [program:myprj_linod]
-    command=python /path/to/myprj/manage.py linod
+    command=/path/to/myprj/linod.sh
     username = www-data
-
-  On a server which hosts several Lino applications, we use to create
-  one such file per project.
 
 - Restart :program:`supervisord`::
 
