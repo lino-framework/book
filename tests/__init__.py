@@ -1,3 +1,5 @@
+import sys
+
 from unipath import Path
 
 from lino.utils.pythontest import TestCase

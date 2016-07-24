@@ -31,9 +31,7 @@ a production server.
 
 - Restart :program:`supervisord`::
 
-    $ sudo service supervisord restart
+    $ sudo service supervisor restart
 
-- Have a look at the log files in :file:`/var/log/supervisord`.
-
-
+- Have a look at the log files in :file:`/var/log/supervisor`.
 
