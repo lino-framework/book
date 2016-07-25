@@ -44,15 +44,15 @@ Your first application
    :maxdepth: 1
    :hidden:
 
-   /tutorials/dumpy
+   /tutorials/dumpy/index
    /tutorials/polls/mysite/index
    /tutorials/tables/index
    layouts
    /tutorials/lets/index
 
 
-#.  :doc:`/tutorials/dumpy` : Playing with fixtures.  Writing your
-    first own fixture.
+#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+    Writing your own Python fixtures.
 
 #.  :doc:`/tutorials/polls/mysite/index` : In this section we are
     going to convert the “Polls” application from Django’s tutorial

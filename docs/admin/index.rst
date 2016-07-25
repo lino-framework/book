@@ -80,3 +80,4 @@ Other
     virtualenv
     tim2lino
     mysql_tune
+    du

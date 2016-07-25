@@ -21,7 +21,7 @@ your database" by running the command::
 The :xfile:`manage.py` Python script is the standard Django interface
 for running a so-called **administrative task** (if you did't know
 that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.6/ref/django-admin/>`_).
+<https://docs.djangoproject.com/en/1.9/ref/django-admin/>`_).
 
 The :manage:`initdb_demo` command which we use here is a `custom
 django-admin command
@@ -43,8 +43,8 @@ The :manage:`initdb` command performs three actions in one:
 - and finally runs Django's `loaddata` command to load the specified
   fixtures.
 
-So the above line is equivalent to the following plain Django
-commands::
+So the above line is functionally equivalent to the following plain
+Django commands::
 
   $ python manage.py flush
   $ python manage.py migrate

@@ -4,6 +4,16 @@
 Create a local Lino project
 ===========================
 
+.. to test just this doc:
+
+    $ python setup.py test -s tests.DocsTests.test_hello
+
+   doctest init::
+
+    >>> from atelier.sheller import Sheller
+    >>> shell = Sheller(".")
+
+
 In this tutorial we are going to create a local Lino project which
 inherits from one of the simple :ref:`out-of-the-box projects
 <lino.projects>` included with Lino.
@@ -109,23 +119,91 @@ It will ask you::
 
 If you answer "y" here, then Lino will delete everything in the given
 database and replace it with its "factory default" demo data.  Yes,
-that's what you want. So go on and type ``y``::
+that's what you want. So go on and type ``y``.
 
-  Creating tables ...
-  Creating table ui_siteconfig
-  ...
-  Installing custom SQL ...
-  Installing indexes ...
-  INFO Loading /home/luc/hgwork/lino/lino/ui/fixtures/std.py...
-  ...
-  INFO Loading /home/luc/hgwork/lino/lino/projects/cosi/fixtures/userman.py...
-  Installed 361 object(s) from 14 fixture(s)
-  INFO Stopped manage.py initdb_demo (PID 3780)  
+The output that follows should look like this:
+
+>>> shell("python manage.py initdb_demo --noinput")
+... #doctest: +ELLIPSIS
+Operations to perform:
+  Synchronize unmigrated apps: gfks, about, jinja, office, countries, staticfiles, contacts, system, xl, printing, lino_startup, cal, users, extjs, export_excel, bootstrap3
+  Apply all migrations: contenttypes, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Creating table system_siteconfig
+    Creating table users_user
+    Creating table users_authority
+    Creating table countries_country
+    Creating table countries_place
+    Creating table contacts_partner
+    Creating table contacts_person
+    Creating table contacts_companytype
+    Creating table contacts_company
+    Creating table contacts_roletype
+    Creating table contacts_role
+    Creating table gfks_helptext
+    Creating table cal_remotecalendar
+    Creating table cal_room
+    Creating table cal_priority
+    Creating table cal_eventtype
+    Creating table cal_guestrole
+    Creating table cal_calendar
+    Creating table cal_subscription
+    Creating table cal_task
+    Creating table cal_recurrentevent
+    Creating table cal_event
+    Creating table cal_guest
+    Running deferred SQL...
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying sessions.0001_initial... OK
+Installed 226 object(s) from 9 fixture(s)
+
 
 There's a lot to say about what we just did.  Lino applications use to
 make abundant use of so-called *Python fixtures* in order to have a
 rich set of "demo data".  We will come back to this in the next
 chapter, :doc:`/dev/initdb`.
+
+
+Visualizing database content from the command-line
+==================================================
+
+You can visualize the content of your database from the command-line
+without starting a web server using Lino's :manage:`show` command. 
+For example to see the list of users, you can write::
+
+    $ python manage.py show users.Users
+
+The output should be as follows:
+
+>>> shell("python manage.py show users.Users")
+... #doctest: +ELLIPSIS
+========== =============== ============ ===========
+ Username   User Profile    First name   Last name
+---------- --------------- ------------ -----------
+ robin      Administrator   Robin        Rood
+========== =============== ============ ===========
+
+Or you can see the list of countries:
+
+>>> shell("python manage.py show countries.Countries")
+... #doctest: +ELLIPSIS
+============================= ==========
+ Designation                   ISO code
+----------------------------- ----------
+ Belgium                       BE
+ Congo (Democratic Republic)   CD
+ Estonia                       EE
+ France                        FR
+ Germany                       DE
+ Maroc                         MA
+ Netherlands                   NL
+ Russia                        RU
+============================= ==========
+
 
 
 Start the web server
@@ -149,4 +227,4 @@ should see some welcome text and instructions for logging in.
 Congratulations! Enjoy the first Lino application running on your
 machine!
 
-Next suggested chapter: :doc:`/tutorials/dumpy`.
+Next suggested chapter: :doc:`/tutorials/dumpy/index`.
