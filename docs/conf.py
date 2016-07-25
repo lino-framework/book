@@ -40,7 +40,7 @@ extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['atelier.sphinxconf.sigal_image']
 sigal_base_url = 'http://sigal.saffre-rumma.net'
 
-extensions += ['lino.sphinxcontrib.help_text_builder']
+extensions += ['lino.sphinxcontrib.help_texts_extractor']
 help_texts_builder_targets = {
     'lino.': 'lino.modlib.lino_startup',
     # 'lino.modlib.': 'lino.modlib.lino_startup',
