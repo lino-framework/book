@@ -1,3 +1,4 @@
+.. _lino.tutorial.writing_fixtures:
 .. _lino.tutorial.dpy:
 
 ================================
@@ -203,8 +204,8 @@ add a third user, or add a new field for every user.  Which one will
 be easier to maintain?
 
 
-Python fixtures are inteligent
-==============================
+Python fixtures are intelligent
+===============================
 
 Python fixtures are a powerful tool.  You can use them to generate
 random and massive amount of data. Look for example at the source code
@@ -244,45 +245,11 @@ Exercise
 Python fixtures are modularizable
 =================================
 
-There is another thing you should know before starting to use fixtures
-in your applications.
-
-As an application devloper your can use the :attr:`demo_fixtures
-<lino.core.site.Site.demo_fixtures>` setting to specify a **default
-set of fixture names** to be loaded.
-
-For example let's have a look at the source code of the
-:mod:`lino_book.projects.min1.settings` module. Note that it defines a
-class attribute :attr:`demo_fixtures
-<lino.core.site.Site.demo_fixtures>` on the :class:`Site
-<lino.core.site.Site>` class.
-
-Remeber that you import the :mod:`lino_book.projects.min1` settings
-into your own project settings:
-
-.. literalinclude:: settings.py
-
-So your project inherits the :attr:`demo_fixtures
-<lino.core.site.Site.demo_fixtures>` attribute defined there.
-
-Let's verify this.  Go to your local project directory, open a
-:manage:`shell` console and type the following commands:
-
->>> import lino
->>> lino.startup('settings')
->>> from lino.api.doctest import *
->>> settings.SITE.demo_fixtures
-'std demo demo2'
-
-This means that the following two commands are equivalent::
-
-    $ python manage.py initdb_demo
-    $ python manage.py initdb std demo demo2
-
 Lino encourages fine-grained modularity of your fixtures because as an
-application devloper your can use the :attr:`demo_fixtures
+application developer your can use the :attr:`demo_fixtures
 <lino.core.site.Site.demo_fixtures>` setting in order to specify a
-default set of fixture names to be loaded.
+**default set** of fixture names to be loaded.  Check the
+:ref:`demo_fixtures` section in case you didn't know this.
 
 
 Python fixtures don't like relative imports
@@ -306,5 +273,4 @@ because
   
 - they provide a simple and modular way to deploy demo data for your
   application
-
 
