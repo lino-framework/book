@@ -120,7 +120,7 @@ Initialize your database using this fixture::
 The output should be as follows:
 
 >>> shell("python manage.py initdb dumpy1 --noinput")
-... #doctest: +ELLIPSIS
+... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 Operations to perform:
   Synchronize unmigrated apps: gfks, about, jinja, office, countries, staticfiles, contacts, system, xl, printing, lino_startup, cal, users, extjs, export_excel, bootstrap3
   Apply all migrations: contenttypes, sessions
@@ -155,6 +155,7 @@ Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
+Installed 2 object(s) from 1 fixture(s)
 
 Let's use the :manage:`show` command to see whether our data has been
 imported::
