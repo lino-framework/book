@@ -1,1 +1,2 @@
 git+https://github.com/lsaffre/lino.git
+git+https://github.com/lino-framework/xl.git
