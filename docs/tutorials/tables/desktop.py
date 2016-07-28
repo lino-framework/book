@@ -5,6 +5,11 @@ class Authors(dd.Table):
     model = 'Author'
     column_names = 'first_name last_name country'
 
+    detail_layout = """
+    first_name last_name country
+    BooksByAuthor
+    """
+
 
 class Books(dd.Table):
     model = 'Book'

@@ -6,12 +6,10 @@ An introduction to Tables
 Models, tables and views
 ========================
 
-In a Lino application you don't write only *models* but also *tables*.
-This tutorial explains what they are.
-
-While your **models** describe how data is to be structured when
-stored in the database, **tables** describe how data is to be
-presented to users in tabular form.
+In a Lino application you don't write only your *models* in Python,
+but also something we call **tables**.  While your *models* describe
+how data is to be structured in the database, *tables* describe how
+data is to be presented to users in tabular form.
 
 Roughly speaking, Lino's "tables" are the equivalent of what Django
 calls "views". With Lino you don't need to write views because Lino
@@ -20,15 +18,21 @@ class of Django's views, sometimes referred to as "tabular" or "list"
 views. The other class of views are "detail" views, for which you are
 going to define *Layouts*, but we'll talk about these later.)
 
-Don't get troubled by the fact that Django's models are called
-"tables" by most database management systems.
-
 
 An example
 ==========
 
-Here is the :xfile:`models.py` file which we will use in this
-tutorial:
+The files we are going to use in this tutorial are already on your
+hard disk, you can use the project directly from your repository::
+
+    $ cd ~/repositories/book/docs/tutorials/tables
+
+So this tutorial does not require you to create anything. Just follow
+the instructions and learn. You may modify the code inside your local
+copy of the repository and later undo your changes by using ``git
+checkout``.
+
+Here is the :xfile:`models.py` file :
 
 .. literalinclude:: models.py
 
@@ -40,7 +44,7 @@ Here is the data we use to fill our database:
     >>> from __future__ import print_function
     >>> from lino.utils.dpy import load_fixture_from_module
 
-We will now initialize our database with this fixture::
+Let's initialize our database with this fixture::
 
   $ python manage.py initdb_demo
 
@@ -52,14 +56,10 @@ We will now initialize our database with this fixture::
 Designing your tables
 =====================
 
-You will have noticed the last line of our :xfile:`models.py` file above::
+There is another file named :xfile:`desktop.py` which describes the
+tables we are going to use in this tutorial:
 
-  from .ui import *
-
-The :xfile:`ui.py` file describes the tables we are going to use in
-this tutorial:
-
-.. literalinclude:: ui.py
+.. literalinclude:: desktop.py
 
 Please note:
 
@@ -68,11 +68,90 @@ Please note:
 
 - Tables may inherit from other tables (e.g. ``BooksByAuthor``)
 
-- You may define your tables together with the models in your
-  :file:`models.py` file, or in a separate file :file:`ui.py`. It's
-  a matter of taste.  But if you separate them, then you must import
-  that file from within your :file:`models.py` file so that they get
-  discovered at startup.
+- The recommended place for defining tables is in a separate file
+  :file:`desktop.py`.
+
+  You might define your tables together with the models in your
+  :file:`models.py` file, but in that case your application has no
+  chance to get a responsive design. Responsive design is a relatively
+  new feature and is not covered here (See :attr:`design_name
+  <lino.core.site.Site.design_name>` for a beginning).
+
+
+
+Using tables without a web server
+=================================
+
+An important thing with tables is that they are independent of any
+user interface. You define them once, and you can use them on the
+console, in a script, in a unit test, in a web interface or in a GUI
+window.
+
+At this point of our tutorial, we cannot yet fire up a web browser
+(because we need to explain a few more concepts like menus and layouts
+before we can do that), but we can already play with our data using
+Django's console shell::
+
+  $ python manage.py shell
+
+And please note that the following code snippets are tested as part of
+Lino's test suite. Writing test cases is an important part of software
+development. Writing test cases might look less funny than developing
+cool widgets, but actually these are part of analyzing and describing
+how your users want their data to be structured.  Which is the more
+important part of software development.
+
+The first thing you do in a :manage:`shell` session is to import
+everything from :mod:`lino.api.shell`:
+
+>>> from lino.api.shell import *
+
+This imports especially a name ``rt`` which points to the
+:mod:`lino.api.rt` module.  ``rt`` stands for "run time" and it
+exposes Lino's runtime API.  In our first session we are going to use
+the :meth:`show <lino.api.rt.show>` method and the :meth:`actors
+<lino.core.site.Site.actors>` object.
+
+>>> rt.show(rt.actors.tables.Authors)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+============ =========== =========
+ First name   Last name   Country
+------------ ----------- ---------
+ Douglas      Adams       UK
+ Albert       Camus       FR
+ Hannes       Huttner     DE
+============ =========== =========
+<BLANKLINE>
+
+So here is, our ``Authors`` table, in a testable console format!
+
+And here is the ``Books`` table:
+
+>>> rt.show(rt.actors.tables.Books)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+================= ====================================== ===========
+ author            Title                                  Published
+----------------- -------------------------------------- -----------
+ Adams, Douglas    Last chance to see...                  1990
+ Adams, Douglas    The Hitchhiker's Guide to the Galaxy   1978
+ Huttner, Hannes   Das Blaue vom Himmel                   1975
+ Camus, Albert     L'etranger                             1957
+================= ====================================== ===========
+<BLANKLINE>
+
+These were so-called **master tables**.  We can also show the content
+of slave tables:
+
+>>> adams = tables.Author.objects.get(last_name="Adams")
+>>> rt.show(rt.actors.tables.BooksByAuthor, adams)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+=========== ======================================
+ Published   Title
+----------- --------------------------------------
+ 1978        The Hitchhiker's Guide to the Galaxy
+ 1990        Last chance to see...
+=========== ======================================
+<BLANKLINE>
 
 
 What is a table?
@@ -120,69 +199,25 @@ table because otherwise Lino would display a sum for the "published"
 column.
 
 
-Using tables without a web server
-=================================
+Defining a web interface
+========================
 
-An important thing with tables is that they are independent of any
-user interface. You define them once, and you can use them on the
-console, in a script, in a unit test, in a web interface or in a GUI
-window.
+Before starting the web interface of our application, let's have a
+look at the last piece of the user interface, the menu definition:
 
-At this point of our tutorial, we cannot yet fire up a web browser
-(because we need to explain a few more concepts like menus and layouts
-before we can do that), but we can already play with our data using
-Django's console shell::
+.. literalinclude:: __init__.py
 
-  $ python manage.py shell
 
-And please note that the following code snippets are tested as part of
-Lino's test suite. Writing test cases is an important part of software
-development. Writing test cases might look less funny than developing
-cool widgets, but actually these are part of analyzing and describing
-how your users want their data to be structured.  Which is the more
-important part of software development.
+Exercise
+========
 
-So here is, again our ``Authors`` table, this time in a testable
-console format:
+Start your development server and your browser, and have a look at the
+application::
 
->>> from lino.api.shell import *
->>> rt.show(tables.Authors)
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============ =========== =========
- First name   Last name   Country
------------- ----------- ---------
- Douglas      Adams       UK
- Albert       Camus       FR
- Hannes       Huttner     DE
-============ =========== =========
-<BLANKLINE>
+  $ python manage.py runserver
 
-And here is the ``Books`` table:
-
->>> rt.show(tables.Books)
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ====================================== ===========
- author            Title                                  Published
------------------ -------------------------------------- -----------
- Adams, Douglas    Last chance to see...                  1990
- Adams, Douglas    The Hitchhiker's Guide to the Galaxy   1978
- Huttner, Hannes   Das Blaue vom Himmel                   1975
- Camus, Albert     L'etranger                             1957
-================= ====================================== ===========
-<BLANKLINE>
-
-These were so-called **master tables**.  We also have a slave table:
-
->>> adams = tables.Author.objects.get(last_name="Adams")
->>> rt.show(tables.BooksByAuthor, adams)
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=========== ======================================
- Published   Title
------------ --------------------------------------
- 1978        The Hitchhiker's Guide to the Galaxy
- 1990        Last chance to see...
-=========== ======================================
-<BLANKLINE>
+Explore the application and try to extend it: change things in the
+code and see what happens.
 
 
 Summary

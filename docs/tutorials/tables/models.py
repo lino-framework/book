@@ -18,4 +18,3 @@ class Book(dd.Model):
     price = models.DecimalField("Price", decimal_places=2, max_digits=10)
 
 
-from .ui import *
