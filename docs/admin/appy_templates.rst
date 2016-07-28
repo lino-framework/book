@@ -1,35 +1,37 @@
+.. _lino.admin.appypod:
 .. _lino.admin.appy_templates:
 
 ========================
-Appy POD template syntax
+Using Appy POD templates
 ========================
 
-When a printable document is being generated using the
-:class:`AppyBuildMethod <lino.modlib.printing.choicelists.AppyBuildMethod>` build method, 
-Lino uses `appy.pod <http://appyframework.org/pod.html>`__
-a library 
+When a printable document is being generated using
+:class:`AppyBuildMethod
+<lino_xl.lib.appypod.choicelists.AppyBuildMethod>` or a subclass
+thereof, then you provide an :term:`appy.pod template` which Lino
+renders as a `.pdf`, `.odt` or `.rtf` printable.
 
-
-uses a special approach:
-  the templates are themselves `.odt` files.
-  See :doc:`appy_templates`
-
-  it marks template commands 
-  using OOo's "change records" and "comments" features. 
-  Appy/Pod also handles transparently 
-  the fact that .odt files are in fact .zip files containing a set of .xml files.
-
-Weblinks
-========
+Vocabulary
+==========
 
 .. glossary::
+ 
+    appy.pod template
 
-  appy_pod
-    http://appyframework.org/pod.html
+        An `.odt` file which contains special instructions defined by
+        Gaëtan Delannay's 
+        `appy.pod <http://appyframework.org/pod.html>`__ library.
 
 
-.. currentmodule:: lino.utils.appy_pod
 
+
+
+
+Context
+=======
+
+
+.. currentmodule:: lino_xl.lib.appypod.context
 
 installs additional
 functions to be used in `do text|section|table from
@@ -39,9 +41,11 @@ statements.
 .. function:: jinja(template_name)
 
   Render the template named `template_name` using Jinja.
+  The template is supposed to produce HTML markup.
+
   I `template_name` contains no dot, then the default filename
   extension `.body.html` is added.
-  The template is supposed to contain HTML.
+
 
 - `restify(s)`:
   Render a string `s` which contains reStructuredText markup.
@@ -57,9 +61,10 @@ statements.
   Render a string that is in HTML (not XHTML).
 
 - `ehtml(e)` :
-  Render an ElementTree HTML object
+  Render an ElementTree node
   (generated using :mod:`lino.utils.xmlgen.html`)
-  by passing it to :mod:`lino.utils.html2odf`.
+  into this document. 
+  This is done by passing it to :mod:`lino.utils.html2odf`.
 
 - `table(ar, column_names=None)` : render an
   :class:`lino.core.tables.TableRequest` as a table. Example::

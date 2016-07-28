@@ -1,3 +1,5 @@
+import sys
+
 from unipath import Path
 
 from lino.utils.pythontest import TestCase
@@ -138,6 +140,9 @@ class DocsTests(LinoTestCase):
 
     def test_hello(self):
         self.run_django_manage_test('docs/tutorials/hello')
+
+    def test_dumpy(self):
+        self.run_django_manage_test('docs/tutorials/dumpy')
 
     def test_lets(self):
         self.run_django_manage_test('docs/tutorials/lets')

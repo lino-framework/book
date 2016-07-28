@@ -115,14 +115,15 @@ Additional local apps
 
 An optional second positional argument can be specified by local
 system administrators in order to specify additional *local apps*
-These will go into the :setting:`INSTALLED_APPS` setting (but
-:class:`Site` will automatically add some).
+These will go into the :setting:`INSTALLED_APPS` setting, together
+with any other plugins needed by them.
 
 >>> from lino_book.projects.docs.settings import Site
 >>> pseudoglobals = {}
 >>> Site(pseudoglobals, "lino_xl.lib.events")  #doctest: +ELLIPSIS
 <lino_book.projects.docs.settings.Site object at ...>
 >>> print('\n'.join(pseudoglobals['INSTALLED_APPS']))
+... #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
 lino.modlib.lino_startup
 django.contrib.staticfiles
 lino.modlib.about
@@ -142,6 +143,7 @@ lino.modlib.office
 lino_xl.lib.countries
 lino_xl.lib.contacts
 lino.modlib.uploads
+lino_xl.lib.xl
 lino_xl.lib.polls
 lino_xl.lib.concepts
 lino.modlib.tinymce

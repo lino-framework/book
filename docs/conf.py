@@ -40,6 +40,13 @@ extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['atelier.sphinxconf.sigal_image']
 sigal_base_url = 'http://sigal.saffre-rumma.net'
 
+extensions += ['lino.sphinxcontrib.help_texts_extractor']
+help_texts_builder_targets = {
+    'lino.': 'lino.modlib.lino_startup',
+    # 'lino.modlib.': 'lino.modlib.lino_startup',
+    'lino_xl.': 'lino_xl.lib.xl'
+}
+
 if False:
     extensions += ['sphinxcontrib.blockdiag']
     # Fontpath for blockdiag (truetype font)
@@ -386,4 +393,4 @@ gettext_compact = True
 # autodoc_default_flags = ['no-imported-members']
 
 
-from lino.sphinxcontrib.help_text_builder import setup
+

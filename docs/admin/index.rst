@@ -77,5 +77,7 @@ Other
     install_shell_scripts
     oood
     linod
+    virtualenv
     tim2lino
     mysql_tune
+    du

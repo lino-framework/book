@@ -21,7 +21,7 @@ your database" by running the command::
 The :xfile:`manage.py` Python script is the standard Django interface
 for running a so-called **administrative task** (if you did't know
 that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.6/ref/django-admin/>`_).
+<https://docs.djangoproject.com/en/1.9/ref/django-admin/>`_).
 
 The :manage:`initdb_demo` command which we use here is a `custom
 django-admin command
@@ -43,8 +43,8 @@ The :manage:`initdb` command performs three actions in one:
 - and finally runs Django's `loaddata` command to load the specified
   fixtures.
 
-So the above line is equivalent to the following plain Django
-commands::
+So the above line is functionally equivalent to the following plain
+Django commands::
 
   $ python manage.py flush
   $ python manage.py migrate
@@ -59,14 +59,16 @@ changes to the database structure.  We assume that nobody will ever
 let a Lino application and some other application share the same
 database.
 
+.. _demo_fixtures:
+
 What are demo fixtures?
 =======================
 
 Note the three arguments ``std demo demo2`` to both the
 :manage:`loaddata` and :manage:`initdb` commands above.  These are
-names of so-called fixtures.
+names of so-called *fixtures*.
 
-A *fixture*, in Django, is a portion of data (a collection of data
+A **fixture**, in Django, is a portion of data (a collection of data
 records in one or several tables) which can be loaded into a database.
 Read more about fixtures in the `Providing initial data for models
 <https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_ article
@@ -75,7 +77,7 @@ of the Django documentation.
 Lino adds the concept of **demo fixtures**. These are a predefined set
 of fixture names to be specified by the application developer.  
 
-This is done in the :attr:`demo_fixtures
+This is done via the :attr:`demo_fixtures
 <lino.core.site.Site.demo_fixtures>` attribute.  The `min1` app has
 the following value for this attribute:
 
@@ -91,9 +93,9 @@ This just means that the :manage:`initdb_demo` command (at least in a
   $ python manage.py initdb std demo demo2
 
 The difference is that with :manage:`initdb_demo`, you don't need to
-know the list of demo fixtures, which can be long difficult to
+know the list of demo fixtures, which can be long and difficult to
 remember, and (more importantly) which can change when an application
 evolves.  System administrators usually don't *want* to know such
 details. As a future application developer you can learn more about
-them in :ref:`lino.tutorial.dpy`.
+them in :ref:`lino.tutorial.writing_fixtures`.
 

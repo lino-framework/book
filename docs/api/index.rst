@@ -23,6 +23,10 @@ applicaton.
 Lino Extensions Library
 =======================
 
+.. raw:: html
+
+   <a href="https://travis-ci.org/lino-framework/xl" target="_blank"><img src="https://travis-ci.org/lino-framework/xl.svg?branch=master"/></a>
+
 .. py2rst::
 
   import lino_xl
