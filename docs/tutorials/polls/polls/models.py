@@ -1,41 +1,43 @@
 import datetime
 from django.utils import timezone
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from lino.api import dd
 
 
-class Poll(dd.Model):
-    question = models.CharField("Question text", max_length=200)
+@python_2_unicode_compatible
+class Question(dd.Model):
+    question_text = models.CharField("Question text", max_length=200)
+    pub_date = models.DateTimeField('Date published', default=dd.today)
     hidden = models.BooleanField(
         "Hidden",
         help_text="Whether this poll should not be shown in the main window.",
         default=False)
-    #~ pub_date = models.DateTimeField('Date published',auto_now_add=True)
-    pub_date = models.DateTimeField('Date published', default=dd.today)
     
     class Meta:
-        verbose_name = 'Poll'
-        verbose_name_plural = 'Polls'
+        verbose_name = 'Question'
+        verbose_name_plural = 'Questions'
     
-    def __unicode__(self):
-        return self.question
+    def __str__(self):
+        return self.question_text
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
+@python_2_unicode_compatible
 class Choice(dd.Model):
-    poll = models.ForeignKey(Poll)
-    choice = models.CharField("Choice text", max_length=200)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField("Choice text", max_length=200)
     votes = models.IntegerField("No. of votes", default=0)
 
     class Meta:
         verbose_name = 'Choice'
         verbose_name_plural = 'Choices'
 
-    def __unicode__(self):
-        return self.choice
+    def __str__(self):
+        return self.choice_text
 
     @dd.action(help_text="Click here to vote this.")
     def vote(self, ar):
@@ -51,5 +53,4 @@ class Choice(dd.Model):
             return ar.confirm(yes, msg)
         return yes(ar)
 
-from .ui import *
 

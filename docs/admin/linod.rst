@@ -19,13 +19,20 @@ a production server.
 
     #!/bin/bash
     set -e  # exit on error
-    . /path/to/myprj/env/bin/activate
-    python /path/to/myprj/manage.py linod
+    cd /path/to/myprj
+    . env/bin/activate
+    exec python manage.py linod
 
-- Create a file :file:`myprj_linod.conf` in
+  Note: the `exec
+  <http://wiki.bash-hackers.org/commands/builtin/exec>`_ command is
+  needed here in order to avoid :ticket:`1086`. Thanks to `Paul
+  Lockaby
+  <https://lists.supervisord.org/pipermail/supervisor-users/2016-July/001636.html>`_
+
+- Create a file :file:`linod_myprj.conf` in
   :file:`/etc/supervisor/conf.d/` with this content::
 
-    [program:myprj_linod]
+    [program:linod_myprj]
     command=/path/to/myprj/linod.sh
     username = www-data
 

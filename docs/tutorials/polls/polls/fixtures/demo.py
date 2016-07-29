@@ -1,4 +1,4 @@
-from polls.models import Poll, Choice
+from polls.models import Question, Choice
 
 DATA = """
 What is your preferred colour? | Blue | Red | Yellow | other
@@ -11,7 +11,7 @@ def objects():
     for ln in DATA.splitlines():
         if ln:
             a = ln.split('|')
-            p = Poll(question=a[0].strip())
-            yield p
+            q = Question(question_text=a[0].strip())
+            yield q
             for choice in a[1:]:
-                yield Choice(choice=choice.strip(), poll=p)
+                yield Choice(choice_text=choice.strip(), question=q)

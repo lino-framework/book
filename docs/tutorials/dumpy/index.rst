@@ -98,7 +98,7 @@ Writing your own fixture
 Create a directory named :xfile:`fixtures` in your local project
 directory (the one you created in :ref:`lino.tutorial.hello`)::
 
-   $ cd ~/projects/mysite
+   $ cd ~/projects/hello
    $ mkdir fixtures
 
 Create an empty file :xfile:`__init__.py` in that directory to mark is

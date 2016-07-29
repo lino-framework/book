@@ -1,2 +1,3 @@
 from lino.projects.std.settings import *
-SITE = Site(globals(), 'tables', user_model=None)
+SITE = Site(globals(), 'tables')
+DEBUG = True

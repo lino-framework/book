@@ -1,19 +1,19 @@
 <div class="htmlText">
 <h1>Recent polls</h1>
 <ul>
-{% for poll in rt.models.polls.Poll.objects.filter(hidden=False).order_by('pub_date') %}
+{% for question in rt.models.polls.Question.objects.filter(hidden=False).order_by('pub_date') %}
 <li>
-{{poll.question}} 
+{{question.question_text}} 
 {% set sep = joiner(" / ") %}
-{% for obj in poll.choice_set.all() %}
+{% for choice in question.choice_set.all() %}
   {{ sep() }}
-  {{ obj.vote.as_button(ar, str(obj))}}
+  {{ choice.vote.as_button(ar, str(choice))}}
 {% endfor %}
-<br/><small>Published {{fdl(poll.pub_date)}}
+<br/><small>Published {{fdl(question.pub_date)}}
 <br/>Results:
 {% set sep = joiner(", ") %}
-{% for obj in poll.choice_set.all() %}
-  {{ sep() }}{{obj.votes}}x {{str(obj)}}
+{% for choice in question.choice_set.all() %}
+  {{ sep() }}{{choice.votes}}x {{str(choice)}}
 {% endfor %}
 </small>
 </li>

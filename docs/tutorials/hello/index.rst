@@ -31,10 +31,18 @@ We suppose that you have installed Lino the framework as described in
 The project directory
 =====================
 
-Create an empty directory which will become your *project directory*::
+Create an empty directory which will hold all your Lino projects::
 
-    $ mkdir ~/projects/mysite
-    $ cd ~/projects/mysite
+    $ mkdir ~/projects
+
+This is your projects root. You can choose another name, just keep in
+mind that our examples are based on this choice.
+
+Create an empty directory in your projects root which will become your
+first *project directory*::
+
+    $ mkdir ~/projects/hello
+    $ cd ~/projects/hello
 
 Create an empty file :xfile:`__init__.py` in this directory in order
 to make it usable as a Python package::
@@ -112,19 +120,18 @@ comes with every Lino application.
 It will ask you::
 
     INFO Started manage.py initdb_demo (using settings) --> PID 28463
-    INFO This is yet another Lino site using Lino 1.6.17, Django 1.6.9, Python 2.7.4, Babel 1.3, Jinja 2.7.3, Sphinx 1.3b3, python-dateutil 2.1, OdfPy ODFPY/0.9.6, docutils 0.11, suds 0.4, PyYaml 3.10, Appy 0.9.0 (2014/06/23 22:15).
-    INFO Languages: en, de. 12 apps, 26 models, 81 actors.
-    We are going to flush your database (/home/luc/hgwork/lino/docs/tutorials/hello/default.db).
+    We are going to flush your database (.../default.db).
     Are you sure (y/n) ?
 
 If you answer "y" here, then Lino will delete everything in the given
 database and replace it with its "factory default" demo data.  Yes,
-that's what you want. So go on and type ``y``.
+that's what we want. So go on and type ``y``.
 
 The output that follows should look like this:
 
 >>> shell("python manage.py initdb_demo --noinput")
-... #doctest: +ELLIPSIS
+... #doctest: +ELLIPSIS +REPORT_UDIFF
+`initdb std demo demo2` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: gfks, about, jinja, office, countries, staticfiles, contacts, system, xl, printing, lino_startup, cal, users, extjs, export_excel, bootstrap3
   Apply all migrations: contenttypes, sessions
@@ -217,7 +224,7 @@ which should output something like::
   
   Validating models...
   0 errors found
-  Django version 1.4.5, using settings 'mysite.settings'
+  Django version 1.4.5, using settings 'hello.settings'
   Development server is running at http://127.0.0.1:8000/
   Quit the server with CTRL-BREAK.
 
