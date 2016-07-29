@@ -11,7 +11,7 @@ class Site(Site):
 
     def setup_menu(self, profile, main):
         m = main.add_menu("polls", "Polls")
-        m.add_action('polls.Polls')
+        m.add_action('polls.Questions')
         m.add_action('polls.Choices')
         super(Site, self).setup_menu(profile, main)
 

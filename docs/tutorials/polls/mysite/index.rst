@@ -10,6 +10,10 @@ The Lino Polls tutorial
 In this tutorial we are going to take the "Polls" application from
 Django's tutorial and turn it into a Lino application.
 
+The result of this tutorial is available as a public live demo at
+http://demo1.lino-framework.org
+
+
 .. currentmodule:: lino.core.site
 
 .. contents:: Table of Contents
@@ -20,23 +24,29 @@ Django's tutorial and turn it into a Lino application.
 Create a local Django project
 -----------------------------
 
-Before reading on, please follow Part 1 of the Django tutorial.  Lino
-is just a set of extensions for a Django project, so there is a lot of
-Django know-how which applies entirely for a Lino application.
-
-There we go: 
+Lino is just a set of extensions for a Django project, so there is a
+lot of Django know-how which applies entirely for a Lino application.
+So before reading on, please follow Part 1 of the *Django* tutorial
+(just parts 1 & 2, not the whole tutorial):
 
   `Writing your first Django app, part 1
-  <https://docs.djangoproject.com/en/1.6/intro/tutorial01/>`_.  
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/>`__.  
 
-Just part 1, not the whole tutorial.  Afterwards we meet here again.
-See you later!  And don't panic if you read the warning "This document
-is for an insecure version of Django that is no longer
-supported. Please upgrade to a newer release!" (when your first
-application is ready for production, we will have updated Lino to play
-with newer Django versions).
 
 Done? Okay, here we continue.
+
+We now leave the Django philosophy and continue "the Lino way" of
+writing web applications.  
+
+- In Lino you don't need to write views (so don't worry if you found
+  the `Write your first view
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/#write-your-first-view>`__
+  section difficult),
+
+- Lino is an alternative to Django's Admin module (so you won't need
+  the `Explore the free admin functionality
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
+  section in the future).
 
 You have now a set of files in your "project directory"::
 
@@ -50,32 +60,32 @@ You have now a set of files in your "project directory"::
         polls/
             __init__.py
             admin.py
+            apps.py
+            migrations/
+                __init__.py
             models.py
             tests.py
             views.py
 
 
-The Django tutorial continues (in part 2) by introducing Django's
-**Admin** module to create a web interface.  We now leave the Django
-philosophy and continue "the Lino way" of defining our application's
-web interface.  Lino is an alternative to Django's Admin module.
 
-Most files remain unchanged, they are the same as with every Django project:
-:xfile:`__init__.py`, :xfile:`manage.py`,
-:xfile:`urls.py`, :xfile:`views.py` and :xfile:`wsgi.py`.
+Some files remain unchanged: :xfile:`__init__.py`, :xfile:`manage.py`
+and :xfile:`wsgi.py`.
 
-But we are now going to modify the files 
+You can throw away (yes, remove) the files :xfile:`urls.py`,
+:xfile:`views.py`.
+
+And then we are now going to modify the files 
 :file:`mysite/settings.py` and
 :file:`polls/models.py`.
 
 The :file:`settings.py` file
 -----------------------------
 
-Lino uses some tricks to make :ref:`Django settings <settings>` more
-pleasant to work with, especially if you maintain Lino sites for
-several customers. We will come back to this later.  For the moment
-just change the contents of your :xfile:`settings.py` to the
-following:
+Lino uses some tricks to make Django settings modules more pleasant to
+work with, especially if you maintain Lino sites for several
+customers. We will come back to this later.  For the moment just
+change the contents of your :xfile:`settings.py` to the following:
 
 .. literalinclude:: settings.py
 
@@ -139,47 +149,58 @@ The :file:`models.py` file
 
 A few explanations while looking at that file:
 
-- The :mod:`lino.dd` module is a shortcut to most Lino extensions 
+- The :mod:`lino.api.dd` module is a shortcut to most Lino extensions 
   used by application programmers in their `models.py` modules. 
   `dd` stands for "data design".
   
 - :class:`dd.Model <lino.core.model.Model>` is an optional (but
   recommended) wrapper around Django's Model class.  For this tutorial
-  you could use Django's `models.Model` as well, but we recommend to
-  use :class:`dd.Model <lino.core.model.Model>`.
+  you could use Django's `models.Model` as well, but in general we
+  recommend to use :class:`dd.Model <lino.core.model.Model>`.
 
 - There's one **custom action** in our application, defined as the
   `vote` method on the `Choice` model, using the :func:`dd.action
   <lino.core.actions.action>` decorator. More about actions in the
   Actions_ section.
 
-The last line imports everything from a new file you should create
-now: the :file:`ui.py` file.
 
-
-The :file:`ui.py` file
-----------------------
+The :file:`desktop.py` file
+---------------------------
 
 Now please create (in the same directory as your :xfile:`models.py`) a
-file named :file:`ui.py` with the following content.
+file named :file:`desktop.py` with the following content.
 
-.. literalinclude:: ../polls/ui.py
+.. literalinclude:: ../polls/desktop.py
 
+This file defines three **table definitions** for our application.
+Tables are an important new concept in Lino.  
 
-This file defines three **Table** definitions for our application.
-Tables are an important new concept in Lino.  We will learn more about them
-soon in the Tables_ section.  For now just note that we defined one
-table per model (`Polls` for the `Poll` model and `Choices` for the
-`Choice` model) plus one additional table `ChoicesByPoll` which
-inherits from `Choices`.
-  
+Tables
+------
+
+When you have finished to play around with your first application, let
+us explain you a few things about that new Lino-specific concept which
+we call "tables".
+
+We will learn more about in another tutorial :ref:`lino.tutorial.tables`.
+For now just note that 
+
+- we defined one table per model (`Questions` for the `Question` model
+  and `Choices` for the `Choice` model)
+
+- plus one additional table `ChoicesByQuestion` which inherits from
+  `Choices`. This table is a *slave table* because it shows the
+  choices *for a given question*.  That given question is called the
+  "master" of these choices.  We also say that a slave table *depends*
+  on its master.
+
   
 Changing the database structure
 -------------------------------
 
 One more thing before seeing a result.  We made at least one change in
 our :xfile:`models.py` file after the Django tutorial: we added the
-`hidden` field of a Poll::
+`hidden` field of a Question::
 
     hidden = models.BooleanField(
         "Hidden",
@@ -187,7 +208,7 @@ our :xfile:`models.py` file after the Django tutorial: we added the
         default=False)
 
 To be more precise: Django and Lino "know" that we added a field named
-`hidden` in the `Polls` table of our database, **but** the database
+`hidden` in the `Questions` table of our database, **but** the database
 doesn't yet know it.  If you would run your application now, then you
 would get some "operational" database error because Lino would ask the
 database to read or update this field, and the database would answer
@@ -313,25 +334,25 @@ Explanations:
   neutralizes the "usual" effects of most html tags.
 
     
-- ``site.modules`` : Every Lino site has an instance attribute ``modules``
+- ``site.models`` : Every Lino site has an instance attribute ``models``
   which is a shortcut to access the models and tables of the application.
   Usually it is better to write
   
   ::
 
-    Poll = site.modules.polls.Poll
+    Question = site.models.polls.Question
 
   instead of
   
   ::
 
-    from site.modules.polls.models import Poll
+    from site.models.polls.models import Question
   
   because the latter hard-wires the location of the `polls` app.
     
 - If `objects`, `filter()` and `order_by()` are new to you, 
   then please read the `Making queries 
-  <https://docs.djangoproject.com/en/dev/topics/db/queries>`_
+  <https://docs.djangoproject.com/en/1.9/topics/db/queries>`__
   chapter of Django's documentation. 
   Lino is based on Django, and Django is known for its good documentation. Use it!
 
@@ -377,7 +398,7 @@ of our `Choice` model in action:
     :scale: 50
     
     
-After selecting :menuselection:`Polls --> Polls` in the main menu, 
+After selecting :menuselection:`Polls --> Questions` in the main menu, 
 Lino opens that table in a **Grid Window**:
     
 .. image:: polls3.jpg
@@ -389,7 +410,7 @@ setting column filters, editing individual cells,
 and a context menu.
   
 After double-clicking on a row in the previous screen, Lino shows 
-the **Detail Window** on that Poll:
+the **Detail Window** on that Question:
 
 .. image:: polls4.jpg
     :scale: 50
@@ -400,18 +421,18 @@ your :file:`models.py` file::
     detail_layout = """
     id question 
     hidden pub_date
-    ChoicesByPoll
+    ChoicesByQuestion
     """
 
 To add a Detail Window to a table, you simply add a
 :attr:`detail_layout <lino.core.actors.Actor.detail_layout>` attribute to the
 Table's class definition.
     
-Not all tables have a Detail Window.  In our case the `Polls` table
-has one, but the `Choices` and `ChoicesByPoll` tables don't.
-Double-clicking on a cell of a Poll will open the Detail Window, but
+Not all tables have a Detail Window.  In our case the `Questions` table
+has one, but the `Choices` and `ChoicesByQuestion` tables don't.
+Double-clicking on a cell of a Question will open the Detail Window, but
 double-clicking on a cell of a Choice will start cell editing.  Note
-that can still edit an individual cell of a Poll in a Grid Window by
+that can still edit an individual cell of a Question in a Grid Window by
 pressing the :kbd:`F2` key.
   
 After clicking the :guilabel:`New` button, you can admire 
@@ -420,7 +441,7 @@ an **Insert Window**:
 .. image:: polls5.jpg
     :scale: 50
     
-This one exists because Polls has the following 
+This one exists because Questions has the following 
 :attr:`insert_layout <lino.core.actors.Actor.insert_layout>` attribute:: 
 
     insert_layout = dd.FormLayout("""
@@ -443,89 +464,6 @@ background (don't worry about that for the moment).
     :scale: 50
 
 
-Tables
-------
-
-When you have finished to play around with your first application, let
-us explain you a few things about that new Lino-specific concept which
-we call "tables".
-
-Remember that we defined 
-
-- one table per model (`Polls` for the `Poll` model and `Choices` for
-  the `Choice` model)
-
-- plus one additional table `ChoicesByPoll` which inherits from
-  `Choices`.
-
-For this tutorial we defined our tables in a separate :xfile:`ui.py`
-file, but that's just one way of doing it. You might as well define
-them in your :xfile:`models.py` file together with the models. The
-important thing is that they must get imported when Django loads your
-models.  To define Tables, you simply need to declare their classes.
-Lino discovers and analyzes them when it initializes.  Tables never
-get instantiated.
-
-A table is the pythonic definition of a tabular view.  As a rule of
-thumb you can say that you need one table for every grid view of your
-application. Each of them is a subclass of :class:`dd.Table
-<lino.core.dbtables.Table>`.
-
-Each table class must have at least one class attribute :attr:`model
-<lino.core.dbtables.Table.model>` defined. This points to the model on
-which this table will "work". Every row of a table represents an
-instance of its model. (This is true only for *database* tables. Lino
-also has *virtual* tables, we will talk about them in a :doc:`later
-tutorial </tutorials/vtables/index>`).
-
-A table has attributes like :attr:`filter
-<lino.core.tables.AbstractTable.filter>` and :attr:`order_by
-<lino.core.tables.AbstractTable.order_by>` which you know from Django's
-`QuerySet API
-<https://docs.djangoproject.com/en/1.9/ref/models/querysets/>`_.
-
-A table is like a grid widget, 
-it has attributes like :attr:`column_names
-<lino.core.tables.AbstractTable.column_names>` which describe how to
-display it to the user.
-
-But the table is even more than the definition of a grid widget.  It
-also has Lino-specific attributes like :attr:`detail_layout
-<lino.core.actors.Actor.detail_layout>` which tells it how to display
-a single record in a form view.
-
-There are a lot of other options for tables, 
-and a consistent overview has yet to be written.
-But you can try to work through the API docs, 
-knowing that
-:class:`lino.core.dbtables.Table` 
-inherits from
-:class:`lino.core.tables.AbstractTable` 
-who inherits from
-:class:`lino.core.actors.Actor`.
-
-
-Since tables are normal Python classes 
-they can use inheritance.
-In our code `ChoicesByPoll` inherits from `Choices`. 
-That's why we don't need to explicitly specify 
-a `model` attribute for `ChoicesByPoll`.
-
-`ChoicesByPoll` is an example of a **slave table**.
-`ChoicesByPoll` means: the table of `Choices` of a given `Poll`. 
-This given Poll is called the "master" of these Choices.
-We also say that a slave table *depends* on its master.
-
-Lino manages this dependency almost automatically.  The application
-developer just needs to specify a class attribute :attr:`master_key
-<lino.core.tables.AbstractTable.master_key>`.  This attribute, when
-set, must be a string containing the name of a `ForeignKey` field
-which must exist in the Table's model.
-
-Note that you can define more than one Table per Model.  This is a
-fundamental difference from Django's concept of the `ModelAdmin` class
-and `Model._meta` options.
-
 
 Actions
 -------
@@ -546,20 +484,21 @@ of information:
 
 Many actions are created automatically by Lino. For example:
 
-- each table has a "default action" which is 
-  to open a window which displays this table as a grid.
-  That's why (in the :meth:`setup_main_menu <dd.Site.setup_main_menu>`
+- each table has a "default action" which is to open a window which
+  displays this table as a grid.  That's why (in the
+  :meth:`setup_main_menu <lino.core.plugin.Site.setup_main_menu>`
   function of your :file:`polls/models.py`) you can say::
 
     def setup_main_menu(site, ui, profile, main):
         m = main.add_menu("polls", "Polls")
-        m.add_action('polls.Polls')
+        m.add_action('polls.Questions')
         m.add_action('polls.Choices')
 
 
-  The :meth:`add_action <lino.core.menus.Menu.add_action>` method of Lino's 
-  :class:`lino.core.menus.Menu` is smart enough to understand that if you 
-  specify a Table, you mean in fact that table's default action.
+  The :meth:`add_action <lino.core.menus.Menu.add_action>` method of
+  Lino's :class:`lino.core.menus.Menu` is smart enough to understand
+  that if you specify a Table, you mean in fact that table's default
+  action.
 
 - The :guilabel:`Save`, :guilabel:`Delete` and :guilabel:`New` buttons
   in the bottom toolbar of the Detail window have their own
@@ -611,12 +550,9 @@ information about the web request and provides methods like
 Summary
 -------
 
-In this tutorial we followed Part 1 of the Django Tutorial, 
-then continued the Lino way and explained two important new Lino concepts: 
-Tables and Actions
-
-The result of this tutorial is available as a public 
-live demo at http://demo1.lino-framework.org
+In this tutorial we followed the first two chapters of the Django
+Tutorial, then continued the Lino way and introduced two concepts
+which Lino adds to Django: Tables and Actions
 
 
 

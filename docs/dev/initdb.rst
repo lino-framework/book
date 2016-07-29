@@ -25,7 +25,7 @@ that, please read `django-admin.py and manage.py
 
 The :manage:`initdb_demo` command which we use here is a `custom
 django-admin command
-<https://docs.djangoproject.com/en/1.6/howto/custom-management-commands/>`_
+<https://docs.djangoproject.com/en/1.9/howto/custom-management-commands/>`_
 provided by Lino.  It does nothing else than to call :manage:`initdb`
 with the so-called *demo fixtures* as argument. So now you'll ask:
 what is the :manage:`initdb` command, and what are demo fixtures?

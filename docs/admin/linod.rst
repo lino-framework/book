@@ -21,7 +21,13 @@ a production server.
     set -e  # exit on error
     cd /path/to/myprj
     . env/bin/activate
-    python manage.py linod
+    exec python manage.py linod
+
+  Note: the `exec
+  <http://wiki.bash-hackers.org/commands/builtin/exec>`_ command is
+  needed here in order to avoid :ticket:`1086`. Thanks to `Paul
+  Lockaby
+  <https://lists.supervisord.org/pipermail/supervisor-users/2016-July/001636.html>`_
 
 - Create a file :file:`linod_myprj.conf` in
   :file:`/etc/supervisor/conf.d/` with this content::

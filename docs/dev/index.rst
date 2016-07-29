@@ -213,6 +213,7 @@ Other
    py3
    logging
    linod
+   design
 
 
 

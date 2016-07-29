@@ -1,19 +1,18 @@
-# The is file ui.py of the Lino polls tutorial
 from lino.api import dd
 
 
-class Polls(dd.Table):
-    model = 'polls.Poll'
+class Questions(dd.Table):
+    model = 'polls.Question'
     sort_order = ['pub_date']
 
     detail_layout = """
-    id question
+    id question_text
     hidden pub_date
-    ChoicesByPoll
+    ChoicesByQuestion
     """
 
     insert_layout = """
-    question
+    question_text
     hidden
     """
 
@@ -22,6 +21,6 @@ class Choices(dd.Table):
     model = 'polls.Choice'
 
 
-class ChoicesByPoll(Choices):
-    master_key = 'poll'
+class ChoicesByQuestion(Choices):
+    master_key = 'question'
 
