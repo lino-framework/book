@@ -181,21 +181,21 @@ The ``Instantiator`` class
 
 Since `.py` fixtures are normal Python modules, there are no more
 limits to our phantasy when creating new objects.  A first thing that
-drops into mind is: there should be a more "compact" way to create
-many records of a same table.
+might drop into our mind is that there should be a more "compact" way
+to create many records of a same table.
 
-A quick generic method for for writing more compact fixtures this is
-the :class:`Instantiator <lino.utils.instantiator.Instantiator>`
-class.  Here is the same fixture in a more compact way using an
-instantiator:
+A quick generic method for writing more compact fixtures this is the
+:class:`Instantiator <lino.utils.instantiator.Instantiator>` class.
+Here is the same fixture using an instantiator:
 
 .. literalinclude:: fixtures/dumpy2.py
     :linenos:
 
 
-Not that the name ``User`` in that file refers to the :meth:`build
+Note that the name ``User`` in that file refers to the :meth:`build
 <lino.utils.instantiator.Instantiator.build>` method of an
-:class:`Instantiator <lino.utils.instantiator.Instantiator>` instance.
+:class:`Instantiator <lino.utils.instantiator.Instantiator>` instance,
+not to some User model.
 
 The :class:`Instantiator <lino.utils.instantiator.Instantiator>` class
 is just a little utility. It helps us to eliminate some lines of the
@@ -209,7 +209,7 @@ Python fixtures are intelligent
 ===============================
 
 Python fixtures are a powerful tool.  You can use them to generate
-random and massive amount of data. Look for example at the source code
+demo data in many different ways. Look for example at the source code
 of the following fixtures:
 
 - :mod:`lino_xl.lib.notes.fixtures.demo`.
@@ -223,6 +223,7 @@ of the following fixtures:
 - :mod:`lino_xl.lib.countries.fixtures.few_cities`
 - :mod:`lino_xl.lib.countries.fixtures.all_cities`
 - :mod:`lino_xl.lib.countries.fixtures.be`
+- :mod:`lino_xl.lib.countries.fixtures.eesti`
 
 - :mod:`lino.modlib.languages.fixtures.few_languages`
 - :mod:`lino.modlib.languages.fixtures.all_languages`
