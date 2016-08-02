@@ -13,7 +13,7 @@ module by issuing either::
 
 or::
 
-  $ go lino
+  $ go book
   $ python setup.py test -s tests.ProjectsTests.test_min2
 
 
@@ -135,7 +135,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(bernard.dupable_words.count(), 2)
         self.assertEqual(DupableWord.objects.count(), 2)
         words = [o.word for o in DupableWord.objects.filter(owner=bernard)]
-        self.assertEqual(words, [u'PTRT', u'PRNR'])
+        self.assertEqual(words, [u'PTRT', u'PRNRT'])
 
         bernard2 = create(Person, first_name="Bodard", last_name="Bernard")
         bernard3 = create(
