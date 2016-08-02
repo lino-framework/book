@@ -75,9 +75,9 @@ directory and and do::
 
   $ mkdir ~/repositories
   $ cd ~/repositories
-  $ git clone https://github.com/lsaffre/lino.git
+  $ git clone https://github.com/lino-framework/lino.git
   $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lsaffre/lino_book.git book
+  $ git clone https://github.com/lino-framework/book.git
 
 You should now have three directories called `~/repositories/lino`,
 `~/repositories/xl` and `~/repositories/book`, each of which contains
