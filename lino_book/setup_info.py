@@ -19,7 +19,7 @@ PY3 = sys.version_info[0] == 3
 SETUP_INFO = dict(
     name='lino_book',
     version='1.7.4',
-    install_requires=['lino'],
+    install_requires=['lino', 'selenium'],
     tests_require=[],
     # pisa has a bug which makes it complain that "Reportlab Version
     # 2.1+ is needed!" when reportlab 3 is installed.
