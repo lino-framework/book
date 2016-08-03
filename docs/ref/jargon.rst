@@ -46,3 +46,10 @@ Lino application developer
 A Lino application developer is a Python programmer who uses Lino while 
 writing his own application.
 
+
+.. _install_requires:
+
+install_requires
+----------------
+
+See http://python-packaging.readthedocs.io/en/latest/dependencies.html

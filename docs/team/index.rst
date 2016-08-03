@@ -12,6 +12,6 @@ This section describes how the members of a Lino team collaborate.
    roles
    newbies
    deploy
-   tools
+   noi_intro
 
 

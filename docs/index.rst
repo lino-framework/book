@@ -21,6 +21,8 @@ Sitemap
 
    about/index
    demos
+   Developer's Guide </dev/index>
+   Administrator's Guide </admin/index>
    documentation
    community/index
    blog

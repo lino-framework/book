@@ -75,9 +75,9 @@ directory and and do::
 
   $ mkdir ~/repositories
   $ cd ~/repositories
-  $ git clone https://github.com/lsaffre/lino.git
+  $ git clone https://github.com/lino-framework/lino.git
   $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lsaffre/lino_book.git book
+  $ git clone https://github.com/lino-framework/book.git
 
 You should now have three directories called `~/repositories/lino`,
 `~/repositories/xl` and `~/repositories/book`, each of which contains
@@ -119,7 +119,7 @@ currently don't plan to work on any other project which requires a
 different environment.
 
 We chose ``a`` as name for this environment. You might prefer
-``linodev`` or ``my_first_environment``.
+``lino``, ``dev`` or ``my_first_environment``.
 
 You might prefer to create a new environment for every project and
 store it below your project directory (see below `Project

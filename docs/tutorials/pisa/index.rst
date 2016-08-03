@@ -3,6 +3,9 @@
 Printing using Pisa
 -------------------
 
+This tutorial is no longer part of the test suite because
+:mod:`lino.modlib.print_pisa` is deprecated.
+
 .. how to run just this test:
 
     $ python setup.py test -s tests.DocsTests.test_pisa
