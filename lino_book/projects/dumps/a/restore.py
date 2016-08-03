@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# This is a Python dump created using Lino 1.7.5, Django 1.9.8, Python 2.7.12, Babel 2.3.4, Jinja 2.8, Sphinx 1.4.5, python-dateutil 2.5.3, OdfPy ODFPY/1.3.3, docutils 0.12, suds 0.4, PyYaml 3.11, Appy 0.9.4 (2016/07/28 13:39).
+# This is a Python dump created using dump2py.
 # DJANGO_SETTINGS_MODULE was 'lino_book.projects.dumps.settings.a', TIME_ZONE was None.
 
 
