@@ -119,7 +119,7 @@ currently don't plan to work on any other project which requires a
 different environment.
 
 We chose ``a`` as name for this environment. You might prefer
-``linodev`` or ``my_first_environment``.
+``lino``, ``dev`` or ``my_first_environment``.
 
 You might prefer to create a new environment for every project and
 store it below your project directory (see below `Project
