@@ -8,6 +8,15 @@ Python dumps
 
     $ python setup.py test -s tests.SpecsTests.test_dumps
 
+.. If this fails just because of version differences in the "This is a
+   Python dump created using ..." header, then I need to run::
+
+   $ python manage_a.py dump2py a --overwrite
+   $ python manage_b.py dump2py b --overwrite
+
+
+    
+
 
 A series of usage examples for :ref:`Python dumps <dpy>`.
 
@@ -78,12 +87,6 @@ Verify that the newly created dump is as expected:
 ... #doctest: +ELLIPSIS
 <BLANKLINE>
 
-If the above test fails, then (after having checked why the files
-differ) I probably need to run::
-
-   $ python manage_a.py dump2py a --overwrite
-
-
 Load the dump, dump again and verify that both dumps are the same:
 
 >>> shell("python manage_a.py run a/restore.py --noinput")
@@ -144,12 +147,6 @@ Verify that the newly created dump is as expected:
 >>> shell("diff b tmp/b")
 ... #doctest: +ELLIPSIS
 <BLANKLINE>
-
-Again, if the above test fails, then (after having checked why the
-files differ) I probably need to run::
-
-   $ python manage_b.py dump2py b --overwrite
-
 
 Load the dump, dump again and verify that both dumps are the same:
 

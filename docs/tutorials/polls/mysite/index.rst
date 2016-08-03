@@ -301,35 +301,28 @@ The main index
 The following template is used to build the HTML to be displayed in
 our Main Window.
 
-Create a directory named ``config`` under your project directory, and
-in that directory create a file named `admin_main.html` with the
-following content:
+Create a directory named :file:`mysite/config`, and in that directory
+create a file named :xfile:`admin_main.html` with the following
+content:
 
 .. literalinclude:: config/admin_main.html
 
 Explanations:
 
-- ``<div class="htmlText">`` specifies that this fragment 
-  contains simple html text inside an ExtJS component. 
-  This is required because ExtJS does a lot of CSS magic which 
-  neutralizes the "usual" effects of most html tags.
-
-    
-- ``site.models`` : Every Lino site has an instance attribute ``models``
-  which is a shortcut to access the models and tables of the application.
+- :attr:`rt.models <lino.core.site.Site.models>` : is a shortcut to access the models and tables of the application.
   Usually it is better to write
   
   ::
 
-    Question = site.models.polls.Question
+    Question = rt.models.polls.Question
 
   instead of
   
   ::
 
-    from site.models.polls.models import Question
+    from polls.models import Question
   
-  because the latter hard-wires the location of the `polls` app.
+  because the latter hard-wires the location of the `polls` plugin.
     
 - If `objects`, `filter()` and `order_by()` are new to you, 
   then please read the `Making queries 
@@ -349,7 +342,6 @@ Explanations:
   which returns a HTML fragment that displays a button-like 
   link which will run the action when clicked.
   More about this in Actions_.
-
 
 
 

@@ -1,4 +1,4 @@
-<div class="htmlText">
+<div style="margin:5px">
 <h1>Recent polls</h1>
 <ul>
 {% for question in rt.models.polls.Question.objects.filter(hidden=False).order_by('pub_date') %}
