@@ -7,7 +7,15 @@ before_install:
   - sudo apt-get install -y libreoffice
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install html5lib==0.9999999 ; pip install -U setuptools ; pip install -r requirements.txt ; pip install -e .
+install:
+  - pip install html5lib==0.9999999
+  - pip install -U setuptools
+  - pip install coveralls
+  - pip install -r requirements.txt
+  - pip install -e .
 # command to run tests, e.g. python setup.py test
 script:  export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache ; mkdir $LINO_CACHE_ROOT; inv initdb test
+
+after_success: coveralls
+
 
