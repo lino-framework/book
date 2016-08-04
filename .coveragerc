@@ -3,5 +3,5 @@
 #branch = True
 cover_pylib = False
 parallel = True
-source = ../lino/lino;../xl/lino_xl;lino_book
+source = lino,lino_xl,lino_book
 omit = *test*.py
