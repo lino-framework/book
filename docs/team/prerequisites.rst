@@ -16,6 +16,7 @@ for example
 - the difference between a class method and an instance method
 - what's a generator
 - what's a decorator
+- when and how to use subprocesses and threads
 - what are the following standard modules used for:
   `datetime`,  `sys`,  `os`, `re`,  `decimal`,  `logging`, ... 
 - the major differences between Python 2 and 3
@@ -29,7 +30,7 @@ Lino applications are Django projects.
   (You should have followed the `Tutorial <https://docs.djangoproject.com/en/dev/>`_)
   You know what a :xfile:`settings.py` file is.
 - You know most about Django's model layer : the ``Model`` class,
-  the field types, executing database queries
+  the field types, executing database queries, ...
 
 
 Git
