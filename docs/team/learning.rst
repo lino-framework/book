@@ -23,6 +23,9 @@ Python
 - `Think Python 2e <http://greenteapress.com/wp/think-python-2e/>`__
   is an introduction to Python programming for beginners.
 
+- Mike Driscoll's `Python 201: A Tutorial on Threads <http://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/>`_
+  
+
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
 
 Django

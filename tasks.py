@@ -4,8 +4,8 @@ ns.setup_from_tasks(
     # tolerate_sphinx_warnings=True,
     blogref_url="http://luc.lino-framework.org",
     revision_control_system='git',
-    help_texts_source='docs',
-    help_texts_module='lino_xl.lib.xl',
+    # help_texts_source='docs',
+    # help_texts_module='lino_xl.lib.xl',
     cleanable_files=[
         'docs/rss_entry_fragments/*',
         'docs/api/lino.*',
@@ -19,4 +19,8 @@ ns.setup_from_tasks(
         'lino_book.projects.max.settings.demo',
         'lino_book.projects.i18n.settings',
         'lino_book.projects.min1.settings.demo',
-        'lino_book.projects.min2.settings.demo'])
+        'lino_book.projects.min2.settings.demo',
+        'lino_book.projects.apc.settings.demo',
+        'lino_book.projects.pierre.settings.demo',
+        'lino_book.projects.cosi_ee.settings.demo',
+    ])
