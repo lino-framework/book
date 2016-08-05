@@ -53,3 +53,23 @@ install_requires
 ----------------
 
 See http://python-packaging.readthedocs.io/en/latest/dependencies.html
+
+
+
+.. _book:
+
+The Lino Book
+-------------
+
+The Lino Book is a repository used for educational and testing
+purposes.  It contains the big Sphinx documentation tree about the
+Lino framework (published on http://www.lino-framework.org/).
+
+It contains also the :mod:`lino_book` Python package which contains
+nothing but a set of example Lino applications.
+
+The code repositories for :mod:`lino` and :mod:`lino_xl` (the Python
+packages) have no documentation tree on their own, their documentation
+and many tests are done in :ref:`book`.
+
+
