@@ -211,6 +211,12 @@ class SpecsTests(TestCase):
     def test_help_texts(self):
         self.run_simple_doctests('docs/specs/help_texts.rst')
 
+    def test_cosi_ee(self):
+        self.run_simple_doctests('docs/specs/cosi_ee.rst')
+        
+    def test_ajax(self):
+        self.run_simple_doctests('docs/specs/ajax.rst')
+
 
 class ProjectsTests(LinoTestCase):
     
@@ -232,6 +238,12 @@ class ProjectsTests(LinoTestCase):
 
     def test_min2(self):
         self.run_django_manage_test("lino_book/projects/min2")
+
+    def test_apc(self):
+        self.run_django_manage_test('lino_book/projects/apc')
+
+    def test_cosi_ee(self):
+        self.run_django_manage_test('lino_book/projects/cosi_ee')
 
 
 class TestAppsTests(LinoTestCase):

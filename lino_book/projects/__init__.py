@@ -34,6 +34,17 @@ Examples covered by a tutorial:
 - :mod:`lino_book.projects.babel_tutorial` ---
   See :ref:`mldbc_tutorial`
 
+
+Three examples of localized :ref:`cosi` applications:
+
+.. autosummary::
+   :toctree:
+
+   apc
+   pierre
+   cosi_ee
+
+
 Technical
 
 .. autosummary::
