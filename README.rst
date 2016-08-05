@@ -8,11 +8,18 @@ Description
 -----------
 
 
-This is the main documentation tree about the Lino framework.  It
-covers three software packages and contains example code to be used
-for educational and testing purposes.
+The Lino Book is a code repository used for educational and testing
+purposes.  It contains the big Sphinx documentation tree about the
+Lino framework published on http://www.lino-framework.org/.
 
-Central documentation is published at http://www.lino-framework.org
+It also contains the ``lino_book`` Python package, a collection of
+small example Lino applications.
+
+The code repositories for the ``lino`` and ``lino_xl`` Python packages
+have no documentation tree on their own, their documentation is here.
+
+It also contains a big test suite which runs doctest-based tests for
+all these packages.
 
 
 
