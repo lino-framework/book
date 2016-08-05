@@ -19,8 +19,7 @@ from lino.projects.std.settings import *
 
 class Site(Site):
 
-    demo_fixtures = 'std few_countries euvatrates furniture \
-    demo demo2'.split()
+    demo_fixtures = 'std few_countries demo demo2'.split()
 
     verbose_name = "Lino Docs"
 

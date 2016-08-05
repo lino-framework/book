@@ -28,7 +28,7 @@ class Site(Site):
     #~ author_email = 'luc.saffre@gmail.com'
 
     # demo_fixtures = 'std few_countries few_cities vor'.split()
-    demo_fixtures = 'std demo vor'.split()
+    demo_fixtures = 'demo vor'.split()
 
     languages = 'de fr nl'
     #~ languages = ['de','fr','nl']

@@ -19,8 +19,7 @@ class Site(Site):
 
     #~ help_url = "http://lino.saffre-rumma.net/az/index.html"
 
-    demo_fixtures = 'std few_languages demo demo2'.split(
-    )
+    demo_fixtures = 'std demo demo2'.split()
 
     #~ project_model = 'contacts.Person'
     #~ project_model = 'courses.Pupil'

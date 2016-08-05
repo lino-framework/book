@@ -19,8 +19,7 @@ import lino_xl
 
 class Site(Site):
 
-    demo_fixtures = 'std few_countries euvatrates furniture \
-    demo demo2'.split()
+    demo_fixtures = 'std few_countries demo demo2'.split()
 
     verbose_name = "Lino Max"
     version = lino_xl.__version__

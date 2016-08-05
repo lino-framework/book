@@ -68,7 +68,11 @@ demonstrate the possible error messages):
 
 >>> shell("python manage_a.py dump2py")
 ... #doctest: +ELLIPSIS
-CommandError: No output_dir specified.
+usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--noinput]
+                           [--tolerate] [-o]
+                           output_dir
+manage_a.py dump2py: error: too few arguments
+
 
 >>> shell("python manage_a.py dump2py a")
 ... #doctest: +ELLIPSIS
