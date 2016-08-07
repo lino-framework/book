@@ -1,7 +1,7 @@
 .. _lino.team:
 
 ==============
-Teamwork guide
+Teamwork Guide
 ==============
 
 This section describes how the members of a Lino team collaborate.

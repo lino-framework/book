@@ -64,7 +64,3 @@ class Demand(dd.Model):
         return "%s (%s)" % (self.product, self.customer)
 
 
-# Import all tables so that they get discovered together with the
-# models:
-
-from .ui import *

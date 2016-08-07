@@ -2,7 +2,7 @@ Permissions
 ===========
  
 
-The directories with log files need to be writeable by the Apache process 
+The directories with log files need to be writable by the Apache process 
 ("www-data" on a standard Debian).
 For example something like this::
 

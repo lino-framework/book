@@ -7,19 +7,19 @@ class Site(Site):
 
     def setup_menu(self, profile, main):
         m = main.add_menu("master", "Master")
-        m.add_action(self.modules.lets.Members)
-        m.add_action(self.modules.lets.Products)
+        m.add_action(self.actors.lets.Members)
+        m.add_action(self.actors.lets.Products)
 
         m = main.add_menu("market", "Market")
-        m.add_action(self.modules.lets.Offers)
-        m.add_action(self.modules.lets.Demands)
+        m.add_action(self.actors.lets.Offers)
+        m.add_action(self.actors.lets.Demands)
 
         m = main.add_menu("config", "Configure")
-        m.add_action(self.modules.lets.Places)
+        m.add_action(self.actors.lets.Places)
 
     def get_admin_main_items(self, ar):
 
-        yield self.modules.lets.ActiveProducts
+        yield self.actors.lets.ActiveProducts
 
 SITE = Site(globals(), 'lets')
 
