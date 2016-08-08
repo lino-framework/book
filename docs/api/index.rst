@@ -48,6 +48,19 @@ The Lino book
 .. automodule:: lino_book
 
 
+.. _algus:
+
+Lino Algus
+==========
+
+.. py2rst::
+
+  import lino_algus
+  print(lino_algus.SETUP_INFO['long_description'])
+
+.. automodule:: lino_algus
+                
+                
 
 .. _commondata:
 
