@@ -35,6 +35,7 @@ checkers.
  mixins.DupableChecker             Check for missing phonetic words
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
+ cal.ObsoleteEventTypeChecker      Update event types of generated events
 ================================= ==================================================
 <BLANKLINE>
 
@@ -110,6 +111,7 @@ line using::
  mixins.DupableChecker             Check for missing phonetic words
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
+ cal.ObsoleteEventTypeChecker      Update event types of generated events
 ================================= ==================================================
 <BLANKLINE>
 

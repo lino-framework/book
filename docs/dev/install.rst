@@ -37,14 +37,6 @@ System requirements
 #.  We assume you have pip_ installed. `pip` is not automatically
     bundled with Python 2, but it has become the de-facto standard.
 
-#.  (Maybe obsolete:) You will need the **Python header files** on
-    your system because Lino requires fabric_ which in turn requires
-    pycrypto_ which is an `extension module
-    <https://docs.python.org/2/c-api/intro.html>`_. On a Debian system
-    this means something like::
-
-        $ sudo apt-get install python-dev
-
 #.  You will need to install git_ on your computer to get the source
     files.
 

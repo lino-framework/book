@@ -4,7 +4,7 @@
 Lino system administrator
 =========================
 
-A **Lino system administrator** is the person who installs Lino
+A **Lino system administrator** is a person who installs Lino
 applications in order to make them available on a web server.  Your
 job is to take care of the maintenance and security of those
 servers. You might do this either in a single company as their system

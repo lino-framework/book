@@ -67,7 +67,7 @@ We try to call :manage:`dumpy` in some invalid ways (just to
 demonstrate the possible error messages):
 
 >>> shell("python manage_a.py dump2py")
-... #doctest: +ELLIPSIS
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--noinput]
                            [--tolerate] [-o]
                            output_dir
