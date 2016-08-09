@@ -19,7 +19,7 @@ Below are some profiles of people we would happily welcome.
   <http://www.saffre-rumma.net/jobs/coredev.html>`_ or `senior
   developer <http://www.saffre-rumma.net/jobs/coredev.html>`_.
 
-- **Internet hosting providers** -- Become a :doc:`hosters` and
+- **Internet hosting providers** -- Become a :doc:`hoster` and
   contact us to get listed in our directory.
 
 - **Vendors of software solutions** -- Consider whether Lino is the
