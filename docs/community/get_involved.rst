@@ -19,9 +19,8 @@ Below are some profiles of people we would happily welcome.
   <http://www.saffre-rumma.net/jobs/coredev.html>`_ or `senior
   developer <http://www.saffre-rumma.net/jobs/coredev.html>`_.
 
-- **Internet hosting providers** -- Add one of the
-  :ref:`lino.projects` to your shared host offers.  Your advantage is
-  that you get free support for integrating Lino into your system.
+- **Internet hosting providers** -- Become a :doc:`hosters` and
+  contact us to get listed in our directory.
 
 - **Vendors of software solutions** -- Consider whether Lino is the
   right product for one of your customers.  Your advantage is that you

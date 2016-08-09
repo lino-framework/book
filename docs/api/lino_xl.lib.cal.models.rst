@@ -33,6 +33,7 @@ lino_xl.lib.cal.models
       Guest
       GuestRole
       LocalCalendar
+      ObsoleteEventTypeChecker
       Priority
       RecurrentEvent
       RemoteCalendar

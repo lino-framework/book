@@ -15,7 +15,7 @@ Typical requirements for a Lino system administrator are:
 
 - Lino is written in Python. You don't need profound knowledge of the
   language, but you are going to install Python packages (using `pip
-  <https://pip.pypa.io/en/stable/>`__ into virtual environment (using
+  <https://pip.pypa.io/en/stable/>`__ into virtual environments (using
   `virtualenv <https://virtualenv.pypa.io/en/stable/index.html>`__).
 
 - If you have previously hosted `Django
