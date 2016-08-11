@@ -4,6 +4,8 @@
 Deploy to a production site
 ===========================
 
+Needs revision.
+
 The server has two subdomains "lino" and "testlino". Each subdomain
 has its own project directory. Each project directory has a symbolic
 link `env` which points to its Python environment.

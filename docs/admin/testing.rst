@@ -1,5 +1,5 @@
-.. _team.enduser_testing:
-.. _team.testing:
+.. _admin.enduser_testing:
+.. _admin.testing:
 
 =========================
 The `testing` environment
@@ -16,4 +16,4 @@ technical: it encourages the local Lino community to develop a sane
 communication culture for discussing about new features, and
 priorities.
 
-This setup introduces an official :doc:`workflow`.
+This setup introduces an official :doc:`/team/workflow`.

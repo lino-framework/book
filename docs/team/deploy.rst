@@ -8,7 +8,7 @@ The deployment process
    :maxdepth: 1
 
 
-   testing
+   /admin/testing
    deploy_prod
    workflow
 

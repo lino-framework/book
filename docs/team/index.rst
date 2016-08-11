@@ -15,4 +15,8 @@ collaborate.
    deploy
    noi_intro
 
+.. toctree::
+   :hidden:
 
+   setup
+   tools

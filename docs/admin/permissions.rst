@@ -56,14 +56,21 @@ Find `.pyc` files which are not group-writable::
 
 Fixing problems
 ===============
-    
-You'll probably need to add `umask 002` to your
-`/etc/apache2/envvars`.
 
-You'll maybe have to do something like this::
+You must be member of the `www-data` group::
 
   $ sudo addgroup myusername www-data
   
+Your repositories must be group-owned by `www-data`::
+
+  $ sudo chown -R myusername:www-data ~/repositories
+    
+Apache must use `umask 002` or `007` (not the default `022` or `077`).
+Add one line to your `/etc/apache2/envvars`::
+
+  umask 002
+
+
 
 Set up Mercurial
 ================
