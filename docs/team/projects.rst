@@ -1,6 +1,6 @@
-=======================================
-Project management using :mod:`atelier`
-=======================================
+==================
+Project management
+==================
 
 This section introduces our minimalistic project management system
 based on :mod:`atelier`.
@@ -9,7 +9,7 @@ What is a project?
 ==================
 
 In :mod:`atelier`, a **project** is a directory on your file system
-which contains at least a :xfile:`fabfile.py`.  That's the only real
+which contains at least a :xfile:`tasks.py`.  That's the only real
 *must* for being a project. Other parts of a project are optional:
 
 - A project usually corresponds to a public code repository (using Git
@@ -48,13 +48,18 @@ your :xfile:`~/.bash_aliases` which might look like this::
     }
 
 
-This adds a new shell command ``go`` to your terminal.  
+This adds a new shell command ``go`` to your terminal:
+
+.. command:: go
+
+    Shortcut to :cmd:`cd` to one of your local project directories.
+
 
 If you installed :ref:`the development version of Lino
 <lino.dev.install>` and :ref:`your developer blog <dblog>` as
 instructed, you can now play with these commands:
 
-  - :cmd:`go lino` changes to the main directory of your `lino` project
+  - :cmd:`go lino` changes to the main directory of your `lino` repository
   - :cmd:`git pull` downloads the latest version of Lino
   - :cmd:`inv initdb test` (i.e. :cmd:`inv initdb` followed by
     :cmd:`inv test`)
@@ -89,33 +94,53 @@ cloned a read-only copy of the development repository, as explained in
 :file:`~/projects/` is the base directory for every new project for
 which you are the author.
 
+
+Configuring your atelier
+========================
+
+Create a :xfile:`~/.atelier/config.py` file which declares a list of
+all your projects. For example with this content::
+
+     add_project("/home/john/projects/myblog")
+     add_project("/home/john/projects/hello")
+     for p in ('lino', 'xl', 'book'):
+         add_project("/home/john/repositories/" + p)
+
+This has the following advantages:
+
+- You can run the :cmd:`per_project` script to run a command over each
+  project
+- You can use :mod:`atelier.sphinxconf.interproject`
+- You can run :cmd:`inv ls` to display a summary about all your
+  projects
+
+
+
+
+
+Some bash aliases
+=================
+
 Here are some useful functions for your :xfile:`~/.bash_aliases`::
 
     alias ci='inv ci'
     alias runserver='python manage.py runserver'
+    alias pp='per_project'
 
     function pywhich() { 
       python -c "import $1; print $1.__file__"
     }
 
+
+    
 Looping over projects
 =====================
 
-You can also create a :xfile:`~/.atelier/config.py` file which
-declares a list of all your atelier projects. For example with this
-content::
+For example::
 
-     add_project("/home/john/projects/myblog")
-     add_project("/home/john/projects/hello")
-     add_project("/home/john/repositories/lino")
+  $ pp inv initdb test bd pd
 
 
-This has the following advantages:
-
-- You can run the `per_project` script to run a command over each project
-- You can use :mod:`atelier.sphinxconf.interproject`
-- You can run :cmd:`fab summary` display a summary about all your
-  projects
 
 
 .. rubric:: Footnotes
@@ -123,3 +148,6 @@ This has the following advantages:
 .. [#f1] In case you also use the `Go <https://golang.org/>`_
          programming language on your computer, you should obviously
          pick another name than "go".
+
+
+         

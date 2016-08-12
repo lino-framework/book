@@ -2,11 +2,11 @@
 Administrator's Guide
 =====================
 
-This section is for system administrators who set up or maintain a 
-server which hosts one or several Lino applications.
-You are not expected to be a Python programmer.
-Experience with hosting Django projects is useful, 
-but if you are new we'll provide external links to the relevant entry points.
+This section is for :doc:`system administrators </team/sysadm>` who
+set up or maintain a server which hosts one or several Lino
+applications.  Experience with hosting Django projects is useful, but
+if you are new we'll provide external links to the relevant entry
+points.
 
 Installation
 ------------
@@ -81,3 +81,5 @@ Other
     tim2lino
     mysql_tune
     du
+    testing
+    

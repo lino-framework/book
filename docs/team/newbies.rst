@@ -1,5 +1,6 @@
-Becoming a Lino developer
-=========================
+=================
+Welcome, newbies!
+=================
 
 .. toctree::
    :maxdepth: 1
@@ -7,6 +8,3 @@ Becoming a Lino developer
    mentoring
    prerequisites
    learning
-   setup
-   tools
-

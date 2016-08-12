@@ -11,5 +11,6 @@ section tries to explain our visions about the Lino community.
     :maxdepth: 1
 
     structure
+    hoster
     get_involved
     /team/index

@@ -4,6 +4,11 @@
 Installing a Lino application on a production server
 ====================================================
 
+Installing a Lino application on a production server is technically
+the same as installing a `Django <https://www.djangoproject.com/>`_
+project.  If you have previously hosted Django projects, then you will
+feel at home.
+
 Before setting up a production server you should be familiar with
 setting up and running a development server as documented in
 :ref:`lino.dev.install`.
@@ -12,11 +17,12 @@ On a production server you will do the same, but you must additionally
 decide:
 
 - how to organize your repositories and virtual environmens
-- which web server to use
+- which web server to use (Apache, Nginx, ...)
+- which database system to use (MySQL, PostgreSQL, ...)
 
 These things are common with all Django sites and therefore we
 recommend to learn from the Django community.  So this section is far
-from being complete and currently not well maintained.
+from being complete.
 
 We recommend the method using `mod_wsgi` and `virtualenv` 
 as described in the following documents:

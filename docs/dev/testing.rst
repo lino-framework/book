@@ -1,6 +1,6 @@
 .. _dev.testing:
 
-=========================
+
 Testing Lino applications
 =========================
 

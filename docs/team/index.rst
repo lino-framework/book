@@ -1,10 +1,11 @@
 .. _lino.team:
 
-==============
-Teamwork guide
-==============
+==================
+The Lino Core Team
+==================
 
-This section describes how the members of a Lino team collaborate.
+This section describes how the members of the Lino Core team
+collaborate.
 
 .. toctree::
    :maxdepth: 1
@@ -14,4 +15,8 @@ This section describes how the members of a Lino team collaborate.
    deploy
    noi_intro
 
+.. toctree::
+   :hidden:
 
+   setup
+   tools

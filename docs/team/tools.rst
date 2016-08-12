@@ -1,14 +1,7 @@
 Development tools
 =================
 
-.. toctree::
-   :maxdepth: 1
-
-   devblog
-   projects
-   pull_request
-   builddocs
-
+Most content moved to :doc:`/dev/index`.
 
 Some obsolete docs:
 
@@ -17,4 +10,3 @@ Some obsolete docs:
 
    graphviz
    trac
-

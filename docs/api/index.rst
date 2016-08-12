@@ -48,7 +48,6 @@ The Lino book
 .. automodule:: lino_book
 
 
-
 .. _commondata:
 
 The commondata packages

@@ -4,14 +4,17 @@
 Developer's Guide
 =================
 
-This is the central meeting place for :doc:`Lino application
-developers </team/lad>` (people who plan to write their own Lino
-application).
+This is the central meeting place for Lino developers.
+
+A **Lino developer** is a Python developer who helps the Core Team to
+make Lino better and/or who plans to write their own Lino application.
 
 The `Getting started`_ section is for :doc:`system adminstrators
 </team/sysadm>` as well, i.e. for people who plan to install and
 maintain some of the :ref:`lino.apps` on a professional internet
 server.
+
+.. _lino.dev.start:
 
 Getting started
 ===============
@@ -25,17 +28,17 @@ Getting started
    /tutorials/hello/index
    initdb
 
-#.  :doc:`/dev/install` : How to install Lino. System requirements. "Released
-    version" versus "Development version". How to run Lino's test
-    suite.
+#.  :doc:`/dev/install` : How to install Lino. System
+    requirements. "Released version" versus "Development version".
 
 #.  :doc:`/tutorials/hello/index` : The first Lino application running
-    on your machine. It's easier than with Django. A ``settings.py`` and
-    a ``manage.py``. Initialize a demo database. Run a development
+    on your machine. It's easier than with Django. A ``settings.py``
+    and a ``manage.py``. Initialize a demo database. Run a development
     server.
 
 #.  :doc:`initdb` : The ``initdb`` and ``initdb_demo`` commands.  
 
+.. _lino.dev.first:
 
 Your first application
 ======================
@@ -70,6 +73,21 @@ Your first application
     Describing a database structure. Designing your tables. Writing demo
     data. Writing test cases. Menu structure and main page. Form
     layouts.
+
+.. _lino.dev.team:
+
+Working with others
+===================
+
+.. toctree::
+   :maxdepth: 1
+
+   /team/projects
+   runtests
+   /team/builddocs
+   /team/pull_request
+   /team/devblog
+   
 
 
 Getting acquaintained
@@ -214,7 +232,7 @@ Other
    logging
    linod
    design
-
+   testing
 
 
 .. toctree::

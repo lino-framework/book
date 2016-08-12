@@ -219,9 +219,9 @@ Designing your tables
 =====================
 
 For this tutorial we defined the tables in a separate file
-:file:`ui.py`.
+:file:`desktop.py`.
 
-.. literalinclude:: ui.py
+.. literalinclude:: desktop.py
 
 
 Writing demo data
@@ -252,9 +252,7 @@ and check whether their output is the same as the one displayed here.
 
 Doctests usually need to do some initialization.
 
->>> from __future__ import print_function
->>> from lino.api.shell import *
->>> from lino.api import rt
+>>> from lino.api.doctest import *
 
 Since doctests run on a temporary database, we need to load our
 fixture each time this document is being tested.
@@ -262,10 +260,9 @@ fixture each time this document is being tested.
 >>> from django.core.management import call_command
 >>> call_command('initdb', 'demo', interactive=False, verbosity=0)
 
-    
 Show the list of members:    
 
->>> rt.show(lets.Members)
+>>> rt.show(rt.actors.lets.Members)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ========= ===================== ========== =========================== =====================
  name      email                 place      offered_products            wanted_products
@@ -283,7 +280,7 @@ Show the list of members:
 
 The `Products` table shows all products in alphabetical order:
 
->>> rt.show(lets.Products)
+>>> rt.show(rt.actors.lets.Products)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ==== ========================= ================= =================
  ID   name                      Offered by        Wanted by
@@ -300,7 +297,7 @@ The `Products` table shows all products in alphabetical order:
 
 The `Offers` table show all offers.
 
->>> rt.show(lets.Offers)
+>>> rt.show(rt.actors.lets.Offers)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ==== ======== ========================= =============
  ID   member   product                   valid until
@@ -321,7 +318,7 @@ which there is at least one offer or one demand.  It also specifies
 `column_names` to show the two virtual fields `offered_by` and
 `wanted_by`.
 
->>> rt.show(lets.ActiveProducts)
+>>> rt.show(rt.actors.lets.ActiveProducts)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ========================= ================= =================
  name                      Offered by        Wanted by
@@ -370,8 +367,7 @@ Here is how we express these things by defining two methods
 We can show the main menu in a doctest:
 
 >>> ses = rt.login()
->>> ses.show_menu()
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+>>> ses.show_menu() #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Master : members, products
 - Market : offers, demands
 - Configure : places

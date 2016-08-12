@@ -2,7 +2,7 @@
 Tested documents
 ================
 
-**Tested documents** are yet another a way to write test cases. They
+**Tested documents** are yet another a way of writing test cases. They
 are pages of a document tree which are being tested using Python's
 standard doctest module.
 
