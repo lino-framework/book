@@ -9,12 +9,13 @@ What is a project?
 ==================
 
 In :mod:`atelier`, a **project** is a directory on your file system
-which contains at least a :xfile:`tasks.py`.  That's the only real
-*must* for being a project. Other parts of a project are optional:
+which contains at least a file :xfile:`tasks.py`.  That's the only
+real *must* for being a project. Other parts of a project are
+optional:
 
 - A project usually corresponds to a public code repository (using Git
   or Mercurial). But you can have non-public projects which have no
-  repo at all, e.g. your developer blog.
+  repo at all.
 - A project usually corresponds to a given Python package to be
   published on PyPI.
 - A project can have a number of Sphinx document trees (default is one
@@ -23,63 +24,12 @@ which contains at least a :xfile:`tasks.py`.  That's the only real
 You "activate" a project by opening a terminal and changing to its
 directory. That's all.
 
-That said, there are some tricks to make project management more
-pleasant.
-
-
-Going to a project
-==================
-
-We suggest that you create a shell function named ``go`` [#f1]_ in
-your :xfile:`~/.bash_aliases` which might look like this::
-
-    function go() { 
-        for BASE in ~/projects ~/repositories \
-            ~/repositories/lino/lino/projects
-        do
-          if [ -d $BASE/$1 ] 
-          then
-            cd $BASE/$1;
-            return;
-          fi
-        done
-        echo Oops: no $1 in $BASES
-        return -1
-    }
-
-
-This adds a new shell command ``go`` to your terminal:
-
-.. command:: go
-
-    Shortcut to :cmd:`cd` to one of your local project directories.
-
-
-If you installed :ref:`the development version of Lino
-<lino.dev.install>` and :ref:`your developer blog <dblog>` as
-instructed, you can now play with these commands:
-
-  - :cmd:`go lino` changes to the main directory of your `lino` repository
-  - :cmd:`git pull` downloads the latest version of Lino
-  - :cmd:`inv initdb test` (i.e. :cmd:`inv initdb` followed by
-    :cmd:`inv test`)
-
-  - :cmd:`go myblog` changes to the main directory of your developer blog
-  - :cmd:`inv blog` launches your editor on today's blog entry
-  - :cmd:`inv bd pd` (i.e. :cmd:`inv bd` followed by :cmd:`inv pd`)
-
-
-This way of working implies that you identify every project by a short
-*internal project name*.
-
-
 Project containers
 ==================
 
-You don't need to keep all your projects under a single top-level
+You don't need to have all your projects under a single top-level
 directory.  You can have different **base directories** containing
-projects.  We suggest the following naming conventions (you don't need
-to use these same conventions, but our examples are based on them).
+projects.  We suggest the following naming conventions.
 
 .. xfile:: ~/repositories
 
@@ -99,9 +49,10 @@ Configuring your atelier
 ========================
 
 Create a :xfile:`~/.atelier/config.py` file which declares a list of
-all your projects. For example with this content::
-
-     add_project("/home/john/projects/myblog")
+all your projects. If you have been following the tutorials so far,
+then the content will be something like::
+  
+     add_project("/home/john/projects/mylets")
      add_project("/home/john/projects/hello")
      for p in ('lino', 'xl', 'book'):
          add_project("/home/john/repositories/" + p)
@@ -115,14 +66,65 @@ advantages:
 - You can run :cmd:`inv ls` to display a summary about all your
   projects
 
-
 See also :ref:`atelier.usage`.
 
+Navigating between projects
+===========================
 
-Some bash aliases
-=================
+We suggest that you create a shell function named ``go`` [#f1]_ in
+your :xfile:`~/.bash_aliases` which might look like this::
 
-Here are some useful functions for your :xfile:`~/.bash_aliases`::
+    function go() { 
+        for BASE in ~/projects ~/repositories \
+            ~/repositories/book/lino_book/projects
+        do
+          if [ -d $BASE/$1 ] 
+          then
+            cd $BASE/$1;
+            return;
+          fi
+        done
+        echo Oops: no project $1
+        return -1
+    }
+
+
+This adds a new shell command ``go`` to your terminal:
+
+.. command:: go
+
+    Shortcut to :cmd:`cd` to one of your local project directories.
+
+After editing your :xfile:`~/.bash_aliases` you must open a new
+terminal in order to see the changes.
+
+You can now play with these commands:
+
+  - :cmd:`go lino` changes to :file:`~/repositories/lino`
+  - :cmd:`git pull` downloads the latest version of Lino
+  - :cmd:`go xl` changes to :file:`~/repositories/xl`
+  - :cmd:`git pull`
+  - :cmd:`go book` 
+  - :cmd:`git pull` 
+    
+  - :cmd:`inv initdb test` (runs :cmd:`inv initdb` followed by
+    :cmd:`inv test`)
+
+  - :cmd:`go mylets` changes to :file:`~/projects/mylets`    
+  - :cmd:`git pull` issues an error message "fatal: Not a git
+    repository" which is normal since this is a local project and not
+    cloned from GitHub.
+  - :cmd:`inv test` runs the test suite for mylets
+
+This way of working implies that you identify every project by a short
+*internal project name*.
+
+
+Some more bash aliases
+======================
+
+Here are some useful aliases and functions for your
+:xfile:`~/.bash_aliases`::
 
     alias ci='inv ci'
     alias runserver='python manage.py runserver'
@@ -134,6 +136,8 @@ Here are some useful functions for your :xfile:`~/.bash_aliases`::
 
 
 .. command:: pp
+
+    Alias for :cmd:`per_project`.
              
 .. command:: pywhich
 
@@ -145,16 +149,6 @@ Here are some useful functions for your :xfile:`~/.bash_aliases`::
 
 
     
-Looping over projects
-=====================
-
-For example::
-
-  $ pp inv initdb test bd pd
-
-
-
-
 .. rubric:: Footnotes
 
 .. [#f1] In case you also use the `Go <https://golang.org/>`_
