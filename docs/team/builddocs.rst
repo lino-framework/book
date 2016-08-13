@@ -1,38 +1,45 @@
-===========================
-Building the Lino docs tree
-===========================
+======================
+Building the Lino Book
+======================
 
-This page explains how to build the Lino documentation tree (i.e. the
-pages visible below http://www.lino-framework.org).
+This page explains how to build the Lino Book (i.e. the pages visible
+below http://www.lino-framework.org).
 
-You need to install a developer's version of Lino as explained in
-:ref:`lino.dev.install`.
+Theoretically you just run :cmd:`inv bd` in the root of your ``book``
+repository::
 
-The following is not necessary if you use an atelier version from after 2015-09-28:
-
-    Before you can build the Lino docs, you must also configure
-    :mod:`atelier` so that it knows about your projects.  That is, you
-    must create a file :xfile:`~/.atelier/config.py` with at least one
-    line of code::
-
-      add_project('/path/to/your/lino/repository')
-
-    More about this in `Project management using Atelier
-    <http://noi.lino-framework.org/team/projects.html>`__.
-
-And then you just run :cmd:`fab bd` in the root of your Lino repository::
-
-  $ cd ~/repositories
-  $ fab bd
+  $ go book
+  $ inv bd
 
 This uses Sphinx to read the `.rst` source files and to generate
 :file:`.html` files into the :file:`docs/.build` directory.
 
-You can then start your favourite browser on the generated files::
+You can then start your browser on the generated files::
 
   $ firefox docs/.build/html/index.html
 
-Now you can change the :file:`.rst` files (after reading at least
-`reStructuredText Primer <http://sphinx-doc.org/rest.html>`_), run
-:cmd:`fab bd` again to see whether this is what you wanted, and (when
-you are satisfied) :doc:`submit a pull request <pull_request>`.
+Or jump directly to your local copy of this page:  
+
+  $ firefox docs/.build/html/team/builddocs.html
+
+
+Let's play a bit:  
+  
+Open the source file of this page::
+
+  $  nano docs/team/builddocs.rst
+
+Edit something in that file and save your changes. The build the book
+again::
+
+  $ inv bd
+
+Then hit :kbd:`Ctrl-R` in your browser and check whether the HTML
+output changes as expected.
+
+Read more about the markup used by Sphinx in
+`reStructuredText Primer <http://sphinx-doc.org/rest.html>`_)-
+
+Undo all your local changes using::
+
+  $ git checkout docs/team/builddocs.rst
