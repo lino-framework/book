@@ -75,5 +75,5 @@ See also
 
 - :srcref:`docs/tickets/31`
 - :mod:`lino.modlib.users`
-- :doc:`/admin/ApacheHttpAuth`
+- :doc:`/admin/apache_http_auth`
 

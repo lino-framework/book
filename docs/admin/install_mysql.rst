@@ -2,9 +2,10 @@
 Use a MySQL database
 ====================
 
-If you decided to use MySQL as database frontend, 
-then here is a cheat sheet for quickly doing so.
-No warranty.
+If you decided to use MySQL as database frontend, then here is a cheat
+sheet for quickly doing so.  No warranty.  See also the Django
+documentation at `MySQL notes
+<https://docs.djangoproject.com/en/1.9/ref/databases/#mysql-notes>`__
 
 .. contents:: Table of contents
     :local:

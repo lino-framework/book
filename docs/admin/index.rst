@@ -1,12 +1,20 @@
+.. _lino.admin:
+
 =====================
 Administrator's Guide
 =====================
 
 This section is for :doc:`system administrators </team/sysadm>` who
 set up or maintain a server which hosts one or several Lino
-applications.  Experience with hosting Django projects is useful, but
-if you are new we'll provide external links to the relevant entry
-points.
+applications.
+
+If you are already hosting Django projects, then you might prefer to
+use your existing system.  Hosting a Lino application is technically
+the same as hosting a `Django <https://www.djangoproject.com/>`_
+project, so this guide is not mandatory. But even experienced Django
+hosters might find interesting tricks or inspiration for their system
+by reading how we do it.
+
 
 Installation
 ------------
@@ -15,7 +23,6 @@ Installation
     :maxdepth: 2
 
     install
-    djangosite_local
     media
     install_mysql
     config_dirs
@@ -56,20 +63,25 @@ Printing
     excerpts
     appy_templates
 
+Howto
+-----
+
+.. toctree::
+    :maxdepth: 2
+   
+    settings
+    snapshot
+
 Other
 -----
 
 .. toctree::
     :maxdepth: 2
    
-    snapshot
-    settings
-    which_lino
     pythonpath
    
-    mass_hosting
     permissions
-    ApacheHttpAuth
+    apache_http_auth
     django_tests
     apache_webdav
     using
@@ -83,3 +95,9 @@ Other
     du
     testing
     
+
+.. toctree::
+    :hidden:
+       
+    djangosite_local
+    mass_hosting

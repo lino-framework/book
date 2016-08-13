@@ -1,4 +1,3 @@
-.. _admin.enduser_testing:
 .. _admin.testing:
 
 =========================

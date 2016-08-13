@@ -2,8 +2,7 @@
 Things to know
 ==============
 
-A list of things you should know as a :doc:`/team/lad`
-before you can start to love Lino.
+A list of things you should know as a Lino Developer.
 
 
 Python

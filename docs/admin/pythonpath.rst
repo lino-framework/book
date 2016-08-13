@@ -1,3 +1,4 @@
+===============
 The Python Path
 ===============
 
@@ -9,8 +10,8 @@ What is the Python Path?
 
 .. envvar:: PYTHONPATH
 
-It is an environment variable used by Python which defines the places
-from where to import Python modules. See `PYTHONPATH
+It is an environment variable used by Python itself. It defines the
+places from where to import Python modules. See `PYTHONPATH
 <http://www.python.org/doc/current/install/index.html>`_
 
 Here is how to see your :envvar:`PYTHONPATH`::
