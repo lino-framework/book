@@ -106,7 +106,8 @@ all your projects. For example with this content::
      for p in ('lino', 'xl', 'book'):
          add_project("/home/john/repositories/" + p)
 
-This has the following advantages:
+Letting :ref:`atelier` know where your projects are has the following
+advantages:
 
 - You can run the :cmd:`per_project` script to run a command over each
   project
@@ -115,7 +116,7 @@ This has the following advantages:
   projects
 
 
-
+See also :ref:`atelier.usage`.
 
 
 Some bash aliases
@@ -130,6 +131,17 @@ Here are some useful functions for your :xfile:`~/.bash_aliases`::
     function pywhich() { 
       python -c "import $1; print $1.__file__"
     }
+
+
+.. command:: pp
+             
+.. command:: pywhich
+
+    Shortcut to quickly see where the source code of a Python module
+    is coming from.
+
+    This is useful e.g. when you are having troubles with your virtual
+    environments.
 
 
     

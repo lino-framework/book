@@ -4,7 +4,7 @@
 Making a snapshot of a Lino database
 ====================================
 
-Every hosted Lino project directory should contain a file named
+Every hosted Lino project directory contains a file named
 :xfile:`make_snapshot.sh`.
 
 This script makes a **snapshot** of this Lino site, i.e. an archive

@@ -23,7 +23,7 @@ certain admin commands.
 
 To illustrate this, let's open a Python session in an environment with
 Django installed but *without* any :envvar:`DJANGO_SETTINGS_MODULE`
-variable defined, and then type:
+environment variable defined, and then type:
 
 >>> from django.conf import settings
 
@@ -31,7 +31,7 @@ This will pass. But as soon as you want to actually access some
 attribute of `settings`, you will get an `ImproperlyConfigured`
 exception:
 
->>> settings.DEBUG
+>>> print(settings.DEBUG)
 Traceback (most recent call last):
 ...
 django.core.exceptions.ImproperlyConfigured: Requested setting DATABASES, 
@@ -39,13 +39,14 @@ but settings are not configured. You must either define the environment
 variable DJANGO_SETTINGS_MODULE or call settings.configure() before 
 accessing settings.
 
+.. rubric:: Summary
 
 .. envvar:: DJANGO_SETTINGS_MODULE
   
 The :envvar:`DJANGO_SETTINGS_MODULE` environment variable is expected
 to contain the *Python name* of the `Django settings module`_. 
 
-The settings module must be importable. That is, if
+The Django settings module must be importable. That is, if
 :envvar:`DJANGO_SETTINGS_MODULE` contains e.g. ``foo.bar.baz``, then
 Django will do the equivalent of ``import foo.bar.baz``.
 
@@ -100,14 +101,16 @@ which contains already 82 lines of text (Django version 1.6.9).
 
 
 
-.. _djangosite_local:
+.. _lino.site_module:
 
 Site-wide default settings
 ==========================
 
-Lino provides a hook for defining system-wide default settings. This
-concept is mostly useful on servers where many Lino sites are
-running. Actually they are not system-wide but per environment.
+Lino applications (unlike Django projects) have a hook for specifying
+site-wide default values for their Django settings.
+This concept is mostly useful on servers where many Lino sites are
+running (as described in :ref:`lino.admin.site_module`).
+Actually they are not system-wide but environment-wide.
 
 .. envvar:: LINO_SITE_MODULE
 
@@ -132,7 +135,30 @@ your :envvar:`PYTHONPATH` with the following content::
         self.update_settings(ALLOWED_HOSTS=['127.0.0.1'])
         self.use_java = False
 
-Historic note:
+By convention we recommend to name that file :xfile:`lino_local.py`
+and to set :envvar:`LINO_SITE_MODULE` to ``lino_local``.
+
+
+.. rubric:: Keep in mind
+
+.. xfile:: lino_local.py
+
+:xfile:`lino_local.py` is a file containing site-wide local settings,
+i.e. local settings to be applied to all projects.
+
+The file just defines *default* values, individual projects can still
+decide to override them.
+
+This file is usually in a directory :file:`/usr/local/src/lino/`.
+
+Lino will use these settings only if that directory is in
+:envvar:`PYTHON_PATH` and if the project defines an environment
+variable :envvar:`LINO_SITE_MODULE` containing the string
+``lino_local``.
+
+       
+
+.. rubric:: Historic note
 
 .. xfile:: djangosite_local.py
 
@@ -142,7 +168,7 @@ it was not easy to disable it quickly.
 
 On servers where this was used, when upgrading to a Lino version after
 20160109, you should set :envvar:`LINO_SITE_MODULE` to the string
-``djangosite_local`` in order to maintain the old behaviour.
+``djangosite_local`` in order to maintain the old behaviour::
 
   export LINO_SITE_MODULE=djangosite_local
 

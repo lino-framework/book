@@ -4,43 +4,30 @@
 Installing a Lino application on a production server
 ====================================================
 
-Installing a Lino application on a production server is technically
-the same as installing a `Django <https://www.djangoproject.com/>`_
-project.  If you have previously hosted Django projects, then you will
-feel at home.
-
-Before setting up a production server you should be familiar with
-setting up and running a development server as documented in
-:ref:`lino.dev.install`.
-
-On a production server you will do the same, but you must additionally
-decide:
-
-- how to organize your repositories and virtual environmens
-- which web server to use (Apache, Nginx, ...)
-- which database system to use (MySQL, PostgreSQL, ...)
-
-These things are common with all Django sites and therefore we
-recommend to learn from the Django community.  So this section is far
-from being complete.
-
-We recommend the method using `mod_wsgi` and `virtualenv` 
-as described in the following documents:
-
-- https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
-- https://code.google.com/p/modwsgi/wiki/VirtualEnvironments
-
-
+Here is a system of files and conventions which we suggest to use when
+hosting a Lino production site.  It suits well for having multiple
+sites on a same machine.
 
 Prerequisites
--------------
+=============
 
-For a Lino production server you'll need shell access to a Linux 
-computer that acts as server.
+You need shell access to a Linux box, i.e. a virtual or physical
+machine with a Linux operating system.
+
+If your customers want want to access their Lino from outside of their
+intranet, then you need to setup a public domain or subdomain and
+configure Apache to use secure HTTP.
+
+We recommend a **stable Debian** as operating system.  If you prefer
+some other Linux distribution, that should be no problem. There will
+be some differences, but you probably know them.
+
+You need a **web server**, **Python 2**, some database
+(e.g. **MySQL**) running on that server.
 
 
 Debian packages
----------------
+===============
 
 Some Debian packages and why you might need them:
 
@@ -49,81 +36,141 @@ libapache2-mod-wsgi
     This will automatically install Apache 
     (packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
     
-python-dev python-pip python-virtualenv
-
-    If you host more than one Lino application, then you should 
-    use Ian Bicking's virtualenv tool.
-
-
-tinymce
-
-    If :attr:`lino.Lino.use_tinymce` is `True` (probably yes),
-    then Lino's ExtJS UI uses the TinyMCE WYSIWYG text editor.
-    
 mysqldb-server
 mariadb-server
 
     Needed if you plan to use Django's MySQL backend.
     See :doc:`install_mysql`.
 
-
 ssl-cert
     
     If you want to run a https server.
+
+.. _lino.admin.site_module:
+
     
+Configuring site-wide default settings
+======================================
 
-Install Lino
-------------
+Lino applications (unlike Django projects) have a hook for specifying
+site-wide default values for their Django settings.
 
+As root, create a directory :file:`/usr/local/src/lino` containing an
+empty :xfile:`__init__.py` file::
 
-- Create a virtualenv for your Lino application
+  $ sudo mkdir /usr/local/src/lino
+  $ sudo touch /usr/local/src/lino/__init__.py
 
-- Activate this environment, then type::
-
-    $ pip install lino
-    
-    
-To test whether Lino is installed, you can write::
-
-    $ python -c "print __import__('lino').__version__"
-    
-Note: third-party Lino applications 
-usually depend on Lino, 
-so installing such an application will automatically
-install Lino.
-For example to install :ref:`welfare`, you can just type::
+In that directory, still as root, create a file named
+:file:`lino_local.py`::
   
-    $ pip install lino-welfare
+  $ sudo nano /usr/local/src/lino/lino_local.py
+
+Paste the following content into that file:
+
+.. literalinclude:: mypy/lino_local.py
+
+Adapt that content to your site.
+
+This will be your :xfile:`lino_local.py` file.
+
+More about this in :ref:`lino.site_module`.
 
 
-Optional Python packages
-------------------------
-  
-The following Python packages (to be installed using `pip install`) 
-are optional and therefore not automatically installed:
-  
-mysql-python
+Users and projects
+==================
 
-    Needed if you plan to use Django's MySQL backend.
-    See :doc:`install_mysql`.
+When hosting Lino projects, you may
+
+- create a new Linux user for every project
+- define a single user who manages multiple projects
+- use a mixture of both
+
+Every user should create a directory which will be the root for all
+Lino projects.  We suggest to call it :file:`~/mypy`.  So our project
+directories will be :file:`~/mypy/prj1`, :file:`~/mypy/prj2` etc.
+
+Project directories
+===================
+
+Every new project directory must have at least three files:
+
+- a file :xfile:`settings.py`:
+
+  .. literalinclude:: mypy/prj1/settings.py
+                      
+- a file :xfile:`manage.py`:
+
+  .. literalinclude:: mypy/prj1/manage.py
+
+- a file :xfile:`wsgi.py` :
+
+  .. literalinclude:: mypy/prj1/wsgi.py
+
+Note that :xfile:`manage.py` and :xfile:`wsgi.py` have the same
+content for every project. Once you have a first project running, you
+can add new projects by copying the directory of some existing
+project.
+
+Which database backend to use
+=============================
+
+Our example assumes you are using Django's **MySQL** backend.  For
+other backends, adapt your :setting:`DATABASES` accordingly.
+
+The database backend of your choice is not automatically installed.
+If you plan to use Django's MySQL backend, see :doc:`install_mysql`.
+
+Follow the Django documentation at `Get your database running
+<https://docs.djangoproject.com/en/1.9/topics/install/#get-your-database-running>`__
 
 
+Create a virtualenv
+===================
 
-Create a local Lino project
----------------------------
+Create the virtualenv for the project::
 
-Every Lino project should have at least its own :file:`settings.py` and 
-project directory (the directory containing this file).
-Local Lino :file:`settings.py` files on production servers 
-are usually rather short. Something like::
+    $ cd ~/mypy/prj1
+    $ virtualenv env
+    $ a env/bin/activate
+    $ pip install lino-voga
 
-  from foo.bar.settings import *
-  SITE = Site(globals())
-   
+Above example assumes that you want to run :ref:`voga` on that site.
+Of course you have other choices, for example:
 
+    - `lino-voga` for :ref:`voga`
+    - `lino-cosi` for :ref:`cosi`
+    - `lino-noi` for :ref:`noi`  or :ref:`care`
+    - `lino-presto` for :ref:`presto` or :ref:`psico`
+    - `lino-welfare` for :ref:`welfare`
+
+And of course you must then write your :xfile:`settings.py` as
+documented by these projects.
+
+We recommend the convention of having in each project a subdirectory
+named :xfile:`env` which contains the virtualenv. On systems with
+shared virtualenvs,  :xfile:`env`  might be a symbolic link.
+
+
+Activate file logging
+=====================
+
+To activate logging to a file, you simply add a symbolic link named
+:xfile:`log` which points to the actual location::
+
+  $ ln -s /vat/log/lino/prj1 log
+ 
+Create two empty directores :xfile:`media` and :xfile:`config`::
+
+  $ mkdir media
+  $ mkdir config
+
+ 
 
 Collecting static files
 =======================
+
+(Needs revision)
 
 One part of your cache directory are the static files.  When your
 :envvar:`LINO_CACHE_ROOT` is set, you should run Django's
@@ -159,7 +206,9 @@ exceptions to this rule, but we can ignore them for the moment.)
  
   
 Install TinyMCE language packs
-------------------------------
+==============================
+
+(Needs revision)
 
 If you plan to use Lino in other languages than English, you must 
 manually install language packs for TinyMCE from

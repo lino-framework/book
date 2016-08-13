@@ -205,7 +205,7 @@ Version 1.6.15 (released 2014-12-12)
   For example :setting:`extensible_root` is now in 
   :attr:`lino.apps.extensible.App.media_root`.
 
-- Concrete example in my :ref:`djangosite_local`.
+- Concrete example in my :xfile:`lino_local.py`.
 
   Before::
 

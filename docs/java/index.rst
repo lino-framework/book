@@ -13,7 +13,7 @@ that require two Java applets:
 
 You can easily disable these functionalities by setting
 :attr:`use_java <lino.core.site.Site.use_java>` to `False` in your
-:xfile:`djangosite_local.py`.
+:xfile:`lino_local.py`.
 
 Java cheat sheet
 ================

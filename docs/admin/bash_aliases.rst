@@ -7,9 +7,5 @@ The Lino repository contains a file `/bash/bash_aliases
 which is meant as a template for your own :xfile:`.bash_aliases`.
 
 - :cmd:`go`
-
-.. command:: pywhich
-
-    Shortcut to quickly see where the source code of a Python module
-    is coming from.
+- :cmd:`pywhich`
 

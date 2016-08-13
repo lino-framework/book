@@ -25,7 +25,7 @@ attribute.
 In case of doubt, before restarting the server, you may issue the
 following command to test whether your :xfile:`settings.py` is okay::
 
-  python manage.py validate
+  $ python manage.py validate
 
 See also :doc:`/dev/settings` and :doc:`/dev/plugins`.
 

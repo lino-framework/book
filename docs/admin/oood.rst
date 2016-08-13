@@ -64,8 +64,8 @@ configuration option which causes it to run its UNO call in a
 subprocess with Python 3.
 
 If you don't want to do this again and again for every Lino site on
-your machine, then you should put this to your
-:xfile:`djangosite_local.py` file
+your machine, then you should put this to your :xfile:`lino_local.py`
+file.
 
 
 
