@@ -37,10 +37,11 @@ Start your own local project, called "mylets" as a copy of this tutorial::
   $ cd ~/projects/mylets
   $ cp -a ~/repositories/lino/docs/tutorials/lets/* .
 
-Edit your copies of certain files:
+Change "lets" to "mylets" in your copy of the files :file:`manage.py`,
+:file:`settings.py`, :file:`index.rst`, :file:`models.py`,
+:file:`desktop.py` and :file:`fixtures/demo.py`.
 
-- In :xfile:`manage.py` ...
-- In :xfile:`settings.py` ...
+
 
 What is a technical specification?
 ==================================

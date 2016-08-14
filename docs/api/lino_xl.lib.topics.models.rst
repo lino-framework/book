@@ -14,6 +14,8 @@ lino_xl.lib.topics.models
 
    .. autosummary::
    
+      AllInterests
+      AllTopics
       Interest
       Interests
       InterestsByPartner

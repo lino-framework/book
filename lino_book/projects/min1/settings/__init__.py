@@ -22,7 +22,7 @@ class Site(Site):
 
     user_profiles_module = 'lino.modlib.office.roles'
 
-    workflows_module = 'lino_xl.lib.cal.workflows.take'
+    # workflows_module = 'lino_xl.lib.cal.workflows.take'
 
     def setup_quicklinks(self, ar, tb):
         tb.add_action(self.modules.contacts.Persons.detail_action)

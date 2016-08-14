@@ -136,7 +136,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (10:20) | **Took place** → `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,114,{  })>`__ | ... | 2014-10-23 00:00:00 | 10:20:00
+Thu 23/10/2014 (10:20) | **Took place** | ... | 2014-10-23 00:00:00 | 10:20:00
 
 Note that the Workflow column (`workflow_buttons`) contains
 images. Since these are not available in Excel, we made a compromise.
@@ -158,7 +158,7 @@ Quand | État | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (10:20) | **Terminé** → `[img flag_green] <javascript:Lino.cal.MyEvents.take(null,114,{  })>`__ | ... | 2014-10-23 00:00:00 | 10:20:00
+jeu. 23/10/2014 (10:20) | **Terminé** | ... | 2014-10-23 00:00:00 | 10:20:00
 
 
 

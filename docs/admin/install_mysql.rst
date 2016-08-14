@@ -17,12 +17,18 @@ documentation at `MySQL notes
 Installation
 ============
 
-To install mysql on your site::
+Install mysql on your site::
    
     $ sudo apt-get install mariadb-server
     $ sudo apt-get install libmysqlclient-dev
     $ sudo apt-get install python-dev
-    $ pip install MySQL-python
+
+    $ sudo mysql_secure_installation
+
+Install the mysql client into your project's virtualenv::    
+
+    $ go prj1
+    $ pip install mysql-python
 
 Users
 =====

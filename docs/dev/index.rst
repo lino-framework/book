@@ -44,7 +44,6 @@ Your first application
 ======================
 
 .. toctree::
-   :maxdepth: 1
    :hidden:
 
    /tutorials/dumpy/index
@@ -79,8 +78,16 @@ Your first application
 Working with others
 ===================
 
+
+#. :doc:`/team/projects`
+#. :doc:`runtests`
+#. :doc:`/team/builddocs`
+#. :doc:`/team/pull_request`
+#. :doc:`/team/devblog`
+
+
 .. toctree::
-   :maxdepth: 1
+   :hidden:
 
    /team/projects
    runtests
