@@ -15,7 +15,7 @@ from lino.api import dd, rt
 
 from lino_xl.lib.contacts.models import *
 
-from lino_xl.lib.cal.workflows import take, feedback
+from lino_xl.lib.cal.workflows import feedback
 
 from lino_xl.lib.addresses.mixins import AddressOwner
 from lino_xl.lib.dupable_partners.mixins import DupablePartner, DupablePerson

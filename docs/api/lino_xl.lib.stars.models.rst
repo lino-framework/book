@@ -21,6 +21,7 @@ lino_xl.lib.stars.models
 
    .. autosummary::
    
+      AllStars
       MyStars
       Star
       StarObject
