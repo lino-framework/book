@@ -3,5 +3,14 @@
 #branch = True
 cover_pylib = False
 parallel = True
-source = lino,lino_xl,lino_book
+source =
+  atelier
+  lino
+  lino_xl
+  lino_book
+  lino_noi
+  lino_cosi
+  lino_voga
+  lino_presto
+  lino_welfare
 omit = *test*.py
