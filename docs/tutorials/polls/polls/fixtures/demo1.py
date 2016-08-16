@@ -1,16 +1,16 @@
-from polls.models import Poll, Choice
+from polls.models import Question, Choice
 
 
 def objects():
-    p = Poll(question="What is your preferred colour?")
+    p = Question(question_text="What is your preferred colour?")
     yield p
-    yield Choice(choice="Blue", poll=p)
-    yield Choice(choice="Red", poll=p)
-    yield Choice(choice="Yellow", poll=p)
-    yield Choice(choice="other", poll=p)
+    yield Choice(choice_text="Blue", question=p)
+    yield Choice(choice_text="Red", question=p)
+    yield Choice(choice_text="Yellow", question=p)
+    yield Choice(choice_text="other", question=p)
 
-    p = Poll(question="Do you like Django?")
+    p = Question(question_text="Do you like Django?")
     yield p
-    yield Choice(choice="Yes", poll=p)
-    yield Choice(choice="No", poll=p)
-    yield Choice(choice="Not yet decided", poll=p)
+    yield Choice(choice_text="Yes", question=p)
+    yield Choice(choice_text="No", question=p)
+    yield Choice(choice_text="Not yet decided", question=p)
