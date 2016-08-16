@@ -5,6 +5,8 @@ class Site(Site):
 
     title = "Cool Polls"
 
+    demo_fixtures = ['demo', 'demo1']
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'polls'
