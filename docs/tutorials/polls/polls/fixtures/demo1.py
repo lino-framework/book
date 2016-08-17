@@ -14,3 +14,10 @@ def objects():
     yield Choice(choice_text="Yes", question=p)
     yield Choice(choice_text="No", question=p)
     yield Choice(choice_text="Not yet decided", question=p)
+
+    p = Question(question_text="Do you like ExtJS?")
+    yield p
+    yield Choice(choice_text="Yes", question=p)
+    yield Choice(choice_text="No", question=p)
+    yield Choice(choice_text="Not yet decided", question=p)
+

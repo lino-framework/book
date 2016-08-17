@@ -256,7 +256,7 @@ We are now going to add a **demo fixture**.
 - Run the following command (from your project directory) 
   to install these fixtures::
 
-    python manage.py initdb demo
+    $ python manage.py initdb demo
 
   The output should be::
 
@@ -271,9 +271,48 @@ We are now going to add a **demo fixture**.
     Installed 13 object(s) from 1 fixture(s)
 
 ..
-    >>> from django.core.management import call_command
-    >>> call_command('initdb', 'demo', interactive=False, verbosity=0)
-
+    >>> from lino.api.doctest import *
+    >>> from atelier.sheller import Sheller
+    >>> shell = Sheller()
+    >>> shell("python manage.py initdb demo --noinput -v 0")
+    <BLANKLINE>   
+    
+    >>> rt.show('polls.Questions')
+    ==== ================================ ===================== ========
+     ID   Question text                    Date published        Hidden
+    ---- -------------------------------- --------------------- --------
+     1    What is your preferred colour?   2016-08-17 00:00:00   No
+     2    Do you like Django?              2016-08-17 00:00:00   No
+     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+    ==== ================================ ===================== ========
+    <BLANKLINE>   
+    
+    >>> shell("python manage.py initdb demo1 -v 0 --noinput")  #doctest: +ELLIPSIS
+    <BLANKLINE>   
+    
+    >>> rt.show(rt.actors.polls.Questions)
+    ==== ================================ ===================== ========
+     ID   Question text                    Date published        Hidden
+    ---- -------------------------------- --------------------- --------
+     1    What is your preferred colour?   2016-08-17 00:00:00   No
+     2    Do you like Django?              2016-08-17 00:00:00   No
+     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+    ==== ================================ ===================== ========
+    <BLANKLINE>   
+    
+    >>> shell("python manage.py initdb_demo --noinput -v 0")
+    <BLANKLINE>   
+    
+    >>> rt.show('polls.Questions')
+    ==== ================================ ===================== ========
+     ID   Question text                    Date published        Hidden
+    ---- -------------------------------- --------------------- --------
+     1    What is your preferred colour?   2016-08-17 00:00:00   No
+     2    Do you like Django?              2016-08-17 00:00:00   No
+     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+    ==== ================================ ===================== ========
+    <BLANKLINE>   
+    
     
   
 Starting the web interface
