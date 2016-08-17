@@ -4,8 +4,8 @@
 File permissions
 ================
 
-The problem
-===========
+Understanding what's needed
+===========================
 
 Lino consists of Python processes running on a server. These processes
 can read, create, delete and modify files on the file system.
@@ -29,28 +29,42 @@ in the directory it will inherit the group of the directory.
 Discovering problems
 ====================
 
-Show directories which don't have the `setgid flags
-<https://en.wikipedia.org/wiki/Setuid>`_ set::
+- Find files and directories which are not group-owned by www-data::
 
-    $ find -L env -type d ! -perm /g=s
+    $ find ! -group www-data    
 
-If this produces some output, you probably want to fix it::
+- Show directories which don't have the `setgid flags
+  <https://en.wikipedia.org/wiki/Setuid>`_ set::
 
-    $ find -L env/repositories -type d ! -perm /g=s -exec chmod g+ws '{}' +
+    $ find -type d ! -perm /g=s
+
+  If this produces some output, you probably want to fix it::
+
+    $ find -type d ! -perm /g=s -exec chmod g+s '{}' +
+
+- Show files which are not *writable* for other group members::
     
+    $ find -perm /g=w
 
-Show directories which are not executable for other group members::
+  If this produces some output, you probably want to fix it::
+
+    $ find -perm /g=w -exec chmod g+w '{}' +
+
+- Show directories which are not *executable* for other group members::
     
-    $ find -L env -type d ! -perm /g=x
+    $ find -type d ! -perm /g=x
+    
+  If this produces some output, you probably want to fix it::
 
-Show the permissions of all directories::    
+    $ sudo find -type d ! -perm /g=x -exec chmod g+x '{}' +
+
+- Show the permissions of all directories::    
 
     $ find -L env/repositories -type d -exec ls -ld {} + | less
 
-Find `.pyc` files which are not group-writable::
+- Find `.pyc` files which are not group-writable (but should)::
 
-    $ find -L env/local/lib/python2.7/site-packages -name '*.pyc' ! -perm /g=w
-    $ find -L env/repositories/ -name '*.pyc' ! -perm /g=w
+    $ find -name '*.pyc' ! -perm /g=w
    
     
 
