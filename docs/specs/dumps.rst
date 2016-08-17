@@ -50,8 +50,6 @@ We initialize our database from our demo fixture:
 >>> shell("python manage_a.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../dumps/default.db.
-Loading ...lino_book/projects/dumps/fixtures/demo.py...
-Loaded 2 objects
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -98,7 +96,6 @@ Load the dump, dump again and verify that both dumps are the same:
 Unversioned Site instance : no database migration
 `initdb ` started on database .../default.db.
 Loading 2 objects to table dumps_foo...
-Loaded 2 objects
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -128,8 +125,6 @@ Now the same with `b`, i.e. with :setting:`USE_TZ` enabled:
 >>> shell("python manage_b.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../default.db.
-Loading .../lino_book/projects/dumps/fixtures/demo.py...
-Loaded 2 objects
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -159,7 +154,6 @@ Load the dump, dump again and verify that both dumps are the same:
 Unversioned Site instance : no database migration
 `initdb ` started on database .../dumps/default.db.
 Loading 2 objects to table dumps_foo...
-Loaded 2 objects
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
