@@ -97,6 +97,8 @@ class DocsTests(LinoTestCase):
         self.run_django_manage_test('docs/dev/translate')
 
     def test_de_BE(self):
+        # self.run_simple_doctests('docs/tutorials/de_BE/index.rst')
+        # self.run_django_admin_command_cd('docs/tutorials/de_BE', 'test')
         self.run_django_manage_test('docs/tutorials/de_BE')
 
     def test_sendchanges(self):

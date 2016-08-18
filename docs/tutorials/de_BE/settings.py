@@ -4,6 +4,8 @@ class Site(Site):
 
     languages = 'en de de-be'
 
+    demo_fixtures = ['demo']
+
     def setup_menu(self, profile, main):
         m = main.add_menu("master", "Master")
         m.add_action('de_BE.Expressions')
