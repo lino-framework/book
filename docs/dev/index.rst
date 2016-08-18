@@ -50,7 +50,6 @@ Your first application
    /tutorials/polls/mysite/index
    /tutorials/tables/index
    layouts
-   /tutorials/lets/index
 
 
 #.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
@@ -67,11 +66,6 @@ Your first application
 #.  :doc:`layouts` : About layouts, detail windows, data elements and
     panels.
 
-#.  :doc:`/tutorials/lets/index` : A full-stack example about the work
-    of a Lino application developer.  Writing a technical specification.
-    Describing a database structure. Designing your tables. Writing demo
-    data. Writing test cases. Menu structure and main page. Form
-    layouts.
 
 .. _lino.dev.team:
 
@@ -80,6 +74,7 @@ Working with others
 
 
 #. :doc:`/team/projects`
+#. :doc:`env`
 #. :doc:`runtests`
 #. :doc:`/team/builddocs`
 #. :doc:`/team/pull_request`
@@ -90,6 +85,7 @@ Working with others
    :hidden:
 
    /team/projects
+   env
    runtests
    /team/builddocs
    /team/pull_request
@@ -123,7 +119,11 @@ Getting acquaintained
 #.  :doc:`custom_actions` : Writing custom actions
 #.  :doc:`action_parameters` :
 #.  :doc:`gfks` : Lino and `GenericForeignKey` fields
-
+#.  :doc:`/tutorials/lets/index` : A full-stack example about the work
+    of a Lino application developer.  Writing a technical specification.
+    Describing a database structure. Designing your tables. Writing demo
+    data. Writing test cases. Menu structure and main page. Form
+    layouts.
 #.  :doc:`/tutorials/letsmti/index` :
 #.  :doc:`/tutorials/layouts` :
 #.  :doc:`/tutorials/vtables/index` :
@@ -160,6 +160,7 @@ Getting acquaintained
    custom_actions
    action_parameters
    gfks
+   /tutorials/lets/index
    /tutorials/letsmti/index
    /tutorials/layouts
    /tutorials/vtables/index
