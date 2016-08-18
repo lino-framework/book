@@ -26,6 +26,9 @@ class LibTests(LinoTestCase):
     def test_runtests(self):
         self.run_simple_doctests("docs/dev/runtests.rst")
 
+    def test_env(self):
+        self.run_simple_doctests("docs/dev/env.rst")
+
     # def test_cal_utils(self):
     #     self.run_simple_doctests('lino_xl.lib.cal/utils.py')
 

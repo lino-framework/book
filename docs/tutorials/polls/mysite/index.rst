@@ -277,39 +277,39 @@ We are now going to add a **demo fixture**.
     >>> shell("python manage.py initdb demo --noinput -v 0")
     <BLANKLINE>   
     
-    >>> rt.show('polls.Questions')
+    >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
      ID   Question text                    Date published        Hidden
     ---- -------------------------------- --------------------- --------
-     1    What is your preferred colour?   2016-08-17 00:00:00   No
-     2    Do you like Django?              2016-08-17 00:00:00   No
-     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+     1    What is your preferred colour?   ...        00:00:00   No
+     2    Do you like Django?              ...        00:00:00   No
+     3    Do you like ExtJS?               ...        00:00:00   No
     ==== ================================ ===================== ========
     <BLANKLINE>   
     
     >>> shell("python manage.py initdb demo1 -v 0 --noinput")  #doctest: +ELLIPSIS
     <BLANKLINE>   
     
-    >>> rt.show(rt.actors.polls.Questions)
+    >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
      ID   Question text                    Date published        Hidden
     ---- -------------------------------- --------------------- --------
-     1    What is your preferred colour?   2016-08-17 00:00:00   No
-     2    Do you like Django?              2016-08-17 00:00:00   No
-     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+     1    What is your preferred colour?   ...        00:00:00   No
+     2    Do you like Django?              ...        00:00:00   No
+     3    Do you like ExtJS?               ...        00:00:00   No
     ==== ================================ ===================== ========
     <BLANKLINE>   
     
     >>> shell("python manage.py initdb_demo --noinput -v 0")
     <BLANKLINE>   
     
-    >>> rt.show('polls.Questions')
+    >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
      ID   Question text                    Date published        Hidden
     ---- -------------------------------- --------------------- --------
-     1    What is your preferred colour?   2016-08-17 00:00:00   No
-     2    Do you like Django?              2016-08-17 00:00:00   No
-     3    Do you like ExtJS?               2016-08-17 00:00:00   No
+     1    What is your preferred colour?   ...        00:00:00   No
+     2    Do you like Django?              ...        00:00:00   No
+     3    Do you like ExtJS?               ...        00:00:00   No
     ==== ================================ ===================== ========
     <BLANKLINE>   
     
