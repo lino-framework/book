@@ -2,6 +2,11 @@ language: python
 python:
   - "2.7"
   - "3.4"
+env:
+  - DJANGO=1.7
+  - DJANGO=1.8
+  - DJANGO=1.9
+  - DJANGO=1.10
 before_install:
   - sudo add-apt-repository -y ppa:libreoffice/ppa
   - sudo apt-get install -y libreoffice
@@ -11,7 +16,9 @@ install:
   - pip install html5lib==0.9999999
   - pip install -U setuptools
   - pip install coveralls
+  - pip install Django==$DJANGO
   - pip install -r requirements.txt
+  - pip install .
 # command to run tests, e.g. python setup.py test
 script:  export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache ; mkdir $LINO_CACHE_ROOT; inv initdb test
 
