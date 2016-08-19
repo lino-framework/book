@@ -49,7 +49,7 @@ We initialize our database from our demo fixture:
 
 >>> shell("python manage_a.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
-`initdb demo` started on database .../dumps/default.db.
+`initdb demo` started on database .../dumps/settings/default.db.
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
