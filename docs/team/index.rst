@@ -1,19 +1,10 @@
 .. _lino.team:
 
-==================
-The Lino Core Team
-==================
+=======================
+The Lino Teamwork guide
+=======================
 
-This section describes how the members of the Lino Core team
-collaborate.
-
-.. toctree::
-   :maxdepth: 1
-
-   roles
-   newbies
-   deploy
-   noi_intro
+This page has been merged into :doc:`/dev/index`.
 
 .. toctree::
    :hidden:

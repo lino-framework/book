@@ -16,11 +16,15 @@ import sys
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
+
+
 SETUP_INFO = dict(
     name='lino_book',
     version='1.7.4',
     install_requires=[
         'lino', 'selenium',
+        'django-iban', 'metafone',
+        'weasyprint', 'cairocffi<0.7',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=[],
     # pisa has a bug which makes it complain that "Reportlab Version
