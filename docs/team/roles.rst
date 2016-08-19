@@ -2,7 +2,7 @@ Member roles
 ============
 
 .. toctree::
-   :maxdepth: 1
+   :hidden:
 
    analyst
    lad

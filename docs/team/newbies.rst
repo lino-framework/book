@@ -1,6 +1,6 @@
-=================
-Welcome, newbies!
-=================
+=======
+Newbies
+=======
 
 .. toctree::
    :maxdepth: 1

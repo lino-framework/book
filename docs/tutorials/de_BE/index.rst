@@ -6,8 +6,7 @@ Ostbelgizismen
 
 .. How to run only this test:
 
-  $ python setup.py test -s tests.DocsTests.test_de_BE
-
+    $ python setup.py test -s tests.DocsTests.test_de_BE
 
 I wrote this article to test and document the new support 
 for :ref:`mldbc` with different variants of a same language 
@@ -40,17 +39,17 @@ Now we wrote a Python fixture with some data:
 .. literalinclude:: fixtures/demo.py
    :lines: 1-14
 
-
-We load this fixture using Django's standard loaddata command:
+We load this fixture using the :manage:`initdb_demo` command:
 
 >>> from django.core.management import call_command
 >>> call_command('initdb_demo', interactive=False, verbosity=0)
-
-Here is the result:
+ 
+To verify whether it worked as expected, we can ask Lino to show us
+the `Expressions` table:
 
 >>> from lino.api import rt
->>> from de_BE.models import Expressions
->>> rt.show(Expressions)
+>>> # from de_BE.models import Expressions
+>>> rt.show('de_BE.Expressions')
 ==== ============== ================== =====================
  ID   Designation    Designation (de)   Designation (de-be)
 ---- -------------- ------------------ ---------------------

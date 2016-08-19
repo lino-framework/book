@@ -4,15 +4,9 @@
 Developer's Guide
 =================
 
-This is the central meeting place for Lino developers.
-
-A **Lino developer** is a Python developer who helps the Core Team to
-make Lino better and/or who plans to write their own Lino application.
-
-The `Getting started`_ section is for :doc:`system adminstrators
-</team/sysadm>` as well, i.e. for people who plan to install and
-maintain some of the :ref:`lino.apps` on a professional internet
-server.
+This is the central meeting place for :doc:`Lino developers
+</community/developers>`.  The `Getting started`_ section is useful
+for :doc:`system adminstrators </community/admins>` as well.
 
 .. _lino.dev.start:
 
@@ -241,6 +235,8 @@ Other
    linod
    design
    testing
+   /team/deploy
+   /team/noi_intro
 
 
 .. toctree::
@@ -254,3 +250,5 @@ Other
    mixins
    /tutorials/index
    ml/index
+   /team/index
+   interview

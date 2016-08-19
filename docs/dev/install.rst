@@ -52,6 +52,34 @@ System requirements
 
 
 
+Set up a Python environment
+===========================
+
+Before you actually install Lino into your Python, we recommend to
+create a new Python environment using virtualenv_.  On a Debian system
+this means something like::
+
+        $ sudo pip install virtualenv
+        $ mkdir ~/virtualenvs
+        $ virtualenv ~/virtualenvs/a
+
+Note that we chose ``a`` as name for this environment. You might
+prefer ``lino``, ``dev`` or ``my_first_environment``.
+
+To activate this environment, you will type::
+
+        $ . ~/virtualenvs/a/bin/activate
+
+You might add above line to your :xfile:`.bashrc` file if you
+currently don't plan to work on any other project which requires a
+different environment.
+
+You might prefer to create a new environment for every project and
+store it below your project directory (see below `Project
+directories`_).  This makes sense on a production server (more about
+this in :ref:`lino.admin.env`.), but on a developer machine it is
+usually not necessary and would be a waste of disk space.
+
 Get the sources
 ===============
 
@@ -59,7 +87,7 @@ You might theoretically install Lino using ``pip install lino``, but
 this method isn't currently being tested very thoroughly. So in most
 cases we currently recommend to use the development version because
 you will probably want to use Lino's newest features before they get
-officially released on PyPI.
+released on PyPI.
 
 Create a directory (e.g. :file:`~/repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
@@ -76,10 +104,10 @@ You should now have three directories called `~/repositories/lino`,
 a file :xfile:`setup.py`, a file :xfile:`README.rst` and a whole tree
 of other files and directories.
 
-One possible problem here is that the Lino repository has a big
-size. If you just want to try out the latest version and will never
-submit any pull request, then you can reduce this from 300MB to to
-63MB by adding ``--depth 1`` option (as explained in `this question on
+One possible problem here is that the Lino repository has a big size.
+If you just want to try out the latest version and will never submit
+any pull request, then you can reduce this from 300MB to to 63MB by
+adding ``--depth 1`` option (as explained in `this question on
 stackoverflow
 <http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
 or Nicola Paolucci's blog entry `How to handle big repositories with
@@ -88,36 +116,6 @@ git
 
 .. _lino.dev.env:
 
-
-Set up a Python environment
-===========================
-
-Before we actually install Lino into your Python, let's speak about
-*Python environments*.  We recommend to use virtualenv_ and to create
-a new Python environment for getting started with Lino.
-
-On a Debian system this means something like::
-
-        $ sudo pip install virtualenv
-        $ mkdir ~/virtualenvs
-        $ virtualenv ~/virtualenvs/a
-
-To activate this environment, you will type::
-
-        $ . ~/virtualenvs/a/bin/activate
-
-You might add above line to your :xfile:`.bashrc` file if you
-currently don't plan to work on any other project which requires a
-different environment.
-
-We chose ``a`` as name for this environment. You might prefer
-``lino``, ``dev`` or ``my_first_environment``.
-
-You might prefer to create a new environment for every project and
-store it below your project directory (see below `Project
-directories`_).  This makes sense on a production server (more about
-this in :ref:`lino.admin.env`.), but on a developer machine it is
-usually not necessary and would be a waste of disk space.
 
 Installation
 ============
@@ -135,19 +133,14 @@ Commands::
 These commands take some time because they will download and install
 all Python packages needed by Lino.
 
-Notes:
+Note that the `-e
+<https://pip.pypa.io/en/latest/reference/pip_install.html#cmdoption-e>`_
+command-line switch for :command:`pip` causes it to use the
+"development" mode.  Development mode means that these modules run
+"directly from source".  `pip` does not *copy* the sources to your
+Python `site_packages`, but instead adds a link to them.  The first
+argument after ``-e`` is not a *project name* but a *directory*.
 
-- The `-e
-  <https://pip.pypa.io/en/latest/reference/pip_install.html#cmdoption-e>`_
-  command-line switch for :command:`pip` causes it to use the "development"
-  mode.  Development mode means that these modules run "directly from
-  source".  `pip` does not *copy* the sources to your Python
-  `site_packages`, but instead adds a link to them.  The first
-  argument after ``-e`` is not a *project name* but a *directory*.
-
-- Alternatively (without pip_) you could have done::
-
-      $ cd lino ; python setup.py develop ; cd ..
 
 
 Telling your Lino version
@@ -260,8 +253,8 @@ been required by atelier_, which is another Python package developed
 by Luc.
 
 The ``inv`` command is a kind of make tool which works by looking for
-a file named :xfile:`invoke.yaml`. The Lino repository contains such a
-file, and this file uses :mod:`atelier.fablib`, which defines a whole
+a file named :xfile:`tasks.py`. The Lino repository contains such a
+file, and this file uses :mod:`atelier.invlib`, which defines a whole
 series of tasks like `initdb` and `test`.
 
 
