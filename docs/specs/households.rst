@@ -68,7 +68,7 @@ them is primary, it can look at the `end_date`.
 
 >>> Person = rt.modules.contacts.Person
 >>> Member = rt.modules.households.Member
->>> Member.objects.filter(end_date__isnull=False)
+>>> list(Member.objects.filter(end_date__isnull=False))
 [Member #5 ('Mr Paul Frisch (Head of household)'), Member #11 ('Mr Albert Adam (Head of household)'), Member #17 ('Mr Lars Braun (Head of household)'), Member #23 ('Mr Ilja Adam (Head of household)')]
 
 >>> p = Person.objects.get(first_name="Lars", last_name="Braun")
