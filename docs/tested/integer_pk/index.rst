@@ -23,7 +23,7 @@ get unexpected behaviour:
   >>> p = IntegerPerson(name="Luc")
   >>> p.save() 
   >>> p.save() 
-  >>> IntegerPerson.objects.all()
+  >>> list(IntegerPerson.objects.all())
   [<IntegerPerson: Luc>, <IntegerPerson: Luc>]
 
 Oops! The second `save()` has created a second instance!
@@ -38,7 +38,7 @@ Here are some examples:
   >>> p = AutoPerson(name="Luc")
   >>> p.save() 
   >>> p.save() 
-  >>> AutoPerson.objects.all()
+  >>> list(AutoPerson.objects.all())
   [<AutoPerson: Luc>]
   
 Implicit primary key:  
@@ -46,7 +46,7 @@ Implicit primary key:
   >>> p = Person(name="Luc")
   >>> p.save() 
   >>> p.save() 
-  >>> Person.objects.all()
+  >>> list(Person.objects.all())
   [<Person: Luc>]
 
 CharField as primary key:
@@ -54,6 +54,6 @@ CharField as primary key:
 >>> p = CharPerson(name="Luc")
 >>> p.save() 
 >>> p.save() 
->>> CharPerson.objects.all()
+>>> list(CharPerson.objects.all())
 [<CharPerson: Luc>]
 
