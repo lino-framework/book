@@ -25,6 +25,7 @@ SETUP_INFO = dict(
         'lino', 'selenium',
         'django-iban', 'metafone',
         'weasyprint', 'cairocffi<0.7',
+        'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=[],
     # pisa has a bug which makes it complain that "Reportlab Version
