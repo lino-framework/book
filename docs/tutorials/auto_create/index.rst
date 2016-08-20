@@ -4,6 +4,11 @@
 `lookup_or_create` and the `auto_create` signal
 ================================================
 
+.. This document is part of the test suite.  To test only this
+   document, run::
+
+     $ python setup.py test -s tests.DocsTests.test_auto_create
+
 This document describes and tests the
 :meth:`lookup_or_create <lino.core.model.Model.lookup_or_create>`
 method and the 
@@ -40,7 +45,7 @@ The signal was not emitted here because the Foo tag existed before.
 >>> print Tag.lookup_or_create("name","Bar")
 My auto_create handler was called with Bar
 Bar
->>> print Tag.objects.all()
+>>> print list(Tag.objects.all())
 [Tag #1 ('Foo'), Tag #2 ('Bar')]
 
 Voilà, that's all for the moment.
