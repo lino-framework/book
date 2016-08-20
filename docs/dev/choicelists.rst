@@ -84,7 +84,7 @@ Each row of a choicelist is a choice. Individual choices can have a
 
 Here is how to select all men:
 
->>> rt.modules.contacts.Person.objects.filter(gender=Genders.male)
+>>> list(rt.modules.contacts.Person.objects.filter(gender=Genders.male))
 ... # doctest: +ELLIPSIS
 [Person #114 ('Mr Hans Altenberg'), Person #112 ('Mr Andreas Arens'), ...]
 
