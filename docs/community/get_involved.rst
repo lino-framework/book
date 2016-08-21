@@ -17,7 +17,7 @@ Below are some profiles of people we would happily welcome.
 - **Vendors of software solutions** -- Consider whether Lino is the
   right product for one of your customers.  Your advantage is that you
   get free support with becoming a professional `Lino Consultant
-  <http://www.saffre-rumma.net/jobs/consultant.html>`_.
+  <http://www.saffre-rumma.net/jobs/consultant>`_.
 
 - **Project managers** --
   Help us to find or found organizations that offer

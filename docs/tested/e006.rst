@@ -17,11 +17,6 @@ Django 1.7 complains about clashing fields
 This document describes the main issue in :ticket:`38` (Make Lino run
 with Django 1.8).
 
-As a candidate `Assistant Senior Developer
-<http://www.saffre-rumma.net/jobs/seniordev.html>`_ you should be able
-to reproduce the situations described here, and you should be able to
-make suggestions about what to do next.
-
 How to reproduce it:
 
 - Get the latest development version of Lino (see :doc:`/dev/install`).
