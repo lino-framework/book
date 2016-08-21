@@ -61,12 +61,12 @@ Create some initial data:
 
 Here is our data:
 
->>> Person.objects.all()
+>>> list(Person.objects.all())
 [<Person: Alfred>, <Person: Bert>, <Person: Claude>, <Person: Dirk>]
 
->>> Restaurant.objects.all()
+>>> list(Restaurant.objects.all())
 [Restaurant #1 ('#1 (name=First, owners=Alfred, Bert, cooks=Claude, Dirk)')]
->>> Place.objects.all()
+>>> list(Place.objects.all())
 [Place #1 ('#1 (name=First, owners=Alfred, Bert)')]
 
 
@@ -98,7 +98,7 @@ The Place still exists, but no longer as a Restaurant:
 >>> Place.objects.get(pk=1)
 Place #1 ('#1 (name=First, owners=Alfred, Bert)')
 
->>> Restaurant.objects.get(pk=1)
+>>> list(Restaurant.objects.get(pk=1))
 Traceback (most recent call last):
 ...
 DoesNotExist: Restaurant matching query does not exist.
@@ -146,11 +146,11 @@ used by Lino, and thus is Lino-specific.
 
 After the above examples our database looks like this:
 
->>> Person.objects.all()
+>>> list(Person.objects.all())
 [<Person: Alfred>, <Person: Bert>, <Person: Claude>, <Person: Dirk>]
->>> Place.objects.all()
+>>> list(Place.objects.all())
 [Place #1 ('#1 (name=First, owners=Alfred, Bert)'), Place #2 ('#2 (name=Second, owners=Bert)')]
->>> Restaurant.objects.all()
+>>> list(Restaurant.objects.all())
 [Restaurant #2 ('#2 (name=Second, owners=Bert, cooks=Claude, Dirk)')]
 
 Let's take Place #1 and look at it.
@@ -215,14 +215,14 @@ Bert, the owner of Restaurant #2 does two visits:
 >>> second = Restaurant.objects.get(pk=2)
 >>> Visit(purpose="Say hello", person=bert, place=second).save()
 >>> Visit(purpose="Hang around", person=bert, place=second).save()
->>> second.visit_set.all()
+>>> list(second.visit_set.all())
 [<Visit: Say hello visit by Bert at Second>, <Visit: Hang around visit by Bert at Second>]
 
 Claude and Dirk, now workless, still go to eat in restaurants:
 
 >>> Meal(what="Fish",person=Person.objects.get(pk=3),restaurant=second).save()
 >>> Meal(what="Meat",person=Person.objects.get(pk=4),restaurant=second).save()
->>> second.meal_set.all()
+>>> list(second.meal_set.all())
 [<Meal: Claude eats Fish at Second>, <Meal: Dirk eats Meat at Second>]
 
 Now we reduce Second to a Place:
@@ -244,14 +244,14 @@ ValidationError :message:`Cannot delete #2
 (name=Second,owners=Bert,cooks=Bert) because 2 meals refer to it.` But
 the meals have been deleted:
 
->>> Meal.objects.all()
+>>> list(Meal.objects.all())
 []
 
 Of course, #2 remains as a Place
 The owner and visits have been taken over:
 
 >>> second = Place.objects.get(pk=2)
->>> second.visit_set.all()
+>>> list(second.visit_set.all())
 [<Visit: Say hello visit by Bert at Second>, <Visit: Hang around visit by Bert at Second>]
 
 
