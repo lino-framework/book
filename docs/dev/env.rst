@@ -76,12 +76,15 @@ every whitspace:
 How to switch to the development version of Atelier
 ===================================================
 
+The :ref:`atelier` package has been automatically installed as a
+dependency of :mod:`lino`. That is, you are using the officially
+released PyPI version.
+
 One day we might decide tht you should switch to the development
 version of :ref:`atelier`.
      
-The :ref:`atelier` package has been automatically installed as a
-dependency of :mod:`lino`. That is, you are using the officially
-released PyPI version. So you must uninstall it first::
+So you must uninstall the PyPI version and then install the
+development version::
   
   $ pip uninstall atelier
 
@@ -89,7 +92,31 @@ released PyPI version. So you must uninstall it first::
   $ git clone https://github.com/lsaffre/atelier.git  
   $ pip install -e atelier
   
-Open your :xfile:`~/.atelier/config.py` file and insert ``atelier`` to
-the list of projects::
+You must also open your :xfile:`~/.atelier/config.py` file and insert
+``atelier`` to the list of projects::
   
      for p in 'atelier lino xl book noi cosi voga presto welfare extjs6'.split():
+
+
+To see a list of your atelier projects, type::
+
+    $ pp -l
+
+The output should be something like::
+  
+    ========= ========================================== ========= ========================
+     Project   URL                                        Version   doctrees
+    --------- ------------------------------------------ --------- ------------------------
+     atelier   http://atelier.lino-framework.org          1.0.2     docs
+     lino      http://www.lino-framework.org              1.7.6     docs
+     xl        http://www.lino-framework.org              1.7.5     docs
+     noi       http://noi.lino-framework.org              0.0.3     docs
+     cosi      http://cosi.lino-framework.org             0.0.3     docs
+     welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
+     presto    http://presto.lino-framework.org           0.0.1     docs
+     voga      http://voga.lino-framework.org             0.0.4     docs
+     ext6      http://www.lino-framework.org              0.0.1     docs
+     book      http://www.lino-framework.org              1.7.4     docs
+    ========= ========================================== ========= ========================
+
+     

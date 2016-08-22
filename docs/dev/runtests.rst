@@ -4,18 +4,17 @@
 Running the Lino test suite
 ===========================
 
-Once your :doc:`environment <env>` is correctly set up you can easily
-run the test suite for the Lino framework::
-
+Once your :doc:`environment <env>` is correctly set up you can run the
+test suite for the Lino framework as follows::
 
   $ pp inv initdb test
 
 This loops over all your projects, initializes their demo databases
 and then runs the test suite. The whole process takes 20 minutes on my
-machine when there's no error.  If any error occurs, then you need to
-find out the reason.
+machine when there's no error.
 
-Possible reasons for failures are:
+If any error occurs, then you need to find out the reason.  Possible
+reasons for failures are:
 
 - :message:`PodError: An error occurred during the conversion. Could
   not connect to LibreOffice on port 8100. UNO (LibreOffice API) says:
