@@ -70,8 +70,9 @@ Working with others
 #. :doc:`/team/projects`
 #. :doc:`env`
 #. :doc:`runtests`
-#. :doc:`/team/builddocs`
+#. :doc:`contrib`
 #. :doc:`/team/pull_request`
+#. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
 
 
@@ -81,8 +82,9 @@ Working with others
    /team/projects
    env
    runtests
-   /team/builddocs
+   contrib
    /team/pull_request
+   /team/builddocs
    /team/devblog
    
 

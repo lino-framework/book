@@ -97,7 +97,7 @@ LanguageInfo(django_code='en-us', name='en_US', index=0, suffix='')
 >>> site.language_dict['fr']
 LanguageInfo(django_code='fr', name='fr', index=1, suffix='_fr')
 
->>> print(list_py2(site.django_settings['LANGUAGES']))  #doctest: +ELLIPSIS
+>>> list_py2(site.django_settings['LANGUAGES'])  #doctest: +ELLIPSIS
 [('de', 'German'), ('fr', 'French')]
 
 
