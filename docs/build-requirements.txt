@@ -9,4 +9,4 @@
 -e git+https://github.com/lino-framework/book.git#egg=lino_book
 commondata.be
 commondata.ee
-commondata.eg
+commondata
