@@ -7,3 +7,6 @@
 -e git+https://github.com/lino-framework/presto.git#egg=lino_presto
 -e git+https://github.com/lino-framework/welfare.git#egg=lino_welfare
 -e git+https://github.com/lino-framework/book.git#egg=lino_book
+commondata.be
+commondata.ee
+commondata.eg
