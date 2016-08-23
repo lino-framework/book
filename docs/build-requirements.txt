@@ -10,3 +10,4 @@
 commondata.be
 commondata.ee
 commondata
+-e git+https://github.com/lsaffre/commondata-eg.git#egg=commondata.eg
