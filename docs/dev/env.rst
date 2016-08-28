@@ -10,18 +10,9 @@ Setting up your work environment
    $ python setup.py test -s tests.LibTests.test_runtests
 
 As a Lino developer you are going to maintain and know a whole little
-collection of projects:
-:ref:`noi`,
-:ref:`cosi`,
-:ref:`voga`,
-:ref:`presto`,
-:ref:`welfare`,
-and :ref:`extjs6`.
-
-You don't need to dive into each of them right now, but let's already
-install them.
-
-
+collection of projects: :ref:`noi`, :ref:`cosi`, :ref:`voga`,
+:ref:`presto`, :ref:`welfare`, and :ref:`extjs6`.  You don't need to
+dive into each of them right now, but let's already install them.
 
 
 Remember that in :ref:`lino.dev.install` you did::
@@ -78,24 +69,27 @@ How to switch to the development version of Atelier
 
 The :ref:`atelier` package has been automatically installed as a
 dependency of :mod:`lino`. That is, you are using the officially
-released PyPI version.
+released PyPI version. :ref:`atelier` is more or less stable, but 
+one day we might decide that you should rather switch to the
+development version.
 
-One day we might decide tht you should switch to the development
-version of :ref:`atelier`.
-     
-So you must uninstall the PyPI version and then install the
-development version::
+Doing this is easy: just uninstall the PyPI version and then install
+the development version::
   
   $ pip uninstall atelier
 
   $ cd ~/repositories
-  $ git clone https://github.com/lsaffre/atelier.git  
+  $ git clone https://github.com/lsaffre/atelier.git
   $ pip install -e atelier
   
-You must also open your :xfile:`~/.atelier/config.py` file and insert
-``atelier`` to the list of projects::
+Afterwards you should also open your :xfile:`~/.atelier/config.py`
+file and insert ``atelier`` to the list of projects::
   
      for p in 'atelier lino xl book noi cosi voga presto welfare extjs6'.split():
+
+
+Showing your atelier projects
+=============================
 
 
 To see a list of your atelier projects, type::
