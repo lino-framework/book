@@ -2,15 +2,6 @@
 # Copyright 2009-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-#~ Note that this module may not have a docstring because any
-#~ global variable defined here will override the global
-#~ namespace of lino/__init__.py who includes it with execfile.
-
-# This module is part of the Lino test suite.
-# To test only this module:
-#
-#   $ python setup.py test -s tests.PackagesTests
-
 from __future__ import unicode_literals
 import sys
 PY2 = sys.version_info[0] == 2
