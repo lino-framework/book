@@ -91,7 +91,6 @@ file and insert ``atelier`` to the list of projects::
 Showing your atelier projects
 =============================
 
-
 To see a list of your atelier projects, type::
 
     $ pp -l
