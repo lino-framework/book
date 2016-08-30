@@ -86,5 +86,5 @@ field :guilabel:`Current password` empty.
 >>> values = dict(current="", new1="1234", new2="1234")
 >>> rv = ses.run(u.change_password, action_param_values=values)
 >>> print(rv['message'])
-New password has been set for 1 users.
+New password has been set for test.
 
