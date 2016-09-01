@@ -35,17 +35,23 @@ So that's why the :xfile:`setup.py` of a Lino application contains
 just this::
 
     from setuptools import setup
-    from past.builtins import execfile
-    execfile('lino/setup_info.py')
+    fn = 'lino/setup_info.py')
+    exec(compile(open(fn, "rb").read(), fn, 'exec'))
     if __name__ == '__main__':
         setup(**SETUP_INFO)
     
 And the :file:`__init__.py` file of the main module contains this::
 
-    from past.builtins import execfile
     from os.path import join, dirname
-    execfile(join(dirname(__file__), 'setup_info.py'))
+    fn = join(dirname(__file__), 'setup_info.py')
+    exec(compile(open(fn, "rb").read(), fn, 'exec'))
     __version__ = SETUP_INFO.get('version')
+
+
+Note that ``exec(compile(open(fn, "rb").read(), fn, 'exec'))`` is
+equivalent to ``execfile(fn)``, except that it works in both Python 2
+and 3.
+    
 
 
 Usage example:
