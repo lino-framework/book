@@ -16,9 +16,10 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 
 from os.path import join, dirname
-
-filename = join(dirname(__file__), 'setup_info.py')
-exec(compile(open(filename, "rb").read(), filename, 'exec'))
+from past.builtins import execfile
+execfile(join(dirname(__file__), 'setup_info.py'))
+# filename = join(dirname(__file__), 'setup_info.py')
+# exec(compile(open(filename, "rb").read(), filename, 'exec'))
 
 # above line is equivalent to "execfile(filename)", except that it
 # works also in Python 3

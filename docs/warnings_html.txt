@@ -1,0 +1,18 @@
+[31mNone:1: WARNING: nonlocal image URI found: https://readthedocs.org/projects/lino/badge/?version=latest
+[39;49;00m[31mNone:1: WARNING: nonlocal image URI found: https://coveralls.io/repos/github/lino-framework/lino/badge.svg?branch=master
+[39;49;00m[31mNone:1: WARNING: nonlocal image URI found: https://travis-ci.org/lino-framework/lino.svg?branch=master
+[39;49;00m[31mNone:1: WARNING: nonlocal image URI found: https://img.shields.io/pypi/v/lino.svg
+[39;49;00m[31mNone:1: WARNING: nonlocal image URI found: https://img.shields.io/pypi/l/lino.svg
+[39;49;00m[31mNone:18: WARNING: nonlocal image URI found: https://readthedocs.org/projects/lino/badge/?version=latest
+[39;49;00m[31mNone:23: WARNING: nonlocal image URI found: https://coveralls.io/repos/github/lino-framework/lino/badge.svg?branch=master
+[39;49;00m[31mNone:26: WARNING: nonlocal image URI found: https://travis-ci.org/lino-framework/lino.svg?branch=master
+[39;49;00m[31mNone:29: WARNING: nonlocal image URI found: https://img.shields.io/pypi/v/lino.svg
+[39;49;00m[31mNone:32: WARNING: nonlocal image URI found: https://img.shields.io/pypi/l/lino.svg
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: nonlocal image URI found: https://readthedocs.org/projects/lino/badge/?version=latest
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: nonlocal image URI found: https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: nonlocal image URI found: https://travis-ci.org/lino-framework/book.svg?branch=master
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: nonlocal image URI found: https://img.shields.io/pypi/v/lino.svg
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: nonlocal image URI found: https://img.shields.io/pypi/l/lino.svg
+[39;49;00m[31mNone:1: WARNING: Could not obtain image size. :scale: option is ignored.
+[39;49;00m[31m/media/dell1tb/luc/work/book/docs/api/index.rst:41: WARNING: Could not obtain image size. :scale: option is ignored.
+[39;49;00m
