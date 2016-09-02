@@ -18,7 +18,7 @@ SETUP_INFO = dict(
         'weasyprint', 'cairocffi<0.7',
         'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
-    tests_require=[],
+    tests_require=['pytest'],
     # pisa has a bug which makes it complain that "Reportlab Version
     # 2.1+ is needed!" when reportlab 3 is installed.
     # So we install reportlab 2.7 (the latest 2.x version)

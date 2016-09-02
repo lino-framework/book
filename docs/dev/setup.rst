@@ -1,22 +1,27 @@
 .. _dev.setup_info:
 
-========================
-How Lino uses `setup.py`
-========================
+====================================
+How Lino applications use `setup.py`
+====================================
+
+
+.. How to test just this file:
+
+   $ python setup.py test -s tests.DocsTests.test_setup
 
 The :xfile:`setup_info.py` file is a trick which does not depend on
-Lino and which I recommend to use for any Python project.
+Lino and which we recommend to use for any Python project.
 
 Usually the setup information is directly contained in a file
 :xfile:`setup.py` in the root directory of a project. The problem with
-this layout is that this :xfile:`setup.py` file is not always
-available at runtime (depending on how Lino was installed).
+this layout is that this :xfile:`setup.py` file is always available at
+runtime when the application was installed using PyPI.
 
-To solve this problem, I store this information in a separate file
-(which I usually name :xfile:`setup_info.py`) and which I execute from
-both my :xfile:`setup.py` and my packages's :xfile:`__init__.py` file.
-This trick makes it possible to have setup information both in a
-central place **and** accessible at runtime.
+To solve this problem, we store this information in a separate file
+(which we usually name :xfile:`setup_info.py`) and which we execute
+from both our :xfile:`setup.py` and our packages's main
+:xfile:`__init__.py` file.  This trick makes it possible to have setup
+information both in a central place **and** accessible at runtime.
 
 
 .. xfile:: setup_info.py
@@ -26,16 +31,28 @@ central place **and** accessible at runtime.
     (i.e. which other Python packages must be installed when using
     Lino).
 
-So that's why Lino's :xfile:`setup.py` contains just this::
+So that's why the :xfile:`setup.py` of a Lino application contains
+just this::
 
     from setuptools import setup
-    execfile('lino/setup_info.py')
+    fn = 'lino/setup_info.py')
+    exec(compile(open(fn, "rb").read(), fn, 'exec'))
     if __name__ == '__main__':
         setup(**SETUP_INFO)
     
-And the :file:`lino/__init__.py` file contains a line like this::
+And the :file:`__init__.py` file of the main module contains this::
+
+    from os.path import join, dirname
+    fn = join(dirname(__file__), 'setup_info.py')
+    exec(compile(open(fn, "rb").read(), fn, 'exec'))
+    __version__ = SETUP_INFO.get('version')
+
+
+Note that ``exec(compile(open(fn, "rb").read(), fn, 'exec'))`` is
+equivalent to ``execfile(fn)``, except that it works in both Python 2
+and 3.
     
-    execfile(join(dirname(__file__), 'setup_info.py'))
+
 
 Usage example:
 

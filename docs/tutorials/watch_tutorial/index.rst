@@ -81,11 +81,11 @@ Organization "My pub" has been created.
 
 
 >>> rt.show(changes.Changes, column_names="id type master object diff")
-==== ============= ========== ========== =============================================================
- ID   Change Type   Master     Object     Changes
----- ------------- ---------- ---------- -------------------------------------------------------------
- 1    Create        *My pub*   *My pub*   Company(id=181,name='My pub',language='en',partner_ptr=181)
-==== ============= ========== ========== =============================================================
+==== ============= ===================== ===================== =============================================================
+ ID   Change Type   Master                Object                Changes
+---- ------------- --------------------- --------------------- -------------------------------------------------------------
+ 1    Create        `My pub <Detail>`__   `My pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+==== ============= ===================== ===================== =============================================================
 <BLANKLINE>
 
 
@@ -96,12 +96,12 @@ Organization "My pub" has been created.
 200
 
 >>> rt.show(changes.Changes, column_names="id type master object diff")
-==== ============= =========== =========== =============================================================
- ID   Change Type   Master      Object      Changes
----- ------------- ----------- ----------- -------------------------------------------------------------
- 2    Update        *Our pub*   *Our pub*   name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   *Our pub*   Company(id=181,name='My pub',language='en',partner_ptr=181)
-==== ============= =========== =========== =============================================================
+==== ============= ====================== ====================== =============================================================
+ ID   Change Type   Master                 Object                 Changes
+---- ------------- ---------------------- ---------------------- -------------------------------------------------------------
+ 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+==== ============= ====================== ====================== =============================================================
 <BLANKLINE>
 
 
@@ -113,13 +113,13 @@ We add an entry:
 >>> print(res.message)
 Entry "Entry object" has been created.
 >>> rt.show(changes.Changes, column_names="id type master object diff")
-==== ============= =========== ================ =============================================================
- ID   Change Type   Master      Object           Changes
----- ------------- ----------- ---------------- -------------------------------------------------------------
- 3    Create        *Our pub*   *Entry object*   Entry(id=1,user=1,subject='test',company=181)
- 2    Update        *Our pub*   *Our pub*        name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   *Our pub*        Company(id=181,name='My pub',language='en',partner_ptr=181)
-==== ============= =========== ================ =============================================================
+==== ============= ====================== =========================== =============================================================
+ ID   Change Type   Master                 Object                      Changes
+---- ------------- ---------------------- --------------------------- -------------------------------------------------------------
+ 3    Create        `Our pub <Detail>`__   `Entry object <Detail>`__   Entry(id=1,user=1,subject='test',company=181)
+ 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__        name : 'My pub' --> 'Our pub'
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__        Company(id=181,name='My pub',language='en',partner_ptr=181)
+==== ============= ====================== =========================== =============================================================
 <BLANKLINE>
 
 Now we delete the entry:
@@ -142,14 +142,14 @@ We answer "yes":
 >>> r.status_code
 200
 >>> rt.show(changes.Changes, column_names="id type master object diff")
-==== ============= =========== =========== =============================================================
- ID   Change Type   Master      Object      Changes
----- ------------- ----------- ----------- -------------------------------------------------------------
- 4    Delete        *Our pub*               Entry(id=1,user=1,subject='test',company=181)
- 3    Create        *Our pub*               Entry(id=1,user=1,subject='test',company=181)
- 2    Update        *Our pub*   *Our pub*   name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   *Our pub*   Company(id=181,name='My pub',language='en',partner_ptr=181)
-==== ============= =========== =========== =============================================================
+==== ============= ====================== ====================== =============================================================
+ ID   Change Type   Master                 Object                 Changes
+---- ------------- ---------------------- ---------------------- -------------------------------------------------------------
+ 4    Delete        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=181)
+ 3    Create        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=181)
+ 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+==== ============= ====================== ====================== =============================================================
 <BLANKLINE>
 
 Note how the `object` column of the first two rows in above table is
@@ -159,14 +159,14 @@ that `object` is a "nullable Generic ForeignKey", the underlying
 fields `object_id` and `object_type` still contain their values:
 
 >>> rt.show(changes.Changes, column_names="id type master object_type object_id diff")
-==== ============= =========== ============== =========== =============================================================
- ID   Change Type   Master      Object type    object id   Changes
----- ------------- ----------- -------------- ----------- -------------------------------------------------------------
- 4    Delete        *Our pub*   Entry          1           Entry(id=1,user=1,subject='test',company=181)
- 3    Create        *Our pub*   Entry          1           Entry(id=1,user=1,subject='test',company=181)
- 2    Update        *Our pub*   Organization   181         name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   Organization   181         Company(id=181,name='My pub',language='en',partner_ptr=181)
-==== ============= =========== ============== =========== =============================================================
+==== ============= ====================== ============== =========== =============================================================
+ ID   Change Type   Master                 Object type    object id   Changes
+---- ------------- ---------------------- -------------- ----------- -------------------------------------------------------------
+ 4    Delete        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=181)
+ 3    Create        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=181)
+ 2    Update        `Our pub <Detail>`__   Organization   181         name : 'My pub' --> 'Our pub'
+ 1    Create        `Our pub <Detail>`__   Organization   181         Company(id=181,name='My pub',language='en',partner_ptr=181)
+==== ============= ====================== ============== =========== =============================================================
 <BLANKLINE>
 
 
@@ -204,20 +204,20 @@ Of course these change records are now considered broken GFKs:
 
 >>> rt.show(gfks.BrokenGFKs)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================ ================= =============================================================== ========
- Database model   Database object   Message                                                         Action
----------------- ----------------- --------------------------------------------------------------- --------
- *Change*         *#1*              Invalid primary key 181 for contacts.Company in `object_id`     clear
- *Change*         *#2*              Invalid primary key 181 for contacts.Company in `object_id`     clear
- *Change*         *#3*              Invalid primary key 1 for watch_tutorial.Entry in `object_id`   clear
- *Change*         *#4*              Invalid primary key 1 for watch_tutorial.Entry in `object_id`   clear
- *Change*         *#5*              Invalid primary key 181 for contacts.Company in `object_id`     clear
- *Change*         *#1*              Invalid primary key 181 for contacts.Partner in `master_id`     clear
- *Change*         *#2*              Invalid primary key 181 for contacts.Partner in `master_id`     clear
- *Change*         *#3*              Invalid primary key 181 for contacts.Partner in `master_id`     clear
- *Change*         *#4*              Invalid primary key 181 for contacts.Partner in `master_id`     clear
- *Change*         *#5*              Invalid primary key 181 for contacts.Partner in `master_id`     clear
-================ ================= =============================================================== ========
+===================== ================= =============================================================== ========
+ Database model        Database object   Message                                                         Action
+--------------------- ----------------- --------------------------------------------------------------- --------
+ `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 181 for contacts.Company in `object_id`     clear
+ `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 181 for contacts.Company in `object_id`     clear
+ `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 1 for watch_tutorial.Entry in `object_id`   clear
+ `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 1 for watch_tutorial.Entry in `object_id`   clear
+ `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 181 for contacts.Company in `object_id`     clear
+ `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 181 for contacts.Partner in `master_id`     clear
+ `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 181 for contacts.Partner in `master_id`     clear
+ `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 181 for contacts.Partner in `master_id`     clear
+ `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 181 for contacts.Partner in `master_id`     clear
+ `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 181 for contacts.Partner in `master_id`     clear
+===================== ================= =============================================================== ========
 <BLANKLINE>
 
 There open questions regarding these change records:

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015 Luc Saffre
+# Copyright 2015-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
@@ -103,13 +103,13 @@ class TestCase(TestCase):
         rst = BrokenGFKs.request().to_rst()
         # print rst
         self.assertEqual(rst, """\
-================ ================== ======================================================== ========
- Database model   Database object    Message                                                  Action
----------------- ------------------ -------------------------------------------------------- --------
- *comment*        *Comment object*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
- *note*           *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
- *memo*           *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
-================ ================== ======================================================== ========
+====================== ================== ======================================================== ========
+ Database model         Database object    Message                                                  Action
+---------------------- ------------------ -------------------------------------------------------- --------
+ `comment <Detail>`__   *Comment object*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
+ `note <Detail>`__      *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
+ `memo <Detail>`__      *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
+====================== ================== ======================================================== ========
 
 """)
 

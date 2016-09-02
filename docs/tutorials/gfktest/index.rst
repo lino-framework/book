@@ -117,13 +117,13 @@ table:
 
 >>> rt.show(gfks.BrokenGFKs)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================ ================== ======================================================== ========
- Database model   Database object    Message                                                  Action
----------------- ------------------ -------------------------------------------------------- --------
- *comment*        *Comment object*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
- *note*           *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
- *memo*           *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
-================ ================== ======================================================== ========
+====================== ================== ======================================================== ========
+ Database model         Database object    Message                                                  Action
+---------------------- ------------------ -------------------------------------------------------- --------
+ `comment <Detail>`__   *Comment object*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
+ `note <Detail>`__      *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
+ `memo <Detail>`__      *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
+====================== ================== ======================================================== ========
 <BLANKLINE>
 
 TODO: a management command to cleanup broken GFK fields. This would
