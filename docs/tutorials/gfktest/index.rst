@@ -101,10 +101,12 @@ True
 Now deleting the member will not fail:
 
 >>> from django.db import models
->>> models.Model.delete(mbr)
-(1, {u'gfktest.Member': 1})
+>>> models.Model.delete(mbr) in (None, (1, {u'gfktest.Member': 1}))
+True
 
-Note: above line fails in Django 1.8.
+Note: With Django 1.8 , the method models.Model.delete() doesn't
+return anything, while since 1.8 it returns a dict describing the
+number of objects deleted.
 
 And it will leave the GFK-related objects in the database.
 
