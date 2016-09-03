@@ -20,6 +20,7 @@ and a table `Moos` on `Moo` defining another two action `b` and `t`.
 ..
   >>> # encoding: utf-8
   >>> from lino.api.shell import *
+  >>> from atelier.utils import dict_py2
   >>> globals().update(actions.__dict__)
   >>> from pprint import pprint
 
@@ -48,10 +49,10 @@ session.
 
 Since `a` and `m` are defined on the Model, we can run them directly:
 
->>> ses.run(obj.a)
+>>> dict_py2(ses.run(obj.a))
 {'message': 'Called a() on Moo object', 'success': True}
 
->>> ses.run(obj.m)
+>>> dict_py2(ses.run(obj.m))
 {'message': 'Called m() on Moo object', 'success': True}
 
 This wouldn't work for `t` and `b` since these are defined on `Moos` 
@@ -66,10 +67,10 @@ So in this case we need to specify them table as the first parameter.
 And because they are row actions, we need to pass the instance as 
 mandatory first argument:
 
->>> ses.run(S1.t, obj)
+>>> dict_py2(ses.run(S1.t, obj))
 {'message': 'Called t() on Moo object', 'success': True}
 
->>> ses.run(S1.b, obj)
+>>> dict_py2(ses.run(S1.b, obj))
 {'message': 'Called a() on Moo object', 'success': True}
 
   
