@@ -206,7 +206,7 @@ These are the Django settings which Lino will override:
  'STATICFILES_DIRS': (),
  'STATIC_ROOT': ...',
  'STATIC_URL': '/static/',
- 'TEMPLATES': [{'APP_DIRS': 'True',
+ 'TEMPLATES': [{'APP_DIRS': True,
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
                 'DIRS': [],
                 'OPTIONS': {'context_processors': ['django.template.context_processors.debug',
