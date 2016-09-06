@@ -23,9 +23,9 @@ install:
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - inv cov
+  - if [ $TRAVIS_PYTHON_VERSION == 2* ]; then inv cov; fi;
 
 after_script:
-  - if [ "$DJANGO" == 2.7 ]; then coveralls; fi;
+  - if [ $TRAVIS_PYTHON_VERSION == 2* ]; then coveralls; fi;
 
 
