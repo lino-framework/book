@@ -2,7 +2,7 @@ language: python
 python:
   - "2.7"
   - "3.4"
-  - "3.5"
+  - ""
 env:
   - DJANGO=1.8
   - DJANGO=1.9
@@ -25,7 +25,7 @@ script:
   - mkdir $LINO_CACHE_ROOT
   - inv cov
 
-after_success:
+after_script:
   - coveralls
 
 
