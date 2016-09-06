@@ -1,12 +1,10 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2015 Luc Saffre
+# Copyright 2012-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """The Django settings module for Lino CMS.
 
 """
-
-from django.utils.translation import ugettext_lazy as _
 
 from lino.projects.std.settings import *
 
