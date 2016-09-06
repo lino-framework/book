@@ -26,6 +26,6 @@ script:
   - inv cov
 
 after_script:
-  - coveralls
+  - if [ "$DJANGO" == "2.7" ]; then coveralls; fi;
 
 
