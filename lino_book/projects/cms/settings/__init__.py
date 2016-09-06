@@ -20,7 +20,9 @@ class Site(Site):
 
     languages = 'en de fr'
 
-    project_model = 'tickets.Project'
+    # project_model = 'tickets.Project'
+
+    demo_fixtures = ['std', 'demo', 'demo2', 'intro']
 
     sidebar_width = 3
 
@@ -36,7 +38,7 @@ class Site(Site):
         yield 'lino_xl.lib.blogs'
         # yield 'lino.modlib.tickets'
         yield 'lino_xl.lib.pages'
-        yield 'lino_book.projects.cms'
+        # yield 'lino_book.projects.cms'
 
 
 SITE = Site(globals())
