@@ -128,8 +128,7 @@ lino_book.projects.nomti
 lino_book.projects.properties
 lino_book.projects.quantityfield
 lino_book.projects.cms
-lino_book.projects.cms.fixtures
-lino_book.projects.cms.tests
+lino_book.projects.cms.settings
 lino_book.projects.crl
 lino_book.projects.crl.fixtures
 lino_book.projects.homeworkschool
