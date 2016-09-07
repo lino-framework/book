@@ -21,9 +21,5 @@ install:
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - if [ $TRAVIS_PYTHON_VERSION == 2* ]; then inv cov; fi;
-
-after_script:
-  - coveralls
-
+  - if [ $TRAVIS_PYTHON_VERSION == 2* ]; then inv cov; coveralls; fi;
 
