@@ -23,6 +23,7 @@ ns.setup_from_tasks(
         'lino_book.projects.i18n.settings',
         'lino_book.projects.min1.settings.demo',
         'lino_book.projects.min2.settings.demo',
+        'lino_book.projects.cms.settings.demo',
         'lino_book.projects.apc.settings.demo',
         'lino_book.projects.pierre.settings.demo',
         'lino_book.projects.cosi_ee.settings.demo',
