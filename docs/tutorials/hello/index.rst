@@ -189,7 +189,7 @@ The output should be as follows:
 >>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
 ========== =============== ============ ===========
- Username   User Profile    First name   Last name
+ Username   User type       First name   Last name
 ---------- --------------- ------------ -----------
  robin      Administrator   Robin        Rood
 ========== =============== ============ ===========
