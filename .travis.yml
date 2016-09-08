@@ -23,7 +23,6 @@ script:
   - mkdir $LINO_CACHE_ROOT
   - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then inv cov; fi
 
-after_success:
-   - coveralls
-
+after_script:
+  - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then coveralls; fi
 
