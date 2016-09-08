@@ -30,7 +30,7 @@ The non-translated result is:
 >>> ses = settings.SITE.login('robin')
 >>> ses.show('users.UsersOverview', language='en', **kw)
 ========== =============== ==========
- Username   User Profile    Language
+ Username   User type       Language
 ---------- --------------- ----------
  robin      Administrator   en
 ========== =============== ==========
@@ -39,44 +39,44 @@ The non-translated result is:
 Now we look at this table in different languages:
 
 >>> ses.show('users.UsersOverview', language='de', **kw)
-============== ================ =========
- Benutzername   Benutzerprofil   Sprache
--------------- ---------------- ---------
- robin          Verwalter        en
-============== ================ =========
+============== ============= =========
+ Benutzername   Benutzerart   Sprache
+-------------- ------------- ---------
+ robin          Verwalter     en
+============== ============= =========
 <BLANKLINE>
 
 
 >>> ses.show('users.UsersOverview', language='fr', **kw)
-=================== ====================== ========
- Nom d'utilisateur   Profil d'utilisateur   Langue
-------------------- ---------------------- --------
- robin               Administrateur         en
-=================== ====================== ========
+=================== ==================== ========
+ Nom d'utilisateur   Type d'utilisateur   Langue
+------------------- -------------------- --------
+ robin               Administrateur       en
+=================== ==================== ========
 <BLANKLINE>
 
 >>> ses.show('users.UsersOverview', language='et', **kw)
-============== ================= ======
- Kasutajanimi   Kasutajaprofiil   Keel
--------------- ----------------- ------
- robin          Administraator    en
-============== ================= ======
+============== ================ ======
+ Kasutajanimi   Kasutajaliik     Keel
+-------------- ---------------- ------
+ robin          Administraator   en
+============== ================ ======
 <BLANKLINE>
 
 
 >>> ses.show('users.UsersOverview', language='pt', **kw)
-================= =================== ========
- Nome de usuário   Perfil do usuário   Idioma
------------------ ------------------- --------
- robin             Administrador       en
-================= =================== ========
+================= =============== ========
+ Nome de usuário   User type       Idioma
+----------------- --------------- --------
+ robin             Administrador   en
+================= =============== ========
 <BLANKLINE>
 
 >>> ses.show('users.UsersOverview', language='pt-br', **kw)
-================= =================== ========
- Nome de usuário   Perfil do usuário   Idioma
------------------ ------------------- --------
- robin             Administrador       en
-================= =================== ========
+================= =============== ========
+ Nome de usuário   User type       Idioma
+----------------- --------------- --------
+ robin             Administrador   en
+================= =============== ========
 <BLANKLINE>
 

@@ -166,12 +166,12 @@ The output should be as follows:
 
 >>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
-========== ============== ============ ===========
- Username   User Profile   First name   Last name
----------- -------------- ------------ -----------
- jdupond                   Jean         Dupond
- pbommel                   Piet         Bommel
-========== ============== ============ ===========
+========== =========== ============ ===========
+ Username   User type   First name   Last name
+---------- ----------- ------------ -----------
+ jdupond                Jean         Dupond
+ pbommel                Piet         Bommel
+========== =========== ============ ===========
 
   
 .. _tutorial.instantiator:
