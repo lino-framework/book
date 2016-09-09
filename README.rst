@@ -5,9 +5,7 @@ The ``lino_book`` package
 
 
 
-.. image:: https://readthedocs.org/projects/lino/badge/?version=latest
-:target: http://lino.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+.. image:: https://readthedocs.org/projects/lino/badge/?version=latest :target: http://lino.readthedocs.io/en/latest/?badge=latest :alt: Documentation Status
 
 .. raw:: html
 
