@@ -62,23 +62,19 @@ if PY2:
 else:
     SETUP_INFO['install_requires'].append('reportlab')
 
-SETUP_INFO.update(long_description="""\
-.. image:: https://readthedocs.org/projects/lino/badge/?version=latest
-    :alt: Documentation Status
-    :scale: 100%
-    :target: http://lino.readthedocs.io/en/latest/?badge=latest
+SETUP_INFO.update(long_description="""
 
-.. image:: https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master
-    :target: https://coveralls.io/github/lino-framework/book?branch=master
+.. raw:: html
 
-.. image:: https://travis-ci.org/lino-framework/book.svg?branch=master
-    :target: https://travis-ci.org/lino-framework/book?branch=master
+    <a class="reference external image-reference" href="http://lino.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/lino/badge/?version=latest" /></a>
 
-.. image:: https://img.shields.io/pypi/v/lino.svg
-    :target: https://pypi.python.org/pypi/lino/
+    <a class="reference external image-reference" href="https://coveralls.io/github/lino-framework/book?branch=master"><img alt="https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master" src="https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master" /></a>
 
-.. image:: https://img.shields.io/pypi/l/lino.svg
-    :target: https://pypi.python.org/pypi/lino/
+    <a class="reference external image-reference" href="https://travis-ci.org/lino-framework/book?branch=master"><img alt="https://travis-ci.org/lino-framework/book.svg?branch=master" src="https://travis-ci.org/lino-framework/book.svg?branch=master" /></a>
+
+    <a class="reference external image-reference" href="https://pypi.python.org/pypi/lino/"><img alt="https://img.shields.io/pypi/v/lino.svg" src="https://img.shields.io/pypi/v/lino.svg" /></a>
+
+    <a class="reference external image-reference" href="https://pypi.python.org/pypi/lino/"><img alt="https://img.shields.io/pypi/l/lino.svg" src="https://img.shields.io/pypi/l/lino.svg" /></a>
 
 The Lino Book is a code repository used for educational and testing
 purposes.  It contains the big Sphinx documentation tree about the

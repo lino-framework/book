@@ -2,6 +2,11 @@
 API
 ===
 
+.. contents::
+    :depth: 1
+    :local:
+       
+
 .. _lino:
 
 The Lino core
@@ -20,12 +25,8 @@ applicaton.
 
 .. _xl:
 
-Lino Extensions Library
-=======================
-
-.. raw:: html
-
-   <a href="https://travis-ci.org/lino-framework/xl" target="_blank"><img src="https://travis-ci.org/lino-framework/xl.svg?branch=master"/></a>
+The Lino Extensions Library
+===========================
 
 .. py2rst::
 
@@ -37,7 +38,7 @@ Lino Extensions Library
                 
 .. _book:
 
-The Lino book
+The Lino Book
 =============
 
 .. py2rst::
@@ -50,8 +51,8 @@ The Lino book
 
 .. _commondata:
 
-The commondata packages
-=======================
+The ``commondata`` packages
+===========================
 
 
 - https://github.com/lsaffre/commondata
