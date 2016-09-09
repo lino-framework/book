@@ -5,10 +5,11 @@ The ``lino_book`` package
 
 
 
+.. image:: https://readthedocs.org/projects/lino/badge/?version=latest
+:target: http://lino.readthedocs.io/en/latest/?badge=latest
+:alt: Documentation Status
 
 .. raw:: html
-
-    <a class="reference external image-reference" href="http://lino.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/lino/badge/?version=latest" /></a>
 
     <a class="reference external image-reference" href="https://coveralls.io/github/lino-framework/book?branch=master"><img alt="https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master" src="https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master" /></a>
 
