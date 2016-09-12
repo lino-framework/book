@@ -101,8 +101,8 @@ directory and and do::
 
 You should now have three directories called `~/repositories/lino`,
 `~/repositories/xl` and `~/repositories/book`, each of which contains
-a file :xfile:`setup.py`, a file :xfile:`README.rst` and a whole tree
-of other files and directories.
+a file :xfile:`setup.py` and a whole tree of other files and
+directories.
 
 One possible problem here is that the Lino repository has a big size.
 If you just want to try out the latest version and will never submit
@@ -263,48 +263,32 @@ Running your first Lino site
 ============================
 
 You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
-a development server ::
+a development server::
 
   
-    $ cd lino_book/projects/min1
+    $ cd lino_book/projects
+    $ cd min1
     $ python manage.py runserver
 
 Now start your browser, point it to http://127.0.0.1:8000/ and play
 around.
 
-Don't stay in :mod:`min1 <lino_book.projects.min1>`, Also try
-:mod:`min2 <lino_book.projects.min2>`, :mod:`min2
-<lino_book.projects.polly>` etc...
+Don't stay in :mod:`min1 <lino_book.projects.min1>`, also try the
+other projects below :mod:`lino_book.projects`. None of them is a
+"killer app", they are just little projects used for testing and
+playing.
 
 
-Run Lino's test suite
+Where is the  test suite?
+=========================
+
+You might ask "Where is the test suite?". Don't worry about this for
+the moment. We will cover this later in :doc:`runtests` because it is
+not trivial for a beginner.
+
+
+Where to go from here
 =====================
 
-In order to check whether everything worked well, we are now going to
-run the test suite.
-
-Make sure that your demo databases are initialized and that you did
-not do any manual changes therein.  Because the test suite has many
-test cases which would fail if these demo databases were missing or
-not in their virgin state.  In case you *did* write into some database
-during the previous section, just run :cmd:`inv initdb` once more.
-
-And here we go for the test suite itself::
-
-    $ inv test
-
-The :cmd:`inv test` command is a short for ``python setup.py test``
-which simply runs the test suite.  The output should be something like
-this::
-
-    [localhost] local: python setup.py -q test
-    .....................................................................
-    ----------------------------------------------------------------------
-    Ran 74 tests in 52.712s
-    OK
-    Done.
-
-
-Congratulations if you got the test suite to pass!  As your next step,
-we now suggest to :doc:`/tutorials/hello/index`.
+As your next step, we now suggest to :doc:`/tutorials/hello/index`.
 

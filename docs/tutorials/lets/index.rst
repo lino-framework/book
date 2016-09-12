@@ -163,6 +163,13 @@ three "data categories":
   background and accessible only to site administrators)
 
 
+Here is the same diagram done using `Dia <http://dia-installer.de/>`_.  
+
+.. image:: models.png
+           
+  
+
+
 Now here is the :srcref:`models.py </docs/tutorials/lets/models.py>`
 file which defines these database models:
 
