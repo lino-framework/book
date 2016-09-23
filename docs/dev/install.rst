@@ -163,7 +163,7 @@ command-line switch instructs it to just *import* the specified module
 Updating your copy of the Lino sources
 ======================================
 
-Actually the Lino version is not enough when using a developer
+Actually the Lino version number is not enough when using a developer
 installation of Lino.  The Lino codebase repository changes almost
 every day, but the version is incremented only when we do an official
 release to PyPI.
@@ -241,8 +241,12 @@ More about this in :doc:`cache`.
 Initialize the demo databases
 =============================
 
-We are now ready to initialize the **demo databases**.  The easiest
-way to do this is to run the :cmd:`inv initdb` command::
+The Lino Book contains a series of demo projects, each of which has
+its own database. These databases need to be initialized before you
+can use these projects.
+
+The easiest way to do this is to run the :cmd:`inv initdb` command
+from within your copy of the :ref:`book` repository::
 
     $ cd ~/repositories/book
     $ inv initdb
@@ -279,16 +283,12 @@ other projects below :mod:`lino_book.projects`. None of them is a
 playing.
 
 
-Where is the  test suite?
-=========================
-
-You might ask "Where is the test suite?". Don't worry about this for
-the moment. We will cover this later in :doc:`runtests` because it is
-not trivial for a beginner.
-
 
 Where to go from here
 =====================
 
 As your next step, we now suggest to :doc:`/tutorials/hello/index`.
+
+In case you wonder where the test suite is, don't worry about this for
+the moment. We will cover this later in :doc:`runtests`.
 

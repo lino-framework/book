@@ -18,7 +18,7 @@ In this tutorial we are going to create a local Lino project which
 inherits from one of the simple :ref:`out-of-the-box projects
 <lino.projects>` included with Lino.
 
-We suppose that you have installed Lino the framework as described in
+We suppose that you have installed Lino itself as described in
 :doc:`/dev/install`.
 
 
