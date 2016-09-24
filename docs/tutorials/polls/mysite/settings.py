@@ -5,6 +5,7 @@ class Site(Site):
 
     title = "Cool Polls"
 
+    anonymous_user_profile = '900'
     demo_fixtures = ['demo']
 
     def get_installed_apps(self):
