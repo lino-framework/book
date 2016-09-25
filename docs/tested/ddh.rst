@@ -22,7 +22,7 @@ This document tests this functionality.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())  #doctest: +REPORT_UDIFF
 - concepts.Concept :
-  - PROTECT : concepts.Link.parent
+  - PROTECT : concepts.Link.child, concepts.Link.parent
 - contacts.Company :
   - PROTECT : contacts.Role.company, system.SiteConfig.site_company
 - contacts.CompanyType :
@@ -35,11 +35,11 @@ This document tests this functionality.
 - contacts.RoleType :
   - PROTECT : contacts.Role.type
 - contenttypes.ContentType :
-  - PROTECT : changes.Change.object_type, gfks.HelpText.content_type, notify.Notification.owner_type, uploads.Upload.owner_type
+  - PROTECT : changes.Change.master_type, changes.Change.object_type, gfks.HelpText.content_type, notify.Notification.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
-  - PROTECT : contacts.Partner.city, countries.Place.parent
+  - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - polls.Choice :
   - PROTECT : polls.AnswerChoice.choice
 - polls.ChoiceSet :
@@ -54,5 +54,6 @@ This document tests this functionality.
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : changes.Change.user, notify.Notification.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.user
+  - PROTECT : changes.Change.user, notify.Notification.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>
+
