@@ -43,7 +43,8 @@ Here is the :xfile:`models.py` file :
 
 .. literalinclude:: models.py
 
-Here is the data we use to fill our database:
+The :file:`fixtures/demo.py` file contains the data we use to fill our
+database:
 
 .. literalinclude:: fixtures/demo.py
   
@@ -262,10 +263,23 @@ of **slave tables**:
 Defining a web interface
 ========================
 
-Before starting the web interface of our application, let's have a
-look at the last piece of the user interface, the menu definition:
+The last piece of the user interface is the *menu definition*, located
+in the :xfile:`__init__.py` file ot this tutorial:
 
 .. literalinclude:: __init__.py
+
+Every plugin of a Lino application can define its own subclass of
+:class:`lino.core.plugin.Plugin`, and Lino instantiates these objects
+automatically a startup, even before importing your database models.
+
+You might ask "Why can't we just define the menu commands in our
+:xfile:`settings.py` or the :xfile:`models.py` files? That question
+goes beyond the scope of this tutorial
+
+Note that a plugin corresponds to what Django calls an application.
+
+Read more about plugins in :ref:`dev.plugins`.
+
 
 
 Exercise

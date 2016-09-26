@@ -1,3 +1,5 @@
+.. _dev.site:
+
 ===================================
 Introducing the :class:`Site` class
 ===================================
@@ -175,49 +177,70 @@ file system.
 Technical details
 =================
 
-
 These are the Django settings which Lino will override:
 
 >>> from django.utils import translation
 >>> from lino.core.site import TestSite as Site
->>> from atelier.utils import dict_py2
->>> from pprint import pprint
->>> pprint(dict_py2(Site().django_settings))
+>>> import json
+>>> print(json.dumps(Site().django_settings, indent=4))
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-{'DATABASES': {'default': {'ENGINE': 'django.db.backends.sqlite3',
-                           'NAME': '.../default.db'}},
- 'FIXTURE_DIRS': (),
- 'INSTALLED_APPS': ('lino.modlib.lino_startup',
-                    'django.contrib.staticfiles',
-                    'lino.modlib.about',
-                    'lino.modlib.jinja',
-                    'lino.modlib.bootstrap3',
-                    'lino.modlib.extjs'),
- 'LANGUAGES': [],
- 'LOCALE_PATHS': (),
- 'MEDIA_ROOT': .../core/media',
- 'MEDIA_URL': '/media/',
- 'MIDDLEWARE_CLASSES': ('django.middleware.common.CommonMiddleware',
-                        'lino.core.auth.NoUserMiddleware',
-                        'lino.utils.ajax.AjaxExceptionResponse'),
- 'ROOT_URLCONF': 'lino.core.urls',
- 'SECRET_KEY': '20227',
- 'SERIALIZATION_MODULES': {'py': 'lino.utils.dpy'},
- 'STATICFILES_DIRS': (),
- 'STATIC_ROOT': ...',
- 'STATIC_URL': '/static/',
- 'TEMPLATES': [{'APP_DIRS': True,
-                'BACKEND': 'django.template.backends.django.DjangoTemplates',
-                'DIRS': [],
-                'OPTIONS': {'context_processors': ['django.template.context_processors.debug',
-                                                   'django.template.context_processors.i18n',
-                                                   'django.template.context_processors.media',
-                                                   'django.template.context_processors.static',
-                                                   'django.template.context_processors.tz',
-                                                   'django.contrib.messages.context_processors.messages']}},
-               {'BACKEND': 'django.template.backends.jinja2.Jinja2',
-                'DIRS': [],
-                'OPTIONS': {'environment': 'lino.modlib.jinja.get_environment'}}],
- '__file__': '...'}
-
+{
+    "TEMPLATES": [
+        {
+            "DIRS": [], 
+            "APP_DIRS": true, 
+            "OPTIONS": {
+                "context_processors": [
+                    "django.template.context_processors.debug", 
+                    "django.template.context_processors.i18n", 
+                    "django.template.context_processors.media", 
+                    "django.template.context_processors.static", 
+                    "django.template.context_processors.tz", 
+                    "django.contrib.messages.context_processors.messages"
+                ]
+            }, 
+            "BACKEND": "django.template.backends.django.DjangoTemplates"
+        }, 
+        {
+            "DIRS": [], 
+            "OPTIONS": {
+                "environment": "lino.modlib.jinja.get_environment"
+            }, 
+            "BACKEND": "django.template.backends.jinja2.Jinja2"
+        }
+    ], 
+    "LOCALE_PATHS": [], 
+    "STATIC_ROOT": "...", 
+    "SERIALIZATION_MODULES": {
+        "py": "lino.utils.dpy"
+    }, 
+    "MEDIA_ROOT": "...", 
+    "__file__": ".../site.pyc", 
+    "MIDDLEWARE_CLASSES": [
+        "django.middleware.common.CommonMiddleware", 
+        "lino.core.auth.NoUserMiddleware", 
+        "lino.utils.ajax.AjaxExceptionResponse"
+    ], 
+    "STATIC_URL": "/static/", 
+    "LANGUAGES": [], 
+    "DATABASES": {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3", 
+            "NAME": ".../default.db"
+        }
+    }, 
+    "ROOT_URLCONF": "lino.core.urls", 
+    "SECRET_KEY": "20227", 
+    "INSTALLED_APPS": [
+        "lino.modlib.lino_startup", 
+        "django.contrib.staticfiles", 
+        "lino.modlib.about", 
+        "lino.modlib.jinja", 
+        "lino.modlib.bootstrap3", 
+        "lino.modlib.extjs"
+    ], 
+    "STATICFILES_DIRS": [], 
+    "FIXTURE_DIRS": [], 
+    "MEDIA_URL": "/media/"
+}
 

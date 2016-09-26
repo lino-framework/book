@@ -125,16 +125,17 @@ worksheet names longer than 32 characters.
 
 It has 5 columns and 13 rows:
 
->>> print(len(ws.columns), len(ws.rows))
+>>> rows = list(ws.rows)
+>>> print(len(list(ws.columns)), len(rows))
 (5, 13)
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
 
->>> print(' | '.join([cell.value for cell in ws.rows[0]]))
+>>> print(' | '.join([cell.value for cell in rows[0]]))
 When | Workflow | Created | Start date | Start time
 
->>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
+>>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 Thu 23/10/2014 (10:20) | **Took place** | ... | 2014-10-23 00:00:00 | 10:20:00
 
@@ -153,10 +154,11 @@ Unicode
 >>> print(ws.title)
 Mes rendez-vous (Traité par Rol
 
->>> print(' | '.join([cell.value for cell in ws.rows[0]]))
+>>> rows = list(ws.rows)
+>>> print(' | '.join([cell.value for cell in rows[0]]))
 Quand | État | Créé | Date début | Heure de début
 
->>> print(' | '.join([str(cell.value) for cell in ws.rows[1]]))
+>>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 jeu. 23/10/2014 (10:20) | **Terminé** | ... | 2014-10-23 00:00:00 | 10:20:00
 

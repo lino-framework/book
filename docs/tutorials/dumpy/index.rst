@@ -19,7 +19,7 @@ This tutorial shows how to use :doc:`the Python serializer
 </topics/dpy>` for writing and loading demonstration data samples for
 application prototypes and test suites.
 
-We suppose that you have folled the :ref:`lino.tutorial.hello`
+We suppose that you have followed the :ref:`lino.tutorial.hello`
 tutorial.
 
 

@@ -44,11 +44,11 @@ Discovering problems
 
 - Show files which are not *writable* for other group members::
     
-    $ find -perm /g=w
+    $ find ! -perm /g=w
 
   If this produces some output, you probably want to fix it::
 
-    $ find -perm /g=w -exec chmod g+w '{}' +
+    $ find ! -perm /g=w -exec chmod g+w '{}' +
 
 - Show directories which are not *executable* for other group members::
     

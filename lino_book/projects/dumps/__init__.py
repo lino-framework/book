@@ -1,6 +1,5 @@
-"""A fake application used for testing and explaining Python dumps.
-
-See :ref:`book.specs.dumps`.
+"""A fake application used for testing and explaining
+:ref:`book.specs.dumps`.
 
 .. autosummary::
    :toctree:
@@ -10,6 +9,5 @@ See :ref:`book.specs.dumps`.
    settings.a
    settings.b
    fixtures.demo
-
 
 """
