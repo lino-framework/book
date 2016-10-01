@@ -24,6 +24,10 @@ out-of-the box user interface.  More in :doc:`limitations`.
 Target users
 ============
 
+Primary target users of Lino applications are agencies and companies
+who need a customized database application "more than MS-Access for
+cheaper than SAP".
+
 Lino is designed to be used by professional developers who write and
 maintain a customized database application, either for internal use by
 themselves or their employer, or for internal use by their customer,

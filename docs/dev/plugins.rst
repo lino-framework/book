@@ -102,8 +102,7 @@ As an application developer you can specify *in your application* that
 you want to configure certain plugins by overriding the
 :meth:`lino.core.site.Site.setup_plugins` method.
 
-You should do this in your application's :xfile:`settings.py` by
-overriding the :meth:`setup_plugins
+You should do this by overriding the :meth:`setup_plugins
 <lino.core.site.Site.setup_plugins>` method of your Site class.  For
 example::
 
