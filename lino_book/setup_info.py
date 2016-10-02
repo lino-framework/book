@@ -141,6 +141,8 @@ lino_book.projects.min2
 lino_book.projects.min2.modlib
 lino_book.projects.min2.modlib.contacts
 lino_book.projects.min2.modlib.contacts.fixtures
+lino_book.projects.min2.modlib.contacts.management
+lino_book.projects.min2.modlib.contacts.management.commands
 lino_book.projects.min2.settings
 lino_book.projects.min2.tests
 lino_book.projects.apc
