@@ -9,7 +9,7 @@ env:
   
 before_install:
   - # sudo add-apt-repository -y ppa:libreoffice/ppa
-  - sudo apt-get install -y libcairo2  # fix "sorry, but this version only supports 100 named groups"
+  - sudo apt-get install -y libxml2-dev libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev python-dev  # fix "sorry, but this version only supports 100 named groups"
   - sudo apt-get install -y libreoffice python3-uno
   - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' &
 
