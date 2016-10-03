@@ -1,3 +1,5 @@
+.. _dev.contrib:
+
 =================
 Contributing code
 =================
