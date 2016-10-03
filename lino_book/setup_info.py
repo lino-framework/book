@@ -15,7 +15,6 @@ SETUP_INFO = dict(
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone',
-        'weasyprint', 'cairocffi<0.7',
         'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
