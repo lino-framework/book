@@ -72,6 +72,7 @@ Working with others
 #. :doc:`runtests`
 #. :doc:`contrib`
 #. :doc:`/team/pull_request`
+#. :doc:`ci`
 #. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
 
@@ -84,6 +85,7 @@ Working with others
    runtests
    contrib
    /team/pull_request
+   ci
    /team/builddocs
    /team/devblog
    

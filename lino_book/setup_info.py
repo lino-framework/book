@@ -18,15 +18,6 @@ SETUP_INFO = dict(
         'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
-    # pisa has a bug which makes it complain that "Reportlab Version
-    # 2.1+ is needed!" when reportlab 3 is installed.
-    # So we install reportlab 2.7 (the latest 2.x version)
-
-    # beautifulsoup4, html5lib, reportlab and pisa are actually needed
-    # only when you want to run the test suite, not for normal
-    # operation.  Despite this they must be specified in
-    # `install_requires`, not in `tests_require`, because the doctests
-    # are run in the environment specified by `install_requires`.
 
     description="The documentation for Lino",
     license='BSD License',
