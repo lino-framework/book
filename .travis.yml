@@ -22,7 +22,7 @@ install:
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - inv cov
+  - inv cov --no-html
 
 after_success:
   - coveralls

@@ -5,14 +5,14 @@ Plugin inheritance
 ==================
 
 **Plugin inheritance** is when you extend some existing Lino plugin by
-*inheriting* everything of it (its models, views, methods, fixtures
-*and admin commands) and then *overriding* some of it.
+inheriting everything of it (its models, views, methods, fixtures and
+admin commands) and then overriding some of it.
 
-Plugins aren't *classes* but *packages*, so plugin inheritance is no
-"real" inheritance but rather a series of guidelines and programming
-patterns.
+Plugins aren't *classes*, they are *packages*, so plugin inheritance
+is not "real" inheritance but rather a series of guidelines and
+programming patterns.
 
-Plugin inheritance is intesively used by Lino's plugin libraries.
+Plugin inheritance is intensively used by Lino's plugin libraries.
 
 A **plugin library** is a collection of reusable plugins which are
 designed to work together. For example :mod:`lino.modlib`,
@@ -118,7 +118,7 @@ Overriding other things
 =======================
 
 Overriding other Python objects (ChoiceList, Action, Plugin) is
-straigtforward. 
+straightforward.
 
 But the `fixtures`, `config` and `management` subdirs need special
 attention when doing plugin inheritance.
