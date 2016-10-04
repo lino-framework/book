@@ -24,11 +24,11 @@ optional:
 You "activate" a project by opening a terminal and changing to its
 directory. That's all.
 
-Project containers
-==================
+Project root directories
+========================
 
 You don't need to have all your projects under a single top-level
-directory.  You can have different **base directories** containing
+directory.  You can have different **root directories** containing
 projects.  We suggest the following naming conventions.
 
 .. xfile:: ~/repositories

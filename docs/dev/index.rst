@@ -71,7 +71,8 @@ Working with others
 #. :doc:`env`
 #. :doc:`runtests`
 #. :doc:`contrib`
-#. :doc:`/team/pull_request`
+#. :doc:`patch`
+#. :doc:`request_pull`
 #. :doc:`ci`
 #. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
@@ -84,7 +85,8 @@ Working with others
    env
    runtests
    contrib
-   /team/pull_request
+   patch
+   request_pull
    ci
    /team/builddocs
    /team/devblog
