@@ -25,6 +25,7 @@ Sitemap
    documentation
    community/index
    blog
+   releases/index
 
 
 

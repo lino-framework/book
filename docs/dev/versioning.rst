@@ -1,44 +1,56 @@
+.. _dev.versioning:
+
+==============================
 Versioning and release process
 ==============================
 
-Your application's version is in :attr:`lino.core.site.Site.version`.
+Date-based versioning
+=====================
+
+The different projects maintained by the Lino Team depend quite
+strongly on each other. This is why we adopted a date-based versioning
+system.
+
+Date-based versioning is similar to what Ubuntu uses: "Ubuntu releases
+on a time based cycle, rather than a feature driven one. Sometimes
+this can generate confusion, especially when people ask for a new
+feature to be added."  (`ubuntu.com
+<https://wiki.ubuntu.com/TimeBasedReleases>`__)
+
+For us, "Version 16.10" means "The version we started to release in
+October 2016". If a particular project decides that a bugfix release
+is needed, then they would call it 16.10.1 (and so on) even if this
+happens two months later.
+
+Which projects
+
+- :ref:`atelier`
+  :ref:`lino`
+  :ref:`xl`
+  :ref:`book`
+  :ref:`extjs6`
+  :ref:`noi`
+  :ref:`cosi`
+  :ref:`welfare`
+  :ref:`voga`
+  :ref:`presto`
+       
 
 
+The release process
+===================
 
-Requiring a minimal Lino version
---------------------------------
+- Check you have a clean working copy of all projects maintained by
+  the Lino Team.
 
-If you use anything from :mod:`lino.mixins` or :mod:`lino.modlib`,
-then your database structure may depend on the Lino version.
-So it is possible that your application requires a given Lino 
-version.
+- Check that all test suites are passing and all doc trees are
+  building.
 
-So do we need an attribute `depends_on_lino_version`?
-Not sure. Maybe this should be managed through the 
-`Python distutils
-<http://wiki.python.org/moin/CheeseShopTutorial>`_.
-To be continued.
+- Update the `version` and `install_requires` in the
+  :xfile:`setup_info.py` files of each project.
 
+- Run :cmd:`pp inv ci`
+  
+- Run :cmd:`pp inv release`         
 
-
-Intermediate versions
----------------------
-
-An intermediate version is a version whose number ends with a "+".
-
-The "+" causes Lino to raise 
-an exception if somebody tried to read or write a dumpy fixture.
-This is to keep you from accidentally using this version 
-on a production server.
-
-To be more precise, Lino raises 
-`Cannot dumpdata from intermediate version X+` in 
-:meth:`lino.utils.dumpy.Serializer.serialize`
-and 
-`Cannot loaddata python dumps to intermediate version X+` 
-:meth:`lino.Lino.install_migrations` 
-
-
-
-
-
+- Update the release notes.

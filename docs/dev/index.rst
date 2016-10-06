@@ -76,6 +76,7 @@ Working with others
 #. :doc:`ci`
 #. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
+#. :doc:`versioning`
 
 
 .. toctree::
@@ -90,6 +91,7 @@ Working with others
    ci
    /team/builddocs
    /team/devblog
+   versioning
    
 
 
@@ -220,7 +222,6 @@ Drafts
    intro
    style
    datamig
-   versioning
    versions
    extjs
 
@@ -234,6 +235,7 @@ Other
    /changes
    /todo
    /tested/index
+   newbies/index
    git
    /ref/index
    py3

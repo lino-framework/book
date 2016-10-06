@@ -30,7 +30,6 @@ The general workflow for a code contribution is
   <request_pull>`.
 
 
-
 Types of code contributions
 ===========================
 

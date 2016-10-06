@@ -158,7 +158,7 @@ exclude_patterns = [
     # 'blog/2011/*',
     # 'blog/2012/*',
     # 'blog/2013/*',
-    'releases/*',
+    'old/*',
     'tickets/*',
     # 'releases/2010/*',
     # 'releases/2011/*',
