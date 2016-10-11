@@ -31,8 +31,8 @@ class Site(Site):
     # languages = 'en de fr'
     languages = 'en de fr et nl pt-br es'
 
-    # user_profiles_module = 'lino.modlib.users.roles'
-    user_profiles_module = 'lino_xl.lib.xl.roles'
+    # user_types_module = 'lino.modlib.users.roles'
+    user_types_module = 'lino_xl.lib.xl.roles'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

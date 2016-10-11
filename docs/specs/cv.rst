@@ -20,10 +20,10 @@ Career module (tested)
    :depth: 2
 
 
->>> UserProfiles = rt.modules.users.UserProfiles
+>>> UserTypes = rt.modules.users.UserTypes
 >>> LanguageKnowledges = rt.modules.cv.LanguageKnowledges
 
->>> rt.show(UserProfiles)
+>>> rt.show(UserTypes)
 ======= =========== ===============
  value   name        text
 ------- ----------- ---------------
@@ -33,13 +33,13 @@ Career module (tested)
 ======= =========== ===============
 <BLANKLINE>
 
->>> a = UserProfiles.admin
+>>> a = UserTypes.admin
 >>> a
-users.UserProfiles.admin:900
+users.UserTypes.admin:900
 
->>> u = UserProfiles.user
+>>> u = UserTypes.user
 >>> u
-users.UserProfiles.user:100
+users.UserTypes.user:100
 
 >>> LanguageKnowledges.required_roles
 set([<class 'lino_xl.lib.cv.roles.CareerStaff'>])

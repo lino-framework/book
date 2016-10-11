@@ -2,7 +2,7 @@
 # administrator for your language.
 
 from django.conf import settings
-from lino.modlib.users.choicelists import UserProfiles
+from lino.modlib.users.choicelists import UserTypes
 
 
 def objects():
@@ -10,5 +10,5 @@ def objects():
                                    first_name="Roberto",
                                    last_name="Spanish",
                                    email=settings.SITE.demo_email,
-                                   profile=UserProfiles.admin)
+                                   profile=UserTypes.admin)
 

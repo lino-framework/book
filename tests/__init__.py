@@ -49,6 +49,9 @@ class DocsTests(LinoTestCase):
         docs/tested/test_i18n.rst
         """)
 
+    def test_perms(self):
+        self.run_simple_doctests('docs/dev/perms.rst')
+
     def test_i18n(self):
         self.run_simple_doctests('docs/dev/i18n.rst')
 

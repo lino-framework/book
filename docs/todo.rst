@@ -260,7 +260,7 @@ Medium-term
 
 
 #.  Make ChoiceLists visible through the web interface. 
-    Show UserGroups and UserProfiles in :class:`lino.models.About`.
+    Show UserGroups and UserTypes in :class:`lino.models.About`.
 
 #.  Tabelle der Benutzerprofile (und generell alle choicelists) in 
     eine lokale Konfigurationsdatei auslagern und dadurch auch für 
