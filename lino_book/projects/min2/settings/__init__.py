@@ -14,7 +14,7 @@ class Site(Site):
     title = "Lino Mini 2"
     project_model = 'projects.Project'
     languages = 'en et'
-    user_profiles_module = 'lino.modlib.office.roles'
+    user_types_module = 'lino.modlib.office.roles'
 
     demo_fixtures = """std demo demo2 checkdata""".split()
 

@@ -12,25 +12,10 @@ also :doc:`marked_changes`.  The final truth about what's going on is
 only the source code.
 
 .. toctree::
-    :hidden:
+   :maxdepth: 1
 
-    marked_changes
-
-
-Version 1.7.5 (in development)
-============================================
-
-- Until now Lino did not support well the case of defining a `default`
-  value on fields of type :class:`QuantityField
-  <lino.core.fields.QuantityField>`, :class:`DurationField
-  <lino.core.fields.DurationField>` or :class:`IncompleteDateField
-  <lino.core.fields.IncompleteDateField>`.  Changed API for these
-  fields: when `blank` is True, then `null` must be True as well.  The
-  previous statement "QuantityFields are implemented as CharFields and
-  therefore should *not* be declared `null=True`.  But if
-  `blank=True`, empty strings are converted to `None` values." is no
-  longer true.
-
+   /releases/index
+    
 
 
 Version 1.7.4 (released :blogref:`20160712`)
@@ -406,9 +391,9 @@ Version 1.6.5 (released :blogref:`20130422`)
   See :blogref:`20130401`.
 
 
-.. Older releases
+.. toctree::
+    :hidden:
 
-    .. toctree::
-       :maxdepth: 1
+    marked_changes
+    
 
-       /releases/index

@@ -76,8 +76,6 @@ automatically all Ash Wednesdays for a range of years:
 ==================== =============== ===============
  When                 Summary         Workflow
 -------------------- --------------- ---------------
- **Wed 13/02/2013**   Ash Wednesday   **Suggested**
- **Wed 05/03/2014**   Ash Wednesday   **Suggested**
  **Wed 18/02/2015**   Ash Wednesday   **Suggested**
  **Wed 10/02/2016**   Ash Wednesday   **Suggested**
  **Wed 01/03/2017**   Ash Wednesday   **Suggested**

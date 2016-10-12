@@ -10,10 +10,13 @@ Setting up your work environment
    $ python setup.py test -s tests.LibTests.test_runtests
 
 As a Lino developer you are going to maintain and know a whole little
-collection of projects: :ref:`noi`, :ref:`cosi`, :ref:`voga`,
-:ref:`presto`, :ref:`welfare`, and :ref:`extjs6`.  You don't need to
-dive into each of them right now, but let's already install them.
+collection of projects (you don't need to dive into each of them right
+now, but let's already install them):
 
+- :ref:`noi`, the application we use for managing our collaboration
+- :ref:`cosi`, :ref:`voga` and :ref:`presto`
+- :ref:`welfare`
+- :ref:`extjs6`.
 
 Remember that in :ref:`lino.dev.install` you did::
 

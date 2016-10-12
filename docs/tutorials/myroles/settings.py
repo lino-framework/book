@@ -3,7 +3,7 @@ from lino_book.projects.polly.settings import *
 
 class Site(Site):
 
-    user_profiles_module = 'myroles.myroles'
+    user_types_module = 'myroles.myroles'
 
 SITE = Site(globals())
 

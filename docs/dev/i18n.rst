@@ -3,21 +3,17 @@ Internationalization
 
 An introduction to translatable strings.
 
-About this document
--------------------
+..  You can test only this document by issuing:
 
-This document is part of the Lino test suite. You can test only this
-document by issuing::
+      $ python setup.py test -s tests.DocsTests.test_i18n
 
-  $ python setup.py test -s tests.DocsTests.test_i18n
+    Doctest initialization:
 
-Doctest initialization:
+    >>> from lino import startup
+    >>> startup('lino_book.projects.docs.settings.demo')
+    >>> from lino.api.shell import *
 
->>> from lino import startup
->>> startup('lino_book.projects.docs.settings.demo')
->>> from lino.api.shell import *
-
->>> from django.utils.translation import ugettext as _
+    >>> from django.utils.translation import ugettext as _
 
 If no language is activated, :func:`ugettext` just returns the English
 text:

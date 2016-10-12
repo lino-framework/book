@@ -9,6 +9,4 @@
 -e git+https://github.com/lino-framework/voga.git#egg=lino_voga
 -e git+https://github.com/lino-framework/presto.git#egg=lino_presto
 -e git+https://github.com/lino-framework/welfare.git#egg=lino_welfare
-
-
-
+-e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
