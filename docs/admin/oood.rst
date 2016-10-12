@@ -64,9 +64,11 @@ script, and for convenience the Lino repository contains a copy of it
 Setting ``appy_params``
 =======================
 
-It is possible that you must set your :attr:`appy_params
-<lino.core.site.Site.appy_params>` to point to your `python3`
-executable, e.g. by specifying in your :xfile:`settings.py`::
+If you have Python 3 installed under :file:`/usr/bin/python3`, then
+you don't need to read this section.  Otherwise you must set your
+:attr:`appy_params <lino.core.site.Site.appy_params>` to point to your
+`python3` executable, e.g. by specifying in your
+:xfile:`settings.py`::
 
   SITE.appy_params.update(pythonWithUnoPath='/usr/bin/python3')
 

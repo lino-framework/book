@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2015 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
@@ -23,7 +23,7 @@ class Site(Site):
     #~ admin_prefix = 'admin'
     default_ui = 'lino.modlib.bootstrap3'
 
-    #~ anonymous_user_profile =
+    # anonymous_user_type = '900'
 
     languages = 'fr nl de'
 

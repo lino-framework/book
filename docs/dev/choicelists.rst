@@ -146,15 +146,15 @@ The text of a choice depends on the current user language.
 
 Comparing Choices uses their *value* (not the *name* nor *text*):
 
->>> UserProfiles = rt.modules.users.UserProfiles
+>>> UserTypes = rt.modules.users.UserTypes
 
->>> UserProfiles.admin > UserProfiles.user
+>>> UserTypes.admin > UserTypes.user
 True
->>> UserProfiles.admin == '900'
+>>> UserTypes.admin == '900'
 True
->>> UserProfiles.admin == 'manager'
+>>> UserTypes.admin == 'manager'
 False
->>> UserProfiles.admin == ''
+>>> UserTypes.admin == ''
 False
 
 

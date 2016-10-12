@@ -16,13 +16,12 @@ Here is the :xfile:`models.py` file we will use for this tutorial:
 We define a model `Moo` with two actions `a` and `m`, 
 and a table `Moos` on `Moo` defining another two action `b` and `t`.
 
-
 ..
   >>> # encoding: utf-8
   >>> from lino.api.shell import *
-  >>> from atelier.utils import dict_py2
   >>> globals().update(actions.__dict__)
   >>> from pprint import pprint
+  >>> import json
 
 
 Where to define actions
@@ -49,11 +48,11 @@ session.
 
 Since `a` and `m` are defined on the Model, we can run them directly:
 
->>> dict_py2(ses.run(obj.a))
-{'message': 'Called a() on Moo object', 'success': True}
+>>> print(json.dumps(ses.run(obj.a)))
+{"message": "Called a() on Moo object", "success": true}
 
->>> dict_py2(ses.run(obj.m))
-{'message': 'Called m() on Moo object', 'success': True}
+>>> print(json.dumps(ses.run(obj.m)))
+{"message": "Called m() on Moo object", "success": true}
 
 This wouldn't work for `t` and `b` since these are defined on `Moos` 
 (which is only one of many possible tables on model `Moo`):
@@ -67,11 +66,11 @@ So in this case we need to specify them table as the first parameter.
 And because they are row actions, we need to pass the instance as 
 mandatory first argument:
 
->>> dict_py2(ses.run(S1.t, obj))
-{'message': 'Called t() on Moo object', 'success': True}
+>>> print(json.dumps(ses.run(S1.t, obj)))
+{"message": "Called t() on Moo object", "success": true}
 
->>> dict_py2(ses.run(S1.b, obj))
-{'message': 'Called a() on Moo object', 'success': True}
+>>> print(json.dumps(ses.run(S1.b, obj)))
+{"message": "Called a() on Moo object", "success": true}
 
   
 How to "remove" an inherited action or collected from a table

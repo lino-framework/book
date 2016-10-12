@@ -158,7 +158,7 @@ exclude_patterns = [
     # 'blog/2011/*',
     # 'blog/2012/*',
     # 'blog/2013/*',
-    'releases/*',
+    'old/*',
     'tickets/*',
     # 'releases/2010/*',
     # 'releases/2011/*',
@@ -393,4 +393,9 @@ gettext_compact = True
 # autodoc_default_flags = ['no-imported-members']
 
 
+extensions += ['sphinx.ext.inheritance_diagram']
 
+inheritance_graph_attrs = dict(rankdir="TB")
+# inheritance_graph_attrs.update(size='"12.0, 16.0"')
+inheritance_graph_attrs.update(size='"48.0, 64.0"')
+inheritance_graph_attrs.update(fontsize=14, ratio='compress')

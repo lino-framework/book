@@ -26,7 +26,7 @@ The standard system or user roles and profiles is defined by
 This system is used by default:
 
 >>> from lino_book.projects.polly.settings import Site
->>> print(Site.user_profiles_module)
+>>> print(Site.user_types_module)
 lino_xl.lib.polls.roles
 
 The local roles module
@@ -41,18 +41,18 @@ First step is to **create and activate a local roles module**:
 
     from lino_book.projects.polly.roles import *
 
-- In your :xfile:`settings.py` file, set :attr:`user_profiles_module
-  <lino.core.site.Site.user_profiles_module>` to the Python path of
+- In your :xfile:`settings.py` file, set :attr:`user_types_module
+  <lino.core.site.Site.user_types_module>` to the Python path of
   above file::
     
-    user_profiles_module = 'mysite.myroles'
+    user_types_module = 'mysite.myroles'
 
 This first step should have no visible effect at all. We've just
 prepared a hook for defining local customizations.  The only
 difference is that our local :file:`myroles.py` module is being
 imported at startup:
 
->>> print(settings.SITE.user_profiles_module)
+>>> print(settings.SITE.user_types_module)
 myroles.myroles
 
 Second step is to add customizations to that :file:`myroles.py` file.

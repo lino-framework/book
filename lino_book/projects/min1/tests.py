@@ -25,7 +25,7 @@ from lino.api import dd, rt
 from lino.utils.instantiator import create_and_get
 
 from lino_xl.lib.contacts import models as contacts
-from lino.modlib.users.choicelists import UserProfiles
+from lino.modlib.users.choicelists import UserTypes
 
 Genders = dd.Genders
 
@@ -133,7 +133,7 @@ Estonia''')
 
         u = create_and_get(settings.SITE.user_model,
                            username='root', language='',
-                           profile=UserProfiles.admin)
+                           profile=UserTypes.admin)
 
         """
         disable SITE.is_imported_partner() otherwise 

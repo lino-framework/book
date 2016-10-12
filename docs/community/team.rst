@@ -2,8 +2,8 @@
 The Lino Team
 =============
   
-The **Lino Team** is a group of independent developers who help making
-Lino better.  They have their `organization on GitHub
+The **Lino Team** is a group of independent developers who
+help making Lino better.  They have their `organization on GitHub
 <https://github.com/lino-framework>`__ which owns the different
 repositories that make up the Lino framework.
 
@@ -11,6 +11,16 @@ We maintain `a website <http://bugs.lino-framework.org>`_ with a
 common list of things to do.  You can contact us by sending an email
 to *team at lino-framework.org*.  We use to speak English, but
 tolerate the fact that none of us is a native speaker.
+
+**Juristic aspects** : The Lino Team is an informal group of
+co-publishers. It does neither generate revenue nor does it intend to
+make or distribute profits.  There is no legal agreement signed by all
+its members.  Every contributor is liable for their work: if one of us
+would (accidentally) publish a file with sensitive confidential data
+or copyrighted content, only that particular person (or their
+employer) would be liable.  We did not (yet) formulate and sign any
+Contributor License Agreement as e.g. `Django
+<https://www.djangoproject.com/foundation/cla/>`__ does it.
 
 .. |br| raw:: html
 

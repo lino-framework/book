@@ -12,8 +12,8 @@ class Site(Site):
     title = "sendchanges example"
 
     default_user = "robin"
-    user_profiles_module = None
-    # user_profiles_module = 'lino.modlib.office.roles'
+    user_types_module = None
+    # user_types_module = 'lino.modlib.office.roles'
 
     def send_email(self, subject, sender, body, recipients):
         # override for this test so that it does not actually send

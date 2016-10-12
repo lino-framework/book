@@ -71,9 +71,12 @@ Working with others
 #. :doc:`env`
 #. :doc:`runtests`
 #. :doc:`contrib`
-#. :doc:`/team/pull_request`
+#. :doc:`patch`
+#. :doc:`request_pull`
+#. :doc:`ci`
 #. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
+#. :doc:`versioning`
 
 
 .. toctree::
@@ -83,9 +86,12 @@ Working with others
    env
    runtests
    contrib
-   /team/pull_request
+   patch
+   request_pull
+   ci
    /team/builddocs
    /team/devblog
+   versioning
    
 
 
@@ -216,7 +222,6 @@ Drafts
    intro
    style
    datamig
-   versioning
    versions
    extjs
 
@@ -230,6 +235,7 @@ Other
    /changes
    /todo
    /tested/index
+   newbies/index
    git
    /ref/index
    py3

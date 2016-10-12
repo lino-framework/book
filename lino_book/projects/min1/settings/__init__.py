@@ -20,7 +20,7 @@ class Site(Site):
 
     demo_fixtures = 'std demo demo2'
 
-    user_profiles_module = 'lino.modlib.office.roles'
+    user_types_module = 'lino.modlib.office.roles'
 
     # workflows_module = 'lino_xl.lib.cal.workflows.take'
 
