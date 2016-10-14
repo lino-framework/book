@@ -54,13 +54,14 @@ System --> Plausibility problems` to see them.
 
 >>> rt.show(plausibility.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============= =========================================== ============================================================= ==============================
- Responsible   Controlled by                               Message                                                       Plausibility checker
-------------- ------------------------------------------- ------------------------------------------------------------- ------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*     Event conflicts with 2 other events.                          Check for conflicting events
- Robin Rood    *Event #113 Breakfast (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
- Robin Rood    *Event #125 Interview (31.10.2014 11:10)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
-============= =========================================== ============================================================= ==============================
+============= ================================================ ============================================================= ==============================
+ Responsible   Controlled by                                    Message                                                       Plausibility checker
+------------- ------------------------------------------------ ------------------------------------------------------------- ------------------------------
+ Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 3 other events.                          Check for conflicting events
+ Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
+ Robin Rood    *Event #125 Seminar (31.10.2014 11:10)*          Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
+ Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
+============= ================================================ ============================================================= ==============================
 <BLANKLINE>
 
 
@@ -76,13 +77,14 @@ of selecting the :class:`ConflictingEventsChecker
 >>> chk = plausibility.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(plausibility.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============= =========================================== =============================================================
- Responsible   Controlled by                               Message
-------------- ------------------------------------------- -------------------------------------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*     Event conflicts with 2 other events.
- Robin Rood    *Event #113 Breakfast (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).
- Robin Rood    *Event #125 Interview (31.10.2014 11:10)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).
-============= =========================================== =============================================================
+============= ================================================ =============================================================
+ Responsible   Controlled by                                    Message
+------------- ------------------------------------------------ -------------------------------------------------------------
+ Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 3 other events.
+ Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).
+ Robin Rood    *Event #125 Seminar (31.10.2014 11:10)*          Event conflicts with Event #30 All Souls' Day (31.10.2014).
+ Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).
+============= ================================================ =============================================================
 <BLANKLINE>
 
 

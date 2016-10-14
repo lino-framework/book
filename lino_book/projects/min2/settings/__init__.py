@@ -13,7 +13,7 @@ class Site(Site):
     """
     title = "Lino Mini 2"
     project_model = 'projects.Project'
-    languages = 'en et'
+    languages = 'en et fr'
     user_types_module = 'lino.modlib.office.roles'
 
     demo_fixtures = """std demo demo2 checkdata""".split()
