@@ -369,10 +369,11 @@ Explanations:
   chapter of Django's documentation. 
   Lino is based on Django, and Django is known for its good documentation. Use it!
 
-- If `joiner` and `sep` are a riddle to you, you'll find the 
-  solution in Jinja's `Template Designer 
-  Documentation <http://jinja.pocoo.org/docs/templates/#joiner>`__.
-  Lino applications by default replace Django's template engine by Jinja.
+- If `joiner` and `sep` are a riddle to you, you'll find the solution
+  in Jinja's `Template Designer Documentation
+  <http://jinja.pocoo.org/docs/templates/#joiner>`__.  Lino
+  applications by default replace Django's template engine by `Jinja
+  <http://jinja.pocoo.org>`__.
 
 - ``obj.vote`` is an :class:`InstanceAction <lino.core.actions.InstanceAction>`,
   and we call its 
@@ -564,7 +565,25 @@ about the web request which called the action.
   :meth:`error <lino.core.requests.BaseRequest.error>` are possible
   return values where you can ask the client to do certain things.
 
+Exercises
+---------
 
+#.  **Add the current score of each choice to the results**
+
+#.  **Adding more explanations**
+
+    Your customer asks you to add a possibility for specifying a
+    longer explanation text for every question. The question's title should
+    show up in bold, and the longer explanation should come before the
+    "Published..." part
+
+    Hint: add a `TextField` named `question_help` to your `Question`
+    model, add this field to the `detail_layout` of your `Questions`
+    table, modify your `admin_main.html` file so that the field content is
+    displayed, optionally modify your :file:`demo.py` fixture, finally run
+    :manage:`initdb_demo` again before launching :manage:`runserver`.
+
+See solutions to these in :doc:`/tutorials/polls2/mysite/index`
 
 Summary
 -------

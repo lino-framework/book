@@ -260,3 +260,4 @@ Other
    ml/index
    /team/index
    interview
+   /tutorials/polls2/mysite/index
