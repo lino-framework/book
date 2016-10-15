@@ -14,6 +14,7 @@ class Question(dd.Model):
         "Hidden",
         help_text="Whether this poll should not be shown in the main window.",
         default=False)
+    description = models.TextField('Description', blank=True)
     
     class Meta:
         verbose_name = 'Question'
