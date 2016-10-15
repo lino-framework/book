@@ -148,7 +148,7 @@ datetime.date(2016, 2, 9)
 >>> len(wanted)
 4
 >>> print(ar.response['info_message'])
-Generating events between 2016-02-09 and 2019-10-23.
+Generating events between 2016-02-09 and 2019-10-23 (max. 72).
 Reached upper date limit 2019-10-23
 
 >>> wanted[1]
