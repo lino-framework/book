@@ -11,15 +11,11 @@
 {% endfor %}
 <br/><small>Published {{fdl(question.pub_date)}}
 <br/>Results:
-{% if True %}
-{{question.results_overview()}}
-{% else %}
 {% set sep = joiner(", ") %}
 {% for choice in question.choice_set.all() %}
   {{ sep() }}{{choice.votes}}x {{str(choice)}}
 ({{100.0 * choice.votes / (question.choice_set.aggregate(Sum('votes'))['votes__sum'] or 1)}} %)
 {% endfor %}
-{% endif %}
 </small>
 </li>
 {% endfor %}
