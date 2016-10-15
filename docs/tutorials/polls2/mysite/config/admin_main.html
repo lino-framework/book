@@ -3,12 +3,17 @@
 <ul>
 {% for question in rt.models.polls.Question.objects.filter(hidden=False).order_by('pub_date') %}
 <li>
+<b>
 {{question.question_text}} 
+</b>
 {% set sep = joiner(" / ") %}
 {% for choice in question.choice_set.all() %}
   {{ sep() }}
   {{ choice.vote.as_button(ar, str(choice))}}
 {% endfor %}
+{% if question.description %}
+<br/> {{ question.description}}
+{% endif %}
 <br/><small>Published {{fdl(question.pub_date)}}
 <br/>Results:
 {% if True %}

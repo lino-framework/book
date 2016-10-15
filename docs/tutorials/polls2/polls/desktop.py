@@ -8,12 +8,14 @@ class Questions(dd.Table):
     detail_layout = """
     id question_text
     hidden pub_date
+    description
     ChoicesByQuestion
     """
 
     insert_layout = """
     question_text
     hidden
+    description
     """
 
 
