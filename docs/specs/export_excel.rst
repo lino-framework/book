@@ -15,7 +15,7 @@ This document tests this functionality.
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min1.settings.doctests')
+    >>> startup('lino_book.projects.min2.settings.doctests')
     >>> from lino.api.doctest import *
 
 
@@ -34,22 +34,22 @@ Robin has twelve appointments in the period 20141023..20141122:
 =======================================================================
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
-======================== ===================== =============== ================
- When                     Calendar Event Type   Summary         Workflow
------------------------- --------------------- --------------- ----------------
- Thu 23/10/2014 (13:30)   Meeting               Evaluation      **Omitted**
- Fri 24/10/2014 (08:30)   Meeting               First meeting   **Suggested**
- Sat 25/10/2014 (09:40)   Meeting               Interview       **Draft**
- Sat 25/10/2014 (10:20)   Meeting               Lunch           **Took place**
- Sun 26/10/2014 (11:10)   Meeting               Dinner          **Cancelled**
- Mon 27/10/2014 (08:30)   Meeting               Meeting         **Suggested**
- Mon 27/10/2014 (13:30)   Meeting               Breakfast       **Omitted**
- Tue 28/10/2014 (09:40)   Meeting               Consultation    **Draft**
- Wed 29/10/2014 (10:20)   Meeting               Seminar         **Took place**
- Wed 29/10/2014 (11:10)   Meeting               Evaluation      **Cancelled**
- Thu 30/10/2014 (13:30)   Meeting               First meeting   **Omitted**
- Fri 31/10/2014 (08:30)   Meeting               Interview       **Suggested**
-======================== ===================== =============== ================
+======================== ========= ===================== =============== ==================================================
+ When                     Project   Calendar Event Type   Summary         Workflow
+------------------------ --------- --------------------- --------------- --------------------------------------------------
+ Thu 23/10/2014 (10:20)             Meeting               Meeting         **Suggested** → [Published]
+ Fri 24/10/2014 (11:10)             Meeting               Consultation    **Draft** → [Published] [Close meeting] [Cancel]
+ Sat 25/10/2014 (08:30)             Meeting               Evaluation      **Cancelled**
+ Sat 25/10/2014 (13:30)             Meeting               Seminar         **Took place** → [Reset]
+ Sun 26/10/2014 (09:40)             Meeting               First meeting   **Omitted**
+ Mon 27/10/2014 (10:20)             Meeting               Interview       **Published** → [Close meeting] [Cancel] [Reset]
+ Mon 27/10/2014 (11:10)             Meeting               Lunch           **Suggested** → [Published]
+ Tue 28/10/2014 (13:30)             Meeting               Dinner          **Draft** → [Published] [Close meeting] [Cancel]
+ Wed 29/10/2014 (08:30)             Meeting               Breakfast       **Took place** → [Reset]
+ Wed 29/10/2014 (09:40)             Meeting               Meeting         **Cancelled**
+ Thu 30/10/2014 (10:20)             Meeting               Consultation    **Omitted**
+ Fri 31/10/2014 (11:10)             Meeting               Seminar         **Published** → [Close meeting] [Cancel] [Reset]
+======================== ========= ===================== =============== ==================================================
 <BLANKLINE>
 
 
@@ -84,7 +84,7 @@ if the client has changed these.
 >>> url += "&ch=&ch=true&ch="
 >>> url += "&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=false&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true"
 >>> url += "&ci=when_text&ci=summary&ci=workflow_buttons&ci=id&ci=owner_type&ci=owner_id&ci=user&ci=modified&ci=created&ci=build_time&ci=build_method&ci=start_date&ci=start_time&ci=end_date&ci=end_time&ci=access_class&ci=sequence&ci=auto_type&ci=event_type&ci=transparent&ci=room&ci=priority&ci=state&ci=assigned_to&ci=owner&name=0"
->>> url += "&pv=23.10.2014&pv=22.11.2014&pv=&pv=&pv=2&pv=&pv=&pv=&pv=y"
+>>> url += "&pv=23.10.2014&pv=22.11.2014&pv=&pv=&pv=2&pv=&pv=&pv=&pv=&pv=y"
 >>> url += "&an=export_excel&sr=61"
 
 >>> res = test_client.get(url, REMOTE_USER='robin')
@@ -109,15 +109,18 @@ But does the file exist?
 >>> p.exists()
 True
 
-Now test whether the file is really okay.
+In order to test whether the file is really okay, we load it using
+`openpyxl`.
 
 >>> from openpyxl import load_workbook
 >>> wb = load_workbook(filename=p)
->>> print(wb.get_sheet_names())
-[u'My appointments (Managed by Rol']
+
+>>> print(wb.get_sheet_names()[0])
+My appointments (Managed by Ran
+
 >>> ws = wb.active
 >>> print(ws.title)
-My appointments (Managed by Rol
+My appointments (Managed by Ran
 
 
 Note that long titles are truncated because Excel does not support
@@ -137,7 +140,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (10:20) | **Took place** | ... | 2014-10-23 00:00:00 | 10:20:00
+Thu 23/10/2014 (13:30) | **Suggested** → `[img accept] <javascript:Lino.cal.MyEvents.wf1(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 Note that the Workflow column (`workflow_buttons`) contains
 images. Since these are not available in Excel, we made a compromise.
@@ -152,7 +155,7 @@ Unicode
 >>> wb = load_workbook(filename=p)
 >>> ws = wb.active
 >>> print(ws.title)
-Mes rendez-vous (Traité par Rol
+Mes rendez-vous (Traité par Ran
 
 >>> rows = list(ws.rows)
 >>> print(' | '.join([cell.value for cell in rows[0]]))
@@ -160,7 +163,7 @@ Quand | État | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (10:20) | **Terminé** | ... | 2014-10-23 00:00:00 | 10:20:00
+jeu. 23/10/2014 (13:30) | **Proposé** → `[img accept] <javascript:Lino.cal.MyEvents.wf1(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 
@@ -173,6 +176,15 @@ More queries
 200
 
 >>> url = "/api/cal/EventsByDay?an=export_excel"
+>>> test_client.get(url, REMOTE_USER='robin').status_code
+200
+
+
+The following failed with :message:`ValueError: Cannot convert
+1973-07-21 to Excel` until 20161014:
+    
+>>> url = "/api/contacts/Persons?an=export_excel"
+>>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=101&cw=101&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185&cw=185&cw=185&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ci=name_column&ci=address_column&ci=email&ci=phone&ci=gsm&ci=id&ci=language&ci=modified&ci=created&ci=url&ci=fax&ci=country&ci=city&ci=zip_code&ci=region&ci=addr1&ci=street_prefix&ci=street&ci=street_no&ci=street_box&ci=addr2&ci=name&ci=remarks&ci=title&ci=first_name&ci=middle_name&ci=last_name&ci=gender&ci=birth_date&ci=workflow_buttons&ci=description_column&ci=age&ci=overview&ci=mti_navigator&ci=created_natural&name=0&pv=&pv=&pv="
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
 

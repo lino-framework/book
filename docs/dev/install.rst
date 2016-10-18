@@ -270,8 +270,7 @@ You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
 a development server::
 
   
-    $ cd lino_book/projects
-    $ cd min1
+    $ cd lino_book/projects/min1
     $ python manage.py runserver
 
 Now start your browser, point it to http://127.0.0.1:8000/ and play

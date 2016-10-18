@@ -26,63 +26,64 @@ See also: :doc:`users`.
 User roles
 ==========
 
-Certain objects in Lino have a :attr:`required_roles
-<lino.core.permissions.Permittable.required_roles>` attribute which
-specifies the user roles required for getting permission to access
-this resource.  Where "resource" is one of the following:
+A **user role** is the role of a user in the system. It tells Lino
+whether a given user has permission to see a given resource or to
+execute a given action.  For example, a system administrator can see
+certain resources which a simple user cannot see.
 
-- an actor (a subclass of :class:`lino.core.actors.Actor`)
-- an action (an instance of :class:`lino.core.actions.Action` or a
-  subclass thereof)
-- a panel (an instance of :class:`lino.core.layouts.Panel`)
-
-Lino comes with a few built-in user roles whic are defined in
+Lino comes with a few built-in user roles which are defined in
 :mod:`lino.core.roles`.
 
 User roles are just class objects which represent conditions for
 getting permission to access the functionalities of the application.
-They *may* act as a requirement.  Every plugin may define its own user
-roles which may inherit from other roles defined by other plugins
 
-For example, the :class:`lino.modlib.users.models.Users` table is
-visible only for users who have the :class:`SiteAdmin
-<lino.core.roles.SiteAdmin>` role:
+Every plugin may define its own user roles.  And then --the most fun--
+a role can inherit from one or several other roles.
 
->>> from lino.core.roles import SiteUser, SiteAdmin
->>> user = SiteUser()
->>> admin = SiteAdmin()
->>> user.has_required_roles(rt.actors.users.Users.required_roles)
-False
->>> admin.has_required_roles(rt.actors.users.Users.required_roles)
-True
+Just a fictive example::
 
+    from lino.core.roles import SiteUser, SiteAdmin
+    
+    class Secretary(SiteUser):
+        """Can write letters."""
 
+    class Accountant(SiteUser):
+        """Can write invoices and read accounting reports."""
 
-User types
-==========
+    class Director(Secretary, Accountant):
+        """Can write letters and invoices, can read accounting and
+        statistic reports """
 
-At some moment, a site administrator needs to assign a role to every
-user. But it would be irritating to see all imaginable roles of the
-application. Because a real-world application can define *many* user
-roles. For example here is an inheritance diagram of the roles used by
-:ref:`noi`:
+    class MySiteAdmin(Director, SiteAdmin):
+        """Can everything, including user management."""
+  
+A real-world application can define *many* user roles. For example
+here is an inheritance diagram of the roles used by :ref:`noi`:
 
 .. inheritance-diagram:: lino_noi.lib.noi.roles
                          
-And if you think that above hierarchy is complex, then look at at the
-following one (that of :ref:`welfare`)...
+And if you think that above hierarchy is complex, then don't look at
+the following one (that of :ref:`welfare`)...
 
 .. inheritance-diagram:: lino_welfare.modlib.welfare.roles
  
-Not all these user roles are meaningful in practice.
+Above examples illustrate that *not* every single user role is
+meaningful in practice.
 
 So we need to define a *subset of all available roles* for that
 application.  This is done using the :class:`UserTypes
 <lino.modlib.users.choicelists.UserTypes>` choicelist.
 
-We now call them user **types** and no longer just user **roles**
-because they contain a bit more than a user role.  A user type has the
-following fields:
+
+User types
+==========
+
+When creating a new user, the site administrator needs to assign a
+role to every user. This is done indirectly by setting what we call
+the **user type**.
+
+A user *type* contains a bit more information than a user role.  A
+user type has the following fields:
 
 - :attr:`role`, a pointer to the user role
 - :attr:`text`, a translatable name
@@ -99,12 +100,8 @@ following fields:
   type. This is used on sites with more than three or four
   :attr:`languages <lino.core.site.Site.languages>`.
 
-
-About the name: at the beginnings of Lino we called them **user
-profiles**, but now we prefer to call them **user types**. The web
-interface already calls them "types", but it will take some time to
-change all internal names from "profile" to "type".        
-
+Here is the default list of user types:
+        
 >>> rt.show(users.UserTypes)
 ======= =========== ===============
  value   name        text
@@ -115,13 +112,66 @@ change all internal names from "profile" to "type".
 ======= =========== ===============
 <BLANKLINE>
 
+
+>>> users.UserTypes.admin
+users.UserTypes.admin:900
+
+>>> users.UserTypes.admin.role  #doctest: +ELLIPSIS
+<lino.modlib.office.roles.SiteAdmin object at ...>
+
+>>> users.UserTypes.admin.readonly
+False
+
+>>> users.UserTypes.admin.hidden_languages
+
+
+The type of a user is stored in a field whose internal name is
+:attr:`profile <lino.modlib.users.models.User.profile>`. This is is
+because at the beginnings of Lino we called them **user
+profiles**. Now we prefer to call them **user types**. The web
+interface already calls them "types", but it will take some time to
+change all internal names from "profile" to "type".
+
 >>> robin = users.User.objects.get(username='robin')
+>>> robin.profile  #doctest: +ELLIPSIS
+users.UserTypes.admin:900
 >>> robin.profile.role  #doctest: +ELLIPSIS
 <lino.modlib.office.roles.SiteAdmin object at ...>
 
-And then the :attr:`profile <lino.modlib.users.models.User.profile>`
-field of :class:`users.User <lino.modlib.users.models.User>` model is
-used to assign such a type to a given user.
+
+
+Defining required roles
+=======================
+
+The application programmer specifies which roles are required for a
+given resource.
+
+Where "resource" is one of the following:
+
+- an actor (a subclass of :class:`lino.core.actors.Actor`)
+- an action (an instance of :class:`lino.core.actions.Action` or a
+  subclass thereof)
+- a panel (an instance of :class:`lino.core.layouts.Panel`)
+
+All these objects have a :attr:`required_roles
+<lino.core.permissions.Permittable.required_roles>` attribute which
+specifies the user roles required for getting permission to access
+this resource.
+
+For example, the :class:`lino.modlib.users.models.Users` table is
+visible only for users who have the :class:`SiteAdmin
+<lino.core.roles.SiteAdmin>` role:
+
+>>> users.Users.required_roles
+set([<class 'lino.core.roles.SiteAdmin'>])
+
+>>> from lino.core.roles import SiteUser, SiteAdmin
+>>> user = SiteUser()
+>>> admin = SiteAdmin()
+>>> user.has_required_roles(users.Users.required_roles)
+False
+>>> admin.has_required_roles(users.Users.required_roles)
+True
 
 
 
