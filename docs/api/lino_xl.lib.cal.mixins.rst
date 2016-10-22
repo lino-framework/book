@@ -22,12 +22,10 @@ lino_xl.lib.cal.mixins
    .. autosummary::
    
       Component
-      Ended
       EventGenerator
       MoveEventNext
       RecurrenceSet
       Reservation
-      Started
       UpdateEvents
       UpdateEventsByEvent
    
