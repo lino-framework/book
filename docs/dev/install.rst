@@ -35,10 +35,15 @@ System requirements
     and report your experiences.
 
 #.  We assume you have pip_ installed. `pip` is not automatically
-    bundled with Python 2, but it has become the de-facto standard.
+    bundled with Python 2, but it has become the de-facto
+    standard. Here is how to install it on Debian::
+
+      $ sudo apt-get install python-pip
 
 #.  You will need to install git_ on your computer to get the source
-    files.
+    files::
+      
+      $ sudo apt-get install git
 
 #.  Lino requires lxml_, which has some extra requirements before you
     can install it with pip_::
