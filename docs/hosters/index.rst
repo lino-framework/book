@@ -11,4 +11,4 @@ This is the central meeting place for :doc:`Lino hosting providers
    :maxdepth: 2
 
    what
-   install
+   types

@@ -19,10 +19,8 @@ They usually assume the following responsibilities:
   of users and the amount of data stored, you might want to move to a
   bigger machine.
   
-- they install new versions of your application when you ask them to
-  do so.  Concerning this point there are different possibilities: the
-  hosting provider can either engage their own :ref:`team.admin` or
-  have contract with an independant one.
+- (in case of stable hosting) they give you limited support and
+  install new versions of your application when you ask them to do so.
 
 Note that a hosting provider is **not reponsible** for questions about
 how to use or configure the software. That's is the job of an
