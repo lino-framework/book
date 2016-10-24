@@ -4,13 +4,6 @@ Links to other sites
 .. glossary::
   :sorted:
   
-  ODFPy
-    A Python library for manipulating OpenDocument documents 
-    (.odt, .ods, .odp, ...): 
-    read existing files, modify, create new files from scratch.
-    Read more on `PyPI <http://pypi.python.org/pypi/odfpy>`_.
-    Project home page https://joinup.ec.europa.eu/software/odfpy
-
   generateDS
     http://www.rexx.com/~dkuhlman/generateDS.html
   
@@ -28,9 +21,6 @@ Links to other sites
   TIM
     http://code.google.com/p/tim
       
-  appy.pod
-    See http://appyframework.org/pod.html
-  
   lxml
     See http://lxml.de
   
