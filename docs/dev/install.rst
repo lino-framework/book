@@ -50,6 +50,11 @@ System requirements
 
       $ sudo apt-get build-dep lxml
 
+    Note: if you get an error message :message:`You must put some
+    'source' URIs in your sources.list`, then (in Ubuntu) open
+    :menuselection:`System Settings --> Software & Updates` and make
+    sure that :guilabel:`Source code` is checked.
+
 #.  Similar requirement for applications which use
     :mod:`lino.modlib.weasyprint`::
 
