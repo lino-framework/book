@@ -22,15 +22,15 @@ Getting started
    /tutorials/hello/index
    initdb
 
-#.  :doc:`/dev/install` : How to install Lino. System
-    requirements. "Released version" versus "Development version".
+#.  :doc:`/dev/install` : System requirements. Set up a Python
+    environment. Running your first Lino site.
 
 #.  :doc:`/tutorials/hello/index` : The first Lino application running
     on your machine. It's easier than with Django. A ``settings.py``
-    and a ``manage.py``. Initialize a demo database. Run a development
-    server.
+    and a ``manage.py``.
 
-#.  :doc:`initdb` : The ``initdb`` and ``initdb_demo`` commands.  
+#.  :doc:`initdb` : More about the ``initdb`` and ``initdb_demo``
+    commands.
 
 .. _lino.dev.first:
 
@@ -69,6 +69,7 @@ Working with others
 
 #. :doc:`/team/projects`
 #. :doc:`env`
+#. :doc:`pull`
 #. :doc:`runtests`
 #. :doc:`contrib`
 #. :doc:`patch`
@@ -84,6 +85,7 @@ Working with others
 
    /team/projects
    env
+   pull
    runtests
    contrib
    patch
@@ -211,7 +213,6 @@ Drafts
    perms
    /tutorials/myroles/index
    workflows
-   pull
    translate/index
 
    testing
