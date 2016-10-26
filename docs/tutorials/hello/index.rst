@@ -26,22 +26,39 @@ We suppose that you have installed Lino itself as described in
     :depth: 1
     :local:
 
+       
+Project directories
+===================
+
+A **project directory** is a directory which defines a runnable Django
+project.  It contains the files necessary for that specific instance
+of a given Lino application.
+
+Until now (in :doc:`/dev/install`) you have been using some of the
+project directories defined in the Lino Book, and you used them
+directly from within the code repository.
+
+Now we will create our first project directory of our own.
 
 
-The project directory
-=====================
-
-Create an empty directory which will hold all your Lino projects::
+As a first step, create an empty directory::
 
     $ mkdir ~/projects
 
-This is your projects root. You can choose another name, just keep in
-mind that our examples are based on this choice.
+This is your **projects root**, which will hold all your Lino projects
+on your computer.  Lino project directories are not very big, and you
+will hopefully create many such projects.
 
-Create an empty directory in your projects root which will become your
-first *project directory*::
+You can choose another name, just keep in mind that our examples are
+based on this choice.
+
+Now create an empty directory in your projects root which will become
+your first *project directory*::
 
     $ mkdir ~/projects/hello
+
+Got to that directory::
+  
     $ cd ~/projects/hello
 
 Create an empty file :xfile:`__init__.py` in this directory in order
@@ -51,7 +68,6 @@ to make it usable as a Python package::
 
 Create two other files :xfile:`settings.py` and :xfile:`manage.py` in
 this directory as described hereafter.
-
 
 The ``settings.py`` file
 ========================

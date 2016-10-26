@@ -49,7 +49,7 @@ We initialize our database from our demo fixture:
 
 >>> shell("python manage_a.py initdb_demo --noinput")
 ... #doctest: +ELLIPSIS
-`initdb demo` started on database .../dumps/default.db.
+`initdb demo` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -152,7 +152,7 @@ Load the dump, dump again and verify that both dumps are the same:
 >>> shell("python manage_b.py run b/restore.py --noinput")
 ... #doctest: +ELLIPSIS
 Unversioned Site instance : no database migration
-`initdb ` started on database .../dumps/default.db.
+`initdb ` started on database .../default.db.
 Loading 2 objects to table dumps_foo...
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3

@@ -1,4 +1,4 @@
-from atelier.tasks import ns
+from lino.invlib.ns import ns
 import os
 pp = os.environ.get('VIRTUAL_ENV') + '/bin/per_project'
 ns.setup_from_tasks(

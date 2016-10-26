@@ -1,21 +1,45 @@
-======================================
-Everything about cached temporary data
-======================================
+===========================
+About cached temporary data
+===========================
 
-In :doc:`/dev/install` we told you to set up an environment variable
-:envvar:`LINO_CACHE_ROOT` which points to a directory where Lino can
-store temporary files like the SQLite database file, static files and
+When you run a Lino application, Lino needs a place for storing
+temporary files like the SQLite database file, static files and
 dynamically generated files of miscellaneous types like `.js`, `.pdf`,
 `.xls`.
+
+In a normal development environment this is simply below the project
+directory, and those cache files are simply listed in the
+:xfile:`.gitignore` file.  In certain environments it is not possible
+to write to the code repository.
+
+In such situations you create an empty directory where you have write
+permission, and then set the :envvar:`LINO_CACHE_ROOT` environment
+variable to point to it.
+
+The safest place for this directory is below your virtual
+environment::
+
+  $ cd ~/virtualenvs/a
+  $ mkdir lino_cache
+
+And then to add the following line to your
+:file:`~/virtualenvs/a/bin/activate` script::
+
+   export LINO_CACHE_ROOT=$VIRTUAL_ENV/lino_cache
+
+Don't forget to re-run the script in order to activate these changes.
+You can verify whether the variable is set using this command::
+
+    $ set | grep LINO
 
 
 .. envvar:: LINO_CACHE_ROOT
 
 If an environment variable :envvar:`LINO_CACHE_ROOT` is set, then the
-cached data of demo projects (the :xfile:`default.db` files and the
-:xfile:`media` directories) are not written into the file tree of the
-source code repository but below the given directory.  See
-:attr:`atelier.fablib.env.demo_projects`.
+cached data of demo projects (e.g. the :xfile:`default.db` files and
+the :xfile:`media` directories) are not written into the file tree of
+the source code repository but below the given directory.  See
+:attr:`atelier.invlib.env.demo_projects`.
 
 For example you can add the following line to your :file:`.bashrc`
 file::

@@ -80,15 +80,10 @@ To activate this environment, you will type::
 
         $ . ~/virtualenvs/a/bin/activate
 
-You might add above line to your :xfile:`.bashrc` file if you
-currently don't plan to work on any other project which requires a
-different environment.
-
-You might prefer to create a new environment for every project and
-store it below your project directory (see below `Project
-directories`_).  This makes sense on a production server (more about
-this in :ref:`lino.admin.env`.), but on a developer machine it is
-usually not necessary and would be a waste of disk space.
+In a normal situation, all your Lino projects can use the same virtual
+environment.  So you might add above line to your :xfile:`.bashrc`
+file if you currently don't plan to work on any other project which
+requires a different environment.
 
 Get the sources
 ===============
@@ -168,84 +163,21 @@ In case you didn't know: Python's `-m
 command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
 
-.. _dev.git_pull:
+To be honest, the Lino version number is not enough when using a
+developer installation of Lino.  The Lino codebase repository changes
+almost every day, while the version is incremented only when we do an
+official release to PyPI.
 
-Updating your copy of the Lino sources
-======================================
-
-Actually the Lino version number is not enough when using a developer
-installation of Lino.  The Lino codebase repository changes almost
-every day, but the version is incremented only when we do an official
-release to PyPI.
-
-As a developer you will simply update your copy of the code repository
-often. In order to get the latest version, you need to run::
+So as a developer you will simply upgrade your copy of the code
+repositories often.  Here is a quick series of commands for getting
+the latest version::
 
   $ cd ~/repositories/lino ; git pull 
   $ cd ~/repositories/xl ; git pull 
   $ cd ~/repositories/book ; git pull 
   $ find ~/repositories -name '*.pyc' -delete
 
-Note that you **don't need to reinstall** the packages in Python after
-such an upgrade since you used the ``-e`` option of `pip install`
-above. The new versions will automatically become active.
-
-See the documentation of `git pull
-<https://git-scm.com/docs/git-pull>`_ for more information.
-
-The last line runs :cmd:`find` in order to remove all :file:`.pyc`
-(compiled Python) files. See e.g. `here
-<http://stackoverflow.com/questions/785519/how-do-i-remove-all-pyc-files-from-a-project>`_
-for other methods.  This is not necessary most of the time because
-Python automatically recompiles them when needed, but there are
-situations where you get problems caused by dangling :file:`.pyc`
-files.
-
-
-Project directories
-===================
-
-You are going to write more than only one Lino applications, aren't
-you? 
-
-Every project has its own **project directory** which contains the
-files necessary for that specific project.  In this chapter we are
-going to use some of the projects defined in the Lino Book, and we are
-going to use them directly from within the code repository.
-
-You will create your first project directory of your own in the next
-chapter (:doc:`/tutorials/hello/index`).
-
-
-Defining a cache directory for Lino
-===================================
-
-Before going on, you should prepare a place where Lino can store
-temporary files like the SQLite database file, static files and
-dynamically generated files of miscellaneous types like `.js`, `.pdf`,
-`.xls`.
-
-You do this by creating an empty directory where you have write
-permission, and then set the :envvar:`LINO_CACHE_ROOT` environment
-variable to point to it.
-
-The safest place for this directory is below your virtual
-environment::
-
-  $ cd ~/virtualenvs/a
-  $ mkdir lino_cache
-
-And then to add the following line to your
-:file:`~/virtualenvs/a/bin/activate` script::
-
-   export LINO_CACHE_ROOT=$VIRTUAL_ENV/lino_cache
-
-Don't forget to re-run the script in order to activate these changes.
-You can verify whether the variable is set using this command::
-
-    $ set | grep LINO
-
-More about this in :doc:`cache`.
+This process is fully described in :doc:`pull`.
 
 
 Initialize the demo databases
@@ -268,8 +200,9 @@ by Luc.
 
 The ``inv`` command is a kind of make tool which works by looking for
 a file named :xfile:`tasks.py`. The Lino repository contains such a
-file, and this file uses :mod:`atelier.invlib`, which defines a whole
-series of tasks like `initdb` and `test`.
+file, and this file uses :mod:`lino.invlib`, which (together with
+:mod:`atelier.invlib` from which it inherits) defines a whole series
+of commands like :cmd:`inv initdb` or :cmd:`inv test`.
 
 
 
@@ -297,7 +230,4 @@ Where to go from here
 =====================
 
 As your next step, we now suggest to :doc:`/tutorials/hello/index`.
-
-In case you wonder where the test suite is, don't worry about this for
-the moment. We will cover this later in :doc:`runtests`.
 

@@ -1,11 +1,16 @@
 .. _lino.dev.initdb:
 
 ===============================
-Introduction to Python fixtures
+Initializing the demo databases
 ===============================
 
 .. to run only this test:
   $ python setup.py test -s tests.DocsTests.test_initdb
+
+The :mod:`lino_book` repository contains a series of **demo
+projects**.  A *demo project* is a subdirectory of a Lino project
+which contains a runnable Django project.
+
 
 This section gives a first introduction into Lino's innovative way of
 providing application-specific demo data.
