@@ -14,7 +14,7 @@ SETUP_INFO = dict(
     version='1.7.4',
     install_requires=[
         'lino', 'selenium',
-        'django-iban', 'metafone',
+        'django-iban', 'metafone', 'channels',
         'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],

@@ -14,21 +14,41 @@ Lino versus OpenERP/Odoo/Tryton
 Let's compare Lino to `Tryton <http://www.tryton.org/>`__ and `Odoo
 <https://en.wikipedia.org/wiki/Odoo>`__.
 
+First of all, Odoo is rather a highly configurable and modularized ERP
+*application* while Lino is a *framework* for creating such
+applications.  Which means that the business target for the two
+frameworks are not the same.
 
-In Tryton you run a server process (`trytond
+About the user interface: In Tryton you run a server process (`trytond
 <http://tryton.readthedocs.org/projects/trytond>`_) under any WSGI
 compatible server, and users access it via the Tryton client (a GUI
 application which requires `GTK+
 <https://en.wikipedia.org/wiki/GTK%2B>`_).  Odoo replaces that GUI
-client by a web application.
+client by a web application.  There is `Flask-Tryton
+<https://pypi.python.org/pypi/flask_tryton>`_ which adds a web
+interface to Tryton (reducing the need to install the GUI client).
 
-There is `Flask-Tryton <https://pypi.python.org/pypi/flask_tryton>`_
-which adds a web interface to Tryton (reducing the need to install the
-GUI client).
+TODO: Continue this comparison.
 
-TODO: Continue this comparison.  See also 
-:srcref:`docs/tickets/51.rst` and :doc:`/about/ui`.
 
+restdb.io
+=========
+
+With `restdb.io <https://restdb.io>`__, a company based in Bergen
+(Norway), you have "collections" (which correspond to Django's models)
+and "pages" (which correspond to Django's views).  With restdb you can
+switch to "developer mode" and edit your database structure. There is
+a basic user interface for entering data into these collections. And
+you have an API for accessing the data from other applications. A nice
+tool, certainly useful for certain kinds of applications.
+
+Lino has more complex UI concepts (tables, form layouts, menus,
+actions, virtual fields, slave tables, ...).  restdb.io is not meant
+for writing e.g. a accounting or calender application.
+
+Lino has no "visual GUI editor".  In Lino you define all these things
+using Python code, not via a web interface. This is an important
+design choice. See :doc:`not_easy`.
 
 
 Lino versus Appy framework
