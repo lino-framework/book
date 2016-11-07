@@ -66,8 +66,9 @@ Set up a Python environment
 ===========================
 
 Before you actually install Lino into your Python, we recommend to
-create a new Python environment using virtualenv_.  On a Debian system
-this means something like::
+create a new Python environment using virtualenv_.
+
+On a Debian system this means something like::
 
         $ sudo pip install virtualenv
         $ mkdir ~/virtualenvs
@@ -102,6 +103,7 @@ directory and and do::
   $ cd ~/repositories
   $ git clone https://github.com/lino-framework/lino.git
   $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/cosi.git
   $ git clone https://github.com/lino-framework/book.git
 
 You should now have three directories called `~/repositories/lino`,
@@ -133,6 +135,7 @@ Commands::
 
   $ pip install -e lino
   $ pip install -e xl
+  $ pip install -e cosi
   $ pip install -e book
 
 These commands take some time because they will download and install
@@ -163,9 +166,9 @@ In case you didn't know: Python's `-m
 command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
 
-To be honest, the Lino version number is not enough when using a
-developer installation of Lino.  The Lino codebase repository changes
-almost every day, while the version is incremented only when we do an
+Actually the Lino version number is not enough when using a developer
+installation of Lino.  The Lino codebase repository changes almost
+every day, while the version is incremented only when we do an
 official release to PyPI.
 
 So as a developer you will simply upgrade your copy of the code
@@ -174,10 +177,50 @@ the latest version::
 
   $ cd ~/repositories/lino ; git pull 
   $ cd ~/repositories/xl ; git pull 
+  $ cd ~/repositories/cosi ; git pull 
   $ cd ~/repositories/book ; git pull 
   $ find ~/repositories -name '*.pyc' -delete
 
 This process is fully described in :doc:`pull`.
+
+Troubleshooting
+===============
+
+Using virtual environments seems to be one of the biggest challenges
+for newbies. Here are some diagnostic tricks.
+
+How to see which is your current virtualenv::
+
+    $ echo $VIRTUAL_ENV
+    /home/luc/virtualenvs/a
+
+    $ which python
+    /home/luc/virtualenvs/a/bin/python
+
+How to see what's installed in your current virtualenv::
+
+    $ pip freeze
+
+The output will be about 60 lines of text, here is an excerpt::
+  
+    alabaster==0.7.9
+    appy==0.9.4
+    argh==0.26.2
+    ...
+    Django==1.9.10
+    ...
+    future==0.15.2
+    ...
+    -e git+git+ssh://git@github.com/lino-framework/lino.git@91c28245c970210474e2cc29ab2223fa4cf49c4d#egg=lino
+    -e git+git+ssh://git@github.com/lino-framework/book.git@e1ce69aaa712956cf462498aa768d2a0c93ba5ec#egg=lino_book
+    -e git+git+ssh://git@github.com/lino-framework/cosi.git@2e56f2d07a940a42e563cfb8db4fa7444d073e7b#egg=lino_cosi
+    -e git+git@github.com:lino-framework/xl.git@db3875a6f7d449490537d68b08daf471a7f0e573#egg=lino_xl
+    lxml==3.6.4
+    ...
+    Unipath==1.1
+    WeasyPrint==0.31
+    webencodings==0.5
+
 
 
 Initialize the demo databases

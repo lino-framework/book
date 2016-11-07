@@ -1,3 +1,5 @@
+.. _lino.about:
+
 ==========
 About Lino
 ==========
@@ -6,12 +8,9 @@ About Lino
    :maxdepth: 1
 
    what
-   customized
-   desktop
-   features
    why
-   how
-   art
-   more
+   features
    limitations
-   ui
+   how
+   more
+   

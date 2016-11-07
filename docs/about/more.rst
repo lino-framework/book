@@ -12,6 +12,10 @@ More about Lino
    history
    lino_and_django
    thanks
+   art
+   ui
+   customized
+   desktop
 
 .. rubric:: Drafts
    

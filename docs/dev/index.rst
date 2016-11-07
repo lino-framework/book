@@ -61,6 +61,23 @@ Your first application
     panels.
 
 
+
+Why you want Lino
+=================
+
+When you arrived here, you should be able to understand the
+fundamental differences between Lino and other frameworks.
+
+.. toctree::
+   :maxdepth: 1
+              
+   /about/not_easy
+   /about/think_python
+   ui
+    
+    
+
+
 .. _lino.dev.team:
 
 Working with others

@@ -5,14 +5,14 @@ Features and design goals
 Design goals
 ------------
 
-- Lino applications are intuitive and easy-to-understand for the end user.
+- Lino applications are intuitive and easy to understand for the end user.
   (see :doc:`values`)
-- sustainable application development
+- Lino applications are easy to maintain because Lino encourages
+  sustainable application development.
 - agile programming
 - rapid prototyping 
 - libraries of reusable code
 - short release cycles
-- maintainable code
 - stable 
 
 .. _lino.features:
@@ -40,12 +40,11 @@ also apply to Lino:
   
 Lino then adds its own features to the above:
 
-- An out-of-the-box :doc:`user interface </topics/ui>`.  Lino
-  application developers don't waste their time writing html templates
-  or css.
+- An out-of-the-box :doc:`user interface <ui>`.  Lino application
+  developers don't waste their time writing html templates or css.
 
 - :ref:`Layouts <layouts>`:
-  use the Python language not only
+  Lino applications use the Python language not only
   for designing your *models* but also your *forms*.
   
 - Lino adds enterprise-level concepts for definining 
@@ -55,7 +54,7 @@ Lino then adds its own features to the above:
   Use Lino's rich experience with applications that manage 
   multilingual database content.
   
-- Use Lino's tools for generating :ref:`userdocs`.
+- Lino provides tools for generating :ref:`userdocs`.
   
 - Lino includes :ref:`dpy`, a great alternative to `Django's built-in
   migration system
@@ -64,35 +63,9 @@ Lino then adds its own features to the above:
   
 - Other features include extensions to handle :ref:`polymorphism`.
   
-- And last but not least, Lino includes :mod:`lino_modlib`, a
-  collection of reusable Django apps designed for Lino applications.
+- And last but not least, Lino includes :ref:`xl`, a collection of
+  reusable plugins for all kinds of Lino applications.
 
-
-.. _lino.think_python:
-
-Think Python
-------------
-
-When using Lino, you should understand a fundamental design choice of
-the Lino framework:
-
-We believe that database structure, screen layouts and business logic
-should be written in *Python*, not in *XML*. That is, they should be
-done by the programmer, not by the end-users.
-
-Python is a powerful and well-known parser, why should we throw away a
-subset of its features by introducing yet another textual description
-language?  The main reason why other frameworks do this is that it
-enables them to have non-programmers do the database design and screen
-layouts. Which is a pseudo-advantage.
-
-Lino is here because we believe that database design and screen layout
-should *not* be delegated to people who don't *think in Python*.
-
-This does not explude usage of templates when meaningful. 
-
-A missing piece here are features like user-defined views
-(:ticket:`848`) because end-users of course sometimes want (and should
-have a possibility) to save a given grid layout.
+See also :doc:`think_python`.  
 
 
