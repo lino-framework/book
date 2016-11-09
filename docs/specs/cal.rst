@@ -143,7 +143,8 @@ Every 2nd month
 >>> obj.max_events = 5
 
 >>> ses = rt.login('robin')
->>> for num, e in obj.get_wanted_auto_events(ses).items():
+>>> wanted, unwanted = obj.get_wanted_auto_events(ses)
+>>> for num, e in wanted.items():
 ...     print(dd.fds(e.start_date))
 28/06/2016
 30/08/2016
@@ -166,7 +167,8 @@ Event #1 ("Event #1 New Year's Day (01.01.2013)")
 >>> obj.saturday = True
 >>> obj.sunday = True
 >>> obj.start_date=i2d(20120628)
->>> for num, e in obj.get_wanted_auto_events(ses).items():
+>>> wanted, unwanted = obj.get_wanted_auto_events(ses)
+>>> for num, e in wanted.items():
 ...     print(dd.fds(e.start_date))
 28/06/2012
 28/08/2012
