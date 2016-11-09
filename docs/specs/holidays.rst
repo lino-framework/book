@@ -144,7 +144,7 @@ field.
 datetime.date(2016, 2, 9)
 
 >>> ar = rt.login()
->>> wanted = obj.get_wanted_auto_events(ar)
+>>> wanted, unwanted = obj.get_wanted_auto_events(ar)
 >>> len(wanted)
 4
 >>> print(ar.response['info_message'])
