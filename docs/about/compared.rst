@@ -28,7 +28,22 @@ client by a web application.  There is `Flask-Tryton
 <https://pypi.python.org/pypi/flask_tryton>`_ which adds a web
 interface to Tryton (reducing the need to install the GUI client).
 
-TODO: Continue this comparison.
+Several technical differences could be mentioned:
+
+- Odoo requires Postgresql as a DBMS while Lino could be used with any
+  DBMS supported by Django.
+  
+- Odoo addons or Odoo applications (equivalents of plugins in Lino)
+  should be written in the Odoo logic while Lino applications can use
+  any Django packages. Which means that Lino is backed by a bigger
+  community.
+  
+- Odoo until now has not yet started to support Python 3 and has no
+  clear plan to do so.
+
+- Starting at the v9.0 release, Oddo was split into a proprietary
+  enterprise edition with cloud-hosted SaaS and a cut-down community
+  edition.
 
 
 restdb.io
