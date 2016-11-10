@@ -87,7 +87,7 @@ Simulating a change
 Simulate an update from code without a web client.
 
 >>> from lino.core.signals import pre_ui_delete, on_ui_created
->>> from lino.core.utils import ChangeWatcher
+>>> from lino.core.diff import ChangeWatcher
 >>> request = dd.PseudoRequest("robin")
 >>> obj = contacts.Person.objects.all()[0]
 >>> cw = ChangeWatcher(obj)

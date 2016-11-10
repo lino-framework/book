@@ -8,11 +8,11 @@ what's different.
 
 .. _tryton:
 
-Lino versus OpenERP/Odoo/Tryton
-===============================
+Odoo / Tryton
+=============
 
 Let's compare Lino to `Tryton <http://www.tryton.org/>`__ and `Odoo
-<https://en.wikipedia.org/wiki/Odoo>`__.
+<https://en.wikipedia.org/wiki/Odoo>`__ (formerly known as OpenERP).
 
 First of all, Odoo is rather a highly configurable and modularized ERP
 *application* while Lino is a *framework* for creating such
@@ -34,14 +34,14 @@ Several technical differences could be mentioned:
   DBMS supported by Django.
   
 - Odoo addons or Odoo applications (equivalents of plugins in Lino)
-  should be written in the Odoo logic while Lino applications can use
+  must be written in the Odoo logic while Lino applications can use
   any Django packages. Which means that Lino is backed by a bigger
   community.
   
 - Odoo until now has not yet started to support Python 3 and has no
   clear plan to do so.
 
-- Starting at the v9.0 release, Oddo was split into a proprietary
+- Starting at the v9.0 release, Odoo was split into a proprietary
   enterprise edition with cloud-hosted SaaS and a cut-down community
   edition.
 
