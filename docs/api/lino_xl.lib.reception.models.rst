@@ -13,7 +13,6 @@ lino_xl.lib.reception.models
       beware
       checkout_guest
       create_prompt_event
-      my_guest_workflows
    
    
 

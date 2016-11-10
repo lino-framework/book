@@ -34,22 +34,22 @@ Robin has twelve appointments in the period 20141023..20141122:
 =======================================================================
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
-======================== ========= ===================== =============== ==================================================
+======================== ========= ===================== =============== =================================================
  When                     Project   Calendar Event Type   Summary         Workflow
------------------------- --------- --------------------- --------------- --------------------------------------------------
- Thu 23/10/2014 (10:20)             Meeting               Meeting         **Suggested** → [Published]
- Fri 24/10/2014 (11:10)             Meeting               Consultation    **Draft** → [Published] [Close meeting] [Cancel]
+------------------------ --------- --------------------- --------------- -------------------------------------------------
+ Thu 23/10/2014 (10:20)             Meeting               Meeting         **Suggested** → [Notified]
+ Fri 24/10/2014 (11:10)             Meeting               Consultation    **Draft** → [Notified] [Close meeting] [Cancel]
  Sat 25/10/2014 (08:30)             Meeting               Evaluation      **Cancelled**
  Sat 25/10/2014 (13:30)             Meeting               Seminar         **Took place** → [Reset]
  Sun 26/10/2014 (09:40)             Meeting               First meeting   **Omitted**
- Mon 27/10/2014 (10:20)             Meeting               Interview       **Published** → [Close meeting] [Cancel] [Reset]
- Mon 27/10/2014 (11:10)             Meeting               Lunch           **Suggested** → [Published]
- Tue 28/10/2014 (13:30)             Meeting               Dinner          **Draft** → [Published] [Close meeting] [Cancel]
+ Mon 27/10/2014 (10:20)             Meeting               Interview       **Notified** → [Close meeting] [Cancel] [Reset]
+ Mon 27/10/2014 (11:10)             Meeting               Lunch           **Suggested** → [Notified]
+ Tue 28/10/2014 (13:30)             Meeting               Dinner          **Draft** → [Notified] [Close meeting] [Cancel]
  Wed 29/10/2014 (08:30)             Meeting               Breakfast       **Took place** → [Reset]
  Wed 29/10/2014 (09:40)             Meeting               Meeting         **Cancelled**
  Thu 30/10/2014 (10:20)             Meeting               Consultation    **Omitted**
- Fri 31/10/2014 (11:10)             Meeting               Seminar         **Published** → [Close meeting] [Cancel] [Reset]
-======================== ========= ===================== =============== ==================================================
+ Fri 31/10/2014 (11:10)             Meeting               Seminar         **Notified** → [Close meeting] [Cancel] [Reset]
+======================== ========= ===================== =============== =================================================
 <BLANKLINE>
 
 

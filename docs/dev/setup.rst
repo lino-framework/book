@@ -9,19 +9,29 @@ How Lino applications use `setup.py`
 
    $ python setup.py test -s tests.DocsTests.test_setup
 
-The :xfile:`setup_info.py` file is a trick which does not depend on
+This document describes a trick which does not depend on
 Lino and which we recommend to use for any Python project.
+
+The problem
+===========
 
 Usually the setup information is directly contained in a file
 :xfile:`setup.py` in the root directory of a project. The problem with
 this layout is that this :xfile:`setup.py` file is always available at
 runtime when the application was installed using PyPI.
 
-To solve this problem, we store this information in a separate file
-(which we usually name :xfile:`setup_info.py`) and which we execute
-from both our :xfile:`setup.py` and our packages's main
-:xfile:`__init__.py` file.  This trick makes it possible to have setup
-information both in a central place **and** accessible at runtime.
+Is there a way to have setup information both in a central place
+**and** accessible at runtime.
+
+
+The solution
+============
+
+To solve this problem, we store the setup information in a separate
+file (which we usually name :xfile:`setup_info.py`) and which we
+execute from both our :xfile:`setup.py` and our packages's main
+:xfile:`__init__.py` file.
+
 
 
 .. xfile:: setup_info.py
@@ -60,3 +70,22 @@ Usage example:
 >>> print lino.SETUP_INFO['description']
 A framework for writing desktop-like web applications using Django and ExtJS
 
+Setup information
+=================
+
+The :func:`setup` function has a lot of keyword parameters which are
+documented elsewhere.
+
+.. _install_requires:
+
+install_requires
+----------------
+
+See http://python-packaging.readthedocs.io/en/latest/dependencies.html
+
+.. _tests_require:
+
+tests_require
+-------------
+
+See http://python-packaging.readthedocs.io/en/latest/dependencies.html
