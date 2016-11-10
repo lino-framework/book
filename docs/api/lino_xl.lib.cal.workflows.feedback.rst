@@ -6,13 +6,6 @@ lino_xl.lib.cal.workflows.feedback
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      gueststates_workflow
-      my_event_workflows
-   
    
 
    
@@ -25,6 +18,7 @@ lino_xl.lib.cal.workflows.feedback
       CloseMeeting
       InvitationFeedback
       MarkAbsent
+      MarkExcused
       MarkPresent
       RejectInvitation
       ResetEvent
