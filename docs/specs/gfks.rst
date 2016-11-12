@@ -27,7 +27,7 @@ List of models which inherit from :class:`Controllable
 <lino.modlib.gfks.mixins.Controllable>`:
 
 >>> print(' '.join([fmn(m) for m in rt.models_by_base(Controllable)]))
-cal.Event cal.Task excerpts.Excerpt notes.Note notify.Notification outbox.Attachment outbox.Mail plausibility.Problem uploads.Upload
+cal.Event cal.Task excerpts.Excerpt notes.Note notify.Message outbox.Attachment outbox.Mail plausibility.Problem uploads.Upload
 
 >>> obj = contacts.Person.objects.all()[0]
 >>> gfk2lookup(notes.Note.owner, obj)
