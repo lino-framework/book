@@ -3,17 +3,19 @@ Learning resources
 ==================
 
 Here are some recommended resources for learning the external things
-you need to know as a Lino application developer.
+you need to know as a Lino developer.
 
 
 Python
 ======
 
+- Dan Poirier (Cactus Group) explains what are virtual environments
+  and why you want them: `Managing multiple Python projects: Virtual
+  environments
+  <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
+
 - `Learn Python The Hard Way <http://learnpythonthehardway.org>`_
   by Zed A. Shaw 
-
-- `Teach Me Python <http://www.teachmepython.com>`_
-  by Steven Keith
 
 - `Code Academy <http://www.codecademy.com/en/tracks/python>`_
 
@@ -28,12 +30,6 @@ Python
 
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
 
-Django
-======
-
-- `First steps <https://docs.djangoproject.com/en/dev/>`_ section of
-  the Django documentation.
-
 .. _learning.unix:
 
 Working in a UNIX shell
@@ -43,7 +39,7 @@ Working in a UNIX shell
   by Mendel Cooper
 
 - `Bash Cheat sheet
-  <http://cli.learncodethehardway.org/bash_cheat_sheet.pdf>`__
+  <https://learncodethehardway.org/unix/bash_cheat_sheet.pdf>`__
 
 - `Bash guide on Greg's wiki <http://mywiki.wooledge.org/BashGuide>`_
 
