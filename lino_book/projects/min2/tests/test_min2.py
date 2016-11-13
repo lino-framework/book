@@ -63,7 +63,7 @@ class QuickTest(RemoteAuthTestCase):
         expected = """cal.Event cal.Task
         excerpts.Excerpt
         notes.Note
-        notify.Notification
+        notify.Message
         outbox.Attachment
         outbox.Mail
         plausibility.Problem
