@@ -17,26 +17,23 @@ maintaining complex database applications in a sustainable way. Rob
 Galanakis explains a similar opinion in `GeoCities and the Qt Designer
 <http://www.robg3d.com/2014/08/geocities-and-the-qt-designer/>`_
 
-For example, one of Lino's powerful features are :ref:`layouts` whose
-purpose is to describe user interfaces programmatically in the Python
-language.  Python is a powerful and well-known parser, why should we
-throw away a subset of its features by introducing yet another textual
-description language?
+For example, one of Lino's powerful features are :ref:`layouts
+<layouts>` whose purpose is to describe user interfaces
+programmatically in the Python language.  Python is a powerful and
+well-known parser, why should we throw away a subset of its features
+by introducing yet another textual description language?
 
 Or another example: Lino has no package manager because we have pip
 and git. We don't need to reinvent them.
 
-The main reason why other frameworks reinvent these wheels that it
-enables them to have non-programmers do the database design, screen
-layout and deployment.  Which is a pseudo-advantage.
+Why do other frameworks reinvent these wheels?  Because it enables
+them to have non-programmers do the database design, screen layout and
+deployment.  Which is a pseudo-advantage.  Lino exists because we
+believe that database design, screen layout and deployment should be
+done to people who *think in Python*.
 
-Lino exists because we believe that database design, screen layout and
-deployment should be done to people who *think in Python*.
-
-This does not exclude usage of templates when meaningful nor projects
-like :ticket:`1053`.
-
-A missing piece here are features like user-defined views
+This does not exclude usage of templates when meaningful, nor projects
+like :ticket:`1053` or features like user-defined views
 (:ticket:`848`) because end-users of course sometimes want (and should
 have a possibility) to save a given grid layout.
 

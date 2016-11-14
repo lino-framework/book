@@ -25,15 +25,14 @@ http://demo1.lino-framework.org
 Create a local Django project
 -----------------------------
 
-Lino is a set of extensions for a Django project, so there is a lot of
-Django know-how which applies to Lino applications as well.  So before
-reading on, please follow parts 1 and 2 of the *Django* tutorial (just
-parts 1 & 2, not the whole tutorial):
+There is a lot of Django know-how which applies to Lino as well.  So
+before reading on, please follow at least **parts 1 and 2** of the
+**Django tutorial**:
 
 - `Writing your first Django app, part 1
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/>`__.  
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/>`__.
 - `Writing your first Django app, part 2
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/>`__.  
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/>`__.
 
 Done? You should now have a set of files in your "project directory"::
 
@@ -65,6 +64,12 @@ Two remarks about the Django tutorial:
   <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
   section was important only so you know what you are going to leave.
   Lino is an alternative to Django's Admin interface.
+
+- Of course you can learn the whole `Getting started
+  <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
+  it, just be aware that with Lino you won't need many things
+  explained there.
+  
 
 We now leave the Django philosophy and continue "the Lino way" of
 writing web applications.  Some files remain unchanged:
