@@ -66,25 +66,47 @@ Set up a Python environment
 ===========================
 
 Before you actually install Lino into your Python, we recommend to
-create a new Python environment using virtualenv_.
-
-On a Debian system this means something like::
+create a new Python environment using virtualenv_.  On a Debian system
+this means something like::
 
         $ sudo pip install virtualenv
         $ mkdir ~/virtualenvs
         $ virtualenv ~/virtualenvs/a
 
-Note that we chose ``a`` as name for this environment. You might
-prefer ``lino``, ``dev`` or ``my_first_environment``.
+To *activate* this environment, you will type::
 
-To activate this environment, you will type::
+    $ . ~/virtualenvs/a/bin/activate
 
-        $ . ~/virtualenvs/a/bin/activate
+In a normal situation, all your Python projects can use the same
+virtual environment.  So you probably want to add above line to your
+:xfile:`.bashrc` file::
 
-In a normal situation, all your Lino projects can use the same virtual
-environment.  So you might add above line to your :xfile:`.bashrc`
-file if you currently don't plan to work on any other project which
-requires a different environment.
+    $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
+
+         
+.. rubric:: Notes
+
+We chose ``a`` as name for this environment. You might prefer
+``lino``, ``dev`` or ``my_first_environment``.
+
+If virtualenvs are new to you, then read Dan Poirier's post
+`Managing multiple Python projects: Virtual environments
+<https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
+where he explains what they are and why you want them.
+
+The dot (``.``) is a synonym for the :cmd:`source` command. If you
+didn't know it, read the `manpage
+<http://ss64.com/bash/source.html>`__ and `What does 'source' do?
+<http://superuser.com/questions/46139/what-does-source-do>`__
+
+You can *deactivate* a virtual environment with the command
+:cmd:`deactivate`. This switches you back to your machine's global
+environment.  You can switch to *another* virtualenv simply by
+activating it. You don't need to deactivate the current one
+before. You should never *rename* a virtualenv (they are not
+designed for that), but you can easily create a new one and remove
+the old one.
+
 
 Get the sources
 ===============
@@ -106,10 +128,10 @@ directory and and do::
   $ git clone https://github.com/lino-framework/cosi.git
   $ git clone https://github.com/lino-framework/book.git
 
-You should now have three directories called `~/repositories/lino`,
-`~/repositories/xl` and `~/repositories/book`, each of which contains
-a file :xfile:`setup.py` and a whole tree of other files and
-directories.
+You should now have four directories called `~/repositories/lino`,
+`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
+each of which contains a file :xfile:`setup.py` and a whole tree of
+other files and directories.
 
 One possible problem here is that the Lino repository has a big size.
 If you just want to try out the latest version and will never submit
