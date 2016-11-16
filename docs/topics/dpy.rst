@@ -5,10 +5,10 @@ The Python serializer
 =====================
 
 Lino includes a **Python serializer and deserializer**, one of the
-important concepts which Lino adds to a Django project.  It is heavily
-used for :doc:`managing and loading demo data
-</tutorials/dumpy/index>`, for :doc:`generating snapshots
-</dev/dump2py>` and :doc:`migrating </dev/datamig>` databases.
+important concepts which Lino adds to a Django project.  It is used
+for :doc:`managing and loading demo data </tutorials/dumpy/index>`,
+for :doc:`generating snapshots </dev/dump2py>` and :doc:`migrating
+</dev/datamig>` databases.
 
 A **serializer** is run by the :manage:`dumpdata` command and writes
 data into a file which can be used as a fixture.  A **deserializer**
@@ -50,8 +50,9 @@ the list of model instances to be added to the database.
 .. rubric:: Footnotes
 
 .. [#notnew] Though the basic idea of using Python language to
-             describe data collections is not new.  For example
-             Limodou published a Djangosnippet in 2007 which does
-             something similar: `db_dump.py - for dumpping and loading
-             data from database
-             <http://djangosnippets.org/snippets/14/>`_.
+    describe data collections is not new.  For example Limodou
+    published a Djangosnippet in 2007 which does something similar:
+    `db_dump.py - for dumping and loading data from database
+    <http://djangosnippets.org/snippets/14/>`_.  Or `Why using
+    factories in Django
+    <http://eatsomecode.com/why-using-factories-in-django>`__.

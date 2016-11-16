@@ -9,11 +9,6 @@ you need to know as a Lino developer.
 Python
 ======
 
-- Dan Poirier (Cactus Group) explains what are virtual environments
-  and why you want them: `Managing multiple Python projects: Virtual
-  environments
-  <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
-
 - `Learn Python The Hard Way <http://learnpythonthehardway.org>`_
   by Zed A. Shaw 
 
