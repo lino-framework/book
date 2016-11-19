@@ -225,6 +225,9 @@ class SpecsTests(TestCase):
     def test_cosi_ee(self):
         self.run_simple_doctests('docs/specs/cosi_ee.rst')
         
+    def test_polly(self):
+        self.run_simple_doctests('docs/specs/polly.rst')
+        
     def test_ajax(self):
         self.run_simple_doctests('docs/specs/ajax.rst')
 

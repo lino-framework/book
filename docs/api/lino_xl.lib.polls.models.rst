@@ -6,12 +6,6 @@ lino_xl.lib.polls.models
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      get_poll_result
-   
    
 
    

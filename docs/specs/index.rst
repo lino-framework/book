@@ -29,5 +29,5 @@ introductions. This section is far from being complete.
    dumps
    help_texts
    cosi_ee
+   polly
    ajax
-   
