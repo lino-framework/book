@@ -44,6 +44,7 @@ lino_xl.lib.cal.ui
       MyPendingPresences
       MyPresences
       MyTasks
+      MyUnconfirmedAppointments
       OneEvent
       OverdueAppointments
       Priorities
