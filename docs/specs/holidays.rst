@@ -74,7 +74,7 @@ automatically all Ash Wednesdays for a range of years:
 
 >>> rt.show(cal.EventsByController, master_instance=ash)
 ==================== =============== ===============
- When                 Summary         Workflow
+ When                 Summary         Actions
 -------------------- --------------- ---------------
  **Wed 18/02/2015**   Ash Wednesday   **Suggested**
  **Wed 10/02/2016**   Ash Wednesday   **Suggested**

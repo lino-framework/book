@@ -35,7 +35,7 @@ Robin has twelve appointments in the period 20141023..20141122:
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
 ======================== ========= ===================== =============== =================================================
- When                     Project   Calendar Event Type   Summary         Workflow
+ When                     Project   Calendar Event Type   Summary         Actions
 ------------------------ --------- --------------------- --------------- -------------------------------------------------
  Thu 23/10/2014 (10:20)             Meeting               Meeting         **Suggested** → [Notified]
  Fri 24/10/2014 (11:10)             Meeting               Consultation    **Draft** → [Notified] [Close meeting] [Cancel]
@@ -136,14 +136,15 @@ The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
 
 >>> print(' | '.join([cell.value for cell in rows[0]]))
-When | Workflow | Created | Start date | Start time
+When | Actions | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 Thu 23/10/2014 (13:30) | **Suggested** → `[img accept] <javascript:Lino.cal.MyEvents.wf1(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
-Note that the Workflow column (`workflow_buttons`) contains
-images. Since these are not available in Excel, we made a compromise.
+Note that the :guilabel:`Actions` column (:attr:`workflow_buttons`)
+contains images. Since these are not available in Excel, we made a
+compromise.
 
 
 Unicode
@@ -159,7 +160,7 @@ Mes rendez-vous (Traité par Ran
 
 >>> rows = list(ws.rows)
 >>> print(' | '.join([cell.value for cell in rows[0]]))
-Quand | État | Créé | Date début | Heure de début
+Quand | Actions | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
