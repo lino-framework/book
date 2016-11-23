@@ -52,13 +52,6 @@ They contain chunks of English text as they appear in Lino,
 together with their translation into a given language.
 See :doc:`/dev/translate/index`.
 
-.. xfile:: admin_main.html
-
-This is the template used to generate the inner content of the home
-page. It is split into two files
-:srcref:`admin_main.html<lino/modlib/lino_startup/config/admin_main.html>` and
-:srcref:`admin_main_base.html<lino/modlib/lino_startup/config/admin_main_base.html>`.
-
 .. xfile:: linolib.js
 .. xfile:: lino.js
 
