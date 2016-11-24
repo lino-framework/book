@@ -107,7 +107,7 @@ You can now play with these commands:
   - :cmd:`go book` 
   - :cmd:`git pull` 
     
-  - :cmd:`inv initdb test` (runs :cmd:`inv initdb` followed by
+  - :cmd:`inv prep test` (runs :cmd:`inv prep` followed by
     :cmd:`inv test`)
 
   - :cmd:`go mylets` changes to :file:`~/projects/mylets`    

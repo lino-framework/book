@@ -8,14 +8,14 @@ Once your :doc:`environment <env>` is correctly set up you can run the
 test suite for the Lino framework as follows::
   
   $ oood
-  $ pp inv initdb test
+  $ pp inv prep test
 
 
 Where :cmd:`oood` starts up the LibreOffice server, required by
 several tests.  See :doc:`/admin/oood`.  You don't need to do this
 here if you installed LO as a service on your machine.
 
-The :cmd:`pp inv initdb test` command then loops over all your
+The :cmd:`pp inv prep test` command then loops over all your
 projects (:cmd:`pp`), initializes their demo databases (:cmd:`inv
 initdb`) and then runs the test suite (:cmd:`inv test`. The whole
 process takes 20 minutes on my machine when there's no error. It
@@ -66,7 +66,7 @@ Make sure that your demo databases are initialized and that you did
 not do any manual changes therein.  Because the test suite has many
 test cases which would fail if these demo databases were missing or
 not in their virgin state.  In case you *did* write into some database
-during the previous section, just run :cmd:`inv initdb` once more.
+during the previous section, just run :cmd:`inv prep` once more.
 
 
 Tips & tricks
@@ -74,7 +74,7 @@ Tips & tricks
   
 #.  You can split the process into two::
 
-      $ pp inv initdb
+      $ pp inv prep
       $ pp inv test
 
     This can save you time if there is some problem. Once :manage:`inv
@@ -84,20 +84,20 @@ Tips & tricks
 #.  You can run the test suite for one project at a time by doing::
 
       $ go <prjname>
-      $ inv initdb test
+      $ inv prep test
 
 #.  You can prepend the standard Unix `time
     <http://linux.die.net/man/1/time>`__ command if you want to know
     how much time it took on your machine::
 
-      $ time pp inv initdb test
+      $ time pp inv prep test
 
 #.  You can use the `-v` option of :cmd:`pp` so that you can
     peacefully go to the kitchen and make yourself a cup of tea,
     knowing that your computer will announce the result through its
     speakers when the process has finished::
 
-      $ time pp -v inv initdb test
+      $ time pp -v inv prep test
 
     You can try this by issuing::
 
