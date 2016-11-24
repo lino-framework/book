@@ -51,9 +51,9 @@ from lino_xl.lib.notes.actions import NotableAction
 class WakeupEntry(dd.ChangeStateAction, NotableAction):
     label = _("Wake up")
     required_states = 'sleeping'
-    # in our example waking up an antry will send a notification
+    # in our example, waking up an antry will send a notification
 
-    def get_notify_recipients(self, ar, owner):
+    def get_notify_recipients(self, ar, obj):
         return rt.models.User.objects.all()
 
     def get_notify_subject(self, ar, obj):
