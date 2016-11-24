@@ -252,11 +252,11 @@ The Lino Book contains a series of demo projects, each of which has
 its own database. These databases need to be initialized before you
 can use these projects.
 
-The easiest way to do this is to run the :cmd:`inv initdb` command
+The easiest way to do this is to run the :cmd:`inv prep` command
 from within your copy of the :ref:`book` repository::
 
     $ cd ~/repositories/book
-    $ inv initdb
+    $ inv prep
 
 The ``inv`` command has been installed on your system (more precisely:
 into your Python environment) by the invoke_ package, which itself has
@@ -267,7 +267,7 @@ The ``inv`` command is a kind of make tool which works by looking for
 a file named :xfile:`tasks.py`. The Lino repository contains such a
 file, and this file uses :mod:`lino.invlib`, which (together with
 :mod:`atelier.invlib` from which it inherits) defines a whole series
-of commands like :cmd:`inv initdb` or :cmd:`inv test`.
+of commands like :cmd:`inv prep` or :cmd:`inv test`.
 
 
 
