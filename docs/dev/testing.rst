@@ -36,3 +36,12 @@ best to fill up this hole...  meanwhile you must use the source, Luke!
   - :mod:`atelier.test`
   - :mod:`lino.utils.pythontest` and :mod:`lino.utils.djangotest`
   - :mod:`lino.utils.test`
+
+
+.. _travis:
+
+Travis CI
+=========
+
+The Lino team has an `account at Travis CI
+<https://travis-ci.org/lino-framework/>`__.

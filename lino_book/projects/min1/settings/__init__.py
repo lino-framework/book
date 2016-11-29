@@ -37,6 +37,6 @@ class Site(Site):
         yield 'lino_xl.lib.cal'
         yield 'lino.modlib.export_excel'
 
-    def get_admin_main_items(self, ar):
+    def get_admin_main_items(self, user):
         yield self.modules.cal.MyEvents
 
