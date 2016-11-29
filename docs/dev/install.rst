@@ -60,52 +60,10 @@ System requirements
 
       $ sudo apt-get install libffi-dev
 
+#.  For applications which use :mod:`lino.utils.html2xhtml`::
 
+      $ sudo apt-get install tidy
 
-Set up a Python environment
-===========================
-
-Before you actually install Lino into your Python, we recommend to
-create a new Python environment using virtualenv_.  On a Debian system
-this means something like::
-
-        $ sudo pip install virtualenv
-        $ mkdir ~/virtualenvs
-        $ virtualenv ~/virtualenvs/a
-
-To *activate* this environment, you will type::
-
-    $ . ~/virtualenvs/a/bin/activate
-
-In a normal situation, all your Python projects can use the same
-virtual environment.  So you probably want to add above line to your
-:xfile:`.bashrc` file::
-
-    $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
-
-         
-.. rubric:: Notes
-
-We chose ``a`` as name for this environment. You might prefer
-``lino``, ``dev`` or ``my_first_environment``.
-
-If virtualenvs are new to you, then read Dan Poirier's post
-`Managing multiple Python projects: Virtual environments
-<https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
-where he explains what they are and why you want them.
-
-The dot (``.``) is a synonym for the :cmd:`source` command. If you
-didn't know it, read the `manpage
-<http://ss64.com/bash/source.html>`__ and `What does 'source' do?
-<http://superuser.com/questions/46139/what-does-source-do>`__
-
-You can *deactivate* a virtual environment with the command
-:cmd:`deactivate`. This switches you back to your machine's global
-environment.  You can switch to *another* virtualenv simply by
-activating it. You don't need to deactivate the current one
-before. You should never *rename* a virtualenv (they are not
-designed for that), but you can easily create a new one and remove
-the old one.
 
 
 Get the sources
@@ -143,7 +101,58 @@ or Nicola Paolucci's blog entry `How to handle big repositories with
 git
 <http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
 
+
 .. _lino.dev.env:
+
+Set up a Python environment
+===========================
+
+Before you actually install Lino into your Python, we recommend to
+create a new Python environment using virtualenv_.
+
+If you have never used virtual environments before, then on a Debian
+system you will do something like::
+
+        $ sudo pip install virtualenv
+        $ mkdir ~/virtualenvs
+
+Here is how to create a new virgin environment::
+        
+        $ virtualenv ~/virtualenvs/a
+
+To *activate* this environment, you will type::
+
+    $ . ~/virtualenvs/a/bin/activate
+
+In a normal situation, all your Python projects can use the same
+virtual environment.  So you probably want to add above line to your
+:xfile:`.bashrc` file::
+
+    $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
+
+         
+.. rubric:: Notes
+
+We chose ``a`` as name for this environment. You might prefer
+``lino``, ``dev`` or ``my_first_environment``.
+
+If virtualenvs are new to you, then read Dan Poirier's post
+`Managing multiple Python projects: Virtual environments
+<https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
+where he explains what they are and why you want them.
+
+The dot (``.``) is a synonym for the :cmd:`source` command. If you
+didn't know it, read the `manpage
+<http://ss64.com/bash/source.html>`__ and `What does 'source' do?
+<http://superuser.com/questions/46139/what-does-source-do>`__
+
+You can *deactivate* a virtual environment with the command
+:cmd:`deactivate`. This switches you back to your machine's global
+environment.  You can switch to *another* virtualenv simply by
+activating it. You don't need to deactivate the current one before.
+
+You should never *rename* a virtualenv (they are not designed for
+that), but you can easily create a new one and remove the old one.
 
 
 Installation
@@ -187,6 +196,10 @@ In case you didn't know: Python's `-m
 <https://docs.python.org/2/using/cmdline.html#cmdoption-m>`_
 command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
+
+
+Upgrading the sources
+=====================
 
 Actually the Lino version number is not enough when using a developer
 installation of Lino.  The Lino codebase repository changes almost
