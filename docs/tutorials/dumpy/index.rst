@@ -121,6 +121,7 @@ The output should be as follows:
 
 >>> shell("python manage.py initdb dumpy1 --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
+`initdb dumpy1` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: gfks, about, jinja, office, countries, staticfiles, contacts, system, xl, printing, lino_startup, cal, users, extjs, export_excel, bootstrap3
   Apply all migrations: contenttypes, sessions

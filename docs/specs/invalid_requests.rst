@@ -46,7 +46,14 @@ exception, which in turn will cause an `HttpResponseBadRequest`
 response (i.e. status code 400):
 
 >>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114"
->>> res = test_client.get(url, **headers)
+>>> res = test_client.get(url, **headers)  #doctest: +ELLIPSIS
+AjaxExceptionResponse ObjectDoesNotExist: Invalid master key 114114 for contacts.RolesByPerson
+<BLANKLINE>
+in request GET /api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114
+TRACEBACK:
+...
+<BLANKLINE>
+
 >>> print(res.status_code)
 400
 

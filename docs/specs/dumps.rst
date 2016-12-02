@@ -80,8 +80,8 @@ Here is now a correct call:
 
 >>> shell("python manage_a.py dump2py tmp/a --overwrite")
 ... #doctest: +ELLIPSIS
-Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
 Writing .../lino_book/projects/dumps/tmp/a/restore.py...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
 
 Verify that the newly created dump is as expected:
 
@@ -95,7 +95,6 @@ Load the dump, dump again and verify that both dumps are the same:
 ... #doctest: +ELLIPSIS
 Unversioned Site instance : no database migration
 `initdb ` started on database .../default.db.
-Loading 2 objects to table dumps_foo...
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -105,13 +104,14 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Loading 2 objects to table dumps_foo...
 
 
 
 >>> shell("python manage_a.py dump2py tmp/a --overwrite")
 ... #doctest: +ELLIPSIS
-Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
 Writing .../lino_book/projects/dumps/tmp/a/restore.py...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/a/restore.py and siblings.
 
 >>> shell("diff a tmp/a")
 ... #doctest: +ELLIPSIS
@@ -138,8 +138,8 @@ Installed 2 object(s) from 1 fixture(s)
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
 ... #doctest: +ELLIPSIS
-Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
 Writing .../lino_book/projects/dumps/tmp/b/restore.py...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
 
 Verify that the newly created dump is as expected:
 
@@ -153,7 +153,6 @@ Load the dump, dump again and verify that both dumps are the same:
 ... #doctest: +ELLIPSIS
 Unversioned Site instance : no database migration
 `initdb ` started on database .../default.db.
-Loading 2 objects to table dumps_foo...
 Operations to perform:
   Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
   Apply all migrations: (none)
@@ -163,12 +162,13 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Loading 2 objects to table dumps_foo...
 
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
 ... #doctest: +ELLIPSIS
-Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
 Writing .../lino_book/projects/dumps/tmp/b/restore.py...
+Wrote 2 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
 
 >>> shell("diff b tmp/b")
 ... #doctest: +ELLIPSIS
