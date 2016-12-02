@@ -11,7 +11,8 @@ PY3 = sys.version_info[0] == 3
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='1.7.4',
+    # version='1.7.4',
+    version='2016.12.0',
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
