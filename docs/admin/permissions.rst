@@ -7,23 +7,28 @@ File permissions
 Understanding what's needed
 ===========================
 
-Lino consists of Python processes running on a server. These processes
-can read, create, delete and modify files on the file system.
+A Lino production site involves several processes running on a server.
+These processes share files on the file system which they can read,
+create, delete and modify.  This is why we need to care about file
+permissions as soon as we are on a production site.
 
-For example if Lino's `.log` file doesn't exist, `www-data` (the user
-under which Apache is running) will create a new file, and that file
-should be writable by other users of the `www-data` group.
+For example if Lino's :xfile:`lino.log` file doesn't exist, then the
+running process will create a new file.
 
-Or the other way: if you launch manually some process which creates
-files, e.g. :manage:`initdb` or :manage:`dump2py`, then the web server
-(user `www-data`) must also have write access to this file.
+This process can be a maintainer who launches manually
+e.g. :manage:`initdb` or :manage:`dump2py`, it can be the Apache web
+server, the :manage:`linod` daemon, a cron job like ``logrotate`` or
+:xfile:`make_snapshot.sh`, ...
 
-Such problems can come when the `setgid flag
-<https://en.wikipedia.org/wiki/Setuid>`_ is not set on directories
-which should have it.
+Of course the :xfile:`lino.log` file should be writable by other users
+of the `www-data` group.
+
+the `setgid flag <https://en.wikipedia.org/wiki/Setuid>`_ is
+not set on directories which should have it.
 
 ``chmod g+s`` sets the SGID to ensure that when a new file is created
-in the directory it will inherit the group of the directory.
+in the directory it will be group-owned by the group owning the
+directory.
 
 
 Discovering problems

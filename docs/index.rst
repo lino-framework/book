@@ -21,7 +21,7 @@ Sitemap
    demos
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
-   Hoster's Guide </hosters/index>
+   Hoster's Guide </hosting/index>
    documentation
    community/index
    blog

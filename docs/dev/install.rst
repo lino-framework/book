@@ -16,10 +16,11 @@ Installing Lino
 
 This document describes how to install Lino.  
 
-It assumes you are familiar with the Linux shell at least
-for basic file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`,
-:cmd:`rmdir`, file permissions, environment variables, bash scripts
-etc.  Otherwise we suggest to learn about :ref:`Working in a UNIX shell <learning.unix>`.
+It assumes you are familiar with the Linux shell at least for basic
+file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`,
+file permissions, environment variables, bash scripts etc.  Otherwise
+we suggest to learn about :ref:`Working in a UNIX shell
+<learning.unix>`.
 
 .. contents::
     :depth: 1
@@ -34,72 +35,42 @@ System requirements
     choose Python 2. Otherwise consider giving it a try under Python 3
     and report your experiences.
 
-#.  We assume you have pip_ installed. `pip` is not automatically
-    bundled with Python 2, but it has become the de-facto
-    standard. Here is how to install it on Debian::
+#.  You need at least 500MB of RAM.  How to see how much memory you
+    have::
 
-      $ sudo apt-get install python-pip
+        $ free -h
+
+#.  We assume you have virtualenv_ and pip_ installed. See the next
+    section.
 
 #.  You will need to install git_ on your computer to get the source
     files::
       
       $ sudo apt-get install git
 
-#.  Lino requires lxml_, which has some extra requirements before you
-    can install it with pip_::
+#.  Many Lino applications require lxml_, which has some extra
+    requirements before you can install it with pip_::
 
       $ sudo apt-get build-dep lxml
 
     Note: if you get an error message :message:`You must put some
     'source' URIs in your sources.list`, then (in Ubuntu) open
     :menuselection:`System Settings --> Software & Updates` and make
-    sure that :guilabel:`Source code` is checked.
+    sure that :guilabel:`Source code` is checked. Or (on the command
+    line) edit your :file:`/etc/apt/sources.list` file::
+
+        $ sudo nano /etc/apt/sources.list
+        $ sudo apt-get update
 
 #.  Similar requirement for applications which use
     :mod:`lino.modlib.weasyprint`::
 
+      $ sudo apt-get build-dep cairocffi
       $ sudo apt-get install libffi-dev
 
 #.  For applications which use :mod:`lino.utils.html2xhtml`::
 
       $ sudo apt-get install tidy
-
-
-
-Get the sources
-===============
-
-You might theoretically install Lino using ``pip install lino``, but
-this method isn't currently being tested very thoroughly. So in most
-cases we currently recommend to use the development version because
-you will probably want to use Lino's newest features before they get
-released on PyPI.
-
-Create a directory (e.g. :file:`~/repositories`) meant to hold your
-working copies of version-controlled software projects, `cd` to that
-directory and and do::
-
-  $ mkdir ~/repositories
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/cosi.git
-  $ git clone https://github.com/lino-framework/book.git
-
-You should now have four directories called `~/repositories/lino`,
-`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
-each of which contains a file :xfile:`setup.py` and a whole tree of
-other files and directories.
-
-One possible problem here is that the Lino repository has a big size.
-If you just want to try out the latest version and will never submit
-any pull request, then you can reduce this from 300MB to to 63MB by
-adding ``--depth 1`` option (as explained in `this question on
-stackoverflow
-<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
-or Nicola Paolucci's blog entry `How to handle big repositories with
-git
-<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
 
 
 .. _lino.dev.env:
@@ -153,6 +124,42 @@ activating it. You don't need to deactivate the current one before.
 
 You should never *rename* a virtualenv (they are not designed for
 that), but you can easily create a new one and remove the old one.
+
+
+Get the sources
+===============
+
+You might theoretically install Lino using ``pip install lino``, but
+this method isn't currently being tested very thoroughly. So in most
+cases we currently recommend to use the development version because
+you will probably want to use Lino's newest features before they get
+released on PyPI.
+
+Create a directory (e.g. :file:`~/repositories`) meant to hold your
+working copies of version-controlled software projects, `cd` to that
+directory and and do::
+
+  $ mkdir ~/repositories
+  $ cd ~/repositories
+  $ git clone https://github.com/lino-framework/lino.git
+  $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/cosi.git
+  $ git clone https://github.com/lino-framework/book.git
+
+You should now have four directories called `~/repositories/lino`,
+`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
+each of which contains a file :xfile:`setup.py` and a whole tree of
+other files and directories.
+
+One possible problem here is that the Lino repository has a big size.
+If you just want to try out the latest version and will never submit
+any pull request, then you can reduce this from 300MB to to 63MB by
+adding ``--depth 1`` option (as explained in `this question on
+stackoverflow
+<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
+or Nicola Paolucci's blog entry `How to handle big repositories with
+git
+<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
 
 
 Installation
@@ -307,5 +314,8 @@ playing.
 Where to go from here
 =====================
 
-As your next step, we now suggest to :doc:`/tutorials/hello/index`.
+If you are reading the **Developer's Guide**, we now suggest to
+:doc:`/tutorials/hello/index`.
 
+If you are reading the **Administrator's Guide**, then continue where
+you left in :doc:`/admin/install`.

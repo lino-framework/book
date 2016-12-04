@@ -93,15 +93,13 @@ Running the :command:`checkdata` command
 
 
 >>> call_command('checkdata')
-
-(TODO: make output visible here... There is no output visible here
-because it goes to the log file.)
+Found 4 and fixed 0 data problems in Events.
+Done 6 checkers, found 4 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
 
     $ python manage.py checkdata --list
-
 
 >>> call_command('checkdata', list=True)
 ================================= ==================================================
@@ -119,11 +117,8 @@ line using::
 
 
 >>> call_command('checkdata', 'cal.')
-
-The output goes to the logfile::
-
-    Running 2 plausibility checkers on 125 Events...
-    Found 3 and fixed 0 plausibility problems in Events.
+Found 4 and fixed 0 data problems in Events.
+Done 1 checkers, found 4 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):

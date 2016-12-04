@@ -13,26 +13,35 @@ Lino is a young framework with a small but growing community.  Lino
 wants humans.  Here are some profiles of people we would happily
 welcome.
 
-- **Software developers** -- Consider whether Lino is the right tool
-  for one of your projects. See :doc:`developers`.
+Individuals:
+
+- **Anybody** -- consider learning one or several Lino applications in
+  order to work as a :doc:`Lino trainer </team/trainer>` or :doc:`Lino
+  analyst </team/analyst>`.
 
 - **System administrators** -- consider installing a Lino application
   for your employer. See :doc:`admins`.
   
-- **Internet hosting providers** -- Consider becoming a :doc:`hosting
-  provider <hosters>` and contact us to get listed in our
-  directory. Help us to develop
-  a Lino application for managing Lino applications on a hosting server
-  (:ticket:`1053`).
+- **Software developers** -- Consider whether Lino is the right tool
+  for one of your projects. See :doc:`developers`.
 
-- **Friends** --
-  Follow what's going on and give us your feedback. 
-  Tell other people about Lino.
-  Show the :ref:`demos` to other users of your
-  employer and analyze whether they need a Lino application.  Your
-  advantage is that you get free consultation for planning your
-  project or with becoming a professional `Lino Consultant
-  <http://www.saffre-rumma.net/jobs/consultant>`_.
+Companies:
+
+- **IT solution providers** -- Consider becoming a Lino
+  representative.  Tell other people about Lino.  Show the
+  :ref:`demos` to other people and help them analyze whether they need
+  a Lino application.  Set up your own demo server.
+
+  Your advantage is that you get free consultation for planning your
+  projects.
+  
+- **Internet hosting providers** -- Consider becoming a :doc:`Lino
+  hosting provider </hosting/what>` and contact us to get listed in
+  our :doc:`directory <hosters>`.
+
+  Your advantage is that you get free support for becoming a
+  :doc:`certified hoster </hosting/howto>`.
+
 
 Who is behind Lino?
 ===================
@@ -50,7 +59,6 @@ any private motivation on its own.  In order to open the door for this
 evolution, we created the :doc:`Lino Team <team>`.
 
 
-
 .. toctree::
     :hidden:
 
@@ -63,5 +71,6 @@ evolution, we created the :doc:`Lino Team <team>`.
     structure
     /team/roles
     /team/analyst
+    /team/trainer
     /team/sysadm
     

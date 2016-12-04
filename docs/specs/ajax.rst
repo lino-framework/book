@@ -92,9 +92,10 @@ action which will trigger a refresh.  The same URL will now cause a
 `PermissionDenied` exception:
 
 >>> res = test_client.get(url)
+Forbidden (Permission denied): /api/sales/InvoicesByJournal
 >>> res.status_code
 403
->>> soup = BeautifulSoup(res.content)
+>>> soup = BeautifulSoup(res.content, 'lxml')
 >>> # print(soup.body.prettify())
 >>> divs = soup.body.find_all('div')
 >>> len(divs)
@@ -114,6 +115,14 @@ setting the extra HTTP header `HTTP_X_REQUESTED_WITH` to
 'XMLHttpRequest'.
 
 >>> res = test_client.get(url, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+... #doctest: +ELLIPSIS
+AjaxExceptionResponse PermissionDenied: As Anonym you have no permission to run this action.
+<BLANKLINE>
+in request GET /api/sales/InvoicesByJournal?start=0&limit=25&fmt=json&rp=ext-comp-1135&pv=1&pv=&pv=&pv=&mt=24&mk=1
+TRACEBACK:
+...
+<BLANKLINE>
+
 >>> res.status_code
 403
 >>> print(res.content)

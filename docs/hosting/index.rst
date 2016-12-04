@@ -12,3 +12,4 @@ This is the central meeting place for :doc:`Lino hosting providers
 
    what
    types
+   howto
