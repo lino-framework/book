@@ -4,7 +4,7 @@
 Administrator's Guide
 =====================
 
-This section is for :doc:`system administrators </team/sysadm>` who
+This document is for :doc:`system administrators </team/sysadm>` who
 set up or maintain a server which hosts one or several Lino
 applications.
 

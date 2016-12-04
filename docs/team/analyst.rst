@@ -5,14 +5,12 @@ Analyst
 Analysis, in software development, is the process of describing what
 the customer needs.  
 
-An analyst is a kind of power user who fills the following
-requirements:
+A Lino analyst is a person who works on new development projects and
+who fulfills the following requirements:
 
-- You have a good knowledge of a given Lino application.
+- You have a good knowledge of several Lino applications.
 
-- You understand why people use this application.
-
-- You can test and evaluate a new version of the application.
+- You understand why people use Lino applications.
 
 - You are able to speak with local system administrators and users
   about their problems and needs.  

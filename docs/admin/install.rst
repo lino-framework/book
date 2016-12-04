@@ -11,40 +11,66 @@ sites on a same machine.
 Prerequisites
 =============
 
-You need shell access to a Linux box, i.e. a virtual or physical
-machine with a Linux operating system.
-
-If your customers want want to access their Lino from outside of their
-intranet, then you need to setup a public domain or subdomain and
-configure Apache to use secure HTTP.
+You need shell access to a **Linux server**, i.e. a virtual or
+physical machine with a Linux operating system running in a network.
 
 We recommend a **stable Debian** as operating system.  If you prefer
 some other Linux distribution, that should be no problem. There will
-be some differences, but you probably know them.
+be some differences, but you probably know them.  You need a **web
+server**, **Python 2**, some database (e.g. **MySQL** or
+**PostGreSQL**) running on that server.
 
-You need a **web server**, **Python 2**, some database
-(e.g. **MySQL**) running on that server.
+If your customers want want to access their Lino from outside of their
+intranet, then you need to setup a **domain name** and configure
+Apache to use secure HTTP.
 
 
-Debian packages
-===============
+System users
+============
+
+Create one or several users who will be the *maintainers* of this
+site::
+
+    $ sudo adduser joe
+
+Maintainers must be members of the `sudo` and `www-data` groups::
+  
+    $ sudo adduser joe sudo
+    $ sudo adduser joe www-data
+
+They must have a umask 002 or 007::
+
+    $ nano /home/joe/.bashrc
+  
+.. rubric:: Notes
+
+- `useradd` is a native binary compiled with the system, while
+  `adduser` is a perl script which uses `useradd` in back-end.
+
+
+Install a development environment
+=================================
+
+Follow the instructions in :doc:`/dev/install` for installing a
+*development* version of Lino.
+
+
+More Debian packages
+====================
 
 Some Debian packages and why you might need them:
 
-libapache2-mod-wsgi
+    $ sudo apt-get install libapache2-mod-wsgi
   
     This will automatically install Apache 
     (packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
-    
-mysqldb-server
-mariadb-server
 
-    Needed if you plan to use Django's MySQL backend.
-    See :doc:`install_mysql`.
-
-ssl-cert
+Select your database backend.    
     
-    If you want to run a https server.
+    $ sudo apt-get install mysqldb-server
+    $ sudo apt-get install mariadb-server
+
+See :doc:`install_mysql`.
 
 .. _lino.admin.site_module:
 
@@ -61,8 +87,7 @@ empty :xfile:`__init__.py` file::
   $ sudo mkdir /usr/local/src/lino
   $ sudo touch /usr/local/src/lino/__init__.py
 
-In that directory, still as root, create a file named
-:file:`lino_local.py`::
+In that directory, create a file named :file:`lino_local.py`::
   
   $ sudo nano /usr/local/src/lino/lino_local.py
 
@@ -112,6 +137,10 @@ content for every project. Once you have a first project running, you
 can add new projects by copying the directory of some existing
 project.
 
+We recommend the convention of having in each project a symbolic link
+named :xfile:`env` which points to the virtualenv.
+
+
 Which database backend to use
 =============================
 
@@ -124,32 +153,6 @@ If you plan to use Django's MySQL backend, see :doc:`install_mysql`.
 Follow the Django documentation at `Get your database running
 <https://docs.djangoproject.com/en/1.9/topics/install/#get-your-database-running>`__
 
-
-Create a virtualenv
-===================
-
-Create the virtualenv for the project::
-
-    $ cd ~/mypy/prj1
-    $ virtualenv env
-    $ a env/bin/activate
-    $ pip install lino-voga
-
-Above example assumes that you want to run :ref:`voga` on that site.
-Of course you have other choices, for example:
-
-    - `lino-voga` for :ref:`voga`
-    - `lino-cosi` for :ref:`cosi`
-    - `lino-noi` for :ref:`noi`  or :ref:`care`
-    - `lino-presto` for :ref:`presto` or :ref:`psico`
-    - `lino-welfare` for :ref:`welfare`
-
-And of course you must then write your :xfile:`settings.py` as
-documented by these projects.
-
-We recommend the convention of having in each project a subdirectory
-named :xfile:`env` which contains the virtualenv. On systems with
-shared virtualenvs,  :xfile:`env`  might be a symbolic link.
 
 
 Activate file logging

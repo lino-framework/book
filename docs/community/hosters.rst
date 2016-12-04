@@ -4,8 +4,16 @@
 Recommended Lino hosting providers
 ==================================
 
-Here is a small list of companies we recommend to contact if you are
-looking for a :doc:`Lino hosting provider </hosters/what>`:
+If you are looking for a :doc:`Lino hosting provider </hosting/what>`.
+then here is our list of companies we recommend to contact.
+
+If you plan to become yourself a hosting provider, then read the
+:doc:`Hoster's Guide </hosting/index>` and don't hesitate to contact
+us.
+
+
+- `Abakus IT solutions <http://www.abakusitsolutions.eu/>`__ is a
+  hosting and ICT solutions provider in Eupen (Belgium) and Luxemburg.
   
 - `C2D <http://www.c2d.be/fr/>`_ is a hosting and ICT solutions
   provider in Liège, Belgium.
@@ -22,5 +30,3 @@ looking for a :doc:`Lino hosting provider </hosters/what>`:
 - `Nex Data Systems OÜ <http://nex.ee>`_ is a hosting and ICT
   solutions provider in Pärnu, Estonia.
 
-If you want to become yourself a hosting provider, then read the
-:ref:`lino.hosters` and don't hesitate to contact us.
