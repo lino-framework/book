@@ -43,9 +43,12 @@ class QuickTest(RemoteAuthTestCase):
                 'lino.core.auth.RemoteUserMiddleware',
                 'lino.utils.ajax.AjaxExceptionResponse'))
 
-        Person = dd.resolve_model("contacts.Person")
-
-        ee = create_and_get('countries.Country',
+        Person = rt.modules.contacts.Person
+        Country = rt.modules.countries.Country
+        Place = rt.modules.countries.Place
+        PlaceTypes = rt.modules.countries.PlaceTypes
+        
+        ee = create_and_get(Country,
                             isocode='EE', **dd.babelkw('name',
                                                     de="Estland",
                                                     fr='Estonie',
@@ -53,7 +56,7 @@ class QuickTest(RemoteAuthTestCase):
                                                     nl='Estland',
                                                     et='Eesti',
                                                     ))
-        be = create_and_get('countries.Country',
+        be = create_and_get(Country,
                             isocode='BE', **dd.babelkw('name',
                                                     de="Belgien",
                                                     fr='Belgique',
@@ -62,11 +65,10 @@ class QuickTest(RemoteAuthTestCase):
                                                     et='Belgia',
                                                     ))
 
-        PlaceTypes = rt.modules.countries.PlaceTypes
         eupen = create_and_get(
-            'countries.Place', name=u'Eupen', country=be, zip_code='4700')
+            Place, name=u'Eupen', country=be, zip_code='4700')
 
-        vigala = create_and_get('countries.Place',
+        vigala = create_and_get(Place,
                                 name='Vigala',
                                 country=ee,
                                 type=PlaceTypes.municipality)
@@ -109,7 +111,7 @@ Estland''')
         # geographic hierarchy. We then just select "Vana-Vigala" as
         # the "City".
 
-        vana_vigala = create_and_get('countries.Place',
+        vana_vigala = create_and_get(Place,
                                      name='Vana-Vigala',
                                      country=ee,
                                      parent=vigala,
