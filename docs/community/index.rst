@@ -36,11 +36,8 @@ Companies:
   projects.
   
 - **Internet hosting providers** -- Consider becoming a :doc:`Lino
-  hosting provider </hosting/what>` and contact us to get listed in
+  hosting provider </hosting/about>` and contact us to get listed in
   our :doc:`directory <hosters>`.
-
-  Your advantage is that you get free support for becoming a
-  :doc:`certified hoster </hosting/howto>`.
 
 
 Who is behind Lino?
