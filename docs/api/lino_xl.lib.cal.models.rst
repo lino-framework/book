@@ -26,6 +26,7 @@ lino_xl.lib.cal.models
       CalendarType
       ConflictingEventsChecker
       Event
+      EventChecker
       EventGuestChecker
       EventType
       ExtAllDayField

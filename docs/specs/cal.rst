@@ -193,7 +193,7 @@ Event #30 All Souls' Day (31.10.2014)
  Start date   Start time   End Time   Project   Room   Responsible user
 ------------ ------------ ---------- --------- ------ ------------------
  31/10/2014   09:40:00     11:40:00                    Romain Raffault
- 31/10/2014   11:10:00     12:40:00                    Robin Rood
  31/10/2014   08:30:00     09:30:00                    Rando Roosi
 ============ ============ ========== ========= ====== ==================
 <BLANKLINE>
+

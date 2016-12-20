@@ -36,6 +36,7 @@ checkers.
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
  cal.ObsoleteEventTypeChecker      Update event types of generated events
+ cal.EventChecker                  Check for strange events
 ================================= ==================================================
 <BLANKLINE>
 
@@ -57,9 +58,8 @@ System --> Plausibility problems` to see them.
 ============= ================================================ ============================================================= ==============================
  Responsible   Controlled by                                    Message                                                       Plausibility checker
 ------------- ------------------------------------------------ ------------------------------------------------------------- ------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 3 other events.                          Check for conflicting events
+ Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.                          Check for conflicting events
  Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
- Robin Rood    *Event #125 Seminar (31.10.2014 11:10)*          Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
  Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
 ============= ================================================ ============================================================= ==============================
 <BLANKLINE>
@@ -80,9 +80,8 @@ of selecting the :class:`ConflictingEventsChecker
 ============= ================================================ =============================================================
  Responsible   Controlled by                                    Message
 ------------- ------------------------------------------------ -------------------------------------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 3 other events.
+ Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.
  Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).
- Robin Rood    *Event #125 Seminar (31.10.2014 11:10)*          Event conflicts with Event #30 All Souls' Day (31.10.2014).
  Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).
 ============= ================================================ =============================================================
 <BLANKLINE>
@@ -93,8 +92,8 @@ Running the :command:`checkdata` command
 
 
 >>> call_command('checkdata')
-Found 4 and fixed 0 data problems in Events.
-Done 6 checkers, found 4 and fixed 0 problems.
+Found 3 and fixed 0 data problems in Events.
+Done 6 checkers, found 3 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -112,13 +111,14 @@ line using::
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
  cal.ObsoleteEventTypeChecker      Update event types of generated events
+ cal.EventChecker                  Check for strange events
 ================================= ==================================================
 <BLANKLINE>
 
 
 >>> call_command('checkdata', 'cal.')
-Found 4 and fixed 0 data problems in Events.
-Done 1 checkers, found 4 and fixed 0 problems.
+Found 3 and fixed 0 data problems in Events.
+Done 1 checkers, found 3 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):
