@@ -182,6 +182,7 @@ Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
+Loading data from ...
 Installed 225 object(s) from 9 fixture(s)
 
 

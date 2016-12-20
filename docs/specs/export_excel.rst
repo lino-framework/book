@@ -140,7 +140,7 @@ When | Actions | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (13:30) | **Suggested** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☉  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ | 2016-12-15 12:27:45.670958 | 2014-10-23 00:00:00 | 13:30:00
+Thu 23/10/2014 (13:30) | **Suggested** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☉  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 
@@ -161,7 +161,7 @@ Quand | Actions | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (13:30) | **Proposé** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☉  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ | 2016-12-15 12:27:45.670958 | 2014-10-23 00:00:00 | 13:30:00
+jeu. 23/10/2014 (13:30) | **Proposé** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☉  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 

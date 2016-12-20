@@ -59,6 +59,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Loading data from ...
 Installed 2 object(s) from 1 fixture(s)
 
 We try to call :manage:`dumpy` in some invalid ways (just to
@@ -134,6 +135,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Loading data from ...
 Installed 2 object(s) from 1 fixture(s)
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")

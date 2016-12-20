@@ -7,6 +7,12 @@ The Lino Polls tutorial
 .. how to test:
     $ python setup.py test -s tests.DocsTests.test_polls
 
+.. doctst init:    
+    >>> from lino.api.doctest import *
+    >>> from atelier.sheller import Sheller
+    >>> shell = Sheller()
+    
+
 In this tutorial we are going to convert the “Polls” application from
 Django’s tutorial into a Lino application. This will illustrate some
 differences between Lino and Django.
@@ -217,6 +223,7 @@ The output should be::
         Running deferred SQL...
     Running migrations:
       No migrations to apply.
+    Loading data from ...
     Installed 13 object(s) from 1 fixture(s)
 
 ..
@@ -273,14 +280,12 @@ We are now going to add a **demo fixture**.
         Running deferred SQL...
     Running migrations:
       No migrations to apply.
+    Loading data from ...
     Installed 13 object(s) from 1 fixture(s)
 
 ..
-    >>> from lino.api.doctest import *
-    >>> from atelier.sheller import Sheller
-    >>> shell = Sheller()
-    >>> shell("python manage.py initdb demo --noinput -v 0")
-    <BLANKLINE>   
+    >>> shell("python manage.py initdb demo --noinput -v 0")  #doctest: +ELLIPSIS
+    Loading data from ...
     
     >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
@@ -293,7 +298,7 @@ We are now going to add a **demo fixture**.
     <BLANKLINE>   
     
     >>> shell("python manage.py initdb demo1 -v 0 --noinput")  #doctest: +ELLIPSIS
-    <BLANKLINE>   
+    Loading data from ...
     
     >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
@@ -305,8 +310,8 @@ We are now going to add a **demo fixture**.
     ==== ================================ ===================== ========
     <BLANKLINE>   
     
-    >>> shell("python manage.py initdb_demo --noinput -v 0")
-    <BLANKLINE>   
+    >>> shell("python manage.py initdb_demo --noinput -v 0")  #doctest: +ELLIPSIS
+    Loading data from ...
     
     >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ==== ================================ ===================== ========
