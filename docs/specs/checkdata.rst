@@ -33,10 +33,10 @@ checkers.
  countries.PlaceChecker            Check plausibility of geographical places.
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
- cal.EventGuestChecker             Check for missing participants
+ cal.EventGuestChecker             Events without participants
  cal.ConflictingEventsChecker      Check for conflicting events
- cal.ObsoleteEventTypeChecker      Update event types of generated events
- cal.EventChecker                  Check for strange events
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated events
+ cal.LongEventChecker              Too long-lasting events
 ================================= ==================================================
 <BLANKLINE>
 
@@ -55,13 +55,13 @@ System --> Plausibility problems` to see them.
 
 >>> rt.show(plausibility.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============= ================================================ ============================================================= ==============================
- Responsible   Controlled by                                    Message                                                       Plausibility checker
-------------- ------------------------------------------------ ------------------------------------------------------------- ------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.                          Check for conflicting events
- Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
- Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).   Check for conflicting events
-============= ================================================ ============================================================= ==============================
+================= ========================================================= ====================================================================== ==============================
+ Responsible       Controlled by                                             Message                                                                Plausibility checker
+----------------- --------------------------------------------------------- ---------------------------------------------------------------------- ------------------------------
+ Robin Rood        *Calendar entry #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.                                   Check for conflicting events
+ Romain Raffault   *Calendar entry #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).   Check for conflicting events
+ Rando Roosi       *Calendar entry #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).   Check for conflicting events
+================= ========================================================= ====================================================================== ==============================
 <BLANKLINE>
 
 
@@ -77,14 +77,15 @@ of selecting the :class:`ConflictingEventsChecker
 >>> chk = plausibility.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(plausibility.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============= ================================================ =============================================================
- Responsible   Controlled by                                    Message
-------------- ------------------------------------------------ -------------------------------------------------------------
- Robin Rood    *Event #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.
- Robin Rood    *Event #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Event #30 All Souls' Day (31.10.2014).
- Robin Rood    *Event #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Event #30 All Souls' Day (31.10.2014).
-============= ================================================ =============================================================
+================= ========================================================= ======================================================================
+ Responsible       Controlled by                                             Message
+----------------- --------------------------------------------------------- ----------------------------------------------------------------------
+ Robin Rood        *Calendar entry #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.
+ Romain Raffault   *Calendar entry #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).
+ Rando Roosi       *Calendar entry #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).
+================= ========================================================= ======================================================================
 <BLANKLINE>
+
 
 
 Running the :command:`checkdata` command
@@ -92,7 +93,7 @@ Running the :command:`checkdata` command
 
 
 >>> call_command('checkdata')
-Found 3 and fixed 0 data problems in Events.
+Found 3 and fixed 0 data problems in Calendar entries.
 Done 6 checkers, found 3 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
@@ -108,16 +109,16 @@ line using::
  countries.PlaceChecker            Check plausibility of geographical places.
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
- cal.EventGuestChecker             Check for missing participants
+ cal.EventGuestChecker             Events without participants
  cal.ConflictingEventsChecker      Check for conflicting events
- cal.ObsoleteEventTypeChecker      Update event types of generated events
- cal.EventChecker                  Check for strange events
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated events
+ cal.LongEventChecker              Too long-lasting events
 ================================= ==================================================
 <BLANKLINE>
 
 
 >>> call_command('checkdata', 'cal.')
-Found 3 and fixed 0 data problems in Events.
+Found 3 and fixed 0 data problems in Calendar entries.
 Done 1 checkers, found 3 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')

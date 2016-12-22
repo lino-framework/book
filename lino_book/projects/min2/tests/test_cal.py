@@ -58,7 +58,7 @@ class QuickTest(RemoteAuthTestCase):
 
         pk = resp['data_record']['id']
         obj = rt.modules.cal.Event.objects.get(pk=pk)
-        msg = 'Event "{0}" has been created.'.format(obj)
+        msg = 'Calendar entry "{0}" has been created.'.format(obj)
         self.assertEqual(resp['message'], msg)
         # self.assertEqual(msg, None)
 

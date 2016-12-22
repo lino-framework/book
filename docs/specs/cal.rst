@@ -4,23 +4,42 @@
 Calendar
 =================
 
-
 .. How to test just this document
 
-   $ python setup.py test -s tests.SpecsTests.test_cal
+    $ python setup.py test -s tests.SpecsTests.test_cal
 
-Some initialization:
+    Some initialization:
 
->>> from lino import startup
->>> startup('lino_book.projects.min2.settings.demo')
->>> from lino.api.doctest import *
+    >>> from lino import startup
+    >>> startup('lino_book.projects.min2.settings.demo')
+    >>> from lino.api.doctest import *
 
+This document explains some basic thinga about the Calendar plugin
+:mod:`lino_xl.lib.cal`.
 
 See also :mod:`lino_xl.lib.cal.utils`.
 
 
 Duration units
 ==============
+
+Lino has a list of duration units
+:class:`lino_xl.lib.cal.choicelists.DurationUnits`.
+
+>>> rt.show(cal.DurationUnits)
+======= ========= =========
+ value   name      text
+------- --------- ---------
+ s       seconds   seconds
+ m       minutes   minutes
+ h       hours     hours
+ D       days      days
+ W       weeks     weeks
+ M       months    months
+ Y       years     years
+======= ========= =========
+<BLANKLINE>
+
 
 >>> from lino_xl.lib.cal.choicelists import DurationUnits
 >>> start_date = i2d(20111026)
@@ -158,7 +177,7 @@ Note that above dates are not exactly every 2 months because
 - Lino also avoids conflicts with existing events
 
 >>> cal.Event.objects.order_by('start_date')[0]
-Event #1 ("Event #1 New Year's Day (01.01.2013)")
+Event #1 ("Calendar entry #1 New Year's Day (01.01.2013)")
 
 >>> obj.monday = True
 >>> obj.wednesday = True
@@ -186,7 +205,7 @@ The demo datebase contains two appointments on All Souls' Day:
 
 >>> obj = cal.Event.objects.get(id=30)
 >>> print(obj)
-Event #30 All Souls' Day (31.10.2014)
+Calendar entry #30 All Souls' Day (31.10.2014)
 
 >>> rt.show(cal.ConflictingEvents, obj)
 ============ ============ ========== ========= ====== ==================
