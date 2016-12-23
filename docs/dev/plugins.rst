@@ -6,27 +6,37 @@ Introduction to plugins
 
 Besides the :class:`Site <lino.core.site.Site>` class (which
 encapsules what *Lino* calls an :doc:`application <application>`),
-Lino defines a :class:`Plugin <lino.core.plugin.Plugin>` class which
+Lino defines the :class:`Plugin <lino.core.plugin.Plugin>` class which
 extends what *Django* calls an "application".
 
 The :class:`Plugin <lino.core.plugin.Plugin>` class is comparable to
 Django's `AppConfig
 <https://docs.djangoproject.com/en/1.8/ref/applications/>`_ class, but
 has some advantages over Django's approach which makes that they are
-the preferred way.  It was developed and used before Django 1.7.  We
-are still working (:ticket:`38`) on the question on whether it makes
-sense to reconcile both approaches.
+the preferred way.
 
 .. contents::
   :local:
 
+What is a plugin?
+=================
 
-Defining plugins
-================
+A plugin is a Python package which can be yielded by
+:meth:`get_installed_apps <lino.core.site.Site.get_installed_apps>`.
 
-Application developers usually define a subclass of :class:`Plugin
-<lino.core.plugin.Plugin>` in the :xfile:`__init__.py` file of every
-plugin.  Here is a fictive example::
+A plugin encapsulates a limited set of **functionality** designed to
+be potentially used in more than on application.
+
+A plugin can define database models, actors, actions, fixtures,
+template files, javascript snippets, and metadata.  None of these
+components are mandatory.
+
+The **metadata** about a plugin includes plugin attributes, menu
+commands, dependencies and is specified by defining a subclass of
+:class:`Plugin <lino.core.plugin.Plugin>` in the :xfile:`__init__.py`
+file of your plugin.
+
+Here is a fictive example::
 
     from lino.api import ad, _
     
@@ -41,15 +51,21 @@ plugin.  Here is a fictive example::
             m.add_action('cal.Agendas')
 
 
-Some interesting plugin attributes are
+A plugin can **depend on other plugins** by specifying them in the
+:attr:`needs_plugins <lino.core.plugin.Plugin.needs_plugins>`
+attribute. This means that when you install this plugin, Lino will
+automatically install these other plugins as well
 
-- :attr:`needs_plugins <lino.core.plugin.Plugin.needs_plugins>`
-- :attr:`extends_models <lino.core.plugin.Plugin.extends_models>`
-- :attr:`site_js_snippets <lino.core.plugin.Plugin.site_js_snippets>`
-- :meth:`setup_main_menu <lino.core.plugin.Plugin.setup_main_menu>`
+A plugin can define a set of **menu commands** using methods like
+:meth:`setup_main_menu
+<lino.core.plugin.Plugin.setup_main_menu>`. This is explained in
+:doc:`menu`.
 
-
-
+And last but not least, a plugin can **extend** another plugin by
+specifying its name in :attr:`extends_models
+<lino.core.plugin.Plugin.extends_models>`.  This is explained in
+:doc:`plugin_inheritance`.
+      
 
 Accessing plugins
 =================
@@ -61,18 +77,17 @@ Django developers are used to code like this::
     def print_foo(pk=1):
         print(Foo.objects.get(pk=pk))
 
-
-In Lino we recommend to use the :attr:`lino.api.rt.models` dict as
-follows::
+In Lino we recommend to use the :attr:`rt.models <lino.api.rt.models>`
+dict as follows::
 
     from lino.api import rt
 
     def print_foo(pk=1):
-        Foo = rt.modules.myapp.Foo
+        Foo = rt.models.myapp.Foo
         print(Foo.objects.get(pk=pk))
 
 At least if you want to use :doc:`plugin_inheritance`. One of the
-basic assumptions of this feature is that users of some plugin can
+basic reasons for using plugins is that users of some plugin can
 extend it and use their extension instead of the original plugin.
 Which means that the plugin developer does not know (and does not
 *want* to know) where the model classes are actually defined.
@@ -83,28 +98,29 @@ module-level namespace of a :xfile:`models.py` module.  For example
 the following variant of above code **would not work**::
 
     from lino.api import rt
-    Foo = rt.modules.foos.Foo  # error `AttrDict has no item "foos"`
+    Foo = rt.models.foos.Foo  # error `AttrDict has no item "foos"`
     def print_foo(pk=1):
         print(Foo.objects.get(pk=pk))
-
-Neither would work (after :ticket:`576`) something like::
-
-    def print_foo(pk=1):
-        from lino.api.rt.models.myapp import Foo
-        print(Foo.objects.get(pk=pk))
-
 
 
 Configuring plugins
 ===================
 
-As an application developer you can specify *in your application* that
-you want to configure certain plugins by overriding the
-:meth:`lino.core.site.Site.setup_plugins` method.
+Plugins can have **attributes** for holding configurable options.
 
-You should do this by overriding the :meth:`setup_plugins
-<lino.core.site.Site.setup_plugins>` method of your Site class.  For
-example::
+Examples of configurable plugin attributes:
+
+- :attr:`lino_xl.lib.countries.Plugin.country_code` 
+- :attr:`lino_xl.lib.contacts.Plugin.hide_region`
+
+The values of plugin attributes can be configured at three levels.
+
+As the **plugin developer** you specify a hard-coded default value.
+
+As an **application developer** you can specify *in your application*
+that you want to configure certain plugin attributes by overriding the
+:meth:`setup_plugins <lino.core.site.Site.setup_plugins>` method of
+your Site class.  For example::
 
     from lino_book.projects.std.settings import Site
 
@@ -115,7 +131,7 @@ example::
             self.plugins.countries.configure(country_code='BE')
 
 
-As a system administrator you can override these configuration
+As a **system administrator** you can override these configuration
 defaults in your project's :xfile:`settings.py` using one of the
 following methods:
 
@@ -131,27 +147,19 @@ following methods:
     configure_plugin('countries', country_code='DE')
     SITE = Site(globals())
 
-  Beware the pitfall: :func:`configure_plugin
-  <lino.core.site.configure_plugin>` must be called *before* the
-  :setting:`SITE` has been instantiated, otherwise *they will be
-  ignored silently*.  (It is not easy to prevent accidental calls to
-  *after* Site initialization because there are scenarios where you
-  want to instantiate several `Site` objects.)
-
 - by setting the value directly after instantiation of your
   :setting:`SITE` object.
+
+Beware the pitfall: :func:`configure_plugin
+<lino.core.site.configure_plugin>` must be called *before* the
+:setting:`SITE` has been instantiated, otherwise *they will be ignored
+silently*.  (It is not easy to prevent accidental calls to *after*
+Site initialization because there are scenarios where you want to
+instantiate several `Site` objects.)
 
 Keep in mind that you can indeed never be sure that your
 :setting:`SITE` instance is actually being used. A local system admin
 can always decide to import your :xfile:`settings.py` module and the
 reinstantiate your `Site` class another time. That's part of our game
 and we don't want it to be forbidden.
-
-Uncomplete list of configurable plugin attributes:
-
-- :attr:`lino_xl.lib.countries.Plugin.country_code` 
-- :attr:`lino_xl.lib.contacts.Plugin.hide_region`
-
-See also :doc:`/admin/settings`.
-
 
