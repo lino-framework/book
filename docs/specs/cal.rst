@@ -14,10 +14,62 @@ Calendar
     >>> startup('lino_book.projects.min2.settings.demo')
     >>> from lino.api.doctest import *
 
-This document explains some basic thinga about the Calendar plugin
-:mod:`lino_xl.lib.cal`.
+This document explains some basic things about Lino's calendar plugin.
 
-See also :mod:`lino_xl.lib.cal.utils`.
+Calendar entries
+================
+
+>>> show_fields(rt.models.cal.Event,
+...     'start_date start_time end_date end_time user summary description event_type state')
++---------------+---------------------+---------------------------------------------------------------+
+| Internal name | Verbose name        | Help text                                                     |
++===============+=====================+===============================================================+
+| start_date    | Start date          |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| start_time    | Start time          |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| end_date      | End Date            |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| end_time      | End Time            | These four fields define the duration of this entry.          |
+|               |                     | Only start_date is mandatory.                                 |
++---------------+---------------------+---------------------------------------------------------------+
+| user          | Responsible user    | The responsible user.                                         |
++---------------+---------------------+---------------------------------------------------------------+
+| summary       | Summary             | A one-line descriptive text.                                  |
++---------------+---------------------+---------------------------------------------------------------+
+| description   | Description         | A longer descriptive text.                                    |
++---------------+---------------------+---------------------------------------------------------------+
+| event_type    | Calendar Event Type | The type of this event. Every calendar event should have this |
+|               |                     | field pointing to a given EventType, which holds              |
+|               |                     | extended configurable information about this event.           |
++---------------+---------------------+---------------------------------------------------------------+
+| state         | State               | The state of this entry. The state can change according to    |
+|               |                     | rules defined by the workflow, that's why we sometimes refer  |
+|               |                     | to it as the life cycle.                                      |
++---------------+---------------------+---------------------------------------------------------------+
+
+
+Lifecycle of a calendar entry
+=============================
+
+Every calendar entry has a given **state** which can change The state
+of this entry. The state can change according to rules defined by the
+workflow, that's why we sometimes refer to it as the life cycle.
+
+The default list of choices for this field contains the following
+values.
+
+>>> rt.show(cal.EventStates)
+======= ============ ============ ======== =================== ======== ============= =========
+ value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
+------- ------------ ------------ -------- ------------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?        Yes                 No       No            No
+ 20      draft        Draft        ☐        Yes                 No       No            No
+ 50      took_place   Took place   ☑        Yes                 Yes      No            No
+ 70      cancelled    Cancelled    ☒        No                  Yes      Yes           Yes
+ 40      published    Published    ☼        Yes                 Yes      No            No
+======= ============ ============ ======== =================== ======== ============= =========
+<BLANKLINE>
 
 
 Duration units
@@ -215,4 +267,13 @@ Calendar entry #30 All Souls' Day (31.10.2014)
  31/10/2014   08:30:00     09:30:00                    Rando Roosi
 ============ ============ ========== ========= ====== ==================
 <BLANKLINE>
+
+
+Other
+=====
+
+The source code is in :mod:`lino_xl.lib.cal`.
+Applications can extend this plugin.
+
+See also :mod:`lino_xl.lib.cal.utils`.
 
