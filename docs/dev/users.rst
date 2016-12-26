@@ -2,8 +2,15 @@
 Managing users
 ==============
 
-User management in Lino deserves documentation since it is different
-from Django.
+Django's permission system is not suitable for developing complex
+applications because maintaining permissions becomes a hell when you
+develop an application which runs on different sites. Also it provides
+no means for defining instance-specific permissions and has no
+built-in concept of user profiles.
+
+That's why Lino replaces Django's `django.contrib.auth
+<https://docs.djangoproject.com/en/dev/topics/auth/>`_ plugin by its
+own plugin :mod:`lino.modlib.users`.
 
 .. This is a tested document. You can test it using:
 
@@ -18,19 +25,6 @@ from Django.
 
 .. contents::
 
-Why do we replace Django's user management?
-===========================================
-
-Django's `django.contrib.auth
-<https://docs.djangoproject.com/en/dev/topics/auth/>`_ module has a
-few problems which are solved by Lino's :mod:`lino.modlib.users`
-module.
-
-- Django's permission system is not suitable for developing complex
-  applications because maintaining permissions becomes a hell when you
-  develop an application which runs on different sites. Also it provides
-  no means for defining instance-specific permissions and has no
-  built-in concept of user profiles.
 
  
 Creating a root user
@@ -87,4 +81,27 @@ field :guilabel:`Current password` empty.
 >>> rv = ses.run(u.change_password, action_param_values=values)
 >>> print(rv['message'])
 New password has been set for test.
+
+
+.. _online_registration:
+
+
+
+Online registration
+===================
+
+Online registration is available on sites whose `AnonymousUser` has
+`readonly=False`. This is done e.g. by
+:mod:`lino_noi.projects.care.roles`.
+
+.. currentmodule:: lino.modlib.users.models
+                   
+When a new user is created, Lino sets a random
+:attr:`verification_code <User.verification_code>`.
+
+
+:attr:`user_state <User.user_state>`.
+
+:class:`lino.modlib.users.choicelists.UserStates`
+
 

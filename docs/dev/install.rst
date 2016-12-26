@@ -13,14 +13,18 @@ Installing Lino
 .. _atelier: http://atelier.lino-framework.org/
 .. _git: http://git-scm.com/downloads
 .. _lxml: http://lxml.de/
+.. _Debian: http://www.debian.org/
 
-This document describes how to install Lino.  
+This document describes how to install Lino.  It is written for
+Debian_ and derivated distributions, other Linuxes should be pretty
+similar.
 
 It assumes you are familiar with the Linux shell at least for basic
 file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`,
 file permissions, environment variables, bash scripts etc.  Otherwise
 we suggest to learn about :ref:`Working in a UNIX shell
 <learning.unix>`.
+
 
 .. contents::
     :depth: 1
@@ -117,12 +121,14 @@ didn't know it, read the `manpage
 <http://ss64.com/bash/source.html>`__ and `What does 'source' do?
 <http://superuser.com/questions/46139/what-does-source-do>`__
 
-You can *deactivate* a virtual environment with the command
-:cmd:`deactivate`. This switches you back to your machine's global
-environment.  You can switch to *another* virtualenv simply by
-activating it. You don't need to deactivate the current one before.
+You can **deactivate** a virtual environment with the command
+:cmd:`deactivate`. This switches you back to your machine's
+system-wide environment.
 
-You should never *rename* a virtualenv (they are not designed for
+You can **switch to another** virtualenv simply by activating it, you
+don't need to deactivate the current one first.
+
+You should never **rename** a virtualenv (they are not designed for
 that), but you can easily create a new one and remove the old one.
 
 

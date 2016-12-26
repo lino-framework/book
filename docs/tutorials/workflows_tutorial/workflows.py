@@ -54,7 +54,8 @@ class WakeupEntry(dd.ChangeStateAction, NotableAction):
     # in our example, waking up an antry will send a notification
 
     def get_notify_recipients(self, ar, obj):
-        return rt.models.User.objects.all()
+        for u in rt.models.User.objects.all():
+            yield (u, u.mail_mode)
 
     def get_notify_subject(self, ar, obj):
         return _("Entry %s has been reactivated!") % obj

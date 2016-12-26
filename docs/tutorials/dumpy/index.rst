@@ -156,6 +156,7 @@ Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
+Loading data from .../docs/tutorials/dumpy/fixtures/dumpy1.py
 Installed 2 object(s) from 1 fixture(s)
 
 Let's use the :manage:`show` command to see whether our data has been

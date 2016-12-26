@@ -15,11 +15,13 @@ lino_xl.lib.cal.workflows.feedback
    .. autosummary::
    
       AcceptInvitation
+      CancelEvent
       CloseMeeting
       InvitationFeedback
       MarkAbsent
       MarkExcused
       MarkPresent
+      PublishEvent
       RejectInvitation
       ResetEvent
    

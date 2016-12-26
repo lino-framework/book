@@ -26,6 +26,7 @@ lino_xl.lib.cal.models
       CalendarType
       ConflictingEventsChecker
       Event
+      EventChecker
       EventGuestChecker
       EventType
       ExtAllDayField
@@ -33,6 +34,7 @@ lino_xl.lib.cal.models
       Guest
       GuestRole
       LocalCalendar
+      LongEventChecker
       ObsoleteEventTypeChecker
       Priority
       RecurrentEvent

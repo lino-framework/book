@@ -34,22 +34,22 @@ Robin has twelve appointments in the period 20141023..20141122:
 =======================================================================
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
-======================== ========= ===================== =============== ================================
+======================== ========= ===================== =============== =============================
  When                     Project   Calendar Event Type   Summary         Actions
------------------------- --------- --------------------- --------------- --------------------------------
- Thu 23/10/2014 (10:20)             Meeting               Meeting         **Suggested** → [Notified]
- Fri 24/10/2014 (11:10)             Meeting               Consultation    **Draft** → [Notified] [☑] [☉]
- Sat 25/10/2014 (08:30)             Meeting               Evaluation      **Cancelled**
- Sat 25/10/2014 (13:30)             Meeting               Seminar         **Took place** → [☐]
- Sun 26/10/2014 (09:40)             Meeting               First meeting   **Omitted**
- Mon 27/10/2014 (10:20)             Meeting               Interview       **Notified** → [☑] [☉] [☐]
- Mon 27/10/2014 (11:10)             Meeting               Lunch           **Suggested** → [Notified]
- Tue 28/10/2014 (13:30)             Meeting               Dinner          **Draft** → [Notified] [☑] [☉]
- Wed 29/10/2014 (08:30)             Meeting               Breakfast       **Took place** → [☐]
- Wed 29/10/2014 (09:40)             Meeting               Meeting         **Cancelled**
- Thu 30/10/2014 (10:20)             Meeting               Consultation    **Omitted**
- Fri 31/10/2014 (11:10)             Meeting               Seminar         **Notified** → [☑] [☉] [☐]
-======================== ========= ===================== =============== ================================
+------------------------ --------- --------------------- --------------- -----------------------------
+ Thu 23/10/2014 (10:20)             Meeting               Meeting         **Took place** → [☐]
+ Fri 24/10/2014 (11:10)             Meeting               Consultation    **Cancelled**
+ Sat 25/10/2014 (08:30)             Meeting               Evaluation      **Suggested** → [☑] [☒]
+ Sat 25/10/2014 (13:30)             Meeting               Seminar         **Published** → [☑] [☒] [☐]
+ Sun 26/10/2014 (09:40)             Meeting               First meeting   **Draft** → [☑] [☒]
+ Mon 27/10/2014 (10:20)             Meeting               Interview       **Took place** → [☐]
+ Mon 27/10/2014 (11:10)             Meeting               Lunch           **Cancelled**
+ Tue 28/10/2014 (13:30)             Meeting               Dinner          **Published** → [☑] [☒] [☐]
+ Wed 29/10/2014 (08:30)             Meeting               Breakfast       **Suggested** → [☑] [☒]
+ Wed 29/10/2014 (09:40)             Meeting               Meeting         **Draft** → [☑] [☒]
+ Thu 30/10/2014 (10:20)             Meeting               Consultation    **Took place** → [☐]
+ Fri 31/10/2014 (11:10)             Meeting               Seminar         **Cancelled**
+======================== ========= ===================== =============== =============================
 <BLANKLINE>
 
 
@@ -140,11 +140,8 @@ When | Actions | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (13:30) | **Suggested** → `[img accept] <javascript:Lino.cal.MyEvents.wf1(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
-Note that the :guilabel:`Actions` column (:attr:`workflow_buttons`)
-contains images. Since these are not available in Excel, we made a
-compromise.
 
 
 Unicode
@@ -164,7 +161,7 @@ Quand | Actions | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (13:30) | **Proposé** → `[img accept] <javascript:Lino.cal.MyEvents.wf1(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 

@@ -4,23 +4,94 @@
 Calendar
 =================
 
-
 .. How to test just this document
 
-   $ python setup.py test -s tests.SpecsTests.test_cal
+    $ python setup.py test -s tests.SpecsTests.test_cal
 
-Some initialization:
+    Some initialization:
 
->>> from lino import startup
->>> startup('lino_book.projects.min2.settings.demo')
->>> from lino.api.doctest import *
+    >>> from lino import startup
+    >>> startup('lino_book.projects.min2.settings.demo')
+    >>> from lino.api.doctest import *
+
+This document explains some basic things about Lino's calendar plugin.
+
+Calendar entries
+================
+
+>>> show_fields(rt.models.cal.Event,
+...     'start_date start_time end_date end_time user summary description event_type state')
++---------------+---------------------+---------------------------------------------------------------+
+| Internal name | Verbose name        | Help text                                                     |
++===============+=====================+===============================================================+
+| start_date    | Start date          |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| start_time    | Start time          |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| end_date      | End Date            |                                                               |
++---------------+---------------------+---------------------------------------------------------------+
+| end_time      | End Time            | These four fields define the duration of this entry.          |
+|               |                     | Only start_date is mandatory.                                 |
++---------------+---------------------+---------------------------------------------------------------+
+| user          | Responsible user    | The responsible user.                                         |
++---------------+---------------------+---------------------------------------------------------------+
+| summary       | Summary             | A one-line descriptive text.                                  |
++---------------+---------------------+---------------------------------------------------------------+
+| description   | Description         | A longer descriptive text.                                    |
++---------------+---------------------+---------------------------------------------------------------+
+| event_type    | Calendar Event Type | The type of this event. Every calendar event should have this |
+|               |                     | field pointing to a given EventType, which holds              |
+|               |                     | extended configurable information about this event.           |
++---------------+---------------------+---------------------------------------------------------------+
+| state         | State               | The state of this entry. The state can change according to    |
+|               |                     | rules defined by the workflow, that's why we sometimes refer  |
+|               |                     | to it as the life cycle.                                      |
++---------------+---------------------+---------------------------------------------------------------+
 
 
-See also :mod:`lino_xl.lib.cal.utils`.
+Lifecycle of a calendar entry
+=============================
+
+Every calendar entry has a given **state** which can change The state
+of this entry. The state can change according to rules defined by the
+workflow, that's why we sometimes refer to it as the life cycle.
+
+The default list of choices for this field contains the following
+values.
+
+>>> rt.show(cal.EventStates)
+======= ============ ============ ======== =================== ======== ============= =========
+ value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
+------- ------------ ------------ -------- ------------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?        Yes                 No       No            No
+ 20      draft        Draft        ☐        Yes                 No       No            No
+ 50      took_place   Took place   ☑        Yes                 Yes      No            No
+ 70      cancelled    Cancelled    ☒        No                  Yes      Yes           Yes
+ 40      published    Published    ☼        Yes                 Yes      No            No
+======= ============ ============ ======== =================== ======== ============= =========
+<BLANKLINE>
 
 
 Duration units
 ==============
+
+Lino has a list of duration units
+:class:`lino_xl.lib.cal.choicelists.DurationUnits`.
+
+>>> rt.show(cal.DurationUnits)
+======= ========= =========
+ value   name      text
+------- --------- ---------
+ s       seconds   seconds
+ m       minutes   minutes
+ h       hours     hours
+ D       days      days
+ W       weeks     weeks
+ M       months    months
+ Y       years     years
+======= ========= =========
+<BLANKLINE>
+
 
 >>> from lino_xl.lib.cal.choicelists import DurationUnits
 >>> start_date = i2d(20111026)
@@ -158,7 +229,7 @@ Note that above dates are not exactly every 2 months because
 - Lino also avoids conflicts with existing events
 
 >>> cal.Event.objects.order_by('start_date')[0]
-Event #1 ("Event #1 New Year's Day (01.01.2013)")
+Event #1 ("Calendar entry #1 New Year's Day (01.01.2013)")
 
 >>> obj.monday = True
 >>> obj.wednesday = True
@@ -186,14 +257,23 @@ The demo datebase contains two appointments on All Souls' Day:
 
 >>> obj = cal.Event.objects.get(id=30)
 >>> print(obj)
-Event #30 All Souls' Day (31.10.2014)
+Calendar entry #30 All Souls' Day (31.10.2014)
 
 >>> rt.show(cal.ConflictingEvents, obj)
 ============ ============ ========== ========= ====== ==================
  Start date   Start time   End Time   Project   Room   Responsible user
 ------------ ------------ ---------- --------- ------ ------------------
  31/10/2014   09:40:00     11:40:00                    Romain Raffault
- 31/10/2014   11:10:00     12:40:00                    Robin Rood
  31/10/2014   08:30:00     09:30:00                    Rando Roosi
 ============ ============ ========== ========= ====== ==================
 <BLANKLINE>
+
+
+Other
+=====
+
+The source code is in :mod:`lino_xl.lib.cal`.
+Applications can extend this plugin.
+
+See also :mod:`lino_xl.lib.cal.utils`.
+

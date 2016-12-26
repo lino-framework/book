@@ -33,14 +33,14 @@ Here are the standard holidays, defined as recurrent event rules
  Start date   End Date   Designation                  Designation (et)         Designation (fr)                    Recurrency           Calendar Event Type
 ------------ ---------- ---------------------------- ------------------------ ----------------------------------- -------------------- ---------------------
  01/01/2013              New Year's Day               Uusaasta                 Jour de l'an                        yearly               Holidays
- 11/02/2013              Rosenmontag                  Rosenmontag              Rosenmontag                         Relative to Easter   Holidays
- 13/02/2013              Ash Wednesday                Ash Wednesday            Ash Wednesday                       Relative to Easter   Holidays
- 29/03/2013              Good Friday                  Good Friday              Good Friday                         Relative to Easter   Holidays
- 31/03/2013              Easter sunday                Easter sunday            Easter sunday                       Relative to Easter   Holidays
- 01/04/2013              Easter monday                Easter monday            Easter monday                       Relative to Easter   Holidays
+ 11/02/2013              Rosenmontag                  Rosenmontag              Lundi de carnaval                   Relative to Easter   Holidays
+ 13/02/2013              Ash Wednesday                Ash Wednesday            Mercredi des Cendres                Relative to Easter   Holidays
+ 29/03/2013              Good Friday                  Good Friday              Vendredi Saint                      Relative to Easter   Holidays
+ 31/03/2013              Easter sunday                Easter sunday            Pâques                              Relative to Easter   Holidays
+ 01/04/2013              Easter monday                Easter monday            Lundi de Pâques                     Relative to Easter   Holidays
  01/05/2013              International Workers' Day   kevadpüha                Premier Mai                         yearly               Holidays
- 09/05/2013              Ascension of Jesus           Ascension of Jesus       Ascension of Jesus                  Relative to Easter   Holidays
- 20/05/2013              Pentecost                    Pentecost                Pentecost                           Relative to Easter   Holidays
+ 09/05/2013              Ascension of Jesus           Ascension of Jesus       Ascension                           Relative to Easter   Holidays
+ 20/05/2013              Pentecost                    Pentecost                Pentecôte                           Relative to Easter   Holidays
  21/07/2013              National Day                 Belgia riigipüha         Fête nationale                      yearly               Holidays
  15/08/2013              Assumption of Mary           Assumption of Mary       Assomption de Marie                 yearly               Holidays
  31/10/2013              All Souls' Day               All Souls' Day           Commémoration des fidèles défunts   yearly               Holidays
@@ -49,7 +49,6 @@ Here are the standard holidays, defined as recurrent event rules
  25/12/2013              Christmas                    Esimene Jõulupüha        Noël                                yearly               Holidays
 ============ ========== ============================ ======================== =================================== ==================== =====================
 <BLANKLINE>
-
 
 Relative to Easter
 ==================

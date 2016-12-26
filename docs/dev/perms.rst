@@ -158,19 +158,19 @@ All these objects have a :attr:`required_roles
 specifies the user roles required for getting permission to access
 this resource.
 
-For example, the :class:`lino.modlib.users.models.Users` table is
-visible only for users who have the :class:`SiteAdmin
-<lino.core.roles.SiteAdmin>` role:
+For example, the list of all users (the :class:`users.AllUsers
+<lino.modlib.users.desktop.AllUsers>` table) is visible only for users
+who have the :class:`SiteAdmin <lino.core.roles.SiteAdmin>` role:
 
->>> users.Users.required_roles
+>>> rt.actors.users.AllUsers.required_roles
 set([<class 'lino.core.roles.SiteAdmin'>])
 
 >>> from lino.core.roles import SiteUser, SiteAdmin
 >>> user = SiteUser()
 >>> admin = SiteAdmin()
->>> user.has_required_roles(users.Users.required_roles)
+>>> user.has_required_roles(rt.actors.users.AllUsers.required_roles)
 False
->>> admin.has_required_roles(users.Users.required_roles)
+>>> admin.has_required_roles(rt.actors.users.AllUsers.required_roles)
 True
 
 
