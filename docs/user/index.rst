@@ -10,4 +10,4 @@ technical than application-specific end-user docs.
 
     templates_api
     configure_notes_templates
-
+    db
