@@ -62,7 +62,7 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['CHANNEL_LAYERS', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -138,7 +138,6 @@ lino.modlib.system
 lino.modlib.users
 django.contrib.contenttypes
 lino.modlib.gfks
-channels
 lino.modlib.notify
 lino.modlib.changes
 lino.modlib.languages
