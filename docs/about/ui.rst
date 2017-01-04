@@ -1,24 +1,32 @@
 .. _about.ui:
 .. _lino.ui:
 
-==================
-The user interface
-==================
+==========================================
+Separate business logic and user interface
+==========================================
 
-People tend to judge a framework by it's user interface (UI).  This
-approach is not completely wrong since the UI is the first "visible"
-part.  But Lino is designed to have many possible user interfaces. 
+People tend to judge a framework by it's user interface.  This
+approach is not completely wrong since the user interface is the first
+and almost only "visible" part of an application.
 
-Lino comes with an extensible collection of **out-of-the-box user
-interfaces** because we believe that application developers should
-*develop applications* and should not waste their time writing html
-templates or css.  It is one of Lino's design goals to **separate
-business logic and user interface**.
+But Lino is designed to have **many possible** user interfaces.  Lino
+comes with an extensible collection of *out-of-the-box* user
+interfaces.
 
 **In theory** you write a Lino application once, and then you can
-"deploy" (or use it yourself) via many different interfaces. For
-example
+"deploy" (or use it yourself) via many different interfaces.
 
+**In practice**, your choice is currently limited to the
+:mod:`lino.modlib.extjs` UI.  Lino applications currently "look like"
+those you can see at :doc:`/demos`.  But that's just because
+:term:`extjs` is so cool, and because writing and optimizing a user
+interface is a rather boring work, and because there are many other,
+more interesting tasks that are waiting to be done.
+
+There are several proofs of concept for Lino's user interface
+transparency:
+
+- the :mod:`lino_extjs6` is almost ready for production.
 - a more lightweight web interface using some other JS framework than ExtJS
 - a web interface optimized for read-only access and publication of
   complex data (something like :ref:`belref`, but we agree that this
@@ -36,10 +44,5 @@ example
   <http://welfare.lino-framework.org/specs/households.html>`_) as a
   special kind of user interface.
 
-That said, we admit that **in practice**, your choice is currently
-limited to the :mod:`lino.modlib.extjs` UI.  Lino applications
-currently "look like" those you can see at :doc:`/demos`.  But that's
-just because :term:`extjs` is so cool, and because writing and
-optimizing a user interface is a rather boring work, and because there
-are many other, more interesting tasks that are waiting to be done.
-
+There is a more detailed overview on :doc:`what this means for the
+developer </dev/ui>`.
