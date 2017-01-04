@@ -2,23 +2,10 @@
 Features and design goals
 =========================
     
-Design goals
-------------
-
-- Lino applications are intuitive and easy to understand for the end user.
-  (see :doc:`values`)
-- Lino applications are easy to maintain because Lino encourages
-  sustainable application development.
-- agile programming
-- rapid prototyping 
-- libraries of reusable code
-- short release cycles
-- stable 
-
 .. _lino.features:
 
 Features
---------
+========
 
 Because Lino applications are Django projects, the following features
 (copied from the `Django website <https://www.djangoproject.com/>`_)
@@ -40,8 +27,10 @@ also apply to Lino:
   
 Lino then adds its own features to the above:
 
-- An out-of-the-box :doc:`user interface <ui>`.  Lino application
-  developers don't waste their time writing html templates or css.
+- An out-of-the-box :doc:`user interface <ui>`.  We believe that
+  application developers should *develop applications*, not waste
+  their time writing html templates or css.  It is one of Lino's
+  design goals to **separate business logic and user interface**.
 
 - :ref:`Layouts <layouts>`:
   Lino applications use the Python language not only
@@ -63,9 +52,22 @@ Lino then adds its own features to the above:
   
 - Other features include extensions to handle :ref:`polymorphism`.
   
-- And last but not least, Lino includes :ref:`xl`, a collection of
-  reusable plugins for all kinds of Lino applications.
+- Lino includes :ref:`xl`, a collection of reusable plugins for all
+  kinds of Lino applications.
+
+
+Design goals
+============
+
+- Lino applications are intuitive and easy to understand for the end user.
+  (see :doc:`values`)
+- Lino applications are easy to maintain because Lino encourages
+  sustainable application development.
+- agile programming
+- rapid prototyping 
+- libraries of reusable code
+- short release cycles
+- stable 
 
 See also :doc:`think_python`.  
-
 

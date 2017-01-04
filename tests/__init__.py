@@ -167,8 +167,8 @@ class DocsTests(LinoTestCase):
     def test_mldbc(self):
         self.run_django_manage_test('docs/tutorials/mldbc')
 
-    def test_belref(self):
-        self.run_django_manage_test("docs/tutorials/belref")
+    # def test_belref(self):
+    #     self.run_django_manage_test("docs/tutorials/belref")
 
     def test_float2decimal(self):
         if PYAFTER26:
