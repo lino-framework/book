@@ -23,6 +23,9 @@ As a qualified *Lino hosting provider* you assume the following
   always available to respond when your customer needs it.
 
 - you help end-users with certain problems.
+
+Development hosting
+===================
   
 In case of **development hosting** (the easiest case for you) the
 customer has two contracts: one with a developer and one with you.
@@ -45,6 +48,11 @@ react in certain situations:
 It is also your emergency maintainer who will decide whether and when
 you are able to offer **stable hosting** for one or several Lino
 applications.
+
+.. _stable_hosting:
+
+Stable hosting
+==============
 
 The difference between development and stable hosting is that your
 emergency maintainer has grown into an independent maintainer who can

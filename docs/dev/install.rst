@@ -53,7 +53,7 @@ System requirements
       $ sudo apt-get install git
 
 #.  Many Lino applications require lxml_, which has some extra
-    requirements before you can install it with pip_::
+    requirements::
 
       $ sudo apt-get build-dep lxml
 
