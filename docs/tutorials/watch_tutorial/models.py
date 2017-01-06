@@ -5,7 +5,7 @@ from lino.api import dd
 from lino import mixins
 from django.utils.translation import ugettext_lazy as _
 
-from lino.modlib.users.mixins import ByUser, UserAuthored
+from lino.modlib.users.mixins import My, UserAuthored
 
 
 # class Entry(mixins.CreatedModified, UserAuthored):
@@ -40,7 +40,7 @@ class EntriesByCompany(Entries):
     master_key = 'company'
 
 
-class MyEntries(Entries, ByUser):
+class MyEntries(My, Entries):
     pass
 
 

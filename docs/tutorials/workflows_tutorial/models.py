@@ -1,11 +1,11 @@
-## Copyright 2013 Luc Saffre
+## Copyright 2013-2017 Luc Saffre
 ## This file is part of the Lino project.
 
 from django.db import models
 from lino.api import dd
 from django.utils.translation import ugettext_lazy as _
 from .workflows import EntryStates
-from lino.modlib.users.mixins import ByUser, UserAuthored
+from lino.modlib.users.mixins import My, UserAuthored
 
 
 class Entry(mixins.CreatedModified, UserAuthored):
@@ -39,7 +39,7 @@ class EntriesByCompany(Entries):
     master_key = 'company'
     column_names = "modified user subject workflow_buttons *"
     
-class MyEntries(Entries, ByUser):
+class MyEntries(My, Entries):
     column_names = "modified subject workflow_buttons *"
     
 

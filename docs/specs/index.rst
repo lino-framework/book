@@ -31,3 +31,4 @@ introductions. This section is far from being complete.
    cosi_ee
    polly
    ajax
+   i18n
