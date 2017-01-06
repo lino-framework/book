@@ -1,0 +1,39 @@
+.. _book.specs.i18n:
+
+====================
+Internationalization
+====================
+
+.. to test just this doc:
+
+    $ python setup.py test -s tests.SpecsTests.test_i18n
+
+
+
+The :func:`lazy_format` function
+================================
+
+Lino has a function :func:`lino.core.utils.lazy_format` which we
+sometimes use. Here is an example.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min2.settings.demo')
+>>> from lino.core.utils import lazy_format
+>>> from lino.api import dd, rt, _
+>>> M = rt.models.cal.Event
+>>> s = lazy_format(
+...   _("Only for {model} instances."),
+...   model=M._meta.verbose_name)
+>>> print(s)
+Only for Calendar entry instances.
+>>> with dd.translation.override('de'):
+...     print(s)
+Only for Kalendereintrag instances.
+
+Note that we care only for the "Calendar entry" text. The surrounding
+text `Only for {model} instances.` is not translated to German because
+it is a fictive example of a translatable string for which there is no
+translation.
+
+See also `Django ticket #14174
+<https://code.djangoproject.com/ticket/14174>`__.
