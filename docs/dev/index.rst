@@ -117,6 +117,9 @@ Working with others
 Getting acquaintained
 =====================
 
+
+#.  Read Hamza's tutorial `Discovering Lino using your debugger
+    <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
 #.  :doc:`settings` : The Django settings module. How Lino integrates
     into Django settings. Inheriting settings.
 #.  :doc:`application` : An app is not an application.
