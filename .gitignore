@@ -15,6 +15,7 @@ default.db
 lino_book/tutorials/*/media
 lino_book/projects/*/settings/media
 docs/dl/*
+!docs/dl/dev
 lino_book.egg-info
 .build
 htmlcov
