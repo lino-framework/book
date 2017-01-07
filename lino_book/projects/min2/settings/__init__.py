@@ -38,5 +38,6 @@ class Site(Site):
         yield 'lino.modlib.tinymce'
         yield 'lino.modlib.wkhtmltopdf'
         yield 'lino_xl.lib.appypod'
+        yield 'lino.modlib.notify'
         yield 'lino.modlib.changes'
 

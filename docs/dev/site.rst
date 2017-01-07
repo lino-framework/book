@@ -138,8 +138,8 @@ lino.modlib.system
 lino.modlib.users
 django.contrib.contenttypes
 lino.modlib.gfks
-lino.modlib.notify
 lino.modlib.changes
+lino.modlib.notify
 lino.modlib.languages
 lino.modlib.office
 lino_xl.lib.countries
