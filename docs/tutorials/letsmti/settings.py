@@ -19,7 +19,7 @@ class Site(Site):
         m = main.add_menu("config", "Configure")
         m.add_action(self.modules.letsmti.Places)
 
-    def get_admin_main_items(self, user):
+    def get_dashboard_items(self, user):
 
         yield self.modules.letsmti.ActiveProducts
 
