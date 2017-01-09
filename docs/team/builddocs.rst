@@ -47,7 +47,7 @@ Open the source file of this page::
 
   $  nano docs/team/builddocs.rst
 
-Edit something in that file and save your changes. The build the book
+Edit something in that file and save your changes. Then build the book
 again::
 
   $ inv bd
@@ -58,6 +58,8 @@ output changes as expected.
 Read more about the markup used by Sphinx in
 `reStructuredText Primer <http://sphinx-doc.org/rest.html>`_)-
 
-Undo all your local changes using::
+You can undo all your local changes using::
 
   $ git checkout docs/team/builddocs.rst
+
+Or you can submit a pull request as you would do with code changes.
