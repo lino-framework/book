@@ -8,17 +8,20 @@ This page explains how to build the Lino Book (i.e. the pages visible
 below http://www.lino-framework.org).
 
 Note that Sphinx currently has a subtle problem which requires that
-you use the development version and apply the patch described under
-`#2336 <https://github.com/sphinx-doc/sphinx/issues/2336>`_. Quick
-cheat sheet::
+you use the development version. Quick cheat sheet::
 
   $ pip uninstall sphinx
   $ cd ~/repositories
   $ git clone https://github.com/sphinx-doc/sphinx.git
   $ cd sphinx
   $ pip install -e .
-  $ wget https://github.com/sphinx-doc/sphinx/files/136248/20160218.txt
-  $ patch -p1 < 20160218.txt
+
+.. The following is probably no longer needed: and apply the patch
+   described under `#2336
+   <https://github.com/sphinx-doc/sphinx/issues/2336>`_.
+
+      $ wget https://github.com/sphinx-doc/sphinx/files/136248/20160218.txt
+      $ patch -p1 < 20160218.txt
 
 Otherwise you just run :cmd:`inv bd` in the root of your ``book``
 repository::
@@ -44,7 +47,7 @@ Open the source file of this page::
 
   $  nano docs/team/builddocs.rst
 
-Edit something in that file and save your changes. The build the book
+Edit something in that file and save your changes. Then build the book
 again::
 
   $ inv bd
@@ -55,6 +58,8 @@ output changes as expected.
 Read more about the markup used by Sphinx in
 `reStructuredText Primer <http://sphinx-doc.org/rest.html>`_)-
 
-Undo all your local changes using::
+You can undo all your local changes using::
 
   $ git checkout docs/team/builddocs.rst
+
+Or you can submit a pull request as you would do with code changes.
