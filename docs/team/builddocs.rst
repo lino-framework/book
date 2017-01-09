@@ -8,17 +8,20 @@ This page explains how to build the Lino Book (i.e. the pages visible
 below http://www.lino-framework.org).
 
 Note that Sphinx currently has a subtle problem which requires that
-you use the development version and apply the patch described under
-`#2336 <https://github.com/sphinx-doc/sphinx/issues/2336>`_. Quick
-cheat sheet::
+you use the development version. Quick cheat sheet::
 
   $ pip uninstall sphinx
   $ cd ~/repositories
   $ git clone https://github.com/sphinx-doc/sphinx.git
   $ cd sphinx
   $ pip install -e .
-  $ wget https://github.com/sphinx-doc/sphinx/files/136248/20160218.txt
-  $ patch -p1 < 20160218.txt
+
+.. The following is probably no longer needed: and apply the patch
+   described under `#2336
+   <https://github.com/sphinx-doc/sphinx/issues/2336>`_.
+
+      $ wget https://github.com/sphinx-doc/sphinx/files/136248/20160218.txt
+      $ patch -p1 < 20160218.txt
 
 Otherwise you just run :cmd:`inv bd` in the root of your ``book``
 repository::
