@@ -603,5 +603,10 @@ Tutorial, then continued the Lino way and introduced two concepts
 which Lino adds to Django: Tables and Actions
 
 
+.. the following is tested, but not rendered to HTML:
 
-
+    >>> # test_client.get("123")
+    >>> walk_menu_items()
+    - Polls --> Questions : 5
+    - Polls --> Choices : 14
+    <BLANKLINE>
