@@ -142,10 +142,10 @@ lino.modlib.changes
 lino.modlib.notify
 lino.modlib.languages
 lino.modlib.office
+lino_xl.lib.xl
 lino_xl.lib.countries
 lino_xl.lib.contacts
 lino.modlib.uploads
-lino_xl.lib.xl
 lino_xl.lib.polls
 lino_xl.lib.concepts
 lino.modlib.tinymce
