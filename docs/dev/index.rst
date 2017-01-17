@@ -123,6 +123,7 @@ Getting acquaintained
 #.  :doc:`settings` : The Django settings module. How Lino integrates
     into Django settings. Inheriting settings.
 #.  :doc:`application` : An app is not an application.
+#.  :doc:`summaries` : Introduction to table summaries.
 #.  :doc:`plugins` : Why we need plugins. Configuring plugins.
 #.  :doc:`users` : Why do we replace Django's user management. Passwords.
 #.  :doc:`site` : Instantiating a `Site`.  Specifying the
@@ -167,6 +168,7 @@ Getting acquaintained
 
    settings
    application
+   summaries
    plugins
    site
    dump2py

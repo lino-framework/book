@@ -36,7 +36,7 @@ class Products(dd.Table):
     name
     """
 
-    insert_layout = dd.FormLayout("""
+    insert_layout = dd.InsertLayout("""
     name
     category price
     """, window_size=(40, 'auto'))

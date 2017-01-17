@@ -7,7 +7,7 @@ The Lino Polls tutorial
 .. how to test:
     $ python setup.py test -s tests.DocsTests.test_polls
 
-.. doctst init:    
+.. doctest init:
     >>> from lino.api.doctest import *
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller()
@@ -32,15 +32,35 @@ Create a local Django project
 -----------------------------
 
 There is a lot of Django know-how which applies to Lino as well.  So
-before reading on, please follow at least **parts 1 and 2** of the
-**Django tutorial**:
+before reading on, please follow **parts 1 and 2** of the **Django
+tutorial**:
 
 - `Writing your first Django app, part 1
   <https://docs.djangoproject.com/en/1.9/intro/tutorial01/>`__.
 - `Writing your first Django app, part 2
   <https://docs.djangoproject.com/en/1.9/intro/tutorial02/>`__.
 
-Done? You should now have a set of files in your "project directory"::
+Two remarks before diving into above documents:
+
+- Don't worry if you find the `Write your first view
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/#write-your-first-view>`__
+  section difficult, in Lino you don't need to write views.
+
+- The `Explore the free admin functionality
+  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
+  section is important only so you know what you are going to leave.
+  Lino is an alternative to Django's Admin interface.
+
+- Of course you can learn the whole `Getting started
+  <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
+  it, just be aware that with Lino you won't need many things
+  explained there.
+  
+We now leave the Django philosophy and continue "the Lino way" of
+writing web applications.
+
+After having done above tutorial sections, you should now have a set
+of files in your "project directory"::
 
     mysite/
         manage.py
@@ -59,27 +79,8 @@ Done? You should now have a set of files in your "project directory"::
             tests.py
             views.py
 
-
-Two remarks about the Django tutorial:
-
-- Don't worry if you found the `Write your first view
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/#write-your-first-view>`__
-  section difficult, in Lino you don't need to write views.
-
-- The `Explore the free admin functionality
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
-  section was important only so you know what you are going to leave.
-  Lino is an alternative to Django's Admin interface.
-
-- Of course you can learn the whole `Getting started
-  <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
-  it, just be aware that with Lino you won't need many things
-  explained there.
-  
-
-We now leave the Django philosophy and continue "the Lino way" of
-writing web applications.  Some files remain unchanged:
-:xfile:`__init__.py`, :xfile:`manage.py` and :xfile:`wsgi.py`.
+Some of these files remain unchanged: :xfile:`__init__.py`,
+:xfile:`manage.py` and :xfile:`wsgi.py`.
 
 You can *delete* the following files::
 
@@ -153,7 +154,7 @@ A few explanations while looking at that file:
 
 - The :mod:`lino.api.dd` module is a shortcut to most Lino extensions
   used by application programmers in their :xfile:`models.py` modules.
-  `dd` stands for "data design".
+  `dd` stands for "data definition".
   
 - :class:`dd.Model <lino.core.model.Model>` is an optional (but
   recommended) wrapper around Django's Model class.  For this tutorial
@@ -161,9 +162,9 @@ A few explanations while looking at that file:
   recommend to use :class:`dd.Model <lino.core.model.Model>`.
 
 - There's one **custom action** in our application, defined as the
-  `vote` method on the `Choice` model, using the :func:`dd.action
-  <lino.core.actions.action>` decorator. More about actions in the
-  Actions_ section.
+  `vote` method on the :class:`Choice` model, using the
+  :func:`dd.action <lino.core.actions.action>` decorator. More about
+  actions in :ref:`dev.actions`.
 
 
 The :file:`desktop.py` file
@@ -385,14 +386,12 @@ Explanations:
   applications by default replace Django's template engine by `Jinja
   <http://jinja.pocoo.org>`__.
 
-- ``obj.vote`` is an :class:`InstanceAction <lino.core.actions.InstanceAction>`,
-  and we call its 
+- ``obj.vote`` is an :class:`InstanceAction
+  <lino.core.actions.InstanceAction>` object, and we call its
   :meth:`as_button <lino.core.actions.InstanceAction.as_button>`
-  method
-  which returns a HTML fragment that displays a button-like 
-  link which will run the action when clicked.
-  More about this in Actions_.
-
+  method which returns a HTML fragment that displays a button-like
+  link which will run the action when clicked.  More about this in
+  :ref:`dev.actions`.
 
 
 Screenshots
@@ -493,87 +492,6 @@ After clicking the :guilabel:`[html]` button:
 .. image:: polls6.jpg
     :scale: 50
     
-
-Actions
--------
-
-Lino has a class :class:`Action <lino.core.actions.Action>` 
-which represents the methods who have a clickable button 
-or menu item in the user interface. 
-
-Each :class:`Action <lino.core.actions.Action>` instance holds a few important pieces
-of information:
-
-- label : the text to place on the button or menu item
-- help_text : the text to appear as tooltip when the mouse is over that button
-- permission requirements : specify for whom and under which
-  conditions this action is available (a complex subject, we'll talk
-  about it in a later tutorial)
-- handler function : the function to execute when the action is invoked
-
-Many actions are created automatically by Lino. For example:
-
-- each table has a "default action" which is to open a window which
-  displays this table as a grid.  That's why (in the :meth:`setup_menu
-  <lino.core.plugin.Site.setup_menu>` function of your
-  :file:`polls/models.py`) you can say::
-
-    def setup_menu(site, ui, profile, main):
-        m = main.add_menu("polls", "Polls")
-        m.add_action('polls.Questions')
-        m.add_action('polls.Choices')
-
-
-  The :meth:`add_action <lino.core.menus.Menu.add_action>` method of
-  Lino's :class:`lino.core.menus.Menu` is smart enough to understand
-  that if you specify a Table, you mean in fact that table's default
-  action.
-
-- The :guilabel:`Save`, :guilabel:`Delete` and :guilabel:`New` buttons
-  in the bottom toolbar of the Detail window have their own
-  :class:`Action <lino.core.actions.Action>` instance.
-  
-Custom actions are the actions defined by the application developer.
-Our tutorial has one of them:
-
-.. code-block:: python
-
-    @dd.action(help_text="Click here to vote this.")
-    def vote(self, ar):
-        def yes(ar):
-            self.votes += 1
-            self.save()
-            return ar.success(
-                "Thank you for voting %s" % self,
-                "Voted!", refresh=True)
-        if self.votes > 0:
-            msg = "%s has already %d votes!" % (self, self.votes)
-            msg += "\nDo you still want to vote for it?"
-            return ar.confirm(yes, msg)
-        return yes(ar)
-
-The :func:`@dd.action <dd.action>` decorator can have keyword
-parameters to specify information about the action. In practice these
-may be :attr:`label <lino.core.actions.Action.label>`, :attr:`help_text
-<lino.core.actions.Action.help_text>` and :attr:`required <lino.core.actions.Action.required>`.
-
-The action method itself should have the following signature::
-
-    def vote(self, ar, **kw):
-        ...
-        return ar.success(kw)
-        
-Where ``ar`` is an :class:`ActionRequest
-<lino.core.requests.ActionRequest>` instance that holds information
-about the web request which called the action.
-
-- :meth:`callback <lino.core.requests.BaseRequest.callback>` 
-  and :meth:`confirm <lino.core.requests.BaseRequest.callback>`
-  lets you define a dialog with the user using callbacks.
-
-- :meth:`success <lino.core.requests.BaseRequest.success>` and
-  :meth:`error <lino.core.requests.BaseRequest.error>` are possible
-  return values where you can ask the client to do certain things.
 
 Exercises
 ---------
