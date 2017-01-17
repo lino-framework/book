@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2015-2016 Luc Saffre
+# Copyright 2015-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """Test some calendar functionalities-
@@ -23,7 +23,7 @@ or::
 from __future__ import unicode_literals
 from __future__ import print_function
 
-from lino.api import rt
+from lino.api import dd, rt
 
 from lino.utils.djangotest import RemoteAuthTestCase
 
@@ -38,10 +38,10 @@ class QuickTest(RemoteAuthTestCase):
 
         """
 
-        ses = rt.login("robin")
+        ses = rt.login("robin", renderer=dd.plugins.extjs.renderer)
         ba = rt.modules.cal.MyEvents.get_action_by_name('submit_insert')
         # a = rt.modules.cal.MyEvents.submit_insert
-        #ba = rt.modules.cal.MyEvents.insert_action
+        # ba = rt.modules.cal.MyEvents.insert_action
         pv = dict(user=ses.get_user())
         resp = ses.run(ba, param_values=pv)
         # ba.request_from(ses).run_from_ui(ses)
