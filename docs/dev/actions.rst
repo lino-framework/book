@@ -18,38 +18,52 @@ actions.
 Overview
 ========
 
-An **action** in Lino is something a user can request to do.
+An **action** in Lino is something a user can request to do.  Actions
+are visible to the end-users as menu items, toolbar buttons or
+clickable chunks of text at arbitrary places.
 
-Actions can be **rendered** as a menu item, a toolbar button or a
-clickable text or symbol. For example the :guilabel:`Delete` action is
-an instance of :class:`DeleteSelected`.  It becomes visible in the
-toolbars of the grid and the detail windows and in the context menu on
-a grid row.
+For example the :class:`ShowTable` action opens a window showing a
+grid on a given table.  Most items of the main menu are
+:class:`ShowTable` actions.  Or the :class:`DeleteSelected` action is
+visible in the toolbars of the grid and the detail windows and in the
+context menu on a grid row.
+
+An **action request** is when a user "actually clicked on that
+button", i.e. requested to run a given action on a given set of
+database rows.
+
+**Standard actions** are installed automatically on every table when
+Lino starts up.
+
+For example 
+
+- :class:`DeleteSelected`, :class:`SubmitDetail` and
+  :class:`SubmitInsert` send an AJAX request which causes something to
+  happen on the server.
   
+- :class:`ShowTable`, :class:`ShowDetail`, :class:`ShowInsert` open a
+  window
+
+
 Actions are always linked to their *actor*.  Each actor has its list
 of actions.
 
-An **action request** is when a user actually has requested to run a
-given action on a given set of database rows.
+Application developers can define new **custom actions** or also
+override standard actions with their own custom actions.
 
-**Standard actions** are installed automatically on every table when
-Lino starts up.  For example 
 
-- :class:`GridEdit`: open a window showing a grid on this table.
-- :class:`ShowDetail`: open a detail window on the current record.
-- :class:`InsertRow` : open an insert window.
-- :class:`SubmitInsert` : create a new database row using the data
-  specified in the insert window.
-- :class:`DeleteSelected` : delete the selected rows after asking a
-  confimation.
+Some action attributes include:
 
-Application developers can define new **custom actions**, either by
-applying the :func:`action` decorator to a model or table method, or
-by subclassing the :class:`Action` class and instantiating them as an
-attribute of the model or table.
+- label : the text to place on the button or menu item
+- handler function : the function to call when the action is invoked
+- help_text : the text to appear as tooltip when the mouse is over
+  that button
+- permission requirements : for whom and under which conditions this
+  action is available
 
-Application developers can also override standard actions with their
-own custom actions. For example (...)
+
+  
+
   
 
 The default action of an actor
@@ -57,7 +71,7 @@ The default action of an actor
 
 
 Each Actor has a **default action**. The default action for
-:class:`Table <lino.core.dbtables.Table>` is :class:`GridEdit`.
+:class:`Table <lino.core.dbtables.Table>` is :class:`ShowTable`.
 That's why you can define a menu item by simply naming an actor.
 
 That's why (in the :meth:`setup_menu
@@ -80,9 +94,13 @@ action.
 Defining custom actions
 =======================
 
-Custom actions are the actions defined by the application developer.
+Application developers can define new custom actions by (1) applying
+the :func:`action` decorator to a model or table method, or (2) by
+subclassing the :class:`Action` class and instantiating them as an
+attribute of the model or table.
 
-The :ref:`Polls tutorial <lino.tutorial.polls>` has one of them:
+The :ref:`Polls tutorial <lino.tutorial.polls>` has a usage example of
+the first approach:
 
 .. code-block:: python
 
@@ -101,11 +119,11 @@ The :ref:`Polls tutorial <lino.tutorial.polls>` has one of them:
         return yes(ar)
 
 The :func:`@dd.action <dd.action>` decorator can have keyword
-parameters to specify information about the action. In practice these
-may be :attr:`label <Action.label>`, :attr:`help_text
-<Action.help_text>` and :attr:`required <Action.required_roles>`.
+parameters to specify information about the action, e.g. :attr:`label
+<Action.label>`, :attr:`help_text <Action.help_text>` and
+:attr:`required <Action.required_roles>`.
 
-The action method itself should have the following signature::
+The action method itself must have the following signature::
 
     def vote(self, ar, **kw):
         ...
@@ -132,19 +150,6 @@ The :class:`Action` class
 
     Abstract base class for all actions.
 
-    Lino has a class :class:`Action <lino.core.actions.Action>` which
-    represents the methods who have a clickable button or menu item in
-    the user interface.
-
-    Each action instance holds a few important pieces of information:
-
-    - label : the text to place on the button or menu item
-    - help_text : the text to appear as tooltip when the mouse is over that button
-    - permission requirements : specify for whom and under which
-      conditions this action is available (a complex subject, we'll talk
-      about it in a later tutorial)
-    - handler function : the function to execute when the action is invoked
-           
            
     .. attribute:: label
 
@@ -156,17 +161,19 @@ The :class:`Action` class
         The text to appear on buttons for this action. If this is not
         defined, the :attr:`label` is used.
 
-
-
     .. attribute:: help_text
                    
-        A help text that shortly explains what this action does.
-        :mod:`lino.modlib.extjs` shows this as tooltip text.
+        A help text that shortly explains what this action does.  In a
+        graphical user interface this will be rendered as a **tooltip**
+        text.
+
+        If this is not given by the code, Lino will potentially set it at
+        startup when loading the :xfile:`help_texts.py` files.
 
     .. attribute:: disable_primary_key
                    
         Whether primary key fields should be disabled when using this
-        action. This is `True` for all actions except :class:`InsertRow`.
+        action. This is `True` for all actions except :class:`ShowInsert`.
 
     .. attribute:: keep_user_values
                    
@@ -198,162 +205,163 @@ The :class:`Action` class
 
     .. attribute:: no_params_window
                    
-    Set this to `True` if your action has :attr:`parameters` but you
-    do *not* want it to open a window where the user can edit these
-    parameters before calling the action.
+        Set this to `True` if your action has :attr:`parameters` but you
+        do *not* want it to open a window where the user can edit these
+        parameters before calling the action.
 
-    Setting this attribute to `True` means that the calling code must
-    explicitly set all parameter values.  Usage example is the
-    :attr:`lino_xl.lib.polls.models.AnswersByResponse.answer_buttons`
-    virtual field.
+        Setting this attribute to `True` means that the calling code must
+        explicitly set all parameter values.  Usage example is the
+        :attr:`lino_xl.lib.polls.models.AnswersByResponse.answer_buttons`
+        virtual field.
 
 
     .. attribute:: sort_index = 90
                    
-    Determines the sort order in which the actions will be presented
-    to the user.
+        Determines the sort order in which the actions will be presented
+        to the user.
 
-    List actions are negative and come first.
+        List actions are negative and come first.
 
-    Predefined `sort_index` values are:
+        Predefined `sort_index` values are:
 
-    ===== =================================
-    value action
-    ===== =================================
-    -1    :class:`as_pdf <lino_xl.lib.appypod.PrintTableAction>`
-    10    :class:`InsertRow`, :class:`SubmitDetail`
-    11    :attr:`duplicate <lino.mixins.duplicable.Duplicable.duplicate>`
-    20    :class:`detail <ShowDetailAction>`
-    30    :class:`delete <DeleteSelected>`
-    31    :class:`merge <lino.core.merge.MergeAction>`
-    50    :class:`Print <lino.mixins.printable.BasePrintAction>`
-    51    :class:`Clear Cache <lino.mixins.printable.ClearCacheAction>`
-    60    :class:`ShowSlaveTable`
-    90    default for all custom row actions
-    200   default for all workflow actions (:class:`ChangeStateAction <lino.core.workflows.ChangeStateAction>`)
-    ===== =================================
+        ===== =================================
+        value action
+        ===== =================================
+        -1    :class:`as_pdf <lino_xl.lib.appypod.PrintTableAction>`
+        10    :class:`ShowInsert`, :class:`SubmitDetail`
+        11    :attr:`duplicate <lino.mixins.duplicable.Duplicable.duplicate>`
+        20    :class:`detail <ShowDetail>`
+        30    :class:`delete <DeleteSelected>`
+        31    :class:`merge <lino.core.merge.MergeAction>`
+        50    :class:`Print <lino.mixins.printable.BasePrintAction>`
+        51    :class:`Clear Cache <lino.mixins.printable.ClearCacheAction>`
+        60    :class:`ShowSlaveTable`
+        90    default for all custom row actions
+        200   default for all workflow actions (:class:`ChangeStateAction <lino.core.workflows.ChangeStateAction>`)
+        ===== =================================
 
 
     .. attribute:: auto_save
 
-    What to do when this action is being called while the user is on a
-    dirty record.
-    
-    - `False` means: forget any changes in current record and run the
-      action.
+        What to do when this action is being called while the user is on a
+        dirty record.
 
-    - `True` means: save any changes in current record before running
-      the action.  `None` means: ask the user.
+        - `False` means: forget any changes in current record and run the
+          action.
+
+        - `True` means: save any changes in current record before running
+          the action.  `None` means: ask the user.
 
 
     .. attribute:: extjs_main_panel
                    
-    Used by :mod:`lino_xl.lib.extensible` and
-    :mod:`lino.modlib.awesome_uploader`.
+        Used by :mod:`lino_xl.lib.extensible` and
+        :mod:`lino.modlib.awesome_uploader`.
 
-    Example::
+        Example::
 
-        class CalendarAction(dd.Action):
-            extjs_main_panel = "Lino.CalendarApp().get_main_panel()"
-            ...
+            class CalendarAction(dd.Action):
+                extjs_main_panel = "Lino.CalendarApp().get_main_panel()"
+                ...
 
     
     .. attribute:: js_handler
                    
-    This is usually `None`. Otherwise it is the name of a Javascript
-    callable to be called without arguments. That callable must have
-    been defined in a :attr:`lino.core.plugin.Plugin.site_js_snippets` of the plugin.
+        This is usually `None`. Otherwise it is the name of a Javascript
+        callable to be called without arguments. That callable must have
+        been defined in a :attr:`lino.core.plugin.Plugin.site_js_snippets` of the plugin.
 
 
 
     .. attribute:: action_name
                    
-    Internally used to store the name of this action within the
-    defining Actor's namespace.
+        Internally used to store the name of this action within the
+        defining Actor's namespace.
 
 
     .. attribute:: defining_actor
                    
-    Internally used to store the :class:`lino.core.actors.Actor` who
-    defined this action.
+        Internally used to store the :class:`lino.core.actors.Actor` who
+        defined this action.
 
 
     .. attribute:: key
                    
-    The hotkey to associate to this action in a user interface.
+        Not used. The keybaord hotkey to associate to this action in a
+        user interface.
 
 
     .. attribute:: default_format = 'html'
 
-    Used internally.
+        Used internally.
 
     .. attribute:: editable
                    
-    Whether the parameter fields should be editable.
-    Setting this to False seems nonsense.
+        Whether the parameter fields should be editable.
+        Setting this to False seems nonsense.
 
     .. attribute:: readonly
                    
-    Whether this action is readonly, i.e. does not change any data.
+        Whether this action is readonly, i.e. does not change any data.
 
-    Setting this to `False` will make the action unavailable for
-    `readonly` user profiles and will cause it to be logged when
-    :attr:`log_each_action_request
-    <lino.core.site.Site.log_each_action_request>` is set to `True`.
-    
-    Note that when a readonly action actually *does* modify the
-    database, Lino won't "notice" it.
+        Setting this to `False` will make the action unavailable for
+        `readonly` user profiles and will cause it to be logged when
+        :attr:`log_each_action_request
+        <lino.core.site.Site.log_each_action_request>` is set to `True`.
 
-    Discussion
-    
-    Maybe we should change the name `readonly` to `modifying` or
-    `writing` (and set the default value `False`).  Because for the
-    application developer that looks more natural.  Or --maybe better
-    but probably with even more consequences-- the default value
-    should be `False`.  Because being readonly, for actions, is a kind
-    of "privilege": they don't get logged, they also exists for
-    readonly users...  It would be more "secure" when the developer
-    must explicitly "say something" it when granting that privilege.
+        Note that when a readonly action actually *does* modify the
+        database, Lino won't "notice" it.
 
-    Another subtlety is the fact that this attribute is used by
-    :class:`lino.modlib.users.mixins.UserAuthored`.  For example the
-    :class:`StartTicketSession
-    <lino_noi.lib.clocking.actions.StartTicketSession>` action in
-    :ref:`noi` is declared "readonly" because we want Workers who are
-    not Triagers to see this action even if they are not the author
-    (reporter) of a ticket. In this use case the name should rather be
-    `requires_authorship`.
+        Discussion
+
+        Maybe we should change the name `readonly` to `modifying` or
+        `writing` (and set the default value `False`).  Because for the
+        application developer that looks more natural.  Or --maybe better
+        but probably with even more consequences-- the default value
+        should be `False`.  Because being readonly, for actions, is a kind
+        of "privilege": they don't get logged, they also exists for
+        readonly users...  It would be more "secure" when the developer
+        must explicitly "say something" it when granting that privilege.
+
+        Another subtlety is the fact that this attribute is used by
+        :class:`lino.modlib.users.mixins.UserAuthored`.  For example the
+        :class:`StartTicketSession
+        <lino_noi.lib.clocking.actions.StartTicketSession>` action in
+        :ref:`noi` is declared "readonly" because we want Workers who are
+        not Triagers to see this action even if they are not the author
+        (reporter) of a ticket. In this use case the name should rather be
+        `requires_authorship`.
 
 
     .. attribute:: opens_a_window
                    
-    Used internally to say whether this action opens a window.
+        Used internally to say whether this action opens a window.
 
     .. attribute:: hide_top_toolbar
                    
-    Used internally if :attr:`opens_a_window` to say whether the
-    window has a top toolbar.
+        Used internally if :attr:`opens_a_window` to say whether the
+        window has a top toolbar.
 
 
     .. attribute:: hide_navigator
                    
-    Used internally if :attr:`opens_a_window` to say whether the
-    window has a navigator.
+        Used internally if :attr:`opens_a_window` to say whether the
+        window has a navigator.
 
 
     .. attribute:: show_in_bbar
                    
-    Whether this action should be displayed as a button in the toolbar
-    and the context menu.
+        Whether this action should be displayed as a button in the toolbar
+        and the context menu.
 
-    For example the :class:`CheckinVisitor
-    <lino_xl.lib.reception.models.CheckinVisitor>`,
-    :class:`ReceiveVisitor
-    <lino_xl.lib.reception.models.ReceiveVisitor>` and
-    :class:`CheckoutVisitor
-    <lino_xl.lib.reception.models.CheckoutVisitor>` actions have this
-    attribute explicitly set to `False` because otherwise they would be
-    visible in the toolbar.
+        For example the :class:`CheckinVisitor
+        <lino_xl.lib.reception.models.CheckinVisitor>`,
+        :class:`ReceiveVisitor
+        <lino_xl.lib.reception.models.ReceiveVisitor>` and
+        :class:`CheckoutVisitor
+        <lino_xl.lib.reception.models.CheckoutVisitor>` actions have this
+        attribute explicitly set to `False` because otherwise they would be
+        visible in the toolbar.
 
     .. attribute:: show_in_workflow = False
                    

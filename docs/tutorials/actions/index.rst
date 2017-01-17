@@ -84,7 +84,7 @@ Here are the actions on Moos:
  <CreateRow grid_post ('grid_post')>,
  <SubmitInsert submit_insert ('Create')>,
  <DeleteSelected delete_selected ('Delete')>,
- <GridEdit grid>,
+ <ShowTable grid>,
  <A a ('a')>,
  <A b ('a')>,
  <Action m ('m')>,
@@ -100,7 +100,7 @@ both actions `m` and `t`:
  <CreateRow grid_post ('grid_post')>,
  <SubmitInsert submit_insert ('Create')>,
  <DeleteSelected delete_selected ('Delete')>,
- <GridEdit grid>,
+ <ShowTable grid>,
  <A a ('a')>,
  <Action m ('m')>,
  <A b ('a')>,
@@ -115,7 +115,7 @@ them with None:
  <CreateRow grid_post ('grid_post')>,
  <SubmitInsert submit_insert ('Create')>,
  <DeleteSelected delete_selected ('Delete')>,
- <GridEdit grid>]
+ <ShowTable grid>]
 
 
 
