@@ -235,7 +235,7 @@ class SpecsTests(TestCase):
         self.run_simple_doctests('docs/specs/ajax.rst')
 
 
-class ProjectsTests(LinoTestCase):
+class ProjectsTests(TestCase):
     
     # def test_all(self):
     #     from atelier.fablib import run_in_demo_projects

@@ -1,3 +1,5 @@
+.. _hosting_provider:
+
 ======================
 Lino hosting providers
 ======================
@@ -20,18 +22,16 @@ the following responsibilities:
   
 There are two types of hosting:
   
-- in case of **stable hosting** the hoster also gives you end-user
-  support and regular maintenance (i.e. they answer your questions
-  about how to use or configure the software, and they are able
-  upgrade your site when new versions of the software are available).
-
 - in case of **development hosting** the hoster is *not reponsible*
-  for these services, that's is the job of a :doc:`developer
-  <developers>`).
+  for *end-user support* and *regular maintenance*.  You need a second
+  agreement with a :doc:`developer <developers>` for these.
        
-  
-.. _hosting_provider:
+- in case of **stable hosting** the hoster also offers these services,
+  i.e. they answer your questions about how to use or configure the
+  software, and they are able upgrade your site when new versions of the
+  software are available.
 
+  
 
 List of recommended Lino hosting providers
 ==========================================
