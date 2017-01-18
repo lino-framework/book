@@ -10,10 +10,8 @@ More about Lino
    testimonals
    name
    history
-   lino_and_django
    thanks
    art
-   ui
    customized
    desktop
 

@@ -62,15 +62,17 @@ Your first application
 
 
 
-Why you want Lino
-=================
+The Lino design choices
+=======================
 
-When you arrived here, you should be able to understand the
-fundamental differences between Lino and other frameworks.
+Now we think it is time to explain some fundamental differences
+between Lino and other frameworks.
 
 .. toctree::
    :maxdepth: 1
               
+   /about/ui
+   /about/lino_and_django
    /about/not_easy
    /about/think_python
    ui
@@ -236,9 +238,10 @@ Drafts
    /tutorials/myroles/index
    workflows
    translate/index
-
-   testing
    
+   demo_projects
+   testing
+   doctests
    help_texts
    userdocs
    signals

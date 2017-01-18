@@ -18,13 +18,20 @@ interfaces.
 
 **In practice**, your choice is currently limited to the
 :mod:`lino.modlib.extjs` UI.  Lino applications currently "look like"
-those you can see at :doc:`/demos`.  But that's just because
-:term:`extjs` is so cool, and because writing and optimizing a user
-interface is a rather boring work, and because there are many other,
-more interesting tasks that are waiting to be done.
+those you can see at :doc:`/demos`.
 
-There are several proofs of concept for Lino's user interface
-transparency:
+But that limit exists just because writing and optimizing a user
+interface is a rather boring work, and because there are many other,
+more interesting tasks that are waiting to be done, and, last but not
+least, because :term:`extjs` is so cool.
+
+One might consider Lino's :class:`TextRenderer
+<lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
+functional specifications </dev/doctests>`) as a special kind of user
+interface.
+
+There are several proofs of concept for alternative Lino's user
+interfaces:
 
 - the :mod:`lino_extjs6` is almost ready for production.
 - a more lightweight web interface using some other JS framework than ExtJS
@@ -38,11 +45,6 @@ transparency:
   <https://en.wikipedia.org/wiki/Qt_%28software%29>`_ or `wxWidgets
   <https://en.wikipedia.org/wiki/WxWidgets>`_
 - an XML or JSON based HTTP interface
-- one might consider Lino's :class:`TextRenderer
-  <lino.core.renderer.TextRenderer>` (used for writing tested
-  functional specifications like `this one
-  <http://welfare.lino-framework.org/specs/households.html>`_) as a
-  special kind of user interface.
 
 There is a more detailed overview on :doc:`what this means for the
 developer </dev/ui>`.
