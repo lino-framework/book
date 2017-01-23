@@ -260,12 +260,12 @@ The demo datebase contains two appointments on All Souls' Day:
 Calendar entry #30 All Souls' Day (31.10.2014)
 
 >>> rt.show(cal.ConflictingEvents, obj)
-============ ============ ========== ========= ====== ==================
- Start date   Start time   End Time   Project   Room   Responsible user
------------- ------------ ---------- --------- ------ ------------------
- 31/10/2014   09:40:00     11:40:00                    Romain Raffault
- 31/10/2014   08:30:00     09:30:00                    Rando Roosi
-============ ============ ========== ========= ====== ==================
+============ ============ ========== ======== ====== ==================
+ Start date   Start time   End Time   Person   Room   Responsible user
+------------ ------------ ---------- -------- ------ ------------------
+ 31/10/2014   09:40:00     11:40:00                   Romain Raffault
+ 31/10/2014   08:30:00     09:30:00                   Rando Roosi
+============ ============ ========== ======== ====== ==================
 <BLANKLINE>
 
 

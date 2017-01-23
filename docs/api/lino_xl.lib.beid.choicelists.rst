@@ -15,6 +15,8 @@ lino_xl.lib.beid.choicelists
    .. autosummary::
    
       BeIdCardTypes
+      CivilStates
+      ResidenceTypes
    
    
 

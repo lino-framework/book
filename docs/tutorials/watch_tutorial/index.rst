@@ -58,7 +58,6 @@ directory where you can run::
 you might as well read another tutorial which uses this application 
 to explain how to use workflows: :doc:`../workflows_tutorial/index`).
 
->>> from __future__ import print_function
 >>> from lino.api.doctest import *
 
 >>> from django.core.management import call_command
@@ -84,7 +83,7 @@ Organization "My pub" has been created.
 ==== ============= ===================== ===================== =============================================================
  ID   Change Type   Master                Object                Changes
 ---- ------------- --------------------- --------------------- -------------------------------------------------------------
- 1    Create        `My pub <Detail>`__   `My pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create        `My pub <Detail>`__   `My pub <Detail>`__   Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ===================== ===================== =============================================================
 <BLANKLINE>
 
@@ -100,7 +99,7 @@ Organization "My pub" has been created.
  ID   Change Type   Master                 Object                 Changes
 ---- ------------- ---------------------- ---------------------- -------------------------------------------------------------
  2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ====================== ====================== =============================================================
 <BLANKLINE>
 
@@ -118,7 +117,7 @@ Entry "Entry object" has been created.
 ---- ------------- ---------------------- --------------------------- -------------------------------------------------------------
  3    Create        `Our pub <Detail>`__   `Entry object <Detail>`__   Entry(id=1,user=1,subject='test',company=181)
  2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__        name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__        Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__        Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ====================== =========================== =============================================================
 <BLANKLINE>
 
@@ -148,7 +147,7 @@ We answer "yes":
  4    Delete        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=181)
  3    Create        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=181)
  2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ====================== ====================== =============================================================
 <BLANKLINE>
 
@@ -165,7 +164,7 @@ fields `object_id` and `object_type` still contain their values:
  4    Delete        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=181)
  3    Create        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=181)
  2    Update        `Our pub <Detail>`__   Organization   181         name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   Organization   181         Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create        `Our pub <Detail>`__   Organization   181         Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ====================== ============== =========== =============================================================
 <BLANKLINE>
 
@@ -190,11 +189,11 @@ remain:
 ==== ============= ======== ======== ==============================================================
  ID   Change Type   Master   Object   Changes
 ---- ------------- -------- -------- --------------------------------------------------------------
- 5    Delete                          Company(id=181,name='Our pub',language='en',partner_ptr=181)
+ 5    Delete                          Company(id=181,language='en',name='Our pub',partner_ptr=181)
  4    Delete                          Entry(id=1,user=1,subject='test',company=181)
  3    Create                          Entry(id=1,user=1,subject='test',company=181)
  2    Update                          name : 'My pub' --> 'Our pub'
- 1    Create                          Company(id=181,name='My pub',language='en',partner_ptr=181)
+ 1    Create                          Company(id=181,language='en',name='My pub',partner_ptr=181)
 ==== ============= ======== ======== ==============================================================
 <BLANKLINE>
 

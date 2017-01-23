@@ -94,7 +94,7 @@ Running the :command:`checkdata` command
 
 >>> call_command('checkdata')
 Found 3 and fixed 0 data problems in Calendar entries.
-Done 6 checkers, found 3 and fixed 0 problems.
+Done 5 checkers, found 3 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::

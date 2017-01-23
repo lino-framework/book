@@ -6,15 +6,6 @@ lino_xl.lib.beid.mixins
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      get_image_parts
-      get_image_path
-      holder_model
-      simulate_wrap
-   
    
 
    
@@ -23,11 +14,8 @@ lino_xl.lib.beid.mixins
 
    .. autosummary::
    
-      BaseBeIdReadCardAction
       BeIdCardHolder
       BeIdCardHolderChecker
-      BeIdReadCardAction
-      FindByBeIdAction
    
    
 

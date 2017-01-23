@@ -15,7 +15,6 @@ lino_xl.lib.contacts.mixins
    .. autosummary::
    
       ContactRelated
-      Contactable
       OldCompanyContact
       PartnerDocument
    

@@ -12,7 +12,8 @@ class Site(Site):
     """The parent of all :mod:`lino_book.projects.min2` applications.
     """
     title = "Lino Mini 2"
-    project_model = 'projects.Project'
+    project_model = 'contacts.Person'
+    # project_model = 'projects.Project'
     languages = 'en et fr'
     user_types_module = 'lino.modlib.office.roles'
 
@@ -27,7 +28,7 @@ class Site(Site):
         yield 'lino_xl.lib.reception'
         # yield 'lino.modlib.sepa'
         yield 'lino_xl.lib.notes'
-        yield 'lino_xl.lib.projects'
+        # yield 'lino_xl.lib.projects'
         yield 'lino_xl.lib.humanlinks'
         yield 'lino_xl.lib.households'
         yield 'lino_xl.lib.extensible'
