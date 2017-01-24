@@ -21,7 +21,7 @@ Career module (tested)
 
 
 >>> UserTypes = rt.modules.users.UserTypes
->>> LanguageKnowledges = rt.modules.cv.LanguageKnowledges
+>>> AllLanguageKnowledges = rt.modules.cv.AllLanguageKnowledges
 
 >>> rt.show(UserTypes)
 ======= =========== ===============
@@ -41,11 +41,11 @@ users.UserTypes.admin:900
 >>> u
 users.UserTypes.user:100
 
->>> LanguageKnowledges.required_roles
+>>> AllLanguageKnowledges.required_roles
 set([<class 'lino_xl.lib.cv.roles.CareerStaff'>])
 
->>> LanguageKnowledges.default_action.get_view_permission(u)
+>>> AllLanguageKnowledges.default_action.get_view_permission(u)
 False
 
->>> LanguageKnowledges.default_action.get_view_permission(a)
+>>> AllLanguageKnowledges.default_action.get_view_permission(a)
 False
