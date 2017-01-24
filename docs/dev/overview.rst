@@ -1,3 +1,5 @@
+.. _dev.overview:
+
 ==============================
 Structure overview cheat sheet
 ==============================
