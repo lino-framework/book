@@ -1,8 +1,8 @@
-lino_xl.lib.projects
-====================
+lino_xl.lib.courses
+===================
 
 
-.. automodule:: lino_xl.lib.projects
+.. automodule:: lino_xl.lib.courses
 
    
    

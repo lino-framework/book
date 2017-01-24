@@ -24,7 +24,8 @@ class Site(Site):
 
     # workflows_module = 'lino_xl.lib.cal.workflows.take'
 
-    def setup_quicklinks(self, ar, tb):
+    def setup_quicklinks(self, user, tb):
+        super(Site, self).setup_quicklinks(user, tb)
         tb.add_action(self.modules.contacts.Persons.detail_action)
         tb.add_action(self.modules.contacts.Companies.detail_action)
 

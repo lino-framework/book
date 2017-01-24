@@ -75,7 +75,7 @@ field occurs *twice* in the list of fields:
 >>> from lino import AFTER17
 >>> from lino.core.fields import VirtualField
 >>> [f.name for f in Person._meta._get_fields(reverse=False) if not isinstance(f, VirtualField)]
-[u'id', 'country', 'city', 'zip_code', 'region', 'addr1', 'street_prefix', 'street', 'street_no', 'street_box', 'addr2', 'url', 'phone', 'gsm', 'fax', 'name', 'language', 'email', 'remarks', u'partner_ptr', 'title', 'first_name', 'middle_name', 'last_name', 'gender', 'birth_date']
+[u'id', 'email', 'language', 'url', 'phone', 'gsm', 'fax', 'country', 'city', 'zip_code', 'region', 'addr1', 'street_prefix', 'street', 'street_no', 'street_box', 'addr2', 'name', 'remarks', u'partner_ptr', 'title', 'first_name', 'middle_name', 'last_name', 'gender', 'birth_date']
 
 See the :meth:`._get_fields` method of
 :class:`django.db.models.options.Options` (in Django 1.7+).

@@ -43,7 +43,7 @@ Lino hoster.  It's all a question of trust. In case of doubt, your
 Lino developer is able to judge the fitness of a given service
 provider for your case.
 
-- `Abakus IT solutions <http://www.abakusitsolutions.eu/>`__ is a
+- `AbAKUS it-solutions <http://www.abakusitsolutions.eu/>`__ is a
   hosting and ICT solutions provider in Eupen (Belgium) and Luxemburg.
   
 - `C2D <http://www.c2d.be/fr/>`_ is a hosting and ICT solutions

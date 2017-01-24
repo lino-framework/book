@@ -54,6 +54,7 @@ class Site(Site):
         yield 'lino_xl.lib.notes'
         yield 'lino_xl.lib.outbox'
         yield 'lino_xl.lib.cal'
+        yield 'lino_xl.lib.courses'
         yield 'lino_xl.lib.extensible'
         yield 'lino_xl.lib.reception'
         yield 'lino_xl.lib.excerpts'
@@ -65,7 +66,7 @@ class Site(Site):
 
         yield 'lino_xl.lib.concepts'
         yield 'lino_xl.lib.pages'
-        yield 'lino_xl.lib.beid'
+        # yield 'lino_xl.lib.beid'
         yield 'lino.modlib.wkhtmltopdf'
         yield 'lino_xl.lib.appypod'
 

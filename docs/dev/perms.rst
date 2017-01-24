@@ -16,6 +16,11 @@ Permissions
     >>> from lino.api.shell import *
 
 
+Lino checks whether a given user has permission to see a given
+resource or to execute a given action.  For example, a system
+administrator can see certain resources which a simple user cannot
+see.
+
 Lino adds enterprise-level concepts for definining permissions. This
 includes class-based user roles and a replacement for Django's User
 model.
@@ -26,10 +31,10 @@ See also: :doc:`users`.
 User roles
 ==========
 
-A **user role** is the role of a user in the system. It tells Lino
-whether a given user has permission to see a given resource or to
-execute a given action.  For example, a system administrator can see
-certain resources which a simple user cannot see.
+A **user role** is the role of a user in the system. It is the basic
+unit for defining permissions.  User roles are used by the application
+developer (1) for specifying the **roles required** to use a given
+resource and (2) for specifying the **granted roles** a user has.
 
 Lino comes with a few built-in user roles which are defined in
 :mod:`lino.core.roles`.
@@ -116,8 +121,8 @@ Here is the default list of user types:
 >>> users.UserTypes.admin
 users.UserTypes.admin:900
 
->>> users.UserTypes.admin.role  #doctest: +ELLIPSIS
-<lino.modlib.office.roles.SiteAdmin object at ...>
+>>> users.UserTypes.admin.roles  #doctest: +ELLIPSIS
+set([<lino.modlib.office.roles.SiteAdmin object at ...>])
 
 >>> users.UserTypes.admin.readonly
 False
@@ -135,8 +140,8 @@ change all internal names from "profile" to "type".
 >>> robin = users.User.objects.get(username='robin')
 >>> robin.profile  #doctest: +ELLIPSIS
 users.UserTypes.admin:900
->>> robin.profile.role  #doctest: +ELLIPSIS
-<lino.modlib.office.roles.SiteAdmin object at ...>
+>>> robin.profile.roles  #doctest: +ELLIPSIS
+set([<lino.modlib.office.roles.SiteAdmin object at ...>])
 
 
 

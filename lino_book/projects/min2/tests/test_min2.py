@@ -64,10 +64,7 @@ class QuickTest(RemoteAuthTestCase):
         excerpts.Excerpt
         notes.Note
         notify.Message
-        outbox.Attachment
-        outbox.Mail
         plausibility.Problem
-        uploads.Upload
         """.split()
         self.assertEqual(found, expected)
 

@@ -4,17 +4,47 @@
 When a Lino application starts up
 =================================
 
-There are three phases in the lifecycle of a Lino process:
+This chapter describes what happens during the startup of a Lino
+process.
 
-- while Django settings are being loaded (:mod:`lino.api.ad`)
-- while Django models are being loaded (:mod:`lino.api.dd`)
-- normal runtime (:mod:`lino.api.rt`)
+There are three major phases in the startup of a Lino process:
+
+- **Application definition** (:mod:`lino.api.ad`) while Django
+  **settings** are being loaded
+  
+- **Database definition** (:mod:`lino.api.dd`) while Django **models** are
+  being loaded
+  
+- **Runtime** (:mod:`lino.api.rt`) when startup has finished.
+
+
+A more detailed description follows.
+  
+- The `manage.py` script causes the module specified by
+  :envvar:`DJANGO_SETTINGS_MODULE` (your :xfile:`settings.py` module) to be
+  imported. This might happen twice (e.g. with :manage:`runserver`).
+  Everything in :mod:`lino.api.ad` is usable.  
+
+- Importing the :xfile:`settings.py` module will instantiate your
+  :setting:`SITE`.
+
+- When settings are ready, Django will load the :xfile:`models.py`
+  modules.  Everything in :mod:`lino.api.dd` is usable during this
+  step.
+
+- When all models are loaded, the Site will "start up" and instantiate
+  the **kernel**. Only now everything in :mod:`lino.api.rt` is usable.
+  
+  
+**The remaining part of this section is obsolete.** It was for Django
+before 1.7.
+
+
+  
 
 
 A server startup signal for Django
 ==================================
-
-This section is for Django before 1.7.
 
 Lino provides a solution for Django's old problem of not having an
 "application server startup signal", a signal to be emitted when the
