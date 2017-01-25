@@ -15,6 +15,7 @@ switched off to avoid browser questions.
 .. _demo1: http://demo1.lino-framework.org
 .. _demo3: http://demo3.lino-framework.org
 .. _welfare-demo: http://welfare-demo.lino-framework.org
+.. _welfare-demo-fr: http://welfare-demo-fr.lino-framework.org
 .. _logos-demo: http://logos-demo.lino-framework.org
 .. _polly-demo: http://polly-demo.lino-framework.org
 .. _patrols-demo: http://patrols-demo.lino-framework.org
@@ -30,14 +31,14 @@ Of general interest:
 - demo1_ shows the "Polls" application developed in the
   :ref:`lino.tutorial.polls` tutorial. A minimal didactic Lino
   application without authentication.
-- belref_ : Official online demo of :ref:`belref`.
 - cosi-demo_ :    Official online demo of :ref:`cosi`.
 - roger_ :  Official online demo of :ref:`voga` à la Roger
 - team_ : Official online demo of :ref:`noi`.
 
 Specific to Belgium:
 
-- welfare-demo_ : Official online demo of :ref:`welfare` à la Eupen
+- welfare-demo_ : online demo of :ref:`welfare` à la Eupen
+- welfare-demo-fr_ : online demo of :ref:`welfare` à la Châtelet
 
 Specific to Estonia:
 
@@ -46,6 +47,7 @@ Specific to Estonia:
 
 Experimental:
 
+- belref_ : Official online demo of :ref:`belref`.
 - demo3_ : Official online demo of :ref:`presto`.
 - patrols-demo_ : Official online demo of :ref:`patrols`.
 - logos-demo_ : Official online demo of :ref:`logos` (as an early
