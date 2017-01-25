@@ -31,15 +31,14 @@ Of general interest:
 - demo1_ shows the "Polls" application developed in the
   :ref:`lino.tutorial.polls` tutorial. A minimal didactic Lino
   application without authentication.
-- belref_ : Official online demo of :ref:`belref`.
 - cosi-demo_ :    Official online demo of :ref:`cosi`.
 - roger_ :  Official online demo of :ref:`voga` à la Roger
 - team_ : Official online demo of :ref:`noi`.
 
 Specific to Belgium:
 
-- Online demo of :ref:`welfare` à la Eupen : welfare-demo_
-- Online demo of :ref:`welfare` à la Châtelet : welfare-demo-fr_
+- welfare-demo_ : online demo of :ref:`welfare` à la Eupen
+- welfare-demo-fr_ : online demo of :ref:`welfare` à la Châtelet
 
 Specific to Estonia:
 
@@ -48,6 +47,7 @@ Specific to Estonia:
 
 Experimental:
 
+- belref_ : Official online demo of :ref:`belref`.
 - demo3_ : Official online demo of :ref:`presto`.
 - patrols-demo_ : Official online demo of :ref:`patrols`.
 - logos-demo_ : Official online demo of :ref:`logos` (as an early
