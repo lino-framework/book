@@ -23,6 +23,7 @@ lino_xl.lib.households.models
       Members
       MembersByHousehold
       MembersByPerson
+      PopulateMembers
       SiblingsByPerson
       Type
       Types
