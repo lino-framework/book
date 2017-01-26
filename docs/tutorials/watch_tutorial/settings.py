@@ -21,4 +21,6 @@ class Site(Site):
 
 SITE = Site(globals())
 
+SITE.user_types_module = None
+
 DEBUG = True

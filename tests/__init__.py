@@ -148,6 +148,9 @@ class DocsTests(LinoTestCase):
     
     def test_polls(self):
         self.run_django_manage_test('docs/tutorials/polls')
+        
+    def test_polls2(self):
+        self.run_django_manage_test('docs/tutorials/polls2')
 
     def test_hello(self):
         self.run_django_manage_test('docs/tutorials/hello')
