@@ -14,6 +14,7 @@ lino_xl.lib.households.choicelists
 
    .. autosummary::
    
+      MemberDependencies
       MemberRoles
    
    

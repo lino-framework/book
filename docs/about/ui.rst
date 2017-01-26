@@ -11,29 +11,27 @@ and almost only "visible" part of an application.
 
 But Lino is designed to have **many possible** user interfaces.  Lino
 comes with an extensible collection of *out-of-the-box* user
-interfaces.
+interfaces.  You can write a Lino application once and then deploy it
+via different interfaces. :ref:`noi` is an example of an application
+which is deployed using two public UIs.
 
-**In theory** you write a Lino application once, and then you can
-"deploy" (or use it yourself) via many different interfaces.
-
-**In practice**, your choice is currently limited to the
+That said, your only realistic choice is currently the
 :mod:`lino.modlib.extjs` UI.  Lino applications currently "look like"
-those you can see at :doc:`/demos`.
+those you can see at :doc:`/demos`.  You might like them or not, but
+Lino's beauty lies beyond the user interface.
 
-But that limit exists just because writing and optimizing a user
-interface is a rather boring work, and because there are many other,
-more interesting tasks that are waiting to be done, and, last but not
-least, because :term:`extjs` is so cool.
+Writing and optimizing a user interface is a rather boring task, and
+there are many other, more interesting tasks that are waiting to be
+done, and, last but not least, because :term:`extjs` is so cool.
 
-One might consider Lino's :class:`TextRenderer
-<lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
-functional specifications </dev/doctests>`) as a special kind of user
-interface.
-
-There are several proofs of concept for alternative Lino's user
-interfaces:
+There are several proofs of concept for alternative user interfaces:
 
 - the :mod:`lino_extjs6` is almost ready for production.
+- one might consider Lino's :class:`TextRenderer
+  <lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
+  functional specifications </dev/doctests>`) as a special kind of
+  user interface.
+
 - a more lightweight web interface using some other JS framework than ExtJS
 - a web interface optimized for read-only access and publication of
   complex data (something like :ref:`belref`, but we agree that this

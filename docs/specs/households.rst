@@ -21,7 +21,7 @@ house).
 .. contents:: 
    :local:
    :depth: 2
-
+           
 
 Configuration
 =============
@@ -39,7 +39,7 @@ Configuration
 ==== ==================== ========================= ====================== ==================== ==================== ===================== ====================
 <BLANKLINE>
 
->>> rt.show(rt.modules.households.MemberRoles)
+>>> rt.show('households.MemberRoles')
 ======= ============ ===================
  value   name         text
 ------- ------------ -------------------
@@ -58,45 +58,120 @@ Configuration
 SiblingsByPerson
 ================
 
-:class:`lino_xl.lib.households.models.SiblingsByPerson` works only
-when it can determine the "one and only" current household.  
+>>> SiblingsByPerson = rt.modules.households.SiblingsByPerson
 
-Usually this is the membership marked as `primary`.
+The :class:`SiblingsByPerson
+<lino_xl.lib.households.models.SiblingsByPerson>` table shows the
+family composition of a person.  More precisely it shows all members
+of the current household of that person.
+
+This works of course only when Lino can determine the "one and only"
+current household.  If the person has only one membership (at a given
+date), then there is no question.
+
+When there are several memberships, then theoretically one of them
+should be marked as `primary`.
 
 But even when a person has multiple household memberships and none of
-them is primary, it can look at the `end_date`.
+them is primary, Lino can look at the `end_date`.
 
->>> Person = rt.modules.contacts.Person
->>> Member = rt.modules.households.Member
->>> list(Member.objects.filter(end_date__isnull=False))
-[Member #5 ('Mr Paul Frisch (Head of household)'), Member #11 ('Mr Albert Adam (Head of household)'), Member #17 ('Mr Lars Braun (Head of household)'), Member #23 ('Mr Ilja Adam (Head of household)')]
+Let's get a list of the candidates to inspect:
 
->>> p = Person.objects.get(first_name="Lars", last_name="Braun")
->>> Member.objects.filter(person=p).count()
-2
->>> rt.show(rt.modules.households.MembersByPerson, master_instance=p)
-Mr Lars Braun is
-`☐  <javascript:Lino.households.Members.set_primary(null,31,{  })>`__Head of household in *Lars & Melba Braun-Frisch*
-`☐  <javascript:Lino.households.Members.set_primary(null,17,{  })>`__Head of household in *Lars & Pascale Braun-Adam*
+>>> Link = rt.models.humanlinks.Link
+>>> Person = rt.models.contacts.Person
+>>> Member = rt.models.households.Member
+>>> MemberRoles = rt.models.households.MemberRoles
+>>> heads = Person.objects.filter(household_members__role=MemberRoles.head).distinct()
+>>> for m in heads.order_by('id'):
+...     qs = Member.objects.filter(role=MemberRoles.head, person=m.person)
+...     all = qs.count()
+...     primary = qs.filter(primary=True).count()
+...     if all > 1 and not primary:
+...         print(u"{} ({}) is head of {} households".format(
+...             m.person, m.person.pk, all))
+Mr Karl Keller (177) is head of 2 households
+Mr Jérôme Jeanémart (180) is head of 2 households
+Mr Albert Adam (201) is head of 3 households
+Mr Bruno Braun (202) is head of 2 households
+
+The most interesting is 177:
+
+>>> p = Person.objects.get(pk=177)
+>>> rt.show('households.MembersByPerson', master_instance=p)
+Mr Karl Keller is
+`☐  <javascript:Lino.households.Members.set_primary(null,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast*
+`☐  <javascript:Lino.households.Members.set_primary(null,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
->>> rt.show(rt.modules.households.MembersByPerson, p, nosummary=True)
-=========================== =================== ========= ============ ============
- Household                   Role                Primary   Start date   End date
---------------------------- ------------------- --------- ------------ ------------
- Lars & Melba Braun-Frisch   Head of household   No
- Lars & Pascale Braun-Adam   Head of household   No                     04/03/2002
-=========================== =================== ========= ============ ============
+>>> rt.show('households.MembersByPerson', p, nosummary=True)
+================================ =================== ========= ============ ============
+ Household                        Role                Primary   Start date   End date
+-------------------------------- ------------------- --------- ------------ ------------
+ Karl & Erna Keller-Emonts-Gast   Head of household   No
+ Karl & Õie Keller-Õunapuu        Head of household   No                     04/03/2002
+================================ =================== ========= ============ ============
 <BLANKLINE>
 
->>> SiblingsByPerson = rt.modules.households.SiblingsByPerson
 >>> rt.show(SiblingsByPerson, p)
-================== =================== ============ ==========
- Person             Role                Start date   End date
------------------- ------------------- ------------ ----------
- Mr Lars Braun      Head of household
- Mrs Melba Frisch   Partner
-================== =================== ============ ==========
+========= =================== =============== ====================== ============ ============= ============ ========
+ Age       Role                Dependency      Person                 First name   Last name     Birth date   Gender
+--------- ------------------- --------------- ---------------------- ------------ ------------- ------------ --------
+ unknown   Head of household   Not at charge   Mr Karl Keller         Karl         Keller                     Male
+ unknown   Partner             Not at charge   Mrs Erna Emonts-Gast   Erna         Emonts-Gast                Female
+========= =================== =============== ====================== ============ ============= ============ ========
 <BLANKLINE>
 
+Same case for 180:
+
+>>> rt.show(SiblingsByPerson, Person.objects.get(pk=180))
+========= =================== =============== ======================= ============ ============= ============ ========
+ Age       Role                Dependency      Person                  First name   Last name     Birth date   Gender
+--------- ------------------- --------------- ----------------------- ------------ ------------- ------------ --------
+ unknown   Head of household   Not at charge   Mr Jérôme Jeanémart     Jérôme       Jeanémart                  Male
+ unknown   Partner             Not at charge   Mrs Berta Radermacher   Berta        Radermacher                Female
+========= =================== =============== ======================= ============ ============= ============ ========
+<BLANKLINE>
+
+For the other candidates, Lino cannot determine a current household:
+
+>>> rt.show(SiblingsByPerson, Person.objects.get(pk=201))
+Mr Albert Adam is member of multiple households
+
+>>> rt.show(SiblingsByPerson, Person.objects.get(pk=202))
+Mr Bruno Braun is member of multiple households
+
+>>> rt.show(SiblingsByPerson, Person.objects.get(pk=170))
+Jean Dupont is not member of any household
+
+
+Lars
+====
+
+Lars Braun is the natural son of Bruno Braun and Eveline Evrard who
+both maried another partner. These new households automatically
+created foster parent links between Lars and the new partners of his
+natural parents:
+
+>>> lars = Person.objects.get(first_name="Lars", last_name="Braun")
+>>> for lnk in Link.objects.filter(child=lars):
+...    print(u"{} of {}".format(lnk.type, lnk.parent))
+Son (Daughter) of Mr Bruno Braun
+Son (Daughter) of Mrs Eveline Evrard
+Foster son (Foster daughter) of Mr Albert Adam
+Foster son (Foster daughter) of Mrs Françoise Freisen
+Foster son (Foster daughter) of Mrs Daniela Radermacher
+
+>>> rt.show('households.MembersByPerson', master_instance=lars)
+... #doctest: +ELLIPSIS
+Mr Lars Braun is
+`☐  <...>`__Child in *Albert & Eveline Adam-Evrard*
+`☐  <...>`__Child in *Albert & Françoise Adam-Freisen*
+`☐  <...>`__Child in *Bruno & Eveline Braun-Evrard*
+`☐  <...>`__Child in *Bruno & Françoise Braun-Freisen*
+`☐  <...>`__Child in *Albert & Daniela Adam-Radermacher*
+<BLANKLINE>
+Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
+
+>>> rt.show(SiblingsByPerson, lars)
+Mr Lars Braun is member of multiple households
