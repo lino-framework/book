@@ -48,8 +48,9 @@ Two remarks before diving into above documents:
 
 - The `Explore the free admin functionality
   <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
-  section is important only so you know what you are going to leave.
-  Lino is an alternative to Django's Admin interface.
+  section is important only if you want know how you are going to
+  *not* work with Lino.  Lino is an alternative to Django's Admin
+  interface.
 
 - Of course you can learn the whole `Getting started
   <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
@@ -106,6 +107,23 @@ A few explanations:
     :class:`lino.core.site.Site`.  Our example also **overrides** that
     class before instantiating it.
 
+#.  We are using the rather uncommon construct of overriding a class
+    by a class of the same name. This might look surprising. You might
+    prefer to give a new name::
+
+      class MySite(Site):
+          ...
+          ... super(MySite, self)....
+
+      SITE = MySite()
+
+    It's a matter of taste. But overriding a class by a class of the
+    same name is perfectly allowed in Python, and you must know that
+    as a Lino developer your are going to write *many* subclasses of
+    :class:`Site` and subclasses thereof. I got tired of always
+    finding new class names like MySite, MyNewSite, MyBetter
+    VariantOfNewSite...
+
 #.  In the line ``SITE = Site(globals())`` we **instantiate** our
     class into a variable named ``SITE``. Note that we pass our
     :func:`globals` `dict` to Lino. Lino needs this to insert all
@@ -121,12 +139,14 @@ A few explanations:
     the fact that Lino automagically adds some more apps.
     
 #.  The **main menu** of a Lino application is defined in the
-    :meth:`setup_menu <lino.core.site.Site.setup_menu>` method.
+    :meth:`setup_menu <lino.core.site.Site.setup_menu>` method.  At
+    least in the simplest case. We will come back on this in
+    :doc:`/dev/menu`.
     
 Lino uses some tricks to make Django settings modules more pleasant to
 work with, especially if you maintain Lino sites for several
-customers. We will come back to this later.  More about all this in
-:doc:`/dev/settings` and :doc:`/dev/site`
+customers. We will come back to this in :doc:`/dev/settings` and
+:doc:`/dev/site`
 
 ..
     >>> from pprint import pprint
@@ -235,15 +255,16 @@ The output should be::
 Adding a demo fixture
 ---------------------
 
-This section is optional and recommended in case you were frustrated
-when we deleted the data you had manually entered during the Django
-Polls tutorial.
+Now we hope that you are a bit frustrated about having all that
+beatiful data you manually entered during the Django Polls tutorial
+gone forever.
 
 When you are developing and maintaining a database application, it
 happens very often that you need to change the database structure.
 
 Instead of manually filling your demo data again and again after every
-database change, you write it once as a *fixture*.
+database change, Lino offers you to write it *once and for all* as a
+*fixture*.
 
 With Lino it is easy and fun to write demo fixtures because you can
 write them in Python.  Read more about them in
@@ -271,7 +292,8 @@ We are now going to add a **demo fixture**.
 
     $ python manage.py initdb demo
 
-  The output should be::
+  This means "Initialize my database and apply all fixtures named
+  :file:`demo`".  The output should be::
 
     Operations to perform:
       Synchronize unmigrated apps: about, jinja, staticfiles, polls, lino_startup, extjs, bootstrap3
@@ -338,52 +360,59 @@ or (on Windows)::
 
   c:\mypy\mysite> python manage.py runserver
   
-and point your browser to http://127.0.0.1:8000/ 
-to see your first Lino application running.
+and point your browser to http://127.0.0.1:8000/ to see your first
+Lino application running. It should look something like this:q
 
-- Please play around and create some polls before reading on.
+.. image:: main1.png
+    :scale: 50
+
+
+Feel free to play around and create some polls before reading on.
 
 
 
 The main index
 --------------
-  
-The following template is used to build the HTML to be displayed in
-our Main Window.
 
-Create a directory named :file:`mysite/config`, and in that directory
-create a file named :xfile:`admin_main.html` with the following
-content:
+Now let's customize our **main window** (or *index view*).
+ 
+Lino uses a template named :xfile:`admin_main.html` for rendering the
+HTML to be displayed there.  We are going to **override** that
+template.
+
+Please create a directory named :file:`mysite/config`, and in that
+directory create a file named :xfile:`admin_main.html` with the
+following content:
 
 .. literalinclude:: config/admin_main.html
 
 Explanations:
 
-- :attr:`rt.models <lino.core.site.Site.models>` : is a shortcut to access the models and tables of the application.
-  Usually it is better to write
-  
-  ::
-
-    Question = rt.models.polls.Question
-
-  instead of
-  
+- :attr:`rt.models <lino.core.site.Site.models>` : is a shortcut to
+  access the models and tables of the application.
+  In plain Django you learned to write
   ::
 
     from polls.models import Question
-  
-  because the latter hard-wires the location of the `polls` plugin.
+
+  But in Lino we recomment to write ::
+
+    Question = rt.models.polls.Question
+
+  because the former hard-wires the location of the `polls` plugin.
+  If you do it the plain Django way, you are going to miss
+  :doc:`plugin inheritence </dev/plugin_inheritance>`.
     
-- If `objects`, `filter()` and `order_by()` are new to you, 
-  then please read the `Making queries 
-  <https://docs.djangoproject.com/en/1.9/topics/db/queries>`__
-  chapter of Django's documentation. 
-  Lino is based on Django, and Django is known for its good documentation. Use it!
+- If `objects`, `filter()` and `order_by()` are new to you, then
+  please read the `Making queries
+  <https://docs.djangoproject.com/en/1.9/topics/db/queries>`__ chapter
+  of Django's documentation.  Lino is based on Django, and Django is
+  known for its good documentation. Use it!
 
 - If `joiner` and `sep` are a riddle to you, you'll find the solution
   in Jinja's `Template Designer Documentation
   <http://jinja.pocoo.org/docs/templates/#joiner>`__.  Lino
-  applications by default replace Django's template engine by `Jinja
+  applications replace Django's template engine by `Jinja
   <http://jinja.pocoo.org>`__.
 
 - ``obj.vote`` is an :class:`InstanceAction
@@ -394,34 +423,35 @@ Explanations:
   :ref:`dev.actions`.
 
 
-Screenshots
------------
+As a result, our main window now features a summary of the currently
+opened polls:
 
-Make sure that you understand and can reproduce the concepts explained
-in this section.
-
-
-The **Main Window** is the top-level window of your application:
-
-.. image:: polls1.jpg
+.. image:: main2.png
     :scale: 50
-    
-Your application specifies what to put there, and there are several 
-methods to do this:
+
+There are several methods for specifying the content of the main
+window:
 
 - define a custom :xfile:`admin_main.html` template (as we did in this
   tutorial)
 
-- use the default :xfile:`admin_main.html` template and override the
-  :meth:`get_admin_main_items
-  <lino.core.site.Site.get_admin_main_items>` and
-  :meth:`setup_quicklinks <lino.core.site.Site.setup_quicklinks>`
-  methods.
-
 - override the :meth:`get_main_html
-  <lino.core.site.Site.get_main_html>` method to return your own chunk
-  of html.
+  <lino.core.site.Site.get_main_html>` method of your :class:`Site
+  <lino.core.site.Site>` class to return your own chunk of html.
     
+- use the default :xfile:`admin_main.html` template and override the
+  :meth:`get_dashboard_items
+  <lino.core.site.Site.get_dashboard_items>`
+  of your :class:`Site <lino.core.site.Site>` class.
+
+- override the :meth:`get_dashboard_items
+  <lino.core.plugin.Plugin.get_dashboard_items>` of your :class:`Plugin
+  <lino.core.plugin.Plugin>` class.
+  
+- override the
+  :meth:`setup_quicklinks <lino.core.site.Site.setup_quicklinks>`
+  methods of your :class:`Site <lino.core.site.Site>` class.
+
 After clicking on a vote, here is the `vote` method 
 of our `Choice` model in action:
 
@@ -446,8 +476,8 @@ After double-clicking on a row in the previous screen, Lino shows the
 .. image:: polls4.jpg
     :scale: 50
     
-This window has been designed by the following code in 
-your :file:`desktop.py` file::
+This window has been designed by the following code in your
+:file:`desktop.py` file::
 
     detail_layout = """
     id question_text
@@ -455,20 +485,19 @@ your :file:`desktop.py` file::
     ChoicesByQuestion
     """
 
-To add a detail window to a table, you simply add a
+Yes, nothing else. To add a detail window to a table, you simply add a
 :attr:`detail_layout <lino.core.actors.Actor.detail_layout>` attribute
 to the Table's class definition.
     
+  **Exercise**: comment out above lines in your code and observe how
+  the application's behaviour changes.
+
 Not all tables have a detail window.  In our case the `Questions`
 table has one, but the `Choices` and `ChoicesByQuestion` tables don't.
 Double-clicking on a cell of a Question will open the Detail Window,
 but double-clicking on a cell of a Choice will start cell editing.
-Note that can still edit an individual cell of a Question in a Grid
-Window by pressing the :kbd:`F2` key.
-
-  **Exercise**: comment out above lines in your code and observe how
-  the application changes its behaviour.
-
+Note that you can still edit an individual cell of a Question in a
+grid window by pressing the :kbd:`F2` key.
 
   
 After clicking the :guilabel:`New` button, you can admire an **Insert
@@ -485,7 +514,7 @@ This window layout is defined by the following :attr:`insert_layout
     hidden
     """
     
-(Again: see :doc:`/tutorials/layouts` for more explanations.)
+See :doc:`/tutorials/layouts` for more explanations.
 
 After clicking the :guilabel:`[html]` button:
 
@@ -496,14 +525,15 @@ After clicking the :guilabel:`[html]` button:
 Exercises
 ---------
 
-#.  **Add the current score of each choice to the results**
+#.  **Add the current score** of each choice to the results in your
+    customized :xfile:`admin_main.html` file.
 
 #.  **Adding more explanations**
 
-    Your customer asks you to add a possibility for specifying a
-    longer explanation text for every question. The question's title should
-    show up in bold, and the longer explanation should come before the
-    "Published..." part
+    Imagine that your customer asks you to add a possibility for
+    specifying a longer explanation text for every question. The
+    question's title should show up in bold, and the longer
+    explanation should come before the "Published..." part
 
     Hint: add a `TextField` named `question_help` to your `Question`
     model, add this field to the `detail_layout` of your `Questions`
@@ -517,8 +547,9 @@ Summary
 -------
 
 In this tutorial we followed the first two chapters of the Django
-Tutorial, then continued the Lino way and introduced two concepts
-which Lino adds to Django: Tables and Actions
+Tutorial, then converted their result into a Lino application.  We
+learned more about python fixtures, tables, actions, layouts and
+menus.
 
 
 .. the following is tested, but not rendered to HTML:
