@@ -19,9 +19,9 @@ to your :meth:`Site.get_installed_apps` and then register "change
 watchers" for every type of change you want to watch.
 
 You will also want to make your changes visible for users by adding
-the
-:class:`ChangesByOwner<lino.modlib.changes.models.ChangesByMaster>`
-slave table to some detail layout.
+the :class:`changes.ChangesByMaster
+<lino.modlib.changes.models.ChangesByMaster>` slave table to some of
+your detail layouts.
 
 The example in this tutorial uses the :mod:`lino_xl.lib.contacts`
 module.  It also adds a model `Entry` as an example of a watched

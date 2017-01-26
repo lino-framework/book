@@ -5,18 +5,18 @@ class Site(Site):
 
     title = "Cool Polls"
 
-    anonymous_user_type = '900'
-    demo_fixtures = ['demo']
+    demo_fixtures = "demo demo2"
 
     def get_installed_apps(self):
-        yield super(Site, self).get_installed_apps()
         yield 'polls'
+        yield 'lino.modlib.users'
+        yield super(Site, self).get_installed_apps()
 
-    def setup_menu(self, utype, main):
+    def setup_menu(self, user_type, main):
+        super(Site, self).setup_menu(user_type, main)
         m = main.add_menu("polls", "Polls")
         m.add_action('polls.Questions')
         m.add_action('polls.Choices')
-        super(Site, self).setup_menu(utype, main)
 
 SITE = Site(globals())
 

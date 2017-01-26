@@ -12,7 +12,7 @@ class Site(Site):
     title = "sendchanges example"
 
     default_user = "robin"
-    user_types_module = None
+    # user_types_module = None
     # user_types_module = 'lino.modlib.office.roles'
 
     def send_email(self, subject, sender, body, recipients):
@@ -38,5 +38,6 @@ class Site(Site):
         subscribe('joe@example.com')
 
 SITE = Site(globals())
+SITE.user_types_module = None
 
 DEBUG = True
