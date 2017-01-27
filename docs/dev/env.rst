@@ -10,8 +10,8 @@ Setting up your work environment
    $ python setup.py test -s tests.LibTests.test_runtests
 
 As a Lino developer you are going to maintain and know a whole little
-collection of projects (you don't need to dive into each of them right
-now, but let's already install them):
+collection of projects. You don't need to dive into each of them right
+now, but let's already install them:
 
 - :ref:`noi`, the application we use for managing our collaboration
 - :ref:`cosi`, :ref:`voga` and :ref:`presto`
@@ -33,6 +33,7 @@ Now clone the also the following other repositories in a similar way::
   $ git clone https://github.com/lino-framework/voga.git
   $ git clone https://github.com/lino-framework/presto.git
   $ git clone https://github.com/lino-framework/welfare.git
+  $ git clone https://github.com/lino-framework/avanti.git
   $ git clone https://github.com/lino-framework/extjs6.git
 
 And then you install them using pip (as editable using ``-e``
@@ -43,6 +44,7 @@ option)::
   $ pip install -e voga
   $ pip install -e presto
   $ pip install -e welfare
+  $ pip install -e avanti
   $ pip install -e extjs6
   
 As a last step we must tell :ref:`atelier` about these new projects.
@@ -76,19 +78,21 @@ released PyPI version. :ref:`atelier` is more or less stable, but
 one day we might decide that you should rather switch to the
 development version.
 
-Doing this is easy: just uninstall the PyPI version and then install
-the development version::
-  
-  $ pip uninstall atelier
+Doing this is easy:
 
-  $ cd ~/repositories
-  $ git clone https://github.com/lsaffre/atelier.git
-  $ pip install -e atelier
+1. uninstall the PyPI version and then install the development
+   version::
   
-Afterwards you should also open your :xfile:`~/.atelier/config.py`
-file and insert ``atelier`` to the list of projects::
+    $ pip uninstall atelier
+
+    $ cd ~/repositories
+    $ git clone https://github.com/lino-framework/atelier.git
+    $ pip install -e atelier
+
+2. Open your :xfile:`~/.atelier/config.py`
+   file and insert ``atelier`` to the list of projects::
   
-     for p in 'atelier lino xl book noi cosi voga presto welfare extjs6'.split():
+     for p in 'atelier lino xl book noi cosi voga presto welfare avanti extjs6'.split():
 
 
 Showing your atelier projects
@@ -109,6 +113,7 @@ The output should be something like::
      noi       http://noi.lino-framework.org              0.0.3     docs
      cosi      http://cosi.lino-framework.org             0.0.3     docs
      welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
+     avanti    http://avanti.lino-framework.org/          2017.1.0    docs
      presto    http://presto.lino-framework.org           0.0.1     docs
      voga      http://voga.lino-framework.org             0.0.4     docs
      ext6      http://www.lino-framework.org              0.0.1     docs
