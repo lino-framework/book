@@ -5,8 +5,8 @@ Developer's Guide
 =================
 
 This is the central meeting place for :doc:`Lino developers
-</community/developers>`.  The `Getting started`_ section is useful
-for :doc:`system adminstrators </community/admins>` as well.
+</community/developers>`. Some chapters are useful for :doc:`system
+adminstrators </community/admins>` as well.
 
 .. _lino.dev.start:
 
@@ -20,18 +20,31 @@ Getting started
 
    install
    /tutorials/hello/index
-   initdb
+   /tutorials/polls/mysite/index
+   projects
+   env
 
 #.  :doc:`/dev/install` : System requirements. Set up a Python
-    environment. Running your first Lino site.
+    environment. Run your first Lino applications.
 
 #.  :doc:`/tutorials/hello/index` : The first Lino application running
     on your machine. It's easier than with Django. A ``settings.py``
     and a ``manage.py``.
 
-#.  :doc:`initdb` : More about the ``initdb`` and ``initdb_demo``
-    commands.
+#.  :doc:`/tutorials/polls/mysite/index` : Convert the “Polls”
+    application from Django’s tutorial into a Lino application. This
+    will illustrate some differences between Lino and Django.
 
+#. :doc:`projects` introduces our minimalistic project
+   management system based on :mod:`atelier`.
+   
+#. :doc:`env` : install other projects maintained by the Lino team.
+   If you want to join our team and help us to make Lino better, then
+   you will sooner or later get in touch with these
+   applications. Let's install them already now so that your
+   environment is complete.
+
+   
 .. _lino.dev.first:
 
 Your first application
@@ -41,24 +54,22 @@ Your first application
    :hidden:
 
    /tutorials/dumpy/index
-   /tutorials/polls/mysite/index
    /tutorials/tables/index
    layouts
+   initdb
 
 
 #.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
     Writing your own Python fixtures.
-
-#.  :doc:`/tutorials/polls/mysite/index` : In this section we are
-    going to convert the “Polls” application from Django’s tutorial
-    into a Lino application. This will illustrate some differences
-    between Lino and Django.
 
 #.  :doc:`/tutorials/tables/index` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
 
 #.  :doc:`layouts` : About layouts, detail windows, data elements and
     panels.
+
+#.  :doc:`initdb` : More about the ``initdb`` and ``initdb_demo``
+    commands.
 
 
 
@@ -85,35 +96,39 @@ between Lino and other frameworks.
 Working with others
 ===================
 
-
-#. :doc:`/team/projects`
-#. :doc:`env`
 #. :doc:`pull`
 #. :doc:`runtests`
 #. :doc:`contrib`
 #. :doc:`patch`
 #. :doc:`request_pull`
 #. :doc:`ci`
-#. :doc:`/team/builddocs`
-#. :doc:`/team/devblog`
 #. :doc:`versioning`
 
 
 .. toctree::
    :hidden:
 
-   /team/projects
-   env
    pull
    runtests
    contrib
    patch
    request_pull
    ci
-   /team/builddocs
-   /team/devblog
    versioning
    
+   
+Writing documentation
+=====================
+
+#. :doc:`/team/builddocs`
+#. :doc:`/team/devblog`
+
+   
+.. toctree::
+   :hidden:
+
+   /team/builddocs
+   /team/devblog
 
 
 Getting acquaintained

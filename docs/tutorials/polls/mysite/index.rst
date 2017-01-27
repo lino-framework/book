@@ -1,6 +1,6 @@
 .. _lino.tutorial.polls:
 
-The Lino Polls tutorial 
+The Lino Polls tutorial
 =======================
 
 
@@ -54,6 +54,20 @@ Two remarks before diving into above documents:
   <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
   it, just be aware that with Lino you won't need many things
   explained there.
+
+Summary of what you should have done::  
+
+    $ cd ~/projects
+    $ django-admin startproject mysite
+    $ cd mysite
+    $ python manage.py startapp polls
+    $ e polls/views.py 
+    $ e polls/urls.py
+    $ e mysite/urls.py
+    $ e mysite/settings.py
+    $ e polls/models.py
+    $ python manage.py migrate
+  
   
 We now leave the Django philosophy and continue "the Lino way" of
 writing web applications.
@@ -76,6 +90,7 @@ of files in your "project directory"::
                 __init__.py
             models.py
             tests.py
+            urls.py
             views.py
 
 Some of these files remain unchanged: :xfile:`__init__.py`,
@@ -84,14 +99,16 @@ Some of these files remain unchanged: :xfile:`__init__.py`,
 You can *delete* the following files::
 
   $ rm mysite/urls.py
+  $ rm polls/urls.py
   $ rm polls/views.py
   $ rm polls/admin.py
+  $ rm polls/apps.py
 
 And then we are now going to modify the files
 :file:`mysite/settings.py` and :file:`polls/models.py`.
 
-The :file:`settings.py` file
------------------------------
+The :file:`mysite/settings.py` file
+-----------------------------------
 
 Please change the contents of your :xfile:`settings.py` to the
 following:
@@ -160,8 +177,8 @@ customers. We will come back to this in :doc:`/dev/settings` and
      'polls')
 
 
-The :file:`models.py` file
---------------------------
+The :file:`polls/models.py` file
+--------------------------------
 
 Please change the contents of your :file:`polls/models.py` to the
 following:
@@ -185,8 +202,8 @@ A few explanations while looking at that file:
   actions in :ref:`dev.actions`.
 
 
-The :file:`desktop.py` file
----------------------------
+The :file:`polls/desktop.py` file
+---------------------------------
 
 Now please create (in the same directory as your :xfile:`models.py`) a
 file named :file:`desktop.py` with the following content.
@@ -209,22 +226,23 @@ another tutorial :ref:`lino.tutorial.tables`.  For now just note that
 Changing the database structure
 -------------------------------
 
-One more thing before seeing a result.  We made at least one change in
-our :xfile:`models.py` file after the Django tutorial: we added the
-`hidden` field of a Question::
+One more thing before seeing a result.  We made a little change in our
+database schema after the Django tutorial: in our :xfile:`models.py`
+file we added the `hidden` field of a Question ::
 
     hidden = models.BooleanField(
         "Hidden",
         help_text="Whether this poll should not be shown in the main window.",
         default=False)
 
-To be more precise: Django and Lino "know" that we added a field named
-`hidden` in the `Questions` table of our database, **but** the database
-doesn't yet know it.  If you would run your application now, then you
-would get some "operational" database error because Lino would ask the
-database to read or update this field, and the database would answer
-that there is no field named "hidden".  We must tell our database that
-the structure has changed.
+You have learned what this means: Django (and Lino) "know" that we
+added a field named `hidden` in the `Questions` table of our database,
+but the *database* doesn't yet know it.  If you would run your
+application now, then you would get some error message about unapplied
+migrations or some "operational" database error because Lino would ask
+the database to read or update this field, and the database would
+answer that there is no field named "hidden".  We must tell our
+database that the structure has changed.
 
 For the moment we are just going to *reinitialize* our database,
 i.e. *delete* any data you may have manually entered during the Django
@@ -234,14 +252,19 @@ Polls tutorial and turn the database into a virgin state::
 
 The output should be::
 
+    We are going to flush your database (/home/luc/projects/mysite/mysite/default.db).
+    Are you sure (y/n) ? [Y,n]?
+    `initdb ` started on database /home/luc/projects/mysite/mysite/default.db.
     Operations to perform:
-      Synchronize unmigrated apps: about, jinja, staticfiles, polls, lino_startup, extjs, bootstrap3
-      Apply all migrations: (none)
+      Synchronize unmigrated apps: about, jinja, staticfiles, lino_startup, extjs, bootstrap3
+      Apply all migrations: polls
     Synchronizing apps without migrations:
       Creating tables...
         Running deferred SQL...
     Running migrations:
-      No migrations to apply.
+      Rendering model states... DONE
+      Applying polls.0001_initial... OK
+  
 
 ..
     >>> from django.core.management import call_command
@@ -253,7 +276,7 @@ Adding a demo fixture
 
 Now we hope that you are a bit frustrated about having all that
 beautiful data which you manually entered during the Django Polls
-tutorial gone forever.  This is the moment for intruducing you to
+tutorial gone forever. This is the moment for intruducing you to
 **demo fixture**.
 
 When you develop and maintain a database application, it happens often
