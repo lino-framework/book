@@ -276,7 +276,7 @@ Adding a demo fixture
 
 Now we hope that you are a bit frustrated about having all that
 beautiful data which you manually entered during the Django Polls
-tutorial gone forever. This is the moment for intruducing you to
+tutorial gone forever. This is the moment for introducing you to
 **demo fixture**.
 
 When you develop and maintain a database application, it happens often
@@ -354,7 +354,7 @@ is easy and fun because you can write fixtures in Python.
     row) and 14 choices. It seems that everything is duplicated
     because `initdb` does nothing when database is `:memory:`.
     
-Read more about Python fixtures in :ref:`lino.tutorial.dpy`, or
+Read more about Python fixtures in :doc:`/tutorials/dumpy/index`, or
 simply stay here and learn by doing.
 
   

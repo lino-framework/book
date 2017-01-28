@@ -87,6 +87,7 @@ between Lino and other frameworks.
    /about/not_easy
    /about/think_python
    ui
+   datamig
     
     
 
@@ -262,10 +263,10 @@ Drafts
    signals
    intro
    style
-   datamig
    versions
    extjs
    overview
+   inject_field
 
 
 Other

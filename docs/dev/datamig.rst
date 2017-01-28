@@ -10,29 +10,42 @@ Overview
 Data migration is a complex topic. Django needed until version 1.7
 before they dared to suggest a default method to automating these
 tasks (see `Migrations
-<https://docs.djangoproject.com/en/1.7/topics/migrations/>`_ if you
-are curious).  
+<https://docs.djangoproject.com/en/1.7/topics/migrations/>`_).
 
 Lino includes a system for managing database migrations which takes a
-rather different approach than Django.
+rather different approach than what Django does.
 
-The basic idea is that you write a *Python dump* (see
-:doc:`/dev/dump2py`) *before* upgrading with the old version, and that
-you load that dump with the new version *after* upgrading.
+Advantages of Lino migrations:
 
-Disadvantage:
+- They help making the whole process of developing applications (which
+  includes testing, maintaining and documenting) more natural and
+  easier to manage.
 
-- You cannot migrate a running system. Users must stop working in your
-  application for a few minutes.
+- They work also when you use the :doc:`inject_field` and :ref:`mldbc`
+  features.
 
-Advantage: 
+Lino suggests to *not use* Django migrations. At least if you want to
+use either the :doc:`inject_field <inject_field>` or :ref:`BabelField
+<mldbc>` features. If your application uses them (or if it uses a
+plugin which uses them), then Django migrations won't work.
 
-- The whole process of developing, maintaining and testing migration
-  code becomes more natural and easier to manage.
+You might still want to use the Django approach because Lino
+migrations have one inevitable **disadvantage**: they can take half an
+hour to run. Users must stop working in your application during that
+time.  There are systems where half an hour downtime for an upgrade is
+not acceptable.
+
+If you *do* need to use Django migrations in your Lino application,
+then you may not use :doc:`inject_field <inject_field>` and
+:ref:`BabelField <mldbc>`.
 
 
 General strategy for handling data migrations
 =============================================
+
+The basic idea is that you :doc:`write a Python dump </dev/dump2py>`
+with the old version (*before* upgrading), and that you load that dump
+with the new version (*after* upgrading).
 
 - When you upgrade on a production site, always make a Python dump
   (using :manage:`dump2py`) of your database **before** the upgrade.
@@ -40,14 +53,13 @@ General strategy for handling data migrations
 - **After** the upgrade, reinitialize your database from that dump by
   running the :xfile:`restore.py` script.
 
-- Certain schema changes don't need a migrator and will work
-  automatically: new models, new fields (when they have a default
-  value), `unique` constraints, ...
+Certain schema changes will migrate automatically: new models, new
+fields (when they have a default value), `unique` constraints, ...
 
-- If there were unhandled schema changes, you will get error messages.
-  No reason to panic. Just correct your code and try again.  You can
-  run the :xfile:`restore.py` script as often as needed until there
-  are no more errors.
+If there were unhandled schema changes, you will get error messages.
+This is no reason to panic. Just change your code and try again.  You
+can run the :xfile:`restore.py` script as often as needed until there
+are no more errors.
 
 There are two ways for correcting your code: either by locally
 modifying your :xfile:`restore.py` script or by writing a migrator.
