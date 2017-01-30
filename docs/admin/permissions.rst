@@ -36,7 +36,7 @@ Discovering problems
 
 - Find files and directories which are not group-owned by www-data::
 
-    $ find ! -group www-data    
+    $ find ! -group www-data
 
 - Show directories which don't have the `setgid flags
   <https://en.wikipedia.org/wiki/Setuid>`_ set::

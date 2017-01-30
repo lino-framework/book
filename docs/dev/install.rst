@@ -157,11 +157,14 @@ You should now have four directories called `~/repositories/lino`,
 each of which contains a file :xfile:`setup.py` and a whole tree of
 other files and directories.
 
-One possible problem here is that the Lino repository has a big size.
-If you just want to try out the latest version and will never submit
-any pull request, then you can reduce this from 300MB to to 63MB by
-adding ``--depth 1`` option (as explained in `this question on
-stackoverflow
+One possible problem here is that some repositories might have a big
+size.  If you just want to get the latest version and don't plan to
+submit any pull requests, then you can reduce download size by adding
+``--depth 1`` and ``-b master`` options::
+
+  $ git clone --depth 1 -b master https://...
+
+(as explained in `this question on stackoverflow
 <http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
 or Nicola Paolucci's blog entry `How to handle big repositories with
 git

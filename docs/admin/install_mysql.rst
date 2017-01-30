@@ -27,7 +27,6 @@ Install mysql on your site::
 
 Install the mysql client into your project's virtualenv::    
 
-    $ go prj1
     $ pip install mysql-python
 
 Users
