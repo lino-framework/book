@@ -17,19 +17,20 @@ now, but let's already install them:
 - :ref:`cosi`, :ref:`voga` and :ref:`presto`
 - :ref:`welfare`
 - :ref:`extjs6`.
+- :ref:`avanti`
 
 Remember that in :ref:`lino.dev.install` you did::
 
   $ cd ~/repositories
   $ git clone https://github.com/lino-framework/lino.git
   $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/cosi.git
   $ git clone https://github.com/lino-framework/book.git
 
 Now clone the also the following other repositories in a similar way::
   
   $ cd ~/repositories
   $ git clone https://github.com/lino-framework/noi.git
-  $ git clone https://github.com/lino-framework/cosi.git
   $ git clone https://github.com/lino-framework/voga.git
   $ git clone https://github.com/lino-framework/presto.git
   $ git clone https://github.com/lino-framework/welfare.git
@@ -40,7 +41,6 @@ And then you install them using pip (as editable using ``-e``
 option)::
 
   $ pip install -e noi
-  $ pip install -e cosi
   $ pip install -e voga
   $ pip install -e presto
   $ pip install -e welfare
@@ -50,20 +50,21 @@ option)::
 As a last step we must tell :ref:`atelier` about these new projects.
 Open your :xfile:`~/.atelier/config.py` file which should contain::
   
-     add_project("/home/john/projects/mylets")
      add_project("/home/john/projects/hello")
      for p in ('lino', 'xl', 'book'):
          add_project("/home/john/repositories/" + p)
 
 Change that to::
 
-     add_project("/home/john/projects/mylets")
      add_project("/home/john/projects/hello")
-     for p in 'lino xl book noi cosi voga presto welfare extjs6'.split():
+     names = 'lino xl book noi voga presto welfare avanti extjs6'
+     for p in names.split():
          add_project("/home/john/repositories/" + p)
 
-Note that the :meth:`split` method on a string splits that string on
-every whitspace:
+Note our use of a syntactical trick to avoid typing lots of
+apostrophes: we put the names into a single string, separated just by
+spaces. And then we call the :meth:`split` method on that string which
+splits our string on every whitspace:
 
 >>> 'foo bar  baz'.split()
 ['foo', 'bar', 'baz']
@@ -72,11 +73,11 @@ every whitspace:
 How to switch to the development version of Atelier
 ===================================================
 
-The :ref:`atelier` package has been automatically installed as a
-dependency of :mod:`lino`. That is, you are using the officially
-released PyPI version. :ref:`atelier` is more or less stable, but 
-one day we might decide that you should rather switch to the
-development version.
+The :mod:`atelier` package had been automatically installed together
+with :mod:`lino`. That is, you are using the *PyPI* version of
+Atelier.  That's usually okay because Atelier is more or less
+stable. But one day we might decide that you should rather switch to
+the *development* version.
 
 Doing this is easy:
 
