@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2016 Luc Saffre
+# Copyright 2012-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """A special settings module to be used as DJANGO_SETTINGS_MODULE when
@@ -31,8 +31,7 @@ class Site(Site):
     # languages = 'en de fr'
     languages = 'en de fr et nl pt-br es'
 
-    # user_types_module = 'lino.modlib.users.roles'
-    user_types_module = 'lino_xl.lib.xl.roles'
+    user_types_module = 'lino_xl.lib.xl.user_types'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

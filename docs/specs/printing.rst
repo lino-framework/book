@@ -5,6 +5,7 @@ Printing documents
 .. How to test only this document:
 
      $ python setup.py test -s tests.SpecsTests.test_printing
+     $ py.test -k test_printing
 
    Initialize doctest:
 

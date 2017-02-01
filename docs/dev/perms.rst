@@ -65,12 +65,12 @@ Just a fictive example::
 A real-world application can define *many* user roles. For example
 here is an inheritance diagram of the roles used by :ref:`noi`:
 
-.. inheritance-diagram:: lino_noi.lib.noi.roles
+.. inheritance-diagram:: lino_noi.lib.noi.user_types
                          
 And if you think that above hierarchy is complex, then don't look at
 the following one (that of :ref:`welfare`)...
 
-.. inheritance-diagram:: lino_welfare.modlib.welfare.roles
+.. inheritance-diagram:: lino_welfare.modlib.welfare.user_types
  
 Above examples illustrate that *not* every single user role is
 meaningful in practice.
@@ -121,8 +121,8 @@ Here is the default list of user types:
 >>> users.UserTypes.admin
 users.UserTypes.admin:900
 
->>> users.UserTypes.admin.roles  #doctest: +ELLIPSIS
-set([<lino.modlib.office.roles.SiteAdmin object at ...>])
+>>> users.UserTypes.admin.role  #doctest: +ELLIPSIS
+<lino_xl.lib.xl.user_types.SiteAdmin object at ...>
 
 >>> users.UserTypes.admin.readonly
 False
@@ -130,18 +130,19 @@ False
 >>> users.UserTypes.admin.hidden_languages
 
 
-The type of a user is stored in a field whose internal name is
-:attr:`profile <lino.modlib.users.models.User.profile>`. This is is
-because at the beginnings of Lino we called them **user
-profiles**. Now we prefer to call them **user types**. The web
-interface already calls them "types", but it will take some time to
-change all internal names from "profile" to "type".
+The **user type** of a user is stored in a field whose internal name
+is :attr:`profile <lino.modlib.users.models.User.profile>`. This is
+because at the beginnings of Lino we called them "user profiles".  Now
+we prefer to call them **user types**. The web interface already calls
+them "types", but it will take some time to change all internal names
+from "profile" to "type".
 
 >>> robin = users.User.objects.get(username='robin')
 >>> robin.profile  #doctest: +ELLIPSIS
 users.UserTypes.admin:900
->>> robin.profile.roles  #doctest: +ELLIPSIS
-set([<lino.modlib.office.roles.SiteAdmin object at ...>])
+
+>>> robin.profile.role  #doctest: +ELLIPSIS
+<lino_xl.lib.xl.user_types.SiteAdmin object at ...>
 
 
 
@@ -158,10 +159,10 @@ Where "resource" is one of the following:
   subclass thereof)
 - a panel (an instance of :class:`lino.core.layouts.Panel`)
 
-All these objects have a :attr:`required_roles
+These objects have a :attr:`required_roles
 <lino.core.permissions.Permittable.required_roles>` attribute which
-specifies the user roles required for getting permission to access
-this resource.
+must be a :func:`set` of the user roles required for getting
+permission to access this resource.
 
 For example, the list of all users (the :class:`users.AllUsers
 <lino.modlib.users.desktop.AllUsers>` table) is visible only for users

@@ -30,7 +30,7 @@ class Site(Site):
     # languages = 'en de fr'
     languages = 'en de fr et nl pt-br es'
 
-    user_types_module = 'lino.modlib.users.roles'
+    user_types_module = 'lino.core.user_types'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

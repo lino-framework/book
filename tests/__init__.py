@@ -49,6 +49,9 @@ class DocsTests(LinoTestCase):
         docs/tested/test_i18n.rst
         """)
 
+    def test_watch(self):
+        self.run_simple_doctests("docs/dev/watch.rst")
+
     def test_perms(self):
         self.run_simple_doctests('docs/dev/perms.rst')
 
@@ -104,8 +107,8 @@ class DocsTests(LinoTestCase):
         # self.run_django_admin_command_cd('docs/tutorials/de_BE', 'test')
         self.run_django_manage_test('docs/tutorials/de_BE')
 
-    def test_sendchanges(self):
-        self.run_django_manage_test('docs/tutorials/sendchanges')
+    # def test_sendchanges(self):
+    #     self.run_django_manage_test('docs/tutorials/sendchanges')
 
     def test_myroles(self):
         self.run_django_manage_test('docs/tutorials/myroles')
@@ -125,8 +128,8 @@ class DocsTests(LinoTestCase):
     def test_actors(self):
         self.run_django_manage_test('docs/tutorials/actors')
 
-    def test_watch(self):
-        self.run_django_manage_test('docs/tutorials/watch_tutorial')
+    # def test_watch(self):
+    #     self.run_django_manage_test('docs/tutorials/watch_tutorial')
     
     def test_vtables(self):
         self.run_django_manage_test('docs/tutorials/vtables')
@@ -246,6 +249,9 @@ class ProjectsTests(TestCase):
 
     def test_events(self):
         self.run_django_manage_test("lino_book/projects/events")
+
+    def test_watch(self):
+        self.run_django_manage_test("lino_book/projects/watch")
 
     def test_belref(self):
         self.run_django_manage_test("lino_book/projects/belref")

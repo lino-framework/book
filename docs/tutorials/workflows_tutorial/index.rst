@@ -4,7 +4,7 @@ Workflows
 ---------
 
 This tutorial explains how to use workflows.
-It extends the application created in :ref:`lino.tutorial.watch`,
+It extends the application created in :ref:`dev.watch`,
 so you should do that tutorial before reading on here.
 
 Vocabulary: in Lino a "workflow" is a combination of
@@ -21,7 +21,7 @@ here it is called simply `workflows.py`:
 
 .. literalinclude:: workflows.py
 
-In `models.py` there are only a few changes (compared to :ref:`lino.tutorial.watch`), 
+In `models.py` there are only a few changes (compared to :ref:`dev.watch`), 
 first we need import the `EntryStates` workflow, and then change the 
 Entry model to use it::
 

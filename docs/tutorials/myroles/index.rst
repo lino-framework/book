@@ -12,38 +12,53 @@ Local customizations to the user permissions
 
     >>> from lino.api.doctest import *
 
+This tutorial explains how to locally override a user types module.
+
 .. contents::
    :depth: 1
    :local:
 
 
-The roles module
-================
+The example
+===========
 
-The standard system or user roles and profiles is defined by
-:mod:`lino_book.projects.polly.roles`.
+For example the default permission system of Lino Polly says that only
+a site administrator can see the global list of all polls. This list
+is visible through :menuselection:`Explorer --> Polls --> Polls`.  A
+normal user does not see that menu command.
 
-This system is used by default:
+We are going to apply a local customization. In our variant of a Lino
+Polly application, *every* authenticated user (not only site admins)
+can see that table.
+
+Here is the :xfile:`settings.py` file used by this tutorial:
+
+.. literalinclude:: settings.py
+
+And here is the :file:`myroles.py` file used by this tutorial:
+
+.. literalinclude:: myroles.py
+
+
+
+Explanations
+============
+
+The standard user types module of a Lino Polly is
+:mod:`lino_xl.lib.xl.user_types`:
 
 >>> from lino_book.projects.polly.settings import Site
 >>> print(Site.user_types_module)
-lino_xl.lib.polls.roles
+lino_xl.lib.xl.user_types
 
-The local roles module
-======================
+On this site we created a local user types module whose first line
+imports everything from the standard module::
 
-On this site we created a local roles module.
+    from lino_xl.lib.xl.user_types import *
 
-First step is to **create and activate a local roles module**:
-
-- Create a file named :file:`myroles.py` next to your local
-  :xfile:`settings.py` with this content::
-
-    from lino_book.projects.polly.roles import *
-
-- In your :xfile:`settings.py` file, set :attr:`user_types_module
-  <lino.core.site.Site.user_types_module>` to the Python path of
-  above file::
+In our :xfile:`settings.py` file, we set :attr:`user_types_module
+<lino.core.site.Site.user_types_module>` to the Python path of
+above file::
     
     user_types_module = 'mysite.myroles'
 
@@ -59,22 +74,6 @@ Second step is to add customizations to that :file:`myroles.py` file.
 
 An example
 ==========
-
-For example the default permission system of Lino Polly says that only
-a site administrator can see the global list of all polls. This list
-is visible through :menuselection:`Explorer --> Polls --> Polls`.  A
-normal user does not see that menu command.  But we apply a local
-customization. In our variant of a Lino Polly application, every
-authenticated user can see that table.
-
-Here is the :xfile:`settings.py` file used by this tutorial:
-
-.. literalinclude:: settings.py
-
-And here is the :file:`myroles.py` file used by this tutorial:
-
-.. literalinclude:: myroles.py
-
 
 The following code snippets are to test whether a normal user now
 really can see all polls (i.e. has the :menuselection:`Explorer -->

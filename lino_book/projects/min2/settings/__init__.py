@@ -15,7 +15,7 @@ class Site(Site):
     project_model = 'contacts.Person'
     # project_model = 'projects.Project'
     languages = 'en et fr'
-    user_types_module = 'lino.modlib.office.roles'
+    user_types_module = 'lino_xl.lib.xl.user_types'
 
     demo_fixtures = """std demo demo2 checkdata""".split()
 

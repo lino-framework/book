@@ -1,5 +1,7 @@
-from lino_xl.lib.polls.roles import *
+from lino_xl.lib.xl.user_types import *
 
 from lino.api import dd, rt
-t = rt.modules.polls.AllPolls
-t.required_roles = dd.login_required(PollsUser)
+from lino_xl.lib.polls.roles import PollsUser
+
+AllPolls = rt.modules.polls.AllPolls
+AllPolls.required_roles = dd.login_required(PollsUser)

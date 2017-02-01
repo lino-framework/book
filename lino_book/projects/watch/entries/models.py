@@ -1,14 +1,10 @@
-## This file is part of the Lino project.
-
 from django.db import models
 from lino.api import dd
-from lino import mixins
 from django.utils.translation import ugettext_lazy as _
 
 from lino.modlib.users.mixins import My, UserAuthored
 
 
-# class Entry(mixins.CreatedModified, UserAuthored):
 class Entry(UserAuthored):
 
     class Meta:
@@ -56,14 +52,14 @@ def my_change_watchers(sender, **kw):
     # In our example we want to collect changes to Company and Entry
     # objects to their respective Partner.
 
-    wc(self.modules.contacts.Partner)
-    wc(self.modules.contacts.Company, master_key='partner_ptr')
-    wc(self.modules.watch_tutorial.Entry, master_key='company__partner_ptr')
+    wc(self.models.contacts.Partner)
+    wc(self.models.contacts.Company, master_key='partner_ptr')
+    wc(self.models.entries.Entry, master_key='company__partner_ptr')
 
     # add two application-specific panels, one to Partners, one to
     # Companies:
-    self.modules.contacts.Partners.add_detail_tab(
+    self.actors.contacts.Partners.add_detail_tab(
         'changes', 'changes.ChangesByMaster')
-    self.modules.contacts.Companies.add_detail_tab(
-        'entries', 'watch_tutorial.EntriesByCompany')
+    self.actors.contacts.Companies.add_detail_tab(
+        'entries', 'entries.EntriesByCompany')
 

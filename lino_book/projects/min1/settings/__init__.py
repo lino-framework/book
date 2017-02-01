@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2016 Luc Saffre
+# Copyright 2012-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 """
 This is the base for all settings of lino.projects.min1
@@ -20,9 +20,7 @@ class Site(Site):
 
     demo_fixtures = 'std demo demo2'
 
-    user_types_module = 'lino.modlib.office.roles'
-
-    # workflows_module = 'lino_xl.lib.cal.workflows.take'
+    user_types_module = 'lino_xl.lib.xl.user_types'
 
     def setup_quicklinks(self, user, tb):
         super(Site, self).setup_quicklinks(user, tb)

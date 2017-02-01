@@ -15,6 +15,7 @@ ns.setup_from_tasks(
         'docs/api/lino_xl.*',
         'docs/api/lino_book.*'],
     demo_projects=[
+        'lino_book.projects.watch.settings',
         'lino_book.projects.docs.settings.demo',
         'lino_book.projects.belref.settings.demo',
         'lino_book.projects.polly.settings.demo',

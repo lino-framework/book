@@ -28,20 +28,13 @@ class Site(Site):
     author_email = 'luc.saffre@gmail.com'
 
     demo_fixtures = 'std demo feedback demo2'.split()
-    user_types_module = 'lino_xl.lib.polls.roles'
+    # user_types_module = 'lino_book.projects.polly.user_types'
+    user_types_module = 'lino_xl.lib.xl.user_types'
 
     languages = 'en de et'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.gfks'
-        # yield 'lino.modlib.system'
         yield 'lino.modlib.users'
-        #~ yield 'lino_xl.lib.countries'
-        #~ yield 'lino_xl.lib.properties'
-        #~ yield 'lino.modlib.' + self.partners_app_label
-        #~ yield 'lino_xl.lib.households'
         yield 'lino_xl.lib.polls'
-        #~ yield 'lino_xl.lib.pages'
-        #~ yield 'lino.projects.polly'
-        # yield 'lino_xl.lib.appypod'
