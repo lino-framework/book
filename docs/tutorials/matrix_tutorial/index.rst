@@ -7,7 +7,7 @@ This tutorial shows how to use tables with dynamic columns.
 Accidentally it also introduces a usage example for `parameters`, 
 a feature which is not yet covered by any tutorial.
 
-It extends the application created in :ref:`lino.tutorial.watch`
+It extends the application created in :ref:`dev.watch`
 (so you should do that tutorial before reading on here).
 We add an `EntryType` model and a `CompaniesWithEntryTypes` 
 table which is a matrix with one row per `Company` and one 

@@ -230,7 +230,7 @@ Special topics
    /tutorials/sendchanges/index
    /tutorials/actors/index
    /tutorials/de_BE/index
-   /tutorials/watch_tutorial/index
+   watch
    /tutorials/workflows_tutorial/index
    /tutorials/matrix_tutorial/index
 

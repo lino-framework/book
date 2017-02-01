@@ -13,9 +13,8 @@ plugin using :ref:`polly`.
     doctest init:
 
     >>> from __future__ import print_function
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = \
-    ...    'lino_book.projects.polly.settings.doctests'
+    >>> from lino import startup
+    >>> startup('lino_book.projects.polly.settings.doctests')
     >>> from lino.api.doctest import *
     
 This document uses the :mod:`lino_book.projects.polly` test database:

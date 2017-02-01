@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2016 Luc Saffre
+# Copyright 2009-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
+
+# python setup.py test -s tests.PackagesTests
 
 from __future__ import unicode_literals
 import sys
@@ -89,6 +91,10 @@ lino_book.projects.babel_tutorial.fixtures
 lino_book.projects.dumps
 lino_book.projects.dumps.fixtures
 lino_book.projects.dumps.settings
+lino_book.projects.watch
+lino_book.projects.watch.entries
+lino_book.projects.watch.fixtures
+lino_book.projects.watch.tests
 lino_book.projects.belref
 lino_book.projects.belref.fixtures
 lino_book.projects.belref.settings

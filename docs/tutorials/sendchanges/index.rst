@@ -4,6 +4,8 @@
 Notifying others about database modifications
 =============================================
 
+Deprecated. No longer being tested.
+
 This is a usage example for :mod:`lino.utils.sendchanges`.
 
 .. $ python setup.py test -s tests.DocsTests.test_sendchanges

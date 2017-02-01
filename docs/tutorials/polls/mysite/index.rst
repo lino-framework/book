@@ -26,8 +26,8 @@ http://demo1.lino-framework.org
  :depth: 2
 
 
-Create a local Django project
------------------------------
+Begin with the Django tutorial
+------------------------------
 
 There is a lot of Django know-how which applies to Lino as well.  So
 before reading on, please follow **parts 1 and 2** of the **Django
@@ -67,13 +67,15 @@ Summary of what you should have done::
     $ e mysite/settings.py
     $ e polls/models.py
     $ python manage.py migrate
-  
-  
+    
+
 We now leave the Django philosophy and continue "the Lino way" of
 writing web applications.
 
-After having done above tutorial sections, you should now have a set
-of files in your "project directory"::
+From Django to Lino
+-------------------
+
+You should now have a set of files in your "project directory"::
 
     mysite/
         manage.py
@@ -96,15 +98,20 @@ of files in your "project directory"::
 Some of these files remain unchanged: :xfile:`__init__.py`,
 :xfile:`manage.py` and :xfile:`wsgi.py`.
 
-You can *delete* the following files::
+Now **delete** the following files::
 
   $ rm mysite/urls.py
   $ rm polls/urls.py
   $ rm polls/views.py
   $ rm polls/admin.py
   $ rm polls/apps.py
+  $ rm -R polls/migrations
 
-And then we are now going to modify the files
+It is especially important to delete the :file:`migrations` directory
+and its content because they would interfere with what we are going to
+show you in this tutorial.
+
+And in the following sections we are going to **modify** the files
 :file:`mysite/settings.py` and :file:`polls/models.py`.
 
 The :file:`mysite/settings.py` file
@@ -354,8 +361,10 @@ is easy and fun because you can write fixtures in Python.
     row) and 14 choices. It seems that everything is duplicated
     because `initdb` does nothing when database is `:memory:`.
     
-Read more about Python fixtures in :doc:`/tutorials/dumpy/index`, or
-simply stay here and learn by doing.
+You might now want to read more about :doc:`Python fixtures
+</tutorials/dumpy/index>` or Lino's special approach for
+:doc:`migrating data </dev/datamig>`...  or simply stay with us and
+learn by doing!
 
   
 Starting the web interface
@@ -366,10 +375,6 @@ Now we are ready to start the development web server on our project::
   $ cd ~/mypy/mysite
   $ python manage.py runserver
   
-or (on Windows)::
-
-  c:\mypy\mysite> python manage.py runserver
-  
 and point your browser to http://127.0.0.1:8000/ to see your first
 Lino application running. It should look something like this:q
 
@@ -377,18 +382,17 @@ Lino application running. It should look something like this:q
     :scale: 50
 
 
-Feel free to play around and create some polls before reading on.
+Please play around and check whether everything works as expected
+before reading on.
 
 
 
 The main index
 --------------
 
-Now let's customize our **main window** (or *index view*).
- 
-Lino uses a template named :xfile:`admin_main.html` for rendering the
-HTML to be displayed there.  We are going to **override** that
-template.
+Now let's customize our **main window** (or *index view*).  Lino uses
+a template named :xfile:`admin_main.html` for rendering the HTML to be
+displayed there.  We are going to **override** that template.
 
 Please create a directory named :file:`mysite/config`, and in that
 directory create a file named :xfile:`admin_main.html` with the
@@ -431,6 +435,9 @@ Explanations:
   method which returns a HTML fragment that displays a button-like
   link which will run the action when clicked.  More about this in
   :ref:`dev.actions`.
+
+- The :func:`fdl` function is a Lino-specific template function. These
+  are documented in :doc:`/user/templates_api`.
 
 
 As a result, our main window now features a summary of the currently
