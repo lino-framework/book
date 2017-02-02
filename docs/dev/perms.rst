@@ -1,3 +1,4 @@
+.. _dev.permissions:
 .. _permissions:
 
 ===========
@@ -16,34 +17,35 @@ Permissions
     >>> from lino.api.shell import *
 
 
-Lino checks whether a given user has permission to see a given
-resource or to execute a given action.  For example, a system
-administrator can see certain resources which a simple user cannot
-see.
+As soon as a database application is used by more than one user, we
+usually need to speak about **permissions**.  For example, a system
+administrator can see certain resources which a simple user should not
+get to see.  The application must check whether a given user has
+permission to see a given resource or to execute a given action.  An
+application framework must provide a system for managing these
+permissions.
 
-Lino adds enterprise-level concepts for definining permissions. This
-includes class-based user roles and a replacement for Django's User
-model.
+Lino handles permissions in a radically different way than Django.
+While Django stores permissions as records in the database, in Lino
+they are entirely defined by the application code as class-based user
+roles.  This radically different approach required us to replace
+Django's :mod:`django.contrib.auth` module, including the
+:class:`User` model, by our own plugin :mod:`lino.modlib.users`.
 
-See also: :doc:`users`.
+Yes, this is radical. Django's approach for managing permissions is
+one of the reasons why I wrote Lino.  I believe that maintaining a few
+production sites with applications like :ref:`welfare` or :ref:`voga`
+would be a hell if I had implemented them using Django.  Permission
+management is complex.  Lino doesn't turn it into something simple,
+but it brings light into the dark tunnel...
+
 
 
 User roles
 ==========
 
-A **user role** is the role of a user in the system. It is the basic
-unit for defining permissions.  User roles are used by the application
-developer (1) for specifying the **roles required** to use a given
-resource and (2) for specifying the **granted roles** a user has.
-
-Lino comes with a few built-in user roles which are defined in
-:mod:`lino.core.roles`.
-
-User roles are just class objects which represent conditions for
-getting permission to access the functionalities of the application.
-
-Every plugin may define its own user roles.  And then --the most fun--
-a role can inherit from one or several other roles.
+A **user role** is a role of a user in our application. It is used as
+the basic unit for defining permissions.
 
 Just a fictive example::
 
@@ -62,35 +64,61 @@ Just a fictive example::
     class MySiteAdmin(Director, SiteAdmin):
         """Can everything, including user management."""
   
+User roles are class objects which represent conditions for getting
+permission to access the functionalities of the application.  Lino
+comes with a few built-in user roles which are defined in
+:mod:`lino.core.roles`.  Every plugin may define its own user roles
+which must be subclasses of these builtin roles.  And of course a role
+can inherit from one or several other roles.
+
 A real-world application can define *many* user roles. For example
 here is an inheritance diagram of the roles used by :ref:`noi`:
 
 .. inheritance-diagram:: lino_noi.lib.noi.user_types
                          
-And if you think that above hierarchy is complex, then don't look at
-the following one (that of :ref:`welfare`)...
+And if you think this diagram is complex, then don't look at the
+following one (that of :ref:`welfare`)...
 
 .. inheritance-diagram:: lino_welfare.modlib.welfare.user_types
- 
-Above examples illustrate that *not* every single user role is
-meaningful in practice.
 
-So we need to define a *subset of all available roles* for that
-application.  This is done using the :class:`UserTypes
-<lino.modlib.users.choicelists.UserTypes>` choicelist.
+As the application developer you must specify for each resource the
+role(s) that are *required* to use it.
 
 
 User types
 ==========
 
-When creating a new user, the site administrator needs to assign a
-role to every user. This is done indirectly by setting what we call
-the **user type**.
+When creating a new user, the site administrator needs to assign these
+roles to every user.
 
-A user *type* contains a bit more information than a user role.  A
-user type has the following fields:
+But imagine they would get, for each user group, a multiple-choice
+combobox with all available roles from above examples! They would get
+crazy.
 
-- :attr:`role`, a pointer to the user role
+That's why we have **user types**.  The application sdeveloper defines
+a meaningful *subset of all available roles* for her application.
+This is done by populating the :class:`UserTypes
+<lino.modlib.users.choicelists.UserTypes>` choicelist.
+
+Each user type is basically not much more than a user-friendly *name*
+and a storable *value* given to a selected user role.  Here is the
+default list of user types, defined in :mod:`lino.core.user_types`:
+        
+>>> rt.show(users.UserTypes)
+======= =========== =============== ===============================================
+ value   name        text            User role
+------- ----------- --------------- -----------------------------------------------
+ 000     anonymous   Anonymous       <class 'lino.core.roles.UserRole'>
+ 100     user        User            <class 'lino_xl.lib.xl.user_types.SiteUser'>
+ 900     admin       Administrator   <class 'lino_xl.lib.xl.user_types.SiteAdmin'>
+======= =========== =============== ===============================================
+<BLANKLINE>
+
+
+Actually a user *type* contains a bit more information than a user
+role.  It has the following fields:
+
+- :attr:`role`, the role given to users of this type
 - :attr:`text`, a translatable name
 - :attr:`value`, a value for storing it in the database
 
@@ -105,30 +133,6 @@ user type has the following fields:
   type. This is used on sites with more than three or four
   :attr:`languages <lino.core.site.Site.languages>`.
 
-Here is the default list of user types:
-        
->>> rt.show(users.UserTypes)
-======= =========== ===============
- value   name        text
-------- ----------- ---------------
- 000     anonymous   Anonymous
- 100     user        User
- 900     admin       Administrator
-======= =========== ===============
-<BLANKLINE>
-
-
->>> users.UserTypes.admin
-users.UserTypes.admin:900
-
->>> users.UserTypes.admin.role  #doctest: +ELLIPSIS
-<lino_xl.lib.xl.user_types.SiteAdmin object at ...>
-
->>> users.UserTypes.admin.readonly
-False
-
->>> users.UserTypes.admin.hidden_languages
-
 
 The **user type** of a user is stored in a field whose internal name
 is :attr:`profile <lino.modlib.users.models.User.profile>`. This is
@@ -137,12 +141,44 @@ we prefer to call them **user types**. The web interface already calls
 them "types", but it will take some time to change all internal names
 from "profile" to "type".
 
+>>> rt.show('users.Users', column_names="username profile")
+========== ===============
+ Username   User type
+---------- ---------------
+ rando      Administrator
+ robin      Administrator
+ romain     Administrator
+========== ===============
+<BLANKLINE>
+
+
+Accessing permissions from within your code
+===========================================
+
+Just some examples...
+
+
+>>> UserTypes = rt.actors.users.UserTypes
+
+>>> UserTypes.admin
+users.UserTypes.admin:900
+
+>>> UserTypes.admin.role  #doctest: +ELLIPSIS
+<lino_xl.lib.xl.user_types.SiteAdmin object at ...>
+
+>>> UserTypes.admin.readonly
+False
+
+>>> UserTypes.admin.hidden_languages
+
+
 >>> robin = users.User.objects.get(username='robin')
 >>> robin.profile  #doctest: +ELLIPSIS
 users.UserTypes.admin:900
 
 >>> robin.profile.role  #doctest: +ELLIPSIS
 <lino_xl.lib.xl.user_types.SiteAdmin object at ...>
+
 
 
 
@@ -187,13 +223,13 @@ Local customizations
 You may have noted that :class:`UserTypes
 <lino.modlib.users.choicelists.UserTypes>` is a choicelist, not a
 database table.  This is because it depends on the application and is
-usually not locally modified.  
+usually not locally modified.
 
 Local site administrators may nevertheless decide to change the set of
 available user profiles.
 
 
-The user profiles module
+The user types module
 ========================
 
 The :attr:`roles_required
@@ -204,18 +240,21 @@ ignored when :attr:`user_types_module
 
 .. xfile:: roles.py
 
-The :xfile:`roles.py` is used for both defining roles and profiles the
-user roles that we want to make available in a given application.
-Every profile is assigned to one and only one user role. But not every
-user role is made available for selection in the
+.. xfile:: user_types.py
 
+The :xfile:`roles.py` is used for both defining roles
+
+A :xfile:`user_types.py` module is used for defining the user roles
+that we want to make available in a given application.  Every user
+type is assigned to one and only one user role. But not every user
+role is made available for selection in that list.
 
 
 
 .. _debug_permissions:
 
 Permission debug messages
--------------------------
+=========================
 
 Sometimes you want to know why a given action is available (or not
 available) on an actor where you would not (or would) have expected it
