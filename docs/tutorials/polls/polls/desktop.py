@@ -3,7 +3,7 @@ from lino.api import dd
 
 class Questions(dd.Table):
     model = 'polls.Question'
-    sort_order = ['pub_date']
+    order_by = ['pub_date']
 
     detail_layout = """
     id question_text
