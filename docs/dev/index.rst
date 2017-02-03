@@ -88,6 +88,7 @@ between Lino and other frameworks.
    /about/think_python
    ui
    datamig
+   perms
     
     
 
@@ -250,7 +251,6 @@ Drafts
 
    /tutorials/tested_docs/index
    startup
-   perms
    /tutorials/myroles/index
    workflows
    translate/index
