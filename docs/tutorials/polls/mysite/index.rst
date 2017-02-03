@@ -556,7 +556,7 @@ Exercises
     model, add this field to the `detail_layout` of your `Questions`
     table, modify your `admin_main.html` file so that the field content is
     displayed, optionally modify your :file:`demo.py` fixture, finally run
-    :manage:`initdb_demo` again before launching :manage:`runserver`.
+    :manage:`prep` again before launching :manage:`runserver`.
 
 See solutions to these in :doc:`/tutorials/polls2/mysite/index`
 

@@ -10,7 +10,7 @@ specified in :attr:`lino.core.site.Site.languages`) is something else than `en`,
 `de` or `fr`.
 
 If you set :attr:`lino.core.site.Site.languages` to ``"es en"`` and run
-:manage:`initdb_demo`, you get::
+:manage:`prep`, you get::
 
     INFO Loading /home/luc/hgwork/lino/lino/modlib/contacts/fixtures/std.py...
     Traceback (most recent call last):
@@ -18,7 +18,7 @@ If you set :attr:`lino.core.site.Site.languages` to ``"es en"`` and run
       File "/home/luc/pythonenvs/py27/local/lib/python2.7/site-packages/django/db/models/base.py", line 950, in full_clean
         raise ValidationError(errors)
     django.core.exceptions.ValidationError: {'name': [u'Este campo no puede estar vac\xedo.']}
-    INFO Done manage.py initdb_demo (PID 6436)
+    INFO Done manage.py prep (PID 6436)
 
 For example :mod:`lino_xl.lib.contacts.fixtures.std`.
 

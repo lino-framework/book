@@ -31,7 +31,7 @@ Creating a root user
 ====================
 
 The most Linoish way to create a root user (or a set of demo users) is
-to run :manage:`initdb_demo`.  This will reset the database to a
+to run :manage:`prep`.  This will reset the database to a
 virgin state and then load all your demo data, which includes
 :mod:`lino.modlib.users.fixtures.demo_users` (except if you changed
 your :attr:`lino.core.site.Site.demo_fixtures`).

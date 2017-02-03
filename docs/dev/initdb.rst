@@ -15,20 +15,20 @@ which contains a runnable Django project.
 This section gives a first introduction into Lino's innovative way of
 providing application-specific demo data.
 
-The :manage:`initdb` and :manage:`initdb_demo` commands
+The :manage:`initdb` and :manage:`prep` commands
 -------------------------------------------------------
 
 Remember that we told you (in :ref:`lino.tutorial.hello`) to "prepare
 your database" by running the command::
 
-  $ python manage.py initdb_demo
+  $ python manage.py prep
   
 The :xfile:`manage.py` Python script is the standard Django interface
 for running a so-called **administrative task** (if you did't know
 that, please read `django-admin.py and manage.py
 <https://docs.djangoproject.com/en/1.9/ref/django-admin/>`_).
 
-The :manage:`initdb_demo` command which we use here is a `custom
+The :manage:`prep` command which we use here is a `custom
 django-admin command
 <https://docs.djangoproject.com/en/1.9/howto/custom-management-commands/>`_
 provided by Lino.  It does nothing else than to call :manage:`initdb`
@@ -92,12 +92,12 @@ the following value for this attribute:
 >>> settings.SITE.demo_fixtures
 'std demo demo2'
 
-This just means that the :manage:`initdb_demo` command (at least in a
+This just means that the :manage:`prep` command (at least in a
 :mod:`lino_book.projects.min1` application) is equivalent to::
   
   $ python manage.py initdb std demo demo2
 
-The difference is that with :manage:`initdb_demo`, you don't need to
+The difference is that with :manage:`prep`, you don't need to
 know the list of demo fixtures, which can be long and difficult to
 remember, and (more importantly) which can change when an application
 evolves.  System administrators usually don't *want* to know such

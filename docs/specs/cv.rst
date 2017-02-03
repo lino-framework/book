@@ -24,13 +24,13 @@ Career module (tested)
 >>> AllLanguageKnowledges = rt.modules.cv.AllLanguageKnowledges
 
 >>> rt.show(UserTypes)
-======= =========== ===============
- value   name        text
-------- ----------- ---------------
- 000     anonymous   Anonymous
- 100     user        User
- 900     admin       Administrator
-======= =========== ===============
+======= =========== =============== =====================================
+ value   name        text            User role
+------- ----------- --------------- -------------------------------------
+ 000     anonymous   Anonymous       lino.core.roles.UserRole
+ 100     user        User            lino_xl.lib.xl.user_types.SiteUser
+ 900     admin       Administrator   lino_xl.lib.xl.user_types.SiteAdmin
+======= =========== =============== =====================================
 <BLANKLINE>
 
 >>> a = UserTypes.admin

@@ -61,7 +61,7 @@ demo user for your language`_ before going on.
 
 Initialize the demo database::
 
-  $ python manage.py initdb_demo
+  $ python manage.py prep
 
 
 Run your rdevelopment server

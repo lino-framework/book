@@ -54,7 +54,7 @@ database:
 
 Let's initialize our database with this fixture::
 
-  $ python manage.py initdb_demo
+  $ python manage.py prep
 
 .. 
     >>> import tables.fixtures.demo as m

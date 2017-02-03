@@ -39,10 +39,10 @@ Now we wrote a Python fixture with some data:
 .. literalinclude:: fixtures/demo.py
    :lines: 1-14
 
-We load this fixture using the :manage:`initdb_demo` command:
+We load this fixture using the :manage:`prep` command:
 
 >>> from django.core.management import call_command
->>> call_command('initdb_demo', interactive=False, verbosity=0)
+>>> call_command('prep', interactive=False, verbosity=0)
  
 To verify whether it worked as expected, we can ask Lino to show us
 the `Expressions` table:

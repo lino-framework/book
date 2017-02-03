@@ -98,7 +98,7 @@ Here is how to install this data:
 
 .. code-block:: bash
 
-    $ python manage.py initdb_demo
+    $ python manage.py prep
     
 The output should be::
     
@@ -164,7 +164,7 @@ directly from the Lino source repository:
 
   $ cd ~/snapshots/lino/docs/tutorials/mldbc
   $ mkdir media
-  $ python manage.py initdb_demo
+  $ python manage.py prep
   $ python manage.py testserver demo
   Creating test database for alias 'default'...
   INFO Analyzing models...

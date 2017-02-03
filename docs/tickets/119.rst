@@ -10,7 +10,7 @@ Here is how to reproduce it:
 - :cmd:`cd` to the :srcref:`lino/projects/presto` of your clone and
   run::
 
-    $ python manage.py initdb_demo
+    $ python manage.py prep
     $ python manage.py runserver
 
 - Open your browser on http://127.0.0.1:8000/

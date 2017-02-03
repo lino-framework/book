@@ -35,7 +35,7 @@ command:
 
 >>> from django.core.management import call_command
 >>> import doctest
->>> call_command('initdb_demo', interactive=False,verbosity=0) #doctest: +ELLIPSIS
+>>> call_command('prep', interactive=False,verbosity=0) #doctest: +ELLIPSIS
 
 
 

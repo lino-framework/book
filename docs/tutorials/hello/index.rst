@@ -128,14 +128,14 @@ Next we create your database and populate it with some demo
 content. With a Lino application this is easier than with a plain
 Django project, it is just one command to type::
 
-    $ python manage.py initdb_demo
+    $ python manage.py prep
 
-That is, you run the :manage:`initdb_demo` management command that
+That is, you run the :manage:`prep` management command that
 comes with every Lino application.
 
 It will ask you::
 
-    INFO Started manage.py initdb_demo (using settings) --> PID 28463
+    INFO Started manage.py prep (using settings) --> PID 28463
     We are going to flush your database (.../default.db).
     Are you sure (y/n) ?
 
@@ -145,7 +145,7 @@ that's what we want. So go on and type ``y``.
 
 The output that follows should look like this:
 
->>> shell("python manage.py initdb_demo --noinput")
+>>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:

@@ -68,7 +68,7 @@ Your first application
 #.  :doc:`layouts` : About layouts, detail windows, data elements and
     panels.
 
-#.  :doc:`initdb` : More about the ``initdb`` and ``initdb_demo``
+#.  :doc:`initdb` : More about the ``initdb`` and ``prep``
     commands.
 
 

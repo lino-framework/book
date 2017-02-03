@@ -15,7 +15,7 @@ lino_xl.lib.coachings.mixins
    .. autosummary::
    
       ClientContactBase
-      unused_ClientRelated
+      Coachable
    
    
 

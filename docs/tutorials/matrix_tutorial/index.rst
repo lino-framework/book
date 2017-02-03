@@ -33,7 +33,7 @@ You can play with this application by cloning the latest development
 version of Lino, then ``cd`` to the :file:`/docs/tutorials/matrix_tutorial` 
 directory where you can run::
 
-    $ python manage.py initdb_demo
+    $ python manage.py prep
     $ mkdir media 
     $ python manage.py runserver
     
