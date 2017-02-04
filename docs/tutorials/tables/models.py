@@ -14,7 +14,7 @@ class Author(dd.Model):
 class Book(dd.Model):
     author = models.ForeignKey(Author)
     title = models.CharField("Title", max_length=200)
-    published = models.DateField("Published")
+    published = models.IntegerField("Published")
     price = models.DecimalField("Price", decimal_places=2, max_digits=10)
 
 
