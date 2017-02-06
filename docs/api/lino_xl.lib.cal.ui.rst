@@ -24,7 +24,6 @@ lino_xl.lib.cal.ui
       ConflictingEvents
       EventDetail
       EventEvents
-      EventInsert
       EventTypes
       Events
       EventsByController

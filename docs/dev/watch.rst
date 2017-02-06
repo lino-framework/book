@@ -59,7 +59,7 @@ You can play with this application by cloning the latest development
 version of Lino, then doing::
 
     $ go watch
-    $ python manage.py initdb_demo
+    $ python manage.py prep
     $ python manage.py runserver
 
 

@@ -47,7 +47,7 @@ First suite
 
 We initialize our database from our demo fixture:
 
->>> shell("python manage_a.py initdb_demo --noinput")
+>>> shell("python manage_a.py prep --noinput")
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../default.db.
 Operations to perform:
@@ -123,7 +123,7 @@ Second suite
 
 Now the same with `b`, i.e. with :setting:`USE_TZ` enabled:
 
->>> shell("python manage_b.py initdb_demo --noinput")
+>>> shell("python manage_b.py prep --noinput")
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../default.db.
 Operations to perform:

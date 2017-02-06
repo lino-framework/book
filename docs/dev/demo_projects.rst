@@ -20,4 +20,4 @@ They contain fictive data generated using Python fixtures.
 :cmd:`inv prep` initializes all demo projects of a repository.
 
 You can manually initialiae a single demo project by going to it's
-directory and running :manage:`initdb_demo`.
+directory and running :manage:`prep`.

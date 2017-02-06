@@ -39,7 +39,7 @@ Here is how to reproduce this problem yourself.
 
     cd ~/repositories/welfare/lino_welfare/projects/docs
     mkdir media
-    python manage.py initdb_demo
+    python manage.py prep
     python manage.py runserver
 
   You must create the :xfile:`media` directory yourself. You can do

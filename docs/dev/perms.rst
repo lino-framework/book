@@ -105,13 +105,13 @@ and a storable *value* given to a selected user role.  Here is the
 default list of user types, defined in :mod:`lino.core.user_types`:
         
 >>> rt.show(users.UserTypes)
-======= =========== =============== ===============================================
+======= =========== =============== =====================================
  value   name        text            User role
-------- ----------- --------------- -----------------------------------------------
- 000     anonymous   Anonymous       <class 'lino.core.roles.UserRole'>
- 100     user        User            <class 'lino_xl.lib.xl.user_types.SiteUser'>
- 900     admin       Administrator   <class 'lino_xl.lib.xl.user_types.SiteAdmin'>
-======= =========== =============== ===============================================
+------- ----------- --------------- -------------------------------------
+ 000     anonymous   Anonymous       lino.core.roles.UserRole
+ 100     user        User            lino_xl.lib.xl.user_types.SiteUser
+ 900     admin       Administrator   lino_xl.lib.xl.user_types.SiteAdmin
+======= =========== =============== =====================================
 <BLANKLINE>
 
 

@@ -10,7 +10,7 @@ def findbyname(model, name):
 
 def objects():
     """This will be called by the :ref:`dpy` deserializer during
-    :manage:`initdb_demo` and must yield a list of object instances to
+    :manage:`prep` and must yield a list of object instances to
     be saved.
 
     """

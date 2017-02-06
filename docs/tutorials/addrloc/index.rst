@@ -20,12 +20,12 @@ Here is the data we use to fill our database:
   
 You can initialize your demo database by running::
 
-  $ python manage.py initdb_demo
+  $ python manage.py prep
 
 .. This document does the equivalent:
 
     >>> from django.core.management import call_command
-    >>> call_command('initdb_demo', interactive=False, verbosity=0)
+    >>> call_command('prep', interactive=False, verbosity=0)
 
 Here are the tables we are going to use in this tutorial:
 

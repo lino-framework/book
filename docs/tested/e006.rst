@@ -27,7 +27,7 @@ How to reproduce it:
 
 - In the top-level directory of your Lino repository, run ``$ inv prep test``
 
-It fails already during *initdb*, more precisely the *initdb_demo* of
+It fails already during *initdb*, more precisely the *prep* of
 :mod:`lino_book.projects.min2`. So you can avoid running the whole test
 suite by doing e.g.::
 

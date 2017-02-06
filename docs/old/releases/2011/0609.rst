@@ -21,7 +21,7 @@ How to try it:
     cd /usr/local/django/myproject
     python manage.py initdb std all_countries all_cities be all_languages props pp2lino
       
-  (that is, the same as `initdb_demo.sh` except that the last fixture "demo" is 
+  (that is, the same as `prep.sh` except that the last fixture "demo" is 
   replaced by "pp2lino".)
   
 - Restart Apache and enjoy your data through Lino.  

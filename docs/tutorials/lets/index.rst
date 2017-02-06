@@ -428,7 +428,7 @@ to a local project directory and try to get the prototype running.
 You will need run the following command to populate your database with
 some demo data::
 
-  python manage.py initdb_demo
+  python manage.py prep
   
 Then you start the development web server using::
 

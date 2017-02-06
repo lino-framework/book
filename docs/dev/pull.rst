@@ -5,7 +5,7 @@
 How to update your copy of the repositories
 ===========================================
 
-Since Lino is in constant development, you will probably often do the
+Lino is in constant development, so you will probably often do the
 following::
 
   $ cd ~/repositories
@@ -15,14 +15,15 @@ following::
   $ cd noi ; git pull ; cd ..
   $ cd cosi ; git pull ; cd ..
   $ cd welfare ; git pull ; cd ..
+  $ cd avanti ; git pull ; cd ..
   $ cd voga ; git pull ; cd ..
   ...
   $ find ~/repositories -name '*.pyc' -delete
 
-This means that you update your copy ("clone") of these repositories.
-Because Lino is a *series of repositories* maintained by the same
-team, it is recommended to always update all related repositories at
-the same time.
+This means that you update your copy of these repositories.  Because
+Lino is a *series of repositories* maintained by the same team, it is
+recommended to always update all related repositories at the same
+time.
 
 The last line runs :cmd:`find` in order to remove all :file:`.pyc`
 (compiled Python) files. See e.g. `here
@@ -47,9 +48,9 @@ following::
 See the documentation of `git pull
 <https://git-scm.com/docs/git-pull>`_ for more information.
 
-Note that you usually **don't need** to re-run ``pip install`` on
-these updated repositories since you used the ``-e`` command line
-option of ``pip install`` (as instructed in :ref:`lino.dev.install`).
+Note that you **don't need** to re-run ``pip install`` on these
+updated repositories since you used the ``-e`` command line option of
+``pip install`` (as instructed in :ref:`lino.dev.install`).
 
 But note also that it can happen that Lino's *dependencies* change.
 And simply pulling new sources won't update these. To prevent problems
