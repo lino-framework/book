@@ -24,21 +24,21 @@ Getting started
    projects
    env
 
-#.  :doc:`/dev/install` : System requirements. Set up a Python
+1.  :doc:`/dev/install` : System requirements. Set up a Python
     environment. Run your first Lino applications.
 
-#.  :doc:`/tutorials/hello/index` : The first Lino application running
+2.  :doc:`/tutorials/hello/index` : The first Lino application running
     on your machine. It's easier than with Django. A ``settings.py``
     and a ``manage.py``.
 
-#.  :doc:`/tutorials/polls/mysite/index` : Convert the “Polls”
+3.  :doc:`/tutorials/polls/mysite/index` : Convert the “Polls”
     application from Django’s tutorial into a Lino application. This
     will illustrate some differences between Lino and Django.
 
-#. :doc:`projects` introduces our minimalistic project
+4. :doc:`projects` introduces our minimalistic project
    management system based on :mod:`atelier`.
    
-#. :doc:`env` : install other projects maintained by the Lino team.
+5. :doc:`env` : install other projects maintained by the Lino team.
    If you want to join our team and help us to make Lino better, then
    you will sooner or later get in touch with these
    applications. Let's install them already now so that your
@@ -59,8 +59,8 @@ Your first application
    initdb
 
 
-#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
-    Writing your own Python fixtures.
+10.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+     Writing your own Python fixtures.
 
 #.  :doc:`/tutorials/tables/index` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
@@ -80,17 +80,20 @@ Now we think it is time to explain some fundamental differences
 between Lino and other frameworks.
 
 .. toctree::
-   :maxdepth: 1
+   :hidden:
               
    /about/ui
    /about/lino_and_django
    /about/not_easy
    /about/think_python
    ui
-   datamig
-   perms
     
-    
+20.  :doc:`/about/ui`
+#.  :doc:`/about/lino_and_django`
+#.  :doc:`/about/not_easy`
+#.  :doc:`/about/think_python`
+#.  :doc:`ui`
+     
 
 
 .. _lino.dev.team:
@@ -98,7 +101,7 @@ between Lino and other frameworks.
 Working with others
 ===================
 
-#. :doc:`pull`
+30. :doc:`pull`
 #. :doc:`runtests`
 #. :doc:`contrib`
 #. :doc:`patch`
@@ -122,7 +125,7 @@ Working with others
 Writing documentation
 =====================
 
-#. :doc:`/team/builddocs`
+50. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
 
    
@@ -137,8 +140,10 @@ Getting acquaintained
 =====================
 
 
-#.  Read Hamza's tutorial `Discovering Lino using your debugger
+60. Read Hamza's tutorial `Discovering Lino using your debugger
     <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
+#.  :doc:`datamig`
+#.  :doc:`perms`
 #.  :doc:`settings` : The Django settings module. How Lino integrates
     into Django settings. Inheriting settings.
 #.  :doc:`application` : An app is not an application.
@@ -186,6 +191,8 @@ Getting acquaintained
    :hidden:
 
    settings
+   datamig
+   perms
    application
    summaries
    plugins

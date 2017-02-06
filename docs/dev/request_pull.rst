@@ -31,8 +31,9 @@ Preparation:
 - Create a fork (on GitHub or somewhere else) of the repositories you
   are going to work on.
 
-- (TODO:) Change the `remote` of your local copy so that it points to
-  your fork. Add an *upstram* remote. Setup your git credentials
+- Change the `remote` of your local copy so that it points to your
+  fork. Add an *upstram* remote. Setup your git credentials.  (TODO:
+  explain more details)
 
 
 For each request:  
@@ -42,7 +43,7 @@ For each request:
 - Publish the changes in your working copy to your public repository
   using :cmd:`inv ci` or :cmd:`git commit` and :cmd:`git push`.
 
-- run :cmd:`git request-pull`  
+- run :cmd:`git request-pull`
 
 
   

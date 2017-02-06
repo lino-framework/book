@@ -25,9 +25,8 @@ The general workflow for a code contribution is
 - :doc:`Run the test suite again <runtests>` to verify that your
   change didn't break anything.
   
-- Communicate your changes to the others, either by :doc:`sending a
-  patch <patch>` or by submitting a :doc:`pull request
-  <request_pull>`.
+- Communicate your changes to the others by submitting a :doc:`pull
+  request <request_pull>`.
 
 
 Types of code contributions
@@ -43,15 +42,14 @@ Bugfix
   passed, claiming that Lino is perfect and everything works well, but
   *you* know it better, you know that there is a bug! The best thing
   to do in this situation is to first write a new test case which
-  reproduces your bug. This is called *coverage*. This new test case
-  will of course break the test suite. If you never worried about
-  these things, you might leave this step for later or to a more
-  experienced contributor.
+  reproduces your bug. This new test case will of course break the
+  test suite. You then fix the bug. 
 
 Documentation change
 --------------------
 
-Tranlsations
+
+Translations
 ------------
 
 Test case
