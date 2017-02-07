@@ -50,7 +50,6 @@ lino_xl.lib.cal.ui
       RecurrentEvents
       RemoteCalendars
       Rooms
-      ShowEventsByDay
       Subscriptions
       SubscriptionsByCalendar
       SubscriptionsByUser
