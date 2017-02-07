@@ -55,13 +55,13 @@ System --> Plausibility problems` to see them.
 
 >>> rt.show(plausibility.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ========================================================= ====================================================================== ==============================
- Responsible       Controlled by                                             Message                                                                Plausibility checker
------------------ --------------------------------------------------------- ---------------------------------------------------------------------- ------------------------------
- Robin Rood        *Calendar entry #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.                                   Check for conflicting events
- Romain Raffault   *Calendar entry #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).   Check for conflicting events
- Rando Roosi       *Calendar entry #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).   Check for conflicting events
-================= ========================================================= ====================================================================== ==============================
+================= ===================================== =================================================== ==============================
+ Responsible       Controlled by                         Message                                             Plausibility checker
+----------------- ------------------------------------- --------------------------------------------------- ------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting events
+ Romain Raffault   *Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
+ Rando Roosi       *Breakfast (31.10.2014 08:30)*        Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
+================= ===================================== =================================================== ==============================
 <BLANKLINE>
 
 
@@ -76,14 +76,14 @@ of selecting the :class:`ConflictingEventsChecker
 
 >>> chk = plausibility.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(plausibility.ProblemsByChecker, chk)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ========================================================= ======================================================================
- Responsible       Controlled by                                             Message
------------------ --------------------------------------------------------- ----------------------------------------------------------------------
- Robin Rood        *Calendar entry #30 All Souls' Day (31.10.2014)*          Event conflicts with 2 other events.
- Romain Raffault   *Calendar entry #113 Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).
- Rando Roosi       *Calendar entry #137 Breakfast (31.10.2014 08:30)*        Event conflicts with Calendar entry #30 All Souls' Day (31.10.2014).
-================= ========================================================= ======================================================================
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
+================= ===================================== ===================================================
+ Responsible       Controlled by                         Message
+----------------- ------------------------------------- ---------------------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.
+ Romain Raffault   *Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with All Souls' Day (31.10.2014).
+ Rando Roosi       *Breakfast (31.10.2014 08:30)*        Event conflicts with All Souls' Day (31.10.2014).
+================= ===================================== ===================================================
 <BLANKLINE>
 
 
