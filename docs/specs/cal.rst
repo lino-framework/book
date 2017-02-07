@@ -229,7 +229,7 @@ Note that above dates are not exactly every 2 months because
 - Lino also avoids conflicts with existing events
 
 >>> cal.Event.objects.order_by('start_date')[0]
-Event #1 ("Calendar entry #1 New Year's Day (01.01.2013)")
+Event #1 ("New Year's Day (01.01.2013)")
 
 >>> obj.monday = True
 >>> obj.wednesday = True
@@ -257,7 +257,7 @@ The demo datebase contains two appointments on All Souls' Day:
 
 >>> obj = cal.Event.objects.get(id=30)
 >>> print(obj)
-Calendar entry #30 All Souls' Day (31.10.2014)
+All Souls' Day (31.10.2014)
 
 >>> rt.show(cal.ConflictingEvents, obj)
 ============ ============ ========== ======== ====== ==================

@@ -12,9 +12,10 @@ user interface.
 Yes, this requires you to know Python before you can see a result.
 
 The advantage is better maintainability and reusability.  We don't
-believe that a visual GUI editor is a good thing when it comes to
-maintaining complex database applications in a sustainable way. Rob
-Galanakis explains a similar opinion in `GeoCities and the Qt Designer
+believe that a visual GUI editor or a set of XML configuration files a
+good thing when it comes to maintaining complex database applications
+in a sustainable way. Rob Galanakis explains a similar opinion in
+`GeoCities and the Qt Designer
 <http://www.robg3d.com/2014/08/geocities-and-the-qt-designer/>`_
 
 For example, one of Lino's powerful features are :ref:`layouts

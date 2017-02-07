@@ -34,22 +34,22 @@ Robin has twelve appointments in the period 20141023..20141122:
 =======================================================================
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
-======================== ======== ===================== =============== =============================
- When                     Person   Calendar Event Type   Summary         Actions
------------------------- -------- --------------------- --------------- -----------------------------
- Thu 23/10/2014 (10:20)            Meeting               Meeting         **Took place** → [☐]
- Fri 24/10/2014 (11:10)            Meeting               Consultation    **Cancelled**
- Sat 25/10/2014 (08:30)            Meeting               Evaluation      **Suggested** → [☑] [☒]
- Sat 25/10/2014 (13:30)            Meeting               Seminar         **Published** → [☑] [☒] [☐]
- Sun 26/10/2014 (09:40)            Meeting               First meeting   **Draft** → [☑] [☒]
- Mon 27/10/2014 (10:20)            Meeting               Interview       **Took place** → [☐]
- Mon 27/10/2014 (11:10)            Meeting               Lunch           **Cancelled**
- Tue 28/10/2014 (13:30)            Meeting               Dinner          **Published** → [☑] [☒] [☐]
- Wed 29/10/2014 (08:30)            Meeting               Breakfast       **Suggested** → [☑] [☒]
- Wed 29/10/2014 (09:40)            Meeting               Meeting         **Draft** → [☑] [☒]
- Thu 30/10/2014 (10:20)            Meeting               Consultation    **Took place** → [☐]
- Fri 31/10/2014 (11:10)            Meeting               Seminar         **Cancelled**
-======================== ======== ===================== =============== =============================
+=============================================== ======== =============================
+ Description                                     Person   Actions
+----------------------------------------------- -------- -----------------------------
+ `Meeting (23.10.2014 10:20) <Detail>`__                  **Took place** → [☐]
+ `Consultation (24.10.2014 11:10) <Detail>`__             **Cancelled**
+ `Evaluation (25.10.2014 08:30) <Detail>`__               **Suggested** → [☑] [☒]
+ `Seminar (25.10.2014 13:30) <Detail>`__                  **Published** → [☑] [☒] [☐]
+ `First meeting (26.10.2014 09:40) <Detail>`__            **Draft** → [☑] [☒]
+ `Interview (27.10.2014 10:20) <Detail>`__                **Took place** → [☐]
+ `Lunch (27.10.2014 11:10) <Detail>`__                    **Cancelled**
+ `Dinner (28.10.2014 13:30) <Detail>`__                   **Published** → [☑] [☒] [☐]
+ `Breakfast (29.10.2014 08:30) <Detail>`__                **Suggested** → [☑] [☒]
+ `Meeting (29.10.2014 09:40) <Detail>`__                  **Draft** → [☑] [☒]
+ `Consultation (30.10.2014 10:20) <Detail>`__             **Took place** → [☐]
+ `Seminar (31.10.2014 11:10) <Detail>`__                  **Cancelled**
+=============================================== ======== =============================
 <BLANKLINE>
 
 
