@@ -35,6 +35,7 @@ lino_xl.lib.courses.desktop
       InactiveCourses
       Lines
       LinesByTopic
+      MyTaughtCourses
       PendingConfirmedEnrolments
       PendingRequestedEnrolments
       Slots
