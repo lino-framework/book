@@ -29,8 +29,10 @@ See :mod:`lino.utils.memo`.
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_memo_commands())
+... #doctest: +NORMALIZE_WHITESPACE
 <BLANKLINE>
-- [ticket ...] : Insert a reference to the specified database object.
+- [ticket ...] :
+  Insert a reference to the specified database object.
 <BLANKLINE>
   The first argument is mandatory and specifies the
   primary key.
