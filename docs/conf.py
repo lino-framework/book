@@ -14,7 +14,7 @@
 import os
 import sys
 from unipath import Path
-from atelier.sphinxconf import configure
+from lino.sphinxcontrib import configure
 
 import lino
 import lino_xl
