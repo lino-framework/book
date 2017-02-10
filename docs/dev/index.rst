@@ -295,6 +295,7 @@ Other
    testing
    /team/deploy
    /team/noi_intro
+   memo
 
 
 .. toctree::
