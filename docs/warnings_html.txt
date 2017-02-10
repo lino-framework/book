@@ -1,0 +1,1 @@
+[31m/media/dell1tb/work/book/docs/dev/memo.rst: WARNING: document isn't included in any toctree[39;49;00m
