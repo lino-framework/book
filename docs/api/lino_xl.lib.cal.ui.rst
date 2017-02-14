@@ -40,6 +40,7 @@ lino_xl.lib.cal.ui
       MyEvents
       MyEventsToday
       MyGuests
+      MyOverdueAppointments
       MyPendingPresences
       MyPresences
       MyTasks

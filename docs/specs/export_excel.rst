@@ -37,18 +37,16 @@ My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =============================================== ======== =============================
  Description                                     Person   Actions
 ----------------------------------------------- -------- -----------------------------
- `Meeting (23.10.2014 10:20) <Detail>`__                  **Took place** → [☐]
- `Consultation (24.10.2014 11:10) <Detail>`__             **Cancelled**
- `Evaluation (25.10.2014 08:30) <Detail>`__               **Suggested** → [☑] [☒]
- `Seminar (25.10.2014 13:30) <Detail>`__                  **Published** → [☑] [☒] [☐]
- `First meeting (26.10.2014 09:40) <Detail>`__            **Draft** → [☑] [☒]
- `Interview (27.10.2014 10:20) <Detail>`__                **Took place** → [☐]
- `Lunch (27.10.2014 11:10) <Detail>`__                    **Cancelled**
- `Dinner (28.10.2014 13:30) <Detail>`__                   **Published** → [☑] [☒] [☐]
- `Breakfast (29.10.2014 08:30) <Detail>`__                **Suggested** → [☑] [☒]
- `Meeting (29.10.2014 09:40) <Detail>`__                  **Draft** → [☑] [☒]
- `Consultation (30.10.2014 10:20) <Detail>`__             **Took place** → [☐]
- `Seminar (31.10.2014 11:10) <Detail>`__                  **Cancelled**
+ `Seminar (24.10.2014 09:40) <Detail>`__                  **Draft** → [☑] [☒]
+ `Lunch (26.10.2014 13:30) <Detail>`__                    **Published** → [☑] [☒] [☐]
+ `Consultation (28.10.2014 10:20) <Detail>`__             **Took place** → [☐]
+ `Interview (30.10.2014 08:30) <Detail>`__                **Suggested** → [☑] [☒]
+ `Meeting (01.11.2014 11:10) <Detail>`__                  **Cancelled**
+ `First meeting (03.11.2014 09:40) <Detail>`__            **Draft** → [☑] [☒]
+ `Breakfast (05.11.2014 13:30) <Detail>`__                **Published** → [☑] [☒] [☐]
+ `Evaluation (07.11.2014 10:20) <Detail>`__               **Took place** → [☐]
+ `Dinner (09.11.2014 08:30) <Detail>`__                   **Suggested** → [☑] [☒]
+ `Seminar (11.11.2014 11:10) <Detail>`__                  **Cancelled**
 =============================================== ======== =============================
 <BLANKLINE>
 
@@ -130,7 +128,7 @@ It has 5 columns and 13 rows:
 
 >>> rows = list(ws.rows)
 >>> print(len(list(ws.columns)), len(rows))
-(5, 13)
+(5, 12)
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
@@ -140,7 +138,7 @@ When | Actions | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 
@@ -161,7 +159,7 @@ Quand | Actions | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,126,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,126,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,126,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 

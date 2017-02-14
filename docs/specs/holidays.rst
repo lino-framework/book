@@ -125,7 +125,7 @@ Adding a local moving feast
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
-   137
+   161
 
 We can add our own local custom holidays which depend on easter.
 
@@ -155,4 +155,4 @@ Event(start_date=2016-02-09,owner_type=17,summary='Karneval in Kettenis',auto_ty
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
-   137
+   161
