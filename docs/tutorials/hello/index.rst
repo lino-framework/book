@@ -183,7 +183,7 @@ Running migrations:
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
 Loading data from ...
-Installed 225 object(s) from 9 fixture(s)
+Installed ... object(s) from ... fixture(s)
 
 
 There's a lot to say about what we just did.  Lino applications use to

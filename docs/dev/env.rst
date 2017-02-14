@@ -27,7 +27,7 @@ Remember that in :ref:`lino.dev.install` you did::
   $ git clone https://github.com/lino-framework/cosi.git
   $ git clone https://github.com/lino-framework/book.git
 
-Now clone the also the following other repositories in a similar way::
+Now clone also the following other repositories in a similar way::
   
   $ cd ~/repositories
   $ git clone https://github.com/lino-framework/noi.git
@@ -93,7 +93,9 @@ Doing this is easy:
 2. Open your :xfile:`~/.atelier/config.py`
    file and insert ``atelier`` to the list of projects::
   
-     for p in 'atelier lino xl book noi cosi voga presto welfare avanti extjs6'.split():
+     ...
+     names = 'atelier lino xl book noi voga presto welfare avanti extjs6'
+     ...
 
 
 Showing your atelier projects
@@ -114,7 +116,7 @@ The output should be something like::
      noi       http://noi.lino-framework.org              0.0.3     docs
      cosi      http://cosi.lino-framework.org             0.0.3     docs
      welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
-     avanti    http://avanti.lino-framework.org/          2017.1.0    docs
+     avanti    http://avanti.lino-framework.org/          2017.1.0  docs
      presto    http://presto.lino-framework.org           0.0.1     docs
      voga      http://voga.lino-framework.org             0.0.4     docs
      ext6      http://www.lino-framework.org              0.0.1     docs
