@@ -13,6 +13,16 @@ Checking for data problems
     >>> from lino.api.doctest import *
     >>> from django.core.management import call_command
 
+This describes an approach of defining and checking for "plausibility
+problems". It is implemented in the :mod:`lino.modlib.plausibility`
+module.
+
+A **plausibility problem** is a kind of "soft" database integrity
+problem. Where "soft" means that it is not detected by the database
+engine because it requires more application intelligence to detect.
+At the end-user interface they are simply called *data problems*.
+
+
 
 Data checkers
 =============
@@ -59,8 +69,8 @@ System --> Plausibility problems` to see them.
  Responsible       Controlled by                         Message                                             Plausibility checker
 ----------------- ------------------------------------- --------------------------------------------------- ------------------------------
  Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting events
- Romain Raffault   *Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
- Rando Roosi       *Breakfast (31.10.2014 08:30)*        Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
+ Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
 ================= ===================================== =================================================== ==============================
 <BLANKLINE>
 
@@ -81,16 +91,19 @@ of selecting the :class:`ConflictingEventsChecker
  Responsible       Controlled by                         Message
 ----------------- ------------------------------------- ---------------------------------------------------
  Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.
- Romain Raffault   *Petit-déjeuner (31.10.2014 09:40)*   Event conflicts with All Souls' Day (31.10.2014).
- Rando Roosi       *Breakfast (31.10.2014 08:30)*        Event conflicts with All Souls' Day (31.10.2014).
+ Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).
 ================= ===================================== ===================================================
 <BLANKLINE>
 
+See also :doc:`cal` and :doc:`holidays`.
 
 
 Running the :command:`checkdata` command
 ========================================
 
+The :mod:`lino.modlib.plausibility` module provides a Django admin
+command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
 Found 3 and fixed 0 data problems in Calendar entries.

@@ -253,7 +253,8 @@ Event #1 ("New Year's Day (01.01.2013)")
 Conflicting events
 ==================
 
-The demo datebase contains two appointments on All Souls' Day:
+
+The demo datebase contains two appointments on All Souls' Day 2014:
 
 >>> obj = cal.Event.objects.get(id=30)
 >>> print(obj)
@@ -263,10 +264,14 @@ All Souls' Day (31.10.2014)
 ============ ============ ========== ======== ====== ==================
  Start date   Start time   End Time   Person   Room   Responsible user
 ------------ ------------ ---------- -------- ------ ------------------
- 31/10/2014   09:40:00     11:40:00                   Romain Raffault
- 31/10/2014   08:30:00     09:30:00                   Rando Roosi
+ 31/10/2014   09:40:00     12:40:00                   Rando Roosi
+ 31/10/2014   10:20:00     11:20:00                   Romain Raffault
 ============ ============ ========== ======== ====== ==================
 <BLANKLINE>
+
+Conflicting calendar events are also globally visible as data
+problems, see :doc:`checkdata`.
+
 
 
 Other
