@@ -29,23 +29,22 @@ easy to follow.  It **should rather be**:
 
 - *complete* (e.g. not forget to mention any important code
   change you did) and 
-- *concise* (use references to point to places where the reader can
-  continue if they are interested).
-- *understandable* at least for yourself and for other team members. 
+- *concise* (avoid re-explaining things that are explained somewhere
+  else) 
+- *understandable* (use references to point to these other places) so
+  that anybody with enough time and motivation has a chance to follow.
 
 Your blog is a diary, but keep in mind that it is **public**. The
 usual rules apply: don't disclose any passwords or private data.
 Respect other people's privacy.  Don't quote other author's words
-without naming them. Always reference your sources of information.
+without naming them. Reference your sources of information.
 
 A developer blog can be the easiest way to ask for help in
 complex cases which need screenshots, links, sections etc.
 
-Our collaboration workflow 
-The developer blog fits into
-the :cmd:`fab ci` command knows where your
-developer blog is and generates a commit message which points to
-today's blog entry.
+Our collaboration workflow The developer blog fits into the :cmd:`inv
+ci` command knows where your developer blog is and generates a commit
+message which points to today's blog entry.
 
 
 Luc's blogging system
