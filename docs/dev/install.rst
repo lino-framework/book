@@ -52,6 +52,10 @@ System requirements
       
       $ sudo apt-get install git
 
+#.  There are Python C extensions among Lino's dependencies::
+
+      $ sudo apt-get install python-dev
+
 #.  Many Lino applications require lxml_, which has some extra
     requirements::
 

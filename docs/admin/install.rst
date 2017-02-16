@@ -58,16 +58,16 @@ Follow the instructions in :doc:`/dev/install` for installing a
 More Debian packages
 ====================
 
-Some Debian packages and why you might need them:
+Some Debian packages and why you might need them::
 
     $ sudo apt-get install libapache2-mod-wsgi
   
-    This will automatically install Apache 
-    (packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
+This will automatically install Apache 
+(packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
 
-Select your database backend.    
+Select your database backend::
     
-    $ sudo apt-get install mysqldb-server
+    $ sudo apt-get install mysql-server
     $ sudo apt-get install mariadb-server
 
 See :doc:`install_mysql`.
