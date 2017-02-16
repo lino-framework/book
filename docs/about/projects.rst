@@ -74,7 +74,7 @@ Lino Presto
 Lino Psico
 ----------
 
-See :ref:`presto.specs.psico`
+See http://presto.lino-framework.org/specs/psico.html
 
 
 .. _faggio:
@@ -98,6 +98,19 @@ Lino Avanti
 
   from lino_avanti import SETUP_INFO
   print(SETUP_INFO['long_description'])
+
+
+.. _extjs6:
+
+ExtJS 6
+------------
+
+.. py2rst::
+
+  from lino_extjs6 import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+  
 
 
 
