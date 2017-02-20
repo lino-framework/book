@@ -1,0 +1,28 @@
+alias ll='ls -al'
+alias a='. env/bin/activate'
+
+function pywhich() {
+  python -c "import $1; print $1.__file__"
+}
+
+# find another name if your team also uses golang
+function go() {
+    for BASE in /usr/local/python/lino_sites
+    do
+      if [ -d $BASE/$1 ] ; then
+        cd $BASE/$1;
+        return;
+      fi
+    done
+    echo Oops: no project $1
+    return -1
+}
+
+# copied from http://backdrift.org/logging-bash-history-to-syslog-using-traps
+function log2syslog
+{
+   declare COMMAND
+   COMMAND=$(fc -ln -0)
+   logger -p local1.notice -t bash -i -- "${USER}:${COMMAND}"
+}
+trap log2syslog DEBUG
