@@ -16,7 +16,7 @@ hosting provider when needed.
    :maxdepth: 2
 
    about
+   setup
    types
    workflow
    testing
-   
