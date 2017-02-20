@@ -304,8 +304,8 @@ latex_documents = [
     #~ app.add_stylesheet('scrollwide.css')
 
 # extlinks.update(ticket=('http://trac.lino-framework.org/ticket/%s', '#'))
-#extlinks.update(ticket=('http://bugs.lino-framework.org/ticket/%s', '#'))
-extlinks.update(ticket=('http://bugs.lino-framework.org/tickets/Ticket/%s', '#'))
+#extlinks.update(ticket=('http://bugs.saffre-rumma.net/ticket/%s', '#'))
+extlinks.update(ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
 
 
 extlinks.update({
