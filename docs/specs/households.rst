@@ -151,16 +151,17 @@ Lars
 Lars Braun is the natural son of Bruno Braun and Eveline Evrard who
 both maried another partner. These new households automatically
 created foster parent links between Lars and the new partners of his
-natural parents:
+natural parents. Here is what Lars would say about them:
 
 >>> lars = Person.objects.get(first_name="Lars", last_name="Braun")
 >>> for lnk in Link.objects.filter(child=lars):
-...    print(u"{} of {}".format(lnk.type, lnk.parent))
-Son (Daughter) of Mr Bruno Braun
-Son (Daughter) of Mrs Eveline Evrard
-Foster son (Foster daughter) of Mr Albert Adam
-Foster son (Foster daughter) of Mrs Françoise Freisen
-Foster son (Foster daughter) of Mrs Daniela Radermacher
+...    print(u"{} is my {}".format(lnk.parent,
+...         lnk.type.as_parent(lnk.parent)))
+Mr Bruno Braun is my Father
+Mrs Eveline Evrard is my Mother
+Mr Albert Adam is my Foster father
+Mrs Françoise Freisen is my Foster mother
+Mrs Daniela Radermacher is my Foster mother
 
 >>> rt.show('households.MembersByPerson', master_instance=lars)
 ... #doctest: +ELLIPSIS
