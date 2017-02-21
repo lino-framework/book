@@ -52,6 +52,9 @@ class DocsTests(LinoTestCase):
     def test_memo(self):
         self.run_simple_doctests("docs/dev/memo.rst")
 
+    def test_ar(self):
+        self.run_simple_doctests("docs/dev/ar.rst")
+
     def test_watch(self):
         self.run_simple_doctests("docs/dev/watch.rst")
 
