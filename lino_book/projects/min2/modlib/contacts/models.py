@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -14,14 +14,14 @@ from django.utils.translation import string_concat
 from lino.api import dd, rt
 
 from lino_xl.lib.contacts.models import *
-
+from lino.modlib.comments.mixins import Commentable
 from lino_xl.lib.cal.workflows import feedback
 
 from lino_xl.lib.addresses.mixins import AddressOwner
 from lino_xl.lib.dupable_partners.mixins import DupablePartner, DupablePerson
 
 
-class Partner(Partner, AddressOwner, mixins.CreatedModified, DupablePartner):
+class Partner(Partner, AddressOwner, mixins.CreatedModified, DupablePartner, Commentable):
     """A Partner as seen in `lino.projects.min2`.  It does not define any
     specific field but inherits from a specific set of mixins.
 
@@ -45,7 +45,7 @@ class PartnerDetail(PartnerDetail):
 
     general = dd.Panel("""
     overview:20 general2:20 general3:40
-    reception.AppointmentsByPartner
+    reception.AppointmentsByPartner comments.CommentsByRFC
     """, label=_("General"))
 
     general2 = """
