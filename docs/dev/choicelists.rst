@@ -29,7 +29,7 @@ choicelist is part of the :mod:`lino.modlib.system` plugin, so its
 *app label* is ``system``:
 
 >>> rt.modules.system.Genders
-<class 'lino.modlib.system.choicelists.Genders'>
+lino.modlib.system.choicelists.Genders
 
 Like every Actor, ChoiceLists are **never instantiated**. They are
 just the class object itself:
