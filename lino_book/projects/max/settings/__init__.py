@@ -62,6 +62,11 @@ class Site(Site):
         yield 'lino_xl.lib.topics'
         yield 'lino_xl.lib.postings'
         yield 'lino_xl.lib.households'
+        yield 'lino_xl.lib.sepa'
+        yield 'lino_xl.lib.accounts'
+        yield 'lino_xl.lib.vat'
+        yield 'lino_xl.lib.sales'
+        yield 'lino_xl.lib.invoicing'
 
         yield 'lino_xl.lib.concepts'
         yield 'lino_xl.lib.pages'

@@ -32,3 +32,15 @@ introductions. This section is far from being complete.
    polly
    ajax
    i18n
+   
+
+.. toctree::
+    :maxdepth: 1
+  
+    accounting
+    contacts
+    finan
+    invoicing
+    ledger
+    sales
+    tim2lino
