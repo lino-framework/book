@@ -346,7 +346,7 @@ if on_rtd:
 
 
 from atelier.sphinxconf import interproject
-interproject.configure(globals(), 'atelier')
+interproject.configure(globals(), 'atelier lino_noi lino_cosi')
 
 autosummary_generate = True
 

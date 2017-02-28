@@ -246,6 +246,26 @@ class SpecsTests(TestCase):
     def test_ajax(self):
         self.run_simple_doctests('docs/specs/ajax.rst')
 
+    def test_accounting(self):
+        self.run_simple_doctests('docs/specs/accounting.rst')
+
+    def test_contacts(self):
+        return self.run_simple_doctests('docs/specs/contacts.rst')
+
+    def test_finan(self):
+        self.run_simple_doctests('docs/specs/finan.rst')
+
+    def test_invoicing(self):
+        self.run_simple_doctests('docs/specs/invoicing.rst')
+
+    def test_ledger(self):
+        self.run_simple_doctests('docs/specs/ledger.rst')
+
+    def test_sales(self):
+        self.run_simple_doctests('docs/specs/sales.rst')
+
+    def test_tim2lino(self):
+        return self.run_simple_doctests('docs/specs/tim2lino.rst')
 
 class ProjectsTests(TestCase):
     

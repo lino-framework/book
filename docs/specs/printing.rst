@@ -21,19 +21,21 @@ The Extended Library adds a series of plugins related to printing:
 - :mod:`lino_xl.lib.wkhtmltopdf`.
 
 
->>> rt.show(printing.BuildMethods)
-============= ============= ====================
+>>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE
+============= ============= ======================
  value         name          text
-------------- ------------- --------------------
+------------- ------------- ----------------------
  latex         latex         LatexBuildMethod
  pisa          pisa          PisaBuildMethod
  rtf           rtf           RtfBuildMethod
+ weasy2html    weasy2html    WeasyHtmlBuildMethod
+ weasy2pdf     weasy2pdf     WeasyPdfBuildMethod
  wkhtmltopdf   wkhtmltopdf   WkBuildMethod
  appyodt       appyodt       AppyOdtBuildMethod
  appydoc       appydoc       AppyDocBuildMethod
  appypdf       appypdf       AppyPdfBuildMethod
  appyrtf       appyrtf       AppyRtfBuildMethod
-============= ============= ====================
+============= ============= ======================
 <BLANKLINE>
 
 
