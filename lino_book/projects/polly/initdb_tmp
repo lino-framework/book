@@ -1,2 +1,2 @@
-django-admin.py prep --noinput --traceback --settings=lino.projects.polly.settings.memory
+django-admin.py prep --noinput --traceback --settings=lino_book.projects.polly.settings.memory
 

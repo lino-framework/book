@@ -7,13 +7,16 @@ When a Lino application starts up
 This chapter describes what happens during the startup of a Lino
 process.
 
-There are three major phases in the startup of a Lino process:
+There are four major phases in the startup of a Lino process:
 
 - **Application definition** (:mod:`lino.api.ad`) while Django
   **settings** are being loaded
   
 - **Database definition** (:mod:`lino.api.dd`) while Django **models** are
   being loaded
+
+- **Analysis** when Django models are loaded and Lino analyzes the
+  actors.
   
 - **Runtime** (:mod:`lino.api.rt`) when startup has finished.
 

@@ -13,8 +13,8 @@ This document tests this functionality.
     
     doctest init:
 
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = 'lino_book.projects.docs.settings.doctests'
+    >>> from lino import startup
+    >>> startup('lino_book.projects.docs.settings.doctests')
     >>> from lino.api.doctest import *
 
 
