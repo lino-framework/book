@@ -38,6 +38,10 @@ Discovering problems
 
     $ find ! -group www-data
 
+  If this produces some output, you probably want to fix it::
+    
+    $ find ! -group www-data -exec chgrp www-data '{}' +
+    
 - Show directories which don't have the `setgid flags
   <https://en.wikipedia.org/wiki/Setuid>`_ set::
 
@@ -70,7 +74,6 @@ Discovering problems
 - Find `.pyc` files which are not group-writable (but should)::
 
     $ find -name '*.pyc' ! -perm /g=w
-   
     
 
 Fixing problems
