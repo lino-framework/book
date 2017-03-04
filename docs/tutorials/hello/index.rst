@@ -173,6 +173,7 @@ Synchronizing apps without migrations:
     Creating table cal_calendar
     Creating table cal_subscription
     Creating table cal_task
+    Creating table cal_eventpolicy
     Creating table cal_recurrentevent
     Creating table cal_event
     Creating table cal_guest

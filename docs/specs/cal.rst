@@ -177,13 +177,11 @@ We are going to use this model for demonstrating some more features
 <lino_xl.lib.cal.mixins.EventGenerator>`)
 
 
->>> list(rt.models_by_base(cal.RecurrenceSet))
-[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
-
->>> list(rt.models_by_base(cal.EventGenerator))
-[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
-
 >>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
+>>> isinstance(obj, cal.RecurrenceSet)
+True
+>>> isinstance(obj, cal.EventGenerator)
+True
 >>> obj.tuesday = True
 >>> obj.every_unit = cal.Recurrencies.weekly
 >>> print(obj.weekdays_text)
