@@ -19,6 +19,9 @@ This document explains some basic things about Lino's calendar plugin.
 Calendar entries
 ================
 
+An **appointment** is a calendar entry which supposes that another
+person is involved.
+
 >>> show_fields(rt.models.cal.Event,
 ...     'start_date start_time end_date end_time user summary description event_type state')
 +---------------+---------------------+---------------------------------------------------------------+
@@ -119,6 +122,44 @@ datetime.date(2014, 7, 1)
 >>> DurationUnits.years.add_duration(start_date, 1)
 datetime.date(2015, 4, 1)
 
+.. _specs.cal.automatic_events:
+
+Automatic calendar events
+=========================
+
+Lino applications can **generate** automatic calendar events.
+
+An event generator (:class:`EventGenerator
+<lino_xl.lib.cal.mixins.EventGenerator>`) is something that can
+generate automatic calendar events.  The main effect of this mixin is
+to add the :class:`lino_xl.lib.cal.mixins.UpdateEvents` action.
+
+The event generator itself does not necessarily also contain all those
+fields needed for specifying **which** events should be
+generated. These fields are implemented by another mixin named
+:class:`RecurrenceSet <lino_xl.lib.cal.mixins.RecurrenceSet>`. A
+recurrence set is something that specifies which calendar events
+should get generated.
+
+For example:
+
+- A *course*, *workshop* or *activity* as used by Welfare, Voga and
+  Avanti (subclasses of :class:`lino_xl.lib.courses.models.Course`).
+
+- :class:`lino_xl.lib.rooms.models.Reservation`
+
+- :class:`lino_welfare.modlib.isip.models.Contract` and
+  :class:`lino_welfare.modlib.jobs.models.Contract`
+
+- :doc:`Holidays <holidays>`
+
+The generated events are "controlled" by their generator (their
+`owner` field points to the generator) and have a non-empty
+`auto_type` field.
+
+    
+:meth:`get_wanted_auto_events`
+
 
 Recurrencies
 ============
@@ -177,13 +218,11 @@ We are going to use this model for demonstrating some more features
 <lino_xl.lib.cal.mixins.EventGenerator>`)
 
 
->>> list(rt.models_by_base(cal.RecurrenceSet))
-[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
-
->>> list(rt.models_by_base(cal.EventGenerator))
-[<class 'lino_xl.lib.cal.models.RecurrentEvent'>]
-
 >>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
+>>> isinstance(obj, cal.RecurrenceSet)
+True
+>>> isinstance(obj, cal.EventGenerator)
+True
 >>> obj.tuesday = True
 >>> obj.every_unit = cal.Recurrencies.weekly
 >>> print(obj.weekdays_text)
