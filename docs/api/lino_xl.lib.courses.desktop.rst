@@ -39,6 +39,7 @@ lino_xl.lib.courses.desktop
       PendingConfirmedEnrolments
       PendingRequestedEnrolments
       Slots
+      StatusReport
       Topics
    
    

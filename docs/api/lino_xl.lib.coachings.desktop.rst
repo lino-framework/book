@@ -16,6 +16,7 @@ lino_xl.lib.coachings.desktop
    
       ClientContactTypes
       ClientContacts
+      ClientContactsByCompany
       ClientContactsByType
       CoachingEndings
       CoachingTypes
