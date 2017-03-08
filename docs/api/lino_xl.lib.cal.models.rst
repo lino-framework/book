@@ -28,6 +28,7 @@ lino_xl.lib.cal.models
       Event
       EventChecker
       EventGuestChecker
+      EventPolicy
       EventType
       ExtAllDayField
       GoogleCalendar

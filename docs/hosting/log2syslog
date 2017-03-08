@@ -1,0 +1,8 @@
+# copied from http://backdrift.org/logging-bash-history-to-syslog-using-traps
+function log2syslog
+{
+   declare COMMAND
+   COMMAND=$(fc -ln -0)
+   logger -p local1.notice -t bash -i -- "${USER}:${COMMAND}"
+}
+trap log2syslog DEBUG

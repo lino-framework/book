@@ -46,11 +46,15 @@ Python path::
   $ mkdir /usr/local/python
   $ touch /usr/local/python/__init__.py
 
-Add the following to your system-wide :file:`/etc/bash.bashrc`::
+Add the following to your system-wide :file:`/etc/bash.bashrc`:
 
 .. literalinclude:: bash_aliases
 
-Here is a template for your :xfile:`lino_local.py`::
+If you want :ref:`log2syslog`, then add also this:
+                    
+.. literalinclude:: log2syslog
+
+Here is a template for your :xfile:`lino_local.py`:
 
 .. literalinclude:: lino_local.py
 
