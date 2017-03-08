@@ -35,31 +35,57 @@ You might create an executable bash script named :cmd:`oood` in your
 ``PATH`` with above line.
 
 For **regular usage** and especially on a production server you will
-want to use a startup script.  Vic Vijayakumar has written such a
-script, and for convenience the Lino repository contains a copy of it
-:file:`/bash/openoffice-headless`.
+want to use a startup script. We recommend supervisor (which is also
+used for :doc:`linod`):
 
-- Make your local copy of the startup script::
+- Install the `Supervisor <http://www.supervisord.org/index.html>`_
+  package::
 
-    $ sudo cp ~/repositories/lino/bash/openoffice-headless /etc/init.d
+      $ sudo apt-get install supervisor
 
-- Edit your copy::
-    
-    $ sudo nano /etc/init.d/openoffice-headless
-    
-  Check the value of the `OFFICE_PATH` variable in that script::
-  
-    OFFICE_PATH=/usr/lib/libreoffice
+  The supervisor package is being installed system-wide, it is not
+  related to any specific project.
 
-- Make it executable::
-  
-    $ sudo chmod 755 /etc/init.d/openoffice-headless
-    
-- Finally, run ``update-rc.d`` to have the daemon 
-  automatically start when the server boots::
+- Create a file :file:`libreoffice.conf` in
+  :file:`/etc/supervisor/conf.d/` with this content::
 
-    $ sudo update-rc.d openoffice-headless defaults
-    
+    [program:libreoffice]
+    command=libreoffice --accept="socket,host=127.0.0.1,port=8100;urp;" --nologo --headless --nofirststartwizard
+    user = root
+
+- Restart :program:`supervisord`::
+
+    $ sudo service supervisor restart
+
+- Have a look at the log files in :file:`/var/log/supervisor`.
+
+
+.. 
+    Vic Vijayakumar has written such a
+    script, and for convenience the Lino repository contains a copy of it
+    :file:`/bash/openoffice-headless`.
+
+    - Make your local copy of the startup script::
+
+        $ sudo cp ~/repositories/lino/bash/openoffice-headless /etc/init.d
+
+    - Edit your copy::
+
+        $ sudo nano /etc/init.d/openoffice-headless
+
+      Check the value of the `OFFICE_PATH` variable in that script::
+
+        OFFICE_PATH=/usr/lib/libreoffice
+
+    - Make it executable::
+
+        $ sudo chmod 755 /etc/init.d/openoffice-headless
+
+    - Finally, run ``update-rc.d`` to have the daemon 
+      automatically start when the server boots::
+
+        $ sudo update-rc.d openoffice-headless defaults
+
 
 Setting ``appy_params``
 =======================

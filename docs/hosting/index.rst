@@ -20,3 +20,4 @@ hosting provider when needed.
    types
    workflow
    testing
+   logging
