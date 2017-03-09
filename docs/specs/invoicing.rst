@@ -6,12 +6,12 @@ Generating invoices
 
 .. to test only this document:
 
-      $ python setup.py test -s tests.DocsTests.test_invoicing
+      $ python setup.py test -s tests.SpecsTests.test_invoicing
     
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_cosi.projects.std.settings.demo')
+    >>> startup('lino_book.projects.pierre.settings.demo')
     >>> from lino.api.doctest import *
     >>> ses = rt.login("robin")
     >>> translation.activate('en')
@@ -20,7 +20,7 @@ This document describes some general aspects of how Lino Così and
 derived applications can handle **invoicing**, i.e. automatically
 generating invoices from data in the database.
 
-:mod:`lino_cosi.lib.invoicing`
+:mod:`lino_xl.lib.invoicing`
 
 - :ref:`cosi.specs.sales`
 - :ref:`cosi.specs.accounting`

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2015 Luc Saffre
+# Copyright 2014-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 
@@ -16,7 +16,7 @@ from lino_cosi.projects.std.settings import *
 class Site(Site):
     languages = 'fr en'
     demo_fixtures = 'std few_countries euvatrates furniture \
-    minimal_ledger demo demo2'.split()
+    minimal_ledger demo demo_bookings demo2'.split()
 
     def setup_plugins(self):
         self.plugins.countries.configure(hide_region=False)

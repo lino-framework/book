@@ -6,10 +6,10 @@ Importing from TIM
 
 ..  to test only this document:
 
-    $ python setup.py test -s tests.DocsTests.test_tim2lino
+    $ python setup.py test -s tests.SpecsTests.test_tim2lino
 
     >>> import lino
-    >>> lino.startup('lino_cosi.projects.std.settings.doctests')
+    >>> lino.startup('lino_book.projects.pierre.settings.demo')
     >>> from lino.api.doctest import *
     >>> from django.db.models import Q
 
