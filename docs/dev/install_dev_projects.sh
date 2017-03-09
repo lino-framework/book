@@ -56,7 +56,8 @@ install eg lsaffre commondata-eg
 install atelier lino-framework atelier
 install lino lino-framework lino
 install xl lino-framework xl
-install noi lino-framework cosi
+install cosi lino-framework cosi
+install noi lino-framework noi
 install presto lino-framework presto
 install welfare lino-framework welfare
 install voga lino-framework voga
