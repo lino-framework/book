@@ -36,7 +36,7 @@ Packages
 - :ref:`avanti`
 - :ref:`presto`
 - :ref:`extjs6`.
-- :ref:`algus`.
+- ``algus``
 
 
 

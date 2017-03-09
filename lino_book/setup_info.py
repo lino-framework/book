@@ -18,7 +18,7 @@ SETUP_INFO = dict(
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
-        'djangorestframework',
+        'djangorestframework', 'bleach',
         'lino-cosi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],

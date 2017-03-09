@@ -1,6 +1,36 @@
 #!/bin/bash
 set -e  # exit on error
 
+if [ "$1" = "-h"  -o "$1" = "--help" ]
+then
+    cat <<USAGE
+Usage:
+  $0 [ <envname> ]
+
+When invoked with an envname, then it creates both that virtualenv and
+a directory repositories.
+
+Without an envname it assumes that you want to install Lino into the
+current environment and that you are in your existing repositories
+directory.
+
+USAGE
+    exit -1
+fi    
+
+function prepare_env {
+    env=$1
+    if [ -d $env ] ; then
+        echo Oops, a directory $env exists already.
+        echo Delete it yourself if you dare!
+        exit -1
+    fi
+    virtualenv $env
+    . $env/bin/activate
+    mkdir repositories
+    cd repositories
+}
+
 function install {
     nickname=$1
     owner=$2
@@ -13,6 +43,11 @@ function install {
     fi
     pip install -e $nickname
 }
+
+
+if [[ $1 ]] ; then
+    prepare_env $1
+fi
 
 install cd lsaffre commondata
 install be lsaffre commondata-be
@@ -28,6 +63,8 @@ install voga lino-framework voga
 install avanti lino-framework avanti
 install book lino-framework book
 install ext6 lino-framework extjs6
-install patrols lino-framework patrols
-install logos lino-framework logos
+
+# the following are not really needed
+install patrols lsaffre lino-patrols
+install logos lsaffre lino-logos
 
