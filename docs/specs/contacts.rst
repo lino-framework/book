@@ -6,10 +6,10 @@ Contacts
 
 ..  to test only this document:
 
-    $ python setup.py test -s tests.DocsTests.test_contacts
+    $ python setup.py test -s tests.SpecsTests.test_contacts
 
     >>> import lino
-    >>> lino.startup('lino_cosi.projects.std.settings.doctests')
+    >>> lino.startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
     >>> from django.db.models import Q
 
@@ -47,8 +47,7 @@ address contains the query string):
 ===================== ===================
 <BLANKLINE>
 
-Implementation note: this is because we use the
-:attr:`quick_search_fields
+This behaviour is implemented using the :attr:`quick_search_fields
 <lino.core.model.Model.quick_search_fields>` attribute on the model.
 
 >>> contacts.Partner.quick_search_fields

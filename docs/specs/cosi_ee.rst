@@ -7,6 +7,7 @@ The Estonian version of :ref:`cosi` imports every place in Estonia
 from :mod:`commondata.ee`.
 
 .. to test only this document:
+   
     $ python setup.py test -s tests.SpecsTests.test_cosi_ee
    
     doctest init:
@@ -91,7 +92,6 @@ Formatting postal addresses
 Malle Mets
 Männi tn 5-6
 86705 Sindi
-Estonia
 
 Townships in Estonia get special handling: their name is replaced by
 the town's name when a zip code is known:
@@ -108,7 +108,6 @@ Kesklinn
 Kati Kask
 Tartu mnt 71-5
 10115 Tallinn
-Estonia
 
 And yet another rule for countryside addresses:
 
@@ -124,4 +123,3 @@ Hirvepargi 123
 Vana-Vigala küla
 Vigala vald
 78003 Rapla maakond
-Estonia

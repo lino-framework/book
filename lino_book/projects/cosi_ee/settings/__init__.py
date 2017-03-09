@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2015 Luc Saffre
+# Copyright 2014-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 
@@ -28,4 +28,4 @@ class Site(Site):
         super(Site, self).setup_plugins()
         self.plugins.countries.configure(hide_region=False)
         self.plugins.ledger.configure(use_pcmn=True)
-        self.plugins.countries.configure(country_code='BE')
+        self.plugins.countries.configure(country_code='EE')

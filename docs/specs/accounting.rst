@@ -6,12 +6,12 @@ Accounting in Lino Così
 
 .. how to test this document:
 
-    $ python setup.py test -s tests.DocsTests.test_accounting
+    $ python setup.py test -s tests.SpecsTests.test_accounting
 
     Doctest initialization:
 
     >>> import lino
-    >>> lino.startup('lino_cosi.projects.std.settings.doctests')
+    >>> lino.startup('lino_book.projects.pierre.settings.demo')
     >>> from lino.api.doctest import *
     >>> from lino_xl.lib.accounts.models import *
 
@@ -48,7 +48,7 @@ Account types
 Lino has a list of **account types** or "top-level accounts", defined
 in :class:`lino_xl.lib.ledger.choicelists.AccountTypes`.
 
->>> rt.show(ledger.AccountTypes)
+>>> rt.show(ledger.AccountTypes, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======= =============== =============== ======== ==========
  value   name            text            D/C      Sheet
@@ -61,6 +61,41 @@ in :class:`lino_xl.lib.ledger.choicelists.AccountTypes`.
  B       bank_accounts   Bank accounts   Debit    Balance
 ======= =============== =============== ======== ==========
 <BLANKLINE>
+
+The same in French and German:
+
+>>> rt.show(ledger.AccountTypes, language="fr")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+======= =============== =================== ======== ==========
+ value   name            text                D/C      Sheet
+------- --------------- ------------------- -------- ----------
+ A       assets          Actifs              Débit    Balance
+ L       liabilities     Passifs             Crédit   Balance
+ I       incomes         Revenus             Crédit   Earnings
+ E       expenses        Dépenses            Débit    Earnings
+ C       capital         Capital             Crédit   Balance
+ B       bank_accounts   Comptes en banque   Débit    Balance
+======= =============== =================== ======== ==========
+<BLANKLINE>
+
+>>> rt.show(ledger.AccountTypes, language="de")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+====== =============== ================= ======== ==========
+ Wert   name            Text              D/C      Sheet
+------ --------------- ----------------- -------- ----------
+ A      assets          Vermögen          Débit    Balance
+ L      liabilities     Verpflichtungen   Kredit   Balance
+ I      incomes         Einkünfte         Kredit   Earnings
+ E      expenses        Ausgaben          Débit    Earnings
+ C      capital         Kapital           Kredit   Balance
+ B      bank_accounts   Bankkonten        Débit    Balance
+====== =============== ================= ======== ==========
+<BLANKLINE>
+
+
+.. 
+  >>> translation.activate('en')
+
 
 
 The basic `Accounting Equation
@@ -76,7 +111,6 @@ And the expanded accounting equation is:
 Accounts on the left side of the equation (Assets and Expenses) are
 normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
 <AccountType.dc>` attribute means:
-
 
 >>> print(unicode(DCLABELS[AccountTypes.assets.dc]))
 Debit
