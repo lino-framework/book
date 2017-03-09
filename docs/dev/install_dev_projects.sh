@@ -2,12 +2,12 @@
 set -e  # exit on error
 
 function install {
-    nickname = $1
-    owner = $2
-    repo = $3
-    url = git@github.com:$owner/$repo.git
+    nickname=$1
+    owner=$2
+    repo=$3
+    url=git@github.com:$owner/$repo.git
     # uncomment the following line if you want https remote
-    # url = https://github.com/$owner/$repo.git
+    # url=https://github.com/$owner/$repo.git
     if [ ! -d $nickname ] ; then
        git clone $url $nickname
     fi
