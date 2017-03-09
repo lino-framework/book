@@ -10,42 +10,25 @@ Setting up your work environment
    $ python setup.py test -s tests.LibTests.test_runtests
 
 As a Lino developer you are going to maintain and know a whole little
-collection of projects. You don't need to dive into each of them right
-now, but let's already install them:
+collection of repositories and applications. You don't need to dive
+into each of them right now (see :doc:`overview` for details), but you
+should install them before running test suites or building Sphinx
+documentation trees.
 
-- :ref:`noi`, the application we use for managing our collaboration
-- :ref:`cosi`, :ref:`voga` and :ref:`presto`
-- :ref:`welfare`
-- :ref:`extjs6`.
-- :ref:`avanti`
+.. contents::
+    :depth: 1
+    :local:
 
-Remember that in :ref:`lino.dev.install` you did::
+Automated way for installing the Lino SDK::
 
   $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/cosi.git
-  $ git clone https://github.com/lino-framework/book.git
+  $ wget https://raw.githubusercontent.com/lino-framework/book/master/docs/dev/install_dev_projects.sh
+  $ chmod +x install_dev_projects.sh
+  $ ./install_dev_projects.sh
 
-Now clone also the following other repositories in a similar way::
-  
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/noi.git
-  $ git clone https://github.com/lino-framework/voga.git
-  $ git clone https://github.com/lino-framework/presto.git
-  $ git clone https://github.com/lino-framework/welfare.git
-  $ git clone https://github.com/lino-framework/avanti.git
-  $ git clone https://github.com/lino-framework/extjs6.git
 
-And then you install them using pip (as editable using ``-e``
-option)::
-
-  $ pip install -e noi
-  $ pip install -e voga
-  $ pip install -e presto
-  $ pip install -e welfare
-  $ pip install -e avanti
-  $ pip install -e extjs6
+Telling atelier where your projects are
+=======================================
   
 As a last step we must tell :ref:`atelier` about these new projects.
 Open your :xfile:`~/.atelier/config.py` file which should contain::
@@ -69,6 +52,67 @@ splits our string on every whitspace:
 >>> 'foo bar  baz'.split()
 ['foo', 'bar', 'baz']
 
+
+Showing your atelier projects
+=============================
+
+To see a list of your atelier projects, type::
+
+    $ pp -l
+
+    
+
+The output should be something like::
+  
+    ========= ========================================== ========= ========================
+     Project   URL                                        Version   doctrees
+    --------- ------------------------------------------ --------- ------------------------
+     atelier   http://atelier.lino-framework.org          1.0.2     docs
+     lino      http://www.lino-framework.org              1.7.6     docs
+     xl        http://www.lino-framework.org              1.7.5     docs
+     noi       http://noi.lino-framework.org              0.0.3     docs
+     cosi      http://cosi.lino-framework.org             0.0.3     docs
+     welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
+     avanti    http://avanti.lino-framework.org/          2017.1.0  docs
+     presto    http://presto.lino-framework.org           0.0.1     docs
+     voga      http://voga.lino-framework.org             0.0.4     docs
+     ext6      http://www.lino-framework.org              0.0.1     docs
+     book      http://www.lino-framework.org              1.7.4     docs
+    ========= ========================================== ========= ========================
+
+
+Manually setting up the Lino SDK
+================================
+
+Remember that in :ref:`lino.dev.install` you did::
+
+  $ cd ~/repositories
+  $ git clone https://github.com/lino-framework/lino.git
+  $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/cosi.git
+  $ git clone https://github.com/lino-framework/book.git
+
+
+Now clone also the following other repositories in a similar way::
+  
+  $ cd ~/repositories
+  $ git clone https://github.com/lino-framework/noi.git
+  $ git clone https://github.com/lino-framework/voga.git
+  $ git clone https://github.com/lino-framework/presto.git
+  $ git clone https://github.com/lino-framework/welfare.git
+  $ git clone https://github.com/lino-framework/avanti.git
+  $ git clone https://github.com/lino-framework/extjs6.git
+
+And then you install them using pip (as editable using ``-e``
+option)::
+
+  $ pip install -e noi
+  $ pip install -e voga
+  $ pip install -e presto
+  $ pip install -e welfare
+  $ pip install -e avanti
+  $ pip install -e extjs6
+  
 
 How to switch to the development version of Atelier
 ===================================================
@@ -98,29 +142,3 @@ Doing this is easy:
      ...
 
 
-Showing your atelier projects
-=============================
-
-To see a list of your atelier projects, type::
-
-    $ pp -l
-
-The output should be something like::
-  
-    ========= ========================================== ========= ========================
-     Project   URL                                        Version   doctrees
-    --------- ------------------------------------------ --------- ------------------------
-     atelier   http://atelier.lino-framework.org          1.0.2     docs
-     lino      http://www.lino-framework.org              1.7.6     docs
-     xl        http://www.lino-framework.org              1.7.5     docs
-     noi       http://noi.lino-framework.org              0.0.3     docs
-     cosi      http://cosi.lino-framework.org             0.0.3     docs
-     welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
-     avanti    http://avanti.lino-framework.org/          2017.1.0  docs
-     presto    http://presto.lino-framework.org           0.0.1     docs
-     voga      http://voga.lino-framework.org             0.0.4     docs
-     ext6      http://www.lino-framework.org              0.0.1     docs
-     book      http://www.lino-framework.org              1.7.4     docs
-    ========= ========================================== ========= ========================
-
-     

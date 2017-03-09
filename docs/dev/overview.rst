@@ -4,6 +4,7 @@
 Structure overview cheat sheet
 ==============================
 
+
 Packages
 ========
 
@@ -21,18 +22,25 @@ Packages
 - XL : Extension library : contacts, countries, cal, ... (see
   :mod:`lino_xl.lib`)
        
-- Book : the docs for :mod:`lino` and :mod:`lino_xl`. Not published as
-  PyPI package.
+- ``book`` the docs for :mod:`lino` and :mod:`lino_xl`. Not
+  published as PyPI package.
   
-- Così : Accounting plugins, including a few sample projects.
+- ``noi`` : :ref:`noi`. The application we use for managing our
+  collaboration. tickets, projects, time tracking, votes.
   
-- Noi : tickets, projects, work, votes
+- :file:`cosi` : :ref:`cosi`. Accounting plugins, including a few
+  sample projects.
+  
+- :ref:`voga`
+- :ref:`welfare`
+- :ref:`avanti`
+- :ref:`presto`
+- :ref:`extjs6`.
+- :ref:`algus`.
 
-- Presto
 
-- Welfare
 
-- Avanti
+  
 
   
 Package dependencies
