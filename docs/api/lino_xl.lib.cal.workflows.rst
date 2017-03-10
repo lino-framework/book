@@ -10,7 +10,7 @@ lino_xl.lib.cal.workflows
 
    .. autosummary::
    
-      setup_task_workflows
+      f
    
    
 

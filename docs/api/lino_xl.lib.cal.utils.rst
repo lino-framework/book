@@ -11,6 +11,7 @@ lino_xl.lib.cal.utils
    .. autosummary::
    
       aware
+      day_and_month
       dt2kw
       setkw
       update_auto_component
