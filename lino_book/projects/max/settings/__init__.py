@@ -27,6 +27,7 @@ class Site(Site):
     project_name = 'lino_xl_max'
 
     project_model = 'contacts.Person'
+    use_websockets = True
 
     # languages = 'en de fr'
     languages = 'en de fr et nl pt-br es'
@@ -50,6 +51,7 @@ class Site(Site):
         yield 'lino_xl.lib.polls'
 
         yield 'lino.modlib.uploads'
+        yield 'lino.modlib.notify'
         yield 'lino_xl.lib.notes'
         yield 'lino_xl.lib.outbox'
         yield 'lino_xl.lib.cal'

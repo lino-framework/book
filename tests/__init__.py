@@ -192,6 +192,10 @@ class DocsTests(LinoTestCase):
 
 class SpecsTests(TestCase):
 
+
+    def test_notify(self):
+        self.run_simple_doctests('docs/specs/notify.rst')
+
     def test_dumps(self):
         self.run_simple_doctests('docs/specs/dumps.rst')
 
