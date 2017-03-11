@@ -40,55 +40,55 @@ TODO: Write explanations between the examples.
 <BLANKLINE>
 
 >>> rt.show(countries.Places)
-============= ======================== ==================== ==================== ============== ========== ==================
+============= ======================== ==================== ==================== ============== ========== =============================
  Country       Designation              Designation (et)     Designation (fr)     Place Type     zip code   Part of
-------------- ------------------------ -------------------- -------------------- -------------- ---------- ------------------
- Belgium       Aalst                    Aalst                Alost                City           9300       Flandre de l'Est
- Belgium       Aalst-bij-Sint-Truiden                                             Village        3800       Limbourg
+------------- ------------------------ -------------------- -------------------- -------------- ---------- -----------------------------
+ Belgium       Aalst                    Aalst                Alost                City           9300       Flandre de l'Est (Province)
+ Belgium       Aalst-bij-Sint-Truiden                                             Village        3800       Limbourg (Province)
  Belgium       Angleur                                                            City           4031
  Belgium       Ans                                                                City           4430
  Belgium       Anvers                   Anvers               Anvers               Province
- Belgium       Baardegem                                                          Village        9310       Aalst
- Belgium       Baelen                   Baelen               Baelen               City           4837       Liège
+ Belgium       Baardegem                                                          Village        9310       Aalst / Alost (City)
+ Belgium       Baelen                   Baelen               Baelen               City           4837       Liège (Province)
  Belgium       Blégny                                                             City           4670
  Belgium       Brabant flamant          Brabant flamant      Brabant flamant      Province
  Belgium       Brabant wallon           Brabant wallon       Brabant wallon       Province
  Belgium       Brussels                 Brussels             Bruxelles            City           1000
  Belgium       Burdinne                                                           City           4210
  Belgium       Burg-Reuland                                                       City           4790
- Belgium       Butgenbach               Butgenbach           Butgenbach           City           4750       Liège
- Belgium       Büllingen                Büllingen            Bullange             City           4760       Liège
+ Belgium       Butgenbach               Butgenbach           Butgenbach           City           4750       Liège (Province)
+ Belgium       Büllingen                Büllingen            Bullange             City           4760       Liège (Province)
  Belgium       Cerfontaine                                                        City           5630
  Belgium       Cuesmes                                                            City           7033
- Belgium       Erembodegem                                                        Village        9320       Aalst
+ Belgium       Erembodegem                                                        Village        9320       Aalst / Alost (City)
  Belgium       Eupen                                                              City           4700
  Belgium       Flandre de l'Est         Flandre de l'Est     Flandre de l'Est     Province
  Belgium       Flandre de l'Ouest       Flandre de l'Ouest   Flandre de l'Ouest   Province
- Belgium       Gijzegem                                                           Village        9308       Aalst
+ Belgium       Gijzegem                                                           Village        9308       Aalst / Alost (City)
  Belgium       Hainaut                  Hainaut              Hainaut              Province
- Belgium       Herdersem                                                          Village        9310       Aalst
- Belgium       Hofstade                                                           Village        9308       Aalst
+ Belgium       Herdersem                                                          Village        9310       Aalst / Alost (City)
+ Belgium       Hofstade                                                           Village        9308       Aalst / Alost (City)
  Belgium       Kelmis                   Kelmis               La Calamine          City           4720
  Belgium       Kettenis                                                           Village        4701
  Belgium       La Reid                                                            City           4910
  Belgium       Limbourg                 Limbourg             Limbourg             Province
  Belgium       Liège                    Liège                Liège                Province
- Belgium       Liège                    Liège                Liège                City           4000       Liège
+ Belgium       Liège                    Liège                Liège                City           4000       Liège (Province)
  Belgium       Luxembourg               Luxembourg           Luxembourg           Province
- Belgium       Meldert                                                            Village        9310       Aalst
+ Belgium       Meldert                                                            Village        9310       Aalst / Alost (City)
  Belgium       Mons                     Mons                 Mons                 City           7000
- Belgium       Moorsel                                                            Village        9310       Aalst
+ Belgium       Moorsel                                                            Village        9310       Aalst / Alost (City)
  Belgium       Mortier                                                            City           4670
  Belgium       Namur                    Namur                Namur                Province
  Belgium       Namur                    Namur                Namur                City           5000
- Belgium       Nieuwerkerken                                                      Village        9320       Aalst
- Belgium       Nispert                                                            Township                  Eupen
+ Belgium       Nieuwerkerken                                                      Village        9320       Aalst / Alost (City)
+ Belgium       Nispert                                                            Township                  Eupen (City)
  Belgium       Ostende                  Ostende              Ostende              City           8400
  Belgium       Ottignies                                                          City           1340
- Belgium       Ouren                                                              Township                  Burg-Reuland
+ Belgium       Ouren                                                              Township                  Burg-Reuland (City)
  Belgium       Raeren                                                             Village        4730
- Belgium       Recht                    Recht                Recht                City           4780       Liège
- Belgium       Sankt Vith               Sankt Vith           Saint-Vith           City           4780       Liège
+ Belgium       Recht                    Recht                Recht                City           4780       Liège (Province)
+ Belgium       Sankt Vith               Sankt Vith           Saint-Vith           City           4780       Liège (Province)
  Belgium       Thieusies                                                          City           7061
  Belgium       Trembleur                                                          City           4670
  Germany       Aachen                   Aachen               Aix-la-Chapelle      City
@@ -98,17 +98,17 @@ TODO: Write explanations between the examples.
  Germany       Monschau                 Monschau             Montjoie             City
  Germany       Munich                   München              Munich               City
  Estonia       Harju                                                              County
- Estonia       Kesklinn                                                           Township                  Tallinn
+ Estonia       Kesklinn                                                           Township                  Tallinn (Town)
  Estonia       Narva                                                              Town
  Estonia       Pärnu                                                              County
- Estonia       Pärnu                                                              Town                      Pärnu
- Estonia       Põhja-Tallinn                                                      Township                  Tallinn
+ Estonia       Pärnu                                                              Town                      Pärnu (County)
+ Estonia       Põhja-Tallinn                                                      Township                  Tallinn (Town)
  Estonia       Rapla                                                              County
- Estonia       Rapla                                                              Town                      Rapla
- Estonia       Tallinn                                                            Town                      Harju
+ Estonia       Rapla                                                              Town                      Rapla (County)
+ Estonia       Tallinn                                                            Town                      Harju (County)
  Estonia       Tartu                                                              Town
- Estonia       Vigala                                                             Municipality              Rapla
- Estonia       Ääsmäe                                                             Town                      Harju
+ Estonia       Vigala                                                             Municipality              Rapla (County)
+ Estonia       Ääsmäe                                                             Town                      Harju (County)
  France        Marseille                                                          City
  France        Metz                                                               City
  France        Nancy                                                              City
@@ -121,7 +121,7 @@ TODO: Write explanations between the examples.
  Netherlands   Maastricht                                                         City
  Netherlands   Rotterdam                                                          City
  Netherlands   Utrecht                                                            City
-============= ======================== ==================== ==================== ============== ========== ==================
+============= ======================== ==================== ==================== ============== ========== =============================
 <BLANKLINE>
 
 >>> rt.show(countries.PlaceTypes)
