@@ -71,7 +71,7 @@ Let's look at one of them, Ash Wednesday::
 The :mod:`lino.modlib.cal.fixtures.std` fixture generates
 automatically all Ash Wednesdays for a range of years:
 
->>> rt.show(cal.EventsByController, master_instance=ash)
+>>> rt.show(cal.EventsByController, master_instance=ash, nosummary=True)
 ==================== =============== ===============
  When                 Summary         Actions
 -------------------- --------------- ---------------
@@ -83,6 +83,10 @@ automatically all Ash Wednesdays for a range of years:
 ==================== =============== ===============
 <BLANKLINE>
 
+Actually the user sees just the summary:
+
+>>> rt.show(cal.EventsByController, master_instance=ash)
+3: *18/02/2015?* 4: *10/02/2016?* 5: *01/03/2017?* 6: *14/02/2018?* 7: *06/03/2019?*
 
 That range of years depends on some configuration variables:
 
