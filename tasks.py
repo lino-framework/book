@@ -28,4 +28,5 @@ ns.setup_from_tasks(
         'lino_book.projects.apc.settings.demo',
         'lino_book.projects.pierre.settings.demo',
         'lino_book.projects.cosi_ee.settings.demo',
+        'lino_book.projects.chatter.settings.demo',
     ])

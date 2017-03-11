@@ -19,7 +19,8 @@ SETUP_INFO = dict(
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
         'djangorestframework', 'bleach',
-        'lino_cosi', 'lino_noi',
+        'lino_cosi',
+        # 'lino_noi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
 
@@ -132,6 +133,9 @@ lino_book.projects.igen
 lino_book.projects.igen.tests
 lino_book.projects.max
 lino_book.projects.max.settings
+lino_book.projects.chatter
+lino_book.projects.chatter.settings
+lino_book.projects.chatter.tests
 lino_book.projects.min1
 lino_book.projects.min1.settings
 lino_book.projects.min2

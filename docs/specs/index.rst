@@ -44,3 +44,4 @@ introductions. This section is far from being complete.
     ledger
     sales
     tim2lino
+    notify
