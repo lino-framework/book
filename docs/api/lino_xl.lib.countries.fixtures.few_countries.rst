@@ -16,6 +16,12 @@ lino_xl.lib.countries.fixtures.few_countries
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Country
+   
    
 
    

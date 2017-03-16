@@ -15,6 +15,7 @@ lino_xl.lib.boards.mixins
    .. autosummary::
    
       BoardDecision
+      UserAuthored
    
    
 

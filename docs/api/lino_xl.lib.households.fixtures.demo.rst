@@ -10,11 +10,19 @@ lino_xl.lib.households.fixtures.demo
 
    .. autosummary::
    
+      i2d
       objects
+      resolve_model
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
    
    
 

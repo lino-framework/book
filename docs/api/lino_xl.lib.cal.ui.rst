@@ -11,6 +11,9 @@ lino_xl.lib.cal.ui
    .. autosummary::
    
       check_subscription
+      daterange_text
+      join_elems
+      when_text
    
    
 
@@ -20,11 +23,14 @@ lino_xl.lib.cal.ui
 
    .. autosummary::
    
+      AllEvents
+      AllGuests
       Calendars
       ConflictingEvents
       EventDetail
       EventEvents
       EventPolicies
+      EventStates
       EventTypes
       Events
       EventsByController
@@ -32,11 +38,14 @@ lino_xl.lib.cal.ui
       EventsByProject
       EventsByRoom
       EventsByType
+      Explorer
       GuestRoles
+      GuestStates
       Guests
       GuestsByEvent
       GuestsByPartner
       GuestsByRole
+      My
       MyAssignedEvents
       MyEvents
       MyEventsToday
@@ -46,6 +55,9 @@ lino_xl.lib.cal.ui
       MyPresences
       MyTasks
       MyUnconfirmedAppointments
+      OfficeOperator
+      OfficeStaff
+      OfficeUser
       OneEvent
       OverdueAppointments
       Priorities
@@ -55,6 +67,7 @@ lino_xl.lib.cal.ui
       Subscriptions
       SubscriptionsByCalendar
       SubscriptionsByUser
+      TaskStates
       Tasks
       TasksByController
       TasksByProject

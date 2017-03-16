@@ -11,6 +11,7 @@ lino_xl.lib.cal.workflows
    .. autosummary::
    
       f
+      pgettext
    
    
 

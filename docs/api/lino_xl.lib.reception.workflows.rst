@@ -6,6 +6,14 @@ lino_xl.lib.reception.workflows
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      checkout_guest
+      f
+      pgettext
+   
    
 
    
@@ -15,6 +23,11 @@ lino_xl.lib.reception.workflows
    .. autosummary::
    
       CloseMeeting
+      EventState
+      EventStates
+      GuestState
+      GuestStates
+      TaskStates
    
    
 

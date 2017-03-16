@@ -13,6 +13,7 @@ lino_xl.lib.ledger.utils
       check_clearings
       get_due_movements
       myround
+      receiver
    
    
 
@@ -23,7 +24,11 @@ lino_xl.lib.ledger.utils
    .. autosummary::
    
       Balance
+      Decimal
       DueMovement
+      Signal
+      SumCollector
+      str
    
    
 

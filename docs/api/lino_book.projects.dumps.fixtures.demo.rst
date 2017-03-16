@@ -11,11 +11,19 @@ lino_book.projects.dumps.fixtures.demo
    .. autosummary::
    
       dt
+      make_aware
       objects
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Foo
+      datetime
    
    
 

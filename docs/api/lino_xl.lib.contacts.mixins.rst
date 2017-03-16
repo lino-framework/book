@@ -6,6 +6,12 @@ lino_xl.lib.contacts.mixins
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      lines2p
+   
    
 
    
@@ -17,6 +23,7 @@ lino_xl.lib.contacts.mixins
       ContactRelated
       OldCompanyContact
       PartnerDocument
+      object
    
    
 

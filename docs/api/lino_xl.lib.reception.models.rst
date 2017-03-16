@@ -13,6 +13,8 @@ lino_xl.lib.reception.models
       beware
       checkout_guest
       create_prompt_event
+      join_elems
+      naturaltime
    
    
 
@@ -26,12 +28,19 @@ lino_xl.lib.reception.models
       BusyVisitors
       CheckinVisitor
       CheckoutVisitor
+      EventStates
       ExpectedGuests
       GoneVisitors
+      GuestStates
+      My
       MyBusyVisitors
       MyGoneVisitors
       MyVisitorAction
       MyWaitingVisitors
+      NotifyingAction
+      OfficeOperator
+      OfficeUser
+      Q
       ReceiveVisitor
       Visitors
       WaitingVisitors

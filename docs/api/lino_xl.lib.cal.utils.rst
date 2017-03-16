@@ -13,6 +13,9 @@ lino_xl.lib.cal.utils
       aware
       day_and_month
       dt2kw
+      fds
+      force_text
+      format_date
       setkw
       update_auto_component
       update_auto_event
@@ -23,6 +26,12 @@ lino_xl.lib.cal.utils
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      tzlocal
    
    
 

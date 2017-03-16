@@ -25,6 +25,7 @@ lino_xl.lib.ledger.mixins
       Matching
       PartnerRelated
       ProjectRelated
+      Sequenced
       SequencedVoucherItem
       VoucherItem
    

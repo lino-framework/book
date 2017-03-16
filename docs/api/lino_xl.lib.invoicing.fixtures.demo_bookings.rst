@@ -16,6 +16,12 @@ lino_xl.lib.invoicing.fixtures.demo_bookings
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DurationUnits
+   
    
 
    

@@ -10,6 +10,7 @@ lino_xl.lib.tim2lino.fixtures.tim2lino
 
    .. autosummary::
    
+      import_module
       objects
    
    

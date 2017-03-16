@@ -17,6 +17,8 @@ lino_xl.lib.polls.roles
       PollsAdmin
       PollsStaff
       PollsUser
+      SiteAdmin
+      SiteUser
    
    
 

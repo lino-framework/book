@@ -16,6 +16,13 @@ lino_xl.lib.excerpts.fixtures.std
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Certifiable
+      ContentType
+   
    
 
    

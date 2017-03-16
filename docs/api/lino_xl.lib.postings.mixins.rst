@@ -14,6 +14,7 @@ lino_xl.lib.postings.mixins
 
    .. autosummary::
    
+      ContentType
       CreatePostings
       Postable
    

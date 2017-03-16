@@ -16,6 +16,9 @@ lino_xl.lib.blogs.models
    
       AllEntries
       AllTaggings
+      BaseRequest
+      CombinedDateTime
+      Controllable
       Entries
       EntriesByController
       EntriesByType
@@ -24,11 +27,13 @@ lino_xl.lib.blogs.models
       EntryType
       EntryTypes
       LatestEntries
+      My
       MyEntries
       Tagging
       Taggings
       TaggingsByEntry
       TaggingsByTopic
+      UserAuthored
    
    
 

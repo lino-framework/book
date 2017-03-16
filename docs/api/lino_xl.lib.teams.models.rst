@@ -16,6 +16,7 @@ lino_xl.lib.teams.models
    
       Team
       Teams
+      Users
       UsersByTeam
    
    

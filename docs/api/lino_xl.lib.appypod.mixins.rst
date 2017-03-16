@@ -14,9 +14,11 @@ lino_xl.lib.appypod.mixins
 
    .. autosummary::
    
+      AppyRenderer
       PortraitPrintTableAction
       PrintLabelsAction
       PrintTableAction
+      TmpMediaFile
    
    
 

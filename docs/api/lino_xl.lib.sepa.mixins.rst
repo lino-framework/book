@@ -16,11 +16,20 @@ lino_xl.lib.sepa.mixins
    
       BankAccount
       BankAccountChecker
+      Checker
+      PartnerRelated
       Payable
+      SumCollector
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

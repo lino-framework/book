@@ -6,6 +6,12 @@ lino_xl.lib.coachings.choicelists
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      only_coached_on
+   
    
 
    
@@ -20,6 +26,9 @@ lino_xl.lib.coachings.choicelists
       ClientHasNote
       ClientModified
       ClientStates
+      CoachingsStaff
+      Count
+      ObservedEvent
    
    
 

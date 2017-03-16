@@ -12,6 +12,7 @@ lino_xl.lib.vat.mixins
    
       get_default_vat_class
       get_default_vat_regime
+      myround
    
    
 
@@ -21,11 +22,17 @@ lino_xl.lib.vat.mixins
 
    .. autosummary::
    
+      Decimal
       PartnerDetailMixin
+      ProjectRelated
       QtyVatItemBase
+      SumCollector
+      VatClasses
       VatDocument
       VatItemBase
+      VatRegimes
       VatTotal
+      VoucherItem
    
    
 

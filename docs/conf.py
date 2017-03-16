@@ -342,7 +342,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if on_rtd:
     for n in """python django lino xl""".split():
-        intersphinx_mapping[n] = ('http://%s.readthedocs.org/en/latest/' % n, None)
+        intersphinx_mapping[n] = ('http://%s.readthedocs.io/en/latest/' % n, None)
 
 
 from atelier.sphinxconf import interproject

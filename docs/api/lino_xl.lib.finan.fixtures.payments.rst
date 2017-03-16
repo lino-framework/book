@@ -16,6 +16,14 @@ lino_xl.lib.finan.fixtures.payments
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+      Decimal
+      delta
+   
    
 
    

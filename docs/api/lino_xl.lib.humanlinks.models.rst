@@ -14,13 +14,23 @@ lino_xl.lib.humanlinks.models
 
    .. autosummary::
    
+      ContactsStaff
+      ContactsUser
       Link
+      LinkTypes
       Links
       LinksByHuman
+      Q
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

@@ -11,10 +11,17 @@ lino_xl.lib.addresses.fixtures.demo2
    .. autosummary::
    
       objects
+      streets_of_eupen
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
    
    
 

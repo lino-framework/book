@@ -16,6 +16,7 @@ lino_xl.lib.sepa.roles
    
       SepaStaff
       SepaUser
+      UserRole
    
    
 

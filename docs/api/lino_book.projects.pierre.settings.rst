@@ -6,6 +6,14 @@ lino_book.projects.pierre.settings
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      TIM2LINO_LOCAL
+      TIM2LINO_USERNAME
+      configure_plugin
+   
    
 
    
@@ -14,6 +22,7 @@ lino_book.projects.pierre.settings
 
    .. autosummary::
    
+      DocsSite
       Site
    
    

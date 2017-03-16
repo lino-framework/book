@@ -10,11 +10,20 @@ lino_xl.lib.ledger.fixtures.demo_bookings
 
    .. autosummary::
    
+      myround
       objects
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+      Decimal
+      delta
    
    
 

@@ -11,6 +11,7 @@ lino_xl.lib.countries.utils
    .. autosummary::
    
       get_address_formatter
+      join_words
    
    
 
@@ -21,12 +22,23 @@ lino_xl.lib.countries.utils
    .. autosummary::
    
       AddressFormatter
+      CountryDrivers
       EstonianAddressFormatter
+      InstanceGenerator
       PlaceGenerator
+      PlaceTypes
+      object
+      str
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

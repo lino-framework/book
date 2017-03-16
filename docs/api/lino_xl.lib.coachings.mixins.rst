@@ -6,6 +6,12 @@ lino_xl.lib.coachings.mixins
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      only_active_coachings_filter
+   
    
 
    
@@ -14,8 +20,11 @@ lino_xl.lib.coachings.mixins
 
    .. autosummary::
    
+      ChangeObservable
       ClientContactBase
+      ClientStates
       Coachable
+      ContactRelated
    
    
 

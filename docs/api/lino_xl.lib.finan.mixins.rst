@@ -14,14 +14,27 @@ lino_xl.lib.finan.mixins
 
    .. autosummary::
    
+      Certifiable
       DatedFinancialVoucher
       DatedFinancialVoucherItem
+      DebitOrCreditField
       FinancialVoucher
       FinancialVoucherItem
+      Matching
+      ProjectRelated
+      SequencedVoucherItem
+      VoucherItem
+      VoucherStates
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

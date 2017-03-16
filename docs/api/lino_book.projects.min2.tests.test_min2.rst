@@ -11,6 +11,7 @@ lino_book.projects.min2.tests.test_min2
    .. autosummary::
    
       create
+      full_model_name
    
    
 
@@ -20,7 +21,9 @@ lino_book.projects.min2.tests.test_min2
 
    .. autosummary::
    
+      Controllable
       QuickTest
+      RemoteAuthTestCase
    
    
 

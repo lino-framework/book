@@ -1,5 +1,0 @@
-[31m/media/dell1tb/work/book/docs/about/projects.rst:77: WARNING: undefined label: presto.specs.psico (if the link has no caption the label must precede a section header)[39;49;00m
-[31m/media/dell1tb/work/book/docs/dev/env.rst:19: WARNING: undefined label: extjs6 (if the link has no caption the label must precede a section header)[39;49;00m
-[31m/media/dell1tb/work/book/docs/dev/versioning.rst:27: WARNING: undefined label: extjs6 (if the link has no caption the label must precede a section header)[39;49;00m
-[31m/media/dell1tb/work/book/docs/releases/16.10.rst:16: WARNING: undefined label: extjs6 (if the link has no caption the label must precede a section header)[39;49;00m
-[31m/media/dell1tb/work/book/docs/team/noi_intro.rst:9: WARNING: undefined label: noi.guide (if the link has no caption the label must precede a section header)[39;49;00m
