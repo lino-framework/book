@@ -15,6 +15,7 @@ lino_book.projects.min2.tests.test_cal
    .. autosummary::
    
       QuickTest
+      RemoteAuthTestCase
    
    
 

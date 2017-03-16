@@ -11,6 +11,8 @@ lino_book.projects.min2.tests.test_birth_date
    .. autosummary::
    
       create
+      delete_child
+      insert_child
    
    
 
@@ -20,11 +22,19 @@ lino_book.projects.min2.tests.test_birth_date
 
    .. autosummary::
    
+      IncompleteDate
       QuickTest
+      RemoteAuthTestCase
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

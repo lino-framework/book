@@ -14,11 +14,18 @@ lino_xl.lib.vat.ui
 
    .. autosummary::
    
+      ByJournal
       InvoiceDetail
       Invoices
       InvoicesByJournal
       ItemsByInvoice
+      LedgerStaff
+      LedgerUser
+      PartnerVouchers
+      VatAccountInvoice
+      VatDocument
       VatRules
+      VoucherTypes
       VouchersByPartner
    
    

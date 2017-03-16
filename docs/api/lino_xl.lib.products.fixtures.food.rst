@@ -16,6 +16,12 @@ lino_xl.lib.products.fixtures.food
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
+   
    
 
    

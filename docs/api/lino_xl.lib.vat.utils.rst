@@ -17,6 +17,12 @@ lino_xl.lib.vat.utils
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Decimal
+   
    
 
    

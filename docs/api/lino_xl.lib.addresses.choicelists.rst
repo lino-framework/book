@@ -17,6 +17,7 @@ lino_xl.lib.addresses.choicelists
       AddressType
       AddressTypes
       DataSources
+      OfficeStaff
    
    
 

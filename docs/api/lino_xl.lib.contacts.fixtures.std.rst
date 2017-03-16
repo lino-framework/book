@@ -10,13 +10,22 @@ lino_xl.lib.contacts.fixtures.std
 
    .. autosummary::
    
+      babel_values
       not_empty
       objects
       parse
+      resolve_model
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
+      filter
    
    
 

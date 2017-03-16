@@ -17,6 +17,7 @@ lino_xl.lib.contacts.roles
       ContactsStaff
       ContactsUser
       SimpleContactsUser
+      SiteUser
    
    
 

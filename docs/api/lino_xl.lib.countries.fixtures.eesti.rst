@@ -13,10 +13,23 @@ lino_xl.lib.countries.fixtures.eesti
       cd2type
       objects
       place2objects
+      root
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Borough
+      County
+      Municipality
+      SmallBorough
+      Town
+      Township
+      Village
    
    
 

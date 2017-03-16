@@ -16,6 +16,9 @@ lino_xl.lib.addresses.mixins
    
       AddressOwner
       AddressOwnerChecker
+      AddressTypes
+      ChangeWatcher
+      Checker
    
    
 

@@ -15,6 +15,7 @@ lino_xl.lib.cal
    .. autosummary::
    
       Plugin
+      relativedelta
    
    
 

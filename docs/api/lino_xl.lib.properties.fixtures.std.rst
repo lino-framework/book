@@ -16,6 +16,12 @@ lino_xl.lib.properties.fixtures.std
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
+   
    
 
    

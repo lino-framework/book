@@ -16,6 +16,12 @@ lino_xl.lib.products.fixtures.furniture
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
+   
    
 
    

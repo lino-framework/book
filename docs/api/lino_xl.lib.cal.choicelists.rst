@@ -11,6 +11,9 @@ lino_xl.lib.cal.choicelists
    .. autosummary::
    
       amonthago
+      day_and_month
+      easter
+      fds
    
    
 

@@ -6,6 +6,12 @@ lino_xl.lib.statbel.countries.fixtures.few_countries
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      objects
+   
    
 
    

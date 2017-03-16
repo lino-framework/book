@@ -16,6 +16,12 @@ lino_xl.lib.polls.fixtures.feedback
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+   
    
 
    

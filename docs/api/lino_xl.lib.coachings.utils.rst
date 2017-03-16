@@ -21,6 +21,12 @@ lino_xl.lib.coachings.utils
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Q
+   
    
 
    

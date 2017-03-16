@@ -11,10 +11,17 @@ lino_xl.lib.outbox.fixtures.hello
    .. autosummary::
    
       objects
+      resolve_model
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
    
    
 

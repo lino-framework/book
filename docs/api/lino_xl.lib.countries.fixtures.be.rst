@@ -11,10 +11,17 @@ lino_xl.lib.countries.fixtures.be
    .. autosummary::
    
       objects
+      resolve_model
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
    
    
 

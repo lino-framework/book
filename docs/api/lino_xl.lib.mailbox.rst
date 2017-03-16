@@ -14,6 +14,7 @@ lino_xl.lib.mailbox
 
    .. autosummary::
    
+      Path
       Plugin
    
    

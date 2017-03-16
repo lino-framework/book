@@ -6,6 +6,12 @@ lino_xl.lib.cal.workflows.feedback
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      pgettext
+   
    
 
    
@@ -17,10 +23,13 @@ lino_xl.lib.cal.workflows.feedback
       AcceptInvitation
       CancelEvent
       CloseMeeting
+      EventStates
+      GuestStates
       InvitationFeedback
       MarkAbsent
       MarkExcused
       MarkPresent
+      NotifyingAction
       PublishEvent
       RejectInvitation
       ResetEvent

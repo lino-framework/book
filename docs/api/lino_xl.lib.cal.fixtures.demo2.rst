@@ -16,6 +16,16 @@ lino_xl.lib.cal.fixtures.demo2
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Calendar
+      Cycler
+      Event
+      EventType
+      relativedelta
+   
    
 
    

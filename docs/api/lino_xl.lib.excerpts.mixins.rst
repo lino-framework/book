@@ -6,6 +6,12 @@ lino_xl.lib.excerpts.mixins
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      naturaltime
+   
    
 
    
@@ -14,9 +20,11 @@ lino_xl.lib.excerpts.mixins
 
    .. autosummary::
    
+      BabelNamed
       Certifiable
       ClearPrinted
       ExcerptTitle
+      str
    
    
 

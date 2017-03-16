@@ -15,10 +15,12 @@ lino_xl.lib.boards.models
    .. autosummary::
    
       Board
+      BoardDecision
       Boards
       Member
       Members
       MembersByBoard
+      OfficeUser
    
    
 

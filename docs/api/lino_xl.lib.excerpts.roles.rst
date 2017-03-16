@@ -16,6 +16,7 @@ lino_xl.lib.excerpts.roles
    
       ExcerptsStaff
       ExcerptsUser
+      SiteUser
    
    
 

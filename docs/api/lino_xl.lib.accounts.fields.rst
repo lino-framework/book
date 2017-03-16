@@ -14,6 +14,7 @@ lino_xl.lib.accounts.fields
 
    .. autosummary::
    
+      BooleanStoreField
       DebitOrCreditField
       DebitOrCreditStoreField
    

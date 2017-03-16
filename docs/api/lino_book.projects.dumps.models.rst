@@ -14,6 +14,7 @@ lino_book.projects.dumps.models
 
    .. autosummary::
    
+      BabelNamed
       Foo
    
    

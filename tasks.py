@@ -3,7 +3,7 @@ import os
 pp = os.environ.get('VIRTUAL_ENV') + '/bin/per_project'
 ns.setup_from_tasks(
     globals(), 'lino_book',
-    # tolerate_sphinx_warnings=True,
+    tolerate_sphinx_warnings=True,
     blogref_url="http://luc.lino-framework.org",
     coverage_command='{} inv prep test clean --batch bd'.format(pp),
     revision_control_system='git',

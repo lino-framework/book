@@ -11,6 +11,8 @@ lino_xl.lib.stars.models
    .. autosummary::
    
       get_favourite
+      gfk2lookup
+      join_elems
       welcome_messages
    
    
@@ -22,12 +24,17 @@ lino_xl.lib.stars.models
    .. autosummary::
    
       AllStars
+      BaseRequest
+      Controllable
+      My
       MyStars
+      OfficeUser
       Star
       StarObject
       Stars
       StarsByController
       UnstarObject
+      UserAuthored
    
    
 

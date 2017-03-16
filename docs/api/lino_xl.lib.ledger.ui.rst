@@ -10,6 +10,9 @@ lino_xl.lib.ledger.ui
 
    .. autosummary::
    
+      JournalRef
+      get_due_movements
+      join_elems
       mvtsum
    
    
@@ -21,10 +24,12 @@ lino_xl.lib.ledger.ui
    .. autosummary::
    
       AccountingPeriods
+      AccountingReader
       AccountsBalance
       ActivityReport
       AllMovements
       AllVouchers
+      Balance
       ByJournal
       Creditors
       CustomerAccountsBalance
@@ -32,10 +37,15 @@ lino_xl.lib.ledger.ui
       DebtorsCreditors
       DebtsByAccount
       DebtsByPartner
+      DueMovement
       ExpectedMovements
+      FiscalYears
       GeneralAccountsBalance
       JournalDetail
+      JournalGroups
       Journals
+      LedgerStaff
+      LedgerUser
       MatchRules
       MatchRulesByAccount
       MatchRulesByJournal
@@ -48,8 +58,12 @@ lino_xl.lib.ledger.ui
       PartnerAccountsBalance
       PartnerVouchers
       PaymentTerms
+      Report
       Situation
       SupplierAccountsBalance
+      TradeTypes
+      VoucherStates
+      VoucherTypes
       Vouchers
    
    

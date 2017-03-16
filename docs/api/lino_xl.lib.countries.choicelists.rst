@@ -18,6 +18,7 @@ lino_xl.lib.countries.choicelists
       CountryDrivers
       PlaceType
       PlaceTypes
+      object
    
    
 

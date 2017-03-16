@@ -14,7 +14,10 @@ lino_xl.lib.postings.models
 
    .. autosummary::
    
+      Controllable
+      My
       MyPostings
+      OfficeUser
       Posting
       PostingStates
       Postings
@@ -26,10 +29,17 @@ lino_xl.lib.postings.models
       PostingsReady
       PostingsSent
       PrintPosting
+      UserAuthored
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

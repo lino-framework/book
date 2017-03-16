@@ -11,10 +11,17 @@ lino_xl.lib.contacts.fixtures.demo_ee
    .. autosummary::
    
       objects
+      resolve_model
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
    
    
 

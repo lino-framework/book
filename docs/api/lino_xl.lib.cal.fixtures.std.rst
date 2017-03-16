@@ -10,11 +10,21 @@ lino_xl.lib.cal.fixtures.std
 
    .. autosummary::
    
+      easter
       objects
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DurationUnits
+      Instantiator
+      Recurrencies
+      relativedelta
    
    
 

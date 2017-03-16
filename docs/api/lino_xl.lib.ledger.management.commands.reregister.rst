@@ -10,6 +10,7 @@ lino_xl.lib.ledger.management.commands.reregister
 
    .. autosummary::
    
+      check_clearings
       puts
       reregister_vouchers
    
@@ -21,7 +22,10 @@ lino_xl.lib.ledger.management.commands.reregister
 
    .. autosummary::
    
+      BaseCommand
+      BaseRequest
       Command
+      make_option
    
    
 

@@ -17,6 +17,7 @@ lino_xl.lib.ledger.roles
       AccountingReader
       LedgerStaff
       LedgerUser
+      UserRole
       VoucherSupervisor
    
    

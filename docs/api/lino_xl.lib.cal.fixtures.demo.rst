@@ -16,6 +16,12 @@ lino_xl.lib.cal.fixtures.demo
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Instantiator
+   
    
 
    

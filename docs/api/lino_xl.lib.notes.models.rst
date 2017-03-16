@@ -6,6 +6,12 @@ lino_xl.lib.notes.models
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      pgettext_lazy
+   
    
 
    
@@ -15,8 +21,14 @@ lino_xl.lib.notes.models
    .. autosummary::
    
       AllNotes
+      ChangeObservable
+      ContactRelated
+      Controllable
       EventType
       EventTypes
+      Mailable
+      MailableType
+      My
       MyNotes
       Note
       NoteDetail
@@ -30,6 +42,13 @@ lino_xl.lib.notes.models
       NotesByProject
       NotesByType
       NotesByX
+      OfficeOperator
+      OfficeStaff
+      OfficeUser
+      PrintableType
+      SpecialTypes
+      TypedPrintable
+      UserAuthored
    
    
 

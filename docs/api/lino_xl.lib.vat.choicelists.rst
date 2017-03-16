@@ -14,6 +14,7 @@ lino_xl.lib.vat.choicelists
 
    .. autosummary::
    
+      LedgerStaff
       VatClasses
       VatRegime
       VatRegimes

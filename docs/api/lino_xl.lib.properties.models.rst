@@ -6,6 +6,13 @@ lino_xl.lib.properties.models
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      choicelist_choices
+      get_choicelist
+   
    
 
    
@@ -28,6 +35,8 @@ lino_xl.lib.properties.models
       PropertyOccurence
       PropsByGroup
       PropsByType
+      SiteStaff
+      str
    
    
 

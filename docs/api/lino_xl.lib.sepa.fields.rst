@@ -6,6 +6,12 @@ lino_xl.lib.sepa.fields
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      with_metaclass
+   
    
 
    
@@ -15,10 +21,13 @@ lino_xl.lib.sepa.fields
    .. autosummary::
    
       BICField
+      CharFieldElement
       IBANField
       IBANFieldElement
+      IBANFormField
       UppercaseTextField
       UppercaseTextFieldElement
+      js_code
    
    
 

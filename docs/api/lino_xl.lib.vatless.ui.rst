@@ -14,14 +14,19 @@ lino_xl.lib.vatless.ui
 
    .. autosummary::
    
+      AccountInvoice
+      ByJournal
       InvoiceDetail
       InvoiceItems
       Invoices
       InvoicesByJournal
       ItemsByInvoice
       ItemsByProjectInvoice
+      PartnerRelated
+      PartnerVouchers
       ProjectInvoiceDetail
       ProjectInvoicesByJournal
+      VoucherTypes
       VouchersByPartner
    
    

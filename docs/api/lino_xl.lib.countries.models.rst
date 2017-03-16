@@ -14,13 +14,21 @@ lino_xl.lib.countries.models
 
    .. autosummary::
    
+      Checker
+      ContactsStaff
+      ContactsUser
       Countries
       Country
+      CountryDrivers
+      Hierarchical
       Place
       PlaceChecker
+      PlaceTypes
       Places
       PlacesByCountry
       PlacesByPlace
+      object
+      str
    
    
 

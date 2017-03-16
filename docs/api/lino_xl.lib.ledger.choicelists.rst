@@ -12,6 +12,7 @@ lino_xl.lib.ledger.choicelists
    
       inject_tradetype_fields
       setup_vat_workflow
+      string_concat
    
    
 
@@ -24,6 +25,7 @@ lino_xl.lib.ledger.choicelists
       FiscalYear
       FiscalYears
       JournalGroups
+      LedgerStaff
       PeriodStates
       TradeType
       TradeTypes

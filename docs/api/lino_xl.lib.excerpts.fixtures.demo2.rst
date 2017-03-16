@@ -16,6 +16,12 @@ lino_xl.lib.excerpts.fixtures.demo2
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Certifiable
+   
    
 
    

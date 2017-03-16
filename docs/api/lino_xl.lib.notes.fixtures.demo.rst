@@ -16,6 +16,13 @@ lino_xl.lib.notes.fixtures.demo
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+      Instantiator
+   
    
 
    

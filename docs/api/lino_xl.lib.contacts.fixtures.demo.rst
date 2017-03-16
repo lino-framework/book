@@ -11,10 +11,19 @@ lino_xl.lib.contacts.fixtures.demo
    .. autosummary::
    
       objects
+      streets_of_eupen
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+      Instantiator
+      str
    
    
 

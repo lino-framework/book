@@ -10,7 +10,12 @@ lino_xl.lib.sales.models
 
    .. autosummary::
    
+      add_vat
       add_voucher_type
+      body_subject_to_elems
+      get_default_vat_regime
+      myround
+      remove_vat
    
    
 
@@ -20,6 +25,11 @@ lino_xl.lib.sales.models
 
    .. autosummary::
    
+      BabelNamed
+      Bleached
+      ByJournal
+      Certifiable
+      Decimal
       DocumentsToSign
       DueInvoices
       InvoiceDetail
@@ -32,16 +42,28 @@ lino_xl.lib.sales.models
       ItemsByInvoice
       ItemsByInvoicePrint
       ItemsByInvoicePrintNoQtyColumn
+      LedgerStaff
+      LedgerUser
+      Matching
       PaperType
       PaperTypes
       PartnerDetailMixin
+      PartnerVouchers
+      Partners
       PartnersByInvoiceRecipient
+      Payable
       ProductDetailMixin
       ProductDocItem
+      QtyVatItemBase
       SalesDocument
       SalesDocuments
+      SequencedVoucherItem
       SignAction
+      TradeTypes
+      VatDocument
       VatProductInvoice
+      Voucher
+      VoucherTypes
    
    
 

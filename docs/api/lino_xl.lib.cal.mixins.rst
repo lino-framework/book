@@ -11,6 +11,8 @@ lino_xl.lib.cal.mixins
    .. autosummary::
    
       daterange_text
+      day_and_month
+      force_text
       format_time
    
    
@@ -21,13 +23,24 @@ lino_xl.lib.cal.mixins
 
    .. autosummary::
    
+      AccessClasses
       Component
+      ContentType
+      Controllable
+      Ended
       EventGenerator
+      EventStates
       MoveEventNext
+      OfficeStaff
       RecurrenceSet
+      Recurrencies
       Reservation
+      Started
       UpdateEvents
       UpdateEventsByEvent
+      UserAuthored
+      Weekdays
+      str
    
    
 

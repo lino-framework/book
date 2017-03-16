@@ -10,11 +10,19 @@ lino_xl.lib.sales.fixtures.demo_bookings
 
    .. autosummary::
    
+      myround
       objects
    
    
 
    
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+      delta
    
    
 

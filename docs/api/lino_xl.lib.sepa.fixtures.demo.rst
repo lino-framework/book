@@ -21,6 +21,7 @@ lino_xl.lib.sepa.fixtures.demo
    .. autosummary::
    
       Adder
+      Instantiator
    
    
 

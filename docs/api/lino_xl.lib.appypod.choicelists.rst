@@ -18,11 +18,20 @@ lino_xl.lib.appypod.choicelists
       AppyDocBuildMethod
       AppyOdtBuildMethod
       AppyPdfBuildMethod
+      AppyRenderer
       AppyRtfBuildMethod
+      BuildMethods
+      SimpleBuildMethod
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      EvaluationError
    
    
 

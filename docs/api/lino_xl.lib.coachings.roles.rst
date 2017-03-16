@@ -16,6 +16,7 @@ lino_xl.lib.coachings.roles
    
       CoachingsStaff
       CoachingsUser
+      SiteUser
    
    
 

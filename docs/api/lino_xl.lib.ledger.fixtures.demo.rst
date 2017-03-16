@@ -16,6 +16,12 @@ lino_xl.lib.ledger.fixtures.demo
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Cycler
+   
    
 
    

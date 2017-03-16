@@ -6,6 +6,12 @@ lino_xl.lib.invoicing.mixins
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      gfk2lookup
+   
    
 
    
@@ -14,6 +20,8 @@ lino_xl.lib.invoicing.mixins
 
    .. autosummary::
    
+      Decimal
+      GenericRelation
       Invoiceable
    
    

@@ -14,18 +14,32 @@ lino_xl.lib.coachings.models
 
    .. autosummary::
    
+      ChangeObservable
+      Checker
       ClientChecker
       ClientCoachingsChecker
       ClientContact
+      ClientContactBase
       ClientContactType
+      ClientEvents
+      ClientStates
       Coaching
       CoachingEnding
       CoachingType
+      Partners
       PartnersByClientContactType
+      Q
+      UserAuthored
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

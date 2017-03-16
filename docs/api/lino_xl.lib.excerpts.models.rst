@@ -10,6 +10,10 @@ lino_xl.lib.excerpts.models
 
    .. autosummary::
    
+      dirname
+      join
+      join_elems
+      naturaltime
       post_init_excerpt
       set_excerpts_actions
    
@@ -23,6 +27,10 @@ lino_xl.lib.excerpts.models
    
       AllExcerpts
       BodyTemplateContentField
+      Certifiable
+      ContactRelated
+      ContentType
+      Controllable
       CreateExcerpt
       Excerpt
       ExcerptDetail
@@ -32,11 +40,33 @@ lino_xl.lib.excerpts.models
       ExcerptsByOwner
       ExcerptsByProject
       ExcerptsByType
+      ExcerptsStaff
+      ExcerptsUser
+      Mailable
+      MailableType
+      My
       MyExcerpts
+      OfficeOperator
+      OfficeStaff
+      Postable
+      PrintableType
+      Shortcuts
+      SiteAdmin
+      TypedPrintable
+      UserAuthored
    
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      OperationalError
+      ProgrammingError
+      UnresolvedChoice
+      ValidationError
    
    
 

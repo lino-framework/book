@@ -22,6 +22,7 @@ lino_xl.lib.accounts.choicelists
       BankAccounts
       Capital
       CashFlow
+      DebitOrCreditField
       Earnings
       Expenses
       Income

@@ -6,6 +6,13 @@ lino_xl.lib.humanlinks.choicelists
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      pgettext
+      string_concat
+   
    
 
    
@@ -14,6 +21,7 @@ lino_xl.lib.humanlinks.choicelists
 
    .. autosummary::
    
+      ContactsStaff
       LinkType
       LinkTypes
    

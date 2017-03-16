@@ -21,8 +21,12 @@ lino_xl.lib.addresses.models
    .. autosummary::
    
       Address
+      AddressLocation
+      AddressTypes
       Addresses
       AddressesByPartner
+      DataSources
+      SiteStaff
    
    
 

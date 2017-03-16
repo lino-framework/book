@@ -15,6 +15,7 @@ lino_xl.lib.postings.dummy
    .. autosummary::
    
       Postable
+      PostingsByController
    
    
 

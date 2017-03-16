@@ -17,6 +17,7 @@ lino_xl.lib.contacts.dummy
       Partner
       PartnerDocument
       Partners
+      object
    
    
 

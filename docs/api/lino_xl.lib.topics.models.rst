@@ -16,10 +16,12 @@ lino_xl.lib.topics.models
    
       AllInterests
       AllTopics
+      BabelNamed
       Interest
       Interests
       InterestsByPartner
       InterestsByTopic
+      Referrable
       Topic
       TopicGroup
       TopicGroups

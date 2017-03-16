@@ -16,9 +16,32 @@ lino_xl.lib.appypod.models
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AbstractTable
+      AppyBuildMethod
+      AppyDocBuildMethod
+      AppyOdtBuildMethod
+      AppyPdfBuildMethod
+      AppyRenderer
+      AppyRtfBuildMethod
+      BuildMethods
+      PortraitPrintTableAction
+      PrintLabelsAction
+      PrintTableAction
+      SimpleBuildMethod
+   
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      EvaluationError
    
    
 

@@ -23,13 +23,19 @@ lino_xl.lib.finan.models
       AllBankStatements
       AllJournalEntries
       AllPaymentOrders
+      BankAccount
       BankStatement
       BankStatementDetail
       BankStatementItem
       BankStatements
       BankStatementsByJournal
+      DatedFinancialVoucher
+      DatedFinancialVoucherItem
+      DcAmountField
       FillSuggestionsToVoucher
       FillSuggestionsToVoucherItem
+      FinancialVoucher
+      FinancialVoucherItem
       FinancialVouchers
       ItemsByBankStatement
       ItemsByJournalEntry
@@ -40,11 +46,14 @@ lino_xl.lib.finan.models
       JournalEntry
       JournalEntryDetail
       JournalEntryItem
+      LedgerStaff
+      LedgerUser
       PaymentOrder
       PaymentOrderDetail
       PaymentOrderItem
       PaymentOrders
       PaymentOrdersByJournal
+      ProjectRelated
       ShowSuggestions
       SuggestionsByBankStatement
       SuggestionsByBankStatementItem
@@ -53,6 +62,7 @@ lino_xl.lib.finan.models
       SuggestionsByPaymentOrderItem
       SuggestionsByVoucher
       SuggestionsByVoucherItem
+      VoucherTypes
    
    
 

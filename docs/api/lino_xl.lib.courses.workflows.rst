@@ -22,6 +22,8 @@ lino_xl.lib.courses.workflows
    
       CertifyEnrolment
       ConfirmEnrolment
+      CourseStates
+      EnrolmentStates
       PrintAndChangeStateAction
    
    

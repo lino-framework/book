@@ -20,9 +20,21 @@ lino_xl.lib.sepa.utils
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Client
+   
    
 
    
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ValidationError
    
    
 

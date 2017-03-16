@@ -14,11 +14,14 @@ lino_xl.lib.products.models
 
    .. autosummary::
    
+      DeliveryUnit
       Product
       ProductCat
       ProductCats
       Products
       ProductsByCategory
+      ProductsStaff
+      ProductsUser
    
    
 

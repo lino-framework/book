@@ -6,6 +6,14 @@ lino_xl.lib.sepa.models
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      belgian_nban_to_iban_bic
+      fds
+      iban2bic
+   
    
 
    
@@ -17,6 +25,12 @@ lino_xl.lib.sepa.models
       Account
       Accounts
       AccountsByPartner
+      BICField
+      ChangeWatcher
+      ContactsUser
+      IBANField
+      SepaStaff
+      SepaUser
    
    
 
