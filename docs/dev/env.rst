@@ -19,18 +19,17 @@ documentation trees.
     :depth: 1
     :local:
 
-Automated way for installing the Lino SDK::
+Installing the Lino SDK
+=======================
+
+Automated way for clonging and installing the code repositories::
 
   $ cd ~/repositories
   $ wget https://raw.githubusercontent.com/lino-framework/book/master/docs/dev/install_dev_projects.sh
   $ chmod +x install_dev_projects.sh
   $ ./install_dev_projects.sh
 
-
-Telling atelier where your projects are
-=======================================
-  
-As a last step we must tell :ref:`atelier` about these new projects.
+Then you must manuall tell :ref:`atelier` about these new projects.
 Open your :xfile:`~/.atelier/config.py` file which should contain::
   
      add_project("/home/john/projects/hello")
@@ -51,6 +50,9 @@ splits our string on every whitspace:
 
 >>> 'foo bar  baz'.split()
 ['foo', 'bar', 'baz']
+
+As a last step you must install the LibreOffice server on your system
+as described in :doc:`/admin/oood`.
 
 
 Showing your atelier projects

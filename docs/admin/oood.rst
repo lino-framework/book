@@ -18,33 +18,30 @@ Installation
 
 `appy.pod` is part of the ``appy`` Python package and was
 automatically installed together with Lino into your Python
-environment.  But `libreoffice` and `python3-uno` must be installed by
-the system administrator using something like this::
+environment.  But appy requires two system packages `libreoffice` and
+`python3-uno` which must be installed using something like this::
 
   $ sudo apt-get install libreoffice python3-uno
 
-Starting the LibreOffice server
-===============================
-
 Then you need to run a LO server. For **occasional or experimental
-usage** you can fire it up using something like this::
+usage** you can fire it up manually using something like this::
 
   $ libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' &
 
 You might create an executable bash script named :cmd:`oood` in your
 ``PATH`` with above line.
 
-For **regular usage** and especially on a production server you will
-want to use a startup script. We recommend supervisor (which is also
-used for :doc:`linod`):
+But for **regular usage** and especially on a production server you
+will want to use a startup script. We recommend supervisor (which is
+also used for :doc:`linod`):
 
 - Install the `Supervisor <http://www.supervisord.org/index.html>`_
   package::
 
       $ sudo apt-get install supervisor
 
-  The supervisor package is being installed system-wide, it is not
-  related to any specific project.
+  Note that the supervisor package is being installed system-wide, it
+  is not related to any specific project.
 
 - Create a file :file:`libreoffice.conf` in
   :file:`/etc/supervisor/conf.d/` with this content::
@@ -57,7 +54,15 @@ used for :doc:`linod`):
 
     $ sudo service supervisor restart
 
-- Have a look at the log files in :file:`/var/log/supervisor`.
+- Have a look at the log files in :file:`/var/log/supervisor` and
+  check the status::
+
+    $ sudo service supervisor status
+
+- When everything works, then add supervisor as a service so that it
+  gets automatically started after a system restart::
+
+    $ sudo systemctl enable supervisor
 
 
 .. 
