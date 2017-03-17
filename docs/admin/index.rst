@@ -32,6 +32,7 @@ Installation
     install_mysql
     config_dirs
     xl
+    oood
 
 Maintenance
 -----------
@@ -92,7 +93,6 @@ Other
     using
     webdav
     install_shell_scripts
-    oood
     linod
     virtualenv
     tim2lino
