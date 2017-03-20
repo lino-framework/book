@@ -65,7 +65,7 @@ if the client has changed these.
 .. intermezzo 20150828
 
     >>> cal.MyEvents.model.manager_roles_required
-    set([<class 'lino.modlib.office.roles.OfficeStaff'>])
+    set([(<class 'lino.modlib.office.roles.OfficeStaff'>, <class 'lino.modlib.office.roles.OfficeOperator'>)])
     >>> ba = cal.MyEvents.get_action_by_name("export_excel")
     >>> u = rt.login('robin').user
     >>> ba.actor.get_view_permission(u.profile)
