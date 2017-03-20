@@ -20,7 +20,7 @@ Lino Noi has a notions of **faculties** and **competences** which
 might be useful in bigger teams for assigning a ticket to a worker.
 
 They are implemented in :mod:`lino_xl.lib.faculties`.  In the Team
-demo database they are not really used.  See also :doc:`care` which
+demo database they are not really used.  See also :ref:`care` which
 has does more usage of them.
 
 

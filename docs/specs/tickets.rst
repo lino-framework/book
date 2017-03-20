@@ -79,7 +79,8 @@ What is a ticket?
         ticket has evolved during time, it should reflect the latest
         version.
 
-        The description can contain memo commands (see :doc:`/specs/memo`).
+        The description can contain *memo commands* defined by the
+        application.
 
     .. attribute:: duplicate_of
 
