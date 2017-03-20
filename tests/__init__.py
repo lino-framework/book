@@ -271,6 +271,22 @@ class SpecsTests(TestCase):
     def test_tim2lino(self):
         return self.run_simple_doctests('docs/specs/tim2lino.rst')
 
+    def test_faculties(self):
+        self.run_simple_doctests('docs/specs/faculties.rst')
+
+    def test_tickets(self):
+        self.run_simple_doctests('docs/specs/tickets.rst')
+
+    def test_projects(self):
+        self.run_simple_doctests('docs/specs/projects.rst')
+
+    def test_votes(self):
+        self.run_simple_doctests('docs/specs/votes.rst')
+
+    def test_clocking(self):
+        self.run_simple_doctests('docs/specs/clocking.rst')
+
+
 class ProjectsTests(TestCase):
     
     # def test_all(self):

@@ -45,3 +45,15 @@ introductions. This section is far from being complete.
     sales
     tim2lino
     notify
+
+
+
+.. toctree::
+    :maxdepth: 1
+  
+    tickets
+    projects
+    faculties
+    votes
+    clocking
+    

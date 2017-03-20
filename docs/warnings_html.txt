@@ -1,0 +1,4 @@
+[31m/media/dell1tb/work/book/docs/specs/index.rst:51: WARNING: toctree contains reference to nonexisting document u'specs/ :maxdepth: 1'
+[39;49;00m[31m/media/dell1tb/work/book/docs/specs/faculties.rst:22: WARNING: unknown document: care
+[39;49;00m[31m/media/dell1tb/work/book/docs/specs/tickets.rst:82: WARNING: unknown document: /specs/memo
+[39;49;00m
