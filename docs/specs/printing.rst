@@ -4,13 +4,14 @@ Printing documents
 
 .. How to test only this document:
 
-     $ python setup.py test -s tests.SpecsTests.test_printing
      $ py.test -k test_printing
+     $ python setup.py test -s tests.SpecsTests.test_printing
 
    Initialize doctest:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.max.settings.doctests')
+    Your plugins.clocking.ticket_model (<class 'lino_xl.lib.contacts.models.Partner'>) is not workable
     >>> from lino.api.shell import *
     >>> from lino.api.doctest import *
 

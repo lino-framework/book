@@ -13,6 +13,7 @@ Career module (tested)
 
     >>> from lino import startup
     >>> startup('lino_book.projects.max.settings.demo')
+    Your plugins.clocking.ticket_model (<class 'lino_xl.lib.contacts.models.Partner'>) is not workable
     >>> from lino.api.doctest import *
 
 .. contents:: 

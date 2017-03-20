@@ -20,7 +20,7 @@ SETUP_INFO = dict(
         'django-iban', 'metafone', 'channels',
         'djangorestframework', 'bleach',
         'lino_cosi',
-        # 'lino_noi',
+        'lino_noi',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
 

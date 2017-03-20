@@ -25,18 +25,18 @@ TODO: Write explanations between the examples.
 
 
 >>> rt.show(countries.Countries)
-============================= ============================= ================================= ==========
- Designation                   Designation (et)              Designation (fr)                  ISO code
------------------------------ ----------------------------- --------------------------------- ----------
- Belgium                       Belgia                        Belgique                          BE
- Congo (Democratic Republic)   Congo (Democratic Republic)   Congo (République democratique)   CD
- Estonia                       Eesti                         Estonie                           EE
- France                        France                        France                            FR
- Germany                       Saksamaa                      Allemagne                         DE
- Maroc                         Maroc                         Maroc                             MA
- Netherlands                   Netherlands                   Pays-Bas                          NL
- Russia                        Russia                        Russie                            RU
-============================= ============================= ================================= ==========
+============================= ======================== ================================= ==========
+ Designation                   Designation (et)         Designation (fr)                  ISO code
+----------------------------- ------------------------ --------------------------------- ----------
+ Belgium                       Belgia                   Belgique                          BE
+ Congo (Democratic Republic)   Kongo vabariik           Congo (République democratique)   CD
+ Estonia                       Eesti                    Estonie                           EE
+ France                        KohalolekudPrantsusmaa   France                            FR
+ Germany                       Saksamaa                 Allemagne                         DE
+ Maroc                         Marokko                  Maroc                             MA
+ Netherlands                   Madalmaad                Pays-Bas                          NL
+ Russia                        Venemaa                  Russie                            RU
+============================= ======================== ================================= ==========
 <BLANKLINE>
 
 >>> rt.show(countries.Places)
