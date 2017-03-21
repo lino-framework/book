@@ -34,7 +34,8 @@ The Lino Extensions Library
   print(lino_xl.SETUP_INFO['long_description'])
 
 .. automodule:: lino_xl
-                
+
+
                 
 .. _book:
 
