@@ -6,6 +6,12 @@ lino_xl.lib.deploy.desktop
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      join_elems
+   
    
 
    
@@ -17,8 +23,12 @@ lino_xl.lib.deploy.desktop
       Deployments
       DeploymentsByMilestone
       DeploymentsByTicket
+      MilestoneDetail
       Milestones
+      MilestonesByCompetence
+      MilestonesByProject
       MilestonesBySite
+      str
    
    
 

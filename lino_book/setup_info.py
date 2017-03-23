@@ -21,6 +21,8 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach',
         'lino_cosi',
         'lino_noi',
+        'lino_voga',
+        'lino_welfare',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
 
