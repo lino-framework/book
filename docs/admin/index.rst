@@ -88,6 +88,7 @@ Other
    
     permissions
     apache_http_auth
+    mailbox
     django_tests
     apache_webdav
     using
