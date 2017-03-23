@@ -29,7 +29,7 @@ Installation
 
     install
     media
-    install_mysql
+    mysql_install
     config_dirs
     xl
     oood

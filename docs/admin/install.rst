@@ -70,7 +70,7 @@ Select your database backend::
     $ sudo apt-get install mysql-server
     $ sudo apt-get install mariadb-server
 
-See :doc:`install_mysql`.
+See :doc:`mysql_install`.
 
 .. _lino.admin.site_module:
 
@@ -148,7 +148,7 @@ Our example assumes you are using Django's **MySQL** backend.  For
 other backends, adapt your :setting:`DATABASES` accordingly.
 
 The database backend of your choice is not automatically installed.
-If you plan to use Django's MySQL backend, see :doc:`install_mysql`.
+If you plan to use Django's MySQL backend, see :doc:`mysql_install`.
 
 Follow the Django documentation at `Get your database running
 <https://docs.djangoproject.com/en/1.9/topics/install/#get-your-database-running>`__

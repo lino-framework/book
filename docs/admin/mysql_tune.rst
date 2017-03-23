@@ -3,35 +3,11 @@ Tuning MySQL database performance
 =================================
 
 This section is for tuning a MySQL server which is already installed.
-See also :doc:`install_mysql`.
+See also :doc:`mysql_install`.
 
 .. contents:: Table of contents
     :local:
     :depth: 1
-
-.. _innodb:
-
-Lino and the InnoDB engine
-==========================
-
-Lino versions before :blogref:`20141220` were more easy to use with
-the MyISAM storage instead of the default InnoDB storage (see `Setting
-the Storage Engine
-<http://dev.mysql.com/doc/refman/5.1/en/storage-engine-setting.html>`_).
-
-Using InnoDB could cause
-the following error message when trying to run :manage:`initdb` on a
-non-empty database::
-
-    IntegrityError: (1217, 'Cannot delete or update a parent row: 
-    a foreign key constraint fails')
-
-This was because :manage:`initdb` could fail to drop tables due to
-InnoDB's more severe integrity contraints.
-
-Even with InnoDB it was possible to work around this problem by doing
-yourself a `DROP DATABASE` followed by a new `CREATE DATABASE` each
-time before running :manage:`initdb`.
 
 .. _mysql.engine:
 
@@ -45,6 +21,7 @@ database engines
 <https://en.wikipedia.org/wiki/Comparison_of_MySQL_database_engines>`_)
 can influence your database performance.
 
+MyISAM is the default engine since MySQL 5.5 because it more severe. 
 
 To set the default storage engine to InnoDB, add an `init_command`
 option to your database setting::
@@ -69,6 +46,52 @@ on a Debian server by creating a file
 Instead of naming the file :file:`set_myisam_engine.cnf`, you might
 consider naming it :file:`.keepme`.
 
+You can see the value of the `storage_engine` server setting by
+saying::
+
+    SHOW GLOBAL VARIABLES LIKE 'storage_engine'
+
+Note that this is used just as a default value when a table is created
+without an engine specified, it does not affect the server in any
+other way.
+
+
+
+Which engine am I using?
+========================
+
+Here is how to see the engine used for every table::
+
+    mysql> select table_name, table_type, engine, table_collation from information_schema.tables where table_schema='myprj';
+  
+Available engines can be found with `SHOW ENGINES
+<https://dev.mysql.com/doc/refman/5.7/en/show-engines.html>`_.
+    
+
+
+.. _innodb:
+
+Lino and the InnoDB engine
+==========================
+
+Lino versions before :blogref:`20141220` were more easy to use with
+the MyISAM storage instead of the default InnoDB storage (see `Setting
+the Storage Engine
+<http://dev.mysql.com/doc/refman/5.1/en/storage-engine-setting.html>`_).
+
+Using InnoDB could cause
+the following error message when trying to run :manage:`initdb` on a
+non-empty database::
+
+    IntegrityError: (1217, 'Cannot delete or update a parent row: 
+    a foreign key constraint fails')
+
+This was because :manage:`initdb` could fail to drop tables due to
+InnoDB's more severe integrity contraints.
+
+Even with InnoDB it was possible to work around this problem by doing
+yourself a `DROP DATABASE` followed by a new `CREATE DATABASE` each
+time before running :manage:`initdb`.
 
 MySQLTuner
 ==========
