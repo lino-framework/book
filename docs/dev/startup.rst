@@ -9,17 +9,26 @@ process.
 
 There are four major phases in the startup of a Lino process:
 
-- **Application definition** (:mod:`lino.api.ad`) while Django
-  **settings** are being loaded
+- **Application definition** : while Django
+  **settings** are being loaded.
   
-- **Database definition** (:mod:`lino.api.dd`) while Django **models** are
+- **Database definition** : while Django **models** are
   being loaded
 
-- **Analysis** when Django models are loaded and Lino analyzes the
-  actors.
+- **Analysis** when Django models are loaded and Lino analyzes its own
+  data structures.
   
 - **Runtime** (:mod:`lino.api.rt`) when startup has finished.
 
+There are three major :mod:`lino.api` modules named after these
+phases:
+
+- :mod:`lino.api.ad` is available during Application Definition.
+  
+- :mod:`lino.api.dd` is available when AD has finished, during DD and
+  Analysis.
+
+- :mod:`lino.api.rt` is available when Analysys has finised.
 
 A more detailed description follows.
   
@@ -37,6 +46,7 @@ A more detailed description follows.
 
 - When all models are loaded, the Site will "start up" and instantiate
   the **kernel**. Only now everything in :mod:`lino.api.rt` is usable.
+
   
   
 **The remaining part of this section is obsolete.** It was for Django

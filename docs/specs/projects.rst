@@ -171,11 +171,11 @@ Choosing a project
 >>> base = '/choices/tickets/Tickets/project'
 >>> show_choices("robin", base + '?query=')
 <br/>
-linö
-téam
 docs
+linö
 research
 shop
+téam
 
 >>> show_choices("robin", base + '?query=frame')
 linö

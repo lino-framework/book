@@ -24,6 +24,7 @@ lino_xl.lib.deploy.models
       Deployment
       Milestone
       ObservedEvent
+      Sequenced
       TicketEventToDo
       TicketEvents
    

@@ -29,7 +29,7 @@ Installation
 
     install
     media
-    install_mysql
+    mysql_install
     config_dirs
     xl
     oood
@@ -88,6 +88,7 @@ Other
    
     permissions
     apache_http_auth
+    mailbox
     django_tests
     apache_webdav
     using

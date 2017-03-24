@@ -15,8 +15,8 @@ def setup_wsgi(globals_dict,*args,**kw):
     home_dir,tail = split(dirname(abspath(filename)))
     assert tail == 'apache', "%r is not apache" % tail
     setup(home_dir, *args, **kw)
-    import django.core.handlers.wsgi
-    globals_dict.update(application=django.core.handlers.wsgi.WSGIHandler())
+    from django.core.wsgi import get_wsgi_application
+    globals_dict.update(application=get_wsgi_application())
 
 def setup(homedir,settings_module=None):
     if False:
