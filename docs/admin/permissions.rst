@@ -67,7 +67,7 @@ Discovering problems
 
     $ sudo find -type d ! -perm /g=x -exec chmod g+x '{}' +
 
-- Show the permissions of all directories::    
+- Show the permissions of all directories::
 
     $ find -L env/repositories -type d -exec ls -ld {} + | less
 
