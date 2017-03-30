@@ -12,7 +12,7 @@ Project management
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_noi.projects.team.settings.doctests')
+    >>> startup('lino_book.projects.team.settings.doctests')
     >>> from lino.api.doctest import *
 
 

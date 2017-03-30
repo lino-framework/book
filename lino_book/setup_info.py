@@ -154,7 +154,30 @@ lino_book.projects.cosi_ee
 lino_book.projects.cosi_ee.settings
 lino_book.projects.pierre
 lino_book.projects.pierre.settings
+lino_book.projects.bs3
+lino_book.projects.bs3.settings
+lino_book.projects.bs3.tests
+lino_book.projects.team
+lino_book.projects.team.tests
+lino_book.projects.team.settings
+lino_book.projects.team.settings.fixtures
+lino_book.projects.vilma
+lino_book.projects.vilma.settings
+lino_book.projects.vilma.settings.fixtures
+lino_book.projects.public
+lino_book.projects.care
+lino_book.projects.care.settings
+lino_book.projects.care.settings.fixtures
+lino_book.projects.care.tests
+lino_book.projects.care.lib
+lino_book.projects.care.lib.tickets
+lino_book.projects.care_de
+lino_book.projects.public.settings
+lino_book.projects.public.tests
 """.splitlines() if n])
+
+
+
 
 SETUP_INFO.update(message_extractors={
     'lino': [

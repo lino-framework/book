@@ -8,7 +8,7 @@ The votes module
     
     doctest init:
     >>> import lino
-    >>> lino.startup('lino_noi.projects.team.settings.demo')
+    >>> lino.startup('lino_book.projects.team.settings.demo')
     >>> from lino.api.doctest import *
 
 
@@ -54,57 +54,57 @@ users.UserTypes.developer:400
 
 >>> rt.login('jean').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-================================================================= ========================================================== ==========
- Description                                                       Actions                                                    Priority
------------------------------------------------------------------ ---------------------------------------------------------- ----------
- `#116 (Ticket 116) <Detail>`__ by `Mathieu <Detail>`__            [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
- `#107 (Ticket 107) <Detail>`__ by `Mathieu <Detail>`__            [▶] [★] **Done** → [Rate]                                  0
- `#83 (Ticket 83) <Detail>`__ by `Mathieu <Detail>`__              [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
- `#74 (Ticket 74) <Detail>`__ by `Mathieu <Detail>`__              [▶] [★] **Done** → [Rate]                                  0
- `#50 (Ticket 50) <Detail>`__ by `Mathieu <Detail>`__              [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
- `#2 (Bar is not always baz) <Detail>`__ by `Mathieu <Detail>`__   [■] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
-================================================================= ========================================================== ==========
+====================================================== ========================================================== ==========
+ Description                                            Actions                                                    Priority
+------------------------------------------------------ ---------------------------------------------------------- ----------
+ `#2 (Bar is not always baz) <Detail>`__                [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
+ `#84 (Ticket 84) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Done** → [Rate]                                  0
+ `#60 (Ticket 60) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
+ `#51 (Ticket 51) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Done** → [Rate]                                  0
+ `#27 (Ticket 27) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Rate] [Cancel]   0
+ `#18 (Ticket 18) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Done** → [Rate]                                  0
+====================================================== ========================================================== ==========
 <BLANKLINE>
 
 
 
 >>> rt.login('mathieu').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-================================================== =================================================== ==========
- Description                                        Actions                                             Priority
--------------------------------------------------- --------------------------------------------------- ----------
- `#84 (Ticket 84) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**                                    0
- `#60 (Ticket 60) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
- `#51 (Ticket 51) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**                                    0
- `#27 (Ticket 27) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
- `#18 (Ticket 18) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**                                    0
-================================================== =================================================== ==========
+============================================================= =================================================== ==========
+ Description                                                   Actions                                             Priority
+------------------------------------------------------------- --------------------------------------------------- ----------
+ `#106 (Ticket 106) <Detail>`__ by `Luc <Detail>`__            [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
+ `#28 (Ticket 28) <Detail>`__ by `Luc <Detail>`__              [▶] [★] **Done**                                    0
+ `#4 (Foo and bar don't baz) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
+============================================================= =================================================== ==========
 <BLANKLINE>
 
 
 >>> rt.login('luc').show(votes.MyTasks)
-... #doctest: +REPORT_UDIFF
-============================================================== =================================================== ==========
- Description                                                    Actions                                             Priority
--------------------------------------------------------------- --------------------------------------------------- ----------
- `#106 (Ticket 106) <Detail>`__ by `Jean <Detail>`__            [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
- `#28 (Ticket 28) <Detail>`__ by `Jean <Detail>`__              [▶] [★] **Done**                                    0
- `#4 (Foo and bar don't baz) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
-============================================================== =================================================== ==========
+... #doctest: -REPORT_UDIFF
+===================================================== =================================================== ==========
+ Description                                           Actions                                             Priority
+----------------------------------------------------- --------------------------------------------------- ----------
+ `#116 (Ticket 116) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
+ `#107 (Ticket 107) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Done**                                    0
+ `#83 (Ticket 83) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
+ `#74 (Ticket 74) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**                                    0
+ `#50 (Ticket 50) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Assigned** → [Watching] [Done] [Cancel]   0
+===================================================== =================================================== ==========
 <BLANKLINE>
 
 
 
 >>> rt.login('luc').show(votes.MyOffers)
 ... #doctest: -REPORT_UDIFF
-================================================================== =============================================
- Description                                                        Actions
------------------------------------------------------------------- ---------------------------------------------
- `#115 (Ticket 115) <Detail>`__ by `Jean <Detail>`__                [▶] [★] **Candidate** → [Watching] [Cancel]
- `#82 (Ticket 82) <Detail>`__ by `Jean <Detail>`__                  [▶] [★] **Candidate** → [Watching] [Cancel]
- `#49 (Ticket 49) <Detail>`__ by `Jean <Detail>`__                  [▶] [★] **Candidate** → [Watching] [Cancel]
- `#1 (Föö fails to bar when baz) <Detail>`__ by `Jean <Detail>`__   [■] [★] **Candidate** → [Watching] [Cancel]
-================================================================== =============================================
+=================================================== ======================================================
+ Description                                         Actions
+--------------------------------------------------- ------------------------------------------------------
+ `#1 (Föö fails to bar when baz) <Detail>`__         [▶] [★] **Candidate** → [Watching] [Assign] [Cancel]
+ `#92 (Ticket 92) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Candidate** → [Watching] [Cancel]
+ `#59 (Ticket 59) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Candidate** → [Watching] [Cancel]
+ `#26 (Ticket 26) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Candidate** → [Watching] [Cancel]
+=================================================== ======================================================
 <BLANKLINE>
 
 

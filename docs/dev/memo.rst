@@ -11,7 +11,7 @@ The memo parser
 
 ..
     >>> from lino import startup
-    >>> startup('lino_noi.projects.team.settings.doctests')
+    >>> startup('lino_book.projects.team.settings.doctests')
     >>> from lino.api.doctest import *
 
 Lino has a simple built-in markup language called "memo".

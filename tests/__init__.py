@@ -286,7 +286,54 @@ class SpecsTests(TestCase):
     def test_clocking(self):
         self.run_simple_doctests('docs/specs/clocking.rst')
 
+    # formerly in noi:
+    
+    def test_noi_export_excel(self):
+        self.run_simple_doctests('docs/specs/noi/export_excel.rst')
 
+    def test_memo(self):
+        self.run_simple_doctests('docs/specs/noi/memo.rst')
+
+    # def test_care(self):
+    #     self.run_simple_doctests('docs/specs/noi/care.rst')
+
+    # def test_care_de(self):
+    #     self.run_simple_doctests('docs/specs/noi/care_de.rst')
+
+    def test_std(self):
+        self.run_simple_doctests('docs/specs/noi/std.rst')
+
+    def test_smtpd(self):
+        self.run_simple_doctests('docs/specs/noi/smtpd.rst')
+
+    def test_ddh(self):
+        self.run_simple_doctests('docs/specs/noi/ddh.rst')
+
+    def test_hosts(self):
+        self.run_simple_doctests('docs/specs/noi/hosts.rst')
+
+    def test_topics(self):
+        self.run_simple_doctests('docs/specs/noi/topics.rst')
+        
+    def test_noi_public(self):
+        self.run_simple_doctests('docs/specs/noi/public.rst')
+
+    def test_bs3(self):
+        self.run_simple_doctests('docs/specs/noi/bs3.rst')
+
+    def test_general(self):
+        self.run_simple_doctests('docs/specs/noi/general.rst')
+
+    def test_mailbox(self):
+        self.run_simple_doctests('docs/specs/noi/mailbox.rst')
+
+    def test_as_pdf(self):
+        self.run_simple_doctests('docs/specs/noi/as_pdf.rst')
+
+    def test_noi_db(self):
+        self.run_simple_doctests('docs/specs/noi/db.rst')
+
+        
 class ProjectsTests(TestCase):
     
     # def test_all(self):
@@ -316,6 +363,18 @@ class ProjectsTests(TestCase):
 
     def test_cosi_ee(self):
         self.run_django_manage_test('lino_book/projects/cosi_ee')
+
+    def test_team(self):
+        self.run_django_manage_test('lino_book/projects/team')
+
+    def test_bs3(self):
+        self.run_django_manage_test('lino_book/projects/bs3')
+        
+    # def test_care(self):
+    #     self.run_django_manage_test('lino_book/projects/care')
+
+    def test_vilma(self):
+        self.run_django_manage_test('lino_book/projects/vilma')
 
 
 class TestAppsTests(LinoTestCase):

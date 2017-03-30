@@ -7,10 +7,12 @@ Ticket management in Lino Noi
 .. How to test only this document:
 
     $ python setup.py test -s tests.SpecsTests.test_tickets
+    Or:
+    $ python -m atelier.doctest_utf8 docs/specs/tickets.rst
     
     doctest init:
     >>> import lino
-    >>> lino.startup('lino_noi.projects.team.settings.demo')
+    >>> lino.startup('lino_book.projects.team.settings.demo')
     >>> from lino.api.doctest import *
 
 
@@ -259,8 +261,8 @@ assigned to a project:
 ==== =================== ========= ============== ============== =========
  ID   Summary             Author    Topic          Actions        Project
 ---- ------------------- --------- -------------- -------------- ---------
- 5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**
- 3    Baz sucks           Luc       Lino Voga      **Open**
+ 5    Cannot create Foo   Jean      Lino Welfare   **Sleeping**
+ 3    Baz sucks           Mathieu   Lino Voga      **Open**
 ==== =================== ========= ============== ============== =========
 <BLANKLINE>
 
@@ -275,9 +277,9 @@ projects as follows (not a realistic distribution):
 ...         print p.ref, p.tickets_by_project.count()
 linö 23
 téam 23
-docs 23
+docs 22
 research 23
-shop 22
+shop 23
 
 
 
@@ -294,35 +296,35 @@ without project:
 >>> rt.show(tickets.Tickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF
-===== ======================= =========
- ID    Summary                 Project
------ ----------------------- ---------
- 114   Ticket 114              téam
- 109   Ticket 109              téam
- 104   Ticket 104              téam
- 99    Ticket 99               téam
- 94    Ticket 94               téam
- 89    Ticket 89               téam
- 84    Ticket 84               téam
- 79    Ticket 79               téam
- 74    Ticket 74               téam
- 69    Ticket 69               téam
- 64    Ticket 64               téam
- 59    Ticket 59               téam
- 54    Ticket 54               téam
- 49    Ticket 49               téam
- 44    Ticket 44               téam
- 39    Ticket 39               téam
- 34    Ticket 34               téam
- 29    Ticket 29               téam
- 24    Ticket 24               téam
- 19    Ticket 19               téam
- 14    Bar cannot baz          téam
- 9     Foo never matches Bar   téam
+===== ============================ =========
+ ID    Summary                      Project
+----- ---------------------------- ---------
+ 116   Ticket 116                   téam
+ 111   Ticket 111                   téam
+ 106   Ticket 106                   téam
+ 101   Ticket 101                   téam
+ 96    Ticket 96                    téam
+ 91    Ticket 91                    téam
+ 86    Ticket 86                    téam
+ 81    Ticket 81                    téam
+ 76    Ticket 76                    téam
+ 71    Ticket 71                    téam
+ 66    Ticket 66                    téam
+ 61    Ticket 61                    téam
+ 56    Ticket 56                    téam
+ 51    Ticket 51                    téam
+ 46    Ticket 46                    téam
+ 41    Ticket 41                    téam
+ 36    Ticket 36                    téam
+ 31    Ticket 31                    téam
+ 26    Ticket 26                    téam
+ 21    Ticket 21                    téam
+ 16    How to get bar from foo      téam
+ 11    Class-based Foos and Bars?   téam
+ 6     Sell bar in baz              téam
  5     Cannot create Foo
  3     Baz sucks
- 2     Bar is not always baz   téam
-===== ======================= =========
+===== ============================ =========
 <BLANKLINE>
 
 
@@ -332,147 +334,77 @@ And these are the public tickets:
 >>> pv = dict(show_private=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv,
 ...     column_names="id summary project")
-... #doctest: -REPORT_UDIFF
+... #doctest: -REPORT_UDIFF +ELLIPSIS
 ===== =========================================== ==========
  ID    Summary                                     Project
 ----- ------------------------------------------- ----------
- 116   Ticket 116                                  research
- 115   Ticket 115                                  docs
- 113   Ticket 113                                  linö
- 112   Ticket 112                                  shop
- 111   Ticket 111                                  research
- 110   Ticket 110                                  docs
- 108   Ticket 108                                  linö
- 107   Ticket 107                                  shop
- 106   Ticket 106                                  research
- 105   Ticket 105                                  docs
- 103   Ticket 103                                  linö
- 102   Ticket 102                                  shop
- 101   Ticket 101                                  research
- 100   Ticket 100                                  docs
- 98    Ticket 98                                   linö
- 97    Ticket 97                                   shop
- 96    Ticket 96                                   research
- 95    Ticket 95                                   docs
- 93    Ticket 93                                   linö
- 92    Ticket 92                                   shop
- 91    Ticket 91                                   research
- 90    Ticket 90                                   docs
- 88    Ticket 88                                   linö
- 87    Ticket 87                                   shop
- 86    Ticket 86                                   research
- 85    Ticket 85                                   docs
- 83    Ticket 83                                   linö
- 82    Ticket 82                                   shop
- 81    Ticket 81                                   research
- 80    Ticket 80                                   docs
- 78    Ticket 78                                   linö
- 77    Ticket 77                                   shop
- 76    Ticket 76                                   research
- 75    Ticket 75                                   docs
- 73    Ticket 73                                   linö
- 72    Ticket 72                                   shop
- 71    Ticket 71                                   research
- 70    Ticket 70                                   docs
- 68    Ticket 68                                   linö
- 67    Ticket 67                                   shop
- 66    Ticket 66                                   research
- 65    Ticket 65                                   docs
- 63    Ticket 63                                   linö
- 62    Ticket 62                                   shop
- 61    Ticket 61                                   research
- 60    Ticket 60                                   docs
- 58    Ticket 58                                   linö
- 57    Ticket 57                                   shop
- 56    Ticket 56                                   research
- 55    Ticket 55                                   docs
- 53    Ticket 53                                   linö
- 52    Ticket 52                                   shop
- 51    Ticket 51                                   research
- 50    Ticket 50                                   docs
- 48    Ticket 48                                   linö
- 47    Ticket 47                                   shop
- 46    Ticket 46                                   research
- 45    Ticket 45                                   docs
- 43    Ticket 43                                   linö
- 42    Ticket 42                                   shop
- 41    Ticket 41                                   research
- 40    Ticket 40                                   docs
- 38    Ticket 38                                   linö
- 37    Ticket 37                                   shop
- 36    Ticket 36                                   research
- 35    Ticket 35                                   docs
- 33    Ticket 33                                   linö
- 32    Ticket 32                                   shop
- 31    Ticket 31                                   research
- 30    Ticket 30                                   docs
- 28    Ticket 28                                   linö
- 27    Ticket 27                                   shop
- 26    Ticket 26                                   research
- 25    Ticket 25                                   docs
- 23    Ticket 23                                   linö
- 22    Ticket 22                                   shop
- 21    Ticket 21                                   research
- 20    Ticket 20                                   docs
- 18    Ticket 18                                   linö
- 17    Ticket 17                                   shop
- 16    How to get bar from foo                     research
- 15    Bars have no foo                            docs
- 13    Bar cannot foo                              linö
- 12    Foo cannot bar                              shop
- 11    Class-based Foos and Bars?                  research
- 10    Where can I find a Foo when bazing Bazes?   docs
- 8     Is there any Bar in Foo?                    linö
- 7     No Foo after deleting Bar                   shop
- 6     Sell bar in baz                             research
- 4     Foo and bar don't baz                       docs
- 1     Föö fails to bar when baz                   linö
+ 115   Ticket 115                                  linö
+ 114   Ticket 114                                  shop
+ 113   Ticket 113                                  research
+ 112   Ticket 112                                  docs
+ ...
+ 23    Ticket 23                                   research
+ 22    Ticket 22                                   docs
+ 20    Ticket 20                                   linö
+ 19    Ticket 19                                   shop
+ 18    Ticket 18                                   research
+ 17    Ticket 17                                   docs
+ 15    Bars have no foo                            linö
+ 14    Bar cannot baz                              shop
+ 13    Bar cannot foo                              research
+ 12    Foo cannot bar                              docs
+ 10    Where can I find a Foo when bazing Bazes?   linö
+ 9     Foo never matches Bar                       shop
+ 8     Is there any Bar in Foo?                    research
+ 7     No Foo after deleting Bar                   docs
+ 4     Foo and bar don't baz                       linö
+ 2     Bar is not always baz                       shop
+ 1     Föö fails to bar when baz                   research
 ===== =========================================== ==========
 <BLANKLINE>
 
 
 
-There are 20 private and 96 public tickets in the demo database.
+There are 19 private and 97 public tickets in the demo database.
 
 >>> tickets.Ticket.objects.filter(private=True).count()
-20
+19
 >>> tickets.Ticket.objects.filter(private=False).count()
-96
+97
 
 My tickets
 ==========
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: +REPORT_UDIFF
-============================================================== ========================================
- Description                                                    Actions
--------------------------------------------------------------- ----------------------------------------
- `#115 (Ticket 115) <Detail>`__                                 [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#106 (Ticket 106) <Detail>`__                                 [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#102 (Ticket 102) <Detail>`__                                 [▶] [★] **Ready** → [☎] [☑]
- `#100 (Ticket 100) <Detail>`__                                 [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#97 (Ticket 97) <Detail>`__                                   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#91 (Ticket 91) <Detail>`__                                   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#82 (Ticket 82) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#78 (Ticket 78) <Detail>`__                                   [▶] [★] **Ready** → [☎] [☑]
- `#76 (Ticket 76) <Detail>`__                                   [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#73 (Ticket 73) <Detail>`__                                   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#67 (Ticket 67) <Detail>`__                                   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#58 (Ticket 58) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#54 (Ticket 54) <Detail>`__                                   [▶] [★] **Ready** → [☎] [☑]
- `#52 (Ticket 52) <Detail>`__                                   [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#49 (Ticket 49) <Detail>`__                                   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#43 (Ticket 43) <Detail>`__                                   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#34 (Ticket 34) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#30 (Ticket 30) <Detail>`__                                   [▶] [★] **Ready** → [☎] [☑]
- `#28 (Ticket 28) <Detail>`__                                   [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#25 (Ticket 25) <Detail>`__                                   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#19 (Ticket 19) <Detail>`__                                   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#10 (Where can I find a Foo when bazing Bazes?) <Detail>`__   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#6 (Sell bar in baz) <Detail>`__                              [▶] [★] **Ready** → [☎] [☑]
- `#4 (Foo and bar don't baz) <Detail>`__                        [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#1 (Föö fails to bar when baz) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
-============================================================== ========================================
+=============================================== ========================================
+ Description                                     Actions
+----------------------------------------------- ----------------------------------------
+ `#116 (Ticket 116) <Detail>`__                  [▶] [★] **Started** → [☾] [☎] [☐] [☑]
+ `#113 (Ticket 113) <Detail>`__                  [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#107 (Ticket 107) <Detail>`__                  [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
+ `#98 (Ticket 98) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
+ `#94 (Ticket 94) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
+ `#92 (Ticket 92) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
+ `#89 (Ticket 89) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#83 (Ticket 83) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
+ `#74 (Ticket 74) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
+ `#70 (Ticket 70) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
+ `#68 (Ticket 68) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
+ `#65 (Ticket 65) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#59 (Ticket 59) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
+ `#50 (Ticket 50) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
+ `#46 (Ticket 46) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
+ `#44 (Ticket 44) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
+ `#41 (Ticket 41) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#35 (Ticket 35) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
+ `#26 (Ticket 26) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
+ `#22 (Ticket 22) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
+ `#20 (Ticket 20) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
+ `#17 (Ticket 17) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#11 (Class-based Foos and Bars?) <Detail>`__   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
+ `#2 (Bar is not always baz) <Detail>`__         [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
+=============================================== ========================================
 <BLANKLINE>
 
 
@@ -501,16 +433,16 @@ can see all local tickets for a given site object:
 ===== =========================== ======== ============== ========== ==========
  ID    Summary                     Author   Topic          Actions    Project
 ----- --------------------------- -------- -------------- ---------- ----------
- 115   Ticket 115                  Jean     Lino Voga      **Open**   docs
- 97    Ticket 97                   Jean     Lino Welfare   **New**    shop
- 91    Ticket 91                   Jean     Lino Voga      **Open**   research
- 73    Ticket 73                   Jean     Lino Welfare   **New**    linö
- 67    Ticket 67                   Jean     Lino Voga      **Open**   shop
- 49    Ticket 49                   Jean     Lino Welfare   **New**    téam
- 43    Ticket 43                   Jean     Lino Voga      **Open**   linö
- 25    Ticket 25                   Jean     Lino Welfare   **New**    docs
- 19    Ticket 19                   Jean     Lino Voga      **Open**   téam
- 1     Föö fails to bar when baz   Jean     Lino Welfare   **New**    linö
+ 115   Ticket 115                  Luc      Lino Voga      **Open**   linö
+ 97    Ticket 97                   Luc      Lino Welfare   **New**    docs
+ 91    Ticket 91                   Luc      Lino Voga      **Open**   téam
+ 73    Ticket 73                   Luc      Lino Welfare   **New**    research
+ 67    Ticket 67                   Luc      Lino Voga      **Open**   docs
+ 49    Ticket 49                   Luc      Lino Welfare   **New**    shop
+ 43    Ticket 43                   Luc      Lino Voga      **Open**   research
+ 25    Ticket 25                   Luc      Lino Welfare   **New**    linö
+ 19    Ticket 19                   Luc      Lino Voga      **Open**   shop
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    research
 ===== =========================== ======== ============== ========== ==========
 <BLANKLINE>
 
@@ -521,20 +453,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ================== ==========
- ID    Summary                     Author   Topic          Actions            Project
------ --------------------------- -------- -------------- ------------------ ----------
- 115   Ticket 115                  Jean     Lino Voga      [▶] [★] **Open**   docs
- 97    Ticket 97                   Jean     Lino Welfare   [▶] [★] **New**    shop
- 91    Ticket 91                   Jean     Lino Voga      [▶] [★] **Open**   research
- 73    Ticket 73                   Jean     Lino Welfare   [▶] [★] **New**    linö
- 67    Ticket 67                   Jean     Lino Voga      [▶] [★] **Open**   shop
- 49    Ticket 49                   Jean     Lino Welfare   [▶] [★] **New**    téam
- 43    Ticket 43                   Jean     Lino Voga      [▶] [★] **Open**   linö
- 25    Ticket 25                   Jean     Lino Welfare   [▶] [★] **New**    docs
- 19    Ticket 19                   Jean     Lino Voga      [▶] [★] **Open**   téam
- 1     Föö fails to bar when baz   Jean     Lino Welfare   [★] **New**        linö
-===== =========================== ======== ============== ================== ==========
+===== =========================== ======== ============== ======================================== ==========
+ ID    Summary                     Author   Topic          Actions                                  Project
+----- --------------------------- -------- -------------- ---------------------------------------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   linö
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    docs
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   téam
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    research
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   docs
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    shop
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   research
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   shop
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    research
+===== =========================== ======== ============== ======================================== ==========
 <BLANKLINE>
 
 
@@ -555,30 +487,32 @@ users of that site.
 
 >>> rt.show('deploy.Milestones')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ====== ========== ======== ========
- Start date   Site   Label      Author   Closed
------------- ------ ---------- -------- --------
-                     20150503            No
-                     20150505            No
-                     20150507            No
-                     20150509            No
-                     20150511            No
-                     20150513            No
-                     20150515            No
-                                         No
-============ ====== ========== ======== ========
+============ ======== ========== ========= ========
+ Start date   Site     Label      Author    Closed
+------------ -------- ---------- --------- --------
+                                            No
+ 03/05/2015   welket   20150503   Jean      No
+ 05/05/2015   welsch   20150505   Luc       No
+ 07/05/2015   welket   20150507   Mathieu   No
+ 09/05/2015   welsch   20150509   Jean      No
+ 11/05/2015   welket   20150511   Luc       No
+ 13/05/2015   welsch   20150513   Mathieu   No
+ 15/05/2015   welket   20150515   Jean      No
+============ ======== ========== ========= ========
 <BLANKLINE>
 
 
->>> shop = tickets.Project.objects.get(ref="shop")
->>> rt.show('deploy.MilestonesByProject', shop)
+>>> obj = tickets.Site.objects.get(name="welket")
+>>> rt.show('deploy.MilestonesBySite', obj)
 ... #doctest: -REPORT_UDIFF
-========== ============== ============ ========
- Label      Expected for   Reached      Closed
----------- -------------- ------------ --------
- 20150507   07/05/2015     07/05/2015   No
-            23/05/2015                  No
-========== ============== ============ ========
+============ ========== ========= ============== ========= ======== ====
+ Start date   Label      Author    Expected for   Reached   Closed   ID
+------------ ---------- --------- -------------- --------- -------- ----
+ 15/05/2015   20150515   Jean                               No       7
+ 11/05/2015   20150511   Luc                                No       5
+ 07/05/2015   20150507   Mathieu                            No       3
+ 03/05/2015   20150503   Jean                               No       1
+============ ========== ========= ============== ========= ======== ====
 <BLANKLINE>
 
 
@@ -592,25 +526,25 @@ The demo database currently does not have any deployments:
 
 >>> rt.show(rt.actors.deploy.Deployments)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
-==== ========= ================================================= =================== ========
- ID   No.       Ticket                                            Milestone           Remark
----- --------- ------------------------------------------------- ------------------- --------
- 1    1         #1 (Föö fails to bar when baz)                    20150503@docs
- 9    2         #11 (Class-based Foos and Bars?)                  20150503@docs
- 17   3         #22 (Ticket 22)                                   20150503@docs
- 25   4         #33 (Ticket 33)                                   20150503@docs
- 33   5         #43 (Ticket 43)                                   20150503@docs
+==== ========= ================================================= ================= ========
+ ID   No.       Ticket                                            Milestone         Remark
+---- --------- ------------------------------------------------- ----------------- --------
+ 1    1         #1 (Föö fails to bar when baz)                    20150503@welket
+ 9    2         #11 (Class-based Foos and Bars?)                  20150503@welket
+ 17   3         #22 (Ticket 22)                                   20150503@welket
+ 25   4         #33 (Ticket 33)                                   20150503@welket
+ 33   5         #43 (Ticket 43)                                   20150503@welket
+ 41   6         #54 (Ticket 54)                                   20150503@welket
  ...
- 24   3         #31 (Ticket 31)                                   #8@shop
- 32   4         #42 (Ticket 42)                                   #8@shop
- 40   5         #53 (Ticket 53)                                   #8@shop
- 48   6         #63 (Ticket 63)                                   #8@shop
- 56   7         #74 (Ticket 74)                                   #8@shop
- 64   8         #85 (Ticket 85)                                   #8@shop
- 72   9         #95 (Ticket 95)                                   #8@shop
- 80   10        #106 (Ticket 106)                                 #8@shop
+ 32   4         #42 (Ticket 42)                                   #8@None
+ 40   5         #53 (Ticket 53)                                   #8@None
+ 48   6         #63 (Ticket 63)                                   #8@None
+ 56   7         #74 (Ticket 74)                                   #8@None
+ 64   8         #85 (Ticket 85)                                   #8@None
+ 72   9         #95 (Ticket 95)                                   #8@None
+ 80   10        #106 (Ticket 106)                                 #8@None
       **517**
-==== ========= ================================================= =================== ========
+==== ========= ================================================= ================= ========
 <BLANKLINE>
 
 
@@ -647,24 +581,24 @@ No data to display
 
 >>> url = '/choices/deploy/DeploymentsByTicket/milestone'
 >>> show_choices('robin', url)
-#8@shop
-20150503@docs
-20150505@research
-20150507@shop
-20150509@linö
-20150511@téam
-20150513@docs
-20150515@research
+#8@None
+20150503@welket
+20150505@welsch
+20150507@welket
+20150509@welsch
+20150511@welket
+20150513@welsch
+20150515@welket
+
 
 >>> show_choices('robin', url+"?query=0507")
-20150507@shop
+20150507@welket
 
 >>> show_choices('robin', url+"?query=2015050")
-20150503@docs
-20150505@research
-20150507@shop
-20150509@linö
-
+20150503@welket
+20150505@welsch
+20150507@welket
+20150509@welsch
 
 
 
@@ -720,19 +654,19 @@ Dependencies between tickets
 Comments
 ========
 
-Comments on private tickets are not shown to anonymous users:
+Comments are not shown to anonymous users:
 
 >>> rt.show(comments.Comments, column_names="id user owner")
 ==== ================= =================================================
  ID   Author            Ticket
 ---- ----------------- -------------------------------------------------
  1    Jean              #1 (Föö fails to bar when baz)
+ 2    Luc               #2 (Bar is not always baz)
  4    Romain Raffault   #4 (Foo and bar don't baz)
- 6    Robin Rood        #6 (Sell bar in baz)
  7    Jean              #7 (No Foo after deleting Bar)
  8    Luc               #8 (Is there any Bar in Foo?)
+ 9    Mathieu           #9 (Foo never matches Bar)
  10   Romain Raffault   #10 (Where can I find a Foo when bazing Bazes?)
- 11   Rolf Rompen       #11 (Class-based Foos and Bars?)
  12   Robin Rood        #12 (Foo cannot bar)
 ==== ================= =================================================
 <BLANKLINE>
@@ -760,9 +694,9 @@ The same list seen by marc
 
 
 >>> obj = tickets.Ticket.objects.get(pk=6)
->>> rt.show(comments.CommentsByRFC, obj)
+>>> rt.login('luc').show(comments.CommentsByRFC, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<ul><li><a href="Detail" title="Created ...">...</a> by <em>Robin Rood</em> <a href="#" onclick="toggle_visibility('comment-6');" title="Hide">&#8284;</a><div id=comment-6>...</div></li></ul>
+<p><b>Write comment</b></p><ul><li><a href="Detail" title="Created ...">...</a> by <a href="Detail">Robin Rood</a> [<b> Reply </b>] <a href="#" onclick="toggle_visibility('comment-6');" title="Hide">&#8284;</a><div id=comment-6><p>Very confidential comment</p></div></li></ul>
 
 
 
@@ -837,7 +771,7 @@ the detail window of a ticket.
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_1): **Wanted skills** (DemandsByDemander), **Votes** (VotesByVotable)
       - (bottom_box_2): **Wishes** (DeploymentsByTicket), **Sessions** (SessionsByTicket) [visible for consultant hoster developer senior admin]
-  - **Comments** (CommentsByRFC)
+  - **Comments** (CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):
     - (more1):

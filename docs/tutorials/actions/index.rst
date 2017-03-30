@@ -2,8 +2,6 @@
 Custom actions
 ==============
 
-.. include:: /include/wip.rst
-
 For an introduction, see :ref:`dev.actions`.
 
 The action API is not yet fully stable, but this tutorial is a tested
@@ -79,43 +77,43 @@ How to "remove" an inherited action or collected from a table
 Here are the actions on Moos:
 
 >>> pprint([ba.action for ba in Moos.get_actions()])
-[<ShowAsHtml show_as_html ('HTML')>,
- <SaveRow grid_put>,
- <CreateRow grid_post ('grid_post')>,
- <SubmitInsert submit_insert ('Create')>,
- <DeleteSelected delete_selected ('Delete')>,
- <ShowTable grid>,
- <A a ('a')>,
- <A b ('a')>,
- <Action m ('m')>,
- <Action t ('t')>]
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>,
+ <actions.models.A a ('a')>,
+ <actions.models.A b ('a')>,
+ <lino.core.actions.Action m ('m')>,
+ <lino.core.actions.Action t ('t')>]
 
 A subclass inherits all actions from her parent.
 When I define a second table `S1(Moos)`, then `S1` will have 
 both actions `m` and `t`:
 
 >>> pprint([ba.action for ba in S1.get_actions()])
-[<ShowAsHtml show_as_html ('HTML')>,
- <SaveRow grid_put>,
- <CreateRow grid_post ('grid_post')>,
- <SubmitInsert submit_insert ('Create')>,
- <DeleteSelected delete_selected ('Delete')>,
- <ShowTable grid>,
- <A a ('a')>,
- <Action m ('m')>,
- <A b ('a')>,
- <Action t ('t')>]
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>,
+ <actions.models.A a ('a')>,
+ <lino.core.actions.Action m ('m')>,
+ <actions.models.A b ('a')>,
+ <lino.core.actions.Action t ('t')>]
 
 S2 does not have these actions because we "removed" them by overriding
 them with None:
 
 >>> pprint([ba.action for ba in S2.get_actions()])
-[<ShowAsHtml show_as_html ('HTML')>,
- <SaveRow grid_put>,
- <CreateRow grid_post ('grid_post')>,
- <SubmitInsert submit_insert ('Create')>,
- <DeleteSelected delete_selected ('Delete')>,
- <ShowTable grid>]
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>]
 
 
 

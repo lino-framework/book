@@ -26,6 +26,7 @@ lino_xl.lib.courses.models
    
       Certifiable
       ConfirmedSubmitInsert
+      ContactRelated
       Course
       CourseAreas
       CourseStates

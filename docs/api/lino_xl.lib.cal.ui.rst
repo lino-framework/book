@@ -25,6 +25,7 @@ lino_xl.lib.cal.ui
    
       AllEvents
       AllGuests
+      CalendarReader
       Calendars
       ConflictingEvents
       EventDetail
@@ -61,6 +62,7 @@ lino_xl.lib.cal.ui
       OneEvent
       OverdueAppointments
       Priorities
+      PublicEvents
       RecurrentEvents
       RemoteCalendars
       Rooms

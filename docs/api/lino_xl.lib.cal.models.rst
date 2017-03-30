@@ -34,12 +34,14 @@ lino_xl.lib.cal.models
       AllGuests
       Assignable
       Calendar
+      CalendarReader
       CalendarType
       Calendars
       Checker
       Component
       ConflictingEvents
       ConflictingEventsChecker
+      ContactRelated
       DurationUnits
       Ended
       Event
@@ -96,6 +98,7 @@ lino_xl.lib.cal.models
       Postable
       Priorities
       Priority
+      PublicEvents
       Q
       RecurrenceSet
       Recurrencies
