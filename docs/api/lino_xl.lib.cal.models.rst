@@ -32,6 +32,7 @@ lino_xl.lib.cal.models
       AccessClasses
       AllEvents
       AllGuests
+      AllRooms
       Assignable
       Calendar
       CalendarReader

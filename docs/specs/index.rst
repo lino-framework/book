@@ -51,15 +51,5 @@ introductions. This section is far from being complete.
 .. toctree::
     :maxdepth: 1
   
-    tickets
-    projects
-    faculties
-    votes
-    clocking
-    
-
-.. toctree::
-    :maxdepth: 1
-  
     noi/index
     

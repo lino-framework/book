@@ -12,22 +12,30 @@ The default variant ("team")
 
 
 .. toctree::
-   :maxdepth: 1
-   :glob:
-  
-   general
-   topics
-   smtpd
-   hosts
-   as_pdf
-   ddh
-   memo
-   db
-   std
-   public
-   bs3
-   export_excel
-   mailbox
+    :maxdepth: 1
+    :glob:
+
+    general
+    topics
+    smtpd
+    hosts
+    as_pdf
+    ddh
+    memo
+    db
+    std
+    public
+    bs3
+    export_excel
+    mailbox
+    
+    tickets
+    projects
+    faculties
+    votes
+    clocking
+
+   
    
 
 The Lino Care variant

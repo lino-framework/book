@@ -25,6 +25,7 @@ lino_xl.lib.cal.ui
    
       AllEvents
       AllGuests
+      AllRooms
       CalendarReader
       Calendars
       ConflictingEvents

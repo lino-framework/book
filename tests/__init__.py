@@ -272,19 +272,19 @@ class SpecsTests(TestCase):
         return self.run_simple_doctests('docs/specs/tim2lino.rst')
 
     def test_faculties(self):
-        self.run_simple_doctests('docs/specs/faculties.rst')
+        self.run_simple_doctests('docs/specs/noi/faculties.rst')
 
     def test_tickets(self):
-        self.run_simple_doctests('docs/specs/tickets.rst')
+        self.run_simple_doctests('docs/specs/noi/tickets.rst')
 
     def test_projects(self):
-        self.run_simple_doctests('docs/specs/projects.rst')
+        self.run_simple_doctests('docs/specs/noi/projects.rst')
 
     def test_votes(self):
-        self.run_simple_doctests('docs/specs/votes.rst')
+        self.run_simple_doctests('docs/specs/noi/votes.rst')
 
     def test_clocking(self):
-        self.run_simple_doctests('docs/specs/clocking.rst')
+        self.run_simple_doctests('docs/specs/noi/clocking.rst')
 
     # formerly in noi:
     
