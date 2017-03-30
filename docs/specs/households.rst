@@ -100,18 +100,18 @@ The most interesting is 177:
 >>> p = Person.objects.get(pk=177)
 >>> rt.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast*
-`☐  <javascript:Lino.households.Members.set_primary(null,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu*
+`☐  <javascript:Lino.households.Members.set_primary(null,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
+`☐  <javascript:Lino.households.Members.set_primary(null,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
 >>> rt.show('households.MembersByPerson', p, nosummary=True)
-================================ =================== ========= ============ ============
- Household                        Role                Primary   Start date   End date
--------------------------------- ------------------- --------- ------------ ------------
- Karl & Erna Keller-Emonts-Gast   Head of household   No
- Karl & Õie Keller-Õunapuu        Head of household   No                     04/03/2002
-================================ =================== ========= ============ ============
+==================================================== =================== ========= ============ ============
+ Household                                            Role                Primary   Start date   End date
+---------------------------------------------------- ------------------- --------- ------------ ------------
+ Karl & Erna Keller-Emonts-Gast (Factual household)   Head of household   No
+ Karl & Õie Keller-Õunapuu (Legal cohabitation)       Head of household   No                     04/03/2002
+==================================================== =================== ========= ============ ============
 <BLANKLINE>
 
 >>> rt.show(SiblingsByPerson, p)
@@ -167,11 +167,11 @@ Mrs Daniela Radermacher is my Foster mother
 >>> rt.show('households.MembersByPerson', master_instance=lars)
 ... #doctest: +ELLIPSIS
 Mr Lars Braun is
-`☐  <...>`__Child in *Albert & Eveline Adam-Evrard*
-`☐  <...>`__Child in *Albert & Françoise Adam-Freisen*
-`☐  <...>`__Child in *Bruno & Eveline Braun-Evrard*
-`☐  <...>`__Child in *Bruno & Françoise Braun-Freisen*
-`☐  <...>`__Child in *Albert & Daniela Adam-Radermacher*
+`☐  <javascript:Lino.households.Members.set_primary(null,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 

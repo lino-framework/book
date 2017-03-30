@@ -21,12 +21,14 @@ lino_xl.lib.deploy.models
    .. autosummary::
    
       Certifiable
+      DatePeriod
       Deployment
       Milestone
       ObservedEvent
       Sequenced
       TicketEventToDo
       TicketEvents
+      UserAuthored
    
    
 

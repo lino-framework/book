@@ -28,6 +28,8 @@ lino_xl.lib.deploy.desktop
       MilestonesByCompetence
       MilestonesByProject
       MilestonesBySite
+      My
+      MyMilestones
       str
    
    

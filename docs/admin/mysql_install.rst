@@ -35,7 +35,7 @@ Users
 For your first project create a user ``django`` which you can reuse
 for all projects::
     
-    $ mysql -u root -p 
+    $ mysql -u root -p
     mysql> create user 'django'@'localhost' identified by 'my cool password';
 
 To see all users defined on the site::

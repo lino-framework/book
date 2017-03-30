@@ -50,6 +50,21 @@ The Lino Book
 .. automodule:: lino_book
 
 
+.. _noi:
+
+Lino Noi
+========
+
+.. py2rst::
+
+  import lino_noi
+  print(lino_noi.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_noi
+                
+
+
 .. _commondata:
 
 The ``commondata`` packages

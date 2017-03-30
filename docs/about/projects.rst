@@ -28,17 +28,6 @@ Lino Welfare
   from lino_welfare import SETUP_INFO
   print(SETUP_INFO['long_description'])
 
-.. _noi:
-
-Lino Noi
---------
-
-
-.. py2rst::
-
-  from lino_noi import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
 .. _care:
 
 Lino Care
