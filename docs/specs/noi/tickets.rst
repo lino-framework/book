@@ -277,9 +277,9 @@ projects as follows (not a realistic distribution):
 ...         print p.ref, p.tickets_by_project.count()
 linö 23
 téam 23
-docs 22
+docs 23
 research 23
-shop 23
+shop 22
 
 
 
@@ -296,35 +296,35 @@ without project:
 >>> rt.show(tickets.Tickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF
-===== ============================ =========
- ID    Summary                      Project
------ ---------------------------- ---------
- 116   Ticket 116                   téam
- 111   Ticket 111                   téam
- 106   Ticket 106                   téam
- 101   Ticket 101                   téam
- 96    Ticket 96                    téam
- 91    Ticket 91                    téam
- 86    Ticket 86                    téam
- 81    Ticket 81                    téam
- 76    Ticket 76                    téam
- 71    Ticket 71                    téam
- 66    Ticket 66                    téam
- 61    Ticket 61                    téam
- 56    Ticket 56                    téam
- 51    Ticket 51                    téam
- 46    Ticket 46                    téam
- 41    Ticket 41                    téam
- 36    Ticket 36                    téam
- 31    Ticket 31                    téam
- 26    Ticket 26                    téam
- 21    Ticket 21                    téam
- 16    How to get bar from foo      téam
- 11    Class-based Foos and Bars?   téam
- 6     Sell bar in baz              téam
+===== ======================= =========
+ ID    Summary                 Project
+----- ----------------------- ---------
+ 114   Ticket 114              téam
+ 109   Ticket 109              téam
+ 104   Ticket 104              téam
+ 99    Ticket 99               téam
+ 94    Ticket 94               téam
+ 89    Ticket 89               téam
+ 84    Ticket 84               téam
+ 79    Ticket 79               téam
+ 74    Ticket 74               téam
+ 69    Ticket 69               téam
+ 64    Ticket 64               téam
+ 59    Ticket 59               téam
+ 54    Ticket 54               téam
+ 49    Ticket 49               téam
+ 44    Ticket 44               téam
+ 39    Ticket 39               téam
+ 34    Ticket 34               téam
+ 29    Ticket 29               téam
+ 24    Ticket 24               téam
+ 19    Ticket 19               téam
+ 14    Bar cannot baz          téam
+ 9     Foo never matches Bar   téam
  5     Cannot create Foo
  3     Baz sucks
-===== ============================ =========
+ 2     Bar is not always baz   téam
+===== ======================= =========
 <BLANKLINE>
 
 
@@ -338,39 +338,35 @@ And these are the public tickets:
 ===== =========================================== ==========
  ID    Summary                                     Project
 ----- ------------------------------------------- ----------
- 115   Ticket 115                                  linö
- 114   Ticket 114                                  shop
- 113   Ticket 113                                  research
- 112   Ticket 112                                  docs
+ 116   Ticket 116                                  research
+ 115   Ticket 115                                  docs
+ 113   Ticket 113                                  linö
+ 112   Ticket 112                                  shop
+ 111   Ticket 111                                  research
  ...
- 23    Ticket 23                                   research
- 22    Ticket 22                                   docs
- 20    Ticket 20                                   linö
- 19    Ticket 19                                   shop
- 18    Ticket 18                                   research
- 17    Ticket 17                                   docs
- 15    Bars have no foo                            linö
- 14    Bar cannot baz                              shop
- 13    Bar cannot foo                              research
- 12    Foo cannot bar                              docs
- 10    Where can I find a Foo when bazing Bazes?   linö
- 9     Foo never matches Bar                       shop
- 8     Is there any Bar in Foo?                    research
- 7     No Foo after deleting Bar                   docs
- 4     Foo and bar don't baz                       linö
- 2     Bar is not always baz                       shop
- 1     Föö fails to bar when baz                   research
+ 18    Ticket 18                                   linö
+ 17    Ticket 17                                   shop
+ 16    How to get bar from foo                     research
+ 15    Bars have no foo                            docs
+ 13    Bar cannot foo                              linö
+ 12    Foo cannot bar                              shop
+ 11    Class-based Foos and Bars?                  research
+ 10    Where can I find a Foo when bazing Bazes?   docs
+ 8     Is there any Bar in Foo?                    linö
+ 7     No Foo after deleting Bar                   shop
+ 6     Sell bar in baz                             research
+ 4     Foo and bar don't baz                       docs
+ 1     Föö fails to bar when baz                   linö
 ===== =========================================== ==========
 <BLANKLINE>
 
 
-
-There are 19 private and 97 public tickets in the demo database.
+There are 20 private and 96 public tickets in the demo database.
 
 >>> tickets.Ticket.objects.filter(private=True).count()
-19
+20
 >>> tickets.Ticket.objects.filter(private=False).count()
-97
+96
 
 My tickets
 ==========
@@ -413,36 +409,36 @@ Sites
 
 Lino Noi has a list of all sites for which we do support:
 
->>> rt.show(tickets.Sites)
-============= ========= ======== ====
- Designation   Partner   Remark   ID
-------------- --------- -------- ----
- pypi          pypi               3
- welket        welket             1
- welsch        welsch             2
-============= ========= ======== ====
+>>> rt.show(cal.Rooms)
+==== ============= ================== ================== ============= ================ ================ =============
+ ID   Designation   Designation (de)   Designation (fr)   Responsible   Contact person   represented as   Description
+---- ------------- ------------------ ------------------ ------------- ---------------- ---------------- -------------
+ 1    welket
+ 2    welsch
+ 3    pypi
+==== ============= ================== ================== ============= ================ ================ =============
 <BLANKLINE>
 
 A ticket may or may not be "local", i.e. specific to a given site.
 When a ticket is site-specific, we simply assign the `site` field.  We
 can see all local tickets for a given site object:
 
->>> welket = tickets.Site.objects.get(name="welket")
+>>> welket = cal.Room.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ========== ==========
  ID    Summary                     Author   Topic          Actions    Project
 ----- --------------------------- -------- -------------- ---------- ----------
- 115   Ticket 115                  Luc      Lino Voga      **Open**   linö
- 97    Ticket 97                   Luc      Lino Welfare   **New**    docs
- 91    Ticket 91                   Luc      Lino Voga      **Open**   téam
- 73    Ticket 73                   Luc      Lino Welfare   **New**    research
- 67    Ticket 67                   Luc      Lino Voga      **Open**   docs
- 49    Ticket 49                   Luc      Lino Welfare   **New**    shop
- 43    Ticket 43                   Luc      Lino Voga      **Open**   research
- 25    Ticket 25                   Luc      Lino Welfare   **New**    linö
- 19    Ticket 19                   Luc      Lino Voga      **Open**   shop
- 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    research
+ 115   Ticket 115                  Luc      Lino Voga      **Open**   docs
+ 97    Ticket 97                   Luc      Lino Welfare   **New**    shop
+ 91    Ticket 91                   Luc      Lino Voga      **Open**   research
+ 73    Ticket 73                   Luc      Lino Welfare   **New**    linö
+ 67    Ticket 67                   Luc      Lino Voga      **Open**   shop
+ 49    Ticket 49                   Luc      Lino Welfare   **New**    téam
+ 43    Ticket 43                   Luc      Lino Voga      **Open**   linö
+ 25    Ticket 25                   Luc      Lino Welfare   **New**    docs
+ 19    Ticket 19                   Luc      Lino Voga      **Open**   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    linö
 ===== =========================== ======== ============== ========== ==========
 <BLANKLINE>
 
@@ -456,16 +452,16 @@ authenticated developer it looks like this:
 ===== =========================== ======== ============== ======================================== ==========
  ID    Summary                     Author   Topic          Actions                                  Project
 ----- --------------------------- -------- -------------- ---------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   linö
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    docs
- 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   téam
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    research
- 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   docs
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    shop
- 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   research
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
- 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   shop
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    research
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   docs
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    shop
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   research
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   shop
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    téam
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   linö
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    docs
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
 ===== =========================== ======== ============== ======================================== ==========
 <BLANKLINE>
 
@@ -474,77 +470,67 @@ authenticated developer it looks like this:
 Milestones
 ==========
 
-Every site can have its list of "milestones" or "releases". A
-milestone is when a site gets an upgrade of the software which is
-running there. 
+Every site can have its list of "milestones". A milestone is when
+something happens on a given site at a given time, and when a given
+group of people are working for preparing this.  In Scrum this is
+called a sprint.
 
-A milestone is not necessary an *official* release of a new
-version. It just means that you release some changed software to the
-users of that site.
+A typical case of a milestone is an upgrade of the software that is
+running on a given site.  A milestone is not necessary an *official*
+release of a new version.
 
-.. the following test is skipped because the width of the "Printed"
-   column changes
-
->>> rt.show('deploy.Milestones')
+>>> rt.show('courses.Courses')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ======== ========== ========= ========
- Start date   Site     Label      Author    Closed
------------- -------- ---------- --------- --------
-                                            No
- 03/05/2015   welket   20150503   Jean      No
- 05/05/2015   welsch   20150505   Luc       No
- 07/05/2015   welket   20150507   Mathieu   No
- 09/05/2015   welsch   20150509   Jean      No
- 11/05/2015   welket   20150511   Luc       No
- 13/05/2015   welsch   20150513   Mathieu   No
- 15/05/2015   welket   20150515   Jean      No
-============ ======== ========== ========= ========
+============ ================== =============== ============ ======== ===========
+ Start date   Enrolments until   Activity line   Instructor   Room     Actions
+------------ ------------------ --------------- ------------ -------- -----------
+ 15/05/2015                      Sprint                       welket   **Draft**
+ 13/05/2015                      Sprint                       welsch   **Draft**
+ 11/05/2015                      Sprint                       welket   **Draft**
+ 09/05/2015                      Sprint                       welsch   **Draft**
+ 07/05/2015                      Sprint                       welket   **Draft**
+ 05/05/2015                      Sprint                       welsch   **Draft**
+ 03/05/2015                      Sprint                       welket   **Draft**
+============ ================== =============== ============ ======== ===========
 <BLANKLINE>
 
-
->>> obj = tickets.Site.objects.get(name="welket")
->>> rt.show('deploy.MilestonesBySite', obj)
-... #doctest: -REPORT_UDIFF
-============ ========== ========= ============== ========= ======== ====
- Start date   Label      Author    Expected for   Reached   Closed   ID
------------- ---------- --------- -------------- --------- -------- ----
- 15/05/2015   20150515   Jean                               No       7
- 11/05/2015   20150511   Luc                                No       5
- 07/05/2015   20150507   Mathieu                            No       3
- 03/05/2015   20150503   Jean                               No       1
-============ ========== ========= ============== ========= ======== ====
-<BLANKLINE>
 
 
 Deployments (Wishes)
 =====================
 
-Every milestone has its list of "deployments", i.e. the tickets that
-are being fixed when this milestone is reached.
+Every milestone has its list of wishes ("deployments"), i.e. the
+tickets that are being fixed when this milestone is reached.
 
 The demo database currently does not have any deployments:
 
 >>> rt.show(rt.actors.deploy.Deployments)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
-==== ========= ================================================= ================= ========
- ID   No.       Ticket                                            Milestone         Remark
----- --------- ------------------------------------------------- ----------------- --------
- 1    1         #1 (Föö fails to bar when baz)                    20150503@welket
- 9    2         #11 (Class-based Foos and Bars?)                  20150503@welket
- 17   3         #22 (Ticket 22)                                   20150503@welket
- 25   4         #33 (Ticket 33)                                   20150503@welket
- 33   5         #43 (Ticket 43)                                   20150503@welket
- 41   6         #54 (Ticket 54)                                   20150503@welket
+==== ========= ================================================= ========== ======== ===========
+ ID   No.       Ticket                                            Activity   Remark   Wish type
+---- --------- ------------------------------------------------- ---------- -------- -----------
+ 1    1         #1 (Föö fails to bar when baz)                    20150503
+ 2    1         #2 (Bar is not always baz)                        20150505
+ 3    1         #3 (Baz sucks)                                    20150507
+ 4    1         #5 (Cannot create Foo)                            20150509
+ 5    1         #6 (Sell bar in baz)                              20150511
+ 6    1         #7 (No Foo after deleting Bar)                    20150513
+ 7    1         #9 (Foo never matches Bar)                        20150515
+ 8    2         #10 (Where can I find a Foo when bazing Bazes?)   20150503
+ 9    2         #11 (Class-based Foos and Bars?)                  20150505
+ 10   2         #13 (Bar cannot foo)                              20150507
+ 11   2         #14 (Bar cannot baz)                              20150509
+ 12   2         #15 (Bars have no foo)                            20150511
+ 13   2         #17 (Ticket 17)                                   20150513
+ 14   2         #18 (Ticket 18)                                   20150515
  ...
- 32   4         #42 (Ticket 42)                                   #8@None
- 40   5         #53 (Ticket 53)                                   #8@None
- 48   6         #63 (Ticket 63)                                   #8@None
- 56   7         #74 (Ticket 74)                                   #8@None
- 64   8         #85 (Ticket 85)                                   #8@None
- 72   9         #95 (Ticket 95)                                   #8@None
- 80   10        #106 (Ticket 106)                                 #8@None
-      **517**
-==== ========= ================================================= ================= ========
+ 83   12        #110 (Ticket 110)                                 20150513
+ 84   12        #111 (Ticket 111)                                 20150515
+ 85   13        #113 (Ticket 113)                                 20150503
+ 86   13        #114 (Ticket 114)                                 20150505
+ 87   13        #115 (Ticket 115)                                 20150507
+      **585**
+==== ========= ================================================= ========== ======== ===========
 <BLANKLINE>
 
 
@@ -553,52 +539,26 @@ The demo database currently does not have any deployments:
 Release notes
 =============
 
-Lino Noi has an excerpt type for printing a milestone.  This was used
-to produce *release notes*.
-
->>> obj = deploy.Milestone.objects.get(pk=7)
->>> rt.show(rt.actors.deploy.DeploymentsByMilestone, obj)
-======== ====== ============================ ======= ========
- No.      Move   Ticket                       State   Remark
--------- ------ ---------------------------- ------- --------
- 1               #9 (Foo never matches Bar)   New
- 2               #19 (Ticket 19)              Open
- 3               #30 (Ticket 30)              Ready
- 4               #41 (Ticket 41)              New
- 5               #51 (Ticket 51)              Open
- 6               #62 (Ticket 62)              Ready
- 7               #73 (Ticket 73)              New
- 8               #83 (Ticket 83)              Open
- 9               #94 (Ticket 94)              Ready
- 10              #105 (Ticket 105)            New
- 11              #115 (Ticket 115)            Open
- **66**
-======== ====== ============================ ======= ========
-<BLANKLINE>
-
->>> rt.show(clocking.OtherTicketsByMilestone, obj) #doctest: +SKIP
-No data to display
-
 >>> url = '/choices/deploy/DeploymentsByTicket/milestone'
 >>> show_choices('robin', url)
-#8@None
-20150503@welket
-20150505@welsch
-20150507@welket
-20150509@welsch
-20150511@welket
-20150513@welsch
-20150515@welket
+20150515
+20150513
+20150511
+20150509
+20150507
+20150505
+20150503
 
 
 >>> show_choices('robin', url+"?query=0507")
-20150507@welket
+20150507
 
 >>> show_choices('robin', url+"?query=2015050")
-20150503@welket
-20150505@welsch
-20150507@welket
-20150509@welsch
+... #doctest: +SKIP
+20150503
+20150505
+20150507
+20150509
 
 
 
@@ -661,12 +621,12 @@ Comments are not shown to anonymous users:
  ID   Author            Ticket
 ---- ----------------- -------------------------------------------------
  1    Jean              #1 (Föö fails to bar when baz)
- 2    Luc               #2 (Bar is not always baz)
  4    Romain Raffault   #4 (Foo and bar don't baz)
+ 6    Robin Rood        #6 (Sell bar in baz)
  7    Jean              #7 (No Foo after deleting Bar)
  8    Luc               #8 (Is there any Bar in Foo?)
- 9    Mathieu           #9 (Foo never matches Bar)
  10   Romain Raffault   #10 (Where can I find a Foo when bazing Bazes?)
+ 11   Rolf Rompen       #11 (Class-based Foos and Bars?)
  12   Robin Rood        #12 (Foo cannot bar)
 ==== ================= =================================================
 <BLANKLINE>
@@ -693,10 +653,10 @@ The same list seen by marc
 <BLANKLINE>
 
 
->>> obj = tickets.Ticket.objects.get(pk=6)
+>>> obj = tickets.Ticket.objects.get(pk=2)
 >>> rt.login('luc').show(comments.CommentsByRFC, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<p><b>Write comment</b></p><ul><li><a href="Detail" title="Created ...">...</a> by <a href="Detail">Robin Rood</a> [<b> Reply </b>] <a href="#" onclick="toggle_visibility('comment-6');" title="Hide">&#8284;</a><div id=comment-6><p>Very confidential comment</p></div></li></ul>
+<p><b>Write comment</b></p><ul><li><a href="Detail" title="Created ...">...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a href="#" onclick="toggle_visibility('comment-2');" title="Hide">&#8284;</a><div id=comment-2><p>Very confidential comment</p></div></li></ul>
 
 
 
@@ -718,13 +678,13 @@ Filtering tickets
 +-----------------+-----------------+---------------------------------------------------------------+
 | interesting_for | Interesting for | Only tickets interesting for this partner.                    |
 +-----------------+-----------------+---------------------------------------------------------------+
-| site            | Site            | Select a site if you want to see only tickets for this site.  |
+| site            | Room            | Select a site if you want to see only tickets for this site.  |
 +-----------------+-----------------+---------------------------------------------------------------+
 | project         | Project         |                                                               |
 +-----------------+-----------------+---------------------------------------------------------------+
 | state           | State           | Only rows having this state.                                  |
 +-----------------+-----------------+---------------------------------------------------------------+
-| deployed_to     | Milestone       |                                                               |
+| deployed_to     | Activity        |                                                               |
 +-----------------+-----------------+---------------------------------------------------------------+
 | has_project     | Has project     | Show only (or hide) tickets which have a project assigned.    |
 +-----------------+-----------------+---------------------------------------------------------------+
@@ -766,7 +726,7 @@ the detail window of a ticket.
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
-    - (general1_3): **Site** (site), **Topic** (topic), **Project** (project)
+    - (general1_3): **Room** (site), **Topic** (topic), **Project** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_1): **Wanted skills** (DemandsByDemander), **Votes** (VotesByVotable)
@@ -794,5 +754,12 @@ Plugin configuration
     See also :class:`lino.core.plugin.Plugin`
 
     .. attribute:: end_user_model
+    .. attribute:: site_model
+                   
+    .. attribute:: milestone_model
+
+        The model to be used for representing "milestones". Until
+        20170331 this was hard-coded to `deploy.Milestone`. Now Lino
+        Noi uses `courses.Course`.
 
 

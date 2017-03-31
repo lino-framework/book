@@ -40,7 +40,7 @@ Lino Noi:
 - cal.Priority :
   - PROTECT : cal.Event.priority
 - cal.Room :
-  - PROTECT : cal.Event.room, courses.Course.room
+  - PROTECT : cal.Event.room, courses.Course.room, tickets.Ticket.site
 - clocking.SessionType :
   - PROTECT : clocking.Session.session_type
 - comments.Comment :
@@ -53,7 +53,7 @@ Lino Noi:
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, faculties.Competence.end_user
-  - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Site.partner, tickets.Ticket.end_user, topics.Interest.partner
+  - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
   - CASCADE : users.User.person_ptr
   - PROTECT : cal.Room.contact_person, contacts.Role.person, courses.Course.teacher, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, tickets.Project.contact_person
@@ -66,21 +66,19 @@ Lino Noi:
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
-  - PROTECT : courses.Enrolment.course
+  - PROTECT : courses.Enrolment.course, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
 - courses.Line :
   - PROTECT : courses.Course.line
 - courses.Slot :
   - PROTECT : courses.Course.slot
 - courses.Topic :
   - PROTECT : courses.Line.topic
-- deploy.Milestone :
-  - PROTECT : deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
 - django_mailbox.Mailbox :
   - PROTECT : django_mailbox.Message.mailbox
 - django_mailbox.Message :
   - PROTECT : django_mailbox.Message.in_reply_to, django_mailbox.MessageAttachment.message, mailbox.MessagePointer.message
 - excerpts.Excerpt :
-  - SET_NULL : clocking.ServiceReport.printed_by, courses.Enrolment.printed_by, deploy.Milestone.printed_by
+  - SET_NULL : clocking.ServiceReport.printed_by, courses.Enrolment.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
 - faculties.Faculty :
@@ -92,11 +90,9 @@ Lino Noi:
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - tickets.Project :
-  - PROTECT : deploy.Milestone.project, tickets.Competence.project, tickets.Project.parent, tickets.Ticket.project
+  - PROTECT : tickets.Project.parent, tickets.Ticket.project
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
-- tickets.Site :
-  - PROTECT : deploy.Milestone.site, tickets.Ticket.site
 - tickets.Ticket :
   - CASCADE : faculties.Demand.demander, votes.Vote.votable
   - PROTECT : clocking.Session.ticket, comments.Comment.owner, deploy.Deployment.ticket, mailbox.MessagePointer.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
@@ -111,5 +107,5 @@ Lino Noi:
   - PROTECT : uploads.Upload.type
 - users.User :
   - CASCADE : faculties.Competence.user
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, deploy.Milestone.user, excerpts.Excerpt.user, notify.Message.user, tickets.Competence.user, tickets.Project.assign_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, votes.Vote.user
+  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, notify.Message.user, tickets.Project.assign_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, votes.Vote.user
 <BLANKLINE>
