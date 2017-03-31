@@ -1,2 +1,2 @@
-django-admin.py prep --noinput --traceback --settings=lino_noi.projects.team.settings.memory
+django-admin.py prep --noinput --traceback --settings=lino_book.projects.team.settings.memory
 

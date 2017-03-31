@@ -21,7 +21,7 @@ This document describes the database structure.
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, rest_framework, restful, django_mailbox, mailbox.
-70 models:
+67 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
 ---------------------------------- ---------------------------- --------- -------
@@ -37,7 +37,7 @@ This document describes the database structure.
  cal.Priority                       cal.Priorities               5         4
  cal.RecurrentEvent                 cal.RecurrentEvents          21        15
  cal.RemoteCalendar                 cal.RemoteCalendars          7         0
- cal.Room                           cal.Rooms                    8         0
+ cal.Room                           cal.Rooms                    8         3
  cal.Subscription                   cal.Subscriptions            4         0
  cal.Task                           cal.Tasks                    17        0
  changes.Change                     changes.Changes              10        0
@@ -52,22 +52,21 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons             26        7
  contacts.Role                      contacts.Roles               4         0
  contacts.RoleType                  contacts.RoleTypes           4         0
- contenttypes.ContentType           gfks.ContentTypes            3         71
+ contenttypes.ContentType           gfks.ContentTypes            3         68
  countries.Country                  countries.Countries          6         8
  countries.Place                    countries.Places             8         78
- courses.Course                     courses.Activities           29        0
+ courses.Course                     courses.Activities           29        7
  courses.Enrolment                  courses.Enrolments           13        0
- courses.Line                       courses.Lines                21        0
+ courses.Line                       courses.Lines                21        1
  courses.Slot                       courses.Slots                5         0
  courses.Topic                      courses.Topics               4         0
  dashboard.Widget                   dashboard.Widgets            5         0
- deploy.Deployment                  deploy.Deployments           5         87
- deploy.Milestone                   deploy.Milestones            13        8
+ deploy.Deployment                  deploy.Deployments           6         87
  django_mailbox.Mailbox             mailbox.Mailboxes            6         1
  django_mailbox.Message             mailbox.Messages             13        5
  django_mailbox.MessageAttachment   mailbox.MessageAttachments   4         1
- excerpts.Excerpt                   excerpts.Excerpts            11        2
- excerpts.ExcerptType               excerpts.ExcerptTypes        17        3
+ excerpts.Excerpt                   excerpts.Excerpts            11        1
+ excerpts.ExcerptType               excerpts.ExcerptTypes        17        2
  faculties.Competence               faculties.Offers             7         26
  faculties.Demand                   faculties.Demands            4         193
  faculties.Faculty                  faculties.Skills             9         8
@@ -79,11 +78,9 @@ This document describes the database structure.
  mailbox.MessagePointer             mailbox.MessagePointers      3         0
  notify.Message                     notify.Messages              11        6
  system.SiteConfig                  system.SiteConfigs           9         1
- tickets.Competence                 tickets.Competences          5         12
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
  tickets.ProjectType                tickets.ProjectTypes         4         0
- tickets.Site                       tickets.Sites                4         3
  tickets.Ticket                     tickets.Tickets              25        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2

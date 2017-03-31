@@ -60,14 +60,16 @@ Some sessions are on private tickets:
 >>> from django.db.models import Q
 >>> rt.show(clocking.Sessions, column_names="ticket user duration ticket__project", filter=Q(ticket__private=True))
 ... #doctest: -REPORT_UDIFF
-================================== ========= ========== =========
- Ticket                             Worker    Duration   Project
----------------------------------- --------- ---------- ---------
- #3 (Baz sucks)                     Jean
- #11 (Class-based Foos and Bars?)   Luc       3:29       téam
- #6 (Sell bar in baz)               Mathieu   0:05       téam
- **Total (3 rows)**                           **3:34**
-================================== ========= ========== =========
+============================ ========= ========== =========
+ Ticket                       Worker    Duration   Project
+---------------------------- --------- ---------- ---------
+ #3 (Baz sucks)               Jean
+ #2 (Bar is not always baz)   Luc                  téam
+ #9 (Foo never matches Bar)   Jean      2:18       téam
+ #14 (Bar cannot baz)         Jean      0:10       téam
+ #19 (Ticket 19)              Mathieu   2:18       téam
+ **Total (5 rows)**                     **4:46**
+============================ ========= ========== =========
 <BLANKLINE>
 
 
@@ -79,18 +81,18 @@ working hours.
 
 >>> rt.login('jean').show(clocking.WorkedHours)
 ... #doctest: -REPORT_UDIFF
-======================================= ========== ======= ========== ==========
- Description                             Regular    Extra   Free       Total
---------------------------------------- ---------- ------- ---------- ----------
- **Sat 23/05/2015** (`#3 <Detail>`__)    0:01                          0:01
- **Fri 22/05/2015** (`#9 <Detail>`__)    2:18                          2:18
- **Thu 21/05/2015**                                                    0:00
- **Wed 20/05/2015** (`#12 <Detail>`__)                      1:30       1:30
- **Tue 19/05/2015** (`#14 <Detail>`__)   0:10                          0:10
- **Mon 18/05/2015**                                                    0:00
- **Sun 17/05/2015**                                                    0:00
- **Total (7 rows)**                      **2:29**           **1:30**   **3:59**
-======================================= ========== ======= ========== ==========
+======================================= ========== ========== ====== ==========
+ Description                             Regular    Extra      Free   Total
+--------------------------------------- ---------- ---------- ------ ----------
+ **Sat 23/05/2015** (`#3 <Detail>`__)    0:01                         0:01
+ **Fri 22/05/2015** (`#9 <Detail>`__)               2:18              2:18
+ **Thu 21/05/2015**                                                   0:00
+ **Wed 20/05/2015** (`#12 <Detail>`__)   1:30                         1:30
+ **Tue 19/05/2015** (`#14 <Detail>`__)              0:10              0:10
+ **Mon 18/05/2015**                                                   0:00
+ **Sun 17/05/2015**                                                   0:00
+ **Total (7 rows)**                      **1:31**   **2:28**          **3:59**
+======================================= ========== ========== ====== ==========
 <BLANKLINE>
 
 
@@ -104,9 +106,9 @@ started some days ago.
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
     ...         print u.username, "worked on", [o for o in qs]
-    jean worked on [Project #5 ('shop'), Project #3 ('docs')]
-    luc worked on [Project #5 ('shop'), Project #2 ('t\xe9am'), Project #3 ('docs'), Project #1 ('lin\xf6')]
-    mathieu worked on [Project #4 ('research'), Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #5 ('shop')]
+    jean worked on [Project #2 ('t\xe9am'), Project #5 ('shop')]
+    luc worked on [Project #2 ('t\xe9am'), Project #4 ('research'), Project #5 ('shop'), Project #3 ('docs')]
+    mathieu worked on [Project #1 ('lin\xf6'), Project #3 ('docs'), Project #4 ('research'), Project #2 ('t\xe9am')]
 
     Render this table to HTML in order to reproduce :ticket:`523`:
 
@@ -168,10 +170,9 @@ Partner #107 ('welket')
  Start date           Start time   End Time   Break Time   Description        Regular    Extra   Free
 -------------------- ------------ ---------- ------------ ------------------ ---------- ------- ------
  23/05/2015           09:00:00                             `#1 <Detail>`__    0:01
- 22/05/2015           09:00:00     12:53:00                `#4 <Detail>`__    3:53
- 20/05/2015           09:05:00     09:17:00                `#10 <Detail>`__   0:12
- 19/05/2015           09:00:00     10:02:00                `#20 <Detail>`__   1:02
- **Total (4 rows)**                                                           **5:08**
+ 22/05/2015           09:00:00     12:29:00                `#11 <Detail>`__   3:29
+ 20/05/2015           09:00:00     09:05:00                `#6 <Detail>`__    0:05
+ **Total (3 rows)**                                                           **3:35**
 ==================== ============ ========== ============ ================== ========== ======= ======
 <BLANKLINE>
 
@@ -179,15 +180,14 @@ Note that there are sessions without a duration. Thats because
 
 >>> rt.show(clocking.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
-==== ======================================================================= ========== ========= ========== ======= ======
- ID   Description                                                             Project    State     Regular    Extra   Free
----- ----------------------------------------------------------------------- ---------- --------- ---------- ------- ------
- 1    `#1 (Föö fails to bar when baz) <Detail>`__ by *Luc*                    research   New       0:01
- 4    `#4 (Foo and bar don't baz) <Detail>`__ by *Luc*                        linö       Started   3:53
- 10   `#10 (Where can I find a Foo when bazing Bazes?) <Detail>`__ by *Luc*   linö       Talk      0:12
- 20   `#20 (Ticket 20) <Detail>`__ by *Jean*                                  linö       Started   1:02
-                                                                                                   **5:08**
-==== ======================================================================= ========== ========= ========== ======= ======
+==== ========================================================= ========== ======= ========== ======= ======
+ ID   Description                                               Project    State   Regular    Extra   Free
+---- --------------------------------------------------------- ---------- ------- ---------- ------- ------
+ 1    `#1 (Föö fails to bar when baz) <Detail>`__ by *Luc*      linö       New     0:01
+ 6    `#6 (Sell bar in baz) <Detail>`__ by *Luc*                research   Ready   0:05
+ 11   `#11 (Class-based Foos and Bars?) <Detail>`__ by *Jean*   research   Open    3:29
+                                                                                   **3:35**
+==== ========================================================= ========== ======= ========== ======= ======
 <BLANKLINE>
 
 
@@ -196,13 +196,13 @@ The :class:`ProjectsByReport
 all projects and the time invested.
 
 >>> rt.show(clocking.ProjectsByReport, obj)
-==================== =========== ===================================================== ========== ======= ======
- Reference            Name        Tickets                                               Regular    Extra   Free
--------------------- ----------- ----------------------------------------------------- ---------- ------- ------
- linö                 Framewörk   `#20 <Detail>`__, `#10 <Detail>`__, `#4 <Detail>`__   5:07
- research             Research    `#1 <Detail>`__                                       0:01
- **Total (2 rows)**                                                                     **5:08**
-==================== =========== ===================================================== ========== ======= ======
+==================== =========== =================================== ========== ======= ======
+ Reference            Name        Tickets                             Regular    Extra   Free
+-------------------- ----------- ----------------------------------- ---------- ------- ------
+ linö                 Framewörk   `#1 <Detail>`__                     0:01
+ research             Research    `#11 <Detail>`__, `#6 <Detail>`__   3:34
+ **Total (2 rows)**                                                   **3:35**
+==================== =========== =================================== ========== ======= ======
 <BLANKLINE>
 
 

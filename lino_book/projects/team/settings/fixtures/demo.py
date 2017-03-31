@@ -44,9 +44,10 @@ def tickets_objects():
     Topic = rt.models.topics.Topic
     TT = rt.models.tickets.TicketType
     Ticket = rt.models.tickets.Ticket
-    Competence = rt.models.tickets.Competence
+    # Competence = rt.models.tickets.Competence
     Interest = rt.models.topics.Interest
-    Milestone = rt.models.deploy.Milestone
+    Milestone = dd.plugins.tickets.milestone_model
+    # Milestone = rt.models.deploy.Milestone
     Deployment = rt.models.deploy.Deployment
     Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
@@ -56,6 +57,7 @@ def tickets_objects():
     EntryType = rt.models.blogs.EntryType
     Entry = rt.models.blogs.Entry
     Tagging = rt.models.blogs.Tagging
+    Line = rt.models.courses.Line
 
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
@@ -72,6 +74,9 @@ def tickets_objects():
     yield named(TT, _("Bugfix"))
     yield named(TT, _("Enhancement"))
     yield named(TT, _("Upgrade"))
+    
+    sprint = named(Line, _("Sprint"))
+    yield sprint
 
     TYPES = Cycler(TT.objects.all())
 
@@ -128,22 +133,24 @@ def tickets_objects():
 
     PROJECTS = Cycler(Project.objects.all())
 
-    for u in User.objects.all():
-        yield Competence(user=u, project=PROJECTS.pop())
-        yield Competence(user=u, project=PROJECTS.pop())
+    # for u in User.objects.all():
+    #     yield Competence(user=u, project=PROJECTS.pop())
+    #     yield Competence(user=u, project=PROJECTS.pop())
     
     SITES = Cycler(Site.objects.exclude(name="pypi"))
     for i in range(7):
         d = dd.today(i*2-20)
-        # yield Milestone(site=SITES.pop(), expected=d, reached=d)
-        yield Milestone(
+        kw = dict(
             user=WORKERS.pop(),
             start_date=d,
+            line=sprint,
             # project=PROJECTS.pop(), # expected=d, reached=d,
-            site=SITES.pop(), # expected=d, reached=d,
-            label=d.strftime("%Y%m%d"))
+            # expected=d, reached=d,
+            name=d.strftime("%Y%m%d"))
+        kw[Milestone.site_field_name] = SITES.pop()
+        yield Milestone(**kw)
     # yield Milestone(site=SITES.pop(), expected=dd.today())
-    yield Milestone(project=PROJECTS.pop(), expected=dd.today())
+    # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
     
     SITES = Cycler(Site.objects.all())
     

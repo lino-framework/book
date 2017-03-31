@@ -124,35 +124,35 @@ Filtering tickets by topic
 ===== =========================================== ========= =========== =========== ==========
  ID    Summary                                     Author    Topic       Actions     Project
 ----- ------------------------------------------- --------- ----------- ----------- ----------
- 114   Ticket 114                                  Mathieu   Lino Cosi   **Talk**    shop
- 110   Ticket 110                                  Mathieu   Lino Cosi   **Ready**   linö
- 106   Ticket 106                                  Luc       Lino Cosi   **Talk**    téam
- 102   Ticket 102                                  Luc       Lino Cosi   **Ready**   docs
- 98    Ticket 98                                   Jean      Lino Cosi   **Talk**    research
- 94    Ticket 94                                   Jean      Lino Cosi   **Ready**   shop
- 90    Ticket 90                                   Mathieu   Lino Cosi   **Talk**    linö
- 86    Ticket 86                                   Mathieu   Lino Cosi   **Ready**   téam
- 82    Ticket 82                                   Luc       Lino Cosi   **Talk**    docs
- 78    Ticket 78                                   Luc       Lino Cosi   **Ready**   research
- 74    Ticket 74                                   Jean      Lino Cosi   **Talk**    shop
- 70    Ticket 70                                   Jean      Lino Cosi   **Ready**   linö
- 66    Ticket 66                                   Mathieu   Lino Cosi   **Talk**    téam
- 62    Ticket 62                                   Mathieu   Lino Cosi   **Ready**   docs
- 58    Ticket 58                                   Luc       Lino Cosi   **Talk**    research
- 54    Ticket 54                                   Luc       Lino Cosi   **Ready**   shop
- 50    Ticket 50                                   Jean      Lino Cosi   **Talk**    linö
- 46    Ticket 46                                   Jean      Lino Cosi   **Ready**   téam
- 42    Ticket 42                                   Mathieu   Lino Cosi   **Talk**    docs
- 38    Ticket 38                                   Mathieu   Lino Cosi   **Ready**   research
- 34    Ticket 34                                   Luc       Lino Cosi   **Talk**    shop
- 30    Ticket 30                                   Luc       Lino Cosi   **Ready**   linö
- 26    Ticket 26                                   Jean      Lino Cosi   **Talk**    téam
- 22    Ticket 22                                   Jean      Lino Cosi   **Ready**   docs
- 18    Ticket 18                                   Mathieu   Lino Cosi   **Talk**    research
- 14    Bar cannot baz                              Mathieu   Lino Cosi   **Ready**   shop
- 10    Where can I find a Foo when bazing Bazes?   Luc       Lino Cosi   **Talk**    linö
- 6     Sell bar in baz                             Luc       Lino Cosi   **Ready**   téam
- 2     Bar is not always baz                       Jean      Lino Cosi   **Talk**    shop
+ 114   Ticket 114                                  Mathieu   Lino Cosi   **Talk**    téam
+ 110   Ticket 110                                  Mathieu   Lino Cosi   **Ready**   docs
+ 106   Ticket 106                                  Luc       Lino Cosi   **Talk**    research
+ 102   Ticket 102                                  Luc       Lino Cosi   **Ready**   shop
+ 98    Ticket 98                                   Jean      Lino Cosi   **Talk**    linö
+ 94    Ticket 94                                   Jean      Lino Cosi   **Ready**   téam
+ 90    Ticket 90                                   Mathieu   Lino Cosi   **Talk**    docs
+ 86    Ticket 86                                   Mathieu   Lino Cosi   **Ready**   research
+ 82    Ticket 82                                   Luc       Lino Cosi   **Talk**    shop
+ 78    Ticket 78                                   Luc       Lino Cosi   **Ready**   linö
+ 74    Ticket 74                                   Jean      Lino Cosi   **Talk**    téam
+ 70    Ticket 70                                   Jean      Lino Cosi   **Ready**   docs
+ 66    Ticket 66                                   Mathieu   Lino Cosi   **Talk**    research
+ 62    Ticket 62                                   Mathieu   Lino Cosi   **Ready**   shop
+ 58    Ticket 58                                   Luc       Lino Cosi   **Talk**    linö
+ 54    Ticket 54                                   Luc       Lino Cosi   **Ready**   téam
+ 50    Ticket 50                                   Jean      Lino Cosi   **Talk**    docs
+ 46    Ticket 46                                   Jean      Lino Cosi   **Ready**   research
+ 42    Ticket 42                                   Mathieu   Lino Cosi   **Talk**    shop
+ 38    Ticket 38                                   Mathieu   Lino Cosi   **Ready**   linö
+ 34    Ticket 34                                   Luc       Lino Cosi   **Talk**    téam
+ 30    Ticket 30                                   Luc       Lino Cosi   **Ready**   docs
+ 26    Ticket 26                                   Jean      Lino Cosi   **Talk**    research
+ 22    Ticket 22                                   Jean      Lino Cosi   **Ready**   shop
+ 18    Ticket 18                                   Mathieu   Lino Cosi   **Talk**    linö
+ 14    Bar cannot baz                              Mathieu   Lino Cosi   **Ready**   téam
+ 10    Where can I find a Foo when bazing Bazes?   Luc       Lino Cosi   **Talk**    docs
+ 6     Sell bar in baz                             Luc       Lino Cosi   **Ready**   research
+ 2     Bar is not always baz                       Jean      Lino Cosi   **Talk**    téam
 ===== =========================================== ========= =========== =========== ==========
 <BLANKLINE>
 
