@@ -142,18 +142,18 @@ The :attr:`state <lino_xl.lib.tickets.models.Ticket.state>` of a
 ticket has one of the following values:
 
 >>> rt.show(tickets.TicketStates)
-======= =========== =========== ======== ========
- value   name        text        Symbol   Active
-------- ----------- ----------- -------- --------
- 10      new         New         ⛶        Yes
- 15      talk        Talk        ☎        Yes
- 20      opened      Open        ☉        Yes
- 22      started     Started     ⚒        Yes
- 30      sleeping    Sleeping    ☾        No
- 40      ready       Ready       ☐        Yes
- 50      closed      Closed      ☑        No
- 60      cancelled   Cancelled   ☒        No
-======= =========== =========== ======== ========
+======= =========== ========== ======== ========
+ value   name        text       Symbol   Active
+------- ----------- ---------- -------- --------
+ 10      new         New        ⛶        Yes
+ 15      talk        Talk       ☎        Yes
+ 20      opened      Open       ☉        Yes
+ 22      started     Started    ⚒        Yes
+ 30      sleeping    Sleeping   ☾        No
+ 40      ready       Ready      ☐        Yes
+ 50      closed      Closed     ☑        No
+ 60      cancelled   Refused    ☒        No
+======= =========== ========== ======== ========
 <BLANKLINE>
 
 There is also a "modern" series of symbols, which can be enabled
@@ -181,7 +181,7 @@ Above table in German:
  30     sleeping    Schläft         ☾        Nein
  40     ready       Bereit          ☐        Ja
  50     closed      Abgeschlossen   ☑        Nein
- 60     cancelled   Storniert       ☒        Nein
+ 60     cancelled   Abgelehnt       ☒        Nein
 ====== =========== =============== ======== =======
 <BLANKLINE>
 
@@ -198,7 +198,7 @@ And in French (not yet fully translated):
  30      sleeping    Sleeping   ☾        Non
  40      ready       Ready      ☐        Oui
  50      closed      Closed     ☑        Non
- 60      cancelled   Annulé     ☒        Non
+ 60      cancelled   Refusé     ☒        Non
 ======= =========== ========== ======== ========
 <BLANKLINE>
 
