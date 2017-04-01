@@ -61,7 +61,7 @@ Some sessions are on private tickets:
 >>> rt.show(clocking.Sessions, column_names="ticket user duration ticket__project", filter=Q(ticket__private=True))
 ... #doctest: -REPORT_UDIFF
 ============================ ========= ========== =========
- Ticket                       Worker    Duration   Project
+ Ticket                       Worker    Duration   Mission
 ---------------------------- --------- ---------- ---------
  #3 (Baz sucks)               Jean
  #2 (Bar is not always baz)   Luc                  téam
@@ -101,7 +101,7 @@ worked that day. This is a convenient way to continue some work you
 started some days ago.
 
 .. 
-    Find the users who worked on more than one project:
+    Find the users who worked on more than one mission:
     >>> for u in users.User.objects.all():
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
@@ -181,7 +181,7 @@ Note that there are sessions without a duration. Thats because
 >>> rt.show(clocking.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
 ==== ========================================================= ========== ======= ========== ======= ======
- ID   Description                                               Project    State   Regular    Extra   Free
+ ID   Description                                               Mission    State   Regular    Extra   Free
 ---- --------------------------------------------------------- ---------- ------- ---------- ------- ------
  1    `#1 (Föö fails to bar when baz) <Detail>`__ by *Luc*      linö       New     0:01
  6    `#6 (Sell bar in baz) <Detail>`__ by *Luc*                research   Ready   0:05

@@ -33,15 +33,15 @@ class QuickTest(RemoteAuthTestCase):
     fixtures = ['std', 'demo_users']
 
     def test_create_entry(self):
-        """# cal.MyEvents.insert({'requesting_panel': u'ext-comp-3913',
+        """# cal.MyEntries.insert({'requesting_panel': u'ext-comp-3913',
 'user': u'luc'})
 
         """
 
         ses = rt.login("robin", renderer=dd.plugins.extjs.renderer)
-        ba = rt.modules.cal.MyEvents.get_action_by_name('submit_insert')
-        # a = rt.modules.cal.MyEvents.submit_insert
-        # ba = rt.modules.cal.MyEvents.insert_action
+        ba = rt.modules.cal.MyEntries.get_action_by_name('submit_insert')
+        # a = rt.modules.cal.MyEntries.submit_insert
+        # ba = rt.modules.cal.MyEntries.insert_action
         pv = dict(user=ses.get_user())
         resp = ses.run(ba, param_values=pv)
         # ba.request_from(ses).run_from_ui(ses)

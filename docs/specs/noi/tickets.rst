@@ -259,7 +259,7 @@ assigned to a project:
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========= ============== ============== =========
- ID   Summary             Author    Topic          Actions        Project
+ ID   Summary             Author    Topic          Actions        Mission
 ---- ------------------- --------- -------------- -------------- ---------
  5    Cannot create Foo   Jean      Lino Welfare   **Sleeping**
  3    Baz sucks           Mathieu   Lino Voga      **Open**
@@ -297,7 +297,7 @@ without project:
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF
 ===== ======================= =========
- ID    Summary                 Project
+ ID    Summary                 Mission
 ----- ----------------------- ---------
  114   Ticket 114              téam
  109   Ticket 109              téam
@@ -336,14 +336,19 @@ And these are the public tickets:
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
 ===== =========================================== ==========
- ID    Summary                                     Project
+ ID    Summary                                     Mission
 ----- ------------------------------------------- ----------
  116   Ticket 116                                  research
  115   Ticket 115                                  docs
  113   Ticket 113                                  linö
  112   Ticket 112                                  shop
  111   Ticket 111                                  research
+ 110   Ticket 110                                  docs
+ 108   Ticket 108                                  linö
+ 107   Ticket 107                                  shop
  ...
+ 21    Ticket 21                                   research
+ 20    Ticket 20                                   docs
  18    Ticket 18                                   linö
  17    Ticket 17                                   shop
  16    How to get bar from foo                     research
@@ -427,7 +432,7 @@ can see all local tickets for a given site object:
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ========== ==========
- ID    Summary                     Author   Topic          Actions    Project
+ ID    Summary                     Author   Topic          Actions    Mission
 ----- --------------------------- -------- -------------- ---------- ----------
  115   Ticket 115                  Luc      Lino Voga      **Open**   docs
  97    Ticket 97                   Luc      Lino Welfare   **New**    shop
@@ -450,7 +455,7 @@ authenticated developer it looks like this:
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ======================================== ==========
- ID    Summary                     Author   Topic          Actions                                  Project
+ ID    Summary                     Author   Topic          Actions                                  Mission
 ----- --------------------------- -------- -------------- ---------------------------------------- ----------
  115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   docs
  97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    shop
@@ -496,18 +501,18 @@ release of a new version.
 
 
 
-Deployments (Wishes)
-=====================
+Wishes
+======
 
 Every milestone has its list of wishes ("deployments"), i.e. the
 tickets that are being fixed when this milestone is reached.
 
-The demo database currently does not have any deployments:
+The demo database has the following wishes:
 
 >>> rt.show(rt.actors.deploy.Deployments)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
 ==== ========= ================================================= ========== ======== ===========
- ID   No.       Ticket                                            Activity   Remark   Wish type
+ ID   No.       Ticket                                            Event      Remark   Wish type
 ---- --------- ------------------------------------------------- ---------- -------- -----------
  1    1         #1 (Föö fails to bar when baz)                    20150503
  2    1         #2 (Bar is not always baz)                        20150505
@@ -524,6 +529,10 @@ The demo database currently does not have any deployments:
  13   2         #17 (Ticket 17)                                   20150513
  14   2         #18 (Ticket 18)                                   20150515
  ...
+ 79   12        #105 (Ticket 105)                                 20150505
+ 80   12        #106 (Ticket 106)                                 20150507
+ 81   12        #107 (Ticket 107)                                 20150509
+ 82   12        #109 (Ticket 109)                                 20150511
  83   12        #110 (Ticket 110)                                 20150513
  84   12        #111 (Ticket 111)                                 20150515
  85   13        #113 (Ticket 113)                                 20150503
@@ -680,11 +689,11 @@ Filtering tickets
 +-----------------+-----------------+---------------------------------------------------------------+
 | site            | Room            | Select a site if you want to see only tickets for this site.  |
 +-----------------+-----------------+---------------------------------------------------------------+
-| project         | Project         |                                                               |
+| project         | Mission         |                                                               |
 +-----------------+-----------------+---------------------------------------------------------------+
 | state           | State           | Only rows having this state.                                  |
 +-----------------+-----------------+---------------------------------------------------------------+
-| deployed_to     | Activity        |                                                               |
+| deployed_to     | Event           |                                                               |
 +-----------------+-----------------+---------------------------------------------------------------+
 | has_project     | Has project     | Show only (or hide) tickets which have a project assigned.    |
 +-----------------+-----------------+---------------------------------------------------------------+
@@ -726,7 +735,7 @@ the detail window of a ticket.
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
-    - (general1_3): **Room** (site), **Topic** (topic), **Project** (project)
+    - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_1): **Wanted skills** (DemandsByDemander), **Votes** (VotesByVotable)

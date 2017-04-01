@@ -30,7 +30,7 @@ Here are the standard holidays, defined as recurrent event rules
 
 >>> rt.show(cal.RecurrentEvents)
 ============ ========== ============================ ======================== =================================== ==================== =====================
- Start date   End Date   Designation                  Designation (et)         Designation (fr)                    Recurrency           Calendar Event Type
+ Start date   End Date   Designation                  Designation (et)         Designation (fr)                    Recurrency           Calendar entry type
 ------------ ---------- ---------------------------- ------------------------ ----------------------------------- -------------------- ---------------------
  01/01/2013              New Year's Day               Uusaasta                 Jour de l'an                        yearly               Holidays
  11/02/2013              Rosenmontag                  Rosenmontag              Lundi de carnaval                   Relative to Easter   Holidays
@@ -71,7 +71,7 @@ Let's look at one of them, Ash Wednesday::
 The :mod:`lino.modlib.cal.fixtures.std` fixture generates
 automatically all Ash Wednesdays for a range of years:
 
->>> rt.show(cal.EventsByController, master_instance=ash, nosummary=True)
+>>> rt.show(cal.EntriesByController, master_instance=ash, nosummary=True)
 ==================== =============== ===============
  When                 Summary         Actions
 -------------------- --------------- ---------------
@@ -85,7 +85,7 @@ automatically all Ash Wednesdays for a range of years:
 
 Actually the user sees just the summary:
 
->>> rt.show(cal.EventsByController, master_instance=ash)
+>>> rt.show(cal.EntriesByController, master_instance=ash)
 3: *18/02/2015?* 4: *10/02/2016?* 5: *01/03/2017?* 6: *14/02/2018?* 7: *06/03/2019?*
 
 That range of years depends on some configuration variables:
@@ -155,7 +155,7 @@ Generating events between 2016-02-09 and 2019-10-23 (max. 72).
 Reached upper date limit 2019-10-23
 
 >>> wanted[1]
-Event(start_date=2016-02-09,owner_type=17,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EventStates.suggested:10>)
+Event(start_date=2016-02-09,owner_type=17,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EntryStates.suggested:10>)
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()

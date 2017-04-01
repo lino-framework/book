@@ -45,7 +45,7 @@ class PersonDetail(contacts.PersonDetail):
     #~ outbox.MailsByProject
     #~ """,label = _("Correspondence"))
     #~ calendar = dd.Panel("""
-    #~ cal.EventsByProject
+    #~ cal.EntriesByProject
     #~ cal.TasksByProject
     #~ """,label = _("Calendar"))
     #~ main = "contact outbox calendar"
