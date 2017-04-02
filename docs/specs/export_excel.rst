@@ -29,7 +29,7 @@ Robin has twelve appointments in the period 20141023..20141122:
 
 >>> from lino.utils import i2d
 >>> pv = dict(start_date=i2d(20141023), end_date=i2d(20141122))
->>> rt.login('robin').show(cal.MyEvents, param_values=pv, header_level=1)
+>>> rt.login('robin').show(cal.MyEntries, param_values=pv, header_level=1)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 =======================================================================
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
@@ -64,9 +64,9 @@ if the client has changed these.
 
 .. intermezzo 20150828
 
-    >>> cal.MyEvents.model.manager_roles_required
+    >>> cal.MyEntries.model.manager_roles_required
     set([(<class 'lino.modlib.office.roles.OfficeStaff'>, <class 'lino.modlib.office.roles.OfficeOperator'>)])
-    >>> ba = cal.MyEvents.get_action_by_name("export_excel")
+    >>> ba = cal.MyEntries.get_action_by_name("export_excel")
     >>> u = rt.login('robin').user
     >>> ba.actor.get_view_permission(u.profile)
     True
@@ -77,7 +77,7 @@ if the client has changed these.
     >>> ba.get_view_permission(u.profile)
     True
 
->>> url = "/api/cal/MyEvents?_dc=1414106085710"
+>>> url = "/api/cal/MyEntries?_dc=1414106085710"
 >>> url += "&cw=411&cw=287&cw=411&cw=73&cw=274&cw=140&cw=274&cw=220&cw=220&cw=220&cw=287&cw=181&cw=114&cw=181&cw=114&cw=170&cw=73&cw=73&cw=274&cw=140&cw=274&cw=274&cw=181&cw=274&cw=140"
 >>> url += "&ch=&ch=true&ch="
 >>> url += "&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=false&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true"
@@ -92,7 +92,7 @@ if the client has changed these.
 >>> print(result.keys())
 [u'open_url', u'success']
 >>> print(result['open_url'])
-/media/cache/appyxlsx/127.0.0.1/cal.MyEvents.xlsx
+/media/cache/appyxlsx/127.0.0.1/cal.MyEntries.xlsx
 
 
 Testing the generated file
@@ -103,7 +103,7 @@ But does the file exist?
 
 >>> from unipath import Path
 >>> p = Path(settings.MEDIA_ROOT, 
-...    'cache', 'appyxlsx', '127.0.0.1', 'cal.MyEvents.xlsx')
+...    'cache', 'appyxlsx', '127.0.0.1', 'cal.MyEntries.xlsx')
 >>> p.exists()
 True
 
@@ -138,7 +138,7 @@ When | Actions | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 
@@ -159,7 +159,7 @@ Quand | Actions | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEvents.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEvents.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEvents.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
 
 
 
@@ -171,7 +171,7 @@ More queries
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
 
->>> url = "/api/cal/EventsByDay?an=export_excel"
+>>> url = "/api/cal/EntriesByDay?an=export_excel"
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
 

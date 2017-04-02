@@ -43,10 +43,10 @@ checkers.
  countries.PlaceChecker            Check plausibility of geographical places.
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
- cal.EventGuestChecker             Events without participants
- cal.ConflictingEventsChecker      Check for conflicting events
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated events
- cal.LongEventChecker              Too long-lasting events
+ cal.EventGuestChecker             Entries without participants
+ cal.ConflictingEventsChecker      Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ==================================================
 <BLANKLINE>
 
@@ -65,13 +65,13 @@ System --> Plausibility problems` to see them.
 
 >>> rt.show(plausibility.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ===================================== =================================================== ==============================
+================= ===================================== =================================================== ========================================
  Responsible       Controlled by                         Message                                             Plausibility checker
------------------ ------------------------------------- --------------------------------------------------- ------------------------------
- Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting events
- Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
- Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting events
-================= ===================================== =================================================== ==============================
+----------------- ------------------------------------- --------------------------------------------------- ----------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting calendar entries
+ Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting calendar entries
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting calendar entries
+================= ===================================== =================================================== ========================================
 <BLANKLINE>
 
 
@@ -122,10 +122,10 @@ line using::
  countries.PlaceChecker            Check plausibility of geographical places.
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
- cal.EventGuestChecker             Events without participants
- cal.ConflictingEventsChecker      Check for conflicting events
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated events
- cal.LongEventChecker              Too long-lasting events
+ cal.EventGuestChecker             Entries without participants
+ cal.ConflictingEventsChecker      Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ==================================================
 <BLANKLINE>
 

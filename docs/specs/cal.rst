@@ -42,9 +42,9 @@ person is involved.
 +---------------+---------------------+---------------------------------------------------------------+
 | description   | Description         | A longer descriptive text.                                    |
 +---------------+---------------------+---------------------------------------------------------------+
-| event_type    | Calendar Event Type | The type of this event. Every calendar event should have this |
+| event_type    | Calendar entry type | The type of this entry. Every calendar entry should have this |
 |               |                     | field pointing to a given EventType, which holds              |
-|               |                     | extended configurable information about this event.           |
+|               |                     | extended configurable information about this entry.           |
 +---------------+---------------------+---------------------------------------------------------------+
 | state         | State               | The state of this entry. The state can change according to    |
 |               |                     | rules defined by the workflow, that's why we sometimes refer  |
@@ -62,7 +62,7 @@ workflow, that's why we sometimes refer to it as the life cycle.
 The default list of choices for this field contains the following
 values.
 
->>> rt.show(cal.EventStates)
+>>> rt.show(cal.EntryStates)
 ======= ============ ============ ======== =================== ======== ============= =========
  value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
 ------- ------------ ------------ -------- ------------------- -------- ------------- ---------
