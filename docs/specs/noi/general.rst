@@ -167,3 +167,38 @@ Lino Noi and Scrum
 - IOW backlog items are projects without children
 - Usually there is at least one ticket per project for planning and
   discussion.
+
+
+
+>>> show_fields(system.SiteConfig)
++----------------------+----------------------+---------------------------------------------------------------------+
+| Internal name        | Verbose name         | Help text                                                           |
++======================+======================+=====================================================================+
+| id                   | ID                   |                                                                     |
++----------------------+----------------------+---------------------------------------------------------------------+
+| default_build_method | Default build method | The default build method to use when rendering printable documents. |
++----------------------+----------------------+---------------------------------------------------------------------+
+| simulate_today       | Simulated date       | A constant user-defined date to be substituted as current           |
+|                      |                      | system date.                                                        |
++----------------------+----------------------+---------------------------------------------------------------------+
+| site_company         | Site owner           | The organisation who runs this site.  This is used e.g. when        |
+|                      |                      | printing your address in certain documents or reports.  Or          |
+|                      |                      | newly created partners inherit the country of the site owner.       |
++----------------------+----------------------+---------------------------------------------------------------------+
+| next_partner_id      | Next partner id      | The next automatic id for any new partner.                          |
++----------------------+----------------------+---------------------------------------------------------------------+
+| default_event_type   | Default Event Type   | The default type of events on this site.                            |
++----------------------+----------------------+---------------------------------------------------------------------+
+| site_calendar        | Site Calendar        | The default calendar of this site.                                  |
++----------------------+----------------------+---------------------------------------------------------------------+
+| max_auto_events      | Max automatic events | Maximum number of automatic events to be generated.                 |
++----------------------+----------------------+---------------------------------------------------------------------+
+| hide_events_before   | Hide events before   | If this is specified, certain tables show only                      |
+|                      |                      | events after the given date.                                        |
++----------------------+----------------------+---------------------------------------------------------------------+
+| workflow_buttons     | Actions              |                                                                     |
++----------------------+----------------------+---------------------------------------------------------------------+
+| overview             | Description          |                                                                     |
++----------------------+----------------------+---------------------------------------------------------------------+
+| description_column   | Description          |                                                                     |
++----------------------+----------------------+---------------------------------------------------------------------+
