@@ -20,7 +20,7 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, rest_framework, restful, django_mailbox, mailbox.
+43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, rest_framework, restful, django_mailbox, mailbox, maildev.
 67 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
@@ -41,7 +41,7 @@ This document describes the database structure.
  cal.Subscription                   cal.Subscriptions            4         0
  cal.Task                           cal.Tasks                    17        0
  changes.Change                     changes.Changes              10        0
- clocking.ServiceReport             clocking.ServiceReports      7         1
+ clocking.ServiceReport             clocking.ServiceReports      10        1
  clocking.Session                   clocking.Sessions            13        13
  clocking.SessionType               clocking.SessionTypes        4         1
  comments.Comment                   comments.Comments            9         12
@@ -63,7 +63,7 @@ This document describes the database structure.
  dashboard.Widget                   dashboard.Widgets            5         0
  deploy.Deployment                  deploy.Deployments           6         87
  django_mailbox.Mailbox             mailbox.Mailboxes            6         1
- django_mailbox.Message             mailbox.Messages             13        5
+ django_mailbox.Message             mailbox.Messages             14        7
  django_mailbox.MessageAttachment   mailbox.MessageAttachments   4         1
  excerpts.Excerpt                   excerpts.Excerpts            11        1
  excerpts.ExcerptType               excerpts.ExcerptTypes        17        2

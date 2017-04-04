@@ -10,7 +10,7 @@ Default settings for a :ref:`cosi` site "à la Pierre".
 
 from __future__ import unicode_literals
 
-from lino_cosi.projects.std.settings import *
+from lino_cosi.lib.cosi.settings import *
 
 
 class Site(Site):

@@ -64,7 +64,22 @@ Lino Noi
 .. automodule:: lino_noi
                 
 
+.. _cosi:
 
+Lino Così
+=========
+
+.. py2rst::
+
+  import lino_cosi
+  print(lino_cosi.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_cosi
+                
+
+
+                
 .. _commondata:
 
 The ``commondata`` packages

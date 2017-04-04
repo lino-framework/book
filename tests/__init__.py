@@ -241,35 +241,14 @@ class SpecsTests(TestCase):
     def test_help_texts(self):
         self.run_simple_doctests('docs/specs/help_texts.rst')
 
-    def test_cosi_ee(self):
-        self.run_simple_doctests('docs/specs/cosi_ee.rst')
-        
     def test_polly(self):
         self.run_simple_doctests('docs/specs/polly.rst')
         
     def test_ajax(self):
         self.run_simple_doctests('docs/specs/ajax.rst')
 
-    def test_accounting(self):
-        self.run_simple_doctests('docs/specs/accounting.rst')
-
     def test_contacts(self):
         return self.run_simple_doctests('docs/specs/contacts.rst')
-
-    def test_finan(self):
-        self.run_simple_doctests('docs/specs/finan.rst')
-
-    def test_invoicing(self):
-        self.run_simple_doctests('docs/specs/invoicing.rst')
-
-    def test_ledger(self):
-        self.run_simple_doctests('docs/specs/ledger.rst')
-
-    def test_sales(self):
-        self.run_simple_doctests('docs/specs/sales.rst')
-
-    def test_tim2lino(self):
-        return self.run_simple_doctests('docs/specs/tim2lino.rst')
 
     def test_faculties(self):
         self.run_simple_doctests('docs/specs/noi/faculties.rst')
@@ -286,8 +265,6 @@ class SpecsTests(TestCase):
     def test_clocking(self):
         self.run_simple_doctests('docs/specs/noi/clocking.rst')
 
-    # formerly in noi:
-    
     def test_noi_export_excel(self):
         self.run_simple_doctests('docs/specs/noi/export_excel.rst')
 
@@ -332,6 +309,37 @@ class SpecsTests(TestCase):
 
     def test_noi_db(self):
         self.run_simple_doctests('docs/specs/noi/db.rst')
+
+        
+
+
+    def test_cosi_ee(self):
+        self.run_simple_doctests('docs/specs/cosi/cosi_ee.rst')
+        
+    def test_accounting(self):
+        self.run_simple_doctests('docs/specs/cosi/accounting.rst')
+
+    def test_finan(self):
+        self.run_simple_doctests('docs/specs/cosi/finan.rst')
+
+    def test_invoicing(self):
+        self.run_simple_doctests('docs/specs/cosi/invoicing.rst')
+
+    def test_ledger(self):
+        self.run_simple_doctests('docs/specs/cosi/ledger.rst')
+
+    def test_sales(self):
+        self.run_simple_doctests('docs/specs/cosi/sales.rst')
+
+    def test_tim2lino(self):
+        return self.run_simple_doctests('docs/specs/cosi/tim2lino.rst')
+
+    def test_apc(self):
+        self.run_simple_doctests('docs/specs/cosi/apc.rst')
+        
+    def test_b2c(self):
+        self.run_simple_doctests('docs/specs/cosi/b2c.rst')
+
 
         
 class ProjectsTests(TestCase):

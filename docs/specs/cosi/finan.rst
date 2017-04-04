@@ -1,4 +1,4 @@
-.. _cosi.specs.finan:
+.. _specs.cosi.finan:
 
 ===============================
 Financial vouchers in Lino Così

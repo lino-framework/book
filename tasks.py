@@ -14,6 +14,7 @@ ns.setup_from_tasks(
         'docs/api/lino.*',
         'docs/api/lino_xl.*',
         'docs/api/lino_noi.*',
+        'docs/api/lino_cosi.*',
         'docs/api/lino_book.*'],
     demo_projects=[
         'lino_book.projects.watch.settings',

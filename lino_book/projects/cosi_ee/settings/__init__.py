@@ -14,11 +14,10 @@ Default settings for an Estonian :ref:`cosi` site.
 
 from __future__ import unicode_literals
 
-from lino_cosi.projects.std.settings import *
+from lino_cosi.lib.cosi.settings import *
 
 
 class Site(Site):
-    "The base for all Estonian Lino Cosi Sites."
     languages = 'en et'
     demo_fixtures = 'std all_countries euvatrates eesti furniture \
     minimal_ledger demo demo2'.split()
