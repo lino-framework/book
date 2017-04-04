@@ -76,7 +76,7 @@ Lino Noi:
 - django_mailbox.Mailbox :
   - PROTECT : django_mailbox.Message.mailbox
 - django_mailbox.Message :
-  - PROTECT : django_mailbox.Message.in_reply_to, django_mailbox.MessageAttachment.message, mailbox.MessagePointer.message
+  - PROTECT : django_mailbox.Message.in_reply_to, django_mailbox.MessageAttachment.message
 - excerpts.Excerpt :
   - SET_NULL : clocking.ServiceReport.printed_by, courses.Enrolment.printed_by
 - excerpts.ExcerptType :
@@ -95,7 +95,7 @@ Lino Noi:
   - PROTECT : tickets.Project.type
 - tickets.Ticket :
   - CASCADE : faculties.Demand.demander, votes.Vote.votable
-  - PROTECT : clocking.Session.ticket, comments.Comment.owner, deploy.Deployment.ticket, mailbox.MessagePointer.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
+  - PROTECT : clocking.Session.ticket, comments.Comment.owner, deploy.Deployment.ticket, django_mailbox.Message.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :
