@@ -1,3 +1,4 @@
+.. _cosi.tested.demo:
 .. _specs.cosi.apc:
 
 ====================

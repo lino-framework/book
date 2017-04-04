@@ -1,4 +1,5 @@
 .. _specs.cosi:
+.. _cosi.tested:
 
 ==========================
 Lino Così functional specs

@@ -672,6 +672,7 @@ The same list seen by marc
 Filtering tickets
 =================
 
+This is a list of the parameters you can use for filterings tickets.
 
 >>> show_fields(tickets.Tickets)
 +-----------------+-----------------+---------------------------------------------------------------+
@@ -697,7 +698,7 @@ Filtering tickets
 +-----------------+-----------------+---------------------------------------------------------------+
 | has_project     | Has project     | Show only (or hide) tickets which have a project assigned.    |
 +-----------------+-----------------+---------------------------------------------------------------+
-| show_assigned   | Assigned        | Whether to show assigned tickets                              |
+| show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.    |
 +-----------------+-----------------+---------------------------------------------------------------+
 | show_active     | Active          | Whether to show active tickets                                |
 +-----------------+-----------------+---------------------------------------------------------------+
