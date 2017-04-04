@@ -337,6 +337,9 @@ class SpecsTests(TestCase):
     def test_apc(self):
         self.run_simple_doctests('docs/specs/cosi/apc.rst')
         
+    def test_iban(self):
+        self.run_simple_doctests('docs/specs/cosi/iban.rst')
+
     def test_b2c(self):
         self.run_simple_doctests('docs/specs/cosi/b2c.rst')
 
