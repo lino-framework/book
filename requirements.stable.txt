@@ -10,4 +10,4 @@
 -e git+https://github.com/lino-framework/presto.git@stable#egg=lino_presto
 -e git+https://github.com/lino-framework/welfare.git@stable#egg=lino_welfare
 -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
--e git+htpps://github.com/cylonoven/django-mailbox.git#egg=django_mailbox
+-e git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox
