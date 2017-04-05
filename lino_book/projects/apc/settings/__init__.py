@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2015 Luc Saffre
+# Copyright 2014-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -9,11 +9,11 @@ Default settings for a :ref:`cosi` "à la APC".
 
 from __future__ import unicode_literals
 
-from lino_cosi.projects.std.settings import *
+from lino_cosi.lib.cosi.settings import *
 
 
 class Site(Site):
-    languages = 'de fr nl'
+    languages = 'de fr en'
     demo_fixtures = 'std few_countries euvatrates furniture \
     minimal_ledger demo demo_bookings payments demo2'.split()
 

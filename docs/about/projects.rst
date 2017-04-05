@@ -36,17 +36,6 @@ Lino Care
 See `The "Care" variant of Lino Noi
 <http://noi.lino-framework.org/specs/care.html>`_
 
-.. _cosi:
-
-Lino Così
----------
-
-.. py2rst::
-
-  from lino_cosi import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-
 .. _presto:
 
 Lino Presto

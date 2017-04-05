@@ -38,7 +38,7 @@ person is involved.
 +---------------+---------------------+---------------------------------------------------------------+
 | user          | Responsible user    | The responsible user.                                         |
 +---------------+---------------------+---------------------------------------------------------------+
-| summary       | Summary             | A one-line descriptive text.                                  |
+| summary       | Short description   | A one-line descriptive text.                                  |
 +---------------+---------------------+---------------------------------------------------------------+
 | description   | Description         | A longer descriptive text.                                    |
 +---------------+---------------------+---------------------------------------------------------------+
@@ -50,7 +50,6 @@ person is involved.
 |               |                     | rules defined by the workflow, that's why we sometimes refer  |
 |               |                     | to it as the life cycle.                                      |
 +---------------+---------------------+---------------------------------------------------------------+
-
 
 Lifecycle of a calendar entry
 =============================

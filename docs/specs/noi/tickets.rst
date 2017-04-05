@@ -378,34 +378,34 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: +REPORT_UDIFF
-=============================================== ========================================
- Description                                     Actions
------------------------------------------------ ----------------------------------------
- `#116 (Ticket 116) <Detail>`__                  [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#113 (Ticket 113) <Detail>`__                  [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#107 (Ticket 107) <Detail>`__                  [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#98 (Ticket 98) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#94 (Ticket 94) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
- `#92 (Ticket 92) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#89 (Ticket 89) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#83 (Ticket 83) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#74 (Ticket 74) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#70 (Ticket 70) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
- `#68 (Ticket 68) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#65 (Ticket 65) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#59 (Ticket 59) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#50 (Ticket 50) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#46 (Ticket 46) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
- `#44 (Ticket 44) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#41 (Ticket 41) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#35 (Ticket 35) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#26 (Ticket 26) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
- `#22 (Ticket 22) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑]
- `#20 (Ticket 20) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑]
- `#17 (Ticket 17) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#11 (Class-based Foos and Bars?) <Detail>`__   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]
- `#2 (Bar is not always baz) <Detail>`__         [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑]
-=============================================== ========================================
+================================================= ============================================
+ Description                                       Actions
+------------------------------------------------- --------------------------------------------
+ `#116 (⚒ Ticket 116) <Detail>`__                  [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#113 (⛶ Ticket 113) <Detail>`__                  [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#107 (☉ Ticket 107) <Detail>`__                  [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#98 (☎ Ticket 98) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#94 (☐ Ticket 94) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
+ `#92 (⚒ Ticket 92) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#89 (⛶ Ticket 89) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#83 (☉ Ticket 83) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#74 (☎ Ticket 74) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#70 (☐ Ticket 70) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
+ `#68 (⚒ Ticket 68) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#65 (⛶ Ticket 65) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#59 (☉ Ticket 59) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#50 (☎ Ticket 50) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#46 (☐ Ticket 46) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
+ `#44 (⚒ Ticket 44) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#41 (⛶ Ticket 41) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#35 (☉ Ticket 35) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#26 (☎ Ticket 26) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#22 (☐ Ticket 22) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
+ `#20 (⚒ Ticket 20) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#17 (⛶ Ticket 17) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#11 (☉ Class-based Foos and Bars?) <Detail>`__   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#2 (☎ Bar is not always baz) <Detail>`__         [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+================================================= ============================================
 <BLANKLINE>
 
 
@@ -454,20 +454,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ======================================== ==========
- ID    Summary                     Author   Topic          Actions                                  Mission
------ --------------------------- -------- -------------- ---------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   docs
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    shop
- 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   research
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
- 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   shop
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    téam
- 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   linö
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    docs
- 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑]   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]    linö
-===== =========================== ======== ============== ======================================== ==========
+===== =========================== ======== ============== ============================================ ==========
+ ID    Summary                     Author   Topic          Actions                                      Mission
+----- --------------------------- -------- -------------- -------------------------------------------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+===== =========================== ======== ============== ============================================ ==========
 <BLANKLINE>
 
 
@@ -511,35 +511,35 @@ The demo database has the following wishes:
 
 >>> rt.show(rt.actors.deploy.Deployments)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
-==== ========= ================================================= ========== ======== ===========
- ID   No.       Ticket                                            Event      Remark   Wish type
----- --------- ------------------------------------------------- ---------- -------- -----------
- 1    1         #1 (Föö fails to bar when baz)                    20150503
- 2    1         #2 (Bar is not always baz)                        20150505
- 3    1         #3 (Baz sucks)                                    20150507
- 4    1         #5 (Cannot create Foo)                            20150509
- 5    1         #6 (Sell bar in baz)                              20150511
- 6    1         #7 (No Foo after deleting Bar)                    20150513
- 7    1         #9 (Foo never matches Bar)                        20150515
- 8    2         #10 (Where can I find a Foo when bazing Bazes?)   20150503
- 9    2         #11 (Class-based Foos and Bars?)                  20150505
- 10   2         #13 (Bar cannot foo)                              20150507
- 11   2         #14 (Bar cannot baz)                              20150509
- 12   2         #15 (Bars have no foo)                            20150511
- 13   2         #17 (Ticket 17)                                   20150513
- 14   2         #18 (Ticket 18)                                   20150515
+==== ========= =================================================== ========== ======== ===========
+ ID   No.       Ticket                                              Event      Remark   Wish type
+---- --------- --------------------------------------------------- ---------- -------- -----------
+ 1    1         #1 (⛶ Föö fails to bar when baz)                    20150503
+ 2    1         #2 (☎ Bar is not always baz)                        20150505
+ 3    1         #3 (☉ Baz sucks)                                    20150507
+ 4    1         #5 (☾ Cannot create Foo)                            20150509
+ 5    1         #6 (☐ Sell bar in baz)                              20150511
+ 6    1         #7 (☑ No Foo after deleting Bar)                    20150513
+ 7    1         #9 (⛶ Foo never matches Bar)                        20150515
+ 8    2         #10 (☎ Where can I find a Foo when bazing Bazes?)   20150503
+ 9    2         #11 (☉ Class-based Foos and Bars?)                  20150505
+ 10   2         #13 (☾ Bar cannot foo)                              20150507
+ 11   2         #14 (☐ Bar cannot baz)                              20150509
+ 12   2         #15 (☑ Bars have no foo)                            20150511
  ...
- 79   12        #105 (Ticket 105)                                 20150505
- 80   12        #106 (Ticket 106)                                 20150507
- 81   12        #107 (Ticket 107)                                 20150509
- 82   12        #109 (Ticket 109)                                 20150511
- 83   12        #110 (Ticket 110)                                 20150513
- 84   12        #111 (Ticket 111)                                 20150515
- 85   13        #113 (Ticket 113)                                 20150503
- 86   13        #114 (Ticket 114)                                 20150505
- 87   13        #115 (Ticket 115)                                 20150507
+ 77   11        #102 (☐ Ticket 102)                                 20150515
+ 78   12        #103 (☑ Ticket 103)                                 20150503
+ 79   12        #105 (⛶ Ticket 105)                                 20150505
+ 80   12        #106 (☎ Ticket 106)                                 20150507
+ 81   12        #107 (☉ Ticket 107)                                 20150509
+ 82   12        #109 (☾ Ticket 109)                                 20150511
+ 83   12        #110 (☐ Ticket 110)                                 20150513
+ 84   12        #111 (☑ Ticket 111)                                 20150515
+ 85   13        #113 (⛶ Ticket 113)                                 20150503
+ 86   13        #114 (☎ Ticket 114)                                 20150505
+ 87   13        #115 (☉ Ticket 115)                                 20150507
       **585**
-==== ========= ================================================= ========== ======== ===========
+==== ========= =================================================== ========== ======== ===========
 <BLANKLINE>
 
 
@@ -612,11 +612,11 @@ Dependencies between tickets
 
 >>> rt.show(tickets.Links)
 ... #doctest: +REPORT_UDIFF
-==== ================= ================================ ============================
- ID   Dependency type   Parent                           Child
----- ----------------- -------------------------------- ----------------------------
- 1    Requires          #1 (Föö fails to bar when baz)   #2 (Bar is not always baz)
-==== ================= ================================ ============================
+==== ================= ================================== ==============================
+ ID   Dependency type   Parent                             Child
+---- ----------------- ---------------------------------- ------------------------------
+ 1    Requires          #1 (⛶ Föö fails to bar when baz)   #2 (☎ Bar is not always baz)
+==== ================= ================================== ==============================
 <BLANKLINE>
 
 
@@ -626,39 +626,39 @@ Comments
 Comments are not shown to anonymous users:
 
 >>> rt.show(comments.Comments, column_names="id user owner")
-==== ================= =================================================
+==== ================= ===================================================
  ID   Author            Ticket
----- ----------------- -------------------------------------------------
- 1    Jean              #1 (Föö fails to bar when baz)
- 4    Romain Raffault   #4 (Foo and bar don't baz)
- 6    Robin Rood        #6 (Sell bar in baz)
- 7    Jean              #7 (No Foo after deleting Bar)
- 8    Luc               #8 (Is there any Bar in Foo?)
- 10   Romain Raffault   #10 (Where can I find a Foo when bazing Bazes?)
- 11   Rolf Rompen       #11 (Class-based Foos and Bars?)
- 12   Robin Rood        #12 (Foo cannot bar)
-==== ================= =================================================
+---- ----------------- ---------------------------------------------------
+ 1    Jean              #1 (⛶ Föö fails to bar when baz)
+ 4    Romain Raffault   #4 (⚒ Foo and bar don't baz)
+ 6    Robin Rood        #6 (☐ Sell bar in baz)
+ 7    Jean              #7 (☑ No Foo after deleting Bar)
+ 8    Luc               #8 (☒ Is there any Bar in Foo?)
+ 10   Romain Raffault   #10 (☎ Where can I find a Foo when bazing Bazes?)
+ 11   Rolf Rompen       #11 (☉ Class-based Foos and Bars?)
+ 12   Robin Rood        #12 (⚒ Foo cannot bar)
+==== ================= ===================================================
 <BLANKLINE>
 
 The same list seen by marc
 
 >>> rt.login('luc').show('comments.Comments', column_names="id user owner")
-==== ================= =================================================
+==== ================= ===================================================
  ID   Author            Ticket
----- ----------------- -------------------------------------------------
- 1    Jean              #1 (Föö fails to bar when baz)
- 2    Luc               #2 (Bar is not always baz)
- 3    Mathieu           #3 (Baz sucks)
- 4    Romain Raffault   #4 (Foo and bar don't baz)
- 5    Rolf Rompen       #5 (Cannot create Foo)
- 6    Robin Rood        #6 (Sell bar in baz)
- 7    Jean              #7 (No Foo after deleting Bar)
- 8    Luc               #8 (Is there any Bar in Foo?)
- 9    Mathieu           #9 (Foo never matches Bar)
- 10   Romain Raffault   #10 (Where can I find a Foo when bazing Bazes?)
- 11   Rolf Rompen       #11 (Class-based Foos and Bars?)
- 12   Robin Rood        #12 (Foo cannot bar)
-==== ================= =================================================
+---- ----------------- ---------------------------------------------------
+ 1    Jean              #1 (⛶ Föö fails to bar when baz)
+ 2    Luc               #2 (☎ Bar is not always baz)
+ 3    Mathieu           #3 (☉ Baz sucks)
+ 4    Romain Raffault   #4 (⚒ Foo and bar don't baz)
+ 5    Rolf Rompen       #5 (☾ Cannot create Foo)
+ 6    Robin Rood        #6 (☐ Sell bar in baz)
+ 7    Jean              #7 (☑ No Foo after deleting Bar)
+ 8    Luc               #8 (☒ Is there any Bar in Foo?)
+ 9    Mathieu           #9 (⛶ Foo never matches Bar)
+ 10   Romain Raffault   #10 (☎ Where can I find a Foo when bazing Bazes?)
+ 11   Rolf Rompen       #11 (☉ Class-based Foos and Bars?)
+ 12   Robin Rood        #12 (⚒ Foo cannot bar)
+==== ================= ===================================================
 <BLANKLINE>
 
 
@@ -672,6 +672,7 @@ The same list seen by marc
 Filtering tickets
 =================
 
+This is a list of the parameters you can use for filterings tickets.
 
 >>> show_fields(tickets.Tickets)
 +-----------------+-----------------+---------------------------------------------------------------+
@@ -697,7 +698,7 @@ Filtering tickets
 +-----------------+-----------------+---------------------------------------------------------------+
 | has_project     | Has project     | Show only (or hide) tickets which have a project assigned.    |
 +-----------------+-----------------+---------------------------------------------------------------+
-| show_assigned   | Assigned        | Whether to show assigned tickets                              |
+| show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.    |
 +-----------------+-----------------+---------------------------------------------------------------+
 | show_active     | Active          | Whether to show active tickets                                |
 +-----------------+-----------------+---------------------------------------------------------------+

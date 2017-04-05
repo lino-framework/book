@@ -16,6 +16,7 @@ introductions. This section is far from being complete.
    cv
    export_excel
    cal
+   contacts
    holidays
    households
    tinymce
@@ -28,28 +29,10 @@ introductions. This section is far from being complete.
    gfks
    dumps
    help_texts
-   cosi_ee
    polly
    ajax
    i18n
-   
-
-.. toctree::
-    :maxdepth: 1
-  
-    accounting
-    contacts
-    finan
-    invoicing
-    ledger
-    sales
-    tim2lino
-    notify
-
-
-
-.. toctree::
-    :maxdepth: 1
-  
-    noi/index
+   notify
+   cosi/index
+   noi/index
     
