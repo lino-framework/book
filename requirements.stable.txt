@@ -1,0 +1,12 @@
+-e git+https://github.com/lino-framework/atelier.git@stable#egg=atelier
+-e git+https://github.com/lsaffre/commondata.git#egg=commondata
+-e git+https://github.com/lsaffre/commondata-be.git#egg=commondata.be
+-e git+https://github.com/lsaffre/commondata-ee.git#egg=commondata.ee
+-e git+https://github.com/lino-framework/lino.git@stable#egg=lino
+-e git+https://github.com/lino-framework/xl.git@stable#egg=lino_xl
+-e git+https://github.com/lino-framework/noi.git@stable#egg=lino_noi
+-e git+https://github.com/lino-framework/cosi.git@stable#egg=lino_cosi
+-e git+https://github.com/lino-framework/voga.git@stable#egg=lino_voga
+-e git+https://github.com/lino-framework/presto.git@stable#egg=lino_presto
+-e git+https://github.com/lino-framework/welfare.git@stable#egg=lino_welfare
+-e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
