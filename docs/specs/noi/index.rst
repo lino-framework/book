@@ -34,7 +34,7 @@ The default variant ("team")
     faculties
     votes
     clocking
-
+    deploy
    
    
 

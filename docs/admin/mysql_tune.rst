@@ -55,14 +55,19 @@ Note that this is used just as a default value when a table is created
 without an engine specified, it does not affect the server in any
 other way.
 
-
+.. _mysql.which.engine:
 
 Which engine am I using?
 ========================
 
-Here is how to see the engine used for every table::
+Here is how to see the engine used for every table.  Invoke your
+:manage:`dbshell` and type::
 
     mysql> select table_name, table_type, engine, table_collation from information_schema.tables where table_schema='myprj';
+
+Or if you don't have many other databases on that machine::
+  
+    mysql> select table_schema, table_name, table_type, engine, table_collation from information_schema.tables;    
   
 Available engines can be found with `SHOW ENGINES
 <https://dev.mysql.com/doc/refman/5.7/en/show-engines.html>`_.

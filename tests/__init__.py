@@ -310,6 +310,9 @@ class SpecsTests(TestCase):
     def test_noi_db(self):
         self.run_simple_doctests('docs/specs/noi/db.rst')
 
+    def test_noi_deploy(self):
+        self.run_simple_doctests('docs/specs/noi/deploy.rst')
+
         
 
 
