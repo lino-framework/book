@@ -98,6 +98,27 @@ Even with InnoDB it was possible to work around this problem by doing
 yourself a `DROP DATABASE` followed by a new `CREATE DATABASE` each
 time before running :manage:`initdb`.
 
+bla bla
+=======
+
+.. envvar:: FOREIGN_KEY_CHECKS
+
+You can temporarily disable constraint checks in MySQL by setting the
+following database options::
+
+    'OPTIONS': {
+       'init_command': 'SET FOREIGN_KEY_CHECKS=0',
+    }
+            
+
+bla bla
+
+http://stackoverflow.com/questions/15501673/how-to-temporarily-disable-a-foreign-key-constraint-in-mysql
+
+https://docs.djangoproject.com/en/1.10/ref/databases/#mysql-db-api-drivers
+
+
+
 MySQLTuner
 ==========
 
