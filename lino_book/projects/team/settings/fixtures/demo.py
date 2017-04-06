@@ -49,6 +49,7 @@ def tickets_objects():
     Milestone = dd.plugins.tickets.milestone_model
     # Milestone = rt.models.deploy.Milestone
     Deployment = rt.models.deploy.Deployment
+    WishTypes = rt.models.deploy.WishTypes
     Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
     Site = dd.plugins.tickets.site_model
@@ -139,6 +140,7 @@ def tickets_objects():
     
     SITES = Cycler(Site.objects.exclude(name="pypi"))
     for i in range(7):
+        site = SITES.pop()
         d = dd.today(i*2-20)
         kw = dict(
             user=WORKERS.pop(),
@@ -146,8 +148,9 @@ def tickets_objects():
             line=sprint,
             # project=PROJECTS.pop(), # expected=d, reached=d,
             # expected=d, reached=d,
-            name=d.strftime("%Y%m%d"))
-        kw[Milestone.site_field_name] = SITES.pop()
+            name="{}@{}".format(d.strftime("%Y%m%d"), site)
+        )
+        kw[Milestone.site_field_name] = site
         yield Milestone(**kw)
     # yield Milestone(site=SITES.pop(), expected=dd.today())
     # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
@@ -218,11 +221,14 @@ def tickets_objects():
     for i in range(100):
         yield ticket("Ticket {}".format(i+n+1), project=PROJECTS.pop())
 
+    WTYPES = Cycler(WishTypes.objects())
     MILESTONES = Cycler(Milestone.objects.all())
     for t in Ticket.objects.all():
         t.set_author_votes()
         if t.id % 4:
-            yield Deployment(milestone=MILESTONES.pop(), ticket=t)
+            yield Deployment(
+                milestone=MILESTONES.pop(), ticket=t,
+                wish_type=WTYPES.pop())
 
     
     yield Link(

@@ -55,14 +55,19 @@ Note that this is used just as a default value when a table is created
 without an engine specified, it does not affect the server in any
 other way.
 
-
+.. _mysql.which.engine:
 
 Which engine am I using?
 ========================
 
-Here is how to see the engine used for every table::
+Here is how to see the engine used for every table.  Invoke your
+:manage:`dbshell` and type::
 
     mysql> select table_name, table_type, engine, table_collation from information_schema.tables where table_schema='myprj';
+
+Or if you don't have many other databases on that machine::
+  
+    mysql> select table_schema, table_name, table_type, engine, table_collation from information_schema.tables;    
   
 Available engines can be found with `SHOW ENGINES
 <https://dev.mysql.com/doc/refman/5.7/en/show-engines.html>`_.
@@ -92,6 +97,27 @@ InnoDB's more severe integrity contraints.
 Even with InnoDB it was possible to work around this problem by doing
 yourself a `DROP DATABASE` followed by a new `CREATE DATABASE` each
 time before running :manage:`initdb`.
+
+bla bla
+=======
+
+.. envvar:: FOREIGN_KEY_CHECKS
+
+You can temporarily disable constraint checks in MySQL by setting the
+following database options::
+
+    'OPTIONS': {
+       'init_command': 'SET FOREIGN_KEY_CHECKS=0',
+    }
+            
+
+bla bla
+
+http://stackoverflow.com/questions/15501673/how-to-temporarily-disable-a-foreign-key-constraint-in-mysql
+
+https://docs.djangoproject.com/en/1.10/ref/databases/#mysql-db-api-drivers
+
+
 
 MySQLTuner
 ==========
