@@ -65,8 +65,8 @@ SETUP_INFO.update(long_description="""
    :target: http://lino.readthedocs.io/en/latest/?badge=latest
 .. image:: https://coveralls.io/repos/github/lino-framework/book/badge.svg?branch=master
    :target: https://coveralls.io/github/lino-framework/book?branch=master
-.. image:: https://travis-ci.org/lino-framework/book.svg?branch=master
-   :target: https://travis-ci.org/lino-framework/book?branch=master
+.. image:: https://travis-ci.org/lino-framework/book.svg?branch=stable
+   :target: https://travis-ci.org/lino-framework/book?branch=stable
 .. image:: https://img.shields.io/pypi/v/lino.svg
    :target: https://pypi.python.org/pypi/lino/
 .. image:: https://img.shields.io/pypi/l/lino.svg
