@@ -22,6 +22,7 @@ SETUP_INFO = dict(
         'lino_cosi',
         'lino_noi',
         'lino_voga',
+        'lino_avanti',
         'lino_welfare',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
@@ -31,7 +32,7 @@ SETUP_INFO = dict(
     include_package_data=True,
     zip_safe=False,
     author='Luc Saffre',
-    author_email='luc.saffre@gmail.com',
+    author_email='luc@lino-framework.org',
     url="http://www.lino-framework.org",
     #~ test_suite = 'lino_book.projects',
     test_suite='tests',
@@ -54,10 +55,10 @@ SETUP_INFO = dict(
   Topic :: Office/Business
   Topic :: Software Development :: Libraries :: Application Frameworks""".splitlines())
 
-if PY2:
-    SETUP_INFO['install_requires'].append('reportlab<2.7')
-else:
-    SETUP_INFO['install_requires'].append('reportlab')
+# if PY2:
+#     SETUP_INFO['install_requires'].append('reportlab<2.7')
+# else:
+#     SETUP_INFO['install_requires'].append('reportlab')
 
 SETUP_INFO.update(long_description="""
 
@@ -151,6 +152,10 @@ lino_book.projects.min2.tests
 lino_book.projects.apc
 lino_book.projects.apc.settings
 lino_book.projects.apc.tests
+lino_book.projects.adg
+lino_book.projects.adg.settings
+lino_book.projects.adg.settings.fixtures
+lino_book.projects.adg.tests
 lino_book.projects.cosi_ee
 lino_book.projects.cosi_ee.settings
 lino_book.projects.pierre

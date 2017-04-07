@@ -66,6 +66,13 @@ either out of the box or as a base for derivated work.
    care_de
    vilma
 
+A collection of concrete :ref:`avanti` example projects.
+
+.. autosummary::
+    :toctree:
+
+    adg
+
 
 
 Technical

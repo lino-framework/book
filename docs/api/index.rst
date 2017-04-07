@@ -78,6 +78,20 @@ Lino Così
 .. automodule:: lino_cosi
                 
 
+.. _avanti:
+
+Lino Avanti
+===========
+
+.. py2rst::
+
+  import lino_avanti
+  print(lino_avanti.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_avanti
+                
+
 
                 
 .. _commondata:

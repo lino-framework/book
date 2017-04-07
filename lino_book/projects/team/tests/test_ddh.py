@@ -6,14 +6,13 @@
 
 You can run only these tests by issuing::
 
-  $ go noi
-  $ cd lino_book.projects/team
+  $ go team
   $ python manage.py test tests.test_ddh
 
 Or::
 
-  $ go noi
-  $ python setup.py test -s tests.ProjectsTests.test_team
+  $ go book
+  $ python setup.py test -s tests.ProjectsTests.test_ddh
 
 """
 
@@ -24,12 +23,7 @@ from django.core.exceptions import ValidationError
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.api import rt
 
-
-def create(m, **kwargs):
-    obj = m(**kwargs)
-    obj.full_clean()
-    obj.save()
-    return obj
+from lino.utils.instantiator import create_row as create
     
 
 class DDHTests(RemoteAuthTestCase):
