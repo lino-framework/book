@@ -62,16 +62,18 @@ What is a wish?
     Lino Noi knows the following types of wishes:
 
     >>> rt.show("deploy.WishTypes")
-    ======= ============= =============
-     value   name          text
-    ------- ------------- -------------
-     10      talk          Agenda item
-     20      requirement   Requirement
-     30      gimmick       Gimmick
-     40      side_effect   Side effect
-     50      todo          Resolution
-     60      aftermath     Aftermath
-    ======= ============= =============
+    ======= ============== ==============
+     value   name           text
+    ------- -------------- --------------
+     10      talk           Agenda item
+     20      new_feature    New feature
+     22      optimization   Optimization
+     25      bugfix         Bugfix
+     30      gimmick        Gimmick
+     40      side_effect    Side effect
+     50      todo           Resolution
+     60      aftermath      Aftermath
+    ======= ============== ==============
     <BLANKLINE>
            
 
@@ -100,11 +102,11 @@ For example, ticket #17 occurs as agenda item in milestone
 *20150513@welsch*
 
 >>> rt.show("deploy.DeploymentsByTicket", obj, nosummary=True)
-================= ============= ========
- Activity          Wish type     Remark
------------------ ------------- --------
- 20150513@welsch   Agenda item
-================= ============= ========
+================= =========== ========
+ Activity          Wish type   Remark
+----------------- ----------- --------
+ 20150513@welsch   Gimmick
+================= =========== ========
 <BLANKLINE>
 
 
