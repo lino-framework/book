@@ -67,17 +67,6 @@ Lino Voga
   print(SETUP_INFO['long_description'])
 
 
-.. _avanti:
-
-Lino Avanti
-------------
-
-.. py2rst::
-
-  from lino_avanti import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-
 .. _extjs6:
 
 ExtJS 6

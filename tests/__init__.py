@@ -347,6 +347,25 @@ class SpecsTests(TestCase):
         self.run_simple_doctests('docs/specs/cosi/b2c.rst')
 
 
+    def test_avanti_courses(self):
+        self.run_simple_doctests('docs/specs/avanti/courses.rst')
+
+    def test_avanti_general(self):
+        self.run_simple_doctests('docs/specs/avanti/general.rst')
+
+    def test_avanti_db(self):
+        self.run_simple_doctests('docs/specs/avanti/db.rst')
+
+    def test_avanti_cal(self):
+        self.run_simple_doctests('docs/specs/avanti/cal.rst')
+
+    def test_avanti_roles(self):
+        self.run_simple_doctests('docs/specs/avanti/roles.rst')
+
+
+        
+
+
         
 class ProjectsTests(TestCase):
     
@@ -389,6 +408,9 @@ class ProjectsTests(TestCase):
 
     def test_vilma(self):
         self.run_django_manage_test('lino_book/projects/vilma')
+
+    def test_adg(self):
+        self.run_django_manage_test('lino_book/projects/adg')
 
 
 class TestAppsTests(LinoTestCase):
