@@ -47,15 +47,10 @@ response (i.e. status code 400):
 
 >>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114"
 >>> res = test_client.get(url, **headers)  #doctest: +ELLIPSIS
-AjaxExceptionResponse ObjectDoesNotExist: Invalid master key 114114 for contacts.RolesByPerson
-<BLANKLINE>
-in request GET /api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114
-TRACEBACK:
-...
-<BLANKLINE>
-
->>> print(res.status_code)
+>>> res.status_code
 400
+>>> print(res.content)
+ObjectDoesNotExist: Invalid master key 114114 for contacts.RolesByPerson
 
 Since RolesByPerson has a known master class (i.e. Person), the ``mt``
 url parameter is *ignored*: an invalid value for ``mt`` does *not*
@@ -66,3 +61,14 @@ raise an exception:
 >>> print(res.status_code)
 200
 
+
+Request data not supplied
+=========================
+
+>>> url = '/api/cal/EventsByProject?_dc=1491615952104&fmt=json&rp=ext-comp-1306&start=0&limit=15&mt=13&mk=188'
+>>> res = test_client.get(url, **headers)
+>>> res.status_code
+400
+>>> #print(json.loads(res.content)['message'])
+>>> print(res.content)
+Http404: cal.EventsByProject is not a class

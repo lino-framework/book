@@ -6,8 +6,7 @@
 
 You can run only these tests by issuing::
 
-  $ go book
-  $ cd lino_book.projects/team
+  $ go team
   $ python manage.py test tests.test_notify
 
 Or::

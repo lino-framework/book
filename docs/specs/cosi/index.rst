@@ -2,8 +2,10 @@
 .. _cosi.tested:
 
 ==========================
-Lino Così functional specs
+Lino Così specs
 ==========================
+
+This section contains specs specific to :ref:`cosi`.
 
 
 .. toctree::

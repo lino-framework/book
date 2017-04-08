@@ -11,8 +11,6 @@ Refusing permission to an anonymous request
 
     doctest init:
 
-    >>> from __future__ import print_function
-    >>> from __future__ import unicode_literals
     >>> import lino
     >>> lino.startup('lino_book.projects.apc.settings.sestests')
     >>> from lino.api.doctest import *
@@ -88,8 +86,8 @@ been removed:
 >>> x = sessions.Session.objects.all().delete()
 
 The user comes back and resizes her browser window, or some other
-action which will trigger a refresh.  The same URL will now cause a
-`PermissionDenied` exception:
+action which will trigger a refresh.  The same URL will now return a
+400 (Bad request) response:
 
 >>> res = test_client.get(url)
 Forbidden (Permission denied): /api/sales/InvoicesByJournal
@@ -105,27 +103,26 @@ Zugriff verweigert
 You have no permission to see this resource.
 
 
-The above URL is usually issued as an AJAX call.  When an exception
-like the above occurs during an AJAX call, Lino's reponse has
-different format which is defined by the :mod:`lino.utils.ajax`
-middleware.
+The above URL is usually issued as an AJAX call.
 
-We must say this explicitly to Django's test client by
-setting the extra HTTP header `HTTP_X_REQUESTED_WITH` to
-'XMLHttpRequest'.
+Lino recognizes AJAX calls 
+by the extra HTTP header `HTTP_X_REQUESTED_WITH`
+having the value ``XMLHttpRequest``.
+For this simulation 
+we must say this explicitly to Django's test client.
 
 >>> res = test_client.get(url, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
-... #doctest: +ELLIPSIS
-AjaxExceptionResponse PermissionDenied: As Anonym you have no permission to run this action.
-<BLANKLINE>
-in request GET /api/sales/InvoicesByJournal?start=0&limit=25&fmt=json&rp=ext-comp-1135&pv=1&pv=&pv=&pv=&mt=24&mk=1
-TRACEBACK:
-...
-<BLANKLINE>
+
+When an exception like the above occurs during an AJAX call, Lino's
+reponse has different format which is defined by the
+:mod:`lino.utils.ajax` middleware. It sets the status code to 400 (Bad
+Request) which means "The request could not be understood by the
+server due to malformed syntax. The client SHOULD NOT repeat the
+request without modifications." (`w3.org
+<https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10>`__)
 
 >>> res.status_code
-403
+400
 >>> print(res.content)
-... #doctest: +ELLIPSIS -NORMALIZE_WHITESPACE -REPORT_UDIFF
 PermissionDenied: As Anonym you have no permission to run this action.
 

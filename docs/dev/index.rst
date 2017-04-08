@@ -127,8 +127,8 @@ Writing documentation
 
 50. :doc:`/team/builddocs`
 #. :doc:`/team/devblog`
-#. :doc:`/team/docstrings`
-#. :doc:`/team/doctests`
+#. :doc:`docstrings`
+#. :doc:`doctests`
 
    
 .. toctree::
@@ -137,6 +137,7 @@ Writing documentation
    /team/builddocs
    /team/devblog
    doctests
+   docstrings
 
 
 Getting acquaintained

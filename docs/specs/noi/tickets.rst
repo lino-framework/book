@@ -150,7 +150,7 @@ ticket has one of the following values:
  20      opened      Open       ☉        Yes
  22      started     Started    ⚒        Yes
  30      sleeping    Sleeping   ☾        No
- 40      ready       Ready      ☐        Yes
+ 40      ready       Ready      ☐        No
  50      closed      Closed     ☑        No
  60      cancelled   Refused    ☒        No
 ======= =========== ========== ======== ========
@@ -179,7 +179,7 @@ Above table in German:
  20     opened      Offen           ☉        Ja
  22     started     Gestartet       ⚒        Ja
  30     sleeping    Schläft         ☾        Nein
- 40     ready       Bereit          ☐        Ja
+ 40     ready       Bereit          ☐        Nein
  50     closed      Abgeschlossen   ☑        Nein
  60     cancelled   Abgelehnt       ☒        Nein
 ====== =========== =============== ======== =======
@@ -196,7 +196,7 @@ And in French (not yet fully translated):
  20      opened      Open       ☉        Oui
  22      started     Started    ⚒        Oui
  30      sleeping    Sleeping   ☾        Non
- 40      ready       Ready      ☐        Oui
+ 40      ready       Ready      ☐        Non
  50      closed      Closed     ☑        Non
  60      cancelled   Refusé     ☒        Non
 ======= =========== ========== ======== ========
@@ -378,35 +378,27 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: +REPORT_UDIFF
-================================================= ============================================
- Description                                       Actions
-------------------------------------------------- --------------------------------------------
- `#116 (⚒ Ticket 116) <Detail>`__                  [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#113 (⛶ Ticket 113) <Detail>`__                  [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#107 (☉ Ticket 107) <Detail>`__                  [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#98 (☎ Ticket 98) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#94 (☐ Ticket 94) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
- `#92 (⚒ Ticket 92) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#89 (⛶ Ticket 89) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#83 (☉ Ticket 83) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#74 (☎ Ticket 74) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#70 (☐ Ticket 70) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
- `#68 (⚒ Ticket 68) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#65 (⛶ Ticket 65) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#59 (☉ Ticket 59) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#50 (☎ Ticket 50) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#46 (☐ Ticket 46) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
- `#44 (⚒ Ticket 44) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#41 (⛶ Ticket 41) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#35 (☉ Ticket 35) <Detail>`__                    [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#26 (☎ Ticket 26) <Detail>`__                    [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#22 (☐ Ticket 22) <Detail>`__                    [▶] [★] **Ready** → [☎] [☑] [☒]
- `#20 (⚒ Ticket 20) <Detail>`__                    [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#17 (⛶ Ticket 17) <Detail>`__                    [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#2 (☎ Bar is not always baz) <Detail>`__         [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-================================================= ============================================
+================================================================ ============================================
+ Description                                                      Actions
+---------------------------------------------------------------- --------------------------------------------
+ `#114 (☎ Ticket 114) <Detail>`__                                 [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#106 (☎ Ticket 106) <Detail>`__                                 [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#98 (☎ Ticket 98) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#90 (☎ Ticket 90) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#82 (☎ Ticket 82) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#74 (☎ Ticket 74) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#66 (☎ Ticket 66) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#58 (☎ Ticket 58) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#50 (☎ Ticket 50) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#42 (☎ Ticket 42) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#34 (☎ Ticket 34) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#26 (☎ Ticket 26) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#18 (☎ Ticket 18) <Detail>`__                                   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#2 (☎ Bar is not always baz) <Detail>`__                        [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+================================================================ ============================================
 <BLANKLINE>
+
 
 
 Sites
@@ -431,20 +423,20 @@ can see all local tickets for a given site object:
 >>> welket = cal.Room.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ========== ==========
- ID    Summary                     Author   Topic          Actions    Mission
------ --------------------------- -------- -------------- ---------- ----------
- 115   Ticket 115                  Luc      Lino Voga      **Open**   docs
- 97    Ticket 97                   Luc      Lino Welfare   **New**    shop
- 91    Ticket 91                   Luc      Lino Voga      **Open**   research
- 73    Ticket 73                   Luc      Lino Welfare   **New**    linö
- 67    Ticket 67                   Luc      Lino Voga      **Open**   shop
- 49    Ticket 49                   Luc      Lino Welfare   **New**    téam
- 43    Ticket 43                   Luc      Lino Voga      **Open**   linö
- 25    Ticket 25                   Luc      Lino Welfare   **New**    docs
- 19    Ticket 19                   Luc      Lino Voga      **Open**   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    linö
-===== =========================== ======== ============== ========== ==========
+===== =========================== ========= ============== ========== ==========
+ ID    Summary                     Author    Topic          Actions    Mission
+----- --------------------------- --------- -------------- ---------- ----------
+ 115   Ticket 115                  Mathieu   Lino Voga      **Open**   docs
+ 97    Ticket 97                   Luc       Lino Welfare   **New**    shop
+ 91    Ticket 91                   Mathieu   Lino Voga      **Open**   research
+ 73    Ticket 73                   Luc       Lino Welfare   **New**    linö
+ 67    Ticket 67                   Mathieu   Lino Voga      **Open**   shop
+ 49    Ticket 49                   Luc       Lino Welfare   **New**    téam
+ 43    Ticket 43                   Mathieu   Lino Voga      **Open**   linö
+ 25    Ticket 25                   Luc       Lino Welfare   **New**    docs
+ 19    Ticket 19                   Mathieu   Lino Voga      **Open**   téam
+ 1     Föö fails to bar when baz   Luc       Lino Welfare   **New**    linö
+===== =========================== ========= ============== ========== ==========
 <BLANKLINE>
 
 
@@ -454,20 +446,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ============================================ ==========
- ID    Summary                     Author   Topic          Actions                                      Mission
------ --------------------------- -------- -------------- -------------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
- 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
- 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
- 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
- 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
-===== =========================== ======== ============== ============================================ ==========
+===== =========================== ========= ============== ======================================= ==========
+ ID    Summary                     Author    Topic          Actions                                 Mission
+----- --------------------------- --------- -------------- --------------------------------------- ----------
+ 115   Ticket 115                  Mathieu   Lino Voga      [▶] [☆] **Open**                        docs
+ 97    Ticket 97                   Luc       Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]   shop
+ 91    Ticket 91                   Mathieu   Lino Voga      [▶] [☆] **Open**                        research
+ 73    Ticket 73                   Luc       Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]   linö
+ 67    Ticket 67                   Mathieu   Lino Voga      [▶] [☆] **Open**                        shop
+ 49    Ticket 49                   Luc       Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]   téam
+ 43    Ticket 43                   Mathieu   Lino Voga      [▶] [☆] **Open**                        linö
+ 25    Ticket 25                   Luc       Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]   docs
+ 19    Ticket 19                   Mathieu   Lino Voga      [▶] [☆] **Open**                        téam
+ 1     Föö fails to bar when baz   Luc       Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]   linö
+===== =========================== ========= ============== ======================================= ==========
 <BLANKLINE>
 
 
@@ -486,17 +478,17 @@ release of a new version.
 
 >>> rt.show('courses.Courses')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================== =============== ============ ======== ===========
- Start date   Enrolments until   Activity line   Instructor   Room     Actions
------------- ------------------ --------------- ------------ -------- -----------
- 15/05/2015                      Sprint                       welket   **Draft**
- 13/05/2015                      Sprint                       welsch   **Draft**
- 11/05/2015                      Sprint                       welket   **Draft**
- 09/05/2015                      Sprint                       welsch   **Draft**
- 07/05/2015                      Sprint                       welket   **Draft**
- 05/05/2015                      Sprint                       welsch   **Draft**
- 03/05/2015                      Sprint                       welket   **Draft**
-============ ================== =============== ============ ======== ===========
+============ ================= =============== ============ ======== ===========
+ Start date   Designation       Activity line   Instructor   Room     Actions
+------------ ----------------- --------------- ------------ -------- -----------
+ 15/05/2015   20150515@welket   Sprint                       welket   **Draft**
+ 13/05/2015   20150513@welsch   Sprint                       welsch   **Draft**
+ 11/05/2015   20150511@welket   Sprint                       welket   **Draft**
+ 09/05/2015   20150509@welsch   Sprint                       welsch   **Draft**
+ 07/05/2015   20150507@welket   Sprint                       welket   **Draft**
+ 05/05/2015   20150505@welsch   Sprint                       welsch   **Draft**
+ 03/05/2015   20150503@welket   Sprint                       welket   **Draft**
+============ ================= =============== ============ ======== ===========
 <BLANKLINE>
 
 
@@ -748,50 +740,51 @@ Filtering tickets
 This is a list of the parameters you can use for filterings tickets.
 
 >>> show_fields(tickets.Tickets)
-+-----------------+-----------------+---------------------------------------------------------------+
-| Internal name   | Verbose name    | Help text                                                     |
-+=================+=================+===============================================================+
-| user            | Author          |                                                               |
-+-----------------+-----------------+---------------------------------------------------------------+
-| end_user        | End user        | Only rows concerning this end user.                           |
-+-----------------+-----------------+---------------------------------------------------------------+
-| assigned_to     | Voted by        | Only tickets having a vote by this user.                      |
-+-----------------+-----------------+---------------------------------------------------------------+
-| not_assigned_to | Not voted by    | Only tickets having no vote by this user.                     |
-+-----------------+-----------------+---------------------------------------------------------------+
-| interesting_for | Interesting for | Only tickets interesting for this partner.                    |
-+-----------------+-----------------+---------------------------------------------------------------+
-| site            | Room            | Select a site if you want to see only tickets for this site.  |
-+-----------------+-----------------+---------------------------------------------------------------+
-| project         | Mission         |                                                               |
-+-----------------+-----------------+---------------------------------------------------------------+
-| state           | State           | Only rows having this state.                                  |
-+-----------------+-----------------+---------------------------------------------------------------+
-| deployed_to     | Activity        |                                                               |
-+-----------------+-----------------+---------------------------------------------------------------+
-| has_project     | Has project     | Show only (or hide) tickets which have a project assigned.    |
-+-----------------+-----------------+---------------------------------------------------------------+
-| show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.    |
-+-----------------+-----------------+---------------------------------------------------------------+
-| show_active     | Active          | Whether to show active tickets                                |
-+-----------------+-----------------+---------------------------------------------------------------+
-| show_deployed   | Deployed        | Whether to show tickets with at least one deployment          |
-+-----------------+-----------------+---------------------------------------------------------------+
-| show_todo       | To do           | Show only (or hide) tickets which are todo (i.e. state is New |
-|                 |                 | or ToDo).                                                     |
-+-----------------+-----------------+---------------------------------------------------------------+
-| show_private    | Private         | Show only (or hide) tickets that are marked private.          |
-+-----------------+-----------------+---------------------------------------------------------------+
-| start_date      | Period from     | Start date of observed period                                 |
-+-----------------+-----------------+---------------------------------------------------------------+
-| end_date        | until           | End date of observed period                                   |
-+-----------------+-----------------+---------------------------------------------------------------+
-| observed_event  | Observed event  |                                                               |
-+-----------------+-----------------+---------------------------------------------------------------+
-| topic           | Topic           |                                                               |
-+-----------------+-----------------+---------------------------------------------------------------+
-| feasable_by     | Feasable by     | Show only tickets for which the given supplier is competent.  |
-+-----------------+-----------------+---------------------------------------------------------------+
++-----------------+-----------------+------------------------------------------------------------------+
+| Internal name   | Verbose name    | Help text                                                        |
++=================+=================+==================================================================+
+| user            | Author          |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| end_user        | End user        | Only rows concerning this end user.                              |
++-----------------+-----------------+------------------------------------------------------------------+
+| assigned_to     | Voted by        | Only tickets having a vote by this user.                         |
++-----------------+-----------------+------------------------------------------------------------------+
+| not_assigned_to | Not voted by    | Only tickets having no vote by this user.                        |
++-----------------+-----------------+------------------------------------------------------------------+
+| interesting_for | Interesting for | Only tickets interesting for this partner.                       |
++-----------------+-----------------+------------------------------------------------------------------+
+| site            | Room            | Select a site if you want to see only tickets for this site.     |
++-----------------+-----------------+------------------------------------------------------------------+
+| project         | Mission         |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| state           | State           | Only rows having this state.                                     |
++-----------------+-----------------+------------------------------------------------------------------+
+| deployed_to     | Activity        |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| has_project     | Has project     | Show only (or hide) tickets which have a project assigned.       |
++-----------------+-----------------+------------------------------------------------------------------+
+| show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.       |
++-----------------+-----------------+------------------------------------------------------------------+
+| show_active     | Active          | Show only (or hide) tickets which are active (i.e. state is Talk |
+|                 |                 | or ToDo).                                                        |
++-----------------+-----------------+------------------------------------------------------------------+
+| show_deployed   | Deployed        | Whether to show tickets with at least one deployment             |
++-----------------+-----------------+------------------------------------------------------------------+
+| show_todo       | To do           | Show only (or hide) tickets which are todo (i.e. state is New    |
+|                 |                 | or ToDo).                                                        |
++-----------------+-----------------+------------------------------------------------------------------+
+| show_private    | Private         | Show only (or hide) tickets that are marked private.             |
++-----------------+-----------------+------------------------------------------------------------------+
+| start_date      | Period from     | Start date of observed period                                    |
++-----------------+-----------------+------------------------------------------------------------------+
+| end_date        | until           | End date of observed period                                      |
++-----------------+-----------------+------------------------------------------------------------------+
+| observed_event  | Observed event  |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| topic           | Topic           |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| feasable_by     | Feasable by     | Show only tickets for which the given supplier is competent.     |
++-----------------+-----------------+------------------------------------------------------------------+
 
 
 

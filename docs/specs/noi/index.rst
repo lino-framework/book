@@ -4,8 +4,8 @@
 Lino Noi specs
 =======================
 
-This section contains articles which are meant as technical
-specifications. One of their goal is to get tested.
+This section contains specs specific to :ref:`noi`.
+
 
 The default variant ("team")
 ============================
@@ -40,6 +40,9 @@ The default variant ("team")
 
 The Lino Care variant
 =====================
+
+These are currently not used. The Care project uses the standard
+variant.
 
 .. toctree::
    :maxdepth: 1

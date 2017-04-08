@@ -2,11 +2,10 @@
 .. _avanti.specs:
 
 =======================
-Technical specification
+Lino Avanti specs
 =======================
 
-This section contains articles which are meant as technical
-specifications. One of their goal is to get tested.
+This section contains specs specific to :ref:`avanti`.
 
 
 .. toctree::
