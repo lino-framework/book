@@ -89,3 +89,17 @@ tests_require
 -------------
 
 See http://python-packaging.readthedocs.io/en/latest/dependencies.html
+
+
+.. _long_description:
+
+long_description
+----------------
+
+This being published on PyPI.
+
+Lino usually inserts this in the :xfile:`api/index.rst` file of the
+docs tree.
+
+This is used by :command:`inv bd` as the source text for the projects
+:xfile:`README.rst`.
