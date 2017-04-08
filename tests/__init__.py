@@ -220,6 +220,9 @@ class SpecsTests(TestCase):
     def test_cv(self):
         self.run_simple_doctests('docs/specs/cv.rst')
 
+    def test_users(self):
+        self.run_simple_doctests('docs/specs/users.rst')
+
     def test_households(self):
         self.run_simple_doctests('docs/specs/households.rst')
 

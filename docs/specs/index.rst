@@ -1,8 +1,9 @@
+.. _specs:
 .. _book.specs:
 
-=========================
-Functional specifications
-=========================
+=====
+Specs
+=====
 
 This section contains articles which are meant as functional
 specifications.  Their first goal is to provide a tested document
@@ -33,6 +34,7 @@ introductions. This section is far from being complete.
    ajax
    i18n
    notify
+   users
    cosi/index
    noi/index
    avanti/index
