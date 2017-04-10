@@ -4,7 +4,6 @@ python:
   - "3.4"
   - "3.5"
 env:
-  - DJANGO=1.8
   - DJANGO=1.9
   - DJANGO=1.10
 before_install:
@@ -21,7 +20,8 @@ install:
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - inv cov --no-html
+  - inv prep test
+#  - inv cov --no-html
 
 after_script:
   - coveralls
