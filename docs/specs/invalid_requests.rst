@@ -46,7 +46,7 @@ exception, which in turn will cause an `HttpResponseBadRequest`
 response (i.e. status code 400):
 
 >>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114"
->>> res = test_client.get(url, **headers)  #doctest: +ELLIPSIS
+>>> res = test_client.get(url, **headers)
 >>> res.status_code
 400
 >>> print(res.content)
@@ -65,8 +65,22 @@ raise an exception:
 Request data not supplied
 =========================
 
+After 20170410 the following AJAX request no longer raises a real
+exception but continues to log it. Raising an exception had the
+disadvantage of having an email sent to the ADMINS which was just
+disturbing and not helpful because it had no "request data supplied".
+Now the user gets an appropriate message because it receives a status
+code 400.
+
 >>> url = '/api/cal/EventsByProject?_dc=1491615952104&fmt=json&rp=ext-comp-1306&start=0&limit=15&mt=13&mk=188'
->>> res = test_client.get(url, **headers)
+>>> res = test_client.get(url, **headers)  #doctest: +ELLIPSIS
+AjaxExceptionResponse Http404: cal.EventsByProject is not a class
+<BLANKLINE>
+in request GET /api/cal/EventsByProject?_dc=1491615952104&fmt=json&rp=ext-comp-1306&start=0&limit=15&mt=13&mk=188
+TRACEBACK:
+...
+<BLANKLINE>
+
 >>> res.status_code
 400
 >>> #print(json.loads(res.content)['message'])
