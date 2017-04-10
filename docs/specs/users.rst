@@ -21,12 +21,8 @@ Lino's :mod:`lino.modlib.users` is Lino's replacement for Django's
 :mod:`django.contrib.auth` module.  It does not require
 :mod:`django.contrib.sessions` to be installed.
 
-
-Note that parts of this package are being used by Lino's core even if
-it is not installed.
-
-
 .. currentmodule:: lino.modlib.users
+
 
 Models
 ======
@@ -194,6 +190,62 @@ Mixins
 
         The author of this object.
         A pointer to :class:`lino.modlib.users.models.User`.
+        
+
+Choicelists
+===========
+
+.. class:: UserTypes
+
+    The list of user types available in this application.
+    
+    You can see the user types available in your application via
+    :menuselection:`Explorer --> System --> User Profiles`.
+
+    Every application should define at least three named user types:
+
+    .. attribute:: anonymous
+
+    .. attribute:: user
+
+    .. attribute:: admin
+
+           
+.. class:: UserType
+
+    Base class for all user types.
+
+    .. attribute:: role
+
+        The role of users having this type. This is an instance of
+        :class:`<lino.core.roles.UserRole>` or some subclass thereof.
+
+    .. attribute:: readonly
+
+        Whether users of this type get only write-proteced access.
+
+    .. attribute:: hidden_languages
+
+        A subset of :attr:`languages<lino.core.site.Site.languages>`
+        which should be hidden for users of this type.  Default value
+        is :attr:`hidden_languages<UserTypes.hidden_languages>`.  This
+        is used on multilingual sites with more than 4 or 5 languages.
+
+
 
 
            
+Plugin configuration
+====================
+
+.. class:: Plugin
+
+    See :doc:`/dev/plugins`.
+
+    .. attribute:: online_registration
+
+        Whether this site offers :ref:`online registration
+        <online_registration>` of new users.
+
+           
+

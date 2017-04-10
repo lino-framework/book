@@ -40,16 +40,16 @@ When end_time is empty, it means that he is still working.
  #3 (☉ Baz sucks)                                    Jean      23/05/2015   09:00:00                                                                `#3 <Detail>`__
  #2 (☎ Bar is not always baz)                        Luc       23/05/2015   09:00:00                                                                `#2 <Detail>`__
  #1 (⛶ Föö fails to bar when baz)                    Mathieu   23/05/2015   09:00:00                                                                `#1 <Detail>`__
- #9 (⛶ Foo never matches Bar)                        Jean      22/05/2015   09:00:00     22/05/2015   11:18:00                          2:18        `#9 <Detail>`__
- #11 (☉ Class-based Foos and Bars?)                  Luc       22/05/2015   09:00:00     22/05/2015   12:29:00                          3:29        `#11 <Detail>`__
+ #11 (☉ Class-based Foos and Bars?)                  Jean      22/05/2015   09:00:00     22/05/2015   11:18:00                          2:18        `#11 <Detail>`__
+ #10 (☎ Where can I find a Foo when bazing Bazes?)   Luc       22/05/2015   09:00:00     22/05/2015   12:29:00                          3:29        `#10 <Detail>`__
  #4 (⚒ Foo and bar don't baz)                        Mathieu   22/05/2015   09:00:00     22/05/2015   12:53:00                          3:53        `#4 <Detail>`__
- #10 (☎ Where can I find a Foo when bazing Bazes?)   Mathieu   20/05/2015   09:05:00     20/05/2015   09:17:00                          0:12        `#10 <Detail>`__
- #12 (⚒ Foo cannot bar)                              Jean      20/05/2015   09:00:00     20/05/2015   10:30:00                          1:30        `#12 <Detail>`__
- #17 (⛶ Ticket 17)                                   Luc       20/05/2015   09:00:00     20/05/2015   09:37:00                          0:37        `#17 <Detail>`__
- #6 (☐ Sell bar in baz)                              Mathieu   20/05/2015   09:00:00     20/05/2015   09:05:00                          0:05        `#6 <Detail>`__
- #14 (☐ Bar cannot baz)                              Jean      19/05/2015   09:00:00     19/05/2015   09:10:00                          0:10        `#14 <Detail>`__
- #20 (⚒ Ticket 20)                                   Luc       19/05/2015   09:00:00     19/05/2015   10:02:00                          1:02        `#20 <Detail>`__
- #19 (☉ Ticket 19)                                   Mathieu   19/05/2015   09:00:00     19/05/2015   11:18:00                          2:18        `#19 <Detail>`__
+ #12 (⚒ Foo cannot bar)                              Mathieu   20/05/2015   09:05:00     20/05/2015   09:17:00                          0:12        `#12 <Detail>`__
+ #19 (☉ Ticket 19)                                   Jean      20/05/2015   09:00:00     20/05/2015   10:30:00                          1:30        `#19 <Detail>`__
+ #18 (☎ Ticket 18)                                   Luc       20/05/2015   09:00:00     20/05/2015   09:37:00                          0:37        `#18 <Detail>`__
+ #9 (⛶ Foo never matches Bar)                        Mathieu   20/05/2015   09:00:00     20/05/2015   09:05:00                          0:05        `#9 <Detail>`__
+ #27 (☉ Ticket 27)                                   Jean      19/05/2015   09:00:00     19/05/2015   09:10:00                          0:10        `#27 <Detail>`__
+ #26 (☎ Ticket 26)                                   Luc       19/05/2015   09:00:00     19/05/2015   10:02:00                          1:02        `#26 <Detail>`__
+ #17 (⛶ Ticket 17)                                   Mathieu   19/05/2015   09:00:00     19/05/2015   11:18:00                          2:18        `#17 <Detail>`__
  **Total (13 rows)**                                                                                                                    **15:34**
 =================================================== ========= ============ ============ ============ ========== ============ ========= =========== ==================
 <BLANKLINE>
@@ -65,10 +65,9 @@ Some sessions are on private tickets:
 ------------------------------ --------- ---------- ---------
  #3 (☉ Baz sucks)               Jean
  #2 (☎ Bar is not always baz)   Luc                  téam
- #9 (⛶ Foo never matches Bar)   Jean      2:18       téam
- #14 (☐ Bar cannot baz)         Jean      0:10       téam
- #19 (☉ Ticket 19)              Mathieu   2:18       téam
- **Total (5 rows)**                       **4:46**
+ #19 (☉ Ticket 19)              Jean      1:30       téam
+ #9 (⛶ Foo never matches Bar)   Mathieu   0:05       téam
+ **Total (4 rows)**                       **1:35**
 ============================== ========= ========== =========
 <BLANKLINE>
 
@@ -85,13 +84,13 @@ working hours.
  Description                             Regular    Extra      Free   Total
 --------------------------------------- ---------- ---------- ------ ----------
  **Sat 23/05/2015** (`#3 <Detail>`__)    0:01                         0:01
- **Fri 22/05/2015** (`#9 <Detail>`__)               2:18              2:18
+ **Fri 22/05/2015** (`#11 <Detail>`__)   2:18                         2:18
  **Thu 21/05/2015**                                                   0:00
- **Wed 20/05/2015** (`#12 <Detail>`__)   1:30                         1:30
- **Tue 19/05/2015** (`#14 <Detail>`__)              0:10              0:10
+ **Wed 20/05/2015** (`#19 <Detail>`__)              1:30              1:30
+ **Tue 19/05/2015** (`#27 <Detail>`__)   0:10                         0:10
  **Mon 18/05/2015**                                                   0:00
  **Sun 17/05/2015**                                                   0:00
- **Total (7 rows)**                      **1:31**   **2:28**          **3:59**
+ **Total (7 rows)**                      **2:29**   **1:30**          **3:59**
 ======================================= ========== ========== ====== ==========
 <BLANKLINE>
 
@@ -106,9 +105,9 @@ started some days ago.
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
     ...         print u.username, "worked on", [o for o in qs]
-    jean worked on [Project #2 ('t\xe9am'), Project #5 ('shop')]
-    luc worked on [Project #2 ('t\xe9am'), Project #4 ('research'), Project #5 ('shop'), Project #3 ('docs')]
-    mathieu worked on [Project #1 ('lin\xf6'), Project #3 ('docs'), Project #4 ('research'), Project #2 ('t\xe9am')]
+    jean worked on [Project #4 ('research'), Project #2 ('t\xe9am'), Project #5 ('shop')]
+    luc worked on [Project #2 ('t\xe9am'), Project #3 ('docs'), Project #1 ('lin\xf6'), Project #4 ('research')]
+    mathieu worked on [Project #1 ('lin\xf6'), Project #3 ('docs'), Project #2 ('t\xe9am'), Project #5 ('shop')]
 
     Render this table to HTML in order to reproduce :ticket:`523`:
 
@@ -180,14 +179,15 @@ Note that there are sessions without a duration. That's because
 
 >>> rt.show(clocking.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
-==== =========================================================== ========== ======= ========== ======= ======
- ID   Description                                                 Mission    State   Regular    Extra   Free
----- ----------------------------------------------------------- ---------- ------- ---------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__ by *Luc*      linö       New     0:01
- 6    `#6 (☐ Sell bar in baz) <Detail>`__ by *Luc*                research   Ready   0:05
- 11   `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by *Jean*   research   Open    3:29
-                                                                                     **3:35**
-==== =========================================================== ========== ======= ========== ======= ======
+==== ============================================================== ========== ======= ========== ======= ======
+ ID   Description                                                    Mission    State   Regular    Extra   Free
+---- -------------------------------------------------------------- ---------- ------- ---------- ------- ------
+ 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__ by *Luc*         linö       New     0:01
+ 11   `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by *Mathieu*   research   Open    2:18
+ 18   `#18 (☎ Ticket 18) <Detail>`__ by *Jean*                       linö       Talk    0:37
+ 26   `#26 (☎ Ticket 26) <Detail>`__ by *Jean*                       research   Talk    1:02
+                                                                                        **3:58**
+==== ============================================================== ========== ======= ========== ======= ======
 <BLANKLINE>
 
 
@@ -196,13 +196,13 @@ The :class:`ProjectsByReport
 all projects and the time invested.
 
 >>> rt.show(clocking.ProjectsByReport, obj)
-==================== =========== =================================== ========== ======= ======
- Reference            Name        Tickets                             Regular    Extra   Free
--------------------- ----------- ----------------------------------- ---------- ------- ------
- linö                 Framewörk   `#1 <Detail>`__                     0:01
- research             Research    `#11 <Detail>`__, `#6 <Detail>`__   3:34
- **Total (2 rows)**                                                   **3:35**
-==================== =========== =================================== ========== ======= ======
+==================== =========== ==================================== ========== ======= ======
+ Reference            Name        Tickets                              Regular    Extra   Free
+-------------------- ----------- ------------------------------------ ---------- ------- ------
+ linö                 Framewörk   `#1 <Detail>`__, `#18 <Detail>`__    0:38
+ research             Research    `#26 <Detail>`__, `#11 <Detail>`__   3:20
+ **Total (2 rows)**                                                    **3:58**
+==================== =========== ==================================== ========== ======= ======
 <BLANKLINE>
 
 

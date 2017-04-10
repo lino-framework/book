@@ -27,7 +27,7 @@ class Site(Site):
     author = 'Luc Saffre'
     author_email = 'luc.saffre@gmail.com'
 
-    demo_fixtures = 'std demo feedback demo2'.split()
+    demo_fixtures = 'std demo feedback compass demo2'.split()
     # user_types_module = 'lino_book.projects.polly.user_types'
     user_types_module = 'lino_xl.lib.xl.user_types'
 
