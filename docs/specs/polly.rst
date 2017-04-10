@@ -19,6 +19,7 @@ Lino Polly
 ----------- ------------------------------ ------------- -----------
              Customer Satisfaction Survey   Rolf Rompen   Published
              Participant feedback           Robin Rood    Published
+             Political compass              Rolf Rompen   Published
 =========== ============================== ============= ===========
 <BLANKLINE>
 

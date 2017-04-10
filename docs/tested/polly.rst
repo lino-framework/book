@@ -25,7 +25,7 @@ lino_book.projects.polly.settings.doctests
 >>> pk = 2
 >>> obj = polls.Response.objects.get(pk=pk)
 >>> print(obj)
-Rolf Rompen's response to Participant feedback
+Robin Rood's response to Participant feedback
 
 >>> rt.login(obj.user.username).show(polls.AnswersByResponse, obj)
 Question 23/10/2014 
@@ -76,7 +76,7 @@ javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",2,{ "fv": [ 9, 17 
 The 2 is the id of the Response we are acting on:
 
 >>> polls.Response.objects.get(pk=2)
-Response #2 ("Rolf Rompen's response to Participant feedback")
+Response #2 ("Robin Rood's response to Participant feedback")
 
 
 "fv" stands for "field values". 
