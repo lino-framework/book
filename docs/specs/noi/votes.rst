@@ -96,39 +96,40 @@ Here are some examples for different users.
 
 >>> rt.login('jean').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-========================================================================= ========================================================================= ==========
- Description                                                               Actions                                                                   Priority
-------------------------------------------------------------------------- ------------------------------------------------------------------------- ----------
- `#2 (☎ Bar is not always baz) <Detail>`__                                 [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]   0
- `#91 (☉ Ticket 91) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]   0
- `#51 (☉ Ticket 51) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]   0
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]   0
-========================================================================= ========================================================================= ==========
+========================================================================= =========================================================================
+ Description                                                               Actions
+------------------------------------------------------------------------- -------------------------------------------------------------------------
+ `#2 (☎ Bar is not always baz) <Detail>`__                                 [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#91 (☉ Ticket 91) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#51 (☉ Ticket 51) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+========================================================================= =========================================================================
 <BLANKLINE>
+
 
 
 
 >>> rt.login('mathieu').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-========================================================= ================== ==========
- Description                                               Actions            Priority
---------------------------------------------------------- ------------------ ----------
- `#92 (⚒ Ticket 92) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**   0
- `#52 (⚒ Ticket 52) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**   0
- `#12 (⚒ Foo cannot bar) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**   0
-========================================================= ================== ==========
+========================================================= ==================
+ Description                                               Actions
+--------------------------------------------------------- ------------------
+ `#92 (⚒ Ticket 92) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**
+ `#52 (⚒ Ticket 52) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**
+ `#12 (⚒ Foo cannot bar) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**
+========================================================= ==================
 <BLANKLINE>
 
 
 >>> rt.login('luc').show(votes.MyTasks)
 ... #doctest: -REPORT_UDIFF
-======================================================= ================== ==========
- Description                                             Actions            Priority
-------------------------------------------------------- ------------------ ----------
- `#114 (☎ Ticket 114) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Done**   0
- `#74 (☎ Ticket 74) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**   0
- `#34 (☎ Ticket 34) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**   0
-======================================================= ================== ==========
+======================================================= ==================
+ Description                                             Actions
+------------------------------------------------------- ------------------
+ `#114 (☎ Ticket 114) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Done**
+ `#74 (☎ Ticket 74) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**
+ `#34 (☎ Ticket 34) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**
+======================================================= ==================
 <BLANKLINE>
 
 
