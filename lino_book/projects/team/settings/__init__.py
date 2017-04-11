@@ -26,4 +26,4 @@ class Site(Site):
         """
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.restful'
-        yield 'lino_xl.lib.caldav'
+        # yield 'lino_xl.lib.caldav'
