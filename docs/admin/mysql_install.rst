@@ -25,9 +25,13 @@ Install mysql on your site::
 
     $ sudo mysql_secure_installation
 
-Install the mysql client into your project's virtualenv::    
+Install the mysql client into your project's virtualenv::
 
-    $ pip install mysql-python
+    $ pip install mysqlclient
+
+Note that we recommended `mysql-python` before but modified this to
+`mysqlclient` in accordance with `Django
+<https://docs.djangoproject.com/en/1.10/ref/databases/#mysql-db-api-drivers>`__.
 
 Users
 =====

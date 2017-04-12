@@ -48,7 +48,7 @@ Lino Noi:
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
 - contacts.Company :
-  - PROTECT : cal.Room.company, clocking.ServiceReport.company, contacts.Role.company, courses.Line.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company
+  - PROTECT : cal.Event.company, cal.Room.company, clocking.ServiceReport.company, contacts.Role.company, courses.Line.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
@@ -56,9 +56,9 @@ Lino Noi:
   - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, courses.Course.teacher, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, tickets.Project.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, courses.Course.teacher, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, tickets.Project.contact_person
 - contacts.RoleType :
-  - PROTECT : cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, tickets.Project.contact_role
+  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, tickets.Project.contact_role
 - contenttypes.ContentType :
   - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
 - countries.Country :

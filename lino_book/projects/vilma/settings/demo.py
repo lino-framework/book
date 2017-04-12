@@ -6,10 +6,14 @@ from ..settings import *
 
 
 class Site(Site):
-    # default_ui = 'lino_extjs6.extjs6'
     the_demo_date = datetime.date(2017, 3, 16)
     languages = "en et"
 
+    # default_ui = 'lino_extjs6.extjs6'
+    
+    default_ui = 'lino.modlib.bootstrap3'
+    default_user = 'anonymous'
+    
 SITE = Site(globals())
 # print "20161219 b"
 DEBUG = True

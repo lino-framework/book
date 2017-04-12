@@ -20,7 +20,7 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, rest_framework, restful, caldav.
+42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, rest_framework, restful.
 66 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
@@ -29,7 +29,7 @@ This document describes the database structure.
  blogs.EntryType                    blogs.EntryTypes             6         3
  blogs.Tagging                      blogs.Taggings               3         3
  cal.Calendar                       cal.Calendars                6         1
- cal.Event                          cal.OneEvent                 23        113
+ cal.Event                          cal.OneEvent                 26        113
  cal.EventPolicy                    cal.EventPolicies            19        6
  cal.EventType                      cal.EventTypes               17        2
  cal.Guest                          cal.Guests                   6         0
