@@ -805,18 +805,18 @@ the detail window of a ticket.
     - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
-      - (bottom_box_1): **Wanted skills** (lino_xl.lib.faculties.ui_DemandsByDemander), **Votes** (lino_xl.lib.votes.models_VotesByVotable)
-      - (bottom_box_2): **Wishes** (lino_xl.lib.deploy.desktop_DeploymentsByTicket), **Sessions** (lino_xl.lib.clocking.ui_SessionsByTicket) [visible for consultant hoster developer senior admin]
-  - **Comments** (lino.modlib.comments.ui_CommentsByRFC) [visible for user consultant hoster developer senior admin]
+      - (bottom_box_1): **Wanted skills** (faculties_DemandsByDemander), **Votes** (votes_VotesByVotable)
+      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+  - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):
     - (more1):
       - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for), **Ticket type** (ticket_type)
       - (more1_2): **State** (state), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
     - **Duplicates** (DuplicatesByTicket)
-- (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (lino_xl.lib.tickets.ui_LinksByTicket) [visible for senior admin]
+- (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
 - **History** (changes.ChangesByMaster) [visible for senior admin]
-- **Uploads** (lino.modlib.uploads.models_UploadsByController) [visible for user consultant hoster developer senior admin]
+- **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
 <BLANKLINE>
 
 

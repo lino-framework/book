@@ -11,8 +11,8 @@ class Site(Site):
 
     # default_ui = 'lino_extjs6.extjs6'
     
-    default_ui = 'lino.modlib.bootstrap3'
-    default_user = 'anonymous'
+    # default_ui = 'lino.modlib.bootstrap3'
+    # default_user = 'anonymous'
     
 SITE = Site(globals())
 # print "20161219 b"
