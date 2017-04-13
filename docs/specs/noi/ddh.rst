@@ -66,7 +66,7 @@ Lino Noi:
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
-  - PROTECT : courses.Enrolment.course, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
+  - PROTECT : courses.Enrolment.course, deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
 - courses.Line :
   - PROTECT : courses.Course.line
 - courses.Slot :

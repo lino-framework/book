@@ -96,14 +96,14 @@ Here are some examples for different users.
 
 >>> rt.login('jean').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-========================================================================= =========================================================================
- Description                                                               Actions
-------------------------------------------------------------------------- -------------------------------------------------------------------------
- `#2 (☎ Bar is not always baz) <Detail>`__                                 [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
- `#91 (☉ Ticket 91) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
- `#51 (☉ Ticket 51) <Detail>`__ by `Mathieu <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by `Mathieu <Detail>`__   [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
-========================================================================= =========================================================================
+========================================================================================================= =========================================================================
+ Description                                                                                               Actions
+--------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------
+ `#2 (☎ Bar is not always baz) <Detail>`__, assigned to `Jean <Detail>`__                                  [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#91 (☉ Ticket 91) <Detail>`__  by `Mathieu <Detail>`__, assigned to `Jean <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#51 (☉ Ticket 51) <Detail>`__  by `Mathieu <Detail>`__, assigned to `Jean <Detail>`__                    [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+ `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by `Mathieu <Detail>`__, assigned to `Jean <Detail>`__   [▶] [★] **Assigned** → [Cancelled] [Watching] [Pro] [Con] [Done] [Rate]
+========================================================================================================= =========================================================================
 <BLANKLINE>
 
 
@@ -111,39 +111,39 @@ Here are some examples for different users.
 
 >>> rt.login('mathieu').show(votes.MyTasks)
 ... #doctest: +REPORT_UDIFF
-========================================================= ==================
- Description                                               Actions
---------------------------------------------------------- ------------------
- `#92 (⚒ Ticket 92) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**
- `#52 (⚒ Ticket 52) <Detail>`__ by `Luc <Detail>`__        [▶] [★] **Done**
- `#12 (⚒ Foo cannot bar) <Detail>`__ by `Luc <Detail>`__   [▶] [★] **Done**
-========================================================= ==================
+========================================================== ==================
+ Description                                                Actions
+---------------------------------------------------------- ------------------
+ `#92 (⚒ Ticket 92) <Detail>`__  by `Luc <Detail>`__        [▶] [★] **Done**
+ `#52 (⚒ Ticket 52) <Detail>`__  by `Luc <Detail>`__        [▶] [★] **Done**
+ `#12 (⚒ Foo cannot bar) <Detail>`__  by `Luc <Detail>`__   [▶] [★] **Done**
+========================================================== ==================
 <BLANKLINE>
 
 
 >>> rt.login('luc').show(votes.MyTasks)
 ... #doctest: -REPORT_UDIFF
-======================================================= ==================
- Description                                             Actions
-------------------------------------------------------- ------------------
- `#114 (☎ Ticket 114) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Done**
- `#74 (☎ Ticket 74) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**
- `#34 (☎ Ticket 34) <Detail>`__ by `Jean <Detail>`__     [▶] [★] **Done**
-======================================================= ==================
+======================================================== ==================
+ Description                                              Actions
+-------------------------------------------------------- ------------------
+ `#114 (☎ Ticket 114) <Detail>`__  by `Jean <Detail>`__   [▶] [★] **Done**
+ `#74 (☎ Ticket 74) <Detail>`__  by `Jean <Detail>`__     [▶] [★] **Done**
+ `#34 (☎ Ticket 34) <Detail>`__  by `Jean <Detail>`__     [▶] [★] **Done**
+======================================================== ==================
 <BLANKLINE>
 
 
 
 >>> rt.login('luc').show(votes.MyOffers)
 ... #doctest: -REPORT_UDIFF
-===================================================================================== =======================================================================
- Description                                                                           Actions
-------------------------------------------------------------------------------------- -----------------------------------------------------------------------
- `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                         [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con] [Assigned]
- `#90 (☎ Ticket 90) <Detail>`__ by `Jean <Detail>`__                                   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
- `#50 (☎ Ticket 50) <Detail>`__ by `Jean <Detail>`__                                   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
- `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__ by `Jean <Detail>`__   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
-===================================================================================== =======================================================================
+====================================================================================== =======================================================================
+ Description                                                                            Actions
+-------------------------------------------------------------------------------------- -----------------------------------------------------------------------
+ `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                          [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con] [Assigned]
+ `#90 (☎ Ticket 90) <Detail>`__  by `Jean <Detail>`__                                   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
+ `#50 (☎ Ticket 50) <Detail>`__  by `Jean <Detail>`__                                   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
+ `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__  by `Jean <Detail>`__   [▶] [★] **Candidate** → [Cancelled] [Watching] [Pro] [Con]
+====================================================================================== =======================================================================
 <BLANKLINE>
 
 Note that Luc is not a triager, that's why he does not have an

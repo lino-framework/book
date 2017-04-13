@@ -61,7 +61,7 @@ This document describes the database structure.
  courses.Slot                       courses.Slots                5         0
  courses.Topic                      courses.Topics               4         0
  dashboard.Widget                   dashboard.Widgets            5         0
- deploy.Deployment                  deploy.Deployments           6         87
+ deploy.Deployment                  deploy.Deployments           7         87
  django_mailbox.Mailbox             mailbox.Mailboxes            6         1
  django_mailbox.Message             mailbox.Messages             15        7
  django_mailbox.MessageAttachment   mailbox.MessageAttachments   4         1
