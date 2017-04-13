@@ -179,15 +179,15 @@ Note that there are sessions without a duration. That's because
 
 >>> rt.show(clocking.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
-==== ============================================================== ========== ======= ========== ======= ======
- ID   Description                                                    Mission    State   Regular    Extra   Free
----- -------------------------------------------------------------- ---------- ------- ---------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__ by *Luc*         linö       New     0:01
- 11   `#11 (☉ Class-based Foos and Bars?) <Detail>`__ by *Mathieu*   research   Open    2:18
- 18   `#18 (☎ Ticket 18) <Detail>`__ by *Jean*                       linö       Talk    0:37
- 26   `#26 (☎ Ticket 26) <Detail>`__ by *Jean*                       research   Talk    1:02
-                                                                                        **3:58**
-==== ============================================================== ========== ======= ========== ======= ======
+==== =================================================================================== ========== ======= ========== ======= ======
+ ID   Description                                                                         Mission    State   Regular    Extra   Free
+---- ----------------------------------------------------------------------------------- ---------- ------- ---------- ------- ------
+ 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Luc*                             linö       New     0:01
+ 11   `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Mathieu*, assigned to *Jean*   research   Open    2:18
+ 18   `#18 (☎ Ticket 18) <Detail>`__  by *Jean*                                           linö       Talk    0:37
+ 26   `#26 (☎ Ticket 26) <Detail>`__  by *Jean*                                           research   Talk    1:02
+                                                                                                             **3:58**
+==== =================================================================================== ========== ======= ========== ======= ======
 <BLANKLINE>
 
 
