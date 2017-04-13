@@ -99,8 +99,7 @@ For example, ticket #17 occurs as agenda item in milestone
 
 >>> obj = rt.models.tickets.Ticket.objects.get(pk=17)
 >>> rt.show("deploy.DeploymentsByTicket", obj)
-*20150513@welsch*
-
+<ul><li><em>Gimmick</em> in <em>20150513@welsch</em> : </li></ul>
 >>> rt.show("deploy.DeploymentsByTicket", obj, nosummary=True)
 ================= =========== ========
  Activity          Wish type   Remark
