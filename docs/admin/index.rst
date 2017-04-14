@@ -33,6 +33,7 @@ Installation
     config_dirs
     xl
     oood
+    notify
 
 Maintenance
 -----------
