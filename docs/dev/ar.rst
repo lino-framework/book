@@ -109,7 +109,6 @@ Every database object (in Lino) has a method :meth:`obj2href
 HTML tree element that is going to output a `<a href>` tag.  (Read
 more about where you need them in :doc:`html`.)
 
->>> from lino.ad import _
 >>> ar = rt.login('robin')
 >>> obj = contacts.Person.objects.get(pk=150)
 >>> def example(x):
@@ -130,11 +129,12 @@ You can specify your own text by giving a second positional argument:
 
 Your text should usually be a translatable string:
 
+>>> from lino.ad import _
 >>> with translation.override("de"):
 ...     example(obj.obj2href(ar, _("Today")))
 <a href="Detail">Heute</a>
 
-Your text will be escaped::
+Your text will be escaped:
 
 >>> example(obj.obj2href(ar, "Foo & bar"))
 <a href="Detail">Foo &amp; bar</a>
@@ -156,7 +156,15 @@ You can also specify a tuple with text chunks:
 >>> example(obj.obj2href(ar, text))
 <a href="Detail">Formatted <b>rich</b> text</a>
 
-Summary:
+If you want your text to be that of another database object, then you
+must explicitly call that object's :meth:`__str__` method:
+
+>>> from builtins import str
+>>> other = contacts.Person.objects.get(pk=151)
+>>> example(obj.obj2href(ar, str(other)))
+<a href="Detail">Mrs Erna Emonts-Gast</a>
+
+More examples:
 
 >>> with translation.override("de"):
 ...     example(obj.obj2href(ar, (_("Monday"), " & ", _("Tuesday"))))
