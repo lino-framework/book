@@ -96,3 +96,77 @@ Baardegem Baelen Blégny
 
 (TODO: write much more text. we would need a good explanation of how
 to ceate subrequests etc.)
+
+
+.. _obj2href:
+
+
+Pointing to a database object
+=============================
+
+Every database object (in Lino) has a method :meth:`obj2href
+<lino.core.model.Model.obj2href>` which you can call to generate a
+HTML tree element that is going to output a `<a href>` tag.  (Read
+more about where you need them in :doc:`html`.)
+
+>>> ar = rt.login('robin')
+>>> obj = contacts.Person.objects.get(pk=150)
+>>> def example(x):
+...     print(E.tostring(x))
+
+Basic usage is:
+
+>>> example(obj.obj2href(ar))
+<a href="Detail">Mr Erwin Emontspool</a>
+
+This will call the object's :meth:`__str__` method and use the result
+as text.
+
+You can specify your own text by giving a second positional argument:
+
+>>> example(obj.obj2href(ar, "Foo"))
+<a href="Detail">Foo</a>
+
+Your text should usually be a translatable string:
+
+>>> from lino.ad import _
+>>> with translation.override("de"):
+...     example(obj.obj2href(ar, _("Today")))
+<a href="Detail">Heute</a>
+
+Your text will be escaped:
+
+>>> example(obj.obj2href(ar, "Foo & bar"))
+<a href="Detail">Foo &amp; bar</a>
+
+That's why the following does not yield the expected result:
+
+>>> example(obj.obj2href(ar, "<img src=\"foo\"/>"))
+<a href="Detail">&lt;img src="foo"/&gt;</a>
+
+In above situation you can specify another HTML tree element as
+"text". Here is what you expected:
+
+>>> example(obj.obj2href(ar, E.img(src="foo")))
+<a href="Detail"><img src="foo" /></a>
+
+You can also specify a tuple with text chunks:
+
+>>> text = ("Formatted ", E.b("rich"), " text")
+>>> example(obj.obj2href(ar, text))
+<a href="Detail">Formatted <b>rich</b> text</a>
+
+If you want your text to be that of another database object, then you
+must explicitly call that object's :meth:`__str__` method:
+
+>>> from builtins import str
+>>> other = contacts.Person.objects.get(pk=151)
+>>> example(obj.obj2href(ar, str(other)))
+<a href="Detail">Mrs Erna Emonts-Gast</a>
+
+More examples:
+
+>>> with translation.override("de"):
+...     example(obj.obj2href(ar, (_("Monday"), " & ", _("Tuesday"))))
+<a href="Detail">Montag &amp; Dienstag</a>
+
