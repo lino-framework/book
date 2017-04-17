@@ -14,13 +14,13 @@ Lino Polly
 >>> ses = rt.login("robin")
 
 >>> ses.show("polls.Polls")
-=========== ============================== ============= ===========
+=========== ============================== ============= ========
  Reference   Heading                        Author        State
------------ ------------------------------ ------------- -----------
-             Customer Satisfaction Survey   Rolf Rompen   Published
-             Participant feedback           Robin Rood    Published
-             Political compass              Rolf Rompen   Published
-=========== ============================== ============= ===========
+----------- ------------------------------ ------------- --------
+             Customer Satisfaction Survey   Rolf Rompen   Active
+             Participant feedback           Robin Rood    Active
+             Political compass              Rolf Rompen   Active
+=========== ============================== ============= ========
 <BLANKLINE>
 
 >>> obj = polls.Poll.objects.get(
