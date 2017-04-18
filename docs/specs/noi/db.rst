@@ -80,7 +80,7 @@ This document describes the database structure.
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
  tickets.ProjectType                tickets.ProjectTypes         4         0
- tickets.Ticket                     tickets.Tickets              25        116
+ tickets.Ticket                     tickets.Tickets              26        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
  topics.Interest                    topics.Interests             3         9
