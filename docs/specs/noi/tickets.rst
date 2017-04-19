@@ -785,6 +785,8 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | feasable_by     | Feasable by     | Show only tickets for which the given supplier is competent.     |
 +-----------------+-----------------+------------------------------------------------------------------+
+| has_ref         | Has reference   |                                                                  |
++-----------------+-----------------+------------------------------------------------------------------+
 
 
 
@@ -812,7 +814,7 @@ the detail window of a ticket.
   - (more_1):
     - (more1):
       - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for), **Ticket type** (ticket_type)
-      - (more1_2): **State** (state), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
+      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
     - **Duplicates** (DuplicatesByTicket)
 - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
 - **History** (changes.ChangesByMaster) [visible for senior admin]
