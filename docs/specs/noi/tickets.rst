@@ -203,12 +203,81 @@ And in French (not yet fully translated):
 <BLANKLINE>
 
 
-Note that a ticket also has a checkbox for marking it as :attr:`closed
-<lino_xl.lib.tickets.models.Ticket.closed>`.  This means that a ticket
-can be marked as "closed" in any of above states.  We don't use this for the moment and are not sure
-whether this is a cool feature (:ticket:`372`).
+
+..
+   Note that a ticket also has a checkbox for marking it as :attr:`closed
+   <lino_xl.lib.tickets.models.Ticket.closed>`.  This is obsolete.
+   means that a ticket
+   can be marked as "closed" in any of above states.  We don't use this for the moment and are not sure
+   whether this is a cool feature (:ticket:`372`).
+
+
+
+.. class:: TicketStates
+
+    The state of a ticket (new, open, closed, ...)
+
+    Default choices are:
+
+    .. attribute:: new
+
+        Somebody reported this ticket, but there was no response so
+        far.
+        The ticket needs to be triaged.
+
+    .. attribute:: talk
+
+        Some worker needs discussion with the author.  We don't yet
+        know exactly what to do with it.
+
+    .. attribute:: todo
+
+        The ticket is confirmed and we are working on it.
+        It appears in the todo list of somebody (either the assigned
+        worker, or our general todo list)
+
+    .. attribute:: testing
+
+        The ticket is theoretically done, but we want to confirm this
+        somehow, and it is not clear who should do the next step. If
+        it is clear that the author should do the testing, then you
+        should rather set the ticket to :attr:`talk`. If it is clear
+        that you (the assignee) must test it, then leave the ticket at
+        :attr:`todo`.
+
+    .. attribute:: sleeping
+
+        Waiting for some external event. We didn't decide what to do
+        with it.
+
+    .. attribute:: ready
+
+        The ticket is basically :attr:`done`, but some detail still
+        needs to be done by the :attr:`user` (e.g. testing,
+        confirmation, documentation,..)
+
+    .. attribute:: done
+
+        The ticket has been done.
+
+    .. attribute:: cancelled
+
+        It has been decided that we won't fix this ticket.
+
 
 - :attr:`standby <lino_xl.lib.tickets.models.Ticket.standby>`
+
+
+
+Active state versus show_in_todo
+================================
+
+- active state means that the wish is to be copied to the next meeting
+  
+- show_in_to means that I must work on this ticket (if I have an
+  assigned vote)
+
+
 
 
 
