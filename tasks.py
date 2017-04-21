@@ -16,6 +16,7 @@ ns.setup_from_tasks(
         'docs/api/lino_noi.*',
         'docs/api/lino_cosi.*',
         'docs/api/lino_avanti.*',
+        'docs/api/lino_vilma.*',
         'docs/api/lino_book.*'],
     demo_projects=[
         'lino_book.projects.watch.settings',
@@ -36,5 +37,5 @@ ns.setup_from_tasks(
         'lino_book.projects.adg.settings.demo',
         # 'lino_book.projects.care.settings.demo',
         # 'lino_book.projects.care_de.settings',
-        'lino_book.projects.vilma.settings.demo',
+        'lino_book.projects.liina.settings.demo',
     ])

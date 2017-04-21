@@ -93,6 +93,21 @@ Lino Avanti
                 
 
 
+.. _vilma:
+
+Lino Vilma
+===========
+
+.. py2rst::
+
+  import lino_vilma
+  print(lino_vilma.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_vilma
+                
+
+
                 
 .. _commondata:
 

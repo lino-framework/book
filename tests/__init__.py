@@ -409,8 +409,8 @@ class ProjectsTests(TestCase):
     # def test_care(self):
     #     self.run_django_manage_test('lino_book/projects/care')
 
-    def test_vilma(self):
-        self.run_django_manage_test('lino_book/projects/vilma')
+    def test_liina(self):
+        self.run_django_manage_test('lino_book/projects/liina')
 
     def test_adg(self):
         self.run_django_manage_test('lino_book/projects/adg')

@@ -10,26 +10,11 @@ from lino.utils.mldbc import babel_named as named
 from lino.utils.cycler import Cycler
 from lino_xl.lib.cal.choicelists import Recurrencies
 
-def objects():
+def complete_objects():
+    # not used. from the time when we still had tickets and courses
     Line = rt.models.courses.Line
     Topic = rt.models.courses.Topic
     Course = rt.models.courses.Course
-    EventType = rt.models.cal.EventType
-    Room = rt.models.cal.Room
-
-    school = named(Room, _("School"))
-    yield school
-    center = named(Room, _("Youth center"))
-    yield center
-    library = named(Room, _("Library"))
-    yield library
-    
-    training = named(EventType, _("Training"))
-    yield training
-    workshop = named(EventType, _("Workshop"))
-    yield workshop
-    camp = named(EventType, _("Camp"))
-    yield camp
     
     nature = named(Topic, _("Nature"))
     yield nature
@@ -62,3 +47,22 @@ def objects():
     LINES = Cycler(Line.objects.all())
     for offset in (-60, -10, -5, 1, 10, 30):
         yield Course(line=LINES.pop(), start_date=dd.demo_date(offset))
+
+def old_objects():
+    EventType = rt.models.cal.EventType
+    Room = rt.models.cal.Room
+
+    school = named(Room, _("School"))
+    yield school
+    center = named(Room, _("Youth center"))
+    yield center
+    library = named(Room, _("Library"))
+    yield library
+    
+    training = named(EventType, _("Training"))
+    yield training
+    workshop = named(EventType, _("Workshop"))
+    yield workshop
+    camp = named(EventType, _("Camp"))
+    yield camp
+    

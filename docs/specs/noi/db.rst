@@ -20,7 +20,7 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, notify, cal, extensible, courses, topics, votes, excerpts, comments, changes, noi, tickets, faculties, deploy, clocking, lists, blogs, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, rest_framework, restful.
+43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, courses, topics, votes, excerpts, comments, changes, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, rest_framework, restful.
 67 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
