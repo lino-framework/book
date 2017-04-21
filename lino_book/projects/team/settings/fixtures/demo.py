@@ -59,7 +59,7 @@ def tickets_objects():
     Entry = rt.models.blogs.Entry
     Tagging = rt.models.blogs.Tagging
     Line = rt.models.courses.Line
-
+    List = rt.models.lists.List
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
     yield create_user("marc")
@@ -139,16 +139,18 @@ def tickets_objects():
     #     yield Competence(user=u, project=PROJECTS.pop())
     
     SITES = Cycler(Site.objects.exclude(name="pypi"))
+    # LISTS = Cycler(List.objects.all())
     for i in range(7):
         site = SITES.pop()
         d = dd.today(i*2-20)
         kw = dict(
             user=WORKERS.pop(),
             start_date=d,
-            line=sprint,
+            # line=sprint,
             # project=PROJECTS.pop(), # expected=d, reached=d,
             # expected=d, reached=d,
-            name="{}@{}".format(d.strftime("%Y%m%d"), site)
+            name="{}@{}".format(d.strftime("%Y%m%d"), site),
+            # list=LISTS.pop()
         )
         kw[Milestone.site_field_name] = site
         yield Milestone(**kw)
