@@ -150,7 +150,7 @@ ticket has one of the following values:
  20      opened      Open       ☉        Yes
  22      started     Started    ⚒        Yes
  30      sleeping    Sleeping   ☾        No
- 40      ready       Ready      ☐        No
+ 40      ready       Ready      ☐        Yes
  50      closed      Closed     ☑        No
  60      cancelled   Refused    ☒        No
 ======= =========== ========== ======== ========
@@ -179,7 +179,7 @@ Above table in German:
  20     opened      Offen           ☉        Ja
  22     started     Gestartet       ⚒        Ja
  30     sleeping    Schläft         ☾        Nein
- 40     ready       Bereit          ☐        Nein
+ 40     ready       Bereit          ☐        Ja
  50     closed      Abgeschlossen   ☑        Nein
  60     cancelled   Abgelehnt       ☒        Nein
 ====== =========== =============== ======== =======
@@ -196,7 +196,7 @@ And in French (not yet fully translated):
  20      opened      Open       ☉        Oui
  22      started     Started    ⚒        Oui
  30      sleeping    Sleeping   ☾        Non
- 40      ready       Ready      ☐        Non
+ 40      ready       Ready      ☐        Oui
  50      closed      Closed     ☑        Non
  60      cancelled   Refusé     ☒        Non
 ======= =========== ========== ======== ========
