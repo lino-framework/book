@@ -102,7 +102,7 @@ For example, ticket #17 occurs as agenda item in milestone
 <ul><li><em>Gimmick</em> in <em>20150513@welsch</em> : </li></ul>
 >>> rt.show("deploy.DeploymentsByTicket", obj, nosummary=True)
 ================= =========== ========
- Activity          Wish type   Remark
+ Meeting           Wish type   Remark
 ----------------- ----------- --------
  20150513@welsch   Gimmick
 ================= =========== ========
