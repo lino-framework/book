@@ -64,7 +64,7 @@ either out of the box or as a base for derivated work.
    public
    care
    care_de
-   vilma
+   liina
 
 A collection of concrete :ref:`avanti` example projects.
 

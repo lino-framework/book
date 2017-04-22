@@ -50,7 +50,7 @@ Robin is the system administrator, he has a complete menu:
 >>> ses = rt.login('robin') 
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Persons, Organizations, Partners
+- Contacts : Persons, Organizations
 - Products : Products, Product Categories
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
@@ -70,7 +70,7 @@ Robin is the system administrator, he has a complete menu:
   - VAT : VAT rules, Paper types
 - Explorer :
   - System : content types, Authorities, User types
-  - Contacts : Contact Persons
+  - Contacts : Contact Persons, Partners
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
@@ -82,7 +82,7 @@ Romain gets the same menu in French:
   
 >>> rt.login('romain').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Personnes, Organisationen, Partenaires
+- Contacts : Personnes, Organisationen
 - Produkte : Produkte, Produktkategorien
 - Comptabilité :
   - Verkauf : Factures vente (SLS), Gutschriften Verkauf (SLC)
@@ -102,7 +102,7 @@ Romain gets the same menu in French:
   - MwSt. : MwSt-Regeln, Types de papier
 - Explorateur :
   - Système : types de contenu, Procurations, Types d'utilisateur
-  - Contacts : Personnes de contact
+  - Contacts : Personnes de contact, Partenaires
   - Comptabilité : Ausgleichungsregeln, Belege, Belegarten, Mouvements, Années comptables, Handelsarten, Journalgruppen
   - SEPA : Comptes en banque
   - Bureau : Extraits, Einfügetexte
@@ -114,7 +114,7 @@ Rolf gets the same menu in German:
   
 >>> rt.login('rolf').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte : Personen, Organisationen, Partner
+- Kontakte : Personen, Organisationen
 - Produkte : Produkte, Produktkategorien
 - Buchhaltung :
   - Verkauf : Verkaufsrechnungen (SLS), Gutschriften Verkauf (SLC)
@@ -134,7 +134,7 @@ Rolf gets the same menu in German:
   - MwSt. : MwSt-Regeln, Papierarten
 - Explorer :
   - System : Datenbankmodelle, Vollmachten, Benutzerarten
-  - Kontakte : Kontaktpersonen
+  - Kontakte : Kontaktpersonen, Partner
   - Buchhaltung : Ausgleichungsregeln, Belege, Belegarten, Bewegungen, Geschäftsjahre, Handelsarten, Journalgruppen
   - SEPA : Bankkonten
   - Büro : Auszüge, Einfügetexte

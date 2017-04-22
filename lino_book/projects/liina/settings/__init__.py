@@ -12,7 +12,7 @@
 """
 
 
-from lino_book.projects.team.settings import *
+from lino_vilma.lib.vilma.settings import *
 
 
 class Site(Site):
@@ -20,7 +20,7 @@ class Site(Site):
     title = "Lino Vilma"
     
 
-    def setup_plugins(self):
-        super(Site, self).setup_plugins()
-        self.plugins.tickets.configure(
-            site_model='cal.Room')
+    # def setup_plugins(self):
+    #     super(Site, self).setup_plugins()
+    #     self.plugins.tickets.configure(
+    #         site_model='cal.Room')

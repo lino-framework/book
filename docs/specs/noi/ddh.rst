@@ -40,7 +40,7 @@ Lino Noi:
 - cal.Priority :
   - PROTECT : cal.Event.priority
 - cal.Room :
-  - PROTECT : cal.Event.room, courses.Course.room, tickets.Ticket.site
+  - PROTECT : cal.Event.room, courses.Course.room, meetings.Meeting.room, tickets.Ticket.site
 - clocking.SessionType :
   - PROTECT : clocking.Session.session_type
 - comments.Comment :
@@ -66,7 +66,7 @@ Lino Noi:
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
-  - PROTECT : courses.Enrolment.course, deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
+  - PROTECT : courses.Enrolment.course
 - courses.Line :
   - PROTECT : courses.Course.line
 - courses.Slot :
@@ -86,9 +86,11 @@ Lino Noi:
 - faculties.SkillType :
   - PROTECT : faculties.Faculty.skill_type
 - lists.List :
-  - PROTECT : lists.Member.list
+  - PROTECT : lists.Member.list, meetings.Meeting.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
+- meetings.Meeting :
+  - PROTECT : deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
 - tickets.Project :
   - PROTECT : tickets.Project.parent, tickets.Ticket.project
 - tickets.ProjectType :
@@ -107,5 +109,5 @@ Lino Noi:
   - PROTECT : uploads.Upload.type
 - users.User :
   - CASCADE : faculties.Competence.user
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, notify.Message.user, tickets.Project.assign_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, votes.Vote.user
+  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, meetings.Meeting.user, notify.Message.user, tickets.Project.assign_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, votes.Vote.user
 <BLANKLINE>

@@ -167,9 +167,9 @@ lino_book.projects.team
 lino_book.projects.team.tests
 lino_book.projects.team.settings
 lino_book.projects.team.settings.fixtures
-lino_book.projects.vilma
-lino_book.projects.vilma.settings
-lino_book.projects.vilma.settings.fixtures
+lino_book.projects.liina
+lino_book.projects.liina.settings
+lino_book.projects.liina.settings.fixtures
 lino_book.projects.public
 lino_book.projects.care
 lino_book.projects.care.settings
