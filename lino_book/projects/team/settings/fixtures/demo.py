@@ -58,7 +58,7 @@ def tickets_objects():
     EntryType = rt.models.blogs.EntryType
     Entry = rt.models.blogs.Entry
     Tagging = rt.models.blogs.Tagging
-    Line = rt.models.courses.Line
+    # Line = rt.models.courses.Line
     List = rt.models.lists.List
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
@@ -76,8 +76,8 @@ def tickets_objects():
     yield named(TT, _("Enhancement"))
     yield named(TT, _("Upgrade"))
     
-    sprint = named(Line, _("Sprint"))
-    yield sprint
+    # sprint = named(Line, _("Sprint"))
+    # yield sprint
 
     TYPES = Cycler(TT.objects.all())
 
