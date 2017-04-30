@@ -769,39 +769,43 @@ Comments
 Comments are not shown to anonymous users:
 
 >>> rt.show(comments.Comments, column_names="id user owner")
-==== ================= ===================================================
- ID   Author            Ticket
----- ----------------- ---------------------------------------------------
- 1    Jean              #1 (⛶ Föö fails to bar when baz)
- 4    Romain Raffault   #4 (⚒ Foo and bar don't baz)
- 6    Robin Rood        #6 (☐ Sell bar in baz)
- 7    Jean              #7 (☑ No Foo after deleting Bar)
- 8    Luc               #8 (☒ Is there any Bar in Foo?)
- 10   Romain Raffault   #10 (☎ Where can I find a Foo when bazing Bazes?)
- 11   Rolf Rompen       #11 (☉ Class-based Foos and Bars?)
- 12   Robin Rood        #12 (⚒ Foo cannot bar)
-==== ================= ===================================================
+==== ================= ================================================================
+ ID   Author            Controlled by
+---- ----------------- ----------------------------------------------------------------
+ 1    Jean              `#1 (⛶ Föö fails to bar when baz) <Detail>`__
+ 2    Luc               `#2 (☎ Bar is not always baz) <Detail>`__
+ 3    Mathieu           `#3 (☉ Baz sucks) <Detail>`__
+ 4    Romain Raffault   `#4 (⚒ Foo and bar don't baz) <Detail>`__
+ 5    Rolf Rompen       `#5 (☾ Cannot create Foo) <Detail>`__
+ 6    Robin Rood        `#6 (☐ Sell bar in baz) <Detail>`__
+ 7    Jean              `#7 (☑ No Foo after deleting Bar) <Detail>`__
+ 8    Luc               `#8 (☒ Is there any Bar in Foo?) <Detail>`__
+ 9    Mathieu           `#9 (⛶ Foo never matches Bar) <Detail>`__
+ 10   Romain Raffault   `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__
+ 11   Rolf Rompen       `#11 (☉ Class-based Foos and Bars?) <Detail>`__
+ 12   Robin Rood        `#12 (⚒ Foo cannot bar) <Detail>`__
+==== ================= ================================================================
 <BLANKLINE>
 
 The same list seen by marc
 
 >>> rt.login('luc').show('comments.Comments', column_names="id user owner")
-==== ================= ===================================================
- ID   Author            Ticket
----- ----------------- ---------------------------------------------------
- 1    Jean              #1 (⛶ Föö fails to bar when baz)
- 2    Luc               #2 (☎ Bar is not always baz)
- 3    Mathieu           #3 (☉ Baz sucks)
- 4    Romain Raffault   #4 (⚒ Foo and bar don't baz)
- 5    Rolf Rompen       #5 (☾ Cannot create Foo)
- 6    Robin Rood        #6 (☐ Sell bar in baz)
- 7    Jean              #7 (☑ No Foo after deleting Bar)
- 8    Luc               #8 (☒ Is there any Bar in Foo?)
- 9    Mathieu           #9 (⛶ Foo never matches Bar)
- 10   Romain Raffault   #10 (☎ Where can I find a Foo when bazing Bazes?)
- 11   Rolf Rompen       #11 (☉ Class-based Foos and Bars?)
- 12   Robin Rood        #12 (⚒ Foo cannot bar)
-==== ================= ===================================================
+==== ================= ================================================================
+ ID   Author            Controlled by
+---- ----------------- ----------------------------------------------------------------
+ 1    Jean              `#1 (⛶ Föö fails to bar when baz) <Detail>`__
+ 2    Luc               `#2 (☎ Bar is not always baz) <Detail>`__
+ 3    Mathieu           `#3 (☉ Baz sucks) <Detail>`__
+ 4    Romain Raffault   `#4 (⚒ Foo and bar don't baz) <Detail>`__
+ 5    Rolf Rompen       `#5 (☾ Cannot create Foo) <Detail>`__
+ 6    Robin Rood        `#6 (☐ Sell bar in baz) <Detail>`__
+ 7    Jean              `#7 (☑ No Foo after deleting Bar) <Detail>`__
+ 8    Luc               `#8 (☒ Is there any Bar in Foo?) <Detail>`__
+ 9    Mathieu           `#9 (⛶ Foo never matches Bar) <Detail>`__
+ 10   Romain Raffault   `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__
+ 11   Rolf Rompen       `#11 (☉ Class-based Foos and Bars?) <Detail>`__
+ 12   Robin Rood        `#12 (⚒ Foo cannot bar) <Detail>`__
+==== ================= ================================================================
 <BLANKLINE>
 
 

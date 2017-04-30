@@ -60,7 +60,7 @@ Lino Noi:
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role
 - contenttypes.ContentType :
-  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
+  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -89,7 +89,7 @@ Lino Noi:
   - PROTECT : tickets.Project.type
 - tickets.Ticket :
   - CASCADE : faculties.Demand.demander, votes.Vote.votable
-  - PROTECT : clocking.Session.ticket, comments.Comment.owner, deploy.Deployment.ticket, django_mailbox.Message.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
+  - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :

@@ -83,8 +83,8 @@ class Site(Site):
         #     partner_model='users.User', menu_group=None)
         # self.plugins.lists.partner_model = 'users.User'
         self.plugins.countries.configure(hide_region=True)
-        self.plugins.comments.configure(
-            commentable_model='tickets.Ticket')
+        # self.plugins.comments.configure(
+        #     commentable_model='tickets.Ticket')
         self.plugins.faculties.configure(
             end_user_model='contacts.Person')
         self.plugins.faculties.configure(

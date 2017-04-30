@@ -17,6 +17,10 @@ def objects():
     Course = rt.models.courses.Course
     EventType = rt.models.cal.EventType
     Room = rt.models.cal.Room
+    Company = rt.models.contacts.Company
+    Person = rt.models.contacts.Person
+    Role = rt.models.contacts.Role
+    RoleType = rt.models.contacts.RoleType
 
     school = named(Room, _("School"))
     yield school
@@ -64,3 +68,19 @@ def objects():
     for offset in (-60, -10, -5, 1, 10, 30):
         yield Course(line=LINES.pop(), start_date=dd.demo_date(offset))
 
+    choir = Company(name="Village choir")
+    yield choir
+    
+    yield Company(name="Sopranos", parent=choir)
+    yield Company(name="Altos", parent=choir)
+    yield Company(name="Tenors", parent=choir)
+    yield Company(name="Basses", parent=choir)
+    
+    RTYPES = Cycler(RoleType.objects.all())
+    COMPANIES = Cycler(Company.objects.all())
+
+    for i, p in enumerate(Person.objects.all()):
+        for j in range(i % 3):
+            yield Role(company=COMPANIES.pop(), type=RTYPES.pop(),
+                       person=p)
+        
