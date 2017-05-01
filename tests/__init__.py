@@ -6,12 +6,17 @@ from lino.utils.pythontest import TestCase
 from lino import PYAFTER26
 from lino_book import SETUP_INFO
 from lino.utils.html2xhtml import HAS_TIDYLIB
+import lino
+LINO_SRC = Path(lino.__file__).parent.parent + '/'
+# LINO_SRC = '../lino/'
+
 
 
 class LinoTestCase(TestCase):
     django_settings_module = "lino_book.projects.max.settings.demo"
     project_root = Path(__file__).parent.parent
 
+# LinoTestCase = TestCase
 
 class PackagesTests(LinoTestCase):
     def test_01(self):
@@ -253,6 +258,9 @@ class SpecsTests(TestCase):
     def test_contacts(self):
         return self.run_simple_doctests('docs/specs/contacts.rst')
 
+    def test_ssin(self):
+        self.run_simple_doctests('docs/specs/ssin.rst')
+
     def test_faculties(self):
         self.run_simple_doctests('docs/specs/noi/faculties.rst')
 
@@ -317,8 +325,6 @@ class SpecsTests(TestCase):
         self.run_simple_doctests('docs/specs/noi/deploy.rst')
 
         
-
-
     def test_cosi_ee(self):
         self.run_simple_doctests('docs/specs/cosi/cosi_ee.rst')
         
@@ -434,15 +440,11 @@ class DumpTests(LinoTestCase):
             self.run_django_admin_command_cd(p, 'dump2py', tmp)
             self.assertEqual(tmp.child('restore.py').exists(), True)
 
-import lino
-ROOT = Path(lino.__file__).parent.parent + '/'
-# ROOT = '../lino/'
-
 
 class CoreTests(TestCase):
 
     def test_utils(self):
-        self.run_simple_doctests(ROOT+'lino/utils/__init__.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/__init__.py')
 
     def test_site(self):
 
@@ -453,7 +455,7 @@ class CoreTests(TestCase):
 
         # self.run_simple_doctests('lino/core/site.py')
         args = [sys.executable]
-        args += [ROOT+'lino/core/site.py']
+        args += [LINO_SRC+'lino/core/site.py']
         self.run_subprocess(args)
 
     # TODO: implement pseudo tests for QuantityField
@@ -464,60 +466,57 @@ class CoreTests(TestCase):
 class UtilsTests(LinoTestCase):
 
     def test_instantiator(self):
-        self.run_simple_doctests(ROOT+"lino/utils/instantiator.py")
+        self.run_simple_doctests(LINO_SRC+"lino/utils/instantiator.py")
 
     def test_dates(self):
-        self.run_simple_doctests(ROOT+"lino/utils/dates.py")
+        self.run_simple_doctests(LINO_SRC+"lino/utils/dates.py")
 
     def test_html2odf(self):
-        self.run_simple_doctests(ROOT+'lino/utils/html2odf.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/html2odf.py')
 
     def test_jinja(self):
-        self.run_simple_doctests(ROOT+'lino/utils/jinja.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/jinja.py')
 
     def test_xmlgen_html(self):
-        self.run_simple_doctests(ROOT+'lino/utils/xmlgen/html.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/xmlgen/html.py')
 
     def test_html2rst(self):
-        self.run_simple_doctests(ROOT+'lino/utils/html2rst.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/html2rst.py')
 
     def test_xmlgen_sepa(self):
         if PYAFTER26:
-            self.run_simple_doctests(ROOT+'lino/utils/xmlgen/sepa/__init__.py')
+            self.run_simple_doctests(LINO_SRC+'lino/utils/xmlgen/sepa/__init__.py')
 
     def test_memo(self):
-        self.run_simple_doctests(ROOT+'lino/utils/memo.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/memo.py')
 
     def test_tidy(self):
         if HAS_TIDYLIB:
-            self.run_simple_doctests(ROOT+'lino/utils/html2xhtml.py')
+            self.run_simple_doctests(LINO_SRC+'lino/utils/html2xhtml.py')
 
     def test_demonames(self):
-        self.run_simple_doctests(ROOT+"lino/utils/demonames/bel.py")
-        self.run_simple_doctests(ROOT+"lino/utils/demonames/est.py")
+        self.run_simple_doctests(LINO_SRC+"lino/utils/demonames/bel.py")
+        self.run_simple_doctests(LINO_SRC+"lino/utils/demonames/est.py")
 
     def test_odsreader(self):
-        self.run_simple_doctests(ROOT+'lino/utils/odsreader.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/odsreader.py')
     
-    def test_ssin(self):
-        self.run_simple_doctests(ROOT+'lino/utils/ssin.py')
-
     # def test_choicelists(self):
-    #     self.run_simple_doctests(ROOT+'lino/core/choicelists.py')
+    #     self.run_simple_doctests(LINO_SRC+'lino/core/choicelists.py')
 
     def test_jsgen(self):
-        self.run_simple_doctests(ROOT+'lino/utils/jsgen.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/jsgen.py')
 
     def test_format_date(self):
-        self.run_simple_doctests(ROOT+'lino/utils/format_date.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/format_date.py')
 
     def test_ranges(self):
-        self.run_simple_doctests(ROOT+'lino/utils/ranges.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/ranges.py')
 
     def test_addressable(self):
-        self.run_simple_doctests(ROOT+'lino/utils/addressable.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/addressable.py')
 
     def test_cycler(self):
-        self.run_simple_doctests(ROOT+'lino/utils/cycler.py')
+        self.run_simple_doctests(LINO_SRC+'lino/utils/cycler.py')
 
 
