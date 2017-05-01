@@ -70,7 +70,7 @@ This document describes the database structure.
  lists.List                         lists.Lists                  7         8
  lists.ListType                     lists.ListTypes              4         3
  lists.Member                       lists.Members                5         0
- meetings.Meeting                   meetings.Meetings            25        7
+ meetings.Meeting                   meetings.Meetings            26        7
  notify.Message                     notify.Messages              11        6
  system.SiteConfig                  system.SiteConfigs           9         1
  tickets.Link                       tickets.Links                4         1

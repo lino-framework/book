@@ -556,17 +556,17 @@ release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================= ======== =========== ==========
- Start date   Designation       Room     Actions     Memebers
------------- ----------------- -------- ----------- ----------
- 15/05/2015   20150515@welket   welket   **Draft**
- 13/05/2015   20150513@welsch   welsch   **Draft**
- 11/05/2015   20150511@welket   welket   **Draft**
- 09/05/2015   20150509@welsch   welsch   **Draft**
- 07/05/2015   20150507@welket   welket   **Draft**
- 05/05/2015   20150505@welsch   welsch   **Draft**
- 03/05/2015   20150503@welket   welket   **Draft**
-============ ================= ======== =========== ==========
+============ ================= =========== ======== =========== ==========
+ Start date   Designation       Reference   Room     Actions     Memebers
+------------ ----------------- ----------- -------- ----------- ----------
+ 15/05/2015   20150515@welket               welket   **Draft**
+ 13/05/2015   20150513@welsch               welsch   **Draft**
+ 11/05/2015   20150511@welket               welket   **Draft**
+ 09/05/2015   20150509@welsch               welsch   **Draft**
+ 07/05/2015   20150507@welket               welket   **Draft**
+ 05/05/2015   20150505@welsch               welsch   **Draft**
+ 03/05/2015   20150503@welket               welket   **Draft**
+============ ================= =========== ======== =========== ==========
 <BLANKLINE>
 
 
@@ -579,100 +579,23 @@ tickets that are being fixed when this milestone is reached.
 
 The demo database has the following wishes:
 
->>> rt.show(rt.actors.deploy.Deployments)
+>>> rt.show(rt.actors.deploy.Deployments, limit=10)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
-==== ========= =================================================== ================= ======== ============== ================== ======= =============
- ID   No.       Ticket                                              Meeting           Remark   Wish type      old_ticket_state   State   Deferred to
----- --------- --------------------------------------------------- ----------------- -------- -------------- ------------------ ------- -------------
- 1    1         #1 (⛶ Föö fails to bar when baz)                    20150503@welket            Agenda item
- 2    1         #2 (☎ Bar is not always baz)                        20150505@welsch            New feature
- 3    1         #3 (☉ Baz sucks)                                    20150507@welket            Optimization
- 4    1         #5 (☾ Cannot create Foo)                            20150509@welsch            Bugfix
- 5    1         #6 (☐ Sell bar in baz)                              20150511@welket            Gimmick
- 6    1         #7 (☑ No Foo after deleting Bar)                    20150513@welsch            Side effect
- 7    1         #9 (⛶ Foo never matches Bar)                        20150515@welket            Resolution
- 8    2         #10 (☎ Where can I find a Foo when bazing Bazes?)   20150503@welket            Aftermath
- 9    2         #11 (☉ Class-based Foos and Bars?)                  20150505@welsch            Agenda item
- 10   2         #13 (☾ Bar cannot foo)                              20150507@welket            New feature
- 11   2         #14 (☐ Bar cannot baz)                              20150509@welsch            Optimization
- 12   2         #15 (☑ Bars have no foo)                            20150511@welket            Bugfix
- 13   2         #17 (⛶ Ticket 17)                                   20150513@welsch            Gimmick
- 14   2         #18 (☎ Ticket 18)                                   20150515@welket            Side effect
- 15   3         #19 (☉ Ticket 19)                                   20150503@welket            Resolution
- 16   3         #21 (☾ Ticket 21)                                   20150505@welsch            Aftermath
- 17   3         #22 (☐ Ticket 22)                                   20150507@welket            Agenda item
- 18   3         #23 (☑ Ticket 23)                                   20150509@welsch            New feature
- 19   3         #25 (⛶ Ticket 25)                                   20150511@welket            Optimization
- 20   3         #26 (☎ Ticket 26)                                   20150513@welsch            Bugfix
- 21   3         #27 (☉ Ticket 27)                                   20150515@welket            Gimmick
- 22   4         #29 (☾ Ticket 29)                                   20150503@welket            Side effect
- 23   4         #30 (☐ Ticket 30)                                   20150505@welsch            Resolution
- 24   4         #31 (☑ Ticket 31)                                   20150507@welket            Aftermath
- 25   4         #33 (⛶ Ticket 33)                                   20150509@welsch            Agenda item
- 26   4         #34 (☎ Ticket 34)                                   20150511@welket            New feature
- 27   4         #35 (☉ Ticket 35)                                   20150513@welsch            Optimization
- 28   4         #37 (☾ Ticket 37)                                   20150515@welket            Bugfix
- 29   5         #38 (☐ Ticket 38)                                   20150503@welket            Gimmick
- 30   5         #39 (☑ Ticket 39)                                   20150505@welsch            Side effect
- 31   5         #41 (⛶ Ticket 41)                                   20150507@welket            Resolution
- 32   5         #42 (☎ Ticket 42)                                   20150509@welsch            Aftermath
- 33   5         #43 (☉ Ticket 43)                                   20150511@welket            Agenda item
- 34   5         #45 (☾ Ticket 45)                                   20150513@welsch            New feature
- 35   5         #46 (☐ Ticket 46)                                   20150515@welket            Optimization
- 36   6         #47 (☑ Ticket 47)                                   20150503@welket            Bugfix
- 37   6         #49 (⛶ Ticket 49)                                   20150505@welsch            Gimmick
- 38   6         #50 (☎ Ticket 50)                                   20150507@welket            Side effect
- 39   6         #51 (☉ Ticket 51)                                   20150509@welsch            Resolution
- 40   6         #53 (☾ Ticket 53)                                   20150511@welket            Aftermath
- 41   6         #54 (☐ Ticket 54)                                   20150513@welsch            Agenda item
- 42   6         #55 (☑ Ticket 55)                                   20150515@welket            New feature
- 43   7         #57 (⛶ Ticket 57)                                   20150503@welket            Optimization
- 44   7         #58 (☎ Ticket 58)                                   20150505@welsch            Bugfix
- 45   7         #59 (☉ Ticket 59)                                   20150507@welket            Gimmick
- 46   7         #61 (☾ Ticket 61)                                   20150509@welsch            Side effect
- 47   7         #62 (☐ Ticket 62)                                   20150511@welket            Resolution
- 48   7         #63 (☑ Ticket 63)                                   20150513@welsch            Aftermath
- 49   7         #65 (⛶ Ticket 65)                                   20150515@welket            Agenda item
- 50   8         #66 (☎ Ticket 66)                                   20150503@welket            New feature
- 51   8         #67 (☉ Ticket 67)                                   20150505@welsch            Optimization
- 52   8         #69 (☾ Ticket 69)                                   20150507@welket            Bugfix
- 53   8         #70 (☐ Ticket 70)                                   20150509@welsch            Gimmick
- 54   8         #71 (☑ Ticket 71)                                   20150511@welket            Side effect
- 55   8         #73 (⛶ Ticket 73)                                   20150513@welsch            Resolution
- 56   8         #74 (☎ Ticket 74)                                   20150515@welket            Aftermath
- 57   9         #75 (☉ Ticket 75)                                   20150503@welket            Agenda item
- 58   9         #77 (☾ Ticket 77)                                   20150505@welsch            New feature
- 59   9         #78 (☐ Ticket 78)                                   20150507@welket            Optimization
- 60   9         #79 (☑ Ticket 79)                                   20150509@welsch            Bugfix
- 61   9         #81 (⛶ Ticket 81)                                   20150511@welket            Gimmick
- 62   9         #82 (☎ Ticket 82)                                   20150513@welsch            Side effect
- 63   9         #83 (☉ Ticket 83)                                   20150515@welket            Resolution
- 64   10        #85 (☾ Ticket 85)                                   20150503@welket            Aftermath
- 65   10        #86 (☐ Ticket 86)                                   20150505@welsch            Agenda item
- 66   10        #87 (☑ Ticket 87)                                   20150507@welket            New feature
- 67   10        #89 (⛶ Ticket 89)                                   20150509@welsch            Optimization
- 68   10        #90 (☎ Ticket 90)                                   20150511@welket            Bugfix
- 69   10        #91 (☉ Ticket 91)                                   20150513@welsch            Gimmick
- 70   10        #93 (☾ Ticket 93)                                   20150515@welket            Side effect
- 71   11        #94 (☐ Ticket 94)                                   20150503@welket            Resolution
- 72   11        #95 (☑ Ticket 95)                                   20150505@welsch            Aftermath
- 73   11        #97 (⛶ Ticket 97)                                   20150507@welket            Agenda item
- 74   11        #98 (☎ Ticket 98)                                   20150509@welsch            New feature
- 75   11        #99 (☉ Ticket 99)                                   20150511@welket            Optimization
- 76   11        #101 (☾ Ticket 101)                                 20150513@welsch            Bugfix
- 77   11        #102 (☐ Ticket 102)                                 20150515@welket            Gimmick
- 78   12        #103 (☑ Ticket 103)                                 20150503@welket            Side effect
- 79   12        #105 (⛶ Ticket 105)                                 20150505@welsch            Resolution
- 80   12        #106 (☎ Ticket 106)                                 20150507@welket            Aftermath
- 81   12        #107 (☉ Ticket 107)                                 20150509@welsch            Agenda item
- 82   12        #109 (☾ Ticket 109)                                 20150511@welket            New feature
- 83   12        #110 (☐ Ticket 110)                                 20150513@welsch            Optimization
- 84   12        #111 (☑ Ticket 111)                                 20150515@welket            Bugfix
- 85   13        #113 (⛶ Ticket 113)                                 20150503@welket            Gimmick
- 86   13        #114 (☎ Ticket 114)                                 20150505@welsch            Side effect
- 87   13        #115 (☉ Ticket 115)                                 20150507@welket            Resolution
-      **585**
-==== ========= =================================================== ================= ======== ============== ================== ======= =============
+ ==== ======== =================================================== ================= ======== ============== ============== ================== =============
+  ID   No.      Ticket                                              Meeting           Remark   Wish type      Ticket State   New Ticket State   Deferred to
+ ---- -------- --------------------------------------------------- ----------------- -------- -------------- -------------- ------------------ -------------
+  1    1        #1 (⛶ Föö fails to bar when baz)                    20150503@welket            Agenda item
+  2    1        #2 (☎ Bar is not always baz)                        20150505@welsch            New feature
+  3    1        #3 (☉ Baz sucks)                                    20150507@welket            Optimization
+  4    1        #5 (☾ Cannot create Foo)                            20150509@welsch            Bugfix
+  5    1        #6 (☐ Sell bar in baz)                              20150511@welket            Gimmick
+  6    1        #7 (☑ No Foo after deleting Bar)                    20150513@welsch            Side effect
+  7    1        #9 (⛶ Foo never matches Bar)                        20150515@welket            Resolution
+  8    2        #10 (☎ Where can I find a Foo when bazing Bazes?)   20150503@welket            Aftermath
+  9    2        #11 (☉ Class-based Foos and Bars?)                  20150505@welsch            Agenda item
+  10   2        #13 (☾ Bar cannot foo)                              20150507@welket            New feature
+       **13**
+ ==== ======== =================================================== ================= ======== ============== ============== ================== =============
 <BLANKLINE>
 
 
@@ -701,16 +624,13 @@ Release notes
 20150507@welket
 20150503@welket
 
-The following shows a known problem: you cannot currently search by
-specifying a numeric text because Lino then thinks you want a primary
-key:
-
+You for meetings you can also seach for digital values and it will return rows that have that number in the name, ref, or remark.
 >>> show_choices('robin', url+"?query=2015050")
-... #doctest: +SKIP
-20150503
-20150505
-20150507
-20150509
+... #doctest: -SKIP
+20150509@welsch
+20150507@welket
+20150505@welsch
+20150503@welket
 
 
 
