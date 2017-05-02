@@ -123,7 +123,7 @@ Usage examples:
     <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">lino_xl.lib.tickets.models.Project</a>.
     
     >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Project.foo]."))
-    <a href="Oops: type object 'Project' has no attribute 'foo'" target="_blank">lino_xl.lib.tickets.models.Project.foo</a>.
+    <a href="Error in Python code (type object 'Project' has no attribute 'foo')" target="_blank">lino_xl.lib.tickets.models.Project.foo</a>.
     
     >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Project Project]."))
     <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">Project</a>.
