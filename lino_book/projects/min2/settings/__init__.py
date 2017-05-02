@@ -19,10 +19,10 @@ class Site(Site):
 
     demo_fixtures = """std demo demo2 checkdata""".split()
 
-    def setup_plugins(self):
-        super(Site, self).setup_plugins()
-        self.plugins.comments.configure(
-            commentable_model='contacts.Partner')
+    # def setup_plugins(self):
+    #     super(Site, self).setup_plugins()
+    #     self.plugins.comments.configure(
+    #         commentable_model='contacts.Partner')
         
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

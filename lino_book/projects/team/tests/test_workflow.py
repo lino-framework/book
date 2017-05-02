@@ -29,9 +29,10 @@ class WorkflowTests(RemoteAuthTestCase):
         from lino.modlib.users.choicelists import UserTypes
         Ticket = rt.models.tickets.Ticket
         # Project = rt.models.tickets.Project
-        Line = rt.models.courses.Line
-        Activity = rt.models.courses.Course
-        Enrolment = rt.models.courses.Enrolment
+        # Line = rt.models.courses.Line
+        # Activity = rt.models.courses.Course
+        # Enrolment = rt.models.courses.Enrolment
+        Meeting = rt.models.meetings.Meeting
         Change = rt.models.changes.Change
         User = rt.models.users.User
         Vote = rt.models.votes.Vote
@@ -54,11 +55,11 @@ class WorkflowTests(RemoteAuthTestCase):
                        first_name="Berta",
                        profile=UserTypes.user,
                        language="en")
-
-        sprints = create(Line, name="Sprints")
-        sprint = create(Activity, line=sprints)
-
-        Enrolment(course=sprint, pupil=robin)
+        meeting = create(Meeting, name="Test")
+        # sprints = create(Line, name="Sprints")
+        # sprint = create(Activity, line=sprints)
+        #
+        # Enrolment(course=sprint, pupil=robin)
         
         ses = rt.login('robin')
         

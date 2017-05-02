@@ -10,6 +10,7 @@
 -e git+https://github.com/lino-framework/presto.git@stable#egg=lino_presto
 -e git+https://github.com/lino-framework/welfare.git@stable#egg=lino_welfare
 -e git+https://github.com/lino-framework/avanti.git@stable#egg=lino_avanti
+-e git+https://github.com/lino-framework/vilma.git@stable#egg=lino_vilma
 -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
 -e git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox
 radicale

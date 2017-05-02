@@ -35,6 +35,8 @@ introductions. This section is far from being complete.
    i18n
    notify
    users
+   ssin
+   
    cosi/index
    noi/index
    avanti/index

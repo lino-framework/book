@@ -70,7 +70,7 @@ This data is being rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-39
+27
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
