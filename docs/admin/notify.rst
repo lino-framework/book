@@ -55,8 +55,8 @@ With runworker.sh like the following::
 Interface servers
 =================
 
-Django channels is shipped with Daphne as interface servers. But first we need to create an asgi module which live
-alongside of our regular wsgi module.::
+Django channels is shipped with Daphne as interface servers. But first
+we need to create an asgi module in your project file::
 
     import os
     from channels.asgi import get_channel_layer
@@ -87,33 +87,37 @@ And for supervisord config::
     user = www-data
     umask = 002
 
-If everything is okay , we need to restart supervisord and our Worker Servers and Interface servers should be running.
+If everything is okay, we need to restart supervisord and our Worker
+Servers and Interface servers should be running.
 
 Apache configuration
 ====================
 
-Finally here’s the apache conf that we need to add. Please note that we should redirect all our websocket incoming
-requests to the daphne server and keep the other requests to get handled by our usual wsgi module.::
+Finally here’s the apache conf that we need to add. Please note that
+we should redirect all our websocket incoming requests to the daphne
+server and keep the other requests to get handled by our usual wsgi
+module.::
 
     RewriteEngine on
     RewriteCond %{HTTP:UPGRADE} ^WebSocket$ [NC,OR]
     RewriteCond %{HTTP:CONNECTION} ^Upgrade$ [NC]
     RewriteRule .* ws://127.0.0.1:8080%{REQUEST_URI} [P,QSA,L]
 
-Note that this config used be used for regardless the http protocol used, http or https.
-If the mod_rewrite is not activated for your apache server, you could activate is using the following command::
+Note that this config used be used for regardless the http protocol
+used, http or https.  If the mod_rewrite is not activated for your
+apache server, you could activate is using the following command::
 
     a2enmod rewrite
 
-And then a apache restart is required to load the new apache configuration.
+And then a apache restart is required to load the new apache
+configuration.
 
+Don't forget to set your :attr:`use_websockets
+<lino.core.site.Site.use_websockets>` to True in your
+:xfile:`settings.py`::
 
+    use_websockets = True
 
+And then you should also run::
 
-
-
-
-
-
-
-
+    $ python manage.py collectstatic
