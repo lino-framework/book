@@ -24,6 +24,7 @@ SETUP_INFO = dict(
         'lino_voga',
         'lino_avanti',
         'lino_welfare',
+        'lino_vilma',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
 
