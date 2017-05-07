@@ -97,14 +97,15 @@ User types
 These user types are defined in :mod:`lino_book.projects.care.roles`:
 
 >>> rt.show('users.UserTypes')
-======= =========== =============== ==============================================
- value   name        text            User role
-------- ----------- --------------- ----------------------------------------------
- 000     anonymous   Anonymous       lino.core.roles.UserRole
- 100     user        User            lino_book.projects.care.user_types.SimpleUser
- 500     connector   Connector       lino_book.projects.care.user_types.Connector
- 900     admin       Administrator   lino_book.projects.care.user_types.SiteAdmin
-======= =========== =============== ==============================================
+======= ============ ================== ==========================================
+ value   name         text               User role
+------- ------------ ------------------ ------------------------------------------
+ 000     anonymous    Anonymous          lino_care.lib.care.user_types.Anonymous
+ 100     user         User               lino_care.lib.care.user_types.EndUser
+ 200     consultant   Consultant         lino_care.lib.care.user_types.Consultant
+ 490     senior       Senior developer   lino_care.lib.care.user_types.Senior
+ 900     admin        Administrator      lino_care.lib.care.user_types.SiteAdmin
+======= ============ ================== ==========================================
 <BLANKLINE>
 
 
@@ -151,7 +152,7 @@ them:
  alex       User            Alex
  berta      User            Berta
  christa    User            Christa
- eric       Connector       Eric
+ eric       Consultant      Eric
  robin      Administrator   Robin        Rood
  rolf       Administrator   Rolf         Rompen
  romain     Administrator   Romain       Raffault
@@ -281,7 +282,7 @@ No data to display
 
 >>> rt.show('tickets.AllTickets')
 ==== ========================================================================= ========= ======= ============== =========
- ID   Summary                                                                   Author    Topic   Actions        Project
+ ID   Summary                                                                   Author    Topic   Actions        Mission
 ---- ------------------------------------------------------------------------- --------- ------- -------------- ---------
  8    Who would buy diapers for me in Aachen?                                   Alex              **Ready**
  7    Who can review my final work?                                             Eric              **Sleeping**

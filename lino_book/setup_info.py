@@ -25,6 +25,7 @@ SETUP_INFO = dict(
         'lino_avanti',
         'lino_welfare',
         'lino_vilma',
+        'lino_care',
         'commondata', 'commondata.ee', 'commondata.be'],
     tests_require=['pytest'],
 
@@ -174,7 +175,6 @@ lino_book.projects.liina.settings.fixtures
 lino_book.projects.public
 lino_book.projects.care
 lino_book.projects.care.settings
-lino_book.projects.care.settings.fixtures
 lino_book.projects.care.tests
 lino_book.projects.care.lib
 lino_book.projects.care.lib.tickets
