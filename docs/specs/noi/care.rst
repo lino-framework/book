@@ -301,33 +301,37 @@ Voters by ticket
 
 >>> def show_votes(pk):
 ...     obj = tickets.Ticket.objects.get(pk=pk)
-...     print(obj)
+...     print(str(obj))
 ...     rt.show('votes.VotesByVotable', obj)
 
 Alex and Dora had voted for #1, Alex has been assigned and has done
 his job. Dora's vote has been cancelled.
 
 >>> show_votes(1)
-#1 (My faucet is dripping, who can help?)
-*eric*, *alex*, *berta*
+#1 (☑ My faucet is dripping, who can help?)
+Author: *Berta*
+Done: *Alex*
+Cancelled: *Eric*
 
 Ticket #2 has not yet any vote:
 
 >>> show_votes(2)
-#2 (My lawn needs mowing. On Thursday or Saturday.)
-*christa*
+#2 (⛶ My lawn needs mowing. On Thursday or Saturday.)
+Author: *Christa*
 
 >>> show_votes(3)
-#3 (Who can give piano lessons to my son?)
-*christa*, *eric*
+#3 (☎ Who can give piano lessons to my son?)
+Author: *Eric*
+Candidate: *Christa*
 
 >>> show_votes(4)
-#4 (Who can give guitar lessons to my daughter?)
-*alex*
+#4 (☉ Who can give guitar lessons to my daughter?)
+Author: *Alex*
 
 >>> show_votes(5)
-#5 (Who would play music on my birthday party?)
-*eric*, *christa*, *alex*
+#5 (☉ Who would play music on my birthday party?)
+Author: *Alex*
+Candidate: *Eric*, *Christa*
 
 
 
@@ -338,25 +342,25 @@ The main menu
 
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Persons, Organizations, Partners
-- Votes : My tasks, My watchlist, My candidatures, My votes
+- Contacts : Persons, Organizations
+- Votes : My vote invitations, My tasks, My candidatures, My watchlist
 - Office : My Excerpts, My Comments, My Notification messages, My Uploads
-- Projects : My projects, My Tickets, Where I can help, Active tickets, All tickets, Unassigned Tickets
-- Reports :
-  - System : Broken GFKs
+- Tickets : My Tickets, Where I can help, Active tickets, All tickets, Unassigned Tickets, Reference Tickets
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
-  - Contacts : Topics, Topic groups, Organization types, Functions
+  - Contacts : Organization types, Functions
+  - Topics : Topics, Topic groups
   - Office : Excerpt Types, Comment Types, Upload Types
-  - Projects : Projects, Projects (tree), Project Types, Ticket types, Sites
+  - Tickets : Missions, Projects (tree), Project Types, Ticket types
   - Skills : Skills (tree), Skills (all), Skill types
 - Explorer :
   - System : content types, Authorities, User types, Changes, Notification messages, All dashboard widgets
-  - Contacts : Interests, Contact Persons
+  - Contacts : Contact Persons, Partners
+  - Topics : Interests
   - Votes : All votes, Vote states
   - Office : Excerpts, Comments, Uploads, Upload Areas
-  - Projects : Dependencies, Ticket states, Competences
+  - Tickets : Dependencies, Ticket states, Wishes
   - Skills : Skill offers, Skill demands
 - Site : About
 
@@ -365,9 +369,11 @@ The main menu
 
 >>> rt.login('berta').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Votes : My tasks, My watchlist, My candidatures, My votes
+- Votes : My vote invitations, My tasks, My candidatures, My watchlist
 - Office : My Comments, My Notification messages, My Uploads
-- Projects : My projects, My Tickets, Where I can help
+- Tickets : My Tickets, Where I can help
+- Explorer :
+  - Tickets : Wishes
 - Site : About
 
 Lists of pleas
@@ -380,11 +386,11 @@ My pleas
   
 >>> rt.login('christa').show(tickets.MyTickets)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================================================================== ===================================
- Description                                                        Actions
------------------------------------------------------------------- -----------------------------------
- `#2 (My lawn needs mowing. On Thursday or Saturday.) <Detail>`__   [★] **New** → [☾] [☎] [☉] [⚒] [☐]
-================================================================== ===================================
+==================================================================== ===================================
+ Description                                                          Actions
+-------------------------------------------------------------------- -----------------------------------
+ `#2 (⛶ My lawn needs mowing. On Thursday or Saturday.) <Detail>`__   [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+==================================================================== ===================================
 <BLANKLINE>
 
 
@@ -394,12 +400,12 @@ Where I can help
 
 >>> rt.login('eric').show(tickets.SuggestedTicketsByEndUser)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================================================================================== ============================= ==============
- Description                                                                          Needed skills                 Actions
------------------------------------------------------------------------------------- ----------------------------- --------------
- `#5 (Who would play music on my birthday party?) <Detail>`__ by `Alex <Detail>`__    `Music <Detail>`__            [★] **Open**
- `#4 (Who can give guitar lessons to my daughter?) <Detail>`__ by `Alex <Detail>`__   `Guitar lessons <Detail>`__   [☆] **Open**
-==================================================================================== ============================= ==============
+======================================================================================= ============================= ==============
+ Description                                                                             Needed skills                 Actions
+--------------------------------------------------------------------------------------- ----------------------------- --------------
+ `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__    `Music <Detail>`__            [★] **Open**
+ `#4 (☉ Who can give guitar lessons to my daughter?) <Detail>`__  by `Alex <Detail>`__   `Guitar lessons <Detail>`__   [☆] **Open**
+======================================================================================= ============================= ==============
 <BLANKLINE>
 
 
@@ -409,22 +415,22 @@ My offers
 
 >>> rt.login('christa').show(votes.MyOffers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-========================================================================================= =========================================
- Description                                                                               Actions
------------------------------------------------------------------------------------------ -----------------------------------------
- `#5 (Who would play music on my birthday party?) <Detail>`__ by `Alex <Detail>`__         [★] **Candidate** → [Watching] [Cancel]
- `#3 (Who can give piano lessons to my son?) <Detail>`__ by `Eric <Detail>`__ for *Dora*   [★] **Candidate** → [Watching] [Cancel]
-========================================================================================= =========================================
+============================================================================================ ============================================
+ Description                                                                                  Actions
+-------------------------------------------------------------------------------------------- --------------------------------------------
+ `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__         [★] **Candidate** → [Cancelled] [Watching]
+ `#3 (☎ Who can give piano lessons to my son?) <Detail>`__  by `Eric <Detail>`__ for *Dora*   [★] **Candidate** → [Cancelled] [Watching]
+============================================================================================ ============================================
 <BLANKLINE>
 
 
 >>> rt.login('eric').show(votes.MyOffers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-=================================================================================== ==================================================
- Description                                                                         Actions
------------------------------------------------------------------------------------ --------------------------------------------------
- `#5 (Who would play music on my birthday party?) <Detail>`__ by `Alex <Detail>`__   [★] **Candidate** → [Watching] [Assign] [Cancel]
-=================================================================================== ==================================================
+====================================================================================== ============================================
+ Description                                                                            Actions
+-------------------------------------------------------------------------------------- --------------------------------------------
+ `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__   [★] **Candidate** → [Cancelled] [Watching]
+====================================================================================== ============================================
 <BLANKLINE>
 
 
@@ -438,14 +444,14 @@ No data to display
 
 >>> rt.login('alex').show(votes.MyVotes)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-============================================================================== ================
- Description                                                                    Actions
------------------------------------------------------------------------------- ----------------
- `#8 (Who would buy diapers for me in Aachen?) <Detail>`__                      [★] **Author**
- `#5 (Who would play music on my birthday party?) <Detail>`__                   [★] **Author**
- `#4 (Who can give guitar lessons to my daughter?) <Detail>`__                  [★] **Author**
- `#1 (My faucet is dripping, who can help?) <Detail>`__ by `Berta <Detail>`__   [★] **Done**
-============================================================================== ================
+============================================================================================ ================
+ Description                                                                                  Actions
+-------------------------------------------------------------------------------------------- ----------------
+ `#8 (☐ Who would buy diapers for me in Aachen?) <Detail>`__, assigned to `Eric <Detail>`__   [★] **Author**
+ `#5 (☉ Who would play music on my birthday party?) <Detail>`__                               [★] **Author**
+ `#4 (☉ Who can give guitar lessons to my daughter?) <Detail>`__                              [★] **Author**
+ `#1 (☑ My faucet is dripping, who can help?) <Detail>`__  by `Berta <Detail>`__              [★] **Done**
+============================================================================================ ================
 <BLANKLINE>
 
 
@@ -475,21 +481,25 @@ the detail window of a ticket.
 >>> print(py2rst(tickets.Tickets.detail_layout, True))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
-- **General** (general):
-  - (general_1):
-    - (general1):
-      - (general1_1): **Summary** (summary), **ID** (id), **Deadline** (deadline)
-      - (general1_2): **Author** (user), **End user** (end_user)
-      - (general1_3): **Site** (site), **Actions** (workflow_buttons)
-    - **Votes** (VotesByVotable) [visible for user connector admin]
-    - **Uploads** (UploadsByController) [visible for user connector admin]
-  - (general_2): **Description** (description), **Comments** (CommentsByRFC) [visible for user connector admin], **Wanted skills** (DemandsByDemander) [visible for user connector admin]
-- **History** (changes.ChangesByMaster) [visible for connector admin]
-- **More** (more) [visible for connector admin]:
-  - (more1) [visible for all]:
-    - (more1_1): **Created** (created), **Modified** (modified), **Ticket type** (ticket_type)
-    - (more1_2): **State** (state), **Priority** (priority), **Project** (project)
-  - (more_2) [visible for all]: **Solution** (upgrade_notes), **Dependencies** (LinksByTicket) [visible for connector admin], **Skill offers** (OffersByDemander) [visible for user connector admin]
+- **General** (general_1):
+  - (general1):
+    - (general1_1): **Summary** (summary), **ID** (id)
+    - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
+    - (general1_3): **Topic** (topic), **Mission** (project)
+    - (general1_4): **Actions** (workflow_buttons), **Private** (private)
+    - (bottom_box) [visible for user consultant senior admin]:
+      - (bottom_box_1): **Wanted skills** (faculties_DemandsByDemander), **Votes** (votes_VotesByVotable)
+      - **Wishes** (deploy_DeploymentsByTicket)
+  - **Comments** (comments_CommentsByRFC) [visible for user consultant senior admin]
+- **More** (more):
+  - (more_1):
+    - (more1):
+      - (more1_1): **Created** (created), **Modified** (modified), **Ticket type** (ticket_type)
+      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
+    - **Duplicates** (DuplicatesByTicket)
+  - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
+- **History** (changes.ChangesByMaster) [visible for senior admin]
+- **Uploads** (uploads_UploadsByController) [visible for user consultant senior admin]
 <BLANKLINE>
 
 
