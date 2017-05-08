@@ -471,6 +471,9 @@ class UtilsTests(LinoTestCase):
     def test_dates(self):
         self.run_simple_doctests(LINO_SRC+"lino/utils/dates.py")
 
+    def test_soup(self):
+        self.run_simple_doctests(LINO_SRC+"lino/utils/soup.py")
+
     def test_html2odf(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/html2odf.py')
 
