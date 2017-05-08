@@ -57,7 +57,7 @@ def tickets_objects():
     LinkTypes = rt.models.tickets.LinkTypes
     EntryType = rt.models.blogs.EntryType
     Entry = rt.models.blogs.Entry
-    Tagging = rt.models.blogs.Tagging
+    # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
     cons = rt.models.users.UserTypes.consultant
@@ -101,7 +101,7 @@ def tickets_objects():
     
     for u in Company.objects.exclude(name="pypi"):
         for i in range(3):
-            yield Interest(partner=u, topic=TOPICS.pop())
+            yield Interest(owner=u, topic=TOPICS.pop())
 
     RTYPES = Cycler(ReportingTypes.objects())
     
@@ -256,14 +256,14 @@ def tickets_objects():
     yield entry(-3, "Hello, world!", "This is our first blog entry.")
     e = entry(-2, "Hello again", "Our second blog entry is about [ticket 1]")
     yield e
-    yield Tagging(entry=e, topic=TOPICS.pop())
+    yield Interest(owner=e, topic=TOPICS.pop())
     
     e = entry(-1, "Our third entry", """\
     Yet another blog entry about [ticket 1] and [ticket 2].
     This entry has two taggings""")
     yield e
-    yield Tagging(entry=e, topic=TOPICS.pop())
-    yield Tagging(entry=e, topic=TOPICS.pop())
+    yield Interest(owner=e, topic=TOPICS.pop())
+    yield Interest(owner=e, topic=TOPICS.pop())
 
 def clockings_objects():
     # was previously in clockings

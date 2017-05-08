@@ -41,17 +41,17 @@ The demo database contains the following data:
 ============================================================== ============= =========== ==========
  Description                                                    Ticket type   Topic       Priority
 -------------------------------------------------------------- ------------- ----------- ----------
- `#115 (☉ Ticket 115) <Detail>`__  by *Luc*                     Bugfix        Lino Voga   100
- `#107 (☉ Ticket 107) <Detail>`__  by *Jean*                    Enhancement   Lino Voga   100
- `#91 (☉ Ticket 91) <Detail>`__  by *Luc*                       Bugfix        Lino Voga   100
- `#83 (☉ Ticket 83) <Detail>`__  by *Jean*, assigned to *Luc*   Enhancement   Lino Voga   100
- `#75 (☉ Ticket 75) <Detail>`__  by *Mathieu*                   Upgrade       Lino Voga   100
- `#67 (☉ Ticket 67) <Detail>`__  by *Luc*                       Bugfix        Lino Voga   100
- `#51 (☉ Ticket 51) <Detail>`__  by *Mathieu*                   Upgrade       Lino Voga   100
- `#43 (☉ Ticket 43) <Detail>`__  by *Luc*                       Bugfix        Lino Voga   100
- `#35 (☉ Ticket 35) <Detail>`__  by *Jean*                      Enhancement   Lino Voga   100
- `#27 (☉ Ticket 27) <Detail>`__  by *Mathieu*                   Upgrade       Lino Voga   100
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Jean*     Enhancement   Lino Voga   100
+ `#115 (☉ Ticket 115) <Detail>`__  by *Luc*                     Bugfix        Lino Cosi   100
+ `#107 (☉ Ticket 107) <Detail>`__  by *Jean*                    Enhancement   Lino Cosi   100
+ `#91 (☉ Ticket 91) <Detail>`__  by *Luc*                       Bugfix        Lino Cosi   100
+ `#83 (☉ Ticket 83) <Detail>`__  by *Jean*, assigned to *Luc*   Enhancement   Lino Cosi   100
+ `#75 (☉ Ticket 75) <Detail>`__  by *Mathieu*                   Upgrade       Lino Cosi   100
+ `#67 (☉ Ticket 67) <Detail>`__  by *Luc*                       Bugfix        Lino Cosi   100
+ `#51 (☉ Ticket 51) <Detail>`__  by *Mathieu*                   Upgrade       Lino Cosi   100
+ `#43 (☉ Ticket 43) <Detail>`__  by *Luc*                       Bugfix        Lino Cosi   100
+ `#35 (☉ Ticket 35) <Detail>`__  by *Jean*                      Enhancement   Lino Cosi   100
+ `#27 (☉ Ticket 27) <Detail>`__  by *Mathieu*                   Upgrade       Lino Cosi   100
+ `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Jean*     Enhancement   Lino Cosi   100
  **Total (11 rows)**                                                                      **1100**
 ============================================================== ============= =========== ==========
 <BLANKLINE>
@@ -83,5 +83,5 @@ The home page:
 Home en de fr #13 Bar cannot foo State: Sleeping
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Luc Topic: Lino Welfare Linking to [ticket 1] and to
+(last update ...) Created ... by Luc Topic: Lino Core Linking to [ticket 1] and to
  [url http://luc.lino-framework.org/blog/2015/0923.html blog]. This is Lino Noi ... using ...

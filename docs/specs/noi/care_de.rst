@@ -39,13 +39,15 @@ Das Hauptmenü
 - Konfigurierung :
   - System : Site-Parameter, Hilfetexte, Benutzer
   - Orte : Länder, Orte
-  - Kontakte : Organisationsarten, Funktionen, Themen, Themengruppen
+  - Kontakte : Organisationsarten, Funktionen
+  - Themen : Themen, Themengruppen
   - Büro : Auszugsarten, Kommentar-Arten, Upload-Arten
   - Anfragen : Missions, Projekte (Hierarchie), Project Types, Ticket types
   - Fähigkeiten : Fähigkeiten (Hierarchie), Fähigkeiten (Alle), Fähigkeitsarten
 - Explorer :
   - System : Datenbankmodelle, Vollmachten, Benutzerarten, Änderungen, Benachrichtigungen, All dashboard widgets
-  - Kontakte : Kontaktpersonen, Partner, Interessen
+  - Kontakte : Kontaktpersonen, Partner
+  - Themen : Interessen
   - Stimmabgaben : Alle Stimmabgaben, Stimmabgabezustände
   - Büro : Auszüge, Kommentare, Uploads, Upload-Bereiche
   - Anfragen : Verknüpfungen, Ticketzustände, Wishes

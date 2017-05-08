@@ -148,6 +148,15 @@ Usage examples:
 >>> print(analyzer.show_memo_commands())
 ... #doctest: +NORMALIZE_WHITESPACE
 <BLANKLINE>
+- [person ...] : 
+  Insert a reference to the specified database object.
+<BLANKLINE>
+  The first argument is mandatory and specifies the
+  primary key.
+<BLANKLINE>
+  If there is more than one argument, all remaining text
+  is used as the text of the link.
+<BLANKLINE>
 - [ticket ...] :
   Insert a reference to the specified database object.
 <BLANKLINE>
