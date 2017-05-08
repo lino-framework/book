@@ -78,7 +78,7 @@ This document describes the database structure.
  tickets.Ticket                     tickets.Tickets              26        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
- topics.Interest                    topics.Interests             6         3
+ topics.Interest                    topics.Interests             6         12
  topics.Topic                       topics.Topics                9         4
  topics.TopicGroup                  topics.TopicGroups           5         0
  uploads.Upload                     uploads.Uploads              9         0

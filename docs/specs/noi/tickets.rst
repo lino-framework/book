@@ -327,12 +327,12 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========= =========== ============== =========
- ID   Summary             Author    Topic       Actions        Mission
----- ------------------- --------- ----------- -------------- ---------
- 5    Cannot create Foo   Jean      Lino Core   **Sleeping**
- 3    Baz sucks           Mathieu   Lino Cosi   **Open**
-==== =================== ========= =========== ============== =========
+==== =================== ========= ============== ============== =========
+ ID   Summary             Author    Topic          Actions        Mission
+---- ------------------- --------- -------------- -------------- ---------
+ 5    Cannot create Foo   Jean      Lino Welfare   **Sleeping**
+ 3    Baz sucks           Mathieu   Lino Voga      **Open**
+==== =================== ========= ============== ============== =========
 <BLANKLINE>
 
 
@@ -501,20 +501,20 @@ can see all local tickets for a given site object:
 >>> welket = cal.Room.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== =========== ========== ==========
- ID    Summary                     Author   Topic       Actions    Mission
------ --------------------------- -------- ----------- ---------- ----------
- 115   Ticket 115                  Luc      Lino Cosi   **Open**   docs
- 97    Ticket 97                   Luc      Lino Core   **New**    shop
- 91    Ticket 91                   Luc      Lino Cosi   **Open**   research
- 73    Ticket 73                   Luc      Lino Core   **New**    linö
- 67    Ticket 67                   Luc      Lino Cosi   **Open**   shop
- 49    Ticket 49                   Luc      Lino Core   **New**    téam
- 43    Ticket 43                   Luc      Lino Cosi   **Open**   linö
- 25    Ticket 25                   Luc      Lino Core   **New**    docs
- 19    Ticket 19                   Luc      Lino Cosi   **Open**   téam
- 1     Föö fails to bar when baz   Luc      Lino Core   **New**    linö
-===== =========================== ======== =========== ========== ==========
+===== =========================== ======== ============== ========== ==========
+ ID    Summary                     Author   Topic          Actions    Mission
+----- --------------------------- -------- -------------- ---------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      **Open**   docs
+ 97    Ticket 97                   Luc      Lino Welfare   **New**    shop
+ 91    Ticket 91                   Luc      Lino Voga      **Open**   research
+ 73    Ticket 73                   Luc      Lino Welfare   **New**    linö
+ 67    Ticket 67                   Luc      Lino Voga      **Open**   shop
+ 49    Ticket 49                   Luc      Lino Welfare   **New**    téam
+ 43    Ticket 43                   Luc      Lino Voga      **Open**   linö
+ 25    Ticket 25                   Luc      Lino Welfare   **New**    docs
+ 19    Ticket 19                   Luc      Lino Voga      **Open**   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    linö
+===== =========================== ======== ============== ========== ==========
 <BLANKLINE>
 
 
@@ -524,20 +524,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== =========== ============================================ ==========
- ID    Summary                     Author   Topic       Actions                                      Mission
------ --------------------------- -------- ----------- -------------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Cosi   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
- 97    Ticket 97                   Luc      Lino Core   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
- 91    Ticket 91                   Luc      Lino Cosi   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
- 73    Ticket 73                   Luc      Lino Core   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
- 67    Ticket 67                   Luc      Lino Cosi   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
- 49    Ticket 49                   Luc      Lino Core   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
- 43    Ticket 43                   Luc      Lino Cosi   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
- 25    Ticket 25                   Luc      Lino Core   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
- 19    Ticket 19                   Luc      Lino Cosi   [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
- 1     Föö fails to bar when baz   Luc      Lino Core   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
-===== =========================== ======== =========== ============================================ ==========
+===== =========================== ======== ============== ============================================ ==========
+ ID    Summary                     Author   Topic          Actions                                      Mission
+----- --------------------------- -------- -------------- -------------------------------------------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+===== =========================== ======== ============== ============================================ ==========
 <BLANKLINE>
 
 
