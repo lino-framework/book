@@ -10,7 +10,6 @@
    doctests
    www
    memory
-   fixtures
 
 
 
