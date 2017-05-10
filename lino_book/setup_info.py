@@ -18,7 +18,8 @@ SETUP_INFO = dict(
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
-        'djangorestframework', 'bleach',
+        'djangorestframework', 'bleach', 'radicale',
+        'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox',
         'lino_cosi',
         'lino_noi',
         'lino_voga',

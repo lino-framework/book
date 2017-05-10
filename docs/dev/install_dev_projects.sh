@@ -44,28 +44,48 @@ function install {
     pip install -e $nickname
 }
 
+function install_them_all {
 
+    install cd lsaffre commondata
+    install be lsaffre commondata-be
+    install ee lsaffre commondata-ee
+    install eg lsaffre commondata-eg
+    install atelier lino-framework atelier
+    install lino lino-framework lino
+    install xl lino-framework xl
+    install cosi lino-framework cosi
+    install noi lino-framework noi
+    install presto lino-framework presto
+    install welfare lino-framework welfare
+    install voga lino-framework voga
+    install avanti lino-framework avanti
+    install vilma lino-framework vilma
+    install care lino-framework care
+    install book lino-framework book
+    install ext6 lino-framework extjs6
+
+    # the following are not really needed
+    install patrols lsaffre lino-patrols
+    install logos lsaffre lino-logos
+
+}
+
+
+echo "You are about to install the Lino development environment"
 if [[ $1 ]] ; then
-    prepare_env $1
+    echo Create new virtualenv $1
+else
+    echo Into current virtualenv $ENV
 fi
 
-install cd lsaffre commondata
-install be lsaffre commondata-be
-install ee lsaffre commondata-ee
-install eg lsaffre commondata-eg
-install atelier lino-framework atelier
-install lino lino-framework lino
-install xl lino-framework xl
-install cosi lino-framework cosi
-install noi lino-framework noi
-install presto lino-framework presto
-install welfare lino-framework welfare
-install voga lino-framework voga
-install avanti lino-framework avanti
-install book lino-framework book
-install ext6 lino-framework extjs6
-
-# the following are not really needed
-install patrols lsaffre lino-patrols
-install logos lsaffre lino-logos
+read -r -p "Are you sure? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    if [[ $1 ]] ; then
+        prepare_env $1
+    fi
+    install_them_all
+else
+    exit -1
+fi
 
