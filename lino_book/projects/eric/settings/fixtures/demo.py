@@ -32,8 +32,10 @@ def vote(user, ticket, state, **kw):
 
 def objects():
     yield tickets_objects()
-    yield clockings_objects()
-    yield faculties_objects()
+    if 'clocking' in dd.plugins:
+        yield clockings_objects()
+    if 'faculties' in dd.plugins:
+        yield faculties_objects()
     yield votes_objects()
 
 
