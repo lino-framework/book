@@ -21,13 +21,12 @@ This document describes the database structure.
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, votes, excerpts, comments, changes, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, rest_framework, restful.
-62 models:
+61 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
 ---------------------------------- ---------------------------- --------- -------
- blogs.Entry                        blogs.Entries                10        3
+ blogs.Entry                        blogs.Entries                11        3
  blogs.EntryType                    blogs.EntryTypes             6         3
- blogs.Tagging                      blogs.Taggings               3         3
  cal.Calendar                       cal.Calendars                6         1
  cal.Event                          cal.OneEvent                 26        113
  cal.EventPolicy                    cal.EventPolicies            19        6
@@ -52,7 +51,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons             26        7
  contacts.Role                      contacts.Roles               4         0
  contacts.RoleType                  contacts.RoleTypes           4         0
- contenttypes.ContentType           gfks.ContentTypes            3         63
+ contenttypes.ContentType           gfks.ContentTypes            3         62
  countries.Country                  countries.Countries          6         8
  countries.Place                    countries.Places             8         78
  dashboard.Widget                   dashboard.Widgets            5         0
@@ -70,7 +69,7 @@ This document describes the database structure.
  lists.List                         lists.Lists                  7         8
  lists.ListType                     lists.ListTypes              4         3
  lists.Member                       lists.Members                5         0
- meetings.Meeting                   meetings.Meetings            26        7
+ meetings.Meeting                   meetings.Meetings            23        7
  notify.Message                     notify.Messages              11        6
  system.SiteConfig                  system.SiteConfigs           9         1
  tickets.Link                       tickets.Links                4         1
@@ -79,7 +78,7 @@ This document describes the database structure.
  tickets.Ticket                     tickets.Tickets              26        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
- topics.Interest                    topics.Interests             3         9
+ topics.Interest                    topics.Interests             6         12
  topics.Topic                       topics.Topics                9         4
  topics.TopicGroup                  topics.TopicGroups           5         0
  uploads.Upload                     uploads.Uploads              9         0

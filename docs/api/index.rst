@@ -108,6 +108,21 @@ Lino Vilma
                 
 
 
+.. _care:
+
+Lino Care
+===========
+
+.. py2rst::
+
+  import lino_care
+  print(lino_care.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_care
+                
+
+
                 
 .. _commondata:
 

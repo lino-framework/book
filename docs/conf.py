@@ -48,6 +48,7 @@ help_texts_builder_targets = {
     'lino_noi.': 'lino_noi.lib.noi',
     'lino_vilma.': 'lino_vilma.lib.vilma',
     'lino_cosi.': 'lino_cosi.lib.cosi',
+    'lino_care.': 'lino_care.lib.care',
 }
 
 if False:

@@ -282,11 +282,11 @@ class SpecsTests(TestCase):
     def test_memo(self):
         self.run_simple_doctests('docs/specs/noi/memo.rst')
 
-    # def test_care(self):
-    #     self.run_simple_doctests('docs/specs/noi/care.rst')
+    def test_care(self):
+        self.run_simple_doctests('docs/specs/noi/care.rst')
 
-    # def test_care_de(self):
-    #     self.run_simple_doctests('docs/specs/noi/care_de.rst')
+    def test_care_de(self):
+        self.run_simple_doctests('docs/specs/noi/care_de.rst')
 
     def test_std(self):
         self.run_simple_doctests('docs/specs/noi/std.rst')
@@ -470,6 +470,9 @@ class UtilsTests(LinoTestCase):
 
     def test_dates(self):
         self.run_simple_doctests(LINO_SRC+"lino/utils/dates.py")
+
+    def test_soup(self):
+        self.run_simple_doctests(LINO_SRC+"lino/utils/soup.py")
 
     def test_html2odf(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/html2odf.py')

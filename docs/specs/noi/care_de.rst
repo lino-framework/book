@@ -32,25 +32,25 @@ Das Hauptmenü
 
 >>> rt.login('rolf').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte : Personen, Organisationen, Partner
-- Stimmabgaben : Meine Aufgaben, Meine Interessen, Meine Kandidaturen, Meine Stimmabgaben
+- Kontakte : Personen, Organisationen
+- Stimmabgaben : My vote invitations, Meine Aufgaben, Meine Kandidaturen, Meine Interessen
 - Büro : Meine Auszüge, Meine Kommentare, Meine Benachrichtigungen, Meine Uploads
-- Projekte : Meine Projekte, Meine Anfragen, Wo ich helfen kann, Aktive Tickets, Alle Tickets, Nicht zugewiesene Tickets
-- Berichte :
-  - System : Broken GFKs
+- Anfragen : Meine Anfragen, Wo ich helfen kann, Aktive Tickets, Alle Tickets, Nicht zugewiesene Tickets, Reference Tickets
 - Konfigurierung :
   - System : Site-Parameter, Hilfetexte, Benutzer
   - Orte : Länder, Orte
-  - Kontakte : Themen, Themengruppen, Organisationsarten, Funktionen
+  - Kontakte : Organisationsarten, Funktionen
+  - Themen : Themen, Themengruppen
   - Büro : Auszugsarten, Kommentar-Arten, Upload-Arten
-  - Projekte : Projekte, Projekte (Hierarchie), Project Types, Ticket types, Umfelder
+  - Anfragen : Missions, Projekte (Hierarchie), Project Types, Ticket types
   - Fähigkeiten : Fähigkeiten (Hierarchie), Fähigkeiten (Alle), Fähigkeitsarten
 - Explorer :
   - System : Datenbankmodelle, Vollmachten, Benutzerarten, Änderungen, Benachrichtigungen, All dashboard widgets
-  - Kontakte : Interessen, Kontaktpersonen
+  - Kontakte : Kontaktpersonen, Partner
+  - Themen : Interessen
   - Stimmabgaben : Alle Stimmabgaben, Stimmabgabezustände
   - Büro : Auszüge, Kommentare, Uploads, Upload-Bereiche
-  - Projekte : Verknüpfungen, Ticketzustände, Zuständigkeiten
+  - Anfragen : Verknüpfungen, Ticketzustände, Wishes
   - Fähigkeiten : Fähigkeitsangebote, Anfragen
 - Site : Info
 
@@ -59,9 +59,11 @@ Das Hauptmenü
 
 >>> rt.login('berta').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Stimmabgaben : Meine Aufgaben, Meine Interessen, Meine Kandidaturen, Meine Stimmabgaben
+- Stimmabgaben : My vote invitations, Meine Aufgaben, Meine Kandidaturen, Meine Interessen
 - Büro : Meine Kommentare, Meine Benachrichtigungen, Meine Uploads
-- Projekte : Meine Projekte, Meine Anfragen, Wo ich helfen kann
+- Anfragen : Meine Anfragen, Wo ich helfen kann
+- Explorer :
+  - Anfragen : Wishes
 - Site : Info
 
 Bewertungen

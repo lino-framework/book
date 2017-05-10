@@ -557,7 +557,7 @@ release of a new version.
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
 ============ ================= =========== ======== =========== ==========
- Start date   Designation       Reference   Room     Actions     Memebers
+ Start date   Title             Reference   Room     Actions     Memebers
 ------------ ----------------- ----------- -------- ----------- ----------
  15/05/2015   20150515@welket               welket   **Draft**
  13/05/2015   20150513@welsch               welsch   **Draft**

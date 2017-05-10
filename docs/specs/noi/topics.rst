@@ -36,7 +36,7 @@ by the team that uses a given Lino Noi site.
 There are 4 topics in the demo database.
 
 >>> show_menu_path(topics.AllTopics)
-Configure --> Contacts --> Topics
+Configure --> Topics --> Topics
 
 
 
@@ -90,29 +90,22 @@ about changes in these topics even when they did not report the
 ticket.
 
 
->>> obj = contacts.Partner.objects.get(name="welket")
->>> rt.show(topics.InterestsByPartner, obj)
+>>> obj = contacts.Company.objects.get(name="welket")
+>>> rt.show(topics.InterestsByController, obj)
 ... #doctest: +REPORT_UDIFF
-==============
- Topic
---------------
- Lino Core
- Lino Welfare
- Lino Cosi
-==============
-<BLANKLINE>
+Lino Core, Lino Welfare, Lino Cosi
 
 >>> obj = topics.Topic.objects.get(ref="welfäre")
 >>> rt.show(topics.InterestsByTopic, obj)
 ... #doctest: +REPORT_UDIFF
-=========
- Partner
----------
- welket
- welsch
-=========
+======================
+ Controlled by
+----------------------
+ *welket*
+ *welsch*
+ *2015-05-21 by Jean*
+======================
 <BLANKLINE>
-
 
 
 Filtering tickets by topic
@@ -166,4 +159,4 @@ Topic groups
 No data to display
 
 >>> show_menu_path(topics.TopicGroups)
-Configure --> Contacts --> Topic groups
+Configure --> Topics --> Topic groups

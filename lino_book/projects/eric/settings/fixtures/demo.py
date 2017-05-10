@@ -32,8 +32,10 @@ def vote(user, ticket, state, **kw):
 
 def objects():
     yield tickets_objects()
-    yield clockings_objects()
-    yield faculties_objects()
+    if 'clocking' in dd.plugins:
+        yield clockings_objects()
+    if 'faculties' in dd.plugins:
+        yield faculties_objects()
     yield votes_objects()
 
 
@@ -48,8 +50,9 @@ def tickets_objects():
     Interest = rt.models.topics.Interest
     Milestone = dd.plugins.tickets.milestone_model
     # Milestone = rt.models.deploy.Milestone
-    Deployment = rt.models.deploy.Deployment
-    WishTypes = rt.models.deploy.WishTypes
+    if Milestone:
+        Deployment = rt.models.deploy.Deployment
+        WishTypes = rt.models.deploy.WishTypes
     Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
     Site = dd.plugins.tickets.site_model
@@ -103,6 +106,14 @@ def tickets_objects():
         for i in range(3):
             yield Interest(owner=u, topic=TOPICS.pop())
 
+    roletype = rt.models.contacts.RoleType
+    yield roletype(**dd.babel_values('name', en="Manager", fr='Gérant', de="Geschäftsführer", et="Tegevjuht"))
+    yield roletype(**dd.babel_values('name', en="Director", fr='Directeur', de="Direktor", et="Direktor"))
+    yield roletype(**dd.babel_values('name', en="Secretary", fr='Secrétaire', de="Sekretär", et="Sekretär"))
+    yield roletype(**dd.babel_values('name', en="IT Manager", fr='Gérant informatique', de="EDV-Manager", et="IT manager"))
+    yield roletype(**dd.babel_values('name', en="President", fr='Président', de="Präsident", et="President"))
+
+
     RTYPES = Cycler(ReportingTypes.objects())
     
     prj1 = Project(
@@ -140,22 +151,24 @@ def tickets_objects():
     
     SITES = Cycler(Site.objects.exclude(name="pypi"))
     # LISTS = Cycler(List.objects.all())
-    for i in range(7):
-        site = SITES.pop()
-        d = dd.today(i*2-20)
-        kw = dict(
-            user=WORKERS.pop(),
-            start_date=d,
-            # line=sprint,
-            # project=PROJECTS.pop(), # expected=d, reached=d,
-            # expected=d, reached=d,
-            name="{}@{}".format(d.strftime("%Y%m%d"), site),
-            # list=LISTS.pop()
-        )
-        kw[Milestone.site_field_name] = site
-        yield Milestone(**kw)
-    # yield Milestone(site=SITES.pop(), expected=dd.today())
-    # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
+
+    if Milestone:
+        for i in range(7):
+            site = SITES.pop()
+            d = dd.today(i*2-20)
+            kw = dict(
+                user=WORKERS.pop(),
+                start_date=d,
+                # line=sprint,
+                # project=PROJECTS.pop(), # expected=d, reached=d,
+                # expected=d, reached=d,
+                name="{}@{}".format(d.strftime("%Y%m%d"), site),
+                # list=LISTS.pop()
+            )
+            kw[Milestone.site_field_name] = site
+            yield Milestone(**kw)
+        # yield Milestone(site=SITES.pop(), expected=dd.today())
+        # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
     
     SITES = Cycler(Site.objects.all())
     
@@ -223,14 +236,15 @@ def tickets_objects():
     for i in range(100):
         yield ticket("Ticket {}".format(i+n+1), project=PROJECTS.pop())
 
-    WTYPES = Cycler(WishTypes.objects())
-    MILESTONES = Cycler(Milestone.objects.all())
-    for t in Ticket.objects.all():
-        t.set_author_votes()
-        if t.id % 4:
-            yield Deployment(
-                milestone=MILESTONES.pop(), ticket=t,
-                wish_type=WTYPES.pop())
+    if Milestone:
+        WTYPES = Cycler(WishTypes.objects())
+        MILESTONES = Cycler(Milestone.objects.all())
+        for t in Ticket.objects.all():
+            t.set_author_votes()
+            if t.id % 4:
+                yield Deployment(
+                    milestone=MILESTONES.pop(), ticket=t,
+                    wish_type=WTYPES.pop())
 
     
     yield Link(

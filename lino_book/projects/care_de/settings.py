@@ -2,7 +2,8 @@
 """
 
 from atelier.utils import i2d
-from lino_book.projects.care.settings import *
+# from lino_book.projects.care.settings import *
+from lino_care.lib.care.settings import *
 
 
 class Site(Site):

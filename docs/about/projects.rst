@@ -28,14 +28,6 @@ Lino Welfare
   from lino_welfare import SETUP_INFO
   print(SETUP_INFO['long_description'])
 
-.. _care:
-
-Lino Care
----------
-
-See `The "Care" variant of Lino Noi
-<http://noi.lino-framework.org/specs/care.html>`_
-
 .. _presto:
 
 Lino Presto

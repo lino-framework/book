@@ -25,8 +25,6 @@ Lino Noi:
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- blogs.Entry :
-  - CASCADE : blogs.Tagging.entry
 - blogs.EntryType :
   - PROTECT : blogs.Entry.entry_type
 - cal.Calendar :
@@ -60,7 +58,7 @@ Lino Noi:
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role
 - contenttypes.ContentType :
-  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
+  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -93,7 +91,6 @@ Lino Noi:
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :
-  - CASCADE : blogs.Tagging.topic
   - PROTECT : tickets.Ticket.topic, topics.Interest.topic
 - topics.TopicGroup :
   - PROTECT : topics.Topic.topic_group
