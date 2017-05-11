@@ -66,13 +66,13 @@ def tickets_objects():
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
     yield create_user("marc", rt.models.users.UserTypes.user)
-    yield create_user("mathieu", cons)
+    yield create_user("mathieu", rt.models.users.UserTypes.user)
     yield create_user("luc", dev)
     yield create_user("jean", rt.models.users.UserTypes.senior)
 
     USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
-        username__in='mathieu luc jean'.split()))
+        username__in='luc jean'.split()))
     END_USERS = Cycler(User.objects.filter(profile=''))
 
     yield named(TT, _("Bugfix"))
@@ -380,6 +380,6 @@ def faculties_objects():
 
 def votes_objects():
 
-    yield vote('mathieu', 1, 'candidate')
+    yield vote('jean', 1, 'candidate')
     yield vote('luc', 1, 'candidate')
     yield vote('jean', 2, 'assigned')
