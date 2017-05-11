@@ -58,21 +58,21 @@ def tickets_objects():
     Site = dd.plugins.tickets.site_model
     Link = rt.models.tickets.Link
     LinkTypes = rt.models.tickets.LinkTypes
-    EntryType = rt.models.blogs.EntryType
-    Entry = rt.models.blogs.Entry
+    # EntryType = rt.models.blogs.EntryType
+    # Entry = rt.models.blogs.Entry
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
-    yield create_user("marc")
-    yield create_user("mathieu", cons)
+    yield create_user("marc", rt.models.users.UserTypes.user)
+    yield create_user("mathieu", rt.models.users.UserTypes.user)
     yield create_user("luc", dev)
     yield create_user("jean", rt.models.users.UserTypes.senior)
 
     USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
-        username__in='mathieu luc jean'.split()))
+        username__in='luc jean'.split()))
     END_USERS = Cycler(User.objects.filter(profile=''))
 
     yield named(TT, _("Bugfix"))
@@ -114,22 +114,22 @@ def tickets_objects():
     yield roletype(**dd.babel_values('name', en="President", fr='Président', de="Präsident", et="President"))
 
 
-    RTYPES = Cycler(ReportingTypes.objects())
+    # RTYPES = Cycler(ReportingTypes.objects())
     
     prj1 = Project(
         name="Framewörk", ref="linö", private=False,
         company=COMPANIES.pop(),
-        reporting_type=RTYPES.pop(),
+        # reporting_type=RTYPES.pop(),
         start_date=i2d(20090101))
     yield prj1
     yield Project(
         name="Téam", ref="téam", start_date=i2d(20100101),
-        reporting_type=RTYPES.pop(),
+        # reporting_type=RTYPES.pop(),
         company=COMPANIES.pop(),
         parent=prj1, private=True)
     prj2 = Project(
         name="Documentatión", ref="docs", private=False,
-        reporting_type=RTYPES.pop(),
+        # reporting_type=RTYPES.pop(),
         company=COMPANIES.pop(),
         start_date=i2d(20090101), parent=prj1)
     yield prj2
@@ -139,7 +139,7 @@ def tickets_objects():
         start_date=i2d(19980101), parent=prj2)
     yield Project(
         name="Shop", ref="shop", private=False,
-        reporting_type=RTYPES.pop(),
+        # reporting_type=RTYPES.pop(),
         company=COMPANIES.pop(),
         start_date=i2d(20120201), end_date=i2d(20120630))
 
@@ -252,32 +252,32 @@ def tickets_objects():
         parent=Ticket.objects.get(pk=1),
         child=Ticket.objects.get(pk=2))
 
-    yield EntryType(**dd.str2kw('name', _('Release note')))
-    yield EntryType(**dd.str2kw('name', _('Feature')))
-    yield EntryType(**dd.str2kw('name', _('Upgrade instruction')))
-    
-    ETYPES = Cycler(EntryType.objects.all())
-    TIMES = Cycler('12:34', '8:30', '3:45', '6:02')
-    blogger = USERS.pop()
-    
-    def entry(offset, title, body, **kwargs):
-        kwargs['user'] = blogger
-        kwargs['entry_type'] = ETYPES.pop()
-        kwargs['pub_date'] = dd.today(offset)
-        kwargs['pub_time'] = TIMES.pop()
-        return Entry(title=title, body=body, **kwargs)
-    
-    yield entry(-3, "Hello, world!", "This is our first blog entry.")
-    e = entry(-2, "Hello again", "Our second blog entry is about [ticket 1]")
-    yield e
-    yield Interest(owner=e, topic=TOPICS.pop())
-    
-    e = entry(-1, "Our third entry", """\
-    Yet another blog entry about [ticket 1] and [ticket 2].
-    This entry has two taggings""")
-    yield e
-    yield Interest(owner=e, topic=TOPICS.pop())
-    yield Interest(owner=e, topic=TOPICS.pop())
+    # yield EntryType(**dd.str2kw('name', _('Release note')))
+    # yield EntryType(**dd.str2kw('name', _('Feature')))
+    # yield EntryType(**dd.str2kw('name', _('Upgrade instruction')))
+
+    # ETYPES = Cycler(EntryType.objects.all())
+    # TIMES = Cycler('12:34', '8:30', '3:45', '6:02')
+    # blogger = USERS.pop()
+    #
+    # def entry(offset, title, body, **kwargs):
+    #     kwargs['user'] = blogger
+    #     kwargs['entry_type'] = ETYPES.pop()
+    #     kwargs['pub_date'] = dd.today(offset)
+    #     kwargs['pub_time'] = TIMES.pop()
+    #     return Entry(title=title, body=body, **kwargs)
+    #
+    # yield entry(-3, "Hello, world!", "This is our first blog entry.")
+    # e = entry(-2, "Hello again", "Our second blog entry is about [ticket 1]")
+    # yield e
+    # yield Interest(owner=e, topic=TOPICS.pop())
+    #
+    # e = entry(-1, "Our third entry", """\
+    # Yet another blog entry about [ticket 1] and [ticket 2].
+    # This entry has two taggings""")
+    # yield e
+    # yield Interest(owner=e, topic=TOPICS.pop())
+    # yield Interest(owner=e, topic=TOPICS.pop())
 
 def clockings_objects():
     # was previously in clockings
@@ -380,6 +380,6 @@ def faculties_objects():
 
 def votes_objects():
 
-    yield vote('mathieu', 1, 'candidate')
+    yield vote('jean', 1, 'candidate')
     yield vote('luc', 1, 'candidate')
     yield vote('jean', 2, 'assigned')
