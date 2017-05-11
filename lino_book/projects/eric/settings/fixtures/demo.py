@@ -62,7 +62,7 @@ def tickets_objects():
     # Entry = rt.models.blogs.Entry
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
-    List = rt.models.lists.List
+    # List = rt.models.lists.List
     cons = rt.models.users.UserTypes.consultant
     dev = rt.models.users.UserTypes.developer
     yield create_user("marc", rt.models.users.UserTypes.user)
