@@ -92,17 +92,17 @@ def tickets_objects():
 
     TOPICS = Cycler(Topic.objects.all())
 
-    for name in "welket welsch pypi".split():
+    for name in "Bus.co farm.co share.co".split():
 
         obj = Company(name=name)
         yield obj
-        yield Site(name=name, partner=obj)
+        yield Site(name=name + ".com", partner=obj)
 
     COMPANIES = Cycler(Company.objects.all())
     
-    yield Company(name="Saffre-Rumma")
+    yield Company(name="in3x")
     
-    for u in Company.objects.exclude(name="pypi"):
+    for u in Company.objects.exclude(name="in3x"):
         for i in range(3):
             yield Interest(owner=u, topic=TOPICS.pop())
 
