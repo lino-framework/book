@@ -398,7 +398,7 @@ My pleas
 Where I can help
 ----------------
 
->>> rt.login('eric').show(tickets.SuggestedTicketsByEndUser)
+>>> rt.login('eric').show(faculties.SuggestedTicketsByEndUser)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ======================================================================================= ============================= ==============
  Description                                                                             Needed skills                 Actions
