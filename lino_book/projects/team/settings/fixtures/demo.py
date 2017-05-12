@@ -34,7 +34,7 @@ def objects():
     yield tickets_objects()
     yield clockings_objects()
     yield faculties_objects()
-    yield votes_objects()
+    # yield votes_objects()
 
 
 def tickets_objects():
@@ -162,9 +162,9 @@ def tickets_objects():
     TicketStates = rt.models.tickets.TicketStates
     TSTATES = Cycler(TicketStates.objects())
     
-    Vote = rt.models.votes.Vote
-    VoteStates = rt.models.votes.VoteStates
-    VSTATES = Cycler(VoteStates.objects())
+    # Vote = rt.models.votes.Vote
+    # VoteStates = rt.models.votes.VoteStates
+    # VSTATES = Cycler(VoteStates.objects())
 
     num = [0]
     
@@ -186,9 +186,9 @@ def tickets_objects():
             kwargs.update(project=PROJECTS.pop())
         obj = Ticket(**kwargs)
         yield obj
-        if obj.state.active:
-            yield Vote(
-                votable=obj, user=WORKERS.pop(), state=VSTATES.pop())
+        # if obj.state.active:
+        #     yield Vote(
+        #         votable=obj, user=WORKERS.pop(), state=VSTATES.pop())
 
     yield ticket(
         "Föö fails to bar when baz", project=PROJECTS.pop())
@@ -226,7 +226,7 @@ def tickets_objects():
     WTYPES = Cycler(WishTypes.objects())
     MILESTONES = Cycler(Milestone.objects.all())
     for t in Ticket.objects.all():
-        t.set_author_votes()
+        # t.set_author_votes()
         if t.id % 4:
             yield Deployment(
                 milestone=MILESTONES.pop(), ticket=t,
@@ -268,7 +268,7 @@ def tickets_objects():
 def clockings_objects():
     # was previously in clockings
     Company = rt.models.contacts.Company
-    Vote = rt.models.votes.Vote
+    # Vote = rt.models.votes.Vote
     SessionType = rt.models.clocking.SessionType
     Session = rt.models.clocking.Session
     Ticket = rt.models.tickets.Ticket
@@ -279,7 +279,7 @@ def clockings_objects():
             if p.has_required_roles([Worker])
             and not p.has_required_roles([SiteAdmin])]
     workers = User.objects.filter(profile__in=devs)
-    # WORKERS = Cycler(workers)
+    WORKERS = Cycler(workers)
     TYPES = Cycler(SessionType.objects.all())
     # TICKETS = Cycler(Ticket.objects.all())
     DURATIONS = Cycler([12, 138, 90, 10, 122, 209, 37, 62, 179, 233, 5])
@@ -287,17 +287,18 @@ def clockings_objects():
     # every fourth ticket is unassigned and thus listed in
     # PublicTickets
     # for i, t in enumerate(Ticket.objects.exclude(private=True)):
-    # for i, t in enumerate(Ticket.objects.all()):
-    #     if i % 4:
-    #         t.assigned_to = WORKERS.pop()
-    #         yield t
+    for i, t in enumerate(Ticket.objects.all()):
+        if i % 4:
+            t.assigned_to = WORKERS.pop()
+            yield t
 
     for u in workers:
 
-        VOTES = Cycler(Vote.objects.filter(user=u))
+        # VOTES = Cycler(Vote.objects.filter(user=u))
         # TICKETS = Cycler(Ticket.objects.filter(assigned_to=u))
-        if len(VOTES) == 0:
-            continue
+        TICKETS = Cycler(Ticket.objects.filter())
+        # if len(VOTES) == 0:
+        #     continue
 
         for offset in (0, -1, -3, -4):
 
@@ -306,7 +307,7 @@ def clockings_objects():
             ts = datetime.datetime.combine(date, datetime.time(9, 0, 0))
             for i in range(7):
                 obj = Session(
-                    ticket=VOTES.pop().votable,
+                    ticket=TICKETS.pop(),
                     session_type=TYPES.pop(), user=u)
                 obj.set_datetime('start', ts)
                 d = DURATIONS.pop()
