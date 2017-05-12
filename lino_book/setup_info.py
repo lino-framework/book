@@ -19,7 +19,6 @@ SETUP_INFO = dict(
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
         'djangorestframework', 'bleach', 'radicale',
-        'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
@@ -28,6 +27,8 @@ SETUP_INFO = dict(
         'lino_vilma',
         'lino_care',
         'commondata', 'commondata.ee', 'commondata.be'],
+    dependency_links=[
+        'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
     tests_require=['pytest'],
 
     description="The documentation for Lino",
@@ -131,6 +132,10 @@ lino_book.projects.cms
 lino_book.projects.cms.settings
 lino_book.projects.crl
 lino_book.projects.crl.fixtures
+lino_book.projects.eric
+lino_book.projects.eric.settings
+lino_book.projects.eric.settings.fixtures
+lino_book.projects.eric.tests
 lino_book.projects.homeworkschool
 lino_book.projects.homeworkschool.fixtures
 lino_book.projects.homeworkschool.settings
