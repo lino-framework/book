@@ -19,8 +19,5 @@ This section contains specs specific to :ref:`cosi`.
     sales
     tim2lino
     apc
-    iban
-    b2c
+    sepa
     
-
-
