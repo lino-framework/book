@@ -17,7 +17,7 @@ B2C in Lino Così
 
 This document describes
 Bank to Customer (B2C) communication
-as implemented by the :mod:`lino_xl.lib.b2c` plugin.
+as implemented by the :mod:`lino_cosi.lib.b2c` plugin.
 
 
 
