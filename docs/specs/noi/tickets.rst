@@ -330,8 +330,8 @@ assigned to a project:
 ==== =================== ========= ============== ============== =========
  ID   Summary             Author    Topic          Actions        Mission
 ---- ------------------- --------- -------------- -------------- ---------
- 5    Cannot create Foo   Jean      Lino Welfare   **Sleeping**
- 3    Baz sucks           Mathieu   Lino Voga      **Open**
+ 5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**
+ 3    Baz sucks           Jean      Lino Voga      **Open**
 ==== =================== ========= ============== ============== =========
 <BLANKLINE>
 
@@ -447,34 +447,35 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
-========================================================================== ============================================
- Description                                                                Actions
--------------------------------------------------------------------------- --------------------------------------------
- `#116 (⚒ Ticket 116) <Detail>`__                                           [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#113 (⛶ Ticket 113) <Detail>`__                                           [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#107 (☉ Ticket 107) <Detail>`__                                           [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#98 (☎ Ticket 98) <Detail>`__                                             [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#94 (☐ Ticket 94) <Detail>`__                                             [▶] [★] **Ready** → [☎] [☑] [☒]
- `#92 (⚒ Ticket 92) <Detail>`__                                             [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#89 (⛶ Ticket 89) <Detail>`__                                             [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#83 (☉ Ticket 83) <Detail>`__, assigned to `Luc <Detail>`__               [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#74 (☎ Ticket 74) <Detail>`__                                             [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#70 (☐ Ticket 70) <Detail>`__, assigned to `Luc <Detail>`__               [▶] [★] **Ready** → [☎] [☑] [☒]
- `#68 (⚒ Ticket 68) <Detail>`__                                             [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#65 (⛶ Ticket 65) <Detail>`__                                             [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#59 (☉ Ticket 59) <Detail>`__                                             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#50 (☎ Ticket 50) <Detail>`__                                             [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#46 (☐ Ticket 46) <Detail>`__                                             [▶] [★] **Ready** → [☎] [☑] [☒]
- `#44 (⚒ Ticket 44) <Detail>`__, assigned to `Luc <Detail>`__               [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#41 (⛶ Ticket 41) <Detail>`__                                             [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#35 (☉ Ticket 35) <Detail>`__                                             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#26 (☎ Ticket 26) <Detail>`__                                             [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#22 (☐ Ticket 22) <Detail>`__                                             [▶] [★] **Ready** → [☎] [☑] [☒]
- `#20 (⚒ Ticket 20) <Detail>`__                                             [▶] [★] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#17 (⛶ Ticket 17) <Detail>`__                                             [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__                            [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#2 (☎ Bar is not always baz) <Detail>`__, assigned to `Jean <Detail>`__   [▶] [★] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-========================================================================== ============================================
+======================================================================= ============================================
+ Description                                                             Actions
+----------------------------------------------------------------------- --------------------------------------------
+ `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
+ `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
+ `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+======================================================================= ============================================
 <BLANKLINE>
 
 
@@ -527,16 +528,16 @@ authenticated developer it looks like this:
 ===== =========================== ======== ============== ============================================ ==========
  ID    Summary                     Author   Topic          Actions                                      Mission
 ----- --------------------------- -------- -------------- -------------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
- 91    Ticket 91                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
- 67    Ticket 67                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
- 43    Ticket 43                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
- 19    Ticket 19                   Luc      Lino Voga      [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [▶] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [■] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
 ===== =========================== ======== ============== ============================================ ==========
 <BLANKLINE>
 
@@ -556,9 +557,9 @@ release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================= =========== ======== =========== ==========
- Start date   Title             Reference   Room     Actions     Memebers
------------- ----------------- ----------- -------- ----------- ----------
+============ ================= =========== ======== ===========
+ Start date   Title             Reference   Room     Actions
+------------ ----------------- ----------- -------- -----------
  15/05/2015   20150515@welket               welket   **Draft**
  13/05/2015   20150513@welsch               welsch   **Draft**
  11/05/2015   20150511@welket               welket   **Draft**
@@ -566,7 +567,7 @@ release of a new version.
  07/05/2015   20150507@welket               welket   **Draft**
  05/05/2015   20150505@welsch               welsch   **Draft**
  03/05/2015   20150503@welket               welket   **Draft**
-============ ================= =========== ======== =========== ==========
+============ ================= =========== ======== ===========
 <BLANKLINE>
 
 
@@ -749,9 +750,9 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | end_user        | End user        | Only rows concerning this end user.                              |
 +-----------------+-----------------+------------------------------------------------------------------+
-| assigned_to     | Voted by        | Only tickets having a vote by this user.                         |
+| assigned_to     | Assigned_to     | Only tickets with this user assigned.                            |
 +-----------------+-----------------+------------------------------------------------------------------+
-| not_assigned_to | Not voted by    | Only tickets having no vote by this user.                        |
+| not_assigned_to | Not assigned to | Only that this user is not assigned to.                          |
 +-----------------+-----------------+------------------------------------------------------------------+
 | interesting_for | Interesting for | Only tickets interesting for this partner.                       |
 +-----------------+-----------------+------------------------------------------------------------------+
@@ -785,8 +786,6 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | topic           | Topic           |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
-| feasable_by     | Feasable by     | Show only tickets for which the given supplier is competent.     |
-+-----------------+-----------------+------------------------------------------------------------------+
 | has_ref         | Has reference   |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 
@@ -805,12 +804,10 @@ the detail window of a ticket.
 - **General** (general_1):
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
-    - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
+    - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
     - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
-    - (bottom_box) [visible for user consultant hoster developer senior admin]:
-      - (bottom_box_1): **Wanted skills** (faculties_DemandsByDemander), **Votes** (votes_VotesByVotable)
-      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+    - (bottom_box_2) [visible for user consultant hoster developer senior admin]: **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):
@@ -818,9 +815,12 @@ the detail window of a ticket.
       - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for), **Ticket type** (ticket_type)
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
     - **Duplicates** (DuplicatesByTicket)
-- (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
+  - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
 - **History** (changes.ChangesByMaster) [visible for senior admin]
-- **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
+- **Even more** (more2) [visible for user consultant hoster developer senior admin]:
+  - **Wanted skills** (faculties_DemandsByDemander)
+  - **Starred by** (stars.StarsByController)
+  - **Uploads** (uploads_UploadsByController)
 <BLANKLINE>
 
 

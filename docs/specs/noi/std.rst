@@ -26,7 +26,7 @@ False
 lino_noi.lib.topics
 
 >>> dd.plugins.tickets
-lino_noi.lib.tickets
+lino_noi.lib.tickets (extends_models=['Ticket'])
 
 >>> dd.plugins.clocking
 lino_noi.lib.clocking
