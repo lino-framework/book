@@ -73,6 +73,7 @@ class TestCase(TestCase):
         Ticket = rt.modules.tickets.Ticket
         Project = rt.modules.tickets.Project
         # Vote = rt.modules.votes.Vote
+        Star = rt.modules.stars.Star
         Message = rt.modules.notify.Message
         User = settings.SITE.user_model
         create(Project, name="Project")
@@ -87,7 +88,7 @@ class TestCase(TestCase):
         obj = create(
             Ticket, summary="Save the world, après moi le déluge",
             user=robin)
-        # create(Vote, votable=obj, user=aline)
+        create(Star, owner=obj, user=aline)
         
         self.assertEqual(Message.objects.count(), 0)
         
