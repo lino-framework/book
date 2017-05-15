@@ -35,9 +35,9 @@ class WorkflowTests(RemoteAuthTestCase):
         Meeting = rt.models.meetings.Meeting
         Change = rt.models.changes.Change
         User = rt.models.users.User
-        Vote = rt.models.votes.Vote
-        VoteStates = rt.models.votes.VoteStates
-        VotesByVotable = rt.actors.votes.VotesByVotable
+        # Vote = rt.models.votes.Vote
+        # VoteStates = rt.models.votes.VoteStates
+        # VotesByVotable = rt.actors.votes.VotesByVotable
         # ContentType = rt.modules.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
@@ -65,9 +65,9 @@ class WorkflowTests(RemoteAuthTestCase):
         
         ticket = create(Ticket, summary="First", user=robin)
         ticket.after_ui_save(ses, None)
-        vote = Vote.objects.get(votable=ticket)
-        self.assertEqual(vote.user, robin)
-        self.assertEqual(vote.state, VoteStates.author)
+        # vote = Vote.objects.get(votable=ticket)
+        # self.assertEqual(vote.user, robin)
+        # self.assertEqual(vote.state, VoteStates.author)
         
         def check_success(ia, **kwargs):
             rv = ia.run_from_session(ses, **kwargs)
@@ -79,25 +79,25 @@ class WorkflowTests(RemoteAuthTestCase):
         check_success(ticket.mark_closed)
         check_success(ticket.mark_refused)
         
-        Vote.objects.all().delete()
+        # Vote.objects.all().delete()
         Ticket.objects.all().delete()
         
-        self.assertEqual(Vote.objects.count(), 0)
+        # self.assertEqual(Vote.objects.count(), 0)
 
         ticket = create(
             Ticket, summary="Second", user=robin, end_user=anna)
         ticket.after_ui_save(ses, None)
-        self.assertEqual(Vote.objects.count(), 2)
-        
-        vote = Vote.objects.get(votable=ticket, user=anna)
-        self.assertEqual(vote.state, VoteStates.author)
-
-        
-        # manually creating a vote will make the vote invited:
-        vote = create(
-            Vote, votable=ticket, user=berta)
-        # vote.after_ui_save(ses, None)
-        self.assertEqual(vote.state, VoteStates.invited)
+        # self.assertEqual(Vote.objects.count(), 2)
+        #
+        # vote = Vote.objects.get(votable=ticket, user=anna)
+        # self.assertEqual(vote.state, VoteStates.author)
+        #
+        #
+        # # manually creating a vote will make the vote invited:
+        # vote = create(
+        #     Vote, votable=ticket, user=berta)
+        # # vote.after_ui_save(ses, None)
+        # self.assertEqual(vote.state, VoteStates.invited)
 
         # raise Exception("{!r}".format(
         #     VotesByVotable.submit_insert.defining_actor))

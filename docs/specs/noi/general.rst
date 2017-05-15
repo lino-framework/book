@@ -44,7 +44,7 @@ Lino Noi uses them both and extends the "library" versions:
 lino_noi.lib.clocking
 
 >>> dd.plugins.tickets
-lino_noi.lib.tickets
+lino_noi.lib.tickets (extends_models=['Ticket'])
 
 For example, a service report is part of the clocking plugin, but the
 current implementation is defined in :mod:`lino_noi.lib.clocking` (not
@@ -56,7 +56,7 @@ have both clocking and tickets.
 ['lino_noi.lib.tickets']
 
 >>> dd.plugins.tickets.needs_plugins
-['lino_xl.lib.excerpts', 'lino_xl.lib.topics', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_xl.lib.votes', 'lino_noi.lib.noi']
+['lino_xl.lib.excerpts', 'lino_xl.lib.topics', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']
 
 See also :attr:`needs_plugins <lino.core.plugin.Plugin.needs_plugins>`.
 

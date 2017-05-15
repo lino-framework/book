@@ -58,7 +58,7 @@ Lino Noi:
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role
 - contenttypes.ContentType :
-  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
+  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -76,7 +76,7 @@ Lino Noi:
 - faculties.SkillType :
   - PROTECT : faculties.Faculty.skill_type
 - lists.List :
-  - PROTECT : lists.Member.list, meetings.Meeting.list
+  - PROTECT : lists.Member.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - meetings.Meeting :
@@ -86,7 +86,7 @@ Lino Noi:
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
 - tickets.Ticket :
-  - CASCADE : faculties.Demand.demander, votes.Vote.votable
+  - CASCADE : faculties.Demand.demander
   - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
@@ -98,5 +98,5 @@ Lino Noi:
   - PROTECT : uploads.Upload.type
 - users.User :
   - CASCADE : faculties.Competence.user
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, meetings.Meeting.user, notify.Message.user, tickets.Project.assign_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, votes.Vote.user
+  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, meetings.Meeting.user, notify.Message.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>
