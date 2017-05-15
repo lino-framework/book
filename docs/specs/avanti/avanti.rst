@@ -69,3 +69,7 @@ Clients
 
 .. class:: Residence(lino.core.model.Model)
            
+
+
+
+>>> rt.show('avanti.Clients')
