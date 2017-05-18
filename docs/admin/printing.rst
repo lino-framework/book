@@ -101,6 +101,7 @@ methods:
  latex   latex   LatexBuildMethod
  pisa    pisa    PisaBuildMethod
  rtf     rtf     RtfBuildMethod
+ xml     xml     XmlBuildMethod
 ======= ======= ==================
 <BLANKLINE>
 
