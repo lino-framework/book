@@ -34,7 +34,7 @@ class DDHTests(RemoteAuthTestCase):
         Ticket = rt.models.tickets.Ticket
         Project = rt.models.tickets.Project
         User = rt.models.users.User
-        Star = rt.models.votes.Vote
+        Star = rt.models.stars.Star
         # ContentType = rt.modules.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
@@ -65,7 +65,7 @@ class DDHTests(RemoteAuthTestCase):
                     "because 1 Tickets refer to it.")
 
         
-        create(Star, votable=obj, user=robin)
+        star = create(Star, owner=obj, user=robin)
         
         try:
             robin.delete()
@@ -73,11 +73,11 @@ class DDHTests(RemoteAuthTestCase):
         except Warning as e:
             self.assertEqual(
                 str(e), "Cannot delete User Robin "
-                "because 1 Tickets refer to it.")
+                "because 1 Stars refer to it.")
 
         self.assertEqual(Star.objects.count(), 1)
         self.assertEqual(Ticket.objects.count(), 1)
-
+        star.delete()
         obj.delete()
         self.assertEqual(Star.objects.count(), 0)
         self.assertEqual(Ticket.objects.count(), 0)

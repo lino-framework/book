@@ -23,6 +23,9 @@ application. This document describes how this looks in :ref:`noi`.
 Introduction
 ============
 
+Votes are currently not installed in noi, in favor of :mod:`lino_xl.lib.stars`
+and having tickets be assignable.
+
 A **vote** is when a given user has an opinion or interest about a
 given ticket.  A special case are **vote invitations** (votes having
 state "invited") where the user did not yet express any opinion or
@@ -95,7 +98,7 @@ It is your general "To-Do list".
 Here are some examples for different users.
 
 >>> rt.login('jean').show(votes.MyTasks)
-... #doctest: +REPORT_UDIFF
+... #doctest: +REPORT_UDIFF +SKIP
 ========================================================================================== =============================================================
  Description                                                                                Actions
 ------------------------------------------------------------------------------------------ -------------------------------------------------------------
@@ -109,7 +112,7 @@ Here are some examples for different users.
 
 
 >>> rt.login('mathieu').show(votes.MyTasks)
-... #doctest: +REPORT_UDIFF
+... #doctest: +REPORT_UDIFF +SKIP
 ======================================================================================= ======================================================
  Description                                                                             Actions
 --------------------------------------------------------------------------------------- ------------------------------------------------------
@@ -121,7 +124,7 @@ Here are some examples for different users.
 
 
 >>> rt.login('luc').show(votes.MyTasks)
-... #doctest: -REPORT_UDIFF
+... #doctest: -REPORT_UDIFF +SKIP
 ==================================================================================== ======================================================
  Description                                                                          Actions
 ------------------------------------------------------------------------------------ ------------------------------------------------------
@@ -136,7 +139,7 @@ Here are some examples for different users.
 
 
 >>> rt.login('luc').show(votes.MyOffers)
-... #doctest: -REPORT_UDIFF
+... #doctest: -REPORT_UDIFF +SKIP
 ======================================================== ===========================================================
  Description                                              Actions
 -------------------------------------------------------- -----------------------------------------------------------
@@ -160,7 +163,7 @@ The state of a vote
 See :class:`lino_xl.lib.votes.choicelists.VoteStates`
 
 >>> rt.login().show(votes.VoteStates)
-... #doctest: +REPORT_UDIFF
+... #doctest: +REPORT_UDIFF +SKIP
 ======= =========== ===========
  value   name        text
 ------- ----------- -----------

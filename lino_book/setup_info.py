@@ -26,6 +26,7 @@ SETUP_INFO = dict(
         'lino_welfare',
         'lino_vilma',
         'lino_care',
+        'lino_tera',
         'commondata', 'commondata.ee', 'commondata.be'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
@@ -178,6 +179,9 @@ lino_book.projects.team.settings.fixtures
 lino_book.projects.liina
 lino_book.projects.liina.settings
 lino_book.projects.liina.settings.fixtures
+lino_book.projects.lydia
+lino_book.projects.lydia.tests
+lino_book.projects.lydia.settings
 lino_book.projects.public
 lino_book.projects.care
 lino_book.projects.care.settings

@@ -371,6 +371,9 @@ class SpecsTests(TestCase):
     def test_avanti_roles(self):
         self.run_simple_doctests('docs/specs/avanti/roles.rst')
 
+    def test_tera(self):
+        self.run_simple_doctests('docs/specs/tera.rst')
+
 
         
 
@@ -421,6 +424,9 @@ class ProjectsTests(TestCase):
     def test_adg(self):
         self.run_django_manage_test('lino_book/projects/adg')
 
+    def test_lydia(self):
+        self.run_django_manage_test('lino_book/projects/lydia')
+        
 
 class TestAppsTests(LinoTestCase):
     

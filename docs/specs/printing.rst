@@ -28,6 +28,7 @@ The Extended Library adds a series of plugins related to printing:
  latex         latex         LatexBuildMethod
  pisa          pisa          PisaBuildMethod
  rtf           rtf           RtfBuildMethod
+ xml           xml           XmlBuildMethod
  weasy2html    weasy2html    WeasyHtmlBuildMethod
  weasy2pdf     weasy2pdf     WeasyPdfBuildMethod
  wkhtmltopdf   wkhtmltopdf   WkBuildMethod

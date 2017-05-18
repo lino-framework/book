@@ -38,4 +38,5 @@ ns.setup_from_tasks(
         'lino_book.projects.care.settings.demo',
         'lino_book.projects.care_de.settings',
         'lino_book.projects.liina.settings.demo',
+        'lino_book.projects.lydia.settings.demo',
     ])

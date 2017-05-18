@@ -21,29 +21,29 @@ Calendar functions in Lino Avanti
 >>> base = '/choices/cal/Guests/partner'
 >>> show_choices("rolf", base + '?query=') #doctest: +ELLIPSIS
 <br/>
-ABAD Aabdeen (114)
-ABBAS Aabid (115)
-ABBASI Aaisha (118)
-ABDALLA Aadil (120)
+ABAD Aábdeen (114)
+ABBAS Aábid (115)
+ABBASI Aáishá (118)
+ABDALLA Aádil (120)
 ...
 
 >>> show_choices("audrey", base + '?query=') #doctest: +ELLIPSIS
 <br/>
-Aabdeen (114) from Eupen
-Aabid (115) from Eupen
-Aaisha (118) from Eupen
-Aadil (120) from Eupen
-Aaish (127) from Eupen
-Aakif (128) from Eupen
+Aábdeen (114) from Eupen
+Aábid (115) from Eupen
+Aáishá (118) from Eupen
+Aádil (120) from Eupen
+Aáish (127) from Eupen
+Aákif (128) from Eupen
 ...
 
 >>> show_choices("martina", base + '?query=') #doctest: +ELLIPSIS
 <br/>
-Aabdeen (114) from Eupen
-Aabid (115) from Eupen
-Aaisha (118) from Eupen
-Aadil (120) from Eupen
-Aaish (127) from Eupen
-Aakif (128) from Eupen
+Aábdeen (114) from Eupen
+Aábid (115) from Eupen
+Aáishá (118) from Eupen
+Aádil (120) from Eupen
+Aáish (127) from Eupen
+Aákif (128) from Eupen
 ...
 

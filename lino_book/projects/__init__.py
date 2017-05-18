@@ -48,7 +48,7 @@ Three examples of localized :ref:`cosi` applications:
    cosi_ee
 
 
-A collection of concrete :ref:`noi` example projects which can be used
+A collection of concrete example projects which can be used
 either out of the box or as a base for derivated work.
 
 - `team` is the normal "editable" user interface
@@ -65,6 +65,7 @@ either out of the box or as a base for derivated work.
    care
    care_de
    liina
+   lydia
 
 A collection of concrete :ref:`avanti` example projects.
 
