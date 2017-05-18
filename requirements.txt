@@ -12,4 +12,5 @@
 -e git+https://github.com/lino-framework/avanti.git#egg=lino_avanti
 -e git+https://github.com/lino-framework/vilma.git#egg=lino_vilma
 -e git+https://github.com/lino-framework/care.git#egg=lino_care
+-e git+https://github.com/lino-framework/tera.git#egg=lino_tera
 # -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser

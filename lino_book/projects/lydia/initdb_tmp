@@ -1,0 +1,2 @@
+django-admin.py prep --noinput --traceback --settings=lino_book.projects.lydia.settings.memory
+
