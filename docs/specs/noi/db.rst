@@ -89,6 +89,13 @@ This document describes the database structure.
 ================================== ============================ ========= =======
 <BLANKLINE>
 
+>>> print(analyzer.show_complexity_factors())
+- 42 plugins
+- 61 models
+- 239 views
+- 7 user types
+- 5 dialog actions
+<BLANKLINE>
 
 
 20160702
@@ -98,4 +105,6 @@ This document describes the database structure.
 False
 >>> 'ref' in rt.models.topics.Topic.quick_search_fields
 True
+
+
 
