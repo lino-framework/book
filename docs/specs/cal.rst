@@ -47,7 +47,7 @@ person is involved.
 |               |                     | extended configurable information about this entry.           |
 +---------------+---------------------+---------------------------------------------------------------+
 | state         | State               | The state of this entry. The state can change according to    |
-|               |                     | rules defined by the workflow, that's why we sometimes refer  |
+|               |                     | rules defined by the workflow, that’s why we sometimes refer  |
 |               |                     | to it as the life cycle.                                      |
 +---------------+---------------------+---------------------------------------------------------------+
 
