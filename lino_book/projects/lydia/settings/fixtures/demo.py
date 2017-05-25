@@ -7,6 +7,7 @@ from __future__ import print_function
 
 import datetime
 
+from django.conf import settings
 from lino.api import rt, dd, _
 from lino.utils import Cycler, i2d
 
@@ -22,6 +23,7 @@ from lino_noi.lib.users.models import create_user
 
 def objects():
     User = rt.models.users.User
+    Company = rt.models.contacts.Company
 
     cons = rt.models.users.UserTypes.items_dict['100']
     sec = rt.models.users.UserTypes.items_dict['200']
@@ -37,6 +39,19 @@ def objects():
     #yield clockings_objects()
     yield faculties_objects()
     # yield votes_objects()
+
+    obj = Company(
+        name="Tough Thorough Thought Therapies",
+        country_id="BE", vat_id="BE12 3456 7890")
+    yield obj
+    settings.SITE.site_config.update(site_company=obj)
+
+    # acct = rt.models.sepa.Account(
+    #     partner=obj, iban="BE83540256917919", bic="BBRUBEBB")
+    # yield acct
+
+    # jnl = rt.models.ledger.Journal.get_by_ref('PMO')
+    
 
 
 def clockings_objects():
