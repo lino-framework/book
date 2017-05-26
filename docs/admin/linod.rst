@@ -1,8 +1,8 @@
 .. _admin.linod:
 
-===========================
-The :manage:`linod` service
-===========================
+===============
+The Lino Daemon
+===============
 
 ..
     $ python setup.py test -s tests.DocsAdminTests.test_linod
@@ -10,38 +10,22 @@ The :manage:`linod` service
 This document explains how to install :manage:`linod` as a service on
 a production server.
 
-What's it and do I need it?
-===========================
+What it is
+==========
 
-It depends on the application whether is necessary to have
-:manage:`linod` running besides the web server.  Applications can
-declare background tasks using :func:`dd.schedule_often
-<lino.api.dd.schedule_often>` and :func:`dd.schedule_daily
-<lino.api.dd.schedule_daily>`.  These tasks will be executed only when
-:manage:`linod` is running.
+A Lino application can declare background tasks using
+:func:`dd.schedule_often <lino.api.dd.schedule_often>` and
+:func:`dd.schedule_daily <lino.api.dd.schedule_daily>`.  For example
+the :func:`send_pending_emails_often
+<lino.modlib.notify.models.send_pending_emails_often>` and
+:func:`clear_seen_messages
+<lino.modlib.notify.models.clear_seen_messages>` of the
+:mod:`lino.modlib.notify` plugin.
 
-As a system administrator you can check whether an application has
-background tasks by issuing::
-
-    $ python manage.py linod --list
-
-For example in the `team` demo project there are 4 tasks:
-
->>> from atelier.sheller import Sheller
->>> shell = Sheller("lino_book/projects/team")
->>> shell("python manage.py linod --list")
-... #doctest: +ELLIPSIS
-4 scheduled jobs:
-[1] Every 10 seconds do send_pending_emails_often() (last run: [never], next run: ...)
-[2] Every 1 day at 20:00:00 do send_pending_emails_daily() (last run: [never], next run: ...)
-[3] Every 1 day at 20:00:00 do clear_seen_messages() (last run: [never], next run: ...)
-[4] Every 10 seconds do get_new_mail() (last run: [never], next run: ...)
-
-  
-  
-
-The :manage:`linod` admin command
-=================================
+Such tasks run in the background, i.e. in another process than the web
+server. So they will be executed only when that other process is
+running.  That other process must run the :manage:`linod` admin
+command:
 
 .. management_command:: linod
 
@@ -51,17 +35,48 @@ On a development machine you simply run this in a separate
 terminal. On a production server we recommend to run this as a daemon
 via Supervisor as described below.
 
-Independently of whether it is being run as a daemon or not, this
-command requires the `schedule <https://github.com/dbader/schedule>`__
-package which you must install manually::
+
+Requires the `schedule` package
+===============================
+
+Independently of whether it is being run as a daemon or not, the
+:manage:`linod` command requires Dan Bader's `schedule
+<https://github.com/dbader/schedule>`__ package which you might need
+to install manually::
 
   $ pip install schedule
 
-Note the nice story of the `schedule` package by its author Dan Bader:
-`In Love, War, and Open-Source: Never Give Up
+Note the nice story of that package by its author : `In Love, War, and
+Open-Source: Never Give Up
 <https://dbader.org/blog/in-love-war-and-open-source-never-give-up>`__
 
 
+
+Do I need it?
+=============
+
+As a system administrator you can check whether your application has
+background tasks by issuing the following command in your project
+directory::
+
+    $ python manage.py linod --list
+
+For example in the :mod:`team <lino_book.projects.team>` demo
+project there are 4 tasks:
+
+..
+    >>> from atelier.sheller import Sheller
+    >>> shell = Sheller("lino_book/projects/team")
+
+>>> shell("python manage.py linod --list")
+... #doctest: +ELLIPSIS
+4 scheduled jobs:
+[1] Every 10 seconds do send_pending_emails_often() (last run: [never], next run: ...)
+[2] Every 1 day at 20:00:00 do send_pending_emails_daily() (last run: [never], next run: ...)
+[3] Every 1 day at 20:00:00 do clear_seen_messages() (last run: [never], next run: ...)
+[4] Every 10 seconds do get_new_mail() (last run: [never], next run: ...)
+
+  
 
 Installation instructions
 =========================
