@@ -41,6 +41,8 @@ class LibTests(LinoTestCase):
 class DocsAdminTests(TestCase):
     def test_printing(self):
         self.run_simple_doctests('docs/admin/printing.rst')
+    def test_linod(self):
+        self.run_simple_doctests('docs/admin/linod.rst')
 
 
 class DocsTests(LinoTestCase):
