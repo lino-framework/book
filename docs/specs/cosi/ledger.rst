@@ -2,9 +2,16 @@
 .. _cosi.specs.ledger:
 .. _cosi.tested.ledger:
 
-===========================
-General Ledger in Lino Così
-===========================
+=================================================
+The General Ledger: moving money between accounts
+=================================================
+
+The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
+general accounting stuff.  You application needs it when you are
+moving money between accounts.  You should have read :doc:`accounts`
+before reading this document.
+
+.. currentmodule:: lino_xl.lib.ledger
 
 .. to test only this document:
 
@@ -18,12 +25,6 @@ General Ledger in Lino Così
     >>> ses = rt.login("robin")
     >>> translation.activate('en')
 
-This document describes the concepts of general accounting as
-implemented by the :mod:`lino_xl.lib.ledger` plugin.
-
-This document is based on the following other specification:
-
-- :ref:`cosi.specs.accounting`
 
 Table of contents:
 
@@ -32,52 +33,429 @@ Table of contents:
    :local:
 
 
-What is a ledger?
-=================
+Overview
+========
 
-A ledger is a book in which the monetary transactions of a business
-are posted in the form of debits and credits (from `1
+A **ledger** is a book in which the monetary transactions of a
+business are posted in the form of debits and credits (from `1
 <http://www.thefreedictionary.com/ledger>`__).
 
-In Lino, the ledger is a central table of Movements_, owned by
-Vouchers_ which are grouped into Journals_.
+In Lino, the ledger is implemented by three database models:
+
+- A :class:`Movement` is an atomic "transfer" on a given date of a
+  given *amount* of money out of (or into) a given *account*.  It is
+  just a *conceptual* transfer, not a cash or bank transfer.  Moving
+  money *out of* an account is called "to debit", moving money *to* an
+  account is called "to credit".
+
+- Movements are never created individually but by *registering* a
+  :class:`Voucher`.  A voucher is any document which serves as legal
+  proof for a **ledger transaction**.  A ledger transaction consists of
+  *at least two* movements, and the sum of *debited* money in these
+  movements must equal the sum of *credited* money.
+
+  Examples of vouchers include invoices, bank statements, or payment
+  orders.
+
+  Vouchers are stored in the database using some subclass of the
+  :class:`Voucher` model. Note that the voucher model is never being
+  used directly.
+
+- When a voucher is registered, it receives a sequence number in a
+  :class:`Journal`.  A journal is a serieas of vouchers, numbered
+  sequentially and in chronological order.
+
+There are some secondary models and choicelists:  
+
+- Each ledger movement happens in a given **fiscal year**.
+  
+
+And then there are many subtle ways for looking at this data.
+
+- :class:`GeneralAccountsBalance`, :class:`CustomerAccountsBalance` and
+  :class:`SupplierAccountsBalance` three reports based on
+  :class:`AccountsBalance` and :class:`PartnerAccountsBalance`
+
+- :class:`Debtors` and :class:`Creditors` are tables with one row for
+  each partner who has a positive balance (either debit or credit).
+  Accessible via :menuselection:`Reports --> Ledger --> Debtors` and
+  :menuselection:`Reports --> Ledger --> Creditors`
+
+Models and actors reference
+===========================
+
+.. class:: MatchRule
+
+    A **match rule** specifies that a movement into given account can
+    be cleared using a given journal.
 
 
+.. class:: Movement
+
+    Represents an accounting movement in the ledger.
+
+    .. attribute:: value_date
+
+        The date at which this movement is to be entered into the
+        ledger.  This is usually the voucher's :attr:`entry_date
+        <lino_xl.lib.ledger.models.Voucher.entry_date>`, except
+        e.g. for bank statements where each item can have its own
+        value date.
+
+    .. attribute:: voucher
+
+        Pointer to the :class:`Voucher` who caused this movement.
+
+    .. attribute:: partner
+
+        Pointer to the partner involved in this movement. This may be
+        blank.
+
+    .. attribute:: seqno
+
+        Sequential number within a voucher.
+
+    .. attribute:: account
+
+        Pointer to the :class:`Account` that is being moved by this movement.
+
+    .. attribute:: amount
+    .. attribute:: dc
+
+    .. attribute:: match
+
+        Pointer to the :class:`Movement` that is being cleared by this
+        movement.
+
+    .. attribute:: cleared
+
+        Whether
+
+    .. attribute:: voucher_partner
+
+        A virtual field which returns the *partner of the voucher*.
+        For incoming invoices this is the supplier, for outgoing
+        invoices this is the customer, for financial vouchers this is
+        empty.
+
+    .. attribute:: voucher_link
+
+        A virtual field which shows a link to the voucher.
+
+    .. attribute:: match_link
+
+        A virtual field which shows a clickable variant of the match
+        string. Clicking it will open a table with all movements
+        having that match.
+
+           
+.. class:: Voucher
+           
+    A Voucher is a document that represents a monetary transaction.
+
+    It is *not* abstract so that :class:`Movement` can have a ForeignKey
+    to a Voucher.
+
+    A voucher is never instantiated using this base model but using
+    one of its subclasses. Examples of subclassed are sales.Invoice,
+    vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
+    etc...
+    
+    Subclasses must define a field `state`.
+
+    .. attribute:: journal
+
+        The journal into which this voucher has been booked. This is a
+        mandatory pointer to a :class:`Journal` instance.
+
+    .. attribute:: number
+
+        The sequence number of this voucher in the :attr:`journal`.
+
+        The voucher number is automatically assigned when the voucher
+        is saved for the first time.  The voucher number depends on
+        whether :attr:`yearly_numbering` is enabled or not.
+
+        There might be surprising numbering if two users create
+        vouchers in a same journal at the same time.
+
+    .. attribute:: entry_date
+
+        The date of the journal entry, i.e. when this voucher has been
+        journalized or booked.
+
+    .. attribute:: voucher_date
+
+        The date on the voucher, i.e. when this voucher has been
+        issued by its emitter.
+
+    .. attribute:: accounting_period
+
+        The accounting period and fiscal year to which this entry is
+        to be assigned to. The default value is determined from
+        :attr:`entry_date`.
+
+    .. attribute:: narration
+
+        A short explanation which ascertains the subject matter of
+        this journal entry.
+
+    .. attribute:: number_with_year
+
+
+
+           
+.. class:: PaymentTerm
+           
+    The payment term of an invoice is a convention on how the invoice
+    should be paid.
+
+    The following fields define the default value for `due_date`:
+
+    .. attribute:: days
+
+        Number of days to add to :attr:`voucher_date`.
+
+    .. attribute:: months
+
+        Number of months to add to :attr:`voucher_date`.
+
+    .. attribute:: end_of_month
+
+        Whether to move :attr:`voucher_date` to the end of month.
+
+    .. attribute:: printed_text
+
+        Used in :xfile:`sales/VatProductInvoice/trailer.html` as
+        follows::
+
+            {% if obj.payment_term.printed_text %}
+            {{parse(obj.payment_term.printed_text)}}
+            {% else %}
+            {{_("Payment terms")}} : {{obj.payment_term}}
+            {% endif %}
+
+    The :attr:`printed_text` field is important when using
+    **prepayments** or other more complex payment terms.  Lino uses a
+    rather simple approach to handle prepayment invoices: only the
+    global amount and the final due date is stored in the database,
+    all intermediate amounts and due dates are just generated in the
+    printable document. You just define one :class:`PaymentTerm
+    <lino_xl.lib.ledger.models.PaymentTerm>` row for each prepayment
+    formula and configure your :attr:`printed_text` field. For
+    example::
+
+        Prepayment <b>30%</b> 
+        ({{(obj.total_incl*30)/100}} {{obj.currency}})
+        due on <b>{{fds(obj.due_date)}}</b>, remaining 
+        {{obj.total_incl - (obj.total_incl*30)/100}} {{obj.currency}}
+        due 10 days before delivery.
+
+.. class:: AccountingPeriod
+
+    An **accounting period** is the smallest time slice to be observed
+    (declare) in accounting reports. Usually it corresponds to one
+    *month*. Except for some small companies which declare per
+    quarter.
+
+    For each period it is possible to specify the exact dates during
+    which it is allowed to register vouchers into this period, and
+    also its "state": whether it is "closed" or not.
+
+    .. attribute:: start_date
+    .. attribute:: end_date
+    .. attribute:: state
+    .. attribute:: year
+    .. attribute:: ref
+    
+
+    """
+           
+.. class:: Journal
+
+    A **journal** is a named sequence of numbered *vouchers*.
+
+    **Fields:**
+
+    .. attribute:: ref
+    .. attribute:: trade_type
+
+        Pointer to :class:`TradeTypes`.
+
+    .. attribute:: voucher_type
+
+        Pointer to an item of :class:`VoucherTypes`.
+
+    .. attribute:: journal_group
+
+        Pointer to an item of :class:`JournalGroups`.
+
+    .. attribute:: yearly_numbering
+
+        Whether the
+        :attr:`number<lino_xl.lib.ledger.models.Voucher.number>` of
+        vouchers should restart at 1 every year.
+
+    .. attribute:: force_sequence
+
+    .. attribute:: account
+    .. attribute:: printed_name
+    .. attribute:: dc
+
+        The primary booking direction.
+
+        In a journal of *sales invoices* this should be *Debit*
+        (checked), because a positive invoice total should be
+        *debited* from the customer's account.
+
+        In a journal of *purchase invoices* this should be *Credit*
+        (not checked), because a positive invoice total should be
+        *credited* from the supplier's account.
+
+        In a journal of *bank statements* this should be *Debit*
+        (checked), because a positive balance change should be
+        *debited* from the bank's general account.
+
+        In a journal of *payment orders* this should be *Credit* (not
+        checked), because a positive total means an "expense" and
+        should be *credited* from the journal's general account.
+
+        In all financial vouchers, the amount of every item increases
+        the total if its direction is opposite of the primary
+        direction.
+
+    .. attribute:: auto_check_clearings
+
+        Whether to automatically check and update the 'cleared' status
+        of involved transactions when (de)registering a voucher of
+        this journal.
+
+        This can be temporarily disabled e.g. by batch actions in
+        order to save time.
+
+    .. attribute:: template
+
+        See :attr:`PrintableType.template
+        <lino.mixins.printable.PrintableType.template>`.
+
+    
+          
+.. class:: Journals
+
+   The default table showing all instances of :class:`Journal`.
+
+.. class:: ByJournal
+
+   Mixin for journal-based tables of vouchers.
+           
+.. class:: Vouchers
+
+    The base table for all tables working on :class:`Voucher`.
+               
+.. class:: ExpectedMovements
+
+    A virtual table of :class:`DueMovement` rows, showing
+    all "expected" "movements (payments)".
+
+    Subclasses are :class:`DebtsByAccount` and :class:`DebtsByPartner`.
+
+    Also subclassed by
+    :class:`lino_xl.lib.finan.SuggestionsByVoucher`.
+
+    .. attribute:: date_until
+    .. attribute:: trade_type
+    .. attribute:: from_journal
+    .. attribute:: for_journal
+    .. attribute:: account
+    .. attribute:: partner
+    .. attribute:: project
+    .. attribute:: show_sepa
+
+           
+.. class:: DebtsByAccount
+
+    The :class:`ExpectedMovements` accessible by clicking the "Debts"
+    action button on an account.
+
+.. class:: DebtsByPartner
+
+    This is the table being printed in a Payment Reminder.  Usually
+    this table has one row per sales invoice which is not fully paid.
+    But several invoices ("debts") may be grouped by match.  If the
+    partner has purchase invoices, these are deduced from the balance.
+
+    This table is accessible by clicking the "Debts" action button on
+    a Partner.
+
+
+.. class:: PartnerVouchers    
+
+    Base class for tables of partner vouchers.
+
+    .. attribute:: cleared
+
+        - Yes : show only completely cleared vouchers.
+        - No : show only vouchers with at least one open partner movement.
+        - empty: don't care about movements.
+
+
+.. class:: AccountsBalance
+
+    A virtual table, the base class for different reports that show a
+    list of accounts with the following columns:
+
+      ref description old_d old_c during_d during_c new_d new_c
+
+    Subclasses are :class:'GeneralAccountsBalance`,
+    :class:'CustomerAccountsBalance` and
+    :class:'SupplierAccountsBalance`.
+
+.. class:: GeneralAccountsBalance
+
+    An :class:`AccountsBalance` for general accounts.           
+
+.. class:: PartnerAccountsBalance
+           
+    An :class:`AccountsBalance` for partner accounts.
+
+.. class:: CustomerAccountsBalance
+           
+    A :class:`PartnerAccountsBalance` for the TradeType "sales".
+    
+.. class:: SuppliersAccountsBalance
+
+    A :class:`PartnerAccountsBalance` for the TradeType "purchases".
+
+.. class:: DebtorsCreditors
+
+    Abstract base class for different tables showing a list of
+    partners with the following columns:
+
+      partner due_date balance actions
+
+.. class:: Debtors
+
+    Shows partners who have some debt against us.
+    Inherits from :class:`DebtorsCreditors`.
+
+.. class:: Creditors
+
+    Shows partners who give us some form of credit.
+    Inherits from :class:`DebtorsCreditors`.
+
+           
 
 
 .. _cosi.specs.ledger.movements:
 
-Movements
-=========
-
-Movements are stored in the database using the :class:`ledger.Movement
-<lino_xl.lib.ledger.models.Movement>` model.
-
 
 .. _cosi.specs.ledger.vouchers:
-
-Vouchers
-========
-
-A **voucher** is any document which serves as legal proof for a ledger
-transaction. Examples of vouchers include invoices, bank statements,
-or payment orders.
-
-Vouchers are stored in the database using the :class:`ledger.voucher
-<lino_xl.lib.ledger.models.Voucher>` model. But note that the
-voucher model is not being used directly.
 
 
 .. _cosi.specs.ledger.journals:
 
 Journals
 ========
-
-A **journal** is a named sequence of numbered *vouchers*.
-
-Journals are stored in the database using the :class:`ledger.Journal
-<lino_xl.lib.ledger.models.Journal>` model.
-
 
 >>> ses.show(ledger.Journals,
 ...     column_names="ref name trade_type account dc")
@@ -290,8 +668,20 @@ is a *credit* received from the provider, and we asked a list of
 Fiscal years
 ============
 
-Each ledger movement happens in a given **fiscal year**.  Lino has a
-table with **fiscal years**.
+Lino has a table with **fiscal years**.
+
+.. class:: FiscalYears
+
+    A choicelist with the fiscal years available in this database.
+
+    The default value for this list is 5 years starting from
+    :attr:`start_year <lino_xl.lib.ledger.Plugin.start_year>`.
+
+    If the fiscal year of your company is the same as the calendar
+    year, then the default entries in this should do.  Otherwise you
+    can override this in your
+    :attr:`workflows_module <lino.core.site.Site.workflows_module>`.
+
 
 In a default configuration there is one fiscal year for each calendar
 year between :attr:`start_year
@@ -395,4 +785,401 @@ Payment terms
 ==================== ======================================= ======================================= ======== ========= ==============
 <BLANKLINE>
 
+
+
+
+Journal groups
+==============
+
+.. class:: JournalGroups
+
+    The list of possible journal groups.
+
+    This list is used to build the main menu. For each journal group
+    there will be a menu item in the main menu.
+
+    Journals whose :attr:`journal_group <Journal.journal_group>` is
+    empty will not be available through the main user menu.
+
+    The default configuration has the following journal groups:
+
+    .. attribute:: sales
+
+        For sales journals.
+
+    .. attribute:: purchases
+
+        For purchases journals.
+
+    .. attribute:: wages
+
+        For wages journals.
+
+    .. attribute:: financial
+
+        For financial journals (bank statements and cash reports)
+
+           
+.. class:: PeriodStates
+
+    The list of possible states of an accounting period.
+    
+    .. attribute:: open
+                   
+    .. attribute:: closed
+
+
+.. class:: VoucherTypes
+           
+    A list of the voucher types available in this application. Items
+    are instances of :class:VoucherType`.
+
+    The :attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>`
+    field of a journal points to an item of this.
+
+
+           
+.. class:: VoucherType
+           
+    Base class for all items of :class:`VoucherTypes`.
+    
+    The **voucher type** defines the database model used to store
+    vouchers of this type (:attr:`model`).
+
+    But it can be more complex: actually the voucher type is defined
+    by its :attr:`table_class`, i.e. application developers can define
+    more than one *voucher type* per model by providing alternative
+    tables (views) for it.
+
+    Every Lino Cosi application has its own global list of voucher
+    types defined in the :class:`VoucherTypes` choicelist.
+
+    .. attribute:: model
+
+        The database model used to store vouchers of this type.
+        A subclass of :class:`lino_xl.lib.ledger.models.Voucher``.
+
+    .. attribute:: table_class
+
+        Must be a table on :attr:`model` and with `master_key` set to
+        the
+        :attr:`journal<lino_xl.lib.ledger.models.Voucher.journal>`.
+
+              
+
+.. class:: VoucherState
+           
+    Base class for items of :class:`VoucherStates`.
+
+    .. attribute:: editable
+                   
+        Whether a voucher in this state is editable.
+        
+    
+.. class:: VoucherStates
+           
+    The list of possible states of a voucher.
+
+    In a default configuration, vouchers can be :attr:`draft`,
+    :attr:`registered`, :attr:`cancelled` or :attr:`signed`.
+
+    .. attribute:: draft
+
+        *Draft* vouchers can be modified but are not yet visible as movements
+        in the ledger.
+
+    .. attribute:: registered
+
+        *Registered* vouchers cannot be modified, but are visible as
+        movements in the ledger.
+
+    .. attribute:: cancelled
+
+        *Cancelled* is similar to *Draft*, except that you cannot edit the
+        fields. This is used for invoices which have been sent, but the
+        customer signaled that they doen't agree. Instead of writing a
+        credit nota, you can decide to just cancel the invoice.
+
+    .. attribute:: signed
+
+        The *Signed* state is similar to *registered*, but cannot usually be
+        deregistered anymore. This state is not visible in the default
+        configuration. In order to make it usable, you must define a custom
+        workflow for :class:`lino_xl.lib.ledger.VoucherStates`.
+
+
+           
+.. class:: TradeTypes
+           
+    A choicelist with the *trade types* defined for this application.
+
+    The **trade type** is one of the basic properties of every ledger
+    operation which involves an external partner.  Every partner
+    movement belongs to one and only one trade type.
+
+    The default configuration defines the following trade types:
+
+    .. attribute:: sales
+
+        A sale transaction is when you write an invoice to a customer
+        and then expect the customer to pay it.
+
+    .. attribute:: purchases
+
+        A purchase transaction is when you get an invoice from a
+        provider who expects you to pay it.
+
+
+    .. attribute:: wages
+
+        A wage transaction is when you write a payroll (declare the
+        fact that you owe some wage to an employee) and later pay it
+        (e.g. via a payment order).
+
+
+    .. attribute:: clearings
+
+        A clearing transaction is when an employee declares that he
+        paid some invoice for you, and later you pay that money back
+        to his account.
+
+
+.. class:: TradeType
+           
+    Base class for the choices of :class:`TradeTypes`.
+
+    .. attribute:: dc
+
+        The default booking direction.
+
+    .. attribute:: price_field
+
+        The name and label of the `price` field to be defined on the
+        :class:`Product <lino.modlib.products.models.Product>`
+        database model.
+
+        With Lino Così you can define one price field per trade type.
+
+    .. attribute:: partner_account_field
+
+        The name and label of the :guilabel:`Partner account` field to
+        be defined for this trade type on the :class:`SiteConfig
+        <lino.modlib.system.models.SiteConfig>` database model.
+
+    .. attribute:: base_account_field
+
+        The name and label of the :guilabel:`Base account` field to
+        be defined for this trade type on the :class:`SiteConfig
+        <lino.modlib.system.models.SiteConfig>` database model.
+
+
+    .. attribute:: vat_account_field
+
+        The name and label of the :guilabel:`VAT account` field to be
+        defined for this trade type on the :class:`SiteConfig
+        <lino.modlib.system.models.SiteConfig>` database model.
+
+Model mixins
+============
+
+
+.. class:: SequencedVoucherItem
+
+   A :class:`VoucherItem` which also inherits from
+   :class:`lino.mixins.sequenced.Sequenced`.
+
+
+.. class:: AccountVoucherItem
+
+
+    Abstract base class for voucher items which point to an account.
+    
+    This is also a :class:`SequencedVoucherItem`.
+    
+    This is subclassed by
+    :class:`lino_xl.lib.vat.models.InvoiceItem`
+    and
+    :class:`lino_xl.lib.vatless.models.InvoiceItem`.
+           
+    It defines the :attr:`account` field and some related methods.
+
+    .. attribute:: account
+
+        ForeignKey pointing to the account (:class:`accounts.Account
+        <lino_xl.lib.accounts.models.Account>`) that is to be moved.
+
+   
+
+.. class:: VoucherItem
+           
+    Base class for items of a voucher.
+
+    Subclasses must define the following fields:
+
+    .. attribute:: voucher
+
+        Pointer to the voucher which contains this item.  Non
+        nullable.  The voucher must be a subclass of
+        :class:`ledger.Voucher<lino_xl.lib.ledger.models.Voucher>`.
+        The `related_name` must be `'items'`.
+    
+
+    .. attribute:: title
+
+        The title of this voucher.
+
+        Currently (because of :djangoticket:`19465`), this field is
+        not implemented here but in the subclasses:
+
+        :class:`lino_xl.lib.vat.models.AccountInvoice`
+        :class:`lino_xl.lib.vat.models.InvoiceItem`
+
+           
+.. class:: Matching
+
+    Model mixin for database objects that are considered *matching
+    transactions*.  A **matching transaction** is a transaction that
+    points to some other movement which it "clears" at least partially.
+
+    A movement is cleared when its amount equals the sum of all
+    matching movements.
+
+    Adds a field :attr:`match` and a chooser for it.  Requires a field
+    `partner`.  The default implementation of the chooser for
+    :attr:`match` requires a `journal`.
+
+    Base class for :class:`lino_xl.lib.vat.AccountInvoice`
+    (and e.g. `lino_xl.lib.sales.Invoice`, `lino_xl.lib.finan.DocItem`)
+    
+    .. attribute:: match
+
+       Pointer to the :class:`movement
+       <lino.modlib.ledger.models.Movement>` which is being cleared by
+       this movement.
+
+.. class:: PartnerRelated
+           
+    Base class for things that are related to one and only one trade
+    partner. This is base class for both (1) trade document vouchers
+    (e.g. invoices or offers) and (2) for the individual entries of
+    financial vouchers and ledger movements.
+
+    .. attribute:: partner
+
+        The recipient of this document. A pointer to
+        :class:`lino_xl.lib.contacts.models.Partner`.
+
+    .. attribute:: payment_term
+
+        The payment terms to be used in this document.  A pointer to
+        :class:`PaymentTerm`.
+
+    .. attribute:: recipient
+
+        Alias for the partner
+
+
+.. class:: ProjectRelated
+
+    Model mixin for objects that are related to a :attr:`project`.
+
+    .. attribute:: project
+
+        Pointer to the "project". This field exists only if the
+        :attr:`project_model <Plugin.project_model>` setting is
+        nonempty.
+
+
+Utilities
+=========
+
+.. class:: DueMovement
+           
+    A volatile object representing a group of matching movements.
+
+    A **due movement** is a movement which a partner should do in
+    order to satisfy their debt.  Or which we should do in order to
+    satisfy our debt towards a partner.
+
+    The "matching" movements of a given movement are those whose
+    `match`, `partner` and `account` fields have the same values.
+    
+    These movements are themselves grouped into "debts" and "payments".
+    A "debt" increases the debt and a "payment" decreases it.
+    
+    .. attribute:: match
+
+        The common `match` string of these movments
+
+    .. attribute:: dc
+
+        Whether I mean *my* debts and payments (towards that partner)
+        or those *of the partner* (towards me).
+
+    .. attribute:: partner
+
+    .. attribute:: account
+
+
+
+           
+
+Plugin attributes
+=================
+
+.. class:: Plugin
+
+           
+    .. attribute:: currency_symbol
+
+        Temporary approach until we add support for multiple
+        currencies.
+
+    .. attribute:: use_pcmn
+                   
+        Whether to use the PCMN notation.
+
+        PCMN stands for "plan compatable minimum normalisé" and is a
+        standardized nomenclature for accounts used in France and
+        Belgium.
+
+    .. attribute:: project_model
+
+        Leave this to `None` for normal behaviour.  Set this to a
+        string of the form `'<app_label>.<ModelName>'` if you want to
+        add an additional field `project` to all models which inherit
+        from :class:`lino_xl.lib.ledger.ProjectRelated`.
+
+                   
+    .. attribute:: intrusive_menu
+
+        Whether the plugin should integrate into the application's
+        main menu in an intrusive way.  Intrusive means that the main
+        menu gets one top-level item per journal group.
+
+        The default behaviour is `False`, meaning that these items are
+        gathered below a single item "Accounting".
+
+                   
+    .. attribute:: start_year
+
+        An integer with the calendar year in which this site starts
+        working.
+
+        This is used to fill the default list of :class:`FiscalYears`,
+        and by certain fixtures for generating demo invoices.
+
+                   
+    .. attribute:: fix_y2k
+                   
+        Whether to use a Y2K compatible representation for fiscal
+        years.
+
+
+    .. attribute:: force_cleared_until
+
+        Force all movements on vouchers with entry_date until the
+        given date to be *cleared*.  This is useful e.g. when you want
+        to keep legacy invoices in your database but not their
+        payments.
 
