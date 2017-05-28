@@ -18,7 +18,7 @@ SETUP_INFO = dict(
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
-        'djangorestframework', 'bleach', 'radicale',
+        'djangorestframework', 'bleach', 'radicale==1.1.2',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
