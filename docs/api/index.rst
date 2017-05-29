@@ -123,6 +123,21 @@ Lino Care
                 
 
 
+.. _tera:
+
+Lino Tera
+===========
+
+.. py2rst::
+
+  import lino_tera
+  print(lino_tera.SETUP_INFO['long_description'])
+
+
+.. automodule:: lino_tera
+                
+
+
                 
 .. _commondata:
 

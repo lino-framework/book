@@ -1,3 +1,4 @@
+.. _xl.specs.finan:
 .. _specs.cosi.finan:
 
 ===============================
@@ -31,3 +32,11 @@ Table of contents:
 .. contents::
    :depth: 1
    :local:
+
+
+
+.. currentmodule:: lino_xl.lib.finan
+
+.. class:: SuggestionsByVoucher
+
+      

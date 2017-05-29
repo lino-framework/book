@@ -19,3 +19,14 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
+
+
+
+>>> print(analyzer.show_complexity_factors())
+- 36 plugins
+- 74 models
+- 271 views
+- 7 user types
+- 10 dialog actions
+<BLANKLINE>
+

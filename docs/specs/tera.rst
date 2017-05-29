@@ -33,32 +33,20 @@ inherits from :mod:`lino_tera.lib.tera.settings`.
 >>> isinstance(settings.SITE, Site)
 True
 
+>>> dd.is_installed('addresses')
+False
+
 
 Time tracking (Dienstleistungen)
 ================================
 
-Lino Psico uses *time tracking* like :ref:`noi`, but unlike :ref:`noi`
-it does not have the notion of *tickets*.  When a psychologist starts
-a session, they don't specify a *ticket* but a *person*.
+Lino Tera doesn't use *time tracking* like :ref:`noi`.
 
-
->>> dd.is_installed('clocking')
-True
-
->>> dd.is_installed('tickets')
-False
-
-The clocking
-plugin has its own implementation specific to :ref:`tera`:
-
->>> dd.plugins.clocking
-lino_tera.lib.clocking (extends_models=['Session'])
-
->>> print(dd.plugins.clocking.ticket_model)
-<class 'lino_tera.lib.contacts.models.Person'>
 
 Partners
 ========
+
+(The following is maybe obsolete)
 
 In Lino Tera, the partner is the central database object.  Many
 statistical reports are based on attributes of partners.
@@ -73,10 +61,10 @@ within the years. Currently they simply create the same partner a
 second time (and add a field which connects them).
 
 >>> print(settings.SITE.project_model)
-<class 'lino_tera.lib.contacts.models.Partner'>
+<class 'lino_tera.lib.tera.models.Client'>
 
 >>> dd.plugins.contacts
-lino_presto.projects.psico.lib.contacts (extends_models=['Partner', 'Person', 'Company'])
+lino_tera.lib.contacts (extends_models=['Partner', 'Person', 'Company'])
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
 ['Company', 'Partner', 'Person', 'Household']
@@ -86,7 +74,7 @@ Therapeutical groups
 ====================
 
 >>> dd.plugins.lists
-lino_presto.projects.psico.lib.lists (extends_models=['List'])
+lino_tera.lib.lists (extends_models=['List'])
 
 >>> rt.show(lists.Lists)
 =========== ========================= ===========
@@ -105,6 +93,10 @@ lino_presto.projects.psico.lib.lists (extends_models=['List'])
 <BLANKLINE>
 
 
+.. _presto.specs.teams:
+
+Teams
+=====
 
 >>> rt.show(teams.Teams)
 ============= ================== ==================
@@ -114,3 +106,26 @@ lino_presto.projects.psico.lib.lists (extends_models=['List'])
  St.Vith
 ============= ================== ==================
 <BLANKLINE>
+
+
+The following just repeats on the first payment order what has been
+done for all orders when :mod:`lino_xl.lib.finan.fixtures.demo`
+generated them:
+
+>>> from unipath import Path
+>>> from lino.utils.xmlgen.sepa.validate import validate_pain001
+>>> ses = rt.login()
+>>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
+>>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
+xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-50.xml ('en', {})
+
+>>> rv['success']
+True
+>>> print(rv['open_url'])
+/media/xml/xml/finan.PaymentOrder-50.xml
+
+>>> fn = Path(settings.SITE.cache_dir + rv['open_url'])
+>>> fn.exists()
+True
+
+>>> validate_pain001(fn)

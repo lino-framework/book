@@ -18,7 +18,7 @@ SETUP_INFO = dict(
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
-        'djangorestframework', 'bleach', 'radicale',
+        'djangorestframework', 'bleach', 'radicale==1.1.2',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
@@ -182,6 +182,7 @@ lino_book.projects.liina.settings.fixtures
 lino_book.projects.lydia
 lino_book.projects.lydia.tests
 lino_book.projects.lydia.settings
+lino_book.projects.lydia.settings.fixtures
 lino_book.projects.public
 lino_book.projects.care
 lino_book.projects.care.settings
