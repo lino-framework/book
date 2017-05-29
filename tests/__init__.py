@@ -317,6 +317,9 @@ class SpecsTests(TestCase):
     def test_mailbox(self):
         self.run_simple_doctests('docs/specs/noi/mailbox.rst')
 
+    def test_github(self):
+        self.run_simple_doctests('docs/specs/noi/github.rst')
+
     def test_as_pdf(self):
         self.run_simple_doctests('docs/specs/noi/as_pdf.rst')
 
