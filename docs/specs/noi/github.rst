@@ -45,14 +45,14 @@ sessions that were active during the time of committing.
 >>> ses=rt.login('robin')
 >>> repo.import_all_commits(ses, sha = '8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
-==================== ========================================== ======== ======== =============== ==================================================== =========================== =========
- Repository           Sha Hash                                   Ticket   Author   Git User Name   Summary                                              Created                     Comment
--------------------- ------------------------------------------ -------- -------- --------------- ---------------------------------------------------- --------------------------- ---------
- lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632            Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00
- lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df            Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
- lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8            Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
- lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16            Luc      lsaffre         first commit                                         2014-07-07 06:22:58+00:00
-==================== ========================================== ======== ======== =============== ==================================================== =========================== =========
+==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
+ Repository           Sha Hash                                   Ticket   Author   Github User Name   Summary                                              Created                     Comment
+-------------------- ------------------------------------------ -------- -------- ------------------ ---------------------------------------------------- --------------------------- ---------
+ lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632            Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00
+ lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df            Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
+ lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8            Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
+ lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16            Luc      lsaffre            first commit                                         2014-07-07 06:22:58+00:00
+==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
 <BLANKLINE>
 >>> s = rt.models.clocking.Session(ticket = rt.models.tickets.Ticket.objects.get(pk = 1), user = rt.models.users.User.objects.get(first_name="Luc"))
 >>> s.start_date, s.end_time = rt.models.github.Commit.objects.all()[0].created.date(), rt.models.github.Commit.objects.all()[0].created.time()
@@ -63,27 +63,33 @@ sessions that were active during the time of committing.
 >>> s.save()
 >>> repo.import_all_commits(ses, sha = '8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
-==================== ========================================== ================================== ======== =============== ==================================================== =========================== =========
- Repository           Sha Hash                                   Ticket                             Author   Git User Name   Summary                                              Created                     Comment
--------------------- ------------------------------------------ ---------------------------------- -------- --------------- ---------------------------------------------------- --------------------------- ---------
- lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632   #1 (⛶ Föö fails to bar when baz)   Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00
- lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df                                      Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
- lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8                                      Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
- lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16                                      Luc      lsaffre         first commit                                         2014-07-07 06:22:58+00:00
-==================== ========================================== ================================== ======== =============== ==================================================== =========================== =========
+==================== ========================================== ================================== ======== ================== ==================================================== =========================== =========
+ Repository           Sha Hash                                   Ticket                             Author   Github User Name   Summary                                              Created                     Comment
+-------------------- ------------------------------------------ ---------------------------------- -------- ------------------ ---------------------------------------------------- --------------------------- ---------
+ lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632   #1 (⛶ Föö fails to bar when baz)   Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00
+ lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df                                      Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
+ lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8                                      Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
+ lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16                                      Luc      lsaffre            first commit                                         2014-07-07 06:22:58+00:00
+==================== ========================================== ================================== ======== ================== ==================================================== =========================== =========
 <BLANKLINE>
->>> s2 = s
->>> s2.ticket = rt.models.tickets.Ticket.objects.get(pk = 2)
->>> s2.id = None
->>> s2.save()
+
+>>> s.ticket = rt.models.tickets.Ticket.objects.get(pk = 2)
+>>> s.id, s1id = None, s.id
+>>> s.save()
 >>> repo.import_all_commits(ses, sha = '8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
-==================== ========================================== ================================== ======== =============== ==================================================== =========================== ================================================================
- Repository           Sha Hash                                   Ticket                             Author   Git User Name   Summary                                              Created                     Comment
--------------------- ------------------------------------------ ---------------------------------- -------- --------------- ---------------------------------------------------- --------------------------- ----------------------------------------------------------------
- lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632   #1 (⛶ Föö fails to bar when baz)   Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00   #1 (⛶ Föö fails to bar when baz), #2 (☎ Bar is not always baz)
- lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df                                      Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
- lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8                                      Luc      lsaffre         http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
- lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16                                      Luc      lsaffre         first commit                                         2014-07-07 06:22:58+00:00
-==================== ========================================== ================================== ======== =============== ==================================================== =========================== ================================================================
+==================== ========================================== ================================== ======== ================== ==================================================== =========================== ================================================================
+ Repository           Sha Hash                                   Ticket                             Author   Github User Name   Summary                                              Created                     Comment
+-------------------- ------------------------------------------ ---------------------------------- -------- ------------------ ---------------------------------------------------- --------------------------- ----------------------------------------------------------------
+ lino-framework:noi   8bac51399644261ce1a216a299a1dd3aa5c63632   #1 (⛶ Föö fails to bar when baz)   Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0726.html   2014-07-26 05:02:49+00:00   #1 (⛶ Föö fails to bar when baz), #2 (☎ Bar is not always baz)
+ lino-framework:noi   54d694931acc7c66c93deebd6a1377e9480360df                                      Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0708.html   2014-07-08 20:11:05+00:00
+ lino-framework:noi   e2ac08a8031fecd19c96117a787b5c932bf223a8                                      Luc      lsaffre            http://docs.lino-framework.org/blog/2014/0707.html   2014-07-07 06:28:30+00:00
+ lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16                                      Luc      lsaffre            first commit                                         2014-07-07 06:22:58+00:00
+==================== ========================================== ================================== ======== ================== ==================================================== =========================== ================================================================
 <BLANKLINE>
+>>> s.delete()
+>>> s.id = s1id
+>>> s.delete()
+>>> repo.commits.all().delete()
+(4, {u'github.Commit': 4})
+>>> repo.delete()
