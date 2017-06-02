@@ -15,6 +15,20 @@ The github module
     >>> from lino.api.doctest import *
 
 
+Requirements
+============
+If requests raises::
+
+    SSLError
+    ('bad handshake: SysCallError(0, None)',)
+
+You might need the pyOpenssl package. install it with::
+
+    >>> pip install pyopenssl
+
+How it works
+============
+
 The :mod:`lino_xl.lib.github` module is a plugin to help with tracking what was
 committed by who on what ticket.
 
