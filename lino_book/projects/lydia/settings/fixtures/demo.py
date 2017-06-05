@@ -16,7 +16,7 @@ from lino_xl.lib.cal.choicelists import DurationUnits
 #from lino_xl.lib.clocking.roles import Worker
 from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
-from lino_noi.lib.users.models import create_user
+from lino_xl.lib.online.users.models import create_user
 
 #from lino_xl.lib.clocking.choicelists import ReportingTypes
 
