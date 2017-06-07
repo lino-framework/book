@@ -22,5 +22,5 @@ from lino_book.projects.team.settings.demo import *
 class Site(Site):
 
     default_ui = 'lino.modlib.bootstrap3'
-    default_user = 'anonymous'
+    # default_user = 'anonymous'
 
