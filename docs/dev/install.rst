@@ -83,10 +83,49 @@ System requirements
 
 .. _lino.dev.env:
 
+Get the sources
+===============
+
+You might theoretically install Lino using ``pip install lino``, but
+this method isn't currently being tested very thoroughly. So in most
+cases we currently recommend to use the development version because
+you will probably want to use Lino's newest features before they get
+released on PyPI.
+
+Create a directory (e.g. :file:`~/repositories`) meant to hold your
+working copies of version-controlled software projects, `cd` to that
+directory and and do::
+
+  $ mkdir ~/repositories
+  $ cd ~/repositories
+  $ git clone https://github.com/lino-framework/lino.git
+  $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/noi.git
+  $ git clone https://github.com/lino-framework/book.git
+
+You should now have four directories called `~/repositories/lino`,
+`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
+each of which contains a file :xfile:`setup.py` and a whole tree of
+other files and directories.
+
+One possible problem here is that some repositories might have a big
+size.  If you just want to get the latest version and don't plan to
+submit any pull requests, then you can reduce download size by adding
+``--depth 1`` and ``-b master`` options::
+
+  $ git clone --depth 1 -b master https://...
+
+(as explained in `this question on stackoverflow
+<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
+or Nicola Paolucci's blog entry `How to handle big repositories with
+git
+<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
+
+
 Set up a Python environment
 ===========================
 
-Before you actually install Lino into your Python, we recommend to
+Before you actually install the Lino sources into your system Python environment, we recommend to
 create a new Python environment using virtualenv_.
 
 If you have never used virtual environments before, then on a Debian
@@ -94,21 +133,29 @@ system you will do something like::
 
         $ sudo pip install virtualenv
         $ mkdir ~/virtualenvs
+        $ # Here is how to create a new virgin python environment
+        $ virtualenv --python=python2 ~/virtualenvs/a
+        $ # To *activate* this environment, you will type::
+        $ . ~/virtualenvs/a/bin/activate
 
-Here is how to create a new virgin environment::
-        
-        $ virtualenv ~/virtualenvs/a
+The reason for creating a new environment is to separate Lino from your system install of python. The main advantages
+are; if you are also developing other things with python you will require different packages then what lino-uses.
+Also if you wish to remove Lino from your system you only need to remove the source files and the virtualenv. Rather
+than trying to remove lino's dependencies from the system environment without breaking any other programs that use
+python.
 
-To *activate* this environment, you will type::
 
-    $ . ~/virtualenvs/a/bin/activate
-
-In a normal situation, all your Python projects can use the same
-virtual environment.  So you probably want to add above line to your
-:xfile:`.bashrc` file::
+If you know that you are only going to be using python with lino.
+You probably want to add above line to your :xfile:`.bashrc` file.
+This will activate the lino envorment whenever you open a bash shell::
 
     $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
 
+Otherwise if you want a quick way to activate your lino python enviorment you can add an alias to your :xfile:`.bashrc` file::
+
+    $ echo "alias lpy='.  ~/virtualenvs/a/bin/activate" >> ~/.bashrc
+    $ . ~/.bashrc # To run the new alias
+    $ lpy # Activates the environment
          
 .. rubric:: Notes
 
@@ -136,45 +183,6 @@ You should never **rename** a virtualenv (they are not designed for
 that), but you can easily create a new one and remove the old one.
 
 
-Get the sources
-===============
-
-You might theoretically install Lino using ``pip install lino``, but
-this method isn't currently being tested very thoroughly. So in most
-cases we currently recommend to use the development version because
-you will probably want to use Lino's newest features before they get
-released on PyPI.
-
-Create a directory (e.g. :file:`~/repositories`) meant to hold your
-working copies of version-controlled software projects, `cd` to that
-directory and and do::
-
-  $ mkdir ~/repositories
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/cosi.git
-  $ git clone https://github.com/lino-framework/book.git
-
-You should now have four directories called `~/repositories/lino`,
-`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
-each of which contains a file :xfile:`setup.py` and a whole tree of
-other files and directories.
-
-One possible problem here is that some repositories might have a big
-size.  If you just want to get the latest version and don't plan to
-submit any pull requests, then you can reduce download size by adding
-``--depth 1`` and ``-b master`` options::
-
-  $ git clone --depth 1 -b master https://...
-
-(as explained in `this question on stackoverflow
-<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
-or Nicola Paolucci's blog entry `How to handle big repositories with
-git
-<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
-
-
 Installation
 ============
 
@@ -186,7 +194,7 @@ Commands::
 
   $ pip install -e lino
   $ pip install -e xl
-  $ pip install -e cosi
+  $ pip install -e noi
   $ pip install -e book
 
 These commands take some time because they will download and install
@@ -282,11 +290,12 @@ Initialize the demo databases
 =============================
 
 The Lino Book contains a series of demo projects, each of which has
-its own database. These databases need to be initialized before you
+its own sqlite database. These databases need to be initialized before you
 can use these projects.
 
 The easiest way to do this is to run the :cmd:`inv prep` command
-from within your copy of the :ref:`book` repository::
+from within your copy of the :ref:`book` repository.
+This will find all projects in :mod:`lino_book.projects` and initialise the database with demo data::
 
     $ cd ~/repositories/book
     $ inv prep
@@ -302,6 +311,12 @@ file, and this file uses :mod:`lino.invlib`, which (together with
 :mod:`atelier.invlib` from which it inherits) defines a whole series
 of commands like :cmd:`inv prep` or :cmd:`inv test`.
 
+Note that this is the same as doing the following for each project::
+
+    $ cd lino_book/projects/min1
+    $ python manage.py prep
+
+You can learn more about atelier_ in :doc:`projects`
 
 
 Running your first Lino site
