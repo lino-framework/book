@@ -35,7 +35,7 @@ class QuickTest(RemoteAuthTestCase):
         """
         #~ print "20130321 test00 started"
         self.user_root = settings.SITE.user_model(
-            username='root', language='en', profile='900')
+            username='root', language='en', user_type='900')
         self.user_root.save()
 
         self.assertEqual(1 + 1, 2)

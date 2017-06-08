@@ -7,7 +7,7 @@ class Site(Site):
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.system'
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
         yield 'pisa'
 
 SITE = Site(globals())

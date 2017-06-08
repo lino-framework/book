@@ -42,7 +42,7 @@ class Site(Site):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.gfks'
         yield 'lino.modlib.system'
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
         yield 'lino_xl.lib.countries'
         yield 'lino_xl.lib.contacts'
         yield 'lino_xl.lib.households'

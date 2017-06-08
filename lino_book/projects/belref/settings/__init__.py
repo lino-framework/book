@@ -31,7 +31,7 @@ class Site(Site):
         yield super(Site, self).get_installed_apps()
         # yield 'lino.modlib.bootstrap3'
         #~ yield 'lino.modlib.gfks'
-        #~ yield 'lino.modlib.users'
+        #~ yield 'lino.modlib.auth'
         yield 'lino.modlib.system'
         yield 'lino_xl.lib.statbel.countries'
         #~ yield 'lino_xl.lib.contacts'
@@ -42,7 +42,7 @@ class Site(Site):
         yield 'lino_xl.lib.concepts'
         yield 'lino_book.projects.belref'
 
-    def setup_menu(self, profile, main):
+    def setup_menu(self, user_type, main):
         """
         We create a new menu from scratch because the default menu structure
         wouldn't fit.

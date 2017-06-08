@@ -14,7 +14,7 @@ class Site(Site):
         yield 'lino_xl.lib.contacts'
         #~ yield 'lino_xl.lib.notes'
         yield 'lino.modlib.changes'
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
 
         yield 'lino_book.projects.watch.entries'
 
