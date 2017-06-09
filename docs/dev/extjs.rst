@@ -58,7 +58,7 @@ This is because Lino by default generates the Javascript cache file
 this behaviour by setting :attr:`build_js_cache_on_startup
 <lino.core.site.Site.build_js_cache_on_startup>` to `True`. But when
 debugging this is not convenient because it causes Lino to generate
-*all* Javascript files (one file per user profile and language), which
+*all* Javascript files (one file per user type and language), which
 can take quite some time.
 
 

@@ -64,7 +64,7 @@ See also :attr:`needs_plugins <lino.core.plugin.Plugin.needs_plugins>`.
 User types
 ==========
 
-A default Lino Noi site has the following user profiles:
+A default Lino Noi site has the following user types:
 
 >>> rt.show(users.UserTypes)
 ======= ============ ================== ========================================
@@ -96,7 +96,7 @@ changes.
 
 A **senior** is a developer who additionaly can triage tickets.
 
-Here is a list of user profiles of those who can work on tickets:
+Here is a list of user types of those who can work on tickets:
 
 >>> from lino_xl.lib.clocking.roles import Worker
 >>> UserTypes = rt.modules.users.UserTypes

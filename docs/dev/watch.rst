@@ -45,7 +45,7 @@ recommended way except for very simple examples).  Here is the
 
 .. literalinclude:: ../../lino_book/projects/watch/settings.py
 
-We need to redefine the default list of user profiles by overriding
+We need to redefine the default list of user types by overriding
 :meth:`Site.setup_choicelists` because `contacts` adds a user group
 "office", required to see most commands.
 

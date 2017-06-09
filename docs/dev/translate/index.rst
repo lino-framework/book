@@ -144,7 +144,7 @@ Create a demo user for your language
 ------------------------------------
 
 If Lino does not yet have a default demo administrator for your
-language (:mod:`lino.modlib.users.fixtures.demo`), then you need to
+language (:mod:`lino.modlib.auth.fixtures.demo`), then you need to
 create a local fixture which adds a demo user for your language.  It's
 easy::
 

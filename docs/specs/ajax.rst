@@ -38,7 +38,7 @@ lino_book.projects.apc.settings.sestests
 >>> print(settings.SITE.default_user)
 None
 >>> print(settings.SITE.user_model)
-<class 'lino.modlib.users.models.User'>
+<class 'lino.modlib.auth.models.User'>
 >>> print(settings.SITE.remote_user_header)
 None
 >>> print(settings.SITE.get_auth_method())

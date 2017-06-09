@@ -46,6 +46,7 @@ help_texts_builder_targets = {
     # 'lino.modlib.': 'lino.modlib.lino_startup',
     'lino_xl.': 'lino_xl.lib.xl',
     'lino_noi.': 'lino_noi.lib.noi',
+    'lino_tera.': 'lino_tera.lib.tera',
     'lino_vilma.': 'lino_vilma.lib.vilma',
     'lino_cosi.': 'lino_cosi.lib.cosi',
     'lino_care.': 'lino_care.lib.care',

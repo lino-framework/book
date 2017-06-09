@@ -35,7 +35,8 @@ The default variant ("team")
     votes
     clocking
     deploy
-   
+    github
+    
    
 
 The Lino Care variant

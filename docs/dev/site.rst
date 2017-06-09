@@ -135,7 +135,7 @@ lino.modlib.extjs
 lino_xl.lib.events
 lino.modlib.printing
 lino.modlib.system
-lino.modlib.users
+lino.modlib.auth
 django.contrib.contenttypes
 lino.modlib.gfks
 lino.modlib.changes

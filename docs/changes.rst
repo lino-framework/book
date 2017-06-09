@@ -97,7 +97,7 @@ Important changes which caused a minor version bump:
 
 - Lots of optimizations and bugfixes
 
-- The :attr:`username <lino.modlib.users.models.User.username>` of a
+- The :attr:`username <lino.modlib.auth.models.User.username>` of a
   user is now nullable (can be empty). :blogref:`20160425`.
 
 
@@ -331,7 +331,7 @@ Version 1.6.11 (released :blogref:`20130723`)
         for a in super(Site,self).get_installed_apps():
             yield a
         yield 'lino.modlib.system' ## <<< this line added
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
         # continue with your own modules
         
   Also the models `SiteConfig`, `HelpText` and `TextFieldTemplate` 

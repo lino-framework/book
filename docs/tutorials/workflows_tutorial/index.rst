@@ -64,12 +64,12 @@ In the example application, you can see that the "Start" action is *not* shown
 for entries with one of the company, subject or body fields empty.
 Follow the link to the API reference for details.
 
-Note that if you test only the profile of the requesting user, 
+Note that if you test only the user_type of the requesting user, 
 or some value from ``settings``, then you'll rather define a 
 :meth:`get_view_permission 
 <lino.core.actions.Action.get_view_permission>` 
 method. That's more effivient because it is called only once for every 
-user profile at server startup.
+user user_type at server startup.
 
 
 **Why do I  have to declare ``workflow_state_field``?**

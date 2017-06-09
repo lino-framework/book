@@ -13,15 +13,15 @@ User management
     >>> from lino.api.doctest import *
 
 This document describes Lino's approach of defining and managing users
-as implemented in the :mod:`lino.modlib.users` module.
+as implemented in the :mod:`lino.modlib.auth` module.
 
 See also :doc:`/dev/users`.
 
-Lino's :mod:`lino.modlib.users` is Lino's replacement for Django's
+Lino's :mod:`lino.modlib.auth` is Lino's replacement for Django's
 :mod:`django.contrib.auth` module.  It does not require
 :mod:`django.contrib.sessions` to be installed.
 
-.. currentmodule:: lino.modlib.users
+.. currentmodule:: lino.modlib.auth
 
 
 Models
@@ -35,7 +35,7 @@ Models
 
         This is always `True`.  Compare with
         :attr:`AnonymousUser.authenticated
-        <lino.modlib.users.utils.AnonymousUser.authenticated>`.
+        <lino.modlib.auth.utils.AnonymousUser.authenticated>`.
 
    Fields:
                    
@@ -50,11 +50,11 @@ Models
         be unique but should provide a reasonably identifying
         function.
 
-    .. attribute:: profile
+    .. attribute:: user_type
 
-        The profile of a user is what defines her or his permissions.
+        The user_type of a user is what defines her or his permissions.
 
-        Users with an empty `profile` field are considered inactive and
+        Users with an empty `user_type` field are considered inactive and
         cannot log in.
 
 
@@ -189,7 +189,7 @@ Mixins
     .. attribute:: user
 
         The author of this object.
-        A pointer to :class:`lino.modlib.users.models.User`.
+        A pointer to :class:`lino.modlib.auth.models.User`.
         
 
 Choicelists
@@ -200,7 +200,7 @@ Choicelists
     The list of user types available in this application.
     
     You can see the user types available in your application via
-    :menuselection:`Explorer --> System --> User Profiles`.
+    :menuselection:`Explorer --> System --> User Types`.
 
     Every application should define at least three named user types:
 
