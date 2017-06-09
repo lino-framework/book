@@ -16,17 +16,17 @@ from lino_xl.lib.cal.choicelists import DurationUnits
 #from lino_xl.lib.clocking.roles import Worker
 from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
-from lino_xl.lib.online.users.models import create_user
+from lino_xl.lib.online.auth.models import create_user
 
 #from lino_xl.lib.clocking.choicelists import ReportingTypes
 
 
 def objects():
-    User = rt.models.users.User
+    User = rt.models.auth.User
     Company = rt.models.contacts.Company
 
-    cons = rt.models.users.UserTypes.items_dict['100']
-    sec = rt.models.users.UserTypes.items_dict['200']
+    cons = rt.models.auth.UserTypes.items_dict['100']
+    sec = rt.models.auth.UserTypes.items_dict['200']
     yield create_user("marc", cons)
     yield create_user("mathieu", cons)
     yield create_user("luc", sec)
@@ -34,7 +34,7 @@ def objects():
     USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
         username__in='mathieu marc'.split()))
-    END_USERS = Cycler(User.objects.filter(profile=''))
+    END_USERS = Cycler(User.objects.filter(user_type=''))
 
     #yield clockings_objects()
     yield faculties_objects()
@@ -61,13 +61,13 @@ def clockings_objects():
     SessionType = rt.models.clocking.SessionType
     Session = rt.models.clocking.Session
     Ticket = rt.models.contacts.Person
-    User = rt.models.users.User
-    UserTypes = rt.models.users.UserTypes
+    User = rt.models.auth.User
+    UserTypes = rt.models.auth.UserTypes
     # devs = (UserTypes.developer, UserTypes.senior)
     devs = [p for p in UserTypes.items()
             if p.has_required_roles([Worker])
             and not p.has_required_roles([SiteAdmin])]
-    workers = User.objects.filter(profile__in=devs)
+    workers = User.objects.filter(user_type__in=devs)
     WORKERS = Cycler(workers)
     TYPES = Cycler(SessionType.objects.all())
     # TICKETS = Cycler(Ticket.objects.all())
@@ -115,7 +115,7 @@ def faculties_objects():
     Competence = rt.models.faculties.Competence
     Demand = rt.models.faculties.Demand
     # Ticket = rt.models.tickets.Ticket
-    User = rt.models.users.User
+    User = rt.models.auth.User
 
     yield named(Faculty, _('Analysis'))
     yield named(Faculty, _('Code changes'))

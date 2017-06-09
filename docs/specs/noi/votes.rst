@@ -153,7 +153,7 @@ Note that Luc is not a triager, that's why he does not have an
 [Assigned] action of other people's tickets.
 
 >>> from lino_xl.lib.tickets.roles import Triager
->>> rt.login('luc').user.profile.has_required_roles([Triager])
+>>> rt.login('luc').user.user_type.has_required_roles([Triager])
 False
 
 

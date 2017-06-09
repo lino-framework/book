@@ -146,7 +146,7 @@ def my_details(sender, **kw):
 
 
 # TODO : move to plugin
-def setup_main_menu(config, site, profile, main):
+def setup_main_menu(config, site, user_type, main):
     m = main.get_item("contacts")
     m.add_action('homeworkschool.Schools')
 

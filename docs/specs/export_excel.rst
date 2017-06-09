@@ -68,13 +68,13 @@ if the client has changed these.
     set([(<class 'lino.modlib.office.roles.OfficeStaff'>, <class 'lino.modlib.office.roles.OfficeOperator'>)])
     >>> ba = cal.MyEntries.get_action_by_name("export_excel")
     >>> u = rt.login('robin').user
-    >>> ba.actor.get_view_permission(u.profile)
+    >>> ba.actor.get_view_permission(u.user_type)
     True
-    >>> ba.action.get_view_permission(u.profile)
+    >>> ba.action.get_view_permission(u.user_type)
     True
-    >>> ba.allow_view(u.profile)
+    >>> ba.allow_view(u.user_type)
     True
-    >>> ba.get_view_permission(u.profile)
+    >>> ba.get_view_permission(u.user_type)
     True
 
 >>> url = "/api/cal/MyEntries?_dc=1414106085710"

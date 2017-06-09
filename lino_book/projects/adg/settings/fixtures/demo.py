@@ -15,7 +15,7 @@ from lino.utils import Cycler  # join_words
 from lino.utils.mldbc import babel_named as named
 from lino.api import rt, dd, _
 
-from lino.modlib.users.choicelists import UserTypes
+from lino.modlib.auth.choicelists import UserTypes
 from lino_xl.lib.cal.choicelists import Recurrencies
 from lino_xl.lib.courses.choicelists import EnrolmentStates
 
@@ -54,7 +54,7 @@ def objects():
     Enrolment = rt.models.courses.Enrolment
     ClientContactType = rt.models.coachings.ClientContactType
     CoachingType = rt.models.coachings.CoachingType
-    User = rt.models.users.User
+    User = rt.models.auth.User
     EventType = rt.modules.cal.EventType
     GuestRole = rt.modules.cal.GuestRole
     Person = rt.models.contacts.Person
@@ -113,15 +113,15 @@ def objects():
     
     laura = Teacher(first_name="Laura", last_name="Lieblig")
     yield laura
-    yield User(username="laura", profile=UserTypes.teacher,
+    yield User(username="laura", user_type=UserTypes.teacher,
                partner=laura)
     
-    yield User(username="nathalie", profile=UserTypes.user)
-    yield User(username="audrey", profile=UserTypes.auditor)
-    yield User(username="martina", profile=UserTypes.coordinator)
+    yield User(username="nathalie", user_type=UserTypes.user)
+    yield User(username="audrey", user_type=UserTypes.auditor)
+    yield User(username="martina", user_type=UserTypes.coordinator)
 
     USERS = Cycler(User.objects.exclude(
-        profile__in=(UserTypes.auditor, UserTypes.admin)))
+        user_type__in=(UserTypes.auditor, UserTypes.admin)))
     
     kw = dict(monday=True, tuesday=True, thursday=True, friday=True)
     kw.update(

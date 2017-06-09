@@ -79,7 +79,7 @@ That's why (in the :meth:`setup_menu
 subclass defined in the :file:`mysite/settings.py` file of the
 :ref:`Polls tutorial <lino.tutorial.polls>`) you can say::
 
-    def setup_menu(site, ui, profile, main):
+    def setup_menu(site, ui, user_type, main):
         m = main.add_menu("polls", "Polls")
         m.add_action('polls.Questions')
         m.add_action('polls.Choices')
@@ -305,7 +305,7 @@ The :class:`Action` class
         Whether this action is readonly, i.e. does not change any data.
 
         Setting this to `False` will make the action unavailable for
-        `readonly` user profiles and will cause it to be logged when
+        `readonly` user types and will cause it to be logged when
         :attr:`log_each_action_request
         <lino.core.site.Site.log_each_action_request>` is set to `True`.
 
@@ -324,7 +324,7 @@ The :class:`Action` class
         must explicitly "say something" it when granting that privilege.
 
         Another subtlety is the fact that this attribute is used by
-        :class:`lino.modlib.users.mixins.UserAuthored`.  For example the
+        :class:`lino.modlib.auth.mixins.UserAuthored`.  For example the
         :class:`StartTicketSession
         <lino_noi.lib.clocking.actions.StartTicketSession>` action in
         :ref:`noi` is declared "readonly" because we want Workers who are

@@ -217,7 +217,7 @@ of the following fixtures:
 
 - :mod:`lino_xl.lib.notes.fixtures.demo`.
 
-- :mod:`lino.modlib.users.fixtures.demo_users`
+- :mod:`lino.modlib.auth.fixtures.demo_users`
 
 - :mod:`lino_xl.lib.countries.fixtures.few_countries`
 

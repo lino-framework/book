@@ -29,7 +29,7 @@ from lino.api import dd, rt
 from lino.utils.djangotest import TestCase
 from lino.core import constants
 
-from lino.modlib.users.choicelists import UserTypes
+from lino.modlib.auth.choicelists import UserTypes
 
 from lino.utils.instantiator import create
 
@@ -80,7 +80,7 @@ class TestCase(TestCase):
         robin = create(
             User, username='robin',
             first_name="Robin",
-            profile=UserTypes.admin)
+            user_type=UserTypes.admin)
         aline = create(
             User, username='aline',
             first_name="Aline",
@@ -92,6 +92,8 @@ class TestCase(TestCase):
         
         self.assertEqual(Message.objects.count(), 0)
         
+        ar = rt.login('robin')
+        self.client.force_login(ar.user)
         url = "/api/comments/CommentsByRFC"
         post_data = dict()
         post_data[constants.URL_PARAM_ACTION_NAME] = 'submit_insert'
@@ -100,6 +102,7 @@ class TestCase(TestCase):
         ct = ContentType.objects.get_for_model(Ticket)
         post_data[constants.URL_PARAM_MASTER_TYPE] = ct.id
         # post_data[constants.URL_PARAM_REQUESTING_PANEL] = '123'
+        self.client.force_login(robin)
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
@@ -156,7 +159,6 @@ Robin a comment? <a href="http://127.0.0.1:8000/api/tickets/Ticket/1" title="Sav
         Message.objects.all().delete()
         self.assertEqual(Message.objects.count(), 0)
         
-        ar = rt.login('robin')
         cw = ChangeWatcher(obj)
         obj.priority = 200
         obj.save_watched_instance(ar, cw)

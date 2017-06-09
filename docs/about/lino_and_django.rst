@@ -29,7 +29,7 @@ the differences between Lino and Django.
  
 - Lino also replaces `django.contrib.auth
   <https://docs.djangoproject.com/en/dev/ref/contrib/auth/>`__ by
-  :mod:`lino.modlib.users`.  I believe that `django.contrib.auth` is
+  :mod:`lino.modlib.auth`.  I believe that `django.contrib.auth` is
   not suitable for defining and maintaining complex permission systems
   because it lacks the concepts of user roles and functional groups.
   

@@ -827,7 +827,7 @@ Documentation
     
     Example: :mod:`lino.projects.pcsw` used 
     to create its own UserDetail, a subclass of 
-    :class:`lino.modlib.users.models.UserDetail`. 
+    :class:`lino.modlib.auth.models.UserDetail`. 
     But then we started to use :meth:`lino.core.actor.Actor.add_detail_tab` 
     in :mod:`lino.modlib.cal` and :mod:`lino.modlib.newcomers`.
     This didn't work since `pcsw` then created her own UserDetail.

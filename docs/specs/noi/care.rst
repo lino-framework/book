@@ -114,7 +114,7 @@ public help requests.
 
 As a **simple user** you can
 
-- configure your user profile (contact data, competences, preferences)
+- configure your user type (contact data, competences, preferences)
   
 - create your own help requests ("Where I *need* help")
   :class:`tickets.MyTickets`

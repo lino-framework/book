@@ -31,7 +31,7 @@ class Site(Site):
         yield 'lino.modlib.gfks'
         yield 'lino.modlib.extjs'
         yield 'lino.modlib.bootstrap3'
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
         yield 'lino_xl.lib.countries'
         yield 'lino_xl.lib.contacts'
         #~ yield 'lino_xl.lib.outbox'

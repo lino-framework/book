@@ -23,7 +23,7 @@ System administrator
 Rolf is a system administrator, he has a complete menu.
 
 >>> ses = rt.login('robin') 
->>> ses.user.profile
+>>> ses.user.user_type
 users.UserTypes.admin:900
 
 >>> ses.show_menu()

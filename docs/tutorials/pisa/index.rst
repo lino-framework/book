@@ -44,15 +44,15 @@ use ``"appyodt"``
 >>> settings.SITE.site_config.update(default_build_method='pisa')
 
 Let's install our well-known demo root users from
-:mod:`lino.modlib.users.fixtures.demo`:
+:mod:`lino.modlib.auth.fixtures.demo`:
 
->>> from lino.modlib.users.fixtures.demo import objects
+>>> from lino.modlib.auth.fixtures.demo import objects
 >>> for obj in objects(): 
 ...     obj.save()
 
 Or here is another demo user:
 
->>> anna = users.User(username='anna', profile='100', first_name="Anna", last_name="Andante")
+>>> anna = users.User(username='anna', user_type='100', first_name="Anna", last_name="Andante")
 >>> anna.save()
 
 Create a Person:

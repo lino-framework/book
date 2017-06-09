@@ -15,7 +15,7 @@ class Site(Site):
         yield 'lino.modlib.system'
         yield 'lino_book.projects.babel_tutorial'
 
-    def setup_menu(self, profile, main):
+    def setup_menu(self, user_type, main):
         m = main.add_menu("products", "Products")
         m.add_action(self.modules.babel_tutorial.Products)
     

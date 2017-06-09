@@ -74,7 +74,7 @@ following elements.
 
 - the content of the **main page**
 
-- the **user profiles**
+- the **user types**
 
 
 Describing a database structure

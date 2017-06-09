@@ -55,7 +55,7 @@ TODO:
 
   and add it to the Configuration menue::
 
-    def setup_config_menu(site, ui, profile, m):
+    def setup_config_menu(site, ui, user_type, m):
         m = m.add_menu("vat", config.verbose_name)
         m.add_action('vat.PaymentTerms')
         m.add_action('vat.VatRates')

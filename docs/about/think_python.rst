@@ -30,8 +30,8 @@ produces a result anyone would consider maintainable."
 For example, one of Lino's powerful features are :ref:`layouts
 <layouts>` whose purpose is to describe an input form programmatically
 in the Python language. Compare the :class:`UserDetail` classes
-defined in :class:`lino.modlib.users.desktop` and
-:class:`lino_noi.lib.users.desktop`.
+defined in :class:`lino.modlib.auth.desktop` and
+:class:`lino_noi.lib.auth.desktop`.
 
 Imagine a customer 1 who asks you to write an application 1. Then a
 second customer asks you to write a similar application, but with a

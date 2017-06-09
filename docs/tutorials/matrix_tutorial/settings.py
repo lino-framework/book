@@ -14,7 +14,7 @@ class Site(Site):
             
         #~ yield 'lino.modlib.gfks'
         yield 'lino.modlib.system'
-        yield 'lino.modlib.users'
+        yield 'lino.modlib.auth'
         #~ yield 'lino.modlib.changes'
         
         yield 'lino_xl.lib.countries'

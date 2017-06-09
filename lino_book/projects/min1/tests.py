@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2008-2016 Luc Saffre
+# Copyright 2008-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -25,7 +25,7 @@ from lino.api import dd, rt
 from lino.utils.instantiator import create_and_get
 
 from lino_xl.lib.contacts import models as contacts
-from lino.modlib.users.choicelists import UserTypes
+from lino.modlib.auth.choicelists import UserTypes
 
 Genders = dd.Genders
 
@@ -40,8 +40,16 @@ class QuickTest(RemoteAuthTestCase):
             settings.MIDDLEWARE_CLASSES, (
                 'django.middleware.common.CommonMiddleware',
                 'django.middleware.locale.LocaleMiddleware',
-                'lino.core.auth.RemoteUserMiddleware',
+                'django.contrib.sessions.middleware.SessionMiddleware',
+                'django.contrib.auth.middleware.AuthenticationMiddleware',
+                'lino.modlib.auth.middleware.Middleware',
+                'django.contrib.auth.middleware.RemoteUserMiddleware',
                 'lino.utils.ajax.AjaxExceptionResponse'))
+            # settings.MIDDLEWARE_CLASSES, (
+            #     'django.middleware.common.CommonMiddleware',
+            #     'django.middleware.locale.LocaleMiddleware',
+            #     'lino.core.auth.RemoteUserMiddleware',
+            #     'lino.utils.ajax.AjaxExceptionResponse'))
 
         Person = rt.modules.contacts.Person
         Country = rt.modules.countries.Country
@@ -133,9 +141,9 @@ Vana-Vigala küla
 78003 Vigala vald
 Estonia''')
 
-        u = create_and_get(settings.SITE.user_model,
-                           username='root', language='',
-                           profile=UserTypes.admin)
+        root = create_and_get(settings.SITE.user_model,
+                              username='root', language='',
+                              user_type=UserTypes.admin)
 
         """
         disable SITE.is_imported_partner() otherwise 
@@ -160,8 +168,9 @@ Estonia''')
             '%d?query=&an=detail&fmt=json' % luc.pk)
         #~ url = '/api/contacts/Person/%d?query=&an=detail&fmt=json' % luc.pk
         if settings.SITE.get_language_info('en'):
-            u.language = 'en'
-            u.save()
+            root.language = 'en'
+            root.save()
+            self.client.force_login(root)
             response = self.client.get(
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='en')
             result = self.check_json_result(
@@ -170,8 +179,8 @@ Estonia''')
             self.assertEqual(result['data']['gender'], "Male")
 
         if settings.SITE.get_language_info('de'):
-            u.language = 'de'
-            u.save()
+            root.language = 'de'
+            root.save()
             response = self.client.get(
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='de')
             result = self.check_json_result(
@@ -185,8 +194,8 @@ Estonia''')
             self.assertEqual(df['id'], True)
 
         if settings.SITE.get_language_info('fr'):
-            u.language = 'fr'
-            u.save()
+            root.language = 'fr'
+            root.save()
             response = self.client.get(
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='fr')
             result = self.check_json_result(
@@ -194,8 +203,8 @@ Estonia''')
             self.assertEqual(result['data']['country'], "Estonie")
             self.assertEqual(result['data']['gender'], u"Masculin")
 
-        #~ u.language = lang
-        #~ u.save()
+        #~ root.language = lang
+        #~ root.save()
         # restore is_imported_partner method
         settings.SITE.is_imported_partner = save_iip
 

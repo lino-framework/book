@@ -1,0 +1,33 @@
+Getting started
+===============
+
+Installing lino
+		
+	?Update build script?
+	exp
+	Use script? 
+
+Create a lino-project
+	Show book/lino_book/projects
+	Extending a lino-project
+	-> extend Visualizing database content from the command-line into own page for using the lino shell 
+
+Polls tutorial
+	init_db > prep
+
+?New polls app?
+	Intoduse user roles
+	purpose of the app is to have users and admins
+	admins can create and manage polls. 
+	Users get one vote per poll, can only view the results of a poll after they have voted
+     
+Project managemnt | Atelier
+	Usful but needs to have better explinations for each invocation
+		bd ci
+		?link to the test docs for test?
+
+
+Your first application
+======================
+
+

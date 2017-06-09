@@ -7,7 +7,7 @@
 
 from lino.api import dd
 from lino.core.roles import UserRole, SiteAdmin
-from lino.modlib.users.roles import Helper
+from lino.modlib.auth.roles import Helper
 from lino.modlib.comments.roles import CommentsUser, CommentsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_xl.lib.contacts.roles import ContactsStaff
@@ -15,7 +15,7 @@ from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.votes.roles import VotesStaff, VotesUser
 from lino_xl.lib.tickets.roles import TicketsUser, Triager, TicketsStaff
 from lino_xl.lib.clocking.roles import Worker
-from lino.modlib.users.choicelists import UserTypes
+from lino.modlib.auth.choicelists import UserTypes
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -45,7 +45,7 @@ class SiteAdmin(SiteAdmin, OfficeStaff, Helper, ContactsStaff, Worker,
 UserTypes.clear()
 add = UserTypes.add_item
 add('000', _("Anonymous"), UserRole, 'anonymous',
-    readonly=not dd.plugins.users.online_registration)
+    readonly=not dd.plugins.auth.online_registration)
 add('100', _("User"), SimpleUser, 'user')
 add('500', _("Connector"), Connector, 'connector')
 add('900', _("Administrator"),    SiteAdmin, 'admin')

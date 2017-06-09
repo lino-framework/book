@@ -1,8 +1,8 @@
 .. _specs.noi.github:
 
-================
+=================
 The github module
-================
+=================
 
 .. How to test only this document:
 
