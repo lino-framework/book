@@ -7,6 +7,8 @@ A read-only interface to Team using generic Bootstrap
 .. How to test just this document:
 
     $ python setup.py test -s tests.SpecsTests.test_bs3
+    $ py.test -k test_bs3
+
     
     doctest init:
 
@@ -70,7 +72,7 @@ This data is being rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-21
+28
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -92,7 +94,7 @@ This data is being rendered using plain bootstrap HTML:
 
 >>> print(soup.get_text(' ', strip=True))
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
-Tickets Home en de fr Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
+Tickets Sign in — Home en de fr Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
 <BLANKLINE>
 <BLANKLINE>
 (last update ...) Created ... by Luc Topic: Lino Welfare Site: welket Linking to #1 and to blog . This is Lino Noi ... using ...
