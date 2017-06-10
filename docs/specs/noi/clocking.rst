@@ -104,7 +104,7 @@ started some days ago.
 
 .. 
     Find the users who worked on more than one mission:
-    >>> for u in users.User.objects.all():
+    >>> for u in auth.User.objects.all():
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
     ...         print u.username, "worked on", [o for o in qs]
@@ -116,6 +116,7 @@ started some days ago.
 
     >>> url = "/api/clocking/WorkedHours?"
     >>> url += "_dc=1442341081053&cw=430&cw=83&cw=83&cw=83&cw=83&cw=83&cw=83&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ci=description&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=vc4&ci=vc5&name=0&pv=16.05.2015&pv=23.05.2015&pv=7&an=show_as_html&sr="
+    >>> test_client.force_login(rt.login('jean').user)
     >>> res = test_client.get(url, REMOTE_USER="jean")
     >>> json.loads(res.content)
     {u'open_url': u'/bs3/clocking/WorkedHours?limit=15', u'success': True}

@@ -24,6 +24,7 @@ General stuff:
 >>> from lino.api.doctest import *
 
 >>> url = "/tinymce/templates/notes/MyNotes/69/body"
+>>> test_client.force_login(rt.login('robin').user)
 >>> response = test_client.get(url, REMOTE_USER='robin')
 >>> response.status_code
 200

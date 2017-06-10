@@ -23,6 +23,7 @@ This document describes and tests the print to pdf function.
   :local:
 
 >>> settings.SITE.appy_params.update(raiseOnError=True)
+>>> test_client.force_login(rt.login('robin').user)
 >>> def mytest(k):
 ...     url = 'http://127.0.0.1:8000/api/{0}?an=as_pdf'.format(k)
 ...     res = test_client.get(url, REMOTE_USER='robin')

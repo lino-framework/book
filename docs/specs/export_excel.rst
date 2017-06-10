@@ -85,6 +85,7 @@ if the client has changed these.
 >>> url += "&pv=23.10.2014&pv=22.11.2014&pv=&pv=&pv=2&pv=&pv=&pv=&pv=&pv=y"
 >>> url += "&an=export_excel&sr=61"
 
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
@@ -145,6 +146,7 @@ Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntri
 Unicode
 =======
 
+>>> test_client.force_login(rt.login('romain').user)
 >>> res = test_client.get(url, REMOTE_USER='romain')
 >>> print(res.status_code)
 200
