@@ -83,49 +83,46 @@ System admins can see the full names:
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ======================= ============= ======== ==================================================
- Date of request      Client                  Places used   Remark   Actions
--------------------- ----------------------- ------------- -------- --------------------------------------------------
- 07/02/2017           ABDI Aátifá (136)       1                      **Requested** → [Confirm] [Cancelled] [Trying]
- 09/02/2017           ABDELNOUR Aámir (125)   1                      **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017           ABDALLAH Aáish (127)    1                      **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017           ABBASI Aáishá (118)     1                      **Confirmed** → [Cancelled] [Requested] [Trying]
- 15/02/2017           ABAD Aábdeen (114)      1                      **Requested** → [Confirm] [Cancelled] [Trying]
- **Total (5 rows)**                           **5**
-==================== ======================= ============= ======== ==================================================
+================= ======================= ======== ======== ==================================================
+ Date of request   Client                  Gender   Remark   Actions
+----------------- ----------------------- -------- -------- --------------------------------------------------
+ 07/02/2017        ABDI Aátifá (136)       Female            **Requested** → [Confirm] [Cancelled] [Trying]
+ 09/02/2017        ABDELNOUR Aámir (125)   Male              **Confirmed** → [Cancelled] [Requested] [Trying]
+ 11/02/2017        ABDALLAH Aáish (127)    Male              **Requested** → [Confirm] [Cancelled] [Trying]
+ 13/02/2017        ABBASI Aáishá (118)     Female            **Confirmed** → [Cancelled] [Requested] [Trying]
+ 15/02/2017        ABAD Aábdeen (114)      Male              **Requested** → [Confirm] [Cancelled] [Trying]
+================= ======================= ======== ======== ==================================================
 <BLANKLINE>
 
 But auditors and coordinators see only the first name and number:
 
 >>> rt.login('martina').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ========================== ============= ======== ================================================
- Date of request      Client                     Places used   Remark   Actions
--------------------- -------------------------- ------------- -------- ------------------------------------------------
- 07/02/2017           Aátifá (136) from Eupen    1                      **Requested**
- 09/02/2017           Aámir (125) from Eupen     1                      **Confirmed**
- 11/02/2017           Aáish (127) from Eupen     1                      **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017           Aáishá (118) from Eupen    1                      **Confirmed**
- 15/02/2017           Aábdeen (114) from Eupen   1                      **Requested**
- **Total (5 rows)**                              **5**
-==================== ========================== ============= ======== ================================================
+================= ========================== ======== ======== ================================================
+ Date of request   Client                     Gender   Remark   Actions
+----------------- -------------------------- -------- -------- ------------------------------------------------
+ 07/02/2017        Aátifá (136) from Eupen    Female            **Requested**
+ 09/02/2017        Aámir (125) from Eupen     Male              **Confirmed**
+ 11/02/2017        Aáish (127) from Eupen     Male              **Requested** → [Confirm] [Cancelled] [Trying]
+ 13/02/2017        Aáishá (118) from Eupen    Female            **Confirmed**
+ 15/02/2017        Aábdeen (114) from Eupen   Male              **Requested**
+================= ========================== ======== ======== ================================================
 <BLANKLINE>
 
 
-Note that teachers *can* see the full names because they must register
-presences and absences:
+Note that teachers *can* see the full names. They need it because they
+must register presences and absences:
 
 >>> rt.login('laura').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ======================= ============= ======== ==================================================
- Date of request      Client                  Places used   Remark   Actions
--------------------- ----------------------- ------------- -------- --------------------------------------------------
- 07/02/2017           ABDI Aátifá (136)       1                      **Requested**
- 09/02/2017           ABDELNOUR Aámir (125)   1                      **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017           ABDALLAH Aáish (127)    1                      **Requested**
- 13/02/2017           ABBASI Aáishá (118)     1                      **Confirmed**
- 15/02/2017           ABAD Aábdeen (114)      1                      **Requested** → [Confirm] [Cancelled] [Trying]
- **Total (5 rows)**                           **5**
-==================== ======================= ============= ======== ==================================================
+================= ======================= ======== ======== ==================================================
+ Date of request   Client                  Gender   Remark   Actions
+----------------- ----------------------- -------- -------- --------------------------------------------------
+ 07/02/2017        ABDI Aátifá (136)       Female            **Requested**
+ 09/02/2017        ABDELNOUR Aámir (125)   Male              **Confirmed** → [Cancelled] [Requested] [Trying]
+ 11/02/2017        ABDALLAH Aáish (127)    Male              **Requested**
+ 13/02/2017        ABBASI Aáishá (118)     Female            **Confirmed**
+ 15/02/2017        ABAD Aábdeen (114)      Male              **Requested** → [Confirm] [Cancelled] [Trying]
+================= ======================= ======== ======== ==================================================
 <BLANKLINE>
 

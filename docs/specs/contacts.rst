@@ -51,17 +51,16 @@ This behaviour is implemented using the :attr:`quick_search_fields
 <lino.core.model.Model.quick_search_fields>` attribute on the model.
 
 >>> contacts.Partner.quick_search_fields
-frozenset(['name'])
+frozenset(['phone', 'gsm', 'name'])
 
 
 Quickly finding a partner using its primary key
 ===============================================
 
-A special type of quick search is when the user enters a number and
-not a sequence of letters.  In that case you get the partner with that
-primary key.
+A special type of quick search is when the search string starts with
+"#".  In that case you get the partner with that primary key.
 
->>> rt.show(contacts.Partners, quick_search="123")
+>>> rt.show(contacts.Partners, quick_search="#123")
 ====================== ================ =====
  Name                   e-mail address   ID
 ---------------------- ---------------- -----

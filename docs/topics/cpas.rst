@@ -177,7 +177,7 @@ Voici la nouvelle structure (code simplifié)::
       # service = models.ForeignKey(Service)
       start_date = models.DateField()
       end_date = models.DateField()
-      agent = models.ForeignKey('users.User',verbose_name="Assistant responsable")
+      agent = models.ForeignKey('auth.User',verbose_name="Assistant responsable")
     
 À propos du champ `code_cbss` d'un Centre: 
 Quand on fait une demande ManageAccess LIST, 
@@ -288,11 +288,11 @@ Une autre idée étatit d'utiliser MTI::
         end_date = models.DateField()
 
     class SocialClient(Client):
-        social_agent = models.ForeignKey('users.User',verbose_name="Assistant social")
+        social_agent = models.ForeignKey('auth.User',verbose_name="Assistant social")
     class IntegrationClient(Client):
-        integ_agent = models.ForeignKey('users.User',verbose_name="Assistant d'insertion")
+        integ_agent = models.ForeignKey('auth.User',verbose_name="Assistant d'insertion")
     class DebtsClient(Client):
-        debts_agent = models.ForeignKey('users.User',verbose_name="Conseiller Dettes")
+        debts_agent = models.ForeignKey('auth.User',verbose_name="Conseiller Dettes")
 
   Un argument important contre l'utilisation de MTI est que nous voudrons 
   probablement avoir une table `ClientsByPerson` qui montre les trois 

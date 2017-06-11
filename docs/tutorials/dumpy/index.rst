@@ -163,11 +163,11 @@ Installed 2 object(s) from 1 fixture(s)
 Let's use the :manage:`show` command to see whether our data has been
 imported::
 
-    $ python manage.py show users.Users
+    $ python manage.py show auth.Users
 
 The output should be as follows:
 
->>> shell("python manage.py show users.Users")
+>>> shell("python manage.py show auth.Users")
 ... #doctest: +ELLIPSIS
 ========== =========== ============ ===========
  Username   User type   First name   Last name

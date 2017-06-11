@@ -20,7 +20,7 @@ Career module (tested)
    :depth: 2
 
 
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.modules.auth.UserTypes
 >>> AllLanguageKnowledges = rt.modules.cv.AllLanguageKnowledges
 
 >>> rt.show(UserTypes)
@@ -35,11 +35,11 @@ Career module (tested)
 
 >>> a = UserTypes.admin
 >>> a
-users.UserTypes.admin:900
+auth.UserTypes.admin:900
 
 >>> u = UserTypes.user
 >>> u
-users.UserTypes.user:100
+auth.UserTypes.user:100
 
 >>> AllLanguageKnowledges.required_roles
 set([<class 'lino_xl.lib.cv.roles.CareerStaff'>])

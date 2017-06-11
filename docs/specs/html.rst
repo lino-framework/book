@@ -26,5 +26,5 @@ Generating HTML
 >>> ar = rt.login('robin', renderer=settings.SITE.kernel.default_renderer)
 >>> obj = ar.user
 >>> print(E.tostring(ar.obj2html(obj, txt)))
-<a href="javascript:Lino.users.Users.detail.run(null,{ &quot;record_id&quot;: 1 })"><b>foo</b></a>
+<a href="javascript:Lino.auth.Users.detail.run(null,{ &quot;record_id&quot;: 1 })"><b>foo</b></a>
 

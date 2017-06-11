@@ -52,7 +52,7 @@ Let's install our well-known demo root users from
 
 Or here is another demo user:
 
->>> anna = users.User(username='anna', user_type='100', first_name="Anna", last_name="Andante")
+>>> anna = auth.User(username='anna', user_type='100', first_name="Anna", last_name="Andante")
 >>> anna.save()
 
 Create a Person:

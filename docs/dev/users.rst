@@ -40,7 +40,7 @@ If you don't want to reset your database, then you can write a script
 and run it with :manage:`run`. For example::
 
     from lino.api.shell import users
-    obj = users.User(username="root")
+    obj = auth.User(username="root")
     obj.set_password("1234!")
     obj.full_clean()
     obj.save()
@@ -56,10 +56,10 @@ a new user manually using the web interface, you must click their
 :class:`ChangePassword` action and set their password.
 
 >>> try:
-...     users.User.objects.get(username="test").delete()
-... except users.User.DoesNotExist:
+...     auth.User.objects.get(username="test").delete()
+... except auth.User.DoesNotExist:
 ...    pass
->>> u = users.User(username="test")
+>>> u = auth.User(username="test")
 >>> u.save()
 >>> print u.has_usable_password()
 False

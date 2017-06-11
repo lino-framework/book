@@ -19,7 +19,7 @@ If this is not empty, the logic described here does not apply.
   an :class:`AnonymousUser <lino.core.perms.AnonymousUser>` instance.
   
 Otherwise, :setting:`user_model` 
-can be either 'users.User' or 'auth.User' (the latter is not tested). 
+can be either 'auth.User' or 'auth.User' (the latter is not tested). 
 In both cases we have two more possibilities:
 
 - If :setting:`remote_user_header` 

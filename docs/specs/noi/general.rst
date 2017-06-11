@@ -66,7 +66,7 @@ User types
 
 A default Lino Noi site has the following user types:
 
->>> rt.show(users.UserTypes)
+>>> rt.show(auth.UserTypes)
 ======= ============ ================== ========================================
  value   name         text               User role
 ------- ------------ ------------------ ----------------------------------------
@@ -99,7 +99,7 @@ A **senior** is a developer who additionaly can triage tickets.
 Here is a list of user types of those who can work on tickets:
 
 >>> from lino_xl.lib.clocking.roles import Worker
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.modules.auth.UserTypes
 >>> [p.name for p in UserTypes.items()
 ...     if p.has_required_roles([Worker])]
 ['consultant', 'hoster', 'developer', 'senior', 'admin']
@@ -114,7 +114,7 @@ And here are those who don't work:
 Users
 =====
 
->>> rt.show('users.UsersOverview')
+>>> rt.show('auth.UsersOverview')
 ========== ================== ==========
  Username   User type          Language
 ---------- ------------------ ----------
@@ -147,15 +147,11 @@ Countries
 <BLANKLINE>
 
 
-The following test should actually run without an exception, but it
-continues to say the following traceback. Why?
+.. just another test:
 
->>> json_fields = 'count rows title success no_data_text param_values'
->>> kwargs = dict(fmt='json', limit=10, start=0)
->>> demo_get('robin', 'api/countries/Countries', json_fields, 9, **kwargs)
-Traceback (most recent call last):
-...
-Exception: Response status (GET /api/countries/Countries?start=0&fmt=json&limit=10 for user Robin Rood) was 403 instead of 200
+    >>> json_fields = 'count rows title success no_data_text'
+    >>> kwargs = dict(fmt='json', limit=10, start=0)
+    >>> demo_get('robin', 'api/countries/Countries', json_fields, 9, **kwargs)
 
 
 

@@ -70,6 +70,6 @@ statements.
   :class:`lino.core.tables.TableRequest` as a table. Example::
 
     do text
-    from table(ar.spawn('users.UsersOverview'))
+    from table(ar.spawn('auth.UsersOverview'))
 
 

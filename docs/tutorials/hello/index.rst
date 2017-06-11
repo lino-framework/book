@@ -200,11 +200,11 @@ You can visualize the content of your database from the command-line
 without starting a web server using Lino's :manage:`show` command. 
 For example to see the list of users, you can write::
 
-    $ python manage.py show users.Users
+    $ python manage.py show auth.Users
 
 The output should be as follows:
 
->>> shell("python manage.py show users.Users")
+>>> shell("python manage.py show auth.Users")
 ... #doctest: +ELLIPSIS
 ========== =============== ============ ===========
  Username   User type       First name   Last name
