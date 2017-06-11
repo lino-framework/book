@@ -204,10 +204,12 @@ from within any Python program.
 
 Commands::
 
-  $ pip install -e lino
-  $ pip install -e xl
-  $ pip install -e noi
-  $ pip install -e book
+  $ cd ~/repositories
+  $ pip install -e django/
+  $ pip install -e lino/
+  $ pip install -e xl/
+  $ pip install -e noi/
+  $ pip install -e book/
 
 These commands take some time because they will download and install
 all Python packages needed by Lino.
@@ -252,7 +254,7 @@ the latest version::
 
   $ cd ~/repositories/lino ; git pull 
   $ cd ~/repositories/xl ; git pull 
-  $ cd ~/repositories/cosi ; git pull 
+  $ cd ~/repositories/noi ; git pull
   $ cd ~/repositories/book ; git pull 
   $ find ~/repositories -name '*.pyc' -delete
 
@@ -288,7 +290,7 @@ The output will be about 60 lines of text, here is an excerpt::
     ...
     -e git+git+ssh://git@github.com/lino-framework/lino.git@91c28245c970210474e2cc29ab2223fa4cf49c4d#egg=lino
     -e git+git+ssh://git@github.com/lino-framework/book.git@e1ce69aaa712956cf462498aa768d2a0c93ba5ec#egg=lino_book
-    -e git+git+ssh://git@github.com/lino-framework/cosi.git@2e56f2d07a940a42e563cfb8db4fa7444d073e7b#egg=lino_cosi
+    -e git+git+ssh://git@github.com/lino-framework/noi.git@2e56f2d07a940a42e563cfb8db4fa7444d073e7b#egg=lino_noi
     -e git+git@github.com:lino-framework/xl.git@db3875a6f7d449490537d68b08daf471a7f0e573#egg=lino_xl
     lxml==3.6.4
     ...
