@@ -165,9 +165,10 @@ Activate file logging
 To activate logging to a file, you simply add a symbolic link named
 :xfile:`log` which points to the actual location::
 
-  $ ln -s /vat/log/lino/prj1 log
+  $ cd ~/mypy/prj1/
+  $ ln -s /var/log/lino/prj1 log
  
-Create two empty directores :xfile:`media` and :xfile:`config`::
+Create two empty directories :xfile:`media` and :xfile:`config`::
 
   $ mkdir media
   $ mkdir config
