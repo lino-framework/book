@@ -67,8 +67,8 @@ System requirements
     sure that :guilabel:`Source code` is checked. Or (on the command
     line) edit your :file:`/etc/apt/sources.list` file::
 
-        $ sudo nano /etc/apt/sources.list
-        $ sudo apt-get update
+      $ sudo nano /etc/apt/sources.list
+      $ sudo apt-get update
 
 #.  Similar requirement for applications which use
     :mod:`lino.modlib.weasyprint`::
@@ -92,16 +92,17 @@ cases we currently recommend to use the development version because
 you will probably want to use Lino's newest features before they get
 released on PyPI.
 
-Create a directory (e.g. :file:`~/repositories`) meant to hold your
+Create a directory (e.g. :file:`repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
 directory and and do::
 
-  $ mkdir ~/repositories
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/noi.git
-  $ git clone https://github.com/lino-framework/book.git
+  $ mkdir repositories
+  $ cd repositories
+  $ git clone https://github.com/lino-framework/lino.git; \
+    git clone https://github.com/lino-framework/xl.git; \
+    git clone https://github.com/lino-framework/noi.git; \
+    git clone https://github.com/lino-framework/cosi.git; \
+    git clone https://github.com/lino-framework/book.git
 
 
 Since June 2017 Lino requires a forked version of Django 1.11.
@@ -111,7 +112,7 @@ using the original sources::
   $ git clone --depth 1 -b ticket_20313 https://github.com/lsaffre/django.git
 
 
-You should now have five directories called `~/repositories/lino`,
+You should now have six directories called `~/repositories/lino`, `~/repositories/cosi`,
 `~/repositories/xl`, `~/repositories/django`, `~/repositories/noi` and `~/repositories/book`,
 each of which contains a file :xfile:`setup.py` and a whole tree of
 other files and directories.
@@ -121,7 +122,14 @@ size.  If you just want to get the latest version and don't plan to
 submit any pull requests, then you can reduce download size by adding
 ``--depth 1`` and ``-b master`` options::
 
-  $ git clone --depth 1 -b master https://...
+  $ # git clone --depth 1 -b master https://...
+  $ git clone --depth 1 -b master https://github.com/lino-framework/lino.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/xl.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/noi.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/cosi.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/book.git; \
+    git clone --depth 1 -b ticket_20313 https://github.com/lsaffre/django.git
+
 
 (as explained in `this question on stackoverflow
 <http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
@@ -133,51 +141,64 @@ git
 Set up a Python environment
 ===========================
 
-Before you actually install the Lino sources into your system Python environment, we recommend to
-create a new Python environment using virtualenv_.
+.. Before you actually install the Lino sources into your system Python.
+.environment, we recommend to create a new Python environment using
+.virtualenv_.
+
+Rather than installing lino to your system version of python, you
+install lino to a separate virtual python environment using virtualenv_.
 
 If you have never used virtual environments before, then on a Debian
 system you will do something like::
 
         $ sudo apt-get install virtualenv
-        $ mkdir ~/virtualenvs
-        $ # Here is how to create a new virgin python environment
-        $ virtualenv --python=python2 ~/virtualenvs/a
-        $ # To *activate* this environment, you will type::
-        $ . ~/virtualenvs/a/bin/activate
-        $ # Then update pip and setuptools to the latest version
+        $ virtualenv --python=python2 /path_to_project_dir/env
+To *activate* this environment, you will type::
+
+        $ . /path_to_project_dir/env/bin/activate
+
+Afterwards update the new environment's pip and setuptools to the latest version::
+
         $ pip install -U pip
         $ pip install -U setuptools
-
-
-The reason for creating a new environment is to separate Lino from your system install of python. The main advantages
-are; if you are also developing other things with python you will require different packages then what lino-uses.
-Also if you wish to remove Lino from your system you only need to remove the source files and the virtualenv. Rather
-than trying to remove lino's dependencies from the system environment without breaking any other programs that use
-python.
-
 
 If you know that you are only going to be using python with lino.
 You probably want to add above line to your :xfile:`.bashrc` file.
 This will activate the lino environment whenever you open a bash shell::
 
-    $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
+    $ echo ". /path_to_project_dir/env/bin/activate" >> ~/.bashrc
 
-Otherwise if you want a quick way to activate your lino python environment you can add an alias to your :xfile:`.bashrc` file::
+Otherwise if you want a quick way to activate your lino python
+environment you can add an alias to your :xfile:`.bashrc` file::
 
-    $ echo "alias lpy='.  ~/virtualenvs/a/bin/activate" >> ~/.bashrc
+    $ echo "alias lpy='.  /path_to_project_dir/env/bin/activate" >> ~/.bashrc
     $ . ~/.bashrc # To run the new alias
     $ lpy # Activates the environment
          
 .. rubric:: Notes
 
-We chose ``a`` as name for this environment. You might prefer
-``lino``, ``dev`` or ``my_first_environment``.
+We chose ``env`` for our environment, however you are free to choose any
+name for your new environment that suits. However when deploying
+production version of a lino-site, the virtual environment **must** either,
+be in the *site-folder* with the name *env* or, there must be a
+*symbolic-link* of *env* pointing to the environment folder.
 
-If virtualenvs are new to you, then read Dan Poirier's post
-`Managing multiple Python projects: Virtual environments
+
+If virtualenvs are new to you; The reason for creating a new environment
+is to separate Lino from your system install of python. The main
+advantages are; if you are also developing other things with python you
+will often require different packages then what lino-uses, and there is
+the change of version or dependency conflicts.
+
+Also if you wish to remove Lino from your system you only need to remove
+the source files and the virtual environment. Rather than trying to
+remove lino's dependencies from the system environment without breaking
+any other programs that use python.
+
+To learn more read Dan Poirier's post `Managing multiple Python projects: Virtual environments
 <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
 where he explains what they are and why you want them.
+
 
 The dot (``.``) is a synonym for the :cmd:`source` command. If you
 didn't know it, read the `manpage
@@ -204,7 +225,7 @@ from within any Python program.
 
 Commands::
 
-  $ cd ~/repositories
+  $ cd repositories
   $ pip install -e django/
   $ pip install -e lino/
   $ pip install -e xl/
@@ -252,11 +273,11 @@ So as a developer you will simply upgrade your copy of the code
 repositories often.  Here is a quick series of commands for getting
 the latest version::
 
-  $ cd ~/repositories/lino ; git pull 
-  $ cd ~/repositories/xl ; git pull 
-  $ cd ~/repositories/noi ; git pull
-  $ cd ~/repositories/book ; git pull 
-  $ find ~/repositories -name '*.pyc' -delete
+  $ cd repositories/lino ; git pull
+  $ cd repositories/xl ; git pull
+  $ cd repositories/noi ; git pull
+  $ cd repositories/book ; git pull
+  $ find repositories -name '*.pyc' -delete
 
 This process is fully described in :doc:`pull`.
 
@@ -284,7 +305,7 @@ The output will be about 60 lines of text, here is an excerpt::
     appy==0.9.4
     argh==0.26.2
     ...
-    Django==1.9.10
+    -e git+https://github.com/lsaffre/django@1b7e654c583b564992f5395449837538362ae5d0#egg=Django
     ...
     future==0.15.2
     ...
