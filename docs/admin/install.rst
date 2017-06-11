@@ -51,7 +51,7 @@ The recommenced directory structure is the following::
             │   │   ├─── django
             │   │   ├─── noi
             │   │   └─── ...
-            │   ├── log -> /var/log/lino/prj1
+            │   ├── log/ -> /var/log/lino/prj1/
             │   ├── manage.py
             │   ├── media/
             │   ├── settings.py # Site specific settings
@@ -96,14 +96,14 @@ They must have a umask 002 or 007::
 Installing Lino
 ===============
 
-First create the lino-sites folder.::
+First create the lino_sites folder.::
 
-    $ mkdir -p /usr/local/src/lino/lino-sites/
+    $ sudo mkdir -p /usr/local/src/lino/lino_sites/
 
 Create the site folder for your site, in this example we shall use *prj1*::
 
-    $ mkdir /usr/local/src/lino/lino-sites/prj1
-    $ cd /usr/local/src/lino/lino-sites/prj1
+    $ sudo mkdir /usr/local/src/lino/lino_sites/prj1
+    $ cd /usr/local/src/lino/lino_sites/prj1
 
 Follow the instructions in :doc:`/dev/install` for installing a
 *development* version of Lino inside of our new prj1 *site-folder*.
@@ -134,7 +134,7 @@ Install the python dependencies::
     $ sudo apt-get install libffi-dev libssl-dev
     $ pip install mysqlclient
 
-See :doc:`mysql_install`.
+For more info on how to setup a user and database see; :doc:`mysql_install`.
 
 .. _lino.admin.site_module:
 
@@ -173,7 +173,7 @@ Every new project directory must have at least four files:
 
 - a empty :xfile:`__init__.py` file making it able for apache to import your settings::
 
-    $ touch /usr/local/src/lino/lino-sites/prj1/__init__.py
+    $ touch /usr/local/src/lino/lino_sites/prj1/__init__.py
 
 - a file :xfile:`settings.py` **Note:** Replace the 'prj1' in this file with the name of the site-folder:
 
@@ -211,20 +211,23 @@ Follow the Django documentation at `Get your database running
 
 
 
-..  Activate file logging
-    =====================
+Activate file logging
+=====================
 
-    To activate logging to a file, you simply add a symbolic link named
-    :xfile:`log` which points to the actual location::
+To activate logging to a file, you simply add a symbolic link named
+:xfile:`log` which points to the actual location::
 
-      $ cd ~/mypy/prj1/
-      $ ln -s /var/log/lino/prj1 log
+    $ sudo mkdir -p /var/log/lino/
+    $ sudo chown :www-data /var/log/lino/
+    $ sudo chmod g+ws /var/log/lino/
+    $ sudo mkdir /var/log/lino/prj1/
+    $ cd ~/mypy/prj1/
+    $ ln -s /var/log/lino/prj1/ log/
 
-    Create two empty directories :xfile:`media` and :xfile:`config`::
+Create two empty directories :xfile:`media` and :xfile:`config`::
 
-      $ mkdir media
-      $ mkdir config
-
+    $ mkdir media
+    $ mkdir config
 
 
 Collecting static files
@@ -236,7 +239,7 @@ One part of your cache directory are the static files.  When your
 :envvar:`LINO_CACHE_ROOT` is set, you should run Django's
 :manage:`collectstatic` command::
 
-    $ cd /usr/local/src/lino/lino-sites/prj1/
+    $ cd /usr/local/src/lino/lino_sites/prj1/
     $ python manage.py collectstatic
 
 The output should be something like this::
@@ -244,14 +247,14 @@ The output should be something like this::
     You have requested to collect static files at the destination
     location as specified in your settings:
 
-        /usr/local/src/lino/lino-sites/prj1/static/
+        /usr/local/src/lino/lino_sites/prj1/static/
 
     This will overwrite existing files!
     Are you sure you want to do this?
 
     Type 'yes' to continue, or 'no' to cancel: yes
 
-    4688 static files copied to '/usr/local/src/lino/lino-sites/prj1/static/', 0 unmodified.
+    4688 static files copied to '/usr/local/src/lino/lino_sites/prj1/static/', 0 unmodified.
 
 
 ..  Note that you can chose an arbitrary project directory (any subdir
@@ -278,14 +281,29 @@ then one lino-site we advise you to move your static files to
   .. literalinclude:: mypy/prj1/apache2/apache.conf
 
 
-Do the following inorder to active the site with apache::
+Do the following in order to active the site with apache::
 
-    $ sudo nano /etc/apache2/site-available/prj1.conf
+    $ sudo nano /etc/apache2/sites-available/prj1.conf
     $ sudo a2ensite prj1.conf
+    $ sudo a2dissite 000-default
     $ sudo a2enmod wsgi
     $ sudo service apache2 restart
 
+Apache also needs write access to the media folder of each site.::
 
+    $ sudo chown www-data /usr/local/src/lino/lino_sites/prj1/media/
+
+Now you should be able to navigate to your domain and see a barebones
+lino-app.
+
+
+From here
+=========
+
+From here you should edit your settings.py file to import a
+different settings.py from another repo.
+
+Return to the index for more information :doc:`mysql_install`.
 
 Install TinyMCE language packs
 ==============================
@@ -302,3 +320,4 @@ my personal selection (de, fr, nl and et)::
   # cd /usr/share/tinymce/www
   # wget http://tim.saffre-rumma.net/dl/tmp/tinymce_language_pack.zip
   # unzip tinymce_language_pack.zip
+

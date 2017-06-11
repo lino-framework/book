@@ -18,9 +18,9 @@ SITE = Site(globals())
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prj1',
+        'NAME': 'mysite', #database name
         'USER': 'django',
-        'PASSWORD': 'My cool password',
+        'PASSWORD': 'my cool password',
         'HOST': 'localhost',                  
         'PORT': 3306,
         'OPTIONS': {
