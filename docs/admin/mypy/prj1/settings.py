@@ -1,5 +1,9 @@
 # -*- coding: UTF-8 -*-
-from lino_voga.projects.std.settings import *
+from lino.projects.std.settings import *
+
+import logging
+logging.getLogger('weasyprint').setLevel("ERROR") # see #1462
+
 
 class Site(Site):
     title = "Lino@prj1"
