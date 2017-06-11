@@ -159,11 +159,11 @@ python.
 
 If you know that you are only going to be using python with lino.
 You probably want to add above line to your :xfile:`.bashrc` file.
-This will activate the lino envorment whenever you open a bash shell::
+This will activate the lino environment whenever you open a bash shell::
 
     $ echo ". ~/virtualenvs/a/bin/activate" >> ~/.bashrc
 
-Otherwise if you want a quick way to activate your lino python enviorment you can add an alias to your :xfile:`.bashrc` file::
+Otherwise if you want a quick way to activate your lino python environment you can add an alias to your :xfile:`.bashrc` file::
 
     $ echo "alias lpy='.  ~/virtualenvs/a/bin/activate" >> ~/.bashrc
     $ . ~/.bashrc # To run the new alias
