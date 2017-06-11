@@ -21,7 +21,7 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'lino_cosi',
         'lino_noi',
-        'lino_voga',
+        # 'lino_voga',
         'lino_avanti',
         'lino_welfare',
         # 'lino_vilma', # Not on pypy, breaks dev install guide
