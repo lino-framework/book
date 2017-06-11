@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # replace 'mydomain.com' by your domain name
 # change the value of SECRET_KEY
 
@@ -13,15 +14,13 @@ def manage(filename, *args, **kw):
 
 def wsgi(globals_dict, *args, **kw):
     # Called from wsgi.py files
-    
     homedir = dirname(globals_dict['__file__'])
     sp = realpath(join(homedir, 'env/lib/python2.7/site-packages'))
     assert exists(sp)
     site.addsitedir(sp)
-    
     setup(homedir, *args, **kw)
-    from django.core.handlers.wsgi import WSGIHandler
-    globals_dict.update(application=WSGIHandler())
+    from django.core.wsgi import get_wsgi_application
+    globals_dict.update(application=get_wsgi_application())
 
 def setup(homedir, settings_module=None):
     if settings_module is None:
