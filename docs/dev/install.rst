@@ -45,7 +45,9 @@ System requirements
         $ free -h
 
 #.  We assume you have virtualenv_ and pip_ installed. See the next
-    section.
+    section. However at this point you should retrieve new lists of packages.::
+
+      $ sudo apt-get update
 
 #.  You will need to install git_ on your computer to get the source
     files::
@@ -227,11 +229,11 @@ from within any Python program.
 Commands::
 
   $ cd repositories
-  $ pip install -e django/
-  $ pip install -e lino/
-  $ pip install -e xl/
-  $ pip install -e noi/
-  $ pip install -e book/
+  $ pip install -e django
+  $ pip install -e lino
+  $ pip install -e xl
+  $ pip install -e noi
+  $ pip install -e book
 
 These commands take some time because they will download and install
 all Python packages needed by Lino.
@@ -349,7 +351,7 @@ of commands like :cmd:`inv prep` or :cmd:`inv test`.
 
 Note that this is the same as doing the following for each project::
 
-    $ cd lino_book/projects/min1
+    $ cd ~/repositories/book/lino_book/projects/min1
     $ python manage.py prep
 
 You can learn more about atelier_ in :doc:`projects`
