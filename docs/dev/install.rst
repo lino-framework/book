@@ -103,8 +103,16 @@ directory and and do::
   $ git clone https://github.com/lino-framework/noi.git
   $ git clone https://github.com/lino-framework/book.git
 
-You should now have four directories called `~/repositories/lino`,
-`~/repositories/xl` , `~/repositories/cosi` and `~/repositories/book`,
+
+Since June 2017 Lino requires a forked version of Django 1.11.
+Once our patch is accepted by the Django Team we will switch back to
+using the original sources::
+
+  $ git clone --depth 1 -b ticket_20313 https://github.com/lsaffre/django.git
+
+
+You should now have five directories called `~/repositories/lino`,
+`~/repositories/xl`, `~/repositories/django`, `~/repositories/noi` and `~/repositories/book`,
 each of which contains a file :xfile:`setup.py` and a whole tree of
 other files and directories.
 
