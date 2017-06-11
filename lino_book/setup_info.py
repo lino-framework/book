@@ -22,7 +22,7 @@ SETUP_INFO = dict(
         'lino_cosi',
         'lino_noi',
         # 'lino_voga',
-        'lino_avanti',
+        # 'lino_avanti',
         'lino_welfare',
         # 'lino_vilma', # Not on pypy, breaks dev install guide
         # 'lino_care',
