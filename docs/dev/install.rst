@@ -142,8 +142,8 @@ Set up a Python environment
 ===========================
 
 .. Before you actually install the Lino sources into your system Python.
-.environment, we recommend to create a new Python environment using
-.virtualenv_.
+   environment, we recommend to create a new Python environment using
+   virtualenv_.
 
 Rather than installing lino to your system version of python, you
 install lino to a separate virtual python environment using virtualenv_.
@@ -153,6 +153,7 @@ system you will do something like::
 
         $ sudo apt-get install virtualenv
         $ virtualenv --python=python2 /path_to_project_dir/env
+
 To *activate* this environment, you will type::
 
         $ . /path_to_project_dir/env/bin/activate

@@ -31,7 +31,7 @@ Automated way for clonging and installing the code repositories::
 
 Then you must manuall tell :ref:`atelier` about these new projects.
 Open your :xfile:`~/.atelier/config.py` file which should contain::
-  
+
      add_project("/home/john/projects/hello")
      for p in ('lino', 'xl', 'book'):
          add_project("/home/john/repositories/" + p)

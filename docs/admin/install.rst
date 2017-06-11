@@ -171,29 +171,27 @@ Project directories
 
 Every new project directory must have at least four files:
 
-- a empty :xfile:`__init__.py` file making it able for apache to import
-your settings:
+- a empty :xfile:`__init__.py` file making it able for apache to import your settings::
 
-$ touch /usr/local/src/lino/lino-sites/prj1/__init__.py
+    $ touch /usr/local/src/lino/lino-sites/prj1/__init__.py
 
 - a file :xfile:`settings.py` **Note:** Replace the 'prj1' in this file with the name of the site-folder:
 
-  .. literalinclude:: mypy/prj1/settings.py
+    .. literalinclude:: mypy/prj1/settings.py
 
 - a file :xfile:`manage.py`:
 
-  .. literalinclude:: mypy/prj1/manage.py
+    .. literalinclude:: mypy/prj1/manage.py
 
 - a file :xfile:`wsgi.py`. **Note:** Replace the 'prj1' in this file with the name of the site-folder:
 
-  .. literalinclude:: mypy/prj1/wsgi.py
+    .. literalinclude:: mypy/prj1/wsgi.py
 
 
 
-.. Note that :xfile:`manage.py` and :xfile:`wsgi.py` have the same
-content for every project. Once you have a first project running, you
-can add new projects by copying the directory of some existing
-project.
+.. Note that :xfile:`manage.py` and :xfile:`wsgi.py` have the same content for every
+   project. Once you have a first project running, you can add new
+   projects by copying the directory of some existing project.
 
 We recommend the convention of having in each project a symbolic link
 named :xfile:`env` which points to the virtualenv.
@@ -257,14 +255,14 @@ The output should be something like this::
 
 
 ..  Note that you can chose an arbitrary project directory (any subdir
-below :mod:`lino_book.projects` should do it) for running
-:manage:`collectstatic`, it does not need to be :mod:`polly
-<lino_book.projects.polly>`. That's because all Lino applications have
-the same set of staticfiles.
+    below :mod:`lino_book.projects` should do it) for running
+    :manage:`collectstatic`, it does not need to be :mod:`polly
+    <lino_book.projects.polly>`. That's because all Lino applications have
+    the same set of staticfiles.
 
 .. You need to do this only for your first local Lino project because
-static files are the same for every Lino application.  (There are
-exceptions to this rule, but we can ignore them for the moment.)
+   static files are the same for every Lino application.  (There are
+   exceptions to this rule, but we can ignore them for the moment.)
 
 
 Setting up Apache2
@@ -304,5 +302,3 @@ my personal selection (de, fr, nl and et)::
   # cd /usr/share/tinymce/www
   # wget http://tim.saffre-rumma.net/dl/tmp/tinymce_language_pack.zip
   # unzip tinymce_language_pack.zip
-  
-  
