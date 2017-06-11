@@ -74,7 +74,7 @@ System requirements
     :mod:`lino.modlib.weasyprint`::
 
       $ sudo apt-get build-dep cairocffi
-      $ sudo apt-get install libffi-dev
+      $ sudo apt-get install libffi-dev libssl-dev
 
 #.  For applications which use :mod:`lino.utils.html2xhtml`::
 
@@ -139,12 +139,16 @@ create a new Python environment using virtualenv_.
 If you have never used virtual environments before, then on a Debian
 system you will do something like::
 
-        $ sudo pip install virtualenv
+        $ sudo apt-get install virtualenv
         $ mkdir ~/virtualenvs
         $ # Here is how to create a new virgin python environment
         $ virtualenv --python=python2 ~/virtualenvs/a
         $ # To *activate* this environment, you will type::
         $ . ~/virtualenvs/a/bin/activate
+        $ # Then update pip and setuptools to the latest version
+        $ pip install -U pip
+        $ pip install -U setuptools
+
 
 The reason for creating a new environment is to separate Lino from your system install of python. The main advantages
 are; if you are also developing other things with python you will require different packages then what lino-uses.
