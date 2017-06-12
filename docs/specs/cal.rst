@@ -24,6 +24,7 @@ person is involved.
 
 >>> show_fields(rt.models.cal.Event,
 ...     'start_date start_time end_date end_time user summary description event_type state')
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +---------------+---------------------+---------------------------------------------------------------+
 | Internal name | Verbose name        | Help text                                                     |
 +===============+=====================+===============================================================+
@@ -47,7 +48,7 @@ person is involved.
 |               |                     | extended configurable information about this entry.           |
 +---------------+---------------------+---------------------------------------------------------------+
 | state         | State               | The state of this entry. The state can change according to    |
-|               |                     | rules defined by the workflow, that’s why we sometimes refer  |
+|               |                     | rules defined by the workflow, that's why we sometimes refer  |
 |               |                     | to it as the life cycle.                                      |
 +---------------+---------------------+---------------------------------------------------------------+
 
