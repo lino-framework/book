@@ -51,7 +51,7 @@ The recommenced directory structure is the following::
             │   │   ├─── django
             │   │   ├─── noi
             │   │   └─── ...
-            │   ├── log -> /var/log/lino/prj1
+            │   ├── log/ -> /var/log/lino/prj1/
             │   ├── manage.py
             │   ├── media/
             │   ├── settings.py # Site specific settings
@@ -217,8 +217,12 @@ Activate file logging
 To activate logging to a file, you simply add a symbolic link named
 :xfile:`log` which points to the actual location::
 
+    $ sudo mkdir -p /var/log/lino/
+    $ sudo chown :www-data /var/log/lino/
+    $ sudo chmod g+ws /var/log/lino/
+    $ sudo mkdir /var/log/lino/prj1/
     $ cd ~/mypy/prj1/
-    $ ln -s /var/log/lino/prj1 log
+    $ ln -s /var/log/lino/prj1/ log/
 
 Create two empty directories :xfile:`media` and :xfile:`config`::
 
@@ -296,7 +300,11 @@ lino-app.
 From here
 =========
 
+<<<<<<< HEAD
 From here you should edit your settings.py file to either import a
+=======
+From here you should edit your settings.py file to import a
+>>>>>>> 47a770715a9d490c7e51bb3b712dc876ab59445a
 different settings.py from another repo.
 
 Return to the index for more information :doc:`mysql_install`.
