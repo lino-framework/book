@@ -149,13 +149,13 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: gfks, about, jinja, office, countries, staticfiles, contacts, system, xl, printing, lino_startup, cal, users, extjs, export_excel, bootstrap3
+  Synchronize unmigrated apps: about, auth, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
-    Creating table users_user
-    Creating table users_authority
+    Creating table auth_user
+    Creating table auth_authority
     Creating table countries_country
     Creating table countries_place
     Creating table contacts_partner
@@ -179,7 +179,6 @@ Synchronizing apps without migrations:
     Creating table cal_guest
     Running deferred SQL...
 Running migrations:
-  Rendering model states... DONE
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
