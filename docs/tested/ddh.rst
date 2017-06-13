@@ -20,6 +20,8 @@ This document tests this functionality.
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())  #doctest: +REPORT_UDIFF
+- auth.User :
+  - PROTECT : auth.Authority.authorized, auth.Authority.user, changes.Change.user, notify.Message.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user
 - concepts.Concept :
   - PROTECT : concepts.Link.child, concepts.Link.parent
 - contacts.Company :
@@ -28,7 +30,7 @@ This document tests this functionality.
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr
-  - PROTECT : polls.Response.partner, users.User.partner
+  - PROTECT : auth.User.partner, polls.Response.partner
 - contacts.Person :
   - PROTECT : contacts.Role.person
 - contacts.RoleType :
@@ -52,7 +54,5 @@ This document tests this functionality.
   - PROTECT : polls.AnswerChoice.response, polls.AnswerRemark.response
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
-- users.User :
-  - PROTECT : changes.Change.user, notify.Message.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>
 

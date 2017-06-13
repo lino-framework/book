@@ -145,6 +145,7 @@ The sales journal
 
 >>> url = '/api/sales/InvoicesByJournal/{0}'.format(obj.id)
 >>> url += '?mt={0}&mk={1}&an=detail&fmt=json'.format(mt, obj.journal.id)
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> # res.content
 >>> r = check_json_result(res, "navinfo data disable_delete id title")

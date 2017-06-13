@@ -82,7 +82,7 @@ has does more usage of them.
 
 
 
->>> show_choices('axel', '/choices/faculties/OffersByEndUser/faculty')
+>>> show_choices('jean', '/choices/faculties/OffersByEndUser/faculty')
 Analysis
 Code changes
 Configuration

@@ -67,7 +67,7 @@ second time (and add a field which connects them).
 lino_tera.lib.contacts (extends_models=['Partner', 'Person', 'Company'])
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
-['Company', 'Partner', 'Person', 'Household']
+['Company', 'Partner', 'Person', 'Household', 'List', 'Client']
 
 
 Therapeutical groups

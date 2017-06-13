@@ -26,6 +26,7 @@ Simulate an AJAX request:
 
 >>> headers = dict(HTTP_X_REQUESTED_WITH='XMLHttpRequest')
 >>> headers.update(REMOTE_USER='robin')
+>>> test_client.force_login(rt.login('robin').user)
 
 Here is a valid request:
 

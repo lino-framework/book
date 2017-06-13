@@ -21,12 +21,12 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'lino_cosi',
         'lino_noi',
-        'lino_voga',
-        'lino_avanti',
+        # 'lino_voga',
+        # 'lino_avanti',
         'lino_welfare',
-        'lino_vilma',
-        'lino_care',
-        'lino_tera',
+        # 'lino_vilma', # Not on pypy, breaks dev install guide
+        # 'lino_care',
+        # 'lino_tera',
         'commondata', 'commondata.ee', 'commondata.be'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],

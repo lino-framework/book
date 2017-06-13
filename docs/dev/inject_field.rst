@@ -10,7 +10,7 @@ another plugin using the :func:`dd.inject_field
 Here is a list of the plugins which use :doc:`inject_field`.
 
 
-- :mod:`lino.modlib.notify` injects two fields into users.User
+- :mod:`lino.modlib.notify` injects two fields into auth.User
   
 - :mod:`lino.modlib.uploads` (if you define shortcut fields
   (:class:`lino.modlib.uploads.choicelists.Shortcuts`)

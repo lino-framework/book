@@ -218,7 +218,7 @@ These are the Django settings which Lino will override:
     "__file__": ".../site.pyc", 
     "MIDDLEWARE_CLASSES": [
         "django.middleware.common.CommonMiddleware", 
-        "lino.core.auth.NoUserMiddleware", 
+        "lino.modlib.auth.middleware.NoUserMiddleware",
         "lino.utils.ajax.AjaxExceptionResponse"
     ], 
     "STATIC_URL": "/static/", 

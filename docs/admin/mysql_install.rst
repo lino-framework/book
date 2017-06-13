@@ -20,6 +20,7 @@ Installation
 Install mysql on your site::
    
     $ sudo apt-get install mariadb-server
+    $ sudo apt-get install mysql-server
     $ sudo apt-get install libmysqlclient-dev
     $ sudo apt-get install python-dev
 

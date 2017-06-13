@@ -38,10 +38,10 @@ Question 23/10/2014
 <BLANKLINE>
 4) Next time I will participate again. **1** **2** **3** **4** **5** (**Remark**)
 
->>> client = Client()
 >>> mt = contenttypes.ContentType.objects.get_for_model(obj.__class__).id
 >>> url = '/api/polls/AnswersByResponse?rp=ext-comp-1351&fmt=json&mt=%d&mk=%d' % (mt, pk)
->>> res = client.get(url, REMOTE_USER=obj.user.username)
+>>> test_client.force_login(obj.user)
+>>> res = test_client.get(url, REMOTE_USER=obj.user.username)
 
 
 >>> print(res.status_code)

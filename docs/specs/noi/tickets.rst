@@ -489,9 +489,9 @@ Lino Noi has a list of all sites for which we do support:
 ==== ============= ================== ================== ============= ================ ================ =============
  ID   Designation   Designation (de)   Designation (fr)   Responsible   Contact person   represented as   Description
 ---- ------------- ------------------ ------------------ ------------- ---------------- ---------------- -------------
- 1    welket
- 2    welsch
- 3    pypi
+ 1    welket                                              welket
+ 2    welsch                                              welsch
+ 3    pypi                                                pypi
 ==== ============= ================== ================== ============= ================ ================ =============
 <BLANKLINE>
 
@@ -807,7 +807,9 @@ the detail window of a ticket.
     - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
     - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
-    - (bottom_box_2) [visible for user consultant hoster developer senior admin]: **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+    - (bottom_box) [visible for user consultant hoster developer senior admin]:
+      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+      - **Commits** (github_CommitsByTicket)
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):

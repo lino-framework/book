@@ -10,7 +10,7 @@ more explanations see :ref:`lino.specs.export_excel` of :ref:`book`.
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_export_excel
+    $ python setup.py test -s tests.SpecsTests.test_noi_export_excel
     
     doctest init:
 
@@ -21,6 +21,7 @@ more explanations see :ref:`lino.specs.export_excel` of :ref:`book`.
 
 
 >>> url = "/api/clocking/Sessions?an=export_excel"
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200

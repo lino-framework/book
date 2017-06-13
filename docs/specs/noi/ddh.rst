@@ -25,6 +25,9 @@ Lino Noi:
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- auth.User :
+  - CASCADE : faculties.Competence.user
+  - PROTECT : auth.Authority.authorized, auth.Authority.user, blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user
 - blogs.EntryType :
   - PROTECT : blogs.Entry.entry_type
 - cal.Calendar :
@@ -32,7 +35,7 @@ Lino Noi:
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : auth.User.event_type, cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, system.SiteConfig.default_event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role
 - cal.Priority :
@@ -53,7 +56,7 @@ Lino Noi:
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, faculties.Competence.end_user
   - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
-  - CASCADE : users.User.person_ptr
+  - CASCADE : auth.User.person_ptr
   - PROTECT : cal.Event.contact_person, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role
@@ -75,6 +78,8 @@ Lino Noi:
   - PROTECT : clocking.Session.faculty, faculties.Competence.faculty, faculties.Demand.skill, faculties.Faculty.parent
 - faculties.SkillType :
   - PROTECT : faculties.Faculty.skill_type
+- github.Repository :
+  - PROTECT : github.Commit.repository
 - lists.List :
   - PROTECT : lists.Member.list
 - lists.ListType :
@@ -87,7 +92,7 @@ Lino Noi:
   - PROTECT : tickets.Project.type
 - tickets.Ticket :
   - CASCADE : faculties.Demand.demander
-  - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
+  - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :
@@ -96,7 +101,4 @@ Lino Noi:
   - PROTECT : topics.Topic.topic_group
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
-- users.User :
-  - CASCADE : faculties.Competence.user
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, meetings.Meeting.user, notify.Message.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>

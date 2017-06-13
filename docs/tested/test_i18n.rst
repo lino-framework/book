@@ -18,7 +18,7 @@ Code snippets for testing Lino's i18n
 Users Overview in different languages
 =====================================
 
-We use the `users.UsersOverview` table for testing some 
+We use the `auth.UsersOverview` table for testing some 
 basic i18n functionality.
 Since we are interested only in the column headers and not to see 
 all users, we add a filter:
@@ -28,7 +28,7 @@ all users, we add a filter:
 The non-translated result is:
 
 >>> ses = settings.SITE.login('robin')
->>> ses.show('users.UsersOverview', language='en', **kw)
+>>> ses.show('auth.UsersOverview', language='en', **kw)
 ========== =============== ==========
  Username   User type       Language
 ---------- --------------- ----------
@@ -38,7 +38,7 @@ The non-translated result is:
 
 Now we look at this table in different languages:
 
->>> ses.show('users.UsersOverview', language='de', **kw)
+>>> ses.show('auth.UsersOverview', language='de', **kw)
 ============== ============= =========
  Benutzername   Benutzerart   Sprache
 -------------- ------------- ---------
@@ -47,7 +47,7 @@ Now we look at this table in different languages:
 <BLANKLINE>
 
 
->>> ses.show('users.UsersOverview', language='fr', **kw)
+>>> ses.show('auth.UsersOverview', language='fr', **kw)
 =================== ==================== ========
  Nom d'utilisateur   Type d'utilisateur   Langue
 ------------------- -------------------- --------
@@ -55,7 +55,7 @@ Now we look at this table in different languages:
 =================== ==================== ========
 <BLANKLINE>
 
->>> ses.show('users.UsersOverview', language='et', **kw)
+>>> ses.show('auth.UsersOverview', language='et', **kw)
 ============== ================ ======
  Kasutajanimi   Kasutajaliik     Keel
 -------------- ---------------- ------
@@ -64,7 +64,7 @@ Now we look at this table in different languages:
 <BLANKLINE>
 
 
->>> ses.show('users.UsersOverview', language='pt', **kw)
+>>> ses.show('auth.UsersOverview', language='pt', **kw)
 ================= =============== ========
  Nome de usuário   User type       Idioma
 ----------------- --------------- --------
@@ -72,7 +72,7 @@ Now we look at this table in different languages:
 ================= =============== ========
 <BLANKLINE>
 
->>> ses.show('users.UsersOverview', language='pt-br', **kw)
+>>> ses.show('auth.UsersOverview', language='pt-br', **kw)
 ================= =============== ========
  Nome de usuário   User type       Idioma
 ----------------- --------------- --------

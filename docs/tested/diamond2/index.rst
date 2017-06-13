@@ -4,6 +4,15 @@
 Diamond inheritance (continued)
 ===============================
 
+Note: This test is skipped in Django 1.11+ where Django says::     
+
+    SystemCheckError: System check identified some issues:
+    ERRORS:
+    main.PizzeriaBar: (models.E005) The field 'restaurant_ptr' from parent model 'main.bar' clashes with the field 'restaurant_ptr' from parent model 'main.pizzeria'.
+
+    (TODO: verify whether this is a problem)
+     
+
 .. This document is part of the test suite.  
    To test only this  document, run:
 
@@ -23,7 +32,6 @@ problems. Unfortunately that workaround works only until Django
 
 The source code used to generate and test this document is at
 :srcref:`docs/tested/diamond2/`.
-
 
 Our database structure is defined in :file:`main/models.py` as
 follows:

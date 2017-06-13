@@ -79,7 +79,7 @@ The following code snippets are to test whether a normal user now
 really can see all polls (i.e. has the :menuselection:`Explorer -->
 Polls --> Polls` menu command):
 
->>> u = users.User(username="user", user_type="100")
+>>> u = auth.User(username="user", user_type="100")
 >>> u.full_clean()
 >>> u.save()
 >>> rt.login('user').show_menu()

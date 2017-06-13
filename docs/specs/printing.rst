@@ -45,6 +45,7 @@ Printing a normal pdf table
 
 >>> settings.SITE.appy_params.update(raiseOnError=True)
 >>> url = 'http://127.0.0.1:8000/api/contacts/Partners?an=as_pdf'
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200

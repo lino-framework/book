@@ -114,24 +114,20 @@ The **name** is how Python code can refer to this choice.
 The **text** is what the user sees.  It is a translatable string,
 implemented using Django's i18n machine:
 
->>> [g.text for g in Genders.objects()]  # doctest: +ELLIPSIS
-[<django.utils.functional.__proxy__ object at ...>, <django.utils.functional.__proxy__ object at ...>]
+>>> Genders.male.text.__class__
+<class 'django.utils.functional.__proxy__'>
 
 Calling `unicode` of a choice is (usually) the same as calling unicode
 on its `text` attribute:
 
->>> [unicode(g) for g in Genders.objects()]
+>>> rmu([str(g) for g in Genders.objects()])
 ['Male', 'Female']
->>> [unicode(g.text) for g in Genders.objects()]
-[u'Male', u'Female']
-
 
 The text of a choice depends on the current user language.
 
 >>> from django.utils import translation
-
 >>> with translation.override('fr'):
-...     [unicode(g) for g in Genders.objects()]
+...     rmu([unicode(g) for g in Genders.objects()])
 ['Masculin', 'F\xe9minin']
 
 >>> with translation.override('de'):
@@ -143,10 +139,9 @@ The text of a choice depends on the current user language.
 ['Mees', 'Naine']
 
 
-
 Comparing Choices uses their *value* (not the *name* nor *text*):
 
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.modules.auth.UserTypes
 
 >>> UserTypes.admin > UserTypes.user
 True

@@ -51,7 +51,7 @@ We initialize our database from our demo fixture:
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
+  Synchronize unmigrated apps: about, bootstrap3, dumps, extjs, jinja, lino_startup, staticfiles
   Apply all migrations: (none)
 Synchronizing apps without migrations:
   Creating tables...
@@ -97,7 +97,7 @@ Load the dump, dump again and verify that both dumps are the same:
 Unversioned Site instance : no database migration
 `initdb ` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
+  Synchronize unmigrated apps: about, bootstrap3, dumps, extjs, jinja, lino_startup, staticfiles
   Apply all migrations: (none)
 Synchronizing apps without migrations:
   Creating tables...
@@ -127,7 +127,7 @@ Now the same with `b`, i.e. with :setting:`USE_TZ` enabled:
 ... #doctest: +ELLIPSIS
 `initdb demo` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
+  Synchronize unmigrated apps: about, bootstrap3, dumps, extjs, jinja, lino_startup, staticfiles
   Apply all migrations: (none)
 Synchronizing apps without migrations:
   Creating tables...
@@ -156,7 +156,7 @@ Load the dump, dump again and verify that both dumps are the same:
 Unversioned Site instance : no database migration
 `initdb ` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, jinja, staticfiles, dumps, lino_startup, extjs, bootstrap3
+  Synchronize unmigrated apps: about, bootstrap3, dumps, extjs, jinja, lino_startup, staticfiles
   Apply all migrations: (none)
 Synchronizing apps without migrations:
   Creating tables...
