@@ -41,9 +41,9 @@ class QuickTest(RemoteAuthTestCase):
                 'django.middleware.common.CommonMiddleware',
                 'django.middleware.locale.LocaleMiddleware',
                 'django.contrib.sessions.middleware.SessionMiddleware',
-                'django.contrib.auth.middleware.AuthenticationMiddleware',
+                'lino.modlib.auth.middleware.AuthenticationMiddleware',
                 'lino.modlib.auth.middleware.WithUserMiddleware',
-                'django.contrib.auth.middleware.RemoteUserMiddleware',
+                'lino.modlib.auth.middleware.RemoteUserMiddleware',
                 'lino.utils.ajax.AjaxExceptionResponse'))
             # settings.MIDDLEWARE_CLASSES, (
             #     'django.middleware.common.CommonMiddleware',
