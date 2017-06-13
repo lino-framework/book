@@ -22,23 +22,15 @@ from lino_xl.lib.online.auth.models import create_user
 
 
 def objects():
-    User = rt.models.auth.User
+    UserTypes = rt.models.auth.UserTypes
     Company = rt.models.contacts.Company
+    Product = rt.models.products.Product
 
-    cons = rt.models.auth.UserTypes.items_dict['100']
-    sec = rt.models.auth.UserTypes.items_dict['200']
-    yield create_user("marc", cons)
-    yield create_user("mathieu", cons)
-    yield create_user("luc", sec)
+    yield create_user("daniel", UserTypes.therapist)
+    yield create_user("elmar", UserTypes.therapist)
+    yield create_user("lydia", UserTypes.secretary)
 
-    USERS = Cycler(User.objects.all())
-    WORKERS = Cycler(User.objects.filter(
-        username__in='mathieu marc'.split()))
-    END_USERS = Cycler(User.objects.filter(user_type=''))
-
-    #yield clockings_objects()
-    yield faculties_objects()
-    # yield votes_objects()
+    # yield faculties_objects()
 
     obj = Company(
         name="Tough Thorough Thought Therapies",
@@ -46,67 +38,12 @@ def objects():
     yield obj
     settings.SITE.site_config.update(site_company=obj)
 
-    # acct = rt.models.sepa.Account(
-    #     partner=obj, iban="BE83540256917919", bic="BBRUBEBB")
-    # yield acct
+    yield named(Product, _("Group therapy"))
+    yield named(Product, _("Individual therapy"))
+    yield named(Product, _("Other"))
 
-    # jnl = rt.models.ledger.Journal.get_by_ref('PMO')
     
 
-
-def clockings_objects():
-    # was previously in clockings
-    Company = rt.models.contacts.Company
-    # Vote = rt.models.votes.Vote
-    SessionType = rt.models.clocking.SessionType
-    Session = rt.models.clocking.Session
-    Ticket = rt.models.contacts.Person
-    User = rt.models.auth.User
-    UserTypes = rt.models.auth.UserTypes
-    # devs = (UserTypes.developer, UserTypes.senior)
-    devs = [p for p in UserTypes.items()
-            if p.has_required_roles([Worker])
-            and not p.has_required_roles([SiteAdmin])]
-    workers = User.objects.filter(user_type__in=devs)
-    WORKERS = Cycler(workers)
-    TYPES = Cycler(SessionType.objects.all())
-    # TICKETS = Cycler(Ticket.objects.all())
-    DURATIONS = Cycler([12, 138, 90, 10, 122, 209, 37, 62, 179, 233, 5])
-
-    # every fourth ticket is unassigned and thus listed in
-    # PublicTickets
-    # for i, t in enumerate(Ticket.objects.exclude(private=True)):
-    for i, t in enumerate(Ticket.objects.all()):
-        if i % 4:
-            t.assigned_to = WORKERS.pop()
-            yield t
-
-    for u in workers:
-
-        # VOTES = Cycler(Vote.objects.filter(user=u))
-        # TICKETS = Cycler(Ticket.objects.filter(assigned_to=u))
-        TICKETS = Cycler(Ticket.objects.filter())
-        # if len(VOTES) == 0:
-        #     continue
-
-        for offset in (0, -1, -3, -4):
-
-            date = dd.demo_date(offset)
-            worked = Duration()
-            ts = datetime.datetime.combine(date, datetime.time(9, 0, 0))
-            for i in range(7):
-                obj = Session(
-                    ticket=TICKETS.pop(),
-                    session_type=TYPES.pop(), user=u)
-                obj.set_datetime('start', ts)
-                d = DURATIONS.pop()
-                worked += d
-                if offset < 0:
-                    ts = DurationUnits.minutes.add_duration(ts, d)
-                    obj.set_datetime('end', ts)
-                yield obj
-                if offset == 0 or worked > 8:
-                    break
 
 def faculties_objects():
     "was previously in faculties.fixtures.demo2"
@@ -117,14 +54,8 @@ def faculties_objects():
     # Ticket = rt.models.tickets.Ticket
     User = rt.models.auth.User
 
-    yield named(Faculty, _('Analysis'))
-    yield named(Faculty, _('Code changes'))
-    yield named(Faculty, _('Documentation'))
-    yield named(Faculty, _('Testing'))
-    yield named(Faculty, _('Configuration'))
-    yield named(Faculty, _('Enhancement'))
-    yield named(Faculty, _('Optimization'))
-    yield named(Faculty, _('Offer'))
+    yield named(Faculty, _('Psychotherapy'))
+    yield named(Faculty, _('Psychiatry'))
 
     SKILLS = Cycler(Faculty.objects.all())
     END_USERS = Cycler(dd.plugins.faculties.end_user_model.objects.all())
