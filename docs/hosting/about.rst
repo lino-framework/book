@@ -63,7 +63,3 @@ you provide additional services and because they don't need support by
 a developer.  With stable hosting, no external developer has access to
 your customer's server.
 
-.. The Lino team suggests a **price** around 100€ per month per site
-   for development hosting. The prices for stable hosting are higher,
-   and they depend on the application and your tarification system.
-

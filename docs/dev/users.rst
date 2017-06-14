@@ -1,6 +1,14 @@
-===================================
-The :mod:`lino.modlib.users` plugin
-===================================
+.. _dev.users:
+
+=========================
+User management à la Lino
+=========================
+
+This document explains how to get started with Lino's user management
+system.
+
+See also :doc:`/specs/users` which describes the API of the
+:mod:`lino.modlib.users` plugin.
 
 
 .. This is a tested document. You can test it using:

@@ -4,7 +4,7 @@
 The `testing` environment
 =========================
 
-For certain customers it can be useful to provide a separate "testing"
+For certain customers it can be useful to have a separate "testing"
 site of their application.
 
 A testing site contains a copy of their production site as it would
