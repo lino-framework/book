@@ -30,7 +30,7 @@ While Django stores permissions as records in the database, in Lino
 they are entirely defined by the application code as class-based user
 roles.  This radically different approach required us to replace
 Django's :mod:`django.contrib.auth` module, including the
-:class:`User` model, by our own plugin :mod:`lino.modlib.auth`.
+:class:`User` model, by our own plugin :mod:`lino.modlib.users`.
 
 Yes, this is radical. Django's approach for managing permissions is
 one of the reasons why I wrote Lino.  I believe that maintaining a few
@@ -98,13 +98,13 @@ crazy.
 That's why we have **user types**.  The application sdeveloper defines
 a meaningful *subset of all available roles* for her application.
 This is done by populating the :class:`UserTypes
-<lino.modlib.auth.choicelists.UserTypes>` choicelist.
+<lino.modlib.users.choicelists.UserTypes>` choicelist.
 
 Each user type is basically not much more than a user-friendly *name*
 and a storable *value* given to a selected user role.  Here is the
 default list of user types, defined in :mod:`lino.core.user_types`:
         
->>> rt.show(auth.UserTypes)
+>>> rt.show(users.UserTypes)
 ======= =========== =============== =====================================
  value   name        text            User role
 ------- ----------- --------------- -------------------------------------
@@ -123,25 +123,25 @@ role.  It has the following fields:
 - :attr:`value`, a value for storing it in the database
 
 - :attr:`readonly
-  <lino.modlib.auth.choicelists.UserType.readonly>` defines a user
+  <lino.modlib.users.choicelists.UserType.readonly>` defines a user
   type which shows everything that a given user role can see, but
   unlike the original user role it cannot change any data.
 
 - :attr:`hidden_languages
-  <lino.modlib.auth.choicelists.UserType.hidden_languages>`
+  <lino.modlib.users.choicelists.UserType.hidden_languages>`
   (experimental), a set of languages to *not* show to users of this
   type. This is used on sites with more than three or four
   :attr:`languages <lino.core.site.Site.languages>`.
 
 
 The **user type** of a user is stored in a field whose internal name
-is :attr:`user_type <lino.modlib.auth.models.User.user_type>`. This is
+is :attr:`user_type <lino.modlib.users.models.User.user_type>`. This is
 because at the beginnings of Lino we called them "user profiles".  Now
 we prefer to call them **user types**. The web interface already calls
 them "types", but it will take some time to change all internal names
 from "profile" to "type".
 
->>> rt.show('auth.Users', column_names="username user_type")
+>>> rt.show('users.Users', column_names="username user_type")
 ========== ===============
  Username   User type
 ---------- ---------------
@@ -158,10 +158,10 @@ Accessing permissions from within your code
 Just some examples...
 
 
->>> UserTypes = rt.actors.auth.UserTypes
+>>> UserTypes = rt.actors.users.UserTypes
 
 >>> UserTypes.admin
-auth.UserTypes.admin:900
+users.UserTypes.admin:900
 
 >>> UserTypes.admin.role  #doctest: +ELLIPSIS
 <lino_xl.lib.xl.user_types.SiteAdmin object at ...>
@@ -172,9 +172,9 @@ False
 >>> UserTypes.admin.hidden_languages
 
 
->>> robin = auth.User.objects.get(username='robin')
+>>> robin = users.User.objects.get(username='robin')
 >>> robin.user_type  #doctest: +ELLIPSIS
-auth.UserTypes.admin:900
+users.UserTypes.admin:900
 
 >>> robin.user_type.role  #doctest: +ELLIPSIS
 <lino_xl.lib.xl.user_types.SiteAdmin object at ...>
@@ -201,18 +201,18 @@ must be a :func:`set` of the user roles required for getting
 permission to access this resource.
 
 For example, the list of all users (the :class:`users.AllUsers
-<lino.modlib.auth.desktop.AllUsers>` table) is visible only for users
+<lino.modlib.users.desktop.AllUsers>` table) is visible only for users
 who have the :class:`SiteAdmin <lino.core.roles.SiteAdmin>` role:
 
->>> rt.actors.auth.AllUsers.required_roles
+>>> rt.actors.users.AllUsers.required_roles
 set([<class 'lino.core.roles.SiteAdmin'>])
 
 >>> from lino.core.roles import SiteUser, SiteAdmin
 >>> user = SiteUser()
 >>> admin = SiteAdmin()
->>> user.has_required_roles(rt.actors.auth.AllUsers.required_roles)
+>>> user.has_required_roles(rt.actors.users.AllUsers.required_roles)
 False
->>> admin.has_required_roles(rt.actors.auth.AllUsers.required_roles)
+>>> admin.has_required_roles(rt.actors.users.AllUsers.required_roles)
 True
 
 
@@ -221,7 +221,7 @@ Local customizations
 ====================
 
 You may have noted that :class:`UserTypes
-<lino.modlib.auth.choicelists.UserTypes>` is a choicelist, not a
+<lino.modlib.users.choicelists.UserTypes>` is a choicelist, not a
 database table.  This is because it depends on the application and is
 usually not locally modified.
 

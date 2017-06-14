@@ -104,7 +104,7 @@ started some days ago.
 
 .. 
     Find the users who worked on more than one mission:
-    >>> for u in auth.User.objects.all():
+    >>> for u in users.User.objects.all():
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
     ...         print u.username, "worked on", [o for o in qs]

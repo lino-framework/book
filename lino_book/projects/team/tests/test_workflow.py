@@ -26,7 +26,7 @@ class WorkflowTests(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
-        from lino.modlib.auth.choicelists import UserTypes
+        from lino.modlib.users.choicelists import UserTypes
         Ticket = rt.models.tickets.Ticket
         # Project = rt.models.tickets.Project
         # Line = rt.models.courses.Line
@@ -34,7 +34,7 @@ class WorkflowTests(RemoteAuthTestCase):
         # Enrolment = rt.models.courses.Enrolment
         Meeting = rt.models.meetings.Meeting
         Change = rt.models.changes.Change
-        User = rt.models.auth.User
+        User = rt.models.users.User
         # Vote = rt.models.votes.Vote
         # VoteStates = rt.models.votes.VoteStates
         # VotesByVotable = rt.actors.votes.VotesByVotable

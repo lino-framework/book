@@ -149,13 +149,13 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, auth, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, xl
+  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, users, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
-    Creating table auth_user
-    Creating table auth_authority
+    Creating table users_user
+    Creating table users_authority
     Creating table countries_country
     Creating table countries_place
     Creating table contacts_partner
@@ -199,11 +199,11 @@ You can visualize the content of your database from the command-line
 without starting a web server using Lino's :manage:`show` command. 
 For example to see the list of users, you can write::
 
-    $ python manage.py show auth.Users
+    $ python manage.py show users.Users
 
 The output should be as follows:
 
->>> shell("python manage.py show auth.Users")
+>>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
 ========== =============== ============ ===========
  Username   User type       First name   Last name

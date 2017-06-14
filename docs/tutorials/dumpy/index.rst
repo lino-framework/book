@@ -123,13 +123,13 @@ The output should be as follows:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 `initdb dumpy1` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, auth, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, xl
+  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, users, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
-    Creating table auth_user
-    Creating table auth_authority
+    Creating table users_user
+    Creating table users_authority
     Creating table countries_country
     Creating table countries_place
     Creating table contacts_partner
@@ -162,11 +162,11 @@ Installed 2 object(s) from 1 fixture(s)
 Let's use the :manage:`show` command to see whether our data has been
 imported::
 
-    $ python manage.py show auth.Users
+    $ python manage.py show users.Users
 
 The output should be as follows:
 
->>> shell("python manage.py show auth.Users")
+>>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
 ========== =========== ============ ===========
  Username   User type   First name   Last name
@@ -216,7 +216,7 @@ of the following fixtures:
 
 - :mod:`lino_xl.lib.notes.fixtures.demo`.
 
-- :mod:`lino.modlib.auth.fixtures.demo_users`
+- :mod:`lino.modlib.users.fixtures.demo_users`
 
 - :mod:`lino_xl.lib.countries.fixtures.few_countries`
 

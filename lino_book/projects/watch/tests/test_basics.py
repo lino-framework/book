@@ -35,8 +35,8 @@ class QuickTest(RemoteAuthTestCase):
         from lino.core.renderer import TestRenderer
         # from lino.core.renderer import JsRenderer as TestRenderer
         
-        UserTypes = rt.actors.auth.UserTypes        
-        rt.models.auth.User(
+        UserTypes = rt.actors.users.UserTypes        
+        rt.models.users.User(
             username="robin", user_type=UserTypes.admin).save()
         
         ses = rt.login('robin', renderer=TestRenderer())

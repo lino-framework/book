@@ -22,7 +22,7 @@ The goal of Lino Avanti is
 
 List of demo users:
 
->>> rt.show(rt.actors.auth.Users)
+>>> rt.show(rt.actors.users.Users)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ========== =============== ============ ===========
  Username   User type       First name   Last name

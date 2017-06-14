@@ -5,7 +5,7 @@ from django.db import models
 from lino.api import dd
 from django.utils.translation import ugettext_lazy as _
 from .workflows import EntryStates
-from lino.modlib.auth.mixins import My, UserAuthored
+from lino.modlib.users.mixins import My, UserAuthored
 
 
 class Entry(mixins.CreatedModified, UserAuthored):

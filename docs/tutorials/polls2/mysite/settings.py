@@ -9,7 +9,7 @@ class Site(Site):
 
     def get_installed_apps(self):
         yield 'polls'
-        yield 'lino.modlib.auth'
+        yield 'lino.modlib.users'
         yield super(Site, self).get_installed_apps()
 
     def setup_menu(self, user_type, main):

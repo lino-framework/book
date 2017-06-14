@@ -39,8 +39,8 @@ class Tests(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
-        from lino.modlib.auth.choicelists import UserTypes
-        User = rt.modules.auth.User
+        from lino.modlib.users.choicelists import UserTypes
+        User = rt.modules.users.User
         Faculty = rt.models.faculties.Faculty
         Demand = rt.models.faculties.Demand
         Competence = rt.models.faculties.Competence

@@ -2,7 +2,7 @@
 # administrator for your language.
 
 from django.conf import settings
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 
 
 def objects():

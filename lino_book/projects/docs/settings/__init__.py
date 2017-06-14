@@ -37,7 +37,7 @@ class Site(Site):
 
         yield 'lino.modlib.system'
         # yield 'lino.modlib.gfks'
-        yield 'lino.modlib.auth'
+        yield 'lino.modlib.users'
         yield 'lino.modlib.changes'
         yield 'lino.modlib.notify'
         yield 'lino.modlib.languages'

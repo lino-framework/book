@@ -324,7 +324,7 @@ The :class:`Action` class
         must explicitly "say something" it when granting that privilege.
 
         Another subtlety is the fact that this attribute is used by
-        :class:`lino.modlib.auth.mixins.UserAuthored`.  For example the
+        :class:`lino.modlib.users.mixins.UserAuthored`.  For example the
         :class:`StartTicketSession
         <lino_noi.lib.clocking.actions.StartTicketSession>` action in
         :ref:`noi` is declared "readonly" because we want Workers who are

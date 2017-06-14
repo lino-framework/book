@@ -74,6 +74,6 @@ One advantage of this is that Lino does not need any sessions.
 See also
 
 - :srcref:`docs/tickets/31`
-- :mod:`lino.modlib.auth`
+- :mod:`lino.modlib.users`
 - :doc:`/admin/apache_http_auth`
 

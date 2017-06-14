@@ -38,7 +38,7 @@ lino_book.projects.apc.settings.sestests
 >>> print(settings.SITE.default_user)
 None
 >>> print(settings.SITE.user_model)
-<class 'lino.modlib.auth.models.User'>
+<class 'lino.modlib.users.models.User'>
 >>> print(settings.SITE.remote_user_header)
 None
 >>> print(settings.SITE.get_auth_method())
@@ -47,8 +47,8 @@ session
 django.middleware.common.CommonMiddleware
 django.middleware.locale.LocaleMiddleware
 django.contrib.sessions.middleware.SessionMiddleware
-django.contrib.auth.middleware.AuthenticationMiddleware
-lino.modlib.auth.middleware.WithUserMiddleware
+lino.modlib.users.middleware.AuthenticationMiddleware
+lino.modlib.users.middleware.WithUserMiddleware
 lino.utils.ajax.AjaxExceptionResponse
 >>> 'django.contrib.sessions' in settings.INSTALLED_APPS
 True
