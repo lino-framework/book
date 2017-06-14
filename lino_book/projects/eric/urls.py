@@ -18,7 +18,7 @@ from lino.core.urls import urlpatterns
 from rest_framework import serializers, viewsets, routers
 
 Ticket = rt.models.tickets.Ticket
-User = rt.models.auth.User
+User = rt.models.users.User
 
 # Serializers define the API representation.
 class TicketSerializer(serializers.HyperlinkedModelSerializer):

@@ -141,7 +141,7 @@ The text of a choice depends on the current user language.
 
 Comparing Choices uses their *value* (not the *name* nor *text*):
 
->>> UserTypes = rt.modules.auth.UserTypes
+>>> UserTypes = rt.modules.users.UserTypes
 
 >>> UserTypes.admin > UserTypes.user
 True

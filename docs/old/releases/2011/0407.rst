@@ -23,7 +23,7 @@ For more general instructions on how to upgrade an existing
 Lino site, see :doc:`/admin/upgrade`).
 
 - Database migration needed because the `User` model is now 
-  really from :mod:`lino.modlib.auth` and no longer 
+  really from :mod:`lino.modlib.users` and no longer 
   (partly) from django.contrib.auth
   tablename is now `users_user` instead of `auth_user`, and there's no password field anymore.
   See :blogref:`20110407`

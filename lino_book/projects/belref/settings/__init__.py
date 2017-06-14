@@ -31,7 +31,7 @@ class Site(Site):
         yield super(Site, self).get_installed_apps()
         # yield 'lino.modlib.bootstrap3'
         #~ yield 'lino.modlib.gfks'
-        #~ yield 'lino.modlib.auth'
+        #~ yield 'lino.modlib.users'
         yield 'lino.modlib.system'
         yield 'lino_xl.lib.statbel.countries'
         #~ yield 'lino_xl.lib.contacts'

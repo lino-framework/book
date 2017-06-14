@@ -62,7 +62,7 @@ Lino site, see :doc:`/admin/upgrade`.
         #~ Session = resolve_model("sessions.Session")
         
   - :attr:`lino.apps.dsbe.models.StudyType.name` is now a babel field.
-  - New field :attr:`lino.modlib.auth.models.User.is_expert`.
+  - New field :attr:`lino.modlib.users.models.User.is_expert`.
   - New fields User.is_expert, StudyType.name now a BabelCharField
         
   - (not necessary because TinyMCE also accepts plain text)

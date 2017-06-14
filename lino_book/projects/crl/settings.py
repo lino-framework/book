@@ -39,7 +39,7 @@ TIME_ZONE = 'Europe/Brussels'
 
 INSTALLED_APPS = (
     #~ 'django.contrib.auth',
-    'lino.modlib.auth',
+    'lino.modlib.users',
     'lino.modlib.gfks',
     #~ 'django.contrib.sessions',
     #~ 'django.contrib.sites',

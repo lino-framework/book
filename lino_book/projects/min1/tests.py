@@ -25,7 +25,7 @@ from lino.api import dd, rt
 from lino.utils.instantiator import create_and_get
 
 from lino_xl.lib.contacts import models as contacts
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 
 Genders = dd.Genders
 
@@ -41,9 +41,9 @@ class QuickTest(RemoteAuthTestCase):
                 'django.middleware.common.CommonMiddleware',
                 'django.middleware.locale.LocaleMiddleware',
                 'django.contrib.sessions.middleware.SessionMiddleware',
-                'lino.modlib.auth.middleware.AuthenticationMiddleware',
-                'lino.modlib.auth.middleware.WithUserMiddleware',
-                'lino.modlib.auth.middleware.RemoteUserMiddleware',
+                'lino.modlib.users.middleware.AuthenticationMiddleware',
+                'lino.modlib.users.middleware.WithUserMiddleware',
+                'lino.modlib.users.middleware.RemoteUserMiddleware',
                 'lino.utils.ajax.AjaxExceptionResponse'))
             # settings.MIDDLEWARE_CLASSES, (
             #     'django.middleware.common.CommonMiddleware',

@@ -153,8 +153,6 @@ Database structure
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - accounts.Account : id, ref, seqno, name, sales_allowed, purchases_allowed, wages_allowed, clearings_allowed, group, type, needs_partner, clearable, default_amount, name_fr, name_en
 - accounts.Group : id, name, ref, account_type, name_fr, name_en
-- auth.Authority : id, user, authorized
-- auth.User : id, email, language, modified, created, password, last_login, username, user_type, initials, first_name, last_name, remarks, partner
 - contacts.Company : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, prefix, type, vat_id
 - contacts.CompanyType : id, name, abbr, abbr_fr, abbr_en, name_fr, name_en
 - contacts.Partner : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type
@@ -190,6 +188,8 @@ Database structure
 - sessions.Session : session_key, session_data, expire_date
 - system.SiteConfig : id, default_build_method, simulate_today, site_company, next_partner_id, clients_account, sales_vat_account, sales_account, suppliers_account, purchases_vat_account, purchases_account, wages_account, clearings_account
 - tinymce.TextFieldTemplate : id, user, name, description, text
+- users.Authority : id, user, authorized
+- users.User : id, email, language, modified, created, password, last_login, username, user_type, initials, first_name, last_name, remarks, partner
 - vat.InvoiceItem : id, seqno, account, total_incl, total_base, total_vat, vat_class, voucher, title
 - vat.VatAccountInvoice : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, partner, payment_term, match, total_incl, total_base, total_vat, vat_regime, your_ref, due_date
 - vat.VatRule : id, seqno, start_date, end_date, country, vat_class, vat_regime, rate, can_edit

@@ -15,12 +15,12 @@ from lino_xl.lib.cal.choicelists import DurationUnits
 from lino_xl.lib.clocking.roles import Worker
 from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
-from lino_noi.lib.auth.models import create_user
+from lino_noi.lib.users.models import create_user
 
 from lino_xl.lib.clocking.choicelists import ReportingTypes
 
 def vote(user, ticket, state, **kw):
-    u = rt.models.auth.User.objects.get(username=user)
+    u = rt.models.users.User.objects.get(username=user)
     t = rt.models.tickets.Ticket.objects.get(pk=ticket)
     s = rt.models.votes.VoteStates.get_by_name(state)
     vote = t.get_favourite(u)
@@ -41,7 +41,7 @@ def objects():
 
 def tickets_objects():
     # was previously in tickets
-    User = rt.models.auth.User
+    User = rt.models.users.User
     Company = rt.models.contacts.Company
     Topic = rt.models.topics.Topic
     TT = rt.models.tickets.TicketType
@@ -63,12 +63,12 @@ def tickets_objects():
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     # List = rt.models.lists.List
-    cons = rt.models.auth.UserTypes.consultant
-    dev = rt.models.auth.UserTypes.developer
-    yield create_user("marc", rt.models.auth.UserTypes.user)
-    yield create_user("mathieu", rt.models.auth.UserTypes.user)
+    cons = rt.models.users.UserTypes.consultant
+    dev = rt.models.users.UserTypes.developer
+    yield create_user("marc", rt.models.users.UserTypes.user)
+    yield create_user("mathieu", rt.models.users.UserTypes.user)
     yield create_user("luc", dev)
-    yield create_user("jean", rt.models.auth.UserTypes.senior)
+    yield create_user("jean", rt.models.users.UserTypes.senior)
 
     USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
@@ -286,8 +286,8 @@ def clockings_objects():
     SessionType = rt.models.clocking.SessionType
     Session = rt.models.clocking.Session
     Ticket = rt.models.tickets.Ticket
-    User = rt.models.auth.User
-    UserTypes = rt.models.auth.UserTypes
+    User = rt.models.users.User
+    UserTypes = rt.models.users.UserTypes
     # devs = (UserTypes.developer, UserTypes.senior)
     devs = [p for p in UserTypes.items()
             if p.has_required_roles([Worker])
@@ -345,7 +345,7 @@ def faculties_objects():
     Competence = rt.models.faculties.Competence
     Demand = rt.models.faculties.Demand
     # Ticket = rt.models.tickets.Ticket
-    User = rt.models.auth.User
+    User = rt.models.users.User
 
     yield named(Faculty, _('Analysis'))
     yield named(Faculty, _('Code changes'))

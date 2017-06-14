@@ -20,13 +20,11 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, auth, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
+44 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
 64 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
 ---------------------------------- ---------------------------- --------- -------
- auth.Authority                     auth.Authorities             3         0
- auth.User                          auth.Users                   44        6
  blogs.Entry                        blogs.Entries                11        3
  blogs.EntryType                    blogs.EntryTypes             6         3
  cal.Calendar                       cal.Calendars                6         1
@@ -89,6 +87,8 @@ This document describes the database structure.
  topics.TopicGroup                  topics.TopicGroups           5         0
  uploads.Upload                     uploads.Uploads              9         0
  uploads.UploadType                 uploads.UploadTypes          8         0
+ users.Authority                    users.Authorities            3         0
+ users.User                         users.Users                  44        6
 ================================== ============================ ========= =======
 <BLANKLINE>
 

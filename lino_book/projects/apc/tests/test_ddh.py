@@ -39,8 +39,8 @@ class DDHTests(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
-        from lino.modlib.auth.choicelists import UserTypes
-        User = rt.modules.auth.User
+        from lino.modlib.users.choicelists import UserTypes
+        User = rt.modules.users.User
         Partner = rt.modules.contacts.Partner
         Person = rt.modules.contacts.Person
         Company = rt.modules.contacts.Company

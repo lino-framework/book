@@ -10,7 +10,7 @@ built-in concept of user types.
 
 That's why Lino replaces Django's `django.contrib.auth
 <https://docs.djangoproject.com/en/dev/topics/auth/>`_ plugin by its
-own plugin :mod:`lino.modlib.auth`.
+own plugin :mod:`lino.modlib.users`.
 
 .. This is a tested document. You can test it using:
 
@@ -33,14 +33,14 @@ Creating a root user
 The most Linoish way to create a root user (or a set of demo users) is
 to run :manage:`prep`.  This will reset the database to a
 virgin state and then load all your demo data, which includes
-:mod:`lino.modlib.auth.fixtures.demo_users` (except if you changed
+:mod:`lino.modlib.users.fixtures.demo_users` (except if you changed
 your :attr:`lino.core.site.Site.demo_fixtures`).
 
 If you don't want to reset your database, then you can write a script
 and run it with :manage:`run`. For example::
 
     from lino.api.shell import users
-    obj = auth.User(username="root")
+    obj = users.User(username="root")
     obj.set_password("1234!")
     obj.full_clean()
     obj.save()
@@ -56,10 +56,10 @@ a new user manually using the web interface, you must click their
 :class:`ChangePassword` action and set their password.
 
 >>> try:
-...     auth.User.objects.get(username="test").delete()
-... except auth.User.DoesNotExist:
+...     users.User.objects.get(username="test").delete()
+... except users.User.DoesNotExist:
 ...    pass
->>> u = auth.User(username="test")
+>>> u = users.User(username="test")
 >>> u.save()
 >>> print u.has_usable_password()
 False
@@ -92,25 +92,25 @@ Online registration
 
 To enable online registration on your site, you must
 
-- use :mod:`lino_noi.lib.auth` instead of :mod:`lino.modlib.auth` in
+- use :mod:`lino_noi.lib.users` instead of :mod:`lino.modlib.users` in
   your :setting:`INSTALLED_APPS`.
 
-- set :attr:`lino.modlib.auth.Plugin.online_registration` to `True`.
+- set :attr:`lino.modlib.users.Plugin.online_registration` to `True`.
 
 - define your :attr:`anonymous
-  <lino.modlib.auth.choicelists.UserTypes.anonymous>` user type with
-  :attr:`readonly <lino.modlib.auth.choicelists.UserType.readonly>`
+  <lino.modlib.users.choicelists.UserTypes.anonymous>` user type with
+  :attr:`readonly <lino.modlib.users.choicelists.UserType.readonly>`
   set to `False`.
   
 This is done e.g. by :mod:`lino_noi.projects.care.roles`.
 
-.. currentmodule:: lino_noi.lib.auth.models
+.. currentmodule:: lino_noi.lib.users.models
                    
 When a new user is created, Lino sets a random
 :attr:`verification_code <User.verification_code>`.
 
 :attr:`user_state <User.user_state>`.
 
-:class:`lino_noi.lib.auth.choicelists.UserStates`
+:class:`lino_noi.lib.users.choicelists.UserStates`
 
 

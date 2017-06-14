@@ -13,15 +13,15 @@ User management
     >>> from lino.api.doctest import *
 
 This document describes Lino's approach of defining and managing users
-as implemented in the :mod:`lino.modlib.auth` module.
+as implemented in the :mod:`lino.modlib.users` module.
 
 See also :doc:`/dev/users`.
 
-Lino's :mod:`lino.modlib.auth` is Lino's replacement for Django's
+Lino's :mod:`lino.modlib.users` is Lino's replacement for Django's
 :mod:`django.contrib.auth` module.  It does not require
 :mod:`django.contrib.sessions` to be installed.
 
-.. currentmodule:: lino.modlib.auth
+.. currentmodule:: lino.modlib.users
 
 
 Models
@@ -35,7 +35,7 @@ Models
 
         This is always `True`.  Compare with
         :attr:`AnonymousUser.authenticated
-        <lino.modlib.auth.utils.AnonymousUser.authenticated>`.
+        <lino.modlib.users.utils.AnonymousUser.authenticated>`.
 
    Fields:
                    
@@ -189,7 +189,7 @@ Mixins
     .. attribute:: user
 
         The author of this object.
-        A pointer to :class:`lino.modlib.auth.models.User`.
+        A pointer to :class:`lino.modlib.users.models.User`.
         
 
 Choicelists

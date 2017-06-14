@@ -96,7 +96,7 @@ User types
 
 These user types are defined in :mod:`lino_book.projects.care.roles`:
 
->>> rt.show('auth.UserTypes')
+>>> rt.show('users.UserTypes')
 ======= ============ ================== ==========================================
  value   name         text               User role
 ------- ------------ ------------------ ------------------------------------------
@@ -145,7 +145,7 @@ create new users, change the catalog of faculties, ...
 The demo database has a set of **fictive users**. Let's introduce
 them:
 
->>> rt.show('auth.Users')
+>>> rt.show('users.Users')
 ========== =============== ============ ===========
  Username   User type       First name   Last name
 ---------- --------------- ------------ -----------

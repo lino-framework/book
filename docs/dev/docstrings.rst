@@ -22,7 +22,7 @@ documenting plugins because
   
 Our solution to these problems is to not use autosummary but to create
 one (or several) specs pages. Usage example is
-:mod:`lino.modlib.auth` where all the docstrings have been moved to
+:mod:`lino.modlib.users` where all the docstrings have been moved to
 the :ref:`specs`. I believe that this is now finally our prefererred
 way for structuring the documentation of a plugin. I created
 :ticket:`1708` for this and started this document.

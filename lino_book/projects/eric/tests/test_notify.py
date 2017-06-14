@@ -29,7 +29,7 @@ from lino.api import dd, rt
 from lino.utils.djangotest import TestCase
 from lino.core import constants
 
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 
 from lino.utils.instantiator import create
 

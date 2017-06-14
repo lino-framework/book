@@ -15,7 +15,7 @@ from lino.utils import Cycler  # join_words
 from lino.utils.mldbc import babel_named as named
 from lino.api import rt, dd, _
 
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 from lino_xl.lib.cal.choicelists import Recurrencies
 from lino_xl.lib.courses.choicelists import EnrolmentStates
 
@@ -54,7 +54,7 @@ def objects():
     Enrolment = rt.models.courses.Enrolment
     ClientContactType = rt.models.coachings.ClientContactType
     CoachingType = rt.models.coachings.CoachingType
-    User = rt.models.auth.User
+    User = rt.models.users.User
     EventType = rt.modules.cal.EventType
     GuestRole = rt.modules.cal.GuestRole
     Person = rt.models.contacts.Person

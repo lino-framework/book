@@ -62,7 +62,7 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['AUTHENTICATION_BACKENDS', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -135,7 +135,7 @@ lino.modlib.extjs
 lino_xl.lib.events
 lino.modlib.printing
 lino.modlib.system
-lino.modlib.auth
+lino.modlib.users
 django.contrib.contenttypes
 lino.modlib.gfks
 lino.modlib.changes
@@ -218,7 +218,7 @@ These are the Django settings which Lino will override:
     "__file__": ".../site.pyc", 
     "MIDDLEWARE_CLASSES": [
         "django.middleware.common.CommonMiddleware", 
-        "lino.modlib.auth.middleware.NoUserMiddleware",
+        "lino.modlib.users.middleware.NoUserMiddleware",
         "lino.utils.ajax.AjaxExceptionResponse"
     ], 
     "STATIC_URL": "/static/", 
@@ -240,7 +240,7 @@ These are the Django settings which Lino will override:
         "lino.modlib.extjs"
     ], 
     "AUTHENTICATION_BACKENDS": [
-        "lino.modlib.auth.backends.ModelBackend"
+        "lino.modlib.users.backends.ModelBackend"
     ],
     "STATICFILES_DIRS": [], 
     "FIXTURE_DIRS": [], 

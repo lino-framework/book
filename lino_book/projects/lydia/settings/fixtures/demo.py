@@ -16,13 +16,13 @@ from lino_xl.lib.cal.choicelists import DurationUnits
 #from lino_xl.lib.clocking.roles import Worker
 from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
-from lino_xl.lib.online.auth.models import create_user
+from lino_xl.lib.online.users.models import create_user
 
 #from lino_xl.lib.clocking.choicelists import ReportingTypes
 
 
 def objects():
-    UserTypes = rt.models.auth.UserTypes
+    UserTypes = rt.models.users.UserTypes
     Company = rt.models.contacts.Company
     Product = rt.models.products.Product
 
@@ -52,7 +52,7 @@ def faculties_objects():
     Competence = rt.models.faculties.Competence
     Demand = rt.models.faculties.Demand
     # Ticket = rt.models.tickets.Ticket
-    User = rt.models.auth.User
+    User = rt.models.users.User
 
     yield named(Faculty, _('Psychotherapy'))
     yield named(Faculty, _('Psychiatry'))

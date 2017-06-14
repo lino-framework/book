@@ -27,7 +27,7 @@ TODO:
   - :class:`dd.PeriodEvents` from :mod:`lino.mixins.periods` to 
 
 - Move the choicelists defined in :mod:`lino.core.perms` to
-  :mod:`lino.modlib.auth`. (TODO: what happens with apps that don't
+  :mod:`lino.modlib.users`. (TODO: what happens with apps that don't
   have any user management? For example :ref:`lino.tutorial.polls`.)
 
 

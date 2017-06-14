@@ -33,7 +33,7 @@ the differences between Lino and Django.
   defining and maintaining complex applications.  That's why Lino
   replaces `django.contrib.auth
   <https://docs.djangoproject.com/en/dev/ref/contrib/auth/>`__ by
-  :mod:`lino.modlib.auth`.
+  :mod:`lino.modlib.users`.
 
 - Lino doesn't use `django.forms
   <https://docs.djangoproject.com/en/dev/ref/forms/>`__ because I

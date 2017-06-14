@@ -24,7 +24,7 @@ Rolf is a system administrator, he has a complete menu.
 
 >>> ses = rt.login('robin') 
 >>> ses.user.user_type
-auth.UserTypes.admin:900
+users.UserTypes.admin:900
 
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP

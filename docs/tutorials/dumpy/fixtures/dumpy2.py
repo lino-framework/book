@@ -1,7 +1,7 @@
 from lino.utils.instantiator import Instantiator
 
 User = Instantiator(
-    'auth.User',
+    'users.User',
     'username first_name last_name email').build
 
 
