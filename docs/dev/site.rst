@@ -9,6 +9,10 @@ Introducing the :class:`Site` class
 
     $ python setup.py test -s tests.DocsTests.test_site
 
+.. contents::
+    :depth: 1
+    :local:
+
 
 .. currentmodule:: lino.core.site
 
@@ -218,7 +222,7 @@ These are the Django settings which Lino will override:
     "__file__": ".../site.pyc", 
     "MIDDLEWARE_CLASSES": [
         "django.middleware.common.CommonMiddleware", 
-        "lino.modlib.users.middleware.NoUserMiddleware",
+        "lino.core.auth.middleware.NoUserMiddleware",
         "lino.utils.ajax.AjaxExceptionResponse"
     ], 
     "STATIC_URL": "/static/", 
@@ -240,7 +244,7 @@ These are the Django settings which Lino will override:
         "lino.modlib.extjs"
     ], 
     "AUTHENTICATION_BACKENDS": [
-        "lino.modlib.users.backends.ModelBackend"
+        "lino.core.auth.backends.ModelBackend"
     ],
     "STATICFILES_DIRS": [], 
     "FIXTURE_DIRS": [], 

@@ -1,16 +1,7 @@
-==============
-Managing users
-==============
+===================================
+The :mod:`lino.modlib.users` plugin
+===================================
 
-Django's permission system is not suitable for developing complex
-applications because maintaining permissions becomes a hell when you
-develop an application which runs on different sites. Also it provides
-no means for defining instance-specific permissions and has no
-built-in concept of user types.
-
-That's why Lino replaces Django's `django.contrib.auth
-<https://docs.djangoproject.com/en/dev/topics/auth/>`_ plugin by its
-own plugin :mod:`lino.modlib.users`.
 
 .. This is a tested document. You can test it using:
 
@@ -18,12 +9,13 @@ own plugin :mod:`lino.modlib.users`.
 
    doctests initialization:
     
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = \
-    ...     'lino_book.projects.docs.settings.demo'
+    >>> from lino import startup
+    >>> startup('lino_book.projects.min1.settings.demo')
     >>> from lino.api.doctest import *
 
 .. contents::
+    :depth: 1
+    :local:
 
 
  

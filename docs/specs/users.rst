@@ -12,14 +12,12 @@ User management
     >>> startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
 
-This document describes Lino's approach of defining and managing users
-as implemented in the :mod:`lino.modlib.users` module.
-
-See also :doc:`/dev/users`.
+This document describes the :mod:`lino.modlib.users` plugin which
+provides functionality for defining and managing users.
 
 Lino's :mod:`lino.modlib.users` is Lino's replacement for Django's
-:mod:`django.contrib.auth` module.  It does not require
-:mod:`django.contrib.sessions` to be installed.
+:mod:`django.contrib.auth` module.  
+See also :doc:`/dev/users`.
 
 .. currentmodule:: lino.modlib.users
 
