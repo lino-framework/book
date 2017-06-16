@@ -151,6 +151,7 @@ class DocsTests(LinoTestCase):
         self.run_django_manage_test('docs/tutorials/tables')
     
     def test_diamond(self):
+        # TODO: reactivate. See :ticket:`1908`.
         from django import VERSION
         if VERSION[0] == 1 and VERSION[1] < 11:
             self.run_django_manage_test('docs/tested/diamond')
