@@ -1,8 +1,9 @@
+.. _lino.hosting:
 .. _lino.hosters:
 
-=================
-Hoster's Guide
-=================
+==========================
+The Lino Hosting programme
+==========================
 
 The Lino team is currently inviting companies all over the world to
 join our community and get listed in our :doc:`directory
@@ -16,8 +17,6 @@ hosting provider when needed.
    :maxdepth: 2
 
    about
-   setup
    types
    workflow
    testing
-   logging

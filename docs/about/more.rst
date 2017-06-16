@@ -14,6 +14,7 @@ More about Lino
    art
    customized
    desktop
+   auth
 
 .. rubric:: Drafts
    

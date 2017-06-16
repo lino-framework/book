@@ -46,6 +46,8 @@ Maintenance
     env
     shell_scripts
     bash_aliases
+    logging
+    new_site
    
 
 Java applets included with Lino

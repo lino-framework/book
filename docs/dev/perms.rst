@@ -25,12 +25,8 @@ permission to see a given resource or to execute a given action.  An
 application framework must provide a system for managing these
 permissions.
 
-Lino handles permissions in a radically different way than Django.
-While Django stores permissions as records in the database, in Lino
-they are entirely defined by the application code as class-based user
-roles.  This radically different approach required us to replace
-Django's :mod:`django.contrib.auth` module, including the
-:class:`User` model, by our own plugin :mod:`lino.modlib.users`.
+See :doc:`/about/auth` if you wonder why Lino replaces Django's user
+management and permission system.
 
 Yes, this is radical. Django's approach for managing permissions is
 one of the reasons why I wrote Lino.  I believe that maintaining a few

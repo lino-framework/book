@@ -1,8 +1,8 @@
 .. _specs.users:
 
-===============
-User management
-===============
+===================================
+The :mod:`lino.modlib.users` plugin
+===================================
 
 .. to test just this doc:
 
@@ -12,14 +12,10 @@ User management
     >>> startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
 
-This document describes Lino's approach of defining and managing users
-as implemented in the :mod:`lino.modlib.users` module.
-
-See also :doc:`/dev/users`.
-
-Lino's :mod:`lino.modlib.users` is Lino's replacement for Django's
-:mod:`django.contrib.auth` module.  It does not require
-:mod:`django.contrib.sessions` to be installed.
+This document describes the API of the :mod:`lino.modlib.users`
+plugin.  See also :doc:`/dev/users` for getting started with user
+management.  See :doc:`/about/auth` if you wonder why Lino replaces
+Django's user management and permission system.
 
 .. currentmodule:: lino.modlib.users
 
@@ -249,3 +245,44 @@ Plugin configuration
 
            
 
+Roles
+=====
+
+.. class:: Helper
+
+    Somebody who can help others by running :class:`AssignToMe`
+    action.
+
+
+.. class:: AuthorshipTaker
+           
+    Somebody who can help others by running :class:`TakeAuthorship`
+    action.
+
+
+Actions
+=======
+
+.. class:: SendWelcomeMail
+
+    Send a welcome mail to this user.
+           
+
+.. class:: ChangePassword
+
+    Change the password of this user.
+
+    .. attribute:: current
+
+        The current password. Leave empty if the user has no password
+        yet. And SiteAdmin users don't need to specify this at all.
+
+    .. attribute:: new1
+
+        The new password.
+
+    .. attribute:: new2
+
+        The new password a second time. Both passwords must match.
+
+          
