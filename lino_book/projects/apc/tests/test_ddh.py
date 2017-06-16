@@ -8,8 +8,7 @@ Reproduces :ticket:`582`.
 
 You can run only these tests by issuing::
 
-  $ go cosi
-  $ cd lino_cosi/projects/std
+  $ go apc
   $ python manage.py test tests.test_ddh
 
 Or::
@@ -26,14 +25,8 @@ from django.core.exceptions import ValidationError
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.api import rt
 from lino.utils.mti import delete_child
+from lino.utils.instantiator import create_row
 
-
-def create(m, **kwargs):
-    obj = m(**kwargs)
-    obj.full_clean()
-    obj.save()
-    return obj
-    
 
 class DDHTests(RemoteAuthTestCase):
     maxDiff = None
@@ -100,7 +93,7 @@ class DDHTests(RemoteAuthTestCase):
             except Warning as e:
                 self.assertEqual(str(e), expected)
 
-        VKR = create(
+        VKR = create_row(
             Journal,
             ref="VKR", name="VKR",
             voucher_type=VoucherTypes.get_for_model(Invoice),
@@ -127,7 +120,7 @@ class DDHTests(RemoteAuthTestCase):
         # child of the partner.
         #
         
-        invoice = create(Invoice, partner=pa, journal=VKR)
+        invoice = create_row(Invoice, partner=pa, journal=VKR)
         self.assertEqual(Partner.objects.count(), 1)
         self.assertEqual(Person.objects.count(), 1)
         self.assertEqual(Invoice.objects.count(), 1)
@@ -145,8 +138,8 @@ class DDHTests(RemoteAuthTestCase):
         # For example if the person form is being used as a contact person.
 
         pe, pa = createit()
-        co = create(Company, name="Test")
-        create(Role, company=co, person=pe)
+        co = create_row(Company, name="Test")
+        create_row(Role, company=co, person=pe)
         msg = "[u'Cannot delete Partner Doe John because 1 Contact Persons refer to it.']"
         msg = "[u'Kann Partner Doe John nicht l\\xf6schen weil 1 Kontaktpersonen darauf verweisen.']"
         try:
