@@ -276,22 +276,17 @@ Some vocabulary
 Accounts
 ========
 
-.. class:: Sheet
-           
-    Base class for a financial statement.
-           
 .. class:: Account
 
-    An **account** is the most abstract representation for something
-    where you can put money and retrieve it later.
+    An **account** is the most abstract representation for "something
+    where you can place money and retrieve it later".
 
     An account always has a given balance which can be negative or
     positive.
 
-    In applications which use the :mod:`ledger <lino.xl.ledger>`
+    In applications which use the :mod:`ledger <lino_xl.lib.ledger>`
     plugin, accounts are used as the target of ledger movements.
 
-    
 
     .. attribute:: name
 
@@ -334,6 +329,20 @@ Accounts
         entries when this account has been selected manually. The
         default booking direction is that of the :attr:`type`.
            
+    .. attribute:: purchases_allowed
+    .. attribute:: sales_allowed
+    .. attribute:: wages_allowed
+    .. attribute:: FOO_allowed
+
+        These checkboxes indicate whether this account can be used on
+        an item of a purchases (or sales or wages or FOO)
+        invoice. There is one such checkbox for every trade type
+        (:class:`TradeTypes <lino_xl.lib.ledger.TradeTypes>`).  They
+        exist only when the :mod:`ledger <lino_xl.lib.ledger>` plugin
+        is installed as well.  See also the
+        :meth:`get_allowed_accounts
+        <lino_xl.lib.ledger.Journal.get_allowed_accounts>` method.
+
            
 
 Account groups
@@ -350,6 +359,10 @@ Account groups
 Utilities
 =========
 
+.. class:: Sheet
+           
+    Base class for a financial statement.
+           
 .. class:: Balance
            
     Light-weight object to represent a balance, i.e. an amount
