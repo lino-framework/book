@@ -327,12 +327,12 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========= ============== ============== =========
- ID   Summary             Author    Topic          Actions        Mission
----- ------------------- --------- -------------- -------------- ---------
- 5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**
- 3    Baz sucks           Jean      Lino Voga      **Open**
-==== =================== ========= ============== ============== =========
+==== =================== ========= ============== ============== ======== =========
+ ID   Summary             Author    Topic          Actions        Room     Mission
+---- ------------------- --------- -------------- -------------- -------- ---------
+ 5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**   pypi
+ 3    Baz sucks           Jean      Lino Voga      **Open**       welsch
+==== =================== ========= ============== ============== ======== =========
 <BLANKLINE>
 
 
@@ -474,7 +474,7 @@ My tickets
  `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
  `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
 ======================================================================= ============================================
 <BLANKLINE>
 
@@ -502,20 +502,20 @@ can see all local tickets for a given site object:
 >>> welket = cal.Room.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ========== ==========
- ID    Summary                     Author   Topic          Actions    Mission
------ --------------------------- -------- -------------- ---------- ----------
- 115   Ticket 115                  Luc      Lino Voga      **Open**   docs
- 97    Ticket 97                   Luc      Lino Welfare   **New**    shop
- 91    Ticket 91                   Luc      Lino Voga      **Open**   research
- 73    Ticket 73                   Luc      Lino Welfare   **New**    linö
- 67    Ticket 67                   Luc      Lino Voga      **Open**   shop
- 49    Ticket 49                   Luc      Lino Welfare   **New**    téam
- 43    Ticket 43                   Luc      Lino Voga      **Open**   linö
- 25    Ticket 25                   Luc      Lino Welfare   **New**    docs
- 19    Ticket 19                   Luc      Lino Voga      **Open**   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    linö
-===== =========================== ======== ============== ========== ==========
+===== =========================== ======== ============== ========== ======== ==========
+ ID    Summary                     Author   Topic          Actions    Room     Mission
+----- --------------------------- -------- -------------- ---------- -------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      **Open**   welket   docs
+ 97    Ticket 97                   Luc      Lino Welfare   **New**    welket   shop
+ 91    Ticket 91                   Luc      Lino Voga      **Open**   welket   research
+ 73    Ticket 73                   Luc      Lino Welfare   **New**    welket   linö
+ 67    Ticket 67                   Luc      Lino Voga      **Open**   welket   shop
+ 49    Ticket 49                   Luc      Lino Welfare   **New**    welket   téam
+ 43    Ticket 43                   Luc      Lino Voga      **Open**   welket   linö
+ 25    Ticket 25                   Luc      Lino Welfare   **New**    welket   docs
+ 19    Ticket 19                   Luc      Lino Voga      **Open**   welket   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    welket   linö
+===== =========================== ======== ============== ========== ======== ==========
 <BLANKLINE>
 
 
@@ -525,20 +525,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ============================================ ==========
- ID    Summary                     Author   Topic          Actions                                      Mission
------ --------------------------- -------- -------------- -------------------------------------------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   docs
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        shop
- 91    Ticket 91                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   research
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
- 67    Ticket 67                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   shop
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        téam
- 43    Ticket 43                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   linö
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        docs
- 19    Ticket 19                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [■] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        linö
-===== =========================== ======== ============== ============================================ ==========
+===== =========================== ======== ============== ============================================ ======== ==========
+ ID    Summary                     Author   Topic          Actions                                      Room     Mission
+----- --------------------------- -------- -------------- -------------------------------------------- -------- ----------
+ 115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   docs
+ 97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   shop
+ 91    Ticket 91                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   research
+ 73    Ticket 73                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   linö
+ 67    Ticket 67                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   shop
+ 49    Ticket 49                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   téam
+ 43    Ticket 43                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   linö
+ 25    Ticket 25                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   docs
+ 19    Ticket 19                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   téam
+ 1     Föö fails to bar when baz   Luc      Lino Welfare   [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   linö
+===== =========================== ======== ============== ============================================ ======== ==========
 <BLANKLINE>
 
 

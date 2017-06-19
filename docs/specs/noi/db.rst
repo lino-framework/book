@@ -74,7 +74,7 @@ This document describes the database structure.
  meetings.Meeting                   meetings.Meetings            22        7
  notify.Message                     notify.Messages              11        6
  sessions.Session                   sessions.SessionTable        3         ...
- stars.Star                         stars.Stars                  5         0
+ stars.Star                         stars.Stars                  5         13
  system.SiteConfig                  system.SiteConfigs           9         1
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
