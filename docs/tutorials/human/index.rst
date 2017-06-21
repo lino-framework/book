@@ -36,11 +36,15 @@ Database fields
 The `Human` mixin defines four database fields: `first_name`,
 `middle_name`, `last_name` and `gender`.
 
-The `gender` field is a pointer to
-the :class:`lino.modlib.system.choicelists.Genders` choicelist.
-
 All these fields may be blank (except if your application changed that
 rule using :func:`lino.core.inject.update_field`).
+
+The `gender` field (a pointer to the
+:class:`lino.modlib.system.choicelists.Genders` choicelist) designates
+the sex of that person which can be either "male" or "female" (or
+"unknown"). Applications which handle additional information like
+"homosexual" or "transgendered" should do this in a separate database
+field.
 
 
 Parsing names
@@ -243,8 +247,7 @@ M. Jean Dupont
 The title of a human
 --------------------
 
-The :attr:`title <lino.mixins.human.Human.title>` field of a human is
-for specifying a `title
+The :attr:`title` field of a human is for specifying a `title
 <https://en.wikipedia.org/wiki/Title>`__ such as "Dr." or "PhD".
 
 >>> settings.SITE.uppercase_last_name = False
@@ -255,6 +258,10 @@ Mr Dr. Jean Dupont
 >>> with translation.override('de'):
 ...     print(p.get_full_name())
 Herrn Dr. Jean Dupont
+
+
+In :mod:`lino_xl.lib.contacts` this is covered by the
+:attr:`lino_xl.lib.contacts.Partner.prefix` field.
 
 
 

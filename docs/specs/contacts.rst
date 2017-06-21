@@ -18,7 +18,8 @@ Quick search
 ============
 
 When doing a quick search in a list of partners, Lino searches only
-the :attr:`name<lino.modlib.contacts.models.Partner.name>` field.
+the :attr:`name <lino.modlib.contacts.models.Partner.name>` field and
+not for example the street.
 
 >>> rt.show(contacts.Partners, quick_search="berg")
 ==================== ================ =====
@@ -51,7 +52,7 @@ This behaviour is implemented using the :attr:`quick_search_fields
 <lino.core.model.Model.quick_search_fields>` attribute on the model.
 
 >>> contacts.Partner.quick_search_fields
-frozenset(['phone', 'gsm', 'name'])
+frozenset(['phone', 'prefix', 'gsm', 'name'])
 
 
 Quickly finding a partner using its primary key

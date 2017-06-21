@@ -153,10 +153,10 @@ Database structure
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - accounts.Account : id, ref, seqno, name, sales_allowed, purchases_allowed, wages_allowed, clearings_allowed, group, type, needs_partner, clearable, default_amount, name_fr, name_en
 - accounts.Group : id, name, ref, account_type, name_fr, name_en
-- contacts.Company : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, prefix, type, vat_id
+- contacts.Company : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, type, vat_id
 - contacts.CompanyType : id, name, abbr, abbr_fr, abbr_en, name_fr, name_en
-- contacts.Partner : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type
-- contacts.Person : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, title, first_name, middle_name, last_name, gender, birth_date
+- contacts.Partner : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type
+- contacts.Person : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, title, first_name, middle_name, last_name, gender, birth_date
 - contacts.Role : id, type, person, company
 - contacts.RoleType : id, name, name_fr, name_en
 - contenttypes.ContentType : id, app_label, model
