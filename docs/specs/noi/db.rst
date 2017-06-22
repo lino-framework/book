@@ -47,8 +47,8 @@ This document describes the database structure.
  comments.CommentType               comments.CommentTypes        4         0
  contacts.Company                   contacts.Companies           22        4
  contacts.CompanyType               contacts.CompanyTypes        7         0
- contacts.Partner                   contacts.Partners            19        11
- contacts.Person                    contacts.Persons             26        7
+ contacts.Partner                   contacts.Partners            20        11
+ contacts.Person                    contacts.Persons             27        7
  contacts.Role                      contacts.Roles               4         0
  contacts.RoleType                  contacts.RoleTypes           4         0
  contenttypes.ContentType           gfks.ContentTypes            3         64
@@ -88,7 +88,7 @@ This document describes the database structure.
  uploads.Upload                     uploads.Uploads              9         0
  uploads.UploadType                 uploads.UploadTypes          8         0
  users.Authority                    users.Authorities            3         0
- users.User                         users.Users                  44        6
+ users.User                         users.Users                  45        6
 ================================== ============================ ========= =======
 <BLANKLINE>
 
