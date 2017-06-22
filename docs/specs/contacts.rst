@@ -13,12 +13,20 @@ Contacts
     >>> from lino.api.doctest import *
     >>> from django.db.models import Q
 
+About partners, persons, companies and others
+=============================================
+
+Note that I also have to define a :meth:`full_clean` method which
+automatically fills the :name` field from the value of the
+:attr:`designation` field (similarily to Person and Household)
+    
+
 
 Quick search
 ============
 
 When doing a quick search in a list of partners, Lino searches only
-the :attr:`name <lino.modlib.contacts.models.Partner.name>` field and
+the :attr:`name <lino_xl.lib.contacts.models.Partner.name>` field and
 not for example the street.
 
 >>> rt.show(contacts.Partners, quick_search="berg")

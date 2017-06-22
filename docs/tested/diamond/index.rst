@@ -4,14 +4,6 @@
 Diamond inheritance
 ===================
 
-Note: This test is skipped in Django 1.11+ where Django says::     
-
-    SystemCheckError: System check identified some issues:
-    ERRORS:
-    main.PizzeriaBar: (models.E005) The field 'restaurant_ptr' from parent model 'main.bar' clashes with the field 'restaurant_ptr' from parent model 'main.pizzeria'.
-
-    (TODO: verify whether this is a problem)
-    
 This document shows that the problem described in Django ticket
 :djangoticket:`10808` still exists in Django 1.6 and that it has been
 solved in Django 1.7 at least for the described case (see
