@@ -107,15 +107,8 @@ directory and and do::
     git clone https://github.com/lino-framework/book.git
 
 
-Since June 2017 Lino requires a forked version of Django 1.11.
-Once our patch is accepted by the Django Team we will switch back to
-using the original sources::
-
-  $ git clone --depth 1 -b ticket_20313 https://github.com/lsaffre/django.git
-
-
-You should now have six directories called `~/repositories/lino`, `~/repositories/cosi`,
-`~/repositories/xl`, `~/repositories/django`, `~/repositories/noi` and `~/repositories/book`,
+You should now have five directories called `~/repositories/lino`, `~/repositories/cosi`,
+`~/repositories/xl`, `~/repositories/noi` and `~/repositories/book`,
 each of which contains a file :xfile:`setup.py` and a whole tree of
 other files and directories.
 
@@ -129,9 +122,7 @@ submit any pull requests, then you can reduce download size by adding
     git clone --depth 1 -b master https://github.com/lino-framework/xl.git; \
     git clone --depth 1 -b master https://github.com/lino-framework/noi.git; \
     git clone --depth 1 -b master https://github.com/lino-framework/cosi.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/book.git; \
-    git clone --depth 1 -b ticket_20313 https://github.com/lsaffre/django.git
-
+    git clone --depth 1 -b master https://github.com/lino-framework/book.git;
 
 (as explained in `this question on stackoverflow
 <http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
@@ -229,7 +220,6 @@ from within any Python program.
 Commands::
 
   $ cd repositories
-  $ pip install -e django
   $ pip install -e lino
   $ pip install -e xl
   $ pip install -e noi
@@ -308,7 +298,7 @@ The output will be about 60 lines of text, here is an excerpt::
     appy==0.9.4
     argh==0.26.2
     ...
-    -e git+https://github.com/lsaffre/django@1b7e654c583b564992f5395449837538362ae5d0#egg=Django
+    Django==1.11.2
     ...
     future==0.15.2
     ...
