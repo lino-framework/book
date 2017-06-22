@@ -300,12 +300,8 @@ lino-app.
 From here
 =========
 
-<<<<<<< HEAD
-From here you should edit your settings.py file to either import a
-=======
-From here you should edit your settings.py file to import a
->>>>>>> 47a770715a9d490c7e51bb3b712dc876ab59445a
-different settings.py from another repo.
+From here you should edit your settings.py file to import a different
+:xfile:`settings.py` module from another repo.
 
 Return to the index for more information :doc:`mysql_install`.
 
