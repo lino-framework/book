@@ -40,3 +40,15 @@ List of demo users:
 
 >>> dd.plugins.beid.holder_model
 <class 'lino_avanti.lib.avanti.models.Client'>
+
+The following checks whether the dashboard displays for user robin:
+
+>>> url = "/"
+>>> test_client.force_login(rt.login('robin').user)
+>>> res = test_client.get(url, REMOTE_USER="robin")
+>>> res.status_code
+200
+>>> soup = BeautifulSoup(res.content, "lxml")
+>>> links = soup.find_all('a')
+>>> len(links)
+0
