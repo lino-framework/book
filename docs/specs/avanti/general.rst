@@ -4,8 +4,6 @@
 General overview of Lino Avanti
 ===============================
 
-The goal of Lino Avanti is 
-
 .. How to test just this document:
 
     $ python setup.py test -s tests.SpecsTests.test_avanti_general
@@ -16,9 +14,14 @@ The goal of Lino Avanti is
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
 
+The goal of Lino Avanti is 
+
 
 .. contents::
   :local:
+
+Miscellaneous
+=============
 
 List of demo users:
 

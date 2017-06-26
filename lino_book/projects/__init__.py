@@ -34,9 +34,11 @@ Poorly documented examples at different development states:
 
 Examples covered by a tutorial:
 
-- :mod:`lino_book.projects.babel_tutorial` ---
-  See :ref:`mldbc_tutorial`
+.. autosummary::
+   :toctree:
 
+   mti
+   nomti
 
 Three examples of localized :ref:`cosi` applications:
 
@@ -53,26 +55,23 @@ either out of the box or as a base for derivated work.
 
 - `team` is the normal "editable" user interface
 - `public` and and `bs3` are readonly user interfaces to `team`
-- `care` is a demo of :ref:`care`.
+- `care` and :`care_de` are demos of :ref:`care`.
+- `liina` is a demo for :ref:`vilma`
+- `lydia` is a demo for :ref:`tera`
+- `adg` is a demo of :ref:`avanti`
 
 
 .. autosummary::
    :toctree:
 
    team
-   bs3
    public
+   bs3
    care
    care_de
    liina
    lydia
-
-A collection of concrete :ref:`avanti` example projects.
-
-.. autosummary::
-    :toctree:
-
-    adg
+   adg
 
 
 
