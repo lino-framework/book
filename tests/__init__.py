@@ -129,7 +129,7 @@ class DocsTests(LinoTestCase):
         self.run_django_manage_test('docs/tutorials/myroles')
 
     def test_mti(self):
-        self.run_django_manage_test('docs/tutorials/mti')
+        self.run_django_manage_test('lino_book/projects/mti')
 
     def test_auto_create(self):
         self.run_django_manage_test('docs/tutorials/auto_create')
@@ -391,6 +391,12 @@ class SpecsTests(TestCase):
         self.run_simple_doctests('docs/specs/tera.rst')
 
 
+    def test_projects_mti(self):
+        self.run_simple_doctests('docs/specs/projects/mti.rst')
+
+    def test_projects_nomti(self):
+        self.run_simple_doctests('docs/specs/projects/nomti.rst')
+
         
 
 
@@ -442,6 +448,12 @@ class ProjectsTests(TestCase):
 
     def test_lydia(self):
         self.run_django_manage_test('lino_book/projects/lydia')
+        
+    def test_mti(self):
+        self.run_django_manage_test('lino_book/projects/mti')
+        
+    def test_nomti(self):
+        self.run_django_manage_test('lino_book/projects/nomti')
         
 
 class TestAppsTests(LinoTestCase):

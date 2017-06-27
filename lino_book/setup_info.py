@@ -101,10 +101,6 @@ lino_book.projects.babel_tutorial.fixtures
 lino_book.projects.dumps
 lino_book.projects.dumps.fixtures
 lino_book.projects.dumps.settings
-lino_book.projects.watch
-lino_book.projects.watch.entries
-lino_book.projects.watch.fixtures
-lino_book.projects.watch.tests
 lino_book.projects.belref
 lino_book.projects.belref.fixtures
 lino_book.projects.belref.settings
@@ -126,7 +122,6 @@ lino_book.projects.20100212
 lino_book.projects.20121124
 lino_book.projects.chooser
 lino_book.projects.example
-lino_book.projects.nomti
 lino_book.projects.properties
 lino_book.projects.quantityfield
 lino_book.projects.cms
@@ -192,6 +187,17 @@ lino_book.projects.care.lib.tickets
 lino_book.projects.care_de
 lino_book.projects.public.settings
 lino_book.projects.public.tests
+lino_book.projects.mti
+lino_book.projects.mti.app
+lino_book.projects.mti.fixtures
+lino_book.projects.mti.tests
+lino_book.projects.nomti
+lino_book.projects.nomti.app
+lino_book.projects.nomti.fixtures
+lino_book.projects.watch
+lino_book.projects.watch.entries
+lino_book.projects.watch.fixtures
+lino_book.projects.watch.tests
 """.splitlines() if n])
 
 

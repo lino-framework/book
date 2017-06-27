@@ -189,6 +189,7 @@ Getting acquaintained
 #.  :doc:`printing` : (TODO)
 #.  :doc:`cache` : telling Lino where to store temporari files.
 #.  :doc:`rendering` : 
+#.  :doc:`mti` : 
 
 .. toctree::
    :maxdepth: 1
@@ -229,6 +230,7 @@ Getting acquaintained
    printing
    cache
    rendering
+   mti
    
 
 Special topics
@@ -238,7 +240,8 @@ Special topics
    :maxdepth: 1
 
    /tutorials/addrloc/index
-   /tutorials/mti/index
+   /specs/projects/mti
+   /specs/projects/nomti
    /tutorials/sendchanges/index
    /tutorials/actors/index
    /tutorials/de_BE/index

@@ -28,6 +28,8 @@ ns.setup_from_tasks(
         'lino_book.projects.events.settings',
         'lino_book.projects.max.settings.demo',
         'lino_book.projects.i18n.settings',
+        'lino_book.projects.mti.settings',
+        'lino_book.projects.nomti.settings',
         'lino_book.projects.min1.settings.demo',
         'lino_book.projects.min2.settings.demo',
         'lino_book.projects.cms.settings.demo',

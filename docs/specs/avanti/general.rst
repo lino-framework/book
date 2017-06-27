@@ -4,8 +4,6 @@
 General overview of Lino Avanti
 ===============================
 
-The goal of Lino Avanti is 
-
 .. How to test just this document:
 
     $ python setup.py test -s tests.SpecsTests.test_avanti_general
@@ -16,9 +14,14 @@ The goal of Lino Avanti is
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
 
+The goal of Lino Avanti is 
+
 
 .. contents::
   :local:
+
+Miscellaneous
+=============
 
 List of demo users:
 
@@ -40,3 +43,15 @@ List of demo users:
 
 >>> dd.plugins.beid.holder_model
 <class 'lino_avanti.lib.avanti.models.Client'>
+
+The following checks whether the dashboard displays for user robin:
+
+>>> url = "/"
+>>> test_client.force_login(rt.login('robin').user)
+>>> res = test_client.get(url, REMOTE_USER="robin")
+>>> res.status_code
+200
+>>> soup = BeautifulSoup(res.content, "lxml")
+>>> links = soup.find_all('a')
+>>> len(links)
+0

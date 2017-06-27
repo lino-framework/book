@@ -1,4 +1,7 @@
-Multi-table inheritance 
+.. _dev.mti:
+
+=======================
+Multi-table inheritance
 =======================
 
 Django's `Multi-table inheritance
@@ -16,6 +19,9 @@ by adding some features:
   that allows to 
   convert existing data records into a more specialized child model, 
   or back into a less specialized parent model.
+
+- an MTI navigator
+  :mod:`lino.mixins.polymorphic`
   
 - :doc:`/topics/layouts` can inherit from their MTI parent model's layout.
 
@@ -24,3 +30,6 @@ See also:
 
 - :srcref:`docs/tickets/22` gives an introduction to MTI
 - :mod:`lino.test_apps.mti`.
+- :doc:`/specs/projects/mti`
+- :doc:`/specs/projects/nomti`
+  
