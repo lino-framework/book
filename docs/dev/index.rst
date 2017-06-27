@@ -172,11 +172,8 @@ Getting acquaintained
 #.  :doc:`custom_actions` : Writing custom actions
 #.  :doc:`action_parameters` :
 #.  :doc:`gfks` : Lino and `GenericForeignKey` fields
-#.  :doc:`lets` : A full-stack example about the work
-    of a Lino application developer.  Writing a technical specification.
-    Describing a database structure. Designing your tables. Writing demo
-    data. Writing test cases. Menu structure and main page. Form
-    layouts.
+#.  :doc:`lets` : Write a new Lino application from scratch, in the
+    hope that this helps you with writing your own Lino application.
 #.  :doc:`/tutorials/layouts` :
 #.  :doc:`/tutorials/vtables/index` :
 #.  :doc:`actions` :

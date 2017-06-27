@@ -22,11 +22,11 @@ SETUP_INFO = dict(
         'lino_cosi',
         'lino_noi',
         # 'lino_voga',
-        # 'lino_avanti',
         'lino_welfare',
-        # 'lino_vilma', # Not on pypy, breaks dev install guide
-        # 'lino_care',
-        # 'lino_tera',
+        'lino_care',
+        'lino_vilma',
+        'lino_avanti',
+        'lino_tera',
         'commondata', 'commondata.ee', 'commondata.be'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
