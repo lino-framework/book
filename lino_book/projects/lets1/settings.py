@@ -3,7 +3,9 @@ from lino.projects.std.settings import *
 
 class Site(Site):
 
-    title = "Lino LETS Tutorial"
+    title = "Lino LETS Tutorial (v1)"
+
+    demo_fixtures = ['demo']
 
     def setup_menu(self, profile, main):
         m = main.add_menu("master", "Master")
@@ -21,7 +23,7 @@ class Site(Site):
 
         yield self.actors.lets.ActiveProducts
 
-SITE = Site(globals(), 'lets')
+SITE = Site(globals(), 'lino_book.projects.lets1.lets')
 
 DEBUG = True
 

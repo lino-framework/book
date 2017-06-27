@@ -78,7 +78,3 @@ class Demand(dd.Model):
         return "%s (%s)" % (self.product, self.supplier)
 
 
-# We must import all from tables it so that it gets loaded together
-# with the models.
-from .tables import *
-

@@ -187,6 +187,12 @@ lino_book.projects.care.lib.tickets
 lino_book.projects.care_de
 lino_book.projects.public.settings
 lino_book.projects.public.tests
+lino_book.projects.lets1
+lino_book.projects.lets1.lets
+lino_book.projects.lets1.fixtures
+lino_book.projects.lets2
+lino_book.projects.lets2.lets
+lino_book.projects.lets2.fixtures
 lino_book.projects.mti
 lino_book.projects.mti.app
 lino_book.projects.mti.fixtures

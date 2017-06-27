@@ -14,7 +14,7 @@ To use Martin Frowler's classification:
   
 - `Class Table Inheritance <http://www.martinfowler.com/eaaCatalog/classTableInheritance.html>`__
   corresponds to Django's multi-table model inheritance
-  and Lino adds some tools for using it: :doc:`mti`.
+  and Lino adds some tools for using it: :doc:`/dev/mti`.
 
 - `Concrete Table Inheritance <http://www.martinfowler.com/eaaCatalog/concreteTableInheritance.html>`__
 

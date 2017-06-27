@@ -30,7 +30,7 @@ The simplest occurence of layouts is the :attr:`column_names
 used to define which fields should be displayed as the columns of that
 table.
 
-Code example::
+Code example (from :doc:`lets`)::
 
     class Products(dd.Table):
         ...
@@ -39,7 +39,7 @@ Code example::
     
 Result:
 
-.. image:: /tutorials/lets/products.png
+.. image:: products.png
   :scale: 40 %
   
 
@@ -64,7 +64,7 @@ example::
     
 Result:    
 
-.. image:: /tutorials/lets/b.png
+.. image:: b.png
   :scale: 50 %
 
 Note that the names ``id``, ``name``, ``place`` and ``email`` in the
@@ -94,7 +94,7 @@ example::
     
 Result:    
 
-.. image:: /tutorials/lets/members_insert.png
+.. image:: members_insert.png
   :scale: 50 %
 
 

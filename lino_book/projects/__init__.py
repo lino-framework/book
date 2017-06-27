@@ -39,6 +39,8 @@ Examples covered by a tutorial:
 
    mti
    nomti
+   lets1
+   lets2
 
 Three examples of localized :ref:`cosi` applications:
 

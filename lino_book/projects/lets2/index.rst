@@ -8,11 +8,10 @@ A Local Exchange Trade System (MTI version)
    $ python setup.py test -s tests.DocsTests.test_letsmti
 
 
-Followup for :doc:`/tutorials/mti/index`.
+Followup for :doc:`/tutorials/lets/index`.
 
 .. contents::
    :local:
-
 
 
 There are two "classes" of Members : Customers and Suppliers. 
@@ -47,23 +46,9 @@ within your :file:`models.py` so that they get imported at startup.
 Demo data
 =========
 
-It is important to get some fictive data which corresponds more or
-less to the reality of your customer.  Here is the demo data for this
-tutorial.
+Here is the demo data for this tutorial.
 
 .. literalinclude:: fixtures/demo.py
-
-
-As soon as you have written such a fixture, you can start to write
-test cases.  The following code snippets are so-called "doctests",
-they are both a **visualisation of your demo data** (which you might
-show to your customer) and a part of the test suite of your
-application (which you invoke with::
-
-  $ python manage.py test
-
-The above command will run the following code snippets in a subprocess
-and check whether their output is the same as the one displayed here.
 
 Doctests usually need to do some initialization.
 

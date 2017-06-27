@@ -182,11 +182,11 @@ class DocsTests(LinoTestCase):
     def test_dumpy(self):
         self.run_django_manage_test('docs/tutorials/dumpy')
 
-    def test_lets(self):
-        self.run_django_manage_test('docs/tutorials/lets')
+    # def test_lets(self):
+    #     self.run_django_manage_test('docs/tutorials/lets')
 
-    def test_letsmti(self):
-        self.run_django_manage_test('docs/tutorials/letsmti')
+    # def test_letsmti(self):
+    #     self.run_django_manage_test('docs/tutorials/letsmti')
 
     def test_gfktest(self):
         self.run_django_manage_test('docs/tutorials/gfktest')
@@ -397,6 +397,12 @@ class SpecsTests(TestCase):
     def test_projects_nomti(self):
         self.run_simple_doctests('docs/specs/projects/nomti.rst')
 
+    def test_projects_lets1(self):
+        self.run_simple_doctests('docs/specs/projects/lets1.rst')
+
+    def test_projects_lets2(self):
+        self.run_simple_doctests('docs/specs/projects/lets2.rst')
+
         
 
 
@@ -454,6 +460,12 @@ class ProjectsTests(TestCase):
         
     def test_nomti(self):
         self.run_django_manage_test('lino_book/projects/nomti')
+        
+    def test_lets1(self):
+        self.run_django_manage_test('lino_book/projects/lets1')
+        
+    def test_lets2(self):
+        self.run_django_manage_test('lino_book/projects/lets2')
         
 
 class TestAppsTests(LinoTestCase):
