@@ -15,8 +15,8 @@ from lino_cosi.lib.cosi.settings import *
 
 class Site(Site):
     languages = 'fr en'
-    demo_fixtures = 'std few_countries euvatrates furniture \
-    minimal_ledger demo demo_bookings demo2'.split()
+    demo_fixtures = 'std few_countries minimal_ledger euvatrates \
+    furniture demo demo_bookings demo2'.split()
 
     def setup_plugins(self):
         self.plugins.countries.configure(hide_region=False)

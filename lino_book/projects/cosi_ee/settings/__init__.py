@@ -19,8 +19,9 @@ from lino_cosi.lib.cosi.settings import *
 
 class Site(Site):
     languages = 'en et'
-    demo_fixtures = 'std all_countries euvatrates eesti furniture \
-    minimal_ledger demo demo2'.split()
+    demo_fixtures = 'std all_countries minimal_ledger euvatrates \
+    eesti furniture \
+    demo demo2'.split()
 
     def setup_plugins(self):
         "See :meth:`lino.core.site.Site.setup_plugins`."

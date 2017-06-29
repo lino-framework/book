@@ -38,7 +38,7 @@ The demo database contains 69 persons and 22 companies.
 
 
 >>> print(' '.join(settings.SITE.demo_fixtures))
-std few_countries euvatrates furniture minimal_ledger demo demo_bookings payments demo2
+std few_countries minimal_ledger euvatrates furniture demo demo_bookings payments demo2
 
 
 
@@ -55,7 +55,7 @@ Robin is the system administrator, he has a complete menu:
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
-  - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
+  - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC), VAT declarations (VAT)
   - Create invoices
 - Office : My Excerpts
 - Reports :
@@ -74,7 +74,7 @@ Robin is the system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
-  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
+  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans, VAT declarations
   - Financial : Bank Statements, Journal Entries, Payment Orders
 - Site : About
 
@@ -87,7 +87,7 @@ Romain gets the same menu in French:
 - Comptabilité :
   - Verkauf : Factures vente (SLS), Gutschriften Verkauf (SLC)
   - Einkauf : Factures achat (PRC)
-  - Finanzjournale : Zahlungsaufträge (PMO), Caisse (CSH), Bestbank (BNK), Opérations diverses (MSC)
+  - Finanzjournale : Zahlungsaufträge (PMO), Caisse (CSH), Bestbank (BNK), Opérations diverses (MSC), Déclarations TVA (VAT)
   - Rechnungen erstellen
 - Bureau : Mes Extraits
 - Rapports :
@@ -106,7 +106,7 @@ Romain gets the same menu in French:
   - Comptabilité : Ausgleichungsregeln, Belege, Belegarten, Mouvements, Années comptables, Handelsarten, Journalgruppen
   - SEPA : Comptes en banque
   - Bureau : Extraits, Einfügetexte
-  - MwSt. : MwSt.-Regimes, MwSt.-Klassen, Produktrechnungen, Produktrechnungszeilen, Fakturationspläne
+  - MwSt. : MwSt.-Regimes, MwSt.-Klassen, Produktrechnungen, Produktrechnungszeilen, Fakturationspläne, Déclarations TVA
   - Finanzjournale : Kontoauszüge, Diverse Buchungen, Zahlungsaufträge
 - Site : à propos
 
@@ -119,7 +119,7 @@ Rolf gets the same menu in German:
 - Buchhaltung :
   - Verkauf : Verkaufsrechnungen (SLS), Gutschriften Verkauf (SLC)
   - Einkauf : Einkaufsrechnungen (PRC)
-  - Finanzjournale : Zahlungsaufträge (PMO), Kasse (CSH), Bestbank (BNK), Diverse Buchungen (MSC)
+  - Finanzjournale : Zahlungsaufträge (PMO), Kasse (CSH), Bestbank (BNK), Diverse Buchungen (MSC), MwSt.-Erklärungen (VAT)
   - Rechnungen erstellen
 - Büro : Meine Auszüge
 - Berichte :
@@ -138,7 +138,7 @@ Rolf gets the same menu in German:
   - Buchhaltung : Ausgleichungsregeln, Belege, Belegarten, Bewegungen, Geschäftsjahre, Handelsarten, Journalgruppen
   - SEPA : Bankkonten
   - Büro : Auszüge, Einfügetexte
-  - MwSt. : MwSt.-Regimes, MwSt.-Klassen, Produktrechnungen, Produktrechnungszeilen, Fakturationspläne
+  - MwSt. : MwSt.-Regimes, MwSt.-Klassen, Produktrechnungen, Produktrechnungszeilen, Fakturationspläne, MwSt.-Erklärungen
   - Finanzjournale : Kontoauszüge, Diverse Buchungen, Zahlungsaufträge
 - Site : Info
 
@@ -150,8 +150,8 @@ Database structure
 
 >>> from lino.utils.diag import analyzer
 >>> print analyzer.show_database_structure()
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- accounts.Account : id, ref, seqno, name, sales_allowed, purchases_allowed, wages_allowed, clearings_allowed, group, type, needs_partner, clearable, default_amount, name_fr, name_en
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
+- accounts.Account : id, ref, seqno, name, sales_allowed, purchases_allowed, wages_allowed, clearings_allowed, group, type, needs_partner, clearable, default_amount, name_fr, name_en, declaration_field
 - accounts.Group : id, name, ref, account_type, name_fr, name_en
 - contacts.Company : id, email, language, url, phone, gsm, fax, country, city, zip_code, region, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, payment_term, vat_regime, invoice_recipient, paper_type, partner_ptr, type, vat_id
 - contacts.CompanyType : id, name, abbr, abbr_fr, abbr_en, name_fr, name_en
@@ -162,13 +162,14 @@ Database structure
 - contenttypes.ContentType : id, app_label, model
 - countries.Country : name, isocode, short_code, iso3, name_fr, name_en
 - countries.Place : id, parent, name, country, zip_code, type, name_fr, name_en
+- declarations.Declaration : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, start_date, end_date, ...
 - excerpts.Excerpt : id, build_time, build_method, user, company, contact_person, contact_role, owner_type, owner_id, excerpt_type, language
 - excerpts.ExcerptType : id, name, build_method, template, attach_to_email, email_template, certifying, remark, body_template, content_type, primary, backward_compat, print_recipient, print_directly, shortcut, name_fr, name_en
-- finan.BankStatement : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, printed_by, item_account, item_remark, last_item_date, balance1, balance2
+- finan.BankStatement : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, printed_by, item_account, item_remark, last_item_date, balance1, balance2
 - finan.BankStatementItem : id, seqno, match, amount, dc, remark, account, partner, date, voucher
-- finan.JournalEntry : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, printed_by, item_account, item_remark, last_item_date
+- finan.JournalEntry : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, printed_by, item_account, item_remark, last_item_date
 - finan.JournalEntryItem : id, seqno, match, amount, dc, remark, account, partner, date, voucher
-- finan.PaymentOrder : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, printed_by, item_account, item_remark, total, execution_date
+- finan.PaymentOrder : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, printed_by, item_account, item_remark, total, execution_date
 - finan.PaymentOrderItem : id, seqno, match, bank_account, amount, dc, remark, account, partner, voucher
 - gfks.HelpText : id, content_type, field, help_text
 - invoicing.Item : id, plan, partner, first_date, last_date, amount, number_of_invoiceables, preview, selected, invoice
@@ -176,23 +177,23 @@ Database structure
 - ledger.AccountingPeriod : id, ref, start_date, end_date, state, year, remark
 - ledger.Journal : id, ref, seqno, name, build_method, template, trade_type, voucher_type, journal_group, auto_check_clearings, force_sequence, account, printed_name, dc, yearly_numbering, printed_name_fr, printed_name_en, name_fr, name_en, sepa_account
 - ledger.MatchRule : id, account, journal
-- ledger.Movement : id, voucher, partner, seqno, account, amount, dc, match, cleared, value_date
+- ledger.Movement : id, voucher, partner, seqno, account, amount, dc, match, cleared, value_date, vat_regime, vat_class, is_base
 - ledger.PaymentTerm : id, ref, name, days, months, end_of_month, printed_text, printed_text_fr, printed_text_en, name_fr, name_en
-- ledger.Voucher : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state
+- ledger.Voucher : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in
 - products.Product : id, name, description, cat, delivery_unit, vat_class, description_fr, description_en, name_fr, name_en, sales_account, sales_price, purchases_account
 - products.ProductCat : id, name, description, name_fr, name_en
 - sales.InvoiceItem : id, seqno, total_incl, total_base, total_vat, vat_class, unit_price, qty, product, description, discount, voucher, title, invoiceable_type, invoiceable_id
 - sales.PaperType : id, name, template, name_fr, name_en
-- sales.VatProductInvoice : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, partner, payment_term, match, total_incl, total_base, total_vat, vat_regime, your_ref, due_date, printed_by, language, subject, intro, paper_type
+- sales.VatProductInvoice : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, partner, payment_term, match, total_incl, total_base, total_vat, vat_regime, your_ref, due_date, printed_by, language, subject, intro, paper_type
 - sepa.Account : id, partner, iban, bic, remark, primary
 - sessions.Session : session_key, session_data, expire_date
-- system.SiteConfig : id, default_build_method, simulate_today, site_company, next_partner_id, clients_account, sales_vat_account, sales_account, suppliers_account, purchases_vat_account, purchases_account, wages_account, clearings_account
+- system.SiteConfig : id, default_build_method, simulate_today, site_company, next_partner_id, clients_account, sales_account, suppliers_account, purchases_account, wages_account, clearings_account
 - tinymce.TextFieldTemplate : id, user, name, description, text
 - users.Authority : id, user, authorized
 - users.User : id, email, language, modified, created, password, last_login, username, user_type, initials, first_name, last_name, remarks, partner
 - vat.InvoiceItem : id, seqno, account, total_incl, total_base, total_vat, vat_class, voucher, title
-- vat.VatAccountInvoice : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, voucher_ptr, partner, payment_term, match, total_incl, total_base, total_vat, vat_regime, your_ref, due_date
-- vat.VatRule : id, seqno, start_date, end_date, country, vat_class, vat_regime, rate, can_edit
+- vat.VatAccountInvoice : id, user, journal, voucher_date, entry_date, accounting_period, number, narration, state, declared_in, voucher_ptr, partner, payment_term, match, total_incl, total_base, total_vat, vat_regime, your_ref, due_date
+- vat.VatRule : id, seqno, start_date, end_date, country, trade_type, vat_class, vat_regime, rate, can_edit, vat_account, vat_returnable_account
 <BLANKLINE>
 
 

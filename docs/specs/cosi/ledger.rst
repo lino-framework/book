@@ -470,6 +470,7 @@ Journals
  CSH         Caisse                Cash                                         (5700) Cash                      Debit
  BNK         Bestbank              Bestbank                                     (5500) Bestbank                  Debit
  MSC         Opérations diverses   Miscellaneous Journal Entries                (5700) Cash                      Debit
+ VAT         Déclarations TVA      VAT declarations                             (4513) VAT to declare            Debit
 =========== ===================== =============================== ============ ================================ ===========================
 <BLANKLINE>
 
@@ -576,20 +577,38 @@ that invoice.
  Bastiaensen Laurent     116        880,00
  Altenberg Hans          114        5 341,45
  Ausdemwald Alfons       115        1 204,81
- Chantraine Marc         119        4 134,71
+ Chantraine Marc         119        5 003,00
  Evertz Bernd            125        1 665,81
  Evers Eberhart          126        1 049,90
  Arens Andreas           112        4 599,77
  Emonts Daniel           127        3 989,85
  Dericum Daniel          120        3 959,70
  Hilgers Henri           133        1 060,00
- ...
+ Jonas Josef             138        745,86
+ Engels Edgar            128        3 639,74
+ Kaivers Karl            140        5 349,66
+ Groteclaes Gregory      131        1 231,82
+ Jansen Jérémy           135        3 919,78
+ Jousten Jan             139        3 359,92
+ Lambertz Guido          141        3 619,88
+ Emonts Erich            149        7 454,49
+ Mießen Michael          147        880,00
+ Radermacher Edgard      156        1 599,92
+ Emontspool Erwin        150        1 839,77
+ Radermacher Fritz       157        2 349,81
+ Radermacher Christian   154        990,00
+ Faymonville Luc         129        3 029,62
+ Johnen Johann           137        5 439,48
+ Radermacher Guido       158        951,82
+ Radermacher Jean        162        600,00
+ Malmendier Marc         145        1 204,81
+ Radermacher Alfons      152        1 834,19
  Radermacher Hans        159        525,00
  da Vinci David          164        639,92
- di Rupo Didier          163        3 599,71
+ di Rupo Didier          163        4 355,65
  Radermecker Rik         172        2 039,82
  van Veen Vincent        165        465,96
- Eierschal Emil          174        959,81
+ Eierschal Emil          174        1 161,37
  Östges Otto             167        770,00
  Jeanémart Jérôme        180        990,00
  Martelaer Mark          171        2 999,85
@@ -597,7 +616,7 @@ that invoice.
  Denon Denis             179        279,90
  Brecht Bernd            176        535,00
  Keller Karl             177        3 319,78
- **Total (42 rows)**     **6180**   **95 304,60**
+ **Total (42 rows)**     **6180**   **98 076,96**
 ======================= ========== ===============
 <BLANKLINE>
 
@@ -625,15 +644,15 @@ creditors are providers, i.e. partners who send us a purchase invoice
 ==================== ========= ===============
  Partner              ID        Balance
 -------------------- --------- ---------------
- AS Express Post      181       617,70
+ AS Express Post      181       510,48
  AS Matsalu Veevärk   182       2 131,20
  Eesti Energia AS     183       75 828,90
- **Total (3 rows)**   **546**   **78 577,80**
+ **Total (3 rows)**   **546**   **78 470,58**
 ==================== ========= ===============
 <BLANKLINE>
 
-Partner 181 from above list has many open purchases invoices,
-totalling to 617,70:
+Partner 181 from above list has 15 open purchases invoices, totalling
+to 510,48:
 
 >>> obj = contacts.Partner.objects.get(pk=181)
 >>> ses.show(ledger.DebtsByPartner, obj)
@@ -641,22 +660,22 @@ totalling to 617,70:
 ===================== ============= ======= =====================
  Due date              Balance       Debts   Payments
 --------------------- ------------- ------- ---------------------
- 02/01/2016            -40,00                `PRC 1 <Detail>`__
- 07/05/2016            -41,30                `PRC 6 <Detail>`__
- 15/03/2016            -40,60                `PRC 11 <Detail>`__
- 03/05/2016            -42,50                `PRC 16 <Detail>`__
- 07/07/2016            -41,10                `PRC 21 <Detail>`__
- 13/06/2016            -40,00                `PRC 26 <Detail>`__
- 31/07/2016            -41,30                `PRC 31 <Detail>`__
- 01/09/2016            -40,60                `PRC 36 <Detail>`__
- 07/09/2016            -42,50                `PRC 41 <Detail>`__
- 03/01/2017            -41,10                `PRC 46 <Detail>`__
- 13/11/2016            -40,00                `PRC 51 <Detail>`__
- 07/01/2017            -41,30                `PRC 56 <Detail>`__
- 07/03/2017            -41,00                `PRC 61 <Detail>`__
- 11/02/2017            -42,90                `PRC 66 <Detail>`__
- 31/03/2017            -41,50                `PRC 71 <Detail>`__
- **Total (15 rows)**   **-617,70**
+ 02/01/2016            -33,06                `PRC 1 <Detail>`__
+ 07/05/2016            -34,13                `PRC 6 <Detail>`__
+ 15/03/2016            -33,55                `PRC 11 <Detail>`__
+ 03/05/2016            -35,12                `PRC 16 <Detail>`__
+ 07/07/2016            -33,97                `PRC 21 <Detail>`__
+ 13/06/2016            -33,06                `PRC 26 <Detail>`__
+ 31/07/2016            -34,13                `PRC 31 <Detail>`__
+ 01/09/2016            -33,55                `PRC 36 <Detail>`__
+ 07/09/2016            -35,12                `PRC 41 <Detail>`__
+ 03/01/2017            -33,97                `PRC 46 <Detail>`__
+ 13/11/2016            -33,06                `PRC 51 <Detail>`__
+ 07/01/2017            -34,13                `PRC 56 <Detail>`__
+ 07/03/2017            -33,88                `PRC 61 <Detail>`__
+ 11/02/2017            -35,45                `PRC 66 <Detail>`__
+ 31/03/2017            -34,30                `PRC 71 <Detail>`__
+ **Total (15 rows)**   **-510,48**
 ===================== ============= ======= =====================
 <BLANKLINE>
 
