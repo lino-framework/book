@@ -9,21 +9,21 @@ class Site(Site):
 
     def setup_menu(self, profile, main):
         m = main.add_menu("master", "Master")
-        m.add_action(self.actors.lets.Members)
-        m.add_action(self.actors.lets.Customers)
-        m.add_action(self.actors.lets.Suppliers)
-        m.add_action(self.actors.lets.Products)
+        m.add_action(self.models.lets.Members)
+        m.add_action(self.models.lets.Customers)
+        m.add_action(self.models.lets.Suppliers)
+        m.add_action(self.models.lets.Products)
 
         m = main.add_menu("market", "Market")
-        m.add_action(self.actors.lets.Offers)
-        m.add_action(self.actors.lets.Demands)
+        m.add_action(self.models.lets.Offers)
+        m.add_action(self.models.lets.Demands)
 
         m = main.add_menu("config", "Configure")
-        m.add_action(self.actors.lets.Places)
+        m.add_action(self.models.lets.Places)
 
     def get_dashboard_items(self, user):
 
-        yield self.actors.lets.ActiveProducts
+        yield self.models.lets.ActiveProducts
 
 SITE = Site(globals(), 'lino_book.projects.lets2.lets')
 
