@@ -38,9 +38,9 @@ def objects():
     yield obj
     settings.SITE.site_config.update(site_company=obj)
 
-    yield named(Product, _("Group therapy"))
-    yield named(Product, _("Individual therapy"))
-    yield named(Product, _("Other"))
+    yield named(Product, _("Group therapy"), sales_price=30)
+    yield named(Product, _("Individual therapy"), sales_price=60)
+    yield named(Product, _("Other"), sales_price=35)
 
     
 
