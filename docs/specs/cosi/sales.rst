@@ -98,6 +98,7 @@ The sales journal
  CSH         Caisse                Cash
  BNK         Bestbank              Bestbank
  MSC         Opérations diverses   Miscellaneous Journal Entries
+ VAT         Déclarations TVA      VAT declarations
 =========== ===================== =============================== ============
 <BLANKLINE>
 
@@ -107,13 +108,13 @@ The sales journal
 ===================== ============== ============ ======================= ================= ============== ================
  No.                   Voucher date   Due date     Partner                 Total incl. VAT   Subject line   Actions
 --------------------- -------------- ------------ ----------------------- ----------------- -------------- ----------------
- 72/2017               11/03/2017     10/05/2017   Radermacher Alfons      770,00                           **Registered**
- 71/2017               10/03/2017     09/05/2017   Radermacher Alfons      465,96                           **Registered**
+ 72/2017               11/03/2017     10/05/2017   Radermacher Alfons      931,70                           **Registered**
+ 71/2017               10/03/2017     09/05/2017   Radermacher Alfons      563,81                           **Registered**
  70/2017               09/03/2017     19/03/2017   Emontspool Erwin        639,92                           **Registered**
  69/2017               08/03/2017     15/03/2017   Emonts Erich            3 599,71                         **Registered**
  68/2017               07/03/2017     06/04/2017   Mießen Michael          600,00                           **Registered**
  67/2017               06/03/2017     04/06/2017   Malmendier Marc         525,00                           **Registered**
- 66/2017               13/02/2017     20/02/2017   Lambertz Guido          951,82                           **Registered**
+ 66/2017               13/02/2017     20/02/2017   Lambertz Guido          1 151,70                         **Registered**
  65/2017               12/02/2017     12/02/2017   Kaivers Karl            2 349,81                         **Registered**
  64/2017               11/02/2017     13/03/2017   Jousten Jan             1 599,92                         **Registered**
  63/2017               10/02/2017     12/03/2017   Jousten Jan             990,00                           **Registered**
@@ -130,12 +131,12 @@ The sales journal
  8/2016                08/02/2016     18/02/2016   Evers Eberhart          279,90                           **Registered**
  7/2016                07/02/2016     14/02/2016   Evertz Bernd            1 199,85                         **Registered**
  6/2016                06/02/2016     06/04/2016   Dericum Daniel          3 319,78                         **Registered**
- 5/2016                10/01/2016     09/02/2016   Chantraine Marc         535,00                           **Registered**
+ 5/2016                10/01/2016     09/02/2016   Chantraine Marc         647,35                           **Registered**
  4/2016                09/01/2016     09/01/2016   Bastiaensen Laurent     280,00                           **Registered**
  3/2016                08/01/2016     07/02/2016   Ausdemwald Alfons       679,81                           **Registered**
  2/2016                07/01/2016     31/01/2016   Altenberg Hans          2 039,82                         **Registered**
  1/2016                06/01/2016     06/03/2016   Arens Andreas           2 999,85                         **Registered**
- **Total (72 rows)**                                                       **95 304,60**
+ **Total (72 rows)**                                                       **98 076,96**
 ===================== ============== ============ ======================= ================= ============== ================
 <BLANKLINE>
  

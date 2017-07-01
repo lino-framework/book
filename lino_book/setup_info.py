@@ -22,11 +22,11 @@ SETUP_INFO = dict(
         'lino_cosi',
         'lino_noi',
         # 'lino_voga',
-        # 'lino_avanti',
         'lino_welfare',
-        # 'lino_vilma', # Not on pypy, breaks dev install guide
-        # 'lino_care',
-        # 'lino_tera',
+        'lino_care',
+        'lino_vilma',
+        'lino_avanti',
+        'lino_tera',
         'commondata', 'commondata.ee', 'commondata.be'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
@@ -187,6 +187,12 @@ lino_book.projects.care.lib.tickets
 lino_book.projects.care_de
 lino_book.projects.public.settings
 lino_book.projects.public.tests
+lino_book.projects.lets1
+lino_book.projects.lets1.lets
+lino_book.projects.lets1.fixtures
+lino_book.projects.lets2
+lino_book.projects.lets2.lets
+lino_book.projects.lets2.fixtures
 lino_book.projects.mti
 lino_book.projects.mti.app
 lino_book.projects.mti.fixtures

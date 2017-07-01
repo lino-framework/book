@@ -172,12 +172,8 @@ Getting acquaintained
 #.  :doc:`custom_actions` : Writing custom actions
 #.  :doc:`action_parameters` :
 #.  :doc:`gfks` : Lino and `GenericForeignKey` fields
-#.  :doc:`/tutorials/lets/index` : A full-stack example about the work
-    of a Lino application developer.  Writing a technical specification.
-    Describing a database structure. Designing your tables. Writing demo
-    data. Writing test cases. Menu structure and main page. Form
-    layouts.
-#.  :doc:`/tutorials/letsmti/index` :
+#.  :doc:`lets` : Write a new Lino application from scratch, in the
+    hope that this helps you with writing your own Lino application.
 #.  :doc:`/tutorials/layouts` :
 #.  :doc:`/tutorials/vtables/index` :
 #.  :doc:`actions` :
@@ -217,8 +213,7 @@ Getting acquaintained
    custom_actions
    action_parameters
    gfks
-   /tutorials/lets/index
-   /tutorials/letsmti/index
+   lets
    /tutorials/layouts
    /tutorials/vtables/index
    actions
@@ -302,6 +297,7 @@ Other
    /team/deploy
    /team/noi_intro
    memo
+   analysis
 
 
 .. toctree::

@@ -104,6 +104,10 @@ directory and and do::
     git clone https://github.com/lino-framework/xl.git; \
     git clone https://github.com/lino-framework/noi.git; \
     git clone https://github.com/lino-framework/cosi.git; \
+    git clone https://github.com/lino-framework/care.git; \
+    git clone https://github.com/lino-framework/vilma.git; \
+    git clone https://github.com/lino-framework/avanti.git; \
+    git clone https://github.com/lino-framework/tera.git; \
     git clone https://github.com/lino-framework/book.git
 
 
@@ -111,6 +115,14 @@ You should now have five directories called `~/repositories/lino`, `~/repositori
 `~/repositories/xl`, `~/repositories/noi` and `~/repositories/book`,
 each of which contains a file :xfile:`setup.py` and a whole tree of
 other files and directories.
+
+Note that if you just want a *simplified* development environment (for
+a specific application on a production site), then you don't need to
+download and install all Lino repositories mentioned above. For
+example, if you want an `avanti` site, you *only* need to install
+`xl`, `lino` and `avanti` but *not* `noi`, `vilma`, `cosi` etc. On a
+production site you will probably never need the `book` repository
+which is the only one which requires all other repositories.
 
 One possible problem here is that some repositories might have a big
 size.  If you just want to get the latest version and don't plan to
@@ -122,6 +134,10 @@ submit any pull requests, then you can reduce download size by adding
     git clone --depth 1 -b master https://github.com/lino-framework/xl.git; \
     git clone --depth 1 -b master https://github.com/lino-framework/noi.git; \
     git clone --depth 1 -b master https://github.com/lino-framework/cosi.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/care.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/vilma.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/avanti.git; \
+    git clone --depth 1 -b master https://github.com/lino-framework/tera.git; \
     git clone --depth 1 -b master https://github.com/lino-framework/book.git;
 
 (as explained in `this question on stackoverflow
@@ -156,13 +172,14 @@ Afterwards update the new environment's pip and setuptools to the latest version
         $ pip install -U pip
         $ pip install -U setuptools
 
-If you know that you are only going to be using python with lino.
-You probably want to add above line to your :xfile:`.bashrc` file.
-This will activate the lino environment whenever you open a bash shell::
+If you know that you are only going to be using Python with Lino, then
+you probably want to add above line to your :xfile:`.bashrc` file.
+This will activate the Lino environment whenever you open a bash
+shell::
 
     $ echo ". /path_to_project_dir/env/bin/activate" >> ~/.bashrc
 
-Otherwise if you want a quick way to activate your lino python
+Otherwise if you want a quick way to activate your Lino python
 environment you can add an alias to your :xfile:`.bashrc` file::
 
     $ echo "alias lpy='.  /path_to_project_dir/env/bin/activate" >> ~/.bashrc
@@ -223,6 +240,11 @@ Commands::
   $ pip install -e lino
   $ pip install -e xl
   $ pip install -e noi
+  $ pip install -e cosi
+  $ pip install -e care
+  $ pip install -e vilma
+  $ pip install -e avanti
+  $ pip install -e tera
   $ pip install -e book
 
 These commands take some time because they will download and install
@@ -269,6 +291,11 @@ the latest version::
   $ cd repositories/lino ; git pull
   $ cd repositories/xl ; git pull
   $ cd repositories/noi ; git pull
+  $ cd repositories/care ; git pull
+  $ cd repositories/care ; git pull
+  $ cd repositories/vilma ; git pull
+  $ cd repositories/avanti ; git pull
+  $ cd repositories/tera ; git pull
   $ cd repositories/book ; git pull
   $ find repositories -name '*.pyc' -delete
 

@@ -28,9 +28,9 @@ Apache to use secure HTTP.
 Lino directory structure
 ========================
 
-There are many ways to setup a django/lino wsgi application. For this
-guide we shall be using apache2, mysql, a site-wide lino settings file,
-and a virtual python environment for each site.
+There are many ways to setup a Django/Lino wsgi application. For this
+guide we shall be using apache2, mysql, a site-wide Lino settings file,
+and a virtual Python environment for each site.
 
 The recommenced directory structure is the following::
 
@@ -48,7 +48,6 @@ The recommenced directory structure is the following::
             │   ├── repositories/ # Lino git-repositories
             │   │   ├─── lino
             │   │   ├─── xl
-            │   │   ├─── django
             │   │   ├─── noi
             │   │   └─── ...
             │   ├── log/ -> /var/log/lino/prj1/
@@ -106,7 +105,13 @@ Create the site folder for your site, in this example we shall use *prj1*::
     $ cd /usr/local/src/lino/lino_sites/prj1
 
 Follow the instructions in :doc:`/dev/install` for installing a
-*development* version of Lino inside of our new prj1 *site-folder*.
+simplified *development* version of Lino inside of our new prj1
+*site-folder*.
+
+Note that you probably don't need to download and install all Lino
+repositories needed for a full development environment. For example,
+if you want an `avanti` site, you *only* need to install `xl`, `lino`
+and `avanti` but *not* `noi`, `vilma`, `cosi` etc.
 
 
 More Debian packages

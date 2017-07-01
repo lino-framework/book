@@ -170,3 +170,11 @@ More examples:
 ...     example(obj.obj2href(ar, (_("Monday"), " & ", _("Tuesday"))))
 <a href="Detail">Montag &amp; Dienstag</a>
 
+
+Programmatically doing requests
+===============================
+
+>>> u = rt.models.users.User.objects.get(username="robin")
+>>> r = rt.actors.contacts.Persons.request(user=u, renderer=dd.plugins.extjs.renderer)
+>>> print(r.renderer.request_handler(r))
+Lino.contacts.Persons.grid.run(null,{ "base_params": {  }, "param_values": { "end_date": null, "observed_event": null, "start_date": null } })
