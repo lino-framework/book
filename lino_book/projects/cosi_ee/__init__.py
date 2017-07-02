@@ -1,8 +1,7 @@
 """
-:ref:`cosi` for Estonia
-=======================
+An example of a :ref:`cosi` configured for usage in Estonia.
 
-The only differences are some plugin configuration.
+The only differences are some plugin configuration settings.
 
 .. autosummary::
    :toctree:

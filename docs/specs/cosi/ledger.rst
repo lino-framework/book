@@ -203,7 +203,12 @@ Models and actors reference
     .. attribute:: number_with_year
 
 
+    .. method:: get_wanted_movements()
+                
+        Subclasses must implement this.  Supposed to return or yield a
+        list of unsaved :class:`Movement` instances.
 
+                
            
 .. class:: PaymentTerm
            
