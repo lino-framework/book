@@ -328,7 +328,7 @@ assigned to a project:
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========= ============== ============== ======== =========
- ID   Summary             Author    Topic          Actions        Room     Mission
+ ID   Summary             Author    Topic          Actions        Site     Mission
 ---- ------------------- --------- -------------- -------------- -------- ---------
  5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**   pypi
  3    Baz sucks           Jean      Lino Voga      **Open**       welsch
@@ -485,25 +485,25 @@ Sites
 
 Lino Noi has a list of all sites for which we do support:
 
->>> rt.show(cal.Rooms)
-==== ============= ================== ================== ============= ================ ================ =============
- ID   Designation   Designation (de)   Designation (fr)   Responsible   Contact person   represented as   Description
----- ------------- ------------------ ------------------ ------------- ---------------- ---------------- -------------
- 1    welket                                              welket
- 2    welsch                                              welsch
- 3    pypi                                                pypi
-==== ============= ================== ================== ============= ================ ================ =============
+>>> rt.show(tickets.Sites)
+============= ======== ================ ======== ========= ====
+ Designation   Client   Contact person   Remark   Actions   ID
+------------- -------- ---------------- -------- --------- ----
+ pypi          pypi                                         3
+ welket        welket                                       1
+ welsch        welsch                                       2
+============= ======== ================ ======== ========= ====
 <BLANKLINE>
 
 A ticket may or may not be "local", i.e. specific to a given site.
 When a ticket is site-specific, we simply assign the `site` field.  We
 can see all local tickets for a given site object:
 
->>> welket = cal.Room.objects.get(name="welket")
+>>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ========== ======== ==========
- ID    Summary                     Author   Topic          Actions    Room     Mission
+ ID    Summary                     Author   Topic          Actions    Site     Mission
 ----- --------------------------- -------- -------------- ---------- -------- ----------
  115   Ticket 115                  Luc      Lino Voga      **Open**   welket   docs
  97    Ticket 97                   Luc      Lino Welfare   **New**    welket   shop
@@ -526,7 +526,7 @@ authenticated developer it looks like this:
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ============================================ ======== ==========
- ID    Summary                     Author   Topic          Actions                                      Room     Mission
+ ID    Summary                     Author   Topic          Actions                                      Site     Mission
 ----- --------------------------- -------- -------------- -------------------------------------------- -------- ----------
  115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   docs
  97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   shop
@@ -557,17 +557,17 @@ release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================= =========== ======== ===========
- Start date   Title             Reference   Room     Actions
------------- ----------------- ----------- -------- -----------
- 15/05/2015   20150515@welket               welket   **Draft**
- 13/05/2015   20150513@welsch               welsch   **Draft**
- 11/05/2015   20150511@welket               welket   **Draft**
- 09/05/2015   20150509@welsch               welsch   **Draft**
- 07/05/2015   20150507@welket               welket   **Draft**
- 05/05/2015   20150505@welsch               welsch   **Draft**
- 03/05/2015   20150503@welket               welket   **Draft**
-============ ================= =========== ======== ===========
+============ ================= =========== ======== ====== ===========
+ Start date   Title             Reference   Site     Room   Actions
+------------ ----------------- ----------- -------- ------ -----------
+ 15/05/2015   20150515@welket               welket          **Draft**
+ 13/05/2015   20150513@welsch               welsch          **Draft**
+ 11/05/2015   20150511@welket               welket          **Draft**
+ 09/05/2015   20150509@welsch               welsch          **Draft**
+ 07/05/2015   20150507@welket               welket          **Draft**
+ 05/05/2015   20150505@welsch               welsch          **Draft**
+ 03/05/2015   20150503@welket               welket          **Draft**
+============ ================= =========== ======== ====== ===========
 <BLANKLINE>
 
 
@@ -756,7 +756,7 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | interesting_for | Interesting for | Only tickets interesting for this partner.                       |
 +-----------------+-----------------+------------------------------------------------------------------+
-| site            | Room            | Select a site if you want to see only tickets for this site.     |
+| site            | Site            | Select a site if you want to see only tickets for this site.     |
 +-----------------+-----------------+------------------------------------------------------------------+
 | project         | Mission         |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
@@ -799,13 +799,13 @@ the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
 >>> print(py2rst(tickets.Tickets.detail_layout, True))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
-    - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
+    - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
@@ -821,7 +821,7 @@ the detail window of a ticket.
 - **History** (changes.ChangesByMaster) [visible for senior admin]
 - **Even more** (more2) [visible for user consultant hoster developer senior admin]:
   - **Wanted skills** (faculties_DemandsByDemander)
-  - **Starred by** (stars.StarsByController)
+  - **Starred by** (stars.AllStarsByController)
   - **Uploads** (uploads_UploadsByController)
 <BLANKLINE>
 

@@ -88,7 +88,7 @@ This data is being rendered using plain bootstrap HTML:
 
 >>> links = soup.find_all('a')
 >>> len(links)
-27
+26
 >>> print(links[0].get('href'))
 /?ul=en
 
