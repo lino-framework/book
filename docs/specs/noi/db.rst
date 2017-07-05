@@ -74,7 +74,7 @@ This document describes the database structure.
  meetings.Meeting                   meetings.Meetings            23        7
  notify.Message                     notify.Messages              11        6
  sessions.Session                   sessions.SessionTable        3         ...
- stars.Star                         stars.Stars                  6         13
+ stars.Star                         stars.Stars                  6         285
  system.SiteConfig                  system.SiteConfigs           9         1
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
@@ -96,7 +96,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 44 plugins
 - 65 models
-- 251 views
+- 252 views
 - 7 user types
 - 5 dialog actions
 <BLANKLINE>

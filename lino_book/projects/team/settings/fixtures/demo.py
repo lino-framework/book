@@ -57,6 +57,7 @@ def tickets_objects():
     LinkTypes = rt.models.tickets.LinkTypes
     EntryType = rt.models.blogs.EntryType
     Entry = rt.models.blogs.Entry
+    Star = rt.models.stars.Star
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
@@ -265,6 +266,14 @@ def tickets_objects():
     yield Interest(owner=e, topic=TOPICS.pop())
     yield Interest(owner=e, topic=TOPICS.pop())
 
+    for U in User.objects.all():
+        if U.user_type >= rt.models.users.UserTypes.senior:
+            for s in Site.objects.all():
+                star = Star(owner=s, user=U)
+                yield star
+                for cs in star.yield_children(U):
+                    yield cs
+
 def clockings_objects():
     # was previously in clockings
     Company = rt.models.contacts.Company
@@ -363,7 +372,6 @@ def faculties_objects():
         yield Demand(demander=t, skill=SKILLS.pop())
         if i % 3:
             yield Demand(demander=t, skill=SKILLS.pop())
-
 
 def votes_objects():
 
