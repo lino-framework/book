@@ -345,14 +345,14 @@ The main menu
 - Contacts : Persons, Organizations
 - Votes : My vote invitations, My tasks, My candidatures, My watchlist
 - Office : My Excerpts, My Comments, My Notification messages, My Uploads
-- Tickets : My Tickets, Where I can help, Active tickets, All tickets, Unassigned Tickets, Reference Tickets
+- Tickets : My Tickets, Where I can help, Active tickets, All tickets, Unassigned Tickets, Reference Tickets, My Sites
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Topics : Topics, Topic groups
   - Office : Excerpt Types, Comment Types, Upload Types
-  - Tickets : Missions, Projects (tree), Project Types, Ticket types
+  - Tickets : Missions, Projects (tree), Project Types, Ticket types, Sites
   - Skills : Skills (tree), Skills (all), Skill types
 - Explorer :
   - System : content types, Authorities, User types, Changes, Notification messages, All dashboard widgets
@@ -371,7 +371,7 @@ The main menu
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Votes : My vote invitations, My tasks, My candidatures, My watchlist
 - Office : My Comments, My Notification messages, My Uploads
-- Tickets : My Tickets, Where I can help
+- Tickets : My Tickets, Where I can help, My Sites
 - Explorer :
   - Tickets : Wishes
 - Site : About
@@ -485,7 +485,7 @@ the detail window of a ticket.
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
-    - (general1_3): **Topic** (topic), **Mission** (project)
+    - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant senior admin]:
       - (bottom_box_1): **Wanted skills** (faculties_DemandsByDemander), **Votes** (votes_VotesByVotable)

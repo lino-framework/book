@@ -35,14 +35,14 @@ Das Hauptmenü
 - Kontakte : Personen, Organisationen
 - Stimmabgaben : My vote invitations, Meine Aufgaben, Meine Kandidaturen, Meine Interessen
 - Büro : Meine Auszüge, Meine Kommentare, Meine Benachrichtigungen, Meine Uploads
-- Anfragen : Meine Anfragen, Wo ich helfen kann, Aktive Tickets, Alle Tickets, Nicht zugewiesene Tickets, Reference Tickets
+- Anfragen : Meine Anfragen, Wo ich helfen kann, Aktive Tickets, Alle Tickets, Nicht zugewiesene Tickets, Reference Tickets, My Sites
 - Konfigurierung :
   - System : Site-Parameter, Hilfetexte, Benutzer
   - Orte : Länder, Orte
   - Kontakte : Organisationsarten, Funktionen
   - Themen : Themen, Themengruppen
   - Büro : Auszugsarten, Kommentar-Arten, Upload-Arten
-  - Anfragen : Missions, Projekte (Hierarchie), Project Types, Ticket types
+  - Anfragen : Missions, Projekte (Hierarchie), Project Types, Ticket types, Sites
   - Fähigkeiten : Fähigkeiten (Hierarchie), Fähigkeiten (Alle), Fähigkeitsarten
 - Explorer :
   - System : Datenbankmodelle, Vollmachten, Benutzerarten, Änderungen, Benachrichtigungen, All dashboard widgets
@@ -61,7 +61,7 @@ Das Hauptmenü
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Stimmabgaben : My vote invitations, Meine Aufgaben, Meine Kandidaturen, Meine Interessen
 - Büro : Meine Kommentare, Meine Benachrichtigungen, Meine Uploads
-- Anfragen : Meine Anfragen, Wo ich helfen kann
+- Anfragen : Meine Anfragen, Wo ich helfen kann, My Sites
 - Explorer :
   - Anfragen : Wishes
 - Site : Info

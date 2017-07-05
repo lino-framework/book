@@ -328,7 +328,7 @@ assigned to a project:
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========= ============== ============== ======== =========
- ID   Summary             Author    Topic          Actions        Room     Mission
+ ID   Summary             Author    Topic          Actions        Site     Mission
 ---- ------------------- --------- -------------- -------------- -------- ---------
  5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**   pypi
  3    Baz sucks           Jean      Lino Voga      **Open**       welsch
@@ -452,27 +452,27 @@ My tickets
 ----------------------------------------------------------------------- --------------------------------------------
  `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
  `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
 ======================================================================= ============================================
@@ -485,25 +485,25 @@ Sites
 
 Lino Noi has a list of all sites for which we do support:
 
->>> rt.show(cal.Rooms)
-==== ============= ================== ================== ============= ================ ================ =============
- ID   Designation   Designation (de)   Designation (fr)   Responsible   Contact person   represented as   Description
----- ------------- ------------------ ------------------ ------------- ---------------- ---------------- -------------
- 1    welket                                              welket
- 2    welsch                                              welsch
- 3    pypi                                                pypi
-==== ============= ================== ================== ============= ================ ================ =============
+>>> rt.show(tickets.Sites)
+============= ======== ================ ======== ========= ====
+ Designation   Client   Contact person   Remark   Actions   ID
+------------- -------- ---------------- -------- --------- ----
+ pypi          pypi                                         3
+ welket        welket                                       1
+ welsch        welsch                                       2
+============= ======== ================ ======== ========= ====
 <BLANKLINE>
 
 A ticket may or may not be "local", i.e. specific to a given site.
 When a ticket is site-specific, we simply assign the `site` field.  We
 can see all local tickets for a given site object:
 
->>> welket = cal.Room.objects.get(name="welket")
+>>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ========== ======== ==========
- ID    Summary                     Author   Topic          Actions    Room     Mission
+ ID    Summary                     Author   Topic          Actions    Site     Mission
 ----- --------------------------- -------- -------------- ---------- -------- ----------
  115   Ticket 115                  Luc      Lino Voga      **Open**   welket   docs
  97    Ticket 97                   Luc      Lino Welfare   **New**    welket   shop
@@ -526,7 +526,7 @@ authenticated developer it looks like this:
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ===== =========================== ======== ============== ============================================ ======== ==========
- ID    Summary                     Author   Topic          Actions                                      Room     Mission
+ ID    Summary                     Author   Topic          Actions                                      Site     Mission
 ----- --------------------------- -------- -------------- -------------------------------------------- -------- ----------
  115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   docs
  97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   shop
@@ -557,17 +557,17 @@ release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================= =========== ======== ===========
- Start date   Title             Reference   Room     Actions
------------- ----------------- ----------- -------- -----------
- 15/05/2015   20150515@welket               welket   **Draft**
- 13/05/2015   20150513@welsch               welsch   **Draft**
- 11/05/2015   20150511@welket               welket   **Draft**
- 09/05/2015   20150509@welsch               welsch   **Draft**
- 07/05/2015   20150507@welket               welket   **Draft**
- 05/05/2015   20150505@welsch               welsch   **Draft**
- 03/05/2015   20150503@welket               welket   **Draft**
-============ ================= =========== ======== ===========
+============ ================= =========== ======== ====== ===========
+ Start date   Title             Reference   Site     Room   Actions
+------------ ----------------- ----------- -------- ------ -----------
+ 15/05/2015   20150515@welket               welket          **Draft**
+ 13/05/2015   20150513@welsch               welsch          **Draft**
+ 11/05/2015   20150511@welket               welket          **Draft**
+ 09/05/2015   20150509@welsch               welsch          **Draft**
+ 07/05/2015   20150507@welket               welket          **Draft**
+ 05/05/2015   20150505@welsch               welsch          **Draft**
+ 03/05/2015   20150503@welket               welket          **Draft**
+============ ================= =========== ======== ====== ===========
 <BLANKLINE>
 
 
@@ -756,7 +756,7 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | interesting_for | Interesting for | Only tickets interesting for this partner.                       |
 +-----------------+-----------------+------------------------------------------------------------------+
-| site            | Room            | Select a site if you want to see only tickets for this site.     |
+| site            | Site            | Select a site if you want to see only tickets for this site.     |
 +-----------------+-----------------+------------------------------------------------------------------+
 | project         | Mission         |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
@@ -799,13 +799,13 @@ the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
 >>> print(py2rst(tickets.Tickets.detail_layout, True))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
-    - (general1_3): **Room** (site), **Topic** (topic), **Mission** (project)
+    - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Actions** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
@@ -821,7 +821,7 @@ the detail window of a ticket.
 - **History** (changes.ChangesByMaster) [visible for senior admin]
 - **Even more** (more2) [visible for user consultant hoster developer senior admin]:
   - **Wanted skills** (faculties_DemandsByDemander)
-  - **Starred by** (stars.StarsByController)
+  - **Starred by** (stars.AllStarsByController)
   - **Uploads** (uploads_UploadsByController)
 <BLANKLINE>
 
