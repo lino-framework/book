@@ -57,7 +57,7 @@ class Site(Site):
         yield 'lino_xl.lib.polls'
         # yield 'lino_xl.lib.vat'
         # yield 'lino_xl.lib.ledger'
-        # yield 'lino_xl.lib.declarations'
+        # yield 'lino_xl.lib.bevat'
         # yield 'lino_xl.lib.cv'
         # yield 'lino_xl.lib.boards'
         # yield 'lino_xl.lib.postings'
