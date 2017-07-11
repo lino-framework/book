@@ -21,7 +21,7 @@ This document describes the database structure.
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 44 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
-64 models:
+65 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
 ---------------------------------- ---------------------------- --------- -------
@@ -36,7 +36,7 @@ This document describes the database structure.
  cal.Priority                       cal.Priorities               5         4
  cal.RecurrentEvent                 cal.RecurrentEvents          21        15
  cal.RemoteCalendar                 cal.RemoteCalendars          7         0
- cal.Room                           cal.Rooms                    8         3
+ cal.Room                           cal.Rooms                    8         0
  cal.Subscription                   cal.Subscriptions            4         0
  cal.Task                           cal.Tasks                    17        0
  changes.Change                     changes.Changes              10        0
@@ -51,7 +51,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons             27        7
  contacts.Role                      contacts.Roles               4         0
  contacts.RoleType                  contacts.RoleTypes           4         0
- contenttypes.ContentType           gfks.ContentTypes            3         64
+ contenttypes.ContentType           gfks.ContentTypes            3         65
  countries.Country                  countries.Countries          6         8
  countries.Place                    countries.Places             8         78
  dashboard.Widget                   dashboard.Widgets            5         0
@@ -71,14 +71,15 @@ This document describes the database structure.
  lists.List                         lists.Lists                  7         8
  lists.ListType                     lists.ListTypes              4         3
  lists.Member                       lists.Members                5         0
- meetings.Meeting                   meetings.Meetings            22        7
+ meetings.Meeting                   meetings.Meetings            23        7
  notify.Message                     notify.Messages              11        6
  sessions.Session                   sessions.SessionTable        3         ...
- stars.Star                         stars.Stars                  5         13
+ stars.Star                         stars.Stars                  6         285
  system.SiteConfig                  system.SiteConfigs           9         1
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
  tickets.ProjectType                tickets.ProjectTypes         4         0
+ tickets.Site                       tickets.Sites                7         3
  tickets.Ticket                     tickets.Tickets              27        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
@@ -94,8 +95,8 @@ This document describes the database structure.
 
 >>> print(analyzer.show_complexity_factors())
 - 44 plugins
-- 64 models
-- 246 views
+- 65 models
+- 252 views
 - 7 user types
 - 5 dialog actions
 <BLANKLINE>

@@ -38,7 +38,7 @@ Lino Noi:
 - cal.Priority :
   - PROTECT : cal.Event.priority
 - cal.Room :
-  - PROTECT : cal.Event.room, meetings.Meeting.room, tickets.Ticket.site
+  - PROTECT : cal.Event.room, meetings.Meeting.room
 - clocking.SessionType :
   - PROTECT : clocking.Session.session_type
 - comments.Comment :
@@ -46,7 +46,7 @@ Lino Noi:
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
 - contacts.Company :
-  - PROTECT : cal.Event.company, cal.Room.company, clocking.ServiceReport.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company
+  - PROTECT : cal.Event.company, cal.Room.company, clocking.ServiceReport.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company, tickets.Site.company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
@@ -54,9 +54,9 @@ Lino Noi:
   - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Event.contact_person, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person
 - contacts.RoleType :
-  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role
+  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role
 - contenttypes.ContentType :
   - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
@@ -83,10 +83,14 @@ Lino Noi:
   - PROTECT : lists.List.list_type
 - meetings.Meeting :
   - PROTECT : deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
+- stars.Star :
+  - CASCADE : stars.Star.master
 - tickets.Project :
   - PROTECT : tickets.Project.parent, tickets.Ticket.project
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
+- tickets.Site :
+  - PROTECT : meetings.Meeting.site, tickets.Ticket.site
 - tickets.Ticket :
   - CASCADE : faculties.Demand.demander
   - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of

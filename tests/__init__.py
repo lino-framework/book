@@ -304,6 +304,9 @@ class SpecsTests(TestCase):
     def test_std(self):
         self.run_simple_doctests('docs/specs/noi/std.rst')
 
+    def test_stars(self):
+        self.run_simple_doctests('docs/specs/noi/stars.rst')
+
     def test_smtpd(self):
         self.run_simple_doctests('docs/specs/noi/smtpd.rst')
 
