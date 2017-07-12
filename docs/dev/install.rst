@@ -82,6 +82,13 @@ System requirements
 
       $ sudo apt-get install tidy
 
+#.  For applications which use :mod:`lino_xl.lib.appy`::
+
+      $ sudo aptitude install libreoffice libreoffice-script-provider-python uno-libs3 python3-uno python3
+
+    See also :doc:`/admin/oood` because you might want to have the
+    LibreOffice server listening.
+
 
 .. _lino.dev.env:
 

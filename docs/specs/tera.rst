@@ -129,3 +129,21 @@ True
 True
 
 >>> validate_pain001(fn)
+
+
+Voucher types
+=============
+
+>>> rt.show(ledger.VoucherTypes)
+=============================== ====== =======================================================
+ value                           name   text
+------------------------------- ------ -------------------------------------------------------
+ ana.InvoicesByJournal                  Invoice (ana.InvoicesByJournal)
+ bevat.DeclarationsByJournal            Belgian VAT declaration (bevat.DeclarationsByJournal)
+ finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
+ finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
+ finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
+ sales.InvoicesByJournal                Product invoice (sales.InvoicesByJournal)
+ vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
+=============================== ====== =======================================================
+<BLANKLINE>
