@@ -36,7 +36,7 @@ The default variant ("team")
     clocking
     deploy
     github
-    
+    stars
    
 
 The Lino Care variant

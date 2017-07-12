@@ -108,35 +108,35 @@ The sales journal
 ===================== ============== ============ ======================= ================= ============== ================
  No.                   Voucher date   Due date     Partner                 Total incl. VAT   Subject line   Actions
 --------------------- -------------- ------------ ----------------------- ----------------- -------------- ----------------
- 72/2017               11/03/2017     10/05/2017   Radermacher Alfons      931,70                           **Registered**
- 71/2017               10/03/2017     09/05/2017   Radermacher Alfons      563,81                           **Registered**
- 70/2017               09/03/2017     19/03/2017   Emontspool Erwin        639,92                           **Registered**
- 69/2017               08/03/2017     15/03/2017   Emonts Erich            3 599,71                         **Registered**
- 68/2017               07/03/2017     06/04/2017   Mießen Michael          600,00                           **Registered**
- 67/2017               06/03/2017     04/06/2017   Malmendier Marc         525,00                           **Registered**
- 66/2017               13/02/2017     20/02/2017   Lambertz Guido          1 151,70                         **Registered**
- 65/2017               12/02/2017     12/02/2017   Kaivers Karl            2 349,81                         **Registered**
- 64/2017               11/02/2017     13/03/2017   Jousten Jan             1 599,92                         **Registered**
- 63/2017               10/02/2017     12/03/2017   Jousten Jan             990,00                           **Registered**
- 62/2017               09/02/2017     28/02/2017   Jonas Josef             279,90                           **Registered**
- 61/2017               08/02/2017     09/05/2017   Johnen Johann           1 199,85                         **Registered**
- 60/2017               07/02/2017     09/03/2017   Jansen Jérémy           3 319,78                         **Registered**
- 59/2017               06/02/2017     13/02/2017   Hilgers Henri           535,00                           **Registered**
- 58/2017               06/01/2017     05/02/2017   Groteclaes Gregory      280,00                           **Registered**
- 57/2016               09/12/2016     09/03/2017   Faymonville Luc         679,81                           **Registered**
+ 72/2017               11/03/2017     10/05/2017   Radermacher Alfons      770,00                           **Registered**
+ 71/2017               10/03/2017     09/05/2017   Radermacher Alfons      465,96                           **Registered**
+ 70/2017               09/03/2017     19/03/2017   Emontspool Erwin        528,86                           **Registered**
+ 69/2017               08/03/2017     15/03/2017   Emonts Erich            2 974,97                         **Registered**
+ 68/2017               07/03/2017     06/04/2017   Mießen Michael          495,87                           **Registered**
+ 67/2017               06/03/2017     04/06/2017   Malmendier Marc         433,88                           **Registered**
+ 66/2017               13/02/2017     20/02/2017   Lambertz Guido          951,82                           **Registered**
+ 65/2017               12/02/2017     12/02/2017   Kaivers Karl            1 942,00                         **Registered**
+ 64/2017               11/02/2017     13/03/2017   Jousten Jan             1 322,25                         **Registered**
+ 63/2017               10/02/2017     12/03/2017   Jousten Jan             818,18                           **Registered**
+ 62/2017               09/02/2017     28/02/2017   Jonas Josef             231,33                           **Registered**
+ 61/2017               08/02/2017     09/05/2017   Johnen Johann           991,61                           **Registered**
+ 60/2017               07/02/2017     09/03/2017   Jansen Jérémy           2 743,62                         **Registered**
+ 59/2017               06/02/2017     13/02/2017   Hilgers Henri           442,15                           **Registered**
+ 58/2017               06/01/2017     05/02/2017   Groteclaes Gregory      231,40                           **Registered**
+ 57/2016               09/12/2016     09/03/2017   Faymonville Luc         561,82                           **Registered**
  ...
- 11/2016               06/04/2016     05/07/2016   Faymonville Luc         2 349,81                         **Registered**
- 10/2016               06/03/2016     05/05/2016   Engels Edgar            1 599,92                         **Registered**
- 9/2016                09/02/2016     10/03/2016   Emonts Daniel           990,00                           **Registered**
- 8/2016                08/02/2016     18/02/2016   Evers Eberhart          279,90                           **Registered**
- 7/2016                07/02/2016     14/02/2016   Evertz Bernd            1 199,85                         **Registered**
- 6/2016                06/02/2016     06/04/2016   Dericum Daniel          3 319,78                         **Registered**
- 5/2016                10/01/2016     09/02/2016   Chantraine Marc         647,35                           **Registered**
- 4/2016                09/01/2016     09/01/2016   Bastiaensen Laurent     280,00                           **Registered**
- 3/2016                08/01/2016     07/02/2016   Ausdemwald Alfons       679,81                           **Registered**
- 2/2016                07/01/2016     31/01/2016   Altenberg Hans          2 039,82                         **Registered**
- 1/2016                06/01/2016     06/03/2016   Arens Andreas           2 999,85                         **Registered**
- **Total (72 rows)**                                                       **98 076,96**
+ 11/2016               06/04/2016     05/07/2016   Faymonville Luc         1 942,00                         **Registered**
+ 10/2016               06/03/2016     05/05/2016   Engels Edgar            1 322,25                         **Registered**
+ 9/2016                09/02/2016     10/03/2016   Emonts Daniel           818,18                           **Registered**
+ 8/2016                08/02/2016     18/02/2016   Evers Eberhart          231,33                           **Registered**
+ 7/2016                07/02/2016     14/02/2016   Evertz Bernd            991,61                           **Registered**
+ 6/2016                06/02/2016     06/04/2016   Dericum Daniel          2 743,62                         **Registered**
+ 5/2016                10/01/2016     09/02/2016   Chantraine Marc         535,00                           **Registered**
+ 4/2016                09/01/2016     09/01/2016   Bastiaensen Laurent     231,40                           **Registered**
+ 3/2016                08/01/2016     07/02/2016   Ausdemwald Alfons       561,82                           **Registered**
+ 2/2016                07/01/2016     31/01/2016   Altenberg Hans          1 685,80                         **Registered**
+ 1/2016                06/01/2016     06/03/2016   Arens Andreas           2 479,21                         **Registered**
+ **Total (72 rows)**                                                       **81 055,30**
 ===================== ============== ============ ======================= ================= ============== ================
 <BLANKLINE>
  

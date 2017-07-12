@@ -399,6 +399,9 @@ class SpecsTests(TestCase):
     def test_ana(self):
         self.run_simple_doctests('docs/specs/ana.rst')
 
+    def test_vat(self):
+        self.run_simple_doctests('docs/specs/vat.rst')
+
 
     def test_projects_mti(self):
         self.run_simple_doctests('docs/specs/projects/mti.rst')
