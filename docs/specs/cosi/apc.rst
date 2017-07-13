@@ -75,7 +75,7 @@ Robin is the system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
-  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations
+  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations, Declaration fields
   - Financial : Bank Statements, Journal Entries, Payment Orders
 - Site : About
 
