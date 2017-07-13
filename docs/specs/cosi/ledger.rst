@@ -6,13 +6,6 @@
 The General Ledger: moving money between accounts
 =================================================
 
-The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
-general accounting stuff.  You application needs it when you are
-moving money between accounts.  You should have read :doc:`accounts`
-before reading this document.
-
-.. currentmodule:: lino_xl.lib.ledger
-
 .. to test only this document:
 
       $ python setup.py test -s tests.SpecsTests.test_ledger
@@ -25,7 +18,6 @@ before reading this document.
     >>> ses = rt.login("robin")
     >>> translation.activate('en')
 
-
 Table of contents:
 
 .. contents::
@@ -35,6 +27,14 @@ Table of contents:
 
 Overview
 ========
+
+The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
+general accounting stuff.  You application needs it when you are
+moving money between accounts.  You should have read :doc:`accounts`
+before reading this document.
+
+.. currentmodule:: lino_xl.lib.ledger
+
 
 A **ledger** is a book in which the monetary transactions of a
 business are posted in the form of debits and credits (from `1
@@ -649,10 +649,10 @@ creditors are providers, i.e. partners who send us a purchase invoice
 ==================== ========= ===============
  Partner              ID        Balance
 -------------------- --------- ---------------
- AS Express Post      181       510,48
+ AS Express Post      181       617,70
  AS Matsalu Veevärk   182       2 131,20
  Eesti Energia AS     183       75 828,90
- **Total (3 rows)**   **546**   **78 470,58**
+ **Total (3 rows)**   **546**   **78 577,80**
 ==================== ========= ===============
 <BLANKLINE>
 
@@ -665,22 +665,22 @@ to 510,48:
 ===================== ============= ======= =====================
  Due date              Balance       Debts   Payments
 --------------------- ------------- ------- ---------------------
- 02/01/2016            -33,06                `PRC 1 <Detail>`__
- 07/05/2016            -34,13                `PRC 6 <Detail>`__
- 15/03/2016            -33,55                `PRC 11 <Detail>`__
- 03/05/2016            -35,12                `PRC 16 <Detail>`__
- 07/07/2016            -33,97                `PRC 21 <Detail>`__
- 13/06/2016            -33,06                `PRC 26 <Detail>`__
- 31/07/2016            -34,13                `PRC 31 <Detail>`__
- 01/09/2016            -33,55                `PRC 36 <Detail>`__
- 07/09/2016            -35,12                `PRC 41 <Detail>`__
- 03/01/2017            -33,97                `PRC 46 <Detail>`__
- 13/11/2016            -33,06                `PRC 51 <Detail>`__
- 07/01/2017            -34,13                `PRC 56 <Detail>`__
- 07/03/2017            -33,88                `PRC 61 <Detail>`__
- 11/02/2017            -35,45                `PRC 66 <Detail>`__
- 31/03/2017            -34,30                `PRC 71 <Detail>`__
- **Total (15 rows)**   **-510,48**
+ 02/01/2016            -40,00                `PRC 1 <Detail>`__
+ 07/05/2016            -41,30                `PRC 6 <Detail>`__
+ 15/03/2016            -40,60                `PRC 11 <Detail>`__
+ 03/05/2016            -42,50                `PRC 16 <Detail>`__
+ 07/07/2016            -41,10                `PRC 21 <Detail>`__
+ 13/06/2016            -40,00                `PRC 26 <Detail>`__
+ 31/07/2016            -41,30                `PRC 31 <Detail>`__
+ 01/09/2016            -40,60                `PRC 36 <Detail>`__
+ 07/09/2016            -42,50                `PRC 41 <Detail>`__
+ 03/01/2017            -41,10                `PRC 46 <Detail>`__
+ 13/11/2016            -40,00                `PRC 51 <Detail>`__
+ 07/01/2017            -41,30                `PRC 56 <Detail>`__
+ 07/03/2017            -41,00                `PRC 61 <Detail>`__
+ 11/02/2017            -42,90                `PRC 66 <Detail>`__
+ 31/03/2017            -41,50                `PRC 71 <Detail>`__
+ **Total (15 rows)**   **-617,70**
 ===================== ============= ======= =====================
 <BLANKLINE>
 

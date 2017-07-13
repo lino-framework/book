@@ -26,7 +26,7 @@ class Site(Site):
 
     verbose_name = "Lino Tera for Lydia"
    
-    demo_fixtures = 'std demo minimal_ledger euvatrates demo_bookings payments demo2'.split()
+    demo_fixtures = 'std minimal_ledger novat demo demo_bookings payments demo2'.split()
 
     languages = 'en de fr'
     

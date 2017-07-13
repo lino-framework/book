@@ -129,3 +129,56 @@ True
 True
 
 >>> validate_pain001(fn)
+
+
+Voucher types
+=============
+
+>>> rt.show(ledger.VoucherTypes)
+=============================== ====== =======================================================
+ value                           name   text
+------------------------------- ------ -------------------------------------------------------
+ finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
+ finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
+ finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
+ ana.InvoicesByJournal                  Invoice (ana.InvoicesByJournal)
+ vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
+ bevat.DeclarationsByJournal            Belgian VAT declaration (bevat.DeclarationsByJournal)
+ sales.InvoicesByJournal                Product invoice (sales.InvoicesByJournal)
+=============================== ====== =======================================================
+<BLANKLINE>
+
+
+Intracommunal purchases
+=======================
+
+This site is an example of an organization which has a VAT id but is
+not subject to VAT declaration. This means for them that if they buy
+goods or services from other EU member states, they will pay
+themselves the VAT in their own country. The provider does not write
+any VAT on their invoice, but the customer computes that VAT based on
+their national rates and then introduces a special kind of VAT
+declaration and pays that VAT directly to the tax collector agency.
+
+Here is an example of such an invoice:
+
+>>> qs = ana.AnaAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom)
+>>> obj = qs[0]
+>>> print(obj.total_base)
+33.06
+>>> print(obj.total_vat)
+0.00
+>>> print(obj.total_incl)
+33.06
+
+
+>>> rt.show(ledger.MovementsByVoucher, obj)
+========= ================= ============================= =========== =========== =========== =========
+ Seq.No.   Partner           Account                       Debit       Credit      Match       Cleared
+--------- ----------------- ----------------------------- ----------- ----------- ----------- ---------
+ 1                           (6010) Purchase of services   40,00                               Yes
+ 2                           (4510) VAT due                            6,94                    No
+ 3         AS Express Post   (4400) Suppliers                          33,06       **PRC 1**   Yes
+ **6**                                                     **40,00**   **40,00**
+========= ================= ============================= =========== =========== =========== =========
+<BLANKLINE>

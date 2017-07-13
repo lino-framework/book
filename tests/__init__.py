@@ -387,11 +387,20 @@ class SpecsTests(TestCase):
     def test_avanti_cal(self):
         self.run_simple_doctests('docs/specs/avanti/cal.rst')
 
+    def test_avanti_avanti(self):
+        self.run_simple_doctests('docs/specs/avanti/avanti.rst')
+
     def test_avanti_roles(self):
         self.run_simple_doctests('docs/specs/avanti/roles.rst')
 
     def test_tera(self):
         self.run_simple_doctests('docs/specs/tera.rst')
+
+    def test_ana(self):
+        self.run_simple_doctests('docs/specs/ana.rst')
+
+    def test_vat(self):
+        self.run_simple_doctests('docs/specs/vat.rst')
 
 
     def test_projects_mti(self):

@@ -6,9 +6,7 @@ Specs
 =====
 
 This section contains articles which are meant as functional
-specifications.  Their first goal is to provide a tested document
-describing some part of Lino. They are not meant as
-introductions. This section is far from being complete.
+specifications.  This section is far from being complete.
 
 
 .. toctree::
@@ -37,7 +35,6 @@ introductions. This section is far from being complete.
    users
    ssin
    
-   cosi/index
    noi/index
    avanti/index
    
@@ -45,6 +42,17 @@ introductions. This section is far from being complete.
    projects/nomti
    projects/lets1
    projects/lets2
+
+
+Accounting stuff
+================
     
+.. toctree::
+   :maxdepth: 1
+  
    tera
+   
+   cosi/index
+   ana
+   vat
    
