@@ -170,7 +170,8 @@ Here is an example of such an invoice:
 0.00
 >>> print(obj.total_incl)
 33.06
-
+>>> print(obj.voucher_date)
+2015-01-02
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
 ========= ================= ============================= =========== =========== =========== =========
@@ -182,3 +183,23 @@ Here is an example of such an invoice:
  **6**                                                     **40,00**   **40,00**
 ========= ================= ============================= =========== =========== =========== =========
 <BLANKLINE>
+
+
+This invoice says that we had **40€** of costs, **33.06€** of which to
+be paid to the supplier and **6.94 €** to be paid to the tax office.
+
+
+>>> obj = bevat.Declaration.objects.get(number=2)
+>>> rt.show(ledger.MovementsByVoucher, obj)
+========= ================================== ===================== ============ ============ =========== =========
+ Seq.No.   Partner                            Account               Debit        Credit       Match       Cleared
+--------- ---------------------------------- --------------------- ------------ ------------ ----------- ---------
+ 1                                            (4513) Declared VAT   907,07                                No
+ 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                 907,07       **VAT 2**   No
+ **3**                                                              **907,07**   **907,07**
+========= ================================== ===================== ============ ============ =========== =========
+<BLANKLINE>
+
+This declaration says that... oops, its is not finished: registering
+the declaration must probably debit the amount from 4510, not
+from 4513. And 4513 is not needed.
