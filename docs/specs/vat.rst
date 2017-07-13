@@ -11,7 +11,7 @@ VAT (Value-added tax)
     doctest init
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
+    >>> startup('lino_book.projects.apc.settings.doctests')
     >>> from lino.api.doctest import *
 
 
@@ -43,6 +43,17 @@ Installing this plugin will automatically install
 
 
 
+VAT rules
+=========
+
+The demo fixtures :mod:`novat <lino_xl.lib.vat.fixtures.novat>` and
+:mod:`euvatrates <lino_xl.lib.vat.fixtures.euvatrates>` are mutually
+exclusive (should not be used both) and must be loaded before any
+`demo` fixture (because otherwise :mod:`lino_xl.lib.vat.fixtures.demo`
+would not find any VAT regimes to assign to partners).
+
+
+
 Models and actors reference
 ===========================
 
@@ -56,6 +67,10 @@ Models and actors reference
 
     Database fields:
 
+    .. attribute:: seqno
+
+       The sequence number.
+                   
     .. attribute:: country
     .. attribute:: vat_class
 
@@ -81,19 +96,24 @@ Models and actors reference
 
     .. attribute:: vat_returnable
 
-        Whether VAT is to be returned (i.e. not paid to the partner).
+        Whether VAT is "returnable" (i.e. not to be paid to or by the
+        partner). Returnable VAT, unlike normal VAT, does not increase
+        the total amount of the voucher and causes an additional
+        movement into the :attr:`vat_returnable_account`.
 
     .. attribute:: vat_returnable_account
 
         Where to book returnable VAT. If VAT is returnable and this
-        field is empty, then VAT will be added to the base account..
+        field is empty, then VAT will be added to the base account.
 
 
-    .. method:: get_vat_rule(cls, trade_type, vat_regime, vat_class,
-                country, date)
+    .. classmethod:: get_vat_rule(cls, trade_type, vat_regime,
+                     vat_class=None, country=None, date=None)
 
-        Return the first VatRule object to be applied for the given
-        criteria.
+        Return the VAT rule to be applied for the given criteria.
+        
+        Lino loops through all rules (ordered by their :attr:`seqno`)
+        and returns the first object which matches.
 
                
 .. class:: VatAccountInvoice
