@@ -14,6 +14,7 @@ Lino Tera : a first overview
     >>> from lino import startup
     >>> startup('lino_book.projects.lydia.settings.doctests')
     >>> from lino.api.doctest import *
+    >>> from django.db import models
 
 **Lino Tera** (from Italian *terapia*, therapy) is a Lino application
 designed to be used in a center for `sociopsychological
@@ -149,6 +150,10 @@ Voucher types
 <BLANKLINE>
 
 
+>>> # rt.show(ledger.Journals, filter=models.Q(must_declare=True))
+
+
+
 Intracommunal purchases
 =======================
 
@@ -170,8 +175,8 @@ Here is an example of such an invoice:
 0.00
 >>> print(obj.total_incl)
 33.06
->>> print(obj.voucher_date)
-2015-01-02
+>>> print(obj.entry_date)
+2015-01-03
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
 ========= ================= ============================= =========== =========== =========== =========
@@ -189,17 +194,38 @@ This invoice says that we had **40€** of costs, **33.06€** of which to
 be paid to the supplier and **6.94 €** to be paid to the tax office.
 
 
->>> obj = bevat.Declaration.objects.get(number=2)
->>> rt.show(ledger.MovementsByVoucher, obj)
-========= ================================== ===================== ============ ============ =========== =========
- Seq.No.   Partner                            Account               Debit        Credit       Match       Cleared
---------- ---------------------------------- --------------------- ------------ ------------ ----------- ---------
- 1                                            (4513) Declared VAT   907,07                                No
- 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                 907,07       **VAT 2**   No
- **3**                                                              **907,07**   **907,07**
-========= ================================== ===================== ============ ============ =========== =========
+After the end of the month we then have
+
+>>> obj = accounts.Account.get_by_ref("4510")
+>>> rt.show(ledger.MovementsByAccount, obj,
+...     param_values=dict(start_date=i2d(20150101), end_date=i2d(20150131)))
+============ ========= =================================== ======= ============ ======= =========
+ Value date   Voucher   Description                         Debit   Credit       Match   Cleared
+------------ --------- ----------------------------------- ------- ------------ ------- ---------
+ 07/01/2015   *PRC 5*   *Eesti Energia AS*                          562,60               No
+ 06/01/2015   *PRC 4*   *Eesti Energia AS*                          208,25               No
+ 05/01/2015   *PRC 3*   *Eesti Energia AS*                          104,76               No
+ 04/01/2015   *PRC 2*   *AS Matsalu Veevärk*                        24,52                No
+ 03/01/2015   *PRC 1*   *AS Express Post*                           6,94                 No
+                        **Balance -907.07 (5 movements)**           **907,07**
+============ ========= =================================== ======= ============ ======= =========
 <BLANKLINE>
 
-This declaration says that... oops, its is not finished: registering
-the declaration must probably debit the amount from 4510, not
-from 4513. And 4513 is not needed.
+
+This credit balance of 907 € is cleared by the VAT declaration for
+that month which has been generated automatically:
+
+
+>>> obj = bevat.Declaration.objects.get(number=2)
+>>> rt.show(ledger.MovementsByVoucher, obj)
+========= ================================== ==================== ============ ============ =========== =========
+ Seq.No.   Partner                            Account              Debit        Credit       Match       Cleared
+--------- ---------------------------------- -------------------- ------------ ------------ ----------- ---------
+ 1                                            (4510) VAT due       907,07                                No
+ 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                907,07       **VAT 2**   No
+ **3**                                                             **907,07**   **907,07**
+========= ================================== ==================== ============ ============ =========== =========
+<BLANKLINE>
+
+This declaration says that now we have no more due VAT but we have a
+debth towards a tax office.
