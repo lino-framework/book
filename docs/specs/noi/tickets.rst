@@ -447,35 +447,35 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
-======================================================================= ============================================
- Description                                                             Actions
------------------------------------------------------------------------ --------------------------------------------
- `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
- `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-======================================================================= ============================================
+========== ======================================================================= ============================================
+ Priority   Description                                                             Actions
+---------- ----------------------------------------------------------------------- --------------------------------------------
+ Normal     `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
+ Normal     `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ Normal     `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ Normal     `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
+ Normal     `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
+ Normal     `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+========== ======================================================================= ============================================
 <BLANKLINE>
 
 
@@ -502,20 +502,20 @@ can see all local tickets for a given site object:
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ========== ======== ==========
- ID    Summary                     Author   Topic          Actions    Site     Mission
------ --------------------------- -------- -------------- ---------- -------- ----------
- 115   Ticket 115                  Luc      Lino Voga      **Open**   welket   docs
- 97    Ticket 97                   Luc      Lino Welfare   **New**    welket   shop
- 91    Ticket 91                   Luc      Lino Voga      **Open**   welket   research
- 73    Ticket 73                   Luc      Lino Welfare   **New**    welket   linö
- 67    Ticket 67                   Luc      Lino Voga      **Open**   welket   shop
- 49    Ticket 49                   Luc      Lino Welfare   **New**    welket   téam
- 43    Ticket 43                   Luc      Lino Voga      **Open**   welket   linö
- 25    Ticket 25                   Luc      Lino Welfare   **New**    welket   docs
- 19    Ticket 19                   Luc      Lino Voga      **Open**   welket   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   **New**    welket   linö
-===== =========================== ======== ============== ========== ======== ==========
+========== =============================================================== ==========
+ Priority   Description                                                     Actions
+---------- --------------------------------------------------------------- ----------
+ Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*   **Open**
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Luc*                        **New**
+ Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__  by *Luc*                        **New**
+ Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__  by *Luc*                        **New**
+ Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__  by *Luc*                        **New**
+ Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Luc*         **New**
+========== =============================================================== ==========
 <BLANKLINE>
 
 
@@ -525,20 +525,20 @@ authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-===== =========================== ======== ============== ============================================ ======== ==========
- ID    Summary                     Author   Topic          Actions                                      Site     Mission
------ --------------------------- -------- -------------- -------------------------------------------- -------- ----------
- 115   Ticket 115                  Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   docs
- 97    Ticket 97                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   shop
- 91    Ticket 91                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   research
- 73    Ticket 73                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   linö
- 67    Ticket 67                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   shop
- 49    Ticket 49                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   téam
- 43    Ticket 43                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   linö
- 25    Ticket 25                   Luc      Lino Welfare   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   docs
- 19    Ticket 19                   Luc      Lino Voga      [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]   welket   téam
- 1     Föö fails to bar when baz   Luc      Lino Welfare   [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]        welket   linö
-===== =========================== ======== ============== ============================================ ======== ==========
+========== ================================================================ ============================================
+ Priority   Description                                                      Actions
+---------- ---------------------------------------------------------------- --------------------------------------------
+ Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
+========== ================================================================ ============================================
 <BLANKLINE>
 
 
@@ -762,6 +762,8 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | state           | State           | Only rows having this state.                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
+| priority        | Priority        | Only rows having this priority.                                  |
++-----------------+-----------------+------------------------------------------------------------------+
 | deployed_to     | Meeting         |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 | has_project     | Has project     | Show only (or hide) tickets which have a project assigned.       |
@@ -806,7 +808,7 @@ the detail window of a ticket.
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
     - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
-    - (general1_4): **Actions** (workflow_buttons), **Private** (private)
+    - (general1_4): **Actions** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
       - **Commits** (github_CommitsByTicket)
@@ -814,8 +816,8 @@ the detail window of a ticket.
 - **More** (more):
   - (more_1):
     - (more1):
-      - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for), **Ticket type** (ticket_type)
-      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time), **Priority** (priority)
+      - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for)
+      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
 - **History** (changes.ChangesByMaster) [visible for senior admin]

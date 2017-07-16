@@ -48,18 +48,17 @@ The demo database contains the following "public" tickets:
 ================================================================================== ============= =========== ==========
  Description                                                                        Ticket type   Topic       Priority
 ---------------------------------------------------------------------------------- ------------- ----------- ----------
- `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*                      Bugfix        Lino Voga   100
- `#107 (☉ Ticket 107) <Detail>`__  by *Mathieu*, assigned to *Luc*                  Enhancement   Lino Voga   100
- `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   100
- `#83 (☉ Ticket 83) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   100
- `#75 (☉ Ticket 75) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   100
- `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   100
- `#51 (☉ Ticket 51) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   100
- `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   100
- `#35 (☉ Ticket 35) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   100
- `#27 (☉ Ticket 27) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   100
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Mathieu*, assigned to *Luc*   Enhancement   Lino Voga   100
- **Total (11 rows)**                                                                                          **1100**
+ `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*                      Bugfix        Lino Voga   Normal
+ `#107 (☉ Ticket 107) <Detail>`__  by *Mathieu*, assigned to *Luc*                  Enhancement   Lino Voga   Normal
+ `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
+ `#83 (☉ Ticket 83) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   Normal
+ `#75 (☉ Ticket 75) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
+ `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
+ `#51 (☉ Ticket 51) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
+ `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
+ `#35 (☉ Ticket 35) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   Normal
+ `#27 (☉ Ticket 27) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
+ `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Mathieu*, assigned to *Luc*   Enhancement   Lino Voga   Normal
 ================================================================================== ============= =========== ==========
 <BLANKLINE>
 
