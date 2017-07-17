@@ -206,3 +206,74 @@ Model mixins
 
 
                 
+Choicelists
+===========
+
+.. class:: VatClasses
+
+    The global list of VAT classes.
+
+    A VAT class is a direct or indirect property of a trade object
+    (e.g. a Product) which determines the VAT *rate* to be used.  It
+    does not contain the actual rate because this still varies
+    depending on your country, the time and type of the operation, and
+    possibly other factors.
+
+    Default classes are:
+
+    .. attribute:: exempt
+
+    .. attribute:: reduced
+
+    .. attribute:: normal
+
+
+.. class:: VatColumns
+
+                   
+    The global list of VAT columns.
+
+    The VAT column of a ledger account indicates where the movements
+    on this account are to be collected in VAT declarations.
+    
+
+.. class:: VatRegime
+           
+    Base class for choices of :class:`VatRegimes`.
+           
+    The VAT regime is a classification of the way how VAT is being
+    handled for a given partner, e.g. whether and how it is to be
+    paid.
+    
+    .. attribute:: item_vat
+                   
+        Whether unit prices are VAT included or not.
+
+.. class:: VatRegimes
+
+    The global list of VAT regimes. Each item is an instance of
+    :class:`VatRegime`.
+
+
+.. class:: DeclarationField
+           
+    Base class for all fields of VAT declarations.
+
+    .. attribute:: both_dc
+    .. attribute:: editable
+    .. attribute:: fieldnames
+
+       An optional space-separated list of names of other declaration
+       fields to be observed by this field.
+                   
+    .. attribute:: vat_regimes
+    .. attribute:: vat_classes
+    .. attribute:: vat_columns
+                   
+    .. attribute:: exclude_vat_regimes
+    .. attribute:: exclude_vat_classes
+    .. attribute:: exclude_vat_columns
+    .. attribute:: is_payable
+                   
+                   
+    

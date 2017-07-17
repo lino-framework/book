@@ -60,8 +60,7 @@ Robin is the system administrator, he has a complete menu:
   - Create invoices
 - Office : My Excerpts
 - Reports :
-  - Accounting : Situation, Activity Report, Debtors, Creditors
-  - VAT : Due invoices
+  - Accounting : Situation, General Accounts Balances, Customer Accounts Balances, Supplier Accounts Balances, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
@@ -75,7 +74,7 @@ Robin is the system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
-  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations
+  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations, Declaration fields
   - Financial : Bank Statements, Journal Entries, Payment Orders
 - Site : About
 

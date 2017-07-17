@@ -28,25 +28,6 @@ Lino Welfare
   from lino_welfare import SETUP_INFO
   print(SETUP_INFO['long_description'])
 
-.. _presto:
-
-Lino Presto
-------------
-
-.. py2rst::
-
-  from lino_presto import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-
-.. _psico:
-
-Lino Psico
-----------
-
-See http://presto.lino-framework.org/specs/psico.html
-
-
 .. _faggio:
 .. _voga:
 
@@ -111,6 +92,29 @@ Lino Sunto
 Lino Sunto is the first free (GPL) Lino application developed by
 somebody else than the author. It is hosted at    
 https://github.com/ManuelWeidmann/lino-sunto
+
+
+.. _presto:
+
+Lino Presto
+------------
+
+.. py2rst::
+
+  from lino_presto import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+
+.. _psico:
+
+Lino Psico
+----------
+
+This project is now named :ref:`tera`.
+Obsolete docs in http://presto.lino-framework.org/specs/psico.html
+
+
+
 
 
 Applications written for learning and testing

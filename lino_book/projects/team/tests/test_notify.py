@@ -160,7 +160,8 @@ Robin a comment? <a href="http://127.0.0.1:8000/api/tickets/Ticket/1" title="Sav
         self.assertEqual(Message.objects.count(), 0)
         
         cw = ChangeWatcher(obj)
-        obj.priority = 200
+        from lino_xl.lib.tickets.choicelists import Priorities
+        obj.priority = Priorities.low
         obj.save_watched_instance(ar, cw)
 
 

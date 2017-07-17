@@ -475,7 +475,7 @@ Journals
  CSH         Caisse                Cash                                         (5700) Cash                      Debit
  BNK         Bestbank              Bestbank                                     (5500) Bestbank                  Debit
  MSC         Opérations diverses   Miscellaneous Journal Entries                (5700) Cash                      Debit
- VAT         Déclarations TVA      VAT declarations                             (4513) VAT to declare            Debit
+ VAT         Déclarations TVA      VAT declarations                Taxes        (4513) Declared VAT              Debit
 =========== ===================== =============================== ============ ================================ ===========================
 <BLANKLINE>
 
@@ -496,6 +496,7 @@ The default list of trade types is:
  S       sales       Sales
  P       purchases   Purchases
  W       wages       Wages
+ T       taxes       Taxes
  C       clearings   Clearings
 ======= =========== ===========
 <BLANKLINE>
@@ -516,21 +517,22 @@ A **match rule** specifies that a movement into given account can be
 
 >>> ses.show(ledger.MatchRules)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ================== =====================================
- ID   Account            Journal
----- ------------------ -------------------------------------
- 1    (4000) Customers   Sales invoices (SLS)
- 2    (4000) Customers   Sales credit notes (SLC)
- 3    (4400) Suppliers   Purchase invoices (PRC)
- 4    (4000) Customers   Payment Orders (PMO)
- 5    (4400) Suppliers   Payment Orders (PMO)
- 6    (4000) Customers   Cash (CSH)
- 7    (4400) Suppliers   Cash (CSH)
- 8    (4000) Customers   Bestbank (BNK)
- 9    (4400) Suppliers   Bestbank (BNK)
- 10   (4000) Customers   Miscellaneous Journal Entries (MSC)
- 11   (4400) Suppliers   Miscellaneous Journal Entries (MSC)
-==== ================== =====================================
+==== ==================== =====================================
+ ID   Account              Journal
+---- -------------------- -------------------------------------
+ 1    (4000) Customers     Sales invoices (SLS)
+ 2    (4000) Customers     Sales credit notes (SLC)
+ 3    (4400) Suppliers     Purchase invoices (PRC)
+ 4    (4000) Customers     Payment Orders (PMO)
+ 5    (4400) Suppliers     Payment Orders (PMO)
+ 6    (4000) Customers     Cash (CSH)
+ 7    (4400) Suppliers     Cash (CSH)
+ 8    (4000) Customers     Bestbank (BNK)
+ 9    (4400) Suppliers     Bestbank (BNK)
+ 10   (4000) Customers     Miscellaneous Journal Entries (MSC)
+ 11   (4400) Suppliers     Miscellaneous Journal Entries (MSC)
+ 12   (4500) Tax offices   VAT declarations (VAT)
+==== ==================== =====================================
 <BLANKLINE>
 
 
@@ -576,69 +578,58 @@ that invoice.
 
 >>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-======================= ========== ===============
- Partner                 ID         Balance
------------------------ ---------- ---------------
- Bastiaensen Laurent     116        880,00
- Altenberg Hans          114        5 341,45
- Ausdemwald Alfons       115        1 204,81
- Chantraine Marc         119        5 003,00
- Evertz Bernd            125        1 665,81
- Evers Eberhart          126        1 049,90
- Arens Andreas           112        4 599,77
- Emonts Daniel           127        3 989,85
- Dericum Daniel          120        3 959,70
- Hilgers Henri           133        1 060,00
- Jonas Josef             138        745,86
- Engels Edgar            128        3 639,74
- Kaivers Karl            140        5 349,66
- Groteclaes Gregory      131        1 231,82
- Jansen Jérémy           135        3 919,78
- Jousten Jan             139        3 359,92
- Lambertz Guido          141        3 619,88
- Emonts Erich            149        7 454,49
- Mießen Michael          147        880,00
- Radermacher Edgard      156        1 599,92
- Emontspool Erwin        150        1 839,77
- Radermacher Fritz       157        2 349,81
- Radermacher Christian   154        990,00
- Faymonville Luc         129        3 029,62
- Johnen Johann           137        5 439,48
- Radermacher Guido       158        951,82
- Radermacher Jean        162        600,00
- Malmendier Marc         145        1 204,81
- Radermacher Alfons      152        1 834,19
- Radermacher Hans        159        525,00
- da Vinci David          164        639,92
- di Rupo Didier          163        4 355,65
- Radermecker Rik         172        2 039,82
- van Veen Vincent        165        465,96
- Eierschal Emil          174        1 161,37
- Östges Otto             167        770,00
- Jeanémart Jérôme        180        990,00
- Martelaer Mark          171        2 999,85
- Dubois Robin            178        1 199,85
- Denon Denis             179        279,90
- Brecht Bernd            176        535,00
- Keller Karl             177        3 319,78
- **Total (42 rows)**     **6180**   **98 076,96**
-======================= ========== ===============
+=================================== ========== ================
+ Partner                             ID         Balance
+----------------------------------- ---------- ----------------
+ Rumma & Ko OÜ                       100        2 999,85
+ Bäckerei Ausdemwald                 101        2 039,82
+ Bäckerei Mießen                     102        679,81
+ Mehrwertsteuer-Kontrollamt Eupen    191        19 928,99
+ Bäckerei Schmitz                    103        280,00
+ Bernd Brechts Bücherladen           108        1 197,90
+ Van Achter NV                       106        1 199,85
+ Hans Flott & Co                     107        279,90
+ Garage Mergelsberg                  104        535,00
+ Reinhards Baumschule                109        1 599,92
+ Bastiaensen Laurent                 116        770,00
+ ...
+ Emonts-Gast Erna                    151        2 039,82
+ Malmendier Marc                     145        600,00
+ Radermacher Alfons                  152        822,57
+ Radermacher Edgard                  156        1 199,85
+ Radermacher Fritz                   157        279,90
+ Radermacher Guido                   158        2 589,92
+ Radermacher Christian               154        535,00
+ Radermacher Daniela                 155        3 319,78
+ da Vinci David                      164        639,92
+ Radermacher Hans                    159        2 349,81
+ van Veen Vincent                    165        1 235,96
+ Radermacher Jean                    162        600,00
+ Radermacher Berta                   153        280,00
+ di Rupo Didier                      163        4 355,65
+ Radermacher Hedi                    160        951,82
+ Radermacher Inge                    161        525,00
+ **Total (67 rows)**                 **8936**   **117 446,79**
+=================================== ========== ================
 <BLANKLINE>
 
-Partner 116 from above list has two open sales invoices, totalling to
-880,00:
+
+The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows
+one row per open (uncleared) invoice. For example, partner 116 from
+above list has two open sales invoices, totalling to 880,00:
 
 >>> obj = contacts.Partner.objects.get(pk=116)
 >>> ses.show(ledger.DebtsByPartner, obj)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ==================== ============ ===================== ==========
  Due date             Balance      Debts                 Payments
 -------------------- ------------ --------------------- ----------
- 09/01/2016           280,00       `SLS 4 <Detail>`__
- 07/11/2016           600,00       `SLS 50 <Detail>`__
- **Total (2 rows)**   **880,00**
+ 13/04/2016           770,00       `SLS 18 <Detail>`__
+ **Total (1 rows)**   **770,00**
 ==================== ============ ===================== ==========
 <BLANKLINE>
+
+
 
 **Creditors** are partners hwo gave us credit. The most common
 creditors are providers, i.e. partners who send us a purchase invoice
