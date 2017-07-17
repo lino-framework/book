@@ -96,7 +96,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 44 plugins
 - 65 models
-- 252 views
+- 253 views
 - 7 user types
 - 5 dialog actions
 <BLANKLINE>
