@@ -741,6 +741,7 @@ needed by some operation.
 =========== ============ ============ ============= ======= ========
  Reference   Start date   End date     Fiscal Year   State   Remark
 ----------- ------------ ------------ ------------- ------- --------
+ 2015-12     01/12/2015   31/12/2015                 Open
  2016-01     01/01/2016   31/01/2016   2016          Open
  2016-02     01/02/2016   29/02/2016   2016          Open
  2016-03     01/03/2016   31/03/2016   2016          Open
@@ -758,6 +759,7 @@ needed by some operation.
  2017-03     01/03/2017   31/03/2017   2017          Open
 =========== ============ ============ ============= ======= ========
 <BLANKLINE>
+
 
 The *reference* of a new accounting period is computed by applying the
 voucher's entry date to the template defined in the

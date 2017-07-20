@@ -53,7 +53,7 @@ This document describes the database structure.
  contacts.RoleType                  contacts.RoleTypes           4         0
  contenttypes.ContentType           gfks.ContentTypes            3         65
  countries.Country                  countries.Countries          6         8
- countries.Place                    countries.Places             8         78
+ countries.Place                    countries.Places             9         78
  dashboard.Widget                   dashboard.Widgets            5         0
  deploy.Deployment                  deploy.Deployments           9         87
  django_mailbox.Mailbox             mailbox.Mailboxes            6         1
