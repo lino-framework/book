@@ -6,7 +6,8 @@ Organizing your Python environments
 
 When your server is going to host several production sites, then it is
 likely that every project needs its own Python environment. This
-differs from what we said in :ref:`lino.dev.env`.
+differs from what we said for a development machine in
+:ref:`lino.dev.env`.
 
 You will then create a new environment for every project and store it
 below the project directory.  We recommend to always use the same

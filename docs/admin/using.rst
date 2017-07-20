@@ -24,7 +24,7 @@ You can then easily switch between environments because Lino, Django
 and Apache activates them using the symbolic link :file:`env` in their
 project directory.
 
-You can add an alias to your `.bash_aliases`::
+You can add an alias to your :xfile:`.bash_aliases`::
 
   alias a='. env/bin/activate'
 

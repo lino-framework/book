@@ -90,6 +90,7 @@ Other
     pythonpath
    
     permissions
+    umask
     apache_http_auth
     mailbox
     django_tests

@@ -46,6 +46,12 @@ A more detailed description follows.
 
 - When all models are loaded, the Site will "start up" and instantiate
   the **kernel**. Only now everything in :mod:`lino.api.rt` is usable.
+  
+
+Analysis
+========
+
+
 
   
   
