@@ -394,7 +394,10 @@ class SpecsTests(TestCase):
         self.run_simple_doctests('docs/specs/avanti/roles.rst')
 
     def test_tera(self):
-        self.run_simple_doctests('docs/specs/tera.rst')
+        self.run_simple_doctests('docs/specs/tera/misc.rst')
+
+    def test_tera_tim2lino(self):
+        self.run_simple_doctests('docs/specs/tera/tim2lino.rst')
 
     def test_ana(self):
         self.run_simple_doctests('docs/specs/ana.rst')
