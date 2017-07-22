@@ -71,8 +71,8 @@ web servers. Free people use free operating systems.
 - You have written your own bash scripts. You know how to use shell
   variables and functions.
 - You know what is a pipe, what is redirection
-- You can configure your bash and know about the files :file:`.bashrc`
-  and :file:`.bash_aliases`.
+- You can configure your bash and know about the files :xfile:`.bashrc`
+  and :xfile:`.bash_aliases`.
 
 
 HTML, CSS and Javascript

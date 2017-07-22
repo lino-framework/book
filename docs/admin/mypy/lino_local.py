@@ -36,6 +36,7 @@ def setup(homedir, settings_module=None):
     
 
 def setup_site(self):
+    # Site-wide default Django settings.
     # Called when the Site object has been initialized. The Django
     # settings module cannot yet be imported but we can write to its
     # global namespace.

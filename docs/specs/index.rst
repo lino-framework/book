@@ -35,8 +35,27 @@ specifications.  This section is far from being complete.
    users
    ssin
    
+Accounting stuff
+================
+    
+.. toctree::
+   :maxdepth: 1
+  
+   
+   cosi/index
+   ana
+   vat
+   
+Application-specific specs
+==========================
+    
+.. toctree::
+   :maxdepth: 1
+  
+   
    noi/index
    avanti/index
+   tera/index
    
    projects/mti
    projects/nomti
@@ -44,15 +63,3 @@ specifications.  This section is far from being complete.
    projects/lets2
 
 
-Accounting stuff
-================
-    
-.. toctree::
-   :maxdepth: 1
-  
-   tera
-   
-   cosi/index
-   ana
-   vat
-   

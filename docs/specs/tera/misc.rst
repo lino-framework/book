@@ -240,3 +240,14 @@ other vouchers.  I guess that we need to add some configuration option
 journal.
 
 
+Internal details
+=================
+
+
+The following shows that :ticket:`1975` is a duplicate of
+:ticket:`492`:
+
+>>> a = rt.models.ana.InvoicesByJournal.actions.get('wf1')
+>>> a.action.auto_save
+True
+

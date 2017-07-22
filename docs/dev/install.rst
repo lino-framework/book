@@ -5,19 +5,18 @@
 Installing Lino
 ===============
 
-.. _pip: http://www.pip-installer.org/en/latest/
-.. _virtualenv: https://pypi.python.org/pypi/virtualenv
 .. _fabric: http://www.fabfile.org/
 .. _invoke: http://www.pyinvoke.org/
 .. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _atelier: http://atelier.lino-framework.org/
-.. _git: http://git-scm.com/downloads
-.. _lxml: http://lxml.de/
 .. _Debian: http://www.debian.org/
 
-This document describes how to install Lino.  It is written for
-Debian_ and derivated distributions, other Linuxes should be pretty
-similar.
+This document describes how to install a Lino development
+environment. The first part is also used for production sites (for
+which the full instruction are in :doc:`/admin/install`).
+
+This document is written for Debian_ and derivated distributions,
+other Linuxes should be pretty similar.
 
 It assumes you are familiar with the Linux shell at least for basic
 file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`,
@@ -34,125 +33,9 @@ we suggest to learn about :ref:`Working in a UNIX shell
 System requirements
 ===================
 
-#.  Lino theoretically works under **Python 3**, but we currently
-    still recommend **Python 2**.  If you just want it to work, then
-    choose Python 2. Otherwise consider giving it a try under Python 3
-    and report your experiences.
-
-#.  You need at least 500MB of RAM.  How to see how much memory you
-    have::
-
-        $ free -h
-
-#.  We assume you have virtualenv_ and pip_ installed. See the next
-    section. However at this point you should retrieve new lists of packages.::
-
-      $ sudo apt-get update
-
-#.  You will need to install git_ on your computer to get the source
-    files::
-      
-      $ sudo apt-get install git
-
-#.  There are Python C extensions among Lino's dependencies::
-
-      $ sudo apt-get install python-dev
-
-#.  Many Lino applications require lxml_, which has some extra
-    requirements::
-
-      $ sudo apt-get build-dep lxml
-
-    Note: if you get an error message :message:`You must put some
-    'source' URIs in your sources.list`, then (in Ubuntu) open
-    :menuselection:`System Settings --> Software & Updates` and make
-    sure that :guilabel:`Source code` is checked. Or (on the command
-    line) edit your :file:`/etc/apt/sources.list` file::
-
-      $ sudo nano /etc/apt/sources.list
-      $ sudo apt-get update
-
-#.  Similar requirement for applications which use
-    :mod:`lino.modlib.weasyprint`::
-
-      $ sudo apt-get build-dep cairocffi
-      $ sudo apt-get install libffi-dev libssl-dev
-
-#.  For applications which use :mod:`lino.utils.html2xhtml`::
-
-      $ sudo apt-get install tidy
-
-#.  For applications which use :mod:`lino_xl.lib.appy`::
-
-      $ sudo aptitude install libreoffice libreoffice-script-provider-python uno-libs3 python3-uno python3
-
-    See also :doc:`/admin/oood` because you might want to have the
-    LibreOffice server listening.
-
+.. include:: /include/system_req.rst
 
 .. _lino.dev.env:
-
-Get the sources
-===============
-
-You might theoretically install Lino using ``pip install lino``, but
-this method isn't currently being tested very thoroughly. So in most
-cases we currently recommend to use the development version because
-you will probably want to use Lino's newest features before they get
-released on PyPI.
-
-Create a directory (e.g. :file:`repositories`) meant to hold your
-working copies of version-controlled software projects, `cd` to that
-directory and and do::
-
-  $ mkdir repositories
-  $ cd repositories
-  $ git clone https://github.com/lino-framework/lino.git; \
-    git clone https://github.com/lino-framework/xl.git; \
-    git clone https://github.com/lino-framework/noi.git; \
-    git clone https://github.com/lino-framework/cosi.git; \
-    git clone https://github.com/lino-framework/care.git; \
-    git clone https://github.com/lino-framework/vilma.git; \
-    git clone https://github.com/lino-framework/avanti.git; \
-    git clone https://github.com/lino-framework/tera.git; \
-    git clone https://github.com/lino-framework/book.git
-
-
-You should now have five directories called `~/repositories/lino`, `~/repositories/cosi`,
-`~/repositories/xl`, `~/repositories/noi` and `~/repositories/book`,
-each of which contains a file :xfile:`setup.py` and a whole tree of
-other files and directories.
-
-Note that if you just want a *simplified* development environment (for
-a specific application on a production site), then you don't need to
-download and install all Lino repositories mentioned above. For
-example, if you want an `avanti` site, you *only* need to install
-`xl`, `lino` and `avanti` but *not* `noi`, `vilma`, `cosi` etc. On a
-production site you will probably never need the `book` repository
-which is the only one which requires all other repositories.
-
-One possible problem here is that some repositories might have a big
-size.  If you just want to get the latest version and don't plan to
-submit any pull requests, then you can reduce download size by adding
-``--depth 1`` and ``-b master`` options::
-
-  $ # git clone --depth 1 -b master https://...
-  $ git clone --depth 1 -b master https://github.com/lino-framework/lino.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/xl.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/noi.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/cosi.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/care.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/vilma.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/avanti.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/tera.git; \
-    git clone --depth 1 -b master https://github.com/lino-framework/book.git;
-
-(as explained in `this question on stackoverflow
-<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
-or Nicola Paolucci's blog entry `How to handle big repositories with
-git
-<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
-
 
 Set up a Python environment
 ===========================
@@ -161,20 +44,17 @@ Set up a Python environment
    environment, we recommend to create a new Python environment using
    virtualenv_.
 
-Rather than installing lino to your system version of python, you
-install lino to a separate virtual python environment using virtualenv_.
+Rather than installing Lino into your site-wide Python installation,
+you install it to a separate virtual Python environment using::
 
-If you have never used virtual environments before, then on a Debian
-system you will do something like::
-
-        $ sudo apt-get install virtualenv
         $ virtualenv --python=python2 /path_to_project_dir/env
 
 To *activate* this environment, you will type::
 
         $ . /path_to_project_dir/env/bin/activate
 
-Afterwards update the new environment's pip and setuptools to the latest version::
+Afterwards update the new environment's pip and setuptools to the
+latest version::
 
         $ pip install -U pip
         $ pip install -U setuptools
@@ -232,6 +112,61 @@ don't need to deactivate the current one first.
 
 You should never **rename** a virtualenv (they are not designed for
 that), but you can easily create a new one and remove the old one.
+
+
+Get the sources
+===============
+
+You might theoretically install Lino using ``pip install lino``, but
+this method isn't currently being tested very thoroughly. So in most
+cases we currently recommend to use the development version because
+you will probably want to use Lino's newest features before they get
+released on PyPI.
+
+Create a directory (e.g. :file:`repositories`) meant to hold your
+working copies of version-controlled software projects, `cd` to that
+directory and and do::
+
+  $ mkdir repositories
+  $ cd repositories
+  $ git clone https://github.com/lino-framework/lino.git; \
+    git clone https://github.com/lino-framework/xl.git; \
+    git clone https://github.com/lino-framework/noi.git; \
+    git clone https://github.com/lino-framework/cosi.git; \
+    git clone https://github.com/lino-framework/care.git; \
+    git clone https://github.com/lino-framework/vilma.git; \
+    git clone https://github.com/lino-framework/avanti.git; \
+    git clone https://github.com/lino-framework/tera.git; \
+    git clone https://github.com/lino-framework/book.git
+
+
+You should now have nine directories called :file:`lino`, :file:`xl`,
+:file:`noi`, ... and :file:`book` in your :file:`~/repositories`
+directory each of which contains a file :xfile:`setup.py` and a whole
+tree of other files and directories.
+
+.. Note that if you just want a *simplified* development environment
+   (for a specific application on a production site), then you don't
+   need to download and install all Lino repositories mentioned
+   above. For example, if you want an `avanti` site, you *only* need
+   to install `xl`, `lino` and `avanti` but *not* `noi`, `vilma`,
+   `cosi` etc. On a production site you will probably never need the
+   `book` repository which is the only one which requires all other
+   repositories.
+
+One possible problem here is that some repositories might have a big
+size.  If you just want to get the latest version and don't plan to
+submit any pull requests, then you can reduce download size by adding
+``--depth 1`` and ``-b master`` options at least for `lino` (which has
+by far the biggest repository)::
+
+  $ git clone --depth 1 -b master https://github.com/lino-framework/lino.git
+  
+(as explained in `this question on stackoverflow
+<http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
+or Nicola Paolucci's blog entry `How to handle big repositories with
+git
+<http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
 
 
 Installation

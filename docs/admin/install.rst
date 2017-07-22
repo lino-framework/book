@@ -4,9 +4,17 @@
 Installing a Lino application on a production server
 ====================================================
 
+.. _pip: http://www.pip-installer.org/en/latest/
+.. _virtualenv: https://pypi.python.org/pypi/virtualenv
+
 Here is a system of files and conventions which we suggest to use when
 hosting a Lino production site.  It suits well for having multiple
 sites on a same machine.
+
+There are many ways to setup a Django/Lino application. For this guide
+we shall be using apache2, mysql, a site-wide Lino settings file, and
+a virtual Python environment for each site.
+
 
 Prerequisites
 =============
@@ -20,25 +28,60 @@ be some differences, but you probably know them.  You need a **web
 server**, **Python 2**, some database (e.g. **MySQL** or
 **PostGreSQL**) running on that server.
 
-If your customers want want to access their Lino from outside of their
+If your customers want to access their Lino from outside of their
 intranet, then you need to setup a **domain name** and configure
 Apache to use secure HTTP.
 
 
+System requirements
+===================
+
+.. include:: /include/system_req.rst
+
+
+System users
+============
+
+Before you do anything on your server, create one or several users who
+will be the *maintainers* of this site::
+
+    $ sudo adduser joe
+
+Maintainers must be members of the `sudo` and `www-data` groups::
+  
+    $ sudo adduser joe sudo
+    $ sudo adduser joe www-data
+
+.. rubric:: Notes
+
+- `useradd` is a native binary compiled with the system, while
+  `adduser` is a perl script which uses `useradd` in back-end.
+
+All maintainers must have a umask `002` or `007` (not `022` or `077`
+as is the default value). Edit either the file :file:`~/.bashrc` of
+each user or the file :file:`/etc/bash.bashrc` (site-wide for all
+users) and add the following line at the end::
+
+    umask 002
+ 
+.. rubric:: Notes
+            
+- The umask is used to mask (disable) certain file permissions from
+  any new file created by a given user. See :doc:`umask` for more
+  detailed information.
+  
+
 Lino directory structure
 ========================
 
-There are many ways to setup a Django/Lino wsgi application. For this
-guide we shall be using apache2, mysql, a site-wide Lino settings file,
-and a virtual Python environment for each site.
-
-The recommenced directory structure is the following::
+At the end of this document you will have the following recommenced
+directory structure on your Lino production server::
 
     /usr/local/src/
     └── lino
         ├── __init__.py
         ├── lino_local.py # Site-wide settings
-        └── lino_sites/
+        └── prod_sites/
             ├── __init__.py
             ├── prj1 # Site directory
             │   ├── __init__.py
@@ -61,57 +104,100 @@ The recommenced directory structure is the following::
                 ├─── ...
                 └─── ...
 
-It is possible to use symbolic links for site directories or the virtual
-environment, in order to manage user permissions or have several sites
-working on the same virtual environment.
+This structure is recommended even if you have only one Lino site on
+your server because you never know whether the customer some day
+change their mind and ask e.g. for a test site as well.
 
-However please note, if you choose the use the example configuration
-files contained in this guide. Ensure that the above directory structure
-is maintained.
+It is possible to use symbolic links for the :file:`env` and
+:file:`repositories` in order to have several sites working on the
+same virtual environment.
 
-System users
-============
+.. However please note, if you choose the use the example
+   configuration files contained in this guide. Ensure that the above
+   directory structure is maintained.
 
-Create one or several users who will be the *maintainers* of this
-site::
 
-    $ sudo adduser joe
+Create a project directory
+==========================
 
-Maintainers must be members of the `sudo` and `www-data` groups::
+First create the main :file:`prod_sites` folder::
+
+    $ sudo mkdir -p /usr/local/src/lino/prod_sites/
+    $ cd /usr/local/src/lino/prod_sites/
+
+Create the project folder for your first site, in this example we
+shall use :file:`prj1`::
+
+    $ mkdir prj1
+    $ cd prj1
+
+
+Set up a Python environment
+===========================
+
+Create a new Python environment in you project directory::
+
+        $ sudo apt install virtualenv
+        $ virtualenv --python=python2 env
+
+*Activate* this environment by typing::
+
+        $ . env/bin/activate
+
+Afterwards update the new environment's pip and setuptools to the
+latest version::
+
+        $ pip install -U pip
+        $ pip install -U setuptools
+    
+
+Some useful additions to your shell
+===================================
+
+Add the following to your system-wide :file:`/etc/bash.bashrc`:
+
+.. literalinclude:: bash_aliases
+
+If you want :ref:`log2syslog`, then add also this:
+                    
+.. literalinclude:: log2syslog
+
+After these changes you must close and reopen your terminal to
+activate them. You can now do the following to quickly cd to a project
+directory and activate its Python environment::
+
+  $ go prj1
+  $ a
   
-    $ sudo adduser joe sudo
-    $ sudo adduser joe www-data
 
-They must have a umask 002 or 007::
-
-    $ nano /home/joe/.bashrc
-  
-.. rubric:: Notes
-
-- `useradd` is a native binary compiled with the system, while
-  `adduser` is a perl script which uses `useradd` in back-end.
-
-
-Installing Lino
+    
+Get the sources
 ===============
 
-First create the lino_sites folder.::
+Create a directory :file:`repositories` to hold your working copies of
+version-controlled software projects and then clone these projects.
 
-    $ sudo mkdir -p /usr/local/src/lino/lino_sites/
+  $ go prj1
+  $ mkdir repositories
+  $ cd repositories
+  $ git clone https://github.com/lino-framework/lino.git
+  $ git clone https://github.com/lino-framework/xl.git
+  $ git clone https://github.com/lino-framework/MYAPP.git
 
-Create the site folder for your site, in this example we shall use *prj1*::
+Replace ``MYAPP`` by the name of the Lino application
+you want to install.
 
-    $ sudo mkdir /usr/local/src/lino/lino_sites/prj1
-    $ cd /usr/local/src/lino/lino_sites/prj1
+The `lino` repository contains general Lino core code.  The `xl`
+repository contains the :ref:`Lino extension library <xl>` used by
+most Lino applications.
 
-Follow the instructions in :doc:`/dev/install` for installing a
-simplified *development* version of Lino inside of our new prj1
-*site-folder*.
+Now you are ready to "install" Lino, i.e. to tell your Python
+environment where the source file are, so that you can import them
+from within any Python program::
 
-Note that you probably don't need to download and install all Lino
-repositories needed for a full development environment. For example,
-if you want an `avanti` site, you *only* need to install `xl`, `lino`
-and `avanti` but *not* `noi`, `vilma`, `cosi` etc.
+  $ pip install -e lino
+  $ pip install -e xl
+  $ pip install -e MYAPP
 
 
 More Debian packages
@@ -126,20 +212,17 @@ This will automatically install Apache
 
 Select your database backend::
 
-    $ sudo apt-get install mysql-server
-
-or::
-
-    $ sudo apt-get install mariadb-server
+    $ sudo apt install mysql-server
 
 Install the python dependencies::
 
-    $ sudo apt-get install libmysqlclient-dev
-    $ sudo apt-get install python-dev
-    $ sudo apt-get install libffi-dev libssl-dev
+    $ sudo apt install libmysqlclient-dev
+    $ sudo apt install python-dev
+    $ sudo apt install libffi-dev libssl-dev
     $ pip install mysqlclient
 
-For more info on how to setup a user and database see; :doc:`mysql_install`.
+For more info on how to setup a user and database see
+:doc:`mysql_install`.
 
 .. _lino.admin.site_module:
 
@@ -176,11 +259,13 @@ Project directories
 
 Every new project directory must have at least four files:
 
-- a empty :xfile:`__init__.py` file making it able for apache to import your settings::
+- an empty :xfile:`__init__.py` file making it able for apache to
+  import your settings::
 
-    $ touch /usr/local/src/lino/lino_sites/prj1/__init__.py
+    $ touch /usr/local/src/lino/prod_sites/prj1/__init__.py
 
-- a file :xfile:`settings.py` **Note:** Replace the 'prj1' in this file with the name of the site-folder:
+- a file :xfile:`settings.py` **Note:** Replace the 'prj1' in this
+  file with the name of the project:
 
     .. literalinclude:: mypy/prj1/settings.py
 
@@ -188,7 +273,8 @@ Every new project directory must have at least four files:
 
     .. literalinclude:: mypy/prj1/manage.py
 
-- a file :xfile:`wsgi.py`. **Note:** Replace the 'prj1' in this file with the name of the site-folder:
+- a file :xfile:`wsgi.py`. **Note:** Replace the 'prj1' in this file
+  with the name of the project:
 
     .. literalinclude:: mypy/prj1/wsgi.py
 
@@ -235,6 +321,14 @@ Create two empty directories :xfile:`media` and :xfile:`config`::
     $ mkdir config
 
 
+Initialize the database
+=======================
+
+::
+     $ go prj1
+     $ python manage.py prep
+
+     
 Collecting static files
 =======================
 
@@ -244,7 +338,7 @@ One part of your cache directory are the static files.  When your
 :envvar:`LINO_CACHE_ROOT` is set, you should run Django's
 :manage:`collectstatic` command::
 
-    $ cd /usr/local/src/lino/lino_sites/prj1/
+    $ cd /usr/local/src/lino/prod_sites/prj1/
     $ python manage.py collectstatic
 
 The output should be something like this::
@@ -252,14 +346,14 @@ The output should be something like this::
     You have requested to collect static files at the destination
     location as specified in your settings:
 
-        /usr/local/src/lino/lino_sites/prj1/static/
+        /usr/local/src/lino/prod_sites/prj1/static/
 
     This will overwrite existing files!
     Are you sure you want to do this?
 
     Type 'yes' to continue, or 'no' to cancel: yes
 
-    4688 static files copied to '/usr/local/src/lino/lino_sites/prj1/static/', 0 unmodified.
+    4688 static files copied to '/usr/local/src/lino/prod_sites/prj1/static/', 0 unmodified.
 
 
 ..  Note that you can chose an arbitrary project directory (any subdir
@@ -276,17 +370,18 @@ The output should be something like this::
 Setting up Apache2
 ==================
 
-The following is an example of a apache config for our prj1 site.
+The following is an example of a apache config for our :file:`prj1`
+site.
 
-This example is setup for a single lino-site, if you plan to host more
-then one lino-site we advise you to move your static files to
-/usr/local/src/lino/static/ and updating the config.
+This example is setup for a single Lino site, if you plan to host more
+than one Lino site we advise you to move your static files to
+:file:`/usr/local/src/lino/static/` and to update the config
+accordingly.
 
 
   .. literalinclude:: mypy/prj1/apache2/apache.conf
 
-
-Do the following in order to active the site with apache::
+Do the following in order to activate the site with Apache::
 
     $ sudo nano /etc/apache2/sites-available/prj1.conf
     $ sudo a2ensite prj1.conf
@@ -296,7 +391,7 @@ Do the following in order to active the site with apache::
 
 Apache also needs write access to the media folder of each site.::
 
-    $ sudo chown www-data /usr/local/src/lino/lino_sites/prj1/media/
+    $ sudo chown www-data /usr/local/src/lino/prod_sites/prj1/media/
 
 Now you should be able to navigate to your domain and see a barebones
 lino-app.

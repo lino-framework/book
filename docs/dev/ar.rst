@@ -54,30 +54,30 @@ sliced_data_iterator.
 >>> from lino.api.doctest import *
 
 >>> rt.show('countries.Places', limit=10)
-========= ======================== ==================== ================== ============ ========== ===========================================
+========= ======================== ==================== ================== ============ ========== ================================
  Country   Designation              Designation (de)     Designation (fr)   Place Type   zip code   Part of
---------- ------------------------ -------------------- ------------------ ------------ ---------- -------------------------------------------
- Belgium   Aalst                    Aalst                Alost              City         9300       Flandre de l'Est / Ostflandern (Province)
- Belgium   Aalst-bij-Sint-Truiden                                           Village      3800       Limbourg / Limburg (Province)
+--------- ------------------------ -------------------- ------------------ ------------ ---------- --------------------------------
+ Belgium   Aalst                    Aalst                Alost              City         9300       Flandre de l'Est / Ostflandern
+ Belgium   Aalst-bij-Sint-Truiden                                           Village      3800       Limbourg / Limburg
  Belgium   Angleur                                                          City         4031
  Belgium   Ans                                                              City         4430
  Belgium   Anvers                   Antwerpen            Anvers             Province
- Belgium   Baardegem                                                        Village      9310       Aalst / Alost (City)
- Belgium   Baelen                   Baelen               Baelen             City         4837       Liège / Lüttich (Province)
+ Belgium   Baardegem                                                        Village      9310       Aalst / Alost
+ Belgium   Baelen                   Baelen               Baelen             City         4837       Liège / Lüttich
  Belgium   Blégny                                                           City         4670
  Belgium   Brabant flamant          Flämisch-Brabant     Brabant flamant    Province
  Belgium   Brabant wallon           Wallonisch-Brabant   Brabant wallon     Province
-========= ======================== ==================== ================== ============ ========== ===========================================
+========= ======================== ==================== ================== ============ ========== ================================
 <BLANKLINE>
 
 >>> rt.show('countries.Places', offset=5, limit=3)
-========= ============= ================== ================== ============ ========== ============================
+========= ============= ================== ================== ============ ========== =================
  Country   Designation   Designation (de)   Designation (fr)   Place Type   zip code   Part of
---------- ------------- ------------------ ------------------ ------------ ---------- ----------------------------
- Belgium   Baardegem                                           Village      9310       Aalst / Alost (City)
- Belgium   Baelen        Baelen             Baelen             City         4837       Liège / Lüttich (Province)
+--------- ------------- ------------------ ------------------ ------------ ---------- -----------------
+ Belgium   Baardegem                                           Village      9310       Aalst / Alost
+ Belgium   Baelen        Baelen             Baelen             City         4837       Liège / Lüttich
  Belgium   Blégny                                              City         4670
-========= ============= ================== ================== ============ ========== ============================
+========= ============= ================== ================== ============ ========== =================
 <BLANKLINE>
 
 >>> rt.show('countries.Places', offset=-5, limit=3)

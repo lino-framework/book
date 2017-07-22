@@ -16,15 +16,16 @@ For example if Lino's :xfile:`lino.log` file doesn't exist, then the
 running process will create a new file.
 
 This process can be a maintainer who launches manually
-e.g. :manage:`initdb` or :manage:`dump2py`, it can be the Apache web
+e.g. :manage:`prep` or :manage:`dump2py`, it can be the Apache web
 server, the :manage:`linod` daemon, a cron job like ``logrotate`` or
 :xfile:`make_snapshot.sh`, ...
 
-Of course the :xfile:`lino.log` file should be writable by other users
-of the `www-data` group.
+The files created by any such process must be writable by other users
+of the `www-data` group as well.
 
-the `setgid flag <https://en.wikipedia.org/wiki/Setuid>`_ is
-not set on directories which should have it.
+One possible cause of problems is when the `setgid flag
+<https://en.wikipedia.org/wiki/Setuid>`_ is not set on directories
+which should have it.
 
 ``chmod g+s`` sets the SGID to ensure that when a new file is created
 in the directory it will be group-owned by the group owning the
@@ -82,7 +83,7 @@ More general diagnostics:
 Fixing problems
 ===============
 
-#.  You must be member of the `www-data` group::
+#.  Every maintainer must be member of the `www-data` group::
 
         $ sudo adduser $USER www-data
 
@@ -94,10 +95,8 @@ Fixing problems
 
         $ sudo chown -R $USER:www-data ~/repositories
     
-#.  Apache must use `umask 002` or `007` (not the default `022` or
-    `077`).  Add one line to your :file:`/etc/apache2/envvars` file::
-
-        umask 002
+#.  Every user, including the Apache server, must have `umask 002` or
+    `007` (not the default `022` or `077`).  See :doc:`umask`.
 
 
 
