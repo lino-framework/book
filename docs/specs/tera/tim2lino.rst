@@ -22,44 +22,54 @@ who is changing their database to Lino.
 Zahler, Krankenkassen und Lieferanten sind in Lino alle unter
 "Organisationen".
 
+Klienten
+========
+
 Lino unterscheidet zwischen einfachen **Personen** und
 **Klienten**. Ein Klient ist immer automatisch auch eine Person, aber
 über einen Klienten weiß man mehr als über eine einfache Person. Einen
 Klienten kann man auch als Person ansehen und dann sieht man nur Name,
 Vorname, Adresse... aber nicht z.B. das Passfoto oder die
 Nationalregisternummer.  Pro physischer Person gibt es einen einzigen
-Eintrag in der Personentabelle. 
+Eintrag in der Personentabelle.
 
-Eine **Personenakte** heißt in Lino "Begleitung" (oder lieber
-"Therapie"?), eine **Gruppenakte** heißt in Lino "Aktivität".
+Der **Tarif** (oder eher "Preisklasse"?) eines Klienten bestimmt, ob
+dieser Klient Anrecht auf Sonderregelung bzgl. Teilnahmegebühren hat.
 
-Eine **Begleitung** ist, wenn ein bestimmter Therapeut sich um einen
-bestimmten Klienten kümmert, um eine bestimmte Serie von *Problemen*
-zu lösen.  Normalerweise gibt es *eine* aktive Begleitung pro Klient
-zu einem bestimmten Zeitpunkt. Es kann aber durchaus vorkommen, dass
-ein Klient zwei Therapien parallel macht, bei zwei verschiedenen
-Therapeuten.  Pro Begleitung wird auch der Tarif und der Zahler
-("Rechnungsempfänger") festgelegt.
+Eine **Teilnahmegebühr** ist das, was die Klienten (oder deren
+Rechnungsempfänger) auf die Rechnung geschrieben bekommen. Sozusagen
+das Produkt, das hier verkauft wird.
 
-Eine **Aktivität** ist, wenn eine Gruppe von Personen sich regelmäßig
-trifft, um unter der Leitung eines Therapeuten über ein bestimmtes
-Thema zu reden. Das sind sowohl Lebensgruppen als auch Therapeutische
-Gruppen.
+Der **Zahler** ("Rechnungsempfänger") eines Klienten ist ein
+optionaler anderer Partner (d.h. Organisation, Haushalt oder Person),
+an den die Rechnungen verschickt werden, die dieser Klient verursacht.
+
+Der **Primärbegleiter** eines Klienten ist der Systembenutzer, der
+sich primär um diese Person kümmert.
+
+.. Eine **Personenakte** heißt in Lino "Begleitung" (oder lieber
+   "Therapie"?), eine **Gruppenakte** heißt in Lino "Aktivität".
+
+Eine **Aktivität** ist, wenn ein Klient oder eine Gruppe von Klienten
+sich regelmäßig trifft, um unter der Leitung eines Therapeuten über
+ein bestimmtes Thema zu reden.  Es gibt drei Arten von Aktivitäten:
+**Einzeltherapien**, **Lebensgruppen** und **Therapeutische Gruppen**
+(diese Liste ist jedoch relativ leicht änderbar).
 
 Pro Aktivität haben wir eine Liste der **Teilnehmer**. Das sind die
-Personen, die eingeschrieben sind.
+Klienten, die eingeschrieben sind.
 
 Ebenfalls pro Aktivität haben wir eine Liste der **Kalendereinträge**.
 Diese werden je nach Art der Aktivität "Sitzungen" oder "Treffen" oder
 noch anders genannt.
 
-- Sollen wir Einzeltherapien vielleicht einfachheitshalber auch als
-  eine Art von Aktivität mit nur einem Teilnehmer betrachten?  Dann
-  könnten Begleitungen (Coachings) komplett wegfallen. Tarif und
-  Zahlungsempfänger kämen dann pro Einschreibung.
+.. - Sollen wir Einzeltherapien vielleicht einfachheitshalber auch als
+      eine Art von Aktivität mit nur einem Teilnehmer betrachten?  Dann
+      könnten Begleitungen (Coachings) komplett wegfallen. Tarif und
+      Zahlungsempfänger kämen dann pro Einschreibung.
 
-- Soll pro Einschreibung auch die eventuelle Begleitung festgehalten
-  werden? Wie soll Lino den Tarif wissen?
+    - Soll pro Einschreibung auch die eventuelle Begleitung festgehalten
+      werden? Wie soll Lino den Tarif wissen?
 
 - Was machen wir mit einem Kind geschiedener Eltern, bei dem die
   Rechnung mal an den einen und mal an den anderen Elternteil geht?
@@ -83,6 +93,5 @@ hat. Nummer 2 ist der aktuelle Verantwortliche.  Es gibt auch
 Wiederaufnahmen (Klient war hier, hatte ein paar DL, kommt eine
 Zeitlang nicht. Und dann wird eine neue Akte angelegt, mit neuem
 Erstgespräch.  Dieses System in TIM ist recht komplex und suboptimal
-und wird höchstwahrscheinlich revidiert werden. Wahrscheinlich sind
-die Begleitungen genau das, was sie brauchen. Zu besprechen mit DD.
+und wird höchstwahrscheinlich revidiert werden. Zu besprechen mit DD.
   
