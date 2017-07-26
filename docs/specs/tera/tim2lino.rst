@@ -74,18 +74,29 @@ noch anders genannt.
 - Was machen wir mit einem Kind geschiedener Eltern, bei dem die
   Rechnung mal an den einen und mal an den anderen Elternteil geht?
 
-- Erstgespräche sind Kalendereinträge ohne Aktivität, bei denen der
-  Klient einfach nur anwesend ist.
+**Erstgespräche** sind Kalendereinträge ohne Aktivität, bei denen der
+Klient einfach nur anwesend ist.
 
-Die **Anwesenheiten** werden in Lino *pro Klient* und nicht pro Person
-festgehalten. Man muss Klient sein, um bei Terminen anwesend sein zu
-können.
 
-In Lino gibt es auch "Haushalte". WEnn man zuerst die
+Die **Anwesenheiten** werden in Lino pro Person festgehalten. Man muss
+als Person registriert sein, um bei Terminen anwesend sein zu
+können. Es können auch andere Personen
+
+In Lino gibt es auch **Haushalte**. Ein Haushalt ist eine Gruppe von
+*Personen*, die miteinder wohnen (oder gewohnt haben) und dabei eine
+bestimmte *Rolle* haben (oder hatten). Wenn man zuerst die
 Haushaltsmitglieder eingibt und dann eine Therapie für diesen Haushalt
-startet, dann trägt Lino die Haushaltsmitglieder automatisch als
-Teilnehmer ein. Man kann die Teilnehmerliste dann aber trotzdem noch
-verändern, ohne dass dadurch der Haushalt verändert wird.
+startet, dann trägt Lino automatisch die Haushaltsmitglieder als
+Teilnehmer der Therapie ein. Man kann die Teilnehmerliste dann aber
+trotzdem noch verändern, ohne dass dadurch der Haushalt verändert
+wird.
+
+Man könnte in Lino auch **familiäre Beziehungen** erfassen (also wer
+mit wem verwandt ist, unabhängig der Wohnsituation). Das scheint aber
+zur Zeit unnötig.
+
+Regeln beim Datenimport aus TIM
+===============================
 
 In TIM hatten wir bis zu drei Therapeuten pro Akte (`IdUsr1`, `IdUsr2`
 und `IdUsr3`).  Nummer 1 ist der, der das Erstgespräch gemacht
@@ -95,3 +106,5 @@ Zeitlang nicht. Und dann wird eine neue Akte angelegt, mit neuem
 Erstgespräch.  Dieses System in TIM ist recht komplex und suboptimal
 und wird höchstwahrscheinlich revidiert werden. Zu besprechen mit DD.
   
+Wenn `PAR->IdPar2` nicht leer ist (und einen anderen Wert als `IdPar`
+enthält), dann gilt dieser Partner als obsolet.
