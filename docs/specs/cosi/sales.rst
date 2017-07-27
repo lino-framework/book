@@ -105,47 +105,47 @@ The sales journal
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
 >>> rt.show('sales.InvoicesByJournal', jnl)  #doctest: +ELLIPSIS
-===================== ============== ============ =================================== ================= ============== ================
- No.                   Voucher date   Due date     Partner                             Total incl. VAT   Subject line   Actions
---------------------- -------------- ------------ ----------------------------------- ----------------- -------------- ----------------
- 72/2017               11/03/2017     18/03/2017   van Veen Vincent                    770,00                           **Registered**
- 71/2017               10/03/2017     17/03/2017   van Veen Vincent                    465,96                           **Registered**
- 70/2017               09/03/2017     09/03/2017   da Vinci David                      639,92                           **Registered**
- 69/2017               08/03/2017     07/04/2017   di Rupo Didier                      4 355,65                         **Registered**
- 68/2017               07/03/2017     31/03/2017   Radermacher Jean                    600,00                           **Registered**
- 67/2017               06/03/2017     04/06/2017   Radermacher Inge                    525,00                           **Registered**
- 66/2017               13/02/2017     14/04/2017   Radermacher Hedi                    951,82                           **Registered**
+===================== ============ ============ =================================== ================= ============== ================
+ No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Actions
+--------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
+ 72/2017               12/03/2017   18/03/2017   van Veen Vincent                    770,00                           **Registered**
+ 71/2017               11/03/2017   17/03/2017   van Veen Vincent                    465,96                           **Registered**
+ 70/2017               10/03/2017   09/03/2017   da Vinci David                      639,92                           **Registered**
+ 69/2017               09/03/2017   07/04/2017   di Rupo Didier                      4 355,65                         **Registered**
+ 68/2017               08/03/2017   31/03/2017   Radermacher Jean                    600,00                           **Registered**
+ 67/2017               07/03/2017   04/06/2017   Radermacher Inge                    525,00                           **Registered**
+ 66/2017               14/02/2017   14/04/2017   Radermacher Hedi                    951,82                           **Registered**
  ...
- 26/2016               07/06/2016     07/07/2016   Dobbelstein Dorothée                279,90                           **Registered**
- 25/2016               06/06/2016     30/06/2016   Dobbelstein-Demeulenaere Dorothée   1 199,85                         **Registered**
- 24/2016               11/05/2016     09/08/2016   Demeulenaere Dorothée               3 319,78                         **Registered**
- 23/2016               10/05/2016     08/08/2016   Demeulenaere Dorothée               535,00                           **Registered**
- 22/2016               09/05/2016     08/07/2016   Dericum Daniel                      280,00                           **Registered**
- 21/2016               08/05/2016     07/06/2016   Chantraine Marc                     822,57                           **Registered**
- 20/2016               07/05/2016     17/05/2016   Charlier Ulrike                     2 039,82                         **Registered**
- 19/2016               06/05/2016     13/05/2016   Collard Charlotte                   2 999,85                         **Registered**
- 18/2016               13/04/2016     13/04/2016   Bastiaensen Laurent                 770,00                           **Registered**
- 17/2016               12/04/2016     12/05/2016   Ausdemwald Alfons                   465,96                           **Registered**
- 16/2016               11/04/2016     30/04/2016   Altenberg Hans                      639,92                           **Registered**
- 15/2016               10/04/2016     30/04/2016   Altenberg Hans                      3 599,71                         **Registered**
- 14/2016               09/04/2016     08/07/2016   Arens Annette                       600,00                           **Registered**
- 13/2016               08/04/2016     07/06/2016   Arens Andreas                       525,00                           **Registered**
- 12/2016               07/04/2016     07/05/2016   Auto École Verte                    951,82                           **Registered**
- 11/2016               06/04/2016     16/04/2016   Moulin Rouge                        2 349,81                         **Registered**
- 10/2016               06/03/2016     13/03/2016   Reinhards Baumschule                1 599,92                         **Registered**
- 9/2016                09/02/2016     09/02/2016   Bernd Brechts Bücherladen           1 197,90                         **Registered**
- 8/2016                08/02/2016     09/03/2016   Hans Flott & Co                     279,90                           **Registered**
- 7/2016                07/02/2016     29/02/2016   Van Achter NV                       1 199,85                         **Registered**
- 6/2016                06/02/2016     06/05/2016   Donderweer BV                       3 319,78                         **Registered**
- 5/2016                10/01/2016     10/03/2016   Garage Mergelsberg                  535,00                           **Registered**
- 4/2016                09/01/2016     08/02/2016   Bäckerei Schmitz                    280,00                           **Registered**
- 3/2016                08/01/2016     18/01/2016   Bäckerei Mießen                     679,81                           **Registered**
- 2/2016                07/01/2016     14/01/2016   Bäckerei Ausdemwald                 2 039,82                         **Registered**
- 1/2016                06/01/2016     06/01/2016   Rumma & Ko OÜ                       2 999,85                         **Registered**
- **Total (72 rows)**                                                                   **97 517,80**
-===================== ============== ============ =================================== ================= ============== ================
+ 26/2016               08/06/2016   07/07/2016   Dobbelstein Dorothée                279,90                           **Registered**
+ 25/2016               07/06/2016   30/06/2016   Dobbelstein-Demeulenaere Dorothée   1 199,85                         **Registered**
+ 24/2016               12/05/2016   09/08/2016   Demeulenaere Dorothée               3 319,78                         **Registered**
+ 23/2016               11/05/2016   08/08/2016   Demeulenaere Dorothée               535,00                           **Registered**
+ 22/2016               10/05/2016   08/07/2016   Dericum Daniel                      280,00                           **Registered**
+ 21/2016               09/05/2016   07/06/2016   Chantraine Marc                     822,57                           **Registered**
+ 20/2016               08/05/2016   17/05/2016   Charlier Ulrike                     2 039,82                         **Registered**
+ 19/2016               07/05/2016   13/05/2016   Collard Charlotte                   2 999,85                         **Registered**
+ 18/2016               14/04/2016   13/04/2016   Bastiaensen Laurent                 770,00                           **Registered**
+ 17/2016               13/04/2016   12/05/2016   Ausdemwald Alfons                   465,96                           **Registered**
+ 16/2016               12/04/2016   30/04/2016   Altenberg Hans                      639,92                           **Registered**
+ 15/2016               11/04/2016   30/04/2016   Altenberg Hans                      3 599,71                         **Registered**
+ 14/2016               10/04/2016   08/07/2016   Arens Annette                       600,00                           **Registered**
+ 13/2016               09/04/2016   07/06/2016   Arens Andreas                       525,00                           **Registered**
+ 12/2016               08/04/2016   07/05/2016   Auto École Verte                    951,82                           **Registered**
+ 11/2016               07/04/2016   16/04/2016   Moulin Rouge                        2 349,81                         **Registered**
+ 10/2016               07/03/2016   13/03/2016   Reinhards Baumschule                1 599,92                         **Registered**
+ 9/2016                10/02/2016   09/02/2016   Bernd Brechts Bücherladen           1 197,90                         **Registered**
+ 8/2016                09/02/2016   09/03/2016   Hans Flott & Co                     279,90                           **Registered**
+ 7/2016                08/02/2016   29/02/2016   Van Achter NV                       1 199,85                         **Registered**
+ 6/2016                07/02/2016   06/05/2016   Donderweer BV                       3 319,78                         **Registered**
+ 5/2016                11/01/2016   10/03/2016   Garage Mergelsberg                  535,00                           **Registered**
+ 4/2016                10/01/2016   08/02/2016   Bäckerei Schmitz                    280,00                           **Registered**
+ 3/2016                09/01/2016   18/01/2016   Bäckerei Mießen                     679,81                           **Registered**
+ 2/2016                08/01/2016   14/01/2016   Bäckerei Ausdemwald                 2 039,82                         **Registered**
+ 1/2016                07/01/2016   06/01/2016   Rumma & Ko OÜ                       2 999,85                         **Registered**
+ **Total (72 rows)**                                                                 **97 517,80**
+===================== ============ ============ =================================== ================= ============== ================
 <BLANKLINE>
- 
+
 
 >>> mt = contenttypes.ContentType.objects.get_for_model(sales.VatProductInvoice).id
 >>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=20)

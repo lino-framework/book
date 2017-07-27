@@ -47,50 +47,27 @@ Lino Tera doesn't use *time tracking* like :ref:`noi`.
 Partners
 ========
 
-(The following is maybe obsolete)
-
-In Lino Tera, the partner is the central database object.  Many
-statistical reports are based on attributes of partners.
-
-A partner is either a single person, a family, a household, or a group
-of otherwise non-related partners having a same problem (called a
-*therapeutic group*).
-
-There might be (it is not yet decided) a differetiation between
-"partner" and "dossier": a same partner can have more than one dossier
-within the years. Currently they simply create the same partner a
-second time (and add a field which connects them).
-
 >>> print(settings.SITE.project_model)
 <class 'lino_tera.lib.tera.models.Client'>
 
 >>> dd.plugins.contacts
-lino_tera.lib.contacts (extends_models=['Partner', 'Person', 'Company'])
+lino_tera.lib.contacts (extends_models=['Person'])
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
-['Company', 'Partner', 'Person', 'Household', 'List', 'Client']
+['Company', 'Partner', 'Person', 'Household', 'Client']
 
 
 Therapeutical groups
 ====================
 
->>> dd.plugins.lists
-lino_tera.lib.lists (extends_models=['List'])
-
->>> rt.show(lists.Lists)
-=========== ========================= ===========
- Reference   Description               List Type
------------ ------------------------- -----------
-             *Women's group 2014*
-             *Men's group 2014*
-             *Children's group 2014*
-             *Women's group 2015*
-             *Men's group 2015*
-             *Children's group 2015*
-             *Women's group 2016*
-             *Men's group 2016*
-             *Children's group 2016*
-=========== ========================= ===========
+>>> rt.show(courses.CourseAreas)
+======= ============= ======================
+ value   name          text
+------- ------------- ----------------------
+ 10      therapies     Individual therapies
+ 20      life_groups   Life groups
+ 30      default       Other groups
+======= ============= ======================
 <BLANKLINE>
 
 
@@ -182,8 +159,8 @@ Here is an example of such an invoice:
 ========= ================= ============================= =========== =========== =========== =========
  Seq.No.   Partner           Account                       Debit       Credit      Match       Cleared
 --------- ----------------- ----------------------------- ----------- ----------- ----------- ---------
- 1                           (6010) Purchase of services   40,00                               Yes
- 2                           (4510) VAT due                            6,94                    No
+ 1                           (4510) VAT due                            6,94                    No
+ 2                           (6010) Purchase of services   40,00                               Yes
  3         AS Express Post   (4400) Suppliers                          33,06       **PRC 1**   Yes
  **6**                                                     **40,00**   **40,00**
 ========= ================= ============================= =========== =========== =========== =========

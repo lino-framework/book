@@ -181,13 +181,19 @@ Models and actors reference
 
     .. attribute:: entry_date
 
-        The date of the journal entry, i.e. when this voucher has been
+        The date of the journal entry, i.e. when this voucher is to
         journalized or booked.
 
     .. attribute:: voucher_date
 
-        The date on the voucher, i.e. when this voucher has been
-        issued by its emitter.
+        The date on the voucher (i.e. when it has been issued by its
+        emitter).
+
+        This is usually the same as :attr:`entry_date`.  Exceptions
+        may be invoices arriving after their fiscal year has been
+        closed.  Note that if you change :attr:`entry_date` of a
+        voucher, then Lino will set the :attr:`voucher_date` to that
+        date.
 
     .. attribute:: accounting_period
 

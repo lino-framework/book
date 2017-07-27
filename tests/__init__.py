@@ -268,6 +268,9 @@ class SpecsTests(TestCase):
     def test_ajax(self):
         self.run_simple_doctests('docs/specs/ajax.rst')
 
+    def test_jsgen(self):
+        self.run_simple_doctests('docs/specs/jsgen.rst')
+
     def test_contacts(self):
         return self.run_simple_doctests('docs/specs/contacts.rst')
 

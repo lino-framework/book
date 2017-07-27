@@ -31,20 +31,20 @@ Lino and :mod:`commondata.ee` agree with this:
 >>> raplamaa = countries.Place.objects.get(
 ...    name="Rapla", type=countries.PlaceTypes.county)
 >>> ses.show("countries.PlacesByPlace", raplamaa)
-============ ============== =========== ==========
- Nimetus      Nimetus (et)   Asumiliik   zip code
------------- -------------- ----------- ----------
- Juuru                       Vald
- Järvakandi                  Vald
- Kaiu                        Vald
- Kehtna                      Vald
- Kohila                      Vald
- Käru                        Vald
- Märjamaa                    Vald
- Raikküla                    Vald
- Rapla                       Linn
- Vigala                      Vald
-============ ============== =========== ==========
+========================= =========== ==========
+ Kirjeldus                 Asumiliik   zip code
+------------------------- ----------- ----------
+ `Juuru <Detail>`__        Vald
+ `Järvakandi <Detail>`__   Vald
+ `Kaiu <Detail>`__         Vald
+ `Kehtna <Detail>`__       Vald
+ `Kohila <Detail>`__       Vald
+ `Käru <Detail>`__         Vald
+ `Märjamaa <Detail>`__     Vald
+ `Raikküla <Detail>`__     Vald
+ `Rapla <Detail>`__        Linn
+ `Vigala <Detail>`__       Vald
+========================= =========== ==========
 <BLANKLINE>
 
 Another test is the 
@@ -59,24 +59,24 @@ Lino and :mod:`commondata.ee` again agree with this:
 >>> juuru = countries.Place.objects.get(name="Juuru", 
 ...    type=countries.PlaceTypes.municipality)
 >>> ses.show("countries.PlacesByPlace", juuru)
-========= ============== =========== ==========
- Nimetus   Nimetus (et)   Asumiliik   zip code
---------- -------------- ----------- ----------
- Atla                     Küla        79403
- Helda                    Küla        79417
- Härgla                   Küla        79404
- Hõreda                   Küla        79010
- Jaluse                   Küla        79410
- Juuru                    Alevik
- Järlepa                  Küla
- Kalda                    Küla        79418
- Lõiuse                   Küla        79405
- Mahtra                   Küla        79407
- Orguse                   Küla
- Pirgu                    Küla
- Sadala                   Küla        79419
- Vankse                   Küla        79406
-========= ============== =========== ==========
+====================== =========== ==========
+ Kirjeldus              Asumiliik   zip code
+---------------------- ----------- ----------
+ `Atla <Detail>`__      Küla        79403
+ `Helda <Detail>`__     Küla        79417
+ `Härgla <Detail>`__    Küla        79404
+ `Hõreda <Detail>`__    Küla        79010
+ `Jaluse <Detail>`__    Küla        79410
+ `Juuru <Detail>`__     Alevik
+ `Järlepa <Detail>`__   Küla
+ `Kalda <Detail>`__     Küla        79418
+ `Lõiuse <Detail>`__    Küla        79405
+ `Mahtra <Detail>`__    Küla        79407
+ `Orguse <Detail>`__    Küla
+ `Pirgu <Detail>`__     Küla
+ `Sadala <Detail>`__    Küla        79419
+ `Vankse <Detail>`__    Küla        79406
+====================== =========== ==========
 <BLANKLINE>
 
 

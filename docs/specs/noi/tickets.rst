@@ -7,8 +7,6 @@ Ticket management in Lino Noi
 .. How to test only this document:
 
     $ python setup.py test -s tests.SpecsTests.test_tickets
-    Or:
-    $ python -m atelier.doctest_utf8 docs/specs/tickets.rst
     
     doctest init:
     >>> import lino
@@ -327,12 +325,12 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========= ============== ============== ======== =========
- ID   Summary             Author    Topic          Actions        Site     Mission
----- ------------------- --------- -------------- -------------- -------- ---------
- 5    Cannot create Foo   Mathieu   Lino Welfare   **Sleeping**   pypi
- 3    Baz sucks           Jean      Lino Voga      **Open**       welsch
-==== =================== ========= ============== ============== ======== =========
+==== =================== ========= ============== ========== ============== ======== =========
+ ID   Summary             Author    Topic          Priority   Actions        Site     Mission
+---- ------------------- --------- -------------- ---------- -------------- -------- ---------
+ 5    Cannot create Foo   Mathieu   Lino Welfare   Normal     **Sleeping**   pypi
+ 3    Baz sucks           Jean      Lino Voga      Normal     **Open**       welsch
+==== =================== ========= ============== ========== ============== ======== =========
 <BLANKLINE>
 
 
