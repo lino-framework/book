@@ -227,6 +227,24 @@ Choicelists
         is :attr:`hidden_languages<UserTypes.hidden_languages>`.  This
         is used on multilingual sites with more than 4 or 5 languages.
 
+    .. method:: context(self)
+
+        Return a context manager so you can write code to be run with
+        this as `the current user type`_::
+
+          with UserTypes.admin.context():
+              # some code
+
+        
+
+.. _current_user_type:
+
+                
+The current user type
+=====================
+
+This is used by :mod:`lino.utils.jsgen`, i.e. when generating the
+:xfile:`linoweb.js` file for a given user type.
 
 
 
