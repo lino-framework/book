@@ -1,4 +1,4 @@
-## Copyright 2013 Luc Saffre
+## Copyright 2013-2017 Luc Saffre
 ## This file is part of the Lino project.
 
 
@@ -50,7 +50,7 @@ class Entries(dd.Table):
     user date company
     subject
     """
-    parameters = mixins.ObservedPeriod(
+    parameters = mixins.ObservedDateRange(
         entry_type=models.ForeignKey(
             EntryType, blank=True, null=True,
             help_text=_("Show only entries of this type.")),
@@ -96,7 +96,7 @@ class EntriesByCompany(Entries):
 class CompaniesWithEntryTypes(dd.VentilatingTable, contacts.Companies):
     label = _("Companies with Entry Types")
     hide_zero_rows = True
-    parameters = mixins.ObservedPeriod()
+    parameters = mixins.ObservedDateRange()
     params_layout = "start_date end_date"
     editable = False
     auto_fit_column_widths = True

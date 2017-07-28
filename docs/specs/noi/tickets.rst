@@ -778,9 +778,9 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | show_private    | Private         | Show only (or hide) tickets that are marked private.             |
 +-----------------+-----------------+------------------------------------------------------------------+
-| start_date      | Period from     | Start date of observed period                                    |
+| start_date      | Date from       | Start of observed date range                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
-| end_date        | until           | End date of observed period                                      |
+| end_date        | until           | End of observed date range                                       |
 +-----------------+-----------------+------------------------------------------------------------------+
 | observed_event  | Observed event  |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+

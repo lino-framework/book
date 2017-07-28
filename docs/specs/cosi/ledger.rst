@@ -1113,6 +1113,30 @@ Model mixins
         nonempty.
 
 
+.. class:: PeriodRange
+
+    Model mixin for objects that consider, cover or observe a range of
+    *accounting periods*.
+
+    .. attribute:: start_period
+
+       The period which marks the beginning of the range to
+       consider.
+                   
+    .. attribute:: end_period
+
+       Leave empty if you want only one period (specified in
+       :attr:`start_period`). If this is non-empty, all periods
+       between and including these two are to be considered.
+
+
+.. class:: PeriodRangeObservable       
+
+    Model mixin for objects that can be filtered by a range of
+    *accounting periods*. This adds two fields start_period and
+    end_period to the parameter fields.
+
+
 Utilities
 =========
 
