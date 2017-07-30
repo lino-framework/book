@@ -34,6 +34,7 @@ specifications.  This section is far from being complete.
    notify
    users
    ssin
+   jsgen
    
 Accounting stuff
 ================

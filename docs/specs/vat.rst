@@ -204,6 +204,12 @@ Model mixins
         checkbox `Product.buyers_country` or some other way to specify
         this.
 
+.. class:: VatDeclaration
+           
+    Base class for VAT declarations. Currently Lino can do Belgian VAT
+    declarations (implemented by :class:`bevat.Declaration
+    <lino_xl.lib.bevat.Declaration>` in :mod:`lino_xl.lib.bevat`).
+
 
                 
 Choicelists

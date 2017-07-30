@@ -181,13 +181,19 @@ Models and actors reference
 
     .. attribute:: entry_date
 
-        The date of the journal entry, i.e. when this voucher has been
+        The date of the journal entry, i.e. when this voucher is to
         journalized or booked.
 
     .. attribute:: voucher_date
 
-        The date on the voucher, i.e. when this voucher has been
-        issued by its emitter.
+        The date on the voucher (i.e. when it has been issued by its
+        emitter).
+
+        This is usually the same as :attr:`entry_date`.  Exceptions
+        may be invoices arriving after their fiscal year has been
+        closed.  Note that if you change :attr:`entry_date` of a
+        voucher, then Lino will set the :attr:`voucher_date` to that
+        date.
 
     .. attribute:: accounting_period
 
@@ -1105,6 +1111,30 @@ Model mixins
         Pointer to the "project". This field exists only if the
         :attr:`project_model <Plugin.project_model>` setting is
         nonempty.
+
+
+.. class:: PeriodRange
+
+    Model mixin for objects that consider, cover or observe a range of
+    *accounting periods*.
+
+    .. attribute:: start_period
+
+       The period which marks the beginning of the range to
+       consider.
+                   
+    .. attribute:: end_period
+
+       Leave empty if you want only one period (specified in
+       :attr:`start_period`). If this is non-empty, all periods
+       between and including these two are to be considered.
+
+
+.. class:: PeriodRangeObservable       
+
+    Model mixin for objects that can be filtered by a range of
+    *accounting periods*. This adds two fields start_period and
+    end_period to the parameter fields.
 
 
 Utilities
