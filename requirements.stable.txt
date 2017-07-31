@@ -14,3 +14,5 @@
 -e git+https://github.com/lino-framework/care.git@stable#egg=lino_care
 -e git+https://github.com/lino-framework/tera.git@stable#egg=lino_tera
 # -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
+-e git+https://github.com/CylonOven/django-mailbox.git#egg=django-mailbox
+mock

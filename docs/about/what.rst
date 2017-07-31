@@ -19,6 +19,9 @@ documentation.  More in :doc:`why`.
 Disadvantage: you are limited to applications that fit into this
 out-of-the box user interface.  More in :doc:`limitations`.
 
+Lino is written mainly in the `Python <https://www.python.org/>`_
+programming language, but also contains Javascript code and
+ocasionally uses Java.
 
 
 Target users
