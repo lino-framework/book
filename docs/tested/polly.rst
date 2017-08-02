@@ -71,7 +71,7 @@ The first of them displays a "1":
 And clicking on it would run the following Javascript code:
 
 >>> print(links[0].get('href'))
-javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",2,{ "fv": [ 9, 17 ] })
+javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",false,2,{ "fv": [ 9, 17 ] })
 
 The 2 is the id of the Response we are acting on:
 

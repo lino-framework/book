@@ -407,6 +407,10 @@ class SpecsTests(TestCase):
 
     def test_vat(self):
         self.run_simple_doctests('docs/specs/vat.rst')
+    def test_bevat(self):
+        self.run_simple_doctests('docs/specs/bevat.rst')
+    def test_bevats(self):
+        self.run_simple_doctests('docs/specs/bevats.rst')
 
 
     def test_projects_mti(self):

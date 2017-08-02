@@ -113,108 +113,22 @@ Voucher types
 =============
 
 >>> rt.show(ledger.VoucherTypes)
-=============================== ====== =======================================================
+=============================== ====== ================================================================
  value                           name   text
-------------------------------- ------ -------------------------------------------------------
+------------------------------- ------ ----------------------------------------------------------------
+ sales.InvoicesByJournal                Product invoice (sales.InvoicesByJournal)
  finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
  finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
  finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
- vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
- bevat.DeclarationsByJournal            Belgian VAT declaration (bevat.DeclarationsByJournal)
- sales.InvoicesByJournal                Product invoice (sales.InvoicesByJournal)
  ana.InvoicesByJournal                  Analytic invoice (ana.InvoicesByJournal)
-=============================== ====== =======================================================
+ vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
+ bevats.DeclarationsByJournal           Special Belgian VAT declaration (bevats.DeclarationsByJournal)
+=============================== ====== ================================================================
 <BLANKLINE>
 
 
 >>> # rt.show(ledger.Journals, filter=models.Q(must_declare=True))
 
-
-
-Intracommunal purchases
-=======================
-
-This site is also an example of an organization which has a VAT id but
-is not subject to VAT declaration. This means for them that if they
-buy goods or services from other EU member states, they will pay
-themselves the VAT in their own country. The provider does not write
-any VAT on their invoice, but the customer computes that VAT based on
-their national rate and then introduces a special kind of VAT
-declaration and pays that VAT directly to the tax collector agency.
-
-Here is an example of such an invoice:
-
->>> qs = ana.AnaAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom)
->>> obj = qs[0]
->>> print(obj.total_base)
-33.06
->>> print(obj.total_vat)
-0.00
->>> print(obj.total_incl)
-33.06
->>> print(obj.entry_date)
-2015-01-03
-
->>> rt.show(ledger.MovementsByVoucher, obj)
-========= ================= ============================= =========== =========== =========== =========
- Seq.No.   Partner           Account                       Debit       Credit      Match       Cleared
---------- ----------------- ----------------------------- ----------- ----------- ----------- ---------
- 1                           (6010) Purchase of services   40,00                               Yes
- 2                           (4510) VAT due                            6,94                    No
- 3         AS Express Post   (4400) Suppliers                          33,06       **PRC 1**   Yes
- **6**                                                     **40,00**   **40,00**
-========= ================= ============================= =========== =========== =========== =========
-<BLANKLINE>
-
-
-This invoice says that we had **40€** of costs, **33.06€** of which to
-be paid to the supplier and **6.94 €** to be paid as due VAT to the
-tax office.
-
-After the end of the month they have several such invoices, leading 
-the following VAT
-declaration:
-
->>> obj = accounts.Account.get_by_ref("4510")
->>> rt.show(ledger.MovementsByAccount, obj,
-...     param_values=dict(start_date=i2d(20150101), end_date=i2d(20150131)))
-============ ========= =================================== ======= ============ ======= =========
- Value date   Voucher   Description                         Debit   Credit       Match   Cleared
------------- --------- ----------------------------------- ------- ------------ ------- ---------
- 07/01/2015   *PRC 5*   *Eesti Energia AS*                          562,60               No
- 06/01/2015   *PRC 4*   *Eesti Energia AS*                          208,25               No
- 05/01/2015   *PRC 3*   *Eesti Energia AS*                          104,76               No
- 04/01/2015   *PRC 2*   *AS Matsalu Veevärk*                        24,52                No
- 03/01/2015   *PRC 1*   *AS Express Post*                           6,94                 No
-                        **Balance -907.07 (5 movements)**           **907,07**
-============ ========= =================================== ======= ============ ======= =========
-<BLANKLINE>
-
-
-This credit balance of 907€ is cleared by the VAT declaration of that
-month:
-
-
->>> obj = bevat.Declaration.objects.get(number=2)
->>> rt.show(ledger.MovementsByVoucher, obj)
-========= ================================== ==================== ============ ============ =========== =========
- Seq.No.   Partner                            Account              Debit        Credit       Match       Cleared
---------- ---------------------------------- -------------------- ------------ ------------ ----------- ---------
- 1                                            (4510) VAT due       907,07                                No
- 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                907,07       **VAT 2**   No
- **3**                                                             **907,07**   **907,07**
-========= ================================== ==================== ============ ============ =========== =========
-<BLANKLINE>
-
-This declaration says that now we have no more due VAT but we have a
-debth towards a tax office.
-
-TODO : actually the VAT declaration should clear the 4510 movements of
-the individual invoices as well.  This is a new feature which didn't
-exist in TIM: one voucher sets the match of movements generated by
-other vouchers.  I guess that we need to add some configuration option
-"automatic match assignment" on the ledger account and/or on the VAT
-journal.
 
 
 Internal details

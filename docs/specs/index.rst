@@ -46,6 +46,8 @@ Accounting stuff
    cosi/index
    ana
    vat
+   bevat
+   bevats
    
 Application-specific specs
 ==========================
