@@ -46,7 +46,7 @@ Installing this plugin will automatically install
 ======= ========== ====================
  value   name       text
 ------- ---------- --------------------
- 10      private    Not subject to VAT
+ 10      normal     Not subject to VAT
  20      subject    Subject to VAT
  30      intracom   Intra-community
 ======= ========== ====================
@@ -95,14 +95,14 @@ Here is an example of such an invoice:
 2015-01-03
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
-========= ================= ============================= =========== =========== =========== =========
- Seq.No.   Partner           Account                       Debit       Credit      Match       Cleared
---------- ----------------- ----------------------------- ----------- ----------- ----------- ---------
- 1                           (6010) Purchase of services   40,00                               Yes
- 2                           (4510) VAT due                            6,94                    No
- 3         AS Express Post   (4400) Suppliers                          33,06       **PRC 1**   Yes
- **6**                                                     **40,00**   **40,00**
-========= ================= ============================= =========== =========== =========== =========
+============================= ================= =========== =========== =========== =========
+ Account                       Partner           Debit       Credit      Match       Cleared
+----------------------------- ----------------- ----------- ----------- ----------- ---------
+ (4400) Suppliers              AS Express Post               33,06       **PRC 1**   Yes
+ (4510) VAT due                                              6,94                    No
+ (6010) Purchase of services                     40,00                               Yes
+                                                 **40,00**   **40,00**
+============================= ================= =========== =========== =========== =========
 <BLANKLINE>
 
 
@@ -136,13 +136,13 @@ month:
 
 >>> obj = bevats.Declaration.objects.get(number=2)
 >>> rt.show(ledger.MovementsByVoucher, obj)
-========= ================================== ==================== ============ ============ =========== =========
- Seq.No.   Partner                            Account              Debit        Credit       Match       Cleared
---------- ---------------------------------- -------------------- ------------ ------------ ----------- ---------
- 1                                            (4510) VAT due       907,07                                No
- 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                907,07       **VAT 2**   No
- **3**                                                             **907,07**   **907,07**
-========= ================================== ==================== ============ ============ =========== =========
+==================== ================================== ============ ============ =========== =========
+ Account              Partner                            Debit        Credit       Match       Cleared
+-------------------- ---------------------------------- ------------ ------------ ----------- ---------
+ (4500) Tax offices   Mehrwertsteuer-Kontrollamt Eupen                907,07       **VAT 2**   No
+ (4510) VAT due                                          907,07                                No
+                                                         **907,07**   **907,07**
+==================== ================================== ============ ============ =========== =========
 <BLANKLINE>
 
 This declaration says that now we have no more due VAT but we have a
@@ -163,13 +163,13 @@ debth towards a tax office.
 
 >>> dcl = rt.models.bevats.Declaration.objects.get(number=4)
 >>> rt.show('ledger.MovementsByVoucher', dcl)
-========= ================================== ==================== ============ ============ =========== =========
- Seq.No.   Partner                            Account              Debit        Credit       Match       Cleared
---------- ---------------------------------- -------------------- ------------ ------------ ----------- ---------
- 1                                            (4510) VAT due       907,31                                No
- 2         Mehrwertsteuer-Kontrollamt Eupen   (4500) Tax offices                907,31       **VAT 4**   No
- **3**                                                             **907,31**   **907,31**
-========= ================================== ==================== ============ ============ =========== =========
+==================== ================================== ============ ============ =========== =========
+ Account              Partner                            Debit        Credit       Match       Cleared
+-------------------- ---------------------------------- ------------ ------------ ----------- ---------
+ (4500) Tax offices   Mehrwertsteuer-Kontrollamt Eupen                907,31       **VAT 4**   No
+ (4510) VAT due                                          907,31                                No
+                                                         **907,31**   **907,31**
+==================== ================================== ============ ============ =========== =========
 <BLANKLINE>
 
 >>> pv = dict(start_period=dcl.accounting_period)

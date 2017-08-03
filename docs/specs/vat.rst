@@ -260,6 +260,12 @@ Choicelists
     The global list of VAT regimes. Each item is an instance of
     :class:`VatRegime`.
 
+    Three regimes are considered standard minimum:
+
+    .. attribute:: normal
+    .. attribute:: subject
+    .. attribute:: intracom
+                   
 
 .. class:: DeclarationField
            
