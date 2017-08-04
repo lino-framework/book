@@ -481,7 +481,7 @@ Journals
  CSH         Caisse                Cash                                         (5700) Cash                      Debit
  BNK         Bestbank              Bestbank                                     (5500) Bestbank                  Debit
  MSC         Opérations diverses   Miscellaneous Journal Entries                (5700) Cash                      Debit
- VAT         Déclarations TVA      VAT declarations                Taxes        (4513) Declared VAT              Debit
+ VAT         Déclarations TVA      VAT declarations                Taxes        (4513) Declared VAT              Credit
 =========== ===================== =============================== ============ ================================ ===========================
 <BLANKLINE>
 
@@ -582,15 +582,19 @@ in debt towards us. The most common debtors are customers,
 i.e. partners who received a sales invoice from us and did not yet pay
 that invoice.
 
+One debtor is not a customer: the tax office. But they are a debtor as
+well because we had more VAT deductible (sales) than VAT due
+(purchases).
+
 >>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 =================================== ========== ================
  Partner                             ID         Balance
 ----------------------------------- ---------- ----------------
+ Mehrwertsteuer-Kontrollamt Eupen    191        5 091,37
  Rumma & Ko OÜ                       100        2 999,85
  Bäckerei Ausdemwald                 101        2 039,82
  Bäckerei Mießen                     102        679,81
- Mehrwertsteuer-Kontrollamt Eupen    191        19 928,99
  Bäckerei Schmitz                    103        280,00
  Bernd Brechts Bücherladen           108        1 197,90
  Van Achter NV                       106        1 199,85
@@ -598,14 +602,7 @@ that invoice.
  Garage Mergelsberg                  104        535,00
  Reinhards Baumschule                109        1 599,92
  Bastiaensen Laurent                 116        770,00
- ...
- Emonts-Gast Erna                    151        2 039,82
- Malmendier Marc                     145        600,00
- Radermacher Alfons                  152        822,57
- Radermacher Edgard                  156        1 199,85
- Radermacher Fritz                   157        279,90
- Radermacher Guido                   158        2 589,92
- Radermacher Christian               154        535,00
+ ... 
  Radermacher Daniela                 155        3 319,78
  da Vinci David                      164        639,92
  Radermacher Hans                    159        2 349,81
@@ -615,7 +612,7 @@ that invoice.
  di Rupo Didier                      163        4 355,65
  Radermacher Hedi                    160        951,82
  Radermacher Inge                    161        525,00
- **Total (67 rows)**                 **8936**   **117 446,79**
+ **Total (67 rows)**                 **8936**   **102 609,17**
 =================================== ========== ================
 <BLANKLINE>
 
@@ -625,6 +622,9 @@ one row per open (uncleared) invoice. For example, partner 116 from
 above list has two open sales invoices, totalling to 880,00:
 
 >>> obj = contacts.Partner.objects.get(pk=116)
+>>> obj
+Partner #116 ('Bastiaensen Laurent')
+
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ==================== ============ ===================== ==========
@@ -747,7 +747,6 @@ needed by some operation.
 =========== ============ ============ ============= ======= ========
  Reference   Start date   End date     Fiscal Year   State   Remark
 ----------- ------------ ------------ ------------- ------- --------
- 2015-12     01/12/2015   31/12/2015                 Open
  2016-01     01/01/2016   31/01/2016   2016          Open
  2016-02     01/02/2016   29/02/2016   2016          Open
  2016-03     01/03/2016   31/03/2016   2016          Open
@@ -770,8 +769,8 @@ needed by some operation.
 The *reference* of a new accounting period is computed by applying the
 voucher's entry date to the template defined in the
 :attr:`date_to_period_tpl
-<lino_xl.lib.ledger.models.AccountingPeriod.get_for_date>` setting.  
-The default implementation leads to the following references:
+<lino_xl.lib.ledger.AccountingPeriod.get_for_date>` setting.  The
+default implementation leads to the following references:
 
 >>> print(ledger.AccountingPeriod.get_ref_for_date(i2d(19940202)))
 1994-02

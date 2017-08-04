@@ -91,21 +91,24 @@ done for all orders when :mod:`lino_xl.lib.finan.fixtures.demo`
 generated them:
 
 >>> from unipath import Path
->>> from lino.utils.xmlgen.sepa.validate import validate_pain001
 >>> ses = rt.login()
 >>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
 >>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
-xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-54.xml ('en', {})
+xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-53.xml ('en', {})
 
 >>> rv['success']
 True
 >>> print(rv['open_url'])
-/media/xml/xml/finan.PaymentOrder-54.xml
+/media/xml/xml/finan.PaymentOrder-53.xml
+
+Let's check whether the XML file has been generated and is a valid
+SEPA payment initiation:
 
 >>> fn = Path(settings.SITE.cache_dir + rv['open_url'])
 >>> fn.exists()
 True
 
+>>> from lino.utils.xmlgen.sepa.validate import validate_pain001
 >>> validate_pain001(fn)
 
 
