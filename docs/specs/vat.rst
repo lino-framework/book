@@ -33,7 +33,7 @@ are likely to use :mod:`lino_xl.lib.vatless` instead.
 
 The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
 theoretically both be installed though obviously this wouldn't make
-much sense.
+sense.
 
 Installing this plugin will automatically install
 :mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
@@ -260,6 +260,12 @@ Choicelists
     The global list of VAT regimes. Each item is an instance of
     :class:`VatRegime`.
 
+    Three regimes are considered standard minimum:
+
+    .. attribute:: normal
+    .. attribute:: subject
+    .. attribute:: intracom
+                   
 
 .. class:: DeclarationField
            

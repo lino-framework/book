@@ -99,8 +99,8 @@ The most interesting is 177:
 >>> p = Person.objects.get(pk=177)
 >>> rt.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
-`☐  <javascript:Lino.households.Members.set_primary(null,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
@@ -166,11 +166,11 @@ Mrs Daniela Radermacher is my Foster mother
 >>> rt.show('households.MembersByPerson', master_instance=lars)
 ... #doctest: +ELLIPSIS
 Mr Lars Braun is
-`☐  <javascript:Lino.households.Members.set_primary(null,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
