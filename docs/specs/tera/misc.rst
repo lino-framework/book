@@ -47,14 +47,18 @@ Lino Tera doesn't use *time tracking* like :ref:`noi`.
 Partners
 ========
 
->>> print(settings.SITE.project_model)
-<class 'lino_tera.lib.tera.models.Client'>
-
 >>> dd.plugins.contacts
 lino_tera.lib.contacts (extends_models=['Person'])
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
 ['Company', 'Partner', 'Person', 'Household', 'Client']
+
+
+Activities
+==========
+
+>>> print(settings.SITE.project_model)
+<class 'lino_tera.lib.courses.models.Course'>
 
 
 Therapeutical groups

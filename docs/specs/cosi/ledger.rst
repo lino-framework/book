@@ -344,6 +344,11 @@ Models and actors reference
         This can be temporarily disabled e.g. by batch actions in
         order to save time.
 
+    .. attribute:: auto_fill_suggestions
+
+        Whether to automatically fill voucher item from due payments
+        of the partner when entering a financial voucher.
+        
     .. attribute:: template
 
         See :attr:`PrintableType.template
