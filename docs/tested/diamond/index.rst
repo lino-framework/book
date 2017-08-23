@@ -6,7 +6,7 @@ Diamond inheritance
 
 This document shows that the problem described in Django ticket
 :djangoticket:`10808` still exists in Django 1.6 and that it has been
-solved in Django 1.7 at least for the described case (see
+solved in Django 1.7 (at least for the described case; see
 :doc:`../diamond2/index` for a more complex case).
 
 The source code used to generate and test this document is at
