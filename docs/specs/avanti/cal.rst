@@ -47,3 +47,13 @@ Aáish (127) from Eupen
 Aákif (128) from Eupen
 ...
 
+>>> rt.show(cal.GuestStates)
+======= ========= ============ ========= ========
+ value   name      Afterwards   text      Symbol
+------- --------- ------------ --------- --------
+ 10      invited   No           Invited   ?
+ 40      present   Yes          Present   ☑
+ 50      absent    Yes          Absent    ☉
+ 60      excused   No           Excused   ⚕
+======= ========= ============ ========= ========
+<BLANKLINE>
