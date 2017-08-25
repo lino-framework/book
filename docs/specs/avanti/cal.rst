@@ -57,3 +57,15 @@ Aákif (128) from Eupen
  60      excused   No           Excused   ⚕
 ======= ========= ============ ========= ========
 <BLANKLINE>
+
+
+>>> rt.show(cal.EntryStates)
+======= ============ ============ ======== =================== ======== ============= =========
+ value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
+------- ------------ ------------ -------- ------------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?        Yes                 No       No            No
+ 20      draft        Draft        ☐        Yes                 No       No            No
+ 50      took_place   Took place   ☑        Yes                 Yes      No            No
+ 70      cancelled    Cancelled    ☒        No                  Yes      Yes           Yes
+======= ============ ============ ======== =================== ======== ============= =========
+<BLANKLINE>

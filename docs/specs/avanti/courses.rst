@@ -40,8 +40,8 @@ existing events.
 ================= ============ =============== ========== =========== =============
  Activity line     Start date   Instructor      Author     When        Times
 ----------------- ------------ --------------- ---------- ----------- -------------
- Alphabetisation   26/01/2017   Laura Lieblig   nathalie   Every day   14:00-17:00
- Alphabetisation   26/01/2017   Laura Lieblig   martina    Every day   09:00-12:00
+ Alphabetisation   16/01/2017   Laura Lieblig   nathalie   Every day   14:00-17:00
+ Alphabetisation   16/01/2017   Laura Lieblig   martina    Every day   09:00-12:00
 ================= ============ =============== ========== =========== =============
 <BLANKLINE>
 
@@ -51,8 +51,8 @@ existing events.
 ============================================================= =========== ============= ====== ===========
  overview                                                      When        Times         Room   Actions
 ------------------------------------------------------------- ----------- ------------- ------ -----------
- `Alphabetisation (26/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Draft**
- `Alphabetisation (26/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Draft**
+ `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Draft**
+ `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Draft**
 ============================================================= =========== ============= ====== ===========
 <BLANKLINE>
 
@@ -66,18 +66,18 @@ Laura (the teacher) who is responsible for the individual events.
 =========================================== ======== =================================
  overview                                    Client   Actions
 ------------------------------------------- -------- ---------------------------------
- `Lesson 13 (16.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 13 (16.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 14 (17.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 14 (17.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 15 (20.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 15 (20.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 16 (21.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 16 (21.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 17 (23.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 17 (23.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 18 (24.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 18 (24.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 20 (17.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 20 (17.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 21 (20.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 21 (20.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 22 (21.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 22 (21.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 23 (23.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 23 (23.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 24 (24.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
+ `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
 =========================================== ======== =================================
 <BLANKLINE>
 
@@ -91,30 +91,30 @@ System admins can see the full names:
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ======================= ======== ========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Children   School   Bus   Evening   Remark   Actions
------------------ ----------------------- -------- ---------- -------- ----- --------- -------- --------------------------------------------------
- 07/02/2017        ABDI Aátifá (136)       Female   No         No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 09/02/2017        ABDELNOUR Aámir (125)   Male     No         No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017        ABDALLAH Aáish (127)    Male     No         No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017        ABBASI Aáishá (118)     Female   No         No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 15/02/2017        ABAD Aábdeen (114)      Male     No         No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-================= ======================= ======== ========== ======== ===== ========= ======== ==================================================
+================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+ Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Actions
+----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ 07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>
 
 But auditors and coordinators see only the first name and number:
 
 >>> rt.login('martina').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ========================== ======== ========== ======== ===== ========= ======== ================================================
- Date of request   Client                     Gender   Children   School   Bus   Evening   Remark   Actions
------------------ -------------------------- -------- ---------- -------- ----- --------- -------- ------------------------------------------------
- 07/02/2017        Aátifá (136) from Eupen    Female   No         No       No    No                 **Requested**
- 09/02/2017        Aámir (125) from Eupen     Male     No         No       No    No                 **Confirmed**
- 11/02/2017        Aáish (127) from Eupen     Male     No         No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017        Aáishá (118) from Eupen    Female   No         No       No    No                 **Confirmed**
- 15/02/2017        Aábdeen (114) from Eupen   Male     No         No       No    No                 **Requested**
-================= ========================== ======== ========== ======== ===== ========= ======== ================================================
+================= ========================== ======== =========== ======== ===== ========= ======== ================================================
+ Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Actions
+----------------- -------------------------- -------- ----------- -------- ----- --------- -------- ------------------------------------------------
+ 07/02/2017        Aátifá (136) from Eupen    Female   No          No       No    No                 **Requested**
+ 09/02/2017        Aámir (125) from Eupen     Male     No          No       No    No                 **Confirmed**
+ 11/02/2017        Aáish (127) from Eupen     Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 13/02/2017        Aáishá (118) from Eupen    Female   No          No       No    No                 **Confirmed**
+ 15/02/2017        Aábdeen (114) from Eupen   Male     No          No       No    No                 **Requested**
+================= ========================== ======== =========== ======== ===== ========= ======== ================================================
 <BLANKLINE>
 
 
@@ -123,16 +123,17 @@ must register presences and absences:
 
 >>> rt.login('laura').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ======================= ======== ========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Children   School   Bus   Evening   Remark   Actions
------------------ ----------------------- -------- ---------- -------- ----- --------- -------- --------------------------------------------------
- 07/02/2017        ABDI Aátifá (136)       Female   No         No       No    No                 **Requested**
- 09/02/2017        ABDELNOUR Aámir (125)   Male     No         No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017        ABDALLAH Aáish (127)    Male     No         No       No    No                 **Requested**
- 13/02/2017        ABBASI Aáishá (118)     Female   No         No       No    No                 **Confirmed**
- 15/02/2017        ABAD Aábdeen (114)      Male     No         No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-================= ======================= ======== ========== ======== ===== ========= ======== ==================================================
+================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+ Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Actions
+----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ 07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested**
+ 09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested**
+ 13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed**
+ 15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>
+
 
 Reference
 =========
@@ -142,6 +143,8 @@ Reference
 .. class:: Course
            
     Same as :class:`lino_xl.lib.courses.Course`.
+
+    .. show_fields(courses.Course)    
 
 .. class:: Enrolment
 
@@ -165,13 +168,25 @@ Reference
         Whether this pupil is available only for evening courses.
 
 
+.. class:: PresencesByEnrolment
 
+    Shows the presences of this pupil for this course.
+    
 .. class:: EnrolmentsByCourse
            
     Same as :class:`lino_xl.lib.courses.EnrolmentsByCourse` but adds
     the gender of the pupil (a remote field) and the enrolment
     options.
 
+.. class:: EnrolmentChecker
+           
+    Checks for the following plausibility problems:
+
+    - :message:`More than 2 times absent.`
+
+    - :message:`Missed more than 10% of meetings.`
+
+           
 
 Help texts
 ==========

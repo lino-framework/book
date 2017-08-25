@@ -55,8 +55,12 @@ def objects():
     ClientContactType = rt.models.coachings.ClientContactType
     CoachingType = rt.models.coachings.CoachingType
     User = rt.models.users.User
-    EventType = rt.modules.cal.EventType
-    GuestRole = rt.modules.cal.GuestRole
+    EventType = rt.models.cal.EventType
+    Guest = rt.models.cal.Guest
+    GuestRole = rt.models.cal.GuestRole
+    GuestStates = rt.models.cal.GuestStates
+    EntryStates = rt.models.cal.EntryStates
+    Event = rt.models.cal.Event
     Person = rt.models.contacts.Person
     CommentType = rt.models.comments.CommentType
     TrendStage = rt.models.trends.TrendStage
@@ -126,7 +130,7 @@ def objects():
     kw = dict(monday=True, tuesday=True, thursday=True, friday=True)
     kw.update(
         line=alpha,
-        start_date=dd.demo_date(-20),
+        start_date=dd.demo_date(-30),
         start_time="9:00", end_time="12:00",
         max_date=dd.demo_date(10),
         every_unit=Recurrencies.daily,
@@ -164,4 +168,33 @@ def objects():
 
     ar = rt.login('robin')
     for obj in Course.objects.all():
-        obj.update_reminders(ar)
+        obj.update_auto_events(ar)
+        
+    # Suggested calendar entries older than 7 days should be marked as
+    # either took_place or cancelled. 
+    qs = Event.objects.filter(
+        start_date__lte=dd.demo_date(-7),
+        state=EntryStates.suggested)
+    for i, obj in enumerate(qs):
+        if i % 9:
+            obj.state = EntryStates.took_place
+        else:
+            obj.state = EntryStates.cancelled
+        obj.full_clean()
+        obj.save()
+
+    # participants of events which took place should be marked as
+    # either absent or present or excused:
+    qs = Guest.objects.filter(
+        event__start_date__lte=dd.demo_date(-7),
+        event__state=EntryStates.took_place)
+    for i, obj in enumerate(qs):
+        if i % 9:
+            obj.state = GuestStates.present
+        elif i % 3:
+            obj.state = GuestStates.absent
+        else:
+            obj.state = GuestStates.excused
+        obj.full_clean()
+        obj.save()
+        
