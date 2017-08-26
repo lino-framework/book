@@ -163,10 +163,10 @@ Getting acquaintained
     speak English.
 #.  :doc:`i18n` : About "internationalization" and "translatable strings".
 #.  :doc:`menu` : Standard items of a main menu
-#.  :doc:`actors` :
-#.  :doc:`choicelists` :
-#.  :doc:`parameters` :
-#.  :doc:`virtualfields` :
+#.  :doc:`actors`
+#.  :doc:`choicelists`
+#.  :doc:`parameters`
+#.  :doc:`virtualfields`
 #.  :doc:`ar` : Using action requests
 #.  :doc:`html` : Generating HTML
 #.  :doc:`custom_actions` : Writing custom actions
