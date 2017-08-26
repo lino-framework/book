@@ -154,12 +154,21 @@ The :class:`Action` class
     .. attribute:: label
 
         The label of this action. A short descriptive text in user
-        language.
+        language. Used e.g. on menu items. Also on toolbar buttons if
+        they have neither :attr:`icon_name` nor :attr:`button_text`
 
     .. attribute:: button_text
                    
         The text to appear on buttons for this action. If this is not
         defined, the :attr:`label` is used.
+
+    .. attribute:: button_color
+
+        The color to be used on icon-less buttons for this action
+        (i.e. which have no :attr:`icon_name`).
+        See also :attr:`lino.core.site.Site.use_silk_icons`.
+        
+        Not yet implemented. This is currently being ignored.
 
     .. attribute:: help_text
                    

@@ -153,14 +153,15 @@ class DocsTests(LinoTestCase):
         self.run_django_manage_test('docs/tutorials/tables')
     
     def test_diamond(self):
-        # TODO: reactivate when #28332 is fixed.
-        # https://code.djangoproject.com/ticket/28332
-        if VERSION[0] == 1 and VERSION[1] < 11:
-            self.run_django_manage_test('docs/tested/diamond')
+        self.run_django_manage_test('docs/tested/diamond')
 
     def test_diamond2(self):
-        # TODO: reactivate when #28332 is fixed.
+        # TODO: Even when using method described in
         # https://code.djangoproject.com/ticket/28332
+        # we still have the problem of Django saying
+        # django.core.exceptions.FieldError: Local field u'street' in class
+        # 'PizzeriaBar' clashes with field of the same name from base class
+        # 'Pizzeria'.
         if VERSION[0] == 1 and VERSION[1] < 11:
             self.run_django_manage_test('docs/tested/diamond2')
 

@@ -99,8 +99,8 @@ The most interesting is 177:
 >>> p = Person.objects.get(pk=177)
 >>> rt.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,true,70,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,52,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,60,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
+`☐  <javascript:Lino.households.Members.set_primary(null,true,44,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
@@ -148,10 +148,9 @@ Jean Dupont is not member of any household
 Lars
 ====
 
-Lars Braun is the natural son of Bruno Braun and Eveline Evrard who
-both maried another partner. These new households automatically
-created foster parent links between Lars and the new partners of his
-natural parents. Here is what Lars would say about them:
+Lars Braun is the natural son of Bruno Braun and Eveline Evrard.
+Here is what Lars would say about
+them:
 
 >>> lars = Person.objects.get(first_name="Lars", last_name="Braun")
 >>> for lnk in Link.objects.filter(child=lars):
@@ -159,20 +158,27 @@ natural parents. Here is what Lars would say about them:
 ...         lnk.type.as_parent(lnk.parent)))
 Mr Bruno Braun is my Father
 Mrs Eveline Evrard is my Mother
-Mr Albert Adam is my Foster father
-Mrs Françoise Freisen is my Foster mother
-Mrs Daniela Radermacher is my Foster mother
 
->>> rt.show('households.MembersByPerson', master_instance=lars)
-... #doctest: +ELLIPSIS
-Mr Lars Braun is
-`☐  <javascript:Lino.households.Members.set_primary(null,true,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
-<BLANKLINE>
-Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
+Both parents married another partner. These new households
+automatically did not create automatic foster parent links between
+Lars and the new partners of his natural parents.
 
->>> rt.show(SiblingsByPerson, lars)
-Mr Lars Braun is member of multiple households
+>>> qs = households.Member.objects.filter(person=lars)
+>>> qs.count()
+0
+
+.. So the following is no longer true:
+
+    >> rt.show('households.MembersByPerson', master_instance=lars)
+    ... #doctest: +ELLIPSIS
+    Mr Lars Braun is
+    `☐  <javascript:Lino.households.Members.set_primary(null,true,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
+    `☐  <javascript:Lino.households.Members.set_primary(null,true,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
+    `☐  <javascript:Lino.households.Members.set_primary(null,true,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
+    `☐  <javascript:Lino.households.Members.set_primary(null,true,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
+    `☐  <javascript:Lino.households.Members.set_primary(null,true,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
+    <BLANKLINE>
+    Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
+
+    >> rt.show(SiblingsByPerson, lars)
+    Mr Lars Braun is member of multiple households
