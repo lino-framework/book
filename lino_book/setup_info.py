@@ -172,6 +172,7 @@ lino_book.projects.team.tests
 lino_book.projects.team.settings
 lino_book.projects.team.settings.fixtures
 lino_book.projects.liina
+lino_book.projects.liina.tests
 lino_book.projects.liina.settings
 lino_book.projects.liina.settings.fixtures
 lino_book.projects.lydia
