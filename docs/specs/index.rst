@@ -16,6 +16,7 @@ specifications.  This section is far from being complete.
    export_excel
    cal
    contacts
+   phones
    holidays
    households
    tinymce

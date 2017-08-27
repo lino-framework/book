@@ -5,8 +5,7 @@ Developer's Guide
 =================
 
 This is the central meeting place for :doc:`Lino developers
-</community/developers>`. Some chapters are useful for :doc:`system
-adminstrators </community/admins>` as well.
+</community/developers>`.
 
 .. _lino.dev.start:
 

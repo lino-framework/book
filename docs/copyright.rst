@@ -2,8 +2,10 @@
 Copyright
 =========
 
-This is the documentation tree of Lino. Both the software and this
-documentation are written and maintained by Luc Saffre and published
-under the BSD license.
+This is the documentation tree of Lino. Its source code is published
+on `GitHub <https://github.com/lino-framework/book>`__ under the BSD
+license.
 
-Your comments are welcome. Feel free to contact Luc directly.
+Lino and the Lino Book are written and maintained by `Luc Saffre
+<http://luc.lino-framework.org/about/index.html>`__.  Your questions,
+comments and contributions are welcome.

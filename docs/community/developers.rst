@@ -3,17 +3,16 @@ Developers
 ==========
 
 The **Lino developers** are those guys who know the Python programming
-language and invest their time into Lino.
+language. Lino needs both experienced developers and beginners.
 
-- **Experienced** developers are especially welcome. Lino is currently
-  growing from a beast developed by a single developer into a
-  community project. We need experienced people who dare to discuss
-  with Luc about project management and development workflow.
+- We need **experienced** Python developers who dare to discuss with
+  Luc about project management and development workflow. Lino is
+  constantly growing from a beast developed by a single developer into
+  a community project.
   
-- **Beginners** are equally welcome.  They have :doc:`their own page
-  </team/newbies>`.  We help you to learn how to write your own Lino
-  application.  Your advantage is that you get a free mentorship and
-  increase your chances on the job market.
+- **Beginners** have :doc:`their own page </team/newbies>`.  We help
+  you to learn how to write your own Lino application.  You get a free
+  mentorship and increase your chances on the job market.
 
 We can also differentiate developers by their *primary motivation*:
 

@@ -11,18 +11,21 @@ Installing Lino
 .. _atelier: http://atelier.lino-framework.org/
 .. _Debian: http://www.debian.org/
 
-This document describes how to install a Lino development
-environment. The first part is also used for production sites (for
-which the full instruction are in :doc:`/admin/install`).
+This document describes how to install a Lino **development
+environment** (which is different from :doc:`/admin/install`).
 
-This document is written for Debian_ and derivated distributions,
-other Linuxes should be pretty similar.
+This document is written for Debian_ and derivated distributions.
+Other Linuxes should be pretty similar.  Windows and iOS are **not
+recommended** as operating systems for developers of free software.
+(Of course it is possible to install Lino on such operating systems,
+but you are likely to encounter problems that are not documented
+here.)
 
-It assumes you are familiar with the Linux shell at least for basic
-file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`,
-file permissions, environment variables, bash scripts etc.  Otherwise
-we suggest to learn about :ref:`Working in a UNIX shell
-<learning.unix>`.
+This document assumes you are familiar with the Linux shell at least
+for basic file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`,
+:cmd:`rmdir`, file permissions, environment variables, bash scripts
+etc.  Otherwise we suggest to learn about :ref:`Working in a UNIX
+shell <learning.unix>`.
 
 
 .. contents::
