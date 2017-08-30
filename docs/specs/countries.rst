@@ -11,7 +11,7 @@ TODO: Write explanations between the examples.
 
 ..  To test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_countries
+    $ doctest docs/specs/countries.rst
 
     doctest initialization:
 
@@ -176,4 +176,25 @@ Village
 >>> countries.CountryDrivers.BE.region_types
 [<PlaceTypes.province:21>]
 
+.. _tutorials.addrloc:
 
+.. class:: AddressLocation
+
+           
+
+>>> be = countries.Country.objects.get(isocode="BE")
+>>> ee = countries.Country.objects.get(isocode="EE")
+>>> tpl = u"{name}\n{addr}"
+
+>>> obj = contacts.Company.objects.filter(country=be)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Bäckerei Ausdemwald
+Vervierser Straße 45
+4700 Eupen
+
+>>> obj = contacts.Company.objects.filter(country=ee)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Rumma & Ko OÜ
+Tartu mnt 71
+10115 Tallinn
+Estonia

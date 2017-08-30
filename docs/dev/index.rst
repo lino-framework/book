@@ -19,7 +19,7 @@ Getting started
 
    install
    /tutorials/hello/index
-   /tutorials/polls/mysite/index
+   polls/index
    projects
    env
 
@@ -30,7 +30,7 @@ Getting started
     on your machine. It's easier than with Django. A ``settings.py``
     and a ``manage.py``.
 
-3.  :doc:`/tutorials/polls/mysite/index` : Convert the “Polls”
+3.  :doc:`polls/index` : Convert the "Polls"
     application from Django’s tutorial into a Lino application. This
     will illustrate some differences between Lino and Django.
 
@@ -53,7 +53,7 @@ Your first application
    :hidden:
 
    /tutorials/dumpy/index
-   /tutorials/tables/index
+   tables
    layouts
    initdb
 
@@ -61,7 +61,7 @@ Your first application
 10.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
      Writing your own Python fixtures.
 
-#.  :doc:`/tutorials/tables/index` : Models, tables and views. What is a
+#.  :doc:`tables` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
 
 #.  :doc:`layouts` : About layouts, detail windows, data elements and
@@ -174,11 +174,8 @@ Getting acquaintained
 #.  :doc:`lets` : Write a new Lino application from scratch, in the
     hope that this helps you with writing your own Lino application.
 #.  :doc:`/tutorials/layouts` :
-#.  :doc:`/tutorials/vtables/index` :
 #.  :doc:`actions` :
-#.  :doc:`/tutorials/actions/index` :
-#.  :doc:`/tutorials/mldbc/index` :
-#.  :doc:`/tutorials/human/index` :
+#.  :doc:`mldbc/index` :
 #.  :doc:`plugin_inheritance` : Plugin inheritance
 #.  :doc:`plugin_cooperation` : Plugin cooperation
 #.  :doc:`printing` : (TODO)
@@ -214,11 +211,8 @@ Getting acquaintained
    gfks
    lets
    /tutorials/layouts
-   /tutorials/vtables/index
    actions
-   /tutorials/actions/index
-   /tutorials/mldbc/index
-   /tutorials/human/index
+   mldbc/index
    plugin_inheritance
    plugin_cooperation
    printing
@@ -233,21 +227,13 @@ Special topics
 .. toctree::
    :maxdepth: 1
 
-   /tutorials/addrloc/index
    /specs/projects/mti
    /specs/projects/nomti
-   /tutorials/sendchanges/index
-   /tutorials/actors/index
-   /tutorials/de_BE/index
    watch
    /tutorials/workflows_tutorial/index
    /tutorials/matrix_tutorial/index
 
-   /tutorials/auto_create/index
-   /tutorials/pisa/index
    /tutorials/input_mask/index
-   /tutorials/gfktest/index
-   /tutorials/belref/index
 
    setup
 
@@ -259,7 +245,6 @@ Drafts
 
    /tutorials/tested_docs/index
    startup
-   /tutorials/myroles/index
    workflows
    translate/index
    
@@ -270,7 +255,6 @@ Drafts
    signals
    intro
    style
-   versions
    extjs
    overview
    inject_field
@@ -297,6 +281,8 @@ Other
    /team/noi_intro
    memo
    analysis
+   bash_aliases
+   diamond
 
 
 .. toctree::
@@ -312,4 +298,3 @@ Other
    ml/index
    /team/index
    interview
-   /tutorials/polls2/mysite/index

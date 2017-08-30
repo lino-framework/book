@@ -9,6 +9,9 @@ Using action requests
 
    $ python setup.py test -s tests.DocsTests.test_ar
 
+   >>> from lino import startup
+   >>> startup('lino_book.projects.min1.settings.demo')
+
 
 An action request is when a given user asks to run a given action of a
 given actor.

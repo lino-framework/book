@@ -40,9 +40,9 @@ reports.
 
 See also
 
-- :doc:`/tutorials/vtables/index`
-- :doc:`/tutorials/tables/index`
-- :doc:`/tutorials/actors/index`
+- :mod:`lino_book.projects.tables`
+- :mod:`lino_book.projects.vtables`
+- :mod:`lino_book.projects.actors`
 
 
 The application namespace

@@ -1,13 +1,10 @@
+.. _specs.printing:
+
 ==================
 Printing documents
 ==================
 
-.. How to test only this document:
-
-     $ py.test -k test_printing
-     $ python setup.py test -s tests.SpecsTests.test_printing
-
-   Initialize doctest:
+..  Initialize doctest:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.max.settings.doctests')

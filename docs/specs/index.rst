@@ -23,19 +23,23 @@ specifications.  This section is far from being complete.
    excerpts
    printing
    html
+   human
    checkdata
    countries
    invalid_requests
    gfks
+   gfktest
    dumps
    help_texts
    polly
    ajax
-   i18n
    notify
    users
    ssin
    jsgen
+   i18n
+   de_BE
+
    
 Accounting stuff
 ================
@@ -61,9 +65,17 @@ Application-specific specs
    avanti/index
    tera/index
    
+   
+Technical stuff
+===============
+    
+.. toctree::
+   :maxdepth: 1
+  
+   
    projects/mti
    projects/nomti
    projects/lets1
    projects/lets2
-
-
+   projects/belref
+   

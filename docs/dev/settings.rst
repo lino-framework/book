@@ -34,10 +34,7 @@ exception:
 >>> print(settings.DEBUG)
 Traceback (most recent call last):
 ...
-django.core.exceptions.ImproperlyConfigured: Requested setting DATABASES, 
-but settings are not configured. You must either define the environment 
-variable DJANGO_SETTINGS_MODULE or call settings.configure() before 
-accessing settings.
+ImproperlyConfigured: Requested setting DEBUG, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
 
 .. rubric:: Summary
 

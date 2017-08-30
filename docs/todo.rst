@@ -167,8 +167,8 @@ Feature requests
     Firma verloren gehen. Kann ggf. als Drittpartner eingegeben 
     werden. Betroffen sind folgende Notizen::
     
-      >>> from lino.projects.pcsw.models import Note
-      >>> [int(n.pk) for n in Note.objects.filter(company__isnull=False)]
+      from lino.projects.pcsw.models import Note
+      [int(n.pk) for n in Note.objects.filter(company__isnull=False)]
       [499, 501, 616, 349, 1019, 825, 425, 996, 117, 508, 822, 342, 841, 842]
       
 #.  Attachments of outgoing mails.

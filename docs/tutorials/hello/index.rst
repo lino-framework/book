@@ -6,12 +6,12 @@ Create a local Lino project
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_hello
+    $ doctest docs/tutorials/hello/index.rst
 
    doctest init::
 
     >>> from atelier.sheller import Sheller
-    >>> shell = Sheller(".")
+    >>> shell = Sheller('docs/tutorials/hello')
 
 
 In this tutorial we are going to create a local Lino project which

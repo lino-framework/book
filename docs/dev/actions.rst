@@ -431,12 +431,8 @@ This decoratior actually turns the method into an instance of
 :class:`lino.core.actions.Action <Action>`
 
 
-
-More about actions
-==================
-
-- :doc:`/tutorials/actions/index`
-
+Custom actions
+==============
 
 Examples of custom actions defined by certain libraries:
 
@@ -453,3 +449,101 @@ Examples of custom actions defined by certain libraries:
   :class:`ClearCacheAction <lino.mixins.printable.ClearCacheAction>`
 
 - The :class:`ToggleChoice <lino.modlib.polls.ToggleChoice>`
+
+You can define actions
+
+- either on the Model or on the Table
+
+- either using the `dd.action` decorator on a method
+  or by defining a custom subclass of `lino.core.actions.Action <lino.core.actions.Action>`
+  (and adding an instance of this class to the Model or the Table)
+  
+The :mod:`lino_book.projects.actions` project shows some methods of
+defining actions:
+
+>>> from lino import startup
+>>> startup('lino_book.projects.actions.settings')
+>>> from lino.api.doctest import *
+>>> from lino_book.projects.actions.models import *
+ 
+To demonstrate this, we log in and instantiate an `Moo` object:
+>>> ses = rt.login()
+>>> obj = Moo()
+
+Running an action programmatically is done using the 
+:meth:`run <lino.core.requests.BaseRequest.run>` method of your 
+session.
+
+Since `a` and `m` are defined on the Model, we can run them directly:
+
+>>> print(json.dumps(ses.run(obj.a)))
+{"message": "Called a() on Moo object", "success": true}
+
+>>> print(json.dumps(ses.run(obj.m)))
+{"message": "Called m() on Moo object", "success": true}
+
+This wouldn't work for `t` and `b` since these are defined on `Moos` 
+(which is only one of many possible tables on model `Moo`):
+
+>>> ses.run(obj.t)
+Traceback (most recent call last):
+...
+AttributeError: 'Moo' object has no attribute 't'
+
+So in this case we need to specify them table as the first parameter.
+And because they are row actions, we need to pass the instance as 
+mandatory first argument:
+
+>>> print(json.dumps(ses.run(S1.t, obj)))
+{"message": "Called t() on Moo object", "success": true}
+
+>>> print(json.dumps(ses.run(S1.b, obj)))
+{"message": "Called a() on Moo object", "success": true}
+
+  
+How to "remove" an inherited action or collected from a table
+-------------------------------------------------------------
+
+Here are the actions on Moos:
+
+>>> pprint([ba.action for ba in Moos.get_actions()])
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>,
+ <lino_book.projects.actions.models.A a ('a')>,
+ <lino_book.projects.actions.models.A b ('a')>,
+ <lino.core.actions.Action m ('m')>,
+ <lino.core.actions.Action t ('t')>]
+
+A subclass inherits all actions from her parent.
+When I define a second table `S1(Moos)`, then `S1` will have 
+both actions `m` and `t`:
+
+>>> pprint([ba.action for ba in S1.get_actions()])
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>,
+ <lino_book.projects.actions.models.A a ('a')>,
+ <lino.core.actions.Action m ('m')>,
+ <lino_book.projects.actions.models.A b ('a')>,
+ <lino.core.actions.Action t ('t')>]
+
+S2 does not have these actions because we "removed" them by overriding
+them with None:
+
+>>> pprint([ba.action for ba in S2.get_actions()])
+[<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
+ <lino.core.actions.SaveRow grid_put>,
+ <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.SubmitInsert submit_insert ('Create')>,
+ <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.actions.ShowTable grid>]
+
+
+

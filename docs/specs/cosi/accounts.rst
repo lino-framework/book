@@ -44,16 +44,16 @@ in :class:`AccountTypes`.
 
 >>> rt.show(ledger.AccountTypes, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= =============== =============== ======== ==========
+======= =============== =============== ======== ===============
  value   name            text            D/C      Sheet
-------- --------------- --------------- -------- ----------
- A       assets          Assets          Debit    Balance
- L       liabilities     Liabilities     Credit   Balance
- I       incomes         Incomes         Credit   Earnings
- E       expenses        Expenses        Debit    Earnings
- C       capital         Capital         Credit   Balance
- B       bank_accounts   Bank accounts   Debit    Balance
-======= =============== =============== ======== ==========
+------- --------------- --------------- -------- ---------------
+ A       assets          Assets          Debit    BalanceSheet
+ L       liabilities     Liabilities     Credit   BalanceSheet
+ I       incomes         Incomes         Credit   EarningsSheet
+ E       expenses        Expenses        Debit    EarningsSheet
+ C       capital         Capital         Credit   BalanceSheet
+ B       bank_accounts   Bank accounts   Debit    BalanceSheet
+======= =============== =============== ======== ===============
 <BLANKLINE>
 
 Each item in above list is defined as a Python class as well.
@@ -85,30 +85,30 @@ The same in French and German:
 
 >>> rt.show(ledger.AccountTypes, language="fr")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= =============== =================== ======== ==========
+======= =============== =================== ======== ===============
  value   name            text                D/C      Sheet
-------- --------------- ------------------- -------- ----------
- A       assets          Actifs              Débit    Balance
- L       liabilities     Passifs             Crédit   Balance
- I       incomes         Revenus             Crédit   Earnings
- E       expenses        Dépenses            Débit    Earnings
- C       capital         Capital             Crédit   Balance
- B       bank_accounts   Comptes en banque   Débit    Balance
-======= =============== =================== ======== ==========
+------- --------------- ------------------- -------- ---------------
+ A       assets          Actifs              Débit    BalanceSheet
+ L       liabilities     Passifs             Crédit   BalanceSheet
+ I       incomes         Revenus             Crédit   EarningsSheet
+ E       expenses        Dépenses            Débit    EarningsSheet
+ C       capital         Capital             Crédit   BalanceSheet
+ B       bank_accounts   Comptes en banque   Débit    BalanceSheet
+======= =============== =================== ======== ===============
 <BLANKLINE>
 
 >>> rt.show(ledger.AccountTypes, language="de")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-====== =============== ================= ======== ==========
+====== =============== ================= ======== ===============
  Wert   name            Text              D/C      Sheet
------- --------------- ----------------- -------- ----------
- A      assets          Vermögen          Débit    Balance
- L      liabilities     Verpflichtungen   Kredit   Balance
- I      incomes         Einkünfte         Kredit   Earnings
- E      expenses        Ausgaben          Débit    Earnings
- C      capital         Kapital           Kredit   Balance
- B      bank_accounts   Bankkonten        Débit    Balance
-====== =============== ================= ======== ==========
+------ --------------- ----------------- -------- ---------------
+ A      assets          Vermögen          Débit    BalanceSheet
+ L      liabilities     Verpflichtungen   Kredit   BalanceSheet
+ I      incomes         Einkünfte         Kredit   EarningsSheet
+ E      expenses        Ausgaben          Débit    EarningsSheet
+ C      capital         Kapital           Kredit   BalanceSheet
+ B      bank_accounts   Bankkonten        Débit    BalanceSheet
+====== =============== ================= ======== ===============
 <BLANKLINE>
 
 
@@ -182,13 +182,13 @@ These classes are not meant to be instantiated, they are just Lino's
 suggestion for a standardized vocabulary.
 
 >>> print Sheet.objects
-(<class 'lino_xl.lib.accounts.choicelists.Balance'>, <class 'lino_xl.lib.accounts.choicelists.Earnings'>, <class 'lino_xl.lib.accounts.choicelists.CashFlow'>)
+(<class 'lino_xl.lib.accounts.choicelists.BalanceSheet'>, <class 'lino_xl.lib.accounts.choicelists.EarningsSheet'>, <class 'lino_xl.lib.accounts.choicelists.CashFlowSheet'>)
 
 The `verbose_name` is what users see. It is a lazily translated
 string, so we must call `unicode()` to see it:
 
 >>> for s in Sheet.objects:
-...     print unicode(s.verbose_name)
+...     print(unicode(s.verbose_name))
 Balance sheet
 Profit & Loss statement
 Cash flow statement
@@ -209,13 +209,13 @@ The :meth:`Sheet.account_types` method.
 Assets, Liabilities and Capital are listed in the Balance Sheet.
 Income and Expenses are listed in the Profit & Loss statement.
 
->>> print Balance.account_types()
+>>> print(BalanceSheet.account_types())
 [<AccountTypes.assets:A>, <AccountTypes.liabilities:L>, <AccountTypes.capital:C>]
 
->>> print Earnings.account_types()
+>>> print(EarningsSheet.account_types())
 [<AccountTypes.incomes:I>, <AccountTypes.expenses:E>]
 
->>> print CashFlow.account_types()
+>>> print(CashFlowSheet.account_types())
 []
 
 

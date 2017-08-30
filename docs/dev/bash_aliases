@@ -1,0 +1,24 @@
+alias ll='ls -al'
+alias dm='python manage.py'
+alias pp='per_project'
+alias doctest='python -m atelier.doctest_utf8 $*'
+
+alias a='. env/bin/activate'
+
+function pywhich() {
+  python -c "import $1; print $1.__file__"
+}
+
+# find another name if your team also uses golang
+function go() {
+    for BASE in ~/work ~/repositories ~/work/book/lino_book/projects ~/work/welfare/lino_welfare/projects ~/work/voga/lino_voga/projects ~/work/book/docs/tutorials ~/work/ext6/lino_extjs6/projects ~/work/amici/lino_amici/projects    
+    do
+      if [ -d $BASE/$1 ] ; then
+        cd $BASE/$1;
+        return;
+      fi
+    done
+    echo Oops: no project $1
+    return -1
+}
+
