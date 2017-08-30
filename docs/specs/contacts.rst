@@ -4,10 +4,7 @@
 Contacts
 ========
 
-..  to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_contacts
-
+..
     >>> import lino
     >>> lino.startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
