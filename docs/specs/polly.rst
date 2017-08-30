@@ -3,10 +3,7 @@
 Lino Polly
 ==========
 
-.. to test only this document:
-    $ python setup.py test -s tests.SpecsTests.test_polly
-   
-    doctest init:
+..  doctest init:
     >>> import lino
     >>> lino.startup('lino_book.projects.polly.settings.demo')
     >>> from lino.api.shell import *

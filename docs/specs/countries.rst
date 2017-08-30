@@ -7,13 +7,11 @@ Countries
 This document describes the functionality implemented by the
 :mod:`lino_xl.lib.countries` module.
 
+.. currentmodule:: lino_xl.lib.countries
+                   
 TODO: Write explanations between the examples.
 
-..  To test only this document:
-
-    $ doctest docs/specs/countries.rst
-
-    doctest initialization:
+..  doctest initialization:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.min2.settings.doctests')
@@ -22,6 +20,12 @@ TODO: Write explanations between the examples.
 .. contents::
    :local:
    :depth: 2
+           
+
+Model mixins
+============
+
+.. currentmodule:: CountryCity           
 
 
 >>> rt.show(countries.Countries)

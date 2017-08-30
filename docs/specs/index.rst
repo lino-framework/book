@@ -31,7 +31,7 @@ specifications.  This section is far from being complete.
    gfktest
    dumps
    help_texts
-   polly
+   polls
    ajax
    notify
    users
@@ -64,6 +64,7 @@ Application-specific specs
    noi/index
    avanti/index
    tera/index
+   polly
    
    
 Technical stuff
