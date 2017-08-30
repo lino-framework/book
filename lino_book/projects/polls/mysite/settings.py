@@ -4,8 +4,6 @@ from lino.projects.std.settings import *
 class Site(Site):
 
     title = "Cool Polls"
-    project_name = 'polls_site'  # needed only to get the test suite
-                                 # pass on travis.
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
