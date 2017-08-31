@@ -49,7 +49,7 @@ existing events.
 >>> rt.login('laura').show('courses.MyCoursesGiven')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ============================================================= =========== ============= ====== ===========
- overview                                                      When        Times         Room   Actions
+ overview                                                      When        Times         Room   Workflow
 ------------------------------------------------------------- ----------- ------------- ------ -----------
  `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Draft**
  `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Draft**
@@ -64,7 +64,7 @@ Laura (the teacher) who is responsible for the individual events.
 >>> rt.login('laura').show('cal.MyEntries')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 =========================================== ======== =================================
- overview                                    Client   Actions
+ overview                                    Client   Workflow
 ------------------------------------------- -------- ---------------------------------
  `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
  `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
@@ -92,7 +92,7 @@ System admins can see the full names:
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Actions
+ Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
 ----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
  07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
  09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
@@ -107,7 +107,7 @@ But auditors and coordinators see only the first name and number:
 >>> rt.login('martina').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ========================== ======== =========== ======== ===== ========= ======== ================================================
- Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Actions
+ Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Workflow
 ----------------- -------------------------- -------- ----------- -------- ----- --------- -------- ------------------------------------------------
  07/02/2017        Aátifá (136) from Eupen    Female   No          No       No    No                 **Requested**
  09/02/2017        Aámir (125) from Eupen     Male     No          No       No    No                 **Confirmed**
@@ -124,7 +124,7 @@ must register presences and absences:
 >>> rt.login('laura').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Actions
+ Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
 ----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
  07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested**
  09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]

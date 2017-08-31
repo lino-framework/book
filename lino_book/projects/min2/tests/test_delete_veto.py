@@ -139,7 +139,7 @@ class QuickTest(RemoteAuthTestCase):
         # print('\n'+s)
         self.assertEqual(s, """\
 =========== ====== ============= ======== ================================
- Partner     Role   Actions       Remark   Calendar entry
+ Partner     Role   Workflow      Remark   Calendar entry
 ----------- ------ ------------- -------- --------------------------------
  Doe Johny          **Invited**            Calendar entry #1 (23.10.2014)
 =========== ====== ============= ======== ================================

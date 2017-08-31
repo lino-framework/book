@@ -5,24 +5,23 @@ The ``umask`` command
 =====================
 
 Before you do anything on a new production server or any machine where
-the Web server process runs as another user than you, we recommend to
+the web server process runs as another user than you, we recommend to
 configure your `umask` correctly.
 
-Edit your system-wide /etc/
+The umask is used to mask (disable) certain file permissions from any
+new file created by a given user.  All system users on a Lino site
+should have a umask `002` or `007` (not `022` or `077` as is the
+default value).
 
-    Add one line to your
-    :file:`/etc/apache2/envvars` file::
+Edit either the file :file:`~/.bashrc` of each system user or the file
+:file:`/etc/bash.bashrc` (site-wide for all users) and add the
+following line at the end::
 
-        umask 002
+    umask 002
+ 
+Add one line to your :file:`/etc/apache2/envvars` file::
 
-
-
-add the following line to the :xfile:`activate` script::
-
-  umask 002  # make new files writable for other group members
-
-Without above trick you would need to set the umask individually for
-all candiates: Apache, Supervisor, and the login shells of all users.
+    umask 002
 
 When a process with a too restrictive umask runs some code of a
 repository with Python source files, it will create `.pyc` files. And

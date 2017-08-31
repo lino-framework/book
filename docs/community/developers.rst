@@ -23,7 +23,7 @@ We can also differentiate developers by their *primary motivation*:
 - **Application developers** write their own independent Lino
   applications and publish them using their preferred license.
 
-Developers can be **voluntary** contributors, independant
+Developers can be **volunteer** contributors, independant
 **freelancers** or **employed** by some company.  Currently `Rumma &
 Ko is hiring <http://www.saffre-rumma.net/jobs/coredev>`__.  There
 might be other companies offering Lino development.
