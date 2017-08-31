@@ -2,30 +2,28 @@
 Lino and Django
 ===============
 
-From the hoster's and system manager's point of view, Lino
-applications are just Django projects.  The difference with plain
-Django projects is that Lino applications have an **out-of-the box
-user interface**.
+The differences between Lino and plain Django are visible mainly for
+the application developer.
 
-For the application developer this means that certain design choices
-have been made for you.  You don't not need to write any URLconf,
-HTML, CSS nor Javascript.
+A first an most vitible difference with plain Django projects is that
+your Lino applications have an out-of-the box **user interface**.  You
+don't not need to write any URLconf, HTML, CSS nor Javascript.
 
 But Lino is more than a user interface. In fact the current user
-interface is not even the only choice [#ui]_.  This section summarizes
-the differences between Lino and Django.
+interface is not even the only choice [#ui]_.  Here are the **under
+the hood** differences between Lino and Django.
 
 - Lino adds the concept of an central :doc:`application object
   </dev/application>` while Django is a radically decentralized
-  approach. I believe that without such a central place it is not
+  approach. We believe that without such a central place it is not
   possible --or at least not fun and not efficient-- to maintain
   complex software projects.
 
 - Lino is a replacement for `Django's admin interface
   <http://docs.djangoproject.com/en/dev/ref/contrib/admin>`__.  I
-  believe that `django.contrib.admin` is not a usable base for
-  representing a desktop-style application.  It has obviously not been
-  designed to write complete database applications.
+  believe that `django.contrib.admin` is not a usable base for writing
+  a set of reusable complex customized database applications.  It has
+  obviously not been designed for these.
  
 - In Lino we opted to replace Django's database-stored user groups and
   permissions system by a system which uses pure Python code
@@ -36,10 +34,11 @@ the differences between Lino and Django.
   :mod:`lino.modlib.users`.
 
 - Lino doesn't use `django.forms
-  <https://docs.djangoproject.com/en/dev/ref/forms/>`__ because I
-  believe that this API is "somehow hooked into the wrong place" and
-  forces application developers to write redundant code. Lino replaces
-  Django's forms by the concept of :doc:`layouts </dev/layouts>`.
+  <https://docs.djangoproject.com/en/dev/ref/forms/>`__ because they
+  are not needed.  We believe that this API is "somehow hooked into
+  the wrong place" and forces application developers to write
+  redundant code. Lino replaces Django's forms by the concept of
+  :doc:`layouts </dev/layouts>`.
   
 - Lino suggests (but doesn't enfore) to use its own system for
   :doc:`database migrations </dev/datamig>` instead of Django's default
@@ -51,8 +50,8 @@ the differences between Lino and Django.
   generate its own stuff.  For the plain Django part of your
   application you can use the system of your choice.
 
-- Actions, Choosers, ChoiceLists, Workflows, multi-lingual database
-  content, generating printable documents, ...
+- Lino adds concepts like Actions, Choosers, ChoiceLists, Workflows,
+  multi-lingual database content, generating printable documents, ...
 
 - Higher level solutions for common features like
   :mod:`lino.modlib.changes`, `lino_xl.lib.excerpts`, ...

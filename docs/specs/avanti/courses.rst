@@ -4,11 +4,7 @@
 Courses in Lino Avanti
 ======================
 
-.. How to test just this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_avanti_courses
-    
-    doctest init:
+..  doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
@@ -91,30 +87,30 @@ System admins can see the full names:
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
------------------ ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
- 07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+ ID   Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
+---- ----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ 9    07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 7    09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 5    11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 3    13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 1    15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>
 
 But auditors and coordinators see only the first name and number:
 
 >>> rt.login('martina').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ========================== ======== =========== ======== ===== ========= ======== ================================================
- Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Workflow
------------------ -------------------------- -------- ----------- -------- ----- --------- -------- ------------------------------------------------
- 07/02/2017        Aátifá (136) from Eupen    Female   No          No       No    No                 **Requested**
- 09/02/2017        Aámir (125) from Eupen     Male     No          No       No    No                 **Confirmed**
- 11/02/2017        Aáish (127) from Eupen     Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 13/02/2017        Aáishá (118) from Eupen    Female   No          No       No    No                 **Confirmed**
- 15/02/2017        Aábdeen (114) from Eupen   Male     No          No       No    No                 **Requested**
-================= ========================== ======== =========== ======== ===== ========= ======== ================================================
+==== ================= ========================== ======== =========== ======== ===== ========= ======== ================================================
+ ID   Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Workflow
+---- ----------------- -------------------------- -------- ----------- -------- ----- --------- -------- ------------------------------------------------
+ 9    07/02/2017        Aátifá (136) from Eupen    Female   No          No       No    No                 **Requested**
+ 7    09/02/2017        Aámir (125) from Eupen     Male     No          No       No    No                 **Confirmed**
+ 5    11/02/2017        Aáish (127) from Eupen     Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 3    13/02/2017        Aáishá (118) from Eupen    Female   No          No       No    No                 **Confirmed**
+ 1    15/02/2017        Aábdeen (114) from Eupen   Male     No          No       No    No                 **Requested**
+==== ================= ========================== ======== =========== ======== ===== ========= ======== ================================================
 <BLANKLINE>
 
 
@@ -123,15 +119,15 @@ must register presences and absences:
 
 >>> rt.login('laura').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
- Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
------------------ ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
- 07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested**
- 09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested**
- 13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed**
- 15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
+ ID   Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
+---- ----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ 9    07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested**
+ 7    09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ 5    11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested**
+ 3    13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed**
+ 1    15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>
 
 

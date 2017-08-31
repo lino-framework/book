@@ -122,7 +122,7 @@ Here are the VAT declarations in our demo database:
 >>> jnl = rt.models.ledger.Journal.get_by_ref('VAT')
 >>> rt.show('bevats.DeclarationsByJournal', jnl)
 ======= ============ ============== ============ =================== ============== ====== ====== ============== ================
- No.     Entry date   Start period   End period   Accounting period   [80]           [81]   [82]   [83]           Actions
+ No.     Entry date   Start period   End period   Accounting period   [80]           [81]   [82]   [83]           Workflow
 ------- ------------ -------------- ------------ ------------------- -------------- ------ ------ -------------- ----------------
  3       28/03/2015   2015-03                     2015-03             907,31                       907,31         **Registered**
  2       28/02/2015   2015-02                     2015-02             907,44                       907,44         **Registered**

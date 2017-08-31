@@ -106,7 +106,7 @@ The sales journal
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
 >>> rt.show('sales.InvoicesByJournal', jnl)  #doctest: +ELLIPSIS
 ===================== ============ ============ =================================== ================= ============== ================
- No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Actions
+ No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
  72/2017               12/03/2017   18/03/2017   van Veen Vincent                    770,00                           **Registered**
  71/2017               11/03/2017   17/03/2017   van Veen Vincent                    465,96                           **Registered**

@@ -12,9 +12,8 @@ More about Lino
    history
    thanks
    art
-   customized
-   desktop
    auth
+   how
 
 .. rubric:: Drafts
    
