@@ -25,3 +25,10 @@ Java in 2016, according to `Highest Paying Programming Languages In
 2016
 <http://www.business2community.com/tech-gadgets/15-highest-paying-programming-languages-2016-01559832#ueRWocGwdOXtxpL4.97>`_)
   
+Lino is currently optimized for writing **desktop-like** applications,
+i.e.  for being used from a *desktop* computer.  To make a Lino
+application usable from **mobile devices** you must design and write
+your own user interface. Or you can wait until we finished working on
+a generic solution.
+
+
