@@ -12,7 +12,7 @@ Writing your own Python fixtures
    doctest init::
 
     >>> from atelier.sheller import Sheller
-    >>> shell = Sheller(".")
+    >>> shell = Sheller('docs/tutorials/dumpy')
 
 
 This tutorial shows how to use :doc:`the Python serializer

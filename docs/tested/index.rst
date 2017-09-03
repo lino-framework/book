@@ -9,12 +9,8 @@ which are part of the test suite.
    
    test_i18n
    polly
-   integer_pk/index
-   float2decimal/index
    core_utils
    dynamic
-   diamond/index
-   diamond2/index
    e006
    ddh
    gfks

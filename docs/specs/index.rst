@@ -16,25 +16,30 @@ specifications.  This section is far from being complete.
    export_excel
    cal
    contacts
+   phones
    holidays
    households
    tinymce
    excerpts
    printing
    html
+   human
    checkdata
    countries
    invalid_requests
    gfks
+   gfktest
    dumps
    help_texts
-   polly
+   polls
    ajax
-   i18n
    notify
    users
    ssin
    jsgen
+   i18n
+   de_BE
+
    
 Accounting stuff
 ================
@@ -59,10 +64,19 @@ Application-specific specs
    noi/index
    avanti/index
    tera/index
+   polly
+   
+   
+Technical stuff
+===============
+    
+.. toctree::
+   :maxdepth: 1
+  
    
    projects/mti
    projects/nomti
    projects/lets1
    projects/lets2
-
-
+   projects/belref
+   projects/actors

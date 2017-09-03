@@ -4,25 +4,174 @@
 Countries
 ======================
 
-This document describes the functionality implemented by the
-:mod:`lino_xl.lib.countries` module.
-
-TODO: Write explanations between the examples.
-
-..  To test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_countries
-
-    doctest initialization:
+..  doctest initialization:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.min2.settings.doctests')
     >>> from lino.api.doctest import *
 
+This document describes the functionality implemented by the
+:mod:`lino_xl.lib.countries` module.
+See also :mod:`lino_xl.lib.statbel.countries`.
+
+.. currentmodule:: lino_xl.lib.countries
+                   
 .. contents::
    :local:
    :depth: 2
+           
 
+Models
+======
+
+.. class:: Country
+           
+    A "country" or "nation".
+           
+.. class:: Place
+
+    Any kind of named geographic region (except those who have an entry
+    in :class:`Country`.
+
+.. class:: PlaceTypes
+
+    A choicelist of possible place types.
+
+    >>> rt.show(countries.PlaceTypes)
+    ======= ============== ================
+     value   name           text
+    ------- -------------- ----------------
+     10                     Member State
+     11                     Division
+     12                     Region
+     13                     Community
+     14                     Territory
+     20      county         County
+     21      province       Province
+     22                     Shire
+     23                     Subregion
+     24                     Department
+     25                     Arrondissement
+     26                     Prefecture
+     27      district       District
+     28                     Sector
+     50      city           City
+     51      town           Town
+     52      municipality   Municipality
+     54      parish         Parish
+     55      township       Township
+     56      quarter        Quarter
+     61      borough        Borough
+     62      smallborough   Small borough
+     70      village        Village
+    ======= ============== ================
+    <BLANKLINE>
+
+    Sources used:
+
+    - http://en.wikipedia.org/wiki/List_of_subnational_entities
+
+           
+           
+Model mixins
+============
+
+.. class:: CountryCity
+           
+    Model mixin that adds two fields `country` and `city` and defines
+    a context-sensitive chooser for `city`, a `create_city_choice`
+    method, ...
+
+    .. attribute:: country
+                   
+    .. attribute:: zip_code
+    
+    .. attribute:: city
+    
+        The locality, i.e. usually a village, city or town. 
+
+        The choicelist for this field shows only places returned by
+        :meth:`lino_xl.lib.countries.Place.get_cities`.
+
+        This is a pointer to :class:`Place`.
+        The internal name `city` is for historical reasons.
+
+.. class:: CountryRegionCity
+
+    Adds a `region` field to a :class:`CountryCity`.
+
+.. _tutorials.addrloc:
+
+The AddressLocation mixin
+=========================
+
+.. class:: AddressLocation
+
+    A mixin for models which contain a postal address location.
+
+    .. attribute:: addr1
+                   
+       Address line before street
+       
+    .. attribute:: street_prefix
+
+       Text to print before name of street, but to ignore for sorting.
+       
+    .. attribute:: street
+
+       Name of street, without house number.
+                   
+    .. attribute:: street_no
+
+       House number.
+       
+    .. attribute:: street_box
+
+        Text to print after street number on the same line.
+                   
+    .. attribute:: addr2
+
+        Address line to print below street line.
+    
+    .. attribute:: addess_column
+
+        Virtual field which returns the location as a comma-separated
+        one-line string.
+
+    .. method:: address_location(self, linesep="\n")
+        
+        Return the plain text postal address location part.  Lines are
+        separated by `linesep` which defaults to ``"\\n"``.
+
+        The country is displayed only for foreigners (i.e. whose
+        country is not :attr:`my_country
+        <lino_xl.lib.countries.Plugin.my_country>`)
+
+        For example:
+
+        >>> be = countries.Country.objects.get(isocode="BE")
+        >>> ee = countries.Country.objects.get(isocode="EE")
+        >>> tpl = u"{name}\n{addr}"
+
+        >>> obj = contacts.Company.objects.filter(country=be)[0]
+        >>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+        Bäckerei Ausdemwald
+        Vervierser Straße 45
+        4700 Eupen
+
+        >>> obj = contacts.Company.objects.filter(country=ee)[0]
+        >>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+        Rumma & Ko OÜ
+        Tartu mnt 71
+        10115 Tallinn
+        Estonia
+
+    
+Utilities
+=========
+
+.. class:: CountryDriver
+.. class:: CountryDrivers           
 
 >>> rt.show(countries.Countries)
 ============================= ================== ================================= ==========
@@ -162,6 +311,7 @@ TODO: Write explanations between the examples.
 <br/>
 Province
 City
+Municipality
 Village
 
 >>> show_choices("robin", base + '&query=ll')
@@ -171,9 +321,8 @@ Village
 
 
 >>> countries.CountryDrivers.BE.city_types
-[<PlaceTypes.city:50>, <PlaceTypes.village:70>]
+[<PlaceTypes.city:50>, <PlaceTypes.municipality:52>, <PlaceTypes.village:70>]
 
 >>> countries.CountryDrivers.BE.region_types
 [<PlaceTypes.province:21>]
-
 

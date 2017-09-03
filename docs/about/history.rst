@@ -25,11 +25,34 @@ Centre for Social Welfare* (PCSW) in **January 2011**.  In **August
 2012** we forked it into a separate project :ref:`welfare` in order to
 make it maintainable by an independant organization.
 
-In September 2012 we purchased the domain name `lino-framework.org`.
+In **September 2012** we registered the domain name
+`lino-framework.org`.
 
 The second real-world Lino application started :doc:`in Czechia <joe>`
 in **July 2013**.
 
-Other registered Lino users: see :doc:`/community/index`.
+In **March 2014** we started the third Lino production site,
+a second :ref:`welfare`.
+
+`Hamza Khchine <https://github.com/khchine5>`__ started working for
+Lino as a freelancer in **December 2015**.
+
+The :ref:`voga` project started in **January 2016**, thanks to Alexa
+who worked as a volunteer analyst almost full-time during eight
+months.
+
+From **April to November 2016**, Annalisa and Johannes gave much of
+their time for the :ref:`care` project.
+
+From **January to May 2017**, Tanel worked for Lino as project manager
+for :ref:`vilma`.
+
+In **February 2017** `Tonis <https://github.com/CylonOven>`__ started
+working for Lino as the second full-time core developer.
+
+In **December 2016** we started the :ref:`avanti` project.
+  
+In **May 2017** we started to work on :ref:`tera`.
+   
 
 

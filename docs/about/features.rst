@@ -1,11 +1,8 @@
-=========================
-Features and design goals
-=========================
-    
-.. _lino.features:
-
+========
 Features
 ========
+    
+.. _lino.features:
 
 Because Lino applications are Django projects, the following features
 (copied from the `Django website <https://www.djangoproject.com/>`_)
@@ -27,10 +24,10 @@ also apply to Lino:
   
 Lino then adds its own features to the above:
 
-- An out-of-the-box :doc:`user interface <ui>`.  We believe that
-  application developers should *develop applications*, not waste
-  their time writing html templates or css.  It is one of Lino's
-  design goals to **separate business logic and user interface**.
+- An out-of-the-box user interface.  We believe that application
+  developers should *develop applications*, not waste their time
+  writing html templates or css.  It is one of Lino's design goals to
+  :doc:`separate business logic and user interface <ui>`.
 
 - :ref:`Layouts <layouts>`:
   Lino applications use the Python language not only
@@ -39,9 +36,8 @@ Lino then adds its own features to the above:
 - Lino adds enterprise-level concepts for definining 
   :ref:`permissions` and :ref:`workflows`.
   
-- :ref:`mldbc` : 
-  Use Lino's rich experience with applications that manage 
-  multilingual database content.
+- Lino  applications have a good support for managing
+  :ref:`multilingual database content <mldbc>`.
   
 - Lino provides tools for generating :ref:`userdocs`.
   
@@ -50,24 +46,9 @@ Lino then adds its own features to the above:
   <https://docs.djangoproject.com/en/dev/topics/migrations/>`_ to
   manage your :ref:`database migrations <datamig>`.
   
-- Other features include extensions to handle :ref:`polymorphism`.
+- Lino comes with a nice way for handling :ref:`polymorphism`.
   
 - Lino includes :ref:`xl`, a collection of reusable plugins for all
   kinds of Lino applications.
 
-
-Design goals
-============
-
-- Lino applications are intuitive and easy to understand for the end user.
-  (see :doc:`values`)
-- Lino applications are easy to maintain because Lino encourages
-  sustainable application development.
-- agile programming
-- rapid prototyping 
-- libraries of reusable code
-- short release cycles
-- stable 
-
-See also :doc:`think_python`.  
 

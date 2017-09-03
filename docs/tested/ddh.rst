@@ -49,7 +49,7 @@ This document tests this functionality.
 - polls.Question :
   - PROTECT : polls.AnswerChoice.question, polls.AnswerRemark.question
 - polls.Response :
-  - PROTECT : polls.AnswerChoice.response, polls.AnswerRemark.response
+  - CASCADE : polls.AnswerChoice.response, polls.AnswerRemark.response
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :

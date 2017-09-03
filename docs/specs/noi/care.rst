@@ -282,7 +282,7 @@ No data to display
 
 >>> rt.show('tickets.AllTickets')
 ==== ========================================================================= ========= ======= ============== =========
- ID   Summary                                                                   Author    Topic   Actions        Mission
+ ID   Summary                                                                   Author    Topic   Workflow       Mission
 ---- ------------------------------------------------------------------------- --------- ------- -------------- ---------
  8    Who would buy diapers for me in Aachen?                                   Alex              **Ready**
  7    Who can review my final work?                                             Eric              **Sleeping**
@@ -387,7 +387,7 @@ My pleas
 >>> rt.login('christa').show(tickets.MyTickets)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ========== ==================================================================== ===================================
- Priority   Description                                                          Actions
+ Priority   Description                                                          Workflow
 ---------- -------------------------------------------------------------------- -----------------------------------
  Normal     `#2 (⛶ My lawn needs mowing. On Thursday or Saturday.) <Detail>`__   [★] **New** → [☾] [☎] [☉] [⚒] [☐]
 ========== ==================================================================== ===================================
@@ -401,7 +401,7 @@ Where I can help
 >>> rt.login('eric').show(faculties.SuggestedTicketsByEndUser)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ======================================================================================= ============================= ==============
- Description                                                                             Needed skills                 Actions
+ Description                                                                             Needed skills                 Workflow
 --------------------------------------------------------------------------------------- ----------------------------- --------------
  `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__    `Music <Detail>`__            [★] **Open**
  `#4 (☉ Who can give guitar lessons to my daughter?) <Detail>`__  by `Alex <Detail>`__   `Guitar lessons <Detail>`__   [☆] **Open**
@@ -416,7 +416,7 @@ My offers
 >>> rt.login('christa').show(votes.MyOffers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ============================================================================================ ============================================
- Description                                                                                  Actions
+ Description                                                                                  Workflow
 -------------------------------------------------------------------------------------------- --------------------------------------------
  `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__         [★] **Candidate** → [Cancelled] [Watching]
  `#3 (☎ Who can give piano lessons to my son?) <Detail>`__  by `Eric <Detail>`__ for *Dora*   [★] **Candidate** → [Cancelled] [Watching]
@@ -427,7 +427,7 @@ My offers
 >>> rt.login('eric').show(votes.MyOffers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ====================================================================================== ============================================
- Description                                                                            Actions
+ Description                                                                            Workflow
 -------------------------------------------------------------------------------------- --------------------------------------------
  `#5 (☉ Who would play music on my birthday party?) <Detail>`__  by `Alex <Detail>`__   [★] **Candidate** → [Cancelled] [Watching]
 ====================================================================================== ============================================
@@ -445,7 +445,7 @@ No data to display
 >>> rt.login('alex').show(votes.MyVotes)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ============================================================================================ ================
- Description                                                                                  Actions
+ Description                                                                                  Workflow
 -------------------------------------------------------------------------------------------- ----------------
  `#8 (☐ Who would buy diapers for me in Aachen?) <Detail>`__, assigned to `Eric <Detail>`__   [★] **Author**
  `#5 (☉ Who would play music on my birthday party?) <Detail>`__                               [★] **Author**
@@ -486,7 +486,7 @@ the detail window of a ticket.
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Deadline** (deadline)
     - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
-    - (general1_4): **Actions** (workflow_buttons), **Private** (private)
+    - (general1_4): **Workflow** (workflow_buttons), **Private** (private)
     - (bottom_box) [visible for user consultant senior admin]:
       - (bottom_box_1): **Wanted skills** (faculties_DemandsByDemander), **Votes** (votes_VotesByVotable)
       - **Wishes** (deploy_DeploymentsByTicket)

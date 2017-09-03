@@ -10,7 +10,7 @@ object *of a given model*, a `GenericForeignKey` can point to a
 database object *of any model*.
 
 This section provides a topic overview. See also
-:doc:`/tutorials/gfktest/index` and
+:doc:`/specs/gfktest` and
 :mod:`test_broken_gfks <lino_welfare.projects.eupen.tests.test_broken_gfks>`).
 
 Lino's :meth:`disable_delete <lino.core.model.Model.disable_delete>`

@@ -17,6 +17,7 @@ Sitemap
 
    about/index
    demos
+   User's Guide </user/index>
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
    Hosting program </hosting/index>

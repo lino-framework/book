@@ -2,7 +2,7 @@
 # Copyright 2009-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-# python setup.py test -s tests.PackagesTests
+# python setup.py test -s tests.test_misc.PackagesTests
 
 from __future__ import unicode_literals
 import sys
@@ -30,7 +30,7 @@ SETUP_INFO = dict(
         'commondata', 'commondata.ee', 'commondata.be'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
-    tests_require=['pytest'],
+    # tests_require=['pytest'],
 
     description="The documentation for Lino",
     license='BSD License',
@@ -110,6 +110,10 @@ lino_book.projects.estref
 lino_book.projects.estref.settings
 lino_book.projects.estref.tests
 lino_book.projects.events
+lino_book.projects.polls
+lino_book.projects.polls.polls
+lino_book.projects.polls.polls.fixtures
+lino_book.projects.polls.mysite
 lino_book.projects.polly
 lino_book.projects.polly.settings
 lino_book.projects.polly.tests
@@ -172,6 +176,7 @@ lino_book.projects.team.tests
 lino_book.projects.team.settings
 lino_book.projects.team.settings.fixtures
 lino_book.projects.liina
+lino_book.projects.liina.tests
 lino_book.projects.liina.settings
 lino_book.projects.liina.settings.fixtures
 lino_book.projects.lydia
@@ -204,6 +209,37 @@ lino_book.projects.watch
 lino_book.projects.watch.entries
 lino_book.projects.watch.fixtures
 lino_book.projects.watch.tests
+lino_book.projects.mldbc
+lino_book.projects.mldbc.fixtures
+lino_book.projects.actions
+lino_book.projects.actors
+lino_book.projects.actors.fixtures
+lino_book.projects.addrloc
+lino_book.projects.addrloc.fixtures
+lino_book.projects.myroles
+lino_book.projects.auto_create
+lino_book.projects.de_BE
+lino_book.projects.de_BE.fixtures
+lino_book.projects.diamond
+lino_book.projects.diamond.main
+lino_book.projects.diamond2
+lino_book.projects.diamond2.main
+lino_book.projects.float2decimal
+lino_book.projects.float2decimal.lib
+lino_book.projects.float2decimal.lib.float2decimal
+lino_book.projects.integer_pk
+lino_book.projects.integer_pk.lib
+lino_book.projects.integer_pk.lib.integer_pk
+lino_book.projects.human
+lino_book.projects.gfktest
+lino_book.projects.gfktest.settings
+lino_book.projects.gfktest.lib
+lino_book.projects.gfktest.lib.gfktest
+lino_book.projects.pisa
+lino_book.projects.sendchanges
+lino_book.projects.tables
+lino_book.projects.tables.fixtures
+lino_book.projects.vtables
 """.splitlines() if n])
 
 

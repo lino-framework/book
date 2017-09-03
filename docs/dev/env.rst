@@ -22,14 +22,14 @@ documentation trees.
 Installing the Lino SDK
 =======================
 
-Automated way for clonging and installing the code repositories::
+Automated way for cloning and installing the code repositories::
 
   $ cd ~/repositories
   $ wget https://raw.githubusercontent.com/lino-framework/book/master/docs/dev/install_dev_projects.sh
   $ chmod +x install_dev_projects.sh
   $ ./install_dev_projects.sh
 
-Then you must manuall tell :ref:`atelier` about these new projects.
+Then you must manually tell :ref:`atelier` about these new projects.
 Open your :xfile:`~/.atelier/config.py` file which should contain::
 
      add_project("/home/john/projects/hello")

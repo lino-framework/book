@@ -64,8 +64,10 @@ it is analog):
 
   }
 
-It might be useful to understand :doc:`/tested/diamond/index`,
-:doc:`/tested/diamond2/index` and the code of :mod:`lino.core.inject`
+It might be useful to understand
+:mod:`lino_book.projects.diamond`,
+:mod:`lino_book.projects2.diamond`,     
+and the code of :mod:`lino.core.inject`
 before working on this problem.
 
 The problem might be related to the fact that `AFTER17` the `name`

@@ -85,6 +85,8 @@ Technical
    docs
    belref
    estref
+   actors
+   actions
 
 """
 

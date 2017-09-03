@@ -58,17 +58,22 @@ Maintainers must be members of the `sudo` and `www-data` groups::
   `adduser` is a perl script which uses `useradd` in back-end.
 
 All maintainers must have a umask `002` or `007` (not `022` or `077`
-as is the default value). Edit either the file :file:`~/.bashrc` of
+as is the default value).
+
+Edit either the file :file:`~/.bashrc` of
 each user or the file :file:`/etc/bash.bashrc` (site-wide for all
 users) and add the following line at the end::
 
     umask 002
  
-.. rubric:: Notes
-            
-- The umask is used to mask (disable) certain file permissions from
-  any new file created by a given user. See :doc:`umask` for more
-  detailed information.
+Add one line to your :file:`/etc/apache2/envvars` file::
+
+    umask 002
+
+The umask is used to mask (disable) certain file permissions from
+any new file created by a given user. See :doc:`umask` for more
+detailed information.
+           
   
 
 Lino directory structure

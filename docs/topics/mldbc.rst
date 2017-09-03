@@ -9,5 +9,5 @@ multilingual database content.
 
 See also:
 
-- The :doc:`/tutorials/mldbc/index` tutorial
-- The :attr:`languages <ad.Site.languages>` setting
+- The :doc:`/dev/mldbc/index` tutorial
+- The :attr:`languages <lino.core.site.Site.languages>` setting

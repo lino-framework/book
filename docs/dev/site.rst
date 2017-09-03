@@ -17,7 +17,7 @@ Introducing the :class:`Site` class
 .. currentmodule:: lino.core.site
 
 As explained in :doc:`settings` and
-:doc:`/tutorials/polls/mysite/index`, Lino expects a variable named
+:doc:`/dev/polls/index`, Lino expects a variable named
 :setting:`SITE` in your :ref:`settings`, and this variable must
 contain an instance of the :class:`Site` class .
 

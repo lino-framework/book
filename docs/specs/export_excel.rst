@@ -8,11 +8,7 @@ Exporting to Excel
 This document tests this functionality.
 
 
-.. to run only this test:
-
-    $ python setup.py test -s tests.SpecsTests.test_export_excel
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.min2.settings.doctests')
@@ -35,7 +31,7 @@ Robin has twelve appointments in the period 20141023..20141122:
 My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
 =======================================================================
 =============================================== ======== =============================
- Description                                     Person   Actions
+ Description                                     Person   Workflow
 ----------------------------------------------- -------- -----------------------------
  `Seminar (24.10.2014 09:40) <Detail>`__                  **Draft** → [☑] [☒]
  `Lunch (26.10.2014 13:30) <Detail>`__                    **Published** → [☑] [☒] [☐]
@@ -135,7 +131,7 @@ The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
 
 >>> print(' | '.join([cell.value for cell in rows[0]]))
-When | Actions | Created | Start date | Start time
+When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -157,7 +153,7 @@ Mes rendez-vous (Traité par Ran
 
 >>> rows = list(ws.rows)
 >>> print(' | '.join([cell.value for cell in rows[0]]))
-Quand | Actions | Créé | Date début | Heure de début
+Quand | Workflow | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE

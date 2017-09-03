@@ -326,7 +326,7 @@ assigned to a project:
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========= ============== ========== ============== ======== =========
- ID   Summary             Author    Topic          Priority   Actions        Site     Mission
+ ID   Summary             Author    Topic          Priority   Workflow       Site     Mission
 ---- ------------------- --------- -------------- ---------- -------------- -------- ---------
  5    Cannot create Foo   Mathieu   Lino Welfare   Normal     **Sleeping**   pypi
  3    Baz sucks           Jean      Lino Voga      Normal     **Open**       welsch
@@ -446,7 +446,7 @@ My tickets
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
 ========== ======================================================================= ============================================
- Priority   Description                                                             Actions
+ Priority   Description                                                             Workflow
 ---------- ----------------------------------------------------------------------- --------------------------------------------
  Normal     `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal     `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
@@ -484,13 +484,13 @@ Sites
 Lino Noi has a list of all sites for which we do support:
 
 >>> rt.show(tickets.Sites)
-============= ======== ================ ======== ========= ====
- Designation   Client   Contact person   Remark   Actions   ID
-------------- -------- ---------------- -------- --------- ----
- pypi          pypi                                         3
- welket        welket                                       1
- welsch        welsch                                       2
-============= ======== ================ ======== ========= ====
+============= ======== ================ ======== ========== ====
+ Designation   Client   Contact person   Remark   Workflow   ID
+------------- -------- ---------------- -------- ---------- ----
+ pypi          pypi                                          3
+ welket        welket                                        1
+ welsch        welsch                                        2
+============= ======== ================ ======== ========== ====
 <BLANKLINE>
 
 A ticket may or may not be "local", i.e. specific to a given site.
@@ -501,7 +501,7 @@ can see all local tickets for a given site object:
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ========== =============================================================== ==========
- Priority   Description                                                     Actions
+ Priority   Description                                                     Workflow
 ---------- --------------------------------------------------------------- ----------
  Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*   **Open**
  Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Luc*                        **New**
@@ -518,13 +518,13 @@ can see all local tickets for a given site object:
 
 
 Note that the above table shows no state change actions in the
-Actions column because it is being requested by anonymous. For an
+Workflow column because it is being requested by anonymous. For an
 authenticated developer it looks like this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 ========== ================================================================ ============================================
- Priority   Description                                                      Actions
+ Priority   Description                                                      Workflow
 ---------- ---------------------------------------------------------------- --------------------------------------------
  Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
@@ -556,7 +556,7 @@ release of a new version.
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
 ============ ================= =========== ======== ====== ===========
- Start date   Title             Reference   Site     Room   Actions
+ Start date   Title             Reference   Site     Room   Workflow
 ------------ ----------------- ----------- -------- ------ -----------
  15/05/2015   20150515@welket               welket          **Draft**
  13/05/2015   20150513@welsch               welsch          **Draft**
@@ -807,7 +807,7 @@ the detail window of a ticket.
     - (general1_1): **Summary** (summary), **ID** (id)
     - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
     - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
-    - (general1_4): **Actions** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
+    - (general1_4): **Workflow** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
       - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
       - **Commits** (github_CommitsByTicket)

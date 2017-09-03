@@ -2,14 +2,14 @@
 Things to know
 ==============
 
-A list of things you should know as a Lino Developer.
+A list of things you should know as a Lino developer.
 
 
 Python
 ======
 
-Lino is mostly written in the Python programming language. You know
-for example
+Lino is mostly written in the Python programming language. You 
+know for example
 
 - what's an object, a string, a list, a dict, a float
 - the difference between a class method and an instance method
@@ -55,9 +55,9 @@ Documentation about Lino is written using `Sphinx
   the Sphinx documentation include
   `The build configuration file <http://sphinx-doc.org/config.html>`_
 
-- You should try to use the same blogging system as Luc and to document
-  your own contributions to Lino in a :doc:`developer blog
-  </team/devblog>`.  
+- You might want to use the same blogging system as Luc and to
+  document your own contributions to Lino in a :doc:`developer blog
+  </team/devblog>`.
 
 
 The UNIX shell
@@ -87,8 +87,8 @@ Databases
 =========
 
 Lino is a part of Django and therefore uses relational databases
-(SQL). You don't often need to write SQL yourself when using Lino, but
-it is of course important to understand the concepts behind a
+(SQL). You don't usually need to write SQL yourself when using Lino,
+but it is of course important to understand the concepts behind a
 database. And on a production server you will have to deal with
 database servers like MySQL or PostgreSQL (according to the
 :setting:`DATABASES` setting).

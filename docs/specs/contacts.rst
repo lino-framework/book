@@ -4,10 +4,7 @@
 Contacts
 ========
 
-..  to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_contacts
-
+..
     >>> import lino
     >>> lino.startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *
@@ -63,6 +60,21 @@ This behaviour is implemented using the :attr:`quick_search_fields
 frozenset(['phone', 'prefix', 'gsm', 'name'])
 
 
+Numeric quick search
+====================
+
+You can search for phone numbers
+
+>>> rt.show(contacts.Partners, quick_search="123", column_names="name phone id")
+=============== ============== =====
+ Name            Phone          ID
+--------------- -------------- -----
+ Arens Andreas   +32 87123456   112
+ Arens Annette   +32 87123457   113
+=============== ============== =====
+<BLANKLINE>
+
+
 Quickly finding a partner using its primary key
 ===============================================
 
@@ -77,22 +89,6 @@ A special type of quick search is when the search string starts with
 ====================== ================ =====
 <BLANKLINE>
 
-Without our rule, the above list would also contain *Reinhards
-Baumschule* because their house number is 123:
-
->>> obj = contacts.Partner.objects.get(street_no__contains="123")
->>> print(obj.address)
-Reinhards Baumschule
-Segelfliegerdamm 123
-12487 Berlin
-Germany
-
-Also note that numeric searches are exact matches, not partial: *12*
-will find a most one partner, and not find all partners whose primary
-key *contains* the sequence *12*.
-
->>> rt.show(contacts.Partners, quick_search="12")
-No data to display
 
 
 This behaviour is the same for all subclasses of Partner, e.g. for

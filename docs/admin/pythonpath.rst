@@ -55,13 +55,13 @@ independently of the current directory::
   $ python
   Python 2.7.1 (r271:86832, Nov 27 2010, 18:30:46) ...
   Type "help", "copyright", "credits" or "license" for more information.
-  >>> import foo
-  >>> foo.hello()
+  >\ >> import foo
+  >\ >> foo.hello()
   Hello, world!
-  >>> from foo import hello
-  >>> hello()
+  >\ >> from foo import hello
+  >\ >> hello()
   Hello, world!
-  >>>
+  >\ >>
 
 The :xfile:`local.pth` file
 ---------------------------
