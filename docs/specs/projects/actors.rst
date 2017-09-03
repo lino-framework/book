@@ -1,3 +1,5 @@
+.. _specs.projects.actors:
+
 ======================
 The label of the actor
 ======================
