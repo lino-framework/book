@@ -26,10 +26,3 @@ For a **developer** this means that it may take a day or two before
 you fall in love with Lino.  Lino requires you to :doc:`think in
 Python <think_python>`.  But we hope that your love will last longer.
 
-We admit that Lino is not yet well documented. This is a disadvantage
-of using a young framework with a small community. But our community
-is growing and we are working on it.  Our goal is that every motivated
-beginner experiences joy when walking through the :ref:`lino.dev`.
-Give it a try, send your feedback, tell us where you got stuck, help
-us to make it easier for others to get started with Lino!
-

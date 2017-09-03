@@ -213,6 +213,7 @@ lino_book.projects.mldbc
 lino_book.projects.mldbc.fixtures
 lino_book.projects.actions
 lino_book.projects.actors
+lino_book.projects.actors.fixtures
 lino_book.projects.addrloc
 lino_book.projects.addrloc.fixtures
 lino_book.projects.myroles

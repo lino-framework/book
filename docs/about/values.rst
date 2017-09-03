@@ -2,7 +2,8 @@ Linked objects
 ==============
 
 "Lino" is also an acronym of the words **Linked objects** (as we said
-in :doc:`/about/name`).
+in :doc:`/about/name`). This can help us to reflect about some values
+behind Lino.
 
 Every software application has a "model" of its "world", i.e. of the
 things it is designed to manage.  We call this a **database
@@ -29,7 +30,7 @@ so terribly easy, that one customer looked at the code and started to
 code Layouts and modify models by himself and I almost felt no
 developer is needed anymore :-)"
 
-**No, there is no reason to be ashamed.** We continue to need
+**No, there is no reason to be ashamed.** The world will always need
 professional developers because the gory details require some
 experience, and because it is an art to make the right choices on what
 to take into account and what to ignore.
@@ -42,16 +43,15 @@ users.
 
 When end-users are intuitively aware of the structure behind what they
 are doing, this leads to better communication between developers and
-end-users because **they speak the same language**.  (Well that's an
-exaggeration -- it's normal that there are certain differences in
-vocabulary, but:) They stop to completely miss the point of what the
-other is talking about.
+end-users because **they speak the same language**.  Of course there
+are certain differences in vocabulary, but they stop to completely
+miss the point of what the other is talking about.
 
 Lino applications give their users a **feeling of being able** to do
-it themselves.  This motivates them to start thinking about how they
-actually *would* do it themselves.  The developer then just implements
-what they ask, no more need to translate their language or to analyze
-their "true needs", because the users understand what is possible and
+it themselves.  This motivates them to think about how they actually
+*would* do it themselves.  The developer then just implements what
+they ask, no more need to translate their language or to analyze their
+"true needs", because the users understand what is possible and
 correctly analyze what they really need.
 
 

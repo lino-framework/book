@@ -6,7 +6,7 @@ General overview of Lino Avanti
 
 .. How to test just this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_avanti_general
+    $ doctest docs/specs/avanti/general.rst
     
     doctest init:
 

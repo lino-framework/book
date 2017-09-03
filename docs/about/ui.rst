@@ -5,28 +5,34 @@
 Separate business logic and user interface
 ==========================================
 
-People tend to judge a framework by it's user interface.  This
-approach is not completely wrong since the user interface is the first
-and almost only "visible" part of an application.
+People tend to judge a framework by its user interface.  This approach
+is not completely wrong since the user interface is the first and
+almost only "visible" part of an application.
 
 But Lino is designed to have **many possible** user interfaces.  Lino
 comes with an extensible collection of *out-of-the-box* user
-interfaces.  You can write a Lino application once and then deploy it
-via different interfaces. :ref:`noi` is an example of an application
-which is deployed using two public UIs.
+interfaces.  Theoretically you can write a Lino application once and
+then deploy it via different interfaces. :ref:`noi` is an example of
+an application which is deployed using two public UIs.
 
-That said, your only realistic choice is currently the
-:mod:`lino.modlib.extjs` UI.  Lino applications currently "look like"
-those you can see at :doc:`/demos`.  You might like them or not, but
+That said, your only realistic choice is currently the ExtJS UI.  Lino
+applications currently "look like" those you can see at :doc:`/demos`.
+
+The qualitiy of Lino's user interface is just *good enough* and
+admittedly less than what people are used to get on big web
+applications where hundrers of developers have been working hard to
+make it a perfect ergonomic experience.
 Lino's beauty lies beyond the user interface.
 
-Writing and optimizing a user interface is a rather boring task, and
-there are many other, more interesting tasks that are waiting to be
-done, and, last but not least, because :term:`extjs` is so cool.
+Lino has currently only one user interface because because writing and
+optimizing a user interface is a rather boring task, and there are
+many other, more interesting tasks that are waiting to be done, and,
+last but not least, because the ExtJS UI is actually quite usable,
+once you accept a few known oddnesses.
 
 There are several proofs of concept for alternative user interfaces:
 
-- the :mod:`lino_extjs6` is almost ready for production.
+- the :ref:`extjs6` is almost ready for production.
 - one might consider Lino's :class:`TextRenderer
   <lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
   functional specifications </dev/doctests>`) as a special kind of

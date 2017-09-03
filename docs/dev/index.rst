@@ -83,11 +83,13 @@ between Lino and other frameworks.
               
    /about/ui
    /about/lino_and_django
+   /about/features
    /about/not_easy
    /about/think_python
    ui
     
 20.  :doc:`/about/ui`
+#.  :doc:`/about/features`
 #.  :doc:`/about/lino_and_django`
 #.  :doc:`/about/not_easy`
 #.  :doc:`/about/think_python`

@@ -122,10 +122,10 @@ must register presences and absences:
 ==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
  ID   Date of request   Client                  Gender   Childcare   School   Bus   Evening   Remark   Workflow
 ---- ----------------- ----------------------- -------- ----------- -------- ----- --------- -------- --------------------------------------------------
- 9    07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested**
+ 9    07/02/2017        ABDI Aátifá (136)       Female   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
  7    09/02/2017        ABDELNOUR Aámir (125)   Male     No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 5    11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested**
- 3    13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed**
+ 5    11/02/2017        ABDALLAH Aáish (127)    Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 3    13/02/2017        ABBASI Aáishá (118)     Female   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
  1    15/02/2017        ABAD Aábdeen (114)      Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
 ==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>

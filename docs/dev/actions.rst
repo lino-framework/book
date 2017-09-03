@@ -509,7 +509,7 @@ Here are the actions on Moos:
 >>> pprint([ba.action for ba in Moos.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
  <lino.core.actions.SaveRow grid_put>,
- <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.actions.ShowTable grid>,
@@ -525,7 +525,7 @@ both actions `m` and `t`:
 >>> pprint([ba.action for ba in S1.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
  <lino.core.actions.SaveRow grid_put>,
- <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.actions.ShowTable grid>,
@@ -540,10 +540,8 @@ them with None:
 >>> pprint([ba.action for ba in S2.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
  <lino.core.actions.SaveRow grid_put>,
- <lino.core.actions.CreateRow grid_post ('grid_post')>,
+ <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.actions.ShowTable grid>]
-
-
 

@@ -12,7 +12,6 @@ programming language, but also contains Javascript code.
    values
    projects
    testimonals
-   name
    history
    thanks
    art
