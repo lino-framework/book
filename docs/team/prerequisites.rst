@@ -80,7 +80,6 @@ HTML, CSS and Javascript
 
 - You understand the meaning of tags like 
   ``<body>``, ``<ul>``, ``<li>`` ...
-- You understand how Lino uses the Sencha ExtJS Javascript library
 - You know what an AJAX request is.
 
 Databases
@@ -90,6 +89,6 @@ Lino is a part of Django and therefore uses relational databases
 (SQL). You don't usually need to write SQL yourself when using Lino,
 but it is of course important to understand the concepts behind a
 database. And on a production server you will have to deal with
-database servers like MySQL or PostgreSQL (according to the
-:setting:`DATABASES` setting).
+database servers like MySQL or PostgreSQL when doing database
+snapshots or running migrations.
 

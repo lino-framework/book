@@ -8,7 +8,7 @@ The apc demo project
 .. This document is part of the Lino Così test suite. To run only this
    test:
 
-    $ python setup.py test -s tests.SpecsTests.test_apc
+    $ doctest docs/specs/cosi/apc.rst
     
     doctest init:
 
@@ -60,7 +60,7 @@ Robin is the system administrator, he has a complete menu:
   - Create invoices
 - Office : My Excerpts
 - Reports :
-  - Accounting : Situation, General Accounts Balances, Customer Accounts Balances, Supplier Accounts Balances, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
+  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
@@ -125,7 +125,7 @@ This demo database contains exactly 48 entries:
 200
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-16
+15
 
 The 16 is because Lino has a hard-coded default value of  
 returning only 15 rows when no limit has been specified
@@ -150,24 +150,23 @@ Here we override it on the living object:
 
 >>> countries.PlacesByCountry.preview_limit = 25
 
-Same request returns now 26 data rows:
+Same request returns now 25 data rows:
 
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-26
+25
 
 To remove the limit altogether, you can say:
 
 >>> countries.PlacesByCountry.preview_limit = None
 
-and the same request now returns all 49 data rows (48 + the phantom
-row):
+and the same request now returns all 48 data rows:
 
 >>> res = test_client.get(url,REMOTE_USER='robin')
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-49
+48
 
 
 

@@ -1141,6 +1141,17 @@ Model mixins
     end_period to the parameter fields.
 
 
+.. class:: ItemsByVoucher
+
+    Shows the items of this voucher.
+
+    This is used as base class for slave tables in
+    :mod:`lino_xl.lib.finan`,
+    :mod:`lino_xl.lib.vat`,
+    :mod:`lino_xl.lib.vatless`,
+    :mod:`lino_xl.lib.ana`, ...
+
+
 Utilities
 =========
 

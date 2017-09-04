@@ -6,7 +6,7 @@ Clients in Lino Avanti
 
 .. How to test just this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_avanti_avanti
+    $ doctest docs/specs/avanti/avanti.rst
     
     doctest init:
 
@@ -14,6 +14,7 @@ Clients in Lino Avanti
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
 
+This document describes the :mod:`lino_avanti.lib.avanti` plugin.    
 
 .. contents::
   :local:

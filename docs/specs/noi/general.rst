@@ -6,7 +6,7 @@ Lino Noi Overview
 
 .. How to test just this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_general
+    $ doctest docs/specs/noi/general.rst
     
     doctest init:
 
@@ -151,7 +151,7 @@ Countries
 
     >>> json_fields = 'count rows title success no_data_text'
     >>> kwargs = dict(fmt='json', limit=10, start=0)
-    >>> demo_get('robin', 'api/countries/Countries', json_fields, 9, **kwargs)
+    >>> demo_get('robin', 'api/countries/Countries', json_fields, 8, **kwargs)
 
 
 

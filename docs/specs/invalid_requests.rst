@@ -6,7 +6,7 @@ Answering to invalid requests
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_invalid_requests
+    $ doctest docs/specs/invalid_requests.rst
     
     doctest init:
 
@@ -36,7 +36,7 @@ Here is a valid request:
 200
 >>> d = AttrDict(json.loads(res.content))
 >>> d.count
-1
+0
 >>> print(d.title)
 Contact for of Mr Hans Altenberg
 
