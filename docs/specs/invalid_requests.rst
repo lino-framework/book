@@ -36,7 +36,7 @@ Here is a valid request:
 200
 >>> d = AttrDict(json.loads(res.content))
 >>> d.count
-0
+1
 >>> print(d.title)
 Contact for of Mr Hans Altenberg
 

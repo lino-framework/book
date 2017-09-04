@@ -263,7 +263,7 @@ Question 23/10/2014
 >>> d = json.loads(res.content)
 
 >>> len(d['rows'])
-4
+5
 
 >>> print(d['rows'][0][0])
 <span class="htmlText">1) There was enough to eat.</span>

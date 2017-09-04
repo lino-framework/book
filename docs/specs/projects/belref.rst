@@ -70,7 +70,7 @@ of :mod:`lino.modlib.extjs`
 >>> data.keys()
 [u'count', u'rows', u'success', u'no_data_text', u'title']
 >>> data['count']
-13
+14
 >>> data['rows'][0]
 [u'Institut National de Statistique', u'Nationaal Instituut voor Statistiek', u'Nationales Institut f\xfcr Statistik', 1, u'INS', u'NIS', u'NIS', {u'id': True}, {}, False]
 
@@ -82,7 +82,7 @@ Get the list of places in Belgium:
 200
 >>> data = json.loads(res.content)
 >>> data['count']
-2877
+2878
 >>> data['rows'][0]
 [u'Belgique', u'BE', u"'s Gravenvoeren", u'', u'', u'Ville', u'50', u'3798', None, None, 2147, False, u'73109', u'<p />', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a>', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<span />', {u'id': True}, {}, False]
 

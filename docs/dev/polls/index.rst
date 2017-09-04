@@ -358,7 +358,7 @@ is easy and fun because you can write fixtures in Python.
     >>> # test_client.get("123")
     >>> walk_menu_items()
     - Polls --> Questions : 3
-    - Polls --> Choices : 10
+    - Polls --> Choices : 11
     <BLANKLINE>
 
     TODO: above snippet should show 5 questions (4+1 for the phantom
