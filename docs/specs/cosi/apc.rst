@@ -5,8 +5,7 @@
 The apc demo project
 ====================
 
-.. This document is part of the Lino Così test suite. To run only this
-   test:
+..  To run only this test:
 
     $ doctest docs/specs/cosi/apc.rst
     
@@ -60,7 +59,7 @@ Robin is the system administrator, he has a complete menu:
   - Create invoices
 - Office : My Excerpts
 - Reports :
-  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
+  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places

@@ -5,8 +5,7 @@
 The ``belref`` project
 ======================
 
-.. this document is part of the Lino test suite. To test only this
-   document, run::
+.. To test only this document, run::
 
        $ doctest docs/specs/projects/belref.rst
 
@@ -84,7 +83,7 @@ Get the list of places in Belgium:
 >>> data['count']
 2878
 >>> data['rows'][0]
-[u'Belgique', u'BE', u"'s Gravenvoeren", u'', u'', u'Ville', u'50', u'3798', None, None, 2147, False, u'73109', u'<p />', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a>', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<span />', {u'id': True}, {}, False]
+[u'Belgique', u'BE', u"'s Gravenvoeren", u'', u'', u'Ville', u'50', u'3798', None, None, 2147, False, u'73109', u'<p />', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<span />', {u'id': True}, {}, False]
 
 The JSON API of :mod:`lino.modlib.extjs` is actually not written for
 being public, that's why we have strange items like

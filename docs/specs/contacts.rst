@@ -4,7 +4,11 @@
 Contacts
 ========
 
-..
+..  To run only this test:
+
+    $ doctest docs/specs/contacts.rst
+    
+    
     >>> import lino
     >>> lino.startup('lino_book.projects.min1.settings.doctests')
     >>> from lino.api.doctest import *

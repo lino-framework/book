@@ -6,7 +6,7 @@ VAT (Value-added tax)
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_vat
+    $ doctest docs/specs/vat.rst
     
     doctest init
 
@@ -51,6 +51,65 @@ The demo fixtures :mod:`novat <lino_xl.lib.vat.fixtures.novat>` and
 exclusive (should not be used both) and must be loaded before any
 `demo` fixture (because otherwise :mod:`lino_xl.lib.vat.fixtures.demo`
 would not find any VAT regimes to assign to partners).
+
+
+Intracom
+========
+
+Two tables accessible via the :menuselection:`Reports --> Accounting`
+menu and integrated in the printout of a VAT declaration:
+
+.. class:: IntracomSales
+           
+    Show a list of all sales invoices whose :attr:`vat_regime` is
+    intra-Community.
+    
+>>> rt.show(vat.IntracomSales)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+====================== ==================== =========== ======================= =================== ============== ===================
+ Rechnung               Partner              MwSt.-Nr.   MwSt.-Regime            Total zzgl. MwSt.   MwSt.          Total inkl. MwSt.
+---------------------- -------------------- ----------- ----------------------- ------------------- -------------- -------------------
+ *SLS 5*                Garage Mergelsberg               Innergemeinschaftlich   442,15              92,85          535,00
+ *SLS 17*               Ausdemwald Alfons                Innergemeinschaftlich   385,09              80,87          465,96
+ *SLS 29*               Evers Eberhart                   Innergemeinschaftlich   1 942,00            407,81         2 349,81
+ *SLS 41*               Johnen Johann                    Innergemeinschaftlich   442,15              92,85          535,00
+ *SLS 53*               Meier Marie-Louise               Innergemeinschaftlich   385,09              80,87          465,96
+ *SLS 65*               Radermacher Hans                 Innergemeinschaftlich   1 942,00            407,81         2 349,81
+ **Total (6 Zeilen)**                                                            **5 538,48**        **1 163,06**   **6 701,54**
+====================== ==================== =========== ======================= =================== ============== ===================
+<BLANKLINE>
+
+.. class:: IntracomPurchases
+
+    Show a list of all purchase invoices whose :attr:`vat_regime` is
+    intra-Community.
+    
+>>> rt.show(vat.IntracomPurchases)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+======================= ================= =========== ======================= =================== ============ ===================
+ Rechnung                Partner           MwSt.-Nr.   MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
+----------------------- ----------------- ----------- ----------------------- ------------------- ------------ -------------------
+ *PRC 1*                 AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
+ *PRC 6*                 AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
+ *PRC 11*                AS Express Post               Innergemeinschaftlich   33,55               7,05         40,60
+ *PRC 16*                AS Express Post               Innergemeinschaftlich   35,12               7,38         42,50
+ *PRC 21*                AS Express Post               Innergemeinschaftlich   33,97               7,13         41,10
+ *PRC 26*                AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
+ *PRC 31*                AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
+ *PRC 36*                AS Express Post               Innergemeinschaftlich   33,55               7,05         40,60
+ *PRC 41*                AS Express Post               Innergemeinschaftlich   35,12               7,38         42,50
+ *PRC 46*                AS Express Post               Innergemeinschaftlich   33,97               7,13         41,10
+ *PRC 51*                AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
+ *PRC 56*                AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
+ *PRC 61*                AS Express Post               Innergemeinschaftlich   33,88               7,12         41,00
+ *PRC 66*                AS Express Post               Innergemeinschaftlich   35,45               7,45         42,90
+ *PRC 71*                AS Express Post               Innergemeinschaftlich   34,30               7,20         41,50
+ **Total (15 Zeilen)**                                                         **510,48**          **107,22**   **617,70**
+======================= ================= =========== ======================= =================== ============ ===================
+<BLANKLINE>
+
+
+
 
 
 
@@ -133,6 +192,11 @@ Models and actors reference
            
     An item of a :class:`VatAccountInvoice`.
 
+.. class:: IntracomInvoices
+
+    Common base class for :class:`IntracomSales` and
+    :class:`IntracomPurchases`
+           
 
 Model mixins
 ============
