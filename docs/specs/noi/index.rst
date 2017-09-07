@@ -37,6 +37,7 @@ The default variant ("team")
     deploy
     github
     stars
+    sql
    
 
 The Lino Care variant
