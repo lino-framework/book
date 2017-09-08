@@ -285,3 +285,6 @@ SELECT "contacts_partner"."id", "contacts_partner"."email",
     "users_user"."username" = 'robin'
 
 
+
+>>> for f in rt.models.tickets.AllTickets.wildcard_data_elems():
+...     print(f)
