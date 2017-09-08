@@ -1,8 +1,8 @@
 .. _specs.noi.sql:
 
-=============================
-Exploring SQL activity
-=============================
+==================================
+Exploring SQL activity in Lino Noi
+==================================
 
 This document shows why Jane is so slow when displaying tickets.
 It is also a demo of
@@ -40,6 +40,7 @@ SELECT "django_content_type"."id", "django_content_type"."app_label",
     "django_content_type"."model" FROM "django_content_type" WHERE
     "django_content_type"."id" = 46
 
+
 Now we do a single request to :class:`AllTickets`, with `limit=1` so
 that it retrieves only one row. Now look at all the SQL that poor
 Django must do in order to return a single row. And keep in mind that
@@ -54,55 +55,11 @@ every row causes a similar set of SQL queries.
 >> len(res['rows'])
 1
 
->>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-SELECT "django_session"."session_key",
-    "django_session"."session_data", "django_session"."expire_date" FROM
-    "django_session" WHERE ("django_session"."session_key" =
-    '...' AND "django_session"."expire_date"
-    > '...')
-SELECT "contacts_partner"."id", "contacts_partner"."email",
-    "contacts_partner"."language", "contacts_partner"."url",
-    "contacts_partner"."phone", "contacts_partner"."gsm",
-    "contacts_partner"."fax", "contacts_partner"."country_id",
-    "contacts_partner"."city_id", "contacts_partner"."zip_code",
-    "contacts_partner"."region_id", "contacts_partner"."addr1",
-    "contacts_partner"."street_prefix", "contacts_partner"."street",
-    "contacts_partner"."street_no", "contacts_partner"."street_box",
-    "contacts_partner"."addr2", "contacts_partner"."prefix",
-    "contacts_partner"."name", "contacts_partner"."remarks",
-    "contacts_person"."partner_ptr_id", "contacts_person"."title",
-    "contacts_person"."first_name", "contacts_person"."middle_name",
-    "contacts_person"."last_name", "contacts_person"."gender",
-    "contacts_person"."birth_date", "users_user"."person_ptr_id",
-    "users_user"."modified", "users_user"."created",
-    "users_user"."password", "users_user"."last_login",
-    "users_user"."timezone", "users_user"."username",
-    "users_user"."user_type", "users_user"."initials",
-    "users_user"."callme_mode", "users_user"."verification_code",
-    "users_user"."user_state", "users_user"."access_class",
-    "users_user"."event_type_id",
-    "users_user"."open_session_on_new_ticket",
-    "users_user"."notify_myself", "users_user"."mail_mode",
-    "users_user"."github_username" FROM "users_user" INNER JOIN
-    "contacts_person" ON ("users_user"."person_ptr_id" =
-    "contacts_person"."partner_ptr_id") INNER JOIN "contacts_partner" ON
-    ("contacts_person"."partner_ptr_id" = "contacts_partner"."id") WHERE
-    "users_user"."person_ptr_id" = '100'
-SELECT "tickets_ticket"."id", "tickets_ticket"."modified",
-    "tickets_ticket"."created", "tickets_ticket"."ref",
-    "tickets_ticket"."user_id", "tickets_ticket"."assigned_to_id",
-    "tickets_ticket"."private", "tickets_ticket"."priority",
-    "tickets_ticket"."closed", "tickets_ticket"."planned_time",
-    "tickets_ticket"."project_id", "tickets_ticket"."site_id",
-    "tickets_ticket"."topic_id", "tickets_ticket"."summary",
-    "tickets_ticket"."description", "tickets_ticket"."upgrade_notes",
-    "tickets_ticket"."ticket_type_id", "tickets_ticket"."duplicate_of_id",
-    "tickets_ticket"."end_user_id", "tickets_ticket"."state",
-    "tickets_ticket"."deadline", "tickets_ticket"."reported_for_id",
-    "tickets_ticket"."fixed_for_id", "tickets_ticket"."reporter_id",
-    "tickets_ticket"."waiting_for", "tickets_ticket"."feedback",
-    "tickets_ticket"."standby" FROM "tickets_ticket" ORDER BY
-    "tickets_ticket"."id" DESC LIMIT 1
+>>> show_sql_queries()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '...' AND "django_session"."expire_date" > '...')
+SELECT "contacts_partner"."id", "contacts_partner"."email", "contacts_partner"."language", "contacts_partner"."url", "contacts_partner"."phone", "contacts_partner"."gsm", "contacts_partner"."fax", "contacts_partner"."country_id", "contacts_partner"."city_id", "contacts_partner"."zip_code", "contacts_partner"."region_id", "contacts_partner"."addr1", "contacts_partner"."street_prefix", "contacts_partner"."street", "contacts_partner"."street_no", "contacts_partner"."street_box", "contacts_partner"."addr2", "contacts_partner"."prefix", "contacts_partner"."name", "contacts_partner"."remarks", "contacts_person"."partner_ptr_id", "contacts_person"."title", "contacts_person"."first_name", "contacts_person"."middle_name", "contacts_person"."last_name", "contacts_person"."gender", "contacts_person"."birth_date", "users_user"."person_ptr_id", "users_user"."modified", "users_user"."created", "users_user"."password", "users_user"."last_login", "users_user"."timezone", "users_user"."username", "users_user"."user_type", "users_user"."initials", "users_user"."callme_mode", "users_user"."verification_code", "users_user"."user_state", "users_user"."access_class", "users_user"."event_type_id", "users_user"."open_session_on_new_ticket", "users_user"."notify_myself", "users_user"."mail_mode", "users_user"."github_username" FROM "users_user" INNER JOIN "contacts_person" ON ("users_user"."person_ptr_id" = "contacts_person"."partner_ptr_id") INNER JOIN "contacts_partner" ON ("contacts_person"."partner_ptr_id" = "contacts_partner"."id") WHERE "users_user"."person_ptr_id" = '100'
+SELECT "tickets_ticket"."id", "tickets_ticket"."modified", "tickets_ticket"."created", "tickets_ticket"."ref", "tickets_ticket"."user_id", "tickets_ticket"."assigned_to_id", "tickets_ticket"."private", "tickets_ticket"."priority", "tickets_ticket"."closed", "tickets_ticket"."planned_time", "tickets_ticket"."project_id", "tickets_ticket"."site_id", "tickets_ticket"."topic_id", "tickets_ticket"."summary", "tickets_ticket"."description", "tickets_ticket"."upgrade_notes", "tickets_ticket"."ticket_type_id", "tickets_ticket"."duplicate_of_id", "tickets_ticket"."end_user_id", "tickets_ticket"."state", "tickets_ticket"."deadline", "tickets_ticket"."reported_for_id", "tickets_ticket"."fixed_for_id", "tickets_ticket"."reporter_id", "tickets_ticket"."waiting_for", "tickets_ticket"."feedback", "tickets_ticket"."standby" FROM "tickets_ticket" ORDER BY "tickets_ticket"."id" DESC LIMIT 1
 SELECT "contacts_partner"."id", "contacts_partner"."email",
     "contacts_partner"."language", "contacts_partner"."url",
     "contacts_partner"."phone", "contacts_partner"."gsm",
@@ -263,36 +220,46 @@ SELECT "contacts_partner"."id", "contacts_partner"."email",
     "contacts_partner"."name", "contacts_partner"."remarks" FROM
     "contacts_partner" WHERE "contacts_partner"."id" = 100
 SELECT COUNT(*) AS "__count" FROM "tickets_ticket"
-SELECT "contacts_partner"."id", "contacts_partner"."email",
-    "contacts_partner"."language", "contacts_partner"."url",
-    "contacts_partner"."phone", "contacts_partner"."gsm",
-    "contacts_partner"."fax", "contacts_partner"."country_id",
-    "contacts_partner"."city_id", "contacts_partner"."zip_code",
-    "contacts_partner"."region_id", "contacts_partner"."addr1",
-    "contacts_partner"."street_prefix", "contacts_partner"."street",
-    "contacts_partner"."street_no", "contacts_partner"."street_box",
-    "contacts_partner"."addr2", "contacts_partner"."prefix",
-    "contacts_partner"."name", "contacts_partner"."remarks",
-    "contacts_person"."partner_ptr_id", "contacts_person"."title",
-    "contacts_person"."first_name", "contacts_person"."middle_name",
-    "contacts_person"."last_name", "contacts_person"."gender",
-    "contacts_person"."birth_date", "users_user"."person_ptr_id",
-    "users_user"."modified", "users_user"."created",
-    "users_user"."password", "users_user"."last_login",
-    "users_user"."timezone", "users_user"."username",
-    "users_user"."user_type", "users_user"."initials",
-    "users_user"."callme_mode", "users_user"."verification_code",
-    "users_user"."user_state", "users_user"."access_class",
-    "users_user"."event_type_id",
-    "users_user"."open_session_on_new_ticket",
-    "users_user"."notify_myself", "users_user"."mail_mode",
-    "users_user"."github_username" FROM "users_user" INNER JOIN
-    "contacts_person" ON ("users_user"."person_ptr_id" =
-    "contacts_person"."partner_ptr_id") INNER JOIN "contacts_partner" ON
-    ("contacts_person"."partner_ptr_id" = "contacts_partner"."id") WHERE
-    "users_user"."username" = 'robin'
+SELECT "contacts_partner"."id", "contacts_partner"."email", "contacts_partner"."language", "contacts_partner"."url", "contacts_partner"."phone", "contacts_partner"."gsm", "contacts_partner"."fax", "contacts_partner"."country_id", "contacts_partner"."city_id", "contacts_partner"."zip_code", "contacts_partner"."region_id", "contacts_partner"."addr1", "contacts_partner"."street_prefix", "contacts_partner"."street", "contacts_partner"."street_no", "contacts_partner"."street_box", "contacts_partner"."addr2", "contacts_partner"."prefix", "contacts_partner"."name", "contacts_partner"."remarks", "contacts_person"."partner_ptr_id", "contacts_person"."title", "contacts_person"."first_name", "contacts_person"."middle_name", "contacts_person"."last_name", "contacts_person"."gender", "contacts_person"."birth_date", "users_user"."person_ptr_id", "users_user"."modified", "users_user"."created", "users_user"."password", "users_user"."last_login", "users_user"."timezone", "users_user"."username", "users_user"."user_type", "users_user"."initials", "users_user"."callme_mode", "users_user"."verification_code", "users_user"."user_state", "users_user"."access_class", "users_user"."event_type_id", "users_user"."open_session_on_new_ticket", "users_user"."notify_myself", "users_user"."mail_mode", "users_user"."github_username" FROM "users_user" INNER JOIN "contacts_person" ON ("users_user"."person_ptr_id" = "contacts_person"."partner_ptr_id") INNER JOIN "contacts_partner" ON ("contacts_person"."partner_ptr_id" = "contacts_partner"."id") WHERE "users_user"."username" = 'robin'
 
 
+To verify whether the slave summary panels are being computed:
 
 >>> for f in rt.models.tickets.AllTickets.wildcard_data_elems():
 ...     print(f)
+tickets.Ticket.id
+tickets.Ticket.modified
+tickets.Ticket.created
+tickets.Ticket.ref
+tickets.Ticket.user
+tickets.Ticket.assigned_to
+tickets.Ticket.private
+tickets.Ticket.priority
+tickets.Ticket.closed
+tickets.Ticket.planned_time
+tickets.Ticket.project
+tickets.Ticket.site
+tickets.Ticket.topic
+tickets.Ticket.summary
+tickets.Ticket.description
+tickets.Ticket.upgrade_notes
+tickets.Ticket.ticket_type
+tickets.Ticket.duplicate_of
+tickets.Ticket.end_user
+tickets.Ticket.state
+tickets.Ticket.deadline
+tickets.Ticket.reported_for
+tickets.Ticket.fixed_for
+tickets.Ticket.reporter
+tickets.Ticket.waiting_for
+tickets.Ticket.feedback
+tickets.Ticket.standby
+lino.core.model.Model.mobile_item
+lino.core.model.Model.overview
+lino.core.model.Model.workflow_buttons
+lino.mixins.Created.created_natural
+lino_xl.lib.faculties.mixins.Feasible.needed_skills
+lino_xl.lib.faculties.mixins.Feasible.suppliers
+
+    
+
