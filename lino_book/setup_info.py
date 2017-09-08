@@ -19,6 +19,7 @@ SETUP_INFO = dict(
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
+        'icalendar',
         'lino_cosi',
         'lino_noi',
         # 'lino_voga',
@@ -27,7 +28,7 @@ SETUP_INFO = dict(
         'lino_vilma',
         'lino_avanti',
         'lino_tera',
-        'commondata', 'commondata.ee', 'commondata.be'],
+        'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
     # tests_require=['pytest'],
