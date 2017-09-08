@@ -46,6 +46,14 @@ Django must do in order to return a single row. And keep in mind that
 every row causes a similar set of SQL queries.
 
 >>> r = demo_get('robin','api/tickets/AllTickets', fmt='json', limit=1)
+
+>> res = test_client.get('/api/tickets/AllTickets?fmt=json&limit=1')
+>> res = check_json_result(res)
+>> rmu(res.keys())
+['count', 'rows', 'no_data_text', 'success', 'title', 'param_values']
+>> len(res['rows'])
+1
+
 >>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 SELECT "django_session"."session_key",
     "django_session"."session_data", "django_session"."expire_date" FROM
