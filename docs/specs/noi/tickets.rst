@@ -6,7 +6,7 @@ Ticket management in Lino Noi
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_tickets
+    $ doctest docs/specs/noi/tickets.rst
     
     doctest init:
     >>> import lino
