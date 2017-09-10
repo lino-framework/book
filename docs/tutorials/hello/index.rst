@@ -40,14 +40,14 @@ directly from within the code repository.
 
 Now we will create our first project directory of our own.
 
-
 As a first step, create an empty directory::
 
     $ mkdir ~/projects
 
 This is your **projects root**, which will hold all your Lino projects
 on your computer.  Lino project directories are not very big, and you
-will hopefully create many such projects.
+will hopefully create many such projects and want to keep a backup of
+them.
 
 You can choose another name, just keep in mind that our examples are
 based on this choice.
@@ -98,7 +98,7 @@ Explanations:
     :setting:`LOGGING`) into your global namespace.
 
 You might add ``DEBUG = True`` or other settings of your choice
-*after* these two lines, but it is not necessary.
+*after* these two lines, but it is not necessary here.
 
 More about this in :doc:`/dev/settings`.
     
@@ -186,10 +186,53 @@ Loading data from ...
 Installed ... object(s) from ... fixture(s)
 
 
-There's a lot to say about what we just did.  Lino applications use to
-make abundant use of so-called *Python fixtures* in order to have a
-rich set of "demo data".  We will come back to this in the next
-chapter, :doc:`/dev/initdb`.
+Lino applications use to make abundant use of what we call *Python
+fixtures* in order to have a rich set of "demo data".  We will come
+back to this in :doc:`/dev/initdb`.
+
+
+
+Start the web server
+====================
+
+Now you can start the development server::
+
+  $ python manage.py runserver
+  
+which should output something like::  
+  
+  Validating models...
+  0 errors found
+  Django version 1.4.5, using settings 'hello.settings'
+  Development server is running at http://127.0.0.1:8000/
+  Quit the server with CTRL-BREAK.
+
+And then point your web browser to http://127.0.0.1:8000 and you
+should see something like this:
+
+.. image:: hello1.png
+           
+Congratulations! Enjoy the first Lino application running on your
+machine!
+
+Exercises
+=========
+
+- Log in and play around.
+- Note that this site offers three languages.
+- Note the main welcome screen (dashboard) and the main menu.
+- Create some persons and organizations. But don't waste much time
+  here with entering lots of accurate data because we are going to
+  throw it away soon.
+
+At this point **please arrange a voice session with your mentor**
+because there is a lot of undocumented things to show here.
+
+- the :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
+  attribute
+
+- try :mod:`lino_book.projects.chatter`
+  
 
 
 Visualizing database content from the command-line
@@ -229,26 +272,3 @@ Or you can see the list of countries:
 ============================= ==========
 
 
-
-Start the web server
-====================
-
-Now you can start the development server::
-
-  $ python manage.py runserver
-  
-which should output something like::  
-  
-  Validating models...
-  0 errors found
-  Django version 1.4.5, using settings 'hello.settings'
-  Development server is running at http://127.0.0.1:8000/
-  Quit the server with CTRL-BREAK.
-
-And then point your web browser to http://127.0.0.1:8000 and you
-should see some welcome text and instructions for logging in.
-
-Congratulations! Enjoy the first Lino application running on your
-machine!
-
-Next suggested chapter: :doc:`/tutorials/dumpy/index`.
