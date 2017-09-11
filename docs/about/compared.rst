@@ -11,22 +11,13 @@ what's different.
 Odoo / Tryton
 =============
 
-Let's compare Lino to `Tryton <http://www.tryton.org/>`__ and `Odoo
+Lino can be compared to `Tryton <http://www.tryton.org/>`__ and `Odoo
 <https://en.wikipedia.org/wiki/Odoo>`__ (formerly known as OpenERP).
 
 First of all, Odoo is rather a highly configurable and modularized ERP
 *application* while Lino is a *framework* for creating such
 applications.  Which means that the business target for the two
 frameworks are not the same.
-
-About the user interface: In Tryton you run a server process (`trytond
-<http://tryton.readthedocs.org/projects/trytond>`_) under any WSGI
-compatible server, and users access it via the Tryton client (a GUI
-application which requires `GTK+
-<https://en.wikipedia.org/wiki/GTK%2B>`_).  Odoo replaces that GUI
-client by a web application.  There is `Flask-Tryton
-<https://pypi.python.org/pypi/flask_tryton>`_ which adds a web
-interface to Tryton (reducing the need to install the GUI client).
 
 Several technical differences could be mentioned:
 
