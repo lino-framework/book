@@ -182,7 +182,10 @@ The following failed with :message:`ValueError: Cannot convert
 1973-07-21 to Excel` until 20161014:
     
 >>> url = "/api/contacts/Persons?an=export_excel"
->>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=101&cw=101&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185&cw=185&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ci=name_column&ci=address_column&ci=email&ci=phone&ci=gsm&ci=id&ci=language&ci=modified&ci=created&ci=url&ci=fax&ci=country&ci=city&ci=zip_code&ci=region&ci=addr1&ci=street_prefix&ci=street&ci=street_no&ci=street_box&ci=addr2&ci=name&ci=remarks&ci=title&ci=first_name&ci=middle_name&ci=last_name&ci=gender&ci=birth_date&ci=workflow_buttons&ci=age&ci=overview&ci=mti_navigator&ci=created_natural&name=0&pv=&pv=&pv="
+>>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=101&cw=101&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185&cw=185"
+>>> url += "&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true"
+>>> url += "&ci=name_column&ci=address_column&ci=email&ci=phone&ci=gsm&ci=id&ci=language&ci=modified&ci=created&ci=url&ci=fax&ci=country&ci=city&ci=zip_code&ci=region&ci=addr1&ci=street_prefix&ci=street&ci=street_no&ci=street_box&ci=addr2&ci=name&ci=remarks&ci=title&ci=first_name&ci=middle_name&ci=last_name&ci=gender&ci=birth_date&ci=workflow_buttons&ci=age&ci=overview&ci=mti_navigator&ci=created_natural"
+>>> url += "&name=0&pv=&pv=&pv=&pv=&pv=&pv="
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
 

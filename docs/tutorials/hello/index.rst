@@ -218,20 +218,30 @@ machine!
 Exercises
 =========
 
-- Log in and play around.
-- Note that this site offers three languages.
-- Note the main welcome screen (dashboard) and the main menu.
-- Create some persons and organizations. But don't waste much time
-  here with entering lots of accurate data because we are going to
-  throw it away soon.
+**When you arrived here, you should probably have a voice session with
+your mentor** because there is a lot of undocumented things to know
+here.
 
-At this point **please arrange a voice session with your mentor**
-because there is a lot of undocumented things to show here.
+#.  Log in and play around.
+#.  Note that this site offers three languages.
+#.  Note the main welcome screen (dashboard) and the main menu.
+    
+#.  Create some persons and organizations. But don't waste much time
+    here with entering lots of accurate data because we are going to
+    throw it away soon.
+    
+#.  In your :file:`settings.py` file, replace
+    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
+    Run :command:`python manage.py prep`
+  
+#.  Same as previous, but with :mod:`lino_book.projects.chatter`
 
-- the :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
-  attribute
+#.  Read the documentation about the following Site attributes and
+    demonstrate their usage:
 
-- try :mod:`lino_book.projects.chatter`
+    - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
+    - :attr:`languages <lino.core.site.Site.languages>`
+
   
 
 

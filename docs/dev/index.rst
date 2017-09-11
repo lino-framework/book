@@ -81,6 +81,7 @@ between Lino and other frameworks.
 .. toctree::
    :hidden:
               
+   /about/faq
    /about/ui
    /about/lino_and_django
    /about/features
@@ -88,7 +89,8 @@ between Lino and other frameworks.
    /about/think_python
    ui
     
-20.  :doc:`/about/ui`
+20. :doc:`/about/faq`
+#.  :doc:`/about/ui`
 #.  :doc:`/about/features`
 #.  :doc:`/about/lino_and_django`
 #.  :doc:`/about/not_easy`
@@ -103,12 +105,12 @@ Working with others
 ===================
 
 30. :doc:`pull`
-#. :doc:`runtests`
-#. :doc:`contrib`
-#. :doc:`patch`
-#. :doc:`request_pull`
-#. :doc:`ci`
-#. :doc:`versioning`
+#.  :doc:`runtests`
+#.  :doc:`contrib`
+#.  :doc:`patch`
+#.  :doc:`request_pull`
+#.  :doc:`ci`
+#.  :doc:`versioning`
 
 
 .. toctree::

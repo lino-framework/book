@@ -40,19 +40,6 @@ Lino Voga
   print(SETUP_INFO['long_description'])
 
 
-.. _extjs6:
-
-ExtJS 6
-------------
-
-.. py2rst::
-
-  from lino_extjs6 import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-  
-
-
 
 Experimental applications
 =========================
@@ -124,3 +111,14 @@ The Lino book contains a collection of example applications used by
 the test suite and for learning. See :mod:`lino_book.projects`.
 
 
+.. _extjs6:
+
+ExtJS 6
+=======
+
+.. py2rst::
+
+  from lino_extjs6 import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+  

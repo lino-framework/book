@@ -23,7 +23,6 @@ programming language, but also contains Javascript code.
 .. toctree::
    :maxdepth: 1
 
-   faq
    compared
    why_extjs
 

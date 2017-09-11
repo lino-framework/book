@@ -7,7 +7,7 @@ Using action requests
 
 .. To run only this test:
 
-   $ python setup.py test -s tests.DocsTests.test_ar
+   $ doctest docs/dev/ar.rst
 
    >>> from lino import startup
    >>> startup('lino_book.projects.min1.settings.demo')
@@ -178,6 +178,7 @@ Programmatically doing requests
 ===============================
 
 >>> u = rt.models.users.User.objects.get(username="robin")
->>> r = rt.actors.contacts.Persons.request(user=u, renderer=dd.plugins.extjs.renderer)
+>>> r = rt.models.contacts.Persons.request(
+...     user=u, renderer=dd.plugins.extjs.renderer)
 >>> print(r.renderer.request_handler(r))
-Lino.contacts.Persons.grid.run(null,{ "base_params": {  }, "param_values": { "end_date": null, "observed_event": null, "start_date": null } })
+Lino.contacts.Persons.grid.run(null,{ "base_params": {  }, "param_values": { "aged_from": null, "aged_to": null, "end_date": null, "gender": null, "genderHidden": null, "observed_event": null, "start_date": null } })
