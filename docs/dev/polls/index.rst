@@ -3,6 +3,9 @@
 The Lino Polls tutorial
 =======================
 
+
+..  doctest docs/dev/polls/index.rst
+
 .. doctest init:
     >>> import os
     >>> os.chdir('lino_book/projects/polls')
@@ -357,7 +360,7 @@ is easy and fun because you can write fixtures in Python.
     
     >>> # test_client.get("123")
     >>> walk_menu_items()
-    - Polls --> Questions : 3
+    - Polls --> Questions : 4
     - Polls --> Choices : 11
     <BLANKLINE>
 
