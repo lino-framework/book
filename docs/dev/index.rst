@@ -7,6 +7,7 @@ Developer's Guide
 This is the central meeting place for :doc:`Lino developers
 </community/developers>`.
 
+
 .. _lino.dev.start:
 
 Getting started
