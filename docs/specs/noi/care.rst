@@ -22,15 +22,9 @@ Lino Care, a social ticketing system
 Overview
 ========
 
-**Lino Care** is a variant of :ref:`noi` specialized for organizations
-who help people caring for each other.  These might be old people,
-orphans, immigrants, disabled, addicts, or just "normal" people
-without any handicap.
-
-While :ref:`noi` was originally used as a ticketing system for the
-:ref:`Lino team <lino.team>` and other open source software teams, we
-realized that we can use almost the same concepts for managing "social
-tickets".  A different context, but a similar database structure.
+**Lino Care** is for organizations who help people caring for each
+other.  These might be old people, orphans, immigrants, disabled,
+addicts, or just "normal" people without any handicap.
 
 
 Design choices

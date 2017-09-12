@@ -2,13 +2,21 @@
 The local configuration directory
 =================================
 
-
 The **local configuration directory** is a directory on your Lino
 server which contains template files used by Lino when printing
 invoices, contracts or any document.
 
 At least one user of the site should be the **local template manager**
 who is responsible for managing these files.
+
+.. xfile:: config
+
+The local configuration directory is always named :xfile:`config` and
+is always a subdirectory of the :attr:`cache_dir
+<lino.core.site.Site.cache_dir>`. Lino does not create this directory
+automatically. If you want to use local templates, the system
+administrator must create that directory and make sure that the Lino
+web server process has write permission to it.
 
 Creating a desktop link to the local configuration directory
 ============================================================
@@ -60,6 +68,6 @@ Here is a typical workflow for a local template optimization.
 Implementation details
 ======================
 
-- :attr:`lino.core.site.Site.project_dir`
+- :attr:`lino.core.site.Site.cache_dir`
 - :mod:`lino.utils.config`
 

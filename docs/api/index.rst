@@ -52,10 +52,20 @@ The Lino Book
 .. automodule:: lino_book
 
 
+.. _lino.apps:
+
+Maintained Lino applications
+============================
+
+The following Lino applications are maintained by the Lino team and
+form an integral part of the project. Besides being independant
+applications, they also serve for testing purposes.
+
+
 .. _noi:
 
 Lino Noi
-========
+--------
 
 .. py2rst::
 
@@ -69,7 +79,7 @@ Lino Noi
 .. _cosi:
 
 Lino Così
-=========
+---------
 
 .. py2rst::
 
@@ -83,7 +93,7 @@ Lino Così
 .. _avanti:
 
 Lino Avanti
-===========
+-----------
 
 .. py2rst::
 
@@ -98,7 +108,7 @@ Lino Avanti
 .. _vilma:
 
 Lino Vilma
-===========
+----------
 
 .. py2rst::
 
@@ -113,7 +123,7 @@ Lino Vilma
 .. _care:
 
 Lino Care
-===========
+---------
 
 .. py2rst::
 
@@ -128,7 +138,7 @@ Lino Care
 .. _tera:
 
 Lino Tera
-===========
+---------
 
 .. py2rst::
 
@@ -138,6 +148,30 @@ Lino Tera
 
 .. automodule:: lino_tera
                 
+
+.. _faggio:
+.. _voga:
+
+Lino Voga
+------------
+
+.. py2rst::
+
+  from lino_voga import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+
+.. _welfare:
+
+Lino Welfare
+------------
+
+.. py2rst::
+
+  from lino_welfare import SETUP_INFO
+  print(SETUP_INFO['long_description'])
+
+
 
 
                 
