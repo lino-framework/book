@@ -15,7 +15,7 @@ This document gives an overview on existing Lino application.
 Maintained Lino applications
 ==============================
 
-:ref:`lino.apps`
+See :ref:`lino.apps`
 
 
 Experimental Lino applications
@@ -93,9 +93,4 @@ the test suite and for learning. See :mod:`lino_book.projects`.
 ExtJS 6
 =======
 
-.. py2rst::
-
-  from lino_extjs6 import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-  
+See https://github.com/lino-framework/extjs6
