@@ -1,3 +1,4 @@
+.. _specs.clocking:
 .. _noi.specs.clocking:
 
 ==================
@@ -6,7 +7,7 @@ Work time tracking
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_clocking
+    $ doctest docs/specs/noi/clocking.rst
     
     doctest init:
 
@@ -15,8 +16,14 @@ Work time tracking
     >>> from lino.api.doctest import *
 
 
+   
+    
 Lino Noi uses both :mod:`lino_xl.lib.tickets` (Ticket management) and
 :mod:`lino_xl.lib.clocking` (Development time tracking).
+
+
+.. currentmodule:: lino_xl.lib.clocking
+     
 
 Note that the demo data is on fictive demo date **May 23, 2015**:
 
@@ -27,7 +34,7 @@ datetime.date(2015, 5, 23)
 Sessions
 ========
 
-A :class:`Session <lino_xl.lib.clocking.models.Session>` is when a
+A :class:`Session <Session>` is when a
 user works on a ticket for a given lapse of time.
 
 When end_time is empty, it means that he is still working.
@@ -142,8 +149,7 @@ started some days ago.
 Service Report
 ==============
 
-A service report (:class:`clocking.ServiceReport
-<lino_xl.lib.clocking.ui.ServiceReport>`) is a document which reports
+A service report (:class:`ServiceReport`) is a document which reports
 about the hours invested during a given date range.  It can be
 addressed to a recipient (a user) and in that case will consider only
 the tickets for which this user has specified interest.
@@ -192,8 +198,7 @@ Note that there are sessions without a duration. That's because
 <BLANKLINE>
 
 
-The :class:`ProjectsByReport
-<lino_xl.lib.clocking.ui.ProjectsByReport>` table lists
+The :class:`ProjectsByReport` table lists
 all projects and the time invested.
 
 >>> rt.show(clocking.ProjectsByReport, obj)
@@ -237,3 +242,168 @@ defines a default reporting type:
 <ReportingTypes.regular:10>
 
 
+Reference
+=========
+
+.. class:: Plugin
+.. class:: SessionType
+           
+    The type of a :class:`Session`.
+    
+.. class:: Session
+
+    A **Session** is when a user works during a given lapse of time on
+    a given Ticket.
+
+    Extreme case of a session:
+
+    - I start to work on an existing ticket #1 at 9:23.  A customer phones
+      at 10:17 with a question. I create #2.  That call is interrupted
+      several times by the customer himself.  During the first
+      interruption another customer calls, with another problem (ticket
+      #3) which we solve together within 5 minutes.  During the second
+      interruption of #2 (which lasts 7 minutes) I make a coffee break.
+
+      During the third interruption I continue to analyze the
+      customer's problem.  When ticket #2 is solved, I decided that
+      it's not worth to keep track of each interruption and that the
+      overall session time for this ticket can be estimated to 0:40.
+
+      ::
+
+        Ticket start end    Pause  Duration
+        #1      9:23 13:12  0:45
+        #2     10:17 11:12  0:12       0:43
+        #3     10:23 10:28             0:05
+
+
+    .. attribute:: start_date
+
+        The date when you started to work.
+
+    .. attribute:: start_time
+
+        The time (in `hh:mm`) when you started working on this
+        session.
+
+        This is your local time according to the time zone specified
+        in your preferences.
+
+    .. attribute:: end_date
+
+        Leave this field blank if it is the same date as start_date.
+
+    .. attribute:: end_time
+
+        The time (in `hh:mm`) when you stopped to work. This is empty
+        as long as you are busy with this session.
+
+    .. attribute:: break_time
+    
+       The time (in `hh:mm`) to remove from the duration resulting
+       from the difference between :attr:`start_time` and
+       :attr:`end_time`.
+
+    .. attribute:: faculty
+
+       The faculty that has been used during this session. On a new
+       session this defaults to the needed faculty currently specified
+       on the ticket.
+
+
+.. class:: Sessions
+           
+.. class:: SessionsByTicket
+           
+    The "Sessions" panel in the detail of a ticket.
+
+    .. attribute:: slave_summary
+
+        This panel shows:
+
+.. class:: MySessions
+           
+.. class:: MySessionsByDate
+
+           
+.. class:: StartTicketSession
+           
+    Start a session on this ticket.
+
+.. class:: EndTicketSession
+           
+    Close this session, i.e. stop working it for now.
+
+    Common base for :class:`EndThisSession` and
+    :class:`EndTicketSession`.
+
+    
+.. class:: EndTicketSession
+           
+    End your running session on this ticket. 
+    
+.. class:: EndThisSession
+           
+    Close this session, i.e. stop working on that ticket now.
+
+           
+
+.. class:: Workable
+           
+    Base class for things that workers can work on. 
+
+    The model specified in :attr:`ticket_model <Plugin.ticket_model>`
+    must be a subclass of this.
+    
+    For example, in :ref:`noi` tickets are workable.
+
+    .. method:: is_workable_for
+                
+        Return True if the given user can start a working session on this
+        object.
+
+                
+    .. method:: on_worked
+                
+        This is automatically called when a work session has been created
+        or modified.
+
+                
+    .. method:: start_session
+
+        See :class:`StartTicketSession`.
+        
+    .. method:: end_session
+
+        See :class:`EndTicketSession`.
+        
+           
+.. class:: ServiceReport
+.. class:: ProjectsByReport
+           
+.. class:: ShowMySessionsByDay
+           
+    Show all sessions on the same day.
+    
+
+
+.. class:: TicketHasSessions
+
+    Select only tickets for which there has been at least one session
+    during the given period.
+
+    This is added as item to :class:`lino_xl.lib.tickets.TicketEvents`.
+
+           
+.. class:: ProjectHasSessions
+           
+    Select only projects for which there has been at least one session
+    during the given period.
+
+    This is added as item to :class:`lino_xl.lib.tickets.ProjectEvents`.
+    
+.. class:: Worker
+
+    A user who is candidate for working on a ticket.
+
+           
