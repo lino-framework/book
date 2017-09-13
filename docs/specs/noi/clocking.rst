@@ -15,14 +15,18 @@ Work time tracking
     >>> startup('lino_book.projects.team.settings.doctests')
     >>> from lino.api.doctest import *
 
-
-   
-    
-Lino Noi uses both :mod:`lino_xl.lib.tickets` (Ticket management) and
-:mod:`lino_xl.lib.clocking` (Development time tracking).
-
-
 .. currentmodule:: lino_xl.lib.clocking
+     
+The :mod:`lino_xl.lib.clocking` adds functionality for managing work
+sessions.  A **work session** is when a user works on a "ticket" for a
+given lapse of time.
+
+What a ticket exactly is, is defined by :attr:`ticket_model
+<Plugin.ticket_model>`. Theoretically it
+can be any model which implements :class:`Workable`.
+In :ref:`noi` this points to
+:class:`tickets.Ticket <lino_xl.lib.tickets.Ticket>`. 
+:mod:`lino_noi.lib.clocking` extends the library plugin.
      
 
 Note that the demo data is on fictive demo date **May 23, 2015**:
@@ -34,10 +38,6 @@ datetime.date(2015, 5, 23)
 Sessions
 ========
 
-A :class:`Session <Session>` is when a
-user works on a ticket for a given lapse of time.
-
-When end_time is empty, it means that he is still working.
 
 >>> rt.show(clocking.Sessions, limit=15)
 ... #doctest: -REPORT_UDIFF
@@ -161,8 +161,7 @@ It currently contains two tables:
 - a list of projects, with invested time and list of the tickets that
   are assigned to this project.
 
-This report is useful for developers like me because it serves as a
-base for writing invoices.
+This report can serve as a base for writing invoices.
 
 
 >>> obj = clocking.ServiceReport.objects.get(pk=1)
@@ -295,8 +294,13 @@ Reference
 
     .. attribute:: end_time
 
-        The time (in `hh:mm`) when you stopped to work. This is empty
-        as long as you are busy with this session.
+        The time (in `hh:mm`) when the worker stopped to work.
+        
+        An empty :attr:`end_time` means that the user is still busy
+        with that session, the session is not yet closed.
+
+        :meth:`end_session` sets this to the current time.
+
 
     .. attribute:: break_time
     
@@ -379,6 +383,28 @@ Reference
         
            
 .. class:: ServiceReport
+
+    A **service report** is a document used in various discussions with
+    a stakeholder.
+
+    Defined in :mod:`lino_noi.lib.clocking`.
+
+    .. attribute:: user
+
+        This can be empty and will then show the working time of all
+        users.
+
+
+    .. attribute:: start_date
+    .. attribute:: end_date
+    .. attribute:: interesting_for
+    .. attribute:: ticket_state
+
+    .. attribute:: printed
+        See :attr:`lino.modlib.exerpts.mixins.Certifiable.printed`
+
+           
+           
 .. class:: ProjectsByReport
            
 .. class:: ShowMySessionsByDay
