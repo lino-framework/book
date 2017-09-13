@@ -17,12 +17,13 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.utils import translation
+from django.core.exceptions import ValidationError
 
 from lino.utils.djangotest import RemoteAuthTestCase
 
 from lino.api import dd, rt
 
-from lino.utils.instantiator import create_and_get
+from lino.utils.instantiator import create_and_get, create_row
 
 from lino_xl.lib.contacts import models as contacts
 from lino.modlib.users.choicelists import UserTypes
@@ -274,7 +275,7 @@ Estonia''')
         # fails: self.assertEqual(john.pk,12345)
 
     def test02(self):
-        # This case demonstratest that ordering does not ignore case, at
+        # This case demonstrates that ordering does not ignore case, at
         # least in sqlite. we would prefer to have `['adams', 'Zybulka']`,
         # but we get `['Zybulka', 'adams']`.
 
@@ -286,3 +287,12 @@ Estonia''')
         expected = ['Zybulka', 'adams']
         self.assertEqual(l, expected)
 
+    def test03(self):
+        User = rt.models.users.User
+        foo = User(last_name="Foo")
+        try:
+            foo.full_clean()
+            self.fail("Expected ValidationError")
+        except ValidationError:
+            pass
+        
