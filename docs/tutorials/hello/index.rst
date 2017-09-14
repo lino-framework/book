@@ -78,9 +78,8 @@ Your first :xfile:`settings.py` file should look as follows:
 
 Explanations:
 
-#.  :mod:`lino_book.projects.min1` is one of the simple 
-    :ref:`out-of-the-box projects
-    <lino.projects>` included with Lino.
+#.  :mod:`lino_book.projects.min1` is one of the out-of-the-box
+    projects included in the Lino Book.
 
     We import these settings directly into our global namespace using
     the wildcard ``*``. This is necessary because that's how Django
@@ -218,31 +217,36 @@ machine!
 Exercises
 =========
 
-**When you arrived here, you should probably have a voice session with
-your mentor** because there is a lot of undocumented things to know
-here.
-
 #.  Log in and play around.
 #.  Note that this site offers three languages.
 #.  Note the main welcome screen (dashboard) and the main menu.
     
-#.  Create some persons and organizations. But don't waste much time
-    here with entering lots of accurate data because we are going to
-    throw it away soon.
-    
+#.  Create some persons and organizations. Don't enter lots of
+    accurate data because we are going to throw it away in the
+    next step.
+
 #.  In your :file:`settings.py` file, replace
     :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
-    Run :command:`python manage.py prep`
+    Run :command:`python manage.py prep` followed by :command:`python
+    manage.py runserver`. Log in and play around.
   
 #.  Same as previous, but with :mod:`lino_book.projects.chatter`
 
+#.  Write three descriptions in LibreOffice `.odt` format, one for
+    each of the applications you just saw: what it can do, what are
+    the features, what functionalities are missing. Use
+    screenshots. Use a language which can be understood by
+    non-programmers.  Send these documents to your mentor.
+    
 #.  Read the documentation about the following Site attributes and
     demonstrate their usage:
 
     - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
     - :attr:`languages <lino.core.site.Site.languages>`
 
-  
+**When you reached this point, contact your mentor** for a meeting on
+`Hangouts <https://hangouts.google.com/>`_ because there is a lot of
+undocumented things to know.
 
 
 Visualizing database content from the command-line
