@@ -24,7 +24,7 @@ Showing SQL statements
 
 :meth:`lino.core.site.Site.setup_logging` sets the level for the
 `django.db.backends
-<https://docs.djangoproject.com/en/1.10/topics/logging/#django-db-backends>`__
+<https://docs.djangoproject.com/en/1.11/topics/logging/#django-db-backends>`__
 handler to WARNING.
 
 A similar thing happens for the `schedule` handler.

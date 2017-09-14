@@ -62,8 +62,6 @@ To see a list of your atelier projects, type::
 
     $ pp -l
 
-    
-
 The output should be something like::
   
     ========= ========================================== ========= ========================
@@ -83,38 +81,6 @@ The output should be something like::
     ========= ========================================== ========= ========================
 
 
-Manually setting up the Lino SDK
-================================
-
-Remember that in :ref:`lino.dev.install` you did::
-
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/cosi.git
-  $ git clone https://github.com/lino-framework/book.git
-
-
-Now clone also the following other repositories in a similar way::
-  
-  $ cd ~/repositories
-  $ git clone https://github.com/lino-framework/noi.git
-  $ git clone https://github.com/lino-framework/voga.git
-  $ git clone https://github.com/lino-framework/presto.git
-  $ git clone https://github.com/lino-framework/welfare.git
-  $ git clone https://github.com/lino-framework/avanti.git
-  $ git clone https://github.com/lino-framework/extjs6.git
-
-And then you install them using pip (as editable using ``-e``
-option)::
-
-  $ pip install -e noi
-  $ pip install -e voga
-  $ pip install -e presto
-  $ pip install -e welfare
-  $ pip install -e avanti
-  $ pip install -e extjs6
-  
 
 How to switch to the development version of Atelier
 ===================================================

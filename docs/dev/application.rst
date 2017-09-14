@@ -27,7 +27,7 @@ to become understandably confused by Django's usage of the word
 And if you ask me: Django is simply wrong here.  Django says
 "application" where it should say "plugin". Things like
 `django.contrib.contenttypes
-<https://docs.djangoproject.com/en/1.7/ref/contrib/contenttypes/>`_
+<https://docs.djangoproject.com/en/1.11/ref/contrib/contenttypes/>`_
 are not what normal people would call an "application", they are
 rather "plugins" or "modules".
 
