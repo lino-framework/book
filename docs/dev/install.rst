@@ -142,7 +142,15 @@ directory and and do::
     git clone https://github.com/lino-framework/avanti.git; \
     git clone https://github.com/lino-framework/tera.git; \
     git clone https://github.com/lino-framework/book.git
-
+    
+Yes, we have a whole little collection of repositories and
+applications.  As a Lino developer you will sooner or later get in
+touch with these.  You don't need to dive into each of them right now
+(see :doc:`overview` if you are curious), but let's *install* them
+already now so that your environment is complete.  They are part of
+this book because it would be difficult to explain Lino without having
+some serious examples.  They are part of the Lino SDK because we also
+use them for running test suites.
 
 You should now have nine directories called :file:`lino`, :file:`xl`,
 :file:`noi`, ... and :file:`book` in your :file:`~/repositories`
@@ -330,21 +338,31 @@ a development server::
     $ cd lino_book/projects/min1
     $ python manage.py runserver
 
-Now start your browser, point it to http://127.0.0.1:8000/ and play
-around.
+Now start your browser, point it to http://127.0.0.1:8000/ and you
+should see something like this:
 
-Don't stay in :mod:`min1 <lino_book.projects.min1>`, also try the
-other projects below :mod:`lino_book.projects`. None of them is a
-"killer app", they are just little projects used for testing and
-playing.
+.. image:: ../tutorials/hello/hello1.png
 
+Congratulations! Enjoy the first Lino application running on your
+machine!
+
+Exercises
+=========
+
+#.  Log in and play around.
+#.  Note that this site offers three languages.
+#.  Note the main welcome screen (dashboard) and the main menu.
+    
+#.  Create some persons and organizations. Don't enter lots of
+    accurate data because we are going to throw it away in the
+    next step.
+
+#.  Lino lacks a good document that describes how to use Lino
+    applications in general.
 
 
 Where to go from here
 =====================
 
-If you are reading the **Developer's Guide**, we now suggest to
-:doc:`/tutorials/hello/index`.
-
-If you are reading the **Administrator's Guide**, then continue where
-you left in :doc:`/admin/install`.
+We now suggest to create :doc:`your first local Lino project
+</tutorials/hello/index>`.

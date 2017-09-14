@@ -7,9 +7,11 @@ This section introduces our minimalistic project management system.
 What is a project?
 ==================
 
-As a Lino developer you will notice that we use the word **project**
-for quite a lot of things. But they all have one thing in common: each
-project is a directory on your file system.
+You will notice that we use the word **project** for quite a lot of
+things. But for Lino developers they all have one thing in common:
+each project is a directory on your file system.  You "activate" a
+project by opening a terminal and changing to its directory. That's
+all. Almost all. Read on.
 
 There are different types of "projects".  You don't want to have them
 all under a single top-level directory.  You will have different
@@ -27,8 +29,9 @@ naming conventions.
 .. xfile:: ~/projects
 
     :file:`~/projects/` is the base directory for every new project of
-    which you are the author. You created this in
-    :doc:`/tutorials/hello/index`.
+    which you are the author. You created this directory in
+    :doc:`/tutorials/hello/index`, and ``hello`` is your first local
+    project.
 
 .. xfile:: ~/repositories/book/lino_book/projects
 
@@ -38,9 +41,6 @@ naming conventions.
 
 Navigating between projects
 ===========================
-
-You "activate" a project by opening a terminal and changing to its
-directory. That's all. Almost all. Read on.
 
 We suggest that you create a shell function named ``go`` [#f1]_ in
 your :xfile:`~/.bash_aliases` which looks like this::
@@ -75,37 +75,50 @@ Now you should be able to do::
 Configuring atelier
 ===================
 
-We also use a tool called :mod:`atelier`.
+We also use a tool called :mod:`atelier`.  For :mod:`atelier`, a
+project is a directory on your file system which contains at least a
+file :xfile:`tasks.py`.  That :xfile:`tasks.py` file brings a whole
+series of `invoke <http://www.pyinvoke.org/>`_ commands to your
+project. For example :command:`inv prep`, :command:`inv test`,
+:command:`inv bd`, :command:`inv pd` etc.
 
-For :mod:`atelier`, a project is a directory on your file system which
-contains at least a file :xfile:`tasks.py`.  That's the only real
-*must* for being an atelier project. Other parts of an atelier project
-are optional:
+- An atelier project must have a file :xfile:`tasks.py`. Everything
+  else is optional.
+- An atelier project usually corresponds to a public code repository
+  (using Git or Mercurial). But you can have unpublished projects
+  which have no repo at all.
+- An atelier project usually corresponds to a given Python package to
+  be published on PyPI.
+- An atelier project can have a number of Sphinx document trees
+  (default is one tree named :file:`docs`).
 
-- A project usually corresponds to a public code repository (using Git
-  or Mercurial). But you can have unpublished projects which have no
-  repo at all.
-- A project usually corresponds to a given Python package to be
-  published on PyPI.
-- A project can have a number of Sphinx document trees (default is one
-  tree named :file:`docs`).
-
-
-Create a :xfile:`~/.atelier/config.py` file which declares a list of
-all your projects. If you have been following the tutorials so far,
-then the content will be something like::
   
-     add_project("/home/john/projects/mylets")
+You must tell atelier the list of your projects. That's done in your
+:xfile:`~/.atelier/config.py` file. Create the directory and the file,
+with the following content::
+
      add_project("/home/john/projects/hello")
-     for p in ('lino', 'xl', 'cosi', 'book'):
+     names = 'lino xl book noi voga presto welfare avanti vilma tera extjs6'
+     for p in names.split():
          add_project("/home/john/repositories/" + p)
+
+Note our use of a syntactical trick to avoid typing lots of
+apostrophes: we put the names into a single string, separated just by
+spaces. And then we call the :meth:`split` method on that string which
+splits our string on every whitspace:
+
+>>> 'foo bar  baz'.split()
+['foo', 'bar', 'baz']
 
 Letting :ref:`atelier` know where your projects are has the following
 advantages:
 
 - You can run the :cmd:`per_project` script (or its alias :cmd:`pp`)
-  to run a command over each project.
-- You can use :mod:`atelier.sphinxconf.interproject`
+  to run a given command over many projects.
+  
+- You can use :mod:`atelier.sphinxconf.interproject` to create
+  Intersphinx links from one project's docs to the docs of another
+  project.
 
 
 Some more shell aliases
@@ -135,7 +148,30 @@ Here are some useful aliases and functions for your
 Usage examples
 ==============
 
-You can now play with these commands:
+You can now play with these commands.
+
+To see a list of your atelier projects, type::
+
+    $ pp -l
+
+The output should be something like::
+  
+    ========= ========================================== ========= ========================
+     Project   URL                                        Version   doctrees
+    --------- ------------------------------------------ --------- ------------------------
+     atelier   http://atelier.lino-framework.org          1.0.2     docs
+     lino      http://www.lino-framework.org              1.7.6     docs
+     xl        http://www.lino-framework.org              1.7.5     docs
+     noi       http://noi.lino-framework.org              0.0.3     docs
+     cosi      http://cosi.lino-framework.org             0.0.3     docs
+     welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
+     avanti    http://avanti.lino-framework.org/          2017.1.0  docs
+     presto    http://presto.lino-framework.org           0.0.1     docs
+     voga      http://voga.lino-framework.org             0.0.4     docs
+     ext6      http://www.lino-framework.org              0.0.1     docs
+     book      http://www.lino-framework.org              1.7.4     docs
+    ========= ========================================== ========= ========================
+
 
 Change to :file:`~/repositories/lino` and download the latest version
 of Lino::
@@ -148,7 +184,8 @@ Run :cmd:`inv prep` followed by :cmd:`inv test` in :ref:`book`::
   $ go book
   $ inv prep test
     
-It happens that I type the following before leaving my computer::
+It happens that I type the following before leaving my computer for
+getting a cup of coffee::
 
   $ pp -v inv prep test bd pd
 
@@ -159,6 +196,8 @@ Commit all my changes in all my projects before going to bed::
 If that happens after midnight::  
   
   $ pp inv ci --today 20161222
+
+
   
 
     

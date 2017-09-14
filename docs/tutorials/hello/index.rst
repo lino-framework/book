@@ -1,8 +1,8 @@
 .. _lino.tutorial.hello:
 
-===========================
-Create a local Lino project
-===========================
+=============================
+Your first local Lino project
+=============================
 
 .. to test just this doc:
 
@@ -14,9 +14,8 @@ Create a local Lino project
     >>> shell = Sheller('docs/tutorials/hello')
 
 
-In this tutorial we are going to create a local Lino project which
-inherits from one of the simple :ref:`out-of-the-box projects
-<lino.projects>` included with Lino.
+In this tutorial we are going to create a *local* Lino project,
+i.e. something that exists only on your machine.
 
 We suppose that you have installed Lino itself as described in
 :doc:`/dev/install`.
@@ -211,19 +210,15 @@ should see something like this:
 
 .. image:: hello1.png
            
-Congratulations! Enjoy the first Lino application running on your
-machine!
+Congratulations! Enjoy the first Lino application that exists only on
+your machine!
+
 
 Exercises
 =========
 
-#.  Log in and play around.
-#.  Note that this site offers three languages.
-#.  Note the main welcome screen (dashboard) and the main menu.
-    
-#.  Create some persons and organizations. Don't enter lots of
-    accurate data because we are going to throw it away in the
-    next step.
+Yes, it looks the same as the one you saw in the previous chapter. But
+read on. You can now play around by changing things in your project.
 
 #.  In your :file:`settings.py` file, replace
     :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
@@ -251,6 +246,10 @@ undocumented things to know.
 
 Visualizing database content from the command-line
 ==================================================
+
+You might want to skip this section for now. But the following
+features are important when it comes to write automatic test suites
+for your applications.
 
 You can visualize the content of your database from the command-line
 without starting a web server using Lino's :manage:`show` command. 

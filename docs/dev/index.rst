@@ -22,7 +22,6 @@ Getting started
    /tutorials/hello/index
    polls/index
    projects
-   env
 
 1.  :doc:`/dev/install` : System requirements. Set up a Python
     environment. Run your first Lino applications.
@@ -38,12 +37,6 @@ Getting started
 4. :doc:`projects` introduces our minimalistic project
    management system based on :mod:`atelier`.
    
-5. :doc:`env` : install other projects maintained by the Lino team.
-   If you want to join our team and help us to make Lino better, then
-   you will sooner or later get in touch with these
-   applications. Let's install them already now so that your
-   environment is complete.
-
    
 .. _lino.dev.first:
 
@@ -303,3 +296,4 @@ Other
    ml/index
    /team/index
    interview
+   env
