@@ -4,6 +4,8 @@
 Countries
 ======================
 
+..  $ doctest docs/specs/countries.rst
+
 ..  doctest initialization:
 
     >>> from lino import startup
@@ -189,15 +191,15 @@ Utilities
 <BLANKLINE>
 
 >>> rt.show(countries.Places)
-============= ======================== ==================== ==================== ============== ========== ==================
+============= ======================== ==================== ==================== ============== ========== ====================
  Country       Designation              Designation (et)     Designation (fr)     Place Type     zip code   Part of
-------------- ------------------------ -------------------- -------------------- -------------- ---------- ------------------
+------------- ------------------------ -------------------- -------------------- -------------- ---------- --------------------
  Belgium       Aalst                    Aalst                Alost                City           9300       Flandre de l'Est
  Belgium       Aalst-bij-Sint-Truiden                                             Village        3800       Limbourg
  Belgium       Angleur                                                            City           4031
  Belgium       Ans                                                                City           4430
  Belgium       Anvers                   Anvers               Anvers               Province
- Belgium       Baardegem                                                          Village        9310       Aalst / Alost
+ Belgium       Baardegem                                                          Village        9310       9300 Aalst / Alost
  Belgium       Baelen                   Baelen               Baelen               City           4837       Liège
  Belgium       Blégny                                                             City           4670
  Belgium       Brabant flamant          Brabant flamant      Brabant flamant      Province
@@ -209,14 +211,14 @@ Utilities
  Belgium       Büllingen                Büllingen            Bullange             City           4760       Liège
  Belgium       Cerfontaine                                                        City           5630
  Belgium       Cuesmes                                                            City           7033
- Belgium       Erembodegem                                                        Village        9320       Aalst / Alost
+ Belgium       Erembodegem                                                        Village        9320       9300 Aalst / Alost
  Belgium       Eupen                                                              City           4700
  Belgium       Flandre de l'Est         Flandre de l'Est     Flandre de l'Est     Province
  Belgium       Flandre de l'Ouest       Flandre de l'Ouest   Flandre de l'Ouest   Province
- Belgium       Gijzegem                                                           Village        9308       Aalst / Alost
+ Belgium       Gijzegem                                                           Village        9308       9300 Aalst / Alost
  Belgium       Hainaut                  Hainaut              Hainaut              Province
- Belgium       Herdersem                                                          Village        9310       Aalst / Alost
- Belgium       Hofstade                                                           Village        9308       Aalst / Alost
+ Belgium       Herdersem                                                          Village        9310       9300 Aalst / Alost
+ Belgium       Hofstade                                                           Village        9308       9300 Aalst / Alost
  Belgium       Kelmis                   Kelmis               La Calamine          City           4720
  Belgium       Kettenis                                                           Village        4701
  Belgium       La Reid                                                            City           4910
@@ -224,17 +226,17 @@ Utilities
  Belgium       Liège                    Liège                Liège                Province
  Belgium       Liège                    Liège                Liège                City           4000       Liège
  Belgium       Luxembourg               Luxembourg           Luxembourg           Province
- Belgium       Meldert                                                            Village        9310       Aalst / Alost
+ Belgium       Meldert                                                            Village        9310       9300 Aalst / Alost
  Belgium       Mons                     Mons                 Mons                 City           7000
- Belgium       Moorsel                                                            Village        9310       Aalst / Alost
+ Belgium       Moorsel                                                            Village        9310       9300 Aalst / Alost
  Belgium       Mortier                                                            City           4670
  Belgium       Namur                    Namur                Namur                Province
  Belgium       Namur                    Namur                Namur                City           5000
- Belgium       Nieuwerkerken                                                      Village        9320       Aalst / Alost
- Belgium       Nispert                                                            Township                  Eupen
+ Belgium       Nieuwerkerken                                                      Village        9320       9300 Aalst / Alost
+ Belgium       Nispert                                                            Township                  4700 Eupen
  Belgium       Ostende                  Ostende              Ostende              City           8400
  Belgium       Ottignies                                                          City           1340
- Belgium       Ouren                                                              Township                  Burg-Reuland
+ Belgium       Ouren                                                              Township                  4790 Burg-Reuland
  Belgium       Raeren                                                             Village        4730
  Belgium       Recht                    Recht                Recht                City           4780       Liège
  Belgium       Sankt Vith               Sankt Vith           Saint-Vith           City           4780       Liège
@@ -270,7 +272,7 @@ Utilities
  Netherlands   Maastricht                                                         City
  Netherlands   Rotterdam                                                          City
  Netherlands   Utrecht                                                            City
-============= ======================== ==================== ==================== ============== ========== ==================
+============= ======================== ==================== ==================== ============== ========== ====================
 <BLANKLINE>
 
 >>> rt.show(countries.PlaceTypes)

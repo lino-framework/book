@@ -65,7 +65,7 @@ sliced_data_iterator.
  Belgium   Angleur                                                          City         4031
  Belgium   Ans                                                              City         4430
  Belgium   Anvers                   Antwerpen            Anvers             Province
- Belgium   Baardegem                                                        Village      9310       Aalst / Alost
+ Belgium   Baardegem                                                        Village      9310       9300 Aalst / Alost
  Belgium   Baelen                   Baelen               Baelen             City         4837       Liège / Lüttich
  Belgium   Blégny                                                           City         4670
  Belgium   Brabant flamant          Flämisch-Brabant     Brabant flamant    Province
@@ -74,13 +74,13 @@ sliced_data_iterator.
 <BLANKLINE>
 
 >>> rt.show('countries.Places', offset=5, limit=3)
-========= ============= ================== ================== ============ ========== =================
+========= ============= ================== ================== ============ ========== ====================
  Country   Designation   Designation (de)   Designation (fr)   Place Type   zip code   Part of
---------- ------------- ------------------ ------------------ ------------ ---------- -----------------
- Belgium   Baardegem                                           Village      9310       Aalst / Alost
+--------- ------------- ------------------ ------------------ ------------ ---------- --------------------
+ Belgium   Baardegem                                           Village      9310       9300 Aalst / Alost
  Belgium   Baelen        Baelen             Baelen             City         4837       Liège / Lüttich
  Belgium   Blégny                                              City         4670
-========= ============= ================== ================== ============ ========== =================
+========= ============= ================== ================== ============ ========== ====================
 <BLANKLINE>
 
 >>> rt.show('countries.Places', offset=-5, limit=3)
