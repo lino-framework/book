@@ -10,7 +10,7 @@ This document tests some functionalities implemented by
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.DocsTests.test_gfks
+    $ doctest docs/tested/gfks.rst
     
     doctest init:
 
@@ -26,14 +26,13 @@ following fields:
 >>> d = get_json_dict('robin', 'gfks/ContentTypes/9')
 >>> sorted(d.keys())
 [u'data', u'disable_delete', u'id', u'navinfo', u'title']
->>> sorted(d['data'].keys())
-[u'app_label', u'base_classes', u'disable_editing', u'disabled_actions', u'disabled_fields', u'id', u'model']
+>>> rmu(sorted(d['data'].keys()))
+['app_label', 'base_classes', 'disable_editing', 'disabled_fields', 'id', 'model']
 >>> for k in sorted(d['data'].keys()):
-...    print k, ":", d['data'][k]
+...    print k, ":", rmu(d['data'][k])
 app_label : countries
 base_classes : <p />
 disable_editing : False
-disabled_actions : {}
-disabled_fields : {u'id': True}
+disabled_fields : {'id': True}
 id : 9
 model : country

@@ -6,7 +6,7 @@ Lino Noi Overview
 
 .. How to test just this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_general
+    $ doctest docs/specs/noi/general.rst
     
     doctest init:
 
@@ -194,8 +194,6 @@ Lino Noi and Scrum
 |                      |                      | events after the given date.                                        |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | mobile_item          | Description          |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| description_column   | Description          |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | overview             | Description          |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+

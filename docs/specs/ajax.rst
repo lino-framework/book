@@ -7,7 +7,7 @@ Refusing permission to an anonymous request
 
 .. to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_ajax
+    $ doctest docs/specs/ajax.rst
 
     doctest init:
 
@@ -78,7 +78,7 @@ will do the following AJAX call to get its data:
 >>> print(json.dumps(sorted(r.keys())))
 ["count", "no_data_text", "param_values", "rows", "success", "title"]
 >>> len(r['rows'])
-26
+25
 
 Now imagine that the user gets a break and leaves her browser open,
 the server meanwhile did a dump and a reload. So the sessions have

@@ -3,6 +3,9 @@
 The Lino Polls tutorial
 =======================
 
+
+..  doctest docs/dev/polls/index.rst
+
 .. doctest init:
     >>> import os
     >>> os.chdir('lino_book/projects/polls')
@@ -34,18 +37,18 @@ before reading on, please follow **parts 1 and 2** of the **Django
 tutorial**:
 
 - `Writing your first Django app, part 1
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/>`__.
+  <https://docs.djangoproject.com/en/1.11/intro/tutorial01/>`__.
 - `Writing your first Django app, part 2
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/>`__.
+  <https://docs.djangoproject.com/en/1.11/intro/tutorial02/>`__.
 
 Two remarks before diving into above documents:
 
 - Don't worry if you find the `Write your first view
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial01/#write-your-first-view>`__
+  <https://docs.djangoproject.com/en/1.11/intro/tutorial01/#write-your-first-view>`__
   section difficult, in Lino you don't need to write views.
 
 - The `Explore the free admin functionality
-  <https://docs.djangoproject.com/en/1.9/intro/tutorial02/#explore-the-free-admin-functionality>`__
+  <https://docs.djangoproject.com/en/1.11/intro/tutorial02/#explore-the-free-admin-functionality>`__
   section is important only if you want know how you are going to
   *not* work with Lino.  Lino is an alternative to Django's Admin
   interface.
@@ -423,7 +426,7 @@ Explanations:
     
 - If `objects`, `filter()` and `order_by()` are new to you, then
   please read the `Making queries
-  <https://docs.djangoproject.com/en/1.9/topics/db/queries>`__ chapter
+  <https://docs.djangoproject.com/en/1.11/topics/db/queries>`__ chapter
   of Django's documentation.  Lino is based on Django, and Django is
   known for its good documentation. Use it!
 

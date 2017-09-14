@@ -26,8 +26,8 @@ class Site(Site):
 
     def setup_quicklinks(self, user, tb):
         super(Site, self).setup_quicklinks(user, tb)
-        tb.add_action(self.modules.contacts.Persons.detail_action)
-        tb.add_action(self.modules.contacts.Companies.detail_action)
+        tb.add_action(self.modules.contacts.Persons)
+        tb.add_action(self.modules.contacts.Companies)
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

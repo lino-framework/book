@@ -5,8 +5,7 @@
 The ``belref`` project
 ======================
 
-.. this document is part of the Lino test suite. To test only this
-   document, run::
+.. To test only this document, run::
 
        $ doctest docs/specs/projects/belref.rst
 
@@ -67,12 +66,12 @@ of :mod:`lino.modlib.extjs`
 >>> res.status_code
 200
 >>> data = json.loads(res.content)
->>> data.keys()
-[u'count', u'rows', u'success', u'no_data_text', u'title']
+>>> rmu(data.keys())
+['count', 'rows', 'success', 'no_data_text', 'title']
 >>> data['count']
 14
->>> data['rows'][0]
-[u'Institut National de Statistique', u'Nationaal Instituut voor Statistiek', u'Nationales Institut f\xfcr Statistik', 1, u'INS', u'NIS', u'NIS', {u'id': True}, {}, False]
+>>> rmu(data['rows'][0])
+['Institut National de Statistique', 'Nationaal Instituut voor Statistiek', 'Nationales Institut f\xfcr Statistik', 1, 'INS', 'NIS', 'NIS', {'id': True}, False]
 
 
 Get the list of places in Belgium:
@@ -83,8 +82,8 @@ Get the list of places in Belgium:
 >>> data = json.loads(res.content)
 >>> data['count']
 2878
->>> data['rows'][0]
-[u'Belgique', u'BE', u"'s Gravenvoeren", u'', u'', u'Ville', u'50', u'3798', None, None, 2147, False, u'73109', u'<p />', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a>', u'<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', u'<span />', {u'id': True}, {}, False]
+>>> rmu(data['rows'][0])
+['Belgique', 'BE', "'s Gravenvoeren", '', '', 'Ville', '50', '3798', None, None, 2147, False, '73109', '<p />', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<span />', {'id': True}, False]
 
 The JSON API of :mod:`lino.modlib.extjs` is actually not written for
 being public, that's why we have strange items like

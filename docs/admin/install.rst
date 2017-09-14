@@ -303,7 +303,7 @@ The database backend of your choice is not automatically installed.
 If you plan to use Django's MySQL backend, see :doc:`mysql_install`.
 
 Follow the Django documentation at `Get your database running
-<https://docs.djangoproject.com/en/1.9/topics/install/#get-your-database-running>`__
+<https://docs.djangoproject.com/en/1.11/topics/install/#get-your-database-running>`__
 
 
 

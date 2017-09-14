@@ -150,6 +150,10 @@ The :class:`Action` class
 
     Abstract base class for all actions.
 
+    The first argument is the optional `label`, other arguments should
+    be specified as keywords and can be any of the existing class
+    attributes.
+
            
     .. attribute:: label
 
@@ -157,6 +161,11 @@ The :class:`Action` class
         language. Used e.g. on menu items. Also on toolbar buttons if
         they have neither :attr:`icon_name` nor :attr:`button_text`
 
+    .. method:: get_label(self)
+                
+        Return the `label` of this action, or the `action_name` if the
+        action has no explicit label.
+                
     .. attribute:: button_text
                    
         The text to appear on buttons for this action. If this is not
@@ -403,7 +412,17 @@ The :class:`Action` class
         Name of a Javascript function to be invoked on the web client when
         this action is called.
     
-    
+    .. method:: attach_to_actor(self, owner, name):
+
+        Called once per Actor per Action on startup before a
+        BoundAction instance is being created.  If this returns False,
+        then the action won't be attached to the given actor.
+
+        The owner is the object which "defines" the action, i.e. uses
+        that instance for the first time. Subclasses of the owner may
+        re-use the same instance without becoming the owner.
+
+   
 
 The :func:`action` decorator
 ============================

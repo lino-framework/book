@@ -33,7 +33,7 @@ Introduction
 You know that a *fixture* is a collection of data records in one or
 several tables which can be loaded into a database.  Django's
 `Providing initial data for models
-<https://docs.djangoproject.com/en/1.9/howto/initial-data/>`__ article
+<https://docs.djangoproject.com/en/1.11/howto/initial-data/>`__ article
 says that "fixtures can be written as XML, YAML, or JSON documents".
 Well, Lino adds another format to this list: Python.
 
@@ -60,14 +60,14 @@ Here are some standard Django admin commands that you should know.
 
     Start an interactive Python session using your project settings.
     See the `Django documentation
-    <https://docs.djangoproject.com/en/1.9/ref/django-admin/#shell>`__
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#shell>`__
 
 .. management_command:: dumpdata
 
     Output all data in the database (or some tables) to a serialized
     stream. The default will write to `stdout`, but you usually
     redirect this into a file.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.9/ref/django-admin/#dumpdata>`__
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#dumpdata>`__
     
     You might theoretically use :manage:`dumpdata` for writing a
     Python fixture, but Lino's preferred equivalent is
@@ -78,13 +78,13 @@ Here are some standard Django admin commands that you should know.
     Removes all data from the database and re-executes any
     post-synchronization handlers. The table of which migrations have
     been applied is not cleared.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.9/ref/django-admin/#flush>`__
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#flush>`__
     
 .. management_command:: loaddata
 
     Loads the contents of the named fixtures into the database.
     See the `Django documentation
-    <https://docs.djangoproject.com/en/1.9/ref/django-admin/#loaddata>`__.
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#loaddata>`__.
     
     Both :manage:`loaddata` and :manage:`initdb` can be used to load
     fixtures into a database.  The difference is that :manage:`loaddata`

@@ -17,17 +17,19 @@ The ``lino_book`` package
 .. image:: https://img.shields.io/pypi/l/lino.svg
    :target: https://pypi.python.org/pypi/lino/
 
-The Lino Book is a code repository used for educational and testing
-purposes.  It contains the big Sphinx documentation tree about the
-Lino framework published on http://www.lino-framework.org/.
+This is the code repository with the big Sphinx documentation tree
+about the Lino framework.  A build of this tree is published on
+`www.lino-framework.org <http://www.lino-framework.org>`__ and on
+`lino.readthedocs.io <http://lino.readthedocs.io>`__.
 
 It also contains the ``lino_book`` Python package, a collection of
-small example Lino applications.
+small example Lino applications used for educational and testing
+purposes.
 
 The code repositories for the ``lino`` and ``lino_xl`` Python packages
 have no documentation tree on their own, their documentation is here.
 
-It also contains a big test suite which runs doctest-based tests for
-all these packages.
+It also contains a test suite with doctest-based tests for all these
+packages.
 
 

@@ -82,7 +82,7 @@ Names of participants
 
 The names of the participants are confidential data in :ref:`avanti`.
 
-System admins can see the full names:
+System admins and coordinators can see the full names:
 
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
@@ -98,19 +98,19 @@ System admins can see the full names:
 ==== ================= ======================= ======== =========== ======== ===== ========= ======== ==================================================
 <BLANKLINE>
 
-But auditors and coordinators see only the first name and number:
+But auditors see only the first name, number and place:
 
->>> rt.login('martina').show('courses.EnrolmentsByCourse', obj)
+>>> rt.login('audrey').show('courses.EnrolmentsByCourse', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ================= ========================== ======== =========== ======== ===== ========= ======== ================================================
+==== ================= ========================== ======== =========== ======== ===== ========= ======== ===============
  ID   Date of request   Client                     Gender   Childcare   School   Bus   Evening   Remark   Workflow
----- ----------------- -------------------------- -------- ----------- -------- ----- --------- -------- ------------------------------------------------
+---- ----------------- -------------------------- -------- ----------- -------- ----- --------- -------- ---------------
  9    07/02/2017        Aátifá (136) from Eupen    Female   No          No       No    No                 **Requested**
  7    09/02/2017        Aámir (125) from Eupen     Male     No          No       No    No                 **Confirmed**
- 5    11/02/2017        Aáish (127) from Eupen     Male     No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ 5    11/02/2017        Aáish (127) from Eupen     Male     No          No       No    No                 **Requested**
  3    13/02/2017        Aáishá (118) from Eupen    Female   No          No       No    No                 **Confirmed**
  1    15/02/2017        Aábdeen (114) from Eupen   Male     No          No       No    No                 **Requested**
-==== ================= ========================== ======== =========== ======== ===== ========= ======== ================================================
+==== ================= ========================== ======== =========== ======== ===== ========= ======== ===============
 <BLANKLINE>
 
 

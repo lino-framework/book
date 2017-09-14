@@ -6,7 +6,7 @@ Ticket management in Lino Noi
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_tickets
+    $ doctest docs/specs/noi/tickets.rst
     
     doctest init:
     >>> import lino
@@ -325,13 +325,14 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========= ============== ========== ============== ======== =========
- ID   Summary             Author    Topic          Priority   Workflow       Site     Mission
----- ------------------- --------- -------------- ---------- -------------- -------- ---------
- 5    Cannot create Foo   Mathieu   Lino Welfare   Normal     **Sleeping**   pypi
- 3    Baz sucks           Jean      Lino Voga      Normal     **Open**       welsch
-==== =================== ========= ============== ========== ============== ======== =========
+==== =================== ========
+ ID   Summary             Site
+---- ------------------- --------
+ 5    Cannot create Foo   pypi
+ 3    Baz sucks           welsch
+==== =================== ========
 <BLANKLINE>
+
 
 
 Distribution of tickets per project

@@ -22,6 +22,7 @@ Poorly documented examples at different development states:
 
    min1
    min2
+   chatter
    max
    dumps
    events

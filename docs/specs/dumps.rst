@@ -6,7 +6,7 @@ Python dumps
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_dumps
+    $ doctest docs/specs/dumps.rst
 
 .. If this fails just because of version differences in the "This is a
    Python dump created using ..." header, then I need to run::

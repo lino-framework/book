@@ -10,7 +10,7 @@ Overview
 Data migration is a complex topic. Django needed until version 1.7
 before they dared to suggest a default method to automating these
 tasks (see `Migrations
-<https://docs.djangoproject.com/en/1.7/topics/migrations/>`_).
+<https://docs.djangoproject.com/en/1.11/topics/migrations/>`_).
 
 Lino includes a system for managing database migrations which takes a
 rather different approach than what Django does.

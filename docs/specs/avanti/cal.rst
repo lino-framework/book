@@ -37,15 +37,6 @@ Aáish (127) from Eupen
 Aákif (128) from Eupen
 ...
 
->>> show_choices("martina", base + '?query=') #doctest: +ELLIPSIS
-<br/>
-Aábdeen (114) from Eupen
-Aábid (115) from Eupen
-Aáishá (118) from Eupen
-Aádil (120) from Eupen
-Aáish (127) from Eupen
-Aákif (128) from Eupen
-...
 
 >>> rt.show(cal.GuestStates)
 ======= ========= ============ ========= ========

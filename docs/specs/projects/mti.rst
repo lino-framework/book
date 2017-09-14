@@ -3,7 +3,11 @@ Multi-table inheritance (MTI)
 =============================
 
 
-..  doctest init:
+..  how to test just this page:
+   
+    $ doctest docs/specs/projects/mti.rst
+    
+    doctest init:
     >>> from lino import startup
     >>> startup('lino_book.projects.mti.settings')
     >>> from lino.api.doctest import *

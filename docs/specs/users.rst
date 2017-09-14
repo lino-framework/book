@@ -37,8 +37,7 @@ Models
                    
     .. attribute:: username
     
-        Must be unique or empty.
-        Leaving this empty means that the user cannot log in.
+        Must be unique and cannot be empty.
 
     .. attribute:: initials
 

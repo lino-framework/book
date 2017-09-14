@@ -16,7 +16,7 @@ from lino_vilma.lib.vilma.settings import *
 
 
 class Site(Site):
-    languages = 'et'
+    languages = 'en et'
     title = "Lino Vilma"
     
 

@@ -1,12 +1,17 @@
+.. _tested.polly:
 .. _book.specs.polls:
 
 The Polls plugin
 ================
 
-..  doctest init:
+..  how to test just this page:
+   
+    $ doctest docs/specs/polls.rst
+    
+    doctest init:
     >>> import lino
     >>> lino.startup('lino_book.projects.polly.settings.demo')
-    >>> from lino.api.shell import *
+    >>> from lino.api.doctest import *
 
 This document describes the :mod:`lino_xl.lib.polls` plugin which
 adds database models and functionality for managing polls.
@@ -223,3 +228,81 @@ Example fixtures
 - :mod:`lino_xl.lib.polls.fixtures.bible`
 - :mod:`lino_xl.lib.polls.fixtures.feedback`
 - :mod:`lino_xl.lib.polls.fixtures.compass`
+
+
+Miscellaneous tests
+===================
+
+>>> print(settings.SETTINGS_MODULE)
+lino_book.projects.polly.settings.demo
+
+>>> pk = 2
+>>> obj = polls.Response.objects.get(pk=pk)
+>>> print(obj)
+Robin Rood's response to Participant feedback
+
+>>> rt.login(obj.user.username).show(polls.AnswersByResponse, obj)
+Question 23/10/2014 
+<BLANKLINE>
+1) There was enough to eat. **1** **2** **3** **4** **5** (**Remark**)
+<BLANKLINE>
+2) The stewards were nice and attentive. **1** **2** **3** **4** **5** (**Remark**)
+<BLANKLINE>
+3) The participation fee was worth the money. **1** **2** **3** **4** **5** (**Remark**)
+<BLANKLINE>
+4) Next time I will participate again. **1** **2** **3** **4** **5** (**Remark**)
+
+>>> mt = contenttypes.ContentType.objects.get_for_model(obj.__class__).id
+>>> url = '/api/polls/AnswersByResponse?rp=ext-comp-1351&fmt=json&mt=%d&mk=%d' % (mt, pk)
+>>> test_client.force_login(obj.user)
+>>> res = test_client.get(url, REMOTE_USER=obj.user.username)
+
+
+>>> print(res.status_code)
+200
+>>> d = json.loads(res.content)
+
+>>> len(d['rows'])
+5
+
+>>> print(d['rows'][0][0])
+<span class="htmlText">1) There was enough to eat.</span>
+
+
+The "My answer" column for the first row has 5 links:
+
+>>> soup = BeautifulSoup(d['rows'][0][1], 'lxml')
+>>> links = soup.find_all('a')
+>>> len(links)
+5
+
+The first of them displays a "1":
+
+>>> print(links[0].string)
+... #doctest: +NORMALIZE_WHITESPACE
+1
+
+And clicking on it would run the following Javascript code:
+
+>>> print(links[0].get('href'))
+javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",false,2,{ "fv": [ 9, 17 ] })
+
+The 2 is the id of the Response we are acting on:
+
+>>> polls.Response.objects.get(pk=2)
+Response #2 ("Robin Rood's response to Participant feedback")
+
+
+"fv" stands for "field values". 
+It refers to the two `parameters` of the 
+:class:`lino.modlib.polls.models.ToggleChoice` action.
+The 9 is the id of a `polls.Question`, 
+the 17 is the id of a `polls.Choice`.
+
+>>> polls.Question.objects.get(pk=9)
+Question #9 ('1) There was enough to eat.')
+
+>>> polls.Choice.objects.get(pk=17)
+Choice #17 ('1')
+
+

@@ -11,7 +11,7 @@ extends what *Django* calls an "application".
 
 The :class:`Plugin <lino.core.plugin.Plugin>` class is comparable to
 Django's `AppConfig
-<https://docs.djangoproject.com/en/1.8/ref/applications/>`_ class, but
+<https://docs.djangoproject.com/en/1.11/ref/applications/>`_ class, but
 has some advantages over Django's approach which makes that they are
 the preferred way.
 

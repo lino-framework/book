@@ -115,7 +115,7 @@ bla bla
 
 http://stackoverflow.com/questions/15501673/how-to-temporarily-disable-a-foreign-key-constraint-in-mysql
 
-https://docs.djangoproject.com/en/1.10/ref/databases/#mysql-db-api-drivers
+https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-db-api-drivers
 
 
 

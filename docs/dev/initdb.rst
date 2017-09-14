@@ -26,7 +26,7 @@ your database" by running the command::
 The :xfile:`manage.py` Python script is the standard Django interface
 for running a so-called **administrative task** (if you did't know
 that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.9/ref/django-admin/>`_).
+<https://docs.djangoproject.com/en/1.11/ref/django-admin/>`_).
 
 The :manage:`prep` command which we use here is a `custom
 django-admin command

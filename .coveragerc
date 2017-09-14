@@ -10,7 +10,9 @@ source =
   lino_book
   lino_noi
   lino_cosi
-  lino_voga
   lino_presto
-  lino_welfare
+  lino_care
+  lino_vilma
+  lino_avanti
+  lino_tera
 omit = *test*.py

@@ -39,7 +39,10 @@ Maintenance
 
 .. toctree::
     :maxdepth: 2
-
+   
+    settings
+    snapshot
+    reload_services
     upgrade
     datamig
     env
@@ -70,15 +73,6 @@ Printing
     using_appy_pod
     excerpts
     appy_templates
-
-Howto
------
-
-.. toctree::
-    :maxdepth: 2
-   
-    settings
-    snapshot
 
 Other
 -----

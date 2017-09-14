@@ -214,6 +214,15 @@ Models and actors reference
         Subclasses must implement this.  Supposed to return or yield a
         list of unsaved :class:`Movement` instances.
 
+    .. method:: get_mti_leaf(self):
+                
+        Return the specialized form of this voucher.
+
+        From any :class:`Voucher` instance we can get the actual
+        document (Invoice, PaymentOrder, BankStatement, ...) by
+        calling this method.
+
+
                 
            
 .. class:: PaymentTerm
@@ -1139,6 +1148,17 @@ Model mixins
     Model mixin for objects that can be filtered by a range of
     *accounting periods*. This adds two fields start_period and
     end_period to the parameter fields.
+
+
+.. class:: ItemsByVoucher
+
+    Shows the items of this voucher.
+
+    This is used as base class for slave tables in
+    :mod:`lino_xl.lib.finan`,
+    :mod:`lino_xl.lib.vat`,
+    :mod:`lino_xl.lib.vatless`,
+    :mod:`lino_xl.lib.ana`, ...
 
 
 Utilities

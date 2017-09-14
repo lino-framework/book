@@ -8,7 +8,6 @@ which are part of the test suite.
    :maxdepth: 1
    
    test_i18n
-   polly
    core_utils
    dynamic
    e006

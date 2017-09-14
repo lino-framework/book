@@ -7,6 +7,7 @@ Developer's Guide
 This is the central meeting place for :doc:`Lino developers
 </community/developers>`.
 
+
 .. _lino.dev.start:
 
 Getting started
@@ -19,9 +20,7 @@ Getting started
 
    install
    /tutorials/hello/index
-   polls/index
    projects
-   env
 
 1.  :doc:`/dev/install` : System requirements. Set up a Python
     environment. Run your first Lino applications.
@@ -30,19 +29,9 @@ Getting started
     on your machine. It's easier than with Django. A ``settings.py``
     and a ``manage.py``.
 
-3.  :doc:`polls/index` : Convert the "Polls"
-    application from Django’s tutorial into a Lino application. This
-    will illustrate some differences between Lino and Django.
-
-4. :doc:`projects` introduces our minimalistic project
-   management system based on :mod:`atelier`.
+3. :doc:`projects` : Finish the configuration of your your Lino
+   development environment.
    
-5. :doc:`env` : install other projects maintained by the Lino team.
-   If you want to join our team and help us to make Lino better, then
-   you will sooner or later get in touch with these
-   applications. Let's install them already now so that your
-   environment is complete.
-
    
 .. _lino.dev.first:
 
@@ -52,14 +41,19 @@ Your first application
 .. toctree::
    :hidden:
 
+   polls/index
    /tutorials/dumpy/index
    tables
    layouts
    initdb
 
 
-10.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
-     Writing your own Python fixtures.
+10. :doc:`polls/index` : Convert the "Polls"
+    application from Django’s tutorial into a Lino application. This
+    will illustrate some differences between Lino and Django.
+
+#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+    Writing your own Python fixtures.
 
 #.  :doc:`tables` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
@@ -81,6 +75,7 @@ between Lino and other frameworks.
 .. toctree::
    :hidden:
               
+   /about/faq
    /about/ui
    /about/lino_and_django
    /about/features
@@ -88,7 +83,8 @@ between Lino and other frameworks.
    /about/think_python
    ui
     
-20.  :doc:`/about/ui`
+20. :doc:`/about/faq`
+#.  :doc:`/about/ui`
 #.  :doc:`/about/features`
 #.  :doc:`/about/lino_and_django`
 #.  :doc:`/about/not_easy`
@@ -103,12 +99,12 @@ Working with others
 ===================
 
 30. :doc:`pull`
-#. :doc:`runtests`
-#. :doc:`contrib`
-#. :doc:`patch`
-#. :doc:`request_pull`
-#. :doc:`ci`
-#. :doc:`versioning`
+#.  :doc:`runtests`
+#.  :doc:`contrib`
+#.  :doc:`patch`
+#.  :doc:`request_pull`
+#.  :doc:`ci`
+#.  :doc:`versioning`
 
 
 .. toctree::
@@ -300,3 +296,4 @@ Other
    ml/index
    /team/index
    interview
+   env

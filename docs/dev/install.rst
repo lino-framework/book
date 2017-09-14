@@ -56,11 +56,10 @@ To *activate* this environment, you will type::
 
         $ . /path_to_project_dir/env/bin/activate
 
-Afterwards update the new environment's pip and setuptools to the
-latest version::
-
-        $ pip install -U pip
-        $ pip install -U setuptools
+The dot (``.``) is a synonym for the :cmd:`source` command. If you
+didn't know it, read the `manpage
+<http://ss64.com/bash/source.html>`__ and `What does 'source' do?
+<http://superuser.com/questions/46139/what-does-source-do>`__
 
 If you know that you are only going to be using Python with Lino, then
 you probably want to add above line to your :xfile:`.bashrc` file.
@@ -75,6 +74,14 @@ environment you can add an alias to your :xfile:`.bashrc` file::
     $ echo "alias lpy='.  /path_to_project_dir/env/bin/activate" >> ~/.bashrc
     $ . ~/.bashrc # To run the new alias
     $ lpy # Activates the environment
+
+After creating and activating a environment, you should updated `pip`
+and `setuptools` to the latest version::
+
+        $ pip install -U pip
+        $ pip install -U setuptools
+
+    
          
 .. rubric:: Notes
 
@@ -84,27 +91,21 @@ production version of a lino-site, the virtual environment **must** either,
 be in the *site-folder* with the name *env* or, there must be a
 *symbolic-link* of *env* pointing to the environment folder.
 
+If virtualenvs are new to you; The reason for creating a new
+environment is to separate Lino from your system install of
+python. The main advantages are: if you are also developing other
+things with Python you will often require different packages than what
+Lino uses, and there is the chance of version or dependency conflicts.
 
-If virtualenvs are new to you; The reason for creating a new environment
-is to separate Lino from your system install of python. The main
-advantages are; if you are also developing other things with python you
-will often require different packages then what lino-uses, and there is
-the change of version or dependency conflicts.
-
-Also if you wish to remove Lino from your system you only need to remove
-the source files and the virtual environment. Rather than trying to
-remove lino's dependencies from the system environment without breaking
-any other programs that use python.
+Also if you wish to remove Lino from your system you only need to
+remove the source files and the virtual environment. Rather than
+trying to remove Lino's dependencies from the system environment
+without breaking any other programs that use python.
 
 To learn more read Dan Poirier's post `Managing multiple Python projects: Virtual environments
 <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
 where he explains what they are and why you want them.
 
-
-The dot (``.``) is a synonym for the :cmd:`source` command. If you
-didn't know it, read the `manpage
-<http://ss64.com/bash/source.html>`__ and `What does 'source' do?
-<http://superuser.com/questions/46139/what-does-source-do>`__
 
 You can **deactivate** a virtual environment with the command
 :cmd:`deactivate`. This switches you back to your machine's
@@ -120,11 +121,11 @@ that), but you can easily create a new one and remove the old one.
 Get the sources
 ===============
 
-You might theoretically install Lino using ``pip install lino``, but
-this method isn't currently being tested very thoroughly. So in most
-cases we currently recommend to use the development version because
-you will probably want to use Lino's newest features before they get
-released on PyPI.
+Don't try to install Lino using ``pip install lino`` because that
+would install some very old and obsolete version.  If you did it, you
+should uninstall it (``pip uninstall lino lino-xl``) before going on.
+Lino is a framework for doing *customized* applications and we
+currently don't plan to industrialize it.
 
 Create a directory (e.g. :file:`repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
@@ -141,7 +142,15 @@ directory and and do::
     git clone https://github.com/lino-framework/avanti.git; \
     git clone https://github.com/lino-framework/tera.git; \
     git clone https://github.com/lino-framework/book.git
-
+    
+Yes, we have a whole little collection of repositories and
+applications.  As a Lino developer you will sooner or later get in
+touch with these.  You don't need to dive into each of them right now
+(see :doc:`overview` if you are curious), but let's *install* them
+already now so that your environment is complete.  They are part of
+this book because it would be difficult to explain Lino without having
+some serious examples.  They are part of the Lino SDK because we also
+use them for running test suites.
 
 You should now have nine directories called :file:`lino`, :file:`xl`,
 :file:`noi`, ... and :file:`book` in your :file:`~/repositories`
@@ -329,21 +338,31 @@ a development server::
     $ cd lino_book/projects/min1
     $ python manage.py runserver
 
-Now start your browser, point it to http://127.0.0.1:8000/ and play
-around.
+Now start your browser, point it to http://127.0.0.1:8000/ and you
+should see something like this:
 
-Don't stay in :mod:`min1 <lino_book.projects.min1>`, also try the
-other projects below :mod:`lino_book.projects`. None of them is a
-"killer app", they are just little projects used for testing and
-playing.
+.. image:: ../tutorials/hello/hello1.png
 
+Congratulations! Enjoy the first Lino application running on your
+machine!
+
+Exercises
+=========
+
+#.  Log in and play around.
+#.  Note that this site offers three languages.
+#.  Note the main welcome screen (dashboard) and the main menu.
+    
+#.  Create some persons and organizations. Don't enter lots of
+    accurate data because we are going to throw it away in the
+    next step.
+
+#.  Lino lacks a good document that describes how to use Lino
+    applications in general.
 
 
 Where to go from here
 =====================
 
-If you are reading the **Developer's Guide**, we now suggest to
-:doc:`/tutorials/hello/index`.
-
-If you are reading the **Administrator's Guide**, then continue where
-you left in :doc:`/admin/install`.
+We now suggest to create :doc:`your first local Lino project
+</tutorials/hello/index>`.

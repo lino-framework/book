@@ -85,17 +85,17 @@ See :blogref:`20100716`
 .. setting:: SERIALIZATION_MODULES
 
     See `Django docs
-    <https://docs.djangoproject.com/en/1.9/ref/settings/#serialization-modules>`__.
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#serialization-modules>`__.
 
 .. setting:: FIXTURE_DIRS
 
     See `Django docs
-    <https://docs.djangoproject.com/en/1.9/ref/settings/#fixture-dirs>`_    
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#fixture-dirs>`_    
 
 
 .. setting:: EMAIL_SUBJECT_PREFIX
 
     See `Django docs
-    <https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
 
     Lino also uses this in :mod:`lino.modlib.notify`.

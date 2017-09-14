@@ -1,8 +1,8 @@
 .. _lino.tutorial.hello:
 
-===========================
-Create a local Lino project
-===========================
+=============================
+Your first local Lino project
+=============================
 
 .. to test just this doc:
 
@@ -14,9 +14,8 @@ Create a local Lino project
     >>> shell = Sheller('docs/tutorials/hello')
 
 
-In this tutorial we are going to create a local Lino project which
-inherits from one of the simple :ref:`out-of-the-box projects
-<lino.projects>` included with Lino.
+In this tutorial we are going to create a *local* Lino project,
+i.e. something that exists only on your machine.
 
 We suppose that you have installed Lino itself as described in
 :doc:`/dev/install`.
@@ -40,14 +39,14 @@ directly from within the code repository.
 
 Now we will create our first project directory of our own.
 
-
 As a first step, create an empty directory::
 
     $ mkdir ~/projects
 
 This is your **projects root**, which will hold all your Lino projects
 on your computer.  Lino project directories are not very big, and you
-will hopefully create many such projects.
+will hopefully create many such projects and want to keep a backup of
+them.
 
 You can choose another name, just keep in mind that our examples are
 based on this choice.
@@ -78,9 +77,8 @@ Your first :xfile:`settings.py` file should look as follows:
 
 Explanations:
 
-#.  :mod:`lino_book.projects.min1` is one of the simple 
-    :ref:`out-of-the-box projects
-    <lino.projects>` included with Lino.
+#.  :mod:`lino_book.projects.min1` is one of the out-of-the-box
+    projects included in the Lino Book.
 
     We import these settings directly into our global namespace using
     the wildcard ``*``. This is necessary because that's how Django
@@ -98,7 +96,7 @@ Explanations:
     :setting:`LOGGING`) into your global namespace.
 
 You might add ``DEBUG = True`` or other settings of your choice
-*after* these two lines, but it is not necessary.
+*after* these two lines, but it is not necessary here.
 
 More about this in :doc:`/dev/settings`.
     
@@ -186,14 +184,72 @@ Loading data from ...
 Installed ... object(s) from ... fixture(s)
 
 
-There's a lot to say about what we just did.  Lino applications use to
-make abundant use of so-called *Python fixtures* in order to have a
-rich set of "demo data".  We will come back to this in the next
-chapter, :doc:`/dev/initdb`.
+Lino applications use to make abundant use of what we call *Python
+fixtures* in order to have a rich set of "demo data".  We will come
+back to this in :doc:`/dev/initdb`.
+
+
+
+Start the web server
+====================
+
+Now you can start the development server::
+
+  $ python manage.py runserver
+  
+which should output something like::  
+  
+  Validating models...
+  0 errors found
+  Django version 1.4.5, using settings 'hello.settings'
+  Development server is running at http://127.0.0.1:8000/
+  Quit the server with CTRL-BREAK.
+
+And then point your web browser to http://127.0.0.1:8000 and you
+should see something like this:
+
+.. image:: hello1.png
+           
+Congratulations! Enjoy the first Lino application that exists only on
+your machine!
+
+
+Exercises
+=========
+
+Yes, it looks the same as the one you saw in the previous chapter. But
+read on. You can now play around by changing things in your project.
+
+#.  In your :file:`settings.py` file, replace
+    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
+    Run :command:`python manage.py prep` followed by :command:`python
+    manage.py runserver`. Log in and play around.
+  
+#.  Same as previous, but with :mod:`lino_book.projects.chatter`
+
+#.  Write three descriptions in LibreOffice `.odt` format, one for
+    each of the applications you just saw: what it can do, what are
+    the features, what functionalities are missing. Use
+    screenshots. Use a language which can be understood by
+    non-programmers.  Send these documents to your mentor.
+    
+#.  Read the documentation about the following Site attributes and
+    demonstrate their usage:
+
+    - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
+    - :attr:`languages <lino.core.site.Site.languages>`
+
+**When you reached this point, contact your mentor** for a meeting on
+`Hangouts <https://hangouts.google.com/>`_ because there is a lot of
+undocumented things to know.
 
 
 Visualizing database content from the command-line
 ==================================================
+
+You might want to skip this section for now. But the following
+features are important when it comes to write automatic test suites
+for your applications.
 
 You can visualize the content of your database from the command-line
 without starting a web server using Lino's :manage:`show` command. 
@@ -229,26 +285,3 @@ Or you can see the list of countries:
 ============================= ==========
 
 
-
-Start the web server
-====================
-
-Now you can start the development server::
-
-  $ python manage.py runserver
-  
-which should output something like::  
-  
-  Validating models...
-  0 errors found
-  Django version 1.4.5, using settings 'hello.settings'
-  Development server is running at http://127.0.0.1:8000/
-  Quit the server with CTRL-BREAK.
-
-And then point your web browser to http://127.0.0.1:8000 and you
-should see some welcome text and instructions for logging in.
-
-Congratulations! Enjoy the first Lino application running on your
-machine!
-
-Next suggested chapter: :doc:`/tutorials/dumpy/index`.

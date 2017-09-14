@@ -5,7 +5,11 @@ The label of the actor
 ======================
 
 
-..  doctest init:
+..  To test only this document, run::
+
+       $ doctest docs/specs/projects/actors.rst
+
+    doctest init:
     >>> from lino import startup
     >>> startup('lino_book.projects.actors.settings')
     >>> from lino.api.doctest import *

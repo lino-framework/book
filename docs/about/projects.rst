@@ -11,51 +11,15 @@ This document gives an overview on existing Lino application.
     :local:
 
 
-.. _lino.apps:
 
-Ready-to-use Lino applications
+Maintained Lino applications
 ==============================
 
-The following Lino applications are more or less stable:
-
-.. _welfare:
-
-Lino Welfare
-------------
-
-.. py2rst::
-
-  from lino_welfare import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-.. _faggio:
-.. _voga:
-
-Lino Voga
-------------
-
-.. py2rst::
-
-  from lino_voga import SETUP_INFO
-  print(SETUP_INFO['long_description'])
+See :ref:`lino.apps`
 
 
-.. _extjs6:
-
-ExtJS 6
-------------
-
-.. py2rst::
-
-  from lino_extjs6 import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-  
-
-
-
-Experimental applications
-=========================
+Experimental Lino applications
+==============================
 
 .. _patrols:
 
@@ -124,3 +88,9 @@ The Lino book contains a collection of example applications used by
 the test suite and for learning. See :mod:`lino_book.projects`.
 
 
+.. _extjs6:
+
+ExtJS 6
+=======
+
+See https://github.com/lino-framework/extjs6
