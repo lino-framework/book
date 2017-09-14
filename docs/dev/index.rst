@@ -20,7 +20,6 @@ Getting started
 
    install
    /tutorials/hello/index
-   polls/index
    projects
 
 1.  :doc:`/dev/install` : System requirements. Set up a Python
@@ -30,12 +29,8 @@ Getting started
     on your machine. It's easier than with Django. A ``settings.py``
     and a ``manage.py``.
 
-3.  :doc:`polls/index` : Convert the "Polls"
-    application from Django’s tutorial into a Lino application. This
-    will illustrate some differences between Lino and Django.
-
-4. :doc:`projects` introduces our minimalistic project
-   management system based on :mod:`atelier`.
+3. :doc:`projects` : Finish the configuration of your your Lino
+   development environment.
    
    
 .. _lino.dev.first:
@@ -46,14 +41,19 @@ Your first application
 .. toctree::
    :hidden:
 
+   polls/index
    /tutorials/dumpy/index
    tables
    layouts
    initdb
 
 
-10.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
-     Writing your own Python fixtures.
+10. :doc:`polls/index` : Convert the "Polls"
+    application from Django’s tutorial into a Lino application. This
+    will illustrate some differences between Lino and Django.
+
+#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+    Writing your own Python fixtures.
 
 #.  :doc:`tables` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
