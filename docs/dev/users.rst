@@ -7,9 +7,6 @@ User management à la Lino
 This document explains how to get started with Lino's user management
 system.
 
-See also :doc:`/specs/users` which describes the API of the
-:mod:`lino.modlib.users` plugin.
-
 
 .. This is a tested document. You can test it using:
 
@@ -81,36 +78,5 @@ field :guilabel:`Current password` empty.
 >>> rv = ses.run(u.change_password, action_param_values=values)
 >>> print(rv['message'])
 New password has been set for test.
-
-
-.. _online_registration:
-
-
-
-Online registration
-===================
-
-To enable online registration on your site, you must
-
-- use :mod:`lino_noi.lib.users` instead of :mod:`lino.modlib.users` in
-  your :setting:`INSTALLED_APPS`.
-
-- set :attr:`lino.modlib.users.Plugin.online_registration` to `True`.
-
-- define your :attr:`anonymous
-  <lino.modlib.users.choicelists.UserTypes.anonymous>` user type with
-  :attr:`readonly <lino.modlib.users.choicelists.UserType.readonly>`
-  set to `False`.
-  
-This is done e.g. by :mod:`lino_noi.projects.care.roles`.
-
-.. currentmodule:: lino_noi.lib.users.models
-                   
-When a new user is created, Lino sets a random
-:attr:`verification_code <User.verification_code>`.
-
-:attr:`user_state <User.user_state>`.
-
-:class:`lino_noi.lib.users.choicelists.UserStates`
 
 

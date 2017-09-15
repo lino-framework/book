@@ -16,13 +16,11 @@ Sitemap
    :maxdepth: 2
 
    about/index
-   demos
-   User's Guide </user/index>
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
    Hosting program </hosting/index>
+   User's Guide </user/index>
    documentation
-   community/index
    blog
    releases/index
 
