@@ -7,24 +7,35 @@ This section introduces our minimalistic project management system.
 What is a project?
 ==================
 
-You will notice that we use the word **project** for quite a lot of
-things. But for Lino developers they all have one thing in common:
-each project is a directory on your file system.  You "activate" a
-project by opening a terminal and changing to its directory. That's
-all. Almost all. Read on.
+We use the word **project** for quite a lot of things. But for Lino
+developers they all have one thing in common: each project is a
+directory on your file system.  You "activate" a project by opening a
+terminal and changing to its directory. That's all. Almost all. Read
+on.
 
-There are different types of "projects".  You don't want to have them
-all under a single top-level directory.  You will have different
-**root directories** containing projects.  We suggest the following
-naming conventions.
+There are different types of "projects".  A **Django project**
+contains at least two files :xfile:`manage.py` and
+:xfile:`settings.py`.  For **Atelier**, a project must contain at
+least a file :xfile:`tasks.py`.  An *Atelier* project can contain one
+or more *Django* projects.
+
+- An atelier project usually corresponds to a public code repository
+  (using Git or Mercurial). But you can have unpublished projects
+  which have no repo at all.
+- An atelier project usually corresponds to a given Python package to
+  be published on PyPI.
+- An atelier project can have a number of Sphinx document trees
+  (default is one tree named :file:`docs`).
+
+You will have different **root directories** containing projects.
+You don't want to have them all under a single top-level directory.
+We suggest the following naming conventions.
 
 .. xfile:: ~/repositories
 
-    The :file:`~/repositories` directory is your collection of
-    repositories of projects for which you are not the author, but you
-    cloned a copy of the development repository, as explained in
-    :ref:`lino.dev.install` or the installation instructions for
-    :ref:`cosi`, :ref:`welfare`, :ref:`voga`.
+    The :file:`~/repositories` directory is your collection of code
+    repositories of projects for which you cloned a copy. We created
+    this directory in :ref:`lino.dev.install`.
 
 .. xfile:: ~/projects
 
@@ -35,8 +46,9 @@ naming conventions.
 
 .. xfile:: ~/repositories/book/lino_book/projects
 
-    The Lino Book comes with a set of Django demo projects. These are
-    maintained by the Lino team. 
+    The Lino Book comes with a set of Django demo projects maintained
+    by the Lino team.  For example, ``min1`` is one of the Django
+    projects included in the ``book`` project.
 
 
 Navigating between projects
@@ -58,7 +70,6 @@ your :xfile:`~/.bash_aliases` which looks like this::
         return -1
     }
 
-
 This adds a new shell command :command:`go` to your terminal:
 
 .. command:: go
@@ -75,25 +86,8 @@ Now you should be able to do::
 Configuring atelier
 ===================
 
-We also use a tool called :mod:`atelier`.  For :mod:`atelier`, a
-project is a directory on your file system which contains at least a
-file :xfile:`tasks.py`.  That :xfile:`tasks.py` file brings a whole
-series of `invoke <http://www.pyinvoke.org/>`_ commands to your
-project. For example :command:`inv prep`, :command:`inv test`,
-:command:`inv bd`, :command:`inv pd` etc.
-
-- An atelier project must have a file :xfile:`tasks.py`. Everything
-  else is optional.
-- An atelier project usually corresponds to a public code repository
-  (using Git or Mercurial). But you can have unpublished projects
-  which have no repo at all.
-- An atelier project usually corresponds to a given Python package to
-  be published on PyPI.
-- An atelier project can have a number of Sphinx document trees
-  (default is one tree named :file:`docs`).
-
-  
-You must tell atelier the list of your projects. That's done in your
+To get a full Lino development environment, you must tell atelier the
+list of your projects. That's done in your
 :xfile:`~/.atelier/config.py` file. Create the directory and the file,
 with the following content::
 
@@ -148,29 +142,27 @@ Here are some useful aliases and functions for your
 Usage examples
 ==============
 
-You can now play with these commands.
+You can now play around in your development environment.
 
-To see a list of your atelier projects, type::
+See a list of your atelier projects::
 
     $ pp -l
-
-The output should be something like::
-  
-    ========= ========================================== ========= ========================
-     Project   URL                                        Version   doctrees
-    --------- ------------------------------------------ --------- ------------------------
-     atelier   http://atelier.lino-framework.org          1.0.2     docs
-     lino      http://www.lino-framework.org              1.7.6     docs
-     xl        http://www.lino-framework.org              1.7.5     docs
-     noi       http://noi.lino-framework.org              0.0.3     docs
-     cosi      http://cosi.lino-framework.org             0.0.3     docs
-     welfare   http://welfare.lino-framework.org          1.1.26    docs, docs_de, docs_fr
-     avanti    http://avanti.lino-framework.org/          2017.1.0  docs
-     presto    http://presto.lino-framework.org           0.0.1     docs
-     voga      http://voga.lino-framework.org             0.0.4     docs
-     ext6      http://www.lino-framework.org              0.0.1     docs
-     book      http://www.lino-framework.org              1.7.4     docs
-    ========= ========================================== ========= ========================
+    ========= ========= ========================================== ========================
+     Project   Status    URL                                        doctrees
+    --------- --------- ------------------------------------------ ------------------------
+     lino      master!   http://www.lino-framework.org              docs
+     xl        master    http://www.lino-framework.org              docs
+     noi       master    http://noi.lino-framework.org              docs
+     cosi      master    http://cosi.lino-framework.org             docs
+     avanti    master    http://avanti.lino-framework.org/          docs
+     vilma     master    http://vilma.lino-framework.org            docs
+     care      master    http://care.lino-framework.org             docs
+     tera      master    http://tera.lino-framework.org             docs
+     book      master!   http://www.lino-framework.org              docs
+     voga      master    http://voga.lino-framework.org             docs
+     welfare   master    http://welfare.lino-framework.org          docs, docs_de, docs_fr
+     amici     master    http://amici.lino-framework.org            docs
+    ========= ========= ========================================== ========================
 
 
 Change to :file:`~/repositories/lino` and download the latest version
@@ -179,7 +171,7 @@ of Lino::
   $ go lino
   $ git pull
   
-Run :cmd:`inv prep` followed by :cmd:`inv test` in :ref:`book`::
+Run the full test suite in :ref:`book`::
 
   $ go book
   $ inv prep test

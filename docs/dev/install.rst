@@ -7,8 +7,8 @@ Installing Lino
 
 .. _fabric: http://www.fabfile.org/
 .. _invoke: http://www.pyinvoke.org/
-.. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _atelier: http://atelier.lino-framework.org/
+.. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino **development
@@ -295,47 +295,16 @@ The output will be about 60 lines of text, here is an excerpt::
 
 
 
-Initialize the demo databases
-=============================
-
-The Lino Book contains a series of demo projects, each of which has
-its own sqlite database. These databases need to be initialized before you
-can use these projects.
-
-The easiest way to do this is to run the :cmd:`inv prep` command
-from within your copy of the :ref:`book` repository.
-This will find all projects in :mod:`lino_book.projects` and initialise the database with demo data::
-
-    $ cd ~/repositories/book
-    $ inv prep
-
-The ``inv`` command has been installed on your system (more precisely:
-into your Python environment) by the invoke_ package, which itself has
-been required by atelier_, which is another Python package developed
-by Luc.
-
-The ``inv`` command is a kind of make tool which works by looking for
-a file named :xfile:`tasks.py`. The Lino repository contains such a
-file, and this file uses :mod:`lino.invlib`, which (together with
-:mod:`atelier.invlib` from which it inherits) defines a whole series
-of commands like :cmd:`inv prep` or :cmd:`inv test`.
-
-Note that this is the same as doing the following for each project::
-
-    $ cd ~/repositories/book/lino_book/projects/min1
-    $ python manage.py prep
-
-You can learn more about atelier_ in :doc:`projects`
-
-
 Running your first Lino site
 ============================
 
 You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
-a development server::
-
+a development server. Before starting a web server on a project for
+the first time, you must initializing its database using the
+:manage:`prep` command::
   
-    $ cd lino_book/projects/min1
+    $ cd ~/repositories/book/lino_book/projects/min1
+    $ python manage.py prep
     $ python manage.py runserver
 
 Now start your browser, point it to http://127.0.0.1:8000/ and you
@@ -346,6 +315,7 @@ should see something like this:
 Congratulations! Enjoy the first Lino application running on your
 machine!
 
+
 Exercises
 =========
 
@@ -354,11 +324,25 @@ Exercises
 #.  Note the main welcome screen (dashboard) and the main menu.
     
 #.  Create some persons and organizations. Don't enter lots of
-    accurate data because we are going to throw it away in the
-    next step.
+    accurate data because we are going to throw it away soon.
 
-#.  Lino lacks a good document that describes how to use Lino
-    applications in general.
+#.  Check :doc:`/user/basics` and tell us what's missing there.
+
+
+Note
+====
+
+Note that `min1` is only one of the many demo projects included in the
+Lino Book. Each demo project has its own sqlite database.  You can
+initialize them all in one by running the :cmd:`inv prep` command from
+within any directory of your ``book`` repository::
+  
+    $ cd ~/repositories/book
+    $ inv prep
+
+This will find all projects in :envvar:`demo_projects` and populate
+their database with demo data. More about this in :doc:`invlib`.
+ 
 
 
 Where to go from here

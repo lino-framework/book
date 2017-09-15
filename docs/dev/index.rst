@@ -25,12 +25,12 @@ Getting started
 1.  :doc:`/dev/install` : System requirements. Set up a Python
     environment. Run your first Lino applications.
 
-2.  :doc:`/tutorials/hello/index` : The first Lino application running
-    on your machine. It's easier than with Django. A ``settings.py``
-    and a ``manage.py``.
+2.  :doc:`/tutorials/hello/index` : The first Lino project on your
+    machine. It's easier than with Django. A ``settings.py`` and a
+    ``manage.py``.
 
-3. :doc:`projects` : Finish the configuration of your your Lino
-   development environment.
+3. :doc:`projects` : configure and discover your Lino development
+   environment.
    
    
 .. _lino.dev.first:
@@ -234,6 +234,7 @@ Special topics
    /tutorials/input_mask/index
 
    setup
+   invlib
 
 Drafts
 ======
