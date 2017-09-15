@@ -16,8 +16,8 @@ on.
 There are different types of "projects".  A **Django project**
 contains at least two files :xfile:`manage.py` and
 :xfile:`settings.py`.  For **Atelier**, a project must contain at
-least a file :xfile:`tasks.py`.  An *Atelier* project can contain one
-or more *Django* projects.
+least a file :xfile:`tasks.py`.  An *Atelier project* can contain one
+or more *Django projects*.
 
 - An atelier project usually corresponds to a public code repository
   (using Git or Mercurial). But you can have unpublished projects
