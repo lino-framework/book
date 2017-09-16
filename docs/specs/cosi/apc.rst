@@ -124,11 +124,10 @@ This demo database contains exactly 48 entries:
 200
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-16
+15
 
-The 16 is because Lino has a hard-coded default value of  
-returning only 15 rows when no limit has been specified
-(there is one extra row for adding new records).
+The 15 is because Lino has a hard-coded default value of  
+returning only 15 rows when no limit has been specified.
 
 In versions after :blogref:`20130903` you can change that limit 
 for a given table by overriding the 
@@ -154,7 +153,7 @@ Same request returns now 25 data rows:
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-26
+25
 
 To remove the limit altogether, you can say:
 
@@ -165,7 +164,7 @@ and the same request now returns all 48 data rows:
 >>> res = test_client.get(url,REMOTE_USER='robin')
 >>> result = json.loads(res.content)
 >>> print(len(result['rows']))
-49
+48
 
 
 
