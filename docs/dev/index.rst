@@ -89,11 +89,20 @@ Lino is for writing **customized** database applications. That means
 that a development project starts when the customer explains to the
 analyst their needs.
 
-20. :doc:`lets` : Describes some techniques for 
-    Write a new Lino application from scratch, in the
-    hope that this helps you with writing your own Lino application.
+20. :doc:`analysis` : 
+#.  :doc:`lets` : In this tutorial we write a new Lino application
+    from scratch, with focus on some techniques for doing analysis.
 
-#.  :doc:`analysis` : 
+.. toctree::
+   :hidden:
+              
+   analysis
+   lets
+   
+
+Lino design goals
+=================
+   
 #.  :doc:`/about/faq`
 #.  :doc:`/about/ui`
 #.  :doc:`/about/features`
@@ -104,8 +113,6 @@ analyst their needs.
 .. toctree::
    :hidden:
               
-   lets
-   analysis
    /about/faq
    /about/ui
    /about/features

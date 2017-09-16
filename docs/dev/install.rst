@@ -230,31 +230,6 @@ command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
 
 
-Upgrading the sources
-=====================
-
-Actually the Lino version number is not enough when using a developer
-installation of Lino.  The Lino codebase repository changes almost
-every day, while the version is incremented only when we do an
-official release to PyPI.
-
-So as a developer you will simply upgrade your copy of the code
-repositories often.  Here is a quick series of commands for getting
-the latest version::
-
-  $ cd repositories/lino ; git pull
-  $ cd repositories/xl ; git pull
-  $ cd repositories/noi ; git pull
-  $ cd repositories/care ; git pull
-  $ cd repositories/care ; git pull
-  $ cd repositories/vilma ; git pull
-  $ cd repositories/avanti ; git pull
-  $ cd repositories/tera ; git pull
-  $ cd repositories/book ; git pull
-  $ find repositories -name '*.pyc' -delete
-
-This process is fully described in :doc:`pull`.
-
 Troubleshooting
 ===============
 
@@ -300,7 +275,7 @@ Running your first Lino site
 
 You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
 a development server. Before starting a web server on a project for
-the first time, you must initializing its database using the
+the first time, you must initialize its database using the
 :manage:`prep` command::
   
     $ cd ~/repositories/book/lino_book/projects/min1
@@ -320,29 +295,26 @@ Exercises
 =========
 
 #.  Log in and play around.
-#.  Note that this site offers three languages.
-#.  Note the main welcome screen (dashboard) and the main menu.
     
-#.  Create some persons and organizations. Don't enter lots of
-    accurate data because we are going to throw it away soon.
+#.  Check :doc:`/user/basics` and tell us what's missing in that
+    document.
+    
+#.  Create some persons and organizations. Don't enter lots of data
+    because we are going to throw it away soon.
 
-#.  Check :doc:`/user/basics` and tell us what's missing there.
 
+..  Note that `min1` is only one of the many demo projects included in the
+    Lino Book.  
+    Each demo project has its own sqlite database.  You can
+    initialize them all in one by running the :cmd:`inv prep` command from
+    within any directory of your ``book`` repository::
 
-Note
-====
+        $ cd ~/repositories/book
+        $ inv prep
 
-Note that `min1` is only one of the many demo projects included in the
-Lino Book. Each demo project has its own sqlite database.  You can
-initialize them all in one by running the :cmd:`inv prep` command from
-within any directory of your ``book`` repository::
-  
-    $ cd ~/repositories/book
-    $ inv prep
+    This will find all projects in :envvar:`demo_projects` and populate
+    their database with demo data. More about this in :doc:`invlib`.
 
-This will find all projects in :envvar:`demo_projects` and populate
-their database with demo data. More about this in :doc:`invlib`.
- 
 
 
 Where to go from here

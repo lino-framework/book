@@ -8,10 +8,10 @@ Usage:
   $0 [ <envname> ]
 
 When invoked with an envname, then it creates both that virtualenv and
-a directory repositories.
+a directory 'repositories'.
 
 Without an envname it assumes that you want to install Lino into the
-current environment and that you are in your existing repositories
+current virtualenv and that you are in your existing repositories
 directory.
 
 USAGE
@@ -55,18 +55,19 @@ function install_them_all {
     install xl lino-framework xl
     install cosi lino-framework cosi
     install noi lino-framework noi
-    install presto lino-framework presto
     install welfare lino-framework welfare
     install voga lino-framework voga
     install avanti lino-framework avanti
     install vilma lino-framework vilma
     install care lino-framework care
+    install tera lino-framework tera
     install book lino-framework book
     install ext6 lino-framework extjs6
 
     # the following are not really needed
-    install patrols lsaffre lino-patrols
-    install logos lsaffre lino-logos
+    # install presto lino-framework presto
+    # install patrols lsaffre lino-patrols
+    # install logos lsaffre lino-logos
 
 }
 

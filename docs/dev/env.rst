@@ -5,7 +5,7 @@
 Setting up your work environment
 ================================
 
-Work in progress. Read at your own risk.
+Work in progress. Read and follow at your own risk.
 
 .. how to test just this document:
 
@@ -14,6 +14,18 @@ Work in progress. Read at your own risk.
 .. contents::
     :depth: 1
     :local:
+
+Quickly installing the Lino SDK into a new virtualenv
+=====================================================
+
+Here is how to quickly install the Lino SDK into a new virtualenv::
+
+  $ cd ~/repositories
+  $ chmod +x book/docs/dev/install_dev_projects.sh
+  $ book/docs/dev/install_dev_projects.sh
+
+
+       
 
 Installing the Lino SDK
 =======================
