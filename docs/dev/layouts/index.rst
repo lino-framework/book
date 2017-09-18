@@ -30,7 +30,7 @@ The simplest occurence of layouts is the :attr:`column_names
 used to define which fields should be displayed as the columns of that
 table.
 
-Code example (from :doc:`lets`)::
+Code example (from :doc:`/dev/lets/index`)::
 
     class Products(dd.Table):
         ...
@@ -64,7 +64,7 @@ example::
     
 Result:    
 
-.. image:: b.png
+.. image:: ../lets/b.png
   :scale: 50 %
 
 Note that the names ``id``, ``name``, ``place`` and ``email`` in the
@@ -94,7 +94,7 @@ example::
     
 Result:    
 
-.. image:: members_insert.png
+.. image:: ../lets/members_insert.png
   :scale: 50 %
 
 
@@ -117,12 +117,12 @@ There are two other places where Lino uses layouts:
 
 - The *parameter panel* of a table, specified as the
   :attr:`params_layout <lino.core.actors.Actor.params_layout>` attribute
-  and containing an instance of :class:`ParamsLayout`.  See :doc:`parameters`.
+  and containing an instance of :class:`ParamsLayout`.  See :doc:`/dev/parameters`.
 
 - The optional *parameter dialog* of a custom action, specified as the
   :attr:`params_layout <lino.core.actions.Action.params_layout>`
   attribut and containing an instance of
-  :class:`ActionParamsLayout`). See :doc:`action_parameters`.
+  :class:`ActionParamsLayout`). See :doc:`/dev/action_parameters`.
 
 Data elements
 =============

@@ -21,7 +21,7 @@ Note that we are **not** talking about Internationalization (i18n)
 here.  *Internationalization* is when the *user interface* is in
 different languages.  Lino has nothing to add to the existing Django
 techniques about `Internationalization
-<https://docs.djangoproject.com/en/dev/topics/i18n/>`__, that's why we
+<https://docs.djangoproject.com/en/1.11/topics/i18n/>`__, that's why we
 deliberately didn't translate the user interface in this tutorial.
 
 

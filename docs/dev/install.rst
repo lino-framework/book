@@ -285,7 +285,7 @@ the first time, you must initialize its database using the
 Now start your browser, point it to http://127.0.0.1:8000/ and you
 should see something like this:
 
-.. image:: ../tutorials/hello/hello1.png
+.. image:: hello/hello1.png
 
 Congratulations! Enjoy the first Lino application running on your
 machine!
@@ -303,22 +303,9 @@ Exercises
     because we are going to throw it away soon.
 
 
-..  Note that `min1` is only one of the many demo projects included in the
-    Lino Book.  
-    Each demo project has its own sqlite database.  You can
-    initialize them all in one by running the :cmd:`inv prep` command from
-    within any directory of your ``book`` repository::
-
-        $ cd ~/repositories/book
-        $ inv prep
-
-    This will find all projects in :envvar:`demo_projects` and populate
-    their database with demo data. More about this in :doc:`invlib`.
-
-
 
 Where to go from here
 =====================
 
 We now suggest to create :doc:`your first local Lino project
-</tutorials/hello/index>`.
+<hello/index>`.

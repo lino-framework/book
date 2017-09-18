@@ -54,7 +54,7 @@ Two remarks before diving into above documents:
   interface.
 
 - Of course you can learn the whole `Getting started
-  <https://docs.djangoproject.com/en/dev/intro/>`_ section if you like
+  <https://docs.djangoproject.com/en/1.11/intro/>`_ section if you like
   it, just be aware that with Lino you won't need many things
   explained there.
 
@@ -369,9 +369,8 @@ is easy and fun because you can write fixtures in Python.
     because `initdb` does nothing when database is `:memory:`.
     
 You might now want to read more about :doc:`Python fixtures
-</tutorials/dumpy/index>` or Lino's special approach for
-:doc:`migrating data </dev/datamig>`...  or simply stay with us and
-learn by doing!
+</dev/dumpy/index>` or Lino's special approach for :doc:`migrating
+data </dev/datamig>`...  or simply stay with us and learn by doing!
 
   
 Starting the web interface

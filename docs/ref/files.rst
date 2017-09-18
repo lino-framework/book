@@ -13,16 +13,16 @@ Deserves more documentation.
 
 Every Django app usually has a file `models.py`.  See `How to write
 reusable apps
-<https://docs.djangoproject.com/en/dev/intro/reusable-apps/>`_
+<https://docs.djangoproject.com/en/1.11/intro/reusable-apps/>`_
 
 
 .. xfile:: urls.py
 
-See http://docs.djangoproject.com/en/dev/intro/tutorial01/#creating-a-project
+See http://docs.djangoproject.com/en/1.11/intro/tutorial01/#creating-a-project
 
 .. xfile:: manage.py
 
-See http://docs.djangoproject.com/en/dev/intro/tutorial01/#creating-a-project
+See http://docs.djangoproject.com/en/1.11/intro/tutorial01/#creating-a-project
 
 .. xfile:: __init__.py
 

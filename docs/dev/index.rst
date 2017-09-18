@@ -19,36 +19,39 @@ Getting started
    :hidden:
 
    install
-   /tutorials/hello/index
-   projects
+   hello/index
+   env
    pull
+   projects
 
 #.  :doc:`/dev/install` : System requirements. Set up a Python
     environment. Run your first Lino applications.
 
-#.  :doc:`/tutorials/hello/index` : The first Lino project on your
-    machine. It's easier than with Django. A ``settings.py`` and a
-    ``manage.py``.
+#.  :doc:`hello/index` : The first Lino project on your machine.
 
-#. :doc:`projects` : configure and discover your Lino development
-   environment.
+#.  :doc:`env` : set up your Lino development environment.
+   
+#.  :doc:`pull`
+   
+#.  :doc:`projects` : play with the demo projects
 
-#. :doc:`pull` 
    
    
-Lino and Django
-===============
+From Django to Lino
+===================
 
 .. toctree::
    :hidden:
 
    polls/index
    django
+   models
    /about/lino_and_django
    initdb
-   /tutorials/dumpy/index
+   dumpy/index
    tables
-   layouts
+   layouts/index
+   choicelists
    perms
    users
    settings
@@ -60,20 +63,24 @@ Lino and Django
 
 #.  :doc:`django` : Lino applications are Django projects.
 
+#.  :doc:`models`
+
 #.  :doc:`/about/lino_and_django`
     
 #.  :doc:`initdb` : More about the ``initdb`` and ``prep``
     commands.
 
-#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+#.  :doc:`dumpy/index` : Playing with Python fixtures.
     Writing your own Python fixtures.
 
 #.  :doc:`tables` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
 
-#.  :doc:`layouts` : About layouts, detail windows, data elements and
+#.  :doc:`layouts/index` : About layouts, detail windows, data elements and
     panels.
 
+#.  :doc:`choicelists`
+    
 #.  :doc:`users`
 
 #.  :doc:`perms`
@@ -90,14 +97,14 @@ that a development project starts when the customer explains to the
 analyst their needs.
 
 20. :doc:`analysis` : 
-#.  :doc:`lets` : In this tutorial we write a new Lino application
+#.  :doc:`lets/index` : In this tutorial we write a new Lino application
     from scratch, with focus on some techniques for doing analysis.
 
 .. toctree::
    :hidden:
               
    analysis
-   lets
+   lets/index
    
 
 Lino design goals
@@ -186,7 +193,6 @@ Getting acquaintained
 #.  :doc:`i18n` : About "internationalization" and "translatable strings".
 #.  :doc:`menu` : Standard items of a main menu
 #.  :doc:`actors`
-#.  :doc:`choicelists`
 #.  :doc:`parameters`
 #.  :doc:`virtualfields`
 #.  :doc:`ar` : Using action requests
@@ -208,7 +214,6 @@ Getting acquaintained
    :maxdepth: 1
    :hidden:
 
-   lets
    datamig
    application
    summaries
@@ -221,7 +226,6 @@ Getting acquaintained
    i18n
    menu
    actors
-   choicelists
    parameters
    ar
    virtualfields
@@ -317,6 +321,5 @@ Other
    ml/index
    /team/index
    interview
-   env
 
   

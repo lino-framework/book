@@ -9,7 +9,7 @@ Die Kommunikation mit dem Terminverwalterprogramm geschieht
 über `iCalendar <http://en.wikipedia.org/wiki/ICalendar>`_-Dateien, 
 die per Mail an den Benutzer geschickt werden.
 E-Mails verschicken aus Django raus ist ja 
-`einfach <http://docs.djangoproject.com/en/dev/topics/email/>`_.
+`einfach <http://docs.djangoproject.com/en/1.11/topics/email/>`_.
 
 Statt E-Mails mit iCal-Dateien zu verschicken, könnte der Lino-Server vielleicht auch einen Online-Kalender
 

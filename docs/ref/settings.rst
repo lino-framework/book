@@ -21,7 +21,7 @@ unchanged, you can configure your logging preferences using the
     LOGGING = dict(filename=None, level='DEBUG')
 
 You don't *need* to use Lino's logging config. In that case, refer to
-https://docs.djangoproject.com/en/dev/ref/settings/#logging-config
+https://docs.djangoproject.com/en/1.11/ref/settings/#logging-config
 
 
 .. setting:: USE_L10N
@@ -29,25 +29,25 @@ https://docs.djangoproject.com/en/dev/ref/settings/#logging-config
 Lino sets this automatically when
 :attr:`lino.core.site.Site.languages` is not `None`.
 
-See http://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
+See http://docs.djangoproject.com/en/1.11/ref/settings/#use-l10n
 
 .. setting:: LANGUAGE_CODE
 
 Lino sets this automatically when
 :attr:`lino.core.site.Site.languages` is not `None`.
 
-See http://docs.djangoproject.com/en/dev/ref/settings/#language-code
+See http://docs.djangoproject.com/en/1.11/ref/settings/#language-code
 
 .. setting:: DATABASES
 
 Lino sets this to `SQLite` on a file `default.db` in your 
 :attr:`project_dir <lino.core.site.Site.project_dir>`.
 
-See http://docs.djangoproject.com/en/dev/ref/settings/#databases
+See http://docs.djangoproject.com/en/1.11/ref/settings/#databases
   
 .. setting:: MIDDLEWARE_CLASSES
 
-  See http://docs.djangoproject.com/en/dev/ref/settings/#middleware_classes
+  See http://docs.djangoproject.com/en/1.11/ref/settings/#middleware_classes
   
 .. setting:: LANGUAGES
 
@@ -56,7 +56,7 @@ Lino sets this automatically when your :attr:`SITE.languages
 
 Used by :class:`lino.modlib.fields.LanguageField`.
 
-See http://docs.djangoproject.com/en/dev/ref/settings/#languages
+See http://docs.djangoproject.com/en/1.11/ref/settings/#languages
 
 .. setting:: ROOT_URLCONF
 
@@ -65,7 +65,7 @@ This is set to the value of your :class:`Site <lino.core.site.Site>`\
 (which itself defaults to :mod:`lino.core.urls`).
 
 See `URL dispatcher
-<https://docs.djangoproject.com/en/dev/topics/http/urls/>`_ section of
+<https://docs.djangoproject.com/en/1.11/topics/http/urls/>`_ section of
 the Django documentation.
 
 

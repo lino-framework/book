@@ -7,12 +7,12 @@ Writing your own Python fixtures
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_dumpy
+    $ doctest docs/dev/dumpy/index.rst
 
    doctest init::
 
     >>> from atelier.sheller import Sheller
-    >>> shell = Sheller('docs/tutorials/dumpy')
+    >>> shell = Sheller('docs/dev/dumpy')
 
 
 This tutorial shows how to use :doc:`the Python serializer
@@ -115,7 +115,7 @@ Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
-Loading data from .../docs/tutorials/dumpy/fixtures/dumpy1.py
+Loading data from .../docs/dev/dumpy/fixtures/dumpy1.py
 Installed 2 object(s) from 1 fixture(s)
 
 Let's use the :manage:`show` command to see whether our data has been

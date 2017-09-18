@@ -18,7 +18,7 @@ GenericForeignKey
 -----------------
 
 See `Django docs
-<https://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericForeignKey>`_
+<https://docs.djangoproject.com/en/1.11/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericForeignKey>`_
 
 .. _ise:
 

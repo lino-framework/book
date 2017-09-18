@@ -54,6 +54,8 @@ Accounting stuff
    bevat
    bevats
    
+ 
+   
 Application-specific specs
 ==========================
     
@@ -65,6 +67,7 @@ Application-specific specs
    avanti/index
    tera/index
    polly
+   care
    
    
 Technical stuff

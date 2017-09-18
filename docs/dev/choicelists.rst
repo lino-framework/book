@@ -22,13 +22,13 @@ a :class:`ChoiceList <lino.core.choicelists.ChoiceList>` instead.
     
 
 ChoiceLists are **actors**.  They are globally accessible in
-:data:`rt.modules` using their *app label* and their name.
+:data:`rt.models` using their *app label* and their name.
 
 For example the :class:`Genders <lino.modlib.system.choicelists.Genders>`
 choicelist is part of the :mod:`lino.modlib.system` plugin, so its
 *app label* is ``system``:
 
->>> rt.modules.system.Genders
+>>> rt.models.system.Genders
 lino.modlib.system.choicelists.Genders
 
 Like every Actor, ChoiceLists are **never instantiated**. They are

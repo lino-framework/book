@@ -34,7 +34,7 @@ Packages
 - :ref:`voga`
 - :ref:`welfare`
 - :ref:`avanti`
-- :ref:`presto`
+- :ref:`tera`
 - :ref:`extjs6`.
 - ``algus``
 
@@ -58,10 +58,10 @@ Package dependencies
     lino_noi -> lino_xl; 
     lino_cosi -> lino_xl; 
     lino_welfare -> lino_cosi;
-    lino_voga -> lino_cosi;
-    lino_presto -> lino_cosi;
-    lino_presto -> lino_noi;
-    lino_avanti -> lino_noi;
+    lino_voga -> lino_xl;
+    lino_tera -> lino_cosi;
+    lino_tera -> lino_xl;
+    lino_avanti -> lino_xl;
 
    }
 
