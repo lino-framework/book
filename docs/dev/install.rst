@@ -304,8 +304,3 @@ Exercises
 
 
 
-Where to go from here
-=====================
-
-We now suggest to create :doc:`your first local Lino project
-<hello/index>`.

@@ -35,6 +35,8 @@ Getting started
    
 #.  :doc:`projects` : play with the demo projects
 
+**When you reached this point, contact your mentor** for a meeting in
+order to check where you are and what are your priorities.
    
    
 From Django to Lino
