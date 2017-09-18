@@ -4,10 +4,15 @@
 Lino Tera specs
 ===============
 
+**Lino Tera** (from Italian *terapia*, therapy) is a Lino application
+designed to be used in a center for `sociopsychological
+<https://en.wikipedia.org/wiki/Social_psychology>`_ consultations.
+
 
 .. toctree::
    :maxdepth: 1
   
    misc
    tim2lino
+   products
    

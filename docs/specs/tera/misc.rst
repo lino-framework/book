@@ -7,7 +7,7 @@ Lino Tera : a first overview
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_tera
+    $ doctest docs/specs/tera/products.rst
     
     doctest init
 
@@ -15,10 +15,6 @@ Lino Tera : a first overview
     >>> startup('lino_book.projects.lydia.settings.doctests')
     >>> from lino.api.doctest import *
     >>> from django.db import models
-
-**Lino Tera** (from Italian *terapia*, therapy) is a Lino application
-designed to be used in a center for `sociopsychological
-<https://en.wikipedia.org/wiki/Social_psychology>`_ consultations.
 
 The demo project :mod:`lino_book.projects.lydia` is used for testing
 the following document.
@@ -38,14 +34,8 @@ True
 False
 
 
-Time tracking (Dienstleistungen)
-================================
-
-Lino Tera doesn't use *time tracking* like :ref:`noi`.
-
-
-Partners
-========
+Partner types
+=============
 
 >>> dd.plugins.contacts
 lino_tera.lib.contacts (extends_models=['Person'])

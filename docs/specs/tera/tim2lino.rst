@@ -6,7 +6,7 @@ Migrating from TIM to Lino Tera
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_tera_tim2lino
+    $ doctest docs/specs/tera/tim2lino.rst
     
     doctest init
 
