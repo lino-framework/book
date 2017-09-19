@@ -1,3 +1,5 @@
+.. _dev.projects.min:
+
 =========
 Lino Mini
 =========
