@@ -39,8 +39,30 @@ Getting started
 order to check where you are and what are your priorities.
    
    
-From Django to Lino
-===================
+Diving into Lino
+================
+
+In the first section we deliberately remained outside of the real code
+because first things first.  Now you hopefully feel self-confident
+about your work environment and know how to run demo projects.  We are
+ready to dive *into* Lino.
+
+But first we must warn you: The second section is still quite unstable
+and has big holes. The important thing to keep in mind is: you must
+now start to **learn how to learn**. A few guidelines for under your
+pillow:
+
+- Inspect the examples and read the code.
+- Don't hesitate changing the source code and see what it does
+- When you get error messages, don't try to get rid of them in first
+  place, rather understand what they mean and learn from them.
+- Read Hamza's tutorial `Discovering Lino using your debugger
+  <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
+
+That said, here is our attempt at explaining Lino from A to Z.  Don't
+be afraid of asking questions. Your questions are important feedback
+for us. Formulating questions is already a contribution for making
+Lino better.
 
 .. toctree::
    :hidden:
@@ -48,6 +70,7 @@ From Django to Lino
    polls/index
    django
    models
+   mixins
    /about/lino_and_django
    initdb
    dumpy/index
@@ -63,9 +86,11 @@ From Django to Lino
     application from Django’s tutorial into a Lino application. This
     will illustrate some differences between Lino and Django.
 
-#.  :doc:`django` : Lino applications are Django projects.
+#.  :doc:`django`
 
 #.  :doc:`models`
+
+#.  :doc:`mixins`
 
 #.  :doc:`/about/lino_and_django`
     
@@ -178,9 +203,7 @@ Getting acquaintained
 =====================
 
 
-60. Read Hamza's tutorial `Discovering Lino using your debugger
-    <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
-#.  :doc:`datamig`
+60. :doc:`datamig`
 #.  :doc:`application` : An app is not an application.
 #.  :doc:`summaries` : Introduction to table summaries.
 #.  :doc:`plugins` : Why we need plugins. Configuring plugins.
@@ -318,7 +341,6 @@ Other
    ad
    dd
    rt
-   mixins
    /tutorials/index
    ml/index
    /team/index

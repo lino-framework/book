@@ -11,7 +11,7 @@ Answering to invalid requests
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min1.settings.doctests')
+    >>> startup('lino_book.projects.min2.settings.doctests')
     >>> from lino.api.doctest import *
 
 

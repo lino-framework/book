@@ -19,11 +19,11 @@ directory on your file system.  You "activate" a project by opening a
 terminal and changing to its directory. That's all. Almost all. Read
 on.
 
-There are different types of "projects".  A **Django project**
-contains at least two files :xfile:`manage.py` and
-:xfile:`settings.py`.  For **Atelier**, a project must contain at
-least a file :xfile:`tasks.py`.  An *Atelier project* can contain one
-or more *Django projects*.
+There are different types of "projects".  A **Django project** is
+where you can invoke a :manage:`runserver`.  It contains at least a
+:xfile:`settings.py` and usually a file :xfile:`manage.py`.  For
+**Atelier**, a project must contain at least a file :xfile:`tasks.py`.
+An *Atelier project* can contain one or more *Django projects*.
 
 - An atelier project usually corresponds to a public code repository
   (using Git or Mercurial). But you can have unpublished projects
@@ -206,7 +206,13 @@ If that happens after midnight::
          pick another name than "go".
 
 
-         
+Have LibreOffice server running on your machine
+===============================================
+
+Some of the demo examples use :mod:`lino_xl.lib.appypod` for producing
+printable pdf files.  To have this running, you should install the
+LibreOffice server on your system as described in :doc:`/admin/oood`.
+
        
 
 Quickly installing the Lino SDK into a new virtualenv
@@ -220,27 +226,12 @@ Here is how to quickly install the Lino SDK into a new virtualenv::
   $ chmod +x book/docs/dev/install_dev_projects.sh
   $ book/docs/dev/install_dev_projects.sh
 
-
-       
-
-Installing the Lino SDK
-=======================
-
-Not much tested. Read and follow at your own risk.
-
 Automated way for cloning and installing the code repositories::
 
   $ cd ~/repositories
   $ wget https://raw.githubusercontent.com/lino-framework/book/master/docs/dev/install_dev_projects.sh
   $ chmod +x install_dev_projects.sh
   $ ./install_dev_projects.sh
-
-Then you must manually tell :ref:`atelier` about these new projects
-in your :xfile:`~/.atelier/config.py` file.
-
-As a last step you must install the LibreOffice server on your system
-as described in :doc:`/admin/oood`.
-
 
 
 How to switch to the development version of Atelier

@@ -78,7 +78,9 @@ Your first :xfile:`settings.py` file should look as follows:
 Explanations:
 
 #.  :mod:`lino_book.projects.min1` is one of the out-of-the-box
-    projects included in the Lino Book.
+    projects included in the Lino Book. Actually it is the first of a
+    series of projects which is documented in
+    :doc:`/specs/projects/min`.
 
     We import these settings directly into our global namespace using
     the wildcard ``*``. This is necessary because that's how Django
@@ -147,8 +149,8 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, users, xl
-  Apply all migrations: contenttypes, sessions
+  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino_startup, office, printing, staticfiles, system, users, xl
+  Apply all migrations: sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
@@ -162,23 +164,8 @@ Synchronizing apps without migrations:
     Creating table contacts_company
     Creating table contacts_roletype
     Creating table contacts_role
-    Creating table gfks_helptext
-    Creating table cal_remotecalendar
-    Creating table cal_room
-    Creating table cal_priority
-    Creating table cal_eventtype
-    Creating table cal_guestrole
-    Creating table cal_calendar
-    Creating table cal_subscription
-    Creating table cal_task
-    Creating table cal_eventpolicy
-    Creating table cal_recurrentevent
-    Creating table cal_event
-    Creating table cal_guest
     Running deferred SQL...
 Running migrations:
-  Applying contenttypes.0001_initial... OK
-  Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
 Loading data from ...
 Installed ... object(s) from ... fixture(s)
@@ -193,7 +180,8 @@ back to this in :doc:`/dev/initdb`.
 Start the web server
 ====================
 
-Now you can start the development server::
+Now you can invoke :manage:`runserver` to start the development
+server::
 
   $ python manage.py runserver
   

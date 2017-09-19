@@ -8,12 +8,12 @@ Permissions
 
 ..  You can test only this document by issuing:
 
-      $ python setup.py test -s tests.DocsTests.test_perms
+      $ doctest docs/dev/perms.rst
 
     Doctest initialization:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min2.settings.demo')
+    >>> startup('lino_book.projects.min9.settings.demo')
     >>> from lino.api.shell import *
 
 

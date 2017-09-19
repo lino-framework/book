@@ -9,7 +9,7 @@ Countries
 ..  doctest initialization:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min2.settings.doctests')
+    >>> startup('lino_book.projects.min9.settings.doctests')
     >>> from lino.api.doctest import *
 
 This document describes the functionality implemented by the

@@ -97,6 +97,19 @@ defining your :setting:`DATABASES` setting). Compare this to a
 which contains already 82 lines of text (Django version 1.6.9).
 
 
+Settings packages
+=================
+
+In some projects we use a whole package of settings:
+
+- :file:`settings/__init.py` : the base for all modules of this
+  package.
+  
+- :file:`settings/demo.py` : instantiates a :setting:`SITE` variable
+  and thus is designed to be used directly as a
+  :setting:`DJANGO_SETTINGS_MODULE`.
+
+
 
 .. _lino.site_module:
 

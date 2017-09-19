@@ -32,6 +32,8 @@ ns.setup_from_tasks(
         'lino_book.projects.lets2.settings',
         'lino_book.projects.min1.settings.demo',
         'lino_book.projects.min2.settings.demo',
+        'lino_book.projects.min3.settings.demo',
+        'lino_book.projects.min9.settings.demo',
         'lino_book.projects.mti.settings',
         'lino_book.projects.nomti.settings',
         'lino_book.projects.cms.settings.demo',

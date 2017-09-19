@@ -6,10 +6,11 @@ from lino.projects.std.settings import *
 
 
 class Site(Site):
-    title = "Lino Mini 2"
+    title = "Lino Mini 3"
     demo_fixtures = 'std demo demo2'
     user_types_module = 'lino_xl.lib.xl.user_types'
     workflows_module = 'lino_xl.lib.cal.workflows.feedback'
+    layouts_module = 'lino_xl.lib.cal.workflows.feedback'
     use_experimental_features = True
 
     def setup_quicklinks(self, user, tb):
@@ -22,7 +23,9 @@ class Site(Site):
 
         yield 'lino.modlib.system'
         yield 'lino.modlib.users'
-        yield 'lino_xl.lib.contacts'
+        yield 'lino_book.projects.min3.lib.contacts'
         yield 'lino_xl.lib.cal'
         yield 'lino.modlib.export_excel'
+        yield 'lino_xl.lib.phones'
+        yield 'lino.modlib.comments'
 

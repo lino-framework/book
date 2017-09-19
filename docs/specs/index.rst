@@ -68,6 +68,7 @@ Application-specific specs
    tera/index
    polly
    care
+   projects/min
    
    
 Technical stuff
