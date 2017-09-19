@@ -1,8 +1,8 @@
 .. _book.specs.cal:
 
-=================
-Calendar
-=================
+=======================
+The ``calendar`` plugin
+=======================
 
 .. How to test just this document
 
@@ -14,7 +14,12 @@ Calendar
     >>> startup('lino_book.projects.min9.settings.demo')
     >>> from lino.api.doctest import *
 
-This document explains some basic things about Lino's calendar plugin.
+This document explains some basic things about Lino's calendar plugin
+:mod:`lino_xl.lib.cal`.
+
+.. contents::
+  :local:
+
 
 .. currentmodule:: lino_xl.lib.cal
                   
