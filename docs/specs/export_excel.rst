@@ -152,7 +152,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Wed 02/08/2017 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | 2017-09-19 13:09:22.736289 | 2017-08-02 00:00:00 | 13:30:00
+Wed 02/08/2017 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | ... | 2017-08-02 00:00:00 | 13:30:00
 
 
 
@@ -174,7 +174,7 @@ Quand | Workflow | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-mer. 02/08/2017 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | 2017-09-19 13:09:22.736289 | 2017-08-02 00:00:00 | 13:30:00
+mer. 02/08/2017 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | ... | 2017-08-02 00:00:00 | 13:30:00
 
 
 
