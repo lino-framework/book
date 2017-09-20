@@ -262,13 +262,15 @@ Reference
         The language to use when communicating with this partner.
 
            
-.. class:: Person
 .. class:: Persons
+
+    Shows all persons.
+           
+.. class:: Person
 
     A physical person and an individual human being.
     See also :ref:`lino.tutorial.human`.
 
-    The :class:`Persons` table shows all persons.
 
 .. class:: Company
 .. class:: Companies
