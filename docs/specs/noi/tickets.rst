@@ -325,12 +325,12 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========
- ID   Summary             Site
----- ------------------- --------
- 5    Cannot create Foo   pypi
- 3    Baz sucks           welsch
-==== =================== ========
+==== =================== ========== ============== ========
+ ID   Summary             Priority   Workflow       Site
+---- ------------------- ---------- -------------- --------
+ 5    Cannot create Foo   Normal     **Sleeping**   pypi
+ 3    Baz sucks           Normal     **Open**       welsch
+==== =================== ========== ============== ========
 <BLANKLINE>
 
 
