@@ -55,15 +55,7 @@ True
 
 Some client logs in and gets some data:
 
->>> # client = Client()
->>> res = test_client.post('/auth', data=dict(username="rolf", password="1234"))
->>> res.status_code
-200
->>> r = json.loads(res.content)
->>> print(r['message'])
-Now logged in as u'rolf'
->>> r['success']
-True
+>>> test_client.force_login(rt.login('rolf').user)
 
 The user uses the main menu to open sales.InvoicesByJournal, which
 will do the following AJAX call to get its data:

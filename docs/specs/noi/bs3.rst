@@ -6,9 +6,7 @@ A read-only interface to Team using generic Bootstrap
 
 .. How to test just this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_bs3
-    $ py.test -k test_bs3
-
+    $ doctest docs/specs/noi/bs3.rst
     
     doctest init:
 
@@ -37,33 +35,7 @@ This does not use :mod:`lino.modlib.extjs` at all.
     200
 
 
-
-Public tickets
-==================
-
-The demo database contains the following "public" tickets:
-
->>> rt.show(tickets.PublicTickets)
-... #doctest: -REPORT_UDIFF
-================================================================================== ============= =========== ==========
- Description                                                                        Ticket type   Topic       Priority
----------------------------------------------------------------------------------- ------------- ----------- ----------
- `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*                      Bugfix        Lino Voga   Normal
- `#107 (☉ Ticket 107) <Detail>`__  by *Mathieu*, assigned to *Luc*                  Enhancement   Lino Voga   Normal
- `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
- `#83 (☉ Ticket 83) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   Normal
- `#75 (☉ Ticket 75) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
- `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
- `#51 (☉ Ticket 51) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
- `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*                        Bugfix        Lino Voga   Normal
- `#35 (☉ Ticket 35) <Detail>`__  by *Mathieu*, assigned to *Luc*                    Enhancement   Lino Voga   Normal
- `#27 (☉ Ticket 27) <Detail>`__  by *Jean*, assigned to *Luc*                       Upgrade       Lino Voga   Normal
- `#11 (☉ Class-based Foos and Bars?) <Detail>`__  by *Mathieu*, assigned to *Luc*   Enhancement   Lino Voga   Normal
-================================================================================== ============= =========== ==========
-<BLANKLINE>
-
-
-This data is being rendered using plain bootstrap HTML:
+Tickets are rendered using plain bootstrap HTML:
 
 >>> res = test_client.get('/')
 >>> res.status_code
@@ -71,7 +43,7 @@ This data is being rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-28
+24
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -87,13 +59,13 @@ This data is being rendered using plain bootstrap HTML:
 
 >>> links = soup.find_all('a')
 >>> len(links)
-26
+28
 >>> print(links[0].get('href'))
 /?ul=en
 
 >>> print(soup.get_text(' ', strip=True))
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
-Tickets Sign in — Home en de fr Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
+All tickets Sign in — Home en de fr Tickets All tickets Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
 <BLANKLINE>
 <BLANKLINE>
 (last update ...) Created ... by Luc Topic: Lino Welfare Site: welket Linking to #1 and to blog . This is Lino Noi ... using ...

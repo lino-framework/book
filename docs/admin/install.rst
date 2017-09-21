@@ -320,10 +320,21 @@ To activate logging to a file, you simply add a symbolic link named
     $ cd ~/mypy/prj1/
     $ ln -s /var/log/lino/prj1/ log/
 
-Create two empty directories :xfile:`media` and :xfile:`config`::
+Also you should create a file :file:`/etc/logrotate.d/lino` with
+something like this::
 
-    $ mkdir media
-    $ mkdir config
+    /var/log/lino/prj1/lino.log {
+            weekly
+            missingok
+            rotate 156
+            compress
+            delaycompress
+            notifempty
+            create 660 root www-data
+            su root www-data
+            sharedscripts
+    }
+
 
 
 Initialize the database
@@ -336,6 +347,11 @@ Initialize the database
      
 Collecting static files
 =======================
+
+Create two empty directories :xfile:`media` and :xfile:`config`::
+
+    $ mkdir media
+    $ mkdir config
 
 .. .(Needs revision)
 

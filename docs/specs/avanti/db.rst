@@ -6,7 +6,7 @@ Database structure of Lino Avanti
 
 .. To run only this test::
 
-    $ python setup.py test -s tests.SpecsTests.test_avanti_db
+    $ doctest docs/specs/avanti/db.rst
 
     doctest init:
 
@@ -27,6 +27,6 @@ This document describes the database structure.
 - 76 models
 - 277 views
 - 7 user types
-- 10 dialog actions
+- 11 dialog actions
 <BLANKLINE>
 

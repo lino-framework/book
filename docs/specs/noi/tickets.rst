@@ -801,7 +801,7 @@ the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
 >>> print(py2rst(tickets.Tickets.detail_layout, True))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
   - (general1):
