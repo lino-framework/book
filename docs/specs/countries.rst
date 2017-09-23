@@ -328,3 +328,21 @@ Village
 >>> countries.CountryDrivers.BE.region_types
 [<PlaceTypes.province:21>]
 
+Reproducing #2079
+=================
+
+The following verifies bug :ticket:`2079` introduced `20170821
+<https://github.com/lino-framework/lino/commit/37b2d0e9ee9117ddc81edf6df2c1ad5d394c9e2f>`__
+and fixed 20170924 : when specifying a limit (which is always done by
+a Combobox), Lino reported not the full count but only the number of
+rows after applying limit (5 instead of 36 in below example):
+
+>>> base = "/choices/contacts/Partners/city?country=BE&limit=5"
+>>> show_choices("robin", base + '&query=', show_count=True)
+<br/>
+9300 Aalst / Alost
+3800 Aalst-bij-Sint-Truiden
+4031 Angleur
+4430 Ans
+9310 Baardegem
+36 rows
