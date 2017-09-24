@@ -544,6 +544,11 @@ Reference
 
         The state of this presence.
 
+.. class:: Guests
+.. class:: GuestsByEvent
+.. class:: GuestsByPartner
+.. class:: GuestsByRole
+
            
 .. class:: EventGenerator
 
