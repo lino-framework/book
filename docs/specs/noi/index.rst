@@ -40,16 +40,3 @@ The default variant ("team")
     sql
    
 
-The Lino Care variant
-=====================
-
-These are currently not used. The Care project uses the standard
-variant.
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-  
-   care
-   care_de
-   

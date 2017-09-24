@@ -6,10 +6,10 @@ Checking for data problems
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_checkdata
+    $ doctest docs/specs/checkdata.rst
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min2.settings.doctests')
+    >>> startup('lino_book.projects.min9.settings.doctests')
     >>> from lino.api.doctest import *
     >>> from django.core.management import call_command
 

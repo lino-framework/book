@@ -9,7 +9,9 @@ About Lino
    :maxdepth: 1
 
    what
+   /demos
    why
    name
+   /community/index
    more
    

@@ -2,7 +2,7 @@
 =======================
 
 Lino doesn't yet use Django's `Class-based views
-<http://docs.djangoproject.com/en/dev/topics/class-based-views/>`_ 
+<http://docs.djangoproject.com/en/1.11/topics/class-based-views/>`_ 
 because this concept didn't yet exist when I started.
 (I discovered it in :doc:`March 2011 </blog/2011/0311>`)
 

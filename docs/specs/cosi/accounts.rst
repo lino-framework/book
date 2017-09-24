@@ -319,9 +319,9 @@ Accounts
 
         Whether bookings to this account need a partner specified.
 
-        This causes the contra entry of financial documents to be
-        detailed (i.e. one for every item) or not (i.e. a single
-        contra entry per voucher, without project nor partner).
+        For payment orders this causes the contra entry of financial
+        documents to be detailed or not (i.e. one contra entry for
+        every item or a single contra entry per voucher.
 
     .. attribute:: default_amount
 

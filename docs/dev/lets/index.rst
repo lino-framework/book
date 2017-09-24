@@ -5,24 +5,19 @@
 A Local Exchange Trade System
 =============================
 
-In this tutorial we are going to write a new Lino application from
-scratch, in the hope that this helps you with writing your own Lino
-application.
+In this tutorial we imagine a whole Lino project from scratch.  The
+fictive application described here is is probably a bit too simple for
+a real-life website.  But we *imagine* that this is what our customer
+*asked* us to do.  (More about the Lino application development
+process in :doc:`/dev/analysis`.)
 
 
 .. contents::
    :local:
 
 
-The project description
-=======================
-
-The following is a fictive example of a Lino project description.
-Note that we don't pretend that the application described here is
-actually useful, optimal and cool.  It is probably a bit too simple
-for a real-life website.  But we *imagine* that this is what our
-customer *asks* us to do.  (More about the Lino application
-development process in :doc:`analysis`.)
+The functional specification
+============================
 
 
 Overview
@@ -73,13 +68,13 @@ Menu structure
 The **main page** (dashboard) should display a list of products
 available for exchange.
 
+.. _data_model_diagram:
+
 
 Graphically representing the database structure
 ===============================================
 
-While vocabulary is important, a picture says more than a thousand
-words.  So here is a **graphical representation** of the database
-structure:
+Here is a **graphical representation** of the database structure:
 
 .. graphviz:: 
 
@@ -103,11 +98,22 @@ structure:
 
   }
 
-The basic rules are:
+You shoud do such diagrams by hand, together with the customer.  Above
+picture has been realized using `graphviz
+<http://www.sphinx-doc.org/en/stable/ext/graphviz.html>`__.  You might
+prefer `Dia <http://dia-installer.de/>`_ which renders it as follows:
+
+.. image:: models.png
+
+There are many methodologies for visualizsing a database model (`UML
+<https://en.wikipedia.org/wiki/Unified_Modeling_Language>`_, `IDEF1X
+<https://en.wikipedia.org/wiki/IDEF1X>`__), and above style is just
+our favourite because it is so simple, intuitive and useful.  The
+basic rules are:
 
 - Every **node** on the diagram represents a database model.
 - Every **arrow** on the diagram represents a `ForeignKey`.  We prefer
-  to use the word *pointer* instead of *ForeignKey* when talking with
+  to use the word **pointer** instead of *ForeignKey* when talking with
   a customer because that's more intuitive.
 
 - We display the **name of a pointer** only if it differs from the
@@ -125,15 +131,6 @@ into three "data categories":
 - **blue** is for **configuration data** (i.e. data which is rather in
   background and accessible only to site administrators)
 
-
-Here is the same diagram done using `Dia <http://dia-installer.de/>`_.  
-
-.. image:: models.png
-
-Note that this way of visualizing a database structure is a bit
-uncommon because Luc "invented" it before the `UML
-<https://de.wikipedia.org/wiki/Unified_Modeling_Language>`_ was
-formulated, but we find it intuitive and useful.
 
 
 Note about many-to-many relationships
@@ -184,13 +181,14 @@ the intermediate models of your m2m relations.
 Writing a prototype
 ===================
 
-With above information you are ready to write a "first draft" or
-"prototype".  The goal of such a prototype is to have something to
-show to your customer that looks a little bit like the final product,
-and with wich you can play to test whether your analysis of the
-database structure is okay.
+With above information you should be ready to write a "first draft" or
+"prototype".
 
-For this tutorial we wrote actually *two* prototypes:
+For this tutorial we wrote actually *two* prototypes. In the second
+variant the members are "polymorphic": they can be either customers or
+suppliers, or both. This is an example of multi-table inheritance and
+how you can use it with Lino's :class:`Polymorphic
+<lino.mixins.polymorphic.Polymorphic>` mixin.
 
 =============================== ===============================
 code                            specs

@@ -5,6 +5,8 @@ About analysis
 This document describes some concepts we use when developing Lino
 applications.
 
+The project description
+=======================
 
 The functional specification
 ============================
@@ -33,7 +35,15 @@ the following elements.
   
   It is important to choose meaningful names and to agree with your
   customer on the meaning of certain words which will be the
-  vocabulary used in your application. 
+  vocabulary used in your application.
+
+  While vocabulary is important, a picture says more than a thousand
+  words.  There are many methodologies for visualizsing a database
+  model (`UML
+  <https://en.wikipedia.org/wiki/Unified_Modeling_Language>`_, `IDEF1X
+  <https://en.wikipedia.org/wiki/IDEF1X>`__), and our favourite method
+  is described in :ref:`data_model_diagram`.
+  
 
 - Another thing to discuss with your customer during analysis is the
   **menu structure** and the content of the **main page** (dashboard).
@@ -45,13 +55,19 @@ the following elements.
 The prototype
 =============
 
-Lino encourages writing quick prototypes. We often write a prototype
+Lino encourages writing quick prototypes.  We often write a prototype
 for a project even before issuing a first cost estimation.
+
+The goal of such a prototype is to have something to show to your
+customer that looks a little bit like the final product, and with wich
+you can play to test whether your analysis of the database structure
+is okay.
 
 It is important to get some fictive data which corresponds more or
 less to the reality of your customer. Having an appropriate choice of
 examples and original documents will help the developer to get a grasp
 and to write demo fixtures.
+
 
 The technical specs
 ===================

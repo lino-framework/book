@@ -67,8 +67,8 @@ What is a table?
 A table, in general, is a rectangular thing divided into rows and
 columns, used to display data.
 
-For example, here is how the "Authors" table of our database might
-look in a printed document:
+For example, here is how the "Authors" table of a database might look
+in a printed document:
 
 ============ =========== =========
  First name   Last name   Country

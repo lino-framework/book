@@ -6,12 +6,12 @@ Your first local Lino project
 
 .. to test just this doc:
 
-    $ doctest docs/tutorials/hello/index.rst
+    $ doctest docs/dev/hello/index.rst
 
    doctest init::
 
     >>> from atelier.sheller import Sheller
-    >>> shell = Sheller('docs/tutorials/hello')
+    >>> shell = Sheller('docs/dev/hello')
 
 
 In this tutorial we are going to create a *local* Lino project,
@@ -78,7 +78,9 @@ Your first :xfile:`settings.py` file should look as follows:
 Explanations:
 
 #.  :mod:`lino_book.projects.min1` is one of the out-of-the-box
-    projects included in the Lino Book.
+    projects included in the Lino Book. Actually it is the first of a
+    series of projects which is documented in
+    :doc:`/specs/projects/min`.
 
     We import these settings directly into our global namespace using
     the wildcard ``*``. This is necessary because that's how Django
@@ -147,8 +149,8 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino_startup, office, printing, staticfiles, system, users, xl
-  Apply all migrations: contenttypes, sessions
+  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino_startup, office, printing, staticfiles, system, users, xl
+  Apply all migrations: sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
@@ -162,23 +164,8 @@ Synchronizing apps without migrations:
     Creating table contacts_company
     Creating table contacts_roletype
     Creating table contacts_role
-    Creating table gfks_helptext
-    Creating table cal_remotecalendar
-    Creating table cal_room
-    Creating table cal_priority
-    Creating table cal_eventtype
-    Creating table cal_guestrole
-    Creating table cal_calendar
-    Creating table cal_subscription
-    Creating table cal_task
-    Creating table cal_eventpolicy
-    Creating table cal_recurrentevent
-    Creating table cal_event
-    Creating table cal_guest
     Running deferred SQL...
 Running migrations:
-  Applying contenttypes.0001_initial... OK
-  Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
 Loading data from ...
 Installed ... object(s) from ... fixture(s)
@@ -193,7 +180,8 @@ back to this in :doc:`/dev/initdb`.
 Start the web server
 ====================
 
-Now you can start the development server::
+Now you can invoke :manage:`runserver` to start the development
+server::
 
   $ python manage.py runserver
   
@@ -214,45 +202,17 @@ Congratulations! Enjoy the first Lino application that exists only on
 your machine!
 
 
-Exercises
-=========
-
-Yes, it looks the same as the one you saw in the previous chapter. But
-read on. You can now play around by changing things in your project.
-
-#.  In your :file:`settings.py` file, replace
-    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
-    Run :command:`python manage.py prep` followed by :command:`python
-    manage.py runserver`. Log in and play around.
-  
-#.  Same as previous, but with :mod:`lino_book.projects.chatter`
-
-#.  Write three descriptions in LibreOffice `.odt` format, one for
-    each of the applications you just saw: what it can do, what are
-    the features, what functionalities are missing. Use
-    screenshots. Use a language which can be understood by
-    non-programmers.  Send these documents to your mentor.
-    
-#.  Read the documentation about the following Site attributes and
-    demonstrate their usage:
-
-    - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
-    - :attr:`languages <lino.core.site.Site.languages>`
-
-**When you reached this point, contact your mentor** for a meeting on
-`Hangouts <https://hangouts.google.com/>`_ because there is a lot of
-undocumented things to know.
-
 
 Visualizing database content from the command-line
 ==================================================
 
-You might want to skip this section for now. But the following
-features are important when it comes to write automatic test suites
-for your applications.
+The :manage:`runserver` command starts a web server and lets you
+interact with the database through the web interface. But Django also
+offers a :manage:`shell` interface.
+We will come back to this later, for the moment just try the following.
 
 You can visualize the content of your database from the command-line
-without starting a web server using Lino's :manage:`show` command. 
+without starting a web server using Lino's :manage:`show` command.
 For example to see the list of users, you can write::
 
     $ python manage.py show users.Users
@@ -283,5 +243,31 @@ Or you can see the list of countries:
  Netherlands                   NL
  Russia                        RU
 ============================= ==========
+
+
+Exercises
+=========
+
+Yes, it looks the same as the one you saw in the previous chapter. But
+read on. You can now play around by changing things in your project.
+
+#.  In your :file:`settings.py` file, replace
+    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
+    Run :command:`python manage.py prep` followed by :command:`python
+    manage.py runserver`. Log in and play around.
+  
+#.  Same as previous, but with :mod:`lino_book.projects.chatter`
+
+#.  Write three descriptions in LibreOffice `.odt` format, one for
+    each of the applications you just saw: what it can do, what are
+    the features, what functionalities are missing. Use
+    screenshots. Use a language which can be understood by
+    non-programmers.  Send these documents to your mentor.
+    
+#.  Read the documentation about the following Site attributes and
+    try to change them:
+
+    - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
+    - :attr:`languages <lino.core.site.Site.languages>`
 
 

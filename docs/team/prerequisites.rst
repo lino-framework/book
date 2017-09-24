@@ -26,7 +26,7 @@ Django
 Lino applications are Django projects.
 
 - You know how to get a Django project up and running.
-  (You should have followed the `Tutorial <https://docs.djangoproject.com/en/dev/>`_)
+  (You should have followed the `Tutorial <https://docs.djangoproject.com/en/1.11/>`_)
   You know what a :xfile:`settings.py` file is.
 - You know most about Django's model layer : the ``Model`` class,
   the field types, executing database queries, ...

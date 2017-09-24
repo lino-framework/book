@@ -1,10 +1,10 @@
-from django.db import models
-from lino.api import dd, rt
+from lino.api import dd
 
+@dd.python_2_unicode_compatible
 class Tag(dd.Model):
   
-    name = models.CharField(max_length=100)
+    name = dd.CharField(max_length=100)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.name
     

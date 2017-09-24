@@ -303,3 +303,12 @@ Actions
         The new password a second time. Both passwords must match.
 
           
+.. class:: SignIn
+
+    Open a window which asks for username and password and which
+    authenticates as this user when submitted.
+           
+.. class:: SignOut
+           
+    Sign out the current user and return to the welcome screen for
+    anonymous visitors.

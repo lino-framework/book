@@ -4,7 +4,7 @@
 Some more layout examples
 ==========================
 
-See :doc:`/dev/layouts` 
+See :doc:`/dev/layouts/index` 
 
 
 Modal windows

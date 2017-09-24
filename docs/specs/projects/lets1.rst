@@ -13,7 +13,7 @@ The LETS application specs (v1)
 
 
 This document describes the :mod:`lino_book.projets.lets1` demo
-project, an application used as example in :doc:`/dev/lets`.
+project, an application used as example in :doc:`/dev/lets/index`.
 
 .. contents::
    :local:

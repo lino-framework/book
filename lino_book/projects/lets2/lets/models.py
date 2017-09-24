@@ -75,6 +75,6 @@ class Demand(dd.Model):
     product = models.ForeignKey(Product)
 
     def __unicode__(self):
-        return "%s (%s)" % (self.product, self.supplier)
+        return "%s (%s)" % (self.product, self.customer)
 
 

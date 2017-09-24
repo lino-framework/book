@@ -6,8 +6,7 @@ The database structure
 
 .. To run only this test::
 
-    $ python setup.py test -s tests.SpecsTests.test_noi_db
-    $ python -m doctest docs/specs/noi/db.rst
+    $ doctest docs/specs/noi/db.rst
 
     doctest init:
 
@@ -96,9 +95,9 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 44 plugins
 - 65 models
-- 253 views
+- 251 views
 - 7 user types
-- 5 dialog actions
+- 6 dialog actions
 <BLANKLINE>
 
 

@@ -4,14 +4,13 @@
 Exploring SQL activity in Lino Noi
 ==================================
 
+..  How to test only this document:
+    $ doctest docs/specs/noi/sql.rst
+
 This document shows why Jane is so slow when displaying tickets.
 It is also a demo of
 the :func:`show_sql_queries <lino.api.doctest.show_sql_queries>`
 function.
-
-How to test only this document::
-
-    $ doctest docs/specs/noi/sql.rst
 
 We use the :mod:`lino_book.projects.team` demo database.
     
@@ -41,14 +40,14 @@ SELECT "django_content_type"."id", "django_content_type"."app_label",
     "django_content_type"."id" = 46
 
 
-Now we do a single request to :class:`AllTickets`, with `limit=1` so
+Now we do a single request to :class:`Tickets`, with `limit=1` so
 that it retrieves only one row. Now look at all the SQL that poor
 Django must do in order to return a single row. And keep in mind that
 every row causes a similar set of SQL queries.
 
->>> r = demo_get('robin','api/tickets/AllTickets', fmt='json', limit=1)
+>>> r = demo_get('robin','api/tickets/Tickets', fmt='json', limit=1)
 
->> res = test_client.get('/api/tickets/AllTickets?fmt=json&limit=1')
+>> res = test_client.get('/api/tickets/Tickets?fmt=json&limit=1')
 >> res = check_json_result(res)
 >> rmu(res.keys())
 ['count', 'rows', 'no_data_text', 'success', 'title', 'param_values']
@@ -225,7 +224,7 @@ SELECT "contacts_partner"."id", "contacts_partner"."email", "contacts_partner"."
 
 To verify whether the slave summary panels are being computed:
 
->>> for f in rt.models.tickets.AllTickets.wildcard_data_elems():
+>>> for f in rt.models.tickets.Tickets.wildcard_data_elems():
 ...     print(f)
 tickets.Ticket.id
 tickets.Ticket.modified

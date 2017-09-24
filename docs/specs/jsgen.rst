@@ -11,7 +11,7 @@ Utilities for generating Javascript code
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min1.settings.doctests')
+    >>> startup('lino_book.projects.min2.settings.doctests')
     >>> from lino.api.doctest import *
 
 Introduction
@@ -84,4 +84,4 @@ lino_xl.lib.contacts.models.Persons
 >>> ll = th.get_list_layout()
 >>> with users.UserTypes.admin.context():
 ...     print("\n".join(declare_vars(ll.main)))
-var main_grid142 = new Lino.contacts.Persons.GridPanel({ "containing_panel": this, "hideCheckBoxLabels": true, "labelAlign": "top", "listeners": { "render": Lino.quicktip_renderer("Persons","(contacts.contacts.Persons) List of all Persons.") }, "params_panel_hidden": true });
+var main_grid161 = new Lino.contacts.Persons.GridPanel({ "containing_panel": this, "hideCheckBoxLabels": true, "listeners": { "render": Lino.quicktip_renderer("Persons","(contacts.contacts.Persons) Shows all persons.") }, "params_panel_hidden": true });

@@ -6,7 +6,7 @@
 
 Django 1.5 allows for 
 `Substituting a custom User model
-<https://docs.djangoproject.com/en/dev/topics/auth/customizing/#auth-custom-user>`__,
+<https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#auth-custom-user>`__,
 but not for substituting the permission system.
 
 See also :doc:`/tutorials/uiless`.

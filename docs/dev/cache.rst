@@ -75,7 +75,7 @@ server automatically serves them at the location defined in
 Lino automatically sets :setting:`STATIC_ROOT` to a directory named
 :file:`collectstatic` under your :envvar:`LINO_CACHE_ROOT`.
 
-As we said in :doc:`/tutorials/hello/index`, before you can see your
+As we said in :doc:`hello/index`, before you can see your
 first Lino application running in a web server on your machine, you
 must run Django's :manage:`collectstatic` command::
 

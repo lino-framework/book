@@ -7,12 +7,13 @@ Defining holidays
 
 .. How to test just this document
 
-   $ python setup.py test -s tests.SpecsTests.test_holidays
+   $ doctest docs/specs/holidays.rst
+
 
 Some initialization:
 
 >>> from lino import startup
->>> startup('lino_book.projects.min2.settings.demo')
+>>> startup('lino_book.projects.min9.settings.demo')
 >>> from lino.api.doctest import *
 >>> settings.SITE.verbose_client_info_message = True
 >>> from lino.api import rt, _

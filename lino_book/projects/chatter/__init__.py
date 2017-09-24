@@ -1,5 +1,5 @@
-"""
-A little application for managing polls. See :ref:`polly`.
+"""A little application for chatting, explained in
+:doc:`/specs/notify`.
 
 .. autosummary::
    :toctree:

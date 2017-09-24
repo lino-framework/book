@@ -2,5 +2,5 @@
 Form Layouts
 ============
 
-(Content moved to :doc:`/dev/layouts`.)
+(Content moved to :doc:`/dev/layouts/index`.)
 

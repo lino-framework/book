@@ -6,46 +6,115 @@ Introduction to choicelists
 
 .. To run only this test:
 
-   $ python setup.py test -s tests.DocsTests.test_choicelists
+   $ doctest docs/dev/choicelists.rst
 
-A :class:`ChoiceList <lino.core.choicelists.ChoiceList>` is a
-"constant"[#constant]_ ordered list of translatable values.
+Whenever in *plain Django* you use a `choices` attribute on a database
+field, in Lino you probably prefer using a :class:`ChoiceList
+<lino.core.choicelists.ChoiceList>` instead.
 
-Wherever in a *plain Django* application you use a `choices` attribute
-on a database field, in a *Lino* application you should consider using
-a :class:`ChoiceList <lino.core.choicelists.ChoiceList>` instead.
+A :class:`ChoiceList <lino.core.choicelists.ChoiceList>` is a constant
+ordered list of translatable values.  You can use it for much more
+than filling the `choices` attribute of a database field. You can
+refer to individual items programmatically using a name. You can
+subclass them and add application logic.  You can display a choicelist
+as a table using :meth:`show <lino.core.requests.BaseRequest.show>`.
 
 ..
     >>> from lino import startup
-    >>> startup('lino_book.projects.docs.settings.doctests')
+    >>> startup('lino_book.projects.min2.settings.demo')
     >>> from lino.api.doctest import *
     
+For example Lino's calendar plugin (:mod:`lino_xl.lib.cal`) defines a
+choicelist :class:` <lino_xl.lib.cal.Weekdays>` which has 7 choices,
+one for each day of the week.
+
+>>> rt.show('cal.Weekdays')
+======= =========== ===========
+ value   name        text
+------- ----------- -----------
+ 1       monday      Monday
+ 2       tuesday     Tuesday
+ 3       wednesday   Wednesday
+ 4       thursday    Thursday
+ 5       friday      Friday
+ 6       saturday    Saturday
+ 7       sunday      Sunday
+======= =========== ===========
+<BLANKLINE>
+
+The text of a choice is a **translatable** string, while *value* and
+*name* remain **unchanged**:
+
+>>> with translation.override('fr'):
+...     rt.show('cal.Weekdays')
+======= =========== ==========
+ value   name        text
+------- ----------- ----------
+ 1       monday      Lundi
+ 2       tuesday     Mardi
+ 3       wednesday   Mercredi
+ 4       thursday    Jeudi
+ 5       friday      Vendredi
+ 6       saturday    Samedi
+ 7       sunday      Dimanche
+======= =========== ==========
+<BLANKLINE>
+
+Here is how the :class:`lino_xl.lib.cal.Weekdays` choicelist has been
+defined::
+
+    class Weekdays(dd.ChoiceList):
+        verbose_name = _("Weekday")
+
+    add = Weekdays.add_item
+    add('1', _('Monday'), 'monday')
+    add('2', _('Tuesday'), 'tuesday')
+    ...
+        
+You use the Weekdays choicelists in a model definition as follows::
+
+    from lino_xl.lib.cal.choicelists import Weekdays
+
+    class WeeklyEvent(dd.Model):
+        ...
+        day_of_week = Weekdays.field(default=Weekdays.monday)
+
 
 ChoiceLists are **actors**.  They are globally accessible in
-:data:`rt.modules` using their *app label* and their name.
+:data:`rt.models`.
 
-For example the :class:`Genders <lino.modlib.system.choicelists.Genders>`
-choicelist is part of the :mod:`lino.modlib.system` plugin, so its
-*app label* is ``system``:
-
->>> rt.modules.system.Genders
-lino.modlib.system.choicelists.Genders
+      
+>>> rt.models.cal.Weekdays
+lino_xl.lib.cal.choicelists.Weekdays
 
 Like every Actor, ChoiceLists are **never instantiated**. They are
 just the class object itself:
 
->>> from lino.modlib.system.choicelists import Genders
->>> Genders is rt.modules.system.Genders
+>>> from lino_xl.lib.cal.choicelists import Weekdays
+>>> Weekdays is rt.models.cal.Weekdays
 True
 
 
-ChoiceLists are tables
-======================
 
-ChoiceLists are tables. You can display them using :meth:`show
-<lino.core.requests.BaseRequest.show>`:
 
->>> rt.show(rt.modules.system.Genders)
+Accessing individual choices
+============================
+
+Each row of a choicelist is a choice. Individual choices can have a
+*name*, which makes them accessible as **class attributes** on the
+*choicelist* which own them:
+
+>>> Weekdays.monday
+<Weekdays.monday:1>
+
+
+As another example, let's look at
+the :class:`Genders <lino.modlib.system.choicelists.Genders>`
+choicelist which is part of the :mod:`lino.modlib.system` plugin.
+ 
+>>> from lino.modlib.system.choicelists import Genders
+
+>>> rt.show(Genders)
 ======= ======== ========
  value   name     text
 ------- -------- --------
@@ -54,37 +123,17 @@ ChoiceLists are tables. You can display them using :meth:`show
 ======= ======== ========
 <BLANKLINE>
 
-The text of a choice is a **translatable** string, while *value* and
-*name* remain **unchanged**:
+The :class:`lino.mixins.human.Human` mixin uses this as follows::
 
->>> with translation.override('de'):
-...     rt.show(rt.modules.system.Genders)
-====== ======== ==========
- Wert   name     Text
------- -------- ----------
- M      male     Männlich
- F      female   Weiblich
-====== ======== ==========
-<BLANKLINE>
+    class Human(Model):
+        ...
+        gender = Genders.field(blank=True)
 
+Because :class:`lino_xl.lib.contacts.Person` inherits from
+:class:`Human`, you can use this when you want to select all men:
 
-
-Accessing individual choices
-============================
-
-Each row of a choicelist is a choice. Individual choices can have a
-**name**, which makes them accessible as **class attributes** on the
-**choicelist** which own them:
-
->>> Genders.male
-<Genders.male:M>
-
->>> Genders.female
-<Genders.female:F>
-
-Here is how to select all men:
-
->>> list(rt.modules.contacts.Person.objects.filter(gender=Genders.male))
+>>> Person = rt.models.contacts.Person       
+>>> list(Person.objects.filter(gender=Genders.male))
 ... # doctest: +ELLIPSIS
 [Person #114 ('Mr Hans Altenberg'), Person #112 ('Mr Andreas Arens'), ...]
 
@@ -117,25 +166,25 @@ implemented using Django's i18n machine:
 >>> Genders.male.text.__class__
 <class 'django.utils.functional.__proxy__'>
 
-Calling `unicode` of a choice is (usually) the same as calling unicode
-on its `text` attribute:
+Calling :func:`str` of a choice is (usually) the same as calling
+unicode on its `text` attribute:
 
->>> rmu([str(g) for g in Genders.objects()])
+>>> [str(g) for g in Genders.objects()]
 ['Male', 'Female']
 
 The text of a choice depends on the current user language.
 
 >>> from django.utils import translation
 >>> with translation.override('fr'):
-...     rmu([unicode(g) for g in Genders.objects()])
+...     [str(g) for g in Genders.objects()]
 ['Masculin', 'F\xe9minin']
 
 >>> with translation.override('de'):
-...     [unicode(g) for g in Genders.objects()]
+...     [str(g) for g in Genders.objects()]
 ['M\xe4nnlich', 'Weiblich']
 
 >>> with translation.override('et'):
-...     [unicode(g) for g in Genders.objects()]
+...     [str(g) for g in Genders.objects()]
 ['Mees', 'Naine']
 
 
@@ -155,11 +204,6 @@ False
 
 
 
-
-.. rubric:: Footnotes
-
-.. [#constant] We put "constant" between quotation marks because of course it may
-  vary. But if it does so, then only once at server startup.
 
 
 

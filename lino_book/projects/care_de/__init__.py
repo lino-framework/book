@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
 # Copyright 2016 Luc Saffre
 # License: BSD (see file COPYING for details)
-"""A demo setup of :mod:`lino_book.projects.care` for usage in East
-Belgium.
+"""A :ref:`care` site with languages "de fr en".
 
 .. autosummary::
    :toctree:

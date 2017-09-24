@@ -45,7 +45,7 @@ Or at least subqueries like this::
     ...
   FROM Company
   
-This might be doable using `QuerySet.extra() <http://docs.djangoproject.com/en/dev/ref/models/querysets/#extra>`_::
+This might be doable using `QuerySet.extra() <http://docs.djangoproject.com/en/1.11/ref/models/querysets/#extra>`_::
   
   QuerySet.extra(select={'is_pharmacy':'COUNT(SELECT id FROM Pharmacy WHERE id = Company.id)',...})
   

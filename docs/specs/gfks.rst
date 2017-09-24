@@ -9,7 +9,7 @@ Some internals about Generic Foreign Keys
     $ python setup.py test -s tests.SpecsTests.test_gfks
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min2.settings.doctests')
+    >>> startup('lino_book.projects.min9.settings.doctests')
     >>> from lino.api.doctest import *
 
 

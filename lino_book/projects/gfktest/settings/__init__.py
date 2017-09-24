@@ -3,7 +3,7 @@ from lino.projects.std.settings import *
 
 class Site(Site):
 
-    demo_fixtures = ['demo']
+    # demo_fixtures = ['demo']
 
     catch_layout_exceptions = False
 

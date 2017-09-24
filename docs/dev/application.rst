@@ -47,7 +47,7 @@ rule shouldn't offend even the most conservative Django developer.
 Unfortunately, the Django developers did not know about these
 considerations when the worked on version 1.7. That's why they
 continue to speak about `Applications
-<https://docs.djangoproject.com/en/dev/ref/applications/>`_, ignoring
+<https://docs.djangoproject.com/en/1.11/ref/applications/>`_, ignoring
 our vocabulary problem.
 
 The "only" problem with this vocabulary problem is that it leaves us

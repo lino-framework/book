@@ -16,80 +16,141 @@ Getting started
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
 
    install
-   /tutorials/hello/index
+   hello/index
+   env
+   pull
    projects
 
-1.  :doc:`/dev/install` : System requirements. Set up a Python
-    environment. Run your first Lino applications.
+..    
+    #.  :doc:`/dev/install` : System requirements. Set up a Python
+        environment. Run your first Lino applications.
 
-2.  :doc:`/tutorials/hello/index` : The first Lino application running
-    on your machine. It's easier than with Django. A ``settings.py``
-    and a ``manage.py``.
+    #.  :doc:`hello/index` : The first Lino project on your machine.
 
-3. :doc:`projects` : Finish the configuration of your your Lino
-   development environment.
+    #.  :doc:`env` : set up your Lino development environment.
+
+    #.  :doc:`pull`
+
+    #.  :doc:`projects` : play with the demo projects
+
    
-   
-.. _lino.dev.first:
+Diving into Lino
+================
 
-Your first application
-======================
+In the first section we deliberately remained outside of the real code
+because first things first.  Now you hopefully feel self-confident
+about your work environment and running demo projects.  We are ready
+to dive *into* Lino.
+
+But first we must warn you: The second section is still quite unstable
+and has big holes. The important thing to keep in mind is: you must
+now start to **learn how to learn**. A few guidelines for under your
+pillow:
+
+- Inspect the examples and read the code.
+- Don't hesitate changing the source code and see what it does
+- When you get error messages, don't try to get rid of them in first
+  place, rather understand what they mean and learn from them.
+- Read Hamza's tutorial `Discovering Lino using your debugger
+  <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
+  
+That said, here is our attempt at explaining Lino from A to Z.  Don't
+be afraid of asking questions. Your questions are important feedback
+for us. Formulating questions is already a contribution for making
+Lino better.
 
 .. toctree::
    :hidden:
 
    polls/index
-   /tutorials/dumpy/index
-   tables
-   layouts
+   django
+   models
+   mixins
+   /about/lino_and_django
    initdb
+   dumpy/index
+   tables
+   layouts/index
+   choicelists
+   perms
+   users
+   settings
 
 
-10. :doc:`polls/index` : Convert the "Polls"
+10. :doc:`polls/index` : In this tutorial we convert the "Polls"
     application from Django’s tutorial into a Lino application. This
     will illustrate some differences between Lino and Django.
 
-#.  :doc:`/tutorials/dumpy/index` : Playing with Python fixtures.
+#.  :doc:`django`
+
+#.  :doc:`models`
+
+#.  :doc:`mixins`
+
+#.  :doc:`/about/lino_and_django`
+    
+#.  :doc:`initdb` : More about the ``initdb`` and ``prep``
+    commands.
+
+#.  :doc:`dumpy/index` : Playing with Python fixtures.
     Writing your own Python fixtures.
 
 #.  :doc:`tables` : Models, tables and views. What is a
     table? Designing your tables. Using tables without a web server.
 
-#.  :doc:`layouts` : About layouts, detail windows, data elements and
+#.  :doc:`layouts/index` : About layouts, detail windows, data elements and
     panels.
 
-#.  :doc:`initdb` : More about the ``initdb`` and ``prep``
-    commands.
+#.  :doc:`choicelists`
+    
+#.  :doc:`users`
+
+#.  :doc:`perms`
+
+#.  :doc:`settings` : The Django settings module. How Lino integrates
+    into Django settings. Inheriting settings.
 
 
+Application development using Lino
+==================================
 
-The Lino design choices
-=======================
+Lino is for writing **customized** database applications. That means
+that a development project starts when the customer explains to the
+analyst their needs.
 
-Now we think it is time to explain some fundamental differences
-between Lino and other frameworks.
+20. :doc:`analysis` : 
+#.  :doc:`lets/index` : In this tutorial we write a new Lino application
+    from scratch, with focus on some techniques for doing analysis.
+
+.. toctree::
+   :hidden:
+              
+   analysis
+   lets/index
+   
+
+Lino design goals
+=================
+   
+#.  :doc:`/about/faq`
+#.  :doc:`/about/ui`
+#.  :doc:`/about/features`
+#.  :doc:`/about/not_easy`
+#.  :doc:`/about/think_python`
+#.  :doc:`ui`
 
 .. toctree::
    :hidden:
               
    /about/faq
    /about/ui
-   /about/lino_and_django
    /about/features
    /about/not_easy
    /about/think_python
    ui
     
-20. :doc:`/about/faq`
-#.  :doc:`/about/ui`
-#.  :doc:`/about/features`
-#.  :doc:`/about/lino_and_django`
-#.  :doc:`/about/not_easy`
-#.  :doc:`/about/think_python`
-#.  :doc:`ui`
      
 
 
@@ -98,8 +159,7 @@ between Lino and other frameworks.
 Working with others
 ===================
 
-30. :doc:`pull`
-#.  :doc:`runtests`
+30. :doc:`runtests`
 #.  :doc:`contrib`
 #.  :doc:`patch`
 #.  :doc:`request_pull`
@@ -110,7 +170,6 @@ Working with others
 .. toctree::
    :hidden:
 
-   pull
    runtests
    contrib
    patch
@@ -141,12 +200,7 @@ Getting acquaintained
 =====================
 
 
-60. Read Hamza's tutorial `Discovering Lino using your debugger
-    <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
-#.  :doc:`datamig`
-#.  :doc:`perms`
-#.  :doc:`settings` : The Django settings module. How Lino integrates
-    into Django settings. Inheriting settings.
+60. :doc:`datamig`
 #.  :doc:`application` : An app is not an application.
 #.  :doc:`summaries` : Introduction to table summaries.
 #.  :doc:`plugins` : Why we need plugins. Configuring plugins.
@@ -161,7 +215,6 @@ Getting acquaintained
 #.  :doc:`i18n` : About "internationalization" and "translatable strings".
 #.  :doc:`menu` : Standard items of a main menu
 #.  :doc:`actors`
-#.  :doc:`choicelists`
 #.  :doc:`parameters`
 #.  :doc:`virtualfields`
 #.  :doc:`ar` : Using action requests
@@ -169,8 +222,6 @@ Getting acquaintained
 #.  :doc:`custom_actions` : Writing custom actions
 #.  :doc:`action_parameters` :
 #.  :doc:`gfks` : Lino and `GenericForeignKey` fields
-#.  :doc:`lets` : Write a new Lino application from scratch, in the
-    hope that this helps you with writing your own Lino application.
 #.  :doc:`/tutorials/layouts` :
 #.  :doc:`actions` :
 #.  :doc:`mldbc/index` :
@@ -185,21 +236,18 @@ Getting acquaintained
    :maxdepth: 1
    :hidden:
 
-   settings
    datamig
-   perms
    application
    summaries
    plugins
    site
    dump2py
    site_config
-   users
+   online
    languages
    i18n
    menu
    actors
-   choicelists
    parameters
    ar
    virtualfields
@@ -207,7 +255,6 @@ Getting acquaintained
    custom_actions
    action_parameters
    gfks
-   lets
    /tutorials/layouts
    actions
    mldbc/index
@@ -234,6 +281,7 @@ Special topics
    /tutorials/input_mask/index
 
    setup
+   invlib
 
 Drafts
 ======
@@ -278,7 +326,6 @@ Other
    /team/deploy
    /team/noi_intro
    memo
-   analysis
    bash_aliases
    diamond
 
@@ -291,9 +338,9 @@ Other
    ad
    dd
    rt
-   mixins
    /tutorials/index
    ml/index
    /team/index
    interview
-   env
+
+  

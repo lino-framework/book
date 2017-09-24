@@ -325,12 +325,12 @@ assigned to a project:
 >>> pv = dict(has_project=dd.YesNo.no)
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
-==== =================== ========
- ID   Summary             Site
----- ------------------- --------
- 5    Cannot create Foo   pypi
- 3    Baz sucks           welsch
-==== =================== ========
+==== =================== ========== ============== ========
+ ID   Summary             Priority   Workflow       Site
+---- ------------------- ---------- -------------- --------
+ 5    Cannot create Foo   Normal     **Sleeping**   pypi
+ 3    Baz sucks           Normal     **Open**       welsch
+==== =================== ========== ============== ========
 <BLANKLINE>
 
 
@@ -801,7 +801,7 @@ the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
 >>> print(py2rst(tickets.Tickets.detail_layout, True))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
   - (general1):

@@ -7,8 +7,8 @@ Installing Lino
 
 .. _fabric: http://www.fabfile.org/
 .. _invoke: http://www.pyinvoke.org/
-.. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _atelier: http://atelier.lino-framework.org/
+.. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino **development
@@ -230,31 +230,6 @@ command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
 
 
-Upgrading the sources
-=====================
-
-Actually the Lino version number is not enough when using a developer
-installation of Lino.  The Lino codebase repository changes almost
-every day, while the version is incremented only when we do an
-official release to PyPI.
-
-So as a developer you will simply upgrade your copy of the code
-repositories often.  Here is a quick series of commands for getting
-the latest version::
-
-  $ cd repositories/lino ; git pull
-  $ cd repositories/xl ; git pull
-  $ cd repositories/noi ; git pull
-  $ cd repositories/care ; git pull
-  $ cd repositories/care ; git pull
-  $ cd repositories/vilma ; git pull
-  $ cd repositories/avanti ; git pull
-  $ cd repositories/tera ; git pull
-  $ cd repositories/book ; git pull
-  $ find repositories -name '*.pyc' -delete
-
-This process is fully described in :doc:`pull`.
-
 Troubleshooting
 ===============
 
@@ -295,74 +270,37 @@ The output will be about 60 lines of text, here is an excerpt::
 
 
 
-Initialize the demo databases
-=============================
-
-The Lino Book contains a series of demo projects, each of which has
-its own sqlite database. These databases need to be initialized before you
-can use these projects.
-
-The easiest way to do this is to run the :cmd:`inv prep` command
-from within your copy of the :ref:`book` repository.
-This will find all projects in :mod:`lino_book.projects` and initialise the database with demo data::
-
-    $ cd ~/repositories/book
-    $ inv prep
-
-The ``inv`` command has been installed on your system (more precisely:
-into your Python environment) by the invoke_ package, which itself has
-been required by atelier_, which is another Python package developed
-by Luc.
-
-The ``inv`` command is a kind of make tool which works by looking for
-a file named :xfile:`tasks.py`. The Lino repository contains such a
-file, and this file uses :mod:`lino.invlib`, which (together with
-:mod:`atelier.invlib` from which it inherits) defines a whole series
-of commands like :cmd:`inv prep` or :cmd:`inv test`.
-
-Note that this is the same as doing the following for each project::
-
-    $ cd ~/repositories/book/lino_book/projects/min1
-    $ python manage.py prep
-
-You can learn more about atelier_ in :doc:`projects`
-
-
 Running your first Lino site
 ============================
 
 You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
-a development server::
-
+a development server. Before starting a web server on a project for
+the first time, you must initialize its database using the
+:manage:`prep` command::
   
-    $ cd lino_book/projects/min1
+    $ cd ~/repositories/book/lino_book/projects/min1
+    $ python manage.py prep
     $ python manage.py runserver
 
 Now start your browser, point it to http://127.0.0.1:8000/ and you
 should see something like this:
 
-.. image:: ../tutorials/hello/hello1.png
+.. image:: hello/hello1.png
 
 Congratulations! Enjoy the first Lino application running on your
 machine!
+
 
 Exercises
 =========
 
 #.  Log in and play around.
-#.  Note that this site offers three languages.
-#.  Note the main welcome screen (dashboard) and the main menu.
     
-#.  Create some persons and organizations. Don't enter lots of
-    accurate data because we are going to throw it away in the
-    next step.
+#.  Check :doc:`/user/basics` and tell us what's missing in that
+    document.
+    
+#.  Create some persons and organizations. Don't enter lots of data
+    because we are going to throw it away soon.
 
-#.  Lino lacks a good document that describes how to use Lino
-    applications in general.
 
 
-Where to go from here
-=====================
-
-We now suggest to create :doc:`your first local Lino project
-</tutorials/hello/index>`.

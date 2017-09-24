@@ -4,7 +4,7 @@ Internationalization
 This page contains Lino-specific notes about internationalization.
 
 The Django documentation on this topic applies as well:
-http://docs.djangoproject.com/en/dev/topics/i18n/
+http://docs.djangoproject.com/en/1.11/topics/i18n/
 
 Note that the output of 
 :command:`django-admin help makemessages` seems to be wrong: 

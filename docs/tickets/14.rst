@@ -26,7 +26,7 @@ I'd like to have the following class definitions:
 
 
 And this should work if I understood 
-`the docs <http://docs.djangoproject.com/en/dev/topics/db/models/#meta-inheritance>`_ 
+`the docs <http://docs.djangoproject.com/en/1.11/topics/db/models/#meta-inheritance>`_ 
 correctly.
 
 It seems that Django also clears the `verbose_name_plural` meta option of abstract models

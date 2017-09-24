@@ -6,7 +6,7 @@ Preventing accidental deletes
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_ddh
+    $ doctest docs/specs/noi/ddh.rst
     
     doctest init:
 
@@ -51,10 +51,10 @@ Lino Noi:
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, faculties.Competence.end_user
-  - PROTECT : cal.Guest.partner, clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
+  - PROTECT : clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Event.contact_person, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role
 - contenttypes.ContentType :

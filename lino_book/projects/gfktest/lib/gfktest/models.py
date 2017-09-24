@@ -4,11 +4,12 @@ from lino.api import dd
 from lino.core.gfks import GenericForeignKey
 
 
+@dd.python_2_unicode_compatible
 class Member(dd.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 

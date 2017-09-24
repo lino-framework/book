@@ -2,12 +2,13 @@ from lino.api import dd
 from django.db import models
 
 
+@dd.python_2_unicode_compatible
 class Author(dd.Model):
     first_name = models.CharField("First name", max_length=50)
     last_name = models.CharField("Last name", max_length=50)
     country = models.CharField("Country", max_length=50)
     
-    def __unicode__(self):
+    def __str__(self):
         return "%s, %s" % (self.last_name, self.first_name)
 
 

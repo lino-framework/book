@@ -15,7 +15,7 @@ This document tests this functionality.
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.min2.settings.doctests')
+    >>> startup('lino_book.projects.min3.settings.doctests')
     >>> from lino.api.doctest import *
 
 
@@ -27,27 +27,36 @@ a button `Export to Excel`.
 
 Robin has twelve appointments in the period 20141023..20141122:
 
+>>> settings.SITE.the_demo_date
+datetime.date(2017, 8, 19)
+
 >>> from lino.utils import i2d
->>> pv = dict(start_date=i2d(20141023), end_date=i2d(20141122))
+>>> pv = dict(start_date=i2d(20170801), end_date=i2d(20170831))
 >>> rt.login('robin').show(cal.MyEntries, param_values=pv, header_level=1)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 =======================================================================
-My appointments (Managed by Robin Rood, Dates 23.10.2014 to 22.11.2014)
+My appointments (Managed by Robin Rood, Dates 01.08.2017 to 31.08.2017)
 =======================================================================
-=============================================== ======== =============================
- Description                                     Person   Workflow
------------------------------------------------ -------- -----------------------------
- `Seminar (24.10.2014 09:40) <Detail>`__                  **Draft** → [☑] [☒]
- `Lunch (26.10.2014 13:30) <Detail>`__                    **Published** → [☑] [☒] [☐]
- `Consultation (28.10.2014 10:20) <Detail>`__             **Took place** → [☐]
- `Interview (30.10.2014 08:30) <Detail>`__                **Suggested** → [☑] [☒]
- `Meeting (01.11.2014 11:10) <Detail>`__                  **Cancelled**
- `First meeting (03.11.2014 09:40) <Detail>`__            **Draft** → [☑] [☒]
- `Breakfast (05.11.2014 13:30) <Detail>`__                **Published** → [☑] [☒] [☐]
- `Evaluation (07.11.2014 10:20) <Detail>`__               **Took place** → [☐]
- `Dinner (09.11.2014 08:30) <Detail>`__                   **Suggested** → [☑] [☒]
- `Seminar (11.11.2014 11:10) <Detail>`__                  **Cancelled**
-=============================================== ======== =============================
+=========================================== =============================
+ overview                                    Workflow
+------------------------------------------- -----------------------------
+ `Breakfast (01.08.2017 10:20) <Detail>`__   **Took place** → [☐]
+ `Seminar (03.08.2017 08:30) <Detail>`__     **Suggested** → [☑] [☒]
+ `Interview (05.08.2017 11:10) <Detail>`__   **Cancelled**
+ `Breakfast (07.08.2017 09:40) <Detail>`__   **Draft** → [☑] [☒]
+ `Seminar (09.08.2017 13:30) <Detail>`__     **Published** → [☑] [☒] [☐]
+ `Interview (11.08.2017 10:20) <Detail>`__   **Took place** → [☐]
+ `Breakfast (13.08.2017 08:30) <Detail>`__   **Suggested** → [☑] [☒]
+ `Seminar (15.08.2017 11:10) <Detail>`__     **Cancelled**
+ `Interview (17.08.2017 09:40) <Detail>`__   **Draft** → [☑] [☒]
+ `Breakfast (19.08.2017 13:30) <Detail>`__   **Published** → [☑] [☒] [☐]
+ `Seminar (21.08.2017 10:20) <Detail>`__     **Took place** → [☐]
+ `Interview (23.08.2017 08:30) <Detail>`__   **Suggested** → [☼] [☒]
+ `Breakfast (25.08.2017 11:10) <Detail>`__   **Cancelled**
+ `Seminar (27.08.2017 09:40) <Detail>`__     **Draft** → [☼] [☒]
+ `Interview (29.08.2017 13:30) <Detail>`__   **Published** → [☒] [☐]
+ `Breakfast (31.08.2017 10:20) <Detail>`__   **Took place** → [☐]
+=========================================== =============================
 <BLANKLINE>
 
 
@@ -77,13 +86,17 @@ if the client has changed these.
     >>> ba.get_view_permission(u.user_type)
     True
 
+
 >>> url = "/api/cal/MyEntries?_dc=1414106085710"
 >>> url += "&cw=411&cw=287&cw=411&cw=73&cw=274&cw=140&cw=274&cw=220&cw=220&cw=220&cw=287&cw=181&cw=114&cw=181&cw=114&cw=170&cw=73&cw=73&cw=274&cw=140&cw=274&cw=274&cw=181&cw=274&cw=140"
 >>> url += "&ch=&ch=true&ch="
 >>> url += "&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=false&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true"
 >>> url += "&ci=when_text&ci=summary&ci=workflow_buttons&ci=id&ci=owner_type&ci=owner_id&ci=user&ci=modified&ci=created&ci=build_time&ci=build_method&ci=start_date&ci=start_time&ci=end_date&ci=end_time&ci=access_class&ci=sequence&ci=auto_type&ci=event_type&ci=transparent&ci=room&ci=priority&ci=state&ci=assigned_to&ci=owner&name=0"
->>> url += "&pv=23.10.2014&pv=22.11.2014&pv=&pv=&pv=2&pv=&pv=&pv=&pv=&pv=y"
+>>> url += "&pv=01.08.2017&pv=31.08.2017&pv=&pv=&pv=2&pv=&pv=&pv=&pv=y"
 >>> url += "&an=export_excel&sr=61"
+
+>>> print(' '.join(cal.MyEntries.params_layout.main.split()))
+start_date end_date observed_event state user assigned_to project event_type room show_appointments
 
 >>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
@@ -115,11 +128,11 @@ In order to test whether the file is really okay, we load it using
 >>> wb = load_workbook(filename=p)
 
 >>> print(wb.get_sheet_names()[0])
-My appointments (Managed by Ran
+My appointments (Managed by Rol
 
 >>> ws = wb.active
 >>> print(ws.title)
-My appointments (Managed by Ran
+My appointments (Managed by Rol
 
 
 Note that long titles are truncated because Excel does not support
@@ -129,7 +142,7 @@ It has 5 columns and 13 rows:
 
 >>> rows = list(ws.rows)
 >>> print(len(list(ws.columns)), len(rows))
-(5, 12)
+(5, 16)
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:
@@ -139,7 +152,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Thu 23/10/2014 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+Wed 02/08/2017 (13:30) | **Published** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | ... | 2017-08-02 00:00:00 | 13:30:00
 
 
 
@@ -153,7 +166,7 @@ Unicode
 >>> wb = load_workbook(filename=p)
 >>> ws = wb.active
 >>> print(ws.title)
-Mes rendez-vous (Traité par Ran
+Mes rendez-vous (Traité par Rol
 
 >>> rows = list(ws.rows)
 >>> print(' | '.join([cell.value for cell in rows[0]]))
@@ -161,7 +174,7 @@ Quand | Workflow | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-jeu. 23/10/2014 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,131,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,131,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,131,{  })>`__ | ... | 2014-10-23 00:00:00 | 13:30:00
+mer. 02/08/2017 (13:30) | **Publié** → ` ☑  <javascript:Lino.cal.MyEntries.close_meeting(null,true,151,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,151,{  })>`__ ` ☐  <javascript:Lino.cal.MyEntries.wf4(null,true,151,{  })>`__ | ... | 2017-08-02 00:00:00 | 13:30:00
 
 
 
@@ -182,10 +195,10 @@ The following failed with :message:`ValueError: Cannot convert
 1973-07-21 to Excel` until 20161014:
     
 >>> url = "/api/contacts/Persons?an=export_excel"
->>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=101&cw=101&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185&cw=185"
->>> url += "&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true"
->>> url += "&ci=name_column&ci=address_column&ci=email&ci=phone&ci=gsm&ci=id&ci=language&ci=modified&ci=created&ci=url&ci=fax&ci=country&ci=city&ci=zip_code&ci=region&ci=addr1&ci=street_prefix&ci=street&ci=street_no&ci=street_box&ci=addr2&ci=name&ci=remarks&ci=title&ci=first_name&ci=middle_name&ci=last_name&ci=gender&ci=birth_date&ci=workflow_buttons&ci=age&ci=overview&ci=mti_navigator&ci=created_natural"
->>> url += "&name=0&pv=&pv=&pv=&pv=&pv=&pv="
+>>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185"
+>>> url += "&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true"
+>>> url += "&ci=name_column&ci=address_column&ci=email&ci=phone&ci=gsm&ci=id&ci=language&ci=url&ci=fax&ci=country&ci=city&ci=zip_code&ci=region&ci=addr1&ci=street_prefix&ci=street&ci=street_no&ci=street_box&ci=addr2&ci=name&ci=remarks&ci=title&ci=first_name&ci=middle_name&ci=last_name&ci=gender&ci=birth_date&ci=workflow_buttons&ci=age&ci=overview&ci=mti_navigator"
+>>> url += "&name=0&&pv=&pv=&pv=&pv="
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
 

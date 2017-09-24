@@ -5,15 +5,51 @@ Initializing the demo databases
 ===============================
 
 .. to run only this test:
-  $ python setup.py test -s tests.DocsTests.test_initdb
+   $ doctest docs/dev/initdb.rst
 
-The :mod:`lino_book` repository contains a series of **demo
-projects**.  A *demo project* is a subdirectory of a Lino project
-which contains a runnable Django project.
+This document describes Lino's innovative way of providing
+application-specific demo data.
 
 
-This section gives a first introduction into Lino's innovative way of
-providing application-specific demo data.
+Standard Django admin commands
+==============================
+
+Here are some standard Django admin commands that you should know.
+
+.. management_command:: dumpdata
+
+    Output all data in the database (or some tables) to a serialized
+    stream. The default will write to `stdout`, but you usually
+    redirect this into a file.  See the `Django documentation
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#dumpdata>`__
+    
+    You might theoretically use :manage:`dumpdata` for writing a
+    Python fixture, but Lino's preferred equivalent is
+    :manage:`dump2py`.
+
+.. management_command:: flush
+
+    Removes all data from the database and re-executes any
+    post-synchronization handlers. The migrations history is not
+    cleared.  If you would rather start from an empty database and
+    re-run all migrations, you should drop and recreate the database
+    and then run :manage:`migrate` instead.  See the `Django
+    documentation
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#flush>`__
+    
+    
+.. management_command:: loaddata
+
+    Loads the contents of the named fixtures into the database.
+    See the `Django documentation
+    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#loaddata>`__.
+    
+    Both :manage:`loaddata` and :manage:`initdb` can be used to load
+    fixtures into a database.  The difference is that :manage:`loaddata`
+    *adds* data to your database while :manage:`initdb` first clears
+    (initializes) your database.
+
+
 
 The :manage:`initdb` and :manage:`prep` commands
 -------------------------------------------------------
@@ -23,11 +59,6 @@ your database" by running the command::
 
   $ python manage.py prep
   
-The :xfile:`manage.py` Python script is the standard Django interface
-for running a so-called **administrative task** (if you did't know
-that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.11/ref/django-admin/>`_).
-
 The :manage:`prep` command which we use here is a `custom
 django-admin command
 <https://docs.djangoproject.com/en/1.9/howto/custom-management-commands/>`_
@@ -69,22 +100,19 @@ database.
 What are demo fixtures?
 =======================
 
-Note the three arguments ``std demo demo2`` to both the
-:manage:`loaddata` and :manage:`initdb` commands above.  These are
-names of so-called *fixtures*.
+Note the three arguments ``std demo demo2`` to the :manage:`loaddata`
+command above.  These are names of *fixtures*.
 
 A **fixture**, in Django, is a portion of data (a collection of data
 records in one or several tables) which can be loaded into a database.
-Read more about fixtures in the `Providing initial data for models
-<https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_ article
-of the Django documentation.
+Fixtures can be defined by several files in different directories.
+Read more about this in the `Django documentation
+<https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_.
 
 Lino adds the concept of **demo fixtures**. These are a predefined set
-of fixture names to be specified by the application developer.  
-
-This is done via the :attr:`demo_fixtures
-<lino.core.site.Site.demo_fixtures>` attribute.  The `min1` app has
-the following value for this attribute:
+of fixture names to be specified by the application developer via the
+:attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` attribute.
+The `min1` application has the following value for this attribute:
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.demo')
@@ -92,7 +120,7 @@ the following value for this attribute:
 >>> settings.SITE.demo_fixtures
 'std demo demo2'
 
-This just means that the :manage:`prep` command (at least in a
+This means that the :manage:`prep` command (in a
 :mod:`lino_book.projects.min1` application) is equivalent to::
   
   $ python manage.py initdb std demo demo2

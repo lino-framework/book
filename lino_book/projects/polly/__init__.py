@@ -1,5 +1,5 @@
 """
-A little application for managing polls. See :ref:`polly`.
+A little application for managing polls, explained in :ref:`polly`.
 
 .. autosummary::
    :toctree:

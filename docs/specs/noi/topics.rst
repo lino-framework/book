@@ -114,41 +114,40 @@ Filtering tickets by topic
 >>> pv = dict(topic=rt.models.topics.Topic.get_by_ref("così"))
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: -REPORT_UDIFF
-===== =========================================== ======
- ID    Summary                                     Site
------ ------------------------------------------- ------
- 114   Ticket 114
- 110   Ticket 110
- 106   Ticket 106
- 102   Ticket 102
- 98    Ticket 98
- 94    Ticket 94
- 90    Ticket 90
- 86    Ticket 86
- 82    Ticket 82
- 78    Ticket 78
- 74    Ticket 74
- 70    Ticket 70
- 66    Ticket 66
- 62    Ticket 62
- 58    Ticket 58
- 54    Ticket 54
- 50    Ticket 50
- 46    Ticket 46
- 42    Ticket 42
- 38    Ticket 38
- 34    Ticket 34
- 30    Ticket 30
- 26    Ticket 26
- 22    Ticket 22
- 18    Ticket 18
- 14    Bar cannot baz
- 10    Where can I find a Foo when bazing Bazes?
- 6     Sell bar in baz
- 2     Bar is not always baz
-===== =========================================== ======
+===== =========================================== ========== =========== ======
+ ID    Summary                                     Priority   Workflow    Site
+----- ------------------------------------------- ---------- ----------- ------
+ 114   Ticket 114                                  Normal     **Talk**
+ 110   Ticket 110                                  Normal     **Ready**
+ 106   Ticket 106                                  Normal     **Talk**
+ 102   Ticket 102                                  Normal     **Ready**
+ 98    Ticket 98                                   Normal     **Talk**
+ 94    Ticket 94                                   Normal     **Ready**
+ 90    Ticket 90                                   Normal     **Talk**
+ 86    Ticket 86                                   Normal     **Ready**
+ 82    Ticket 82                                   Normal     **Talk**
+ 78    Ticket 78                                   Normal     **Ready**
+ 74    Ticket 74                                   Normal     **Talk**
+ 70    Ticket 70                                   Normal     **Ready**
+ 66    Ticket 66                                   Normal     **Talk**
+ 62    Ticket 62                                   Normal     **Ready**
+ 58    Ticket 58                                   Normal     **Talk**
+ 54    Ticket 54                                   Normal     **Ready**
+ 50    Ticket 50                                   Normal     **Talk**
+ 46    Ticket 46                                   Normal     **Ready**
+ 42    Ticket 42                                   Normal     **Talk**
+ 38    Ticket 38                                   Normal     **Ready**
+ 34    Ticket 34                                   Normal     **Talk**
+ 30    Ticket 30                                   Normal     **Ready**
+ 26    Ticket 26                                   Normal     **Talk**
+ 22    Ticket 22                                   Normal     **Ready**
+ 18    Ticket 18                                   Normal     **Talk**
+ 14    Bar cannot baz                              Normal     **Ready**
+ 10    Where can I find a Foo when bazing Bazes?   Normal     **Talk**
+ 6     Sell bar in baz                             Normal     **Ready**
+ 2     Bar is not always baz                       Normal     **Talk**
+===== =========================================== ========== =========== ======
 <BLANKLINE>
-
  
 
 
