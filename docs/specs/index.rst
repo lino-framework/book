@@ -39,6 +39,7 @@ specifications.  This section is far from being complete.
    jsgen
    i18n
    de_BE
+   coachings
 
    
 Accounting stuff

@@ -4,6 +4,9 @@
 Calendar functions in Lino Avanti
 =================================
 
+This document describes how the :mod:`lino_xl.lib.cal` is being used
+in :ref:`avanti`.
+
 .. How to test just this document:
 
     $ doctest docs/specs/avanti/cal.rst
@@ -22,19 +25,20 @@ Calendar functions in Lino Avanti
 >>> show_choices("rolf", base + '?query=') #doctest: +ELLIPSIS
 <br/>
 ABAD Aábdeen (114)
-ABBAS Aábid (115)
 ABBASI Aáishá (118)
 ABDALLA Aádil (120)
+ABDALLAH Aáish (127)
+ABDELLA Aákif (128)
 ...
 
 >>> show_choices("audrey", base + '?query=') #doctest: +ELLIPSIS
 <br/>
 Aábdeen (114) from Eupen
-Aábid (115) from Eupen
 Aáishá (118) from Eupen
 Aádil (120) from Eupen
 Aáish (127) from Eupen
 Aákif (128) from Eupen
+Aátifá (136) from Eupen
 ...
 
 
@@ -62,8 +66,8 @@ Aákif (128) from Eupen
 <BLANKLINE>
 
 
-:class:`GuestsByPartner` shows only presences on entries which took
-place, and it sorts them chronologically:
+:class:`GuestsByPartner` shows all presences (not only those on
+entries that took place) and sorts them chronologically:
 
 >>> obj = avanti.Client.objects.get(pk=115)
 >>> rt.show(cal.GuestsByPartner, obj)
