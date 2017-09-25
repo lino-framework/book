@@ -46,6 +46,9 @@ function install {
 
 function install_them_all {
 
+    # the following are not really needed
+    # install atelier lino-framework atelier
+    
     install cd lsaffre commondata
     install be lsaffre commondata-be
     install ee lsaffre commondata-ee
