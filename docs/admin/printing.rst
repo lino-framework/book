@@ -6,7 +6,7 @@ Introduction to printable documents
 
 .. How to test only this document:
 
-     $ python setup.py test -s tests.DocsAdminTests.test_printing
+     $ python doctest docs/admin/printing.rst
 
    Initialize doctest:
 
@@ -24,11 +24,7 @@ Lino comes with a selection of ready-to-use mechanisms for generating
 **printable documents** using different types of **templates**.  This
 section introduces the basic concepts.
 
-
-General functionality for printing is provided by the
-:mod:`lino.modlib.printing` plugin.
-
-.. currentmodule:: lino.modlib.printing.mixins
+.. currentmodule:: lino.modlib.printing
 
 What is a printable document?
 =============================
@@ -78,8 +74,8 @@ Here is what happens when a user invokes the :attr:`do_print
 <Printable.do_print>` action of a printable object:
 
 - Lino **generates** ("builds") the printable document on the server.
-  For cached printables (see :class:`CachedPrintable`), Lino may skip this step
-  if that document had been generated earlier.
+  For cached printables (see :class:`CachedPrintable`), Lino may skip
+  this step if that document had been generated earlier.
 
 - Lino **delivers** the document to the user. 
 
@@ -87,14 +83,11 @@ Here is what happens when a user invokes the :attr:`do_print
 Build methods
 =============
 
-.. currentmodule:: lino.modlib.printing.choicelists
-
 Lino comes with a list of "build methods".  You can imagine a build
 method as a kind of "driver" who generates ("builds") printable
-documents from a template.  Here is a list of all available build
-methods:
+documents from a template.
 
->>> rt.show('printing.BuildMethods')
+>>> rt.show(printing.BuildMethods)
 ======= ======= ==================
  value   name    text
 ------- ------- ------------------
@@ -104,22 +97,6 @@ methods:
  xml     xml     XmlBuildMethod
 ======= ======= ==================
 <BLANKLINE>
-
-
-When creating `.pdf` files, Lino applications currently use either the
-:class:`PisaBuildMethod
-<lino.modlib.printing.choicelists.PisaBuildMethod>` or
-:class:`AppyPdfBuildMethod
-<lino.modlib.appypod.choicelists.AppyPdfBuildMethod>`.  This choice is
-done by the application developer because they write their templates
-either for *pisa* or for *appy.pod*.
-
-=========== ===============
-Method      Templates     
-=========== ===============
-pisa        `.html`
-appy.pod    `.odt`
-=========== ===============
 
 
 
@@ -152,6 +129,7 @@ commands when designing templates.
   This build method has a flaw: I did not find a way to 
   "protect" the template commands in your RTF files from being formatted by Word.
   
+
 Markup versus WYSIWYG
 =====================
 
@@ -176,38 +154,6 @@ Some print methods need post-processing: the result of parsing must be
 run through another software in order to turn into a usable format.
 Post-processing creates dependencies to other software and has of
 course influence on runtime performance.
-
-
-Pisa vs. LaTeX
-==============
-
-- Pisa uses less server resources at runtime than LaTeX.
-
-- You can include Pisa into your project, while LaTeX is a separate
-  software with its own package management to be installed.
-  
-- Creating .html templates from existing .odt or .doc files 
-  is easier than creating .tex templates.
-  There is html2latex but I have no real-world experience with it.
-    
-- Pisa is rather limited, while LaTeX is 
-  rather unlimited, well-documented and stable.
-  
-
-Not yet implemented
-===================
-
-There are some other possible candidates that we didn't yet have time
-to meet with:
-
-- `rst2pdf <http://rst2pdf.googlecode.com>`_
-  is a tool to convert restructured text to PDF using reportlab.
-
-- `RTF Template <http://rtftemplate.sourceforge.net/>`_ uses another
-  approach: users design their templates by "using merge fields
-  (MERGEFIELD), hyperlink fields (HYPERLINK) and bookmarks (BOOKMARK,
-  to manage start/end loop)."
-  
 
    
 Weblinks

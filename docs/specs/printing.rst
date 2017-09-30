@@ -11,11 +11,19 @@ Printing documents
     >>> from lino.api.shell import *
     >>> from lino.api.doctest import *
 
-The Extended Library adds a series of plugins related to printing:
+See also :doc:`/admin/printing`.
+     
+Lino has the following plugins related to printing:
+
+- :mod:`lino.modlib.printing` -- general functionality for printing 
+- :mod:`lino.modlib.weasyprint`
+- :mod:`lino.modlib.wkhtmltopdf`
+- :mod:`lino.modlib.jinja`
+  
+The :ref:`xl` adds two others:
 
 - :mod:`lino_xl.lib.excerpts`.
-- :mod:`lino_xl.lib.appy_pod`.
-- :mod:`lino_xl.lib.wkhtmltopdf`.
+- :mod:`lino_xl.lib.appypod`.
 
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE
@@ -69,4 +77,295 @@ True
 >>> print(result['open_url'])
 /media/cache/appypdf/127.0.0.1/contacts.Partners.pdf
 
+
+Reference
+=========
+
+.. currentmodule:: lino.modlib.printing
+
+Model mixins
+------------
+
+.. class:: PrintableObject    
+
+    .. method:: get_print_templates(self, bm, action)
+                
+        Return a list of filenames of templates for the specified
+        build method.  Returning an empty list means that this item is
+        not printable.  For subclasses of :class:`SimpleBuildMethod`
+        the returned list may not contain more than 1 element.
+
+        The default method calls
+        :meth:`BuildMethod.get_default_template` and returns this as a
+        list with one item.
+
+    .. method:: get_build_method(self)
+                
+        Return the build method to use when printing this object.
+
+        This is expected to rather raise an exception than return
+        `None`.
+
+
+.. class:: Printable
+
+    Mixin for models whose instances have a "print" action (i.e. for
+    which Lino can generate a printable document).
+
+    Extended by :class:`CachedPrintable` and :class:`TypedPrintable`.
+
+    .. attribute:: do_print
+
+        The action used to print this object.
+        This is an instance of
+        :class:`DirectPrintAction` or :class:`CachedPrintAction` by
+        default.  And if :mod:`lino_xl.lib.excerpts` is installed,
+        then :func:`set_excerpts_actions
+        <lino_xl.lib.excerpts.set_excerpts_actions>` possibly replaces
+        :attr:`do_print` by a
+        :class:`lino_xl.lib.excerpts.CreateExcerpt` instance.
+
+    .. attribute:: edit_template
+
+.. class:: CachedPrintable
+           
+    Mixin for Models that generate a unique external file at a
+    determined place when being printed.
+    
+    Adds a "Print" button, a "Clear cache" button and a `build_time`
+    field.
+    
+    The "Print" button of a :class:`CachedPrintable
+    <lino.mixins.printable.CachedPrintable>` transparently handles the
+    case when multiple rows are selected.  If multiple rows are
+    selected (which is possible only when :attr:`cell_edit
+    <lino.core.tables.AbstractTable.cell_edit>` is True), then it will
+    automatically:
+    
+    - build the cached printable for those objects who don't yet have
+      one
+      
+    - generate a single temporary pdf file which is a merge of these
+      individual cached printable docs
+
+    .. attribute:: build_time
+
+        Timestamp of the built target file. Contains `None`
+        if no build hasn't been called yet.
+
+           
+.. class:: TypedPrintable
+           
+    A :class:`CachedPrintable` that uses a "Type" for deciding which
+    template to use on a given instance.
+    
+    A TypedPrintable model must define itself a field ``type`` which
+    is a ForeignKey to a Model that implements :class:`PrintableType`.
+    
+    Alternatively you can override :meth:`get_printable_type` if you
+    want to name the field differently. An example of this is
+    :attr:`ml.sales.SalesDocument.imode`.
+
+
+.. class:: PrintableType
+
+    Base class for models that specify the
+    :attr:`TypedPrintable.type`.
+
+    .. attribute:: templates_group
+
+        Default value for `templates_group` is the model's full name.
+    
+    .. attribute:: build_method
+
+        A pointer to an item of
+        :class:`lino.modlib.printing.choicelists.BuildMethods`.
+
+    .. attribute:: template
+
+        The name of the file to be used as template.
+    
+        If this field is empty, Lino will use the filename returned by
+        :meth:`lino.modlib.printing.Plugin.get_default_template`.
+    
+        The list of choices for this field depend on the
+        :attr:`build_method`.  Ending must correspond to the
+        :attr:`build_method`.
+
+Utilities
+---------
+
+.. class:: CachedPrintableChecker
+
+    Checks for missing cache files on all objects which inherit
+    :class:`CachedPrintable`.
+
+    When a CachedPrintable has a non-empty :attr:`build_time
+    <CachedPrintable.build_time>` field, this means that the target
+    file has been built.  That file might no longer exists for several
+    reasons:
+
+    - it has really beeen removed from the cache directory.
+
+    - we are working in a copy of the database, using a different
+      cache directory.
+
+    - the computed name of the file has changed due to a change in
+      configuration or code.
+
+    An easy quick "fix" would be to set `build_time` to None, but this
+    is not automatic because in cases of real data loss a system admin
+    might want to have at least that timestamp in order to search for
+    the lost file.
+
+           
+
+Actions
+-------
+
+.. class:: BasePrintAction
+           
+    Base class for all "Print" actions.
+
+.. class:: DirectPrintAction
+
+    Print using a hard-coded template and without cache.
+
+.. class:: CachedPrintAction
+           
+    A print action which uses a cache for the generated printable
+    document and builds is only when it doesn't yet exist.
+
+.. class:: ClearCacheAction
+
+    Defines the :guilabel:`Clear cache` button on a Printable record.
+    
+    The `run_from_ui` method has an optional keyword argmuent
+     `force`. This is set to True in `docs/tests/debts.rst`
+     to avoid compliations.
+    
+
+.. class:: EditTemplate
+
+    Edit the print template, i.e. the file specified by
+    :meth:`Printable.get_print_templates`.
+
+    The action available only when :mod:`lino.modlib.davlink` is
+    installed, and only for users with `SiteStaff` role.
+
+    If it is available, then it still works only when
+
+    - your site has a local config directory
+    - your :xfile:`webdav` directory (1) is published by your server under
+      "/webdav" and (2) has a symbolic link named `config` which points
+      to your local config directory.
+    - the local config directory is writable by `www-data`
+
+    **Factory template versus local template**
+    
+    The action automatically copies a factory template to the local
+    config tree if necessary. Before doing so, it will ask for
+    confirmation: :message:`Before you can edit this template we must
+    create a local copy on the server.  This will exclude the template
+    from future updates.`
+
+           
+Build methods
+-------------
+
+.. class:: BuildMethods
+
+    The choicelist of build methods offered on this site.
+    
+.. class:: BuildMethod
+
+    Base class for all build methods.  A build method encapsulates the
+    process of generating a "printable document" that inserts data
+    from the database into a template, using a given combination of a
+    template parser and post-processor.
+
+    .. attribute:: use_webdav
+   
+        Whether this build method results is an editable file.  For
+        example, `.odt` files are considered editable while `.pdf` files
+        aren't.
+
+        In that case the target will be in a webdav folder and the print
+        action will respond `open_davlink_url` instead of the usual
+        `open_url`, which extjs3 ui will implement by calling
+        `Lino.davlink_open()` instead of the usual `window.open()`.
+
+        When :mod:`lino.modlib.davlink` is not installed, this setting
+        still influences the target path of resulting files, but the
+        clients will not automatically recognize them as webdav-editable
+        URLs.
+
+.. class:: TemplatedBuildMethod
+           
+    A :class:`BuildMethod` which uses a template.
+    
+.. class:: DjangoBuildMethod
+           
+    A :class:`TemplatedBuildMethod` which uses Django's templating engine.
+
+
+.. class:: XmlBuildMethod    
+    
+    Generates .xml files from .xml templates.
+    
+.. class:: SimpleBuildMethod
+
+    Base for build methods which use Lino's templating system
+    (:meth:`find_config_file <lino.core.site.Site.find_config_file>`).
+
+    TODO: check whether this extension to Django's templating system
+    is still needed.
+
+
+.. class:: CustomBuildMethod
+           
+    For example CourseToXls.
+
+    Simple example::
+
+        from lino.modlib.printing.utils import CustomBuildMethod
+
+        class HelloWorld(CustomBuildMethod):
+            target_ext = '.txt'
+            name = 'hello'
+            label = _("Hello")
+
+            def custom_build(self, ar, obj, target):
+                # this is your job
+                file(target).write("Hello, world!")
+
+        class MyModel(Model):
+            say_hello = HelloWorld.create_action()
+
+
+    
+
+    .. method:: custom_build(self, ar, obj, target)
+
+        Concrete subclasses must implement this.
+
+        This is supposed to create a file named `target`.
+        
+           
+.. class:: LatexBuildMethod    
+
+    Not actively used.
+    Generates `.pdf` files from `.tex` templates.
+    
+.. class:: RtfBuildMethod    
+
+    Not actively used.
+    Generates `.rtf` files from `.rtf` templates.
+    
+.. class:: PisaBuildMethod
+           
+    Deprecated.
+    Generates .pdf files from .html templates.
+    Requires `pisa <https://pypi.python.org/pypi/pisa>`_.
+    Usage example see :mod:`lino_book.projects.pisa`.
 
