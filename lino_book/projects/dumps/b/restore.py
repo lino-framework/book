@@ -18,6 +18,7 @@ from datetime import datetime
 from datetime import time, date
 from django.conf import settings
 from django.utils.timezone import make_aware
+from django.core.management import call_command
 # from django.contrib.contenttypes.models import ContentType
 from lino.utils.dpy import create_mti_child
 from lino.utils.dpy import DpyLoader
@@ -65,6 +66,7 @@ def main(args):
 
     execfile("dumps_foo.py")
     loader.finalize()
+    call_command('resetsequences')
 
 if __name__ == '__main__':
     import argparse

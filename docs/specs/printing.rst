@@ -12,18 +12,35 @@ Printing documents
     >>> from lino.api.doctest import *
 
 See also :doc:`/admin/printing`.
+
+.. currentmodule:: lino.modlib.printing
+
+Lino applications can use several approaches for offering "printing
+functionality" to the end user:
+
+- :class:`Printable` adds a hard-coded "Print" button to a database
+  model.
+- :doc:`excerpts` also cause a "Print" button to be added to database
+  models, but in a configurable way.
+- :mod:`lino_xl.lib.appypod` adds a button which prints the current
+  grid as a table to pdf.
+- A "report" (:mod:`lino.utils.report`) is a hard-coded sequence of
+  tables and arbitrary content.
      
 Lino has the following plugins related to printing:
 
 - :mod:`lino.modlib.printing` -- general functionality for printing 
+- :mod:`lino.modlib.jinja`
+
+Additional build methods:
+
 - :mod:`lino.modlib.weasyprint`
 - :mod:`lino.modlib.wkhtmltopdf`
-- :mod:`lino.modlib.jinja`
-  
-The :ref:`xl` adds two others:
-
-- :mod:`lino_xl.lib.excerpts`.
 - :mod:`lino_xl.lib.appypod`.
+  
+
+
+- .
 
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE

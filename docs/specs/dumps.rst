@@ -8,8 +8,8 @@ Python dumps
 
     $ doctest docs/specs/dumps.rst
 
-.. If this fails just because of version differences in the "This is a
-   Python dump created using ..." header, then I need to run::
+.. If this fails just because something has changed in the expected
+   dump, then you need to run::
 
    $ python manage_a.py dump2py a --overwrite
    $ python manage_b.py dump2py b --overwrite
