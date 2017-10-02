@@ -29,12 +29,11 @@ Overview
 ========
 
 The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
-general accounting stuff.  You application needs it when you are
-moving money between accounts.  You should have read :doc:`accounts`
-before reading this document.
+general accounting stuff.  Your application needs it when you are
+moving money between accounts.
+You should have read :doc:`accounts` before reading this document.
 
 .. currentmodule:: lino_xl.lib.ledger
-
 
 A **ledger** is a book in which the monetary transactions of a
 business are posted in the form of debits and credits (from `1
@@ -48,50 +47,60 @@ In Lino, the ledger is implemented by three database models:
   money *out of* an account is called "to debit", moving money *to* an
   account is called "to credit".
 
-- Movements are never created individually but by *registering* a
-  :class:`Voucher`.  A voucher is any document which serves as legal
-  proof for a **ledger transaction**.  A ledger transaction consists of
-  *at least two* movements, and the sum of *debited* money in these
+- Movements are never created individually but by registering a
+  **voucher**.  Examples of *vouchers* include invoices, bank
+  statements, or payment orders.
+  
+  A voucher is any document which serves as legal proof for
+  a **ledger transaction**.  A ledger transaction consists of *at
+  least two* movements, and the sum of *debited* money in these
   movements must equal the sum of *credited* money.
-
-  Examples of vouchers include invoices, bank statements, or payment
-  orders.
 
   Vouchers are stored in the database using some subclass of the
   :class:`Voucher` model. Note that the voucher model is never being
   used directly.
 
 - When a voucher is registered, it receives a sequence number in a
-  :class:`Journal`.  A journal is a serieas of vouchers, numbered
+  :class:`Journal`.  A journal is a series of vouchers, numbered
   sequentially and in chronological order.
 
 There are some secondary models and choicelists:  
 
 - Each ledger movement happens in a given **fiscal year**.
   
-
 And then there are many subtle ways for looking at this data.
 
 - :class:`GeneralAccountsBalance`, :class:`CustomerAccountsBalance` and
-  :class:`SupplierAccountsBalance` three reports based on
-  :class:`AccountsBalance` and :class:`PartnerAccountsBalance`
+  :class:`SupplierAccountsBalance`
 
 - :class:`Debtors` and :class:`Creditors` are tables with one row for
   each partner who has a positive balance (either debit or credit).
   Accessible via :menuselection:`Reports --> Ledger --> Debtors` and
   :menuselection:`Reports --> Ledger --> Creditors`
+                 
 
->>> # rt.show(ledger.AccountingPeriods)
+The accounting report
+=====================
+
+.. class:: AccountingReport
+
+    A combined report which produces a series of reports for a given
+    period as one action.
+
+    - :class:`GeneralAccountsBalance`
+    - :class:`SuppliersAccountsBalance`
+    - :class:`CustomerAccountsBalance`
+
+      
+The following example shows the balances for three period ranges
+"January", "February" and "January-February".
 
 >>> jan = ledger.AccountingPeriod.objects.get(ref="2016-01")
 >>> feb = ledger.AccountingPeriod.objects.get(ref="2016-02")
 >>> dec = ledger.AccountingPeriod.objects.get(ref="2016-12")
 >>> def test(sp, ep=None):
-...     rt.show(ledger.AccountingReport, param_values=dict(start_period=sp, end_period=ep))
-...     #rt.show(ledger.GeneralAccountsBalance,
-...     #    param_values=dict(start_period=sp, end_period=ep))
-...     #rt.show(ledger.CustomerAccountsBalance,
-...     #    param_values=dict(start_period=sp, end_period=ep))
+...     pv = dict(start_period=sp, end_period=ep)
+...     rt.show(ledger.AccountingReport, param_values=pv)
 
 >>> test(jan)
 ========================
@@ -319,8 +328,8 @@ Supplier Accounts Balance
 
 
 
-Models and actors reference
-===========================
+Database models reference
+=========================
 
 .. class:: MatchRule
 
@@ -391,15 +400,18 @@ Models and actors reference
            
     A Voucher is a document that represents a monetary transaction.
 
-    It is *not* abstract so that :class:`Movement` can have a ForeignKey
-    to a Voucher.
-
     A voucher is never instantiated using this base model but using
     one of its subclasses. Examples of subclassed are sales.Invoice,
     vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
     etc...
     
-    Subclasses must define a field `state`.
+    This is *not* abstract so that :class:`Movement` can have a
+    ForeignKey to a Voucher.
+
+    .. attribute:: state
+
+        The workflow state of this voucher. Choices are defined in
+        :class:`VoucherStates`
 
     .. attribute:: journal
 
@@ -527,7 +539,6 @@ Models and actors reference
     .. attribute:: ref
     
 
-    """
            
 .. class:: Journal
 
@@ -619,7 +630,9 @@ Models and actors reference
         See :attr:`PrintableType.template
         <lino.mixins.printable.PrintableType.template>`.
 
-    
+Actors
+======
+
           
 .. class:: Journals
 
@@ -667,7 +680,6 @@ Models and actors reference
 
     This table is accessible by clicking the "Debts" action button on
     a Partner.
-
 
 .. class:: PartnerVouchers    
 
@@ -1187,17 +1199,18 @@ Journal groups
 
     .. attribute:: cancelled
 
-        *Cancelled* is similar to *Draft*, except that you cannot edit the
-        fields. This is used for invoices which have been sent, but the
-        customer signaled that they doen't agree. Instead of writing a
-        credit nota, you can decide to just cancel the invoice.
+        *Cancelled* is similar to *Draft*, except that you cannot edit
+        the fields. This is used for invoices which have been sent,
+        but the customer signaled that they doen't agree. Instead of
+        writing a credit nota, you can decide to just cancel the
+        invoice.
 
     .. attribute:: signed
 
-        The *Signed* state is similar to *registered*, but cannot usually be
-        deregistered anymore. This state is not visible in the default
-        configuration. In order to make it usable, you must define a custom
-        workflow for :class:`lino_xl.lib.ledger.VoucherStates`.
+        The *Signed* state is similar to *registered*, but cannot
+        usually be deregistered anymore. This state is not visible in
+        the default configuration. In order to make it usable, you
+        must define a custom workflow for :class:`VoucherStates`.
 
 
            
