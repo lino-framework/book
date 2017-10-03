@@ -7,7 +7,7 @@ Exploring SQL activity in Lino Tera
 ..  How to test only this document:
     $ doctest docs/specs/tera/sql.rst
 
-This document explores why AccountingReport is slow.
+This document explores some SQL requests in Lino Tera.
 It is also a demo of
 the :func:`show_sql_queries <lino.api.doctest.show_sql_queries>`
 function.
@@ -45,8 +45,8 @@ emits.
 
 To understand the following, you should also look at the source code
 (of the :class:`AccountsBalance <lino_xl.lib.ledger.AccountingReport>`
-class) and read the Django documentation about `Using aggregates
-within a Subquery expression
+class in :mod:`lino_xl.lib.ledger`) and read the Django documentation
+about `Using aggregates within a Subquery expression
 <https://docs.djangoproject.com/en/1.11/ref/models/expressions/#using-aggregates-within-a-subquery-expression>`__.
 
 >>> # test_client.force_login(rt.login('robin').user)
