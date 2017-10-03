@@ -8,7 +8,7 @@ The General Ledger: moving money between accounts
 
 .. to test only this document:
 
-      $ python setup.py test -s tests.SpecsTests.test_ledger
+      $ doctest docs/specs/cosi/ledger.rst
     
     doctest init:
 
@@ -29,12 +29,11 @@ Overview
 ========
 
 The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
-general accounting stuff.  You application needs it when you are
-moving money between accounts.  You should have read :doc:`accounts`
-before reading this document.
+general accounting stuff.  Your application needs it when you are
+moving money between accounts.
+You should have read :doc:`accounts` before reading this document.
 
 .. currentmodule:: lino_xl.lib.ledger
-
 
 A **ledger** is a book in which the monetary transactions of a
 business are posted in the form of debits and credits (from `1
@@ -48,41 +47,289 @@ In Lino, the ledger is implemented by three database models:
   money *out of* an account is called "to debit", moving money *to* an
   account is called "to credit".
 
-- Movements are never created individually but by *registering* a
-  :class:`Voucher`.  A voucher is any document which serves as legal
-  proof for a **ledger transaction**.  A ledger transaction consists of
-  *at least two* movements, and the sum of *debited* money in these
+- Movements are never created individually but by registering a
+  **voucher**.  Examples of *vouchers* include invoices, bank
+  statements, or payment orders.
+  
+  A voucher is any document which serves as legal proof for
+  a **ledger transaction**.  A ledger transaction consists of *at
+  least two* movements, and the sum of *debited* money in these
   movements must equal the sum of *credited* money.
-
-  Examples of vouchers include invoices, bank statements, or payment
-  orders.
 
   Vouchers are stored in the database using some subclass of the
   :class:`Voucher` model. Note that the voucher model is never being
   used directly.
 
 - When a voucher is registered, it receives a sequence number in a
-  :class:`Journal`.  A journal is a serieas of vouchers, numbered
+  :class:`Journal`.  A journal is a series of vouchers, numbered
   sequentially and in chronological order.
 
 There are some secondary models and choicelists:  
 
 - Each ledger movement happens in a given **fiscal year**.
   
-
 And then there are many subtle ways for looking at this data.
 
 - :class:`GeneralAccountsBalance`, :class:`CustomerAccountsBalance` and
-  :class:`SupplierAccountsBalance` three reports based on
-  :class:`AccountsBalance` and :class:`PartnerAccountsBalance`
+  :class:`SupplierAccountsBalance`
 
 - :class:`Debtors` and :class:`Creditors` are tables with one row for
   each partner who has a positive balance (either debit or credit).
   Accessible via :menuselection:`Reports --> Ledger --> Debtors` and
   :menuselection:`Reports --> Ledger --> Creditors`
+                 
 
-Models and actors reference
-===========================
+The accounting report
+=====================
+
+.. class:: AccountingReport
+
+    A combined report which produces a series of reports for a given
+    period as one action.
+
+    - :class:`GeneralAccountsBalance`
+    - :class:`SuppliersAccountsBalance`
+    - :class:`CustomerAccountsBalance`
+
+      
+The following example shows the balances for three period ranges
+"January", "February" and "January-February".
+
+>>> jan = ledger.AccountingPeriod.objects.get(ref="2016-01")
+>>> feb = ledger.AccountingPeriod.objects.get(ref="2016-02")
+>>> dec = ledger.AccountingPeriod.objects.get(ref="2016-12")
+>>> def test(sp, ep=None):
+...     pv = dict(start_period=sp, end_period=ep)
+...     rt.show(ledger.AccountingReport, param_values=pv)
+
+>>> test(jan)
+========================
+General Accounts Balance
+========================
+<BLANKLINE>
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| Description                      | Debit  | Credit |   | Debit         | Credit        |   | Debit         | Credit        |
+|                                  | before | before |   |               |               |   | after         | after         |
++==================================+========+========+===+===============+===============+===+===============+===============+
+| *(4000) Customers*               |        |        |   |               | 6 534,48      |   |               | 6 534,48      |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4400) Suppliers*               |        |        |   | 5 226,48      |               |   | 5 226,48      |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4500) Tax offices*             |        |        |   |               | 538,59        |   |               | 538,59        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4510) VAT due*                 |        |        |   | 1 134,10      | 1 275,55      |   |               | 141,45        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4512) VAT deductible*          |        |        |   | 1 814,14      | 907,07        |   | 907,07        |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6010) Purchase of services*    |        |        |   |               | 2 844,45      |   |               | 2 844,45      |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6020) Purchase of investments* |        |        |   |               | 416,45        |   |               | 416,45        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6040) Purchase of goods*       |        |        |   |               | 1 058,51      |   |               | 1 058,51      |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(7000) Sales*                   |        |        |   | 5 400,38      |               |   | 5 400,38      |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| **Total (9 rows)**               |        |        |   | **13 575,10** | **13 575,10** |   | **11 533,93** | **11 533,93** |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+<BLANKLINE>
+=========================
+Customer Accounts Balance
+=========================
+<BLANKLINE>
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| Description           | Debit  | Credit |   | Debit | Credit       |   | Debit | Credit       |
+|                       | before | before |   |       |              |   | after | after        |
++=======================+========+========+===+=======+==============+===+=======+==============+
+| *Bäckerei Ausdemwald* |        |        |   |       | 2 039,82     |   |       | 2 039,82     |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| *Bäckerei Mießen*     |        |        |   |       | 679,81       |   |       | 679,81       |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| *Bäckerei Schmitz*    |        |        |   |       | 280,00       |   |       | 280,00       |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| *Garage Mergelsberg*  |        |        |   |       | 535,00       |   |       | 535,00       |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| *Rumma & Ko OÜ*       |        |        |   |       | 2 999,85     |   |       | 2 999,85     |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+| **Total (5 rows)**    |        |        |   |       | **6 534,48** |   |       | **6 534,48** |
++-----------------------+--------+--------+---+-------+--------------+---+-------+--------------+
+<BLANKLINE>
+=========================
+Supplier Accounts Balance
+=========================
+<BLANKLINE>
++----------------------+--------+--------+---+--------------+--------+---+--------------+--------+
+| Description          | Debit  | Credit |   | Debit        | Credit |   | Debit        | Credit |
+|                      | before | before |   |              |        |   | after        | after  |
++======================+========+========+===+==============+========+===+==============+========+
+| *AS Express Post*    |        |        |   | 40,00        |        |   | 40,00        |        |
++----------------------+--------+--------+---+--------------+--------+---+--------------+--------+
+| *AS Matsalu Veevärk* |        |        |   | 141,30       |        |   | 141,30       |        |
++----------------------+--------+--------+---+--------------+--------+---+--------------+--------+
+| *Eesti Energia AS*   |        |        |   | 5 045,18     |        |   | 5 045,18     |        |
++----------------------+--------+--------+---+--------------+--------+---+--------------+--------+
+| **Total (3 rows)**   |        |        |   | **5 226,48** |        |   | **5 226,48** |        |
++----------------------+--------+--------+---+--------------+--------+---+--------------+--------+
+<BLANKLINE>
+
+
+>>> test(feb)
+========================
+General Accounts Balance
+========================
+<BLANKLINE>
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| Description                      | Debit         | Credit        |   | Debit         | Credit        |   | Debit         | Credit        |
+|                                  | before        | before        |   |               |               |   | after         | after         |
++==================================+===============+===============+===+===============+===============+===+===============+===============+
+| *(4000) Customers*               |               | 6 534,48      |   |               | 5 997,43      |   |               | 12 531,91     |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(4400) Suppliers*               | 5 226,48      |               |   | 5 228,58      |               |   | 10 455,06     |               |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(4500) Tax offices*             |               | 538,59        |   |               | 197,85        |   |               | 736,44        |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(4510) VAT due*                 |               | 141,45        |   | 1 040,87      | 1 617,03      |   |               | 717,61        |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(4512) VAT deductible*          | 907,07        |               |   | 1 814,88      | 907,44        |   | 1 814,51      |               |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(6010) Purchase of services*    |               | 2 844,45      |   |               | 2 846,51      |   |               | 5 690,96      |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(6020) Purchase of investments* |               | 416,45        |   |               | 415,95        |   |               | 832,40        |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(6040) Purchase of goods*       |               | 1 058,51      |   |               | 1 058,68      |   |               | 2 117,19      |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| *(7000) Sales*                   | 5 400,38      |               |   | 4 956,56      |               |   | 10 356,94     |               |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+| **Total (9 rows)**               | **11 533,93** | **11 533,93** |   | **13 040,89** | **13 040,89** |   | **22 626,51** | **22 626,51** |
++----------------------------------+---------------+---------------+---+---------------+---------------+---+---------------+---------------+
+<BLANKLINE>
+=========================
+Customer Accounts Balance
+=========================
+<BLANKLINE>
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| Description                 | Debit  | Credit       |   | Debit | Credit       |   | Debit | Credit        |
+|                             | before | before       |   |       |              |   | after | after         |
++=============================+========+==============+===+=======+==============+===+=======+===============+
+| *Bernd Brechts Bücherladen* |        |              |   |       | 1 197,90     |   |       | 1 197,90      |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Bäckerei Ausdemwald*       |        | 2 039,82     |   |       |              |   |       | 2 039,82      |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Bäckerei Mießen*           |        | 679,81       |   |       |              |   |       | 679,81        |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Bäckerei Schmitz*          |        | 280,00       |   |       |              |   |       | 280,00        |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Donderweer BV*             |        |              |   |       | 3 319,78     |   |       | 3 319,78      |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Garage Mergelsberg*        |        | 535,00       |   |       |              |   |       | 535,00        |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Hans Flott & Co*           |        |              |   |       | 279,90       |   |       | 279,90        |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Rumma & Ko OÜ*             |        | 2 999,85     |   |       |              |   |       | 2 999,85      |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| *Van Achter NV*             |        |              |   |       | 1 199,85     |   |       | 1 199,85      |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+| **Total (9 rows)**          |        | **6 534,48** |   |       | **5 997,43** |   |       | **12 531,91** |
++-----------------------------+--------+--------------+---+-------+--------------+---+-------+---------------+
+<BLANKLINE>
+=========================
+Supplier Accounts Balance
+=========================
+<BLANKLINE>
++----------------------+--------------+--------+---+--------------+--------+---+---------------+--------+
+| Description          | Debit        | Credit |   | Debit        | Credit |   | Debit         | Credit |
+|                      | before       | before |   |              |        |   | after         | after  |
++======================+==============+========+===+==============+========+===+===============+========+
+| *AS Express Post*    | 40,00        |        |   | 41,30        |        |   | 81,30         |        |
++----------------------+--------------+--------+---+--------------+--------+---+---------------+--------+
+| *AS Matsalu Veevärk* | 141,30       |        |   | 142,10       |        |   | 283,40        |        |
++----------------------+--------------+--------+---+--------------+--------+---+---------------+--------+
+| *Eesti Energia AS*   | 5 045,18     |        |   | 5 045,18     |        |   | 10 090,36     |        |
++----------------------+--------------+--------+---+--------------+--------+---+---------------+--------+
+| **Total (3 rows)**   | **5 226,48** |        |   | **5 228,58** |        |   | **10 455,06** |        |
++----------------------+--------------+--------+---+--------------+--------+---+---------------+--------+
+<BLANKLINE>
+
+>>> test(jan, feb)
+========================
+General Accounts Balance
+========================
+<BLANKLINE>
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| Description                      | Debit  | Credit |   | Debit         | Credit        |   | Debit         | Credit        |
+|                                  | before | before |   |               |               |   | after         | after         |
++==================================+========+========+===+===============+===============+===+===============+===============+
+| *(4000) Customers*               |        |        |   |               | 12 531,91     |   |               | 12 531,91     |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4400) Suppliers*               |        |        |   | 10 455,06     |               |   | 10 455,06     |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4500) Tax offices*             |        |        |   |               | 736,44        |   |               | 736,44        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4510) VAT due*                 |        |        |   | 2 174,97      | 2 892,58      |   |               | 717,61        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(4512) VAT deductible*          |        |        |   | 3 629,02      | 1 814,51      |   | 1 814,51      |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6010) Purchase of services*    |        |        |   |               | 5 690,96      |   |               | 5 690,96      |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6020) Purchase of investments* |        |        |   |               | 832,40        |   |               | 832,40        |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(6040) Purchase of goods*       |        |        |   |               | 2 117,19      |   |               | 2 117,19      |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| *(7000) Sales*                   |        |        |   | 10 356,94     |               |   | 10 356,94     |               |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+| **Total (9 rows)**               |        |        |   | **26 615,99** | **26 615,99** |   | **22 626,51** | **22 626,51** |
++----------------------------------+--------+--------+---+---------------+---------------+---+---------------+---------------+
+<BLANKLINE>
+=========================
+Customer Accounts Balance
+=========================
+<BLANKLINE>
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| Description                 | Debit  | Credit |   | Debit | Credit        |   | Debit | Credit        |
+|                             | before | before |   |       |               |   | after | after         |
++=============================+========+========+===+=======+===============+===+=======+===============+
+| *Bernd Brechts Bücherladen* |        |        |   |       | 1 197,90      |   |       | 1 197,90      |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Bäckerei Ausdemwald*       |        |        |   |       | 2 039,82      |   |       | 2 039,82      |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Bäckerei Mießen*           |        |        |   |       | 679,81        |   |       | 679,81        |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Bäckerei Schmitz*          |        |        |   |       | 280,00        |   |       | 280,00        |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Donderweer BV*             |        |        |   |       | 3 319,78      |   |       | 3 319,78      |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Garage Mergelsberg*        |        |        |   |       | 535,00        |   |       | 535,00        |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Hans Flott & Co*           |        |        |   |       | 279,90        |   |       | 279,90        |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Rumma & Ko OÜ*             |        |        |   |       | 2 999,85      |   |       | 2 999,85      |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| *Van Achter NV*             |        |        |   |       | 1 199,85      |   |       | 1 199,85      |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+| **Total (9 rows)**          |        |        |   |       | **12 531,91** |   |       | **12 531,91** |
++-----------------------------+--------+--------+---+-------+---------------+---+-------+---------------+
+<BLANKLINE>
+=========================
+Supplier Accounts Balance
+=========================
+<BLANKLINE>
++----------------------+--------+--------+---+---------------+--------+---+---------------+--------+
+| Description          | Debit  | Credit |   | Debit         | Credit |   | Debit         | Credit |
+|                      | before | before |   |               |        |   | after         | after  |
++======================+========+========+===+===============+========+===+===============+========+
+| *AS Express Post*    |        |        |   | 81,30         |        |   | 81,30         |        |
++----------------------+--------+--------+---+---------------+--------+---+---------------+--------+
+| *AS Matsalu Veevärk* |        |        |   | 283,40        |        |   | 283,40        |        |
++----------------------+--------+--------+---+---------------+--------+---+---------------+--------+
+| *Eesti Energia AS*   |        |        |   | 10 090,36     |        |   | 10 090,36     |        |
++----------------------+--------+--------+---+---------------+--------+---+---------------+--------+
+| **Total (3 rows)**   |        |        |   | **10 455,06** |        |   | **10 455,06** |        |
++----------------------+--------+--------+---+---------------+--------+---+---------------+--------+
+<BLANKLINE>
+
+
+
+Database models reference
+=========================
 
 .. class:: MatchRule
 
@@ -153,15 +400,18 @@ Models and actors reference
            
     A Voucher is a document that represents a monetary transaction.
 
-    It is *not* abstract so that :class:`Movement` can have a ForeignKey
-    to a Voucher.
-
     A voucher is never instantiated using this base model but using
     one of its subclasses. Examples of subclassed are sales.Invoice,
     vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
     etc...
     
-    Subclasses must define a field `state`.
+    This is *not* abstract so that :class:`Movement` can have a
+    ForeignKey to a Voucher.
+
+    .. attribute:: state
+
+        The workflow state of this voucher. Choices are defined in
+        :class:`VoucherStates`
 
     .. attribute:: journal
 
@@ -289,7 +539,6 @@ Models and actors reference
     .. attribute:: ref
     
 
-    """
            
 .. class:: Journal
 
@@ -381,7 +630,9 @@ Models and actors reference
         See :attr:`PrintableType.template
         <lino.mixins.printable.PrintableType.template>`.
 
-    
+Actors
+======
+
           
 .. class:: Journals
 
@@ -429,7 +680,6 @@ Models and actors reference
 
     This table is accessible by clicking the "Debts" action button on
     a Partner.
-
 
 .. class:: PartnerVouchers    
 
@@ -949,17 +1199,18 @@ Journal groups
 
     .. attribute:: cancelled
 
-        *Cancelled* is similar to *Draft*, except that you cannot edit the
-        fields. This is used for invoices which have been sent, but the
-        customer signaled that they doen't agree. Instead of writing a
-        credit nota, you can decide to just cancel the invoice.
+        *Cancelled* is similar to *Draft*, except that you cannot edit
+        the fields. This is used for invoices which have been sent,
+        but the customer signaled that they doen't agree. Instead of
+        writing a credit nota, you can decide to just cancel the
+        invoice.
 
     .. attribute:: signed
 
-        The *Signed* state is similar to *registered*, but cannot usually be
-        deregistered anymore. This state is not visible in the default
-        configuration. In order to make it usable, you must define a custom
-        workflow for :class:`lino_xl.lib.ledger.VoucherStates`.
+        The *Signed* state is similar to *registered*, but cannot
+        usually be deregistered anymore. This state is not visible in
+        the default configuration. In order to make it usable, you
+        must define a custom workflow for :class:`VoucherStates`.
 
 
            

@@ -63,10 +63,10 @@ https://github.com/ManuelWeidmann/lino-sunto
 Lino Presto
 ------------
 
-.. py2rst::
-
-  from lino_presto import SETUP_INFO
-  print(SETUP_INFO['long_description'])
+Lino Presto was meant to become an application for managing the work
+of organisations where time tracker sessions are the base for writing
+invoices. The project was deprecated in favour to :ref:`noi` and
+:ref:`cosi`.
 
 
 .. _psico:

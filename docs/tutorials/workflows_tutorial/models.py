@@ -60,7 +60,7 @@ def my_change_watchers(sender,**kw):
     """
     self = sender
     
-    from lino.modlib.changes.models import watch_changes as wc
+    from lino.utils.watch import watch_changes as wc
     
     """
     In our example we want to collect changes to Company and Entry 

@@ -176,6 +176,22 @@ Reference
     the gender of the pupil (a remote field) and the enrolment
     options.
 
+.. class:: Reminder
+
+    A **reminder** is when a coaching worker sends a written letter to
+    a client reminding him or her that they have a problme with their
+    presences.
+    
+.. class:: Reminders
+
+    The table of all reminders.
+   
+.. class:: RemindersByPupil
+
+    Shows all reminders that have been issued for this pupil.
+    
+    This is an example of :ref:`indirect_master`.
+    
 .. class:: EnrolmentChecker
            
     Checks for the following plausibility problems:
@@ -184,12 +200,11 @@ Reference
 
     - :message:`Missed more than 10% of meetings.`
 
-           
 
 Help texts
 ==========
 
-Test whether the help texts have been loaded correctly:
+Test whether the help texts have been loaded and translated correctly:
 
 >>> fld = courses.EnrolmentsByCourse.model._meta.get_field('needs_childcare')
 >>> print(fld.help_text)
@@ -202,3 +217,63 @@ Test whether translations of help texts are working correctly:
 ...     print(fld.help_text)
 Ob dieser Teilnehmer Kleinkinder zu betreuen hat.
 
+
+
+Presence sheet
+==============
+
+>>> from unipath import Path
+>>> url = '/api/courses/Activities/2?'
+>>> url += 'fv=01.02.2017&fv=28.02.2017&fv=false&fv=true&'
+>>> url += 'an=print_presence_sheet_html&sr=2'
+>>> test_client.force_login(rt.login('robin').user)
+
+>>> res = test_client.get(url)  #doctest: +ELLIPSIS
+weasy2html render <django.template.backends.jinja2.Template object at ...> -> .../cache/weasy2html/courses.Course-2.html ('en', {})
+
+>>> res.status_code
+200
+>>> rv = AttrDict(json.loads(res.content))
+>>> url = rv.open_url
+>>> print(url)
+/media/cache/weasy2html/courses.Course-2.html
+>>> url = url[1:]
+>>> # print(url)
+>>> fn = Path(settings.SITE.cache_dir, Path(url))
+>>> html = open(fn).read()
+>>> soup = BeautifulSoup(html, "lxml")
+>>> links = soup.find_all('a')
+>>> len(links)
+0
+
+Number of rows:
+
+>>> len(soup.find_all('tr'))
+13
+
+Number of columns:
+
+>>> len(soup.find('tr').find_all('td'))
+17
+
+Total number of cells is 13*17:
+
+>>> cells = soup.find_all('td')
+>>> len(cells)
+221
+
+>>> cells[0]
+<td>No.</td>
+>>> cells[1]
+<td>Participant</td>
+>>> cells[3]
+<td>02.02.\n\n<br/><font size="1">11 (\u2611)</font>\n</td>
+
+>>> cells[17]
+<td>1</td>
+
+>>> cells[18]
+<td><p>Mr A\xe1sim Abdo</p></td>
+
+>>> cells[20]  #doctest: +NORMALIZE_WHITESPACE
+<td align="center" valign="middle">\u2611\n  </td>

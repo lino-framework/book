@@ -99,12 +99,6 @@ def objects():
     yield named(Line, _("German A2"), **kw)
     yield named(Line, _("German A2 (women)"), **kw)
         
-    yield named(ClientContactType, _("Health insurance"))
-    yield named(ClientContactType, _("School"))
-    yield named(ClientContactType, _("Pharmacy"))
-    yield named(ClientContactType, _("GSS"))
-    yield named(ClientContactType, _("ISS"))
-    
     # yield named(CoachingType, _("Parcours"))
     # yield named(CoachingType, _("GSS"))
     # yield named(CoachingType, _("ISS"))

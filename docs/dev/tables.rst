@@ -12,6 +12,25 @@ An introduction to Tables
 .. contents::
     :depth: 1
     :local:
+       
+
+What is a table?
+================
+
+A table, in general, is a rectangular thing divided into rows and
+columns, used to display data.  For example, here is how the "Authors"
+table of a database might look in a printed document:
+
+============ =========== =========
+ First name   Last name   Country
+------------ ----------- ---------
+ Douglas      Adams       UK
+ Albert       Camus       FR
+ Hannes       Huttner     DE
+============ =========== =========
+
+This table has three **rows** and three **columns**.
+Every column has a **header**.
 
 
 Models, tables and views
@@ -19,8 +38,8 @@ Models, tables and views
 
 In a Lino application you don't write only your *models* in Python,
 but also something we call **tables**.  While your *models* describe
-how data is to be structured in the database, *tables* describe how
-data is to be presented to users in tabular form.
+how data is to be *structured in the database*, *tables* describe how
+data is to be *presented to users in tabular form*.
 
 Roughly speaking, Lino's "tables" are the equivalent of what Django
 calls "views". With Lino you don't need to write views because Lino
@@ -29,11 +48,52 @@ writes them for you.
 (To be complete, tables correspond only to one class of Django's
 views, sometimes referred to as "tabular" or "list" views. The other
 class of views are "detail" views, for which you are going to define
-*Layouts*, but we'll talk about these later.)
+*Layouts*, we'll talk about these later.)
 
 The fact that you can define more than one table per model is a
 fundamental difference from Django's concept of the `ModelAdmin` class
 and `Model._meta` options.
+
+
+Database tables
+===============
+
+A **database table** is a table which gets its rows from some database
+model.
+
+The :attr:`model <lino.core.dbtables.Table.model>` attribute of a
+database table spcifies this model.
+
+
+For every database model there should be
+at least one table. Lino will generate a default table for models for
+which there is no table at all.  Note that there may be *more than one
+table* for a given model.
+
+The **columns** of a table correspond to the *fields* of your database
+model. Every column has a **header** which is the `verbose_name` of
+that field. The values in a column are of same **data type** for each
+row. So Lino knows all these things. Only one information is missing:
+the :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
+attribute defines *which* columns are to be listed, and in which
+order. It is a simple string with a space-separated list of field
+names.
+
+The **rows** of a table can be **sorted** and **filtered**. These are
+things which are done in Django on a QuerySet.  Lino doesn't reinvent
+the wheel here and just forwards them to their corresponding Django
+methods: :attr:`order_by <lino.core.tables.AbstractTable.order_by>`,
+:attr:`filter <lino.core.tables.AbstractTable.filter>` and
+:attr:`exclude <lino.core.tables.AbstractTable.exclude>`.
+
+Tables can hold information which goes beyond a model or a
+queryset. For example we set :attr:`hide_sums
+<lino.core.tables.AbstractTable.hide_sums>` to `True` on the ``Books``
+table because otherwise Lino would display a sum for the "published"
+column.
+
+
+
 
 Exercise
 ========
@@ -61,53 +121,6 @@ database:
 .. literalinclude:: ../../lino_book/projects/tables/fixtures/demo.py
 
   
-What is a table?
-================
-
-A table, in general, is a rectangular thing divided into rows and
-columns, used to display data.
-
-For example, here is how the "Authors" table of a database might look
-in a printed document:
-
-============ =========== =========
- First name   Last name   Country
------------- ----------- ---------
- Douglas      Adams       UK
- Albert       Camus       FR
- Hannes       Huttner     DE
-============ =========== =========
-
-A table is usually about a given **database model**. The :attr:`model
-<lino.core.dbtables.Table.model>` attribute of a Table is mandatory.
-For every database model there should be at least one table. Lino will
-generate a default table for models for which there is no table at
-all.  Note that there may be *more than one table* for a given model.
-
-The **columns** of a table correspond to the *fields* of your database
-model. Every column has a **header** which is the `verbose_name` of
-that field. The values in a column are of same **data type** for each
-row. So Lino knows all these things. Only one information is missing:
-the :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
-attribute defines *which* columns are to be listed, and in which
-order. It is a simple string with a space-separated list of field
-names.
-
-The **rows** of a table can be **sorted** and **filtered**. These are
-things which are done in Django on a QuerySet.  Lino doesn't reinvent
-the wheel here and just forwards them to their corresponding Django
-methods: :attr:`order_by <lino.core.tables.AbstractTable.order_by>`,
-:attr:`filter <lino.core.tables.AbstractTable.filter>` and
-:attr:`exclude <lino.core.tables.AbstractTable.exclude>`.
-
-Tables can hold information which goes beyond a model or a
-queryset. For example we set :attr:`hide_sums
-<lino.core.tables.AbstractTable.hide_sums>` to `True` on the ``Books``
-table because otherwise Lino would display a sum for the "published"
-column.
-
-
-
 Designing your tables
 =====================
 
@@ -279,6 +292,21 @@ Note that a plugin corresponds to what Django calls an application.
 
 Read more about plugins in :ref:`dev.plugins`.
 
+
+Common patterns
+===============
+
+.. _indirect_master:
+
+Tables with indirect master
+---------------------------
+
+For example :class:`lino_avanti.lib.courses.RemindersByPupil` shows
+all reminders that have been sent to a given pupil.  Now a reminder is
+not directly linked to a pupil (it doesn't have a FK `pupil`), but it
+has a FK `enrolment`, and every enrolment is linked to a pupil.
+
+:class:`lino_xl.lib.courses.EntriesByTeacher`
 
 
 

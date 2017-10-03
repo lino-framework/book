@@ -60,8 +60,7 @@ provider for your case.
 
 - `Nex Data Systems OÜ <http://nex.ee>`_ is a hosting and ICT
   solutions provider in Pärnu, Estonia.
-
-   
+  
 If you plan to become yourself a hosting provider and be on above
 list, then read the :doc:`Hoster's Guide </hosting/index>` and don't
 hesitate to contact us.
