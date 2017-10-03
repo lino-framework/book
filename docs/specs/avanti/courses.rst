@@ -176,6 +176,22 @@ Reference
     the gender of the pupil (a remote field) and the enrolment
     options.
 
+.. class:: Reminder
+
+    A **reminder** is when a coaching worker sends a written letter to
+    a client reminding him or her that they have a problme with their
+    presences.
+    
+.. class:: Reminders
+
+    The table of all reminders.
+   
+.. class:: RemindersByPupil
+
+    Shows all reminders that have been issued for this pupil.
+    
+    This is an example of :ref:`indirect_master`.
+    
 .. class:: EnrolmentChecker
            
     Checks for the following plausibility problems:
@@ -184,7 +200,6 @@ Reference
 
     - :message:`Missed more than 10% of meetings.`
 
-           
 
 Help texts
 ==========
