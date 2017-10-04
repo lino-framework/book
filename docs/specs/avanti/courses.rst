@@ -235,7 +235,7 @@ Models and views
 
     Shows all reminders that have been issued for this pupil.
     
-    This is an example of :ref:`indirect_master`.
+    This is an example of :ref:`remote_master`.
 
 
 .. class:: ReminderStates
