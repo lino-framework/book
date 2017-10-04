@@ -5,10 +5,6 @@ Files
 
   See :blogref:`20120508`.
   
-.. xfile:: setup.py
-
-Deserves more documentation.
-
 .. xfile:: models.py
 
 Every Django app usually has a file `models.py`.  See `How to write

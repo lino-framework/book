@@ -12,16 +12,30 @@ How Lino applications use `setup.py`
 This document describes a trick which does not depend on
 Lino and which we recommend to use for any Python project.
 
+The :xfile:`setup.py` file
+==========================
+
+
+.. xfile:: setup.py
+
+    A file named :xfile:`setup.py` is part of the `minimal structure
+    <http://python-packaging.readthedocs.io/en/latest/minimal.html>`
+    of a Python project.  It contains information about the project,
+    it is used for running test suites, installing the project in
+    different environments, etc...
+
+
+
 The problem
 ===========
 
 Usually the setup information is directly contained in a file
 :xfile:`setup.py` in the root directory of a project. The problem with
-this layout is that this :xfile:`setup.py` file is always available at
-runtime when the application was installed using PyPI.
+this layout is that this :xfile:`setup.py` file is not always
+available at runtime.
 
 Is there a way to have setup information both in a central place
-**and** accessible at runtime.
+**and** accessible at runtime?
 
 
 The solution
