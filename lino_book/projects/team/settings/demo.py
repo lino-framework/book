@@ -18,6 +18,7 @@ class Site(Site):
     # use_ipdict = True
     # use_websockets = True
     # default_ui = 'lino_extjs6.extjs6'
+    # default_ui = 'lino.modlib.bootstrap3'
 
     def setup_plugins(self):
         """Change the default value of certain plugin settings.

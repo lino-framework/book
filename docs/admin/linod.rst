@@ -90,7 +90,7 @@ Installation instructions
   The supervisor package is being installed system-wide, it is not
   related to any specific project.
 
-- Create a shell script in your project directory::
+- Create a shell script :xfile:`linod.sh` in your project directory::
 
     #!/bin/bash
     set -e  # exit on error

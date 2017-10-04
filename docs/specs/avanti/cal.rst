@@ -66,9 +66,10 @@ Aátifá (136) from Eupen
 <BLANKLINE>
 
 
-:class:`GuestsByPartner` shows all presences (not only those on
-entries that took place) and sorts them chronologically:
+:class:`GuestsByPartner` shows all presences except those in more than
+one week and sorts them chronologically:
 
 >>> obj = avanti.Client.objects.get(pk=115)
 >>> rt.show(cal.GuestsByPartner, obj)
-*16.01.☑*, *17.01.⚕*, *19.01.☑*, *20.01.☑*, *23.01.⚕*, *24.01.☑*, *26.01.?*, *27.01.☑*, *30.01.⚕*, *31.01.☑*, *02.02.☑*, *03.02.⚕*, *06.02.☑*, *07.02.☑*, *09.02.?*, *10.02.?*, *13.02.?*, *14.02.?*, *16.02.?*, *17.02.?*, *20.02.?*, *21.02.?*, *23.02.?*, *24.02.?*
+*16.01.☑*, *17.01.⚕*, *19.01.☑*, *20.01.☑*, *23.01.⚕*, *24.01.☑*, *26.01.?*, *27.01.☑*, *30.01.⚕*, *31.01.☑*, *02.02.☑*, *03.02.⚕*, *06.02.☑*, *07.02.☑*, *09.02.?*, *10.02.?*, *13.02.?*, *14.02.?*, *16.02.?*, *17.02.?*, *20.02.?*, *21.02.?*
+
