@@ -23,6 +23,42 @@ Dependencies
 The methods for managing courses and enrolments in Lino Avanti is
 implemented by the :mod:`lino_avanti.lib.courses` plugin which extends
 :mod:`lino_xl.lib.courses`.
+
+.. currentmodule:: lino_avanti.lib.courses
+
+     
+Topics
+======
+
+>>> rt.show('courses.Topics')
+==== ================== ================== ==================
+ ID   Designation        Designation (de)   Designation (fr)
+---- ------------------ ------------------ ------------------
+ 1    Citizen course     Citizen course     Citizen course
+ 2    Language courses   Language courses   Language courses
+==== ================== ================== ==================
+<BLANKLINE>
+
+>>> obj = courses.Topic.objects.get(pk=2)
+>>> rt.show('courses.CoursesByTopic', obj)
+================================================== =========== ============= ================== =========== ============= =========== ========
+ overview                                           When        Times         Available places   Confirmed   Free places   Requested   Trying
+-------------------------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
+ *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   09:00-12:00   5                  2           3             3           0
+ *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   14:00-17:00   5                  0           2             0           3
+ **Total (2 rows)**                                                           **10**             **2**       **5**         **3**       **3**
+================================================== =========== ============= ================== =========== ============= =========== ========
+<BLANKLINE>
+
+
+Note that :class:`CoursesByTopic <lino_xl.lib.courses.CoursesByTopic>`
+is a table with a remote master key:
+
+>>> courses.CoursesByTopic.master
+<class 'lino_xl.lib.courses.models.Topic'>
+>>> print(courses.CoursesByTopic.master_key)
+line__topic
+
      
 
 Who can modify courses
@@ -133,10 +169,19 @@ must register presences and absences:
 <BLANKLINE>
 
 
+
+Reminders
+=========
+
+RemindersByPupil
+
+
 Reference
 =========
 
-.. currentmodule:: lino_avanti.lib.courses
+
+Models and views
+----------------
 
 .. class:: Course
            
@@ -191,6 +236,23 @@ Reference
     Shows all reminders that have been issued for this pupil.
     
     This is an example of :ref:`indirect_master`.
+
+
+.. class:: ReminderStates
+
+    The list of possible states of a reminder.
+
+    >>> rt.show(courses.ReminderStates)
+    ======= ======= =======
+     value   name    text
+    ------- ------- -------
+     10      draft   Draft
+     20      sent    Sent
+     30      ok      OK
+     40      final   Final
+    ======= ======= =======
+    <BLANKLINE>
+           
     
 .. class:: EnrolmentChecker
            
@@ -199,6 +261,18 @@ Reference
     - :message:`More than 2 times absent.`
 
     - :message:`Missed more than 10% of meetings.`
+
+
+Templates
+---------
+
+.. xfile:: courses/Enrolment/Default.odt
+
+   Prints an "Integration Course Agreement".
+   
+.. xfile:: courses/Reminder/Default.odt
+           
+   Prints a reminder to be sent to the client.
 
 
 Help texts
@@ -277,3 +351,4 @@ Total number of cells is 13*17:
 
 >>> cells[20]  #doctest: +NORMALIZE_WHITESPACE
 <td align="center" valign="middle">\u2611\n  </td>
+

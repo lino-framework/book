@@ -293,20 +293,33 @@ Note that a plugin corresponds to what Django calls an application.
 Read more about plugins in :ref:`dev.plugins`.
 
 
-Common patterns
-===============
+.. _remote_master:
 
-.. _indirect_master:
+Tables with remote master
+=========================
 
-Tables with indirect master
----------------------------
+The :attr:`master_key` can be a remote field. 
 
-For example :class:`lino_avanti.lib.courses.RemindersByPupil` shows
-all reminders that have been sent to a given pupil.  Now a reminder is
-not directly linked to a pupil (it doesn't have a FK `pupil`), but it
-has a FK `enrolment`, and every enrolment is linked to a pupil.
+When you have three models A, B and C with A.b being a pointer to B
+and B.c being a pointer to C, then you can design a table `CsByA`
+which shows the C instances of a given A instance by saying::
 
-:class:`lino_xl.lib.courses.EntriesByTeacher`
+    class CsByA(Cs):
+        master_key = "c__b"
+
+For example :class:`lino_xl.lib.courses.CoursesByTopic` shows all
+courses about a given topic. But a course has no FK `topic`, so you
+cannot say ``master_key = 'topic'``. But a course does know its topic
+indirectyl because it knows it's course series, and the course series
+knows its topic. So you can specify a remote field::
+
+  master_key = 'line__topic'
+
+Other examples
+
+- :class:`lino_avanti.lib.courses.RemindersByPupil`
+  
+.. :class:`lino_xl.lib.courses.EntriesByTeacher`
 
 
 
