@@ -50,7 +50,7 @@ Lino Noi:
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, faculties.Competence.end_user
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr
   - PROTECT : clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
 - contacts.Person :
   - CASCADE : users.User.person_ptr
@@ -71,10 +71,6 @@ Lino Noi:
   - SET_NULL : clocking.ServiceReport.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
-- faculties.Faculty :
-  - PROTECT : clocking.Session.faculty, faculties.Competence.faculty, faculties.Demand.skill, faculties.Faculty.parent
-- faculties.SkillType :
-  - PROTECT : faculties.Faculty.skill_type
 - github.Repository :
   - PROTECT : github.Commit.repository
 - lists.List :
@@ -92,7 +88,6 @@ Lino Noi:
 - tickets.Site :
   - PROTECT : meetings.Meeting.site, tickets.Ticket.site
 - tickets.Ticket :
-  - CASCADE : faculties.Demand.demander
   - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
@@ -103,6 +98,5 @@ Lino Noi:
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - CASCADE : faculties.Competence.user
   - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>

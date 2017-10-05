@@ -42,11 +42,11 @@ SQL that poor Django must do in order to return a single row.
 ===================== =======
  table                 count
 --------------------- -------
- tickets_site          7
+ clocking_session      15
  django_content_type   1
  django_session        1
- clocking_session      15
  stars_star            22
+ tickets_site          7
  tickets_ticket        2
  users_user            2
 ===================== =======

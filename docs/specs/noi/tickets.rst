@@ -822,7 +822,6 @@ the detail window of a ticket.
   - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
 - **History** (changes.ChangesByMaster) [visible for senior admin]
 - **Even more** (more2) [visible for user consultant hoster developer senior admin]:
-  - **Wanted skills** (faculties_DemandsByDemander)
   - **Starred by** (stars.AllStarsByController)
   - **Uploads** (uploads_UploadsByController)
 <BLANKLINE>
