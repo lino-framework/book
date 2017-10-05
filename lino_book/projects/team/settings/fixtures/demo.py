@@ -33,7 +33,7 @@ def vote(user, ticket, state, **kw):
 def objects():
     yield tickets_objects()
     yield clockings_objects()
-    yield faculties_objects()
+    # yield faculties_objects()
     # yield votes_objects()
 
 
