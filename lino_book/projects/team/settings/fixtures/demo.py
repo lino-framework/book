@@ -89,12 +89,13 @@ def tickets_objects():
     # ref differs from name
 
     TOPICS = Cycler(Topic.objects.all())
+    RTYPES = Cycler(ReportingTypes.objects())
 
     for name in "welket welsch pypi".split():
-
         obj = Company(name=name)
         yield obj
-        yield Site(name=name, company=obj)
+        yield Site(
+            name=name, company=obj, reporting_type=RTYPES.pop())
 
     COMPANIES = Cycler(Company.objects.all())
     
@@ -104,8 +105,6 @@ def tickets_objects():
         for i in range(3):
             yield Interest(owner=u, topic=TOPICS.pop())
 
-    RTYPES = Cycler(ReportingTypes.objects())
-    
     prj1 = Project(
         name="Framewörk", ref="linö", private=False,
         company=COMPANIES.pop(),
