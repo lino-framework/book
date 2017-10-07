@@ -10,18 +10,6 @@ Special Belgian VAT declarations
     
     doctest init
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
-
-
-This document describes the :mod:`lino_xl.lib.bevats` plugin which
-adds functionality for handling **Special** Belgian VAT declarations
-to be used by organizations who don't need to introduce "normal"
-:doc:`bevat` but a simplified version, described e.g. `here
-<https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_speciale>`__.
-
-
 Table of contents:
 
 .. contents::
@@ -31,9 +19,20 @@ Table of contents:
 Overview
 ========
 
-This document uses :mod:`lino_book.projects.lydia` as example data.
-
 .. currentmodule:: lino_xl.lib.bevats
+
+This document describes the :mod:`lino_xl.lib.bevats` plugin which
+adds functionality for handling **Special** Belgian VAT declarations
+to be used by organizations who don't need to introduce "normal"
+:doc:`bevat` but a simplified version, described e.g. `here
+<https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_speciale>`__.
+
+Code snippets in this document are based on the
+:mod:`lino_book.projects.lydia` demo.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
 
 Installing this plugin will automatically install
 :mod:`lino_xl.lib.vat`.
@@ -70,48 +69,49 @@ to those defined in :doc:`bevat`:
 <BLANKLINE>
 
 
-
-
 Intracommunal purchases
 =======================
 
-This site is also an example of an organization which has a VAT id but
-is not subject to VAT declaration. This means for them that if they
-buy goods or services from other EU member states, they will pay
-themselves the VAT in their own country. The provider does not write
-any VAT on their invoice, but the customer computes that VAT based on
-their national rate and then introduces a special kind of VAT
-declaration and pays that VAT directly to the tax collector agency.
+The :mod:`lino_book.projects.lydia` demo is also an example of an
+organization which has a VAT id but is not subject to VAT
+declaration. This means for them that if they buy goods or services
+from other EU member states, they will pay themselves the VAT in their
+own country. The provider does not write any VAT on their invoice, but
+the customer computes that VAT based on their national rate and then
+introduces a special kind of VAT declaration and pays that VAT
+directly to the tax collector agency.
 
 Here is an example of such an invoice:
 
 >>> qs = ana.AnaAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom)
 >>> obj = qs[0]
 >>> print(obj.total_base)
-33.06
+118.52
 >>> print(obj.total_vat)
-6.94
+24.88
 >>> print(obj.total_incl)
-40.00
->>> print(obj.entry_date)
-2015-01-03
+143.40
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
-============================= ================= =========== =========== =========== =========
- Account                       Partner           Debit       Credit      Match       Cleared
------------------------------ ----------------- ----------- ----------- ----------- ---------
- (4400) Suppliers              AS Express Post               33,06       **PRC 1**   Yes
- (4510) VAT due                                              6,94                    No
- (6010) Purchase of services                     40,00                               Yes
-                                                 **40,00**   **40,00**
-============================= ================= =========== =========== =========== =========
+============================= =============== ============ ============ =========== =========
+ Account                       Partner         Debit        Credit       Match       Cleared
+----------------------------- --------------- ------------ ------------ ----------- ---------
+ (4400) Suppliers              Donderweer BV                118,52       **PRC 6**   Yes
+ (4510) VAT due                                             24,88                    No
+ (6010) Purchase of services                   82,30                                 Yes
+ (6040) Purchase of goods                      61,10                                 Yes
+                                               **143,40**   **143,40**
+============================= =============== ============ ============ =========== =========
 <BLANKLINE>
 
-This invoice says that we had **40€** of costs, **33.06€** of which to
-be paid to the supplier and **6.94 €** to be paid as VAT to the tax
-office.
+This invoice says that we had **143,40 €** of costs, **118,52 €** of
+which to be paid to the supplier and **24,88 €** to be paid as VAT to
+the tax office.
 
 Note that our invoice is in January 2015.
+
+>>> print(obj.entry_date)
+2015-01-08
 
 >>> obj.accounting_period
 AccountingPeriod #1 ('2015-01')
@@ -122,14 +122,14 @@ Here are the VAT declarations in our demo database:
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref('VAT')
 >>> rt.show('bevats.DeclarationsByJournal', jnl)
-==================== ============ ============== ============ =================== ============== ====== ====== ============== ================
- No.                  Entry date   Start period   End period   Accounting period   [80]           [81]   [82]   [83]           Workflow
--------------------- ------------ -------------- ------------ ------------------- -------------- ------ ------ -------------- ----------------
- 3/2015               28/03/2015   2015-03                     2015-03             907,31                       907,31         **Registered**
- 2/2015               28/02/2015   2015-02                     2015-02             907,44                       907,44         **Registered**
- 1/2015               31/01/2015   2015-01                     2015-01             907,07                       907,07         **Registered**
- **Total (3 rows)**                                                                **2 721,82**                 **2 721,82**
-==================== ============ ============== ============ =================== ============== ====== ====== ============== ================
+==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
+ No.                  Entry date   Start period   End period   Accounting period   [80]         [81]   [82]   [83]         Workflow
+-------------------- ------------ -------------- ------------ ------------------- ------------ ------ ------ ------------ ----------------
+ 3/2015               28/03/2015   2015-03                     2015-03             59,21                      59,21        **Registered**
+ 2/2015               28/02/2015   2015-02                     2015-02             59,46                      59,46        **Registered**
+ 1/2015               31/01/2015   2015-01                     2015-01             59,57                      59,57        **Registered**
+ **Total (3 rows)**                                                                **178,24**                 **178,24**
+==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
 <BLANKLINE>
 
 There is usually one declaration per accounting period.
@@ -143,14 +143,14 @@ On screen you can see:
 ...    v = getattr(dcl, fld.name)
 ...    if v:
 ...        print("[{}] {} : {}".format(fld.value, fld.help_text, v))
-[71] Intracom supplies : 1280.80
-[72] New vehicles : 503.90
-[75] Intracom services : 3441.78
-[80] Due VAT for 71...76 : 907.07
-[83] Total to pay : 907.07
+[71] Intracom supplies : 1341.90
+[72] New vehicles : 703.80
+[75] Intracom services : 3524.08
+[80] Due VAT for 71...76 : 59.57
+[83] Total to pay : 59.57
 
-When you pprint the declaration, Lino also includes the
-:class:`IntracomPurchases <lino_xl.lib.vat.vat.IntracomPurchases>`
+When you print the declaration, Lino also includes the
+:class:`IntracomPurchases <lino_xl.lib.vat.IntracomPurchases>`
 table for that period:
        
 >>> pv = dict(start_period=dcl.start_period, end_period=dcl.end_period)
@@ -158,29 +158,27 @@ table for that period:
 -------------------------
 Intra-Community purchases
 -------------------------
-==================== ==================== ======== =================== ================= ============ =================
- Invoice              Partner              VAT id   VAT regime          Total excl. VAT   VAT          Total incl. VAT
--------------------- -------------------- -------- ------------------- ----------------- ------------ -----------------
- *PRC 1*              AS Express Post               Intracom services   33,06             6,94         40,00
- *PRC 2*              AS Matsalu Veevärk            Intracom services   116,78            24,52        141,30
- *PRC 3*              Eesti Energia AS              Intracom services   498,84            104,76       603,60
- *PRC 4*              Eesti Energia AS              Intracom services   991,65            208,25       1 199,90
- *PRC 5*              Eesti Energia AS              Intracom services   2 679,08          562,60       3 241,68
- **Total (5 rows)**                                                     **4 319,41**      **907,07**   **5 226,48**
-==================== ==================== ======== =================== ================= ============ =================
+==================== =============== ======== =================== ================= =========== =================
+ Invoice              Partner         VAT id   VAT regime          Total excl. VAT   VAT         Total incl. VAT
+-------------------- --------------- -------- ------------------- ----------------- ----------- -----------------
+ *PRC 6*              Donderweer BV            Intracom services   118,52            24,88       143,40
+ *PRC 7*              Van Achter NV            Intracom supplies   165,21            34,69       199,90
+ **Total (2 rows)**                                                **283,73**        **59,57**   **343,30**
+==================== =============== ======== =================== ================= =========== =================
 <BLANKLINE>
 
 
 And these are the movements generated by our declaration:
 
 >>> rt.show('ledger.MovementsByVoucher', dcl)
-==================== ================================== ============ ============ =========== =========
- Account              Partner                            Debit        Credit       Match       Cleared
--------------------- ---------------------------------- ------------ ------------ ----------- ---------
- (4500) Tax offices   Mehrwertsteuer-Kontrollamt Eupen                907,07       **VAT 1**   No
- (4510) VAT due                                          907,07                                No
-                                                         **907,07**   **907,07**
-==================== ================================== ============ ============ =========== =========
+==================== ================================== =========== =========== =========== =========
+ Account              Partner                            Debit       Credit      Match       Cleared
+-------------------- ---------------------------------- ----------- ----------- ----------- ---------
+ (4500) Tax offices   Mehrwertsteuer-Kontrollamt Eupen               59,57       **VAT 1**   No
+ (4510) VAT due                                          34,69                               No
+ (4510) VAT due                                          24,88                               No
+                                                         **59,57**   **59,57**
+==================== ================================== =========== =========== =========== =========
 <BLANKLINE>
 
 A declaration in general moves the sum of all those little amounts of
@@ -196,17 +194,15 @@ at the history of 4510 of that month:
 >>> acc = accounts.Account.get_by_ref("4510")
 >>> rt.show(ledger.MovementsByAccount, acc,
 ...     param_values=dict(start_period=obj.accounting_period))
-============ ========= ==================================== ============ ============ =======
- Value date   Voucher   Description                          Debit        Credit       Match
------------- --------- ------------------------------------ ------------ ------------ -------
- 31/01/2015   *VAT 1*   *Mehrwertsteuer-Kontrollamt Eupen*   907,07
- 07/01/2015   *PRC 5*   *Eesti Energia AS*                                562,60
- 06/01/2015   *PRC 4*   *Eesti Energia AS*                                208,25
- 05/01/2015   *PRC 3*   *Eesti Energia AS*                                104,76
- 04/01/2015   *PRC 2*   *AS Matsalu Veevärk*                              24,52
- 03/01/2015   *PRC 1*   *AS Express Post*                                 6,94
-                        **Balance 0.00 (6 movements)**       **907,07**   **907,07**
-============ ========= ==================================== ============ ============ =======
+============ ========= ==================================== =========== =========== =======
+ Value date   Voucher   Description                          Debit       Credit      Match
+------------ --------- ------------------------------------ ----------- ----------- -------
+ 31/01/2015   *VAT 1*   *Mehrwertsteuer-Kontrollamt Eupen*   34,69
+ 31/01/2015   *VAT 1*   *Mehrwertsteuer-Kontrollamt Eupen*   24,88
+ 09/01/2015   *PRC 7*   *Van Achter NV*                                  34,69
+ 08/01/2015   *PRC 6*   *Donderweer BV*                                  24,88
+                        **Balance 0.00 (4 movements)**       **59,57**   **59,57**
+============ ========= ==================================== =========== =========== =======
 <BLANKLINE>
 
 
@@ -216,10 +212,10 @@ Reference
 
 .. class:: Declaration
            
-    A VAT declaration. 
+    Implements :class:`lino_xl.lib.vat.VatDeclaration`.
 
 
 .. class:: DeclarationFields
            
-    The list of fields in a VAT declaration.
+    Implements :class:`lino_xl.lib.vat.DeclarationFields`.
     

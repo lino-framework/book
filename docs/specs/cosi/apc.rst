@@ -31,9 +31,9 @@ The demo database contains 69 persons and 23 companies.
 >>> contacts.Person.objects.count()
 69
 >>> contacts.Company.objects.count()
-23
+24
 >>> contacts.Partner.objects.count()
-92
+93
 
 
 >>> print(' '.join(settings.SITE.demo_fixtures))
@@ -54,7 +54,7 @@ Robin is the system administrator, he has a complete menu:
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
-  - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
+  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
   - Create invoices
 - Office : My Excerpts

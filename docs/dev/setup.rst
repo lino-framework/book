@@ -140,8 +140,8 @@ The :xfile:`README.rst` file
 
 
 The :xfile:`MANIFEST.in` file
-============================
-
+=============================
 
 .. xfile:: MANIFEST.in
 
+    TODO

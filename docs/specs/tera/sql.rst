@@ -51,7 +51,7 @@ about `Using aggregates within a Subquery expression
 
 >>> # test_client.force_login(rt.login('robin').user)
 >>> url = 'api/ledger/AccountingReport/-99998'
->>> url += "?fmt=json&pv=1&pv=3&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true"
+>>> url += "?fmt=json&pv=1&pv=3&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true"
 >>> r = demo_get('robin', url)
 
 >>> show_sql_queries()
