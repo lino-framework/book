@@ -411,6 +411,38 @@ Choicelists
 
 .. class:: VatAreas
 
+    The global list of VAT areas.
+
+    A VAT area is a geographical area of countries for which same VAT
+    rules apply.
+
+    >>> rt.show(vat.VatAreas)
+    ====== =============== ===============
+     Wert   name            Text
+    ------ --------------- ---------------
+     10     national        National
+     20     eu              EU
+     30     international   International
+    ====== =============== ===============
+    <BLANKLINE>
+    
+
+    .. classmethod:: get_for_country(cls, country)
+                     
+        Return the VatArea instance for this country.
+
+        >>> print(dd.plugins.countries.country_code)
+        BE
+        
+        >>> vat.VatAreas.get_for_country('NL')
+        <VatAreas.eu:20>
+   
+        >>> vat.VatAreas.get_for_country('BE')
+        <VatAreas.national:10>
+    
+        >>> vat.VatAreas.get_for_country('')
+        <VatAreas.international:30>
+
 .. class:: VatClasses
 
     The global list of VAT classes.
