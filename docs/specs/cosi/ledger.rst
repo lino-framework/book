@@ -112,14 +112,14 @@ General Accounts Balance
 ---------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
  *(4000) Customers*                                                                    6 534,48                            6 534,48
  *(4400) Suppliers*                                                    5 569,78                            5 569,78
- *(4500) Tax offices*                                                                  282,93                              282,93
- *(4510) VAT due*                                                      1 134,10        1 580,97                            446,87
- *(4512) VAT deductible*                                               1 863,90        931,95              931,95
+ *(4600) Tax Offices*                                                                  352,31                              352,31
+ *(4510) VAT Due*                                                      1 134,10        1 580,97                            446,87
+ *(4512) VAT Deductible*                                               1 933,28        966,64              966,64
  *(6010) Purchase of services*                                                         2 912,47                            2 912,47
- *(6020) Purchase of investments*                                                      616,35                              616,35
+ *(6020) Purchase of investments*                                                      581,66                              581,66
  *(6040) Purchase of goods*                                                            1 109,01                            1 109,01
  *(7000) Sales*                                                        5 400,38                            5 400,38
- **Total (9 rows)**                                                    **13 968,16**   **13 968,16**       **11 902,11**   **11 902,11**
+ **Total (9 rows)**                                                    **14 037,54**   **14 037,54**       **11 936,80**   **11 936,80**
 ================================== ============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
 =========================
@@ -164,16 +164,16 @@ General Accounts Balance
 ================================== =============== =============== === =============== =============== === =============== ===============
  Description                        Debit before    Credit before       Debit           Credit              Debit after     Credit after
 ---------------------------------- --------------- --------------- --- --------------- --------------- --- --------------- ---------------
- *(4000) Customers*                                 6 534,48                            6 486,68                            13 021,16
+ *(4000) Customers*                                 6 534,48                            6 694,58                            13 229,06
  *(4400) Suppliers*                 5 569,78                            5 570,38                            11 140,16
- *(4500) Tax offices*                               282,93                              1 166,79                            1 449,72
- *(4510) VAT due*                                   446,87              697,15          697,15                              446,87
- *(4512) VAT deductible*            931,95                              1 863,94        931,97              1 863,92
+ *(4600) Tax Offices*                               352,31                              563,44                              915,75
+ *(4510) VAT Due*                                   446,87              1 161,86        1 370,10                            655,11
+ *(4512) VAT Deductible*            966,64                              1 933,54        966,77              1 933,41
  *(6010) Purchase of services*                      2 912,47                            2 912,29                            5 824,76
- *(6020) Purchase of investments*                   616,35                              615,46                              1 231,81
+ *(6020) Purchase of investments*                   581,66                              580,66                              1 162,32
  *(6040) Purchase of goods*                         1 109,01                            1 110,66                            2 219,67
- *(7000) Sales*                     5 400,38                            5 789,53                            11 189,91
- **Total (9 rows)**                 **11 902,11**   **11 902,11**       **13 921,00**   **13 921,00**       **24 193,99**   **24 193,99**
+ *(7000) Sales*                     5 400,38                            5 532,72                            10 933,10
+ **Total (9 rows)**                 **11 936,80**   **11 936,80**       **14 198,50**   **14 198,50**       **24 006,67**   **24 006,67**
 ================================== =============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
 =========================
@@ -189,10 +189,10 @@ Customer Accounts Balance
  *Bäckerei Schmitz*                     535,00                                                       535,00
  *Donderweer BV*                                                    1 199,85                         1 199,85
  *Garage Mergelsberg*                                               4 016,93                         4 016,93
- *Hans Flott & Co*                                                  990,00                           990,00
+ *Hans Flott & Co*                                                  1 197,90                         1 197,90
  *Rumma & Ko OÜ*                        2 039,82                                                     2 039,82
  *Van Achter NV*                                                    279,90                           279,90
- **Total (9 rows)**                     **6 534,48**                **6 486,68**                     **13 021,16**
+ **Total (9 rows)**                     **6 534,48**                **6 694,58**                     **13 229,06**
 ======================= ============== =============== === ======= ============== === ============= ===============
 <BLANKLINE>
 =========================
@@ -221,16 +221,16 @@ General Accounts Balance
 ================================== ============== =============== === =============== =============== === =============== ===============
  Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
 ---------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
- *(4000) Customers*                                                                    13 021,16                           13 021,16
+ *(4000) Customers*                                                                    13 229,06                           13 229,06
  *(4400) Suppliers*                                                    11 140,16                           11 140,16
- *(4500) Tax offices*                                                                  1 449,72                            1 449,72
- *(4510) VAT due*                                                      1 831,25        2 278,12                            446,87
- *(4512) VAT deductible*                                               3 727,84        1 863,92            1 863,92
+ *(4600) Tax Offices*                                                                  915,75                              915,75
+ *(4510) VAT Due*                                                      2 295,96        2 951,07                            655,11
+ *(4512) VAT Deductible*                                               3 866,82        1 933,41            1 933,41
  *(6010) Purchase of services*                                                         5 824,76                            5 824,76
- *(6020) Purchase of investments*                                                      1 231,81                            1 231,81
+ *(6020) Purchase of investments*                                                      1 162,32                            1 162,32
  *(6040) Purchase of goods*                                                            2 219,67                            2 219,67
- *(7000) Sales*                                                        11 189,91                           11 189,91
- **Total (9 rows)**                                                    **27 889,16**   **27 889,16**       **24 193,99**   **24 193,99**
+ *(7000) Sales*                                                        10 933,10                           10 933,10
+ **Total (9 rows)**                                                    **28 236,04**   **28 236,04**       **24 006,67**   **24 006,67**
 ================================== ============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
 =========================
@@ -246,10 +246,10 @@ Customer Accounts Balance
  *Bäckerei Schmitz*                                                 535,00                            535,00
  *Donderweer BV*                                                    1 199,85                          1 199,85
  *Garage Mergelsberg*                                               4 016,93                          4 016,93
- *Hans Flott & Co*                                                  990,00                            990,00
+ *Hans Flott & Co*                                                  1 197,90                          1 197,90
  *Rumma & Ko OÜ*                                                    2 039,82                          2 039,82
  *Van Achter NV*                                                    279,90                            279,90
- **Total (9 rows)**                                                 **13 021,16**                     **13 021,16**
+ **Total (9 rows)**                                                 **13 229,06**                     **13 229,06**
 ======================= ============== =============== === ======= =============== === ============= ===============
 <BLANKLINE>
 =========================
@@ -697,18 +697,18 @@ Journals
 >>> ses.show(ledger.Journals,
 ...     column_names="ref name trade_type account dc")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=========== ========================= =============================== ===================== ======================= ===========================
- Reference   Designation               Designation (en)                Trade type            Account                 Primary booking direction
------------ ------------------------- ------------------------------- --------------------- ----------------------- ---------------------------
- SLS         Factures vente            Sales invoices                  Sales                                         Debit
- SLC         Sales credit notes        Sales credit notes              Sales                                         Credit
- PRC         Factures achat            Purchase invoices               Purchases                                     Credit
- PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders   (4600) Payment orders   Credit
- CSH         Caisse                    Cash                                                  (5700) Cash             Debit
- BNK         Bestbank                  Bestbank                                              (5500) Bestbank         Debit
- MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) Cash             Debit
- VAT         Déclarations TVA          VAT declarations                Taxes                 (4513) Declared VAT     Credit
-=========== ========================= =============================== ===================== ======================= ===========================
+=========== ========================= =============================== ===================== =============================== ===========================
+ Reference   Designation               Designation (en)                Trade type            Account                         Primary booking direction
+----------- ------------------------- ------------------------------- --------------------- ------------------------------- ---------------------------
+ SLS         Factures vente            Sales invoices                  Sales                                                 Debit
+ SLC         Sales credit notes        Sales credit notes              Sales                                                 Credit
+ PRC         Factures achat            Purchase invoices               Purchases                                             Credit
+ PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders   (4700) Pending Payment Orders   Credit
+ CSH         Caisse                    Cash                                                  (5700) BestBank                 Debit
+ BNK         Bestbank                  Bestbank                                              (5500) BestBank                 Debit
+ MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) BestBank                 Debit
+ VAT         Déclarations TVA          VAT declarations                Taxes                 (4513) VAT Declared             Credit
+=========== ========================= =============================== ===================== =============================== ===========================
 <BLANKLINE>
 
 
@@ -763,19 +763,15 @@ A **match rule** specifies that a movement into given account can be
  9    (4400) Suppliers     Bestbank (BNK)
  10   (4000) Customers     Miscellaneous Journal Entries (MSC)
  11   (4400) Suppliers     Miscellaneous Journal Entries (MSC)
- 12   (4500) Tax offices   VAT declarations (VAT)
+ 12   (4600) Tax Offices   VAT declarations (VAT)
 ==== ==================== =====================================
 <BLANKLINE>
 
-
-For example a payment order can be used to pay an open suppliers
+For example a payment order can be used to clear an open suppliers
 invoice or (less frequently) to send back money that a customer had
-paid too much.
+paid too much:
 
 >>> jnl = ledger.Journal.objects.get(ref="PMO")
->>> jnl
-Journal #4 ('Bestbank Payment Orders (PMO)')
-
 >>> rt.show(ledger.MatchRulesByJournal, jnl)
 ==================
  Account
@@ -785,11 +781,9 @@ Journal #4 ('Bestbank Payment Orders (PMO)')
 ==================
 <BLANKLINE>
 
-Or a sales invoice can be used to clear another sales invoice.
+Or a sales invoice can be used to clear another sales invoice:
 
 >>> jnl = ledger.Journal.objects.get(ref="SLS")
->>> jnl
-Journal #1 ('Sales invoices (SLS)')
 >>> rt.show(ledger.MatchRulesByJournal, jnl)
 ==================
  Account
@@ -808,80 +802,76 @@ in debt towards us. The most common debtors are customers,
 i.e. partners who received a sales invoice from us and did not yet pay
 that invoice.
 
-One debtor is not a customer: the tax office. But they are a debtor as
-well because we had more VAT deductible (sales) than VAT due
-(purchases).
+Two debtors in the list below are not customers: Bestbank and the tax
+office.  Bestbank is a debtor because pending payment orders are
+booked to this account.  The tax office is a debtor because we had
+more VAT deductible (sales) than VAT due (purchases).
 
 >>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-=================================== ========== ===============
+=================================== ========== ================
  Partner                             ID         Balance
------------------------------------ ---------- ---------------
- Bestbank                            100        2 382,15
- Mehrwertsteuer-Kontrollamt Eupen    192        7 796,63
+----------------------------------- ---------- ----------------
+ Bestbank                            100        1 861,51
+ Mehrwertsteuer-Kontrollamt Eupen    192        27 109,78
  Hans Flott & Co                     108        990,00
- Van Achter NV                       107        279,90
- Bernd Brechts Bücherladen           109        1 599,92
- Garage Mergelsberg                  105        1 885,73
- Ausdemwald Alfons                   116        770,00
- Reinhards Baumschule                110        2 349,81
- Arens Annette                       114        4 239,63
- Moulin Rouge                        111        951,82
- Altenberg Hans                      115        465,96
- Bastiaensen Laurent                 117        3 629,82
- Collard Charlotte                   118        2 039,82
- Auto École Verte                    112        525,00
- Charlier Ulrike                     119        679,81
+ Van Achter NV                       107        231,33
+ Bernd Brechts Bücherladen           109        1 322,25
+ Garage Mergelsberg                  105        1 188,58
+ Ausdemwald Alfons                   116        636,36
+ Reinhards Baumschule                110        1 942,00
+ Arens Annette                       114        3 503,83
  ...
- Radermacher Christian               155        3 319,78
- di Rupo Didier                      164        639,92
- Radermacher Guido                   159        2 349,81
- da Vinci David                      165        1 235,96
- Radermacher Inge                    162        726,00
- Radermacher Alfons                  153        280,00
- Radermacher Jean                    163        3 599,71
- Radermacher Hans                    160        951,82
- Radermacher Hedi                    161        525,00
- **Total (62 rows)**                 **8421**   **98 404,92**
-=================================== ========== ===============
+ Radermacher Guido                   159        1 942,00
+ da Vinci David                      165        1 021,45
+ Radermacher Inge                    162        600,00
+ Radermacher Alfons                  153        231,40
+ Radermacher Jean                    163        2 974,97
+ Radermacher Hans                    160        786,62
+ Radermacher Hedi                    161        433,88
+ **Total (62 rows)**                 **8421**   **101 778,50**
+=================================== ========== ================
 <BLANKLINE>
 
 
+
 The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows
-one row per open (uncleared) invoice. For example, partner 116 from
-above list has two open sales invoices, totalling to 880,00:
+one row per uncleared invoice. For example here is the detail of the
+debts for partner 116 from above list:
 
 >>> obj = contacts.Partner.objects.get(pk=116)
 >>> obj
 Partner #116 ('Ausdemwald Alfons')
-
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ============ ===================== ==========
+==================== ============ ===================== =====================
  Due date             Balance      Debts                 Payments
--------------------- ------------ --------------------- ----------
+-------------------- ------------ --------------------- ---------------------
  13/04/2016           770,00       `SLS 18 <Detail>`__
- **Total (1 rows)**   **770,00**
-==================== ============ ===================== ==========
+ 13/04/2016           -133,64                            `SLS 18 <Detail>`__
+ **Total (2 rows)**   **636,36**
+==================== ============ ===================== =====================
 <BLANKLINE>
 
+This shows that the partner received one sales invoice and did a
+partial payment on the same day.
 
 
-**Creditors** are partners hwo gave us credit. The most common
-creditors are providers, i.e. partners who send us a purchase invoice
-(which we did not yet pay).
+**Creditors** are partners hwo gave us credit, IOW to whom we owe
+money.  The most common creditors are providers, i.e. partners who
+send us a purchase invoice (which we did not yet pay).
 
 >>> ses.show(ledger.Creditors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ===================== ========= ===============
  Partner               ID        Balance
 --------------------- --------- ---------------
- Rumma & Ko OÜ         101       91,38
- Bäckerei Ausdemwald   102       8 368,19
- Donderweer BV         106       1 821,15
- Bäckerei Mießen       103       17 771,00
- Bäckerei Schmitz      104       48 194,90
- **Total (5 rows)**    **516**   **76 246,62**
+ Rumma & Ko OÜ         101       445,40
+ Bäckerei Ausdemwald   102       8 486,18
+ Donderweer BV         106       2 029,39
+ Bäckerei Mießen       103       17 819,60
+ Bäckerei Schmitz      104       48 287,75
+ **Total (5 rows)**    **516**   **77 068,32**
 ===================== ========= ===============
 <BLANKLINE>
 
@@ -890,27 +880,28 @@ Partner 101 from above list is both a supplier and a customer:
 >>> obj = contacts.Partner.objects.get(pk=101)
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-===================== ============ ==================== ======================
- Due date              Balance      Debts                Payments
---------------------- ------------ -------------------- ----------------------
- 10/01/2016            -141,30                           `PRC 2 <Detail>`__
- 14/01/2016            2 039,82     `SLS 2 <Detail>`__
- 03/02/2016            -142,00                           `PRC 9 <Detail>`__
- 02/04/2016            -143,40                           `PRC 16 <Detail>`__
- 30/04/2016            -142,10                           `PRC 23 <Detail>`__
- 01/08/2016            -140,20                           `PRC 30 <Detail>`__
- 02/08/2016            -141,30                           `PRC 37 <Detail>`__
- 02/08/2016            -142,00                           `PRC 44 <Detail>`__
- 13/08/2016            -143,40                           `PRC 51 <Detail>`__
- 10/09/2016            -142,10                           `PRC 58 <Detail>`__
- 03/10/2016            -140,20                           `PRC 65 <Detail>`__
- 03/12/2016            -141,30                           `PRC 72 <Detail>`__
- 31/12/2016            -142,00                           `PRC 79 <Detail>`__
- 03/04/2017            -144,80                           `PRC 86 <Detail>`__
- 04/04/2017            -143,50                           `PRC 93 <Detail>`__
- 02/04/2017            -141,60                           `PRC 100 <Detail>`__
- **Total (16 rows)**   **-91,38**
-===================== ============ ==================== ======================
+===================== ============= ==================== ======================
+ Due date              Balance       Debts                Payments
+--------------------- ------------- -------------------- ----------------------
+ 10/01/2016            -141,30                            `PRC 2 <Detail>`__
+ 14/01/2016            2 039,82      `SLS 2 <Detail>`__
+ 14/01/2016            -354,02                            `SLS 2 <Detail>`__
+ 03/02/2016            -142,00                            `PRC 9 <Detail>`__
+ 02/04/2016            -143,40                            `PRC 16 <Detail>`__
+ 30/04/2016            -142,10                            `PRC 23 <Detail>`__
+ 01/08/2016            -140,20                            `PRC 30 <Detail>`__
+ 02/08/2016            -141,30                            `PRC 37 <Detail>`__
+ 02/08/2016            -142,00                            `PRC 44 <Detail>`__
+ 13/08/2016            -143,40                            `PRC 51 <Detail>`__
+ 10/09/2016            -142,10                            `PRC 58 <Detail>`__
+ 03/10/2016            -140,20                            `PRC 65 <Detail>`__
+ 03/12/2016            -141,30                            `PRC 72 <Detail>`__
+ 31/12/2016            -142,00                            `PRC 79 <Detail>`__
+ 03/04/2017            -144,80                            `PRC 86 <Detail>`__
+ 04/04/2017            -143,50                            `PRC 93 <Detail>`__
+ 02/04/2017            -141,60                            `PRC 100 <Detail>`__
+ **Total (17 rows)**   **-445,40**
+===================== ============= ==================== ======================
 <BLANKLINE>
 
 Note that most numbers in above table are negative. A purchase invoice

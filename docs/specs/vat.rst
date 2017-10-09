@@ -192,10 +192,10 @@ Models and actors reference
            
     The table of all :class:`VatRule` objects.
     
-    Accessible via :menuselection:`Configure --> VAT --> VAT rules`.
+    Accessible via :menuselection:`Explorer --> VAT --> VAT rules`.
 
     >>> show_menu_path(vat.VatRules)
-    Konfigurierung --> MwSt. --> MwSt-Regeln
+    Explorer --> MwSt. --> MwSt-Regeln
     
 .. class:: VatAccountInvoice
                    

@@ -104,7 +104,8 @@ The sales journal
 
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
->>> rt.show('sales.InvoicesByJournal', jnl)  #doctest: +ELLIPSIS
+>>> rt.show('sales.InvoicesByJournal', jnl) 
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ===================== ============ ============ =================================== ================= ============== ================
  No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
@@ -125,7 +126,7 @@ The sales journal
  3/2016                09/01/2016   18/01/2016   Bäckerei Ausdemwald                 679,81                           **Registered**
  2/2016                08/01/2016   14/01/2016   Rumma & Ko OÜ                       2 039,82                         **Registered**
  1/2016                07/01/2016   06/01/2016   Bestbank                            2 999,85                         **Registered**
- **Total (72 rows)**                                                                 **98 091,67**
+ **Total (72 rows)**                                                                 **98 409,82**
 ===================== ============ ============ =================================== ================= ============== ================
 <BLANKLINE>
 

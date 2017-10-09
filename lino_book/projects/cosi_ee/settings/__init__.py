@@ -19,7 +19,10 @@ from lino_cosi.lib.cosi.settings import *
 
 class Site(Site):
     languages = 'en et'
-    demo_fixtures = 'std all_countries minimal_ledger euvatrates \
+    # demo_fixtures = 'std all_countries minimal_ledger euvatrates \
+    # eesti furniture \
+    # demo demo2'.split()
+    demo_fixtures = 'std all_countries minimal_ledger \
     eesti furniture \
     demo demo2'.split()
 
