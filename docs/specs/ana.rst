@@ -6,7 +6,7 @@ Analytical accounting
 
 .. to run only this test:
 
-    $ python setup.py test -s tests.SpecsTests.test_ana
+    $ doctest docs/specs/ana.rst
     
     doctest init
 
@@ -83,12 +83,12 @@ example:
 
 >>> obj = ana.AnaAccountInvoice.objects.get(pk=1)
 >>> rt.show(ana.ItemsByInvoice, obj)
-============================= ============= ==================== =========== ================= ========== =================
- Account                       Description   Analytical account   VAT Class   Total excl. VAT   VAT        Total incl. VAT
------------------------------ ------------- -------------------- ----------- ----------------- ---------- -----------------
- (6010) Purchase of services                 (1100) Wages         Normal      33,06             6,94       40,00
- **Total (1 rows)**                                                           **33,06**         **6,94**   **40,00**
-============================= ============= ==================== =========== ================= ========== =================
+============================= ============= ==================== =========== ================= ===== =================
+ Account                       Description   Analytical account   VAT Class   Total excl. VAT   VAT   Total incl. VAT
+----------------------------- ------------- -------------------- ----------- ----------------- ----- -----------------
+ (6010) Purchase of services                 (1100) Wages         Normal      40,00                   40,00
+ **Total (1 rows)**                                                           **40,00**               **40,00**
+============================= ============= ==================== =========== ================= ===== =================
 <BLANKLINE>
 
 

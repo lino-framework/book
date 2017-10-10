@@ -7,7 +7,7 @@ The `accounts` plugin
 
 .. how to test this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_accounting
+    $ doctest docs/specs/cosi/accounts.rst
 
     Doctest initialization:
 
@@ -17,104 +17,126 @@ The `accounts` plugin
 
 
 The :mod:`lino_xl.lib.accounts` plugin defines the "static" part of
-accounting stuff.
+accounting stuff.  It adds a list of **common accounts** and two
+database models.
+
+Table of contents:
+
+.. contents::
+   :depth: 1
+   :local:
 
 .. currentmodule:: lino_xl.lib.accounts
 
 
+Common accounts
+===============
 
-Debit and Credit
-================
+The `accounts` plugin defines a choicelist of **common accounts**
+which are used to reference the database object for certain accounts
+which have a special meaning.
+
+Here is the standard list of common accounts in a :ref:`cosi`
+application (Lino applications can add specific items to that list or
+potentially redefine it completely):
+
+>>> rt.show(accounts.CommonAccounts, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+======= ========================= ========================= ==============
+ value   name                      text                      Account type
+------- ------------------------- ------------------------- --------------
+ 4000    customers                 Customers                 Assets
+ 4300    pending_po                Pending Payment Orders    Assets
+ 4400    suppliers                 Suppliers                 Liabilities
+ 4500    employees                 Employees                 Liabilities
+ 4600    tax_offices               Tax Offices               Liabilities
+ 4510    vat_due                   VAT due                   Liabilities
+ 4511    vat_returnable            VAT returnable            Liabilities
+ 4512    vat_deductible            VAT deductible            Liabilities
+ 4513    due_taxes                 VAT declared              Liabilities
+ 5500    best_bank                 BestBank                  Assets
+ 5700    cash                      Cash                      Assets
+ 6040    purchase_of_goods         Purchase of goods         Expenses
+ 6010    purchase_of_services      Purchase of services      Expenses
+ 6020    purchase_of_investments   Purchase of investments   Expenses
+ 6300    wages                     Wages                     Expenses
+ 7000    sales                     Sales                     Incomes
+======= ========================= ========================= ==============
+<BLANKLINE>
+
+
+.. class:: CommonAccounts
+
+    The global list of common accounts.
+
+    This is a :class:`lino.core.choicelists.ChoiceList`.
+    Every item is an instance of :class:`CommonAccount`.
+
+.. class:: CommonAccount
+           
+    The base class for items of ::class:`CommonAccounts`.
+
+    .. attribute:: clearable
+    .. attribute:: needs_partner
+                   
+
+The balance of an account
+=========================
+
+The **balance** of an account is the amount of money in that account.
 
 An accounting balance is either Debit or Credit.  We represent this
 internally as a boolean, but define two names `DEBIT` and `CREDIT`:
 
->>> from lino_xl.lib.accounts.models import *
+>>> from lino_xl.lib.accounts.utils import DEBIT, CREDIT, DCLABELS
+>>> from lino_xl.lib.accounts.utils import Balance
 >>> DEBIT
 True
 >>> CREDIT
 False
 
+>>> Balance(10, -2)
+Balance(12,0)
+
 
 Account types
 =============
 
-Lino has a list of **account types** or "top-level accounts", defined
-in :class:`AccountTypes`.
 
->>> rt.show(ledger.AccountTypes, language="en")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= =============== =============== ======== ===============
- value   name            text            D/C      Sheet
-------- --------------- --------------- -------- ---------------
- A       assets          Assets          Debit    BalanceSheet
- L       liabilities     Liabilities     Credit   BalanceSheet
- I       incomes         Incomes         Credit   EarningsSheet
- E       expenses        Expenses        Debit    EarningsSheet
- C       capital         Capital         Credit   BalanceSheet
- B       bank_accounts   Bank accounts   Debit    BalanceSheet
-======= =============== =============== ======== ===============
-<BLANKLINE>
+.. class:: AccountTypes
 
-Each item in above list is defined as a Python class as well.
+    The global list of **account types** or *top-level
+    accounts*. 
+
+    >>> rt.show(accounts.AccountTypes, language="en")
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+    ======= ============= ============= ======== ===============
+     value   name          text          D/C      Sheet
+    ------- ------------- ------------- -------- ---------------
+     A       assets        Assets        Debit    BalanceSheet
+     L       liabilities   Liabilities   Credit   BalanceSheet
+     C       capital       Capital       Credit   BalanceSheet
+     I       incomes       Incomes       Credit   EarningsSheet
+     E       expenses      Expenses      Debit    EarningsSheet
+    ======= ============= ============= ======== ===============
+    <BLANKLINE>
+
+    Every item of this list is an instance of :class:`AccountType`.           
 
 .. class:: AccountType
            
-    The base class for all **account types**.
+    The base class for items of ::class:`AccountTypes`.
 
-The five basic account types are:    
-           
-.. class:: Assets
-.. class:: Liabilities
-.. class:: Capital
-.. class:: Income
-.. class:: Expenses
+    .. attribute:: dc
+    .. attribute:: sheet
 
-A **bank account** is a subclass of an asset:
+Every account type has its own Python class as well.
 
-.. class:: BankAccounts
-
-   A subclass of :class:`Assets`.
-           
-.. class:: AccountTypes
-
-    The global list of account types. See :class:`AccountType`.
-
-
-The same in French and German:
-
->>> rt.show(ledger.AccountTypes, language="fr")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= =============== =================== ======== ===============
- value   name            text                D/C      Sheet
-------- --------------- ------------------- -------- ---------------
- A       assets          Actifs              Débit    BalanceSheet
- L       liabilities     Passifs             Crédit   BalanceSheet
- I       incomes         Revenus             Crédit   EarningsSheet
- E       expenses        Dépenses            Débit    EarningsSheet
- C       capital         Capital             Crédit   BalanceSheet
- B       bank_accounts   Comptes en banque   Débit    BalanceSheet
-======= =============== =================== ======== ===============
-<BLANKLINE>
-
->>> rt.show(ledger.AccountTypes, language="de")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-====== =============== ================= ======== ===============
- Wert   name            Text              D/C      Sheet
------- --------------- ----------------- -------- ---------------
- A      assets          Vermögen          Débit    BalanceSheet
- L      liabilities     Verpflichtungen   Kredit   BalanceSheet
- I      incomes         Einkünfte         Kredit   EarningsSheet
- E      expenses        Ausgaben          Débit    EarningsSheet
- C      capital         Kapital           Kredit   BalanceSheet
- B      bank_accounts   Bankkonten        Débit    BalanceSheet
-====== =============== ================= ======== ===============
-<BLANKLINE>
-
-
-.. 
-  >>> translation.activate('en')
-
+.. class:: Assets(AccountType)
+.. class:: Liabilities(AccountType)
+.. class:: Capital(AccountType)
+.. class:: Income(AccountType)
+.. class:: Expenses(AccountType)
 
 
 The basic `Accounting Equation
@@ -126,18 +148,18 @@ And the expanded accounting equation is:
 
     Assets + Expenses = Liabilities + Equity + Revenue
     
-
+    
 Accounts on the left side of the equation (Assets and Expenses) are
 normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
 <AccountType.dc>` attribute means:
 
->>> print(unicode(DCLABELS[AccountTypes.assets.dc]))
+>>> translation.activate('en')
+
+>>> print(DCLABELS[accounts.AccountTypes.assets.dc])
 Debit
->>> print(unicode(DCLABELS[AccountTypes.expenses.dc]))
+>>> print(DCLABELS[accounts.AccountTypes.expenses.dc])
 Debit
 
->>> print isinstance(AccountTypes.bank_accounts,Assets)
-True
 
 
 `Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
@@ -154,20 +176,20 @@ Expense       \+    \−
 Equity        \−     \+      
 ============= ===== ======
   
-The equivalent in Python is:
+The equivalent in Lino is:
 
->>> for t in AccountTypes.filter(top_level=True):
+>>> for t in accounts.AccountTypes.get_list_items():
 ... #doctest: +NORMALIZE_WHITESPACE
 ...     print "%-12s|%-15s|%-6s" % (t.name, unicode(t), DCLABELS[t.dc])
-assets      |Assets         |Debit
+assets      |Assets         |Debit 
 liabilities |Liabilities    |Credit
-incomes     |Incomes        |Credit
-expenses    |Expenses       |Debit
 capital     |Capital        |Credit
+incomes     |Incomes        |Credit
+expenses    |Expenses       |Debit 
 
 
 The :class:`Sheet` class
-------------------------
+========================
 
 It has a hard-coded list of the Sheets used in annual accounting
 reports.
@@ -181,17 +203,17 @@ one class for each of them.
 These classes are not meant to be instantiated, they are just Lino's
 suggestion for a standardized vocabulary.
 
->>> print Sheet.objects
-(<class 'lino_xl.lib.accounts.choicelists.BalanceSheet'>, <class 'lino_xl.lib.accounts.choicelists.EarningsSheet'>, <class 'lino_xl.lib.accounts.choicelists.CashFlowSheet'>)
+>>> from lino_xl.lib.accounts.choicelists import Sheet
+>>> print(Sheet.objects)
+(<class 'lino_xl.lib.accounts.choicelists.BalanceSheet'>, <class 'lino_xl.lib.accounts.choicelists.EarningsSheet'>)
 
 The `verbose_name` is what users see. It is a lazily translated
 string, so we must call `unicode()` to see it:
 
 >>> for s in Sheet.objects:
-...     print(unicode(s.verbose_name))
+...     print(s.verbose_name)
 Balance sheet
 Profit & Loss statement
-Cash flow statement
 
 French users will see:
 
@@ -201,7 +223,6 @@ French users will see:
 ...         print unicode(s.verbose_name)
 Bilan
 Compte de résultats
-Tableau de financement
 
 
 The :meth:`Sheet.account_types` method.
@@ -209,68 +230,13 @@ The :meth:`Sheet.account_types` method.
 Assets, Liabilities and Capital are listed in the Balance Sheet.
 Income and Expenses are listed in the Profit & Loss statement.
 
+>>> from lino_xl.lib.accounts.choicelists import BalanceSheet, EarningsSheet
 >>> print(BalanceSheet.account_types())
 [<AccountTypes.assets:A>, <AccountTypes.liabilities:L>, <AccountTypes.capital:C>]
 
 >>> print(EarningsSheet.account_types())
 [<AccountTypes.incomes:I>, <AccountTypes.expenses:E>]
 
->>> print(CashFlowSheet.account_types())
-[]
-
-
-
-TODO
-----
-
-- The Belgian and French `PCMN
-  <https://en.wikipedia.org/wiki/French_generally_accepted_accounting_principles>`__
-  has 7+1 top-level accounts:
-
-    | CLASSE 0 : Droits & engagements hors bilan
-    | CLASSE 1 : Fonds propres, provisions pour risques & charges et Dettes à plus d'un an
-    | CLASSE 2 : Frais d'établissement, actifs immobilisés et créances à plus d'un an
-    | CLASSE 3 : Stock & commandes en cours d'exécution
-    | CLASSE 4 : Créances et dettes à un an au plus
-    | CLASSE 5 : Placements de trésorerie et valeurs disponibles
-    | CLASSE 6 : Charges
-    | CLASSE 7 : Produits
-    
-  explain the differences and how to solve this.
-  
-  See also 
-
-  - http://code.gnucash.org/docs/help/acct-types.html
-  - http://www.futureaccountant.com/accounting-process/study-notes/financial-accounting-account-types.php
-  
-
-- A Liability is Capital acquired from others. 
-  Both together is what French accountants call *passif*.
-  
-  The accounting equation "Assets = Liabilities + Capital" 
-  in French is simply:
-
-      Actif = Passif
-      
-  I found an excellent definition of these two terms at 
-  `plancomptable.com <http://www.plancomptable.com/titre-II/titre-II.htm>`_:
-
-  - Un actif est un élément identifiable du patrimoine ayant une 
-    valeur économique positive pour l’entité, c’est-à-dire un élément 
-    générant une ressource que l’entité contrôle du fait d’événements 
-    passés et dont elle attend des avantages économiques futurs.
-  
-  - Un passif est un élément du patrimoine ayant une valeur 
-    économique négative pour l'entité, c'est-à-dire une obligation de 
-    l'entité à l'égard d'un tiers dont il est probable ou certain 
-    qu'elle provoquera une sortie des ressources au bénéfice de ce 
-    tiers, sans contrepartie au moins équivalente attendue de celui-ci. 
-  
-
-Some vocabulary
-
-- Provisions pour risques et charges : Gesetzliche Rücklagen.
-- Créances et dettes : Kredite, Anleihen, Schulden.
 
 
 Accounts
@@ -312,8 +278,7 @@ Accounts
     .. attribute:: type
 
         The *account type* of this account.  This points to an item of
-        :class:`AccountTypes
-        <lino_xl.lib.accounts.choicelists.AccountTypes>`.
+        :class:`CommonAccounts`.
     
     .. attribute:: needs_partner
 
@@ -359,10 +324,6 @@ Account groups
 Utilities
 =========
 
-.. class:: Sheet
-           
-    Base class for a financial statement.
-           
 .. class:: Balance
            
     Light-weight object to represent a balance, i.e. an amount
@@ -382,11 +343,14 @@ Utilities
 Account sheets
 ==============
 
+.. class:: Sheet
+           
+    Base class for a financial statement.
+           
 .. class:: BalanceSheet
 
-    In financial accounting, a balance sheet or statement of financial
-    position is a summary of the financial balances of an
-    organisation.
+    A **balance sheet** or *statement of financial position* is a
+    summary of the financial balances of an organisation.
 
     Assets, liabilities and ownership equity are listed as of a
     specific date, such as the end of its financial year.  A balance
@@ -440,3 +404,57 @@ Plugin attributes
     .. attribute:: ref_length
 
     The `max_length` of the `Reference` field of an account.
+    
+TODO
+====
+
+- The Belgian and French `PCMN
+  <https://en.wikipedia.org/wiki/French_generally_accepted_accounting_principles>`__
+  has 7+1 top-level accounts:
+
+    | CLASSE 0 : Droits & engagements hors bilan
+    | CLASSE 1 : Fonds propres, provisions pour risques & charges et Dettes à plus d'un an
+    | CLASSE 2 : Frais d'établissement, actifs immobilisés et créances à plus d'un an
+    | CLASSE 3 : Stock & commandes en cours d'exécution
+    | CLASSE 4 : Créances et dettes à un an au plus
+    | CLASSE 5 : Placements de trésorerie et valeurs disponibles
+    | CLASSE 6 : Charges
+    | CLASSE 7 : Produits
+    
+  explain the differences and how to solve this.
+  
+  See also 
+
+  - http://code.gnucash.org/docs/help/acct-types.html
+  - http://www.futureaccountant.com/accounting-process/study-notes/financial-accounting-account-types.php
+  
+
+- A Liability is Capital acquired from others. 
+  Both together is what French accountants call *passif*.
+  
+  The accounting equation "Assets = Liabilities + Capital" 
+  in French is simply:
+
+      Actif = Passif
+      
+  I found an excellent definition of these two terms at 
+  `plancomptable.com <http://www.plancomptable.com/titre-II/titre-II.htm>`_:
+
+  - Un actif est un élément identifiable du patrimoine ayant une 
+    valeur économique positive pour l’entité, c’est-à-dire un élément 
+    générant une ressource que l’entité contrôle du fait d’événements 
+    passés et dont elle attend des avantages économiques futurs.
+  
+  - Un passif est un élément du patrimoine ayant une valeur 
+    économique négative pour l'entité, c'est-à-dire une obligation de 
+    l'entité à l'égard d'un tiers dont il est probable ou certain 
+    qu'elle provoquera une sortie des ressources au bénéfice de ce 
+    tiers, sans contrepartie au moins équivalente attendue de celui-ci. 
+  
+
+Some vocabulary
+
+- Provisions pour risques et charges : Gesetzliche Rücklagen.
+- Créances et dettes : Kredite, Anleihen, Schulden.
+
+

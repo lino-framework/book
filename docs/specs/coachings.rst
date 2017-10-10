@@ -87,6 +87,7 @@ Database structure
     ------- ---------- ------------
      10      newcomer   Newcomer
      20      coached    Registered
+     25      inactive   Inactive
      30      former     Ended
      40      refused    Abandoned
     ======= ========== ============

@@ -8,13 +8,6 @@ VAT (Value-added tax)
 
     $ doctest docs/specs/vat.rst
     
-    doctest init
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.apc.settings.doctests')
-    >>> from lino.api.doctest import *
-
-
 Table of contents:
 
 .. contents::
@@ -26,14 +19,25 @@ Overview
 
 .. currentmodule:: lino_xl.lib.vat
 
-The :mod:`lino_xl.lib.vat` adds functionality for handling incoming
-and outgoing invoices in a context where the site operator is subject
-to value-added tax (VAT). Site operators outside the European Union
-are likely to use :mod:`lino_xl.lib.vatless` instead.
+The :mod:`lino_xl.lib.vat` plugin adds functionality for handling
+incoming and outgoing invoices in a context where the site operator is
+subject to value-added tax (VAT).
 
-The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
-theoretically both be installed though obviously this wouldn't make
-sense.
+See also :class:`lino_xl.lib.vat.Plugin` for configuration options.
+
+The :mod:`lino_xl.lib.vat.utils` module contains some utility
+functions.
+
+Code snippets in this document are based on the
+:mod:`lino_book.projects.apc` demo.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.apc.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+Related plugins
+===============
 
 Installing this plugin will automatically install
 :mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
@@ -41,10 +45,21 @@ Installing this plugin will automatically install
 >>> dd.plugins.vat.needs_plugins     
 ['lino_xl.lib.countries', 'lino_xl.lib.ledger']
 
+Site operators outside the European Union are likely to use
+:mod:`lino_xl.lib.vatless` instead.
+
+The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
+theoretically both be installed though obviously this wouldn't make
+sense.
+
+Applications using this plugin will probably also install one of the
+national implementations for their VAT declarations
+(:mod:`lino_xl.lib.bevat`, :mod:`lino_xl.lib.bevats`, ...)
 
 
-VAT rules
-=========
+
+Fixtures
+========
 
 The demo fixtures :mod:`novat <lino_xl.lib.vat.fixtures.novat>` and
 :mod:`euvatrates <lino_xl.lib.vat.fixtures.euvatrates>` are mutually
@@ -56,8 +71,9 @@ would not find any VAT regimes to assign to partners).
 Intracom
 ========
 
-Two tables accessible via the :menuselection:`Reports --> Accounting`
-menu and integrated in the printout of a VAT declaration:
+The plugin defines two reports accessible via the
+:menuselection:`Reports --> Accounting` menu and integrated in the
+printout of a VAT declaration:
 
 .. class:: IntracomSales
            
@@ -66,17 +82,13 @@ menu and integrated in the printout of a VAT declaration:
     
 >>> rt.show(vat.IntracomSales)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-====================== ==================== =========== ======================= =================== ============== ===================
- Rechnung               Partner              MwSt.-Nr.   MwSt.-Regime            Total zzgl. MwSt.   MwSt.          Total inkl. MwSt.
----------------------- -------------------- ----------- ----------------------- ------------------- -------------- -------------------
- *SLS 5*                Garage Mergelsberg               Innergemeinschaftlich   442,15              92,85          535,00
- *SLS 17*               Ausdemwald Alfons                Innergemeinschaftlich   385,09              80,87          465,96
- *SLS 29*               Evers Eberhart                   Innergemeinschaftlich   1 942,00            407,81         2 349,81
- *SLS 41*               Johnen Johann                    Innergemeinschaftlich   442,15              92,85          535,00
- *SLS 53*               Meier Marie-Louise               Innergemeinschaftlich   385,09              80,87          465,96
- *SLS 65*               Radermacher Hans                 Innergemeinschaftlich   1 942,00            407,81         2 349,81
- **Total (6 Zeilen)**                                                            **5 538,48**        **1 163,06**   **6 701,54**
-====================== ==================== =========== ======================= =================== ============== ===================
+====================== =========================== ============= ======================= =================== ============ ===================
+ Rechnung               Partner                     MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
+---------------------- --------------------------- ------------- ----------------------- ------------------- ------------ -------------------
+ *SLS 2*                Rumma & Ko OÜ               EE100588749   Innergemeinschaftlich   1 685,80            354,02       2 039,82
+ *SLS 10*               Bernd Brechts Bücherladen                 Innergemeinschaftlich   1 322,25            277,67       1 599,92
+ **Total (2 Zeilen)**                                                                     **3 008,05**        **631,69**   **3 639,74**
+====================== =========================== ============= ======================= =================== ============ ===================
 <BLANKLINE>
 
 .. class:: IntracomPurchases
@@ -86,30 +98,32 @@ menu and integrated in the printout of a VAT declaration:
     
 >>> rt.show(vat.IntracomPurchases)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======================= ================= =========== ======================= =================== ============ ===================
- Rechnung                Partner           MwSt.-Nr.   MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
------------------------ ----------------- ----------- ----------------------- ------------------- ------------ -------------------
- *PRC 1*                 AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
- *PRC 6*                 AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
- *PRC 11*                AS Express Post               Innergemeinschaftlich   33,55               7,05         40,60
- *PRC 16*                AS Express Post               Innergemeinschaftlich   35,12               7,38         42,50
- *PRC 21*                AS Express Post               Innergemeinschaftlich   33,97               7,13         41,10
- *PRC 26*                AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
- *PRC 31*                AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
- *PRC 36*                AS Express Post               Innergemeinschaftlich   33,55               7,05         40,60
- *PRC 41*                AS Express Post               Innergemeinschaftlich   35,12               7,38         42,50
- *PRC 46*                AS Express Post               Innergemeinschaftlich   33,97               7,13         41,10
- *PRC 51*                AS Express Post               Innergemeinschaftlich   33,06               6,94         40,00
- *PRC 56*                AS Express Post               Innergemeinschaftlich   34,13               7,17         41,30
- *PRC 61*                AS Express Post               Innergemeinschaftlich   33,88               7,12         41,00
- *PRC 66*                AS Express Post               Innergemeinschaftlich   35,45               7,45         42,90
- *PRC 71*                AS Express Post               Innergemeinschaftlich   34,30               7,20         41,50
- **Total (15 Zeilen)**                                                         **510,48**          **107,22**   **617,70**
-======================= ================= =========== ======================= =================== ============ ===================
+======================= =============== ============= ======================= =================== ============ ===================
+ Rechnung                Partner         MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
+----------------------- --------------- ------------- ----------------------- ------------------- ------------ -------------------
+ *PRC 2*                 Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 9*                 Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
+ *PRC 16*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
+ *PRC 23*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
+ *PRC 30*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
+ *PRC 37*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 44*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
+ *PRC 51*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
+ *PRC 58*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
+ *PRC 65*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
+ *PRC 72*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 79*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
+ *PRC 86*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   119,67              25,13        144,80
+ *PRC 93*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,59              24,91        143,50
+ *PRC 100*               Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,03              24,57        141,60
+ **Total (15 Zeilen)**                                                         **1 761,34**        **369,86**   **2 131,20**
+======================= =============== ============= ======================= =================== ============ ===================
 <BLANKLINE>
 
+.. class:: IntracomInvoices
 
-
+    Common base class for :class:`IntracomSales` and
+    :class:`IntracomPurchases`
 
 
 
@@ -174,7 +188,15 @@ Models and actors reference
         Lino loops through all rules (ordered by their :attr:`seqno`)
         and returns the first object which matches.
 
-               
+.. class:: VatRules
+           
+    The table of all :class:`VatRule` objects.
+    
+    Accessible via :menuselection:`Explorer --> VAT --> VAT rules`.
+
+    >>> show_menu_path(vat.VatRules)
+    Explorer --> MwSt. --> MwSt-Regeln
+    
 .. class:: VatAccountInvoice
                    
     An invoice for which the user enters just the bare accounts and
@@ -188,18 +210,118 @@ Models and actors reference
     been created using some external tool and are entered into Lino
     just for the general ledger.
 
+
+.. class:: Invoices
+           
+    The table of all :class:`VatAccountInvoice` objects.
+
+.. class:: InvoicesByJournal
+           
+    Shows all invoices of a given journal (whose
+    :attr:`voucher_type <lino_xl.lib.ledger.models.Journal.voucher_type>`
+    must be :class:`VatAccountInvoice`)
+
+.. class:: PrintableInvoicesByJournal
+           
+    Purchase journal
+
+.. class:: InvoiceDetail
+           
+    The detail layout used by :class:`Invoices`.    
+
 .. class:: InvoiceItem
            
     An item of a :class:`VatAccountInvoice`.
 
-.. class:: IntracomInvoices
 
-    Common base class for :class:`IntracomSales` and
-    :class:`IntracomPurchases`
-           
+.. class:: ItemsByInvoice
+
+.. class:: VouchersByPartner           
+
+
 
 Model mixins
 ============
+
+.. class:: VatTotal
+
+    Model mixin which defines the fields :attr:`total_incl`,
+    :attr:`total_base` and :attr:`total_vat`.
+
+    Used for both the document header (:class:`VatDocument`) and for
+    each item (:class:`VatItemBase`).
+
+    .. attribute:: total_incl
+    
+        The amount VAT *included*.
+
+    .. attribute:: total_base
+
+        The amount VAT *excluded*.
+
+    .. attribute:: total_vat
+
+        The amount of VAT.
+
+    All three total fields are
+    :class:`lino.core.fields.PriceField` instances.
+    When
+    :attr:`auto_compute_totals` is `True`, they
+    are all disabled, 
+    otherwise
+    only :attr:`total_vat`
+    is disabled
+    when :attr:`VatRule.can_edit` is `False`.
+
+    .. attribute:: auto_compute_totals = False
+                   
+        Set this to `True` on subclasses who compute their totals
+        automatically, i.e. the fields :attr:`total_base`,
+        :attr:`total_vat` and :attr:`total_incl` are disabled.  This is
+        set to `True` for :class:`lino_xl.lib.sales.SalesDocument`.
+                  
+    .. method:: get_trade_type
+
+        Subclasses of VatTotal must implement this method.
+
+    .. method:: get_vat_rule
+
+        Return the VAT rule for this voucher or voucher item. Called
+        when user edits a total field in the document header when
+        :attr:`auto_compute_totals` is False.
+
+
+    .. method:: total_base_changed
+
+        Called when user has edited the :attr:`total_base` field.  If
+        total_base has been set to blank, then Lino fills it using
+        :meth:`reset_totals`. If user has entered a value, compute
+        :attr:`total_vat` and :attr:`total_incl` from this value using
+        the vat rate. If there is no VatRule, :attr:`total_incl` and
+        :attr:`total_vat` are set to None.
+
+        If there are rounding differences, :attr:`total_vat` will get
+        them.
+
+    .. method:: total_vat_changed
+
+        Called when user has edited the `total_vat` field.  If it has been
+        set to blank, then Lino fills it using
+        :meth:`reset_totals`. If user has entered a value, compute
+        :attr:`total_incl`. If there is no VatRule, `total_incl` is
+        set to None.
+
+    .. method:: total_incl_changed
+           
+        Called when user has edited the `total_incl` field.  If total_incl
+        has been set to blank, then Lino fills it using
+        :meth:`reset_totals`. If user enters a value, compute
+        :attr:`total_base` and :attr:`total_vat` from this value using
+        the vat rate. If there is no VatRule, `total_incl` should be
+        disabled, so this method will never be called.
+
+        If there are rounding differences, `total_vat` will get them.
+
 
 .. class:: VatDocument
 
@@ -235,7 +357,7 @@ Model mixins
     Model mixin for items of a :class:`VatTotal`.
 
     Abstract Base class for
-    :class:`lino_xl.lib.ledger.models.InvoiceItem`, i.e. the lines of
+    :class:`lino_xl.lib.ledger.InvoiceItem`, i.e. the lines of
     invoices *without* unit prices and quantities.
 
     Subclasses must define a field called "voucher" which must be a
@@ -268,16 +390,58 @@ Model mixins
         checkbox `Product.buyers_country` or some other way to specify
         this.
 
-.. class:: VatDeclaration
-           
-    Base class for VAT declarations. Currently Lino can do Belgian VAT
-    declarations (implemented by :class:`bevat.Declaration
-    <lino_xl.lib.bevat.Declaration>` in :mod:`lino_xl.lib.bevat`).
+
+.. class:: QtyVatItemBase        
+
+    Model mixin for items of a :class:`VatTotal`, adds `unit_price`
+    and `qty`.
+
+    .. attribute:: unit_price
+                   
+    .. attribute:: qty
+
+    Abstract Base class for :class:`lino_xl.lib.sales.InvoiceItem` and
+    :class:`lino_xl.lib.sales.OrderItem`, i.e. the lines of invoices
+    *with* unit prices and quantities.
 
 
                 
 Choicelists
 ===========
+
+.. class:: VatAreas
+
+    The global list of VAT areas.
+
+    A VAT area is a geographical area of countries for which same VAT
+    rules apply.
+
+    >>> rt.show(vat.VatAreas)
+    ====== =============== ===============
+     Wert   name            Text
+    ------ --------------- ---------------
+     10     national        National
+     20     eu              EU
+     30     international   International
+    ====== =============== ===============
+    <BLANKLINE>
+    
+
+    .. classmethod:: get_for_country(cls, country)
+                     
+        Return the VatArea instance for this country.
+
+        >>> print(dd.plugins.countries.country_code)
+        BE
+        
+        >>> vat.VatAreas.get_for_country('NL')
+        <VatAreas.eu:20>
+   
+        >>> vat.VatAreas.get_for_country('BE')
+        <VatAreas.national:10>
+    
+        >>> vat.VatAreas.get_for_country('')
+        <VatAreas.international:30>
 
 .. class:: VatClasses
 
@@ -310,18 +474,21 @@ Choicelists
 .. class:: VatRegime
            
     Base class for choices of :class:`VatRegimes`.
-           
-    The VAT regime is a classification of the way how VAT is being
-    handled for a given partner, e.g. whether and how it is to be
-    paid.
     
+    The **VAT regime** of an invoice determines how the VAT is being
+    handled, i.e. whether and how it is to be paid.
+    
+    You can define a *default VAT regime* per partner.
+    
+    The VAT regime does not depend on the *trade type*.
+
     .. attribute:: item_vat
                    
         Whether unit prices are VAT included or not.
 
 .. class:: VatRegimes
 
-    The global list of VAT regimes. Each item is an instance of
+    The global list of *VAT regimes*.  Each item is an instance of
     :class:`VatRegime`.
 
     Three regimes are considered standard minimum:
@@ -331,25 +498,14 @@ Choicelists
     .. attribute:: intracom
                    
 
+VAT declarations
+================
+
+.. class:: VatDeclaration
+           
+.. autoclass:: lino_xl.lib.vat.mixins.VatDeclaration
+
 .. class:: DeclarationField
            
-    Base class for all fields of VAT declarations.
-
-    .. attribute:: both_dc
-    .. attribute:: editable
-    .. attribute:: fieldnames
-
-       An optional space-separated list of names of other declaration
-       fields to be observed by this field.
-                   
-    .. attribute:: vat_regimes
-    .. attribute:: vat_classes
-    .. attribute:: vat_columns
-                   
-    .. attribute:: exclude_vat_regimes
-    .. attribute:: exclude_vat_classes
-    .. attribute:: exclude_vat_columns
-    .. attribute:: is_payable
-                   
-                   
-    
+.. autoclass:: lino_xl.lib.vat.choicelists.DeclarationField
+           

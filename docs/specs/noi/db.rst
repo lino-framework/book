@@ -19,8 +19,8 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, faculties, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
-65 models:
+43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
+61 models:
 ================================== ============================ ========= =======
  Name                               Default table                #fields   #rows
 ---------------------------------- ---------------------------- --------- -------
@@ -40,7 +40,7 @@ This document describes the database structure.
  cal.Task                           cal.Tasks                    17        0
  changes.Change                     changes.Changes              10        0
  clocking.ServiceReport             clocking.ServiceReports      10        1
- clocking.Session                   clocking.Sessions            13        13
+ clocking.Session                   clocking.Sessions            12        13
  clocking.SessionType               clocking.SessionTypes        4         1
  comments.Comment                   comments.Comments            10        12
  comments.CommentType               comments.CommentTypes        4         0
@@ -50,7 +50,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons             27        7
  contacts.Role                      contacts.Roles               4         0
  contacts.RoleType                  contacts.RoleTypes           4         0
- contenttypes.ContentType           gfks.ContentTypes            3         65
+ contenttypes.ContentType           gfks.ContentTypes            3         61
  countries.Country                  countries.Countries          6         8
  countries.Place                    countries.Places             9         78
  dashboard.Widget                   dashboard.Widgets            5         0
@@ -60,10 +60,6 @@ This document describes the database structure.
  django_mailbox.MessageAttachment   mailbox.MessageAttachments   4         1
  excerpts.Excerpt                   excerpts.Excerpts            11        1
  excerpts.ExcerptType               excerpts.ExcerptTypes        17        1
- faculties.Competence               faculties.Offers             7         26
- faculties.Demand                   faculties.Demands            4         193
- faculties.Faculty                  faculties.Skills             9         8
- faculties.SkillType                faculties.SkillTypes         4         0
  gfks.HelpText                      gfks.HelpTexts               4         1
  github.Commit                      github.Commits               14        0
  github.Repository                  github.Repositories          4         0
@@ -78,7 +74,7 @@ This document describes the database structure.
  tickets.Link                       tickets.Links                4         1
  tickets.Project                    tickets.Projects             18        5
  tickets.ProjectType                tickets.ProjectTypes         4         0
- tickets.Site                       tickets.Sites                7         3
+ tickets.Site                       tickets.Sites                8         3
  tickets.Ticket                     tickets.Tickets              27        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
@@ -93,9 +89,9 @@ This document describes the database structure.
 <BLANKLINE>
 
 >>> print(analyzer.show_complexity_factors())
-- 44 plugins
-- 65 models
-- 251 views
+- 43 plugins
+- 61 models
+- 235 views
 - 7 user types
 - 6 dialog actions
 <BLANKLINE>

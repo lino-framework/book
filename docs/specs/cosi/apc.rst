@@ -31,13 +31,13 @@ The demo database contains 69 persons and 23 companies.
 >>> contacts.Person.objects.count()
 69
 >>> contacts.Company.objects.count()
-23
+24
 >>> contacts.Partner.objects.count()
-92
+93
 
 
 >>> print(' '.join(settings.SITE.demo_fixtures))
-std few_countries minimal_ledger euvatrates furniture demo demo_bookings payments demo2
+std few_countries minimal_ledger furniture demo demo_bookings payments demo2
 
 
 
@@ -50,30 +50,30 @@ Robin is the system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
-- Products : Products, Product Categories
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
-  - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
+  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
   - Create invoices
+- Products : Products, Product Categories
 - Office : My Excerpts
 - Reports :
-  - Accounting : Accounting Report, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
   - Office : Excerpt Types, My Text Field Templates
-  - VAT : VAT rules, Paper types
+  - VAT : Paper types
 - Explorer :
   - System : content types, Authorities, User types
   - Contacts : Contact Persons, Partners
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
-  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations, Declaration fields
+  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations, Declaration fields
   - Financial : Bank Statements, Journal Entries, Payment Orders
 - Site : About
 

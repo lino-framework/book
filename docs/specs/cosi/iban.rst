@@ -6,7 +6,7 @@ IBAN numbers in Lino Così
 
 .. to test only this document:
 
-      $ python setup.py test -s tests.SpecsTests.test_iban
+      $ doctest docs/specs/cosi/iban
     
     doctest init:
 
