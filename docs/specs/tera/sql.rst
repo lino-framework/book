@@ -59,9 +59,9 @@ about `Using aggregates within a Subquery expression
 ========================= =======
  table                     count
 ------------------------- -------
- accounts_account          2
+ accounts_account          4
  django_session            1
- ledger_accountingperiod   5
+ ledger_accountingperiod   9
  users_user                2
 ========================= =======
 <BLANKLINE>

@@ -59,7 +59,7 @@ Robin is the system administrator, he has a complete menu:
 - Products : Products, Product Categories
 - Office : My Excerpts
 - Reports :
-  - Accounting : Accounting Report, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places

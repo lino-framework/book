@@ -103,9 +103,9 @@ The following example shows the balances for three period ranges
 ...     rt.show(ledger.AccountingReport, param_values=pv)
 
 >>> test(jan)
-========================
-General Accounts Balance
-========================
+=========================================
+General Account Balances (Period 2016-01)
+=========================================
 <BLANKLINE>
 ================================== ============== =============== === =============== =============== === =============== ===============
  Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
@@ -113,8 +113,8 @@ General Accounts Balance
  *(4000) Customers*                                                                    6 534,48                            6 534,48
  *(4400) Suppliers*                                                    5 569,78                            5 569,78
  *(4600) Tax Offices*                                                                  352,31                              352,31
- *(4510) VAT Due*                                                      1 134,10        1 580,97                            446,87
- *(4512) VAT Deductible*                                               1 933,28        966,64              966,64
+ *(4510) VAT due*                                                      1 134,10        1 580,97                            446,87
+ *(4512) VAT deductible*                                               1 933,28        966,64              966,64
  *(6010) Purchase of services*                                                         2 912,47                            2 912,47
  *(6020) Purchase of investments*                                                      581,66                              581,66
  *(6040) Purchase of goods*                                                            1 109,01                            1 109,01
@@ -122,9 +122,9 @@ General Accounts Balance
  **Total (9 rows)**                                                    **14 037,54**   **14 037,54**       **11 936,80**   **11 936,80**
 ================================== ============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
-=========================
-Customer Accounts Balance
-=========================
+===============================================
+Partner Account Balances Sales (Period 2016-01)
+===============================================
 <BLANKLINE>
 ======================= ============== =============== === ======= ============== === ============= ==============
  Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
@@ -137,9 +137,9 @@ Customer Accounts Balance
  **Total (5 rows)**                                                 **6 534,48**                     **6 534,48**
 ======================= ============== =============== === ======= ============== === ============= ==============
 <BLANKLINE>
-=========================
-Supplier Accounts Balance
-=========================
+===================================================
+Partner Account Balances Purchases (Period 2016-01)
+===================================================
 <BLANKLINE>
 ======================= ============== =============== === ============== ======== === ============== ==============
  Description             Debit before   Credit before       Debit          Credit       Debit after    Credit after
@@ -154,12 +154,38 @@ Supplier Accounts Balance
  **Total (7 rows)**                                         **5 569,78**                **5 569,78**
 ======================= ============== =============== === ============== ======== === ============== ==============
 <BLANKLINE>
+===============================================
+Partner Account Balances Wages (Period 2016-01)
+===============================================
+<BLANKLINE>
+No data to display
+===============================================
+Partner Account Balances Taxes (Period 2016-01)
+===============================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                                              352,31                         352,31
+ **Total (1 rows)**                                                              **352,31**                     **352,31**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+===================================================
+Partner Account Balances Clearings (Period 2016-01)
+===================================================
+<BLANKLINE>
+No data to display
+=============================================================
+Partner Account Balances Bank payment orders (Period 2016-01)
+=============================================================
+<BLANKLINE>
+No data to display
 
 
 >>> test(feb)
-========================
-General Accounts Balance
-========================
+=========================================
+General Account Balances (Period 2016-02)
+=========================================
 <BLANKLINE>
 ================================== =============== =============== === =============== =============== === =============== ===============
  Description                        Debit before    Credit before       Debit           Credit              Debit after     Credit after
@@ -167,8 +193,8 @@ General Accounts Balance
  *(4000) Customers*                                 6 534,48                            6 694,58                            13 229,06
  *(4400) Suppliers*                 5 569,78                            5 570,38                            11 140,16
  *(4600) Tax Offices*                               352,31                              563,44                              915,75
- *(4510) VAT Due*                                   446,87              1 161,86        1 370,10                            655,11
- *(4512) VAT Deductible*            966,64                              1 933,54        966,77              1 933,41
+ *(4510) VAT due*                                   446,87              1 161,86        1 370,10                            655,11
+ *(4512) VAT deductible*            966,64                              1 933,54        966,77              1 933,41
  *(6010) Purchase of services*                      2 912,47                            2 912,29                            5 824,76
  *(6020) Purchase of investments*                   581,66                              580,66                              1 162,32
  *(6040) Purchase of goods*                         1 109,01                            1 110,66                            2 219,67
@@ -176,9 +202,9 @@ General Accounts Balance
  **Total (9 rows)**                 **11 936,80**   **11 936,80**       **14 198,50**   **14 198,50**       **24 006,67**   **24 006,67**
 ================================== =============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
-=========================
-Customer Accounts Balance
-=========================
+===============================================
+Partner Account Balances Sales (Period 2016-02)
+===============================================
 <BLANKLINE>
 ======================= ============== =============== === ======= ============== === ============= ===============
  Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
@@ -195,9 +221,9 @@ Customer Accounts Balance
  **Total (9 rows)**                     **6 534,48**                **6 694,58**                     **13 229,06**
 ======================= ============== =============== === ======= ============== === ============= ===============
 <BLANKLINE>
-=========================
-Supplier Accounts Balance
-=========================
+===================================================
+Partner Account Balances Purchases (Period 2016-02)
+===================================================
 <BLANKLINE>
 ======================= ============== =============== === ============== ======== === =============== ==============
  Description             Debit before   Credit before       Debit          Credit       Debit after     Credit after
@@ -212,11 +238,38 @@ Supplier Accounts Balance
  **Total (7 rows)**      **5 569,78**                       **5 570,38**                **11 140,16**
 ======================= ============== =============== === ============== ======== === =============== ==============
 <BLANKLINE>
+===============================================
+Partner Account Balances Wages (Period 2016-02)
+===============================================
+<BLANKLINE>
+No data to display
+===============================================
+Partner Account Balances Taxes (Period 2016-02)
+===============================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                  352,31                      563,44                         915,75
+ **Total (1 rows)**                                  **352,31**                  **563,44**                     **915,75**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+===================================================
+Partner Account Balances Clearings (Period 2016-02)
+===================================================
+<BLANKLINE>
+No data to display
+=============================================================
+Partner Account Balances Bank payment orders (Period 2016-02)
+=============================================================
+<BLANKLINE>
+No data to display
+
 
 >>> test(jan, feb)
-========================
-General Accounts Balance
-========================
+====================================================
+General Account Balances (Periods 2016-01...2016-02)
+====================================================
 <BLANKLINE>
 ================================== ============== =============== === =============== =============== === =============== ===============
  Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
@@ -224,8 +277,8 @@ General Accounts Balance
  *(4000) Customers*                                                                    13 229,06                           13 229,06
  *(4400) Suppliers*                                                    11 140,16                           11 140,16
  *(4600) Tax Offices*                                                                  915,75                              915,75
- *(4510) VAT Due*                                                      2 295,96        2 951,07                            655,11
- *(4512) VAT Deductible*                                               3 866,82        1 933,41            1 933,41
+ *(4510) VAT due*                                                      2 295,96        2 951,07                            655,11
+ *(4512) VAT deductible*                                               3 866,82        1 933,41            1 933,41
  *(6010) Purchase of services*                                                         5 824,76                            5 824,76
  *(6020) Purchase of investments*                                                      1 162,32                            1 162,32
  *(6040) Purchase of goods*                                                            2 219,67                            2 219,67
@@ -233,9 +286,9 @@ General Accounts Balance
  **Total (9 rows)**                                                    **28 236,04**   **28 236,04**       **24 006,67**   **24 006,67**
 ================================== ============== =============== === =============== =============== === =============== ===============
 <BLANKLINE>
-=========================
-Customer Accounts Balance
-=========================
+==========================================================
+Partner Account Balances Sales (Periods 2016-01...2016-02)
+==========================================================
 <BLANKLINE>
 ======================= ============== =============== === ======= =============== === ============= ===============
  Description             Debit before   Credit before       Debit   Credit              Debit after   Credit after
@@ -252,9 +305,9 @@ Customer Accounts Balance
  **Total (9 rows)**                                                 **13 229,06**                     **13 229,06**
 ======================= ============== =============== === ======= =============== === ============= ===============
 <BLANKLINE>
-=========================
-Supplier Accounts Balance
-=========================
+==============================================================
+Partner Account Balances Purchases (Periods 2016-01...2016-02)
+==============================================================
 <BLANKLINE>
 ======================= ============== =============== === =============== ======== === =============== ==============
  Description             Debit before   Credit before       Debit           Credit       Debit after     Credit after
@@ -269,7 +322,32 @@ Supplier Accounts Balance
  **Total (7 rows)**                                         **11 140,16**                **11 140,16**
 ======================= ============== =============== === =============== ======== === =============== ==============
 <BLANKLINE>
-
+==========================================================
+Partner Account Balances Wages (Periods 2016-01...2016-02)
+==========================================================
+<BLANKLINE>
+No data to display
+==========================================================
+Partner Account Balances Taxes (Periods 2016-01...2016-02)
+==========================================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                                              915,75                         915,75
+ **Total (1 rows)**                                                              **915,75**                     **915,75**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+==============================================================
+Partner Account Balances Clearings (Periods 2016-01...2016-02)
+==============================================================
+<BLANKLINE>
+No data to display
+========================================================================
+Partner Account Balances Bank payment orders (Periods 2016-01...2016-02)
+========================================================================
+<BLANKLINE>
+No data to display
 
 
 Database models reference
@@ -703,11 +781,11 @@ Journals
  SLS         Factures vente            Sales invoices                  Sales                                                 Debit
  SLC         Sales credit notes        Sales credit notes              Sales                                                 Credit
  PRC         Factures achat            Purchase invoices               Purchases                                             Credit
- PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders   (4700) Pending Payment Orders   Credit
- CSH         Caisse                    Cash                                                  (5700) BestBank                 Debit
+ PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders   (4300) Pending Payment Orders   Credit
+ CSH         Caisse                    Cash                                                  (5700) Cash                     Debit
  BNK         Bestbank                  Bestbank                                              (5500) BestBank                 Debit
- MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) BestBank                 Debit
- VAT         Déclarations TVA          VAT declarations                Taxes                 (4513) VAT Declared             Credit
+ MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) Cash                     Debit
+ VAT         Déclarations TVA          VAT declarations                Taxes                 (4513) VAT declared             Credit
 =========== ========================= =============================== ===================== =============================== ===========================
 <BLANKLINE>
 
@@ -809,28 +887,31 @@ more VAT deductible (sales) than VAT due (purchases).
 
 >>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-=================================== ========== ================
+=================================== ========== ===============
  Partner                             ID         Balance
------------------------------------ ---------- ----------------
- Bestbank                            100        1 861,51
- Mehrwertsteuer-Kontrollamt Eupen    192        27 109,78
- Hans Flott & Co                     108        990,00
- Van Achter NV                       107        231,33
- Bernd Brechts Bücherladen           109        1 322,25
- Garage Mergelsberg                  105        1 188,58
- Ausdemwald Alfons                   116        636,36
- Reinhards Baumschule                110        1 942,00
- Arens Annette                       114        3 503,83
+----------------------------------- ---------- ---------------
+ Bestbank                            100        2 382,15
+ Mehrwertsteuer-Kontrollamt Eupen    192        7 010,27
+ Hans Flott & Co                     108        1 197,90
+ Van Achter NV                       107        279,90
+ Bernd Brechts Bücherladen           109        1 599,92
+ Garage Mergelsberg                  105        1 885,73
+ Ausdemwald Alfons                   116        770,00
+ Reinhards Baumschule                110        2 349,81
+ Arens Annette                       114        4 239,63
  ...
- Radermacher Guido                   159        1 942,00
- da Vinci David                      165        1 021,45
- Radermacher Inge                    162        600,00
- Radermacher Alfons                  153        231,40
- Radermacher Jean                    163        2 974,97
- Radermacher Hans                    160        786,62
- Radermacher Hedi                    161        433,88
- **Total (62 rows)**                 **8421**   **101 778,50**
-=================================== ========== ================
+ Radermacher Berta                   154        535,00
+ Radermacher Christian               155        3 319,78
+ di Rupo Didier                      164        639,92
+ Radermacher Guido                   159        2 349,81
+ da Vinci David                      165        1 235,96
+ Radermacher Inge                    162        726,00
+ Radermacher Alfons                  153        280,00
+ Radermacher Jean                    163        3 599,71
+ Radermacher Hans                    160        951,82
+ Radermacher Hedi                    161        525,00
+ **Total (62 rows)**                 **8421**   **97 936,71**
+=================================== ========== ===============
 <BLANKLINE>
 
 
@@ -844,13 +925,12 @@ debts for partner 116 from above list:
 Partner #116 ('Ausdemwald Alfons')
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ============ ===================== =====================
+==================== ============ ===================== ==========
  Due date             Balance      Debts                 Payments
--------------------- ------------ --------------------- ---------------------
+-------------------- ------------ --------------------- ----------
  13/04/2016           770,00       `SLS 18 <Detail>`__
- 13/04/2016           -133,64                            `SLS 18 <Detail>`__
- **Total (2 rows)**   **636,36**
-==================== ============ ===================== =====================
+ **Total (1 rows)**   **770,00**
+==================== ============ ===================== ==========
 <BLANKLINE>
 
 This shows that the partner received one sales invoice and did a
@@ -866,12 +946,12 @@ send us a purchase invoice (which we did not yet pay).
 ===================== ========= ===============
  Partner               ID        Balance
 --------------------- --------- ---------------
- Rumma & Ko OÜ         101       445,40
- Bäckerei Ausdemwald   102       8 486,18
- Donderweer BV         106       2 029,39
- Bäckerei Mießen       103       17 819,60
- Bäckerei Schmitz      104       48 287,75
- **Total (5 rows)**    **516**   **77 068,32**
+ Rumma & Ko OÜ         101       91,38
+ Bäckerei Ausdemwald   102       8 368,19
+ Donderweer BV         106       1 821,15
+ Bäckerei Mießen       103       17 771,00
+ Bäckerei Schmitz      104       48 194,90
+ **Total (5 rows)**    **516**   **76 246,62**
 ===================== ========= ===============
 <BLANKLINE>
 
@@ -880,28 +960,27 @@ Partner 101 from above list is both a supplier and a customer:
 >>> obj = contacts.Partner.objects.get(pk=101)
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-===================== ============= ==================== ======================
- Due date              Balance       Debts                Payments
---------------------- ------------- -------------------- ----------------------
- 10/01/2016            -141,30                            `PRC 2 <Detail>`__
- 14/01/2016            2 039,82      `SLS 2 <Detail>`__
- 14/01/2016            -354,02                            `SLS 2 <Detail>`__
- 03/02/2016            -142,00                            `PRC 9 <Detail>`__
- 02/04/2016            -143,40                            `PRC 16 <Detail>`__
- 30/04/2016            -142,10                            `PRC 23 <Detail>`__
- 01/08/2016            -140,20                            `PRC 30 <Detail>`__
- 02/08/2016            -141,30                            `PRC 37 <Detail>`__
- 02/08/2016            -142,00                            `PRC 44 <Detail>`__
- 13/08/2016            -143,40                            `PRC 51 <Detail>`__
- 10/09/2016            -142,10                            `PRC 58 <Detail>`__
- 03/10/2016            -140,20                            `PRC 65 <Detail>`__
- 03/12/2016            -141,30                            `PRC 72 <Detail>`__
- 31/12/2016            -142,00                            `PRC 79 <Detail>`__
- 03/04/2017            -144,80                            `PRC 86 <Detail>`__
- 04/04/2017            -143,50                            `PRC 93 <Detail>`__
- 02/04/2017            -141,60                            `PRC 100 <Detail>`__
- **Total (17 rows)**   **-445,40**
-===================== ============= ==================== ======================
+===================== ============ ==================== ======================
+ Due date              Balance      Debts                Payments
+--------------------- ------------ -------------------- ----------------------
+ 10/01/2016            -141,30                           `PRC 2 <Detail>`__
+ 14/01/2016            2 039,82     `SLS 2 <Detail>`__
+ 03/02/2016            -142,00                           `PRC 9 <Detail>`__
+ 02/04/2016            -143,40                           `PRC 16 <Detail>`__
+ 30/04/2016            -142,10                           `PRC 23 <Detail>`__
+ 01/08/2016            -140,20                           `PRC 30 <Detail>`__
+ 02/08/2016            -141,30                           `PRC 37 <Detail>`__
+ 02/08/2016            -142,00                           `PRC 44 <Detail>`__
+ 13/08/2016            -143,40                           `PRC 51 <Detail>`__
+ 10/09/2016            -142,10                           `PRC 58 <Detail>`__
+ 03/10/2016            -140,20                           `PRC 65 <Detail>`__
+ 03/12/2016            -141,30                           `PRC 72 <Detail>`__
+ 31/12/2016            -142,00                           `PRC 79 <Detail>`__
+ 03/04/2017            -144,80                           `PRC 86 <Detail>`__
+ 04/04/2017            -143,50                           `PRC 93 <Detail>`__
+ 02/04/2017            -141,60                           `PRC 100 <Detail>`__
+ **Total (16 rows)**   **-91,38**
+===================== ============ ==================== ======================
 <BLANKLINE>
 
 Note that most numbers in above table are negative. A purchase invoice

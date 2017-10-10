@@ -108,8 +108,9 @@ Installation instructions
   :file:`/etc/supervisor/conf.d/` with this content::
 
     [program:linod_myprj]
-    command=/path/to/myprj/linod.sh
+    command = /path/to/myprj/linod.sh
     username = www-data
+    umask = 002
 
 - Restart :program:`supervisord`::
 
