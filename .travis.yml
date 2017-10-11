@@ -16,6 +16,7 @@ install:
   - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
   - pip install -e .
 script:
+  - export LINO_LOGLEVEL=WARNING
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
   - # if [[ $TRAVIS_BRANCH == 'python3' || $TRAVIS_PYTHON_VERSION == 2.7 ]]; then inv prep test; else exit 0; fi;
