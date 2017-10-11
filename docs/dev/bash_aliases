@@ -1,7 +1,7 @@
 alias ll='ls -al'
 alias dm='python manage.py'
 alias pp='per_project'
-alias doctest='export LINO_LOGLEVEL=WARNING; python -m atelier.doctest_utf8 $*'
+alias doctest='python -m atelier.doctest_utf8 $*'
 
 alias a='. env/bin/activate'
 
