@@ -66,7 +66,7 @@ System --> Plausibility problems` to see them.
 >>> rt.show(plausibility.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ================= ===================================== =================================================== ========================================
- Responsible       Controlled by                         Message                                             Plausibility checker
+ Responsible       Database object                       Message                                             Checker
 ----------------- ------------------------------------- --------------------------------------------------- ----------------------------------------
  Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting calendar entries
  Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting calendar entries
@@ -88,7 +88,7 @@ of selecting the :class:`ConflictingEventsChecker
 >>> rt.show(plausibility.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ===================================== ===================================================
- Responsible       Controlled by                         Message
+ Responsible       Database object                       Message
 ----------------- ------------------------------------- ---------------------------------------------------
  Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.
  Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).

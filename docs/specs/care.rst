@@ -11,7 +11,7 @@ Lino Care, a network of people who care
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.care.settings.doctests')
+    >>> startup('lino_book.projects.anna.settings.demo')
     >>> from lino.api.doctest import *
 
 .. contents::
@@ -87,21 +87,21 @@ Skills
 
 >>> rt.show(faculties.TopLevelSkills)
 ... #doctest: +REPORT_UDIFF
-========================== ============================= ============================ ========= =================================================================== ==============
- Designation                Designation (de)              Designation (fr)             Remarks   Children                                                            Parent skill
--------------------------- ----------------------------- ---------------------------- --------- ------------------------------------------------------------------- --------------
- Babysitting                Babysitting                   Garde enfant
- Car driving                Fahrdienst                    Voiture
- Go out with dogs           Hunde spazierenführen         Chiens
- Hair cutting               Friseur                       Coiffure
- Home & Garden              Haus und Garten               Maison et jardin                       *Garden works*, *Renovation*, *Repair works*, *Repairing clothes*
- Mentoring elderly people   Gesellschafter für Senioren   Rencontres personnes agées
- Music                      Musik                         Musique                                *Guitar lessons*, *Piano lessons*
- Shopping                   Botengänge                    Commissions
- Teaching                   Unterricht                    Cours                                  *French lessons*, *German lessons*, *Maths lessons*
- Translations               Übersetzungsarbeiten          Traductions
- Write letters              Briefe schreiben              Écrire des lettres
-========================== ============================= ============================ ========= =================================================================== ==============
+============================ ========= =================================================================== ==============
+ overview                     Remarks   Children                                                            Parent skill
+---------------------------- --------- ------------------------------------------------------------------- --------------
+ *Babysitting*
+ *Car driving*
+ *Go out with dogs*
+ *Hair cutting*
+ *Home & Garden*                        *Garden works*, *Renovation*, *Repair works*, *Repairing clothes*
+ *Mentoring elderly people*
+ *Music*                                *Guitar lessons*, *Piano lessons*
+ *Shopping*
+ *Teaching*                             *French lessons*, *German lessons*, *Maths lessons*
+ *Translations*
+ *Write letters*
+============================ ========= =================================================================== ==============
 <BLANKLINE>
 
 

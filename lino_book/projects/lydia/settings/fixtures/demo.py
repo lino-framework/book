@@ -25,6 +25,9 @@ def objects():
     UserTypes = rt.models.users.UserTypes
     Company = rt.models.contacts.Company
     Product = rt.models.products.Product
+    Account = rt.models.accounts.Account
+    AccountTypes = rt.models.accounts.AccountTypes
+    CommonAccounts = rt.models.accounts.CommonAccounts
 
     yield create_user("daniel", UserTypes.therapist)
     yield create_user("elmar", UserTypes.therapist)
@@ -39,7 +42,14 @@ def objects():
     settings.SITE.site_config.update(site_company=obj)
 
     yield named(Product, _("Group therapy"), sales_price=30)
-    yield named(Product, _("Individual therapy"), sales_price=60)
+    indacc = named(
+        Account, _("Sales on individual therapies"),
+        group=CommonAccounts.sales.get_object().group,
+        type=AccountTypes.incomes, ref="7010")
+    yield indacc
+    yield named(
+        Product, _("Individual therapy"),
+        sales_price=60, sales_account=indacc)
     yield named(Product, _("Other"), sales_price=35)
 
     

@@ -5,6 +5,7 @@ Exploring SQL activity in Lino Tera
 ===================================
 
 ..  How to test only this document:
+   
     $ doctest docs/specs/tera/sql.rst
 
 This document explores some SQL requests in Lino Tera.
@@ -23,7 +24,7 @@ Startup
 
 During startup there are a few SQL queries:
 
->>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+>>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +SKIP
 SELECT excerpts_excerpttype.id, excerpts_excerpttype.name, excerpts_excerpttype.build_method, excerpts_excerpttype.template, excerpts_excerpttype.attach_to_email, excerpts_excerpttype.email_template, excerpts_excerpttype.certifying, excerpts_excerpttype.remark, excerpts_excerpttype.body_template, excerpts_excerpttype.content_type_id, excerpts_excerpttype.primary, excerpts_excerpttype.backward_compat, excerpts_excerpttype.print_recipient, excerpts_excerpttype.print_directly, excerpts_excerpttype.shortcut, excerpts_excerpttype.name_de, excerpts_excerpttype.name_fr FROM excerpts_excerpttype
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 16
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 69

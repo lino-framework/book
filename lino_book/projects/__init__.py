@@ -17,8 +17,7 @@ real world.
    team
    public
    bs3
-   care
-   care_de
+   anna
    liina
    lydia
    adg

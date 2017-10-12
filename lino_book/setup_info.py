@@ -195,12 +195,11 @@ lino_book.projects.lydia.tests
 lino_book.projects.lydia.settings
 lino_book.projects.lydia.settings.fixtures
 lino_book.projects.public
-lino_book.projects.care
-lino_book.projects.care.settings
-lino_book.projects.care.tests
-lino_book.projects.care.lib
-lino_book.projects.care.lib.tickets
-lino_book.projects.care_de
+lino_book.projects.anna
+lino_book.projects.anna.settings
+lino_book.projects.anna.tests
+lino_book.projects.anna.lib
+lino_book.projects.anna.lib.tickets
 lino_book.projects.public.settings
 lino_book.projects.public.tests
 lino_book.projects.lets1

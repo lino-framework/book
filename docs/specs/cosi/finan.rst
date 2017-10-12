@@ -74,6 +74,21 @@ Database models
     A **payment order** is when a user instructs a bank to execute a
     series of outgoing transactions from a given bank account.
 
+    .. attribute:: entry_date
+
+        The date of the ledger entry.
+        
+    .. attribute:: execution_date
+
+        The execution date of payment order. If this is empty, Lino
+        assumes the :attr:`entry_date` when writing the 
+        :xfile:`pain_001.xml` file.
+
+    .. attribute:: total
+
+        The total amount. This is automatically computed when you register
+        de voucher.
+
 
 .. class:: JournalEntryItem
            
@@ -309,5 +324,14 @@ Actions
     Fill the selected suggestions as items to the voucher. The *first*
     selected suggestion does not create a new item but replaces the
     item for which it was called.
+    
 
+Template files
+==============
+    
+.. xfile:: pain_001.xml
 
+   Used for writing a SEPA payment initiation.
+
+   :file:`finan/PaymentOrder/pain_001.xml`
+        
