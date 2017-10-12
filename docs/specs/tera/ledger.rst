@@ -1,4 +1,4 @@
-.. _specs.tera.sql:
+.. _specs.tera.ledger:
 
 ===================================
 Exploring SQL activity in Lino Tera

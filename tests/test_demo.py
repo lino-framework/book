@@ -126,8 +126,8 @@ class TestCase(TestCase):
     def test_bs3(self):
         self.run_django_manage_test('lino_book/projects/bs3')
         
-    # def test_care(self):
-    #     self.run_django_manage_test('lino_book/projects/care')
+    def test_anna(self):
+        self.run_django_manage_test('lino_book/projects/anna')
 
     def test_liina(self):
         self.run_django_manage_test('lino_book/projects/liina')
@@ -137,9 +137,6 @@ class TestCase(TestCase):
 
     def test_lydia(self):
         self.run_django_manage_test('lino_book/projects/lydia')
-        
-    def test_mti(self):
-        self.run_django_manage_test('lino_book/projects/mti')
         
     def test_nomti(self):
         self.run_django_manage_test('lino_book/projects/nomti')
