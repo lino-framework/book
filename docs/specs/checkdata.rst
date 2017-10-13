@@ -41,8 +41,8 @@ checkers.
 --------------------------------- --------------------------------------------------
  printing.CachedPrintableChecker   Check for missing target files
  countries.PlaceChecker            Check plausibility of geographical places.
- addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
+ addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
  cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
@@ -120,8 +120,8 @@ line using::
 --------------------------------- --------------------------------------------------
  printing.CachedPrintableChecker   Check for missing target files
  countries.PlaceChecker            Check plausibility of geographical places.
- addresses.AddressOwnerChecker     Check for missing or non-primary address records
  mixins.DupableChecker             Check for missing phonetic words
+ addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
  cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
