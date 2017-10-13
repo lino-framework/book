@@ -105,3 +105,11 @@ Skills
 <BLANKLINE>
 
 
+
+Miscellaneous
+=============
+
+>>> c = rt.models.plausibility.Checkers.get_by_value('phones.ContactDetailsOwnerChecker')
+>>> list(c.get_checkable_models())
+[<class 'lino_xl.lib.contacts.models.Partner'>]
+
