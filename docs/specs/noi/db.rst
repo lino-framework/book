@@ -44,12 +44,12 @@ This document describes the database structure.
  clocking.SessionType               clocking.SessionTypes        4         1
  comments.Comment                   comments.Comments            10        12
  comments.CommentType               comments.CommentTypes        4         0
- contacts.Company                   contacts.Companies           22        4
- contacts.CompanyType               contacts.CompanyTypes        7         0
- contacts.Partner                   contacts.Partners            20        11
+ contacts.Company                   contacts.Companies           22        5
+ contacts.CompanyType               contacts.CompanyTypes        7         16
+ contacts.Partner                   contacts.Partners            20        12
  contacts.Person                    contacts.Persons             27        7
  contacts.Role                      contacts.Roles               4         0
- contacts.RoleType                  contacts.RoleTypes           4         0
+ contacts.RoleType                  contacts.RoleTypes           4         5
  contenttypes.ContentType           gfks.ContentTypes            3         61
  countries.Country                  countries.Countries          6         8
  countries.Place                    countries.Places             9         78
@@ -58,9 +58,9 @@ This document describes the database structure.
  django_mailbox.Mailbox             mailbox.Mailboxes            6         1
  django_mailbox.Message             mailbox.Messages             15        7
  django_mailbox.MessageAttachment   mailbox.MessageAttachments   4         1
- excerpts.Excerpt                   excerpts.Excerpts            11        1
- excerpts.ExcerptType               excerpts.ExcerptTypes        17        1
- gfks.HelpText                      gfks.HelpTexts               4         1
+ excerpts.Excerpt                   excerpts.Excerpts            11        2
+ excerpts.ExcerptType               excerpts.ExcerptTypes        17        2
+ gfks.HelpText                      gfks.HelpTexts               4         2
  github.Commit                      github.Commits               14        0
  github.Repository                  github.Repositories          4         0
  lists.List                         lists.Lists                  7         8
@@ -78,7 +78,7 @@ This document describes the database structure.
  tickets.Ticket                     tickets.Tickets              27        116
  tickets.TicketType                 tickets.TicketTypes          4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates   5         2
- topics.Interest                    topics.Interests             6         12
+ topics.Interest                    topics.Interests             6         15
  topics.Topic                       topics.Topics                9         4
  topics.TopicGroup                  topics.TopicGroups           5         0
  uploads.Upload                     uploads.Uploads              9         0

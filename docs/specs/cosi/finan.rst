@@ -7,7 +7,7 @@ Financial vouchers
 
 .. to test only this document:
 
-      $ python setup.py test -s tests.SpecsTests.test_finan
+      $ doctest docs/specs/cosi/finan.rst
     
     doctest init:
 

@@ -83,7 +83,7 @@ Get the list of places in Belgium:
 >>> data['count']
 2878
 >>> rmu(data['rows'][0])
-['Belgique', 'BE', "'s Gravenvoeren", '', '', 'Ville', '50', '3798', None, None, 2147, False, '73109', '<p />', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<span />', {'id': True}, False]
+['Belgique', 'BE', "'s Gravenvoeren", '', '', 'Ville', '50', '3798', None, None, 2147, False, '73109', '<p />', '<span />', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', {'id': True}, False]
 
 The JSON API of :mod:`lino.modlib.extjs` is actually not written for
 being public, that's why we have strange items like

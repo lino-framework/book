@@ -4,6 +4,8 @@
 Printing documents
 ==================
 
+.. $ doctest docs/specs/printing.rst
+
 ..  Initialize doctest:
 
     >>> from lino import startup
@@ -103,7 +105,14 @@ Reference
 Model mixins
 ------------
 
-.. class:: PrintableObject    
+.. class:: Printable
+
+    Mixin for models for which Lino can generate a printable
+    document.
+
+    Extended by :class:`CachedPrintable` and :class:`TypedPrintable`.
+    Other methods for printing a printable is to add an excerpt type
+    or to provide your own subclass of DirectPrintAction.
 
     .. method:: get_print_templates(self, bm, action)
                 
@@ -123,13 +132,6 @@ Model mixins
         This is expected to rather raise an exception than return
         `None`.
 
-
-.. class:: Printable
-
-    Mixin for models whose instances have a "print" action (i.e. for
-    which Lino can generate a printable document).
-
-    Extended by :class:`CachedPrintable` and :class:`TypedPrintable`.
 
     .. attribute:: do_print
 

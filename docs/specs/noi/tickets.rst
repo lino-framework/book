@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/tickets.rst
 .. _noi.specs.tickets:
 
 =============================
 Ticket management in Lino Noi
 =============================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/tickets.rst
-    
-    doctest init:
+.. doctest init:
     >>> import lino
     >>> lino.startup('lino_book.projects.team.settings.demo')
     >>> from lino.api.doctest import *
@@ -293,15 +290,15 @@ So a **project** is something for which somebody is possibly willing
 to pay money.
 
 >>> rt.show(tickets.Projects)
-=========== =============== ======== ============== =========
- Reference   Name            Parent   Organization   Private
------------ --------------- -------- -------------- ---------
- docs        Documentatión   linö     pypi           No
- linö        Framewörk                welket         No
- research    Research        docs     welket         No
- shop        Shop                     welsch         No
- téam        Téam            linö     welsch         Yes
-=========== =============== ======== ============== =========
+=========== =============== ======== =============== =========
+ Reference   Name            Parent   Organization    Private
+----------- --------------- -------- --------------- ---------
+ docs        Documentatión   linö     welsch          No
+ linö        Framewörk                Rumma & Ko OÜ   No
+ research    Research        docs     pypi            No
+ shop        Shop                     Rumma & Ko OÜ   No
+ téam        Téam            linö     welket          Yes
+=========== =============== ======== =============== =========
 <BLANKLINE>
 
 

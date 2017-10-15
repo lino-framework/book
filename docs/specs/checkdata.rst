@@ -13,15 +13,16 @@ Checking for data problems
     >>> from lino.api.doctest import *
     >>> from django.core.management import call_command
 
-This describes an approach of defining and checking for "plausibility
-problems". It is implemented in the :mod:`lino.modlib.plausibility`
-module.
+The :mod:`lino.modlib.plausibility` plugin adds support for defining
+**data checkers**.
 
-A **plausibility problem** is a kind of "soft" database integrity
-problem. Where "soft" means that it is not detected by the database
-engine because it requires more application intelligence to detect.
-At the end-user interface they are simply called *data problems*.
+A **data checker** is a piece of code which tests for
+application-specific "soft" database integrity problems.  Where "soft"
+means that it is not detected by the database engine because it
+requires more application intelligence to detect.
 
+When a data checker finds a problem, then it issues a *problem
+message* which is assigned to a *responsible user*.
 
 
 Data checkers

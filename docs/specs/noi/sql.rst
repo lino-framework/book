@@ -1,11 +1,10 @@
+.. doctest docs/specs/noi/sql.rst
+   
 .. _specs.noi.sql:
 
 ==================================
 Exploring SQL activity in Lino Noi
 ==================================
-
-..  How to test only this document:
-    $ doctest docs/specs/noi/sql.rst
 
 This document shows why Jane is so slow when displaying tickets.
 It is also a demo of
@@ -59,7 +58,7 @@ SQL that poor Django must do in order to return a single row.
 To verify whether the slave summary panels are being computed:
 
 >>> for f in rt.models.tickets.Tickets.wildcard_data_elems():
-...     print(f)
+...     print(f)  #doctest: +REPORT_UDIFF
 tickets.Ticket.id
 tickets.Ticket.modified
 tickets.Ticket.created
@@ -87,9 +86,9 @@ tickets.Ticket.reporter
 tickets.Ticket.waiting_for
 tickets.Ticket.feedback
 tickets.Ticket.standby
-lino.core.model.Model.mobile_item
-lino.core.model.Model.overview
 lino.core.model.Model.workflow_buttons
+lino.core.model.Model.overview
+lino.core.model.Model.mobile_item
 lino.mixins.Created.created_natural
 
     

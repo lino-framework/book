@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/public.rst
 .. _noi.specs.public:
 
 =================================================================
 Experimental interface to Team using Bootstrap and self-made URLs
 =================================================================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/public.rst
-   
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.public.settings.demo')
@@ -53,5 +50,5 @@ The home page:
 Home en de fr #13 Bar cannot foo State: Sleeping
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Luc Topic: Lino Welfare Linking to [ticket 1] and to
+(last update ...) Created ... by Luc Topic: Lino Core Linking to [ticket 1] and to
  [url http://luc.lino-framework.org/blog/2015/0923.html blog]. This is Lino Noi ... using ...
