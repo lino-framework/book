@@ -15,7 +15,7 @@ use two distinct Sphinx document trees:
 - `/docs` for technical documentation (only English) 
 - `/docs_xx` for user documentation (translated)
 
-See also the :ref:`atelier.sphinxext` documentation page 
+See also the :mod:`atelier.sphinxext` documentation page 
 of :mod:`atelier`.
 
 See also :mod:`lino.sphinxcontrib.actordoc`.

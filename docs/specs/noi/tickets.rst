@@ -322,7 +322,7 @@ project. You can see a list of tickets which have not yet been
 assigned to a project:
 
 >>> pv = dict(has_project=dd.YesNo.no)
->>> rt.show(tickets.Tickets, param_values=pv)
+>>> rt.show(tickets.AllTickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========== ============== ========
  ID   Summary             Priority   Workflow       Site
@@ -360,7 +360,7 @@ So the private tickets are (1) those in project "téam" and (2) those
 without project:
 
 >>> pv = dict(show_private=dd.YesNo.yes)
->>> rt.show(tickets.Tickets, param_values=pv,
+>>> rt.show(tickets.AllTickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF
 ===== ======================= =========
@@ -399,7 +399,7 @@ without project:
 And these are the public tickets:
 
 >>> pv = dict(show_private=dd.YesNo.no)
->>> rt.show(tickets.Tickets, param_values=pv,
+>>> rt.show(tickets.AllTickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
 ===== =========================================== ==========
@@ -740,7 +740,7 @@ Filtering tickets
 
 This is a list of the parameters you can use for filterings tickets.
 
->>> show_fields(tickets.Tickets)
+>>> show_fields(tickets.AllTickets)
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
@@ -799,7 +799,7 @@ Here is a textual description of the fields and their layout used in
 the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
->>> print(py2rst(tickets.Tickets.detail_layout, True))
+>>> print(py2rst(tickets.AllTickets.detail_layout, True))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
