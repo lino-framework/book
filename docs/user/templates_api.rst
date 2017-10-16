@@ -27,10 +27,6 @@ This is just a start and far from being complete...
     shortcut for `settings.SITE`
         
 
-.. tcname:: this
-            
-        The printable object instance
-        
 .. tcname:: mtos
             
         "amount to string" using :func:`decfmt`

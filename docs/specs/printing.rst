@@ -114,6 +114,12 @@ Model mixins
     Other methods for printing a printable is to add an excerpt type
     or to provide your own subclass of DirectPrintAction.
 
+    .. method:: get_print_language(self)
+                
+        Return a Django language code to be activated when an instance
+        of this is being printed.  The default implementation returns
+        the Site's default language.
+
     .. method:: get_print_templates(self, bm, action)
                 
         Return a list of filenames of templates for the specified
@@ -125,6 +131,29 @@ Model mixins
         :meth:`BuildMethod.get_default_template` and returns this as a
         list with one item.
 
+    .. method:: get_printable_context(self, ar=None, **kw)
+
+        Adds a series of names to the context used when rendering
+        printable documents. See :doc:`/user/templates_api`.
+
+        :class:`lino_xl.lib.notes.models.Note` extends this.
+
+    .. method:: get_body_template(self)
+                
+        Return the name of the body template to use when rendering this
+        object in a printable excerpt (:mod:`lino_xl.lib.excerpts`).
+        An empty string means that Lino should use the default value
+        defined on the ExcerptType.
+
+    .. method:: get_printable_demo_objects(self)
+                
+        Return an iterable of database objects for which Lino should
+        generate a printable excerpt.
+
+        This is being called by
+        :mod:`lino_xl.lib.excerpts.fixtures.demo2`.
+
+
     .. method:: get_build_method(self)
                 
         Return the build method to use when printing this object.
@@ -132,19 +161,19 @@ Model mixins
         This is expected to rather raise an exception than return
         `None`.
 
+    .. method:: get_excerpt_options(self, ar, **kw)
+                
+        Set additional fields of newly created excerpts from this.  Called
+        from
+        :class:`lino_xl.lib.excerpts.models.ExcerptType.get_or_create_excerpt`.
 
-    .. attribute:: do_print
+    .. method:: before_printable_build(self, bm)
+                
+        This is called by print actions before the printable is being
+        generated.  Application code may e.g. raise a `Warning`
+        exception in order to refuse the print action.  The warning
+        message can be a translatable string.
 
-        The action used to print this object.
-        This is an instance of
-        :class:`DirectPrintAction` or :class:`CachedPrintAction` by
-        default.  And if :mod:`lino_xl.lib.excerpts` is installed,
-        then :func:`set_excerpts_actions
-        <lino_xl.lib.excerpts.set_excerpts_actions>` possibly replaces
-        :attr:`do_print` by a
-        :class:`lino_xl.lib.excerpts.CreateExcerpt` instance.
-
-    .. attribute:: edit_template
 
 .. class:: CachedPrintable
            
@@ -167,12 +196,28 @@ Model mixins
     - generate a single temporary pdf file which is a merge of these
       individual cached printable docs
 
+    Database fields:
+
     .. attribute:: build_time
 
         Timestamp of the built target file. Contains `None`
         if no build hasn't been called yet.
 
+    Actions:
            
+    .. attribute:: do_print
+
+        The action used to print this object.
+        This is an instance of
+        :class:`DirectPrintAction` or :class:`CachedPrintAction` by
+        default.  And if :mod:`lino_xl.lib.excerpts` is installed,
+        then :func:`set_excerpts_actions
+        <lino_xl.lib.excerpts.set_excerpts_actions>` possibly replaces
+        :attr:`do_print` by a
+        :class:`lino_xl.lib.excerpts.CreateExcerpt` instance.
+
+    .. attribute:: edit_template
+
 .. class:: TypedPrintable
            
     A :class:`CachedPrintable` that uses a "Type" for deciding which

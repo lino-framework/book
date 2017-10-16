@@ -44,27 +44,11 @@ because first things first.  Now you hopefully feel self-confident
 about your work environment and running demo projects.  We are ready
 to dive *into* Lino.
 
-But first we must warn you: The second section is still quite unstable
-and has big holes. The important thing to keep in mind is: you must
-now start to **learn how to learn**. A few guidelines for under your
-pillow:
-
-- Inspect the examples and read the code.
-- Don't hesitate changing the source code and see what it does
-- When you get error messages, don't try to get rid of them in first
-  place, rather understand what they mean and learn from them.
-- Read Hamza's tutorial `Discovering Lino using your debugger
-  <https://github.com/lino-framework/book/raw/master/docs/dev/discovering_lino_using_your_debugger.pdf>`__.
-  
-That said, here is our attempt at explaining Lino from A to Z.  Don't
-be afraid of asking questions. Your questions are important feedback
-for us. Formulating questions is already a contribution for making
-Lino better.
-
 .. toctree::
-   :hidden:
+   :maxdepth: 1
 
    polls/index
+   warning
    django
    models
    mixins
@@ -78,39 +62,41 @@ Lino better.
    users
    settings
 
+..    
+    10. :doc:`dive`
 
-10. :doc:`polls/index` : In this tutorial we convert the "Polls"
-    application from Django’s tutorial into a Lino application. This
-    will illustrate some differences between Lino and Django.
+    #.  :doc:`polls/index` : In this tutorial we convert the "Polls"
+        application from Django’s tutorial into a Lino application. This
+        will illustrate some differences between Lino and Django.
 
-#.  :doc:`django`
+    #.  :doc:`django`
 
-#.  :doc:`models`
+    #.  :doc:`models`
 
-#.  :doc:`mixins`
+    #.  :doc:`mixins`
 
-#.  :doc:`/about/lino_and_django`
-    
-#.  :doc:`initdb` : More about the ``initdb`` and ``prep``
-    commands.
+    #.  :doc:`/about/lino_and_django`
 
-#.  :doc:`dumpy/index` : Playing with Python fixtures.
-    Writing your own Python fixtures.
+    #.  :doc:`initdb` : More about the ``initdb`` and ``prep``
+        commands.
 
-#.  :doc:`tables` : Models, tables and views. What is a
-    table? Designing your tables. Using tables without a web server.
+    #.  :doc:`dumpy/index` : Playing with Python fixtures.
+        Writing your own Python fixtures.
 
-#.  :doc:`layouts/index` : About layouts, detail windows, data elements and
-    panels.
+    #.  :doc:`tables` : Models, tables and views. What is a
+        table? Designing your tables. Using tables without a web server.
 
-#.  :doc:`choicelists`
-    
-#.  :doc:`users`
+    #.  :doc:`layouts/index` : About layouts, detail windows, data elements and
+        panels.
 
-#.  :doc:`perms`
+    #.  :doc:`choicelists`
 
-#.  :doc:`settings` : The Django settings module. How Lino integrates
-    into Django settings. Inheriting settings.
+    #.  :doc:`users`
+
+    #.  :doc:`perms`
+
+    #.  :doc:`settings` : The Django settings module. How Lino integrates
+        into Django settings. Inheriting settings.
 
 
 Application development using Lino

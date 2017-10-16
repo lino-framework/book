@@ -34,7 +34,7 @@ language = 'en'
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['atelier.sphinxconf.complex_tables']
 extensions += ['lino.sphinxcontrib.logo']
-#extensions += ['lino.sphinxcontrib.actordoc']
+extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['lino.sphinxcontrib.base']
 # extensions += ['sphinx.ext.napoleon']
 

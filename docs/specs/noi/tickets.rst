@@ -14,6 +14,8 @@ Ticket management in Lino Noi
 This document specifies the ticket management functions implemented in
 :mod:`lino_xl.lib.tickets` (as used by Lino Noi).
 
+
+
 .. contents::
   :local:
 
