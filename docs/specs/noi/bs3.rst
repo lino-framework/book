@@ -65,7 +65,7 @@ Tickets are rendered using plain bootstrap HTML:
 
 >>> print(soup.get_text(' ', strip=True))
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
-All tickets Sign in — Home en de fr Tickets All tickets Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
+Tickets Sign in — Home en de fr Tickets All tickets Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
 <BLANKLINE>
 <BLANKLINE>
 (last update ...) Created ... by Luc Topic: Lino Core Site: welket Linking to #1 and to blog . This is Lino Noi ... using ...
