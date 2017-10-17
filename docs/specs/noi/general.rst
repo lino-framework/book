@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/general.rst
 .. _noi.specs.general:
 
 =================
 Lino Noi Overview
 =================
 
-.. How to test just this document:
-
-    $ doctest docs/specs/noi/general.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.team.settings.demo')
@@ -167,7 +164,7 @@ Lino Noi and Scrum
 
 
 >>> show_fields(system.SiteConfig)
-... #doctest: -REPORT_UDIFF
+... #doctest: +REPORT_UDIFF
 +----------------------+----------------------+---------------------------------------------------------------------+
 | Internal name        | Verbose name         | Help text                                                           |
 +======================+======================+=====================================================================+
@@ -193,9 +190,9 @@ Lino Noi and Scrum
 | hide_events_before   | Hide events before   | If this is specified, certain tables show only                      |
 |                      |                      | events after the given date.                                        |
 +----------------------+----------------------+---------------------------------------------------------------------+
-| mobile_item          | Description          |                                                                     |
+| workflow_buttons     | Workflow             |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | overview             | Description          |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+
-| workflow_buttons     | Workflow             |                                                                     |
+| mobile_item          | Description          |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+

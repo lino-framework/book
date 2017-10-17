@@ -110,7 +110,7 @@ splits our string on every whitspace:
 >>> 'foo bar  baz'.split()
 ['foo', 'bar', 'baz']
 
-Letting :ref:`atelier` know where your projects are has the following
+Letting :mod:`atelier` know where your projects are has the following
 advantages:
 
 - You can run the :cmd:`per_project` script (or its alias :cmd:`pp`)

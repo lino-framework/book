@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/tickets.rst
 .. _noi.specs.tickets:
 
 =============================
 Ticket management in Lino Noi
 =============================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/tickets.rst
-    
-    doctest init:
+.. doctest init:
     >>> import lino
     >>> lino.startup('lino_book.projects.team.settings.demo')
     >>> from lino.api.doctest import *
@@ -16,6 +13,8 @@ Ticket management in Lino Noi
 
 This document specifies the ticket management functions implemented in
 :mod:`lino_xl.lib.tickets` (as used by Lino Noi).
+
+
 
 .. contents::
   :local:
@@ -293,15 +292,15 @@ So a **project** is something for which somebody is possibly willing
 to pay money.
 
 >>> rt.show(tickets.Projects)
-=========== =============== ======== ============== =========
- Reference   Name            Parent   Organization   Private
------------ --------------- -------- -------------- ---------
- docs        Documentatión   linö     pypi           No
- linö        Framewörk                welket         No
- research    Research        docs     welket         No
- shop        Shop                     welsch         No
- téam        Téam            linö     welsch         Yes
-=========== =============== ======== ============== =========
+=========== =============== ======== =============== =========
+ Reference   Name            Parent   Organization    Private
+----------- --------------- -------- --------------- ---------
+ docs        Documentatión   linö     welsch          No
+ linö        Framewörk                Rumma & Ko OÜ   No
+ research    Research        docs     pypi            No
+ shop        Shop                     Rumma & Ko OÜ   No
+ téam        Téam            linö     welket          Yes
+=========== =============== ======== =============== =========
 <BLANKLINE>
 
 
@@ -323,7 +322,7 @@ project. You can see a list of tickets which have not yet been
 assigned to a project:
 
 >>> pv = dict(has_project=dd.YesNo.no)
->>> rt.show(tickets.Tickets, param_values=pv)
+>>> rt.show(tickets.AllTickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF
 ==== =================== ========== ============== ========
  ID   Summary             Priority   Workflow       Site
@@ -361,7 +360,7 @@ So the private tickets are (1) those in project "téam" and (2) those
 without project:
 
 >>> pv = dict(show_private=dd.YesNo.yes)
->>> rt.show(tickets.Tickets, param_values=pv,
+>>> rt.show(tickets.AllTickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF
 ===== ======================= =========
@@ -400,7 +399,7 @@ without project:
 And these are the public tickets:
 
 >>> pv = dict(show_private=dd.YesNo.no)
->>> rt.show(tickets.Tickets, param_values=pv,
+>>> rt.show(tickets.AllTickets, param_values=pv,
 ...     column_names="id summary project")
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
 ===== =========================================== ==========
@@ -741,7 +740,7 @@ Filtering tickets
 
 This is a list of the parameters you can use for filterings tickets.
 
->>> show_fields(tickets.Tickets)
+>>> show_fields(tickets.AllTickets)
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
@@ -800,7 +799,7 @@ Here is a textual description of the fields and their layout used in
 the detail window of a ticket.
 
 >>> from lino.utils.diag import py2rst
->>> print(py2rst(tickets.Tickets.detail_layout, True))
+>>> print(py2rst(tickets.AllTickets.detail_layout, True))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):

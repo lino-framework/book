@@ -4,69 +4,73 @@ Template designer API
 
 .. How to test just this file:
 
-   $ python -m doctest docs/user/templates_api.rst
+   $ doctest docs/user/templates_api.rst
 
-TODO: This is just a start and far from being complete...
+.. _tplcontext:
 
 
-.. glossary::
-    :sorted:
+The template context
+====================
 
-    ``this``
-        The printable object instance
+This is a list template context names available when parsing a
+template.
+
+This is just a start and far from being complete...
+
+
+.. tcname:: this
+          
+    The printable object instance
+
+.. tcname:: site
+          
+    shortcut for `settings.SITE`
         
-    ``mtos``
+
+.. tcname:: mtos
+            
         "amount to string" using :func:`decfmt`
         
-    ``fds``
-        "format date short", see :ref:`datefmt`
-        
-    ``fdm``
-        "format date medium", see :ref:`datefmt`
+.. tcname:: iif
             
-    ``fdl``
-        "format date long", see :ref:`datefmt`
-            
-    ``fdf``
-        "format date full", see :ref:`datefmt`
-            
-            
-    ``iif``
         :func:`iif <atelier.utils.iif>`
         
-    ``tr(**kw)``
-        Shortcut to :meth:`babelitem <north.Site.babelitem>`.
+.. tcname:: tr(**kw)
+            
+        Shortcut to :meth:`babelitem <lino.core.site.Site.babelitem>`.
         
-    ``_(s)``
+.. tcname:: _(s)
+            
         gettext
         
-    ``E``
+.. tcname:: E
+            
         HTML tag generator, see :mod:`lino.utils.xmlgen.html`
         
-    ``unicode()``
+.. tcname:: unicode()
+            
         the builtin Python :func:`unicode` function
         
-    ``len()``
+.. tcname:: len()
+            
         the builtin Python :func:`len` function
 
-    ``settings``  
+.. tcname:: settings``
+            
         The Django :xfile:`settings.py` module
 
-    ``site`` 
+.. tcname:: site`
+            
         shortcut for `settings.SITE`
         
-    ``dtos``
-        deprecated for :term:`fds`
-        
-    ``dtosl``
-        deprecated for :term:`fdl`
-
-    ``ar``
+.. tcname:: ar
+            
         a Lino :class:`lino.core.requests.BaseRequest` instance around 
         the calling Django request 
 
 
-    ``request`` 
+.. tcname:: request`
+            
         the Django HttpRequest instance
         (available in :xfile:`admin_main.html`,
         rendered by :meth:`get_main_html <lino.ui.Site.get_main_html>`,
@@ -90,6 +94,34 @@ Date formatting functions
 
 Lino includes shortcuts to `python-babel`'s 
 `date formatting functions <http://babel.pocoo.org/docs/dates/>`_:
+
+.. tcname:: fds
+          
+    "format date short", see :ref:`datefmt`
+        
+.. tcname:: fdm
+            
+    "format date medium", see :ref:`datefmt`
+            
+.. tcname:: fdl
+            
+    "format date long", see :ref:`datefmt`
+            
+.. tcname:: fdf
+            
+    "format date full", see :ref:`datefmt`
+            
+.. tcname:: dtos
+            
+    deprecated for :tcname:`fds`
+        
+.. tcname:: dtosl
+            
+    deprecated for :tcname:`fdl`
+
+            
+
+Examples:
 
 >>> d = datetime.date(2013,8,26)
 >>> print(fds(d)) # short

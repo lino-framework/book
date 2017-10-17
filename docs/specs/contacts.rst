@@ -383,4 +383,13 @@ Reference
     something that refers to a "partner".  `person` means a "contact
     person" for the partner.
 
+Print templates
+===============
+
            
+.. xfile:: contacts/Person/TermsConditions.odt
+
+    Prints a "Terms & Conditions" document to be used by organisations
+    who need a signed permission from their clients for storing their
+    contact data.  The default content may be localized.
+

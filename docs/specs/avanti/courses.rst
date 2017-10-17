@@ -170,11 +170,6 @@ must register presences and absences:
 
 
 
-Reminders
-=========
-
-RemindersByPupil
-
 
 Reference
 =========

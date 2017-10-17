@@ -7,7 +7,7 @@ Financial vouchers
 
 .. to test only this document:
 
-      $ python setup.py test -s tests.SpecsTests.test_finan
+      $ doctest docs/specs/cosi/finan.rst
     
     doctest init:
 
@@ -132,16 +132,6 @@ Model mixins
     A :class:`FinancialVoucher` whose items have a :attr:`date` field.
 
     
-.. class:: DatedFinancialVoucherItem
-
-    A :class:`FinancialVoucherItem` with an additional :attr:`date`
-    field.
-
-    .. attribute:: date
-
-        The value date of this item.
-
-           
 .. class:: FinancialVoucherItem
     
     The base class for the items of all types of financial vouchers
@@ -154,7 +144,8 @@ Model mixins
 
     .. attribute:: project
 
-        The client related to this transaction.
+        The "project" related to this transaction. For example in Lino
+        Welfare this is the client.
 
     .. attribute:: partner
 
@@ -190,6 +181,16 @@ Model mixins
         to that invoice.
 
 
+.. class:: DatedFinancialVoucherItem
+
+    A :class:`FinancialVoucherItem` with an additional :attr:`date`
+    field.
+
+    .. attribute:: date
+
+        The value date of this item.
+
+           
 Plugin configuration
 ====================
 

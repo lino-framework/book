@@ -6,7 +6,7 @@ Contact details (Multiple phone numbers per partner)
 
 ..  to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_phones
+    $ doctest docs/specs/phones.rst
 
     >>> import lino
     >>> lino.startup('lino_book.projects.liina.settings.doctests')
@@ -58,6 +58,17 @@ Reference
     
 .. currentmodule:: lino_xl.lib.phones
 
+.. class:: ContactDetailType
+
+     .. attribute:: field_name
+
+         The name of field on the :class:`ContactDetailsOwner` where
+         the value of the primary item of this type is to be mirrored.
+        
+.. class:: ContactDetailTypes
+
+     The list of "built-in" types of contact detail items.
+
 .. class:: ContactDetail
 
     .. attribute:: partner
@@ -75,7 +86,7 @@ Reference
            
 .. class:: ContactDetailsOwner
            
-    Base class for the potential owner of contact details.
+    Model mixin for the potential owner of contact details.
 
     This mixin may be used even when its plugin
     (:mod:`lino_xl.lib.phones`) is not installed.  For example
@@ -86,3 +97,17 @@ Reference
            
 .. class:: ContactDetailsByPartner
            
+.. class:: ContactDetailsOwnerChecker
+           
+    Checks for mismatches between contact details and owner.
+    
+    - Field differs from primary item
+    - Field is empty but primary item exists
+    - Missing primary item
+
+    The last message is fixable: for example when a partner has a
+    non-empty phone number but no primary item of type :attr:`phone`,
+    then Lino can simply create that item.  This situation is normal
+    when a production site which previously had no
+    :mod:`lino_xl.lib.phones` plugin installed is migrated to a schema
+    with that plugin installed.

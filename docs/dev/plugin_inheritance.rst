@@ -131,13 +131,16 @@ The `config` subdirectories are handled automatically as expected:
 Lino scans first the `config` subdirectory of the child, then those of
 the parents.
 
-Fixtures and django-admin commands
-==================================
 
-For `fixtures` you must create one module for every fixture of the
-parent, and import at least `objects` from the parent fixture.  For
-example the :mod:`lino_voga.lib.cal.fixtures` package contains a suite
-of one-line modules, one for each module in
+
+Inheriting fixtures and django-admin commands
+=============================================
+
+When you extend a plugin and want to "inherit" its fixtures, then you
+must create a fixtures package and one module for each fixture to be
+inherited from the parent, and import at least `objects` from the
+parent fixture.  For example the :mod:`lino_voga.lib.cal.fixtures`
+package contains a suite of one-line modules, one for each module in
 :mod:`lino_xl.lib.cal.fixtures`, each of which with just one `import`
 statement like this::
 

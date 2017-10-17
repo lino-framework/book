@@ -15,7 +15,7 @@ The :cmd:`inv` command is a kind of make tool which works by looking
 for a file named :xfile:`tasks.py`. The Lino repository contains such
 a file, and this file uses :mod:`atelier.invlib`, which defines a
 whole series of subcommands ("tasks") like :cmd:`inv prep` or
-:cmd:`inv test`.  These tasks are documented in the ateler docs
-:ref:`atelier.invlib`.
+:cmd:`inv test`.  These tasks are documented in the atelier docs below
+:mod:`atelier.invlib`.
 
 

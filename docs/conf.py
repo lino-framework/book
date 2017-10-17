@@ -35,6 +35,7 @@ extensions += ['atelier.sphinxconf.blog']
 extensions += ['atelier.sphinxconf.complex_tables']
 extensions += ['lino.sphinxcontrib.logo']
 extensions += ['lino.sphinxcontrib.actordoc']
+extensions += ['lino.sphinxcontrib.base']
 # extensions += ['sphinx.ext.napoleon']
 
 extensions += ['atelier.sphinxconf.sigal_image']
@@ -352,7 +353,7 @@ if on_rtd:
 
 
 from atelier.sphinxconf import interproject
-interproject.configure(globals(), 'atelier lino_noi lino_cosi')
+interproject.configure(globals(), 'lino_noi lino_cosi')
 
 autosummary_generate = True
 
@@ -385,4 +386,5 @@ inheritance_graph_attrs.update(size='"48.0, 64.0"')
 inheritance_graph_attrs.update(fontsize=14, ratio='compress')
 
 suppress_warnings = ['image.nonlocal_uri']
+
 

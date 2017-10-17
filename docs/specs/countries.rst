@@ -164,8 +164,9 @@ The AddressLocation mixin
         >>> obj = contacts.Company.objects.filter(country=ee)[0]
         >>> print(tpl.format(name=obj.name, addr=obj.address_location()))
         Rumma & Ko OÜ
-        Tartu mnt 71
-        10115 Tallinn
+        Uus tn 1
+        Vigala vald
+        78003 Rapla maakond
         Estonia
 
     

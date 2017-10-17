@@ -1,3 +1,4 @@
+.. doctest docs/specs/noi/clocking.rst
 .. _specs.clocking:
 .. _noi.specs.clocking:
 
@@ -5,11 +6,7 @@
 Work time tracking
 ==================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/clocking.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.team.settings.doctests')
@@ -170,7 +167,7 @@ This report can serve as a base for writing invoices.
 
 
 >>> obj.interesting_for
-Partner #107 ('welket')
+Partner #108 ('welket')
 
 >>> rt.show(clocking.SessionsByReport, obj)
 ... #doctest: -REPORT_UDIFF +SKIP
@@ -201,12 +198,12 @@ The :class:`ProjectsByReport` table lists
 all projects and the time invested.
 
 >>> rt.show(clocking.ProjectsByReport, obj)
-==================== =========== ================= ========== ======= ======
- Reference            Name        Tickets           Regular    Extra   Free
--------------------- ----------- ----------------- ---------- ------- ------
- linö                 Framewörk   `#1 <Detail>`__   0:03
- **Total (1 rows)**                                 **0:03**
-==================== =========== ================= ========== ======= ======
+==================== ====== ================= ========== ======= ======
+ Reference            Name   Tickets           Regular    Extra   Free
+-------------------- ------ ----------------- ---------- ------- ------
+ téam                 Téam   `#2 <Detail>`__   9:40
+ **Total (1 rows)**                            **9:40**
+==================== ====== ================= ========== ======= ======
 <BLANKLINE>
 
 

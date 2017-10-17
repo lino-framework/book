@@ -22,20 +22,6 @@ October 2016". If a particular project decides that a bugfix release
 is needed, then they would call it 16.10.1 (and so on) even if this
 happens two months later.
 
-Which projects
-
-- :ref:`atelier`
-  :ref:`lino`
-  :ref:`xl`
-  :ref:`book`
-  :ref:`extjs6`
-  :ref:`noi`
-  :ref:`cosi`
-  :ref:`welfare`
-  :ref:`voga`
-  :ref:`presto`
-       
-
 
 The release process
 ===================

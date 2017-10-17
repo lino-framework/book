@@ -93,7 +93,7 @@ ticket.
 >>> obj = contacts.Company.objects.get(name="welket")
 >>> rt.show(topics.InterestsByController, obj)
 ... #doctest: +REPORT_UDIFF
-Lino Core, Lino Welfare, Lino Cosi
+Lino Core, Lino Welfare, Lino Voga
 
 >>> obj = topics.Topic.objects.get(ref="welfäre")
 >>> rt.show(topics.InterestsByTopic, obj)
@@ -101,9 +101,10 @@ Lino Core, Lino Welfare, Lino Cosi
 ======================
  Controlled by
 ----------------------
+ *Rumma & Ko OÜ*
  *welket*
- *welsch*
- *2015-05-21 by Jean*
+ *Saffre-Rumma*
+ *2015-05-22 by Jean*
 ======================
 <BLANKLINE>
 
@@ -114,39 +115,39 @@ Filtering tickets by topic
 >>> pv = dict(topic=rt.models.topics.Topic.get_by_ref("così"))
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: -REPORT_UDIFF
-===== =========================================== ========== =========== ======
- ID    Summary                                     Priority   Workflow    Site
------ ------------------------------------------- ---------- ----------- ------
- 114   Ticket 114                                  Normal     **Talk**
- 110   Ticket 110                                  Normal     **Ready**
- 106   Ticket 106                                  Normal     **Talk**
- 102   Ticket 102                                  Normal     **Ready**
- 98    Ticket 98                                   Normal     **Talk**
- 94    Ticket 94                                   Normal     **Ready**
- 90    Ticket 90                                   Normal     **Talk**
- 86    Ticket 86                                   Normal     **Ready**
- 82    Ticket 82                                   Normal     **Talk**
- 78    Ticket 78                                   Normal     **Ready**
- 74    Ticket 74                                   Normal     **Talk**
- 70    Ticket 70                                   Normal     **Ready**
- 66    Ticket 66                                   Normal     **Talk**
- 62    Ticket 62                                   Normal     **Ready**
- 58    Ticket 58                                   Normal     **Talk**
- 54    Ticket 54                                   Normal     **Ready**
- 50    Ticket 50                                   Normal     **Talk**
- 46    Ticket 46                                   Normal     **Ready**
- 42    Ticket 42                                   Normal     **Talk**
- 38    Ticket 38                                   Normal     **Ready**
- 34    Ticket 34                                   Normal     **Talk**
- 30    Ticket 30                                   Normal     **Ready**
- 26    Ticket 26                                   Normal     **Talk**
- 22    Ticket 22                                   Normal     **Ready**
- 18    Ticket 18                                   Normal     **Talk**
- 14    Bar cannot baz                              Normal     **Ready**
- 10    Where can I find a Foo when bazing Bazes?   Normal     **Talk**
- 6     Sell bar in baz                             Normal     **Ready**
- 2     Bar is not always baz                       Normal     **Talk**
-===== =========================================== ========== =========== ======
+===== ============================ ========== ============ ========
+ ID    Summary                      Priority   Workflow     Site
+----- ---------------------------- ---------- ------------ --------
+ 115   Ticket 115                   Normal     **Open**     welket
+ 111   Ticket 111                   Normal     **Closed**   welsch
+ 107   Ticket 107                   Normal     **Open**     pypi
+ 103   Ticket 103                   Normal     **Closed**   welket
+ 99    Ticket 99                    Normal     **Open**     welsch
+ 95    Ticket 95                    Normal     **Closed**   pypi
+ 91    Ticket 91                    Normal     **Open**     welket
+ 87    Ticket 87                    Normal     **Closed**   welsch
+ 83    Ticket 83                    Normal     **Open**     pypi
+ 79    Ticket 79                    Normal     **Closed**   welket
+ 75    Ticket 75                    Normal     **Open**     welsch
+ 71    Ticket 71                    Normal     **Closed**   pypi
+ 67    Ticket 67                    Normal     **Open**     welket
+ 63    Ticket 63                    Normal     **Closed**   welsch
+ 59    Ticket 59                    Normal     **Open**     pypi
+ 55    Ticket 55                    Normal     **Closed**   welket
+ 51    Ticket 51                    Normal     **Open**     welsch
+ 47    Ticket 47                    Normal     **Closed**   pypi
+ 43    Ticket 43                    Normal     **Open**     welket
+ 39    Ticket 39                    Normal     **Closed**   welsch
+ 35    Ticket 35                    Normal     **Open**     pypi
+ 31    Ticket 31                    Normal     **Closed**   welket
+ 27    Ticket 27                    Normal     **Open**     welsch
+ 23    Ticket 23                    Normal     **Closed**   pypi
+ 19    Ticket 19                    Normal     **Open**     welket
+ 15    Bars have no foo             Normal     **Closed**   welsch
+ 11    Class-based Foos and Bars?   Normal     **Open**     pypi
+ 7     No Foo after deleting Bar    Normal     **Closed**   welket
+ 3     Baz sucks                    Normal     **Open**     welsch
+===== ============================ ========== ============ ========
 <BLANKLINE>
  
 
