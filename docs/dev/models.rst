@@ -37,7 +37,7 @@ Here is our :xfile:`models.py` file:
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller(settings.SITE.project_dir)
     >>> shell('python manage.py prep --noinput')
-    `initdb demo` started on database /media/dell1tb/work/book/lino_book/projects/tables/default.db.
+    `initdb demo` started on database .../default.db.
     Operations to perform:
       Synchronize unmigrated apps: about, bootstrap3, extjs, jinja, lino_startup, staticfiles, tables
       Apply all migrations: (none)
@@ -48,7 +48,7 @@ Here is our :xfile:`models.py` file:
         Running deferred SQL...
     Running migrations:
       No migrations to apply.
-    Loading data from /media/dell1tb/work/book/lino_book/projects/tables/fixtures/demo.py
+    Loading data from .../fixtures/demo.py
     Installed 7 object(s) from 1 fixture(s)
 
 
