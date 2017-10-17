@@ -23,10 +23,9 @@ In this tutorial we are going to use the
 
 In Django, any subclass of :class:`Model` describes a *database
 table*.  Every row of the table is an *instance* of its corresponding
-*model*.  You can create a new row by saying::
+*model*.
 
 Models are defined in a file whose name should be :xfile:`models.py`.
-
 Here is our :xfile:`models.py` file:
 
 .. literalinclude:: ../../lino_book/projects/tables/models.py
@@ -37,6 +36,7 @@ Here is our :xfile:`models.py` file:
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller(settings.SITE.project_dir)
     >>> shell('python manage.py prep --noinput')
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     `initdb demo` started on database .../default.db.
     Operations to perform:
       Synchronize unmigrated apps: about, bootstrap3, extjs, jinja, lino_startup, staticfiles, tables
@@ -52,7 +52,7 @@ Here is our :xfile:`models.py` file:
     Installed 7 object(s) from 1 fixture(s)
 
 
-In a Lino application you can now say:                    
+You can create a new row by saying:
 
 >>> from lino_book.projects.tables.models import Author
 >>> obj = Author(first_name="Joe", last_name="Doe")
