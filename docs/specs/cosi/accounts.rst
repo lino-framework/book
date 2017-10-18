@@ -37,33 +37,34 @@ which are used to reference the database object for certain accounts
 which have a special meaning.
 
 Here is the standard list of common accounts in a :ref:`cosi`
-application (Lino applications can add specific items to that list or
-potentially redefine it completely):
+application:
 
 >>> rt.show(accounts.CommonAccounts, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= ========================= ========================= ==============
- value   name                      text                      Account type
-------- ------------------------- ------------------------- --------------
- 4000    customers                 Customers                 Assets
- 4300    pending_po                Pending Payment Orders    Assets
- 4400    suppliers                 Suppliers                 Liabilities
- 4500    employees                 Employees                 Liabilities
- 4600    tax_offices               Tax Offices               Liabilities
- 4510    vat_due                   VAT due                   Liabilities
- 4511    vat_returnable            VAT returnable            Liabilities
- 4512    vat_deductible            VAT deductible            Liabilities
- 4513    due_taxes                 VAT declared              Liabilities
- 5500    best_bank                 BestBank                  Assets
- 5700    cash                      Cash                      Assets
- 6040    purchase_of_goods         Purchase of goods         Expenses
- 6010    purchase_of_services      Purchase of services      Expenses
- 6020    purchase_of_investments   Purchase of investments   Expenses
- 6300    wages                     Wages                     Expenses
- 7000    sales                     Sales                     Incomes
-======= ========================= ========================= ==============
+======= ========================= ========================= ============== =========== ================================
+ value   name                      text                      Account type   Clearable   Account
+------- ------------------------- ------------------------- -------------- ----------- --------------------------------
+ 4000    customers                 Customers                 Assets         Yes         (4000) Customers
+ 4300    pending_po                Pending Payment Orders    Assets         Yes         (4300) Pending Payment Orders
+ 4400    suppliers                 Suppliers                 Liabilities    Yes         (4400) Suppliers
+ 4500    employees                 Employees                 Liabilities    Yes
+ 4600    tax_offices               Tax Offices               Liabilities    Yes         (4600) Tax Offices
+ 4510    vat_due                   VAT due                   Liabilities    No          (4510) VAT due
+ 4511    vat_returnable            VAT returnable            Liabilities    No          (4511) VAT returnable
+ 4512    vat_deductible            VAT deductible            Liabilities    No          (4512) VAT deductible
+ 4513    due_taxes                 VAT declared              Liabilities    No          (4513) VAT declared
+ 5500    best_bank                 BestBank                  Assets         No          (5500) BestBank
+ 5700    cash                      Cash                      Assets         No          (5700) Cash
+ 6040    purchase_of_goods         Purchase of goods         Expenses       No          (6040) Purchase of goods
+ 6010    purchase_of_services      Purchase of services      Expenses       No          (6010) Purchase of services
+ 6020    purchase_of_investments   Purchase of investments   Expenses       No          (6020) Purchase of investments
+ 6300    wages                     Wages                     Expenses       No
+ 7000    sales                     Sales                     Incomes        No          (7000) Sales
+======= ========================= ========================= ============== =========== ================================
 <BLANKLINE>
 
+Lino applications can add specific items to that list or potentially
+redefine it completely
 
 .. class:: CommonAccounts
 
