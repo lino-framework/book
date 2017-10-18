@@ -28,6 +28,7 @@ from lino.utils.djangotest import RemoteAuthTestCase
 class QuickTest(RemoteAuthTestCase):
 
     # fixtures = ['demo', 'demo2']
+    maxDiff = None
 
     def test_this(self):
 
