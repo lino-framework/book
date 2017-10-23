@@ -108,7 +108,7 @@ class TestCase(TestCase):
             REMOTE_USER='robin',
             HTTP_ACCEPT_LANGUAGE='en')
         result = self.check_json_result(
-            response, 'rows success message close_window')
+            response, 'rows success message close_window navinfo')
         self.assertEqual(result['success'], True)
         self.assertEqual(
             result['message'],
