@@ -1,14 +1,11 @@
+.. doctest docs/specs/avanti/avanti.rst
 .. _avanti.specs.avanti:
 
 =================================
 Clients in Lino Avanti
 =================================
 
-.. How to test just this document:
-
-    $ doctest docs/specs/avanti/avanti.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
@@ -165,5 +162,34 @@ Clients
 
 
 .. class:: Residence(lino.core.model.Model)
-           
 
+
+.. class:: EndingReason(lino.core.model.Model)
+          
+>>> rt.show('avanti.EndingReasons')
+==== ======================== ========================== ========================
+ ID   Designation              Designation (de)           Designation (fr)
+---- ------------------------ -------------------------- ------------------------
+ 1    Successfully ended       Erfolgreich beendet        Successfully ended
+ 2    Health problems          Gesundheitsprobleme        Health problems
+ 3    Familiar reasons         Familiäre Gründe           Familiar reasons
+ 4    Missing motivation       Fehlende Motivation        Missing motivation
+ 5    Return to home country   Rückkehr ins Geburtsland   Return to home country
+ 9    Other                    Sonstige                   Autre
+==== ======================== ========================== ========================
+<BLANKLINE>
+
+.. class:: Category(BabelDesignated)
+           
+>>> rt.show('avanti.Categories')
+==== =============================== =============================== ===============================
+ ID   Designation                     Designation (de)                Designation (fr)
+---- ------------------------------- ------------------------------- -------------------------------
+ 1    Language course                 Language course                 Language course
+ 2    Integration course              Integration course              Integration course
+ 3    Language & integration course   Language & integration course   Language & integration course
+ 4    External course                 External course                 External course
+ 5    Justified interruption          Justified interruption          Justified interruption
+ 6    Successfully terminated         Successfully terminated         Successfully terminated
+==== =============================== =============================== ===============================
+<BLANKLINE>
