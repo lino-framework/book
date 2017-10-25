@@ -1,3 +1,4 @@
+.. doctest docs/specs/avanti/cal.rst
 .. _avanti.specs.cal:
 
 =================================
@@ -7,11 +8,7 @@ Calendar functions in Lino Avanti
 This document describes how the :mod:`lino_xl.lib.cal` is being used
 in :ref:`avanti`.
 
-.. How to test just this document:
-
-    $ doctest docs/specs/avanti/cal.rst
-    
-    doctest init:
+..  doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')

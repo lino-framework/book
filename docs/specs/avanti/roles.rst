@@ -1,3 +1,4 @@
+.. doctest docs/specs/avanti/roles.rst
 .. _avanti.specs.roles:
 
 =========================
@@ -10,6 +11,7 @@ User roles in Lino Avanti
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
 
+    
 Menus
 -----
 
@@ -23,9 +25,9 @@ Menus
 - Configure :
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
-  - Contacts : Organization types, Functions, Household Types, List Types
+  - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
   - Office : Comment Types, Upload Types, Excerpt Types
-  - Coachings : Coaching types, Coaching termination reasons, Client Contact types
+  - Clients : Client Contact types
   - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations
   - Trends : Trend areas, Trend stages
   - Polls : Choice Sets
@@ -35,13 +37,20 @@ Menus
   - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Plausibility checkers, Plausibility problems, All dashboard widgets
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Office : Comments, Uploads, Upload Areas, Excerpts
-  - Coachings : Coachings, Client Contacts
+  - Clients : Client Contacts
   - Career : language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Reminders
 - Site : About
+
+>>> rt.login('martina').show_menu()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+- Office : My expiring uploads, My Uploads, Plausibility problems assigned to me, My Excerpts
+- Activities : My Activities, Activities, -, Activity lines, Course planning
+- Site : About
+
 
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -66,7 +75,7 @@ Menus
 Windows and permissions
 =======================
 
-Each window layout is **viewable** by a given set of user user_types.
+Each window is **viewable** for a given set of user types.
 
 >>> print(analyzer.show_window_permissions())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -89,8 +98,7 @@ Each window layout is **viewable** by a given set of user user_types.
 - cal.Tasks.detail : visible for staff admin
 - cal.Tasks.insert : visible for staff admin
 - changes.Changes.detail : visible for admin
-- coachings.ClientContactTypes.detail : visible for staff admin
-- coachings.CoachingEndings.detail : visible for staff admin
+- clients.ClientContactTypes.detail : visible for staff admin
 - comments.CommentTypes.detail : visible for staff admin
 - comments.CommentTypes.insert : visible for staff admin
 - comments.Comments.detail : visible for user staff admin
@@ -140,7 +148,7 @@ Each window layout is **viewable** by a given set of user user_types.
 - cv.Trainings.insert : visible for teacher user staff admin
 - excerpts.ExcerptTypes.detail : visible for staff admin
 - excerpts.ExcerptTypes.insert : visible for staff admin
-- excerpts.Excerpts.detail : visible for user staff admin
+- excerpts.Excerpts.detail : visible for user coordinator staff admin
 - gfks.ContentTypes.detail : visible for admin
 - households.Households.detail : visible for user staff admin
 - households.Types.detail : visible for staff admin

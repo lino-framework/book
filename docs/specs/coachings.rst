@@ -1,23 +1,20 @@
+.. doctest docs/specs/coachings.rst
 .. _specs.coachings:
 
 ========================
 The ``coachings`` plugin
 ========================
 
-..  To run only this test:
-
-    $ doctest docs/specs/coachings.rst
-    
-    
+..
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
-    >>> from django.db.models import Q
 
 
 The :mod:`lino_xl.lib.coachings` plugin adds functionality for
 managing "coachings".  A coaching is when a "coach" (a system user)
-engages in regular, structured conversation with a "client".
+engages in regular, structured conversation with a "client".  It is
+currently used in :ref:`welfare` only.
 
 
 .. contents::
@@ -32,20 +29,10 @@ Database structure
 ==================
 
 
-.. class:: ClientContactBase
-
-    Also used by :class:`aids.RefundPartner
-    <lino_welfare.modlib.aids.models.RefundPartner>`.
-
-
 .. class:: Coachable
 
     Base class for coachable client. The model specified as
     :attr:`client_model <Plugin.client_model>` must implement this.
-
-    .. attribute:: client_state
-
-        Pointer to ClientStates
 
     .. method:: get_coachings(self, period=None, *args, **flt)
                 
@@ -77,50 +64,6 @@ Database structure
         
         
            
-.. class:: ClientStates
-           
-    The list of **client states**.
-    
-    >>> rt.show(coachings.ClientStates)
-    ======= ========== ============
-     value   name       text
-    ------- ---------- ------------
-     10      newcomer   Newcomer
-     20      coached    Registered
-     25      inactive   Inactive
-     30      former     Ended
-     40      refused    Abandoned
-    ======= ========== ============
-    <BLANKLINE>
-    
-    
-.. class:: ClientEvents
-
-    The list of **observable client events**.
-
-    >>> rt.show(coachings.ClientEvents)
-    ========== ========== ==========
-     value      name       text
-    ---------- ---------- ----------
-     active     active     Coaching
-     created    created    Created
-     modified   modified   Modified
-     note       note       Note
-    ========== ========== ==========
-    <BLANKLINE>
-
-    .. attribute:: created
-                   
-        Select clients whose record has been *created* during the observed
-        period.
-                   
-    .. attribute:: modified
-                   
-        The choice for :class:`ClientEvents` which selects clients whose
-        main record has been *modified* during the observed period.
-
-
-           
 .. class:: CoachingType
 
     The **type** of a coaching can be used for expressing different
@@ -143,9 +86,6 @@ Database structure
    A **Coaching termination reason** expresses why a coaching has been
    terminated.
 
-   >>> rt.show(coachings.CoachingTypes)
-   No data to display
-   
    
 .. class:: Coaching
 
@@ -154,43 +94,6 @@ Database structure
     given period.
 
     For example in :ref:`welfare` that used is a social assistant.
-
-.. class:: ClientContact
-
-
-    A **client contact** is when a given partner has a given role for
-    a given client.
-
-    .. attribute:: client
-
-        The :class:`Client`.
-
-    .. attribute:: type
-    
-        The type of contact. Pointer to :class:`ClientContactType`.
-
-    .. attribute:: company
-
-        The organization.
-
-    .. attribute:: contact_person
-    
-        The contact person in the organization.
-
-    .. attribute:: contact_role
-    
-        The role of the contact person in the organization.
-
-           
-.. class:: ClientContactType
-           
-    A **client contact type** is the type or "role" which must be
-    specified for a given :class:`ClientContact`.
-
-    .. attribute:: can_refund
-
-    Whether persons of this type can be used as doctor of a refund
-    confirmation. Injected by :mod:`lino_welfare.modlib.aids`.
 
            
 Configuration
@@ -242,7 +145,3 @@ into models of other plugins.
         Notify me when a coach has been assigned.
 
     
-.. class:: contacts.Partner
-    :noindex:
-
-    .. attribute:: client_contact_type

@@ -1,14 +1,12 @@
+.. doctest docs/specs/avanti/db.rst
+   
 .. _avanti.specs.db:
 
 =================================
 Database structure of Lino Avanti
 =================================
 
-.. To run only this test::
-
-    $ doctest docs/specs/avanti/db.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
@@ -24,8 +22,8 @@ This document describes the database structure.
 
 >>> print(analyzer.show_complexity_factors())
 - 39 plugins
-- 78 models
-- 286 views
+- 77 models
+- 282 views
 - 7 user types
 - 11 dialog actions
 <BLANKLINE>
