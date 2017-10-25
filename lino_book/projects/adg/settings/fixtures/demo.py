@@ -52,8 +52,6 @@ def objects():
     Course = rt.models.courses.Course
     Topic = rt.models.courses.Topic
     Enrolment = rt.models.courses.Enrolment
-    ClientContactType = rt.models.coachings.ClientContactType
-    CoachingType = rt.models.coachings.CoachingType
     User = rt.models.users.User
     EventType = rt.models.cal.EventType
     Guest = rt.models.cal.Guest
@@ -99,10 +97,6 @@ def objects():
     yield named(Line, _("German A2"), **kw)
     yield named(Line, _("German A2 (women)"), **kw)
         
-    # yield named(CoachingType, _("Parcours"))
-    # yield named(CoachingType, _("GSS"))
-    # yield named(CoachingType, _("ISS"))
-    
     yield named(CommentType, _("Phone call"))
     yield named(CommentType, _("Visit"))
     yield named(CommentType, _("Individual consultation"))

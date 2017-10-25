@@ -40,6 +40,7 @@ specifications.  This section is far from being complete.
    i18n
    de_BE
    coachings
+   clients
 
    
 Accounting stuff
