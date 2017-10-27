@@ -6,8 +6,8 @@ A Local Exchange Trade System
 =============================
 
 In this tutorial we imagine a whole Lino project from scratch.  The
-fictive application described here is is probably a bit too simple for
-a real-life website.  But we *imagine* that this is what our customer
+fictive application described here is probably a bit too simple for a
+real-life website.  But we *imagine* that this is what our customer
 *asked* us to do.  (More about the Lino application development
 process in :doc:`/dev/analysis`.)
 
@@ -16,12 +16,8 @@ process in :doc:`/dev/analysis`.)
    :local:
 
 
-The functional specification
-============================
-
-
 Overview
---------
+========
 
 The fictive application we are going to write is a website of a Local
 Exchange Trade System group (`LETS
@@ -30,8 +26,10 @@ members of that site would register the products and services they
 want to sell or to buy. The goal is to connect the providers and the
 customers.
 
+.. _data_model_diagram:
+
 Database structure
-------------------
+==================
 
 - **Products** : one row for every product or service. We keep it
   simple and just record the designation for our products. We don't
@@ -50,29 +48,6 @@ Database structure
 - Every member is located in a given **Place**. And in a future
   version we want to add filtering on offers and demands limited to
   the place.
-
-Menu structure
---------------
-
-- **Master**:
-
-  - Products -- show the list of products
-  - Members -- show the list of members
-
-- **Market**
-
-  - Offers  -- show the full list of all offers
-  - Demands  -- show the full list of all demands
-
-
-The **main page** (dashboard) should display a list of products
-available for exchange.
-
-.. _data_model_diagram:
-
-
-Graphically representing the database structure
-===============================================
 
 Here is a **graphical representation** of the database structure:
 
@@ -98,14 +73,14 @@ Here is a **graphical representation** of the database structure:
 
   }
 
-You shoud do such diagrams by hand, together with the customer.  Above
-picture has been realized using `graphviz
+You shoud do such diagrams interactively, together with the customer.
+Above picture has been realized using `graphviz
 <http://www.sphinx-doc.org/en/stable/ext/graphviz.html>`__.  You might
 prefer `Dia <http://dia-installer.de/>`_ which renders it as follows:
 
 .. image:: models.png
 
-There are many methodologies for visualizsing a database model (`UML
+There are many methodologies for visualizing a database model (`UML
 <https://en.wikipedia.org/wiki/Unified_Modeling_Language>`_, `IDEF1X
 <https://en.wikipedia.org/wiki/IDEF1X>`__), and above style is just
 our favourite because it is so simple, intuitive and useful.  The
@@ -131,6 +106,24 @@ into three "data categories":
 - **blue** is for **configuration data** (i.e. data which is rather in
   background and accessible only to site administrators)
 
+Menu structure
+==============
+
+The **main menu** should have the following structure:
+
+- **Master**:
+
+  - Products -- show the list of products
+  - Members -- show the list of members
+
+- **Market**
+
+  - Offers  -- show the full list of all offers
+  - Demands  -- show the full list of all demands
+
+
+The **main page** (dashboard) should display a list of products
+available for exchange.
 
 
 Note about many-to-many relationships
@@ -173,8 +166,9 @@ to define what Django calls "`extra fields on many-to-many
 relationships
 <https://docs.djangoproject.com/en/1.11/topics/db/models/#intermediary-manytomany>`_",
 and thus you must explicitly name that "intermediate model" of your
-ManyToManyField.  That's why we recommend to always explicitly name
-the intermediate models of your m2m relations.
+ManyToManyField.  That's why we don't use ManyToManyField and
+recommend instead to always define an explicit intermediate models for
+your m2m relations.
 
 
 

@@ -2,23 +2,22 @@
 About analysis
 ==============
 
-This document describes some concepts we use when developing Lino
-applications.
-
-The project description
-=======================
+Lino is for writing **customized** database applications. A
+development project starts when the customer explains their needs to
+the analyst.  This document describes some concepts we use when
+developing Lino applications.
 
 The functional specification
 ============================
 
-The "functional specification" of an application is a document which
+The **functional specification** of an application is a document which
 describes what an application is expected to do.
 
 Writing this document is the job of the **analyst**.  The analyst
-communicates directly with the customer and formulates their
-needs. The **salesman** uses this document when discussing with the
-customer about the price.  The **developer** uses this document in
-order to understand what he is being asked to implement.
+communicates directly with the customer and formulates their needs.
+The **salesman** uses this document when discussing with the customer
+about the price.  The **developer** uses this document in order to
+understand what he is being asked to implement.
 
 A functional spec is important when doing software development in a
 team.  In a small team the salesman, the analyst and the developer can
@@ -41,9 +40,8 @@ the following elements.
   words.  There are many methodologies for visualizsing a database
   model (`UML
   <https://en.wikipedia.org/wiki/Unified_Modeling_Language>`_, `IDEF1X
-  <https://en.wikipedia.org/wiki/IDEF1X>`__), and our favourite method
-  is described in :ref:`data_model_diagram`.
-  
+  <https://en.wikipedia.org/wiki/IDEF1X>`__), but our favourite method
+  is described in the :ref:`dev.lets` tutorial.
 
 - Another thing to discuss with your customer during analysis is the
   **menu structure** and the content of the **main page** (dashboard).

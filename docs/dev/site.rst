@@ -70,8 +70,8 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
-want to modify one of the settings, do it *after* your ``SITE =
-Site(globals())`` line.
+want to modify one of the settings, do it *after* your
+``SITE=Site(globals())`` line.
 
 
 How Lino builds the :setting:`INSTALLED_APPS` setting
@@ -79,8 +79,8 @@ How Lino builds the :setting:`INSTALLED_APPS` setting
 
 A :class:`Site` is usually meant to work for a given set of Django
 apps (i.e. what's in the :setting:`INSTALLED_APPS` setting).  It is a
-"collection of apps" which make up a whole.  To define this
-collection, the application developper usually overrides the
+collection of apps which make up a whole.  To define this collection,
+the application developper usually overrides the
 :meth:`Site.get_installed_apps` method.
 
 Lino calls the :meth:`get_installed_apps

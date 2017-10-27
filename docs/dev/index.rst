@@ -48,16 +48,15 @@ to dive *into* Lino.
    :maxdepth: 1
 
    polls/index
+   lets/index
    warning
-   django
    models
-   mixins
-   /about/lino_and_django
-   initdb
-   dumpy/index
    tables
    layouts/index
    choicelists
+   vtables
+   initdb
+   dumpy/index
    perms
    users
    settings
@@ -72,8 +71,6 @@ to dive *into* Lino.
     #.  :doc:`django`
 
     #.  :doc:`models`
-
-    #.  :doc:`mixins`
 
     #.  :doc:`/about/lino_and_django`
 
@@ -99,38 +96,15 @@ to dive *into* Lino.
         into Django settings. Inheriting settings.
 
 
-Application development using Lino
-==================================
-
-Lino is for writing **customized** database applications. That means
-that a development project starts when the customer explains to the
-analyst their needs.
-
-20. :doc:`analysis` : 
-#.  :doc:`lets/index` : In this tutorial we write a new Lino application
-    from scratch, with focus on some techniques for doing analysis.
-
-.. toctree::
-   :hidden:
               
-   analysis
-   lets/index
-   
-
 Lino design goals
 =================
    
-#.  :doc:`/about/faq`
-#.  :doc:`/about/ui`
-#.  :doc:`/about/features`
-#.  :doc:`/about/not_easy`
-#.  :doc:`/about/think_python`
-#.  :doc:`ui`
-
 .. toctree::
-   :hidden:
+   :maxdepth: 1
               
    /about/faq
+   /about/lino_and_django
    /about/ui
    /about/features
    /about/not_easy
@@ -162,6 +136,7 @@ Working with others
    request_pull
    ci
    versioning
+   
    
    
 Writing documentation
@@ -314,6 +289,8 @@ Other
    memo
    bash_aliases
    diamond
+   analysis
+   django
 
 
 .. toctree::
@@ -328,5 +305,6 @@ Other
    ml/index
    /team/index
    interview
+   mixins
 
   
