@@ -3,10 +3,9 @@ Why ExtJS ?
 
 Is there an alternative? 
 
-- Maybe `Qooxdoo <http://qooxdoo.org>`_ :
+- Maybe `Qooxdoo <http://www.qooxdoo.org>`_ :
 
-  - http://www.mail-archive.com/qooxdoo-devel@lists.sourceforge.net/msg13290.html
-  - http://old.nabble.com/Thoughts-on-ExtJS-vs-qooxdoo-td14993948.html
+  - https://www.mail-archive.com/qooxdoo-devel@lists.sourceforge.net/msg13290.html
 
 The following toolkits didn't get me:
 

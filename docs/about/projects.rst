@@ -75,8 +75,6 @@ Lino Psico
 ----------
 
 This project is now named :ref:`tera`.
-Obsolete docs in http://presto.lino-framework.org/specs/psico.html
-
 
 
 

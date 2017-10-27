@@ -7,7 +7,7 @@ Introducing the :class:`Site` class
 .. This document is part of the Lino test suite. You can test only
    this document using::
 
-    $ python setup.py test -s tests.DocsTests.test_site
+    $ doctest docs/dev/site.rst
 
 .. contents::
     :depth: 1
@@ -130,13 +130,12 @@ with any other plugins needed by them.
 <lino_book.projects.docs.settings.Site object at ...>
 >>> print('\n'.join(pseudoglobals['INSTALLED_APPS']))
 ... #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
-lino.modlib.lino_startup
+lino
 django.contrib.staticfiles
 lino.modlib.about
 lino.modlib.jinja
 lino.modlib.bootstrap3
 lino.modlib.extjs
-lino_xl.lib.events
 lino.modlib.printing
 lino.modlib.system
 lino.modlib.users
@@ -154,6 +153,7 @@ lino_xl.lib.polls
 lino_xl.lib.concepts
 lino.modlib.tinymce
 lino.modlib.export_excel
+lino_xl.lib.events
 django.contrib.sessions
 
 
@@ -236,7 +236,7 @@ These are the Django settings which Lino will override:
     "ROOT_URLCONF": "lino.core.urls", 
     "SECRET_KEY": "20227", 
     "INSTALLED_APPS": [
-        "lino.modlib.lino_startup", 
+        "lino", 
         "django.contrib.staticfiles", 
         "lino.modlib.about", 
         "lino.modlib.jinja", 

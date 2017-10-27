@@ -439,6 +439,6 @@ Simplified instructions for a language pack containing
 my personal selection (de, fr, nl and et)::
 
   # cd /usr/share/tinymce/www
-  # wget http://tim.saffre-rumma.net/dl/tmp/tinymce_language_pack.zip
+  # wget http://tim.lino-framework.org/dl/tmp/tinymce_language_pack.zip
   # unzip tinymce_language_pack.zip
 

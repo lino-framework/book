@@ -23,9 +23,9 @@ their "portfolio" of "add-ons".
 For example 
 `Jinja <http://jinja.pocoo.org/>`_, 
 `South <http://south.aeracode.org/>`_, 
-`bootstrap <http://twitter.github.com/bootstrap/>`_, 
+`bootstrap <http://getbootstrap.com/>`_, 
 `jQuery <http://jquery.com/>`_, 
-`ExtJS <http://www.sencha.com/products/extjs/>`_, 
+`ExtJS <https://www.sencha.com/products/extjs/>`_, 
 `Memcached <http://memcached.org/>`_
 ...
 There are many add-ons to Django, and Lino is just one of them.
@@ -38,7 +38,7 @@ or copy and paste them from some other project.
 Lino applications are much more out-of-the-box.
 For example you don't need to write a single html template
 and you don't need to `design your URLs
-<https://docs.djangoproject.com/en/latest/topics/http/urls/>`_ 
+<https://docs.djangoproject.com/en/1.11/topics/http/urls/>`_ 
 because we've done this work for you.
 Of course you are less flexible. Letting others do some work 
 always means that you trust them to make certain decisions.

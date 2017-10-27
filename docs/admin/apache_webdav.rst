@@ -7,7 +7,7 @@ The :ref:`davlink` applet on the client's computer is used to
 automatically launch OpenOffice or MS-Word to open them.
 
 
-- `How To Set Up WebDAV With Apache2 On Debian Etch <http://www.howtoforge.com/setting-up-webdav-with-apache2-on-debian-etch>`_
+- `How To Set Up WebDAV With Apache2 On Debian Etch <https://www.howtoforge.com/setting-up-webdav-with-apache2-on-debian-etch>`_
 
 To allow WebDAV, add another `<Directory>` directive::
   
@@ -26,4 +26,4 @@ To allow WebDAV, add another `<Directory>` directive::
 Maybe also ``a2enmod dav_fs`` 
 
 
-http://www.howtoforge.com/setting-up-webdav-with-apache2-on-debian-etch
+https://www.howtoforge.com/setting-up-webdav-with-apache2-on-debian-etch

@@ -10,17 +10,17 @@ distributed with Lino.
 - :srcref:`/lino/utils/xmlgen/html.py` is a modified copy of the
   ElementTree toolkit, Copyright (c) 1999-2004 by Fredrik Lundh.
 
-- :srcref:`/media/extjs/Ext.ux.form.DateTime.js` :
+- :srcref:`/lino/modlib/extjs/static/extjs/Ext.ux.form.DateTime.js` :
   Copyright (c) 2008, Ing. Jozef Sakáloš.
 
-- :srcref:`/media/tinymce` by Andrew Mayorov et al.,
+- :srcref:`/lino/modlib/tinymce/static/` by Andrew Mayorov et al.,
   Copyright (c) 2008-2010 `BYTE-force <http://www.byte-force.com>`_.
 
-- :srcref:`/media/extjs/images/wikipedia` contains 
+- :srcref:`/lino/static/images/wikipedia/` contains 
   a file `external_text.png` which I downloaded from Wikipedia.
   Until now I couldn't find any copyright note.
   
-- :srcref:`/media/extjs/images/mjames` contains 
+- :srcref:`/lino/static/images/mjames` contains 
   a subset of Mark James' great and free 
   `Silk Icons <http://www.famfamfam.com/lab/icons/silk/>`_.
   
@@ -34,19 +34,19 @@ distributed with Lino.
   Copyright (c) 2009, Sean Creeley.
   Modifications by Luc Saffre.
 
-- :srcref:`/media/filterRow` :
+- :srcref:`/lino/modlib/extjs/static/filterRow` :
   Author: `Surinder singh (Matoo) 
   <http://www.sencha.com/forum/member.php?75710-Surinder-singh>`_ 
 
 - `Sexy Tooltips with Just CSS
-  <http://sixrevisions.com/css/css-only-tooltips/>`_ 
+  <https://www.webpagefx.com/blog/web-design/css-only-tooltips/>`_ 
   by Alexander Dawson (2010-06-16):
   The corresponding section in our
   :xfile:`lino.css`
   is inspired by this article, and the 
   files :file:`Critical.png`,  :file:`Help.png`,
   :file:`Info.png` and :file:`Warning.png`
-  in  :srcref:`/media/extjs`
+  in  :srcref:`/lino/modlib/extjs/static/extjs`
   are unchanged copies.
 
 - :mod:`lino.utils.pyuca` 

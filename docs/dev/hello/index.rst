@@ -149,7 +149,7 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino_startup, office, printing, staticfiles, system, users, xl
+  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino, office, printing, staticfiles, system, users, xl
   Apply all migrations: sessions
 Synchronizing apps without migrations:
   Creating tables...

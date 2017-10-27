@@ -176,9 +176,9 @@ customers. We will come back to this in :doc:`/dev/settings` and
 ..
     >>> from pprint import pprint
     >>> from django.conf import settings
-    >>> from atelier.utils import tuple_py2
-    >>> pprint(tuple_py2(settings.INSTALLED_APPS))
-    ('lino.modlib.lino_startup',
+    >>> # from atelier.utils import tuple_py2
+    >>> pprint(rmu(settings.INSTALLED_APPS))
+    ('lino',
      'django.contrib.staticfiles',
      'lino.modlib.about',
      'lino.modlib.jinja',
@@ -266,7 +266,7 @@ The output should be::
     Are you sure (y/n) ? [Y,n]?
     `initdb ` started on database /home/luc/projects/mysite/mysite/default.db.
     Operations to perform:
-      Synchronize unmigrated apps: about, jinja, staticfiles, lino_startup, extjs, bootstrap3
+      Synchronize unmigrated apps: about, jinja, staticfiles, lino, extjs, bootstrap3
       Apply all migrations: polls
     Synchronizing apps without migrations:
       Creating tables...
@@ -319,7 +319,7 @@ is easy and fun because you can write fixtures in Python.
   :file:`demo`".  The output should be::
 
     Operations to perform:
-      Synchronize unmigrated apps: about, jinja, staticfiles, polls, lino_startup, extjs, bootstrap3
+      Synchronize unmigrated apps: about, jinja, staticfiles, polls, lino, extjs, bootstrap3
       Apply all migrations: (none)
     Synchronizing apps without migrations:
       Creating tables...

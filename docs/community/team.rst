@@ -130,7 +130,7 @@ or `GitHub <https://github.com/sandeez>`__
 
 
 
-.. _TIM: http://tim.saffre-rumma.net/129.html
+.. _TIM: http://tim.lino-framework.org/129.html
 .. _Lino: http://www.lino-framework.org
 .. _Rumma&Ko: http://www.saffre-rumma.net
 .. _Django: http://www.djangoproject.org

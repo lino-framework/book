@@ -6,7 +6,7 @@ Internationalization
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_i18n
+    $ doctest docs/specs/i18n.rst
 
 
 

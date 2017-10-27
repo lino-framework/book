@@ -8,7 +8,7 @@
 from __future__ import unicode_literals
 
 import logging
-logger = logging.getLogger('lino.modlib.lino_startup.management.commands.dump2py')
+logger = logging.getLogger('lino.management.commands.dump2py')
 import os
 
 SOURCE_VERSION = 'None'

@@ -39,7 +39,7 @@ Here is our :xfile:`models.py` file:
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     `initdb demo` started on database .../default.db.
     Operations to perform:
-      Synchronize unmigrated apps: about, bootstrap3, extjs, jinja, lino_startup, staticfiles, tables
+      Synchronize unmigrated apps: about, bootstrap3, extjs, jinja, lino, staticfiles, tables
       Apply all migrations: (none)
     Synchronizing apps without migrations:
       Creating tables...
