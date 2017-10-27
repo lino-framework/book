@@ -31,8 +31,8 @@ A plugin can define database models, actors, actions, fixtures,
 template files, javascript snippets, and metadata.  None of these
 components are mandatory.
 
-The **metadata** about a plugin includes plugin attributes, menu
-commands, dependencies and is specified by defining a subclass of
+The **metadata** about a plugin (configuration values, menu commands,
+dependencies, ...) is specified by defining a subclass of
 :class:`Plugin <lino.core.plugin.Plugin>` in the :xfile:`__init__.py`
 file of your plugin.
 

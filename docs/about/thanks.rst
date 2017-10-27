@@ -16,11 +16,11 @@ distributed with Lino.
 - :srcref:`/lino/modlib/tinymce/static/` by Andrew Mayorov et al.,
   Copyright (c) 2008-2010 `BYTE-force <http://www.byte-force.com>`_.
 
-- :srcref:`/lino/modlib/lino_startup/static/images/wikipedia/` contains 
+- :srcref:`/lino/static/images/wikipedia/` contains 
   a file `external_text.png` which I downloaded from Wikipedia.
   Until now I couldn't find any copyright note.
   
-- :srcref:`/lino/modlib/lino_startup/static/images/mjames` contains 
+- :srcref:`/lino/static/images/mjames` contains 
   a subset of Mark James' great and free 
   `Silk Icons <http://www.famfamfam.com/lab/icons/silk/>`_.
   
