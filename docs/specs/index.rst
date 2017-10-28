@@ -71,6 +71,7 @@ Application-specific specs
    polly
    care
    projects/min
+   voga/index
    
    
 Technical stuff
