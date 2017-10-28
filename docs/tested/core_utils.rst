@@ -36,7 +36,7 @@ models which are subclass of a given class.
 .. rubric:: Getting only top-level models
 
 The `toplevel_only` option is used by
-:mod:`lino.modlib.plausibility`. For example the
+:mod:`lino.modlib.checkdata`. For example the
 :class:`AddressOwnerChecker
 <lino.modlib.addresses.mixins.AddressOwnerChecker>` needs to run only on
 Partner, not also on Person, Company and Household...

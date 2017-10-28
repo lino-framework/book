@@ -13,7 +13,7 @@ Checking for data problems
     >>> from lino.api.doctest import *
     >>> from django.core.management import call_command
 
-The :mod:`lino.modlib.plausibility` plugin adds support for defining
+The :mod:`lino.modlib.checkdata` plugin adds support for defining
 **data checkers**.
 
 A **data checker** is a piece of code which tests for
@@ -29,19 +29,20 @@ Data checkers
 =============
 
 In the web interface you can select :menuselection:`Explorer -->
-System --> Plausibility checkers` to see a table of all available
+System --> Data checkers` to see a table of all available
 checkers.
 
 .. 
-    >>> show_menu_path(plausibility.Checkers)
-    Explorer --> System --> Plausibility checkers
+    >>> show_menu_path(checkdata.Checkers)
+    Explorer --> System --> Data checkers
     
->>> rt.show(plausibility.Checkers)
+>>> rt.show(checkdata.Checkers)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================================= ==================================================
  value                             text
 --------------------------------- --------------------------------------------------
  printing.CachedPrintableChecker   Check for missing target files
- countries.PlaceChecker            Check plausibility of geographical places.
+ countries.PlaceChecker            Check data of geographical places.
  mixins.DupableChecker             Check for missing phonetic words
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
@@ -57,14 +58,14 @@ Showing all problems
 
 The demo database deliberately contains some data problems.
 In the web interface you can select :menuselection:`Explorer -->
-System --> Plausibility problems` to see them.
+System --> Data problems` to see them.
 
 ..
-    >>> show_menu_path(plausibility.AllProblems)
-    Explorer --> System --> Plausibility problems
+    >>> show_menu_path(checkdata.AllProblems)
+    Explorer --> System --> Data problems
 
 
->>> rt.show(plausibility.AllProblems)
+>>> rt.show(checkdata.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ================= ===================================== =================================================== ========================================
  Responsible       Database object                       Message                                             Checker
@@ -85,8 +86,8 @@ given type ("checker"). The following snippet simulates the situation
 of selecting the :class:`ConflictingEventsChecker
 <lino_xl.lib.cal.models.ConflictingEventsChecker>`.
 
->>> chk = plausibility.Checkers.get_by_value('cal.ConflictingEventsChecker')
->>> rt.show(plausibility.ProblemsByChecker, chk)
+>>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
+>>> rt.show(checkdata.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ===================================== ===================================================
  Responsible       Database object                       Message
@@ -103,7 +104,7 @@ See also :doc:`cal` and :doc:`holidays`.
 Running the :command:`checkdata` command
 ========================================
 
-The :mod:`lino.modlib.plausibility` module provides a Django admin
+The :mod:`lino.modlib.checkdata` module provides a Django admin
 command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
@@ -116,11 +117,12 @@ line using::
     $ python manage.py checkdata --list
 
 >>> call_command('checkdata', list=True)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================================= ==================================================
  value                             text
 --------------------------------- --------------------------------------------------
  printing.CachedPrintableChecker   Check for missing target files
- countries.PlaceChecker            Check plausibility of geographical places.
+ countries.PlaceChecker            Check data of geographical places.
  mixins.DupableChecker             Check for missing phonetic words
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
