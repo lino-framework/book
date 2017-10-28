@@ -297,8 +297,8 @@ The demo datebase contains two appointments on Ash Wednesday 2017.
 These conflicting calendar events are globally visible as data
 problems (see :doc:`checkdata`).
 
->>> chk = plausibility.Checkers.get_by_value('cal.ConflictingEventsChecker')
->>> rt.show(plausibility.ProblemsByChecker, chk)
+>>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
+>>> rt.show(checkdata.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ================================ ====================================================
  Responsible       Database object                  Message

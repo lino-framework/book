@@ -6,7 +6,7 @@ Some internals about Generic Foreign Keys
 
 .. to test just this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_gfks
+    $ doctest docs/specs/gfks.rst
 
     >>> from lino import startup
     >>> startup('lino_book.projects.min9.settings.doctests')
@@ -27,7 +27,7 @@ List of models which inherit from :class:`Controllable
 <lino.modlib.gfks.mixins.Controllable>`:
 
 >>> print(' '.join([fmn(m) for m in rt.models_by_base(Controllable)]))
-cal.Event cal.Task comments.Comment excerpts.Excerpt notes.Note notify.Message plausibility.Problem
+cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Note notify.Message
 
 >>> obj = contacts.Person.objects.all()[0]
 >>> gfk2lookup(notes.Note.owner, obj)

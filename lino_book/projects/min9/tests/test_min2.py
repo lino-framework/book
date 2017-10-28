@@ -65,7 +65,7 @@ class QuickTest(RemoteAuthTestCase):
         excerpts.Excerpt
         notes.Note
         notify.Message
-        plausibility.Problem
+        checkdata.Problem
         """.split()
         self.assertEqual(found, expected)
 

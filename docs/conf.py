@@ -53,6 +53,7 @@ help_texts_builder_targets = {
     'lino_avanti.': 'lino_avanti.lib.avanti',
     'lino_cosi.': 'lino_cosi.lib.cosi',
     'lino_care.': 'lino_care.lib.care',
+    'lino_voga.': 'lino_voga.lib.voga',
 }
 
 if False:

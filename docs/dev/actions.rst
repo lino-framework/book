@@ -1,8 +1,8 @@
 .. _dev.actions:
 
-=====================
-The actions reference
-=====================
+=======================
+Introduction to actions
+=======================
 
 This section tries to explain everything you need to know about
 actions.
@@ -22,15 +22,16 @@ An **action** in Lino is something a user can request to do.  Actions
 are visible to the end-users as menu items, toolbar buttons or
 clickable chunks of text at arbitrary places.
 
-For example the :class:`ShowTable` action opens a window showing a
-grid on a given table.  Most items of the main menu are
-:class:`ShowTable` actions.  Or the :class:`DeleteSelected` action is
-visible in the toolbars of the grid and the detail windows and in the
-context menu on a grid row.
-
 An **action request** is when a user "actually clicked on that
 button", i.e. requested to run a given action on a given set of
 database rows.
+
+For example the :class:`ShowTable` action opens a window showing a
+grid on a given table.  Most items of the main menu are
+:class:`ShowTable` actions.
+
+Or the :class:`DeleteSelected` action is visible in the toolbars of
+the grid and the detail windows and in the context menu on a grid row.
 
 **Standard actions** are installed automatically on every table when
 Lino starts up.

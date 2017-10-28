@@ -11,46 +11,6 @@ This document describes Lino's innovative way of providing
 application-specific demo data.
 
 
-Standard Django admin commands
-==============================
-
-Here are some standard Django admin commands that you should know.
-
-.. management_command:: dumpdata
-
-    Output all data in the database (or some tables) to a serialized
-    stream. The default will write to `stdout`, but you usually
-    redirect this into a file.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#dumpdata>`__
-    
-    You might theoretically use :manage:`dumpdata` for writing a
-    Python fixture, but Lino's preferred equivalent is
-    :manage:`dump2py`.
-
-.. management_command:: flush
-
-    Removes all data from the database and re-executes any
-    post-synchronization handlers. The migrations history is not
-    cleared.  If you would rather start from an empty database and
-    re-run all migrations, you should drop and recreate the database
-    and then run :manage:`migrate` instead.  See the `Django
-    documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#flush>`__
-    
-    
-.. management_command:: loaddata
-
-    Loads the contents of the named fixtures into the database.
-    See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#loaddata>`__.
-    
-    Both :manage:`loaddata` and :manage:`initdb` can be used to load
-    fixtures into a database.  The difference is that :manage:`loaddata`
-    *adds* data to your database while :manage:`initdb` first clears
-    (initializes) your database.
-
-
-
 The :manage:`initdb` and :manage:`prep` commands
 -------------------------------------------------------
 
@@ -74,9 +34,9 @@ The :manage:`initdb` command performs three actions in one:
 - it flushes the database specified in your :xfile:`settings.py`,
   i.e. issues a ``DROP TABLE`` for every table used by your application.
  
-- then runs Django's `migrate` command to re-create all tables,
+- then runs Django's :manage:`migrate` command to re-create all tables,
 
-- and finally runs Django's `loaddata` command to load the specified
+- and finally runs Django's :manage:`loaddata` command to load the specified
   fixtures.
 
 So the above line is functionally equivalent to the following plain

@@ -58,7 +58,7 @@ function install_them_all {
     install xl lino-framework xl
     install cosi lino-framework cosi
     install noi lino-framework noi
-    install welfare lino-framework welfare
+    # install welfare lino-framework welfare
     install voga lino-framework voga
     install avanti lino-framework avanti
     install vilma lino-framework vilma

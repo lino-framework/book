@@ -21,7 +21,7 @@ SETUP_INFO = dict(
         'icalendar',
         'lino_cosi',
         'lino_noi',
-        # 'lino_voga',
+        'lino_voga',
         # 'lino_welfare',
         'lino_care',
         'lino_vilma',
@@ -250,6 +250,13 @@ lino_book.projects.sendchanges
 lino_book.projects.tables
 lino_book.projects.tables.fixtures
 lino_book.projects.vtables
+lino_book.projects.edmund
+lino_book.projects.edmund.settings
+lino_book.projects.edmund.settings.fixtures
+lino_book.projects.roger
+lino_book.projects.roger.settings
+lino_book.projects.roger.settings.fixtures
+lino_book.projects.roger.tests
 """.splitlines() if n])
 
 

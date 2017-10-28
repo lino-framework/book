@@ -16,8 +16,11 @@ ns.setup_from_tasks(
         'docs/api/lino_vilma.*',
         'docs/api/lino_tera.*',
         'docs/api/lino_care.*',
+        'docs/api/lino_voga.*',
         'docs/api/lino_book.*'],
     demo_projects=[
+        'lino_book/projects/roger',
+        'lino_book/projects/edmund',
         'lino_book/projects/watch',
         'lino_book/projects/docs',
         'lino_book/projects/belref',

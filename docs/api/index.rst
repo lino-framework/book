@@ -160,6 +160,8 @@ Lino Voga
   from lino_voga import SETUP_INFO
   print(SETUP_INFO['long_description'])
 
+.. automodule:: lino_voga
+                
 
 .. _welfare:
 

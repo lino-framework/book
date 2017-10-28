@@ -30,13 +30,13 @@ use either the :doc:`inject_field <inject_field>` or :ref:`BabelField
 plugin which uses them), then Django migrations won't work.
 
 You might still want to use the Django approach because Lino
-migrations have one inevitable **disadvantage**: they can take half an
-hour to run. Users must stop working in your application during that
-time.  There are systems where half an hour downtime for an upgrade is
-not acceptable.
+migrations have one inevitable **disadvantage**: they are slower than
+:manage:`migrate`. Users must stop working in your application during
+that time.  There are systems where half an hour downtime for an
+upgrade is not acceptable.
 
 If you *do* need to use Django migrations in your Lino application,
-then you may not use :doc:`inject_field <inject_field>` and
+then you cannot use :doc:`inject_field <inject_field>` and
 :ref:`BabelField <mldbc>`.
 
 

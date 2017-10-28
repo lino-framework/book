@@ -51,7 +51,7 @@ class QuickTest(RemoteAuthTestCase):
         Company = rt.modules.contacts.Company
         Address = rt.modules.addresses.Address
         Place = rt.modules.countries.Place
-        Problem = rt.modules.plausibility.Problem
+        Problem = rt.modules.checkdata.Problem
         eupen = Place.objects.get(name="Eupen")
         ar = rt.modules.contacts.Companies.request()
         self.assertEqual(Address.ADDRESS_FIELDS, set([
@@ -64,7 +64,7 @@ class QuickTest(RemoteAuthTestCase):
             self.assertEqual(got, expected)
 
         obj = create(Company, name="Owner with empty address")
-        obj.check_plausibility(ar, fix=False)
+        obj.check_data(ar, fix=False)
         assert_check(obj, '')
         obj.delete()
 
@@ -77,14 +77,14 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(Address.objects.count(), 0)
 
         assert_check(doe, '')  # No problems yet since not checked
-        doe.check_plausibility(ar, fix=False)
+        doe.check_data(ar, fix=False)
         assert_check(
             doe, '(\u2605) Owner with address, but no address record.')
 
         addr = doe.get_primary_address()
         self.assertEqual(addr, None)
 
-        doe.check_plausibility(ar, fix=True)
+        doe.check_data(ar, fix=True)
         assert_check(doe, '')  # problem has been fixed
         addr = doe.get_primary_address()
         self.assertEqual(Address.objects.count(), 1)
@@ -97,7 +97,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(addr, None)
         self.assertEqual(Address.objects.count(), 1)
 
-        doe.check_plausibility(ar, fix=False)
+        doe.check_data(ar, fix=False)
         assert_check(doe, '(\u2605) Unique address is not marked primary.')
 
         Address.objects.all().delete()
@@ -105,11 +105,11 @@ class QuickTest(RemoteAuthTestCase):
         addr = doe.get_primary_address()
         self.assertEqual(addr, None)
 
-        doe.check_plausibility(ar, fix=False)
+        doe.check_data(ar, fix=False)
         assert_check(
             doe, '(\u2605) Owner with address, but no address record.')
 
-        doe.check_plausibility(ar, fix=True)
+        doe.check_data(ar, fix=True)
         assert_check(doe, '')  # problem has been fixed
 
         # next problem : owner differs from primary address
@@ -118,14 +118,14 @@ class QuickTest(RemoteAuthTestCase):
         doe.full_clean()
         self.assertEqual(doe.city, None)
         doe.save()
-        doe.check_plausibility(ar, fix=False)
+        doe.check_data(ar, fix=False)
         self.assertEqual(Address.objects.count(), 1)
         assert_check(
             doe, "Primary address differs from owner address "
             "(city:Eupen->None, zip_code:4700->).")
         # Lino does repair this automatically since we don't know
         # which data is correct.
-        doe.check_plausibility(ar, fix=True)
+        doe.check_data(ar, fix=True)
         self.assertEqual(Address.objects.count(), 1)
         self.assertEqual(doe.city, None)
         addr = doe.get_primary_address()
@@ -143,5 +143,5 @@ class QuickTest(RemoteAuthTestCase):
         addr.id = None
         addr.save()
         self.assertEqual(Address.objects.count(), 2)
-        doe.check_plausibility(ar, fix=False)
+        doe.check_data(ar, fix=False)
         assert_check(doe, "Multiple primary addresses.")

@@ -251,7 +251,7 @@ Models and views
     
 .. class:: EnrolmentChecker
            
-    Checks for the following plausibility problems:
+    Checks for the following data problems:
 
     - :message:`More than 2 times absent.`
 

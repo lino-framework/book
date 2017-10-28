@@ -18,7 +18,7 @@ Menus
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Office : My Comments, My Notification messages, My expiring uploads, My Uploads, Plausibility problems assigned to me, My Excerpts
+- Office : My Comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Calendar : Calendar, My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning
@@ -34,7 +34,7 @@ Menus
   - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars
   - Activities : Topics, Timetable Slots
 - Explorer :
-  - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Plausibility checkers, Plausibility problems, All dashboard widgets
+  - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Office : Comments, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts
@@ -47,7 +47,7 @@ Menus
 
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Office : My expiring uploads, My Uploads, Plausibility problems assigned to me, My Excerpts
+- Office : My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
 
@@ -98,6 +98,8 @@ Each window is **viewable** for a given set of user types.
 - cal.Tasks.detail : visible for staff admin
 - cal.Tasks.insert : visible for staff admin
 - changes.Changes.detail : visible for admin
+- checkdata.Checkers.detail : visible for admin
+- checkdata.Problems.detail : visible for teacher user staff admin
 - clients.ClientContactTypes.detail : visible for staff admin
 - comments.CommentTypes.detail : visible for staff admin
 - comments.CommentTypes.insert : visible for staff admin
@@ -155,8 +157,6 @@ Each window is **viewable** for a given set of user types.
 - languages.Languages.detail : visible for staff admin
 - lists.Lists.detail : visible for user staff admin
 - lists.Lists.insert : visible for user staff admin
-- plausibility.Checkers.detail : visible for admin
-- plausibility.Problems.detail : visible for teacher user staff admin
 - polls.AnswerRemarks.detail : visible for user staff admin
 - polls.AnswerRemarks.insert : visible for user staff admin
 - polls.ChoiceSets.detail : visible for staff admin

@@ -2,31 +2,29 @@
    
 .. _dev.models:
 
-==================================
-An introduction to Django models
-==================================
+======================
+Introduction to models
+======================
 
 .. contents::
     :depth: 1
     :local:
 
 
-Lino applications fully use Django's ORM.
+Lino applications fully use Django's ORM.  In Django, every *database
+table* is described by a subclass of :class:`Model`.  Every row of the
+table is an *instance* of its corresponding :class:`Model` class.  The
+models of an application are defined in a file named
+:xfile:`models.py`.
 
 In this tutorial we are going to use the
-:mod:`lino_book.projects.tables` demo application:
+:mod:`lino_book.projects.tables` demo application.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.tables.settings')
 >>> from lino.api.doctest import *
     
-
-In Django, any subclass of :class:`Model` describes a *database
-table*.  Every row of the table is an *instance* of its corresponding
-*model*.
-
-Models are defined in a file whose name should be :xfile:`models.py`.
-Here is our :xfile:`models.py` file:
+Here is the :xfile:`models.py` file of that application:
 
 .. literalinclude:: ../../lino_book/projects/tables/models.py
 
@@ -57,9 +55,8 @@ You can create a new row by saying:
 >>> from lino_book.projects.tables.models import Author
 >>> obj = Author(first_name="Joe", last_name="Doe")
 
-That row is not yet stored in the database, but you can use it.
-
-For example you can access the individual fields:
+That row is not yet stored in the database, but you can already use
+it.  For example you can access the individual fields:
 
 >>> print(obj.first_name)
 Joe
@@ -79,24 +76,50 @@ You can change the value of a field:
 Woe, Joe
 
 
-The :attr:`objects` class attribute of a model
-is used for certain
-operations which require a *queryset*.
+Every :class:`Model` has a class attribute :attr:`objects` which is is
+used for operations which access the database.
 
+For example you can *count* how many rows are stored in the database.
+Or you can loop over them:
 
 >>> Author.objects.count()
 3
+>>> for a in Author.objects.all():
+...     print(a)
+Adams, Douglas
+Camus, Albert
+Huttner, Hannes
 
->>> Author.objects.all()
-<QuerySet [Author #1 ('Adams, Douglas'), Author #2 ('Camus, Albert'), Author #3 ('Huttner, Hannes')]>
-
+In order to store our object to the database, we call its :meth:`save`
+method::
 
 >>> obj.save()
->>> Author.objects.all()
-<QuerySet [Author #1 ('Adams, Douglas'), Author #2 ('Camus, Albert'), Author #3 ('Huttner, Hannes'), Author #4 ('Woe, Joe')]>
 
+Our database now knows a new author, Joe Woe:
+
+>>> Author.objects.count()
+4
+>>> for a in Author.objects.all():
+...     print(a)
+Adams, Douglas
+Camus, Albert
+Huttner, Hannes
+Woe, Joe
+
+
+The :meth:`all` method of the :attr:`objects` of a :class:`Model`
+returns what Django calls a **queryset**.  A queryset is a volatile
+Python object which describes an ``SQL SELECT`` statement. You can see
+the SQL if you want:
+
+>>> qs = Author.objects.all()
+>>> print(qs.query)
+SELECT "tables_author"."id", "tables_author"."first_name", "tables_author"."last_name", "tables_author"."country" FROM "tables_author"
 
 >>> qs = Author.objects.filter(first_name="Joe")
+>>> print(qs.query)
+SELECT "tables_author"."id", "tables_author"."first_name", "tables_author"."last_name", "tables_author"."country" FROM "tables_author" WHERE "tables_author"."first_name" = Joe
+
 
 >>> qs.count()
 1
@@ -104,14 +127,12 @@ operations which require a *queryset*.
 <QuerySet [Author #4 ('Woe, Joe')]>
 
 
-The :attr:`_meta`
-
+Before leaving, we tidy up by removing Joe Woe from our demo database:
 
 >>> obj.delete()
 >>> Author.objects.count()
 3
-  
- 
+
 
 Tim Kholod wrote a nice introduction for beginners: `The simple way to
 understand Django models <https://arevej.me/django-models/>`__

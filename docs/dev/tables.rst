@@ -1,7 +1,7 @@
 .. _lino.tutorial.tables:
 
 =========================
-An introduction to Tables
+Introduction to tables
 =========================
 
 ..
@@ -12,29 +12,9 @@ An introduction to Tables
 .. contents::
     :depth: 1
     :local:
-       
 
 What is a table?
 ================
-
-A table, in general, is a rectangular thing divided into rows and
-columns, used to display data.  For example, here is how the "Authors"
-table of a database might look in a printed document:
-
-============ =========== =========
- First name   Last name   Country
------------- ----------- ---------
- Douglas      Adams       UK
- Albert       Camus       FR
- Hannes       Huttner     DE
-============ =========== =========
-
-This table has three **rows** and three **columns**.
-Every column has a **header**.
-
-
-Models, tables and views
-========================
 
 In a Lino application you don't write only your *models* in Python,
 but also something we call **tables**.  While your *models* describe
@@ -43,41 +23,37 @@ data is to be *presented to users in tabular form*.
 
 Roughly speaking, Lino's "tables" are the equivalent of what Django
 calls "views". With Lino you don't need to write views because Lino
-writes them for you.
-
-(To be complete, tables correspond only to one class of Django's
-views, sometimes referred to as "tabular" or "list" views. The other
-class of views are "detail" views, for which you are going to define
-*Layouts*, we'll talk about these later.)
-
-The fact that you can define more than one table per model is a
-fundamental difference from Django's concept of the `ModelAdmin` class
-and `Model._meta` options.
+writes them for you.  Actually a Lino table corresponds only to one
+class of Django's views, sometimes referred to as "tabular" or "list"
+views. The other class of views are "detail" views, for which you are
+going to define :doc:`Layouts <layouts/index>` (we'll talk about these
+later).
 
 
-Database tables
-===============
+Model tables
+============
 
-A **database table** is a table which gets its rows from some database
-model.
+A **model table** is a table which gets its rows from the database
+using a :class:`Model`.  The mandatory :attr:`model
+<lino.core.dbtables.Table.model>` attribute of a model table
+specifies that model.
 
-The :attr:`model <lino.core.dbtables.Table.model>` attribute of a
-database table spcifies this model.
+Much information about your table is automatically extracted from the
+model: the **columns** correspond to the *fields* of your database
+model. The **header** of every column is the `verbose_name` of its
+field. The values in a column are of same **data type** for each
+row. So Lino knows all these things from your models.
 
+But here is something you cannot express on a Django model: *which*
+columns are to be listed. This is defined by the :attr:`column_names
+<lino.core.tables.AbstractTable.column_names>` attribute, a simple
+string with a space-separated list of field names.
 
-For every database model there should be
-at least one table. Lino will generate a default table for models for
-which there is no table at all.  Note that there may be *more than one
-table* for a given model.
-
-The **columns** of a table correspond to the *fields* of your database
-model. Every column has a **header** which is the `verbose_name` of
-that field. The values in a column are of same **data type** for each
-row. So Lino knows all these things. Only one information is missing:
-the :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
-attribute defines *which* columns are to be listed, and in which
-order. It is a simple string with a space-separated list of field
-names.
+For every database model there should be at least one table.  Lino
+will generate a default table for models for which there is no table
+at all.  Note that there may be *more than one table* for a given
+model. That's a fundamental difference from Django's concept of the
+`ModelAdmin` class and `Model._meta` options.
 
 The **rows** of a table can be **sorted** and **filtered**. These are
 things which are done in Django on a QuerySet.  Lino doesn't reinvent
@@ -92,7 +68,7 @@ queryset. For example we set :attr:`hide_sums
 table because otherwise Lino would display a sum for the "published"
 column.
 
-
+Besides model tables, Lino also has *virtual tables*.
 
 
 Exercise
