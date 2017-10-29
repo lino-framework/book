@@ -118,7 +118,7 @@ Here is the output of :func:`walk_menu_items
 <lino.api.doctests.walk_menu_items>` for this database:
 
 >>> walk_menu_items('rolf', severe=False)
-... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Kontakte --> Personen : 73
 - Kontakte --> Organisationen : 32
 - Kontakte --> Partnerlisten : 9
@@ -236,6 +236,6 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Büro --> Upload-Bereiche : 1
 - Explorer --> Büro --> E-Mail-Ausgänge : 1
 - Explorer --> Büro --> Anhänge : 1
-- Explorer --> Büro --> Auszüge : 1
+- Explorer --> Büro --> Auszüge : ...
 <BLANKLINE>
 
