@@ -64,7 +64,7 @@ The database structure
  courses.Teacher            courses.Teachers               44        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
- excerpts.Excerpt           excerpts.Excerpts              11        1
+ excerpts.Excerpt           excerpts.Excerpts              11        ...
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        142
@@ -97,7 +97,7 @@ The database structure
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 24        97
  sepa.Account               sepa.Accounts                  6         38
- sessions.Session           sessions.SessionTable          3         18
+ sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0

@@ -47,25 +47,28 @@ check whether we get the expected response.
 
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
->>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=1)
+>>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=11)
+
+>>> obj.printed_by is None
+True
 
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
-appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-135.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
 
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/cache/appypdf/sales.VatProductInvoice-125.pdf
+/media/cache/appypdf/sales.VatProductInvoice-135.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.VatProductInvoice-125.pdf)
+Your printable document (filename sales.VatProductInvoice-135.pdf)
 should now open in a new browser window. If it doesn't, please consult
 <a href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system
 administrator.
 
 Note that we must clear the print cache because leaving the excerpt
-there would break a test case in :doc:`general`.
+there would break a test case in :doc:`db_roger`.
 
 >>> obj.clear_cache()
 
