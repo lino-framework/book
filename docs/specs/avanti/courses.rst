@@ -39,8 +39,8 @@ Topics
 ==== ================== ================== ==================
 <BLANKLINE>
 
->>> obj = courses.Topic.objects.get(pk=2)
->>> rt.show('courses.CoursesByTopic', obj)
+>>> language_courses = courses.Topic.objects.get(pk=2)
+>>> rt.show('courses.CoursesByTopic', language_courses)
 ================================================== =========== ============= ================== =========== ============= =========== ========
  overview                                           When        Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
@@ -50,7 +50,6 @@ Topics
 ================================================== =========== ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 
-
 Note that :class:`CoursesByTopic <lino_xl.lib.courses.CoursesByTopic>`
 is a table with a remote master key:
 
@@ -59,7 +58,21 @@ is a table with a remote master key:
 >>> print(courses.CoursesByTopic.master_key)
 line__topic
 
-     
+
+>>> rt.show('courses.LinesByTopic', language_courses)
+==================== ====================== ====================== ====================== ================== ============ ===================== ===================== ============ ==============
+ Reference            Designation            Designation (de)       Designation (fr)       Topic              Layout       Calendar entry type   Manage presences as   Recurrency   Repeat every
+-------------------- ---------------------- ---------------------- ---------------------- ------------------ ------------ --------------------- --------------------- ------------ --------------
+                      Alphabetisation        Alphabetisation        Alphabetisation        Language courses   Activities   Lesson                Pupil                 weekly       1
+                      German A1+             German A1+             German A1+             Language courses   Activities   Lesson                Pupil                 weekly       1
+                      German A2              German A2              German A2              Language courses   Activities   Lesson                Pupil                 weekly       1
+                      German A2 (women)      German A2 (women)      German A2 (women)      Language courses   Activities   Lesson                Pupil                 weekly       1
+                      German for beginners   German for beginners   German for beginners   Language courses   Activities   Lesson                Pupil                 weekly       1
+ **Total (5 rows)**                                                                                                                                                                 **5**
+==================== ====================== ====================== ====================== ================== ============ ===================== ===================== ============ ==============
+<BLANKLINE>
+
+
 
 Who can modify courses
 ======================
