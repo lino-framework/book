@@ -13,7 +13,7 @@ User roles in Lino Avanti
 
     
 Menus
------
+=====
 
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -80,7 +80,7 @@ Each window is **viewable** for a given set of user types.
 >>> print(analyzer.show_window_permissions())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - about.About.show : visible for all
-- about.Models.detail : visible for teacher user staff admin
+- about.Models.detail : visible for teacher user auditor coordinator staff admin
 - avanti.Clients.detail : visible for user staff admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
@@ -99,7 +99,7 @@ Each window is **viewable** for a given set of user types.
 - cal.Tasks.insert : visible for staff admin
 - changes.Changes.detail : visible for admin
 - checkdata.Checkers.detail : visible for admin
-- checkdata.Problems.detail : visible for teacher user staff admin
+- checkdata.Problems.detail : visible for teacher user auditor coordinator staff admin
 - clients.ClientContactTypes.detail : visible for staff admin
 - comments.CommentTypes.detail : visible for staff admin
 - comments.CommentTypes.insert : visible for staff admin
@@ -120,8 +120,8 @@ Each window is **viewable** for a given set of user types.
 - courses.Activities.insert : visible for teacher user coordinator staff admin
 - courses.Activities.print_presence_sheet : visible for teacher user auditor coordinator staff admin
 - courses.Activities.print_presence_sheet_html : visible for teacher user auditor coordinator staff admin
-- courses.Enrolments.detail : visible for teacher user staff admin
-- courses.Enrolments.insert : visible for teacher user staff admin
+- courses.Enrolments.detail : visible for teacher user auditor coordinator staff admin
+- courses.Enrolments.insert : visible for teacher user coordinator staff admin
 - courses.EnrolmentsByCourse.insert : visible for teacher user coordinator staff admin
 - courses.EnrolmentsByPupil.insert : visible for user coordinator staff admin
 - courses.Lines.detail : visible for user auditor coordinator staff admin
@@ -146,8 +146,8 @@ Each window is **viewable** for a given set of user types.
 - cv.StudiesByPerson.insert : visible for user staff admin
 - cv.StudyTypes.detail : visible for staff admin
 - cv.StudyTypes.insert : visible for staff admin
-- cv.Trainings.detail : visible for teacher user staff admin
-- cv.Trainings.insert : visible for teacher user staff admin
+- cv.Trainings.detail : visible for user staff admin
+- cv.Trainings.insert : visible for user staff admin
 - excerpts.ExcerptTypes.detail : visible for staff admin
 - excerpts.ExcerptTypes.insert : visible for staff admin
 - excerpts.Excerpts.detail : visible for user coordinator staff admin
@@ -178,8 +178,11 @@ Each window is **viewable** for a given set of user types.
 - uploads.UploadsByClient.insert : visible for user staff admin
 - uploads.UploadsByController.insert : visible for teacher user coordinator staff admin
 - users.AllUsers.send_welcome_email : visible for admin
-- users.Users.change_password : visible for teacher user staff admin
-- users.Users.detail : visible for teacher user staff admin
-- users.Users.insert : visible for teacher user staff admin
+- users.Users.change_password : visible for teacher user auditor coordinator staff admin
+- users.Users.detail : visible for teacher user auditor coordinator staff admin
+- users.Users.insert : visible for teacher user coordinator staff admin
 - users.UsersOverview.sign_in : visible for all
 <BLANKLINE>
+
+
+
