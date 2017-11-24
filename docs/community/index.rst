@@ -6,9 +6,14 @@ Community
 
 Lino has a growing community made up of many different people.  The
 work of **powering the community** is currently being done by
-:doc:`rumma`.  You can meet **individual partners** on the :doc:`Lino
-Team <team>` page.  You can meet **partner organizations** on the
-:doc:`Hosting providers <hosters>` page.
+:doc:`rumma`.
+You can meet individual contributors on
+the :doc:`Lino Team <team>` page.
+You can meet partner organizations on the
+:doc:`Hosting providers <hosters>`
+and
+:doc:`Development providers <hosters>`
+pages.
      
 .. _get_involved:
 
