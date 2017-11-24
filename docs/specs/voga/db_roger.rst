@@ -34,7 +34,7 @@ The database structure
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
  cal.EventPolicy            cal.EventPolicies              19        6
- cal.EventType              cal.EventTypes                 17        8
+ cal.EventType              cal.EventTypes                 18        9
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 4         3
  cal.Priority               cal.Priorities                 5         4
@@ -44,7 +44,7 @@ The database structure
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         20
+ checkdata.Problem          checkdata.Problems             6         19
  contacts.Company           contacts.Companies             27        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              25        103

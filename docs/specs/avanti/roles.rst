@@ -82,6 +82,7 @@ Each window is **viewable** for a given set of user types.
 - about.About.show : visible for all
 - about.Models.detail : visible for teacher user auditor coordinator staff admin
 - avanti.Clients.detail : visible for user staff admin
+- avanti.Clients.merge_row : visible for admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
 - cal.EventTypes.detail : visible for staff admin
@@ -108,11 +109,13 @@ Each window is **viewable** for a given set of user types.
 - comments.CommentsByRFC.insert : visible for user staff admin
 - contacts.Companies.detail : visible for user staff admin
 - contacts.Companies.insert : visible for user staff admin
+- contacts.Companies.merge_row : visible for admin
 - contacts.Partners.detail : visible for user staff admin
 - contacts.Partners.insert : visible for user staff admin
 - contacts.Persons.create_household : visible for user staff admin
 - contacts.Persons.detail : visible for user staff admin
 - contacts.Persons.insert : visible for user staff admin
+- contacts.Persons.merge_row : visible for admin
 - countries.Countries.detail : visible for staff admin
 - countries.Countries.insert : visible for staff admin
 - countries.Places.detail : visible for staff admin

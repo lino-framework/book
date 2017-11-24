@@ -246,7 +246,8 @@ Every 2nd month
 ---- ------------- ------------------ ------------------
  1    Holidays      Feiertage          Jours fériés
  2    Meeting       Versammlung        Réunion
- 3    Lesson        Lesson             Lesson
+ 3    Internal      Internal           Internal
+ 4    Lesson        Lesson             Lesson
 ==== ============= ================== ==================
 <BLANKLINE>
 
@@ -294,8 +295,8 @@ Conflicting events
 ==================
 
 The demo datebase contains two appointments on Ash Wednesday 2017.
-These conflicting calendar events are globally visible as data
-problems (see :doc:`checkdata`).
+These conflicting calendar events are visible as data problems (see
+:doc:`checkdata`).
 
 >>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(checkdata.ProblemsByChecker, chk)
@@ -325,6 +326,14 @@ Ash Wednesday (01.03.2017)
 <BLANKLINE>
 
 
+Transparent events
+==================
+
+The entry type "Internal" is marked "transparent".
+
+>>> internal = cal.EventType.objects.get(id=3)
+>>> internal.transparent
+True
 
 
 Other
@@ -382,15 +391,19 @@ Reference
     things in common, e.g. they are displayed in the same colour in
     the calendar panel.
 
+    .. attribute:: event_label
+
+        Default text for summary of new entries.
+           
     .. attribute:: is_appointment
 
-        Whether entries of this type should be considered
-        "appointments" (i.e. whose time and place have been agreed
-        upon with other users or external parties).
+        Whether entries of this type are considered as "appointments"
+        (i.e. whose time and place have been agreed upon with other
+        users or external parties).
 
         Certain tables show only entries whose type has the
         `is_appointment` field checked.  See :attr:`show_appointments
-        <lino_xl.lib.cal.ui.Entries.show_appointments>`.
+        <Entries.show_appointments>`.
 
     .. attribute:: max_days
 
@@ -405,10 +418,10 @@ Reference
 
         How many conflicting events should be tolerated.
 
-    .. attribute:: event_label
+    .. attribute:: transparent
 
-        Default text for summary of new entries.
-           
+        Allow entries of this type to conflict with other events.
+        
            
 .. class:: GuestRole
            
@@ -650,8 +663,7 @@ Reference
         of events.
 
         An appointment is an event whose *event type* has
-        :attr:`appointment <lino_xl.lib.cal.EventType.appointment>`
-        checked.
+        :attr:`appointment <EventType.appointment>` checked.
 
 
 .. class:: ConflictingEvents

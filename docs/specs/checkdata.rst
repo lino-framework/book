@@ -67,13 +67,12 @@ System --> Data problems` to see them.
 
 >>> rt.show(checkdata.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ===================================== =================================================== ========================================
- Responsible       Database object                       Message                                             Checker
------------------ ------------------------------------- --------------------------------------------------- ----------------------------------------
- Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.                Check for conflicting calendar entries
- Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting calendar entries
- Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).   Check for conflicting calendar entries
-================= ===================================== =================================================== ========================================
+================= ===================================== ========================================================= ========================================
+ Responsible       Database object                       Message                                                   Checker
+----------------- ------------------------------------- --------------------------------------------------------- ----------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with Petit-déjeuner (31.10.2014 10:20).   Check for conflicting calendar entries
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).         Check for conflicting calendar entries
+================= ===================================== ========================================================= ========================================
 <BLANKLINE>
 
 
@@ -89,13 +88,12 @@ of selecting the :class:`ConflictingEventsChecker
 >>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(checkdata.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ===================================== ===================================================
+================= ===================================== =========================================================
  Responsible       Database object                       Message
------------------ ------------------------------------- ---------------------------------------------------
- Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with 2 other events.
- Rando Roosi       *Dinner (31.10.2014 09:40)*           Event conflicts with All Souls' Day (31.10.2014).
+----------------- ------------------------------------- ---------------------------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*         Event conflicts with Petit-déjeuner (31.10.2014 10:20).
  Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*   Event conflicts with All Souls' Day (31.10.2014).
-================= ===================================== ===================================================
+================= ===================================== =========================================================
 <BLANKLINE>
 
 See also :doc:`cal` and :doc:`holidays`.
@@ -108,8 +106,8 @@ The :mod:`lino.modlib.checkdata` module provides a Django admin
 command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
-Found 3 and fixed 0 data problems in Calendar entries.
-Done 5 checkers, found 3 and fixed 0 problems.
+Found 2 and fixed 0 data problems in Calendar entries.
+Done 5 checkers, found 2 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -134,8 +132,8 @@ line using::
 
 
 >>> call_command('checkdata', 'cal.')
-Found 3 and fixed 0 data problems in Calendar entries.
-Done 1 checkers, found 3 and fixed 0 problems.
+Found 2 and fixed 0 data problems in Calendar entries.
+Done 1 checkers, found 2 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):
