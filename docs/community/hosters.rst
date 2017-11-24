@@ -1,3 +1,4 @@
+.. _hosters:
 .. _hosting_provider:
 
 ======================
