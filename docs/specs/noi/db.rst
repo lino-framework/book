@@ -29,7 +29,7 @@ This document describes the database structure.
  cal.Calendar                       cal.Calendars                6         1
  cal.Event                          cal.OneEvent                 26        113
  cal.EventPolicy                    cal.EventPolicies            19        6
- cal.EventType                      cal.EventTypes               17        2
+ cal.EventType                      cal.EventTypes               18        3
  cal.Guest                          cal.Guests                   6         0
  cal.GuestRole                      cal.GuestRoles               4         0
  cal.Priority                       cal.Priorities               5         4
