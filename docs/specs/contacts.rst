@@ -188,6 +188,22 @@ persons and for organizations.
 
 
 
+Exporting contacts as vcard files
+=================================
+
+.. class:: ExportVCardFile
+
+    Download all records as a .vcf file which you can import to another
+    contacts application.
+
+    This action exists on every list of partners when your
+    application has :attr:`use_vcard_export
+    <lino_xl.lib.contacts.Plugin.use_vcard_export>` set to `True`.
+
+
+
+
+
 Reference
 =========
 
@@ -197,6 +213,19 @@ Reference
 
         The `verbose_name` of the `region` field.
            
+    .. attribute:: use_vcard_export
+
+        Whether Lino should provide a button for exporting contact
+        data as a vcf file.
+
+        If you set this to True, then you must install `vobject
+        <http://eventable.github.io/vobject/>`__ into your Python
+        environment::
+
+              pip install vobject
+
+        
+
 .. class:: SimpleContactsUser
 
    A user who has access to basic contacts functionality.
@@ -382,6 +411,8 @@ Reference
     Adds two fields 'partner' and 'person' to this model, making it
     something that refers to a "partner".  `person` means a "contact
     person" for the partner.
+
+
 
 Print templates
 ===============

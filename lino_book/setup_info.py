@@ -19,6 +19,7 @@ SETUP_INFO = dict(
         'django-iban', 'metafone', 'channels',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
+        'vobject',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
