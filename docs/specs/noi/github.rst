@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/github.rst
 .. _specs.noi.github:
 
 =================
 The github module
 =================
 
-.. How to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_github
-
-    doctest init:
+..  doctest init:
     >>> import lino
     >>> import datetime
     >>> lino.startup('lino_book.projects.team.settings.demo')
@@ -57,7 +54,7 @@ sessions that were active during the time of committing.
 >>> repo.save()
 >>> #Unknown Create base request?
 >>> ses=rt.login('robin')
->>> repo.import_all_commits(ses, sha = '8bac51399644261ce1a216a299a1dd3aa5c63632')
+>>> repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
 ==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
  Repository           Sha Hash                                   Ticket   Author   Github User Name   Summary                                              Created                     Comment
