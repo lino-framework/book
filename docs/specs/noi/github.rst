@@ -58,7 +58,7 @@ sessions that were active during the time of committing.
 >>> #Unknown Create base request?
 >>> ses=rt.login('robin')
 >>> with requests_mock.mock() as m:
-...     m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
+...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
 ...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
 ==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
@@ -78,7 +78,7 @@ sessions that were active during the time of committing.
 >>> s.full_clean()
 >>> s.save()
 >>> with requests_mock.mock() as m:
-...     m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
+...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
 ...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
 ==================== ========================================== ================================== ======== ================== ==================================================== =========================== =========
@@ -95,7 +95,7 @@ sessions that were active during the time of committing.
 >>> s.id, s1id = None, s.id
 >>> s.save()
 >>> with requests_mock.mock() as m:
-...     m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
+...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
 ...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
 >>> rt.show(github.Commit)
 ==================== ========================================== ================================== ======== ================== ==================================================== =========================== ================================================================
