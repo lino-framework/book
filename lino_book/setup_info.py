@@ -24,6 +24,7 @@ SETUP_INFO = dict(
         'lino_noi',
         'lino_voga',
         # 'lino_welfare',
+        'requests_mock',
         'lino_care',
         'lino_vilma',
         'lino_avanti',
@@ -31,7 +32,7 @@ SETUP_INFO = dict(
         'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg'],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
-    tests_require=['requests_mock'],
+    # tests_require=['requests_mock'],
 
     description="The documentation for Lino",
     license='BSD License',
