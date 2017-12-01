@@ -90,8 +90,8 @@ Each window is **viewable** for a given set of user types.
 - cal.Events.detail : visible for staff admin
 - cal.Events.insert : visible for staff admin
 - cal.GuestRoles.detail : visible for admin
-- cal.Guests.detail : visible for teacher user auditor coordinator staff admin
-- cal.Guests.insert : visible for teacher user coordinator staff admin
+- cal.Guests.detail : visible for teacher user auditor staff admin
+- cal.Guests.insert : visible for teacher user staff admin
 - cal.RecurrentEvents.detail : visible for staff admin
 - cal.RecurrentEvents.insert : visible for staff admin
 - cal.Rooms.detail : visible for staff admin

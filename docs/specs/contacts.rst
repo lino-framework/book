@@ -218,7 +218,7 @@ Reference
         Whether Lino should provide a button for exporting contact
         data as a vcf file.
 
-        If you set this to True, then you must install `vobject
+        If you set this to `True`, then you must install `vobject
         <http://eventable.github.io/vobject/>`__ into your Python
         environment::
 

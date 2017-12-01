@@ -78,6 +78,59 @@ values.
 <BLANKLINE>
 
 
+
+Glossary
+========
+
+.. glossary::
+
+  calendar entry
+
+    Something that happens at a given date and (optionally) time.
+    A planned ("scheduled") lapse of time where something happens.
+    Stored in :class:`Event`.
+
+  appointment
+
+    An appointment (french "Rendez-vous", german "Termin") is an
+    :term:`calendar entry` whose :class:`type <EventType>` has the
+    :attr:`EventType.is_appointment` field checked.
+
+
+There is no "Calendar" field per entry
+======================================
+
+Note that the default implementation has no "Calendar" field per
+calendar entry. The `Event` model instead has a `get_calendar` method.
+
+You might extend Event in your plugin as follows::
+
+    from lino_xl.lib.cal.models import *
+    class Event(Event):
+
+        calendar = dd.ForeignKey('cal.Calendar')
+
+        def get_calendar(self):
+            return self.calendar
+
+But in other cases it would create unnecessary complexity to add such
+a field. For example in :ref:`welfare` there is one calendar per User,
+and thus the `get_calendar` method is implemented as follows::
+
+    def get_calendar(self):
+        if self.user is not None:
+            return self.user.calendar
+
+Or in :ref:`voga` there is one calendar per Room. Thus the
+`get_calendar` method is implemented as follows::
+
+    def get_calendar(self):
+        if self.room is not None:
+            return self.room.calendar
+
+
+
+
 Duration units
 ==============
 
@@ -210,7 +263,7 @@ Recurrent events
 ================
 
 In :mod:`lino_book.projects.min2` we have a database model
-:class:`RecurrentEvent <lino_xl.lib.cal.models.RecurrentEvent>` used
+:class:`RecurrentEvent <lino_xl.lib.cal.RecurrentEvent>` used
 to generate holidays.  See also :ref:`xl.specs.holidays`.
 
 We are going to use this model for demonstrating some more features
@@ -502,9 +555,14 @@ Reference
     .. attribute:: event_type
 
 
-
     .. attribute:: description
 
+    .. method:: care_about_conflicts(self, we)
+                
+        Recurrent events don't care about conflicts. A holiday won't move
+        just because some other event has been created before on that date.
+
+                
 
 .. class:: UpdateGuests
 
@@ -805,6 +863,23 @@ Reference
         subsequent events adapt to the new rythm (except those which
         have themselves been manually modified).
                         
+    .. method:: care_about_conflicts(self, we)
+                
+        Whether this event generator should try to resolve conflicts
+        (in :meth:`resolve_conflicts`)
+
+    .. method:: resolve_conflicts(self, we, ar, rset, until)
+                
+        Check whether given entry `we` conflicts with other entries
+        and move it to a new date if necessary. Returns (a) the
+        entry's :attr:`start_date` if there is no conflict, (b) the
+        next available alternative date if the entry conflicts with
+        other existing entries and should be moved, or (c) None if
+        there are conflicts but no alternative date could be found.
+
+        `ar` is the action request who asks for this.  `rset` is the
+        :class:`RecurrenceSet`.
+
            
 .. class:: RecurrenceSet
 
@@ -931,3 +1006,44 @@ Reference
 
     Show all calendar events of the same day.
     
+
+.. class:: Plugin
+    
+
+    .. attribute:: partner_model
+
+        The model to use as the guest of a presence.
+        
+    .. attribute:: ignore_dates_before
+           
+        Ignore dates before the given date.  
+
+        Default value is `None`, meaning "no limit".
+
+        Unlike :attr:`hide_events_before
+        <lino.modlib.system.SiteConfig.hide_events_before>`
+        this is not editable through the web interface.
+
+    .. attribute:: ignore_dates_after
+           
+        Ignore dates after the given date.  This should never be `None`.
+        Default value is 5 years after :meth:`today
+        <lino.core.site.Site.today>`.
+
+
+User roles
+==========
+
+Most calendar functionality requires
+:class:`lino.modlib.office.roles.OfficeUser`
+
+
+.. class:: CalendarReader
+
+    Can read public calendar entries. This is a kind of minimal
+    calendar functionality which can be given to anonymous users,
+    as done e.g. by :ref:`vilma`.
+        
+.. class:: GuestOperator
+
+    Can see presences and guests of a calendar entry.

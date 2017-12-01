@@ -50,7 +50,7 @@ What is a ticket?
 
     .. attribute:: assigned_to
 
-        No longer used. The user who is working on this ticket.
+        The user who is working on this ticket.
 
         If this field is empty and :attr:`project` is not empty, then
         default value is taken from :attr:`Project.assign_to`.
