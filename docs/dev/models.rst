@@ -13,24 +13,29 @@ Introduction to models
 
 Lino applications fully use Django's ORM.  In Django, every *database
 table* is described by a subclass of :class:`Model`.  Every row of the
-table is an *instance* of its corresponding :class:`Model` class.  The
-models of an application are defined in a file named
-:xfile:`models.py`.
+table is an *instance* of that :class:`Model` class.  The models of an
+application are defined in a file named :xfile:`models.py`.
 
-In this tutorial we are going to use the
-:mod:`lino_book.projects.tables` demo application.
-
->>> from lino import startup
->>> startup('lino_book.projects.tables.settings')
->>> from lino.api.doctest import *
-    
-Here is the :xfile:`models.py` file of that application:
+Here is the
+:xfile:`models.py` file
+we are going to use        
+in this tutorial:
 
 .. literalinclude:: ../../lino_book/projects/tables/models.py
 
+This file is defined in the :mod:`lino_book.projects.tables` demo
+project.
 
+.. doctest init:
+
+    >>> from lino import startup
+    >>> startup('lino_book.projects.tables.settings')
+    >>> from lino.api.doctest import *
+
+    
 .. initialize the database:
 
+    
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller(settings.SITE.project_dir)
     >>> shell('python manage.py prep --noinput')
@@ -48,11 +53,28 @@ Here is the :xfile:`models.py` file of that application:
       No migrations to apply.
     Loading data from .../fixtures/demo.py
     Installed 7 object(s) from 1 fixture(s)
+    
+    
+Every :class:`Model` has a class attribute :attr:`objects` which is is
+used for operations which access the database.
+
+For example you can *count* how many rows are stored in the database.
+
+>>> from lino_book.projects.tables.models import Author
+>>> Author.objects.count()
+3
+
+Or you can loop over them:
+
+>>> for a in Author.objects.all():
+...     print(a)
+Adams, Douglas
+Camus, Albert
+Huttner, Hannes
 
 
 You can create a new row by saying:
 
->>> from lino_book.projects.tables.models import Author
 >>> obj = Author(first_name="Joe", last_name="Doe")
 
 That row is not yet stored in the database, but you can already use
@@ -75,20 +97,6 @@ You can change the value of a field:
 >>> print(obj)
 Woe, Joe
 
-
-Every :class:`Model` has a class attribute :attr:`objects` which is is
-used for operations which access the database.
-
-For example you can *count* how many rows are stored in the database.
-Or you can loop over them:
-
->>> Author.objects.count()
-3
->>> for a in Author.objects.all():
-...     print(a)
-Adams, Douglas
-Camus, Albert
-Huttner, Hannes
 
 In order to store our object to the database, we call its :meth:`save`
 method::
@@ -126,7 +134,6 @@ SELECT "tables_author"."id", "tables_author"."first_name", "tables_author"."last
 >>> qs
 <QuerySet [Author #4 ('Woe, Joe')]>
 
-
 Before leaving, we tidy up by removing Joe Woe from our demo database:
 
 >>> obj.delete()
@@ -136,3 +143,5 @@ Before leaving, we tidy up by removing Joe Woe from our demo database:
 
 Tim Kholod wrote a nice introduction for beginners: `The simple way to
 understand Django models <https://arevej.me/django-models/>`__
+
+

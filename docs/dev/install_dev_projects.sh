@@ -46,9 +46,6 @@ function install {
 
 function install_them_all {
 
-    # the following are not really needed
-    # install atelier lino-framework atelier
-    
     install cd lsaffre commondata
     install be lsaffre commondata-be
     install ee lsaffre commondata-ee
@@ -58,7 +55,6 @@ function install_them_all {
     install xl lino-framework xl
     install cosi lino-framework cosi
     install noi lino-framework noi
-    # install welfare lino-framework welfare
     install voga lino-framework voga
     install avanti lino-framework avanti
     install vilma lino-framework vilma
@@ -67,7 +63,10 @@ function install_them_all {
     install book lino-framework book
     install ext6 lino-framework extjs6
 
-    # the following are not really needed
+    # the following are needed e.g. to build Luc's blog
+    # install welfare lino-framework welfare
+    # install amici lino-framework amici
+    # install algus lino-framework algus
     # install presto lino-framework presto
     # install patrols lsaffre lino-patrols
     # install logos lsaffre lino-logos
@@ -77,9 +76,10 @@ function install_them_all {
 
 echo "You are about to install the Lino development environment"
 if [[ $1 ]] ; then
-    echo Create new virtualenv $1
+    echo into new virtualenv $1
 else
-    echo Into current virtualenv $ENV
+    echo into current virtualenv $ENV
+    echo using repositories in `pwd`
 fi
 
 read -r -p "Are you sure? [y/N] " response
