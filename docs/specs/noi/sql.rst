@@ -87,8 +87,8 @@ tickets.Ticket.waiting_for
 tickets.Ticket.feedback
 tickets.Ticket.standby
 lino.core.model.Model.workflow_buttons
-lino.core.model.Model.overview
 lino.core.model.Model.mobile_item
+lino.core.model.Model.overview
 lino.mixins.Created.created_natural
 
     

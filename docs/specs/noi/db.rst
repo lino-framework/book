@@ -91,19 +91,9 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 43 plugins
 - 61 models
-- 236 views
+- 237 views
 - 7 user types
 - 6 dialog actions
 <BLANKLINE>
-
-
-20160702
-========
-
->>> 'cour'.isdigit()
-False
->>> 'ref' in rt.models.topics.Topic.quick_search_fields
-True
-
 
 

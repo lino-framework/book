@@ -132,7 +132,7 @@ This behaviour is implemented using the :attr:`quick_search_fields
 <lino.core.model.Model.quick_search_fields>` attribute on the model.
 
 >>> contacts.Partner.quick_search_fields
-frozenset(['phone', 'prefix', 'gsm', 'name'])
+(<django.db.models.fields.CharField: prefix>, <django.db.models.fields.CharField: name>, <django.db.models.fields.CharField: phone>, <django.db.models.fields.CharField: gsm>)
 
 
 Numeric quick search
@@ -141,12 +141,13 @@ Numeric quick search
 You can search for phone numbers
 
 >>> rt.show(contacts.Partners, quick_search="123", column_names="name phone id")
-=============== ============== =====
- Name            Phone          ID
---------------- -------------- -----
- Arens Andreas   +32 87123456   112
- Arens Annette   +32 87123457   113
-=============== ============== =====
+====================== ============== =====
+ Name                   Phone          ID
+---------------------- -------------- -----
+ Arens Andreas          +32 87123456   112
+ Arens Annette          +32 87123457   113
+ Dobbelstein Dorothée                  123
+====================== ============== =====
 <BLANKLINE>
 
 
