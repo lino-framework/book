@@ -1,13 +1,9 @@
+.. doctest docs/dev/site.rst
 .. _dev.site:
 
 ===================================
 Introducing the :class:`Site` class
 ===================================
-
-.. This document is part of the Lino test suite. You can test only
-   this document using::
-
-    $ doctest docs/dev/site.rst
 
 .. contents::
     :depth: 1
@@ -66,7 +62,7 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -214,10 +210,12 @@ These are the Django settings which Lino will override:
         }
     ], 
     "LOCALE_PATHS": [], 
+    "LOGOUT_REDIRECT_URL": null,
     "STATIC_ROOT": "...", 
     "SERIALIZATION_MODULES": {
         "py": "lino.utils.dpy"
     }, 
+    "STATICFILES_DIRS": [], 
     "MEDIA_ROOT": "...", 
     "__file__": ".../site.pyc", 
     "MIDDLEWARE_CLASSES": [
@@ -234,6 +232,7 @@ These are the Django settings which Lino will override:
         }
     }, 
     "ROOT_URLCONF": "lino.core.urls", 
+    "LOGIN_URL": "/accounts/login/",
     "SECRET_KEY": "20227", 
     "INSTALLED_APPS": [
         "lino", 
@@ -246,7 +245,7 @@ These are the Django settings which Lino will override:
     "AUTHENTICATION_BACKENDS": [
         "lino.core.auth.backends.ModelBackend"
     ],
-    "STATICFILES_DIRS": [], 
+    "LOGIN_REDIRECT_URL": "/",
     "FIXTURE_DIRS": [], 
     "MEDIA_URL": "/media/"
 }

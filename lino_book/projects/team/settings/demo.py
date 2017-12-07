@@ -17,6 +17,8 @@ class Site(Site):
     
     # use_ipdict = True
     # use_websockets = True
+    social_auth_backends = ['social_core.backends.github.GithubOAuth2']
+    use_experimental_features = True
     # default_ui = 'lino_extjs6.extjs6'
     # default_ui = 'lino.modlib.bootstrap3'
 
@@ -30,6 +32,8 @@ class Site(Site):
 
         """
         super(Site, self).setup_plugins()
+        # self.plugins.social_auth.configure(
+        #     backends=['social_core.backends.github.GithubOAuth2'])
         self.plugins.excerpts.configure(responsible_user='jean')
         if False:
             self.plugins.mailbox.add_mailbox(
@@ -60,3 +64,7 @@ DEBUG = True
 #~ DATABASES['default']['NAME'] = ':memory:'
 
 # SITE.update_settings(ALLOWED_HOSTS=["192.168.0.26","127.0.0.1"])
+
+# https://github.com/organizations/lino-framework/settings/applications/632218
+SOCIAL_AUTH_GITHUB_KEY = '355f66b1557f0cbf4d1d'
+SOCIAL_AUTH_GITHUB_SECRET = '4dbeea1701bf03316c1759bdb422d9f88969b782'

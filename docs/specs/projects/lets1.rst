@@ -1,12 +1,11 @@
+.. $ doctest docs/specs/projects/lets1.rst
+   
 ===============================
 The LETS application specs (v1)
 ===============================
 
 
-.. how to test just this document:
-    $ python setup.py test -s tests.SpecsTests.test_projects_lets1
-    
-    doctest init:
+..  doctest init:
     >>> from lino import startup
     >>> startup('lino_book.projects.lets1.settings')
     >>> from lino.api.doctest import *
@@ -26,7 +25,7 @@ Master data
 
 Show the list of members:    
 
->>> rt.show(rt.actors.lets.Members)
+>>> rt.show(rt.models.lets.Members)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ========= ===================== ========== ============================================ ===========================================
  name      email                 place      offered_products                             wanted_products
@@ -44,7 +43,7 @@ Show the list of members:
 
 The `Products` table shows all products in alphabetical order:
 
->>> rt.show(rt.actors.lets.Products)
+>>> rt.show(rt.models.lets.Products)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ==== ========================= ======================================= =======================================
  ID   name                      Offered by                              Wanted by
@@ -63,7 +62,7 @@ Offers
 
 The `Offers` table show all offers.
 
->>> rt.show(rt.actors.lets.Offers)
+>>> rt.show(rt.models.lets.Offers)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ==== ======== ========================= =============
  ID   member   product                   valid until
@@ -84,7 +83,7 @@ which there is at least one offer or one demand.  It also specifies
 `column_names` to show the two virtual fields `offered_by` and
 `wanted_by`.
 
->>> rt.show(rt.actors.lets.ActiveProducts)
+>>> rt.show(rt.models.lets.ActiveProducts)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ========================= ======================================= =======================================
  name                      Offered by                              Wanted by

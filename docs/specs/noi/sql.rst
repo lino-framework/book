@@ -21,7 +21,7 @@ During startup there were two SQL queries:
 
 >>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 SELECT ... FROM excerpts_excerpttype
-SELECT ... FROM django_content_type WHERE django_content_type.id = 42
+SELECT ... FROM django_content_type WHERE django_content_type.id = 47
 
 
 Now we do a single request to :class:`Tickets`. And look at all the

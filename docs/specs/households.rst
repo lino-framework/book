@@ -1,14 +1,11 @@
+.. doctest docs/specs/households.rst
 .. _lino.specs.households:
 
 =====================
 The Households module
 =====================
 
-.. How to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_households
-    
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.max.settings.demo')
@@ -99,8 +96,8 @@ The most interesting is 177:
 >>> p = Person.objects.get(pk=177)
 >>> rt.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,true,60,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
-`☐  <javascript:Lino.households.Members.set_primary(null,true,44,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
+`☐  <javascript:Lino.households.Members.set_primary(null,false,60,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
+`☐  <javascript:Lino.households.Members.set_primary(null,false,44,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
 <BLANKLINE>
 Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
 
