@@ -20,6 +20,7 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
+        'social-auth-app-django',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
