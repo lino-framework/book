@@ -206,6 +206,7 @@ Other
    diamond
    analysis
    django
+   tours
 
 
 .. toctree::
