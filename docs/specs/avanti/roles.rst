@@ -81,111 +81,183 @@ Each window is **viewable** for a given set of user types.
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - about.About.show : visible for all
 - about.Models.detail : visible for teacher user auditor coordinator staff admin
+- avanti.Categories.merge_row : visible for admin
 - avanti.Clients.detail : visible for user staff admin
 - avanti.Clients.merge_row : visible for admin
+- avanti.EndingReasons.merge_row : visible for admin
+- avanti.Residences.merge_row : visible for admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
+- cal.Calendars.merge_row : visible for admin
+- cal.EventPolicies.merge_row : visible for admin
 - cal.EventTypes.detail : visible for staff admin
 - cal.EventTypes.insert : visible for staff admin
+- cal.EventTypes.merge_row : visible for admin
 - cal.Events.detail : visible for staff admin
 - cal.Events.insert : visible for staff admin
 - cal.GuestRoles.detail : visible for admin
+- cal.GuestRoles.merge_row : visible for admin
 - cal.Guests.detail : visible for teacher user auditor staff admin
 - cal.Guests.insert : visible for teacher user staff admin
+- cal.Guests.merge_row : visible for admin
+- cal.OneEvent.merge_row : visible for admin
+- cal.Priorities.merge_row : visible for admin
 - cal.RecurrentEvents.detail : visible for staff admin
 - cal.RecurrentEvents.insert : visible for staff admin
+- cal.RecurrentEvents.merge_row : visible for admin
+- cal.RemoteCalendars.merge_row : visible for admin
 - cal.Rooms.detail : visible for staff admin
 - cal.Rooms.insert : visible for staff admin
+- cal.Rooms.merge_row : visible for admin
+- cal.Subscriptions.merge_row : visible for admin
 - cal.Tasks.detail : visible for staff admin
 - cal.Tasks.insert : visible for staff admin
+- cal.Tasks.merge_row : visible for admin
 - changes.Changes.detail : visible for admin
+- changes.Changes.merge_row : visible for admin
 - checkdata.Checkers.detail : visible for admin
 - checkdata.Problems.detail : visible for teacher user auditor coordinator staff admin
+- checkdata.Problems.merge_row : visible for admin
 - clients.ClientContactTypes.detail : visible for staff admin
+- clients.ClientContactTypes.merge_row : visible for admin
+- clients.ClientContacts.merge_row : visible for admin
 - comments.CommentTypes.detail : visible for staff admin
 - comments.CommentTypes.insert : visible for staff admin
+- comments.CommentTypes.merge_row : visible for admin
 - comments.Comments.detail : visible for user staff admin
 - comments.Comments.insert : visible for user staff admin
+- comments.Comments.merge_row : visible for admin
 - comments.CommentsByRFC.insert : visible for user staff admin
 - contacts.Companies.detail : visible for user staff admin
 - contacts.Companies.insert : visible for user staff admin
 - contacts.Companies.merge_row : visible for admin
+- contacts.CompanyTypes.merge_row : visible for admin
 - contacts.Partners.detail : visible for user staff admin
 - contacts.Partners.insert : visible for user staff admin
+- contacts.Partners.merge_row : visible for admin
 - contacts.Persons.create_household : visible for user staff admin
 - contacts.Persons.detail : visible for user staff admin
 - contacts.Persons.insert : visible for user staff admin
 - contacts.Persons.merge_row : visible for admin
+- contacts.RoleTypes.merge_row : visible for admin
+- contacts.Roles.merge_row : visible for admin
 - countries.Countries.detail : visible for staff admin
 - countries.Countries.insert : visible for staff admin
+- countries.Countries.merge_row : visible for admin
 - countries.Places.detail : visible for staff admin
+- countries.Places.merge_row : visible for admin
 - courses.Activities.detail : visible for teacher user auditor coordinator staff admin
 - courses.Activities.insert : visible for teacher user coordinator staff admin
+- courses.Activities.merge_row : visible for admin
 - courses.Activities.print_presence_sheet : visible for teacher user auditor coordinator staff admin
 - courses.Activities.print_presence_sheet_html : visible for teacher user auditor coordinator staff admin
 - courses.Enrolments.detail : visible for teacher user auditor coordinator staff admin
 - courses.Enrolments.insert : visible for teacher user coordinator staff admin
+- courses.Enrolments.merge_row : visible for admin
 - courses.EnrolmentsByCourse.insert : visible for teacher user coordinator staff admin
 - courses.EnrolmentsByPupil.insert : visible for user coordinator staff admin
 - courses.Lines.detail : visible for user auditor coordinator staff admin
 - courses.Lines.insert : visible for user coordinator staff admin
+- courses.Lines.merge_row : visible for admin
+- courses.Reminders.merge_row : visible for admin
 - courses.RemindersByEnrolment.detail : visible for user staff admin
 - courses.RemindersByEnrolment.insert : visible for user staff admin
 - courses.Slots.detail : visible for admin
 - courses.Slots.insert : visible for admin
+- courses.Slots.merge_row : visible for admin
 - courses.StatusReport.show : visible for user auditor coordinator staff admin
 - courses.Topics.detail : visible for admin
+- courses.Topics.merge_row : visible for admin
 - cv.Durations.detail : visible for staff admin
+- cv.Durations.merge_row : visible for admin
 - cv.EducationLevels.detail : visible for staff admin
+- cv.EducationLevels.merge_row : visible for admin
 - cv.Experiences.detail : visible for staff admin
+- cv.Experiences.merge_row : visible for admin
 - cv.ExperiencesByPerson.insert : visible for user staff admin
 - cv.Functions.detail : visible for staff admin
+- cv.Functions.merge_row : visible for admin
+- cv.LanguageKnowledges.merge_row : visible for admin
 - cv.LanguageKnowledgesByPerson.detail : visible for user staff admin
 - cv.LanguageKnowledgesByPerson.insert : visible for user staff admin
 - cv.Regimes.detail : visible for staff admin
+- cv.Regimes.merge_row : visible for admin
 - cv.Sectors.detail : visible for staff admin
+- cv.Sectors.merge_row : visible for admin
 - cv.Statuses.detail : visible for staff admin
+- cv.Statuses.merge_row : visible for admin
 - cv.Studies.detail : visible for staff admin
+- cv.Studies.merge_row : visible for admin
 - cv.StudiesByPerson.insert : visible for user staff admin
 - cv.StudyTypes.detail : visible for staff admin
 - cv.StudyTypes.insert : visible for staff admin
+- cv.StudyTypes.merge_row : visible for admin
 - cv.Trainings.detail : visible for user staff admin
 - cv.Trainings.insert : visible for user staff admin
+- cv.Trainings.merge_row : visible for admin
+- dashboard.Widgets.merge_row : visible for admin
+- dupable.PhoneticWords.merge_row : visible for admin
 - excerpts.ExcerptTypes.detail : visible for staff admin
 - excerpts.ExcerptTypes.insert : visible for staff admin
+- excerpts.ExcerptTypes.merge_row : visible for admin
 - excerpts.Excerpts.detail : visible for user coordinator staff admin
+- excerpts.Excerpts.merge_row : visible for admin
 - gfks.ContentTypes.detail : visible for admin
+- gfks.ContentTypes.merge_row : visible for admin
+- gfks.HelpTexts.merge_row : visible for admin
 - households.Households.detail : visible for user staff admin
+- households.Households.merge_row : visible for admin
+- households.Members.merge_row : visible for admin
 - households.Types.detail : visible for staff admin
+- households.Types.merge_row : visible for admin
 - languages.Languages.detail : visible for staff admin
+- languages.Languages.merge_row : visible for admin
+- lists.ListTypes.merge_row : visible for admin
 - lists.Lists.detail : visible for user staff admin
 - lists.Lists.insert : visible for user staff admin
+- lists.Lists.merge_row : visible for admin
+- lists.Members.merge_row : visible for admin
+- notify.Messages.merge_row : visible for admin
+- polls.AnswerChoices.merge_row : visible for admin
 - polls.AnswerRemarks.detail : visible for user staff admin
 - polls.AnswerRemarks.insert : visible for user staff admin
+- polls.AnswerRemarks.merge_row : visible for admin
 - polls.ChoiceSets.detail : visible for staff admin
+- polls.ChoiceSets.merge_row : visible for admin
+- polls.Choices.merge_row : visible for admin
 - polls.Polls.detail : visible for user staff admin
 - polls.Polls.insert : visible for user staff admin
+- polls.Polls.merge_row : visible for admin
 - polls.Questions.detail : visible for staff admin
+- polls.Questions.merge_row : visible for admin
 - polls.Responses.detail : visible for user staff admin
 - polls.Responses.insert : visible for user staff admin
+- polls.Responses.merge_row : visible for admin
+- sessions.SessionTable.merge_row : visible for admin
 - system.SiteConfigs.detail : visible for admin
+- system.SiteConfigs.merge_row : visible for admin
 - trends.TrendAreas.detail : visible for staff admin
+- trends.TrendAreas.merge_row : visible for admin
+- trends.TrendEvents.merge_row : visible for admin
 - trends.TrendStages.detail : visible for user staff admin
 - trends.TrendStages.insert : visible for user staff admin
+- trends.TrendStages.merge_row : visible for admin
 - uploads.AllUploads.detail : visible for staff admin
 - uploads.AllUploads.insert : visible for staff admin
 - uploads.UploadTypes.detail : visible for staff admin
 - uploads.UploadTypes.insert : visible for staff admin
+- uploads.UploadTypes.merge_row : visible for admin
 - uploads.Uploads.detail : visible for teacher user auditor coordinator staff admin
 - uploads.Uploads.insert : visible for teacher user coordinator staff admin
+- uploads.Uploads.merge_row : visible for admin
 - uploads.UploadsByClient.insert : visible for user staff admin
 - uploads.UploadsByController.insert : visible for teacher user coordinator staff admin
 - users.AllUsers.send_welcome_email : visible for admin
+- users.Authorities.merge_row : visible for admin
 - users.Users.change_password : visible for teacher user auditor coordinator staff admin
 - users.Users.detail : visible for teacher user auditor coordinator staff admin
 - users.Users.insert : visible for teacher user coordinator staff admin
+- users.Users.merge_row : visible for admin
 - users.UsersOverview.sign_in : visible for all
 <BLANKLINE>
-
-
 

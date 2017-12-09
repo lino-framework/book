@@ -1,3 +1,5 @@
+.. doctest docs/dev/custom_actions.rst
+   
 ======================
 Writing custom actions
 ======================
@@ -169,6 +171,7 @@ Here are the actions on Moos:
  <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino.core.actions.ShowTable grid>,
  <lino_book.projects.actions.models.A a ('a')>,
  <lino_book.projects.actions.models.A b ('a')>,
@@ -185,6 +188,7 @@ both actions `m` and `t`:
  <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino.core.actions.ShowTable grid>,
  <lino_book.projects.actions.models.A a ('a')>,
  <lino.core.actions.Action m ('m')>,
@@ -200,6 +204,7 @@ them with None:
  <lino.core.actions.CreateRow grid_post>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
+ <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino.core.actions.ShowTable grid>]
 
 

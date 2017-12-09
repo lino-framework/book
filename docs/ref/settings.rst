@@ -7,6 +7,22 @@ Django settings.  For introductive texts see :doc:`/dev/settings`,
 :doc:`/dev/application`.
 
 
+.. setting:: AUTHENTICATION_BACKENDS
+             
+See http://docs.djangoproject.com/en/1.11/ref/settings/#authentication-backends
+
+:doc:`/dev/socialauth`
+
+Unlike with plain Django applications, in Lino you do not need to set
+:setting:`AUTHENTICATION_BACKENDS` yourself, Lino will do that for
+you, based the following criteria:
+
+- :meth:`get_auth_method <lino.core.site.Site.get_auth_method>`
+
+- :attr:`social_auth_backends
+  <lino.core.site.Site.social_auth_backends>` 
+     
+             
 .. setting:: LOGGING
 .. setting:: LOGGING_CONFIG
 
@@ -99,3 +115,7 @@ See :blogref:`20100716`
     <https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
 
     Lino also uses this in :mod:`lino.modlib.notify`.
+
+
+
+    

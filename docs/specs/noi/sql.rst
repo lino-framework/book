@@ -47,7 +47,7 @@ SQL that poor Django must do in order to return a single row.
  stars_star            22
  tickets_site          7
  tickets_ticket        2
- users_user            2
+ users_user            1
 ===================== =======
 <BLANKLINE>
 

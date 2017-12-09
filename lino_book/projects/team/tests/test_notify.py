@@ -120,7 +120,7 @@ class TestCase(TestCase):
         self.assertEqual(msg.seen, None)
         self.assertEqual(msg.user, aline)
         expected = """Robin a commenté [ticket 1] (Save the world, """\
-                   """après moi le déluge): I don't agree."""
+                   """après moi le déluge):<br>I don't agree."""
         self.assertEqual(expected, msg.body)
         
         # manually set created timestamp so we can test on it later.
