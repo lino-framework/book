@@ -68,7 +68,7 @@ This document describes the database structure.
  lists.Member                       lists.Members                    5         0
  meetings.Meeting                   meetings.Meetings                23        7
  notify.Message                     notify.Messages                  11        6
- sessions.Session                   sessions.SessionTable            3         8
+ sessions.Session                   sessions.SessionTable            3        ...
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0

@@ -144,7 +144,7 @@ To: aline@example.com
 Subject: [Django] Robin a comment? #1 (? Save the world, apr?s moi le d?luge)
 <body>
 (22/12/2016 19:45)
-Robin a comment? <a href="http://127.0.0.1:8000/api/tickets/Ticket/1" title="Save the world, apr&#232;s moi le d&#233;luge">#1</a> (Save the world, apr?s moi le d?luge): I don't agree.
+Robin a comment? <a href="http://127.0.0.1:8000/api/tickets/Ticket/1" title="Save the world, apr&#232;s moi le d&#233;luge">#1</a> (Save the world, apr?s moi le d?luge):<br>I don't agree.
 </body>
 """        
         self.assertEquivalent(expected, out)
