@@ -31,7 +31,7 @@ Hier noch eine Beobachtung. Das Folgende funktioniert fehlerfrei::
     
   >>> us = u'Art.60 § 7'
   >>> s = "Example (%s)" % us
-  >>> print s
+  >>> print(s)
   Example (Art.60 § 7)
 
 

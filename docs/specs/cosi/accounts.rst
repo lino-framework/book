@@ -181,7 +181,7 @@ The equivalent in Lino is:
 
 >>> for t in accounts.AccountTypes.get_list_items():
 ... #doctest: +NORMALIZE_WHITESPACE
-...     print "%-12s|%-15s|%-6s" % (t.name, unicode(t), DCLABELS[t.dc])
+...     print("%-12s|%-15s|%-6s" % (t.name, t, DCLABELS[t.dc]))
 assets      |Assets         |Debit 
 liabilities |Liabilities    |Credit
 capital     |Capital        |Credit
@@ -221,7 +221,7 @@ French users will see:
 >>> from django.utils import translation
 >>> with translation.override('fr'):
 ...     for s in Sheet.objects:
-...         print unicode(s.verbose_name)
+...         print(str(s.verbose_name))
 Bilan
 Compte de résultats
 
