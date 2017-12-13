@@ -17,7 +17,12 @@ class Site(Site):
     
     # use_ipdict = True
     # use_websockets = True
-    social_auth_backends = ['social_core.backends.github.GithubOAuth2']
+    social_auth_backends = [
+        'social_core.backends.github.GithubOAuth2',
+        # 'social_core.backends.google.GoogleOAuth2',
+        # 'social_core.backends.google.GoogleOAuth',
+        'social_core.backends.google.GooglePlusAuth'
+    ]
     use_experimental_features = True
     # default_ui = 'lino_extjs6.extjs6'
     # default_ui = 'lino.modlib.bootstrap3'
@@ -68,3 +73,7 @@ DEBUG = True
 # https://github.com/organizations/lino-framework/settings/applications/632218
 SOCIAL_AUTH_GITHUB_KEY = '355f66b1557f0cbf4d1d'
 SOCIAL_AUTH_GITHUB_SECRET = '4dbeea1701bf03316c1759bdb422d9f88969b782'
+
+SOCIAL_AUTH_GOOGLE_PLUS_KEY = '451271712409-9qtm9bvjndaeep2olk3useu61j6qu2kp.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'NHyaqV2HY8lV5ULG6k51OMwo'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = 'profile'
