@@ -5,20 +5,21 @@ from lino.utils import join_elems
 from lino.utils.xmlgen.html import E
 from lino.mixins.polymorphic import Polymorphic
 
-
+@dd.python_2_unicode_compatible
 class Place(dd.Model):
     name = models.CharField(max_length=200)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
+@dd.python_2_unicode_compatible
 class Member(Polymorphic):
     name = models.CharField(max_length=200)
     place = models.ForeignKey(Place, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -31,6 +32,7 @@ class Supplier(Member):
     supplier_remark = models.CharField(max_length=200, blank=True)
     
 
+@dd.python_2_unicode_compatible
 class Product(dd.Model):
     name = models.CharField(max_length=200)
 
@@ -41,7 +43,7 @@ class Product(dd.Model):
         'Customer', through='Demand',
         related_name='wanted_products')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     @dd.displayfield("Offered by")
@@ -61,20 +63,22 @@ class Product(dd.Model):
         return E.p(*items)
 
 
+@dd.python_2_unicode_compatible
 class Offer(dd.Model):
     supplier = models.ForeignKey(Supplier)
     product = models.ForeignKey(Product)
     valid_until = models.DateField(blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s offered by %s" % (self.product, self.supplier)
 
 
+@dd.python_2_unicode_compatible
 class Demand(dd.Model):
     customer = models.ForeignKey(Customer)
     product = models.ForeignKey(Product)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s)" % (self.product, self.customer)
 
 

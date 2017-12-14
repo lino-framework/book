@@ -1,12 +1,11 @@
+.. doctest docs/specs/voga/roger.rst
 .. _voga.specs.roger:
 
 =================================
 Specific for Lino Voga à la Roger
 =================================
 
-..  to test only this doc:
-
-    $ doctest docs/specs/voga/roger.rst
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')

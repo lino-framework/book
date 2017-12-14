@@ -135,11 +135,14 @@ session.
 
 Since `a` and `m` are defined on the Model, we can run them directly:
 
->>> print(json.dumps(ses.run(obj.a)))
-{"message": "Called a() on Moo object", "success": true}
+>>> rv = ses.run(obj.a)
+>>> print(rv["message"])
+Called a() on Moo object
+>>> rv["success"]
+True
 
->>> print(json.dumps(ses.run(obj.m)))
-{"message": "Called m() on Moo object", "success": true}
+>>> print(ses.run(obj.m)['message'])
+Called m() on Moo object
 
 This wouldn't work for `t` and `b` since these are defined on `Moos` 
 (which is only one of many possible tables on model `Moo`):
@@ -153,11 +156,11 @@ So in this case we need to specify them table as the first parameter.
 And because they are row actions, we need to pass the instance as 
 mandatory first argument:
 
->>> print(json.dumps(ses.run(S1.t, obj)))
-{"message": "Called t() on Moo object", "success": true}
+>>> print(ses.run(S1.t, obj)['message'])
+Called t() on Moo object
 
->>> print(json.dumps(ses.run(S1.b, obj)))
-{"message": "Called a() on Moo object", "success": true}
+>>> print(ses.run(S1.b, obj)['message'])
+Called a() on Moo object
 
   
 How to "remove" an inherited action or collected from a table
@@ -167,14 +170,14 @@ Here are the actions on Moos:
 
 >>> pprint([ba.action for ba in Moos.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
- <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.CreateRow grid_post>,
+ <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.merge.MergeAction merge_row ('Merge')>,
- <lino.core.actions.ShowTable grid>,
  <lino_book.projects.actions.models.A a ('a')>,
  <lino_book.projects.actions.models.A b ('a')>,
+ <lino.core.actions.ShowTable grid>,
  <lino.core.actions.Action m ('m')>,
  <lino.core.actions.Action t ('t')>]
 
@@ -184,15 +187,15 @@ both actions `m` and `t`:
 
 >>> pprint([ba.action for ba in S1.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
- <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.CreateRow grid_post>,
+ <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.merge.MergeAction merge_row ('Merge')>,
- <lino.core.actions.ShowTable grid>,
  <lino_book.projects.actions.models.A a ('a')>,
- <lino.core.actions.Action m ('m')>,
  <lino_book.projects.actions.models.A b ('a')>,
+ <lino.core.actions.ShowTable grid>,
+ <lino.core.actions.Action m ('m')>,
  <lino.core.actions.Action t ('t')>]
 
 S2 does not have these actions because we "removed" them by overriding
@@ -200,8 +203,8 @@ them with None:
 
 >>> pprint([ba.action for ba in S2.get_actions()])
 [<lino.modlib.bootstrap3.models.ShowAsHtml show_as_html ('HTML')>,
- <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.CreateRow grid_post>,
+ <lino.core.actions.SaveRow grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
  <lino.core.merge.MergeAction merge_row ('Merge')>,

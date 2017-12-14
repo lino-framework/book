@@ -1,12 +1,11 @@
+.. doctest docs/specs/voga/partners.rst
 .. _voga.specs.partners:
 
 =====================
 Partners in Lino Voga
 =====================
 
-..  to test only this doc:
-
-    $ doctest docs/specs/partners.rst
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
@@ -63,7 +62,7 @@ No data to display
 >>> print(res.status_code)
 200
 
->>> d = json.loads(res.content)
+>>> d = json.loads(res.content.decode())
 >>> d['count']
 1
 >>> d['rows'][0]

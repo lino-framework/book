@@ -325,7 +325,7 @@ weasy2html render <django.template.backends.jinja2.Template object at ...> -> ..
 
 >>> res.status_code
 200
->>> rv = AttrDict(json.loads(res.content))
+>>> rv = AttrDict(json.loads(res.content.decode()))
 >>> url = rv.open_url
 >>> print(url)
 /media/cache/weasy2html/courses.Course-2.html
@@ -358,7 +358,7 @@ Total number of cells is 13*17:
 <td>No.</td>
 >>> cells[1]
 <td>Participant</td>
->>> cells[3]
+>>> print(repr(cells[3]))
 <td>02.02.\n\n<br/><font size="1">11 (\u2611)</font>\n</td>
 
 >>> cells[17]
@@ -367,6 +367,6 @@ Total number of cells is 13*17:
 >>> cells[18]
 <td><p>Mr A\xe1sim Abdo</p></td>
 
->>> cells[20]  #doctest: +NORMALIZE_WHITESPACE
+>>> print(repr(cells[20]))
 <td align="center" valign="middle">\u2611\n  </td>
 

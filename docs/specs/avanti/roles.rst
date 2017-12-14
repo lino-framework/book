@@ -117,7 +117,6 @@ Each window is **viewable** for a given set of user types.
 - changes.Changes.merge_row : visible for admin
 - checkdata.Checkers.detail : visible for admin
 - checkdata.Problems.detail : visible for teacher user auditor coordinator staff admin
-- checkdata.Problems.merge_row : visible for admin
 - clients.ClientContactTypes.detail : visible for staff admin
 - clients.ClientContactTypes.merge_row : visible for admin
 - clients.ClientContacts.merge_row : visible for admin

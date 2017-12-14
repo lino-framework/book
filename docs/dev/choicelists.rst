@@ -149,13 +149,13 @@ Each Choice has a "value", a "name" and a "text".
 The **value** is what gets stored when this choice is assigned to a
 database field.
 
->>> [g.value for g in Genders.objects()]
-[u'M', u'F']
+>>> [rmu(g.value) for g in Genders.objects()]
+['M', 'F']
 
 The **name** is how Python code can refer to this choice.
 
->>> [g.name for g in Genders.objects()]
-[u'male', u'female']
+>>> [rmu(g.name) for g in Genders.objects()]
+['male', 'female']
 
 >>> print(repr(Genders.male))
 <Genders.male:M>
@@ -163,8 +163,8 @@ The **name** is how Python code can refer to this choice.
 The **text** is what the user sees.  It is a translatable string,
 implemented using Django's i18n machine:
 
->>> Genders.male.text.__class__
-<class 'django.utils.functional.__proxy__'>
+>>> Genders.male.text.__class__  #doctest: +ELLIPSIS
+<class 'django.utils.functional....__proxy__'>
 
 Calling :func:`str` of a choice is (usually) the same as calling
 unicode on its `text` attribute:

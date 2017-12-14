@@ -25,6 +25,6 @@ This document describes the database structure.
 - 77 models
 - 283 views
 - 7 user types
-- 88 dialog actions
+- 87 dialog actions
 <BLANKLINE>
 

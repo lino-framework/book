@@ -29,7 +29,7 @@ Define a handler for the auto_create signal:
 >>> from lino.api import dd
 >>> @dd.receiver(dd.auto_create)
 ... def my_auto_create_handler(sender,**kw):
-...    print "My auto_create handler was called with",sender
+...    print("My handler was called with {}".format(sender))
 
 Manually create a Tag:
 
@@ -42,10 +42,11 @@ Tag #1 ('Foo')
 
 The signal was not emitted here because the Foo tag existed before.
 
->>> print Tag.lookup_or_create("name","Bar")
-My auto_create handler was called with Bar
+>>> print(Tag.lookup_or_create("name", "Bar"))
+My handler was called with Bar
 Bar
->>> print list(Tag.objects.all())
+
+>>> print(list(Tag.objects.all()))
 [Tag #1 ('Foo'), Tag #2 ('Bar')]
 
 Voilà, that's all for the moment.

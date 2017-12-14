@@ -18,6 +18,7 @@ Or::
 
 from __future__ import unicode_literals
 
+# import six
 import datetime
 
 from mock import patch
@@ -37,12 +38,13 @@ from lino.modlib.notify.models import send_pending_emails_often
 from lino.modlib.notify.choicelists import MailModes
 from lino.core.diff import ChangeWatcher
 
+import sys
+# from cStringIO import StringIO
+from io import StringIO
 import contextlib
 
 @contextlib.contextmanager
 def capture_stdout():
-    import sys
-    from cStringIO import StringIO
     oldout = sys.stdout
     try:
         out = StringIO()
@@ -50,7 +52,7 @@ def capture_stdout():
         yield out
     finally:
         sys.stdout = oldout
-        out = out.getvalue()
+        # out = out.getvalue()
 
 
 class TestCase(TestCase):
@@ -136,7 +138,14 @@ class TestCase(TestCase):
             send_pending_emails_often()
             
         out = out.getvalue().strip()
-        print(out)
+        
+        # if six.PY3:
+        #     if isinstance(out, bytes):
+        #         out = out.decode()
+        
+        # # if isinstance(out, bytes):
+        # raise Exception(out)
+        # print(out)
 
         expected = """send email
 Sender: root@example.com

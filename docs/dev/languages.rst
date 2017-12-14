@@ -1,12 +1,10 @@
+.. doctest docs/dev/languages.rst
+   
 ===========================
 The languages of a ``Site``
 ===========================
 
-.. This document is part of the Lino test suite. You can test only
-   this document using::
-
-    $ python setup.py test -s tests.DocsTests.test_languages
-
+.. This document is part of the Lino test suite. 
 
 The :attr:`languages <lino.core.site.Site.languages>` attribute of a
 :class:`Site <lino.core.site.Site>` specifies the language
@@ -74,8 +72,13 @@ If we have more than one locale of a same language *on a same Site*
  LanguageInfo(django_code='de-be', name='de_BE', index=2, suffix='_de_BE'),
  LanguageInfo(django_code='de', name='de', index=3, suffix='_de'))
 
->>> print(json.dumps(list(site.language_dict)))
-["fr", "de_BE", "de", "en_US", "en"]
+>>> from pprint import pprint
+>>> pprint(site.language_dict)
+{'de': LanguageInfo(django_code='de', name='de', index=3, suffix='_de'),
+ 'de_BE': LanguageInfo(django_code='de-be', name='de_BE', index=2, suffix='_de_BE'),
+ 'en': LanguageInfo(django_code='en-us', name='en_US', index=0, suffix=''),
+ 'en_US': LanguageInfo(django_code='en-us', name='en_US', index=0, suffix=''),
+ 'fr': LanguageInfo(django_code='fr', name='fr', index=1, suffix='_fr')}
 
 >>> site.language_dict['de']
 LanguageInfo(django_code='de', name='de', index=3, suffix='_de')
