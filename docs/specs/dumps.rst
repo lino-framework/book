@@ -65,7 +65,7 @@ Installed 3 object(s) from 1 fixture(s)
 ---- ------------- ------------------ ------------------ ---------------------
  1    First         Erster             Premier            2016-07-02 23:55:12
  2    January       Januar             janvier            2016-07-03 00:10:23
- 3    Three         Drei               Trois              2016-10-30 04:34:00
+ 3    Three         Drei               Trois              2017-10-29 03:16:06
 ==== ============= ================== ================== =====================
 
 
@@ -148,16 +148,16 @@ Running migrations:
 Loading data from ...
 Installed 3 object(s) from 1 fixture(s)
 
-Note that the time stamps are now shifted 3 hours back.
+The result as seen by the user remains the same.
 
 >>> shell("python manage_a.py show dumps.Foos")
 ... #doctest: +ELLIPSIS
 ==== ============= ================== ================== =====================
  ID   Designation   Designation (de)   Designation (fr)   Last visit
 ---- ------------- ------------------ ------------------ ---------------------
- 1    First         Erster             Premier            2016-07-02 20:55:12
- 2    January       Januar             janvier            2016-07-02 21:10:23
- 3    Three         Drei               Trois              2016-10-30 02:34:00
+ 1    First         Erster             Premier            2016-07-02 23:55:12
+ 2    January       Januar             janvier            2016-07-03 00:10:23
+ 3    Three         Drei               Trois              2017-10-29 03:16:06
 ==== ============= ================== ================== =====================
 
 
