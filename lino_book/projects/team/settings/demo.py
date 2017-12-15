@@ -21,7 +21,8 @@ class Site(Site):
         'social_core.backends.github.GithubOAuth2',
         # 'social_core.backends.google.GoogleOAuth2',
         # 'social_core.backends.google.GoogleOAuth',
-        'social_core.backends.google.GooglePlusAuth'
+        'social_core.backends.google.GooglePlusAuth',
+        'social_core.backends.facebook.FacebookOAuth2'
     ]
     use_experimental_features = True
     # default_ui = 'lino_extjs6.extjs6'
@@ -64,6 +65,7 @@ SITE = Site(globals())
 #SITE.plugins.inbox.configure(mbox_path='/home/tonis/mbox')
 #SITE.plugins.inbox.configure(comment_reply_addr='comments@localhost')
 DEBUG = True
+ALLOWED_HOSTS=["*"]
 
 # the following line should not be active in a checked-in version
 #~ DATABASES['default']['NAME'] = ':memory:'
@@ -77,3 +79,10 @@ SOCIAL_AUTH_GITHUB_SECRET = '4dbeea1701bf03316c1759bdb422d9f88969b782'
 SOCIAL_AUTH_GOOGLE_PLUS_KEY = '451271712409-9qtm9bvjndaeep2olk3useu61j6qu2kp.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'NHyaqV2HY8lV5ULG6k51OMwo'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = 'profile'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1837593149865295'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1973f9e9d9420c4c6502aa40cb8cb7db'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']
+
+
+

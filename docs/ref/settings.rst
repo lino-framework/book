@@ -9,18 +9,39 @@ Django settings.  For introductive texts see :doc:`/dev/settings`,
 
 .. setting:: AUTHENTICATION_BACKENDS
              
-See http://docs.djangoproject.com/en/1.11/ref/settings/#authentication-backends
+    See http://docs.djangoproject.com/en/1.11/ref/settings/#authentication-backends
 
-:doc:`/dev/socialauth`
+    See :doc:`/dev/socialauth/index`
 
-Unlike with plain Django applications, in Lino you do not need to set
-:setting:`AUTHENTICATION_BACKENDS` yourself, Lino will do that for
-you, based the following criteria:
+    Unlike with plain Django applications, in Lino you do not need to set
+    :setting:`AUTHENTICATION_BACKENDS` yourself, Lino will do that for
+    you, based the following criteria:
 
-- :meth:`get_auth_method <lino.core.site.Site.get_auth_method>`
+    - :meth:`get_auth_method <lino.core.site.Site.get_auth_method>`
 
-- :attr:`social_auth_backends
-  <lino.core.site.Site.social_auth_backends>` 
+    - :attr:`social_auth_backends
+      <lino.core.site.Site.social_auth_backends>`
+
+
+.. setting:: DATABASES
+
+    Lino sets this to `SQLite` on a file `default.db` in your 
+    :attr:`project_dir <lino.core.site.Site.project_dir>`.
+
+    See http://docs.djangoproject.com/en/1.11/ref/settings/#databases
+  
+.. setting:: EMAIL_SUBJECT_PREFIX
+
+    See `Django docs
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
+
+    Lino also uses this in :mod:`lino.modlib.notify`.
+
+
+.. setting:: FIXTURE_DIRS
+
+    See `Django docs
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#fixture-dirs>`_    
      
              
 .. setting:: LOGGING
@@ -54,13 +75,6 @@ Lino sets this automatically when
 
 See http://docs.djangoproject.com/en/1.11/ref/settings/#language-code
 
-.. setting:: DATABASES
-
-Lino sets this to `SQLite` on a file `default.db` in your 
-:attr:`project_dir <lino.core.site.Site.project_dir>`.
-
-See http://docs.djangoproject.com/en/1.11/ref/settings/#databases
-  
 .. setting:: MIDDLEWARE_CLASSES
 
   See http://docs.djangoproject.com/en/1.11/ref/settings/#middleware_classes
@@ -103,19 +117,10 @@ See :blogref:`20100716`
     See `Django docs
     <https://docs.djangoproject.com/en/1.11/ref/settings/#serialization-modules>`__.
 
-.. setting:: FIXTURE_DIRS
-
-    See `Django docs
-    <https://docs.djangoproject.com/en/1.11/ref/settings/#fixture-dirs>`_    
-
-
-.. setting:: EMAIL_SUBJECT_PREFIX
-
-    See `Django docs
-    <https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
-
-    Lino also uses this in :mod:`lino.modlib.notify`.
-
-
 
     
+.. setting:: USE_TZ
+.. setting:: TIME_ZONE
+
+    See :ref:`book.specs.dumps` 
+             

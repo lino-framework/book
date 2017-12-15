@@ -207,7 +207,7 @@ Other
    analysis
    django
    tours
-   socialauth
+   socialauth/index
 
 
 .. toctree::
