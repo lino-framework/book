@@ -11,36 +11,35 @@ Python dumps
    $ python manage_a.py dump2py a --overwrite
    $ python manage_b.py dump2py b --overwrite
 
-
-A series of usage examples for :ref:`Python dumps <dpy>`.
-
-This document uses the :mod:`lino_book.projects.dumps` demo project.
-
-Models and settings
-===================
-
-The :xfile:`models.py` file:
-
-.. literalinclude:: ../../lino_book/projects/dumps/models.py
-
-The :file:`settings/a.py` file:
-
-.. literalinclude:: ../../lino_book/projects/dumps/settings/a.py
-
-We wrote a Python fixture which adds three records.  It is in file
-:xfile:`fixtures/demo.py`:
-
-.. literalinclude:: ../../lino_book/projects/dumps/fixtures/demo.py
-
-First suite
-===========
-
 ..  doctest init:
    
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller("lino_book/projects/dumps")
 
-We initialize our database from our demo fixture:
+A series of usage examples for :ref:`Python dumps <dpy>`.
+
+This document uses the :mod:`lino_book.projects.dumps` demo project.
+It verifies whether :ticket:`2204` is fixed.  It demonstrates three
+methods of writing demo multilingual data for babel fields.
+
+Here is our :xfile:`models.py` file:
+
+.. literalinclude:: ../../lino_book/projects/dumps/models.py
+
+We also have a Python fixture in file :xfile:`fixtures/demo.py` which
+adds three records:
+
+.. literalinclude:: ../../lino_book/projects/dumps/fixtures/demo.py
+
+First site : without time zone
+==============================
+
+In a first example we have :setting:`USE_TZ` set to False.  This is
+defined by the :file:`settings/a.py` file:
+
+.. literalinclude:: ../../lino_book/projects/dumps/settings/a.py
+
+We initialize our database from the demo fixture:
 
 >>> shell("python manage_a.py prep --noinput")
 ... #doctest: +ELLIPSIS
@@ -57,6 +56,7 @@ Running migrations:
 Loading data from ...
 Installed 3 object(s) from 1 fixture(s)
 
+And here is the result:
 
 >>> shell("python manage_a.py show dumps.Foos")
 ... #doctest: +ELLIPSIS
@@ -67,6 +67,17 @@ Installed 3 object(s) from 1 fixture(s)
  2    January       Januar             janvier            2016-07-03 00:10:23
  3    Three         Drei               Trois              2017-10-29 03:16:06
 ==== ============= ================== ================== =====================
+
+Note that our demo data contains an ambigous time stamp.  When
+somebody living in Brussels tells you "it was at on 2017-10-29 at
+01:16:06", then you don't know whether they mean summer or winter
+time.  Because their clock showed that time exactly twice during that
+night.  Every year on the last Sunday of October, all clocks in Europe
+are turned back at 2am by one hour to 1am again.  The timestamp
+"2017-10-29 01:16:06" is ambigous.  Thanks to Ilian Iliev for
+publishing his blog post `Django, pytz, NonExistentTimeError and
+AmbiguousTimeError
+<http://www.ilian.io/django-pytz-nonexistenttimeerror-and-ambiguoustimeerror/>`__.
 
 
 We run :manage:`dum2py` to create a dump:
@@ -148,7 +159,7 @@ Running migrations:
 Loading data from ...
 Installed 3 object(s) from 1 fixture(s)
 
-The result as seen by the user remains the same.
+The result as seen by the user is the same as in a.
 
 >>> shell("python manage_a.py show dumps.Foos")
 ... #doctest: +ELLIPSIS

@@ -3,7 +3,6 @@
 # License: BSD (see file COPYING for details)
 """The demo fixture for this tutorial.
 """
-from __future__ import unicode_literals
 
 from datetime import datetime
 from django.conf import settings
@@ -34,8 +33,6 @@ def objects():
         # last_visit=dt(2012, 10, 28, 4, 34, 0),
         **dd.babelkw('name', en="Three", de="Drei",
                      fr="Trois", et="Kolm"))
-    # on the last sunday of october, at 2am all clocks are turned back
-    # by one hour to 1am again. So on that day when you say 2:34 in a
-    # naive timestamp
+
 
 
