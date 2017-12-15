@@ -7,7 +7,7 @@
 """
 
 from django.db import models
-from lino.api import _
+from lino.api import dd, _
 from lino.mixins import BabelNamed
 
 
@@ -15,9 +15,12 @@ class Foo(BabelNamed):
 
     class Meta(object):
         app_label = 'dumps'
-        verbose_name = _("Foo")
-        verbose_name_plural = _("Foos")
+    #     verbose_name = _("Foo")
+    #     verbose_name_plural = _("Foos")
 
     last_visit = models.DateTimeField(_("Last visit"), editable=False)
 
+
     
+class Foos(dd.Table):
+    model = Foo

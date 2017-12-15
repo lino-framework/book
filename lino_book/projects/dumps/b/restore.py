@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 # This is a Python dump created using dump2py.
-# DJANGO_SETTINGS_MODULE was 'lino_book.projects.dumps.settings.b', TIME_ZONE was 'UTC'.
+# DJANGO_SETTINGS_MODULE was 'lino_book.projects.dumps.settings.b', TIME_ZONE was 'Europe/Tallinn'.
 
 
 from __future__ import unicode_literals
