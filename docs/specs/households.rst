@@ -93,15 +93,16 @@ Mr Bruno Braun (202) is head of 2 households
 
 The most interesting is 177:
 
+>>> ses = rt.login('robin')
 >>> p = Person.objects.get(pk=177)
->>> rt.show('households.MembersByPerson', master_instance=p)
+>>> ses.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,false,60,{  })>`__Head of household in *Karl & Erna Keller-Emonts-Gast (Factual household)*
-`☐  <javascript:Lino.households.Members.set_primary(null,false,44,{  })>`__Head of household in *Karl & Õie Keller-Õunapuu (Legal cohabitation)*
+`☐  <javascript:Lino.households.Members.set_primary(null,false,60,{  })>`__Head of household in `Karl & Erna Keller-Emonts-Gast (Factual household) <Detail>`__
+`☐  <javascript:Lino.households.Members.set_primary(null,false,44,{  })>`__Head of household in `Karl & Õie Keller-Õunapuu (Legal cohabitation) <Detail>`__
 <BLANKLINE>
-Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
+**Join an existing household** or **create a new one**.
 
->>> rt.show('households.MembersByPerson', p, nosummary=True)
+>>> ses.show('households.MembersByPerson', p, nosummary=True)
 ==================================================== =================== ========= ============ ============
  Household                                            Role                Primary   Start date   End date
 ---------------------------------------------------- ------------------- --------- ------------ ------------

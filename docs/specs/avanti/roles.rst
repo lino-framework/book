@@ -207,6 +207,7 @@ Each window is **viewable** for a given set of user types.
 - households.Households.detail : visible for user staff admin
 - households.Households.merge_row : visible for admin
 - households.Members.merge_row : visible for admin
+- households.MembersByPerson.insert : visible for user staff admin
 - households.Types.detail : visible for staff admin
 - households.Types.merge_row : visible for admin
 - languages.Languages.detail : visible for staff admin
