@@ -347,8 +347,8 @@ Reference
            
 .. class:: Role
            
-    A **role** is when a given **person** has a given **function**
-    (:class:`ContactType`) in a given **organization**.
+    A **role** is when a given **person** exercises a given
+    **function** (:class:`ContactType`) in a given **organization**.
 
     .. attribute:: company
 
@@ -356,19 +356,25 @@ Reference
 
     .. attribute:: type
 
-        The function of this person in this company.
+        The function of this person in this organization.
     
     .. attribute:: person
 
-        The person having this role in this company.
+        The person having this role in this organization.
     
     .. attribute:: start_date
+
+        When this person started to exercise this function in this
+        organization.
                    
         This is a dummy field when :attr:`Plugin.with_roles_history`
         is `False`.
         
     .. attribute:: end_date
 
+        When this person stopped to exercise this function in this
+        organization.
+                   
         This is a dummy field when :attr:`Plugin.with_roles_history`
         is `False`.
         
