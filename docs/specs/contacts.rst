@@ -36,9 +36,9 @@ This plugin defines the following database models.
 .. image:: contacts.png
            
 - The main models are :class:`Person` and :class:`Company` and their
-  common base :class:`Partner`.
-  :class:`Partner` model is *not abstract*, i.e. you can see a table
-  where persons organizations are together.
+  common base :class:`Partner`.  The :class:`Partner` model is *not
+  abstract*, i.e. you can see a table where persons organizations are
+  together.
   
 - A :class:`Role` is when a given person has a given function in a
   given company.
@@ -214,6 +214,11 @@ Reference
 
         The `verbose_name` of the `region` field.
            
+    .. attribute:: with_roles_history
+
+        Whether to define two additional fields
+        :attr:`Role.start_date` and :attr:`Role.end_date`.
+        
     .. attribute:: use_vcard_export
 
         Whether Lino should provide a button for exporting contact
@@ -357,6 +362,16 @@ Reference
 
         The person having this role in this company.
     
+    .. attribute:: start_date
+                   
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+        
+    .. attribute:: end_date
+
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+        
 
 .. class:: ContactRelated
 
