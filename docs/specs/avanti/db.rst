@@ -24,7 +24,7 @@ This document describes the database structure.
 - 39 plugins
 - 77 models
 - 283 views
-- 7 user types
+- 8 user types
 - 87 dialog actions
 <BLANKLINE>
 

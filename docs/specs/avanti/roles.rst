@@ -80,9 +80,9 @@ Each window is **viewable** for a given set of user types.
 >>> print(analyzer.show_window_permissions())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - about.About.show : visible for all
-- about.Models.detail : visible for teacher user auditor coordinator staff admin
+- about.Models.detail : visible for teacher user auditor coordinator secretary staff admin
 - avanti.Categories.merge_row : visible for admin
-- avanti.Clients.detail : visible for user staff admin
+- avanti.Clients.detail : visible for user secretary staff admin
 - avanti.Clients.merge_row : visible for admin
 - avanti.EndingReasons.merge_row : visible for admin
 - avanti.Residences.merge_row : visible for admin
@@ -116,7 +116,7 @@ Each window is **viewable** for a given set of user types.
 - changes.Changes.detail : visible for admin
 - changes.Changes.merge_row : visible for admin
 - checkdata.Checkers.detail : visible for admin
-- checkdata.Problems.detail : visible for teacher user auditor coordinator staff admin
+- checkdata.Problems.detail : visible for teacher user auditor coordinator secretary staff admin
 - clients.ClientContactTypes.detail : visible for staff admin
 - clients.ClientContactTypes.merge_row : visible for admin
 - clients.ClientContacts.merge_row : visible for admin
@@ -127,16 +127,16 @@ Each window is **viewable** for a given set of user types.
 - comments.Comments.insert : visible for user staff admin
 - comments.Comments.merge_row : visible for admin
 - comments.CommentsByRFC.insert : visible for user staff admin
-- contacts.Companies.detail : visible for user staff admin
-- contacts.Companies.insert : visible for user staff admin
+- contacts.Companies.detail : visible for user secretary staff admin
+- contacts.Companies.insert : visible for user secretary staff admin
 - contacts.Companies.merge_row : visible for admin
 - contacts.CompanyTypes.merge_row : visible for admin
-- contacts.Partners.detail : visible for user staff admin
-- contacts.Partners.insert : visible for user staff admin
+- contacts.Partners.detail : visible for user secretary staff admin
+- contacts.Partners.insert : visible for user secretary staff admin
 - contacts.Partners.merge_row : visible for admin
-- contacts.Persons.create_household : visible for user staff admin
-- contacts.Persons.detail : visible for user staff admin
-- contacts.Persons.insert : visible for user staff admin
+- contacts.Persons.create_household : visible for user secretary staff admin
+- contacts.Persons.detail : visible for user secretary staff admin
+- contacts.Persons.insert : visible for user secretary staff admin
 - contacts.Persons.merge_row : visible for admin
 - contacts.RoleTypes.merge_row : visible for admin
 - contacts.Roles.merge_row : visible for admin
@@ -145,26 +145,26 @@ Each window is **viewable** for a given set of user types.
 - countries.Countries.merge_row : visible for admin
 - countries.Places.detail : visible for staff admin
 - countries.Places.merge_row : visible for admin
-- courses.Activities.detail : visible for teacher user auditor coordinator staff admin
-- courses.Activities.insert : visible for teacher user coordinator staff admin
+- courses.Activities.detail : visible for teacher user auditor coordinator secretary staff admin
+- courses.Activities.insert : visible for teacher user coordinator secretary staff admin
 - courses.Activities.merge_row : visible for admin
-- courses.Activities.print_presence_sheet : visible for teacher user auditor coordinator staff admin
-- courses.Activities.print_presence_sheet_html : visible for teacher user auditor coordinator staff admin
-- courses.Enrolments.detail : visible for teacher user auditor coordinator staff admin
-- courses.Enrolments.insert : visible for teacher user coordinator staff admin
+- courses.Activities.print_presence_sheet : visible for teacher user auditor coordinator secretary staff admin
+- courses.Activities.print_presence_sheet_html : visible for teacher user auditor coordinator secretary staff admin
+- courses.Enrolments.detail : visible for teacher user auditor coordinator secretary staff admin
+- courses.Enrolments.insert : visible for teacher user coordinator secretary staff admin
 - courses.Enrolments.merge_row : visible for admin
-- courses.EnrolmentsByCourse.insert : visible for teacher user coordinator staff admin
-- courses.EnrolmentsByPupil.insert : visible for user coordinator staff admin
-- courses.Lines.detail : visible for user auditor coordinator staff admin
-- courses.Lines.insert : visible for user coordinator staff admin
+- courses.EnrolmentsByCourse.insert : visible for teacher user coordinator secretary staff admin
+- courses.EnrolmentsByPupil.insert : visible for user coordinator secretary staff admin
+- courses.Lines.detail : visible for user auditor coordinator secretary staff admin
+- courses.Lines.insert : visible for user coordinator secretary staff admin
 - courses.Lines.merge_row : visible for admin
 - courses.Reminders.merge_row : visible for admin
-- courses.RemindersByEnrolment.detail : visible for user staff admin
-- courses.RemindersByEnrolment.insert : visible for user staff admin
+- courses.RemindersByEnrolment.detail : visible for user secretary staff admin
+- courses.RemindersByEnrolment.insert : visible for user secretary staff admin
 - courses.Slots.detail : visible for admin
 - courses.Slots.insert : visible for admin
 - courses.Slots.merge_row : visible for admin
-- courses.StatusReport.show : visible for user auditor coordinator staff admin
+- courses.StatusReport.show : visible for user auditor coordinator secretary staff admin
 - courses.Topics.detail : visible for admin
 - courses.Topics.merge_row : visible for admin
 - cv.Durations.detail : visible for staff admin
@@ -199,22 +199,22 @@ Each window is **viewable** for a given set of user types.
 - excerpts.ExcerptTypes.detail : visible for staff admin
 - excerpts.ExcerptTypes.insert : visible for staff admin
 - excerpts.ExcerptTypes.merge_row : visible for admin
-- excerpts.Excerpts.detail : visible for user coordinator staff admin
+- excerpts.Excerpts.detail : visible for user coordinator secretary staff admin
 - excerpts.Excerpts.merge_row : visible for admin
 - gfks.ContentTypes.detail : visible for admin
 - gfks.ContentTypes.merge_row : visible for admin
 - gfks.HelpTexts.merge_row : visible for admin
-- households.Households.detail : visible for user staff admin
+- households.Households.detail : visible for user secretary staff admin
 - households.Households.merge_row : visible for admin
 - households.Members.merge_row : visible for admin
-- households.MembersByPerson.insert : visible for user staff admin
+- households.MembersByPerson.insert : visible for user secretary staff admin
 - households.Types.detail : visible for staff admin
 - households.Types.merge_row : visible for admin
 - languages.Languages.detail : visible for staff admin
 - languages.Languages.merge_row : visible for admin
 - lists.ListTypes.merge_row : visible for admin
-- lists.Lists.detail : visible for user staff admin
-- lists.Lists.insert : visible for user staff admin
+- lists.Lists.detail : visible for user secretary staff admin
+- lists.Lists.insert : visible for user secretary staff admin
 - lists.Lists.merge_row : visible for admin
 - lists.Members.merge_row : visible for admin
 - notify.Messages.merge_row : visible for admin
@@ -247,16 +247,16 @@ Each window is **viewable** for a given set of user types.
 - uploads.UploadTypes.detail : visible for staff admin
 - uploads.UploadTypes.insert : visible for staff admin
 - uploads.UploadTypes.merge_row : visible for admin
-- uploads.Uploads.detail : visible for teacher user auditor coordinator staff admin
-- uploads.Uploads.insert : visible for teacher user coordinator staff admin
+- uploads.Uploads.detail : visible for teacher user auditor coordinator secretary staff admin
+- uploads.Uploads.insert : visible for teacher user coordinator secretary staff admin
 - uploads.Uploads.merge_row : visible for admin
-- uploads.UploadsByClient.insert : visible for user staff admin
-- uploads.UploadsByController.insert : visible for teacher user coordinator staff admin
+- uploads.UploadsByClient.insert : visible for user secretary staff admin
+- uploads.UploadsByController.insert : visible for teacher user coordinator secretary staff admin
 - users.AllUsers.send_welcome_email : visible for admin
 - users.Authorities.merge_row : visible for admin
-- users.Users.change_password : visible for teacher user auditor coordinator staff admin
-- users.Users.detail : visible for teacher user auditor coordinator staff admin
-- users.Users.insert : visible for teacher user coordinator staff admin
+- users.Users.change_password : visible for teacher user auditor coordinator secretary staff admin
+- users.Users.detail : visible for teacher user auditor coordinator secretary staff admin
+- users.Users.insert : visible for teacher user coordinator secretary staff admin
 - users.Users.merge_row : visible for admin
 - users.UsersOverview.sign_in : visible for all
 <BLANKLINE>

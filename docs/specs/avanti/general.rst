@@ -1,14 +1,11 @@
+.. doctest docs/specs/avanti/general.rst
 .. _avanti.specs.general:
 
 ===============================
 General overview of Lino Avanti
 ===============================
 
-.. How to test just this document:
-
-    $ doctest docs/specs/avanti/general.rst
-    
-    doctest init:
+..  doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
@@ -37,6 +34,7 @@ List of demo users:
  robin      Administrator   Robin        Rood
  rolf       Administrator   Rolf         Rompen
  romain     Administrator   Romain       Raffault
+ sandra     Secretary
 ========== =============== ============ ===========
 <BLANKLINE>
 
