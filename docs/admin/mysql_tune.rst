@@ -21,9 +21,10 @@ database engines
 <https://en.wikipedia.org/wiki/Comparison_of_MySQL_database_engines>`_)
 can influence your database performance.
 
-MyISAM is the default engine since MySQL 5.5 because it more severe. 
+InnoDB is the default engine since MySQL 5.5 because it is more
+severe.
 
-To set the default storage engine to InnoDB, add an `init_command`
+To set the default storage engine to MyISAM, add an `init_command`
 option to your database setting::
 
     DATABASES = {

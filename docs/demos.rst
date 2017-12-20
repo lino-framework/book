@@ -48,9 +48,11 @@ Specific to Estonia:
 Experimental:
 
 - belref_ : Official online demo of :ref:`belref`.
-- demo3_ : Official online demo of :ref:`presto`.
 - patrols-demo_ : Official online demo of :ref:`patrols`.
 - logos-demo_ : Official online demo of :ref:`logos` (as an early
   prototype for the SacredPy project)
-- polly-demo_ : Official online demo of :ref:`polly` 
+- polly-demo_ : Official online demo of :ref:`polly`
+
+.. removed:  
     
+  - demo3_ : Official online demo of :ref:`presto`.
