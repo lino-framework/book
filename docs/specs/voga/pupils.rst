@@ -1,13 +1,12 @@
+.. doctest docs/specs/voga/pupils.rst
 .. _voga.specs.pupils:
 
 ==================================
 Managing participants in Lino Voga
 ==================================
 
-.. to test only this doc:
-
-    $ doctest docs/specs/voga/pupils.rst
-
+..  doctest init:
+   
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
@@ -30,7 +29,7 @@ gridfilter):
 
 The response to this AJAX request is in JSON:
 
->>> d = json.loads(res.content)
+>>> d = json.loads(res.content.decode())
 >>> d['count']
 24
 

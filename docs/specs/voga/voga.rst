@@ -34,9 +34,9 @@ en
 >>> res = client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
->>> result = json.loads(res.content)
->>> print(result.keys())
-[u'count', u'rows', u'no_data_text', u'success', u'title', u'param_values']
+>>> result = json.loads(res.content.decode())
+>>> sixprint(list(sorted(result.keys())))
+['count', 'no_data_text', 'param_values', 'rows', 'success', 'title']
 
 
 Printable documents

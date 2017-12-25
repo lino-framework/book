@@ -21,7 +21,7 @@ During startup there were two SQL queries:
 
 >>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 SELECT ... FROM excerpts_excerpttype
-SELECT ... FROM django_content_type WHERE django_content_type.id = 42
+SELECT ... FROM django_content_type WHERE django_content_type.id = 47
 
 
 Now we do a single request to :class:`Tickets`. And look at all the
@@ -47,7 +47,7 @@ SQL that poor Django must do in order to return a single row.
  stars_star            22
  tickets_site          7
  tickets_ticket        2
- users_user            2
+ users_user            1
 ===================== =======
 <BLANKLINE>
 
@@ -87,8 +87,8 @@ tickets.Ticket.waiting_for
 tickets.Ticket.feedback
 tickets.Ticket.standby
 lino.core.model.Model.workflow_buttons
-lino.core.model.Model.overview
 lino.core.model.Model.mobile_item
+lino.core.model.Model.overview
 lino.mixins.Created.created_natural
 
     

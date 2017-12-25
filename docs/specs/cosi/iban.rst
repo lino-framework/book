@@ -1,14 +1,11 @@
+.. doctest docs/specs/cosi/iban.rst
 .. _specs.iban:
 
 ===========================
 IBAN numbers in Lino Così
 ===========================
 
-.. to test only this document:
-
-      $ doctest docs/specs/cosi/iban
-    
-    doctest init:
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.apc.settings.demo')
@@ -28,6 +25,6 @@ detected as valid by `localflavor`:
 ...     try:
 ...         validate(iban)
 ...     except ValidationError as e:
-...         print "{0}: {1} : {2}".format(i, iban, e)
+...         print("{0}: {1} : {2}".format(i, iban, e))
 
 

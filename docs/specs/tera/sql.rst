@@ -63,7 +63,7 @@ about `Using aggregates within a Subquery expression
  accounts_account          4
  django_session            1
  ledger_accountingperiod   9
- users_user                2
+ users_user                1
 ========================= =======
 <BLANKLINE>
 

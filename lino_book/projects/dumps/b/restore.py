@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 # This is a Python dump created using dump2py.
-# DJANGO_SETTINGS_MODULE was 'lino_book.projects.dumps.settings.b', TIME_ZONE was 'UTC'.
+# DJANGO_SETTINGS_MODULE was 'lino_book.projects.dumps.settings.b', TIME_ZONE was 'Europe/Tallinn'.
 
 
 from __future__ import unicode_literals
@@ -17,7 +17,7 @@ from decimal import Decimal
 from datetime import datetime
 from datetime import time, date
 from django.conf import settings
-from django.utils.timezone import make_aware
+from django.utils.timezone import make_aware, utc
 from django.core.management import call_command
 # from django.contrib.contenttypes.models import ContentType
 from lino.utils.dpy import create_mti_child
@@ -26,7 +26,7 @@ from lino.core.utils import resolve_model
 
 if settings.USE_TZ:
     def dt(*args):
-        return make_aware(datetime(*args))
+        return make_aware(datetime(*args), timezone=utc)
 else:
     def dt(*args):
         return datetime(*args)

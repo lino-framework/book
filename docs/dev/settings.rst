@@ -1,3 +1,5 @@
+.. docs/dev/settings.rst
+   
 =============================
 Lino and your Django settings
 =============================
@@ -27,14 +29,14 @@ environment variable defined, and then type:
 
 >>> from django.conf import settings
 
-This will pass. But as soon as you want to actually access some
+This will pass. But as soon as you want to actually *read* some
 attribute of `settings`, you will get an `ImproperlyConfigured`
 exception:
 
->>> print(settings.DEBUG)
+>>> print(settings.DEBUG)  #doctest: +IGNORE_EXCEPTION_DETAIL
 Traceback (most recent call last):
 ...
-ImproperlyConfigured: Requested setting DEBUG, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+django.core.exceptions.ImproperlyConfigured: Requested setting DEBUG, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
 
 .. rubric:: Summary
 

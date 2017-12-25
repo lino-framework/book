@@ -1,3 +1,4 @@
+.. doctest docs/dev/perms.rst
 .. _dev.permissions:
 .. _permissions:
 
@@ -6,15 +7,11 @@ Permissions
 ===========
 
 
-..  You can test only this document by issuing:
-
-      $ doctest docs/dev/perms.rst
-
-    Doctest initialization:
+..  Doctest initialization:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.min9.settings.demo')
-    >>> from lino.api.shell import *
+    >>> from lino.api.doctest import *
 
 
 As soon as a database application is used by more than one user, we
@@ -200,8 +197,8 @@ For example, the list of all users (the :class:`users.AllUsers
 <lino.modlib.users.desktop.AllUsers>` table) is visible only for users
 who have the :class:`SiteAdmin <lino.core.roles.SiteAdmin>` role:
 
->>> rt.actors.users.AllUsers.required_roles
-set([<class 'lino.core.roles.SiteAdmin'>])
+>>> sixprint(rt.actors.users.AllUsers.required_roles)
+{<class 'lino.core.roles.SiteAdmin'>}
 
 >>> from lino.core.roles import SiteUser, SiteAdmin
 >>> user = SiteUser()

@@ -206,6 +206,8 @@ Other
    diamond
    analysis
    django
+   tours
+   socialauth/index
 
 
 .. toctree::

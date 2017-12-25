@@ -1,3 +1,4 @@
+.. doctest docs/specs/export_excel.rst
 .. _lino.specs.export_excel:
 .. _lino.tested.export_excel:
 

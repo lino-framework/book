@@ -6,7 +6,7 @@ User types
 
 .. To run only this test::
 
-    $ doctest docs/specs/usertypes.rst
+    $ doctest docs/specs/voga/usertypes.rst
 
     doctest init:
 

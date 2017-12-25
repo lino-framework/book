@@ -2,7 +2,6 @@ from lino.projects.std.settings import *
 
 # configure_plugin('countries', country_code='BE')
 
-
 class Site(Site):
 
     verbose_name = "AddressLocation tutorial"
@@ -20,3 +19,4 @@ class Site(Site):
 
 
 SITE = Site(globals())
+DEBUG = True

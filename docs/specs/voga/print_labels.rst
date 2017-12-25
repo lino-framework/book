@@ -1,3 +1,4 @@
+.. doctest docs/specs/voga/print_labels.rst
 .. _voga.specs.print_labels:
 
 ======================
@@ -5,11 +6,7 @@ Printing addres labels
 ======================
 
 
-.. How to test only this document:
-
-    $ doctest docs/specs/print_labels.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.roger.settings.doctests')

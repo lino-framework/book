@@ -6,3 +6,4 @@ More documentation
 
    /specs/index
    /api/index
+   /tours/index

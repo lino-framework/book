@@ -1,15 +1,14 @@
+.. doctest docs/dev/mldbc/mo
 .. _mldbc_tutorial:
 
 =============================
 Multilingual database content
 =============================
 
-.. how to test:
-    $ python setup.py test -s tests.DocsTests.test_mldbc
-
+..  doctest init:
     >>> from lino import startup
     >>> startup('lino_book.projects.mldbc.settings')
-    >>> from lino.api.shell import *
+    >>> from lino.api.doctest import *
     >>> Product = rt.models.mldbc.Product
 
 
@@ -85,12 +84,12 @@ Now open the interactive Django shell::
 
 You can print a catalog in different languages:
 
->>> print(', '.join([unicode(p) for p in Product.objects.all()]))
+>>> print(', '.join([str(p) for p in Product.objects.all()]))
 Chair, Table, Monitor, Mouse, Keyboard, Consultation
 
 >>> from django.utils import translation
 >>> with translation.override('fr'):
-...     print(', '.join([unicode(p) for p in Product.objects.all()]))
+...     print(', '.join([str(p) for p in Product.objects.all()]))
 Chaise, Table, Ecran, Souris, Clavier, Consultation
 
 Here is how we got the above table:

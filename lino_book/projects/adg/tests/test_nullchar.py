@@ -17,7 +17,7 @@ from __future__ import print_function
 
 
 import os
-from urllib import urlencode
+from six.moves.urllib.parse import urlencode
 
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.api import dd, rt

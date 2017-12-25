@@ -12,7 +12,7 @@ The ``belref`` project
    doctest init:
 
    >>> from lino import startup
-   >>> startup('lino_book.projects.belref.settings.doctests')
+   >>> startup('lino_book.projects.belref.settings.demo')
    >>> from lino.api.doctest import *
 
 
@@ -56,50 +56,76 @@ The project itself grows very slowly because I know no single person
 who believes that this might make sense (and even I wouldn't give my
 hand for it).  See also :doc:`/topics/gpdn`.
 
+
+Tests
+=====
+
+>>> def test(url):
+...     res = test_client.get(url)
+...     assert(res.status_code == 200)
+...     soup = BeautifulSoup(res.content, "lxml")
+...     print(soup.get_text(' ', strip=True))
+
+>>> test('/?ul=fr')
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
+Lino Belref demo fr nl de Concepts Concepts Pays Endroits Bienvenue sur Lino Belref demo .
+<BLANKLINE>
+Ce site héberge le logiciel libre Lino Belref version ...
+
+>>> test('/?ul=de')
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
+Lino Belref demo fr nl de Begriffe Begriffe Länder Orte Willkommen auf Lino Belref demo .
+<BLANKLINE>
+Hier läuft Lino Belref ...
+
+
+
 The API
 ==============
 
-The current implementation has only one HTTP API which is the JSON API
-of :mod:`lino.modlib.extjs` 
+This section is currently deactivated.
 
->>> res = test_client.get("/api/concepts/Concepts?fmt=json&start=0&limit=100")
->>> res.status_code
-200
->>> data = json.loads(res.content)
->>> rmu(data.keys())
-['count', 'rows', 'success', 'no_data_text', 'title']
->>> data['count']
-14
->>> rmu(data['rows'][0])
-['Institut National de Statistique', 'Nationaal Instituut voor Statistiek', 'Nationales Institut f\xfcr Statistik', 1, 'INS', 'NIS', 'NIS', {'id': True}, False]
+..
+    The current implementation has only one HTTP API which is the JSON API
+    of :mod:`lino.modlib.extjs`
+
+    >> res = test_client.get("/api/concepts/Concepts?fmt=json&start=0&limit=100")
+    >> res.status_code
+    200
+    >> data = json.loads(res.content)
+    >> rmu(data.keys())
+    ['count', 'rows', 'success', 'no_data_text', 'title']
+    >> data['count']
+    14
+    >> rmu(data['rows'][0])
+    ['Institut National de Statistique', 'Nationaal Instituut voor Statistiek', 'Nationales Institut f\xfcr Statistik', 1, 'INS', 'NIS', 'NIS', {'id': True}, False]
 
 
-Get the list of places in Belgium:
+    Get the list of places in Belgium:
 
->>> res = test_client.get("/api/countries/Places?fmt=json&start=0&limit=100")
->>> res.status_code
-200
->>> data = json.loads(res.content)
->>> data['count']
-2878
->>> rmu(data['rows'][0])
-['Belgique', 'BE', "'s Gravenvoeren", '', '', 'Ville', '50', '3798', None, None, 2147, False, '73109', '<p />', '<span />', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', {'id': True}, False]
+    >> res = test_client.get("/api/countries/Places?fmt=json&start=0&limit=100")
+    >> res.status_code
+    200
+    >> data = json.loads(res.content)
+    >> data['count']
+    2878
+    >> rmu(data['rows'][0])
+    ['Belgique', 'BE', "'s Gravenvoeren", '', '', 'Ville', '50', '3798', None, None, 2147, False, '73109', '<p />', '<span />', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', '<div><a href="javascript:Lino.countries.Places.detail.run(null,{ &quot;record_id&quot;: 2147 })">\'s Gravenvoeren</a></div>', {'id': True}, False]
 
-The JSON API of :mod:`lino.modlib.extjs` is actually not written for
-being public, that's why we have strange items like
-``delete_selected`` which are used by the ExtJS user interface.
+    The JSON API of :mod:`lino.modlib.extjs` is actually not written for
+    being public, that's why we have strange items like
+    ``delete_selected`` which are used by the ExtJS user interface.
 
-So a next step might be to write an XML-based API for publishing data
-from a database, maybe SOAP or XML-RPC.
+    So a next step might be to write an XML-based API for publishing data
+    from a database, maybe SOAP or XML-RPC.
 
-In a project like belref where data does not change very often, a
-dynamic API would be overhead. So another step might be to write an
-admin command which generates a set of static files to be published.
-These static files can be XML, JSON or OpenDocument.  Maybe even some
-proprietary format like `.xls`.
+    In a project like belref where data does not change very often, a
+    dynamic API would be overhead. So another step might be to write an
+    admin command which generates a set of static files to be published.
+    These static files can be XML, JSON or OpenDocument.  Maybe even some
+    proprietary format like `.xls`.
 
-One application might be to write some Wikipedia pages with that data
-and a `Wikipedia bot <https://en.wikipedia.org/wiki/Wikipedia:Bots>`_
-which maintains them by accessing our API.
-
+    One application might be to write some Wikipedia pages with that data
+    and a `Wikipedia bot <https://en.wikipedia.org/wiki/Wikipedia:Bots>`_
+    which maintains them by accessing our API.
 

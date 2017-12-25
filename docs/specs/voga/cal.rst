@@ -245,3 +245,34 @@ Note that 2016-05-16 is a holiday:
     <BLANKLINE>
 
 
+A sortable virtual field
+========================
+
+The :attr:`when_text <lino_xl.lib.cal.Event.when_text>` field of a
+calendar entry is sortable despite the fact that it is virtual.
+
+>>> de = rt.models.cal.Events.get_data_elem('when_text')
+
+>>> de.__class__
+<class 'lino.core.fields.VirtualField'>
+>>> rmu(de.sortable_by)
+['start_date', 'start_time']
+
+
+>>> de.return_type.__class__
+<class 'lino.core.fields.DisplayField'>
+>>> rmu(de.return_type.sortable_by)
+['start_date', 'start_time']
+
+
+>>> th = rt.models.cal.Events.get_handle()
+>>> col = th.get_columns()[0]
+>>> col.__class__
+<class 'lino.modlib.extjs.elems.DisplayElement'>
+>>> col.name
+'when_text'
+>>> rmu(col.field.sortable_by)
+['start_date', 'start_time']
+
+>>> col.sortable
+True

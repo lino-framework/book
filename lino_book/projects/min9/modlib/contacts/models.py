@@ -17,11 +17,11 @@ from lino_xl.lib.contacts.models import *
 from lino.modlib.comments.mixins import Commentable
 from lino_xl.lib.cal.workflows import feedback
 
-from lino_xl.lib.addresses.mixins import AddressOwner
+# from lino_xl.lib.addresses.mixins import AddressOwner
 from lino_xl.lib.dupable_partners.mixins import DupablePartner, DupablePerson
 
 
-class Partner(Partner, AddressOwner, mixins.CreatedModified, DupablePartner, Commentable):
+class Partner(Partner, mixins.CreatedModified, DupablePartner, Commentable):
     """A Partner as seen in `lino.projects.min2`.  It does not define any
     specific field but inherits from a specific set of mixins.
 
@@ -29,14 +29,14 @@ class Partner(Partner, AddressOwner, mixins.CreatedModified, DupablePartner, Com
 
     hidden_columns = 'created modified'
 
-    def get_overview_elems(self, ar):
-        # In the base classes, Partner must come first because
-        # otherwise Django won't inherit `meta.verbose_name`. OTOH we
-        # want to get the `get_overview_elems` from AddressOwner, not
-        # from Partner (i.e. AddressLocation).
-        elems = super(Partner, self).get_overview_elems(ar)
-        elems += AddressOwner.get_overview_elems(self, ar)
-        return elems
+    # def get_overview_elems(self, ar):
+    #     # In the base classes, Partner must come first because
+    #     # otherwise Django won't inherit `meta.verbose_name`. OTOH we
+    #     # want to get the `get_overview_elems` from AddressOwner, not
+    #     # from Partner (i.e. AddressLocation).
+    #     elems = super(Partner, self).get_overview_elems(ar)
+    #     elems += AddressOwner.get_overview_elems(self, ar)
+    #     return elems
 
 
 class PartnerDetail(PartnerDetail):

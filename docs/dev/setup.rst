@@ -1,13 +1,10 @@
+.. doctest docs/dev/setup.rst
 .. _dev.setup_info:
 
 ====================================
 How Lino applications use `setup.py`
 ====================================
 
-
-.. How to test just this file:
-
-   $ doctest docs/dev/setup.rst
 
 This document describes a trick which does not depend on Lino and
 which we recommend to use for any Python project.
@@ -87,7 +84,7 @@ and 3.
 Usage example:
 
 >>> import lino
->>> print lino.SETUP_INFO['description']
+>>> print(lino.SETUP_INFO['description'])
 A framework for writing desktop-like web applications using Django and ExtJS
 
 Setup information

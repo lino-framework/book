@@ -1,14 +1,11 @@
+.. doctest docs/specs/voga/invoicing.rst
 .. _voga.specs.invoicing:
 
 ================================
 How Lino Voga generates invoices
 ================================
 
-.. to test only this doc:
-
-    $ doctest docs/specs/invoicing.rst
-
-    doctest init:
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
@@ -580,7 +577,7 @@ Here is an overview of the different cases of item descriptions.
 ...         e.fee.number_of_events is None,
 ...         e.course.every_unit)
 ...     if k in cases: continue
-...     print "=== {} ===".format(k)
+...     print("=== {} ===".format(k))
 ...     fmt(i)
 ...     cases.add(k)
 ...  #doctest: +REPORT_UDIFF

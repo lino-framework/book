@@ -1,13 +1,9 @@
+.. doctest docs/dev/site.rst
 .. _dev.site:
 
 ===================================
 Introducing the :class:`Site` class
 ===================================
-
-.. This document is part of the Lino test suite. You can test only
-   this document using::
-
-    $ doctest docs/dev/site.rst
 
 .. contents::
     :depth: 1
@@ -66,7 +62,7 @@ settings. Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -185,69 +181,49 @@ These are the Django settings which Lino will override:
 
 >>> from django.utils import translation
 >>> from lino.core.site import TestSite as Site
+>>> from pprint import pprint
 >>> import json
->>> print(json.dumps(Site().django_settings, indent=4))
+>>> from atelier.utils import rmu
+>>> #print(rmu(sorted(Site().django_settings)))
+>>> pprint(rmu(Site().django_settings))
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-{
-    "TEMPLATES": [
-        {
-            "DIRS": [], 
-            "APP_DIRS": true, 
-            "OPTIONS": {
-                "context_processors": [
-                    "django.template.context_processors.debug", 
-                    "django.template.context_processors.i18n", 
-                    "django.template.context_processors.media", 
-                    "django.template.context_processors.static", 
-                    "django.template.context_processors.tz", 
-                    "django.contrib.messages.context_processors.messages"
-                ]
-            }, 
-            "BACKEND": "django.template.backends.django.DjangoTemplates"
-        }, 
-        {
-            "DIRS": [], 
-            "OPTIONS": {
-                "environment": "lino.modlib.jinja.get_environment"
-            }, 
-            "BACKEND": "django.template.backends.jinja2.Jinja2"
-        }
-    ], 
-    "LOCALE_PATHS": [], 
-    "STATIC_ROOT": "...", 
-    "SERIALIZATION_MODULES": {
-        "py": "lino.utils.dpy"
-    }, 
-    "MEDIA_ROOT": "...", 
-    "__file__": ".../site.pyc", 
-    "MIDDLEWARE_CLASSES": [
-        "django.middleware.common.CommonMiddleware", 
-        "lino.core.auth.middleware.NoUserMiddleware",
-        "lino.utils.ajax.AjaxExceptionResponse"
-    ], 
-    "STATIC_URL": "/static/", 
-    "LANGUAGES": [], 
-    "DATABASES": {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3", 
-            "NAME": ".../default.db"
-        }
-    }, 
-    "ROOT_URLCONF": "lino.core.urls", 
-    "SECRET_KEY": "20227", 
-    "INSTALLED_APPS": [
-        "lino", 
-        "django.contrib.staticfiles", 
-        "lino.modlib.about", 
-        "lino.modlib.jinja", 
-        "lino.modlib.bootstrap3", 
-        "lino.modlib.extjs"
-    ], 
-    "AUTHENTICATION_BACKENDS": [
-        "lino.core.auth.backends.ModelBackend"
-    ],
-    "STATICFILES_DIRS": [], 
-    "FIXTURE_DIRS": [], 
-    "MEDIA_URL": "/media/"
-}
+{'AUTHENTICATION_BACKENDS': ['lino.core.auth.backends.ModelBackend'],
+ 'DATABASES': {'default': {'ENGINE': 'django.db.backends.sqlite3',
+                           'NAME': Path('.../core/default.db')}},
+ 'FIXTURE_DIRS': (),
+ 'INSTALLED_APPS': ('lino',
+                    'django.contrib.staticfiles',
+                    'lino.modlib.about',
+                    'lino.modlib.jinja',
+                    'lino.modlib.bootstrap3',
+                    'lino.modlib.extjs'),
+ 'LANGUAGES': [],
+ 'LOCALE_PATHS': (),
+ 'LOGIN_REDIRECT_URL': '/',
+ 'LOGIN_URL': '/accounts/login/',
+ 'LOGOUT_REDIRECT_URL': None,
+ 'MEDIA_ROOT': Path('.../core/media'),
+ 'MEDIA_URL': '/media/',
+ 'MIDDLEWARE_CLASSES': ('django.middleware.common.CommonMiddleware',
+                        'lino.core.auth.middleware.NoUserMiddleware',
+                        'lino.utils.ajax.AjaxExceptionResponse'),
+ 'ROOT_URLCONF': 'lino.core.urls',
+ 'SECRET_KEY': '20227',
+ 'SERIALIZATION_MODULES': {'py': 'lino.utils.dpy'},
+ 'STATICFILES_DIRS': (),
+ 'STATIC_ROOT': Path('...static'),
+ 'STATIC_URL': '/static/',
+ 'TEMPLATES': [{'APP_DIRS': True,
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [],
+                'OPTIONS': {'context_processors': ['django.template.context_processors.debug',
+                                                   'django.template.context_processors.i18n',
+                                                   'django.template.context_processors.media',
+                                                   'django.template.context_processors.static',
+                                                   'django.template.context_processors.tz',
+                                                   'django.contrib.messages.context_processors.messages']}},
+               {'BACKEND': 'django.template.backends.jinja2.Jinja2',
+                'DIRS': [],
+                'OPTIONS': {'environment': 'lino.modlib.jinja.get_environment'}}],
+ '__file__': '.../lino/core/site.py...'}
 

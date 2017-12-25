@@ -35,24 +35,24 @@ Journals
 
 
 >>> rt.show(accounts.Accounts)
-=========== ========================= =============================== ========================= ==========================
- Reference   Designation               Designation (de)                Designation (fr)          Account Group
------------ ------------------------- ------------------------------- ------------------------- --------------------------
- 4000        Customers                 Kunden                          Customers                 Commercial receivable(?)
- 4300        Pending Payment Orders    Offene Zahlungsaufträge         Pending Payment Orders    Commercial receivable(?)
- 4400        Suppliers                 Lieferanten                     Suppliers                 Commercial receivable(?)
- 4510        VAT due                   Geschuldete Mehrwertsteuer      VAT due                   VAT to pay
- 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     VAT returnable            VAT to pay
- 4512        VAT deductible            Abziehbare Mehrwertsteuer       VAT deductible            VAT to pay
- 4513        VAT declared              Deklarierte Mehrwertsteuer      VAT declared              Commercial receivable(?)
- 4600        Tax Offices               Steuerämter                     Tax Offices               Commercial receivable(?)
- 5500        BestBank                  BestBank                        BestBank                  Banks
- 5700        Cash                      Kasse                           Caisse                    Banks
- 6010        Purchase of services      Einkäufe von Dienstleistungen   Purchase of services      Expenses
- 6020        Purchase of investments   Investierungskäufe              Purchase of investments   Expenses
- 6040        Purchase of goods         Wareneinkäufe                   Purchase of goods         Expenses
- 7000        Sales                     Verkauf                         Sales                     Revenues
- 7310        Membership fees           Membership fees                 Membership fees           Revenues
-=========== ========================= =============================== ========================= ==========================
+=========== ========================= =============================== ============================ ==========================
+ Reference   Designation               Designation (de)                Designation (fr)             Account Group
+----------- ------------------------- ------------------------------- ---------------------------- --------------------------
+ 4000        Customers                 Kunden                          Clients                      Commercial receivable(?)
+ 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts   Commercial receivable(?)
+ 4400        Suppliers                 Lieferanten                     Fournisseurs                 Commercial receivable(?)
+ 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe                      VAT to pay
+ 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner              VAT to pay
+ 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible               VAT to pay
+ 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée                 Commercial receivable(?)
+ 4600        Tax Offices               Steuerämter                     Tax Offices                  Commercial receivable(?)
+ 5500        BestBank                  BestBank                        BestBank                     Banks
+ 5700        Cash                      Kasse                           Caisse                       Banks
+ 6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services           Expenses
+ 6020        Purchase of investments   Investierungskäufe              Achats d'investissement      Expenses
+ 6040        Purchase of goods         Wareneinkäufe                   Achats de marchandises       Expenses
+ 7000        Sales                     Verkauf                         Ventes                       Revenues
+ 7310        Membership fees           Membership fees                 Membership fees              Revenues
+=========== ========================= =============================== ============================ ==========================
 <BLANKLINE>
 

@@ -194,7 +194,7 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 """)
 
         # Now we imagine that February 3 is the National Day in our
-        # country. But that we create the rule for this only now.  So
+        # country and that we create the rule for this only now.  So
         # we have a conflict because Lino created an appointment on
         # that date. Of course the National Day must *not* move to an
         # alternative date.
@@ -284,11 +284,13 @@ Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 ================ =========== ===================
 """)
 
-        # we move the first lesson one week down and set it to draft:
+        # we move the first lesson one week down and check whether
+        # remaining entries get adapted. We manually set the state to
+        # draft (this is automatically done when using the web ui).
         
         e = cal.Event.objects.get(event_type=lesson, auto_type=1)
-        e.state = cal.EntryStates.draft
         e.start_date = i2d(20140120)
+        e.state = cal.EntryStates.draft
         e.full_clean()
         e.save()
 
@@ -308,4 +310,13 @@ Lesson 3 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring eve
  Mon 24/02/2014   Suggested   Lesson 5
 ================ =========== ===================
 """)
-        
+
+        # we cancel the third lesson and see whether Lino adds a 
+
+        e = cal.Event.objects.get(event_type=lesson, auto_type=3)
+        e.state = cal.EntryStates.cancelled
+        e.auto_type = None
+        e.full_clean()
+        e.save()
+
+        # check_update(obj, "", "")

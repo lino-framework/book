@@ -41,6 +41,7 @@ specifications.  This section is far from being complete.
    de_BE
    coachings
    clients
+   search
 
    
 Accounting stuff

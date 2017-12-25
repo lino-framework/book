@@ -1,3 +1,4 @@
+.. doctest docs/dev/users.rst
 .. _dev.users:
 
 =========================
@@ -8,11 +9,7 @@ This document explains how to get started with Lino's user management
 system.
 
 
-.. This is a tested document. You can test it using:
-
-    $ python setup.py test -s tests.LibTests.test_users
-
-   doctests initialization:
+..  doctests initialization:
     
     >>> from lino import startup
     >>> startup('lino_book.projects.min1.settings.demo')
@@ -58,16 +55,16 @@ a new user manually using the web interface, you must click their
 ...    pass
 >>> u = users.User(username="test")
 >>> u.save()
->>> print u.has_usable_password()
+>>> print(u.has_usable_password())
 False
 
 
 The `password` field is empty, and the :meth:`User.check_password`
 method returns `False`:
 
->>> print repr(u.password)
-u''
->>> print u.check_password('')
+>>> rmu(u.password)
+''
+>>> print(u.check_password(''))
 False
 
 When setting the password for a newly created user, leave the

@@ -85,7 +85,7 @@ automatically all Ash Wednesdays for a range of years:
 Actually the user sees just the summary:
 
 >>> rt.show(cal.EntriesByController, master_instance=ash)
-3: *18/02/2015?* 4: *10/02/2016?* 5: *01/03/2017?* 6: *14/02/2018?* 7: *06/03/2019?*
+3: *18/02/2015?* 4: *10/02/2016?* 5: *01/03/2017?* 6: *14/02/2018?* 7: *06/03/2019?*Suggested : 5 ,  Draft : 0 ,  Took place : 0 ,  Cancelled : 0 ,  Published : 0
 
 That range of years depends on some configuration variables:
 

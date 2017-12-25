@@ -43,10 +43,10 @@ class Site(Site):
         yield 'lino.modlib.changes'
         yield 'lino.modlib.comments'
 
-    def setup_actions(self):
-        super(Site, self).setup_actions()
-        partners = self.modules.contacts
-        from lino.core.merge import MergeAction
-        for m in (partners.Person, partners.Organisation):
-            m.define_action(merge_row=MergeAction(m))
+    # def setup_actions(self):
+    #     super(Site, self).setup_actions()
+    #     partners = self.modules.contacts
+    #     from lino.core.merge import MergeAction
+    #     for m in (partners.Person, partners.Organisation):
+    #         m.define_action(merge_row=MergeAction(m))
 

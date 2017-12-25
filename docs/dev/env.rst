@@ -218,6 +218,9 @@ LibreOffice server on your system as described in :doc:`/admin/oood`.
 Quickly installing the Lino SDK into a new virtualenv
 =====================================================
 
+
+.. xfile:: install_dev_projects.sh
+
 Not much tested. Read and follow at your own risk.
 
 Here is how to quickly install the Lino SDK into a new virtualenv::

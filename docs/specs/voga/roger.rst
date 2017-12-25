@@ -1,12 +1,11 @@
+.. doctest docs/specs/voga/roger.rst
 .. _voga.specs.roger:
 
 =================================
 Specific for Lino Voga à la Roger
 =================================
 
-..  to test only this doc:
-
-    $ doctest docs/specs/voga/roger.rst
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
@@ -171,7 +170,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Prioritäten : 5
 - Konfigurierung --> Kalender --> Regelmäßige Ereignisse : 17
 - Konfigurierung --> Kalender --> Gastrollen : 4
-- Konfigurierung --> Kalender --> Kalendereintragsarten : 9
+- Konfigurierung --> Kalender --> Kalendereintragsarten : 10
 - Konfigurierung --> Kalender --> Wiederholungsregeln : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
 - Konfigurierung --> Tarife --> Tarife : 12
@@ -194,7 +193,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benutzerarten : 5
 - Explorer --> System --> Datenbankmodelle : 78
 - Explorer --> System --> Datentests : 10
-- Explorer --> System --> Datenprobleme : 20
+- Explorer --> System --> Datenprobleme : 19
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> Partner : 104

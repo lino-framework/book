@@ -17,3 +17,4 @@ from lino_xl.lib.contacts import Plugin
 class Plugin(Plugin):
 
     extends_models = ['Partner', 'Person', 'Company']
+    use_vcard_export = True

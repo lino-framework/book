@@ -36,9 +36,9 @@ This plugin defines the following database models.
 .. image:: contacts.png
            
 - The main models are :class:`Person` and :class:`Company` and their
-  common base :class:`Partner`.
-  :class:`Partner` model is *not abstract*, i.e. you can see a table
-  where persons organizations are together.
+  common base :class:`Partner`.  The :class:`Partner` model is *not
+  abstract*, i.e. you can see a table where persons organizations are
+  together.
   
 - A :class:`Role` is when a given person has a given function in a
   given company.
@@ -132,7 +132,7 @@ This behaviour is implemented using the :attr:`quick_search_fields
 <lino.core.model.Model.quick_search_fields>` attribute on the model.
 
 >>> contacts.Partner.quick_search_fields
-frozenset(['phone', 'prefix', 'gsm', 'name'])
+(<django.db.models.fields.CharField: prefix>, <django.db.models.fields.CharField: name>, <django.db.models.fields.CharField: phone>, <django.db.models.fields.CharField: gsm>)
 
 
 Numeric quick search
@@ -141,12 +141,13 @@ Numeric quick search
 You can search for phone numbers
 
 >>> rt.show(contacts.Partners, quick_search="123", column_names="name phone id")
-=============== ============== =====
- Name            Phone          ID
---------------- -------------- -----
- Arens Andreas   +32 87123456   112
- Arens Annette   +32 87123457   113
-=============== ============== =====
+====================== ============== =====
+ Name                   Phone          ID
+---------------------- -------------- -----
+ Arens Andreas          +32 87123456   112
+ Arens Annette          +32 87123457   113
+ Dobbelstein Dorothée                  123
+====================== ============== =====
 <BLANKLINE>
 
 
@@ -188,6 +189,22 @@ persons and for organizations.
 
 
 
+Exporting contacts as vcard files
+=================================
+
+.. class:: ExportVCardFile
+
+    Download all records as a .vcf file which you can import to another
+    contacts application.
+
+    This action exists on every list of partners when your
+    application has :attr:`use_vcard_export
+    <lino_xl.lib.contacts.Plugin.use_vcard_export>` set to `True`.
+
+
+
+
+
 Reference
 =========
 
@@ -197,6 +214,24 @@ Reference
 
         The `verbose_name` of the `region` field.
            
+    .. attribute:: with_roles_history
+
+        Whether to define two additional fields
+        :attr:`Role.start_date` and :attr:`Role.end_date`.
+        
+    .. attribute:: use_vcard_export
+
+        Whether Lino should provide a button for exporting contact
+        data as a vcf file.
+
+        If you set this to `True`, then you must install `vobject
+        <http://eventable.github.io/vobject/>`__ into your Python
+        environment::
+
+              pip install vobject
+
+        
+
 .. class:: SimpleContactsUser
 
    A user who has access to basic contacts functionality.
@@ -312,8 +347,8 @@ Reference
            
 .. class:: Role
            
-    A **role** is when a given **person** has a given **function**
-    (:class:`ContactType`) in a given **organization**.
+    A **role** is when a given **person** exercises a given
+    **function** (:class:`ContactType`) in a given **organization**.
 
     .. attribute:: company
 
@@ -321,12 +356,28 @@ Reference
 
     .. attribute:: type
 
-        The function of this person in this company.
+        The function of this person in this organization.
     
     .. attribute:: person
 
-        The person having this role in this company.
+        The person having this role in this organization.
     
+    .. attribute:: start_date
+
+        When this person started to exercise this function in this
+        organization.
+                   
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+        
+    .. attribute:: end_date
+
+        When this person stopped to exercise this function in this
+        organization.
+                   
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+        
 
 .. class:: ContactRelated
 
@@ -382,6 +433,8 @@ Reference
     Adds two fields 'partner' and 'person' to this model, making it
     something that refers to a "partner".  `person` means a "contact
     person" for the partner.
+
+
 
 Print templates
 ===============

@@ -111,6 +111,7 @@ def objects():
     yield User(username="nathalie", user_type=UserTypes.user)
     yield User(username="audrey", user_type=UserTypes.auditor)
     yield User(username="martina", user_type=UserTypes.coordinator)
+    yield User(username="sandra", user_type=UserTypes.secretary)
 
     USERS = Cycler(User.objects.exclude(
         user_type__in=(UserTypes.auditor, UserTypes.admin)))

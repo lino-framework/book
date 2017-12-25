@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/ddh.rst
 .. _noi.specs.ddh:
 
 =============================
 Preventing accidental deletes
 =============================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/ddh.rst
-    
-    doctest init:
+..  doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.team.settings.doctests')
@@ -98,5 +95,5 @@ Lino Noi:
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>

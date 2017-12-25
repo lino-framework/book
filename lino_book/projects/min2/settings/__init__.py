@@ -17,6 +17,10 @@ class Site(Site):
         tb.add_action(self.modules.contacts.Persons)
         tb.add_action(self.modules.contacts.Companies)
 
+    def setup_plugins(self):
+        super(Site, self).setup_plugins()
+        self.plugins.contacts.configure(use_vcard_export=True)
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
 

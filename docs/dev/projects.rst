@@ -11,7 +11,7 @@ The overview of available projects is given in
 
 Each demo project has its own sqlite database which needs to be
 initialized first.  For example, in order to try out
-:mod:`lino_book.lib.polly` your can do::
+:mod:`lino_book.projects.polly` your can do::
 
     $ go polly
     $ django manage.py prep
