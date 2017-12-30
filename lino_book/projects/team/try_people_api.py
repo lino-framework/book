@@ -24,7 +24,7 @@ credentials = OAuth2Credentials(
     social.extra_data['access_token'],
     settings.SOCIAL_AUTH_GOOGLE_PLUS_KEY,
     settings.SOCIAL_AUTH_GOOGLE_PLUS_SECRET,
-    '',
+    social.extra_data.get('refresh_token', ''),
     datetime.fromtimestamp(social.extra_data['auth_time']),
     revoke_uri,
     user_agent,
