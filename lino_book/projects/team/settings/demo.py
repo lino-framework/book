@@ -81,7 +81,9 @@ SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'NHyaqV2HY8lV5ULG6k51OMwo'
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
     'profile',
-    'https://www.googleapis.com/auth/plus.login'
+    'https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/contacts.readonly', # To have just READ permission
+    'https://www.googleapis.com/auth/contacts ', # To have WRITE permission
 ]
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1837593149865295'
