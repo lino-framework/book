@@ -49,7 +49,7 @@ if __name__ == '__main__':
     
     # user = rt.models.users.User.objects.get(username='8618a3571d8b4237a3e60d25671d8f')
     # social = user.social_auth.get(provider='google-plus')
-    for sa in rt.models.social_django.UserSocialAuth.objects().get(
+    for sa in rt.models.social_django.UserSocialAuth.objects.filter(
             provider='google-plus'):
         doit(sa)
 
