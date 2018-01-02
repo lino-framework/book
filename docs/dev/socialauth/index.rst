@@ -77,9 +77,9 @@ your users.  For each provider you will activate the corresponding
 
 In your local :xfile:`settings.py` you must set
 :attr:`social_auth_backends
-    <lino.core.site.Site.social_auth_backends>` to a list of the backends
-    you want to offer on your site.  If you want GitHub, the you will
-    write::
+<lino.core.site.Site.social_auth_backends>` to a list of the backends
+you want to offer on your site.  If you want GitHub, the you will
+write::
 
       class Site(Site):
           ...
@@ -95,10 +95,10 @@ instructions page for `GitHub
 Note that with Lino you do not need to set
 :setting:`AUTHENTICATION_BACKENDS` yourself, Lino will do that for
 you, based on miscellaneous criteria (and :attr:`social_auth_backends
-    <lino.core.site.Site.social_auth_backends>` is only one of them).
+<lino.core.site.Site.social_auth_backends>` is only one of them).
 
-    Most backends require additional parameters, and you must define them
-    in your :xfile:`settings.py`. For example::
+Most backends require additional parameters, and you must define them
+in your :xfile:`settings.py`. For example::
 
     SOCIAL_AUTH_GITHUB_KEY = '...'
     SOCIAL_AUTH_GITHUB_SECRET = '...'
@@ -114,9 +114,9 @@ Here are the parameters we used for the GitHub application:
 - Authorization callback URL: http://127.0.0.1:8000/oauth/complete/github
 
 In Facebook you must go to :menuselection:`Products --> Facebook Login
-    --> Settings` and enabled the following:
+--> Settings` and enabled the following:
 
-        | **Embedded Browser OAuth Login**
+    | **Embedded Browser OAuth Login**
     | Enables browser control redirect uri for OAuth client login.
 
 
@@ -151,14 +151,15 @@ Exercises
 User's friends
 ==============
 
-Once an user get authentified via one of official supported third-party
- by Lino,we can retrieve user's public "friends". The following is an
-example how can this could be done using `Google People API
-<https://developers.google.com/people/>`__ in the case of GooglePlus authentication.
+Once an user get authentified via one of official supported
+third-party by Lino,we can retrieve user's public "friends". The
+following is an example how can this could be done using `Google
+People API <https://developers.google.com/people/>`__ in the case of
+GooglePlus authentication.
 
 To be able to use this API, we need to install `google-api-python-client`::
 
-    pip install -I google-api-python-client
+    pip install google-api-python-client
 
 We need also to add more scopes to `SOCIAL_AUTH_GOOGLE_PLUS_SCOPE`::
 
@@ -171,7 +172,7 @@ We need also to add more scopes to `SOCIAL_AUTH_GOOGLE_PLUS_SCOPE`::
 ]
 
 We should not forget to add `social_core.backends.google.GooglePlusAuth`
- to `social_auth_backends` in :xfile:`settings.py`.
+to `social_auth_backends` in :xfile:`settings.py`.
 
 To try to get all user's friends, run the following script::
 
@@ -179,6 +180,7 @@ To try to get all user's friends, run the following script::
 
 from the team project :mod:`lino_book.projects.team`.
 
-The script use the Google People API alongside with the credentials captured during the user logging via GooglePlus.
+The script uses the Google People API alongside with the credentials
+captured during the user logging via GooglePlus.
 
 
