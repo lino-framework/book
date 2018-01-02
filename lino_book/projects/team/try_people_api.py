@@ -37,10 +37,9 @@ def doit(social):
     print (connections.get('connections',''))
 
 
-if __name__ == '__main__':
-
-    googleplus_users = rt.models.social_django.UserSocialAuth.objects.get(
-        provider='google-plus')
-    googleplus_users = type(googleplus_users) == list and googleplus_users or [googleplus_users]
-    for sa in googleplus_users:
+if __name__ == '__main__':   
+    # user = rt.models.users.User.objects.get(username='8618a3571d8b4237a3e60d25671d8f')
+    # social = user.social_auth.get(provider='google-plus')
+    for sa in rt.models.social_django.UserSocialAuth.objects.filter(
+            provider='google-plus'):
         doit(sa)
