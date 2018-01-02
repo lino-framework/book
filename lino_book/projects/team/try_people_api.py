@@ -6,18 +6,11 @@ import httplib2
 
 from lino.api import rt
 
+
 def doit(social):
-    print()
     print("User {} authenticated by {}".format(
         social.user, social.provider))
     print(social.extra_data)
-    # response = requests.get(
-    #     'https://www.googleapis.com/plus/v1/people/me/people/collection',
-    # 'https://www.googleapis.com/plus/v1/people/me/people/visible',
-    # params={'access_token': social.extra_data['access_token']}
-    # )
-    # friends = response.json()['items']
-    # print(friends)
     revoke_uri = None
     user_agent = 'PythonSocialAuth'
 
@@ -40,17 +33,13 @@ def doit(social):
         resourceName='people/me',
         pageSize=10,
         personFields='names,emailAddresses').execute()
+    print ("User {0} have {1} connections.".format(social.user, len(connections.get('connections',''))))
+    print (connections.get('connections',''))
 
-    # contactToUpdate = people_service.people().get(resourceName=social.extra_data['user_id'],personFields='names,emailAddresses').execute()
-    print (connections)
 
-
-if __name__ == '__main__':
-    
+if __name__ == '__main__':   
     # user = rt.models.users.User.objects.get(username='8618a3571d8b4237a3e60d25671d8f')
     # social = user.social_auth.get(provider='google-plus')
     for sa in rt.models.social_django.UserSocialAuth.objects.filter(
             provider='google-plus'):
         doit(sa)
-
-    
