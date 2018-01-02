@@ -114,14 +114,14 @@ Here are the parameters we used for the GitHub application:
 - Authorization callback URL: http://127.0.0.1:8000/oauth/complete/github
 
 In Facebook you must go to :menuselection:`Products --> Facebook Login
---> Settings` and enabled the following:
+--> Settings` and enable the following:
 
     | **Embedded Browser OAuth Login**
     | Enables browser control redirect uri for OAuth client login.
 
 
-The client secrets of these applications aren't not really secret
-anymore since for educational purposes they are stored in the
+The client secrets of these applications aren't really secret anymore
+since for educational purposes they are stored in the
 :xfile:`settings.py` of the team demo project (more exactly `here
 <https://github.com/lino-framework/book/blob/master/lino_book/projects/team/settings/demo.py>`__). In
 a real setup you will of course give the public URL of your website,
@@ -139,7 +139,7 @@ Exercises
 - Sign out. Note that your user name is now listed below **This demo
   site has 7 users:**. This list does not show on a real site, it is
   there because :attr:`is_demo_site
-      <lino.core.site.Site.is_demo_site>` is `True`.
+  <lino.core.site.Site.is_demo_site>` is `True`.
 
 - Note that you exist as a user, but you can sign in only through
   GitHub. You can not sign in using the
@@ -152,33 +152,44 @@ User's friends
 ==============
 
 Once an user get authentified via one of official supported
-third-party by Lino,we can retrieve user's public "friends". The
-following is an example how can this could be done using `Google
-People API <https://developers.google.com/people/>`__ in the case of
-GooglePlus authentication.
+third-party by Lino, we can retrieve user's public "friends".
+
+
+
+The following is an example how you can try to see all your Google+
+friends using `Google People API
+<https://developers.google.com/people/>`__ after having authenticated
+using GooglePlus.
 
 To be able to use this API, we need to install `google-api-python-client`::
 
     pip install google-api-python-client
 
-We need also to add more scopes to `SOCIAL_AUTH_GOOGLE_PLUS_SCOPE`::
+The demo :xfile:`settings.py` of :mod:`lino_book.projects.team`
+have the following things done:
+
+- We added more scopes to `SOCIAL_AUTH_GOOGLE_PLUS_SCOPE`::
 
     SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
-    'profile',
-    'https://www.googleapis.com/auth/plus.login',
-    # Add at least one of the following scopes.
-    'https://www.googleapis.com/auth/contacts.readonly', # To have just READ permission
-    'https://www.googleapis.com/auth/contacts ', # To have WRITE/READ permissions
-]
+        'profile',
+        'https://www.googleapis.com/auth/plus.login',
+        # Add at least one of the following scopes.
+        'https://www.googleapis.com/auth/contacts.readonly', # To have just READ permission
+        'https://www.googleapis.com/auth/contacts ', # To have WRITE/READ permissions
+    ]
 
-We should not forget to add `social_core.backends.google.GooglePlusAuth`
-to `social_auth_backends` in :xfile:`settings.py`.
+- We added `social_core.backends.google.GooglePlusAuth`
+  to `social_auth_backends`.
 
-To try to get all user's friends, run the following script::
+
+
+Run the web interface on your machine and log in via Google+ as
+described in `A working example`_.
+ 
+Run the following script from the :mod:`lino_book.projects.team`
+project directory::
 
     python manage.py run try_people_api.py
-
-from the team project :mod:`lino_book.projects.team`.
 
 The script uses the Google People API alongside with the credentials
 captured during the user logging via GooglePlus.
