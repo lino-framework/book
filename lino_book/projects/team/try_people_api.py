@@ -31,19 +31,31 @@ def doit(social):
     people_service = build(serviceName='people', version='v1', http=http)
     # Here is an example to retrieve connections (contacts) of my GooglePlus account In the following line,
     # we are selecting the 'names' and the 'emailAddresses' fields of the contact. To select more fields,
-    # please refer to the Google documentation , https://developers.google.com/people/api/rest/v1/people
+    # please refer to the Google documentation at https://developers.google.com/people/api/rest/v1/people
     connections = people_service.people().connections().list(
         resourceName='people/me',
-        personFields='names,emailAddresses').execute()
+        personFields='names,emailAddresses,phoneNumbers').execute()
     print ("User {0} have {1} connections.".format(social.user, len(connections.get('connections', ''))))
     all_contacts = connections.get('connections', [])
     print ("Name            email   ")
     # Showing all the contacts we get.
-    for contact in all_contacts:
-        emailAddresses = contact.get('emailAddresses', False) and contact.get('emailAddresses', [])[0].get('value',
-                                                                                                           '') or ''
-        contact_name = contact.get('names', False) and contact.get('names', False)[0].get('displayName', '') or ''
-        print ("{0}            {1}".format(contact_name, emailAddresses))
+    for i, contact in enumerate(all_contacts):
+        names = contact.get('names', [])
+        names = ', '.join([n.get('displayName', '') for n in names])
+        s = names
+        for fld in ('emailAddresses', 'phoneNumbers'):
+            values = []
+            for a in contact.get(fld, []):
+                value = a.get('value', '')
+                _type = a.get('type', '')
+                if _type:
+                    value = '{0} ({1})'.format(value, _type)
+                values.append(value)
+            if len(values):
+                s += ', ' + ', '.join(values)
+        print("[{}] {}".format(i, s))
+        # print ("{0}: {1}".format(fld, s))
+        # print(contact.keys())
 
 
 if __name__ == '__main__':
