@@ -26,7 +26,6 @@ specifications.  This section is far from being complete.
    human
    checkdata
    countries
-   invalid_requests
    gfks
    gfktest
    dumps
@@ -82,6 +81,8 @@ Technical stuff
    :maxdepth: 1
   
    
+   tim2lino
+   invalid_requests
    projects/mti
    projects/nomti
    projects/lets1

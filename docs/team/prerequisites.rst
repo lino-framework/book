@@ -49,15 +49,14 @@ Sphinx
 ======
 
 Documentation about Lino is written using `Sphinx
-<http://sphinx-doc.org>`_.
+<http://sphinx-doc.org>`_.  
 
-- You should know how Sphinx works and why we use it. Important chapters of
-  the Sphinx documentation include
-  `The build configuration file <http://sphinx-doc.org/config.html>`_
+- You should know how Sphinx works and why we use it to write Lino
+  documentation.  See :doc:`/dev/builddocs` for the first steps.
 
 - You might want to use the same blogging system as Luc and to
   document your own contributions to Lino in a :doc:`developer blog
-  </team/devblog>`.
+  </dev/devblog>`.
 
 
 The UNIX shell
