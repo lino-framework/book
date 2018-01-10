@@ -81,20 +81,28 @@ SETUP_INFO.update(long_description="""
 .. image:: https://img.shields.io/pypi/l/lino.svg
    :target: https://pypi.python.org/pypi/lino/
 
-This is the code repository with the big Sphinx documentation tree
-about the Lino framework.  A build of this tree is published on
-`www.lino-framework.org <http://www.lino-framework.org>`__ and on
-`lino.readthedocs.io <http://lino.readthedocs.io>`__.
-
-It also contains the ``lino_book`` Python package, a collection of
-small example Lino applications used for educational and testing
-purposes.
+This is the code repository that contains (1) the Sphinx source files
+of the Lino Book, (2) the ``lino_book`` Python package and (3) a test
+suite with doctest-based tests for the Lino framework.
 
 The code repositories for the ``lino`` and ``lino_xl`` Python packages
-have no documentation tree on their own, their documentation is here.
+have no documentation tree on their own and almost no unit tests, they
+are tested and documented here.
 
-It also contains a test suite with doctest-based tests for all these
-packages.
+The **Lino Book** is the central documentation tree of the Lino
+framework.  It is visible on `www.lino-framework.org
+<http://www.lino-framework.org>`__ and on `lino.readthedocs.io
+<http://lino.readthedocs.io>`__.  The Lino Book contains everything
+one might want to know about Lino.  Its audience ranges from deciders
+without technical knowledge over Python developers to Linux system
+administrators.  Of course each of these groups has their own section
+since their priorities and languages tend to differ substantially.
+And of course the Lino Book is not finished and never will be.
+
+The ``lino_book`` Python package is a collection of small example Lino
+applications used for educational and testing purposes.
+
+
 
 """)
 

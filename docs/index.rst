@@ -2,11 +2,11 @@
 The Lino framework
 ==================
 
-Welcome to the online version of the Lino book, the free documentation
+Welcome to the online version of the Lino Book, the free documentation
 repository about the Lino framework.
 
 .. Rumma & Ko is `hiring people <http://www.saffre-rumma.net/jobs>`_
-   to help Luc and Hamza with their work on Lino.
+   to help us with our work on Lino.
 
 
 Sitemap
