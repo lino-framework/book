@@ -18,5 +18,5 @@ exec(compile(open(filename, "rb").read(), filename, 'exec'))
 
 __version__ = SETUP_INFO['version']
 intersphinx_urls = dict(docs="http://www.lino-framework.org")
-srcref_url = 'https://github.com/lsaffre/lino_book/blob/master/%s'
+srcref_url = 'https://github.com/lino-framework/book/blob/master/%s'
 

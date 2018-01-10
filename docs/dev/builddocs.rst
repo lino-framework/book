@@ -17,13 +17,13 @@ Theoretically it's easy
 =======================
 
 Theoretically it's easy to build the Lino Book: you just run :cmd:`inv
-bd` in the root of your ``book`` repository::
+bd` in the root directory of your ``book`` repository::
 
   $ go book
   $ inv bd
 
-This uses Sphinx to read the `.rst` source files and to generate
-:file:`.html` files into the :file:`docs/.build` directory. Voilà.
+This will tell Sphinx to read the `.rst` source files and to generate
+:file:`.html` files into the :file:`docs/.build` directory.  Voilà.
 
 If you get some error message, then you need to check whether your
 development environment is correctly installed as explained in
