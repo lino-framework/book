@@ -102,8 +102,8 @@ Writing documentation
 .. toctree::
    :maxdepth: 1
 
-   /team/builddocs
-   /team/devblog
+   builddocs
+   devblog
    doctests
    docstrings
 

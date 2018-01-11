@@ -13,9 +13,9 @@ specifications.  This section is far from being complete.
    :maxdepth: 1
   
    cv
-   export_excel
    cal
    contacts
+   courses
    phones
    holidays
    households
@@ -26,7 +26,6 @@ specifications.  This section is far from being complete.
    human
    checkdata
    countries
-   invalid_requests
    gfks
    gfktest
    dumps
@@ -42,6 +41,7 @@ specifications.  This section is far from being complete.
    coachings
    clients
    search
+   export_excel
 
    
 Accounting stuff
@@ -82,6 +82,8 @@ Technical stuff
    :maxdepth: 1
   
    
+   tim2lino
+   invalid_requests
    projects/mti
    projects/nomti
    projects/lets1

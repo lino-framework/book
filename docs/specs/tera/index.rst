@@ -17,3 +17,4 @@ designed to be used in a center for `sociopsychological
    products
    sql
    ledger
+   courses

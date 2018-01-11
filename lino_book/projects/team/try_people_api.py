@@ -10,36 +10,55 @@ from lino.api import rt
 def doit(social):
     print("User {} authenticated by {}".format(
         social.user, social.provider))
-    print(social.extra_data)
-    revoke_uri = None
-    user_agent = 'PythonSocialAuth'
-
+    # print(social.extra_data)
+    # Get required credentials for the current GooglePlus account
     credentials = OAuth2Credentials(
         social.extra_data['access_token'],
         settings.SOCIAL_AUTH_GOOGLE_PLUS_KEY,
         settings.SOCIAL_AUTH_GOOGLE_PLUS_SECRET,
         social.extra_data.get('refresh_token', ''),
         datetime.fromtimestamp(social.extra_data['auth_time']),
-        revoke_uri,
-        user_agent,
+        None,
+        'PythonSocialAuth',
         scopes=settings.SOCIAL_AUTH_GOOGLE_PLUS_SCOPE
     )
 
+    # Get the authorized http object from GooglePlus
     http = httplib2.Http()
     http = credentials.authorize(http)
 
+    # Create the People Service
     people_service = build(serviceName='people', version='v1', http=http)
+    # Here is an example to retrieve connections (contacts) of my GooglePlus account In the following line,
+    # we are selecting the 'names' and the 'emailAddresses' fields of the contact. To select more fields,
+    # please refer to the Google documentation at https://developers.google.com/people/api/rest/v1/people
     connections = people_service.people().connections().list(
         resourceName='people/me',
-        pageSize=10,
-        personFields='names,emailAddresses').execute()
-    print ("User {0} have {1} connections.".format(social.user, len(connections.get('connections',''))))
-    print (connections.get('connections',''))
+        personFields='names,emailAddresses,phoneNumbers').execute()
+    print ("User {0} have {1} connections.".format(social.user, len(connections.get('connections', ''))))
+    all_contacts = connections.get('connections', [])
+    print ("Name            email   ")
+    # Showing all the contacts we get.
+    for i, contact in enumerate(all_contacts):
+        names = contact.get('names', [])
+        names = ', '.join([n.get('displayName', '') for n in names])
+        s = names
+        for fld in ('emailAddresses', 'phoneNumbers'):
+            values = []
+            for a in contact.get(fld, []):
+                value = a.get('value', '')
+                _type = a.get('type', '')
+                if _type:
+                    value = '{0} ({1})'.format(value, _type)
+                values.append(value)
+            if len(values):
+                s += ', ' + ', '.join(values)
+        print("[{}] {}".format(i, s))
+        # print ("{0}: {1}".format(fld, s))
+        # print(contact.keys())
 
 
-if __name__ == '__main__':   
-    # user = rt.models.users.User.objects.get(username='8618a3571d8b4237a3e60d25671d8f')
-    # social = user.social_auth.get(provider='google-plus')
+if __name__ == '__main__':
     for sa in rt.models.social_django.UserSocialAuth.objects.filter(
-            provider='google-plus'):
+            provider="google-plus"):
         doit(sa)
