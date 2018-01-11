@@ -109,6 +109,12 @@ apache server, you could activate is using the following command::
 
     a2enmod rewrite
 
+You also may need to activate the relevant proxy modules if you haven't already::
+
+    a2enmod proxy
+    a2enmod proxy_http
+    a2enmov proxy_wstunnel
+
 And then a apache restart is required to load the new apache
 configuration.
 
