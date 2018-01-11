@@ -6,7 +6,7 @@ Activities in Lino Voga
 
 .. to test only this doc:
 
-    $ doctest docs/specs/courses.rst
+    $ doctest docs/specs/voga/courses.rst
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
@@ -14,6 +14,10 @@ Activities in Lino Voga
 
 This document specifies how the :mod:`lino_xl.lib.courses` plugin is
 being used in :ref:`voga`.
+
+.. contents::
+  :local:
+
 
 
 Implementation
@@ -381,3 +385,5 @@ Presence sheet
 The **presence sheet** of a course is a printable document where
 course instructors can manually record the presences of the
 participants for every event.
+
+

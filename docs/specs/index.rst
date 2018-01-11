@@ -13,9 +13,9 @@ specifications.  This section is far from being complete.
    :maxdepth: 1
   
    cv
-   export_excel
    cal
    contacts
+   courses
    phones
    holidays
    households
@@ -41,6 +41,7 @@ specifications.  This section is far from being complete.
    coachings
    clients
    search
+   export_excel
 
    
 Accounting stuff
