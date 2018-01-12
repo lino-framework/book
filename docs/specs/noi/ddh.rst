@@ -36,24 +36,22 @@ Lino Noi:
   - PROTECT : cal.Event.priority
 - cal.Room :
   - PROTECT : cal.Event.room, meetings.Meeting.room
-- clocking.SessionType :
-  - PROTECT : clocking.Session.session_type
 - comments.Comment :
   - PROTECT : comments.Comment.reply_to
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
 - contacts.Company :
-  - PROTECT : cal.Event.company, cal.Room.company, clocking.ServiceReport.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company, tickets.Site.company
+  - PROTECT : cal.Event.company, cal.Room.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company, tickets.Site.company, working.ServiceReport.company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr
-  - PROTECT : clocking.ServiceReport.interesting_for, lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner
+  - PROTECT : lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner, working.ServiceReport.interesting_for
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, clocking.ServiceReport.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person, working.ServiceReport.contact_person
 - contacts.RoleType :
-  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, clocking.ServiceReport.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role
+  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :
   - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
@@ -65,7 +63,7 @@ Lino Noi:
 - django_mailbox.Message :
   - PROTECT : django_mailbox.Message.in_reply_to, django_mailbox.MessageAttachment.message
 - excerpts.Excerpt :
-  - SET_NULL : clocking.ServiceReport.printed_by
+  - SET_NULL : working.ServiceReport.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
 - github.Repository :
@@ -85,7 +83,7 @@ Lino Noi:
 - tickets.Site :
   - PROTECT : meetings.Meeting.site, tickets.Ticket.site
 - tickets.Ticket :
-  - PROTECT : clocking.Session.ticket, deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of
+  - PROTECT : deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :
@@ -95,5 +93,7 @@ Lino Noi:
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, clocking.ServiceReport.user, clocking.Session.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+- working.SessionType :
+  - PROTECT : working.Session.session_type
 <BLANKLINE>

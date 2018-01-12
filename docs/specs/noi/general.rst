@@ -28,28 +28,28 @@ Ticket management is not Worktime tracking
 ==========================================
 
 Lino Noi uses both :mod:`lino_xl.lib.tickets` (Ticket management) and
-:mod:`lino_xl.lib.clocking` (Worktime tracking).
+:mod:`lino_xl.lib.working` (Worktime tracking).
 
-Note that :mod:`lino_xl.lib.clocking` and :mod:`lino_xl.lib.tickets`
+Note that :mod:`lino_xl.lib.working` and :mod:`lino_xl.lib.tickets`
 are independent modules which might be reused by other applicaton.
 Lino Noi uses them both and extends the "library" versions:
 
-- :mod:`lino_noi.lib.clocking` 
+- :mod:`lino_noi.lib.working` 
 - :mod:`lino_noi.lib.tickets` 
 
->>> dd.plugins.clocking
-lino_noi.lib.clocking
+>>> dd.plugins.working
+lino_noi.lib.working
 
 >>> dd.plugins.tickets
 lino_noi.lib.tickets (extends_models=['Ticket'])
 
-For example, a service report is part of the clocking plugin, but the
-current implementation is defined in :mod:`lino_noi.lib.clocking` (not
-in :mod:`lino_xl.lib.clocking`) because it makes sense only if you
-have both clocking and tickets.
+For example, a service report is part of the working plugin, but the
+current implementation is defined in :mod:`lino_noi.lib.working` (not
+in :mod:`lino_xl.lib.working`) because it makes sense only if you
+have both working and tickets.
 
 
->>> dd.plugins.clocking.needs_plugins
+>>> dd.plugins.working.needs_plugins
 ['lino_noi.lib.tickets']
 
 >>> dd.plugins.tickets.needs_plugins
@@ -95,7 +95,7 @@ A **senior** is a developer who additionaly can triage tickets.
 
 Here is a list of user types of those who can work on tickets:
 
->>> from lino_xl.lib.clocking.roles import Worker
+>>> from lino_xl.lib.working.roles import Worker
 >>> UserTypes = rt.modules.users.UserTypes
 >>> [p.name for p in UserTypes.items()
 ...     if p.has_required_roles([Worker])]

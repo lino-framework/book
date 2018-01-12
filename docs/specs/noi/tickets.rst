@@ -809,7 +809,7 @@ the detail window of a ticket.
     - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Workflow** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
-      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
       - **Commits** (github_CommitsByTicket)
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):

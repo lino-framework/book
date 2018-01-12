@@ -19,7 +19,7 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, clocking, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
+44 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
 66 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
@@ -39,9 +39,6 @@ This document describes the database structure.
  cal.Subscription                   cal.Subscriptions                4         0
  cal.Task                           cal.Tasks                        17        0
  changes.Change                     changes.Changes                  10        0
- clocking.ServiceReport             clocking.ServiceReports          10        1
- clocking.Session                   clocking.Sessions                12        13
- clocking.SessionType               clocking.SessionTypes            4         1
  comments.Comment                   comments.Comments                10        12
  comments.CommentType               comments.CommentTypes            4         0
  contacts.Company                   contacts.Companies               22        5
@@ -80,7 +77,7 @@ This document describes the database structure.
  tickets.Project                    tickets.Projects                 18        5
  tickets.ProjectType                tickets.ProjectTypes             4         0
  tickets.Site                       tickets.Sites                    8         3
- tickets.Ticket                     tickets.Tickets                  27        116
+ tickets.Ticket                     tickets.Tickets                  29        116
  tickets.TicketType                 tickets.TicketTypes              4         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
  topics.Interest                    topics.Interests                 6         15
@@ -90,6 +87,9 @@ This document describes the database structure.
  uploads.UploadType                 uploads.UploadTypes              8         0
  users.Authority                    users.Authorities                3         0
  users.User                         users.Users                      45        6
+ working.ServiceReport              working.ServiceReports           10        1
+ working.Session                    working.Sessions                 13        13
+ working.SessionType                working.SessionTypes             4         1
 ================================== ================================ ========= =======
 <BLANKLINE>
 

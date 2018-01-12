@@ -25,15 +25,15 @@ lino_noi.lib.topics
 >>> dd.plugins.tickets
 lino_noi.lib.tickets (extends_models=['Ticket'])
 
->>> dd.plugins.clocking
-lino_noi.lib.clocking
+>>> dd.plugins.working
+lino_noi.lib.working
 
 
 Testing ticket #352
 ===================
 
 
->>> A = rt.models.clocking.SessionsByTicket
+>>> A = rt.models.working.SessionsByTicket
 >>> obj = rt.models.tickets.Ticket.objects.get(pk=1)
 
 >>> ses = rt.login('robin', renderer=settings.SITE.kernel.default_renderer)
@@ -46,7 +46,7 @@ True
 lino_xl.lib.tickets.ui.Tickets
 >>> html = A.get_slave_summary(obj, ar)
 >>> print(E.tostring(html))  #doctest: +SKIP
-<div class="htmlText"><p><a href="javascript:Lino.tickets.Tickets.start_session(null,true,1,{  })" style="text-decoration:none">&#9654;</a></p><p>Total 0:00 hours.</p><p>Active sessions: <span><a href="javascript:Lino.clocking.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 1 })">Jean since 09:00:00</a> <a href="javascript:Lino.clocking.Sessions.end_session(null,true,1,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.clocking.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 5 })">Luc since 09:00:00</a> <a href="javascript:Lino.clocking.Sessions.end_session(null,true,5,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.clocking.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 9 })">Mathieu since 09:00:00</a> <a href="javascript:Lino.clocking.Sessions.end_session(null,true,9,{  })" style="text-decoration:none">&#9632;</a></span></p></div>
+<div class="htmlText"><p><a href="javascript:Lino.tickets.Tickets.start_session(null,true,1,{  })" style="text-decoration:none">&#9654;</a></p><p>Total 0:00 hours.</p><p>Active sessions: <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 1 })">Jean since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,1,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 5 })">Luc since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,5,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 9 })">Mathieu since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,9,{  })" style="text-decoration:none">&#9632;</a></span></p></div>
 
 >>> soup = BeautifulSoup(E.tostring(html), 'lxml')
 >>> # print(soup.body.prettify())
@@ -56,11 +56,11 @@ lino_xl.lib.tickets.ui.Tickets
 >>> for lnk in links:
 ...    print(lnk['href'])
 javascript:Lino.tickets.Tickets.start_session(null,true,1,{  })
-javascript:Lino.clocking.Sessions.detail.run(null,{ "record_id": 1 })
-javascript:Lino.clocking.Sessions.end_session(null,false,1,{  })
-javascript:Lino.clocking.Sessions.detail.run(null,{ "record_id": 5 })
-javascript:Lino.clocking.Sessions.end_session(null,false,5,{  })
-javascript:Lino.clocking.Sessions.detail.run(null,{ "record_id": 9 })
-javascript:Lino.clocking.Sessions.end_session(null,false,9,{  })
+javascript:Lino.working.Sessions.detail.run(null,{ "record_id": 1 })
+javascript:Lino.working.Sessions.end_session(null,false,1,{  })
+javascript:Lino.working.Sessions.detail.run(null,{ "record_id": 5 })
+javascript:Lino.working.Sessions.end_session(null,false,5,{  })
+javascript:Lino.working.Sessions.detail.run(null,{ "record_id": 9 })
+javascript:Lino.working.Sessions.end_session(null,false,9,{  })
 
 

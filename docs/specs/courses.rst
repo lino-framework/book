@@ -46,8 +46,8 @@ The participants of an activity are stored as **Enrolments**.
 .. currentmodule:: lino_xl.lib.courses
 
 
-The :class:`Course` model
-=========================
+The ``Course`` model
+====================
 
 .. class:: Course
 
@@ -132,8 +132,8 @@ The :class:`Course` model
     Shows the courses of a given topic.
 
 
-The :class:`Enrolment` model
-============================
+The ``Enrolment`` model
+=======================
 
 .. class:: Enrolment
            
@@ -184,13 +184,13 @@ The :class:`Enrolment` model
     Show all enrolments of a given course.
 
 
-The :class:`Slot` model
-=======================
+The ``Slot`` model
+==================
 
 .. class:: Slot
     
-The :class:`Line` model
-=======================
+The ``Line`` model
+==================
 
 .. class:: Line
 

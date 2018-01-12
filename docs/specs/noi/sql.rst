@@ -41,7 +41,7 @@ SQL that poor Django must do in order to return a single row.
 ===================== =======
  table                 count
 --------------------- -------
- clocking_session      15
+ working_session      15
  django_content_type   1
  django_session        1
  stars_star            22
