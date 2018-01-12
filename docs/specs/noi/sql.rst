@@ -41,13 +41,13 @@ SQL that poor Django must do in order to return a single row.
 ===================== =======
  table                 count
 --------------------- -------
- working_session      15
  django_content_type   1
  django_session        1
  stars_star            22
  tickets_site          7
  tickets_ticket        2
  users_user            1
+ working_session       15
 ===================== =======
 <BLANKLINE>
 
