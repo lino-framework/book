@@ -1,3 +1,5 @@
+.. _lino.name:
+
 About the name "Lino"
 =====================
 
