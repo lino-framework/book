@@ -39,20 +39,18 @@ The general workflow for a code contribution is
 Copyright considerations
 ========================
 
-Every free software project has a copyright holder.
+If you contribute some code to some repository of the Lino project, we
+ask you to assign your copyright to *Luc Saffre* because we want to
+avoid legal problems in case we want to change the license in the
+future and because we do not want to add every individual contributor
+to every copyright statement.
 
 Currently most Lino source files are *(c) Luc Saffre*, and we consider
 Luc as the official copyright holder of the Lino framework.  This
 doesn't reflect reality perfectly, but it seems the most reasonable
 formulation at the moment.  As long as there is no legal entity to act
 as copyright holder, everybody just trusts that Luc will manage these
-things one day before he dies...
-
-So if you contribute some code to some repository of the Lino project,
-we ask you to assign your copyright to *Luc Saffre* because we want to
-avoid legal problems in case we want to change the license in the
-future.  And because we do not want to add every individual
-contributor to every copyright statement.
+things one day before he dies.
 
 We are still working on the details.
 
