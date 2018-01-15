@@ -1,4 +1,4 @@
-.. doctest docs/specs/noi/clocking.rst
+.. doctest docs/specs/noi/working.rst
 .. _specs.clocking:
 .. _noi.specs.clocking:
 
@@ -12,9 +12,9 @@ Work time tracking
     >>> startup('lino_book.projects.team.settings.doctests')
     >>> from lino.api.doctest import *
 
-.. currentmodule:: lino_xl.lib.clocking
+.. currentmodule:: lino_xl.lib.working
      
-The :mod:`lino_xl.lib.clocking` adds functionality for managing work
+The :mod:`lino_xl.lib.working` adds functionality for managing work
 sessions.  A **work session** is when a user works on a "ticket" for a
 given lapse of time.
 
@@ -23,7 +23,7 @@ What a ticket exactly is, is defined by :attr:`ticket_model
 can be any model which implements :class:`Workable`.
 In :ref:`noi` this points to
 :class:`tickets.Ticket <lino_xl.lib.tickets.Ticket>`. 
-:mod:`lino_noi.lib.clocking` extends the library plugin.
+:mod:`lino_noi.lib.working` extends the library plugin.
      
 
 Note that the demo data is on fictive demo date **May 23, 2015**:
@@ -36,7 +36,7 @@ Sessions
 ========
 
 
->>> rt.show(clocking.Sessions, limit=15)
+>>> rt.show(working.Sessions, limit=15)
 ... #doctest: -REPORT_UDIFF
 ================================== ========= ============ ============ ============ ========== ============ ========= =========== =================
  Ticket                             Worker    Start date   Start time   End Date     End Time   Break Time   Summary   Duration    Ticket #
@@ -62,7 +62,7 @@ Sessions
 Some sessions are on private tickets:
 
 >>> from django.db.models import Q
->>> rt.show(clocking.Sessions, column_names="ticket user duration ticket__project", filter=Q(ticket__private=True))
+>>> rt.show(working.Sessions, column_names="ticket user duration ticket__project", filter=Q(ticket__private=True))
 ... #doctest: -REPORT_UDIFF
 ============================== ========= =========== =========
  Ticket                         Worker    Duration    Mission
@@ -85,7 +85,7 @@ Worked hours
 This table shows the last seven days, one row per day, with your
 working hours.
 
->>> rt.login('jean').show(clocking.WorkedHours)
+>>> rt.login('jean').show(working.WorkedHours)
 ... #doctest: -REPORT_UDIFF
 ====================================== ========== ========== ====== ==========
  Description                            Regular    Extra      Free   Total
@@ -118,12 +118,12 @@ started some days ago.
 
     Render this table to HTML in order to reproduce :ticket:`523`:
 
-    >>> url = "/api/clocking/WorkedHours?"
+    >>> url = "/api/working/WorkedHours?"
     >>> url += "_dc=1442341081053&cw=430&cw=83&cw=83&cw=83&cw=83&cw=83&cw=83&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ci=description&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=vc4&ci=vc5&name=0&pv=16.05.2015&pv=23.05.2015&pv=7&an=show_as_html&sr="
     >>> test_client.force_login(rt.login('jean').user)
     >>> res = test_client.get(url, REMOTE_USER="jean")
     >>> json.loads(res.content)
-    {u'open_url': u'/bs3/clocking/WorkedHours?limit=15', u'success': True}
+    {u'open_url': u'/bs3/working/WorkedHours?limit=15', u'success': True}
 
 
     The html version of this table table has only 5 rows (4 data rows and
@@ -131,8 +131,8 @@ started some days ago.
 
     >>> ar = rt.login('jean')
     >>> u = ar.get_user()
-    >>> ar = clocking.WorkedHours.request(user=u)
-    >>> ar = ar.spawn(clocking.WorkedHours)
+    >>> ar = working.WorkedHours.request(user=u)
+    >>> ar = ar.spawn(working.WorkedHours)
     >>> lst = list(ar)
     >>> len(lst)
     7
@@ -161,7 +161,7 @@ It currently contains two tables:
 This report can serve as a base for writing invoices.
 
 
->>> obj = clocking.ServiceReport.objects.get(pk=1)
+>>> obj = working.ServiceReport.objects.get(pk=1)
 >>> obj.printed_by.build_method
 <BuildMethods.weasy2html:weasy2html>
 
@@ -169,7 +169,7 @@ This report can serve as a base for writing invoices.
 >>> obj.interesting_for
 Partner #108 ('welket')
 
->>> rt.show(clocking.SessionsByReport, obj)
+>>> rt.show(working.SessionsByReport, obj)
 ... #doctest: -REPORT_UDIFF +SKIP
 ==================== ============ ========== ============ ================== ========== ======= ======
  Start date           Start time   End Time   Break Time   Description        Regular    Extra   Free
@@ -183,7 +183,7 @@ Partner #108 ('welket')
 
 Note that there are sessions without a duration. That's because
 
->>> rt.show(clocking.TicketsByReport, obj)
+>>> rt.show(working.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
 ==== ========================================================= ========= ======= ========== ======= ======
  ID   Description                                               Mission   State   Regular    Extra   Free
@@ -197,7 +197,7 @@ Note that there are sessions without a duration. That's because
 The :class:`ProjectsByReport` table lists
 all projects and the time invested.
 
->>> rt.show(clocking.ProjectsByReport, obj)
+>>> rt.show(working.ProjectsByReport, obj)
 ==================== ====== ================= ========== ======= ======
  Reference            Name   Tickets           Regular    Extra   Free
 -------------------- ------ ----------------- ---------- ------- ------
@@ -220,7 +220,7 @@ time should be reported to the employer (but no customer is going to
 pay for it directly).  "Customer" is when working time should be
 reported to the customer.
 
->>> rt.show(clocking.ReportingTypes)
+>>> rt.show(working.ReportingTypes)
 ======= ========= =========
  value   name      text
 ------- --------- ---------
@@ -234,7 +234,7 @@ reported to the customer.
 The local site admin can adapt above list to the site's needs. He also
 defines a default reporting type:
 
->>> dd.plugins.clocking.default_reporting_type
+>>> dd.plugins.working.default_reporting_type
 <ReportingTypes.regular:10>
 
 
@@ -384,7 +384,7 @@ Reference
     A **service report** is a document used in various discussions with
     a stakeholder.
 
-    Defined in :mod:`lino_noi.lib.clocking`.
+    Defined in :mod:`lino_noi.lib.working`.
 
     .. attribute:: user
 

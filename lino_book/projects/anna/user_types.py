@@ -14,7 +14,7 @@ from lino_xl.lib.contacts.roles import ContactsStaff
 from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.votes.roles import VotesStaff, VotesUser
 from lino_xl.lib.tickets.roles import Reporter, Triager, TicketsStaff
-from lino_xl.lib.clocking.roles import Worker
+from lino_xl.lib.working.roles import Worker
 from lino.modlib.users.choicelists import UserTypes
 from django.utils.translation import ugettext_lazy as _
 

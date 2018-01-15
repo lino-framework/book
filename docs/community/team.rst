@@ -4,7 +4,7 @@
 The Lino Team
 =============
   
-The **Lino Team** is a network of independent humans who help making
+The **Lino Team** is the group of independent humans who help making
 Lino better.
 
 We have our `organization on GitHub
@@ -13,13 +13,8 @@ repositories that make up the Lino framework.
 
 The Lino Team is an informal group of co-publishers. It does neither
 generate revenue nor does it intend to make or distribute profits.
-There is no legal agreement holding its members together.  Every
-contributor is liable for their work: if one of us would
-(accidentally) publish a file with sensitive confidential data or
-copyrighted content, only that particular person (or their employer)
-would be liable.  We did not (yet) formulate and sign any Contributor
-License Agreement as e.g. `Django
-<https://www.djangoproject.com/foundation/cla/>`__ does it.
+There is no legal agreement holding its members together.
+See also :ref:`lino.copyright`.
 
 .. |br| raw:: html
 

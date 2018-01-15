@@ -30,10 +30,10 @@ The default variant ("team")
     mailbox
     
     tickets
+    working
     projects
     faculties
     votes
-    clocking
     deploy
     github
     stars

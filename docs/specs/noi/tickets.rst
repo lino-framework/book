@@ -809,13 +809,13 @@ the detail window of a ticket.
     - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
     - (general1_4): **Workflow** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
     - (bottom_box) [visible for user consultant hoster developer senior admin]:
-      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (clocking_SessionsByTicket) [visible for consultant hoster developer senior admin]
+      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
       - **Commits** (github_CommitsByTicket)
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):
     - (more1):
-      - (more1_1): **Created** (created), **Modified** (modified), **Reported for** (reported_for)
+      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since), **Reported for** (reported_for)
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]

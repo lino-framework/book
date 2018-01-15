@@ -12,12 +12,12 @@ from lino.utils import Cycler, i2d
 
 from lino.core.roles import SiteAdmin
 from lino_xl.lib.cal.choicelists import DurationUnits
-from lino_xl.lib.clocking.roles import Worker
+from lino_xl.lib.working.roles import Worker
 from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
 from lino.modlib.users.utils import create_user
 
-from lino_xl.lib.clocking.choicelists import ReportingTypes
+from lino_xl.lib.working.choicelists import ReportingTypes
 
 def vote(user, ticket, state, **kw):
     u = rt.models.users.User.objects.get(username=user)
@@ -32,7 +32,7 @@ def vote(user, ticket, state, **kw):
 
 def objects():
     yield tickets_objects()
-    yield clockings_objects()
+    yield working_objects()
     # yield faculties_objects()
     # yield votes_objects()
 
@@ -273,12 +273,12 @@ def tickets_objects():
                 for cs in star.yield_children(U):
                     yield cs
 
-def clockings_objects():
-    # was previously in clockings
+def working_objects():
+    # was previously in working
     Company = rt.models.contacts.Company
     # Vote = rt.models.votes.Vote
-    SessionType = rt.models.clocking.SessionType
-    Session = rt.models.clocking.Session
+    SessionType = rt.models.working.SessionType
+    Session = rt.models.working.Session
     Ticket = rt.models.tickets.Ticket
     User = rt.models.users.User
     UserTypes = rt.models.users.UserTypes
@@ -327,7 +327,7 @@ def clockings_objects():
                 if offset == 0 or worked > 8:
                     break
 
-    ServiceReport = rt.models.clocking.ServiceReport
+    ServiceReport = rt.models.working.ServiceReport
     welket = Company.objects.get(name="welket")
     yield ServiceReport(
         start_date=dd.today(-90), interesting_for=welket)

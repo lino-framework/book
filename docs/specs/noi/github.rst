@@ -70,7 +70,7 @@ sessions that were active during the time of committing.
  lino-framework:noi   742de256c933f2beba0a03d64acf788c1d4f4c16            Luc      lsaffre            first commit                                         2014-07-07 06:22:58+00:00
 ==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
 <BLANKLINE>
->>> s = rt.models.clocking.Session(ticket = rt.models.tickets.Ticket.objects.get(pk = 1), user = rt.models.users.User.objects.get(first_name="Luc"))
+>>> s = rt.models.working.Session(ticket = rt.models.tickets.Ticket.objects.get(pk = 1), user = rt.models.users.User.objects.get(first_name="Luc"))
 >>> s.start_date, s.end_time = rt.models.github.Commit.objects.all()[0].created.date(), rt.models.github.Commit.objects.all()[0].created.time()
 >>> s.start_time = datetime.datetime.combine(datetime.datetime.today(), s.end_time ) - datetime.timedelta(seconds = 60)
 >>> s.start_time = s.start_time.time()

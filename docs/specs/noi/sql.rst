@@ -41,13 +41,13 @@ SQL that poor Django must do in order to return a single row.
 ===================== =======
  table                 count
 --------------------- -------
- clocking_session      15
  django_content_type   1
  django_session        1
  stars_star            22
  tickets_site          7
  tickets_ticket        2
  users_user            1
+ working_session       15
 ===================== =======
 <BLANKLINE>
 
@@ -86,6 +86,7 @@ tickets.Ticket.reporter
 tickets.Ticket.waiting_for
 tickets.Ticket.feedback
 tickets.Ticket.standby
+tickets.Ticket.fixed_since
 lino.core.model.Model.workflow_buttons
 lino.core.model.Model.mobile_item
 lino.core.model.Model.overview

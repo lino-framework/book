@@ -73,7 +73,7 @@ class Site(Site):
         yield 'lino_xl.lib.sales'
         yield 'lino_xl.lib.invoicing'
         yield 'lino_xl.lib.deploy'
-        yield 'lino_xl.lib.clocking'
+        yield 'lino_xl.lib.working'
         yield 'lino_xl.lib.faculties'
         yield 'lino_xl.lib.tickets'
         yield 'lino_xl.lib.votes'

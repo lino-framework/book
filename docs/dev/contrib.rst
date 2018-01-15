@@ -4,7 +4,11 @@
 Contributing code
 =================
 
-When you reached here, it is time to speak about code contributions.
+So you want to benefit other people by publishing your changes and
+integrating them into the related source code repository.  That's
+nice. Thank you.  At this point it is time to speak about code
+contributions.
+
 
 General workflow
 ================
@@ -27,21 +31,58 @@ The general workflow for a code contribution is
   
 - Communicate your changes to the others by submitting a :doc:`pull
   request <request_pull>`.
-  
+
+ 
+
+.. _lino.copyright:
 
 Copyright considerations
 ========================
 
+If you contribute some code to some repository of the Lino project, we
+ask you to assign your copyright to *Luc Saffre* because we want to
+avoid legal problems in case we want to change the license in the
+future and because we do not want to add every individual contributor
+to every copyright statement.
+
+Currently most Lino source files are *(c) Luc Saffre*, and we consider
+Luc as the official copyright holder of the Lino framework.  This
+doesn't reflect reality perfectly, but it seems the most reasonable
+formulation at the moment.  As long as there is no legal entity to act
+as copyright holder, everybody just trusts that Luc will manage these
+things one day before he dies.
+
+We are still working on the details.
+
+We plan to change the copyright holder to "The Lino Team" or something
+similar in the future.  One challenge is that we currently don't have
+any legal person called "Lino Team".  And if some day we would create
+a legal entity for Lino, then its name would probably not be "Lino
+Team" because there are other projects called "Lino", and they
+probably also have a "team" around them.  See :ref:`lino.name`.
+Possible other names for that future entity are *Lino Framework
+project* or *Lino Software Foundation*.
+
+Rumma & Ko OÜ might act as the copyright holder because they are
+currently the community motor.  This name has some disadvantages: it
+contains an ``&`` and an ``Ü`` which both can cause problems when
+rendering them to different media.
+
+Contributor License Agreement
+=============================
+
 When you contribute a change to Lino, then basically you are the
-copyright holder of your work, and you agree to publish your work
-under the same license as Lino .  But we ask you to assign your
-copyright to us in order to avoid huge legal problems in case we want
-to change the license in the future.  We are still working on the
-details.  Currently most Lino source fies is (c) Luc Saffre (the
-original author), and we plan to change this to "The Lino Team" but
-currently there is no corresponding legal entity because nobody cares
-about it, everybody just trusts that Luc will manage these things one
-day before he dies.
+copyright holder of your work and you agree to publish your work under
+the same license as Lino and you ask us to integrate your
+contribution.
+
+We did not (yet) formulate and sign any Contributor License Agreement
+as e.g. `Django <https://www.djangoproject.com/foundation/cla/>`__
+does it.  Every contributor is liable for their work: if one of us
+would (accidentally) publish a file with sensitive confidential data
+or copyrighted content, only that particular person (or their
+employer) would be liable.
+
 
 
 Types of code contributions

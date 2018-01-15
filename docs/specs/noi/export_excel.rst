@@ -20,7 +20,7 @@ more explanations see :ref:`lino.specs.export_excel` of :ref:`book`.
 
 
 
->>> url = "/api/clocking/Sessions?an=export_excel"
+>>> url = "/api/working/Sessions?an=export_excel"
 >>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
