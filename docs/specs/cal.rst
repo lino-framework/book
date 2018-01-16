@@ -14,6 +14,9 @@ The ``calendar`` plugin
 This document explains some basic things about Lino's calendar plugin
 :mod:`lino_xl.lib.cal`.
 
+See also :mod:`lino_xl.lib.cal.utils`.
+     
+
 .. contents::
   :local:
 
@@ -23,9 +26,129 @@ This document explains some basic things about Lino's calendar plugin
 Calendar entries
 ================
 
-An **appointment** is a calendar entry which supposes that another
-person is involved.
+A **calendar entry** is a lapse of time to be visualized in a
+calendar.  The internal model name is :class:`Event` for historical
+reasons.
 
+.. class:: Event
+
+    .. attribute:: start_date
+    .. attribute:: start_time
+    .. attribute:: end_date
+    .. attribute:: end_time
+
+        These four fields define the duration of this entry.
+        Only :attr:`start_date` is mandatory.
+
+        If :attr:`end_date` is the same as :attr:`start_date`, then it
+        is preferrable to leave it empty.
+
+    .. attribute:: summary
+
+         A one-line descriptive text.
+
+    .. attribute:: description
+
+         A longer descriptive text.
+
+    .. attribute:: user
+
+         The responsible user.
+
+    .. attribute:: assigned_to
+
+        Another user who is expected to take responsibility for this
+        entry.
+
+        See :attr:`lino.modlib.users.Assignable.assigned_to`.
+
+    .. attribute:: event_type
+
+        The type of this entry. Every calendar entry should have this
+        field pointing to a given :class:`EventType`, which holds
+        extended configurable information about this entry.
+
+    .. attribute:: state
+
+        The state of this entry. The state can change according to
+        rules defined by the workflow, that's why we sometimes refer
+        to it as the life cycle.
+
+    .. attribute:: transparent
+
+        Indicates that this entry shouldn't prevent other entries at
+        the same time.
+
+    .. attribute:: when_html
+
+         Shows the date and time of the entry with a link that opens
+         all entries on that day (:class:`EntriesByDay
+         <lino_xl.lib.cal.ui.EntriesByDay>`).
+
+         Deprecated because it is usually irritating. Use when_text,
+         and users open the detail window as usualy by double-clicking
+         on the row. And then they have an action on each entry for
+         opening EntriesByDay if they want.
+
+    .. attribute:: show_conflicting
+
+         A :class:`ShowSlaveTable <lino.core.actions.ShowSlaveTable>`
+         button which opens the :class:`ConflictingEvents
+         <lino_xl.lib.cal.ui.ConflictingEvents>` table for this event.
+
+    .. method:: get_conflicting_events(self)
+                
+        Return a QuerySet of calendar entries that conflict with this one.
+        Must work also when called on an unsaved instance.
+        May return None to indicate an empty queryset.
+        Applications may override this to add specific conditions.
+        
+    .. method:: has_conflicting_events(self)
+                
+        Whether this entry has any conflicting entries.
+        
+        This is roughly equivalent to asking whether
+        :meth:`get_conflicting_events()` returns more than 0 events.
+
+        Except when this event's type tolerates more than one events
+        at the same time.
+
+    .. method:: suggest_guests(self)
+           
+        Yield the list of unsaved :class:`Guest` instances to be added
+        to this entry.  This method is called from
+        :meth:`update_guests`.
+
+    .. method:: get_event_summary(self, ar)
+                
+        How this event should be summarized in contexts where possibly
+        another user is looking (i.e. currently in invitations of
+        guests, or in the extensible calendar panel).
+
+    .. method:: before_ui_save(self, ar)
+       
+        Mark the entry as "user modified" by setting a default state.
+        This is important because EventGenerators may not modify any
+        user-modified Events.
+
+    .. method:: auto_type_changed(self, ar)
+       
+        Called when the number of this automatically generated entry
+        (:attr:`auto_type` ) has changed.
+
+        The default updates the summary.
+        
+
+    .. method:: get_calendar(self)
+                
+        Returns the :class:`Calendar` which contains this entry, or
+        None if no subscription is found.
+        
+        Needed for ext.ensible calendar panel.
+
+        The default implementation returns None.
+        Override this if your app uses Calendars.
+       
 >>> show_fields(rt.models.cal.Event,
 ...     'start_date start_time end_date end_time user summary description event_type state')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -56,6 +179,16 @@ person is involved.
 |               |                     | to it as the life cycle.                                      |
 +---------------+---------------------+---------------------------------------------------------------+
 
+Appointments
+============
+
+An **appointment** (french "Rendez-vous", german "Termin") is a
+calendar entry which supposes that another person is involved.
+
+For Lino, an appointment is a calendar entry whose :class:`type
+<EventType>` has the :attr:`EventType.is_appointment` field checked.
+
+
 Lifecycle of a calendar entry
 =============================
 
@@ -78,63 +211,60 @@ values.
 <BLANKLINE>
 
 
+The type of a calendar entry
+============================
 
-Glossary
-========
+The :attr:`type <Event.type>` field of a *calendar entry* points to a
+database object which holds certain properties that are common to all
+entries of that type.
 
-.. glossary::
+.. class:: EventTypes
 
-  calendar entry
+    The list of entry types defined on this site.
+           
+.. class:: EventType
 
-    Something that happens at a given date and (optionally) time.
-    A planned ("scheduled") lapse of time where something happens.
-    Stored in :class:`Event`.
+    The possible value of the :attr:`Event.type` field.
 
-  appointment
+    .. attribute:: event_label
 
-    An appointment (french "Rendez-vous", german "Termin") is an
-    :term:`calendar entry` whose :class:`type <EventType>` has the
-    :attr:`EventType.is_appointment` field checked.
+        Default text for summary of new entries.
+           
+    .. attribute:: is_appointment
 
+        Whether entries of this type are considered as "appointments"
+        (i.e. whose time and place have been agreed upon with other
+        users or external parties).
 
-There is no "Calendar" field per entry
-======================================
+        Certain tables show only entries whose type has the
+        `is_appointment` field checked.  See :attr:`show_appointments
+        <Entries.show_appointments>`.
 
-Note that the default implementation has no "Calendar" field per
-calendar entry. The `Event` model instead has a `get_calendar` method.
+    .. attribute:: max_days
 
-You might extend Event in your plugin as follows::
+        The maximal number of days allowed as duration.
 
-    from lino_xl.lib.cal.models import *
-    class Event(Event):
+    .. attribute:: locks_user
 
-        calendar = dd.ForeignKey('cal.Calendar')
+        Whether calendar entries of this type make the user
+        unavailable for other locking events at the same time.
 
-        def get_calendar(self):
-            return self.calendar
+    .. attribute:: max_conflicting
 
-But in other cases it would create unnecessary complexity to add such
-a field. For example in :ref:`welfare` there is one calendar per User,
-and thus the `get_calendar` method is implemented as follows::
+        How many conflicting events should be tolerated.
 
-    def get_calendar(self):
-        if self.user is not None:
-            return self.user.calendar
+    .. attribute:: transparent
 
-Or in :ref:`voga` there is one calendar per Room. Thus the
-`get_calendar` method is implemented as follows::
-
-    def get_calendar(self):
-        if self.room is not None:
-            return self.room.calendar
-
-
+        Allow entries of this type to conflict with other events.
+        
 
 
 Duration units
 ==============
 
-Lino has a list of duration units :class:`DurationUnits`.
+The calendar plugin defines :class:`DurationUnits` choicelist, a
+site-wide list of **duration units**.  In a default configuration it
+has the following values:
 
 >>> rt.show(cal.DurationUnits)
 ======= ========= =========
@@ -150,6 +280,9 @@ Lino has a list of duration units :class:`DurationUnits`.
 ======= ========= =========
 <BLANKLINE>
 
+
+Duration units can be used for aritmetic operation on durations. For
+example:
 
 >>> from lino_xl.lib.cal.choicelists import DurationUnits
 >>> start_date = i2d(20111026)
@@ -177,16 +310,88 @@ datetime.date(2014, 7, 1)
 >>> DurationUnits.years.add_duration(start_date, 1)
 datetime.date(2015, 4, 1)
 
+
+
+Calendars
+=========
+
+Calendar entries can be differentiated into different "calendars".
+
+>>> rt.show(cal.Calendars)
+==== ============= ================== ================== ============= =======
+ ID   Designation   Designation (de)   Designation (fr)   Description   color
+---- ------------- ------------------ ------------------ ------------- -------
+ 1    General       Allgemein          Général                          1
+                                                                        **1**
+==== ============= ================== ================== ============= =======
+<BLANKLINE>
+
+
+.. class:: Calendar
+
+    .. attribute:: color
+   
+        The color to use for entries of this calendar (in
+        :mod:`lino_xl.lib.extensible`).
+   
+               
+.. class:: Calendars
+           
+
+Note that the default implementation has no "Calendar" field per
+calendar entry.  The `Event` model instead has a
+:meth:`Event.get_calendar` method.
+
+You might extend Event in your plugin as follows::
+
+    from lino_xl.lib.cal.models import *
+    class Event(Event):
+
+        calendar = dd.ForeignKey('cal.Calendar')
+
+        def get_calendar(self):
+            return self.calendar
+
+But in other cases it would create unnecessary complexity to add such
+a field. For example in :ref:`welfare` there is one calendar per User,
+and thus the `get_calendar` method is implemented as follows::
+
+    def get_calendar(self):
+        if self.user is not None:
+            return self.user.calendar
+
+Or in :ref:`voga` there is one calendar per Room. Thus the
+`get_calendar` method is implemented as follows::
+
+    def get_calendar(self):
+        if self.room is not None:
+            return self.room.calendar
+
+
 .. _specs.cal.automatic_events:
 
-Automatic calendar events
-=========================
+Automatic calendar entries
+==========================
 
-Lino applications can **generate** automatic calendar events.
+Lino applications can **generate** automatic calendar entries.
 
 An **event generator** is something that can generate automatic
-calendar events.  The main effect of the :class:`EventGenerator` mixin
-is to add the :class:`UpdateEntries` action.
+calendar entries.  Examples of event generators include
+
+- :doc:`Holidays <holidays>`
+
+- A *course*, *workshop* or *activity* as used by Welfare, Voga and
+  Avanti (subclasses of :class:`lino_xl.lib.courses.models.Course`).
+
+- A reservation of a room in :ref:`voga`
+  (:class:`lino_xl.lib.rooms.Reservation`).
+
+- A coaching contract with a client in :ref:`welfare`
+  (:class:`lino_welfare.modlib.isip.Contract` and
+  :class:`lino_welfare.modlib.jobs.Contract`)
+
+The main effect of the :class:`EventGenerator`
+mixin is to add the :class:`UpdateEntries` action.
 
 The event generator itself does not necessarily also contain all those
 fields needed for specifying **which** events should be
@@ -195,28 +400,75 @@ generated. These fields are implemented by another mixin named
 recurrence set is something that specifies which calendar events
 should get generated.
 
-For example:
-
-- A *course*, *workshop* or *activity* as used by Welfare, Voga and
-  Avanti (subclasses of :class:`lino_xl.lib.courses.models.Course`).
-
-- :class:`lino_xl.lib.rooms.models.Reservation`
-
-- :class:`lino_welfare.modlib.isip.models.Contract` and
-  :class:`lino_welfare.modlib.jobs.models.Contract`
-
-- :doc:`Holidays <holidays>`
-
-The generated events are "controlled" by their generator (their
-`owner` field points to the generator) and have a non-empty
-`auto_type` field.
-
     
-:meth:`get_wanted_auto_events`
+
+.. class:: EventGenerator
+
+    Base class for things that generate a series of events.
+
+    See :ref:`specs.cal.automatic_events`.
+
+
+    .. attribute:: do_update_events
+
+        See :class:`UpdateEntries`.
+
+    .. method:: get_wanted_auto_events(self, ar)
+
+        Return a tuple of two dicts of "wanted" and "unwanted" events.
+
+        Both dicts map a sequence number to an Event instances.
+        `wanted` holds events to be saved,
+        `unwanted` holds events to be deleted.
+
+        If an event has been manually moved to another date, all
+        subsequent events adapt to the new rythm (except those which
+        have themselves been manually modified).
+                        
+    .. method:: care_about_conflicts(self, we)
+                
+        Whether this event generator should try to resolve conflicts
+        (in :meth:`resolve_conflicts`)
+
+    .. method:: resolve_conflicts(self, we, ar, rset, until)
+                
+        Check whether given entry `we` conflicts with other entries
+        and move it to a new date if necessary. Returns (a) the
+        entry's :attr:`start_date` if there is no conflict, (b) the
+        next available alternative date if the entry conflicts with
+        other existing entries and should be moved, or (c) None if
+        there are conflicts but no alternative date could be found.
+
+        `ar` is the action request who asks for this.  `rset` is the
+        :class:`RecurrenceSet`.
+
+           
+
+
+.. class:: UpdateEntries
+           
+    Generate or update the automatic events controlled by this object.
+
+    This action is installed as
+    :attr:`EventGenerator.do_update_events`.
+
+.. class:: UpdateEntriesByEvent
+
+    Update all events of this series.
+
+    This is installed as
+    :attr:`update_events <Event.update_events>` on :class:`Event`.
+
+      
+The generated calendar entries are "controlled" by their generator
+(their :attr:`owner <Event.owner>` field points to the generator) and
+have a non-empty :attr:`Event.auto_type` field.
 
 
 Recurrencies
 ============
+
+The **recurrency** expresses how often something is to be repeated.
 
 When generating automatic calendar events, Lino supports the following
 date recurrenies:
@@ -235,7 +487,26 @@ date recurrenies:
 ======= ============= ====================
 <BLANKLINE>
 
-Addding a duration unit
+
+.. class:: Recurrencies
+           
+    List of possible choices for a 'recurrency' field.
+
+    Note that a recurrency (an item of this choicelist) is also a
+    :class:`DurationUnit`.
+
+    .. attribute:: easter
+
+        Repeat events yearly, moving them together with the Easter
+        data of that year.
+
+        Lino computes the offset (number of days) between this rule's
+        :attr:`start_date` and the Easter date of that year, and
+        generates subsequent events so that this offset remains the
+        same.
+
+
+Adding a duration unit
 
 >>> start_date = i2d(20160327)
 >>> cal.Recurrencies.once.add_duration(start_date, 1)
@@ -267,7 +538,7 @@ In :mod:`lino_book.projects.min2` we have a database model
 to generate holidays.  See also :ref:`xl.specs.holidays`.
 
 We are going to use this model for demonstrating some more features
-(which it inherits from :class:`RecurrenceSet` and an
+(which it inherits from :class:`RecurrenceSet` and 
 :class:`EventGenerator`)
 
 
@@ -389,13 +660,51 @@ The entry type "Internal" is marked "transparent".
 True
 
 
-Other
-=====
+The guests  of a calendar entry
+===============================
 
-The source code is in :mod:`lino_xl.lib.cal`.
-Applications can extend this plugin.
+For every calendar entry you can have a list of the people who are
+invited to that entry.  Depending on the context this list may be
+labelled "guests", "participations" or "presences".
 
-See also :mod:`lino_xl.lib.cal.utils`.
+
+.. class:: Guest
+
+    Represents the fact that a given person is expected to attend to a
+    given event.
+
+    TODO: Rename this to "Presence".
+
+    .. attribute:: event
+
+        The calendar event to which this presence applies.
+
+    .. attribute:: partner
+
+        The partner to which this presence applies.
+
+    .. attribute:: role
+
+        The role of this partner in this presence.
+
+    .. attribute:: state
+
+        The state of this presence.
+
+
+Every participant of a calendar entry can have a "role". For example
+in a class meeting you might want to differentiate between the teacher
+and the pupils.
+        
+.. class:: GuestRole
+           
+    The role of a guest expresses what the partner is going to do there.
+    
+.. class:: GuestRoles
+
+    Global table of guest roles.
+           
+           
 
 
 Reference
@@ -432,62 +741,6 @@ Reference
 
     List of possible priorities of calendar events.
     
-.. class:: EventTypes
-
-    The list of Event Types defined on this system.
-           
-.. class:: EventType
-
-    The possible value of the :attr:`Event.type` field.
-
-    An EventType is a list of calendar entries which have certain
-    things in common, e.g. they are displayed in the same colour in
-    the calendar panel.
-
-    .. attribute:: event_label
-
-        Default text for summary of new entries.
-           
-    .. attribute:: is_appointment
-
-        Whether entries of this type are considered as "appointments"
-        (i.e. whose time and place have been agreed upon with other
-        users or external parties).
-
-        Certain tables show only entries whose type has the
-        `is_appointment` field checked.  See :attr:`show_appointments
-        <Entries.show_appointments>`.
-
-    .. attribute:: max_days
-
-        The maximal number of days allowed as duration.
-
-    .. attribute:: locks_user
-
-        Whether calendar entries of this type make the user
-        unavailable for other locking events at the same time.
-
-    .. attribute:: max_conflicting
-
-        How many conflicting events should be tolerated.
-
-    .. attribute:: transparent
-
-        Allow entries of this type to conflict with other events.
-        
-           
-.. class:: GuestRole
-           
-    The role of a guest expresses what the partner is going to do there.
-    
-.. class:: GuestRoles
-
-    Global table of guest roles.
-           
-           
-.. class:: Calendar
-.. class:: Calendars
-           
 .. class:: Subscription
 
     A Suscription is when a User subscribes to a Calendar.
@@ -534,10 +787,6 @@ Reference
 
     Global table of all possible recurrencly policies.
            
-.. class:: RecurrentEvents
-
-    The list of all recurrent events (:class:`RecurrentEvent`).
-    
 .. class:: RecurrentEvent
 
     A **recurring event** describes a series of recurrent calendar
@@ -562,6 +811,10 @@ Reference
         Recurrent events don't care about conflicts. A holiday won't move
         just because some other event has been created before on that date.
 
+.. class:: RecurrentEvents
+
+    The list of all recurrent events (:class:`RecurrentEvent`).
+    
                 
 
 .. class:: UpdateGuests
@@ -585,128 +838,6 @@ Reference
     Update the presence lists of all calendar events generated by
     this.
 
-.. class:: Event
-
-    A **calendar entry** is a lapse of time to be visualized in a
-    calendar.
-
-    .. attribute:: start_date
-    .. attribute:: start_time
-    .. attribute:: end_date
-    .. attribute:: end_time
-
-        These four fields define the duration of this entry.
-        Only :attr:`start_date` is mandatory.
-
-        If :attr:`end_date` is the same as :attr:`start_date`, then it
-        is preferrable to leave it empty.
-
-    .. attribute:: summary
-
-         A one-line descriptive text.
-
-    .. attribute:: description
-
-         A longer descriptive text.
-
-    .. attribute:: user
-
-         The responsible user.
-
-    .. attribute:: assigned_to
-
-        Another user who is expected to take responsibility for this
-        entry.
-
-        See :attr:`lino.modlib.users.mixins.Assignable.assigned_to`.
-
-    .. attribute:: event_type
-
-         The type of this entry. Every calendar entry should have this
-         field pointing to a given :class:`EventType`, which holds
-         extended configurable information about this entry.
-
-    .. attribute:: state
-
-        The state of this entry. The state can change according to
-        rules defined by the workflow, that's why we sometimes refer
-        to it as the life cycle.
-
-    .. attribute:: transparent
-
-        Indicates that this entry shouldn't prevent other entries at
-        the same time.
-
-    .. attribute:: when_html
-
-         Shows the date and time of the entry with a link that opens
-         all entries on that day (:class:`EntriesByDay
-         <lino_xl.lib.cal.ui.EntriesByDay>`).
-
-         Deprecated because it is usually irritating. Use when_text,
-         and users open the detail window as usualy by double-clicking
-         on the row. And then they have an action on each entry for
-         opening EntriesByDay if they want.
-
-    .. attribute:: show_conflicting
-
-         A :class:`ShowSlaveTable <lino.core.actions.ShowSlaveTable>`
-         button which opens the :class:`ConflictingEvents
-         <lino_xl.lib.cal.ui.ConflictingEvents>` table for this event.
-
-    .. method:: get_conflicting_events(self)
-                
-        Return a QuerySet of calendar entries that conflict with this one.
-        Must work also when called on an unsaved instance.
-        May return None to indicate an empty queryset.
-        Applications may override this to add specific conditions.
-        
-    .. method:: has_conflicting_events(self)
-                
-        Whether this entry has any conflicting entries.
-        
-        This is roughly equivalent to asking whether
-        :meth:`get_conflicting_events()` returns more than 0 events.
-
-        Except when this event's type tolerates more than one events
-        at the same time.
-
-    .. method:: suggest_guests(self)
-           
-        Yield the list of unsaved :class:`Guest` instances to be added
-        to this entry.  This method is called from
-        :meth:`update_guests`.
-
-    .. method:: get_event_summary(self, ar)
-                
-        How this event should be summarized in contexts where possibly
-        another user is looking (i.e. currently in invitations of
-        guests, or in the extensible calendar panel).
-
-    .. method:: before_ui_save(self, ar)
-       
-        Mark the entry as "user modified" by setting a default state.
-        This is important because EventGenerators may not modify any
-        user-modified Events.
-
-    .. method:: auto_type_changed(self, ar)
-       
-        Called when the number of this automatically generated entry
-        (:attr:`auto_type` ) has changed.
-
-        The default updates the summary.
-        
-
-    .. method:: get_calendar(self)
-                
-        Returns the :class:`Calendar` which contains this entry, or
-        None if no subscription is found.
-        
-        Needed for ext.ensible calendar panel.
-
-        The default implementation returns None.
-        Override this if your app uses Calendars.
-       
 .. class:: Events
            
     Table which shows all calendar events.
@@ -715,10 +846,9 @@ Reference
 
     .. attribute:: show_appointments
 
-        Whether only :term:`appointments <appointment>` should be
-        shown.  "Yes" means only appointments, "No"
-        means no appointments and leaving it to blank shows both types
-        of events.
+        Whether only *appointments* should be shown.  "Yes" means only
+        appointments, "No" means no appointments and leaving it to
+        blank shows both types of events.
 
         An appointment is an event whose *event type* has
         :attr:`appointment <EventType.appointment>` checked.
@@ -733,8 +863,7 @@ Reference
     This table is usually labelled "Appointments today". It has no
     "date" column because it shows events of a given date.
 
-    The default filter parameters are set to show only
-    :term:`appointments <appointment>`.
+    The default filter parameters are set to show only *appointments*.
 
 .. class:: EntriesByRoom
            
@@ -760,7 +889,7 @@ Reference
            
     Table which shows today's and all future appointments of the
     requesting user.  The default filter parameters are set to show
-    only :term:`appointments <appointment>`.
+    only appointments.
 
 .. class:: MyEntriesToday
 
@@ -800,29 +929,6 @@ Reference
     The state filter (draft or suggested) cannot be removed.
     
            
-.. class:: Guest
-
-    Represents the fact that a given person is expected to attend to a
-    given event.
-
-    TODO: Rename this to "Presence".
-
-    .. attribute:: event
-
-        The calendar event to which this presence applies.
-
-    .. attribute:: partner
-
-        The partner to which this presence applies.
-
-    .. attribute:: role
-
-        The role of this partner in this presence.
-
-    .. attribute:: state
-
-        The state of this presence.
-
 .. class:: Guests
 
     The default table of presences.
@@ -838,47 +944,6 @@ Reference
 .. class:: MyPendingPresences
 
     Received invitations waiting for my feedback (accept or reject).
-
-           
-.. class:: EventGenerator
-
-    Base class for things that generate a series of events.
-
-    See :ref:`specs.cal.automatic_events`.
-
-
-    .. attribute:: do_update_events
-
-        See :class:`UpdateEntries`.
-
-    .. method:: get_wanted_auto_events(self, ar)
-
-        Return a tuple of two dicts of "wanted" and "unwanted" events.
-
-        Both dicts map a sequence number to an Event instances.
-        `wanted` holds events to be saved,
-        `unwanted` holds events to be deleted.
-
-        If an event has been manually moved to another date, all
-        subsequent events adapt to the new rythm (except those which
-        have themselves been manually modified).
-                        
-    .. method:: care_about_conflicts(self, we)
-                
-        Whether this event generator should try to resolve conflicts
-        (in :meth:`resolve_conflicts`)
-
-    .. method:: resolve_conflicts(self, we, ar, rset, until)
-                
-        Check whether given entry `we` conflicts with other entries
-        and move it to a new date if necessary. Returns (a) the
-        entry's :attr:`start_date` if there is no conflict, (b) the
-        next available alternative date if the entry conflicts with
-        other existing entries and should be moved, or (c) None if
-        there are conflicts but no alternative date could be found.
-
-        `ar` is the action request who asks for this.  `rset` is the
-        :class:`RecurrenceSet`.
 
            
 .. class:: RecurrenceSet
@@ -922,19 +987,8 @@ Reference
     .. attribute:: room
     .. attribute:: max_date
 
-.. class:: Component
-
-    Abstract base class for :class:`Event` and :class:`Task`.
-
-    .. attribute:: auto_type
-
-        Contains the sequence number if this is an automatically
-        generated component. Otherwise this field is empty.
-
-        Automatically generated components behave differently at
-        certain levels.
-
-           
+Miscellaneous
+=============
 
 .. class:: Weekdays
            
@@ -967,44 +1021,30 @@ Reference
     entry.
 
 
-.. class:: Recurrencies
-           
-    List of possible choices for a 'recurrency' field.
-
-    Note that a recurrency (an item of this choicelist) is also a
-    :class:`DurationUnit`.
-
-    .. attribute:: easter
-
-        Repeat events yearly, moving them together with the Easter
-        data of that year.
-
-        Lino computes the offset (number of days) between this rule's
-        :attr:`start_date` and the Easter date of that year, and
-        generates subsequent events so that this offset remains the
-        same.
-
 .. class:: AccessClasses
 
-
-.. class:: UpdateEntries
-           
-    Generate or update the automatic events controlled by this object.
-
-    This action is installed as
-    :attr:`EventGenerator.do_update_events`.
-
-.. class:: UpdateEntriesByEvent
-
-    Update all events of this series.
-
-    This is installed as
-    :attr:`update_events <Event.update_events>` on :class:`Event`.
-
+    The sitewide list of access classes.
            
 .. class:: ShowEntriesByDay
 
     Show all calendar events of the same day.
+
+
+.. class:: Component
+
+    Abstract base class for :class:`Event` and :class:`Task`.
+
+    .. attribute:: auto_type
+
+        Contains the sequence number if this is an automatically
+        generated component. Otherwise this field is empty.
+
+        Automatically generated components behave differently at
+        certain levels.
+
+
+Plugin configuration
+====================
     
 
 .. class:: Plugin

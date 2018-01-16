@@ -11,15 +11,17 @@ def doit(social):
     print("User {} authenticated by {}".format(
         social.user, social.provider))
     print(social.extra_data)
-    from social_django.utils import load_strategy
+    # from social_django.utils import load_strategy
     # social = social.user.social_auth.get(provider='google-oauth2')
     # social = social.user.social_auth.get(provider='google-plus')
-    access_token = social.refresh_token(load_strategy())
-    social.refresh_token(load_strategy())
-    print access_token
+    # access_token = social.refresh_token(load_strategy())
+    # access_token = social.get_access_token(load_strategy())
+    # social.refresh_token(load_strategy())
+    # print access_token
     # Get required credentials for the current GooglePlus account
     credentials = OAuth2Credentials(
         social.extra_data['access_token'],
+        # access_token,
         settings.SOCIAL_AUTH_GOOGLE_PLUS_KEY,
         settings.SOCIAL_AUTH_GOOGLE_PLUS_SECRET,
         social.extra_data.get('refresh_token', ''),
@@ -38,14 +40,15 @@ def doit(social):
     # Here is an example to retrieve connections (contacts) of my GooglePlus account In the following line,
     # we are selecting the 'names' and the 'emailAddresses' fields of the contact. To select more fields,
     # please refer to the Google documentation at https://developers.google.com/people/api/rest/v1/people
+    # connections = people_service.people().connections().list(
+    #     resourceName='people/me',
+    #     personFields='names,emailAddresses,phoneNumbers').execute()
+    # totalItems = connections.get('totalItems', 0)
+    # print (totalItems)
     connections = people_service.people().connections().list(
         resourceName='people/me',
-        personFields='names,emailAddresses,phoneNumbers').execute()
-    totalItems = connections.get('totalItems', 0)
-    print (totalItems)
-    connections = people_service.people().connections().list(
-        resourceName='people/me',
-        pageSize=totalItems,
+        # pageSize=totalItems,
+        pageSize=2000,
         personFields='names,emailAddresses,phoneNumbers').execute()
     print ("User {0} have {1} connections.".format(social.user, len(connections.get('connections', ''))))
     all_contacts = connections.get('connections', [])
