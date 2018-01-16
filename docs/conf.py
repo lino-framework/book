@@ -379,6 +379,7 @@ gettext_compact = True
 
 # autodoc_default_flags = ['no-imported-members']
 
+# autodoc_inherit_docstrings = False
 
 extensions += ['sphinx.ext.inheritance_diagram']
 
