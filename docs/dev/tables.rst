@@ -18,42 +18,39 @@ What is a table?
 
 In a Lino application you don't write only your *models* in Python,
 but also something we call **tables**.  While your *models* describe
-how data is to be *structured in the database*, *tables* describe how
-data is to be *presented to users in tabular form*.
+how data is to be *stored in the database*, *tables* describe how data
+is to be *presented to users in tabular form*.
 
-Roughly speaking, Lino's "tables" are the equivalent of what Django
-calls "views". With Lino you don't need to write views because Lino
-writes them for you.  Actually a Lino table corresponds only to one
-class of Django's views, sometimes referred to as "tabular" or "list"
-views. The other class of views are "detail" views, for which you are
-going to define :doc:`Layouts <layouts/index>` (we'll talk about these
-later).
+Lino's "tables" are roughly equivalent of Django's "views".  With Lino
+you don't need to write views because Lino writes them for you.
+Actually a Lino table corresponds only to one class of Django's views,
+sometimes referred to as "tabular" or "list" views. The other class of
+views are "detail" views, for which you are going to define
+:doc:`Layouts <layouts/index>` (we'll talk about these later).
 
 
 Model tables
 ============
 
-A **model table** is a table which gets its rows from the database
-using a :class:`Model`.  The mandatory :attr:`model
-<lino.core.dbtables.Table.model>` attribute of a model table
-specifies that model.
+There can be more than one table for a given model, but each table has
+exactly one model as its data source.  That model is specified in the
+:attr:`model <lino.core.dbtables.Table.model>` attribute of the table.
+For every database model there should be at least one table.  Lino
+will generate a default table for models that have no table at all.
+
+.. Note that there may be *more than one table* for a given
+   model. That's a fundamental difference from Django's concept of the
+   `ModelAdmin` class and `Model._meta` options.
+
+To be honest there are also :doc:`virtual tables <vtables>` which have
+no model at all because they get their rows from somewhere else than
+the database, but we can ignore them for now.
 
 Much information about your table is automatically extracted from the
 model: the **columns** correspond to the *fields* of your database
-model. The **header** of every column is the `verbose_name` of its
-field. The values in a column are of same **data type** for each
+model.  The **header** of every column is the `verbose_name` of its
+field.  The values in a column are of same **data type** for each
 row. So Lino knows all these things from your models.
-
-But here is something you cannot express on a Django model: *which*
-columns are to be listed. This is defined by the :attr:`column_names
-<lino.core.tables.AbstractTable.column_names>` attribute, a simple
-string with a space-separated list of field names.
-
-For every database model there should be at least one table.  Lino
-will generate a default table for models for which there is no table
-at all.  Note that there may be *more than one table* for a given
-model. That's a fundamental difference from Django's concept of the
-`ModelAdmin` class and `Model._meta` options.
 
 The **rows** of a table can be **sorted** and **filtered**. These are
 things which are done in Django on a QuerySet.  Lino doesn't reinvent
@@ -62,13 +59,16 @@ methods: :attr:`order_by <lino.core.tables.AbstractTable.order_by>`,
 :attr:`filter <lino.core.tables.AbstractTable.filter>` and
 :attr:`exclude <lino.core.tables.AbstractTable.exclude>`.
 
+But here is something you cannot express on a Django model: *which*
+columns are to be shown, and their order. This is defined by the
+:attr:`column_names <lino.core.tables.AbstractTable.column_names>`
+attribute, a simple string with a space-separated list of field names.
+
 Tables can hold information which goes beyond a model or a
 queryset. For example we set :attr:`hide_sums
 <lino.core.tables.AbstractTable.hide_sums>` to `True` on the ``Books``
 table because otherwise Lino would display a sum for the "published"
 column.
-
-Besides model tables, Lino also has *virtual tables*.
 
 
 Exercise

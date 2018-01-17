@@ -5,6 +5,13 @@ The Lino framework
 Welcome to the online version of the Lino Book, the free documentation
 repository about the Lino framework.
 
+It contains everything one might want to know about Lino.  Of course
+this goal is not fully reached and never will be.  But already now the
+audience of this book ranges from deciders without technical knowledge
+over Python developers and Linux system administrators to end-users.
+Of course each of these groups has their own section since their
+interests and languages tend to differ substantially.
+
 .. Rumma & Ko is `hiring people <http://www.saffre-rumma.net/jobs>`_
    to help us with our work on Lino.
 

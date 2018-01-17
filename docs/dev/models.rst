@@ -13,18 +13,20 @@ Introduction to models
 
 Lino applications fully use Django's ORM.  In Django, every *database
 table* is described by a subclass of :class:`Model`.  Every row of the
-table is an *instance* of that :class:`Model` class.  The models of an
-application are defined in a file named :xfile:`models.py`.
+table is an *instance* of that class.
 
-Here is the
-:xfile:`models.py` file
-we are going to use        
-in this tutorial:
+The models of an application are defined in a file named
+:xfile:`models.py`.  Here is the :xfile:`models.py` file we are going
+to use in this tutorial:
 
 .. literalinclude:: ../../lino_book/projects/tables/models.py
 
 This file is defined in the :mod:`lino_book.projects.tables` demo
-project.
+project. You can try the following code snippets from within a Django
+shell in that project::
+
+  $ go tables
+  $ python manage.py shell
 
 .. doctest init:
 
@@ -55,8 +57,8 @@ project.
     Installed 7 object(s) from 1 fixture(s)
     
     
-Every :class:`Model` has a class attribute :attr:`objects` which is is
-used for operations which access the database.
+Every :class:`Model` has a class attribute :attr:`objects` which is
+used for operations that *access the database*.
 
 For example you can *count* how many rows are stored in the database.
 
@@ -134,12 +136,12 @@ SELECT "tables_author"."id", "tables_author"."first_name", "tables_author"."last
 >>> qs
 <QuerySet [Author #4 ('Woe, Joe')]>
 
-Before leaving, we tidy up by removing Joe Woe from our demo database:
+As a last step of this tutorial we tidy up by removing Joe Woe from
+our demo database:
 
 >>> obj.delete()
 >>> Author.objects.count()
 3
-
 
 Tim Kholod wrote a nice introduction for beginners: `The simple way to
 understand Django models <https://arevej.me/django-models/>`__
