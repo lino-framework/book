@@ -37,7 +37,7 @@ Menus
   - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Office : Comments, Uploads, Upload Areas, Excerpts
-  - Clients : Client Contacts
+  - Clients : Client Contacts, Common contact types
   - Career : language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks

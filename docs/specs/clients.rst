@@ -124,6 +124,51 @@ Database structure
     Whether persons of this type can be used as doctor of a refund
     confirmation. Injected by :mod:`lino_welfare.modlib.aids`.
 
+Common contact types
+====================
+
+The clients plugin also adds a choicelist of **common contact types**.
+
+>>> rt.show(clients.CommonContactTypes)
+======= =================== ========================== ==========================
+ value   name                text                       Client Contact type
+------- ------------------- -------------------------- --------------------------
+ 10      health_insurance    Health insurance           Health insurance
+ 20      school              School                     School
+ 30      pharmacy            Pharmacy                   Pharmacy
+ 40      general_assistant   General social assistant   General social assistant
+ 50      integ_assistant     Integration assistant      Integration assistant
+ 60      work_consultant     Work consultant            Work consultant
+======= =================== ========================== ==========================
+<BLANKLINE>
+
+A *common contact type* is a named pointer to a corresponding *client
+contact type* object in the database.  The object may exist or not.
+We need this if we want to programmatically work with a given client
+contact type.  Since contact types are database objects, it can be
+anything or nothing for a given site. But using our common contact
+types we can access them.
+
+For example here are the client contacts of type "school" in our demo
+database:
+
+>>> obj = clients.CommonContactTypes.school.get_object()
+>>> rt.show(clients.ClientContactsByType, obj)
+================== ================ ================================ =========
+ Organization       Contact person   Client                           Remarks
+------------------ ---------------- -------------------------------- ---------
+ Favourite School                    Aádil (120) from Eupen
+ Best School                         Abdul Báásid (162) from Raeren
+ Favourite School                    Aráli (119) from Eupen
+ Best School                         Armáni (134) from Eupen
+================== ================ ================================ =========
+<BLANKLINE>
+    
+
+    
+.. class:: CommonContactType
+.. class:: CommonContactTypes
+
            
 Configuration
 =============
