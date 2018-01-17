@@ -104,7 +104,7 @@ See <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a>.
 .. _memo.company:
 
 company
-======
+=======
 
 Refer to a company. Usage example::
 
