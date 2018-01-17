@@ -185,11 +185,11 @@ Clients
 ==== =============================== =============================== ===============================
  ID   Designation                     Designation (de)                Designation (fr)
 ---- ------------------------------- ------------------------------- -------------------------------
- 1    Language course                 Language course                 Language course
+ 1    Language course                 Sprachkurs                      Language course
  2    Integration course              Integration course              Integration course
  3    Language & integration course   Language & integration course   Language & integration course
  4    External course                 External course                 External course
- 5    Justified interruption          Justified interruption          Justified interruption
- 6    Successfully terminated         Successfully terminated         Successfully terminated
+ 5    Justified interruption          Begründete Unterbrechung        Justified interruption
+ 6    Successfully terminated         Erfolgreich beendet             Successfully terminated
 ==== =============================== =============================== ===============================
 <BLANKLINE>
