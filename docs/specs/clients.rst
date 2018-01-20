@@ -124,12 +124,12 @@ Database structure
     Whether persons of this type can be used as doctor of a refund
     confirmation. Injected by :mod:`lino_welfare.modlib.aids`.
 
-Common contact types
+Known contact types
 ====================
 
-The clients plugin also adds a choicelist of **common contact types**.
+The clients plugin also adds a choicelist of **known contact types**.
 
->>> rt.show(clients.CommonContactTypes)
+>>> rt.show(clients.KnownContactTypes)
 ======= =================== ========================== ==========================
  value   name                text                       Client Contact type
 ------- ------------------- -------------------------- --------------------------
@@ -142,17 +142,17 @@ The clients plugin also adds a choicelist of **common contact types**.
 ======= =================== ========================== ==========================
 <BLANKLINE>
 
-A *common contact type* is a named pointer to a corresponding *client
+A *known contact type* is a named pointer to a corresponding *client
 contact type* object in the database.  The object may exist or not.
 We need this if we want to programmatically work with a given client
 contact type.  Since contact types are database objects, it can be
-anything or nothing for a given site. But using our common contact
-types we can access them.
+anything or nothing for a given site. By using known contact type we
+can access them.
 
 For example here are the client contacts of type "school" in our demo
 database:
 
->>> obj = clients.CommonContactTypes.school.get_object()
+>>> obj = clients.KnownContactTypes.school.get_object()
 >>> rt.show(clients.ClientContactsByType, obj)
 ================== ================ ================================ =========
  Organization       Contact person   Client                           Remarks
@@ -166,8 +166,8 @@ database:
     
 
     
-.. class:: CommonContactType
-.. class:: CommonContactTypes
+.. class:: KnownContactType
+.. class:: KnownContactTypes
 
            
 Configuration
