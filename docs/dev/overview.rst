@@ -27,11 +27,12 @@ Packages
     - :mod:`lino_tera` : therapies, invoicing, accounting
     - :mod:`lino_care` : Shared contacts and skills management for people who care
     - :mod:`lino_vilma` : Shared Contact management for local communities
-
+    - :ref:`voga` : courses, invoicing, accounting
+    - :ref:`amici` : contacts, groups, personal information manager
+      
 - Independent Lino applications:
 
     - :ref:`welfare` : used by Belgian social centres
-    - :ref:`voga` : courses, invoicing, accounting
   
 - The :ref:`extjs6` project.
 

@@ -8,104 +8,16 @@ This is the central meeting place for :doc:`Lino developers
 </community/developers>`.
 
 
-.. _lino.dev.start:
-
-Getting started
-===============
-
-
 .. toctree::
-   :maxdepth: 1
-
-   install
-   hello/index
-   env
-   pull
-   projects
-
-   
-Diving into Lino
-================
-
-In the first section we deliberately remained outside of the real code
-because first things first.  Now you hopefully feel self-confident
-about your work environment and running demo projects.  We are ready
-to dive *into* Lino.
-
-.. toctree::
-   :maxdepth: 1
-
-   polls/index
-   lets/index
-   warning
-   models
-   tables
-   layouts/index
-   choicelists
-   vtables
-   initdb
-   dumpy/index
-   perms
-   users
-   settings
-
-
+   :maxdepth: 2
               
-Lino design goals
-=================
+   getstarted
+   diving
+   about
+   framework
+   team
+   writedocs
    
-.. toctree::
-   :maxdepth: 1
-              
-   /about/faq
-   /about/lino_and_django
-   /about/ui
-   /about/features
-   /about/not_easy
-   /about/think_python
-   ui
-
-
-The framework
-=============
-
-.. toctree::
-   :maxdepth: 1
-              
-   overview
-   xl
-   demo_projects
-   invlib
-    
-
-.. _lino.dev.team:
-
-Working with others
-===================
-
-
-.. toctree::
-   :maxdepth: 1
-
-   runtests
-   contrib
-   patch
-   request_pull
-   ci
-   versioning
-   
-   
-   
-Writing documentation
-=====================
-  
-.. toctree::
-   :maxdepth: 1
-
-   builddocs
-   devblog
-   doctests
-   docstrings
 
 
 Getting acquaintained

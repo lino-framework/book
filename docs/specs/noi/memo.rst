@@ -1,12 +1,12 @@
 .. _noi.specs.memo:
 
-=============
-Memo commands
-=============
+=========================
+Memo commands in Lino Noi
+=========================
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_memo
+    $ doctest docs/specs/noi/memo.rst
     
     doctest init:
 
@@ -14,19 +14,25 @@ Memo commands
     >>> startup('lino_book.projects.team.settings.demo')
     >>> from lino.api.doctest import *
 
-The :attr:`description
-<lino_xl.lib.tickets.models.Ticket.description>` of a ticket and the
-text of a comment (:mod:`short_text
-<lino.modlib.comments.models.Comment.short_text>`) are rich HTML text
-fields which can contain simple HTML formatting like links, tables,
-headers, enumerations.
+The :attr:`description <lino_xl.lib.tickets.Ticket.description>` of a
+ticket and the text of a comment (:mod:`short_text
+<lino.modlib.comments.Comment.short_text>`) are rich HTML text fields
+which can contain simple HTML formatting like links, tables, headers,
+enumerations.
 
-And additionally they can contain :mod:`memo <lino.utils.memo>` markup
-commands, i.e. text of the form ``[foo bar baz]``. These memo commands
-are going to be "rendered" when this text is being displayed at
-certain places.
+And additionally they can contain :mod:`memo markup commands
+<lino.utils.memo>`.
 
-Examples:
+A memo markup command is a fragment of text between square brackets
+which will be "rendered" (converted into another fragment) when your
+description text is being displayed at certain places.
+
+of the form ``[foo bar baz]``. These
+memo commands are going to
+
+
+Lino Noi `memo` command reference
+=================================
 
 .. _memo.url:
 
@@ -61,11 +67,6 @@ Usage examples:
     >>> print(ses.parse_memo("See [urlhttp://www.example.com]."))
     See [urlhttp://www.example.com].
 
-    A pitfall is when your editor inserted a non-breaking space:
-    
-    >>> print(ses.parse_memo("See [url&nbsp;http://www.example.com example]."))
-    See <a href="&nbsp;http://www.example.com" target="_blank">example</a>.
-    
 
 .. _memo.ticket:
 
@@ -98,6 +99,31 @@ Or the plain text renderer will render:
 >>> ses = rt.login()
 >>> print(ses.parse_memo("See [ticket 1]."))
 See <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+
+.. _memo.company:
+
+company
+=======
+
+Refer to a company. Usage example::
+
+    I met Joe from [company 1] and we agreed...
+
+.. 
+    >>> print(rt.login().parse_memo("See [company 1]."))
+    See [ERROR Company matching query does not exist. in '[company 1]' at position 4-15].
+
+
+.. _memo.person:
+
+person
+======
+
+Refer to a person. Usage example::
+
+    I met [person 7 Joe] and we agreed...
+
 
 
 .. _memo.py:
@@ -134,6 +160,49 @@ Usage examples:
     <a href="https://github.com/lino-framework/lino/blob/master/lino/__init__.py" target="_blank">lino</a>.
 
 
+.. 
+    >>> from lino.utils.diag import analyzer
+    >>> print(analyzer.show_memo_commands())
+    ... #doctest: +NORMALIZE_WHITESPACE
+    <BLANKLINE>
+    - [company ...] : 
+      Insert a reference to the specified database object.
+    <BLANKLINE>
+      The first argument is mandatory and specifies the
+      primary key.
+    <BLANKLINE>
+      If there is more than one argument, all remaining text
+      is used as the text of the link.
+    <BLANKLINE>
+    - [person ...] : 
+      Insert a reference to the specified database object.
+    <BLANKLINE>
+      The first argument is mandatory and specifies the
+      primary key.
+    <BLANKLINE>
+      If there is more than one argument, all remaining text
+      is used as the text of the link.
+    <BLANKLINE>
+    - [ticket ...] :
+      Insert a reference to the specified database object.
+    <BLANKLINE>
+      The first argument is mandatory and specifies the
+      primary key.
+    <BLANKLINE>
+      If there is more than one argument, all remaining text
+      is used as the text of the link.
+    <BLANKLINE>
+
+
+The ``obj2memo`` method
+=======================
+
+You might want to programmatically generate a text containing memo
+markup.
+
+For example when your code knows some database object and you want to
+create a description which would refer to your object if rendered with
+memo:
 
 >>> ar = rt.login('robin')
 >>> obj = rt.models.tickets.Ticket.objects.get(pk=1)
@@ -141,38 +210,10 @@ Usage examples:
 >>> print(txt)
 [ticket 1] (Föö fails to bar when baz)
 
+Let's also check whether the produced text is valid:
+
 >>> print(ar.parse_memo(txt))
 <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a> (Föö fails to bar when baz)
 
->>> from lino.utils.diag import analyzer
->>> print(analyzer.show_memo_commands())
-... #doctest: +NORMALIZE_WHITESPACE
-<BLANKLINE>
-- [company ...] : 
-  Insert a reference to the specified database object.
-<BLANKLINE>
-  The first argument is mandatory and specifies the
-  primary key.
-<BLANKLINE>
-  If there is more than one argument, all remaining text
-  is used as the text of the link.
-<BLANKLINE>
-- [person ...] : 
-  Insert a reference to the specified database object.
-<BLANKLINE>
-  The first argument is mandatory and specifies the
-  primary key.
-<BLANKLINE>
-  If there is more than one argument, all remaining text
-  is used as the text of the link.
-<BLANKLINE>
-- [ticket ...] :
-  Insert a reference to the specified database object.
-<BLANKLINE>
-  The first argument is mandatory and specifies the
-  primary key.
-<BLANKLINE>
-  If there is more than one argument, all remaining text
-  is used as the text of the link.
-<BLANKLINE>
-    
+
+      
