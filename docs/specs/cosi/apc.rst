@@ -122,7 +122,7 @@ This demo database contains exactly 48 entries:
 >>> res = test_client.get(url,REMOTE_USER='robin')
 >>> print(res.status_code)
 200
->>> result = json.loads(res.content)
+>>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
 15
 
@@ -151,7 +151,7 @@ Here we override it on the living object:
 Same request returns now 25 data rows:
 
 >>> res = test_client.get(url, REMOTE_USER='robin')
->>> result = json.loads(res.content)
+>>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
 25
 
@@ -162,7 +162,7 @@ To remove the limit altogether, you can say:
 and the same request now returns all 48 data rows:
 
 >>> res = test_client.get(url,REMOTE_USER='robin')
->>> result = json.loads(res.content)
+>>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
 48
 
