@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2017 Luc Saffre
+# Copyright 2009-2018 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
@@ -255,6 +255,9 @@ lino_book.projects.pisa
 lino_book.projects.sendchanges
 lino_book.projects.tables
 lino_book.projects.tables.fixtures
+lino_book.projects.ui5
+lino_book.projects.ui5.settings
+lino_book.projects.ui5.tests
 lino_book.projects.vtables
 lino_book.projects.edmund
 lino_book.projects.edmund.settings

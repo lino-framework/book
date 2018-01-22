@@ -26,7 +26,7 @@ lino_noi.lib.topics
 lino_noi.lib.tickets (extends_models=['Ticket'])
 
 >>> dd.plugins.working
-lino_noi.lib.working
+lino_xl.lib.working
 
 
 Testing ticket #352

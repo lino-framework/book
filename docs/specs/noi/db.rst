@@ -16,8 +16,8 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-45 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
-67 models:
+46 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, summaries, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
+68 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
@@ -45,7 +45,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         67
+ contenttypes.ContentType           gfks.ContentTypes                3         68
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -88,16 +88,17 @@ This document describes the database structure.
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 13        13
  working.SessionType                working.SessionTypes             4         1
+ working.SiteSummary                working.Summaries                17        12
 ================================== ================================ ========= =======
 <BLANKLINE>
 
 
 >>> print(analyzer.show_complexity_factors())
-- 45 plugins
-- 67 models
-- 249 views
+- 46 plugins
+- 68 models
+- 252 views
 - 7 user types
-- 72 dialog actions
+- 73 dialog actions
 <BLANKLINE>
 
 

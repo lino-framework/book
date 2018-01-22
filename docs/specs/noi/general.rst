@@ -30,32 +30,24 @@ Ticket management is not Worktime tracking
 Lino Noi uses both :mod:`lino_xl.lib.tickets` (Ticket management) and
 :mod:`lino_xl.lib.working` (Worktime tracking).
 
-Note that :mod:`lino_xl.lib.working` and :mod:`lino_xl.lib.tickets`
-are independent modules which might be reused by other applicaton.
-Lino Noi uses them both and extends the "library" versions:
+But :mod:`lino_xl.lib.tickets` is an independent plugin which might be
+reused by other applicaton that have no worktime tracking.  Lino Noi
+uses them both and extends the "library" version of tickets:
 
-- :mod:`lino_noi.lib.working` 
 - :mod:`lino_noi.lib.tickets` 
 
 >>> dd.plugins.working
-lino_noi.lib.working
+lino_xl.lib.working
 
 >>> dd.plugins.tickets
 lino_noi.lib.tickets (extends_models=['Ticket'])
 
-For example, a service report is part of the working plugin, but the
-current implementation is defined in :mod:`lino_noi.lib.working` (not
-in :mod:`lino_xl.lib.working`) because it makes sense only if you
-have both working and tickets.
-
-
 >>> dd.plugins.working.needs_plugins
-['lino_noi.lib.tickets']
+['lino_noi.lib.noi', 'lino_noi.lib.tickets', 'lino.modlib.summaries']
 
 >>> dd.plugins.tickets.needs_plugins
 ['lino_xl.lib.excerpts', 'lino_xl.lib.topics', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']
 
-See also :attr:`needs_plugins <lino.core.plugin.Plugin.needs_plugins>`.
 
 
 User types
