@@ -52,6 +52,7 @@ Database structure
     ======= ========== ============
      value   name       text
     ------- ---------- ------------
+     05      incoming   Incoming
      10      newcomer   Newcomer
      20      coached    Registered
      25      inactive   Inactive
@@ -194,3 +195,6 @@ into models of other plugins.
     :noindex:
 
     .. attribute:: client_contact_type
+
+        Setting this field on a partner makes this partner available
+        as a client contact.
