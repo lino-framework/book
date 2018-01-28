@@ -9,10 +9,11 @@ from __future__ import unicode_literals
 
 import logging
 logger = logging.getLogger('lino.management.commands.dump2py')
-import os
 
 SOURCE_VERSION = 'None'
 
+import os
+import six
 from decimal import Decimal
 from datetime import datetime
 from datetime import time, date
@@ -36,7 +37,17 @@ def new_content_type_id(m):
     ct = settings.SITE.models.contenttypes.ContentType.objects.get_for_model(m)
     if ct is None: return None
     return ct.pk
+
+def pmem():
+    # Thanks to https://stackoverflow.com/questions/938733/total-memory-used-by-python-process    
+    process = psutil.Process(os.getpid())
+    print(process.memory_info().rss)
     
+def execfile(fn, *args):
+    logger.info("Execute file %s ...", fn)
+    six.exec_(compile(open(fn, "rb").read(), fn, 'exec'), *args)
+    # pmem()  # requires pip install psutil
+
 
 def bv2kw(fieldname, values):
     """
@@ -63,8 +74,9 @@ def main(args):
     call_command('initdb', interactive=args.interactive)
     os.chdir(os.path.dirname(__file__))
     loader.initialize()
+    args = (globals(), locals())
 
-    execfile("dumps_foo.py")
+    execfile("dumps_foo.py", *args)
     loader.finalize()
     call_command('resetsequences')
 

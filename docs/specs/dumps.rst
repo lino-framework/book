@@ -5,14 +5,13 @@
 Python dumps
 =========================================
 
-.. If this fails just because something has changed in the expected
-   dump, then you need to run::
+.. If this test fails because something has changed in the expected
+   dump, then you can update these dumps by running::
 
-   $ python manage_a.py dump2py a --overwrite
-   $ python manage_b.py dump2py b --overwrite
+     $ go dumps
+     $ ./init.sh
 
 ..  doctest init:
-   
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller("lino_book/projects/dumps")
 
@@ -118,6 +117,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Execute file dumps_foo.py ...
 Loading 3 objects to table dumps_foo...
 
 
@@ -198,6 +198,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Execute file dumps_foo.py ...
 Loading 3 objects to table dumps_foo...
 
 

@@ -1,3 +1,4 @@
+.. doctest docs/specs/human.rst
 .. _lino.tutorial.human:
 
 ============
@@ -90,6 +91,20 @@ Some examples with `first_name` first:
 {'first_name': 'Marc Antoine Bernard', 'last_name': 'Van den Bossche'}
 >>> name2kw("Marc Antoine Bernard Den Tandt", False)
 {'first_name': 'Marc Antoine Bernard', 'last_name': 'Den Tandt'}
+
+Some examples taken from
+`a question on SO 
+<https://stackoverflow.com/questions/48383199/splitting-names-that-include-de-da-etc-into-first-middle-last-etc>`__
+with Brazilian names:
+
+>>> name2kw("Emiliano Rodrigo Carrasco", False)
+{'first_name': 'Emiliano Rodrigo', 'last_name': 'Carrasco'}
+>>> name2kw("Alberto de Francia", False)
+{'first_name': 'Alberto', 'last_name': 'de Francia'}
+
+TODO: This one doesn't yet work:
+
+>>> # name2kw("Francisco da Sousa Rodrigues", False)
 
 Edge cases:
 
