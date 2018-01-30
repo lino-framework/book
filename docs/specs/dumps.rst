@@ -220,8 +220,10 @@ demonstrate the possible error messages.
 
 >>> shell("python manage_a.py dump2py")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--noinput]
-                           [--tolerate] [-o]
+usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}]
+                           [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                           [--traceback] [--no-color] [--noinput] [--tolerate]
+                           [-o] [-m MAX_ROW_COUNT]
                            output_dir
 manage_a.py dump2py: error: too few arguments
 
