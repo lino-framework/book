@@ -1,9 +1,9 @@
 .. doctest docs/dev/combo/index.rst
 .. _lino.dev.combo:
 
-============================================
+========================
 Introduction to choosers
-============================================
+========================
 
 This unit uses the :mod:`lino_book.projects.combo` project to show how
 to define dynamic lists of choices for a combobox field in a Lino
