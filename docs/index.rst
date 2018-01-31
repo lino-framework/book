@@ -25,8 +25,8 @@ Sitemap
    about/index
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
-   Hosting program </hosting/index>
    User's Guide </user/index>
+   /community/index
    documentation
    blog
    releases/index

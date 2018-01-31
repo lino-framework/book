@@ -99,4 +99,4 @@ its users. Trainers also write documentation for users.
     get_involved
     structure
     rumma
-    
+    /hosting/index

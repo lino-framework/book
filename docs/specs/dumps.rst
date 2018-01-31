@@ -1,9 +1,9 @@
 .. doctest docs/specs/dumps.rst
 .. _book.specs.dumps:
 
-=========================================
-Python dumps
-=========================================
+=======================
+Python dumps by example
+=======================
 
 .. If this test fails because something has changed in the expected
    dump, then you can update these dumps by running::

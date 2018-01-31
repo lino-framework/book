@@ -34,7 +34,9 @@ Examples used by a tutorial:
    lets2
    actors
    actions
+   tables
    dumps
+   combo
    polly
 
 
