@@ -7,7 +7,9 @@ Introduction to choosers
 
 This unit uses the :mod:`lino_book.projects.combo` project to show how
 to define dynamic lists of choices for a combobox field in a Lino
-application.
+application.  It is inspired by Vitor Freitas' blog post `How to
+Implement Dependent/Chained Dropdown List with Django
+<https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html>`__.
 
 
 .. contents::
@@ -62,9 +64,6 @@ Here is the :xfile:`models.py` file :
 
 .. literalinclude:: ../../../lino_book/projects/combo/models.py
 
-These models are taken from Vitor Freitas' blog post `How to Implement
-Dependent/Chained Dropdown List with Django
-<https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html>`__.
 
 
 Screenshots
@@ -116,6 +115,19 @@ application::
 
 Explore the application and try to extend it: change things in the
 code and see what happens.
+
+
+Discussion
+==========
+
+The chooser concept is a very old feature and it could deserve a
+refactoring because it is not the most elegant implementation.
+
+TODO: document chooser options and choosers on other fields than
+foreign keys.
+
+TODO: compare with `django-ajax-selects
+<https://github.com/crucialfelix/django-ajax-selects>`_
 
 
 Doctests
