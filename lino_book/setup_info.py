@@ -112,6 +112,8 @@ lino_book.projects.dumps.settings
 lino_book.projects.belref
 lino_book.projects.belref.fixtures
 lino_book.projects.belref.settings
+lino_book.projects.combo
+lino_book.projects.combo.fixtures
 lino_book.projects.docs
 lino_book.projects.docs.settings
 lino_book.projects.estref
