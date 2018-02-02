@@ -7,7 +7,9 @@ User management à la Lino
 
 This document explains how to get started with Lino's user management
 system.
-
+See :doc:`/dev/users` 
+for a more detailed documentation of the :mod:`lino.modlib.users`
+plugin.
 
 ..  doctests initialization:
     

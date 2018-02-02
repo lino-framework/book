@@ -66,7 +66,9 @@ specifying its name in :attr:`extends_models
 <lino.core.plugin.Plugin.extends_models>`.  This is explained in
 :doc:`plugin_inheritance`.
       
+.. _dev.accessing.plugins:
 
+   
 Accessing plugins
 =================
 
@@ -135,9 +137,11 @@ As a **system administrator** you can override these configuration
 defaults in your project's :xfile:`settings.py` using one of the
 following methods:
 
-- by overriding the Site class as described above for application developers
+- by overriding the Site class as described above for application
+  developers
 
-- using the :func:`configure_plugin <lino.core.site.configure_plugin>` function.
+- using the :func:`configure_plugin <lino.core.site.configure_plugin>`
+  function.
 
   For example, if you want to set the :attr:`country_code
   <lino_xl.lib.countries.Plugin.country_code>` of
@@ -153,7 +157,7 @@ following methods:
 Beware the pitfall: :func:`configure_plugin
 <lino.core.site.configure_plugin>` must be called *before* the
 :setting:`SITE` has been instantiated, otherwise *they will be ignored
-silently*.  (It is not easy to prevent accidental calls to *after*
+silently*.  (It is not easy to prevent accidental calls to it *after*
 Site initialization because there are scenarios where you want to
 instantiate several `Site` objects.)
 
