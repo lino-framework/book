@@ -1,18 +1,17 @@
 .. doctest docs/specs/dumps.rst
 .. _book.specs.dumps:
 
-=========================================
-Python dumps
-=========================================
+=======================
+Python dumps by example
+=======================
 
-.. If this fails just because something has changed in the expected
-   dump, then you need to run::
+.. If this test fails because something has changed in the expected
+   dump, then you can update these dumps by running::
 
-   $ python manage_a.py dump2py a --overwrite
-   $ python manage_b.py dump2py b --overwrite
+     $ go dumps
+     $ ./init.sh
 
 ..  doctest init:
-   
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller("lino_book/projects/dumps")
 
@@ -71,16 +70,15 @@ And here is the result:
 Note that our demo data contains an ambigous time stamp.  When
 somebody living in Brussels tells you "it was at on 2017-10-29 at
 01:16:06", then you don't know whether they mean summer or winter
-time.  Because their clock showed that time exactly twice during that
-night.  Every year on the last Sunday of October, all clocks in Europe
-are turned back at 2am by one hour to 1am again.  The timestamp
+time.  Because their clock showed that particular time twice during
+that night.  Every year on the last Sunday of October, all clocks in
+Europe are turned back at 2am by one hour to 1am again.  The timestamp
 "2017-10-29 01:16:06" is ambigous.  Thanks to Ilian Iliev for
 publishing his blog post `Django, pytz, NonExistentTimeError and
 AmbiguousTimeError
 <http://www.ilian.io/django-pytz-nonexistenttimeerror-and-ambiguoustimeerror/>`__.
 
-
-We run :manage:`dum2py` to create a dump:
+Now we run :manage:`dum2py` to create a dump:
 
 >>> shell("python manage_a.py dump2py tmp/a --overwrite")
 ... #doctest: +ELLIPSIS
@@ -118,6 +116,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Execute file dumps_foo.py ...
 Loading 3 objects to table dumps_foo...
 
 
@@ -161,15 +160,15 @@ Installed 3 object(s) from 1 fixture(s)
 
 The result as seen by the user is the same as in a.
 
->>> shell("python manage_a.py show dumps.Foos")
+>>> shell("python manage_b.py show dumps.Foos")
 ... #doctest: +ELLIPSIS
-==== ============= ================== ================== =====================
+==== ============= ================== ================== ===========================
  ID   Designation   Designation (de)   Designation (fr)   Last visit
----- ------------- ------------------ ------------------ ---------------------
- 1    First         Erster             Premier            2016-07-02 23:55:12
- 2    January       Januar             janvier            2016-07-03 00:10:23
- 3    Three         Drei               Trois              2017-10-29 03:16:06
-==== ============= ================== ================== =====================
+---- ------------- ------------------ ------------------ ---------------------------
+ 1    First         Erster             Premier            2016-07-02 23:55:12+00:00
+ 2    January       Januar             janvier            2016-07-03 00:10:23+00:00
+ 3    Three         Drei               Trois              2017-10-29 03:16:06+00:00
+==== ============= ================== ================== ===========================
 
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
@@ -198,6 +197,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   No migrations to apply.
+Execute file dumps_foo.py ...
 Loading 3 objects to table dumps_foo...
 
 
@@ -211,6 +211,25 @@ Wrote 3 objects to .../lino_book/projects/dumps/tmp/b/restore.py and siblings.
 <BLANKLINE>
 
 
+Third suite
+===========
+
+Here we test the `--max-row-count` option.  Since we have only three
+rows, we change the value from its default 50000 to 2 in order to
+trigger the situation:
+
+>>> shell("python manage_b.py dump2py tmp/c --overwrite -m 2")
+... #doctest: +ELLIPSIS
+Writing .../lino_book/projects/dumps/tmp/c/restore.py...
+Wrote 3 objects to .../lino_book/projects/dumps/tmp/c/restore.py and siblings.
+
+Verify that the newly created dump is as expected:
+
+>>> shell("diff c tmp/c")
+... #doctest: +ELLIPSIS
+<BLANKLINE>
+
+
 Error messages
 ==============
 
@@ -219,8 +238,10 @@ demonstrate the possible error messages.
 
 >>> shell("python manage_a.py dump2py")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--noinput]
-                           [--tolerate] [-o]
+usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}]
+                           [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                           [--traceback] [--no-color] [--noinput] [--tolerate]
+                           [-o] [-m MAX_ROW_COUNT]
                            output_dir
 manage_a.py dump2py: error: too few arguments
 

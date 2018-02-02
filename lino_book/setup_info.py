@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2017 Luc Saffre
+# Copyright 2009-2018 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
@@ -16,7 +16,7 @@ SETUP_INFO = dict(
     version='18.1.0',
     install_requires=[
         'lino', 'selenium',
-        'django-iban', 'metafone', 'channels',
+        'django-iban', 'metafone', 'channels<2',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
@@ -112,6 +112,8 @@ lino_book.projects.dumps.settings
 lino_book.projects.belref
 lino_book.projects.belref.fixtures
 lino_book.projects.belref.settings
+lino_book.projects.combo
+lino_book.projects.combo.fixtures
 lino_book.projects.docs
 lino_book.projects.docs.settings
 lino_book.projects.estref
@@ -255,6 +257,9 @@ lino_book.projects.pisa
 lino_book.projects.sendchanges
 lino_book.projects.tables
 lino_book.projects.tables.fixtures
+lino_book.projects.ui5
+lino_book.projects.ui5.settings
+lino_book.projects.ui5.tests
 lino_book.projects.vtables
 lino_book.projects.edmund
 lino_book.projects.edmund.settings

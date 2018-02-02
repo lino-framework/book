@@ -70,6 +70,8 @@ def objects():
         for stage in stages:
             yield named(TrendStage, stage, trend_area=ta)
     
+    yield EventType(**dd.str2kw('name', _("First contact")))
+    
     kw = dd.str2kw('name', _("Lesson"))
     kw.update(dd.str2kw('event_label', _("Lesson")))
     event_type = EventType(**kw)

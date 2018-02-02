@@ -81,7 +81,7 @@ Lino Noi:
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
 - tickets.Site :
-  - PROTECT : meetings.Meeting.site, tickets.Ticket.site
+  - PROTECT : meetings.Meeting.site, tickets.Ticket.site, working.SiteSummary.master
 - tickets.Ticket :
   - PROTECT : deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :

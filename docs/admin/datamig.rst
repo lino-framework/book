@@ -1,4 +1,6 @@
+===================
 How to migrate data
 ===================
 
-Content moved to :ref:`dpy`.
+See :doc:`/admin/upgrade`.
+

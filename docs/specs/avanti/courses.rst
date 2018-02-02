@@ -260,14 +260,15 @@ Models and views
     The list of possible states of a reminder.
 
     >>> rt.show(courses.ReminderStates)
-    ======= ======= =======
-     value   name    text
-    ------- ------- -------
-     10      draft   Draft
-     20      sent    Sent
-     30      ok      OK
-     40      final   Final
-    ======= ======= =======
+    ======= =========== ===========
+     value   name        text
+    ------- ----------- -----------
+     10      draft       Draft
+     20      sent        Sent
+     30      ok          OK
+     40      final       Final
+     90      cancelled   Cancelled
+    ======= =========== ===========
     <BLANKLINE>
            
     

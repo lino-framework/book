@@ -40,5 +40,6 @@ No data to display
  *Diner (09.05.2015 13:30)* (Calendar entry)           id:123
  *SLS 9.2* (Movement)                                  id:123
  *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Therapy)   name:DOBBELSTEIN-DEMEULENAERE Dorothée (**123**)
+ *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Patient)   id:123
 ===================================================== ==================================================
 <BLANKLINE>

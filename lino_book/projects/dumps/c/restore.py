@@ -76,7 +76,8 @@ def main(args):
     loader.initialize()
     args = (globals(), locals())
 
-    execfile("dumps_foo.py", *args)
+    execfile("dumps_foo_1.py", *args)
+    execfile("dumps_foo_2.py", *args)
     loader.finalize()
     call_command('resetsequences')
 

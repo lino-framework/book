@@ -34,6 +34,19 @@ Clients
     
         Pointer to :class:`ClientStates`.
 
+        >>> rt.show('clients.ClientStates')
+        ======= ========== ============
+         value   name       text
+        ------- ---------- ------------
+         05      incoming   Incoming
+         10      newcomer   Newcomer
+         20      coached    Registered
+         25      inactive   Inactive
+         30      former     Ended
+         40      refused    Abandoned
+        ======= ========== ============
+        <BLANKLINE>
+
     .. attribute:: unemployed_since
 
        The date when this client got unemployed and stopped to have a

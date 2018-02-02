@@ -45,6 +45,6 @@ SITE = Site(globals())
 
 #~ except Exception as e:
     #~ import traceback
-    #~ traceback.print_exc(e)
+    #~ traceback.print_exc()
     #~ sys.exit(1)
   #~

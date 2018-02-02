@@ -12,6 +12,5 @@ About Lino
    /demos
    why
    name
-   /community/index
    more
    

@@ -565,14 +565,15 @@ Every 2nd month
 
 
 >>> rt.show(cal.EventTypes, column_names="id name")
-==== ============= ================== ==================
- ID   Designation   Designation (de)   Designation (fr)
----- ------------- ------------------ ------------------
- 1    Holidays      Feiertage          Jours fériés
- 2    Meeting       Versammlung        Réunion
- 3    Internal      Internal           Internal
- 4    Lesson        Lesson             Lesson
-==== ============= ================== ==================
+==== =============== ================== ==================
+ ID   Designation     Designation (de)   Designation (fr)
+---- --------------- ------------------ ------------------
+ 1    Holidays        Feiertage          Jours fériés
+ 2    Meeting         Versammlung        Réunion
+ 3    Internal        Internal           Internal
+ 4    First contact   First contact      First contact
+ 5    Lesson          Lesson             Lesson
+==== =============== ================== ==================
 <BLANKLINE>
 
 >>> obj.event_type = cal.EventType.objects.get(id=1)

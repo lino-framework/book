@@ -805,24 +805,17 @@ the detail window of a ticket.
 - **General** (general_1):
   - (general1):
     - (general1_1): **Summary** (summary), **ID** (id)
-    - (general1_2): **Author** (user), **End user** (end_user), **Assigned to** (assigned_to), **Deadline** (deadline)
-    - (general1_3): **Site** (site), **Topic** (topic), **Mission** (project)
-    - (general1_4): **Workflow** (workflow_buttons), **Ticket type** (ticket_type), **Priority** (priority), **Private** (private)
-    - (bottom_box) [visible for user consultant hoster developer senior admin]:
-      - (bottom_box_2): **Wishes** (deploy_DeploymentsByTicket), **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
-      - **Commits** (github_CommitsByTicket)
+    - (general1_2): **Author** (user), **End user** (end_user), **Site** (site), **Ticket type** (ticket_type), **Private** (private)
+    - (general1_4): **Workflow** (workflow_buttons), **Priority** (priority), **Assigned to** (assigned_to), **Planned time** (planned_time)
+    - (bottom_box_2): **Description** (description), **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):
     - (more1):
-      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since), **Reported for** (reported_for)
-      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Planned time** (planned_time)
+      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
+      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Description** (description), **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin]
-- **History** (changes.ChangesByMaster) [visible for senior admin]
-- **Even more** (more2) [visible for user consultant hoster developer senior admin]:
-  - **Starred by** (stars.AllStarsByController)
-  - **Uploads** (uploads_UploadsByController)
+  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin], **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
 <BLANKLINE>
 
 
