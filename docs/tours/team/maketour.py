@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre.
+# Copyright 2015-2018 Luc Saffre.
 # License: BSD, see LICENSE for more details.
 
 """This is the :xfile:`make_screenshots.py` script for `team`.
@@ -7,7 +7,7 @@
 It generates the :ref:`team.tour` page.
 
 """
-from __future__ import unicode_literals
+#from __future__ import unicode_literals
 from os.path import dirname
 import traceback
 
@@ -25,7 +25,7 @@ def english_tour(app):
     app.checktitle("Lino Noi")
 
     app.stabilize()
-    app.screenshot('login1.png', "Before signing in", """
+    app.screenshot('login1.png', "Before signing in", u"""
 
     As long as you didn't authenticate, you are treated as an
     anonymous user.
@@ -42,6 +42,8 @@ def english_tour(app):
     elem = driver.find_element(By.XPATH, '//button[text()="Sign in"]')
     elem.click()
 
+    # app.stabilize()
+    
     elem = driver.find_element(By.NAME, 'username')
     elem.send_keys("robin")
     elem = driver.find_element(By.NAME, 'password')
@@ -59,7 +61,7 @@ def english_tour(app):
 
     app.stabilize()
 
-    app.screenshot('welcome.png', "Der Startbildschirm", """
+    app.screenshot('welcome.png', "Der Startbildschirm", u"""
     Das ist der Startbildschirm. Hier haben wir eine Serie von Elementen:
 
     - Das Hauptmenü
@@ -72,7 +74,7 @@ def english_tour(app):
     elem = driver.find_element(By.XPATH, '//button[text()="Kontakte"]')
     elem.click()
 
-    app.screenshot('menu_kontakte.png', "Das Menü :menuselection:`Kontakte`")
+    app.screenshot('menu_kontakte.png', u"Das Menü :menuselection:`Kontakte`")
 
     # elem = driver.find_element(By.XPATH, '//button[text()="▶ Klienten"]')
     elem = driver.find_element(By.LINK_TEXT, "▶ Klienten")
@@ -80,7 +82,7 @@ def english_tour(app):
 
     app.stabilize()
 
-    app.screenshot('pcsw.Clients.grid.png', "Liste der Klienten", """
+    app.screenshot('pcsw.Clients.grid.png', "Liste der Klienten", u"""
     Wählen Sie :menuselection:`Kontakte --> Klienten`, um die Liste
     aller Klienten zu zeigen.
     """)
@@ -108,7 +110,7 @@ def english_tour(app):
 
     app.stabilize()
 
-    app.screenshot('pcsw.Clients.detail.png', "Detail Klient", """
+    app.screenshot('pcsw.Clients.detail.png', "Detail Klient", u"""
     Doppelklick auf eine Zeile, um das Detail dieses Klienten zu zeigen.
     """)
 
