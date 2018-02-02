@@ -16,7 +16,7 @@ SETUP_INFO = dict(
     version='18.1.0',
     install_requires=[
         'lino', 'selenium',
-        'django-iban', 'metafone', 'channels',
+        'django-iban', 'metafone', 'channels<2',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
