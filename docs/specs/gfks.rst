@@ -16,7 +16,7 @@ Some internals about Generic Foreign Keys
 The :func:`gfk2lookup` function
 ===============================
 
-The :func:`gfk2lookup <lino.core.utils.gfk2lookup>` function is mostly
+The :func:`gfk2lookup <lino.core.gfks.gfk2lookup>` function is mostly
 internal use, but occasionally you might want to use it.
 
 >>> from lino.core.utils import full_model_name as fmn
