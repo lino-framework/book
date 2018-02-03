@@ -28,7 +28,7 @@ General stuff:
 >>> response = test_client.get(url, REMOTE_USER='robin')
 >>> response.status_code
 200
->>> print(response.content)
+>>> print(response.content.decode())
 ... #doctest: +NORMALIZE_WHITESPACE
 var tinyMCETemplateList = [ 
 [ "hello", "/tinymce/templates/notes/MyNotes/69/body/1", "Inserts 'Hello, world!'" ], 
@@ -39,7 +39,7 @@ var tinyMCETemplateList = [
 >>> response = test_client.get(url, REMOTE_USER='robin')
 >>> response.status_code
 200
->>> print(response.content)
+>>> print(response.content.decode())
 ... #doctest: +NORMALIZE_WHITESPACE
 <div>Hello, world!</div>
 

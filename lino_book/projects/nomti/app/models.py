@@ -1,3 +1,9 @@
+# -*- coding: UTF-8 -*-
+# Copyright 2015-2018 Luc Saffre
+# License: BSD (see file COPYING for details)
+
+from __future__ import unicode_literals
+from builtins import str
 from django.db import models
 from lino.api import dd
 
@@ -30,7 +36,7 @@ class Place(dd.Model):
             what = ''
         return "%s %s(ceo=%s,owners=%s)" % (
             self.name, what, self.ceo,
-            ','.join([unicode(o) for o in self.owners.all()]))
+            ','.join([str(o) for o in self.owners.all()]))
 
     def get_restaurant(self):
         try:
@@ -67,7 +73,7 @@ class Restaurant(dd.Model):
     def __str__(self):
         return "%s (cooks=%s)" % (
             self.place.name,
-            ','.join([unicode(o) for o in self.cooks.all()]))
+            ','.join([str(o) for o in self.cooks.all()]))
     
 @dd.python_2_unicode_compatible
 class Visit(models.Model):
