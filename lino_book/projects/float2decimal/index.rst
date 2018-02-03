@@ -5,7 +5,7 @@ Assigning float values to a DecimalField
 .. This document is part of the test suite.  
    To test only this  document, run:
 
-    $ python setup.py test -s tests.DocsTests.test_float2decimal
+    $ python setup.py test -s tests.test_demo.TestCase.test_float2decimal
 
     doctest init:
 
@@ -43,7 +43,7 @@ It is okay to assign integer values to DecimalFields:
 >>> a.save()
 >>> pk = a.pk
 >>> a = A.objects.get(pk=pk)
->>> print '{0:.2f}'.format(a.total())
+>>> print ('{0:.2f}'.format(a.total()))
 20.00
 
 (Note: unformatted output of above snippet differs between Django
