@@ -1,4 +1,8 @@
+# Copyright 2010-2017 Luc Saffre
+# License: BSD (see file COPYING for details)
+
 from __future__ import unicode_literals
+from builtins import str
 from django.db import models
 from lino.mixins.polymorphic import Polymorphic
 from django.utils.encoding import python_2_unicode_compatible
@@ -22,7 +26,7 @@ class Place(Polymorphic):
     def __str__(self):
         return "%s (owners=%s)" % (
             self.name,
-            ', '.join([unicode(o) for o in self.owners.all()]))
+            ', '.join([str(o) for o in self.owners.all()]))
 
 
 @python_2_unicode_compatible
@@ -34,8 +38,8 @@ class Restaurant(Place):
     def __str__(self):
         return "%s (owners=%s, cooks=%s)" % (
             self.name,
-            ', '.join([unicode(o) for o in self.owners.all()]),
-            ', '.join([unicode(o) for o in self.cooks.all()]))
+            ', '.join([str(o) for o in self.owners.all()]),
+            ', '.join([str(o) for o in self.cooks.all()]))
 
 
 @python_2_unicode_compatible
