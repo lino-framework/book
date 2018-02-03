@@ -40,7 +40,7 @@ in our :xfile:`settings.py` module:
 A utility function:
 
 >>> def status():
-...     return [m.objects.all().count() for m in Member, Comment, Note, Memo]
+...     return [m.objects.all().count() for m in [Member, Comment, Note, Memo]]
 ...         
 
 We create a member and three GFK-related objects whose `owner` fields
