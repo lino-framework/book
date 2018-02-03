@@ -3,7 +3,7 @@
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
-
+from builtins import str
 # from lino.utils.test import DocTest
 from lino.utils.djangotest import WebIndexTestCase
 
@@ -62,7 +62,7 @@ class TestCase(TestCase):
             mbr.delete()
         except Warning as e:
             self.assertEqual(
-                unicode(e), "Cannot delete member John because 1 notes refer to it.")
+                str(e), "Cannot delete member John because 1 notes refer to it.")
         else:
             self.fail("Expected an exception")
 
