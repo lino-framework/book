@@ -34,7 +34,7 @@ Here is a valid request:
 >>> res = test_client.get(url, **headers)
 >>> print(res.status_code)
 200
->>> d = AttrDict(json.loads(res.content))
+>>> d = AttrDict(json.loads(res.content.decode()))
 >>> d.count
 1
 >>> print(d.title)
@@ -50,7 +50,7 @@ response (i.e. status code 400):
 >>> res = test_client.get(url, **headers)
 >>> res.status_code
 400
->>> print(res.content)
+>>> print(res.content.decode())
 ObjectDoesNotExist: Invalid master key 114114 for contacts.RolesByPerson
 
 Since RolesByPerson has a known master class (i.e. Person), the ``mt``
@@ -85,5 +85,5 @@ TRACEBACK:
 >>> res.status_code
 400
 >>> #print(json.loads(res.content)['message'])
->>> print(res.content)
+>>> print(res.content.decode())
 Http404: cal.EventsByProject is not a class

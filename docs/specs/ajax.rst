@@ -66,7 +66,7 @@ will do the following AJAX call to get its data:
 >>> res = test_client.get(url, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
 >>> res.status_code
 200
->>> r = json.loads(res.content)
+>>> r = json.loads(res.content.decode())
 >>> print(json.dumps(sorted(r.keys())))
 ["count", "no_data_text", "param_values", "rows", "success", "title"]
 >>> len(r['rows'])
@@ -116,6 +116,6 @@ request without modifications." (`w3.org
 
 >>> res.status_code
 400
->>> print(res.content)
+>>> print(res.content.decode())
 PermissionDenied: As Anonym you have no permission to run this action.
 
