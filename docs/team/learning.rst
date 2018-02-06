@@ -30,18 +30,22 @@ Python
 Working in a UNIX shell
 =======================
 
-- An in-depth exploration of the art of shell scripting: `Advanced Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_
-  by Mendel Cooper
+- An in-depth exploration of the art of shell scripting: `Advanced
+  Bash-Scripting Guide <http://www.tldp.org/LDP/abs/html>`_ by Mendel
+  Cooper
 
 - `Bash Cheat sheet
   <https://learncodethehardway.org/unix/bash_cheat_sheet.pdf>`__
 
 - `Bash guide on Greg's wiki <http://mywiki.wooledge.org/BashGuide>`_
 
-- `Steve Parker's shell scripting guide <http://steve-parker.org/sh/first.shtml>`_
+- `Steve Parker's shell scripting guide
+  <http://steve-parker.org/sh/first.shtml>`_
 
-- `BASH Programming - Introduction HOW-TO <http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html>`_
-  by Mike G
+- `BASH Programming - Introduction HOW-TO
+  <http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html>`_ by Mike G
+
+- http://books.goalkicker.com/BashBook/
 
 
 Sphinx

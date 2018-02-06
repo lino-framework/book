@@ -1,3 +1,4 @@
+.. doctest docs/dev/tables.rst
 .. _lino.tutorial.tables:
 
 =========================

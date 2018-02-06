@@ -60,12 +60,12 @@ function install_them_all {
     install vilma lino-framework vilma
     install care lino-framework care
     install tera lino-framework tera
+    install amici lino-framework amici
     install book lino-framework book
     install ext6 lino-framework extjs6
 
     # the following are needed e.g. to build Luc's blog
     # install welfare lino-framework welfare
-    # install amici lino-framework amici
     # install algus lino-framework algus
     # install presto lino-framework presto
     # install patrols lsaffre lino-patrols
