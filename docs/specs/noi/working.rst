@@ -111,7 +111,7 @@ started some days ago.
     >>> for u in users.User.objects.all():
     ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
-    ...         print(u.username, "worked on", [o for o in qs])
+    ...         print("{} {} {}".format(str(u.username), "worked on", [o for o in qs]))
     jean worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
     luc worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
     mathieu worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
@@ -122,7 +122,7 @@ started some days ago.
     >>> url += "_dc=1442341081053&cw=430&cw=83&cw=83&cw=83&cw=83&cw=83&cw=83&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ci=description&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=vc4&ci=vc5&name=0&pv=16.05.2015&pv=23.05.2015&pv=7&an=show_as_html&sr="
     >>> test_client.force_login(rt.login('jean').user)
     >>> res = test_client.get(url, REMOTE_USER="jean")
-    >>> json.loads(res.content)
+    >>> json.loads(res.content.decode())
     {u'open_url': u'/bs3/working/WorkedHours?limit=15', u'success': True}
 
 

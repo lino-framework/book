@@ -159,12 +159,12 @@ To remove the limit altogether, you can say:
 
 >>> countries.PlacesByCountry.preview_limit = None
 
-and the same request now returns all 48 data rows:
+and the same request now returns all 49 data rows:
 
 >>> res = test_client.get(url,REMOTE_USER='robin')
 >>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
-48
+49
 
 
 
