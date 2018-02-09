@@ -139,60 +139,6 @@ Laura (the teacher) who is responsible for the individual events.
 =========================================== ======== =================================
 <BLANKLINE>
 
-Names of participants
-=====================
-
-The names of the participants are confidential data in :ref:`avanti`.
-
-System admins and coordinators can see the full names:
-
->>> obj = courses.Course.objects.get(pk=1)
->>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj)
-... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ================= ======================= ======== ============= =========== ======== ===== ========= ======== ==================================================
- ID   Date of request   Client                  Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
----- ----------------- ----------------------- -------- ------------- ----------- -------- ----- --------- -------- --------------------------------------------------
- 9    07/02/2017        ABDI Aátifá (136)       Female                 No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 7    09/02/2017        ABDELNOUR Aámir (125)   Male                   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 5    11/02/2017        ABDALLAH Aáish (127)    Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 3    13/02/2017        ABBASI Aáishá (118)     Female                 No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 1    15/02/2017        ABAD Aábdeen (114)      Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-==== ================= ======================= ======== ============= =========== ======== ===== ========= ======== ==================================================
-<BLANKLINE>
-
-But auditors see only the first name, number and place:
-
->>> rt.login('audrey').show('courses.EnrolmentsByCourse', obj)
-... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ================= ========================== ======== ============= =========== ======== ===== ========= ======== ===============
- ID   Date of request   Client                     Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
----- ----------------- -------------------------- -------- ------------- ----------- -------- ----- --------- -------- ---------------
- 9    07/02/2017        Aátifá (136) from Eupen    Female                 No          No       No    No                 **Requested**
- 7    09/02/2017        Aámir (125) from Eupen     Male                   No          No       No    No                 **Confirmed**
- 5    11/02/2017        Aáish (127) from Eupen     Male                   No          No       No    No                 **Requested**
- 3    13/02/2017        Aáishá (118) from Eupen    Female                 No          No       No    No                 **Confirmed**
- 1    15/02/2017        Aábdeen (114) from Eupen   Male                   No          No       No    No                 **Requested**
-==== ================= ========================== ======== ============= =========== ======== ===== ========= ======== ===============
-<BLANKLINE>
-
-
-Note that teachers *can* see the full names. They need it because they
-must register presences and absences:
-
->>> rt.login('laura').show('courses.EnrolmentsByCourse', obj)
-... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ================= ======================= ======== ============= =========== ======== ===== ========= ======== ==================================================
- ID   Date of request   Client                  Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
----- ----------------- ----------------------- -------- ------------- ----------- -------- ----- --------- -------- --------------------------------------------------
- 9    07/02/2017        ABDI Aátifá (136)       Female                 No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 7    09/02/2017        ABDELNOUR Aámir (125)   Male                   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 5    11/02/2017        ABDALLAH Aáish (127)    Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
- 3    13/02/2017        ABBASI Aáishá (118)     Female                 No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
- 1    15/02/2017        ABAD Aábdeen (114)      Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
-==== ================= ======================= ======== ============= =========== ======== ===== ========= ======== ==================================================
-<BLANKLINE>
-
-
 Reference
 =========
 

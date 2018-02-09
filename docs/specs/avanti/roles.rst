@@ -11,6 +11,9 @@ User roles in Lino Avanti
     >>> lino.startup('lino_book.projects.adg.settings.doctests')
     >>> from lino.api.doctest import *
 
+.. contents::
+  :local:
+
     
 Menus
 =====
@@ -66,7 +69,7 @@ Menus
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
   - Contacts : Clients
-  - Calendar : Calendar entries, Presences
+  - Calendar : Calendar entries
   - Activities : Activities, Enrolments
 - Site : About
 
@@ -98,7 +101,7 @@ Each window is **viewable** for a given set of user types.
 - cal.Events.insert : visible for staff admin
 - cal.GuestRoles.detail : visible for admin
 - cal.GuestRoles.merge_row : visible for admin
-- cal.Guests.detail : visible for teacher user auditor staff admin
+- cal.Guests.detail : visible for teacher user staff admin
 - cal.Guests.insert : visible for teacher user staff admin
 - cal.Guests.merge_row : visible for admin
 - cal.OneEvent.merge_row : visible for admin
@@ -261,4 +264,75 @@ Each window is **viewable** for a given set of user types.
 - users.Users.merge_row : visible for admin
 - users.UsersOverview.sign_in : visible for all
 <BLANKLINE>
+
+
+Names of participants
+=====================
+
+The names of the participants are confidential data in :ref:`avanti`.
+
+System admins can see the full names:
+
+>>> obj = courses.Course.objects.get(pk=1)
+>>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj, show_links=True)
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+================ ================= ==================================== ======== ============= =========== ======== ===== ========= ======== ==================================================
+ ID               Date of request   Client                               Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
+---------------- ----------------- ------------------------------------ -------- ------------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ `9 <Detail>`__   07/02/2017        `ABDI Aátifá (136) <Detail>`__       Female                 No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `7 <Detail>`__   09/02/2017        `ABDELNOUR Aámir (125) <Detail>`__   Male                   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `5 <Detail>`__   11/02/2017        `ABDALLAH Aáish (127) <Detail>`__    Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `3 <Detail>`__   13/02/2017        `ABBASI Aáishá (118) <Detail>`__     Female                 No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `1 <Detail>`__   15/02/2017        `ABAD Aábdeen (114) <Detail>`__      Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+================ ================= ==================================== ======== ============= =========== ======== ===== ========= ======== ==================================================
+<BLANKLINE>
+
+Teachers and coordinators *can* see the full names (they need it
+because they must register presences and absences), but they cannot
+click on a name to see any detail.
+
+>>> rt.login('laura').show('courses.EnrolmentsByCourse', obj, show_links=True)
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ==================================================
+ ID               Date of request   Client                    Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
+---------------- ----------------- ------------------------- -------- ------------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ==================================================
+<BLANKLINE>
+
+
+>>> rt.login('martina').show('courses.EnrolmentsByCourse', obj, show_links=True)
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ==================================================
+ ID               Date of request   Client                    Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
+---------------- ----------------- ------------------------- -------- ------------- ----------- -------- ----- --------- -------- --------------------------------------------------
+ `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 **Confirmed** → [Cancelled] [Requested] [Trying]
+ `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                 **Requested** → [Confirm] [Cancelled] [Trying]
+================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ==================================================
+<BLANKLINE>
+
+
+But auditors see only the pupil's number and place:
+
+>>> rt.login('audrey').show('courses.EnrolmentsByCourse', obj, show_links=True)
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+================ ================= ==================== ======== ============= =========== ======== ===== ========= ======== ===============
+ ID               Date of request   Client               Gender   Nationality   Childcare   School   Bus   Evening   Remark   Workflow
+---------------- ----------------- -------------------- -------- ------------- ----------- -------- ----- --------- -------- ---------------
+ `9 <Detail>`__   07/02/2017        *(136) from Eupen*   Female                 No          No       No    No                 **Requested**
+ `7 <Detail>`__   09/02/2017        *(125) from Eupen*   Male                   No          No       No    No                 **Confirmed**
+ `5 <Detail>`__   11/02/2017        *(127) from Eupen*   Male                   No          No       No    No                 **Requested**
+ `3 <Detail>`__   13/02/2017        *(118) from Eupen*   Female                 No          No       No    No                 **Confirmed**
+ `1 <Detail>`__   15/02/2017        *(114) from Eupen*   Male                   No          No       No    No                 **Requested**
+================ ================= ==================== ======== ============= =========== ======== ===== ========= ======== ===============
+<BLANKLINE>
+
+
 
