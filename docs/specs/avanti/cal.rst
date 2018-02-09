@@ -30,12 +30,12 @@ ABDELLA Aákif (128)
 
 >>> show_choices("audrey", base + '?query=') #doctest: +ELLIPSIS
 <br/>
-Aábdeen (114) from Eupen
-Aáishá (118) from Eupen
-Aádil (120) from Eupen
-Aáish (127) from Eupen
-Aákif (128) from Eupen
-Aátifá (136) from Eupen
+(114) from Eupen
+(118) from Eupen
+(120) from Eupen
+(127) from Eupen
+(128) from Eupen
+(136) from Eupen
 ...
 
 

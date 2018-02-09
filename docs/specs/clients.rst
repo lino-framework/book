@@ -154,15 +154,15 @@ For example here are the client contacts of type "school" in our demo
 database:
 
 >>> obj = clients.KnownContactTypes.school.get_object()
->>> rt.show(clients.ClientContactsByType, obj)
-================== ================ ================================ =========
- Organization       Contact person   Client                           Remarks
------------------- ---------------- -------------------------------- ---------
- Favourite School                    Aádil (120) from Eupen
- Best School                         Abdul Báásid (162) from Raeren
- Favourite School                    Aráli (119) from Eupen
- Best School                         Armáni (134) from Eupen
-================== ================ ================================ =========
+>>> rt.login('robin').show(clients.ClientContactsByType, obj)
+================== ================ ========================= =========
+ Organization       Contact person   Client                    Remarks
+------------------ ---------------- ------------------------- ---------
+ Favourite School                    ABDALLA Aádil (120)
+ Best School                         ABID Abdul Báásid (162)
+ Favourite School                    BAH Aráli (119)
+ Best School                         CONTEH Armáni (134)
+================== ================ ========================= =========
 <BLANKLINE>
     
 
