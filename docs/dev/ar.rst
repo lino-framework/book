@@ -38,7 +38,6 @@ But there are exceptions to this approximaton.
 
 - :meth:`set_response <lino.core.requests.BaseRequest.set_response>` 
 
-
 - :meth:`ba.request_from <lino.core.boundaction.BoundAction.request_from>`
 - :meth:`lino.core.request.get_permission`
 - :meth:`lino.core.request.set_action_param_values`
@@ -47,8 +46,8 @@ But there are exceptions to this approximaton.
 
 Iterating over table requests
 
-A tablerequest has two iterators: data_iterator and
-sliced_data_iterator.
+A tablerequest has two iterators: :Attr:`data_iterator` and
+:attr:`sliced_data_iterator`.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.demo')
