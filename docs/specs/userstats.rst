@@ -10,12 +10,19 @@ User statistics
    >>> import lino
    >>> lino.startup('lino_book.projects.team.settings.doctests')
    >>> from lino.api.doctest import *
-   >>> from django.db.models import Q
 
-The :mod:`lino_xl.lib.userstats` plugin adds functionality for
-gettings statistical data about the system users.  For the moment this
-computes the number of active users for every month.
+.. currentmodule:: lino_xl.lib.userstats   
 
+The :mod:`lino_xl.lib.userstats` plugin adds functionality for getting
+statistical data about the system users.  For the moment this shows
+nothing more and nothing less than the **number of active users for
+every month**.
+
+The plugin adds a database model :class:`UserStat` and a menu entry
+:menuselection:`Explorer --> System --> User statistics` which shows
+all user statistic entries.
+
+The numbers are updated together with all other :doc:`summaries`.
 
 .. contents::
   :local:
@@ -70,8 +77,24 @@ Example
 
 .. currentmodule:: lino_xl.lib.userstats
 
->>> # rt.models.userstats.UserStat.__mro__
->>> # rt.models.userstats.UserStat._widget_options
->>> # cols = rt.models.userstats.UserStats.get_handle().get_columns()
->>> # cols[0].name
->>> # cols[0].hide_sum
+Models
+======
+
+.. class:: UserStats
+.. class:: UserStat
+
+    A :class:`Summary <lino.modlib.summaries.Summary>` on
+    :class:`SiteConfig <lino.modlib.system.SiteConfig>`.
+
+
+    .. attribute:: year
+    .. attribute:: month
+    .. attribute:: master
+    .. attribute:: active_users
+
+        The number of active users. A user is considered active if
+        their :attr:`start_date <lino.modlib.users.User.start_date>`
+        is either empty or before the first day of this month or year,
+        and if their :attr:`end_date
+        <lino.modlib.users.User.end_date>` is either empty or
+        after the first day of this month or year.

@@ -2,9 +2,9 @@
 Summary tables
 ==============
 
-Installs a framework for defining summary tables.  A summary table is
-a table with data that has been computed (aggregated) as a summary of
-other tables.
+The :mod:`lino.modlib.summaries` plugin installs a framework for
+defining summary tables.  A summary table is a table with data that
+has been computed (aggregated) as a summary of other tables.
 
 Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
 :mod:`lino_welfare.modlib.esf`.
