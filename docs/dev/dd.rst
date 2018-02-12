@@ -5,7 +5,7 @@ The ``lino.api.dd`` module (database design)
 See also :mod:`lino.api`
 
 
-.. currentmodule:: lino.api.dd
+.. module:: lino.api.dd
 
 Global application attributes
 =============================

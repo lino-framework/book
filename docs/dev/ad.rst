@@ -4,7 +4,7 @@ The ``lino.api.ad`` module (application design)
 
 See also :mod:`lino.api`
 
-.. currentmodule:: lino.api.ad
+.. module:: lino.api.ad
 
 
 .. function:: _

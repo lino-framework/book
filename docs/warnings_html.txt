@@ -1,0 +1,1 @@
+[31;01m/media/dell1tb/work/lino/lino/core/fields.py:docstring of lino.core.fields:1: WARNING: Inline interpreted text or phrase reference start-string without end-string.[39;49;00m

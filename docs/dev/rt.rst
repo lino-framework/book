@@ -5,7 +5,7 @@ The ``lino.api.rt`` module (runtime)
 See also :mod:`lino.api`.
 
 
-.. currentmodule:: lino.api.rt
+.. module:: lino.api.rt
 
 .. data:: models
 
