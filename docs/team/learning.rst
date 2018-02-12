@@ -21,6 +21,9 @@ Python
   is an introduction to Python programming for beginners.
 
 - Mike Driscoll's `Python 201: A Tutorial on Threads <http://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/>`_
+
+- We try to follow the `Django coding style
+  <https://docs.djangoproject.com/en/1.11/internals/contributing/writing-code/coding-style/>`__
   
 
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
