@@ -120,6 +120,7 @@ lino_book.projects.estref
 lino_book.projects.estref.settings
 lino_book.projects.estref.tests
 lino_book.projects.events
+lino_book.projects.events.tests
 lino_book.projects.polls
 lino_book.projects.polls.polls
 lino_book.projects.polls.polls.fixtures
