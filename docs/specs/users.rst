@@ -96,6 +96,18 @@ Models
         means that we want to enable online registration. In this case
         everybody can modify an unsaved user.
 
+    .. attribute:: end_date
+    .. attribute:: start_date
+    
+        The site administrator can optionally specify a date when a
+        user started or stopped to be active.
+        
+        If :attr:`start_date` is given, then the user cannot sign in
+        before that date.  If :attr:`end_date` is given, then the user
+        cannot sign in after that date.
+        
+        These fields are used for :doc:`userstats`.
+
            
 .. class:: Authority
 

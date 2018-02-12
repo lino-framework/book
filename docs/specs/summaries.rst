@@ -2,21 +2,69 @@
 Summary tables
 ==============
 
-Installs a framework for defining summary tables.  using the
-:class:`Summary` model mixin and the :manage:`checksummaries` command.
+The :mod:`lino.modlib.summaries` plugin installs a framework for
+defining summary tables.  A summary table is a table with data that
+has been computed (aggregated) as a summary of other tables.
 
-Usage examples:
-:mod:`lino_xl.lib.tickets` and
+Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
 :mod:`lino_welfare.modlib.esf`.
 
+The plugin has no models on its own but provides the :class:`Summary`
+model mixin and the :manage:`checksummaries` command.  It also
+schedules a daily task which runs the :manage:`checksummaries`
+command.
 
+.. currentmodule:: lino.modlib.summaries
 
-Checking summaries
-==================
+The ``Summary`` model mixin
+===========================
+           
+.. class:: Summary
 
-The plugin schedules a daily task which runs the
-:manage:`checksummaries` command.
+    Abstract base class for all "summary data" models.
 
+    .. attribute:: master
+
+       Any implementing subclass of :class:`Summary` must define field
+       named :attr:`master` which must be a ForeignKey field.  The
+       target model of the :attr:`master` will automatically receive
+       an action `check_summaries`
+       
+    .. attribute:: summary_period
+                   
+       Can be ``'yearly'``, ``'monthly'`` or ``'timeless'``.
+       
+    .. attribute:: year
+    .. attribute:: month
+                   
+    .. method:: compute_results
+
+        Update this summary.
+
+        An instance of :class:`ComputeResults`.
+                   
+    .. method:: reset_summary_data
+
+        Set all counters and sums to 0.
+        
+    .. method:: compute_summary_values
+
+        Reset summary data fields (:meth:`reset_summary_data`), for
+        every collector (:meth:`get_summary_collectors`) loop over its
+        database objects and collect data, then save this record.
+        
+    .. method:: get_summary_collectors
+                
+        To be implemented by subclasses. This should yield a sequence
+        of ``(collector, qs)`` tuples, where `collector` is a callable
+        and `qs` a queryset. Lino will call `collector` for each `obj`
+        in `qs`. The collector is responsible for updating that
+        object.
+
+                
+
+The ``checksummaries`` admin command
+====================================
 
 .. management_command:: checksummaries
 
@@ -64,42 +112,10 @@ Actions
     Update summary data for this object.
            
 
-The ``Summary`` model mixin
-===========================
-           
-.. class:: Summary
+Plugin configuration
+====================
 
-    Abstract base class for all "summary data" models.
-
-    .. attribute:: summary_period
-                   
-       Can be 'yearly', 'monthly' or 'timeless'
-       
-    .. attribute:: year
-    .. attribute:: month
-                   
-    .. method:: compute_results
-
-        Update this summary.
-
-        An instance of :class:`ComputeResults`.
-                   
-    .. method:: reset_summary_data
-
-        Set all counters and sums to 0.
-        
-    .. method:: compute_summary_values
-
-        Reset summary data fields (:meth:`reset_summary_data`), for
-        every collector (:meth:`get_summary_collectors`) loop over its
-        database objects and collect data, then save this record.
-        
-    .. method:: get_summary_collectors
-                
-        To be implemented by subclasses. This should yield a sequence
-        of ``(collector, qs)`` tuples, where `collector` is a callable
-        and `qs` a queryset. Lino will call `collector` for each `obj`
-        in `qs`. The collector is responsible for updating that
-        object.
-
-                
+The plugin has two configurable attributes :attr:`start_year
+<Plugin.start_year>` and :attr:`end_year <Plugin.end_year>` which can
+be set to specify the years to be covered in summary tables. The
+default is the current year and two precedent ones.

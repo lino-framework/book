@@ -16,8 +16,8 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-46 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, summaries, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, rest_framework, restful, sessions.
-68 models:
+47 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, summaries, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, userstats, rest_framework, restful, sessions.
+69 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
@@ -45,7 +45,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         68
+ contenttypes.ContentType           gfks.ContentTypes                3         69
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -84,21 +84,22 @@ This document describes the database structure.
  uploads.Upload                     uploads.Uploads                  9         0
  uploads.UploadType                 uploads.UploadTypes              8         0
  users.Authority                    users.Authorities                3         0
- users.User                         users.Users                      45        6
+ users.User                         users.Users                      47        6
+ userstats.UserStat                 userstats.UserStats              5         36
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 13        13
  working.SessionType                working.SessionTypes             4         1
- working.SiteSummary                working.Summaries                17        12
+ working.SiteSummary                working.Summaries                17        3
 ================================== ================================ ========= =======
 <BLANKLINE>
 
 
 >>> print(analyzer.show_complexity_factors())
-- 46 plugins
-- 68 models
-- 252 views
+- 47 plugins
+- 69 models
+- 253 views
 - 7 user types
-- 73 dialog actions
+- 74 dialog actions
 <BLANKLINE>
 
 

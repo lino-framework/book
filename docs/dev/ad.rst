@@ -1,7 +1,26 @@
-===========================
-Application Design (``ad``) 
-===========================
+===============================================
+The ``lino.api.ad`` module (application design)
+===============================================
+
+See also :mod:`lino.api`
+
+.. module:: lino.api.ad
 
 
-Content moved to :mod:`lino.ad`.
+.. function:: _
 
+   Marks a translatable text.
+   
+.. function:: pgettext
+
+   Marks a translatable text with explicit context.
+   
+   
+.. class:: Plugin
+
+    Shortcut to :class:`lino.core.plugins.Plugin`.
+
+
+.. class:: Site
+
+    Shortcut to :class:`lino.core.site.Site`.

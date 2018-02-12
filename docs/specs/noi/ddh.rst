@@ -76,6 +76,8 @@ Lino Noi:
   - PROTECT : deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
 - stars.Star :
   - CASCADE : stars.Star.master
+- system.SiteConfig :
+  - PROTECT : userstats.UserStat.master
 - tickets.Project :
   - PROTECT : tickets.Project.parent, tickets.Ticket.project
 - tickets.ProjectType :

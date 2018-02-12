@@ -42,6 +42,7 @@ specifications.  This section is far from being complete.
    clients
    search
    export_excel
+   userstats
 
    
 Accounting stuff
