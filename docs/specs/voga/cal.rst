@@ -268,7 +268,7 @@ calendar entry is sortable despite the fact that it is virtual.
 >>> th = rt.models.cal.Events.get_handle()
 >>> col = th.get_columns()[0]
 >>> col.__class__
-<class 'lino.modlib.extjs.elems.DisplayElement'>
+<class 'lino.core.elems.DisplayElement'>
 >>> col.name
 'when_text'
 >>> rmu(col.field.sortable_by)
