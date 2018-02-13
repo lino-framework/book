@@ -28,9 +28,9 @@ No data to display
 <BLANKLINE>
 
 >>> rt.show('about.SiteSearch', quick_search="123")
-===================================================== ==================================================
+===================================================== ========================
  Description                                           Matches
------------------------------------------------------ --------------------------------------------------
+----------------------------------------------------- ------------------------
  *Arens Andreas* (Partner)                             phone:+32 87**123**456
  *Arens Annette* (Partner)                             phone:+32 87**123**457
  *Dobbelstein-Demeulenaere Dorothée* (Partner)         id:123
@@ -39,7 +39,6 @@ No data to display
  *Mrs Dorothée Dobbelstein-Demeulenaere* (Person)      id:123
  *Diner (09.05.2015 13:30)* (Calendar entry)           id:123
  *SLS 9.2* (Movement)                                  id:123
- *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Therapy)   name:DOBBELSTEIN-DEMEULENAERE Dorothée (**123**)
  *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Patient)   id:123
-===================================================== ==================================================
+===================================================== ========================
 <BLANKLINE>
