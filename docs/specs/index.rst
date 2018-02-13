@@ -43,7 +43,8 @@ specifications.  This section is far from being complete.
    search
    export_excel
    userstats
-
+   events/index
+   
    
 Accounting stuff
 ================
