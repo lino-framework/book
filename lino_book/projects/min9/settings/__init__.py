@@ -50,3 +50,4 @@ class Site(Site):
     #     for m in (partners.Person, partners.Organisation):
     #         m.define_action(merge_row=MergeAction(m))
 
+    # migration_module = 'lino_book.projects.min9.db_migrations'

@@ -52,7 +52,6 @@ def objects():
         sales_price=60, sales_account=indacc)
     yield named(Product, _("Other"), sales_price=35)
 
-    
 
 
 def faculties_objects():
