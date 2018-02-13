@@ -24,7 +24,7 @@ This document describes and tests printing address labels.
 ...     url = 'http://127.0.0.1:8000/api/{0}?an=print_labels'.format(k)
 ...     res = test_client.get(url, REMOTE_USER='robin')
 ...     assert res.status_code == 200
-...     result = json.loads(res.content)
+...     result = json.loads(res.content.decode())
 ...     assert result['success']
 ...     print(result['open_url'])
 
