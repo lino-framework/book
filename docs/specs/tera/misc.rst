@@ -102,7 +102,7 @@ SEPA payment initiation:
 >>> fn.exists()
 True
 
->>> from lino.utils.xmlgen.sepa.validate import validate_pain001
+>>> from etgen.sepa.validate import validate_pain001
 >>> validate_pain001(fn)
 
 

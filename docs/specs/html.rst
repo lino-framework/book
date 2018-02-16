@@ -6,7 +6,7 @@ Generating HTML
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_html
+    $ doctest docs/specs/html
     
     doctest init:
 
@@ -14,12 +14,17 @@ Generating HTML
     >>> startup('lino_book.projects.polly.settings.demo')
     >>> from lino.api.doctest import *
 
+
+This describes some Lino-specific usage of the
+:mod:`etgen.html` module.
+
+
 .. contents::
    :depth: 1
    :local:
 
 
->>> from lino.utils.xmlgen.html import E
+>>> from etgen.html import E
 
 >>> txt = "foo"
 >>> txt = E.b(txt)

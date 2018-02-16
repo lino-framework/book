@@ -7,9 +7,6 @@ Publications
 Here is a list of other publications who are at least partially being 
 distributed with Lino.
 
-- :srcref:`/lino/utils/xmlgen/html.py` is a modified copy of the
-  ElementTree toolkit, Copyright (c) 1999-2004 by Fredrik Lundh.
-
 - :srcref:`/lino/modlib/extjs/static/extjs/Ext.ux.form.DateTime.js` :
   Copyright (c) 2008, Ing. Jozef Sakáloš.
 
