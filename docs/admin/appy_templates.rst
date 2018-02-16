@@ -62,7 +62,7 @@ statements.
 
 - `ehtml(e)` :
   Render an ElementTree node
-  (generated using :mod:`lino.utils.xmlgen.html`)
+  (generated using :mod:`etgen.html`)
   into this document. 
   This is done by passing it to :mod:`lino.utils.html2odf`.
 

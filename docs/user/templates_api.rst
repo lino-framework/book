@@ -45,7 +45,7 @@ This is just a start and far from being complete...
         
 .. tcname:: E
             
-        HTML tag generator, see :mod:`lino.utils.xmlgen.html`
+        HTML tag generator, see :mod:`etgen.html`
         
 .. tcname:: unicode()
             

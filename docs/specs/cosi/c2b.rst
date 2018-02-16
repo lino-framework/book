@@ -22,7 +22,7 @@ https://github.com/totaler/sepa/blob/master/sepa/sepa19.py then I feel
 that no, we are not going to generate the XML file by Python code
 (using an etree approach) because that would be overkill. We must
 write test cases which validate the generated XML using lxml and the
-XSD (code currently in :mod:`lino.utils.xmlgen.sepa`) but we don't
+XSD (code currently in :mod:`etgen.sepa`) but we don't
 need to do this validity check for each generated document.
 
 .. xfile:: pain.001.xml

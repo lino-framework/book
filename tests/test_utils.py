@@ -33,16 +33,6 @@ class UtilsTests(LinoTestCase):
     def test_jinja(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/jinja.py')
 
-    def test_xmlgen_html(self):
-        self.run_simple_doctests(LINO_SRC+'lino/utils/xmlgen/html.py')
-
-    def test_html2rst(self):
-        self.run_simple_doctests(LINO_SRC+'lino/utils/html2rst.py')
-
-    def test_xmlgen_sepa(self):
-        if PYAFTER26:
-            self.run_simple_doctests(LINO_SRC+'lino/utils/xmlgen/sepa/__init__.py')
-
     def test_memo(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/memo.py')
 

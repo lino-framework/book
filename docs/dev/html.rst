@@ -17,5 +17,5 @@ And the most natural and best known API for writing rich text remains
 HTML.
 
 In Lino we recommend a pythonic method to generate HTML using the
-:mod:`lino.utils.xmlgen.html` module.
+:mod:`etgen.html` module.
 

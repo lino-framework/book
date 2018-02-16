@@ -24,7 +24,7 @@ from __future__ import print_function
 from lino.api import rt
 
 from lino.utils import IncompleteDate
-from lino.utils.xmlgen.html import E
+from etgen.html import E
 from lino.utils.mti import insert_child, delete_child
 from lino.utils.djangotest import RemoteAuthTestCase
 from django.core.exceptions import ValidationError
