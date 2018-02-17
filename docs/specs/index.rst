@@ -44,6 +44,7 @@ specifications.  This section is far from being complete.
    export_excel
    userstats
    events/index
+   dpy
    
    
 Accounting stuff
