@@ -16,13 +16,11 @@ This document describes the database structure.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-47 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, summaries, working, lists, blogs, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, userstats, rest_framework, restful, sessions.
-69 models:
+46 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, topics, changes, stars, excerpts, comments, tickets, deploy, summaries, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, django_mailbox, mailbox, meetings, github, userstats, rest_framework, restful, sessions.
+67 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
- blogs.Entry                        blogs.Entries                    11        3
- blogs.EntryType                    blogs.EntryTypes                 6         3
  cal.Calendar                       cal.Calendars                    6         1
  cal.Event                          cal.OneEvent                     26        113
  cal.EventPolicy                    cal.EventPolicies                19        6
@@ -37,7 +35,7 @@ This document describes the database structure.
  cal.Task                           cal.Tasks                        17        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                10        12
+ comments.Comment                   comments.Comments                11        12
  comments.CommentType               comments.CommentTypes            4         0
  contacts.Company                   contacts.Companies               22        5
  contacts.CompanyType               contacts.CompanyTypes            7         16
@@ -45,7 +43,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         69
+ contenttypes.ContentType           gfks.ContentTypes                3         67
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -78,7 +76,7 @@ This document describes the database structure.
  tickets.Ticket                     tickets.Tickets                  28        116
  tickets.TicketType                 tickets.TicketTypes              5         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
- topics.Interest                    topics.Interests                 6         15
+ topics.Interest                    topics.Interests                 6         12
  topics.Topic                       topics.Topics                    9         4
  topics.TopicGroup                  topics.TopicGroups               5         0
  uploads.Upload                     uploads.Uploads                  9         0
@@ -95,11 +93,11 @@ This document describes the database structure.
 
 
 >>> print(analyzer.show_complexity_factors())
-- 47 plugins
-- 69 models
-- 253 views
+- 46 plugins
+- 67 models
+- 248 views
 - 7 user types
-- 74 dialog actions
+- 72 dialog actions
 <BLANKLINE>
 
 

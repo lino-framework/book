@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2017 Luc Saffre
+# Copyright 2016-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about the notification framework.
@@ -11,8 +11,8 @@ You can run only these tests by issuing::
 
 Or::
 
-  $ go noi
-  $ python setup.py test -s tests.ProjectsTests.test_team
+  $ go book
+  $ python setup.py test -s tests.test_demo.TestCase.test_team
 
 """
 
@@ -99,7 +99,7 @@ class TestCase(TestCase):
         url = "/api/comments/CommentsByRFC"
         post_data = dict()
         post_data[constants.URL_PARAM_ACTION_NAME] = 'submit_insert'
-        post_data.update(short_text="I don't agree.")
+        post_data.update(body="I don't agree.")
         post_data[constants.URL_PARAM_MASTER_PK] = obj.pk
         ct = ContentType.objects.get_for_model(Ticket)
         post_data[constants.URL_PARAM_MASTER_TYPE] = ct.id

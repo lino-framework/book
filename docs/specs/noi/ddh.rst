@@ -22,8 +22,6 @@ Lino Noi:
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- blogs.EntryType :
-  - PROTECT : blogs.Entry.entry_type
 - cal.Calendar :
   - PROTECT : cal.Subscription.calendar, system.SiteConfig.site_calendar
 - cal.Event :
@@ -53,7 +51,7 @@ Lino Noi:
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :
-  - PROTECT : blogs.Entry.owner_type, cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -95,7 +93,7 @@ Lino Noi:
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : blogs.Entry.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>
