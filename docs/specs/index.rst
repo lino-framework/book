@@ -45,6 +45,7 @@ specifications.  This section is far from being complete.
    userstats
    events/index
    dpy
+   comments
    
    
 Accounting stuff

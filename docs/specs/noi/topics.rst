@@ -98,14 +98,13 @@ Lino Core, Lino Welfare, Lino Voga
 >>> obj = topics.Topic.objects.get(ref="welfäre")
 >>> rt.show(topics.InterestsByTopic, obj)
 ... #doctest: +REPORT_UDIFF
-======================
+=================
  Controlled by
-----------------------
+-----------------
  *Rumma & Ko OÜ*
  *welket*
  *Saffre-Rumma*
- *2015-05-22 by Jean*
-======================
+=================
 <BLANKLINE>
 
 

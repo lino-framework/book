@@ -1,14 +1,11 @@
+.. doctest docs/specs/html.rst
 .. _lino.specs.html:
 
 ===============
 Generating HTML
 ===============
 
-.. How to test only this document:
-
-    $ doctest docs/specs/html
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.polly.settings.demo')
@@ -30,6 +27,8 @@ This describes some Lino-specific usage of the
 >>> txt = E.b(txt)
 >>> ar = rt.login('robin', renderer=settings.SITE.kernel.default_renderer)
 >>> obj = ar.user
->>> print(E.tostring(ar.obj2html(obj, txt)))
+>>> e = ar.obj2html(obj, txt)
+>>> print(E.tostring(e))
 <a href="javascript:Lino.users.Users.detail.run(null,{ &quot;record_id&quot;: 1 })"><b>foo</b></a>
+
 
