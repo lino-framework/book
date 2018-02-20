@@ -27,16 +27,30 @@ Comments
 ========
     
 .. class:: Comment
+           
     A **comment** is a short text which some user writes about some
     other database object. It has no recipient.
 
-    .. attribute:: body_text
+    .. attribute:: body
 
-        The full body text of your comment. 
+        The full body text of your comment.
 
     .. attribute:: body_preview
 
         The first paragraph of your :attr:`body`.
+
+    .. attribute:: user
+
+        The author of the comment.
+        
+    .. attribute:: owner
+
+        A generic foreign key to the commentable database object to
+        which this comment relates.
+        
+    .. attribute:: published
+
+        When this comment has been published. A timestamp.
 
 .. class:: Comments
 

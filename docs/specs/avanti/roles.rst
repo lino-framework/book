@@ -21,7 +21,7 @@ Menus
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Office : My Comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Calendar : Calendar, My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning
