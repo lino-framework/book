@@ -116,8 +116,8 @@ class TestCase(TestCase):
             result['message'],
             """Comment "Comment #1" has been created.""")
 
-        obj = Comment.objects.all()[0]
-        obj.do_publish(ar)
+        # obj = Comment.objects.all()[0]
+        # obj.do_publish(ar)
 
         self.assertEqual(Message.objects.count(), 1)
         msg = Message.objects.all()[0]
@@ -190,7 +190,7 @@ Robin a comment? <a href="http://127.0.0.1:8000/api/tickets/Ticket/1" title="Sav
         # UnicodeException. We capture it in order to hide it from
         # test runner output.
         
-        self.assertEqual(logger.debug.call_count, 1)
+        self.assertEqual(logger.debug.call_count, 2)
         logger.debug.assert_called_with(
             'Send out %s summaries for %d users.',
             MailModes.often, 1)

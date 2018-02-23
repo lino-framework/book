@@ -35,7 +35,7 @@ This document describes the database structure.
  cal.Task                           cal.Tasks                        17        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                11        12
+ comments.Comment                   comments.Comments                10        12
  comments.CommentType               comments.CommentTypes            4         0
  contacts.Company                   contacts.Companies               22        5
  contacts.CompanyType               contacts.CompanyTypes            7         16
@@ -95,7 +95,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 46 plugins
 - 67 models
-- 248 views
+- 247 views
 - 7 user types
 - 72 dialog actions
 <BLANKLINE>

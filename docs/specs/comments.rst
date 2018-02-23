@@ -12,7 +12,23 @@ The comments framework
     >>> from lino.api.doctest import *
 
 
-This describes the :mod:`lino.modlib.comments` plugin.
+This describes the :mod:`lino.modlib.comments` plugin which is used
+for handling simple comments.
+
+A comment is always "about" something. This is the Topic of your
+comment, internally represented by the :attr:`owner` field. This is a
+Generic Foreign Key, i.e. it can be any database object.  It is
+however the application developer who decides where comments can be
+created and how they are being displayed.
+
+A comment is something one user wants to say to "whoever is
+interested".  A comment has no "recipient" .  When you submit a
+comment, Lino notifies all users that registered their interest in the
+topic.
+
+Comments have no workflow management nor rating merchanism etc.
+As in the real world it is the user's responsibility to think at
+least a bit before they say something.
 
 
 .. contents::
@@ -124,6 +140,11 @@ Comments
 
 Comment types
 =============
+
+.. class:: CommentType
+           
+    The :class:`CommentType` model is not being used in production,
+    one day we will probably remove it.
 
             
 .. class:: CommentTypes
