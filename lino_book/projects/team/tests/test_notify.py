@@ -116,8 +116,8 @@ class TestCase(TestCase):
             result['message'],
             """Comment "Comment #1" has been created.""")
 
-        obj = Comment.objects.all()[0]
-        obj.do_publish(ar)
+        # obj = Comment.objects.all()[0]
+        # obj.do_publish(ar)
 
         self.assertEqual(Message.objects.count(), 1)
         msg = Message.objects.all()[0]

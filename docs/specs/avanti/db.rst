@@ -1,5 +1,4 @@
 .. doctest docs/specs/avanti/db.rst
-   
 .. _avanti.specs.db:
 
 =================================
@@ -23,7 +22,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 40 plugins
 - 77 models
-- 287 views
+- 286 views
 - 8 user types
 - 87 dialog actions
 <BLANKLINE>
