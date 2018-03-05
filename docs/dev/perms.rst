@@ -40,22 +40,8 @@ User roles
 A **user role** is a role of a user in our application. It is used as
 the basic unit for defining permissions.
 
-Just a fictive example::
-
-    from lino.core.roles import SiteUser, SiteAdmin
-    
-    class Secretary(SiteUser):
-        """Can write letters."""
-
-    class Accountant(SiteUser):
-        """Can write invoices and read accounting reports."""
-
-    class Director(Secretary, Accountant):
-        """Can write letters and invoices, can read accounting and
-        statistic reports """
-
-    class MySiteAdmin(Director, SiteAdmin):
-        """Can everything, including user management."""
+- Every user has a set of roles.
+- Every resource (table or action) has a set of *required* roles.
   
 User roles are class objects which represent conditions for getting
 permission to access the functionalities of the application.  Lino

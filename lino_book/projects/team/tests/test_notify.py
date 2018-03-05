@@ -86,7 +86,8 @@ class TestCase(TestCase):
         aline = create(
             User, username='aline',
             first_name="Aline",
-            email="aline@example.com", language='fr')
+            email="aline@example.com", language='fr',
+            user_type=UserTypes.admin)
         obj = create(
             Ticket, summary="Save the world, après moi le déluge",
             user=robin)
