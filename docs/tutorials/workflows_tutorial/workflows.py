@@ -1,4 +1,4 @@
-## Copyright 2013-2016 Luc Saffre
+## Copyright 2013-2018 Luc Saffre
 ## This file is part of the Lino project.
 
 from lino.api import dd, rt
@@ -36,7 +36,7 @@ class StartEntry(dd.ChangeStateAction):
         # cannot start entries with empty company, subject or body fields
         if not obj.company or not obj.subject or not obj.body:
             return False
-        return super(StartEntry,self).get_action_permission(ar,obj,state)
+        return super(StartEntry,self).get_action_permission(ar, obj, state)
 
 
 class FinishEntry(StartEntry):
@@ -46,15 +46,16 @@ class FinishEntry(StartEntry):
     help_text = _("Inherts from StartEntry and thus is not allowed when company, body or subject is empty.")
         
 
-from lino_xl.lib.notes.actions import NotableAction
+#from lino_xl.lib.notes.actions import NotableAction
+from lino.modlib.notify.actions import NotifyingAction
 
-class WakeupEntry(dd.ChangeStateAction, NotableAction):
+class WakeupEntry(dd.ChangeStateAction, NotifyingAction):
     label = _("Wake up")
     required_states = 'sleeping'
     # in our example, waking up an antry will send a notification
 
     def get_notify_recipients(self, ar, obj):
-        for u in rt.models.User.objects.all():
+        for u in rt.models.users.User.objects.all():
             yield (u, u.mail_mode)
 
     def get_notify_subject(self, ar, obj):
