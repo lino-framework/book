@@ -83,18 +83,21 @@ Printing invoices
 We take a sales invoice, clear the cache, ask Lino to print it and 
 check whether we get the expected response.
 
+>>> import lxml.usedoctest
 >>> ses = settings.SITE.login("robin")
 >>> dd.translation.activate('en')
 >>> obj = sales.VatProductInvoice.objects.all()[0]
 >>> obj.clear_cache()
 >>> d = ses.run(obj.do_print)
-... #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+... #doctest: +ELLIPSIS
+appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf (language='en',params={...}
 
 >>> d['success']
 True
 
 >>> print(d['message'])
+Your printable document (<a href="/media/cache/appypdf/sales.VatProductInvoice-125.pdf">sales.VatProductInvoice-125.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
+
 Your printable document (filename sales.VatProductInvoice-125.pdf) should now open in a new browser window. If it doesn't, please consult <a href="http://www.lino-framework.org/help/print.html" target="_blank">the documentation</a> or ask your system administrator.
 
 Note that this test should fail if you run the test suite without a 

@@ -28,7 +28,7 @@ This describes some Lino-specific usage of the
 >>> ar = rt.login('robin', renderer=settings.SITE.kernel.default_renderer)
 >>> obj = ar.user
 >>> e = ar.obj2html(obj, txt)
->>> print(E.tostring(e))
+>>> print(tostring(e))
 <a href="javascript:Lino.users.Users.detail.run(null,{ &quot;record_id&quot;: 1 })"><b>foo</b></a>
 
 

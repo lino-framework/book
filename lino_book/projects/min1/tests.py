@@ -114,7 +114,7 @@ Vana-Vigala küla
 78003 Vigala vald
 Estland''')
             self.assertEquals(luc.address_html, '''\
-<p>Herrn Luc SAFFRE<br />Uus 1<br />Vana-Vigala k&#252;la<br />78003 Vigala vald<br />Estland</p>''')
+<p>Herrn Luc SAFFRE<br/>Uus 1<br/>Vana-Vigala küla<br/>78003 Vigala vald<br/>Estland</p>''')
 
         # "new" or "full" style is when the database knows the
         # geographic hierarchy. We then just select "Vana-Vigala" as

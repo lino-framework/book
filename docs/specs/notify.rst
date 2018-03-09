@@ -26,13 +26,36 @@ quickly sent to their recipients, *system notes* are permanent
 historic entries visible to every user (who has the required
 permission).
 
-A :class:`NotifyingAction` is a dialog action which potentially sends
-a notification.  It has three dialog fields ("subject", "body" and a
-checkbox "silent").  You can have non-dialog actions (or actions with
-some other dialog than a simple subject and body) which build a custom
-subject and body and emit a notification.  If the emitting object also
-has a method :meth:`emit_system_note`, then this is being called as
-well.
+.. currentmodule:: lino.modlib.notify
+
+A **notification message** is a message sent by the application to a
+system user.
+
+If :attr:`lino.core.site.Site.use_websockets` is `True` and the user
+is online, then he will see it as a desktop notification.
+
+Unseen notfication messages are displayed by the `MyMessages` table
+which is usually part of the dashboard in admin main view. This table
+also provides an action for marking a message as seen.
+
+In addition, notification messages are sent via email to the user
+according to his :attr:`mail_mode` field.
+
+The emitter of a notification message is currently not stored. That
+is, you cannot currently request to see a list of all messages emitted
+by a given user.
+
+
+Notification messages are emitted by the application code.
+
+- Either manually, using code like (TODO: write example)
+
+- By having your models inherit from :class:`ChangeNotifier`.
+
+- By adding actions which inherit from :class:`NotifyingAction`  
+
+                   
+
 
 Notification messages
 =====================
@@ -43,8 +66,8 @@ Notification messages
     application to a given user.
 
     Applications can either use it indirectly by sublassing
-    :class:`ChangeObservable
-    <lino.modlib.notify.mixins.ChangeObservable>` or by directly
+    :class:`ChangeNotifier
+    <lino.modlib.notify.ChangeNotifier>` or by directly
     calling the class method :meth:`create_message` to create a new
     message.
 
@@ -60,21 +83,21 @@ Notification messages
        The database object which controls this message. 
 
        This may be `None`, which means that the message has no
-       controller. When a notification is controlled, then the
-       recipient will receive only the first message for that object.
-       Any following message is ignored until the recipient has
-       "confirmed" the first message. Typical use case are the
-       messages emitted by :class:`ChangeObservable`: you don't want
-       to get 10 mails just because a colleague makes 10 small
-       modifications when authoring the text field of a
-       ChangeObservable object.
+       controller.
+
+       When a notification is controlled, then the recipient will
+       receive only the first message for that object.  Any following
+       message is ignored until the recipient has "confirmed" the
+       first message. Typical use case are the messages emitted by
+       :class:`ChangeNotifier`: you don't want to get 10 mails just
+       because a colleague makes 10 small modifications when authoring
+       the text field of a ChangeNotifier object.
 
     .. attribute:: created
     .. attribute:: sent
     .. attribute:: seen
 
-    .. method:: emit_notification(cls, ar, owner, message_type,
-                msg_func, recipients)
+    .. method:: emit_notification(cls, ar, owner, message_type, msg_func, recipients)
 
         Class method which creates one database object per recipient.
 
@@ -122,32 +145,6 @@ Notification messages
     Shows messages emitted to me.
 
 
-A **notification message** is a message sent by the application to a
-system user.
-
-If :attr:`lino.core.site.Site.use_websockets` is `True` and the user
-is online, then he will see it as a desktop notification.
-
-Unseen notfication messages are displayed by the `MyMessages` table
-which is usually part of the dashboard in admin main view. This table
-also provides an action for marking a message as seen.
-
-In addition, notification messages are sent via email to the user
-according to his :attr:`mail_mode` field.
-
-The emitter of a notification message is currently not stored. That
-is, you cannot currently request to see a list of all messages emitted
-by a given user.
-
-
-Emitting notifications
-======================
-
-Notification messages are emitted by the application code.
-
-The easiest way for doing this is by having a model inherit from
-:class:`lino.modlib.notify.mixins.ChangeObservable`.
-
 Application programmers need to understand the different meanings of
 "subject" and "body":
 
@@ -160,7 +157,111 @@ Application programmers need to understand the different meanings of
   but be aware that this formatting gets lost when the message is sent
   as an email.
 
-   
+Change notifiers
+================
+
+.. class:: ChangeNotifier
+.. class:: ChangeNotifier
+
+    Mixin for models which can emit notifications to a list of
+    "observers" when an instance is modified.
+
+    TODO: rename ChangeNotifier to ChangeNotifier
+
+    .. method:: get_change_subject(self, ar, cw)
+                
+        Returns the subject text of the notification message to emit.
+
+        The default implementation returns a message of style
+        "{user} modified|created {object}" .  
+
+        Returning None or an empty string means to suppress
+        notification.
+
+    .. method:: add_change_watcher(self, user)
+                
+        Parameters:
+
+        :user: The user that will be linked to this object as a change watcher.
+
+                
+    .. method:: get_change_body(self, ar, cw)
+                
+        Returns the body text of the notification message to emit.
+
+        The default implementation returns a message of style
+        "{object} has been modified by {user}" followed by a summary
+        of the changes.  
+
+    .. method:: get_change_info(self, ar, cw)
+        Return a list of HTML elements to be inserted into the body.
+
+        This is called by :meth:`get_change_body`.
+        Subclasses can override this. Usage example
+        :class:`lino_xl.lib.notes.models.Note`
+
+    .. method:: get_change_owner(self)
+                
+        Return the owner of the notification to emit.
+
+        The "owner" is "the database object we are talking about"
+        and decides who is observing this object.
+
+
+Notifying actions
+=================
+
+.. class:: NotifyingAction
+
+    An action which pops up a dialog window of three fields "Summary",
+    "Description" and a checkbox "Don't notify others" to optionally
+    suppress notification.
+
+    Screenshot of a notifying action:
+
+    .. image:: /images/screenshots/reception.CheckinVisitor.png
+        :scale: 50
+
+    Dialog fields:
+
+    .. attribute:: notify_subject
+    .. attribute:: notify_body
+    .. attribute:: notify_silent
+
+    .. method:: get_notify_subject(self, ar, obj)
+                
+        Return the default value of the `notify_subject` field.
+        
+    .. method:: get_notify_body(self, ar, obj)
+                
+        Return the default value of the `notify_body` field.
+
+    .. method:: get_notify_owner(self, ar, obj)
+           
+        Expected to return the :attr:`owner
+        lino.modlib.notify.Message.owner>` of the message.
+
+        The default returns `None`.
+
+        `ar` is the action request, `obj` the object on which the
+        action is running,
+
+    .. method:: get_notify_recipients(self, ar, obj)
+
+        Yield a list of users to be notified.
+
+        `ar` is the action request, `obj` the object on which the
+        action is running, 
+
+
+A :class:`NotifyingAction` is a dialog action which potentially sends
+a notification.  It has three dialog fields ("subject", "body" and a
+checkbox "silent").  You can have non-dialog actions (or actions with
+some other dialog than a simple subject and body) which build a custom
+subject and body and emit a notification.  If the emitting object also
+has a method :meth:`emit_system_note`, then this is being called as
+well.
+
 
 
 Local configuration
@@ -185,16 +286,73 @@ How to configure locally on a production site::
     }
 
 
-.. class:: Plugin
 
-    .. attribute:: remove_after
-    
 
 Utility functions
 =================
 
 .. function:: send_pending_emails_often()
 .. function:: send_pending_emails_daily()
-    
 
+.. function:: clear_seen_messages
+              
+    Daily task which deletes messages older than :attr:`remove_after`
+    hours.
+
+Choicelists
+===========
+
+.. class:: MessageTypes
+           
+    The list of possible choices for the `message_type` field
+    of a :class:`Message`.
+              
+.. class:: MailModes
+           
+    How the system should send email notifications to a user.
+
+    .. attribute:: silent
+
+        Disable notifications for this user.
+
+    .. attribute:: never
+
+        Notify in Lino but never send email.
+
+
+Actions
+=======
     
+.. class:: MarkSeen
+           
+   Mark this message as seen.
+
+.. class:: MarkAllSeen
+           
+   Mark all messages as seen.
+   
+.. class:: ClearSeen
+           
+   Mark this message as not yet seen.
+   
+
+Templates used by this plugin
+=============================
+
+.. xfile:: notify/body.eml
+
+    A Jinja template used for generating the body of the email when
+    sending a message per email to its recipient.
+
+    Available context variables:
+
+    - ``obj`` -- The :class:`Message
+      <lino.modlib.notify.Message>` instance being sent.
+
+    - ``E`` -- The html namespace :mod:`etgen.html`
+
+    - ``rt`` -- The runtime API :mod:`lino.api.rt`
+
+    - ``ar`` -- The action request which caused the message. a
+      :class:`BaseRequest <lino.core.requests.BaseRequest>` instance.
+

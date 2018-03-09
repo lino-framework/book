@@ -15,9 +15,9 @@ A Lino application can declare background tasks using
 :func:`dd.schedule_often <lino.api.dd.schedule_often>` and
 :func:`dd.schedule_daily <lino.api.dd.schedule_daily>`.  For example
 the :func:`send_pending_emails_often
-<lino.modlib.notify.models.send_pending_emails_often>` and
+<lino.modlib.notify.send_pending_emails_often>` and
 :func:`clear_seen_messages
-<lino.modlib.notify.models.clear_seen_messages>` of the
+<lino.modlib.notify.clear_seen_messages>` of the
 :mod:`lino.modlib.notify` plugin.
 
 Such tasks run in the background, i.e. in another process than the web

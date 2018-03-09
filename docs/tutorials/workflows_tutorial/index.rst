@@ -13,7 +13,6 @@ Vocabulary: in Lino a "workflow" is a combination of
 to another state. For an overview about workflows in Lino read
 :ref:`workflows`.
 
-
 We recommend to define workflows in a separate module 
 (to make them reusable or even exchangeable, but that's worth another 
 tutorial), 
@@ -27,7 +26,7 @@ Entry model to use it::
 
     from .workflows import EntryStates
     ...
-    class Entry(dd.CreatedModified,dd.UserAuthored):
+    class Entry(dd.CreatedModified, dd.UserAuthored):
         workflow_state_field = 'state'
         ...
         state = EntryStates.field()
@@ -68,7 +67,7 @@ Note that if you test only the user_type of the requesting user,
 or some value from ``settings``, then you'll rather define a 
 :meth:`get_view_permission 
 <lino.core.actions.Action.get_view_permission>` 
-method. That's more effivient because it is called only once for every 
+method. That's more efficient because it is called only once for every 
 user user_type at server startup.
 
 

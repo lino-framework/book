@@ -61,11 +61,7 @@ True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 /media/cache/appypdf/sales.VatProductInvoice-135.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.VatProductInvoice-135.pdf)
-should now open in a new browser window. If it doesn't, please consult
-<a href="http://www.lino-framework.org/help/print.html"
-target="_blank">the documentation</a> or ask your system
-administrator.
+Your printable document (<a href="/media/cache/appypdf/sales.VatProductInvoice-135.pdf">sales.VatProductInvoice-135.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
 
 Note that we must clear the print cache because leaving the excerpt
 there would break a test case in :doc:`db_roger`.
@@ -84,11 +80,7 @@ appy.pod render .../lino_xl/lib/cal/config/cal/Event/Default.odt -> .../media/ca
 >>> print(rv['success'])
 True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename cal.Event-100.pdf) should now open
-in a new browser window. If it doesn't, please consult <a
-href="http://www.lino-framework.org/help/print.html"
-target="_blank">the documentation</a> or ask your system
-administrator.
+Your printable document (<a href="/media/cache/appypdf/cal.Event-100.pdf">cal.Event-100.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
 
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.

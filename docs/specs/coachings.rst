@@ -25,10 +25,36 @@ currently used in :ref:`welfare` only.
 .. currentmodule:: lino_xl.lib.coachings
                    
 
-Database structure
-==================
+Coachings
+=========
 
+.. class:: Coaching
 
+    A Coaching ("Begleitung" in German and "intervention" in French)
+    is when a given client is being coached by a given user during a
+    given period.
+
+    For example in :ref:`welfare` that user is a social assistant.
+
+    .. attribute:: user
+    .. attribute:: client
+    .. attribute:: type
+    .. attribute:: end_date
+    .. attribute:: start_date
+    .. attribute:: primary
+    .. attribute:: ending
+           
+.. class:: Coachings
+           
+    The :class:`Coachings` table in a clients detail.
+
+.. class:: CoachingsByClient
+.. class:: CoachingsByUser
+           
+
+Coachables
+==========
+           
 .. class:: Coachable
 
     Base class for coachable client. The model specified as
@@ -62,7 +88,8 @@ Database structure
         `True`..
 
         
-        
+Coaching types
+==============
            
 .. class:: CoachingType
 
@@ -81,31 +108,24 @@ Database structure
         :meth:`lino_xl.lib.coaching.Coachable.setup_auto_event`)
 
            
+.. class:: CoachingTypes
+
+           
+
+Coaching endings
+================
+           
 .. class:: CoachingEnding
 
    A **Coaching termination reason** expresses why a coaching has been
    terminated.
 
-   
-.. class:: Coaching
+.. class:: CoachingEndings
 
-    A Coaching ("Begleitung" in German and "intervention" in French)
-    is when a given client is being coached by a given user during a
-    given period.
-
-    For example in :ref:`welfare` that used is a social assistant.
+    A list of reasons expressing why a coaching was ended.
 
            
-Configuration
-=============
-
-.. class:: Plugin
-
-    .. attribute:: client_model = 'contacts.Person'
-
-       The model to which :attr:`Coaching.client` points to.
-
-
+           
 Miscellaneous
 =============
 
@@ -119,6 +139,7 @@ Miscellaneous
    
     A user who can configure coachings functionality.
 
+.. class:: ClientChecker
 .. class:: ClientCoachingsChecker
    
     Coached clients should not be obsolete.  Only coached clients
