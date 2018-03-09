@@ -9,9 +9,6 @@ Using action requests
 
    $ doctest docs/dev/ar.rst
 
-   >>> from lino import startup
-   >>> startup('lino_book.projects.min1.settings.demo')
-
 
 An action request is when a given user asks to run a given action of a
 given actor.
@@ -112,7 +109,7 @@ more about where you need them in :doc:`html`.)
 >>> ar = rt.login('robin')
 >>> obj = contacts.Person.objects.get(pk=150)
 >>> def example(x):
-...     print(E.tostring(x))
+...     print(tostring(x))
 
 Basic usage is:
 
@@ -148,7 +145,7 @@ In above situation you can specify another HTML tree element as
 "text". Here is what you expected:
 
 >>> example(obj.obj2href(ar, E.img(src="foo")))
-<a href="Detail"><img src="foo" /></a>
+<a href="Detail"><img src="foo"/></a>
 
 You can also specify a tuple with text chunks:
 

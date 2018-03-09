@@ -1,7 +1,7 @@
 from atelier.invlib.ns import ns
 ns.setup_from_tasks(
     globals(), 'lino_book',
-    tolerate_sphinx_warnings=True,
+    # tolerate_sphinx_warnings=True,
     blogref_url="http://luc.lino-framework.org",
     revision_control_system='git',
     # help_texts_source='docs',

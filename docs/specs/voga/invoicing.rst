@@ -90,7 +90,7 @@ invoiced (and what hasn't) for a given enrolment.
 
 >>> from textwrap import wrap
 >>> for obj in courses.Enrolment.objects.all():
-...     ii = '\n'.join(wrap(E.to_rst(obj.invoicing_info), 80))
+...     ii = '\n'.join(wrap(to_rst(obj.invoicing_info), 80))
 ...     print(u"{} : {} {}\n{}".format(obj.id, obj.course, obj.pupil, ii))
 ...     #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
 1 : 001 Greece 2014 Hans Altenberg (MEL)

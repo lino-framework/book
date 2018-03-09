@@ -24,7 +24,7 @@ from __future__ import print_function
 from lino.api import rt
 
 from lino.utils import IncompleteDate
-from etgen.html import E
+from etgen.html import tostring
 from lino.utils.mti import insert_child, delete_child
 from lino.utils.djangotest import RemoteAuthTestCase
 from django.core.exceptions import ValidationError
@@ -123,7 +123,7 @@ class QuickTest(RemoteAuthTestCase):
         # Here we are just testing whether no exception is risen. The
         # ouptut itself is more thoroughly tested elsewhere.
         html = LinksByHuman.get_slave_summary(father, ar)
-        s = E.tostring(html)
+        s = tostring(html)
         self.assertEqual(s[:5], '<div>')
         
     def test_02(self):
