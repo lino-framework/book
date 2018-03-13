@@ -179,8 +179,8 @@ Lino Noi and Scrum
 +----------------------+----------------------+---------------------------------------------------------------------+
 | max_auto_events      | Max automatic events | Maximum number of automatic events to be generated.                 |
 +----------------------+----------------------+---------------------------------------------------------------------+
-| hide_events_before   | Hide events before   | If this is specified, certain tables show only                      |
-|                      |                      | events after the given date.                                        |
+| hide_events_before   | Hide events before   | If this is not empty, any calendar events before that date are      |
+|                      |                      | being hidden in certain places.                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | workflow_buttons     | Workflow             |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+

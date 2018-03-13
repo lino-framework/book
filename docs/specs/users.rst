@@ -324,3 +324,15 @@ Actions
            
     Sign out the current user and return to the welcome screen for
     anonymous visitors.
+
+
+
+doctests
+========
+
+Verify whether the help_text of the change_password action is set:
+
+>>> ba = rt.models.users.Users.get_action_by_name('change_password')
+>>> print(ba.action.help_text)
+Change the password of this user.
+

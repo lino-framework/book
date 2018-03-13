@@ -77,7 +77,7 @@ The following rooms are defined in the
  name            Designation
  calendar        Calendar       Calendar where events in this room are published.
  fee             Tariff
- company         Responsible
+ company         Responsible    Pointer to Company.
 =============== ============== ===================================================
 
 
