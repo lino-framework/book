@@ -4,8 +4,9 @@
 Developer's Guide
 =================
 
-This is the central meeting place for :doc:`Lino developers
-</community/developers>`.
+This part of the Lino Book explains Lino to developers.
+Non-programmers will prefer to read :doc:`/about/index`, hosting
+providers should start at :doc:`/admin/index`.
 
 
 .. toctree::

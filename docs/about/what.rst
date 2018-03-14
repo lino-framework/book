@@ -2,9 +2,10 @@
 What is Lino?
 =============
 
-**Lino** is a high-level framework for writing customized database
-applications based on `Django <https://www.djangoproject.com/>`_ and
-and `Sencha ExtJS <https://www.sencha.com/products/extjs/>`_.
+**Lino** is a high-level framework based on `Django
+<https://www.djangoproject.com/>`_ and `Sencha ExtJS
+<https://www.sencha.com/products/extjs/>`_, used for writing
+customized database applications.
 
 A **database application** is a computer program used for entering and
 retrieving information from a database.  A **customized** database
