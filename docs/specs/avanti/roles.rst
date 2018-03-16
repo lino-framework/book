@@ -83,7 +83,6 @@ Each window is **viewable** for a given set of user types.
 >>> print(analyzer.show_window_permissions())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - about.About.show : visible for all
-- about.Models.detail : visible for teacher user auditor coordinator secretary staff admin
 - avanti.Categories.merge_row : visible for admin
 - avanti.Clients.detail : visible for user secretary staff admin
 - avanti.Clients.merge_row : visible for admin
