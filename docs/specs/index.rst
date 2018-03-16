@@ -46,6 +46,7 @@ specifications.  This section is far from being complete.
    events/index
    dpy
    comments
+   about
    
    
 Accounting stuff
