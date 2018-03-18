@@ -305,15 +305,19 @@ Total number of cells is 13*17:
 <td>No.</td>
 >>> cells[1]
 <td>Participant</td>
->>> print(repr(cells[3]))
-<td>02.02.\n\n<br/><font size="1">11 (\u2611)</font>\n</td>
+>>> print(cells[3].decode())  #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+<td>02.02.
+<BLANKLINE>
+<br/><font size="1">11 (☑)</font>
+</td>
 
 >>> cells[17]
 <td>1</td>
 
->>> cells[18]
-<td><p>Mr A\xe1sim Abdo</p></td>
+>>> print(cells[18].decode())
+<td><p>Mr Aásim Abdo</p></td>
 
->>> print(repr(cells[20]))
-<td align="center" valign="middle">\u2611\n  </td>
+>>> print(cells[20].decode())  #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+<td align="center" valign="middle">☑
+</td>
 
