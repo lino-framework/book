@@ -153,15 +153,11 @@ Lino Noi and Scrum
 - Usually there is at least one ticket per project for planning and
   discussion.
 
-
-
 >>> show_fields(system.SiteConfig)
 ... #doctest: +REPORT_UDIFF
 +----------------------+----------------------+---------------------------------------------------------------------+
 | Internal name        | Verbose name         | Help text                                                           |
 +======================+======================+=====================================================================+
-| id                   | ID                   |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
 | default_build_method | Default build method | The default build method to use when rendering printable documents. |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | simulate_today       | Simulated date       | A constant user-defined date to be substituted as current           |
@@ -181,10 +177,4 @@ Lino Noi and Scrum
 +----------------------+----------------------+---------------------------------------------------------------------+
 | hide_events_before   | Hide events before   | If this is not empty, any calendar events before that date are      |
 |                      |                      | being hidden in certain places.                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| workflow_buttons     | Workflow             |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| mobile_item          | Description          |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| overview             | Description          |                                                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+

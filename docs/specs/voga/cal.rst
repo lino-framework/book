@@ -16,6 +16,9 @@ functions.
 
 See also :ref:`book.specs.cal`.
 
+.. currentmodule:: lino_voga.lib.cal
+
+
 Workflow
 ========
 
@@ -48,9 +51,35 @@ The following workflows are defined in
 Rooms
 =====
 
+
+.. class:: Room
+
+    Extends :class:`lino_xl.lib.cal.Room` by adding one field:
+
+    .. attribute:: fee
+
+        The default fee to pay when renting this room to an external
+        organization.
+
+    
+>>> show_fields(cal.Room, 'name calendar fee company')
++---------------+--------------+---------------------------------------------------------------+
+| Internal name | Verbose name | Help text                                                     |
++===============+==============+===============================================================+
+| name          | Designation  | The designation of the room. This should (but is not required |
+|               |              | to) be unique.                                                |
++---------------+--------------+---------------------------------------------------------------+
+| calendar      | Calendar     | Calendar where events in this room are published.             |
++---------------+--------------+---------------------------------------------------------------+
+| fee           | Tariff       | The default fee to pay when renting this room to an external  |
+|               |              | organization.                                                 |
++---------------+--------------+---------------------------------------------------------------+
+| company       | Responsible  | Pointer to Company.                                           |
++---------------+--------------+---------------------------------------------------------------+
+         
+
 The following rooms are defined in the
 :mod:`lino_book.projects.roger.settings.fixtures.voga` demo fixture.
-
 
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
@@ -70,15 +99,7 @@ The following rooms are defined in the
 (The last room, because it has no company, caused a bug which was fixed on
 :blogref:`20140920`)
 
->>> show_fields(cal.Room, 'name calendar fee company')
-=============== ============== ===================================================
- Internal name   Verbose name   Help text
---------------- -------------- ---------------------------------------------------
- name            Designation
- calendar        Calendar       Calendar where events in this room are published.
- fee             Tariff
- company         Responsible    Pointer to Company.
-=============== ============== ===================================================
+
 
 
 

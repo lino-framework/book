@@ -309,7 +309,22 @@ Accounts
         :meth:`get_allowed_accounts
         <lino_xl.lib.ledger.Journal.get_allowed_accounts>` method.
 
+    .. attribute:: needs_ana
+                   
+        Whether transactions on this account require the user to also
+        specify an analytic account.
+
+        This file exists only when :mod:`lino_xl.lib.ana` is
+        installed as well.
+        
+    .. attribute:: ana_account
            
+        Which analytic account to suggest for transactions on this
+        account.
+
+        This file exists only when :mod:`lino_xl.lib.ana` is
+        installed as well.
+        
 
 Account groups
 ==============

@@ -740,7 +740,7 @@ Filtering tickets
 
 This is a list of the parameters you can use for filterings tickets.
 
->>> show_fields(tickets.AllTickets)
+>>> show_fields(tickets.AllTickets, all=True)
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+

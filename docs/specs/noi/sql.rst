@@ -57,7 +57,7 @@ SQL that poor Django must do in order to return a single row.
 
 To verify whether the slave summary panels are being computed:
 
->>> for f in rt.models.tickets.Tickets.wildcard_data_elems():
+>>> for f in sorted(rt.models.tickets.Tickets.wildcard_data_elems()):
 ...     print(f)  #doctest: +REPORT_UDIFF
 tickets.Ticket.id
 tickets.Ticket.modified
@@ -87,10 +87,10 @@ tickets.Ticket.waiting_for
 tickets.Ticket.feedback
 tickets.Ticket.standby
 tickets.Ticket.fixed_since
+lino.mixins.Created.created_natural
+lino.core.model.Model.overview
 lino.core.model.Model.workflow_buttons
 lino.core.model.Model.mobile_item
-lino.core.model.Model.overview
-lino.mixins.Created.created_natural
 
     
 

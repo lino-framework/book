@@ -95,7 +95,7 @@ Clients
    virtual field.
 
 
->>> show_columns(avanti.AllClients)
+>>> show_columns(avanti.AllClients, all=True)
 +-------------------+------------------------+--------------------------------------------------------------+
 | Internal name     | Verbose name           | Help text                                                    |
 +===================+========================+==============================================================+

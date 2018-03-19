@@ -725,6 +725,11 @@ Reference
     can see the :class:`EntriesByRoom` that happened (or will happen)
     there.  A Room has a multilingual name.
 
+    .. attribute:: name
+
+        The designation of the room. This should (but is not required
+        to) be unique.
+
     
 .. class:: Rooms
 

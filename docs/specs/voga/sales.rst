@@ -1,12 +1,11 @@
+.. doctest docs/specs/voga/sales.rst
 .. _voga.specs.sales:
 
 =============================
 Sales management in Lino Voga
 =============================
 
-.. to test only this doc:
-
-    $ doctest docs/specs/sales.rst
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
@@ -90,7 +89,7 @@ check whether we get the expected response.
 >>> obj.clear_cache()
 >>> d = ses.run(obj.do_print)
 ... #doctest: +ELLIPSIS
-appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf (language='en',params={...}
+appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf
 
 >>> d['success']
 True
