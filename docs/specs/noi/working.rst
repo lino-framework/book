@@ -122,8 +122,8 @@ started some days ago.
     >>> url += "_dc=1442341081053&cw=430&cw=83&cw=83&cw=83&cw=83&cw=83&cw=83&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ci=description&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=vc4&ci=vc5&name=0&pv=16.05.2015&pv=23.05.2015&pv=7&an=show_as_html&sr="
     >>> test_client.force_login(rt.login('jean').user)
     >>> res = test_client.get(url, REMOTE_USER="jean")
-    >>> json.loads(res.content.decode())
-    {u'open_url': u'/bs3/working/WorkedHours?limit=15', u'success': True}
+    >>> json.loads(res.content.decode()) == {'open_url': '/bs3/working/WorkedHours?limit=15', 'success': True}
+    True
 
 
     The html version of this table table has only 5 rows (4 data rows and

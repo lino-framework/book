@@ -243,7 +243,7 @@ usage: manage_a.py dump2py [-h] [--version] [-v {0,1,2,3}]
                            [--traceback] [--no-color] [--noinput] [--tolerate]
                            [-o] [-m MAX_ROW_COUNT]
                            output_dir
-manage_a.py dump2py: error: too few arguments
+manage_a.py dump2py: error: ...
 
 
 >>> shell("python manage_a.py dump2py a")

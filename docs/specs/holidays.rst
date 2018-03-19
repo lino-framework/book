@@ -153,8 +153,8 @@ datetime.date(2016, 2, 9)
 Generating events between 2016-02-09 and 2019-10-23 (max. 72).
 Reached upper date limit 2019-10-23
 
->>> wanted[1]
-Event(start_date=2016-02-09,owner_type=17,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EntryStates.suggested:10>)
+>>> wanted[1]  #doctest: +ELLIPSIS
+Event(start_date=2016-02-09,owner_type=...,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EntryStates.suggested:10>)
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
