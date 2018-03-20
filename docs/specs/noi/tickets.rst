@@ -341,7 +341,7 @@ In our demo database, tickets are distributed over the different
 projects as follows (not a realistic distribution):
 
 >>> for p in tickets.Project.objects.all():
-...         print p.ref, p.tickets_by_project.count()
+...     print(u'{} {}'.format(p.ref, p.tickets_by_project.count()))
 linö 23
 téam 23
 docs 23
@@ -731,7 +731,7 @@ The same list seen by marc
 >>> obj = tickets.Ticket.objects.get(pk=2)
 >>> rt.login('luc').show(comments.CommentsByRFC, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<p><b>Write comment</b></p><ul><li><a href="Detail" title="Created ...">...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a href="#" onclick="toggle_visibility('comment-2');" title="Hide">⁜</a><div id="comment-2"><p>Very confidential comment</p></div></li></ul>
+<p><b>Write comment</b></p><ul><li><a ...>...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a ...>⁜</a><div id="comment-2"><p>Very confidential comment</p></div></li></ul>
 
 
 

@@ -1,3 +1,4 @@
+.. doctest docs/specs/cv.rst
 .. _lino.tested.cv:
 
 ==================================
@@ -5,11 +6,7 @@ Career module (tested)
 ==================================
 
 
-.. How to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_cv
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.max.settings.demo')
@@ -41,8 +38,8 @@ users.UserTypes.admin:900
 >>> u
 users.UserTypes.user:100
 
->>> AllLanguageKnowledges.required_roles
-set([<class 'lino_xl.lib.cv.roles.CareerStaff'>])
+>>> AllLanguageKnowledges.required_roles == {cv.CareerStaff}
+True
 
 >>> AllLanguageKnowledges.default_action.get_view_permission(u)
 False

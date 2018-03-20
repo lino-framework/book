@@ -59,48 +59,52 @@ Parsing names
 
 Examples:
 
->>> name2kw("Saffre Luc")
-{'first_name': 'Luc', 'last_name': 'Saffre'}
->>> name2kw("Rilke Rainer Maria")
-{'first_name': 'Rainer Maria', 'last_name': 'Rilke'}
->>> name2kw("Van Rompuy Herman")
-{'first_name': 'Herman', 'last_name': 'Van Rompuy'}
->>> name2kw("'T Jampens Jan")
-{'first_name': 'Jan', 'last_name': "'T Jampens"}
->>> name2kw("Van den Bossche Marc Antoine Bernard")
-{'first_name': 'Marc Antoine Bernard', 'last_name': 'Van den Bossche'}
->>> name2kw("Den Tandt Marc Antoine Bernard")
-{'first_name': 'Marc Antoine Bernard', 'last_name': 'Den Tandt'}
+>>> name2kw("Saffre Luc") == {'first_name': 'Luc', 'last_name': 'Saffre'}
+True
+>>> name2kw("Rilke Rainer Maria") == {'first_name': 'Rainer Maria', 'last_name': 'Rilke'}
+True
+>>> name2kw("Van Rompuy Herman") == {'first_name': 'Herman', 'last_name': 'Van Rompuy'}
+True
+>>> name2kw("'T Jampens Jan") == {'first_name': 'Jan', 'last_name': "'T Jampens"}
+True
+>>> name2kw("Van den Bossche Marc Antoine Bernard") == {'first_name': 'Marc Antoine Bernard', 'last_name': 'Van den Bossche'}
+True
+>>> name2kw("Den Tandt Marc Antoine Bernard") == {'first_name': 'Marc Antoine Bernard', 'last_name': 'Den Tandt'}
+True
+
 
 In more complicated cases, a comma is required to help:
 
->>> name2kw("Mombanga born Ngungi, Maria Magdalena")
-{'first_name': 'Maria Magdalena', 'last_name': 'Mombanga born Ngungi'}
+>>> name2kw("Mombanga born Ngungi, Maria Magdalena") == {'first_name': 'Maria Magdalena', 'last_name': 'Mombanga born Ngungi'}
+True
 
 Some examples with `first_name` first:
 
->>> name2kw("Luc Saffre", False)
-{'first_name': 'Luc', 'last_name': 'Saffre'}
->>> name2kw("Rainer Maria Rilke", False)
-{'first_name': 'Rainer Maria', 'last_name': 'Rilke'}
->>> name2kw("Herman Van Rompuy", False)
-{'first_name': 'Herman', 'last_name': 'Van Rompuy'}
->>> name2kw("Jan 'T Jampens",False)
-{'first_name': 'Jan', 'last_name': "'T Jampens"}
->>> name2kw("Marc Antoine Bernard Van den Bossche", False)
-{'first_name': 'Marc Antoine Bernard', 'last_name': 'Van den Bossche'}
->>> name2kw("Marc Antoine Bernard Den Tandt", False)
-{'first_name': 'Marc Antoine Bernard', 'last_name': 'Den Tandt'}
+>>> name2kw("Luc Saffre", False) == {'first_name': 'Luc', 'last_name': 'Saffre'}
+True
+
+>>> name2kw("Rainer Maria Rilke", False) == {'first_name': 'Rainer Maria', 'last_name': 'Rilke'}
+True
+
+>>> name2kw("Herman Van Rompuy", False) == {'first_name': 'Herman', 'last_name': 'Van Rompuy'}
+True
+
+>>> name2kw("Jan 'T Jampens",False) == {'first_name': 'Jan', 'last_name': "'T Jampens"}
+True
+>>> name2kw("Marc Antoine Bernard Van den Bossche", False) == {'first_name': 'Marc Antoine Bernard', 'last_name': 'Van den Bossche'}
+True
+>>> name2kw("Marc Antoine Bernard Den Tandt", False) == {'first_name': 'Marc Antoine Bernard', 'last_name': 'Den Tandt'}
+True
 
 Some examples taken from
 `a question on SO 
 <https://stackoverflow.com/questions/48383199/splitting-names-that-include-de-da-etc-into-first-middle-last-etc>`__
 with Brazilian names:
 
->>> name2kw("Emiliano Rodrigo Carrasco", False)
-{'first_name': 'Emiliano Rodrigo', 'last_name': 'Carrasco'}
->>> name2kw("Alberto de Francia", False)
-{'first_name': 'Alberto', 'last_name': 'de Francia'}
+>>> name2kw("Emiliano Rodrigo Carrasco", False) == {'first_name': 'Emiliano Rodrigo', 'last_name': 'Carrasco'}
+True
+>>> name2kw("Alberto de Francia", False) == {'first_name': 'Alberto', 'last_name': 'de Francia'}
+True
 
 TODO: This one doesn't yet work:
 
@@ -122,20 +126,20 @@ Examples:
 
 >>> from lino.mixins.human import parse_name
 
->>> print(parse_name("luc saffre"))
-{'first_name': 'Luc', 'last_name': 'Saffre'}
+>>> parse_name("luc saffre") == {'first_name': 'Luc', 'last_name': 'Saffre'}
+True
 
 But careful with name prefixes:
 
->>> print(parse_name("herman van veen"))
-{'first_name': 'Herman', 'last_name': 'van veen'}
->>> print(parse_name("jean van den bossche"))
-{'first_name': 'Jean', 'last_name': 'van den bossche'}
+>>> parse_name("herman van veen") == {'first_name': 'Herman', 'last_name': 'van veen'}
+True
+>>> parse_name("jean van den bossche") == {'first_name': 'Jean', 'last_name': 'van den bossche'}
+True
 
->>> parse_name("Foo")
+>>> parse_name("Foo")  #doctest: +ELLIPSIS +IGNORE_EXCEPTION_DETAIL
 Traceback (most recent call last):
 ...
-ValidationError: [u'Cannot find first and last name in "Foo"']
+ValidationError: ...Cannot find first and last name in "Foo"']
 
 
 
