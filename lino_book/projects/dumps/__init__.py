@@ -4,7 +4,6 @@
    :toctree:
 
 
-   models
    settings.a
    settings.b
    fixtures.demo

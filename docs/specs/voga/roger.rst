@@ -35,7 +35,7 @@ There is a custom data checker
 datetime.date(2015, 5, 22)
 
 
->>> rt.show(rt.actors.courses.Pupils)
+>>> rt.show(courses.Pupils)
 ... #doctest: +ELLIPSIS
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
  Name                                     Address                           Participant Type   Section      LFV   CKK   Raviva   Mitglied bis
@@ -146,7 +146,7 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Kursleiter : 10
 - Aktivitäten --> Kurse : 24
 - Aktivitäten --> Ausfahrten : 1
-- Aktivitäten --> Reisen : 3
+- Aktivitäten --> Reisen : 4
 - Aktivitäten --> Themen : 6
 - Aktivitäten --> Aktivitätenreihen : 11
 - Aktivitäten --> Offene Einschreibungsanfragen : 11
@@ -155,7 +155,7 @@ Here is the output of :func:`walk_menu_items
 - Berichte --> Buchhaltung --> Gläubiger : 8
 - Berichte --> Buchhaltung --> Purchase journal : 0
 - Berichte --> Buchhaltung --> Intra-Community purchases : 17
-- Berichte --> Buchhaltung --> Intra-Community sales : 7
+- Berichte --> Buchhaltung --> Intra-Community sales : 2
 - Berichte --> Buchhaltung --> Offene Rechnungen : 2
 - Berichte --> Buchhaltung --> Sales invoice journal : 0
 - Konfigurierung --> System --> Benutzer : 7
@@ -207,9 +207,9 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Kalender --> Aufgaben-Zustände : 5
 - Explorer --> Buchhaltung --> Gemeinkonten : 17
 - Explorer --> Buchhaltung --> Begleichungsregeln : 13
-- Explorer --> Buchhaltung --> Belege : 268
+- Explorer --> Buchhaltung --> Belege : 261
 - Explorer --> Buchhaltung --> Belegarten : 6
-- Explorer --> Buchhaltung --> Bewegungen : 887
+- Explorer --> Buchhaltung --> Bewegungen : 863
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 6
 - Explorer --> Buchhaltung --> Journalgruppen : 5
@@ -218,12 +218,12 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> MwSt. --> VAT columns : 6
 - Explorer --> MwSt. --> Rechnungen : 120
 - Explorer --> MwSt. --> MwSt-Regeln : 3
-- Explorer --> MwSt. --> Produktrechnungen : 98
-- Explorer --> MwSt. --> Produktrechnungszeilen : 121
+- Explorer --> MwSt. --> Produktrechnungen : 91
+- Explorer --> MwSt. --> Produktrechnungszeilen : 116
 - Explorer --> MwSt. --> Fakturationspläne : 2
 - Explorer --> MwSt. --> Special Belgian VAT declarations : 16
 - Explorer --> MwSt. --> Declaration fields : 11
-- Explorer --> Aktivitäten --> Aktivitäten : 26
+- Explorer --> Aktivitäten --> Aktivitäten : 27
 - Explorer --> Aktivitäten --> Einschreibungen : 89
 - Explorer --> Aktivitäten --> Einschreibungs-Zustände : 4
 - Explorer --> Finanzjournale --> Kontoauszüge : 22

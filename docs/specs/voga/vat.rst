@@ -24,14 +24,9 @@ The following covers a bug that was was fixed :blogref:`20170905`
 ==================== ================== ======== =================== ================= ===== =================
  Invoice              Partner            VAT id   VAT regime          Total excl. VAT   VAT   Total incl. VAT
 -------------------- ------------------ -------- ------------------- ----------------- ----- -----------------
- *SLS 54*             Brecht Bernd                Intracom services   48,00                   48,00
- *SLS 55*             Jeanémart Jérôme            Intracom supplies   50,00                   50,00
- *SLS 69*             Jeanémart Jérôme            Intracom supplies   50,00                   50,00
- *SLS 77*             Brecht Bernd                Intracom services   48,00                   48,00
- *SLS 78*             Jeanémart Jérôme            Intracom supplies   50,00                   50,00
- *SLS 89*             Jeanémart Jérôme            Intracom supplies   50,00                   50,00
- *SLS 93*             Brecht Bernd                Intracom services   48,00                   48,00
- **Total (7 rows)**                                                   **344,00**              **344,00**
+ *SLS 17*             Jeanémart Jérôme            Intracom supplies   20,00                   20,00
+ *SLS 36*             Brecht Bernd                Intracom services   295,00                  295,00
+ **Total (2 rows)**                                                   **315,00**              **315,00**
 ==================== ================== ======== =================== ================= ===== =================
 <BLANKLINE>
 

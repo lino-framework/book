@@ -98,7 +98,7 @@ class Loader1(object):
         settings.SITE.site_config.site_company = we
         yield settings.SITE.site_config
 
-        ProductCat = rt.modules.products.ProductCat
+        ProductCat = rt.models.products.ProductCat
         # productcat = Instantiator('products.ProductCat').build
 
         self.course_fees = ProductCat(**dd.str2kw(
@@ -518,6 +518,16 @@ class Loader2(Loader1):
         kw.update(company=COMPANIES.pop())
         kw.update(every_unit=cal.Recurrencies.once)
         yield add_booking(self.konf, "10:00", "14:00", **kw)
+
+        # a series of five week-ends:
+        kw = dict()
+        kw.update(user=USERS.pop())
+        kw.update(teacher=TEACHERS.pop())
+        kw.update(every_unit=cal.Recurrencies.monthly)
+        kw.update(max_events=5)
+        kw.update(payment_term=PaymentTerm.get_by_ref('P30'))
+        yield journey(europe, "Five Weekends 2014",
+                      i2d(20140321), i2d(20140323), **kw)
 
         # PUPILS = Cycler()
         #~ print 20130712, Pupil.objects.all()

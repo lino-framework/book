@@ -966,6 +966,8 @@ Reference
     .. attribute:: every_unit
     .. attribute:: max_events
 
+        Maximum number of calendar entries to generate.
+        
     .. attribute:: monday
     .. attribute:: tuesday
     .. attribute:: wednesday
@@ -991,7 +993,10 @@ Reference
     Inherits from both :class:`EventGenerator` and :class:`RecurrenceSet`.
 
     .. attribute:: room
+                   
     .. attribute:: max_date
+
+        Don't generate calendar entries beyond this date.
 
 Miscellaneous
 =============

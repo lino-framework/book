@@ -54,7 +54,7 @@ The database structure
  contenttypes.ContentType   gfks.ContentTypes              3         77
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
- courses.Course             courses.Activities             33        25
+ courses.Course             courses.Activities             33        26
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        95
  courses.Line               courses.Lines                  25        10
@@ -67,20 +67,20 @@ The database structure
  excerpts.Excerpt           excerpts.Excerpts              11        ...
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        142
+ finan.BankStatementItem    finan.BankStatementItemTable   10        132
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
  gfks.HelpText              gfks.HelpTexts                 4         2
- invoicing.Item             invoicing.Items                10        7
+ invoicing.Item             invoicing.Items                10        9
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                23        8
  ledger.MatchRule           ledger.MatchRules              3         12
- ledger.Movement            ledger.Movements               12        887
+ ledger.Movement            ledger.Movements               12        863
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
- ledger.Voucher             ledger.Vouchers                9         268
+ ledger.Voucher             ledger.Vouchers                9         261
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -93,9 +93,9 @@ The database structure
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        120
+ sales.InvoiceItem          sales.InvoiceItems             15        115
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        97
+ sales.VatProductInvoice    sales.Invoices                 24        90
  sepa.Account               sepa.Accounts                  6         38
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1

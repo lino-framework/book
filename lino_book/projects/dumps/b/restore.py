@@ -58,11 +58,13 @@ def bv2kw(fieldname, values):
 dumps_Foo = resolve_model("dumps.Foo")
 
 
-def create_dumps_foo(id, name, last_visit):
+def create_dumps_foo(id, designation, last_visit, bar):
+#    if bar: bar = settings.SITE.models.dumps.Bars.get_by_value(bar)
     kw = dict()
     kw.update(id=id)
-    if name is not None: kw.update(bv2kw('name',name))
+    if designation is not None: kw.update(bv2kw('designation',designation))
     kw.update(last_visit=last_visit)
+    kw.update(bar=bar)
     return dumps_Foo(**kw)
 
 

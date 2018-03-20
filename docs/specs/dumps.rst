@@ -18,14 +18,19 @@ Python dumps by example
 A series of usage examples for :ref:`Python dumps <dpy>`.
 
 This document uses the :mod:`lino_book.projects.dumps` demo project.
-It verifies whether :ticket:`2204` is fixed.  It demonstrates three
-methods of writing demo multilingual data for babel fields.
+It verifies whether :ticket:`2204` (AmbiguousTimeError) is fixed.  It
+demonstrates three methods of writing demo multilingual data for babel
+fields.  It demonstrates behaviour of choicelists in Python dumps.
 
 Here is our :xfile:`models.py` file:
 
 .. literalinclude:: ../../lino_book/projects/dumps/models.py
 
-We also have a Python fixture in file :xfile:`fixtures/demo.py` which
+We also have a choicelist:
+
+.. literalinclude:: ../../lino_book/projects/dumps/choicelists.py
+
+And we have a Python fixture in file :xfile:`fixtures/demo.py` which
 adds three records:
 
 .. literalinclude:: ../../lino_book/projects/dumps/fixtures/demo.py
@@ -59,13 +64,13 @@ And here is the result:
 
 >>> shell("python manage_a.py show dumps.Foos")
 ... #doctest: +ELLIPSIS
-==== ============= ================== ================== =====================
- ID   Designation   Designation (de)   Designation (fr)   Last visit
----- ------------- ------------------ ------------------ ---------------------
- 1    First         Erster             Premier            2016-07-02 23:55:12
- 2    January       Januar             janvier            2016-07-03 00:10:23
- 3    Three         Drei               Trois              2017-10-29 03:16:06
-==== ============= ================== ================== =====================
+==== ============= ================== ================== ===================== ======
+ ID   Designation   Designation (de)   Designation (fr)   Last visit            Bar
+---- ------------- ------------------ ------------------ --------------------- ------
+ 1    First         Erster             Premier            2016-07-02 23:55:12   Sale
+ 2    January       Januar             janvier            2016-07-03 00:10:23   Sale
+ 3    Three         Drei               Trois              2017-10-29 03:16:06   Sale
+==== ============= ================== ================== ===================== ======
 
 Note that our demo data contains an ambigous time stamp.  When
 somebody living in Brussels tells you "it was at on 2017-10-29 at
@@ -162,13 +167,13 @@ The result as seen by the user is the same as in a.
 
 >>> shell("python manage_b.py show dumps.Foos")
 ... #doctest: +ELLIPSIS
-==== ============= ================== ================== ===========================
- ID   Designation   Designation (de)   Designation (fr)   Last visit
----- ------------- ------------------ ------------------ ---------------------------
- 1    First         Erster             Premier            2016-07-02 23:55:12+00:00
- 2    January       Januar             janvier            2016-07-03 00:10:23+00:00
- 3    Three         Drei               Trois              2017-10-29 03:16:06+00:00
-==== ============= ================== ================== ===========================
+==== ============= ================== ================== =========================== ======
+ ID   Designation   Designation (de)   Designation (fr)   Last visit                  Bar
+---- ------------- ------------------ ------------------ --------------------------- ------
+ 1    First         Erster             Premier            2016-07-02 23:55:12+00:00   Sale
+ 2    January       Januar             janvier            2016-07-03 00:10:23+00:00   Sale
+ 3    Three         Drei               Trois              2017-10-29 03:16:06+00:00   Sale
+==== ============= ================== ================== =========================== ======
 
 
 >>> shell("python manage_b.py dump2py tmp/b --overwrite")
