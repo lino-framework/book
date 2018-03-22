@@ -127,7 +127,7 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Mein E-Mail-Ausgang : 1
 - Büro --> Meine Auszüge : 0
 - Kalender --> Meine Termine : 58
-- Kalender --> Überfällige Termine : 29
+- Kalender --> Überfällige Termine : 31
 - Kalender --> Unbestätigte Termine : 7
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
@@ -151,8 +151,8 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Aktivitätenreihen : 11
 - Aktivitäten --> Offene Einschreibungsanfragen : 11
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 79
-- Berichte --> Buchhaltung --> Schuldner : 0
-- Berichte --> Buchhaltung --> Gläubiger : 8
+- Berichte --> Buchhaltung --> Schuldner : 1
+- Berichte --> Buchhaltung --> Gläubiger : 7
 - Berichte --> Buchhaltung --> Purchase journal : 0
 - Berichte --> Buchhaltung --> Intra-Community purchases : 17
 - Berichte --> Buchhaltung --> Intra-Community sales : 2
@@ -193,12 +193,12 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benutzerarten : 5
 - Explorer --> System --> Datenbankmodelle : 78
 - Explorer --> System --> Datentests : 10
-- Explorer --> System --> Datenprobleme : 19
+- Explorer --> System --> Datenprobleme : 20
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> Partner : 104
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1
-- Explorer --> Kalender --> Kalendereinträge : 714
+- Explorer --> Kalender --> Kalendereinträge : 719
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
 - Explorer --> Kalender --> Abonnements : 36
@@ -207,9 +207,9 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Kalender --> Aufgaben-Zustände : 5
 - Explorer --> Buchhaltung --> Gemeinkonten : 17
 - Explorer --> Buchhaltung --> Begleichungsregeln : 13
-- Explorer --> Buchhaltung --> Belege : 261
+- Explorer --> Buchhaltung --> Belege : 258
 - Explorer --> Buchhaltung --> Belegarten : 6
-- Explorer --> Buchhaltung --> Bewegungen : 863
+- Explorer --> Buchhaltung --> Bewegungen : 854
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 6
 - Explorer --> Buchhaltung --> Journalgruppen : 5
@@ -218,8 +218,8 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> MwSt. --> VAT columns : 6
 - Explorer --> MwSt. --> Rechnungen : 120
 - Explorer --> MwSt. --> MwSt-Regeln : 3
-- Explorer --> MwSt. --> Produktrechnungen : 91
-- Explorer --> MwSt. --> Produktrechnungszeilen : 116
+- Explorer --> MwSt. --> Produktrechnungen : 88
+- Explorer --> MwSt. --> Produktrechnungszeilen : 115
 - Explorer --> MwSt. --> Fakturationspläne : 2
 - Explorer --> MwSt. --> Special Belgian VAT declarations : 16
 - Explorer --> MwSt. --> Declaration fields : 11

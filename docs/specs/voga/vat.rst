@@ -1,13 +1,12 @@
+.. doctest docs/specs/voga/vat.rst
 .. _voga.specs.vat:
 
 ============================
 VAT declaration in Lino Voga
 ============================
 
-..  to test only this doc:
-
-    $ doctest docs/specs/voga/vat.rst
-
+..  doctest init:
+   
     >>> from lino import startup
     >>> startup('lino_book.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
@@ -25,7 +24,7 @@ The following covers a bug that was was fixed :blogref:`20170905`
  Invoice              Partner            VAT id   VAT regime          Total excl. VAT   VAT   Total incl. VAT
 -------------------- ------------------ -------- ------------------- ----------------- ----- -----------------
  *SLS 17*             Jeanémart Jérôme            Intracom supplies   20,00                   20,00
- *SLS 36*             Brecht Bernd                Intracom services   295,00                  295,00
+ *SLS 35*             Brecht Bernd                Intracom services   295,00                  295,00
  **Total (2 rows)**                                                   **315,00**              **315,00**
 ==================== ================== ======== =================== ================= ===== =================
 <BLANKLINE>

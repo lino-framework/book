@@ -1,14 +1,11 @@
+.. doctest docs/specs/voga/db_roger.rst
 .. _voga.specs.db_roger:
 
 ==================
 Database structure
 ==================
 
-.. To run only this test::
-
-    $ doctest docs/specs/voga/db_roger.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.roger.settings.doctests')
@@ -32,7 +29,7 @@ The database structure
  accounts.Group             accounts.Groups                6         6
  bevats.Declaration         bevats.Declarations            28        15
  cal.Calendar               cal.Calendars                  6         8
- cal.Event                  cal.OneEvent                   23        1154
+ cal.Event                  cal.OneEvent                   23        1161
  cal.EventPolicy            cal.EventPolicies              19        6
  cal.EventType              cal.EventTypes                 18        9
  cal.Guest                  cal.Guests                     6         0
@@ -44,7 +41,7 @@ The database structure
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         19
+ checkdata.Problem          checkdata.Problems             6         20
  contacts.Company           contacts.Companies             27        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              25        103
@@ -67,20 +64,20 @@ The database structure
  excerpts.Excerpt           excerpts.Excerpts              11        ...
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        132
+ finan.BankStatementItem    finan.BankStatementItemTable   10        129
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
  gfks.HelpText              gfks.HelpTexts                 4         2
- invoicing.Item             invoicing.Items                10        9
+ invoicing.Item             invoicing.Items                10        7
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                23        8
  ledger.MatchRule           ledger.MatchRules              3         12
- ledger.Movement            ledger.Movements               12        863
+ ledger.Movement            ledger.Movements               12        854
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
- ledger.Voucher             ledger.Vouchers                9         261
+ ledger.Voucher             ledger.Vouchers                9         258
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -93,9 +90,9 @@ The database structure
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        115
+ sales.InvoiceItem          sales.InvoiceItems             15        114
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        90
+ sales.VatProductInvoice    sales.Invoices                 24        87
  sepa.Account               sepa.Accounts                  6         38
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1

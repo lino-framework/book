@@ -161,14 +161,19 @@ class Loader1(object):
         self.seminare = event_type(**dd.str2kw('name', _("Seminars")))
         yield self.seminare
 
-        yield event_type(**dd.str2kw('name', _("Excursions")))
-                                     # de="Ausflüge",
-                                     #  fr="Excursions",
-                                     #  en="Excursions",
-        yield event_type(**dd.str2kw('name', _("Hikes")))
-                                      # de="Wanderungen",
-                                      # fr="Randonnées",
-                                      # en="Hikes",
+        self.excursions = event_type(
+            max_days=10, **dd.str2kw('name', _("Excursions")))
+        # de="Ausflüge",
+        #  fr="Excursions",
+        #  en="Excursions",
+        yield self.excursions
+        
+        self.hikes = event_type(
+            max_days=60, **dd.str2kw('name', _("Hikes")))
+        # de="Wanderungen",
+        # fr="Randonnées",
+        # en="Hikes",
+        yield self.hikes
 
         yield event_type(**dd.str2kw('name', _("Meetings")))
                                       # de="Versammlungen",
@@ -316,7 +321,9 @@ class Loader2(Loader1):
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
         yield self.journeys_topic
-        europe = line(self.journeys_topic, None, self.journey_fee,
+        europe = line(self.journeys_topic,
+                      self.excursions,
+                      self.journey_fee,
                       options_cat=journey_options,
                       course_area=CourseAreas.journeys,
                       fees_cat=self.journeys_cat,
@@ -525,9 +532,10 @@ class Loader2(Loader1):
         kw.update(teacher=TEACHERS.pop())
         kw.update(every_unit=cal.Recurrencies.monthly)
         kw.update(max_events=5)
+        kw.update(friday=True)
         kw.update(payment_term=PaymentTerm.get_by_ref('P30'))
-        yield journey(europe, "Five Weekends 2014",
-                      i2d(20140321), i2d(20140323), **kw)
+        yield journey(europe, "Five Weekends 2015",
+                      i2d(20150619), i2d(20150621), **kw)
 
         # PUPILS = Cycler()
         #~ print 20130712, Pupil.objects.all()

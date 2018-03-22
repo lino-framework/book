@@ -1,12 +1,9 @@
+.. docs/specs/voga/holidays.rst
 .. _voga.specs.holidays:
 
-=================
-Defining holidays
-=================
-
-.. How to test just this document
-
-   $ python setup.py test -s tests.DocsTests.test_holidays
+==============================
+Holidays in Lino Voga
+==============================
 
 See also :ref:`xl.specs.holidays`.
 
@@ -22,33 +19,29 @@ See also :ref:`xl.specs.holidays`.
     >>> Recurrencies = cal.Recurrencies
 
 
-Recurrent event rules
-=====================
+A series of weekends
+====================
 
-Here are the default holidays defined as recurrent event rules
-:class:`RecurrentEvent <lino.modlib.cal.models.RecurrentEvent>` by
-:mod:`lino.modlib.cal.fixtures.std`:
 
->>> rt.show(cal.RecurrentEvents)
-... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============ ============ ============================ ===================== =================================== ==================== =====================
- Start date   End Date     Designation                  Designation (de)      Designation (fr)                    Recurrency           Calendar entry type
------------- ------------ ---------------------------- --------------------- ----------------------------------- -------------------- ---------------------
- 01/01/2013                New Year's Day               Neujahr               Jour de l'an                        yearly               Holidays
- 11/02/2013                Rosenmontag                  Rosenmontag           Lundi de carnaval                   Relative to Easter   Holidays
- 13/02/2013                Ash Wednesday                Aschermittwoch        Mercredi des Cendres                Relative to Easter   Holidays
- 29/03/2013                Good Friday                  Karfreitag            Vendredi Saint                      Relative to Easter   Holidays
- 31/03/2013                Easter sunday                Ostersonntag          Pâques                              Relative to Easter   Holidays
- 01/04/2013                Easter monday                Ostermontag           Lundi de Pâques                     Relative to Easter   Holidays
- 01/05/2013                International Workers' Day   Tag der Arbeit        Premier Mai                         yearly               Holidays
- 09/05/2013                Ascension of Jesus           Christi Himmelfahrt   Ascension                           Relative to Easter   Holidays
- 20/05/2013                Pentecost                    Pfingsten             Pentecôte                           Relative to Easter   Holidays
- 01/07/2013   31/08/2013   Summer holidays              Sommerferien          Vacances d'été                      yearly               Holidays
- 21/07/2013                National Day                 Nationalfeiertag      Fête nationale                      yearly               Holidays
- 15/08/2013                Assumption of Mary           Mariä Himmelfahrt     Assomption de Marie                 yearly               Holidays
- 31/10/2013                All Souls' Day               Allerseelen           Commémoration des fidèles défunts   yearly               Holidays
- 01/11/2013                All Saints' Day              Allerheiligen         Toussaint                           yearly               Holidays
- 11/11/2013                Armistice with Germany       Waffenstillstand      Armistice                           yearly               Holidays
- 25/12/2013                Christmas                    Weihnachten           Noël                                yearly               Holidays
-============ ============ ============================ ===================== =================================== ==================== =====================
+>>> obj = courses.Course.objects.get(name__contains="Weekends")
+>>> print(obj)
+Five Weekends 2015
+>>> print(obj.start_date)
+2015-06-19
+>>> print(dd.today())
+2015-05-22
+
+
+>>> rt.show(cal.EntriesByController, obj, column_names="when_text overview state", nosummary=True)
+=============================== =================== ===========
+ When                            Description         State
+------------------------------- ------------------- -----------
+ Fri 19/06/2015-Sun 21/06/2015   *Activity #26  1*   Suggested
+ Fri 24/07/2015-Sun 26/07/2015   *Activity #26  2*   Suggested
+ Fri 28/08/2015-Sun 30/08/2015   *Activity #26  3*   Suggested
+ Fri 02/10/2015-Sun 04/10/2015   *Activity #26  4*   Suggested
+ Fri 06/11/2015-Sun 08/11/2015   *Activity #26  5*   Suggested
+=============================== =================== ===========
 <BLANKLINE>
+
+
