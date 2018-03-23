@@ -26,7 +26,7 @@ The following files are important
 
     Most projects have a :xfile:`requirements.txt` file which
     specifies additional requirements (to those specified in the
-    projects :ref:`install_requires`.
+    project's :ref:`install_requires`.
 
 
 Dependencies

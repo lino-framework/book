@@ -13,7 +13,6 @@ to dive *into* Lino.
    polls/index
    lets/index
    models
-   warning
    tables
    layouts/index
    choicelists

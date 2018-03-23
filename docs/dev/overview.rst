@@ -8,15 +8,16 @@ Components of the Lino framework
 Packages
 ========
 
-- Lino : the core framework + the standard plugin library
-  (mod:`lino.modlib`) : users, notify, comments, changes, about, ...
+- :mod:`lino` is the **core framework** which comes with a minimal
+  standard plugin library: users, notification framework, comments,
+  ...
   
-- XL : the Extensions Library : contacts, countries, calendar,
-  accounting, groupware, ... (see :doc:`xl`)
+- :mod:`lino_xl` is the **Extensions Library** : contacts, countries,
+  calendar, accounting, groupware, ... (see :doc:`xl`)
        
-- The :mod:`lino_book` repository
-  contains the docs and a test suite for the Lino framework.
-  The book itself is not published as PyPI package.
+- The :mod:`lino_book` repository contains the docs (i.e. the source
+  code of what you are reading right now) and a test suite for the
+  Lino framework.  The book itself is not published as PyPI package.
   
 - Lino applications covered by the Lino Book:
   
@@ -30,24 +31,11 @@ Packages
     - :ref:`voga` : courses, invoicing, accounting
     - :ref:`amici` : contacts, groups, personal information manager
       
-- Independent Lino applications:
-
-    - :ref:`welfare` : used by Belgian social centres
-  
-- The :ref:`extjs6` project.
-
-- :mod:`atelier` : a collection of utilities maintained by the Lino
+- :mod:`atelier` is a collection of utilities maintained by the Lino
   team and which might be useful to other (non-Lino) Python
   projects. :mod:`projects <atelier.projects>`, :mod:`invlib
   <atelier.invlib>`, :mod:`rstgen <atelier.rstgen>`
   
-- :mod:`commondata` : an experimental project for storing common data
-  as Python code.
-  
-- `algus <https://github.com/lino-framework/algus>`_
-  is a template for new Lino applications
-
-
   
 
   
@@ -103,7 +91,6 @@ Package dependencies
 
     **/
 
-    commondata -> atelier;
     lino -> atelier;
     lino_xl -> lino;
     lino_noi -> lino_xl; 
@@ -111,15 +98,42 @@ Package dependencies
     lino_tera -> lino_xl;
     lino_care -> lino_xl;
     lino_avanti -> lino_xl;
+    lino_voga -> lino_xl;
     
     lino_book -> lino_noi; 
     lino_book -> lino_cosi; 
+    lino_book -> lino_voga; 
     lino_book -> lino_tera; 
     lino_book -> lino_care; 
     lino_book -> lino_avanti; 
+
+    /**
+    
+    commondata -> atelier;
     lino_book -> commondata;
     
     lino_voga -> lino_cosi;
     lino_welfare -> lino_cosi;
+    **/
    }
 
+
+   
+More packages
+=============
+
+- Independent Lino applications:
+
+    - :ref:`welfare` : used by Belgian social centres
+  
+- The :ref:`extjs6` project.
+
+
+- :mod:`commondata` : an experimental project for storing common data
+  as Python code.
+  
+- `algus <https://github.com/lino-framework/algus>`_
+  is a template for new Lino applications
+
+
+   

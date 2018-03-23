@@ -14,10 +14,11 @@ providers should start at :doc:`/admin/index`.
               
    getstarted
    diving
-   about
    framework
    team
    writedocs
+   about
+   reference
    
 
 
@@ -28,6 +29,7 @@ Getting acquaintained
 .. toctree::
    :maxdepth: 1
 
+   warning
    datamig
    application
    summaries

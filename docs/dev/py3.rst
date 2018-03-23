@@ -37,7 +37,7 @@ Method 2 (Ubuntu)
 
 ::
 
-    $ sudo apt-get install python3
+    $ sudo apt install python3
     $ cd ~/virtualenvs
     $ virtualenv -p python3 py3
     
