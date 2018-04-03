@@ -18,9 +18,17 @@ What is a table?
 ================
 
 In a Lino application you don't write only your *models* in Python,
-but also something we call **tables**.  While your *models* describe
-how data is to be *stored in the database*, *tables* describe how data
-is to be *presented to users in tabular form*.
+but also something we call **tables**.
+
+While your *models* describe how data is to be *stored in the
+database*, *tables* describe how data is to be *presented to users*.
+
+Tables are Python class objects which are never instantiated.
+
+A table describes how to display some data in a tabular way, They do
+this in an *abstract* way, i.e. independently of the user interface.
+The same table can be used to render data interactively as a grid
+panel or on a printable document as a table.
 
 Lino's "tables" are roughly equivalent of Django's "views".  With Lino
 you don't need to write views because Lino writes them for you.
@@ -43,10 +51,6 @@ will generate a default table for models that have no table at all.
    model. That's a fundamental difference from Django's concept of the
    `ModelAdmin` class and `Model._meta` options.
 
-To be honest there are also :doc:`virtual tables <vtables>` which have
-no model at all because they get their rows from somewhere else than
-the database, but we can ignore them for now.
-
 Much information about your table is automatically extracted from the
 model: the **columns** correspond to the *fields* of your database
 model.  The **header** of every column is the `verbose_name` of its
@@ -61,7 +65,7 @@ methods: :attr:`order_by <lino.core.tables.AbstractTable.order_by>`,
 :attr:`exclude <lino.core.tables.AbstractTable.exclude>`.
 
 But here is something you cannot express on a Django model: *which*
-columns are to be shown, and their order. This is defined by the
+columns are to be shown, and their order.  This is defined by the
 :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
 attribute, a simple string with a space-separated list of field names.
 
@@ -70,6 +74,7 @@ queryset. For example we set :attr:`hide_sums
 <lino.core.tables.AbstractTable.hide_sums>` to `True` on the ``Books``
 table because otherwise Lino would display a sum for the "published"
 column.
+
 
 
 Exercise
@@ -300,8 +305,23 @@ Other examples
 
 
 
-Summary
-=======
 
-Tables are Python class objects which describe tabular data views in
-an abstract way, i.e. independently of the user interface.
+
+Virtual tables
+==============
+
+Besides *model-based tables* (used to display data from the database
+using its model), Lino has :doc:`virtual tables <vtables>` **virtual
+tables** which have no model because they get their rows from
+somewhere else than the database.
+
+The **rows** of a virtual table are defined by a method
+:meth:`get_data_rows <lino.core.tables.AbstractTable.get_data_rows>`.
+In a *model-based table* this method has a default implementation
+based on the :attr:`model <lino.core.tables.Table.model>` attribute.
+
+:class:`lino.core.tables.AbstractTable` is the base class for 
+:class:`lino.core.tables.Table`  and
+:class:`lino.core.tables.VirtualTable` 
+
+

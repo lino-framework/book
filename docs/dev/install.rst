@@ -131,7 +131,7 @@ Get the sources
 Don't try to install Lino using ``pip install lino`` because that
 would install some very old and obsolete version.  See :ticket:`2347`.
 If you did it before reading this warning, then simply uninstall it
-now (``pip uninstall lino lino-xl``) before going on.
+now (``pip uninstall lino``) before going on.
 
 Create a directory (e.g. :file:`repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
@@ -298,7 +298,7 @@ the first time, you must initialize its database using the
 Now start your browser, point it to http://127.0.0.1:8000/ and you
 should see something like this:
 
-.. image:: hello/hello1.png
+.. image:: install/1.png
 
 Congratulations! Enjoy the first Lino application running on your
 machine!
@@ -307,7 +307,7 @@ machine!
 Exercises
 =========
 
-#.  Log in and play around.
+#.  Sign in and play around.
     
 #.  Check :doc:`/user/basics` and tell us what's missing in that
     document.

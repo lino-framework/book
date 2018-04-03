@@ -18,43 +18,44 @@ As explained in :doc:`settings` and
 contain an instance of the :class:`Site` class .
 
 The :class:`Site` is the base class for representing a "Lino
-application" (and we suppose that you have read :doc:`application`).
-This concept brings an additional level of encapsulation to Django.  A
-:class:`Site` *class* is a kind of a "project template".
+application".  This concept brings an additional level of
+encapsulation to Django.  If you knew Django before Lino, you might
+imagine the :class:`Site` *class* as a kind of a "project template".
+Read :doc:`application` if you wonder why we chose that name.
 
 A `Site` has attributes like :attr:`Site.verbose_name` (the "short"
 user-visible name) and the :attr:`Site.version` which are used by the
 method :meth:`Site.welcome_text`.  It also defines a
-:meth:`Site.startup` method and signals which fire exactly once when
-the application starts up.
+:meth:`Site.startup` method and signals which fire when the
+application starts up.
 
-And then it is designed to be subclassed by the application developer
-(e.g. :class:`lino_book.projects.docs.settings.Site`), then imported into a
-local :xfile:`settings.py`, where a local system administrator may
-subclass it another time.
+The base :class:`Site` *class* is designed to be subclassed by the
+application developer, then imported into a local
+:xfile:`settings.py`, where a local system administrator may subclass
+it another time.
 
 A Lino application starts to "live" when such a :class:`Site` class
-gets **instantiated**.  This instance of your application is then
-stored in the :setting:`SITE` variable of a local
-:xfile:`settings.py`.
+gets **instantiated**.  This instance of your application is stored in
+the :setting:`SITE` variable of a local :xfile:`settings.py`.
 
-Unlike most other Django settings, :setting:`SITE` contains a *Python
-object* which has methods that can be called by application code at
-runtime.
+Django settings usually contain simple values (strings, integers, or
+lists or dictionaries thereof).  But Lino's :setting:`SITE` setting
+contains a *Python object* which has methods that can be called by
+application code at runtime.
 
 
 
 Instantiating a :class:`Site`
 =============================
 
-The first argument of the instantiator (`globals()
-<https://docs.python.org/2/library/functions.html#globals>`__) is the
-global namespace of your settings module.  Lino uses this to fill
-"intelligent default values" to your settings module's global
-namespace.
+The first argument of the instantiator must be the global namespace of
+your settings module (`globals()
+<https://docs.python.org/2/library/functions.html#globals>`__).  Lino
+uses this to fill "intelligent default values" to your settings
+module's global namespace.
 
 In other words, Lino is going to automatically set certain Django
-settings. Including for example :setting:`INSTALLED_APPS` and
+settings.  Including for example :setting:`INSTALLED_APPS` and
 :setting:`DATABASES`.  To be precise, here are these settings:
 
 >>> from lino_book.projects.docs.settings import Site

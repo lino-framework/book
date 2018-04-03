@@ -110,8 +110,8 @@ Now add a :xfile:`manage.py` file with the following content:
 
 .. literalinclude:: manage.py
 
-A :xfile:`manage.py` must do at least two things: it must set the
-:envvar:`DJANGO_SETTINGS_MODULE` environment variable and then call
+A :xfile:`manage.py` does two things: it sets the
+:envvar:`DJANGO_SETTINGS_MODULE` environment variable and then calls
 Django's `execute_from_command_line` function.
 
 This is plain traditional Django know-how.  There are many opinions,
@@ -171,9 +171,9 @@ Loading data from ...
 Installed ... object(s) from ... fixture(s)
 
 
-Lino applications use to make abundant use of what we call *Python
-fixtures* in order to have a rich set of "demo data".  We will come
-back to this in :doc:`/dev/initdb`.
+Lino applications make abundant use of what we call *Python fixtures*
+in order to have a rich set of "demo data".  We will come back to this
+in :doc:`/dev/initdb`.
 
 
 
@@ -252,7 +252,7 @@ Yes, it looks the same as the one you saw in the previous chapter. But
 read on. You can now play around by changing things in your project.
 
 #.  In your :file:`settings.py` file, replace
-    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
+    :mod:`lino_book.projects.min2` by :mod:`lino_book.projects.liina`.
     Run :command:`python manage.py prep` followed by :command:`python
     manage.py runserver`. Log in and play around.
   
@@ -260,9 +260,9 @@ read on. You can now play around by changing things in your project.
 
 #.  Write three descriptions in LibreOffice `.odt` format, one for
     each of the applications you just saw: what it can do, what are
-    the features, what functionalities are missing. Use
-    screenshots. Use a language which can be understood by
-    non-programmers.  Send these documents to your mentor.
+    the features, what functionalities are missing. Use screenshots.
+    Use a language which can be understood by non-programmers.  Send
+    these documents to your mentor.
     
 #.  Read the documentation about the following Site attributes and
     try to change them:

@@ -17,49 +17,12 @@ providers should start at :doc:`/admin/index`.
    framework
    team
    writedocs
+   acquaintained
    about
    reference
    
 
 
-Getting acquaintained
-=====================
-
-
-.. toctree::
-   :maxdepth: 1
-
-   warning
-   datamig
-   application
-   summaries
-   plugins
-   site
-   dump2py
-   site_config
-   online
-   languages
-   i18n
-   menu
-   actors
-   parameters
-   ar
-   virtualfields
-   html
-   custom_actions
-   action_parameters
-   gfks
-   /tutorials/layouts
-   actions
-   mldbc/index
-   plugin_inheritance
-   plugin_cooperation
-   printing
-   cache
-   rendering
-   mti
-   combo/index
-   
 
 Special topics
 ==============
@@ -96,6 +59,7 @@ Drafts
    style
    extjs
    inject_field
+   repair
 
 
 Other
@@ -124,6 +88,7 @@ Other
    django
    tours
    socialauth/index
+   application
 
 
 .. toctree::

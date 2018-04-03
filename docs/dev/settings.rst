@@ -54,7 +54,12 @@ Django will do the equivalent of ``import foo.bar.baz``.
 When we speak about "the :xfile:`settings.py` file", then we actually
 mean the `Django settings module`_.  That's because the filename of a
 Django settings module is often in a file named :xfile:`settings.py`.
-But in reality it can be some arbitrary filename.
+But in reality it can be some arbitrary filename.  For example the
+:envvar:`DJANGO_SETTINGS_MODULE` of :mod:`lino_book.projects.min1` is
+:mod:`lino_book.projects.min1.settings.demo`. This layout is called a
+settings *package*, it is useful when you want to have different
+variants of settings modules.
+
 
 
 
