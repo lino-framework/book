@@ -147,10 +147,10 @@ The output that follows should look like this:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
-`initdb std demo demo2` started on database .../default.db.
+`initdb std demo demo2` started on database .../book/docs/dev/hello/default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino, office, printing, staticfiles, system, users, xl
-  Apply all migrations: sessions
+  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino, office, printing, staticfiles, system, users, xl
+  Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
@@ -164,10 +164,33 @@ Synchronizing apps without migrations:
     Creating table contacts_company
     Creating table contacts_roletype
     Creating table contacts_role
+    Creating table gfks_helptext
+    Creating table cal_remotecalendar
+    Creating table cal_room
+    Creating table cal_priority
+    Creating table cal_eventtype
+    Creating table cal_guestrole
+    Creating table cal_calendar
+    Creating table cal_subscription
+    Creating table cal_task
+    Creating table cal_eventpolicy
+    Creating table cal_recurrentevent
+    Creating table cal_event
+    Creating table cal_guest
     Running deferred SQL...
 Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
-Loading data from ...
+Loading data from .../xl/lino_xl/lib/contacts/fixtures/std.py
+Loading data from .../lino/lino/modlib/gfks/fixtures/std.py
+Loading data from .../xl/lino_xl/lib/cal/fixtures/std.py
+Loading data from .../lino/lino/modlib/users/fixtures/demo.py
+Loading data from .../xl/lino_xl/lib/countries/fixtures/demo.py
+Loading data from .../xl/lino_xl/lib/contacts/fixtures/demo.py
+Loading data from .../xl/lino_xl/lib/cal/fixtures/demo.py
+Loading data from .../lino/lino/modlib/users/fixtures/demo2.py
+Loading data from .../xl/lino_xl/lib/cal/fixtures/demo2.py
 Installed ... object(s) from ... fixture(s)
 
 
