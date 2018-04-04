@@ -182,15 +182,15 @@ Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
-Loading data from .../xl/lino_xl/lib/contacts/fixtures/std.py
-Loading data from .../lino/lino/modlib/gfks/fixtures/std.py
-Loading data from .../xl/lino_xl/lib/cal/fixtures/std.py
-Loading data from .../lino/lino/modlib/users/fixtures/demo.py
-Loading data from .../xl/lino_xl/lib/countries/fixtures/demo.py
-Loading data from .../xl/lino_xl/lib/contacts/fixtures/demo.py
-Loading data from .../xl/lino_xl/lib/cal/fixtures/demo.py
-Loading data from .../lino/lino/modlib/users/fixtures/demo2.py
-Loading data from .../xl/lino_xl/lib/cal/fixtures/demo2.py
+Loading data from .../lino_xl/lib/contacts/fixtures/std.py
+Loading data from .../lino/modlib/gfks/fixtures/std.py
+Loading data from .../lino_xl/lib/cal/fixtures/std.py
+Loading data from .../lino/modlib/users/fixtures/demo.py
+Loading data from .../lino_xl/lib/countries/fixtures/demo.py
+Loading data from .../lino_xl/lib/contacts/fixtures/demo.py
+Loading data from .../lino_xl/lib/cal/fixtures/demo.py
+Loading data from .../lino/modlib/users/fixtures/demo2.py
+Loading data from .../lino_xl/lib/cal/fixtures/demo2.py
 Installed ... object(s) from ... fixture(s)
 
 
