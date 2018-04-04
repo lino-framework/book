@@ -147,7 +147,7 @@ The output that follows should look like this:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
-`initdb std demo demo2` started on database .../book/docs/dev/hello/default.db.
+`initdb std demo demo2` started on database .../hello/default.db.
 Operations to perform:
   Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino, office, printing, staticfiles, system, users, xl
   Apply all migrations: contenttypes, sessions
