@@ -68,6 +68,13 @@ Discovering problems
 
     $ sudo find -type d ! -perm /g=x -exec chmod g+x '{}' +
 
+- Show files which are not *readable* for other group members::
+    
+    $ find ! -perm /g=r
+
+  If this produces some output, you probably want to fix it::
+
+    $ find ! -perm /g=r -exec chmod g+r '{}' +
 
 More general diagnostics:
 

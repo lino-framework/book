@@ -6,8 +6,9 @@ How Lino applications use `setup.py`
 ====================================
 
 
-This document describes a trick which does not depend on Lino and
-which we recommend to use for any Python project.
+This document describes our trick for keeping the metadata about a
+Python package in a single place.  It does not depend on Lino and we
+recommend for any Python project which contains a package.
 
 The :xfile:`setup.py` file
 ==========================
@@ -42,6 +43,10 @@ places.
 Is there a way to have setup information both in a central place
 **and** accessible at runtime?
 
+It is an old problem, and e.g. `Single-sourcing the package version
+<https://packaging.python.org/guides/single-sourcing-package-version/>`__
+describes a series of answers.
+
 
 The solution
 ============
@@ -50,7 +55,6 @@ To solve this problem, we store the setup information in a separate
 file (which we usually name :xfile:`setup_info.py`) and which we
 execute from both our :xfile:`setup.py` and our packages's main
 :xfile:`__init__.py` file.
-
 
 
 .. xfile:: setup_info.py

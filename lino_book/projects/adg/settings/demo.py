@@ -15,6 +15,7 @@ class Site(Site):
     languages = "en de fr"
 
     # default_ui = 'lino_extjs6.extjs6'
+    
 
 SITE = Site(globals())
 

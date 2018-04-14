@@ -1,8 +1,12 @@
-.. _eidreader:
+.. _eidreader.java:
 
 ====================
 The EIDReader applet
 ====================
+
+.. note:: this project is deprecated because Java is no longer
+          supported in browsers.  An alternative solution is
+          :ref:`eidreader`.
 
 **International eID card reader**
 
