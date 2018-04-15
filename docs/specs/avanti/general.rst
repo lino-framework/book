@@ -24,18 +24,18 @@ List of demo users:
 
 >>> rt.show(rt.actors.users.Users)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-========== =============== ============ ===========
- Username   User type       First name   Last name
----------- --------------- ------------ -----------
- audrey     Auditor
- laura      Teacher         Laura        Lieblig
- martina    Coordinator
- nathalie   Social worker
- robin      Administrator   Robin        Rood
- rolf       Administrator   Rolf         Rompen
- romain     Administrator   Romain       Raffault
- sandra     Secretary
-========== =============== ============ ===========
+========== ===================== ============ ===========
+ Username   User type             First name   Last name
+---------- --------------------- ------------ -----------
+ audrey     300 (Auditor)
+ laura      100 (Teacher)         Laura        Lieblig
+ martina    400 (Coordinator)
+ nathalie   200 (Social worker)
+ robin      900 (Administrator)   Robin        Rood
+ rolf       900 (Administrator)   Rolf         Rompen
+ romain     900 (Administrator)   Romain       Raffault
+ sandra     410 (Secretary)
+========== ===================== ============ ===========
 <BLANKLINE>
 
 

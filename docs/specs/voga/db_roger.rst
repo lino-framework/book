@@ -62,7 +62,7 @@ The database structure
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        129
  finan.JournalEntry         finan.FinancialVouchers        14        0

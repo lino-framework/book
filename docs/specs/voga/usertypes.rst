@@ -1,14 +1,11 @@
+.. doctest docs/specs/voga/usertypes.rst
 .. _voga.specs.profiles:
 
 =============
 User types
 =============
 
-.. To run only this test::
-
-    $ doctest docs/specs/voga/usertypes.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.roger.settings.doctests')
@@ -64,7 +61,7 @@ users.UserTypes.admin:900
 Monique is a secretary.   
 
 >>> print(rt.login('monique').user.user_type)
-Secretary
+200 (Secretary)
 
 >>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -100,7 +97,7 @@ Secretary
 Marianne is a "simple user".
 
 >>> print(rt.login('marianne').user.user_type)
-User
+100 (User)
 
 >>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF

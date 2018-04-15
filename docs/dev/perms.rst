@@ -121,13 +121,13 @@ them "types", but it will take some time to change all internal names
 from "profile" to "type".
 
 >>> rt.show('users.Users', column_names="username user_type")
-========== ===============
+========== =====================
  Username   User type
----------- ---------------
- rando      Administrator
- robin      Administrator
- romain     Administrator
-========== ===============
+---------- ---------------------
+ rando      900 (Administrator)
+ robin      900 (Administrator)
+ romain     900 (Administrator)
+========== =====================
 <BLANKLINE>
 
 

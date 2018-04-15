@@ -104,16 +104,16 @@ Users
 =====
 
 >>> rt.show('users.UsersOverview')
-========== ================== ==========
- Username   User type          Language
----------- ------------------ ----------
- jean       Senior developer   en
- luc        Developer          en
- mathieu    Consultant         en
- robin      Administrator      en
- rolf       Administrator      de
- romain     Administrator      fr
-========== ================== ==========
+========== ======================== ==========
+ Username   User type                Language
+---------- ------------------------ ----------
+ jean       490 (Senior developer)   en
+ luc        400 (Developer)          en
+ mathieu    200 (Consultant)         en
+ robin      900 (Administrator)      en
+ rolf       900 (Administrator)      de
+ romain     900 (Administrator)      fr
+========== ======================== ==========
 <BLANKLINE>
 
 

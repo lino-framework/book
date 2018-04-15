@@ -188,7 +188,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Notizarten : 4
 - Konfigurierung --> Büro --> Ereignisarten : 2
 - Konfigurierung --> Büro --> Upload-Arten : 1
-- Konfigurierung --> Büro --> Auszugsarten : 15
+- Konfigurierung --> Büro --> Auszugsarten : 16
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 5
 - Explorer --> System --> Datenbankmodelle : 78

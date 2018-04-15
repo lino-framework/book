@@ -244,11 +244,11 @@ The output should be as follows:
 
 >>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
-========== =============== ============ ===========
- Username   User type       First name   Last name
----------- --------------- ------------ -----------
- robin      Administrator   Robin        Rood
-========== =============== ============ ===========
+========== ===================== ============ ===========
+ Username   User type             First name   Last name
+---------- --------------------- ------------ -----------
+ robin      900 (Administrator)   Robin        Rood
+========== ===================== ============ ===========
 
 Or you can see the list of countries:
 
