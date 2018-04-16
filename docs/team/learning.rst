@@ -24,6 +24,9 @@ Python
 
 - We try to follow the `Django coding style
   <https://docs.djangoproject.com/en/1.11/internals/contributing/writing-code/coding-style/>`__
+
+- `Python Debugging With Pdb
+  <https://realpython.com/python-debugging-pdb>`__ by Nathan Jennings.
   
 
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
