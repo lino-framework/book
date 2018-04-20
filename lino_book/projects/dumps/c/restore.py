@@ -81,6 +81,7 @@ def main(args):
     execfile("dumps_foo_1.py", *args)
     execfile("dumps_foo_2.py", *args)
     loader.finalize()
+    logger.info("Loaded %d objects", loader.count_objects)
     call_command('resetsequences')
 
 if __name__ == '__main__':

@@ -37,6 +37,8 @@ No data to display
  *Mr Andreas Arens* (Person)                           phone:+32 87**123**456
  *Mrs Annette Arens* (Person)                          phone:+32 87**123**457
  *Mrs Dorothée Dobbelstein-Demeulenaere* (Person)      id:123
+ *+32 87123456* (Contact detail)                       value:+32 87**123**456
+ *+32 87123457* (Contact detail)                       value:+32 87**123**457
  *Diner (09.05.2015 13:30)* (Calendar entry)           id:123
  *SLS 9.2* (Movement)                                  id:123
  *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Patient)   id:123
