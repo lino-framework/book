@@ -11,7 +11,7 @@ specifications.  This section is far from being complete.
 
 .. toctree::
    :maxdepth: 1
-  
+
    cv
    cal
    contacts
@@ -24,6 +24,7 @@ specifications.  This section is far from being complete.
    printing
    html
    human
+   beid
    checkdata
    countries
    gfks
