@@ -271,3 +271,24 @@ Residence types
     Belgian NISSes are stored including the formatting characters (see
     :mod:`lino.utils.ssin`) in order to guarantee uniqueness.
            
+
+
+
+Tests
+=====
+
+The :attr:`national_id <lino_xl.lib.beid.BeIdCardHolder.national_id>`
+field of a client. It nullable and unique: it can be empty, but must
+be empty when it isn't.
+
+>>> fld = rt.models.avanti.Client._meta.get_field('national_id')
+>>> print(fld.help_text)
+The SSIN. It is a nullable char field declared unique. It
+is not validated directly because that would cause problems
+with legacy data where SSINs need manual control. See also
+BeIdCardHolderChecker.
+
+>>> print(fld.null)
+True
+>>> print(fld.unique)
+True
