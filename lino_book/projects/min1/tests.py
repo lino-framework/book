@@ -221,7 +221,7 @@ Estonia''')
         
         """
         # User 1
-        SiteConfigs = settings.SITE.modules.system.SiteConfigs
+        SiteConfigs = settings.SITE.models.system.SiteConfigs
         elem = SiteConfigs.get_row_by_pk(None, settings.SITE.config_id)
         self.assertEqual(elem.next_partner_id,
                          contacts.PARTNER_NUMBERS_START_AT + 2)
