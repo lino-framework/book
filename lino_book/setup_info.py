@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2018 Luc Saffre
+# Copyright 2009-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
@@ -20,6 +20,7 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
+        'eidreader',
         'social-auth-app-django',
         'lino_cosi',
         'lino_noi',
