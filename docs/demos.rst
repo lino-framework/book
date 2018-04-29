@@ -7,9 +7,7 @@ Demo sites
 This page lists some examples of Lino applications.  These demo
 databases contain fictive data.  All names of persons are generated.
 You may edit according to the user permissions, but any changes will
-be lost each time we reinitialize the demo data.  The :ref:`demos`
-have any Java functionality (:ref:`davlink` and :ref:`eidreader`)
-switched off to avoid browser questions.
+be lost each time we reinitialize the demo data.
 
 .. _belref: http://belref.lino-framework.org
 .. _demo1: http://demo1.lino-framework.org

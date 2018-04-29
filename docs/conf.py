@@ -339,7 +339,7 @@ extlinks.update({
 })
 
 
-intersphinx_mapping = {}
+# intersphinx_mapping = {}
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # if on_rtd:
@@ -349,13 +349,14 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 #         intersphinx_mapping[n] = (
 #             'http://%s.readthedocs.org/en/latest/' % n, None)
 
-if on_rtd:
+if False:  # on_rtd:
     for n in """python django lino xl""".split():
         intersphinx_mapping[n] = ('http://%s.readthedocs.io/en/latest/' % n, None)
 
 
 from atelier.sphinxconf import interproject
-interproject.configure(globals(), 'atelier etgen eidreader lino_noi lino_cosi')
+interproject.configure(
+    globals(), 'atelier etgen eidreader lino_noi lino_cosi')
 
 autosummary_generate = True
 
