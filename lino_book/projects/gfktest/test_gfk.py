@@ -1,6 +1,9 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
+
+# go gfktest
+# python manage.py test
 
 from __future__ import unicode_literals
 from builtins import str
@@ -43,8 +46,8 @@ class TestCase(TestCase):
             for f in settings.SITE.kernel.GFK_LIST]
         self.assertEqual(gfklist, [
             (Comment, 'owner_id', 'owner_type'),
-            (Note, 'owner_id', 'owner_type'),
-            (Memo, 'owner_id', 'owner_type')])
+            (Memo, 'owner_id', 'owner_type'),
+            (Note, 'owner_id', 'owner_type')])
 
         def create_objects():
             mbr = Member(name="John",id=1)
