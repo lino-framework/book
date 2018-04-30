@@ -40,6 +40,7 @@ def objects():
         country_id="BE", vat_id="BE12 3456 7890")
     yield obj
     settings.SITE.site_config.update(site_company=obj)
+    yield settings.SITE.site_config
 
     yield named(Product, _("Group therapy"), sales_price=30)
     indacc = named(
