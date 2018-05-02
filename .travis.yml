@@ -4,7 +4,7 @@ python:
   - 3.6
   
 env:
-  - DJANGO<2
+  - DJANGO=1.11.13
   
 before_install:
   - # sudo add-apt-repository -y ppa:libreoffice/ppa
