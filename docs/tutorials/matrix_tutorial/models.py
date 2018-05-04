@@ -33,10 +33,10 @@ class Entry(UserAuthored):
         verbose_name_plural = _("Entries")
         
     date = models.DateField(_("Date"))
-    entry_type = models.ForeignKey(EntryType)
+    entry_type = dd.ForeignKey(EntryType)
     subject = models.CharField(_("Subject"), blank=True, max_length=200)
     body = dd.RichTextField(_("Body"), blank=True)
-    company = models.ForeignKey('contacts.Company')
+    company = dd.ForeignKey('contacts.Company')
 
 
 class Entries(dd.Table):
@@ -51,14 +51,14 @@ class Entries(dd.Table):
     subject
     """
     parameters = mixins.ObservedDateRange(
-        entry_type=models.ForeignKey(
+        entry_type=dd.ForeignKey(
             EntryType, blank=True, null=True,
             help_text=_("Show only entries of this type.")),
-        company=models.ForeignKey(
+        company=dd.ForeignKey(
             'contacts.Company',
             blank=True, null=True,
             help_text=_("Show only entries of this company.")),
-        user=models.ForeignKey(
+        user=dd.ForeignKey(
             settings.SITE.user_model,
             blank=True, null=True,
             help_text=_("Show only entries by this user.")))
