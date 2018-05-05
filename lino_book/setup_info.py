@@ -20,7 +20,7 @@ SETUP_INFO = dict(
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
-        'eidreader',
+        # 'eidreader',
         'social-auth-app-django',
         'lino_cosi',
         'lino_noi',
