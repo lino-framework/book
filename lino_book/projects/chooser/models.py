@@ -148,7 +148,7 @@ class Contact(dd.Model):
     def city_choices(cls, country):
         if country is not None:
             return country.city_set.order_by('name')
-        return cls.city.field.rel.model.objects.order_by('name')
+        return cls.city.field.remote_field.model.objects.order_by('name')
 
     @classmethod
     def food_choices(cls, year_in_school):
