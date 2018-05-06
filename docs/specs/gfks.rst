@@ -30,7 +30,12 @@ List of models which inherit from :class:`Controllable
 cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Note notify.Message
 
 >>> obj = contacts.Person.objects.all()[0]
->>> gfk2lookup(notes.Note.owner, obj)
+>>> d = gfk2lookup(notes.Note.owner, obj)
+>>> d['owner_type']
+<ContentType: Person>
+>>> d['owner_id']
+201
+
 {'owner_type': <ContentType: Person>, 'owner_id': 201}
 
 If the object has a non-integer primary key, then it cannot be target

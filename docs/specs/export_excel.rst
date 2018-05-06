@@ -105,7 +105,9 @@ start_date end_date observed_event state user assigned_to project event_type roo
 >>> print(res.status_code)
 200
 >>> result = json.loads(res.content.decode())
->>> list(result.keys()) == ['open_url', 'success']
+>>> len(result)
+2
+>>> result['success']
 True
 >>> print(result['open_url'])
 /media/cache/appyxlsx/127.0.0.1/cal.MyEntries.xlsx
