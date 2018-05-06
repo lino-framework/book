@@ -1,5 +1,6 @@
+====================
 Links to other sites
---------------------
+====================
 
 .. glossary::
   :sorted:
@@ -37,3 +38,12 @@ Links to other sites
     See http://pypi.python.org/pypi/lino/1.4.0
   
   
+
+.. _eidreader:
+
+eidreader
+=========
+
+See http://eidreader.lino-framework.org/
+
+See also :ref:`eidreader.java`.
