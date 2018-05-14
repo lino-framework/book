@@ -5,10 +5,19 @@ Start your own developer blog
 =============================
 
 This section explains what a **developer blog** is, why you need it,
-and how you do it.
+why *we* need it, and how you do it.
+
+
 
 Documenting what you do
 =======================
+
+The basic idea of a developer blog is that you **leave a trace** about
+what you have been doing, and that this trace is accessible in a
+**public place** to everybody, including future contributors who might
+want to explore **why you have been doing** things the way you did
+them.  When you work on a free software project, documenting what you
+do is more important than actually doing it.
 
 The daily work of a software developer includes things like modifying
 source code, pushing changes to public repositories, writing comments
@@ -17,41 +26,59 @@ technologies, contributing to other projects...
 
 In your developer blog you simply describe what you are doing. You
 report about your daily work in order to share your experiences, your
-know-how, your successes, your mistakes and your stumblings.  Day by
+know-how, your successes, your failures and your stumblings.  Day by
 day. Using plain English language. It is your diary.
 
-The basic idea of a developer blog is that you **leave a trace** about
-what you have been doing, and that this trace is in a **central
-place**.
+
+
+How to document what you do
+===========================
+
+You should begin privately without going public.  My first developer
+blog was a simple plain text file (one per month) where I simply noted
+every code change for myself.  
+
+That's because in the beginning
+
+If you don't dare going public right now, then do it locally and keep
+it like a private notebook for yourself.
 
 A developer blog **does not need** to be cool, exciting, popular or
 easy to follow.  It **should rather be**:
 
-- *complete* (e.g. not forget to mention any important code
-  change you did) and 
-- *concise* (avoid re-explaining things that are explained somewhere
-  else) 
-- *understandable* (use references to point to these other places) so
-  that anybody with enough time and motivation has a chance to follow.
+- **complete** (e.g. not forget to mention any important code
+  change you did)
+- **concise** (e.g. avoid re-explaining things that are explained somewhere
+  else)
+- **understandable** (e.g. use references to point to these other
+  places so that anybody with enough time and motivation has a chance
+  to follow).
+
+Note that these qulities are listed in order of difficulty.  Being
+complete is rather easy and just a question of motivation.  It takes
+some exercise to stay concise without becoming incomplete.  And being
+understandable takes even more time.  I often just try to be
+understandable at least to myself.  It happens quite often that I want
+to know why I did some change one year ago, and that I am amazed about
+how much I forgot during this year.
 
 Your blog is a diary, but keep in mind that it is **public**. The
-usual rules apply: don't disclose any passwords or private data.
-Respect other people's privacy.  Don't quote other author's words
-without naming them. Reference your sources of information.
+usual rules apply:
 
-A developer blog can be the easiest way to ask for help in
+- Don't disclose any passwords or private data.
+- Respect other people's privacy.
+- Don't quote other author's words without naming them.
+- Reference your sources of information.
+
+A public developer blog can be the easiest way to ask for help in
 complex cases which need screenshots, links, sections etc.
-
-Our collaboration workflow The developer blog fits into the :cmd:`inv
-ci` command knows where your developer blog is and generates a commit
-message which points to today's blog entry.
 
 
 Luc's blogging system
 =====================
 
-You probably know already one example of a developer blog, namely
-`Luc's developer blog <http://luc.lino-framework.org>`_.  The
+You probably know already one example of a public developer blog,
+namely `Luc's developer blog <http://luc.lino-framework.org>`_.  The
 remaining sections describe how you can use Luc's system for your own
 blog.
 
@@ -75,12 +102,7 @@ It is based on `Sphinx <http://sphinx-doc.org/>`_ which is the
 established standard for Python projects. This has the advantage that
 your blog has the same syntax as your docstrings.
 
-It does *not* have a way for followers to "subscribe". This is because
-they can subscribe to your commits to your code repositories anyway,
-and because there are monitoring tools which they can use to get
-notified when your blog changes (e.g. `5 Free Tools To Notify You of
-Website Content Changes
-<http://www.hongkiat.com/blog/detect-website-change-notification/>`__)
+Followers can subscribe to it using an RSS reader.
 
 
 "Blog" versus "Documentation tree"
@@ -89,7 +111,7 @@ Website Content Changes
 Luc's blogging system uses *daily* entries (maximum one blog entry per
 day), and is part of some Sphinx documentation tree.
 
-So don't mix up "a blog" with "a documentation tree".  You will
+But don't mix up "a blog" with "a documentation tree".  You will
 probably maintain only one *developer blog*, but you will maintain
 many different *documentation trees*.  Not every documentation tree
 contains a blog.

@@ -1,3 +1,5 @@
+.. _writedocs:
+
 =====================
 Writing documentation
 =====================
@@ -6,7 +8,6 @@ Writing documentation
    :maxdepth: 1
 
    builddocs
-   devblog
    doctests
    docstrings
 

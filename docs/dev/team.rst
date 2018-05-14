@@ -8,6 +8,7 @@ Working with others
 .. toctree::
    :maxdepth: 1
 
+   devblog
    runtests
    contrib
    patch
