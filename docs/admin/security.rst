@@ -4,35 +4,33 @@
 Security of Lino applications
 =============================
 
+When your Lino site is publicly accessible via Internet you should
+care about potential security issues.
+
+Checklist
+=========
+
+- Make sure that :setting:`DEBUG` is set to `False`.
+
+- Make sure that :attr:`use_ipdict <lino.core.site.Site.use_ipdict>` is
+  set to `True` in order to prevent brute force attacks.
+
+- Activate `Clickjacking protection`_ (see below).
 
 
-Brute force attacks
-===================
-
-To prevent brute force attacks,
-:attr:`lino.core.site.Site.use_ipdict` should be set to `True`.
-
-
-Clickjacking attacks
-====================
+Clickjacking protection
+=======================
 
 To prevent clickjacking attacks (at least in modern browsers), you can
 activate Django's built-in `Clickjacking protection
 <https://docs.djangoproject.com/en/1.11/ref/clickjacking/>`__.
 
-Simply add the following line to the end of your :xfile:`settings.py`
-file (it must be **after** initializing the :setting:`SITE`)::
+To activate clickjacking protection, you simply add the following line
+to the end of your :xfile:`settings.py` file::
 
     MIDDLEWARE_CLASSES += (
         'django.middleware.clickjacking.XFrameOptionsMiddleware',)
 
-      
-Lino still uses `MIDDLEWARE_CLASSES
-<https://docs.djangoproject.com/en/1.11/ref/settings/#middleware-classes>`__
-instead of :setting:`MIDDLEWARE`.
-We should probably upgrade all Lino
-middleware to the new middleware style.
-See also 
-https://docs.djangoproject.com/en/1.11/topics/http/middleware/#upgrading-middleware
-
-
+Note that you must to this *after* initializing the :setting:`SITE`
+because Lino sets the :setting:`MIDDLEWARE_CLASSES` setting during
+site initialization.
