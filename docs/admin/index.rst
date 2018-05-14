@@ -31,6 +31,7 @@ Installation
     xl
     oood
     notify
+    security
 
 Maintenance
 -----------
