@@ -29,9 +29,10 @@ But keep in mind: when you develop or maintain a software used by
 people who pay you for this job, documenting *what you change* and
 *why you change it* is more important than actually fixing their
 problem.  My first developer blog was a simple plain text file (one
-per month) where I noted every code change for my own reference. It
-happens quite often that I want to know why I did some change one year
-ago.  And I am often amazed about how much I forgot during one year.
+per month) where I noted every code change for my own reference.  It
+happens surprisingly often that I want to know why I did some change
+one year ago.  And I was often amazed about how many things both my
+customers and I were able to forgot during one year.
 
 In the beginning you should not publish your blog because every human
 has a natural shyness which would disturb your learning process.
