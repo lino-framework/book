@@ -722,7 +722,7 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | site            | Site            | Select a site if you want to see only tickets for this site.     |
 +-----------------+-----------------+------------------------------------------------------------------+
-| has_site        | Has site        |                                                                  |
+| has_site        | Has site        | Show only (or hide) tickets which have a site assigned.          |
 +-----------------+-----------------+------------------------------------------------------------------+
 | state           | State           | Only rows having this state.                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
