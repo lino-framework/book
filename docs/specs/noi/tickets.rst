@@ -48,9 +48,6 @@ What is a ticket?
 
         The user who is working on this ticket.
 
-        If this field is empty and :attr:`project` is not empty, then
-        default value is taken from :attr:`Project.assign_to`.
-
     .. attribute:: state
 
         The state of this ticket. See :class:`TicketStates
@@ -124,7 +121,7 @@ What is a ticket?
     .. attribute:: reporting_type
 
         An indication about who is going to pay for work on this
-        project.  See :class:`ReportingTypes`.
+        site.  See :class:`ReportingTypes`.
 
 
 
@@ -274,58 +271,6 @@ Active state versus show_in_todo
 
 
 
-Projects
-========
-
-The :attr:`project <lino_xl.lib.tickets.models.Ticket.project>` of a
-ticket is used to specify "who is going to pay" for it. Lino Noi does
-not issue invoices, so it uses this information only for reporting
-about it and helping with the decision about whether and how worktime
-is being invoiced to the customer.  But the invoicing itself is not
-currently a goal of Lino Noi.
-
-So a **project** is something for which somebody is possibly willing
-to pay money.
-
->>> rt.show(tickets.Projects)
-=========== =============== ======== =============== =========
- Reference   Name            Parent   Organization    Private
------------ --------------- -------- --------------- ---------
- docs        Documentatión   linö     welsch          No
- linö        Framewörk                Rumma & Ko OÜ   No
- research    Research        docs     pypi            No
- shop        Shop                     Rumma & Ko OÜ   No
- téam        Téam            linö     welket          Yes
-=========== =============== ======== =============== =========
-<BLANKLINE>
-
-
->>> rt.show(tickets.TopLevelProjects)
-=========== =========== ======== ================
- Reference   Name        Parent   Children
------------ ----------- -------- ----------------
- linö        Framewörk            *téam*, *docs*
- shop        Shop
-=========== =========== ======== ================
-<BLANKLINE>
-
-
-
-Distribution of tickets per project
-===================================
-
-In our demo database, tickets are distributed over the different
-projects as follows (not a realistic distribution):
-
->>> for p in tickets.Project.objects.all():
-...     print(u'{} {}'.format(p.ref, p.tickets_by_project.count()))
-linö 23
-téam 23
-docs 23
-research 23
-shop 22
-
-
 
 Private tickets
 ===============
@@ -459,10 +404,16 @@ Sites
 =====
 
 Lino Noi has a list of "sites".  A site is a place where work is being
-done.  This can be a concrete site on a server with a domain name, but
-actually it can be anything your team decided to use for classifying
-their tickets into groups.  The site basically will decide who is
-going to pay for your work (and how).
+done.  This can be a concrete website on a server with a domain name,
+but actually it can be anything your team uses for grouping their
+tickets into more long-term "tasks" or "projects".
+
+The site of a ticket also indicates "who is going to pay" for it.
+Lino Noi does not issue invoices, so it uses this information only for
+reporting about it and helping with the decision about whether and how
+worktime is being invoiced to the customer.
+
+Here is a list of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
 ============= ======== ================ ======== ========== ====
@@ -500,14 +451,17 @@ can see a list of tickets which have not yet been assigned to a site:
 <BLANKLINE>
 
 
-When a ticket is site-specific, we simply assign the `site` field.  We
-can see all local tickets for a given site object:
+The :class:`TicketsBySite` panel shows all the tickets for a given
+site object.  Its default view is a summary:
 
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
 New : `#97 <Detail>`__, `#73 <Detail>`__, `#49 <Detail>`__, `#25 <Detail>`__, `#1 <Detail>`__
 Open : `#115 <Detail>`__, `#91 <Detail>`__, `#67 <Detail>`__, `#43 <Detail>`__, `#19 <Detail>`__
+
+When you open the panel in its own window, you can see the underlying
+table:
 
 >>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
@@ -527,10 +481,10 @@ Open : `#115 <Detail>`__, `#91 <Detail>`__, `#67 <Detail>`__, `#43 <Detail>`__, 
 ========== =============================================================== ==========
 <BLANKLINE>
 
-
 Note that the above table shows no state change actions in the
-Workflow column because it is being requested by anonymous. For an
-authenticated developer it looks like this:
+`Workflow` column.  That's because in this doctest it is being
+requested by anonymous. For an authenticated developer it looks like
+this:
 
 >>> rt.login('luc').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
@@ -561,8 +515,8 @@ group of people are working for preparing this.  In Scrum this is
 called a sprint.
 
 A typical case of a milestone is an upgrade of the software that is
-running on a given site.  A milestone is not necessary an *official*
-release of a new version.
+running on a given website.  A milestone is not necessary an
+*official* release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
