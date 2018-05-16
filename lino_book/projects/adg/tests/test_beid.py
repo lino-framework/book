@@ -58,10 +58,7 @@ class BeIdTests(RemoteAuthTestCase):
             'lino.core.auth.middleware.AuthenticationMiddleware',
             'lino.core.auth.middleware.WithUserMiddleware',
             'lino.core.auth.middleware.RemoteUserMiddleware',
-            'lino.utils.ajax.AjaxExceptionResponse',
-            'django.middleware.security.SecurityMiddleware',
-            'django.middleware.clickjacking.XFrameOptionsMiddleware',
-            'django.middleware.csrf.CsrfViewMiddleware'))
+            'lino.utils.ajax.AjaxExceptionResponse'))
 
         u = users.User(username='robin',
                        user_type=UserTypes.admin,

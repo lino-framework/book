@@ -1,3 +1,4 @@
+.. doctest docs/specs/ajax.rst
 .. _book.specs.ajax:
 .. _cosi.tested.bel_de:
 
@@ -5,11 +6,7 @@
 Refusing permission to an anonymous request
 ===========================================
 
-.. to test only this document:
-
-    $ doctest docs/specs/ajax.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.apc.settings.sestests')
@@ -50,9 +47,6 @@ django.contrib.sessions.middleware.SessionMiddleware
 lino.core.auth.middleware.AuthenticationMiddleware
 lino.core.auth.middleware.WithUserMiddleware
 lino.utils.ajax.AjaxExceptionResponse
-django.middleware.security.SecurityMiddleware
-django.middleware.clickjacking.XFrameOptionsMiddleware
-django.middleware.csrf.CsrfViewMiddleware
 
 >>> 'django.contrib.sessions' in settings.INSTALLED_APPS
 True

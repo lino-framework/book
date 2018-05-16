@@ -45,10 +45,7 @@ class QuickTest(RemoteAuthTestCase):
                 'lino.core.auth.middleware.AuthenticationMiddleware',
                 'lino.core.auth.middleware.WithUserMiddleware',
                 'lino.core.auth.middleware.RemoteUserMiddleware',
-                'lino.utils.ajax.AjaxExceptionResponse',
-                'django.middleware.security.SecurityMiddleware',
-                'django.middleware.clickjacking.XFrameOptionsMiddleware',
-                'django.middleware.csrf.CsrfViewMiddleware'))
+                'lino.utils.ajax.AjaxExceptionResponse'))
             # settings.MIDDLEWARE_CLASSES, (
             #     'django.middleware.common.CommonMiddleware',
             #     'django.middleware.locale.LocaleMiddleware',
