@@ -50,6 +50,10 @@ django.contrib.sessions.middleware.SessionMiddleware
 lino.core.auth.middleware.AuthenticationMiddleware
 lino.core.auth.middleware.WithUserMiddleware
 lino.utils.ajax.AjaxExceptionResponse
+django.middleware.security.SecurityMiddleware
+django.middleware.clickjacking.XFrameOptionsMiddleware
+django.middleware.csrf.CsrfViewMiddleware
+
 >>> 'django.contrib.sessions' in settings.INSTALLED_APPS
 True
 

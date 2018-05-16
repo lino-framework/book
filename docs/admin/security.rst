@@ -15,22 +15,11 @@ Checklist
 - Make sure that :attr:`use_ipdict <lino.core.site.Site.use_ipdict>` is
   set to `True` in order to prevent brute force attacks.
 
-- Activate `Clickjacking protection`_ (see below).
+- Make sure that :attr:`use_security_features
+  <lino.core.site.Site.use_security_features>` is set to `True` in
+  order to activate general security features.
 
+- Consider enabling `HTTP Strict Transport Security
+  <https://docs.djangoproject.com/en/1.11/ref/middleware/#http-strict-transport-security>`__ by setting
+  :setting:`SECURE_HSTS_SECONDS` to a non-zero integer value.
 
-Clickjacking protection
-=======================
-
-To prevent clickjacking attacks (at least in modern browsers), you can
-activate Django's built-in `Clickjacking protection
-<https://docs.djangoproject.com/en/1.11/ref/clickjacking/>`__.
-
-To activate clickjacking protection, you simply add the following line
-to the end of your :xfile:`settings.py` file::
-
-    MIDDLEWARE_CLASSES += (
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',)
-
-Note that you must to this *after* initializing the :setting:`SITE`
-because Lino sets the :setting:`MIDDLEWARE_CLASSES` setting during
-site initialization.
