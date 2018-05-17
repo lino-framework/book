@@ -81,11 +81,6 @@ lino_book.projects.tables.desktop.Books
 True
 
 
-Model tables
-============
-
-A **model table** is a table that gets its data from a database model.
-
 There can be more than one table for a given model, but each table has
 exactly one model as its data source.  That model is specified in the
 :attr:`model <lino.core.dbtables.Table.model>` attribute of the table.
@@ -110,8 +105,8 @@ methods: :attr:`order_by <lino.core.tables.AbstractTable.order_by>`,
 :attr:`exclude <lino.core.tables.AbstractTable.exclude>`.
 
 But here is something you cannot express on a Django model: *which*
-columns are to be shown, and their order.  This is defined by the
-:attr:`column_names <lino.core.tables.AbstractTable.column_names>`
+columns are to be shown, and how they are ordered.  This is defined by
+the :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
 attribute, a simple string with a space-separated list of field names.
 
 Tables can hold information which goes beyond a model or a
@@ -136,10 +131,9 @@ models in your :file:`models.py` file, but in that case your
 application has no chance to support :ref:`responsive design
 <lino.dev.design>`.
 
-A table is the pythonic definition of a tabular view.  As a rule of
-thumb you can say that you need one table for every *grid view* used
-in your application. Each table is a subclass of :class:`dd.Table
-<lino.core.dbtables.Table>`.
+As a rule of thumb you can say that you need one table for every *grid
+view* used in your application. Each table is a subclass of
+:class:`dd.Table <lino.core.dbtables.Table>`.
 
 To define tables, you simply need to declare their classes.  Lino
 discovers and analyzes them when it initializes.  Tables never get
