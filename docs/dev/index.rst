@@ -33,9 +33,8 @@ Special topics
    /specs/projects/mti
    /specs/projects/nomti
    watch
+   matrix/index
    /tutorials/workflows_tutorial/index
-   /tutorials/matrix_tutorial/index
-
    /tutorials/input_mask/index
 
 
@@ -94,7 +93,6 @@ Other
 .. toctree::
    :hidden:
 
-   tables
    fields
    ad
    dd

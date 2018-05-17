@@ -1,15 +1,11 @@
-.. doctest docs/dev/tables.rst
+.. doctest docs/dev/tables/index.rst
 .. _lino.tutorial.tables:
 
 =========================
 Introduction to tables
 =========================
 
-..
-    >>> from lino import startup
-    >>> startup('lino_book.projects.tables.settings')
-    >>> from lino.api.doctest import *
-    
+   
 .. contents::
     :depth: 1
     :local:
@@ -17,29 +13,78 @@ Introduction to tables
 What is a table?
 ================
 
-In a Lino application you don't write only your *models* in Python,
-but also something we call **tables**.
+A **table** displays some data in a tabular way, using cells that are
+arranged in rows and columns.
 
-While your *models* describe how data is to be *stored in the
-database*, *tables* describe how data is to be *presented to users*.
+In a Lino application you describe tables using Python classes.  These
+Python classes are a *general* description of how to lay out your data
+and can be used for different user interfaces.  The same table
+description is used to render data interactively as a grid panel or on
+a printable document as a table.
 
-Tables are Python class objects which are never instantiated.
-
-A table describes how to display some data in a tabular way, They do
-this in an *abstract* way, i.e. independently of the user interface.
-The same table can be used to render data interactively as a grid
-panel or on a printable document as a table.
+Don't mix up *models* and *tables*: while your *models* describe how
+data is to be *stored in the database*, your *tables* describe how
+data is to be *presented to users*.
 
 Lino's "tables" are roughly equivalent of Django's "views".  With Lino
 you don't need to write views because Lino writes them for you.
-Actually a Lino table corresponds only to one class of Django's views,
+Actually a Lino table corresponds only to one type of Django's views,
 sometimes referred to as "tabular" or "list" views. The other class of
 views are "detail" views, for which you are going to define
-:doc:`Layouts <layouts/index>` (we'll talk about these later).
+:doc:`Layouts </dev/layouts/index>` (we'll talk about these later).
+
+In Lino we differentiate between **database tables** and **virtual
+tables**.  *Database tables* get their data directly from the database
+using a Django model.  Virtual tables have no model, they get their
+data programmatically.
+
+Implementation note: *database tables* are subclasses of
+:class:`lino.core.dbtables.Table` (generally imported via its shortcut
+:mod:`dd.Table <lino.api.dd>`), *virtual tables* are subclasses of
+:class:`lino.core.tables.VirtualTable` (generally imported via its
+shortcut :mod:`dd.VirtualTable <lino.api.dd>`).  The classes have a
+common abstract base class :class:`lino.core.tables.AbstractTable`.
+
+The remainder of this tutorial concentrates on
+*database tables*, :doc:`virtual tables </dev/vtables>` have a
+tutorial on their own.
+     
+
+Illustration
+============
+     
+To illustrate this, we will have a look at the
+:mod:`lino_book.projects.tables` demo application.
+
+Here are the **database models**:
+
+.. literalinclude:: ../../../lino_book/projects/tables/models.py
+
+And here are the **tables**:
+
+.. literalinclude:: ../../../lino_book/projects/tables/desktop.py
+
+Tables can be defined either together with the database models in your
+:xfile:`models.py`, or in a separate file named :xfile:`desktop.py`.
+
+Tables are subclasses of :class:`dd.Table <lino.core.dbtables.Table>`.
+You don't need to instantiate them, Lino loads them automatically at
+startup and they are globally available at runtime in the
+:mod:`lino.api.rt` module.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.tables.settings')
+>>> from lino.api import rt, dd
+>>> rt.models.tables.Books
+lino_book.projects.tables.desktop.Books
+>>> issubclass(rt.models.tables.Books, dd.Table)
+True
 
 
 Model tables
 ============
+
+A **model table** is a table that gets its data from a database model.
 
 There can be more than one table for a given model, but each table has
 exactly one model as its data source.  That model is specified in the
@@ -75,82 +120,8 @@ queryset. For example we set :attr:`hide_sums
 table because otherwise Lino would display a sum for the "published"
 column.
 
-.. _slave_tables:
-
-Slave tables
-============
-
-A table is called a **slave table** when it "depends" on a master.
-
-For example the `BooksByAuthor` table shows the *books* written by a
-given *author.  Or the `ChoicesByQuestion` table in
-:ref:`lino.tutorial.polls` shows the *choices* for a given *question*
-(its master).  Other examples of slave tables are used in
-:ref:`dev.lets` and :doc:`/dev/table_summaries`.
-     
-A slave table cannot render if we don't define the master.  You cannot
-render `BooksByAuthor` if you don't specify for *which* author you
-want it.
-
-
-.. _own_window:
-
-Show a slave table in own window
-================================
-
-Slave tables are usually rendered as elements of a detail layout.  The
-widget used to render a slave table in a detail window is called a
-**slave panel**.
-
-.. |own_window| image:: /user/own_window.png
-
-A slave panel has a special button |own_window| in its upper right
-corner used to show that slave table in a separate window.  This
-button is important for several functions.
-
-- If the table's display_mode is ``'summary'``, the
-  |own_window| button is the only way to see the table as a grid.
-
-- The slave panel shows only 15 rows, even if there are more.
-
-- The slave panel has no pagination toolbar while the separate window
-  does.
-
-     
-
-Exercise
-========
-
-The files we are going to use in this tutorial are already on your
-hard disk in the :mod:`lino_book.projects.tables` package.
-
-Start your development server and your browser, and have a look at the
-application::
-
-  $ go tables
-  $ python manage.py runserver
-
-Explore the application and try to extend it: change things in the
-code and see what happens.
-
-
-Here is the :xfile:`models.py` file :
-
-.. literalinclude:: ../../lino_book/projects/tables/models.py
-
-The :file:`fixtures/demo.py` file contains the data we use to fill our
-database:
-
-.. literalinclude:: ../../lino_book/projects/tables/fixtures/demo.py
-
-  
 Designing your tables
 =====================
-
-There is another file named :xfile:`desktop.py` which describes the
-tables we are going to use in this tutorial:
-
-.. literalinclude:: ../../lino_book/projects/tables/desktop.py
 
 Database *models* are usually named in *singular* form, tables in
 *plural* form.
@@ -310,7 +281,7 @@ Defining a web interface
 The last piece of the user interface is the *menu definition*, located
 in the :xfile:`__init__.py` file ot this tutorial:
 
-.. literalinclude:: ../../lino_book/projects/tables/__init__.py
+.. literalinclude:: ../../../lino_book/projects/tables/__init__.py
 
 Every plugin of a Lino application can define its own subclass of
 :class:`lino.core.plugin.Plugin`, and Lino instantiates these objects
@@ -321,57 +292,36 @@ You might ask "Why can't we just define the menu commands in our
 goes beyond the scope of this tutorial
 
 Note that a plugin corresponds to what Django calls an application.
-
-Read more about plugins in :ref:`dev.plugins`.
-
-
-.. _remote_master:
-
-Tables with remote master
-=========================
-
-The :attr:`master_key` of a :ref:`slave table <slave_tables>` can be a remote field. 
-
-When you have three models A, B and C with A.b being a pointer to B
-and B.c being a pointer to C, then you can design a table `CsByA`
-which shows the C instances of a given A instance by saying::
-
-    class CsByA(Cs):
-        master_key = "c__b"
-
-For example :class:`lino_xl.lib.courses.CoursesByTopic` shows all
-courses about a given topic. But a course has no FK `topic`, so you
-cannot say ``master_key = 'topic'``. But a course does know its topic
-indirectyl because it knows it's course series, and the course series
-knows its topic. So you can specify a remote field::
-
-  master_key = 'line__topic'
-
-Other examples
-
-- :class:`lino_avanti.lib.courses.RemindersByPupil`
-  
-.. :class:`lino_xl.lib.courses.EntriesByTeacher`
+More about this in :ref:`dev.plugins`.
 
 
 
+About this tutorial
+===================
+
+You can interactively play around with the little application used in
+this tutorial::
+
+  $ go tables
+  $ python manage.py runserver
+
+Some screenshots:
+                    
+.. image:: 1.png
+.. image:: 2.png
+                    
+
+The :file:`fixtures/demo.py` file contains the data we used to fill
+our database:
+
+.. literalinclude:: ../../../lino_book/projects/tables/fixtures/demo.py
 
 
-Virtual tables
-==============
 
-Besides *model-based tables* (used to display data from the database
-using its model), Lino has :doc:`virtual tables <vtables>` **virtual
-tables** which have no model because they get their rows from
-somewhere else than the database.
+Exercises
+=========
 
-The **rows** of a virtual table are defined by a method
-:meth:`get_data_rows <lino.core.tables.AbstractTable.get_data_rows>`.
-In a *model-based table* this method has a default implementation
-based on the :attr:`model <lino.core.tables.Table.model>` attribute.
-
-:class:`lino.core.tables.AbstractTable` is the base class for 
-:class:`lino.core.tables.Table`  and
-:class:`lino.core.tables.VirtualTable` 
+Explore the application and try to extend it: change things in the
+code and see what happens.
 
 

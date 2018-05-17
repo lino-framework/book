@@ -229,6 +229,8 @@ lino_book.projects.watch
 lino_book.projects.watch.entries
 lino_book.projects.watch.fixtures
 lino_book.projects.watch.tests
+lino_book.projects.watch2
+lino_book.projects.watch2.fixtures
 lino_book.projects.mldbc
 lino_book.projects.mldbc.fixtures
 lino_book.projects.actions

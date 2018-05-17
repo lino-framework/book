@@ -13,9 +13,10 @@ to dive *into* Lino.
    polls/index
    lets/index
    models
-   tables
+   tables/index
    layouts/index
    choicelists
+   slave_tables
    table_summaries
    vtables
    initdb

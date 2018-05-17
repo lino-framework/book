@@ -1,4 +1,4 @@
-## Copyright 2013-2017 Luc Saffre
+## Copyright 2013-2018 Rumma & Ko Ltd
 ## This file is part of the Lino project.
 
 
@@ -10,17 +10,24 @@ from lino.api import dd
 from lino import mixins
 from lino.modlib.users.mixins import UserAuthored
 
-contacts = dd.resolve_app('contacts')
+# contacts = dd.resolve_app('contacts')
 
+class Company(dd.Model):
+    class Meta:
+        verbose_name = _("Company")
+        verbose_name_plural = _("Companies")
 
-class EntryType(mixins.BabelNamed):
+    name = models.CharField(_("Name"), blank=True, max_length=200)
+    street = models.CharField(_("Street"), blank=True, max_length=200)
+    city = models.CharField(_("City"), blank=True, max_length=200)
+    
+        
+
+class EntryType(mixins.BabelDesignated):
     class Meta:
         verbose_name = _("Entry Type")
         verbose_name_plural = _("Entry Types")
         
-    #~ def after_ui_save(self,ar):
-        #~ CompaniesWithEntryTypes.setup_columns()
-
     
 class EntryTypes(dd.Table):
     model = EntryType
@@ -36,7 +43,7 @@ class Entry(UserAuthored):
     entry_type = dd.ForeignKey(EntryType)
     subject = models.CharField(_("Subject"), blank=True, max_length=200)
     body = dd.RichTextField(_("Body"), blank=True)
-    company = dd.ForeignKey('contacts.Company')
+    company = dd.ForeignKey(Company)
 
 
 class Entries(dd.Table):
@@ -54,8 +61,7 @@ class Entries(dd.Table):
         entry_type=dd.ForeignKey(
             EntryType, blank=True, null=True,
             help_text=_("Show only entries of this type.")),
-        company=dd.ForeignKey(
-            'contacts.Company',
+        company=dd.ForeignKey(Company,
             blank=True, null=True,
             help_text=_("Show only entries of this company.")),
         user=dd.ForeignKey(
@@ -92,8 +98,18 @@ class Entries(dd.Table):
 class EntriesByCompany(Entries):
     master_key = 'company'
 
+class CompanyDetail(dd.DetailLayout):
+    main = """
+    name
+    street city
+    EntriesByCompany
+    """
 
-class CompaniesWithEntryTypes(dd.VentilatingTable, contacts.Companies):
+class Companies(dd.Table):
+    model = Company
+    detail_layout = CompanyDetail()
+
+class CompaniesWithEntryTypes(dd.VentilatingTable, Companies):
     label = _("Companies with Entry Types")
     hide_zero_rows = True
     parameters = mixins.ObservedDateRange()
@@ -134,10 +150,10 @@ def my_setup_columns(sender, **kw):
     CompaniesWithEntryTypes.setup_columns()
 
 
-@dd.receiver(dd.post_startup)
-def my_details_setup(sender, **kw):
-    self = sender
-    self.modules.contacts.Companies.add_detail_tab(
-        'entries', 'matrix_tutorial.EntriesByCompany')
+# @dd.receiver(dd.post_startup)
+# def my_details_setup(sender, **kw):
+#     self = sender
+#     self.models.contacts.Companies.add_detail_tab(
+#         'entries', 'watch2.EntriesByCompany')
 
 

@@ -229,8 +229,8 @@ another tutorial :ref:`lino.tutorial.tables`.  For now just note that
 
 - we defined one additional table `ChoicesByQuestion` which inherits
   from `Choices`. This table shows the choices *for a given question*.
-  We call it a *slave table* because it *depends* on its "master"
-  (the given question instance).
+  We call it a :ref:`slave table <slave_tables>` because it *depends*
+  on its "master" (the given question instance).
 
   
 Changing the database structure

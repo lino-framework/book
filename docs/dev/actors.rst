@@ -5,7 +5,7 @@ Introducing actors
 **Tables** and **choicelists** have certain things in common.  When we
 refer to them in general, then we call them **actors**.
 
-An **actor** is a globally known unique object that offers **actions**.
+An **actor** is a globally known unique object that offers *actions*.
 Almost every incoming web request in a Lino application requests
 execution of a given *action* on a given *actor*.
 
@@ -15,14 +15,8 @@ about *actors*.
 
 The most common type of actors are **tables**.  But not all actors are
 tables.  Another type of actors are *frames* which display some data
-in some other form. One such frame actor is the calendar panel,
+in some other form.  One such frame actor is the calendar panel,
 another one is :class:`EmptyTable`, used to display reports.
-
-See also
-
-- :mod:`lino_book.projects.tables`
-- :mod:`lino_book.projects.vtables`
-- :mod:`lino_book.projects.actors`
 
 
 The application namespace
@@ -32,8 +26,8 @@ When we say that actors are "globally known unique objects", then we
 refer to what we call the **application namespace**.
 
 Actually the application namespace is split across two places:
-:data:`dd.plugins`
-:data:`rt.modules`
+:data:`dd.plugins` and
+:data:`rt.models`
 
 
 
