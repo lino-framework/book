@@ -75,7 +75,48 @@ queryset. For example we set :attr:`hide_sums
 table because otherwise Lino would display a sum for the "published"
 column.
 
+.. _slave_tables:
 
+Slave tables
+============
+
+A table is called a **slave table** when it "depends" on a master.
+
+For example the `BooksByAuthor` table shows the *books* written by a
+given *author.  Or the `ChoicesByQuestion` table in
+:ref:`lino.tutorial.polls` shows the *choices* for a given *question*
+(its master).  Other examples of slave tables are used in
+:ref:`dev.lets` and :doc:`/dev/table_summaries`.
+     
+A slave table cannot render if we don't define the master.  You cannot
+render `BooksByAuthor` if you don't specify for *which* author you
+want it.
+
+
+.. _own_window:
+
+Show a slave table in own window
+================================
+
+Slave tables are usually rendered as elements of a detail layout.  The
+widget used to render a slave table in a detail window is called a
+**slave panel**.
+
+.. |own_window| image:: /user/own_window.png
+
+A slave panel has a special button |own_window| in its upper right
+corner used to show that slave table in a separate window.  This
+button is important for several functions.
+
+- If the table's display_mode is ``'summary'``, the
+  |own_window| button is the only way to see the table as a grid.
+
+- The slave panel shows only 15 rows, even if there are more.
+
+- The slave panel has no pagination toolbar while the separate window
+  does.
+
+     
 
 Exercise
 ========
@@ -114,7 +155,9 @@ tables we are going to use in this tutorial:
 Database *models* are usually named in *singular* form, tables in
 *plural* form.
 
-Tables may inherit from other tables (e.g. ``BooksByAuthor``)
+Tables may inherit from other tables (e.g. ``BooksByAuthor`` inherits
+from ``Books``: it is basically a list of books, with the difference
+that it shows only the books of a given author.
 
 The recommended place for defining tables is in a separate file
 :file:`desktop.py`.  You might define your tables together with the
@@ -141,10 +184,10 @@ Since tables are normal Python classes they can use inheritance.  In
 our code `BooksByAuthor` inherits from `Books`.  That's why we don't
 need to explicitly specify a `model` attribute for `BooksByAuthor`.
 
-`BooksByAuthor` is an example of a **slave table**.  `BooksByAuthor`
-means: the table of `Books` of a given `Author`.  This given Author is
-called the "master" of these Books.  We also say that a slave table
-*depends* on its master.
+`BooksByAuthor` is an example of a :ref:`slave table <slave_tables>`.
+It shows the books of a given `Author`.  This given Author is called
+the "master" of these Books.  We also say that a slave table *depends*
+on its master.
 
 Lino manages this dependency almost automatically.  The application
 developer just needs to specify a class attribute :attr:`master_key
@@ -166,7 +209,7 @@ display it to the user.
 But the table is even more than the definition of a grid widget.  It
 also has attributes like :attr:`detail_layout
 <lino.core.actors.Actor.detail_layout>` which tells it how to display
-a single record in a form view.
+the detail of a single record in a form view.
 
 Try also to work through the API docs, 
 knowing that
@@ -182,22 +225,15 @@ Using tables without a web server
 
 An important thing with tables is that they are independent of any
 user interface. You define them once, and you can use them on the
-console, in a script, in a unit test, in a web interface or in a GUI
+console, in a script, in a testcase, in a web interface or in a GUI
 window.
 
-At this point of our tutorial, we cannot yet fire up a web browser
-(because we need to explain a few more concepts like menus and layouts
+At this point of our tutorial, we won't yet fire up a web browser
+(because we want to explain a few more concepts like menus and layouts
 before we can do that), but we can already play with our data using
 Django's console shell::
 
   $ python manage.py shell
-
-And please note that the following code snippets are tested as part of
-Lino's test suite. Writing test cases is an important part of software
-development. Writing test cases might look less funny than developing
-cool widgets, but actually these are part of analyzing and describing
-how your users want their data to be structured.  Which is the more
-important part of software development.
 
 The first thing you do in a :manage:`shell` session is to import
 everything from :mod:`lino.api.shell`:
@@ -238,7 +274,7 @@ And here is the ``Books`` table:
 <BLANKLINE>
 
 These were so-called **master tables**.  We can also show the content
-of **slave tables**:
+of :ref:`slave tables <slave_tables>` :
 
 >>> adams = tables.Author.objects.get(last_name="Adams")
 >>> rt.show(tables.BooksByAuthor, adams)
@@ -251,6 +287,20 @@ of **slave tables**:
 =========== ======================================
 <BLANKLINE>
 
+
+Before going on, please note that the preceding code snippets are
+**tested** as part of Lino's test suite.  This means that as a core
+developer you can run a command (:cmd:`inv test` in case you are
+curious) which will parse the source file of this page, execute every
+line that starts with ``>>>`` and verifies that the output is the same
+as in this document.  If a single dot changes, the test "fails" and
+the developer will find out the reason.
+
+Writing test cases is an important part of software development.  It
+might look less funny than developing cool widgets, but actually these
+are part of analyzing and describing how your users want their data to
+be structured.  Which is the more important part of software
+development.
 
 
 
@@ -280,7 +330,7 @@ Read more about plugins in :ref:`dev.plugins`.
 Tables with remote master
 =========================
 
-The :attr:`master_key` can be a remote field. 
+The :attr:`master_key` of a :ref:`slave table <slave_tables>` can be a remote field. 
 
 When you have three models A, B and C with A.b being a pointer to B
 and B.c being a pointer to C, then you can design a table `CsByA`

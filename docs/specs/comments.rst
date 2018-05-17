@@ -104,10 +104,10 @@ Comments
     .. attribute:: slave_summary
 
 
-    .. method:: get_slave_summary(cls, obj, ar)
+    .. method:: get_table_summary(cls, obj, ar)
                 
         The :meth:`summary view
-        <lino.core.actors.Actor.get_slave_summary>` for this table.
+        <lino.core.actors.Actor.get_table_summary>` for this table.
 
 .. class:: CommentsByX
 .. class:: CommentsByType
@@ -117,10 +117,10 @@ Comments
 
     .. attribute:: slave_summary
 
-    .. method:: get_slave_summary(cls, obj, ar)
+    .. method:: get_table_summary(cls, obj, ar)
                 
         The :meth:`summary view
-        <lino.core.actors.Actor.get_slave_summary>` for this table.
+        <lino.core.actors.Actor.get_table_summary>` for this table.
 
 
 .. class:: ObservedTime

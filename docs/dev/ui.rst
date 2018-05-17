@@ -21,8 +21,8 @@ elements of every Lino user interface are:
 - a highly customizable **grid widget** for rendering tabular data in
   an editable way.  This description is used for **
 
-- form input using **detail windows** which can contain slave tables,
-  custom panels, ...
+- form input using **detail windows** which can contain :ref:`slave
+  tables <slave_tables>`, custom panels, ...
 
 - Context-sensitive ComboBoxes with dynamic data store.
 

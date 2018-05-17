@@ -10,7 +10,7 @@ There were several problems:
 - A sales invoice is created in table ledger_invoice instead of
   sales_invoice. Seems that there is some misundertanding when
   generating the `insert_button` in
-  the :meth:`dd.AbstractTable.get_slave_summary` of
+  the :meth:`dd.AbstractTable.get_table_summary` of
   :class:`ml.ledger.VouchersByPartner`.
 
 - Lino does not show the detail window on the created invoice.

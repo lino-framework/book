@@ -12,7 +12,6 @@ Getting acquaintained
    site
    plugins
    i18n
-   summaries
    datamig
    dump2py
    languages

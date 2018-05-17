@@ -22,7 +22,7 @@ SICHTBARE ÄNDERUNGEN:
 - Haushaltszusammensetzung (:mod:`ml.households.SiblingsByPerson`):
 
   (1) Ist jetzt eine normale Tabelle statt eine Zusammenfassung
-      (:attr:`slave_grid_format <dd.AbstractTable.slave_grid_format>`)
+      (:attr:`display_mode <dd.AbstractTable.display_mode>`)
   (2) im Fall von mehreren Haushalten kann man jetzt leicht von einem
       zum anderen wechseln, indem man auf die Checkbox klickt.
   (3) Wenn man alle Angaben eines Haushaltsmitglieds ausgefüllt hat,

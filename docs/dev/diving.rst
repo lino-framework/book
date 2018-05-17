@@ -16,6 +16,7 @@ to dive *into* Lino.
    tables
    layouts/index
    choicelists
+   table_summaries
    vtables
    initdb
    dumpy/index

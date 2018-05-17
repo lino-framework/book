@@ -122,7 +122,7 @@ class QuickTest(RemoteAuthTestCase):
 
         # Here we are just testing whether no exception is risen. The
         # ouptut itself is more thoroughly tested elsewhere.
-        html = LinksByHuman.get_slave_summary(father, ar)
+        html = LinksByHuman.get_table_summary(father, ar)
         s = tostring(html)
         self.assertEqual(s[:5], '<div>')
         
