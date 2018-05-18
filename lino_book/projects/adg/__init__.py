@@ -3,8 +3,7 @@
 # License: BSD (see file COPYING for details)
 
 """
-Demo of :ref:`avanti`, an application for helping immigrants in
-East Belgium with their integration course.
+Demo of :ref:`avanti`.
 
 .. autosummary::
    :toctree:

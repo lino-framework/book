@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Luc Saffre
+# Copyright 2017-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-
 """
+Does not actually test anything.
+
 You can run only these tests by issuing::
 
-  $ python setup.py test -s tests.DemoTests.test_avanti
+  $ python setup.py test -s tests.DemoTests.test_simple
 
 Or::
 
-  $ go avanti
-  $ cd lino_avanti/projects/avanti
+  $ go adg
   $ python manage.py test tests.test_simple
 
 

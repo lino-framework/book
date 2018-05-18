@@ -8,6 +8,7 @@ You can run only these tests by issuing::
 
   $ go adg
   $ python manage.py test tests.test_beid
+
 """
 
 from __future__ import unicode_literals

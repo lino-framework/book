@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Luc Saffre
+# Copyright 2017-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
+Tests some behaviour of the `Client.national_id` field.
+
 You can run only these tests by issuing::
 
   $ go adg
