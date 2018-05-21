@@ -2,16 +2,6 @@
 # Copyright 2012-2017 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-"""A special settings module to be used as DJANGO_SETTINGS_MODULE when
-Sphinx generates the Lino docs.
-
-It contains (almost) all modlib modules, which makes no sense in
-practice and would maybe raise errors if you try to initialize a
-database or validate the models, but it is enough to have autodocs do
-its job.  And that's all we want.
-
-"""
-
 from lino.projects.std.settings import *
 
 import lino_xl

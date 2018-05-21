@@ -28,19 +28,19 @@ def readfile(name):
     return open(fn).read()
 
 
-class WebRequest:
-    method = "POST"
-    subst_user = None
-    requesting_panel = None
+# class WebRequest:
+#     method = "POST"
+#     subst_user = None
+#     requesting_panel = None
 
-    def __init__(self, user, data):
-        self.POST = self.REQUEST = MultiValueDict(data)
-        self.user = user
+#     def __init__(self, user, data):
+#         self.POST = self.REQUEST = MultiValueDict(data)
+#         self.user = user
 
 
 class BeIdTests(RemoteAuthTestCase):
     maxDiff = None
-    override_djangosite_settings = dict(use_java=True)
+    # override_djangosite_settings = dict(use_java=True)
 
     def test01(self):
         from lino.core import constants
@@ -81,12 +81,14 @@ class BeIdTests(RemoteAuthTestCase):
         obj.save()
 
         def simulate_eidreader(uuid):
+            # simulate the client's eidreader posting its data to the
+            # server.
             s = readfile(uuid + '.json')
             # raise Exception(repr(s))
-            card_data = json.loads(s)
+            data = dict(card_data=s)
             url = '/eid/' + uuid
             response = self.client.post(
-                url, card_data,
+                url, data,
                 REMOTE_USER='robin',
                 HTTP_ACCEPT_LANGUAGE='en')
             result = self.check_json_result(response, 'success message')
@@ -169,7 +171,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :\
         # Third attempt. A person with almost same name and same
         # national_id.
 
-        url = '/api/avanti/Clients'
         obj.national_id = "680601 053-29"
         obj.first_name = "Jean"
         obj.middle_name = "Jacques"
@@ -200,7 +201,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         Holder.validate_national_id = False
         
         ssin.parse_ssin('68060105329')
-        url = '/api/avanti/Clients'
         obj.national_id = "68060105329"
         obj.first_name = "Jean Jacques"
         obj.middle_name = ""
@@ -247,7 +247,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         obj.national_id = ""
         obj.full_clean()
         obj.save()
-        url = '/api/avanti/Clients'
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
@@ -259,6 +258,41 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         self.assertEqual(result['success'], True)
         expected = "Create new client Jean-Jacques Jeffin : Are you sure?"
         self.assertEqual(result['message'], expected)
+
+        dd.plugins.beid.eidreader_timeout = 1
+
+        # when eidreader is not installed on client, there will be no
+        # incoming POST and therefore we will have a timeout.
+        post_data['uuid'] = 'foo'  # 
+        response = self.client.post(
+            url, post_data,
+            REMOTE_USER='robin',
+            HTTP_ACCEPT_LANGUAGE='en')
+        # self.assertEqual(response.content, '')
+        result = self.check_json_result(
+            response,
+            'alert success message')
+        self.assertEqual(result['success'], False)
+        self.assertEqual(result['message'], "Abandoned after 1 seconds")
+        
+        dd.plugins.beid.eidreader_timeout = 15
+
+        uuid = 'beid_test_0'
+        simulate_eidreader(uuid)
+        
+        post_data['uuid'] = uuid
+        response = self.client.post(
+            url, post_data,
+            REMOTE_USER='robin',
+            HTTP_ACCEPT_LANGUAGE='en')
+        # self.assertEqual(response.content, '')
+        result = self.check_json_result(
+            response,
+            'alert success message')
+        self.assertEqual(result['success'], False)
+        self.assertEqual(result['message'], "No card data found: Could not find any reader with a card inserted")
+        
+        
         
         if True:
             # skip the following tests because we don't yet have
@@ -268,7 +302,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         # next card. a foreigner card with incomplete birth date
 
         post_data.update(card_data=readfile('beid_tests_2.txt'))
-        url = '/api/avanti/Clients'
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
@@ -284,7 +317,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         # next card. issued after 2015 and the photo is invalid
 
         post_data.update(card_data=readfile('beid_tests_3.txt'))
-        url = '/api/avanti/Clients'
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
@@ -300,7 +332,6 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         # next card. issued after 2015 and the photo is valid
 
         post_data.update(card_data=readfile('beid_tests_4.txt'))
-        url = '/api/avanti/Clients'
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
