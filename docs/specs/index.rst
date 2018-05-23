@@ -48,6 +48,7 @@ specifications.  This section is far from being complete.
    dpy
    comments
    about
+   dashboard
    
    
 Accounting stuff

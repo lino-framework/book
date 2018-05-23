@@ -24,5 +24,5 @@ to dive *into* Lino.
    perms
    users
    settings
-
+   admin_main
 
