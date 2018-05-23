@@ -48,7 +48,7 @@ As long as a user didn't populate their dashboard, the list ist empty
 and they will get all the dashboard items provided by the application.
 
 .. figure:: /specs/noi/dashboard1.png
-   :scale: 80 %
+   :width: 80 %
             
    Dashboard preferences (empty)
 
@@ -56,7 +56,7 @@ Click the :guilabel:`⚡` button in order to populate the table.
 
 
 .. figure:: /specs/noi/dashboard2.png
-   :scale: 80 %
+   :width: 80 %
             
    Dashboard preferences (populated)
 

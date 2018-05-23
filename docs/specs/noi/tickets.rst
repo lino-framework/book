@@ -801,3 +801,9 @@ Plugin configuration
         Noi uses `courses.Course`.
 
 
+
+
+Screenshots
+===========
+
+.. image:: tickets.Ticket.merge.png
