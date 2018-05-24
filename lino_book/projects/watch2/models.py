@@ -141,7 +141,7 @@ class CompaniesWithEntryTypes(dd.VentilatingTable, Companies):
                 return Entries.request(param_values=pv)
             return func
         for et in EntryType.objects.all():
-            yield dd.RequestField(w(et), verbose_name=unicode(et))
+            yield dd.RequestField(w(et), verbose_name=str(et))
         yield dd.RequestField(w(None), verbose_name=_("Total"))
     
    

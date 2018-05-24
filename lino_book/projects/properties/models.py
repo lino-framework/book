@@ -26,7 +26,7 @@ Now we have setup the properties. Let's have a look at this metadata::
   >>> print favdish.choices_list()
   [u'Cookies', u'Fish', u'Meat', u'Vegetables']
   >>> qs = properties.Property.objects.all()
-  >>> ["%s (%s)" % (p.name,','.join(map(unicode,p.choices_list()))) for p in qs]
+  >>> ["%s (%s)" % (p.name,','.join(map(str,p.choices_list()))) for p in qs]
   [u'weight ()', u'married (True,False)', u'favdish (Cookies,Fish,Meat,Vegetables)']
   
 PropValuesByOwner is a report that cannot be rendered into a normal grid because the 'value' column has variable data type, but it's render_to_dict() method is used to fill an `Ext.grid.PropertyGrid`:

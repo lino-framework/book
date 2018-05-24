@@ -153,7 +153,7 @@ class QuickTest(RemoteAuthTestCase):
         mm2 = create_person("Marie", "Meyer")
 
         def check(obj, expected):
-            got = map(unicode, obj.find_similar_instances(4))
+            got = map(str, obj.find_similar_instances(4))
             got = '\n'.join(got)
             self.assertEqual(got, expected.strip())
 

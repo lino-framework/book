@@ -149,7 +149,7 @@ def country2kw(row, kw):
                         activity = Activity.objects.get(pk=activity)
                     except Activity.DoesNotExist:
                         activity = Activity(
-                            id=activity, name=unicode(activity))
+                            id=activity, name=str(activity))
                         activity.save(force_insert=True)
                     kw.update(activity=activity)
 

@@ -16,7 +16,7 @@ Create some data:
 
 Here is our data:
 
->>> print '\n'.join([unicode(i) for i in Item.objects.all()])
+>>> print '\n'.join([str(i) for i in Item.objects.all()])
 5 x Screw at 2.49 = 12.45 EUR
 2.39 x Leather at 24.95 = 59.6305 EUR
 0:40 x Work at 59.99 = 39:60 EUR
@@ -24,11 +24,11 @@ Here is our data:
 Default value for `qty` is 1, while `discount` is "pseudo-nullable".
 
 >>> Item(name="Thing",price='59.99').save()
->>> print unicode(Item.objects.get(pk=4))
+>>> print str(Item.objects.get(pk=4))
 1 x Thing at 59.99 = 59.99 EUR
 
 >>> Item(name="Another thing",price='59.99',discount='10%').save()
->>> print unicode(Item.objects.get(pk=5))
+>>> print str(Item.objects.get(pk=5))
 1 x Another thing at 59.99 (-10%) = 53.991 EUR
 
 
