@@ -13,7 +13,7 @@ is being run.
 
 
 >>> import lino
->>> lino.startup('lino_book.projects.team.settings.doctests')
+>>> lino.startup('lino_book.projects.ui5.settings.doctests')
 >>> from lino.api.doctest import *
 
 The merge action is an example of an action with parameters.  When you
@@ -39,7 +39,13 @@ when you confirm this window.
 How to get the layout elements of an action parameter window,
 
 >>> ui = settings.SITE.kernel.default_ui
+>>> ui
+lino.modlib.openui5 (media_name=openui5)
+
 >>> lh = action.params_layout.get_layout_handle(ui)
+>>> lh #doctest: +ELLIPSIS
+<lino.core.layouts.LayoutHandle object at ...>
+
 >>> lh.main
 <ActionParamsPanel main in lino.core.layouts.ActionParamsLayout on <lino.core.merge.MergeAction merge_row ('Merge')>>
 
