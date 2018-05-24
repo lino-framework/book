@@ -70,7 +70,10 @@ Indeed you can verify that importing this module in a normal Python
 session will fail:
 
 >>> import lino_book.projects.team.tests.test_notify
-django.core.exceptions.ImproperlyConfigured: Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+Traceback (most recent call last):
+...
+ImproperlyConfigured: Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+
 
 As the error message tries to explain, the module refuses to import
 because :envvar:`DJANGO_SETTINGS_MODULE` is not set.  That's related
@@ -103,7 +106,7 @@ Let's try this::
 And in *that* Python shell you try to import the module which Sphinx
 was not able to import::
 
-    >>> import lino_book.projects.team.tests.test_notify
+    import lino_book.projects.team.tests.test_notify
 
 What happens now?
 
