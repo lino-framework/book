@@ -45,10 +45,10 @@ class QuickTest(RemoteAuthTestCase):
 
     def test_this(self):
 
-        Person = rt.modules.contacts.Person
-        Link = rt.modules.humanlinks.Link
-        LinkTypes = rt.modules.humanlinks.LinkTypes
-        LinksByHuman = rt.modules.humanlinks.LinksByHuman
+        Person = rt.models.contacts.Person
+        Link = rt.models.humanlinks.Link
+        LinkTypes = rt.models.humanlinks.LinkTypes
+        LinksByHuman = rt.models.humanlinks.LinksByHuman
 
         father = create(
             Person, first_name="John", last_name="Doe",
@@ -131,9 +131,9 @@ class QuickTest(RemoteAuthTestCase):
         Organisation entfernen (delete mti child with siblings)).
 
         """
-        Person = rt.modules.contacts.Person
-        Company = rt.modules.contacts.Company
-        Partner = rt.modules.contacts.Partner
+        Person = rt.models.contacts.Person
+        Company = rt.models.contacts.Company
+        Partner = rt.models.contacts.Partner
 
         # 1 : does delete_child work in normal situation?
         john = create(Person, first_name="John", last_name="Doe")

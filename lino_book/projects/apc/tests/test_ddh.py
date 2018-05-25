@@ -34,16 +34,16 @@ class DDHTests(RemoteAuthTestCase):
 
     def test01(self):
         from lino.modlib.users.choicelists import UserTypes
-        User = rt.modules.users.User
-        Partner = rt.modules.contacts.Partner
-        Person = rt.modules.contacts.Person
-        Company = rt.modules.contacts.Company
-        Role = rt.modules.contacts.Role
-        Account = rt.modules.sepa.Account
-        Invoice = rt.modules.vat.VatAccountInvoice
-        Journal = rt.modules.ledger.Journal
-        VoucherTypes = rt.modules.ledger.VoucherTypes
-        JournalGroups = rt.modules.ledger.JournalGroups
+        User = rt.models.users.User
+        Partner = rt.models.contacts.Partner
+        Person = rt.models.contacts.Person
+        Company = rt.models.contacts.Company
+        Role = rt.models.contacts.Role
+        Account = rt.models.sepa.Account
+        Invoice = rt.models.vat.VatAccountInvoice
+        Journal = rt.models.ledger.Journal
+        VoucherTypes = rt.models.ledger.VoucherTypes
+        JournalGroups = rt.models.ledger.JournalGroups
 
         u = User(username='robin',
                  user_type=UserTypes.admin,

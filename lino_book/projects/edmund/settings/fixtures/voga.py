@@ -69,8 +69,8 @@ class Loader1(object):
 
     def objects(self):
 
-        PlaceTypes = rt.modules.countries.PlaceTypes
-        ProductCat = rt.modules.products.ProductCat
+        PlaceTypes = rt.models.countries.PlaceTypes
+        ProductCat = rt.models.products.ProductCat
 
         # yield PupilType(ref="M", name="Liige")
         # yield PupilType(ref="H", name="Abistaja")
@@ -229,8 +229,8 @@ class Loader2(Loader1):
             #~ kw.update(price=PRICES.pop())
             return course(*args, **kw)
 
-        Product = rt.modules.products.Product
-        ProductCat = rt.modules.products.ProductCat
+        Product = rt.models.products.Product
+        ProductCat = rt.models.products.ProductCat
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))

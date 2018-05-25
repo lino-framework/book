@@ -39,9 +39,9 @@ class QuickTest(RemoteAuthTestCase):
         """
 
         ses = rt.login("robin", renderer=dd.plugins.extjs.renderer)
-        ba = rt.modules.cal.MyEntries.get_action_by_name('submit_insert')
-        # a = rt.modules.cal.MyEntries.submit_insert
-        # ba = rt.modules.cal.MyEntries.insert_action
+        ba = rt.models.cal.MyEntries.get_action_by_name('submit_insert')
+        # a = rt.models.cal.MyEntries.submit_insert
+        # ba = rt.models.cal.MyEntries.insert_action
         pv = dict(user=ses.get_user())
         resp = ses.run(ba, param_values=pv)
         # ba.request_from(ses).run_from_ui(ses)
@@ -57,7 +57,7 @@ class QuickTest(RemoteAuthTestCase):
         # created object and use it to build that message:
 
         pk = resp['data_record']['id']
-        obj = rt.modules.cal.Event.objects.get(pk=pk)
+        obj = rt.models.cal.Event.objects.get(pk=pk)
         msg = 'Calendar entry "{0}" has been created.'.format(obj)
         self.assertEqual(resp['message'], msg)
         # self.assertEqual(msg, None)

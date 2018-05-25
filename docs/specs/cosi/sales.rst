@@ -154,7 +154,7 @@ TODO: it is currently disabled for different reasons: leaves dangling
 temporary directories, does not reproduce the problem (probably
 because we must clear the cache).
 
->> obj = rt.modules.sales.VatProductInvoice.objects.all()[0]
+>> obj = rt.models.sales.VatProductInvoice.objects.all()[0]
 >> obj
 VatProductInvoice #1 ('SLS#1')
 >> from lino.modlib.appypod.appy_renderer import AppyRenderer
@@ -162,7 +162,7 @@ VatProductInvoice #1 ('SLS#1')
 >> context = dict()
 >> outfile = "tmp.odt"
 >> renderer = AppyRenderer(ses, tplfile, context, outfile)
->> ar = rt.modules.sales.ItemsByInvoicePrint.request(obj)
+>> ar = rt.models.sales.ItemsByInvoicePrint.request(obj)
 >> print(renderer.insert_table(ar))  #doctest: +ELLIPSIS
 <table:table ...</table:table-rows></table:table>
 

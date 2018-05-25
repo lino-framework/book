@@ -12,10 +12,10 @@ A tested example of GFK fields
     >>> from django.db.models import Q
     >>> from django.core.management import call_command
     >>> call_command('initdb', interactive=False, verbosity=0)
-    >>> Member = rt.modules.gfktest.Member
-    >>> Comment = rt.modules.gfktest.Comment
-    >>> Note = rt.modules.gfktest.Note
-    >>> Memo = rt.modules.gfktest.Memo
+    >>> Member = rt.models.gfktest.Member
+    >>> Comment = rt.models.gfktest.Comment
+    >>> Note = rt.models.gfktest.Note
+    >>> Memo = rt.models.gfktest.Memo
 
 This tutorial project
 uses the :mod:`lino_book.projects.gfktest` demo application

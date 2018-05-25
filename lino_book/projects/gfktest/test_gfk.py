@@ -27,11 +27,11 @@ class TestCase(TestCase):
         member.
 
         """
-        Member = rt.modules.gfktest.Member
-        Note = rt.modules.gfktest.Note
-        Memo = rt.modules.gfktest.Memo
-        Comment = rt.modules.gfktest.Comment
-        BrokenGFKs = rt.modules.gfks.BrokenGFKs
+        Member = rt.models.gfktest.Member
+        Note = rt.models.gfktest.Note
+        Memo = rt.models.gfktest.Memo
+        Comment = rt.models.gfktest.Comment
+        BrokenGFKs = rt.models.gfks.BrokenGFKs
 
         def check_status(*args):
             for i, m in enumerate((Member, Comment, Note, Memo)):

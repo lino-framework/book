@@ -31,7 +31,7 @@ version.
     $ ./pull.sh
 
     
-That's all if there is no change in the database structure. But if
+That's all **if there is no change in the database structure**. But if
 there was (or if you don't know whether there was) some change which
 requires a data migration, then you must continue:
 
@@ -43,6 +43,19 @@ requires a data migration, then you must continue:
 - Restore the snapshot::
 
     $ python manage.py run snapshot/restore.py
+
+
+Note that a :xfile:`restore.py` can take considerable time depending
+on the size of your database.  So if you *believe* but are not
+absolutely sure there was *no change* in the database structure, then
+you can check whether you need to run :xfile:`restore.py` by doing a
+second temporary snapshot and then comparing their :xfile:`restore.py`
+files.  If nothing has changed, then you don't need to run it::
+    
+    $ python manage.py dump2py -o t
+    $ diff snapshot/restore.py t/restore.py    
+
+
 
     
 

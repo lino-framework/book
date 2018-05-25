@@ -7,12 +7,12 @@ For example if user calls :menuselection:`Explorer --> System --> User
 levels`.
 
 This bug has been introduced on :blogref:`20140920` (by the fact that
-the objects stored in :attr:`rt.modules` are no longer
+the objects stored in :attr:`rt.models` are no longer
 :class:`AttrDict <atelier.utils.AttrDict>` instances but the
 :xfile:`models.py` modules themselves):
 
 Since the `lino` app has no :xfile:`models.py` module, it doesn't get
-an entry in :attr:`rt.modules`.
+an entry in :attr:`rt.models`.
 
 In fact bug is a confirmation that the change made Lino more
 beautiful!  Because the arbitrary `app_label` ("lino") on these

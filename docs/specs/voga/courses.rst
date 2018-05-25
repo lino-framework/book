@@ -51,9 +51,9 @@ The :mod:`lino_xl.lib.courses` plugin has two settings
 
 The demo database has 35 pupils and 9 teachers:
 
->>> rt.modules.courses.Pupil.objects.count()
+>>> rt.models.courses.Pupil.objects.count()
 35
->>> rt.modules.courses.Teacher.objects.count()
+>>> rt.models.courses.Teacher.objects.count()
 9
 
 
@@ -76,7 +76,7 @@ The demo database has 35 pupils and 9 teachers:
 
 >>> ses = rt.login('robin')
 
->>> ses.show(rt.actors.courses.PupilTypes)
+>>> ses.show(rt.models.courses.PupilTypes)
 ==== =========== ============= ================== ==================
  ID   Reference   Designation   Designation (de)   Designation (fr)
 ---- ----------- ------------- ------------------ ------------------
@@ -86,7 +86,7 @@ The demo database has 35 pupils and 9 teachers:
 ==== =========== ============= ================== ==================
 <BLANKLINE>
 
->>> ses.show(rt.actors.courses.TeacherTypes)
+>>> ses.show(rt.models.courses.TeacherTypes)
 ==== =========== ================== ======================= ======================
  ID   Reference   Designation        Designation (de)        Designation (fr)
 ---- ----------- ------------------ ----------------------- ----------------------
@@ -177,7 +177,7 @@ There are two Yoga courses:
 >>> obj
 Line #10 ('Yoga')
         
->>> rt.show(rt.actors.courses.CoursesByLine, obj)
+>>> rt.show(rt.models.courses.CoursesByLine, obj)
 ==================================== ============== ================== ============= ====================
  Description                          When           Room               Times         Instructor
 ------------------------------------ -------------- ------------------ ------------- --------------------
@@ -187,7 +187,7 @@ Line #10 ('Yoga')
 <BLANKLINE>
 
 
->>> ContentType = rt.modules.contenttypes.ContentType
+>>> ContentType = rt.models.contenttypes.ContentType
 >>> json_fields = 'count rows title success no_data_text param_values'
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
@@ -355,7 +355,7 @@ But the next day she is gone and her place available again:
 Filtering pupils
 ================
 
->>> print(rt.actors.courses.Pupils.params_layout.main)
+>>> print(rt.models.courses.Pupils.params_layout.main)
 course partner_list #aged_from #aged_to gender show_members show_lfv show_ckk show_raviva
 
 There are 36 pupils (21 men and 15 women) in our database:

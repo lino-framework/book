@@ -56,8 +56,8 @@ class QuickTest(RemoteAuthTestCase):
         Pupil = rt.models.courses.Pupil
         Line = rt.models.courses.Line
         Course = rt.models.courses.Course
-        CourseStates = rt.actors.courses.CourseStates
-        EnrolmentStates = rt.actors.courses.EnrolmentStates
+        CourseStates = rt.models.courses.CourseStates
+        EnrolmentStates = rt.models.courses.EnrolmentStates
         EventType = rt.models.cal.EventType
 
         

@@ -224,7 +224,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
 
         # test whether we would have been warned:
         obj.update_dupable_words()  # avoid repairable message
-        ar = rt.modules.checkdata.ProblemsByOwner.request(
+        ar = rt.models.checkdata.ProblemsByOwner.request(
             master_instance=obj)
         obj.check_data(ar, fix=False)
         s = ar.to_rst()
@@ -234,7 +234,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
 """)
 
         obj.check_data(ar, fix=True)
-        ar = rt.modules.checkdata.ProblemsByOwner.request(
+        ar = rt.models.checkdata.ProblemsByOwner.request(
             master_instance=obj)
         s = ar.to_rst()
         # print(s)

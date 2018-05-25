@@ -23,7 +23,7 @@ house).
 Configuration
 =============
 
->>> rt.show(rt.modules.households.Types)  #doctest: +REPORT_UDIFF
+>>> rt.show(rt.models.households.Types)  #doctest: +REPORT_UDIFF
 ==== ==================== ========================= ====================== ==================== ==================== ===================== ====================
  ID   Designation          Designation (de)          Designation (fr)       Designation (et)     Designation (nl)     Designation (pt-br)   Designation (es)
 ---- -------------------- ------------------------- ---------------------- -------------------- -------------------- --------------------- --------------------
@@ -55,7 +55,7 @@ Configuration
 SiblingsByPerson
 ================
 
->>> SiblingsByPerson = rt.modules.households.SiblingsByPerson
+>>> SiblingsByPerson = rt.models.households.SiblingsByPerson
 
 The :class:`SiblingsByPerson
 <lino_xl.lib.households.models.SiblingsByPerson>` table shows the

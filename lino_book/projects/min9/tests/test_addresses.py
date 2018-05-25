@@ -48,12 +48,12 @@ class QuickTest(RemoteAuthTestCase):
 
     def test_this(self):
 
-        Company = rt.modules.contacts.Company
-        Address = rt.modules.addresses.Address
-        Place = rt.modules.countries.Place
-        Problem = rt.modules.checkdata.Problem
+        Company = rt.models.contacts.Company
+        Address = rt.models.addresses.Address
+        Place = rt.models.countries.Place
+        Problem = rt.models.checkdata.Problem
         eupen = Place.objects.get(name="Eupen")
-        ar = rt.modules.contacts.Companies.request()
+        ar = rt.models.contacts.Companies.request()
         self.assertEqual(Address.ADDRESS_FIELDS, set([
             'city', 'street_box', 'region', 'street_no',
             'street', 'addr2', 'addr1', 'country', 'zip_code']))

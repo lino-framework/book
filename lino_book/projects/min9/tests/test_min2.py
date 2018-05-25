@@ -69,11 +69,11 @@ class QuickTest(RemoteAuthTestCase):
         """.split()
         self.assertEqual(found, expected)
 
-        Person = rt.modules.contacts.Person
-        Note = rt.modules.notes.Note
-        Excerpt = rt.modules.excerpts.Excerpt
-        ExcerptType = rt.modules.excerpts.ExcerptType
-        ContentType = rt.modules.contenttypes.ContentType
+        Person = rt.models.contacts.Person
+        Note = rt.models.notes.Note
+        Excerpt = rt.models.excerpts.Excerpt
+        ExcerptType = rt.models.excerpts.ExcerptType
+        ContentType = rt.models.contenttypes.ContentType
         self.assertEqual(len(Person.allow_cascaded_delete), 0)
         self.assertEqual(len(Note.allow_cascaded_delete), 0)
         self.assertEqual(len(Excerpt.allow_cascaded_delete), 1)
@@ -89,7 +89,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(Note.objects.count(), 1)
         self.assertEqual(Excerpt.objects.count(), 1)
 
-        ar = rt.modules.notes.Notes.request()
+        ar = rt.models.notes.Notes.request()
         s = ar.to_rst(column_names="id owner")
         self.assertEqual(s, """\
 ==== ===============
@@ -100,7 +100,7 @@ class QuickTest(RemoteAuthTestCase):
 
 """)
 
-        ar = rt.modules.excerpts.Excerpts.request()
+        ar = rt.models.excerpts.Excerpts.request()
         s = ar.to_rst(column_names="id owner")
         self.assertEqual(s, """\
 ==== ===============
@@ -123,9 +123,9 @@ class QuickTest(RemoteAuthTestCase):
 
     def test_dupable(self):
         
-        Company = rt.modules.contacts.Company
-        Person = rt.modules.contacts.Person
-        DupableWord = rt.modules.dupable_partners.Word
+        Company = rt.models.contacts.Company
+        Person = rt.models.contacts.Person
+        DupableWord = rt.models.dupable_partners.Word
 
         bernard = create(Person, first_name="Bernard", last_name="Bodard")
         

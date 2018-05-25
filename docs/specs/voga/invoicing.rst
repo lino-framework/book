@@ -36,7 +36,7 @@ IOW, in Lino Voga both :class:`Enrolment
 <lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
 <lino_cosi.lib.invoicing.mixins.Invoiceable>`:
 
->>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
+>>> rt.models_by_base(rt.models.invoicing.Invoiceable)
 [<class 'lino_voga.lib.roger.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
 

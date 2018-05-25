@@ -73,7 +73,7 @@ before working on this problem.
 The problem might be related to the fact that `AFTER17` the `name`
 field occurs *twice* in the list of fields:
 
->>> Person = rt.modules.contacts.Person
+>>> Person = rt.models.contacts.Person
 >>> from lino import AFTER17
 >>> from lino.core.fields import VirtualField
 >>> rmu([f.name for f in Person._meta._get_fields(reverse=False) if not isinstance(f, VirtualField)])

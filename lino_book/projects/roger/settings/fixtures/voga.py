@@ -76,7 +76,7 @@ demo_date = dd.demo_date
 class Loader1(object):
 
     def objects(self):
-        VatClasses = rt.modules.vat.VatClasses
+        VatClasses = rt.models.vat.VatClasses
         # yield PupilType(ref="M", name="Mitglied")
         # yield PupilType(ref="H", name="Helfer")
         # yield PupilType(ref="L", name="LFV")

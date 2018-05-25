@@ -137,7 +137,7 @@ Accessing permissions from within your code
 Just some examples...
 
 
->>> UserTypes = rt.actors.users.UserTypes
+>>> UserTypes = rt.models.users.UserTypes
 
 >>> UserTypes.admin
 users.UserTypes.admin:900
@@ -183,15 +183,15 @@ For example, the list of all users (the :class:`users.AllUsers
 <lino.modlib.users.desktop.AllUsers>` table) is visible only for users
 who have the :class:`SiteAdmin <lino.core.roles.SiteAdmin>` role:
 
->>> sixprint(rt.actors.users.AllUsers.required_roles)
+>>> sixprint(rt.models.users.AllUsers.required_roles)
 {<class 'lino.core.roles.SiteAdmin'>}
 
 >>> from lino.core.roles import SiteUser, SiteAdmin
 >>> user = SiteUser()
 >>> admin = SiteAdmin()
->>> user.has_required_roles(rt.actors.users.AllUsers.required_roles)
+>>> user.has_required_roles(rt.models.users.AllUsers.required_roles)
 False
->>> admin.has_required_roles(rt.actors.users.AllUsers.required_roles)
+>>> admin.has_required_roles(rt.models.users.AllUsers.required_roles)
 True
 
 

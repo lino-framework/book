@@ -14,22 +14,22 @@ def objects():
     be saved.
 
     """
-    Place = rt.modules.lets.Place
-    Member = rt.modules.lets.Member
-    Product = rt.modules.lets.Product
+    Place = rt.models.lets.Place
+    Member = rt.models.lets.Member
+    Product = rt.models.lets.Product
 
     def offer(what, who):
-        return rt.modules.lets.Offer(
+        return rt.models.lets.Offer(
             product=findbyname(Product, what),
             provider=findbyname(Member, who))
 
     def demand(what, who):
-        return rt.modules.lets.Demand(
+        return rt.models.lets.Demand(
             product=findbyname(Product, what),
             customer=findbyname(Member, who))
 
     def member(name, place, email=''):
-        return rt.modules.lets.Member(
+        return rt.models.lets.Member(
             name=name, email=email,
             place=findbyname(Place, place))
 

@@ -543,7 +543,7 @@ tickets that are being fixed when this milestone is reached.
 
 The demo database has the following wishes:
 
->>> rt.show(rt.actors.deploy.Deployments, limit=10)
+>>> rt.show(rt.models.deploy.Deployments, limit=10)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
  ==== ======== =================================================== ================= ======== ============== ============== ================== =============
   ID   No.      Ticket                                              Meeting           Remark   Wish type      Ticket State   New Ticket State   Deferred to

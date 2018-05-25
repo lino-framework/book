@@ -36,7 +36,7 @@ class QuickTest(RemoteAuthTestCase):
         from lino.core.renderer import TestRenderer
         # from lino.core.renderer import JsRenderer as TestRenderer
         
-        UserTypes = rt.actors.users.UserTypes        
+        UserTypes = rt.models.users.UserTypes        
         rt.models.users.User(
             username="robin", user_type=UserTypes.admin).save()
         
@@ -46,7 +46,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(s, "No data to display")
 
 
-        rr = rt.actors.contacts.Companies.required_roles
+        rr = rt.models.contacts.Companies.required_roles
         self.assertTrue(ses.user.user_type.role.satisfies_requirement(rr))
 
         # We create a new organization:

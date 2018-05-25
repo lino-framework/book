@@ -52,10 +52,10 @@ class QuickTest(RemoteAuthTestCase):
             #     'lino.core.auth.RemoteUserMiddleware',
             #     'lino.utils.ajax.AjaxExceptionResponse'))
 
-        Person = rt.modules.contacts.Person
-        Country = rt.modules.countries.Country
-        Place = rt.modules.countries.Place
-        PlaceTypes = rt.modules.countries.PlaceTypes
+        Person = rt.models.contacts.Person
+        Country = rt.models.countries.Country
+        Place = rt.models.countries.Place
+        PlaceTypes = rt.models.countries.PlaceTypes
         
         ee = create_and_get(Country,
                             isocode='EE', **dd.babelkw('name',
@@ -285,7 +285,7 @@ Estonia''')
         # least in sqlite. we would prefer to have `['adams', 'Zybulka']`,
         # but we get `['Zybulka', 'adams']`.
 
-        contacts = rt.modules.contacts
+        contacts = rt.models.contacts
         contacts.Partner(name="Zybulka").save()
         contacts.Partner(name="adams").save()
         ar = rt.login().spawn(contacts.Partners)

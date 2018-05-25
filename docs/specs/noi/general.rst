@@ -88,7 +88,7 @@ A **senior** is a developer who additionaly can triage tickets.
 Here is a list of user types of those who can work on tickets:
 
 >>> from lino_xl.lib.working.roles import Worker
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.models.users.UserTypes
 >>> [p.name for p in UserTypes.items()
 ...     if p.has_required_roles([Worker])]
 ['consultant', 'hoster', 'developer', 'senior', 'admin']

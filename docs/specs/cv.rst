@@ -17,8 +17,8 @@ Career module (tested)
    :depth: 2
 
 
->>> UserTypes = rt.actors.users.UserTypes
->>> AllLanguageKnowledges = rt.modules.cv.AllLanguageKnowledges
+>>> UserTypes = rt.models.users.UserTypes
+>>> AllLanguageKnowledges = rt.models.cv.AllLanguageKnowledges
 
 >>> rt.show(UserTypes)
 ======= =========== =============== =====================================
