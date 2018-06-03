@@ -51,9 +51,9 @@ The :mod:`lino_xl.lib.courses` plugin has two settings
 
 The demo database has 35 pupils and 9 teachers:
 
->>> rt.modules.courses.Pupil.objects.count()
+>>> rt.models.courses.Pupil.objects.count()
 35
->>> rt.modules.courses.Teacher.objects.count()
+>>> rt.models.courses.Teacher.objects.count()
 9
 
 
@@ -76,7 +76,7 @@ The demo database has 35 pupils and 9 teachers:
 
 >>> ses = rt.login('robin')
 
->>> ses.show(rt.actors.courses.PupilTypes)
+>>> ses.show(rt.models.courses.PupilTypes)
 ==== =========== ============= ================== ==================
  ID   Reference   Designation   Designation (de)   Designation (fr)
 ---- ----------- ------------- ------------------ ------------------
@@ -86,7 +86,7 @@ The demo database has 35 pupils and 9 teachers:
 ==== =========== ============= ================== ==================
 <BLANKLINE>
 
->>> ses.show(rt.actors.courses.TeacherTypes)
+>>> ses.show(rt.models.courses.TeacherTypes)
 ==== =========== ================== ======================= ======================
  ID   Reference   Designation        Designation (de)        Designation (fr)
 ---- ----------- ------------------ ----------------------- ----------------------
@@ -177,7 +177,7 @@ There are two Yoga courses:
 >>> obj
 Line #10 ('Yoga')
         
->>> rt.show(rt.actors.courses.CoursesByLine, obj)
+>>> rt.show(rt.models.courses.CoursesByLine, obj)
 ==================================== ============== ================== ============= ====================
  Description                          When           Room               Times         Instructor
 ------------------------------------ -------------- ------------------ ------------- --------------------
@@ -187,7 +187,7 @@ Line #10 ('Yoga')
 <BLANKLINE>
 
 
->>> ContentType = rt.modules.contenttypes.ContentType
+>>> ContentType = rt.models.contenttypes.ContentType
 >>> json_fields = 'count rows title success no_data_text param_values'
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
@@ -212,8 +212,8 @@ Journeys
 ====================================== ======================= ======= ================== =========== ============= =========== ========
  Description                            When                    Times   Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------- ----------------------- ------- ------------------ ----------- ------------- ----------- --------
- *001 Greece 2014* / *Hans Altenberg*   14/08/2014-20/08/2014                              2                         0           0
- **Total (1 rows)**                                                     **0**              **2**       **0**         **0**       **0**
+ *001 Greece 2014* / *Hans Altenberg*   14/08/2014-20/08/2014                              3                         0           0
+ **Total (1 rows)**                                                     **0**              **3**       **0**         **0**       **0**
 ====================================== ======================= ======= ================== =========== ============= =========== ========
 <BLANKLINE>
 ~~~~~~~~
@@ -223,13 +223,13 @@ Computer
 ============================================================ ================= ============= ================== =========== ============= =========== ========
  Description                                                  When              Times         Available places   Confirmed   Free places   Requested   Trying
 ------------------------------------------------------------ ----------------- ------------- ------------------ ----------- ------------- ----------- --------
- *003 comp (First Steps)* / *Daniel Emonts*                   Every Monday      13:30-15:00   3                  3           0             0           0
- *004 comp (First Steps)* / *Germaine Gernegroß*              Every Wednesday   17:30-19:00   3                  2           1             0           0
+ *003 comp (First Steps)* / *Daniel Emonts*                   Every Monday      13:30-15:00   3                  2           1             0           0
+ *004 comp (First Steps)* / *Germaine Gernegroß*              Every Wednesday   17:30-19:00   3                  3           0             1           0
  *005 comp (First Steps)* / *Josef Jonas*                     Every Friday      13:30-15:00   3                  2           1             0           0
- *006C WWW (Internet for beginners)* / *Marc Malmendier*      Every Monday      13:30-15:00   4                  2           2             0           0
- *007C WWW (Internet for beginners)* / *Edgard Radermacher*   Every Wednesday   17:30-19:00   4                  4           0             0           0
- *008C WWW (Internet for beginners)* / *Tom Thess*            Every Friday      13:30-15:00   4                  0           4             1           0
- **Total (6 rows)**                                                                           **21**             **13**      **8**         **1**       **0**
+ *006C WWW (Internet for beginners)* / *Marc Malmendier*      Every Monday      13:30-15:00   4                  2           2             1           0
+ *007C WWW (Internet for beginners)* / *Edgard Radermacher*   Every Wednesday   17:30-19:00   4                  2           2             0           0
+ *008C WWW (Internet for beginners)* / *Tom Thess*            Every Friday      13:30-15:00   4                  3           1             0           0
+ **Total (6 rows)**                                                                           **21**             **14**      **7**         **2**       **0**
 ============================================================ ================= ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 ~~~~~
@@ -239,18 +239,18 @@ Sport
 ========================================================= ================= ============= ================== =========== ============= =========== ========
  Description                                               When              Times         Available places   Confirmed   Free places   Requested   Trying
 --------------------------------------------------------- ----------------- ------------- ------------------ ----------- ------------- ----------- --------
- *009C BT (Belly dancing)* / *David da Vinci*              Every Wednesday   19:00-20:00   10                 2           8             2           0
- *010C FG (Functional gymnastics)* / *Hans Altenberg*      Every Monday      11:00-12:00   5                  3           2             0           0
- *011C FG (Functional gymnastics)* / *Charlotte Collard*   Every Monday      13:30-14:30   5                  3           2             0           0
+ *009C BT (Belly dancing)* / *David da Vinci*              Every Wednesday   19:00-20:00   10                 3           7             0           0
+ *010C FG (Functional gymnastics)* / *Hans Altenberg*      Every Monday      11:00-12:00   5                  2           3             0           0
+ *011C FG (Functional gymnastics)* / *Charlotte Collard*   Every Monday      13:30-14:30   5                  2           3             1           0
  *012 Rücken (Swimming)* / *Daniel Emonts*                 Every Monday      11:00-12:00   20                 3           17            0           0
- *013 Rücken (Swimming)* / *Germaine Gernegroß*            Every Monday      13:30-14:30   20                 3           17            0           0
- *014 Rücken (Swimming)* / *Josef Jonas*                   Every Tuesday     11:00-12:00   20                 4           16            0           0
- *015 Rücken (Swimming)* / *Marc Malmendier*               Every Tuesday     13:30-14:30   20                 2           18            1           0
- *016 Rücken (Swimming)* / *Edgard Radermacher*            Every Thursday    11:00-12:00   20                 4           16            0           0
- *017 Rücken (Swimming)* / *Tom Thess*                     Every Thursday    13:30-14:30   20                 4           16            0           0
- *018 SV (Self-defence)* / *David da Vinci*                Every Friday      18:00-19:00   12                 1           11            2           0
+ *013 Rücken (Swimming)* / *Germaine Gernegroß*            Every Monday      13:30-14:30   20                 3           17            1           0
+ *014 Rücken (Swimming)* / *Josef Jonas*                   Every Tuesday     11:00-12:00   20                 3           17            0           0
+ *015 Rücken (Swimming)* / *Marc Malmendier*               Every Tuesday     13:30-14:30   20                 0           20            0           0
+ *016 Rücken (Swimming)* / *Edgard Radermacher*            Every Thursday    11:00-12:00   20                 3           17            0           0
+ *017 Rücken (Swimming)* / *Tom Thess*                     Every Thursday    13:30-14:30   20                 3           17            1           0
+ *018 SV (Self-defence)* / *David da Vinci*                Every Friday      18:00-19:00   12                 2           10            0           0
  *019 SV (Self-defence)* / *Hans Altenberg*                Every Friday      19:00-20:00   12                 3           9             0           0
- **Total (11 rows)**                                                                       **164**            **32**      **132**       **5**       **0**
+ **Total (11 rows)**                                                                       **164**            **27**      **137**       **3**       **0**
 ========================================================= ================= ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 ~~~~~~~~~~
@@ -260,13 +260,13 @@ Meditation
 ============================================================== ============== ============= ================== =========== ============= =========== ========
  Description                                                    When           Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------------------------------- -------------- ------------- ------------------ ----------- ------------- ----------- --------
- *020C GLQ (GuoLin-Qigong)* / *Charlotte Collard*               Every Monday   18:00-19:30                      3                         0           0
- *021C GLQ (GuoLin-Qigong)* / *Daniel Emonts*                   Every Friday   19:00-20:30                      1                         0           0
- *022C MED (Finding your inner peace)* / *Germaine Gernegroß*   Every Monday   18:00-19:30   30                 0           30            2           0
- *023C MED (Finding your inner peace)* / *Josef Jonas*          Every Friday   19:00-20:30   30                 2           28            0           0
- *024C Yoga* / *Marc Malmendier*                                Every Monday   18:00-19:30   20                 3           17            0           0
- *025C Yoga* / *Edgard Radermacher*                             Every Friday   19:00-20:30   20                 3           17            0           0
- **Total (6 rows)**                                                                          **100**            **12**      **92**        **2**       **0**
+ *020C GLQ (GuoLin-Qigong)* / *Charlotte Collard*               Every Monday   18:00-19:30                      0                         0           0
+ *021C GLQ (GuoLin-Qigong)* / *Daniel Emonts*                   Every Friday   19:00-20:30                      2                         1           0
+ *022C MED (Finding your inner peace)* / *Germaine Gernegroß*   Every Monday   18:00-19:30   30                 2           28            0           0
+ *023C MED (Finding your inner peace)* / *Josef Jonas*          Every Friday   19:00-20:30   30                 3           27            0           0
+ *024C Yoga* / *Marc Malmendier*                                Every Monday   18:00-19:30   20                 2           18            0           0
+ *025C Yoga* / *Edgard Radermacher*                             Every Friday   19:00-20:30   20                 2           18            1           0
+ **Total (6 rows)**                                                                          **100**            **11**      **91**        **2**       **0**
 ============================================================== ============== ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 
@@ -282,80 +282,80 @@ Note the *free places* field which is not always trivial.  Basicially
 it contains `max_places - number of confirmed enrolments`.  But it
 also looks at the `end_date` of these enrolments.
 
-List of courses which have a confirmed ended enrolment:
+List of courses which have a confirmed ended enrolment and a limited
+number of places:
 
 >>> qs = courses.Enrolment.objects.filter(end_date__lt=dd.today(),
-...     state=courses.EnrolmentStates.confirmed)
+...     state=courses.EnrolmentStates.confirmed, course__max_places__isnull=False)
 >>> for obj in qs:
-...     print("{} {}".format(obj.course.id, obj.course.max_places))
-4 3
-10 5
-20 None
-8 4
-3 3
-23 30
-2 None
-19 12
-22 30
-25 20
-1 None
-7 4
-11 5
-21 None
-6 4
-24 20
-10 5
+...     print("{} {} {} {}".format(
+...         obj.course.id, obj.course.max_places,
+...         obj.course.confirmed,
+...         obj.course.get_free_places(dd.today())))
+9 10 3 7
+19 12 3 9
+5 3 2 1
+22 30 2 28
+25 20 2 18
+10 5 2 3
+8 4 3 1
+3 3 2 1
+23 30 3 27
+7 4 2 2
+18 12 2 10
+6 4 2 2
+24 20 2 18
 
-In course #11 there are 4 confirmed enrolments, but only 3 of them are
-actually taking a place because one has already ended.
+In course #5 there are **3** confirmed enrolments, but (on 2015-05-22)
+only **2** of them are actually taking a place because one has already
+ended.
 
-
->>> obj = courses.Course.objects.get(pk=11)
->>> print(obj.max_places)
-5
->>> print(obj.get_free_places())
-2
->>> rt.show(rt.actors.courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places state")
-========================= ============ ============ ============= ===========
- Participant               Start date   End date     Places used   State
-------------------------- ------------ ------------ ------------- -----------
- Ulrike Charlier (ME)                                1             Confirmed
- Josef Jonas (ME)                                    1             Confirmed
- Edgard Radermacher (ME)                08/11/2014   1             Confirmed
- Jérôme Jeanémart (ME)                               1             Confirmed
- **Total (4 rows)**                                  **4**
-========================= ============ ============ ============= ===========
+>>> obj = courses.Course.objects.get(pk=5)
+>>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places state")
+======================================== ============ ============ ============= ===========
+ Participant                              Start date   End date     Places used   State
+---------------------------------------- ------------ ------------ ------------- -----------
+ Didier di Rupo (MS)                                                1             Confirmed
+ Dorothée Dobbelstein-Demeulenaere (ME)                22/04/2014   1             Confirmed
+ Josefine Leffin (MEL)                    02/04/2014                1             Confirmed
+ **Total (3 rows)**                                                 **3**
+======================================== ============ ============ ============= ===========
 <BLANKLINE>
 
-Above situation is because we are working on 20150522:
+>>> print(obj.max_places)
+3
+>>> print(obj.get_free_places())
+1
+
+Above situation is because we are looking at it on 20150522:
 
 >>> print(dd.today())
 2015-05-22
 
 The same request on earlier dates yields different results:
 
-On 20140101 nobody has left yet, 4 places are taken and therefore only
-*5-4=1* place is free:
+On 20140403 nobody has left yet, all 3 places are taken and therefore
+no place is free:
 
->>> print(obj.get_free_places(i2d(20141107)))
+>>> print(obj.get_free_places(i2d(20140403)))
+0
+
+On 20140422 is Dorothée's last day, so her place is not yet free:
+
+>>> print(obj.get_free_places(i2d(20140422)))
+0
+
+But the next day she is gone and her place available again:
+
+>>> print(obj.get_free_places(i2d(20140423)))
 1
-
-On 20141108 is Edgard's last day, so his place is not yet free:
-
->>> print(obj.get_free_places(i2d(20141108)))
-1
-
-On 20141109 he is gone:
-
->>> print(obj.get_free_places(i2d(20141109)))
-2
 
 
 
 Filtering pupils
 ================
 
->>> print(rt.actors.courses.Pupils.params_layout.main)
+>>> print(rt.models.courses.Pupils.params_layout.main)
 course partner_list #aged_from #aged_to gender show_members show_lfv show_ckk show_raviva
 
 There are 36 pupils (21 men and 15 women) in our database:

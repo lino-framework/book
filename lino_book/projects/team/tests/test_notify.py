@@ -70,13 +70,13 @@ class TestCase(TestCase):
         watchers.
 
         """
-        ContentType = rt.modules.contenttypes.ContentType
+        ContentType = rt.models.contenttypes.ContentType
         Comment = rt.models.comments.Comment
-        Ticket = rt.modules.tickets.Ticket
-        Project = rt.modules.tickets.Project
-        # Vote = rt.modules.votes.Vote
-        Star = rt.modules.stars.Star
-        Message = rt.modules.notify.Message
+        Ticket = rt.models.tickets.Ticket
+        Project = rt.models.tickets.Project
+        # Vote = rt.models.votes.Vote
+        Star = rt.models.stars.Star
+        Message = rt.models.notify.Message
         User = settings.SITE.user_model
         create(Project, name="Project")
         robin = create(

@@ -11,18 +11,25 @@ Virtual tables
     >>> from lino.api.doctest import *
     
 
-A virtual table is a table which has no database model.
+A virtual table is a table which which is not connected to any
+database model.  Which means that you are responsible for defining
+that data.
 
-For this tutorial we will use the :mod:`lino_book.projects.vtables`
-demo project.
+The **rows** of a virtual table are defined by a method
+:meth:`get_data_rows <lino.core.tables.AbstractTable.get_data_rows>`.
+In :doc:`database tables </dev/tables/index>` this method has a
+default implementation based on the :attr:`model
+<lino.core.tables.Table.model>` attribute.
 
+The **columns** of a virtual table must be defined using *virtual
+fields*.
 
-Here is the :xfile:`models.py` file 
+Here is an example of a virtual table (taken from the
+:mod:`lino_book.projects.vtables` demo project):
 
 .. literalinclude:: ../../lino_book/projects/vtables/models.py
-  
 
-Some setup for doctest:
+We can show this table in a shell session:
   
 >>> rt.show(vtables.CitiesAndInhabitants)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -38,7 +45,7 @@ Some setup for doctest:
 <BLANKLINE>
 
 
-Here is a list of virtual tables in other applications:
+Usage examples of virtual tables in real applications:
 
 - :class:`lino.modlib.ipdict.Connections`
 - :class:`lino.modlib.about.models.Models`

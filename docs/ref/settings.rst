@@ -77,8 +77,12 @@ See http://docs.djangoproject.com/en/1.11/ref/settings/#language-code
 
 .. setting:: MIDDLEWARE_CLASSES
 
-  See http://docs.djangoproject.com/en/1.11/ref/settings/#middleware_classes
-  
+    Lino still uses `MIDDLEWARE_CLASSES
+    <https://docs.djangoproject.com/en/1.11/ref/settings/#middleware-classes>`__
+    instead of :setting:`MIDDLEWARE`.  One day we will `upgrade all
+    Lino middleware to the new middleware style
+    <https://docs.djangoproject.com/en/1.11/topics/http/middleware/#upgrading-middleware>`_.
+ 
 .. setting:: LANGUAGES
 
 Lino sets this automatically when your :attr:`SITE.languages

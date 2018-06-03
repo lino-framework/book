@@ -110,8 +110,8 @@ Now add a :xfile:`manage.py` file with the following content:
 
 .. literalinclude:: manage.py
 
-A :xfile:`manage.py` must do at least two things: it must set the
-:envvar:`DJANGO_SETTINGS_MODULE` environment variable and then call
+A :xfile:`manage.py` does two things: it sets the
+:envvar:`DJANGO_SETTINGS_MODULE` environment variable and then calls
 Django's `execute_from_command_line` function.
 
 This is plain traditional Django know-how.  There are many opinions,
@@ -147,10 +147,10 @@ The output that follows should look like this:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
-`initdb std demo demo2` started on database .../default.db.
+`initdb std demo demo2` started on database .../hello/default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, contacts, countries, extjs, jinja, lino, office, printing, staticfiles, system, users, xl
-  Apply all migrations: sessions
+  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino, office, printing, staticfiles, system, users, xl
+  Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
@@ -164,16 +164,39 @@ Synchronizing apps without migrations:
     Creating table contacts_company
     Creating table contacts_roletype
     Creating table contacts_role
+    Creating table gfks_helptext
+    Creating table cal_remotecalendar
+    Creating table cal_room
+    Creating table cal_priority
+    Creating table cal_eventtype
+    Creating table cal_guestrole
+    Creating table cal_calendar
+    Creating table cal_subscription
+    Creating table cal_task
+    Creating table cal_eventpolicy
+    Creating table cal_recurrentevent
+    Creating table cal_event
+    Creating table cal_guest
     Running deferred SQL...
 Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
-Loading data from ...
+Loading data from .../lino_xl/lib/contacts/fixtures/std.py
+Loading data from .../lino/modlib/gfks/fixtures/std.py
+Loading data from .../lino_xl/lib/cal/fixtures/std.py
+Loading data from .../lino/modlib/users/fixtures/demo.py
+Loading data from .../lino_xl/lib/countries/fixtures/demo.py
+Loading data from .../lino_xl/lib/contacts/fixtures/demo.py
+Loading data from .../lino_xl/lib/cal/fixtures/demo.py
+Loading data from .../lino/modlib/users/fixtures/demo2.py
+Loading data from .../lino_xl/lib/cal/fixtures/demo2.py
 Installed ... object(s) from ... fixture(s)
 
 
-Lino applications use to make abundant use of what we call *Python
-fixtures* in order to have a rich set of "demo data".  We will come
-back to this in :doc:`/dev/initdb`.
+Lino applications make abundant use of what we call *Python fixtures*
+in order to have a rich set of "demo data".  We will come back to this
+in :doc:`/dev/initdb`.
 
 
 
@@ -221,11 +244,11 @@ The output should be as follows:
 
 >>> shell("python manage.py show users.Users")
 ... #doctest: +ELLIPSIS
-========== =============== ============ ===========
- Username   User type       First name   Last name
----------- --------------- ------------ -----------
- robin      Administrator   Robin        Rood
-========== =============== ============ ===========
+========== ===================== ============ ===========
+ Username   User type             First name   Last name
+---------- --------------------- ------------ -----------
+ robin      900 (Administrator)   Robin        Rood
+========== ===================== ============ ===========
 
 Or you can see the list of countries:
 
@@ -252,7 +275,7 @@ Yes, it looks the same as the one you saw in the previous chapter. But
 read on. You can now play around by changing things in your project.
 
 #.  In your :file:`settings.py` file, replace
-    :mod:`lino_book.projects.min1` by :mod:`lino_book.projects.liina`.
+    :mod:`lino_book.projects.min2` by :mod:`lino_book.projects.liina`.
     Run :command:`python manage.py prep` followed by :command:`python
     manage.py runserver`. Log in and play around.
   
@@ -260,9 +283,9 @@ read on. You can now play around by changing things in your project.
 
 #.  Write three descriptions in LibreOffice `.odt` format, one for
     each of the applications you just saw: what it can do, what are
-    the features, what functionalities are missing. Use
-    screenshots. Use a language which can be understood by
-    non-programmers.  Send these documents to your mentor.
+    the features, what functionalities are missing. Use screenshots.
+    Use a language which can be understood by non-programmers.  Send
+    these documents to your mentor.
     
 #.  Read the documentation about the following Site attributes and
     try to change them:

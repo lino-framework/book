@@ -15,19 +15,19 @@ def objects():
     saved.
 
     """
-    Place = rt.modules.lets.Place
-    Member = rt.modules.lets.Member
-    Customer = rt.modules.lets.Customer
-    Supplier = rt.modules.lets.Supplier
-    Product = rt.modules.lets.Product
+    Place = rt.models.lets.Place
+    Member = rt.models.lets.Member
+    Customer = rt.models.lets.Customer
+    Supplier = rt.models.lets.Supplier
+    Product = rt.models.lets.Product
 
     def offer(what, who):
-        return rt.modules.lets.Offer(
+        return rt.models.lets.Offer(
             product=findbyname(Product, what),
             supplier=findbyname(Supplier, who))
 
     def demand(what, who):
-        return rt.modules.lets.Demand(
+        return rt.models.lets.Demand(
             product=findbyname(Product, what),
             customer=findbyname(Customer, who))
 

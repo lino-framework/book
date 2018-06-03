@@ -272,7 +272,7 @@ Miscellaneous
 
 Comparing Choices uses their *value* (not the *name* nor *text*):
 
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.models.users.UserTypes
 
 >>> UserTypes.admin > UserTypes.user
 True

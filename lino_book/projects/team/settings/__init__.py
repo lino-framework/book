@@ -18,12 +18,11 @@ from lino_noi.lib.noi.settings import *
 
 
 class Site(Site):
+
+    workflows_module = 'lino_book.projects.team.workflows'
     
     def get_installed_apps(self):
-        """Implements :meth:`lino.core.site.Site.get_installed_apps` for Lino
-        Noi.
-
-        """
+        # add lino.modlib.restful to the std list of plugins
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.restful'
         # yield 'lino_xl.lib.caldav'

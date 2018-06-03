@@ -37,8 +37,8 @@ class WorkflowTests(RemoteAuthTestCase):
         User = rt.models.users.User
         Vote = rt.models.votes.Vote
         VoteStates = rt.models.votes.VoteStates
-        VotesByVotable = rt.actors.votes.VotesByVotable
-        # ContentType = rt.modules.contenttypes.ContentType
+        VotesByVotable = rt.models.votes.VotesByVotable
+        # ContentType = rt.models.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
         # create(Project, name='project')

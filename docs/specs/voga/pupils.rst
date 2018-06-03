@@ -45,26 +45,29 @@ Select pupils who participate in a given course:
 Course #1 ('001 Greece 2014')
 >>> pv = dict(course=obj)
 >>> rt.show('courses.Pupils', param_values=pv)
-========================= ============================= ================== ========= ===== ===== ======== ==============
- Name                      Address                       Participant Type   Section   LFV   CKK   Raviva   Mitglied bis
-------------------------- ----------------------------- ------------------ --------- ----- ----- -------- --------------
- Hans Altenberg (MEL)      Aachener Straße, 4700 Eupen   Member                       Yes   No    No       31/12/2015
- Mark Martelaer (MS)       Amsterdam, Netherlands        Non-member         Kelmis    No    No    No
- Alfons Radermacher (ME)   4730 Raeren                   Helper                       No    No    No       31/12/2015
-========================= ============================= ================== ========= ===== ===== ======== ==============
+============================= ============================= ================== ========= ===== ===== ======== ==============
+ Name                          Address                       Participant Type   Section   LFV   CKK   Raviva   Mitglied bis
+----------------------------- ----------------------------- ------------------ --------- ----- ----- -------- --------------
+ Hans Altenberg (MEL)          Aachener Straße, 4700 Eupen   Member                       Yes   No    No       31/12/2015
+ Bernd Brecht (ME)             Germany                       Member                       No    No    No       31/12/2015
+ Jacqueline Jacobs (ME)        Fränzel, 4700 Eupen           Helper                       No    No    No       31/12/2016
+ Christian Radermacher (MEL)   4730 Raeren                   Non-member                   Yes   No    No       31/12/2015
+============================= ============================= ================== ========= ===== ===== ======== ==============
 <BLANKLINE>
 
-Note that above table is not the same as :class:`EnrolmentsByCourse
+Note that above table contains the same pupils but not the same
+columns as :class:`EnrolmentsByCourse
 <lino_voga.lib.courses.desktop.EnrolmentsByCourse>`:
 
 >>> rt.show('courses.EnrolmentsByCourse', obj)
-==================== ========================= ============ ============ ============= ======== ========== ============= ============== ===============
- Date of request      Participant               Start date   End date     Places used   Remark   Tariff     Free events   Amount         Workflow
--------------------- ------------------------- ------------ ------------ ------------- -------- ---------- ------------- -------------- ---------------
- 25/07/2014           Hans Altenberg (MEL)                                1                      Journeys                 295,00         **Confirmed**
- 09/08/2014           Alfons Radermacher (ME)                18/09/2014   2                      Journeys                 590,00         **Confirmed**
- 14/08/2014           Mark Martelaer (MS)                                 1                      Journeys                 295,00         **Confirmed**
- **Total (3 rows)**                                                       **4**                             **0**         **1 180,00**
-==================== ========================= ============ ============ ============= ======== ========== ============= ============== ===============
+==================== ============================= ============ ============ ============= ======== ========== ============= ============== ===============
+ Date of request      Participant                   Start date   End date     Places used   Remark   Tariff     Free events   Amount         Workflow
+-------------------- ----------------------------- ------------ ------------ ------------- -------- ---------- ------------- -------------- ---------------
+ 25/07/2014           Hans Altenberg (MEL)                                    1                      Journeys                 295,00         **Confirmed**
+ 25/07/2014           Bernd Brecht (ME)                                       1                      Journeys                 295,00         **Confirmed**
+ 09/08/2014           Jacqueline Jacobs (ME)                     18/09/2014   2                      Journeys                 590,00         **Confirmed**
+ 29/08/2014           Christian Radermacher (MEL)   29/08/2014                1                      Journeys                 295,00         **Confirmed**
+ **Total (4 rows)**                                                           **5**                             **0**         **1 475,00**
+==================== ============================= ============ ============ ============= ======== ========== ============= ============== ===============
 <BLANKLINE>
 

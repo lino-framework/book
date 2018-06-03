@@ -9,7 +9,3 @@ The framework
    xl
    demo_projects
    invlib
-   /specs/index
-   /api/index
-    
-

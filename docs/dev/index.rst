@@ -4,8 +4,9 @@
 Developer's Guide
 =================
 
-This is the central meeting place for :doc:`Lino developers
-</community/developers>`.
+This part of the Lino Book explains Lino to developers.
+Non-programmers will prefer to read :doc:`/about/index`, hosting
+providers should start at :doc:`/admin/index`.
 
 
 .. toctree::
@@ -13,50 +14,15 @@ This is the central meeting place for :doc:`Lino developers
               
    getstarted
    diving
-   about
    framework
    team
    writedocs
+   acquaintained
+   about
+   reference
    
 
 
-Getting acquaintained
-=====================
-
-
-.. toctree::
-   :maxdepth: 1
-
-   datamig
-   application
-   summaries
-   plugins
-   site
-   dump2py
-   site_config
-   online
-   languages
-   i18n
-   menu
-   actors
-   parameters
-   ar
-   virtualfields
-   html
-   custom_actions
-   action_parameters
-   gfks
-   /tutorials/layouts
-   actions
-   mldbc/index
-   plugin_inheritance
-   plugin_cooperation
-   printing
-   cache
-   rendering
-   mti
-   combo/index
-   
 
 Special topics
 ==============
@@ -67,9 +33,8 @@ Special topics
    /specs/projects/mti
    /specs/projects/nomti
    watch
+   matrix/index
    /tutorials/workflows_tutorial/index
-   /tutorials/matrix_tutorial/index
-
    /tutorials/input_mask/index
 
 
@@ -93,6 +58,7 @@ Drafts
    style
    extjs
    inject_field
+   repair
 
 
 Other
@@ -121,12 +87,12 @@ Other
    django
    tours
    socialauth/index
+   application
 
 
 .. toctree::
    :hidden:
 
-   tables
    fields
    ad
    dd

@@ -25,7 +25,7 @@ Test the content of the admin main page.
 >>> res = test_client.get('/api/main_html')
 >>> print(res.status_code)
 200
->>> result = json.loads(res.content)
+>>> result = json.loads(res.content.decode())
 >>> result['success']
 True
 >>> # print(html2text(result['html']))

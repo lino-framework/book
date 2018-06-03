@@ -1,10 +1,9 @@
+..  doctest docs/dev/polls/index.rst
 .. _lino.tutorial.polls:
 
+=======================
 The Lino Polls tutorial
 =======================
-
-
-..  doctest docs/dev/polls/index.rst
 
 .. doctest init:
     >>> import os
@@ -229,8 +228,8 @@ another tutorial :ref:`lino.tutorial.tables`.  For now just note that
 
 - we defined one additional table `ChoicesByQuestion` which inherits
   from `Choices`. This table shows the choices *for a given question*.
-  We call it a *slave table* because it *depends* on its "master"
-  which (in this case) must be a question instance.
+  We call it a :ref:`slave table <slave_tables>` because it *depends*
+  on its "master" (the given question instance).
 
   
 Changing the database structure
@@ -409,13 +408,12 @@ following content:
 Explanations:
 
 - :attr:`rt.models <lino.core.site.Site.models>` : is a shortcut to
-  access the models and tables of the application.
-  In plain Django you learned to write
-  ::
+  access the models and tables of the application.  In plain Django
+  you learned to write::
 
     from polls.models import Question
 
-  But in Lino we recomment to write ::
+  But in Lino we recommend to write::
 
     Question = rt.models.polls.Question
 
@@ -452,28 +450,10 @@ opened polls:
 .. image:: main2.png
     :scale: 50
 
-There are several methods for specifying the content of the main
-window:
-
-- define a custom :xfile:`admin_main.html` template (as we did in this
-  tutorial)
-
-- override the :meth:`get_main_html
-  <lino.core.site.Site.get_main_html>` method of your :class:`Site
-  <lino.core.site.Site>` class to return your own chunk of html.
-    
-- use the default :xfile:`admin_main.html` template and override the
-  :meth:`get_dashboard_items
-  <lino.core.site.Site.get_dashboard_items>`
-  of your :class:`Site <lino.core.site.Site>` class.
-
-- override the :meth:`get_dashboard_items
-  <lino.core.plugin.Plugin.get_dashboard_items>` of your :class:`Plugin
-  <lino.core.plugin.Plugin>` class.
-  
-- override the
-  :meth:`setup_quicklinks <lino.core.site.Site.setup_quicklinks>`
-  methods of your :class:`Site <lino.core.site.Site>` class.
+Note that writing your own :xfile:`admin_main.html` template is the
+easiest but also the most primitive way of bringing content to the
+main window.  In real world applications you will probably use
+dashboard items as described in :doc:`/dev/admin_main`.
 
 After clicking on a vote, here is the `vote` method 
 of our `Choice` model in action:

@@ -38,6 +38,8 @@ Examples used by a tutorial:
    dumps
    combo
    polly
+   watch
+   watch2
 
 
 Poorly documented examples at different development states:

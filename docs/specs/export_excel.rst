@@ -74,8 +74,9 @@ if the client has changed these.
 
 .. intermezzo 20150828
 
-    >>> cal.MyEntries.model.manager_roles_required
-    set([(<class 'lino.modlib.office.roles.OfficeStaff'>, <class 'lino.modlib.office.roles.OfficeOperator'>)])
+    >>> from lino.modlib.office.roles import OfficeStaff, OfficeOperator
+    >>> cal.MyEntries.model.manager_roles_required == {(OfficeStaff, OfficeOperator)}
+    True
     >>> ba = cal.MyEntries.get_action_by_name("export_excel")
     >>> u = rt.login('robin').user
     >>> ba.actor.get_view_permission(u.user_type)
@@ -103,9 +104,11 @@ start_date end_date observed_event state user assigned_to project event_type roo
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
->>> result = json.loads(res.content)
->>> print(result.keys())
-[u'open_url', u'success']
+>>> result = json.loads(res.content.decode())
+>>> len(result)
+2
+>>> result['success']
+True
 >>> print(result['open_url'])
 /media/cache/appyxlsx/127.0.0.1/cal.MyEntries.xlsx
 
@@ -142,8 +145,8 @@ worksheet names longer than 32 characters.
 It has 5 columns and 13 rows:
 
 >>> rows = list(ws.rows)
->>> print(len(list(ws.columns)), len(rows))
-(5, 16)
+>>> print("{}, {}".format(len(list(ws.columns)), len(rows)))
+5, 16
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:

@@ -4,16 +4,18 @@
 Administrator's Guide
 =====================
 
-This part of the documentation is for system administrators who set up
-or maintain a server which hosts one or several Lino production sites.
+This part of the documentation is for **system administrators** who
+set up or maintain a server which hosts one or several Lino production
+sites. Non-programmers will prefer to read :doc:`/about/index`,
+developers :doc:`/dev/index`
 
 The approaches described in this document are not mandatory. Hosting a
 Lino site is technically the same as hosting a `Django
-<https://www.djangoproject.com/>`_ project. If you are already hosting
-Django projects, then you might prefer to use your existing system of
-approaches.  But even experienced Django hosters might find
+<https://www.djangoproject.com/>`_ project.  If you are already
+hosting Django projects, you might prefer to use your existing system
+of approaches.  But even experienced Django hosters might find
 interesting tricks or inspiration for their system by reading how we
-do it.
+recommend to do it.
 
 
 Installation
@@ -29,6 +31,7 @@ Installation
     xl
     oood
     notify
+    security
 
 Maintenance
 -----------

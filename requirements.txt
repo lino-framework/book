@@ -1,10 +1,5 @@
--e git+https://github.com/lino-framework/atelier.git#egg=atelier
-commondata
-commondata.be
-commondata.ee
-commondata.eg
--e git+https://github.com/lino-framework/appypod.git#egg=appy
--e git+https://github.com/lino-framework/etgen.git#egg=etgen
+git+https://github.com/lino-framework/atelier.git#egg=atelier
+git+https://github.com/lino-framework/etgen.git#egg=etgen
 -e git+https://github.com/lino-framework/lino.git#egg=lino
 -e git+https://github.com/lino-framework/xl.git#egg=lino_xl
 -e git+https://github.com/lino-framework/noi.git#egg=lino_noi
@@ -17,6 +12,6 @@ commondata.eg
 -e git+https://github.com/lino-framework/care.git#egg=lino_care
 -e git+https://github.com/lino-framework/tera.git#egg=lino_tera
 -e git+https://github.com/lino-framework/amici.git#egg=lino_amici
--e git+https://github.com/CylonOven/django-mailbox.git#egg=django-mailbox
+git+https://github.com/CylonOven/django-mailbox.git#egg=django-mailbox
 mock
-# -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
+# git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser

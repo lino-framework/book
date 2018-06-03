@@ -26,7 +26,7 @@ examples.
 All courses that were active **already before March 2014**:
 
 >>> pv = dict(end_date=i2d(20140301))
->>> rt.show(rt.actors.courses.Courses, param_values=pv, **kwargs)
+>>> rt.show(rt.models.courses.Courses, param_values=pv, **kwargs)
 ==== ================================ ============== ============ ==========
  ID   Activity line                    When           Start date   End Date
 ---- -------------------------------- -------------- ------------ ----------
@@ -42,7 +42,7 @@ includes all activities which have no :attr:`end_date` and those whose
 end_date is after 20140807.
 
 >>> pv = dict(start_date=i2d(20140807))
->>> rt.show(rt.actors.courses.Activities, param_values=pv, **kwargs)
+>>> rt.show(rt.models.courses.Activities, param_values=pv, **kwargs)
 ==== ================================ ======================= ============ ============
  ID   Activity line                    When                    Start date   End Date
 ---- -------------------------------- ----------------------- ------------ ------------
@@ -52,6 +52,7 @@ end_date is after 20140807.
  12   Rücken (Swimming)                Every Monday            11/07/2015
  14   Rücken (Swimming)                Every Tuesday           11/07/2015
  16   Rücken (Swimming)                Every Thursday          11/07/2015
+ 26   Europe                           Every month             19/06/2015   21/06/2015
  19   SV (Self-defence)                Every Friday            03/03/2015
  18   SV (Self-defence)                Every Friday            03/03/2015
  23   MED (Finding your inner peace)   Every Friday            01/02/2015
@@ -77,7 +78,7 @@ Courses which were active on at least one day of the **period between
 20140303 and 20140422**:
 
 >>> pv = dict(start_date=i2d(20140303), end_date=i2d(20140422))
->>> rt.show(rt.actors.courses.Courses, param_values=pv, **kwargs)
+>>> rt.show(rt.models.courses.Courses, param_values=pv, **kwargs)
 ==== ================================ ================= ============ ==========
  ID   Activity line                    When              Start date   End Date
 ---- -------------------------------- ----------------- ------------ ----------

@@ -54,7 +54,7 @@ True
 
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
-appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-135.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-135.pdf
 
 >>> print(rv['success']) 
 True
@@ -75,7 +75,7 @@ events have no `user` and would currently fail to print.
 >>> obj = cal.Event.objects.get(pk=100)
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print) #doctest: +ELLIPSIS
-appy.pod render .../lino_xl/lib/cal/config/cal/Event/Default.odt -> .../media/cache/appypdf/cal.Event-100.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+appy.pod render .../lino_xl/lib/cal/config/cal/Event/Default.odt -> .../media/cache/appypdf/cal.Event-100.pdf
 
 >>> print(rv['success'])
 True

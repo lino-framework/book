@@ -24,42 +24,7 @@ As a qualified *Lino hosting provider* you assume the following
 
 - you help end-users with certain problems.
 
-Development hosting
-===================
-  
-In case of **development hosting** (the easiest case for you) the
-customer has two contracts: one with a developer and one with you.
-You are not reponsible for maintaining the system software on that
-server, nor answering end-user questions about how to use or configure
-the software. That's the job of the developer.
 
-Your contract with the customer will have the form of an `SLA
-<https://en.wikipedia.org/wiki/Service-level_agreement>`__.
-
-You should have at least one employee who is able to act as
-**emergency maintainer**.  An emergency maintainer knows how a Lino
-application works (as described in :doc:`/admin/index`) and how to
-react in certain situations:
-
-- connection problems caused by the end-user's machine
-- diagnose and fix server-side problems like performance
-- get the server back to work after a technical problem
-
-It is also your emergency maintainer who will decide whether and when
-you are able to offer **stable hosting** for one or several Lino
-applications.
-
-.. _stable_hosting:
-
-Stable hosting
-==============
-
-The difference between development and stable hosting is that your
-emergency maintainer has grown into an independent maintainer who can
-maintain the system software, give limited end-user support and
-install new versions of the application when the customer asks you to
-do so.  In stable mode, the customer pays more money to you because
-you provide additional services and because they don't need support by
-a developer.  With stable hosting, no external developer has access to
-your customer's server.
-
+If you are able to provide these services, you should ask for being
+listed in our :doc:`directory </community/hosters>` of recommented
+Lino hosting providers.  

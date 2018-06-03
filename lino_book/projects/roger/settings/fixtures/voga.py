@@ -76,7 +76,7 @@ demo_date = dd.demo_date
 class Loader1(object):
 
     def objects(self):
-        VatClasses = rt.modules.vat.VatClasses
+        VatClasses = rt.models.vat.VatClasses
         # yield PupilType(ref="M", name="Mitglied")
         # yield PupilType(ref="H", name="Helfer")
         # yield PupilType(ref="L", name="LFV")
@@ -98,7 +98,7 @@ class Loader1(object):
         settings.SITE.site_config.site_company = we
         yield settings.SITE.site_config
 
-        ProductCat = rt.modules.products.ProductCat
+        ProductCat = rt.models.products.ProductCat
         # productcat = Instantiator('products.ProductCat').build
 
         self.course_fees = ProductCat(**dd.str2kw(
@@ -161,14 +161,19 @@ class Loader1(object):
         self.seminare = event_type(**dd.str2kw('name', _("Seminars")))
         yield self.seminare
 
-        yield event_type(**dd.str2kw('name', _("Excursions")))
-                                     # de="Ausflüge",
-                                     #  fr="Excursions",
-                                     #  en="Excursions",
-        yield event_type(**dd.str2kw('name', _("Hikes")))
-                                      # de="Wanderungen",
-                                      # fr="Randonnées",
-                                      # en="Hikes",
+        self.excursions = event_type(
+            max_days=10, **dd.str2kw('name', _("Excursions")))
+        # de="Ausflüge",
+        #  fr="Excursions",
+        #  en="Excursions",
+        yield self.excursions
+        
+        self.hikes = event_type(
+            max_days=60, **dd.str2kw('name', _("Hikes")))
+        # de="Wanderungen",
+        # fr="Randonnées",
+        # en="Hikes",
+        yield self.hikes
 
         yield event_type(**dd.str2kw('name', _("Meetings")))
                                       # de="Versammlungen",
@@ -316,7 +321,9 @@ class Loader2(Loader1):
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
         yield self.journeys_topic
-        europe = line(self.journeys_topic, None, self.journey_fee,
+        europe = line(self.journeys_topic,
+                      self.excursions,
+                      self.journey_fee,
                       options_cat=journey_options,
                       course_area=CourseAreas.journeys,
                       fees_cat=self.journeys_cat,
@@ -518,6 +525,17 @@ class Loader2(Loader1):
         kw.update(company=COMPANIES.pop())
         kw.update(every_unit=cal.Recurrencies.once)
         yield add_booking(self.konf, "10:00", "14:00", **kw)
+
+        # a series of five week-ends:
+        kw = dict()
+        kw.update(user=USERS.pop())
+        kw.update(teacher=TEACHERS.pop())
+        kw.update(every_unit=cal.Recurrencies.monthly)
+        kw.update(max_events=5)
+        kw.update(friday=True)
+        kw.update(payment_term=PaymentTerm.get_by_ref('P30'))
+        yield journey(europe, "Five Weekends 2015",
+                      i2d(20150619), i2d(20150621), **kw)
 
         # PUPILS = Cycler()
         #~ print 20130712, Pupil.objects.all()

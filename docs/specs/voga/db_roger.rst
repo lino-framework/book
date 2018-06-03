@@ -1,14 +1,11 @@
+.. doctest docs/specs/voga/db_roger.rst
 .. _voga.specs.db_roger:
 
 ==================
 Database structure
 ==================
 
-.. To run only this test::
-
-    $ doctest docs/specs/voga/db_roger.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.roger.settings.doctests')
@@ -32,7 +29,7 @@ The database structure
  accounts.Group             accounts.Groups                6         6
  bevats.Declaration         bevats.Declarations            28        15
  cal.Calendar               cal.Calendars                  6         8
- cal.Event                  cal.OneEvent                   23        1154
+ cal.Event                  cal.OneEvent                   23        1161
  cal.EventPolicy            cal.EventPolicies              19        6
  cal.EventType              cal.EventTypes                 18        9
  cal.Guest                  cal.Guests                     6         0
@@ -44,7 +41,7 @@ The database structure
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         19
+ checkdata.Problem          checkdata.Problems             6         20
  contacts.Company           contacts.Companies             27        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              25        103
@@ -54,7 +51,7 @@ The database structure
  contenttypes.ContentType   gfks.ContentTypes              3         77
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
- courses.Course             courses.Activities             33        25
+ courses.Course             courses.Activities             33        26
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        95
  courses.Line               courses.Lines                  25        10
@@ -65,9 +62,9 @@ The database structure
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        142
+ finan.BankStatementItem    finan.BankStatementItemTable   10        129
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
@@ -78,9 +75,9 @@ The database structure
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                23        8
  ledger.MatchRule           ledger.MatchRules              3         12
- ledger.Movement            ledger.Movements               12        887
+ ledger.Movement            ledger.Movements               12        854
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
- ledger.Voucher             ledger.Vouchers                9         268
+ ledger.Voucher             ledger.Vouchers                9         258
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -93,9 +90,9 @@ The database structure
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        120
+ sales.InvoiceItem          sales.InvoiceItems             15        114
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        97
+ sales.VatProductInvoice    sales.Invoices                 24        87
  sepa.Account               sepa.Accounts                  6         38
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1

@@ -34,9 +34,9 @@ class Tests(RemoteAuthTestCase):
 
     def test01(self):
         from lino.modlib.users.choicelists import UserTypes
-        User = rt.modules.users.User
-        Person = rt.modules.contacts.Person
-        # Note = rt.modules.notes.Note
+        User = rt.models.users.User
+        Person = rt.models.contacts.Person
+        # Note = rt.models.notes.Note
         Faculty = rt.models.faculties.Faculty
         Demand = rt.models.faculties.Demand
         Competence = rt.models.faculties.Competence
@@ -72,7 +72,7 @@ class Tests(RemoteAuthTestCase):
         create(Demand, demander=note1, skill=general)
         create(Demand, demander=note2, skill=special)
 
-        ar = rt.actors.faculties.AssignableWorkersByTicket.request(note1)
+        ar = rt.models.faculties.AssignableWorkersByTicket.request(note1)
         s = ar.to_rst()
         # print(s)
         self.assertEquivalent("""
@@ -84,7 +84,7 @@ class Tests(RemoteAuthTestCase):
 """, s)
 
 
-        ar = rt.actors.faculties.AssignableWorkersByTicket.request(note2)
+        ar = rt.models.faculties.AssignableWorkersByTicket.request(note2)
         s = ar.to_rst()
         # print(s)
         self.assertEquivalent("""

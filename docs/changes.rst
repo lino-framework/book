@@ -7,14 +7,24 @@ Release notes
 
 On this page I try to give a summary of the things which system
 administrators should know when upgrading.  If you want more detailed
-news, please consult the author's :ref:`Developer Blog <blog>`.  See
-also :doc:`marked_changes`.  The final truth about what's going on is
-only the source code.
+news, please consult the author's :ref:`Developer Blog <blog>`.  The
+final truth about what's going on is only the source code.
 
 .. toctree::
    :maxdepth: 1
 
    /releases/index
+
+
+Coming
+======
+
+- 20180521 Fixed :ticket:`2393` (Wrong error message when no eid card
+  found)
+
+- 20180522 Fixed :ticket:`2395` (Unknown callback
+  -9223363281463807000).
+  
     
 
 

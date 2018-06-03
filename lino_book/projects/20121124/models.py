@@ -31,7 +31,7 @@ Get the sum of the prices of all sessions for each ticket:
 Now the same with a timefield:
 
 >>> qs = Ticket.objects.annotate(timesum=models.Sum('sessions__time'))
->>> print [unicode(t.timesum) for t in qs]
+>>> print [str(t.timesum) for t in qs]
 ['02:15:00','']
 
 The above example raises the following Exeption::

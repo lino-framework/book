@@ -1,3 +1,4 @@
+.. doctest docs/tested/gfks.rst
 .. _lino.tested.gfks:
 
 ====================
@@ -8,11 +9,7 @@ This document tests some functionalities implemented by
 :mod:`lino.modlib.gfks`.
 
 
-.. to run only this test:
-
-    $ doctest docs/tested/gfks.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.docs.settings.doctests')
@@ -23,16 +20,17 @@ This document tests some functionalities implemented by
 The detail view of :class:`lino.modlib.gfks.ContentTypes` has the
 following fields:
 
->>> d = get_json_dict('robin', 'gfks/ContentTypes/9')
->>> sorted(d.keys())
-[u'data', u'disable_delete', u'id', u'navinfo', u'title']
+>>> ct = contenttypes.ContentType.objects.get_for_model(countries.Country).id
+>>> d = get_json_dict('robin', 'gfks/ContentTypes/{}'.format(ct))
+>>> rmu(sorted(d.keys()))
+['data', 'disable_delete', 'id', 'navinfo', 'title']
 >>> rmu(sorted(d['data'].keys()))
 ['app_label', 'base_classes', 'disable_editing', 'disabled_fields', 'id', 'model']
 >>> for k in sorted(d['data'].keys()):
-...    print k, ":", rmu(d['data'][k])
+...    print("{} : {}".format(k, rmu(d['data'][k])))  #doctest: +ELLIPSIS
 app_label : countries
 base_classes : <p />
 disable_editing : False
 disabled_fields : {'id': True}
-id : 9
+id : ...
 model : country

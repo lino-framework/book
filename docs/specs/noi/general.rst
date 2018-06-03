@@ -88,7 +88,7 @@ A **senior** is a developer who additionaly can triage tickets.
 Here is a list of user types of those who can work on tickets:
 
 >>> from lino_xl.lib.working.roles import Worker
->>> UserTypes = rt.modules.users.UserTypes
+>>> UserTypes = rt.models.users.UserTypes
 >>> [p.name for p in UserTypes.items()
 ...     if p.has_required_roles([Worker])]
 ['consultant', 'hoster', 'developer', 'senior', 'admin']
@@ -104,16 +104,16 @@ Users
 =====
 
 >>> rt.show('users.UsersOverview')
-========== ================== ==========
- Username   User type          Language
----------- ------------------ ----------
- jean       Senior developer   en
- luc        Developer          en
- mathieu    Consultant         en
- robin      Administrator      en
- rolf       Administrator      de
- romain     Administrator      fr
-========== ================== ==========
+========== ======================== ==========
+ Username   User type                Language
+---------- ------------------------ ----------
+ jean       490 (Senior developer)   en
+ luc        400 (Developer)          en
+ mathieu    200 (Consultant)         en
+ robin      900 (Administrator)      en
+ rolf       900 (Administrator)      de
+ romain     900 (Administrator)      fr
+========== ======================== ==========
 <BLANKLINE>
 
 
@@ -153,15 +153,11 @@ Lino Noi and Scrum
 - Usually there is at least one ticket per project for planning and
   discussion.
 
-
-
 >>> show_fields(system.SiteConfig)
 ... #doctest: +REPORT_UDIFF
 +----------------------+----------------------+---------------------------------------------------------------------+
 | Internal name        | Verbose name         | Help text                                                           |
 +======================+======================+=====================================================================+
-| id                   | ID                   |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
 | default_build_method | Default build method | The default build method to use when rendering printable documents. |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | simulate_today       | Simulated date       | A constant user-defined date to be substituted as current           |
@@ -179,12 +175,6 @@ Lino Noi and Scrum
 +----------------------+----------------------+---------------------------------------------------------------------+
 | max_auto_events      | Max automatic events | Maximum number of automatic events to be generated.                 |
 +----------------------+----------------------+---------------------------------------------------------------------+
-| hide_events_before   | Hide events before   | If this is specified, certain tables show only                      |
-|                      |                      | events after the given date.                                        |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| workflow_buttons     | Workflow             |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| mobile_item          | Description          |                                                                     |
-+----------------------+----------------------+---------------------------------------------------------------------+
-| overview             | Description          |                                                                     |
+| hide_events_before   | Hide events before   | If this is not empty, any calendar events before that date are      |
+|                      |                      | being hidden in certain places.                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+

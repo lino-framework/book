@@ -32,14 +32,14 @@ class Tests(RemoteAuthTestCase):
         AccountTypes = rt.models.accounts.AccountTypes
         
         Journal = rt.models.ledger.Journal
-        Partner = rt.modules.contacts.Partner
-        Person = rt.modules.contacts.Person
-        Company = rt.modules.contacts.Company
-        Role = rt.modules.contacts.Role
-        # Account = rt.modules.sepa.Account
-        Invoice = rt.modules.vat.VatAccountInvoice
-        VoucherTypes = rt.modules.ledger.VoucherTypes
-        JournalGroups = rt.modules.ledger.JournalGroups
+        Partner = rt.models.contacts.Partner
+        Person = rt.models.contacts.Person
+        Company = rt.models.contacts.Company
+        Role = rt.models.contacts.Role
+        # Account = rt.models.sepa.Account
+        Invoice = rt.models.vat.VatAccountInvoice
+        VoucherTypes = rt.models.ledger.VoucherTypes
+        JournalGroups = rt.models.ledger.JournalGroups
 
         robin = create_row(
             User, username='robin',

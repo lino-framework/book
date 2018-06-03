@@ -5,7 +5,7 @@ Introducing actors
 **Tables** and **choicelists** have certain things in common.  When we
 refer to them in general, then we call them **actors**.
 
-An **actor** is a globally known unique object that offers **actions**.
+An **actor** is a globally known unique object that offers *actions*.
 Almost every incoming web request in a Lino application requests
 execution of a given *action* on a given *actor*.
 
@@ -13,35 +13,10 @@ An alternative name for "Actor" might have been "Resource" or "View",
 but these words are already being used very often, so in Lino we talk
 about *actors*.
 
-The most common type of actors are **tables**. A table is an actor
-which displays some data in a tabular way, i.e. interactively as a
-GridPanel or on a printable document as a table.
-
-The **columns** of a table are defined by attributes like 
-:attr:`column_names <lino.core.tables.AbstractTable.column_names>`.
-
-The **rows** of a table are defined by a method :meth:`get_data_rows
-<lino.core.tables.AbstractTable.get_data_rows>`.  In a *model-based
-table* this method has a default implementation based on the
-:attr:`model <lino.core.tables.Table.model>` attribute.
-
-Besides *model-based tables* (who display data coming from the
-database), Lino has **virtual tables**.
-
-:class:`lino.core.tables.AbstractTable` is the base class for 
-:class:`lino.core.tables.Table`  and
-:class:`lino.core.tables.VirtualTable` 
-
-Not all actors are tables. Another type of actors are *frames* which
-display some data in some other form. One such frame actor is the
-calendar panel, another one is :class:`EmptyTable`, used to display
-reports.
-
-See also
-
-- :mod:`lino_book.projects.tables`
-- :mod:`lino_book.projects.vtables`
-- :mod:`lino_book.projects.actors`
+The most common type of actors are **tables**.  But not all actors are
+tables.  Another type of actors are *frames* which display some data
+in some other form.  One such frame actor is the calendar panel,
+another one is :class:`EmptyTable`, used to display reports.
 
 
 The application namespace
@@ -51,8 +26,8 @@ When we say that actors are "globally known unique objects", then we
 refer to what we call the **application namespace**.
 
 Actually the application namespace is split across two places:
-:data:`dd.plugins`
-:data:`rt.modules`
+:data:`dd.plugins` and
+:data:`rt.models`
 
 
 

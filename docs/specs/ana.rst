@@ -61,19 +61,22 @@ The plugin then injects two fields to your general accounts model and
 one field into your movments model:
 
 >>> show_fields(accounts.Account, "needs_ana ana_account")
-=============== ========================== ===========
- Internal name   Verbose name               Help text
---------------- -------------------------- -----------
- needs_ana       Needs analytical account
- ana_account     Analytical account
-=============== ========================== ===========
++---------------+--------------------------+---------------------------------------------------------------+
+| Internal name | Verbose name             | Help text                                                     |
++===============+==========================+===============================================================+
+| needs_ana     | Needs analytical account | Whether transactions on this account require the user to also |
+|               |                          | specify an analytic account.                                  |
++---------------+--------------------------+---------------------------------------------------------------+
+| ana_account   | Analytical account       | Which analytic account to suggest for transactions on this    |
+|               |                          | account.                                                      |
++---------------+--------------------------+---------------------------------------------------------------+
 
 >>> show_fields(ledger.Movement, "ana_account")
-=============== ==================== ===========
+=============== ==================== ===============================================================
  Internal name   Verbose name         Help text
---------------- -------------------- -----------
- ana_account     Analytical account
-=============== ==================== ===========
+--------------- -------------------- ---------------------------------------------------------------
+ ana_account     Analytical account   The analytic account to move together with this transactions.
+=============== ==================== ===============================================================
 
 And finally this plugin defines a new voucher type
 `ana.AnaAccountInvoice` which is almost the same as

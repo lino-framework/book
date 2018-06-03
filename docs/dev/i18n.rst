@@ -15,7 +15,13 @@ An introduction to translatable strings.
     >>> startup('lino_book.projects.docs.settings.demo')
     >>> from lino.api.shell import *
 
-    >>> from django.utils.translation import ugettext as _
+Django uses the gettext system for providing internationalization.
+
+In your application code, you import Django's :func:`ugettext`
+function (usually aliased as :func:`_`) and call it on any string that
+you want the user to see in their language.
+
+>>> from django.utils.translation import ugettext as _
 
 If no language is activated, :func:`ugettext` just returns the English
 text:
@@ -32,7 +38,7 @@ we want to translate:
 janvier
 
 How does the :func:`ugettext` function know that "January" is
-"janvier" in French? See :command:`inv mm`.
+"janvier" in French? See :cmd:`inv mm`.
 
 Note that :func:`ugettext` will do the lookup in-place. The following
 code prints English and not German:
@@ -58,4 +64,5 @@ Januar
     >> with translation.override('de'):
     ...     print(s)  #doctest: +ELLIPSIS
     <django.utils.functional.__proxy__ object at ...>
+
 

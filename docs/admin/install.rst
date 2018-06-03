@@ -210,7 +210,7 @@ More Debian packages
 
 Some Debian packages and why you might need them::
 
-    $ sudo apt-get install apache2 libapache2-mod-wsgi
+    $ sudo apt install apache2 libapache2-mod-wsgi
 
 This will automatically install Apache 
 (packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)

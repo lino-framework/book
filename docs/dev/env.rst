@@ -130,8 +130,8 @@ Here are some useful aliases and functions for your
     alias pp='per_project'
     alias runserver='python manage.py runserver'
     alias ci='inv ci'
-    alias p3='. ~/pythonenvs/py35/bin/activate'
-    alias p2='. ~/pythonenvs/py27/bin/activate'
+    alias p3='. ~/pythonenvs/py3/bin/activate'
+    alias p2='. ~/pythonenvs/py2/bin/activate'
 
     function pywhich() { 
       python -c "import $1; print($1.__file__)"

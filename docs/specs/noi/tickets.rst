@@ -28,15 +28,11 @@ What is a ticket?
 
 .. class:: Ticket
 
-    A **Ticket** is the smallest unit of work. It is a concrete
+    A **Ticket** is the smallest unit of work.  It is a concrete
     question or problem handled formulated by a user.
-
 
     The user may be a system user or an end user represented by a
     system user.
-
-    A Ticket is always related to one and only one Project.  It may be
-    related to other tickets which may belong to other projects.
 
 
     .. attribute:: user
@@ -51,9 +47,6 @@ What is a ticket?
     .. attribute:: assigned_to
 
         The user who is working on this ticket.
-
-        If this field is empty and :attr:`project` is not empty, then
-        default value is taken from :attr:`Project.assign_to`.
 
     .. attribute:: state
 
@@ -128,7 +121,7 @@ What is a ticket?
     .. attribute:: reporting_type
 
         An indication about who is going to pay for work on this
-        project.  See :class:`ReportingTypes`.
+        site.  See :class:`ReportingTypes`.
 
 
 
@@ -278,77 +271,6 @@ Active state versus show_in_todo
 
 
 
-Projects
-========
-
-The :attr:`project <lino_xl.lib.tickets.models.Ticket.project>` of a
-ticket is used to specify "who is going to pay" for it. Lino Noi does
-not issue invoices, so it uses this information only for reporting
-about it and helping with the decision about whether and how worktime
-is being invoiced to the customer.  But the invoicing itself is not
-currently a goal of Lino Noi.
-
-So a **project** is something for which somebody is possibly willing
-to pay money.
-
->>> rt.show(tickets.Projects)
-=========== =============== ======== =============== =========
- Reference   Name            Parent   Organization    Private
------------ --------------- -------- --------------- ---------
- docs        Documentatión   linö     welsch          No
- linö        Framewörk                Rumma & Ko OÜ   No
- research    Research        docs     pypi            No
- shop        Shop                     Rumma & Ko OÜ   No
- téam        Téam            linö     welket          Yes
-=========== =============== ======== =============== =========
-<BLANKLINE>
-
-
->>> rt.show(tickets.TopLevelProjects)
-=========== =========== ======== ================
- Reference   Name        Parent   Children
------------ ----------- -------- ----------------
- linö        Framewörk            *téam*, *docs*
- shop        Shop
-=========== =========== ======== ================
-<BLANKLINE>
-
-
-Developers can start working on tickets without specifying a project
-(i.e. without knowing who is going to pay for their work).  
-
-But after some time every ticket should get assigned to some
-project. You can see a list of tickets which have not yet been
-assigned to a project:
-
->>> pv = dict(has_project=dd.YesNo.no)
->>> rt.show(tickets.AllTickets, param_values=pv)
-... #doctest: +REPORT_UDIFF
-==== =================== ========== ============== ========
- ID   Summary             Priority   Workflow       Site
----- ------------------- ---------- -------------- --------
- 5    Cannot create Foo   Normal     **Sleeping**   pypi
- 3    Baz sucks           Normal     **Open**       welsch
-==== =================== ========== ============== ========
-<BLANKLINE>
-
-
-
-Distribution of tickets per project
-===================================
-
-In our demo database, tickets are distributed over the different
-projects as follows (not a realistic distribution):
-
->>> for p in tickets.Project.objects.all():
-...         print p.ref, p.tickets_by_project.count()
-linö 23
-téam 23
-docs 23
-research 23
-shop 22
-
-
 
 Private tickets
 ===============
@@ -445,35 +367,35 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
-========== ======================================================================= ============================================
+========== ======================================================================= ================================================
  Priority   Description                                                             Workflow
----------- ----------------------------------------------------------------------- --------------------------------------------
+---------- ----------------------------------------------------------------------- ------------------------------------------------
  Normal     `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#105 (⛶ Ticket 105) <Detail>`__                                        [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#105 (⛶ Ticket 105) <Detail>`__                                        [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#81 (⛶ Ticket 81) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#81 (⛶ Ticket 81) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#57 (⛶ Ticket 57) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#57 (⛶ Ticket 57) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#33 (⛶ Ticket 33) <Detail>`__                                          [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#33 (⛶ Ticket 33) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#9 (⛶ Foo never matches Bar) <Detail>`__                               [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#9 (⛶ Foo never matches Bar) <Detail>`__                               [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-========== ======================================================================= ============================================
+ Normal     `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [✋] [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+========== ======================================================================= ================================================
 <BLANKLINE>
 
 
@@ -481,7 +403,17 @@ My tickets
 Sites
 =====
 
-Lino Noi has a list of all sites for which we do support:
+Lino Noi has a list of "sites".  A site is a place where work is being
+done.  This can be a concrete website on a server with a domain name,
+but actually it can be anything your team uses for grouping their
+tickets into more long-term "tasks" or "projects".
+
+The site of a ticket also indicates "who is going to pay" for it.
+Lino Noi does not issue invoices, so it uses this information only for
+reporting about it and helping with the decision about whether and how
+worktime is being invoiced to the customer.
+
+Here is a list of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
 ============= ======== ================ ======== ========== ====
@@ -493,49 +425,82 @@ Lino Noi has a list of all sites for which we do support:
 ============= ======== ================ ======== ========== ====
 <BLANKLINE>
 
-A ticket may or may not be "local", i.e. specific to a given site.
-When a ticket is site-specific, we simply assign the `site` field.  We
-can see all local tickets for a given site object:
+Developers can start working on tickets without specifying a site.
+But after some time every ticket should get assigned to some site. You
+can see a list of tickets which have not yet been assigned to a site:
+
+>>> pv = dict(has_site=dd.YesNo.no)
+>>> rt.show(tickets.AllTickets, param_values=pv)
+... #doctest: +REPORT_UDIFF +ELLIPSIS
+===== =========================================== ========== ============= ======
+ ID    Summary                                     Priority   Workflow      Site
+----- ------------------------------------------- ---------- ------------- ------
+ 116   Ticket 116                                  Normal     **Started**
+ 114   Ticket 114                                  Normal     **Talk**
+ 112   Ticket 112                                  Normal     **Refused**
+ ...
+ 16    How to get bar from foo                     Normal     **Refused**
+ 14    Bar cannot baz                              Normal     **Ready**
+ 12    Foo cannot bar                              Normal     **Started**
+ 10    Where can I find a Foo when bazing Bazes?   Normal     **Talk**
+ 8     Is there any Bar in Foo?                    Normal     **Refused**
+ 6     Sell bar in baz                             Normal     **Ready**
+ 4     Foo and bar don't baz                       Normal     **Started**
+ 2     Bar is not always baz                       Normal     **Talk**
+===== =========================================== ========== ============= ======
+<BLANKLINE>
+
+
+The :class:`TicketsBySite` panel shows all the tickets for a given
+site object.  Its default view is a summary:
 
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
+New : `#97 <Detail>`__, `#73 <Detail>`__, `#49 <Detail>`__, `#25 <Detail>`__, `#1 <Detail>`__
+Open : `#115 <Detail>`__, `#91 <Detail>`__, `#67 <Detail>`__, `#43 <Detail>`__, `#19 <Detail>`__
+
+When you open the panel in its own window, you can see the underlying
+table:
+
+>>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
+... #doctest: -REPORT_UDIFF -SKIP
 ========== =============================================================== ==========
  Priority   Description                                                     Workflow
 ---------- --------------------------------------------------------------- ----------
- Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*   **Open**
  Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Luc*                        **New**
- Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
  Normal     `#73 (⛶ Ticket 73) <Detail>`__  by *Luc*                        **New**
- Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
  Normal     `#49 (⛶ Ticket 49) <Detail>`__  by *Luc*                        **New**
- Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
  Normal     `#25 (⛶ Ticket 25) <Detail>`__  by *Luc*                        **New**
- Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
  Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Luc*         **New**
+ Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*   **Open**
+ Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
+ Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
 ========== =============================================================== ==========
 <BLANKLINE>
 
-
 Note that the above table shows no state change actions in the
-Workflow column because it is being requested by anonymous. For an
-authenticated developer it looks like this:
+`Workflow` column.  That's because in this doctest it is being
+requested by anonymous. For an authenticated developer it looks like
+this:
 
->>> rt.login('luc').show(tickets.TicketsBySite, welket)
+>>> rt.login('luc').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
 ========== ================================================================ ============================================
  Priority   Description                                                      Workflow
 ---------- ---------------------------------------------------------------- --------------------------------------------
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
  Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
 ========== ================================================================ ============================================
 <BLANKLINE>
 
@@ -550,8 +515,8 @@ group of people are working for preparing this.  In Scrum this is
 called a sprint.
 
 A typical case of a milestone is an upgrade of the software that is
-running on a given site.  A milestone is not necessary an *official*
-release of a new version.
+running on a given website.  A milestone is not necessary an
+*official* release of a new version.
 
 >>> rt.show('meetings.Meetings')
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
@@ -578,7 +543,7 @@ tickets that are being fixed when this milestone is reached.
 
 The demo database has the following wishes:
 
->>> rt.show(rt.actors.deploy.Deployments, limit=10)
+>>> rt.show(rt.models.deploy.Deployments, limit=10)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
  ==== ======== =================================================== ================= ======== ============== ============== ================== =============
   ID   No.      Ticket                                              Meeting           Remark   Wish type      Ticket State   New Ticket State   Deferred to
@@ -731,7 +696,7 @@ The same list seen by marc
 >>> obj = tickets.Ticket.objects.get(pk=2)
 >>> rt.login('luc').show(comments.CommentsByRFC, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<p><b>Write comment</b></p><ul><li><a href="Detail" title="Created ...">...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a href="#" onclick="toggle_visibility('comment-2');" title="Hide">⁜</a><div id="comment-2"><p>Very confidential comment</p></div></li></ul>
+<p><b>Write comment</b></p><ul><li><a ...>...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a ...>⁜</a><div id="comment-2"><p>Very confidential comment</p></div></li></ul>
 
 
 
@@ -740,7 +705,7 @@ Filtering tickets
 
 This is a list of the parameters you can use for filterings tickets.
 
->>> show_fields(tickets.AllTickets)
+>>> show_fields(tickets.AllTickets, all=True)
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
@@ -757,15 +722,13 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | site            | Site            | Select a site if you want to see only tickets for this site.     |
 +-----------------+-----------------+------------------------------------------------------------------+
-| project         | Mission         |                                                                  |
+| has_site        | Has site        | Show only (or hide) tickets which have a site assigned.          |
 +-----------------+-----------------+------------------------------------------------------------------+
 | state           | State           | Only rows having this state.                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
 | priority        | Priority        | Only rows having this priority.                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 | deployed_to     | Meeting         |                                                                  |
-+-----------------+-----------------+------------------------------------------------------------------+
-| has_project     | Has project     | Show only (or hide) tickets which have a project assigned.       |
 +-----------------+-----------------+------------------------------------------------------------------+
 | show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.       |
 +-----------------+-----------------+------------------------------------------------------------------+
@@ -838,3 +801,9 @@ Plugin configuration
         Noi uses `courses.Course`.
 
 
+
+
+Screenshots
+===========
+
+.. image:: tickets.Ticket.merge.png

@@ -5,21 +5,27 @@
 Installing Lino
 ===============
 
-.. _fabric: http://www.fabfile.org/
 .. _invoke: http://www.pyinvoke.org/
 .. _atelier: http://atelier.lino-framework.org/
 .. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino **development
-environment** (which is different from :doc:`/admin/install`).
+environment** (which is easier than :doc:`/admin/install`).
+
+No, you cannot simply do :cmd:`pip install lino`.  That's because
+making this possible requires some extra work, and we just didn't yet
+find anybody who would to do that job.  Ticket :ticket:`2347` is open.
+Yes, Lino requires you to learn some extra lessons about cloning
+repositories, installing development packages and manging virtual
+environments. But take it easy and enjoy. That knowledge might turn
+out useful for your other projects as well.
 
 This document is written for Debian_ and derivated distributions.
-Other Linuxes should be pretty similar.  Windows and iOS are **not
-recommended** as operating systems for developers of free software.
-(Of course it is possible to install Lino on such operating systems,
-but you are likely to encounter problems that are not documented
-here.)
+Other Linuxes should be pretty similar.  On proprietary operating
+systems you might encounter problems that are not documented here
+because some dependencies are more difficult to install on these
+systems.  Lino itself has no specific OS requirements.
 
 This document assumes you are familiar with the Linux shell at least
 for basic file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`,
@@ -48,67 +54,62 @@ Set up a Python environment
    virtualenv_.
 
 Rather than installing Lino into your site-wide Python installation,
-you install it to a separate virtual Python environment using::
+you install it to a separate virtual Python environment.
 
-        $ virtualenv --python=python2 /path_to_project_dir/env
+If virtualenvs are new to you: the reason for creating a new
+environment is to separate Lino from your system install of Python.
+The main advantages are: if you are also developing other things with
+Python you will often require different packages than what Lino uses,
+and there is the chance of version or dependency conflicts.
 
-To *activate* this environment, you will type::
+Also if you wish to remove Lino from your system you only need to
+remove the source files and the virtual environment (rather than
+trying to remove Lino's dependencies from the system environment
+without breaking any other programs that use python).
 
-        $ . /path_to_project_dir/env/bin/activate
+First you create a *virgin environment* using::
+
+    $ virtualenv --python=python2 ~/pythonenvs/py2
+
+You might prefer to install Python 3 here (as explained under `System
+requirements`_).  Actually you can install both, in that case keep in
+mind that they are separate environments and you must do the
+installation for each of them.
+
+To *activate* this environment, you type::
+
+    $ . ~/pythonenvs/py2/bin/activate
 
 The dot (``.``) is a synonym for the :cmd:`source` command. If you
 didn't know it, read the `manpage
 <http://ss64.com/bash/source.html>`__ and `What does 'source' do?
 <http://superuser.com/questions/46139/what-does-source-do>`__
 
-If you know that you are only going to be using Python with Lino, then
-you probably want to add above line to your :xfile:`.bashrc` file.
-This will activate the Lino environment whenever you open a bash
-shell::
-
-    $ echo ". /path_to_project_dir/env/bin/activate" >> ~/.bashrc
-
-Otherwise if you want a quick way to activate your Lino python
-environment you can add an alias to your :xfile:`.bashrc` file::
-
-    $ echo "alias lpy='.  /path_to_project_dir/env/bin/activate" >> ~/.bashrc
-    $ . ~/.bashrc # To run the new alias
-    $ lpy # Activates the environment
-
-After creating and activating a environment, you should updated `pip`
-and `setuptools` to the latest version::
+After creating a new environment, you should always update `pip` and
+`setuptools` to the latest version::
 
         $ pip install -U pip
         $ pip install -U setuptools
 
-    
-         
+
+If you want a quick way to activate your Lino python environment, you
+can add an alias to your :xfile:`.bashrc` or :xfile:`.bash_aliases`
+file::
+
+    alias p2='. ~/pythonenvs/py2/bin/activate'
+    alias p3='. ~/pythonenvs/py3/bin/activate'
+
+  
 .. rubric:: Notes
 
-We chose ``env`` for our environment, however you are free to choose any
-name for your new environment that suits. However when deploying
-production version of a lino-site, the virtual environment **must** either,
-be in the *site-folder* with the name *env* or, there must be a
-*symbolic-link* of *env* pointing to the environment folder.
-
-If virtualenvs are new to you; The reason for creating a new
-environment is to separate Lino from your system install of
-python. The main advantages are: if you are also developing other
-things with Python you will often require different packages than what
-Lino uses, and there is the chance of version or dependency conflicts.
-
-Also if you wish to remove Lino from your system you only need to
-remove the source files and the virtual environment. Rather than
-trying to remove Lino's dependencies from the system environment
-without breaking any other programs that use python.
-
-To learn more read Dan Poirier's post `Managing multiple Python projects: Virtual environments
-<https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
-where he explains what they are and why you want them.
-
+.. We chose ``env`` for our environment. You are free to choose any
+   other name for your new environment, but we recommend this
+   convention because it is being used also on production servers.
+   Note that :xfile:`env` might be a *symbolic-link* pointing to some
+   shared environment folder.
 
 You can **deactivate** a virtual environment with the command
-:cmd:`deactivate`. This switches you back to your machine's
+:cmd:`deactivate`.  This switches you back to your machine's
 system-wide environment.
 
 You can **switch to another** virtualenv simply by activating it, you
@@ -117,15 +118,20 @@ don't need to deactivate the current one first.
 You should never **rename** a virtualenv (they are not designed for
 that), but you can easily create a new one and remove the old one.
 
+To learn more, read Dan Poirier's post `Managing multiple Python
+projects: Virtual environments
+<https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
+where he explains what they are and why you want them.
+
+
 
 Get the sources
 ===============
 
 Don't try to install Lino using ``pip install lino`` because that
-would install some very old and obsolete version.  If you did it, you
-should uninstall it (``pip uninstall lino lino-xl``) before going on.
-Lino is a framework for doing *customized* applications and we
-currently don't plan to industrialize it.
+would install some very old and obsolete version.  See :ticket:`2347`.
+If you did it before reading this warning, then simply uninstall it
+now (``pip uninstall lino``) before going on.
 
 Create a directory (e.g. :file:`repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
@@ -156,6 +162,9 @@ You should now have nine directories called :file:`lino`, :file:`xl`,
 :file:`noi`, ... and :file:`book` in your :file:`~/repositories`
 directory each of which contains a file :xfile:`setup.py` and a whole
 tree of other files and directories.
+
+Note that even if you opted for having two environments (py2 and py3),
+these environments will use the same source repositories.
 
 .. Note that if you just want a *simplified* development environment
    (for a specific application on a production site), then you don't
@@ -190,6 +199,7 @@ from within any Python program.
 
 Commands::
 
+  $ p2  # activate the environment
   $ cd repositories
   $ pip install -e lino
   $ pip install -e xl
@@ -201,8 +211,11 @@ Commands::
   $ pip install -e tera
   $ pip install -e book
 
-These commands take some time because they will download and install
-all Python packages needed by Lino.
+These commands take some time when you run them the first time on your
+machine because they will download and install all Python packages
+needed by Lino.  If you install them a second time into another
+environment, the process will be quicker because the dependencies have
+bin cached.
 
 Note that the `-e
 <https://pip.pypa.io/en/latest/reference/pip_install.html#cmdoption-e>`_
@@ -239,10 +252,10 @@ for newbies. Here are some diagnostic tricks.
 How to see which is your current virtualenv::
 
     $ echo $VIRTUAL_ENV
-    /home/luc/virtualenvs/a
+    /home/luc/virtualenvs/py2
 
     $ which python
-    /home/luc/virtualenvs/a/bin/python
+    /home/luc/virtualenvs/py2/bin/python
 
 How to see what's installed in your current virtualenv::
 
@@ -274,7 +287,7 @@ Running your first Lino site
 ============================
 
 You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
-a development server. Before starting a web server on a project for
+a development server.  Before starting a web server on a project for
 the first time, you must initialize its database using the
 :manage:`prep` command::
   
@@ -285,7 +298,7 @@ the first time, you must initialize its database using the
 Now start your browser, point it to http://127.0.0.1:8000/ and you
 should see something like this:
 
-.. image:: hello/hello1.png
+.. image:: install/1.png
 
 Congratulations! Enjoy the first Lino application running on your
 machine!
@@ -294,7 +307,7 @@ machine!
 Exercises
 =========
 
-#.  Log in and play around.
+#.  Sign in and play around.
     
 #.  Check :doc:`/user/basics` and tell us what's missing in that
     document.

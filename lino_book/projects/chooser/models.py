@@ -46,12 +46,12 @@ How to use a Chooser on a ForeignKey:
 
   >>> from lino.core.utils import get_field
   >>> city = Contact.get_chooser_for_field('city')
-  >>> [unicode(o) for o in city.get_choices(country=be)]
+  >>> [str(o) for o in city.get_choices(country=be)]
   [u'Brussels', u'Eupen']
   
-  >>> [unicode(o) for o in city.get_choices(country=fr)]
+  >>> [str(o) for o in city.get_choices(country=fr)]
   [u'Lyon', u'Paris']
-  >>> [unicode(o) for o in city.get_choices()]
+  >>> [str(o) for o in city.get_choices()]
   [u'Brussels', u'Eupen', u'Lyon', u'Paris']
   
 There is no method `country_choices`, so `Contact.country` has no Chooser:
@@ -67,13 +67,13 @@ How to use a Chooser on a field with choices:
 
   >>> food = Contact.get_chooser_for_field('food')
   
-  >>> [unicode(o) for o in food.get_choices()]
+  >>> [str(o) for o in food.get_choices()]
   [u'Potato', u'Vegetable', u'Meat', u'Fish']
   
-  >>> [unicode(o) for o in food.get_choices(year_in_school='FR')]
+  >>> [str(o) for o in food.get_choices(year_in_school='FR')]
   [u'Potato']
 
-  >>> [unicode(o) for o in food.get_choices(year_in_school='SR')]
+  >>> [str(o) for o in food.get_choices(year_in_school='SR')]
   [u'Potato', u'Vegetable', u'Meat', u'Fish']
 
 
@@ -82,7 +82,7 @@ Special cases
 
 Note that `Chooser.get_choices()` ignores any unused keyword arguments:
   
-  >>> [unicode(o) for o in city.get_choices(country=be,foo=1,bar=True,baz='7')]
+  >>> [str(o) for o in city.get_choices(country=be,foo=1,bar=True,baz='7')]
   [u'Brussels', u'Eupen']
 
   
@@ -148,7 +148,7 @@ class Contact(dd.Model):
     def city_choices(cls, country):
         if country is not None:
             return country.city_set.order_by('name')
-        return cls.city.field.rel.model.objects.order_by('name')
+        return cls.city.field.remote_field.model.objects.order_by('name')
 
     @classmethod
     def food_choices(cls, year_in_school):

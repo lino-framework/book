@@ -110,8 +110,8 @@ sessions that were active during the time of committing.
 >>> s.delete()
 >>> s.id = s1id
 >>> s.delete()
->>> repo.commits.all().delete()
-(4, {u'github.Commit': 4})
+>>> repo.commits.all().delete() == (4, {'github.Commit': 4})
+True
 >>> repo.delete()
 
 #1081 (☉ Rename "kernel" to "environment"), #1108 (☑ RemovedInDjango110Warning: SubfieldBase has been deprecated), #1096 (☑ Paramètres par défaut dans [Bénéficiaires]), #1044 (⚒ Miscellaneous regular maintenance and support), #1130 (☎ Erik), #1071 (☉ Get

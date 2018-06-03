@@ -57,40 +57,40 @@ SQL that poor Django must do in order to return a single row.
 
 To verify whether the slave summary panels are being computed:
 
->>> for f in rt.models.tickets.Tickets.wildcard_data_elems():
+>>> for f in sorted([str(f) for f in rt.models.tickets.Tickets.wildcard_data_elems()]):
 ...     print(f)  #doctest: +REPORT_UDIFF
-tickets.Ticket.id
-tickets.Ticket.modified
-tickets.Ticket.created
-tickets.Ticket.ref
-tickets.Ticket.user
-tickets.Ticket.assigned_to
-tickets.Ticket.private
-tickets.Ticket.priority
-tickets.Ticket.closed
-tickets.Ticket.planned_time
-tickets.Ticket.project
-tickets.Ticket.site
-tickets.Ticket.topic
-tickets.Ticket.summary
-tickets.Ticket.description
-tickets.Ticket.upgrade_notes
-tickets.Ticket.ticket_type
-tickets.Ticket.duplicate_of
-tickets.Ticket.end_user
-tickets.Ticket.state
-tickets.Ticket.deadline
-tickets.Ticket.reported_for
-tickets.Ticket.fixed_for
-tickets.Ticket.reporter
-tickets.Ticket.waiting_for
-tickets.Ticket.feedback
-tickets.Ticket.standby
-tickets.Ticket.fixed_since
-lino.core.model.Model.workflow_buttons
 lino.core.model.Model.mobile_item
 lino.core.model.Model.overview
+lino.core.model.Model.workflow_buttons
 lino.mixins.Created.created_natural
+tickets.Ticket.assigned_to
+tickets.Ticket.closed
+tickets.Ticket.created
+tickets.Ticket.deadline
+tickets.Ticket.description
+tickets.Ticket.duplicate_of
+tickets.Ticket.end_user
+tickets.Ticket.feedback
+tickets.Ticket.fixed_for
+tickets.Ticket.fixed_since
+tickets.Ticket.id
+tickets.Ticket.modified
+tickets.Ticket.planned_time
+tickets.Ticket.priority
+tickets.Ticket.private
+tickets.Ticket.project
+tickets.Ticket.ref
+tickets.Ticket.reported_for
+tickets.Ticket.reporter
+tickets.Ticket.site
+tickets.Ticket.standby
+tickets.Ticket.state
+tickets.Ticket.summary
+tickets.Ticket.ticket_type
+tickets.Ticket.topic
+tickets.Ticket.upgrade_notes
+tickets.Ticket.user
+tickets.Ticket.waiting_for
 
     
 

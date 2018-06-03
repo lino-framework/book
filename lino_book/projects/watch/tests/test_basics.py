@@ -36,7 +36,7 @@ class QuickTest(RemoteAuthTestCase):
         from lino.core.renderer import TestRenderer
         # from lino.core.renderer import JsRenderer as TestRenderer
         
-        UserTypes = rt.actors.users.UserTypes        
+        UserTypes = rt.models.users.UserTypes        
         rt.models.users.User(
             username="robin", user_type=UserTypes.admin).save()
         
@@ -46,7 +46,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(s, "No data to display")
 
 
-        rr = rt.actors.contacts.Companies.required_roles
+        rr = rt.models.contacts.Companies.required_roles
         self.assertTrue(ses.user.user_type.role.satisfies_requirement(rr))
 
         # We create a new organization:
@@ -209,16 +209,16 @@ Are you sure ?""")
 ===================== ================= ============================================================= ========
  Database model        Database object   Message                                                       Action
 --------------------- ----------------- ------------------------------------------------------------- --------
- `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
- `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
- `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
- `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
- `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
  `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
  `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
  `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
  `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
  `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
+ `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
+ `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
+ `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
+ `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
 ===================== ================= ============================================================= ========
 """
         output = ses.show('gfks.BrokenGFKs')

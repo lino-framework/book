@@ -79,6 +79,11 @@ The ``Course`` model
         The end date *of the first meeting* to be generated.  Leave
         this field empty if the meetings last less than one day.
 
+    .. attribute:: max_date
+
+        Don't generate meeting having their start date beyond this
+        date.
+
     .. attribute:: enrolments_until
 
     .. attribute:: max_places

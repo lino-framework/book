@@ -32,7 +32,7 @@ def test01(self):
     """
     self.assertEqual(Invoice.objects.all().count(), 28)
     i = Invoice.objects.all()[0]
-    self.assertEqual(unicode(i), u"Invoice # 1")
+    self.assertEqual(str(i), u"Invoice # 1")
     s = i.customer.address()
     self.assertEquals(s, u"""\
 Rumma & Ko OÜ

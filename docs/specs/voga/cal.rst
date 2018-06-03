@@ -1,9 +1,9 @@
 .. doctest docs/specs/voga/cal.rst
 .. _voga.tested.cal:
 
-========
-Calendar
-========
+===================================
+Calendar functionality in Lino Voga
+===================================
 
 .. doctest initialization:
 
@@ -12,15 +12,16 @@ Calendar
    >>> from lino.api.doctest import *
 
 This document describes how :ref:`voga` extends the default calendar
-functions.
+functions (documented separately in :ref:`book.specs.cal`).
 
-See also :ref:`book.specs.cal`.
+.. currentmodule:: lino_voga.lib.cal
+
 
 Workflow
 ========
 
-The following workflows are defined in
-:mod:`lino_voga.lib.cal.workflows`.
+The following workflow of calendar entries and guests (presences) are
+defined in :mod:`lino_voga.lib.cal.workflows`.
 
 >>> rt.show(cal.EntryStates)
 ======= ============ ============ ======== =================== ======== ============= =========
@@ -48,9 +49,35 @@ The following workflows are defined in
 Rooms
 =====
 
+
+.. class:: Room
+
+    Extends :class:`lino_xl.lib.cal.Room` by adding one field:
+
+    .. attribute:: fee
+
+        The default fee to pay when renting this room to an external
+        organization.
+
+    
+>>> show_fields(cal.Room, 'name calendar fee company')
++---------------+--------------+---------------------------------------------------------------+
+| Internal name | Verbose name | Help text                                                     |
++===============+==============+===============================================================+
+| name          | Designation  | The designation of the room. This should (but is not required |
+|               |              | to) be unique.                                                |
++---------------+--------------+---------------------------------------------------------------+
+| calendar      | Calendar     | Calendar where events in this room are published.             |
++---------------+--------------+---------------------------------------------------------------+
+| fee           | Tariff       | The default fee to pay when renting this room to an external  |
+|               |              | organization.                                                 |
++---------------+--------------+---------------------------------------------------------------+
+| company       | Responsible  | Pointer to Company.                                           |
++---------------+--------------+---------------------------------------------------------------+
+         
+
 The following rooms are defined in the
 :mod:`lino_book.projects.roger.settings.fixtures.voga` demo fixture.
-
 
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
@@ -70,33 +97,24 @@ The following rooms are defined in the
 (The last room, because it has no company, caused a bug which was fixed on
 :blogref:`20140920`)
 
->>> show_fields(cal.Room, 'name calendar fee company')
-=============== ============== ===================================================
- Internal name   Verbose name   Help text
---------------- -------------- ---------------------------------------------------
- name            Designation
- calendar        Calendar       Calendar where events in this room are published.
- fee             Tariff
- company         Responsible
-=============== ============== ===================================================
-
 
 
 Automatic calender events
 =========================
 
-For the following examples we select a course which did not yet start,
-i.e. which starts after :meth:`lino.core.site.Site.today`.
+For the following examples we select an activity which did not yet
+start, i.e. which starts after :meth:`lino.core.site.Site.today`.
 
 >>> for obj in courses.Course.objects.filter(start_date__gte=dd.today()):
-...     print("Course #{} starts {} and has {} events".format(obj.id, obj.start_date, obj.max_events))
+...     print("Activity #{} starts {} and has {} events".format(obj.id, obj.start_date, obj.max_events))
 ...     # doctest: +NORMALIZE_WHITESPACE
-Course #12 starts 2015-07-11 and has 10 events
-Course #13 starts 2015-07-11 and has 10 events
-Course #14 starts 2015-07-11 and has 10 events
-Course #15 starts 2015-07-11 and has 10 events
-Course #16 starts 2015-07-11 and has 10 events
-Course #17 starts 2015-07-11 and has 10 events
+Activity #12 starts 2015-07-11 and has 10 events
+Activity #13 starts 2015-07-11 and has 10 events
+Activity #14 starts 2015-07-11 and has 10 events
+Activity #15 starts 2015-07-11 and has 10 events
+Activity #16 starts 2015-07-11 and has 10 events
+Activity #17 starts 2015-07-11 and has 10 events
+Activity #26 starts 2015-06-19 and has 5 events
 
 Let's take the first of them:
 

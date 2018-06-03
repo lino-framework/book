@@ -1,17 +1,13 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-
-"""Database models for `lino_book.projects.dumps`.
-
-"""
 
 from django.db import models
 from lino.api import dd, _
-from lino.mixins import BabelNamed
+from lino.mixins import BabelDesignated
+from .choicelists import Bars
 
-
-class Foo(BabelNamed):
+class Foo(BabelDesignated):
 
     class Meta(object):
         app_label = 'dumps'
@@ -19,8 +15,9 @@ class Foo(BabelNamed):
     #     verbose_name_plural = _("Foos")
 
     last_visit = models.DateTimeField(_("Last visit"), editable=False)
-
-
+    bar = Bars.field(default='sale')
     
 class Foos(dd.Table):
     model = Foo
+
+

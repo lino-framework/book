@@ -252,6 +252,7 @@ Question 23/10/2014
 <BLANKLINE>
 4) Next time I will participate again. **1** **2** **3** **4** **5** (**Remark**)
 
+
 >>> mt = contenttypes.ContentType.objects.get_for_model(obj.__class__).id
 >>> url = '/api/polls/AnswersByResponse?rp=ext-comp-1351&fmt=json&mt=%d&mk=%d' % (mt, pk)
 >>> test_client.force_login(obj.user)
@@ -260,7 +261,7 @@ Question 23/10/2014
 
 >>> print(res.status_code)
 200
->>> d = json.loads(res.content)
+>>> d = json.loads(res.content.decode())
 
 >>> len(d['rows'])
 5
@@ -298,6 +299,16 @@ It refers to the two `parameters` of the
 :class:`lino.modlib.polls.models.ToggleChoice` action.
 The 9 is the id of a `polls.Question`, 
 the 17 is the id of a `polls.Choice`.
+
+
+>>> a = polls.Responses.toggle_choice
+>>> len(a.parameters)
+2
+>>> a.parameters['question']
+<django.db.models.fields.related.ForeignKey: question>
+>>> a.parameters['choice']
+<django.db.models.fields.related.ForeignKey: choice>
+
 
 >>> polls.Question.objects.get(pk=9)
 Question #9 ('1) There was enough to eat.')

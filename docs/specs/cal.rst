@@ -244,6 +244,8 @@ entries of that type.
 
         The maximal number of days allowed as duration.
 
+        See also :class:`LongEntryChecker`
+
     .. attribute:: locks_user
 
         Whether calendar entries of this type make the user
@@ -725,6 +727,11 @@ Reference
     can see the :class:`EntriesByRoom` that happened (or will happen)
     there.  A Room has a multilingual name.
 
+    .. attribute:: name
+
+        The designation of the room. This should (but is not required
+        to) be unique.
+
     
 .. class:: Rooms
 
@@ -961,6 +968,8 @@ Reference
     .. attribute:: every_unit
     .. attribute:: max_events
 
+        Maximum number of calendar entries to generate.
+        
     .. attribute:: monday
     .. attribute:: tuesday
     .. attribute:: wednesday
@@ -986,7 +995,10 @@ Reference
     Inherits from both :class:`EventGenerator` and :class:`RecurrenceSet`.
 
     .. attribute:: room
+                   
     .. attribute:: max_date
+
+        Don't generate calendar entries beyond this date.
 
 Miscellaneous
 =============
@@ -1088,3 +1100,34 @@ Most calendar functionality requires
 .. class:: GuestOperator
 
     Can see presences and guests of a calendar entry.
+
+
+Data checkers
+=============
+
+.. class:: ConflictingEventsChecker
+
+    Check whether this entry conflicts with other events.
+
+.. class:: ObsoleteEventTypeChecker
+
+    Check whether the type of this calendar entry should be updated.
+
+    This can happen when the configuration has changed and there are
+    automatic entries which had been generated using the old
+    configuration.
+
+.. class:: LongEntryChecker
+
+    Check for entries which last longer than the maximum number of
+    days allowed by their type.
+
+.. class:: EventGuestChecker           
+
+    Check for calendar entries without participants.
+
+    :message:`No participants although N suggestions exist.` --
+    This is probably due to some problem in the past, so we repair
+    this by adding the suggested guests.
+
+           

@@ -52,10 +52,10 @@ class QuickTest(RemoteAuthTestCase):
             #     'lino.core.auth.RemoteUserMiddleware',
             #     'lino.utils.ajax.AjaxExceptionResponse'))
 
-        Person = rt.modules.contacts.Person
-        Country = rt.modules.countries.Country
-        Place = rt.modules.countries.Place
-        PlaceTypes = rt.modules.countries.PlaceTypes
+        Person = rt.models.contacts.Person
+        Country = rt.models.countries.Country
+        Place = rt.models.countries.Place
+        PlaceTypes = rt.models.countries.PlaceTypes
         
         ee = create_and_get(Country,
                             isocode='EE', **dd.babelkw('name',
@@ -221,20 +221,26 @@ Estonia''')
         
         """
         # User 1
-        SiteConfigs = settings.SITE.modules.system.SiteConfigs
-        elem = SiteConfigs.get_row_by_pk(None, settings.SITE.config_id)
-        self.assertEqual(elem.next_partner_id,
+        sc = settings.SITE.site_config
+        self.assertEqual(sc.next_partner_id,
                          contacts.PARTNER_NUMBERS_START_AT + 2)
-
-        elem.next_partner_id = 12345
-        elem.full_clean()
-        elem.save()
+        sc.update(next_partner_id=12345)
+        
+        # SiteConfigs = settings.SITE.models.system.SiteConfigs
+        # elem = SiteConfigs.get_row_by_pk(None, settings.SITE.config_id)
+        # self.assertEqual(elem.next_partner_id,
+        #                  contacts.PARTNER_NUMBERS_START_AT + 2)
+        # elem.next_partner_id = 12345
+        # elem.full_clean()
+        # elem.save()
         #~ print "saved"
-        self.assertEqual(settings.SITE.site_config.next_partner_id, 12345)
+        sc = settings.SITE.site_config  # re-read it from db
+        self.assertEqual(sc.next_partner_id, 12345)
         john = create_and_get(Person, first_name='John', last_name='Smith')
         self.assertEqual(john.pk, 12345)
-        self.assertEqual(elem.next_partner_id, 12346)
-        self.assertEqual(settings.SITE.site_config.next_partner_id, 12346)
+        self.assertEqual(sc.next_partner_id, 12346)
+        sc = settings.SITE.site_config  # re-read it from db
+        self.assertEqual(sc.next_partner_id, 12346)
 
     def unused_test03(self):
         """
@@ -279,7 +285,7 @@ Estonia''')
         # least in sqlite. we would prefer to have `['adams', 'Zybulka']`,
         # but we get `['Zybulka', 'adams']`.
 
-        contacts = rt.modules.contacts
+        contacts = rt.models.contacts
         contacts.Partner(name="Zybulka").save()
         contacts.Partner(name="adams").save()
         ar = rt.login().spawn(contacts.Partners)

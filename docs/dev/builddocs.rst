@@ -16,8 +16,10 @@ locally on your computer.
 Theoretically it's easy
 =======================
 
-Theoretically it's easy to build the Lino Book: you just run :cmd:`inv
-bd` in the root directory of your ``book`` repository::
+When your development environment is correctly installed as explained
+in :doc:`install`, then --theoretically-- it's easy to build the Lino
+Book: you just run :cmd:`inv bd` in the root directory of your
+``book`` repository::
 
   $ go book
   $ inv bd
@@ -25,18 +27,91 @@ bd` in the root directory of your ``book`` repository::
 This will tell Sphinx to read the `.rst` source files and to generate
 :file:`.html` files into the :file:`docs/.build` directory.  Voilà.
 
-If you get some error message, then you need to check whether your
-development environment is correctly installed as explained in
-:doc:`install`.
-
-
-Otherwise you can then start your browser on the generated files::
+If you get some error message, then you need to read the
+Troubleshooting_ section.  Otherwise you can now start your browser on
+the generated files::
 
   $ firefox docs/.build/html/index.html
 
 Or jump directly to your local copy of this page:  
 
   $ firefox docs/.build/html/team/builddocs.html
+
+
+Troubleshooting
+===============
+
+.../docs/api/xxx.yyy.foo.rst:21:failed to import Bar
+----------------------------------------------------
+
+This can occur when you have an earlier build of the book on your
+computer, then pulled a new version of some Lino repository (or made
+some local code changes) and then run :cmd:`inv bd` again.
+
+The error should disappear either if you manually remove the specified
+file :file:`docs/api/xxx.yyy.foo.rst`.  Or, most fool-proof solution,
+you use the :cmd:`inv clean` command to automatically remove cached
+and generated files::
+
+    $ inv clean -b
+
+
+[autosummary] failed to import u'lino_book.projects.team.tests.test_notify'
+---------------------------------------------------------------------------
+
+This means that `autosummary
+<http://www.sphinx-doc.org/en/master/ext/autosummary.html>`__ (which
+in turn needs `autodoc
+<http://www.sphinx-doc.org/en/master/ext/autodoc.html>`__) has a
+problem to import the module
+:mod:`lino_book.projects.team.tests.test_notify`.
+
+Indeed you can verify that importing this module in a normal Python
+session will fail:
+
+>>> import lino_book.projects.team.tests.test_notify
+Traceback (most recent call last):
+...
+ImproperlyConfigured: Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+
+
+As the error message tries to explain, the module refuses to import
+because :envvar:`DJANGO_SETTINGS_MODULE` is not set.  That's related
+to an oddness of Django (one of its well-known and widely accepted
+oddnesses): you cannot simply import a module that imports
+:mod:`django` when that environment variable is not set.
+        
+Note that the :file:`docs/conf.py` contains (among others) the
+following lines::
+
+    from lino.sphinxcontrib import configure
+    configure(globals(), 'lino_book.projects.max.settings.doctests')
+
+This calls the :func:`lino.sphinxcontrib.configure` function which
+basically does exactly what we need here: it sets the
+:envvar:`DJANGO_SETTINGS_MODULE` to
+:mod:`lino_book.projects.max.settings.doctests`.
+     
+So Sphinx uses the :mod:`lino_book.projects.max` project when
+generating the docs.
+
+But your message says that something went wrong during all this.
+
+Let's try this::
+
+    $ # cd to ~/projects/book/lino_book/projects/max:
+    $ go max
+    $ python manage.py shell
+
+And in *that* Python shell you try to import the module which Sphinx
+was not able to import::
+
+    import lino_book.projects.team.tests.test_notify
+
+What happens now?
+
+
+
 
 
 Introducing Sphinx

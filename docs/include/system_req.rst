@@ -17,7 +17,7 @@
 
 #.  At this point you should retrieve new lists of packages.::
 
-      $ sudo apt-get update
+      $ sudo apt update
 
 #.  You will need virtualenv_ and pip_ installed::
 

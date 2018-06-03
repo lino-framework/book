@@ -1,14 +1,11 @@
+.. doctest docs/specs/care.rst
 .. _noi.specs.care:
 
 =======================================
 Lino Care, a network of people who care
 =======================================
 
-.. How to test only this document:
-
-    $ doctest docs/specs/care.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.anna.settings.demo')
@@ -41,13 +38,13 @@ The demo database has a set of **fictive users**. Let's introduce
 them:
 
 >>> rt.show('users.Users')
-========== =============== ============ ===========
- Username   User type       First name   Last name
----------- --------------- ------------ -----------
- robin      Administrator   Robin        Rood
- rolf       Administrator   Rolf         Rompen
- romain     Administrator   Romain       Raffault
-========== =============== ============ ===========
+========== ===================== ============ ===========
+ Username   User type             First name   Last name
+---------- --------------------- ------------ -----------
+ robin      900 (Administrator)   Robin        Rood
+ rolf       900 (Administrator)   Rolf         Rompen
+ romain     900 (Administrator)   Romain       Raffault
+========== ===================== ============ ===========
 <BLANKLINE>
 
 

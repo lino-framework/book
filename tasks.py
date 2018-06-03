@@ -1,5 +1,5 @@
-from atelier.invlib.ns import ns
-ns.setup_from_tasks(
+from atelier.invlib import setup_from_tasks
+ns = setup_from_tasks(
     globals(), 'lino_book',
     # tolerate_sphinx_warnings=True,
     blogref_url="http://luc.lino-framework.org",
@@ -24,6 +24,7 @@ ns.setup_from_tasks(
         'lino_book/projects/edmund',
         'lino_book/projects/combo',
         'lino_book/projects/watch',
+        'lino_book/projects/watch2',
         'lino_book/projects/docs',
         'lino_book/projects/belref',
         'lino_book/projects/polly',

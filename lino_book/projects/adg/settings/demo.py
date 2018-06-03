@@ -15,6 +15,7 @@ class Site(Site):
     languages = "en de fr"
 
     # default_ui = 'lino_extjs6.extjs6'
+    
 
 SITE = Site(globals())
 
@@ -23,3 +24,4 @@ DEBUG = True
 # the following line should not be active in a checked-in version
 #~ DATABASES['default']['NAME'] = ':memory:'
 
+# SITE.eidreader_timeout = 25

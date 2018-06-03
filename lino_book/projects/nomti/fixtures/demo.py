@@ -17,9 +17,9 @@ Catch
 
 
 def objects():
-    Person = rt.modules.app.Person
-    Restaurant = rt.modules.app.Restaurant
-    Place = rt.modules.app.Place
+    Person = rt.models.app.Person
+    Restaurant = rt.models.app.Restaurant
+    Place = rt.models.app.Place
 
     anne = Person(name="Anne")
     yield anne

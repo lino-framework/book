@@ -418,6 +418,15 @@ Database models reference
         having that match.
 
            
+    .. attribute:: ana_account
+           
+        The analytic account to move together with this transactions.
+
+        This file exists only when :mod:`lino_xl.lib.ana` is
+        installed as well.
+        
+        
+                
 .. class:: Voucher
            
     A Voucher is a document that represents a monetary transaction.
@@ -495,7 +504,6 @@ Database models reference
         calling this method.
 
 
-                
            
 .. class:: PaymentTerm
            

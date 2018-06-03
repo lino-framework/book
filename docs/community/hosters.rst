@@ -6,8 +6,14 @@ Lino hosting providers
 ======================
 
 A **Lino hosting provider** is a company able to set up and maintain a
-web server where your Lino application will be running.
-
+web server where your Lino application will be running.  They care
+about reliability and make sure that your Lino is always available to
+respond when you need it. They care about security and protect your
+system against hackers. They make backups of your data to make sure it
+doesn't get lost in case of a serious accident.  They care about
+scaling. As your site will grow in terms of number of users and the
+amount of data stored, you might want to move to a bigger machine.
+  
 Here is our list of **recommended Lino hosting providers**.
 
 - `AbAKUS it-solutions <http://www.abakusitsolutions.eu/>`__ is a
@@ -31,37 +37,33 @@ Here is our list of **recommended Lino hosting providers**.
 - `Switcom <http://www.switcom.be>`_ is an ICT solutions provider in
   Eupen, Belgium.
 
-Lino hosting providers assume the following **responsibilities**:
+- *Abdelkader HANNACHE* provides Lino hosting and development in
+  Annaba (Algeria). Mobile phone: +213 698190526, E-mail:
+  kader.ia@live.fr
 
-- they care about reliability and make sure that your Lino is always
-  available to respond when you need it.
-  
-- they care about security and protect your system against hackers
-  
-- they make backups of your data to make sure it doesn't get lost in
-  case of a serious accident.
-  
-- they care about scaling. As your site will grow in terms of number
-  of users and the amount of data stored, you might want to move to a
-  bigger machine.
-  
-There are two types of hosting:
-  
-- in case of **development hosting** the hoster is *not reponsible*
-  for *end-user support* and *regular maintenance*.  You need a second
-  agreement with a :doc:`developer <developers>` for these.
-       
-- in case of **stable hosting** the hoster also offers these services,
-  i.e. they answer your questions about how to use or configure the
-  software, and they are able upgrade your site when new versions of the
-  software are available.
 
-There is currently no official programme of courses and tests for
-becoming a "certified" Lino hoster.  It's all a question of trust. In
-case of doubt, your :doc:`Lino developer <developers>` is able to
-judge the fitness of a given service provider for your case.
 
-If you plan to become yourself a hosting provider and be on above
-list, then read the :doc:`Hoster's Guide </hosting/index>` and don't
-hesitate to contact us.
+If **you want to be listed** in above directory, then don't hesitate
+to contact us.  There is no official programme of courses and tests
+for becoming a "certified" Lino hoster.  It's all a question of trust.
+The condition for getting listed is a visible interest in Lino, the
+ability to give professsional advice about whether a Lino solution can
+make sense in a given context, and a potential ability to become a
+qualified hosting provider when needed.  See also the :doc:`Hoster's
+Guide </hosting/index>`.
+
+
+
+.. We invite companies all over the world to join our community and
+   get listed in our :doc:`directory </community/hosters>` of
+   recommented Lino hosting providers.
+
+
+
+
+  
+
+
+
+
 

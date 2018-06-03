@@ -1,3 +1,4 @@
+.. doctest docs/specs/ajax.rst
 .. _book.specs.ajax:
 .. _cosi.tested.bel_de:
 
@@ -5,11 +6,7 @@
 Refusing permission to an anonymous request
 ===========================================
 
-.. to test only this document:
-
-    $ doctest docs/specs/ajax.rst
-
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.apc.settings.sestests')
@@ -50,6 +47,7 @@ django.contrib.sessions.middleware.SessionMiddleware
 lino.core.auth.middleware.AuthenticationMiddleware
 lino.core.auth.middleware.WithUserMiddleware
 lino.utils.ajax.AjaxExceptionResponse
+
 >>> 'django.contrib.sessions' in settings.INSTALLED_APPS
 True
 
@@ -117,5 +115,5 @@ request without modifications." (`w3.org
 >>> res.status_code
 400
 >>> print(res.content.decode())
-PermissionDenied: As Anonym you have no permission to run this action.
+PermissionDenied: As 000 (Anonym) you have no permission to run this action.
 

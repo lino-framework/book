@@ -35,7 +35,7 @@ class DDHTests(RemoteAuthTestCase):
         Project = rt.models.tickets.Project
         User = rt.models.users.User
         Star = rt.models.votes.Vote
-        # ContentType = rt.modules.contenttypes.ContentType
+        # ContentType = rt.models.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
         create(Project, name='project')

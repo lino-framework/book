@@ -85,7 +85,7 @@ This document describes the database structure.
  users.User                         users.Users                      47        6
  userstats.UserStat                 userstats.UserStats              5         36
  working.ServiceReport              working.ServiceReports           10        1
- working.Session                    working.Sessions                 13        13
+ working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1
  working.SiteSummary                working.Summaries                17        3
 ================================== ================================ ========= =======
@@ -95,7 +95,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 46 plugins
 - 67 models
-- 247 views
+- 246 views
 - 7 user types
 - 72 dialog actions
 <BLANKLINE>

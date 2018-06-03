@@ -13,15 +13,16 @@ to dive *into* Lino.
    polls/index
    lets/index
    models
-   warning
-   tables
+   tables/index
    layouts/index
    choicelists
+   slave_tables
+   table_summaries
    vtables
    initdb
    dumpy/index
    perms
    users
    settings
-
+   admin_main
 

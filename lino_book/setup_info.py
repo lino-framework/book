@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2018 Luc Saffre
+# Copyright 2009-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
@@ -13,13 +13,14 @@ PY3 = sys.version_info[0] == 3
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='18.1.0',
+    version='18.3.0',
     install_requires=[
         'lino', 'selenium',
         'django-iban', 'metafone', 'channels<2',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
+        # 'eidreader',
         'social-auth-app-django',
         'lino_cosi',
         'lino_noi',
@@ -36,7 +37,7 @@ SETUP_INFO = dict(
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
     # tests_require=['requests_mock'],
 
-    description="The documentation for Lino",
+    description="Lino documentation and demo projects",
     license='BSD License',
     include_package_data=True,
     zip_safe=False,
@@ -228,6 +229,8 @@ lino_book.projects.watch
 lino_book.projects.watch.entries
 lino_book.projects.watch.fixtures
 lino_book.projects.watch.tests
+lino_book.projects.watch2
+lino_book.projects.watch2.fixtures
 lino_book.projects.mldbc
 lino_book.projects.mldbc.fixtures
 lino_book.projects.actions
