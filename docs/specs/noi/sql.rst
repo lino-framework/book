@@ -38,17 +38,15 @@ SQL that poor Django must do in order to return a single row.
 1
 
 >>> show_sql_summary()
-===================== =======
- table                 count
---------------------- -------
- django_content_type   1
- django_session        1
- stars_star            22
- tickets_site          7
- tickets_ticket        2
- users_user            1
- working_session       15
-===================== =======
+================= =======
+ table             count
+----------------- -------
+ django_session    1
+ tickets_site      7
+ tickets_ticket    2
+ users_user        1
+ working_session   15
+================= =======
 <BLANKLINE>
 
 >>> show_sql_queries()
@@ -71,7 +69,6 @@ tickets.Ticket.description
 tickets.Ticket.duplicate_of
 tickets.Ticket.end_user
 tickets.Ticket.feedback
-tickets.Ticket.fixed_for
 tickets.Ticket.fixed_since
 tickets.Ticket.id
 tickets.Ticket.modified
@@ -80,7 +77,6 @@ tickets.Ticket.priority
 tickets.Ticket.private
 tickets.Ticket.project
 tickets.Ticket.ref
-tickets.Ticket.reported_for
 tickets.Ticket.reporter
 tickets.Ticket.site
 tickets.Ticket.standby

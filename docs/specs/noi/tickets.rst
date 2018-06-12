@@ -367,35 +367,34 @@ My tickets
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
-========== ======================================================================= ================================================
- Priority   Description                                                             Workflow
----------- ----------------------------------------------------------------------- ------------------------------------------------
- Normal     `#114 (☎ Ticket 114) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#108 (⚒ Ticket 108) <Detail>`__, assigned to `Mathieu <Detail>`__      [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#105 (⛶ Ticket 105) <Detail>`__                                        [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#102 (☐ Ticket 102) <Detail>`__, assigned to `Jean <Detail>`__         [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#99 (☉ Ticket 99) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#90 (☎ Ticket 90) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#84 (⚒ Ticket 84) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#81 (⛶ Ticket 81) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#78 (☐ Ticket 78) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#75 (☉ Ticket 75) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#66 (☎ Ticket 66) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#60 (⚒ Ticket 60) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#57 (⛶ Ticket 57) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#54 (☐ Ticket 54) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#51 (☉ Ticket 51) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#42 (☎ Ticket 42) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#36 (⚒ Ticket 36) <Detail>`__, assigned to `Mathieu <Detail>`__        [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#33 (⛶ Ticket 33) <Detail>`__                                          [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#30 (☐ Ticket 30) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#27 (☉ Ticket 27) <Detail>`__, assigned to `Luc <Detail>`__            [✋] [▶] [✫] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#18 (☎ Ticket 18) <Detail>`__, assigned to `Jean <Detail>`__           [▶] [☆] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#12 (⚒ Foo cannot bar) <Detail>`__, assigned to `Mathieu <Detail>`__   [✋] [▶] [☆] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#9 (⛶ Foo never matches Bar) <Detail>`__                               [✋] [▶] [✫] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#6 (☐ Sell bar in baz) <Detail>`__, assigned to `Jean <Detail>`__      [▶] [☆] **Ready** → [☎] [☑] [☒]
- Normal     `#3 (☉ Baz sucks) <Detail>`__, assigned to `Luc <Detail>`__             [✋] [▶] [★] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-========== ======================================================================= ================================================
+========== =============================================================================================== ============================================
+ Priority   Description                                                                                     Workflow
+---------- ----------------------------------------------------------------------------------------------- --------------------------------------------
+ Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#106 (☎ Ticket 106) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#100 (⚒ Ticket 100) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#94 (☐ Ticket 94) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#82 (☎ Ticket 82) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#76 (⚒ Ticket 76) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#70 (☐ Ticket 70) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#58 (☎ Ticket 58) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#52 (⚒ Ticket 52) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#46 (☐ Ticket 46) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#34 (☎ Ticket 34) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#28 (⚒ Ticket 28) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#22 (☐ Ticket 22) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                     [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
+========== =============================================================================================== ============================================
 <BLANKLINE>
 
 
@@ -412,6 +411,28 @@ The site of a ticket also indicates "who is going to pay" for it.
 Lino Noi does not issue invoices, so it uses this information only for
 reporting about it and helping with the decision about whether and how
 worktime is being invoiced to the customer.
+
+
+.. class:: Site
+           
+.. class:: Subscription
+
+    .. attribute:: site
+
+        The site.
+                   
+    .. attribute:: user
+
+        The user.
+                   
+    .. attribute:: primary
+
+        Whether this is the primary subscription of this user.
+
+        Checking this field will automatically uncheck any 
+        previous primary subscriptions.
+           
+
 
 Here is a list of the sites in our demo database:
 
@@ -465,20 +486,20 @@ table:
 
 >>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== =============================================================== ==========
- Priority   Description                                                     Workflow
----------- --------------------------------------------------------------- ----------
- Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Luc*                        **New**
- Normal     `#73 (⛶ Ticket 73) <Detail>`__  by *Luc*                        **New**
- Normal     `#49 (⛶ Ticket 49) <Detail>`__  by *Luc*                        **New**
- Normal     `#25 (⛶ Ticket 25) <Detail>`__  by *Luc*                        **New**
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Luc*         **New**
- Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Luc*, assigned to *Luc*   **Open**
- Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
- Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
- Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
- Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Luc*, assigned to *Luc*     **Open**
-========== =============================================================== ==========
+========== ================================================================ ==========
+ Priority   Description                                                      Workflow
+---------- ---------------------------------------------------------------- ----------
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Jean*                        **New**
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__  by *Jean*                        **New**
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__  by *Jean*                        **New**
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__  by *Jean*                        **New**
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*         **New**
+ Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Jean*, assigned to *Luc*   **Open**
+ Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
+ Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
+ Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
+ Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
+========== ================================================================ ==========
 <BLANKLINE>
 
 Note that the above table shows no state change actions in the
@@ -486,80 +507,22 @@ Note that the above table shows no state change actions in the
 requested by anonymous. For an authenticated developer it looks like
 this:
 
->>> rt.login('luc').show(tickets.TicketsBySite, welket, nosummary=True)
+>>> rt.login('jean').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
 ========== ================================================================ ============================================
  Priority   Description                                                      Workflow
 ---------- ---------------------------------------------------------------- --------------------------------------------
- Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] [☆] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] [★] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__     [▶] [☆] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
 ========== ================================================================ ============================================
-<BLANKLINE>
-
-
-
-Milestones
-==========
-
-Every site can have its list of "milestones". A milestone is when
-something happens on a given site at a given time, and when a given
-group of people are working for preparing this.  In Scrum this is
-called a sprint.
-
-A typical case of a milestone is an upgrade of the software that is
-running on a given website.  A milestone is not necessary an
-*official* release of a new version.
-
->>> rt.show('meetings.Meetings')
-... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
-============ ================= =========== ======== ====== ===========
- Start date   Title             Reference   Site     Room   Workflow
------------- ----------------- ----------- -------- ------ -----------
- 15/05/2015   20150515@welket               welket          **Draft**
- 13/05/2015   20150513@welsch               welsch          **Draft**
- 11/05/2015   20150511@welket               welket          **Draft**
- 09/05/2015   20150509@welsch               welsch          **Draft**
- 07/05/2015   20150507@welket               welket          **Draft**
- 05/05/2015   20150505@welsch               welsch          **Draft**
- 03/05/2015   20150503@welket               welket          **Draft**
-============ ================= =========== ======== ====== ===========
-<BLANKLINE>
-
-
-
-Wishes
-======
-
-Every milestone has its list of wishes ("deployments"), i.e. the
-tickets that are being fixed when this milestone is reached.
-
-The demo database has the following wishes:
-
->>> rt.show(rt.models.deploy.Deployments, limit=10)
-... #doctest: -REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
- ==== ======== =================================================== ================= ======== ============== ============== ================== =============
-  ID   No.      Ticket                                              Meeting           Remark   Wish type      Ticket State   New Ticket State   Deferred to
- ---- -------- --------------------------------------------------- ----------------- -------- -------------- -------------- ------------------ -------------
-  1    1        #1 (⛶ Föö fails to bar when baz)                    20150503@welket            Agenda item
-  2    1        #2 (☎ Bar is not always baz)                        20150505@welsch            New feature
-  3    1        #3 (☉ Baz sucks)                                    20150507@welket            Optimization
-  4    1        #5 (☾ Cannot create Foo)                            20150509@welsch            Bugfix
-  5    1        #6 (☐ Sell bar in baz)                              20150511@welket            Gimmick
-  6    1        #7 (☑ No Foo after deleting Bar)                    20150513@welsch            Side effect
-  7    1        #9 (⛶ Foo never matches Bar)                        20150515@welket            Resolution
-  8    2        #10 (☎ Where can I find a Foo when bazing Bazes?)   20150503@welket            Aftermath
-  9    2        #11 (☉ Class-based Foos and Bars?)                  20150505@welsch            Agenda item
-  10   2        #13 (☾ Bar cannot foo)                              20150507@welket            New feature
-       **13**
- ==== ======== =================================================== ================= ======== ============== ============== ================== =============
 <BLANKLINE>
 
 
@@ -569,7 +532,7 @@ Release notes
 =============
 
 >>> url = '/choices/deploy/DeploymentsByTicket/milestone'
->>> show_choices('robin', url)
+>>> show_choices('robin', url) #doctest: +SKIP
 20150515@welket
 20150513@welsch
 20150511@welket
@@ -579,18 +542,17 @@ Release notes
 20150503@welket
 
 
->>> show_choices('robin', url+"?query=0507")
+>>> show_choices('robin', url+"?query=0507") #doctest: +SKIP
 20150507@welket
 
->>> show_choices('robin', url+"?query=welket")
+>>> show_choices('robin', url+"?query=welket") #doctest: +SKIP
 20150515@welket
 20150511@welket
 20150507@welket
 20150503@welket
 
 You for meetings you can also seach for digital values and it will return rows that have that number in the name, ref, or remark.
->>> show_choices('robin', url+"?query=2015050")
-... #doctest: -SKIP
+>>> show_choices('robin', url+"?query=2015050") #doctest: +SKIP
 20150509@welsch
 20150507@welket
 20150505@welsch
@@ -727,8 +689,6 @@ This is a list of the parameters you can use for filterings tickets.
 | state           | State           | Only rows having this state.                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
 | priority        | Priority        | Only rows having this priority.                                  |
-+-----------------+-----------------+------------------------------------------------------------------+
-| deployed_to     | Meeting         |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 | show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.       |
 +-----------------+-----------------+------------------------------------------------------------------+

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2017 Luc Saffre
+# Copyright 2016-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about ticket and vote workflow.
@@ -32,7 +32,7 @@ class WorkflowTests(RemoteAuthTestCase):
         # Line = rt.models.courses.Line
         # Activity = rt.models.courses.Course
         # Enrolment = rt.models.courses.Enrolment
-        Meeting = rt.models.meetings.Meeting
+        # Meeting = rt.models.meetings.Meeting
         Change = rt.models.changes.Change
         User = rt.models.users.User
         # Vote = rt.models.votes.Vote
@@ -55,7 +55,7 @@ class WorkflowTests(RemoteAuthTestCase):
                        first_name="Berta",
                        user_type=UserTypes.user,
                        language="en")
-        meeting = create(Meeting, name="Test")
+        # meeting = create(Meeting, name="Test")
         # sprints = create(Line, name="Sprints")
         # sprint = create(Activity, line=sprints)
         #
