@@ -26,6 +26,7 @@ Getting acquaintained
    gfks
    /tutorials/layouts
    actions
+   delete
    mldbc/index
    plugin_inheritance
    plugin_cooperation

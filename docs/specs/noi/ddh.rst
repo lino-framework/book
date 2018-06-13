@@ -2,7 +2,7 @@
 .. _noi.specs.ddh:
 
 =============================
-Preventing accidental deletes
+Deletion handlers in Lino Noi
 =============================
 
 ..  doctest init:
@@ -12,12 +12,8 @@ Preventing accidental deletes
     >>> from lino.api.doctest import *
 
 
-Foreign Keys and their `on_delete` setting
-==========================================
-
-Here is the output of :meth:`lino.utils.diag.Analyzer.show_foreign_keys` in
-Lino Noi:
-
+Here is a list of foreign keys in :ref:`noi` and their on_delete
+behaviour. See also :doc:`/dev/delete`.
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())

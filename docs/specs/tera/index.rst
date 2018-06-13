@@ -18,3 +18,4 @@ designed to be used in a center for `sociopsychological
    sql
    ledger
    courses
+   db
