@@ -34,50 +34,48 @@ class DDHTests(RemoteAuthTestCase):
         Ticket = rt.models.tickets.Ticket
         Project = rt.models.tickets.Project
         User = rt.models.users.User
-        Star = rt.models.stars.Star
+        Subscription = rt.models.tickets.Subscription
+        Site = rt.models.tickets.Site
         # ContentType = rt.models.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
-        create(Project, name='project')
+        site = create(Site, name='project')
         robin = create(User, username='robin',
                        first_name="Robin",
                        user_type=UserTypes.admin,
                        language="en")
+        create(Subscription, site=site, user=robin)
 
         def createit():
-            return create(Ticket, summary="Test", user=robin)
+            return create(Ticket, summary="Test", user=robin, site=site)
 
         #
         # If there are no vetos, user can ask to delete it
         #
-        obj = createit()
-        obj.delete()
+        ticket = createit()
+        ticket.delete()
 
-        obj = createit()
+        ticket = createit()
 
-        if False:
-            try:
-                robin.delete()
-                self.fail("Expected veto")
-            except Warning as e:
-                self.assertEqual(
-                    str(e), "Cannot delete User Robin "
-                    "because 1 Tickets refer to it.")
+        # we cannot delete the user because a ticket refers to it:
 
-        
-        star = create(Star, owner=obj, user=robin)
-        
         try:
             robin.delete()
             self.fail("Expected veto")
         except Warning as e:
             self.assertEqual(
                 str(e), "Cannot delete User Robin "
-                "because 1 Stars refer to it.")
+                "because 1 Tickets refer to it.")
 
-        self.assertEqual(Star.objects.count(), 1)
+        
+        self.assertEqual(Subscription.objects.count(), 1)
         self.assertEqual(Ticket.objects.count(), 1)
-        star.delete()
-        obj.delete()
-        self.assertEqual(Star.objects.count(), 0)
+
+        # when we have deleted the ticket, deleting the user works
+        # because the subscription is deleted in cascade:
+        
+        ticket.delete()
+        robin.delete()
+        self.assertEqual(Subscription.objects.count(), 0)
         self.assertEqual(Ticket.objects.count(), 0)
+        self.assertEqual(User.objects.count(), 0)
