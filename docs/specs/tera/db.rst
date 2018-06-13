@@ -100,7 +100,7 @@ The database structure
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 24        24
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         2
+ sessions.Session            sessions.SessionTable          3         ...
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
  tera.Client                 tera.Clients                   61        59
