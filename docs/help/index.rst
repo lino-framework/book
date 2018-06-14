@@ -13,3 +13,4 @@ This section contains specific information items for Lino users.
    /user/templates_api
    /user/configure_notes_templates
    /user/db
+   password
