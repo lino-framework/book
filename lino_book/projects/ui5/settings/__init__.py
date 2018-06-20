@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """The :xfile:`settings.py` modules for this variant.
 
@@ -24,3 +24,10 @@ class Site(Site):
     default_ui = 'lino.modlib.openui5'
     # default_user = 'anonymous'
 
+    def get_installed_apps(self):
+        """
+        Add the stars plugin because it gives a repeatable action for
+        testing.
+        """
+        yield super(Site, self).get_installed_apps()
+        yield 'lino_xl.lib.stars'

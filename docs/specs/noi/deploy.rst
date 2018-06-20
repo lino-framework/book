@@ -61,7 +61,7 @@ What is a wish?
     
     Lino Noi knows the following types of wishes:
 
-    >>> rt.show("deploy.WishTypes")
+    >>> rt.show("deploy.WishTypes")  #doctest: +SKIP
     ======= ============== ==============
      value   name           text
     ------- -------------- --------------
@@ -98,9 +98,9 @@ For example, ticket #17 occurs as agenda item in milestone
 20150513@welsch:
 
 >>> obj = rt.models.tickets.Ticket.objects.get(pk=17)
->>> rt.show("deploy.DeploymentsByTicket", obj)
+>>> rt.show("deploy.DeploymentsByTicket", obj)  #doctest: +SKIP
 <ul><li><em>Gimmick</em> in <em>20150513@welsch</em> : </li></ul>
->>> rt.show("deploy.DeploymentsByTicket", obj, nosummary=True)
+>>> rt.show("deploy.DeploymentsByTicket", obj, nosummary=True)  #doctest: +SKIP
 ================= =========== ========
  Meeting           Wish type   Remark
 ----------------- ----------- --------

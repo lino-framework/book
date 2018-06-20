@@ -314,6 +314,7 @@ Actions
 
         The new password a second time. Both passwords must match.
 
+    See also :doc:`/help/password`.
           
 .. class:: SignIn
 

@@ -71,14 +71,15 @@ class TestCase(TestCase):
 
         """
         ContentType = rt.models.contenttypes.ContentType
-        Comment = rt.models.comments.Comment
         Ticket = rt.models.tickets.Ticket
-        Project = rt.models.tickets.Project
+        # Project = rt.models.tickets.Project
+        Site = rt.models.tickets.Site
+        Subscription = rt.models.tickets.Subscription
         # Vote = rt.models.votes.Vote
-        Star = rt.models.stars.Star
+        # Star = rt.models.stars.Star
         Message = rt.models.notify.Message
         User = settings.SITE.user_model
-        create(Project, name="Project")
+        # create(Project, name="Project")
         robin = create(
             User, username='robin',
             first_name="Robin",
@@ -88,10 +89,13 @@ class TestCase(TestCase):
             first_name="Aline",
             email="aline@example.com", language='fr',
             user_type=UserTypes.admin)
+        
+        foo = create(Site, name="Foo")
+        create(Subscription, site=foo, user=aline)
+        
         obj = create(
             Ticket, summary="Save the world, après moi le déluge",
-            user=robin)
-        create(Star, owner=obj, user=aline)
+            user=robin, site=foo)
         
         self.assertEqual(Message.objects.count(), 0)
         
@@ -116,9 +120,6 @@ class TestCase(TestCase):
         self.assertEqual(
             result['message'],
             """Comment "Comment #1" has been created.""")
-
-        # obj = Comment.objects.all()[0]
-        # obj.do_publish(ar)
 
         self.assertEqual(Message.objects.count(), 1)
         msg = Message.objects.all()[0]

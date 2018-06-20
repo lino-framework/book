@@ -48,16 +48,17 @@ def tickets_objects():
     Interest = rt.models.topics.Interest
     Milestone = dd.plugins.tickets.milestone_model
     # Milestone = rt.models.deploy.Milestone
-    Deployment = rt.models.deploy.Deployment
-    WishTypes = rt.models.deploy.WishTypes
+    # Deployment = rt.models.deploy.Deployment
+    # WishTypes = rt.models.deploy.WishTypes
     Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
     Site = dd.plugins.tickets.site_model
     Link = rt.models.tickets.Link
     LinkTypes = rt.models.tickets.LinkTypes
+    Subscription = rt.models.tickets.Subscription
     #EntryType = rt.models.blogs.EntryType
     #Entry = rt.models.blogs.Entry
-    Star = rt.models.stars.Star
+    # Star = rt.models.stars.Star
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
@@ -137,23 +138,24 @@ def tickets_objects():
     # for u in User.objects.all():
     #     yield Competence(user=u, project=PROJECTS.pop())
     #     yield Competence(user=u, project=PROJECTS.pop())
-    
-    SITES = Cycler(Site.objects.exclude(name="pypi"))
-    # LISTS = Cycler(List.objects.all())
-    for i in range(7):
-        site = SITES.pop()
-        d = dd.today(i*2-20)
-        kw = dict(
-            user=WORKERS.pop(),
-            start_date=d,
-            # line=sprint,
-            # project=PROJECTS.pop(), # expected=d, reached=d,
-            # expected=d, reached=d,
-            name="{}@{}".format(d.strftime("%Y%m%d"), site),
-            # list=LISTS.pop()
-        )
-        kw[Milestone.site_field_name] = site
-        yield Milestone(**kw)
+
+    if dd.is_installed('meetings'):
+        SITES = Cycler(Site.objects.exclude(name="pypi"))
+        # LISTS = Cycler(List.objects.all())
+        for i in range(7):
+            site = SITES.pop()
+            d = dd.today(i*2-20)
+            kw = dict(
+                user=WORKERS.pop(),
+                start_date=d,
+                # line=sprint,
+                # project=PROJECTS.pop(), # expected=d, reached=d,
+                # expected=d, reached=d,
+                name="{}@{}".format(d.strftime("%Y%m%d"), site),
+                # list=LISTS.pop()
+            )
+            kw[Milestone.site_field_name] = site
+            yield Milestone(**kw)
     # yield Milestone(site=SITES.pop(), expected=dd.today())
     # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
     
@@ -223,14 +225,15 @@ def tickets_objects():
     for i in range(100):
         yield ticket("Ticket {}".format(i+n+1), project=PROJECTS.pop())
 
-    WTYPES = Cycler(WishTypes.objects())
-    MILESTONES = Cycler(Milestone.objects.all())
-    for t in Ticket.objects.all():
-        # t.set_author_votes()
-        if t.id % 4:
-            yield Deployment(
-                milestone=MILESTONES.pop(), ticket=t,
-                wish_type=WTYPES.pop())
+    if dd.is_installed('meetings'):
+        WTYPES = Cycler(WishTypes.objects())
+        MILESTONES = Cycler(Milestone.objects.all())
+        for t in Ticket.objects.all():
+            # t.set_author_votes()
+            if t.id % 4:
+                yield Deployment(
+                    milestone=MILESTONES.pop(), ticket=t,
+                    wish_type=WTYPES.pop())
 
     
     yield Link(
@@ -268,10 +271,7 @@ def tickets_objects():
     for U in User.objects.all():
         if U.user_type >= rt.models.users.UserTypes.senior:
             for s in Site.objects.all():
-                star = Star(owner=s, user=U)
-                yield star
-                for cs in star.yield_children(U):
-                    yield cs
+                yield Subscription(site=s, user=U)
 
 def working_objects():
     # was previously in working

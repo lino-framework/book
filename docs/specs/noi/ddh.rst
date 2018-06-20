@@ -2,7 +2,7 @@
 .. _noi.specs.ddh:
 
 =============================
-Preventing accidental deletes
+Deletion handlers in Lino Noi
 =============================
 
 ..  doctest init:
@@ -12,12 +12,8 @@ Preventing accidental deletes
     >>> from lino.api.doctest import *
 
 
-Foreign Keys and their `on_delete` setting
-==========================================
-
-Here is the output of :meth:`lino.utils.diag.Analyzer.show_foreign_keys` in
-Lino Noi:
-
+Here is a list of foreign keys in :ref:`noi` and their on_delete
+behaviour. See also :doc:`/dev/delete`.
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
@@ -33,7 +29,7 @@ Lino Noi:
 - cal.Priority :
   - PROTECT : cal.Event.priority
 - cal.Room :
-  - PROTECT : cal.Event.room, meetings.Meeting.room
+  - PROTECT : cal.Event.room
 - comments.Comment :
   - PROTECT : comments.Comment.reply_to
 - comments.CommentType :
@@ -51,7 +47,7 @@ Lino Noi:
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, stars.Star.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -70,10 +66,6 @@ Lino Noi:
   - PROTECT : lists.Member.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
-- meetings.Meeting :
-  - PROTECT : deploy.Deployment.deferred_to, deploy.Deployment.milestone, tickets.Ticket.fixed_for, tickets.Ticket.reported_for
-- stars.Star :
-  - CASCADE : stars.Star.master
 - system.SiteConfig :
   - PROTECT : userstats.UserStat.master
 - tickets.Project :
@@ -81,9 +73,10 @@ Lino Noi:
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
 - tickets.Site :
-  - PROTECT : meetings.Meeting.site, tickets.Ticket.site, working.SiteSummary.master
+  - CASCADE : tickets.Subscription.site
+  - PROTECT : tickets.Ticket.site, working.SiteSummary.master
 - tickets.Ticket :
-  - PROTECT : deploy.Deployment.ticket, django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
+  - PROTECT : django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - topics.Topic :
@@ -93,7 +86,8 @@ Lino Noi:
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, meetings.Meeting.user, notify.Message.user, social_django.UserSocialAuth.user, stars.Star.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - CASCADE : tickets.Subscription.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>

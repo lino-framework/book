@@ -1,9 +1,9 @@
 .. doctest docs/specs/voga/db_roger.rst
 .. _voga.specs.db_roger:
 
-==================
-Database structure
-==================
+===============================
+Database structure in Lino Voga
+===============================
 
 .. doctest init:
 
@@ -109,9 +109,8 @@ The database structure
 Foreign Keys and their `on_delete` setting
 ==========================================
 
-Here is the output of
-:meth:`lino.utils.diag.Analyzer.show_foreign_keys` in Lino Voga:
-
+Here is a list of foreign keys in :ref:`voga` and their on_delete
+behaviour. See also :doc:`/dev/delete`.
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
