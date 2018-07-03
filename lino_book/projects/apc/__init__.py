@@ -1,6 +1,5 @@
 """
-:ref:`cosi` for German-speaking Belgium
-=======================================
+Shows a :ref:`cosi` for German-speaking Belgium.
 
 .. autosummary::
    :toctree:

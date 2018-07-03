@@ -173,6 +173,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Kalendereintragsarten : 10
 - Konfigurierung --> Kalender --> Wiederholungsregeln : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
+- Konfigurierung --> Kalender --> Tagesplanerzeilen : 4
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
 - Konfigurierung --> Buchhaltung --> Kontengruppen : 7
@@ -191,7 +192,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Auszugsarten : 16
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 5
-- Explorer --> System --> Datenbankmodelle : 78
+- Explorer --> System --> Datenbankmodelle : 79
 - Explorer --> System --> Datentests : 10
 - Explorer --> System --> Datenprobleme : 20
 - Explorer --> System --> Änderungen : 0

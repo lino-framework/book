@@ -97,8 +97,8 @@ The most interesting is 177:
 >>> p = Person.objects.get(pk=177)
 >>> ses.show('households.MembersByPerson', master_instance=p)
 Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,false,60,{  })>`__Head of household in `Karl & Erna Keller-Emonts-Gast (Factual household) <Detail>`__
-`☐  <javascript:Lino.households.Members.set_primary(null,false,44,{  })>`__Head of household in `Karl & Õie Keller-Õunapuu (Legal cohabitation) <Detail>`__
+`☐  <javascript:Lino.households.Members.set_primary(null,false,57,{  })>`__Head of household in `Karl & Erna Keller-Emonts-Gast (Factual household) <Detail>`__
+`☐  <javascript:Lino.households.Members.set_primary(null,false,42,{  })>`__Head of household in `Karl & Õie Keller-Õunapuu (Legal cohabitation) <Detail>`__
 <BLANKLINE>
 **Join an existing household** or **create a new one**.
 

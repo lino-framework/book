@@ -192,9 +192,8 @@ For Lino, an appointment is a calendar entry whose :class:`type
 Lifecycle of a calendar entry
 =============================
 
-Every calendar entry has a given **state** which can change The state
-of this entry. The state can change according to rules defined by the
-workflow, that's why we sometimes refer to it as the life cycle.
+Every calendar entry has a given **state** which can change according
+to rules defined by the application.
 
 The default list of choices for this field contains the following
 values.
@@ -214,7 +213,8 @@ values.
 The type of a calendar entry
 ============================
 
-The :attr:`type <Event.type>` field of a *calendar entry* points to a
+The :attr:`type <Event.type>` field of a *calendar entry* 
+points to a
 database object which holds certain properties that are common to all
 entries of that type.
 
@@ -258,6 +258,48 @@ entries of that type.
     .. attribute:: transparent
 
         Allow entries of this type to conflict with other events.
+
+
+
+The daily planner
+=================
+
+A default configuration has two columns in the daily planner:
+
+
+>>> rt.show(cal.PlannerColumns)
+======= ========== ==========
+ value   name       text
+------- ---------- ----------
+ 10      external   external
+ 20      internal   internal
+======= ========== ==========
+<BLANKLINE>
+
+>>> rt.show(cal.DailyPlannerRows)
+======= ============= ================== ================== ============ ==========
+ No.     Designation   Designation (de)   Designation (fr)   Start time   End time
+------- ------------- ------------------ ------------------ ------------ ----------
+ 1       AM            vorm.              Matin                           12:00:00
+ 3       All day       All day            All day
+ 2       PM            nachm.             Après-midi         12:00:00
+ **6**
+======= ============= ================== ================== ============ ==========
+<BLANKLINE>
+
+
+>>> rt.show(cal.DailyPlanner)
+=========== ========== ===============
+ overview    external   internal
+----------- ---------- ---------------
+ *AM*
+ *All day*
+ *PM*                   *13:30 robin*
+=========== ========== ===============
+<BLANKLINE>
+
+>>> dd.today()
+datetime.date(2017, 2, 15)
         
 
 

@@ -1,15 +1,12 @@
+.. doctest docs/specs/tera/products.rst
 .. _specs.tera.products:
 
-=======
-Tariffs
-=======
+====================
+Tariffs in Lino Tera
+====================
 
 
-.. to run only this test:
-
-    $ doctest docs/specs/tera/products.rst
-    
-    doctest init
+.. doctest init
 
     >>> from lino import startup
     >>> startup('lino_book.projects.lydia.settings.doctests')

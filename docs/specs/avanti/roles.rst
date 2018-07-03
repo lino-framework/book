@@ -34,7 +34,7 @@ Menus
   - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations
   - Trends : Trend areas, Trend stages
   - Polls : Choice Sets
-  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars
+  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Topics, Timetable Slots
 - Explorer :
   - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
@@ -91,6 +91,7 @@ Each window is **viewable** for a given set of user types.
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
 - cal.Calendars.merge_row : visible for admin
+- cal.DailyPlannerRows.merge_row : visible for admin
 - cal.EntriesByProject.insert : visible for teacher user coordinator secretary staff admin
 - cal.EventPolicies.merge_row : visible for admin
 - cal.EventTypes.detail : visible for staff admin
