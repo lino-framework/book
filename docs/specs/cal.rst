@@ -264,6 +264,12 @@ entries of that type.
 The daily planner
 =================
 
+.. class:: PlannerColumns
+           
+    A choicelist that defines the columns to appear in the daily
+    planner. This list can be modified locally.
+    
+    
 A default configuration has two columns in the daily planner:
 
 
@@ -276,30 +282,39 @@ A default configuration has two columns in the daily planner:
 ======= ========== ==========
 <BLANKLINE>
 
+
+.. class:: DailyPlannerRow
+           
+    A database object that represents one row of the daily planner.
+    The default configuration has "AM", "PM" and "All day".
+
 >>> rt.show(cal.DailyPlannerRows)
-======= ============= ================== ================== ============ ==========
- No.     Designation   Designation (de)   Designation (fr)   Start time   End time
-------- ------------- ------------------ ------------------ ------------ ----------
- 1       AM            vorm.              Matin                           12:00:00
- 3       All day       All day            All day
- 2       PM            nachm.             Après-midi         12:00:00
- **6**
-======= ============= ================== ================== ============ ==========
+==================== ============= ================== ================== ============ ==========
+ No.                  Designation   Designation (de)   Designation (fr)   Start time   End time
+-------------------- ------------- ------------------ ------------------ ------------ ----------
+ 1                    AM            vorm.              Matin                           12:00:00
+ 2                    PM            nachm.             Après-midi         12:00:00
+ 3                    All day       All day            All day
+ **Total (3 rows)**
+==================== ============= ================== ================== ============ ==========
 <BLANKLINE>
 
 
+.. class:: DailyPlanner
+           
 >>> rt.show(cal.DailyPlanner)
 =========== ========== ===============
  overview    external   internal
 ----------- ---------- ---------------
  *AM*
- *All day*
  *PM*                   *13:30 robin*
+ *All day*
 =========== ========== ===============
 <BLANKLINE>
 
 >>> dd.today()
 datetime.date(2017, 2, 15)
+
         
 
 
