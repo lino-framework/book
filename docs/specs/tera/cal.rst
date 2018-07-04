@@ -23,8 +23,8 @@ in Tera.
  Description   external         internal
 ------------- ---------------- ----------
  *AM*          *08:30 romain*
- *All day*
  *PM*
+ *All day*
 ============= ================ ==========
 <BLANKLINE>
 

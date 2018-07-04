@@ -289,14 +289,13 @@ A default configuration has two columns in the daily planner:
     The default configuration has "AM", "PM" and "All day".
 
 >>> rt.show(cal.DailyPlannerRows)
-==================== ============= ================== ================== ============ ==========
- No.                  Designation   Designation (de)   Designation (fr)   Start time   End time
--------------------- ------------- ------------------ ------------------ ------------ ----------
- 1                    AM            vorm.              Matin                           12:00:00
- 2                    PM            nachm.             Après-midi         12:00:00
- 3                    All day       All day            All day
- **Total (3 rows)**
-==================== ============= ================== ================== ============ ==========
+===== ============= ================== ================== ============ ==========
+ No.   Designation   Designation (de)   Designation (fr)   Start time   End time
+----- ------------- ------------------ ------------------ ------------ ----------
+ 1     AM            vorm.              Matin                           12:00:00
+ 2     PM            nachm.             Après-midi         12:00:00
+ 3     All day       All day            All day
+===== ============= ================== ================== ============ ==========
 <BLANKLINE>
 
 
