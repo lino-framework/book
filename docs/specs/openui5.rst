@@ -17,16 +17,17 @@ The :mod:`lino.modlib.openui5` plugin defines the openui5 front-end
 
 .. currentmodule:: lino.modlib.openui5
 
->>> def soupyfiy(url):
+>>> def soupyfiy(url, Print=False):
 ...     r = test_client.get(url)
 ...     soup = BeautifulSoup(r.content, "lxml")
 ...     soup.body.hidden=True
+...     if Print:
+...         pSoup(soup)
 ...     return r,soup
 >>> def pSoup(soup):
 ...     print(soup.body.prettify(formatter=None))
 >>> test_client.force_login(rt.login('robin').user)
->>> r,s = soupyfiy("http://127.0.0.1:8000/ui/view/grid/tickets/AllTickets.view.xml")
->>> pSoup(s)
+>>> r,s = soupyfiy("http://127.0.0.1:8000/ui/view/grid/tickets/AllTickets.view.xml", Print=True)
 ... #doctest: -ELLIPSIS -REPORT_UDIFF
  <mvc:view class="sapUiSizeCompact" controllername="lino.controller.table" height="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:editor="openui5" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:tnt="sap.tnt" xmlns:u="sap.ui.unified" xmlns:ui="sap.ui">
   <table:table arialabelledby="title" cellcontextmenu="onProductIdCellContextMenu" class="sapUiSizeCondensed" columnselect="onColumnSelect" customdata:actor_id="tickets.AllTickets" customdata:content_type="44" customdata:is_slave="true" customdata:pk="0" customdata:url="/restful/tickets/AllTickets" enablecellfilter="{ui>/enableCellFilter}" enablecolumnfreeze="{ui>/showFreezeMenuEntry}" id="MAIN_TABLE" rowactioncount="1" rows="{/rows}" selectionmode="MultiToggle" showcolumnvisibilitymenu="true" visiblerowcountmode="Auto" xmlns:m="sap.m">
