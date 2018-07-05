@@ -12,9 +12,7 @@ The ``calendar`` plugin
     >>> from lino.api.doctest import *
 
 This document explains some basic things about Lino's calendar plugin
-:mod:`lino_xl.lib.cal`.
-
-See also :mod:`lino_xl.lib.cal.utils`.
+:mod:`lino_xl.lib.cal`.  See also :mod:`lino_xl.lib.cal.utils`.
      
 
 .. contents::
@@ -300,6 +298,9 @@ A default configuration has two columns in the daily planner:
 
 
 .. class:: DailyPlanner
+
+    A table showing an overview of calendar entries on a given day.
+    Both the rows and the columns can be configured per site.
            
 >>> rt.show(cal.DailyPlanner)
 =========== ========== ===============
