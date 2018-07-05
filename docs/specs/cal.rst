@@ -14,12 +14,12 @@ The ``calendar`` plugin
 This document explains some basic things about Lino's calendar plugin
 :mod:`lino_xl.lib.cal`.  See also :mod:`lino_xl.lib.cal.utils`.
      
-
 .. contents::
   :local:
 
 
 .. currentmodule:: lino_xl.lib.cal
+
                   
 Calendar entries
 ================
@@ -81,7 +81,7 @@ reasons.
 
          Shows the date and time of the entry with a link that opens
          all entries on that day (:class:`EntriesByDay
-         <lino_xl.lib.cal.ui.EntriesByDay>`).
+         <lino_xl.lib.cal.EntriesByDay>`).
 
          Deprecated because it is usually irritating. Use when_text,
          and users open the detail window as usualy by double-clicking
@@ -92,7 +92,7 @@ reasons.
 
          A :class:`ShowSlaveTable <lino.core.actions.ShowSlaveTable>`
          button which opens the :class:`ConflictingEvents
-         <lino_xl.lib.cal.ui.ConflictingEvents>` table for this event.
+         <lino_xl.lib.cal.ConflictingEvents>` table for this event.
 
     .. method:: get_conflicting_events(self)
                 
@@ -262,6 +262,30 @@ entries of that type.
 The daily planner
 =================
 
+The daily planner is a table showing an overview of calendar entries
+on a given day.  Both the rows and the columns can be configured per
+application or locally per site.
+
+
+.. class:: DailyPlanner
+
+    The daily planner actor.
+           
+>>> rt.show(cal.DailyPlanner)
+=========== ========== ===============
+ overview    external   internal
+----------- ---------- ---------------
+ *AM*
+ *PM*                   *13:30 robin*
+ *All day*
+=========== ========== ===============
+<BLANKLINE>
+
+
+.. >>> dd.today()
+   datetime.date(2017, 2, 15)
+
+
 .. class:: PlannerColumns
            
     A choicelist that defines the columns to appear in the daily
@@ -269,7 +293,6 @@ The daily planner
     
     
 A default configuration has two columns in the daily planner:
-
 
 >>> rt.show(cal.PlannerColumns)
 ======= ========== ==========
@@ -297,25 +320,6 @@ A default configuration has two columns in the daily planner:
 <BLANKLINE>
 
 
-.. class:: DailyPlanner
-
-    A table showing an overview of calendar entries on a given day.
-    Both the rows and the columns can be configured per site.
-           
->>> rt.show(cal.DailyPlanner)
-=========== ========== ===============
- overview    external   internal
------------ ---------- ---------------
- *AM*
- *PM*                   *13:30 robin*
- *All day*
-=========== ========== ===============
-<BLANKLINE>
-
->>> dd.today()
-datetime.date(2017, 2, 15)
-
-        
 
 
 Duration units
@@ -864,7 +868,7 @@ Reference
     .. attribute:: every_unit
 
         Inherited from :attr:`RecurrentSet.every_unit
-        <lino_xl.lib.cal.models.RecurrentSet.every_unit>`.
+        <lino_xl.lib.cal.RecurrentSet.every_unit>`.
 
     .. attribute:: event_type
 
@@ -939,7 +943,7 @@ Reference
     Shows the calendar entries controlled by this database object.
 
     If the master is an :class:`EventGenerator
-    <lino_xl.lib.cal.mixins.EventGenerator>`, then this includes
+    <lino_xl.lib.cal.EventGenerator>`, then this includes
     especially the entries which were automatically generated.
 
 .. class:: EntriesByProject
