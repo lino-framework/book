@@ -1,14 +1,11 @@
+.. doctest docs/specs/noi/bs3.rst
 .. _noi.specs.bs3:
 
 =====================================================
 A read-only interface to Team using generic Bootstrap
 =====================================================
 
-.. How to test just this document:
-
-    $ doctest docs/specs/noi/bs3.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.bs3.settings.demo')
@@ -43,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-28
+40
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
