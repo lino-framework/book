@@ -727,8 +727,8 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
-| user            | Author          | The user who entered this ticket and is responsible for          |
-|                 |                 | managing it.                                                     |
+| user            | Author          | The author. The user who reported this ticket to the database    |
+|                 |                 | and is responsible for managing it.                              |
 +-----------------+-----------------+------------------------------------------------------------------+
 | end_user        | End user        | Only rows concerning this end user.                              |
 +-----------------+-----------------+------------------------------------------------------------------+
