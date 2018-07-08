@@ -67,14 +67,14 @@ behaviour. See also :doc:`/dev/delete`.
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - system.SiteConfig :
-  - PROTECT : userstats.UserStat.master
+  - CASCADE : userstats.UserStat.master
 - tickets.Project :
   - PROTECT : tickets.Project.parent, tickets.Ticket.project
 - tickets.ProjectType :
   - PROTECT : tickets.Project.type
 - tickets.Site :
-  - CASCADE : tickets.Subscription.site
-  - PROTECT : tickets.Ticket.site, working.SiteSummary.master
+  - CASCADE : tickets.Subscription.site, working.SiteSummary.master
+  - PROTECT : tickets.Ticket.site
 - tickets.Ticket :
   - PROTECT : django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :
