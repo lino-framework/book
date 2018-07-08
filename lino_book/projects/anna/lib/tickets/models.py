@@ -21,9 +21,6 @@ Ticket.hide_elements('closed')
 # TicketsToTriage._label = _("Pleas to triage")
 # TicketsToTalk._label = _("Pleas to talk")
 # # TicketsToDo._label = _("Pleas to to")
-# TicketsFixed._label = _("Fixed pleas")
-# TicketsReported._label = _("Introduced pleas")
-# TicketsByReporter._label = _("Introduced pleas")
 # AllTickets._label = _("All pleas")
 
 dd.update_field(

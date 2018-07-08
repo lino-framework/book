@@ -34,6 +34,7 @@ List of available dashboard items
  lino_xl.lib.cal.ui.MyEntries,
  lino_xl.lib.cal.ui.MyOverdueAppointments,
  lino_xl.lib.cal.ui.MyUnconfirmedAppointments,
+ lino_xl.lib.cal.models.DailyPlanner,
  lino.modlib.comments.ui.RecentComments,
  lino_xl.lib.tickets.ui.MyTickets,
  lino_xl.lib.tickets.ui.MySitesDashboard,

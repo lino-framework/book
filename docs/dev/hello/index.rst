@@ -165,6 +165,7 @@ Synchronizing apps without migrations:
     Creating table contacts_roletype
     Creating table contacts_role
     Creating table gfks_helptext
+    Creating table cal_dailyplannerrow
     Creating table cal_remotecalendar
     Creating table cal_room
     Creating table cal_priority

@@ -12,16 +12,14 @@ The ``calendar`` plugin
     >>> from lino.api.doctest import *
 
 This document explains some basic things about Lino's calendar plugin
-:mod:`lino_xl.lib.cal`.
-
-See also :mod:`lino_xl.lib.cal.utils`.
+:mod:`lino_xl.lib.cal`.  See also :mod:`lino_xl.lib.cal.utils`.
      
-
 .. contents::
   :local:
 
 
 .. currentmodule:: lino_xl.lib.cal
+
                   
 Calendar entries
 ================
@@ -83,7 +81,7 @@ reasons.
 
          Shows the date and time of the entry with a link that opens
          all entries on that day (:class:`EntriesByDay
-         <lino_xl.lib.cal.ui.EntriesByDay>`).
+         <lino_xl.lib.cal.EntriesByDay>`).
 
          Deprecated because it is usually irritating. Use when_text,
          and users open the detail window as usualy by double-clicking
@@ -94,7 +92,7 @@ reasons.
 
          A :class:`ShowSlaveTable <lino.core.actions.ShowSlaveTable>`
          button which opens the :class:`ConflictingEvents
-         <lino_xl.lib.cal.ui.ConflictingEvents>` table for this event.
+         <lino_xl.lib.cal.ConflictingEvents>` table for this event.
 
     .. method:: get_conflicting_events(self)
                 
@@ -192,9 +190,8 @@ For Lino, an appointment is a calendar entry whose :class:`type
 Lifecycle of a calendar entry
 =============================
 
-Every calendar entry has a given **state** which can change The state
-of this entry. The state can change according to rules defined by the
-workflow, that's why we sometimes refer to it as the life cycle.
+Every calendar entry has a given **state** which can change according
+to rules defined by the application.
 
 The default list of choices for this field contains the following
 values.
@@ -214,7 +211,8 @@ values.
 The type of a calendar entry
 ============================
 
-The :attr:`type <Event.type>` field of a *calendar entry* points to a
+The :attr:`type <Event.type>` field of a *calendar entry* 
+points to a
 database object which holds certain properties that are common to all
 entries of that type.
 
@@ -258,7 +256,70 @@ entries of that type.
     .. attribute:: transparent
 
         Allow entries of this type to conflict with other events.
-        
+
+
+
+The daily planner
+=================
+
+The daily planner is a table showing an overview of calendar entries
+on a given day.  Both the rows and the columns can be configured per
+application or locally per site.
+
+
+.. class:: DailyPlanner
+
+    The daily planner actor.
+           
+>>> rt.show(cal.DailyPlanner)
+=========== ========== ===============
+ overview    external   internal
+----------- ---------- ---------------
+ *AM*
+ *PM*                   *13:30 robin*
+ *All day*
+=========== ========== ===============
+<BLANKLINE>
+
+
+.. >>> dd.today()
+   datetime.date(2017, 2, 15)
+
+
+.. class:: PlannerColumns
+           
+    A choicelist that defines the columns to appear in the daily
+    planner. This list can be modified locally.
+    
+    
+A default configuration has two columns in the daily planner:
+
+>>> rt.show(cal.PlannerColumns)
+======= ========== ==========
+ value   name       text
+------- ---------- ----------
+ 10      external   external
+ 20      internal   internal
+======= ========== ==========
+<BLANKLINE>
+
+
+.. class:: DailyPlannerRow
+           
+    A database object that represents one row of the daily planner.
+    The default configuration has "AM", "PM" and "All day".
+
+>>> rt.show(cal.DailyPlannerRows)
+===== ============= ================== ================== ============ ==========
+ No.   Designation   Designation (de)   Designation (fr)   Start time   End time
+----- ------------- ------------------ ------------------ ------------ ----------
+ 1     AM            vorm.              Matin                           12:00:00
+ 2     PM            nachm.             Après-midi         12:00:00
+ 3     All day       All day            All day
+===== ============= ================== ================== ============ ==========
+<BLANKLINE>
+
+
 
 
 Duration units
@@ -807,7 +868,7 @@ Reference
     .. attribute:: every_unit
 
         Inherited from :attr:`RecurrentSet.every_unit
-        <lino_xl.lib.cal.models.RecurrentSet.every_unit>`.
+        <lino_xl.lib.cal.RecurrentSet.every_unit>`.
 
     .. attribute:: event_type
 
@@ -882,7 +943,7 @@ Reference
     Shows the calendar entries controlled by this database object.
 
     If the master is an :class:`EventGenerator
-    <lino_xl.lib.cal.mixins.EventGenerator>`, then this includes
+    <lino_xl.lib.cal.EventGenerator>`, then this includes
     especially the entries which were automatically generated.
 
 .. class:: EntriesByProject

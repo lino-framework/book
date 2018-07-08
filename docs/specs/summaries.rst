@@ -25,10 +25,13 @@ The ``Summary`` model mixin
 
     .. attribute:: master
 
-       Any implementing subclass of :class:`Summary` must define field
-       named :attr:`master` which must be a ForeignKey field.  The
-       target model of the :attr:`master` will automatically receive
-       an action `check_summaries`
+       Any implementing subclass of :class:`Summary` must define a
+       field named :attr:`master` which must be a ForeignKey field.
+       The target model of the :attr:`master` will automatically
+       receive an action `check_summaries`.  The mixin also sets
+       :attr:`allow_cascaded_delete
+       <lino.core.model.Model.allow_cascaded_delete>` to
+       ``['master']``.
        
     .. attribute:: summary_period
                    

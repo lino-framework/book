@@ -21,7 +21,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 45 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, cal, accounts, weasyprint, ledger, vat, sales, invoicing, courses, sepa, finan, bevats, ana, topics, notes, lists, extensible, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, sessions.
-87 models:
+88 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -33,9 +33,10 @@ The database structure
  ana.InvoiceItem             ana.InvoiceItemTable           10        55
  bevats.Declaration          bevats.Declarations            28        3
  cal.Calendar                cal.Calendars                  6         1
+ cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
  cal.Event                   cal.OneEvent                   24        173
  cal.EventPolicy             cal.EventPolicies              19        6
- cal.EventType               cal.EventTypes                 18        4
+ cal.EventType               cal.EventTypes                 19        4
  cal.Guest                   cal.Guests                     6         0
  cal.GuestRole               cal.GuestRoles                 4         1
  cal.Priority                cal.Priorities                 5         4
@@ -53,7 +54,7 @@ The database structure
  contacts.Person             contacts.Persons               34        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         87
+ contenttypes.ContentType    gfks.ContentTypes              3         88
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        59

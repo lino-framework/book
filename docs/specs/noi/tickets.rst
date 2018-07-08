@@ -19,26 +19,25 @@ This document specifies the ticket management functions implemented in
 .. contents::
   :local:
 
-
-What is a ticket?
-=================
-
-
 .. currentmodule:: lino_xl.lib.tickets
+
+
+Tickets
+=======
+
+A **Ticket** is a concrete question or problem formulated by a
+user.  It is the smallest unit of work.  The user may be a system
+user or an end user represented by a system user.
+
+There are many tables used to show lists of tickets.        
+
 
 .. class:: Ticket
 
-    A **Ticket** is the smallest unit of work.  It is a concrete
-    question or problem handled formulated by a user.
-
-    The user may be a system user or an end user represented by a
-    system user.
-
-
     .. attribute:: user
 
-        The user who entered this ticket and is responsible for
-        managing it.
+        The author. The user who reported this ticket to the database
+        and is responsible for managing it.
 
     .. attribute:: end_user
 
@@ -122,90 +121,146 @@ What is a ticket?
 
         An indication about who is going to pay for work on this
         site.  See :class:`ReportingTypes`.
+        
 
 
 
-Lifecycle of a ticket
-=====================
+.. class:: Tickets
 
-The :attr:`state <lino_xl.lib.tickets.models.Ticket.state>` of a
-ticket has one of the following values:
+    Base class for all tables of all tickets.
 
->>> rt.show(tickets.TicketStates)
-======= =========== ========== ======== ========
- value   name        text       Symbol   Active
-------- ----------- ---------- -------- --------
- 10      new         New        ⛶        Yes
- 15      talk        Talk       ☎        Yes
- 20      opened      Open       ☉        Yes
- 22      started     Started    ⚒        Yes
- 30      sleeping    Sleeping   ☾        No
- 40      ready       Ready      ☐        Yes
- 50      closed      Closed     ☑        No
- 60      cancelled   Refused    ☒        No
-======= =========== ========== ======== ========
-<BLANKLINE>
+    .. attribute:: site
 
-There is also a "modern" series of symbols, which can be enabled
-site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
+        Select a site if you want to see only tickets for this site.
 
-You can see this table in your web interface using
-:menuselection:`Explorer --> Tickets --> States`.
+    .. attribute:: show_private
 
-.. >>> show_menu_path(tickets.TicketStates)
-   Explorer --> Tickets --> States
+        Show only (or hide) tickets that are marked private.
 
-See :class:`lino_xl.lib.tickets.choicelists.TicketStates` for more
-information about every state.
+    .. attribute:: show_todo
 
-Above table in German:
+        Show only (or hide) tickets which are todo (i.e. state is New
+        or ToDo).
 
->>> rt.show(tickets.TicketStates, language="de")
-====== =========== =============== ======== =======
- Wert   name        Text            Symbol   Aktiv
------- ----------- --------------- -------- -------
- 10     new         Neu             ⛶        Ja
- 15     talk        Besprechen      ☎        Ja
- 20     opened      Offen           ☉        Ja
- 22     started     Gestartet       ⚒        Ja
- 30     sleeping    Schläft         ☾        Nein
- 40     ready       Bereit          ☐        Ja
- 50     closed      Abgeschlossen   ☑        Nein
- 60     cancelled   Abgelehnt       ☒        Nein
-====== =========== =============== ======== =======
-<BLANKLINE>
+    .. attribute:: show_active
 
-And in French (not yet fully translated):
+        Show only (or hide) tickets which are active (i.e. state is Talk
+        or ToDo).
 
->>> rt.show(tickets.TicketStates, language="fr")
-======= =========== ========== ======== ========
- value   name        text       Symbol   Active
-------- ----------- ---------- -------- --------
- 10      new         Nouveau    ⛶        Oui
- 15      talk        Talk       ☎        Oui
- 20      opened      Open       ☉        Oui
- 22      started     Started    ⚒        Oui
- 30      sleeping    Sleeping   ☾        Non
- 40      ready       Ready      ☐        Oui
- 50      closed      Closed     ☑        Non
- 60      cancelled   Refusé     ☒        Non
-======= =========== ========== ======== ========
-<BLANKLINE>
+    .. attribute:: show_assigned
+
+        Show only (or hide) tickets that are assigned to somebody.
+
+    .. attribute:: has_site
+
+        Show only (or hide) tickets which have a site assigned.
+
+    .. attribute:: feasable_by
+
+        Show only tickets for which the given supplier is competent.
+
+           
+.. class:: AllTickets
+
+    Shows all tickets.
+    
+.. class:: RefTickets
+           
+    Shows all tickets that have a reference.
+
+.. class:: PublicTickets
+           
+    Shows all public tickets.
+
+.. class:: TicketsToTriage
+
+    Shows tickets that need to be triaged.  Currently this is
+    equivalent to those having their state set to :attr:`new
+    <TicketStates.new>`.
+
+.. class:: TicketsToTalk
+
+.. class:: UnassignedTickets
+.. class:: ActiveTickets
+
+    Show all tickets that are in an active state.
+
+.. class:: MyTickets
+           
+    Show all active tickets reported by me.
+
+    >>> rt.login('jean').show(tickets.MyTickets)
+    ... #doctest: -REPORT_UDIFF
+    ========== =============================================================================================== ============================================
+     Priority   Description                                                                                     Workflow
+    ---------- ----------------------------------------------------------------------------------------------- --------------------------------------------
+     Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#106 (☎ Ticket 106) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+     Normal     `#100 (⚒ Ticket 100) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#94 (☐ Ticket 94) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+     Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#82 (☎ Ticket 82) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+     Normal     `#76 (⚒ Ticket 76) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#70 (☐ Ticket 70) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+     Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#58 (☎ Ticket 58) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+     Normal     `#52 (⚒ Ticket 52) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#46 (☐ Ticket 46) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+     Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#34 (☎ Ticket 34) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+     Normal     `#28 (⚒ Ticket 28) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#22 (☐ Ticket 22) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
+     Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+     Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                     [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
+    ========== =============================================================================================== ============================================
+    <BLANKLINE>
+
+    
+
+.. class:: TicketsByEndUser           
+.. class:: TicketsByType
+           
+.. class:: DuplicatesByTicket
+
+    Shows the tickets which are marked as duplicates of this
+    (i.e. whose `duplicate_of` field points to this ticket.
 
 
+.. class:: TicketsSummary
 
-..
-   Note that a ticket also has a checkbox for marking it as :attr:`closed
-   <lino_xl.lib.tickets.models.Ticket.closed>`.  This is obsolete.
-   means that a ticket
-   can be marked as "closed" in any of above states.  We don't use this for the moment and are not sure
-   whether this is a cool feature (:ticket:`372`).
+    Abstract base class for ticket tables with a summary.
+    
+.. class:: MyTicketsToWork
+           
+    Show all active tickets assigned to me.
 
+
+.. class:: TicketsBySite    
+
+           
+
+Ticket types
+============
+
+
+.. class:: TicketType
+.. class:: TicketTypes
+           
+
+Ticket states
+=============
 
 
 .. class:: TicketStates
 
-    The state of a ticket (new, open, closed, ...)
+    The choicelist of possible values for the :attr:`state
+    <Ticket.state>` of a ticket.
 
     Default choices are:
 
@@ -254,20 +309,52 @@ And in French (not yet fully translated):
 
         It has been decided that we won't fix this ticket.
 
+You can see this table in your web interface using
+:menuselection:`Explorer --> Tickets --> States`.
+
+.. >>> show_menu_path(tickets.TicketStates)
+   Explorer --> Tickets --> States
+
+In a default configuration it defines the following choices:
+
+>>> rt.show(tickets.TicketStates)
+======= =========== ========== ======== ========
+ value   name        text       Symbol   Active
+------- ----------- ---------- -------- --------
+ 10      new         New        ⛶        Yes
+ 15      talk        Talk       ☎        Yes
+ 20      opened      Open       ☉        Yes
+ 22      started     Started    ⚒        Yes
+ 30      sleeping    Sleeping   ☾        No
+ 40      ready       Ready      ☐        Yes
+ 50      closed      Closed     ☑        No
+ 60      cancelled   Refused    ☒        No
+======= =========== ========== ======== ========
+<BLANKLINE>
+
+Above table in German:
+
+>>> rt.show(tickets.TicketStates, language="de")
+====== =========== =============== ======== =======
+ Wert   name        Text            Symbol   Aktiv
+------ ----------- --------------- -------- -------
+ 10     new         Neu             ⛶        Ja
+ 15     talk        Besprechen      ☎        Ja
+ 20     opened      Offen           ☉        Ja
+ 22     started     Gestartet       ⚒        Ja
+ 30     sleeping    Schläft         ☾        Nein
+ 40     ready       Bereit          ☐        Ja
+ 50     closed      Abgeschlossen   ☑        Nein
+ 60     cancelled   Abgelehnt       ☒        Nein
+====== =========== =============== ======== =======
+<BLANKLINE>
+
+There is also a "modern" series of symbols, which can be enabled
+site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
+   
+
 
 - :attr:`standby <lino_xl.lib.tickets.models.Ticket.standby>`
-
-
-
-Active state versus show_in_todo
-================================
-
-- active state means that the wish is to be copied to the next meeting
-  
-- show_in_to means that I must work on this ticket (if I have an
-  assigned vote)
-
-
 
 
 
@@ -361,41 +448,6 @@ There are 20 private and 96 public tickets in the demo database.
 20
 >>> tickets.Ticket.objects.filter(private=False).count()
 96
-
-My tickets
-==========
-
->>> rt.login('jean').show(tickets.MyTickets)
-... #doctest: -REPORT_UDIFF
-========== =============================================================================================== ============================================
- Priority   Description                                                                                     Workflow
----------- ----------------------------------------------------------------------------------------------- --------------------------------------------
- Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#106 (☎ Ticket 106) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#100 (⚒ Ticket 100) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#94 (☐ Ticket 94) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#82 (☎ Ticket 82) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#76 (⚒ Ticket 76) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#70 (☐ Ticket 70) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#58 (☎ Ticket 58) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#52 (⚒ Ticket 52) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#46 (☐ Ticket 46) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#34 (☎ Ticket 34) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#28 (⚒ Ticket 28) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#22 (☐ Ticket 22) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                     [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
-========== =============================================================================================== ============================================
-<BLANKLINE>
 
 
 
@@ -560,13 +612,17 @@ You for meetings you can also seach for digital values and it will return rows t
 
 
 
-Dependencies between tickets
-============================
+Links between tickets
+=====================
 
 
+.. class:: Link
+.. class:: Links
+.. class:: LinksByTicket
+.. class:: LinkType
 .. class:: LinkTypes
 
-    The possible values of a :class:`lino_xl.lib.tickets.Link`.
+    The possible values of a :class:`Link`.
 
     .. attribute:: requires
 
@@ -671,8 +727,8 @@ This is a list of the parameters you can use for filterings tickets.
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
-| user            | Author          | The user who entered this ticket and is responsible for          |
-|                 |                 | managing it.                                                     |
+| user            | Author          | The author. The user who reported this ticket to the database    |
+|                 |                 | and is responsible for managing it.                              |
 +-----------------+-----------------+------------------------------------------------------------------+
 | end_user        | End user        | Only rows concerning this end user.                              |
 +-----------------+-----------------+------------------------------------------------------------------+
