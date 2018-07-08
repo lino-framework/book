@@ -1,3 +1,4 @@
+.. doctest docs/specs/cosi/ledger.rst
 .. _xl.specs.ledger:
 .. _cosi.specs.ledger:
 .. _cosi.tested.ledger:
@@ -6,11 +7,7 @@
 The General Ledger: moving money between accounts
 =================================================
 
-.. to test only this document:
-
-      $ doctest docs/specs/cosi/ledger.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.pierre.settings.demo')
@@ -86,6 +83,10 @@ The accounting report
 
     A combined report which produces a series of reports for a given
     period as one action.
+
+    Usually accessible via :menuselection:`Reports --> Accounting -->
+    Accounting Report`.
+
 
     - :class:`GeneralAccountsBalance`
     - :class:`SuppliersAccountsBalance`
@@ -348,6 +349,17 @@ Partner Account Balances Bank payment orders (Periods 2016-01...2016-02)
 ========================================================================
 <BLANKLINE>
 No data to display
+
+
+
+
+Requests with invalid parameters just print a warning:
+
+>>> test(None)
+Select at least a start period
+
+>>> test(feb, jan)
+End period must be after start period
 
 
 Database models reference
@@ -1495,59 +1507,31 @@ Utilities
 Plugin attributes
 =================
 
-.. class:: Plugin
+See :class:`lino_xl.lib.ledger.Plugin`.
 
+
+Mixins
+======
+
+.. class:: AccountBalances
+
+    A table which shows a list of general ledger accounts during the
+    observed period, showing their old and new balances and the sum of
+    debit and credit movements.
            
-    .. attribute:: currency_symbol
+           
+        
+.. class:: AccountingPeriodRange
 
-        Temporary approach until we add support for multiple
-        currencies.
+    A parameter panel with two fields:
 
-    .. attribute:: use_pcmn
+    .. attribute:: start_period
+
+        Start of observed period range.
                    
-        Whether to use the PCMN notation.
+    .. attribute:: end_period
 
-        PCMN stands for "plan compatable minimum normalisé" and is a
-        standardized nomenclature for accounts used in France and
-        Belgium.
-
-    .. attribute:: project_model
-
-        Leave this to `None` for normal behaviour.  Set this to a
-        string of the form `'<app_label>.<ModelName>'` if you want to
-        add an additional field `project` to all models which inherit
-        from :class:`lino_xl.lib.ledger.ProjectRelated`.
-
+        Optional end of observed period range.  Leave empty to
+        consider only the Start period.
+        
                    
-    .. attribute:: intrusive_menu
-
-        Whether the plugin should integrate into the application's
-        main menu in an intrusive way.  Intrusive means that the main
-        menu gets one top-level item per journal group.
-
-        The default behaviour is `False`, meaning that these items are
-        gathered below a single item "Accounting".
-
-                   
-    .. attribute:: start_year
-
-        An integer with the calendar year in which this site starts
-        working.
-
-        This is used to fill the default list of :class:`FiscalYears`,
-        and by certain fixtures for generating demo invoices.
-
-                   
-    .. attribute:: fix_y2k
-                   
-        Whether to use a Y2K compatible representation for fiscal
-        years.
-
-
-    .. attribute:: force_cleared_until
-
-        Force all movements on vouchers with entry_date until the
-        given date to be *cleared*.  This is useful e.g. when you want
-        to keep legacy invoices in your database but not their
-        payments.
-
