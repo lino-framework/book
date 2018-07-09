@@ -29,7 +29,7 @@ The :mod:`lino.modlib.openui5` plugin defines the openui5 front-end
 >>> test_client.force_login(rt.login('robin').user)
 >>> r,s = soupyfiy("http://127.0.0.1:8000/ui/view/grid/tickets/AllTickets.view.xml", Print=True)
 ... #doctest: -ELLIPSIS -REPORT_UDIFF
-<mvc:view class="sapUiSizeCompact" controllername="lino.controller.table" height="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:editor="openui5" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:tnt="sap.tnt" xmlns:u="sap.ui.unified" xmlns:ui="sap.ui">
+     <mvc:view class="sapUiSizeCompact" controllername="lino.controller.table" height="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:editor="openui5" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:tnt="sap.tnt" xmlns:u="sap.ui.unified" xmlns:ui="sap.ui">
       <page class="sapUiContentPadding" enablescrolling="true" navbuttonpress="onNavBack" showfooter="true" showheader="true" shownavbutton="true">
        <content>
         <table:table arialabelledby="title" cellcontextmenu="onProductIdCellContextMenu" class="sapUiSizeCondensed" columnselect="onColumnSelect" customdata:actor_id="tickets.AllTickets" customdata:pk="0" customdata:url="/restful/tickets/AllTickets" enablecellfilter="{ui>/enableCellFilter}" enablecolumnfreeze="{ui>/showFreezeMenuEntry}" id="MAIN_TABLE" rowactioncount="1" rows="{/rows}" selectionmode="MultiToggle" showcolumnvisibilitymenu="true" visiblerowcountmode="Auto">
