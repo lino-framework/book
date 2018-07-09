@@ -77,3 +77,11 @@ To remove an unused kernel image::
 
     $ sudo apt-get remove --purge linux-image-X.X.XX-XX-generic
 
+
+
+How much disk space does each database use?
+===========================================
+
+MySQL::
+  
+    $ sudo du -h /var/lib/mysql/
