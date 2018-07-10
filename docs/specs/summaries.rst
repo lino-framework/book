@@ -30,8 +30,7 @@ The ``Summary`` model mixin
        The target model of the :attr:`master` will automatically
        receive an action `check_summaries`.  The mixin also sets
        :attr:`allow_cascaded_delete
-       <lino.core.model.Model.allow_cascaded_delete>` to
-       ``['master']``.
+       <lino.core.model.Model.allow_cascaded_delete>` to ``'master'``.
        
     .. attribute:: summary_period
                    
