@@ -1,4 +1,5 @@
 .. doctest docs/specs/human.rst
+.. _lino.specs.human:
 .. _lino.tutorial.human:
 
 ============
@@ -170,7 +171,7 @@ The salutation depends not only on the gender, but also on the
 current language.
 This is Mr Jean Dupont:
 
->>> p = Person(first_name="Jean",last_name="Dupont",gender=Genders.male)
+>>> p = Person(first_name="Jean", last_name="Dupont", gender=Genders.male)
 
 We can address him in English:
 
@@ -299,8 +300,8 @@ that differ depending on the gender of a Human.
 ...   Person(first_name="Eva", gender=Genders.female)]
 
 >>> def about(p):
-...     return "%s was the first %s." % (
-...         p,p.mf("man","woman"))
+...     return "{} was the first {}.".format(
+...         p, p.mf("man", "woman"))
 >>> for p in mankind:
 ...     print(about(p))
 Mr Adam was the first man.
@@ -346,3 +347,58 @@ The `strip_name_prefix` function
 >>> strip_name_prefix("Nemard")
 'NEMARD'
 
+
+Age
+---
+
+The :class:`lino.mixins.humans.Born` mixin adds a database field
+:attr:`birth_date`.
+
+Before showing some examples, we must set :attr:`the_demo_date
+<lino.core.site.Site.the_demo_date>` in order to have reproduceable
+test cases:
+
+>>> import datetime
+>>> settings.SITE.the_demo_date = datetime.date(2018, 6, 11)
+
+We define a utility function for our tests:
+
+>>> def test(birth_date):
+...    p = Person(birth_date=birth_date)
+...    p.full_clean()
+...    print(p.age)
+
+
+Here we go.
+
+>>> test("2002-04-05")
+16 years
+
+When you are 16 and your birthday is tomorrow, then today you are
+still 16:
+
+>>> test("2002-06-12")
+16 years
+
+For children younger than 5 years Lino adds the number of months:
+
+>>> test("2018-03-01")
+0 years 3 months
+
+>>> with translation.override('de'):
+...    test("2018-03-01")
+0 Jahre 3 Monate
+
+Lino respects the singular forms:
+
+>>> test("2017-05-01")
+1 year 1 month
+
+... even in other languages:
+
+>>> with translation.override('de'):
+...    test("2017-05-01")
+1 Jahr 1 Monat
+>>> with translation.override('fr'):
+...    test("2017-05-01")
+1 an 1 mois
