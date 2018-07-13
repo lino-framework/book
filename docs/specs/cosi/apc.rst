@@ -1,3 +1,4 @@
+.. doctest docs/specs/cosi/apc.rst
 .. _cosi.tested.demo:
 .. _specs.cosi.apc:
 
@@ -5,11 +6,7 @@
 The apc demo project
 ====================
 
-..  To run only this test:
-
-    $ doctest docs/specs/cosi/apc.rst
-    
-    doctest init:
+..  doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.apc.settings.doctests')
@@ -73,7 +70,7 @@ Robin is the system administrator, he has a complete menu:
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
-  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Belgian VAT declarations, Declaration fields
+  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Sales rules, Invoicing plans, Belgian VAT declarations, Declaration fields
   - Financial : Bank Statements, Journal Entries, Payment Orders
 - Site : About
 

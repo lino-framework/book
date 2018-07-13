@@ -89,3 +89,15 @@ Note that this test should fail if you run the test suite without a
 LibreOffice server running.
 
 
+
+
+>>> rt.show(sales.SalesRules)
+==================== =================== ============
+ Partner              Invoicing address   Paper type
+-------------------- ------------------- ------------
+ Arens Annette
+ Faymonville Luc      Engels Edgar
+ Radermacher Alfons   Emonts-Gast Erna
+ Martelaer Mark       Dupont Jean
+==================== =================== ============
+<BLANKLINE>

@@ -21,7 +21,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 45 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, cal, accounts, weasyprint, ledger, vat, sales, invoicing, courses, sepa, finan, bevats, ana, topics, notes, lists, extensible, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, sessions.
-88 models:
+89 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -48,13 +48,13 @@ The database structure
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0
- contacts.Company            contacts.Companies             29        25
+ contacts.Company            contacts.Companies             27        25
  contacts.CompanyType        contacts.CompanyTypes          7         16
- contacts.Partner            contacts.Partners              27        136
- contacts.Person             contacts.Persons               34        97
+ contacts.Partner            contacts.Partners              25        136
+ contacts.Person             contacts.Persons               32        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         88
+ contenttypes.ContentType    gfks.ContentTypes              3         89
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        59
@@ -72,7 +72,7 @@ The database structure
  finan.PaymentOrder          finan.PaymentOrders            15        4
  finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
  gfks.HelpText               gfks.HelpTexts                 4         2
- households.Household        households.Households          31        14
+ households.Household        households.Households          29        14
  households.Member           households.Members             14        63
  households.Type             households.Types               4         6
  humanlinks.Link             humanlinks.Links               4         59
@@ -99,12 +99,13 @@ The database structure
  properties.Property         properties.Properties          6         0
  sales.InvoiceItem           sales.InvoiceItems             15        48
  sales.PaperType             sales.PaperTypes               5         2
+ sales.SalesRule             sales.SalesRules               3         6
  sales.VatProductInvoice     sales.Invoices                 24        24
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   61        59
+ tera.Client                 tera.Clients                   59        59
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
  topics.Interest             topics.Interests               6         0
  topics.Topic                topics.Topics                  9         0
@@ -155,8 +156,8 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, phones.ContactDetail.partner, sepa.Account.partner
-  - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, contacts.Partner.invoice_recipient, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, phones.ContactDetail.partner, sales.SalesRule.partner, sepa.Account.partner
+  - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, sales.SalesRule.invoice_recipient, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : tera.Client.person_ptr
   - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, households.Member.person, humanlinks.Link.child, humanlinks.Link.parent, notes.Note.contact_person
@@ -220,7 +221,7 @@ behaviour. See also :doc:`/dev/delete`.
 - properties.PropType :
   - PROTECT : properties.PropChoice.type, properties.Property.type
 - sales.PaperType :
-  - PROTECT : contacts.Partner.paper_type, courses.Course.paper_type, sales.VatProductInvoice.paper_type
+  - PROTECT : courses.Course.paper_type, sales.SalesRule.paper_type, sales.VatProductInvoice.paper_type
 - sales.VatProductInvoice :
   - CASCADE : sales.InvoiceItem.voucher
   - SET_NULL : invoicing.Item.invoice
