@@ -21,6 +21,9 @@ class UtilsTests(LinoTestCase):
     def test_instantiator(self):
         self.run_simple_doctests(LINO_SRC+"lino/utils/instantiator.py")
 
+    def test_quantities(self):
+        self.run_simple_doctests(LINO_SRC+"lino/utils/quantities.py")
+
     def test_dates(self):
         self.run_simple_doctests(LINO_SRC+"lino/utils/dates.py")
 
