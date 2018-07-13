@@ -73,6 +73,7 @@ The database structure
  gfks.HelpText              gfks.HelpTexts                 4         2
  invoicing.Item             invoicing.Items                10        7
  invoicing.Plan             invoicing.Plans                7         1
+ invoicing.SalesRule        invoicing.SalesRules           3         4
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                23        8
  ledger.MatchRule           ledger.MatchRules              3         12
@@ -93,7 +94,6 @@ The database structure
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        114
  sales.PaperType            sales.PaperTypes               5         2
- sales.SalesRule            sales.SalesRules               3         4
  sales.VatProductInvoice    sales.Invoices                 24        87
  sepa.Account               sepa.Accounts                  6         38
  sessions.Session           sessions.SessionTable          3         ...
@@ -138,8 +138,8 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, sales.SalesRule.partner, sepa.Account.partner
-  - PROTECT : bevats.Declaration.partner, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.SalesRule.invoice_recipient, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner
+  - PROTECT : bevats.Declaration.partner, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : courses.Pupil.person_ptr, courses.Teacher.person_ptr
   - PROTECT : cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, courses.Line.contact_person, excerpts.Excerpt.contact_person, notes.Note.contact_person, rooms.Booking.contact_person
@@ -205,7 +205,7 @@ behaviour. See also :doc:`/dev/delete`.
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
-  - PROTECT : courses.Course.paper_type, sales.SalesRule.paper_type, sales.VatProductInvoice.paper_type
+  - PROTECT : courses.Course.paper_type, invoicing.SalesRule.paper_type, sales.VatProductInvoice.paper_type
 - sales.VatProductInvoice :
   - CASCADE : sales.InvoiceItem.voucher
   - SET_NULL : invoicing.Item.invoice

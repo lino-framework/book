@@ -14,8 +14,13 @@ Site-wide search
 The demo project :mod:`lino_book.projects.lydia` is used for testing
 the following document.
 
+See also :class:`lino.modlib.about.SiteSearch`.
+
 >>> rt.show('about.SiteSearch', quick_search="foo")
 No data to display
+
+If you search contains more than one word, it shows all rows
+containing both words.
 
 >>> rt.show('about.SiteSearch', quick_search="est land")
 ============================== ===================================================================================================
@@ -28,6 +33,31 @@ No data to display
 <BLANKLINE>
 
 >>> rt.show('about.SiteSearch', quick_search="123")
+=============================================== ========================
+ Description                                     Matches
+----------------------------------------------- ------------------------
+ *Arens Andreas* (Partner)                       phone:+32 87**123**456
+ *Arens Annette* (Partner)                       phone:+32 87**123**457
+ *Dobbelstein-Demeulenaere Dorothée* (Partner)   id:123
+ *+32 87123456* (Contact detail)                 value:+32 87**123**456
+ *+32 87123457* (Contact detail)                 value:+32 87**123**457
+ *Diner (09.05.2015 13:30)* (Calendar entry)     id:123
+ *SLS 9.2* (Movement)                            id:123
+=============================================== ========================
+<BLANKLINE>
+
+
+Don't read on
+=============
+
+The remaining part of this page is just technical stuff.
+
+The following was the output before 20180712.
+Dobbelstein-Demeulenaere Dorothée (id 123) is Partner, Person and
+Patient. All three instances were listed in the SiteSearch before. Now
+only the Partner. Why?
+
+>>> rt.show('about.SiteSearch', quick_search="123")  #doctest: +SKIP
 ===================================================== ========================
  Description                                           Matches
 ----------------------------------------------------- ------------------------
@@ -44,3 +74,23 @@ No data to display
  *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Patient)   id:123
 ===================================================== ========================
 <BLANKLINE>
+
+>>> from lino.core.utils import get_models
+>>> rt.models.tera.Client in set(get_models())
+True
+
+>>> ar = rt.login()
+>>> user_type = ar.get_user().user_type
+>>> count = 0
+>>> for model in get_models():
+...     t = model.get_default_table()
+...     if not t.get_view_permission(user_type):
+...         print("Not visible: {}".format(t))
+...     count += 1
+>>> print("Verified {} models".format(count))
+Verified 89 models
+
+>>> rt.models.contacts.Person.quick_search_fields_digit
+(<django.db.models.fields.AutoField: id>,)
+
+

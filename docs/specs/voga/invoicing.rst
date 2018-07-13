@@ -674,8 +674,8 @@ Invoice recipient
 
 List of pupils who have an invoice_recipient:
 
->>> for p in rt.models.contacts.Partner.objects.filter(invoice_recipient__isnull=False):
-...     print("{} --> {}".format(p, p.invoice_recipient))
+>>> for p in rt.models.contacts.Partner.objects.filter(salesrule__invoice_recipient__isnull=False):
+...     print("{} --> {}".format(p, p.salesrule.invoice_recipient))
 Faymonville Luc --> Engels Edgar
 Radermacher Alfons --> Emonts-Gast Erna
 Martelaer Mark --> Dupont Jean
@@ -684,9 +684,9 @@ We take one of the recipients and verify that
 PartnersByInvoiceRecipient shows as expected:
 
 >>> recipient = rt.models.courses.Pupil.objects.get(last_name="Engels")
->>> rt.show(rt.models.sales.PartnersByInvoiceRecipient, recipient)
+>>> rt.show(rt.models.invoicing.PartnersByInvoiceRecipient, recipient)
 ================= ===== ===========================
- Name              ID    Address
+ Partner           ID    Address
 ----------------- ----- ---------------------------
  Faymonville Luc   130   Brabantstraße, 4700 Eupen
 ================= ===== ===========================

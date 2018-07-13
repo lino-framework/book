@@ -91,7 +91,7 @@ LibreOffice server running.
 
 
 
->>> rt.show(sales.SalesRules)
+>>> rt.show(invoicing.SalesRules)
 ==================== =================== ============
  Partner              Invoicing address   Paper type
 -------------------- ------------------- ------------
