@@ -32,30 +32,6 @@ containing both words.
 ============================== ===================================================================================================
 <BLANKLINE>
 
->>> rt.show('about.SiteSearch', quick_search="123")
-=============================================== ========================
- Description                                     Matches
------------------------------------------------ ------------------------
- *Arens Andreas* (Partner)                       phone:+32 87**123**456
- *Arens Annette* (Partner)                       phone:+32 87**123**457
- *Dobbelstein-Demeulenaere Dorothée* (Partner)   id:123
- *+32 87123456* (Contact detail)                 value:+32 87**123**456
- *+32 87123457* (Contact detail)                 value:+32 87**123**457
- *Diner (09.05.2015 13:30)* (Calendar entry)     id:123
- *SLS 9.2* (Movement)                            id:123
-=============================================== ========================
-<BLANKLINE>
-
-
-Don't read on
-=============
-
-The remaining part of this page is just technical stuff.
-
-The following was the output before 20180712.
-Dobbelstein-Demeulenaere Dorothée (id 123) is Partner, Person and
-Patient. All three instances were listed in the SiteSearch before. Now
-only the Partner. Why?
 
 >>> rt.show('about.SiteSearch', quick_search="123")  #doctest: +SKIP
 ===================================================== ========================
@@ -74,6 +50,18 @@ only the Partner. Why?
  *DOBBELSTEIN-DEMEULENAERE Dorothée (123)* (Patient)   id:123
 ===================================================== ========================
 <BLANKLINE>
+
+Dobbelstein-Demeulenaere Dorothée (id 123) is Partner, Person and
+Patient.  All three instances are listed in the SiteSearch.
+
+
+
+
+Don't read on
+=============
+
+The remaining part of this page is just technical stuff.
+
 
 >>> from lino.core.utils import get_models
 >>> rt.models.tera.Client in set(get_models())

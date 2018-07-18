@@ -61,7 +61,7 @@ Robin is the system administrator, he has a complete menu:
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
-  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
+  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment terms
   - Office : Excerpt Types, My Text Field Templates
   - VAT : Paper types
 - Explorer :

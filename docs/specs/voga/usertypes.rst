@@ -41,7 +41,7 @@ users.UserTypes.admin:900
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Tariffs : Tariffs, Tariff Categories
-  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
+  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment terms
   - VAT : Paper types
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
