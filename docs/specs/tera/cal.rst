@@ -17,17 +17,8 @@ Calendar in Lino Tera
 This document describes how we use the :mod:`lino_xl.lib.cal` plugin
 in Tera.
 
-
->>> rt.show(cal.DailyPlanner)
-============= ================ ==========
- Description   external         internal
-------------- ---------------- ----------
- *AM*          *08:30 romain*
- *PM*
- *All day*
-============= ================ ==========
-<BLANKLINE>
-
+Missed calendar entries
+=======================
 
 In :ref:`tera` we introduce a new calendar entry state "missed".  This
 is used because a *missed* appointment may get invoiced while a
@@ -58,3 +49,19 @@ is used because a *missed* appointment may get invoiced while a
  60     missed       Verpasst                 Nein                    Ja       Nein                Nein
 ====== ============ =============== ======== ======================= ======== =================== =========
 <BLANKLINE>
+
+
+Daily planner
+=============
+
+>>> rt.show(cal.DailyPlanner)
+============= ================ ==========
+ Description   external         internal
+------------- ---------------- ----------
+ *AM*          *08:30 romain*
+ *PM*
+ *All day*
+============= ================ ==========
+<BLANKLINE>
+
+
