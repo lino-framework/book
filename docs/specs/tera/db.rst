@@ -160,7 +160,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : tera.Client.person_ptr
-  - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, households.Member.person, humanlinks.Link.child, humanlinks.Link.parent, notes.Note.contact_person
+  - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Line.contact_person, excerpts.Excerpt.contact_person, households.Member.person, humanlinks.Link.child, humanlinks.Link.parent, notes.Note.contact_person
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, clients.ClientContact.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role
 - contenttypes.ContentType :
@@ -230,7 +230,7 @@ behaviour. See also :doc:`/dev/delete`.
 - teams.Team :
   - PROTECT : contacts.Partner.team, ledger.Journal.team, users.User.team
 - tera.Client :
-  - PROTECT : tera.Client.obsoletes
+  - PROTECT : courses.Enrolment.pupil, tera.Client.obsoletes
 - topics.Topic :
   - PROTECT : topics.Interest.topic
 - topics.TopicGroup :

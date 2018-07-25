@@ -755,6 +755,16 @@ labelled "guests", "participations" or "presences".
 
         The state of this presence.
 
+    .. attribute:: waiting_since
+    .. attribute:: busy_since
+    .. attribute:: gone_since
+
+        These three fields are injected by the
+        :mod:`lino_xl.lib.reception` plugin.
+
+
+        
+
 
 Every participant of a calendar entry can have a "role". For example
 in a class meeting you might want to differentiate between the teacher
