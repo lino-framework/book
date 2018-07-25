@@ -70,9 +70,10 @@ that see below).
 How it works
 ============
 
-You must chose which authentication providers you want to offer to
-your users.  For each provider you will activate the corresponding
-"backend". Available backends are listed `in the PSA documentation
+As the site administrator, you must chose which authentication
+providers you want to offer to your users.  For each provider you will
+activate the corresponding "backend".  Available backends are listed
+`in the PSA documentation
 <http://python-social-auth.readthedocs.io/en/latest/backends/>`__.
 
 In your local :xfile:`settings.py` you must set

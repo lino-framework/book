@@ -20,6 +20,46 @@ Here are all our sales invoices:
 ===================== ============ ============ =================================== ================= ============== ================
  No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
+ 24/2015               01/03/2015   30/05/2015   Radermacher Hedi                    20,00                            **Registered**
+ 23/2015               01/03/2015   31/03/2015   Laschet Laura                       40,00                            **Registered**
+ 22/2015               01/03/2015   31/03/2015   Evers Eberhart                      48,00                            **Registered**
+ 21/2015               01/03/2015   01/03/2015   di Rupo Didier                      48,00                            **Registered**
+ 20/2015               01/03/2015   31/03/2015   Radermacher Guido                   50,00                            **Registered**
+ 19/2015               01/03/2015   30/05/2015   Jacobs Jacqueline                   48,00                            **Registered**
+ 18/2015               01/03/2015   30/04/2015   Emonts-Gast Erna                    64,00                            **Registered**
+ 17/2015               01/02/2015   02/04/2015   Emonts-Gast Erna                    128,00                           **Registered**
+ 16/2015               01/02/2015   08/02/2015   Meier Marie-Louise                  48,00                            **Registered**
+ 15/2015               01/02/2015   08/02/2015   Kaivers Karl                        50,00                            **Registered**
+ ...
+ 4/2015                01/01/2015   31/01/2015   Charlier Ulrike                     148,00                           **Registered**
+ 3/2015                01/01/2015   31/01/2015   Radermacher Guido                   114,00                           **Registered**
+ 2/2015                01/01/2015   31/01/2015   Jonas Josef                         64,00                            **Registered**
+ 1/2015                01/01/2015   31/01/2015   Dupont Jean                         98,00                            **Registered**
+ 63/2014               01/12/2014   31/12/2014   Radermacher Guido                   50,00                            **Registered**
+ 62/2014               01/12/2014   08/12/2014   Kaivers Karl                        50,00                            **Registered**
+ 61/2014               01/12/2014   31/12/2014   Charlier Ulrike                     148,00                           **Registered**
+ ...
+ 14/2014               01/04/2014   08/04/2014   Meier Marie-Louise                  20,00                            **Registered**
+ 13/2014               01/04/2014   01/05/2014   Dobbelstein-Demeulenaere Dorothée   20,00                            **Registered**
+ 12/2014               01/04/2014   30/06/2014   Engels Edgar                        50,00                            **Registered**
+ 11/2014               01/04/2014   31/05/2014   Emonts-Gast Erna                    64,00                            **Registered**
+ 10/2014               01/04/2014   01/05/2014   Dupont Jean                         114,00                           **Registered**
+ 9/2014                01/03/2014   01/03/2014   di Rupo Didier                      20,00                            **Registered**
+ 8/2014                01/03/2014   30/05/2014   Engels Edgar                        20,00                            **Registered**
+ 7/2014                01/03/2014   31/03/2014   Dupont Jean                         50,00                            **Registered**
+ 6/2014                01/02/2014   02/05/2014   Engels Edgar                        50,00                            **Registered**
+ 5/2014                01/02/2014   02/04/2014   Emonts-Gast Erna                    64,00                            **Registered**
+ 4/2014                01/02/2014   03/03/2014   Dupont Jean                         114,00                           **Registered**
+ 3/2014                01/01/2014   02/03/2014   Emonts-Gast Erna                    114,00                           **Registered**
+ 2/2014                01/01/2014   01/04/2014   Engels Edgar                        214,00                           **Registered**
+ 1/2014                01/01/2014   31/01/2014   Dupont Jean                         114,00                           **Registered**
+ **Total (87 rows)**                                                                 **6 983,00**
+===================== ============ ============ =================================== ================= ============== ================
+<BLANKLINE>
+
+===================== ============ ============ =================================== ================= ============== ================
+ No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
+--------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
  87/2015               01/03/2015   30/05/2015   Radermacher Hedi                    20,00                            **Registered**
  86/2015               01/03/2015   31/03/2015   Laschet Laura                       40,00                            **Registered**
  85/2015               01/03/2015   31/03/2015   Evers Eberhart                      48,00                            **Registered**
@@ -56,8 +96,8 @@ there obviously due to a payment difference.
 ==================== =========== ======== =============== ================= ================ ================
  Due date             Reference   No.      Partner         Total incl. VAT   Balance before   Balance to pay
 -------------------- ----------- -------- --------------- ----------------- ---------------- ----------------
- 31/03/2015           SLS         86       Laschet Laura   40,00                              0,60
- **Total (1 rows)**               **86**                   **40,00**                          **0,60**
+ 31/03/2015           SLS         23       Laschet Laura   40,00                              0,60
+ **Total (1 rows)**               **23**                   **40,00**                          **0,60**
 ==================== =========== ======== =============== ================= ================ ================
 <BLANKLINE>
 

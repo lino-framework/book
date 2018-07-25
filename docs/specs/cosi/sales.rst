@@ -1,25 +1,24 @@
+.. doctest docs/specs/cosi/sales.rst
 .. _cosi.specs.sales:
 
 ================
 Product invoices
 ================
 
-.. This document is part of the Lino Così test suite. To run only this
-   test:
+A **product invoice** is an invoice whose rows usually refer to a
+*product* (and provides rules for mapping products to general accounts
+if needed).  This is in contrast to *account invoices* which don't
+need any products.
 
-    $ doctest docs/specs/cosi/sales.rst
-    
-    doctest init:
+Snippets in this document are tested on the
+:mod:`lino_book.projects.pierre` demo project.
 
     >>> from lino import startup
     >>> startup('lino_book.projects.pierre.settings.doctests')
     >>> from lino.api.doctest import *
     >>> ses = rt.login('robin')
 
-A **product invoice** is an invoice whose rows usually refer to a
-*product* (and provides rules for mapping products to general accounts
-if needed).  This is in contrast to *account invoices* which don't
-need any products.
+
 
 The plugin
 ==========
@@ -109,15 +108,28 @@ The sales journal
 ===================== ============ ============ =================================== ================= ============== ================
  No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
- 72/2017               12/03/2017   18/03/2017   da Vinci David                      770,00                           **Registered**
- 71/2017               11/03/2017   17/03/2017   da Vinci David                      465,96                           **Registered**
- 70/2017               10/03/2017   09/03/2017   di Rupo Didier                      639,92                           **Registered**
- 69/2017               09/03/2017   07/04/2017   Radermacher Jean                    3 599,71                         **Registered**
- 68/2017               08/03/2017   31/03/2017   Radermacher Inge                    726,00                           **Registered**
- 67/2017               07/03/2017   04/06/2017   Radermacher Hedi                    525,00                           **Registered**
- 66/2017               14/02/2017   14/04/2017   Radermacher Hans                    951,82                           **Registered**
- 65/2017               13/02/2017   14/03/2017   Radermacher Guido                   2 349,81                         **Registered**
+ 15/2017               12/03/2017   18/03/2017   da Vinci David                      770,00                           **Registered**
+ 14/2017               11/03/2017   17/03/2017   da Vinci David                      465,96                           **Registered**
+ 13/2017               10/03/2017   09/03/2017   di Rupo Didier                      639,92                           **Registered**
+ 12/2017               09/03/2017   07/04/2017   Radermacher Jean                    3 599,71                         **Registered**
+ 11/2017               08/03/2017   31/03/2017   Radermacher Inge                    726,00                           **Registered**
+ 10/2017               07/03/2017   04/06/2017   Radermacher Hedi                    525,00                           **Registered**
+ 9/2017                14/02/2017   14/04/2017   Radermacher Hans                    951,82                           **Registered**
+ 8/2017                13/02/2017   14/03/2017   Radermacher Guido                   2 349,81                         **Registered**
+ 7/2017                12/02/2017   21/02/2017   Radermacher Fritz                   1 599,92                         **Registered**
+ 6/2017                11/02/2017   20/02/2017   Radermacher Fritz                   990,00                           **Registered**
+ 5/2017                10/02/2017   16/02/2017   Radermacher Edgard                  338,68                           **Registered**
+ 4/2017                09/02/2017   08/02/2017   Radermacher Daniela                 1 199,85                         **Registered**
+ 3/2017                08/02/2017   09/03/2017   Radermacher Christian               3 319,78                         **Registered**
+ 2/2017                07/02/2017   28/02/2017   Radermacher Berta                   535,00                           **Registered**
+ 1/2017                07/01/2017   06/04/2017   Radermacher Alfons                  280,00                           **Registered**
+ 57/2016               10/12/2016   07/02/2017   Emonts-Gast Erna                    822,57                           **Registered**
+ 56/2016               09/12/2016   07/01/2017   Emontspool Erwin                    2 039,82                         **Registered**
  ...
+ 12/2016               08/04/2016   07/05/2016   Moulin Rouge                        951,82                           **Registered**
+ 11/2016               07/04/2016   16/04/2016   Reinhards Baumschule                2 349,81                         **Registered**
+ 10/2016               07/03/2016   13/03/2016   Bernd Brechts Bücherladen           1 599,92                         **Registered**
+ 9/2016                10/02/2016   09/02/2016   Hans Flott & Co                     1 197,90                         **Registered**
  8/2016                09/02/2016   09/03/2016   Van Achter NV                       279,90                           **Registered**
  7/2016                08/02/2016   29/02/2016   Donderweer BV                       1 199,85                         **Registered**
  6/2016                07/02/2016   06/05/2016   Garage Mergelsberg                  4 016,93                         **Registered**
@@ -141,7 +153,7 @@ The sales journal
 >>> # res.content
 >>> r = check_json_result(res, "navinfo data disable_delete id title")
 >>> print(r['title'])
-Sales invoices (SLS) » SLS 20
+Sales invoices (SLS) » SLS 20/2016
 
 
 IllegalText: The <text:section> element does not allow text

@@ -391,10 +391,10 @@ enrolment:
 ==================== ================================================== ========== ============== ============ ==================
  Product invoice      Heading                                            Quantity   Voucher date   State        Number of events
 -------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
- SLS 20               [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
- SLS 27               [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
- SLS 42               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
- SLS 66               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
+ SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
+ SLS 27/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
+ SLS 42/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
+ SLS 3/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
  **Total (4 rows)**                                                      **4**                                  **48**
 ==================== ================================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -551,27 +551,28 @@ information about the last invoicing run.
 
 >>> obj = rt.models.invoicing.Plan.objects.all()[0]
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Selected           | Partner           | Preview                                                                | Amount     | Invoice | Workflow |
-+====================+===================+========================================================================+============+=========+==========+
-| Yes                | Emonts-Gast Erna  | [6] Renewal Enrolment to 022C MED (Finding your inner peace) (64.00 €) | 64,00      | SLS 81  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | Jacobs Jacqueline | [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 82  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | Radermacher Guido | [4] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     | 50,00      | SLS 83  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | di Rupo Didier    | [3] Renewal Enrolment to 008C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 84  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | Evers Eberhart    | [3] Renewal Enrolment to 008C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 85  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | Laschet Laura     | Enrolment to 018 SV (Self-defence) (20.00 €)<br>                       | 40,00      | SLS 86  |          |
-|                    |                   | Enrolment to 019 SV (Self-defence) (20.00 €)                           |            |         |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| Yes                | Radermacher Hedi  | Enrolment to 018 SV (Self-defence) (20.00 €)                           | 20,00      | SLS 87  |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
-| **Total (7 rows)** |                   |                                                                        | **318,00** |         |          |
-+--------------------+-------------------+------------------------------------------------------------------------+------------+---------+----------+
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Selected           | Partner           | Preview                                                                | Amount     | Invoice     | Workflow |
++====================+===================+========================================================================+============+=============+==========+
+| Yes                | Emonts-Gast Erna  | [6] Renewal Enrolment to 022C MED (Finding your inner peace) (64.00 €) | 64,00      | SLS 18/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | Jacobs Jacqueline | [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 19/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | Radermacher Guido | [4] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     | 50,00      | SLS 20/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | di Rupo Didier    | [3] Renewal Enrolment to 008C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 21/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | Evers Eberhart    | [3] Renewal Enrolment to 008C WWW (Internet for beginners) (48.00 €)   | 48,00      | SLS 22/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | Laschet Laura     | Enrolment to 018 SV (Self-defence) (20.00 €)<br>                       | 40,00      | SLS 23/2015 |          |
+|                    |                   | Enrolment to 019 SV (Self-defence) (20.00 €)                           |            |             |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| Yes                | Radermacher Hedi  | Enrolment to 018 SV (Self-defence) (20.00 €)                           | 20,00      | SLS 24/2015 |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
+| **Total (7 rows)** |                   |                                                                        | **318,00** |             |          |
++--------------------+-------------------+------------------------------------------------------------------------+------------+-------------+----------+
 <BLANKLINE>
+
 
 
 Item descriptions
@@ -717,16 +718,16 @@ We pick one of them and look at the issued invoices:
 ===================== ===================================== ========== ============== ============ ==================
  Product invoice       Heading                               Quantity   Voucher date   State        Number of events
 --------------------- ------------------------------------- ---------- -------------- ------------ ------------------
- SLS 2                 [1] Enrolment to 025C Yoga            1          01/01/2014     Registered   5
- SLS 6                 [2] Renewal Enrolment to 025C Yoga    1          01/02/2014     Registered   5
- SLS 12                [3] Renewal Enrolment to 025C Yoga    1          01/04/2014     Registered   5
- SLS 23                [4] Renewal Enrolment to 025C Yoga    1          01/06/2014     Registered   5
- SLS 25                [5] Renewal Enrolment to 025C Yoga    1          01/07/2014     Registered   5
- SLS 30                [6] Renewal Enrolment to 025C Yoga    1          01/08/2014     Registered   5
- SLS 39                [7] Renewal Enrolment to 025C Yoga    1          01/10/2014     Registered   5
- SLS 47                [8] Renewal Enrolment to 025C Yoga    1          01/11/2014     Registered   5
- SLS 58                [9] Renewal Enrolment to 025C Yoga    1          01/12/2014     Registered   5
- SLS 74                [10] Renewal Enrolment to 025C Yoga   1          01/02/2015     Registered   5
+ SLS 2/2014            [1] Enrolment to 025C Yoga            1          01/01/2014     Registered   5
+ SLS 6/2014            [2] Renewal Enrolment to 025C Yoga    1          01/02/2014     Registered   5
+ SLS 12/2014           [3] Renewal Enrolment to 025C Yoga    1          01/04/2014     Registered   5
+ SLS 23/2014           [4] Renewal Enrolment to 025C Yoga    1          01/06/2014     Registered   5
+ SLS 25/2014           [5] Renewal Enrolment to 025C Yoga    1          01/07/2014     Registered   5
+ SLS 30/2014           [6] Renewal Enrolment to 025C Yoga    1          01/08/2014     Registered   5
+ SLS 39/2014           [7] Renewal Enrolment to 025C Yoga    1          01/10/2014     Registered   5
+ SLS 47/2014           [8] Renewal Enrolment to 025C Yoga    1          01/11/2014     Registered   5
+ SLS 58/2014           [9] Renewal Enrolment to 025C Yoga    1          01/12/2014     Registered   5
+ SLS 11/2015           [10] Renewal Enrolment to 025C Yoga   1          01/02/2015     Registered   5
  **Total (10 rows)**                                         **10**                                 **50**
 ===================== ===================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -735,11 +736,12 @@ These invoices are not issued to the pupil but to the recipient:
 
 >>> rt.show('sales.InvoicesByPartner', pupil)
 No data to display
+
 >>> rt.show('sales.InvoicesByPartner', recipient)
 ===================== =========== ========= ================= ================
  Entry date            Reference   No.       Total incl. VAT   Workflow
 --------------------- ----------- --------- ----------------- ----------------
- 01/02/2015            SLS         74        114,00            **Registered**
+ 01/02/2015            SLS         11        114,00            **Registered**
  01/12/2014            SLS         58        50,00             **Registered**
  01/11/2014            SLS         47        50,00             **Registered**
  01/10/2014            SLS         39        50,00             **Registered**
@@ -750,7 +752,7 @@ No data to display
  01/03/2014            SLS         8         20,00             **Registered**
  01/02/2014            SLS         6         50,00             **Registered**
  01/01/2014            SLS         2         214,00            **Registered**
- **Total (11 rows)**               **324**   **748,00**
+ **Total (11 rows)**               **261**   **748,00**
 ===================== =========== ========= ================= ================
 <BLANKLINE>
 

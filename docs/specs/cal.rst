@@ -755,12 +755,22 @@ labelled "guests", "participations" or "presences".
 
         The state of this presence.
 
+        
+    The following three fields are injected by the
+    :mod:`reception <lino_xl.lib.reception>` plugin:
+
     .. attribute:: waiting_since
+                   
+        Time when the visitor arrived (checked in).
+       
     .. attribute:: busy_since
+
+        Time when the visitor was received by agent.
+                   
     .. attribute:: gone_since
 
-        These three fields are injected by the
-        :mod:`lino_xl.lib.reception` plugin.
+        Time when the visitor left (checked out).                   
+
 
 
         
