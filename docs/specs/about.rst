@@ -11,13 +11,17 @@ The ``lino.modlib.about`` plugin
     >>> from lino.api.doctest import *
 
 
-This plugin is always installed. It defines some virtual tables and
-choicelists but no database models.
+The :mod:`lino.modlib.about` plugin is always installed.  It defines
+some virtual tables and choicelists, but no database models.
+
+See also :doc:`/specs/search`
 
 .. currentmodule:: lino.modlib.about
 
                    
 .. class:: SiteSearch
+
+    Search across all tables of the application.
            
 .. class:: TimeZones
 

@@ -1,14 +1,11 @@
+.. doctest docs/specs/openui5.rst 
 .. _book.specs.openui5:
 
 ===================
 Openui5 specs tests
 ===================
 
-.. to test only this document:
-   
-    $ doctest docs/specs/openui5.rst 
-   
-    doctest init:
+.. doctest init:
     >>> import lino
     >>> lino.startup('lino_book.projects.ui5.settings.demo')
     >>> from lino.api.doctest import *
@@ -16,6 +13,8 @@ Openui5 specs tests
 The :mod:`lino.modlib.openui5` plugin defines the openui5 front-end
 
 .. currentmodule:: lino.modlib.openui5
+
+Define a utility function:                   
 
 >>> def soupyfiy(url, Print=False):
 ...     r = test_client.get(url)
@@ -27,8 +26,11 @@ The :mod:`lino.modlib.openui5` plugin defines the openui5 front-end
 >>> def pSoup(soup):
 ...     print(soup.body.prettify(formatter=None))
 >>> test_client.force_login(rt.login('robin').user)
+
+The following test is currently skipped
+
 >>> r,s = soupyfiy("http://127.0.0.1:8000/ui/view/grid/tickets/AllTickets.view.xml", Print=True)
-... #doctest: -ELLIPSIS -REPORT_UDIFF
+... #doctest: -ELLIPSIS -REPORT_UDIFF +SKIP
      <mvc:view class="sapUiSizeCompact" controllername="lino.controller.table" height="100%" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:editor="openui5" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:tnt="sap.tnt" xmlns:u="sap.ui.unified" xmlns:ui="sap.ui">
       <page class="sapUiContentPadding" enablescrolling="true" navbuttonpress="onNavBack" showfooter="true" showheader="true" shownavbutton="true">
        <content>

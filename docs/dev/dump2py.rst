@@ -15,4 +15,4 @@ directory of Python modules with one main module :xfile:`restore.py`.
 Another important thing is that you can use such a backup for
 :doc:`data migrations <datamig>`.
 
-
+See also :doc:`/specs/dumps`.

@@ -20,14 +20,24 @@ Here are all our sales invoices:
 ===================== ============ ============ =================================== ================= ============== ================
  No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
- 87/2015               01/03/2015   30/05/2015   Radermacher Hedi                    20,00                            **Registered**
- 86/2015               01/03/2015   31/03/2015   Laschet Laura                       40,00                            **Registered**
- 85/2015               01/03/2015   31/03/2015   Evers Eberhart                      48,00                            **Registered**
- 84/2015               01/03/2015   01/03/2015   di Rupo Didier                      48,00                            **Registered**
- 83/2015               01/03/2015   31/03/2015   Radermacher Guido                   50,00                            **Registered**
- 82/2015               01/03/2015   30/05/2015   Jacobs Jacqueline                   48,00                            **Registered**
- 81/2015               01/03/2015   30/04/2015   Emonts-Gast Erna                    64,00                            **Registered**
- 80/2015               01/02/2015   02/04/2015   Emonts-Gast Erna                    128,00                           **Registered**
+ 24/2015               01/03/2015   30/05/2015   Radermacher Hedi                    20,00                            **Registered**
+ 23/2015               01/03/2015   31/03/2015   Laschet Laura                       40,00                            **Registered**
+ 22/2015               01/03/2015   31/03/2015   Evers Eberhart                      48,00                            **Registered**
+ 21/2015               01/03/2015   01/03/2015   di Rupo Didier                      48,00                            **Registered**
+ 20/2015               01/03/2015   31/03/2015   Radermacher Guido                   50,00                            **Registered**
+ 19/2015               01/03/2015   30/05/2015   Jacobs Jacqueline                   48,00                            **Registered**
+ 18/2015               01/03/2015   30/04/2015   Emonts-Gast Erna                    64,00                            **Registered**
+ 17/2015               01/02/2015   02/04/2015   Emonts-Gast Erna                    128,00                           **Registered**
+ 16/2015               01/02/2015   08/02/2015   Meier Marie-Louise                  48,00                            **Registered**
+ 15/2015               01/02/2015   08/02/2015   Kaivers Karl                        50,00                            **Registered**
+ ...
+ 4/2015                01/01/2015   31/01/2015   Charlier Ulrike                     148,00                           **Registered**
+ 3/2015                01/01/2015   31/01/2015   Radermacher Guido                   114,00                           **Registered**
+ 2/2015                01/01/2015   31/01/2015   Jonas Josef                         64,00                            **Registered**
+ 1/2015                01/01/2015   31/01/2015   Dupont Jean                         98,00                            **Registered**
+ 63/2014               01/12/2014   31/12/2014   Radermacher Guido                   50,00                            **Registered**
+ 62/2014               01/12/2014   08/12/2014   Kaivers Karl                        50,00                            **Registered**
+ 61/2014               01/12/2014   31/12/2014   Charlier Ulrike                     148,00                           **Registered**
  ...
  14/2014               01/04/2014   08/04/2014   Meier Marie-Louise                  20,00                            **Registered**
  13/2014               01/04/2014   01/05/2014   Dobbelstein-Demeulenaere Dorothée   20,00                            **Registered**
@@ -56,8 +66,8 @@ there obviously due to a payment difference.
 ==================== =========== ======== =============== ================= ================ ================
  Due date             Reference   No.      Partner         Total incl. VAT   Balance before   Balance to pay
 -------------------- ----------- -------- --------------- ----------------- ---------------- ----------------
- 31/03/2015           SLS         86       Laschet Laura   40,00                              0,60
- **Total (1 rows)**               **86**                   **40,00**                          **0,60**
+ 31/03/2015           SLS         23       Laschet Laura   40,00                              0,60
+ **Total (1 rows)**               **23**                   **40,00**                          **0,60**
 ==================== =========== ======== =============== ================= ================ ================
 <BLANKLINE>
 
@@ -89,3 +99,15 @@ Note that this test should fail if you run the test suite without a
 LibreOffice server running.
 
 
+
+
+>>> rt.show(invoicing.SalesRules)
+==================== =================== ============
+ Partner              Invoicing address   Paper type
+-------------------- ------------------- ------------
+ Arens Annette
+ Faymonville Luc      Engels Edgar
+ Radermacher Alfons   Emonts-Gast Erna
+ Martelaer Mark       Dupont Jean
+==================== =================== ============
+<BLANKLINE>

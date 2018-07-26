@@ -21,7 +21,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 43 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, cosi, contacts, lists, beid, contenttypes, gfks, checkdata, cal, products, rooms, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-78 models:
+79 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -43,23 +43,23 @@ The database structure
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
  checkdata.Problem          checkdata.Problems             6         20
- contacts.Company           contacts.Companies             27        31
+ contacts.Company           contacts.Companies             25        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
- contacts.Partner           contacts.Partners              25        103
- contacts.Person            contacts.Persons               42        72
+ contacts.Partner           contacts.Partners              23        103
+ contacts.Person            contacts.Persons               40        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         78
+ contenttypes.ContentType   gfks.ContentTypes              3         79
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        95
  courses.Line               courses.Lines                  25        10
- courses.Pupil              courses.Pupils                 51        35
+ courses.Pupil              courses.Pupils                 49        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               44        9
+ courses.Teacher            courses.Teachers               42        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
@@ -73,6 +73,7 @@ The database structure
  gfks.HelpText              gfks.HelpTexts                 4         2
  invoicing.Item             invoicing.Items                10        7
  invoicing.Plan             invoicing.Plans                7         1
+ invoicing.SalesRule        invoicing.SalesRules           3         4
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                23        8
  ledger.MatchRule           ledger.MatchRules              3         12
@@ -137,8 +138,8 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, sepa.Account.partner
-  - PROTECT : bevats.Declaration.partner, contacts.Partner.invoice_recipient, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner
+  - PROTECT : bevats.Declaration.partner, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : courses.Pupil.person_ptr, courses.Teacher.person_ptr
   - PROTECT : cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, courses.Line.contact_person, excerpts.Excerpt.contact_person, notes.Note.contact_person, rooms.Booking.contact_person
@@ -204,7 +205,7 @@ behaviour. See also :doc:`/dev/delete`.
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
-  - PROTECT : contacts.Partner.paper_type, courses.Course.paper_type, sales.VatProductInvoice.paper_type
+  - PROTECT : courses.Course.paper_type, invoicing.SalesRule.paper_type, sales.VatProductInvoice.paper_type
 - sales.VatProductInvoice :
   - CASCADE : sales.InvoiceItem.voucher
   - SET_NULL : invoicing.Item.invoice

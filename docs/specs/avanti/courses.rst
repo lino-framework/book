@@ -112,7 +112,10 @@ course.
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('laura').show('cal.EntriesByController', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-1: `16.01.☑ <Detail>`__ 2: `17.01.☑ <Detail>`__ 3: `19.01.☒ <Detail>`__ 4: `20.01.☑ <Detail>`__ 5: `23.01.☑ <Detail>`__ 6: `24.01.☑ <Detail>`__ 7: `26.01.☑ <Detail>`__ 8: `27.01.☑ <Detail>`__ 9: `30.01.☑ <Detail>`__ 10: `31.01.☑ <Detail>`__ 11: `02.02.☑ <Detail>`__ 12: `03.02.☒ <Detail>`__ 13: `06.02.☑ <Detail>`__ 14: `07.02.☑ <Detail>`__ 15: `09.02.? <Detail>`__ 16: `10.02.? <Detail>`__ 17: `13.02.? <Detail>`__ 18: `14.02.? <Detail>`__ 19: `16.02.? <Detail>`__ 20: `17.02.? <Detail>`__ 21: `20.02.? <Detail>`__ 22: `21.02.? <Detail>`__ 23: `23.02.? <Detail>`__ 24: `24.02.? <Detail>`__Suggested : 10 ,  Draft : 0 ,  Took place : 12 ,  Cancelled : 2 **New**
+January 2017: `Mon 16. <Detail>`__☑ `Tue 17. <Detail>`__☑ `Thu 19. <Detail>`__☒ `Fri 20. <Detail>`__☑ `Mon 23. <Detail>`__☑ `Tue 24. <Detail>`__☑ `Thu 26. <Detail>`__☑ `Fri 27. <Detail>`__☑ `Mon 30. <Detail>`__☑ `Tue 31. <Detail>`__☑
+February 2017: `Thu 02. <Detail>`__☑ `Fri 03. <Detail>`__☒ `Mon 06. <Detail>`__☑ `Tue 07. <Detail>`__☑ `Thu 09. <Detail>`__? `Fri 10. <Detail>`__? `Mon 13. <Detail>`__? `Tue 14. <Detail>`__? `Thu 16. <Detail>`__? `Fri 17. <Detail>`__? `Mon 20. <Detail>`__? `Tue 21. <Detail>`__? `Thu 23. <Detail>`__? `Fri 24. <Detail>`__?
+Suggested : 10 ,  Draft : 0 ,  Took place : 12 ,  Cancelled : 2 **New**
+
 
 
 Note that even though Nathalie is author of the morning course, it is

@@ -782,11 +782,17 @@ the detail window of a ticket.
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general_1):
-  - (general1):
-    - (general1_1): **Summary** (summary), **ID** (id)
-    - (general1_2): **Author** (user), **End user** (end_user), **Site** (site), **Ticket type** (ticket_type), **Private** (private)
-    - (general1_4): **Workflow** (workflow_buttons), **Priority** (priority), **Assigned to** (assigned_to), **Planned time** (planned_time)
-    - (bottom_box_2): **Description** (description), **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
+  - (general1_1):
+    - (general1a):
+      - (general1a_1): **Summary** (summary), **ID** (id)
+      - (general1a_2): **Site** (site), **Ticket type** (ticket_type)
+      - **Workflow** (workflow_buttons)
+      - **Description** (description)
+    - (general1b):
+      - (general1b_1): **Author** (user), **End user** (end_user)
+      - (general1b_2): **Assigned to** (assigned_to), **Private** (private)
+      - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
+      - **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
   - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
 - **More** (more):
   - (more_1):

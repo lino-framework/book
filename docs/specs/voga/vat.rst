@@ -23,8 +23,8 @@ The following covers a bug that was was fixed :blogref:`20170905`
 ==================== ================== ======== =================== ================= ===== =================
  Invoice              Partner            VAT id   VAT regime          Total excl. VAT   VAT   Total incl. VAT
 -------------------- ------------------ -------- ------------------- ----------------- ----- -----------------
- *SLS 17*             Jeanémart Jérôme            Intracom supplies   20,00                   20,00
- *SLS 35*             Brecht Bernd                Intracom services   295,00                  295,00
+ *SLS 17/2014*        Jeanémart Jérôme            Intracom supplies   20,00                   20,00
+ *SLS 35/2014*        Brecht Bernd                Intracom services   295,00                  295,00
  **Total (2 rows)**                                                   **315,00**              **315,00**
 ==================== ================== ======== =================== ================= ===== =================
 <BLANKLINE>
@@ -33,23 +33,23 @@ The following covers a bug that was was fixed :blogref:`20170905`
 ===================== =============== ======== =================== ================= ===== =================
  Invoice               Partner         VAT id   VAT regime          Total excl. VAT   VAT   Total incl. VAT
 --------------------- --------------- -------- ------------------- ----------------- ----- -----------------
- *PRC 7*               Donderweer BV            Intracom services   199,90                  199,90
- *PRC 14*              Donderweer BV            Intracom services   200,50                  200,50
- *PRC 21*              Donderweer BV            Intracom services   201,00                  201,00
- *PRC 28*              Donderweer BV            Intracom services   201,20                  201,20
- *PRC 35*              Donderweer BV            Intracom services   202,40                  202,40
- *PRC 42*              Donderweer BV            Intracom services   199,90                  199,90
- *PRC 49*              Donderweer BV            Intracom services   200,50                  200,50
- *PRC 56*              Donderweer BV            Intracom services   201,00                  201,00
- *PRC 63*              Donderweer BV            Intracom services   201,20                  201,20
- *PRC 70*              Donderweer BV            Intracom services   202,40                  202,40
- *PRC 77*              Donderweer BV            Intracom services   199,90                  199,90
- *PRC 84*              Donderweer BV            Intracom services   200,50                  200,50
- *PRC 91*              Donderweer BV            Intracom services   203,00                  203,00
- *PRC 98*              Donderweer BV            Intracom services   203,20                  203,20
- *PRC 105*             Donderweer BV            Intracom services   204,40                  204,40
- *PRC 112*             Donderweer BV            Intracom services   201,90                  201,90
- *PRC 119*             Donderweer BV            Intracom services   202,50                  202,50
+ *PRC 7/2014*          Donderweer BV            Intracom services   199,90                  199,90
+ *PRC 7/2015*          Donderweer BV            Intracom services   203,00                  203,00
+ *PRC 14/2014*         Donderweer BV            Intracom services   200,50                  200,50
+ *PRC 14/2015*         Donderweer BV            Intracom services   203,20                  203,20
+ *PRC 21/2014*         Donderweer BV            Intracom services   201,00                  201,00
+ *PRC 21/2015*         Donderweer BV            Intracom services   204,40                  204,40
+ *PRC 28/2014*         Donderweer BV            Intracom services   201,20                  201,20
+ *PRC 28/2015*         Donderweer BV            Intracom services   201,90                  201,90
+ *PRC 35/2014*         Donderweer BV            Intracom services   202,40                  202,40
+ *PRC 35/2015*         Donderweer BV            Intracom services   202,50                  202,50
+ *PRC 42/2014*         Donderweer BV            Intracom services   199,90                  199,90
+ *PRC 49/2014*         Donderweer BV            Intracom services   200,50                  200,50
+ *PRC 56/2014*         Donderweer BV            Intracom services   201,00                  201,00
+ *PRC 63/2014*         Donderweer BV            Intracom services   201,20                  201,20
+ *PRC 70/2014*         Donderweer BV            Intracom services   202,40                  202,40
+ *PRC 77/2014*         Donderweer BV            Intracom services   199,90                  199,90
+ *PRC 84/2014*         Donderweer BV            Intracom services   200,50                  200,50
  **Total (17 rows)**                                                **3 425,40**            **3 425,40**
 ===================== =============== ======== =================== ================= ===== =================
 <BLANKLINE>

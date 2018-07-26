@@ -1,13 +1,10 @@
+.. doctest docs/specs/vat.rst
 .. _xl.vat:
 
 =============================
 VAT (Value-added tax)
 =============================
 
-.. to run only this test:
-
-    $ doctest docs/specs/vat.rst
-    
 Table of contents:
 
 .. contents::
@@ -85,8 +82,8 @@ printout of a VAT declaration:
 ====================== =========================== ============= ======================= =================== ============ ===================
  Rechnung               Partner                     MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
 ---------------------- --------------------------- ------------- ----------------------- ------------------- ------------ -------------------
- *SLS 2*                Rumma & Ko OÜ               EE100588749   Innergemeinschaftlich   1 685,80            354,02       2 039,82
- *SLS 10*               Bernd Brechts Bücherladen                 Innergemeinschaftlich   1 322,25            277,67       1 599,92
+ *SLS 2/2014*           Rumma & Ko OÜ               EE100588749   Innergemeinschaftlich   1 685,80            354,02       2 039,82
+ *SLS 10/2014*          Bernd Brechts Bücherladen                 Innergemeinschaftlich   1 322,25            277,67       1 599,92
  **Total (2 Zeilen)**                                                                     **3 008,05**        **631,69**   **3 639,74**
 ====================== =========================== ============= ======================= =================== ============ ===================
 <BLANKLINE>
@@ -101,21 +98,21 @@ printout of a VAT declaration:
 ======================= =============== ============= ======================= =================== ============ ===================
  Rechnung                Partner         MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
 ----------------------- --------------- ------------- ----------------------- ------------------- ------------ -------------------
- *PRC 2*                 Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 9*                 Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- *PRC 16*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
- *PRC 23*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
- *PRC 30*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
- *PRC 37*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 44*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- *PRC 51*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
- *PRC 58*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
- *PRC 65*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
- *PRC 72*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 79*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- *PRC 86*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   119,67              25,13        144,80
- *PRC 93*                Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,59              24,91        143,50
- *PRC 100*               Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,03              24,57        141,60
+ *PRC 2/2014*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 2/2015*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   119,67              25,13        144,80
+ *PRC 9/2014*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
+ *PRC 9/2015*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,59              24,91        143,50
+ *PRC 16/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
+ *PRC 16/2015*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,03              24,57        141,60
+ *PRC 23/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
+ *PRC 30/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
+ *PRC 37/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 44/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
+ *PRC 51/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
+ *PRC 58/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
+ *PRC 65/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
+ *PRC 72/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
+ *PRC 79/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
  **Total (15 Zeilen)**                                                         **1 761,34**        **369,86**   **2 131,20**
 ======================= =============== ============= ======================= =================== ============ ===================
 <BLANKLINE>

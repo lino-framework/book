@@ -38,7 +38,7 @@ Partner types
 =============
 
 >>> dd.plugins.contacts
-lino_tera.lib.contacts (extends_models=['Person'])
+lino_tera.lib.contacts
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
 ['Company', 'Partner', 'Person', 'Household', 'Client']
