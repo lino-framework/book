@@ -15,8 +15,8 @@ real world.
    pierre
    cosi_ee
    team
-   public
    bs3
+   public
    anna
    liina
    lydia

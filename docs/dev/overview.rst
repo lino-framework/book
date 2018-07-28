@@ -5,39 +5,54 @@ Components of the Lino framework
 ================================
 
 
-Packages
-========
+Python packages
+===============
 
-- :mod:`lino` is the **core framework** which comes with a minimal
-  standard plugin library: users, notification framework, comments,
-  ...
+- :mod:`lino` is the **core framework** which comes with a standard
+  plugin library called :mod:`lino.modlib`: users, notification
+  framework, comments, printing, ...
   
-- :mod:`lino_xl` is the **Extensions Library** : contacts, countries,
-  calendar, accounting, groupware, ... (see :doc:`xl`)
+- :mod:`lino_xl` (:doc:`xl`) is a plugin collection used by many Lino
+  applications: contacts, countries, calendar, accounting, groupware,
+  ... .
        
-- The :mod:`lino_book` repository contains the docs (i.e. the source
-  code of what you are reading right now) and a test suite for the
-  Lino framework.  The book itself is not published as PyPI package.
+- The :mod:`lino_book` package contains the source code of what you
+  are reading right now, plus demo projects and examples, and the big
+  test suite for the whole Lino framework.  The book package is not
+  published on PyPI because that would make no sense.  You use it by
+  cloning the repository from GitHub.
   
 - Lino applications covered by the Lino Book:
   
-    - :mod:`lino_noi` : :ref:`noi`. The application we use for managing our
-      collaboration. It's about tickets, projects, time tracking, votes.
-    - :mod:`lino_cosi` : :ref:`cosi`, a simple accounting application.
-    - :mod:`lino_avanti` : Belgian integration parcours
-    - :mod:`lino_tera` : therapies, invoicing, accounting
-    - :mod:`lino_care` : Shared contacts and skills management for people who care
-    - :mod:`lino_vilma` : Shared Contact management for local communities
-    - :ref:`voga` : courses, invoicing, accounting
-    - :ref:`amici` : contacts, groups, personal information manager
+    - :mod:`lino_noi` (:ref:`noi`) : the application we use for
+      managing our collaboration.  It's about tickets, projects, time
+      tracking, votes.
+    - :mod:`lino_amici` (:ref:`amici`) : contacts, groups, personal
+      information manager
+    - :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
       
+    - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
+    - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
+    - :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
+    - :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
+    - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration
+      parcours
+      
+
+
+- There are also Lino applications which are *not* covered by the
+  book:
+
+    - :ref:`welfare` : used by Belgian social centres
+    - :ref:`logos` 
+    - :ref:`patrols` 
+  
 - :mod:`atelier` is a collection of utilities maintained by the Lino
   team and which might be useful to other (non-Lino) Python
   projects. :mod:`projects <atelier.projects>`, :mod:`invlib
   <atelier.invlib>`, :mod:`rstgen <atelier.rstgen>`
   
   
-
   
 Package dependencies
 ====================
@@ -99,6 +114,7 @@ Package dependencies
     lino_care -> lino_xl;
     lino_avanti -> lino_xl;
     lino_voga -> lino_xl;
+    lino_welfare -> lino_xl;
     
     lino_book -> lino_noi; 
     lino_book -> lino_cosi; 
@@ -122,10 +138,6 @@ Package dependencies
 More packages
 =============
 
-- Independent Lino applications:
-
-    - :ref:`welfare` : used by Belgian social centres
-  
 - The :ref:`extjs6` project.
 
 
@@ -133,7 +145,6 @@ More packages
   as Python code.
   
 - `algus <https://github.com/lino-framework/algus>`_
-  is a template for new Lino applications
+  is a template for new Lino applications.
 
 
-   
