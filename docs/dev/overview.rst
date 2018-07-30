@@ -5,16 +5,17 @@ Components of the Lino framework
 ================================
 
 
-Python packages
-===============
+Python packages covered by the Lino Book
+========================================
 
-- :mod:`lino` is the **core framework** which comes with a standard
-  plugin library called :mod:`lino.modlib`: users, notification
-  framework, comments, printing, ...
+- The core of the framework is in a package called :mod:`lino` which
+  includes the standard plugin library (:mod:`lino.modlib`) for adding
+  basic features like system users, a notification framework,
+  comments, printing, ...
   
-- :mod:`lino_xl` (:doc:`xl`) is a plugin collection used by many Lino
+- :mod:`lino_xl` is an "extended" plugin collection used by many Lino
   applications: contacts, countries, calendar, accounting, groupware,
-  ... .
+  etc. \ .  See :doc:`xl`.
        
 - The :mod:`lino_book` package contains the source code of what you
   are reading right now, a collection of demo projects and examples
@@ -38,15 +39,28 @@ Python packages
     - :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
     - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration
       parcours
-      
+
+One day you might want to consult the generated :doc:`API
+</api/index>` of these packages.
 
 
-- :mod:`atelier` is a collection of utilities maintained by the Lino
-  team and which might be useful to other (non-Lino) Python
-  projects. :mod:`projects <atelier.projects>`, :mod:`invlib
-  <atelier.invlib>`, :mod:`rstgen <atelier.rstgen>`
-  
-  
+Python packages maintained by the same team
+===========================================
+
+Some projects which might be useful to non-Lino Python projects are
+not covered in the Lino Book because they are actually not at all
+related to Lino, except that Lino depends on them and that they are
+maintained by the Lino team:
+
+- :mod:`atelier` is a collection of utilities (subpackages
+  :mod:`projects <atelier.projects>`, :mod:`invlib <atelier.invlib>` and
+  :mod:`rstgen <atelier.rstgen>`)
+
+- :mod:`etgen` uses ElementTree for generating HTML or XML.
+
+- :mod:`commondata` is an experimental project for storing and
+  managing common data as Python code without any user interface.
+
   
 Package dependencies
 ====================
@@ -132,16 +146,31 @@ Package dependencies
 Related projects
 ================
 
-There are also Lino applications which are *not* covered by the
-book.
+There are also Lino applications that are *not* covered by the book.
 
 
- - :ref:`welfare` : used by Belgian social centres
+.. _welfare:
+
+Lino Welfare
+------------
+
+A rather big application used by Belgian social centres.
+
+.. _presto:
+
+Lino Presto
+------------
+
+An application for managing services with physical on-site presence of
+the workers.  For organisations where calendar entries are the base
+for writing invoices.
 
 .. _patrols:
 
 Lino Patrols
 ------------
+
+A project that fell asleep before going to production.
 
 http://patrols.lino-framework.org/
 
@@ -151,19 +180,9 @@ http://patrols.lino-framework.org/
 Lino Logos
 ----------
 
+A project that fell asleep before going to production.
+
 http://logos.lino-framework.org/
-
-
-Lino Polly
-----------
-
-See :doc:`/examples/polly/index`
-
-
-Lino Belref
------------
-
-See :doc:`/examples/belref/index`
 
 
 .. _sunto:
@@ -176,15 +195,6 @@ somebody else than the author. It is hosted at
 https://github.com/ManuelWeidmann/lino-sunto
 
 
-.. _presto:
-
-Lino Presto
-------------
-
-Lino Presto was meant to become an application for managing the work
-of organisations where time tracker sessions are the base for writing
-invoices. The project was deprecated in favour to :ref:`noi` and
-:ref:`cosi`.
 
 
 .. _psico:
@@ -204,15 +214,6 @@ ExtJS 6
 See https://github.com/lino-framework/extjs6
       
   
-
-.. _commondata:
-
-commondata
-----------
-
-
-:mod:`commondata` is an experimental project for storing common data
-as Python code.
 
 .. _algus:
 
