@@ -273,7 +273,7 @@ application or locally per site.
            
 >>> rt.show(cal.DailyPlanner)
 =========== ========== ===============
- overview    external   internal
+ overview    External   Internal
 ----------- ---------- ---------------
  *AM*
  *PM*                   *13:30 robin*
@@ -298,8 +298,8 @@ A default configuration has two columns in the daily planner:
 ======= ========== ==========
  value   name       text
 ------- ---------- ----------
- 10      external   external
- 20      internal   internal
+ 10      external   External
+ 20      internal   Internal
 ======= ========== ==========
 <BLANKLINE>
 
@@ -313,12 +313,43 @@ A default configuration has two columns in the daily planner:
 ===== ============= ================== ================== ============ ==========
  No.   Designation   Designation (de)   Designation (fr)   Start time   End time
 ----- ------------- ------------------ ------------------ ------------ ----------
- 1     AM            vorm.              Matin                           12:00:00
- 2     PM            nachm.             Après-midi         12:00:00
- 3     All day       All day            All day
+ 1     AM            Vormittags         Avant-midi                      12:00:00
+ 2     PM            Nachmittags        Après-midi         12:00:00
+ 3     All day       Ganztags           Journée entière
 ===== ============= ================== ================== ============ ==========
 <BLANKLINE>
 
+
+.. Tested translations:
+
+    >>> # settings.SITE.languages
+
+    >>> with translation.override('de'):
+    ...     rt.show(cal.DailyPlanner, header_level=1)
+    ===========
+    Tagesplaner
+    ===========
+    =============== ======== ===============
+     overview        Extern   Intern
+    --------------- -------- ---------------
+     *Vormittags*
+     *Nachmittags*            *13:30 robin*
+     *Ganztags*
+    =============== ======== ===============
+    <BLANKLINE>
+   
+    >>> rt.show(cal.DailyPlanner, language="fr", header_level=1)
+    =======================
+    Planificateur quotidien
+    =======================
+    =================== ========= ===============
+     overview            Externe   Interne
+    ------------------- --------- ---------------
+     *Avant-midi*
+     *Après-midi*                  *13:30 robin*
+     *Journée entière*
+    =================== ========= ===============
+    <BLANKLINE>
 
 
 
@@ -633,7 +664,7 @@ Every 2nd month
 ---- --------------- ------------------ ------------------
  1    Holidays        Feiertage          Jours fériés
  2    Meeting         Versammlung        Réunion
- 3    Internal        Internal           Internal
+ 3    Internal        Intern             Interne
  4    First contact   First contact      First contact
  5    Lesson          Lesson             Lesson
 ==== =============== ================== ==================

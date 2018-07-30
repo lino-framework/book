@@ -17,10 +17,11 @@ Python packages
   ... .
        
 - The :mod:`lino_book` package contains the source code of what you
-  are reading right now, plus demo projects and examples, and the big
-  test suite for the whole Lino framework.  The book package is not
-  published on PyPI because that would make no sense.  You use it by
-  cloning the repository from GitHub.
+  are reading right now, a collection of demo projects and examples
+  (:mod:`lino_book.projects`), and the big test suite for the whole
+  Lino framework.  The book package is not published on PyPI because
+  that would make no sense.  You use it by cloning the repository from
+  GitHub.
   
 - Lino applications covered by the Lino Book:
   
@@ -40,13 +41,6 @@ Python packages
       
 
 
-- There are also Lino applications which are *not* covered by the
-  book:
-
-    - :ref:`welfare` : used by Belgian social centres
-    - :ref:`logos` 
-    - :ref:`patrols` 
-  
 - :mod:`atelier` is a collection of utilities maintained by the Lino
   team and which might be useful to other (non-Lino) Python
   projects. :mod:`projects <atelier.projects>`, :mod:`invlib
@@ -135,16 +129,97 @@ Package dependencies
 
 
    
-More packages
-=============
+Related projects
+================
 
-- The :ref:`extjs6` project.
+There are also Lino applications which are *not* covered by the
+book.
 
 
-- :mod:`commondata` : an experimental project for storing common data
-  as Python code.
+ - :ref:`welfare` : used by Belgian social centres
+
+.. _patrols:
+
+Lino Patrols
+------------
+
+http://patrols.lino-framework.org/
+
+
+.. _logos:
+
+Lino Logos
+----------
+
+http://logos.lino-framework.org/
+
+
+Lino Polly
+----------
+
+See :doc:`/examples/polly/index`
+
+
+Lino Belref
+-----------
+
+See :doc:`/examples/belref/index`
+
+
+.. _sunto:
+
+Lino Sunto
+----------
+
+Lino Sunto is the first free (GPL) Lino application developed by
+somebody else than the author. It is hosted at    
+https://github.com/ManuelWeidmann/lino-sunto
+
+
+.. _presto:
+
+Lino Presto
+------------
+
+Lino Presto was meant to become an application for managing the work
+of organisations where time tracker sessions are the base for writing
+invoices. The project was deprecated in favour to :ref:`noi` and
+:ref:`cosi`.
+
+
+.. _psico:
+
+Lino Psico
+----------
+
+This project is now named :ref:`tera`.
+
   
-- `algus <https://github.com/lino-framework/algus>`_
-  is a template for new Lino applications.
+
+.. _extjs6:
+
+ExtJS 6
+-------
+
+See https://github.com/lino-framework/extjs6
+      
+  
+
+.. _commondata:
+
+commondata
+----------
+
+
+:mod:`commondata` is an experimental project for storing common data
+as Python code.
+
+.. _algus:
+
+Algus
+-----
+  
+The `algus <https://github.com/lino-framework/algus>`__ repository is
+a template for new Lino applications.
 
 
