@@ -22,14 +22,16 @@ by doing::
     $ runserver
 
 Now point your browser to http://127.0.0.1:8000/ and you should see
-something like this:
+something like this (note the message **Or sign in using github,
+google-plus facebook mediawiki**.):
 
 .. figure:: socialauth1.png
     :width: 80 %
 
     The Lino Team main page for anonymous users.
             
-Note the message **Or sign in using github, googleplus or facebook**.
+
+
 Click on **github**. This will lead you to the GitHub website:
 
 .. figure:: socialauth2.png
@@ -61,10 +63,19 @@ Here is how the confirmation page looks on Facebook:
     Facebook asking your permission to authenticate you at the "Lino
     authentication" app
 
+Or on WikiMedia:
+
+
+.. figure:: 20180731b.png
+    :width: 80 %
+            
+    WikiMedia asking your permission to authenticate you at the
+    "Social Auth Tester" app
+
 
 This works out of the box because we did the work of creating
-applications on GitHub, Google+ and Facebook (details about how to do
-that see below).
+applications on GitHub, Google+, Facebook and WikiMedia.  Details
+about how to do that see below.
 
            
 How it works
@@ -72,7 +83,13 @@ How it works
 
 As the site administrator, you must chose which authentication
 providers you want to offer to your users.  For each provider you will
-activate the corresponding "backend".  Available backends are listed
+activate the corresponding "backend".
+
+
+Add the backend in your settings
+--------------------------------
+
+Available backends are listed
 `in the PSA documentation
 <http://python-social-auth.readthedocs.io/en/latest/backends/>`__.
 
@@ -92,23 +109,20 @@ We got the name of that backend
 (``social_core.backends.github.GithubOAuth2``) from the detailed
 instructions page for `GitHub
 <http://python-social-auth.readthedocs.io/en/latest/backends/github.html>`__.
+For other backends we just looked at the code of
+:mod:`social_core.backends`.
 
-Note that with Lino you do not need to set
-:setting:`AUTHENTICATION_BACKENDS` yourself, Lino will do that for
-you, based on miscellaneous criteria (and :attr:`social_auth_backends
-<lino.core.site.Site.social_auth_backends>` is only one of them).
 
-Most backends require additional parameters, and you must define them
-in your :xfile:`settings.py`. For example::
 
-    SOCIAL_AUTH_GITHUB_KEY = '...'
-    SOCIAL_AUTH_GITHUB_SECRET = '...'
-  
-These codes come from the provider's website where you must create an
-"oauth application", and the provider will then give you a "key" and a
-"secret".
+Create a consumer
+-----------------
 
-Here are the parameters we used for the GitHub application:
+For OAuth backends you need to create a "consumer" or "application" on
+the provider's website.  You tell the provider that you run a site
+whose users will want to authenticate, and the provider will then give
+you a "key" and a "secret".
+
+Here are the parameters we used for creating the GitHub application:
 
 - Application name: Social Auth Tester
 - Homepage URL: http://127.0.0.1:8000/
@@ -120,9 +134,20 @@ In Facebook you must go to :menuselection:`Products --> Facebook Login
     | **Embedded Browser OAuth Login**
     | Enables browser control redirect uri for OAuth client login.
 
+For Wikimedia the instructions are
+in the
+`PSA docs
+<http://python-social-auth.readthedocs.io/en/latest/backends/mediawiki.html>`__
+and on the `mediawiki site
+<https://www.mediawiki.org/wiki/OAuth/For_Developers>`__.
 
-The client secrets of these applications aren't really secret anymore
-since for educational purposes they are stored in the
+You must then store these in your :xfile:`settings.py`. For example::
+
+    SOCIAL_AUTH_GITHUB_KEY = '...'
+    SOCIAL_AUTH_GITHUB_SECRET = '...'
+  
+The client secrets of these applications we used for this toturial
+aren't really secret anymore since they are stored in the
 :xfile:`settings.py` of the team demo project (more exactly `here
 <https://github.com/lino-framework/book/blob/master/lino_book/projects/team/settings/demo.py>`__). In
 a real setup you will of course give the public URL of your website,
@@ -149,13 +174,21 @@ Exercises
   
 - Sign in as robin (an administrator) and merge two users.
 
+
+Note that with Lino you do  not need to set Django's
+:setting:`AUTHENTICATION_BACKENDS` setting yourself, Lino will do that
+for you, based on miscellaneous criteria (and
+:attr:`social_auth_backends
+<lino.core.site.Site.social_auth_backends>` is only one of them).
+
+  
+  
+
 User's friends
 ==============
 
 Once an user get authentified via one of official supported
 third-party by Lino, we can retrieve user's public "friends".
-
-
 
 The following is an example how you can try to see all your Google+
 friends using `Google People API
