@@ -22,7 +22,8 @@ class Site(Site):
         # 'social_core.backends.google.GoogleOAuth2',
         # 'social_core.backends.google.GoogleOAuth',
         'social_core.backends.google.GooglePlusAuth',
-        'social_core.backends.facebook.FacebookOAuth2'
+        'social_core.backends.facebook.FacebookOAuth2',
+        'social_core.backends.mediawiki.MediaWiki'
     ]
     use_experimental_features = True
     # default_ui = 'lino_extjs6.extjs6'
@@ -91,5 +92,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = '1837593149865295'
 SOCIAL_AUTH_FACEBOOK_SECRET = '1973f9e9d9420c4c6502aa40cb8cb7db'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']
 
-
-
+SOCIAL_AUTH_MEDIAWIKI_KEY = '7dbd2e1529e45108f798349811c7a2b7'
+SOCIAL_AUTH_MEDIAWIKI_SECRET = '8041055fcd16333fa242b346e0ae52133fd2ee14'
+SOCIAL_AUTH_MEDIAWIKI_URL = 'https://meta.wikimedia.org/w/index.php'
+SOCIAL_AUTH_MEDIAWIKI_CALLBACK = 'oob'

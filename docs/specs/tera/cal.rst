@@ -56,7 +56,7 @@ Daily planner
 
 >>> rt.show(cal.DailyPlanner)
 ============= ================ ==========
- Description   external         internal
+ Description   External         Internal
 ------------- ---------------- ----------
  *AM*          *08:30 romain*
  *PM*

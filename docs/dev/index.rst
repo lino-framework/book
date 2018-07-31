@@ -13,8 +13,8 @@ providers should start at :doc:`/admin/index`.
    :maxdepth: 2
               
    getstarted
-   diving
    framework
+   diving
    team
    writedocs
    acquaintained

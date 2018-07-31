@@ -42,6 +42,5 @@ Sitemap
 .. toctree::
    :hidden:
 
-   examples/index
    examples/polly/index
    examples/belref/index

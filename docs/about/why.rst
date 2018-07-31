@@ -63,4 +63,4 @@ What Lino is not:
   tell us where you got stuck, help us to make it easier for others to
   get started with Lino!
 
-See also :doc:`features` and :doc:`art`.
+See also :doc:`features`.

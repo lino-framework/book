@@ -104,3 +104,29 @@ keinen Vorschlag machen soll. Dann ist man sozusagen gezwungen, bei
 jeder Buchung zu überlegen, welches AK man auswählt.
 
 
+
+Rechnung als Kopie erstellen (:guilabel:`⁂`)
+==============================================
+
+Man kann man das Erfassen von Einkaufsrechnungen beschleunigen mit der
+Funktion "Rechnung als Kopie erstellen".
+
+Durch Klick auf den Button :guilabel:`⁂` wird die Aktion
+aufgerufen. Lino zeigt dann zunächst folgendes Dialogfenster an:
+
+.. image:: ana/AnaAccountInvoice.make_copy.de.png
+
+Wenn man das Fenster bestätigt, wird ohne weitere Fragen eine neue
+Rechnung erstellt und registriert.
+
+Das Verhalten dieser Aktion hängt teilweise davon ab, ob man den
+Gesamtbetrag (:guilabel:`Total inkl MWSt`) eingibt oder nicht:
+
+- Wenn man einen Gesamtbetrag eingibt, wird eine einzige
+  Rechnungszeile erstellt mit diesem Betrag. Das Generalkonto dieser
+  Zeile ist entweder das im Dialogfenster angegebene, oder (falls man
+  das Feld dort leer gelassen hat) das G-Konto der ersten Zeile der
+  Kopiervorlage.  Ebenso das A-Konto.
+
+- Wenn man den Gesamtbetrag leer lässt, werden alle Zeilen der
+  Kopiervorlage exakt kopiert.

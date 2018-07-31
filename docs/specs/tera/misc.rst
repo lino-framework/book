@@ -1,15 +1,12 @@
-.. _tera.specs:
+.. doctest docs/specs/tera/misc.rst
+.. _tera.specs.misc:
 .. _presto.specs.psico:
 
 =============================
 Lino Tera : a first overview
 =============================
 
-.. to run only this test:
-
-    $ doctest docs/specs/tera/misc.rst
-    
-    doctest init
+.. doctest init
 
     >>> from lino import startup
     >>> startup('lino_book.projects.lydia.settings.doctests')
@@ -139,3 +136,23 @@ The following shows that :ticket:`1975` is a duplicate of
 >>> a.action.auto_save
 True
 
+
+
+
+Technical stuff (don't read)
+============================
+
+Verify whether we can select an `invoice_recipient` on a client.  It's
+an editable remote field.
+
+>>> base = "/choices/tera/Clients/salesrule__invoice_recipient"
+>>> show_choices("robin", base + '?query=')  #doctest: +ELLIPSIS
+<br/>
+AS Express Post
+AS Matsalu Veevärk
+Adam Albert
+Adam Ilja
+Adam Noémie
+...
+Õunapuu Õie
+Östges Otto

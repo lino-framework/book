@@ -197,29 +197,30 @@ There are many tables used to show lists of tickets.
      Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
      Normal     `#106 (☎ Ticket 106) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
      Normal     `#100 (⚒ Ticket 100) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#94 (☐ Ticket 94) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
      Normal     `#82 (☎ Ticket 82) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
      Normal     `#76 (⚒ Ticket 76) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#70 (☐ Ticket 70) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
      Normal     `#58 (☎ Ticket 58) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
      Normal     `#52 (⚒ Ticket 52) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#46 (☐ Ticket 46) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
      Normal     `#34 (☎ Ticket 34) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
      Normal     `#28 (⚒ Ticket 28) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#22 (☐ Ticket 22) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
      Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
      Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                     [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
+     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
     ========== =============================================================================================== ============================================
     <BLANKLINE>
+
 
     
 
@@ -564,11 +565,11 @@ this:
 ========== ================================================================ ============================================
  Priority   Description                                                      Workflow
 ---------- ---------------------------------------------------------------- --------------------------------------------
- Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐]
+ Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]

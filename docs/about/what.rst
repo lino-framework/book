@@ -33,6 +33,6 @@ structure**.  For example Lino Welfare has 155 models in 65 plugins.
 Even Lino Noi (the smallest Lino application which is being used on a
 production site) has 44 models in 32 plugins.
 
-The growing collection of :ref:`lino.projects` can be used by
-**service providers** who offer professional hosting of one of these
-applications.
+The growing collection of maintained real-world applications can be
+used by **service providers** who offer professional hosting of one of
+these applications.

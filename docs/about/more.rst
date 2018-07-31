@@ -10,11 +10,9 @@ programming language, but also contains Javascript code.
    :maxdepth: 1
 
    values
-   projects
    testimonals
    history
    thanks
-   art
    auth
    how
 

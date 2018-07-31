@@ -1,17 +1,9 @@
+.. doctest docs/specs/checkdata.rst
 .. _book.specs.checkdata:
 
 ==========================
 Checking for data problems
 ==========================
-
-.. to test just this doc:
-
-    $ doctest docs/specs/checkdata.rst
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.min9.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> from django.core.management import call_command
 
 The :mod:`lino.modlib.checkdata` plugin adds support for defining
 **data checkers**.
@@ -23,6 +15,13 @@ requires more application intelligence to detect.
 
 When a data checker finds a problem, then it issues a *problem
 message* which is assigned to a *responsible user*.
+
+Code snippets in this document are tested in the min9 demo project:
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.core.management import call_command
 
 
 Data checkers
@@ -47,7 +46,7 @@ checkers.
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ==================================================
 <BLANKLINE>
@@ -125,7 +124,7 @@ line using::
  addresses.AddressOwnerChecker     Check for missing or non-primary address records
  cal.EventGuestChecker             Entries without participants
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ==================================================
 <BLANKLINE>

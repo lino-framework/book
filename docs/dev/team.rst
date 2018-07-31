@@ -15,6 +15,5 @@ Working with others
    request_pull
    ci
    versioning
-   
-   
-   
+   demo_projects
+   invlib
