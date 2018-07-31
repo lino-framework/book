@@ -1,20 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Luc Saffre
-# This file is part of Lino Voga.
-#
-# Lino Voga is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Voga is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Voga.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2017-2018 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
 """Tests about how Lino computes whether there are still available
 places in a course. That computation can be complex in long-running
@@ -117,4 +103,11 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(obj.get_free_places(i2d(20161231)), 0)
         
         #self.assertEqual(enr.get_confirm_veto(None), '')
+
+        # 20180731 the default value for the enrolment state was a
+        # string which became an EnrolmentStates choice only during
+        # full_clean().  Now this case is being resolved in
+        # ChoiceListField.__init__().
         
+        enr = Enrolment(course=obj, pupil=anna)
+        self.assertEqual(enr.state, EnrolmentStates.requested)

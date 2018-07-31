@@ -40,7 +40,7 @@ checkers.
  beid.BeIdCardHolderChecker        Check for invalid SSINs
  cal.EventGuestChecker             Entries without participants
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ===============================================
 <BLANKLINE>
