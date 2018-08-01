@@ -431,13 +431,13 @@ Choicelists
         >>> print(dd.plugins.countries.country_code)
         BE
         
-        >>> vat.VatAreas.get_for_country('NL')
+        >>> vat.VatAreas.get_for_country(countries.Country(isocode='NL'))
         <VatAreas.eu:20>
    
-        >>> vat.VatAreas.get_for_country('BE')
+        >>> vat.VatAreas.get_for_country(countries.Country(isocode='BE'))
         <VatAreas.national:10>
     
-        >>> vat.VatAreas.get_for_country('')
+        >>> vat.VatAreas.get_for_country(countries.Country(isocode='US'))
         <VatAreas.international:30>
 
 .. class:: VatClasses
