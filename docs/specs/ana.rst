@@ -103,6 +103,9 @@ auswählen. Du kannst das AK im G-Konto auch leer lassen (selbst wenn
 keinen Vorschlag machen soll. Dann ist man sozusagen gezwungen, bei
 jeder Buchung zu überlegen, welches AK man auswählt.
 
+When you change the general account of an invoice item, Lino always
+updates the analytical account of that item.
+
 
 
 Rechnung als Kopie erstellen (:guilabel:`⁂`)
