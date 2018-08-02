@@ -108,14 +108,28 @@ updates the analytical account of that item.
 
 
 
-Rechnung als Kopie erstellen (:guilabel:`⁂`)
-==============================================
 
-Man kann man das Erfassen von Einkaufsrechnungen beschleunigen mit der
-Funktion "Rechnung als Kopie erstellen".
+.. currentmodule:: lino_xl.lib.ana
 
-Durch Klick auf den Button :guilabel:`⁂` wird die Aktion
-aufgerufen. Lino zeigt dann zunächst folgendes Dialogfenster an:
+Analytic accounts
+=================
+
+.. class:: Account
+
+Groups of analytic accounts
+===========================
+
+.. class:: Group
+
+.. _MakeCopy:           
+
+Make a copy of an invoice (:guilabel:`⁂`)
+=========================================
+
+You can simplify manual recording of invoices using the :guilabel:`⁂`
+button which creates an invoice using an existing invoice as template.
+
+Lino then opens the following dialog window:
 
 .. image:: ana/AnaAccountInvoice.make_copy.de.png
 
@@ -133,3 +147,43 @@ Gesamtbetrag (:guilabel:`Total inkl MWSt`) eingibt oder nicht:
 
 - Wenn man den Gesamtbetrag leer lässt, werden alle Zeilen der
   Kopiervorlage exakt kopiert.
+
+
+           
+.. class:: MakeCopy
+
+    See :ref:`MakeCopy`.
+
+    .. attribute:: entry_date
+    
+        The entry date of the invoice to create.
+    
+    .. attribute:: partner
+    
+        The partner of the invoice to create.
+        
+    .. attribute:: subject
+    
+        The subject of the invoice to create.
+        
+    .. attribute:: your_ref
+    
+        The "your reference" of the invoice to create.
+        
+    .. attribute:: total_incl
+
+        The total amount of the invoice to create.  Leave blank if you
+        want to copy all rows.
+
+        If you enter an amount, 
+    
+    .. attribute:: account
+    
+        The general account to use for the item of the invoice if you
+        specified a total amount.
+        
+    .. attribute:: ana_account
+    
+        The analytical account to use for the item of the invoice if
+        you specified a total amount.
+        
