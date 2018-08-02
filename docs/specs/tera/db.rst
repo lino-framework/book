@@ -48,10 +48,10 @@ The database structure
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0
- contacts.Company            contacts.Companies             27        25
+ contacts.Company            contacts.Companies             28        25
  contacts.CompanyType        contacts.CompanyTypes          7         16
- contacts.Partner            contacts.Partners              25        136
- contacts.Person             contacts.Persons               32        97
+ contacts.Partner            contacts.Partners              26        136
+ contacts.Person             contacts.Persons               33        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
  contenttypes.ContentType    gfks.ContentTypes              3         89
@@ -72,7 +72,7 @@ The database structure
  finan.PaymentOrder          finan.PaymentOrders            15        4
  finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
  gfks.HelpText               gfks.HelpTexts                 4         2
- households.Household        households.Households          29        14
+ households.Household        households.Households          30        14
  households.Member           households.Members             14        63
  households.Type             households.Types               4         6
  humanlinks.Link             humanlinks.Links               4         59
@@ -105,7 +105,7 @@ The database structure
  sessions.Session            sessions.SessionTable          3         ...
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   59        59
+ tera.Client                 tera.Clients                   60        59
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
  topics.Interest             topics.Interests               6         0
  topics.Topic                topics.Topics                  9         0

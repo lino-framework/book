@@ -43,10 +43,10 @@ The database structure
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
  checkdata.Problem          checkdata.Problems             6         20
- contacts.Company           contacts.Companies             25        31
+ contacts.Company           contacts.Companies             26        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
- contacts.Partner           contacts.Partners              23        103
- contacts.Person            contacts.Persons               40        72
+ contacts.Partner           contacts.Partners              24        103
+ contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         79
@@ -56,10 +56,10 @@ The database structure
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        95
  courses.Line               courses.Lines                  25        10
- courses.Pupil              courses.Pupils                 49        35
+ courses.Pupil              courses.Pupils                 50        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               42        9
+ courses.Teacher            courses.Teachers               43        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
