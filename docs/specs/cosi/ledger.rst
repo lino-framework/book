@@ -448,8 +448,13 @@ Database models reference
     vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
     etc...
     
-    This is *not* abstract so that :class:`Movement` can have a
+    This model is *not* abstract so that :class:`Movement` can have a
     ForeignKey to a Voucher.
+
+    When the partner of an empty voucher has a purchase account, Lino
+    automatically creates a voucher item using this account with empty
+    amount.
+    
 
     .. attribute:: state
 
