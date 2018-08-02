@@ -34,7 +34,6 @@ class QuickTest(RemoteAuthTestCase):
 
         from lino.api import rt
         from lino.core.renderer import TestRenderer
-        # from lino.core.renderer import JsRenderer as TestRenderer
         
         UserTypes = rt.models.users.UserTypes        
         rt.models.users.User(
