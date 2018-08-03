@@ -4,16 +4,14 @@
 .. _cosi.tested.ledger:
 
 =================================================
-The General Ledger: moving money between accounts
+General Ledger
 =================================================
 
-.. doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.pierre.settings.demo')
-    >>> from lino.api.doctest import *
-    >>> ses = rt.login("robin")
-    >>> translation.activate('en')
+.. currentmodule:: lino_xl.lib.ledger
+                   
+The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
+general accounting stuff.  You need it when you are moving money
+between accounts.
 
 Table of contents:
 
@@ -22,15 +20,19 @@ Table of contents:
    :local:
 
 
-Overview
-========
+About this document
+===================
 
-The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
-general accounting stuff.  Your application needs it when you are
-moving money between accounts.
 You should have read :doc:`accounts` before reading this document.
+Examples in this document use the :mod:`lino_book.projects.pierre`
+demo project.
 
-.. currentmodule:: lino_xl.lib.ledger
+>>> from lino import startup
+>>> startup('lino_book.projects.pierre.settings.demo')
+>>> from lino.api.doctest import *
+>>> ses = rt.login("robin")
+>>> translation.activate('en')
+
 
 A **ledger** is a book in which the monetary transactions of a
 business are posted in the form of debits and credits (from `1
@@ -38,11 +40,12 @@ business are posted in the form of debits and credits (from `1
 
 In Lino, the ledger is implemented by three database models:
 
-- A :class:`Movement` is an atomic "transfer" on a given date of a
-  given *amount* of money out of (or into) a given *account*.  It is
-  just a *conceptual* transfer, not a cash or bank transfer.  Moving
-  money *out of* an account is called "to debit", moving money *to* an
-  account is called "to credit".
+- A **movement** is an atomic "transfer" of a given *amount* of money
+  from (or to) a given *account* on a given date.  It is just a
+  *conceptual* transfer, not a cash or bank transfer.
+
+  Moving money *from* (out of) an account is called "to debit", moving
+  money *to* an account is called "to credit".
 
 - Movements are never created individually but by registering a
   **voucher**.  Examples of *vouchers* include invoices, bank
@@ -448,8 +451,13 @@ Database models reference
     vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
     etc...
     
-    This is *not* abstract so that :class:`Movement` can have a
+    This model is *not* abstract so that :class:`Movement` can have a
     ForeignKey to a Voucher.
+
+    When the partner of an empty voucher has a purchase account, Lino
+    automatically creates a voucher item using this account with empty
+    amount.
+    
 
     .. attribute:: state
 

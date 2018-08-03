@@ -1,21 +1,49 @@
+.. doctest docs/specs/ana.rst
 .. _xl.specs.ana:
 
 =============================
 Analytical accounting
 =============================
 
-.. to run only this test:
+.. currentmodule:: lino_xl.lib.ana
 
-    $ doctest docs/specs/ana.rst
-    
-    doctest init
+The :mod:`lino_xl.lib.ana` plugin adds analytic accounting to
+general ledger.
+                   
+The plugin defines several models:
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
+- Analytical accounts and their groups
+- Analytical invoices and their items
 
-This plugin defines two models "Analytical accounts" and "Analytical
-account groups" which you can see as follows:
+
+Table of contents:
+
+.. contents::
+   :depth: 1
+   :local:
+
+
+About this document
+===================
+
+Examples in this document use the :mod:`lino_book.projects.lydia` demo
+project.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+
+The plugin requires :mod:`lino_xl.lib.ledger`.
+
+>>> dd.plugins.ana.needs_plugins
+['lino_xl.lib.ledger']
+
+
+Analytical accounts
+===================
+
+Both "Analytical accounts" and "Analytical account groups" can be
+configured:
 
 >>> show_menu_path('ana.Accounts')
 Configure --> Accounting --> Analytical accounts
@@ -109,50 +137,81 @@ updates the analytical account of that item.
 
 
 
-.. currentmodule:: lino_xl.lib.ana
 
 Analytic accounts
 =================
 
 .. class:: Account
 
+    .. attribute:: ref
+
+       The unique reference.
+                   
+    .. attribute:: designation
+
+    .. attribute:: group
+
+        The analytic account group this account belongs to.
+                   
 Groups of analytic accounts
 ===========================
 
 .. class:: Group
 
-.. _MakeCopy:           
+    .. attribute:: ref
+                   
+       The unique reference.
+       
+    .. attribute:: designation
+
+           
+Invoices with analytic account
+==============================
+
+.. class:: AnaAccountInvoice
+           
+    
+    .. attribute:: make_copy
+
+        The :class:`MakeCopy` action.
+
+.. class:: InvoiceItem
+
+    .. attribute:: voucher           
+    .. attribute:: ana_account
+    .. attribute:: title
+                   
 
 Make a copy of an invoice (:guilabel:`⁂`)
 =========================================
 
-You can simplify manual recording of invoices using the :guilabel:`⁂`
-button which creates an invoice using an existing invoice as template.
-
-Lino then opens the following dialog window:
-
-.. image:: ana/AnaAccountInvoice.make_copy.de.png
-
-Wenn man das Fenster bestätigt, wird ohne weitere Fragen eine neue
-Rechnung erstellt und registriert.
-
-Das Verhalten dieser Aktion hängt teilweise davon ab, ob man den
-Gesamtbetrag (:guilabel:`Total inkl MWSt`) eingibt oder nicht:
-
-- Wenn man einen Gesamtbetrag eingibt, wird eine einzige
-  Rechnungszeile erstellt mit diesem Betrag. Das Generalkonto dieser
-  Zeile ist entweder das im Dialogfenster angegebene, oder (falls man
-  das Feld dort leer gelassen hat) das G-Konto der ersten Zeile der
-  Kopiervorlage.  Ebenso das A-Konto.
-
-- Wenn man den Gesamtbetrag leer lässt, werden alle Zeilen der
-  Kopiervorlage exakt kopiert.
-
-
            
 .. class:: MakeCopy
 
-    See :ref:`MakeCopy`.
+    You can simplify manual recording of invoices using the :guilabel:`⁂`
+    button which creates an invoice using an existing invoice as template.
+
+    Lino then opens the following dialog window:
+
+    .. image:: ana/AnaAccountInvoice.make_copy.de.png
+
+    Wenn man das Fenster bestätigt, wird ohne weitere Fragen eine neue
+    Rechnung erstellt und registriert.
+
+    Das Verhalten dieser Aktion hängt teilweise davon ab, ob man den
+    Gesamtbetrag (:guilabel:`Total inkl MWSt`) eingibt oder nicht:
+
+    - Wenn man einen Gesamtbetrag eingibt, wird eine einzige
+      Rechnungszeile erstellt mit diesem Betrag. Das Generalkonto dieser
+      Zeile ist entweder das im Dialogfenster angegebene, oder (falls man
+      das Feld dort leer gelassen hat) das G-Konto der ersten Zeile der
+      Kopiervorlage.  Ebenso das A-Konto.
+
+    - Wenn man den Gesamtbetrag leer lässt, werden alle Zeilen der
+      Kopiervorlage exakt kopiert.
+
+
+    
 
     .. attribute:: entry_date
     
