@@ -8,9 +8,7 @@ order to write applications.
 .. toctree::
     :maxdepth: 2
 
-    install
-    /dev/startproject
-    basics
+    getstarted
     /dev/diving
     /dev/framework
     /dev/acquaintained
