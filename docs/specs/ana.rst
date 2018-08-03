@@ -5,14 +5,26 @@
 Analytical accounting
 =============================
 
+.. currentmodule:: lino_xl.lib.ana
 
 The :mod:`lino_xl.lib.ana` plugin adds analytic accounting to
 general ledger.
-
+                   
 The plugin defines several models:
 
 - Analytical accounts and their groups
 - Analytical invoices and their items
+
+
+Table of contents:
+
+.. contents::
+   :depth: 1
+   :local:
+
+
+About this document
+===================
 
 Examples in this document use the :mod:`lino_book.projects.lydia` demo
 project.
@@ -125,7 +137,6 @@ updates the analytical account of that item.
 
 
 
-.. currentmodule:: lino_xl.lib.ana
 
 Analytic accounts
 =================
