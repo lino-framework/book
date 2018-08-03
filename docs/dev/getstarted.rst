@@ -13,4 +13,3 @@ Getting started
    env
    pull
    projects
-   startproject

@@ -1,9 +1,9 @@
 .. _lino.dev.install:
 .. _dev.install:
 
-===============
-Installing Lino
-===============
+=========================================
+Installing a Lino development environment
+=========================================
 
 .. _invoke: http://www.pyinvoke.org/
 .. _atelier: http://atelier.lino-framework.org/
@@ -11,15 +11,14 @@ Installing Lino
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino **development
-environment** (which is easier than :doc:`/admin/install`).
+environment** in order to contribute to the Lino project as a core
+developer.  For deploying Lino applications on a production site you
+will read :doc:`/admin/install`.
 
-No, you cannot simply do :cmd:`pip install lino`.  That's because
-making this possible requires some extra work, and we just didn't yet
-find anybody who would to do that job.  Ticket :ticket:`2347` is open.
-Yes, Lino requires you to learn some extra lessons about cloning
-repositories, installing development packages and manging virtual
-environments. But take it easy and enjoy. That knowledge might turn
-out useful for your other projects as well.
+This differs from :doc:`/user/install` in that it requires you to
+learn some extra lessons about cloning repositories, installing
+development packages and manging virtual environments. That knowledge
+might turn out useful for your other projects as well.
 
 This document is written for Debian_ and derivated distributions.
 Other Linuxes should be pretty similar.  On proprietary operating

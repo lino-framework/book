@@ -23,9 +23,9 @@ Sitemap
    :maxdepth: 2
 
    about/index
+   User's Guide </user/index>
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
-   User's Guide </user/index>
    /community/index
    documentation
    blog
