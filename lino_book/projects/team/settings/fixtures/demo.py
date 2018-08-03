@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
@@ -50,7 +50,7 @@ def tickets_objects():
     # Milestone = rt.models.deploy.Milestone
     # Deployment = rt.models.deploy.Deployment
     # WishTypes = rt.models.deploy.WishTypes
-    Project = rt.models.tickets.Project
+    # Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
     Site = dd.plugins.tickets.site_model
     Link = rt.models.tickets.Link
@@ -106,34 +106,34 @@ def tickets_objects():
         for i in range(3):
             yield Interest(owner=u, topic=TOPICS.pop())
 
-    prj1 = Project(
-        name="Framewörk", ref="linö", private=False,
-        company=COMPANIES.pop(),
-        reporting_type=RTYPES.pop(),
-        start_date=i2d(20090101))
-    yield prj1
-    yield Project(
-        name="Téam", ref="téam", start_date=i2d(20100101),
-        reporting_type=RTYPES.pop(),
-        company=COMPANIES.pop(),
-        parent=prj1, private=True)
-    prj2 = Project(
-        name="Documentatión", ref="docs", private=False,
-        reporting_type=RTYPES.pop(),
-        company=COMPANIES.pop(),
-        start_date=i2d(20090101), parent=prj1)
-    yield prj2
-    yield Project(
-        name="Research", ref="research", private=False,
-        company=COMPANIES.pop(),
-        start_date=i2d(19980101), parent=prj2)
-    yield Project(
-        name="Shop", ref="shop", private=False,
-        reporting_type=RTYPES.pop(),
-        company=COMPANIES.pop(),
-        start_date=i2d(20120201), end_date=i2d(20120630))
+    # prj1 = Project(
+    #     name="Framewörk", ref="linö", private=False,
+    #     company=COMPANIES.pop(),
+    #     reporting_type=RTYPES.pop(),
+    #     start_date=i2d(20090101))
+    # yield prj1
+    # yield Project(
+    #     name="Téam", ref="téam", start_date=i2d(20100101),
+    #     reporting_type=RTYPES.pop(),
+    #     company=COMPANIES.pop(),
+    #     parent=prj1, private=True)
+    # prj2 = Project(
+    #     name="Documentatión", ref="docs", private=False,
+    #     reporting_type=RTYPES.pop(),
+    #     company=COMPANIES.pop(),
+    #     start_date=i2d(20090101), parent=prj1)
+    # yield prj2
+    # yield Project(
+    #     name="Research", ref="research", private=False,
+    #     company=COMPANIES.pop(),
+    #     start_date=i2d(19980101), parent=prj2)
+    # yield Project(
+    #     name="Shop", ref="shop", private=False,
+    #     reporting_type=RTYPES.pop(),
+    #     company=COMPANIES.pop(),
+    #     start_date=i2d(20120201), end_date=i2d(20120630))
 
-    PROJECTS = Cycler(Project.objects.all())
+    # PROJECTS = Cycler(Project.objects.all())
 
     # for u in User.objects.all():
     #     yield Competence(user=u, project=PROJECTS.pop())
@@ -182,48 +182,60 @@ def tickets_objects():
             kwargs.update(site=SITES.pop())
         if num[0] % 4:
             kwargs.update(private=True)
+        else:
+            kwargs.update(private=False)
         if num[0] % 5:
             kwargs.update(end_user=END_USERS.pop())
-        if False:
-            kwargs.update(project=PROJECTS.pop())
+        # if False:
+        #     kwargs.update(project=PROJECTS.pop())
         obj = Ticket(**kwargs)
         yield obj
         # if obj.state.active:
         #     yield Vote(
         #         votable=obj, user=WORKERS.pop(), state=VSTATES.pop())
 
-    yield ticket(
-        "Föö fails to bar when baz", project=PROJECTS.pop())
-    yield ticket("Bar is not always baz", project=PROJECTS.pop())
+    yield ticket("Föö fails to bar when baz")
+    yield ticket("Bar is not always baz")
     yield ticket("Baz sucks")
-    yield ticket("Foo and bar don't baz", project=PROJECTS.pop())
-    # a ticket without project:
+    yield ticket("Foo and bar don't baz")
     yield ticket("Cannot create Foo", description="""<p>When I try to create
     a <b>Foo</b>, then I get a <b>Bar</b> instead of a Foo.</p>""")
 
-    yield ticket("Sell bar in baz", project=PROJECTS.pop())
-    yield ticket("No Foo after deleting Bar", project=PROJECTS.pop())
-    yield ticket("Is there any Bar in Foo?", project=PROJECTS.pop())
-    yield ticket("Foo never matches Bar", project=PROJECTS.pop())
-    yield ticket("Where can I find a Foo when bazing Bazes?",
-                 project=PROJECTS.pop())
-    yield ticket("Class-based Foos and Bars?", project=PROJECTS.pop())
-    yield ticket("Foo cannot bar", project=PROJECTS.pop())
+    yield ticket("Sell bar in baz")
+    yield ticket("No Foo after deleting Bar")
+    yield ticket("Is there any Bar in Foo?")
+    yield ticket("Foo never matches Bar")
+    yield ticket("Where can I find a Foo when bazing Bazes?")
+    yield ticket("Class-based Foos and Bars?")
+    yield ticket("Foo cannot bar")
 
     # Example of memo markup:
-    yield ticket("Bar cannot foo", project=PROJECTS.pop(),
+    yield ticket("Bar cannot foo",
                  description="""<p>Linking to [ticket 1] and to
                  [url http://luc.lino-framework.org/blog/2015/0923.html blog].</p>
                  """)
  
-    yield ticket("Bar cannot baz", project=PROJECTS.pop())
-    yield ticket("Bars have no foo", project=PROJECTS.pop())
-    yield ticket("How to get bar from foo", project=PROJECTS.pop())
+    yield ticket("Bar cannot baz")
+    yield ticket("Bars have no foo")
+    yield ticket("How to get bar from foo")
 
-    n = Ticket.objects.count()
+    TEXTS = Cycler("""
+    Foo never bars
+    No more foo when bar is gone
+    Cannot delete foo
+    Why is foo so bar
+    Irritating message when bar
+    How can I see where bar?
+    Misc optimizations in Baz
+    Default account in invoices per partner
+    'NoneType' object has no attribute 'isocode'
+    """.strip().splitlines())
+
+    # n = Ticket.objects.count()
 
     for i in range(100):
-        yield ticket("Ticket {}".format(i+n+1), project=PROJECTS.pop())
+        # yield ticket("Ticket {}".format(i+n+1))
+        yield ticket(TEXTS.pop())
 
     if dd.is_installed('meetings'):
         WTYPES = Cycler(WishTypes.objects())

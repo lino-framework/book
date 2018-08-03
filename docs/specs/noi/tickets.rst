@@ -191,34 +191,34 @@ There are many tables used to show lists of tickets.
 
     >>> rt.login('jean').show(tickets.MyTickets)
     ... #doctest: -REPORT_UDIFF
-    ========== =============================================================================================== ============================================
-     Priority   Description                                                                                     Workflow
-    ---------- ----------------------------------------------------------------------------------------------- --------------------------------------------
-     Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#106 (☎ Ticket 106) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#100 (⚒ Ticket 100) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#97 (⛶ Ticket 97) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#94 (☐ Ticket 94) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#82 (☎ Ticket 82) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#76 (⚒ Ticket 76) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#73 (⛶ Ticket 73) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#70 (☐ Ticket 70) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#58 (☎ Ticket 58) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#52 (⚒ Ticket 52) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#49 (⛶ Ticket 49) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#46 (☐ Ticket 46) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#34 (☎ Ticket 34) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#28 (⚒ Ticket 28) <Detail>`__, assigned to `Mathieu <Detail>`__                                [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#25 (⛶ Ticket 25) <Detail>`__                                                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#22 (☐ Ticket 22) <Detail>`__, assigned to `Jean <Detail>`__                                   [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__                                    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                     [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                   [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-    ========== =============================================================================================== ============================================
+    ========== ========================================================================================================= ============================================
+     Priority   Description                                                                                               Workflow
+    ---------- --------------------------------------------------------------------------------------------------------- --------------------------------------------
+     Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__      [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#106 (☎     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__     [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#100 (⚒     Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                             [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#94 (☐     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
+     Normal     `#91 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#82 (☎     Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#76 (⚒     How can I see where bar?) <Detail>`__, assigned to `Mathieu <Detail>`__                       [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#73 (⛶     Cannot delete foo) <Detail>`__                                                                [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#70 (☐     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Ready** → [☒]
+     Normal     `#67 (☉     How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                           [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#58 (☎     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#52 (⚒     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Mathieu <Detail>`__   [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#49 (⛶     How can I see where bar?) <Detail>`__                                                         [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#46 (☐     Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Ready** → [☒]
+     Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__       [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#34 (☎     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#28 (⚒     Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#22 (☐     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
+     Normal     `#19 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__             [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                               [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                             [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+    ========== ========================================================================================================= ============================================
     <BLANKLINE>
 
 
@@ -360,98 +360,6 @@ site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
 
 
 
-Private tickets
-===============
-
-Tickets are private by default. But when they are assigned to a public
-project, then their privacy is removed.
-
-So the private tickets are (1) those in project "téam" and (2) those
-without project:
-
->>> pv = dict(show_private=dd.YesNo.yes)
->>> rt.show(tickets.AllTickets, param_values=pv,
-...     column_names="id summary project")
-... #doctest: -REPORT_UDIFF
-===== ======================= =========
- ID    Summary                 Mission
------ ----------------------- ---------
- 114   Ticket 114              téam
- 109   Ticket 109              téam
- 104   Ticket 104              téam
- 99    Ticket 99               téam
- 94    Ticket 94               téam
- 89    Ticket 89               téam
- 84    Ticket 84               téam
- 79    Ticket 79               téam
- 74    Ticket 74               téam
- 69    Ticket 69               téam
- 64    Ticket 64               téam
- 59    Ticket 59               téam
- 54    Ticket 54               téam
- 49    Ticket 49               téam
- 44    Ticket 44               téam
- 39    Ticket 39               téam
- 34    Ticket 34               téam
- 29    Ticket 29               téam
- 24    Ticket 24               téam
- 19    Ticket 19               téam
- 14    Bar cannot baz          téam
- 9     Foo never matches Bar   téam
- 5     Cannot create Foo
- 3     Baz sucks
- 2     Bar is not always baz   téam
-===== ======================= =========
-<BLANKLINE>
-
-
-
-And these are the public tickets:
-
->>> pv = dict(show_private=dd.YesNo.no)
->>> rt.show(tickets.AllTickets, param_values=pv,
-...     column_names="id summary project")
-... #doctest: -REPORT_UDIFF +ELLIPSIS
-===== =========================================== ==========
- ID    Summary                                     Mission
------ ------------------------------------------- ----------
- 116   Ticket 116                                  research
- 115   Ticket 115                                  docs
- 113   Ticket 113                                  linö
- 112   Ticket 112                                  shop
- 111   Ticket 111                                  research
- 110   Ticket 110                                  docs
- 108   Ticket 108                                  linö
- 107   Ticket 107                                  shop
- ...
- 21    Ticket 21                                   research
- 20    Ticket 20                                   docs
- 18    Ticket 18                                   linö
- 17    Ticket 17                                   shop
- 16    How to get bar from foo                     research
- 15    Bars have no foo                            docs
- 13    Bar cannot foo                              linö
- 12    Foo cannot bar                              shop
- 11    Class-based Foos and Bars?                  research
- 10    Where can I find a Foo when bazing Bazes?   docs
- 8     Is there any Bar in Foo?                    linö
- 7     No Foo after deleting Bar                   shop
- 6     Sell bar in baz                             research
- 4     Foo and bar don't baz                       docs
- 1     Föö fails to bar when baz                   linö
-===== =========================================== ==========
-<BLANKLINE>
-
-
-There are 20 private and 96 public tickets in the demo database.
-
->>> tickets.Ticket.objects.filter(private=True).count()
-20
->>> tickets.Ticket.objects.filter(private=False).count()
-96
-
-
-
 Sites
 =====
 
@@ -506,22 +414,36 @@ can see a list of tickets which have not yet been assigned to a site:
 >>> pv = dict(has_site=dd.YesNo.no)
 >>> rt.show(tickets.AllTickets, param_values=pv)
 ... #doctest: +REPORT_UDIFF +ELLIPSIS
-===== =========================================== ========== ============= ======
- ID    Summary                                     Priority   Workflow      Site
------ ------------------------------------------- ---------- ------------- ------
- 116   Ticket 116                                  Normal     **Started**
- 114   Ticket 114                                  Normal     **Talk**
- 112   Ticket 112                                  Normal     **Refused**
+===== ============================================== ========== ============= ======
+ ID    Summary                                        Priority   Workflow      Site
+----- ---------------------------------------------- ---------- ------------- ------
+ 116   Foo never bars                                 Normal     **Started**
+ 114   Default account in invoices per partner        Normal     **Talk**
+ 112   How can I see where bar?                       Normal     **Refused**
+ 110   Why is foo so bar                              Normal     **Ready**
+ 108   No more foo when bar is gone                   Normal     **Started**
+ 106   'NoneType' object has no attribute 'isocode'   Normal     **Talk**
+ 104   Misc optimizations in Baz                      Normal     **Refused**
+ 102   Irritating message when bar                    Normal     **Ready**
+ 100   Cannot delete foo                              Normal     **Started**
+ 98    Foo never bars                                 Normal     **Talk**
+ 96    Default account in invoices per partner        Normal     **Refused**
  ...
- 16    How to get bar from foo                     Normal     **Refused**
- 14    Bar cannot baz                              Normal     **Ready**
- 12    Foo cannot bar                              Normal     **Started**
- 10    Where can I find a Foo when bazing Bazes?   Normal     **Talk**
- 8     Is there any Bar in Foo?                    Normal     **Refused**
- 6     Sell bar in baz                             Normal     **Ready**
- 4     Foo and bar don't baz                       Normal     **Started**
- 2     Bar is not always baz                       Normal     **Talk**
-===== =========================================== ========== ============= ======
+ 28    Cannot delete foo                              Normal     **Started**
+ 26    Foo never bars                                 Normal     **Talk**
+ 24    Default account in invoices per partner        Normal     **Refused**
+ 22    How can I see where bar?                       Normal     **Ready**
+ 20    Why is foo so bar                              Normal     **Started**
+ 18    No more foo when bar is gone                   Normal     **Talk**
+ 16    How to get bar from foo                        Normal     **Refused**
+ 14    Bar cannot baz                                 Normal     **Ready**
+ 12    Foo cannot bar                                 Normal     **Started**
+ 10    Where can I find a Foo when bazing Bazes?      Normal     **Talk**
+ 8     Is there any Bar in Foo?                       Normal     **Refused**
+ 6     Sell bar in baz                                Normal     **Ready**
+ 4     Foo and bar don't baz                          Normal     **Started**
+ 2     Bar is not always baz                          Normal     **Talk**
+===== ============================================== ========== ============= ======
 <BLANKLINE>
 
 
@@ -539,20 +461,20 @@ table:
 
 >>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== ================================================================ ==========
- Priority   Description                                                      Workflow
----------- ---------------------------------------------------------------- ----------
- Normal     `#97 (⛶ Ticket 97) <Detail>`__  by *Jean*                        **New**
- Normal     `#73 (⛶ Ticket 73) <Detail>`__  by *Jean*                        **New**
- Normal     `#49 (⛶ Ticket 49) <Detail>`__  by *Jean*                        **New**
- Normal     `#25 (⛶ Ticket 25) <Detail>`__  by *Jean*                        **New**
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*         **New**
- Normal     `#115 (☉ Ticket 115) <Detail>`__  by *Jean*, assigned to *Luc*   **Open**
- Normal     `#91 (☉ Ticket 91) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
- Normal     `#67 (☉ Ticket 67) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
- Normal     `#43 (☉ Ticket 43) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
- Normal     `#19 (☉ Ticket 19) <Detail>`__  by *Jean*, assigned to *Luc*     **Open**
-========== ================================================================ ==========
+========== ====================================================================================================== ==========
+ Priority   Description                                                                                            Workflow
+---------- ------------------------------------------------------------------------------------------------------ ----------
+ Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
+ Normal     `#73 (⛶     Cannot delete foo) <Detail>`__  by *Jean*                                                  **New**
+ Normal     `#49 (⛶     How can I see where bar?) <Detail>`__  by *Jean*                                           **New**
+ Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*                                               **New**
+ Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*   **Open**
+ Normal     `#91 (☉     Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
+ Normal     `#67 (☉     How can I see where bar?) <Detail>`__  by *Jean*, assigned to *Luc*                        **Open**
+ Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*    **Open**
+ Normal     `#19 (☉     Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
+========== ====================================================================================================== ==========
 <BLANKLINE>
 
 Note that the above table shows no state change actions in the
@@ -562,20 +484,20 @@ this:
 
 >>> rt.login('jean').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== ================================================================ ============================================
- Priority   Description                                                      Workflow
----------- ---------------------------------------------------------------- --------------------------------------------
- Normal     `#97 (⛶ Ticket 97) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#73 (⛶ Ticket 73) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#49 (⛶ Ticket 49) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#25 (⛶ Ticket 25) <Detail>`__                                   [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                    [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#115 (☉ Ticket 115) <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#91 (☉ Ticket 91) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#67 (☉ Ticket 67) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#43 (☉ Ticket 43) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#19 (☉ Ticket 19) <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-========== ================================================================ ============================================
+========== ====================================================================================================== ============================================
+ Priority   Description                                                                                            Workflow
+---------- ------------------------------------------------------------------------------------------------------ --------------------------------------------
+ Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#73 (⛶     Cannot delete foo) <Detail>`__                                                             [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#49 (⛶     How can I see where bar?) <Detail>`__                                                      [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                          [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#91 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#67 (☉     How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                        [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#19 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+========== ====================================================================================================== ============================================
 <BLANKLINE>
 
 

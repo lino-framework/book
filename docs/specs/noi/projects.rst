@@ -1,3 +1,4 @@
+.. doctest docs/specs/noi/projects.rst
 .. _noi.specs.projects:
 
 ==================
@@ -5,11 +6,7 @@ Project management
 ==================
 
 
-.. How to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_projects
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.team.settings.doctests')
@@ -73,22 +70,8 @@ requirements.
 
 
 
-Choosing a project
-==================
-
->>> base = '/choices/tickets/Tickets/project'
->>> show_choices("robin", base + '?query=')
-<br/>
-docs
-linö
-research
-shop
-téam
-
->>> show_choices("robin", base + '?query=frame')
-linö
-
-
+Project types
+=============
 
 .. class:: ProjectType
 

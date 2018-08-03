@@ -22,7 +22,6 @@ from lino_book.projects.team.settings.demo import *
 class Site(Site):
     pass
     default_ui = 'lino.modlib.openui5'
-    # default_user = 'anonymous'
 
     def get_installed_apps(self):
         """

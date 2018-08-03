@@ -62,20 +62,23 @@ Sessions
 Some sessions are on private tickets:
 
 >>> from django.db.models import Q
->>> rt.show(working.Sessions, column_names="ticket user duration ticket__project", filter=Q(ticket__private=True))
+>>> rt.show(working.Sessions, column_names="ticket user duration", filter=Q(ticket__private=True))
 ... #doctest: -REPORT_UDIFF
-============================== ========= =========== =========
- Ticket                         Worker    Duration    Mission
------------------------------- --------- ----------- ---------
- #2 (☎ Bar is not always baz)   Jean      2:18        téam
- #2 (☎ Bar is not always baz)   Luc       3:29        téam
- #2 (☎ Bar is not always baz)   Mathieu   3:53        téam
- #3 (☉ Baz sucks)               Jean      1:30
- #3 (☉ Baz sucks)               Luc       0:37
- #3 (☉ Baz sucks)               Mathieu   0:05
- #5 (☾ Cannot create Foo)       Mathieu   2:18
- **Total (7 rows)**                       **14:10**
-============================== ========= =========== =========
+================================== ========= ===========
+ Ticket                             Worker    Duration
+---------------------------------- --------- -----------
+ #1 (⛶ Föö fails to bar when baz)   Jean
+ #1 (⛶ Föö fails to bar when baz)   Luc
+ #1 (⛶ Föö fails to bar when baz)   Mathieu
+ #2 (☎ Bar is not always baz)       Jean      2:18
+ #2 (☎ Bar is not always baz)       Luc       3:29
+ #2 (☎ Bar is not always baz)       Mathieu   3:53
+ #3 (☉ Baz sucks)                   Jean      1:30
+ #3 (☉ Baz sucks)                   Luc       0:37
+ #3 (☉ Baz sucks)                   Mathieu   0:05
+ #5 (☾ Cannot create Foo)           Mathieu   2:18
+ **Total (10 rows)**                          **14:10**
+================================== ========= ===========
 <BLANKLINE>
 
 
@@ -109,12 +112,12 @@ started some days ago.
 .. 
     Find the users who worked on more than one mission:
     >>> for u in users.User.objects.all():
-    ...     qs = tickets.Project.objects.filter(tickets_by_project__sessions_by_ticket__user=u).distinct()
+    ...     qs = tickets.Site.objects.filter(tickets_by_site__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
     ...         print("{} {} {}".format(str(u.username), "worked on", [o for o in qs]))
-    jean worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
-    luc worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
-    mathieu worked on [Project #1 ('lin\xf6'), Project #2 ('t\xe9am'), Project #3 ('docs')]
+    jean worked on [Site #1 ('welket'), Site #2 ('welsch')]
+    luc worked on [Site #1 ('welket'), Site #2 ('welsch')]
+    mathieu worked on [Site #1 ('welket'), Site #2 ('welsch'), Site #3 ('pypi')]
 
     Render this table to HTML in order to reproduce :ticket:`523`:
 
@@ -193,18 +196,6 @@ Note that there are sessions without a duration. That's because
 ==== ========================================================== ======== ======= ========== ======= ======
 <BLANKLINE>
 
-
-The :class:`ProjectsByReport` table lists
-all projects and the time invested.
-
->>> rt.show(working.ProjectsByReport, obj)
-==================== ====== ================= ========== ======= ======
- Reference            Name   Tickets           Regular    Extra   Free
--------------------- ------ ----------------- ---------- ------- ------
- téam                 Téam   `#2 <Detail>`__   9:40
- **Total (1 rows)**                            **9:40**
-==================== ====== ================= ========== ======= ======
-<BLANKLINE>
 
 
 Reporting type

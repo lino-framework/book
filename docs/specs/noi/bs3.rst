@@ -40,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-41
+29
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -56,7 +56,7 @@ Tickets are rendered using plain bootstrap HTML:
 
 >>> links = soup.find_all('a')
 >>> len(links)
-29
+27
 >>> print(links[0].get('href'))
 /?ul=en
 
@@ -65,4 +65,4 @@ Tickets are rendered using plain bootstrap HTML:
 Tickets Sign in — Home en de fr Tickets All tickets Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Jean Topic: Lino Core Site: welket Linking to #1 and to blog . This is Lino Noi ... using ...
+(last update ...) Created ... by Jean Topic: Lino Core Site: welket (Private content) This is Lino Noi ... using ...
