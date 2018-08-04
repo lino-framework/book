@@ -11,14 +11,12 @@ Installing a Lino development environment
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino **development
-environment** in order to contribute to the Lino project as a core
-developer.  For deploying Lino applications on a production site you
-will read :doc:`/admin/install`.
-
-This differs from :doc:`/user/install` in that it requires you to
-learn some extra lessons about cloning repositories, installing
-development packages and manging virtual environments. That knowledge
-might turn out useful for your other projects as well.
+environment** in order to write your own Lino applications and
+potentially contribute to the Lino project.  This differs from
+:doc:`/user/install` in that it requires you to learn some extra
+lessons about cloning repositories, installing development packages
+and manging virtual environments.  For deploying Lino applications on
+a production site you might prefer :doc:`/admin/install`.
 
 This document is written for Debian_ and derivated distributions.
 Other Linuxes should be pretty similar.  On proprietary operating
