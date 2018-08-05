@@ -13,7 +13,6 @@ reading here.
    :maxdepth: 2
               
    getstarted
-   framework
    team
    writedocs
    about

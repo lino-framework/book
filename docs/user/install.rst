@@ -4,13 +4,13 @@
 Installing Lino
 ===============
 
-Warning : 
-This page is work in progress.
-**The installation process described here does not yet work.**
-You should rather follow :doc:`/dev/install`.
+Warning: 
+**The installation process described below does not yet work.**
+Until we are done, you should rather follow the instructions
+about :doc:`/dev/install`.
 
 This document explains how to install Lino on your machine in order to
-write application.  If you prefer using the latest version, then you
+write applications.  If you prefer using the latest version, then you
 should rather follow :doc:`/dev/install`.
 
 For deploying Lino applications on a production site you will read

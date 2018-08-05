@@ -296,6 +296,17 @@ Reference
 
         The language to use when communicating with this partner.
 
+    .. attribute:: purchase_account
+
+        The general account to suggest as default value in purchase
+        invoices from this partner.
+
+        This field exists only when :mod:`lino_xl.lib.ledger` is
+        installed.  It is defined as the
+        :attr:`invoice_account_field_name
+        <lino_xl.lib.ledger.TradeType.invoice_account_field_name>`
+        for :attr:`TradeTypes.purchases
+        <lino_xl.lib.ledger.TradeTypes.purchases>`.
            
 .. class:: Persons
 

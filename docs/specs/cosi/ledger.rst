@@ -1305,25 +1305,36 @@ Journal groups
 
         The default booking direction.
 
+    .. attribute:: partner_account
+
+        The common account that points to the partner account for this
+        trade type, i.e.  the account into which the total amount of
+        partner vouchers (base + VAT) and their payments should be
+        booked.
+
+    .. attribute:: invoice_account_field
+
+        The name and label of the :guilabel:`invoice account` field to
+        be injected on the :class:`Partner
+        <lino_xl.lib.contacts.Partner>` database model.
+
+    .. attribute:: base_account
+
+        The common account that points to the base account for this
+        trade type, i.e.  the account into which the base amount of
+        any operation should be booked.
+
+    .. attribute:: product_base_field
+
+        The name and label of the :guilabel:`base account` field to be
+        injected on the :class:`Product
+        <lino.modlib.products.models.Product>` database model.
+                   
     .. attribute:: price_field
 
         The name and label of the `price` field to be defined on the
         :class:`Product <lino.modlib.products.models.Product>`
         database model.
-
-        With Lino Così you can define one price field per trade type.
-
-    .. attribute:: partner_account_field
-
-        The name and label of the :guilabel:`Partner account` field to
-        be defined for this trade type on the :class:`SiteConfig
-        <lino.modlib.system.models.SiteConfig>` database model.
-
-    .. attribute:: base_account_field
-
-        The name and label of the :guilabel:`Base account` field to
-        be defined for this trade type on the :class:`SiteConfig
-        <lino.modlib.system.models.SiteConfig>` database model.
 
 
     .. attribute:: vat_account_field
@@ -1331,6 +1342,26 @@ Journal groups
         The name and label of the :guilabel:`VAT account` field to be
         defined for this trade type on the :class:`SiteConfig
         <lino.modlib.system.models.SiteConfig>` database model.
+
+    .. method:: get_product_base_account(product)
+
+        Return the account into which the **base amount** of any
+        operation of this rete type should be booked.
+        
+        This is either the base account defined in the
+        :attr:`product_base_field` for the given product, or the
+        site-wide :attr:`base_account`.
+                
+    .. method:: get_catalog_price(product)
+
+        Return the catalog price of the given product for operations
+        with this trade type.
+        
+    .. method:: get_partner_invoice_account(partner)
+                   
+        Return the account to use as default value for account invoice
+        items.  This is the :attr:`invoice_account_field` of the given
+        partner and can be `None`.
 
 Model mixins
 ============
