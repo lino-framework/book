@@ -34,8 +34,8 @@ def objects():
     yield tickets_objects()
     if 'working' in dd.plugins:
         yield working_objects()
-    if 'faculties' in dd.plugins:
-        yield faculties_objects()
+    if 'skills' in dd.plugins:
+        yield skills_objects()
     yield votes_objects()
 
 
@@ -338,26 +338,26 @@ def working_objects():
         start_date=dd.today(-90), interesting_for=welket)
 
 
-def faculties_objects():
-    "was previously in faculties.fixtures.demo2"
+def skills_objects():
+    "was previously in skills.fixtures.demo2"
 
-    Faculty = rt.models.faculties.Faculty
-    Competence = rt.models.faculties.Competence
-    Demand = rt.models.faculties.Demand
+    Skill = rt.models.skills.Skill
+    Competence = rt.models.skills.Competence
+    Demand = rt.models.skills.Demand
     # Ticket = rt.models.tickets.Ticket
     User = rt.models.users.User
 
-    yield named(Faculty, _('Analysis'))
-    yield named(Faculty, _('Code changes'))
-    yield named(Faculty, _('Documentation'))
-    yield named(Faculty, _('Testing'))
-    yield named(Faculty, _('Configuration'))
-    yield named(Faculty, _('Enhancement'))
-    yield named(Faculty, _('Optimization'))
-    yield named(Faculty, _('Offer'))
+    yield named(Skill, _('Analysis'))
+    yield named(Skill, _('Code changes'))
+    yield named(Skill, _('Documentation'))
+    yield named(Skill, _('Testing'))
+    yield named(Skill, _('Configuration'))
+    yield named(Skill, _('Enhancement'))
+    yield named(Skill, _('Optimization'))
+    yield named(Skill, _('Offer'))
 
-    SKILLS = Cycler(Faculty.objects.all())
-    END_USERS = Cycler(dd.plugins.faculties.end_user_model.objects.all())
+    SKILLS = Cycler(Skill.objects.all())
+    END_USERS = Cycler(dd.plugins.skills.end_user_model.objects.all())
 
     i = 0
     for j in range(2):
@@ -372,7 +372,7 @@ def faculties_objects():
                     end_user=END_USERS.pop())
             
     for i, t in enumerate(
-            dd.plugins.faculties.demander_model.objects.all()):
+            dd.plugins.skills.demander_model.objects.all()):
         yield Demand(demander=t, skill=SKILLS.pop())
         if i % 3:
             yield Demand(demander=t, skill=SKILLS.pop())

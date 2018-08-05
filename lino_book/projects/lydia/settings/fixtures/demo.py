@@ -33,7 +33,7 @@ def objects():
     yield create_user("elmar", UserTypes.therapist)
     yield create_user("lydia", UserTypes.secretary)
 
-    # yield faculties_objects()
+    # yield skills_objects()
 
     obj = Company(
         name="Tough Thorough Thought Therapies",
@@ -54,20 +54,20 @@ def objects():
 
 
 
-def faculties_objects():
-    "was previously in faculties.fixtures.demo2"
+def skills_objects():
+    "was previously in skills.fixtures.demo2"
 
-    Faculty = rt.models.faculties.Faculty
-    Competence = rt.models.faculties.Competence
-    Demand = rt.models.faculties.Demand
+    Skill = rt.models.skills.Skill
+    Competence = rt.models.skills.Competence
+    Demand = rt.models.skills.Demand
     # Ticket = rt.models.tickets.Ticket
     User = rt.models.users.User
 
-    yield named(Faculty, _('Psychotherapy'))
-    yield named(Faculty, _('Psychiatry'))
+    yield named(Skill, _('Psychotherapy'))
+    yield named(Skill, _('Psychiatry'))
 
-    SKILLS = Cycler(Faculty.objects.all())
-    END_USERS = Cycler(dd.plugins.faculties.end_user_model.objects.all())
+    SKILLS = Cycler(Skill.objects.all())
+    END_USERS = Cycler(dd.plugins.skills.end_user_model.objects.all())
 
     i = 0
     for j in range(2):
@@ -82,7 +82,7 @@ def faculties_objects():
                     end_user=END_USERS.pop())
             
     for i, t in enumerate(
-            dd.plugins.faculties.demander_model.objects.all()):
+            dd.plugins.skills.demander_model.objects.all()):
         yield Demand(demander=t, skill=SKILLS.pop())
         if i % 3:
             yield Demand(demander=t, skill=SKILLS.pop())
