@@ -15,6 +15,7 @@ reading here.
    getstarted
    team
    writedocs
+   /team/deploy
    about
    reference
    
@@ -76,7 +77,6 @@ Other
    linod
    design
    testing
-   /team/deploy
    /team/noi_intro
    memo
    bash_aliases

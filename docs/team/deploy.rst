@@ -1,6 +1,6 @@
 .. _team.deploy:
 
-
+======================
 The deployment process
 ======================
 
@@ -8,6 +8,7 @@ The deployment process
    :maxdepth: 1
 
 
-   deploy_prod
-
+   /team/runtests
+   /dev/versioning
+   /dev/sdist
 
