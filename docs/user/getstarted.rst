@@ -1,4 +1,4 @@
-.. _lino.dev.start:
+.. _lino.user.start:
 
 ===============
 Getting started
@@ -9,7 +9,6 @@ Getting started
    :maxdepth: 1
 
    install
-   hello/index
-   env
-   pull
-   projects
+   /dev/polls/index
+   basics
+   /dev/startproject

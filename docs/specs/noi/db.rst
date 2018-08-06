@@ -44,7 +44,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         67
+ contenttypes.ContentType           gfks.ContentTypes                3         66
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -68,7 +68,7 @@ This document describes the database structure.
  social_django.UserSocialAuth       users.SocialAuths                5         0
  system.SiteConfig                  system.SiteConfigs               9         1
  tickets.Link                       tickets.Links                    4         1
- tickets.Project                    tickets.Projects                 18        5
+ tickets.Project                    tickets.Projects                 18        0
  tickets.ProjectType                tickets.ProjectTypes             4         0
  tickets.Site                       tickets.Sites                    8         3
  tickets.Subscription               tickets.Subscriptions            4         12
@@ -94,7 +94,7 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 43 plugins
 - 66 models
-- 234 views
+- 233 views
 - 7 user types
 - 70 dialog actions
 <BLANKLINE>

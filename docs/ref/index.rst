@@ -13,7 +13,7 @@ Reference
    jargon
    obsolete
    /topics/index
-   
+   /help/index
    
 
 

@@ -5,8 +5,13 @@
 Specs
 =====
 
-This section contains articles which are meant as functional
-specifications.  This section is far from being complete.
+This section contains "functional specifications".
+
+A **functional specification** is targeted at application developers
+and trainers which explains all technical and functional aspects about
+a given plpugin or topic.  If some part is covered elsewhere, it
+should refer to these other documents.  It should contain testable
+code snippets.
 
 
 .. toctree::
@@ -15,6 +20,7 @@ specifications.  This section is far from being complete.
    cv
    cal
    contacts
+   notes
    courses
    phones
    holidays

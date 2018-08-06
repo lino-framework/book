@@ -34,7 +34,7 @@ class TicketDetail(TicketDetail):
 
     general = dd.Panel("""
     general1:60 votes.VotesByVotable:20 uploads.UploadsByController
-    description:30 comments.CommentsByRFC:30 faculties.DemandsByDemander #working.SessionsByTicket:20
+    description:30 comments.CommentsByRFC:30 skills.DemandsByDemander #working.SessionsByTicket:20
     """, label=_("General"))
 
     general1 = """
@@ -48,8 +48,8 @@ class TicketDetail(TicketDetail):
     """, label=_("History"), required_roles=dd.login_required(Triager))
 
     more = dd.Panel("""
-    more1:60 #faculties.AssignableWorkersByTicket:20
-    upgrade_notes LinksByTicket faculties.OffersByDemander
+    more1:60 #skills.AssignableWorkersByTicket:20
+    upgrade_notes LinksByTicket skills.OffersByDemander
     """, label=_("More"), required_roles=dd.login_required(Triager))
 
     more1 = """

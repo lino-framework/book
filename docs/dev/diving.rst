@@ -10,7 +10,6 @@ your work environment and running demo projects.  We are ready to dive
 .. toctree::
    :maxdepth: 1
 
-   polls/index
    lets/index
    models
    tables/index

@@ -37,12 +37,12 @@ class Tests(RemoteAuthTestCase):
         User = rt.models.users.User
         Person = rt.models.contacts.Person
         # Note = rt.models.notes.Note
-        Faculty = rt.models.faculties.Faculty
-        Demand = rt.models.faculties.Demand
-        Competence = rt.models.faculties.Competence
+        Skill = rt.models.skills.Skill
+        Demand = rt.models.skills.Demand
+        Competence = rt.models.skills.Competence
 
-        general = create(Faculty, name="General work")
-        special = create(Faculty, name="Special work", parent=general)
+        general = create(Skill, name="General work")
+        special = create(Skill, name="Special work", parent=general)
 
         alex = create(User, username='alex',
                       first_name="Alex",
@@ -72,7 +72,7 @@ class Tests(RemoteAuthTestCase):
         create(Demand, demander=note1, skill=general)
         create(Demand, demander=note2, skill=special)
 
-        ar = rt.models.faculties.AssignableWorkersByTicket.request(note1)
+        ar = rt.models.skills.AssignableWorkersByTicket.request(note1)
         s = ar.to_rst()
         # print(s)
         self.assertEquivalent("""
@@ -84,7 +84,7 @@ class Tests(RemoteAuthTestCase):
 """, s)
 
 
-        ar = rt.models.faculties.AssignableWorkersByTicket.request(note2)
+        ar = rt.models.skills.AssignableWorkersByTicket.request(note2)
         s = ar.to_rst()
         # print(s)
         self.assertEquivalent("""
@@ -125,7 +125,7 @@ class Tests(RemoteAuthTestCase):
 
         # make sure that database state is as expected:
 
-        self.assertEqual(Faculty.objects.count(), 2)
+        self.assertEqual(Skill.objects.count(), 2)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(Person.objects.count(), 3)
         self.assertEqual(Competence.objects.count(), 0)

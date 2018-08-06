@@ -32,7 +32,7 @@ Demo users
 ==========
 
 As an **administrator** you can (additionally to the above) also
-create new users, change the catalog of faculties, ...
+create new users, change the catalog of skills, ...
 
 The demo database has a set of **fictive users**. Let's introduce
 them:
@@ -53,7 +53,7 @@ Skills
 ======
 
 
->>> rt.show(faculties.AllSkills)
+>>> rt.show(skills.AllSkills)
 ... #doctest: +REPORT_UDIFF
 ========================== ============================= ============================ =============== ============ =========
  Designation                Designation (de)              Designation (fr)             Parent skill    Skill type   Remarks
@@ -82,7 +82,7 @@ Skills
 <BLANKLINE>
 
 
->>> rt.show(faculties.TopLevelSkills)
+>>> rt.show(skills.TopLevelSkills)
 ... #doctest: +REPORT_UDIFF
 ============================ ========= =================================================================== ==============
  overview                     Remarks   Children                                                            Parent skill

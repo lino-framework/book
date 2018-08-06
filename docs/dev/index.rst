@@ -4,20 +4,18 @@
 Developer's Guide
 =================
 
-This part of the Lino Book explains Lino to developers.
-Non-programmers will prefer to read :doc:`/about/index`, hosting
-providers should start at :doc:`/admin/index`.
+This part of the Lino Book explains Lino to developers who want to get
+more out of Lino.  You should have read the :doc:`/user/index` before
+reading here.
 
 
 .. toctree::
    :maxdepth: 2
               
    getstarted
-   framework
-   diving
    team
    writedocs
-   acquaintained
+   /team/deploy
    about
    reference
    
@@ -79,7 +77,6 @@ Other
    linod
    design
    testing
-   /team/deploy
    /team/noi_intro
    memo
    bash_aliases

@@ -1,3 +1,4 @@
+.. doctest docs/specs/noi/topics.rst
 .. _noi.specs.topics:
 
 =============================
@@ -5,11 +6,7 @@ Topics in Lino Noi
 =============================
 
 
-.. How to test only this document:
-
-    $ doctest docs/specs/noi/topics.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> import lino
     >>> lino.startup('lino_book.projects.team.settings.demo')
@@ -114,39 +111,39 @@ Filtering tickets by topic
 >>> pv = dict(topic=rt.models.topics.Topic.get_by_ref("così"))
 >>> rt.show(tickets.Tickets, param_values=pv)
 ... #doctest: -REPORT_UDIFF
-===== ============================ ========== ============ ========
- ID    Summary                      Priority   Workflow     Site
------ ---------------------------- ---------- ------------ --------
- 115   Ticket 115                   Normal     **Open**     welket
- 111   Ticket 111                   Normal     **Closed**   welsch
- 107   Ticket 107                   Normal     **Open**     pypi
- 103   Ticket 103                   Normal     **Closed**   welket
- 99    Ticket 99                    Normal     **Open**     welsch
- 95    Ticket 95                    Normal     **Closed**   pypi
- 91    Ticket 91                    Normal     **Open**     welket
- 87    Ticket 87                    Normal     **Closed**   welsch
- 83    Ticket 83                    Normal     **Open**     pypi
- 79    Ticket 79                    Normal     **Closed**   welket
- 75    Ticket 75                    Normal     **Open**     welsch
- 71    Ticket 71                    Normal     **Closed**   pypi
- 67    Ticket 67                    Normal     **Open**     welket
- 63    Ticket 63                    Normal     **Closed**   welsch
- 59    Ticket 59                    Normal     **Open**     pypi
- 55    Ticket 55                    Normal     **Closed**   welket
- 51    Ticket 51                    Normal     **Open**     welsch
- 47    Ticket 47                    Normal     **Closed**   pypi
- 43    Ticket 43                    Normal     **Open**     welket
- 39    Ticket 39                    Normal     **Closed**   welsch
- 35    Ticket 35                    Normal     **Open**     pypi
- 31    Ticket 31                    Normal     **Closed**   welket
- 27    Ticket 27                    Normal     **Open**     welsch
- 23    Ticket 23                    Normal     **Closed**   pypi
- 19    Ticket 19                    Normal     **Open**     welket
- 15    Bars have no foo             Normal     **Closed**   welsch
- 11    Class-based Foos and Bars?   Normal     **Open**     pypi
- 7     No Foo after deleting Bar    Normal     **Closed**   welket
- 3     Baz sucks                    Normal     **Open**     welsch
-===== ============================ ========== ============ ========
+===== ============================================== ========== ============ ========
+ ID    Summary                                        Priority   Workflow     Site
+----- ---------------------------------------------- ---------- ------------ --------
+ 115   'NoneType' object has no attribute 'isocode'   Normal     **Open**     welket
+ 111   Irritating message when bar                    Normal     **Closed**   welsch
+ 107   Foo never bars                                 Normal     **Open**     pypi
+ 103   How can I see where bar?                       Normal     **Closed**   welket
+ 99    No more foo when bar is gone                   Normal     **Open**     welsch
+ 95    Misc optimizations in Baz                      Normal     **Closed**   pypi
+ 91    Cannot delete foo                              Normal     **Open**     welket
+ 87    Default account in invoices per partner        Normal     **Closed**   welsch
+ 83    Why is foo so bar                              Normal     **Open**     pypi
+ 79    'NoneType' object has no attribute 'isocode'   Normal     **Closed**   welket
+ 75    Irritating message when bar                    Normal     **Open**     welsch
+ 71    Foo never bars                                 Normal     **Closed**   pypi
+ 67    How can I see where bar?                       Normal     **Open**     welket
+ 63    No more foo when bar is gone                   Normal     **Closed**   welsch
+ 59    Misc optimizations in Baz                      Normal     **Open**     pypi
+ 55    Cannot delete foo                              Normal     **Closed**   welket
+ 51    Default account in invoices per partner        Normal     **Open**     welsch
+ 47    Why is foo so bar                              Normal     **Closed**   pypi
+ 43    'NoneType' object has no attribute 'isocode'   Normal     **Open**     welket
+ 39    Irritating message when bar                    Normal     **Closed**   welsch
+ 35    Foo never bars                                 Normal     **Open**     pypi
+ 31    How can I see where bar?                       Normal     **Closed**   welket
+ 27    No more foo when bar is gone                   Normal     **Open**     welsch
+ 23    Misc optimizations in Baz                      Normal     **Closed**   pypi
+ 19    Cannot delete foo                              Normal     **Open**     welket
+ 15    Bars have no foo                               Normal     **Closed**   welsch
+ 11    Class-based Foos and Bars?                     Normal     **Open**     pypi
+ 7     No Foo after deleting Bar                      Normal     **Closed**   welket
+ 3     Baz sucks                                      Normal     **Open**     welsch
+===== ============================================== ========== ============ ========
 <BLANKLINE>
  
 
