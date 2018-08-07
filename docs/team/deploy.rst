@@ -8,7 +8,7 @@ The deployment process
    :maxdepth: 1
 
 
-   /team/runtests
+   /dev/runtests
    /dev/versioning
    /dev/sdist
 
