@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2018 Luc Saffre.
+# Copyright 2015-2018 Rumma & Ko Ltd
 # License: BSD, see LICENSE for more details.
 
-"""This is the :xfile:`make_screenshots.py` script for `team`.
+"""This is the :xfile:`maketour.py` script for `team`.
 
 It generates the :ref:`team.tour` page.
 
