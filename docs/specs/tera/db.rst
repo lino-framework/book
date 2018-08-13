@@ -20,7 +20,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, topics, notes, lists, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, sessions.
+44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
 89 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
@@ -28,7 +28,7 @@ The database structure
  accounts.Account            accounts.Accounts              21        15
  accounts.Group              accounts.Groups                6         6
  ana.Account                 ana.Accounts                   7         15
- ana.AnaAccountInvoice       ana.Invoices                   19        35
+ ana.AnaAccountInvoice       ana.Invoices                   20        35
  ana.Group                   ana.Groups                     5         5
  ana.InvoiceItem             ana.InvoiceItemTable           10        55
  bevats.Declaration          bevats.Declarations            28        3
@@ -100,7 +100,7 @@ The database structure
  properties.Property         properties.Properties          6         0
  sales.InvoiceItem           sales.InvoiceItems             15        48
  sales.PaperType             sales.PaperTypes               5         2
- sales.VatProductInvoice     sales.Invoices                 24        24
+ sales.VatProductInvoice     sales.Invoices                 25        24
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
  system.SiteConfig           system.SiteConfigs             10        1
@@ -113,7 +113,7 @@ The database structure
  users.Authority             users.Authorities              3         0
  users.User                  users.Users                    20        6
  vat.InvoiceItem             vat.InvoiceItemTable           9         0
- vat.VatAccountInvoice       vat.Invoices                   19        0
+ vat.VatAccountInvoice       vat.Invoices                   20        0
 =========================== ============================== ========= =======
 <BLANKLINE>
 
