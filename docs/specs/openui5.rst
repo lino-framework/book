@@ -1,18 +1,63 @@
 .. doctest docs/specs/openui5.rst 
-.. _book.specs.openui5:
+.. _specs.openui5:
 
+=====================
+The OpenUI5 front-end
+=====================
+
+The :mod:`lino.modlib.openui5` plugin defines a user interface which
+uses the `OpenUI5 <https://openui5.org/>`__ JavaScript UI library and
+is meant to fully replace the :mod:`lino.modlib.extjs` user interface.
+
+It uses and includes a static version of the `zlib.js
+<https://github.com/imaya/zlib.js>`__ library by Imaya Yuta and the
+`openui5-ckeditor <https://github.com/jasper07/openui5-ckeditor>`__ by
+John Patterson.
+
+The index.html file
 ===================
-Openui5 specs tests
-===================
 
-.. doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.ui5.settings.demo')
-    >>> from lino.api.doctest import *
+.. xfile:: openui5/main.html
 
-The :mod:`lino.modlib.openui5` plugin defines the openui5 front-end
+The :xfile:`openui5/main.html` is a Jinja template used to generate
+the main index file used by Lino applications when they have
+:mod:`lino.modlib.openui5` as :attr:`default_ui
+<lino.core.site.Site.default_ui>`.
+
+It is rendered by the :class:`lino.modlib.openui5.views.App` view.
+See also the SAP documentation `Step 1: Create an HTML Page
+<https://help.sap.com/doc/saphelp_nw751abap/7.51.0/de-DE/85/1bde42e4e1410c96abbe402fa9128c/frameset.htm>`__.
+
+The index page loads the `sap-ui-bootstrap` script.  The `src`
+parameter says that we currently use the latest OpenUI5 core
+(`resources/sap-ui-core.js`) from
+https://openui5nightly.hana.ondemand.com which is okay as long as we
+don't use it on a production site.
+
+The `data-sap-ui-resourceroots` parameter specifies rules for
+resolving namespaces.
+
+The index file defines an empty `<body id="content"
+class="sapUiBody">` tag which will be populated by the init function.
+
+The file defines an inline `<script>` which registers an init function
+(using :func:`sap.ui.getCore().attachInit`) to be executed once when
+the bootstrap is done.
+
+The init function does only one thing: it calls :func:`sap.ui.require`
+which basically instantiates a `app.m.Shell` control and places it to
+the body.
+
+The `app` of that Shell control is a `sap.ui.core.ComponentContainer`
 
 .. currentmodule:: lino.modlib.openui5
+
+Examples in this document use the :mod:`lino_book.projects.ui5` demo
+project.
+
+>>> import lino
+>>> lino.startup('lino_book.projects.ui5.settings.demo')
+>>> from lino.api.doctest import *
 
 Define a utility function:                   
 
