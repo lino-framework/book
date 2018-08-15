@@ -14,6 +14,19 @@ should refer to these other documents.  It should contain testable
 code snippets.
 
 
+Topic overviews
+===============
+ 
+ 
+.. toctree::
+   :maxdepth: 1
+
+   accounting
+   
+
+Plugin specs
+============
+
 .. toctree::
    :maxdepth: 1
 
@@ -55,23 +68,8 @@ code snippets.
    comments
    about
    dashboard
-   
-   
-Accounting stuff
-================
-    
-.. toctree::
-   :maxdepth: 1
-  
-   
-   cosi/index
-   ana
-   vat
-   bevat
-   bevats
-   
- 
-   
+
+
 Application-specific specs
 ==========================
     
@@ -79,6 +77,7 @@ Application-specific specs
    :maxdepth: 1
   
    
+   cosi/index
    noi/index
    avanti/index
    tera/index

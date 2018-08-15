@@ -1,4 +1,4 @@
-.. doctest docs/specs/cosi/sales.rst
+.. doctest docs/specs/sales.rst
 .. _cosi.specs.sales:
 
 ================
@@ -6,9 +6,9 @@ Product invoices
 ================
 
 A **product invoice** is an invoice whose rows usually refer to a
-*product* (and provides rules for mapping products to general accounts
-if needed).  This is in contrast to *account invoices* which don't
-need any products.
+*product* (which indirectly maps to a ledger account according to
+configurable rules).  This is in contrast to *account invoices* whose
+rows directly point to ledger accounts and don't need any products.
 
 Snippets in this document are tested on the
 :mod:`lino_book.projects.pierre` demo project.

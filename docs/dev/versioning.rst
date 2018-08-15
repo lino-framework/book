@@ -19,8 +19,13 @@ feature to be added."  (`ubuntu.com
 
 For us, "Version 16.10" means "The version we started to release in
 October 2016". If a particular project decides that a bugfix release
-is needed, then they would call it 16.10.1 (and so on) even if this
-happens two months later.
+is needed, then they would call it 16.10.1 (and so on).
+
+Note that months before September should be numbered 1 to 9 and not 01
+to 09 because otherwise setuptools will normalize them and issue a
+UserWarning.
+
+
 
 
 The release process

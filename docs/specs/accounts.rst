@@ -7,7 +7,7 @@ The `accounts` plugin
 
 .. how to test this document:
 
-    $ doctest docs/specs/cosi/accounts.rst
+    $ doctest docs/specs/accounts.rst
 
     Doctest initialization:
 

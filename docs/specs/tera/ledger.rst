@@ -1,8 +1,8 @@
 .. _specs.tera.ledger:
 
-===================================
-Exploring SQL activity in Lino Tera
-===================================
+===========================
+General ledger in Lino Tera
+===========================
 
 ..  How to test only this document:
    
