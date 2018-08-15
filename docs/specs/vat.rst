@@ -20,29 +20,7 @@ The :mod:`lino_xl.lib.vat` plugin adds functionality for handling
 incoming and outgoing invoices in a context where the site operator is
 subject to value-added tax (VAT).
 
-See also :class:`lino_xl.lib.vat.Plugin` for configuration options.
-
-The :mod:`lino_xl.lib.vat.utils` module contains some utility
-functions.
-
-Code snippets in this document are based on the
-:mod:`lino_book.projects.apc` demo.
-
->>> from lino import startup
->>> startup('lino_book.projects.apc.settings.doctests')
->>> from lino.api.doctest import *
-
-
-Related plugins
-===============
-
-Installing this plugin will automatically install
-:mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
-
->>> dd.plugins.vat.needs_plugins     
-['lino_xl.lib.countries', 'lino_xl.lib.ledger']
-
-Site operators outside the European Union are likely to use
+Applications to be used only outside the European Union might use
 :mod:`lino_xl.lib.vatless` instead.
 
 The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
@@ -53,6 +31,28 @@ Applications using this plugin will probably also install one of the
 national implementations for their VAT declarations
 (:mod:`lino_xl.lib.bevat`, :mod:`lino_xl.lib.bevats`, ...)
 
+See also :class:`lino_xl.lib.vat.Plugin` for configuration options
+and the :mod:`lino_xl.lib.vat.utils` module contains some utility
+functions.
+
+
+
+Code snippets in this document are based on the
+:mod:`lino_book.projects.apc` demo.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.apc.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+Dependencies
+============
+
+Installing this plugin will automatically install
+:mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
+
+>>> dd.plugins.vat.needs_plugins     
+['lino_xl.lib.countries', 'lino_xl.lib.ledger']
 
 
 Fixtures
@@ -65,8 +65,55 @@ exclusive (should not be used both) and must be loaded before any
 would not find any VAT regimes to assign to partners).
 
 
-Intracom
-========
+Simple account invoices
+=======================
+    
+.. class:: VatAccountInvoice
+                   
+    An invoice for which the user enters just the bare accounts and
+    amounts (not products, quantities, discounts).
+
+    An account invoice does not usually produce a printable
+    document. This model is typically used to store incoming purchase
+    invoices, but exceptions in both directions are possible: (1)
+    purchase invoices can be stored using `purchases.Invoice` if stock
+    management is important, or (2) outgoing sales invoice can have
+    been created using some external tool and are entered into Lino
+    just for the general ledger.
+
+
+.. class:: Invoices
+           
+    The table of all :class:`VatAccountInvoice` objects.
+
+.. class:: InvoicesByJournal
+           
+    Shows all invoices of a given journal (whose
+    :attr:`voucher_type <lino_xl.lib.ledger.models.Journal.voucher_type>`
+    must be :class:`VatAccountInvoice`)
+
+.. class:: PrintableInvoicesByJournal
+           
+    Purchase journal
+
+.. class:: InvoiceDetail
+           
+    The detail layout used by :class:`Invoices`.    
+
+.. class:: InvoiceItem
+           
+    An item of a :class:`VatAccountInvoice`.
+
+
+.. class:: ItemsByInvoice
+
+.. class:: VouchersByPartner           
+
+
+
+
+Intracom sales and purchases
+============================
 
 The plugin defines two reports accessible via the
 :menuselection:`Reports --> Accounting` menu and integrated in the
@@ -124,8 +171,8 @@ printout of a VAT declaration:
 
 
 
-Models and actors reference
-===========================
+VAT rules
+=========
 
 
 .. class:: VatRule
@@ -200,47 +247,6 @@ Decimal('0.21')
 
 >>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
 Decimal('0.21')
-    
-.. class:: VatAccountInvoice
-                   
-    An invoice for which the user enters just the bare accounts and
-    amounts (not products, quantities, discounts).
-
-    An account invoice does not usually produce a printable
-    document. This model is typically used to store incoming purchase
-    invoices, but exceptions in both directions are possible: (1)
-    purchase invoices can be stored using `purchases.Invoice` if stock
-    management is important, or (2) outgoing sales invoice can have
-    been created using some external tool and are entered into Lino
-    just for the general ledger.
-
-
-.. class:: Invoices
-           
-    The table of all :class:`VatAccountInvoice` objects.
-
-.. class:: InvoicesByJournal
-           
-    Shows all invoices of a given journal (whose
-    :attr:`voucher_type <lino_xl.lib.ledger.models.Journal.voucher_type>`
-    must be :class:`VatAccountInvoice`)
-
-.. class:: PrintableInvoicesByJournal
-           
-    Purchase journal
-
-.. class:: InvoiceDetail
-           
-    The detail layout used by :class:`Invoices`.    
-
-.. class:: InvoiceItem
-           
-    An item of a :class:`VatAccountInvoice`.
-
-
-.. class:: ItemsByInvoice
-
-.. class:: VouchersByPartner           
 
 
 
@@ -330,6 +336,10 @@ Model mixins
 .. class:: VatDocument
 
     Abstract base class for invoices, offers and other vouchers.
+
+    Inherited internally by :class:`VatAccountInvoice` as well as in
+    other plugins (e.g. :class:`linox_xl.lib.sales.VatProductInvoice`
+    and :class:`lino_xl.lib.ana.AnaAccountInvoice`).
 
     Adds the following database fields:
 

@@ -10,14 +10,9 @@ the user hovers over a form field, menu item, or toolbar button.
 The challenge with help texts is that they must be helpful to
 end-users, up-to-date and translated.
 
-Note that the ExtJS user interface displays them only when
-:attr:`lino.core.site.Site.use_quicklinks` is `True`.
-
-
 .. contents::
    :local:
    :depth: 2
-
 
 
 Introduction
@@ -110,23 +105,19 @@ See also
 - How it all started: :blogref:`20160620`
 - :meth:`lino.core.site.Site.install_help_text`
 - :meth:`lino.core.site.Site.load_help_texts`
+- The ExtJS user interface displays help texts as tooltips
+  only when :attr:`lino.core.site.Site.use_quicklinks` is `True`.
 
-
-Don't read on
-=============
 
        
+Using help texts
+================
+
 >>> import lino
 >>> lino.startup('lino_book.projects.min2.settings.doctests')
 >>> from lino.api.doctest import *
 
-
->>> from lino.api import _
->>> from lino.utils.jsgen import py2js
->>> x = dict(tooltip=_("""This is a "foo", IOW a bar."""))
->>> print(py2js(x))
-{ "tooltip": "This is a \"foo\", IOW a bar." }
-
+Here is how Lino internally accesses the help text of a database field:
 
 >>> fld = rt.models.contacts.Partner._meta.get_field('name')
 >>> print(fld.help_text)  #doctest: +NORMALIZE_WHITESPACE
@@ -139,7 +130,8 @@ Above text is the first sentence extracted from the documentation of
 the :attr:`lino_xl.lib.contacts.Partner.name` field.
 
 You can show and test all help texts of a model or actor in functional
-specifications:
+specifications using the :func:`show_fields
+<lino.api.doctest.show_fields>` function:
 
 >>> show_fields(rt.models.contacts.Partner)
 +---------------+----------------------------+-----------------------------------------------------------------+
@@ -180,4 +172,14 @@ specifications:
 |               |                            | e.g. saving a Person will automatically set her                 |
 |               |                            | name field to "last_name, first_name".                          |
 +---------------+----------------------------+-----------------------------------------------------------------+
+
+
+Don't read on
+=============
+
+>>> from lino.api import _
+>>> from lino.utils.jsgen import py2js
+>>> x = dict(tooltip=_("""This is a "foo", IOW a bar."""))
+>>> print(py2js(x))
+{ "tooltip": "This is a \"foo\", IOW a bar." }
 

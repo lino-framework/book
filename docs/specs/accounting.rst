@@ -1,3 +1,4 @@
+.. _specs.accounting:
 .. _cosi.specs.accounting:
 
 ========================

@@ -23,10 +23,9 @@ Snippets in this document are tested on the
 The plugin
 ==========
 
-Lino Così implements product invoices in the
-:mod:`lino_xl.lib.sales` plugin.  The internal codename "sales" is
-for historical reasons, you might generate product invoices for other
-trade types as well.
+Lino implements product invoices in the :mod:`lino_xl.lib.sales`
+plugin.  The internal codename "sales" is for historical reasons, you
+might generate product invoices for other trade types as well.
 
 The plugin --of course-- needs and automatically installs the
 :mod:`lino_xl.lib.products` plugin.
@@ -47,25 +46,155 @@ which adds automatic generation of such product invoices.
 ['lino_xl.lib.sales']
 
 
+Product invoices
+================
+
+.. class:: VatProductInvoice
+
+    A product invoice is a legal document which describes that
+    something (the invoice items) has been sold to a given business
+    partner (called the customer).  The partner can be either a
+    private person or an organization.
+
+    Inherits from :class:`lino_xl.lib.ledger.Voucher`.
+
+    .. attribute:: balance_before
+
+       The balance of previous payments or debts. On a printed
+       invoice, this amount should be mentioned and added to the
+       invoice's amount in order to get the total amount to pay.
+
+    .. attribute:: balance_to_pay
+
+       The balance of all movements matching this invoice.
+
+    .. method:: get_print_items(self, ar):
+                
+        For usage in an appy template::
+
+            do text
+            from table(obj.get_print_items(ar))
+
+           
+.. class:: InvoiceItem
+           
+    An item of a sales invoice.
+
+    
+    
+.. class:: InvoiceDetail
+           
+.. class:: Invoices
+           
+.. class:: InvoicesByJournal
+    Shows all invoices of a given journal (whose `voucher_type` must be
+    :class:`VatProductInvoice`)
+           
+.. class:: DueInvoices
+           
+    Shows all due product invoices.
+
+           
+.. class:: ProductDocItem
+
+    Mixin for voucher items which potentially refer to a product.
+
+    .. attribute:: product
+
+       The product that is being sold or purchased.
+       
+    .. attribute:: description
+
+       A multi-line rich text to be printed in the resulting printable
+       document.
+
+    .. attribute:: discount
+
+           
+.. class:: ItemsByInvoicePrint
+
+    The table used to render items in a printable document.
+
+    .. attribute:: description_print
+
+        TODO: write more about it.
+
+.. class:: ItemsByInvoicePrintNoQtyColumn
+           
+    Alternative column layout to be used when printing an invoice.
+
+.. class:: SalesDocument
+
+    Common base class for :class:`lino_xl.lib.orders.Order` and
+    :class:`VatProductInvoice`.
+           
+    Inherits from :class:`lino_xl.lib.vat.mixins.VatDocument` and
+    :class:`ino_xl.lib.excerpts.mixinsCertifiable`.
+
+    Subclasses must either add themselves a :attr:`date` field (as
+    does :class:`Order <lino_xl.lib.orders.Order>`) or inherit it from
+    Voucher (as does :class:`VatProductInvoice`).
+
+    Note that this class sets :attr:`edit_totals
+    <lino_xl.lib.vat.VatDocument.edit_totals>` to False.
+
+    .. attribute:: print_items_table = None
+
+        The table (column layout) to use in the printed document.
+
+        :class:`ItemsByInvoicePrint`
+        :class:`ItemsByInvoicePrintNoQtyColumn`
+
+
+Paper types
+===========
+
+.. class:: PaperType
+
+    Describes a paper type (document template) to be used when
+    printing an invoice.
+
+    A sample use case is to differentiate between invoices to get
+    printed either on a company letterpaper for expedition via paper
+    mail or into an email-friendly pdf file.
+
+    Inherits from :class:`lino.utils.mldbc.mixins.BabelNamed`.
+
+
+    .. attribute:: templates_group = 'sales/VatProductInvoice'
+
+        A class attribute.
+
+    .. attribute:: template
+           
+    
+    
+
 Trade types
 ===========
 
-The plugin updates your trade types and defines some additional
-database fields to be installed by :func:`inject_tradetype_fields
-<lino_xl.lib.ledger.choicelists.inject_tradetype_fields>`.
+The plugin updates your :attr:`lino_xl.lib.ledger.TradeTypes.sales`,
+causing two additional database fields to be injected to
+:class:`lino_xl.lib.products.Product`.
 
-For example the sales price of a product:
-
->>> print(ledger.TradeTypes.sales.price_field_name)
-sales_price
+The first injected field is the sales price of a product:
 
 >>> translation.activate('en')
-
+>>> print(ledger.TradeTypes.sales.price_field_name)
+sales_price
 >>> print(ledger.TradeTypes.sales.price_field_label)
 Sales price
-
 >>> products.Product._meta.get_field('sales_price')
 <lino.core.fields.PriceField: sales_price>
+
+The other injected field is the sales base account of a product:
+
+>>> print(ledger.TradeTypes.sales.base_account_field_name)
+sales_account
+>>> print(ledger.TradeTypes.sales.base_account_field_label)
+Sales account
+>>> products.Product._meta.get_field('sales_account')
+<django.db.models.fields.related.ForeignKey: sales_account>
 
 
 
