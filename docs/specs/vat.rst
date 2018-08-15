@@ -21,11 +21,10 @@ incoming and outgoing invoices in a context where the site operator is
 subject to value-added tax (VAT).
 
 Applications to be used only outside the European Union might use
-:mod:`lino_xl.lib.vatless` instead.
-
-The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
-theoretically both be installed though obviously this wouldn't make
-sense.
+:mod:`lino_xl.lib.vatless` instead.  Though this plugin might become
+deprecated.  The modules :mod:`lino_xl.lib.vatless` and
+:mod:`lino_xl.lib.vat` can theoretically both be installed though
+obviously this wouldn't make sense.
 
 Applications using this plugin will probably also install one of the
 national implementations for their VAT declarations
@@ -204,7 +203,7 @@ VAT rules
     .. attribute:: can_edit
 
         Whether the VAT amount can be modified by the user. This applies
-        only for documents with :attr:`VatTotal.auto_compute_totals` set
+        only for documents with :attr:`VatDocument.edit_totals` set
         to `False`.
 
     .. attribute:: vat_account
@@ -273,23 +272,11 @@ Model mixins
 
         The amount of VAT.
 
-    All three total fields are
-    :class:`lino.core.fields.PriceField` instances.
-    When
-    :attr:`auto_compute_totals` is `True`, they
-    are all disabled, 
-    otherwise
-    only :attr:`total_vat`
-    is disabled
-    when :attr:`VatRule.can_edit` is `False`.
+    All three total fields are :class:`lino.core.fields.PriceField`
+    instances.  When :attr:`edit_totals` is `False`, they are all
+    disabled, otherwise only :attr:`total_vat` is disabled when
+    :attr:`VatRule.can_edit` is `False`.
 
-    .. attribute:: auto_compute_totals = False
-                   
-        Set this to `True` on subclasses who compute their totals
-        automatically, i.e. the fields :attr:`total_base`,
-        :attr:`total_vat` and :attr:`total_incl` are disabled.  This is
-        set to `True` for :class:`lino_xl.lib.sales.SalesDocument`.
-                  
     .. method:: get_trade_type
 
         Subclasses of VatTotal must implement this method.
@@ -298,7 +285,7 @@ Model mixins
 
         Return the VAT rule for this voucher or voucher item. Called
         when user edits a total field in the document header when
-        :attr:`auto_compute_totals` is False.
+        :attr:`edit_totals` is True.
 
 
     .. method:: total_base_changed
@@ -337,30 +324,9 @@ Model mixins
 
     Abstract base class for invoices, offers and other vouchers.
 
-    Inherited internally by :class:`VatAccountInvoice` as well as in
-    other plugins (e.g. :class:`linox_xl.lib.sales.VatProductInvoice`
-    and :class:`lino_xl.lib.ana.AnaAccountInvoice`).
-
-    Adds the following database fields:
-
-    .. attribute:: partner
-
-       Mandatory field to be defined in another class.
-
-    .. attribute:: items_edited
-                   
-    .. attribute:: vat_regime
-
-        The VAT regime to be used in this document.  A pointer to
-        :class:`VatRegimes`.
-
-
-    Adds an action:
-
-    .. attribute:: compute_sums
-
-        Calls :class:`ComputeSums` for this document.
-
+    Inherited by :class:`VatAccountInvoice` as well as in other
+    plugins (e.g. :class:`lino_xl.lib.sales.VatProductInvoice` and
+    :class:`lino_xl.lib.ana.AnaAccountInvoice`).
 
     Models that inherit this mixin can set the following class
     attribute:
@@ -376,16 +342,54 @@ Model mixins
         see the invoice's totals.
 
 
+    Inherits the following database fields from :class:`VatTotal`:
+    
+    .. attribute:: total_base
+    .. attribute:: total_vat
+    .. attribute:: total_incl
+
+    Adds the following database fields:
+
+    .. attribute:: project
+                   
+       Pointer to a :attr:`lino_xl.lib.ledger.Plugin.project_model`.
+
+    .. attribute:: partner
+
+       Mandatory field to be defined in the implementing class.
+
+    .. attribute:: items_edited
+
+       An automatically managed boolean field which says whether the
+       user has manually edited the items of this document.  If this
+       is False and :attr:`edit_totals` is True, Lino will
+       automatically update the only invoice item according to
+       :attr:`partner` and :attr:`vat_regime` and :attr:`total_incl`.
+                   
+    .. attribute:: vat_regime
+
+        The VAT regime to be used in this document.  A pointer to
+        :class:`VatRegimes`.
+
+
+    Adds an action:
+
+    .. attribute:: compute_sums
+
+        Calls :class:`ComputeSums` for this document.
+
+
 .. class:: ComputeSums
 
-    Compute the sum fields of a :class:`VatDocument` based on its items.
+    Compute the sum fields of a :class:`VatDocument` based on its
+    items.
 
-    Represented by a "Σ" button
+    Represented by a "Σ" button.
 
 
 .. class:: VatItemBase
            
-    Model mixin for items of a :class:`VatTotal`.
+    Model mixin for items of a :class:`VatDocument`.
 
     Abstract Base class for
     :class:`lino_xl.lib.ledger.InvoiceItem`, i.e. the lines of
@@ -422,18 +426,28 @@ Model mixins
         this.
 
 
-.. class:: QtyVatItemBase        
+.. class:: QtyVatItemBase
 
-    Model mixin for items of a :class:`VatTotal`, adds `unit_price`
-    and `qty`.
 
+    Model mixin for items of a :class:`VatTotal`.  Extends
+    :class:`VatItemBase` by adding :attr:`unit_price` and :attr:`qty`.
+
+    Abstract Base class for :class:`lino_xl.lib.sales.InvoiceItem` and
+    :class:`lino_xl.lib.sales.OrderItem`, i.e. invoice items *with*
+    unit prices and quantities.
+    
     .. attribute:: unit_price
+
+        The unit price for this item.
                    
     .. attribute:: qty
 
-    Abstract Base class for :class:`lino_xl.lib.sales.InvoiceItem` and
-    :class:`lino_xl.lib.sales.OrderItem`, i.e. the lines of invoices
-    *with* unit prices and quantities.
+    Changing the :attr:`unit_price` ot the :attr:`qty` will
+    automatically reset the total amount of this item: the value
+    `unit_price * qty` will be stored in :attr:`total_incl` if
+    :attr:`VatRegime.item_vat` is `True`, otherwise in
+    :attr:`total_base`.
+
 
 
                 
