@@ -110,7 +110,7 @@ Marianne is a "simple user".
   - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
   - Create invoices
-- Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -
+- Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Reports :
   - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
   - Activities : Status Report
@@ -123,5 +123,5 @@ Marianne is a "simple user".
 
 >>> rt.login('tom').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Activities : My courses given, -
+- Activities : My courses given
 - Site : About

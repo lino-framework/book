@@ -193,6 +193,13 @@ Models and actors reference
 
     >>> show_menu_path(vat.VatRules)
     Explorer --> MwSt. --> MwSt-Regeln
+
+
+>>> vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
+Decimal('0.21')
+
+>>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
+Decimal('0.21')
     
 .. class:: VatAccountInvoice
                    

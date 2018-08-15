@@ -94,7 +94,7 @@ The database structure
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        114
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        87
+ sales.VatProductInvoice    sales.Invoices                 25        87
  sepa.Account               sepa.Accounts                  6         38
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
@@ -103,7 +103,7 @@ The database structure
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         187
- vat.VatAccountInvoice      vat.Invoices                   19        119
+ vat.VatAccountInvoice      vat.Invoices                   20        119
 ========================== ============================== ========= =======
 <BLANKLINE>
 

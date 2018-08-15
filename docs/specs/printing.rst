@@ -119,6 +119,8 @@ Model mixins
         Return a Django language code to be activated when an instance
         of this is being printed.  The default implementation returns
         the Site's default language.
+        
+        Returning `None` is equivalent to the Site's default language.
 
     .. method:: get_print_templates(self, bm, action)
                 
