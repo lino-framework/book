@@ -1,1 +1,0 @@
-[31;01m/media/dell1tb/work/lino/lino/utils/dpy.py:docstring of lino.utils.dpy:1: WARNING: Literal block expected; none found.[39;49;00m

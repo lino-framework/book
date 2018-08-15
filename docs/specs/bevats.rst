@@ -181,7 +181,7 @@ due VAT in account 4510 into another account, which means that now we
 have no more "due VAT to declare" but now we have a "debth towards the
 tax office".  From that point on a VAT declaration behaves and is
 handled like a purchase invoice which needs to get paid in
-time. That will be described in :doc:`cosi/finan`.
+time. That will be described in :doc:`finan`.
 
 We can verify that the VAT declaration did the correct sum by looking
 at the history of 4510 of that month:

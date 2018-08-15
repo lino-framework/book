@@ -1,4 +1,4 @@
-.. doctest docs/specs/cosi/invoicing.rst
+.. doctest docs/specs/invoicing.rst
 .. _cosi.specs.invoicing:
 
 ===================
@@ -9,26 +9,22 @@ The :mod:`lino_xl.lib.invoicing` plugin adds functionality for
 **invoicing**, i.e. automatically generating invoices from data in the
 database.
 
-This document describes some general aspects of invoicing.
-how applications can
-handle this topic.
-
+This document describes some general aspects of invoicing and how
+applications can handle this topic.
 See also
 
 - :doc:`/specs/voga/invoicing`
-- :doc:`/specs/cosi/sales`
-- :doc:`/specs/cosi/accounting`
+- :doc:`sales`
+- :doc:`accounting`
 
-Examples in this document have been tested against the
-:mod:`lino_book.projects.pierre` demo project.
+The examples in this document have been tested using the :mod:`pierre
+<lino_book.projects.pierre>` demo project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.pierre.settings.demo')
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
-
-  
 
 
 .. contents::
