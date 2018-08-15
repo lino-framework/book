@@ -331,31 +331,48 @@ Model mixins
 
     Abstract base class for invoices, offers and other vouchers.
 
+    Adds the following database fields:
+
     .. attribute:: partner
 
        Mandatory field to be defined in another class.
 
-    .. attribute:: refresh_after_item_edit
-
-        The total fields of an invoice are currently not automatically
-        updated each time an item is modified.  Users must click the
-        Save or the Register button to see the invoices totals.
-
-        One idea is to have
-        :meth:`lino_xl.lib.vat.models.VatItemBase.after_ui_save`
-        insert a `refresh_all=True` (into the response to the PUT or
-        POST coming from Lino.GridPanel.on_afteredit).
-        
-        This has the disadvantage that the cell cursor moves to the
-        upper left corner after each cell edit.  We can see how this
-        feels by setting :attr:`refresh_after_item_edit` to `True`.
-
+    .. attribute:: items_edited
+                   
     .. attribute:: vat_regime
 
         The VAT regime to be used in this document.  A pointer to
         :class:`VatRegimes`.
 
+
+    Adds an action:
+
+    .. attribute:: compute_sums
+
+        Calls :class:`ComputeSums` for this document.
+
+
+    Models that inherit this mixin can set the following class
+    attribute:
            
+    .. attribute:: edit_totals
+
+        Whether the user usually wants to edit the total amount or
+        not.
+
+        The total fields of an invoice are not automatically updated
+        each time an item is modified.  Users must click the Σ
+        ("Compute sums") button (or Save or the Register button) to
+        see the invoice's totals.
+
+
+.. class:: ComputeSums
+
+    Compute the sum fields of a :class:`VatDocument` based on its items.
+
+    Represented by a "Σ" button
+
+
 .. class:: VatItemBase
            
     Model mixin for items of a :class:`VatTotal`.

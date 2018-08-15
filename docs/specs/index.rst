@@ -7,11 +7,11 @@ Specs
 
 This section contains "functional specifications".
 
-A **functional specification** is targeted at application developers
-and trainers which explains all technical and functional aspects about
-a given plpugin or topic.  If some part is covered elsewhere, it
-should refer to these other documents.  It should contain testable
-code snippets.
+A **functional specification** is targeted at application developers,
+consultants and trainers and ideally explains all technical and
+functional aspects about a given plugin or topic.  If some part is
+covered elsewhere, it should refer to these other documents.  It
+should contain testable code snippets.
 
 
 Topic overviews
@@ -49,7 +49,6 @@ Plugin specs
    gfks
    gfktest
    dumps
-   help_texts
    polls
    ajax
    notify

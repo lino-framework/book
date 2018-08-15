@@ -17,7 +17,7 @@ reading here.
    writedocs
    /team/deploy
    about
-   reference
+   /api/index
    
 
 
@@ -48,8 +48,6 @@ Drafts
    workflows
    translate/index
    
-   testing
-   help_texts
    userdocs
    signals
    intro
