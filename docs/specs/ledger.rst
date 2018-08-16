@@ -830,16 +830,16 @@ is of one and only one trade type.
 The default list of trade types is:
 
 >>> rt.show(ledger.TradeTypes)
-======= =========== ===================== ==================================== ================================================ ==================================== =====================================
- value   name        text                  Main account                         Base account                                     Product account field                Invoice account field
-------- ----------- --------------------- ------------------------------------ ------------------------------------------------ ------------------------------------ -------------------------------------
- S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales Base account (sales_account)
- P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                        Purchase account (purchase_account)
+======= =========== ===================== ==================================== ================================================ =============================== =====================================
+ value   name        text                  Main account                         Base account                                     Product account field           Invoice account field
+------- ----------- --------------------- ------------------------------------ ------------------------------------------------ ------------------------------- -------------------------------------
+ S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales account (sales_account)
+ P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
  W       wages       Wages                 (undefined) (Employees)              (undefined) (Wages)
  T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)
  C       clearings   Clearings
  B       bank_po     Bank payment orders
-======= =========== ===================== ==================================== ================================================ ==================================== =====================================
+======= =========== ===================== ==================================== ================================================ =============================== =====================================
 <BLANKLINE>
 
 Your application might have a different list.  You can see the
