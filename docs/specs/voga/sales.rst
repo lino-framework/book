@@ -58,9 +58,9 @@ Here are all our sales invoices:
 <BLANKLINE>
 
 
-The :class:`lino_xl.lib.sales.DueInvoices` table shows a list
-of invoices that aren't (completeley) paid.  The following ones are
-there obviously due to a payment difference.
+The :class:`lino_xl.lib.sales.DueInvoices` table shows a list of
+invoices that aren't (completeley) paid.  The following ones are there
+obviously due to a payment difference.
 
 >>> rt.show(sales.DueInvoices)
 ==================== =========== ======== =============== ================= ================ ================

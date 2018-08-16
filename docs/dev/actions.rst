@@ -269,15 +269,22 @@ The :class:`Action` class
 
     .. attribute:: readonly
                    
-        Whether this action is readonly, i.e. does not change any data.
+        Whether this action is readonly, i.e. does not change any data
+        in the current data object.
 
-        Setting this to `False` will make the action unavailable for
-        `readonly` user types and will cause it to be logged when
-        :attr:`log_each_action_request
-        <lino.core.site.Site.log_each_action_request>` is set to `True`.
+        Setting this to `False` will (1) disable the action for
+        `readonly` user types or when
+        :attr:`lino.core.site.Site.readonly` is True, and (2) will
+        cause it to be logged when :attr:`log_each_action_request
+        <lino.core.site.Site.log_each_action_request>` is set to
+        `True`.
+
+        Note that :class:`ShowInsert` is readonly because it does not
+        modify the current data object.  For example the button would
+        be disabled on a registered invoice.
 
         Note that when a readonly action actually *does* modify the
-        database, Lino won't "notice" it.
+        object, Lino won't "notice" it.
 
         Discussion
 
@@ -291,13 +298,13 @@ The :class:`Action` class
         must explicitly "say something" it when granting that privilege.
 
         Another subtlety is the fact that this attribute is used by
-        :class:`lino.modlib.users.mixins.UserAuthored`.  For example the
+        :class:`lino.modlib.users.UserAuthored`.  For example the
         :class:`StartTicketSession
-        <lino_noi.lib.working.actions.StartTicketSession>` action in
-        :ref:`noi` is declared "readonly" because we want Workers who are
-        not Triagers to see this action even if they are not the author
-        (reporter) of a ticket. In this use case the name should rather be
-        `requires_authorship`.
+        <lino_xl.lib.working.StartTicketSession>` action in :ref:`noi`
+        is declared "readonly" because we want Workers who are not
+        Triagers to see this action even if they are not the author
+        (reporter) of a ticket. In this use case the name should
+        rather be `requires_authorship`.
 
 
     .. attribute:: opens_a_window

@@ -21,12 +21,12 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-89 models:
+90 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
- accounts.Account            accounts.Accounts              21        15
- accounts.Group              accounts.Groups                6         6
+ accounts.Account            accounts.Accounts              21        16
+ accounts.Group              accounts.Groups                6         7
  ana.Account                 ana.Accounts                   7         15
  ana.AnaAccountInvoice       ana.Invoices                   20        35
  ana.Group                   ana.Groups                     5         5
@@ -54,7 +54,7 @@ The database structure
  contacts.Person             contacts.Persons               33        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         89
+ contenttypes.ContentType    gfks.ContentTypes              3         90
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        59
@@ -81,6 +81,7 @@ The database structure
  invoicing.SalesRule         invoicing.SalesRules           3         6
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         5
  ledger.Journal              ledger.Journals                24        8
+ ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         12
  ledger.Movement             ledger.Movements               13        260
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
@@ -236,6 +237,7 @@ behaviour. See also :doc:`/dev/delete`.
 - topics.TopicGroup :
   - PROTECT : topics.Topic.topic_group
 - users.User :
+  - CASCADE : ledger.LedgerInfo.user
   - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, tera.Client.user, tinymce.TextFieldTemplate.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher

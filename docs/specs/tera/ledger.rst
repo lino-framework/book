@@ -1,14 +1,11 @@
+.. doctest docs/specs/tera/ledger.rst
 .. _specs.tera.ledger:
 
 ===========================
 General ledger in Lino Tera
 ===========================
 
-..  How to test only this document:
-   
-    $ doctest docs/specs/tera/ledger.rst
-
-This document shows the AccountingReport for .
+This document shows the AccountingReport for Lino Tera.
 
 We use the :mod:`lino_book.projects.lydia` demo database.
     
