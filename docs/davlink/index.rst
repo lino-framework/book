@@ -4,6 +4,10 @@
 DavLink
 =======
 
+.. note:: This document is obsolete because Java is no longer
+          supported in browsers. DavLink is now done using custom URL
+          protocols.
+
 DavLink is an applet that launches the client's desktop's office
 application, passing it the URL of a webdav file as command line
 argument.
