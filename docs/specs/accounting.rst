@@ -15,26 +15,21 @@ know about accounting stuff.
     outside appearances. When designing an operating system, the
     programmer seeks the simplest harmony between machine and
     ideas. This is why an operating system is easier to design.  
-    
     -- Tao of programming
 
-
-- :doc:`accounts` explains the "static" part of general accounting
-  stuff.
-
-- :doc:`ledger` explains the "dynamic" part of general accounting
-  stuff.
+To be honest I must add that this section will probably never be
+finished.
 
 
 .. toctree::
    :maxdepth: 1
   
    accounts
+   ledger
    finan
    invoicing
    sales
    ana
-   ledger
    vat
    bevat
    bevats

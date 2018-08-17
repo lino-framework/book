@@ -1,9 +1,9 @@
 .. _xl.specs.accounts:
 
 
-=====================
-The `accounts` plugin
-=====================
+========
+Accounts
+========
 
 .. how to test this document:
 
@@ -17,8 +17,8 @@ The `accounts` plugin
 
 
 The :mod:`lino_xl.lib.accounts` plugin defines the "static" part of
-accounting stuff.  It adds a list of **common accounts** and two
-database models.
+accounting stuff: it adds an account chart (consisting of accounts and
+account groups) to your application.
 
 Table of contents:
 
@@ -27,219 +27,6 @@ Table of contents:
    :local:
 
 .. currentmodule:: lino_xl.lib.accounts
-
-
-Common accounts
-===============
-
-The `accounts` plugin defines a choicelist of **common accounts**
-which are used to reference the database object for certain accounts
-which have a special meaning.
-
-Here is the standard list of common accounts in a :ref:`cosi`
-application:
-
->>> rt.show(accounts.CommonAccounts, language="en")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= ========================= ========================= ============== =========== ================================
- value   name                      text                      Account type   Clearable   Account
-------- ------------------------- ------------------------- -------------- ----------- --------------------------------
- 4000    customers                 Customers                 Assets         Yes         (4000) Customers
- 4300    pending_po                Pending Payment Orders    Assets         Yes         (4300) Pending Payment Orders
- 4400    suppliers                 Suppliers                 Liabilities    Yes         (4400) Suppliers
- 4500    employees                 Employees                 Liabilities    Yes
- 4600    tax_offices               Tax Offices               Liabilities    Yes         (4600) Tax Offices
- 4510    vat_due                   VAT due                   Liabilities    No          (4510) VAT due
- 4511    vat_returnable            VAT returnable            Liabilities    No          (4511) VAT returnable
- 4512    vat_deductible            VAT deductible            Liabilities    No          (4512) VAT deductible
- 4513    due_taxes                 VAT declared              Liabilities    No          (4513) VAT declared
- 4900    waiting                   Waiting                   Liabilities    Yes         (4900) Waiting     
- 5500    best_bank                 BestBank                  Assets         No          (5500) BestBank
- 5700    cash                      Cash                      Assets         No          (5700) Cash
- 6040    purchase_of_goods         Purchase of goods         Expenses       No          (6040) Purchase of goods
- 6010    purchase_of_services      Purchase of services      Expenses       No          (6010) Purchase of services
- 6020    purchase_of_investments   Purchase of investments   Expenses       No          (6020) Purchase of investments
- 6300    wages                     Wages                     Expenses       No
- 7000    sales                     Sales                     Incomes        No          (7000) Sales
-======= ========================= ========================= ============== =========== ================================
-<BLANKLINE>
-
-Lino applications can add specific items to that list or potentially
-redefine it completely
-
-.. class:: CommonAccounts
-
-    The global list of common accounts.
-
-    This is a :class:`lino.core.choicelists.ChoiceList`.
-    Every item is an instance of :class:`CommonAccount`.
-
-.. class:: CommonAccount
-           
-    The base class for items of ::class:`CommonAccounts`.
-    It defines two additional attributes:
-
-    .. attribute:: clearable
-    .. attribute:: needs_partner
-                   
-
-The balance of an account
-=========================
-
-The **balance** of an account is the amount of money in that account.
-
-An accounting balance is either Debit or Credit.  We represent this
-internally as a boolean, but define two names `DEBIT` and `CREDIT`:
-
->>> from lino_xl.lib.accounts.utils import DEBIT, CREDIT, DCLABELS
->>> from lino_xl.lib.accounts.utils import Balance
->>> DEBIT
-True
->>> CREDIT
-False
-
->>> Balance(10, -2)
-Balance(12,0)
-
-
-Account types
-=============
-
-
-.. class:: AccountTypes
-
-    The global list of **account types** or *top-level
-    accounts*. 
-
-    >>> rt.show(accounts.AccountTypes, language="en")
-    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    ======= ============= ============= ======== ===============
-     value   name          text          D/C      Sheet
-    ------- ------------- ------------- -------- ---------------
-     A       assets        Assets        Debit    BalanceSheet
-     L       liabilities   Liabilities   Credit   BalanceSheet
-     C       capital       Capital       Credit   BalanceSheet
-     I       incomes       Incomes       Credit   EarningsSheet
-     E       expenses      Expenses      Debit    EarningsSheet
-    ======= ============= ============= ======== ===============
-    <BLANKLINE>
-
-    Every item of this list is an instance of :class:`AccountType`.           
-
-.. class:: AccountType
-           
-    The base class for items of ::class:`AccountTypes`.
-
-    .. attribute:: dc
-    .. attribute:: sheet
-
-Every account type has its own Python class as well.
-
-.. class:: Assets(AccountType)
-.. class:: Liabilities(AccountType)
-.. class:: Capital(AccountType)
-.. class:: Income(AccountType)
-.. class:: Expenses(AccountType)
-
-
-The basic `Accounting Equation
-<https://en.wikipedia.org/wiki/Accounting_equation>`_ states:
-
-  Assets = Liabilities + Capital
- 
-And the expanded accounting equation is:
-
-    Assets + Expenses = Liabilities + Equity + Revenue
-    
-    
-Accounts on the left side of the equation (Assets and Expenses) are
-normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
-<AccountType.dc>` attribute means:
-
->>> translation.activate('en')
-
->>> print(DCLABELS[accounts.AccountTypes.assets.dc])
-Debit
->>> print(DCLABELS[accounts.AccountTypes.expenses.dc])
-Debit
-
-
-
-`Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
-Summary table of standard increasing and decreasing attributes for the
-five accounting elements:
-
-============= ===== ======
-ACCOUNT TYPE  DEBIT CREDIT
-============= ===== ======
-Asset         \+    \−
-Liability     \−    \+
-Income        \−    \+
-Expense       \+    \−
-Equity        \−     \+      
-============= ===== ======
-  
-The equivalent in Lino is:
-
->>> for t in accounts.AccountTypes.get_list_items():
-... #doctest: +NORMALIZE_WHITESPACE
-...     print("%-12s|%-15s|%-6s" % (t.name, t, DCLABELS[t.dc]))
-assets      |Assets         |Debit 
-liabilities |Liabilities    |Credit
-capital     |Capital        |Credit
-incomes     |Incomes        |Credit
-expenses    |Expenses       |Debit 
-
-
-The :class:`Sheet` class
-========================
-
-It has a hard-coded list of the Sheets used in annual accounting
-reports.
-
-The class :class:`Sheet` represents the basic financial statements
-which every accounting package should implement.
-
-Lino currently defines three types of financial statements and defines
-one class for each of them.
-
-These classes are not meant to be instantiated, they are just Lino's
-suggestion for a standardized vocabulary.
-
->>> from lino_xl.lib.accounts.choicelists import Sheet
->>> print(Sheet.objects)
-(<class 'lino_xl.lib.accounts.choicelists.BalanceSheet'>, <class 'lino_xl.lib.accounts.choicelists.EarningsSheet'>)
-
-The `verbose_name` is what users see. It is a lazily translated
-string, so we must call `unicode()` to see it:
-
->>> for s in Sheet.objects:
-...     print(s.verbose_name)
-Balance sheet
-Profit & Loss statement
-
-French users will see:
-
->>> from django.utils import translation
->>> with translation.override('fr'):
-...     for s in Sheet.objects:
-...         print(str(s.verbose_name))
-Bilan
-Compte de résultats
-
-
-The :meth:`Sheet.account_types` method.
-
-Assets, Liabilities and Capital are listed in the Balance Sheet.
-Income and Expenses are listed in the Profit & Loss statement.
-
->>> from lino_xl.lib.accounts.choicelists import BalanceSheet, EarningsSheet
->>> print(BalanceSheet.account_types())
-[<AccountTypes.assets:A>, <AccountTypes.liabilities:L>, <AccountTypes.capital:C>]
-
->>> print(EarningsSheet.account_types())
-[<AccountTypes.incomes:I>, <AccountTypes.expenses:E>]
-
 
 
 Accounts
@@ -339,8 +126,28 @@ Account groups
            
     The global table of all account groups.
            
-Utilities
-=========
+
+The balance of an account
+=========================
+
+The **balance** of an account is the amount of money in that account.
+
+An accounting balance is either Debit or Credit.  We represent this
+internally as a boolean, but define two names `DEBIT` and `CREDIT`:
+
+>>> from lino_xl.lib.accounts.utils import DEBIT, CREDIT, DCLABELS
+>>> from lino_xl.lib.accounts.utils import Balance
+>>> DEBIT
+True
+>>> CREDIT
+False
+
+A negative value on one side of the balance is automatically taken
+from away the other side.
+
+>>> Balance(10, -2)
+Balance(12,0)
+
 
 .. class:: Balance
            
@@ -356,6 +163,202 @@ Utilities
     .. attribute:: c
 
         The amount of this balance when it is crediting, otherwise zero.
+
+       
+
+Account types
+=============
+
+
+.. class:: AccountTypes
+
+    The global list of **account types** or *top-level
+    accounts*. 
+
+    >>> rt.show(accounts.AccountTypes, language="en")
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+    ======= ============= ============= ======== ===============
+     value   name          text          D/C      Sheet
+    ------- ------------- ------------- -------- ---------------
+     A       assets        Assets        Debit    BalanceSheet
+     L       liabilities   Liabilities   Credit   BalanceSheet
+     C       capital       Capital       Credit   BalanceSheet
+     I       incomes       Incomes       Credit   EarningsSheet
+     E       expenses      Expenses      Debit    EarningsSheet
+    ======= ============= ============= ======== ===============
+    <BLANKLINE>
+
+    Every item of this list is an instance of :class:`AccountType`.           
+
+.. class:: AccountType
+           
+    The base class for items of ::class:`AccountTypes`.
+
+    .. attribute:: dc
+    .. attribute:: sheet
+
+Every account type has its own Python class as well.
+
+.. class:: Assets(AccountType)
+.. class:: Liabilities(AccountType)
+.. class:: Capital(AccountType)
+.. class:: Income(AccountType)
+.. class:: Expenses(AccountType)
+
+
+The basic `Accounting Equation
+<https://en.wikipedia.org/wiki/Accounting_equation>`_ states:
+
+  Assets = Liabilities + Capital
+ 
+And the expanded accounting equation is:
+
+    Assets + Expenses = Liabilities + Equity + Revenue
+    
+    
+Accounts on the left side of the equation (Assets and Expenses) are
+normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
+<AccountType.dc>` attribute means:
+
+>>> translation.activate('en')
+
+>>> print(DCLABELS[accounts.AccountTypes.assets.dc])
+Debit
+>>> print(DCLABELS[accounts.AccountTypes.expenses.dc])
+Debit
+
+
+
+`Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
+Summary table of standard increasing and decreasing attributes for the
+five accounting elements:
+
+============= ===== ======
+ACCOUNT TYPE  DEBIT CREDIT
+============= ===== ======
+Asset         \+    \−
+Liability     \−    \+
+Income        \−    \+
+Expense       \+    \−
+Equity        \−     \+      
+============= ===== ======
+  
+The equivalent in Lino is:
+
+>>> for t in accounts.AccountTypes.get_list_items():
+... #doctest: +NORMALIZE_WHITESPACE
+...     print("%-12s|%-15s|%-6s" % (t.name, t, DCLABELS[t.dc]))
+assets      |Assets         |Debit 
+liabilities |Liabilities    |Credit
+capital     |Capital        |Credit
+incomes     |Incomes        |Credit
+expenses    |Expenses       |Debit
+
+
+Common accounts
+===============
+
+The `accounts` plugin defines a choicelist of **common accounts**
+which are used to reference the database object for certain accounts
+which have a special meaning.
+
+Here is the standard list of common accounts in a :ref:`cosi`
+application:
+
+>>> rt.show(accounts.CommonAccounts, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+======= ========================= ========================= ============== =========== ================================
+ value   name                      text                      Account type   Clearable   Account
+------- ------------------------- ------------------------- -------------- ----------- --------------------------------
+ 4000    customers                 Customers                 Assets         Yes         (4000) Customers
+ 4300    pending_po                Pending Payment Orders    Assets         Yes         (4300) Pending Payment Orders
+ 4400    suppliers                 Suppliers                 Liabilities    Yes         (4400) Suppliers
+ 4500    employees                 Employees                 Liabilities    Yes
+ 4600    tax_offices               Tax Offices               Liabilities    Yes         (4600) Tax Offices
+ 4510    vat_due                   VAT due                   Liabilities    No          (4510) VAT due
+ 4511    vat_returnable            VAT returnable            Liabilities    No          (4511) VAT returnable
+ 4512    vat_deductible            VAT deductible            Liabilities    No          (4512) VAT deductible
+ 4513    due_taxes                 VAT declared              Liabilities    No          (4513) VAT declared
+ 4900    waiting                   Waiting                   Liabilities    Yes         (4900) Waiting     
+ 5500    best_bank                 BestBank                  Assets         No          (5500) BestBank
+ 5700    cash                      Cash                      Assets         No          (5700) Cash
+ 6040    purchase_of_goods         Purchase of goods         Expenses       No          (6040) Purchase of goods
+ 6010    purchase_of_services      Purchase of services      Expenses       No          (6010) Purchase of services
+ 6020    purchase_of_investments   Purchase of investments   Expenses       No          (6020) Purchase of investments
+ 6300    wages                     Wages                     Expenses       No
+ 7000    sales                     Sales                     Incomes        No          (7000) Sales
+======= ========================= ========================= ============== =========== ================================
+<BLANKLINE>
+
+Lino applications can add specific items to that list or potentially
+redefine it completely
+
+.. class:: CommonAccounts
+
+    The global list of common accounts.
+
+    This is a :class:`lino.core.choicelists.ChoiceList`.
+    Every item is an instance of :class:`CommonAccount`.
+
+.. class:: CommonAccount
+           
+    The base class for items of ::class:`CommonAccounts`.
+    It defines two additional attributes:
+
+    .. attribute:: clearable
+    .. attribute:: needs_partner
+
+
+
+The :class:`Sheet` class
+========================
+
+It has a hard-coded list of the Sheets used in annual accounting
+reports.
+
+The class :class:`Sheet` represents the basic financial statements
+which every accounting package should implement.
+
+Lino currently defines three types of financial statements and defines
+one class for each of them.
+
+These classes are not meant to be instantiated, they are just Lino's
+suggestion for a standardized vocabulary.
+
+>>> from lino_xl.lib.accounts.choicelists import Sheet
+>>> print(Sheet.objects)
+(<class 'lino_xl.lib.accounts.choicelists.BalanceSheet'>, <class 'lino_xl.lib.accounts.choicelists.EarningsSheet'>)
+
+The `verbose_name` is what users see. It is a lazily translated
+string, so we must call `unicode()` to see it:
+
+>>> for s in Sheet.objects:
+...     print(s.verbose_name)
+Balance sheet
+Profit & Loss statement
+
+French users will see:
+
+>>> from django.utils import translation
+>>> with translation.override('fr'):
+...     for s in Sheet.objects:
+...         print(str(s.verbose_name))
+Bilan
+Compte de résultats
+
+
+The :meth:`Sheet.account_types` method.
+
+Assets, Liabilities and Capital are listed in the Balance Sheet.
+Income and Expenses are listed in the Profit & Loss statement.
+
+>>> from lino_xl.lib.accounts.choicelists import BalanceSheet, EarningsSheet
+>>> print(BalanceSheet.account_types())
+[<AccountTypes.assets:A>, <AccountTypes.liabilities:L>, <AccountTypes.capital:C>]
+
+>>> print(EarningsSheet.account_types())
+[<AccountTypes.incomes:I>, <AccountTypes.expenses:E>]
+
 
 
 Account sheets

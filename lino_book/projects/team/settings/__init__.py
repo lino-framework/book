@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2017 Luc Saffre
+# Copyright 2014-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 
@@ -26,3 +26,5 @@ class Site(Site):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.restful'
         # yield 'lino_xl.lib.caldav'
+        yield 'lino_xl.lib.mailbox'
+            
