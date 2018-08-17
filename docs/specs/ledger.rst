@@ -1,11 +1,11 @@
-.. doctest docs/specs/cosi/ledger.rst
+.. doctest docs/specs/ledger.rst
 .. _xl.specs.ledger:
 .. _cosi.specs.ledger:
 .. _cosi.tested.ledger:
 
-=================================================
+==============
 General Ledger
-=================================================
+==============
 
 .. currentmodule:: lino_xl.lib.ledger
                    
@@ -13,17 +13,8 @@ The :mod:`lino_xl.lib.ledger` plugin defines the "dynamic" part of
 general accounting stuff.  You need it when you are moving money
 between accounts.
 
-Table of contents:
-
-.. contents::
-   :depth: 1
-   :local:
-
-
-About this document
-===================
-
 You should have read :doc:`accounts` before reading this document.
+
 Examples in this document use the :mod:`lino_book.projects.pierre`
 demo project.
 
@@ -33,6 +24,16 @@ demo project.
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
 
+
+Table of contents:
+
+.. contents::
+   :depth: 1
+   :local:
+
+
+Overview
+========
 
 A **ledger** is a book in which the monetary transactions of a
 business are posted in the form of debits and credits (from `1
@@ -51,10 +52,10 @@ In Lino, the ledger is implemented by three database models:
   **voucher**.  Examples of *vouchers* include invoices, bank
   statements, or payment orders.
   
-  A voucher is any document which serves as legal proof for
-  a **ledger transaction**.  A ledger transaction consists of *at
-  least two* movements, and the sum of *debited* money in these
-  movements must equal the sum of *credited* money.
+  A *voucher* is any document which serves as legal proof for a
+  **ledger transaction**.  A ledger transaction consists of *at least
+  two* movements, and the sum of *debited* money in these movements
+  must equal the sum of *credited* money.
 
   Vouchers are stored in the database using some subclass of the
   :class:`Voucher` model. Note that the voucher model is never being
@@ -67,6 +68,7 @@ In Lino, the ledger is implemented by three database models:
 There are some secondary models and choicelists:  
 
 - Each ledger movement happens in a given **fiscal year**.
+  MatchRule, LedgerInfo
   
 And then there are many subtle ways for looking at this data.
 
@@ -77,306 +79,16 @@ And then there are many subtle ways for looking at this data.
   each partner who has a positive balance (either debit or credit).
   Accessible via :menuselection:`Reports --> Ledger --> Debtors` and
   :menuselection:`Reports --> Ledger --> Creditors`
-                 
-
-The accounting report
-=====================
-
-.. class:: AccountingReport
-
-    A combined report which produces a series of reports for a given
-    period as one action.
-
-    Usually accessible via :menuselection:`Reports --> Accounting -->
-    Accounting Report`.
-
-
-    - :class:`GeneralAccountsBalance`
-    - :class:`SuppliersAccountsBalance`
-    - :class:`CustomerAccountsBalance`
-
-      
-The following example shows the balances for three period ranges
-"January", "February" and "January-February".
-
->>> jan = ledger.AccountingPeriod.objects.get(ref="2016-01")
->>> feb = ledger.AccountingPeriod.objects.get(ref="2016-02")
->>> dec = ledger.AccountingPeriod.objects.get(ref="2016-12")
->>> def test(sp, ep=None):
-...     pv = dict(start_period=sp, end_period=ep)
-...     rt.show(ledger.AccountingReport, param_values=pv)
-
->>> test(jan)
-=========================================
-General Account Balances (Period 2016-01)
-=========================================
-<BLANKLINE>
-================================== ============== =============== === =============== =============== === =============== ===============
- Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
----------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
- *(4000) Customers*                                                                    6 534,48                            6 534,48
- *(4400) Suppliers*                                                    5 569,78                            5 569,78
- *(4510) VAT due*                                                      1 134,10        1 580,97                            446,87
- *(4512) VAT deductible*                                               1 933,28        966,64              966,64
- *(4600) Tax Offices*                                                                  352,31                              352,31
- *(6010) Purchase of services*                                                         2 912,47                            2 912,47
- *(6020) Purchase of investments*                                                      581,66                              581,66
- *(6040) Purchase of goods*                                                            1 109,01                            1 109,01
- *(7000) Sales*                                                        5 400,38                            5 400,38
- **Total (9 rows)**                                                    **14 037,54**   **14 037,54**       **11 936,80**   **11 936,80**
-================================== ============== =============== === =============== =============== === =============== ===============
-<BLANKLINE>
-===============================================
-Partner Account Balances Sales (Period 2016-01)
-===============================================
-<BLANKLINE>
-======================= ============== =============== === ======= ============== === ============= ==============
- Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
------------------------ -------------- --------------- --- ------- -------------- --- ------------- --------------
- *Bestbank*                                                         2 999,85                         2 999,85
- *Bäckerei Ausdemwald*                                              679,81                           679,81
- *Bäckerei Mießen*                                                  280,00                           280,00
- *Bäckerei Schmitz*                                                 535,00                           535,00
- *Rumma & Ko OÜ*                                                    2 039,82                         2 039,82
- **Total (5 rows)**                                                 **6 534,48**                     **6 534,48**
-======================= ============== =============== === ======= ============== === ============= ==============
-<BLANKLINE>
-===================================================
-Partner Account Balances Purchases (Period 2016-01)
-===================================================
-<BLANKLINE>
-======================= ============== =============== === ============== ======== === ============== ==============
- Description             Debit before   Credit before       Debit          Credit       Debit after    Credit after
------------------------ -------------- --------------- --- -------------- -------- --- -------------- --------------
- *Bestbank*                                                 40,00                       40,00
- *Bäckerei Ausdemwald*                                      603,60                      603,60
- *Bäckerei Mießen*                                          1 199,90                    1 199,90
- *Bäckerei Schmitz*                                         3 241,68                    3 241,68
- *Donderweer BV*                                            199,90                      199,90
- *Garage Mergelsberg*                                       143,40                      143,40
- *Rumma & Ko OÜ*                                            141,30                      141,30
- **Total (7 rows)**                                         **5 569,78**                **5 569,78**
-======================= ============== =============== === ============== ======== === ============== ==============
-<BLANKLINE>
-===============================================
-Partner Account Balances Wages (Period 2016-01)
-===============================================
-<BLANKLINE>
-No data to display
-===============================================
-Partner Account Balances Taxes (Period 2016-01)
-===============================================
-<BLANKLINE>
-==================================== ============== =============== === ======= ============ === ============= ==============
- Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
------------------------------------- -------------- --------------- --- ------- ------------ --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*                                              352,31                         352,31
- **Total (1 rows)**                                                              **352,31**                     **352,31**
-==================================== ============== =============== === ======= ============ === ============= ==============
-<BLANKLINE>
-===================================================
-Partner Account Balances Clearings (Period 2016-01)
-===================================================
-<BLANKLINE>
-No data to display
-=============================================================
-Partner Account Balances Bank payment orders (Period 2016-01)
-=============================================================
-<BLANKLINE>
-No data to display
-
-
->>> test(feb)
-=========================================
-General Account Balances (Period 2016-02)
-=========================================
-<BLANKLINE>
-================================== =============== =============== === =============== =============== === =============== ===============
- Description                        Debit before    Credit before       Debit           Credit              Debit after     Credit after
----------------------------------- --------------- --------------- --- --------------- --------------- --- --------------- ---------------
- *(4000) Customers*                                 6 534,48                            6 694,58                            13 229,06
- *(4400) Suppliers*                 5 569,78                            5 570,38                            11 140,16
- *(4510) VAT due*                                   446,87              1 161,86        1 370,10                            655,11
- *(4512) VAT deductible*            966,64                              1 933,54        966,77              1 933,41
- *(4600) Tax Offices*                               352,31                              563,44                              915,75
- *(6010) Purchase of services*                      2 912,47                            2 912,29                            5 824,76
- *(6020) Purchase of investments*                   581,66                              580,66                              1 162,32
- *(6040) Purchase of goods*                         1 109,01                            1 110,66                            2 219,67
- *(7000) Sales*                     5 400,38                            5 532,72                            10 933,10
- **Total (9 rows)**                 **11 936,80**   **11 936,80**       **14 198,50**   **14 198,50**       **24 006,67**   **24 006,67**
-================================== =============== =============== === =============== =============== === =============== ===============
-<BLANKLINE>
-===============================================
-Partner Account Balances Sales (Period 2016-02)
-===============================================
-<BLANKLINE>
-======================= ============== =============== === ======= ============== === ============= ===============
- Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
------------------------ -------------- --------------- --- ------- -------------- --- ------------- ---------------
- *Bestbank*                             2 999,85                                                     2 999,85
- *Bäckerei Ausdemwald*                  679,81                                                       679,81
- *Bäckerei Mießen*                      280,00                                                       280,00
- *Bäckerei Schmitz*                     535,00                                                       535,00
- *Donderweer BV*                                                    1 199,85                         1 199,85
- *Garage Mergelsberg*                                               4 016,93                         4 016,93
- *Hans Flott & Co*                                                  1 197,90                         1 197,90
- *Rumma & Ko OÜ*                        2 039,82                                                     2 039,82
- *Van Achter NV*                                                    279,90                           279,90
- **Total (9 rows)**                     **6 534,48**                **6 694,58**                     **13 229,06**
-======================= ============== =============== === ======= ============== === ============= ===============
-<BLANKLINE>
-===================================================
-Partner Account Balances Purchases (Period 2016-02)
-===================================================
-<BLANKLINE>
-======================= ============== =============== === ============== ======== === =============== ==============
- Description             Debit before   Credit before       Debit          Credit       Debit after     Credit after
------------------------ -------------- --------------- --- -------------- -------- --- --------------- --------------
- *Bestbank*              40,00                              40,60                       80,60
- *Bäckerei Ausdemwald*   603,60                             602,30                      1 205,90
- *Bäckerei Mießen*       1 199,90                           1 200,50                    2 400,40
- *Bäckerei Schmitz*      3 241,68                           3 242,38                    6 484,06
- *Donderweer BV*         199,90                             200,50                      400,40
- *Garage Mergelsberg*    143,40                             142,10                      285,50
- *Rumma & Ko OÜ*         141,30                             142,00                      283,30
- **Total (7 rows)**      **5 569,78**                       **5 570,38**                **11 140,16**
-======================= ============== =============== === ============== ======== === =============== ==============
-<BLANKLINE>
-===============================================
-Partner Account Balances Wages (Period 2016-02)
-===============================================
-<BLANKLINE>
-No data to display
-===============================================
-Partner Account Balances Taxes (Period 2016-02)
-===============================================
-<BLANKLINE>
-==================================== ============== =============== === ======= ============ === ============= ==============
- Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
------------------------------------- -------------- --------------- --- ------- ------------ --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*                  352,31                      563,44                         915,75
- **Total (1 rows)**                                  **352,31**                  **563,44**                     **915,75**
-==================================== ============== =============== === ======= ============ === ============= ==============
-<BLANKLINE>
-===================================================
-Partner Account Balances Clearings (Period 2016-02)
-===================================================
-<BLANKLINE>
-No data to display
-=============================================================
-Partner Account Balances Bank payment orders (Period 2016-02)
-=============================================================
-<BLANKLINE>
-No data to display
-
-
->>> test(jan, feb)
-====================================================
-General Account Balances (Periods 2016-01...2016-02)
-====================================================
-<BLANKLINE>
-================================== ============== =============== === =============== =============== === =============== ===============
- Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
----------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
- *(4000) Customers*                                                                    13 229,06                           13 229,06
- *(4400) Suppliers*                                                    11 140,16                           11 140,16
- *(4510) VAT due*                                                      2 295,96        2 951,07                            655,11
- *(4512) VAT deductible*                                               3 866,82        1 933,41            1 933,41
- *(4600) Tax Offices*                                                                  915,75                              915,75
- *(6010) Purchase of services*                                                         5 824,76                            5 824,76
- *(6020) Purchase of investments*                                                      1 162,32                            1 162,32
- *(6040) Purchase of goods*                                                            2 219,67                            2 219,67
- *(7000) Sales*                                                        10 933,10                           10 933,10
- **Total (9 rows)**                                                    **28 236,04**   **28 236,04**       **24 006,67**   **24 006,67**
-================================== ============== =============== === =============== =============== === =============== ===============
-<BLANKLINE>
-==========================================================
-Partner Account Balances Sales (Periods 2016-01...2016-02)
-==========================================================
-<BLANKLINE>
-======================= ============== =============== === ======= =============== === ============= ===============
- Description             Debit before   Credit before       Debit   Credit              Debit after   Credit after
------------------------ -------------- --------------- --- ------- --------------- --- ------------- ---------------
- *Bestbank*                                                         2 999,85                          2 999,85
- *Bäckerei Ausdemwald*                                              679,81                            679,81
- *Bäckerei Mießen*                                                  280,00                            280,00
- *Bäckerei Schmitz*                                                 535,00                            535,00
- *Donderweer BV*                                                    1 199,85                          1 199,85
- *Garage Mergelsberg*                                               4 016,93                          4 016,93
- *Hans Flott & Co*                                                  1 197,90                          1 197,90
- *Rumma & Ko OÜ*                                                    2 039,82                          2 039,82
- *Van Achter NV*                                                    279,90                            279,90
- **Total (9 rows)**                                                 **13 229,06**                     **13 229,06**
-======================= ============== =============== === ======= =============== === ============= ===============
-<BLANKLINE>
-==============================================================
-Partner Account Balances Purchases (Periods 2016-01...2016-02)
-==============================================================
-<BLANKLINE>
-======================= ============== =============== === =============== ======== === =============== ==============
- Description             Debit before   Credit before       Debit           Credit       Debit after     Credit after
------------------------ -------------- --------------- --- --------------- -------- --- --------------- --------------
- *Bestbank*                                                 80,60                        80,60
- *Bäckerei Ausdemwald*                                      1 205,90                     1 205,90
- *Bäckerei Mießen*                                          2 400,40                     2 400,40
- *Bäckerei Schmitz*                                         6 484,06                     6 484,06
- *Donderweer BV*                                            400,40                       400,40
- *Garage Mergelsberg*                                       285,50                       285,50
- *Rumma & Ko OÜ*                                            283,30                       283,30
- **Total (7 rows)**                                         **11 140,16**                **11 140,16**
-======================= ============== =============== === =============== ======== === =============== ==============
-<BLANKLINE>
-==========================================================
-Partner Account Balances Wages (Periods 2016-01...2016-02)
-==========================================================
-<BLANKLINE>
-No data to display
-==========================================================
-Partner Account Balances Taxes (Periods 2016-01...2016-02)
-==========================================================
-<BLANKLINE>
-==================================== ============== =============== === ======= ============ === ============= ==============
- Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
------------------------------------- -------------- --------------- --- ------- ------------ --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*                                              915,75                         915,75
- **Total (1 rows)**                                                              **915,75**                     **915,75**
-==================================== ============== =============== === ======= ============ === ============= ==============
-<BLANKLINE>
-==============================================================
-Partner Account Balances Clearings (Periods 2016-01...2016-02)
-==============================================================
-<BLANKLINE>
-No data to display
-========================================================================
-Partner Account Balances Bank payment orders (Periods 2016-01...2016-02)
-========================================================================
-<BLANKLINE>
-No data to display
 
 
 
-
-Requests with invalid parameters just print a warning:
-
->>> test(None)
-Select at least a start period
-
->>> test(feb, jan)
-End period must be after start period
-
-
-Database models reference
-=========================
-
-.. class:: MatchRule
-
-    A **match rule** specifies that a movement into given account can
-    be cleared using a given journal.
+Movements
+=========
 
 
 .. class:: Movement
 
-    Represents an accounting movement in the ledger.
+    Represents an accounting movement in the ledger.  See Overview_.
 
     .. attribute:: value_date
 
@@ -441,6 +153,8 @@ Database models reference
         installed as well.
         
         
+Vouchers
+========
                 
 .. class:: Voucher
            
@@ -525,70 +239,8 @@ Database models reference
 
 
            
-.. class:: PaymentTerm
-           
-    The payment term of an invoice is a convention on how the invoice
-    should be paid.
-
-    The following fields define the default value for `due_date`:
-
-    .. attribute:: days
-
-        Number of days to add to :attr:`voucher_date`.
-
-    .. attribute:: months
-
-        Number of months to add to :attr:`voucher_date`.
-
-    .. attribute:: end_of_month
-
-        Whether to move :attr:`voucher_date` to the end of month.
-
-    .. attribute:: printed_text
-
-        Used in :xfile:`sales/VatProductInvoice/trailer.html` as
-        follows::
-
-            {% if obj.payment_term.printed_text %}
-            {{parse(obj.payment_term.printed_text)}}
-            {% else %}
-            {{_("Payment terms")}} : {{obj.payment_term}}
-            {% endif %}
-
-    The :attr:`printed_text` field is important when using
-    **prepayments** or other more complex payment terms.  Lino uses a
-    rather simple approach to handle prepayment invoices: only the
-    global amount and the final due date is stored in the database,
-    all intermediate amounts and due dates are just generated in the
-    printable document. You just define one :class:`PaymentTerm
-    <lino_xl.lib.ledger.models.PaymentTerm>` row for each prepayment
-    formula and configure your :attr:`printed_text` field. For
-    example::
-
-        Prepayment <b>30%</b> 
-        ({{(obj.total_incl*30)/100}} {{obj.currency}})
-        due on <b>{{fds(obj.due_date)}}</b>, remaining 
-        {{obj.total_incl - (obj.total_incl*30)/100}} {{obj.currency}}
-        due 10 days before delivery.
-
-.. class:: AccountingPeriod
-
-    An **accounting period** is the smallest time slice to be observed
-    (declare) in accounting reports. Usually it corresponds to one
-    *month*. Except for some small companies which declare per
-    quarter.
-
-    For each period it is possible to specify the exact dates during
-    which it is allowed to register vouchers into this period, and
-    also its "state": whether it is "closed" or not.
-
-    .. attribute:: start_date
-    .. attribute:: end_date
-    .. attribute:: state
-    .. attribute:: year
-    .. attribute:: ref
-    
-
+Journals
+========
            
 .. class:: Journal
 
@@ -680,6 +332,109 @@ Database models reference
         See :attr:`PrintableType.template
         <lino.mixins.printable.PrintableType.template>`.
 
+
+                 
+
+
+Other database models
+=====================
+
+.. class:: LedgerInfo
+
+    A little model which holds ledger specific information per user.
+
+    .. attribute:: user
+                   
+        OneToOneField pointing to the user.
+        
+    .. attribute:: entry_date
+
+        The last value this user typed as :attr:`entry_date
+        <Voucher.entry_date>` of a voucher.  It is the default value
+        for every new voucher.
+
+    .. classmethod:: get_by_user(self, user)
+
+
+Match rules
+===========
+
+.. class:: MatchRule
+
+    A **match rule** specifies that a movement into given account can
+    be cleared using a given journal.
+
+
+Payment terms
+=============
+
+
+.. class:: PaymentTerm
+           
+    The **payment term** of an invoice is a convention on how the
+    invoice should be paid.
+
+    The following fields define the default value for `due_date`:
+
+    .. attribute:: days
+
+        Number of days to add to :attr:`voucher_date`.
+
+    .. attribute:: months
+
+        Number of months to add to :attr:`voucher_date`.
+
+    .. attribute:: end_of_month
+
+        Whether to move :attr:`voucher_date` to the end of month.
+
+    .. attribute:: printed_text
+
+        Used in :xfile:`sales/VatProductInvoice/trailer.html` as
+        follows::
+
+            {% if obj.payment_term.printed_text %}
+            {{parse(obj.payment_term.printed_text)}}
+            {% else %}
+            {{_("Payment terms")}} : {{obj.payment_term}}
+            {% endif %}
+
+    The :attr:`printed_text` field is important when using
+    **prepayments** or other more complex payment terms.  Lino uses a
+    rather simple approach to handle prepayment invoices: only the
+    global amount and the final due date is stored in the database,
+    all intermediate amounts and due dates are just generated in the
+    printable document. You just define one :class:`PaymentTerm
+    <lino_xl.lib.ledger.models.PaymentTerm>` row for each prepayment
+    formula and configure your :attr:`printed_text` field. For
+    example::
+
+        Prepayment <b>30%</b> 
+        ({{(obj.total_incl*30)/100}} {{obj.currency}})
+        due on <b>{{fds(obj.due_date)}}</b>, remaining 
+        {{obj.total_incl - (obj.total_incl*30)/100}} {{obj.currency}}
+        due 10 days before delivery.
+
+Accounting periods
+==================
+
+.. class:: AccountingPeriod
+
+    An **accounting period** is the smallest time slice to be observed
+    (declare) in accounting reports. Usually it corresponds to one
+    *month*. Except for some small companies which declare per
+    quarter.
+
+    For each period it is possible to specify the exact dates during
+    which it is allowed to register vouchers into this period, and
+    also its "state": whether it is "closed" or not.
+
+    .. attribute:: start_date
+    .. attribute:: end_date
+    .. attribute:: state
+    .. attribute:: year
+    .. attribute:: ref
+    
 Actors
 ======
 
@@ -822,29 +577,123 @@ Journals
 Trade types
 ===========
 
-This plugin introduces the concept of **trade types**.
+The **trade type** is one of the basic properties of every ledger
+operation which involves an external partner.  Every partner movement
+is of one and only one trade type.
 
 The default list of trade types is:
 
 >>> rt.show(ledger.TradeTypes)
-======= =========== =====================
- value   name        text
-------- ----------- ---------------------
- S       sales       Sales
- P       purchases   Purchases
- W       wages       Wages
- T       taxes       Taxes
+======= =========== ===================== ==================================== ================================================ =============================== =====================================
+ value   name        text                  Main account                         Base account                                     Product account field           Invoice account field
+------- ----------- --------------------- ------------------------------------ ------------------------------------------------ ------------------------------- -------------------------------------
+ S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales account (sales_account)
+ P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
+ W       wages       Wages                 (undefined) (Employees)              (undefined) (Wages)
+ T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)
  C       clearings   Clearings
  B       bank_po     Bank payment orders
-======= =========== =====================
+======= =========== ===================== ==================================== ================================================ =============================== =====================================
 <BLANKLINE>
 
 Your application might have a different list.  You can see the
 actually configured list for your site via :menuselection:`Explorer
 --> Accounting --> Trade types`.
 
-See :class:`lino_xl.lib.ledger.choicelists.TradeTypes` for technical
-details.
+
+.. class:: TradeTypes
+           
+    The choicelist with the *trade types* defined for this
+    application.
+
+    The default configuration defines the following trade types:
+
+    .. attribute:: sales
+
+        A sale transaction is when you write an invoice to a customer
+        and then expect the customer to pay it.
+
+    .. attribute:: purchases
+
+        A purchase transaction is when you get an invoice from a
+        provider who expects you to pay it.
+
+
+    .. attribute:: wages
+
+        A wage transaction is when you write a payroll (declare the
+        fact that you owe some wage to an employee) and later pay it
+        (e.g. via a payment order).
+
+
+    .. attribute:: clearings
+
+        A clearing transaction is when an employee declares that he
+        paid some invoice for you, and later you pay that money back
+        to his account.
+
+Every trade type has the following properties.
+
+.. class:: TradeType
+           
+    Base class for the choices of :class:`TradeTypes`.
+
+    .. attribute:: dc
+
+        The default booking direction.
+
+    .. attribute:: main_account
+
+        The common account into which the total amount of partner
+        vouchers (base + taxes) and their payments should be booked.
+
+    .. attribute:: base_account
+
+        The common account into which the base amount of any operation
+        should be booked.
+        
+    .. attribute:: invoice_account_field_name
+
+        The name of a field to be injected on the :class:`Partner
+        <lino_xl.lib.contacts.Partner>` model which points to an
+        account to be used instead of the default
+        :attr:`base_account`.
+
+    .. attribute:: base_account_field_name
+
+        The name of a field to be injected on the :class:`Product
+        <lino.modlib.products.models.Product>` database model which
+        points to an account to be used instead of the default
+        :attr:`base_account`.
+                   
+    .. attribute:: price_field
+
+        The name and label of the `price` field to be defined on the
+        :class:`Product <lino.modlib.products.Product>` database
+        model.
+
+
+    .. method:: get_product_base_account(product)
+
+        Return the account into which the **base amount** of any
+        operation of this rete type should be booked.
+        
+        This is either the base account defined in the
+        :attr:`base_account_field_name` for the given product, or the
+        site-wide :attr:`base_account`.
+                
+    .. method:: get_catalog_price(product)
+
+        Return the catalog price of the given product for operations
+        with this trade type.
+        
+    .. method:: get_partner_invoice_account(partner)
+                   
+        Return the account to use as default value for account invoice
+        items.  This is the :attr:`invoice_account_field` of the given
+        partner and can be `None`.
+
+
 
 
 Match rules
@@ -1262,107 +1111,6 @@ Journal groups
 
 
            
-.. class:: TradeTypes
-           
-    A choicelist with the *trade types* defined for this application.
-
-    The **trade type** is one of the basic properties of every ledger
-    operation which involves an external partner.  Every partner
-    movement belongs to one and only one trade type.
-
-    The default configuration defines the following trade types:
-
-    .. attribute:: sales
-
-        A sale transaction is when you write an invoice to a customer
-        and then expect the customer to pay it.
-
-    .. attribute:: purchases
-
-        A purchase transaction is when you get an invoice from a
-        provider who expects you to pay it.
-
-
-    .. attribute:: wages
-
-        A wage transaction is when you write a payroll (declare the
-        fact that you owe some wage to an employee) and later pay it
-        (e.g. via a payment order).
-
-
-    .. attribute:: clearings
-
-        A clearing transaction is when an employee declares that he
-        paid some invoice for you, and later you pay that money back
-        to his account.
-
-
-.. class:: TradeType
-           
-    Base class for the choices of :class:`TradeTypes`.
-
-    .. attribute:: dc
-
-        The default booking direction.
-
-    .. attribute:: partner_account
-
-        The common account that points to the partner account for this
-        trade type, i.e.  the account into which the total amount of
-        partner vouchers (base + VAT) and their payments should be
-        booked.
-
-    .. attribute:: invoice_account_field
-
-        The name and label of the :guilabel:`invoice account` field to
-        be injected on the :class:`Partner
-        <lino_xl.lib.contacts.Partner>` database model.
-
-    .. attribute:: base_account
-
-        The common account that points to the base account for this
-        trade type, i.e.  the account into which the base amount of
-        any operation should be booked.
-
-    .. attribute:: product_base_field
-
-        The name and label of the :guilabel:`base account` field to be
-        injected on the :class:`Product
-        <lino.modlib.products.models.Product>` database model.
-                   
-    .. attribute:: price_field
-
-        The name and label of the `price` field to be defined on the
-        :class:`Product <lino.modlib.products.models.Product>`
-        database model.
-
-
-    .. attribute:: vat_account_field
-
-        The name and label of the :guilabel:`VAT account` field to be
-        defined for this trade type on the :class:`SiteConfig
-        <lino.modlib.system.models.SiteConfig>` database model.
-
-    .. method:: get_product_base_account(product)
-
-        Return the account into which the **base amount** of any
-        operation of this rete type should be booked.
-        
-        This is either the base account defined in the
-        :attr:`product_base_field` for the given product, or the
-        site-wide :attr:`base_account`.
-                
-    .. method:: get_catalog_price(product)
-
-        Return the catalog price of the given product for operations
-        with this trade type.
-        
-    .. method:: get_partner_invoice_account(partner)
-                   
-        Return the account to use as default value for account invoice
-        items.  This is the :attr:`invoice_account_field` of the given
-        partner and can be `None`.
-
 Model mixins
 ============
 
@@ -1574,3 +1322,290 @@ Mixins
         consider only the Start period.
         
                    
+The accounting report
+=====================
+
+.. class:: AccountingReport
+
+    A combined report which produces a series of reports for a given
+    period as one action.
+
+    Usually accessible via :menuselection:`Reports --> Accounting -->
+    Accounting Report`.
+
+
+    - :class:`GeneralAccountsBalance`
+    - :class:`SuppliersAccountsBalance`
+    - :class:`CustomerAccountsBalance`
+
+      
+The following example shows the balances for three period ranges
+"January", "February" and "January-February".
+
+>>> jan = ledger.AccountingPeriod.objects.get(ref="2016-01")
+>>> feb = ledger.AccountingPeriod.objects.get(ref="2016-02")
+>>> dec = ledger.AccountingPeriod.objects.get(ref="2016-12")
+>>> def test(sp, ep=None):
+...     pv = dict(start_period=sp, end_period=ep)
+...     rt.show(ledger.AccountingReport, param_values=pv)
+
+>>> test(jan)
+=========================================
+General Account Balances (Period 2016-01)
+=========================================
+<BLANKLINE>
+================================== ============== =============== === =============== =============== === =============== ===============
+ Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
+---------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
+ *(4000) Customers*                                                                    6 534,48                            6 534,48
+ *(4400) Suppliers*                                                    5 569,78                            5 569,78
+ *(4510) VAT due*                                                      1 134,10        1 580,97                            446,87
+ *(4512) VAT deductible*                                               1 933,28        966,64              966,64
+ *(4600) Tax Offices*                                                                  352,31                              352,31
+ *(6010) Purchase of services*                                                         2 912,47                            2 912,47
+ *(6020) Purchase of investments*                                                      581,66                              581,66
+ *(6040) Purchase of goods*                                                            1 109,01                            1 109,01
+ *(7000) Sales*                                                        5 400,38                            5 400,38
+ **Total (9 rows)**                                                    **14 037,54**   **14 037,54**       **11 936,80**   **11 936,80**
+================================== ============== =============== === =============== =============== === =============== ===============
+<BLANKLINE>
+===============================================
+Partner Account Balances Sales (Period 2016-01)
+===============================================
+<BLANKLINE>
+======================= ============== =============== === ======= ============== === ============= ==============
+ Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
+----------------------- -------------- --------------- --- ------- -------------- --- ------------- --------------
+ *Bestbank*                                                         2 999,85                         2 999,85
+ *Bäckerei Ausdemwald*                                              679,81                           679,81
+ *Bäckerei Mießen*                                                  280,00                           280,00
+ *Bäckerei Schmitz*                                                 535,00                           535,00
+ *Rumma & Ko OÜ*                                                    2 039,82                         2 039,82
+ **Total (5 rows)**                                                 **6 534,48**                     **6 534,48**
+======================= ============== =============== === ======= ============== === ============= ==============
+<BLANKLINE>
+===================================================
+Partner Account Balances Purchases (Period 2016-01)
+===================================================
+<BLANKLINE>
+======================= ============== =============== === ============== ======== === ============== ==============
+ Description             Debit before   Credit before       Debit          Credit       Debit after    Credit after
+----------------------- -------------- --------------- --- -------------- -------- --- -------------- --------------
+ *Bestbank*                                                 40,00                       40,00
+ *Bäckerei Ausdemwald*                                      603,60                      603,60
+ *Bäckerei Mießen*                                          1 199,90                    1 199,90
+ *Bäckerei Schmitz*                                         3 241,68                    3 241,68
+ *Donderweer BV*                                            199,90                      199,90
+ *Garage Mergelsberg*                                       143,40                      143,40
+ *Rumma & Ko OÜ*                                            141,30                      141,30
+ **Total (7 rows)**                                         **5 569,78**                **5 569,78**
+======================= ============== =============== === ============== ======== === ============== ==============
+<BLANKLINE>
+===============================================
+Partner Account Balances Wages (Period 2016-01)
+===============================================
+<BLANKLINE>
+No data to display
+===============================================
+Partner Account Balances Taxes (Period 2016-01)
+===============================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                                              352,31                         352,31
+ **Total (1 rows)**                                                              **352,31**                     **352,31**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+===================================================
+Partner Account Balances Clearings (Period 2016-01)
+===================================================
+<BLANKLINE>
+No data to display
+=============================================================
+Partner Account Balances Bank payment orders (Period 2016-01)
+=============================================================
+<BLANKLINE>
+No data to display
+
+
+>>> test(feb)
+=========================================
+General Account Balances (Period 2016-02)
+=========================================
+<BLANKLINE>
+================================== =============== =============== === =============== =============== === =============== ===============
+ Description                        Debit before    Credit before       Debit           Credit              Debit after     Credit after
+---------------------------------- --------------- --------------- --- --------------- --------------- --- --------------- ---------------
+ *(4000) Customers*                                 6 534,48                            6 694,58                            13 229,06
+ *(4400) Suppliers*                 5 569,78                            5 570,38                            11 140,16
+ *(4510) VAT due*                                   446,87              1 161,86        1 370,10                            655,11
+ *(4512) VAT deductible*            966,64                              1 933,54        966,77              1 933,41
+ *(4600) Tax Offices*                               352,31                              563,44                              915,75
+ *(6010) Purchase of services*                      2 912,47                            2 912,29                            5 824,76
+ *(6020) Purchase of investments*                   581,66                              580,66                              1 162,32
+ *(6040) Purchase of goods*                         1 109,01                            1 110,66                            2 219,67
+ *(7000) Sales*                     5 400,38                            5 532,72                            10 933,10
+ **Total (9 rows)**                 **11 936,80**   **11 936,80**       **14 198,50**   **14 198,50**       **24 006,67**   **24 006,67**
+================================== =============== =============== === =============== =============== === =============== ===============
+<BLANKLINE>
+===============================================
+Partner Account Balances Sales (Period 2016-02)
+===============================================
+<BLANKLINE>
+======================= ============== =============== === ======= ============== === ============= ===============
+ Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
+----------------------- -------------- --------------- --- ------- -------------- --- ------------- ---------------
+ *Bestbank*                             2 999,85                                                     2 999,85
+ *Bäckerei Ausdemwald*                  679,81                                                       679,81
+ *Bäckerei Mießen*                      280,00                                                       280,00
+ *Bäckerei Schmitz*                     535,00                                                       535,00
+ *Donderweer BV*                                                    1 199,85                         1 199,85
+ *Garage Mergelsberg*                                               4 016,93                         4 016,93
+ *Hans Flott & Co*                                                  1 197,90                         1 197,90
+ *Rumma & Ko OÜ*                        2 039,82                                                     2 039,82
+ *Van Achter NV*                                                    279,90                           279,90
+ **Total (9 rows)**                     **6 534,48**                **6 694,58**                     **13 229,06**
+======================= ============== =============== === ======= ============== === ============= ===============
+<BLANKLINE>
+===================================================
+Partner Account Balances Purchases (Period 2016-02)
+===================================================
+<BLANKLINE>
+======================= ============== =============== === ============== ======== === =============== ==============
+ Description             Debit before   Credit before       Debit          Credit       Debit after     Credit after
+----------------------- -------------- --------------- --- -------------- -------- --- --------------- --------------
+ *Bestbank*              40,00                              40,60                       80,60
+ *Bäckerei Ausdemwald*   603,60                             602,30                      1 205,90
+ *Bäckerei Mießen*       1 199,90                           1 200,50                    2 400,40
+ *Bäckerei Schmitz*      3 241,68                           3 242,38                    6 484,06
+ *Donderweer BV*         199,90                             200,50                      400,40
+ *Garage Mergelsberg*    143,40                             142,10                      285,50
+ *Rumma & Ko OÜ*         141,30                             142,00                      283,30
+ **Total (7 rows)**      **5 569,78**                       **5 570,38**                **11 140,16**
+======================= ============== =============== === ============== ======== === =============== ==============
+<BLANKLINE>
+===============================================
+Partner Account Balances Wages (Period 2016-02)
+===============================================
+<BLANKLINE>
+No data to display
+===============================================
+Partner Account Balances Taxes (Period 2016-02)
+===============================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                  352,31                      563,44                         915,75
+ **Total (1 rows)**                                  **352,31**                  **563,44**                     **915,75**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+===================================================
+Partner Account Balances Clearings (Period 2016-02)
+===================================================
+<BLANKLINE>
+No data to display
+=============================================================
+Partner Account Balances Bank payment orders (Period 2016-02)
+=============================================================
+<BLANKLINE>
+No data to display
+
+
+>>> test(jan, feb)
+====================================================
+General Account Balances (Periods 2016-01...2016-02)
+====================================================
+<BLANKLINE>
+================================== ============== =============== === =============== =============== === =============== ===============
+ Description                        Debit before   Credit before       Debit           Credit              Debit after     Credit after
+---------------------------------- -------------- --------------- --- --------------- --------------- --- --------------- ---------------
+ *(4000) Customers*                                                                    13 229,06                           13 229,06
+ *(4400) Suppliers*                                                    11 140,16                           11 140,16
+ *(4510) VAT due*                                                      2 295,96        2 951,07                            655,11
+ *(4512) VAT deductible*                                               3 866,82        1 933,41            1 933,41
+ *(4600) Tax Offices*                                                                  915,75                              915,75
+ *(6010) Purchase of services*                                                         5 824,76                            5 824,76
+ *(6020) Purchase of investments*                                                      1 162,32                            1 162,32
+ *(6040) Purchase of goods*                                                            2 219,67                            2 219,67
+ *(7000) Sales*                                                        10 933,10                           10 933,10
+ **Total (9 rows)**                                                    **28 236,04**   **28 236,04**       **24 006,67**   **24 006,67**
+================================== ============== =============== === =============== =============== === =============== ===============
+<BLANKLINE>
+==========================================================
+Partner Account Balances Sales (Periods 2016-01...2016-02)
+==========================================================
+<BLANKLINE>
+======================= ============== =============== === ======= =============== === ============= ===============
+ Description             Debit before   Credit before       Debit   Credit              Debit after   Credit after
+----------------------- -------------- --------------- --- ------- --------------- --- ------------- ---------------
+ *Bestbank*                                                         2 999,85                          2 999,85
+ *Bäckerei Ausdemwald*                                              679,81                            679,81
+ *Bäckerei Mießen*                                                  280,00                            280,00
+ *Bäckerei Schmitz*                                                 535,00                            535,00
+ *Donderweer BV*                                                    1 199,85                          1 199,85
+ *Garage Mergelsberg*                                               4 016,93                          4 016,93
+ *Hans Flott & Co*                                                  1 197,90                          1 197,90
+ *Rumma & Ko OÜ*                                                    2 039,82                          2 039,82
+ *Van Achter NV*                                                    279,90                            279,90
+ **Total (9 rows)**                                                 **13 229,06**                     **13 229,06**
+======================= ============== =============== === ======= =============== === ============= ===============
+<BLANKLINE>
+==============================================================
+Partner Account Balances Purchases (Periods 2016-01...2016-02)
+==============================================================
+<BLANKLINE>
+======================= ============== =============== === =============== ======== === =============== ==============
+ Description             Debit before   Credit before       Debit           Credit       Debit after     Credit after
+----------------------- -------------- --------------- --- --------------- -------- --- --------------- --------------
+ *Bestbank*                                                 80,60                        80,60
+ *Bäckerei Ausdemwald*                                      1 205,90                     1 205,90
+ *Bäckerei Mießen*                                          2 400,40                     2 400,40
+ *Bäckerei Schmitz*                                         6 484,06                     6 484,06
+ *Donderweer BV*                                            400,40                       400,40
+ *Garage Mergelsberg*                                       285,50                       285,50
+ *Rumma & Ko OÜ*                                            283,30                       283,30
+ **Total (7 rows)**                                         **11 140,16**                **11 140,16**
+======================= ============== =============== === =============== ======== === =============== ==============
+<BLANKLINE>
+==========================================================
+Partner Account Balances Wages (Periods 2016-01...2016-02)
+==========================================================
+<BLANKLINE>
+No data to display
+==========================================================
+Partner Account Balances Taxes (Periods 2016-01...2016-02)
+==========================================================
+<BLANKLINE>
+==================================== ============== =============== === ======= ============ === ============= ==============
+ Description                          Debit before   Credit before       Debit   Credit           Debit after   Credit after
+------------------------------------ -------------- --------------- --- ------- ------------ --- ------------- --------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                                              915,75                         915,75
+ **Total (1 rows)**                                                              **915,75**                     **915,75**
+==================================== ============== =============== === ======= ============ === ============= ==============
+<BLANKLINE>
+==============================================================
+Partner Account Balances Clearings (Periods 2016-01...2016-02)
+==============================================================
+<BLANKLINE>
+No data to display
+========================================================================
+Partner Account Balances Bank payment orders (Periods 2016-01...2016-02)
+========================================================================
+<BLANKLINE>
+No data to display
+
+
+
+
+Requests with invalid parameters just print a warning:
+
+>>> test(None)
+Select at least a start period
+
+>>> test(feb, jan)
+End period must be after start period
+
+
+

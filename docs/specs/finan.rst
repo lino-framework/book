@@ -1,3 +1,4 @@
+.. doctest docs/specs/finan.rst
 .. _xl.specs.finan:
 .. _specs.cosi.finan:
 
@@ -5,11 +6,7 @@
 Financial vouchers
 ==================
 
-.. to test only this document:
-
-      $ doctest docs/specs/cosi/finan.rst
-    
-    doctest init:
+.. doctest init:
 
     >>> from lino import startup
     >>> startup('lino_book.projects.pierre.settings.doctests')

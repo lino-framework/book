@@ -7,12 +7,25 @@ Specs
 
 This section contains "functional specifications".
 
-A **functional specification** is targeted at application developers
-and trainers which explains all technical and functional aspects about
-a given plpugin or topic.  If some part is covered elsewhere, it
-should refer to these other documents.  It should contain testable
-code snippets.
+A **functional specification** is targeted at application developers,
+consultants and trainers and ideally explains all technical and
+functional aspects about a given plugin or topic.  If some part is
+covered elsewhere, it should refer to these other documents.  It
+should contain testable code snippets.
 
+
+Topic overviews
+===============
+ 
+ 
+.. toctree::
+   :maxdepth: 1
+
+   accounting
+   
+
+Plugin specs
+============
 
 .. toctree::
    :maxdepth: 1
@@ -36,7 +49,6 @@ code snippets.
    gfks
    gfktest
    dumps
-   help_texts
    polls
    ajax
    notify
@@ -55,23 +67,8 @@ code snippets.
    comments
    about
    dashboard
-   
-   
-Accounting stuff
-================
-    
-.. toctree::
-   :maxdepth: 1
-  
-   
-   cosi/index
-   ana
-   vat
-   bevat
-   bevats
-   
- 
-   
+
+
 Application-specific specs
 ==========================
     
@@ -79,6 +76,7 @@ Application-specific specs
    :maxdepth: 1
   
    
+   cosi/index
    noi/index
    avanti/index
    tera/index

@@ -10,6 +10,7 @@ If you have an example of what you want to get in the web version of
 the book, then look at the source code of that page via the *Show
 Source* link at the bottom of each page.
 
+
 Referencing to something
 ========================
 
@@ -38,6 +39,24 @@ roles:
 - :rst:role:`meth`  to link to a method.
   Example :meth:`lino.core.model.Model.get_data_elem`
      
+Generated API docs versus prosa
+===============================
+
+The Lino book contains "API docs" and "Specifications".  These are two
+fundamentally different beasts.  The main difference is that API docs
+are automatically generated using autodoc which extracts the
+docstrings from source code while the Specifications are written in
+prosa style.
+  
+Plugins generally cannot be documented using autodoc because they are
+extensible and because Django would refuse to import two variants of a
+same plugin within a same Sphinx build process.  So prosa style is
+needed for plugins.
+
+Prosa style documentation has the advantage of being more readable
+since the author can decide about the documents' structure.  The
+challenge with prosa style is that it needs extra care when some code
+changes.
 
 When referring to Django application code, there is an additional
 thing to know: many plugins are documented using *prosa* style instead

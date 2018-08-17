@@ -4,31 +4,56 @@
 Publishing a new version of Lino
 ================================
 
+Before releasing a new version of Lino on PyPI, we want to test
+whether the process of packagine and installing causes issues which
+did not exist when using a clone of the source repositories.
 
-Generate Lino packages
-======================
-We can use atelier to generate for us the installable packages for lino, but the need the be sure that sdist_dir is
-correctly set in your invoke.py. It should be some value like ::
+Check whether you :envvar:`sdist_dir` is correctly set in your
+:xfile:`.invoke.py`. It should be some value like::
 
-        sdist_dir = '/home/khchine5/PycharmProjects/lino/book/docs/dl/{prj}'
+     sdist_dir = '/home/joe/mypackages/{prj}'
 
-Atelier will replace the {prj} variable with the name of the current projet.
-
-To generate lino packages for all lino projects, we use the command ::
+To generate packages for all our projects, we use the :cmd:`inv sdist`
+command (and :cmd:`pp`)::
 
         $ pp inv sdist
 
-Test Lino packages
-======================
-Lino use his own repository to host the generated packages for testing before publishing officially on the Pypi. To
-publish the docs and Lino packages to use the usual commands ::
+This will create all the files below my :envvar:`sdist_dir`.
+Then in one terminal::
 
-        $ go book
-        $ inv bd pd
+    $ pip install pypiserver
+    $ pypi-server -p 8080 /home/joe/mypackages
 
-Once it is done, we can use https://lino-framework.org/dl/ as our main repository to install Lino using the following
- command with a fresh virtualenv ::
+Where :file:`/home/joe/mypackages` is what you specified in your
+:envvar:`sdist_dir`.  This will run a server which waits for incoming
+requests.
 
-        pip install --index-url http://lino-framework.org/dl lino --trusted-host lino-framework.org --extra-index-url
-        https://pypi.org/simple
+And then in another terminal::
+
+    $ virtualenv env
+    $ . env/bin/activate
+    $ pip install --index-url http://localhost:8080/simple --extra-index-url https://pypi.org/simple lino_cosi
+
+Note: the word "simple" comes from :pep:`503`.
+
+If the installation worked, continue as described in
+:ref:`user.install`::
+
+    $ cd ~/tmp
+    $ mkdir mylino
+    $ touch mylino/__init__.py
+    $ echo "from lino_cosi.lib.cosi.settings import *" > mylino/settings.py
+    $ echo "SITE = Site(globals())" >> mylino/settings.py
+
+Then we initialize and populate the demo database::
+  
+    $ export DJANGO_SETTINGS_MODULE=mylino.settings
+    $ export PYTHONPATH=.
+    $ django-admin prep
+
+And finally we launch a development server::
+  
+    $ django-admin runserver
+    
+
 

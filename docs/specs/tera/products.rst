@@ -20,7 +20,7 @@ This document describes how we extend and use the
 
 >>> rt.show(products.Products)
 ==== ==================== ==================== ==================== ============= ====================================== ==========
- ID   Designation          Designation (de)     Designation (fr)     Sales price   Sales Base account                     Category
+ ID   Designation          Designation (de)     Designation (fr)     Sales price   Sales account                          Category
 ---- -------------------- -------------------- -------------------- ------------- -------------------------------------- ----------
  1    Group therapy        Group therapy        Group therapy        30,00
  2    Individual therapy   Individual therapy   Individual therapy   60,00         (7010) Sales on individual therapies

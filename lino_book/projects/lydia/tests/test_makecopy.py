@@ -22,7 +22,8 @@ from lino_xl.lib.accounts.choicelists import CommonAccounts
 from lino.core.renderer import TestRenderer
 
 
-class QuickTest(RemoteAuthTestCase):
+#class QuickTest(RemoteAuthTestCase):
+class QuickTest(object):  # skipping since MakeCopy is no longer needed.
     maxDiff = None
     # fixtures = ["std", 'demo']
     fixtures = 'std minimal_ledger'.split()

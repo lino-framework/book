@@ -50,17 +50,6 @@ Maintenance
     new_site
    
 
-Java applets included with Lino
--------------------------------
-
-.. toctree::
-   :maxdepth: 2
-
-   /davlink/index
-   /eidreader/index
-   /java/index
-
-
 Printing
 --------
 
@@ -94,6 +83,9 @@ Other
     tim2lino
     mysql_tune
     du
+
+    
+ 
     
 
 .. toctree::
@@ -102,3 +94,6 @@ Other
     djangosite_local
     mass_hosting
     datamig
+    /davlink/index
+    /eidreader/index
+    /java/index

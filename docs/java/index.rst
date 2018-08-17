@@ -4,6 +4,10 @@
 Lino and Java
 =============
 
+.. note:: This document is obsolete because Java is no longer
+          supported in browsers and Lino no longer needs Java.
+
+
 Some Lino applications (e.g. :ref:`welfare`) uses plugins
 that require two Java applets:
 

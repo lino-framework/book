@@ -115,21 +115,13 @@ example:
 >>> obj = ana.AnaAccountInvoice.objects.get(pk=1)
 >>> rt.show(ana.ItemsByInvoice, obj)
 ============================= ============= ==================== =========== ================= ===== =================
- Account                       Description   Analytical account   VAT Class   Total excl. VAT   VAT   Total incl. VAT
+ Account                       Description   Analytical account   VAT class   Total excl. VAT   VAT   Total incl. VAT
 ----------------------------- ------------- -------------------- ----------- ----------------- ----- -----------------
  (6010) Purchase of services                 (1100) Wages         Normal      40,00                   40,00
  **Total (1 rows)**                                                           **40,00**               **40,00**
 ============================= ============= ==================== =========== ================= ===== =================
 <BLANKLINE>
 
-
-Pro Generalkonto kannst du ein einziges Analysekonto angeben, das Lino
-von sich aus vorschlagen soll, wenn du eine neue Einkaufsrechnung
-(EKR) eingibst. In der EKR kannst du dann immer noch ein anderes AK
-auswählen. Du kannst das AK im G-Konto auch leer lassen (selbst wenn
-"Braucht AK" angekreuzt ist). Das bedeutet dann, dass Lino in der EKR
-keinen Vorschlag machen soll. Dann ist man sozusagen gezwungen, bei
-jeder Buchung zu überlegen, welches AK man auswählt.
 
 When you change the general account of an invoice item, Lino always
 updates the analytical account of that item.

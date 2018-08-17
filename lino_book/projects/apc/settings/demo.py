@@ -8,6 +8,8 @@ class Site(Site):
     is_demo_site = True
     # ignore_dates_after = datetime.date(2019, 05, 22)
     the_demo_date = datetime.date(2015, 3, 12)
+    demo_fixtures = 'std few_countries minimal_ledger \
+    furniture demo demo_bookings payments demo2'.split()
 
     def setup_plugins(self):
         """

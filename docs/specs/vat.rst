@@ -20,10 +20,21 @@ The :mod:`lino_xl.lib.vat` plugin adds functionality for handling
 incoming and outgoing invoices in a context where the site operator is
 subject to value-added tax (VAT).
 
-See also :class:`lino_xl.lib.vat.Plugin` for configuration options.
+Applications to be used only outside the European Union might use
+:mod:`lino_xl.lib.vatless` instead.  Though this plugin might become
+deprecated.  The modules :mod:`lino_xl.lib.vatless` and
+:mod:`lino_xl.lib.vat` can theoretically both be installed though
+obviously this wouldn't make sense.
 
-The :mod:`lino_xl.lib.vat.utils` module contains some utility
+Applications using this plugin will probably also install one of the
+national implementations for their VAT declarations
+(:mod:`lino_xl.lib.bevat`, :mod:`lino_xl.lib.bevats`, ...)
+
+See also :class:`lino_xl.lib.vat.Plugin` for configuration options
+and the :mod:`lino_xl.lib.vat.utils` module contains some utility
 functions.
+
+
 
 Code snippets in this document are based on the
 :mod:`lino_book.projects.apc` demo.
@@ -33,26 +44,14 @@ Code snippets in this document are based on the
 >>> from lino.api.doctest import *
 
 
-Related plugins
-===============
+Dependencies
+============
 
 Installing this plugin will automatically install
 :mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
 
 >>> dd.plugins.vat.needs_plugins     
 ['lino_xl.lib.countries', 'lino_xl.lib.ledger']
-
-Site operators outside the European Union are likely to use
-:mod:`lino_xl.lib.vatless` instead.
-
-The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat` can
-theoretically both be installed though obviously this wouldn't make
-sense.
-
-Applications using this plugin will probably also install one of the
-national implementations for their VAT declarations
-(:mod:`lino_xl.lib.bevat`, :mod:`lino_xl.lib.bevats`, ...)
-
 
 
 Fixtures
@@ -65,8 +64,55 @@ exclusive (should not be used both) and must be loaded before any
 would not find any VAT regimes to assign to partners).
 
 
-Intracom
-========
+Simple account invoices
+=======================
+    
+.. class:: VatAccountInvoice
+                   
+    An invoice for which the user enters just the bare accounts and
+    amounts (not products, quantities, discounts).
+
+    An account invoice does not usually produce a printable
+    document. This model is typically used to store incoming purchase
+    invoices, but exceptions in both directions are possible: (1)
+    purchase invoices can be stored using `purchases.Invoice` if stock
+    management is important, or (2) outgoing sales invoice can have
+    been created using some external tool and are entered into Lino
+    just for the general ledger.
+
+
+.. class:: Invoices
+           
+    The table of all :class:`VatAccountInvoice` objects.
+
+.. class:: InvoicesByJournal
+           
+    Shows all invoices of a given journal (whose
+    :attr:`voucher_type <lino_xl.lib.ledger.models.Journal.voucher_type>`
+    must be :class:`VatAccountInvoice`)
+
+.. class:: PrintableInvoicesByJournal
+           
+    Purchase journal
+
+.. class:: InvoiceDetail
+           
+    The detail layout used by :class:`Invoices`.    
+
+.. class:: InvoiceItem
+           
+    An item of a :class:`VatAccountInvoice`.
+
+
+.. class:: ItemsByInvoice
+
+.. class:: VouchersByPartner           
+
+
+
+
+Intracom sales and purchases
+============================
 
 The plugin defines two reports accessible via the
 :menuselection:`Reports --> Accounting` menu and integrated in the
@@ -124,8 +170,8 @@ printout of a VAT declaration:
 
 
 
-Models and actors reference
-===========================
+VAT rules
+=========
 
 
 .. class:: VatRule
@@ -157,7 +203,7 @@ Models and actors reference
     .. attribute:: can_edit
 
         Whether the VAT amount can be modified by the user. This applies
-        only for documents with :attr:`VatTotal.auto_compute_totals` set
+        only for documents with :attr:`VatDocument.edit_totals` set
         to `False`.
 
     .. attribute:: vat_account
@@ -200,47 +246,6 @@ Decimal('0.21')
 
 >>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
 Decimal('0.21')
-    
-.. class:: VatAccountInvoice
-                   
-    An invoice for which the user enters just the bare accounts and
-    amounts (not products, quantities, discounts).
-
-    An account invoice does not usually produce a printable
-    document. This model is typically used to store incoming purchase
-    invoices, but exceptions in both directions are possible: (1)
-    purchase invoices can be stored using `purchases.Invoice` if stock
-    management is important, or (2) outgoing sales invoice can have
-    been created using some external tool and are entered into Lino
-    just for the general ledger.
-
-
-.. class:: Invoices
-           
-    The table of all :class:`VatAccountInvoice` objects.
-
-.. class:: InvoicesByJournal
-           
-    Shows all invoices of a given journal (whose
-    :attr:`voucher_type <lino_xl.lib.ledger.models.Journal.voucher_type>`
-    must be :class:`VatAccountInvoice`)
-
-.. class:: PrintableInvoicesByJournal
-           
-    Purchase journal
-
-.. class:: InvoiceDetail
-           
-    The detail layout used by :class:`Invoices`.    
-
-.. class:: InvoiceItem
-           
-    An item of a :class:`VatAccountInvoice`.
-
-
-.. class:: ItemsByInvoice
-
-.. class:: VouchersByPartner           
 
 
 
@@ -267,23 +272,11 @@ Model mixins
 
         The amount of VAT.
 
-    All three total fields are
-    :class:`lino.core.fields.PriceField` instances.
-    When
-    :attr:`auto_compute_totals` is `True`, they
-    are all disabled, 
-    otherwise
-    only :attr:`total_vat`
-    is disabled
-    when :attr:`VatRule.can_edit` is `False`.
+    All three total fields are :class:`lino.core.fields.PriceField`
+    instances.  When :attr:`edit_totals` is `False`, they are all
+    disabled, otherwise only :attr:`total_vat` is disabled when
+    :attr:`VatRule.can_edit` is `False`.
 
-    .. attribute:: auto_compute_totals = False
-                   
-        Set this to `True` on subclasses who compute their totals
-        automatically, i.e. the fields :attr:`total_base`,
-        :attr:`total_vat` and :attr:`total_incl` are disabled.  This is
-        set to `True` for :class:`lino_xl.lib.sales.SalesDocument`.
-                  
     .. method:: get_trade_type
 
         Subclasses of VatTotal must implement this method.
@@ -292,7 +285,7 @@ Model mixins
 
         Return the VAT rule for this voucher or voucher item. Called
         when user edits a total field in the document header when
-        :attr:`auto_compute_totals` is False.
+        :attr:`edit_totals` is True.
 
 
     .. method:: total_base_changed
@@ -331,34 +324,72 @@ Model mixins
 
     Abstract base class for invoices, offers and other vouchers.
 
+    Inherited by :class:`VatAccountInvoice` as well as in other
+    plugins (e.g. :class:`lino_xl.lib.sales.VatProductInvoice` and
+    :class:`lino_xl.lib.ana.AnaAccountInvoice`).
+
+    Models that inherit this mixin can set the following class
+    attribute:
+           
+    .. attribute:: edit_totals
+
+        Whether the user usually wants to edit the total amount or
+        not.
+
+        The total fields of an invoice are not automatically updated
+        each time an item is modified.  Users must click the Σ
+        ("Compute sums") button (or Save or the Register button) to
+        see the invoice's totals.
+
+
+    Inherits the following database fields from :class:`VatTotal`:
+    
+    .. attribute:: total_base
+    .. attribute:: total_vat
+    .. attribute:: total_incl
+
+    Adds the following database fields:
+
+    .. attribute:: project
+                   
+       Pointer to a :attr:`lino_xl.lib.ledger.Plugin.project_model`.
+
     .. attribute:: partner
 
-       Mandatory field to be defined in another class.
+       Mandatory field to be defined in the implementing class.
 
-    .. attribute:: refresh_after_item_edit
+    .. attribute:: items_edited
 
-        The total fields of an invoice are currently not automatically
-        updated each time an item is modified.  Users must click the
-        Save or the Register button to see the invoices totals.
-
-        One idea is to have
-        :meth:`lino_xl.lib.vat.models.VatItemBase.after_ui_save`
-        insert a `refresh_all=True` (into the response to the PUT or
-        POST coming from Lino.GridPanel.on_afteredit).
-        
-        This has the disadvantage that the cell cursor moves to the
-        upper left corner after each cell edit.  We can see how this
-        feels by setting :attr:`refresh_after_item_edit` to `True`.
-
+       An automatically managed boolean field which says whether the
+       user has manually edited the items of this document.  If this
+       is False and :attr:`edit_totals` is True, Lino will
+       automatically update the only invoice item according to
+       :attr:`partner` and :attr:`vat_regime` and :attr:`total_incl`.
+                   
     .. attribute:: vat_regime
 
         The VAT regime to be used in this document.  A pointer to
         :class:`VatRegimes`.
 
-           
+
+    Adds an action:
+
+    .. attribute:: compute_sums
+
+        Calls :class:`ComputeSums` for this document.
+
+
+.. class:: ComputeSums
+
+    Compute the sum fields of a :class:`VatDocument` based on its
+    items.
+
+    Represented by a "Σ" button.
+
+
 .. class:: VatItemBase
            
-    Model mixin for items of a :class:`VatTotal`.
+    Model mixin for items of a :class:`VatDocument`.
 
     Abstract Base class for
     :class:`lino_xl.lib.ledger.InvoiceItem`, i.e. the lines of
@@ -395,18 +426,28 @@ Model mixins
         this.
 
 
-.. class:: QtyVatItemBase        
+.. class:: QtyVatItemBase
 
-    Model mixin for items of a :class:`VatTotal`, adds `unit_price`
-    and `qty`.
 
+    Model mixin for items of a :class:`VatTotal`.  Extends
+    :class:`VatItemBase` by adding :attr:`unit_price` and :attr:`qty`.
+
+    Abstract Base class for :class:`lino_xl.lib.sales.InvoiceItem` and
+    :class:`lino_xl.lib.sales.OrderItem`, i.e. invoice items *with*
+    unit prices and quantities.
+    
     .. attribute:: unit_price
+
+        The unit price for this item.
                    
     .. attribute:: qty
 
-    Abstract Base class for :class:`lino_xl.lib.sales.InvoiceItem` and
-    :class:`lino_xl.lib.sales.OrderItem`, i.e. the lines of invoices
-    *with* unit prices and quantities.
+    Changing the :attr:`unit_price` ot the :attr:`qty` will
+    automatically reset the total amount of this item: the value
+    `unit_price * qty` will be stored in :attr:`total_incl` if
+    :attr:`VatRegime.item_vat` is `True`, otherwise in
+    :attr:`total_base`.
+
 
 
                 

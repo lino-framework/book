@@ -35,17 +35,18 @@ Journals
 
 
 >>> rt.show(accounts.Accounts)
-=========== ========================= =============================== ============================ ==========================
+=========== ========================= =============================== ============================ =================================
  Reference   Designation               Designation (de)                Designation (fr)             Account Group
------------ ------------------------- ------------------------------- ---------------------------- --------------------------
- 4000        Customers                 Kunden                          Clients                      Commercial receivable(?)
- 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts   Commercial receivable(?)
- 4400        Suppliers                 Lieferanten                     Fournisseurs                 Commercial receivable(?)
- 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe                      VAT to pay
- 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner              VAT to pay
- 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible               VAT to pay
- 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée                 Commercial receivable(?)
- 4600        Tax Offices               Steuerämter                     Tax Offices                  Commercial receivable(?)
+----------- ------------------------- ------------------------------- ---------------------------- ---------------------------------
+ 4000        Customers                 Kunden                          Clients                      Commercial assets & liabilities
+ 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts   Other assets & liabilities
+ 4400        Suppliers                 Lieferanten                     Fournisseurs                 Commercial assets & liabilities
+ 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe                      Tax office
+ 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner              Tax office
+ 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible               Tax office
+ 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée                 Tax office
+ 4600        Tax Offices               Steuerämter                     Tax Offices                  Tax office
+ 4900        Waiting                   Wartet                          Attend                       Other assets & liabilities
  5500        BestBank                  BestBank                        BestBank                     Banks
  5700        Cash                      Kasse                           Caisse                       Banks
  6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services           Expenses
@@ -53,6 +54,6 @@ Journals
  6040        Purchase of goods         Wareneinkäufe                   Achats de marchandises       Expenses
  7000        Sales                     Verkauf                         Ventes                       Revenues
  7310        Membership fees           Membership fees                 Membership fees              Revenues
-=========== ========================= =============================== ============================ ==========================
+=========== ========================= =============================== ============================ =================================
 <BLANKLINE>
 

@@ -9,6 +9,6 @@ The deployment process
 
 
    /dev/runtests
+   /dev/testing
    /dev/versioning
    /dev/sdist
-

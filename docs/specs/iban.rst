@@ -1,4 +1,4 @@
-.. doctest docs/specs/cosi/iban.rst
+.. doctest docs/specs/iban.rst
 .. _specs.iban:
 
 ===========================
