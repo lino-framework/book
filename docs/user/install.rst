@@ -27,7 +27,6 @@ Now we create a local project::
     
     $ mkdir mylino
     $ touch mylino/__init__.py
-    $ touch __init__.py
     $ echo "from lino_cosi.lib.cosi.settings import *" > mylino/settings.py
     $ echo "SITE = Site(globals())" >> mylino/settings.py
 

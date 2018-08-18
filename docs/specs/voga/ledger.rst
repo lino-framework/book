@@ -1,17 +1,14 @@
+.. doctest docs/specs/voga/ledger.rst
 .. _voga.specs.ledger:
 
 Ledger
 =======
 
-.. how to test just this document:
+doctest init:
 
-    $ doctest docs/specs/voga/ledger.rst
-
-    doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 Journals
@@ -46,7 +43,7 @@ Journals
  4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible               Tax office
  4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée                 Tax office
  4600        Tax Offices               Steuerämter                     Tax Offices                  Tax office
- 4900        Waiting                   Wartet                          Attend                       Other assets & liabilities
+ 4900        Waiting account           Wartekonto                      Waiting account              Other assets & liabilities
  5500        BestBank                  BestBank                        BestBank                     Banks
  5700        Cash                      Kasse                           Caisse                       Banks
  6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services           Expenses
@@ -56,4 +53,3 @@ Journals
  7310        Membership fees           Membership fees                 Membership fees              Revenues
 =========== ========================= =============================== ============================ =================================
 <BLANKLINE>
-
