@@ -44,6 +44,7 @@ If the installation worked, continue as described in
     $ touch mylino/__init__.py
     $ echo "from lino_cosi.lib.cosi.settings import *" > mylino/settings.py
     $ echo "SITE = Site(globals())" >> mylino/settings.py
+    $ echo "DEBUG = True" >> mylino/settings.py
 
 Then we initialize and populate the demo database::
   
