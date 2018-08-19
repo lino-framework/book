@@ -279,7 +279,7 @@ application:
  4511    vat_returnable            VAT returnable            Liabilities    No          (4511) VAT returnable
  4512    vat_deductible            VAT deductible            Liabilities    No          (4512) VAT deductible
  4513    due_taxes                 VAT declared              Liabilities    No          (4513) VAT declared
- 4900    waiting                   Waiting                   Liabilities    Yes         (4900) Waiting     
+ 4900    waiting                   Waiting account           Liabilities    Yes         (4900) Waiting account
  5500    best_bank                 BestBank                  Assets         No          (5500) BestBank
  5700    cash                      Cash                      Assets         No          (5700) Cash
  6040    purchase_of_goods         Purchase of goods         Expenses       No          (6040) Purchase of goods
