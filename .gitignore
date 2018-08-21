@@ -29,3 +29,4 @@ pisa.Person-1.pdf
 .eggs
 .cache
 media
+.doctrees

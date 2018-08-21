@@ -8,6 +8,9 @@ Quantity Fields
 
 See also :mod:`lino.utils.quantity`.
 
+>>> from lino import startup
+>>> startup('lino_book.projects.quantityfield.settings')
+
 Create some data:
 
 >>> Item(name="Screw",price='2.49',qty='5').save()

@@ -40,33 +40,29 @@ Copyright considerations
 ========================
 
 If you contribute some code to some repository of the Lino project, we
-ask you to assign your copyright to *Luc Saffre* because we want to
-avoid legal problems in case we want to change the license in the
+ask you to assign your copyright to *Rumma & Ko Ltd* because we want
+to avoid legal problems in case we want to change the license in the
 future and because we do not want to add every individual contributor
 to every copyright statement.
 
-Currently most Lino source files are *(c) Luc Saffre*, and we consider
-Luc as the official copyright holder of the Lino framework.  This
-doesn't reflect reality perfectly, but it seems the most reasonable
-formulation at the moment.  As long as there is no legal entity to act
-as copyright holder, everybody just trusts that Luc will manage these
-things one day before he dies.
+Currently most Lino source files are marked either *(c) Rumma & Ko
+Ltd* or *(c) Luc Saffre*.  Those with Luc just haven't yet been
+converted to Rumma & Ko Ltd.  Rumma & Ko is Luc's employer, owned by
+Luc and his wife, so they are in fact the same, the difference is just
+a legal subtlety.  We consider Rumma & Ko as the official copyright
+holder of the Lino framework because they are currently the community
+motor.  This seems the most reasonable formulation at the moment.  We
+plan to change the copyright holder to "Lino Team" or something
+similar in the future.  But currently there is no legal person called
+"Lino Team".  And if some day we would create a legal entity for Lino,
+then its name would maybe not be "Lino Team" because there are other
+projects called "Lino", and they probably also have a "team" around
+them.  See :ref:`lino.name`.  Possible other names for that future
+entity are *Lino Framework project* or *Lino Software Foundation*.  As
+long as there is no legal entity to act as copyright holder, everybody
+must just trust that Rumma & Ko will manage these things before Luc
+dies.  We are still working on the details.
 
-We are still working on the details.
-
-We plan to change the copyright holder to "The Lino Team" or something
-similar in the future.  One challenge is that we currently don't have
-any legal person called "Lino Team".  And if some day we would create
-a legal entity for Lino, then its name would probably not be "Lino
-Team" because there are other projects called "Lino", and they
-probably also have a "team" around them.  See :ref:`lino.name`.
-Possible other names for that future entity are *Lino Framework
-project* or *Lino Software Foundation*.
-
-Rumma & Ko OÜ might act as the copyright holder because they are
-currently the community motor.  This name has some disadvantages: it
-contains an ``&`` and an ``Ü`` which both can cause problems when
-rendering them to different media.
 
 Contributor License Agreement
 =============================
@@ -94,15 +90,16 @@ Bugfix
 - Find a bug in Lino (report it to the others, discuss about how to
   fix it)
   
-- Note that you are in a kind of priveleged situation: the test suite
-  passed, claiming that Lino is perfect and everything works well, but
-  *you* know it better, you know that there is a bug! The best thing
-  to do in this situation is to first write a new test case which
-  reproduces your bug. This new test case will of course break the
-  test suite. You then fix the bug. 
+- A good thing to do in this situation is to first write a new test
+  case which reproduces your bug. This new test case will of course
+  break the test suite. You then fix the bug.
 
 Documentation change
 --------------------
+
+- You stumbled into some pitfall because Lino's documentation is so
+  weak.  Now we should review the docs: how can we avoid that other
+  newbies have this pitfall which caused you frustration.
 
 
 Translations
