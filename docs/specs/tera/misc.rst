@@ -40,6 +40,13 @@ lino_tera.lib.contacts
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
 ['Company', 'Partner', 'Person', 'Household', 'Client']
 
+.. py2rst::
+
+   from lino import startup
+   startup('lino_book.projects.lydia.settings.demo')
+   from lino.api import rt
+   rt.models.contacts.Partner.print_subclasses_graph()
+
 
 Activities
 ==========

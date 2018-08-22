@@ -12,3 +12,4 @@ The deployment process
    /dev/testing
    /dev/versioning
    /dev/sdist
+   /dev/release
