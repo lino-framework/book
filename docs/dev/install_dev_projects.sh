@@ -51,6 +51,7 @@ function install_them_all {
     install ee lsaffre commondata-ee
     install eg lsaffre commondata-eg
     install atelier lino-framework atelier
+    install etgen lino-framework etgen
     install lino lino-framework lino
     install xl lino-framework xl
     install cosi lino-framework cosi
