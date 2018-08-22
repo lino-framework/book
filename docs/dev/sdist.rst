@@ -42,10 +42,9 @@ Open another terminal create a new virgin virtualenv and activate it::
     $ . env/bin/activate
 
 Install :mod:`lino_cosi` as described in :ref:`user.install`, but with
-the difference that we specify :option:`--index-url` (tell pip to use
-our local pypi server) :option:`--extra-index-url` (tell pip to use
-the official pypi server for packages that don't exist on the local
-server)::
+the difference that we specify ``--index-url`` (tell pip to use our
+local pypi server) ``--extra-index-url`` (tell pip to use the official
+pypi server for packages that don't exist on the local server)::
     
     $ pip install --index-url http://localhost:8080/simple --extra-index-url https://pypi.org/simple lino_cosi
 
