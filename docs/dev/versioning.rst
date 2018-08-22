@@ -24,7 +24,7 @@ is needed, then they would call it 16.10.1 (and so on).
 Note that months before September should be numbered 1 to 9 and not 01
 to 09 because otherwise setuptools will normalize them and issue a
 UserWarning.
-
+(`Setuptools issue 308 <https://github.com/pypa/setuptools/issues/308>`__).
 
 
 
