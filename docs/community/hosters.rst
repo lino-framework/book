@@ -38,8 +38,10 @@ Here is our list of **recommended Lino hosting providers**.
   Eupen, Belgium.
 
 - *Abdelkader HANNACHE* provides Lino hosting and development in
-  Annaba (Algeria). Mobile phone: +213 698190526, E-mail:
-  kader.ia@live.fr
+  Montreal (Canada). 
+  Phone: +1 (438) 368-4094
+  Website: https://www.shareforshow.com 
+  E-mail:   kader.ia@live.fr
 
 
 

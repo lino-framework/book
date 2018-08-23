@@ -52,6 +52,8 @@ Models
         Users with an empty `user_type` field are considered inactive and
         cannot log in.
 
+        See also :doc:`/dev/perms`.
+
 
     .. attribute:: partner
 

@@ -23,14 +23,13 @@ application framework must provide a system for managing these
 permissions.
 
 See :doc:`/about/auth` if you wonder why Lino replaces Django's user
-management and permission system.
-
-Yes, this is radical. Django's approach for managing permissions is
-one of the reasons why I wrote Lino.  I believe that maintaining a few
-production sites with applications like :ref:`welfare` or :ref:`voga`
-would be a hell if I had implemented them using Django.  Permission
-management is complex.  Lino doesn't turn it into something simple,
-but it brings light into the dark tunnel...
+management and permission system.  Yes, this is radical. Django's
+approach for managing permissions is one of the reasons why I wrote
+Lino.  I believe that maintaining a few production sites with
+applications like :ref:`welfare` or :ref:`voga` would be a hell if I
+had implemented them using Django.  Permission management is complex.
+Lino doesn't turn it into something simple, but it brings light into
+the dark...
 
 
 
