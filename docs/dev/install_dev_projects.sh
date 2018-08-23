@@ -66,11 +66,12 @@ function install_them_all {
     install ext6 lino-framework extjs6
 
     # the following are needed e.g. to build Luc's blog
-    # install welfare lino-framework welfare
-    # install algus lino-framework algus
-    # install presto lino-framework presto
-    # install patrols lsaffre lino-patrols
-    # install logos lsaffre lino-logos
+    install welfare lino-framework welfare
+    install algus lino-framework algus
+    install presto lino-framework presto
+    install patrols lsaffre lino-patrols
+    install logos lsaffre lino-logos
+    install eid lino-framework eidreader
 
 }
 
