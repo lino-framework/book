@@ -1,3 +1,5 @@
+.. _dev.diving:
+
 ================
 Diving into Lino
 ================
@@ -10,11 +12,11 @@ your work environment and running demo projects.  We are ready to dive
 .. toctree::
    :maxdepth: 1
 
-   lets/index
    models
    tables/index
    layouts/index
    choicelists
+   actions
    slave_tables
    table_summaries
    vtables
@@ -25,3 +27,5 @@ your work environment and running demo projects.  We are ready to dive
    settings
    admin_main
    quantities
+   menu
+   virtualfields

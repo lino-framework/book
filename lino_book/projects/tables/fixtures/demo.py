@@ -17,4 +17,5 @@ def objects():
     yield book("The Hitchhiker's Guide to the Galaxy", adams, 1978, '19.90')
     yield book("Das Blaue vom Himmel", huttner, 1975, '14.90')
     yield book("L'etranger", camus, 1957, '6.90')
+    # yield book("Book", camus, 2001, '4.90')
 

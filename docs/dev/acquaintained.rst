@@ -1,4 +1,4 @@
-.. _lino.acquaintained:
+.. _dev.acquaintained:
 
 =====================
 Getting acquaintained
@@ -9,23 +9,21 @@ Getting acquaintained
    :maxdepth: 1
 
    warning
+   lets/index
    site
    plugins
    i18n
    datamig
    dump2py
    languages
-   menu
    actors
    parameters
    ar
-   virtualfields
    html
    custom_actions
    action_parameters
    gfks
    /tutorials/layouts
-   actions
    delete
    mldbc/index
    plugin_inheritance
