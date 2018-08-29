@@ -179,14 +179,15 @@ The balance of an account
 The **balance** of an account is the amount of money in that account.
 
 An account balance is either Debit or Credit.  We represent this
-internally as a boolean, but define two names `DEBIT` and `CREDIT`:
+internally as the boolean values `True` and `False`, but define two
+names `DEBIT` and `CREDIT` for them:
 
 >>> from lino_xl.lib.accounts.utils import DEBIT, CREDIT
 >>> from lino_xl.lib.accounts.utils import Balance
 >>> DEBIT
-True
->>> CREDIT
 False
+>>> CREDIT
+True
 
 .. class:: Balance
            

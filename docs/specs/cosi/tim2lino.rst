@@ -1,27 +1,24 @@
+.. doctest docs/specs/cosi/tim2lino.rst
 .. _cosi.specs.tim2lino:
 
 ==================
 Importing from TIM
 ==================
 
-..  to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_tim2lino
-
-    >>> import lino
-    >>> lino.startup('lino_book.projects.pierre.settings.demo')
-    >>> from lino.api.doctest import *
-    >>> from django.db.models import Q
+>>> import lino
+>>> lino.startup('lino_book.projects.pierre.settings.demo')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
 
 
 >>> from lino_xl.lib.tim2lino.utils import TimLoader
 >>> tim = TimLoader('', 'en')
 >>> tim.dc2lino("D")
-True
->>> tim.dc2lino("C")
 False
+>>> tim.dc2lino("C")
+True
 
 >>> tim.dc2lino("A")
-True
->>> tim.dc2lino("E")
 False
+>>> tim.dc2lino("E")
+True
