@@ -245,7 +245,7 @@ time. That will be described in :doc:`finan`.
 We can verify that the VAT declaration did the correct sum by looking
 at the history of 4510 of that month:
 
->>> acc = accounts.Account.get_by_ref("4510")
+>>> acc = ledger.Account.get_by_ref("4510")
 >>> rt.show(ledger.MovementsByAccount, acc,
 ...     param_values=dict(start_period=obj.accounting_period))
 ============ ============== ==================================== =========== =========== =======

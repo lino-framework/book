@@ -31,7 +31,7 @@ Journals
 <BLANKLINE>
 
 
->>> rt.show(accounts.Accounts)
+>>> rt.show(ledger.Accounts)
 =========== ========================= =============================== ============================
  Reference   Designation               Designation (de)                Designation (fr)
 ----------- ------------------------- ------------------------------- ----------------------------

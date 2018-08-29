@@ -28,8 +28,7 @@ class Tests(RemoteAuthTestCase):
     def test01(self):
         from lino.modlib.users.choicelists import UserTypes
         User = rt.models.users.User
-        Account = rt.models.accounts.Account
-        # AccountTypes = rt.models.accounts.AccountTypes
+        Account = rt.models.ledger.Account
         
         Journal = rt.models.ledger.Journal
         Partner = rt.models.contacts.Partner

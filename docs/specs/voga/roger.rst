@@ -82,7 +82,7 @@ None
 ============= ====================================== ==========================================
 <BLANKLINE>
 
->>> acc = rt.models.accounts.CommonAccounts.membership_fees.get_object()
+>>> acc = rt.models.ledger.CommonAccounts.membership_fees.get_object()
 >>> print(acc)
 (7310) Membership fees
 

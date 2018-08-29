@@ -18,7 +18,6 @@ from __future__ import print_function
 from lino.api import rt
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils.instantiator import create_row
-from lino_xl.lib.accounts.choicelists import CommonAccounts
 from lino.core.renderer import TestRenderer
 
 
@@ -31,10 +30,10 @@ class QuickTest(object):  # skipping since MakeCopy is no longer needed.
     def test_makecopy(self):
         UserTypes = rt.models.users.UserTypes
         Partner = rt.models.contacts.Partner
-        Account = rt.models.accounts.Account
+        Account = rt.models.ledger.Account
         AnaAccountInvoice = rt.models.ana.AnaAccountInvoice
         jnl = rt.models.ledger.Journal.objects.get(ref="PRC")
-        # acc = rt.models.accounts.Account.objects.get(ref="PRC")
+        # acc = rt.models.ledger.Account.objects.get(ref="PRC")
         user = create_row(rt.models.users.User,
             username="robin", user_type=UserTypes.admin)
         ses = rt.login('robin', renderer=TestRenderer())

@@ -46,7 +46,6 @@ class Site(Site):
         yield 'lino_xl.lib.products'
         #~ 'lino.modlib.journals',
         # yield 'lino.modlib.vat'
-        # yield 'lino.modlib.accounts'
         # yield 'lino.modlib.ledger'
         # yield 'lino.modlib.sales'
         # yield 'lino.modlib.finan'

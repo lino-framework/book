@@ -1,12 +1,9 @@
+.. doctest docs/specs/tera/sql.rst
 .. _specs.tera.sql:
 
 ===================================
 Exploring SQL activity in Lino Tera
 ===================================
-
-..  How to test only this document:
-   
-    $ doctest docs/specs/tera/sql.rst
 
 This document explores some SQL requests in Lino Tera.
 It is also a demo of
@@ -60,8 +57,8 @@ about `Using aggregates within a Subquery expression
 ========================= =======
  table                     count
 ------------------------- -------
- accounts_account          4
  django_session            1
+ ledger_account          4
  ledger_accountingperiod   9
  users_user                1
 ========================= =======

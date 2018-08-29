@@ -20,12 +20,11 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-46 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, summaries, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+45 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, summaries, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
 92 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
- accounts.Account            accounts.Accounts              20        21
  ana.Account                 ana.Accounts                   7         15
  ana.AnaAccountInvoice       ana.Invoices                   20        35
  ana.Group                   ana.Groups                     5         5
@@ -78,6 +77,7 @@ The database structure
  invoicing.Item              invoicing.Items                10        0
  invoicing.Plan              invoicing.Plans                6         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
+ ledger.Account              ledger.Accounts                20        21
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         5
  ledger.FiscalYear           ledger.FiscalYears             6         6
  ledger.Journal              ledger.Journals                24        8
@@ -130,10 +130,8 @@ behaviour. See also :doc:`/dev/delete`.
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_foreign_keys())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- accounts.Account :
-  - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
 - ana.Account :
-  - PROTECT : accounts.Account.ana_account, ana.InvoiceItem.ana_account, ledger.Movement.ana_account
+  - PROTECT : ana.InvoiceItem.ana_account, ledger.Account.ana_account, ledger.Movement.ana_account
 - ana.AnaAccountInvoice :
   - CASCADE : ana.InvoiceItem.voucher
 - ana.Group :
@@ -196,6 +194,8 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : households.Household.type
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
+- ledger.Account :
+  - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
 - ledger.AccountingPeriod :
   - PROTECT : bevats.Declaration.end_period, bevats.Declaration.start_period, ledger.Voucher.accounting_period
 - ledger.FiscalYear :
@@ -232,7 +232,7 @@ behaviour. See also :doc:`/dev/delete`.
 - sepa.Account :
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
 - sheets.Item :
-  - PROTECT : accounts.Account.sheet_item, sheets.Entry.item
+  - PROTECT : ledger.Account.sheet_item, sheets.Entry.item
 - teams.Team :
   - PROTECT : contacts.Partner.team, ledger.Journal.team, users.User.team
 - tera.Client :

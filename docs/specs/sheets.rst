@@ -11,8 +11,7 @@ The :mod:`lino_xl.lib.sheets` plugin adds two important parts of the
 annual financial reports: the *Balance sheet* and the *Income
 statement*.
 
-You should have read :doc:`accounts`
-and :doc:`ledger` before reading this document.
+You should have read :doc:`ledger` before reading this document.
 
 Examples in this document use the :mod:`lino_book.projects.lydia`
 demo project.
@@ -22,7 +21,7 @@ demo project.
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
->>> from lino_xl.lib.accounts.utils import DCLABELS
+>>> from lino_xl.lib.ledger.utils import DCLABELS
 
 
 Table of contents:

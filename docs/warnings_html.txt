@@ -1,3 +1,0 @@
-[31;01m/media/dell1tb/work/book/docs/api/lino_xl.lib.sales.models.rst:11: WARNING: failed to import get_paper_type[39;49;00m
-[31;01m/media/dell1tb/work/book/docs/api/lino_xl.lib.sales.models.rst:21: WARNING: failed to import MakeCopy[39;49;00m
-[31;01m/media/dell1tb/work/book/docs/api/lino_xl.lib.sales.models.rst: WARNING: document isn't included in any toctree[39;49;00m

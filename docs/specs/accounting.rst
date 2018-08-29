@@ -22,7 +22,6 @@ know about accounting stuff.  It will probably never be finished.
 .. toctree::
    :maxdepth: 1
   
-   accounts
    ledger
    finan
    invoicing
