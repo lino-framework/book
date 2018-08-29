@@ -41,7 +41,7 @@ users.UserTypes.admin:900
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Tariffs : Tariffs, Tariff Categories
-  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment terms
+  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
   - VAT : Paper types
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
@@ -49,7 +49,7 @@ users.UserTypes.admin:900
   - System : Authorities, User types, content types, Data checkers, Data problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
-  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
+  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Sales rules, Special Belgian VAT declarations, Declaration fields
   - Activities : Activities, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders

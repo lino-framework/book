@@ -87,26 +87,26 @@ None
 (7310) Membership fees
 
 >>> rt.show(ledger.MovementsByAccount, acc)
-============ ============== ===================================== ============ ======== =============
- Value date   Voucher        Description                           Debit        Credit   Match
------------- -------------- ------------------------------------- ------------ -------- -------------
- 22/12/2015   *CSH 5/2015*   *Faymonville Luc*                     15,00                 **CSH 5:1**
- 22/12/2015   *CSH 5/2015*   *Groteclaes Gregory*                  15,00                 **CSH 5:2**
- 22/12/2015   *CSH 5/2015*   *Hilgers Hildegard*                   15,00                 **CSH 5:3**
- 22/12/2015   *CSH 5/2015*   *Jacobs Jacqueline*                   15,00                 **CSH 5:4**
- 22/12/2015   *CSH 5/2015*   *Jonas Josef*                         15,00                 **CSH 5:5**
- 22/11/2015   *CSH 4/2015*   *Dobbelstein-Demeulenaere Dorothée*   15,00                 **CSH 4:1**
- 22/11/2015   *CSH 4/2015*   *Emonts Daniel*                       15,00                 **CSH 4:3**
- 22/11/2015   *CSH 4/2015*   *Engels Edgar*                        15,00                 **CSH 4:4**
- 22/11/2015   *CSH 4/2015*   *Evers Eberhart*                      15,00                 **CSH 4:2**
- 22/10/2015   *CSH 3/2015*   *Demeulenaere Dorothée*               15,00                 **CSH 3:2**
- 22/10/2015   *CSH 3/2015*   *Dericum Daniel*                      15,00                 **CSH 3:1**
- 22/02/2015   *CSH 2/2015*   *Charlier Ulrike*                     15,00                 **CSH 2:1**
- 22/01/2015   *CSH 1/2015*   *Altenberg Hans*                      15,00                 **CSH 1:2**
- 22/01/2015   *CSH 1/2015*   *Arens Annette*                       15,00                 **CSH 1:1**
- 22/01/2015   *CSH 1/2015*   *Bastiaensen Laurent*                 15,00                 **CSH 1:3**
-                             **Balance 225.00 (15 movements)**     **225,00**
-============ ============== ===================================== ============ ======== =============
+============ ============== ===================================== ======= ============ =============
+ Value date   Voucher        Description                           Debit   Credit       Match
+------------ -------------- ------------------------------------- ------- ------------ -------------
+ 22/12/2015   *CSH 5/2015*   *Faymonville Luc*                             15,00        **CSH 5:1**
+ 22/12/2015   *CSH 5/2015*   *Groteclaes Gregory*                          15,00        **CSH 5:2**
+ 22/12/2015   *CSH 5/2015*   *Hilgers Hildegard*                           15,00        **CSH 5:3**
+ 22/12/2015   *CSH 5/2015*   *Jacobs Jacqueline*                           15,00        **CSH 5:4**
+ 22/12/2015   *CSH 5/2015*   *Jonas Josef*                                 15,00        **CSH 5:5**
+ 22/11/2015   *CSH 4/2015*   *Dobbelstein-Demeulenaere Dorothée*           15,00        **CSH 4:1**
+ 22/11/2015   *CSH 4/2015*   *Emonts Daniel*                               15,00        **CSH 4:3**
+ 22/11/2015   *CSH 4/2015*   *Engels Edgar*                                15,00        **CSH 4:4**
+ 22/11/2015   *CSH 4/2015*   *Evers Eberhart*                              15,00        **CSH 4:2**
+ 22/10/2015   *CSH 3/2015*   *Demeulenaere Dorothée*                       15,00        **CSH 3:2**
+ 22/10/2015   *CSH 3/2015*   *Dericum Daniel*                              15,00        **CSH 3:1**
+ 22/02/2015   *CSH 2/2015*   *Charlier Ulrike*                             15,00        **CSH 2:1**
+ 22/01/2015   *CSH 1/2015*   *Altenberg Hans*                              15,00        **CSH 1:2**
+ 22/01/2015   *CSH 1/2015*   *Arens Annette*                               15,00        **CSH 1:1**
+ 22/01/2015   *CSH 1/2015*   *Bastiaensen Laurent*                         15,00        **CSH 1:3**
+                             **Balance -225.00 (15 movements)**            **225,00**
+============ ============== ===================================== ======= ============ =============
 <BLANKLINE>
 
 

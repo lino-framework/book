@@ -20,13 +20,12 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-90 models:
+46 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, accounts, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, summaries, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+92 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
- accounts.Account            accounts.Accounts              21        16
- accounts.Group              accounts.Groups                6         7
+ accounts.Account            accounts.Accounts              20        21
  ana.Account                 ana.Accounts                   7         15
  ana.AnaAccountInvoice       ana.Invoices                   20        35
  ana.Group                   ana.Groups                     5         5
@@ -54,7 +53,7 @@ The database structure
  contacts.Person             contacts.Persons               33        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         90
+ contenttypes.ContentType    gfks.ContentTypes              3         92
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        59
@@ -64,7 +63,7 @@ The database structure
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
  excerpts.Excerpt            excerpts.Excerpts              12        0
- excerpts.ExcerptType        excerpts.ExcerptTypes          17        9
+ excerpts.ExcerptType        excerpts.ExcerptTypes          17        11
  finan.BankStatement         finan.BankStatements           16        1
  finan.BankStatementItem     finan.BankStatementItemTable   10        6
  finan.JournalEntry          finan.FinancialVouchers        14        0
@@ -80,9 +79,10 @@ The database structure
  invoicing.Plan              invoicing.Plans                6         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         5
+ ledger.FiscalYear           ledger.FiscalYears             6         6
  ledger.Journal              ledger.Journals                24        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
- ledger.MatchRule            ledger.MatchRules              3         12
+ ledger.MatchRule            ledger.MatchRules              3         16
  ledger.Movement             ledger.Movements               13        260
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         67
@@ -104,6 +104,8 @@ The database structure
  sales.VatProductInvoice     sales.Invoices                 25        24
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
+ sheets.Entry                sheets.Entries                 4         18
+ sheets.Item                 sheets.Items                   9         25
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
  tera.Client                 tera.Clients                   60        59
@@ -130,8 +132,6 @@ behaviour. See also :doc:`/dev/delete`.
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - accounts.Account :
   - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
-- accounts.Group :
-  - PROTECT : accounts.Account.group
 - ana.Account :
   - PROTECT : accounts.Account.ana_account, ana.InvoiceItem.ana_account, ledger.Movement.ana_account
 - ana.AnaAccountInvoice :
@@ -181,7 +181,7 @@ behaviour. See also :doc:`/dev/delete`.
 - courses.Topic :
   - PROTECT : courses.Line.topic
 - excerpts.Excerpt :
-  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, sales.VatProductInvoice.printed_by
+  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, ledger.FiscalYear.printed_by, sales.VatProductInvoice.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
 - finan.BankStatement :
@@ -198,6 +198,9 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : invoicing.Item.plan
 - ledger.AccountingPeriod :
   - PROTECT : bevats.Declaration.end_period, bevats.Declaration.start_period, ledger.Voucher.accounting_period
+- ledger.FiscalYear :
+  - CASCADE : sheets.Entry.master
+  - PROTECT : ledger.AccountingPeriod.year
 - ledger.Journal :
   - PROTECT : invoicing.Plan.journal, ledger.MatchRule.journal, ledger.Voucher.journal
 - ledger.PaymentTerm :
@@ -228,6 +231,8 @@ behaviour. See also :doc:`/dev/delete`.
   - SET_NULL : invoicing.Item.invoice
 - sepa.Account :
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
+- sheets.Item :
+  - PROTECT : accounts.Account.sheet_item, sheets.Entry.item
 - teams.Team :
   - PROTECT : contacts.Partner.team, ledger.Journal.team, users.User.team
 - tera.Client :

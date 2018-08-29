@@ -25,8 +25,7 @@ The database structure
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              19        16
- accounts.Group             accounts.Groups                6         7
+ accounts.Account           accounts.Accounts              17        21
  bevats.Declaration         bevats.Declarations            28        15
  cal.Calendar               cal.Calendars                  6         8
  cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
@@ -63,7 +62,7 @@ The database structure
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        17
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        129
  finan.JournalEntry         finan.FinancialVouchers        14        0
@@ -75,9 +74,10 @@ The database structure
  invoicing.Plan             invoicing.Plans                7         1
  invoicing.SalesRule        invoicing.SalesRules           3         4
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
+ ledger.FiscalYear          ledger.FiscalYears             6         7
  ledger.Journal             ledger.Journals                23        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
- ledger.MatchRule           ledger.MatchRules              3         12
+ ledger.MatchRule           ledger.MatchRules              3         16
  ledger.Movement            ledger.Movements               12        854
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         258
@@ -120,8 +120,6 @@ behaviour. See also :doc:`/dev/delete`.
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - accounts.Account :
   - PROTECT : finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
-- accounts.Group :
-  - PROTECT : accounts.Account.group
 - cal.Calendar :
   - PROTECT : cal.Room.calendar, cal.Subscription.calendar, system.SiteConfig.site_calendar
 - cal.Event :
@@ -171,7 +169,7 @@ behaviour. See also :doc:`/dev/delete`.
 - courses.Topic :
   - PROTECT : courses.Line.topic
 - excerpts.Excerpt :
-  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, sales.VatProductInvoice.printed_by
+  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, ledger.FiscalYear.printed_by, sales.VatProductInvoice.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
 - finan.BankStatement :
@@ -184,6 +182,8 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : invoicing.Item.plan
 - ledger.AccountingPeriod :
   - PROTECT : bevats.Declaration.end_period, bevats.Declaration.start_period, ledger.Voucher.accounting_period
+- ledger.FiscalYear :
+  - PROTECT : ledger.AccountingPeriod.year
 - ledger.Journal :
   - PROTECT : invoicing.Plan.journal, ledger.MatchRule.journal, ledger.Voucher.journal
 - ledger.PaymentTerm :

@@ -26,7 +26,7 @@ def objects():
     Company = rt.models.contacts.Company
     Product = rt.models.products.Product
     Account = rt.models.accounts.Account
-    AccountTypes = rt.models.accounts.AccountTypes
+    CommonItems = rt.models.sheets.CommonItems
     CommonAccounts = rt.models.accounts.CommonAccounts
 
     yield create_user("daniel", UserTypes.therapist)
@@ -44,8 +44,8 @@ def objects():
     yield named(Product, _("Group therapy"), sales_price=30)
     indacc = named(
         Account, _("Sales on individual therapies"),
-        group=CommonAccounts.sales.get_object().group,
-        type=AccountTypes.incomes, ref="7010")
+        #group=CommonAccounts.sales.get_object().group,
+        sheet_item=CommonItems.sales.get_object(), ref="7010")
     yield indacc
     yield named(
         Product, _("Individual therapy"),

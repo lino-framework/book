@@ -19,37 +19,42 @@ Journals
 =========== =============================== ========================= ========================= ===================== =============================== ===========================
  Reference   Designation                     Designation (de)          Designation (fr)          Trade type            Account                         Primary booking direction
 ----------- ------------------------------- ------------------------- ------------------------- --------------------- ------------------------------- ---------------------------
- SLS         Sales invoices                  Verkaufsrechnungen        Factures vente            Sales                                                 Debit
- SLC         Sales credit notes              Gutschriften Verkauf      Sales credit notes        Sales                                                 Credit
- PRC         Purchase invoices               Einkaufsrechnungen        Factures achat            Purchases                                             Credit
- PMO         Bestbank Payment Orders         Bestbank Payment Orders   Bestbank Payment Orders   Bank payment orders   (4300) Pending Payment Orders   Credit
- CSH         Cash                            Kasse                     Caisse                                          (5700) Cash                     Debit
- BNK         Bestbank                        Bestbank                  Bestbank                                        (5500) BestBank                 Debit
- MSC         Miscellaneous Journal Entries   Diverse Buchungen         Opérations diverses                             (5700) Cash                     Debit
- VAT         VAT declarations                MwSt.-Erklärungen         Déclarations TVA          Taxes                 (4513) VAT declared             Credit
+ SLS         Sales invoices                  Verkaufsrechnungen        Factures vente            Sales                                                 Credit
+ SLC         Sales credit notes              Gutschriften Verkauf      Sales credit notes        Sales                                                 Debit
+ PRC         Purchase invoices               Einkaufsrechnungen        Factures achat            Purchases                                             Debit
+ PMO         Bestbank Payment Orders         Bestbank Payment Orders   Bestbank Payment Orders   Bank payment orders   (4300) Pending Payment Orders   Debit
+ CSH         Cash                            Kasse                     Caisse                                          (5700) Cash                     Credit
+ BNK         Bestbank                        Bestbank                  Bestbank                                        (5500) BestBank                 Credit
+ MSC         Miscellaneous Journal Entries   Diverse Buchungen         Opérations diverses                             (5700) Cash                     Credit
+ VAT         VAT declarations                MwSt.-Erklärungen         Déclarations TVA          Taxes                 (4513) VAT declared             Debit
 =========== =============================== ========================= ========================= ===================== =============================== ===========================
 <BLANKLINE>
 
 
 >>> rt.show(accounts.Accounts)
-=========== ========================= =============================== ============================ =================================
- Reference   Designation               Designation (de)                Designation (fr)             Account Group
------------ ------------------------- ------------------------------- ---------------------------- ---------------------------------
- 4000        Customers                 Kunden                          Clients                      Commercial assets & liabilities
- 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts   Other assets & liabilities
- 4400        Suppliers                 Lieferanten                     Fournisseurs                 Commercial assets & liabilities
- 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe                      Tax office
- 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner              Tax office
- 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible               Tax office
- 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée                 Tax office
- 4600        Tax Offices               Steuerämter                     Tax Offices                  Tax office
- 4900        Waiting account           Wartekonto                      Waiting account              Other assets & liabilities
- 5500        BestBank                  BestBank                        BestBank                     Banks
- 5700        Cash                      Kasse                           Caisse                       Banks
- 6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services           Expenses
- 6020        Purchase of investments   Investierungskäufe              Achats d'investissement      Expenses
- 6040        Purchase of goods         Wareneinkäufe                   Achats de marchandises       Expenses
- 7000        Sales                     Verkauf                         Ventes                       Revenues
- 7310        Membership fees           Membership fees                 Membership fees              Revenues
-=========== ========================= =============================== ============================ =================================
+=========== ========================= =============================== ============================
+ Reference   Designation               Designation (de)                Designation (fr)
+----------- ------------------------- ------------------------------- ----------------------------
+ 1000        Net income (loss)         Net income (loss)               Net income (loss)
+ 4000        Customers                 Kunden                          Clients
+ 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts
+ 4400        Suppliers                 Lieferanten                     Fournisseurs
+ 4500        Employees                 Angestellte                     Employés
+ 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe
+ 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner
+ 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible
+ 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée
+ 4600        Tax Offices               Steuerämter                     Tax Offices
+ 4900        Waiting account           Wartekonto                      Waiting account
+ 5500        BestBank                  BestBank                        BestBank
+ 5700        Cash                      Kasse                           Caisse
+ 6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services
+ 6020        Purchase of investments   Investierungskäufe              Achats d'investissement
+ 6040        Purchase of goods         Wareneinkäufe                   Achats de marchandises
+ 6300        Wages                     Löhne und Gehälter              Salaires
+ 6900        Net income                Net income                      Net income
+ 7000        Sales                     Verkauf                         Ventes
+ 7310        Membership fees           Membership fees                 Membership fees
+ 7900        Net loss                  Net loss                        Net loss
+=========== ========================= =============================== ============================
 <BLANKLINE>

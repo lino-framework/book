@@ -38,31 +38,90 @@ Installing this plugin will automatically install
 The choice lists for VAT regimes and VAT columns are reduced compared
 to those defined in :doc:`bevat`:
 
+.. class:: VatRegimes
 
->>> rt.show('vat.VatRegimes')
-======= =============== ====================
- value   name            text
-------- --------------- --------------------
- 10      normal          Not subject to VAT
- 20      subject         Subject to VAT
- 30      intracom        Intracom services
- 35      intracom_supp   Intracom supplies
-======= =============== ====================
-<BLANKLINE>
+    The :mod:`lino_xl.lib.betvats` plugin redefines the list of VAT
+    regimes:
 
->>> rt.show('vat.VatColumns')
-======= ====== ==============================
- value   name   text
-------- ------ ------------------------------
- 54             VAT due
- 71             Purchase of ware
- 72             Purchase of new vehicles
- 73             Purchase of excised products
- 75             Purchase of services
- 76             Other purchase
-======= ====== ==============================
-<BLANKLINE>
+    >>> rt.show('vat.VatRegimes')
+    ======= =============== ====================
+     value   name            text
+    ------- --------------- --------------------
+     10      normal          Not subject to VAT
+     20      subject         Subject to VAT
+     30      intracom        Intracom services
+     35      intracom_supp   Intracom supplies
+    ======= =============== ====================
+    <BLANKLINE>
 
+.. class:: VatColumns
+
+    The :mod:`lino_xl.lib.betvats` plugin redefines the list of VAT
+    columns:
+
+    >>> rt.show('vat.VatColumns')
+    ======= ====== ==============================
+     value   name   text
+    ------- ------ ------------------------------
+     54             VAT due
+     71             Purchase of ware
+     72             Purchase of new vehicles
+     73             Purchase of excised products
+     75             Purchase of services
+     76             Other purchase
+    ======= ====== ==============================
+    <BLANKLINE>
+
+.. class:: DeclarationFields
+      
+    >>> rt.show('bevats.DeclarationFields')  #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
+    +-------+------+------+--------------------------------------------+
+    | value | name | text | Description                                |
+    +=======+======+======+============================================+
+    | 71    | F71  | [71] | Intracom supplies |br|                     |
+    |       |      |      | columns 71 |br|                            |
+    |       |      |      | MvtDeclarationField Debit |br|             |
+    +-------+------+------+--------------------------------------------+
+    | 72    | F72  | [72] | New vehicles |br|                          |
+    |       |      |      | columns 72 |br|                            |
+    |       |      |      | MvtDeclarationField Debit |br|             |
+    +-------+------+------+--------------------------------------------+
+    | 73    | F73  | [73] | Excised products |br|                      |
+    |       |      |      | columns 73 |br|                            |
+    |       |      |      | MvtDeclarationField Debit |br|             |
+    +-------+------+------+--------------------------------------------+
+    | 75    | F75  | [75] | Intracom services |br|                     |
+    |       |      |      | columns 75 |br|                            |
+    |       |      |      | MvtDeclarationField Debit |br|             |
+    +-------+------+------+--------------------------------------------+
+    | 76    | F76  | [76] | Other operations |br|                      |
+    |       |      |      | columns 76 |br|                            |
+    |       |      |      | MvtDeclarationField Debit |br|             |
+    +-------+------+------+--------------------------------------------+
+    | 77    | F77  | [77] | Credit notes on 71, 72, 73 and 75 |br|     |
+    |       |      |      | columns 71 72 73 75 |br|                   |
+    |       |      |      | MvtDeclarationField Credit only |br|       |
+    +-------+------+------+--------------------------------------------+
+    | 78    | F78  | [78] | Credit notes on 76 |br|                    |
+    |       |      |      | columns 76 |br|                            |
+    |       |      |      | MvtDeclarationField Debit only |br|        |
+    +-------+------+------+--------------------------------------------+
+    | 80    | F80  | [80] | Due VAT for 71...76 |br|                   |
+    |       |      |      | columns 54 |br|                            |
+    |       |      |      | MvtDeclarationField Credit |br|            |
+    +-------+------+------+--------------------------------------------+
+    | 81    | F81  | [81] | Miscellaneous corrections due |br|         |
+    |       |      |      | WritableDeclarationField Credit |br|       |
+    +-------+------+------+--------------------------------------------+
+    | 82    | F82  | [82] | Miscellaneous corrections returnable |br|  |
+    |       |      |      | WritableDeclarationField Debit |br|        |
+    +-------+------+------+--------------------------------------------+
+    | 83    | F83  | [83] | Total to pay |br|                          |
+    |       |      |      | SumDeclarationField Credit |br|            |
+    |       |      |      | Sum of F80 F81 F82 |br|                    |
+    +-------+------+------+--------------------------------------------+
+    <BLANKLINE>
+    
 
 Intracommunal purchases
 =======================
