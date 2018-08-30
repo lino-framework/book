@@ -19,26 +19,21 @@ command.
 The ``Summary`` model mixin
 ===========================
            
-.. class:: Summary
-
-    Abstract base class for all "summary data" models.
-
+.. class:: TimelessSummary
+           
+    Model mixin for all "summary data" models.
+           
     .. attribute:: master
 
-       Any implementing subclass of :class:`Summary` must define a
-       field named :attr:`master` which must be a ForeignKey field.
-       The target model of the :attr:`master` will automatically
-       receive an action `check_summaries`.  The mixin also sets
-       :attr:`allow_cascaded_delete
-       <lino.core.model.Model.allow_cascaded_delete>` to ``'master'``.
+        Any implementing subclass of :class:`TimelessSummary` must
+        define a field named :attr:`master` which must be a ForeignKey
+        field.  The target model of the :attr:`master` will
+        automatically receive an action `check_summaries`.
+        The mixin also sets
+        :attr:`allow_cascaded_delete
+        <lino.core.model.Model.allow_cascaded_delete>` to ``'master'``.
+
        
-    .. attribute:: summary_period
-                   
-       Can be ``'yearly'``, ``'monthly'`` or ``'timeless'``.
-       
-    .. attribute:: year
-    .. attribute:: month
-                   
     .. method:: compute_results
 
         Update this summary.
@@ -63,6 +58,15 @@ The ``Summary`` model mixin
         in `qs`. The collector is responsible for updating that
         object.
 
+.. class:: Summary
+
+    .. attribute:: summary_period
+                   
+       Can be ``'yearly'``, ``'monthly'`` or ``'timeless'``.
+       
+    .. attribute:: year
+    .. attribute:: month
+                   
                 
 
 The ``checksummaries`` admin command

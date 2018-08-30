@@ -547,10 +547,51 @@ VAT declarations
 ================
 
 .. class:: VatDeclaration
-           
-.. autoclass:: lino_xl.lib.vat.mixins.VatDeclaration
 
-.. class:: DeclarationField
+    Abstract base class for VAT declarations.
+
+    A **VAT declaration** is when a company declares to its government
+    how much sales and purchases they've done during a given period.
+
+    A VAT declaration is a computed summary of ledger movements in an
+    **observed period**, but it is also itself a ledger voucher which
+    generates new movements in its own period.
+
+    :class:`lino_xl.lib.sepa.Payable`
+    :class:`lino_xl.lib.ledger.Voucher`
+    :class:`lino_xl.lib.excerpts.Certifiable`
+    :class:`lino_xl.lib.ledger.PeriodRange`
+
+    .. attribute:: accounting_period
+
+    .. method:: get_payable_sums_dict
            
-.. autoclass:: lino_xl.lib.vat.choicelists.DeclarationField
+        Implements
+        :meth:`lino_xl.lib.sepa.Payable.get_payable_sums_dict`.
+
+        As a side effect this updates values in the computed fields of
+        this declaration.
+           
+.. class:: DeclarationField
+
+    Base class for all fields of VAT declarations.
+
+    .. attribute:: both_dc
+    .. attribute:: editable
+    .. attribute:: fieldnames
+
+       An optional space-separated list of names of other declaration
+       fields to be observed by this field.
+                   
+    .. attribute:: vat_regimes
+    .. attribute:: vat_classes
+    .. attribute:: vat_columns
+                   
+    .. attribute:: exclude_vat_regimes
+    .. attribute:: exclude_vat_classes
+    .. attribute:: exclude_vat_columns
+    .. attribute:: is_payable
+    
+
+.. class:: DeclarationFieldsBase           
            

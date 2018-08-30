@@ -76,7 +76,7 @@ True
 ...         print("Not visible: {}".format(t))
 ...     count += 1
 >>> print("Verified {} models".format(count))
-Verified 90 models
+Verified 92 models
 
 >>> rt.models.contacts.Person.quick_search_fields_digit
 (<django.db.models.fields.AutoField: id>,)

@@ -1,33 +1,24 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
 from __future__ import print_function
 
-import datetime
-
 from django.conf import settings
 from lino.api import rt, dd, _
-from lino.utils import Cycler, i2d
+from lino.utils import Cycler
 
-from lino.core.roles import SiteAdmin
-from lino_xl.lib.cal.choicelists import DurationUnits
-#from lino_xl.lib.working.roles import Worker
-from lino.utils.quantities import Duration
 from lino.utils.mldbc import babel_named as named
 from lino.modlib.users.utils import create_user
-
-#from lino_xl.lib.working.choicelists import ReportingTypes
 
 
 def objects():
     UserTypes = rt.models.users.UserTypes
     Company = rt.models.contacts.Company
     Product = rt.models.products.Product
-    Account = rt.models.accounts.Account
-    AccountTypes = rt.models.accounts.AccountTypes
-    CommonAccounts = rt.models.accounts.CommonAccounts
+    Account = rt.models.ledger.Account
+    CommonItems = rt.models.sheets.CommonItems
 
     yield create_user("daniel", UserTypes.therapist)
     yield create_user("elmar", UserTypes.therapist)
@@ -44,8 +35,7 @@ def objects():
     yield named(Product, _("Group therapy"), sales_price=30)
     indacc = named(
         Account, _("Sales on individual therapies"),
-        group=CommonAccounts.sales.get_object().group,
-        type=AccountTypes.incomes, ref="7010")
+        sheet_item=CommonItems.sales.get_object(), ref="7010")
     yield indacc
     yield named(
         Product, _("Individual therapy"),

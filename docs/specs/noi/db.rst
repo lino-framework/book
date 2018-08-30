@@ -86,7 +86,7 @@ This document describes the database structure.
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1
- working.SiteSummary                working.Summaries                17        3
+ working.SiteSummary                working.Summaries                17        9
 ================================== ================================ ========= =======
 <BLANKLINE>
 

@@ -61,13 +61,13 @@ Robin is the system administrator, he has a complete menu:
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
-  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment terms
+  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
   - Office : Excerpt Types, My Text Field Templates
   - VAT : Paper types
 - Explorer :
   - System : content types, Authorities, User types
   - Contacts : Contact Persons, Partners
-  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
+  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - SEPA : Bank accounts
   - Office : Excerpts, Text Field Templates
   - VAT : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Sales rules, Belgian VAT declarations, Declaration fields

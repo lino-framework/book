@@ -88,7 +88,7 @@ Configure --> Accounting --> Analytical account groups
 The plugin then injects two fields to your general accounts model and
 one field into your movments model:
 
->>> show_fields(accounts.Account, "needs_ana ana_account")
+>>> show_fields(ledger.Account, "needs_ana ana_account")
 +---------------+--------------------------+---------------------------------------------------------------+
 | Internal name | Verbose name             | Help text                                                     |
 +===============+==========================+===============================================================+

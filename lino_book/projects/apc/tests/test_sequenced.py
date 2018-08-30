@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2017 Luc Saffre
+# Copyright 2013-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about the Sequenced mixin.
@@ -28,8 +28,7 @@ class Tests(RemoteAuthTestCase):
     def test01(self):
         from lino.modlib.users.choicelists import UserTypes
         User = rt.models.users.User
-        Account = rt.models.accounts.Account
-        AccountTypes = rt.models.accounts.AccountTypes
+        Account = rt.models.ledger.Account
         
         Journal = rt.models.ledger.Journal
         Partner = rt.models.contacts.Partner
@@ -46,10 +45,10 @@ class Tests(RemoteAuthTestCase):
             user_type=UserTypes.admin, language="en")
         ar = rt.login('robin')
         
-        a = create_row(Account, name="A", type=AccountTypes.expenses)
-        b = create_row(Account, name="B", type=AccountTypes.expenses)
-        c = create_row(Account, name="C", type=AccountTypes.expenses)
-        d = create_row(Account, name="D", type=AccountTypes.expenses)
+        a = create_row(Account, name="A")
+        b = create_row(Account, name="B")
+        c = create_row(Account, name="C")
+        d = create_row(Account, name="D")
 
         lst = [i.seqno for i in Account.objects.order_by('name')]
         self.assertEqual(lst, [1, 2, 3, 4])

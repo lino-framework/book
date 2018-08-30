@@ -6,7 +6,7 @@ Accounting stuff in Lino
 ========================
 
 This section explains everything a Lino application developer needs to
-know about accounting stuff.
+know about accounting stuff.  It will probably never be finished.
 
     When designing an accounting package, the programmer operates as a
     mediator between people having different ideas: how it must
@@ -17,14 +17,11 @@ know about accounting stuff.
     ideas. This is why an operating system is easier to design.  
     -- Tao of programming
 
-To be honest I must add that this section will probably never be
-finished.
 
 
 .. toctree::
    :maxdepth: 1
   
-   accounts
    ledger
    finan
    invoicing
@@ -34,3 +31,4 @@ finished.
    bevat
    bevats
    sepa
+   sheets

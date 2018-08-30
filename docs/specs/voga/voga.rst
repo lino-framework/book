@@ -47,7 +47,7 @@ check whether we get the expected response.
 
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
->>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=11, accounting_period__year='14')
+>>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=11, accounting_period__year__ref='2014')
 
 >>> obj.printed_by is None
 True
