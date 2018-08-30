@@ -104,7 +104,7 @@ to make it possible).
 >>> ar = ba.request_from(ses, action_param_values=pv)
 >>> ar.set_confirm_answer(False)
 >>> response = o1.merge_row(ar)
->>> ar.response.has_key('xcallback')
+>>> 'xcallback' in ar.response
 True
 >>> msg = ar.response['message']
 >>> print(tostring(msg))
