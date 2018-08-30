@@ -145,64 +145,8 @@ Tables
     display the list of available users.
 
 
-
-Mixins
-======
-
-.. class:: TimezoneHolder
-
-    Mixin for database models which have a :attr:`timezone` field.
-
-    .. attribute:: timezone
-    
-        The timezone.
-
-           
-.. class:: Authored
-
-    .. attribute:: manager_roles_required
-
-        The list of required roles for getting permission to edit
-        other users' work.
-
-        By default, only :class:`SiteStaff
-        <lino.core.roles.SiteStaff>` users can edit other users' work.
-
-        An application can set :attr:`manager_roles_required` to some
-        other user role class or a tuple of such classes.
-
-        Setting :attr:`manager_roles_required` to ``[]`` will **disable**
-        this behaviour (i.e. everybody can edit the work of other users).
-
-        This is going to be passed to :meth:`has_required_roles
-        <lino.core.users.choicelists.UserType.has_required_roles>` of
-        the requesting user's profile.
-
-        Usage examples see :class:`lino_xl.lib.notes.models.Note` or
-        :class:`lino_xl.lib.cal.models.Component`.
-
-
-    .. attribute:: author_field_name
-
-        No longer used. The name of the field that defines the author
-        of this object.
-
-           
-
-.. class:: UserAuthored(Authored)
-
-    Mixin for models that have a :attr:`user` field which points to
-    the "author" of this object. The default user of new instances is
-    automatically set to the requesting user.
-
-    .. attribute:: user
-
-        The author of this object.
-        A pointer to :class:`lino.modlib.users.models.User`.
-        
-
-Choicelists
-===========
+User types
+==========
 
 .. class:: UserTypes
 
@@ -327,6 +271,92 @@ Actions
            
     Sign out the current user and return to the welcome screen for
     anonymous visitors.
+
+
+
+
+Mixins
+======
+
+.. class:: Authored
+
+    .. attribute:: manager_roles_required
+
+        The list of required roles for getting permission to edit
+        other users' work.
+
+        By default, only :class:`SiteStaff
+        <lino.core.roles.SiteStaff>` users can edit other users' work.
+
+        An application can set :attr:`manager_roles_required` to some
+        other user role class or a tuple of such classes.
+
+        Setting :attr:`manager_roles_required` to ``[]`` will **disable**
+        this behaviour (i.e. everybody can edit the work of other users).
+
+        This is going to be passed to :meth:`has_required_roles
+        <lino.core.users.choicelists.UserType.has_required_roles>` of
+        the requesting user's profile.
+
+        Usage examples see :class:`lino_xl.lib.notes.models.Note` or
+        :class:`lino_xl.lib.cal.models.Component`.
+
+
+    .. attribute:: author_field_name
+
+        No longer used. The name of the field that defines the author
+        of this object.
+
+           
+
+.. class:: UserAuthored
+
+    Inherits from :class:`Authored`.
+
+    Mixin for models that have a :attr:`user` field which points to
+    the "author" of this object. The default user of new instances is
+    automatically set to the requesting user.
+
+    .. attribute:: user
+
+        The author of this object.
+        A pointer to :class:`lino.modlib.users.models.User`.
+        
+    
+.. class:: UserPlan
+
+    Mixin for anything that represents some plan of a given user on a
+    given day.  The mixin makes sure that there is only one instance
+    per user.  This instance is considered of low value and to be
+    reused frequently.
+
+    Inherits from :class:`UserAuthored`.
+
+    Usage examples: :class:`lino_xl.lib.invoicing.Plan`,
+    :class:`lino_xl.ledger.Report`.
+
+    .. attribute:: user
+
+         The user who manages this plan.
+         
+    .. attribute:: today
+
+         This date of this plan.  This is automatically set to today
+         each time the plan is called or updated.
+         
+    .. attribute:: update_plan_button
+
+    .. method:: update_plan(self, ar)
+
+        Implementing models should provide this method.
+
+    
+.. class:: UpdatePlan
+
+    Build a new list of suggestions.    
+    This will remove all current suggestions.
+           
+           
 
 
 

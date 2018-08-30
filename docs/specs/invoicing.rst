@@ -10,12 +10,8 @@ The :mod:`lino_xl.lib.invoicing` plugin adds functionality for
 database.
 
 This document describes some general aspects of invoicing and how
-applications can handle this topic.
-See also
-
-- :doc:`/specs/voga/invoicing`
-- :doc:`sales`
-- :doc:`accounting`
+applications can handle this topic.  You should have read :doc:`sales`
+and :doc:`accounting`.  See also :doc:`/specs/voga/invoicing`.
 
 The examples in this document have been tested using the :mod:`pierre
 <lino_book.projects.pierre>` demo project.
@@ -32,17 +28,68 @@ The examples in this document have been tested using the :mod:`pierre
    :local:
 
 
-Manually editing automatically generated invoices
-=================================================
 
-Resetting title and description of a generated invoice item
-===========================================================
+The ``Invoiceable`` model mixin
+===============================
 
-When the user sets `title` of an automatically generated invoice
-item to an empty string, then Lino restores the default value for
-both title and description
+.. class:: Invoiceable
+
+    Mixin for things that are "invoiceable", i.e. for which Lino
+    should generate an invoice.
+
+    Subclasses must implement the following:
+
+    .. method:: get_invoiceables_for_plan(cls, plan, partner=None)
+                
+        Yield a sequence of invoiceables (of this class) for the given
+        plan.  If a `partner` is given, use it as an additional filter
+        condition.
+
+    .. attribute:: incoiceable_date_field
+
+       The name of the field which holds the invoiceable date.  Must
+       be set by subclasses.
+       
+
+    .. method:: get_invoiceable_product(self, plan)
+
+        To be implemented by subclasses.  Return the product to put
+        into the invoice item.
+                
+    .. method:: get_invoiceable_qty(self)
+                
+        To be implemented by subclasses.  Return the quantity to put
+        into the invoice item.
 
 
+    .. method:: get_invoiceable_title(self, invoice=None)
+
+        Return the title to put into the invoice item.  May be
+        overridden by subclasses.
+
+    The mixin adds the following methods to the model:
+        
+    .. attribute:: invoicings
+
+        A simple `GenericRelation
+        <https://docs.djangoproject.com/ja/1.9/ref/contrib/contenttypes/#reverse-generic-relations>`_
+        to all invoice items pointing to this enrolment.
+
+        This is preferred over :meth:`get_invoicings`.
+
+           
+    .. method:: get_invoicings(**kwargs)
+
+        Get a queryset with the invoicings which point to this
+        enrolment.
+
+        This is deprecated. Preferred way is to use
+        :attr:`invoicings`.
+
+                
+
+Sales rules
+===========
 
 .. class:: SalesRule
            
@@ -51,6 +98,10 @@ both title and description
    .. attribute:: paper_type
                   
 .. class:: SalesRules
+
+
+The invoicing plan
+==================
            
 .. class:: Plan
 
@@ -58,7 +109,16 @@ both title and description
     represents the plan of a given user to have Lino generate a series
     of invoices.
 
+    It inherits from :class:`lino.modlib.users.UserPlan`.
+
     .. attribute:: user
+
+         The user who manages this plan.
+         
+    .. attribute:: today
+
+         This date will be used for the invoices to generate.
+         
     .. attribute:: journal
 
         The journal where to create invoices.  When this field is
@@ -66,7 +126,6 @@ both title and description
         execute the plan.
 
     .. attribute:: max_date
-    .. attribute:: today
     .. attribute:: partner
 
     .. attribute:: update_plan
@@ -137,68 +196,7 @@ both title and description
 .. class:: Items
 .. class:: ItemsByPlan
 .. class:: InvoicingsByInvoiceable
-
-The ``Invoiceable`` model mixin
-===============================
-
-.. class:: Invoiceable
-
-    Mixin for things that are "invoiceable", i.e. for which a customer
-    is going to receive an invoice.
-
-    Subclasses must implement the following:
-
-    .. method:: get_invoiceables_for_plan(cls, plan, partner=None)
-                
-        Yield a sequence of invoiceables (of this class) for the given
-        plan.  If a `partner` is given, use it as an additional filter
-        condition.
-
-    .. attribute:: incoiceable_date_field
-
-       The name of the field which holds the invoiceable date.  Must
-       be set by subclasses.
-       
-
-    .. method:: get_invoiceable_product(self, plan)
-
-        To be implemented by subclasses.  Return the product to put
-        into the invoice item.
-                
-    .. method:: get_invoiceable_qty(self)
-                
-        To be implemented by subclasses.  Return the quantity to put
-        into the invoice item.
-
-
-    .. method:: get_invoiceable_title(self, invoice=None)
-
-        Return the title to put into the invoice item.  May be
-        overridden by subclasses.
-
-    The mixin adds the following methods to the model:
-        
-    .. attribute:: invoicings
-
-        A simple `GenericRelation
-        <https://docs.djangoproject.com/ja/1.9/ref/contrib/contenttypes/#reverse-generic-relations>`_
-        to all invoice items pointing to this enrolment.
-
-        This is preferred over :meth:`get_invoicings`.
-
            
-    .. method:: get_invoicings(**kwargs)
-
-        Get a queryset with the invoicings which point to this
-        enrolment.
-
-        This is deprecated. Preferred way is to use
-        :attr:`invoicings`.
-
-                
-Actions
-=======
-
 .. class:: StartInvoicing
 
     Base for :class:`StartInvoicingForJournal` and
@@ -222,12 +220,6 @@ Actions
     <lino_xl.lib.contacts.Partner>` model as `start_invoicing`.
 
     
-.. class:: UpdatePlan
-
-    Build a new list of suggestions.    
-    This will remove all current suggestions.
-           
-           
 .. class:: ExecutePlan
            
    Execute this invoicing plan.
@@ -242,3 +234,16 @@ Actions
     
     Invert selection status for all suggestions.
            
+
+
+Manually editing automatically generated invoices
+=================================================
+
+Resetting title and description of a generated invoice item
+===========================================================
+
+When the user sets `title` of an automatically generated invoice
+item to an empty string, then Lino restores the default value for
+both title and description
+
+    
