@@ -31,8 +31,8 @@ Doctest initialization:
 
 Check some permissions:
 
->>> rt.models.watch2.Companies.required_roles
-set([<class 'lino.core.roles.SiteUser'>])
+>>> pprint(list(rt.models.watch2.Companies.required_roles))
+[<class 'lino.core.roles.SiteUser'>]
 
 >>> from lino.core.roles import SiteUser
 >>> albert = rt.models.users.User.objects.get(username="Albert")
