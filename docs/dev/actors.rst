@@ -84,7 +84,7 @@ lino.modlib.system.models.SiteConfigs
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 
->>> kernel.generic_slaves.values()
+>>> list(kernel.generic_slaves.values())
 [lino.modlib.uploads.models.UploadsByController, lino_xl.lib.cal.ui.EntriesByController, lino.modlib.changes.models.ChangesByObject, lino_xl.lib.cal.ui.TasksByController, lino.modlib.gfks.models.HelpTextsByModel, lino.modlib.changes.models.ChangesByMaster, lino.modlib.comments.ui.CommentsByRFC, lino_xl.lib.topics.models.InterestsByController, lino.modlib.checkdata.models.ProblemsByOwner, lino_xl.lib.excerpts.models.ExcerptsByOwner]
 
 >>> for a in kernel.generic_slaves.values():
@@ -101,7 +101,7 @@ Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
 32
->>> kernel.CHOICELISTS.items()[0]
+>>> list(sorted(kernel.CHOICELISTS.items()))[6]
 ('cal.PlannerColumns', lino_xl.lib.cal.choicelists.PlannerColumns)
 
 >>> for a in kernel.CHOICELISTS.values():
