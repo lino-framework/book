@@ -84,8 +84,8 @@ lino.modlib.system.models.SiteConfigs
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 
->>> list(kernel.generic_slaves.values())
-[lino.modlib.uploads.models.UploadsByController, lino_xl.lib.cal.ui.EntriesByController, lino.modlib.changes.models.ChangesByObject, lino_xl.lib.cal.ui.TasksByController, lino.modlib.gfks.models.HelpTextsByModel, lino.modlib.changes.models.ChangesByMaster, lino.modlib.comments.ui.CommentsByRFC, lino_xl.lib.topics.models.InterestsByController, lino.modlib.checkdata.models.ProblemsByOwner, lino_xl.lib.excerpts.models.ExcerptsByOwner]
+>>> list(sorted(kernel.generic_slaves.values(),key=lambda x: str(x)))
+[lino_xl.lib.cal.ui.EntriesByController, lino_xl.lib.cal.ui.TasksByController, lino.modlib.changes.models.ChangesByMaster, lino.modlib.changes.models.ChangesByObject, lino.modlib.checkdata.models.ProblemsByOwner, lino.modlib.comments.ui.CommentsByRFC, lino_xl.lib.excerpts.models.ExcerptsByOwner, lino.modlib.gfks.models.HelpTextsByModel, lino_xl.lib.topics.models.InterestsByController, lino.modlib.uploads.models.UploadsByController]
 
 >>> for a in kernel.generic_slaves.values():
 ...    assert a not in kernel.slave_tables
