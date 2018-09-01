@@ -1,3 +1,4 @@
+.. doctest docs/dev/builddocs.rst
 .. _lino.dev.bd:
 
 ======================
@@ -69,14 +70,11 @@ problem to import the module
 Indeed you can verify that importing this module in a normal Python
 session will fail:
 
->>> from django.core.exceptions import ImproperlyConfigured
->>> try:
-...     import lino_book.projects.team.tests.test_notify  #doctest: +ELLIPSIS
-...     raise Exception("Oops, no exception was raised")
-... except ImproperlyConfigured as e:
-...     print(e)
-Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
 
+>>> import lino_book.projects.team.tests.test_notify  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
+Traceback (most recent call last):
+...
+ImproperlyConfigured: Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
 
 As the error message tries to explain, the module refuses to import
 because :envvar:`DJANGO_SETTINGS_MODULE` is not set.  That's related
