@@ -162,7 +162,7 @@ author may be empty.  So Django will complain if we try to create an
 author without last_name:
 
 >>> author = Author(first_name="Joe")
->>> author.full_clean()
+>>> author.full_clean() #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):
 ...
 ValidationError: {'last_name': [u'This field cannot be blank.']}
@@ -179,7 +179,7 @@ field. In the Book model we have three mandatory fields: the
 (:attr:`published`).  Giving only a title is not enough:
 
 >>> book = Book(title="Foo")
->>> book.full_clean()
+>>> book.full_clean() #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):
 ...
 ValidationError: {'price': [u'This field cannot be null.'], 'published': [u'This field cannot be null.']}
@@ -190,7 +190,7 @@ that may depend on complex conditions which involve more than one
 field.
 
 >>> book = Book(title="Foo", published=2001, price='4.2')
->>> book.full_clean()
+>>> book.full_clean() #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):
 ...
 ValidationError: [u'A book from 2001 for only $4.20!']
