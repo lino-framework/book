@@ -560,7 +560,7 @@ A **journal** is a named sequence of numbered *vouchers*.
 
         In a journal of *purchase invoices* this should be *Credit*
         (not checked), because a positive invoice total should be
-        *credited* from the supplier's account.
+        *credited* to the supplier's account.
 
         In a journal of *bank statements* this should be *Debit*
         (checked), because a positive balance change should be
@@ -598,7 +598,10 @@ A **journal** is a named sequence of numbered *vouchers*.
 Debit or credit
 ===============
 
-A purchase invoice credits the supplier's account:
+The PCSD rule: 
+
+A *purchase* invoice *credits* the supplier's account, a *sales*
+invoice *debits* the customer's account.
 
 >>> obj = vat.VatAccountInvoice.objects.order_by('id')[0]
 >>> rt.show(ledger.MovementsByVoucher, obj)
@@ -623,7 +626,17 @@ A purchase invoice credits the supplier's account:
                                **2 999,85**   **2 999,85**
 ================== ========== ============== ============== ================ =========
 <BLANKLINE>
+
+So the balance of a supplier's account (when open) is usually on the
+*credit* side (they gave us money) while a customer's balance is
+usually on the *debit* side (they owe us money).
                  
+>>> from lino_xl.lib.ledger.utils import DCLABELS
+>>> print(DCLABELS[ledger.TradeTypes.purchases.dc])
+Credit
+>>> print(DCLABELS[ledger.TradeTypes.sales.dc])
+Debit
+
 
 
 Other database models
@@ -1628,6 +1641,7 @@ The following example shows the balances for three period ranges
 ...     pv = dict(start_period=sp, end_period=ep)
 ...     rt.show(ledger.AccountingReport, param_values=pv)
 
+
 >>> test(jan)
 =========================================
 General Account Balances (Period 2016-01)
@@ -1652,33 +1666,33 @@ General Account Balances (Period 2016-01)
 Partner Account Balances Sales (Period 2016-01)
 ===============================================
 <BLANKLINE>
-======================= ============== =============== === ============== ======== === ============== ==============
- Description             Debit before   Credit before       Debit          Credit       Debit after    Credit after
------------------------ -------------- --------------- --- -------------- -------- --- -------------- --------------
- *Bestbank*                                                 2 999,85                    2 999,85
- *Bäckerei Ausdemwald*                                      679,81                      679,81
- *Bäckerei Mießen*                                          280,00                      280,00
- *Bäckerei Schmitz*                                         535,00                      535,00
- *Rumma & Ko OÜ*                                            2 039,82                    2 039,82
- **Total (5 rows)**                                         **6 534,48**                **6 534,48**
-======================= ============== =============== === ============== ======== === ============== ==============
+======================= ============= ============== ======== ==============
+ Description             Old balance   Debit          Credit   New balance
+----------------------- ------------- -------------- -------- --------------
+ *Bestbank*                            2 999,85                2 999,85
+ *Bäckerei Ausdemwald*                 679,81                  679,81
+ *Bäckerei Mießen*                     280,00                  280,00
+ *Bäckerei Schmitz*                    535,00                  535,00
+ *Rumma & Ko OÜ*                       2 039,82                2 039,82
+ **Total (5 rows)**                    **6 534,48**            **6 534,48**
+======================= ============= ============== ======== ==============
 <BLANKLINE>
 ===================================================
 Partner Account Balances Purchases (Period 2016-01)
 ===================================================
 <BLANKLINE>
-======================= ============== =============== === ======= ============== === ============= ==============
- Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
------------------------ -------------- --------------- --- ------- -------------- --- ------------- --------------
- *Bestbank*                                                         40,00                            40,00
- *Bäckerei Ausdemwald*                                              603,60                           603,60
- *Bäckerei Mießen*                                                  1 199,90                         1 199,90
- *Bäckerei Schmitz*                                                 3 241,68                         3 241,68
- *Donderweer BV*                                                    199,90                           199,90
- *Garage Mergelsberg*                                               143,40                           143,40
- *Rumma & Ko OÜ*                                                    141,30                           141,30
- **Total (7 rows)**                                                 **5 569,78**                     **5 569,78**
-======================= ============== =============== === ======= ============== === ============= ==============
+======================= ============= ======= ============== ===============
+ Description             Old balance   Debit   Credit         New balance
+----------------------- ------------- ------- -------------- ---------------
+ *Bestbank*                                    40,00          -40,00
+ *Bäckerei Ausdemwald*                         603,60         -603,60
+ *Bäckerei Mießen*                             1 199,90       -1 199,90
+ *Bäckerei Schmitz*                            3 241,68       -3 241,68
+ *Donderweer BV*                               199,90         -199,90
+ *Garage Mergelsberg*                          143,40         -143,40
+ *Rumma & Ko OÜ*                               141,30         -141,30
+ **Total (7 rows)**                            **5 569,78**   **-5 569,78**
+======================= ============= ======= ============== ===============
 <BLANKLINE>
 ===============================================
 Partner Account Balances Wages (Period 2016-01)
@@ -1689,12 +1703,12 @@ No data to display
 Partner Account Balances Taxes (Period 2016-01)
 ===============================================
 <BLANKLINE>
-==================================== ============== =============== === ============ ======== === ============= ==============
- Description                          Debit before   Credit before       Debit        Credit       Debit after   Credit after
------------------------------------- -------------- --------------- --- ------------ -------- --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*                                      352,31                    352,31
- **Total (1 rows)**                                                      **352,31**                **352,31**
-==================================== ============== =============== === ============ ======== === ============= ==============
+==================================== ============= ============ ======== =============
+ Description                          Old balance   Debit        Credit   New balance
+------------------------------------ ------------- ------------ -------- -------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                 352,31                352,31
+ **Total (1 rows)**                                 **352,31**            **352,31**
+==================================== ============= ============ ======== =============
 <BLANKLINE>
 ===================================================
 Partner Account Balances Clearings (Period 2016-01)
@@ -1732,37 +1746,37 @@ General Account Balances (Period 2016-02)
 Partner Account Balances Sales (Period 2016-02)
 ===============================================
 <BLANKLINE>
-======================= ============== =============== === ============== ======== === =============== ==============
- Description             Debit before   Credit before       Debit          Credit       Debit after     Credit after
------------------------ -------------- --------------- --- -------------- -------- --- --------------- --------------
- *Bestbank*              2 999,85                                                       2 999,85
- *Bäckerei Ausdemwald*   679,81                                                         679,81
- *Bäckerei Mießen*       280,00                                                         280,00
- *Bäckerei Schmitz*      535,00                                                         535,00
- *Donderweer BV*                                            1 199,85                    1 199,85
- *Garage Mergelsberg*                                       4 016,93                    4 016,93
- *Hans Flott & Co*                                          1 197,90                    1 197,90
- *Rumma & Ko OÜ*         2 039,82                                                       2 039,82
- *Van Achter NV*                                            279,90                      279,90
- **Total (9 rows)**      **6 534,48**                       **6 694,58**                **13 229,06**
-======================= ============== =============== === ============== ======== === =============== ==============
+======================= ============== ============== ======== ===============
+ Description             Old balance    Debit          Credit   New balance
+----------------------- -------------- -------------- -------- ---------------
+ *Bestbank*              2 999,85                               2 999,85
+ *Bäckerei Ausdemwald*   679,81                                 679,81
+ *Bäckerei Mießen*       280,00                                 280,00
+ *Bäckerei Schmitz*      535,00                                 535,00
+ *Donderweer BV*                        1 199,85                1 199,85
+ *Garage Mergelsberg*                   4 016,93                4 016,93
+ *Hans Flott & Co*                      1 197,90                1 197,90
+ *Rumma & Ko OÜ*         2 039,82                               2 039,82
+ *Van Achter NV*                        279,90                  279,90
+ **Total (9 rows)**      **6 534,48**   **6 694,58**            **13 229,06**
+======================= ============== ============== ======== ===============
 <BLANKLINE>
 ===================================================
 Partner Account Balances Purchases (Period 2016-02)
 ===================================================
 <BLANKLINE>
-======================= ============== =============== === ======= ============== === ============= ===============
- Description             Debit before   Credit before       Debit   Credit             Debit after   Credit after
------------------------ -------------- --------------- --- ------- -------------- --- ------------- ---------------
- *Bestbank*                             40,00                       40,60                            80,60
- *Bäckerei Ausdemwald*                  603,60                      602,30                           1 205,90
- *Bäckerei Mießen*                      1 199,90                    1 200,50                         2 400,40
- *Bäckerei Schmitz*                     3 241,68                    3 242,38                         6 484,06
- *Donderweer BV*                        199,90                      200,50                           400,40
- *Garage Mergelsberg*                   143,40                      142,10                           285,50
- *Rumma & Ko OÜ*                        141,30                      142,00                           283,30
- **Total (7 rows)**                     **5 569,78**                **5 570,38**                     **11 140,16**
-======================= ============== =============== === ======= ============== === ============= ===============
+======================= =============== ======= ============== ================
+ Description             Old balance     Debit   Credit         New balance
+----------------------- --------------- ------- -------------- ----------------
+ *Bestbank*              -40,00                  40,60          -80,60
+ *Bäckerei Ausdemwald*   -603,60                 602,30         -1 205,90
+ *Bäckerei Mießen*       -1 199,90               1 200,50       -2 400,40
+ *Bäckerei Schmitz*      -3 241,68               3 242,38       -6 484,06
+ *Donderweer BV*         -199,90                 200,50         -400,40
+ *Garage Mergelsberg*    -143,40                 142,10         -285,50
+ *Rumma & Ko OÜ*         -141,30                 142,00         -283,30
+ **Total (7 rows)**      **-5 569,78**           **5 570,38**   **-11 140,16**
+======================= =============== ======= ============== ================
 <BLANKLINE>
 ===============================================
 Partner Account Balances Wages (Period 2016-02)
@@ -1773,12 +1787,12 @@ No data to display
 Partner Account Balances Taxes (Period 2016-02)
 ===============================================
 <BLANKLINE>
-==================================== ============== =============== === ============ ======== === ============= ==============
- Description                          Debit before   Credit before       Debit        Credit       Debit after   Credit after
------------------------------------- -------------- --------------- --- ------------ -------- --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*   352,31                             563,44                    915,75
- **Total (1 rows)**                   **352,31**                         **563,44**                **915,75**
-==================================== ============== =============== === ============ ======== === ============= ==============
+==================================== ============= ============ ======== =============
+ Description                          Old balance   Debit        Credit   New balance
+------------------------------------ ------------- ------------ -------- -------------
+ *Mehrwertsteuer-Kontrollamt Eupen*   352,31        563,44                915,75
+ **Total (1 rows)**                   **352,31**    **563,44**            **915,75**
+==================================== ============= ============ ======== =============
 <BLANKLINE>
 ===================================================
 Partner Account Balances Clearings (Period 2016-02)
@@ -1816,37 +1830,37 @@ General Account Balances (Periods 2016-01...2016-02)
 Partner Account Balances Sales (Periods 2016-01...2016-02)
 ==========================================================
 <BLANKLINE>
-======================= ============== =============== === =============== ======== === =============== ==============
- Description             Debit before   Credit before       Debit           Credit       Debit after     Credit after
------------------------ -------------- --------------- --- --------------- -------- --- --------------- --------------
- *Bestbank*                                                 2 999,85                     2 999,85
- *Bäckerei Ausdemwald*                                      679,81                       679,81
- *Bäckerei Mießen*                                          280,00                       280,00
- *Bäckerei Schmitz*                                         535,00                       535,00
- *Donderweer BV*                                            1 199,85                     1 199,85
- *Garage Mergelsberg*                                       4 016,93                     4 016,93
- *Hans Flott & Co*                                          1 197,90                     1 197,90
- *Rumma & Ko OÜ*                                            2 039,82                     2 039,82
- *Van Achter NV*                                            279,90                       279,90
- **Total (9 rows)**                                         **13 229,06**                **13 229,06**
-======================= ============== =============== === =============== ======== === =============== ==============
+======================= ============= =============== ======== ===============
+ Description             Old balance   Debit           Credit   New balance
+----------------------- ------------- --------------- -------- ---------------
+ *Bestbank*                            2 999,85                 2 999,85
+ *Bäckerei Ausdemwald*                 679,81                   679,81
+ *Bäckerei Mießen*                     280,00                   280,00
+ *Bäckerei Schmitz*                    535,00                   535,00
+ *Donderweer BV*                       1 199,85                 1 199,85
+ *Garage Mergelsberg*                  4 016,93                 4 016,93
+ *Hans Flott & Co*                     1 197,90                 1 197,90
+ *Rumma & Ko OÜ*                       2 039,82                 2 039,82
+ *Van Achter NV*                       279,90                   279,90
+ **Total (9 rows)**                    **13 229,06**            **13 229,06**
+======================= ============= =============== ======== ===============
 <BLANKLINE>
 ==============================================================
 Partner Account Balances Purchases (Periods 2016-01...2016-02)
 ==============================================================
 <BLANKLINE>
-======================= ============== =============== === ======= =============== === ============= ===============
- Description             Debit before   Credit before       Debit   Credit              Debit after   Credit after
------------------------ -------------- --------------- --- ------- --------------- --- ------------- ---------------
- *Bestbank*                                                         80,60                             80,60
- *Bäckerei Ausdemwald*                                              1 205,90                          1 205,90
- *Bäckerei Mießen*                                                  2 400,40                          2 400,40
- *Bäckerei Schmitz*                                                 6 484,06                          6 484,06
- *Donderweer BV*                                                    400,40                            400,40
- *Garage Mergelsberg*                                               285,50                            285,50
- *Rumma & Ko OÜ*                                                    283,30                            283,30
- **Total (7 rows)**                                                 **11 140,16**                     **11 140,16**
-======================= ============== =============== === ======= =============== === ============= ===============
+======================= ============= ======= =============== ================
+ Description             Old balance   Debit   Credit          New balance
+----------------------- ------------- ------- --------------- ----------------
+ *Bestbank*                                    80,60           -80,60
+ *Bäckerei Ausdemwald*                         1 205,90        -1 205,90
+ *Bäckerei Mießen*                             2 400,40        -2 400,40
+ *Bäckerei Schmitz*                            6 484,06        -6 484,06
+ *Donderweer BV*                               400,40          -400,40
+ *Garage Mergelsberg*                          285,50          -285,50
+ *Rumma & Ko OÜ*                               283,30          -283,30
+ **Total (7 rows)**                            **11 140,16**   **-11 140,16**
+======================= ============= ======= =============== ================
 <BLANKLINE>
 ==========================================================
 Partner Account Balances Wages (Periods 2016-01...2016-02)
@@ -1857,12 +1871,12 @@ No data to display
 Partner Account Balances Taxes (Periods 2016-01...2016-02)
 ==========================================================
 <BLANKLINE>
-==================================== ============== =============== === ============ ======== === ============= ==============
- Description                          Debit before   Credit before       Debit        Credit       Debit after   Credit after
------------------------------------- -------------- --------------- --- ------------ -------- --- ------------- --------------
- *Mehrwertsteuer-Kontrollamt Eupen*                                      915,75                    915,75
- **Total (1 rows)**                                                      **915,75**                **915,75**
-==================================== ============== =============== === ============ ======== === ============= ==============
+==================================== ============= ============ ======== =============
+ Description                          Old balance   Debit        Credit   New balance
+------------------------------------ ------------- ------------ -------- -------------
+ *Mehrwertsteuer-Kontrollamt Eupen*                 915,75                915,75
+ **Total (1 rows)**                                 **915,75**            **915,75**
+==================================== ============= ============ ======== =============
 <BLANKLINE>
 ==============================================================
 Partner Account Balances Clearings (Periods 2016-01...2016-02)

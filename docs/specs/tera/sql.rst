@@ -49,7 +49,7 @@ about `Using aggregates within a Subquery expression
 
 >>> # test_client.force_login(rt.login('robin').user)
 >>> url = 'api/ledger/AccountingReport/-99998'
->>> url += "?fmt=json&pv=1&pv=3&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true"
+>>> url += "?fmt=json&pv=1&pv=3&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true"
 >>> r = demo_get('robin', url)
 
 >>> show_sql_summary()
@@ -58,8 +58,8 @@ about `Using aggregates within a Subquery expression
  table                     count
 ------------------------- -------
  django_session            1
- ledger_account          4
- ledger_accountingperiod   9
+ ledger_account            4
+ ledger_accountingperiod   10
  users_user                1
 ========================= =======
 <BLANKLINE>

@@ -1,11 +1,12 @@
 .. _v16.10:
 
 ============================
-Version 16.10 (almost ready)
+Version 16.10 (obsolete)
 ============================
 
-This is the first release which uses the
+This was the first release which used the
 :ref:`date-based versioning system <dev.versioning>`.
+It was never published.
 
 
 
