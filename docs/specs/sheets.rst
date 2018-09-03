@@ -327,9 +327,9 @@ True
 >>> cols = th.get_columns()
 >>> el = cols[0]
 >>> print(el.field.name)
-description
+item__description
 >>> print(el.name)
-description
+item__description
 >>> print(el.width)
 None
 >>> el.preferred_width
