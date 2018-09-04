@@ -13,7 +13,7 @@ class Entry(UserAuthored):
 
     subject = models.CharField(_("Subject"), blank=True, max_length=200)
     body = dd.RichTextField(_("Body"), blank=True)
-    company = models.ForeignKey('contacts.Company')
+    company = dd.ForeignKey('contacts.Company')
 
 
 class Entries(dd.Table):

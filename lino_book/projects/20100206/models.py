@@ -54,4 +54,4 @@ class Order(models.Model):
     char_field = models.CharField(max_length=20)
     int_field = models.IntegerField()
     decimal_field = models.IntegerField()
-    fk_field = models.ForeignKey(Journal)
+    fk_field = dd.ForeignKey(Journal)

@@ -44,4 +44,4 @@ class Restaurant(Place):
 
     # the following explicit parent_link should not be necessary according to
     # http://docs.djangoproject.com/en/dev/topics/db/models/#specifying-the-parent-link-field
-    place = models.OneToOneField(Place, parent_link=True)
+    place = dd.OneToOneField(Place, parent_link=True)

@@ -9,7 +9,7 @@ The `models` module for `lino.projects.min2.modlib.contacts`.
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
-from lino.api import string_concat
+from django.utils.text import format_lazy
 
 from lino.api import dd, rt
 

@@ -40,7 +40,7 @@ class Question(dd.Model):
 
 @python_2_unicode_compatible
 class Choice(dd.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = dd.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField("Choice text", max_length=200)
     votes = models.IntegerField("No. of votes", default=0)
 

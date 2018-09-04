@@ -22,7 +22,7 @@ class Place(dd.Model):
         
     name = models.CharField(max_length=50)
     owners = models.ManyToManyField(Person, related_name="owned_places")
-    ceo = models.ForeignKey(Person, related_name="managed_places")
+    ceo = dd.ForeignKey(Person, related_name="managed_places")
 
     def __str__(self):
         if self.get_restaurant():
@@ -54,7 +54,7 @@ class Place(dd.Model):
 @dd.python_2_unicode_compatible
 class Bar(dd.Model):
     
-    place = models.OneToOneField(Place)
+    place = dd.OneToOneField(Place)
     serves_alcohol = models.BooleanField(default=True)
 
     def __str__(self):
@@ -66,7 +66,7 @@ class Bar(dd.Model):
 @dd.python_2_unicode_compatible
 class Restaurant(dd.Model):
         
-    place = models.OneToOneField(Place)
+    place = dd.OneToOneField(Place)
     serves_hot_dogs = models.BooleanField(default=False)
     cooks = models.ManyToManyField(Person)
 
@@ -79,8 +79,8 @@ class Restaurant(dd.Model):
 class Visit(models.Model):
         
     allow_cascaded_delete = ['place']
-    person = models.ForeignKey(Person)
-    place = models.ForeignKey(Place)
+    person = dd.ForeignKey(Person)
+    place = dd.ForeignKey(Place)
     purpose = models.CharField(max_length=50)
 
     def __str__(self):
@@ -91,8 +91,8 @@ class Visit(models.Model):
 @dd.python_2_unicode_compatible
 class Meal(models.Model):
     allow_cascaded_delete = ['restaurant']
-    person = models.ForeignKey(Person)
-    restaurant = models.ForeignKey(Restaurant)
+    person = dd.ForeignKey(Person)
+    restaurant = dd.ForeignKey(Restaurant)
     what = models.CharField(max_length=50)
 
     def __str__(self):

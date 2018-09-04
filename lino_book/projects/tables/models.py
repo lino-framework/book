@@ -15,7 +15,7 @@ class Author(dd.Model):
 
 
 class Book(dd.Model):
-    author = models.ForeignKey(Author, blank=True, null=True)
+    author = dd.ForeignKey(Author, blank=True, null=True)
     title = models.CharField("Title", max_length=200)
     published = models.IntegerField(
         "Published",

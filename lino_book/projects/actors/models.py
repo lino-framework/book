@@ -15,7 +15,7 @@ class Partner(dd.Model):
         verbose_name = "Partner"
         verbose_name_plural = "Partners"
 
-    type = models.ForeignKey(PartnerType)
+    type = dd.ForeignKey(PartnerType)
     name = models.CharField("Name", max_length=30)
 
 

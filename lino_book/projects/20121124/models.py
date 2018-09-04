@@ -82,7 +82,7 @@ class Ticket(models.Model):
 
 @dd.python_2_unicode_compatible
 class Session(models.Model):
-    ticket = models.ForeignKey(Ticket, related_name="sessions")
+    ticket = dd.ForeignKey(Ticket, related_name="sessions")
     time = models.TimeField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
 

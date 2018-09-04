@@ -3,6 +3,7 @@
 
 from __future__ import unicode_literals
 from builtins import str
+from lino.api import dd
 from django.db import models
 from lino.mixins.polymorphic import Polymorphic
 from django.utils.encoding import python_2_unicode_compatible
@@ -46,8 +47,8 @@ class Restaurant(Place):
 class Visit(models.Model):
         
     allow_cascaded_delete = ['place']
-    person = models.ForeignKey(Person)
-    place = models.ForeignKey(Place)
+    person = dd.ForeignKey(Person)
+    place = dd.ForeignKey(Place)
     purpose = models.CharField(max_length=50)
 
     def __str__(self):
@@ -59,8 +60,8 @@ class Visit(models.Model):
 class Meal(models.Model):
         
     allow_cascaded_delete = ['restaurant']
-    person = models.ForeignKey(Person)
-    restaurant = models.ForeignKey(Restaurant)
+    person = dd.ForeignKey(Person)
+    restaurant = dd.ForeignKey(Restaurant)
     what = models.CharField(max_length=50)
 
     def __str__(self):

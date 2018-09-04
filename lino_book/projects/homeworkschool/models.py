@@ -154,7 +154,7 @@ def setup_main_menu(config, site, user_type, main):
 def customize_school():
     dd.inject_field('courses.Pupil',
                     'school',
-                    models.ForeignKey(School,
+                    dd.ForeignKey(School,
                                       blank=True, null=True,
             help_text=_("""The regular school where this child goes.""")
                     ))

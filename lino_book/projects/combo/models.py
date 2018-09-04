@@ -18,7 +18,7 @@ class City(dd.Model):
     class Meta(object):
         verbose_name_plural = "Cities"
         
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = dd.ForeignKey(Country, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
 
     def __str__(self):
@@ -31,8 +31,8 @@ class Person(dd.Model):
         
     name = models.CharField(max_length=100)
     birthdate = models.DateField(null=True, blank=True)
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    country = dd.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    city = dd.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
     @dd.chooser()
     def city_choices(cls, country):

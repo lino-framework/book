@@ -126,7 +126,7 @@ class Country(dd.Model):
 @python_2_unicode_compatible
 class City(dd.Model):
     name = models.CharField(max_length=20)
-    country = models.ForeignKey(Country)
+    country = dd.ForeignKey(Country)
 
     def __str__(self):
         return self.name
@@ -135,8 +135,8 @@ class City(dd.Model):
 @python_2_unicode_compatible
 class Contact(dd.Model):
     name = models.CharField(max_length=20)
-    country = models.ForeignKey(Country)
-    city = models.ForeignKey(City)
+    country = dd.ForeignKey(Country)
+    city = dd.ForeignKey(City)
     year_in_school = models.CharField(
         max_length=2, choices=YEAR_IN_SCHOOL_CHOICES)
     food = models.CharField(max_length=20)

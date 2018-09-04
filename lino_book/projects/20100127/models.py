@@ -34,8 +34,8 @@ class Journal(models.Model):
 
 
 class Order(models.Model):
-    journal = models.ForeignKey(Journal, null=True)
+    journal = dd.ForeignKey(Journal, null=True)
 
 
 class Order2(models.Model):
-    journal = models.ForeignKey(Journal)
+    journal = dd.ForeignKey(Journal)

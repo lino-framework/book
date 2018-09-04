@@ -16,7 +16,7 @@ class Place(dd.Model):
 @dd.python_2_unicode_compatible
 class Member(Polymorphic):
     name = models.CharField(max_length=200)
-    place = models.ForeignKey(Place, blank=True, null=True)
+    place = dd.ForeignKey(Place, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True)
 
     def __str__(self):
@@ -65,8 +65,8 @@ class Product(dd.Model):
 
 @dd.python_2_unicode_compatible
 class Offer(dd.Model):
-    supplier = models.ForeignKey(Supplier)
-    product = models.ForeignKey(Product)
+    supplier = dd.ForeignKey(Supplier)
+    product = dd.ForeignKey(Product)
     valid_until = models.DateField(blank=True, null=True)
 
     def __str__(self):
@@ -75,8 +75,8 @@ class Offer(dd.Model):
 
 @dd.python_2_unicode_compatible
 class Demand(dd.Model):
-    customer = models.ForeignKey(Customer)
-    product = models.ForeignKey(Product)
+    customer = dd.ForeignKey(Customer)
+    product = dd.ForeignKey(Product)
 
     def __str__(self):
         return "%s (%s)" % (self.product, self.customer)
