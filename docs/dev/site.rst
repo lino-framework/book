@@ -63,7 +63,7 @@ settings.  Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE_CLASSES', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -205,7 +205,7 @@ These are the Django settings which Lino will override:
  'LOGOUT_REDIRECT_URL': None,
  'MEDIA_ROOT': Path('.../core/media'),
  'MEDIA_URL': '/media/',
- 'MIDDLEWARE_CLASSES': ('django.middleware.common.CommonMiddleware',
+ 'MIDDLEWARE': ('django.middleware.common.CommonMiddleware',
                         'lino.core.auth.middleware.NoUserMiddleware',
                         'lino.utils.ajax.AjaxExceptionResponse'),
  'ROOT_URLCONF': 'lino.core.urls',

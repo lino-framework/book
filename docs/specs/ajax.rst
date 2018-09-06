@@ -40,7 +40,7 @@ None
 None
 >>> print(settings.SITE.get_auth_method())
 session
->>> print('\n'.join(settings.MIDDLEWARE_CLASSES))
+>>> print('\n'.join(settings.MIDDLEWARE))
 django.middleware.common.CommonMiddleware
 django.middleware.locale.LocaleMiddleware
 django.contrib.sessions.middleware.SessionMiddleware
