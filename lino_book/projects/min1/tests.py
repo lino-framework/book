@@ -38,7 +38,7 @@ class QuickTest(RemoteAuthTestCase):
         Tests some basic funtionality.
         """
         self.assertEqual(
-            settings.MIDDLEWARE_CLASSES, (
+            settings.MIDDLEWARE, (
                 'django.middleware.common.CommonMiddleware',
                 'django.middleware.locale.LocaleMiddleware',
                 'django.contrib.sessions.middleware.SessionMiddleware',
