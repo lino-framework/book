@@ -8,6 +8,8 @@
 from __future__ import unicode_literals
 from builtins import str
 # from lino.utils.test import DocTest
+from django.utils import six
+
 from lino.utils.djangotest import WebIndexTestCase
 
 from django.db import models
@@ -105,7 +107,8 @@ class TestCase(TestCase):
         # rst = BrokenGFKs.request().table2rst()
         rst = BrokenGFKs.request().to_rst()
         # print rst
-        self.assertEqual(rst, """\
+        if six.PY2:
+            self.assertEqual(rst, """\
 ====================== ================== ======================================================== ========
  Database model         Database object    Message                                                  Action
 ---------------------- ------------------ -------------------------------------------------------- --------
@@ -113,6 +116,17 @@ class TestCase(TestCase):
  `note <Detail>`__      *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
  `memo <Detail>`__      *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
 ====================== ================== ======================================================== ========
+
+""")
+        else:
+            self.assertEqual(rst, """\
+====================== ====================== ======================================================== ========
+ Database model         Database object        Message                                                  Action
+---------------------- ---------------------- -------------------------------------------------------- --------
+ `comment <Detail>`__   *Comment object (2)*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
+ `note <Detail>`__      *Note object (2)*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
+ `memo <Detail>`__      *Memo object (2)*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
+====================== ====================== ======================================================== ========
 
 """)
 
