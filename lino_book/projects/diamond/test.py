@@ -16,10 +16,8 @@ class DocTest(TestCase):
         
         if VERSION[0] == 1 and VERSION[1] == 6:
             self.check_django_16(p)
-        elif VERSION[0] == 1 and VERSION[1] > 6:
-            self.check_django_17(p)
         else:
-            self.fail("Unsupported Django version {0}".format(VERSION))
+            self.check_django_17(p)
 
     def check_django_16(self, p):
         
