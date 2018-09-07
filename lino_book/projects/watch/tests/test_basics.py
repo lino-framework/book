@@ -21,6 +21,7 @@ or::
 from __future__ import unicode_literals
 from __future__ import print_function
 
+from django.utils import six
 
 from lino.utils.djangotest import RemoteAuthTestCase
 
@@ -92,10 +93,10 @@ class QuickTest(RemoteAuthTestCase):
         url = '/api/entries/Entries'
         data = dict(an='submit_insert', subject='test', companyHidden=100)
         res = self.post_json_dict('robin', url, data)
-        self.assertEqual(
-            res.message, 'Entry "Entry object" has been created.')
-        
-        expected = """\
+        if six.PY2:
+            self.assertEqual(
+                res.message, 'Entry "Entry object" has been created.')
+            expected = """\
 ==== ============= ====================== =========================== ===============================================
  ID   Change Type   Master                 Object                      Changes
 ---- ------------- ---------------------- --------------------------- -----------------------------------------------
@@ -104,6 +105,20 @@ class QuickTest(RemoteAuthTestCase):
  1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__        Company(id=100,name='My pub',partner_ptr=100)
 ==== ============= ====================== =========================== ===============================================
 """
+        else:
+            self.assertEqual(
+                res.message, 'Entry "Entry object (1)" has been created.')
+            expected = """\
+==== ============= ====================== =============================== ===============================================
+ ID   Change Type   Master                 Object                          Changes
+---- ------------- ---------------------- ------------------------------- -----------------------------------------------
+ 3    Create        `Our pub <Detail>`__   `Entry object (1) <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__            name : 'My pub' --> 'Our pub'
+ 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__            Company(id=100,name='My pub',partner_ptr=100)
+==== ============= ====================== =============================== ===============================================
+"""
+
+
         output = ses.show('changes.Changes',
                      column_names="id type master object diff")
         # print(output)
@@ -115,10 +130,17 @@ class QuickTest(RemoteAuthTestCase):
         url = '/api/entries/Entries/1'
         data = dict(an='delete_selected', sr=1)
         res = self.get_json_dict('robin', url, data)
-        self.assertEqual(
+        if six.PY2:
+            self.assertEqual(
             res.message, """\
 You are about to delete 1 Entry:
 Entry object
+Are you sure ?""")
+        else:
+            self.assertEqual(
+                res.message, """\
+You are about to delete 1 Entry:
+Entry object (1)
 Are you sure ?""")
 
         
