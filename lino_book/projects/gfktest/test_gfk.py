@@ -106,9 +106,7 @@ class TestCase(TestCase):
         # That's what the BrokenGFKs table is supposed to show:
         # rst = BrokenGFKs.request().table2rst()
         rst = BrokenGFKs.request().to_rst()
-        # print rst
-        if six.PY2:
-            self.assertEqual(rst, """\
+        self.assertEqual(rst, """\
 ====================== ================== ======================================================== ========
  Database model         Database object    Message                                                  Action
 ---------------------- ------------------ -------------------------------------------------------- --------
@@ -116,17 +114,6 @@ class TestCase(TestCase):
  `note <Detail>`__      *Note object*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
  `memo <Detail>`__      *Memo object*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
 ====================== ================== ======================================================== ========
-
-""")
-        else:
-            self.assertEqual(rst, """\
-====================== ====================== ======================================================== ========
- Database model         Database object        Message                                                  Action
----------------------- ---------------------- -------------------------------------------------------- --------
- `comment <Detail>`__   *Comment object (2)*   Invalid primary key 1 for gfktest.Member in `owner_id`   delete
- `note <Detail>`__      *Note object (2)*      Invalid primary key 1 for gfktest.Member in `owner_id`   manual
- `memo <Detail>`__      *Memo object (2)*      Invalid primary key 1 for gfktest.Member in `owner_id`   clear
-====================== ====================== ======================================================== ========
 
 """)
 
