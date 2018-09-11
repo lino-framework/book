@@ -13,27 +13,35 @@ class Member(dd.Model):
         return self.name
 
 
+@dd.python_2_unicode_compatible
 class Comment(dd.Model):
     allow_cascaded_delete = ['owner']
     owner_type = dd.ForeignKey(ContentType)
     owner_id = models.PositiveIntegerField()
     owner = GenericForeignKey('owner_type', 'owner_id')
-    
     text = models.CharField(max_length=200)
 
+    def __str__(self):
+        return '%s object' % (self.__class__.__name__)
 
+
+@dd.python_2_unicode_compatible
 class Note(dd.Model):
     owner_type = dd.ForeignKey(ContentType)
     owner_id = models.PositiveIntegerField()
     owner = GenericForeignKey('owner_type', 'owner_id')
-    
     text = models.CharField(max_length=200)
 
+    def __str__(self):
+        return '%s object' % (self.__class__.__name__)
 
+
+@dd.python_2_unicode_compatible
 class Memo(dd.Model):
     owner_type = dd.ForeignKey(ContentType, blank=True, null=True)
     owner_id = models.PositiveIntegerField(blank=True, null=True)
     owner = GenericForeignKey('owner_type', 'owner_id')
-    
     text = models.CharField(max_length=200)
 
+    def __str__(self):
+        return '%s object' % (self.__class__.__name__)

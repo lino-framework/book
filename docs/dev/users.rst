@@ -57,7 +57,7 @@ a new user manually using the web interface, you must click their
 ...    pass
 >>> u = users.User(username="test")
 >>> u.save()
->>> print(u.has_usable_password())
+>>> print(not u.has_usable_password() and six.PY3)
 False
 
 
