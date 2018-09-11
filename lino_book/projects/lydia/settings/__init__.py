@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2017 Luc Saffre
+# Copyright 2017-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -26,7 +26,7 @@ class Site(Site):
 
     verbose_name = "Lino Tera for Lydia"
    
-    demo_fixtures = 'std minimal_ledger demo demo_bookings payments demo2 checksummaries'.split()
+    demo_fixtures = 'std minimal_ledger demo demo_bookings payments demo2'.split()
 
     languages = 'en de fr'
     

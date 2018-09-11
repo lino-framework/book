@@ -27,6 +27,7 @@ SELECT ... FROM django_content_type WHERE django_content_type.id = ...
 Now we do a single request to :class:`Tickets`. And look at all the
 SQL that poor Django must do in order to return a single row. 
 
+>>> reset_sql_queries()
 >>> r = demo_get('robin','api/tickets/Tickets', fmt='json')
 
 >> r = demo_get('robin','api/tickets/Tickets', fmt='json', limit=1)
@@ -38,15 +39,15 @@ SQL that poor Django must do in order to return a single row.
 1
 
 >>> show_sql_summary()
-================= =======
- table             count
------------------ -------
- django_session    1
- tickets_site      7
- tickets_ticket    2
- users_user        1
- working_session   15
-================= =======
+================= =========== =======
+ table             stmt_type   count
+----------------- ----------- -------
+ django_session    SELECT      1
+ tickets_site      SELECT      7
+ tickets_ticket    SELECT      2
+ users_user        SELECT      1
+ working_session   SELECT      15
+================= =========== =======
 <BLANKLINE>
 
 >>> show_sql_queries()

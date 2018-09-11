@@ -32,29 +32,35 @@ Journals
 
 
 >>> rt.show(ledger.Accounts)
-=========== ========================= =============================== ============================
- Reference   Designation               Designation (de)                Designation (fr)
------------ ------------------------- ------------------------------- ----------------------------
- 1000        Net income (loss)         Net income (loss)               Net income (loss)
- 4000        Customers                 Kunden                          Clients
- 4300        Pending Payment Orders    Offene Zahlungsaufträge         Ordres de paiement ouverts
- 4400        Suppliers                 Lieferanten                     Fournisseurs
- 4500        Employees                 Angestellte                     Employés
- 4510        VAT due                   Geschuldete Mehrwertsteuer      TVA dûe
- 4511        VAT returnable            Rückzahlbare Mehrwertsteuer     TVA à retourner
- 4512        VAT deductible            Abziehbare Mehrwertsteuer       TVA déductible
- 4513        VAT declared              Deklarierte Mehrwertsteuer      TVA déclarée
- 4600        Tax Offices               Steuerämter                     Tax Offices
- 4900        Waiting account           Wartekonto                      Waiting account
- 5500        BestBank                  BestBank                        BestBank
- 5700        Cash                      Kasse                           Caisse
- 6010        Purchase of services      Einkäufe von Dienstleistungen   Achats de services
- 6020        Purchase of investments   Investierungskäufe              Achats d'investissement
- 6040        Purchase of goods         Wareneinkäufe                   Achats de marchandises
- 6300        Wages                     Löhne und Gehälter              Salaires
- 6900        Net income                Net income                      Net income
- 7000        Sales                     Verkauf                         Ventes
- 7310        Membership fees           Membership fees                 Membership fees
- 7900        Net loss                  Net loss                        Net loss
-=========== ========================= =============================== ============================
+=========== ================================= ================================= =================================
+ Reference   Designation                       Designation (de)                  Designation (fr)
+----------- --------------------------------- --------------------------------- ---------------------------------
+ 1000        Net income (loss)                 Net income (loss)                 Net income (loss)
+ 4           Commercial assets & liabilities   Commercial assets & liabilities   Commercial assets & liabilities
+ 4000        Customers                         Kunden                            Clients
+ 4300        Pending Payment Orders            Offene Zahlungsaufträge           Ordres de paiement ouverts
+ 4400        Suppliers                         Lieferanten                       Fournisseurs
+ 4500        Employees                         Angestellte                       Employés
+ 4510        VAT due                           Geschuldete Mehrwertsteuer        TVA dûe
+ 4511        VAT returnable                    Rückzahlbare Mehrwertsteuer       TVA à retourner
+ 4512        VAT deductible                    Abziehbare Mehrwertsteuer         TVA déductible
+ 4513        VAT declared                      Deklarierte Mehrwertsteuer        TVA déclarée
+ 4600        Tax Offices                       Steuerämter                       Tax Offices
+ 4900        Waiting account                   Wartekonto                        Waiting account
+ 5           Financial assets & liabilities    Financial assets & liabilities    Financial assets & liabilities
+ 5500        BestBank                          BestBank                          BestBank
+ 5700        Cash                              Kasse                             Caisse
+ 6           Expenses                          Ausgaben                          Dépenses
+ 60          Operation costs                   Diplome                           Operation costs
+ 6010        Purchase of services              Einkäufe von Dienstleistungen     Achats de services
+ 6020        Purchase of investments           Investierungskäufe                Achats d'investissement
+ 6040        Purchase of goods                 Wareneinkäufe                     Achats de marchandises
+ 61          Wages                             Löhne und Gehälter                Salaires
+ 6300        Wages                             Löhne und Gehälter                Salaires
+ 6900        Net income                        Net income                        Net income
+ 7           Revenues                          Revenues                          Revenues
+ 7000        Sales                             Verkauf                           Ventes
+ 7310        Membership fees                   Membership fees                   Membership fees
+ 7900        Net loss                          Net loss                          Net loss
+=========== ================================= ================================= =================================
 <BLANKLINE>

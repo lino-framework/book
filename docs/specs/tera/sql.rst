@@ -21,48 +21,75 @@ Startup
 
 During startup there are a few SQL queries:
 
->>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +SKIP
+>>> show_sql_queries()  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -SKIP
 SELECT excerpts_excerpttype.id, excerpts_excerpttype.name, excerpts_excerpttype.build_method, excerpts_excerpttype.template, excerpts_excerpttype.attach_to_email, excerpts_excerpttype.email_template, excerpts_excerpttype.certifying, excerpts_excerpttype.remark, excerpts_excerpttype.body_template, excerpts_excerpttype.content_type_id, excerpts_excerpttype.primary, excerpts_excerpttype.backward_compat, excerpts_excerpttype.print_recipient, excerpts_excerpttype.print_directly, excerpts_excerpttype.shortcut, excerpts_excerpttype.name_de, excerpts_excerpttype.name_fr FROM excerpts_excerpttype
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 14
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 16
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 69
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 69
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 58
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 65
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 67
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 70
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 70
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 59
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 66
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 68
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 52
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 69
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 39
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 78
+
+TODO: explain what Python code caused above statements.
+
+>>> reset_sql_queries()
 
 .. _specs.tera.sql.AccountingReport:
 
-AccountingReport
-================
 
-Now we do a single request to :class:`AccountingReport
-<lino_xl.lib.ledger.AccountingReport>` and look at the SQL that Lino
-emits.
+Now we run some action and look at the resulting.
 
 To understand the following, you should also look at the source code
-(of the :class:`AccountsBalance <lino_xl.lib.ledger.AccountingReport>`
-class in :mod:`lino_xl.lib.ledger`) and read the Django documentation
-about `Using aggregates within a Subquery expression
+of the accounting report (:class:`sheets.Report
+<lino_xl.lib.sheets.Report>` class in :mod:`lino_xl.lib.sheets`) and
+read the Django documentation about `Using aggregates within a
+Subquery expression
 <https://docs.djangoproject.com/en/1.11/ref/models/expressions/#using-aggregates-within-a-subquery-expression>`__.
 
->>> # test_client.force_login(rt.login('robin').user)
->>> url = 'api/ledger/AccountingReport/-99998'
->>> url += "?fmt=json&pv=1&pv=3&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true&pv=true"
->>> r = demo_get('robin', url)
+>>> ses = rt.login("robin")
+>>> obj = rt.models.sheets.Report.objects.get(pk=1)
 
+>>> reset_sql_queries()
+>>> obj.run_update_plan(ses)
 >>> show_sql_summary()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-========================= =======
- table                     count
-------------------------- -------
- django_session            1
- ledger_account            4
- ledger_accountingperiod   10
- users_user                1
-========================= =======
+========================= =========== =======
+ table                     stmt_type   count
+------------------------- ----------- -------
+                           INSERT      81
+                           UNKNOWN     85
+ ana_account               SELECT      22
+ cal_event                 SELECT      81
+ cal_task                  SELECT      81
+ checkdata_problem         SELECT      81
+ contacts_partner          SELECT      36
+ django_content_type       SELECT      11
+ excerpts_excerpt          SELECT      81
+ ledger_account            SELECT      22
+ ledger_accountingperiod   SELECT      2
+ notes_note                SELECT      81
+ sales_invoiceitem         SELECT      81
+ sheets_accountentry       SELECT      7
+ sheets_accountentry       DELETE      1
+ sheets_anaaccountentry    SELECT      6
+ sheets_anaaccountentry    DELETE      1
+ sheets_item               SELECT      17
+ sheets_itementry          DELETE      1
+ sheets_itementry          SELECT      9
+ sheets_partnerentry       DELETE      1
+ sheets_partnerentry       SELECT      1
+ sheets_report             SELECT      81
+ topics_interest           SELECT      81
+========================= =========== =======
 <BLANKLINE>
+
+TODO: above output shows some bug with parsing the statements, and
+then we must explain why there are so many select statements in
+unrelated tables (e.g. notes_note).
 
 Here is an untested simplified log of the full SQL queries:
 

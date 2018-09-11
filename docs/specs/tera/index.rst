@@ -16,7 +16,6 @@ designed to be used in a center for `sociopsychological
    tim2lino
    products
    sql
-   ledger
    courses
    db
    cal

@@ -67,7 +67,7 @@ API
 ===
 
 On the API level it defines the :class:`Invoiceable
-<lino_xl.lib.invoicing.mixins.Invoiceable>` mixin.
+<lino_xl.lib.invoicing.Invoiceable>` mixin.
 
 The *invoices journal* which supports automatic generation is
 indirectly defined by the :attr:`voucher_model
@@ -77,8 +77,8 @@ indirectly defined by the :attr:`voucher_model
 >>> vt.table_class.start_invoicing
 <lino_xl.lib.invoicing.actions.StartInvoicingForJournal start_invoicing ('Create invoices')>
 
->>> rt.models.invoicing.Plan.start_invoicing
-<lino_xl.lib.invoicing.actions.StartInvoicing start_invoicing ('Create invoices')>
+>>> rt.models.invoicing.Plan.start_plan
+<lino_xl.lib.invoicing.actions.StartInvoicing start_plan ('Create invoices')>
 
 
 Enrolments as invoiceables

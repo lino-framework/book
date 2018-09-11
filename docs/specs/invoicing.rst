@@ -202,6 +202,9 @@ The invoicing plan
     Base for :class:`StartInvoicingForJournal` and
     :class:`StartInvoicingForPartner`.
 
+    Inherits from :class:`lino.modlib.users.StartPlan` and just
+    overrides the label.
+
 .. class:: StartInvoicingForJournal
            
     Start an invoicing plan for this journal.

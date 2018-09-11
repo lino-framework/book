@@ -42,48 +42,46 @@ The plugin requires :mod:`lino_xl.lib.ledger`.
 Analytical accounts
 ===================
 
-Both "Analytical accounts" and "Analytical account groups" can be
-configured:
+"Analytical accounts" can be configured via :menuselection:`Configure
+--> Accounting --> Analytical accounts`.
 
 >>> show_menu_path('ana.Accounts')
 Configure --> Accounting --> Analytical accounts
->>> show_menu_path('ana.Groups')
-Configure --> Accounting --> Analytical account groups
 
 
 >>> rt.show('ana.Accounts')
-=========== ================= ====================== ================== ======================
- Reference   Designation       Designation (de)       Designation (fr)   Group
------------ ----------------- ---------------------- ------------------ ----------------------
- 1100        Wages             Löhne und Gehälter     Salaires           Operation costs
- 1200        Transport         Transport              Transport          Operation costs
- 1300        Training          Ausbildung             Formation          Operation costs
- 1400        Other costs       Sonstige Unkosten      Other costs        Operation costs
- 2100        Secretary wages   Gehälter Sekretariat   Secretary wages    Administrative costs
- 2110        Manager wages     Gehälter Direktion     Manager wages      Administrative costs
- 2200        Transport         Transport              Transport          Administrative costs
- 2300        Training          Ausbildung             Formation          Administrative costs
- 3000        Investment        Investierung           Investment         Investments
- 4100        Wages             Löhne und Gehälter     Salaires           Project 1
- 4200        Transport         Transport              Transport          Project 1
- 4300        Training          Ausbildung             Formation          Project 1
- 5100        Wages             Löhne und Gehälter     Salaires           Project 2
- 5200        Transport         Transport              Transport          Project 2
- 5300        Other costs       Sonstige Unkosten      Other costs        Project 2
-=========== ================= ====================== ================== ======================
+=========== ====================== ====================== ======================
+ Reference   Designation            Designation (de)       Designation (fr)
+----------- ---------------------- ---------------------- ----------------------
+ 1           Operation costs        Diplome                Operation costs
+ 1100        Wages                  Löhne und Gehälter     Salaires
+ 1200        Transport              Transport              Transport
+ 1300        Training               Ausbildung             Formation
+ 1400        Other costs            Sonstige Unkosten      Other costs
+ 2           Administrative costs   Verwaltungskosten      Administrative costs
+ 2100        Secretary wages        Gehälter Sekretariat   Secretary wages
+ 2110        Manager wages          Gehälter Direktion     Manager wages
+ 2200        Transport              Transport              Transport
+ 2300        Training               Ausbildung             Formation
+ 3           Investments            Investierungen         Investments
+ 3000        Investment             Investierung           Investment
+ 4           Project 1              Projekt 1              Project 1
+ 4100        Wages                  Löhne und Gehälter     Salaires
+ 4200        Transport              Transport              Transport
+ 4300        Training               Ausbildung             Formation
+ 5           Project 2              Projekt 2              Project 2
+ 5100        Wages                  Löhne und Gehälter     Salaires
+ 5200        Transport              Transport              Transport
+ 5300        Other costs            Sonstige Unkosten      Other costs
+=========== ====================== ====================== ======================
 <BLANKLINE>
 
->>> rt.show('ana.Groups')
-=========== ====================== =================== ======================
- Reference   Designation            Designation (de)    Designation (fr)
------------ ---------------------- ------------------- ----------------------
- 1           Operation costs        Diplome             Operation costs
- 2           Administrative costs   Verwaltungskosten   Administrative costs
- 3           Investments            Investierungen      Investments
- 4           Project 1              Projekt 1           Project 1
- 5           Project 2              Projekt 2           Project 2
-=========== ====================== =================== ======================
-<BLANKLINE>
+>>> dd.plugins.ana.ref_length
+4
+
+>>> fld = rt.models.ana.Account._meta.get_field('ref')
+>>> fld.max_length
+200
 
 The plugin then injects two fields to your general accounts model and
 one field into your movments model:

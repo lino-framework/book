@@ -32,16 +32,28 @@ once you accept a few known oddnesses.
 
 There are several proofs of concept for alternative user interfaces:
 
-- the :ref:`extjs6` is almost ready for production.
-- one might consider Lino's :class:`TextRenderer
+- The :ref:`extjs6` is almost ready for production.  But it is
+  currently asleep because the ExtJS library is unfortunately no
+  longer free. More precisely its free community version is not
+  maintained.
+  
+- The :ref:`OpenUI5 <specs.openui5>` project is almost ready for
+  production.  OpenUI5 is developed by SAP, conceptually quite similar
+  to ExtJS.
+  
+- The :mod:`lino.modlib.bootstrap3` web interface optimized for
+  read-only access and publication of complex data (something like
+  :ref:`belref`). We acknowledgethat this needs more work before
+  becoming really usable.
+  
+- One might consider Lino's :class:`TextRenderer
   <lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
   functional specifications </dev/doctests>`) as a special kind of
   user interface.
 
-- a more lightweight web interface using some other JS framework than ExtJS
-- a web interface optimized for read-only access and publication of
-  complex data (something like :ref:`belref`, but we agree that this
-  needs more work before becoming really usable)
+- a more lightweight web interface using some other JS framework than
+  ExtJS
+  
 - a console UI using `ncurses <https://en.wikipedia.org/wiki/Ncurses>`_
 - We once started working on an interface that uses the :doc:`Qooxdoo
   library </topics/qooxdoo>`.

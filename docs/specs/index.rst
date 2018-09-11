@@ -22,6 +22,7 @@ Topic overviews
    :maxdepth: 1
 
    accounting
+   office
    
 
 Plugin specs
@@ -31,21 +32,13 @@ Plugin specs
    :maxdepth: 1
 
    cv
-   cal
-   contacts
-   notes
    courses
-   phones
    holidays
    households
    tinymce
-   excerpts
-   printing
    html
-   human
    beid
    checkdata
-   countries
    gfks
    gfktest
    dumps

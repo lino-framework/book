@@ -37,12 +37,9 @@ Lino has the following plugins related to printing:
 Additional build methods:
 
 - :mod:`lino.modlib.weasyprint`
+- :mod:`lino_xl.lib.appypod`
 - :mod:`lino.modlib.wkhtmltopdf`
-- :mod:`lino_xl.lib.appypod`.
   
-
-
-- .
 
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE

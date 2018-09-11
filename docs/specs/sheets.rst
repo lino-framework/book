@@ -7,9 +7,10 @@ Balance sheet and Income statement
 
 .. currentmodule:: lino_xl.lib.sheets
                    
-The :mod:`lino_xl.lib.sheets` plugin adds two important parts of the
-annual financial reports: the *Balance sheet* and the *Income
-statement*.
+The :mod:`lino_xl.lib.sheets` plugin adds
+an annual financial report:
+three types of account balances (general, partner and analytical)
+as well as the *Balance sheet* and the *Income statement*.
 
 You should have read :doc:`ledger` before reading this document.
 
@@ -80,35 +81,35 @@ Table of contents:
 
     >>> rt.show(sheets.CommonItems, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    ======= ================= =========================== ================== ======== ================================
+    ======= ================= =========================== ================== ======== ==================================
      value   name              text                        Sheet type         D/C      Sheet item
-    ------- ----------------- --------------------------- ------------------ -------- --------------------------------
-     1       assets            Assets                      Balance sheet      Debit    1 Assets
-     10                        Current assets              Balance sheet      Debit    10 Current assets
-     1000    customers         Customers receivable        Balance sheet      Debit    1000 Customers receivable
-     1010                      Taxes receivable            Balance sheet      Debit    1010 Taxes receivable
-     1020                      Cash and cash equivalents   Balance sheet      Debit    1020 Cash and cash equivalents
-     1030                      Current transfers           Balance sheet      Debit    1030 Current transfers
-     1090                      Other current assets        Balance sheet      Debit    1090 Other current assets
-     11                        Non-current assets          Balance sheet      Debit    11 Non-current assets
-     2       passiva           Passiva                     Balance sheet      Credit   2 Passiva
-     20      liabilities       Liabilities                 Balance sheet      Credit   20 Liabilities
-     2000    suppliers         Suppliers payable           Balance sheet      Credit   2000 Suppliers payable
-     2010    taxes             Taxes payable               Balance sheet      Credit   2010 Taxes payable
-     2020    banks             Banks                       Balance sheet      Credit   2020 Banks
-     2030    transfers         Current transfers           Balance sheet      Credit   2030 Current transfers
-     2090    other             Other liabilities           Balance sheet      Credit   2090 Other liabilities
-     21      capital           Own capital                 Balance sheet      Credit   21 Own capital
-     2150    net_income_loss   Net income (loss)           Balance sheet      Credit   2150 Net income (loss)
-     6       expenses          Expenses                    Income statement   Debit    6 Expenses
-     6000    costofsales       Cost of sales               Income statement   Debit    6000 Cost of sales
-     6100    operating         Operating expenses          Income statement   Debit    6100 Operating expenses
-     6200    otherexpenses     Other expenses              Income statement   Debit    6200 Other expenses
-     6900    net_income        Net income                  Income statement   Debit    6900 Net income
-     7       revenues          Revenues                    Income statement   Credit   7 Revenues
-     7000    sales             Net sales                   Income statement   Credit   7000 Net sales
-     7900    net_loss          Net loss                    Income statement   Credit   7900 Net loss
-    ======= ================= =========================== ================== ======== ================================
+    ------- ----------------- --------------------------- ------------------ -------- ----------------------------------
+     1       assets            Assets                      Balance sheet      Debit    (1) Assets
+     10                        Current assets              Balance sheet      Debit    (10) Current assets
+     1000    customers         Customers receivable        Balance sheet      Debit    (1000) Customers receivable
+     1010                      Taxes receivable            Balance sheet      Debit    (1010) Taxes receivable
+     1020                      Cash and cash equivalents   Balance sheet      Debit    (1020) Cash and cash equivalents
+     1030                      Current transfers           Balance sheet      Debit    (1030) Current transfers
+     1090                      Other current assets        Balance sheet      Debit    (1090) Other current assets
+     11                        Non-current assets          Balance sheet      Debit    (11) Non-current assets
+     2       passiva           Passiva                     Balance sheet      Credit   (2) Passiva
+     20      liabilities       Liabilities                 Balance sheet      Credit   (20) Liabilities
+     2000    suppliers         Suppliers payable           Balance sheet      Credit   (2000) Suppliers payable
+     2010    taxes             Taxes payable               Balance sheet      Credit   (2010) Taxes payable
+     2020    banks             Banks                       Balance sheet      Credit   (2020) Banks
+     2030    transfers         Current transfers           Balance sheet      Credit   (2030) Current transfers
+     2090    other             Other liabilities           Balance sheet      Credit   (2090) Other liabilities
+     21      capital           Own capital                 Balance sheet      Credit   (21) Own capital
+     2150    net_income_loss   Net income (loss)           Balance sheet      Credit   (2150) Net income (loss)
+     6       expenses          Expenses                    Income statement   Debit    (6) Expenses
+     6000    costofsales       Cost of sales               Income statement   Debit    (6000) Cost of sales
+     6100    operating         Operating expenses          Income statement   Debit    (6100) Operating expenses
+     6200    otherexpenses     Other expenses              Income statement   Debit    (6200) Other expenses
+     6900    net_income        Net income                  Income statement   Debit    (6900) Net income
+     7       revenues          Revenues                    Income statement   Credit   (7) Revenues
+     7000    sales             Net sales                   Income statement   Credit   (7000) Net sales
+     7900    net_loss          Net loss                    Income statement   Credit   (7900) Net loss
+    ======= ================= =========================== ================== ======== ==================================
     <BLANKLINE>
     
 
@@ -131,50 +132,200 @@ Table of contents:
            
     >>> rt.show(sheets.Items, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    ==== =========== =========================== =========================== =========================== =================== ================== =========================== ========
-     ID   Reference   Designation                 Designation (de)            Designation (fr)            Booking direction   Sheet type         Common sheet item           Mirror
-    ---- ----------- --------------------------- --------------------------- --------------------------- ------------------- ------------------ --------------------------- --------
-     1    1           Assets                      Vermögen                    Actifs                      Debit               Balance sheet      Assets
-     2    10          Current assets              Current assets              Current assets              Debit               Balance sheet      Current assets
-     3    1000        Customers receivable        Customers receivable        Customers receivable        Debit               Balance sheet      Customers receivable
-     ...
-     25   7900        Net loss                    Net loss                    Net loss                    Credit              Income statement   Net loss                    6900
-    ==== =========== =========================== =========================== =========================== =================== ================== =========================== ========
+    =========== =========================== =========================== =========================== ================== =================== ===========================
+     Reference   Designation                 Designation (de)            Designation (fr)            Sheet type         Booking direction   Common sheet item
+    ----------- --------------------------- --------------------------- --------------------------- ------------------ ------------------- ---------------------------
+     1           Assets                      Vermögen                    Actifs                      Balance sheet      Debit               Assets
+     10          Current assets              Current assets              Current assets              Balance sheet      Debit               Current assets
+     1000        Customers receivable        Customers receivable        Customers receivable        Balance sheet      Debit               Customers receivable
+     1010        Taxes receivable            Taxes receivable            Taxes receivable            Balance sheet      Debit               Taxes receivable
+     1020        Cash and cash equivalents   Cash and cash equivalents   Cash and cash equivalents   Balance sheet      Debit               Cash and cash equivalents
+     1030        Current transfers           Current transfers           Current transfers           Balance sheet      Debit               Current transfers
+     1090        Other current assets        Other current assets        Other current assets        Balance sheet      Debit               Other current assets
+     11          Non-current assets          Non-current assets          Non-current assets          Balance sheet      Debit               Non-current assets
+     2           Passiva                     Passiva                     Passiva                     Balance sheet      Credit              Passiva
+     20          Liabilities                 Verpflichtungen             Passifs                     Balance sheet      Credit              Liabilities
+     2000        Suppliers payable           Suppliers payable           Suppliers payable           Balance sheet      Credit              Suppliers payable
+     2010        Taxes payable               Taxes payable               Taxes payable               Balance sheet      Credit              Taxes payable
+     2020        Banks                       Banks                       Banks                       Balance sheet      Credit              Banks
+     2030        Current transfers           Current transfers           Current transfers           Balance sheet      Credit              Current transfers
+     2090        Other liabilities           Other liabilities           Other liabilities           Balance sheet      Credit              Other liabilities
+     21          Own capital                 Own capital                 Own capital                 Balance sheet      Credit              Own capital
+     2150        Net income (loss)           Net income (loss)           Net income (loss)           Balance sheet      Credit              Net income (loss)
+     6           Expenses                    Ausgaben                    Dépenses                    Income statement   Debit               Expenses
+     6000        Cost of sales               Cost of sales               Cost of sales               Income statement   Debit               Cost of sales
+     6100        Operating expenses          Operating expenses          Operating expenses          Income statement   Debit               Operating expenses
+     6200        Other expenses              Other expenses              Other expenses              Income statement   Debit               Other expenses
+     6900        Net income                  Net income                  Net income                  Income statement   Debit               Net income
+     7           Revenues                    Revenues                    Revenues                    Income statement   Credit              Revenues
+     7000        Net sales                   Net sales                   Net sales                   Income statement   Credit              Net sales
+     7900        Net loss                    Net loss                    Net loss                    Income statement   Credit              Net loss
+    =========== =========================== =========================== =========================== ================== =================== ===========================
     <BLANKLINE>
+    
 
     In the demo database this list is an unchanged copy of :class:`CommonItems`.
+
+The Accounting Report
+=====================
     
-.. class:: Entry
+.. class:: Report
+.. class:: AccountEntry
+.. class:: PartnerEntry
+.. class:: AnaAccountEntry
+.. class:: ItemEntry
 
     An **entry** is the computed value of given *item* for a given
-    *fiscal year*.
-           
-    >>> rt.show(sheets.Entries, language="en")
-    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    ============= =========================== =================== ===========
-     Fiscal year   Sheet item                  Booking direction   Value
-    ------------- --------------------------- ------------------- -----------
-     2015          1 Assets                    Debit               4 663,25
-     2015          10 Current assets           Debit               4 663,25
-     2015          1000 Customers receivable   Debit               4 663,25
-     2015          2 Passiva                   Credit              13 836,75
-     2015          20 Liabilities              Credit              23 191,15
-     2015          2000 Suppliers payable      Credit              5 512,50
-     2015          2010 Taxes payable          Credit              297,46
-     2015          2020 Banks                  Credit              4 586,75
-     2015          2030 Current transfers      Credit              12 794,44
-     2015          21 Own capital              Credit              -9 354,40
-     2015          2150 Net income (loss)      Credit              -9 354,40
-     2015          6 Expenses                  Debit               27 854,40
-     2015          6000 Cost of sales          Debit               6 714,00
-     2015          6100 Operating expenses     Debit               17 620,40
-     2015          6200 Other expenses         Debit               3 520,00
-     2015          7 Revenues                  Credit              27 854,40
-     2015          7000 Net sales              Credit              18 500,00
-     2015          7900 Net loss               Credit              9 354,40
-    ============= =========================== =================== ===========
-    <BLANKLINE>
+    report.
     
+>>> rpt = sheets.Report.objects.get(pk=1)
+>>> rt.show(sheets.ItemEntriesByReport, rpt)
+=========================== ============== =============== =========== =========== ============== =============
+ Description                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
+--------------------------- -------------- --------------- ----------- ----------- -------------- -------------
+ **1 Assets**                                               18 500,00   13 836,75                  4 663,25
+ ** 10 Current assets**                                     18 500,00   13 836,75                  4 663,25
+ 1000 Customers receivable                                  18 500,00   13 836,75                  4 663,25
+ **2 Passiva**                                              31 472,68   54 663,83   23 191,15
+ ** 20 Liabilities**                                        31 472,68   54 663,83   23 191,15
+ 2000 Suppliers payable                                     22 044,44   27 556,94   5 512,50
+ 2010 Taxes payable                                         178,24      475,70      297,46
+ 2020 Banks                                                             4 586,75    4 586,75
+ 2030 Current transfers                                     9 250,00    22 044,44   12 794,44
+ **6 Expenses**                                             27 854,40                              27 854,40
+ 6000 Cost of sales                                         6 714,00                               6 714,00
+ 6100 Operating expenses                                    17 620,40                              17 620,40
+ 6200 Other expenses                                        3 520,00                               3 520,00
+ **7 Revenues**                                                         18 500,00   18 500,00
+ 7000 Net sales                                                         18 500,00   18 500,00
+=========================== ============== =============== =========== =========== ============== =============
+<BLANKLINE>
+
+>>> ses = rt.login("robin")
+>>> ses.show_story(rpt.get_story(ses))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+======================================= ============== =============== =========== =========== ============== =============
+ Description                             Debit before   Credit before   Debit       Credit      Credit after   Debit after
+--------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
+ **4 Commercial assets & liabilities**                                  49 972,68   63 913,83   13 941,15
+ 4000 Customers                                                         18 500,00   13 836,75                  4 663,25
+ 4300 Pending Payment Orders                                            9 250,00    22 044,44   12 794,44
+ 4400 Suppliers                                                         22 044,44   27 556,94   5 512,50
+ 4510 VAT due                                                           178,24      297,46      119,22
+ 4600 Tax Offices                                                                   178,24      178,24
+ **5 Financial assets & liabilities**                                               4 586,75    4 586,75
+ 5500 BestBank                                                                      4 586,75    4 586,75
+ **6 Expenses**                                                         27 854,40                              27 854,40
+ ** 60 Operation costs**                                                27 854,40                              27 854,40
+ 6010 Purchase of services                                              17 620,40                              17 620,40
+ 6020 Purchase of investments                                           3 520,00                               3 520,00
+ 6040 Purchase of goods                                                 6 714,00                               6 714,00
+ **7 Revenues**                                                                     18 500,00   18 500,00
+ 7000 Sales                                                                         9 620,00    9 620,00
+ 7010 Sales on individual therapies                                                 8 880,00    8 880,00
+======================================= ============== =============== =========== =========== ============== =============
+<BLANKLINE>
+============================ ============== =============== =========== ======== ============== =============
+ Description                  Debit before   Credit before   Debit       Credit   Credit after   Debit after
+---------------------------- -------------- --------------- ----------- -------- -------------- -------------
+ **1 Operation costs**                                       6 350,18                            6 350,18
+ 1100 Wages                                                  559,50                              559,50
+ 1200 Transport                                              1 421,70                            1 421,70
+ 1300 Training                                               3 683,98                            3 683,98
+ 1400 Other costs                                            685,00                              685,00
+ **2 Administrative costs**                                  10 475,16                           10 475,16
+ 2100 Secretary wages                                        1 729,40                            1 729,40
+ 2110 Manager wages                                          4 559,48                            4 559,48
+ 2200 Transport                                              3 642,18                            3 642,18
+ 2300 Training                                               544,10                              544,10
+ **3 Investments**                                           1 404,50                            1 404,50
+ 3000 Investment                                             1 404,50                            1 404,50
+ **4 Project 1**                                             4 510,78                            4 510,78
+ 4100 Wages                                                  3 569,48                            3 569,48
+ 4200 Transport                                              439,80                              439,80
+ 4300 Training                                               501,50                              501,50
+ **5 Project 2**                                             5 113,78                            5 113,78
+ 5100 Wages                                                  1 342,80                            1 342,80
+ 5200 Transport                                              3 483,58                            3 483,58
+ 5300 Other costs                                            287,40                              287,40
+============================ ============== =============== =========== ======== ============== =============
+<BLANKLINE>
+======================================== ============== =============== ========== ========== ============== =============
+ Description                              Debit before   Credit before   Debit      Credit     Credit after   Debit after
+---------------------------------------- -------------- --------------- ---------- ---------- -------------- -------------
+ `Altenberg Hans <Detail>`__                                             1 610,00   1 610,00
+ `Arens Andreas <Detail>`__                                              450,00     450,00
+ `Arens Annette <Detail>`__                                              880,00     880,00
+ `Ausdemwald Alfons <Detail>`__                                          765,00     726,75                    38,25
+ `Auto École Verte <Detail>`__                                           920,00     920,00
+ `Bastiaensen Laurent <Detail>`__                                        920,00     920,00
+ `Bernd Brechts Bücherladen <Detail>`__                                  1 370,00   1 370,00
+ `Bäckerei Ausdemwald <Detail>`__                                        880,00     880,00
+ `Bäckerei Mießen <Detail>`__                                            1 370,00   1 370,00
+ `Bäckerei Schmitz <Detail>`__                                           240,00     240,00
+ `Chantraine Marc <Detail>`__                                            1 370,00                             1 370,00
+ `Charlier Ulrike <Detail>`__                                            880,00                               880,00
+ `Collard Charlotte <Detail>`__                                          450,00                               450,00
+ `Demeulenaere Dorothée <Detail>`__                                      1 685,00                             1 685,00
+ `Dericum Daniel <Detail>`__                                             240,00                               240,00
+ `Donderweer BV <Detail>`__                                              920,00     920,00
+ `Garage Mergelsberg <Detail>`__                                         765,00     765,00
+ `Hans Flott & Co <Detail>`__                                            880,00     880,00
+ `Moulin Rouge <Detail>`__                                               765,00     765,00
+ `Reinhards Baumschule <Detail>`__                                       240,00     240,00
+ `Rumma & Ko OÜ <Detail>`__                                              450,00     450,00
+ `Van Achter NV <Detail>`__                                              450,00     450,00
+======================================== ============== =============== ========== ========== ============== =============
+<BLANKLINE>
+================================== ============== =============== =========== =========== ============== =============
+ Description                        Debit before   Credit before   Debit       Credit      Credit after   Debit after
+---------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
+ `Bäckerei Ausdemwald <Detail>`__                                  568,80      709,00      140,20
+ `Bäckerei Mießen <Detail>`__                                      2 407,80    3 010,00    602,20
+ `Bäckerei Schmitz <Detail>`__                                     4 802,60    6 005,00    1 202,40
+ `Donderweer BV <Detail>`__                                        468,61      585,96      117,35
+ `Garage Mergelsberg <Detail>`__                                   12 970,32   16 210,90   3 240,58
+ `Rumma & Ko OÜ <Detail>`__                                        163,00      205,50      42,50
+ `Van Achter NV <Detail>`__                                        663,31      830,58      167,27
+================================== ============== =============== =========== =========== ============== =============
+<BLANKLINE>
+No data to display
+=============================================== ============== =============== ======= ======== ============== =============
+ Description                                     Debit before   Credit before   Debit   Credit   Credit after   Debit after
+----------------------------------------------- -------------- --------------- ------- -------- -------------- -------------
+ `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                          178,24   178,24
+=============================================== ============== =============== ======= ======== ============== =============
+<BLANKLINE>
+No data to display
+No data to display
+=========================== =========== ==========
+ Description                 Activa      Passiva
+--------------------------- ----------- ----------
+ **1 Assets**                            4 663,25
+ ** 10 Current assets**                  4 663,25
+ 1000 Customers receivable               4 663,25
+ **2 Passiva**               23 191,15
+ ** 20 Liabilities**         23 191,15
+ 2000 Suppliers payable      5 512,50
+ 2010 Taxes payable          297,46
+ 2020 Banks                  4 586,75
+ 2030 Current transfers      12 794,44
+=========================== =========== ==========
+<BLANKLINE>
+========================= =========== ===========
+ Description               Expenses    Revenues
+------------------------- ----------- -----------
+ **6 Expenses**            27 854,40
+ 6000 Cost of sales        6 714,00
+ 6100 Operating expenses   17 620,40
+ 6200 Other expenses       3 520,00
+ **7 Revenues**                        18 500,00
+ 7000 Net sales                        18 500,00
+========================= =========== ===========
+<BLANKLINE>
+
+TODO: merge column headers "Debit before" and "Credit before" etc.
+
 
 The Accounting Equation
 =======================
@@ -188,10 +339,17 @@ And the expanded accounting equation is:
 
     Assets + Expenses = Liabilities + Equity + Revenue
 
->>> year = ledger.FiscalYear.get_by_ref('2015')
+>>> rpt = sheets.Report.objects.get(pk=1)
 >>> def val(ci):
-...     e = sheets.Entry.objects.get(master=year, item=ci.get_object())
-...     return e.value
+...     try:
+...         e = sheets.ItemEntry.objects.get(report=rpt, item=ci.get_object())
+...     except sheets.ItemEntry.DoesNotExist:
+...         return 0
+...     return e.new_balance().value(e.item.dc)
+
+TODO: the following test are skipped, we must first automatically
+generate the profit/loss booking so that the expenses and revenues are
+balanced.
 
 >>> assets = val(sheets.CommonItems.assets)
 >>> liabilities = val(sheets.CommonItems.liabilities)
@@ -204,15 +362,15 @@ And the expanded accounting equation is:
 4663.25
 >>> print(liabilities)
 23191.15
->>> print(capital)
+>>> print(capital)  #doctest: +SKIP
 -9354.40
->>> print(liabilities+capital)
+>>> print(liabilities+capital)  #doctest: +SKIP
 13836.75
->>> print(passiva)
+>>> print(passiva)  #doctest: +SKIP
 13836.75
 >>> print(expenses)
 27854.40
->>> print(revenues)
+>>> print(revenues)  #doctest: +SKIP
 27854.40
     
 Accounts on the left side of the equation (Assets and Expenses) are
@@ -267,7 +425,8 @@ TODO
     | CLASSE 0 : Droits & engagements hors bilan
     | CLASSE 1 : Fonds propres, provisions pour risques & charges et Dettes à plus d'un an
     | CLASSE 2 : Frais d'établissement, actifs immobilisés et créances à plus d'un an
-    | CLASSE 3 : Stock & commandes en cours d'exécution
+
+  | CLASSE 3 : Stock & commandes en cours d'exécution
     | CLASSE 4 : Créances et dettes à un an au plus
     | CLASSE 5 : Placements de trésorerie et valeurs disponibles
     | CLASSE 6 : Charges
@@ -309,29 +468,45 @@ Some vocabulary
 - Provisions pour risques et charges : Gesetzliche Rücklagen.
 - Créances et dettes : Kredite, Anleihen, Schulden.
 
+The template of the report
+==========================
 
+.. xfile:: ledger/Report/default.weasy.html
 
+   Uses the method :meth:`ar.show_story
+   <lino.core.requests.BaseRequest.show_story>`
 
 Don't read me
 =============
 
 
->>> th = rt.models.sheets.BalanceByYear.get_handle()
+>>> th = rt.models.sheets.ItemEntriesByReport.get_handle()
 >>> th  #doctest: +ELLIPSIS
 <lino.core.tables.TableHandle object at ...>
 
 >>> ll = th.get_list_layout()
->>> ll.layout._datasource is rt.models.sheets.BalanceByYear
+>>> ll.layout._datasource is rt.models.sheets.ItemEntriesByReport
 True
 
 >>> cols = th.get_columns()
 >>> el = cols[0]
 >>> print(el.field.name)
-item__description
+description
 >>> print(el.name)
-item__description
+description
 >>> print(el.width)
-None
+40
 >>> el.preferred_width
-50
+30
 
+>>> th = rt.models.sheets.Items.get_handle()
+>>> cols = th.get_columns()
+>>> el = cols[0]
+>>> print(el.field.name)
+ref
+>>> print(el.width)
+4
+>>> el.preferred_width
+10
+
+TODO: the preferred_width of the ref field should be 4, not 10.

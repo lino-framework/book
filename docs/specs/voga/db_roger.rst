@@ -61,7 +61,7 @@ The database structure
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        17
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        129
  finan.JournalEntry         finan.FinancialVouchers        14        0
@@ -72,9 +72,9 @@ The database structure
  invoicing.Item             invoicing.Items                10        7
  invoicing.Plan             invoicing.Plans                7         1
  invoicing.SalesRule        invoicing.SalesRules           3         4
- ledger.Account             ledger.Accounts                17        21
+ ledger.Account             ledger.Accounts                17        27
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
- ledger.FiscalYear          ledger.FiscalYears             6         7
+ ledger.FiscalYear          ledger.FiscalYears             5         7
  ledger.Journal             ledger.Journals                23        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
  ledger.MatchRule           ledger.MatchRules              3         16
@@ -167,7 +167,7 @@ behaviour. See also :doc:`/dev/delete`.
 - courses.Topic :
   - PROTECT : courses.Line.topic
 - excerpts.Excerpt :
-  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, ledger.FiscalYear.printed_by, sales.VatProductInvoice.printed_by
+  - SET_NULL : bevats.Declaration.printed_by, courses.Enrolment.printed_by, finan.BankStatement.printed_by, finan.JournalEntry.printed_by, finan.PaymentOrder.printed_by, sales.VatProductInvoice.printed_by
 - excerpts.ExcerptType :
   - PROTECT : excerpts.Excerpt.excerpt_type
 - finan.BankStatement :

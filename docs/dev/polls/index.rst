@@ -164,7 +164,7 @@ A few explanations:
     
 #.  The **main menu** of a Lino application is defined in the
     :meth:`setup_menu <lino.core.site.Site.setup_menu>` method.  At
-    least in the simplest case. We will come back on this in
+    least in the simplest case.  We will come back on this in
     :doc:`/dev/menu`.
     
 Lino uses some tricks to make Django settings modules more pleasant to

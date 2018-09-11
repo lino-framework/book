@@ -33,7 +33,7 @@ users.UserTypes.admin:900
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - System : Site Parameters, Users, Help Texts
@@ -76,7 +76,7 @@ Monique is a secretary.
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - System : Site Parameters, Help Texts
@@ -112,7 +112,7 @@ Marianne is a "simple user".
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Reports :
-  - Accounting : Accounting Report, Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - Activities : Activity types, Instructor Types, Participant Types
