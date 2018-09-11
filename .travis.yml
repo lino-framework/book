@@ -16,8 +16,6 @@ before_install:
 install:
   - pip install -U setuptools
   - pip install coveralls
-  - pip install mock
-  - pip install sqlparse
 #  - pip install Django==$DJANGO
   - if [[ $TRAVIS_PYTHON_VERSION != 2.7 ]]; then pip install -r requirements.python3.txt; else pip install -r requirements.txt;  fi
 #  - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
