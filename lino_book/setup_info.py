@@ -13,7 +13,7 @@ PY3 = sys.version_info[0] == 3
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='18.3.0',
+    version='18.9.0',
     install_requires=[
         'lino', 'selenium','mock',
         'django-iban', 'metafone', 'channels<2',
@@ -32,11 +32,11 @@ SETUP_INFO = dict(
         'lino_avanti',
         'lino_tera',
         'lino_amici',
-        'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg'],
+        'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
+        'mock', 'sqlparse'
+    ],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
-    tests_require=['mock', 'sqlparse'],
-
     description="Lino documentation and demo projects",
     license='BSD License',
     include_package_data=True,
