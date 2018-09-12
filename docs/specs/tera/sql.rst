@@ -73,10 +73,10 @@ Subquery expression
  ledger_accountingperiod   SELECT      2
  notes_note                SELECT      81
  sales_invoiceitem         SELECT      81
- sheets_accountentry       SELECT      7
  sheets_accountentry       DELETE      1
- sheets_anaaccountentry    SELECT      6
+ sheets_accountentry       SELECT      7
  sheets_anaaccountentry    DELETE      1
+ sheets_anaaccountentry    SELECT      6
  sheets_item               SELECT      17
  sheets_itementry          DELETE      1
  sheets_itementry          SELECT      9
