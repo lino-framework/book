@@ -35,7 +35,7 @@ Internal changes:
 - New model mixin :class:`lino.modlib.users.UserPlan`.
 
 - plain html tables now use ``class="text-cell"`` instead of a
-  hard-coded set of attributes  ``align="left"
+  hard-coded set of attributes  ``align="left"``.
 
 - The :meth:`lino.core.renderer.HtmlRenderer.table2story` method now
   yields a sequence of elements instead of returning a single one.  
