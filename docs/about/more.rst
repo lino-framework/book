@@ -22,6 +22,5 @@ programming language, but also contains Javascript code.
    :maxdepth: 1
 
    compared
-   why_extjs
 
 

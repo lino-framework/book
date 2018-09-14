@@ -1,6 +1,12 @@
 Lino and Qooxdoo
 ================
 
+(Don't read. Needs revision.)
+
+We once started working on an interface that uses the `Qooxdoo
+<http://www.qooxdoo.org>`__.
+
+
 How to use it
 -------------
 
