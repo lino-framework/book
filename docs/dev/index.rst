@@ -32,7 +32,6 @@ Special topics
    /specs/projects/nomti
    watch
    matrix/index
-   /tutorials/workflows_tutorial/index
    /tutorials/input_mask/index
 
 
@@ -44,8 +43,6 @@ Drafts
 
    /tutorials/tested_docs/index
    setup
-   startup
-   workflows
    translate/index
    
    userdocs

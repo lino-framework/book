@@ -40,6 +40,7 @@ Examples used by a tutorial:
    polly
    watch
    watch2
+   workflows
 
 
 Poorly documented examples at different development states:

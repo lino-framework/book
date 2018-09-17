@@ -20,6 +20,13 @@ New features visible to end-users:
   It is no longer a virtual table but
   a :class:`lino.modlib.users.UserPlan`.
 
+- Optimizations in :mod:`lino_xl.lib.cal` :class:`OverdueAppointments
+  <lino_xl.lib.cal.OverdueAppointments>` : the default view no longer
+  includes today, it stops yesterday.  Because today's appointments
+  are shown by :class:`lino_xl.lib.cal.MyAppointmentsToday`.
+         
+  
+
 Database changes
 
 - Subclasses of :class:`lino.mixins.refs.Referrable` now always have

@@ -26,6 +26,7 @@ class Site(Site):
         yield 'lino_book.projects.min9.modlib.contacts'
         yield 'lino_xl.lib.addresses'
         yield 'lino_xl.lib.reception'
+        yield 'lino_xl.lib.courses'
         # yield 'lino.modlib.sepa'
         yield 'lino_xl.lib.notes'
         # yield 'lino_xl.lib.projects'

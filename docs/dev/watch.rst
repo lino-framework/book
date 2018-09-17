@@ -1,13 +1,9 @@
+.. doctest docs/dev/watch.rst
 .. _dev.watch:
 
 =========================
 Watching database changes
 =========================
-
-.. How to test only this module:
-
-    $ python setup.py test -s tests.DocsTests.test_watch
-
 
 This tutorial explains how to use the :mod:`lino.modlib.changes`
 plugin for logging changes to individual rows of database tables and

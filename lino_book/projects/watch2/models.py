@@ -12,6 +12,7 @@ from lino.modlib.users.mixins import UserAuthored
 
 # contacts = dd.resolve_app('contacts')
 
+@dd.python_2_unicode_compatible
 class Company(dd.Model):
     class Meta:
         verbose_name = _("Company")
@@ -21,7 +22,8 @@ class Company(dd.Model):
     street = models.CharField(_("Street"), blank=True, max_length=200)
     city = models.CharField(_("City"), blank=True, max_length=200)
     
-        
+    def __str__(self):
+        return self.name
 
 class EntryType(mixins.BabelDesignated):
     class Meta:
@@ -137,7 +139,7 @@ class CompaniesWithEntryTypes(dd.VentilatingTable, Companies):
                     end_date=ar.param_values.end_date)
                 if et is not None:
                     pv.update(entry_type=et)
-                pv.update(company=obj)
+                pv.update(company=obj, user=ar.get_user())
                 return Entries.request(param_values=pv)
             return func
         for et in EntryType.objects.all():

@@ -1,16 +1,9 @@
+.. doctest docs/specs/tera/courses.rst
 .. _tera.specs.courses:
 
 =======================
 Activities in Lino Tera
 =======================
-
-.. to test only this doc:
-
-    $ doctest docs/specs/tera/courses.rst
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
 
 This document specifies how the :mod:`lino_xl.lib.courses` plugin is
 being used in :ref:`tera`.
@@ -29,6 +22,13 @@ indipendent clients who share a common interest).
 Implementation
 ==============
 
+Examples in this document use the :mod:`lino_book.projects.lydia` demo
+project.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+
 >>> dd.plugins.courses
 lino_tera.lib.courses (extends_models=['Enrolment', 'Course', 'Line'])
 
@@ -36,3 +36,19 @@ lino_tera.lib.courses (extends_models=['Enrolment', 'Course', 'Line'])
 (<class 'lino_xl.lib.courses.Plugin'>,)
     
 
+Course areas
+============
+
+The :class:`CourseAreas` choicelist in :ref:`tera` defines the
+following areas:
+
+>>> rt.show(courses.CourseAreas)
+======= ============= ====================== ==================== ==================
+ value   name          text                   Table                Manage presences
+------- ------------- ---------------------- -------------------- ------------------
+ 10      therapies     Individual therapies   courses.Therapies    No
+ 20      life_groups   Life groups            courses.LifeGroups   No
+ 30      default       Other groups           courses.Courses      Yes
+======= ============= ====================== ==================== ==================
+<BLANKLINE>
+        

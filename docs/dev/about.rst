@@ -7,7 +7,6 @@ Lino design goals
               
    /about/faq
    /about/lino_and_django
-   /about/ui
    /about/features
    /about/not_easy
    /about/think_python

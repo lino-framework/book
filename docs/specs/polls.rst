@@ -1,23 +1,22 @@
+.. doctest docs/specs/polls.rst
 .. _tested.polly:
 .. _book.specs.polls:
 
 The Polls plugin
 ================
 
-..  how to test just this page:
-   
-    $ doctest docs/specs/polls.rst
-    
-    doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.polly.settings.demo')
-    >>> from lino.api.doctest import *
-
 This document describes the :mod:`lino_xl.lib.polls` plugin which
 adds database models and functionality for managing polls.
 
 
 .. currentmodule:: lino_xl.lib.polls
+
+
+>>> import lino
+>>> lino.startup('lino_book.projects.polly.settings.demo')
+>>> from lino.api.doctest import *
+
+                   
 
 Overview
 ========
@@ -200,13 +199,13 @@ Choicelists
     The list of possible states of a :class:`Poll`.
 
     >>> rt.show(polls.PollStates)
-    ======= ======== ========
-     value   name     text
-    ------- -------- --------
+    ======= ======== ======== ========
+     value   name     text     Symbol
+    ------- -------- -------- --------
      10      draft    Draft
      20      active   Active
      30      closed   Closed
-    ======= ======== ========
+    ======= ======== ======== ========
     <BLANKLINE>
     
 .. class:: ResponseStates
@@ -214,12 +213,12 @@ Choicelists
     The list of possible states of a :class:`Response`.
     
     >>> rt.show(polls.ResponseStates)
-    ======= ============ ============
-     value   name         text
-    ------- ------------ ------------
+    ======= ============ ============ ========
+     value   name         text         Symbol
+    ------- ------------ ------------ --------
      10      draft        Draft
      20      registered   Registered
-    ======= ============ ============
+    ======= ============ ============ ========
     <BLANKLINE>
     
 Example fixtures

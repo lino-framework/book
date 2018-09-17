@@ -1,15 +1,21 @@
 .. _dev.ui:
 
-==================
-The user interface
-==================
+===========================
+Writing new user interfaces
+===========================
 
-The ExtJS user interface is stable and quite usable once you accept a
-few known oddnesses.  Its most serious limitation is that it is not
-very usable on mobile devices.  But more than hundred users use it
-every day, and most of them love it.  Which doesn't mean that they
-never complain about certain known oddnesses.  Don't forget that
-complaining is actaally one facet of love.
+Lino can have many faces
+========================
+
+Lino is designed to have *many possible* user interfaces.  It comes
+with an extensible collection of *out-of-the-box* user interfaces.
+You can write a Lino application once and then deploy it via different
+interfaces.
+
+A real-world example for this is :ref:`noi` which can be deployed
+using two public UIs.  Inspect the :mod:`lino_book.projects.team` and
+:mod:`lino_book.projects.bs3` demo projects.
+
 
 Alternatives
 ============
@@ -30,16 +36,14 @@ There are several proofs of concept for alternative user interfaces.
   :ref:`belref`). We acknowledgethat this needs more work before
   becoming really usable.
   
-- :ref:`noi` is an example of an application which is deployed using
-  two public UIs.
-
 - One might consider Lino's :class:`TextRenderer
   <lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
   functional specifications </dev/doctests>`) as a special kind of
   user interface.
 
 - a more lightweight web interface using some other JS framework than
-  ExtJS
+  ExtJS.  e.g. `Anular <https://angular.io/>`__ or `Vue
+  <https://github.com/vuejs/ui>`__
   
 - A console UI using `ncurses
   <https://en.wikipedia.org/wiki/Ncurses>`_ would be nice.  Not much

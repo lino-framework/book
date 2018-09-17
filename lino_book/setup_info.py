@@ -272,6 +272,8 @@ lino_book.projects.roger
 lino_book.projects.roger.settings
 lino_book.projects.roger.settings.fixtures
 lino_book.projects.roger.tests
+lino_book.projects.workflows
+lino_book.projects.workflows.entries
 """.splitlines() if n])
 
 

@@ -1,21 +1,25 @@
+.. doctest docs/specs/avanti/courses.rst
 .. _avanti.specs.courses:
 
 ======================
 Courses in Lino Avanti
 ======================
 
-..  $ doctest docs/specs/avanti/courses.rst
-
-    doctest init:
-
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-
+This document specifies how the :mod:`lino_xl.lib.courses` plugin is
+being used in :ref:`avanti`.
 
 .. contents::
    :depth: 1
    :local:
+
+
+Examples in this document use the :mod:`lino_book.projects.adg` demo
+project.
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+
 
 Dependencies
 ============
@@ -209,15 +213,15 @@ Models and views
     The list of possible states of a reminder.
 
     >>> rt.show(courses.ReminderStates)
-    ======= =========== ===========
-     value   name        text
-    ------- ----------- -----------
+    ======= =========== =========== ========
+     value   name        text        Symbol
+    ------- ----------- ----------- --------
      10      draft       Draft
      20      sent        Sent
      30      ok          OK
      40      final       Final
      90      cancelled   Cancelled
-    ======= =========== ===========
+    ======= =========== =========== ========
     <BLANKLINE>
            
     
@@ -324,3 +328,18 @@ Total number of cells is 13*17:
 <td align="center" valign="middle">☑
 </td>
 
+
+
+Course areas
+============
+
+The :class:`CourseAreas` choicelist in :ref:`avanti` defines only one
+areas.
+
+>>> rt.show(courses.CourseAreas)
+======= ========= ============ ================= ==================
+ value   name      text         Table             Manage presences
+------- --------- ------------ ----------------- ------------------
+ C       default   Activities   courses.Courses   Yes
+======= ========= ============ ================= ==================
+<BLANKLINE>

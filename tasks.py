@@ -25,6 +25,7 @@ ns = setup_from_tasks(
         'lino_book/projects/combo',
         'lino_book/projects/watch',
         'lino_book/projects/watch2',
+        'lino_book/projects/workflows',
         'lino_book/projects/docs',
         'lino_book/projects/belref',
         'lino_book/projects/polly',

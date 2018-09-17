@@ -1,3 +1,4 @@
+.. doctest docs/dev/matrix/index.rst
 .. _lino.tutorial.matrix:
 
 =========================
@@ -10,9 +11,9 @@ introduces a usage example for :doc:`/dev/parameters`.
 It extends the application created in :doc:`/dev/tables/index` (so you
 might follow that tutorial before reading on here).
 
-We add an `EntryType` model and a `CompaniesWithEntryTypes` 
-table which is a matrix with one row per `Company` and one 
-column per `EntryType`.
+We add an :class:`EntryType` model and a
+:class:`CompaniesWithEntryTypes` table which is a matrix with one row
+per `Company` and one column per `EntryType`.
 
 .. image:: a.png
   :scale: 50  
@@ -63,3 +64,13 @@ using :ref:`dpy`:
 
   
 
+>>> rt.login("Albert").show(watch2.CompaniesWithEntryTypes)
+==================== ============== ============ ======= ========== ============= ========
+ Description          Consultation   Evaluation   Test    Analysis   Observation   Total
+-------------------- -------------- ------------ ------- ---------- ------------- --------
+ AllTech inc.         **3**          **3**        **4**   **2**      **2**         **14**
+ BestTech inc.        **3**          **3**        **2**   **2**      **4**         **14**
+ CoolTech inc.        **2**          **2**        **3**   **4**      **3**         **14**
+ **Total (3 rows)**   **8**          **8**        **9**   **8**      **9**         **42**
+==================== ============== ============ ======= ========== ============= ========
+<BLANKLINE>

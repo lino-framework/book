@@ -14,6 +14,11 @@ version.
 
   See :cmd:`go` if you don't know that command.
 
+- Activate the python environment (we usually have a shell alias
+  :cmd:`a` which expands to ``. env/bin/activate``)::
+
+    $ a
+
 - Stop the web server::
 
     $ sudo service apache2 stop
@@ -30,15 +35,14 @@ version.
 
     $ ./pull.sh
 
+- Run the :manage:`collectstatic` command::
+
+    $ python manage.py collectstatic
+
     
 That's all **if there is no change in the database structure**. But if
 there was (or if you don't know whether there was) some change which
 requires a data migration, then you must continue:
-
-- Activate the python environment (we usually have a shell alias
-  :cmd:`a` which expands to ``. env/bin/activate``)::
-
-    $ a
 
 - Restore the snapshot::
 

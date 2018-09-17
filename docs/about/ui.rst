@@ -5,31 +5,38 @@
 Separate business logic and user interface
 ==========================================
 
-People tend to judge a framework by its user interface or front-end,
-because this is the first and almost only "visible" part of an
-application.
+People tend to judge a framework by its user interface or front-end
+because this is the only "visible" part of an application.
 
-But Lino is designed to have **many possible** user interfaces.  Lino
-comes with an extensible collection of *out-of-the-box* user
-interfaces.  You can write a Lino application once and then deploy it
-via different interfaces.
+So it is difficult to answer the question "how does Lino look like"?
 
-That said, the only realistic choice is currently indeed the ExtJS UI.
-Lino applications "look like" those you can see at :doc:`/demos`.
+But Lino's beauty lies beyond the user interface.  Lino is designed to
+have *many possible* user interfaces.  Lino comes with an extensible
+collection of *out-of-the-box* user interfaces.  You can write a Lino
+application once and then deploy it via different interfaces.
 
-The qualitiy of Lino's user interface is just *good enough* and
-admittedly less than what people are used to get on big web
-applications where hundreds of developers have been working hard to
-make it a perfect ergonomic experience.  Lino's beauty lies beyond the
-user interface.
+That said, there is currently indeed only one realistic choice for the
+user interface, the one based on ExtJS.  Lino applications "look like"
+those you can see at :doc:`/demos`.
+
+The qualitiy of this user interface is *admittedly less* than what
+people are used to get on big web applications where hundreds of
+developers have been working hard to make it a perfect ergonomic
+experience.
+
+But it is *good enough*.  Its only serious limitation is that it is
+not very usable on mobile devices.  But more than hundred users use it
+every day, and most of them love it.  Which doesn't mean that they
+never complain about certain known oddnesses.  Don't forget that
+complaining is an integral part of loving.
 
 Lino has currently only this one choice because because writing and
-optimizing a user interface is a rather boring task, and there are
-many other, more interesting tasks that are waiting to be done, and,
-last but not least, because the ExtJS UI is actually quite usable,
-once you accept a few known oddnesses.
+maintaining a user interface is a big task, because our resources are
+limited, and because there are many other, more interesting tasks to
+be done.
 
 There are several proofs of concept for alternative user interfaces.
-We discuss them in the :doc:`Developer's Guide </dev/ui>`.
+An overview of these research projects in the :doc:`Developer's Guide
+</dev/ui>`.
 
 

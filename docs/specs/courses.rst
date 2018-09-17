@@ -1,16 +1,9 @@
+.. doctest docs/specs/courses.rst
 .. _specs.courses:
 
 =======================
 Activities
 =======================
-
-.. to test only this doc:
-
-    $ doctest docs/specs/courses.rst
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
 
 This document describes the :mod:`lino_xl.lib.courses` plugin.
 
@@ -20,7 +13,6 @@ historic reasons. In :ref:`welfare` they are called "workshops", in
 "activities".  In :ref:`voga` they are called courses, journeys or
 travels.
 
-
 See also
 :doc:`/specs/voga/courses`,
 :doc:`/specs/avanti/courses`.
@@ -28,16 +20,26 @@ and
 :doc:`/specs/tera/courses`
 It is also being used in :ref:`welfare`.
 
+Examples in this document use the :mod:`lino_book.projects.min9` demo
+project.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+
 
 An **activity** is a series of scheduled calendar entries where a
-given teacher teaches a given group of participants about a given
+given "teacher" meets with a group of participants about a given
 topic.
 
-There is a configurable list of **topics**.  Activities are grouped
-into **activity lines** (meaning "series").  An activity line is a
-series of activities having a same **topic**.
+The participants of an activity are stored as **enrolments**.
 
-The participants of an activity are stored as **Enrolments**.
+There is a configurable list of **topics**.  Activities are grouped
+into **activity lines**.  An activity line is a series of activities
+having a same **topic**.
+
 
 .. contents::
   :local:
@@ -235,10 +237,40 @@ The ``Line`` model
 
            
     
-Choicelists
-===========
+Course areas
+============
+
+The :class:`CourseAreas` choicelist is a place for defining different
+layouts of courses.  The area of a course determines how this course
+is being show on screen and whether presences of the participants are
+being managed or not.
+
+The default configuration contains only one choice:
+
+>>> rt.show(courses.CourseAreas)
+======= ========= ============ ================= ==================
+ value   name      text         Table             Manage presences
+------- --------- ------------ ----------------- ------------------
+ C       default   Activities   courses.Courses   Yes
+======= ========= ============ ================= ==================
+<BLANKLINE>
+
+
+Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
+
         
 .. class:: CourseAreas
+
+    .. attribute:: courses_table
+
+        Which table to use for showing courses in this course area.
+        
+    .. attribute:: manage_presences
+
+        The default value `True` means that presences are managed
+        individually per guest.  Set this to `False` if Lino should
+        consider every guest automatically as present.
+                   
 
 Actions
 =======

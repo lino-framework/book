@@ -1,22 +1,22 @@
+.. doctest docs/specs/voga/courses.rst
 .. _voga.specs.courses:
 
 =======================
 Activities in Lino Voga
 =======================
 
-.. to test only this doc:
-
-    $ doctest docs/specs/voga/courses.rst
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
-
 This document specifies how the :mod:`lino_xl.lib.courses` plugin is
 being used in :ref:`voga`.
 
 .. contents::
   :local:
+
+Examples in this document use the :mod:`lino_book.projects.roger` demo
+project.
+
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 
@@ -28,6 +28,24 @@ lino_voga.lib.roger.courses (extends_models=['Pupil', 'Enrolment', 'Line'])
 
 >>> dd.plugins.courses.__class__.__bases__
 (<class 'lino_voga.lib.courses.Plugin'>,)
+
+
+Course areas
+============
+
+The :class:`CourseAreas` choicelist in :ref:`voga` defines the
+following areas:
+
+>>> rt.show(courses.CourseAreas)
+======= ========== ========== ================== ==================
+ value   name       text       Table              Manage presences
+------- ---------- ---------- ------------------ ------------------
+ C       default    Courses    courses.Courses    Yes
+ H       hikes      Hikes      courses.Hikes      Yes
+ J       journeys   Journeys   courses.Journeys   Yes
+======= ========== ========== ================== ==================
+<BLANKLINE>
+
     
 
 Pupils and teachers
@@ -105,25 +123,26 @@ Enrolments
 ==========
 
 >>> rt.show('courses.EnrolmentStates')
-======= =========== ===========
- value   name        text
-------- ----------- -----------
+======= =========== =========== ========
+ value   name        text        Symbol
+------- ----------- ----------- --------
  10      requested   Requested
  11      trying      Trying
  20      confirmed   Confirmed
  30      cancelled   Cancelled
-======= =========== ===========
+======= =========== =========== ========
 <BLANKLINE>
 
+
 >>> rt.show('courses.EnrolmentStates', language="de")
-====== =========== ===========
- Wert   name        Text
------- ----------- -----------
+====== =========== =========== ========
+ Wert   name        Text        Symbol
+------ ----------- ----------- --------
  10     requested   Angefragt
  11     trying      Test
  20     confirmed   Bestätigt
  30     cancelled   Storniert
-====== =========== ===========
+====== =========== =========== ========
 <BLANKLINE>
 
 

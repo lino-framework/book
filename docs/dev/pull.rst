@@ -17,7 +17,8 @@ To update your copy of the Lino sources, you do::
 See the documentation of `git pull
 <https://git-scm.com/docs/git-pull>`_ for more information.
 
-After running :cmd:`git pull` it is a good idea to run::
+After running :cmd:`git pull` it is a good idea to run :cmd:`inv
+clean`::
 
   $ pp inv clean -b
 

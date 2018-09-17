@@ -59,17 +59,17 @@ Therapeutical groups
 ====================
 
 >>> rt.show(courses.CourseAreas)
-======= ============= ======================
- value   name          text
-------- ------------- ----------------------
- 10      therapies     Individual therapies
- 20      life_groups   Life groups
- 30      default       Other groups
-======= ============= ======================
+======= ============= ====================== ==================== ==================
+ value   name          text                   Table                Manage presences
+------- ------------- ---------------------- -------------------- ------------------
+ 10      therapies     Individual therapies   courses.Therapies    No
+ 20      life_groups   Life groups            courses.LifeGroups   No
+ 30      default       Other groups           courses.Courses      Yes
+======= ============= ====================== ==================== ==================
 <BLANKLINE>
 
 
-.. _presto.specs.teams:
+.. _tera.specs.teams:
 
 Teams
 =====

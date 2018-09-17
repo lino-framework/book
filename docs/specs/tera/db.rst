@@ -20,8 +20,8 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-95 models:
+45 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, dashboard, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+96 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -51,7 +51,7 @@ The database structure
  contacts.Person             contacts.Persons               33        97
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         95
+ contenttypes.ContentType    gfks.ContentTypes              3         96
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        59
@@ -60,6 +60,7 @@ The database structure
  courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
+ dashboard.Widget            dashboard.Widgets              5         0
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
  finan.BankStatement         finan.BankStatements           16        1
@@ -247,7 +248,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : topics.Topic.topic_group
 - users.User :
   - CASCADE : ledger.LedgerInfo.user
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, sheets.Report.user, tera.Client.user, tinymce.TextFieldTemplate.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, sheets.Report.user, tera.Client.user, tinymce.TextFieldTemplate.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>

@@ -15,6 +15,7 @@ programming language, but also contains Javascript code.
    thanks
    auth
    how
+   ui
 
 .. rubric:: Drafts
    
