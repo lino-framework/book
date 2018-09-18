@@ -240,6 +240,8 @@ The ``Line`` model
 Course areas
 ============
 
+TODO: rename "course area" to "activity layout"?
+
 The :class:`CourseAreas` choicelist is a place for defining different
 layouts of courses.  The area of a course determines how this course
 is being show on screen and whether presences of the participants are
@@ -248,28 +250,37 @@ being managed or not.
 The default configuration contains only one choice:
 
 >>> rt.show(courses.CourseAreas)
-======= ========= ============ ================= ==================
- value   name      text         Table             Manage presences
-------- --------- ------------ ----------------- ------------------
- C       default   Activities   courses.Courses   Yes
-======= ========= ============ ================= ==================
+======= ========= ============ ================= ====================
+ value   name      text         Table             Force guest states
+------- --------- ------------ ----------------- --------------------
+ C       default   Activities   courses.Courses   No
+======= ========= ============ ================= ====================
 <BLANKLINE>
 
 
 Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
-        
 .. class:: CourseAreas
+           
+    The global choicelist of course areas.  Every choice is an
+    instance of :class:`CourseArea`.
+        
+.. class:: CourseArea
 
     .. attribute:: courses_table
 
         Which table to use for showing courses in this course area.
         
-    .. attribute:: manage_presences
+    .. attribute:: force_guest_states
 
-        The default value `True` means that presences are managed
-        individually per guest.  Set this to `False` if Lino should
-        consider every guest automatically as present.
+        Whether guest states are forced, i.e. automatically set for
+        all guests based on the calendar entry's state.
+
+        The default value `False` means that presences are managed
+        individually per guest.  Set this to `True` if Lino should set
+        guest states automatically to the value given by
+        :attr:`EntryState.guest_state`.  Usage example in
+        :doc:`tera/courses`.
                    
 
 Actions

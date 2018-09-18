@@ -19,6 +19,9 @@ indipendent clients who share a common interest).
 
 
 
+.. currentmodule:: lino_tera.lib.courses
+                   
+
 Implementation
 ==============
 
@@ -39,16 +42,35 @@ lino_tera.lib.courses (extends_models=['Enrolment', 'Course', 'Line'])
 Course areas
 ============
 
-The :class:`CourseAreas` choicelist in :ref:`tera` defines the
+Presences are not managed only for normal group therapies, but for
+individual therapies and life groups.  This is implemented using the
+:attr:`force_guest_states
+<lino_xl.lib.courses.CourseArea.force_guest_states>` attribute of
+their activity area (which is given by the activity line).
+
+
+The :class:`CourseAreas` choicelist in :ref:`tera` implements
+:class:`lino_xl.lib.courses.CourseAreas` but populates with the
 following areas:
 
 >>> rt.show(courses.CourseAreas)
-======= ============= ====================== ==================== ==================
- value   name          text                   Table                Manage presences
-------- ------------- ---------------------- -------------------- ------------------
- 10      therapies     Individual therapies   courses.Therapies    No
- 20      life_groups   Life groups            courses.LifeGroups   No
- 30      default       Other groups           courses.Courses      Yes
-======= ============= ====================== ==================== ==================
+======= ============= ====================== ==================== ====================
+ value   name          text                   Table                Force guest states
+------- ------------- ---------------------- -------------------- --------------------
+ 10      therapies     Individual therapies   courses.Therapies    Yes
+ 20      life_groups   Life groups            courses.LifeGroups   Yes
+ 30      default       Other groups           courses.Courses      No
+======= ============= ====================== ==================== ====================
 <BLANKLINE>
-        
+
+>>> rt.show(cal.EntryStates, column_names='name text guest_state')
+============ ============ =============
+ name         text         Guest state
+------------ ------------ -------------
+ suggested    Suggested
+ draft        Draft
+ took_place   Took place   Present
+ cancelled    Cancelled    Excused
+ missed       Missed       Absent
+============ ============ =============
+<BLANKLINE>

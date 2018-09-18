@@ -51,7 +51,7 @@ users.UserTypes.admin:900
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Sales rules, Special Belgian VAT declarations, Declaration fields
-  - Activities : Activities, Enrolments, Enrolment states
+  - Activities : Activities, Enrolments, Enrolment states, Course layouts
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts

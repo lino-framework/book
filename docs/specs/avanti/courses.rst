@@ -337,9 +337,9 @@ The :class:`CourseAreas` choicelist in :ref:`avanti` defines only one
 areas.
 
 >>> rt.show(courses.CourseAreas)
-======= ========= ============ ================= ==================
- value   name      text         Table             Manage presences
-------- --------- ------------ ----------------- ------------------
- C       default   Activities   courses.Courses   Yes
-======= ========= ============ ================= ==================
+======= ========= ============ ================= ====================
+ value   name      text         Table             Force guest states
+------- --------- ------------ ----------------- --------------------
+ C       default   Activities   courses.Courses   No
+======= ========= ============ ================= ====================
 <BLANKLINE>

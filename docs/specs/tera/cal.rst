@@ -17,6 +17,10 @@ Calendar in Lino Tera
 This document describes how we use the :mod:`lino_xl.lib.cal` plugin
 in Tera.
 
+
+
+
+
 Missed calendar entries
 =======================
 
@@ -28,7 +32,6 @@ appointment not.
 Changed the symbol for a "Cancelled" calendar entry from ☉ to
 ⚕. Because the symbol ☉ (a sun) is used for "Missed".  The sun reminds
 a day on the beach while the ⚕ reminds a drugstore.
-
 
 
 >>> rt.show(cal.EntryStates)
@@ -55,6 +58,21 @@ a day on the beach while the ⚕ reminds a drugstore.
  60     missed       Verpasst        ☉             Nein                    Ja       Nein                Ja
 ====== ============ =============== ============= ======================= ======== =================== =========
 <BLANKLINE>
+
+Lino Tera uses the :attr:`EntryState.guest_state` attribute of 
+
+>>> rt.show(cal.EntryStates, column_names="name text guest_state")
+============ ============ =============
+ name         text         Guest state
+------------ ------------ -------------
+ suggested    Suggested
+ draft        Draft
+ took_place   Took place   Present
+ cancelled    Cancelled    Excused
+ missed       Missed       Absent
+============ ============ =============
+<BLANKLINE>
+
 
 
 Daily planner

@@ -45,7 +45,7 @@ Menus
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
-  - Activities : Activities, Enrolments, Enrolment states, Reminders
+  - Activities : Activities, Enrolments, Enrolment states, Course layouts, Reminders
 - Site : About
 
 >>> rt.login('martina').show_menu()

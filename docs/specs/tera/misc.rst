@@ -55,20 +55,6 @@ Activities
 <class 'lino_tera.lib.courses.models.Course'>
 
 
-Therapeutical groups
-====================
-
->>> rt.show(courses.CourseAreas)
-======= ============= ====================== ==================== ==================
- value   name          text                   Table                Manage presences
-------- ------------- ---------------------- -------------------- ------------------
- 10      therapies     Individual therapies   courses.Therapies    No
- 20      life_groups   Life groups            courses.LifeGroups   No
- 30      default       Other groups           courses.Courses      Yes
-======= ============= ====================== ==================== ==================
-<BLANKLINE>
-
-
 .. _tera.specs.teams:
 
 Teams

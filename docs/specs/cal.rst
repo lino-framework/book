@@ -25,8 +25,13 @@ Calendar entries
 ================
 
 A **calendar entry** is a lapse of time to be visualized in a
-calendar.  The internal model name is :class:`Event` for historical
-reasons.
+calendar.
+
+The internal model name is :class:`Event` for historical reasons, but
+users see it as "Calendar entry":
+
+>>> print(rt.models.cal.Event._meta.verbose_name)
+Calendar entry
 
 .. class:: Event
 
@@ -111,6 +116,11 @@ reasons.
         Except when this event's type tolerates more than one events
         at the same time.
 
+    .. method:: force_guest_states(self)
+
+        Whether guest states should be forced to those defined by the
+        entry state.  See :doc:`tera/cal` for a usage example.
+           
     .. method:: suggest_guests(self)
            
         Yield the list of unsaved :class:`Guest` instances to be added
@@ -195,6 +205,30 @@ to rules defined by the application.
 
 The default list of choices for this field contains the following
 values.
+
+.. class:: EntryStates
+
+    The possible states of a calendar entry.
+    Stored in the :attr:`state <lino_xl.lib.cal.Event.state>` field.
+    
+    Every choice is an instance of :class:`EntryState` and has some
+    attributes.
+    
+.. class:: EntryState
+           
+    .. attribute:: edit_guests
+                   
+        Whether presences are editable when the entry is in this
+        state.
+        
+    .. attribute:: guest_state
+
+        Force the given guest state for all guests when an entry is
+        set to this state.
+        
+    .. attribute:: noauto
+    .. attribute:: transparent
+    .. attribute:: fixed
 
 >>> rt.show(cal.EntryStates)
 ======= ============ ============ ============= =================== ======== ============= =========
@@ -784,7 +818,7 @@ labelled "guests", "participations" or "presences".
 
     .. attribute:: state
 
-        The state of this presence.
+        The state of this presence.  See :class:`GuestStates`.
 
         
     The following three fields are injected by the
@@ -819,6 +853,27 @@ and the pupils.
 
     Global table of guest roles.
            
+.. class:: GuestStates
+
+    Global choicelist of possible guest states.
+
+    Possible values for the state of a participation. The list of
+    choices for the :attr:`Guest.state` field.
+
+    The actual content can be redefined by other apps,
+    e.g. :mod:`lino_xl.lib.reception`.
+    
+
+    >>> rt.show(cal.GuestStates)
+    ======= ========= ============ ========= =============
+     value   name      Afterwards   text      Button text
+    ------- --------- ------------ --------- -------------
+     10      invited   No           Invited   ?
+     40      present   Yes          Present   ☑
+     50      absent    Yes          Absent    ☉
+     60      excused   No           Excused   ⚕
+    ======= ========= ============ ========= =============
+    <BLANKLINE>
            
 
 
@@ -881,6 +936,12 @@ Reference
     .. attribute:: state
      
         The state of this Task. one of :class:`TaskStates`.
+
+.. class:: TaskStates
+        
+    Possible values for the state of a :class:`Task`. The list of
+    choices for the :attr:`Task.state` field.
+
 
 .. class:: Tasks
 
