@@ -58,9 +58,6 @@ files.  If nothing has changed, then you don't need to run it::
     
     $ python manage.py dump2py -o t
     $ diff snapshot/restore.py t/restore.py    
-
-
-
     
 
 Technical background information in the Developer's Guide:

@@ -35,16 +35,16 @@ Clients
         Pointer to :class:`ClientStates`.
 
         >>> rt.show('clients.ClientStates')
-        ======= ========== ============ ========
-         value   name       text         Symbol
-        ------- ---------- ------------ --------
+        ======= ========== ============ =============
+         value   name       text         Button text
+        ------- ---------- ------------ -------------
          05      incoming   Incoming
          10      newcomer   Newcomer
          20      coached    Registered
          25      inactive   Inactive
          30      former     Ended
          40      refused    Abandoned
-        ======= ========== ============ ========
+        ======= ========== ============ =============
         <BLANKLINE>
 
     .. attribute:: unemployed_since

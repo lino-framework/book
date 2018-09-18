@@ -319,35 +319,35 @@ You can see this table in your web interface using
 In a default configuration it defines the following choices:
 
 >>> rt.show(tickets.TicketStates)
-======= =========== ========== ======== ========
- value   name        text       Symbol   Active
-------- ----------- ---------- -------- --------
- 10      new         New        ⛶        Yes
- 15      talk        Talk       ☎        Yes
- 20      opened      Open       ☉        Yes
- 22      started     Started    ⚒        Yes
- 30      sleeping    Sleeping   ☾        No
- 40      ready       Ready      ☐        Yes
- 50      closed      Closed     ☑        No
- 60      cancelled   Refused    ☒        No
-======= =========== ========== ======== ========
+======= =========== ========== ============= ========
+ value   name        text       Button text   Active
+------- ----------- ---------- ------------- --------
+ 10      new         New        ⛶             Yes
+ 15      talk        Talk       ☎             Yes
+ 20      opened      Open       ☉             Yes
+ 22      started     Started    ⚒             Yes
+ 30      sleeping    Sleeping   ☾             No
+ 40      ready       Ready      ☐             Yes
+ 50      closed      Closed     ☑             No
+ 60      cancelled   Refused    ☒             No
+======= =========== ========== ============= ========
 <BLANKLINE>
 
 Above table in German:
 
 >>> rt.show(tickets.TicketStates, language="de")
-====== =========== =============== ======== =======
- Wert   name        Text            Symbol   Aktiv
------- ----------- --------------- -------- -------
- 10     new         Neu             ⛶        Ja
- 15     talk        Besprechen      ☎        Ja
- 20     opened      Offen           ☉        Ja
- 22     started     Gestartet       ⚒        Ja
- 30     sleeping    Schläft         ☾        Nein
- 40     ready       Bereit          ☐        Ja
- 50     closed      Abgeschlossen   ☑        Nein
- 60     cancelled   Abgelehnt       ☒        Nein
-====== =========== =============== ======== =======
+====== =========== =============== ============= =======
+ Wert   name        Text            Button text   Aktiv
+------ ----------- --------------- ------------- -------
+ 10     new         Neu             ⛶             Ja
+ 15     talk        Besprechen      ☎             Ja
+ 20     opened      Offen           ☉             Ja
+ 22     started     Gestartet       ⚒             Ja
+ 30     sleeping    Schläft         ☾             Nein
+ 40     ready       Bereit          ☐             Ja
+ 50     closed      Abgeschlossen   ☑             Nein
+ 60     cancelled   Abgelehnt       ☒             Nein
+====== =========== =============== ============= =======
 <BLANKLINE>
 
 There is also a "modern" series of symbols, which can be enabled

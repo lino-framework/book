@@ -81,15 +81,15 @@ choices, but have an additional method :meth:`add_transition
 Here is the result of above definition:
 
 >>> rt.show(entries.EntryStates)
-======= =========== =========== ========
- value   name        text        Symbol
-------- ----------- ----------- --------
+======= =========== =========== =============
+ value   name        text        Button text
+------- ----------- ----------- -------------
  10      new         New         ☐
  20      started     Started     ⚒
  30      done        Done        ☑
  40      sleeping    Sleeping    ☾
  50      cancelled   Cancelled   ☒
-======= =========== =========== ========
+======= =========== =========== =============
 <BLANKLINE>
 
 

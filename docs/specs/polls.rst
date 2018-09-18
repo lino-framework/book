@@ -199,13 +199,13 @@ Choicelists
     The list of possible states of a :class:`Poll`.
 
     >>> rt.show(polls.PollStates)
-    ======= ======== ======== ========
-     value   name     text     Symbol
-    ------- -------- -------- --------
+    ======= ======== ======== =============
+     value   name     text     Button text
+    ------- -------- -------- -------------
      10      draft    Draft
      20      active   Active
      30      closed   Closed
-    ======= ======== ======== ========
+    ======= ======== ======== =============
     <BLANKLINE>
     
 .. class:: ResponseStates
@@ -213,12 +213,12 @@ Choicelists
     The list of possible states of a :class:`Response`.
     
     >>> rt.show(polls.ResponseStates)
-    ======= ============ ============ ========
-     value   name         text         Symbol
-    ------- ------------ ------------ --------
+    ======= ============ ============ =============
+     value   name         text         Button text
+    ------- ------------ ------------ -------------
      10      draft        Draft
      20      registered   Registered
-    ======= ============ ============ ========
+    ======= ============ ============ =============
     <BLANKLINE>
     
 Example fixtures

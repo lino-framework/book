@@ -40,26 +40,26 @@ ABDELLA Aákif (128)
 
 
 >>> rt.show(cal.GuestStates)
-======= ========= ============ ========= ========
- value   name      Afterwards   text      Symbol
-------- --------- ------------ --------- --------
+======= ========= ============ ========= =============
+ value   name      Afterwards   text      Button text
+------- --------- ------------ --------- -------------
  10      invited   No           Invited   ?
  40      present   Yes          Present   ☑
  50      absent    Yes          Absent    ☉
  60      excused   No           Excused   ⚕
-======= ========= ============ ========= ========
+======= ========= ============ ========= =============
 <BLANKLINE>
 
 
 >>> rt.show(cal.EntryStates)
-======= ============ ============ ======== =================== ======== ============= =========
- value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ -------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?        Yes                 No       No            No
- 20      draft        Draft        ☐        Yes                 No       No            No
- 50      took_place   Took place   ☑        Yes                 Yes      No            No
- 70      cancelled    Cancelled    ☒        No                  Yes      Yes           Yes
-======= ============ ============ ======== =================== ======== ============= =========
+======= ============ ============ ============= =================== ======== ============= =========
+ value   name         text         Button text   Edit participants   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes                 No       No            No
+ 20      draft        Draft        ☐             Yes                 No       No            No
+ 50      took_place   Took place   ☑             Yes                 Yes      No            No
+ 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
+======= ============ ============ ============= =================== ======== ============= =========
 <BLANKLINE>
 
 

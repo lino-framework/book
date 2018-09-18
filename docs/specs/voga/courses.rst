@@ -123,26 +123,26 @@ Enrolments
 ==========
 
 >>> rt.show('courses.EnrolmentStates')
-======= =========== =========== ========
- value   name        text        Symbol
-------- ----------- ----------- --------
+======= =========== =========== =============
+ value   name        text        Button text
+------- ----------- ----------- -------------
  10      requested   Requested
  11      trying      Trying
  20      confirmed   Confirmed
  30      cancelled   Cancelled
-======= =========== =========== ========
+======= =========== =========== =============
 <BLANKLINE>
 
 
 >>> rt.show('courses.EnrolmentStates', language="de")
-====== =========== =========== ========
- Wert   name        Text        Symbol
------- ----------- ----------- --------
+====== =========== =========== =============
+ Wert   name        Text        Button text
+------ ----------- ----------- -------------
  10     requested   Angefragt
  11     trying      Test
  20     confirmed   Bestätigt
  30     cancelled   Storniert
-====== =========== =========== ========
+====== =========== =========== =============
 <BLANKLINE>
 
 
