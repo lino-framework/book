@@ -82,3 +82,21 @@ Verified 96 models
 (<django.db.models.fields.AutoField: id>,)
 
 
+The following request caused problems before 20180920 (:ticket:`2544`
+SiteSearch fails when it finds a name containing "&")
+
+>>> rt.show('about.SiteSearch', quick_search="rumma")
+================================================= ========================================
+ Description                                       Matches
+------------------------------------------------- ----------------------------------------
+ *Rumma & Ko OÜ* (Partner)                         name:**Rumma** & Ko OÜ
+ *Rumma & Ko OÜ* (Organization)                    name:**Rumma** & Ko OÜ
+ *http://www.saffre-rumma.net/* (Contact detail)   value:http://www.saffre-**rumma**.net/
+ *SLS 1/2015* (Product invoice)                    partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)                    partner__name:**Rumma** & Ko OÜ
+ *Row # 5* (Payment Order item)                    partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)                    partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)                    partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)                    partner__name:**Rumma** & Ko OÜ
+================================================= ========================================
+<BLANKLINE>
