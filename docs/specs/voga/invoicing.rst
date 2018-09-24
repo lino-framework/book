@@ -23,9 +23,9 @@ The general functionality for automatically generating invoices is
 defined in :mod:`lino_xl.lib.invoicing`.
 
 Lino Voga uses this functionality by extending :class:`Enrolment
-<lino_xl.lib.courses.models.Enrolment>` so that it inherits from
-:class:`Invoiceable <lino_xl.lib.invoicing.mixins.Invoiceable>`. In
-Lino Voga, enrolments are the things for which they write invoices.
+<lino_xl.lib.courses.Enrolment>` so that it inherits from
+:class:`Invoiceable <lino_xl.lib.invoicing.Invoiceable>`. In Lino
+Voga, enrolments are the things for which they write invoices.
 
 Another invoiceable thing in Lino Voga is when they rent a room to a
 third-party organisation.  This is called a :class:`Booking
@@ -34,7 +34,7 @@ third-party organisation.  This is called a :class:`Booking
 IOW, in Lino Voga both :class:`Enrolment
 <lino_xl.lib.courses.models.Enrolment>` and :class:`Booking
 <lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
-<lino_xl.lib.invoicing.mixins.Invoiceable>`:
+<lino_xl.lib.invoicing.Invoiceable>`:
 
 >>> rt.models_by_base(rt.models.invoicing.Invoiceable)
 [<class 'lino_voga.lib.roger.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
@@ -47,9 +47,9 @@ On the user-visible level this plugin adds
 
 - a menu entry :menuselection:`Journals --> Create invoices`,
 
-and a :class:`StartInvoicing
-<lino_xl.lib.invoicing.actions.StartInvoicing>` action (with a basket
-as icon, referring to a shopping basket) at four places:
+and a :class:`StartInvoicing <lino_xl.lib.invoicing.StartInvoicing>`
+action (with a basket as icon, referring to a shopping basket) at four
+places:
 
 - as a menu command :menuselection:`Accounting --> Create invoices`
 - on every *partner* (generate invoices for this partner)

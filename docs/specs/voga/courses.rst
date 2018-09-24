@@ -37,13 +37,13 @@ The :class:`CourseAreas` choicelist in :ref:`voga` defines the
 following areas:
 
 >>> rt.show(courses.CourseAreas)
-======= ========== ========== ================== ====================
- value   name       text       Table              Force guest states
-------- ---------- ---------- ------------------ --------------------
- C       default    Courses    courses.Courses    No
- H       hikes      Hikes      courses.Hikes      No
- J       journeys   Journeys   courses.Journeys   No
-======= ========== ========== ================== ====================
+======= ========== ========== ==================
+ value   name       text       Table
+------- ---------- ---------- ------------------
+ C       default    Courses    courses.Courses
+ H       hikes      Hikes      courses.Hikes
+ J       journeys   Journeys   courses.Journeys
+======= ========== ========== ==================
 <BLANKLINE>
 
     

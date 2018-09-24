@@ -14,9 +14,8 @@ before they adapted a default method to automating these tasks (see
 <https://docs.djangoproject.com/en/1.11/topics/migrations/>`_).
 
 Lino suggests to use :doc:`Python dumps <dump2py>` as a different
-approach for doing database migrations.
-
-Advantages of Lino migrations:
+approach for doing database migrations.  **Advantages** of migrations
+à la Lino:
 
 - They make the process of deploying applications and upgrading
   production sites simpler and more transparent.  As the responsible

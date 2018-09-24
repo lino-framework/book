@@ -31,10 +31,10 @@ The database structure
  bevats.Declaration          bevats.Declarations            28        3
  cal.Calendar                cal.Calendars                  6         1
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
- cal.Event                   cal.OneEvent                   24        173
+ cal.Event                   cal.OneEvent                   24        703
  cal.EventPolicy             cal.EventPolicies              19        6
- cal.EventType               cal.EventTypes                 19        4
- cal.Guest                   cal.Guests                     6         0
+ cal.EventType               cal.EventTypes                 20        5
+ cal.Guest                   cal.Guests                     6         790
  cal.GuestRole               cal.GuestRoles                 4         1
  cal.Priority                cal.Priorities                 5         4
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
@@ -54,9 +54,9 @@ The database structure
  contenttypes.ContentType    gfks.ContentTypes              3         96
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             34        59
+ courses.Course              courses.Activities             34        53
  courses.CourseType          courses.CourseTypes            5         0
- courses.Enrolment           courses.Enrolments             17        59
+ courses.Enrolment           courses.Enrolments             15        79
  courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
@@ -75,7 +75,7 @@ The database structure
  households.Type             households.Types               4         6
  humanlinks.Link             humanlinks.Links               4         59
  invoicing.Item              invoicing.Items                10        0
- invoicing.Plan              invoicing.Plans                6         1
+ invoicing.Plan              invoicing.Plans                7         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
@@ -94,7 +94,7 @@ The database structure
  notes.NoteType              notes.NoteTypes                11        3
  phones.ContactDetail        phones.ContactDetails          7         15
  products.Product            products.Products              14        3
- products.ProductCat         products.ProductCats           5         0
+ products.ProductCat         products.ProductCats           5         1
  properties.PropChoice       properties.PropChoices         6         2
  properties.PropGroup        properties.PropGroups          4         0
  properties.PropType         properties.PropTypes           8         3
@@ -171,7 +171,7 @@ behaviour. See also :doc:`/dev/delete`.
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
-  - PROTECT : cal.Event.project, cal.Task.project, courses.Enrolment.course, excerpts.Excerpt.project, notes.Note.project, topics.Interest.partner
+  - PROTECT : cal.Event.project, cal.Task.project, courses.Enrolment.course, excerpts.Excerpt.project, invoicing.Plan.course, notes.Note.project, topics.Interest.partner
 - courses.CourseType :
   - PROTECT : courses.Line.course_type
 - courses.Line :

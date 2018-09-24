@@ -13,11 +13,11 @@ This document describes some general aspects of invoicing and how
 applications can handle this topic.  You should have read :doc:`sales`
 and :doc:`accounting`.  See also :doc:`/specs/voga/invoicing`.
 
-The examples in this document have been tested using the :mod:`pierre
-<lino_book.projects.pierre>` demo project.
+The examples in this document have been tested using the :mod:`roger
+<lino_book.projects.roger>` demo project.
 
 >>> from lino import startup
->>> startup('lino_book.projects.pierre.settings.demo')
+>>> startup('lino_book.projects.roger.settings.demo')
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
@@ -45,11 +45,26 @@ The ``Invoiceable`` model mixin
         plan.  If a `partner` is given, use it as an additional filter
         condition.
 
-    .. attribute:: incoiceable_date_field
+    .. attribute:: invoiceable_date_field
 
        The name of the field which holds the invoiceable date.  Must
        be set by subclasses.
+
+       As the application developer you specify it as a string, but
+       Lino converts it to a field instance at startup so that it
+       becomes an alias for the named field.
+
+       >>> print(rt.models.courses.Enrolment.invoiceable_date_field)
+       request_date
        
+    .. method:: get_invoiceable_date(self)
+
+       Return the value of the :attr:`invoiceable_date_field` for this
+       object.
+                
+       >>> obj = rt.models.courses.Enrolment.objects.all()[0]
+       >>> obj.get_invoiceable_date() == obj.request_date
+       True
 
     .. method:: get_invoiceable_product(self, plan)
 

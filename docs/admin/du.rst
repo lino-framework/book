@@ -56,6 +56,11 @@ Show all directories which have more than a GB::
 (thanks to `Tracking down where disk space has gone
 <http://unix.stackexchange.com/questions/125429/tracking-down-where-disk-space-has-gone-on-linux>`_)
 
+Show all subdirectories and their size::
+
+  $ du -h -d1
+
+  
 
 Cleaning the packaging system
 =============================

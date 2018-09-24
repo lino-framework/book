@@ -116,11 +116,6 @@ Calendar entry
         Except when this event's type tolerates more than one events
         at the same time.
 
-    .. method:: force_guest_states(self)
-
-        Whether guest states should be forced to those defined by the
-        entry state.  See :doc:`tera/cal` for a usage example.
-           
     .. method:: suggest_guests(self)
            
         Yield the list of unsaved :class:`Guest` instances to be added
@@ -224,7 +219,8 @@ values.
     .. attribute:: guest_state
 
         Force the given guest state for all guests when an entry is
-        set to this state.
+        set to this state and when
+        :attr:`EventType.force_guest_states` is True.
         
     .. attribute:: noauto
     .. attribute:: transparent
@@ -291,6 +287,21 @@ entries of that type.
 
         Allow entries of this type to conflict with other events.
 
+    .. attribute:: force_guest_states
+
+        Whether guest states should be forced to those defined by the
+        entry state.
+
+        This will have an effect only if the application programmer
+        has defined a mapping from entry state to the guest state by
+        setting :attr:`EntryState.guest_state` for at least one entry
+        state.
+
+        :ref:`tera` uses this for individual and family therapies
+        where they don't want to manage presences of every
+        participant.  When an appointment is set to "Took place", Lino
+        sets all guests to "Present".  See :doc:`tera/cal` for a usage
+        example.
 
 
 The daily planner

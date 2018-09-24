@@ -5,44 +5,10 @@
 from __future__ import unicode_literals
 from __future__ import print_function
 
-from django.conf import settings
 from lino.api import rt, dd, _
 from lino.utils import Cycler
 
 from lino.utils.mldbc import babel_named as named
-from lino.modlib.users.utils import create_user
-
-
-def objects():
-    UserTypes = rt.models.users.UserTypes
-    Company = rt.models.contacts.Company
-    Product = rt.models.products.Product
-    Account = rt.models.ledger.Account
-    CommonItems = rt.models.sheets.CommonItems
-
-    yield create_user("daniel", UserTypes.therapist)
-    yield create_user("elmar", UserTypes.therapist)
-    yield create_user("lydia", UserTypes.secretary)
-
-    # yield skills_objects()
-
-    obj = Company(
-        name="Tough Thorough Thought Therapies",
-        country_id="BE", vat_id="BE12 3456 7890")
-    yield obj
-    settings.SITE.site_config.update(site_company=obj)
-
-    yield named(Product, _("Group therapy"), sales_price=30)
-    indacc = named(
-        Account, _("Sales on individual therapies"),
-        sheet_item=CommonItems.sales.get_object(), ref="7010")
-    yield indacc
-    yield named(
-        Product, _("Individual therapy"),
-        sales_price=60, sales_account=indacc)
-    yield named(Product, _("Other"), sales_price=35)
-
-
 
 def skills_objects():
     "was previously in skills.fixtures.demo2"
@@ -76,3 +42,7 @@ def skills_objects():
         yield Demand(demander=t, skill=SKILLS.pop())
         if i % 3:
             yield Demand(demander=t, skill=SKILLS.pop())
+            
+
+def objects():
+    return []

@@ -60,6 +60,14 @@ Discovering problems
 
     $ find ! -perm /g=w -exec chmod g+w '{}' +
 
+- Show files which are not *readable* for other group members::
+    
+    $ find ! -perm /g=r
+
+  If this produces some output, you probably want to fix it::
+
+    $ find ! -perm /g=r -exec chmod g+r '{}' +
+
 - Show directories which are not *executable* for other group members::
     
     $ find -type d ! -perm /g=x

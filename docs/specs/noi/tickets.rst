@@ -191,36 +191,35 @@ There are many tables used to show lists of tickets.
 
     >>> rt.login('jean').show(tickets.MyTickets)
     ... #doctest: -REPORT_UDIFF
-    ========== ========================================================================================================= ============================================
-     Priority   Description                                                                                               Workflow
-    ---------- --------------------------------------------------------------------------------------------------------- --------------------------------------------
-     Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__      [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#106 (☎     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__     [▶] **Talk** → [☾] [☉] [☐] [☒]
-     Normal     `#100 (⚒     Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                             [✋] [▶] **Started** → [☾] [☐] [☒]
-     Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#94 (☐     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
-     Normal     `#91 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#82 (☎     Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [☐] [☒]
-     Normal     `#76 (⚒     How can I see where bar?) <Detail>`__, assigned to `Mathieu <Detail>`__                       [✋] [▶] **Started** → [☾] [☐] [☒]
-     Normal     `#73 (⛶     Cannot delete foo) <Detail>`__                                                                [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#70 (☐     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Ready** → [☒]
-     Normal     `#67 (☉     How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                           [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#58 (☎     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Talk** → [☾] [☉] [☐] [☒]
-     Normal     `#52 (⚒     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Mathieu <Detail>`__   [✋] [▶] **Started** → [☾] [☐] [☒]
-     Normal     `#49 (⛶     How can I see where bar?) <Detail>`__                                                         [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#46 (☐     Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Ready** → [☒]
-     Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__       [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#34 (☎     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Talk** → [☾] [☉] [☐] [☒]
-     Normal     `#28 (⚒     Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☐] [☒]
-     Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#22 (☐     How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
-     Normal     `#19 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__             [▶] **Talk** → [☾] [☉] [☐] [☒]
-     Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                               [✋] [▶] **Started** → [☾] [☐] [☒]
-     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                             [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-    ========== ========================================================================================================= ============================================
+    ========== ===================================================================================================== ============================================
+     Priority   Description                                                                                           Workflow
+    ---------- ----------------------------------------------------------------------------------------------------- --------------------------------------------
+     Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__      [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__     [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#100 (⚒ Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                             [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#94 (☐ How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
+     Normal     `#91 (☉ Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#82 (☎ Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#76 (⚒ How can I see where bar?) <Detail>`__, assigned to `Mathieu <Detail>`__                       [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#73 (⛶ Cannot delete foo) <Detail>`__                                                                [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#70 (☐ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Ready** → [☒]
+     Normal     `#67 (☉ How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                           [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#58 (☎ How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#52 (⚒ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Mathieu <Detail>`__   [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#49 (⛶ How can I see where bar?) <Detail>`__                                                         [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#46 (☐ Cannot delete foo) <Detail>`__, assigned to `Jean <Detail>`__                                 [▶] **Ready** → [☒]
+     Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__       [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#34 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Jean <Detail>`__      [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#28 (⚒ Cannot delete foo) <Detail>`__, assigned to `Mathieu <Detail>`__                              [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+     Normal     `#22 (☐ How can I see where bar?) <Detail>`__, assigned to `Jean <Detail>`__                          [▶] **Ready** → [☒]
+     Normal     `#19 (☉ Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                                  [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__, assigned to `Jean <Detail>`__         [▶] **Talk** → [☾] [☉] [☐] [☒]
+     Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__, assigned to `Mathieu <Detail>`__                           [✋] [▶] **Started** → [☾] [☐] [☒]
+     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                         [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+    ========== ===================================================================================================== ============================================
     <BLANKLINE>
-
 
     
 
@@ -453,28 +452,28 @@ site object.  Its default view is a summary:
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: -REPORT_UDIFF -SKIP
-New : `#97 <Detail>`__, `#73 <Detail>`__, `#49 <Detail>`__, `#25 <Detail>`__, `#1 <Detail>`__
 Open : `#115 <Detail>`__, `#91 <Detail>`__, `#67 <Detail>`__, `#43 <Detail>`__, `#19 <Detail>`__
+New : `#97 <Detail>`__, `#73 <Detail>`__, `#49 <Detail>`__, `#25 <Detail>`__, `#1 <Detail>`__
 
 When you open the panel in its own window, you can see the underlying
 table:
 
 >>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== ====================================================================================================== ==========
- Priority   Description                                                                                            Workflow
----------- ------------------------------------------------------------------------------------------------------ ----------
- Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
- Normal     `#73 (⛶     Cannot delete foo) <Detail>`__  by *Jean*                                                  **New**
- Normal     `#49 (⛶     How can I see where bar?) <Detail>`__  by *Jean*                                           **New**
- Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*                                               **New**
- Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*   **Open**
- Normal     `#91 (☉     Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
- Normal     `#67 (☉     How can I see where bar?) <Detail>`__  by *Jean*, assigned to *Luc*                        **Open**
- Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*    **Open**
- Normal     `#19 (☉     Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
-========== ====================================================================================================== ==========
+========== ================================================================================================== ==========
+ Priority   Description                                                                                        Workflow
+---------- -------------------------------------------------------------------------------------------------- ----------
+ Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*   **Open**
+ Normal     `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
+ Normal     `#91 (☉ Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
+ Normal     `#73 (⛶ Cannot delete foo) <Detail>`__  by *Jean*                                                  **New**
+ Normal     `#67 (☉ How can I see where bar?) <Detail>`__  by *Jean*, assigned to *Luc*                        **Open**
+ Normal     `#49 (⛶ How can I see where bar?) <Detail>`__  by *Jean*                                           **New**
+ Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*, assigned to *Luc*    **Open**
+ Normal     `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__  by *Jean*                       **New**
+ Normal     `#19 (☉ Cannot delete foo) <Detail>`__  by *Jean*, assigned to *Luc*                               **Open**
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*                                           **New**
+========== ================================================================================================== ==========
 <BLANKLINE>
 
 Note that the above table shows no state change actions in the
@@ -484,20 +483,20 @@ this:
 
 >>> rt.login('jean').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== ====================================================================================================== ============================================
- Priority   Description                                                                                            Workflow
----------- ------------------------------------------------------------------------------------------------------ --------------------------------------------
- Normal     `#97 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#73 (⛶     Cannot delete foo) <Detail>`__                                                             [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#49 (⛶     How can I see where bar?) <Detail>`__                                                      [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#25 (⛶     'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                          [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#115 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#91 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#67 (☉     How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                        [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#43 (☉     'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#19 (☉     Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-========== ====================================================================================================== ============================================
+========== ================================================================================================== ============================================
+ Priority   Description                                                                                        Workflow
+---------- -------------------------------------------------------------------------------------------------- --------------------------------------------
+ Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__   [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#91 (☉ Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#73 (⛶ Cannot delete foo) <Detail>`__                                                             [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#67 (☉ How can I see where bar?) <Detail>`__, assigned to `Luc <Detail>`__                        [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#49 (⛶ How can I see where bar?) <Detail>`__                                                      [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__, assigned to `Luc <Detail>`__    [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                  [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#19 (☉ Cannot delete foo) <Detail>`__, assigned to `Luc <Detail>`__                               [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                      [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+========== ================================================================================================== ============================================
 <BLANKLINE>
 
 

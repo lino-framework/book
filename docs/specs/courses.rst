@@ -1,17 +1,16 @@
 .. doctest docs/specs/courses.rst
 .. _specs.courses:
 
-=======================
-Activities
-=======================
+====================
+Courses (Activities)
+====================
 
 This document describes the :mod:`lino_xl.lib.courses` plugin.
 
-The internal name "courses" of this plugin and its main model is for
-historic reasons. In :ref:`welfare` they are called "workshops", in
-:ref:`tera` they are called "therapies". In general we call them
-"activities".  In :ref:`voga` they are called courses, journeys or
-travels.
+We might rename this plugin to "activities" some day.
+The internal name "courses" is for historic reasons. In :ref:`welfare`
+they are called "workshops", in :ref:`tera` they are called
+"therapies", in :ref:`voga` they are called "activities".
 
 See also
 :doc:`/specs/voga/courses`,
@@ -29,10 +28,10 @@ project.
 
 
 
-
-An **activity** is a series of scheduled calendar entries where a
-given "teacher" meets with a group of participants about a given
-topic.
+An **activity** is
+when a "teacher" meets more or less regularily
+with a group of "participants".
+Lino can automatically generate calendar entries for an activity according to recurrency rules.
 
 The participants of an activity are stored as **enrolments**.
 
@@ -250,11 +249,11 @@ being managed or not.
 The default configuration contains only one choice:
 
 >>> rt.show(courses.CourseAreas)
-======= ========= ============ ================= ====================
- value   name      text         Table             Force guest states
-------- --------- ------------ ----------------- --------------------
- C       default   Activities   courses.Courses   No
-======= ========= ============ ================= ====================
+======= ========= ============ =================
+ value   name      text         Table
+------- --------- ------------ -----------------
+ C       default   Activities   courses.Courses
+======= ========= ============ =================
 <BLANKLINE>
 
 

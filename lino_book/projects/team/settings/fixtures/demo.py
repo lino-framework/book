@@ -48,8 +48,6 @@ def tickets_objects():
     Interest = rt.models.topics.Interest
     Milestone = dd.plugins.tickets.milestone_model
     # Milestone = rt.models.deploy.Milestone
-    # Deployment = rt.models.deploy.Deployment
-    # WishTypes = rt.models.deploy.WishTypes
     # Project = rt.models.tickets.Project
     # Site = rt.models.tickets.Site
     Site = dd.plugins.tickets.site_model
@@ -219,7 +217,7 @@ def tickets_objects():
     yield ticket("Bars have no foo")
     yield ticket("How to get bar from foo")
 
-    TEXTS = Cycler("""
+    TEXTS = Cycler([ln.strip() for ln in """
     Foo never bars
     No more foo when bar is gone
     Cannot delete foo
@@ -229,7 +227,7 @@ def tickets_objects():
     Misc optimizations in Baz
     Default account in invoices per partner
     'NoneType' object has no attribute 'isocode'
-    """.strip().splitlines())
+    """.splitlines() if ln.strip()])
 
     # n = Ticket.objects.count()
 
@@ -238,6 +236,8 @@ def tickets_objects():
         yield ticket(TEXTS.pop())
 
     if dd.is_installed('meetings'):
+        Deployment = rt.models.deploy.Deployment
+        WishTypes = rt.models.deploy.WishTypes
         WTYPES = Cycler(WishTypes.objects())
         MILESTONES = Cycler(Milestone.objects.all())
         for t in Ticket.objects.all():

@@ -59,9 +59,9 @@ a day on the beach while the ⚕ reminds a drugstore.
 ====== ============ =============== ============= ======================= ======== =================== =========
 <BLANKLINE>
 
-Lino Tera uses the :attr:`EntryState.guest_state` attribute of 
+Lino Tera uses the :attr:`EntryState.guest_state` attribute of
 
->>> rt.show(cal.EntryStates, column_names="name text guest_state")
+>>> rt.show(cal.EntryStates, column_names='name text guest_state')
 ============ ============ =============
  name         text         Guest state
 ------------ ------------ -------------
@@ -74,18 +74,31 @@ Lino Tera uses the :attr:`EntryState.guest_state` attribute of
 <BLANKLINE>
 
 
+>>> rt.show(cal.EventTypes)
+======================== ======================== ======================== ================ ============= ==================== =================
+ Designation              Designation (de)         Designation (fr)         Planner column   Appointment   Force guest states   Locks all rooms
+------------------------ ------------------------ ------------------------ ---------------- ------------- -------------------- -----------------
+ Holidays                 Feiertage                Jours fériés             External         No            No                   Yes
+ Meeting                  Versammlung              Réunion                  External         Yes           No                   No
+ Internal                 Intern                   Interne                  Internal         Yes           No                   No
+ Individual appointment   Individual appointment   Individual appointment                    Yes           Yes                  No
+ Group meeting            Group meeting            Group meeting                             Yes           No                   No
+======================== ======================== ======================== ================ ============= ==================== =================
+<BLANKLINE>
+
+
 
 Daily planner
 =============
 
 >>> rt.show(cal.DailyPlanner)
-============= ================ ==========
- Description   External         Internal
-------------- ---------------- ----------
- *AM*          *08:30 romain*
- *PM*
+============= ========== ===============
+ Description   External   Internal
+------------- ---------- ---------------
+ *AM*
+ *PM*                     *13:30 robin*
  *All day*
-============= ================ ==========
+============= ========== ===============
 <BLANKLINE>
 
 
