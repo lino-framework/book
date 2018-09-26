@@ -178,6 +178,16 @@ These objects have a :attr:`required_roles
 must be a :func:`set` of the user roles required for getting
 permission to access this resource.
 
+This set of user roles can be specified using the
+:func:`login_required <lino.core.roles.login_required>` utility
+function.  You can also specify it manually. But it must stisfy some
+conditions described in :func:`check_required_roles
+<lino.core.roles.check_required_roles>`.
+
+
+See :meth:`lino.modlib.users.UserType.has_required_role`
+
+
 For example, the list of all users (the :class:`users.AllUsers
 <lino.modlib.users.desktop.AllUsers>` table) is visible only for users
 who have the :class:`SiteAdmin <lino.core.roles.SiteAdmin>` role:
