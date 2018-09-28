@@ -13,6 +13,7 @@ Refusing permission to an anonymous request
     >>> from lino.api.doctest import *
 
 
+
 This document reproduces a unicode error which occurred when Lino
 tried to say "As Anonymous you have no permission to run this action."
 in German (where the internationalized text contains non-ascii
@@ -81,8 +82,11 @@ The user comes back and resizes her browser window, or some other
 action which will trigger a refresh.  The same URL will now return a
 400 (Bad request) response:
 
->>> res = test_client.get(url)
-Forbidden (Permission denied): /api/sales/InvoicesByJournal
+>>> import logging
+>>> logger = logging.getLogger("django.request")
+>>> logger.setLevel(logging.CRITICAL)
+
+>>> res = test_client.get(url)  #doctest: +ELLIPSIS
 >>> res.status_code
 403
 >>> soup = BeautifulSoup(res.content, 'lxml')
