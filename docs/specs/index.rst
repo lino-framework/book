@@ -96,3 +96,4 @@ Technical stuff
    projects/actors
    summaries
    openui5
+   appypod
