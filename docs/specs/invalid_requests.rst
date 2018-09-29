@@ -46,6 +46,10 @@ example below) will internally raise an `ObjectDoesNotExist`
 exception, which in turn will cause an `HttpResponseBadRequest`
 response (i.e. status code 400):
 
+>>> import logging
+>>> logger = logging.getLogger("django.request")
+>>> logger.setLevel(logging.CRITICAL)
+
 >>> url = "/api/contacts/RolesByPerson?fmt=json&start=0&limit=15&mt=8&mk=114114"
 >>> res = test_client.get(url, **headers)
 >>> res.status_code
@@ -80,7 +84,6 @@ AjaxExceptionResponse Http404: cal.EventsByProject is not a class
 in request GET /api/cal/EventsByProject?_dc=1491615952104&fmt=json&rp=ext-comp-1306&start=0&limit=15&mt=13&mk=188
 TRACEBACK:
 ...
-<BLANKLINE>
 
 >>> res.status_code
 400
