@@ -5,22 +5,214 @@
 The appypod plugin
 ==================
 
-This document adds some tests to :mod:`lino_xl.lib.appypod`.  We chose
-a simple Lino table request and then have a look how such a request is
-being rendered into a pdf document using appypod.
+The :mod:`lino_xl.lib.appypod` plugin adds a series of build methods
+for generating printable documents using LibreOffice and the
+:term:`appy.pod` package.  It also adds certain generic actions for
+printing tables using these methods.
 
-Recommended readings
+See also the user documentation in :ref:`lino.admin.appypod`.
 
-- :ref:`lino.admin.appypod` 
-- https://lxml.de/
-- http://appyframework.org/pod.html
-- http://appyframework.org/podWritingTemplates.html
+
+.. contents::
+  :local:
+
+
+System requirements
+===================
+
+The appy.pod build methods require a running LibreOffice server (see
+:ref:`admin.oood`).  While this might refrain you from using them,
+they has several advantages compared to the built-in methods
+:class:`WeasyBuildMethod
+<lino.modlib.weasyprint.choicelists.WeasyBuildMethod>` and the (now
+deprecated) :class:`PisaBuildMethod
+<lino.modlib.printing.choicelists.PisaBuildMethod>`:
+
+- They can be used to produce editable files (`.rtf` or `.odt`) from
+  the same `.odt` template.
+- Features like automatic hyphenation, sophisticated fonts and layouts
+  are beyond the scope of pisa or weasyprint.
+- Templates are `.odt` files (not `.html`), meaning that end-users
+  dare to edit them more easily.
+
+
+Related projects
+================
+
+.. glossary::
+  :sorted:
   
-   
+  ODFPy
+    A Python library for manipulating OpenDocument documents 
+    (.odt, .ods, .odp, ...): 
+    read existing files, modify, create new files from scratch.
+    Read more on `PyPI <http://pypi.python.org/pypi/odfpy>`_.
+    Project home page https://joinup.ec.europa.eu/software/odfpy
+
+  appy.pod
+    A tool for generating pdf and other formats, including .odt
+    or .doc) from .odt templates.  See
+    http://appyframework.org/pod.html
+    http://appyframework.org/podRenderingTemplates.html
+  
+  appypod
+    As long as :term:`appy.pod` does not support Python 3, we use
+    `Stefan Klug's Python 3 port
+    <https://libraries.io/github/stefanklug/appypod>`_.
+
+  lxml
+    See https://lxml.de/
+
+
+About this document
+===================
+  
+    
+Code examples in this document use the :mod:`lino_book.projects.lydia`
+demo project and are an integral part of the Lino test suite.
+
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')
 >>> from lino.api.doctest import *
 
+
+
+
+.. currentmodule:: lino_xl.lib.appypod
+
+Build methods
+=============
+
+.. class:: AppyBuildMethod
+
+    Base class for Build Methods that use `.odt` templates designed
+    for :term:`appy.pod`.
+    
+.. class:: AppyOdtBuildMethod
+
+    Generates .odt files from .odt templates.
+    
+    This method doesn't require OpenOffice nor the
+    Python UNO bridge installed
+    (except in some cases like updating fields).
+
+.. class:: AppyPdfBuildMethod    
+           
+    Generates .pdf files from .odt templates.
+
+.. class:: AppyRtfBuildMethod
+
+    Generates .rtf files from .odt templates.
+    
+.. class:: AppyDocBuildMethod
+           
+    Generates .doc files from .odt templates.
+
+
+Actions
+=======
+
+The :mod:`lino_xl.lib.appypod` plugin adds two actions
+:class:`PrintTableAction` and :class:`PortraitPrintTableAction` to
+every table in your application.
+
+If :mod:`lino_xl.lib.contacts` (or a child thereof) is installed, it
+also adds a :class:`PrintLabelsAction
+<lino_xl.lib.appypod.mixins.PrintLabelsAction>`.
+
+.. class:: PrintTableAction
+           
+    Show this table as a pdf document.
+
+.. class:: PortraitPrintTableAction
+
+.. class:: PrintLabelsAction
+
+    Add this action to your table, which is expected to execute on a
+    model which implements
+    :class:`Addressable <lino.utils.addressable.Addressable>`.
+
+    .. method:: get_recipients(self, ar)
+
+        Return an iterator over the recipients for which we want to
+        print labels.
+
+        This is here so you can override it. For example::
+
+            class MyLabelsAction(PrintLabelsAction)
+                # silently ignore all recipients with empty 'street' field
+                def get_recipients(self,ar):
+                    for obj in ar:
+                        if obj.street:
+                            yield obj
+
+        You might want to subclass this action and add a parameters
+        panel so that users can explicitly say whether they want
+        labels for invalid addresses or not::
+
+            class MyTable(dd.Table):
+                parameters = dict(
+                    only_valid_recipients=models.BooleanField(
+                        _("only valid recipients"),default=False
+                    )
+
+                
+
+Templates
+=========
+
+.. xfile:: Table.odt
+
+    Template used to print a table in landscape orientation.
+
+.. xfile:: Table-portrait.odt
+
+    Template used to print a table in portrait orientation.
+
+.. xfile:: appypod/Labels.odt
+
+    Template used to print address labels.
+
+
+
+
+The Appy renderer
+=================
+
+.. class:: AppyRenderer
+
+    The extended `appy.pod.renderer` used by Lino.           
+
+    A subclass of :class:`appy.pod.renderer.Renderer` (not of
+    :class:`lino.core.renderer.Renderer`.
+
+    .. method:: restify_func(self, text)
+    .. method:: insert_jinja(self, template)
+    .. method:: insert_html(self, html)
+         
+        Insert a chunk of HTML (not XHTML) provided as a string or as an
+        etree element.
+
+        This is the function that gets called when a template contains a
+        ``do text from html(...)`` statement.
+        
+    .. method:: insert_story(self, story)
+    .. method:: insert_table(self, ar)
+                
+        This is the function that gets called when a template contains a
+        ``do text from table(...)`` statement.
+        
+    .. method:: story2odt(self, story, *args, **kwargs)
+                
+        Yield a sequence of ODT chunks (as utf8 encoded strings).
+
+How tables are rendered using appypod
+=====================================
+
+We chose a simple Lino table request and then have a look how such a
+request is being rendered into a pdf document using appypod.
+
+   
 >>> from lxml import etree
 >>> from unipath import Path
 >>> import tempfile
@@ -45,9 +237,6 @@ Here is a simple Lino table request:
 
 
 
-The :file:`lino_xl/lib/appypod/config/Table.odt` template uses the
-:func:`table` function to insert a chunk of ODF XML.
-      
 This code is produced by the :meth:`insert_table
 <lino_xl.lib.appy_pod.appy_renderer.AppyRenderer.insert_table>` method
 which dynamically creates a style for every column and respects the
@@ -55,12 +244,10 @@ widths it gets from the request's :meth:`get_field_info
 <lino.core.tablerequest.TableRequest.get_field_info>`, which returns
 `col.width or col.preferred_width` for each column.
 
-
 To get an AppyRenderer for this test case, we must give a template
-file and a target file.  As the template we will use
-:file:`Table.odt`.  The target file must be in a temporary directory
-because and every test run will create a temporary directory next to
-the target.
+file and a target file.  As template we will use :xfile:`Table.odt`.
+The target file must be in a temporary directory because and every
+test run will create a temporary directory next to the target.
 
 >>> from lino_xl.lib.appypod.appy_renderer import AppyRenderer
 >>> ctx = {}
@@ -68,6 +255,17 @@ the target.
 >>> target = Path(tempfile.gettempdir()).child("out.odt")
 >>> rnd = AppyRenderer(ar, template, ctx, target)
 
+If you open the :xfile:`Table.odt`, you can see that it is mostly
+empty, except for headers and footers and a comment which says::
+
+  do text
+  from table(ar)
+
+Background information about this syntax in the `appy.pod docs
+<http://appyframework.org/podWritingTemplates.html>`__.
+  
+This command uses the :func:`table` function to insert a chunk of
+ODF XML.
 
 >>> odf = rnd.insert_table(ar)
 >>> print(odf)  #doctest: +ELLIPSIS
