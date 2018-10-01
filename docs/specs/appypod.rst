@@ -269,7 +269,7 @@ ODF XML.
 
 >>> odf = rnd.insert_table(ar)
 >>> print(odf)  #doctest: +ELLIPSIS
-<table:table xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" table:style-name="countries.Countries" table:name="countries.Countries">...
+<table:table ... table:...name="countries.Countries" ...name="countries.Countries">...
 
 Let's parse that long string so that we can see what it contains.
 
