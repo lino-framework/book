@@ -15,7 +15,7 @@ SETUP_INFO = dict(
     name='lino_book',
     version='18.9.0',
     install_requires=[
-        'lino', 'selenium','mock',
+        'Sphinx', 'lino', 'selenium','mock',
         'django-iban', 'metafone', 'channels<2',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
