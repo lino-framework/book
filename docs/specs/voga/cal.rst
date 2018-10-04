@@ -40,7 +40,7 @@ defined in :mod:`lino_voga.lib.cal.workflows`.
 ------- --------- ------------ --------- -------------
  10      invited   No           Invited   ?
  40      present   Yes          Present   ☑
- 50      absent    Yes          Absent    ☉
+ 50      missing   Yes          Missing   ☉
  60      excused   No           Excused   ⚕
 ======= ========= ============ ========= =============
 <BLANKLINE>

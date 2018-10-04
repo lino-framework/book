@@ -59,7 +59,7 @@ a day on the beach while the ⚕ reminds a drugstore.
 ====== ============ =============== ============= ======================= ======== =================== =========
 <BLANKLINE>
 
-Lino Tera uses the :attr:`EntryState.guest_state` attribute of
+Lino Tera uses the :attr:`EntryState.guest_state` attribute 
 
 >>> rt.show(cal.EntryStates, column_names='name text guest_state')
 ============ ============ =============
@@ -69,9 +69,37 @@ Lino Tera uses the :attr:`EntryState.guest_state` attribute of
  draft        Draft
  took_place   Took place   Present
  cancelled    Cancelled    Excused
- missed       Missed       Absent
+ missed       Missed       Missing
 ============ ============ =============
 <BLANKLINE>
+
+
+Guest workflow
+==============
+
+>>> rt.show(cal.GuestStates, language="de")
+====== ========= ============== ============== =============
+ Wert   name      Nachträglich   Text           Button text
+------ --------- -------------- -------------- -------------
+ 10     invited   Nein           Eingeladen     ?
+ 40     present   Ja             Anwesend       ☑
+ 50     missing   Ja             Missing        ☉
+ 60     excused   Nein           Entschuldigt   ⚕
+====== ========= ============== ============== =============
+<BLANKLINE>
+
+>>> show_workflow(cal.GuestStates.workflow_actions, language="de")
+============= ============== ============== ============== =========================
+ Action name   Verbose name   Help text      Target state   Required states
+------------- -------------- -------------- -------------- -------------------------
+ wf1           ☑              Anwesend       Anwesend       invited
+ wf2           ☉              Missing        Missing        invited
+ wf3           ⚕              Entschuldigt   Entschuldigt   invited
+ wf4           ?              Eingeladen     Eingeladen     missing present excused
+============= ============== ============== ============== =========================
+
+Calendar entry types
+====================
 
 
 >>> rt.show(cal.EventTypes)

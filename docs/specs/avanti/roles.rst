@@ -15,8 +15,9 @@ User roles in Lino Avanti
   :local:
 
     
-Menus
-=====
+
+Site administrator
+==================
 
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -24,7 +25,7 @@ Menus
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Calendar : Calendar, My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Polls : My Polls, My Responses
-- Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning
+- Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, My coached enrolments
 - Configure :
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
@@ -48,12 +49,19 @@ Menus
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Reminders
 - Site : About
 
+Coordinator
+===========
+>>> rt.login('martina').user.user_type
+users.UserTypes.coordinator:400
+
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Office : My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
 
+Teacher
+=======
 
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -61,6 +69,9 @@ Menus
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Activities : My Activities, -, My courses given
 - Site : About
+
+Supervisor
+==========
 
 >>> rt.login('audrey').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
