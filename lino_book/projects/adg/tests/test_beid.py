@@ -227,14 +227,14 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         obj.update_dupable_words()  # avoid repairable message
         ar = rt.models.checkdata.ProblemsByOwner.request(
             master_instance=obj)
-        obj.check_data(ar, fix=False)
+        obj.check_data(fix=False)
         s = ar.to_rst()
         # print(s)
         self.assertEqual(s, """\
 *(★) Malformed SSIN '68060105329' must be '680601 053-29'.*
 """)
 
-        obj.check_data(ar, fix=True)
+        obj.check_data(fix=True)
         ar = rt.models.checkdata.ProblemsByOwner.request(
             master_instance=obj)
         s = ar.to_rst()

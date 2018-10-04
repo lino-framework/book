@@ -58,9 +58,9 @@ class Tests(RemoteAuthTestCase):
         self.assertEqual(c.seqno, 3)
         self.assertEqual(d.seqno, 4)
 
-        a.move_down(ar)
+        response = a.move_down()
         
-        self.assertEqual(ar.response, {
+        self.assertEqual(response, {
             'message': 'Renumbered 1 of 3 siblings.',
             'success': True,
             'refresh_all': True})

@@ -343,3 +343,16 @@ areas.
  C       default   Activities   courses.Courses
 ======= ========= ============ =================
 <BLANKLINE>
+
+
+Missing rates
+=============
+
+.. class:: Course
+
+     .. method:: update_missing_rates(self)
+                 
+        Calculate the missing rates for al enrolments of this course.
+
+        This action is automatically performed for all courses once per
+        day in the evening.

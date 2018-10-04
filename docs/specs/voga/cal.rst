@@ -124,8 +124,8 @@ Let's take the first of them:
 
     Repair from previous incomplete test runs if necessary.
 
-    >>> obj.do_update_events(ses)
-    >>> ses.response['success']
+    >>> response = obj.do_update_events()
+    >>> response['success']
     True
 
 
@@ -152,7 +152,7 @@ action a first time and verify that the events remain unchanged (if
 the following fails, make sure you've run :cmd:`inv prep` before
 running :cmd:`inv test`).
 
->>> res = ses.run(obj.do_update_events)
+>>> res = obj.do_update_events()
 >>> res['success']
 True
 >>> print(res['info_message'])
@@ -189,13 +189,10 @@ Suggested
 Now we move that event to the next available date (the week after in
 our case):
 
->>> e.move_next(ses)
->>> ses.response['success']
+>>> response = e.move_next()
+>>> response['success']
 True
->>> print(ses.response['info_message'])
-Update Events for 012 Rücken (Swimming)...
-Generating events between 2015-07-13 and 2020-05-22 (max. 10).
-0 row(s) have been updated.
+>>> print(response['info_message'])
 Move down for Activity #12 012 Hour 4...
 Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 1 row(s) have been updated.
@@ -242,7 +239,7 @@ Note that 2016-05-16 is a holiday:
 
     and re-run UpdateEvents a last time:
 
-    >>> res = ses.run(obj.do_update_events)
+    >>> res = obj.do_update_events()
     >>> res['success']
     True
     >>> ses.show(cal.EntriesByController, obj, column_names="when_text state", nosummary=True)

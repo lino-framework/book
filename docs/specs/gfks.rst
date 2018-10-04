@@ -39,9 +39,9 @@ cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Not
 {'owner_type': <ContentType: Person>, 'owner_id': 201}
 
 If the object has a non-integer primary key, then it cannot be target
-of a GFK. In this case it is enough to filter on the content
-type. Anyway the list will be empty.  `countries.Country` is actually
-the only model with a non-integer primary key.
+of a GFK.  In this case we filter only on the content type because
+anyway the list will be empty.  `countries.Country` is actually the
+only model with a non-integer primary key.
 
 >>> obj = countries.Country.objects.all()[0]
 >>> gfk2lookup(notes.Note.owner, obj)

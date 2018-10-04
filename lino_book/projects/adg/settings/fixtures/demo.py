@@ -178,12 +178,12 @@ def objects():
     # either absent or present or excused:
     qs = Guest.objects.filter(
         event__start_date__lte=dd.demo_date(-7),
-        event__state=EntryStates.took_place)
+        event__state=EntryStates.took_place).order_by('id')
     for i, obj in enumerate(qs):
-        if i % 9:
+        if i % 8:
             obj.state = GuestStates.present
         elif i % 3:
-            obj.state = GuestStates.absent
+            obj.state = GuestStates.missing
         else:
             obj.state = GuestStates.excused
         obj.full_clean()

@@ -59,7 +59,8 @@ sessions that were active during the time of committing.
 >>> ses=rt.login('robin')
 >>> with requests_mock.mock() as m:
 ...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
-...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+...     repo.import_all_commits(sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+{}
 >>> rt.show(github.Commit)
 ==================== ========================================== ======== ======== ================== ==================================================== =========================== =========
  Repository           Sha Hash                                   Ticket   Author   Github User Name   Summary                                              Created                     Comment
@@ -79,7 +80,8 @@ sessions that were active during the time of committing.
 >>> s.save()
 >>> with requests_mock.mock() as m:
 ...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
-...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+...     repo.import_all_commits(sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+{}
 >>> rt.show(github.Commit)
 ==================== ========================================== ================================== ======== ================== ==================================================== =========================== =========
  Repository           Sha Hash                                   Ticket                             Author   Github User Name   Summary                                              Created                     Comment
@@ -96,7 +98,8 @@ sessions that were active during the time of committing.
 >>> s.save()
 >>> with requests_mock.mock() as m:
 ...     x = m.get('https://api.github.com/repos/lino-framework/noi/commits?per_page=100&page=1&sha=8bac51399644261ce1a216a299a1dd3aa5c63632', text=json)
-...     repo.import_all_commits(ses, sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+...     repo.import_all_commits(sha='8bac51399644261ce1a216a299a1dd3aa5c63632')
+{}
 >>> rt.show(github.Commit)
 ==================== ========================================== ================================== ======== ================== ==================================================== =========================== ================================================================
  Repository           Sha Hash                                   Ticket                             Author   Github User Name   Summary                                              Created                     Comment

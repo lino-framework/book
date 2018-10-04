@@ -65,7 +65,7 @@ Teams
  Reference   Designation   Designation (de)   Designation (fr)
 ----------- ------------- ------------------ ------------------
  E           Eupen
- S           St.Vith
+ S           St. Vith
 =========== ============= ================== ==================
 <BLANKLINE>
 
