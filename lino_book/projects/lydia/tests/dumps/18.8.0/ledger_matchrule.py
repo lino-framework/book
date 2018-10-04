@@ -1,0 +1,21 @@
+# -*- coding: UTF-8 -*-
+logger.info("Loading 16 objects to table ledger_matchrule...")
+# fields: id, account, journal
+loader.save(create_ledger_matchrule(1,2,1))
+loader.save(create_ledger_matchrule(2,2,2))
+loader.save(create_ledger_matchrule(3,4,3))
+loader.save(create_ledger_matchrule(4,2,4))
+loader.save(create_ledger_matchrule(5,4,4))
+loader.save(create_ledger_matchrule(6,17,4))
+loader.save(create_ledger_matchrule(7,2,5))
+loader.save(create_ledger_matchrule(8,4,5))
+loader.save(create_ledger_matchrule(9,17,5))
+loader.save(create_ledger_matchrule(10,2,6))
+loader.save(create_ledger_matchrule(11,4,6))
+loader.save(create_ledger_matchrule(12,17,6))
+loader.save(create_ledger_matchrule(13,2,7))
+loader.save(create_ledger_matchrule(14,4,7))
+loader.save(create_ledger_matchrule(15,17,7))
+loader.save(create_ledger_matchrule(16,6,8))
+
+loader.flush_deferred_objects()
