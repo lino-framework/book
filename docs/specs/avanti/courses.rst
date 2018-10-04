@@ -352,7 +352,12 @@ Missing rates
 
      .. method:: update_missing_rates(self)
                  
-        Calculate the missing rates for al enrolments of this course.
+        Calculate the missing rates for all enrolments of this course.
 
         This action is automatically performed for all courses once per
         day in the evening.
+
+
+>>> print(courses.Course.update_missing_rates.help_text)
+Calculate the missing rates for all enrolments of this course.
+
