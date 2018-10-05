@@ -65,7 +65,7 @@ Robin is the system administrator, he has a complete menu:
   - Office : Excerpt Types, My Text Field Templates
   - VAT : Paper types
 - Explorer :
-  - System : content types, Authorities, User types
+  - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - SEPA : Bank accounts

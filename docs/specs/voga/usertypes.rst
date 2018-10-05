@@ -46,7 +46,7 @@ users.UserTypes.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User types, content types, Data checkers, Data problems, Changes
+  - System : Authorities, User types, User roles, content types, Data checkers, Data problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups

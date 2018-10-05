@@ -22,8 +22,9 @@ This document describes the database structure.
 >>> print(analyzer.show_complexity_factors())
 - 39 plugins
 - 78 models
-- 287 views
+- 37 user roles
 - 8 user types
+- 288 views
 - 88 dialog actions
 <BLANKLINE>
 

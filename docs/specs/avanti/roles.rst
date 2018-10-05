@@ -38,7 +38,7 @@ Site administrator
   - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Topics, Timetable Slots
 - Explorer :
-  - System : Authorities, User types, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
+  - System : Authorities, User types, User roles, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Office : Comments, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts, Known contact types

@@ -65,7 +65,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-233
+234
 
 Besides this complete list, actors are collected at different places
 depending on their type.
@@ -96,7 +96,7 @@ lino_xl.lib.countries.models.PlacesByPlace
 Another category are virtual tables
 
 >>> kernel.virtual_tables
-[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.working.ui.WorkedHours, lino_xl.lib.working.ui.DurationReport]
+[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.working.ui.WorkedHours, lino_xl.lib.working.ui.DurationReport, lino.modlib.users.desktop.UserRoles]
 
 Another category are choicelists
 

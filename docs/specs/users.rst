@@ -1,21 +1,21 @@
+.. doctest docs/specs/users.rst
 .. _specs.users:
 
 ===================================
 The :mod:`lino.modlib.users` plugin
 ===================================
 
-.. to test just this doc:
-
-    $ python setup.py test -s tests.SpecsTests.test_users
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.min1.settings.doctests')
-    >>> from lino.api.doctest import *
-
 This document describes the API of the :mod:`lino.modlib.users`
 plugin.  See also :doc:`/dev/users` for getting started with user
 management.  See :doc:`/about/auth` if you wonder why Lino replaces
 Django's user management and permission system.
+
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min1.settings.doctests')
+>>> from lino.api.doctest import *
+
+
 
 .. currentmodule:: lino.modlib.users
 
@@ -191,6 +191,35 @@ User types
 
           with UserTypes.admin.context():
               # some code
+
+User roles and their usage
+==========================
+
+.. class:: UserRoles
+           
+This virtual table shows a list of all user roles in this application
+and which user type has them.
+
+>>> rt.show(users.UserRoles)
+======================== ================================================================================= ===== ===== =====
+ Name                     Description                                                                       000   100   900
+------------------------ --------------------------------------------------------------------------------- ----- ----- -----
+ cal.GuestOperator                                                                                                ☑     ☑
+ comments.CommentsStaff   A user who manages configuration of comments functionality.                                   ☑
+ comments.CommentsUser    A user who can post comments.                                                           ☑     ☑
+ contacts.ContactsStaff                                                                                                 ☑
+ contacts.ContactsUser                                                                                            ☑     ☑
+ core.UserRole            Base class for all user roles. Even anonymous users have this role.               ☑     ☑     ☑
+ excerpts.ExcerptsStaff                                                                                                 ☑
+ excerpts.ExcerptsUser                                                                                            ☑     ☑
+ office.OfficeStaff       A user who manages configuration of office functionality.                                     ☑
+ office.OfficeUser        A user who has access to office functionality like calendar, notes and uploads.         ☑     ☑
+ polls.PollsAdmin         Can configure polls functionality.                                                            ☑
+ polls.PollsUser          Can see polls and create new responses.                                                 ☑     ☑
+ xl.SiteAdmin                                                                                                           ☑
+ xl.SiteUser                                                                                                      ☑
+======================== ================================================================================= ===== ===== =====
+<BLANKLINE>
 
         
 
