@@ -429,7 +429,8 @@ A default configuration has two columns in the daily planner:
     Teilnehmerliste für diesen Kalendereintrag füllen entsprechend der Vorschläge.
 
     >>> cal.Event.update_guests.help_text.__class__
-    <class 'django.utils.functional.__proxy__'>
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+    <class 'django.utils.functional...__proxy__'>
 
 
 Duration units
