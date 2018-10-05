@@ -1,3 +1,5 @@
+.. _dev.migtest:
+
 ===============
 Migration tests
 ===============
