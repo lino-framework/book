@@ -15,7 +15,7 @@ reading here.
    getstarted
    team
    writedocs
-   /team/deploy
+   deploy
    about
    /api/index
    

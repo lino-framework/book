@@ -15,3 +15,4 @@ Working with others
    ci
    demo_projects
    invlib
+   testing

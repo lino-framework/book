@@ -1,9 +1,6 @@
 .. _dev.versioning:
 
-==============================
-Versioning and release process
-==============================
-
+=====================
 Date-based versioning
 =====================
 
@@ -28,20 +25,3 @@ UserWarning.
 
 
 
-The release process
-===================
-
-- Check you have a clean working copy of all projects maintained by
-  the Lino Team.
-
-- Check that all test suites are passing and all doc trees are
-  building.
-
-- Update the `version` and `install_requires` in the
-  :xfile:`setup_info.py` files of each project.
-
-- Run :cmd:`pp inv ci`
-  
-- Run :cmd:`pp inv release`         
-
-- Update the release notes.
