@@ -5,7 +5,7 @@ Migration tests
 ===============
 
 Migration tests are a special test case in every demo project for
-appölications for which we ofgfer migration suport. So that these
+applications for which we offer migration support. So that these
 applications can be used for stable hosting.
 
 Overview
