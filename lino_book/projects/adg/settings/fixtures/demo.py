@@ -52,6 +52,7 @@ def objects():
     Course = rt.models.courses.Course
     Topic = rt.models.courses.Topic
     Enrolment = rt.models.courses.Enrolment
+    CourseStates = rt.models.courses.CourseStates
     User = rt.models.users.User
     EventType = rt.models.cal.EventType
     Guest = rt.models.cal.Guest
@@ -124,6 +125,7 @@ def objects():
         start_date=dd.demo_date(-30),
         start_time="9:00", end_time="12:00",
         max_date=dd.demo_date(10),
+        state=CourseStates.active,
         every_unit=Recurrencies.daily,
         user=USERS.pop(),
         teacher=laura,
@@ -179,13 +181,15 @@ def objects():
     qs = Guest.objects.filter(
         event__start_date__lte=dd.demo_date(-7),
         event__state=EntryStates.took_place).order_by('id')
+    STATES = Cycler(GuestStates.get_list_items())
     for i, obj in enumerate(qs):
-        if i % 8:
-            obj.state = GuestStates.present
-        elif i % 3:
-            obj.state = GuestStates.missing
-        else:
-            obj.state = GuestStates.excused
+        obj.state = STATES.pop()
+        # if i % 8:
+        #     obj.state = GuestStates.present
+        # elif i % 3:
+        #     obj.state = GuestStates.missing
+        # else:
+        #     obj.state = GuestStates.excused
         obj.full_clean()
         obj.save()
         

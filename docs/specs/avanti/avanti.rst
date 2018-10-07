@@ -26,6 +26,18 @@ Clients
            
     A **client** is a person using our services.
 
+    .. attribute:: translator_type
+                   
+        Which type of translator is needed with this client.
+                   
+        See also :class:`TranslatorTypes`
+        
+    .. attribute:: professional_state
+                   
+        The professional situation of this client.
+
+        See also :class:`ProfessionalStates`
+                   
     .. attribute:: overview
 
         A panel with general information about this client.
@@ -200,10 +212,47 @@ Clients
  ID   Designation                     Designation (de)                Designation (fr)
 ---- ------------------------------- ------------------------------- -------------------------------
  1    Language course                 Sprachkurs                      Language course
- 2    Integration course              Integration course              Integration course
+ 2    Integration course              Integrationskurs                Integration course
  3    Language & integration course   Language & integration course   Language & integration course
  4    External course                 External course                 External course
  5    Justified interruption          Begründete Unterbrechung        Justified interruption
  6    Successfully terminated         Erfolgreich beendet             Successfully terminated
 ==== =============================== =============================== ===============================
 <BLANKLINE>
+
+
+.. class:: TranslatorTypes
+
+    List of choices for the :attr:`Client.translator_type` field of a
+    client.
+    
+    >>> rt.show(rt.models.avanti.TranslatorTypes, language="de")
+    ====== ====== ==========
+     Wert   name   Text
+    ------ ------ ----------
+     10            SETIS
+     20            Sonstige
+     30            Privat
+    ====== ====== ==========
+    <BLANKLINE>
+    
+
+.. class:: ProfessionalStates
+
+    List of choices for the :attr:`Client.professional_state` field of
+    a client.
+    
+    >>> rt.show(rt.models.avanti.ProfessionalStates, language="de")
+    ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
+    ====== ====== ================================
+     Wert   name   Text
+    ------ ------ --------------------------------
+     100           Student
+     200           Arbeitslos
+     300           Eingeschrieben beim Arbeitsamt
+     400           Angestellt
+     500           Selbstständig
+     600           Pensioniert
+     700           Arbeitsunfähig
+    ====== ====== ================================
+    <BLANKLINE>

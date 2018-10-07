@@ -22,30 +22,30 @@ Site administrator
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Calendar : Calendar, My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Polls : My Polls, My Responses
-- Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, My coached enrolments
+- Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Ditching controll
 - Configure :
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
+  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
   - Office : Comment Types, Upload Types, Excerpt Types
   - Clients : Client Contact types
   - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations
   - Trends : Trend areas, Trend stages
   - Polls : Choice Sets
-  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Topics, Timetable Slots
 - Explorer :
   - System : Authorities, User types, User roles, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Office : Comments, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts, Known contact types
   - Career : language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
-  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Reminders
 - Site : About
 
@@ -60,13 +60,31 @@ users.UserTypes.coordinator:400
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
 
+Social worker
+=============
+
+>>> rt.login('nathalie').show_menu()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+- Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
+- Calendar : Calendar, My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Polls : My Polls, My Responses
+- Activities : My Activities, Activities, -, Activity lines, Course planning, Ditching controll
+- Configure :
+  - Trends : Trend stages
+- Explorer :
+  - Contacts : Partners, Clients
+  - Calendar : Calendar entries, Presences
+  - Activities : Activities, Enrolments, Reminders
+- Site : About
+
 Teacher
 =======
 
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Office : My Notification messages, My expiring uploads, My Uploads
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, -, My courses given
 - Site : About
 
@@ -75,8 +93,8 @@ Supervisor
 
 >>> rt.login('audrey').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Office : My Notification messages, My expiring uploads, My Uploads
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
   - Contacts : Clients
@@ -99,6 +117,7 @@ Each window is **viewable** for a given set of user types.
 - avanti.Clients.merge_row : visible for admin
 - avanti.EndingReasons.merge_row : visible for admin
 - avanti.Residences.merge_row : visible for admin
+- cal.AbsenceReasons.merge_row : visible for admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
 - cal.Calendars.merge_row : visible for admin
@@ -293,9 +312,9 @@ System admins can see the full names:
  `9 <Detail>`__   07/02/2017        `ABDI Aátifá (136) <Detail>`__       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
  `7 <Detail>`__   09/02/2017        `ABDELNOUR Aámir (125) <Detail>`__   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        `ABDALLAH Aáish (127) <Detail>`__    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        `ABBASI Aáishá (118) <Detail>`__     Female                 No          No       No    No                 16,67          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        `ABBASI Aáishá (118) <Detail>`__     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        `ABAD Aábdeen (114) <Detail>`__      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
-                                                                                                                                              **16,67**
+                                                                                                                                              **50,00**
 ================ ================= ==================================== ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
 <BLANKLINE>
 
@@ -311,9 +330,9 @@ click on a name to see any detail.
  `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
  `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 16,67          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
-                                                                                                                                   **16,67**
+                                                                                                                                   **50,00**
 ================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
 <BLANKLINE>
 
@@ -326,9 +345,9 @@ click on a name to see any detail.
  `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
  `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 16,67          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
-                                                                                                                                   **16,67**
+                                                                                                                                   **50,00**
 ================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
 <BLANKLINE>
 
@@ -343,9 +362,9 @@ But auditors see only the pupil's number and place:
  `9 <Detail>`__   07/02/2017        *(136) from Eupen*   Female                 No          No       No    No                                **Requested**
  `7 <Detail>`__   09/02/2017        *(125) from Eupen*   Male                   No          No       No    No                                **Confirmed**
  `5 <Detail>`__   11/02/2017        *(127) from Eupen*   Male                   No          No       No    No                                **Requested**
- `3 <Detail>`__   13/02/2017        *(118) from Eupen*   Female                 No          No       No    No                 16,67          **Confirmed**
+ `3 <Detail>`__   13/02/2017        *(118) from Eupen*   Female                 No          No       No    No                 50,00          **Confirmed**
  `1 <Detail>`__   15/02/2017        *(114) from Eupen*   Male                   No          No       No    No                                **Requested**
-                                                                                                                              **16,67**
+                                                                                                                              **50,00**
 ================ ================= ==================== ======== ============= =========== ======== ===== ========= ======== ============== ===============
 <BLANKLINE>
 

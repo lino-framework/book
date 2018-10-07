@@ -18,6 +18,15 @@ in :ref:`avanti`.
 .. contents::
   :local:
 
+.. currentmodule:: lino_avanti.lib.cal
+
+.. class:: Guest
+
+    .. attribute:: absence_reason
+
+        Why the pupil was absent.  Choices for this field are defined
+        in :class:`AbsenceReasons`.
+
 Calendar workflow
 =================
 
@@ -103,4 +112,35 @@ one week and sorts them chronologically:
 *16.01.*☑, *17.01.*☑, *19.01.*☑, *20.01.*☑, *23.01.*☑, *24.01.*☑, *26.01.*☒, *27.01.*☑, *30.01.*☑, *31.01.*☑, *02.02.*☑, *03.02.*☑, *06.02.*☑, *07.02.*☑, *09.02.*?, *10.02.*?, *13.02.*?, *14.02.*?, *16.02.*?, *17.02.*?, *20.02.*?, *21.02.*?
 
 
+Absence reasons
+===============
 
+In :ref:`avanti` we record and analyze why pupils have been missing.
+
+.. class:: AbsenceReasons
+
+    The table of possible absence reasons.
+    
+    Accessible via :menuselection:`Configure --> Calendar --> Absence
+    reasons`.
+
+    >>> show_menu_path(cal.AbsenceReasons)
+    Configure --> Calendar --> Absence reasons
+
+    >>> rt.show(cal.AbsenceReasons)
+    ==== ==================== ========================== ====================
+     ID   Designation          Designation (de)           Designation (fr)
+    ---- -------------------- -------------------------- --------------------
+     1    Sickness             Krankheit                  Sickness
+     2    Other valid reason   Sonstiger gültiger Grund   Other valid reason
+     3    Unknown              Unbekannt                  Inconnu
+     4    Unjustified          Unberechtigt               Unjustified
+    ==== ==================== ========================== ====================
+    <BLANKLINE>
+   
+   
+.. class:: AbsenceReason
+
+   .. attribute:: name
+
+                  
