@@ -197,31 +197,49 @@ User roles and their usage
 
 .. class:: UserRoles
            
-This virtual table shows a list of all user roles in this application
+This virtual table shows a list of user roles used in this application
 and which user type has them.
 
 >>> rt.show(users.UserRoles)
-======================== ================================================================================= ===== ===== =====
- Name                     Description                                                                       000   100   900
------------------------- --------------------------------------------------------------------------------- ----- ----- -----
- cal.GuestOperator                                                                                                ☑     ☑
- comments.CommentsStaff   A user who manages configuration of comments functionality.                                   ☑
- comments.CommentsUser    A user who can post comments.                                                           ☑     ☑
- contacts.ContactsStaff                                                                                                 ☑
- contacts.ContactsUser                                                                                            ☑     ☑
- core.UserRole            Base class for all user roles. Even anonymous users have this role.               ☑     ☑     ☑
- excerpts.ExcerptsStaff                                                                                                 ☑
- excerpts.ExcerptsUser                                                                                            ☑     ☑
- office.OfficeStaff       A user who manages configuration of office functionality.                                     ☑
- office.OfficeUser        A user who has access to office functionality like calendar, notes and uploads.         ☑     ☑
- polls.PollsAdmin         Can configure polls functionality.                                                            ☑
- polls.PollsUser          Can see polls and create new responses.                                                 ☑     ☑
- xl.SiteAdmin                                                                                                           ☑
- xl.SiteUser                                                                                                      ☑
-======================== ================================================================================= ===== ===== =====
++------------------------+-----------------------------------------+-----+-----+-----+
+| Name                   | Description                             | 000 | 100 | 900 |
++========================+=========================================+=====+=====+=====+
+| cal.GuestOperator      | Can see guests of calendar entries.     |     | ☑   | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
+| comments.CommentsStaff | A user who manages configuration of     |     |     | ☑   |
+|                        | comments functionality.                 |     |     |     |
++------------------------+-----------------------------------------+-----+-----+-----+
+| comments.CommentsUser  | A user who can post comments.           |     | ☑   | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
+| contacts.ContactsStaff | Has configure contacts functionality.   |     |     | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
+| contacts.ContactsUser  | Has full access to contact data.        |     | ☑   | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
+| excerpts.ExcerptsStaff | Can configure database excerpts         |     |     | ☑   |
+|                        | functionality.                          |     |     |     |
++------------------------+-----------------------------------------+-----+-----+-----+
+| excerpts.ExcerptsUser  | Can print documents using database      |     | ☑   | ☑   |
+|                        | excerpts.                               |     |     |     |
++------------------------+-----------------------------------------+-----+-----+-----+
+| office.OfficeStaff     | Can manage configuration of office      |     |     | ☑   |
+|                        | functionality.                          |     |     |     |
++------------------------+-----------------------------------------+-----+-----+-----+
+| office.OfficeUser      | Has access to office functionality like |     | ☑   | ☑   |
+|                        | calendar, notes and uploads.            |     |     |     |
++------------------------+-----------------------------------------+-----+-----+-----+
+| polls.PollsAdmin       | Can configure polls functionality.      |     |     | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
+| polls.PollsUser        | Can see polls and create new responses. |     | ☑   | ☑   |
++------------------------+-----------------------------------------+-----+-----+-----+
 <BLANKLINE>
 
-        
+Note that this table does not show :class:`UserRole` subclasses which
+have been defined in within the :attr:`user_types_module
+<lino.core.site.Site.user_types_module>` itself since these are just
+another hierarchy level, they are not used in any
+:attr:`roles_required` and therefore not useful for describing which
+permissions are given to which user type.
+
 
 .. _current_user_type:
 
