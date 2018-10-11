@@ -252,3 +252,14 @@ behaviour. See also :doc:`/dev/delete`.
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>
+
+
+>>> print(analyzer.show_complexity_factors())
+- 45 plugins
+- 96 models
+- 20 user roles
+- 4 user types
+- 356 views
+- 101 dialog actions
+<BLANKLINE>
+

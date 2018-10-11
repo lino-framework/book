@@ -12,8 +12,6 @@ Database structure in Lino Voga
     >>> from lino.api.doctest import *
 
 
-
-
 The database structure
 ======================
 
