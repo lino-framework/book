@@ -97,3 +97,4 @@ Technical stuff
    summaries
    openui5
    appypod
+   uitests
