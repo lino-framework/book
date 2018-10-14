@@ -63,8 +63,10 @@ class TestCase(RemoteAuthTestCase):
             kwargs = dict(data=urlencode(data))
             kwargs['REMOTE_USER'] = username
             response = self.client.put(url, **kwargs)
-            return self.check_json_result(response, 'rows success message')
-        
+            # print(response)
+            return self.check_json_result(
+                response, 'rows success message')
+
         url = '/api/avanti/Clients/' + str(jean.pk)
         result = grid_put('robin', url, national_id="")
         self.assertEqual(result['success'], True)

@@ -507,6 +507,8 @@ ref
 >>> print(el.width)
 4
 >>> el.preferred_width
-10
+21
 
-TODO: the preferred_width of the ref field should be 4, not 10.
+TODO: the preferred_width of the ref field should be 4, not 21.
+It is a :class:`lino.mixins.ref.StructuredReferrable`
+with :attr:`ref_max_length` set to 4.

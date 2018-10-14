@@ -2,9 +2,12 @@
 .. _lino.tested.cv:
 
 ==================================
-Career module (tested)
+The Career plugin
 ==================================
 
+The :mod:`lino_xl.lib.cv` plugin adds functionality to manage
+career-related information about a client which can be used for
+example to generate a CV.
 
 .. doctest init:
 
@@ -19,16 +22,6 @@ Career module (tested)
 
 >>> UserTypes = rt.models.users.UserTypes
 >>> AllLanguageKnowledges = rt.models.cv.AllLanguageKnowledges
-
->>> rt.show(UserTypes)
-======= =========== =============== =====================================
- value   name        text            User role
-------- ----------- --------------- -------------------------------------
- 000     anonymous   Anonymous       lino.core.roles.UserRole
- 100     user        User            lino_xl.lib.xl.user_types.SiteUser
- 900     admin       Administrator   lino_xl.lib.xl.user_types.SiteAdmin
-======= =========== =============== =====================================
-<BLANKLINE>
 
 >>> a = UserTypes.admin
 >>> a

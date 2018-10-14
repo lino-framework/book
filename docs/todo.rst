@@ -259,9 +259,6 @@ Medium-term
     TODO: more transparent/reusable system to specify labels.
 
 
-#.  Make ChoiceLists visible through the web interface. 
-    Show UserGroups and UserTypes in :class:`lino.models.About`.
-
 #.  Tabelle der Benutzerprofile (und generell alle choicelists) in 
     eine lokale Konfigurationsdatei auslagern und dadurch auch für 
     Nichtprogrammierer bearbeitbar machen.

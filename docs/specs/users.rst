@@ -201,36 +201,21 @@ This virtual table shows a list of user roles used in this application
 and which user type has them.
 
 >>> rt.show(users.UserRoles)
-+------------------------+-----------------------------------------+-----+-----+-----+
-| Name                   | Description                             | 000 | 100 | 900 |
-+========================+=========================================+=====+=====+=====+
-| cal.GuestOperator      | Can see guests of calendar entries.     |     | ☑   | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| comments.CommentsStaff | A user who manages configuration of     |     |     | ☑   |
-|                        | comments functionality.                 |     |     |     |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| comments.CommentsUser  | A user who can post comments.           |     | ☑   | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| contacts.ContactsStaff | Has configure contacts functionality.   |     |     | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| contacts.ContactsUser  | Has full access to contact data.        |     | ☑   | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| excerpts.ExcerptsStaff | Can configure database excerpts         |     |     | ☑   |
-|                        | functionality.                          |     |     |     |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| excerpts.ExcerptsUser  | Can print documents using database      |     | ☑   | ☑   |
-|                        | excerpts.                               |     |     |     |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| office.OfficeStaff     | Can manage configuration of office      |     |     | ☑   |
-|                        | functionality.                          |     |     |     |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| office.OfficeUser      | Has access to office functionality like |     | ☑   | ☑   |
-|                        | calendar, notes and uploads.            |     |     |     |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| polls.PollsAdmin       | Can configure polls functionality.      |     |     | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
-| polls.PollsUser        | Can see polls and create new responses. |     | ☑   | ☑   |
-+------------------------+-----------------------------------------+-----+-----+-----+
+======================== ===== ===== =====
+ Name                     000   100   900
+------------------------ ----- ----- -----
+ cal.GuestOperator              ☑     ☑
+ comments.CommentsStaff               ☑
+ comments.CommentsUser          ☑     ☑
+ contacts.ContactsStaff               ☑
+ contacts.ContactsUser          ☑     ☑
+ excerpts.ExcerptsStaff               ☑
+ excerpts.ExcerptsUser          ☑     ☑
+ office.OfficeStaff                   ☑
+ office.OfficeUser              ☑     ☑
+ polls.PollsAdmin                     ☑
+ polls.PollsUser                ☑     ☑
+======================== ===== ===== =====
 <BLANKLINE>
 
 Note that this table does not show :class:`UserRole` subclasses which
