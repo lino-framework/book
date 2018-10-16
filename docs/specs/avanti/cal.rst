@@ -108,8 +108,10 @@ ABDELLA Aákif (128)
 one week and sorts them chronologically:
 
 >>> obj = avanti.Client.objects.get(pk=115)
->>> rt.show(cal.GuestsByPartner, obj)
-*16.01.*☑, *17.01.*☑, *19.01.*☑, *20.01.*☑, *23.01.*☑, *24.01.*☑, *26.01.*☒, *27.01.*☑, *30.01.*☑, *31.01.*☑, *02.02.*☑, *03.02.*☑, *06.02.*☑, *07.02.*☑, *09.02.*?, *10.02.*?, *13.02.*?, *14.02.*?, *16.02.*?, *17.02.*?, *20.02.*?, *21.02.*?
+>>> rt.show(cal.GuestsByPartner, obj) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
+January 2017: *Mon 16.*☑ *Tue 17.*☑ *Thu 19.*☑ *Fri 20.*☑ *Mon 23.*☑ *Tue 24.*☑ *Thu 26.*☒ *Fri 27.*☑ *Mon 30.*☑ *Tue 31.*☑
+February 2017: *Thu 02.*☑ *Fri 03.*☑ *Mon 06.*☑ *Tue 07.*☑ *Thu 09.*? *Fri 10.*? *Mon 13.*? *Tue 14.*? *Thu 16.*? *Fri 17.*? *Mon 20.*? *Tue 21.*?
+Suggested : 8 ,  Draft : 0 ,  Took place : 13 ,  Cancelled : 1
 
 
 Absence reasons
