@@ -9,11 +9,15 @@ General Ledger
 
 .. currentmodule:: lino_xl.lib.ledger
                    
-The :mod:`lino_xl.lib.ledger` plugin
-adds basic notions for
-accounting: the :class:`Account` model and a choicelist
-:class:`CommonAccounts`.
+The :mod:`lino_xl.lib.ledger` plugin adds basic notions for
+accounting: accounts, journals, vouchers and movements.
        
+Table of contents:
+
+.. contents::
+   :depth: 1
+   :local:
+
 Examples in this document use the :mod:`lino_book.projects.pierre`
 demo project.
 
@@ -22,13 +26,7 @@ demo project.
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
-
-
-Table of contents:
-
-.. contents::
-   :depth: 1
-   :local:
+      
 
 
 Overview
@@ -230,12 +228,14 @@ The balance of an account
 
 The **balance** of an account is the amount of money in that account.
 
+.. data:: DEBIT
+.. data:: CREDIT
+
 An account balance is either Debit or Credit.  We represent this
 internally as the boolean values `True` and `False`, but define two
-names `DEBIT` and `CREDIT` for them:
+names :data:`DEBIT` and :data:`CREDIT` for them:
 
 >>> from lino_xl.lib.ledger.utils import DEBIT, CREDIT
->>> from lino_xl.lib.ledger.utils import Balance
 >>> DEBIT
 False
 >>> CREDIT
@@ -260,6 +260,7 @@ True
 A negative value on one side of the balance is automatically moved to
 the other side.
 
+>>> from lino_xl.lib.ledger.utils import Balance
 >>> Balance(10, -2)
 Balance(12,0)
 
@@ -276,7 +277,7 @@ Database fields
           
 .. class:: DebitOrCreditStoreField
 
-    This is used as `lino_atomizer_class` for :class:`DebitOrCreditField`.
+    Uused as `lino_atomizer_class` for :class:`DebitOrCreditField`.
 
 
 Movements
@@ -312,6 +313,14 @@ Movements
 
         Pointer to the :class:`Account` that is being moved by this movement.
 
+    .. attribute:: debit
+                   
+        Virtual field showing :attr:`amount` if :attr:`dc` is DEBIT.
+                   
+    .. attribute:: credit
+                   
+        Virtual field showing :attr:`amount` if :attr:`dc` is CREDIT.
+        
     .. attribute:: amount
     .. attribute:: dc
 
@@ -598,10 +607,8 @@ A **journal** is a named sequence of numbered *vouchers*.
 Debit or credit
 ===============
 
-The PCSD rule: 
-
-A *purchase* invoice *credits* the supplier's account, a *sales*
-invoice *debits* the customer's account.
+The "PCSD" rule: A *purchase* invoice *credits* the supplier's
+account, a *sales* invoice *debits* the customer's account.
 
 >>> obj = vat.VatAccountInvoice.objects.order_by('id')[0]
 >>> rt.show(ledger.MovementsByVoucher, obj)
