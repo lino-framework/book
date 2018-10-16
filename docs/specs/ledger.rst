@@ -28,7 +28,6 @@ demo project.
 >>> translation.activate('en')
       
 
-
 Overview
 ========
 
@@ -1673,4 +1672,22 @@ The `on_ledger_movement` signal
     - `sender`   the database model
     - `instance` the partner
 
+Don't read me
+=============
+
+Until 20181016 it was not possible to manually reverse the sort order
+of a virtual field having a sortable_by which contained itself a
+reversed field.  The :attr:`Movement.credit` field is an example:
+
+>>> rmu(ledger.Movement.get_data_elem('credit').sortable_by)
+['-amount', 'value_date']
+
+>>> par = contacts.Partner.objects.get(pk=122)
+>>> url = "api/ledger/MovementsByPartner?fmt=json&mk=122&mt=17"
+>>> args = ('count rows no_data_text success title param_values', 1)
+>>> demo_get('robin', url + "&sort=credit&dir=ASC", *args)
+
+The following failed before 20181016:
+
+>>> demo_get('robin', url + "&sort=credit&dir=DESC", *args)
 
