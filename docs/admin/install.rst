@@ -215,16 +215,19 @@ Some Debian packages and why you might need them::
 This will automatically install Apache 
 (packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
 
-Select your database backend::
+If MySQL is your database backend::
 
     $ sudo apt install mysql-server
-
-Install the python dependencies::
-
     $ sudo apt install libmysqlclient-dev
     $ sudo apt install python-dev
     $ sudo apt install libffi-dev libssl-dev
     $ pip install mysqlclient
+    $ sudo apt install mysql-server
+
+Or if you prefer postgresql::
+
+    $ sudo apt install postgresql
+    $ pip install psycopg2
 
 For more info on how to setup a user and database see
 :doc:`mysql_install`.
