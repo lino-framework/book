@@ -57,7 +57,7 @@ datetime.date(2015, 5, 22)
 <BLANKLINE>
 
 
->>> print(dd.plugins.ledger.force_cleared_until)
+>>> print(dd.plugins.ledger.suppress_movements_until)
 None
 
 >>> rt.show(checkdata.ProblemsByChecker, 'courses.MemberChecker')
