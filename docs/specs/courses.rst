@@ -113,7 +113,7 @@ The ``Course`` model
 
     Base table for all activities.
 
-.. class:: MyActivities
+.. class:: MyCourses
            
     Show the courses authored by me (i.e. where I am the responsible
     manager).  Compare :class:`MyCoursesGiven`.
@@ -121,7 +121,7 @@ The ``Course`` model
 .. class:: MyCoursesGiven
            
     Show the courses given by me (i.e. where I am the teacher).
-    Compare :class:`MyActivities`.
+    Compare :class:`MyCourses`.
 
     This requires the :attr:`partner` field in my user settings to
     point to me as a teacher.
