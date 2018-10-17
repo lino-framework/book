@@ -1352,3 +1352,7 @@ Data checkers
 
 
     
+.. function:: check_subscription(user, calendar)
+
+    Check whether the given subscription exists. If not, create it.
+              
