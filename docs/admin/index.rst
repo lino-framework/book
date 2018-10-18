@@ -27,6 +27,7 @@ Installation
     install
     media
     mysql_install
+    pgsql_install
     config_dirs
     xl
     oood

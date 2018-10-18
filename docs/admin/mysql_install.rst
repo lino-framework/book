@@ -2,7 +2,7 @@
 Use a MySQL database
 ====================
 
-If you decided to use MySQL as database frontend, then here is a cheat
+If you decided to use MySQL as database engine, then here is a cheat
 sheet for quickly doing so.  No warranty.  See also the Django
 documentation at `MySQL notes
 <https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-notes>`__
@@ -18,11 +18,12 @@ Installation
 ============
 
 Install mysql on your site::
-   
-    $ sudo apt-get install mariadb-server
-    $ sudo apt-get install mysql-server
-    $ sudo apt-get install libmysqlclient-dev
-    $ sudo apt-get install python-dev
+
+    $ sudo apt install mysql-server
+    $ sudo apt install libmysqlclient-dev
+    $ sudo apt install python-dev
+    $ sudo apt install libffi-dev libssl-dev
+    $ sudo apt install mysql-server
 
     $ sudo mysql_secure_installation
 
@@ -37,8 +38,8 @@ Note that we recommended `mysql-python` before but modified this to
 Users
 =====
     
-For your first project create a user ``django`` which you can reuse
-for all projects::
+For the first project on your site create a user ``django`` which you
+can reuse for all projects::
     
     $ mysql -u root -p
     mysql> create user 'django'@'localhost' identified by 'my cool password';

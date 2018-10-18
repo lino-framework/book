@@ -221,16 +221,23 @@ If MySQL is your database backend::
     $ sudo apt install libmysqlclient-dev
     $ sudo apt install python-dev
     $ sudo apt install libffi-dev libssl-dev
-    $ pip install mysqlclient
     $ sudo apt install mysql-server
+    
+Install the mysql client into your project's virtualenv::
+  
+    $ pip install mysqlclient
 
-Or if you prefer postgresql::
+If you prefer PostgreSQL::
 
     $ sudo apt install postgresql
+    
+Install the PostgreSQL client into your project's virtualenv::
+  
     $ pip install psycopg2
 
 For more info on how to setup a user and database see
-:doc:`mysql_install`.
+:doc:`mysql_install` and :doc:`pgsql_install`.
+     
 
 .. _lino.admin.site_module:
 

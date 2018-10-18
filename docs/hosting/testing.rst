@@ -61,7 +61,7 @@ a new testing site.
   as a copy of the :xfile:`restore.py` file.
   
 - Run :xfile:`pull.sh`
-- Run :xfile:`initdb_testing_from_prod.sh` and adapt
+- Run :xfile:`initdb_from_prod.sh` and adapt
   :xfile:`restore2testing.py` where needed.
 - Add a vhost to make the testing site accessible to end-users
 - Setup a web page for release notes which serves as a roadmap to you
@@ -76,7 +76,7 @@ synchoronizes the testing site, i.e. migrates the production data to
 the testing site::
 
     $ go testing
-    $ ./initdb_testing_from_prod.sh
+    $ ./initdb_from_prod.sh
     
 Upgrade attempts
 ================
@@ -102,16 +102,16 @@ Scripts
 
 The file :xfile:`restore2testing.py` is in the :xfile:`snapshot` of
 your production project and used by the
-:xfile:`initdb_testing_from_prod.sh` script.  You create it as a copy
+:xfile:`initdb_from_prod.sh` script.  You create it as a copy
 of the :xfile:`restore.py` file.  You will modify it as needed and
 maintain it until the testing site has become production.
 
-.. xfile:: initdb_testing_from_prod.sh
+.. xfile:: initdb_from_prod.sh
 
-The :xfile:`initdb_testing_from_prod.sh` script creates a snapshot of
+The :xfile:`initdb_from_prod.sh` script creates a snapshot of
 production and then restores that snapshot to testing. It also mirrors
 media files from prod to testing.
            
 
-.. literalinclude:: initdb_testing_from_prod.sh
+.. literalinclude:: initdb_from_prod.sh
 
