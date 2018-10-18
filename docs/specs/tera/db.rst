@@ -20,7 +20,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-45 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, dashboard, office, xl, countries, properties, contacts, households, clients, phones, humanlinks, products, weasyprint, ledger, vat, sales, cal, invoicing, courses, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+44 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, properties, contacts, households, clients, humanlinks, products, weasyprint, ledger, vat, sales, cal, invoicing, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
 96 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
@@ -55,9 +55,8 @@ The database structure
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             34        53
- courses.CourseType          courses.CourseTypes            5         0
  courses.Enrolment           courses.Enrolments             15        79
- courses.Line                courses.Lines                  25        3
+ courses.Line                courses.Lines                  24        3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
  dashboard.Widget            dashboard.Widgets              5         0
@@ -92,7 +91,6 @@ The database structure
  notes.EventType             notes.EventTypes               8         1
  notes.Note                  notes.Notes                    17        100
  notes.NoteType              notes.NoteTypes                11        3
- phones.ContactDetail        phones.ContactDetails          7         15
  products.Product            products.Products              14        3
  products.ProductCat         products.ProductCats           5         1
  properties.PropChoice       properties.PropChoices         6         2
@@ -112,7 +110,9 @@ The database structure
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   60        59
+ tera.Client                 tera.Clients                   48        59
+ tera.LifeMode               tera.LifeModes                 4         0
+ tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
  topics.Interest             topics.Interests               6         0
  topics.Topic                topics.Topics                  9         0
@@ -157,7 +157,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, invoicing.SalesRule.partner, phones.ContactDetail.partner, sepa.Account.partner, sheets.PartnerEntry.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner, sheets.PartnerEntry.partner
   - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : tera.Client.person_ptr
@@ -172,10 +172,8 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
   - PROTECT : cal.Event.project, cal.Task.project, courses.Enrolment.course, excerpts.Excerpt.project, invoicing.Plan.course, notes.Note.project, topics.Interest.partner
-- courses.CourseType :
-  - PROTECT : courses.Line.course_type
 - courses.Line :
-  - PROTECT : courses.Course.line, tera.Client.needed_course
+  - PROTECT : courses.Course.line
 - courses.Slot :
   - PROTECT : courses.Course.slot
 - courses.Topic :
@@ -242,6 +240,10 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : contacts.Partner.team, ledger.Journal.team, users.User.team
 - tera.Client :
   - PROTECT : courses.Enrolment.pupil, tera.Client.obsoletes
+- tera.LifeMode :
+  - PROTECT : tera.Client.life_mode
+- tera.Procurer :
+  - PROTECT : tera.Client.procurer
 - topics.Topic :
   - PROTECT : topics.Interest.topic
 - topics.TopicGroup :
@@ -255,11 +257,11 @@ behaviour. See also :doc:`/dev/delete`.
 
 
 >>> print(analyzer.show_complexity_factors())
-- 45 plugins
+- 44 plugins
 - 96 models
 - 20 user roles
 - 4 user types
-- 357 views
+- 353 views
 - 101 dialog actions
 <BLANKLINE>
 

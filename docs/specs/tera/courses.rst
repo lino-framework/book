@@ -56,9 +56,9 @@ The :class:`CourseAreas` choicelist in :ref:`tera` populates
 ======= ============= ====================== ====================
  value   name          text                   Table
 ------- ------------- ---------------------- --------------------
- 10      therapies     Individual therapies   courses.Therapies
- 20      life_groups   Life groups            courses.LifeGroups
- 30      default       Other groups           courses.Courses
+ IT      therapies     Individual therapies   courses.Therapies
+ LG      life_groups   Life groups            courses.LifeGroups
+ OG      default       Other groups           courses.Courses
 ======= ============= ====================== ====================
 <BLANKLINE>
 
