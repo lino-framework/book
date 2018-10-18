@@ -55,7 +55,9 @@ Setting up a testing site
 Each time the site owner asked for an upgrade, you start by setting up
 a new testing site.
 
-- Copy the current production project directory to a new directory
+- Copy the current production project directory to a new directory.
+
+- Remove the :xfile:`env` in the copy and create a new virtualenv.  
   
 - Create a file :xfile:`restore2testing.py` in the production snapshot
   as a copy of the :xfile:`restore.py` file.
