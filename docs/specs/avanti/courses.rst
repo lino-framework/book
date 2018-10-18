@@ -46,7 +46,7 @@ Topics
 >>> language_courses = courses.Topic.objects.get(pk=2)
 >>> rt.show('courses.CoursesByTopic', language_courses)
 ================================================== =========== ============= ================== =========== ============= =========== ========
- overview                                           When        Times         Available places   Confirmed   Free places   Requested   Trying
+ Activity                                           When        Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
  *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   09:00-12:00   5                  2           3             3           0
  *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   14:00-17:00   5                  0           2             0           3
@@ -100,7 +100,7 @@ existing events.
 >>> rt.login('laura').show('courses.MyCoursesGiven')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ============================================================= =========== ============= ====== =============
- overview                                                      When        Times         Room   Workflow
+ Activity                                                      When        Times         Room   Workflow
 ------------------------------------------------------------- ----------- ------------- ------ -------------
  `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Started**
  `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Started**
@@ -129,7 +129,7 @@ Laura (the teacher) who is responsible for the individual events.
 >>> rt.login('laura').show('cal.MyEntries')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 =========================================== ======== =================================
- overview                                    Client   Workflow
+ Activity                                    Client   Workflow
 ------------------------------------------- -------- ---------------------------------
  `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
  `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]

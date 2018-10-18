@@ -341,7 +341,7 @@ application or locally per site.
            
 >>> rt.show(cal.DailyPlanner)
 =========== ========== ===============
- overview    External   Internal
+ Activity    External   Internal
 ----------- ---------- ---------------
  *AM*
  *PM*                   *13:30 robin*
@@ -398,7 +398,7 @@ A default configuration has two columns in the daily planner:
     Tagesplaner
     ===========
     =============== ======== ===============
-     overview        Extern   Intern
+     Aktivität       Extern   Intern
     --------------- -------- ---------------
      *Vormittags*
      *Nachmittags*            *13:30 robin*
@@ -411,7 +411,7 @@ A default configuration has two columns in the daily planner:
     Planificateur quotidien
     =======================
     =================== ========= ===============
-     overview            Externe   Interne
+     Activity            Externe   Interne
     ------------------- --------- ---------------
      *Avant-midi*
      *Après-midi*                  *13:30 robin*

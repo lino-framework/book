@@ -34,7 +34,7 @@ Five Weekends 2015
 
 >>> rt.show(cal.EntriesByController, obj, column_names="when_text overview state", nosummary=True)
 =============================== =================== ===========
- When                            Description         State
+ When                            Activity            State
 ------------------------------- ------------------- -----------
  Fri 19/06/2015-Sun 21/06/2015   *Activity #26  1*   Suggested
  Fri 24/07/2015-Sun 26/07/2015   *Activity #26  2*   Suggested
