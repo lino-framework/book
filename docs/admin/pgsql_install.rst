@@ -23,28 +23,43 @@ Install PostgreSQL on your site::
 Install the PostgreSQL client into your project's virtualenv::
   
     $ pip install psycopg2
-
-Create a new database::    
-
-  $ sudo -u postgres createdb mydb
-
-
+    
 
 Show all users::
 
-    $ sudo -u postgres psql postgres
+    $ sudo -u postgres psql -c \\du postgres
 
-    postgres=# \du
                                  List of roles
     Role name |                   Attributes                   | Member of 
     ----------+------------------------------------------------+-----------
     django    |                                                | {}
     postgres  | Superuser, Create role, Create DB, Replication | {}
+    
 
+Show all databases::
 
-Show all users::
-
-    $ sudo -u postgres psql mydb
-
-    postgres=# \du
+    $ sudo -u postgres psql -c \\l postgres
+                                      List of databases
+       Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+    -----------+----------+----------+-------------+-------------+-----------------------
+     cfoo      | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+     dfoo      | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+     postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+     bfoo      | django   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+     template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+               |          |          |             |             | postgres=CTc/postgres
+     template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+               |          |          |             |             | postgres=CTc/postgres
+    (6 rows)
   
+
+Create a new database::
+
+    $ sudo -u postgres createdb efoo
+
+Remove a database
+
+    $ sudo -u postgres dropdb bfoo
+
+
+
