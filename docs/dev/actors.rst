@@ -65,7 +65,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-235
+236
 
 Besides this complete list, actors are collected at different places
 depending on their type.
@@ -101,7 +101,7 @@ Another category are virtual tables
 Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
-32
+33
 >>> list(sorted(kernel.CHOICELISTS.items()))[6]
 ('cal.PlannerColumns', lino_xl.lib.cal.choicelists.PlannerColumns)
 

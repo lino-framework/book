@@ -103,15 +103,15 @@ Calendar entry types
 
 
 >>> rt.show(cal.EventTypes)
-======================== ======================== ======================== ================ ============= ==================== =================
- Designation              Designation (de)         Designation (fr)         Planner column   Appointment   Force guest states   Locks all rooms
------------------------- ------------------------ ------------------------ ---------------- ------------- -------------------- -----------------
- Holidays                 Feiertage                Jours fériés             External         No            No                   Yes
- Meeting                  Versammlung              Réunion                  External         Yes           No                   No
- Internal                 Intern                   Interne                  Internal         Yes           No                   No
- Individual appointment   Individual appointment   Individual appointment                    Yes           Yes                  No
- Group meeting            Group meeting            Group meeting                             Yes           No                   No
-======================== ======================== ======================== ================ ============= ==================== =================
+======================== ================== ======================== ================ ============= ==================== =================
+ Designation              Designation (de)   Designation (fr)         Planner column   Appointment   Force guest states   Locks all rooms
+------------------------ ------------------ ------------------------ ---------------- ------------- -------------------- -----------------
+ Holidays                 Feiertage          Jours fériés             External         No            No                   Yes
+ Meeting                  Versammlung        Réunion                  External         Yes           No                   No
+ Internal                 Intern             Interne                  Internal         Yes           No                   No
+ Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                  No
+ Group meeting            Gruppengespräch    Group meeting                             Yes           No                   No
+======================== ================== ======================== ================ ============= ==================== =================
 <BLANKLINE>
 
 
@@ -120,13 +120,13 @@ Daily planner
 =============
 
 >>> rt.show(cal.DailyPlanner)
-=========== ========== ===============
- Activity    External   Internal
------------ ---------- ---------------
+============ ========== ===============
+ Time range   External   Internal
+------------ ---------- ---------------
  *AM*
- *PM*                   *13:30 robin*
+ *PM*                    *13:30 robin*
  *All day*
-=========== ========== ===============
+============ ========== ===============
 <BLANKLINE>
 
 

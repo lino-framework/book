@@ -5,19 +5,20 @@
 Belgian ID card holders
 =======================
 
-..  doctest init:
+The :mod:`lino_xl.lib.beid` plugin adds functionality for reading
+Belgian eID cards and storing that data in the database.
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
+Examples in this document use the :mod:`lino_book.projects.adg` demo
+project.
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 .. contents::
    :depth: 1
    :local:
-
-The :mod:`lino_xl.lib.beid` plugin adds functionality for reading
-Belgian eID cards and storing that data in the database.
 
 .. currentmodule:: lino_xl.lib.beid
 
@@ -75,23 +76,6 @@ See unit tests in :mod:`lino_welfare.tests.test_beid`.
 
         Virtual field which displays the picture.
            
-
-Civil states
-============
-
->>> show_choicelist(beid.CivilStates)
-======= ==================== ==================== ============================= =============================
- value   name                 en                   de                            fr
-------- -------------------- -------------------- ----------------------------- -----------------------------
- 10      single               Single               Ledig                         célibataire
- 20      married              Married              Verheiratet                   marié
- 30      widowed              Widowed              Verwitwet                     veuf/veuve
- 40      divorced             Divorced             Geschieden                    divorcé
- 50      separated            Separated            Getrennt von Tisch und Bett   Séparé de corps et de biens
- 51      separated_de_facto   De facto separated   Faktisch getrennt             Séparé de fait
- 60      cohabitating         Cohabitating         Zusammenwohnend               Cohabitant
-======= ==================== ==================== ============================= =============================
-<BLANKLINE>
 
 
 ID card types
@@ -153,82 +137,6 @@ ID card types
       at civil servants. This type is also no longer used.
 
            
-.. class:: CivilStates
-           
-    The global list of **civil states** that a client can have.  This
-    is the list of choices for the :attr:`civil_state
-    <lino_welfare.modlib.pcsw.models.Client.civil_state>` field of a
-    :class:`Client <lino_welfare.modlib.pcsw.models.Client>`.
-
-    **The four official civil states** according to Belgian law are:
-
-    .. attribute:: single
-
-        célibataire : vous n’avez pas de partenaire auquel vous êtes
-        officiellement lié
-
-    .. attribute:: married
-
-        marié(e) : vous êtes légalement marié
-
-    .. attribute:: widowed
-
-        veuf (veuve) / Verwitwet : vous êtes légalement marié mais
-        votre partenaire est décédé
-
-    .. attribute:: divorced
-
-        divorcé(e) (Geschieden) : votre mariage a été juridiquement dissolu
-
-    **Some institutions define additional civil states** for people
-    who are officially still married but at different degrees of
-    separation:
-
-    .. attribute:: de_facto_separated
-
-        De facto separated (Séparé de fait, faktisch getrennt)
-
-        Des conjoints sont séparés de fait lorsqu'ils ne respectent
-        plus le devoir de cohabitation. Leur mariage n'est cependant
-        pas dissous.
-
-        La notion de séparation de fait n'est pas définie par la
-        loi. Toutefois, le droit en tient compte dans différents
-        domaines, par exemple en matière fiscale ou en matière de
-        sécurité sociale (assurance maladie invalidité, allocations
-        familiales, chômage, pension, accidents du travail, maladies
-        professionnelles).
-
-    .. attribute:: separated
-
-        Legally separated, aka "Separated as to property" (Séparé de
-        corps et de biens, Getrennt von Tisch und Bett)
-
-        La séparation de corps et de biens est une procédure
-        judiciaire qui, sans dissoudre le mariage, réduit les droits
-        et devoirs réciproques des conjoints.  Le devoir de
-        cohabitation est supprimé.  Les biens sont séparés.  Les
-        impôts sont perçus de la même manière que dans le cas d'un
-        divorce. Cette procédure est devenue très rare.
-
-    **Another unofficial civil state** (but relevant in certain
-    situations) is:
-
-    .. attribute:: cohabitating
-
-        Cohabitating (cohabitant, zusammenlebend)
-
-        Vous habitez avec votre partenaire et c’est
-        reconnu légalement.
-
-    Sources for above: `belgium.be
-    <http://www.belgium.be/fr/famille/couple/divorce_et_separation/separation_de_fait/>`__,
-    `gouv.qc.ca
-    <http://www4.gouv.qc.ca/EN/Portail/Citoyens/Evenements/separation-divorce/Pages/separation-fait.aspx>`__,
-    `wikipedia.org <https://en.wikipedia.org/wiki/Cohabitation>`__
-
-
-
 Residence types
 ===============
     
