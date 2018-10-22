@@ -35,7 +35,8 @@ Partner types
 =============
 
 >>> dd.plugins.contacts
-lino_tera.lib.contacts
+lino_tera.lib.contacts (extends_models=['Person'])
+
 
 >>> print([m.__name__ for m in rt.models_by_base(rt.models.contacts.Partner)])
 ['Company', 'Partner', 'Person', 'Household', 'Client']
@@ -143,9 +144,11 @@ an editable remote field.
 <br/>
 AS Express Post
 AS Matsalu Veevärk
-Adam Albert
-Adam Ilja
-Adam Noémie
+Altenberg Hans
+Arens Andreas
+Arens Annette
 ...
+van Veen Vincent
+Ärgerlich Erna
 Õunapuu Õie
 Östges Otto

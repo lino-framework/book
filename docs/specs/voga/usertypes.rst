@@ -39,7 +39,7 @@ users.UserTypes.admin:900
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
+  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Tariffs : Tariffs, Tariff Categories
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
   - VAT : Paper types
@@ -82,7 +82,7 @@ Monique is a secretary.
   - System : Site Parameters, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Calendar : Guest Roles
+  - Calendar : Guest roles
   - Tariffs : Tariffs, Tariff Categories
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :

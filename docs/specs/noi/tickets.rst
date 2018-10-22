@@ -646,6 +646,7 @@ Filtering tickets
 This is a list of the parameters you can use for filterings tickets.
 
 >>> show_fields(tickets.AllTickets, all=True)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +-----------------+-----------------+------------------------------------------------------------------+
 | Internal name   | Verbose name    | Help text                                                        |
 +=================+=================+==================================================================+
@@ -667,6 +668,8 @@ This is a list of the parameters you can use for filterings tickets.
 | state           | State           | Only rows having this state.                                     |
 +-----------------+-----------------+------------------------------------------------------------------+
 | priority        | Priority        | Only rows having this priority.                                  |
++-----------------+-----------------+------------------------------------------------------------------+
+| deployed_to     | None            |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 | show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.       |
 +-----------------+-----------------+------------------------------------------------------------------+

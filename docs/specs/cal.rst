@@ -340,13 +340,13 @@ application or locally per site.
     The daily planner actor.
            
 >>> rt.show(cal.DailyPlanner)
-=========== ========== ===============
- Activity    External   Internal
------------ ---------- ---------------
+============ ========== ===============
+ Time range   External   Internal
+------------ ---------- ---------------
  *AM*
- *PM*                   *13:30 robin*
+ *PM*                    *13:30 robin*
  *All day*
-=========== ========== ===============
+============ ========== ===============
 <BLANKLINE>
 
 
@@ -398,7 +398,7 @@ A default configuration has two columns in the daily planner:
     Tagesplaner
     ===========
     =============== ======== ===============
-     Aktivität       Extern   Intern
+     Zeitabschnitt   Extern   Intern
     --------------- -------- ---------------
      *Vormittags*
      *Nachmittags*            *13:30 robin*
@@ -411,7 +411,7 @@ A default configuration has two columns in the daily planner:
     Planificateur quotidien
     =======================
     =================== ========= ===============
-     Activity            Externe   Interne
+     Time range          Externe   Interne
     ------------------- --------- ---------------
      *Avant-midi*
      *Après-midi*                  *13:30 robin*

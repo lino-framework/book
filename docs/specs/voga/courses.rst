@@ -198,7 +198,7 @@ Line #10 ('Yoga')
         
 >>> rt.show(rt.models.courses.CoursesByLine, obj)
 ==================================== ============== ================== ============= ====================
- Activity                             When           Room               Times         Instructor
+ Description                          When           Room               Times         Instructor
 ------------------------------------ -------------- ------------------ ------------- --------------------
  *024C Yoga* / *Marc Malmendier*      Every Monday   Conferences room   18:00-19:30   Marc Malmendier
  *025C Yoga* / *Edgard Radermacher*   Every Friday   Conferences room   19:00-20:30   Edgard Radermacher
@@ -229,7 +229,7 @@ Journeys
 ~~~~~~~~
 <BLANKLINE>
 ====================================== ======================= ======= ================== =========== ============= =========== ========
- Activity                               When                    Times   Available places   Confirmed   Free places   Requested   Trying
+ Description                            When                    Times   Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------- ----------------------- ------- ------------------ ----------- ------------- ----------- --------
  *001 Greece 2014* / *Hans Altenberg*   14/08/2014-20/08/2014                              3                         0           0
  **Total (1 rows)**                                                     **0**              **3**       **0**         **0**       **0**
@@ -240,7 +240,7 @@ Computer
 ~~~~~~~~
 <BLANKLINE>
 ============================================================ ================= ============= ================== =========== ============= =========== ========
- Activity                                                     When              Times         Available places   Confirmed   Free places   Requested   Trying
+ Description                                                  When              Times         Available places   Confirmed   Free places   Requested   Trying
 ------------------------------------------------------------ ----------------- ------------- ------------------ ----------- ------------- ----------- --------
  *003 comp (First Steps)* / *Daniel Emonts*                   Every Monday      13:30-15:00   3                  2           1             0           0
  *004 comp (First Steps)* / *Germaine Gernegroß*              Every Wednesday   17:30-19:00   3                  3           0             1           0
@@ -256,7 +256,7 @@ Sport
 ~~~~~
 <BLANKLINE>
 ========================================================= ================= ============= ================== =========== ============= =========== ========
- Activity                                                  When              Times         Available places   Confirmed   Free places   Requested   Trying
+ Description                                               When              Times         Available places   Confirmed   Free places   Requested   Trying
 --------------------------------------------------------- ----------------- ------------- ------------------ ----------- ------------- ----------- --------
  *009C BT (Belly dancing)* / *David da Vinci*              Every Wednesday   19:00-20:00   10                 3           7             0           0
  *010C FG (Functional gymnastics)* / *Hans Altenberg*      Every Monday      11:00-12:00   5                  2           3             0           0
@@ -277,7 +277,7 @@ Meditation
 ~~~~~~~~~~
 <BLANKLINE>
 ============================================================== ============== ============= ================== =========== ============= =========== ========
- Activity                                                       When           Times         Available places   Confirmed   Free places   Requested   Trying
+ Description                                                    When           Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------------------------------- -------------- ------------- ------------------ ----------- ------------- ----------- --------
  *020C GLQ (GuoLin-Qigong)* / *Charlotte Collard*               Every Monday   18:00-19:30                      0                         0           0
  *021C GLQ (GuoLin-Qigong)* / *Daniel Emonts*                   Every Friday   19:00-20:30                      2                         1           0
