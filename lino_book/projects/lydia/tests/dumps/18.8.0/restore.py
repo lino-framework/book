@@ -455,31 +455,7 @@ def create_ledger_account(id, ref, seqno, name, sheet_item_id, common_account, n
     kw.update(needs_ana=needs_ana)
     return ledger_Account(**kw)
 
-def create_products_product(id, name, description, cat_id, delivery_unit, vat_class, number_of_events, min_asset, sales_account_id, sales_price):
-#    if delivery_unit: delivery_unit = settings.SITE.models.products.DeliveryUnit.get_by_value(delivery_unit)
-#    if vat_class: vat_class = settings.SITE.models.vat.VatClasses.get_by_value(vat_class)
-    if sales_price is not None: sales_price = Decimal(sales_price)
-    kw = dict()
-    kw.update(id=id)
-    if name is not None: kw.update(bv2kw('name',name))
-    if description is not None: kw.update(bv2kw('description',description))
-    kw.update(cat_id=cat_id)
-    kw.update(delivery_unit=delivery_unit)
-    kw.update(vat_class=vat_class)
-    kw.update(number_of_events=number_of_events)
-    kw.update(min_asset=min_asset)
-    kw.update(sales_account_id=sales_account_id)
-    kw.update(sales_price=sales_price)
-    return products_Product(**kw)
-
-def create_teams_team(id, ref, name):
-    kw = dict()
-    kw.update(id=id)
-    kw.update(ref=ref)
-    if name is not None: kw.update(bv2kw('name',name))
-    return teams_Team(**kw)
-
-def create_contacts_partner(id, email, language, url, phone, gsm, fax, country_id, city_id, zip_code, region_id, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, client_contact_type_id, payment_term_id, vat_regime, vat_id, team_id, purchase_account_id):
+def create_contacts_partner(id, email, language, url, phone, gsm, fax, country_id, city_id, zip_code, region_id, addr1, street_prefix, street, street_no, street_box, addr2, prefix, name, remarks, client_contact_type_id, payment_term_id, vat_regime, vat_id, purchase_account_id):
 #    if vat_regime: vat_regime = settings.SITE.models.vat.VatRegimes.get_by_value(vat_regime)
     kw = dict()
     kw.update(id=id)
@@ -506,7 +482,6 @@ def create_contacts_partner(id, email, language, url, phone, gsm, fax, country_i
     kw.update(payment_term_id=payment_term_id)
     kw.update(vat_regime=vat_regime)
     kw.update(vat_id=vat_id)
-    kw.update(team_id=team_id)
     kw.update(purchase_account_id=purchase_account_id)
     return contacts_Partner(**kw)
 
@@ -555,30 +530,6 @@ def create_contacts_role(id, type_id, person_id, company_id):
     kw.update(company_id=company_id)
     return contacts_Role(**kw)
 
-def create_courses_line(id, ref, name, excerpt_title, company_id, contact_person_id, contact_role_id, course_area, topic_id, description, every_unit, every, event_type_id, fee_id, guest_role_id, options_cat_id, fees_cat_id, body_template):
-#    if course_area: course_area = settings.SITE.models.courses.CourseAreas.get_by_value(course_area)
-#    if every_unit: every_unit = settings.SITE.models.cal.Recurrencies.get_by_value(every_unit)
-    kw = dict()
-    kw.update(id=id)
-    kw.update(ref=ref)
-    if name is not None: kw.update(bv2kw('name',name))
-    if excerpt_title is not None: kw.update(bv2kw('excerpt_title',excerpt_title))
-    kw.update(company_id=company_id)
-    kw.update(contact_person_id=contact_person_id)
-    kw.update(contact_role_id=contact_role_id)
-    kw.update(course_area=course_area)
-    kw.update(topic_id=topic_id)
-    if description is not None: kw.update(bv2kw('description',description))
-    kw.update(every_unit=every_unit)
-    kw.update(every=every)
-    kw.update(event_type_id=event_type_id)
-    kw.update(fee_id=fee_id)
-    kw.update(guest_role_id=guest_role_id)
-    kw.update(options_cat_id=options_cat_id)
-    kw.update(fees_cat_id=fees_cat_id)
-    kw.update(body_template=body_template)
-    return courses_Line(**kw)
-
 def create_households_household(partner_ptr_id, type_id, client_state):
 #    if client_state: client_state = settings.SITE.models.clients.ClientStates.get_by_value(client_state)
     kw = dict()
@@ -623,6 +574,47 @@ def create_lists_member(id, seqno, list_id, partner_id, remark):
     kw.update(remark=remark)
     return lists_Member(**kw)
 
+def create_products_product(id, name, description, cat_id, delivery_unit, vat_class, number_of_events, min_asset, sales_account_id, sales_price):
+#    if delivery_unit: delivery_unit = settings.SITE.models.products.DeliveryUnit.get_by_value(delivery_unit)
+#    if vat_class: vat_class = settings.SITE.models.vat.VatClasses.get_by_value(vat_class)
+    if sales_price is not None: sales_price = Decimal(sales_price)
+    kw = dict()
+    kw.update(id=id)
+    if name is not None: kw.update(bv2kw('name',name))
+    if description is not None: kw.update(bv2kw('description',description))
+    kw.update(cat_id=cat_id)
+    kw.update(delivery_unit=delivery_unit)
+    kw.update(vat_class=vat_class)
+    kw.update(number_of_events=number_of_events)
+    kw.update(min_asset=min_asset)
+    kw.update(sales_account_id=sales_account_id)
+    kw.update(sales_price=sales_price)
+    return products_Product(**kw)
+
+def create_courses_line(id, ref, name, excerpt_title, company_id, contact_person_id, contact_role_id, course_area, topic_id, description, every_unit, every, event_type_id, fee_id, guest_role_id, options_cat_id, fees_cat_id, body_template):
+#    if course_area: course_area = settings.SITE.models.courses.CourseAreas.get_by_value(course_area)
+#    if every_unit: every_unit = settings.SITE.models.cal.Recurrencies.get_by_value(every_unit)
+    kw = dict()
+    kw.update(id=id)
+    kw.update(ref=ref)
+    if name is not None: kw.update(bv2kw('name',name))
+    if excerpt_title is not None: kw.update(bv2kw('excerpt_title',excerpt_title))
+    kw.update(company_id=company_id)
+    kw.update(contact_person_id=contact_person_id)
+    kw.update(contact_role_id=contact_role_id)
+    kw.update(course_area=course_area)
+    kw.update(topic_id=topic_id)
+    if description is not None: kw.update(bv2kw('description',description))
+    kw.update(every_unit=every_unit)
+    kw.update(every=every)
+    kw.update(event_type_id=event_type_id)
+    kw.update(fee_id=fee_id)
+    kw.update(guest_role_id=guest_role_id)
+    kw.update(options_cat_id=options_cat_id)
+    kw.update(fees_cat_id=fees_cat_id)
+    kw.update(body_template=body_template)
+    return courses_Line(**kw)
+
 def create_sepa_account(id, partner_id, iban, bic, remark, primary):
     kw = dict()
     kw.update(id=id)
@@ -633,7 +625,7 @@ def create_sepa_account(id, partner_id, iban, bic, remark, primary):
     kw.update(primary=primary)
     return sepa_Account(**kw)
 
-def create_ledger_journal(id, ref, seqno, name, build_method, template, trade_type, voucher_type, journal_group, auto_check_clearings, auto_fill_suggestions, force_sequence, account_id, partner_id, printed_name, dc, yearly_numbering, must_declare, sepa_account_id, team_id):
+def create_ledger_journal(id, ref, seqno, name, build_method, template, trade_type, voucher_type, journal_group, auto_check_clearings, auto_fill_suggestions, force_sequence, account_id, partner_id, printed_name, dc, yearly_numbering, must_declare, sepa_account_id):
 #    if build_method: build_method = settings.SITE.models.printing.BuildMethods.get_by_value(build_method)
 #    if trade_type: trade_type = settings.SITE.models.ledger.TradeTypes.get_by_value(trade_type)
 #    if voucher_type: voucher_type = settings.SITE.models.ledger.VoucherTypes.get_by_value(voucher_type)
@@ -658,7 +650,6 @@ def create_ledger_journal(id, ref, seqno, name, build_method, template, trade_ty
     kw.update(yearly_numbering=yearly_numbering)
     kw.update(must_declare=must_declare)
     kw.update(sepa_account_id=sepa_account_id)
-    kw.update(team_id=team_id)
     return ledger_Journal(**kw)
 
 def create_ledger_matchrule(id, account_id, journal_id):
@@ -682,6 +673,13 @@ def create_system_siteconfig(id, default_build_method, simulate_today, site_comp
     kw.update(next_partner_id=next_partner_id)
     kw.update(system_note_type_id=system_note_type_id)
     return system_SiteConfig(**kw)
+
+def create_teams_team(id, ref, name):
+    kw = dict()
+    kw.update(id=id)
+    kw.update(ref=ref)
+    if name is not None: kw.update(bv2kw('name',name))
+    return teams_Team(**kw)
 
 def create_tera_lifemode(id, designation):
     kw = dict()
@@ -782,7 +780,7 @@ def create_checkdata_problem(id, user_id, owner_type_id, owner_id, checker, mess
     kw.update(message=message)
     return checkdata_Problem(**kw)
 
-def create_courses_course(id, ref, start_date, start_time, end_date, end_time, user_id, every_unit, every, monday, tuesday, wednesday, thursday, friday, saturday, sunday, max_events, room_id, max_date, line_id, teacher_id, slot_id, description, remark, state, max_places, name, enrolments_until, fee_id, payment_term_id, procurer_id, mandatory, ending_reason, tariff, translator_type, therapy_domain, partner_id, paper_type_id):
+def create_courses_course(id, ref, start_date, start_time, end_date, end_time, user_id, every_unit, every, monday, tuesday, wednesday, thursday, friday, saturday, sunday, max_events, room_id, max_date, line_id, teacher_id, slot_id, description, remark, state, max_places, name, enrolments_until, fee_id, payment_term_id, procurer_id, mandatory, ending_reason, tariff, translator_type, therapy_domain, team_id, partner_id, paper_type_id):
 #    if every_unit: every_unit = settings.SITE.models.cal.Recurrencies.get_by_value(every_unit)
 #    if state: state = settings.SITE.models.courses.CourseStates.get_by_value(state)
 #    if ending_reason: ending_reason = settings.SITE.models.courses.EndingReasons.get_by_value(ending_reason)
@@ -826,6 +824,7 @@ def create_courses_course(id, ref, start_date, start_time, end_date, end_time, u
     kw.update(tariff=tariff)
     kw.update(translator_type=translator_type)
     kw.update(therapy_domain=therapy_domain)
+    kw.update(team_id=team_id)
     kw.update(partner_id=partner_id)
     kw.update(paper_type_id=paper_type_id)
     return courses_Course(**kw)
@@ -1420,23 +1419,23 @@ def main(args):
     execfile("sales_papertype.py", *args)
     execfile("sheets_item.py", *args)
     execfile("ledger_account.py", *args)
-    execfile("products_product.py", *args)
-    execfile("teams_team.py", *args)
     execfile("contacts_partner.py", *args)
     execfile("contacts_company.py", *args)
     execfile("contacts_person.py", *args)
     execfile("cal_room.py", *args)
     execfile("clients_clientcontact.py", *args)
     execfile("contacts_role.py", *args)
-    execfile("courses_line.py", *args)
     execfile("households_household.py", *args)
     execfile("households_member.py", *args)
     execfile("invoicing_salesrule.py", *args)
     execfile("lists_member.py", *args)
+    execfile("products_product.py", *args)
+    execfile("courses_line.py", *args)
     execfile("sepa_account.py", *args)
     execfile("ledger_journal.py", *args)
     execfile("ledger_matchrule.py", *args)
     execfile("system_siteconfig.py", *args)
+    execfile("teams_team.py", *args)
     execfile("tera_lifemode.py", *args)
     execfile("tera_procurer.py", *args)
     execfile("topics_topicgroup.py", *args)

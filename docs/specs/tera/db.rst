@@ -45,16 +45,16 @@ The database structure
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0
- contacts.Company            contacts.Companies             28        25
+ contacts.Company            contacts.Companies             27        25
  contacts.CompanyType        contacts.CompanyTypes          7         16
- contacts.Partner            contacts.Partners              26        100
- contacts.Person             contacts.Persons               33        69
+ contacts.Partner            contacts.Partners              25        100
+ contacts.Person             contacts.Persons               32        69
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
  contenttypes.ContentType    gfks.ContentTypes              3         91
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             40        52
+ courses.Course              courses.Activities             41        52
  courses.Enrolment           courses.Enrolments             16        78
  courses.Line                courses.Lines                  24        3
  courses.Slot                courses.Slots                  5         0
@@ -69,7 +69,7 @@ The database structure
  finan.PaymentOrder          finan.PaymentOrders            15        4
  finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
  gfks.HelpText               gfks.HelpTexts                 4         2
- households.Household        households.Households          29        6
+ households.Household        households.Households          28        6
  households.Member           households.Members             14        12
  households.Type             households.Types               4         6
  invoicing.Item              invoicing.Items                10        0
@@ -78,7 +78,7 @@ The database structure
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
- ledger.Journal              ledger.Journals                24        8
+ ledger.Journal              ledger.Journals                23        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
  ledger.Movement             ledger.Movements               13        260
@@ -105,7 +105,7 @@ The database structure
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   44        58
+ tera.Client                 tera.Clients                   43        58
  tera.LifeMode               tera.LifeModes                 4         0
  tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
@@ -228,7 +228,7 @@ behaviour. See also :doc:`/dev/delete`.
 - sheets.Report :
   - PROTECT : sheets.AccountEntry.report, sheets.AnaAccountEntry.report, sheets.ItemEntry.report, sheets.PartnerEntry.report
 - teams.Team :
-  - PROTECT : contacts.Partner.team, ledger.Journal.team, users.User.team
+  - PROTECT : courses.Course.team, users.User.team
 - tera.Client :
   - PROTECT : tera.Client.obsoletes
 - tera.LifeMode :
