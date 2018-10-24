@@ -8,7 +8,7 @@ The Households module
 .. doctest init:
 
     >>> import lino
-    >>> lino.startup('lino_book.projects.max.settings.demo')
+    >>> lino.startup('lino_book.projects.adg.settings.demo')
     >>> from lino.api.doctest import *
 
 The :mod:`lino_xl.lib.households` module adds functionality for
@@ -23,18 +23,19 @@ house).
 Configuration
 =============
 
->>> rt.show(rt.models.households.Types)  #doctest: +REPORT_UDIFF
-==== ==================== ========================= ====================== ==================== ==================== ===================== ====================
- ID   Designation          Designation (de)          Designation (fr)       Designation (et)     Designation (nl)     Designation (pt-br)   Designation (es)
----- -------------------- ------------------------- ---------------------- -------------------- -------------------- --------------------- --------------------
- 1    Married couple       Ehepaar                   Couple marié           Married couple       Married couple       Married couple        Married couple
- 2    Divorced couple      Geschiedenes Paar         Couple divorcé         Divorced couple      Divorced couple      Divorced couple       Divorced couple
- 3    Factual household    Faktischer Haushalt       Cohabitation de fait   Factual household    Factual household    Factual household     Factual household
- 4    Legal cohabitation   Legale Wohngemeinschaft   Cohabitation légale    Legal cohabitation   Legal cohabitation   Legal cohabitation    Legal cohabitation
- 5    Isolated             Getrennt                  Isolé                  Isolated             Isolated             Isolated              Isolated
- 6    Other                Sonstige                  Autre                  Other                Other                Other                 Other
-==== ==================== ========================= ====================== ==================== ==================== ===================== ====================
+>>> rt.show(households.Types)  #doctest: +REPORT_UDIFF
+==== ==================== ========================= ======================
+ ID   Designation          Designation (de)          Designation (fr)
+---- -------------------- ------------------------- ----------------------
+ 1    Married couple       Ehepaar                   Couple marié
+ 2    Divorced couple      Geschiedenes Paar         Couple divorcé
+ 3    Factual household    Faktischer Haushalt       Cohabitation de fait
+ 4    Legal cohabitation   Legale Wohngemeinschaft   Cohabitation légale
+ 5    Isolated             Getrennt                  Isolé
+ 6    Other                Sonstige                  Autre
+==== ==================== ========================= ======================
 <BLANKLINE>
+
 
 >>> rt.show('households.MemberRoles')
 ======= ============ ===================
@@ -58,9 +59,9 @@ SiblingsByPerson
 >>> SiblingsByPerson = rt.models.households.SiblingsByPerson
 
 The :class:`SiblingsByPerson
-<lino_xl.lib.households.models.SiblingsByPerson>` table shows the
-family composition of a person.  More precisely it shows all members
-of the current household of that person.
+<lino_xl.lib.households.SiblingsByPerson>` table shows the family
+composition of a person.  More precisely it shows all members of the
+current household of that person.
 
 This works of course only when Lino can determine the "one and only"
 current household.  If the person has only one membership (at a given
@@ -74,7 +75,6 @@ them is primary, Lino can look at the `end_date`.
 
 Let's get a list of the candidates to inspect:
 
->>> Link = rt.models.humanlinks.Link
 >>> Person = rt.models.contacts.Person
 >>> Member = rt.models.households.Member
 >>> MemberRoles = rt.models.households.MemberRoles
@@ -86,97 +86,62 @@ Let's get a list of the candidates to inspect:
 ...     if all > 1 and not primary:
 ...         print(u"{} ({}) is head of {} households".format(
 ...             m.person, m.person.pk, all))
-Mr Karl Keller (177) is head of 2 households
-Mr Jérôme Jeanémart (180) is head of 2 households
-Mr Albert Adam (201) is head of 3 households
-Mr Bruno Braun (202) is head of 2 households
+Mr Aleksándr Alvang (178) is head of 2 households
 
-The most interesting is 177:
+The most interesting is 178:
 
 >>> ses = rt.login('robin')
->>> p = Person.objects.get(pk=177)
+>>> p = Person.objects.get(pk=178)
 >>> ses.show('households.MembersByPerson', master_instance=p)
-Mr Karl Keller is
-`☐  <javascript:Lino.households.Members.set_primary(null,false,57,{  })>`__Head of household in `Karl & Erna Keller-Emonts-Gast (Factual household) <Detail>`__
-`☐  <javascript:Lino.households.Members.set_primary(null,false,42,{  })>`__Head of household in `Karl & Õie Keller-Õunapuu (Legal cohabitation) <Detail>`__
+Mr Aleksándr Alvang is
+`☐  <javascript:Lino.households.Members.set_primary(null,false,11,{  })>`__Head of household in `Aleksándr & Agápiiá Alvang-Bek-Murzin (Other) <Detail>`__
+`☐  <javascript:Lino.households.Members.set_primary(null,false,5,{  })>`__Head of household in `Aleksándr & Cátává Alvang-Maalouf (Factual household) <Detail>`__
 <BLANKLINE>
 **Join an existing household** or **create a new one**.
 
 >>> ses.show('households.MembersByPerson', p, nosummary=True)
-==================================================== =================== ========= ============ ============
- Household                                            Role                Primary   Start date   End date
----------------------------------------------------- ------------------- --------- ------------ ------------
- Karl & Erna Keller-Emonts-Gast (Factual household)   Head of household   No
- Karl & Õie Keller-Õunapuu (Legal cohabitation)       Head of household   No                     04/03/2002
-==================================================== =================== ========= ============ ============
+======================================================= =================== ========= ============ ============
+ Household                                               Role                Primary   Start date   End date
+------------------------------------------------------- ------------------- --------- ------------ ------------
+ Aleksándr & Agápiiá Alvang-Bek-Murzin (Other)           Head of household   No
+ Aleksándr & Cátává Alvang-Maalouf (Factual household)   Head of household   No                     04/03/2002
+======================================================= =================== ========= ============ ============
 <BLANKLINE>
 
 >>> rt.show(SiblingsByPerson, p)
-========= =================== =============== ====================== ============ ============= ============ ========
- Age       Role                Dependency      Person                 First name   Last name     Birth date   Gender
---------- ------------------- --------------- ---------------------- ------------ ------------- ------------ --------
- unknown   Head of household   Not at charge   Mr Karl Keller         Karl         Keller                     Male
- unknown   Partner             Not at charge   Mrs Erna Emonts-Gast   Erna         Emonts-Gast                Female
-========= =================== =============== ====================== ============ ============= ============ ========
+========== =================== ======================== ============ ============ ======== ============ ============= ========
+ Age        Role                Person                   First name   Last name    Gender   Birth date   Nationality   School
+---------- ------------------- ------------------------ ------------ ------------ -------- ------------ ------------- --------
+ 43 years   Partner             Mrs Agápiiá Bek-Murzin   Agápiiá      Bek-Murzin   Female   1973-09-04
+ 23 years   Head of household   Mr Aleksándr Alvang      Aleksándr    Alvang       Male     1993-09-09
+========== =================== ======================== ============ ============ ======== ============ ============= ========
 <BLANKLINE>
 
-Same case for 180:
-
->>> rt.show(SiblingsByPerson, Person.objects.get(pk=180))
-========= =================== =============== ======================= ============ ============= ============ ========
- Age       Role                Dependency      Person                  First name   Last name     Birth date   Gender
---------- ------------------- --------------- ----------------------- ------------ ------------- ------------ --------
- unknown   Head of household   Not at charge   Mr Jérôme Jeanémart     Jérôme       Jeanémart                  Male
- unknown   Partner             Not at charge   Mrs Berta Radermacher   Berta        Radermacher                Female
-========= =================== =============== ======================= ============ ============= ============ ========
-<BLANKLINE>
-
-For the other candidates, Lino cannot determine a current household:
-
->>> rt.show(SiblingsByPerson, Person.objects.get(pk=201))
-Mr Albert Adam is member of multiple households
-
->>> rt.show(SiblingsByPerson, Person.objects.get(pk=202))
-Mr Bruno Braun is member of multiple households
-
->>> rt.show(SiblingsByPerson, Person.objects.get(pk=170))
-Jean Dupont is not member of any household
 
 
-Lars
-====
+Don't read on
+=============
 
-Lars Braun is the natural son of Bruno Braun and Eveline Evrard.
-Here is what Lars would say about
-them:
+The following covers a problem that occured 20181023 and was detected
+by welfare but not yet by book.
 
->>> lars = Person.objects.get(first_name="Lars", last_name="Braun")
->>> for lnk in Link.objects.filter(child=lars):
-...    print(u"{} is my {}".format(lnk.parent,
-...         lnk.type.as_parent(lnk.parent)))
-Mr Bruno Braun is my Father
-Mrs Eveline Evrard is my Mother
+>>> print(p.id)
+178
+>>> test_client.force_login(ses.user)
 
-Both parents married another partner. These new households
-automatically did not create automatic foster parent links between
-Lars and the new partners of his natural parents.
+>>> def check(uri, fieldname):
+...     url = '/api/%s?fmt=json&an=detail' % uri
+...     res = test_client.get(url, REMOTE_USER=ses.user.username)
+...     assert res.status_code == 200
+...     d = json.loads(res.content)
+...     if not fieldname in d['data']:
+...         raise Exception("20181023 '{}' not in {}".format(
+...             fieldname, d['data'].keys()))
+...     return d['data'][fieldname]
 
->>> qs = households.Member.objects.filter(person=lars)
->>> qs.count()
-0
-
-.. So the following is no longer true:
-
-    >> rt.show('households.MembersByPerson', master_instance=lars)
-    ... #doctest: +ELLIPSIS
-    Mr Lars Braun is
-    `☐  <javascript:Lino.households.Members.set_primary(null,true,21,{  })>`__Child in *Albert & Eveline Adam-Evrard (Married couple)*
-    `☐  <javascript:Lino.households.Members.set_primary(null,true,28,{  })>`__Child in *Albert & Françoise Adam-Freisen (Divorced couple)*
-    `☐  <javascript:Lino.households.Members.set_primary(null,true,33,{  })>`__Child in *Bruno & Eveline Braun-Evrard (Divorced couple)*
-    `☐  <javascript:Lino.households.Members.set_primary(null,true,41,{  })>`__Child in *Bruno & Françoise Braun-Freisen (Married couple)*
-    `☐  <javascript:Lino.households.Members.set_primary(null,true,66,{  })>`__Child in *Albert & Daniela Adam-Radermacher (Married couple)*
-    <BLANKLINE>
-    Create a household : **Married couple** / **Divorced couple** / **Factual household** / **Legal cohabitation** / **Isolated** / **Other**
-
-    >> rt.show(SiblingsByPerson, lars)
-    Mr Lars Braun is member of multiple households
+>>> uri = 'avanti/Clients/{}'.format(p.id)
+>>> html = check(uri, 'households_MembersByPerson')
+>>> soup = BeautifulSoup(html, 'lxml')
+>>> links = soup.find_all('a')
+>>> len(links)
+6

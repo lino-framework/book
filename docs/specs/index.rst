@@ -35,6 +35,7 @@ Plugin specs
    courses
    holidays
    households
+   humanlinks
    tinymce
    html
    beid

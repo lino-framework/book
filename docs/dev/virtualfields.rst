@@ -37,3 +37,23 @@ Some entries to the API:
 TODO:
 
 - Write a simple example project in tutorials
+
+
+Some edge cases
+===============
+
+A cool example is in :mod:`lino_welfare.modlib.pcsw.models` where we
+have::
+  
+    dd.update_field(Client, 'overview', verbose_name=None)
+
+This is special because :class:`Client` is abstract at this place\
+[#f1]_.  Abstract models don't have a copy of each inherited virtual
+field.  the overview field is
+
+.. [#f1] Note that actually it is abstract only in eupen, not in
+         chatelet. But that's another cool thing.
+
+
+             
+   
