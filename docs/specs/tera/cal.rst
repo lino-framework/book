@@ -83,7 +83,7 @@ Guest workflow
 ------ --------- -------------- -------------- -------------
  10     invited   Nein           Eingeladen     ?
  40     present   Ja             Anwesend       ☑
- 50     missing   Ja             Missing        ☉
+ 50     missing   Ja             Fehlt          ☉
  60     excused   Nein           Entschuldigt   ⚕
 ====== ========= ============== ============== =============
 <BLANKLINE>
@@ -93,7 +93,7 @@ Guest workflow
  Action name   Verbose name   Help text      Target state   Required states
 ------------- -------------- -------------- -------------- -------------------------
  wf1           ☑              Anwesend       Anwesend       invited
- wf2           ☉              Missing        Missing        invited
+ wf2           ☉              Fehlt          Fehlt          invited
  wf3           ⚕              Entschuldigt   Entschuldigt   invited
  wf4           ?              Eingeladen     Eingeladen     missing present excused
 ============= ============== ============== ============== =========================
