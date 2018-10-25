@@ -58,7 +58,7 @@ Discovering problems
 
   If this produces some output, you probably want to fix it::
 
-    $ find ! -perm /g=w -exec chmod g+w '{}' +
+    $ sudo find ! -perm /g=w -exec chmod g+w '{}' +
 
 - Show files which are not *readable* for other group members::
     
