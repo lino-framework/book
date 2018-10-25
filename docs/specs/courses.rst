@@ -306,10 +306,10 @@ The state of a course
 ======= ========== ========== ========= ========== ============= =================
  value   name       text       Exposed   Editable   Invoiceable   Update calendar
 ------- ---------- ---------- --------- ---------- ------------- -----------------
- 10      draft      Draft      Yes       Yes        No            Yes
- 20      active     Started    Yes       No         Yes           Yes
- 30      inactive   Inactive   No        No         No            Yes
- 40      closed     Closed     No        No         No            Yes
+ 10      draft      Draft      Yes       Yes        No            No
+ 20      active     Started    Yes       No         Yes           No
+ 30      inactive   Inactive   No        No         No            No
+ 40      closed     Closed     No        No         No            No
 ======= ========== ========== ========= ========== ============= =================
 <BLANKLINE>
 
