@@ -7,10 +7,12 @@ Courses (Activities)
 
 This document describes the :mod:`lino_xl.lib.courses` plugin.
 
-We might rename this plugin to "activities" some day.
 The internal name "courses" is for historic reasons. In :ref:`welfare`
 they are called "workshops", in :ref:`tera` they are called
-"therapies", in :ref:`voga` they are called "activities".
+"dossiers", in :ref:`voga` they are called "activities".
+
+There was a time when I planned to rename "courses" to "activities".
+Some table names remind this time.
 
 See also
 :doc:`/specs/voga/courses`,
@@ -28,16 +30,15 @@ project.
 
 
 
-An **activity** is
-when a "teacher" meets more or less regularily
-with a group of "participants".
-Lino can automatically generate calendar entries for an activity according to recurrency rules.
+A **course** is when a "teacher" meets more or less regularily with a
+group of "pupils".  Lino can automatically generate calendar entries
+for a course according to recurrency rules.
 
-The participants of an activity are stored as **enrolments**.
+The pupils of a course are stored as **enrolments**.
 
-There is a configurable list of **topics**.  Activities are grouped
-into **activity lines**.  An activity line is a series of activities
-having a same **topic**.
+There is a configurable list of **topics**.  Courses are grouped into
+**course lines**.  A course line is a series of courses having a same
+**topic**.
 
 
 .. contents::
@@ -109,9 +110,26 @@ The ``Course`` model
         Number of confirmed places.
 
 
-.. class:: Activities
+           
+.. class:: Courses
 
     Base table for all activities.
+
+    Filter parameters:
+
+    .. attribute:: show_exposed
+
+        Whether to show or to hide courses in an exposed state.
+
+        That is, all courses in a state that has
+        :attr:`CourseState.is_exposed` set to True.
+
+        This parameter is ignored if the :attr:`state` parameter is also
+        specified.
+
+    .. attribute:: state
+
+         
 
 .. class:: MyCourses
            
@@ -280,7 +298,59 @@ Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
         guest states automatically to the value given by
         :attr:`EntryState.guest_state`.  Usage example in
         :doc:`tera/courses`.
-                   
+
+The state of a course
+=====================
+
+>>> rt.show(courses.CourseStates)
+======= ========== ========== ========= ========== ============= =================
+ value   name       text       Exposed   Editable   Invoiceable   Update calendar
+------- ---------- ---------- --------- ---------- ------------- -----------------
+ 10      draft      Draft      Yes       Yes        No            Yes
+ 20      active     Started    Yes       No         Yes           Yes
+ 30      inactive   Inactive   No        No         No            Yes
+ 40      closed     Closed     No        No         No            Yes
+======= ========== ========== ========= ========== ============= =================
+<BLANKLINE>
+
+
+.. class:: CourseStates
+           
+   .. attrib:: draft
+   .. attrib:: active
+   .. attrib:: inactive
+   .. attrib:: closed
+
+               
+Every course state has itself some additional attributes that are used
+to group them at certain places.
+   
+.. class:: CourseState
+
+   .. attrib:: is_editable
+   .. attrib:: is_exposed
+   .. attrib:: is_invoiceable
+   .. attrib:: auto_update_calendar
+
+For example you can retrieve a list of course states that are to be
+considered "exposed" (:attr:`Courses.show_exposed`):
+
+>>> courses.CourseStates.filter(is_exposed=True)
+[<CourseStates.draft:10>, <CourseStates.active:20>]
+
+>>> courses.CourseStates.filter(is_exposed=False)
+[<CourseStates.inactive:30>, <CourseStates.closed:40>]
+
+As an application developer you can redefine the items of
+:class:`CourseStates` in order to adapt it to the needs of your
+application.
+
+
+
+TODO: Write a tutorial about redefining choicelists.
+
+               
+               
 
 Actions
 =======

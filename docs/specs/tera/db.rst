@@ -252,7 +252,7 @@ behaviour. See also :doc:`/dev/delete`.
 - 91 models
 - 20 user roles
 - 4 user types
-- 343 views
+- 344 views
 - 96 dialog actions
 <BLANKLINE>
 

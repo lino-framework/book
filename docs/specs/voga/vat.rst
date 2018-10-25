@@ -15,7 +15,7 @@ VAT declaration in Lino Voga
 Test cases
 ==========
 
-The following covers a bug that was was fixed :blogref:`20170905`
+The following covers a bug that was was fixed :blogref:`20170905`.
 
 
 >>> rt.show(vat.IntracomSales)
