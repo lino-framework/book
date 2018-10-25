@@ -5,7 +5,7 @@ Testing sites
 ======================
 
 This document explains why and how to set up and use a separate
-"testing" site and managing releases on bigger Lino production sites
+"testing" site and manage releases on bigger Lino production sites
 with many users.  See also :doc:`/admin/upgrade` for one-step upgrades
 on smaller sites.  See :doc:`/dev/datamig` for technical background
 information.
@@ -16,7 +16,6 @@ information.
 
 What is a testing site?
 =======================
-
 
 A testing site is a copy of a production site as it would look using
 the newest version of Lino.  It is made available to end-users so they

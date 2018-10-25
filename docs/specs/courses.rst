@@ -1,25 +1,43 @@
 .. doctest docs/specs/courses.rst
 .. _specs.courses:
 
-====================
-Courses (Activities)
-====================
+======================================
+The  :mod:`lino_xl.lib.courses` plugin
+======================================
 
-This document describes the :mod:`lino_xl.lib.courses` plugin.
+The :mod:`courses <lino_xl.lib.courses>` plugin adds functionality for
+managing "courses".
 
-The internal name "courses" is for historic reasons. In :ref:`welfare`
-they are called "workshops", in :ref:`tera` they are called
-"dossiers", in :ref:`voga` they are called "activities".
+A **course** is when a "teacher" meets more or less regularily with a
+group of "pupils".  The pupils can be any model (e.g. a
+:class:`contacts.Person <lino_xl.lib.contacts.Person>`).  For each
+pupil it creates an **enrolment**.  It can automatically generate
+calendar entries for the meetings of a course according to recurrency
+rules.  It helps with managing schedule exceptions and manual date
+changes.  It can fill the guests or participants of the meetings, and
+the teacher can register their presence.  Courses can be grouped into
+*course lines* (series), series into *topics*.
 
-There was a time when I planned to rename "courses" to "activities".
-Some table names remind this time.
+
+.. currentmodule:: lino_xl.lib.courses
+
+.. contents::
+  :local:
+
+About this document
+===================
+
+The internal name "courses" is for historic reasons.  There was a time
+when I planned to rename "courses" to "activities".  Some table names
+remind this time.  In :ref:`welfare` they are called "workshops", in
+:ref:`tera` they are called "dossiers", in :ref:`voga` they are called
+"activities".
 
 See also
 :doc:`/specs/voga/courses`,
 :doc:`/specs/avanti/courses`.
 and
 :doc:`/specs/tera/courses`
-It is also being used in :ref:`welfare`.
 
 Examples in this document use the :mod:`lino_book.projects.min9` demo
 project.
@@ -28,24 +46,6 @@ project.
 >>> startup('lino_book.projects.min9.settings.doctests')
 >>> from lino.api.doctest import *
 
-
-
-A **course** is when a "teacher" meets more or less regularily with a
-group of "pupils".  Lino can automatically generate calendar entries
-for a course according to recurrency rules.
-
-The pupils of a course are stored as **enrolments**.
-
-There is a configurable list of **topics**.  Courses are grouped into
-**course lines**.  A course line is a series of courses having a same
-**topic**.
-
-
-.. contents::
-  :local:
-
-
-.. currentmodule:: lino_xl.lib.courses
 
 
 The ``Course`` model
@@ -60,17 +60,7 @@ The ``Course`` model
     *calendar entry generator*, i.e. it has functionality for managing
     these meetings.
 
-    The subject of a course is expressed by the :class:`Line`.
-
-    Notes about automatic calendar entry generation:
-
-    - When an automatically generated entry is to be moved to another
-      date, e.g. because it falls into a vacation period, then you
-      simply change it's date.  Lino will automatically adapt all
-      subsequent entries.
-
-    - Marking an automatically generated event as "Cancelled" will not
-      create a replacement event.
+    Database fields:
 
     .. attribute:: start_date
 
@@ -206,6 +196,18 @@ The ``Enrolment`` model
 .. class:: EnrolmentsByCourse
            
     Show all enrolments of a given course.
+
+
+Notes about automatic calendar entry generation:
+
+- When an automatically generated entry is to be moved to another
+  date, e.g. because it falls into a vacation period, then you
+  simply change its date.  Lino will automatically adapt all
+  subsequent entries.
+
+- Marking an automatically generated event as "Cancelled" will not
+  create a replacement event.
+    
 
 
 The ``Slot`` model
