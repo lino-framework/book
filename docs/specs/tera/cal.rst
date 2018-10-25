@@ -83,7 +83,7 @@ Guest workflow
 ------ --------- -------------- -------------- -------------
  10     invited   Nein           Eingeladen     ?
  40     present   Ja             Anwesend       ☑
- 50     missing   Ja             Missing        ☉
+ 50     missing   Ja             Fehlt          ☉
  60     excused   Nein           Entschuldigt   ⚕
 ====== ========= ============== ============== =============
 <BLANKLINE>
