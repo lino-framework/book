@@ -93,7 +93,7 @@ Guest workflow
  Action name   Verbose name   Help text      Target state   Required states
 ------------- -------------- -------------- -------------- -------------------------
  wf1           ☑              Anwesend       Anwesend       invited
- wf2           ☉              Missing        Missing        invited
+ wf2           ☉              Fehlt          Fehlt          invited
  wf3           ⚕              Entschuldigt   Entschuldigt   invited
  wf4           ?              Eingeladen     Eingeladen     missing present excused
 ============= ============== ============== ============== =========================
