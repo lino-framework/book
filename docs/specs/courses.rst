@@ -316,10 +316,10 @@ The state of a course
 
 .. class:: CourseStates
            
-   .. attrib:: draft
-   .. attrib:: active
-   .. attrib:: inactive
-   .. attrib:: closed
+   .. attribute:: draft
+   .. attribute:: active
+   .. attribute:: inactive
+   .. attribute:: closed
 
                
 Every course state has itself some additional attributes that are used
@@ -327,10 +327,10 @@ to group them at certain places.
    
 .. class:: CourseState
 
-   .. attrib:: is_editable
-   .. attrib:: is_exposed
-   .. attrib:: is_invoiceable
-   .. attrib:: auto_update_calendar
+   .. attribute:: is_editable
+   .. attribute:: is_exposed
+   .. attribute:: is_invoiceable
+   .. attribute:: auto_update_calendar
 
 For example you can retrieve a list of course states that are to be
 considered "exposed" (:attr:`Courses.show_exposed`):
