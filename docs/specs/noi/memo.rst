@@ -1,18 +1,14 @@
+.. doctest docs/specs/noi/memo.rst
 .. _noi.specs.memo:
 
 =========================
 Memo commands in Lino Noi
 =========================
 
-.. How to test only this document:
 
-    $ doctest docs/specs/noi/memo.rst
-    
-    doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
 
 The :attr:`description <lino_xl.lib.tickets.Ticket.description>` of a
 ticket and the text of a comment (:mod:`short_text
@@ -137,22 +133,22 @@ Usage examples:
 
 - ``[py lino]``
 - ``[py lino.utils.memo]``
-- ``[py lino_xl.lib.tickets.models.Project]``
-- ``[py lino_xl.lib.tickets.models.Project tickets.Project]``
+- ``[py lino_xl.lib.tickets.models.Ticket]``
+- ``[py lino_xl.lib.tickets.models.Ticket tickets.Ticket]``
   
 ..  
     >>> ses = rt.login()
     >>> print(ses.parse_memo("[py lino]."))
     <a href="https://github.com/lino-framework/lino/blob/master/lino/__init__.py" target="_blank">lino</a>.
     
-    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Project]."))
-    <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">lino_xl.lib.tickets.models.Project</a>.
+    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket]."))
+    <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">lino_xl.lib.tickets.models.Ticket</a>.
     
-    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Project.foo]."))
-    <a href="Error in Python code (type object 'Project' has no attribute 'foo')" target="_blank">lino_xl.lib.tickets.models.Project.foo</a>.
+    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket.foo]."))
+    <a href="Error in Python code (type object 'Ticket' has no attribute 'foo')" target="_blank">lino_xl.lib.tickets.models.Ticket.foo</a>.
     
-    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Project Project]."))
-    <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">Project</a>.
+    >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket Ticket]."))
+    <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">Ticket</a>.
 
     Non-breaking spaces are removed from command text:
     
@@ -168,29 +164,20 @@ Usage examples:
     - [company ...] : 
       Insert a reference to the specified database object.
     <BLANKLINE>
-      The first argument is mandatory and specifies the
-      primary key.
-    <BLANKLINE>
-      If there is more than one argument, all remaining text
-      is used as the text of the link.
+      The first argument is mandatory and specifies the primary key.
+      All remaining arguments are used as the text of the link.
     <BLANKLINE>
     - [person ...] : 
       Insert a reference to the specified database object.
     <BLANKLINE>
-      The first argument is mandatory and specifies the
-      primary key.
+      The first argument is mandatory and specifies the primary key.
+      All remaining arguments are used as the text of the link.
     <BLANKLINE>
-      If there is more than one argument, all remaining text
-      is used as the text of the link.
-    <BLANKLINE>
-    - [ticket ...] :
+    - [ticket ...] : 
       Insert a reference to the specified database object.
     <BLANKLINE>
-      The first argument is mandatory and specifies the
-      primary key.
-    <BLANKLINE>
-      If there is more than one argument, all remaining text
-      is used as the text of the link.
+      The first argument is mandatory and specifies the primary key.
+      All remaining arguments are used as the text of the link.
     <BLANKLINE>
 
 

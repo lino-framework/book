@@ -16,7 +16,6 @@ The default variant ("team")
     :glob:
 
     general
-    topics
     smtpd
     hosts
     as_pdf

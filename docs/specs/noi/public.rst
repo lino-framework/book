@@ -50,5 +50,5 @@ The home page:
 Home en de fr #13 Bar cannot foo State: Sleeping
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Jean Topic: Lino Core Linking to [ticket 1] and to
+(last update ...) Created ... by Rolf Rompen Linking to [ticket 1] and to
  [url http://luc.lino-framework.org/blog/2015/0923.html blog]. This is Lino Noi ... using ...

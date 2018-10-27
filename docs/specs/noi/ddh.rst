@@ -35,19 +35,19 @@ behaviour. See also :doc:`/dev/delete`.
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
 - contacts.Company :
-  - PROTECT : cal.Event.company, cal.Room.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Project.company, tickets.Site.company, working.ServiceReport.company
+  - PROTECT : cal.Event.company, cal.Room.company, contacts.Role.company, excerpts.Excerpt.company, system.SiteConfig.site_company, tickets.Site.company, working.ServiceReport.company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr
-  - PROTECT : lists.Member.partner, tickets.Ticket.end_user, topics.Interest.partner, working.ServiceReport.interesting_for
+  - PROTECT : lists.Member.partner, tickets.Ticket.end_user, working.ServiceReport.interesting_for
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Project.contact_person, tickets.Site.contact_person, working.ServiceReport.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Site.contact_person, working.ServiceReport.contact_person
 - contacts.RoleType :
-  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Project.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
+  - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, topics.Interest.owner_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -68,10 +68,6 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : lists.List.list_type
 - system.SiteConfig :
   - CASCADE : userstats.UserStat.master
-- tickets.Project :
-  - PROTECT : tickets.Project.parent, tickets.Ticket.project
-- tickets.ProjectType :
-  - PROTECT : tickets.Project.type
 - tickets.Site :
   - CASCADE : tickets.Subscription.site, working.SiteSummary.master
   - PROTECT : tickets.Ticket.site
@@ -79,15 +75,11 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : django_mailbox.Message.ticket, github.Commit.ticket, tickets.Link.child, tickets.Link.parent, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
-- topics.Topic :
-  - PROTECT : tickets.Ticket.topic, topics.Interest.topic
-- topics.TopicGroup :
-  - PROTECT : topics.Topic.topic_group
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
   - CASCADE : tickets.Subscription.user
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Project.assign_to, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>

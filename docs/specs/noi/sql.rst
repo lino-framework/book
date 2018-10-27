@@ -44,7 +44,7 @@ SQL that poor Django must do in order to return a single row.
  table             stmt_type   count
 ----------------- ----------- -------
  django_session    SELECT      1
- tickets_site      SELECT      7
+ tickets_site      SELECT      14
  tickets_ticket    SELECT      2
  users_user        SELECT      1
  working_session   SELECT      15
@@ -77,7 +77,6 @@ tickets.Ticket.modified
 tickets.Ticket.planned_time
 tickets.Ticket.priority
 tickets.Ticket.private
-tickets.Ticket.project
 tickets.Ticket.ref
 tickets.Ticket.reporter
 tickets.Ticket.site
@@ -85,7 +84,6 @@ tickets.Ticket.standby
 tickets.Ticket.state
 tickets.Ticket.summary
 tickets.Ticket.ticket_type
-tickets.Ticket.topic
 tickets.Ticket.upgrade_notes
 tickets.Ticket.user
 tickets.Ticket.waiting_for

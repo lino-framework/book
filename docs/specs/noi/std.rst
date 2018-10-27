@@ -19,9 +19,6 @@ Overview
 >>> dd.is_installed('products')
 False
 
->>> dd.plugins.topics
-lino_noi.lib.topics
-
 >>> dd.plugins.tickets
 lino_noi.lib.tickets (extends_models=['Ticket'])
 

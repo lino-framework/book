@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2017 Luc Saffre
+# Copyright 2016-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about the disable-delete handler and cascading deletes.
@@ -12,7 +12,7 @@ You can run only these tests by issuing::
 Or::
 
   $ go book
-  $ python setup.py test -s tests.ProjectsTests.test_ddh
+  $ python setup.py test tests.test_ddh
 
 """
 
@@ -32,7 +32,6 @@ class DDHTests(RemoteAuthTestCase):
     def test01(self):
         from lino.modlib.users.choicelists import UserTypes
         Ticket = rt.models.tickets.Ticket
-        Project = rt.models.tickets.Project
         User = rt.models.users.User
         Subscription = rt.models.tickets.Subscription
         Site = rt.models.tickets.Site

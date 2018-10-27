@@ -46,7 +46,7 @@ lino_noi.lib.tickets (extends_models=['Ticket'])
 ['lino_noi.lib.noi', 'lino_noi.lib.tickets', 'lino.modlib.summaries']
 
 >>> dd.plugins.tickets.needs_plugins
-['lino_xl.lib.excerpts', 'lino_xl.lib.topics', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']
+['lino_xl.lib.excerpts', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']
 
 
 
@@ -109,6 +109,7 @@ Users
 ---------- ------------------------ ----------
  jean       490 (Senior developer)   en
  luc        400 (Developer)          en
+ marc       100 (User)               en
  mathieu    200 (Consultant)         en
  robin      900 (Administrator)      en
  rolf       900 (Administrator)      de

@@ -19,6 +19,10 @@ from lino.modlib.users.utils import create_user
 
 from lino_xl.lib.working.choicelists import ReportingTypes
 
+from lino_xl.lib.tickets.roles import Reporter, TicketsStaff
+
+UserTypes = rt.models.users.UserTypes
+
 def vote(user, ticket, state, **kw):
     u = rt.models.users.User.objects.get(username=user)
     t = rt.models.tickets.Ticket.objects.get(pk=ticket)
@@ -41,11 +45,11 @@ def tickets_objects():
     # was previously in tickets
     User = rt.models.users.User
     Company = rt.models.contacts.Company
-    Topic = rt.models.topics.Topic
+    # Topic = rt.models.topics.Topic
     TT = rt.models.tickets.TicketType
     Ticket = rt.models.tickets.Ticket
     # Competence = rt.models.tickets.Competence
-    Interest = rt.models.topics.Interest
+    # Interest = rt.models.topics.Interest
     Milestone = dd.plugins.tickets.milestone_model
     # Milestone = rt.models.deploy.Milestone
     # Project = rt.models.tickets.Project
@@ -60,17 +64,23 @@ def tickets_objects():
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
-    cons = rt.models.users.UserTypes.consultant
-    dev = rt.models.users.UserTypes.developer
-    yield create_user("marc")
+    cons = UserTypes.consultant
+    dev = UserTypes.developer
+    end_user = UserTypes.user
+    
+    yield create_user("marc", UserTypes.user)
     yield create_user("mathieu", cons)
     yield create_user("luc", dev)
-    yield create_user("jean", rt.models.users.UserTypes.senior)
+    yield create_user("jean", UserTypes.senior)
 
-    USERS = Cycler(User.objects.all())
+    # USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
         username__in='mathieu luc jean'.split()))
-    END_USERS = Cycler(User.objects.filter(user_type=''))
+    END_USERS = Cycler(User.objects.filter(
+        user_type=rt.models.users.UserTypes.user))
+    reporter_types = [t for t in UserTypes.get_list_items()
+                      if t.has_required_roles([Reporter])]
+    REPORTERS = Cycler(User.objects.filter(user_type__in=reporter_types))
 
     yield named(TT, _("Bugfix"))
     yield named(TT, _("Enhancement"))
@@ -81,13 +91,13 @@ def tickets_objects():
 
     TYPES = Cycler(TT.objects.all())
 
-    yield Topic(name="Lino Core", ref="linõ")
-    yield Topic(name="Lino Welfare", ref="welfäre")
-    yield Topic(name="Lino Cosi", ref="così")
-    yield Topic(name="Lino Voga", ref="faggio")
+    # yield Topic(name="Lino Core", ref="linõ")
+    # yield Topic(name="Lino Welfare", ref="welfäre")
+    # yield Topic(name="Lino Cosi", ref="così")
+    # yield Topic(name="Lino Voga", ref="faggio")
     # ref differs from name
 
-    TOPICS = Cycler(Topic.objects.all())
+    # TOPICS = Cycler(Topic.objects.all())
     RTYPES = Cycler(ReportingTypes.objects())
 
     for name in "welket welsch pypi".split():
@@ -100,9 +110,9 @@ def tickets_objects():
     
     yield Company(name="Saffre-Rumma")
     
-    for u in Company.objects.exclude(name="pypi"):
-        for i in range(3):
-            yield Interest(owner=u, topic=TOPICS.pop())
+    # for u in Company.objects.exclude(name="pypi"):
+    #     for i in range(3):
+    #         yield Interest(owner=u, topic=TOPICS.pop())
 
     # prj1 = Project(
     #     name="Framewörk", ref="linö", private=False,
@@ -170,20 +180,20 @@ def tickets_objects():
     
     def ticket(summary, **kwargs):
         num[0] += 1
-        u = WORKERS.pop()
+        u = REPORTERS.pop()
         kwargs.update(
             ticket_type=TYPES.pop(), summary=summary,
             user=u,
-            state=TSTATES.pop(),
-            topic=TOPICS.pop())
+            state=TSTATES.pop())
         if num[0] % 2:
             kwargs.update(site=SITES.pop())
         if num[0] % 4:
             kwargs.update(private=True)
         else:
             kwargs.update(private=False)
-        if num[0] % 5:
-            kwargs.update(end_user=END_USERS.pop())
+        if u.user_type.has_required_roles([Worker]):
+            if num[0] % 5:
+                kwargs.update(end_user=END_USERS.pop())
         # if False:
         #     kwargs.update(project=PROJECTS.pop())
         obj = Ticket(**kwargs)
@@ -280,10 +290,10 @@ def tickets_objects():
     # yield Interest(owner=e, topic=TOPICS.pop())
     # yield Interest(owner=e, topic=TOPICS.pop())
 
-    for U in User.objects.all():
-        if U.user_type >= rt.models.users.UserTypes.senior:
-            for s in Site.objects.all():
-                yield Subscription(site=s, user=U)
+    for u in User.objects.all():
+        if u.user_type.has_required_roles([Reporter]):
+            if not u.user_type.has_required_roles([TicketsStaff]):
+                yield Subscription(site=SITES.pop(), user=u, primary=True)
 
 def working_objects():
     # was previously in working

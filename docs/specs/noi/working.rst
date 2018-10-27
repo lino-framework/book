@@ -188,12 +188,14 @@ Note that there are sessions without a duration. That's because
 
 >>> rt.show(working.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
-==== ========================================================== ======== ======= ========== ======= ======
- ID   Description                                                Site     State   Regular    Extra   Free
----- ---------------------------------------------------------- -------- ------- ---------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean*   welket   New     0:03
-                                                                                  **0:03**
-==== ========================================================== ======== ======= ========== ======= ======
+==== =========================================================================================== ======== ========= =========== ======= ======
+ ID   Description                                                                                 Site     State     Regular     Extra   Free
+---- ------------------------------------------------------------------------------------------- -------- --------- ----------- ------- ------
+ 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__  by *Jean* for *Marc*                         welket   New       0:03
+ 2    `#2 (☎ Bar is not always baz) <Detail>`__  by *Luc* for *Marc*, assigned to *Jean*          welket   Talk      9:40
+ 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__  by *Mathieu* for *Marc*, assigned to *Mathieu*   welket   Started   1:24
+                                                                                                                     **11:07**
+==== =========================================================================================== ======== ========= =========== ======= ======
 <BLANKLINE>
 
 
