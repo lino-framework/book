@@ -310,9 +310,9 @@ System admins can see the full names:
  ID               Date of request   Client                               Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ---------------- ----------------- ------------------------------------ -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `9 <Detail>`__   07/02/2017        `ABDI Aátifá (136) <Detail>`__       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `7 <Detail>`__   09/02/2017        `ABDELNOUR Aámir (125) <Detail>`__   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
+ `7 <Detail>`__   09/02/2017        `ABDELNOUR Aámir (125) <Detail>`__   Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        `ABDALLAH Aáish (127) <Detail>`__    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        `ABBASI Aáishá (118) <Detail>`__     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        `ABBASI Aáishá (118) <Detail>`__     Female                 No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        `ABAD Aábdeen (114) <Detail>`__      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
                                                                                                                                               **50,00**
 ================ ================= ==================================== ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
@@ -328,9 +328,9 @@ click on a name to see any detail.
  ID               Date of request   Client                    Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ---------------- ----------------- ------------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
+ `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
                                                                                                                                    **50,00**
 ================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
@@ -343,9 +343,9 @@ click on a name to see any detail.
  ID               Date of request   Client                    Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ---------------- ----------------- ------------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `9 <Detail>`__   07/02/2017        *ABDI Aátifá (136)*       Female                 No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                                **Confirmed** → [Cancelled] [Requested] [Trying]
+ `7 <Detail>`__   09/02/2017        *ABDELNOUR Aámir (125)*   Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `5 <Detail>`__   11/02/2017        *ABDALLAH Aáish (127)*    Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
- `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 50,00          **Confirmed** → [Cancelled] [Requested] [Trying]
+ `3 <Detail>`__   13/02/2017        *ABBASI Aáishá (118)*     Female                 No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `1 <Detail>`__   15/02/2017        *ABAD Aábdeen (114)*      Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
                                                                                                                                    **50,00**
 ================ ================= ========================= ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
@@ -360,9 +360,9 @@ But auditors see only the pupil's number and place:
  ID               Date of request   Client               Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ---------------- ----------------- -------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- ---------------
  `9 <Detail>`__   07/02/2017        *(136) from Eupen*   Female                 No          No       No    No                                **Requested**
- `7 <Detail>`__   09/02/2017        *(125) from Eupen*   Male                   No          No       No    No                                **Confirmed**
+ `7 <Detail>`__   09/02/2017        *(125) from Eupen*   Male                   No          No       No    No                 25,00          **Confirmed**
  `5 <Detail>`__   11/02/2017        *(127) from Eupen*   Male                   No          No       No    No                                **Requested**
- `3 <Detail>`__   13/02/2017        *(118) from Eupen*   Female                 No          No       No    No                 50,00          **Confirmed**
+ `3 <Detail>`__   13/02/2017        *(118) from Eupen*   Female                 No          No       No    No                 25,00          **Confirmed**
  `1 <Detail>`__   15/02/2017        *(114) from Eupen*   Male                   No          No       No    No                                **Requested**
                                                                                                                               **50,00**
 ================ ================= ==================== ======== ============= =========== ======== ===== ========= ======== ============== ===============
