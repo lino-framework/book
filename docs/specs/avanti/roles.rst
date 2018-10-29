@@ -2,7 +2,7 @@
 .. _avanti.specs.roles:
 
 =========================
-User roles in Lino Avanti
+User types in Lino Avanti
 =========================
 
 .. doctest init:
@@ -49,8 +49,11 @@ Site administrator
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Reminders
 - Site : About
 
+  
+
 Coordinator
 ===========
+
 >>> rt.login('martina').user.user_type
 users.UserTypes.coordinator:400
 
@@ -59,6 +62,26 @@ users.UserTypes.coordinator:400
 - Office : My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
+  
+
+Secretary
+=========
+
+>>> rt.login('sandra').user.user_type
+users.UserTypes.secretary:410
+
+>>> rt.login('sandra').show_menu()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+- Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
+- Calendar : Calendar, My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Office : My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Activities : My Activities, Activities, -, Activity lines, Course planning
+- Explorer :
+  - Contacts : Partners
+  - Activities : Reminders
+- Site : About
+
+
 
 Social worker
 =============
@@ -296,8 +319,8 @@ Each window is **viewable** for a given set of user types.
 <BLANKLINE>
 
 
-Names of participants
-=====================
+Not everybody can see the names of participants
+===============================================
 
 The names of the participants are confidential data in :ref:`avanti`.
 
