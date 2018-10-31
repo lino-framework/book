@@ -1,17 +1,29 @@
 .. doctest docs/specs/voga/sales.rst
 .. _voga.specs.sales:
 
-=============================
-Sales management in Lino Voga
-=============================
+=====================================
+The :mod:`lino_voga.lib.sales` plugin
+=====================================
 
-.. doctest init:
+The :mod:`lino_voga.lib.sales` plugin extends :mod:`lino_xl.lib.sales`
+for usage in :ref:`voga`.
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
-    
 See also :doc:`invoicing`.
+
+
+About this document
+===================
+
+Code examples in this document use the :mod:`lino_book.projects.roger`
+demo project:
+
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
+    
+>>> dd.plugins.sales
+lino_voga.lib.sales (extends_models=['InvoiceItem'])
+
 
 Here are all our sales invoices:
 

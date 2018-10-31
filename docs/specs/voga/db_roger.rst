@@ -94,7 +94,7 @@ The database structure
  sales.InvoiceItem          sales.InvoiceItems             15        114
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 25        87
- sepa.Account               sepa.Accounts                  6         38
+ sepa.Account               sepa.Accounts                  6         25
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                9         0

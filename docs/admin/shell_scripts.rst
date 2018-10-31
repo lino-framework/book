@@ -19,7 +19,7 @@ your system environment.
     
     Installation notes:
     
-    When you have tested this sript, you can add a file
+    When you have tested this script, you can add a file
     :file:`/etc/cron.d/lino_backup` to run it every day at **6h33**::
     
         # Backup Lino database (Python dump) once a day
@@ -33,4 +33,20 @@ your system environment.
     Update the source code repositories used by this project.
 
     Usage: see :ref:`admin.upgrade`.
+
+
+.. xfile:: import_sepa.sh
+
+    Import bank statements to Lino (for applications that use
+    :mod:`lino_cosi.lib.b2c`).
+    
+    Installation notes:
+    
+    When you have tested this script, you can add a file
+    :file:`/etc/cron.d/import_sepa` to run it e.g. every 30 minutes on
+    workdays during office time::
+    
+        # m   h    dom mon dow  user  command
+        15,45 7-18 *   *   1-5  www-data  /path/to/mysite/import_sepa.sh
+
 

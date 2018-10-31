@@ -6,8 +6,8 @@ Administrator's Guide
 
 This part of the documentation is for **system administrators** who
 set up or maintain a server which hosts one or several Lino production
-sites. Non-programmers will prefer to read :doc:`/about/index`,
-developers :doc:`/dev/index`
+sites.  Non-programmers will prefer to read :doc:`/about/index`,
+developers :doc:`/dev/index`.
 
 The approaches described in this document are not mandatory. Hosting a
 Lino site is technically the same as hosting a `Django
@@ -33,6 +33,7 @@ Installation
     oood
     notify
     security
+    cron
 
 Maintenance
 -----------

@@ -22,8 +22,8 @@ moves it to an **archive directory** before creating a new file.
 
 If that *archive directory* contains any **snapshots older than 60
 days**, the script removes them.  This is important because
-:xfile:`make_snapshot.sh` usually also runs as a daily cron job.  If
-we didn't take care of removing old snapshots, our server might run
-out of disk space some time in a far future when we long have
-forgotten that your daily job is adding a new file every day.
+:xfile:`make_snapshot.sh` usually also runs as a daily :doc:`cron job
+<cron>`.  If we didn't take care of removing old snapshots, our server
+might run out of disk space some time in a far future when we long
+have forgotten that your daily job is adding a new file every day.
 

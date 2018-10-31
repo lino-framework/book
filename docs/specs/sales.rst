@@ -13,10 +13,10 @@ rows directly point to ledger accounts and don't need any products.
 Snippets in this document are tested on the
 :mod:`lino_book.projects.pierre` demo project.
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.pierre.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> ses = rt.login('robin')
+>>> from lino import startup
+>>> startup('lino_book.projects.pierre.settings.doctests')
+>>> from lino.api.doctest import *
+>>> ses = rt.login('robin')
 
 
 
@@ -27,7 +27,7 @@ Lino implements product invoices in the :mod:`lino_xl.lib.sales`
 plugin.  The internal codename "sales" is for historical reasons, you
 might generate product invoices for other trade types as well.
 
-The plugin --of course-- needs and automatically installs the
+The plugin needs and automatically installs the
 :mod:`lino_xl.lib.products` plugin.
 
 It also needs and installs :mod:`lino_xl.lib.vat` (and not
@@ -49,14 +49,18 @@ which adds automatic generation of such product invoices.
 Product invoices
 ================
 
+A **product invoice** is a legal document which describes that
+something (the invoice items) has been sold to a given business
+partner (called the customer).  The partner can be either a private
+person or an organization.
+
 .. class:: VatProductInvoice
 
-    A product invoice is a legal document which describes that
-    something (the invoice items) has been sold to a given business
-    partner (called the customer).  The partner can be either a
-    private person or an organization.
+    The Django model representing a *product invoice*.
 
     Inherits from :class:`lino_xl.lib.ledger.Voucher`.
+
+    Virtual fields:
 
     .. attribute:: balance_before
 
@@ -68,6 +72,8 @@ Product invoices
 
        The balance of all movements matching this invoice.
 
+    Methods:
+
     .. method:: get_print_items(self, ar):
                 
         For usage in an appy template::
@@ -78,11 +84,12 @@ Product invoices
            
 .. class:: InvoiceItem
            
-    An item of a sales invoice.
+    The Django model representing an *item* of a *product invoice*.
 
     
-    
 .. class:: InvoiceDetail
+
+    The Lino layout representing the detail view of a *product invoice*.
            
 .. class:: Invoices
            
