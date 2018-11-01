@@ -1,32 +1,46 @@
 .. _specs:
 .. _book.specs:
 
-=====
-Specs
-=====
+==============================
+Lino Functional Specifications
+==============================
 
-This section contains "functional specifications".
-
-A **functional specification** is targeted at application developers,
-consultants and trainers and ideally explains all technical and
-functional aspects about a given plugin or topic.  If some part is
-covered elsewhere, it should refer to these other documents.  It
-should contain testable code snippets.
+This section contains :doc:`functional specifications </dev/specs>`
+for all Lino applications maintained by the Lino team.
 
 
 Topic overviews
 ===============
- 
  
 .. toctree::
    :maxdepth: 1
 
    accounting
    office
+
+Application-specific specs
+==========================
+    
+.. toctree::
+   :maxdepth: 1
+  
+   
+   cosi/index
+   noi/index
+   avanti/index
+   tera/index
+   polly
+   care
+   projects/min
+   voga/index
+   welfare/index
+   
+   
+   
    
 
-Plugin specs
-============
+General plugin specs
+====================
 
 .. toctree::
    :maxdepth: 1
@@ -63,23 +77,6 @@ Plugin specs
    dashboard
 
 
-Application-specific specs
-==========================
-    
-.. toctree::
-   :maxdepth: 1
-  
-   
-   cosi/index
-   noi/index
-   avanti/index
-   tera/index
-   polly
-   care
-   projects/min
-   voga/index
-   
-   
 Technical stuff
 ===============
     

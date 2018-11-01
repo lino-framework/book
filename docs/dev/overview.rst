@@ -39,6 +39,8 @@ Python packages covered by the Lino Book
     - :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
     - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration
       parcours
+    - :mod:`lino_welfare` (:ref:`welfare`) :
+      A big application used by Belgian social centres.
 
 One day you might want to consult the generated :doc:`API
 </api/index>` of these packages.
@@ -148,13 +150,6 @@ Related projects
 
 There are also Lino applications that are *not* covered by the book.
 
-
-.. _welfare:
-
-Lino Welfare
-------------
-
-A rather big application used by Belgian social centres.
 
 .. _presto:
 

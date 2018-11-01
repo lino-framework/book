@@ -54,6 +54,7 @@ help_texts_builder_targets = {
     'lino_cosi.': 'lino_cosi.lib.cosi',
     'lino_care.': 'lino_care.lib.care',
     'lino_voga.': 'lino_voga.lib.voga',
+    'lino_welfare.': 'lino_welfare.modlib.welfare',
 }
 
 if False:

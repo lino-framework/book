@@ -21,4 +21,4 @@ the Lino internals.
    doctests
    docstrings
    help_texts
-
+   specs

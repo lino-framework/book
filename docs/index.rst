@@ -27,6 +27,7 @@ Sitemap
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
    /community/index
+   /specs/index
    documentation
    blog
    releases/index

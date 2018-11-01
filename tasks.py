@@ -18,8 +18,11 @@ ns = setup_from_tasks(
         'docs/api/lino_care.*',
         'docs/api/lino_voga.*',
         'docs/api/lino_amici.*',
+        'docs/api/lino_welfare.*',
         'docs/api/lino_book.*'],
     demo_projects=[
+        'lino_book/projects/gerd',
+        'lino_book/projects/mathieu',
         'lino_book/projects/roger',
         'lino_book/projects/edmund',
         'lino_book/projects/combo',

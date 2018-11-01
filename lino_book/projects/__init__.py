@@ -21,6 +21,8 @@ real world.
    liina
    lydia
    adg
+   gerd
+   mathieu
 
 Examples used by a tutorial:
 

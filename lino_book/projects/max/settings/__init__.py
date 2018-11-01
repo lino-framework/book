@@ -75,6 +75,24 @@ class Site(Site):
 
         yield 'lino.modlib.tinymce'
         yield 'lino.modlib.export_excel'
+        
+        # yield 'lino_welfare.modlib.debts'
+        # yield 'lino_welfare.modlib.badges'
+        # yield 'lino_welfare.modlib.welfare'
+        # yield 'lino_welfare.modlib.pcsw'
+        # yield 'lino_cosi.lib.b2c'
+        # yield 'lino_welfare.modlib.integ'
+        # yield 'lino_welfare.modlib.isip'
+        # yield 'lino_welfare.modlib.jobs'
+        # yield 'lino_welfare.modlib.art61'
+        # yield 'lino_welfare.modlib.immersion'
+        # yield 'lino_welfare.modlib.active_job_search'
+        # yield 'lino_welfare.modlib.xcourses'
+        # yield 'lino_welfare.modlib.newcomers'
+        # yield 'lino_welfare.modlib.cbss'  # must come after pcsw
+        # yield 'lino_welfare.modlib.aids'
+        # yield 'lino_welfare.modlib.esf'
+        # yield 'lino_welfare.modlib.dupable_clients'
 
     def setup_plugins(self):
         super(Site, self).setup_plugins()

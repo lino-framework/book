@@ -54,14 +54,48 @@ Setting up a testing site
 Each time the site owner asked for an upgrade, you start by setting up
 a new testing site.
 
-- Copy the current production project directory to a new directory.
+- Copy the current production project directory to a new directory::
 
-- Remove the :xfile:`env` in the copy and create a new virtualenv.  
-  
-- Create a file :xfile:`restore2testing.py` in the production snapshot
+    $ df -h
+    $ cp -a afoo bfoo
+
+- In the afoo directory run::
+
+    $ python manage.py dump2py snapshot2testing
+
+  Create a file :xfile:`restore2testing.py` in the production snapshot
   as a copy of the :xfile:`restore.py` file.
   
+- In the bfoo directory:    
+
+- Let the :xfile:`log` directory point to a different directory::
+
+      $ rm log
+      $ mkdir /var/log/lino/bfoo
+      $ ln -s /var/log/lino/bfoo log    
+
+- Have a deep look at all the following files in the testing project
+  and replace afoo with bfoo where needed:
+  
+  :xfile:`settings.py`,
+  :xfile:`manage.py`
+  :xfile:`wsgi.py`
+  :xfile:`pull.sh`
+  :xfile:`make_snapshot.sh`
+  :xfile:`initdb_from_prod.sh`
+  etc
+
+- Remove the :xfile:`env` directory in the copy and create a new
+  one with virtualenv.  Activate the new env.
+  Run pull.sh to update repositories.
+  Install Lino from repositories.
+  
+- Create the new database in mysql or pg
+
 - Run :xfile:`pull.sh`
+
+- Run collectstatic
+  
 - Run :xfile:`initdb_from_prod.sh` and adapt
   :xfile:`restore2testing.py` where needed.
 - Add a vhost to make the testing site accessible to end-users

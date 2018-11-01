@@ -71,10 +71,9 @@ Databases
 For each new project you must create a database and grant permissions
 to ``django``::
     
-    $ mysql -u root -p 
+    $ mysql -u root -p
     mysql> create database mysite charset 'utf8';
     mysql> grant all on mysite.* to django with grant option;
-    mysql> grant all on test_mysite.* to django with grant option;
     mysql> quit;
 
 

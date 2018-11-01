@@ -11,7 +11,7 @@ database object *of any model*.
 
 This section provides a topic overview. See also
 :doc:`/specs/gfktest` and
-:mod:`test_broken_gfks <lino_welfare.projects.eupen.tests.test_broken_gfks>`).
+:mod:`test_broken_gfks <lino_book.projects.gerd.tests.test_broken_gfks>`).
 
 Lino's :meth:`disable_delete <lino.core.model.Model.disable_delete>`
 method tests for related objects, which automatically includes also

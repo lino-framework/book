@@ -10,4 +10,3 @@ things that are done with Lino.
               
    overview
    xl
-   /specs/index
