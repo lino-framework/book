@@ -1,15 +1,18 @@
-.. doctest docs/specs/uploads.rst
+.. doctest docs/specs/welfare/uploads.rst
 .. _welfare.specs.uploads:
 
 =============
 Uploads
 =============
 
-.. doctest init:
-    >>> from __future__ import unicode_literals
-    >>> import lino
-    >>> lino.startup('lino_book.projects.gerd.settings.doctests')
-    >>> from lino.api.doctest import *
+.. contents::
+   :depth: 2
+
+.. include:: /include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.gerd.settings.doctests')
+>>> from lino.api.doctest import *
 
 A technical tour into the :mod:`lino_welfare.modlib.uploads` plugin.
 
@@ -18,9 +21,6 @@ into a system which helps social agents to manage certain documents
 about their clients. For example, integration agents want to get a
 reminder when the driving license of one of their client is going to
 expire.
-
-.. contents::
-   :depth: 2
 
     
 .. A few things that should pass, otherwise don't expect the remaining
@@ -208,8 +208,8 @@ The first button opens a detail window on the *last* uploaded filed:
 
 The second item is just the comma which separates the two buttons:
 
->>> div.contents[1] #doctest: +ELLIPSIS
-u', '
+>>> sixprint(div.contents[1]) #doctest: +IGNORE_EXCEPTION_DETAIL
+', '
 
 The second button opens the list of uploads:
 
@@ -246,12 +246,18 @@ It has 3 keys:
 >>> d.base_params['mk']
 121
 
->>> print(json.dumps(d.param_values))  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL
-{"userHidden": null, "upload_typeHidden": null, "end_date": null,
-"observed_eventHidden": "20", "observed_event": "Est active",
-"coached_by": null, "upload_type": null, "coached_byHidden": null,
-"start_date": null, "user": null}
-
+>>> pprint(rmu(d.param_values))
+... #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL
+{'coached_by': None,
+ 'coached_byHidden': None,
+ 'end_date': None,
+ 'observed_event': 'Est active',
+ 'observed_eventHidden': '20',
+ 'start_date': None,
+ 'upload_type': None,
+ 'upload_typeHidden': None,
+ 'user': None,
+ 'userHidden': None}
 
 
 Uploads by client
@@ -347,7 +353,8 @@ Einfügen in Uploads von BRECHT Bernd (177) (Ist aktiv)
 ['company', 'companyHidden', 'contact_person', 'contact_personHidden', 'contact_role', 'contact_roleHidden', 'description', 'disable_editing', 'disabled_fields', 'end_date', 'file', 'id', 'needed', 'owner', 'project', 'projectHidden', 'remark', 'start_date', 'type', 'typeHidden', 'user', 'userHidden']
 
 >>> data_record_data = rmu(d.data_record['data'])
->>> pprint(data_record_data)
+>>> pprint(data_record_data, width=200)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 {'company': None,
  'companyHidden': None,
  'contact_person': None,
