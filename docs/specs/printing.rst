@@ -1,10 +1,9 @@
+.. doctest docs/specs/printing.rst
 .. _specs.printing:
 
 ==================
 Printing documents
 ==================
-
-.. $ doctest docs/specs/printing.rst
 
 ..  Initialize doctest:
 
