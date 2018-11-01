@@ -30,6 +30,5 @@ class Site(Site):
 
     def setup_plugins(self):
         super(Site, self).setup_plugins()
-        self.plugins.extjs.configure(enter_submits_form=True)
-
-            
+        if self.is_installed('extjs'):
+            self.plugins.extjs.configure(enter_submits_form=False)
