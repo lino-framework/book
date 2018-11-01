@@ -345,7 +345,7 @@ class TestCase(TestCase):
 +-----------+-------------+----------------------------+--------------------------------------------------------+--------------+-----------+
 | User      | Change Type | Object                     | Changes                                                | Object type  | object id |
 +===========+=============+============================+========================================================+==============+===========+
-| watch_tim | Update      | *S.A. Air Liquide Belgium* | - activity_id : None --> 19                            | Organisation | 5         |
+| watch_tim | Update      | *S.A. Air Liquide Belgium* | - activity_id : None --> 19                            | Organization | 5         |
 |           |             |                            | - bank_account1 : None --> 'GKCCBEBB:BE57551373330235' |              |           |
 |           |             |                            | - bank_account2 : None --> 'BBRUBEBB:BE12310110444892' |              |           |
 |           |             |                            | - city_id : None --> 3                                 |              |           |
