@@ -1,18 +1,19 @@
 .. _lino.dev:
 
-=================
-Developer's Guide
-=================
+===================
+Contributor's Guide
+===================
 
 This part of the Lino Book explains Lino to developers who want to get
-more out of Lino.  You should have read the :doc:`/user/index` before
-reading here.
+more out of Lino and potentially contribute to the framework.  You
+should have read the :doc:`/user/index` before reading here.
 
 
 .. toctree::
    :maxdepth: 2
               
    getstarted
+   /dev/framework
    team
    writedocs
    deploy

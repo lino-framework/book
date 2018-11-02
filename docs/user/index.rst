@@ -1,6 +1,6 @@
-============
-User's Guide
-============
+==================
+Developers's Guide
+==================
 
 This part of the Lino Book explains how to use Lino on your machine in
 order to write applications.
@@ -10,7 +10,6 @@ order to write applications.
 
     getstarted
     /dev/diving
-    /dev/framework
     /dev/acquaintained
     
 

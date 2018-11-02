@@ -4,69 +4,6 @@
 Components of the Lino framework
 ================================
 
-
-Python packages covered by the Lino Book
-========================================
-
-- The core of the framework is in a package called :mod:`lino` which
-  includes the standard plugin library (:mod:`lino.modlib`) for adding
-  basic features like system users, a notification framework,
-  comments, printing, ...
-  
-- :mod:`lino_xl` is an "extended" plugin collection used by many Lino
-  applications: contacts, countries, calendar, accounting, groupware,
-  etc. \ .  See :doc:`xl`.
-       
-- The :mod:`lino_book` package contains the source code of what you
-  are reading right now, a collection of demo projects and examples
-  (:mod:`lino_book.projects`), and the big test suite for the whole
-  Lino framework.  The book package is not published on PyPI because
-  that would make no sense.  You use it by cloning the repository from
-  GitHub.
-  
-- Lino applications covered by the Lino Book:
-  
-    - :mod:`lino_noi` (:ref:`noi`) : the application we use for
-      managing our collaboration.  It's about tickets, projects, time
-      tracking, votes.
-    - :mod:`lino_amici` (:ref:`amici`) : contacts, groups, personal
-      information manager
-    - :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
-      
-    - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
-    - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
-    - :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
-    - :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
-    - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration
-      parcours
-    - :mod:`lino_welfare` (:ref:`welfare`) :
-      A big application used by Belgian social centres.
-
-One day you might want to consult the generated :doc:`API
-</api/index>` of these packages.
-
-
-Python packages maintained by the same team
-===========================================
-
-Some projects which might be useful to non-Lino Python projects are
-not covered in the Lino Book because they are actually not at all
-related to Lino, except that Lino depends on them and that they are
-maintained by the Lino team:
-
-- :mod:`atelier` is a collection of utilities (subpackages
-  :mod:`projects <atelier.projects>`, :mod:`invlib <atelier.invlib>` and
-  :mod:`rstgen <atelier.rstgen>`)
-
-- :mod:`etgen` uses ElementTree for generating HTML or XML.
-
-- :mod:`commondata` is an experimental project for storing and
-  managing common data as Python code without any user interface.
-
-  
-Package dependencies
-====================
-
 .. graphviz::
 
    digraph foo {
@@ -129,6 +66,7 @@ Package dependencies
     lino_book -> lino_noi; 
     lino_book -> lino_cosi; 
     lino_book -> lino_voga; 
+    lino_book -> lino_welfare; 
     lino_book -> lino_tera; 
     lino_book -> lino_care; 
     lino_book -> lino_avanti; 
@@ -144,6 +82,67 @@ Package dependencies
    }
 
 
+
+Python packages covered by the Lino Book
+========================================
+
+- The core of the framework is in a package called :mod:`lino` which
+  includes the standard plugin library (:mod:`lino.modlib`) for adding
+  basic features like system users, a notification framework,
+  comments, printing, ...
+  
+- :mod:`lino_xl` is an "extended" plugin collection used by many Lino
+  applications: contacts, countries, calendar, accounting, groupware,
+  etc. \ .  See :doc:`xl`.
+       
+- The :mod:`lino_book` package contains the source code of what you
+  are reading right now, a collection of demo projects and examples
+  (:mod:`lino_book.projects`), and the big test suite for the whole
+  Lino framework.  The book package is not published on PyPI because
+  that would make no sense.  You use it by cloning the repository from
+  GitHub.
+  
+- Lino applications covered by the Lino Book:
+  
+    - :mod:`lino_noi` (:ref:`noi`) : the application we use for
+      managing our collaboration.  It's about tickets, projects, time
+      tracking, votes.
+    - :mod:`lino_amici` (:ref:`amici`) : contacts, groups, personal
+      information manager
+    - :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
+      
+    - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
+    - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
+    - :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
+    - :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
+    - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration
+      parcours
+    - :mod:`lino_welfare` (:ref:`welfare`) :
+      A big application used by Belgian social centres.
+
+One day you might want to consult the generated :doc:`API
+</api/index>` of these packages.
+
+
+
+Python packages maintained by the same team
+===========================================
+
+Some projects which might be useful to non-Lino Python projects are
+not covered in the Lino Book because they are actually not at all
+related to Lino, except that Lino depends on them and that they are
+maintained by the Lino team:
+
+- :mod:`atelier` is a collection of utilities (subpackages
+  :mod:`projects <atelier.projects>`, :mod:`invlib <atelier.invlib>` and
+  :mod:`rstgen <atelier.rstgen>`)
+
+- :mod:`etgen` uses ElementTree for generating HTML or XML.
+
+- :mod:`commondata` is an experimental project for storing and
+  managing common data as Python code without any user interface.
+
+  
    
 Related projects
 ================

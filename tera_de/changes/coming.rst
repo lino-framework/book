@@ -162,7 +162,10 @@ testing
 
 - Im Feld *Therapieart* steht die Auswahl nach einem Import auf EN und
   muss manuell nach DE übersetzt werden.
+
   
 TODO
 ====
 
+- create new users vm, nm, fk, mmf, kb
+  

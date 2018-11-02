@@ -25,7 +25,7 @@ SETUP_INFO = dict(
         'lino_cosi',
         'lino_noi',
         'lino_voga',
-        # 'lino_welfare',
+        'lino_welfare',
         'requests_mock',
         'lino_care',
         'lino_vilma',
