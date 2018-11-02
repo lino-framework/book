@@ -59,34 +59,35 @@ worry about how to generate a documentation page for them):
 
 >>> from lino_welfare.modlib.cbss.tx25 import HANDLERS
 >>> tpl = u"{0} ({1}) : {2} "
->>> for name, v in HANDLERS.items():
+>>> for name, v in sorted(HANDLERS.items(), key=lambda item: (item[1], item[0])):
 ...     label, subname, itname = v
 ...     print(tpl.format(name, itname, label))
-RefugeeTypes (IT205) : Flüchtlingsart 
-PostalAddressAbroad (IT023) : Postadresse im Ausland 
-DocumentTypes (IT211) : Dokumentarten 
-ParentalAuthorities (IT111) : Parental authorities 
-TemporaryAbsences (IT026) : Zeitweilige Abwesenheiten 
+AddressDeclarationAbroad (IT018) : Adressdeklaration im Ausland 
+WorkPermits (IT198) : Arbeitsgenehmigungen 
 BurialModes (IT152) : Bestattungsarten 
+DocumentTypes (IT211) : Dokumentarten 
+RefugeeTypes (IT205) : Flüchtlingsart 
+StatusOfRefugee (IT206) : Flüchtlingsstatus 
+ChoosenResidences (IT212) : Gewählte Wohnsitze 
+Guardians (IT113) : Guardians 
+NameModifications (IT013) : Namesänderungen 
+PublicSecurityNumbers (IT200) : Nummer Öffentliche Sicherheit 
+OrganDonations (IT192) : Organspenden 
+ParentalAuthorities (IT111) : Parental authorities 
+RetirementCertificates (IT073) : Pensionszertifikate 
+PostalAddressAbroad (IT023) : Postadresse im Ausland 
+PseudoNationalNumbers (IT208) : Pseudo-Nationalnummern 
+RegistrationRegisters (IT210) : Registereintragung 
 Passports (IT199) : Reisepässe 
 ReturnPermissions (IT008) : Return permissions 
-PseudoNationalNumbers (IT208) : Pseudo-Nationalnummern 
-StatusOfRefugee (IT206) : Flüchtlingsstatus 
-ResidenceUpdateDates (IT251) : Wohnsitzänderungen 
-NameModifications (IT013) : Namesänderungen 
-SpecialInfos (IT202) : Zusätzliche Informationen 
-WorkPermits (IT198) : Arbeitsgenehmigungen 
-TemporaryRegistrations (IT028) : Zeitweilige Einschreibungen 
-PublicSecurityNumbers (IT200) : Nummer Öffentliche Sicherheit 
-OrganizationsInCharge (IT207) : Zuständige Organisation 
-AddressDeclarationAbroad (IT018) : Adressdeklaration im Ausland 
-CountriesOfOrigin (IT006) : Ursprungsländer 
-Guardians (IT113) : Guardians 
-ChoosenResidences (IT212) : Gewählte Wohnsitze 
 SpecialRetirementCertificates (IT074) : Sonder-Pensionszertifikate 
-OrganDonations (IT192) : Organspenden 
-RetirementCertificates (IT073) : Pensionszertifikate 
-RegistrationRegisters (IT210) : Registereintragung 
+CountriesOfOrigin (IT006) : Ursprungsländer 
+ResidenceUpdateDates (IT251) : Wohnsitzänderungen 
+TemporaryAbsences (IT026) : Zeitweilige Abwesenheiten 
+TemporaryRegistrations (IT028) : Zeitweilige Einschreibungen 
+OrganizationsInCharge (IT207) : Zuständige Organisation 
+SpecialInfos (IT202) : Zusätzliche Informationen 
+
 
 
 
