@@ -21,10 +21,11 @@ __version__ = SETUP_INFO['version']
 srcref_url = 'https://github.com/lino-framework/book/blob/master/%s'
 
 # doc_trees = ['docs']
-doc_trees = [ 'docs', 'tera_de', 'welfare_de', 'welfare_fr']
+doc_trees = [ 'docs', 'tera_de', 'welfare_de', 'welfare_fr', 'noi']
 intersphinx_urls = {
     'docs': "http://www.lino-framework.org",
     'tera_de': "http://tera-handbuch.lino-framework.org",
+    'noi': "http://noi.lino-framework.org",
     'welfare_de': "http://de.welfare.lino-framework.org",
     'welfare_fr' : "http://fr.welfare.lino-framework.org",
 }

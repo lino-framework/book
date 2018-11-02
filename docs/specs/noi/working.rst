@@ -195,13 +195,13 @@ consider only the tickets for which this user has specified interest.
 
 Database model: :class:`ServiceReport`.
 
+A service report currently contains three tables:
 
-It currently contains two tables:
 - a list of work sessions
-- a list of tickets, with invested time (i.e. the sum of durations
-  of all sessions that lie in the given data range)
-- a list of projects, with invested time and list of the tickets that
-  are assigned to this project.
+- a list of the tickets mentioned in the work sessions and their
+  invested time
+- a list of sites mentioned in the work sessions and their invested
+  time
 
 
 >>> obj = working.ServiceReport.objects.get(pk=1)

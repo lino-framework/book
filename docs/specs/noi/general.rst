@@ -148,11 +148,11 @@ Countries
 Lino Noi and Scrum
 ==================
 
-- Every sprint is registered as a subproject of a development project
-- Every backlog item is registered as a subproject of a sprint
-- IOW backlog items are projects without children
-- Usually there is at least one ticket per project for planning and
+- Every sprint is registered as a site
+- Usually there is at least one ticket per site for planning and
   discussion.
+- Every backlog item is registered as a ticket on that site
+- The detail view of a site is the equivalent of a backlog  
 
 >>> show_fields(system.SiteConfig)
 ... #doctest: +REPORT_UDIFF

@@ -7,15 +7,13 @@ Lino Noi specs
 This section contains specs specific to :ref:`noi`.
 
 
-The default variant ("team")
-============================
-
-
 .. toctree::
     :maxdepth: 1
     :glob:
 
     general
+    tickets
+    working
     smtpd
     hosts
     as_pdf
@@ -28,8 +26,6 @@ The default variant ("team")
     export_excel
     mailbox
     
-    tickets
-    working
     projects
     faculties
     votes
