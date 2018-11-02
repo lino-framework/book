@@ -149,10 +149,16 @@ started some days ago.
 Service Report
 ==============
 
-A service report (:class:`ServiceReport`) is a document which reports
-about the hours invested during a given date range.  It can be
-addressed to a recipient (a user) and in that case will consider only
+A **service report** is a document used in various discussions with
+a stakeholder.
+It reports about the working time invested during a given date range.
+
+It can be addressed to a recipient (a user) and in that case will consider only
 the tickets for which this user has specified interest.
+
+Database model: :class:`ServiceReport`.
+
+
 
 It currently contains two tables:
 
@@ -374,28 +380,40 @@ Reference
            
 .. class:: ServiceReport
 
-    A **service report** is a document used in various discussions with
-    a stakeholder.
+    The Django model representing a *service report*.
 
-    Defined in :mod:`lino_noi.lib.working`.
-
+    Database fields:
+    
     .. attribute:: user
 
         This can be empty and will then show the working time of all
         users.
 
-
     .. attribute:: start_date
     .. attribute:: end_date
+
+                   
     .. attribute:: interesting_for
+
+        Show only tickets on sites assigned to this partner.
+        
     .. attribute:: ticket_state
 
+        Show only tickets having this state.
+        
     .. attribute:: printed
-        See :attr:`lino.modlib.exerpts.mixins.Certifiable.printed`
+                   
+        See :attr:`lino_xl.lib.exerpts.Certifiable.printed`
 
            
+.. class:: SessionsByReport
+.. class:: TicketsReport
+.. class:: SitesByReport
            
-.. class:: ProjectsByReport
+     The list of tickets mentioned in a service report.
+     
+.. class:: WorkersByReport
+
            
 .. class:: ShowMySessionsByDay
            

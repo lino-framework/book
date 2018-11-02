@@ -11,16 +11,6 @@ Release-Notizen
 
    coming
    2018*
-   
-
-Archiv
-======
-
-   
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   2017*
-   1.*
    old
+   
+
