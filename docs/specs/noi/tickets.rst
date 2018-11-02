@@ -31,7 +31,6 @@ user or an end user represented by a system user.
 
 There are many tables used to show lists of tickets.        
 
-
 .. class:: Ticket
 
     .. attribute:: user
@@ -191,21 +190,21 @@ There are many tables used to show lists of tickets.
 
     >>> rt.login('jean').show(tickets.MyTickets)
     ... #doctest: -REPORT_UDIFF
-    ========== ========================================================================================================================= ============================================
+    ========== ========================================================================================================================= ===========================================
      Priority   Description                                                                                                               Workflow
-    ---------- ------------------------------------------------------------------------------------------------------------------------- --------------------------------------------
+    ---------- ------------------------------------------------------------------------------------------------------------------------- -------------------------------------------
      Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__ for `Marc <Detail>`__                                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
      Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__         [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#57 (⛶ Irritating message when bar) <Detail>`__ for `Marc <Detail>`__                                                    [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
      Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__, assigned to `Jean <Detail>`__                                             [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__     [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                 [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+     Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+     Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                 [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
      Normal     `#22 (☐ How can I see where bar?) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                        [▶] **Ready** → [☎] [☑] [☒]
      Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__ for `Marc <Detail>`__                                                       [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-    ========== ========================================================================================================================= ============================================
+    ========== ========================================================================================================================= ===========================================
     <BLANKLINE>
 
     
@@ -361,6 +360,13 @@ worktime is being invoiced to the customer.
 
 
 .. class:: Site
+
+    .. attribute:: state
+    .. attribute:: ref
+
+.. class:: Sites
+.. class:: MySites
+           
            
 .. class:: Subscription
 
@@ -489,91 +495,66 @@ this:
 
 >>> rt.login('jean').show(tickets.TicketsBySite, welket, nosummary=True)
 ... #doctest: -REPORT_UDIFF -SKIP
-========== ===================================================================================================================================================== ============= ============================================
+========== ===================================================================================================================================================== ============= ===========================================
  Priority   Description                                                                                                                                           Ticket type   Workflow
----------- ----------------------------------------------------------------------------------------------------------------------------------------------------- ------------- --------------------------------------------
- Normal     `#116 (⚒ Foo never bars) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                 Enhancement   [✋] [▶] **Started**
- Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Marc <Detail>`__, assigned to `Luc <Detail>`__                                Bugfix        [✋] [▶] **Open**
+---------- ----------------------------------------------------------------------------------------------------------------------------------------------------- ------------- -------------------------------------------
+ Normal     `#116 (⚒ Foo never bars) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                 Enhancement   [▶] **Started**
+ Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Marc <Detail>`__, assigned to `Luc <Detail>`__                                Bugfix        [▶] **Open**
  Normal     `#114 (☎ Default account in invoices per partner) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__               Upgrade       [▶] **Talk**
- Normal     `#108 (⚒ No more foo when bar is gone) <Detail>`__  by `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                            Upgrade       [✋] [▶] **Started**
+ Normal     `#108 (⚒ No more foo when bar is gone) <Detail>`__  by `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                            Upgrade       [▶] **Started**
  Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                               Bugfix        [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal     `#102 (☐ Irritating message when bar) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                       Upgrade       [▶] **Ready**
  Normal     `#98 (☎ Foo never bars) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                  Enhancement   [▶] **Talk**
  Normal     `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__                                  Bugfix        [✋] [▶] **New**
  Normal     `#94 (☐ How can I see where bar?) <Detail>`__  by `Marc <Detail>`__, assigned to `Jean <Detail>`__                                                    Bugfix        [▶] **Ready**
- Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                                        Enhancement   [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#91 (☉ Cannot delete foo) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                                Bugfix        [✋] [▶] **Open**
+ Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                                        Enhancement   [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#91 (☉ Cannot delete foo) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                                Bugfix        [▶] **Open**
  Normal     `#86 (☐ Misc optimizations in Baz) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                              Enhancement   [▶] **Ready**
- Normal     `#84 (⚒ Irritating message when bar) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                  Upgrade       [✋] [▶] **Started**
+ Normal     `#84 (⚒ Irritating message when bar) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                  Upgrade       [▶] **Started**
  Normal     `#82 (☎ Cannot delete foo) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                          Bugfix        [▶] **Talk**
  Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                     Upgrade       [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#76 (⚒ How can I see where bar?) <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                    Bugfix        [✋] [▶] **Started**
+ Normal     `#76 (⚒ How can I see where bar?) <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                    Bugfix        [▶] **Started**
  Normal     `#74 (☎ Why is foo so bar) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                  Enhancement   [▶] **Talk**
  Normal     `#73 (⛶ Cannot delete foo) <Detail>`__  by `Marc <Detail>`__                                                                                          Bugfix        [✋] [▶] **New**
- Normal     `#68 (⚒ Misc optimizations in Baz) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__               Enhancement   [✋] [▶] **Started**
- Normal     `#67 (☉ How can I see where bar?) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                            Bugfix        [✋] [▶] **Open**
+ Normal     `#68 (⚒ Misc optimizations in Baz) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__               Enhancement   [▶] **Started**
+ Normal     `#67 (☉ How can I see where bar?) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                            Bugfix        [▶] **Open**
  Normal     `#66 (☎ Irritating message when bar) <Detail>`__  by `Marc <Detail>`__, assigned to `Jean <Detail>`__                                                 Upgrade       [▶] **Talk**
  Normal     `#62 (☐ Foo never bars) <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                 Enhancement   [▶] **Ready**
  Normal     `#58 (☎ How can I see where bar?) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                               Bugfix        [▶] **Talk**
  Normal     `#54 (☐ No more foo when bar is gone) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__               Upgrade       [▶] **Ready**
- Normal     `#52 (⚒ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                             Bugfix        [✋] [▶] **Started**
+ Normal     `#52 (⚒ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                             Bugfix        [▶] **Started**
  Normal     `#49 (⛶ How can I see where bar?) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__                                                       Bugfix        [✋] [▶] **New**
  Normal     `#46 (☐ Cannot delete foo) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                  Bugfix        [▶] **Ready**
- Normal     `#44 (⚒ Foo never bars) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                      Enhancement   [✋] [▶] **Started**
- Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                                 Bugfix        [✋] [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#44 (⚒ Foo never bars) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                      Enhancement   [▶] **Started**
+ Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                                 Bugfix        [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#42 (☎ Default account in invoices per partner) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__         Upgrade       [▶] **Talk**
  Normal     `#38 (☐ Why is foo so bar) <Detail>`__  by `Marc <Detail>`__, assigned to `Jean <Detail>`__                                                           Enhancement   [▶] **Ready**
- Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                             Upgrade       [✋] [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                                             Upgrade       [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#34 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__   Bugfix        [▶] **Talk**
- Normal     `#28 (⚒ Cannot delete foo) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            Bugfix        [✋] [▶] **Started**
+ Normal     `#28 (⚒ Cannot delete foo) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            Bugfix        [▶] **Started**
  Normal     `#26 (☎ Foo never bars) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                             Enhancement   [▶] **Talk**
  Normal     `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__  by `Mathieu <Detail>`__                                                            Bugfix        [✋] [▶] **New**
  Normal     `#22 (☐ How can I see where bar?) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                                    Bugfix        [▶] **Ready** → [☎] [☑] [☒]
- Normal     `#19 (☉ Cannot delete foo) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                           Bugfix        [✋] [▶] **Open**
+ Normal     `#19 (☉ Cannot delete foo) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                           Bugfix        [▶] **Open**
  Normal     `#18 (☎ No more foo when bar is gone) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                       Upgrade       [▶] **Talk**
  Normal     `#14 (☐ Bar cannot baz) <Detail>`__  by `Robin Rood <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                  Enhancement   [▶] **Ready**
- Normal     `#12 (⚒ Foo cannot bar) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                          Upgrade       [✋] [▶] **Started**
+ Normal     `#12 (⚒ Foo cannot bar) <Detail>`__  by `Romain Raffault <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                          Upgrade       [▶] **Started**
  Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__  by `Marc <Detail>`__, assigned to `Jean <Detail>`__                                   Bugfix        [▶] **Talk**
  Normal     `#6 (☐ Sell bar in baz) <Detail>`__  by `Rolf Rompen <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                 Upgrade       [▶] **Ready**
- Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            Bugfix        [✋] [▶] **Started**
+ Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__  by `Mathieu <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            Bugfix        [▶] **Started**
  Normal     `#2 (☎ Bar is not always baz) <Detail>`__  by `Luc <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                                   Enhancement   [▶] **Talk**
  Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__ for `Marc <Detail>`__                                                                                   Bugfix        [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-========== ===================================================================================================================================================== ============= ============================================
+========== ===================================================================================================================================================== ============= ===========================================
 <BLANKLINE>
-
 
 
 
 Release notes
 =============
 
->>> url = '/choices/deploy/DeploymentsByTicket/milestone'
->>> show_choices('robin', url) #doctest: +SKIP
-20150515@welket
-20150513@welsch
-20150511@welket
-20150509@welsch
-20150507@welket
-20150505@welsch
-20150503@welket
-
-
->>> show_choices('robin', url+"?query=0507") #doctest: +SKIP
-20150507@welket
-
->>> show_choices('robin', url+"?query=welket") #doctest: +SKIP
-20150515@welket
-20150511@welket
-20150507@welket
-20150503@welket
-
-You for meetings you can also seach for digital values and it will return rows that have that number in the name, ref, or remark.
->>> show_choices('robin', url+"?query=2015050") #doctest: +SKIP
-20150509@welsch
-20150507@welket
-20150505@welsch
-20150503@welket
-
+We create at least one ticket per release for general work on a given
+release, e.g. writing release notes.  If a release has several
+tickets, we group them into a site on its own.
 
 
 Links between tickets

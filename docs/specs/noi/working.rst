@@ -6,25 +6,20 @@
 Work time tracking
 ==================
 
-.. doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.doctests')
-    >>> from lino.api.doctest import *
-
 .. currentmodule:: lino_xl.lib.working
      
 The :mod:`lino_xl.lib.working` adds functionality for managing work
-sessions.  A **work session** is when a user works on a "ticket" for a
-given lapse of time.
+time tracking.
 
-What a ticket exactly is, is defined by :attr:`ticket_model
-<Plugin.ticket_model>`. Theoretically it
-can be any model which implements :class:`Workable`.
-In :ref:`noi` this points to
-:class:`tickets.Ticket <lino_xl.lib.tickets.Ticket>`. 
-:mod:`lino_noi.lib.working` extends the library plugin.
-     
+
+.. contents::
+  :local:
+
+.. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.doctests')
+>>> from lino.api.doctest import *
 
 Note that the demo data is on fictive demo date **May 23, 2015**:
 
@@ -32,9 +27,52 @@ Note that the demo data is on fictive demo date **May 23, 2015**:
 datetime.date(2015, 5, 23)
 
 
-Sessions
+Overview
 ========
 
+A **work session** is when a user works on a "ticket" for a given
+lapse of time.
+
+The :class:`WorkedHours` table shows the last seven days, one row per
+day, with your working hours.
+
+A **service report** is a document used in various discussions with
+a stakeholder.
+
+
+The :attr:`ticket_model <Plugin.ticket_model>` defines what a ticket
+actually is. Theoretically it can be any model which implements
+:class:`Workable`.  In :ref:`noi` this points to
+:class:`tickets.Ticket <lino_xl.lib.tickets.Ticket>` and currently it
+probably won't work on any other model
+
+
+Work sessions
+=============
+
+Extreme case of a work session:
+
+- I start to work on an existing ticket #1 at 9:23.  A customer phones
+  at 10:17 with a question. I create #2.  That call is interrupted
+  several times by the customer himself.  During the first
+  interruption another customer calls, with another problem (ticket
+  #3) which we solve together within 5 minutes.  During the second
+  interruption of #2 (which lasts 7 minutes) I make a coffee break.
+
+  During the third interruption I continue to analyze the
+  customer's problem.  When ticket #2 is solved, I decided that
+  it's not worth to keep track of each interruption and that the
+  overall session time for this ticket can be estimated to 0:40.
+
+  ::
+
+    Ticket start end    Pause  Duration
+    #1      9:23 13:12  0:45
+    #2     10:17 11:12  0:12       0:43
+    #3     10:23 10:28             0:05
+
+
+All sessions of the demo project:
 
 >>> rt.show(working.Sessions, limit=15)
 ... #doctest: -REPORT_UDIFF
@@ -85,8 +123,6 @@ Some sessions are on private tickets:
 Worked hours
 ============
 
-This table shows the last seven days, one row per day, with your
-working hours.
 
 >>> rt.login('jean').show(working.WorkedHours)
 ... #doctest: -REPORT_UDIFF
@@ -146,28 +182,26 @@ started some days ago.
 
 
 
-Service Report
-==============
+Service reports
+===============
 
 A **service report** is a document used in various discussions with
 a stakeholder.
 It reports about the working time invested during a given date range.
+This reportIt can serve as a base for writing invoices.
 
-It can be addressed to a recipient (a user) and in that case will consider only
-the tickets for which this user has specified interest.
+It can be addressed to a recipient (a user) and in that case will
+consider only the tickets for which this user has specified interest.
 
 Database model: :class:`ServiceReport`.
 
 
-
 It currently contains two tables:
-
+- a list of work sessions
 - a list of tickets, with invested time (i.e. the sum of durations
   of all sessions that lie in the given data range)
 - a list of projects, with invested time and list of the tickets that
   are assigned to this project.
-
-This report can serve as a base for writing invoices.
 
 
 >>> obj = working.ServiceReport.objects.get(pk=1)
@@ -209,8 +243,8 @@ Note that there are sessions without a duration. That's because
 Reporting type
 ==============
 
-The :attr:`reporting_type` of a project indicates how the client is
-going to pay for the work done.
+The :attr:`reporting_type` of a site indicates how the client is going
+to pay for the work done.
 
 The default implementation offers three choices "Worker", "Employer"
 and "Customer". "Worker" is for volunteer work and "private fun" where
@@ -237,8 +271,8 @@ defines a default reporting type:
 <ReportingTypes.regular:10>
 
 
-Reference
-=========
+Class reference
+===============
 
 .. class:: Plugin
 .. class:: SessionType
@@ -247,30 +281,7 @@ Reference
     
 .. class:: Session
 
-    A **Session** is when a user works during a given lapse of time on
-    a given Ticket.
-
-    Extreme case of a session:
-
-    - I start to work on an existing ticket #1 at 9:23.  A customer phones
-      at 10:17 with a question. I create #2.  That call is interrupted
-      several times by the customer himself.  During the first
-      interruption another customer calls, with another problem (ticket
-      #3) which we solve together within 5 minutes.  During the second
-      interruption of #2 (which lasts 7 minutes) I make a coffee break.
-
-      During the third interruption I continue to analyze the
-      customer's problem.  When ticket #2 is solved, I decided that
-      it's not worth to keep track of each interruption and that the
-      overall session time for this ticket can be estimated to 0:40.
-
-      ::
-
-        Ticket start end    Pause  Duration
-        #1      9:23 13:12  0:45
-        #2     10:17 11:12  0:12       0:43
-        #3     10:23 10:28             0:05
-
+    Django model representing a **work session**.
 
     .. attribute:: start_date
 
@@ -309,6 +320,9 @@ Reference
        The faculty that has been used during this session. On a new
        session this defaults to the needed faculty currently specified
        on the ticket.
+
+    .. attribute:: site_ref
+                   
 
 
 .. class:: Sessions
@@ -359,14 +373,14 @@ Reference
 
     .. method:: is_workable_for
                 
-        Return True if the given user can start a working session on this
-        object.
+        Return True if the given user can start a *work session* on
+        this object.
 
                 
     .. method:: on_worked
                 
-        This is automatically called when a work session has been created
-        or modified.
+        This is automatically called when a *work session* has been
+        created or modified.
 
                 
     .. method:: start_session
@@ -441,3 +455,4 @@ Reference
     A user who is candidate for working on a ticket.
 
            
+.. class:: WorkedHours
