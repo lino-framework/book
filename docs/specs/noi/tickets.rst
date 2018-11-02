@@ -359,6 +359,15 @@ reporting about it and helping with the decision about whether and how
 worktime is being invoiced to the customer.
 
 
+>>> rt.login("jean").show(tickets.MySites)
+===================== ===== ====== ====== ========= =======
+ Description           New   Talk   Open   Started   Ready
+--------------------- ----- ------ ------ --------- -------
+ `welsch <Detail>`__
+===================== ===== ====== ====== ========= =======
+<BLANKLINE>
+
+
 .. class:: Site
 
     .. attribute:: state
@@ -434,8 +443,11 @@ New : `#97 <Detail>`__, `#73 <Detail>`__, `#49 <Detail>`__, `#25 <Detail>`__, `#
 When you open the panel in its own window, you can see the underlying
 table:
 
->>> rt.show(tickets.TicketsBySite, welket, nosummary=True)
+>>> rt.show(tickets.TicketsBySite, welket, nosummary=True, header_level=2)
 ... #doctest: -REPORT_UDIFF -SKIP
+-------------------------------
+Tickets of welket (Site welket)
+-------------------------------
 ========== ========================================================================================================= ============= =============
  Priority   Description                                                                                               Ticket type   Workflow
 ---------- --------------------------------------------------------------------------------------------------------- ------------- -------------
