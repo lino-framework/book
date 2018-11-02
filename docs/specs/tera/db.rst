@@ -33,7 +33,7 @@ The database structure
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
  cal.Event                   cal.OneEvent                   24        693
  cal.EventPolicy             cal.EventPolicies              19        6
- cal.EventType               cal.EventTypes                 20        5
+ cal.EventType               cal.EventTypes                 21        5
  cal.Guest                   cal.Guests                     6         780
  cal.GuestRole               cal.GuestRoles                 5         2
  cal.Priority                cal.Priorities                 5         4
@@ -109,8 +109,8 @@ The database structure
  tera.LifeMode               tera.LifeModes                 4         0
  tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
- topics.Interest             topics.Interests               6         0
- topics.Topic                topics.Topics                  9         0
+ topics.Interest             topics.Interests               6         86
+ topics.Topic                topics.Topics                  9         3
  topics.TopicGroup           topics.TopicGroups             5         0
  users.Authority             users.Authorities              3         0
  users.User                  users.Users                    20        6
@@ -250,9 +250,9 @@ behaviour. See also :doc:`/dev/delete`.
 >>> print(analyzer.show_complexity_factors())
 - 42 plugins
 - 91 models
-- 20 user roles
+- 21 user roles
 - 4 user types
-- 344 views
+- 343 views
 - 96 dialog actions
 <BLANKLINE>
 

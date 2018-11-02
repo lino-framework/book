@@ -1,4 +1,4 @@
-.. doctest docs/specs/esf.rst
+.. doctest docs/specs/welfare/esf.rst
 
 .. _welfare.specs.fse:
 .. _welfare.specs.esf:
@@ -175,18 +175,18 @@ lequel seront totalisés les heures.
 ======================================== ======================================== =============================== ======================== ==============================
  Désignation                              Désignation (de)                         Désignation (en)                Inviter le bénéficiare   Champ FSE
 ---------------------------------------- ---------------------------------------- ------------------------------- ------------------------ ------------------------------
- Jours fériés                             Feiertage                                Holidays                        Non
- Réunion                                  Versammlung                              Meeting                         Non
- Interne                                  Intern                                   Internal                        Non
- Internal meetings with client            Internal meetings with client            Internal meetings with client   Oui                      Séance d’information
- Évaluation                               Auswertung                               Evaluation                      Oui                      Entretien individuel
- Consultations avec le bénéficiaire       Beratungen mit Klient                    Consultations with client       Non
- Réunions externes avec le bénéficiaire   Réunions externes avec le bénéficiaire   External meetings with client   Oui                      Evaluation formation externe
- Informational meetings                   Informational meetings                   Informational meetings          Oui                      S.I.S. agréé
- Réunions interne                         Réunions interne                         Internal meetings               Non
- Réunions externe                         Réunions externe                         External meetings               Non
- Privé                                    Privat                                   Private                         Non
  Atelier                                  Atelier                                  Workshop                        Non
+ Consultations avec le bénéficiaire       Beratungen mit Klient                    Consultations with client       Non
+ Informational meetings                   Informational meetings                   Informational meetings          Oui                      S.I.S. agréé
+ Internal meetings with client            Internal meetings with client            Internal meetings with client   Oui                      Séance d’information
+ Interne                                  Intern                                   Internal                        Non
+ Jours fériés                             Feiertage                                Holidays                        Non
+ Privé                                    Privat                                   Private                         Non
+ Réunion                                  Versammlung                              Meeting                         Non
+ Réunions externe                         Réunions externe                         External meetings               Non
+ Réunions externes avec le bénéficiaire   Réunions externes avec le bénéficiaire   External meetings with client   Oui                      Evaluation formation externe
+ Réunions interne                         Réunions interne                         Internal meetings               Non
+ Évaluation                               Auswertung                               Evaluation                      Oui                      Entretien individuel
 ======================================== ======================================== =============================== ======================== ==============================
 <BLANKLINE>
   

@@ -5,27 +5,24 @@
 The ``contacts`` plugin
 =======================
 
-
+.. currentmodule:: lino_xl.lib.contacts
+                   
 The :mod:`lino_xl.lib.contacts` plugin adds functionality for managing
-contacts.  It features a common MTI model **partner** with two
-specializations **person** and **organization**.  Stores the **roles**
-of a person in an organization.
-
-Examples in this document use the :mod:`lino_book.projects.min1` demo
-project.
-
->>> import lino
->>> lino.startup('lino_book.projects.min1.settings.doctests')
->>> from lino.api.doctest import *
->>> from django.db.models import Q
-
+contacts.  It adss the concept of **partner** with two specializations
+**person** and **organization**.  Also adds **roles** of a person in
+an organization.
 
 .. contents::
    :depth: 1
    :local:
 
-.. currentmodule:: lino_xl.lib.contacts
-                   
+.. include:: /include/tested.rst
+             
+>>> import lino
+>>> lino.startup('lino_book.projects.min1.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
+
 
 Database structure
 ==================

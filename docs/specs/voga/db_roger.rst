@@ -28,9 +28,9 @@ The database structure
  cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
  cal.Event                  cal.OneEvent                   23        1161
  cal.EventPolicy            cal.EventPolicies              19        6
- cal.EventType              cal.EventTypes                 20        9
+ cal.EventType              cal.EventTypes                 21        9
  cal.Guest                  cal.Guests                     6         0
- cal.GuestRole              cal.GuestRoles                 4         3
+ cal.GuestRole              cal.GuestRoles                 5         3
  cal.Priority               cal.Priorities                 5         4
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0

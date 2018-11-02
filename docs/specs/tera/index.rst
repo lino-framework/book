@@ -12,6 +12,7 @@ designed to be used in a center for `sociopsychological
 .. toctree::
    :maxdepth: 1
   
+   topics
    misc
    tim2lino
    products
@@ -20,3 +21,5 @@ designed to be used in a center for `sociopsychological
    db
    cal
    invoicing
+
+   

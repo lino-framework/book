@@ -46,6 +46,7 @@ General plugin specs
    :maxdepth: 1
 
    cv
+   topics
    courses
    holidays
    households

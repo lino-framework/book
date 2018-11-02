@@ -7,12 +7,6 @@ About Humans
 ============
 
 
-..
-    >>> import lino
-    >>> lino.startup('lino_book.projects.human.settings')
-    >>> from lino.api.doctest import *
-    >>> from django.db.models import Q
-
 This document explains some basic things about humans (as the
 :mod:`lino.mixins.human` module sees them).
 It uses the demo database in :mod:`lino_book.projects.human`.
@@ -21,6 +15,16 @@ It uses the demo database in :mod:`lino_book.projects.human`.
    :depth: 1
    :local:
 
+
+.. include:: /include/tested.rst
+             
+>>> import lino
+>>> lino.startup('lino_book.projects.human.settings')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
+
+Model definition
+================
 
 The database structure used for the following examples is very simple:
 

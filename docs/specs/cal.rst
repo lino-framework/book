@@ -752,11 +752,11 @@ Every 2nd month
 ==== =============== ================== ==================
  ID   Designation     Designation (de)   Designation (fr)
 ---- --------------- ------------------ ------------------
- 1    Holidays        Feiertage          Jours fériés
- 2    Meeting         Versammlung        Réunion
- 3    Internal        Intern             Interne
  4    First contact   First contact      First contact
+ 1    Holidays        Feiertage          Jours fériés
+ 3    Internal        Intern             Interne
  5    Lesson          Lesson             Lesson
+ 2    Meeting         Versammlung        Réunion
 ==== =============== ================== ==================
 <BLANKLINE>
 

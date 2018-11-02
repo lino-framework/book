@@ -177,9 +177,9 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
  cal.DailyPlannerRow            cal.DailyPlannerRows            8         3
  cal.Event                      cal.OneEvent                    24        538
  cal.EventPolicy                cal.EventPolicies               20        6
- cal.EventType                  cal.EventTypes                  24        12
+ cal.EventType                  cal.EventTypes                  25        12
  cal.Guest                      cal.Guests                      9         578
- cal.GuestRole                  cal.GuestRoles                  5         4
+ cal.GuestRole                  cal.GuestRoles                  6         4
  cal.Priority                   cal.Priorities                  6         4
  cal.RecurrentEvent             cal.RecurrentEvents             22        15
  cal.RemoteCalendar             cal.RemoteCalendars             7         0
@@ -390,7 +390,7 @@ Each window layout defines a given set of fields.
 - cal.EventTypes.merge_row : merge_to, reason
 - cal.Events.detail : event_type, summary, project, start_date, start_time, end_date, end_time, user, assigned_to, room, priority, access_class, transparent, owner, workflow_buttons, description, id, created, modified, state
 - cal.Events.insert : summary, start_date, start_time, end_date, end_time, event_type, project
-- cal.GuestRoles.detail : id, name, name_nl, name_de, name_en
+- cal.GuestRoles.detail : ref, name, name_nl, name_de, name_en, id
 - cal.GuestRoles.merge_row : merge_to, reason
 - cal.GuestStates.wf1 : notify_subject, notify_body, notify_silent
 - cal.GuestStates.wf2 : notify_subject, notify_body, notify_silent
