@@ -1,6 +1,6 @@
-========
-tim2lino
-========
+================================
+Details zum Datenimport auis TIM
+================================
 
 Der **Tarif** einer Akte aus TIM kommt in Lino nach `Enrolment.fee`.
 

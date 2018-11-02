@@ -59,12 +59,16 @@ Tagesordnung 2018-11-06
 
 - Das, was wir am 2018-10-09 besprochen haben ist theoretisch gemacht.
   Ich habe nicht jedes Detail hier dokumentiert, weil wir noch in der
-  iterativen Entwicklungsphase sind.  Siehe auch :doc:`/intro`,
-  :doc:`/the/index` und :doc:`/sek/index`.
+  iterativen Entwicklungsphase sind.
 
-- Dienstleistungen (Termine und Anwesenheiten) werden regelmäßig aus
-  TIM nach Lino importiert.  In Lino sind sie bisher nur zum Spielen.
-  Alle Änderungen in Lino gehen beim jeweils nächsten Import verloren.
+- Ich habe mit dem Handbuch begonnen. Siehe z.B. :doc:`/intro`,
+  :doc:`/the/index` und :doc:`/sek/index`. Das pdf-Handbuch wird
+  momentan nicht gewartet. Falls ihr so eine pdf-Datei irgendwo rumhängen habt, könnt ihr die löschen und bitte nicht ausdrucken.
+
+- Dienstleistungen (Termine und Anwesenheiten) habe ich zuletzt
+  am 2. November aus TIM nach Lino importiert.  In Lino sind sie
+  bisher nur zum Spielen.  Alle Änderungen in Lino gehen beim jeweils
+  nächsten Import verloren.
 
 - Buchhaltung: Einkaufsrechnungen und Kontoauszüge könnten schon jetzt
   direkt in Lino erfasst werden, aber Vera ist noch nicht bei.
@@ -148,6 +152,13 @@ Tagesordnung 2018-11-06
   conversions. e.g. Person -> Houshold, Person -> Partner should be
   hidden for normal users.
 
+  
+DONE
+====
+
+- created new users vm, nm, fk, mmf, kb
+
+
 testing
 =======
 
@@ -163,9 +174,4 @@ testing
 - Im Feld *Therapieart* steht die Auswahl nach einem Import auf EN und
   muss manuell nach DE übersetzt werden.
 
-  
-TODO
-====
-
-- create new users vm, nm, fk, mmf, kb
   

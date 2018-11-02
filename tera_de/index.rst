@@ -8,11 +8,10 @@ Lino Tera ist ein Programm zur Verwaltung eines Therapiezentrums.
 .. toctree::
    :maxdepth: 2
 
-   intro
+   basics/index
    the/index
    sek/index
    adm/index
-   tricks
    changes/index
    tim2lino
    
