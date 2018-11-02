@@ -61,9 +61,10 @@ Tagesordnung 2018-11-06
   Ich habe nicht jedes Detail hier dokumentiert, weil wir noch in der
   iterativen Entwicklungsphase sind.
 
-- Ich habe mit dem Handbuch begonnen. Siehe z.B. :doc:`/intro`,
+- Ich habe mit dem Handbuch begonnen. Siehe z.B. :doc:`/basics/index`,
   :doc:`/the/index` und :doc:`/sek/index`. Das pdf-Handbuch wird
-  momentan nicht gewartet. Falls ihr so eine pdf-Datei irgendwo rumhängen habt, könnt ihr die löschen und bitte nicht ausdrucken.
+  momentan nicht gewartet. Falls ihr so eine pdf-Datei irgendwo
+  rumhängen habt, könnt ihr die löschen und bitte nicht ausdrucken.
 
 - Dienstleistungen (Termine und Anwesenheiten) habe ich zuletzt
   am 2. November aus TIM nach Lino importiert.  In Lino sind sie
