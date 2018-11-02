@@ -1,0 +1,15 @@
+.. _noi.v18.11:
+
+==================
+Lino Noi v 18.11.0
+==================
+
+Some optimizations and one bugfix:
+
+- Don't show the ✋ (assign to me) button on a ticket when it is
+  already assigned.
+
+- Hotfix for :ticket:`2624`.
+
+- Don't show closed and sleeping sites in "Sites Overview".
+

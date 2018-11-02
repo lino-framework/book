@@ -4,15 +4,6 @@
 Lino Noi coming
 ===============
 
-DONE:
-
-- Don't show the ✋ (assign to me) button on a ticket when it is
-  already assigned.
-
-- Hotfix for :ticket:`2624`.
-
-- Don't show closed and sleeping sites in "Sites Overview".
-
 TODO:
 
 - TicketsBySite : the ticket states in the summary (ready, open,
