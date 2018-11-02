@@ -37,7 +37,7 @@ List of available dashboard items
  lino_xl.lib.cal.models.DailyPlanner,
  lino.modlib.comments.ui.RecentComments,
  lino_xl.lib.tickets.ui.MyTickets,
- lino_xl.lib.tickets.ui.MySitesDashboard,
+ lino_xl.lib.tickets.ui.MySites,
  lino_xl.lib.tickets.ui.TicketsToTriage,
  lino_xl.lib.tickets.ui.MyTicketsToWork,
  lino_xl.lib.working.ui.WorkedHours,
