@@ -1,19 +1,12 @@
 .. doctest docs/specs/noi/tickets.rst
 .. _noi.specs.tickets:
 
-=============================
-Ticket management in Lino Noi
-=============================
+===============================
+``tickets`` (Ticket management)
+===============================
 
-.. doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
-
-
-This document specifies the ticket management functions implemented in
-:mod:`lino_xl.lib.tickets` (as used by Lino Noi).
-
+The :mod:`lino_xl.lib.tickets` plugin adds functionality for managing
+tickets and projects.
 
 
 .. contents::
@@ -21,17 +14,78 @@ This document specifies the ticket management functions implemented in
 
 .. currentmodule:: lino_xl.lib.tickets
 
+.. include:: /include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
+
+Overview
+========
+
+A **Ticket** is a concrete question or problem formulated by a user.
+The user may be a system user or an end user represented by a system
+user.  It is the smallest unit of work.
+
+
+A **site** is a place where work is being done.  This can be a
+concrete website on a server with a domain name, but actually it can
+be anything your team uses for grouping their tickets into more
+long-term "tasks" or "projects".
+
+The *site* of a *ticket* also indicates "who is going to pay" for it.
+Lino Noi does not issue invoices, so it uses this information only for
+reporting about it and helping with the decision about whether and how
+worktime is being invoiced to the customer.
+
+Developers can start working on tickets without specifying a site.
+But after some time every ticket should get assigned to some site.
+
+
+We create at least one ticket per release for general work on a given
+release, e.g. writing release notes.  If a release has several
+tickets, we group them into a site on its own.
+
+
+
 
 Tickets
 =======
 
-A **Ticket** is a concrete question or problem formulated by a
-user.  It is the smallest unit of work.  The user may be a system
-user or an end user represented by a system user.
 
-There are many tables used to show lists of tickets.        
+Here is a textual description of the fields and their layout used in
+the detail window of a ticket.
+
+>>> from lino.utils.diag import py2rst
+>>> print(py2rst(tickets.AllTickets.detail_layout, True))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+(main) [visible for all]:
+- **General** (general_1):
+  - (general1_1):
+    - (general1a):
+      - (general1a_1): **Summary** (summary), **ID** (id)
+      - (general1a_2): **Site** (site), **Ticket type** (ticket_type)
+      - **Workflow** (workflow_buttons)
+      - **Description** (description)
+    - (general1b):
+      - (general1b_1): **Author** (user), **End user** (end_user)
+      - (general1b_2): **Assigned to** (assigned_to), **Private** (private)
+      - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
+      - **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
+  - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
+- **More** (more):
+  - (more_1):
+    - (more1):
+      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
+      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
+    - **Duplicates** (DuplicatesByTicket)
+  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin], **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
+<BLANKLINE>
+
 
 .. class:: Ticket
+
+    The Django model used to represent a *ticket*.
 
     .. attribute:: user
 
@@ -122,11 +176,11 @@ There are many tables used to show lists of tickets.
         site.  See :class:`ReportingTypes`.
         
 
-
+There are many tables used to show lists of tickets.        
 
 .. class:: Tickets
 
-    Base class for all tables of all tickets.
+    Base class for all tables of tickets.
 
     .. attribute:: site
 
@@ -188,25 +242,6 @@ There are many tables used to show lists of tickets.
            
     Show all active tickets reported by me.
 
-    >>> rt.login('jean').show(tickets.MyTickets)
-    ... #doctest: -REPORT_UDIFF
-    ========== ========================================================================================================================= ===========================================
-     Priority   Description                                                                                                               Workflow
-    ---------- ------------------------------------------------------------------------------------------------------------------------- -------------------------------------------
-     Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__ for `Marc <Detail>`__                                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__         [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#57 (⛶ Irritating message when bar) <Detail>`__ for `Marc <Detail>`__                                                    [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-     Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__, assigned to `Jean <Detail>`__                                             [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
-     Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
-     Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                 [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
-     Normal     `#22 (☐ How can I see where bar?) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                        [▶] **Ready** → [☎] [☑] [☒]
-     Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__ for `Marc <Detail>`__                                                       [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-    ========== ========================================================================================================================= ===========================================
-    <BLANKLINE>
-
     
 
 .. class:: TicketsByEndUser           
@@ -226,7 +261,6 @@ There are many tables used to show lists of tickets.
            
     Show all active tickets assigned to me.
 
-
 .. class:: TicketsBySite    
 
            
@@ -234,13 +268,18 @@ There are many tables used to show lists of tickets.
 Ticket types
 ============
 
-
 .. class:: TicketType
 .. class:: TicketTypes
            
 
 Ticket states
 =============
+
+You can see the table of ticket states in your web interface using the
+following menu command:
+
+>>> show_menu_path(tickets.TicketStates)
+Explorer --> Tickets --> Ticket states
 
 
 .. class:: TicketStates
@@ -295,12 +334,6 @@ Ticket states
 
         It has been decided that we won't fix this ticket.
 
-You can see this table in your web interface using
-:menuselection:`Explorer --> Tickets --> States`.
-
-.. >>> show_menu_path(tickets.TicketStates)
-   Explorer --> Tickets --> States
-
 In a default configuration it defines the following choices:
 
 >>> rt.show(tickets.TicketStates)
@@ -348,16 +381,6 @@ site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
 Sites
 =====
 
-Lino Noi has a list of "sites".  A site is a place where work is being
-done.  This can be a concrete website on a server with a domain name,
-but actually it can be anything your team uses for grouping their
-tickets into more long-term "tasks" or "projects".
-
-The site of a ticket also indicates "who is going to pay" for it.
-Lino Noi does not issue invoices, so it uses this information only for
-reporting about it and helping with the decision about whether and how
-worktime is being invoiced to the customer.
-
 
 >>> rt.login("jean").show(tickets.MySites)
 ===================== ===== ====== ====== ========= =======
@@ -375,6 +398,56 @@ worktime is being invoiced to the customer.
 
 .. class:: Sites
 .. class:: MySites
+
+
+Here is a list of the sites in our demo database:
+
+>>> rt.show(tickets.Sites)
+============= ======== ================ ======== =========== ====
+ Designation   Client   Contact person   Remark   Workflow    ID
+------------- -------- ---------------- -------- ----------- ----
+ pypi          pypi                               **Draft**   3
+ welket        welket                             **Draft**   1
+ welsch        welsch                             **Draft**   2
+============= ======== ================ ======== =========== ====
+<BLANKLINE>
+
+List of tickets which have not yet been assigned to a site:
+
+>>> pv = dict(has_site=dd.YesNo.no)
+>>> rt.show(tickets.AllTickets, param_values=pv)
+... #doctest: +REPORT_UDIFF +ELLIPSIS
+===== ============================================== ========== ============= ======
+ ID    Summary                                        Priority   Workflow      Site
+----- ---------------------------------------------- ---------- ------------- ------
+ 110   Why is foo so bar                              Normal     **Ready**
+ 90    No more foo when bar is gone                   Normal     **Talk**
+ 70    'NoneType' object has no attribute 'isocode'   Normal     **Ready**
+ 40    How can I see where bar?                       Normal     **Refused**
+ 20    Why is foo so bar                              Normal     **Started**
+===== ============================================== ========== ============= ======
+<BLANKLINE>
+
+
+The state of a site
+===================
+
+>>> rt.show(tickets.SiteStates)
+... #doctest: +REPORT_UDIFF +ELLIPSIS
+======= ========== ========== ============= =========
+ value   name       text       Button text   Exposed
+------- ---------- ---------- ------------- ---------
+ 10      draft      Draft      ⛶             Yes
+ 20      active     Active     ⚒             Yes
+ 30      stable     Stable     ☉             Yes
+ 40      sleeping   Sleeping   ☾             No
+ 50      closed     Closed     ☑             No
+======= ========== ========== ============= =========
+<BLANKLINE>
+
+
+Subscriptions
+=============
            
            
 .. class:: Subscription
@@ -396,36 +469,36 @@ worktime is being invoiced to the customer.
            
 
 
-Here is a list of the sites in our demo database:
 
->>> rt.show(tickets.Sites)
-============= ======== ================ ======== =========== ====
- Designation   Client   Contact person   Remark   Workflow    ID
-------------- -------- ---------------- -------- ----------- ----
- pypi          pypi                               **Draft**   3
- welket        welket                             **Draft**   1
- welsch        welsch                             **Draft**   2
-============= ======== ================ ======== =========== ====
+
+Deciding what to do next
+========================
+
+Show all active tickets reported by me.
+
+>>> rt.login('jean').show(tickets.MyTickets)
+... #doctest: -REPORT_UDIFF
+========== ========================================================================================================================= ===========================================
+ Priority   Description                                                                                                               Workflow
+---------- ------------------------------------------------------------------------------------------------------------------------- -------------------------------------------
+ Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__ for `Marc <Detail>`__                                                     [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__   [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__                     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#92 (⚒ Why is foo so bar) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                            [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__         [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#57 (⛶ Irritating message when bar) <Detail>`__ for `Marc <Detail>`__                                                    [✋] [▶] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__, assigned to `Jean <Detail>`__                                             [▶] **Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__ for `Marc <Detail>`__, assigned to `Luc <Detail>`__     [▶] **Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__ for `Marc <Detail>`__, assigned to `Mathieu <Detail>`__                 [▶] **Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#22 (☐ How can I see where bar?) <Detail>`__ for `Marc <Detail>`__, assigned to `Jean <Detail>`__                        [▶] **Ready** → [☎] [☑] [☒]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__ for `Marc <Detail>`__                                                       [✋] [■] **New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+========== ========================================================================================================================= ===========================================
 <BLANKLINE>
 
-Developers can start working on tickets without specifying a site.
-But after some time every ticket should get assigned to some site. You
-can see a list of tickets which have not yet been assigned to a site:
 
->>> pv = dict(has_site=dd.YesNo.no)
->>> rt.show(tickets.AllTickets, param_values=pv)
-... #doctest: +REPORT_UDIFF +ELLIPSIS
-===== ============================================== ========== ============= ======
- ID    Summary                                        Priority   Workflow      Site
------ ---------------------------------------------- ---------- ------------- ------
- 110   Why is foo so bar                              Normal     **Ready**
- 90    No more foo when bar is gone                   Normal     **Talk**
- 70    'NoneType' object has no attribute 'isocode'   Normal     **Ready**
- 40    How can I see where bar?                       Normal     **Refused**
- 20    Why is foo so bar                              Normal     **Started**
-===== ============================================== ========== ============= ======
-<BLANKLINE>
 
+The backlog
+===========
 
 The :class:`TicketsBySite` panel shows all the tickets for a given
 site object.  Its default view is a summary:
@@ -560,13 +633,6 @@ this:
 <BLANKLINE>
 
 
-
-Release notes
-=============
-
-We create at least one ticket per release for general work on a given
-release, e.g. writing release notes.  If a release has several
-tickets, we group them into a site on its own.
 
 
 Links between tickets
@@ -704,39 +770,6 @@ This is a list of the parameters you can use for filterings tickets.
 | has_ref         | Has reference   |                                                                  |
 +-----------------+-----------------+------------------------------------------------------------------+
 
-
-
-The detail layout of a ticket
-=============================
-
-Here is a textual description of the fields and their layout used in
-the detail window of a ticket.
-
->>> from lino.utils.diag import py2rst
->>> print(py2rst(tickets.AllTickets.detail_layout, True))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-(main) [visible for all]:
-- **General** (general_1):
-  - (general1_1):
-    - (general1a):
-      - (general1a_1): **Summary** (summary), **ID** (id)
-      - (general1a_2): **Site** (site), **Ticket type** (ticket_type)
-      - **Workflow** (workflow_buttons)
-      - **Description** (description)
-    - (general1b):
-      - (general1b_1): **Author** (user), **End user** (end_user)
-      - (general1b_2): **Assigned to** (assigned_to), **Private** (private)
-      - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
-      - **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
-  - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
-- **More** (more):
-  - (more_1):
-    - (more1):
-      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
-      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
-    - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin], **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
-<BLANKLINE>
 
 
 
