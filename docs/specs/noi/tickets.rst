@@ -395,12 +395,21 @@ Sites
 
     .. attribute:: state
     .. attribute:: ref
+    .. attribute:: name
 
 .. class:: Sites
+
+    .. attribute:: watcher
+    .. attribute:: show_exposed
+    .. attribute:: state
+           
 .. class:: MySites
 
+    Shows the sites for which I have a subscription.
 
-Here is a list of the sites in our demo database:
+    Sleeping and closed sites are not shown by default.
+    
+List of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
 ============= ======== ================ ======== =========== ====

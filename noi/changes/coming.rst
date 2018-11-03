@@ -6,6 +6,11 @@ Lino Noi coming
 
 TODO:
 
+- Luc doesn't want to have to manually subscribe to every new site in
+  order to see it in the *My sites* list.  Tonis and Hamza on the
+  other site don't want to get bothered with sites for which they
+  didn't explicitly subscribe.
+
 - TicketsBySite : the ticket states in the summary (ready, open,
   started, etc) should appear in their constant workflow order.
   Currently they appear in a random order, depending on the sort order
