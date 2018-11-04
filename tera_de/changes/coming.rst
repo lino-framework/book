@@ -20,6 +20,8 @@ Offene Entscheidungen
 
 TODO:
 
+- Sollte Feld "Therapieart" schreibgeschützt sein?
+
 - Anwesenheiten pro Person und pro Akte: "tabular" view (wenn mehr als
   ein Jahr) wieder raus, denn die braucht zu viel Platz. Das Panel
   sollte auf einen halben Bildschirm passen,

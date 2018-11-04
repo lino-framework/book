@@ -1,11 +1,11 @@
 .. _tera.18.11.0:
 
-=================
-Lino Tera 18.11.0
-=================
+====================
+18.11.0 (2018-11-06)
+====================
 
-Änderungen seit der Besprechung vom 2018-10-09.
-Nächste Besichtigung geplant am 2018-11-06.
+Aktiv seit 2018-11-05.
+Besprechung geplant am 2018-11-06.
 
 .. contents::
   :local:
@@ -15,8 +15,10 @@ Lagebericht
 ===========
 
 - Das, was wir am 2018-10-09 besprochen haben ist theoretisch gemacht.
-  Ich habe nicht jedes Detail hier dokumentiert, weil wir noch in der
-  iterativen Entwicklungsphase sind.
+  Auch die meisten Probleme aus Gregors Testbericht vom 31.10. habe
+  ich noch beheben können.  Ich habe nicht jedes Detail hier
+  dokumentiert, weil wir noch in der iterativen Entwicklungsphase
+  sind.
 
 - Ich habe mit dem Handbuch begonnen. Siehe z.B. :doc:`/basics/index`,
   :doc:`/the/index` und :doc:`/sek/index`. Das pdf-Handbuch wird
@@ -24,9 +26,9 @@ Lagebericht
   rumhängen habt, könnt ihr die löschen und bitte nicht ausdrucken.
 
 - Dienstleistungen (Termine und Anwesenheiten) habe ich zuletzt
-  am 2. November aus TIM nach Lino importiert.  In Lino sind sie
-  bisher nur zum Spielen.  Alle Änderungen in Lino gehen beim jeweils
-  nächsten Import verloren.
+  am 3. November aus TIM nach Lino importiert.  In Lino sind sie
+  bisher nur zu Testzwecken.  Alle Änderungen in Lino gehen beim
+  jeweils nächsten Import verloren.
 
 - Buchhaltung: Einkaufsrechnungen und Kontoauszüge könnten schon jetzt
   direkt in Lino erfasst werden, aber Vera ist noch nicht bei.
@@ -35,6 +37,8 @@ Lagebericht
   
   Verkaufsrechnungen werden noch mit TIM erstellt und ausgedruckt und
   dann aus TIM nach Lino importiert (tl3.py).
+
+- Siehe auch :doc:`coming`.
   
 Wichtige Fragen
 ===============
@@ -61,13 +65,17 @@ Wichtige Fragen
   nicht sicher, ob das schwer ist. Zu klären, ob sich die Arbeit
   überhaupt lohnt.
 
-- Sind die PAR->IdUsrN aus TIM jetzt korrekt importiert?  
+- Sind die `PAR->IdUsrN` aus TIM jetzt korrekt importiert?
 
 Falls Zeit bleibt
 =================
 
-- Abrechnung an Krankenkassen
+- Dienstleistungsarten haben ein Feld "ref", und im Tagesplaner wird
+  diese angezeigt.
   
+- Im Feld *Rolle* von Familienakten steht momentan die Nummer. Liegt
+  am Datenimport.
+ 
 - Wir hatten ein Fallbeispiel "Kylie B hat ET in Lino, was nicht
   stimmt" gesehen. Das kam, weil in TIM für Kylie ein PAR mit IdPrt P
   steht, weil sie ja als Kind in einer Lebensgruppe mitmacht.  Woher
@@ -111,27 +119,8 @@ Falls Zeit bleibt
 - MTI Navigator can be irritating. Possibility to hide certain links &
   conversions. e.g. Person -> Houshold, Person -> Partner should be
   hidden for normal users.
-
-  
-DONE
-====
-
+ 
 - created new users vm, nm, fk, mmf, kb
 
-
-testing
-=======
-
-- Dienstleistungsarten haben ein Feld "ref", und im Tagesplaner wird
-  diese angezeigt.
-  
-- Im Feld *Rolle* von Familienakten steht momentan die Nummer. Liegt
-  am Datenimport.
-
-- Feld *Verwalter* aller Akten ist leer. Hier muss der Therapeut rein
-  importiert werden.
-
-- Im Feld *Therapieart* steht die Auswahl nach einem Import auf EN und
-  muss manuell nach DE übersetzt werden.
 
   

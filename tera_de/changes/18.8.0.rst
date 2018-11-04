@@ -1,8 +1,8 @@
 .. _tera_18_8_16: 
 
-=================
-Lino Tera 18.8.16
-=================
+=============================
+18.8.0 (2018-08-16)
+=============================
 
 Bei unserer heutigen Baustellenbesichtigung haben wir theoretisch
 folgende Punkte abgehakt.

@@ -9,8 +9,8 @@ Lino Tera Release-Notizen
 
    coming
    18.11.0
-   20181009
-   20180816
+   18.10.0
+   18.8.0
 
 
 
