@@ -291,16 +291,6 @@ Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
         Which table to use for showing courses in this course area.
         
-    .. attribute:: force_guest_states
-
-        Whether guest states are forced, i.e. automatically set for
-        all guests based on the calendar entry's state.
-
-        The default value `False` means that presences are managed
-        individually per guest.  Set this to `True` if Lino should set
-        guest states automatically to the value given by
-        :attr:`EntryState.guest_state`.  Usage example in
-        :doc:`tera/courses`.
 
 The state of a course
 =====================

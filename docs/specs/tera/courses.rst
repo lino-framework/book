@@ -18,7 +18,6 @@ indipendent clients who share a common interest).
   :local:
 
 
-
 .. currentmodule:: lino_tera.lib.courses
                    
 
@@ -43,28 +42,28 @@ The detail view of a therapy
 (main) [visible for all]:
 - **General** (general):
   - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Division** (team)
-  - (general_2): **Patient** (client), **Household** (household), **Organization** (company)
-  - (general_3): **Therapy domain** (therapy_domain), **Procurer** (procurer), **Mandatory** (mandatory), **Translator type** (translator_type)
-  - (general_4): **Therapy type** (line), **Manager** (user), **Therapist** (teacher), **Workflow** (workflow_buttons)
-  - (general_5) [visible for therapist admin]: **Interests** (topics_InterestsByController), **Notes** (notes_NotesByProject)
-- **Participants** (enrolments):
-  - (enrolments_top): **Enrolments until** (enrolments_until), **Print** (print_actions)
+  - (general_2): **Therapy type** (line), **Manager** (user), **Therapist** (teacher), **Workflow** (workflow_buttons)
+  - (enrolments_top): **Default attendance fee** (fee), **Print** (print_actions)
   - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
+- **Therapy** (therapy):
+  - (therapy_1): **Therapy domain** (therapy_domain), **Procurer** (procurer), **Mandatory** (mandatory), **Translator type** (translator_type)
+  - (therapy_2) [visible for therapist admin]: **Interests** (topics_InterestsByController), **Notes** (notes_NotesByProject)
 - **Appointments** (calendar):
   - (calendar_1): **Recurrency** (every_unit), **Repeat every** (every), **Generate events until** (max_date), **Number of events** (max_events)
   - (calendar_2): **Room** (room), **Start date** (start_date), **End Date** (end_date), **Start time** (start_time), **End Time** (end_time)
   - (calendar_3): **Monday** (monday), **Tuesday** (tuesday), **Wednesday** (wednesday), **Thursday** (thursday), **Friday** (friday), **Saturday** (saturday), **Sunday** (sunday)
   - **Calendar entries** (courses_EntriesByCourse) [visible for secretary therapist admin]
-- **Notes** (notes):
-  - **Remark** (remark)
-  - **Tasks** (cal.TasksByProject) [visible for secretary therapist admin]
-- **More** (more):
-  - (more_1): **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type), **ID** (id)
-  - (more_2): **State** (state), **Ending reason** (ending_reason)
-  - (more_3) [visible for secretary therapist admin]:
+- **Invoicing** (sales):
+  - (sales_1): **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type), **ID** (id)
+  - (sales_2): **State** (state), **Ending reason** (ending_reason)
+  - (sales_3) [visible for secretary therapist admin]:
     - **Invoicings** (invoicing.InvoicingsByInvoiceable) [visible for secretary admin]
     - **Existing excerpts** (excerpts_ExcerptsByProject)
+- **More** (more):
+  - **Remark** (remark)
+  - **Tasks** (cal.TasksByProject) [visible for secretary therapist admin]
 <BLANKLINE>
+
 
 Note in particular that topic interests and notes are not visible to
 secretary:
@@ -77,18 +76,13 @@ therapist admin
 
 
 
-Course areas
-============
 
-Presences are not managed only for normal group therapies, but for
-individual therapies and life groups.  This is implemented using the
-:attr:`force_guest_states
-<lino_xl.lib.courses.CourseArea.force_guest_states>` attribute of
-their activity area (which is given by the activity line).
-
+Course lines and course layouts
+===============================
 
 The :class:`CourseAreas` choicelist in :ref:`tera` populates
-:class:`lino_xl.lib.courses.CourseAreas` with the following areas:
+:class:`lino_xl.lib.courses.CourseAreas` with the following course
+layouts:
 
 >>> rt.show(courses.CourseAreas)
 ======= ============= ====================== ====================
@@ -100,3 +94,56 @@ The :class:`CourseAreas` choicelist in :ref:`tera` populates
 ======= ============= ====================== ====================
 <BLANKLINE>
 
+
+While in Voga or Avanti we can have many course lines, in Lino Tera
+there is only one course line per course layout.
+
+>>> print(courses.Line._meta.verbose_name_plural)
+Therapy types
+
+Every course line knows which its layout.
+
+>>> rt.show(courses.Lines)
+==================== ====================== ================== ================== ======= ====================== ======================== ===================== ============ ==============
+ Reference            Designation            Designation (de)   Designation (fr)   Topic   Layout                 Service type             Manage presences as   Recurrency   Repeat every
+-------------------- ---------------------- ------------------ ------------------ ------- ---------------------- ------------------------ --------------------- ------------ --------------
+                      Individual therapies                                                 Individual therapies   Individual appointment   Attendee              weekly       1
+                      Life groups                                                          Life groups            Individual appointment   Attendee              weekly       1
+                      Other groups                                                         Other groups           Group meeting            Attendee              weekly       1
+ **Total (3 rows)**                                                                                                                                                           **3**
+==================== ====================== ================== ================== ======= ====================== ======================== ===================== ============ ==============
+<BLANKLINE>
+
+Some course tables have a fixed course layout, some don't.
+
+>>> courses.LifeGroups._course_area
+<CourseAreas.life_groups:LG>
+
+>>> print(courses.AllActivities._course_area)
+None
+
+When you are in a table with a fixed layout, your choices for the
+:attr:`Course.line` field are limited to lines of that layout.
+
+
+>>> show_choices("robin", "/choices/courses/LifeGroups/line")
+<br/>
+Life groups
+
+>>> show_choices("robin", "/choices/courses/AllActivities/line")
+<br/>
+Individual therapies
+Life groups
+Other groups
+
+Furthermore, when you are in a table with a fixed layout *and there is
+only one line object having that layout*, Lino fills the line field
+automatically when creating a new course.
+
+
+>>> fld = courses.Course._meta.get_field('line')
+>>> print(fld.verbose_name)
+Therapy type
+
+>>> fld.blank
+False

@@ -308,7 +308,6 @@ Utilities
 
 
 
->>> # url = '/choices/countries/Places/type?country=BE&query=a'
 >>> base = "/choices/countries/Places/type?country=BE"
 >>> show_choices("robin", base + '&query=')
 <br/>
