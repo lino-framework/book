@@ -12,7 +12,7 @@ This document specifies how activities are being used in
    :depth: 1
    :local:
 
-.. include:: ../include/tested.rst      
+.. include:: /include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.adg.settings.doctests')
