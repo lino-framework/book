@@ -49,20 +49,20 @@ For example let's look at ISIP contract #26 of the demo database.
 >>> obj.exam_policy
 ExamPolicy #1 ('Every month')
 >>> rt.show(cal.EntriesByController, obj)
-============================ =================== ================ ============= ===============
+============================ =================== ================ ============= =================
  When                         Short description   Managed by       Assigned to   Workflow
----------------------------- ------------------- ---------------- ------------- ---------------
- **Mon 04/08/2014 (09:00)**   Évaluation 1        Mélanie Mélard                 **Suggested**
- **Thu 04/09/2014 (09:00)**   Évaluation 2        Mélanie Mélard                 **Suggested**
- **Mon 06/10/2014 (09:00)**   Évaluation 3        Mélanie Mélard                 **Suggested**
- **Thu 06/11/2014 (09:00)**   Évaluation 4        Mélanie Mélard                 **Suggested**
- **Mon 08/12/2014 (09:00)**   Évaluation 5        Mélanie Mélard                 **Suggested**
- **Thu 08/01/2015 (09:00)**   Évaluation 6        Mélanie Mélard                 **Suggested**
- **Mon 09/02/2015 (09:00)**   Évaluation 7        Mélanie Mélard                 **Suggested**
- **Mon 09/03/2015 (09:00)**   Évaluation 8        Mélanie Mélard                 **Suggested**
- **Thu 09/04/2015 (09:00)**   Évaluation 9        Mélanie Mélard                 **Suggested**
- **Mon 11/05/2015 (09:00)**   Évaluation 10       Mélanie Mélard                 **Suggested**
-============================ =================== ================ ============= ===============
+---------------------------- ------------------- ---------------- ------------- -----------------
+ **Mon 04/08/2014 (09:00)**   Évaluation 1        Mélanie Mélard                 **? Suggested**
+ **Thu 04/09/2014 (09:00)**   Évaluation 2        Mélanie Mélard                 **? Suggested**
+ **Mon 06/10/2014 (09:00)**   Évaluation 3        Mélanie Mélard                 **? Suggested**
+ **Thu 06/11/2014 (09:00)**   Évaluation 4        Mélanie Mélard                 **? Suggested**
+ **Mon 08/12/2014 (09:00)**   Évaluation 5        Mélanie Mélard                 **? Suggested**
+ **Thu 08/01/2015 (09:00)**   Évaluation 6        Mélanie Mélard                 **? Suggested**
+ **Mon 09/02/2015 (09:00)**   Évaluation 7        Mélanie Mélard                 **? Suggested**
+ **Mon 09/03/2015 (09:00)**   Évaluation 8        Mélanie Mélard                 **? Suggested**
+ **Thu 09/04/2015 (09:00)**   Évaluation 9        Mélanie Mélard                 **? Suggested**
+ **Mon 11/05/2015 (09:00)**   Évaluation 10       Mélanie Mélard                 **? Suggested**
+============================ =================== ================ ============= =================
 <BLANKLINE>
 
 Note how Lino avoids Sundays and Saturdays by moving to the following
@@ -130,20 +130,20 @@ For example, let's pick up ISIP contract #1.
 
 >>> obj = isip.Contract.objects.get(pk=1)
 >>> rt.show(cal.EntriesByController, obj)
-============================ =================== ================= ============= ===============
+============================ =================== ================= ============= =================
  When                         Short description   Managed by        Assigned to   Workflow
----------------------------- ------------------- ----------------- ------------- ---------------
- **Mon 29/10/2012 (09:00)**   Auswertung 1        Hubert Huppertz                 **Suggested**
- **Thu 29/11/2012 (09:00)**   Auswertung 2        Hubert Huppertz                 **Suggested**
- **Mon 31/12/2012 (09:00)**   Auswertung 3        Hubert Huppertz                 **Suggested**
- **Thu 31/01/2013 (09:00)**   Auswertung 4        Hubert Huppertz                 **Suggested**
- **Thu 28/02/2013 (09:00)**   Auswertung 5        Hubert Huppertz                 **Suggested**
- **Thu 28/03/2013 (09:00)**   Auswertung 6        Mélanie Mélard                  **Suggested**
- **Mon 29/04/2013 (09:00)**   Auswertung 7        Mélanie Mélard                  **Suggested**
- **Wed 29/05/2013 (09:00)**   Auswertung 8        Mélanie Mélard                  **Suggested**
- **Mon 01/07/2013 (09:00)**   Auswertung 9        Mélanie Mélard                  **Suggested**
- **Thu 01/08/2013 (09:00)**   Auswertung 10       Mélanie Mélard                  **Suggested**
-============================ =================== ================= ============= ===============
+---------------------------- ------------------- ----------------- ------------- -----------------
+ **Mon 29/10/2012 (09:00)**   Auswertung 1        Hubert Huppertz                 **? Suggested**
+ **Thu 29/11/2012 (09:00)**   Auswertung 2        Hubert Huppertz                 **? Suggested**
+ **Mon 31/12/2012 (09:00)**   Auswertung 3        Hubert Huppertz                 **? Suggested**
+ **Thu 31/01/2013 (09:00)**   Auswertung 4        Hubert Huppertz                 **? Suggested**
+ **Thu 28/02/2013 (09:00)**   Auswertung 5        Hubert Huppertz                 **? Suggested**
+ **Thu 28/03/2013 (09:00)**   Auswertung 6        Mélanie Mélard                  **? Suggested**
+ **Mon 29/04/2013 (09:00)**   Auswertung 7        Mélanie Mélard                  **? Suggested**
+ **Wed 29/05/2013 (09:00)**   Auswertung 8        Mélanie Mélard                  **? Suggested**
+ **Mon 01/07/2013 (09:00)**   Auswertung 9        Mélanie Mélard                  **? Suggested**
+ **Thu 01/08/2013 (09:00)**   Auswertung 10       Mélanie Mélard                  **? Suggested**
+============================ =================== ================= ============= =================
 <BLANKLINE>
 
 The above shows that appointments before 2013-11-10 are with Hubert,

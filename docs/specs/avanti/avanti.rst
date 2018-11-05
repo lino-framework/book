@@ -257,3 +257,23 @@ Clients
      700           Arbeitsunfähig
     ====== ====== ================================
     <BLANKLINE>
+
+
+
+>>> rt.show(checkdata.Checkers, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+================================= ========================================
+ value                             text
+--------------------------------- ----------------------------------------
+ printing.CachedPrintableChecker   Check for missing target files
+ countries.PlaceChecker            Check data of geographical places.
+ cal.EventGuestChecker             Entries without participants
+ cal.ConflictingEventsChecker      Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
+ cal.LongEntryChecker              Too long-lasting calendar entries
+ beid.BeIdCardHolderChecker        Check for invalid SSINs
+ dupable.DupableChecker            Check for missing phonetic words
+ dupable.SimilarObjectsChecker     Check for similar objects
+================================= ========================================
+<BLANKLINE>
+    

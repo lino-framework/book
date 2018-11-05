@@ -91,11 +91,6 @@ class TestCase(TestCase):
     def test_integer_pk(self):
         self.run_django_manage_test("lino_book/projects/integer_pk")
 
-   
-    # def test_all(self):
-    #     from lino.invlib.tasks import run_in_demo_projects
-    #     run_in_demo_projects('test')
-
     def test_events(self):
         self.run_django_manage_test("lino_book/projects/events")
 

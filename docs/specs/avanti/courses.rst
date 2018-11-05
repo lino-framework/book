@@ -12,11 +12,7 @@ This document specifies how activities are being used in
    :depth: 1
    :local:
 
-Technical notes
-===============
-
-Examples in this document use the :mod:`lino_book.projects.adg` demo
-project.
+.. include:: ../include/tested.rst      
 
 >>> import lino
 >>> lino.startup('lino_book.projects.adg.settings.doctests')
@@ -36,7 +32,6 @@ Activities
            
     Same as :class:`lino_xl.lib.courses.Course`.
 
-      
 
 Enrolments
 ==========
@@ -96,9 +91,10 @@ Topics
 ================================================== =========== ============= ================== =========== ============= =========== ========
  Description                                        When        Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
- *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   09:00-12:00   5                  2           3             3           0
- *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   14:00-17:00   5                  0           2             0           3
- **Total (2 rows)**                                                           **10**             **2**       **5**         **3**       **3**
+ *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   09:00-12:00   5                  3           0             3           2
+ *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   14:00-17:00   15                 2           0             4           13
+ *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   18:00-20:00   15                 12          0             11          3
+ **Total (3 rows)**                                                           **35**             **17**      **0**         **18**      **18**
 ================================================== =========== ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 
@@ -144,6 +140,7 @@ existing events.
 ================= ============ =============== ========== =========== =============
  Activity line     Start date   Instructor      Author     When        Times
 ----------------- ------------ --------------- ---------- ----------- -------------
+ Alphabetisation   16/01/2017   Laura Lieblig   sandra     Every day   18:00-20:00
  Alphabetisation   16/01/2017   Laura Lieblig   nathalie   Every day   14:00-17:00
  Alphabetisation   16/01/2017   Laura Lieblig   martina    Every day   09:00-12:00
 ================= ============ =============== ========== =========== =============
@@ -152,12 +149,13 @@ existing events.
 
 >>> rt.login('laura').show('courses.MyCoursesGiven')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-============================================================= =========== ============= ====== =============
- Description                                                   When        Times         Room   Workflow
-------------------------------------------------------------- ----------- ------------- ------ -------------
- `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Started**
- `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Started**
-============================================================= =========== ============= ====== =============
+============ ============================================================= =========== ============= ====== =============
+ Start date   Description                                                   When        Times         Room   Workflow
+------------ ------------------------------------------------------------- ----------- ------------- ------ -------------
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Started**
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Started**
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   18:00-20:00          **Started**
+============ ============================================================= =========== ============= ====== =============
 <BLANKLINE>
 
 
@@ -179,25 +177,21 @@ Suggested : 10 ,  Draft : 0 ,  Took place : 12 ,  Cancelled : 2 **New**
 Note that even though Nathalie is author of the morning course, it is
 Laura (the teacher) who is responsible for the individual events.
 
-
 >>> rt.login('laura').show('cal.MyEntries')
-... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-=========================================== ======== =================================
+... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
+=========================================== ======== ===================================
  Description                                 Client   Workflow
-------------------------------------------- -------- ---------------------------------
- `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 20 (17.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 20 (17.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 21 (20.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 21 (20.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 22 (21.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 22 (21.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 23 (23.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 23 (23.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 24 (24.02.2017 09:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
- `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **Suggested** → [?] [☑] [☒]
-=========================================== ======== =================================
+------------------------------------------- -------- -----------------------------------
+ `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 19 (16.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 20 (17.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ ...
+ `Lesson 23 (23.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 24 (24.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+ `Lesson 24 (24.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [?] [☑] [☒]
+=========================================== ======== ===================================
 <BLANKLINE>
 
 
@@ -311,7 +305,7 @@ weasy2html render <django.template.backends.jinja2.Template object at ...> -> ..
 Number of rows:
 
 >>> len(soup.find_all('tr'))
-13
+29
 
 Number of columns:
 
@@ -322,7 +316,7 @@ Total number of cells is 13*17:
 
 >>> cells = soup.find_all('td')
 >>> len(cells)
-221
+493
 
 >>> cells[0]
 <td>No.</td>
@@ -338,19 +332,19 @@ Total number of cells is 13*17:
 <td>1</td>
 
 >>> print(cells[18].decode())
-<td><p>Mr Aásim Abdo</p></td>
+<td><p>Mr Armán Berndt</p></td>
 
 >>> print(cells[20].decode())  #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-<td align="center" valign="middle">☑
-</td>
+<td align="center" valign="middle">⚕
+  </td>
 
 
 
-Course areas
-============
+Course layouts
+==============
 
 The :class:`CourseAreas` choicelist in :ref:`avanti` defines only one
-areas.
+layout.
 
 >>> rt.show(courses.CourseAreas)
 ======= ========= ============ =================
@@ -366,7 +360,7 @@ Missing rates
 
 .. class:: Course
 
-     Adds an action to update the missing_rates of all enrolments.
+     Adds an action to update the missing rates of all enrolments.
 
      .. method:: update_missing_rates(self)
                  
@@ -396,16 +390,44 @@ Missing rates
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ...    print(str(courses.DitchingEnrolments.label))
 ...    print(str(courses.DitchingEnrolments.help_text))
-Schwänzkontrolle
+Abwesenheitskontrolle
 Liste der Einschreibungen mit hoher Abwesenheitsrate zwecks Kontrolle durch den Begleiter.
 
 >>> rt.login("romain").show(courses.DitchingEnrolments)
-============== ===================== ============================== =================
- Missing rate   Client                Activity                       Primary coach
--------------- --------------------- ------------------------------ -----------------
- 29,17          ABDO Aásim (138)      Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ABBAS Aábid (115)     Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ABDELLA Aákif (128)   Alphabetisation (16/01/2017)   Romain Raffault
- **79,17**
-============== ===================== ============================== =================
+============== ========================== ============================== =================
+ Missing rate   Client                     Activity                       Primary coach
+-------------- -------------------------- ------------------------------ -----------------
+ 29,17          ABDO Aásim (138)           Alphabetisation (16/01/2017)   Romain Raffault
+ 29,17          ABID Abdul Báásid (162)    Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ABBAS Aábid (115)          Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ABDELLA Aákif (128)        Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ABDULLA Abbáás (152)       Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ALTUKHOV Adleshá (117)     Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ARNOLD Alexei (129)        Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          BEK-MURZIN Agápiiá (160)   Alphabetisation (16/01/2017)   Romain Raffault
+============== ========================== ============================== =================
 <BLANKLINE>
+
+
+Clients with more than one enrolment
+====================================
+
+>>> from django.db.models import Count
+>>> qs = rt.models.avanti.Client.objects.all()
+>>> qs = qs.annotate(
+...     ecount=Count('enrolments_by_pupil'))
+>>> qs = qs.filter(ecount__gt=1)
+>>> obj = qs[0]
+>>> rt.show(courses.EnrolmentsByPupil, obj, header_level=4)
+Enrolments in Activities of ABAD Aábdeen (114) (Also Cancelled)
+===============================================================
+================= ============================== =============== ======== ===============
+ Date of request   Activity                       Author          Remark   Workflow
+----------------- ------------------------------ --------------- -------- ---------------
+ 13/02/2017        Alphabetisation (16/01/2017)   Laura Lieblig            **Requested**
+ 13/02/2017        Alphabetisation (16/01/2017)   martina                  **Trying**
+================= ============================== =============== ======== ===============
+<BLANKLINE>
+
+Note that missing rates are also computed for non-confirmed
+enrolments, and that there are even non-zero rates for such cases.

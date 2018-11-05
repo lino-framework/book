@@ -1,5 +1,4 @@
 .. doctest docs/specs/holidays.rst
-   
 .. _xl.specs.holidays:
 
 =================
@@ -70,16 +69,16 @@ The :mod:`lino.modlib.cal.fixtures.std` fixture generates
 automatically all Ash Wednesdays for a range of years:
 
 >>> rt.show(cal.EntriesByController, master_instance=ash, nosummary=True)
-==================== =================== =============== ======== ================== =====================
- When                 Short description   Workflow        No.      Responsible user   Calendar entry type
--------------------- ------------------- --------------- -------- ------------------ ---------------------
- Wed 18/02/2015       Ash Wednesday       **Suggested**   3                           Holidays
- Wed 10/02/2016       Ash Wednesday       **Suggested**   4                           Holidays
- Wed 01/03/2017       Ash Wednesday       **Suggested**   5                           Holidays
- Wed 14/02/2018       Ash Wednesday       **Suggested**   6                           Holidays
- Wed 06/03/2019       Ash Wednesday       **Suggested**   7                           Holidays
- **Total (5 rows)**                                       **25**
-==================== =================== =============== ======== ================== =====================
+==================== =================== ================= ======== ================== =====================
+ When                 Short description   Workflow          No.      Responsible user   Calendar entry type
+-------------------- ------------------- ----------------- -------- ------------------ ---------------------
+ Wed 18/02/2015       Ash Wednesday       **? Suggested**   3                           Holidays
+ Wed 10/02/2016       Ash Wednesday       **? Suggested**   4                           Holidays
+ Wed 01/03/2017       Ash Wednesday       **? Suggested**   5                           Holidays
+ Wed 14/02/2018       Ash Wednesday       **? Suggested**   6                           Holidays
+ Wed 06/03/2019       Ash Wednesday       **? Suggested**   7                           Holidays
+ **Total (5 rows)**                                         **25**
+==================== =================== ================= ======== ================== =====================
 <BLANKLINE>
 
 Actually the user sees just the summary:

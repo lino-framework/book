@@ -133,7 +133,12 @@ def objects():
     
     yield Course(**kw)
 
-    kw.update(start_time="14:00", end_time="17:00", user=USERS.pop())
+    kw.update(start_time="14:00", end_time="17:00", user=USERS.pop(),
+              max_places=15)
+    yield Course(**kw)
+    
+    kw.update(start_time="18:00", end_time="20:00", user=USERS.pop(),
+              max_places=15)
     yield Course(**kw)
 
     
@@ -148,17 +153,24 @@ def objects():
         if Enrolment.objects.filter(course=course, pupil=pupil).count():
             return False
         return True
-    for i in range(10):
+    
+    def enrol(pupil):
         course = COURSES.pop()
-        pupil = PUPILS.pop()
-        while not fits(course, pupil):
-            course = COURSES.pop()
-        kw = dict(user=USERS.pop(), course=course, pupil=pupil)
-        kw.update(request_date=dd.demo_date(-i))
-        kw.update(state=STATES.pop())
-        yield Enrolment(**kw)
-
-
+        if fits(course, pupil):
+            kw = dict(user=USERS.pop(), course=course, pupil=pupil)
+            kw.update(request_date=dd.demo_date(-i))
+            kw.update(state=STATES.pop())
+            return Enrolment(**kw)
+        
+    for i, p in enumerate(
+            dd.plugins.courses.pupil_model.objects.order_by('id')):
+        
+        yield enrol(p)
+        if i % 2 == 0:
+            yield enrol(p)
+        if i % 3 == 0:
+            yield enrol(p)
+        
     ar = rt.login('robin')
     for obj in Course.objects.all():
         obj.update_auto_events(ar)
