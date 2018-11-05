@@ -28,7 +28,7 @@ class Site(Site):
     use_experimental_features = True
     # default_ui = 'lino_extjs6.extjs6'
     # default_ui = 'lino.modlib.bootstrap3'
-    # default_ui = 'lino.modlib.openui5'
+    # default_ui = 'lino_openui5.openui5'
 
     def setup_plugins(self):
         """Change the default value of certain plugin settings.
