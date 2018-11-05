@@ -102,9 +102,10 @@ Notification messages
         Class method which creates one database object per recipient.
 
         `recipients` is an iterable of `(user, mail_mode)` tuples.
-        Duplicate items, items with user being None and items having
-        :attr:`lino.modlib.users.User.mail_mode` set to
-        :attr:`lino.modlib.users.MailModes.silent` are removed.
+        Duplicate items, items with user being `None` and items having
+        :attr:`mail_mode <lino.modlib.users.User.mail_mode>` set to
+        :attr:`silent <lino.modlib.users.MailModes.silent>` are
+        removed.
 
         `msg_func` is a callable expected to return a tuple `(subject,
         body)`. It is called for each recipient in the recipient's
