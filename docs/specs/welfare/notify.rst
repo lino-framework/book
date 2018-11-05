@@ -144,17 +144,17 @@ I was not possible until now to override the `verbose_name` of the
 ===================== ======================================= ================== ====== =====================
  Created               Subject                                 Recipient          seen   sent
 --------------------- --------------------------------------- ------------------ ------ ---------------------
- 2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      nicolas                   2014-05-22 05:48:00
  2014-05-22 05:48:00   La base de données a été initialisée.   Alicia Allmanns           2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Caroline Carnol           2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Hubert Huppertz           2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Judith Jousten            2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Kerstin Kerres            2014-05-22 05:48:00
  2014-05-22 05:48:00   La base de données a été initialisée.   Mélanie Mélard            2014-05-22 05:48:00
+ 2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      nicolas                   2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Patrick Paraneau          2014-05-22 05:48:00
- 2014-05-22 05:48:00   La base de données a été initialisée.   Romain Raffault           2014-05-22 05:48:00
- 2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Rolf Rompen               2014-05-22 05:48:00
  2014-05-22 05:48:00   The database has been initialized.      Robin Rood                2014-05-22 05:48:00
+ 2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Rolf Rompen               2014-05-22 05:48:00
+ 2014-05-22 05:48:00   La base de données a été initialisée.   Romain Raffault           2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Theresia Thelen           2014-05-22 05:48:00
  2014-05-22 05:48:00   Die Datenbank wurde initialisiert.      Wilfried Willems          2014-05-22 05:48:00
 ===================== ======================================= ================== ====== =====================
