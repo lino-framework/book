@@ -52,11 +52,11 @@ The `app` of that Shell control is a `sap.ui.core.ComponentContainer`
 
 .. currentmodule:: lino.modlib.openui5
 
-Examples in this document use the :mod:`lino_book.projects.ui5` demo
+Examples in this document use the :mod:`lino_openui5.projects.teamUi5` demo
 project.
 
 >>> import lino
->>> lino.startup('lino_book.projects.ui5.settings.demo')
+>>> lino.startup('lino_openui5.projects.teamUi5.settings.demo')
 >>> from lino.api.doctest import *
 
 Define a utility function:                   

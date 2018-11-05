@@ -13,7 +13,7 @@ is being run.
 
 
 >>> import lino
->>> lino.startup('lino_book.projects.ui5.settings.doctests')
+>>> lino.startup('lino_openui5.projects.teamUi5.settings.doctests')
 >>> from lino.api.doctest import *
 
 The merge action is an example of an action with parameters.  When you
