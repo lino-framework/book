@@ -33,8 +33,7 @@ SETUP_INFO = dict(
         'lino_tera',
         'lino_amici',
         'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
-        'mock', 'sqlparse',
-        'sphinxcontrib.youtube'
+        'mock', 'sqlparse'
     ],
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
