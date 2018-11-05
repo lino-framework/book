@@ -13,7 +13,7 @@ PY3 = sys.version_info[0] == 3
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='18.9.0',
+    version='18.11.0',
     install_requires=[
         'Sphinx', 'lino', 'selenium','mock',
         'django-iban', 'metafone', 'channels<2',
