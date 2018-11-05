@@ -383,8 +383,8 @@ class TestCase(TestCase):
 ========================================================= ====================== ==============
 Sujet                                                     Lié à                  Destinataire
 --------------------------------------------------------- ---------------------- --------------
-Alicia a classé GÉRARD First (100) comme <b>Refusé</b>.   *GÉRARD First (100)*   róger
 Alicia a classé GÉRARD First (100) comme <b>Refusé</b>.   *GÉRARD First (100)*   caróline
+Alicia a classé GÉRARD First (100) comme <b>Refusé</b>.   *GÉRARD First (100)*   róger
 ========================================================= ====================== ==============
 """)
         # self.check_notes()
