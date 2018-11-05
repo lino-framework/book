@@ -40,7 +40,7 @@ How to get the layout elements of an action parameter window,
 
 >>> ui = settings.SITE.kernel.default_ui
 >>> ui
-lino.modlib.openui5 (media_name=openui5)
+lino.lino_openui5.openui5 (media_name=openui5)
 
 >>> lh = action.params_layout.get_layout_handle(ui)
 >>> lh #doctest: +ELLIPSIS
