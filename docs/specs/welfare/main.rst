@@ -19,7 +19,6 @@ A technical tour into the main page of :ref:`welfare`.
 Some tests
 ==========
            
-
 Test the content of the admin main page.
 
 >>> test_client.force_login(rt.login('rolf').user)
@@ -40,7 +39,7 @@ it is much work to maintain.
 
 >>> links = soup.find_all('a')
 >>> len(links)
-115
+117
 
 >>> print(links[0].text)
 Suchen
@@ -53,8 +52,8 @@ Suchen
 ...     print(h.text.strip())
 Benutzer und ihre Klienten ⏏
 Wartende Besucher ⏏
-Meine Termine ⏏
-Meine überfälligen Termine ⏏
+Meine Termine  ⏏
+Meine überfälligen Termine  ⏏
 Meine Benachrichtigungen ⏏
 
 
@@ -68,6 +67,6 @@ Meine Benachrichtigungen ⏏
 ...     print(h.text.strip())
 Users with their Clients ⏏
 Waiting visitors ⏏
-My appointments ⏏
-My overdue appointments ⏏
+My appointments  ⏏
+My overdue appointments  ⏏
 My Notification messages ⏏

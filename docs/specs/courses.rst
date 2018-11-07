@@ -196,7 +196,7 @@ The ``Enrolment`` model
     
 .. class:: EnrolmentsByCourse
            
-    Show all enrolments of a given course.
+    Show the enrolments of a this course.
 
 
 Notes about automatic calendar entry generation:
