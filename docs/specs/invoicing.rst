@@ -13,69 +13,85 @@ This document describes some general aspects of invoicing and how
 applications can handle this topic.  You should have read :doc:`sales`
 and :doc:`accounting`.  See also :doc:`/specs/voga/invoicing`.
 
-The examples in this document have been tested using the :mod:`roger
-<lino_book.projects.roger>` demo project.
 
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /include/tested.rst
+             
 >>> from lino import startup
 >>> startup('lino_book.projects.roger.settings.demo')
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
 
+Overview
+========
 
-.. contents::
-   :depth: 1
-   :local:
+As an application developer you define **invoice generators** by
+having one or several models of your application inherit from
+:class:`InvoiceGenerator`.
+
+
+API
+===
+
+On the API level it defines the :class:`InvoiceGenerator
+<lino_xl.lib.invoicing.InvoiceGenerator>` mixin.
+
+The *invoices journal* which supports automatic generation is
+indirectly defined by the :attr:`voucher_model
+<lino_xl.lib.invoicing.Plugin.voucher_model>` setting.
+
+>>> vt = dd.plugins.invoicing.get_voucher_type()
+>>> vt.table_class.start_invoicing
+<lino_xl.lib.invoicing.actions.StartInvoicingForJournal start_invoicing ('Create invoices')>
+
+>>> rt.models.invoicing.Plan.start_plan
+<lino_xl.lib.invoicing.actions.StartInvoicing start_plan ('Create invoices')>
+
+
+       
 
 
 
-The ``Invoiceable`` model mixin
-===============================
+The ``InvoiceGenerator`` model mixin
+====================================
 
-.. class:: Invoiceable
+.. class:: InvoiceGenerator
 
-    Mixin for things that are "invoiceable", i.e. for which Lino
-    should generate an invoice.
+    Mixin for things that can generate invoices.
 
     Subclasses must implement the following:
 
     .. method:: get_invoiceables_for_plan(cls, plan, partner=None)
                 
-        Yield a sequence of invoiceables (of this class) for the given
-        plan.  If a `partner` is given, use it as an additional filter
-        condition.
+        Yield a sequence of invoiceable candidates (objects of this
+        class) for the given plan.  If a `partner` is given, use it as
+        an additional filter condition.
 
-    .. attribute:: invoiceable_date_field
-
-       The name of the field which holds the invoiceable date.  Must
-       be set by subclasses.
-
-       As the application developer you specify it as a string, but
-       Lino converts it to a field instance at startup so that it
-       becomes an alias for the named field.
-
-       >>> print(rt.models.courses.Enrolment.invoiceable_date_field)
-       request_date
-       
-    .. method:: get_invoiceable_date(self)
-
-       Return the value of the :attr:`invoiceable_date_field` for this
-       object.
-                
-       >>> obj = rt.models.courses.Enrolment.objects.all()[0]
-       >>> obj.get_invoiceable_date() == obj.request_date
-       True
+        Not every yielded candidate will become an invoice.  This is a
+        pre-selection.  For every candidate Lino will call
+        :meth:`get_invoiceable_product`
 
     .. method:: get_invoiceable_product(self, plan)
 
         To be implemented by subclasses.  Return the product to put
         into the invoice item.
                 
+       >>> obj = rt.models.courses.Enrolment.objects.all()[0]
+       >>> print(obj.get_invoiceable_product())
+       Journeys
+
     .. method:: get_invoiceable_qty(self)
                 
         To be implemented by subclasses.  Return the quantity to put
         into the invoice item.
 
+       >>> obj = rt.models.courses.Enrolment.objects.all()[0]
+       >>> print(obj.get_invoiceable_qty())
+       1
 
     .. method:: get_invoiceable_title(self, invoice=None)
 
@@ -106,6 +122,8 @@ The ``Invoiceable`` model mixin
 Sales rules
 ===========
 
+Every partner can have a sales rule.
+
 .. class:: SalesRule
            
    .. attribute:: partner
@@ -113,6 +131,25 @@ Sales rules
    .. attribute:: paper_type
                   
 .. class:: SalesRules
+
+
+
+Tariffs
+=======
+
+Every product can have a tariff.
+
+.. class:: Tariff
+           
+    .. attribute:: number_of_events
+
+        Number of calendar events paid per invoicing.
+
+    .. attribute:: min_asset
+
+        Minimum quantity required to trigger an invoice.
+    
+           
 
 
 The invoicing plan

@@ -14,9 +14,9 @@ doctest init:
 
 >>> print(analyzer.show_complexity_factors())
 - 41 plugins
-- 80 models
+- 81 models
 - 20 user roles
 - 5 user types
-- 309 views
-- 84 dialog actions
+- 311 views
+- 23 dialog actions
 <BLANKLINE>

@@ -2,8 +2,11 @@
 .. _specs.tera.products:
 
 ====================
-Tariffs in Lino Tera
+Fees in Lino Tera
 ====================
+
+The :mod:`lino_xl.lib.products` plugin is called "Fees" in Lino Tera
+because here we don't produce anything, we just sell services.
 
 
 .. doctest init
@@ -14,42 +17,22 @@ Tariffs in Lino Tera
     >>> from django.db import models
 
 
-This document describes how we extend and use the
-:mod:`lino_xl.lib.products` plugin in Tera.
 
+.. currentmodule:: lino_tera.lib.products     
+
+Fees in the demo database
+=========================
 
 >>> rt.show(products.Products)
-==== ==================== ================== ==================== ============= ====================================== =====================
- ID   Designation          Designation (de)   Designation (fr)     Sales price   Sales account                          Category
----- -------------------- ------------------ -------------------- ------------- -------------------------------------- ---------------------
- 1    Group therapy        Gruppentherapie    Group therapy        30,00                                                Payment by presence
- 2    Individual therapy   Einzeltherapie     Individual therapy   60,00         (7010) Sales on individual therapies   Payment by presence
+==== ==================== ================== ==================== ============= =========================== =====================
+ ID   Designation          Designation (de)   Designation (fr)     Sales price   Sales account               Category
+---- -------------------- ------------------ -------------------- ------------- --------------------------- ---------------------
+ 1    Group therapy        Gruppentherapie    Group therapy        30,00         (7010) Sales on therapies   Payment by presence
+ 2    Individual therapy   Einzeltherapie     Individual therapy   60,00         (7010) Sales on therapies   Payment by presence
  3    Other                Sonstige           Autre                35,00
+ 4    Prepayment           Prepayment         Prepayment                                                     Prepayments
                                                                    **125,00**
-==== ==================== ================== ==================== ============= ====================================== =====================
+==== ==================== ================== ==================== ============= =========================== =====================
 <BLANKLINE>
-
-
-Reference
-=========
-
-
-.. class:: Product
-           
-    Lino Tera has two specific fields:
-
-    .. attribute:: number_of_events
-
-        Number of calendar events paid per invoicing.
-
-    .. attribute:: min_asset
-
-        Minimum quantity required to trigger an invoice.
-
-    Other interesting fields are:
-    
-    .. attribute:: sales_account
-
-                   
 
 

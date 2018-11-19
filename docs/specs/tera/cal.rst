@@ -39,9 +39,9 @@ a day on the beach while the ⚕ reminds a drugstore.
  value   name         text         Button text   Edit participants   Stable   Transparent   No auto
 ------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
  10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Draft        ☐             Yes                 No       No            No
+ 20      draft        Scheduled    ☐             Yes                 No       No            No
  50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Cancelled    ⚕             No                  Yes      Yes           Yes
+ 70      cancelled    Called off   ⚕             No                  Yes      Yes           Yes
  60      missed       Missed       ☉             No                  Yes      No            Yes
 ======= ============ ============ ============= =================== ======== ============= =========
 <BLANKLINE>
@@ -52,23 +52,24 @@ a day on the beach while the ⚕ reminds a drugstore.
  Wert   name         Text            Button text   Teilnehmer bearbeiten   Stabil   nicht blockierend   No auto
 ------ ------------ --------------- ------------- ----------------------- -------- ------------------- ---------
  10     suggested    Vorschlag       ?             Ja                      Nein     Nein                Nein
- 20     draft        Entwurf         ☐             Ja                      Nein     Nein                Nein
+ 20     draft        Geplant         ☐             Ja                      Nein     Nein                Nein
  50     took_place   Stattgefunden   ☑             Ja                      Ja       Nein                Nein
- 70     cancelled    Storniert       ⚕             Nein                    Ja       Ja                  Ja
+ 70     cancelled    Abgesagt        ⚕             Nein                    Ja       Ja                  Ja
  60     missed       Verpasst        ☉             Nein                    Ja       Nein                Ja
 ====== ============ =============== ============= ======================= ======== =================== =========
 <BLANKLINE>
 
-Lino Tera uses the :attr:`EntryState.guest_state` attribute 
+
+:ref:`tera` uses the :attr:`EntryState.guest_state` attribute.
 
 >>> rt.show(cal.EntryStates, column_names='name text guest_state')
 ============ ============ =============
  name         text         Guest state
 ------------ ------------ -------------
  suggested    Suggested
- draft        Draft
+ draft        Scheduled
  took_place   Took place   Present
- cancelled    Cancelled    Excused
+ cancelled    Called off   Excused
  missed       Missed       Missing
 ============ ============ =============
 <BLANKLINE>

@@ -69,7 +69,7 @@ Rooms
 +---------------+--------------+---------------------------------------------------------------+
 | calendar      | Calendar     | Calendar where events in this room are published.             |
 +---------------+--------------+---------------------------------------------------------------+
-| fee           | Tariff       | The default fee to pay when renting this room to an external  |
+| fee           | Fee          | The default fee to pay when renting this room to an external  |
 |               |              | organization.                                                 |
 +---------------+--------------+---------------------------------------------------------------+
 | company       | Responsible  | Pointer to Company.                                           |
@@ -82,7 +82,7 @@ The following rooms are defined in the
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
 ================== ================== ===================== ================== =================== ============================= ==============================
- Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Responsible                   Locality
+ Designation        Designation (de)   Designation (fr)      Calendar           Fee                 Responsible                   Locality
 ------------------ ------------------ --------------------- ------------------ ------------------- ----------------------------- ------------------------------
  Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   4700 Eupen
  Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   4700 Eupen

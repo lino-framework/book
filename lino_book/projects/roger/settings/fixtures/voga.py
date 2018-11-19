@@ -33,6 +33,7 @@ from lino.utils import Cycler
 from django.conf import settings
 from atelier.utils import date_offset
 from lino.api import dd, rt, _
+from lino.utils.mldbc import babeld
 
 ENROLMENT_STORIES = Cycler([
     [(-20, None, None)],  # early enrolment
@@ -63,7 +64,7 @@ CourseStates = courses.CourseStates
 EnrolmentStates = courses.EnrolmentStates
 BookingStates = rooms.BookingStates
 Calendar = dd.resolve_model('cal.Calendar')
-
+Tariff = rt.models.invoicing.Tariff
 
 demo_date = dd.demo_date
 
@@ -124,19 +125,30 @@ class Loader1(object):
         # et="Muud", de="Sonstige", fr="Autres"))
         # yield other
 
+        t5 = babeld(Tariff, _("5 times"), number_of_events=5, min_asset=1)
+        yield t5
+        t8 = babeld(Tariff, _("8 times"), number_of_events=8, min_asset=2)
+        yield t8
+        t12 = babeld(
+            Tariff, _("12 times"), number_of_events=12, min_asset=4)
+        yield t12
+
         product = Instantiator(
             'products.Product', "sales_price cat name",
             vat_class=VatClasses.normal).build
         yield product("20", self.course_fees, "20€")
-        yield product(
-            "48", self.course_fees, "48€/8 hours",
-            number_of_events=8, min_asset=2)
-        yield product(
-            "64", self.course_fees, "64€/12 hours",
-            number_of_events=12, min_asset=4)
-        yield product(
-            "50", self.course_fees, "50€/5 hours",
-            number_of_events=5, min_asset=1)
+        yield product("48", self.course_fees, "48€/8 hours", tariff=t8)
+        # yield p
+        # yield Tariff(product=p, number_of_events=8, min_asset=2)
+        
+        yield product("64", self.course_fees, "64€/12 hours", tariff=t12)
+        # yield p
+        # yield Tariff(product=p, number_of_events=12, min_asset=4)
+            
+        yield product("50", self.course_fees, "50€/5 hours", tariff=t5)
+        # yield p
+        # yield Tariff(product=p, number_of_events=5, min_asset=1)
+        
         yield product("80", self.course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
@@ -281,7 +293,7 @@ class Loader2(Loader1):
             kw.update(teacher=TEACHERS.pop())
             #~ kw.update(price=PRICES.pop())
             obj = course(*args, **kw)
-            if obj.line.fee.number_of_events:
+            if obj.line.fee.tariff and obj.line.fee.tariff.number_of_events:
                 obj.max_events = None
             return obj
 
@@ -490,7 +502,7 @@ class Loader2(Loader1):
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
 
         for obj in Course.objects.filter(ref__isnull=True):
-            if obj.line.fee.number_of_events:
+            if obj.line.fee.tariff and obj.line.fee.tariff.number_of_events:
                 obj.ref = "%03dC" % obj.id
             else:
                 obj.ref = "%03d" % obj.id
@@ -590,8 +602,9 @@ class Loader2(Loader1):
                     else:
                         obj.state = EnrolmentStates.confirmed
                     if n % 9 == 0:
-                        if course.line.fee.number_of_events:
-                            obj.free_events = FREE_EVENTS.pop()
+                        if course.line.fee.tariff:
+                            if course.line.fee.tariff.number_of_events:
+                                obj.free_events = FREE_EVENTS.pop()
                     yield obj
 
         ses = settings.SITE.login()

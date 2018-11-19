@@ -1,4 +1,4 @@
-.. doctest docs/specs/jobs.rst
+.. doctest docs/specs/welfare/jobs.rst
 .. _welfare.specs.jobs:
 
 ===============
@@ -252,17 +252,17 @@ Reached upper date limit 2014-12-02 for 7
 >>> ses.show(cal.EntriesByController.request(obj),
 ... column_names="when_html summary")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================== ==================
- Wann               Kurzbeschreibung
------------------- ------------------
- **Mo. 04.03.13**   Évaluation 1
- **Di. 04.06.13**   Évaluation 2
- **Mi. 04.09.13**   Évaluation 3
- **Mi. 04.12.13**   Évaluation 4
- **Di. 04.03.14**   Évaluation 5
- **Mi. 04.06.14**   Évaluation 6
- **Do. 04.09.14**   Évaluation 7
-================== ==================
+================ ==================
+ Wann             Kurzbeschreibung
+---------------- ------------------
+ *Mo. 04.03.13*   Évaluation 1
+ *Di. 04.06.13*   Évaluation 2
+ *Mi. 04.09.13*   Évaluation 3
+ *Mi. 04.12.13*   Évaluation 4
+ *Di. 04.03.14*   Évaluation 5
+ *Mi. 04.06.14*   Évaluation 6
+ *Do. 04.09.14*   Évaluation 7
+================ ==================
 <BLANKLINE>
 
 Mélanie has two appointments on 2014-09-15 (TODO: this test currently

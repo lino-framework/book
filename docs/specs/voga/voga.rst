@@ -54,14 +54,14 @@ True
 
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
-appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-135.pdf
+appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-16.pdf
 
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/cache/appypdf/sales.VatProductInvoice-135.pdf
+/media/cache/appypdf/sales.VatProductInvoice-16.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (<a href="/media/cache/appypdf/sales.VatProductInvoice-135.pdf">sales.VatProductInvoice-135.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
+Your printable document (<a href="/media/cache/appypdf/sales.VatProductInvoice-16.pdf">sales.VatProductInvoice-16.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
 
 Note that we must clear the print cache because leaving the excerpt
 there would break a test case in :doc:`db_roger`.

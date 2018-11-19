@@ -22,3 +22,4 @@ the Lino internals.
    docstrings
    help_texts
    specs
+   manuals

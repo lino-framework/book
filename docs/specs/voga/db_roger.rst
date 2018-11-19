@@ -18,8 +18,8 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, products, rooms, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-80 models:
+41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, ledger, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+81 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -45,7 +45,7 @@ The database structure
  contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         80
+ contenttypes.ContentType   gfks.ContentTypes              3         81
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
@@ -61,24 +61,25 @@ The database structure
  excerpts.Excerpt           excerpts.Excerpts              11        ...
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        129
+ finan.BankStatementItem    finan.BankStatementItemTable   10        142
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
  gfks.HelpText              gfks.HelpTexts                 4         2
- invoicing.Item             invoicing.Items                10        7
+ invoicing.Item             invoicing.Items                9         5
  invoicing.Plan             invoicing.Plans                7         1
  invoicing.SalesRule        invoicing.SalesRules           3         4
+ invoicing.Tariff           invoicing.Tariffs              7         3
  ledger.Account             ledger.Accounts                17        27
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.FiscalYear          ledger.FiscalYears             5         7
  ledger.Journal             ledger.Journals                23        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
  ledger.MatchRule           ledger.MatchRules              3         16
- ledger.Movement            ledger.Movements               12        854
+ ledger.Movement            ledger.Movements               12        887
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
- ledger.Voucher             ledger.Vouchers                9         258
+ ledger.Voucher             ledger.Vouchers                9         268
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -91,9 +92,9 @@ The database structure
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        114
+ sales.InvoiceItem          sales.InvoiceItems             15        174
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 25        87
+ sales.VatProductInvoice    sales.Invoices                 25        97
  sepa.Account               sepa.Accounts                  6         25
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
@@ -141,7 +142,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role, rooms.Booking.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, invoicing.Item.generator_type, notes.Note.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, contacts.Person.birth_country, contacts.Person.nationality, countries.Place.country
 - countries.Place :
@@ -176,6 +177,8 @@ behaviour. See also :doc:`/dev/delete`.
   - CASCADE : finan.PaymentOrderItem.voucher
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
+- invoicing.Tariff :
+  - PROTECT : products.Product.tariff
 - ledger.Account :
   - PROTECT : finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
 - ledger.AccountingPeriod :

@@ -47,10 +47,9 @@ handler.
 
 Now we run some action and look at the resulting.
 
-To understand the following, you should also look at the source code
-of the accounting report (:class:`sheets.Report
-<lino_xl.lib.sheets.Report>` class in :mod:`lino_xl.lib.sheets`) and
-read the Django documentation about `Using aggregates within a
+We run the :meth:`run_update_plan` action of an accounting report
+(:class:`sheets.Report <lino_xl.lib.sheets.Report>`).  You might want
+to read the Django documentation about `Using aggregates within a
 Subquery expression
 <https://docs.djangoproject.com/en/1.11/ref/models/expressions/#using-aggregates-within-a-subquery-expression>`__.
 
@@ -64,19 +63,20 @@ Subquery expression
 ========================= =========== =======
  table                     stmt_type   count
 ------------------------- ----------- -------
-                           INSERT      81
-                           UNKNOWN     85
+                           INSERT      121
+                           UNKNOWN     125
  ana_account               SELECT      22
- cal_event                 SELECT      81
- cal_task                  SELECT      81
- checkdata_problem         SELECT      81
- contacts_partner          SELECT      36
- django_content_type       SELECT      11
- excerpts_excerpt          SELECT      81
+ cal_event                 SELECT      121
+ cal_task                  SELECT      121
+ checkdata_problem         SELECT      121
+ contacts_partner          SELECT      76
+ django_content_type       SELECT      12
+ excerpts_excerpt          SELECT      121
+ invoicing_item            SELECT      121
  ledger_account            SELECT      22
  ledger_accountingperiod   SELECT      2
- notes_note                SELECT      81
- sales_invoiceitem         SELECT      81
+ notes_note                SELECT      121
+ sales_invoiceitem         SELECT      121
  sheets_accountentry       DELETE      1
  sheets_accountentry       SELECT      7
  sheets_anaaccountentry    DELETE      1
@@ -86,8 +86,8 @@ Subquery expression
  sheets_itementry          SELECT      9
  sheets_partnerentry       DELETE      1
  sheets_partnerentry       SELECT      1
- sheets_report             SELECT      81
- topics_interest           SELECT      81
+ sheets_report             SELECT      121
+ topics_interest           SELECT      121
 ========================= =========== =======
 <BLANKLINE>
 

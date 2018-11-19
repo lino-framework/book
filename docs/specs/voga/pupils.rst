@@ -61,7 +61,7 @@ columns as :class:`EnrolmentsByCourse
 
 >>> rt.show('courses.EnrolmentsByCourse', obj)
 ==================== ============================= ============ ============ ============= ======== ========== ============= ============== ===============
- Date of request      Participant                   Start date   End date     Places used   Remark   Tariff     Free events   Amount         Workflow
+ Date of request      Participant                   Start date   End date     Places used   Remark   Fee        Free events   Amount         Workflow
 -------------------- ----------------------------- ------------ ------------ ------------- -------- ---------- ------------- -------------- ---------------
  25/07/2014           Hans Altenberg (MEL)                                    1                      Journeys                 295,00         **Confirmed**
  25/07/2014           Bernd Brecht (ME)                                       1                      Journeys                 295,00         **Confirmed**

@@ -1,3 +1,4 @@
+.. doctest docs/tested/core_utils.rst
 .. _tested.core_utils:
 
 Lino core utilities
@@ -25,7 +26,7 @@ models which are subclass of a given class.
 
 >>> from lino.mixins.duplicable import Duplicable
 >>> rt.models_by_base(Duplicable)
-[<class 'lino_xl.lib.countries.models.Place'>, <class 'lino_xl.lib.polls.models.Choice'>, <class 'lino_xl.lib.polls.models.Question'>]
+[<class 'lino_xl.lib.contacts.models.Company'>, <class 'lino_xl.lib.contacts.models.Partner'>, <class 'lino_xl.lib.contacts.models.Person'>, <class 'lino_xl.lib.countries.models.Place'>, <class 'lino_xl.lib.polls.models.Choice'>, <class 'lino_xl.lib.polls.models.Question'>]
 
 >>> rt.models_by_base(rt.models.contacts.Partner)
 [<class 'lino_xl.lib.contacts.models.Company'>, <class 'lino_xl.lib.contacts.models.Partner'>, <class 'lino_xl.lib.contacts.models.Person'>]

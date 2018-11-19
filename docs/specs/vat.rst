@@ -47,11 +47,11 @@ Code snippets in this document are based on the
 Dependencies
 ============
 
-Installing this plugin will automatically install
-:mod:`lino_xl.lib.countries` :mod:`lino_xl.lib.ledger`.
+This plugin also requires :mod:`lino_xl.lib.countries` and
+:mod:`lino_xl.lib.ledger`.
 
 >>> dd.plugins.vat.needs_plugins     
-['lino_xl.lib.countries', 'lino_xl.lib.ledger']
+['lino_xl.lib.countries']
 
 
 Fixtures

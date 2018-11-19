@@ -57,7 +57,7 @@ The detail view of a therapy
   - (sales_1): **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type), **ID** (id)
   - (sales_2): **State** (state), **Ending reason** (ending_reason)
   - (sales_3) [visible for secretary therapist admin]:
-    - **Invoicings** (invoicing.InvoicingsByInvoiceable) [visible for secretary admin]
+    - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
     - **Existing excerpts** (excerpts_ExcerptsByProject)
 - **More** (more):
   - **Remark** (remark)

@@ -2,30 +2,26 @@
 .. _tera.specs.misc:
 .. _presto.specs.psico:
 
-=============================
-Lino Tera : a first overview
-=============================
+=========================
+Lino Tera : miscellaneous
+=========================
 
-.. doctest init
+.. include:: /includes/tested.rst
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> from django.db import models
-
-The demo project :mod:`lino_book.projects.lydia` is used for testing
-the following document.
-
->>> settings.SETTINGS_MODULE
-'lino_book.projects.lydia.settings.doctests'
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db import models
 
 
-All :ref:`tera` application have a :xfile:`settings.py` module which
+Every :ref:`tera` application has a :xfile:`settings.py` module that
 inherits from :mod:`lino_tera.lib.tera.settings`.
 
 >>> from lino_tera.lib.tera.settings import Site
 >>> isinstance(settings.SITE, Site)
 True
+
+Lino Tera does not have multiple addresses per partner.
 
 >>> dd.is_installed('addresses')
 False
@@ -79,12 +75,12 @@ generated them:
 >>> ses = rt.login()
 >>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
 >>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
-xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-63.xml ('en', {})
+xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-205.xml ('en', {})
 
 >>> rv['success']
 True
 >>> print(rv['open_url'])
-/media/xml/xml/finan.PaymentOrder-63.xml
+/media/xml/xml/finan.PaymentOrder-205.xml
 
 Let's check whether the XML file has been generated and is a valid
 SEPA payment initiation:
@@ -104,7 +100,7 @@ Voucher types
 =============================== ====== ================================================================
  value                           name   text
 ------------------------------- ------ ----------------------------------------------------------------
- sales.InvoicesByJournal                Product invoice (sales.InvoicesByJournal)
+ sales.InvoicesByJournal                Sales invoice (sales.InvoicesByJournal)
  finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
  finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
  finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)

@@ -75,9 +75,10 @@ In Avanti there is a state "exused" but we removed the transition it:
 ============= ============== ============ ============== ================================
  Action name   Verbose name   Help text    Target state   Required states
 ------------- -------------- ------------ -------------- --------------------------------
- reset_event   Reset          Draft        Draft          suggested took_place cancelled
- wf2           Took place     Took place   Took place     suggested draft cancelled
- wf3           ☒              Cancelled    Cancelled      suggested draft took_place
+ reset_event   Reset          Suggested    Suggested      suggested took_place cancelled
+ wf2           ☐              Draft        Draft          suggested cancelled took_place
+ wf3           Took place     Took place   Took place     suggested draft cancelled
+ wf4           ☒              Cancelled    Cancelled      suggested draft took_place
 ============= ============== ============ ============== ================================
 
      

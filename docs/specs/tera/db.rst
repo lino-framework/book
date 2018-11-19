@@ -2,7 +2,7 @@
 .. _specs.tera.db:
 
 ===============================
-Database structure in Lino Voga
+Database structure in Lino Tera
 ===============================
 
 .. doctest init:
@@ -20,8 +20,8 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, products, weasyprint, ledger, vat, sales, cal, invoicing, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-91 models:
+43 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+94 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -31,10 +31,10 @@ The database structure
  bevats.Declaration          bevats.Declarations            28        3
  cal.Calendar                cal.Calendars                  6         1
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
- cal.Event                   cal.OneEvent                   24        693
+ cal.Event                   cal.OneEvent                   25        693
  cal.EventPolicy             cal.EventPolicies              19        6
  cal.EventType               cal.EventTypes                 21        5
- cal.Guest                   cal.Guests                     6         780
+ cal.Guest                   cal.Guests                     7         780
  cal.GuestRole               cal.GuestRoles                 5         2
  cal.Priority                cal.Priorities                 5         4
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
@@ -51,61 +51,64 @@ The database structure
  contacts.Person             contacts.Persons               32        69
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         91
+ contenttypes.ContentType    gfks.ContentTypes              3         94
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             41        52
  courses.Enrolment           courses.Enrolments             16        78
- courses.Line                courses.Lines                  24        3
+ courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
  dashboard.Widget            dashboard.Widgets              5         0
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
- finan.BankStatement         finan.BankStatements           16        1
- finan.BankStatementItem     finan.BankStatementItemTable   10        6
+ finan.BankStatement         finan.BankStatements           16        4
+ finan.BankStatementItem     finan.BankStatementItemTable   10        186
  finan.JournalEntry          finan.FinancialVouchers        14        0
  finan.JournalEntryItem      finan.JournalEntryItemTable    10        0
  finan.PaymentOrder          finan.PaymentOrders            15        4
  finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
  gfks.HelpText               gfks.HelpTexts                 4         2
+ healthcare.Plan             healthcare.Plans               6         0
+ healthcare.Rule             healthcare.Rules               4         0
  households.Household        households.Households          28        6
  households.Member           households.Members             14        12
  households.Type             households.Types               4         6
- invoicing.Item              invoicing.Items                10        0
+ invoicing.Item              invoicing.Items                9         44
  invoicing.Plan              invoicing.Plans                7         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
+ invoicing.Tariff            invoicing.Tariffs              7         1
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
  ledger.Journal              ledger.Journals                23        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
- ledger.Movement             ledger.Movements               13        260
+ ledger.Movement             ledger.Movements               13        738
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
- ledger.Voucher              ledger.Vouchers                9         67
+ ledger.Voucher              ledger.Vouchers                9         212
  lists.List                  lists.Lists                    7         8
  lists.ListType              lists.ListTypes                4         3
  lists.Member                lists.Members                  5         0
  notes.EventType             notes.EventTypes               8         1
  notes.Note                  notes.Notes                    17        100
  notes.NoteType              notes.NoteTypes                11        3
- products.Product            products.Products              14        3
- products.ProductCat         products.ProductCats           5         1
- sales.InvoiceItem           sales.InvoiceItems             15        48
+ products.Product            products.Products              14        4
+ products.ProductCat         products.ProductCats           5         2
+ sales.InvoiceItem           sales.InvoiceItems             15        467
  sales.PaperType             sales.PaperTypes               5         2
- sales.VatProductInvoice     sales.Invoices                 25        24
+ sales.VatProductInvoice     sales.Invoices                 25        166
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
  sheets.AccountEntry         sheets.AccountEntryTable       7         16
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
  sheets.ItemEntry            sheets.ItemEntryTable          7         15
- sheets.PartnerEntry         sheets.PartnerEntryTable       8         30
+ sheets.PartnerEntry         sheets.PartnerEntryTable       8         70
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   43        58
+ tera.Client                 tera.Clients                   44        58
  tera.LifeMode               tera.LifeModes                 4         0
  tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
@@ -113,7 +116,7 @@ The database structure
  topics.Topic                topics.Topics                  9         3
  topics.TopicGroup           topics.TopicGroups             5         0
  users.Authority             users.Authorities              3         0
- users.User                  users.Users                    20        6
+ users.User                  users.Users                    21        6
  vat.InvoiceItem             vat.InvoiceItemTable           9         0
  vat.VatAccountInvoice       vat.Invoices                   20        0
 =========================== ============================== ========= =======
@@ -148,7 +151,7 @@ behaviour. See also :doc:`/dev/delete`.
 - clients.ClientContactType :
   - PROTECT : clients.ClientContact.type, contacts.Partner.client_contact_type
 - contacts.Company :
-  - PROTECT : cal.Room.company, clients.ClientContact.company, contacts.Role.company, courses.Line.company, excerpts.Excerpt.company, ledger.Journal.partner, notes.Note.company, system.SiteConfig.site_company
+  - PROTECT : cal.Room.company, clients.ClientContact.company, contacts.Role.company, courses.Line.company, excerpts.Excerpt.company, healthcare.Plan.provider, ledger.Journal.partner, notes.Note.company, system.SiteConfig.site_company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
@@ -160,7 +163,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, clients.ClientContact.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, sales.InvoiceItem.invoiceable_type, topics.Interest.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, invoicing.Item.generator_type, notes.Note.owner_type, sales.InvoiceItem.invoiceable_type, topics.Interest.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country, tera.Client.nationality
 - countries.Place :
@@ -183,12 +186,16 @@ behaviour. See also :doc:`/dev/delete`.
   - CASCADE : finan.JournalEntryItem.voucher
 - finan.PaymentOrder :
   - CASCADE : finan.PaymentOrderItem.voucher
+- healthcare.Plan :
+  - PROTECT : healthcare.Rule.plan, tera.Client.healthcare_plan
 - households.Household :
   - CASCADE : households.Member.household
 - households.Type :
   - PROTECT : households.Household.type
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
+- invoicing.Tariff :
+  - PROTECT : products.Product.tariff
 - ledger.Account :
   - CASCADE : sheets.AccountEntry.account
   - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
@@ -212,7 +219,7 @@ behaviour. See also :doc:`/dev/delete`.
 - notes.NoteType :
   - PROTECT : notes.Note.type
 - products.Product :
-  - PROTECT : courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, sales.InvoiceItem.product
+  - PROTECT : courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.prepayment_product
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
@@ -248,11 +255,12 @@ behaviour. See also :doc:`/dev/delete`.
 
 
 >>> print(analyzer.show_complexity_factors())
-- 42 plugins
-- 91 models
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- 43 plugins
+- 94 models
 - 21 user roles
 - 4 user types
-- 343 views
-- 96 dialog actions
+- 349 views
+- 26 dialog actions
 <BLANKLINE>
 

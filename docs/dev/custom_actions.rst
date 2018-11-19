@@ -174,7 +174,6 @@ Here are the actions on Moos:
  <lino.core.actions.SaveGridCell grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
- <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino_book.projects.actions.models.A a ('a')>,
  <lino_book.projects.actions.models.A b ('a')>,
  <lino.core.actions.ShowTable grid>,
@@ -191,7 +190,6 @@ both actions `m` and `t`:
  <lino.core.actions.SaveGridCell grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
- <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino_book.projects.actions.models.A a ('a')>,
  <lino_book.projects.actions.models.A b ('a')>,
  <lino.core.actions.ShowTable grid>,
@@ -207,7 +205,6 @@ them with None:
  <lino.core.actions.SaveGridCell grid_put>,
  <lino.core.actions.SubmitInsert submit_insert ('Create')>,
  <lino.core.actions.DeleteSelected delete_selected ('Delete')>,
- <lino.core.merge.MergeAction merge_row ('Merge')>,
  <lino.core.actions.ShowTable grid>]
 
 

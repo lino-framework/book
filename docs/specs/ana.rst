@@ -110,7 +110,7 @@ And finally this plugin defines a new voucher type
 invoice item where the user can specify an analytic account.  For
 example:
 
->>> obj = ana.AnaAccountInvoice.objects.get(pk=1)
+>>> obj = ana.AnaAccountInvoice.objects.order_by('id').first()
 >>> rt.show(ana.ItemsByInvoice, obj)
 ============================= ============= ==================== =========== ================= ===== =================
  Account                       Description   Analytical account   VAT class   Total excl. VAT   VAT   Total incl. VAT

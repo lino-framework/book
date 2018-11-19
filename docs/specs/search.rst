@@ -76,7 +76,7 @@ True
 ...         print("Not visible: {}".format(t))
 ...     count += 1
 >>> print("Verified {} models".format(count))
-Verified 91 models
+Verified 94 models
 
 >>> rt.models.contacts.Person.quick_search_fields_digit
 (<django.db.models.fields.AutoField: id>,)
@@ -91,7 +91,7 @@ SiteSearch fails when it finds a name containing "&")
 -------------------------------- ---------------------------------
  *Rumma & Ko OÜ* (Partner)        name:**Rumma** & Ko OÜ
  *Rumma & Ko OÜ* (Organization)   name:**Rumma** & Ko OÜ
- *SLS 1/2015* (Product invoice)   partner__name:**Rumma** & Ko OÜ
+ *SLS 1/2015* (Sales invoice)     partner__name:**Rumma** & Ko OÜ
  *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
  *Row # 5* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
  *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ

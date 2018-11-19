@@ -1,21 +1,36 @@
+.. doctest docs/specs/notify.rst
 .. _book.specs.notify:
 
-==========================
-The notification framework
-==========================
-
-.. to test only this document:
-   
-    $ python setup.py test -s tests.SpecsTests.test_notify
-   
-    doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.chatter.settings.demo')
-    >>> from lino.api.shell import *
-    >>> from pprint import pprint
+===============================
+notify (notification framework)
+===============================
 
 The :mod:`lino.modlib.notify` plugin adds a notification framework to
 your Lino application.
+
+.. currentmodule:: lino.modlib.notify
+
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /include/tested.rst
+   
+>>> import lino
+>>> lino.startup('lino_book.projects.chatter.settings.demo')
+>>> from lino.api.shell import *
+>>> from pprint import pprint
+
+Overview
+========
+
+A **notification message** is a message sent by the application to a
+user of the site.
+
+Lino sends notifications as `Desktop notifications`_ and/or by email
+depending on the user preferences of the recipient.
+In addition, notification messages are sent via email to the user
+according to his :attr:`mail_mode` field.
 
 Don't mix up notifications with "system notes" (implemented by
 :mod:`lino_xl.lib.notes`).  These are fundamentally different beasts
@@ -26,35 +41,84 @@ quickly sent to their recipients, *system notes* are permanent
 historic entries visible to every user (who has the required
 permission).
 
-.. currentmodule:: lino.modlib.notify
-
-A **notification message** is a message sent by the application to a
-system user.
-
-If :attr:`lino.core.site.Site.use_websockets` is `True` and the user
-is online, then he will see it as a desktop notification.
-
-Unseen notfication messages are displayed by the `MyMessages` table
-which is usually part of the dashboard in admin main view. This table
-also provides an action for marking a message as seen.
-
-In addition, notification messages are sent via email to the user
-according to his :attr:`mail_mode` field.
 
 The emitter of a notification message is currently not stored. That
 is, you cannot currently request to see a list of all messages emitted
 by a given user.
 
+Notification messages are emitted by the application code
 
-Notification messages are emitted by the application code.
+- Either manually by calling the class method
+  :meth:`Message.create_message` to create a new message.
 
-- Either manually, using code like (TODO: write example)
+- Have your models inherit from :class:`ChangeNotifier`.
 
-- By having your models inherit from :class:`ChangeNotifier`.
+- Add actions that inherit from :class:`NotifyingAction`.
 
-- By adding actions which inherit from :class:`NotifyingAction`  
 
-                   
+
+Desktop notifications
+=====================
+
+To enable desktop notifications, there are some requirements:
+
+- :attr:`lino.core.site.Site.use_websockets` must be `True`
+- notifications must be properly installed on the server
+  
+- the user must have their browser open and have
+  signed in to the Lino site
+  
+- the user must give their browser permission to show desktop
+  notifications from the Lino site
+  
+
+Marking notifications as seen
+=============================
+
+In addition to sending notifications via email and as desktop
+notification, Lino displays unseen notfication messages in the
+dashboard where it also provides an action for marking individual
+message as seen.
+
+A common caveat is that Lino does not know whether you saw the desktop
+notification or the email.  That's why all notifications remain on
+your dashboard until you tick them off explicitly.  
+
+- It can be disturbing to read a message again in the dasboard if you
+  have just read by email or as a desktop notification.
+
+- Some users tend to not care about marking their notifications as
+  seen in the dashboard, which causes their "My notification messages"
+  to become overfilled and useless.
+
+- Some users misunderstand the my notifications widget as a to-do
+  list, which is not a good idea.
+
+There is no perfect solution for these problems.  One workaround is to
+instruct Lino to also delete *unseen* notifications automatically, by
+setting :attr:`keep_unseen <lino.modlib.notify.Plugin.keep_unseen>` to
+`False`.  Here is an example which also increases :attr:`remove_after
+<lino.modlib.notify.Plugin.remove_after>` to 240 hours (10 days)::
+
+   SITE.plugins.notify.configure(remove_after=240, keep_unseen=False)
+
+Users can hide the `MyMessages` widget in their preferences if
+:mod:`lino.modlib.dashboard` is installed as well.  But that's not a
+recommended solution.  If you see that users of your application are
+doing this, you should analyze why they do it and e.g. add filtering
+options.
+
+Possible optimizations of the system:
+
+- Marking notifications as seen in the dashboard can be a bit slow
+  because Lino refreshes the whole dashboard after every click.  We
+  could avoid this using javascript which sets the item to hidden
+  instead of calling refresh.
+  
+- Add a &notify=123456" (the id of the message) to every link in the
+  email so that when the user follows one of them, the message can get
+  marked as seen.
+
 
 
 Notification messages
@@ -62,15 +126,7 @@ Notification messages
 
 .. class:: Message
 
-    A **Notification message** is an instant message sent by the
-    application to a given user.
-
-    Applications can either use it indirectly by sublassing
-    :class:`ChangeNotifier
-    <lino.modlib.notify.ChangeNotifier>` or by directly
-    calling the class method :meth:`create_message` to create a new
-    message.
-
+    The Django model that represents a *notification message*.
 
     .. attribute:: subject
     .. attribute:: body
@@ -347,8 +403,7 @@ Templates used by this plugin
 
     Available context variables:
 
-    - ``obj`` -- The :class:`Message
-      <lino.modlib.notify.Message>` instance being sent.
+    - ``obj`` -- The :class:`Message` instance being sent.
 
     - ``E`` -- The html namespace :mod:`etgen.html`
 

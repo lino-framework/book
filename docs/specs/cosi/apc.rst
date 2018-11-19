@@ -47,31 +47,31 @@ Robin is the system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
+- Office : My Excerpts
+- Sales : Products, Product Categories, Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
-  - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
-  - Create invoices
-- Products : Products, Product Categories
-- Office : My Excerpts
 - Reports :
-  - Accounting : Debtors, Creditors, Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Accounting : Debtors, Creditors
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
-  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
   - Office : Excerpt Types, My Text Field Templates
-  - VAT : Paper types
+  - Sales : Paper types, Tariffs
+  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
+  - Office : Excerpts, Text Field Templates
+  - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - SEPA : Bank accounts
-  - Office : Excerpts, Text Field Templates
-  - VAT : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Product invoices, Product invoice items, Invoicing plans, Sales rules, Belgian VAT declarations, Declaration fields
   - Financial : Bank Statements, Journal Entries, Payment Orders
+  - VAT : Belgian VAT declarations, Declaration fields
 - Site : About
 
 
