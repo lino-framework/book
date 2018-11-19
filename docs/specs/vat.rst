@@ -238,8 +238,7 @@ VAT rules
     Accessible via :menuselection:`Explorer --> VAT --> VAT rules`.
 
     >>> show_menu_path(vat.VatRules)
-    Explorer --> MwSt. --> MwSt-Regeln
-
+    Explorer --> Verkauf --> MwSt-Regeln
 
 >>> vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
 Decimal('0.21')
