@@ -1,3 +1,5 @@
+.. _dev.manuals:
+
 =====================
 Manuals for end-users
 =====================
