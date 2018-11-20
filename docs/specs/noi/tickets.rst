@@ -371,6 +371,18 @@ Above table in German:
 There is also a "modern" series of symbols, which can be enabled
 site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
    
+If :attr:`use_new_unicode_symbols
+<lino.core.site.Site.use_new_unicode_symbols>` is True, ticket states
+are represented using symbols from the `Miscellaneous Symbols and
+Pictographs
+<https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Pictographs>`__
+block, otherwise we use the more widely supported symbols from
+`Miscellaneous Symbols
+<https://en.wikipedia.org/wiki/Miscellaneous_Symbols>`
+`fileformat.info
+<http://www.fileformat.info/info/unicode/block/miscellaneous_symbols/list.htm>`__.
+
+            
 
 
 - :attr:`standby <lino_xl.lib.tickets.models.Ticket.standby>`

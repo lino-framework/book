@@ -4,7 +4,7 @@
 Lino Noi specs
 =======================
 
-This section contains specs specific to :ref:`noi`.
+This section contains specs for :ref:`noi`.
 
 
 .. toctree::
@@ -35,3 +35,15 @@ This section contains specs specific to :ref:`noi`.
     sql
    
 
+
+.. currentmodule:: lino_noi.lib.noi
+                   
+.. module:: workflows
+
+The default :attr:`workflows_module
+<lino.core.site.Site.workflows_module>` for :ref:`noi` applications.
+
+This workflow requires that both :mod:`lino_xl.lib.tickets` and
+:mod:`lino_xl.lib.votes` are installed.
+           
+            

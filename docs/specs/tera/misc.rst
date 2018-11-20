@@ -6,7 +6,11 @@
 Lino Tera : miscellaneous
 =========================
 
-.. include:: /includes/tested.rst
+.. contents:: 
+   :local:
+   :depth: 2
+
+.. include:: /include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')
