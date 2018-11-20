@@ -4,13 +4,14 @@
 Writing documentation
 =====================
 
-Writing documentation about Lino is a complex topic.  Note that we do
-*not* provide documentation for *end-users* (which must be written per
-application by the product owner).  The audience of Lino documentation
-are trainers, consultants, application developers and core developers.
-They need *topic overviews* as well as *reference documentation* about
-every plugin.  Core developers additionally need documentation about
-the Lino internals.
+The Lino documentation is written in Sphinx.
+
+The audience of Lino documentation range from end-users to trainers,
+consultants, application developers, hosting prviders to core
+developers.
+
+All this documentation is published in code repositories as free
+content under the same licence as the source code.
 
 
 .. toctree::
