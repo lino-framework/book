@@ -38,7 +38,7 @@ This section contains specs for :ref:`noi`.
 
 .. currentmodule:: lino_noi.lib.noi
                    
-.. module:: workflows
+.. module:: lino_noi.lib.noi.workflows
 
 The default :attr:`workflows_module
 <lino.core.site.Site.workflows_module>` for :ref:`noi` applications.
