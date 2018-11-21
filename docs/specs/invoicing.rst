@@ -117,6 +117,12 @@ The ``InvoiceGenerator`` model mixin
         This is deprecated. Preferred way is to use
         :attr:`invoicings`.
 
+    .. method:: get_last_invoicing()
+
+        Return the last invoicing that was created by this generator.
+        According to the invoice's :attr:`voucher_date
+        <lino_xl.lib.ledger.Voucher.voucher_date>`.
+
                 
 
 Sales rules

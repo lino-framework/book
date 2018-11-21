@@ -54,14 +54,6 @@ The Lino Book
 .. automodule:: lino_book
 
 
-.. _man:
-
-The Lino End-User Manuals
-=========================
-
-See :doc:`/dev/manuals`
-
-
 .. _lino.apps:
 
 Maintained Lino applications
