@@ -45,16 +45,11 @@ been assigned to:
 
 >>> c = courses.Course.objects.all().first()
 >>> c
-Course #1 (' Arens Andreas')
+Course #1 ('Arens Andreas')
 
 >>> rt.show(topics.InterestsByPartner, c)
-============
- Topic
-------------
- Alcoholism
- Phobia
-============
-<BLANKLINE>
+*(A) Alcoholism*
+*(P) Phobia*
 
 A site administrator can configure the list of topics.
 
@@ -67,11 +62,11 @@ topic ios interesting.
 
 >>> t = topics.Topic.objects.all().first()
 >>> t
-Topic #1 ('Alcoholism')
+Topic #1 ('(A) Alcoholism')
 
 >>> rt.show(topics.InterestsByTopic, t)
 ======================= ===============
- Therapy                 Controlled by
+ Dossier                 Controlled by
 ----------------------- ---------------
  Arens Andreas
  Arens Annette

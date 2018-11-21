@@ -32,7 +32,7 @@ it was the first Lino that went into production in 2010.
 - 142 models
 - 41 user roles
 - 16 user types
-- 541 views
+- 540 views
 - 28 dialog actions
 <BLANKLINE>
 
@@ -1144,7 +1144,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benachrichtigungen : 14
 - Explorer --> System --> Änderungen : 0
 - Explorer --> System --> All dashboard widgets : 1
-- Explorer --> System --> Datentests : 16
+- Explorer --> System --> Datentests : 17
 - Explorer --> System --> Datenprobleme : 64
 - Explorer --> Eigenschaften --> Eigenschaften : 24
 - Explorer --> Büro --> Auszüge : 69

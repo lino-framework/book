@@ -71,15 +71,15 @@ Kitchen (12/05/2014)
 ========================== =================== ================= ============= =================
  When                       Short description   Managed by        Assigned to   Workflow
 -------------------------- ------------------- ----------------- ------------- -----------------
- *Mon 12/05/2014 (08:00)*   1                   Hubert Huppertz                 **? Suggested**
- *Mon 19/05/2014 (08:00)*   2                   Hubert Huppertz                 **? Suggested**
- *Mon 26/05/2014 (08:00)*   3                   Hubert Huppertz                 **? Suggested**
- *Mon 02/06/2014 (08:00)*   4                   Hubert Huppertz                 **? Suggested**
  *Mon 16/06/2014 (08:00)*   5                   Hubert Huppertz                 **? Suggested**
+ *Mon 02/06/2014 (08:00)*   4                   Hubert Huppertz                 **? Suggested**
+ *Mon 26/05/2014 (08:00)*   3                   Hubert Huppertz                 **? Suggested**
+ *Mon 19/05/2014 (08:00)*   2                   Hubert Huppertz                 **? Suggested**
+ *Mon 12/05/2014 (08:00)*   1                   Hubert Huppertz                 **? Suggested**
 ========================== =================== ================= ============= =================
 <BLANKLINE>
 
->>> event = ar[0]
+>>> event = ar[4]
 >>> print(event)
  1 (12.05.2014 08:00)
 

@@ -30,19 +30,20 @@ checkers.
     
 
 >>> rt.show(checkdata.Checkers)
-================================= ===============================================
- value                             text
---------------------------------- -----------------------------------------------
- printing.CachedPrintableChecker   Check for missing target files
- countries.PlaceChecker            Check data of geographical places.
- beid.BeIdCardHolderChecker        Check for invalid SSINs
- cal.EventGuestChecker             Entries without participants
- cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
- cal.LongEntryChecker              Too long-lasting calendar entries
- ledger.VoucherChecker             Check integrity of ledger movements
- sepa.BankAccountChecker           Check for partner mismatches in bank accounts
-================================= ===============================================
+=================================== ===============================================
+ value                               text
+----------------------------------- -----------------------------------------------
+ printing.CachedPrintableChecker     Check for missing target files
+ countries.PlaceChecker              Check data of geographical places.
+ beid.BeIdCardHolderChecker          Check for invalid SSINs
+ cal.EventGuestChecker               Entries without participants
+ cal.ConflictingEventsChecker        Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
+ cal.LongEntryChecker                Too long-lasting calendar entries
+ ledger.VoucherChecker               Check integrity of ledger movements
+ sepa.BankAccountChecker             Check for partner mismatches in bank accounts
+ finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
+=================================== ===============================================
 <BLANKLINE>
 
 

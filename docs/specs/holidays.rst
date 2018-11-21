@@ -72,24 +72,26 @@ automatically all Ash Wednesdays for a range of years:
 ==================== =================== ================= ======== ================== =====================
  When                 Short description   Workflow          No.      Responsible user   Calendar entry type
 -------------------- ------------------- ----------------- -------- ------------------ ---------------------
- Wed 18/02/2015       Ash Wednesday       **? Suggested**   3                           Holidays
- Wed 10/02/2016       Ash Wednesday       **? Suggested**   4                           Holidays
- Wed 01/03/2017       Ash Wednesday       **? Suggested**   5                           Holidays
- Wed 14/02/2018       Ash Wednesday       **? Suggested**   6                           Holidays
  Wed 06/03/2019       Ash Wednesday       **? Suggested**   7                           Holidays
- **Total (5 rows)**                                         **25**
+ Wed 14/02/2018       Ash Wednesday       **? Suggested**   6                           Holidays
+ Wed 01/03/2017       Ash Wednesday       **? Suggested**   5                           Holidays
+ Wed 10/02/2016       Ash Wednesday       **? Suggested**   4                           Holidays
+ Wed 18/02/2015       Ash Wednesday       **? Suggested**   3                           Holidays
+ Wed 05/03/2014       Ash Wednesday       **? Suggested**   2                           Holidays
+ **Total (6 rows)**                                         **27**
 ==================== =================== ================= ======== ================== =====================
 <BLANKLINE>
 
 Actually the user sees just the summary:
 
 >>> rt.show(cal.EntriesByController, master_instance=ash)
-February 2015: *Wed 18.*?
-February 2016: *Wed 10.*?
-March 2017: *Wed 01.*?
-February 2018: *Wed 14.*?
 March 2019: *Wed 06.*?
-Suggested : 5 ,  Draft : 0 ,  Took place : 0 ,  Cancelled : 0 ,  Published : 0
+February 2018: *Wed 14.*?
+March 2017: *Wed 01.*?
+February 2016: *Wed 10.*?
+February 2015: *Wed 18.*?
+March 2014: *Wed 05.*?
+Suggested : 6 ,  Draft : 0 ,  Took place : 0 ,  Cancelled : 0 ,  Published : 0
 
 That range of years depends on some configuration variables:
 

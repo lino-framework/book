@@ -24,7 +24,7 @@ This document describes the database structure.
 - 79 models
 - 29 user roles
 - 8 user types
-- 291 views
+- 290 views
 - 22 dialog actions
 <BLANKLINE>
 

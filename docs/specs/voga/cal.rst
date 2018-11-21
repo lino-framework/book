@@ -133,16 +133,16 @@ Let's take the first of them:
 ======================== ===========
  When                     State
 ------------------------ -----------
- Mon 21/03/2016 (11:00)   Suggested
- Mon 04/04/2016 (11:00)   Suggested
- Mon 11/04/2016 (11:00)   Suggested
- Mon 18/04/2016 (11:00)   Suggested
- Mon 25/04/2016 (11:00)   Suggested
- Mon 02/05/2016 (11:00)   Suggested
- Mon 09/05/2016 (11:00)   Suggested
- Mon 23/05/2016 (11:00)   Suggested
- Mon 30/05/2016 (11:00)   Suggested
  Mon 06/06/2016 (11:00)   Suggested
+ Mon 30/05/2016 (11:00)   Suggested
+ Mon 23/05/2016 (11:00)   Suggested
+ Mon 09/05/2016 (11:00)   Suggested
+ Mon 02/05/2016 (11:00)   Suggested
+ Mon 25/04/2016 (11:00)   Suggested
+ Mon 18/04/2016 (11:00)   Suggested
+ Mon 11/04/2016 (11:00)   Suggested
+ Mon 04/04/2016 (11:00)   Suggested
+ Mon 21/03/2016 (11:00)   Suggested
 ======================== ===========
 <BLANKLINE>
 
@@ -163,16 +163,16 @@ Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 ======================== =================== ===========
  When                     Short description   State
 ------------------------ ------------------- -----------
- Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
- Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
- Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
- Mon 18/04/2016 (11:00)   012 Hour 4          Suggested
- Mon 25/04/2016 (11:00)   012 Hour 5          Suggested
- Mon 02/05/2016 (11:00)   012 Hour 6          Suggested
- Mon 09/05/2016 (11:00)   012 Hour 7          Suggested
- Mon 23/05/2016 (11:00)   012 Hour 8          Suggested
- Mon 30/05/2016 (11:00)   012 Hour 9          Suggested
  Mon 06/06/2016 (11:00)   012 Hour 10         Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 9          Suggested
+ Mon 23/05/2016 (11:00)   012 Hour 8          Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 7          Suggested
+ Mon 02/05/2016 (11:00)   012 Hour 6          Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 5          Suggested
+ Mon 18/04/2016 (11:00)   012 Hour 4          Suggested
+ Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
+ Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
 ======================== =================== ===========
 <BLANKLINE>
 
@@ -210,16 +210,16 @@ available date.
 ======================== =================== ===========
  When                     Short description   State
 ------------------------ ------------------- -----------
- Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
- Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
- Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
- Mon 25/04/2016 (11:00)   012 Hour 4          Draft
- Mon 02/05/2016 (11:00)   012 Hour 5          Suggested
- Mon 09/05/2016 (11:00)   012 Hour 6          Suggested
- Mon 23/05/2016 (11:00)   012 Hour 7          Suggested
- Mon 30/05/2016 (11:00)   012 Hour 8          Suggested
- Mon 06/06/2016 (11:00)   012 Hour 9          Suggested
  Mon 13/06/2016 (11:00)   012 Hour 10         Suggested
+ Mon 06/06/2016 (11:00)   012 Hour 9          Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 8          Suggested
+ Mon 23/05/2016 (11:00)   012 Hour 7          Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 6          Suggested
+ Mon 02/05/2016 (11:00)   012 Hour 5          Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 4          Draft
+ Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
+ Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
 ======================== =================== ===========
 <BLANKLINE>
 
@@ -246,16 +246,16 @@ Note that 2016-05-16 is a holiday:
     ======================== ===========
      When                     State
     ------------------------ -----------
-     Mon 21/03/2016 (11:00)   Suggested
-     Mon 04/04/2016 (11:00)   Suggested
-     Mon 11/04/2016 (11:00)   Suggested
-     Mon 18/04/2016 (11:00)   Suggested
-     Mon 25/04/2016 (11:00)   Suggested
-     Mon 02/05/2016 (11:00)   Suggested
-     Mon 09/05/2016 (11:00)   Suggested
-     Mon 23/05/2016 (11:00)   Suggested
-     Mon 30/05/2016 (11:00)   Suggested
      Mon 06/06/2016 (11:00)   Suggested
+     Mon 30/05/2016 (11:00)   Suggested
+     Mon 23/05/2016 (11:00)   Suggested
+     Mon 09/05/2016 (11:00)   Suggested
+     Mon 02/05/2016 (11:00)   Suggested
+     Mon 25/04/2016 (11:00)   Suggested
+     Mon 18/04/2016 (11:00)   Suggested
+     Mon 11/04/2016 (11:00)   Suggested
+     Mon 04/04/2016 (11:00)   Suggested
+     Mon 21/03/2016 (11:00)   Suggested
     ======================== ===========
     <BLANKLINE>
 

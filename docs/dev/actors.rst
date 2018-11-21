@@ -65,7 +65,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-220
+219
 
 Besides this complete list, actors are collected at different places
 depending on their type.

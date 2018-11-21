@@ -29,9 +29,9 @@ List of available dashboard items
 =================================
 
 >>> user = rt.models.users.User.objects.get(username="robin")         
->>> pprint(list(settings.SITE.get_dashboard_items(user)))
+>>> pprint(list(settings.SITE.get_dashboard_items(user)))  #doctest: +ELLIPSIS
 [lino_xl.lib.cal.ui.MyTasks,
- lino_xl.lib.cal.ui.MyEntries,
+ <lino.core.dashboard.ActorItem object at ...>,
  lino_xl.lib.cal.ui.MyOverdueAppointments,
  lino_xl.lib.cal.ui.MyUnconfirmedAppointments,
  lino_xl.lib.cal.models.DailyPlanner,

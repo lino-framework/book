@@ -17,6 +17,6 @@ doctest init:
 - 81 models
 - 20 user roles
 - 5 user types
-- 311 views
+- 310 views
 - 23 dialog actions
 <BLANKLINE>
