@@ -18,7 +18,19 @@ This document describes how we use the :mod:`lino_xl.lib.cal` plugin
 in Tera.
 
 
+The calendar summary view
+=========================
 
+Note that the months are listed in reverse chronological order while
+the days within a month in normal order.
+
+
+>>> obj = rt.models.courses.Course.objects.order_by('id').first()
+>>> rt.show(cal.EntriesByController, obj)
+January 2015: *Tue 13.*☑ *Tue 27.*☉
+February 2015: *Tue 10.*☑ *Tue 24.*☑
+March 2015: *Tue 10.*☑
+Suggested : 0 ,  Scheduled : 0 ,  Took place : 4 ,  Called off : 0 ,  Missed : 1
 
 
 Missed calendar entries
