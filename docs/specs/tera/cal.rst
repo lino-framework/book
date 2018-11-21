@@ -144,3 +144,16 @@ Daily planner
 <BLANKLINE>
 
 
+My appointments
+===============
+
+The *My appointments* table also shows in the dashboard when it has no
+data to display.
+
+>>> rt.login("elmar").show_dashboard()
+-----------------------------------------------
+My appointments **New** `⏏ <My appointments>`__
+-----------------------------------------------
+<BLANKLINE>
+No data to display
+
