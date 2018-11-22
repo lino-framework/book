@@ -52,6 +52,7 @@ checkers.
  coachings.ClientCoachingsChecker        Check coachings
  isip.OverlappingContractsChecker        Check for overlapping contracts
  ledger.VoucherChecker                   Check integrity of ledger movements
+ finan.FinancialVoucherItemChecker       Check for invalid account/partner combination
  sepa.BankAccountChecker                 Check for partner mismatches in bank accounts
  aids.ConfirmationChecker                Check for confirmations outside of granted period
  dupable_clients.SimilarClientsChecker   Check for similar clients

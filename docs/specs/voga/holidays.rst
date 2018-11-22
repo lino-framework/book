@@ -36,11 +36,11 @@ Five Weekends 2015
 =============================== =================== ===========
  When                            Description         State
 ------------------------------- ------------------- -----------
- Fri 19/06/2015-Sun 21/06/2015   *Activity #26  1*   Suggested
- Fri 24/07/2015-Sun 26/07/2015   *Activity #26  2*   Suggested
- Fri 28/08/2015-Sun 30/08/2015   *Activity #26  3*   Suggested
- Fri 02/10/2015-Sun 04/10/2015   *Activity #26  4*   Suggested
  Fri 06/11/2015-Sun 08/11/2015   *Activity #26  5*   Suggested
+ Fri 02/10/2015-Sun 04/10/2015   *Activity #26  4*   Suggested
+ Fri 28/08/2015-Sun 30/08/2015   *Activity #26  3*   Suggested
+ Fri 24/07/2015-Sun 26/07/2015   *Activity #26  2*   Suggested
+ Fri 19/06/2015-Sun 21/06/2015   *Activity #26  1*   Suggested
 =============================== =================== ===========
 <BLANKLINE>
 

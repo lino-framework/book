@@ -42,21 +42,21 @@ The detail view of a therapy
 (main) [visible for all]:
 - **General** (general):
   - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Division** (team)
-  - (general_2): **Therapy type** (line), **Manager** (user), **Therapist** (teacher), **Workflow** (workflow_buttons)
-  - (enrolments_top): **Default attendance fee** (fee), **Print** (print_actions)
+  - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line), **Attendance fee** (fee)
+  - (enrolments_top): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
   - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
 - **Therapy** (therapy):
   - (therapy_1): **Therapy domain** (therapy_domain), **Procurer** (procurer), **Mandatory** (mandatory), **Translator type** (translator_type)
-  - (therapy_2) [visible for therapist admin]: **Interests** (topics_InterestsByController), **Notes** (notes_NotesByProject)
+  - (therapy_2) [visible for therapist admin]: **Interests** (topics_InterestsByPartner), **Notes** (notes_NotesByProject)
 - **Appointments** (calendar):
   - (calendar_1): **Recurrency** (every_unit), **Repeat every** (every), **Generate events until** (max_date), **Number of events** (max_events)
   - (calendar_2): **Room** (room), **Start date** (start_date), **End Date** (end_date), **Start time** (start_time), **End Time** (end_time)
   - (calendar_3): **Monday** (monday), **Tuesday** (tuesday), **Wednesday** (wednesday), **Thursday** (thursday), **Friday** (friday), **Saturday** (saturday), **Sunday** (sunday)
   - **Calendar entries** (courses_EntriesByCourse) [visible for secretary therapist admin]
-- **Invoicing** (sales):
-  - (sales_1): **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type), **ID** (id)
-  - (sales_2): **State** (state), **Ending reason** (ending_reason)
-  - (sales_3) [visible for secretary therapist admin]:
+- **Invoicing** (invoicing):
+  - (invoicing_1): **Healthcare plan** (healthcare_plan), **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type)
+  - (invoicing_2): **State** (state), **Ending reason** (ending_reason)
+  - (invoicing_3) [visible for secretary therapist admin]:
     - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
     - **Existing excerpts** (excerpts_ExcerptsByProject)
 - **More** (more):
@@ -99,19 +99,18 @@ While in Voga or Avanti we can have many course lines, in Lino Tera
 there is only one course line per course layout.
 
 >>> print(courses.Line._meta.verbose_name_plural)
-Therapy types
+Dossier types
 
 Every course line knows which its layout.
 
 >>> rt.show(courses.Lines)
-==================== ====================== ================== ================== ======= ====================== ======================== ===================== ============ ==============
- Reference            Designation            Designation (de)   Designation (fr)   Topic   Layout                 Service type             Manage presences as   Recurrency   Repeat every
--------------------- ---------------------- ------------------ ------------------ ------- ---------------------- ------------------------ --------------------- ------------ --------------
-                      Individual therapies                                                 Individual therapies   Individual appointment   Attendee              weekly       1
-                      Life groups                                                          Life groups            Individual appointment   Attendee              weekly       1
-                      Other groups                                                         Other groups           Group meeting            Attendee              weekly       1
- **Total (3 rows)**                                                                                                                                                           **3**
-==================== ====================== ================== ================== ======= ====================== ======================== ===================== ============ ==============
+=========== ====================== ================== ================== ====================== ======================== ===================== ===================== ==================== ===================
+ Reference   Designation            Designation (de)   Designation (fr)   Layout                 Service type             Manage presences as   Fees category         Attendance fee       Invoicing policy
+----------- ---------------------- ------------------ ------------------ ---------------------- ------------------------ --------------------- --------------------- -------------------- -------------------
+             Individual therapies                                         Individual therapies   Individual appointment   Attendee              Payment by presence   Individual therapy   By calendar event
+             Life groups                                                  Life groups            Individual appointment   Attendee              Payment by presence   Individual therapy   By calendar event
+             Other groups                                                 Other groups           Group meeting            Attendee              Payment by presence   Group therapy        By calendar event
+=========== ====================== ================== ================== ====================== ======================== ===================== ===================== ==================== ===================
 <BLANKLINE>
 
 Some course tables have a fixed course layout, some don't.
@@ -143,7 +142,7 @@ automatically when creating a new course.
 
 >>> fld = courses.Course._meta.get_field('line')
 >>> print(fld.verbose_name)
-Therapy type
+Dossier type
 
 >>> fld.blank
 False

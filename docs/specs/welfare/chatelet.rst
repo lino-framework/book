@@ -37,7 +37,7 @@ Lino Welfare *à la Châtelet* went online in 2013.
 - 134 models
 - 41 user roles
 - 16 user types
-- 507 views
+- 506 views
 - 31 dialog actions
 <BLANKLINE>
 
@@ -870,7 +870,7 @@ Here is the output of :func:`walk_menu_items
 - Bureau --> Mes Observations : 10
 - Bureau --> Mes problèmes de données : 0
 - Calendrier --> Mes rendez-vous : 5
-- Calendrier --> Rendez-vous dépassés : 34
+- Calendrier --> Rendez-vous dépassés : 74
 - Calendrier --> Rendez-vous à confirmer : 3
 - Calendrier --> Mes tâches : 1
 - Calendrier --> Mes visiteurs : 1
@@ -995,7 +995,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Bureau --> Pièces jointes : 1
 - Explorateur --> Bureau --> Observations : 112
 - Explorateur --> Bureau --> Text Field Templates : 3
-- Explorateur --> Calendrier --> Entrées calendrier : 290
+- Explorateur --> Calendrier --> Entrées calendrier : 333
 - Explorateur --> Calendrier --> Tâches : 35
 - Explorateur --> Calendrier --> Présences : 579
 - Explorateur --> Calendrier --> Abonnements : 10

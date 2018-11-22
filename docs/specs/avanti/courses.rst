@@ -182,15 +182,18 @@ Laura (the teacher) who is responsible for the individual events.
 =========================================== ======== ===================================
  Description                                 Client   Workflow
 ------------------------------------------- -------- -----------------------------------
- `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- `Lesson 19 (16.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- `Lesson 20 (17.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- ...
- `Lesson 23 (23.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- `Lesson 24 (24.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
- `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
  `Lesson 24 (24.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 24 (24.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 23 (23.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 23 (23.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ ...
+ `Lesson 20 (17.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 20 (17.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 20 (17.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 19 (16.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 19 (16.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
+ `Lesson 19 (16.02.2017 09:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
 =========================================== ======== ===================================
 <BLANKLINE>
 

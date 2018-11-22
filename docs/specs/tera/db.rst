@@ -21,7 +21,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 43 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-94 models:
+93 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -51,10 +51,10 @@ The database structure
  contacts.Person             contacts.Persons               32        69
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         94
+ contenttypes.ContentType    gfks.ContentTypes              3         93
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             41        52
+ courses.Course              courses.Activities             42        52
  courses.Enrolment           courses.Enrolments             16        78
  courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
@@ -108,13 +108,12 @@ The database structure
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   44        58
+ tera.Client                 tera.Clients                   43        58
  tera.LifeMode               tera.LifeModes                 4         0
  tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
  topics.Interest             topics.Interests               6         86
- topics.Topic                topics.Topics                  9         3
- topics.TopicGroup           topics.TopicGroups             5         0
+ topics.Topic                topics.Topics                  8         3
  users.Authority             users.Authorities              3         0
  users.User                  users.Users                    21        6
  vat.InvoiceItem             vat.InvoiceItemTable           9         0
@@ -187,7 +186,7 @@ behaviour. See also :doc:`/dev/delete`.
 - finan.PaymentOrder :
   - CASCADE : finan.PaymentOrderItem.voucher
 - healthcare.Plan :
-  - PROTECT : healthcare.Rule.plan, tera.Client.healthcare_plan
+  - PROTECT : courses.Course.healthcare_plan, healthcare.Rule.plan
 - households.Household :
   - CASCADE : households.Member.household
 - households.Type :
@@ -244,8 +243,6 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : courses.Course.procurer
 - topics.Topic :
   - PROTECT : topics.Interest.topic
-- topics.TopicGroup :
-  - PROTECT : topics.Topic.topic_group
 - users.User :
   - CASCADE : ledger.LedgerInfo.user
   - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, sheets.Report.user, tera.Client.user, tinymce.TextFieldTemplate.user, users.Authority.authorized, users.Authority.user
@@ -257,10 +254,10 @@ behaviour. See also :doc:`/dev/delete`.
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 43 plugins
-- 94 models
+- 93 models
 - 21 user roles
 - 4 user types
-- 349 views
+- 348 views
 - 26 dialog actions
 <BLANKLINE>
 

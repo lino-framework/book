@@ -320,30 +320,7 @@ Follow the Django documentation at `Get your database running
 Activate file logging
 =====================
 
-To activate logging to a file, you simply add a symbolic link named
-:xfile:`log` which points to the actual location::
-
-    $ sudo mkdir -p /var/log/lino/
-    $ sudo chown :www-data /var/log/lino/
-    $ sudo chmod g+ws /var/log/lino/
-    $ sudo mkdir /var/log/lino/prj1/
-    $ cd ~/mypy/prj1/
-    $ ln -s /var/log/lino/prj1/ log/
-
-Also you should create a file :file:`/etc/logrotate.d/lino` with
-something like this::
-
-    /var/log/lino/prj1/lino.log {
-            weekly
-            missingok
-            rotate 156
-            compress
-            delaycompress
-            notifempty
-            create 660 root www-data
-            su root www-data
-            sharedscripts
-    }
+See :doc:`/admin/logging`.
 
 
 
