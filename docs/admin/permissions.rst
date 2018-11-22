@@ -17,8 +17,8 @@ running process will create a new file.
 
 This process can be a maintainer who launches manually
 e.g. :manage:`prep` or :manage:`dump2py`, it can be the Apache web
-server, the :manage:`linod` daemon, a cron job like ``logrotate`` or
-:xfile:`make_snapshot.sh`, ...
+server, the :manage:`linod` daemon, a cron job like :ref:`logrotate`
+or :xfile:`make_snapshot.sh`, ...
 
 The files created by any such process must be writable by other users
 of the `www-data` group as well.

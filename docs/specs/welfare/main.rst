@@ -1,4 +1,4 @@
-.. doctest docs/specs/main.rst
+.. doctest docs/specs/welfare/main.rst
 .. _welfare.specs.main:
 
 ===================
@@ -72,7 +72,11 @@ My overdue appointments  ⏏
 My Notification messages ⏏
 
 
+Here is a text variant of Hubert's dashboard.
+Not tested because some details are changing in the demo database.
+
 >>> rt.login('hubert').show_dashboard()
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_CDIFF +SKIP
 ---------------------------------------------------------
 Users with their Clients `⏏ <Users with their Clients>`__
 ---------------------------------------------------------
@@ -93,9 +97,9 @@ Visitors waiting for me `⏏ <Visitors waiting for me>`__
 ==================================== ===================== ========== =================== =======================================================
  Since                                Client                Position   Short description   Workflow
 ------------------------------------ --------------------- ---------- ------------------- -------------------------------------------------------
- `4 years, 6 months ago <Detail>`__   EMONTS Daniel (128)   1                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   JONAS Josef (139)     2                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   LAZARUS Line (144)    3                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   EMONTS Daniel (128)   1                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   JONAS Josef (139)     2                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   LAZARUS Line (144)    3                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
 ==================================== ===================== ========== =================== =======================================================
 <BLANKLINE>
 -----------------------------------------
@@ -105,14 +109,14 @@ Waiting visitors `⏏ <Waiting visitors>`__
 ==================================== ========================= ================= ========== =================== =======================================================
  Since                                Client                    Managed by        Position   Short description   Workflow
 ------------------------------------ ------------------------- ----------------- ---------- ------------------- -------------------------------------------------------
- `4 years, 6 months ago <Detail>`__   EMONTS Daniel (128)       Hubert Huppertz   1                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   EVERS Eberhart (127)      Mélanie Mélard    1          Urgent problem      **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   HILGERS Hildegard (133)   Alicia Allmanns   1          Beschwerde          **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   JACOBS Jacqueline (137)   Judith Jousten    1          Information         **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   JONAS Josef (139)         Hubert Huppertz   2                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   KAIVERS Karl (141)        Alicia Allmanns   2          Beschwerde          **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   LAMBERTZ Guido (142)      Mélanie Mélard    2          Urgent problem      **Waiting** → [Absent] [Excused]
- `4 years, 6 months ago <Detail>`__   LAZARUS Line (144)        Hubert Huppertz   3                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   EMONTS Daniel (128)       Hubert Huppertz   1                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   EVERS Eberhart (127)      Mélanie Mélard    1          Urgent problem      **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   HILGERS Hildegard (133)   Alicia Allmanns   1          Beschwerde          **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   JACOBS Jacqueline (137)   Judith Jousten    1          Information         **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   JONAS Josef (139)         Hubert Huppertz   2                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   KAIVERS Karl (141)        Alicia Allmanns   2          Beschwerde          **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   LAMBERTZ Guido (142)      Mélanie Mélard    2          Urgent problem      **Waiting** → [Absent] [Excused]
+ `... <Detail>`__   LAZARUS Line (144)        Hubert Huppertz   3                              [Receive] [Checkout] **Waiting** → [Absent] [Excused]
 ==================================== ========================= ================= ========== =================== =======================================================
 <BLANKLINE>
 -----------------------------------------------
@@ -148,17 +152,7 @@ My overdue appointments **New** `⏏ <My overdue appointments>`__
 --------------------------------------------------------------------------- ---------------------------------------------------------- --------------------- -------------------------------
  `Évaluation 14 (19.05.2014 09:00) with JEANÉMART Jérôme (181) <Detail>`__   `ISIP#32 (Jérôme JEANÉMART) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
  `Auswertung 1 (12.05.2014) with RADERMECKER Rik (173) <Detail>`__           `Art60§7 job supplyment#14 (Rik RADERMECKER) <Detail>`__   Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Abendessen (09.05.2014 08:30) <Detail>`__                                                                                             Internal              **? Suggested** → [☑] [☒]
- `Auswertung 2 (05.05.2014) with FAYMONVILLE Luc (130*) <Detail>`__          `Art60§7 job supplyment#4 (Luc FAYMONVILLE) <Detail>`__    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Abendessen (03.05.2014 09:40) <Detail>`__                                                                                             Internal              **☐ Draft** → [☑] [☒]
- `Évaluation 14 (28.04.2014 09:00) with BRECHT Bernd (177) <Detail>`__       `ISIP#27 (Bernd BRECHT) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 13 (17.04.2014 09:00) with JEANÉMART Jérôme (181) <Detail>`__   `ISIP#32 (Jérôme JEANÉMART) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 13 (27.03.2014 09:00) with BRECHT Bernd (177) <Detail>`__       `ISIP#27 (Bernd BRECHT) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 12 (17.03.2014 09:00) with JEANÉMART Jérôme (181) <Detail>`__   `ISIP#32 (Jérôme JEANÉMART) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 12 (27.02.2014 09:00) with BRECHT Bernd (177) <Detail>`__       `ISIP#27 (Bernd BRECHT) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 11 (17.02.2014 09:00) with JEANÉMART Jérôme (181) <Detail>`__   `ISIP#32 (Jérôme JEANÉMART) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Auswertung 1 (03.02.2014) with FAYMONVILLE Luc (130*) <Detail>`__          `Art60§7 job supplyment#4 (Luc FAYMONVILLE) <Detail>`__    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 11 (27.01.2014 09:00) with BRECHT Bernd (177) <Detail>`__       `ISIP#27 (Bernd BRECHT) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
+... 
  `Évaluation 10 (16.01.2014 09:00) with JEANÉMART Jérôme (181) <Detail>`__   `ISIP#32 (Jérôme JEANÉMART) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
 =========================================================================== ========================================================== ===================== ===============================
 <BLANKLINE>

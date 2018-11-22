@@ -151,7 +151,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Wed 30/08/2017 (09:40) | **☐ Draft** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | 2018-11-21 17:20:42.261089 | 2017-08-30 00:00:00 | 09:40:00
+Wed 30/08/2017 (09:40) | **☐ Draft** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | ... | 2017-08-30 00:00:00 | 09:40:00
 
 
 
@@ -173,7 +173,7 @@ Quand | Workflow | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-mer. 30/08/2017 (09:40) | **☐ Brouillon** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | 2018-11-21 17:20:42.261089 | 2017-08-30 00:00:00 | 09:40:00
+mer. 30/08/2017 (09:40) | **☐ Brouillon** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | ... | 2017-08-30 00:00:00 | 09:40:00
 
 
 
