@@ -40,7 +40,7 @@ checkers.
  cal.ConflictingEventsChecker        Check for conflicting calendar entries
  cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
  cal.LongEntryChecker                Too long-lasting calendar entries
- ledger.VoucherChecker               Check integrity of ledger movements
+ ledger.VoucherChecker               Check integrity of ledger vouchers
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
  finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
 =================================== ===============================================

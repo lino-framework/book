@@ -51,7 +51,7 @@ checkers.
  pcsw.SSINChecker                        Check for valid identification
  coachings.ClientCoachingsChecker        Check coachings
  isip.OverlappingContractsChecker        Check for overlapping contracts
- ledger.VoucherChecker                   Check integrity of ledger movements
+ ledger.VoucherChecker                   Check integrity of ledger vouchers
  finan.FinancialVoucherItemChecker       Check for invalid account/partner combination
  sepa.BankAccountChecker                 Check for partner mismatches in bank accounts
  aids.ConfirmationChecker                Check for confirmations outside of granted period
