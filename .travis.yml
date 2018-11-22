@@ -4,7 +4,10 @@ python:
   - 3.6
 
 env:
-  - DJANGO=1.11
+  global:
+   secure: oAd/tAioTs5vDkc/muFDQ+klJ6zSCxMGdVUY7GBRWh8FjhU2AFXFLZAtqdWMutJoq8uBn4wvmVkbgJjzEm7QIJTkAErhdGv1yPIlsie1jifGDU7ZXCeyrZINHv0SaoG6dDPJR7dZAbBhR8JPOj1V1KsWuVBhHPKSD68oUm+hrh0m9kZf99hGKGY9BM/wEytVFaG8rA2QYgrbcpXrKlG8sjmYw2KiHK1EO+sstejev2Ry7rDL0wuV5BUK8yjZ5hG+6IDHZCVXV5jyMwbq/ztKELfBBxZrTJk+o1O69XTkSMethaAyGh/IoedcDdiSyuyyr4CFYh1fGikptd51GKWinPrV8HCz9Ya0aBzzAlsODcNJC1CoosyyZO1J3giNsZsz+NesxgbBYWq7nZAHkCT3l8oVXQkHc405yQ4+8RNfUIS3kERyPYTnBgnU1mR0BNoG90BGhUYO3E+q7TDF+sTvshRvxNmehyIOpWcinU7knFs7qjVVecSZGLhp5n/3UScb7jtttKyjf9IhNpbKWwkzji2UnGgcdwTBFjDpSdIqlNhZR6KZb1+6Z6uRIR7dXLcOhek5bdlbCeeTTDyDZlEa2JIdK4TVLU7+5QyRNwyZ3foS6hh5N4cIp9g/5uTiBq7uC2Y8Ky0LRx7nvYIge55IV+V0GcZ4qJFTz7aTKeiJI4A=
+  matrix:  
+   - DJANGO=1.11
 
 before_install:
   - # sudo add-apt-repository -y ppa:libreoffice/ppa
@@ -30,5 +33,7 @@ script:
   - inv cov --no-html
 
 after_script:
+  - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
+    if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by repo `basename $(git rev-parse --show-toplevel)` commit `git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
   - coveralls
 
