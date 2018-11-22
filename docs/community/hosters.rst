@@ -44,7 +44,6 @@ Here is our list of **recommended Lino hosting providers**.
   E-mail:   kader.ia@live.fr
 
 
-
 If **you want to be listed** in above directory, then don't hesitate
 to contact us.  There is no official programme of courses and tests
 for becoming a "certified" Lino hoster.  It's all a question of trust.
@@ -52,7 +51,7 @@ The condition for getting listed is a visible interest in Lino, the
 ability to give professsional advice about whether a Lino solution can
 make sense in a given context, and a potential ability to become a
 qualified hosting provider when needed.  See also the :doc:`Hoster's
-Guide </hosting/index>`.
+Guide </admin/index>`.
 
 
 

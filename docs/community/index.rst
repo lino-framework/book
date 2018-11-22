@@ -43,7 +43,7 @@ Organizations:
   We help you with planning your projects.
   
 - **Internet hosting providers** -- Consider becoming a :doc:`Lino
-  hosting provider </hosting/about>` and contact us to get listed in
+  hosting provider </admin/about>` and contact us to get listed in
   our :doc:`directory <hosters>`.
 
 Vocabulary

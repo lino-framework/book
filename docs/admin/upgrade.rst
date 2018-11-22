@@ -5,12 +5,11 @@ Upgrading a Lino production site
 ================================
 
 This document gives generic instructions for upgrading a Lino
-production site to a new version.  See also :doc:`/dev/datamig` for
-technical background information.
-This procedure is suitable for
-smaller sites with one contact person.  See also
-:doc:`/hosting/testing` for are more sophisticated approach on sites
-with many users.
+production site to a new version.  This procedure is suitable for
+smaller sites with one contact person.  See :doc:`/admin/testing` for
+are more sophisticated approach on sites with many users.  See also
+:doc:`/dev/datamig` for technical background information.
+
 
 - Go to your project directory::
 

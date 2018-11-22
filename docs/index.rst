@@ -25,7 +25,7 @@ Sitemap
    about/index
    Developer's Guide </user/index>
    Contributor's Guide </dev/index>
-   Administrator's Guide </admin/index>
+   Hoster's Guide </admin/index>
    /community/index
    Specs </specs/index>
    documentation

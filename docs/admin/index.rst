@@ -1,13 +1,15 @@
+.. _lino.hosting:
+.. _lino.hosters:
 .. _lino.admin:
 
-=====================
-Administrator's Guide
-=====================
+==============
+Hoster's Guide
+==============
 
-This part of the documentation is for **system administrators** who
-set up or maintain a server which hosts one or several Lino production
-sites.  Non-programmers will prefer to read :doc:`/about/index`,
-developers :doc:`/dev/index`.
+This part of the documentation is for system administrators who set up
+or maintain a server which hosts one or several Lino production sites.
+Non-programmers will prefer to read :doc:`/about/index`, developers
+:doc:`/dev/index`.
 
 The approaches described in this document are not mandatory. Hosting a
 Lino site is technically the same as hosting a `Django
@@ -16,6 +18,18 @@ hosting Django projects, you might prefer to use your existing system
 of approaches.  But even experienced Django hosters might find
 interesting tricks or inspiration for their system by reading how we
 recommend to do it.
+
+About hosting Lino
+------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   about
+   types
+   workflow
+   testing
+
 
 
 Installation
