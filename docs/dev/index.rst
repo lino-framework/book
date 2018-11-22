@@ -17,7 +17,6 @@ should have read the :doc:`/user/index` before reading here.
    team
    writedocs
    deploy
-   about
    /api/index
    
 

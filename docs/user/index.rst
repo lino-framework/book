@@ -9,6 +9,7 @@ order to write applications.
     :maxdepth: 2
 
     getstarted
+    /dev/about
     /dev/diving
     /dev/acquaintained
     
