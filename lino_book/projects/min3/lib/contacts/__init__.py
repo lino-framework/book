@@ -1,4 +1,4 @@
-# Copyright 2017 Luc Saffre
+# Copyright 2017 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Lino Vilma extension of :mod:`lino_xl.lib.contacts`.

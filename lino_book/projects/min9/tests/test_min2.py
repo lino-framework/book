@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2014-2015 Luc Saffre
+# Copyright 2014-2015 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test some things which happen when a database object is deleted.

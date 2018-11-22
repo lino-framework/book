@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2017 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """Settings for providing readonly public access to the site. This
 does not use :mod:`lino.modlib.extjs` but :mod:`lino.modlib.bootstrap3`.

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 This is the base for all settings of lino_book.projects.dumps

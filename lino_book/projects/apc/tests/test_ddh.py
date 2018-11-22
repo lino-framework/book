@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2017 Luc Saffre
+# Copyright 2013-2017 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about the disable-delete handler and cascading deletes.
