@@ -34,6 +34,6 @@ script:
 
 after_script:
   - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
-  - if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by: `basename $(git rev-parse --show-toplevel)`:`git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
+  - if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by repo `basename $(git rev-parse --show-toplevel)` commit `git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
   - coveralls
 
