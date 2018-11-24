@@ -218,3 +218,13 @@ The `algus <https://github.com/lino-framework/algus>`__ repository is
 a template for new Lino applications.
 
 
+.. _manuals:
+
+manuals
+-------
+
+The `manuals <https://github.com/lino-framework/manuals>`__ repository no
+longer exists, it has been split into endocs, dedocs and frdocs.
+
+
+
