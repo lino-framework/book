@@ -10,7 +10,7 @@ class Site(Site):
     demo_fixtures = 'std demo demo2'
     user_types_module = 'lino_xl.lib.xl.user_types'
     use_experimental_features = True
-    default_ui = "lino.modlib.bootstrap3"
+
     def setup_quicklinks(self, user, tb):
         super(Site, self).setup_quicklinks(user, tb)
         tb.add_action(self.modules.contacts.Persons)
