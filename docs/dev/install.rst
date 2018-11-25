@@ -15,8 +15,7 @@ environment** in order to write your own Lino applications and
 potentially contribute to the Lino project.  This differs from
 :doc:`/user/install` in that it requires you to learn some extra
 lessons about cloning repositories, installing development packages
-and manging virtual environments.  For deploying Lino applications on
-a production site you might prefer :doc:`/admin/install`.
+and manging virtual environments.  
 
 This document is written for Debian_ and derivated distributions.
 Other Linuxes should be pretty similar.  On proprietary operating
@@ -305,9 +304,6 @@ Exercises
 =========
 
 #.  Sign in and play around.
-    
-#.  Check :doc:`/user/basics` and tell us what's missing in that
-    document.
     
 #.  Create some persons and organizations. Don't enter lots of data
     because we are going to throw it away soon.
