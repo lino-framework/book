@@ -15,7 +15,7 @@ environment** in order to write your own Lino applications and
 potentially contribute to the Lino project.  This differs from
 :doc:`/user/install` in that it requires you to learn some extra
 lessons about cloning repositories, installing development packages
-and manging virtual environments.  
+and manging virtual environments.
 
 This document is written for Debian_ and derivated distributions.
 Other Linuxes should be pretty similar.  On proprietary operating

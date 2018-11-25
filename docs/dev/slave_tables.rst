@@ -19,9 +19,8 @@ A slave table cannot render if we don't define the master.  You cannot
 ask Lino to render the :class:`BooksByAuthor` table if you don't
 specify for *which* author you want it.
 
-Slave tables are most often used as elements of a detail layout.  In
-this case Lino renders them in a :ref:`slave panel <slave_panels>`
-widget.
+Slave tables are most often used as elements of a detail layout.  In this case
+Lino renders them in a *slave panel* widget.
 
 
 .. _remote_master:
