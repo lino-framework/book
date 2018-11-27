@@ -61,7 +61,6 @@ Other
 .. toctree::
    :maxdepth: 1
 
-   /changes
    /todo
    /tested/index
    newbies/index

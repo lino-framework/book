@@ -11,3 +11,4 @@ This page has been merged into :doc:`/dev/index`.
    tools
    pull_request
    deploy_prod
+   newbies

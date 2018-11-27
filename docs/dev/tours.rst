@@ -14,8 +14,6 @@ find out how to automatically start and stop development servers on
 different demo projects.  Until that problem is fixed, we must run
 each tour manually as described below.
 
-Our collection of screenshot tours is in :ref:`tours`.
-
 Screenshot tours are done using the :mod:`lino.api.selenium` module.
 
 How to run a screenshot tour

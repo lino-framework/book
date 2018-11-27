@@ -15,9 +15,9 @@ have *many possible* user interfaces.  Lino comes with an extensible
 collection of *out-of-the-box* user interfaces.  You can write a Lino
 application once and then deploy it via different interfaces.
 
-That said, there is currently indeed only one realistic choice for the
-user interface, the one based on ExtJS.  Lino applications "look like"
-those you can see at :doc:`/demos`.
+That said, there is currently indeed only one realistic choice for the user
+interface, the one based on ExtJS.  Lino applications "look like" those you can
+see at the `Demo sites <http://www.lino-framework.org/demos.html>`__ page.
 
 The qualitiy of this user interface is *admittedly less* than what
 people are used to get on big web applications where hundreds of
@@ -36,7 +36,6 @@ limited, and because there are many other, more interesting tasks to
 be done.
 
 There are several proofs of concept for alternative user interfaces.
-An overview of these research projects in the :doc:`Developer's Guide
-</dev/ui>`.
+An overview of these research projects in :doc:`/dev/ui`.
 
 

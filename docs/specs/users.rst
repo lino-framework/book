@@ -292,8 +292,7 @@ Actions
 
         The new password a second time. Both passwords must match.
 
-    See also :doc:`/help/password`.
-          
+
 .. class:: SignIn
 
     Open a window which asks for username and password and which

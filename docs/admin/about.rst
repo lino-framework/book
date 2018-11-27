@@ -25,6 +25,5 @@ As a qualified *Lino hosting provider* you assume the following
 - you help end-users with certain problems.
 
 
-If you are able to provide these services, you should ask for being
-listed in our :doc:`directory </community/hosters>` of recommented
-Lino hosting providers.  
+If you are able to provide these services, you should ask for being listed in
+our directory of recommented Lino hosting providers.

@@ -47,3 +47,12 @@ eidreader
 See http://eidreader.lino-framework.org/
 
 See also :ref:`eidreader.java`.
+
+
+.. _demos:
+
+Online demos
+============
+
+
+See http://www.lino-framework.org/demos.html

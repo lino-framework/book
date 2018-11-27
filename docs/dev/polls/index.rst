@@ -440,8 +440,10 @@ Explanations:
   link which will run the action when clicked.  More about this in
   :ref:`dev.actions`.
 
-- The :func:`fdl` function is a Lino-specific template function. These
-  are documented in :doc:`/user/templates_api`.
+- The :func:`fdl` function is a Lino-specific template function. These are
+  currently not well documented, you must consult the code that edefines them,
+  e.g. the :meth:`get_printable_context
+  <lino.core.requests.BaseRequest.get_printable_context>` method.
 
 
 As a result, our main window now features a summary of the currently

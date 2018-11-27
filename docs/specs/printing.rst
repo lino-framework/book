@@ -132,7 +132,7 @@ Model mixins
     .. method:: get_printable_context(self, ar=None, **kw)
 
         Adds a series of names to the context used when rendering
-        printable documents. See :doc:`/user/templates_api`.
+        printable documents.
 
         :class:`lino_xl.lib.notes.models.Note` extends this.
 

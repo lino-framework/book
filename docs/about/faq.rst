@@ -5,14 +5,12 @@ Frequently Asked Questions
 **As an application developer, why should I invest time to learn yet
 another framework?**
 
+Because our team  is so `hygge <https://en.wikipedia.org/wiki/Hygge>`__.
 Because Lino is so great.
-The implementation is far from being perfect, but promising.
 With Lino you understand what your users want you to do.
 With Lino you can concentrate on doing what your users want.
 With Lino you become a magician.
 
-Because our :doc:`community </community/index>` is so `hygge
-<https://en.wikipedia.org/wiki/Hygge>`__.
 
 **Why can't we use plain Django do develop our application?**
 
