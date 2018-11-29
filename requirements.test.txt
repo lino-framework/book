@@ -1,0 +1,4 @@
+-e git+https://github.com/lino-framework/lino.git@test#egg=lino
+-r requirements.stable.txt 
+
+#-e git+https://github.com/lino-framework/react.git@test#egg=lino_react
