@@ -79,12 +79,12 @@ generated them:
 >>> ses = rt.login()
 >>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
 >>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
-xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-205.xml ('en', {})
+xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-125.xml ('en', {})
 
 >>> rv['success']
 True
 >>> print(rv['open_url'])
-/media/xml/xml/finan.PaymentOrder-205.xml
+/media/xml/xml/finan.PaymentOrder-125.xml
 
 Let's check whether the XML file has been generated and is a valid
 SEPA payment initiation:

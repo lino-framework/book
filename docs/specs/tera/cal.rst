@@ -5,7 +5,6 @@
 Calendar in Lino Tera
 =====================
 
-
 .. doctest init
 
     >>> from lino import startup
@@ -14,8 +13,10 @@ Calendar in Lino Tera
     >>> from django.db import models
 
 
-This document describes how we use the :mod:`lino_xl.lib.cal` plugin
-in Tera.
+This document describes the :mod:`lino_tera.lib.cal` plugin which extends
+:mod:`lino_xl.lib.cal` for Tera.
+
+.. currentmodule:: lino_tera.lib.cal
 
 
 The calendar summary view
@@ -27,9 +28,9 @@ the days within a month in normal order.
 
 >>> obj = rt.models.courses.Course.objects.order_by('id').first()
 >>> rt.show(cal.EntriesByController, obj)
-January 2015: *Tue 13.*☑ *Tue 27.*☉
-February 2015: *Tue 10.*☑ *Tue 24.*☑
 March 2015: *Tue 10.*☑
+February 2015: *Tue 24.*☑ *Tue 10.*☑
+January 2015: *Tue 27.*☉ *Tue 13.*☑
 Suggested : 0 ,  Scheduled : 0 ,  Took place : 4 ,  Called off : 0 ,  Missed : 1
 
 
@@ -156,4 +157,11 @@ My appointments **New** `⏏ <My appointments>`__
 -----------------------------------------------
 <BLANKLINE>
 No data to display
+
+
+.. class:: Event
+
+    .. attribute:: amount
+
+        The amount perceived during this appointment.
 

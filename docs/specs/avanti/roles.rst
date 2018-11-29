@@ -22,7 +22,7 @@ Site administrator
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Calendar : Calendar, My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Absence control
@@ -73,7 +73,7 @@ users.UserTypes.secretary:410
 >>> rt.login('sandra').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
@@ -89,7 +89,7 @@ Social worker
 >>> rt.login('nathalie').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Course planning, Absence control
@@ -106,7 +106,7 @@ Teacher
 
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, -, My courses given
 - Site : About
@@ -116,7 +116,7 @@ Supervisor
 
 >>> rt.login('audrey').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :

@@ -168,8 +168,8 @@ course.
 >>> obj = courses.Course.objects.get(pk=1)
 >>> rt.login('laura').show('cal.EntriesByController', obj)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-January 2017: `Mon 16. <Detail>`__☑ `Tue 17. <Detail>`__☑ `Thu 19. <Detail>`__☒ `Fri 20. <Detail>`__☑ `Mon 23. <Detail>`__☑ `Tue 24. <Detail>`__☑ `Thu 26. <Detail>`__☑ `Fri 27. <Detail>`__☑ `Mon 30. <Detail>`__☑ `Tue 31. <Detail>`__☑
-February 2017: `Thu 02. <Detail>`__☑ `Fri 03. <Detail>`__☒ `Mon 06. <Detail>`__☑ `Tue 07. <Detail>`__☑ `Thu 09. <Detail>`__? `Fri 10. <Detail>`__? `Mon 13. <Detail>`__? `Tue 14. <Detail>`__? `Thu 16. <Detail>`__? `Fri 17. <Detail>`__? `Mon 20. <Detail>`__? `Tue 21. <Detail>`__? `Thu 23. <Detail>`__? `Fri 24. <Detail>`__?
+February 2017: `Fri 24. <Detail>`__? `Thu 23. <Detail>`__? `Tue 21. <Detail>`__? `Mon 20. <Detail>`__? `Fri 17. <Detail>`__? `Thu 16. <Detail>`__? `Tue 14. <Detail>`__? `Mon 13. <Detail>`__? `Fri 10. <Detail>`__? `Thu 09. <Detail>`__? `Tue 07. <Detail>`__☑ `Mon 06. <Detail>`__☑ `Fri 03. <Detail>`__☒ `Thu 02. <Detail>`__☑
+January 2017: `Tue 31. <Detail>`__☑ `Mon 30. <Detail>`__☑ `Fri 27. <Detail>`__☑ `Thu 26. <Detail>`__☑ `Tue 24. <Detail>`__☑ `Mon 23. <Detail>`__☑ `Fri 20. <Detail>`__☑ `Thu 19. <Detail>`__☒ `Tue 17. <Detail>`__☑ `Mon 16. <Detail>`__☑
 Suggested : 10 ,  Draft : 0 ,  Took place : 12 ,  Cancelled : 2 **New**
 
 

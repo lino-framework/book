@@ -128,7 +128,7 @@ Here is the main menu for accountants:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Kontakte : Personen,  ▶ Klienten, Organisationen, -, Partner (alle), Haushalte
 - Büro : Meine Benachrichtigungen, Meine Auszüge, Ablaufende Uploads, Meine Uploads, Mein E-Mail-Ausgang, Meine Ereignisse/Notizen
-- Kalender : Kalender, Meine Termine, Unbestätigte Termine, Meine Aufgaben, Meine Gäste, Meine Anwesenheiten, Meine überfälligen Termine
+- Kalender : Kalender, Meine Termine, Meine unbestätigten Termine, Meine Aufgaben, Meine Gäste, Meine Anwesenheiten, Meine überfälligen Termine
 - Empfang : Klienten, Termine heute, Wartende Besucher, Beschäftigte Besucher, Gegangene Besucher, Meine Warteschlange
 - Buchhaltung :
   - Rechnungseingänge : Rechnungseingänge (REG), Sammelrechnungen (SREG)
@@ -147,99 +147,100 @@ Here is the main menu for accountants:
 - Site : Info
 
 
-General accounts ("budgetary articles")
-=======================================
+   General accounts ("budgetary articles")
+   =======================================
 
-Belgian public instances use so-called budgetary articles (`Articles
-budgétaires
-<http://www.pouvoirslocaux.irisnet.be/fr/theme/finances/docfin/la-structure-dun-article-budgetaire>`_
-in French, "Haushaltsartikel" in German) for classifying their
-monetary transactions.  These budgetary articles are in public sector
-accounting exactly what general accounts are in private sector
-accounting.  It seems BTW that the usage of the term "budgetary
-articles" is being replaced by the term "accounts".
+   Belgian public instances use so-called budgetary articles (`Articles
+   budgétaires
+   <http://www.pouvoirslocaux.irisnet.be/fr/theme/finances/docfin/la-structure-dun-article-budgetaire>`_
+   in French, "Haushaltsartikel" in German) for classifying their
+   monetary transactions.  These budgetary articles are in public sector
+   accounting exactly what general accounts are in private sector
+   accounting.  It seems BTW that the usage of the term "budgetary
+   articles" is being replaced by the term "accounts".
 
-The main difference is that they are structured differently.  The demo
-database currently has a mixture of "PCMN style" and "public sector
-style" references because Lino Welfare doesn't yet offer full
-accounting reports (:mod:`lino_xl.lib.sheets`).
+   The main difference is that they are structured differently.  The demo
+   database currently has a mixture of "PCMN style" and "public sector
+   style" references because Lino Welfare doesn't yet offer full
+   accounting reports (:mod:`lino_xl.lib.sheets`).
 
->>> rt.show(ledger.Accounts)
-============= ==================================
- Referenz      Bezeichnung
-------------- ----------------------------------
- 1000          Net income (loss)
- 4             Commercial assets & liabilities
- 4000          Kunden
- 4300          Offene Zahlungsaufträge
- 4400          Lieferanten
- 4450          Auszuführende Ausgabeanweisungen
- 4500          Angestellte
- 4510          Geschuldete Mehrwertsteuer
- 4511          Rückzahlbare Mehrwertsteuer
- 4512          Abziehbare Mehrwertsteuer
- 4513          Deklarierte Mehrwertsteuer
- 4600          Steuerämter
- 4800          Granted aids
- 4900          Wartekonto
- 5             Financial assets & liabilities
- 5500          BestBank
- 5700          Kasse
- 6             Ausgaben
- 60            Diplome
- 6010          Einkäufe von Dienstleistungen
- 6020          Investierungskäufe
- 6040          Wareneinkäufe
- 61            Löhne und Gehälter
- 6300          Löhne und Gehälter
- 6900          Net income
- 7             Revenues
- 7000          Verkauf
- 7900          Net loss
- 820/333/01    Vorschuss auf Vergütungen o.ä.
- 821/333/01    Vorschuss auf Pensionen
- 822/333/01    Vorsch. Entsch. Arbeitsunfälle
- 823/333/01    Vor. Kranken- u. Invalidengeld
- 825/333/01    Vorschuss auf Familienzulage
- 826/333/01    Vorschuss auf Arbeitslosengeld
- 827/333/01    Vorschuss auf Behindertenzulag
- 832/330/01    Allgemeine Beihilfen
- 832/330/02    Gesundheitsbeihilfe
- 832/330/03    Heizkosten- u. Energiebeihilfe
- 832/330/03F   Fonds Gas und Elektrizität
- 832/330/04    Mietkaution
- 832/333/22    Mietbeihilfe
- 832/3331/01   Eingliederungseinkommen
- 832/334/27    Sozialhilfe
- 832/3343/21   Beihilfe für Ausländer
- P82/000/00    Einn. Dritter: Weiterleitung
- P83/000/00    Unber. erh. Beträge + Erstatt.
- P87/000/00    Abhebung von pers. Guthaben
-============= ==================================
-<BLANKLINE>
+    >>> rt.show(ledger.Accounts)
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+    ============= ==================================
+     Referenz      Bezeichnung
+    ------------- ----------------------------------
+     1000          Net income (loss)
+     4             Commercial assets & liabilities
+     4000          Kunden
+     4300          Offene Zahlungsaufträge
+     4400          Lieferanten
+     4450          Auszuführende Ausgabeanweisungen
+     4500          Angestellte
+     4510          Geschuldete Mehrwertsteuer
+     4511          Rückzahlbare Mehrwertsteuer
+     4512          Abziehbare Mehrwertsteuer
+     4513          Deklarierte Mehrwertsteuer
+     4600          Steuerämter
+     4800          Granted aids
+     4900          Wartekonto
+     5             Financial assets & liabilities
+     5500          BestBank
+     5700          Kasse
+     6             Ausgaben
+     60            Diplome
+     6010          Einkäufe von Dienstleistungen
+     6020          Investierungskäufe
+     6040          Wareneinkäufe
+     61            Löhne und Gehälter
+     6300          Löhne und Gehälter
+     6900          Net income
+     7             Revenues
+     7000          Verkauf
+     7900          Net loss
+     820/333/01    Vorschuss auf Vergütungen o.ä.
+     821/333/01    Vorschuss auf Pensionen
+     822/333/01    Vorsch. Entsch. Arbeitsunfälle
+     823/333/01    Vor. Kranken- u. Invalidengeld
+     825/333/01    Vorschuss auf Familienzulage
+     826/333/01    Vorschuss auf Arbeitslosengeld
+     827/333/01    Vorschuss auf Behindertenzulag
+     832/330/01    Allgemeine Beihilfen
+     832/330/02    Gesundheitsbeihilfe
+     832/330/03    Heizkosten- u. Energiebeihilfe
+     832/330/03F   Fonds Gas und Elektrizität
+     832/330/04    Mietkaution
+     832/333/22    Mietbeihilfe
+     832/3331/01   Eingliederungseinkommen
+     832/334/27    Sozialhilfe
+     832/3343/21   Beihilfe für Ausländer
+     P82/000/00    Einn. Dritter: Weiterleitung
+     P83/000/00    Unber. erh. Beträge + Erstatt.
+     P87/000/00    Abhebung von pers. Guthaben
+    ============= ==================================
+    <BLANKLINE>
 
 
-Vouchers
-========
+   Vouchers
+   ========
 
-A **voucher** (German *Beleg*) is a document which serves as legal
-proof for a transaction. A transaction is a set of accounting
-**movements** whose debit equals to their credit.
+   A **voucher** (German *Beleg*) is a document which serves as legal
+   proof for a transaction. A transaction is a set of accounting
+   **movements** whose debit equals to their credit.
 
-Lino Welfare uses the following **voucher types**:
+   Lino Welfare uses the following **voucher types**:
 
->>> rt.show(ledger.VoucherTypes)
-=================================== ====== =================================================
- Wert                                name   Text
------------------------------------ ------ -------------------------------------------------
- vatless.InvoicesByJournal                  Rechnungen
- vatless.ProjectInvoicesByJournal           Project invoices
- finan.JournalEntriesByJournal              Diverse Buchung (finan.JournalEntriesByJournal)
- finan.PaymentOrdersByJournal               Zahlungsauftrag (finan.PaymentOrdersByJournal)
- finan.BankStatementsByJournal              Kontoauszug (finan.BankStatementsByJournal)
- finan.DisbursementOrdersByJournal          Ausgabeanweisungen
-=================================== ====== =================================================
-<BLANKLINE>
+   >>> rt.show(ledger.VoucherTypes)
+   =================================== ====== =================================================
+    Wert                                name   Text
+   ----------------------------------- ------ -------------------------------------------------
+    vatless.InvoicesByJournal                  Rechnungen
+    vatless.ProjectInvoicesByJournal           Project invoices
+    finan.JournalEntriesByJournal              Diverse Buchung (finan.JournalEntriesByJournal)
+    finan.PaymentOrdersByJournal               Zahlungsauftrag (finan.PaymentOrdersByJournal)
+    finan.BankStatementsByJournal              Kontoauszug (finan.BankStatementsByJournal)
+    finan.DisbursementOrdersByJournal          Ausgabeanweisungen
+   =================================== ====== =================================================
+   <BLANKLINE>
 
 
 Invoices are partner-related vouchers (often we simply say **partner

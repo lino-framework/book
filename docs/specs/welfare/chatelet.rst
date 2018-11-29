@@ -33,9 +33,10 @@ Lino Welfare *à la Châtelet* went online in 2013.
   "Workshops" ("Ateliers").
 
 >>> print(analyzer.show_complexity_factors())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 59 plugins
 - 134 models
-- 41 user roles
+- 42 user roles
 - 16 user types
 - 506 views
 - 31 dialog actions
@@ -69,7 +70,7 @@ Romain
 >>> rt.login('romain').show_menu() #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Personnes,  ▶ Bénéficiaires, Organisations, -, Partenaires (tous), Ménages
 - Bureau : Mes Notifications, Mes Extraits, Mes téléchargements à renouveler, Mes Fichiers téléchargés, Mon courrier sortant, Mes Observations, Mes problèmes de données
-- Calendrier : Calendrier, Mes rendez-vous, Rendez-vous dépassés, Rendez-vous à confirmer, Mes tâches, Mes visiteurs, Mes présences, Mes rendez-vous dépassés
+- Calendrier : Calendrier, Mes rendez-vous, Rendez-vous dépassés, Mes rendez-vous à confirmer, Mes tâches, Mes visiteurs, Mes présences, Mes rendez-vous dépassés
 - Réception : Bénéficiaires, Rendez-vous aujourd'hui, Salle d'attente, Visiteurs occupés, Visiteurs repartis, Visiteurs qui m'attendent
 - CPAS : Bénéficiaires, Mes Interventions, Octrois à confirmer
 - Intégration :
@@ -871,7 +872,7 @@ Here is the output of :func:`walk_menu_items
 - Bureau --> Mes problèmes de données : 0
 - Calendrier --> Mes rendez-vous : 5
 - Calendrier --> Rendez-vous dépassés : 74
-- Calendrier --> Rendez-vous à confirmer : 3
+- Calendrier --> Mes rendez-vous à confirmer : 3
 - Calendrier --> Mes tâches : 1
 - Calendrier --> Mes visiteurs : 1
 - Calendrier --> Mes présences : 1
@@ -981,7 +982,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Contacts --> Types de parenté : 13
 - Explorateur --> Système --> Procurations : 4
 - Explorateur --> Système --> Types d'utilisateur : 16
-- Explorateur --> Système --> Rôles d'utilisateur : 41
+- Explorateur --> Système --> Rôles d'utilisateur : 42
 - Explorateur --> Système --> types de contenu : 135
 - Explorateur --> Système --> Notifications : 13
 - Explorateur --> Système --> Changes : 0

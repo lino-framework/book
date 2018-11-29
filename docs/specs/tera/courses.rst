@@ -42,7 +42,7 @@ The detail view of a therapy
 (main) [visible for all]:
 - **General** (general):
   - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Division** (team)
-  - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line), **Attendance fee** (fee)
+  - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line)
   - (enrolments_top): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
   - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
 - **Therapy** (therapy):
@@ -54,9 +54,8 @@ The detail view of a therapy
   - (calendar_3): **Monday** (monday), **Tuesday** (tuesday), **Wednesday** (wednesday), **Thursday** (thursday), **Friday** (friday), **Saturday** (saturday), **Sunday** (sunday)
   - **Calendar entries** (courses_EntriesByCourse) [visible for secretary therapist admin]
 - **Invoicing** (invoicing):
-  - (invoicing_1): **Healthcare plan** (healthcare_plan), **Client tariff** (tariff), **Payment term** (payment_term), **Paper type** (paper_type)
-  - (invoicing_2): **State** (state), **Ending reason** (ending_reason)
-  - (invoicing_3) [visible for secretary therapist admin]:
+  - (invoicing_1): **Healthcare plan** (healthcare_plan), **Ending reason** (ending_reason), **State** (state)
+  - (invoicing_2) [visible for secretary therapist admin]:
     - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
     - **Existing excerpts** (excerpts_ExcerptsByProject)
 - **More** (more):
@@ -73,6 +72,7 @@ therapist admin
 
 >>> show_permissions(notes.NotesByProject)
 therapist admin
+
 
 
 
@@ -104,13 +104,13 @@ Dossier types
 Every course line knows which its layout.
 
 >>> rt.show(courses.Lines)
-=========== ====================== ================== ================== ====================== ======================== ===================== ===================== ==================== ===================
- Reference   Designation            Designation (de)   Designation (fr)   Layout                 Service type             Manage presences as   Fees category         Attendance fee       Invoicing policy
------------ ---------------------- ------------------ ------------------ ---------------------- ------------------------ --------------------- --------------------- -------------------- -------------------
-             Individual therapies                                         Individual therapies   Individual appointment   Attendee              Payment by presence   Individual therapy   By calendar event
-             Life groups                                                  Life groups            Individual appointment   Attendee              Payment by presence   Individual therapy   By calendar event
-             Other groups                                                 Other groups           Group meeting            Attendee              Payment by presence   Group therapy        By calendar event
-=========== ====================== ================== ================== ====================== ======================== ===================== ===================== ==================== ===================
+=========== ====================== ================== ================== ====================== ============== ===================== ===================
+ Reference   Designation            Designation (de)   Designation (fr)   Layout                 Service type   Manage presences as   Invoicing policy
+----------- ---------------------- ------------------ ------------------ ---------------------- -------------- --------------------- -------------------
+             Individual therapies                                         Individual therapies                  Attendee              By calendar event
+             Life groups                                                  Life groups                           Attendee              By calendar event
+             Other groups                                                 Other groups                          Attendee              By calendar event
+=========== ====================== ================== ================== ====================== ============== ===================== ===================
 <BLANKLINE>
 
 Some course tables have a fixed course layout, some don't.

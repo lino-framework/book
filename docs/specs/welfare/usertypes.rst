@@ -33,6 +33,7 @@ The default set of user types for Lino Welfare lives in the
 :class:`lino.modlib.users.UserTypes` choicelist:
 
 >>> rt.show(users.UserTypes, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======= =========== ==============================
  value   name        text
 ------- ----------- ------------------------------
@@ -148,6 +149,7 @@ True
 
 
 >>> rt.show(users.UserRoles)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ============================= ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
  Name                          000   100   110   120   200   210   220   300   400   410   420   500   510   800   900   910
 ----------------------------- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -178,6 +180,7 @@ True
  ledger.LedgerUser                                                                               ☑     ☑           ☑     ☑
  newcomers.NewcomersOperator               ☑     ☑     ☑           ☑     ☑                 ☑                 ☑     ☑     ☑
  newcomers.NewcomersUser                         ☑     ☑           ☑     ☑                 ☑                       ☑     ☑
+ notes.NotesStaff                                                                                                  ☑     ☑
  notes.NotesUser                     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑
  office.OfficeOperator                     ☑     ☑     ☑     ☑     ☑     ☑           ☑     ☑                 ☑     ☑     ☑
  office.OfficeStaff                        ☑     ☑                                   ☑     ☑                       ☑     ☑

@@ -63,20 +63,20 @@ Subquery expression
 ========================= =========== =======
  table                     stmt_type   count
 ------------------------- ----------- -------
-                           INSERT      121
-                           UNKNOWN     125
+                           INSERT      95
+                           UNKNOWN     99
  ana_account               SELECT      22
- cal_event                 SELECT      121
- cal_task                  SELECT      121
- checkdata_problem         SELECT      121
- contacts_partner          SELECT      76
+ cal_event                 SELECT      95
+ cal_task                  SELECT      95
+ checkdata_problem         SELECT      95
+ contacts_partner          SELECT      50
  django_content_type       SELECT      12
- excerpts_excerpt          SELECT      121
- invoicing_item            SELECT      121
+ excerpts_excerpt          SELECT      95
+ invoicing_item            SELECT      95
  ledger_account            SELECT      22
  ledger_accountingperiod   SELECT      2
- notes_note                SELECT      121
- sales_invoiceitem         SELECT      121
+ notes_note                SELECT      95
+ sales_invoiceitem         SELECT      95
  sheets_accountentry       DELETE      1
  sheets_accountentry       SELECT      7
  sheets_anaaccountentry    DELETE      1
@@ -86,8 +86,8 @@ Subquery expression
  sheets_itementry          SELECT      9
  sheets_partnerentry       DELETE      1
  sheets_partnerentry       SELECT      1
- sheets_report             SELECT      121
- topics_interest           SELECT      121
+ sheets_report             SELECT      95
+ topics_interest           SELECT      95
 ========================= =========== =======
 <BLANKLINE>
 

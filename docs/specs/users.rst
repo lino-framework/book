@@ -201,6 +201,7 @@ This virtual table shows a list of user roles used in this application
 and which user type has them.
 
 >>> rt.show(users.UserRoles)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======================== ===== ===== =====
  Name                     000   100   900
 ------------------------ ----- ----- -----
@@ -211,6 +212,8 @@ and which user type has them.
  contacts.ContactsUser          ☑     ☑
  excerpts.ExcerptsStaff               ☑
  excerpts.ExcerptsUser          ☑     ☑
+ notes.NotesStaff                     ☑
+ notes.NotesUser                ☑     ☑
  office.OfficeStaff                   ☑
  office.OfficeUser              ☑     ☑
  polls.PollsAdmin                     ☑

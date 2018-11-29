@@ -24,15 +24,15 @@ Fees in the demo database
 =========================
 
 >>> rt.show(products.Products)
-==== ==================== ================== ==================== ============= =========================== =====================
+==== ==================== ================== ==================== ============= =========================== =============
  ID   Designation          Designation (de)   Designation (fr)     Sales price   Sales account               Category
----- -------------------- ------------------ -------------------- ------------- --------------------------- ---------------------
- 1    Group therapy        Gruppentherapie    Group therapy        30,00         (7010) Sales on therapies   Payment by presence
- 2    Individual therapy   Einzeltherapie     Individual therapy   60,00         (7010) Sales on therapies   Payment by presence
+---- -------------------- ------------------ -------------------- ------------- --------------------------- -------------
+ 1    Group therapy        Gruppentherapie    Group therapy        30,00         (7010) Sales on therapies   Fees
+ 2    Individual therapy   Einzeltherapie     Individual therapy   60,00         (7010) Sales on therapies   Fees
  3    Other                Sonstige           Autre                35,00
- 4    Prepayment           Prepayment         Prepayment                                                     Prepayments
+ 4    Prepayment           Anzahlung          Prepayment                                                     Prepayments
                                                                    **125,00**
-==== ==================== ================== ==================== ============= =========================== =====================
+==== ==================== ================== ==================== ============= =========================== =============
 <BLANKLINE>
 
 
