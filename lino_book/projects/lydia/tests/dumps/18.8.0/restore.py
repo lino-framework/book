@@ -1464,7 +1464,7 @@ def main(args):
     execfile("finan_paymentorder.py", *args)
     execfile("finan_paymentorderitem.py", *args)
     execfile("ledger_movement.py", *args)
-    execfile("notes_note.py", *args)
+    execfile("noteers_note.py", *args)
     execfile("sales_vatproductinvoice.py", *args)
     execfile("invoicing_item.py", *args)
     execfile("sales_invoiceitem.py", *args)
