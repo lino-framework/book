@@ -47,6 +47,7 @@ General plugin specs
 
    cv
    topics
+   products
    courses
    holidays
    households

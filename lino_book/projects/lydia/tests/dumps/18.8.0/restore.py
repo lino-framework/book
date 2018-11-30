@@ -575,7 +575,7 @@ def create_lists_member(id, seqno, list_id, partner_id, remark):
     return lists_Member(**kw)
 
 def create_products_product(id, name, description, cat_id, delivery_unit, vat_class, number_of_events, min_asset, sales_account_id, sales_price):
-#    if delivery_unit: delivery_unit = settings.SITE.models.products.DeliveryUnit.get_by_value(delivery_unit)
+#    if delivery_unit: delivery_unit = settings.SITE.models.products.DeliveryUnits.get_by_value(delivery_unit)
 #    if vat_class: vat_class = settings.SITE.models.vat.VatClasses.get_by_value(vat_class)
     if sales_price is not None: sales_price = Decimal(sales_price)
     kw = dict()

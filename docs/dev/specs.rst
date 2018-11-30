@@ -1,8 +1,8 @@
 .. _dev.specs:
 
-===============================
-About functional specifications
-===============================
+==============================
+About technical specifications
+==============================
 
 The :doc:`/specs/index` section is an online document tree that
 describes in detail what users can do with their Lino application.
