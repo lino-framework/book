@@ -180,7 +180,7 @@ True
  ledger.LedgerUser                                                                               ☑     ☑           ☑     ☑
  newcomers.NewcomersOperator               ☑     ☑     ☑           ☑     ☑                 ☑                 ☑     ☑     ☑
  newcomers.NewcomersUser                         ☑     ☑           ☑     ☑                 ☑                       ☑     ☑
- notes.NotesStaff                                                                                                  ☑     ☑
+ notes.NotesStaff                          ☑     ☑                                         ☑                       ☑     ☑
  notes.NotesUser                     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑     ☑
  office.OfficeOperator                     ☑     ☑     ☑     ☑     ☑     ☑           ☑     ☑                 ☑     ☑     ☑
  office.OfficeStaff                        ☑     ☑                                   ☑     ☑                       ☑     ☑

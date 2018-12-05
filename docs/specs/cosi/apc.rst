@@ -48,7 +48,7 @@ Robin is the system administrator, he has a complete menu:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
 - Office : My Excerpts
-- Sales : Products, Product Categories, Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
+- Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
@@ -61,7 +61,7 @@ Robin is the system administrator, he has a complete menu:
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Office : Excerpt Types, My Text Field Templates
-  - Sales : Paper types, Tariffs
+  - Sales : Products, Product Categories, Paper types, Flatrates
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : content types, Authorities, User types, User roles

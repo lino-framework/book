@@ -35,7 +35,7 @@ The database structure
  cal.EventPolicy             cal.EventPolicies              19        6
  cal.EventType               cal.EventTypes                 21        5
  cal.Guest                   cal.Guests                     7         280
- cal.GuestRole               cal.GuestRoles                 5         2
+ cal.GuestRole               cal.GuestRoles                 6         2
  cal.Priority                cal.Priorities                 5         4
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
  cal.RemoteCalendar          cal.RemoteCalendars            7         0
@@ -54,8 +54,8 @@ The database structure
  contenttypes.ContentType    gfks.ContentTypes              3         94
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             42        52
- courses.Enrolment           courses.Enrolments             16        78
+ courses.Course              courses.Activities             44        52
+ courses.Enrolment           courses.Enrolments             17        78
  courses.Line                courses.Lines                  25        3
  courses.PriceRule           courses.PriceRules             8         2
  courses.Slot                courses.Slots                  5         0
@@ -78,7 +78,7 @@ The database structure
  invoicing.Item              invoicing.Items                9         16
  invoicing.Plan              invoicing.Plans                7         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
- invoicing.Tariff            invoicing.Tariffs              7         1
+ invoicing.Tariff            invoicing.Tariffs              7         2
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
@@ -195,7 +195,7 @@ behaviour. See also :doc:`/dev/delete`.
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
 - invoicing.Tariff :
-  - PROTECT : products.Product.tariff
+  - PROTECT : courses.Course.tariff, courses.Enrolment.tariff, products.Product.tariff
 - ledger.Account :
   - CASCADE : sheets.AccountEntry.account
   - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
@@ -219,7 +219,7 @@ behaviour. See also :doc:`/dev/delete`.
 - notes.NoteType :
   - PROTECT : notes.Note.type
 - products.Product :
-  - PROTECT : courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, courses.PriceRule.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.prepayment_product
+  - PROTECT : courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, courses.PriceRule.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.cash_daybook
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
