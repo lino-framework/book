@@ -42,7 +42,7 @@ users.UserTypes.admin:900
   - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Fees : Fees, Fee categories
-  - Sales : Paper types, Tariffs
+  - Sales : Paper types, Flatrates
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
@@ -86,7 +86,7 @@ Monique is a secretary.
   - Calendar : Guest roles
   - Activities : Activity types, Instructor Types, Participant Types
   - Fees : Fees, Fee categories
-  - Sales : Tariffs
+  - Sales : Flatrates
 - Explorer :
   - System : content types, Data checkers, Data problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
@@ -119,7 +119,7 @@ Marianne is a "simple user".
   - Accounting : Debtors, Creditors
 - Configure :
   - Activities : Activity types, Instructor Types, Participant Types
-  - Sales : Tariffs
+  - Sales : Flatrates
 - Explorer :
   - Contacts : Partners
   - Sales : Invoices, VAT rules, Sales invoices
