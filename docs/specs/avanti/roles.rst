@@ -46,7 +46,7 @@ Site administrator
   - Career : language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
-  - Activities : Activities, Enrolments, Enrolment states, Course layouts, Reminders
+  - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states, Reminders
 - Site : About
 
   

@@ -1,13 +1,11 @@
+.. doctest docs/specs/gfks.rst
 .. _book.specs.gfks:
 
 =========================================
 Some internals about Generic Foreign Keys
 =========================================
 
-.. to test just this doc:
-
-    $ doctest docs/specs/gfks.rst
-
+..
     >>> from lino import startup
     >>> startup('lino_book.projects.min9.settings.doctests')
     >>> from lino.api.doctest import *
@@ -27,7 +25,7 @@ List of models which inherit from :class:`Controllable
 <lino.modlib.gfks.mixins.Controllable>`:
 
 >>> print(' '.join([fmn(m) for m in rt.models_by_base(Controllable)]))
-cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Note notify.Message
+cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Note notify.Message uploads.Upload
 
 >>> obj = contacts.Person.objects.all()[0]
 >>> d = gfk2lookup(notes.Note.owner, obj)

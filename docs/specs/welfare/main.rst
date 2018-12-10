@@ -5,10 +5,10 @@
 The admin main page
 ===================
 
-A technical tour into the main page of :ref:`welfare`.
+This describes the main page of :ref:`welfare`.
 
 .. contents::
-   :depth: 2
+   :depth: 1
 
 .. include:: /include/tested.rst
   
@@ -39,7 +39,7 @@ it is much work to maintain.
 
 >>> links = soup.find_all('a')
 >>> len(links)
-117
+119
 
 >>> print(links[0].text)
 Suchen

@@ -18,3 +18,4 @@ Office stuff in Lino
    excerpts
    printing
    weasyprint
+   uploads

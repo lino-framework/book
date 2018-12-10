@@ -43,14 +43,14 @@ My appointments (Managed by Robin Rood, Dates 01.08.2017 to 31.08.2017)
  `Interview (23.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☒]
  `Seminar (21.08.2017 10:20) <Detail>`__     **☑ Took place** → [☐]
  `Breakfast (19.08.2017 13:30) <Detail>`__   **☼ Published** → [☑] [☒] [☐]
- `Interview (17.08.2017 09:40) <Detail>`__   **☐ Draft** → [☑] [☒]
+ `Interview (17.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
  `Seminar (15.08.2017 11:10) <Detail>`__     **☒ Cancelled**
- `Breakfast (13.08.2017 08:30) <Detail>`__   **? Suggested** → [☑] [☒]
+ `Breakfast (13.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☑] [☒]
  `Interview (11.08.2017 10:20) <Detail>`__   **☑ Took place** → [☐]
  `Seminar (09.08.2017 13:30) <Detail>`__     **☼ Published** → [☑] [☒] [☐]
- `Breakfast (07.08.2017 09:40) <Detail>`__   **☐ Draft** → [☑] [☒]
+ `Breakfast (07.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
  `Interview (05.08.2017 11:10) <Detail>`__   **☒ Cancelled**
- `Seminar (03.08.2017 08:30) <Detail>`__     **? Suggested** → [☑] [☒]
+ `Seminar (03.08.2017 08:30) <Detail>`__     **? Suggested** → [☼] [☑] [☒]
  `Breakfast (01.08.2017 10:20) <Detail>`__   **☑ Took place** → [☐]
 =========================================== ===============================
 <BLANKLINE>

@@ -56,7 +56,7 @@ cal.Weekdays : Weekdays
 cbss.ManageActions : ManageActions
 cbss.QueryRegisters : QueryRegisters
 cbss.RequestLanguages : RequestLanguages
-cbss.RequestStates : Zustände
+cbss.RequestStates : Zustände cbss request
 changes.ChangeTypes : Änderungsarten
 checkdata.Checkers : Datentests
 clients.ClientEvents : Beobachtungskriterien
@@ -83,7 +83,7 @@ ledger.CommonAccounts : Gemeinkonten
 ledger.JournalGroups : Journalgruppen
 ledger.PeriodStates : Zustände
 ledger.TradeTypes : Handelsarten
-ledger.VoucherStates : Zustände
+ledger.VoucherStates : Zustände Beleg
 ledger.VoucherTypes : Belegarten
 notes.SpecialTypes : Sondernotizarten
 notify.MailModes : Benachrichtigungsmodi
@@ -100,6 +100,6 @@ system.YesNo : Ja oder Nein
 uploads.Shortcuts : Upload shortcuts
 uploads.UploadAreas : Upload-Bereiche
 users.UserTypes : Benutzerarten
-xcourses.CourseRequestStates : Zustände
+xcourses.CourseRequestStates : Zustände Kursanfragen
 
 

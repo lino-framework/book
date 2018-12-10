@@ -96,7 +96,7 @@ Romain
   - Bureau : Types d'extrait, Types de fichiers téléchargés, Types d'observation, Types d'événements, Mes Text Field Templates
   - Calendrier : Calendriers, Locaux, Priorités, Évènements periodiques, Rôles de participants, Types d'entrée calendrier, Règles de récurrence, Calendriers externes, Lignes de planificateur
   - Ateliers : Savoirs de base, Topics, Timetable Slots
-  - CPAS : Types de contact client, Services, Raisons d’arrêt d'intervention, Phases d'intégration, Activités, Types d'exclusion, Motifs de dispense, Types d'aide sociale, Catégories
+  - CPAS : Types de contact client, Services, Raisons d’arrêt d'intervention, Phases d'intégration, Activités, Types d'exclusion du chômage, Motifs de dispense, Types d'aide sociale, Catégories
   - Parcours : Langues, Types d'éducation, Niveaux académiques, Secteurs, Fonctions, Régimes de travail, Statuts, Types de contrat, Types de compétence sociale, Types de freins, Preuves de qualification
   - Intégration : Types de PIIS, Motifs d’arrêt de contrat, Régimes d'évaluation, Types de mise à l'emploi art60§7, Types de poste, Horaires, Types de mise à l'emploi art.61, Types de stage d'immersion, Objectifs
   - Nouvelles demandes : Intermédiaires, Spécificités
@@ -108,8 +108,8 @@ Romain
   - Système : Procurations, Types d'utilisateur, Rôles d'utilisateur, types de contenu, Notifications, Changes, All dashboard widgets, Tests de données, Problèmes de données
   - Bureau : Extraits, Fichiers téléchargés, Upload Areas, Mails envoyés, Pièces jointes, Observations, Text Field Templates
   - Calendrier : Entrées calendrier, Tâches, Présences, Abonnements, Event states, Guest states, Task states
-  - Ateliers : Tests de niveau, Ateliers, Inscriptions, États d'inscription, Course layouts
-  - CPAS : Contacts client, Types de contact connus, Interventions, Exclusions, Antécédents judiciaires, Bénéficiaires, Etats civils, Etats bénéficiaires, Types de carte eID, Octrois d'aide, Certificats de revenu, Refund confirmations, Confirmations simple
+  - Ateliers : Tests de niveau, Ateliers, Inscriptions, États Inscription, Course layouts, États Atelier
+  - CPAS : Contacts client, Types de contact connus, Interventions, Exclusions du chômage, Antécédents judiciaires, Bénéficiaires, Etats civils, Etats bénéficiaires, Types de carte eID, Octrois d'aide, Certificats de revenu, Refund confirmations, Confirmations simple
   - Parcours : Connaissances de langue, Formations, Études, Expériences professionnelles, Connaissances de langue, Compétences professionnelles, Compétences sociales, Freins
   - Intégration : PIISs, Mises à l'emploi art60§7, Candidatures, Services utilisateurs, Mises à l'emploi art61, Stages d'immersion, Preuves de recherche, Fiches FSE, Champs FSE
   - Nouvelles demandes : Compétences
@@ -466,7 +466,6 @@ Each window layout defines a given set of fields.
 - humanlinks.Links.insert : parent, type, child
 - immersion.ContractTypes.detail : id, name, name_nl, name_de, name_en, exam_policy, template, overlap_group, full_name
 - immersion.ContractTypes.insert : name, name_nl, name_de, name_en, exam_policy
-- immersion.Contracts.detail : id, client, user, language, type, goal, company, contact_person, contact_role, applies_from, applies_until, exam_policy, sector, function, reference_person, printed, date_decided, date_issued, date_ended, ending, remark
 - immersion.Contracts.insert : client, company, type, goal
 - immersion.Goals.detail : id, name, name_nl, name_de, name_en
 - integ.ActivityReport.show : body
@@ -474,7 +473,6 @@ Each window layout defines a given set of fields.
 - isip.ContractPartners.detail : company, contact_person, contact_role, duties_company
 - isip.ContractPartners.insert : company, contact_person, contact_role
 - isip.ContractTypes.detail : id, ref, exam_policy, needs_study_type, name, name_nl, name_de, name_en, full_name
-- isip.Contracts.detail : id, client, type, user, user_asd, study_type, applies_from, applies_until, exam_policy, language, date_decided, date_issued, printed, date_ended, ending, uploads_UploadsByController, stages, goals, duties_asd, duties_dsbe, duties_person
 - isip.Contracts.insert : client, type
 - isip.ExamPolicies.detail : id, name, name_nl, name_de, name_en, max_events, every, every_unit, event_type, monday, tuesday, wednesday, thursday, friday, saturday, sunday
 - jobs.ContractTypes.detail : id, name, name_nl, name_de, name_en, ref
@@ -502,7 +500,7 @@ Each window layout defines a given set of fields.
 - outbox.Mails.detail : subject, project, date, user, sent, id, owner, outbox_AttachmentsByMail, uploads_UploadsByController, body
 - outbox.Mails.insert : project, subject, body
 - pcsw.Clients.create_visit : user, summary
-- pcsw.Clients.detail : overview, gender, id, nationality, last_name, first_name, middle_name, birth_date, age, language, email, phone, fax, gsm, image, national_id, civil_state, birth_country, birth_place, declared_name, needs_residence_permit, needs_work_permit, in_belgium_since, residence_type, residence_until, group, aid_type, AgentsByClient, workflow_buttons, id_document, faculty, households_MembersByPerson, child_custody, humanlinks_LinksByHuman, cv_LanguageKnowledgesByPerson, skills, obstacles, is_seeking, unemployed_since, seeking_since, work_permit_suspended_until, polls_ResponsesByPartner, notes_NotesByProject, excerpts_ExcerptsByProject, activity, client_state, noble_condition, unavailable_until, unavailable_why, is_obsolete, has_esf, created, modified, remarks, checkdata_ProblemsByOwner
+- pcsw.Clients.detail : overview, gender, id, nationality, last_name, first_name, middle_name, birth_date, age, language, email, phone, fax, gsm, image, national_id, civil_state, birth_country, birth_place, declared_name, needs_residence_permit, needs_work_permit, in_belgium_since, residence_type, residence_until, group, aid_type, AgentsByClient, workflow_buttons, id_document, faculty, households_MembersByPerson, child_custody, humanlinks_LinksByHuman, skills, obstacles, polls_ResponsesByPartner, is_seeking, unemployed_since, seeking_since, activity, client_state, noble_condition, unavailable_until, unavailable_why, is_obsolete, has_esf, created, modified, remarks, checkdata_ProblemsByOwner
 - pcsw.Clients.insert : first_name, last_name, national_id, gender, language
 - pcsw.Clients.merge_row : merge_to, aids_IncomeConfirmation, aids_RefundConfirmation, aids_SimpleConfirmation, coachings_Coaching, esf_ClientSummary, pcsw_Dispense, cv_LanguageKnowledge, cv_Obstacle, cv_Skill, cv_SoftSkill, addresses_Address, reason
 - pcsw.Clients.refuse_client : reason, remark
@@ -663,7 +661,6 @@ Each window layout is **viewable** by a given set of user types.
 - humanlinks.Links.insert : visible for 110 120 210 410 420 800 admin 910
 - immersion.ContractTypes.detail : visible for 110 120 420 admin 910
 - immersion.ContractTypes.insert : visible for 110 120 420 admin 910
-- immersion.Contracts.detail : visible for 100 110 120 420 admin 910
 - immersion.Contracts.insert : visible for 100 110 120 420 admin 910
 - immersion.Goals.detail : visible for 110 120 420 admin 910
 - integ.ActivityReport.show : visible for 100 110 120 420 admin 910
@@ -671,7 +668,6 @@ Each window layout is **viewable** by a given set of user types.
 - isip.ContractPartners.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.insert : visible for 110 120 410 420 admin 910
 - isip.ContractTypes.detail : visible for 110 120 410 420 admin 910
-- isip.Contracts.detail : visible for 100 110 120 200 300 400 410 420 admin 910
 - isip.Contracts.insert : visible for 100 110 120 200 300 400 410 420 admin 910
 - isip.ExamPolicies.detail : visible for 110 120 410 420 admin 910
 - jobs.ContractTypes.detail : visible for 110 120 410 420 admin 910
@@ -940,7 +936,7 @@ Here is the output of :func:`walk_menu_items
 - Configuration --> CPAS --> Raisons d’arrêt d'intervention : 5
 - Configuration --> CPAS --> Phases d'intégration : 6
 - Configuration --> CPAS --> Activités : 1
-- Configuration --> CPAS --> Types d'exclusion : 3
+- Configuration --> CPAS --> Types d'exclusion du chômage : 3
 - Configuration --> CPAS --> Motifs de dispense : 5
 - Configuration --> CPAS --> Types d'aide sociale : 12
 - Configuration --> CPAS --> Catégories : 4
@@ -989,7 +985,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Système --> All dashboard widgets : 1
 - Explorateur --> Système --> Tests de données : 13
 - Explorateur --> Système --> Problèmes de données : 0
-- Explorateur --> Bureau --> Extraits : 71
+- Explorateur --> Bureau --> Extraits : 70
 - Explorateur --> Bureau --> Fichiers téléchargés : 12
 - Explorateur --> Bureau --> Upload Areas : 2
 - Explorateur --> Bureau --> Mails envoyés : 1
@@ -1006,12 +1002,13 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Ateliers --> Tests de niveau : 1
 - Explorateur --> Ateliers --> Ateliers : 8
 - Explorateur --> Ateliers --> Inscriptions : 84
-- Explorateur --> Ateliers --> États d'inscription : 6
+- Explorateur --> Ateliers --> États Inscription : 6
 - Explorateur --> Ateliers --> Course layouts : 2
+- Explorateur --> Ateliers --> États Atelier : 4
 - Explorateur --> CPAS --> Contacts client : 15
 - Explorateur --> CPAS --> Types de contact connus : 2
 - Explorateur --> CPAS --> Interventions : 91
-- Explorateur --> CPAS --> Exclusions : 1
+- Explorateur --> CPAS --> Exclusions du chômage : 1
 - Explorateur --> CPAS --> Antécédents judiciaires : 1
 - Explorateur --> CPAS --> Bénéficiaires : 58
 - Explorateur --> CPAS --> Etats civils : 7

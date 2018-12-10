@@ -76,8 +76,12 @@ The other is still valid but will expire in 3 days.
 >>> print(newcomer)
 DERICUM Daniel (121)
 
+The UploadsByClient summary shows a summary grouped by upload type.
+In a detail view it also
+
 >>> rt.show(uploads.UploadsByClient, newcomer)
-Identifizierendes Dokument: *8*
+Identifizierendes Dokument: *8* / `🖿 <javascript:Lino.pcsw.Clients.show_uploads(null,false,121,{  })>`__
+
 
 >>> rt.show(uploads.UploadsByClient, newcomer, nosummary=True)
 ============================ ============ ======= ============================ ===================
@@ -95,11 +99,7 @@ Here is another client with three uploads:
 DOBBELSTEIN Dorothée (124)
 
 >>> rt.show(uploads.UploadsByClient, oldclient)
-Aufenthaltserlaubnis: *9*
-<BLANKLINE>
-Arbeitserlaubnis: *10*
-<BLANKLINE>
-Führerschein: *11*
+Aufenthaltserlaubnis: *9* / Arbeitserlaubnis: *10* / Führerschein: *11* / `🖿 <javascript:Lino.pcsw.Clients.show_uploads(null,false,124,{  })>`__
 
 
 >>> rt.show(uploads.UploadsByClient, oldclient, nosummary=True)

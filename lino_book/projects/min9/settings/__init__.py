@@ -43,6 +43,7 @@ class Site(Site):
         yield 'lino.modlib.notify'
         yield 'lino.modlib.changes'
         yield 'lino.modlib.comments'
+        yield 'lino.modlib.uploads'
 
     # def setup_actions(self):
     #     super(Site, self).setup_actions()

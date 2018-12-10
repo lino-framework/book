@@ -49,20 +49,21 @@ For example let's look at ISIP contract #26 of the demo database.
 >>> obj.exam_policy
 ExamPolicy #1 ('Every month')
 >>> rt.show(cal.EntriesByController, obj)
-========================== =================== ================ ============= =================
- When                       Short description   Managed by       Assigned to   Workflow
--------------------------- ------------------- ---------------- ------------- -----------------
- *Mon 11/05/2015 (09:00)*   Évaluation 10       Mélanie Mélard                 **? Suggested**
- *Thu 09/04/2015 (09:00)*   Évaluation 9        Mélanie Mélard                 **? Suggested**
- *Mon 09/03/2015 (09:00)*   Évaluation 8        Mélanie Mélard                 **? Suggested**
- *Mon 09/02/2015 (09:00)*   Évaluation 7        Mélanie Mélard                 **? Suggested**
- *Thu 08/01/2015 (09:00)*   Évaluation 6        Mélanie Mélard                 **? Suggested**
- *Mon 08/12/2014 (09:00)*   Évaluation 5        Mélanie Mélard                 **? Suggested**
- *Thu 06/11/2014 (09:00)*   Évaluation 4        Mélanie Mélard                 **? Suggested**
- *Mon 06/10/2014 (09:00)*   Évaluation 3        Mélanie Mélard                 **? Suggested**
- *Thu 04/09/2014 (09:00)*   Évaluation 2        Mélanie Mélard                 **? Suggested**
- *Mon 04/08/2014 (09:00)*   Évaluation 1        Mélanie Mélard                 **? Suggested**
-========================== =================== ================ ============= =================
+========================== =================== ================ ======== =================
+ When                       Short description   Managed by       No.      Workflow
+-------------------------- ------------------- ---------------- -------- -----------------
+ *Mon 11/05/2015 (09:00)*   Évaluation 10       Mélanie Mélard   10       **? Suggested**
+ *Thu 09/04/2015 (09:00)*   Évaluation 9        Mélanie Mélard   9        **? Suggested**
+ *Mon 09/03/2015 (09:00)*   Évaluation 8        Mélanie Mélard   8        **? Suggested**
+ *Mon 09/02/2015 (09:00)*   Évaluation 7        Mélanie Mélard   7        **? Suggested**
+ *Thu 08/01/2015 (09:00)*   Évaluation 6        Mélanie Mélard   6        **? Suggested**
+ *Mon 08/12/2014 (09:00)*   Évaluation 5        Mélanie Mélard   5        **? Suggested**
+ *Thu 06/11/2014 (09:00)*   Évaluation 4        Mélanie Mélard   4        **? Suggested**
+ *Mon 06/10/2014 (09:00)*   Évaluation 3        Mélanie Mélard   3        **? Suggested**
+ *Thu 04/09/2014 (09:00)*   Évaluation 2        Mélanie Mélard   2        **? Suggested**
+ *Mon 04/08/2014 (09:00)*   Évaluation 1        Mélanie Mélard   1        **? Suggested**
+ **Total (10 rows)**                                             **55**
+========================== =================== ================ ======== =================
 <BLANKLINE>
 
 Note how Lino avoids Sundays and Saturdays by moving to the following
@@ -130,26 +131,25 @@ For example, let's pick up ISIP contract #1.
 
 >>> obj = isip.Contract.objects.get(pk=1)
 >>> rt.show(cal.EntriesByController, obj)
-========================== =================== ================= ============= =================
- When                       Short description   Managed by        Assigned to   Workflow
--------------------------- ------------------- ----------------- ------------- -----------------
- *Thu 01/08/2013 (09:00)*   Auswertung 10       Mélanie Mélard                  **? Suggested**
- *Mon 01/07/2013 (09:00)*   Auswertung 9        Mélanie Mélard                  **? Suggested**
- *Wed 29/05/2013 (09:00)*   Auswertung 8        Mélanie Mélard                  **? Suggested**
- *Mon 29/04/2013 (09:00)*   Auswertung 7        Mélanie Mélard                  **? Suggested**
- *Thu 28/03/2013 (09:00)*   Auswertung 6        Mélanie Mélard                  **? Suggested**
- *Thu 28/02/2013 (09:00)*   Auswertung 5        Hubert Huppertz                 **? Suggested**
- *Thu 31/01/2013 (09:00)*   Auswertung 4        Hubert Huppertz                 **? Suggested**
- *Mon 31/12/2012 (09:00)*   Auswertung 3        Hubert Huppertz                 **? Suggested**
- *Thu 29/11/2012 (09:00)*   Auswertung 2        Hubert Huppertz                 **? Suggested**
- *Mon 29/10/2012 (09:00)*   Auswertung 1        Hubert Huppertz                 **? Suggested**
-========================== =================== ================= ============= =================
+========================== =================== ================= ======== =================
+ When                       Short description   Managed by        No.      Workflow
+-------------------------- ------------------- ----------------- -------- -----------------
+ *Thu 01/08/2013 (09:00)*   Auswertung 10       Mélanie Mélard    10       **? Suggested**
+ *Mon 01/07/2013 (09:00)*   Auswertung 9        Mélanie Mélard    9        **? Suggested**
+ *Wed 29/05/2013 (09:00)*   Auswertung 8        Mélanie Mélard    8        **? Suggested**
+ *Mon 29/04/2013 (09:00)*   Auswertung 7        Mélanie Mélard    7        **? Suggested**
+ *Thu 28/03/2013 (09:00)*   Auswertung 6        Mélanie Mélard    6        **? Suggested**
+ *Thu 28/02/2013 (09:00)*   Auswertung 5        Hubert Huppertz   5        **? Suggested**
+ *Thu 31/01/2013 (09:00)*   Auswertung 4        Hubert Huppertz   4        **? Suggested**
+ *Mon 31/12/2012 (09:00)*   Auswertung 3        Hubert Huppertz   3        **? Suggested**
+ *Thu 29/11/2012 (09:00)*   Auswertung 2        Hubert Huppertz   2        **? Suggested**
+ *Mon 29/10/2012 (09:00)*   Auswertung 1        Hubert Huppertz   1        **? Suggested**
+ **Total (10 rows)**                                              **55**
+========================== =================== ================= ======== =================
 <BLANKLINE>
 
-The above shows that appointments before 2013-11-10 are with Hubert,
-while later appointments are with Caroline. How did Lino know which
-coach to assign?
-
+The above shows that appointments before 2013-03-08 are with Hubert, while
+later appointments are with Caroline. How did Lino know which coach to assign?
 To find an answer, we must look at the coachings of this client:
 
 >>> rt.show('coachings.CoachingsByClient', obj.client)

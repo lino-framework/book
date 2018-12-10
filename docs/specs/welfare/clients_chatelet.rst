@@ -63,40 +63,32 @@ Lino Welfare à la Chatelet.
   - **Formations** (cv.TrainingsByPerson)
   - **Expériences professionnelles** (cv.ExperiencesByPerson)
 - **Compétences** (competences) [visible for 100 110 120 420 admin 910]:
-  - (competences_1) [visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910]:
-    - **Compétences professionnelles** (cv.SkillsByPerson) [visible for 100 110 120 420 admin 910]
-    - **Tests de niveau** (badges.AwardsByHolder)
-    - **Compétences sociales** (cv.SoftSkillsByPerson) [visible for 100 110 120 420 admin 910]
-  - (competences_2) [visible for all]: **Connaissances de langue** (cv_LanguageKnowledgesByPerson) [visible for 100 110 120 420 admin 910], **Autres atouts** (skills)
+  - **Tests de niveau** (badges.AwardsByHolder) [visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910]
+  - **Autres atouts** (skills) [visible for all]
 - **Freins** (obstacles_tab) [visible for 100 110 120 420 admin 910]:
-  - (obstacles_tab_1) [visible for 100 110 120 200 300 400 410 420 admin 910]:
-    - **Freins** (cv.ObstaclesByPerson) [visible for 100 110 120 420 admin 910]
-    - **Antécédents judiciaires** (pcsw.ConvictionsByClient)
+  - **Freins** (cv.ObstaclesByPerson)
   - **Autres freins** (obstacles) [visible for all]
-- **PIIS** (isip_tab) [visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910]:
-  - **PIISs** (isip.ContractsByClient) [visible for 100 110 120 210 400 410 420 admin 910]
-  - **Octrois d'aide** (aids.GrantingsByClient)
+- **PIISs** (isip.ContractsByClient) [visible for 100 110 120 210 400 410 420 admin 910]
 - **O.I.** (courses_tab) [visible for 100 110 120 200 210 300 400 410 420 800 admin 910]:
   - **Inscriptions dans Ateliers d'insertion sociale** (courses.BasicEnrolmentsByPupil)
   - **Inscriptions dans Ateliers d'Insertion socioprofessionnelle** (courses.JobEnrolmentsByPupil)
 - **Stages d'immersion** (immersion.ContractsByClient) [visible for 100 110 120 210 400 410 420 admin 910]
-- **RAE** (job_search_1) [visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910]:
-  - (suche):
-    - (suche_1) [visible for all]: **cherche du travail** (is_seeking), **Inoccupé depuis** (unemployed_since), **Cherche du travail depuis** (seeking_since), **Suspendu jusque** (work_permit_suspended_until)
-    - **Dispenses** (pcsw.DispensesByClient) [visible for 100 110 120 200 300 400 410 420 admin 910]
-    - **Exclusions** (pcsw.ExclusionsByClient) [visible for 100 110 120 200 300 400 410 420 admin 910]
-  - (papers) [visible for 100 110 120 200 300 400 410 420 admin 910]:
+- **RAE** (job_search_1) [visible for 100 110 120 200 300 400 410 420 admin 910]:
+  - **Dispenses** (pcsw.DispensesByClient)
+  - (papers):
     - **Preuves de recherche** (active_job_search.ProofsByClient) [visible for 100 110 120 420 admin 910]
     - **Interviews** (polls_ResponsesByPartner)
 - **Mise à l'emploi** (contracts) [visible for 100 110 120 200 210 300 400 410 420 admin 910]:
   - **Candidatures** (jobs.CandidaturesByPerson)
   - **Mises à l'emploi art60§7** (jobs.ContractsByClient)
   - **Mises à l'emploi art.61 et activations** (art61.ContractsByClient) [visible for 100 110 120 210 400 410 420 admin 910]
-- **Historique** (history) [visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910]:
-  - **Observations** (notes_NotesByProject)
-  - (history_right):
+- **Historique** (history):
+  - (history_left):
+    - (history_left_1): **cherche du travail** (is_seeking), **Inoccupé depuis** (unemployed_since), **Cherche du travail depuis** (seeking_since)
+    - **Observations** (notes.NotesByProject) [visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910]
+  - (history_right) [visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910]:
     - **Fichiers téléchargés** (uploads.UploadsByClient)
-    - **Existing excerpts** (excerpts_ExcerptsByProject)
+    - **Situation chômage** (pcsw.ExclusionsByClient) [visible for 100 110 120 200 300 400 410 420 admin 910]
     - **Fiches FSE** (esf.SummariesByClient) [visible for 100 110 120 420 admin 910]
 - **Calendrier** (calendar) [visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910]:
   - **Entrées calendrier** (cal.EntriesByClient)

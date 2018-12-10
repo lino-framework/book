@@ -49,7 +49,7 @@ users.UserTypes.admin:900
   - System : Authorities, User types, User roles, content types, Data checkers, Data problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
-  - Activities : Activities, Enrolments, Enrolment states, Course layouts
+  - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
   - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - Financial : Bank Statements, Journal Entries, Payment Orders

@@ -21,11 +21,11 @@ My tasks
 ========
 
 The `My tasks` table (:class:`lino_xl.lib.cal.MyTasks`) is visible
-in the admin main screen.
+in the dashboard.
 
 This table shows tasks which are due in the next **30** days.  This
 value is currently as a class attribute :attr:`default_end_date_offset
-<lino.modlib.cal.ui.MyTasks.default_end_date_offset>` on that table:
+<lino.modlib.cal.MyTasks.default_end_date_offset>` on that table:
 
 >>> cal.MyTasks.default_end_date_offset
 30
@@ -42,14 +42,20 @@ For example Hubert has some tasks in that table:
 <BLANKLINE>
 
 
-For Alice this table is empty:
+Here is the same table for Alice (with a task that is started *before* today):
 
 >>> rt.login('alicia').show(cal.MyTasks)
-Aucun enregistrement
+============ ============================= ============================= ======================
+ Date début   Description brève             Workflow                      Bénéficiaire
+------------ ----------------------------- ----------------------------- ----------------------
+ 21/05/2014   Projet termine dans un mois   **☐ à faire** → [☑] [☒] [⚠]   DA VINCI David (165)
+============ ============================= ============================= ======================
+<BLANKLINE>
 
-Actually Alice *does* have quite some tasks, but they are all more than
-30 days away in the future.  If she manually sets :attr:`end_date
-<lino.modlib.cal.ui.Tasks.end_date>` to blank then she sees them:
+
+Actually Alice has more open tasks, but they are all more than 30 days away in
+the future.  If she manually sets :attr:`end_date
+<lino.modlib.cal.Tasks.end_date>` to blank then she sees them:
 
 >>> pv = dict(end_date=None)
 >>> rt.login('alicia').show(cal.MyTasks, param_values=pv)
@@ -64,6 +70,8 @@ Actually Alice *does* have quite some tasks, but they are all more than
  24/09/2014   Projet termine dans un mois   **☐ à faire** → [☑] [☒] [⚠]   DUBOIS Robin (179)
  02/08/2014   Projet termine dans un mois   **☐ à faire** → [☑] [☒] [⚠]   VAN VEEN Vincent (166)
  30/06/2014   Permis de travail expire le   **☐ à faire** → [☑] [☒] [⚠]   DOBBELSTEIN Dorothée (124)
+ 21/05/2014   Projet termine dans un mois   **☐ à faire** → [☑] [☒] [⚠]   DA VINCI David (165)
 ============ ============================= ============================= ============================
 <BLANKLINE>
+
 

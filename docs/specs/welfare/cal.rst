@@ -1,3 +1,4 @@
+
 .. doctest docs/specs/welfare/cal.rst
 .. _welfare.specs.cal:
 
@@ -201,15 +202,15 @@ These are Alicia's calendar appointments of the last two months:
 >>> pv = dict(start_date=dd.today(-15), end_date=dd.today(-1))
 >>> rt.login('alicia').show(cal.MyEntries, language='en',
 ...     param_values=pv)
-====================================== ========================= ===================== =================== ===============================
+====================================== ========================= ===================== =================== ===================================
  When                                   Client                    Calendar entry type   Short description   Workflow
--------------------------------------- ------------------------- --------------------- ------------------- -------------------------------
+-------------------------------------- ------------------------- --------------------- ------------------- -----------------------------------
  `Tue 20/05/2014 at 10:20 <Detail>`__                             Meeting               Diner               **☑ Took place** → [☐]
  `Wed 14/05/2014 at 11:10 <Detail>`__                             Meeting               Diner               **☒ Cancelled**
- `Wed 14/05/2014 <Detail>`__            HILGERS Hildegard (133)   Evaluation            Évaluation 6        [▽] **? Suggested** → [☑] [☒]
+ `Wed 14/05/2014 <Detail>`__            HILGERS Hildegard (133)   Evaluation            Évaluation 6        [▽] **? Suggested** → [☼] [☑] [☒]
  `Thu 08/05/2014 at 13:30 <Detail>`__                             Meeting               Diner               **☼ Published** → [☑] [☒] [☐]
- `Wed 07/05/2014 at 09:00 <Detail>`__   DA VINCI David (165)      Evaluation            Évaluation 15       [▽] **? Suggested** → [☑] [☒]
-====================================== ========================= ===================== =================== ===============================
+ `Wed 07/05/2014 at 09:00 <Detail>`__   DA VINCI David (165)      Evaluation            Évaluation 15       [▽] **? Suggested** → [☼] [☑] [☒]
+====================================== ========================= ===================== =================== ===================================
 <BLANKLINE>
 
 
@@ -219,16 +220,16 @@ Overdue appointments
 
 >>> rt.login('alicia').show(cal.MyOverdueAppointments, language='en')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-============================================================================= ============================================================ ===================== ===============================
+============================================================================= ============================================================ ===================== ===================================
  Description                                                                   Controlled by                                                Calendar entry type   Workflow
------------------------------------------------------------------------------ ------------------------------------------------------------ --------------------- -------------------------------
- `Évaluation 6 (14.05.2014) with HILGERS Hildegard (133) <Detail>`__           `Art60§7 job supplyment#5 (Hildegard HILGERS) <Detail>`__    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 15 (07.05.2014 09:00) with DA VINCI David (165) <Detail>`__       `ISIP#22 (David DA VINCI) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Diner (02.05.2014 08:30) <Detail>`__                                                                                                      Meeting               **? Suggested** → [☑] [☒]
- `Évaluation 5 (14.04.2014) with RADERMACHER Fritz (158) <Detail>`__           `Art60§7 job supplyment#11 (Fritz RADERMACHER) <Detail>`__   Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 15 (07.04.2014 09:00) with RADERMACHER Alfons (153) <Detail>`__   `ISIP#17 (Alfons RADERMACHER) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☑] [☒]
- `Évaluation 14 (07.04.2014 09:00) with DA VINCI David (165) <Detail>`__       `ISIP#22 (David DA VINCI) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☑] [☒]
-============================================================================= ============================================================ ===================== ===============================
+----------------------------------------------------------------------------- ------------------------------------------------------------ --------------------- -----------------------------------
+ `Évaluation 6 (14.05.2014) with HILGERS Hildegard (133) <Detail>`__           `Art60§7 job supplyment#5 (Hildegard HILGERS) <Detail>`__    Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
+ `Évaluation 15 (07.05.2014 09:00) with DA VINCI David (165) <Detail>`__       `ISIP#22 (David DA VINCI) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
+ `Diner (02.05.2014 08:30) <Detail>`__                                                                                                      Meeting               **? Suggested** → [☼] [☑] [☒]
+ `Évaluation 5 (14.04.2014) with RADERMACHER Fritz (158) <Detail>`__           `Art60§7 job supplyment#11 (Fritz RADERMACHER) <Detail>`__   Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
+ `Évaluation 15 (07.04.2014 09:00) with RADERMACHER Alfons (153) <Detail>`__   `ISIP#17 (Alfons RADERMACHER) <Detail>`__                    Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
+ `Évaluation 14 (07.04.2014 09:00) with DA VINCI David (165) <Detail>`__       `ISIP#22 (David DA VINCI) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
+============================================================================= ============================================================ ===================== ===================================
 <BLANKLINE>
 
 
@@ -329,21 +330,23 @@ Events generated by a contract
 >>> rt.show(cal.EntriesByController, obj, header_level=4, language="en")
 Calendar entries of ISIP#18 (Edgard RADERMACHER)
 ================================================
-========================== =================== ================= ============= =================
- When                       Short description   Managed by        Assigned to   Workflow
--------------------------- ------------------- ----------------- ------------- -----------------
- *Thu 14/11/2013 (09:00)*   Évaluation 10       Alicia Allmanns                 **? Suggested**
- *Mon 14/10/2013 (09:00)*   Évaluation 9        Alicia Allmanns                 **? Suggested**
- *Thu 12/09/2013 (09:00)*   Évaluation 8        Alicia Allmanns                 **? Suggested**
- *Mon 12/08/2013 (09:00)*   Évaluation 7        Alicia Allmanns                 **? Suggested**
- *Wed 10/07/2013 (09:00)*   Évaluation 6        Alicia Allmanns                 **? Suggested**
- *Mon 10/06/2013 (09:00)*   Évaluation 5        Alicia Allmanns                 **? Suggested**
- *Wed 08/05/2013 (09:00)*   Évaluation 4        Alicia Allmanns                 **? Suggested**
- *Mon 08/04/2013 (09:00)*   Évaluation 3        Alicia Allmanns                 **? Suggested**
- *Thu 07/03/2013 (09:00)*   Évaluation 2        Alicia Allmanns                 **? Suggested**
- *Thu 07/02/2013 (09:00)*   Évaluation 1        Alicia Allmanns                 **? Suggested**
-========================== =================== ================= ============= =================
+========================== =================== ================= ======== =================
+ When                       Short description   Managed by        No.      Workflow
+-------------------------- ------------------- ----------------- -------- -----------------
+ *Thu 14/11/2013 (09:00)*   Évaluation 10       Alicia Allmanns   10       **? Suggested**
+ *Mon 14/10/2013 (09:00)*   Évaluation 9        Alicia Allmanns   9        **? Suggested**
+ *Thu 12/09/2013 (09:00)*   Évaluation 8        Alicia Allmanns   8        **? Suggested**
+ *Mon 12/08/2013 (09:00)*   Évaluation 7        Alicia Allmanns   7        **? Suggested**
+ *Wed 10/07/2013 (09:00)*   Évaluation 6        Alicia Allmanns   6        **? Suggested**
+ *Mon 10/06/2013 (09:00)*   Évaluation 5        Alicia Allmanns   5        **? Suggested**
+ *Wed 08/05/2013 (09:00)*   Évaluation 4        Alicia Allmanns   4        **? Suggested**
+ *Mon 08/04/2013 (09:00)*   Évaluation 3        Alicia Allmanns   3        **? Suggested**
+ *Thu 07/03/2013 (09:00)*   Évaluation 2        Alicia Allmanns   2        **? Suggested**
+ *Thu 07/02/2013 (09:00)*   Évaluation 1        Alicia Allmanns   1        **? Suggested**
+ **Total (10 rows)**                                              **55**
+========================== =================== ================= ======== =================
 <BLANKLINE>
+
 
 After modifying :attr:`hide_events_before
 <lino.modlib.system.SiteConfig.hide_events_before>` we must tidy up
