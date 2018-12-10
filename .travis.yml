@@ -17,7 +17,6 @@ before_install:
   - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' &
 
 install:
-  - pip install -U pip
   - pip install -U setuptools
   - pip install coveralls
   - bash install_requirements.sh
