@@ -9,14 +9,9 @@ import sys
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
-
-
-SETUP_INFO = dict(
-    name='lino_book',
-    version='18.11.0',
-    install_requires=[
+install_requires = [
         'Sphinx', 'lino', 'selenium','mock',
-        'django-iban', 'metafone', 'channels<2',
+        'django-iban', 'metafone',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',
         'vobject',
@@ -34,7 +29,17 @@ SETUP_INFO = dict(
         'lino_amici',
         'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
         'mock', 'sqlparse'
-    ],
+    ]
+
+if PY2:
+    install_requires.append('channels<2')
+else:
+    install_requires.append('channels')
+
+SETUP_INFO = dict(
+    name='lino_book',
+    version='18.11.0',
+    install_requires=install_requires,
     dependency_links=[
         'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
     description="Lino documentation and demo projects",
@@ -64,11 +69,6 @@ SETUP_INFO = dict(
   Topic :: Home Automation
   Topic :: Office/Business
   Topic :: Software Development :: Libraries :: Application Frameworks""".splitlines())
-
-# if PY2:
-#     SETUP_INFO['install_requires'].append('reportlab<2.7')
-# else:
-#     SETUP_INFO['install_requires'].append('reportlab')
 
 SETUP_INFO.update(long_description="""
 
