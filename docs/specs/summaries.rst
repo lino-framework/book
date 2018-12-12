@@ -2,25 +2,55 @@
 Summary tables
 ==============
 
-The :mod:`lino.modlib.summaries` plugin installs a framework for
-defining summary tables.  A summary table is a table with data that
-has been computed (aggregated) as a summary of other tables.
+The :mod:`lino.modlib.summaries` plugin installs a framework for defining
+summary fields and summary tables.  A summary table is a table with summary
+fields.
+
+A summary field is a readonly and otherwise regular database field whose value
+is computed at certain moments as a summary of other tables.  This can be used
+as an alternative for virtual fields whose value is computed on the fly for each
+request.
+
+The plugin has no models on its own but provides several model mixins and the
+:manage:`checksummaries` command.  It also schedules a daily task which runs
+the :manage:`checksummaries` command.
 
 Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
 :mod:`lino_welfare.modlib.esf`.
-
-The plugin has no models on its own but provides the :class:`Summary`
-model mixin and the :manage:`checksummaries` command.  It also
-schedules a daily task which runs the :manage:`checksummaries`
-command.
 
 .. currentmodule:: lino.modlib.summaries
 
 The ``Summary`` model mixin
 ===========================
            
-.. class:: TimelessSummary
-           
+.. class:: Summarizable
+
+    Model mixin for database objects that have summary fields.
+
+    .. attribute:: compute_results
+
+        Update all the summary fields on this database object.
+
+    .. method:: reset_summary_data
+
+        Set all counters and sums to 0.
+
+    .. method:: compute_summary_values
+
+        Reset summary data fields (:meth:`reset_summary_data`), for
+        every collector (:meth:`get_summary_collectors`) loop over its
+        database objects and collect data, then save this record.
+
+    .. method:: get_summary_collectors
+
+        To be implemented by subclasses. This should yield a sequence
+        of ``(collector, qs)`` tuples, where `collector` is a callable
+        and `qs` a queryset. Lino will call `collector` for each `obj`
+        in `qs`. The collector is responsible for updating that
+        object.
+
+.. class:: SimpleSummary
+
     Model mixin for all "summary data" models.
            
     .. attribute:: master
@@ -34,30 +64,6 @@ The ``Summary`` model mixin
         <lino.core.model.Model.allow_cascaded_delete>` to ``'master'``.
 
        
-    .. method:: compute_results
-
-        Update this summary.
-
-        An instance of :class:`ComputeResults`.
-                   
-    .. method:: reset_summary_data
-
-        Set all counters and sums to 0.
-        
-    .. method:: compute_summary_values
-
-        Reset summary data fields (:meth:`reset_summary_data`), for
-        every collector (:meth:`get_summary_collectors`) loop over its
-        database objects and collect data, then save this record.
-        
-    .. method:: get_summary_collectors
-                
-        To be implemented by subclasses. This should yield a sequence
-        of ``(collector, qs)`` tuples, where `collector` is a callable
-        and `qs` a queryset. Lino will call `collector` for each `obj`
-        in `qs`. The collector is responsible for updating that
-        object.
-
 .. class:: Summary
 
     .. attribute:: summary_period
@@ -105,10 +111,6 @@ Actions
     to a list of these summaries.
 
              
-.. class:: ComputeResults
-
-    See :meth:`Summary.compute_results`
-           
 .. class:: CheckSummaries
            
     Web UI version of :manage:`checksummaries`.
