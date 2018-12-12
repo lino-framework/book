@@ -49,10 +49,9 @@ lino_xl.lib.tickets.ui.Tickets
 >>> # print(soup.body.prettify())
 >>> links = soup.body.find_all('a')
 >>> len(links)
-7
+6
 >>> for lnk in links:
 ...    print(lnk['href'])
-javascript:Lino.tickets.Tickets.start_session(null,true,1,{  })
 javascript:Lino.working.Sessions.detail.run(null,{ "record_id": 1 })
 javascript:Lino.working.Sessions.end_session(null,false,1,{  })
 javascript:Lino.working.Sessions.detail.run(null,{ "record_id": 5 })

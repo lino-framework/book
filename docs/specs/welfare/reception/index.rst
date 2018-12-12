@@ -522,7 +522,7 @@ during :func:`lino.utils.jsgen.py2js`:
 ...     print(py2js(lh.main.elements))
 >>> with_user_profile(theresia.user_type, f)
 ... #doctest: +NORMALIZE_WHITESPACE
-[ general_panel1040, contact_panel1067, coaching_panel1295, aids_tab_panel1410, work_tab_1_panel1438, contracts_panel2185, history_panel2188, calendar_panel2267, misc_panel2308 ]
+[ general_panel1040, contact_panel1068, coaching_panel1301, aids_tab_panel1417, work_tab_1_panel1445, contracts_panel2206, history_panel2209, calendar_panel2290, misc_panel2332 ]
 
 I can even render the :file:`lino*.js` files (at least once):
 

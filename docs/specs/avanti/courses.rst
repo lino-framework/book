@@ -88,14 +88,14 @@ Topics
 
 >>> language_courses = courses.Topic.objects.get(pk=2)
 >>> rt.show('courses.CoursesByTopic', language_courses)
-================================================== =========== ============= ================== =========== ============= =========== ========
- Description                                        When        Times         Available places   Confirmed   Free places   Requested   Trying
--------------------------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
- *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   09:00-12:00   5                  3           0             3           2
- *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   14:00-17:00   15                 2           0             4           13
- *Alphabetisation (16/01/2017)* / *Laura Lieblig*   Every day   18:00-20:00   15                 12          0             11          3
- **Total (3 rows)**                                                           **35**             **17**      **0**         **18**      **18**
-================================================== =========== ============= ================== =========== ============= =========== ========
+================================ =========== ============= ================== =========== ============= =========== ========
+ Activity                         When        Times         Available places   Confirmed   Free places   Requested   Trying
+-------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
+ *Alphabetisation (16/01/2017)*   Every day   09:00-12:00   5                  3           0             3           2
+ *Alphabetisation (16/01/2017)*   Every day   14:00-17:00   15                 2           0             4           13
+ *Alphabetisation (16/01/2017)*   Every day   18:00-20:00   15                 12          0             11          3
+ **Total (3 rows)**                                         **35**             **17**      **0**         **18**      **18**
+================================ =========== ============= ================== =========== ============= =========== ========
 <BLANKLINE>
 
 
@@ -149,13 +149,13 @@ existing events.
 
 >>> rt.login('laura').show('courses.MyCoursesGiven')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-============ ============================================================= =========== ============= ====== =============
- Start date   Description                                                   When        Times         Room   Workflow
------------- ------------------------------------------------------------- ----------- ------------- ------ -------------
- 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   09:00-12:00          **Started**
- 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   14:00-17:00          **Started**
- 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__ / *Laura Lieblig*   Every day   18:00-20:00          **Started**
-============ ============================================================= =========== ============= ====== =============
+============ =========================================== =========== ============= ====== =============
+ Start date   Activity                                    When        Times         Room   Workflow
+------------ ------------------------------------------- ----------- ------------- ------ -------------
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__   Every day   09:00-12:00          **Started**
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__   Every day   14:00-17:00          **Started**
+ 16/01/2017   `Alphabetisation (16/01/2017) <Detail>`__   Every day   18:00-20:00          **Started**
+============ =========================================== =========== ============= ====== =============
 <BLANKLINE>
 
 
@@ -180,7 +180,7 @@ Laura (the teacher) who is responsible for the individual events.
 >>> rt.login('laura').show('cal.MyEntries')
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
 =========================================== ======== ===================================
- Description                                 Client   Workflow
+ Calendar entry                              Client   Workflow
 ------------------------------------------- -------- -----------------------------------
  `Lesson 24 (24.02.2017 18:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]
  `Lesson 24 (24.02.2017 14:00) <Detail>`__            [▽] **? Suggested** → [☐] [☑] [☒]

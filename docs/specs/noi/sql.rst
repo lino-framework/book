@@ -60,6 +60,7 @@ To verify whether the slave summary panels are being computed:
 >>> for f in sorted([str(f) for f in rt.models.tickets.Tickets.wildcard_data_elems()]):
 ...     print(f)  #doctest: +REPORT_UDIFF
 lino_noi.lib.tickets.models.Ticket.created_natural
+lino_noi.lib.tickets.models.Ticket.detail_link
 lino_noi.lib.tickets.models.Ticket.mobile_item
 lino_noi.lib.tickets.models.Ticket.overview
 lino_noi.lib.tickets.models.Ticket.workflow_buttons
@@ -70,14 +71,17 @@ tickets.Ticket.deadline
 tickets.Ticket.description
 tickets.Ticket.duplicate_of
 tickets.Ticket.end_user
+tickets.Ticket.extra_hours
 tickets.Ticket.feedback
 tickets.Ticket.fixed_since
+tickets.Ticket.free_hours
 tickets.Ticket.id
 tickets.Ticket.modified
 tickets.Ticket.planned_time
 tickets.Ticket.priority
 tickets.Ticket.private
 tickets.Ticket.ref
+tickets.Ticket.regular_hours
 tickets.Ticket.reporter
 tickets.Ticket.site
 tickets.Ticket.standby

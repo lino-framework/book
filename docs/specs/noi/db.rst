@@ -70,7 +70,7 @@ This document describes the database structure.
  tickets.Link                       tickets.Links                    4         1
  tickets.Site                       tickets.Sites                    11        3
  tickets.Subscription               tickets.Subscriptions            4         4
- tickets.Ticket                     tickets.Tickets                  24        116
+ tickets.Ticket                     tickets.Tickets                  27        116
  tickets.TicketType                 tickets.TicketTypes              5         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
  uploads.Upload                     uploads.Uploads                  9         0
@@ -81,7 +81,7 @@ This document describes the database structure.
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1
- working.SiteSummary                working.Summaries                17        9
+ working.SiteSummary                working.Summaries                9        9
 ================================== ================================ ========= =======
 <BLANKLINE>
 

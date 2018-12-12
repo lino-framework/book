@@ -985,7 +985,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Système --> All dashboard widgets : 1
 - Explorateur --> Système --> Tests de données : 13
 - Explorateur --> Système --> Problèmes de données : 0
-- Explorateur --> Bureau --> Extraits : 70
+- Explorateur --> Bureau --> Extraits : 71
 - Explorateur --> Bureau --> Fichiers téléchargés : 12
 - Explorateur --> Bureau --> Upload Areas : 2
 - Explorateur --> Bureau --> Mails envoyés : 1

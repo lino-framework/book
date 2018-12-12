@@ -1,4 +1,3 @@
-
 .. doctest docs/specs/welfare/cal.rst
 .. _welfare.specs.cal:
 
@@ -221,7 +220,7 @@ Overdue appointments
 >>> rt.login('alicia').show(cal.MyOverdueAppointments, language='en')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ============================================================================= ============================================================ ===================== ===================================
- Description                                                                   Controlled by                                                Calendar entry type   Workflow
+ Calendar entry                                                                Controlled by                                                Calendar entry type   Workflow
 ----------------------------------------------------------------------------- ------------------------------------------------------------ --------------------- -----------------------------------
  `Évaluation 6 (14.05.2014) with HILGERS Hildegard (133) <Detail>`__           `Art60§7 job supplyment#5 (Hildegard HILGERS) <Detail>`__    Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]
  `Évaluation 15 (07.05.2014 09:00) with DA VINCI David (165) <Detail>`__       `ISIP#22 (David DA VINCI) <Detail>`__                        Evaluation            [▽] **? Suggested** → [☼] [☑] [☒]

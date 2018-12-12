@@ -84,7 +84,7 @@ class TestCase(TestCase):
         colnames = [col.name for col in rh.get_columns()]
         colnames.sort()
         self.assertEqual(
-            'detected_date id mobile_item overview person remark type user workflow_buttons',
+            'detail_link detected_date id mobile_item overview person remark type user workflow_buttons',
             ' '.join(colnames))
 
         url = "/api/cv/ObstaclesByPerson"
@@ -110,7 +110,8 @@ class TestCase(TestCase):
                 ['Alcohol', 1, 'robin', 1, '22.05.2014', '', 1,
                  '<span />',
                  '<div><em>Obstacle object</em></div>',
-                 u'<div><em>Obstacle object</em></div>',
+                 '<div><em>Obstacle object</em></div>',
+                 '<div><em>Obstacle object</em></div>',
                  'First LAST', 100,
                  {'id': True}, False]])
         else:

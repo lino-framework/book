@@ -32,7 +32,7 @@ Lino and :mod:`commondata.ee` agree with this:
 ...    name="Rapla", type=countries.PlaceTypes.county)
 >>> ses.show("countries.PlacesByPlace", raplamaa)
 ========================= =========== ==========
- Kirjeldus                 Asumiliik   zip code
+ Asum                      Asumiliik   zip code
 ------------------------- ----------- ----------
  `Juuru <Detail>`__        Vald
  `Järvakandi <Detail>`__   Vald
@@ -60,7 +60,7 @@ Lino and :mod:`commondata.ee` again agree with this:
 ...    type=countries.PlaceTypes.municipality)
 >>> ses.show("countries.PlacesByPlace", juuru)
 ====================== =========== ==========
- Kirjeldus              Asumiliik   zip code
+ Asum                   Asumiliik   zip code
 ---------------------- ----------- ----------
  `Atla <Detail>`__      Küla        79403
  `Helda <Detail>`__     Küla        79417

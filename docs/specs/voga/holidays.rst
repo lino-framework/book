@@ -32,9 +32,9 @@ Five Weekends 2015
 2015-05-22
 
 
->>> rt.show(cal.EntriesByController, obj, column_names="when_text overview state", nosummary=True)
+>>> rt.show(cal.EntriesByController, obj, column_names="when_text detail_link state", nosummary=True)
 =============================== =================== ===========
- When                            Description         State
+ When                            Calendar entry      State
 ------------------------------- ------------------- -----------
  Fri 06/11/2015-Sun 08/11/2015   *Activity #26  5*   Suggested
  Fri 02/10/2015-Sun 04/10/2015   *Activity #26  4*   Suggested

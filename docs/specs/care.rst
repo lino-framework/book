@@ -85,7 +85,7 @@ Skills
 >>> rt.show(skills.TopLevelSkills)
 ... #doctest: +REPORT_UDIFF
 ============================ ========= =================================================================== ==============
- Description                  Remarks   Children                                                            Parent skill
+ Skill                        Remarks   Children                                                            Parent skill
 ---------------------------- --------- ------------------------------------------------------------------- --------------
  *Babysitting*
  *Car driving*
