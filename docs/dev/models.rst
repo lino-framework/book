@@ -196,8 +196,8 @@ Traceback (most recent call last):
 ValidationError: [u'A book from 2001 for only $4.20!']
 
 
-Going deeper
-============
+More about Django models
+========================
 
 Tim Kholod wrote a nice introduction for beginners: `The simple way to
 understand Django models <https://arevej.me/django-models/>`__
@@ -207,4 +207,44 @@ using models, read the Django documentation about
 `Models and databases
 <https://docs.djangoproject.com/en/2.1/topics/db/>`__.
 
+
+Lino extends the Django model
+=============================
+
+.. currentmodule:: lino.core.model
+
+Lino adds some virtual fields that you can use in your layouts:
+
+- :attr:`Model.overview`
+- :attr:`Model.detail_link`
+- :attr:`Model.workflow_buttons`
+
+Add field-specific customizations:
+
+- :meth:`Model.FOO_changed`
+- :meth:`Model.FOO_choices`
+- :meth:`Model.create_FOO_choice`
+- :meth:`Model.get_choices_text`
+- :meth:`Model.disable_delete`
+
+How your model behaves in regard to other models:
+
+- :attr:`Model.allow_cascaded_copy`
+- :attr:`Model.allow_cascaded_delete`
+
+Customize what happens when an instance is created:
+
+- :attr:`Model.submit_insert`
+- :attr:`Model.on_create`
+- :attr:`Model.before_ui_save`
+- :attr:`Model.after_ui_save`
+- :attr:`Model.after_ui_create`
+- :attr:`Model.get_row_permission`
+
+Some methods you will use but not override:
+
+- :attr:`Model.get_data_elem`
+- :attr:`Model.add_param_filter`
+- :attr:`Model.define_action`
+- :attr:`Model.hide_elements`
 
