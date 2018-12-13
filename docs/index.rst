@@ -19,6 +19,7 @@ Sitemap
    Contributor's Guide </dev/index>
    Hoster's Guide </admin/index>
    Specs </specs/index>
+   Specs </api/index>
    blog
    about/thanks
 
