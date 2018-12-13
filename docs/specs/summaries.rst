@@ -11,23 +11,33 @@ is computed at certain moments as a summary of other tables.  This can be used
 as an alternative for virtual fields whose value is computed on the fly for each
 request.
 
-The plugin has no models on its own but provides several model mixins and the
-:manage:`checksummaries` command.  It also schedules a daily task which runs
-the :manage:`checksummaries` command.
+The plugin has no models on its own but provides several model mixins and a
+:manage:`checksummaries` command which updates all summaries. It also schedules
+a daily :manage:`linod` task which does the same.
+
+A slave summary is a
+
+Users also get a button :guilabel:`∑` on each model for which there are slave
+summaries.
 
 Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
 :mod:`lino_welfare.modlib.esf`.
 
 .. currentmodule:: lino.modlib.summaries
 
-The ``Summary`` model mixin
-===========================
+The ``Summarized`` model mixin
+================================
            
-.. class:: Summarizable
+.. class:: Summarized
 
     Model mixin for database objects that have summary fields.
 
-    .. attribute:: compute_results
+    .. attribute:: delete_them_all
+
+        Set this to True if all instances of this model should be considered
+        temporary data to be deleted by :manage:`checksummaries`.
+
+    .. method:: compute_results
 
         Update all the summary fields on this database object.
 
@@ -43,37 +53,46 @@ The ``Summary`` model mixin
 
     .. method:: get_summary_collectors
 
-        To be implemented by subclasses. This should yield a sequence
+        To be implemented by subclasses. This must yield a sequence
         of ``(collector, qs)`` tuples, where `collector` is a callable
         and `qs` a queryset. Lino will call `collector` for each `obj`
         in `qs`. The collector is responsible for updating that
         object.
 
-.. class:: SimpleSummary
+.. class:: SlaveSummarized
 
-    Model mixin for all "summary data" models.
-           
+    Mixin for :class:`Summarized` models that are related to a master.
+
+    The master is another database object for which this summary data applies.
+    Implementing subclasses must define a
+    field named :attr:`master` which must be a foreignkey to the master model.
+
     .. attribute:: master
 
-        Any implementing subclass of :class:`TimelessSummary` must
-        define a field named :attr:`master` which must be a ForeignKey
-        field.  The target model of the :attr:`master` will
-        automatically receive an action `check_summaries`.
-        The mixin also sets
-        :attr:`allow_cascaded_delete
+        The target model of the :attr:`master` will automatically receive an
+        action `check_summaries`.
+
+        The mixin also sets :attr:`allow_cascaded_delete
         <lino.core.model.Model.allow_cascaded_delete>` to ``'master'``.
 
        
-.. class:: Summary
+.. class:: MonthlySummarized
+
+    A :class:`Summarized` that will have more than one entries per master,
+    one for each month.
 
     .. attribute:: summary_period
-                   
-       Can be ``'yearly'``, ``'monthly'`` or ``'timeless'``.
-       
+
+       Can be ``'yearly'`` or ``'monthly'``.
+
     .. attribute:: year
     .. attribute:: month
-                   
-                
+
+.. class:: MonthlySlaveSummary
+
+    A combination of :class:`SlaveSummary` and :class:`MonthlySummarized`.
+
+
 
 The ``checksummaries`` admin command
 ====================================

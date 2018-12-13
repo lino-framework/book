@@ -527,28 +527,26 @@ The :class:`TicketsBySite` panel shows all the tickets for a given site.
 
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
-... #doctest: -REPORT_UDIFF -SKIP +ELLIPSIS
-========== ========================================================= ============== ========= ======= ====== ===============
- Priority   Ticket                                                    Planned time   Regular   Extra   Free   Workflow
----------- --------------------------------------------------------- -------------- --------- ------- ------ ---------------
- Normal     *#116 (⚒ Foo never bars)*                                                                         **⚒ Started**
- Normal     *#115 (☉ 'NoneType' object has no attribute 'isocode')*                                           **☉ Open**
- Normal     *#114 (☎ Default account in invoices per partner)*                                                **☎ Talk**
- Normal     *#108 (⚒ No more foo when bar is gone)*                                                           **⚒ Started**
- Normal     *#106 (☎ 'NoneType' object has no attribute 'isocode')*                                           **☎ Talk**
- Normal     *#102 (☐ Irritating message when bar)*                                                            **☐ Ready**
- Normal     *#98 (☎ Foo never bars)*                                                                          **☎ Talk**
- Normal     *#97 (⛶ 'NoneType' object has no attribute 'isocode')*                                            **⛶ New**
- Normal     *#94 (☐ How can I see where bar?)*                                                                **☐ Ready**
- Normal     *#92 (⚒ Why is foo so bar)*                                                                       **⚒ Started**
+... #doctest: +REPORT_UDIFF -SKIP +ELLIPSIS +NORMALIZE_WHITESPACE
+===================== ========================================================= ============== =========== ======= ====== ===============
+ Priority              Ticket                                                    Planned time   Regular     Extra   Free   Workflow
+--------------------- --------------------------------------------------------- -------------- ----------- ------- ------ ---------------
+ Normal                *#116 (⚒ Foo never bars)*                                                                           **⚒ Started**
+ Normal                *#115 (☉ 'NoneType' object has no attribute 'isocode')*                                             **☉ Open**
+ Normal                *#114 (☎ Default account in invoices per partner)*                                                  **☎ Talk**
+ Normal                *#108 (⚒ No more foo when bar is gone)*                                                             **⚒ Started**
+ Normal                *#106 (☎ 'NoneType' object has no attribute 'isocode')*                                             **☎ Talk**
+ Normal                *#102 (☐ Irritating message when bar)*                                                              **☐ Ready**
+ Normal                *#98 (☎ Foo never bars)*                                                                            **☎ Talk**
  ...
- Normal     *#12 (⚒ Foo cannot bar)*                                                                          **⚒ Started**
- Normal     *#10 (☎ Where can I find a Foo when bazing Bazes?)*                                               **☎ Talk**
- Normal     *#6 (☐ Sell bar in baz)*                                                                          **☐ Ready**
- Normal     *#4 (⚒ Foo and bar don't baz)*                                                                    **⚒ Started**
- Normal     *#2 (☎ Bar is not always baz)*                                                                    **☎ Talk**
- Normal     *#1 (⛶ Föö fails to bar when baz)*                                                                **⛶ New**
-========== ========================================================= ============== ========= ======= ====== ===============
+ Normal                *#12 (⚒ Foo cannot bar)*                                                                            **⚒ Started**
+ Normal                *#10 (☎ Where can I find a Foo when bazing Bazes?)*                                                 **☎ Talk**
+ Normal                *#6 (☐ Sell bar in baz)*                                                                            **☐ Ready**
+ Normal                *#4 (⚒ Foo and bar don't baz)*                                           1:24                       **⚒ Started**
+ Normal                *#2 (☎ Bar is not always baz)*                                           9:40                       **☎ Talk**
+ Normal                *#1 (⛶ Föö fails to bar when baz)*                                                                  **⛶ New**
+ **Total (46 rows)**                                                                            **11:04**
+===================== ========================================================= ============== =========== ======= ====== ===============
 <BLANKLINE>
 
 Note that the above table shows no state change actions in the
@@ -557,57 +555,24 @@ requested by anonymous. For an authenticated developer it looks like
 this:
 
 >>> rt.login("robin").show(tickets.TicketsBySite, welket)
-... #doctest: -REPORT_UDIFF -SKIP
-========== ==================================================================== ============== ========= ======= ====== =============================================
- Priority   Ticket                                                               Planned time   Regular   Extra   Free   Workflow
----------- -------------------------------------------------------------------- -------------- --------- ------- ------ ---------------------------------------------
- Normal     `#116 (⚒ Foo never bars) <Detail>`__                                                                         [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                           [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#114 (☎ Default account in invoices per partner) <Detail>`__                                                [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#108 (⚒ No more foo when bar is gone) <Detail>`__                                                           [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                           [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#102 (☐ Irritating message when bar) <Detail>`__                                                            [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#98 (☎ Foo never bars) <Detail>`__                                                                          [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#94 (☐ How can I see where bar?) <Detail>`__                                                                [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                                                                       [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#91 (☉ Cannot delete foo) <Detail>`__                                                                       [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#86 (☐ Misc optimizations in Baz) <Detail>`__                                                               [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#84 (⚒ Irritating message when bar) <Detail>`__                                                             [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#82 (☎ Cannot delete foo) <Detail>`__                                                                       [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__                                                 [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#76 (⚒ How can I see where bar?) <Detail>`__                                                                [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#74 (☎ Why is foo so bar) <Detail>`__                                                                       [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#73 (⛶ Cannot delete foo) <Detail>`__                                                                       [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#68 (⚒ Misc optimizations in Baz) <Detail>`__                                                               [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#67 (☉ How can I see where bar?) <Detail>`__                                                                [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#66 (☎ Irritating message when bar) <Detail>`__                                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#62 (☐ Foo never bars) <Detail>`__                                                                          [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#58 (☎ How can I see where bar?) <Detail>`__                                                                [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#54 (☐ No more foo when bar is gone) <Detail>`__                                                            [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#52 (⚒ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#49 (⛶ How can I see where bar?) <Detail>`__                                                                [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#46 (☐ Cannot delete foo) <Detail>`__                                                                       [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#44 (⚒ Foo never bars) <Detail>`__                                                                          [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#42 (☎ Default account in invoices per partner) <Detail>`__                                                 [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#38 (☐ Why is foo so bar) <Detail>`__                                                                       [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                                                            [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#34 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#28 (⚒ Cannot delete foo) <Detail>`__                                                                       [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#26 (☎ Foo never bars) <Detail>`__                                                                          [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#22 (☐ How can I see where bar?) <Detail>`__                                                                [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#19 (☉ Cannot delete foo) <Detail>`__                                                                       [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#18 (☎ No more foo when bar is gone) <Detail>`__                                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#14 (☐ Bar cannot baz) <Detail>`__                                                                          [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#12 (⚒ Foo cannot bar) <Detail>`__                                                                          [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__                                               [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#6 (☐ Sell bar in baz) <Detail>`__                                                                          [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#4 (⚒ Foo and bar don't baz) <Detail>`__                                                                    [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#2 (☎ Bar is not always baz) <Detail>`__                                                                    [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-========== ==================================================================== ============== ========= ======= ====== =============================================
+... #doctest: +REPORT_UDIFF -SKIP +ELLIPSIS +NORMALIZE_WHITESPACE
+===================== ==================================================================== ============== =========== ======= ====== =============================================
+ Priority              Ticket                                                               Planned time   Regular     Extra   Free   Workflow
+--------------------- -------------------------------------------------------------------- -------------- ----------- ------- ------ ---------------------------------------------
+ Normal                `#116 (⚒ Foo never bars) <Detail>`__                                                                           [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal                `#114 (☎ Default account in invoices per partner) <Detail>`__                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#108 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#102 (☐ Irritating message when bar) <Detail>`__                                                              [▶] **☐ Ready** → [☎] [☑] [☒]
+ Normal                `#98 (☎ Foo never bars) <Detail>`__                                                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ ...
+ Normal                `#6 (☐ Sell bar in baz) <Detail>`__                                                                            [▶] **☐ Ready** → [☎] [☑] [☒]
+ Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                       [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#2 (☎ Bar is not always baz) <Detail>`__                                           9:40                       [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                  [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ **Total (46 rows)**                                                                                       **11:04**
+===================== ==================================================================== ============== =========== ======= ====== =============================================
 <BLANKLINE>
 
 

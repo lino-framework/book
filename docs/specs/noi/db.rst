@@ -77,7 +77,7 @@ This document describes the database structure.
  uploads.UploadType                 uploads.UploadTypes              8         0
  users.Authority                    users.Authorities                3         0
  users.User                         users.Users                      47        7
- userstats.UserStat                 userstats.UserStats              5         36
+ userstats.UserStat                 userstats.UserStats              4         36
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1

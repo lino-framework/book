@@ -66,8 +66,6 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : lists.Member.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
-- system.SiteConfig :
-  - CASCADE : userstats.UserStat.master
 - tickets.Site :
   - CASCADE : tickets.Subscription.site, working.SiteSummary.master
   - PROTECT : tickets.Ticket.site
