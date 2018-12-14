@@ -1,37 +1,67 @@
 .. doctest docs/specs/cal.rst
 .. _book.specs.cal:
 
-=======================
-The ``calendar`` plugin
-=======================
+===============================
+``cal``: Calendar functionality
+===============================
 
-.. Some initialization:
+.. currentmodule:: lino_xl.lib.cal
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.adg.settings.demo')
-    >>> from lino.api.doctest import *
+The :mod:`lino_xl.lib.cal` adds calendar functionality.
 
-This document explains some basic things about Lino's calendar plugin
-:mod:`lino_xl.lib.cal`.  See also :mod:`lino_xl.lib.cal.utils`.
-     
 .. contents::
   :local:
 
 
-.. currentmodule:: lino_xl.lib.cal
 
-                  
+.. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.adg.settings.demo')
+>>> from lino.api.doctest import *
+
+Overview
+=========
+
+A **calendar entry** is a lapse of time to be visualized in a calendar.
+
+There are different **types of calendar entries**. The list of *calendar entry
+types* is configurable. Every entry has a field :attr:`Event.event_type` which
+points to its type. The type of a calendar entry can be used to change
+application-specific behaviour and rules. An **appointment** (french
+"Rendez-vous", german "Termin") is a calendar entry which supposes that another
+person is involved. Appointments are defined by assigning them a calendar entry
+type that has the :attr:`EventType.is_appointment` field checked.
+
+Calendar entries can have a **state** which can change according to workflow
+rules defined by the application.
+
+A calendar entry can have a list of **guests**. A guest is the fact that a
+given person is *expected to attend* or *has been present* at a given calendar
+entry. Depending on the context the guests of a calendar entry may be labelled
+"guests", "participants", "presences"...
+
+Lino can generate **automatic calendar entries**.  The rules for generating
+calendar entries are application-specific.  The application developer does this
+by defining one or several *calendar generators*.
+
+The **daily planner** is a table showing an overview of calendar entries on a
+given day.  Both the rows and the columns can be configured per application or
+locally per site.
+
+
+
+
 Calendar entries
 ================
 
-A **calendar entry** is a lapse of time to be visualized in a
-calendar.
-
-The internal model name is :class:`Event` for historical reasons, but
-users see it as "Calendar entry":
+A **calendar entry** is a lapse of time to be visualized in a calendar. The
+internal model name is :class:`Event` for historical reasons, but users see it
+as "Calendar entry".
 
 >>> print(rt.models.cal.Event._meta.verbose_name)
 Calendar entry
+
 
 .. class:: Event
 
@@ -205,14 +235,6 @@ Calendar entry
 |               |                     | to it as the life cycle.                                      |
 +---------------+---------------------+---------------------------------------------------------------+
 
-Appointments
-============
-
-An **appointment** (french "Rendez-vous", german "Termin") is a
-calendar entry which supposes that another person is involved.
-
-For Lino, an appointment is a calendar entry whose :class:`type
-<EventType>` has the :attr:`EventType.is_appointment` field checked.
 
 
 Lifecycle of a calendar entry
@@ -264,18 +286,14 @@ values.
 The type of a calendar entry
 ============================
 
-The :attr:`type <Event.type>` field of a *calendar entry* 
-points to a
-database object which holds certain properties that are common to all
-entries of that type.
+The :attr:`type <Event.type>` field of a *calendar entry* points to a database
+object which holds certain properties that are common to all entries of that
+type.
 
-.. class:: EventTypes
-
-    The list of entry types defined on this site.
-           
 .. class:: EventType
 
-    The possible value of the :attr:`Event.type` field.
+    Django model representing a *calendar entry type*. The possible value of
+    the :attr:`Event.type` field.
 
     .. attribute:: event_label
 
@@ -326,18 +344,18 @@ entries of that type.
         sets all guests to "Present".  See :doc:`tera/cal` for a usage
         example.
 
+.. class:: EventTypes
+
+    The list of entry types defined on this site.
+
 
 The daily planner
 =================
 
-The daily planner is a table showing an overview of calendar entries
-on a given day.  Both the rows and the columns can be configured per
-application or locally per site.
-
 
 .. class:: DailyPlanner
 
-    The daily planner actor.
+    The virtual table used to render the daily planner.
            
 >>> rt.show(cal.DailyPlanner)
 ============ ========== ===============
@@ -433,63 +451,23 @@ A default configuration has two columns in the daily planner:
     <class 'django.utils.functional...__proxy__'>
 
 
-Duration units
-==============
-
-The calendar plugin defines :class:`DurationUnits` choicelist, a
-site-wide list of **duration units**.  In a default configuration it
-has the following values:
-
->>> rt.show(cal.DurationUnits)
-======= ========= =========
- value   name      text
-------- --------- ---------
- s       seconds   seconds
- m       minutes   minutes
- h       hours     hours
- D       days      days
- W       weeks     weeks
- M       months    months
- Y       years     years
-======= ========= =========
-<BLANKLINE>
-
-
-Duration units can be used for aritmetic operation on durations. For
-example:
-
->>> from lino_xl.lib.cal.choicelists import DurationUnits
->>> start_date = i2d(20111026)
->>> DurationUnits.months.add_duration(start_date, 2)
-datetime.date(2011, 12, 26)
-
->>> from lino.utils import i2d
->>> start_date = i2d(20111026)
->>> DurationUnits.months.add_duration(start_date, 2)
-datetime.date(2011, 12, 26)
->>> DurationUnits.months.add_duration(start_date, -2)
-datetime.date(2011, 8, 26)
-
->>> start_date = i2d(20110131)
->>> DurationUnits.months.add_duration(start_date, 1)
-datetime.date(2011, 2, 28)
->>> DurationUnits.months.add_duration(start_date, -1)
-datetime.date(2010, 12, 31)
->>> DurationUnits.months.add_duration(start_date, -2)
-datetime.date(2010, 11, 30)
-
->>> start_date = i2d(20140401)
->>> DurationUnits.months.add_duration(start_date, 3)
-datetime.date(2014, 7, 1)
->>> DurationUnits.years.add_duration(start_date, 1)
-datetime.date(2015, 4, 1)
-
-
-
 Calendars
 =========
 
 Calendar entries can be differentiated into different "calendars".
+
+
+.. class:: Calendar
+
+    the django model representing a *calendar*.
+
+    .. attribute:: color
+   
+        The color to use for entries of this calendar (in
+        :mod:`lino_xl.lib.extensible`).
+   
+               
+.. class:: Calendars
 
 >>> rt.show(cal.Calendars)
 ==== ============= ================== ================== ============= =======
@@ -500,17 +478,6 @@ Calendar entries can be differentiated into different "calendars".
 ==== ============= ================== ================== ============= =======
 <BLANKLINE>
 
-
-.. class:: Calendar
-
-    .. attribute:: color
-   
-        The color to use for entries of this calendar (in
-        :mod:`lino_xl.lib.extensible`).
-   
-               
-.. class:: Calendars
-           
 
 Note that the default implementation has no "Calendar" field per
 calendar entry.  The `Event` model instead has a
@@ -546,8 +513,6 @@ Or in :ref:`voga` there is one calendar per Room. Thus the
 
 Automatic calendar entries
 ==========================
-
-Lino applications can **generate** automatic calendar entries.
 
 An **event generator** is something that can generate automatic
 calendar entries.  Examples of event generators include
@@ -848,15 +813,8 @@ True
 The guests  of a calendar entry
 ===============================
 
-For every calendar entry you can have a list of the people who are
-invited to that entry.  Depending on the context this list may be
-labelled "guests", "participations" or "presences".
-
 
 .. class:: Guest
-
-    Represents the fact that a given person is expected to attend to a
-    given event.
 
     TODO: Rename this to "Presence".
 
@@ -1218,17 +1176,84 @@ Reference
 
         Don't generate calendar entries beyond this date.
 
-Miscellaneous
-=============
+The days of the week
+=====================
 
 .. class:: Weekdays
            
     A choicelist with the seven days of a week.
 
+>>> rt.show(cal.Weekdays)
+======= =========== ===========
+ value   name        text
+------- ----------- -----------
+ 1       monday      Monday
+ 2       tuesday     Tuesday
+ 3       wednesday   Wednesday
+ 4       thursday    Thursday
+ 5       friday      Friday
+ 6       saturday    Saturday
+ 7       sunday      Sunday
+======= =========== ===========
+<BLANKLINE>
+
 
 .. data:: WORKDAYS    
            
     The five workdays of the week (Monday to Friday).
+
+
+Duration units
+==============
+
+The calendar plugin defines :class:`DurationUnits` choicelist, a
+site-wide list of **duration units**.  In a default configuration it
+has the following values:
+
+>>> rt.show(cal.DurationUnits)
+======= ========= =========
+ value   name      text
+------- --------- ---------
+ s       seconds   seconds
+ m       minutes   minutes
+ h       hours     hours
+ D       days      days
+ W       weeks     weeks
+ M       months    months
+ Y       years     years
+======= ========= =========
+<BLANKLINE>
+
+
+Duration units can be used for aritmetic operation on durations. For
+example:
+
+>>> from lino_xl.lib.cal.choicelists import DurationUnits
+>>> start_date = i2d(20111026)
+>>> DurationUnits.months.add_duration(start_date, 2)
+datetime.date(2011, 12, 26)
+
+>>> from lino.utils import i2d
+>>> start_date = i2d(20111026)
+>>> DurationUnits.months.add_duration(start_date, 2)
+datetime.date(2011, 12, 26)
+>>> DurationUnits.months.add_duration(start_date, -2)
+datetime.date(2011, 8, 26)
+
+>>> start_date = i2d(20110131)
+>>> DurationUnits.months.add_duration(start_date, 1)
+datetime.date(2011, 2, 28)
+>>> DurationUnits.months.add_duration(start_date, -1)
+datetime.date(2010, 12, 31)
+>>> DurationUnits.months.add_duration(start_date, -2)
+datetime.date(2010, 11, 30)
+
+>>> start_date = i2d(20140401)
+>>> DurationUnits.months.add_duration(start_date, 3)
+datetime.date(2014, 7, 1)
+>>> DurationUnits.years.add_duration(start_date, 1)
+datetime.date(2015, 4, 1)
+
 
 .. class:: DurationUnit
            
@@ -1247,10 +1272,11 @@ Miscellaneous
 
 .. class:: DurationUnits
            
-    A list of possible values for the
-    :attr:`lino_xl.lib.cal.Event.duration_unit` field of a calendar
-    entry.
+    A list of possible values for the :attr:`duration_unit
+    <lino_xl.lib.cal.Event.duration_unit`> field of a calendar entry.
 
+Miscellaneous
+=============
 
 .. class:: AccessClasses
 
@@ -1263,7 +1289,7 @@ Miscellaneous
 
 .. class:: Component
 
-    Abstract base class for :class:`Event` and :class:`Task`.
+    Model mixin inherited by both :class:`Event` and :class:`Task`.
 
     .. attribute:: auto_type
 

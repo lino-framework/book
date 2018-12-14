@@ -1,23 +1,30 @@
 .. doctest docs/specs/users.rst
 .. _specs.users:
 
-===================================
-The :mod:`lino.modlib.users` plugin
-===================================
+===========================
+``users`` : user management
+===========================
 
-This document describes the API of the :mod:`lino.modlib.users`
-plugin.  See also :doc:`/dev/users` for getting started with user
-management.  See :doc:`/about/auth` if you wonder why Lino replaces
-Django's user management and permission system.
+.. currentmodule:: lino.modlib.users
+
+
+This document describes the API of the :mod:`lino.modlib.users` plugin.  See
+also :doc:`/dev/users` for getting started with user management.  See
+:doc:`/about/auth` if you wonder why Lino replaces Django's user management and
+permission system.
+
+.. contents::
+  :local:
+
+.. include:: /include/tested.rst
 
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.doctests')
 >>> from lino.api.doctest import *
 
-
-
-.. currentmodule:: lino.modlib.users
+Which means that code examples in this document use the
+:mod:`lino_book.projects.min1` demo project.
 
 
 Models

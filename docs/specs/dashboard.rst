@@ -1,29 +1,35 @@
 .. doctest docs/specs/dashboard.rst
 .. _specs.dashboard:
 
-====================================
-The ``lino.modlib.dashboard`` plugin
-====================================
+======================================
+``dashboard`` : customizable dashboard
+======================================
 
->>> import lino
->>> lino.startup('lino_book.projects.team.settings.doctests')
->>> from lino.api.doctest import *
->>> from django.db.models import Q
+.. currentmodule:: lino.modlib.dashboard
+
+The :mod:`lino.modlib.dashboard` plugin adds functionality for letting the
+users customize their dashboard.
 
 As explained in :doc:`/dev/admin_main` you can define a sequence of
 *dashboard items* for your application.  Lino renders these dashboard
 items quite intelligently: they don't appear if the table contains no
 data or if the user has no permission to see it.  But the *dashboard
 items* of an application are *hard-coded* and *apply to all users*.
-If this is a problem for you, you can install the
-:mod:`lino.modlib.dashboard` plugin.
 
 
-.. currentmodule:: lino.modlib.dashboard
+.. contents::
+  :local:
 
-.. contents:: Table of Contents
- :local:
- :depth: 2
+.. include:: /include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.team.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
+
+Which means that code snippets in this document are tested using the
+:mod:`lino_book.projects.team` demo project.
+
 
 List of available dashboard items
 =================================

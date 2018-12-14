@@ -1,14 +1,14 @@
 .. doctest docs/specs/notify.rst
 .. _book.specs.notify:
 
-===============================
-notify (notification framework)
-===============================
-
-The :mod:`lino.modlib.notify` plugin adds a notification framework to
-your Lino application.
+==================================
+``notify``: Notification framework
+==================================
 
 .. currentmodule:: lino.modlib.notify
+
+The :mod:`lino.modlib.notify` plugin adds a notification framework to your Lino
+application.
 
 .. contents::
    :depth: 1

@@ -2,7 +2,7 @@
 .. _specs.cosi.b2c:
 
 ===============================================
-The :mod:`lino_cosi.lib.b2c` plugin
+``b2c`` : Import SEPA BankToCustomer statements
 ===============================================
 
 This document describes the :mod:`lino_cosi.lib.b2c` plugin which adds
@@ -12,15 +12,12 @@ bank using the B2C CAMT.053 format.
 This plugin is currently used only in Belgium.  Other countries should
 be similar but are not tested.
 
-
-
 .. contents::
    :depth: 1
    :local:
       
+.. include:: /include/tested.rst
 
-About this document
-===================
 
 Code examples in this document use the
 :mod:`lino_book.projects.pierre` demo project:

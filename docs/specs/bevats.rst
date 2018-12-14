@@ -1,26 +1,25 @@
 .. doctest docs/specs/bevats.rst
 .. _xl.bevats:
 
-================================
-Special Belgian VAT declarations
-================================
+================================================
+``bevats`` : Simplified Belgian VAT declarations
+================================================
 
-Table of contents:
+.. currentmodule:: lino_xl.lib.bevats
+
+The :mod:`lino_xl.lib.bevats` plugin
+adds functionality for handling **Special** Belgian VAT declarations
+to be used by organizations who don't need to introduce "normal"
+:doc:`bevat` but a simplified version, described e.g. `here
+<https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_speciale>`__.
+
 
 .. contents::
    :depth: 1
    :local:
 
-Overview
-========
+.. include:: /include/tested.rst
 
-.. currentmodule:: lino_xl.lib.bevats
-
-This document describes the :mod:`lino_xl.lib.bevats` plugin which
-adds functionality for handling **Special** Belgian VAT declarations
-to be used by organizations who don't need to introduce "normal"
-:doc:`bevat` but a simplified version, described e.g. `here
-<https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_speciale>`__.
 
 Code snippets in this document are based on the
 :mod:`lino_book.projects.lydia` demo.
@@ -28,6 +27,9 @@ Code snippets in this document are based on the
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')
 >>> from lino.api.doctest import *
+
+Dependencies
+============
 
 Installing this plugin will automatically install
 :mod:`lino_xl.lib.vat`.

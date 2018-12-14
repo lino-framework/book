@@ -1,19 +1,32 @@
-=======================================
-Belgian national identification numbers
-=======================================
+.. doctest docs/specs/ssin.rst
+.. _xl.specs.ssin:
 
-.. test only this doc:
-    $ python setup.py test -s tests.SpecsTests.test_ssin
+==================================================
+``ssin`` : Belgian national identification numbers
+==================================================
 
-.. doctest init:
-
-    >>> import datetime
-    >>> import lino
-    >>> lino.startup('lino.projects.std.settings_test')
-
-                   
 The :mod:`lino.utils.ssin` module defines some utilities for
 manipulating *Belgian national identification numbers*.
+
+.. contents::
+  :local:
+
+.. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> # lino.startup('lino.projects.std.settings_test')
+>>> startup('lino_book.projects.min1.settings.doctests')
+>>> from lino.api.doctest import *
+
+Which means that code examples in this document use the
+:mod:`lino_book.projects.min1` demo project.
+
+We will also use some additional Python modules:
+
+>>> import datetime
+
+Overview
+=========
 
 Belgians call their national identification number **INSZ**
 ("identificatienummer van de sociale zekerheid) in Dutch, **NISS**
@@ -100,10 +113,6 @@ the gender.  For boys it is 1, for girls 2.
 >>> print (n)
 020405 002=44
 >>> ssin_validator(n)
-
-
-
-
 
 
 SSIN for incomplete birth date

@@ -19,3 +19,4 @@ Office stuff in Lino
    printing
    weasyprint
    uploads
+   holidays

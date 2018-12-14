@@ -1,9 +1,9 @@
 .. doctest docs/specs/ana.rst
 .. _xl.specs.ana:
 
-=============================
-Analytical accounting
-=============================
+==============================
+``ana``: Analytical accounting
+==============================
 
 .. currentmodule:: lino_xl.lib.ana
 

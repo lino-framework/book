@@ -3,47 +3,48 @@
 .. _welfare.specs.fse:
 .. _welfare.specs.esf:
 
-==========================================
-Statistiques pour le Fonds Social Européen
-==========================================
+==============================
+``esf`` : European Social Fund
+==============================
 
-..  doctest initialization:
+.. currentmodule:: lino_welfare.modlib.esf
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.mathieu.settings.doctests')
-    >>> from lino.api.doctest import *
-
-This is (a first draft) of the functional specification for the
-:mod:`lino_welfare.modlib.esf` plugin which helps generating yearly
-reports for the `ESF
-<http://ec.europa.eu/esf/main.jsp?catId=35&langId=en>`_.
-
-Ticket :ticket:`584` is to write a first prototype.
+The :mod:`lino_welfare.modlib.esf` plugin helps writing yearly reports for the
+`European Social Fund <http://ec.europa.eu/esf/main.jsp?catId=35&langId=en>`_
+(ESF).
 
 
 .. contents::
    :local:
    :depth: 2
 
-The :mod:`lino_welfare.modlib.esf` plugin needs
-:mod:`lino.modlib.summaries` and :mod:`lino.modlib.weasyprint`:
+..  include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.mathieu.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+Dependencies
+============
+
+This plugin needs :mod:`lino.modlib.summaries` and
+:mod:`lino.modlib.weasyprint`: A client summary is a subclass of
+:class:`lino.modlib.summaries.MonthlySlaveSummary`
 
 >>> dd.plugins.esf.needs_plugins
 ['lino.modlib.summaries', 'lino.modlib.weasyprint']
-
-.. currentmodule:: lino_welfare.modlib.esf
 
 
 Dossier
 =======
 
-The plugin adds one central database object model called
-:class:`Client summary
-<lino_welfare.modlib.esf.models.ClientSummary>`. Every *client
-summary* represents a document to be printed as "Fiche stagiaire".
+The plugin adds the concept of **client summaries**.  A *client summary*
+(:class:`ClientSummary`) is a database entry holding statistical information
+for a given year about a given client.  Client summaries are temporary
+generated database content. Every client summary* can be printed as a document
+called "Fiche stagiaire".
 
-A client summary is a subclass of
-:class:`lino.modlib.summaries.mixins.Summary`
 
 List of the data fields per *dossier*:
 

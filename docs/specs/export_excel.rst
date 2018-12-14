@@ -2,20 +2,27 @@
 .. _lino.specs.export_excel:
 .. _lino.tested.export_excel:
 
-==================
-Exporting to Excel
-==================
+=====================================
+``export_excel`` : Exporting to Excel
+=====================================
 
-When :mod:`lino.modlib.export_excel` is installed, every grid view has
-a button `Export to Excel`.
+.. currentmodule:: lino.modlib.export_excel
 
+The :mod:`lino.modlib.export_excel` plugin adds a button `Export to Excel`
+to every grid view.
 
+.. contents::
+   :depth: 1
+   :local:
 
 .. include:: /include/tested.rst
              
 >>> from lino import startup
 >>> startup('lino_book.projects.min3.settings.doctests')
 >>> from lino.api.doctest import *
+
+Which means that code snippets in this document are tested using the
+:mod:`lino_book.projects.min3` demo project.
 
 
 Overview

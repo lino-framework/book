@@ -1,26 +1,25 @@
 .. doctest docs/specs/beid.rst
 .. _specs.lib.beid:
 
-=======================
-Belgian ID card holders
-=======================
+==================================
+``beid`` : Belgian ID card holders
+==================================
+
+.. currentmodule:: lino_xl.lib.beid
 
 The :mod:`lino_xl.lib.beid` plugin adds functionality for reading
 Belgian eID cards and storing that data in the database.
-
-Examples in this document use the :mod:`lino_book.projects.adg` demo
-project.
-
->>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
->>> from lino.api.doctest import *
-
 
 .. contents::
    :depth: 1
    :local:
 
-.. currentmodule:: lino_xl.lib.beid
+.. include:: /include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+
 
 Introduction
 ============

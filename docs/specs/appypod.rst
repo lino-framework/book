@@ -1,24 +1,35 @@
 .. doctest docs/specs/appypod.rst
 .. _xl.specs.appypod:
    
-==================
-The appypod plugin
-==================
+=============================================================
+``appypod`` : Generate printable documents from odt templates
+=============================================================
 
-The :mod:`lino_xl.lib.appypod` plugin adds a series of build methods
-for generating printable documents using LibreOffice and the
-:term:`appy.pod` package.  It also adds certain generic actions for
-printing tables using these methods.
+.. currentmodule:: lino_xl.lib.appypod
+
+The :mod:`lino_xl.lib.appypod` plugin adds a series of build methods for
+generating printable documents using LibreOffice and the :term:`appy.pod`
+package.  It also adds certain generic actions for printing tables using these
+methods.
 
 See also the user documentation in :ref:`lino.admin.appypod`.
-
 
 .. contents::
   :local:
 
+.. include:: /include/tested.rst
 
-System requirements
-===================
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+
+Which means that code examples in this document use the
+:mod:`lino_book.projects.lydia` demo project.
+
+
+
+Dependencies
+============
 
 The appy.pod build methods require a running LibreOffice server (see
 :ref:`admin.oood`).  While this might refrain you from using them,
@@ -36,49 +47,6 @@ deprecated) :class:`PisaBuildMethod
   dare to edit them more easily.
 
 
-Related projects
-================
-
-.. glossary::
-  :sorted:
-  
-  ODFPy
-    A Python library for manipulating OpenDocument documents 
-    (.odt, .ods, .odp, ...): 
-    read existing files, modify, create new files from scratch.
-    Read more on `PyPI <http://pypi.python.org/pypi/odfpy>`_.
-    Project home page https://joinup.ec.europa.eu/software/odfpy
-
-  appy.pod
-    A tool for generating pdf and other formats, including .odt
-    or .doc) from .odt templates.  See
-    http://appyframework.org/pod.html
-    http://appyframework.org/podRenderingTemplates.html
-  
-  appypod
-    As long as :term:`appy.pod` does not support Python 3, we use
-    `Stefan Klug's Python 3 port
-    <https://libraries.io/github/stefanklug/appypod>`_.
-
-  lxml
-    See https://lxml.de/
-
-
-About this document
-===================
-  
-    
-Code examples in this document use the :mod:`lino_book.projects.lydia`
-demo project and are an integral part of the Lino test suite.
-
->>> from lino import startup
->>> startup('lino_book.projects.lydia.settings.doctests')
->>> from lino.api.doctest import *
-
-
-
-
-.. currentmodule:: lino_xl.lib.appypod
 
 Build methods
 =============
@@ -318,5 +286,33 @@ The columns
 
 >>> print('\n'.join(e.tag for e in header_rows))
 {urn:oasis:names:tc:opendocument:xmlns:table:1.0}table-row
+
+
+Related projects
+================
+
+.. glossary::
+  :sorted:
+
+  ODFPy
+    A Python library for manipulating OpenDocument documents
+    (.odt, .ods, .odp, ...):
+    read existing files, modify, create new files from scratch.
+    Read more on `PyPI <http://pypi.python.org/pypi/odfpy>`_.
+    Project home page https://joinup.ec.europa.eu/software/odfpy
+
+  appy.pod
+    A tool for generating pdf and other formats, including .odt
+    or .doc) from .odt templates.  See
+    http://appyframework.org/pod.html
+    http://appyframework.org/podRenderingTemplates.html
+
+  appypod
+    As long as :term:`appy.pod` does not support Python 3, we use
+    `Stefan Klug's Python 3 port
+    <https://libraries.io/github/stefanklug/appypod>`_.
+
+  lxml
+    See https://lxml.de/
 
 

@@ -1,27 +1,41 @@
+.. doctest docs/specs/tinymce.rst
 .. _lino.tested.tinymce:
 
-=============================
-Testing `lino.modlib.tinymce`
-=============================
+====================================
+``tinymcs`` : Add the TinyMCE editor
+====================================
 
-.. to run only this test:
+.. currentmodule:: lino.modlib.tinymce
 
-  $ python setup.py test -s tests.SpecsTests.test_tinymce
-
-This document tests some functionality of :mod:`lino.modlib.tinymce`.
-
-Currently especially the behaviour of 
-:class:`lino.modlib.tinymce.views.Templates`
-which is designed to make usage of TinyMCE's
-`external_template_list_url <http://www.tinymce.com/wiki.php/Configuration3x:external_template_list_url>`__ setting.
+The :mod:`lino.modlib.tinymce` plugin activates usage of the TinyMCE editor for
+HTML text fields (:class:lino.core.fields.RichTextField`) instead of the
+built-in `Ext.form.HtmlEditor` editor that comes with ExtJS.
 
 
-General stuff:
+.. contents::
+  :local:
 
->>> from __future__ import print_function
->>> import os
->>> os.environ['DJANGO_SETTINGS_MODULE'] = 'lino_book.projects.min9.settings.doctests'
+.. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.demo')
 >>> from lino.api.doctest import *
+
+
+Configuration
+=============
+
+See :class:`lino.modlib.tinymce.Plugin`
+
+The :class:`Templates` table
+============================
+
+The :class:`Templates` is designed to make usage of TinyMCE's
+`external_template_list_url
+<http://www.tinymce.com/wiki.php/Configuration3x:external_template_list_url>`__
+setting.
+
+
 
 >>> url = "/tinymce/templates/notes/MyNotes/69/body"
 >>> test_client.force_login(rt.login('robin').user)

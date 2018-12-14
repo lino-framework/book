@@ -1,43 +1,39 @@
 .. doctest docs/specs/comments.rst
 .. _book.specs.comments:
 
-======================
-The comments framework
-======================
+=====================================
+``comments`` : The comments framework
+=====================================
 
-.. doctest init:
+.. currentmodule:: lino.modlib.comments
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
-
-
-This describes the :mod:`lino.modlib.comments` plugin which is used
-for handling simple comments.
-
-A comment is always "about" something. This is the Topic of your
-comment, internally represented by the :attr:`owner` field. This is a
-Generic Foreign Key, i.e. it can be any database object.  It is
-however the application developer who decides where comments can be
-created and how they are being displayed.
-
-A comment is something one user wants to say to "whoever is
-interested".  A comment has no "recipient" .  When you submit a
-comment, Lino notifies all users that registered their interest in the
-topic.
-
-Comments have no workflow management nor rating merchanism etc.
-As in the real world it is the user's responsibility to think at
-least a bit before they say something.
-
+The :mod:`lino.modlib.comments` plugin adds a framework for handling comments.
 
 .. contents::
-   :depth: 1
-   :local:
+  :local:
 
+.. include:: /include/tested.rst
 
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
 
-.. module:: lino.modlib.comments
+Overview
+========
+
+A **comment** is something one user wants to share with "whoever is
+interested".  A comment has no "recipient" .  When you submit a comment, Lino
+notifies all users that registered their interest in the topic.
+
+A comment is always "about" something. This is represented by the :attr:`owner`
+field. You can consider the  :attr:`owner` as the "topic" of a thread comments.
+This field is a Generic Foreign Key, i.e. users can basically comment on any
+database object.  It is however the application developer who decides where
+comments can be created and how they are being displayed.
+
+Comments have no workflow management nor rating merchanism etc. As in the real
+world it is the user's responsibility to think before they say something.
+
 
 Comments
 ========
@@ -188,7 +184,6 @@ Utilities
 
 The preview of a comment
 ========================
-
 
 
 Usage examples:

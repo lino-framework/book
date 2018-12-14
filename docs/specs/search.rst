@@ -2,25 +2,44 @@
 .. _specs.search:
 
 =============================
-Site-wide search
+``about`` : Site-wide search
 =============================
 
-..  doctest init:
+.. currentmodule:: lino.modlib.about
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
+The :mod:`lino.modlib.about` plugin also adds functionality for doing site-wide
+searches across all tables of the application.
 
-The demo project :mod:`lino_book.projects.lydia` is used for testing
-the following document.
 
-See also :class:`lino.modlib.about.SiteSearch`.
+.. contents::
+   :depth: 1
+   :local:
+
+
+.. include:: /include/tested.rst
+
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+
+Code snippets in this document use the :mod:`lino_book.projects.lydia` demo
+project.
+
+
+The ``SiteSearch`` table
+========================
+
+.. class:: SiteSearch
+
+    The virtual table used to implement site-wide searches
+
 
 >>> rt.show('about.SiteSearch', quick_search="foo")
 No data to display
 
-If you search contains more than one word, it shows all rows
-containing both words.
+If you search contains more than one word, it shows all rows containing both
+words.
 
 >>> rt.show('about.SiteSearch', quick_search="est land")
 ============================== ===================================================================================================
@@ -53,8 +72,6 @@ containing both words.
 
 Dobbelstein-Demeulenaere Dorothée (id 123) is Partner, Person and
 Patient.  All three instances are listed in the SiteSearch.
-
-
 
 
 Don't read on

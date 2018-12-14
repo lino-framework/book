@@ -1,27 +1,35 @@
 .. doctest docs/specs/checkdata.rst
 .. _book.specs.checkdata:
 
-==========================
-Checking for data problems
-==========================
+==========================================
+``checkdata`` : High-level integrity tests
+==========================================
+
+.. currentmodule:: lino.modlib.checkdata
 
 The :mod:`lino.modlib.checkdata` plugin adds support for defining
-**data checkers**.
+application-level integrity tests using **data checkers**.
 
-A **data checker** is a piece of code which tests for
-application-specific "soft" database integrity problems.  Where "soft"
-means that it is not detected by the database engine because it
-requires more application intelligence to detect.
+A **data checker** is a piece of code which tests for application-specific
+"soft" database integrity problems.  Where "soft" means that it is not detected
+by the database engine because it requires application intelligence to detect.
 
 When a data checker finds a problem, then it issues a *problem
 message* which is assigned to a *responsible user*.
 
-Code snippets in this document are tested in the min9 demo project:
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min9.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.core.management import call_command
+
+Which means that code snippets in this document are tested using the
+:mod:`lino_book.projects.min9` demo project.
 
 
 Data checkers
