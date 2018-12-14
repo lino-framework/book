@@ -426,14 +426,15 @@ Sites
 List of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
-============= ======== ================ ======== ============= ====
- Designation   Client   Contact person   Remark   Workflow      ID
-------------- -------- ---------------- -------- ------------- ----
- pypi          pypi                               **⛶ Draft**   3
- welket        welket                             **⛶ Draft**   1
- welsch        welsch                             **⛶ Draft**   2
-============= ======== ================ ======== ============= ====
+=========== ============= ======== ======== ============= ====
+ Reference   Designation   Client   Remark   Workflow      ID
+----------- ------------- -------- -------- ------------- ----
+             pypi          pypi              **⛶ Draft**   3
+             welket        welket            **⛶ Draft**   1
+             welsch        welsch            **⛶ Draft**   2
+=========== ============= ======== ======== ============= ====
 <BLANKLINE>
+
 
 List of tickets which have not yet been assigned to a site:
 
@@ -501,21 +502,21 @@ Show all active tickets reported by me.
 
 >>> rt.login('jean').show(tickets.MyTickets)
 ... #doctest: -REPORT_UDIFF
-========== ==================================================================== ============== ========= ======= ====== =============================================
- Priority   Ticket                                                               Planned time   Regular   Extra   Free   Workflow
----------- -------------------------------------------------------------------- -------------- --------- ------- ------ ---------------------------------------------
- Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__                                                              [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                           [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__                                                            [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                                                                       [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__                                                 [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#57 (⛶ Irritating message when bar) <Detail>`__                                                             [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                                                               [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                                                            [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
- Normal     `#22 (☐ How can I see where bar?) <Detail>`__                                                                [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                [✋] [■] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
-========== ==================================================================== ============== ========= ======= ====== =============================================
+========== ==================================================================== ============= ============== ========= ======= ====== =============================================
+ Priority   Ticket                                                               Assigned to   Planned time   Regular   Extra   Free   Workflow
+---------- -------------------------------------------------------------------- ------------- -------------- --------- ------- ------ ---------------------------------------------
+ Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__                                                                            [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__   Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__                    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                               Mathieu                                               [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__         Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
+ Normal     `#57 (⛶ Irritating message when bar) <Detail>`__                                                                           [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                       Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                    Mathieu                                               [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#22 (☐ How can I see where bar?) <Detail>`__                        Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
+ Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                              [✋] [■] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+========== ==================================================================== ============= ============== ========= ======= ====== =============================================
 <BLANKLINE>
 
 
