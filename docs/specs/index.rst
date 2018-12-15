@@ -59,6 +59,7 @@ Plugins of the Extensions library
    products
    topics
    userstats
+   xl
 
 
 Application specs

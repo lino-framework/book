@@ -164,8 +164,8 @@ the detail window of a ticket.
 
     .. attribute:: priority
 
-        How urgent this ticket is. This should be a value between 0
-        and 100.
+        How urgent this ticket is. Choicelist field pointing to
+        :class:`lino_xl.lib.xl.Priorities`.
 
     .. attribute:: rating
 
