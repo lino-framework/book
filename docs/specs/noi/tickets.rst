@@ -175,7 +175,7 @@ the detail window of a ticket.
 
         An indication about who is going to pay for work on this
         site.  See :class:`ReportingTypes`.
-        
+
 
 There are many tables used to show lists of tickets.        
 

@@ -5,7 +5,7 @@
 The ``uploads`` plugin
 =======================
 
-.. currentmodule:: lino.modliblib.uploads
+.. currentmodule:: lino.modlib.uploads
 
 The :mod:`lino.modliblib.uploads` plugin adds functionality for managing
 "uploads".
