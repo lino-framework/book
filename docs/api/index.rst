@@ -151,20 +151,6 @@ Lino Tera
 .. automodule:: lino_tera
                 
 
-.. _amici:
-
-Lino Amici
-----------
-
-.. py2rst::
-
-  import lino_amici
-  print(lino_amici.SETUP_INFO['long_description'])
-
-
-.. automodule:: lino_amici
-                
-
 .. _faggio:
 .. _voga:
 
