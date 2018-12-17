@@ -44,6 +44,9 @@ The ``Priorities`` choicelist
 ======= ========== ==========
 <BLANKLINE>
 
+Used by :attr:`lino_xl.lib.cal.Task.priority` and
+:attr:`lino_xl.lib.tickets.Ticket.priority`.
+
 
 The ``locale`` directory of XL
 ===============================

@@ -26,8 +26,6 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role
-- cal.Priority :
-  - PROTECT : cal.Event.priority
 - cal.Room :
   - PROTECT : cal.Event.room
 - comments.Comment :

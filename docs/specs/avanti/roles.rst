@@ -30,7 +30,7 @@ Site administrator
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
-  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
+  - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
   - Office : Comment Types, Upload Types, Excerpt Types
   - Clients : Client Contact types
   - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations

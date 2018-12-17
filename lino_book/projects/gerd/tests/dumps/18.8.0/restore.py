@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 # This is a Python dump created using dump2py.
-# DJANGO_SETTINGS_MODULE was 'lino_welfare.projects.eupen.settings.demo', TIME_ZONE was None.
+# DJANGO_SETTINGS_MODULE was 'lino_book.projects.gerd.settings.demo', TIME_ZONE was None.
 
 
 from __future__ import unicode_literals
@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 import logging
 logger = logging.getLogger('lino.management.commands.dump2py')
 
-SOURCE_VERSION = '18.8.0'
+SOURCE_VERSION = '18.11.0'
 
 import os
 import six
@@ -76,7 +76,6 @@ cal_EventPolicy = resolve_model("cal.EventPolicy")
 cal_EventType = resolve_model("cal.EventType")
 cal_Guest = resolve_model("cal.Guest")
 cal_GuestRole = resolve_model("cal.GuestRole")
-cal_Priority = resolve_model("cal.Priority")
 cal_RecurrentEvent = resolve_model("cal.RecurrentEvent")
 cal_RemoteCalendar = resolve_model("cal.RemoteCalendar")
 cal_Room = resolve_model("cal.Room")
@@ -274,11 +273,12 @@ def create_cal_dailyplannerrow(id, seqno, designation, start_time, end_time):
     kw.update(end_time=end_time)
     return cal_DailyPlannerRow(**kw)
 
-def create_cal_eventtype(id, seqno, name, attach_to_email, email_template, description, is_appointment, all_rooms, locks_user, force_guest_states, start_date, event_label, max_conflicting, max_days, transparent, planner_column, invite_client, esf_field):
+def create_cal_eventtype(id, ref, seqno, name, attach_to_email, email_template, description, is_appointment, all_rooms, locks_user, force_guest_states, start_date, event_label, max_conflicting, max_days, transparent, planner_column, invite_client, esf_field):
 #    if planner_column: planner_column = settings.SITE.models.cal.PlannerColumns.get_by_value(planner_column)
 #    if esf_field: esf_field = settings.SITE.models.esf.StatisticalFields.get_by_value(esf_field)
     kw = dict()
     kw.update(id=id)
+    kw.update(ref=ref)
     kw.update(seqno=seqno)
     if name is not None: kw.update(bv2kw('name',name))
     kw.update(attach_to_email=attach_to_email)
@@ -320,18 +320,12 @@ def create_cal_eventpolicy(id, start_date, start_time, end_date, end_time, name,
     kw.update(event_type_id=event_type_id)
     return cal_EventPolicy(**kw)
 
-def create_cal_guestrole(id, name):
+def create_cal_guestrole(id, ref, name):
     kw = dict()
     kw.update(id=id)
+    kw.update(ref=ref)
     if name is not None: kw.update(bv2kw('name',name))
     return cal_GuestRole(**kw)
-
-def create_cal_priority(id, name, ref):
-    kw = dict()
-    kw.update(id=id)
-    if name is not None: kw.update(bv2kw('name',name))
-    kw.update(ref=ref)
-    return cal_Priority(**kw)
 
 def create_cal_remotecalendar(id, seqno, type, url_template, username, password, readonly):
     kw = dict()
@@ -944,7 +938,7 @@ def create_pcsw_persongroup(id, name, ref_name, active):
 def create_pcsw_client(person_ptr_id, national_id, birth_country_id, birth_place, nationality_id, card_number, card_valid_from, card_valid_until, card_type, card_issuer, noble_condition, client_state, group_id, civil_state, residence_type, in_belgium_since, residence_until, unemployed_since, seeking_since, needs_residence_permit, needs_work_permit, work_permit_suspended_until, aid_type_id, declared_name, is_seeking, unavailable_until, unavailable_why, obstacles, skills, job_office_contact_id, refusal_reason, remarks2, gesdos_id, tim_id, is_cpas, is_senior, health_insurance_id, pharmacy_id, income_ag, income_wg, income_kg, income_rente, income_misc, job_agents, broker_id, faculty_id, has_esf):
 #    if card_type: card_type = settings.SITE.models.beid.BeIdCardTypes.get_by_value(card_type)
 #    if client_state: client_state = settings.SITE.models.clients.ClientStates.get_by_value(client_state)
-#    if civil_state: civil_state = settings.SITE.models.beid.CivilStates.get_by_value(civil_state)
+#    if civil_state: civil_state = settings.SITE.models.contacts.CivilStates.get_by_value(civil_state)
 #    if residence_type: residence_type = settings.SITE.models.beid.ResidenceTypes.get_by_value(residence_type)
 #    if refusal_reason: refusal_reason = settings.SITE.models.pcsw.RefusalReasons.get_by_value(refusal_reason)
     kw = dict()
@@ -1294,10 +1288,11 @@ def create_aids_granting(id, start_date, end_date, user_id, decision_date, board
     kw.update(request_date=request_date)
     return aids_Granting(**kw)
 
-def create_cal_event(id, modified, created, project_id, start_date, start_time, end_date, end_time, build_time, build_method, user_id, assigned_to_id, owner_type_id, owner_id, summary, description, access_class, sequence, auto_type, event_type_id, transparent, room_id, priority_id, state):
+def create_cal_event(id, modified, created, project_id, start_date, start_time, end_date, end_time, build_time, build_method, user_id, assigned_to_id, owner_type_id, owner_id, summary, description, access_class, sequence, auto_type, priority, event_type_id, transparent, room_id, state):
 #    if build_method: build_method = settings.SITE.models.printing.BuildMethods.get_by_value(build_method)
     owner_type_id = new_content_type_id(owner_type_id)
 #    if access_class: access_class = settings.SITE.models.cal.AccessClasses.get_by_value(access_class)
+#    if priority: priority = settings.SITE.models.xl.Priorities.get_by_value(priority)
 #    if state: state = settings.SITE.models.cal.EntryStates.get_by_value(state)
     kw = dict()
     kw.update(id=id)
@@ -1319,10 +1314,10 @@ def create_cal_event(id, modified, created, project_id, start_date, start_time, 
     kw.update(access_class=access_class)
     kw.update(sequence=sequence)
     kw.update(auto_type=auto_type)
+    kw.update(priority=priority)
     kw.update(event_type_id=event_type_id)
     kw.update(transparent=transparent)
     kw.update(room_id=room_id)
-    kw.update(priority_id=priority_id)
     kw.update(state=state)
     return cal_Event(**kw)
 
@@ -1372,9 +1367,10 @@ def create_cal_subscription(id, user_id, calendar_id, is_hidden):
     kw.update(is_hidden=is_hidden)
     return cal_Subscription(**kw)
 
-def create_cal_task(id, modified, created, project_id, start_date, start_time, user_id, owner_type_id, owner_id, summary, description, access_class, sequence, auto_type, due_date, due_time, percent, state, delegated):
+def create_cal_task(id, modified, created, project_id, start_date, start_time, user_id, owner_type_id, owner_id, summary, description, access_class, sequence, auto_type, priority, due_date, due_time, percent, state, delegated):
     owner_type_id = new_content_type_id(owner_type_id)
 #    if access_class: access_class = settings.SITE.models.cal.AccessClasses.get_by_value(access_class)
+#    if priority: priority = settings.SITE.models.xl.Priorities.get_by_value(priority)
 #    if state: state = settings.SITE.models.cal.TaskStates.get_by_value(state)
     kw = dict()
     kw.update(id=id)
@@ -1391,6 +1387,7 @@ def create_cal_task(id, modified, created, project_id, start_date, start_time, u
     kw.update(access_class=access_class)
     kw.update(sequence=sequence)
     kw.update(auto_type=auto_type)
+    kw.update(priority=priority)
     kw.update(due_date=due_date)
     kw.update(due_time=due_time)
     kw.update(percent=percent)
@@ -2145,7 +2142,7 @@ def create_xcourses_courserequest(id, person_id, offer_id, content_id, date_subm
 
 
 def main(args):
-    loader = DpyLoader(globals())
+    loader = DpyLoader(globals(), quick=args.quick)
     from django.core.management import call_command
     call_command('initdb', interactive=args.interactive)
     os.chdir(os.path.dirname(__file__))
@@ -2162,7 +2159,6 @@ def main(args):
     execfile("cal_eventtype.py", *args)
     execfile("cal_eventpolicy.py", *args)
     execfile("cal_guestrole.py", *args)
-    execfile("cal_priority.py", *args)
     execfile("cal_remotecalendar.py", *args)
     execfile("cbss_purpose.py", *args)
     execfile("cbss_sector.py", *args)
@@ -2302,6 +2298,9 @@ if __name__ == '__main__':
     parser.add_argument('--noinput', dest='interactive',
         action='store_false', default=True,
         help="Don't ask for confirmation before flushing the database.")
+    parser.add_argument('--quick', dest='quick', 
+        action='store_true',default=False,
+        help='Do not call full_clean() on restored instances.')
 
     args = parser.parse_args()
     main(args)

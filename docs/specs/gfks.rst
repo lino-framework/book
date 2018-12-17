@@ -110,15 +110,15 @@ The :class:`ContentTypes` table shows all models defined in your application.
  6    countries          country
  7    countries          place
  ...
- 44   checkdata          problem
- 45   tinymce            textfieldtemplate
- 46   notify             message
- 47   changes            change
- 48   comments           comment
- 49   comments           commenttype
- 50   uploads            uploadtype
- 51   uploads            upload
- 52   sessions           session
+ 43   checkdata          problem
+ 44   tinymce            textfieldtemplate
+ 45   notify             message
+ 46   changes            change
+ 47   comments           comment
+ 48   comments           commenttype
+ 49   uploads            uploadtype
+ 50   uploads            upload
+ 51   sessions           session
 ==== ================== =========================
 <BLANKLINE>
 

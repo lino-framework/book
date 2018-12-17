@@ -17,7 +17,7 @@ This document describes the database structure.
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 42 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, excerpts, comments, changes, tickets, summaries, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, github, userstats, rest_framework, restful, django_mailbox, mailbox, sessions.
-61 models:
+60 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
@@ -28,12 +28,11 @@ This document describes the database structure.
  cal.EventType                      cal.EventTypes                   21        3
  cal.Guest                          cal.Guests                       6         0
  cal.GuestRole                      cal.GuestRoles                   5         0
- cal.Priority                       cal.Priorities                   5         4
  cal.RecurrentEvent                 cal.RecurrentEvents              21        15
  cal.RemoteCalendar                 cal.RemoteCalendars              7         0
  cal.Room                           cal.Rooms                        8         0
  cal.Subscription                   cal.Subscriptions                4         0
- cal.Task                           cal.Tasks                        17        0
+ cal.Task                           cal.Tasks                        18        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
  comments.Comment                   comments.Comments                10        14
@@ -44,7 +43,7 @@ This document describes the database structure.
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         61
+ contenttypes.ContentType           gfks.ContentTypes                3         60
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0

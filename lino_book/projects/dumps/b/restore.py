@@ -71,7 +71,7 @@ def create_dumps_foo(id, designation, last_visit, bar):
 
 
 def main(args):
-    loader = DpyLoader(globals())
+    loader = DpyLoader(globals(), quick=args.quick)
     from django.core.management import call_command
     call_command('initdb', interactive=args.interactive)
     os.chdir(os.path.dirname(__file__))
@@ -89,6 +89,9 @@ if __name__ == '__main__':
     parser.add_argument('--noinput', dest='interactive',
         action='store_false', default=True,
         help="Don't ask for confirmation before flushing the database.")
+    parser.add_argument('--quick', dest='quick', 
+        action='store_true',default=False,
+        help='Do not call full_clean() on restored instances.')
 
     args = parser.parse_args()
     main(args)

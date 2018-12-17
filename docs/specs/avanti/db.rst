@@ -20,8 +20,9 @@ This document describes the database structure.
 
 
 >>> print(analyzer.show_complexity_factors())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - 39 plugins
-- 79 models
+- 78 models
 - 29 user roles
 - 8 user types
 - 290 views

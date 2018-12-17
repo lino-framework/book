@@ -168,7 +168,6 @@ Synchronizing apps without migrations:
     Creating table cal_dailyplannerrow
     Creating table cal_remotecalendar
     Creating table cal_room
-    Creating table cal_priority
     Creating table cal_eventtype
     Creating table cal_guestrole
     Creating table cal_calendar

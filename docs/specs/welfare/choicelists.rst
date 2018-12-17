@@ -34,7 +34,7 @@ name to read the documentation):
 >>> for value, text in choicelist_choices():
 ...     print(u"{} : {}".format(value, text))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-about.TimeZones : Time zones
+about.TimeZones : Zeitzonen
 addresses.AddressTypes : Adressenarten
 addresses.DataSources : Datenquellen
 aids.AidRegimes : AidRegimes
@@ -101,5 +101,6 @@ uploads.Shortcuts : Upload shortcuts
 uploads.UploadAreas : Upload-Bereiche
 users.UserTypes : Benutzerarten
 xcourses.CourseRequestStates : Zustände Kursanfragen
+xl.Priorities : Prioritäten
 
 

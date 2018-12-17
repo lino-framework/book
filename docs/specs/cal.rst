@@ -922,14 +922,6 @@ Reference
            
 
     
-.. class:: Priority
-           
-    The priority of a task or entry.
-
-.. class:: Priorities
-
-    List of possible priorities of calendar events.
-    
 .. class:: Subscription
 
     A Suscription is when a User subscribes to a Calendar.
@@ -947,8 +939,14 @@ Reference
     A Task is when a user plans to do something
     (and optionally wants to get reminded about it).
 
+    .. attribute:: priority
+
+        How urgent this task is.
+
+        Choicelist field pointing to :class:`lino_xl.lib.xl.Priorities`.
+
     .. attribute:: state
-     
+
         The state of this Task. one of :class:`TaskStates`.
 
 .. class:: TaskStates

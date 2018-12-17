@@ -35,7 +35,7 @@ Lino Welfare *à la Châtelet* went online in 2013.
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 59 plugins
-- 134 models
+- 133 models
 - 42 user roles
 - 16 user types
 - 506 views
@@ -94,7 +94,7 @@ Romain
   - Endroits : Pays, Endroits
   - Contacts : Types d'organisation, Fonctions, Conseils, Types de ménage
   - Bureau : Types d'extrait, Types de fichiers téléchargés, Types d'observation, Types d'événements, Mes Text Field Templates
-  - Calendrier : Calendriers, Locaux, Priorités, Évènements periodiques, Rôles de participants, Types d'entrée calendrier, Règles de récurrence, Calendriers externes, Lignes de planificateur
+  - Calendrier : Calendriers, Locaux, Évènements periodiques, Rôles de participants, Types d'entrée calendrier, Règles de récurrence, Calendriers externes, Lignes de planificateur
   - Ateliers : Savoirs de base, Topics, Timetable Slots
   - CPAS : Types de contact client, Services, Raisons d’arrêt d'intervention, Phases d'intégration, Activités, Types d'exclusion du chômage, Motifs de dispense, Types d'aide sociale, Catégories
   - Parcours : Langues, Types d'éducation, Niveaux académiques, Secteurs, Fonctions, Régimes de travail, Statuts, Types de contrat, Types de compétence sociale, Types de freins, Preuves de qualification
@@ -156,7 +156,7 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview()) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 59 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, office, xl, countries, contacts, appypod, humanize, users, contenttypes, gfks, notify, changes, addresses, excerpts, uploads, outbox, extensible, cal, reception, badges, boards, clients, coachings, pcsw, welfare, sales, languages, cv, integ, isip, jobs, art61, immersion, active_job_search, courses, newcomers, cbss, households, humanlinks, debts, notes, aids, polls, summaries, weasyprint, esf, beid, dashboard, export_excel, checkdata, tinymce, sessions.
-134 models:
+133 models:
 ============================== =============================== ========= =======
  Name                           Default table                   #fields   #rows
 ------------------------------ ------------------------------- --------- -------
@@ -181,12 +181,11 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
  cal.EventType                  cal.EventTypes                  25        12
  cal.Guest                      cal.Guests                      9         578
  cal.GuestRole                  cal.GuestRoles                  6         4
- cal.Priority                   cal.Priorities                  6         4
  cal.RecurrentEvent             cal.RecurrentEvents             22        15
  cal.RemoteCalendar             cal.RemoteCalendars             7         0
  cal.Room                       cal.Rooms                       9         0
  cal.Subscription               cal.Subscriptions               4         9
- cal.Task                       cal.Tasks                       19        34
+ cal.Task                       cal.Tasks                       20        34
  cbss.IdentifyPersonRequest     cbss.IdentifyPersonRequests     21        5
  cbss.ManageAccessRequest       cbss.ManageAccessRequests       24        1
  cbss.Purpose                   cbss.Purposes                   7         106
@@ -205,7 +204,7 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
  contacts.Person                contacts.Persons                32        109
  contacts.Role                  contacts.Roles                  4         10
  contacts.RoleType              contacts.RoleTypes              6         5
- contenttypes.ContentType       gfks.ContentTypes               3         134
+ contenttypes.ContentType       gfks.ContentTypes               3         133
  countries.Country              countries.Countries             9         270
  countries.Place                countries.Places                11        78
  courses.Course                 courses.Activities              30        7
@@ -921,7 +920,6 @@ Here is the output of :func:`walk_menu_items
 - Configuration --> Bureau --> Mes Text Field Templates : 1
 - Configuration --> Calendrier --> Calendriers : ...
 - Configuration --> Calendrier --> Locaux : 1
-- Configuration --> Calendrier --> Priorités : 5
 - Configuration --> Calendrier --> Évènements periodiques : 16
 - Configuration --> Calendrier --> Rôles de participants : 5
 - Configuration --> Calendrier --> Types d'entrée calendrier : 13
@@ -979,7 +977,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Système --> Procurations : 4
 - Explorateur --> Système --> Types d'utilisateur : 16
 - Explorateur --> Système --> Rôles d'utilisateur : 42
-- Explorateur --> Système --> types de contenu : 135
+- Explorateur --> Système --> types de contenu : 134
 - Explorateur --> Système --> Notifications : 13
 - Explorateur --> Système --> Changes : 0
 - Explorateur --> Système --> All dashboard widgets : 1

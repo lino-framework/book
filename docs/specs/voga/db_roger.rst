@@ -19,7 +19,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, ledger, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-81 models:
+80 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -31,12 +31,11 @@ The database structure
  cal.EventType              cal.EventTypes                 21        9
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 5         3
- cal.Priority               cal.Priorities                 5         4
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
  cal.Room                   cal.AllRooms                   10        7
  cal.Subscription           cal.Subscriptions              4         35
- cal.Task                   cal.Tasks                      17        0
+ cal.Task                   cal.Tasks                      18        0
  changes.Change             changes.Changes                10        0
  checkdata.Problem          checkdata.Problems             6         20
  contacts.Company           contacts.Companies             26        31
@@ -45,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         81
+ contenttypes.ContentType   gfks.ContentTypes              3         80
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
@@ -125,8 +124,6 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Line.guest_role, system.SiteConfig.pupil_guestrole
-- cal.Priority :
-  - PROTECT : cal.Event.priority
 - cal.Room :
   - PROTECT : cal.Event.room, courses.Course.room, rooms.Booking.room
 - contacts.Company :

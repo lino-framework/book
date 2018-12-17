@@ -66,7 +66,6 @@ cal_EventPolicy = resolve_model("cal.EventPolicy")
 cal_EventType = resolve_model("cal.EventType")
 cal_Guest = resolve_model("cal.Guest")
 cal_GuestRole = resolve_model("cal.GuestRole")
-cal_Priority = resolve_model("cal.Priority")
 cal_RecurrentEvent = resolve_model("cal.RecurrentEvent")
 cal_RemoteCalendar = resolve_model("cal.RemoteCalendar")
 cal_Room = resolve_model("cal.Room")
@@ -225,13 +224,6 @@ def create_cal_guestrole(id, ref, name, is_teacher):
     if name is not None: kw.update(bv2kw('name',name))
     kw.update(is_teacher=is_teacher)
     return cal_GuestRole(**kw)
-
-def create_cal_priority(id, name, ref):
-    kw = dict()
-    kw.update(id=id)
-    if name is not None: kw.update(bv2kw('name',name))
-    kw.update(ref=ref)
-    return cal_Priority(**kw)
 
 def create_cal_remotecalendar(id, seqno, type, url_template, username, password, readonly):
     kw = dict()
@@ -880,10 +872,11 @@ def create_courses_course(id, modified, ref, start_date, start_time, end_date, e
     kw.update(paper_type_id=paper_type_id)
     return courses_Course(**kw)
 
-def create_cal_event(id, modified, created, project_id, start_date, start_time, end_date, end_time, build_time, build_method, owner_type_id, owner_id, user_id, assigned_to_id, summary, description, access_class, sequence, auto_type, event_type_id, transparent, room_id, priority_id, state, amount):
+def create_cal_event(id, modified, created, project_id, start_date, start_time, end_date, end_time, build_time, build_method, owner_type_id, owner_id, user_id, assigned_to_id, summary, description, access_class, sequence, auto_type, priority, event_type_id, transparent, room_id, state, amount):
 #    if build_method: build_method = settings.SITE.models.printing.BuildMethods.get_by_value(build_method)
     owner_type_id = new_content_type_id(owner_type_id)
 #    if access_class: access_class = settings.SITE.models.cal.AccessClasses.get_by_value(access_class)
+#    if priority: priority = settings.SITE.models.xl.Priorities.get_by_value(priority)
 #    if state: state = settings.SITE.models.cal.EntryStates.get_by_value(state)
     if amount is not None: amount = Decimal(amount)
     kw = dict()
@@ -906,10 +899,10 @@ def create_cal_event(id, modified, created, project_id, start_date, start_time, 
     kw.update(access_class=access_class)
     kw.update(sequence=sequence)
     kw.update(auto_type=auto_type)
+    kw.update(priority=priority)
     kw.update(event_type_id=event_type_id)
     kw.update(transparent=transparent)
     kw.update(room_id=room_id)
-    kw.update(priority_id=priority_id)
     kw.update(state=state)
     kw.update(amount=amount)
     return cal_Event(**kw)
@@ -927,9 +920,10 @@ def create_cal_guest(id, event_id, partner_id, role_id, state, remark, amount):
     kw.update(amount=amount)
     return cal_Guest(**kw)
 
-def create_cal_task(id, modified, created, project_id, start_date, start_time, owner_type_id, owner_id, user_id, summary, description, access_class, sequence, auto_type, due_date, due_time, percent, state):
+def create_cal_task(id, modified, created, project_id, start_date, start_time, owner_type_id, owner_id, user_id, summary, description, access_class, sequence, auto_type, priority, due_date, due_time, percent, state):
     owner_type_id = new_content_type_id(owner_type_id)
 #    if access_class: access_class = settings.SITE.models.cal.AccessClasses.get_by_value(access_class)
+#    if priority: priority = settings.SITE.models.xl.Priorities.get_by_value(priority)
 #    if state: state = settings.SITE.models.cal.TaskStates.get_by_value(state)
     kw = dict()
     kw.update(id=id)
@@ -946,6 +940,7 @@ def create_cal_task(id, modified, created, project_id, start_date, start_time, o
     kw.update(access_class=access_class)
     kw.update(sequence=sequence)
     kw.update(auto_type=auto_type)
+    kw.update(priority=priority)
     kw.update(due_date=due_date)
     kw.update(due_time=due_time)
     kw.update(percent=percent)
@@ -1439,7 +1434,7 @@ def create_vat_invoiceitem(id, seqno, account_id, total_incl, total_base, total_
 
 
 def main(args):
-    loader = DpyLoader(globals())
+    loader = DpyLoader(globals(), quick=args.quick)
     from django.core.management import call_command
     call_command('initdb', interactive=args.interactive)
     os.chdir(os.path.dirname(__file__))
@@ -1452,7 +1447,6 @@ def main(args):
     execfile("cal_eventtype.py", *args)
     execfile("cal_eventpolicy.py", *args)
     execfile("cal_guestrole.py", *args)
-    execfile("cal_priority.py", *args)
     execfile("cal_remotecalendar.py", *args)
     execfile("clients_clientcontacttype.py", *args)
     execfile("contacts_companytype.py", *args)
@@ -1548,6 +1542,9 @@ if __name__ == '__main__':
     parser.add_argument('--noinput', dest='interactive',
         action='store_false', default=True,
         help="Don't ask for confirmation before flushing the database.")
+    parser.add_argument('--quick', dest='quick', 
+        action='store_true',default=False,
+        help='Do not call full_clean() on restored instances.')
 
     args = parser.parse_args()
     main(args)
