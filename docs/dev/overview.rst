@@ -155,9 +155,16 @@ There are also Lino applications that are *not* covered by the book.
 Lino Presto
 ------------
 
-An application for managing services with physical on-site presence of
-the workers.  For organisations where calendar entries are the base
-for writing invoices.
+http://presto.lino-framework.org
+
+
+.. _amici:
+
+Lino Amici
+------------
+
+http://amici.lino-framework.org
+
 
 .. _patrols:
 
