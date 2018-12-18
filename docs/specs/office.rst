@@ -1,22 +1,24 @@
 .. _specs.office:
 
-========================
+====================================
+``office`` : Adding an "Office menu"
+====================================
+
 Office stuff in Lino
-========================
 
 
 .. toctree::
    :maxdepth: 1
   
-   cal
-   contacts
-   human
-   countries
-   notes
-   printing
-   phones
-   excerpts
-   printing
-   weasyprint
-   uploads
-   holidays
+- :doc:`cal`
+- :doc:`contacts`
+- :doc:`human`
+- :doc:`countries`
+- :doc:`notes`
+- :doc:`printing`
+- :doc:`phones`
+- :doc:`excerpts`
+- :doc:`printing`
+- :doc:`weasyprint`
+- :doc:`uploads`
+- :doc:`holidays`

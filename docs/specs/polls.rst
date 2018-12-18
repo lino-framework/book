@@ -2,8 +2,9 @@
 .. _tested.polly:
 .. _book.specs.polls:
 
-The Polls plugin
-================
+=================================================
+``polls`` : managing questionnaires and responses
+=================================================
 
 This document describes the :mod:`lino_xl.lib.polls` plugin which
 adds database models and functionality for managing polls.

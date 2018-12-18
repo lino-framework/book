@@ -3,9 +3,9 @@
 .. _cosi.specs.ledger:
 .. _cosi.tested.ledger:
 
-==============
-General Ledger
-==============
+=====================================
+``ledger``: General accounting
+=====================================
 
 .. currentmodule:: lino_xl.lib.ledger
                    
@@ -601,7 +601,11 @@ A **journal** is a named sequence of numbered *vouchers*.
         See :attr:`PrintableType.template
         <lino.mixins.printable.PrintableType.template>`.
 
+    .. attribute:: sepa_account
 
+        Your bank account to specify in payment order.
+
+        Added by :doc:`sepa`.
 
 Debit or credit
 ===============

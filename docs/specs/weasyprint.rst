@@ -1,9 +1,9 @@
 .. $ doctest docs/specs/weasyprint.rst
 .. _specs.weasyprint:
 
-===================================
-Printing documents using WeasyPrint
-===================================
+===================================================
+``weasyprint``: Printing documents using WeasyPrint
+===================================================
 
 The :mod:`lino.modlib.weasyprint` plugin installs two build methods
 for generating printable documents using `weasyprint

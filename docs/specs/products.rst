@@ -1,9 +1,9 @@
 .. doctest docs/specs/products.rst
 .. _specs.products:
 
-=======================
-The ``products`` plugin
-=======================
+===================================================
+``products`` : defining the things you sell and buy
+===================================================
 
 .. currentmodule:: lino_xl.lib.products
                    

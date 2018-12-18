@@ -1,9 +1,9 @@
 .. doctest docs/specs/uploads.rst
 .. _specs.uploads:
 
-=======================
-The ``uploads`` plugin
-=======================
+=====================================
+``uploads`` : Managing uploaded files
+=====================================
 
 .. currentmodule:: lino.modlib.uploads
 

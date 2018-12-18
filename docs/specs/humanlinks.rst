@@ -1,9 +1,9 @@
 .. doctest docs/specs/humanlinks.rst
 .. _lino.specs.humanlinks:
 
-=====================
-The Humanlinks module
-=====================
+==============================================
+``humanlinks`` : managing family relationships
+==============================================
 
 .. doctest init:
 

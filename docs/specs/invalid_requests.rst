@@ -1,6 +1,7 @@
 .. _invalid_requests:
 .. _lino.specs.invalid_requests:
 
+=============================
 Answering to invalid requests
 =============================
 

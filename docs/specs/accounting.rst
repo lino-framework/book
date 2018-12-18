@@ -5,8 +5,8 @@
 Accounting stuff in Lino
 ========================
 
-This section explains everything a Lino application developer needs to
-know about accounting stuff.  It will probably never be finished.
+This topic guide explains everything a Lino application developer needs to know
+about accounting stuff.  It will probably never be finished.
 
     When designing an accounting package, the programmer operates as a
     mediator between people having different ideas: how it must
@@ -18,17 +18,17 @@ know about accounting stuff.  It will probably never be finished.
     -- Tao of programming
 
 
+The XL has several modules dealing with accounting, and they are integrated
+into the general framework. Here is our suggested order of reading them:
 
-.. toctree::
-   :maxdepth: 1
-  
-   ledger
-   finan
-   invoicing
-   sales
-   ana
-   vat
-   bevat
-   bevats
-   sepa
-   sheets
+- :doc:`ledger`
+- :doc:`finan`
+- :doc:`products`
+- :doc:`sales`
+- :doc:`invoicing`
+- :doc:`ana`
+- :doc:`vat`
+- :doc:`bevat`
+- :doc:`bevats`
+- :doc:`sepa`
+- :doc:`sheets`

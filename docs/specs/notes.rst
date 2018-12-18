@@ -1,9 +1,9 @@
 .. doctest docs/specs/notes.rst
 .. _specs.notes:
 
-=====
-Notes
-=====
+================
+``notes``: Notes
+================
 
 The :mod:`lino_xl.lib.niotes` plugin adds a multipurpose concept of
 **notes**.

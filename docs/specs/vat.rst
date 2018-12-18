@@ -1,9 +1,9 @@
 .. doctest docs/specs/vat.rst
 .. _xl.vat:
 
-=============================
-VAT (Value-added tax)
-=============================
+====================================================
+``vat`` : Adding VAT (Value-added tax) functionality
+====================================================
 
 Table of contents:
 

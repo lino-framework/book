@@ -1,9 +1,9 @@
 .. doctest docs/specs/households.rst
 .. _lino.specs.households:
 
-=====================
-The Households module
-=====================
+======================================================
+``households`` : handling households and their members
+======================================================
 
 .. doctest init:
 

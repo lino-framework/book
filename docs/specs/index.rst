@@ -23,9 +23,7 @@ Core plugins
    notify
    users
    comments
-
-Core plugins to be moved to XL
-==============================
+   summaries
 
 The following plugins are technically still part of the Lino core, but might be
 moved to :mod:`lino_xl` some day:
@@ -45,27 +43,48 @@ Plugins of the Extensions library
 .. toctree::
    :maxdepth: 1
 
-   accounting
-   office
+   ana
    appypod
+   b2c
+   bevat
+   bevats
+   c2b
+   cal
    clients
    coachings
+   contacts
+   countries
    courses
    cv
    events/index
+   excerpts
+   finan
    households
    humanlinks
+   iban
+   invoicing
+   ledger
+   notes
+   office
+   phones
    polls
    products
+   sales
+   sepa
+   sheets
+   tim2lino
    topics
+   uploads
    userstats
+   vat
+   weasyprint
    xl
 
 
 Application specs
 =================
 
-Some applications have the privilege of being part of the Lino book, so there
+Some applications have the privilege of being part of the Lino book, so their
 technical documentation is provided and maintained by the Lino core team.
 
 .. toctree::
@@ -83,6 +102,17 @@ technical documentation is provided and maintained by the Lino core team.
    welfare/index
 
 
+Topic guides
+============
+
+.. toctree::
+   :maxdepth: 1
+
+   accounting
+   human
+   printing
+   holidays
+
 
 Technical stuff
 ===============
@@ -91,7 +121,6 @@ Technical stuff
    :maxdepth: 1
   
    
-   tim2lino
    invalid_requests
    projects/mti
    projects/nomti
@@ -99,7 +128,6 @@ Technical stuff
    projects/lets2
    projects/belref
    projects/actors
-   summaries
    openui5
    uitests
    i18n

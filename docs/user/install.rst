@@ -4,9 +4,9 @@
 Installing Lino
 ===============
 
-**Warning: The installation process described below is currently being
-tested. No guarantee.** Until we are done, you should rather follow
-the instructions about :doc:`/dev/install`.
+Note that the installation process described below is currently being tested.
+No guarantee.  Until we are done, you might prefer the instructions about
+:doc:`/dev/install`.
 
 This document explains how to install Lino on your machine in order to
 write applications.  If you prefer using the latest version, then you

@@ -4,8 +4,11 @@
 Continuous integration
 ======================
 
-The Lino Team uses the TravisCI service for doing `Continuous
-integration <https://en.wikipedia.org/wiki/Continuous_integration>`_.
+A nice introduction to `Continuous integration <https://en.wikipedia.org/wiki/Continuous_integration>`_
+is written by Kristijan Ivancic
+on `RealPython <https://realpython.com/python-continuous-integration/>`__.
+
+The Lino Team uses the TravisCI service for doing it.
 Our home page there is https://travis-ci.org/lino-framework
 
 It happens regularily that some build fails there, and we have a

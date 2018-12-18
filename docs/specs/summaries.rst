@@ -1,6 +1,8 @@
-==============
-Summary tables
-==============
+==============================
+``summaries`` : Summary tables
+==============================
+
+.. currentmodule:: lino.modlib.summaries
 
 The :mod:`lino.modlib.summaries` plugin installs a framework for defining
 summary fields and summary tables.  A summary table is a table with summary
@@ -15,15 +17,12 @@ The plugin has no models on its own but provides several model mixins and a
 :manage:`checksummaries` command which updates all summaries. It also schedules
 a daily :manage:`linod` task which does the same.
 
-A slave summary is a
-
 Users also get a button :guilabel:`∑` on each model for which there are slave
 summaries.
 
 Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
 :mod:`lino_welfare.modlib.esf`.
 
-.. currentmodule:: lino.modlib.summaries
 
 The ``Summarized`` model mixin
 ================================

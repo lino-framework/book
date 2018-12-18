@@ -1,9 +1,9 @@
 .. doctest docs/specs/sales.rst
 .. _cosi.specs.sales:
 
-================
-Product invoices
-================
+============================
+``sales`` : Product invoices
+============================
 
 A **product invoice** is an invoice whose rows usually refer to a
 *product* (which indirectly maps to a ledger account according to

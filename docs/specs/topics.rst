@@ -1,9 +1,9 @@
 .. doctest docs/specs/topics.rst
 .. _specs.topics:
 
-=======================
-The ``topics`` plugin
-=======================
+=========================================
+``topics`` : topics and partner interests
+=========================================
 
 .. currentmodule:: lino_xl.lib.topics
                    

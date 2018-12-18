@@ -1,9 +1,9 @@
 .. doctest docs/specs/invoicing.rst
 .. _cosi.specs.invoicing:
 
-===================
-Generating invoices
-===================
+======================================
+``invoicing`` : Generating invoices
+======================================
 
 The :mod:`lino_xl.lib.invoicing` plugin adds functionality for
 **invoicing**, i.e. automatically generating invoices from data in the

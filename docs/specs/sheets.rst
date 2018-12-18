@@ -1,9 +1,9 @@
 .. doctest docs/specs/sheets.rst
 .. _xl.specs.sheets:
 
-==================================
-Balance sheet and Income statement
-==================================
+===============================================
+``sheets`` : Balance sheet and Income statement
+===============================================
 
 .. currentmodule:: lino_xl.lib.sheets
                    

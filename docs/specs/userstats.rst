@@ -1,9 +1,9 @@
 .. doctest docs/specs/userstats.rst
 .. _specs.userstats:
 
-===============
-User statistics
-===============
+==============================
+``userstats``: User statistics
+==============================
 
 .. doctest init:
    
