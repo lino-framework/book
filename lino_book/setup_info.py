@@ -5,7 +5,9 @@
 # python setup.py test -s tests.test_misc.PackagesTests
 
 from __future__ import unicode_literals
+
 import sys
+
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
@@ -28,7 +30,8 @@ install_requires = [
         'lino_tera',
         'lino_amici',
         'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
-        'mock', 'sqlparse'
+        'mock', 'sqlparse',
+        'django-mailbox@git+https://github.com/cylonoven/django-mailbox'
     ]
 
 if PY2:
@@ -40,8 +43,8 @@ SETUP_INFO = dict(
     name='lino_book',
     version='18.11.0',
     install_requires=install_requires,
-    dependency_links=[
-        'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
+    # dependency_links=[
+    #     'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],
     description="Lino documentation and demo projects",
     license='BSD License',
     include_package_data=True,
