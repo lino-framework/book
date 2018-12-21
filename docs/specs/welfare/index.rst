@@ -29,7 +29,7 @@ General
    aids/index
    cbss
    tx25
-   courses
+   xcourses
    debts
    excerpts
    integ
@@ -77,7 +77,7 @@ Châtelet
    art61
    immersion
    cv2
-   courses2
+   courses
    esf
 
 

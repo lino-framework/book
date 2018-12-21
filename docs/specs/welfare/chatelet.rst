@@ -465,6 +465,7 @@ Each window layout defines a given set of fields.
 - humanlinks.Links.insert : parent, type, child
 - immersion.ContractTypes.detail : id, name, name_nl, name_de, name_en, exam_policy, template, overlap_group, full_name
 - immersion.ContractTypes.insert : name, name_nl, name_de, name_en, exam_policy
+- immersion.Contracts.detail : id, client, user, language, type, goal, company, contact_person, contact_role, applies_from, applies_until, exam_policy, sector, function, reference_person, printed, date_decided, date_issued, date_ended, ending, remark
 - immersion.Contracts.insert : client, company, type, goal
 - immersion.Goals.detail : id, name, name_nl, name_de, name_en
 - integ.ActivityReport.show : body
@@ -472,6 +473,7 @@ Each window layout defines a given set of fields.
 - isip.ContractPartners.detail : company, contact_person, contact_role, duties_company
 - isip.ContractPartners.insert : company, contact_person, contact_role
 - isip.ContractTypes.detail : id, ref, exam_policy, needs_study_type, name, name_nl, name_de, name_en, full_name
+- isip.Contracts.detail : id, client, type, user, user_asd, study_type, applies_from, applies_until, exam_policy, language, date_decided, date_issued, printed, date_ended, ending, uploads_UploadsByController
 - isip.Contracts.insert : client, type
 - isip.ExamPolicies.detail : id, name, name_nl, name_de, name_en, max_events, every, every_unit, event_type, monday, tuesday, wednesday, thursday, friday, saturday, sunday
 - jobs.ContractTypes.detail : id, name, name_nl, name_de, name_en, ref
@@ -660,6 +662,7 @@ Each window layout is **viewable** by a given set of user types.
 - humanlinks.Links.insert : visible for 110 120 210 410 420 800 admin 910
 - immersion.ContractTypes.detail : visible for 110 120 420 admin 910
 - immersion.ContractTypes.insert : visible for 110 120 420 admin 910
+- immersion.Contracts.detail : visible for 100 110 120 420 admin 910
 - immersion.Contracts.insert : visible for 100 110 120 420 admin 910
 - immersion.Goals.detail : visible for 110 120 420 admin 910
 - integ.ActivityReport.show : visible for 100 110 120 420 admin 910
@@ -667,6 +670,7 @@ Each window layout is **viewable** by a given set of user types.
 - isip.ContractPartners.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.insert : visible for 110 120 410 420 admin 910
 - isip.ContractTypes.detail : visible for 110 120 410 420 admin 910
+- isip.Contracts.detail : visible for 100 110 120 200 300 400 410 420 admin 910
 - isip.Contracts.insert : visible for 100 110 120 200 300 400 410 420 admin 910
 - isip.ExamPolicies.detail : visible for 110 120 410 420 admin 910
 - jobs.ContractTypes.detail : visible for 110 120 410 420 admin 910

@@ -36,7 +36,7 @@ remind this time.  In :ref:`welfare` they are called "workshops", in
 See also
 :doc:`/specs/voga/courses`,
 :doc:`/specs/avanti/courses`,
-:doc:`/specs/welfare/courses2`,
+:doc:`/specs/welfare/courses`,
 and
 :doc:`/specs/tera/courses`
 

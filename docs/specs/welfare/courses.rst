@@ -1,179 +1,130 @@
-.. doctest docs/specs/courses.rst
-.. _welfare.specs.xcourses:
+.. doctest docs/specs/welfare/courses.rst
+.. _welfare.specs.courses2:
 
-================
-External courses
-================
+=======================
+``courses`` : Workshops
+=======================
 
-.. doctest init:
-    
-    >>> from lino import startup
-    >>> startup('lino_book.projects.gerd.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> ses = settings.SITE.login('rolf')
+This is about *internal* courses
+(:mod:`lino_welfare.chatelet.lib.courses`), not
+:doc:`xcourses`.
 
 
 .. contents:: 
     :local:
     :depth: 1
 
+.. include:: /include/tested.rst
 
-This is about *external* courses
-:mod:`lino_welfare.modlib.xcourses.models` (not :doc:`courses2`).
+>>> from lino import startup
+>>> startup('lino_book.projects.mathieu.settings.doctests')
+>>> from lino.api.doctest import *
 
->>> rt.models.xcourses.__name__
-'lino_welfare.modlib.xcourses.models'
+>>> dd.plugins.courses
+lino_welfare.chatelet.lib.courses (extends_models=['Course', 'Line', 'Enrolment'])
 
-Requesting for JSON data
-========================
+We call them "workshops":
 
->>> json_fields = 'count rows title success no_data_text param_values'
->>> kw = dict(fmt='json', limit=10, start=0)
->>> demo_get('rolf', 'api/xcourses/CourseProviders', json_fields, 3, **kw)
+>>> with translation.override('en'):
+...     print(dd.plugins.courses.verbose_name)
+Workshops
 
->>> json_fields = 'count rows title success no_data_text'
->>> demo_get('rolf', 'api/xcourses/CourseOffers', json_fields, 4, **kw)
-
->>> ContentType = rt.models.contenttypes.ContentType
->>> json_fields = 'count rows title success no_data_text param_values'
->>> demo_get('rolf', 'api/xcourses/PendingCourseRequests', json_fields, 20, **kw)
+>>> with translation.override('fr'):
+...     print(dd.plugins.courses.verbose_name)
+Ateliers
 
 
-Course providers
-================
-
->>> ses.show(xcourses.CourseProviders)
-======= ============ ================ ========= ===== ===== =========
- Name    Adresse      E-Mail-Adresse   Telefon   GSM   ID    Sprache
-------- ------------ ---------------- --------- ----- ----- ---------
- KAP     4700 Eupen                                    231
- Oikos   4700 Eupen                                    230
-======= ============ ================ ========= ===== ===== =========
+>>> rt.show(rt.models.courses.Activities)
+============ ============= ============================= ============= ======= ===============
+ Date début   Désignation   Série d'ateliers              Instructeur   Local   Workflow
+------------ ------------- ----------------------------- ------------- ------- ---------------
+ 12/05/2014                 Cuisine                                             **Brouillon**
+ 12/05/2014                 Créativité                                          **Brouillon**
+ 12/05/2014                 Notre premier bébé                                  **Brouillon**
+ 12/05/2014                 Mathématiques                                       **Brouillon**
+ 12/05/2014                 Français                                            **Brouillon**
+ 12/05/2014                 Activons-nous!                                      **Brouillon**
+ 03/11/2013                 Intervention psycho-sociale                         **Brouillon**
+============ ============= ============================= ============= ======= ===============
 <BLANKLINE>
 
-Course offers
+>>> print(rt.models.courses.Courses.params_layout.main)
+topic line user teacher state 
+    room can_enroll:10 start_date end_date show_exposed
+
+>>> demo_get('robin', 'choices/courses/Courses/topic', 'count rows', 0)
+>>> demo_get('robin', 'choices/courses/Courses/teacher', 'count rows', 102)
+>>> demo_get('robin', 'choices/courses/Courses/user', 'count rows', 12)
+
+Yes, the demo database has no topics defined:
+
+>>> rt.show(rt.models.courses.Topics)
+No data to display
+
+
+>>> course = rt.models.courses.Course.objects.get(pk=1)
+>>> print(course)
+Kitchen (12/05/2014)
+
+>>> # rt.show(rt.models.cal.EntriesByController, course)
+>>> ar = rt.models.cal.EntriesByController.request(master_instance=course)
+>>> rt.show(ar)
+========================== =================== ================= ======== =================
+ When                       Short description   Managed by        No.      Workflow
+-------------------------- ------------------- ----------------- -------- -----------------
+ *Mon 16/06/2014 (08:00)*   5                   Hubert Huppertz   5        **? Suggested**
+ *Mon 02/06/2014 (08:00)*   4                   Hubert Huppertz   4        **? Suggested**
+ *Mon 26/05/2014 (08:00)*   3                   Hubert Huppertz   3        **? Suggested**
+ *Mon 19/05/2014 (08:00)*   2                   Hubert Huppertz   2        **? Suggested**
+ *Mon 12/05/2014 (08:00)*   1                   Hubert Huppertz   1        **? Suggested**
+ **Total (5 rows)**                                               **15**
+========================== =================== ================= ======== =================
+<BLANKLINE>
+
+
+>>> event = ar[4]
+>>> print(event)
+ 1 (12.05.2014 08:00)
+
+>>> rt.show(rt.models.cal.GuestsByEvent, event)
+===================== ========= ============= ========
+ Partner               Role      Workflow      Remark
+--------------------- --------- ------------- --------
+ Bastiaensen Laurent   Visitor   **Invited**
+ Denon Denis           Visitor   **Invited**
+ Dericum Daniel        Visitor   **Invited**
+ Emonts-Gast Erna      Visitor   **Invited**
+ Faymonville Luc       Visitor   **Invited**
+ Gernegroß Germaine    Visitor   **Invited**
+ Jacobs Jacqueline     Visitor   **Invited**
+ Jonas Josef           Visitor   **Invited**
+ Kaivers Karl          Visitor   **Invited**
+ Laschet Laura         Visitor   **Invited**
+ Radermacher Hedi      Visitor   **Invited**
+===================== ========= ============= ========
+<BLANKLINE>
+
+
+
+>>> with translation.override('fr'):
+...   show_fields(rt.models.courses.Course, 'start_date end_date')
++---------------+--------------+------------------------------------------------------------+
+| Internal name | Verbose name | Help text                                                  |
++===============+==============+============================================================+
+| start_date    | Date début   | La date (de début) de la première rencontre à générer.     |
++---------------+--------------+------------------------------------------------------------+
+| end_date      | Date de fin  | La date de fin de la première rencontre à générer.         |
+|               |              | Laisser vide si les rencontres durent moins d'une journée. |
++---------------+--------------+------------------------------------------------------------+
+
+
+Don't read on
 =============
 
->>> ses.show(xcourses.CourseOffers)
-==== ========================= =========== ============= ============== ==============
- ID   Name                      Gastrolle   Kursinhalt    Kursanbieter   Beschreibung
----- ------------------------- ----------- ------------- -------------- --------------
- 1    Deutsch für Anfänger                  Deutsch       Oikos
- 2    Deutsch für Anfänger                  Deutsch       KAP
- 3    Français pour débutants               Französisch   KAP
-==== ========================= =========== ============= ============== ==============
-<BLANKLINE>
+Verify that users can create new courses:
 
->>> ses.show(xcourses.CourseRequests)  #doctest: +ELLIPSIS
-==== ============================= ============= ============= ============== ============================== ========= =============== =========== ==========
- ID   Klient                        Kursangebot   Kursinhalt    Anfragedatum   professionelle Eingliederung   Zustand   Kurs gefunden   Bemerkung   Enddatum
----- ----------------------------- ------------- ------------- -------------- ------------------------------ --------- --------------- ----------- ----------
- 20   RADERMACHER Edgard (157)                    Französisch   14.04.14       Nein                           Offen
- 19   RADERMACHER Christian (155)                 Deutsch       16.04.14       Nein                           Offen
- 18   RADERMACHER Alfons (153)                    Französisch   18.04.14       Nein                           Offen
- ...
- 2    COLLARD Charlotte (118)                     Französisch   20.05.14       Nein                           Offen
- 1    AUSDEMWALD Alfons (116)                     Deutsch       22.05.14       Nein                           Offen
-==== ============================= ============= ============= ============== ============================== ========= =============== =========== ==========
-<BLANKLINE>
-
-
-
-catch_layout_exceptions
-=======================
-
-Some general documentation about `catch_layout_exceptions`. 
-This should rather be somewhere in the general Lino documentation, 
-probably in :ref:`layouts_tutorial`,
-but this document isn't yet tested, so we do it here.
-
-This setting tells Lino what to do when it encounters a wrong
-fieldname in a layout specification.  It will anyway raise an
-Exception, but the difference is is the content of the error message.
-
-The default value for this setting is True.
-In that case the error message reports only a summary of the 
-original exception and tells you in which layout it happens.
-Because that's your application code and probably the place where
-the bug is hidden.
-
-For example:
-
->>> ses.show(xcourses.PendingCourseRequests,
-...      column_names="personX content urgent address person.coachings")
-Traceback (most recent call last):
-  ...
-Exception: lino.core.layouts.ColumnsLayout on lino_welfare.modlib.xcourses.models.PendingCourseRequests has no data element 'personX'
-
-
->>> ses.show(xcourses.PendingCourseRequests,
-...      column_names="person__foo content urgent address person.coachings")
-Traceback (most recent call last):
-  ...
-Exception: lino.core.layouts.ColumnsLayout on lino_welfare.modlib.xcourses.models.PendingCourseRequests has no data element 'person__foo (Invalid RemoteField pcsw.Client.person__foo (no field foo in pcsw.Client))'
-
-
->>> ses.show(xcourses.PendingCourseRequests,
-...      column_names="person content urgent address person__foo")
-Traceback (most recent call last):
-  ...
-Exception: lino.core.layouts.ColumnsLayout on lino_welfare.modlib.xcourses.models.PendingCourseRequests has no data element 'person__foo (Invalid RemoteField pcsw.Client.person__foo (no field foo in pcsw.Client))'
-
->>> settings.SITE.catch_layout_exceptions = False
->>> ses.show(xcourses.PendingCourseRequests,
-...      column_names="person content urgent address person__foo")
-Traceback (most recent call last):
-  ...
-Exception: Invalid RemoteField pcsw.Client.person__foo (no field foo in pcsw.Client)
-
-
-Changed since 20130422
-======================
-
-Yes it was a nice feature to silently ignore non installed app_labels
-but mistakenly specifying "person.first_name" instead of
-"person__first_name" did not raise an error. Now it does:
-
->>> ses.show(xcourses.PendingCourseRequests,
-...      column_names="person.first_name content urgent address")
-Traceback (most recent call last):
-  ...
-Exception: lino.core.layouts.ColumnsLayout on lino_welfare.modlib.xcourses.models.PendingCourseRequests has no data element 'person.first_name'
-
-And then the following example failed because Lino simply wasn't yet 
-able to render RemoteFields as rst.
-
->>> with translation.override('fr'):
-...    ses.show(xcourses.PendingCourseRequests, limit=5,
-...       column_names="person__first_name content urgent address")
-=========== ============= ======================= =================================
- Prénom      Contenu       cause professionnelle   Adresse
------------ ------------- ----------------------- ---------------------------------
- Edgard      Französisch   Non                     4730 Raeren
- Christian   Deutsch       Non                     4730 Raeren
- Alfons      Französisch   Non                     4730 Raeren
- Erna        Deutsch       Non                     4730 Raeren
- Melissa     Französisch   Non                     Herbesthaler Straße, 4700 Eupen
-=========== ============= ======================= =================================
-<BLANKLINE>
-
-The virtual field `dsbe.Client.coachings` shows all active coachings
-of a client:
-
->>> with translation.override('fr'):
-...    ses.show(xcourses.PendingCourseRequests,limit=5,
-...      column_names="person content person__coaches")
-============================= ============= ==================================================
- Bénéficiaire                  Contenu       Intervenants
------------------------------ ------------- --------------------------------------------------
- RADERMACHER Edgard (157)      Französisch   Hubert Huppertz, Mélanie Mélard, Alicia Allmanns
- RADERMACHER Christian (155)   Deutsch       Caroline Carnol, Mélanie Mélard
- RADERMACHER Alfons (153)      Französisch   Mélanie Mélard
- EMONTS-GAST Erna (152)        Deutsch       Alicia Allmanns, Hubert Huppertz
- MEESSEN Melissa (147)         Französisch   Hubert Huppertz, Mélanie Mélard
-============================= ============= ==================================================
-<BLANKLINE>
-
-The last column `coachings` ("Interventants") is also a new feature:
-it is a RemoteField pointing to a VirtualField. 
+>>> url = '/api/courses/MyCourses?an=insert'
+>>> response = test_client.get(url, REMOTE_USER='romain')
+>>> response.status_code
+200
 
