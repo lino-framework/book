@@ -5,17 +5,28 @@
 Database structure in Lino Tera
 ===============================
 
-.. doctest init:
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
-
+>>> import lino
+>>> lino.startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
 
 
+Complexity factors
+==================
 
-The database structure
-======================
+>>> print(analyzer.show_complexity_factors())
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- 43 plugins
+- 94 models
+- 22 user roles
+- 4 user types
+- 354 views
+- 26 dialog actions
+<BLANKLINE>
+
+
+The database models
+===================
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
@@ -53,8 +64,8 @@ The database structure
  contenttypes.ContentType    gfks.ContentTypes              3         93
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             44        52
- courses.Enrolment           courses.Enrolments             17        78
+ courses.Course              courses.Activities             43        52
+ courses.Enrolment           courses.Enrolments             16        78
  courses.Line                courses.Lines                  25        3
  courses.PriceRule           courses.PriceRules             8         2
  courses.Slot                courses.Slots                  5         0
@@ -166,7 +177,8 @@ behaviour. See also :doc:`/dev/delete`.
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
-  - PROTECT : cal.Event.project, cal.Task.project, courses.Enrolment.course, excerpts.Excerpt.project, invoicing.Plan.course, notes.Note.project, topics.Interest.partner
+  - CASCADE : topics.Interest.partner
+  - PROTECT : cal.Event.project, cal.Task.project, courses.Enrolment.course, excerpts.Excerpt.project, invoicing.Plan.course, notes.Note.project
 - courses.Line :
   - PROTECT : courses.Course.line
 - courses.Slot :
@@ -216,7 +228,7 @@ behaviour. See also :doc:`/dev/delete`.
 - notes.NoteType :
   - PROTECT : notes.Note.type
 - products.Product :
-  - PROTECT : courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, courses.PriceRule.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.cash_daybook
+  - PROTECT : courses.Enrolment.option, courses.Line.fee, courses.PriceRule.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.cash_daybook
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :

@@ -13,7 +13,6 @@ General overview of Lino Avanti
 
 The goal of Lino Avanti is 
 
-
 .. contents::
   :local:
 

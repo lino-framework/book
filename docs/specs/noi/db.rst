@@ -1,9 +1,11 @@
 .. doctest docs/specs/noi/db.rst
 .. _noi.specs.db:
 
-======================
-The database structure
-======================
+===========================
+Lino Noi database structure
+===========================
+
+This document describes the database structure.
 
 ..  doctest init:
 
@@ -11,7 +13,28 @@ The database structure
     >>> lino.startup('lino_book.projects.team.settings.doctests')
     >>> from lino.api.doctest import *
 
-This document describes the database structure.
+.. contents::
+  :local:
+
+
+
+
+Complexity factors
+==================
+
+>>> print(analyzer.show_complexity_factors())
+- 42 plugins
+- 61 models
+- 19 user roles
+- 7 user types
+- 218 views
+- 14 dialog actions
+<BLANKLINE>
+
+
+The database models
+===================
+
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())

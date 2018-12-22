@@ -13,10 +13,12 @@ Database structure of Lino Avanti
 
 This document describes the database structure.
 
->>> from lino.utils.diag import analyzer
->>> print(analyzer.show_db_overview())
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
+.. contents::
+  :local:
 
+
+Complexity factors
+==================
 
 
 >>> print(analyzer.show_complexity_factors())
@@ -28,4 +30,14 @@ This document describes the database structure.
 - 290 views
 - 22 dialog actions
 <BLANKLINE>
+
+The database models
+===================
+
+
+>>> from lino.utils.diag import analyzer
+>>> print(analyzer.show_db_overview())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
+
+
 

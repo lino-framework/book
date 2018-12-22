@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 import logging
 logger = logging.getLogger('lino.management.commands.dump2py')
 
-SOURCE_VERSION = '18.11.0'
+SOURCE_VERSION = '18.12.0'
 
 import os
 import six
@@ -820,7 +820,7 @@ def create_checkdata_problem(id, owner_type_id, owner_id, user_id, checker, mess
     kw.update(message=message)
     return checkdata_Problem(**kw)
 
-def create_courses_course(id, modified, ref, start_date, start_time, end_date, end_time, healthcare_plan_id, user_id, every_unit, every, monday, tuesday, wednesday, thursday, friday, saturday, sunday, max_events, room_id, max_date, line_id, teacher_id, slot_id, description, remark, state, max_places, name, enrolments_until, tariff_id, fee_id, payment_term_id, procurer_id, mandatory, ending_reason, partner_tariff, translator_type, therapy_domain, team_id, partner_id, paper_type_id):
+def create_courses_course(id, modified, ref, start_date, start_time, end_date, end_time, healthcare_plan_id, user_id, every_unit, every, monday, tuesday, wednesday, thursday, friday, saturday, sunday, max_events, room_id, max_date, line_id, teacher_id, slot_id, description, remark, state, max_places, name, enrolments_until, tariff_id, payment_term_id, procurer_id, mandatory, ending_reason, partner_tariff, translator_type, therapy_domain, team_id, partner_id, paper_type_id):
 #    if every_unit: every_unit = settings.SITE.models.cal.Recurrencies.get_by_value(every_unit)
 #    if state: state = settings.SITE.models.courses.CourseStates.get_by_value(state)
 #    if ending_reason: ending_reason = settings.SITE.models.courses.EndingReasons.get_by_value(ending_reason)
@@ -859,7 +859,6 @@ def create_courses_course(id, modified, ref, start_date, start_time, end_date, e
     kw.update(name=name)
     kw.update(enrolments_until=enrolments_until)
     kw.update(tariff_id=tariff_id)
-    kw.update(fee_id=fee_id)
     kw.update(payment_term_id=payment_term_id)
     kw.update(procurer_id=procurer_id)
     kw.update(mandatory=mandatory)
@@ -974,7 +973,7 @@ def create_excerpts_excerpt(id, project_id, build_time, build_method, owner_type
     kw.update(language=language)
     return excerpts_Excerpt(**kw)
 
-def create_courses_enrolment(id, start_date, end_date, printed_by_id, user_id, course_area, course_id, pupil_id, request_date, state, places, option_id, remark, confirmation_details, tariff_id, guest_role_id, fee_id):
+def create_courses_enrolment(id, start_date, end_date, printed_by_id, user_id, course_area, course_id, pupil_id, request_date, state, places, option_id, remark, confirmation_details, tariff_id, guest_role_id):
 #    if course_area: course_area = settings.SITE.models.courses.CourseAreas.get_by_value(course_area)
 #    if state: state = settings.SITE.models.courses.EnrolmentStates.get_by_value(state)
     kw = dict()
@@ -994,7 +993,6 @@ def create_courses_enrolment(id, start_date, end_date, printed_by_id, user_id, c
     kw.update(confirmation_details=confirmation_details)
     kw.update(tariff_id=tariff_id)
     kw.update(guest_role_id=guest_role_id)
-    kw.update(fee_id=fee_id)
     return courses_Enrolment(**kw)
 
 def create_invoicing_plan(id, user_id, today, journal_id, max_date, partner_id, course_id):
