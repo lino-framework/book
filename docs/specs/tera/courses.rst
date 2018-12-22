@@ -43,22 +43,20 @@ The detail view of a therapy
 - **General** (general):
   - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Division** (team)
   - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line)
-  - (enrolments_top): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
+  - (general_3): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
   - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
 - **Therapy** (therapy):
   - (therapy_1): **Therapy domain** (therapy_domain), **Procurer** (procurer), **Mandatory** (mandatory), **Translator type** (translator_type)
-  - **Ending reason** (ending_reason)
+  - (therapy_2): **Healthcare plan** (healthcare_plan), **Ending reason** (ending_reason)
   - (therapy_3) [visible for therapist admin]: **Interests** (topics_InterestsByPartner), **Notes** (notes_NotesByProject)
 - **Appointments** (calendar):
   - (calendar_1): **Recurrency** (every_unit), **Repeat every** (every), **Generate events until** (max_date), **Number of events** (max_events)
   - (calendar_2): **Room** (room), **Start date** (start_date), **End Date** (end_date), **Start time** (start_time), **End Time** (end_time)
   - (calendar_3): **Monday** (monday), **Tuesday** (tuesday), **Wednesday** (wednesday), **Thursday** (thursday), **Friday** (friday), **Saturday** (saturday), **Sunday** (sunday)
   - **Calendar entries** (courses_EntriesByCourse) [visible for secretary therapist admin]
-- **Invoicing** (invoicing):
-  - (invoicing_1): **Healthcare plan** (healthcare_plan), **Flatrate** (tariff)
-  - (invoicing_2) [visible for secretary therapist admin]:
-    - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
-    - **Existing excerpts** (excerpts_ExcerptsByProject)
+- **Invoicing** (invoicing_2) [visible for secretary therapist admin]:
+  - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
+  - **Existing excerpts** (excerpts_ExcerptsByProject)
 - **More** (more):
   - **Remark** (remark)
   - **Tasks** (cal.TasksByProject) [visible for secretary therapist admin]
