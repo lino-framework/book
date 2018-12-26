@@ -31,7 +31,15 @@ Which means that code examples in this document use the
 Dependencies
 ============
 
-The appy.pod build methods require a running LibreOffice server (see
+A site that uses the :mod:`lino_xl.lib.appypod` plugin must also have appy installed::
+
+    $ pip install appy
+
+On Python 3 the installation is less trivial::
+
+   pip install svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
+
+The appypod build methods require a running LibreOffice server (see
 :ref:`admin.oood`).  While this might refrain you from using them,
 they has several advantages compared to the built-in methods
 :class:`WeasyBuildMethod
