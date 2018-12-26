@@ -42,21 +42,19 @@ Additional build methods:
 
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE
-============= ============= ======================
- value         name          text
-------------- ------------- ----------------------
- latex         latex         LatexBuildMethod
- pisa          pisa          PisaBuildMethod
- rtf           rtf           RtfBuildMethod
- xml           xml           XmlBuildMethod
- weasy2html    weasy2html    WeasyHtmlBuildMethod
- weasy2pdf     weasy2pdf     WeasyPdfBuildMethod
- wkhtmltopdf   wkhtmltopdf   WkBuildMethod
- appyodt       appyodt       AppyOdtBuildMethod
- appydoc       appydoc       AppyDocBuildMethod
- appypdf       appypdf       AppyPdfBuildMethod
- appyrtf       appyrtf       AppyRtfBuildMethod
-============= ============= ======================
+============ ============ ======================
+ value        name         text
+------------ ------------ ----------------------
+ latex        latex        LatexBuildMethod
+ rtf          rtf          RtfBuildMethod
+ xml          xml          XmlBuildMethod
+ weasy2html   weasy2html   WeasyHtmlBuildMethod
+ weasy2pdf    weasy2pdf    WeasyPdfBuildMethod
+ appyodt      appyodt      AppyOdtBuildMethod
+ appydoc      appydoc      AppyDocBuildMethod
+ appypdf      appypdf      AppyPdfBuildMethod
+ appyrtf      appyrtf      AppyRtfBuildMethod
+============ ============ ======================
 <BLANKLINE>
 
 

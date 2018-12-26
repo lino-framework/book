@@ -1,19 +1,20 @@
+.. doctest docs/admin/printing.rst
 .. _lino.admin.printing:
 
 ===================================
 Introduction to printing
 ===================================
 
-.. How to test only this document:
+.. contents::
+  :local:
 
-     $ python doctest docs/admin/printing.rst
 
-   Initialize doctest:
+.. include:: /include/tested.rst
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.docs.settings.doctests')
-    >>> from lino.api.shell import *
-    >>> from lino.api.doctest import *
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
+>>> from lino.api.shell import *
+>>> from lino.api.doctest import *
     
 
 .. currentmodule:: lino.modlib.printing
@@ -39,7 +40,7 @@ End-users see a printable document by invoking the Print button on a
 mixin).
 
 Lino applications can decide to use printable documents in other ways
-that showing them to your browser, e.g.  attach them to an email, or
+than showing them to your browser, e.g.  attach them to an email, or
 send them directly from the application server to a printer in a local
 area network.
 
@@ -73,21 +74,25 @@ Here is what happens when a user invokes the :attr:`do_print
 Build methods
 =============
 
-Lino comes with a series of "build methods".  You can imagine a build
-method as a kind of "driver" who generates ("builds") printable
-documents from a template.
+Lino comes with a series of "build methods".  You can imagine a build method as
+a kind of "driver" who generates ("builds") printable documents from a
+template.
 
 >>> rt.show(printing.BuildMethods)
-======= ======= ==================
- value   name    text
-------- ------- ------------------
- latex   latex   LatexBuildMethod
- pisa    pisa    PisaBuildMethod
- rtf     rtf     RtfBuildMethod
- xml     xml     XmlBuildMethod
-======= ======= ==================
+============ ============ ======================
+ value        name         text
+------------ ------------ ----------------------
+ latex        latex        LatexBuildMethod
+ rtf          rtf          RtfBuildMethod
+ xml          xml          XmlBuildMethod
+ weasy2html   weasy2html   WeasyHtmlBuildMethod
+ weasy2pdf    weasy2pdf    WeasyPdfBuildMethod
+ appyodt      appyodt      AppyOdtBuildMethod
+ appydoc      appydoc      AppyDocBuildMethod
+ appypdf      appypdf      AppyPdfBuildMethod
+ appyrtf      appyrtf      AppyRtfBuildMethod
+============ ============ ======================
 <BLANKLINE>
-
 
 
 Template engines
