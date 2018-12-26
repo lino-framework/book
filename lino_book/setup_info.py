@@ -19,7 +19,7 @@ install_requires = [
         'icalendar',
         'vobject',
         # 'eidreader',
-        'social-auth-app-django',
+        'social-auth-ap-django',
         'lino_cosi',
         'lino_noi',
         'lino_voga',
