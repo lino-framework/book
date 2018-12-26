@@ -14,6 +14,8 @@ class Site(Site):
 
     demo_fixtures = """std demo demo2 checkdata""".split()
 
+    default_build_method = 'weasy2pdf'
+
     # def setup_plugins(self):
     #     super(Site, self).setup_plugins()
     #     self.plugins.comments.configure(
@@ -38,7 +40,8 @@ class Site(Site):
         yield 'lino_xl.lib.dupable_partners'
         yield 'lino.modlib.checkdata'
         yield 'lino.modlib.tinymce'
-        yield 'lino.modlib.wkhtmltopdf'
+        # yield 'lino.modlib.wkhtmltopdf'
+        yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
         yield 'lino.modlib.notify'
         yield 'lino.modlib.changes'

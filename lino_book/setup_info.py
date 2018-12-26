@@ -13,6 +13,7 @@ PY3 = sys.version_info[0] == 3
 
 install_requires = [
         'Sphinx', 'lino', 'selenium','mock',
+        'pisa', 'django-wkhtmltopdf',
         'django-iban', 'metafone',
         'djangorestframework', 'bleach', 'radicale==1.1.2',
         'icalendar',

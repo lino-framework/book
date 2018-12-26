@@ -4,16 +4,10 @@
 Installing Lino
 ===============
 
-Note that the installation process described below is currently being tested.
-No guarantee.  Until we are done, you might prefer the instructions about
-:doc:`/dev/install`.
-
-This document explains how to install Lino on your machine in order to
-write applications.  If you prefer using the latest version, then you
-should rather follow :doc:`/dev/install`.
-
-For deploying Lino applications on a production site you will read
-:doc:`/admin/install`.
+This document explains how to install Lino on your machine in order to write
+applications.  If you prefer using the latest version, then you should rather
+follow :doc:`/dev/install`. For deploying Lino applications on a production
+site you will read :doc:`/admin/install`.
 
 Basically you open a terminal and type::
 
@@ -21,20 +15,25 @@ Basically you open a terminal and type::
     $ . env/bin/activate
     $ pip install lino_cosi
 
-This takes some time.
-
-Now we create a local project::
+Then create a local project::
     
     $ mkdir mylino
     $ touch mylino/__init__.py
-    $ echo "from lino_cosi.lib.cosi.settings import *" > mylino/settings.py
-    $ echo "SITE = Site(globals())" >> mylino/settings.py
-    $ echo "DEBUG = True" >> mylino/settings.py
+    $ nano mylino/settings.py
 
-Then we initialize and populate the demo database::
-  
+Add the following  content to your :xfile:`settings.py` file::
+
+    from lino_cosi.lib.cosi.settings import *
+    SITE = Site(globals())
+    DEBUG = True
+
+Tell Django and Python to use your settings::
+
     $ export DJANGO_SETTINGS_MODULE=mylino.settings
     $ export PYTHONPATH=.
+
+Then initialize and populate the demo database::
+  
     $ django-admin prep
 
 And finally we launch a development server::

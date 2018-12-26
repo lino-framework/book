@@ -24,6 +24,8 @@ class Site(Site):
 
     user_types_module = 'lino_xl.lib.xl.user_types'
 
+    default_build_method = 'weasy2pdf'
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
 
@@ -70,7 +72,8 @@ class Site(Site):
         yield 'lino_xl.lib.concepts'
         yield 'lino_xl.lib.pages'
         # yield 'lino_xl.lib.beid'
-        yield 'lino.modlib.wkhtmltopdf'
+        # yield 'lino.modlib.wkhtmltopdf'
+        yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
 
         yield 'lino.modlib.tinymce'
