@@ -1,9 +1,9 @@
 .. doctest docs/specs/cal.rst
 .. _book.specs.cal:
 
-===============================
-``cal``: Calendar functionality
-===============================
+================================
+``cal`` : Calendar functionality
+================================
 
 .. currentmodule:: lino_xl.lib.cal
 
@@ -19,6 +19,8 @@ The :mod:`lino_xl.lib.cal` adds calendar functionality.
 >>> from lino import startup
 >>> startup('lino_book.projects.adg.settings.demo')
 >>> from lino.api.doctest import *
+
+
 
 Overview
 =========
@@ -1379,4 +1381,16 @@ Data checkers
 .. function:: check_subscription(user, calendar)
 
     Check whether the given subscription exists. If not, create it.
+
+
+Don't read on
+=============
               
+>>> cal.Days
+lino_xl.lib.cal.models.Days
+
+>>> print(cal.Days.column_names)
+day_number long_date detail_pointer *
+
+>>> cal.Days.get_data_elem('detail_pointer')
+lino_xl.lib.cal.models.Days.detail_pointer

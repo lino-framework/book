@@ -5,15 +5,8 @@
 Virtual tables
 ==============
 
-..
-    >>> from lino import startup
-    >>> startup('lino_book.projects.vtables.settings')
-    >>> from lino.api.doctest import *
-    
-
-A virtual table is a table which which is not connected to any
-database model.  Which means that you are responsible for defining
-that data.
+A virtual table is a table that is not connected to any database model.  Which
+means that you are responsible for defining that data.
 
 The **rows** of a virtual table are defined by a method
 :meth:`get_data_rows <lino.core.tables.AbstractTable.get_data_rows>`.
@@ -30,7 +23,24 @@ Here is an example of a virtual table (taken from the
 .. literalinclude:: ../../lino_book/projects/vtables/models.py
 
 We can show this table in a shell session:
-  
+
+>>> from lino import startup
+>>> startup('lino_book.projects.vtables.settings')
+>>> from lino.api.doctest import *
+
+>>> rt.show(vtables.Cities)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
+========= =========
+ Country   City
+--------- ---------
+ Belgium   Eupen
+ Belgium   Liege
+ Belgium   Raeren
+ Estonia   Tallinn
+ Estonia   Vigala
+========= =========
+<BLANKLINE>
+
 >>> rt.show(vtables.CitiesAndInhabitants)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ========= ========= ============

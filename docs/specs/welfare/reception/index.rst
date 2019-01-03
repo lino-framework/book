@@ -136,7 +136,7 @@ EVERS Eberhart (127)
 
 >>> rt.login('romain').show(reception.AgentsByClient, obj, language='en')
 ================= =============== =========================
- Coach             Coaching type   Actions
+ Agent             Coaching type   Actions
 ----------------- --------------- -------------------------
  Hubert Huppertz   General         **Visit** **Find date**
  Caroline Carnol   Integ           **Visit** **Find date**
@@ -157,7 +157,7 @@ BRAUN Bruno (259)
 
 >>> rt.login('romain').show(reception.AgentsByClient, obj, language='en')
 ================= =============== =========================
- Coach             Coaching type   Actions
+ Agent             Coaching type   Actions
 ----------------- --------------- -------------------------
  Alicia Allmanns   Integ           **Visit** **Find date**
  Caroline Carnol   General         **Visit** **Find date**
@@ -522,7 +522,7 @@ during :func:`lino.utils.jsgen.py2js`:
 ...     print(py2js(lh.main.elements))
 >>> with_user_profile(theresia.user_type, f)
 ... #doctest: +NORMALIZE_WHITESPACE
-[ general_panel1040, contact_panel1068, coaching_panel1302, aids_tab_panel1418, work_tab_1_panel1446, contracts_panel2207, history_panel2210, calendar_panel2292, misc_panel2334 ]
+[ general_panel1047, contact_panel1074, coaching_panel1303, aids_tab_panel1418, work_tab_1_panel1446, contracts_panel2193, history_panel2196, calendar_panel2276, misc_panel2317 ]
 
 I can even render the :file:`lino*.js` files (at least once):
 

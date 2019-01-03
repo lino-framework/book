@@ -10,6 +10,7 @@ from ..settings import *
 class Site(Site):
     the_demo_date = datetime.date(2015, 5, 23)
     languages = "en de fr"
+    use_ipdict = True
 
     # legacy_data_path = '...'
 

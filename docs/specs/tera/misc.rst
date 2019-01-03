@@ -1,4 +1,4 @@
-.. doctest docs/specs/tera/misc.rst
+    .. doctest docs/specs/tera/misc.rst
 .. _tera.specs.misc:
 .. _presto.specs.psico:
 
@@ -126,7 +126,7 @@ Internal details
 The following shows that :ticket:`1975` is a duplicate of
 :ticket:`492`:
 
->>> a = rt.models.ana.InvoicesByJournal.actions.get('wf1')
+>>> a = rt.models.ana.InvoicesByJournal._actions_dict.get('wf1')
 >>> a.action.auto_save
 True
 

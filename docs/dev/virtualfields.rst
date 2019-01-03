@@ -30,7 +30,7 @@ Reference
 Some entries to the API:
 
 - :class:`lino.core.fields.VirtualField`
-- :class:`lino.cutils.mti.EnableChild`
+- :class:`lino.utils.mti.EnableChild`
 - :attr:`lino.core.model.Model.workflow_buttons`
 - `dd.virtualfield`, `dd.displayfield` etc
 

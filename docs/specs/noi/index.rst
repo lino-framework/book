@@ -33,6 +33,7 @@ This section contains specs for :ref:`noi`.
     github
     stars
     sql
+    cal
    
 
 

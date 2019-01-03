@@ -126,6 +126,21 @@ Worked hours
 
 >>> rt.login('jean').show(working.WorkedHours)
 ... #doctest: -REPORT_UDIFF
+============================= ================= ========== ========== ====== ==========
+ Description                   Worked tickets    Regular    Extra      Free   Total
+----------------------------- ----------------- ---------- ---------- ------ ----------
+ `Sat 23/05/2015 <Detail>`__   `#1 <Detail>`__   0:01                         0:01
+ `Fri 22/05/2015 <Detail>`__   `#2 <Detail>`__   2:18                         2:18
+ `Thu 21/05/2015 <Detail>`__                                                  0:00
+ `Wed 20/05/2015 <Detail>`__   `#3 <Detail>`__              1:30              1:30
+ `Tue 19/05/2015 <Detail>`__   `#4 <Detail>`__   0:10                         0:10
+ `Mon 18/05/2015 <Detail>`__                                                  0:00
+ `Sun 17/05/2015 <Detail>`__                                                  0:00
+ **Total (7 rows)**                              **2:29**   **1:30**          **3:59**
+============================= ================= ========== ========== ====== ==========
+<BLANKLINE>
+
+.. before 20190101:
 ====================================== ========== ========== ====== ==========
  Description                            Regular    Extra      Free   Total
 -------------------------------------- ---------- ---------- ------ ----------
@@ -164,7 +179,6 @@ started some days ago.
     >>> json.loads(res.content.decode()) == {'open_url': '/bs3/working/WorkedHours?limit=15', 'success': True}
     True
 
-
     The html version of this table table has only 5 rows (4 data rows and
     the total row) because valueless rows are not included by default:
 
@@ -177,7 +191,7 @@ started some days ago.
     7
     >>> e = ar.table2xhtml()
     >>> len(e.findall('./tbody/tr'))
-    5
+    8
 
 
 

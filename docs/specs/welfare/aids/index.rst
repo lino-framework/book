@@ -433,7 +433,7 @@ There are two grantings with this aid type:
 
 >>> rt.show(aids.GrantingsByType, at)
 ==================== ==================== ============== ========== ====
- Details              Klient               Laufzeit von   bis        ID
+ Hilfebeschluss       Klient               Laufzeit von   bis        ID
 -------------------- -------------------- -------------- ---------- ----
  *AMK/27.05.14/139*   JONAS Josef (139)    27.05.14       26.06.14   44
  *AMK/27.05.14/141*   KAIVERS Karl (141)   27.05.14       27.05.14   45
@@ -652,9 +652,9 @@ The detail of a Granting shows a list of the confirmations which have
 been issued for this granting.
 
 >>> obj = aids.Granting.objects.get(pk=mk)
->>> rt.show(aids.ConfirmationsByGranting, obj, column_names="detail_pointer user signer printed")
+>>> rt.show(aids.ConfirmationsByGranting, obj, column_names="detail_link user signer printed")
 ======================= ================ ================ =============
- Details                 Autor            Bestätiger       Ausgedruckt
+ Bestätigung             Autor            Bestätiger       Ausgedruckt
 ----------------------- ---------------- ---------------- -------------
  *EiEi/09.10.12/124/4*   Judith Jousten   Mélanie Mélard
 ======================= ================ ================ =============
@@ -663,9 +663,8 @@ been issued for this granting.
 The above was written to reproduce :ticket:`685`.
 
 
-
-The board field of a Granting has a chooser which takes an argument of
-type date.
+The board field of a granting has a chooser which takes an argument of type
+date.
 
 >>> show_choices('rolf', '/choices/aids/GrantingsByClient/board?decision_date=')
 <br/>
@@ -720,7 +719,7 @@ Some preliminary tests, just to see whether we are at the right place:
 Client #116 ('AUSDEMWALD Alfons (116)')
 >>> rt.login('robin').show(aids.GrantingsByClient, obj, language="en")
 =============================================== ============== ======= ================= ======================== =================== =========================
- Details                                         Applies from   until   Signer            Workflow                 Board               Actions
+ Aid granting                                    Applies from   until   Signer            Workflow                 Board               Actions
 ----------------------------------------------- -------------- ------- ----------------- ------------------------ ------------------- -------------------------
  `EiEi/22/05/2014/116 <Detail>`__                22/05/2014             Caroline Carnol   [Sign] **Unconfirmed**   Social Board (SB)   **Create confirmation**
  `Ausländerbeihilfe/08/08/2013/116 <Detail>`__   08/08/2013             Caroline Carnol   [Sign] **Unconfirmed**                       **Create confirmation**
