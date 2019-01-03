@@ -16,17 +16,14 @@ To run only this test::
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.utils import translation
 from django.core.exceptions import ValidationError
-
-from lino.utils.djangotest import RemoteAuthTestCase
+from django.utils import translation
 
 from lino.api import dd, rt
-
-from lino.utils.instantiator import create_and_get, create_row
-
-from lino_xl.lib.contacts import models as contacts
 from lino.modlib.users.choicelists import UserTypes
+from lino.utils.djangotest import RemoteAuthTestCase
+from lino.utils.instantiator import create_and_get
+from lino_xl.lib.contacts import models as contacts
 
 Genders = dd.Genders
 
@@ -54,6 +51,7 @@ class QuickTest(RemoteAuthTestCase):
             #     'lino.utils.ajax.AjaxExceptionResponse'))
 
         Person = rt.models.contacts.Person
+        Partner = rt.models.contacts.Partner
         Country = rt.models.countries.Country
         Place = rt.models.countries.Place
         PlaceTypes = rt.models.countries.PlaceTypes
@@ -237,7 +235,7 @@ Estonia''')
         #~ print "saved"
         sc = settings.SITE.site_config  # re-read it from db
         self.assertEqual(sc.next_partner_id, 12345)
-        john = create_and_get(Person, first_name='John', last_name='Smith')
+        john = create_and_get(Partner, name='John')
         self.assertEqual(john.pk, 12345)
         self.assertEqual(sc.next_partner_id, 12346)
         sc = settings.SITE.site_config  # re-read it from db
@@ -302,4 +300,3 @@ Estonia''')
             self.fail("Expected ValidationError")
         except ValidationError:
             pass
-        
