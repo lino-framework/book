@@ -1,4 +1,4 @@
-    .. doctest docs/specs/tera/misc.rst
+.. doctest docs/specs/tera/misc.rst
 .. _tera.specs.misc:
 .. _presto.specs.psico:
 
