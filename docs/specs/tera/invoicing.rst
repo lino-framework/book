@@ -5,6 +5,7 @@
 How Lino Tera generates invoices
 ================================
 
+
 In :ref:`tera` every meeting with a therapist is basically
 invoiceable.  Unlike in e.g. in :ref:`voga` they are invoiced
 afterwards, not in advance.
@@ -55,3 +56,4 @@ so that they inherit from
 
 Therapies
 =========
+

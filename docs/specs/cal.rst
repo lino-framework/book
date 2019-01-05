@@ -99,7 +99,9 @@ Calendar entry
 
     .. attribute:: event_type
 
-        The type of this entry. Every calendar entry should have this
+        The type of this calendar entry.
+
+        Every calendar entry should have this
         field pointing to a given :class:`EventType`, which holds
         extended configurable information about this entry.
 

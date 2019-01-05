@@ -5,6 +5,8 @@
 ``invoicing`` : Generating invoices
 ======================================
 
+.. currentmodule:: lino_xl.lib.invoicing
+
 The :mod:`lino_xl.lib.invoicing` plugin adds functionality for
 **invoicing**, i.e. automatically generating invoices from data in the
 database.
@@ -187,13 +189,15 @@ The invoicing plan
     .. attribute:: partner
 
     .. attribute:: update_plan
+
+        Update this plan (fill the list of suggestions).
+
     .. attribute:: execute_plan
 
-        Execute this plan, i.e. create an invoice for each selected
-        suggestion.
+        Execute this plan (create an invoice for each selected suggestion).
 
     .. method:: start_plan(user, **options)
-           
+
         Start an invoicing plan for the given `user` on the database
         object defined by `k` and `v`. Where `k` is the name of the
         field used to select the plan (e.g. `'partner'` or
