@@ -134,10 +134,15 @@ Every partner can have a sales rule.
 
 .. class:: SalesRule
            
-   .. attribute:: partner
-   .. attribute:: invoice_recipient
-   .. attribute:: paper_type
-                  
+    .. attribute:: partner
+
+    .. attribute:: invoice_recipient
+
+    .. attribute:: paper_type
+
+        The default paper type to be used for invoicing.
+
+
 .. class:: SalesRules
 
 
@@ -175,17 +180,21 @@ The invoicing plan
 
          The user who manages this plan.
          
-    .. attribute:: today
-
-         This date will be used for the invoices to generate.
-         
     .. attribute:: journal
 
         The journal where to create invoices.  When this field is
         empty, you can fill the plan with suggestions but cannot
         execute the plan.
 
+    .. attribute:: today
+
+         This invoice date to be used for the invoices to generate.
+
     .. attribute:: max_date
+
+        Don't invoice events after this date.  If this is empty, Lino will
+        use the day before the invoice date.
+
     .. attribute:: partner
 
     .. attribute:: update_plan

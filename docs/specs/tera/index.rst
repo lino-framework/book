@@ -12,6 +12,7 @@ designed to be used in a center for `sociopsychological
 .. toctree::
    :maxdepth: 1
   
+   contacts
    topics
    misc
    tim2lino
