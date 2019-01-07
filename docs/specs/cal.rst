@@ -223,33 +223,29 @@ Calendar entry
 >>> show_fields(rt.models.cal.Event,
 ...     'start_date start_time end_date end_time user summary description event_type state')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-+---------------+---------------------+---------------------------------------------------------------+
-| Internal name | Verbose name        | Help text                                                     |
-+===============+=====================+===============================================================+
-| start_date    | Start date          |                                                               |
-+---------------+---------------------+---------------------------------------------------------------+
-| start_time    | Start time          |                                                               |
-+---------------+---------------------+---------------------------------------------------------------+
-| end_date      | End Date            |                                                               |
-+---------------+---------------------+---------------------------------------------------------------+
-| end_time      | End Time            | These four fields define the duration of this entry.          |
-|               |                     | Only start_date is mandatory.                                 |
-+---------------+---------------------+---------------------------------------------------------------+
-| user          | Responsible user    | The responsible user.                                         |
-+---------------+---------------------+---------------------------------------------------------------+
-| summary       | Short description   | A one-line descriptive text.                                  |
-+---------------+---------------------+---------------------------------------------------------------+
-| description   | Description         | A longer descriptive text.                                    |
-+---------------+---------------------+---------------------------------------------------------------+
-| event_type    | Calendar entry type | The type of this entry. Every calendar entry should have this |
-|               |                     | field pointing to a given EventType, which holds              |
-|               |                     | extended configurable information about this entry.           |
-+---------------+---------------------+---------------------------------------------------------------+
-| state         | State               | The state of this entry. The state can change according to    |
-|               |                     | rules defined by the workflow, that's why we sometimes refer  |
-|               |                     | to it as the life cycle.                                      |
-+---------------+---------------------+---------------------------------------------------------------+
-
++---------------+---------------------+--------------------------------------------------------------------------------+
+| Internal name | Verbose name        | Help text                                                                      |
++===============+=====================+================================================================================+
+| start_date    | Start date          | The starting date of this entry.  May not be empty.                            |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| start_time    | Start time          | The starting time.  If this is empty, the entry is considered a all-day entry. |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| end_date      | End Date            | The ending date of this entry. Leave empty for same-day entries.               |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| end_time      | End Time            | The ending time.  If this is before the starting time, and no ending date      |
+|               |                     | is given, the entry ends the day after.                                        |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| user          | Responsible user    | The responsible user.                                                          |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| summary       | Short description   | A one-line descriptive text.                                                   |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| description   | Description         | A longer descriptive text.                                                     |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| event_type    | Calendar entry type | The type of this calendar entry.                                               |
++---------------+---------------------+--------------------------------------------------------------------------------+
+| state         | State               | The state of this entry. The state can change according to                     |
+|               |                     | rules defined by the workflow.                                                 |
++---------------+---------------------+--------------------------------------------------------------------------------+
 
 
 Lifecycle of a calendar entry
@@ -1396,14 +1392,3 @@ Data checkers
     Check whether the given subscription exists. If not, create it.
 
 
-Don't read on
-=============
-              
->>> cal.Days
-lino_xl.lib.cal.models.Days
-
->>> print(cal.Days.column_names)
-day_number long_date detail_pointer *
-
->>> cal.Days.get_data_elem('detail_pointer')
-lino_xl.lib.cal.models.Days.detail_pointer

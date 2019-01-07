@@ -1,30 +1,12 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2017 Rumma & Ko Ltd
-# This file is part of Lino Welfare.
-#
-# Lino Welfare is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Welfare is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Welfare.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2015-2019 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
 """Miscellaneous tests on an empty database.
 
 You can run just these tests by issuing::
 
-  $ python setup.py test -s tests.DemoTests.test_chatelet
-
-Or::
-
-  $ cd lino_welfare/projects/chatelet
+  $ cd lino_book/projects/mathieu
   $ python manage.py test tests.test_chatelet
 
 """
@@ -84,7 +66,7 @@ class TestCase(TestCase):
         colnames = [col.name for col in rh.get_columns()]
         colnames.sort()
         self.assertEqual(
-            'detail_link detected_date id mobile_item overview person remark type user workflow_buttons',
+            'detected_date id mobile_item overview person remark type user workflow_buttons',
             ' '.join(colnames))
 
         url = "/api/cv/ObstaclesByPerson"
@@ -109,7 +91,6 @@ class TestCase(TestCase):
             self.assertEqual(result['rows'], [
                 ['Alcohol', 1, 'robin', 1, '22.05.2014', '', 1,
                  '<span />',
-                 '<div><em>Obstacle object</em></div>',
                  '<div><em>Obstacle object</em></div>',
                  '<div><em>Obstacle object</em></div>',
                  'First LAST', 100,

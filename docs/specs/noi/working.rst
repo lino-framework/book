@@ -472,3 +472,16 @@ Class reference
 
            
 .. class:: WorkedHours
+
+
+Don't read me
+=============
+
+>>> working.WorkedHours
+lino_xl.lib.working.ui.WorkedHours
+
+>>> print(working.WorkedHours.column_names)
+detail_link worked_tickets  vc0:5 vc1:5 vc2:5 vc3:5 *
+
+>>> working.WorkedHours.get_data_elem('detail_link')
+lino.core.actors.Actor.detail_link
