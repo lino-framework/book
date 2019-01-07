@@ -162,7 +162,7 @@ Lino Welfare:
 - pcsw.AidType :
   - PROTECT : pcsw.Client.aid_type
 - pcsw.Client :
-  - CASCADE : aids.IncomeConfirmation.client, aids.RefundConfirmation.client, aids.SimpleConfirmation.client, coachings.Coaching.client, cv.LanguageKnowledge.person, dupable_clients.Word.owner, esf.ClientSummary.master, pcsw.Dispense.client, properties.PersonProperty.person
+  - CASCADE : aids.IncomeConfirmation.client, aids.RefundConfirmation.client, aids.SimpleConfirmation.client, coachings.Coaching.client, cv.LanguageKnowledge.person, cv.PersonProperty.person, dupable_clients.Word.owner, esf.ClientSummary.master, pcsw.Dispense.client
   - PROTECT : aids.Granting.client, art61.Contract.client, cal.Event.project, cal.Task.project, cbss.IdentifyPersonRequest.person, cbss.ManageAccessRequest.person, cbss.RetrieveTIGroupsRequest.person, clients.ClientContact.client, cv.Experience.person, cv.Study.person, cv.Training.person, excerpts.Excerpt.project, finan.BankStatementItem.project, finan.JournalEntry.project, finan.JournalEntryItem.project, finan.PaymentOrderItem.project, isip.Contract.client, jobs.Candidature.person, jobs.Contract.client, ledger.Movement.project, notes.Note.project, outbox.Mail.project, pcsw.Conviction.client, pcsw.Exclusion.person, uploads.Upload.project, vatless.AccountInvoice.project, vatless.InvoiceItem.project, xcourses.CourseRequest.person
 - pcsw.DispenseReason :
   - PROTECT : pcsw.Dispense.reason
@@ -171,11 +171,11 @@ Lino Welfare:
 - pcsw.PersonGroup :
   - PROTECT : pcsw.Client.group
 - properties.PropGroup :
-  - PROTECT : properties.PersonProperty.group, properties.Property.group, system.SiteConfig.propgroup_obstacles, system.SiteConfig.propgroup_skills, system.SiteConfig.propgroup_softskills
+  - PROTECT : cv.PersonProperty.group, properties.Property.group, system.SiteConfig.propgroup_obstacles, system.SiteConfig.propgroup_skills, system.SiteConfig.propgroup_softskills
 - properties.PropType :
   - PROTECT : properties.PropChoice.type, properties.Property.type
 - properties.Property :
-  - PROTECT : properties.PersonProperty.property
+  - PROTECT : cv.PersonProperty.property
 - sepa.Account :
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account, vatless.AccountInvoice.bank_account
 - uploads.UploadType :

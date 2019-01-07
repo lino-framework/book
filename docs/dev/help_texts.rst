@@ -122,9 +122,6 @@ Here is how Lino internally accesses the help text of a database field:
 >>> fld = rt.models.contacts.Partner._meta.get_field('name')
 >>> print(fld.help_text)  #doctest: +NORMALIZE_WHITESPACE
 The full name of this partner. Used for alphabetic sorting.
-Subclasses may hide this field and fill it automatically,
-e.g. saving a Person will automatically set her
-name field to "last_name, first_name".
 
 Above text is the first sentence extracted from the documentation of
 the :attr:`lino_xl.lib.contacts.Partner.name` field.
@@ -141,10 +138,7 @@ specifications using the :func:`show_fields
 +---------------+----------------------------+-----------------------------------------------------------------+
 | language      | Language                   | The language to use when communicating with this partner.       |
 +---------------+----------------------------+-----------------------------------------------------------------+
-| phone         | Phone                      | The primary phone number.  Note that Lino does not ignore       |
-|               |                            | formatting characters in phone numbers when searching.  For     |
-|               |                            | example, if you enter "087/12.34.56" as a phone number, then a  |
-|               |                            | search for phone number containing "1234" will not find it.     |
+| phone         | Phone                      | The primary phone number.                                       |
 +---------------+----------------------------+-----------------------------------------------------------------+
 | gsm           | GSM                        | The primary mobile phone number.                                |
 +---------------+----------------------------+-----------------------------------------------------------------+
@@ -164,13 +158,9 @@ specifications using the :func:`show_fields
 +---------------+----------------------------+-----------------------------------------------------------------+
 | prefix        | Name prefix                | An optional name prefix. For organisations this is inserted     |
 |               |                            | before the name, for persons this is inserted between first     |
-|               |                            | name and last name (see                                         |
-|               |                            | lino.mixins.human.Human.get_last_name_prefix()).                |
+|               |                            | name and last name.                                             |
 +---------------+----------------------------+-----------------------------------------------------------------+
 | name          | Name                       | The full name of this partner. Used for alphabetic sorting.     |
-|               |                            | Subclasses may hide this field and fill it automatically,       |
-|               |                            | e.g. saving a Person will automatically set her                 |
-|               |                            | name field to "last_name, first_name".                          |
 +---------------+----------------------------+-----------------------------------------------------------------+
 
 

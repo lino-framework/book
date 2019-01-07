@@ -149,6 +149,7 @@ Each window is **viewable** for a given set of user types.
 - cal.GuestRoles.merge_row : visible for admin
 - cal.Guests.detail : visible for teacher user staff admin
 - cal.Guests.insert : visible for teacher user staff admin
+- cal.LastWeek.detail : visible for teacher user auditor secretary staff admin
 - cal.RecurrentEvents.detail : visible for staff admin
 - cal.RecurrentEvents.insert : visible for staff admin
 - cal.Rooms.detail : visible for staff admin
@@ -167,8 +168,6 @@ Each window is **viewable** for a given set of user types.
 - contacts.Companies.detail : visible for user secretary staff admin
 - contacts.Companies.insert : visible for user secretary staff admin
 - contacts.Companies.merge_row : visible for admin
-- contacts.Partners.detail : visible for user secretary staff admin
-- contacts.Partners.insert : visible for user secretary staff admin
 - contacts.Partners.merge_row : visible for admin
 - contacts.Persons.create_household : visible for user secretary staff admin
 - contacts.Persons.detail : visible for user secretary staff admin
@@ -215,7 +214,9 @@ Each window is **viewable** for a given set of user types.
 - excerpts.Excerpts.detail : visible for user coordinator secretary staff admin
 - gfks.ContentTypes.detail : visible for admin
 - households.Households.detail : visible for user secretary staff admin
+- households.Households.insert : visible for user secretary staff admin
 - households.Households.merge_row : visible for admin
+- households.HouseholdsByType.insert : visible for user secretary staff admin
 - households.MembersByPerson.insert : visible for user secretary staff admin
 - households.Types.detail : visible for staff admin
 - languages.Languages.detail : visible for staff admin

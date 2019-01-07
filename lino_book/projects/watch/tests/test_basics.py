@@ -61,11 +61,11 @@ class QuickTest(RemoteAuthTestCase):
                      column_names="id type master object diff")
         # print(s)
         expected = """\
-==== ============= ===================== ===================== ===============================================
- ID   Change Type   Master                Object                Changes
----- ------------- --------------------- --------------------- -----------------------------------------------
- 1    Create        `My pub <Detail>`__   `My pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ===================== ===================== ===============================================
+==== ============= ========== ===================== ===============================================
+ ID   Change Type   Master     Object                Changes
+---- ------------- ---------- --------------------- -----------------------------------------------
+ 1    Create        *My pub*   `My pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= ========== ===================== ===============================================
 """
         
         self.assertEqual(s, expected)
@@ -79,12 +79,12 @@ class QuickTest(RemoteAuthTestCase):
         output = ses.show('changes.Changes', column_names="id type master object diff")
         # print(output)
         expected = """\
-==== ============= ====================== ====================== ===============================================
- ID   Change Type   Master                 Object                 Changes
----- ------------- ---------------------- ---------------------- -----------------------------------------------
- 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ====================== ====================== ===============================================
+==== ============= =========== ====================== ===============================================
+ ID   Change Type   Master      Object                 Changes
+---- ------------- ----------- ---------------------- -----------------------------------------------
+ 2    Update        *Our pub*   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== ====================== ===============================================
 """
         self.assertEqual(output, expected)
 
@@ -97,25 +97,25 @@ class QuickTest(RemoteAuthTestCase):
             self.assertEqual(
                 res.message, 'Entry "Entry object" has been created.')
             expected = """\
-==== ============= ====================== =========================== ===============================================
- ID   Change Type   Master                 Object                      Changes
----- ------------- ---------------------- --------------------------- -----------------------------------------------
- 3    Create        `Our pub <Detail>`__   `Entry object <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
- 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__        name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__        Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ====================== =========================== ===============================================
+==== ============= =========== =========================== ===============================================
+ ID   Change Type   Master      Object                      Changes
+---- ------------- ----------- --------------------------- -----------------------------------------------
+ 3    Create        *Our pub*   `Entry object <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   `Our pub <Detail>`__        name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub <Detail>`__        Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== =========================== ===============================================
 """
         else:
             self.assertEqual(
                 res.message, 'Entry "Entry object (1)" has been created.')
             expected = """\
-==== ============= ====================== =============================== ===============================================
- ID   Change Type   Master                 Object                          Changes
----- ------------- ---------------------- ------------------------------- -----------------------------------------------
- 3    Create        `Our pub <Detail>`__   `Entry object (1) <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
- 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__            name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__            Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ====================== =============================== ===============================================
+==== ============= =========== =============================== ===============================================
+ ID   Change Type   Master      Object                          Changes
+---- ------------- ----------- ------------------------------- -----------------------------------------------
+ 3    Create        *Our pub*   `Entry object (1) <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   `Our pub <Detail>`__            name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub <Detail>`__            Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== =============================== ===============================================
 """
 
 
@@ -155,14 +155,14 @@ Are you sure ?""")
         
 
         expected = """\
-==== ============= ====================== ====================== ===============================================
- ID   Change Type   Master                 Object                 Changes
----- ------------- ---------------------- ---------------------- -----------------------------------------------
- 4    Delete        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=100)
- 3    Create        `Our pub <Detail>`__                          Entry(id=1,user=1,subject='test',company=100)
- 2    Update        `Our pub <Detail>`__   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ====================== ====================== ===============================================
+==== ============= =========== ====================== ===============================================
+ ID   Change Type   Master      Object                 Changes
+---- ------------- ----------- ---------------------- -----------------------------------------------
+ 4    Delete        *Our pub*                          Entry(id=1,user=1,subject='test',company=100)
+ 3    Create        *Our pub*                          Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== ====================== ===============================================
 """
         output = ses.show('changes.Changes',
                      column_names="id type master object diff")
@@ -179,14 +179,14 @@ Are you sure ?""")
         # components:
 
         expected = """\
-==== ============= ====================== ============== =========== ===============================================
- ID   Change Type   Master                 Object type    object id   Changes
----- ------------- ---------------------- -------------- ----------- -----------------------------------------------
- 4    Delete        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=100)
- 3    Create        `Our pub <Detail>`__   Entry          1           Entry(id=1,user=1,subject='test',company=100)
- 2    Update        `Our pub <Detail>`__   Organization   100         name : 'My pub' --> 'Our pub'
- 1    Create        `Our pub <Detail>`__   Organization   100         Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ====================== ============== =========== ===============================================
+==== ============= =========== ============== =========== ===============================================
+ ID   Change Type   Master      Object type    object id   Changes
+---- ------------- ----------- -------------- ----------- -----------------------------------------------
+ 4    Delete        *Our pub*   Entry          1           Entry(id=1,user=1,subject='test',company=100)
+ 3    Create        *Our pub*   Entry          1           Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   Organization   100         name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   Organization   100         Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== ============== =========== ===============================================
 """
         output = ses.show('changes.Changes',
                      column_names="id type master object_type object_id diff")

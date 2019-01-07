@@ -51,6 +51,12 @@ The **daily planner** is a table showing an overview of calendar entries on a
 given day.  Both the rows and the columns can be configured per application or
 locally per site.
 
+An **all-day** calendar entry is one that has no starting and ending time.
+
+A **same-day** calendar entry is one that ends on the same date as it starts.
+The ending date field is empty. If a somae-day calendar entry  has its **ending
+time before the starting time**, the ending date is understood as the day after
+the starting date.
 
 
 
@@ -68,15 +74,21 @@ Calendar entry
 .. class:: Event
 
     .. attribute:: start_date
-    .. attribute:: start_time
+
+        The starting date of this entry.  May not be empty.
+
     .. attribute:: end_date
+
+        The ending date of this entry. Leave empty for same-day entries.
+
+    .. attribute:: start_time
+
+        The starting time.  If this is empty, the entry is considered a all-day entry.
+
     .. attribute:: end_time
 
-        These four fields define the duration of this entry.
-        Only :attr:`start_date` is mandatory.
-
-        If :attr:`end_date` is the same as :attr:`start_date`, then it
-        is preferrable to leave it empty.
+        The ending time.  If this is before the starting time, and no ending date
+        is given, the entry ends the day after.
 
     .. attribute:: summary
 
@@ -108,19 +120,18 @@ Calendar entry
     .. attribute:: state
 
         The state of this entry. The state can change according to
-        rules defined by the workflow, that's why we sometimes refer
-        to it as the life cycle.
+        rules defined by the workflow.
 
     .. attribute:: transparent
 
-        Indicates that this entry shouldn't prevent other entries at
-        the same time.
+        Whether this entry should allow other entries at the same time.
 
     .. attribute:: when_html
 
          Shows the date and time of the entry with a link that opens
-         all entries on that day (:class:`EntriesByDay
-         <lino_xl.lib.cal.EntriesByDay>`).
+         all entries on that day.
+
+         See :class:`EntriesByDay <lino_xl.lib.cal.EntriesByDay>`.
 
          Deprecated because it is usually irritating. Use when_text,
          and users open the detail window as usualy by double-clicking

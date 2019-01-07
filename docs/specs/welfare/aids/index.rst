@@ -417,15 +417,15 @@ ClientContactType #1 ('Apotheke')
 
 There are 4 pharmacies altogether:
 
->>> rt.show('clients.PartnersByClientContactType', at.pharmacy_type)
-=================================== ===== ===============================================
+>>> rt.login('robin').show('clients.PartnersByClientContactType', at.pharmacy_type)
+=================================== ===== ==================================================================================
  Name                                ID    Ansicht als
------------------------------------ ----- -----------------------------------------------
- Apotheke Reul                       200   *Organisation*, **Partner**, Person, Haushalt
- Apotheke Schunck                    201   *Organisation*, **Partner**, Person, Haushalt
- Bosten-Bocken A                     203   *Organisation*, **Partner**, Person, Haushalt
- Pharmacies Populaires de Verviers   202   *Organisation*, **Partner**, Person, Haushalt
-=================================== ===== ===============================================
+----------------------------------- ----- ----------------------------------------------------------------------------------
+ Apotheke Reul                       200   `Organisation <Detail>`__ [**❌**], **Partner**, Person [**➕**], Haushalt [**➕**]
+ Apotheke Schunck                    201   `Organisation <Detail>`__ [**❌**], **Partner**, Person [**➕**], Haushalt [**➕**]
+ Bosten-Bocken A                     203   `Organisation <Detail>`__ [**❌**], **Partner**, Person [**➕**], Haushalt [**➕**]
+ Pharmacies Populaires de Verviers   202   `Organisation <Detail>`__ [**❌**], **Partner**, Person [**➕**], Haushalt [**➕**]
+=================================== ===== ==================================================================================
 <BLANKLINE>
 
 

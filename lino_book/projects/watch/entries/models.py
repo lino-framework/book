@@ -59,7 +59,7 @@ def my_change_watchers(sender, **kw):
     # add two application-specific panels, one to Partners, one to
     # Companies:
     
-    self.models.contacts.Partners.add_detail_tab(
+    self.models.contacts.Companies.add_detail_tab(
         'changes', 'changes.ChangesByMaster')
     self.models.contacts.Companies.add_detail_tab(
         'entries', 'entries.EntriesByCompany')

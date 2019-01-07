@@ -18,8 +18,6 @@ The Lino Welfare "Eupen" variant
 >>> from lino.api.doctest import *
 
            
-
-
 Overview
 ========
 
@@ -33,7 +31,7 @@ it was the first Lino that went into production in 2010.
 - 141 models
 - 42 user roles
 - 16 user types
-- 540 views
+- 543 views
 - 28 dialog actions
 <BLANKLINE>
 
@@ -369,6 +367,7 @@ Database structure
 - cv.Experience : id, start_date, end_date, country, city, zip_code, sector, function, person, duration_text, company, title, status, duration, regime, is_training, remarks, termination_reason
 - cv.Function : id, name, remark, sector, name_fr, name_en
 - cv.LanguageKnowledge : id, person, language, spoken, written, spoken_passively, written_passively, native, cef_level
+- cv.PersonProperty : id, group, property, value, person, remark
 - cv.Regime : id, name, name_fr, name_en
 - cv.Sector : id, name, remark, name_fr, name_en
 - cv.Status : id, name, name_fr, name_en
@@ -438,7 +437,6 @@ Database structure
 - pcsw.Exclusion : id, person, type, excluded_from, excluded_until, remark
 - pcsw.ExclusionType : id, name
 - pcsw.PersonGroup : id, name, ref_name, active
-- properties.PersonProperty : id, group, property, value, person, remark
 - properties.PropChoice : id, type, value, text, text_fr, text_en
 - properties.PropGroup : id, name, name_fr, name_en
 - properties.PropType : id, name, choicelist, default_value, limit_to_choices, multiple_choices, name_fr, name_en
@@ -514,6 +512,7 @@ Each window layout defines a given set of fields.
 - cal.Guests.checkin : notify_subject, notify_body, notify_silent
 - cal.Guests.detail : event, client, role, state, remark, workflow_buttons, waiting_since, busy_since, gone_since
 - cal.Guests.insert : event, partner, role
+- cal.LastWeek.detail : PlannerByDay
 - cal.RecurrentEvents.detail : name, name_fr, name_en, id, user, event_type, start_date, start_time, end_date, end_time, every_unit, every, max_events, monday, tuesday, wednesday, thursday, friday, saturday, sunday, description
 - cal.RecurrentEvents.insert : name, name_fr, name_en, start_date, end_date, every_unit, event_type
 - cal.Rooms.detail : id, name, name_fr, name_en, company, contact_person, description
@@ -536,8 +535,6 @@ Each window layout defines a given set of fields.
 - contacts.Companies.detail : overview, prefix, name, type, vat_id, client_contact_type, url, email, phone, gsm, fax, remarks, notes_NotesByCompany, payment_term, vatless_VouchersByPartner, ledger_MovementsByPartner, id, language, activity, is_obsolete, created, modified
 - contacts.Companies.insert : name, email, type
 - contacts.Companies.merge_row : merge_to, addresses_Address, sepa_Account, reason
-- contacts.Partners.detail : overview, id, language, activity, client_contact_type, url, email, phone, gsm, fax, country, region, city, zip_code, addr1, street_prefix, street, street_no, street_box, addr2, remarks, payment_term, vatless_VouchersByPartner, ledger_MovementsByPartner, is_obsolete, created, modified
-- contacts.Partners.insert : name, email
 - contacts.Partners.merge_row : merge_to, addresses_Address, sepa_Account, reason
 - contacts.Persons.create_household : head, type, partner
 - contacts.Persons.detail : overview, title, first_name, middle_name, last_name, gender, birth_date, age, id, language, email, phone, gsm, fax, households_MembersByPerson, humanlinks_LinksByHuman, remarks, payment_term, vatless_VouchersByPartner, ledger_MovementsByPartner, activity, url, client_contact_type, is_obsolete, created, modified
@@ -582,13 +579,14 @@ Each window layout defines a given set of fields.
 - finan.PaymentOrders.detail : entry_date, number, total, execution_date, workflow_buttons, narration, ItemsByPaymentOrder, journal, accounting_period, user, id, item_account, item_remark, MovementsByVoucher
 - gfks.ContentTypes.detail : id, app_label, model, base_classes
 - households.Households.detail : type, prefix, name, id
+- households.Households.insert : name, type
 - households.Households.merge_row : merge_to, households_Member, addresses_Address, sepa_Account, reason
 - households.HouseholdsByType.detail : type, prefix, name, id
+- households.HouseholdsByType.insert : name, language
 - households.MembersByPerson.insert : person, role, household, primary
 - households.Types.detail : name, name_fr, name_en
 - humanlinks.Links.detail : parent, type, child
 - humanlinks.Links.insert : parent, type, child
-- integ.ActivityReport.show : body
 - isip.ContractEndings.detail : name, use_in_isip, use_in_jobs, is_success, needs_date_ended
 - isip.ContractPartners.detail : company, contact_person, contact_role, duties_company
 - isip.ContractPartners.insert : company, contact_person, contact_role
@@ -619,7 +617,6 @@ Each window layout defines a given set of fields.
 - ledger.Journals.merge_row : merge_to, reason
 - ledger.PaymentTerms.detail : ref, months, days, end_of_month, name, name_fr, name_en, printed_text, printed_text_fr, printed_text_en
 - ledger.PaymentTerms.merge_row : merge_to, reason
-- ledger.Situation.show : body
 - newcomers.AvailableCoachesByClient.assign_coach : notify_subject, notify_body, notify_silent
 - newcomers.Faculties.detail : id, name, name_fr, name_en, weight
 - newcomers.Faculties.insert : name, name_fr, name_en, weight
@@ -628,13 +625,13 @@ Each window layout defines a given set of fields.
 - notes.NoteTypes.insert : name, name_fr, name_en, build_method
 - notes.Notes.detail : date, time, event_type, type, project, subject, important, company, contact_person, user, language, build_time, id, body, uploads_UploadsByController
 - notes.Notes.insert : event_type, type, subject, project
-- notes.NotesByX.insert : event_type, type, subject, project
+- notes.NotesByOwner.insert : event_type, type, subject, project
 - outbox.Mails.detail : subject, project, date, user, sent, id, owner, outbox_AttachmentsByMail, uploads_UploadsByController, body
 - outbox.Mails.insert : project, subject, body
 - pcsw.Clients.create_visit : user, summary
 - pcsw.Clients.detail : overview, gender, id, tim_id, first_name, middle_name, last_name, birth_date, age, national_id, nationality, declared_name, civil_state, birth_country, birth_place, language, email, phone, fax, gsm, image, AgentsByClient, dupable_clients_SimilarClients, humanlinks_LinksByHuman, cbss_relations, households_MembersByPerson, workflow_buttons, id_document, broker, faculty, refusal_reason, in_belgium_since, residence_type, gesdos_id, job_agents, group, income_ag, income_wg, income_kg, income_rente, income_misc, seeking_since, unemployed_since, work_permit_suspended_until, needs_residence_permit, needs_work_permit, uploads_UploadsByClient, cvs_emitted, cv_LanguageKnowledgesByPerson, skills, obstacles, notes_NotesByProject, excerpts_ExcerptsByProject, MovementsByProject, activity, client_state, noble_condition, unavailable_until, unavailable_why, is_cpas, is_senior, is_obsolete, created, modified, remarks, remarks2, checkdata_ProblemsByOwner, cbss_identify_person, cbss_manage_access, cbss_retrieve_ti_groups, cbss_summary
 - pcsw.Clients.insert : first_name, last_name, national_id, gender, language
-- pcsw.Clients.merge_row : merge_to, aids_IncomeConfirmation, aids_RefundConfirmation, aids_SimpleConfirmation, coachings_Coaching, cv_LanguageKnowledge, dupable_clients_Word, esf_ClientSummary, pcsw_Dispense, properties_PersonProperty, addresses_Address, sepa_Account, reason
+- pcsw.Clients.merge_row : merge_to, aids_IncomeConfirmation, aids_RefundConfirmation, aids_SimpleConfirmation, coachings_Coaching, cv_LanguageKnowledge, cv_PersonProperty, dupable_clients_Word, esf_ClientSummary, pcsw_Dispense, addresses_Address, sepa_Account, reason
 - pcsw.Clients.refuse_client : reason, remark
 - properties.PropGroups.detail : id, name, name_fr, name_en
 - properties.PropTypes.detail : id, name, name_fr, name_en, choicelist, default_value
@@ -670,6 +667,14 @@ Each window layout defines a given set of fields.
 - xcourses.Courses.detail : id, start_date, offer, title, remark
 - xcourses.Courses.insert : start_date, offer, title
 <BLANKLINE>
+
+
+TODO: explain why the following items were no longer shown in above list after
+20190107:
+
+- integ.ActivityReport.show : body
+- ledger.Situation.show : body
+
 
 
 Windows and permissions
@@ -719,6 +724,7 @@ Each window layout is **viewable** by a given set of user types.
 - cal.Guests.checkin : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
 - cal.Guests.detail : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
 - cal.Guests.insert : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
+- cal.LastWeek.detail : visible for 100 110 120 200 300 400 410 420 500 510 admin 910
 - cal.RecurrentEvents.detail : visible for 110 120 410 420 admin 910
 - cal.RecurrentEvents.insert : visible for 110 120 410 420 admin 910
 - cal.Rooms.detail : visible for 110 120 410 420 admin 910
@@ -741,8 +747,6 @@ Each window layout is **viewable** by a given set of user types.
 - contacts.Companies.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Companies.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Companies.merge_row : visible for admin 910
-- contacts.Partners.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
-- contacts.Partners.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Partners.merge_row : visible for admin 910
 - contacts.Persons.create_household : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Persons.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
@@ -787,13 +791,14 @@ Each window layout is **viewable** by a given set of user types.
 - finan.PaymentOrders.detail : visible for 500 510 admin 910
 - gfks.ContentTypes.detail : visible for admin 910
 - households.Households.detail : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
+- households.Households.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.Households.merge_row : visible for admin 910
 - households.HouseholdsByType.detail : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
+- households.HouseholdsByType.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.MembersByPerson.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.Types.detail : visible for 110 120 210 410 420 800 admin 910
 - humanlinks.Links.detail : visible for 110 120 210 410 420 800 admin 910
 - humanlinks.Links.insert : visible for 110 120 210 410 420 800 admin 910
-- integ.ActivityReport.show : visible for 100 110 120 420 admin 910
 - isip.ContractEndings.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.insert : visible for 110 120 410 420 admin 910
@@ -824,7 +829,6 @@ Each window layout is **viewable** by a given set of user types.
 - ledger.Journals.merge_row : visible for admin 910
 - ledger.PaymentTerms.detail : visible for 510 admin 910
 - ledger.PaymentTerms.merge_row : visible for admin 910
-- ledger.Situation.show : visible for 500 510 admin 910
 - newcomers.AvailableCoachesByClient.assign_coach : visible for 110 120 200 220 300 420 800 admin 910
 - newcomers.Faculties.detail : visible for 110 120 410 420 admin 910
 - newcomers.Faculties.insert : visible for 110 120 410 420 admin 910
@@ -833,7 +837,7 @@ Each window layout is **viewable** by a given set of user types.
 - notes.NoteTypes.insert : visible for 110 120 410 420 admin 910
 - notes.Notes.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - notes.Notes.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
-- notes.NotesByX.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
+- notes.NotesByOwner.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - outbox.Mails.detail : visible for 110 120 410 420 admin 910
 - outbox.Mails.insert : visible for 110 120 410 420 admin 910
 - pcsw.Clients.create_visit : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
@@ -983,9 +987,9 @@ Global list of all actions that have a parameter dialog.
   - **Auch vergängliche verknüpfte Objekte überweisen** (keep_volatiles):
     - (keep_volatiles_1): **Einkommensbescheinigungen** (aids_IncomeConfirmation), **Kostenübernahmescheine** (aids_RefundConfirmation)
     - (keep_volatiles_2): **Einfache Bescheinigungen** (aids_SimpleConfirmation), **Begleitungen** (coachings_Coaching)
-    - (keep_volatiles_3): **Sprachkenntnisse** (cv_LanguageKnowledge), **Phonetische Wörter** (dupable_clients_Word)
-    - (keep_volatiles_4): **ESF Summaries** (esf_ClientSummary), **Dispenzen** (pcsw_Dispense)
-    - (keep_volatiles_5): **Eigenschaften** (properties_PersonProperty), **Adressen** (addresses_Address)
+    - (keep_volatiles_3): **Sprachkenntnisse** (cv_LanguageKnowledge), **Eigenschaften** (cv_PersonProperty)
+    - (keep_volatiles_4): **Phonetische Wörter** (dupable_clients_Word), **ESF Summaries** (esf_ClientSummary)
+    - (keep_volatiles_5): **Dispenzen** (pcsw_Dispense), **Adressen** (addresses_Address)
     - **Bankkonten** (sepa_Account)
   - **Begründung** (reason)
 - pcsw.Clients.refuse_client : Ablehnen
@@ -1236,3 +1240,8 @@ Some choices lists:
 >>> demo_get('rolf', 'choices/cv/ObstaclesByPerson/property', fields, 15, **kw)
 
 
+Don't read me
+=============
+
+>>> [ba for ba in rt.models.integ.ActivityReport.get_actions() if ba.action.is_window_action()]
+[<BoundAction(integ.ActivityReport, <lino.core.actions.ShowEmptyTable show ('Detail')>)>]

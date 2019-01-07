@@ -21,14 +21,8 @@ The :mod:`lino_noi.lib.cal` adds calendar functionality.
 >>> from lino.api.doctest import *
 
 
->>> cal.Days
-lino_noi.lib.cal.models.Days
-
->>> print(cal.Days.column_names)
-detail_link worked_tickets  vc0:5 vc1:5 vc2:5 vc3:5 *
-
->>> cal.Days.get_data_elem('detail_link')
-lino_noi.lib.cal.models.Days.detail_link
+>>> cal.LastWeek
+lino_xl.lib.cal.ui.LastWeek
 
 >>> ses = rt.login('jean')
 >>> cal.Task(user=ses.get_user())

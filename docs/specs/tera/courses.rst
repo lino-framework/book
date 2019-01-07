@@ -41,7 +41,7 @@ The detail view of a therapy
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general):
-  - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Division** (team)
+  - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Invoiceable fee** (invoiceable_fee)
   - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line)
   - (general_3): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
   - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
@@ -58,6 +58,7 @@ The detail view of a therapy
   - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
   - **Existing excerpts** (excerpts_ExcerptsByProject)
 - **More** (more):
+  - **Division** (team)
   - **Remark** (remark)
   - **Tasks** (cal.TasksByProject) [visible for secretary therapist admin]
 <BLANKLINE>

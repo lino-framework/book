@@ -118,15 +118,15 @@ Calendar entry types
 
 >>> rt.show(cal.EventTypes)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=========== ======================== ================== ======================== ================ ============= ==================== =================
- Reference   Designation              Designation (de)   Designation (fr)         Planner column   Appointment   Force guest states   Locks all rooms
------------ ------------------------ ------------------ ------------------------ ---------------- ------------- -------------------- -----------------
-             Group meeting            Gruppengespräch    Group meeting                             Yes           No                   No
-             Holidays                 Feiertage          Jours fériés             External         No            No                   Yes
-             Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                  No
-             Internal                 Intern             Interne                  Internal         Yes           No                   No
-             Meeting                  Versammlung        Réunion                  External         Yes           No                   No
-=========== ======================== ================== ======================== ================ ============= ==================== =================
+=========== ======================== ================== ======================== ================ ============= ===================== =================
+ Reference   Designation              Designation (de)   Designation (fr)         Planner column   Appointment   Automatic presences   Locks all rooms
+----------- ------------------------ ------------------ ------------------------ ---------------- ------------- --------------------- -----------------
+             Group meeting            Gruppengespräch    Group meeting                             Yes           No                    No
+             Holidays                 Feiertage          Jours fériés             External         No            No                    Yes
+             Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                   No
+             Internal                 Intern             Interne                  Internal         Yes           No                    No
+             Meeting                  Versammlung        Réunion                  External         Yes           No                    No
+=========== ======================== ================== ======================== ================ ============= ===================== =================
 <BLANKLINE>
 
 

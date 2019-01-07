@@ -38,7 +38,7 @@ Lino Welfare *à la Châtelet* went online in 2013.
 - 133 models
 - 42 user roles
 - 16 user types
-- 506 views
+- 510 views
 - 31 dialog actions
 <BLANKLINE>
 
@@ -381,6 +381,7 @@ Each window layout defines a given set of fields.
 - cal.Guests.checkin : notify_subject, notify_body, notify_silent
 - cal.Guests.detail : event, client, role, state, remark, workflow_buttons, waiting_since, busy_since, gone_since
 - cal.Guests.insert : event, partner, role
+- cal.LastWeek.detail : PlannerByDay
 - cal.RecurrentEvents.detail : name, name_nl, name_de, name_en, id, user, event_type, start_date, start_time, end_date, end_time, every_unit, every, max_events, monday, tuesday, wednesday, thursday, friday, saturday, sunday, description
 - cal.RecurrentEvents.insert : name, name_nl, name_de, name_en, start_date, end_date, every_unit, event_type
 - cal.Rooms.detail : id, name, name_nl, name_de, name_en, company, contact_person, description
@@ -403,8 +404,6 @@ Each window layout defines a given set of fields.
 - contacts.Companies.detail : overview, prefix, name, type, vat_id, client_contact_type, url, email, phone, gsm, fax, remarks, notes_NotesByCompany, id, language, activity, is_obsolete, created, modified
 - contacts.Companies.insert : name, email, type
 - contacts.Companies.merge_row : merge_to, addresses_Address, reason
-- contacts.Partners.detail : overview, id, language, activity, client_contact_type, url, email, phone, gsm, fax, country, region, city, zip_code, addr1, street_prefix, street, street_no, street_box, addr2, remarks, is_obsolete, created, modified
-- contacts.Partners.insert : name, email
 - contacts.Partners.merge_row : merge_to, addresses_Address, reason
 - contacts.Persons.create_household : head, type, partner
 - contacts.Persons.detail : overview, title, first_name, middle_name, last_name, gender, birth_date, age, id, language, email, phone, gsm, fax, households_MembersByPerson, humanlinks_LinksByHuman, remarks, activity, url, client_contact_type, is_obsolete, created, modified
@@ -426,7 +425,6 @@ Each window layout defines a given set of fields.
 - courses.Lines.merge_row : merge_to, reason
 - courses.Slots.detail : name, start_time, end_time
 - courses.Slots.insert : start_time, end_time, name
-- courses.StatusReport.show : body
 - courses.Topics.detail : id, name, name_nl, name_de, name_en
 - cv.Durations.detail : id, name, name_nl, name_de, name_en
 - cv.EducationLevels.detail : name, name_nl, name_de, name_en, is_study, is_training
@@ -457,8 +455,10 @@ Each window layout defines a given set of fields.
 - excerpts.Excerpts.detail : id, excerpt_type, project, user, build_method, company, contact_person, language, owner, build_time, body_template_content
 - gfks.ContentTypes.detail : id, app_label, model, base_classes
 - households.Households.detail : type, prefix, name, id
+- households.Households.insert : name, type
 - households.Households.merge_row : merge_to, households_Member, addresses_Address, reason
 - households.HouseholdsByType.detail : type, prefix, name, id
+- households.HouseholdsByType.insert : name, language
 - households.MembersByPerson.insert : person, role, household, primary
 - households.Types.detail : name, name_nl, name_de, name_en
 - humanlinks.Links.detail : parent, type, child
@@ -468,7 +468,6 @@ Each window layout defines a given set of fields.
 - immersion.Contracts.detail : id, client, user, language, type, goal, company, contact_person, contact_role, applies_from, applies_until, exam_policy, sector, function, reference_person, printed, date_decided, date_issued, date_ended, ending, remark
 - immersion.Contracts.insert : client, company, type, goal
 - immersion.Goals.detail : id, name, name_nl, name_de, name_en
-- integ.ActivityReport.show : body
 - isip.ContractEndings.detail : name, use_in_isip, use_in_jobs, is_success, needs_date_ended
 - isip.ContractPartners.detail : company, contact_person, contact_role, duties_company
 - isip.ContractPartners.insert : company, contact_person, contact_role
@@ -497,7 +496,7 @@ Each window layout defines a given set of fields.
 - notes.NoteTypes.insert : name, name_nl, name_de, name_en, build_method
 - notes.Notes.detail : date, time, event_type, type, project, subject, important, company, contact_person, user, language, build_time, id, body, uploads_UploadsByController
 - notes.Notes.insert : event_type, type, subject, project
-- notes.NotesByX.insert : event_type, type, subject, project
+- notes.NotesByOwner.insert : event_type, type, subject, project
 - outbox.Mails.detail : subject, project, date, user, sent, id, owner, outbox_AttachmentsByMail, uploads_UploadsByController, body
 - outbox.Mails.insert : project, subject, body
 - pcsw.Clients.create_visit : user, summary
@@ -532,6 +531,10 @@ Each window layout defines a given set of fields.
 - users.UsersOverview.sign_in : username, password
 <BLANKLINE>
 
+.. Note the following items disappeared after 20190107
+
+  - courses.StatusReport.show : body
+  - integ.ActivityReport.show : body
 
 
 Windows and permissions
@@ -578,6 +581,7 @@ Each window layout is **viewable** by a given set of user types.
 - cal.Guests.checkin : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
 - cal.Guests.detail : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
 - cal.Guests.insert : visible for 100 110 120 200 210 220 300 400 410 420 800 admin 910
+- cal.LastWeek.detail : visible for 100 110 120 200 300 400 410 420 500 510 admin 910
 - cal.RecurrentEvents.detail : visible for 110 120 410 420 admin 910
 - cal.RecurrentEvents.insert : visible for 110 120 410 420 admin 910
 - cal.Rooms.detail : visible for 110 120 410 420 admin 910
@@ -600,8 +604,6 @@ Each window layout is **viewable** by a given set of user types.
 - contacts.Companies.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Companies.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Companies.merge_row : visible for admin 910
-- contacts.Partners.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
-- contacts.Partners.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Partners.merge_row : visible for admin 910
 - contacts.Persons.create_household : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - contacts.Persons.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
@@ -623,7 +625,6 @@ Each window layout is **viewable** by a given set of user types.
 - courses.Lines.merge_row : visible for admin 910
 - courses.Slots.detail : visible for admin 910
 - courses.Slots.insert : visible for admin 910
-- courses.StatusReport.show : visible for 100 110 120 200 210 300 400 410 420 800 admin 910
 - courses.Topics.detail : visible for admin 910
 - cv.Durations.detail : visible for 110 120 420 admin 910
 - cv.EducationLevels.detail : visible for 110 120 420 admin 910
@@ -654,8 +655,10 @@ Each window layout is **viewable** by a given set of user types.
 - excerpts.Excerpts.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - gfks.ContentTypes.detail : visible for admin 910
 - households.Households.detail : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
+- households.Households.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.Households.merge_row : visible for admin 910
 - households.HouseholdsByType.detail : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
+- households.HouseholdsByType.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.MembersByPerson.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - households.Types.detail : visible for 110 120 210 410 420 800 admin 910
 - humanlinks.Links.detail : visible for 110 120 210 410 420 800 admin 910
@@ -665,7 +668,6 @@ Each window layout is **viewable** by a given set of user types.
 - immersion.Contracts.detail : visible for 100 110 120 420 admin 910
 - immersion.Contracts.insert : visible for 100 110 120 420 admin 910
 - immersion.Goals.detail : visible for 110 120 420 admin 910
-- integ.ActivityReport.show : visible for 100 110 120 420 admin 910
 - isip.ContractEndings.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.detail : visible for 110 120 410 420 admin 910
 - isip.ContractPartners.insert : visible for 110 120 410 420 admin 910
@@ -694,7 +696,7 @@ Each window layout is **viewable** by a given set of user types.
 - notes.NoteTypes.insert : visible for 110 120 410 420 admin 910
 - notes.Notes.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - notes.Notes.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
-- notes.NotesByX.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
+- notes.NotesByOwner.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - outbox.Mails.detail : visible for 110 120 410 420 admin 910
 - outbox.Mails.insert : visible for 110 120 410 420 admin 910
 - pcsw.Clients.create_visit : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910

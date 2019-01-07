@@ -16,11 +16,11 @@ Complexity factors
 
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- 43 plugins
+- 44 plugins
 - 93 models
 - 22 user roles
 - 4 user types
-- 353 views
+- 360 views
 - 26 dialog actions
 <BLANKLINE>
 
@@ -31,7 +31,7 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-43 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+44 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
 93 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
@@ -64,17 +64,17 @@ The database models
  contenttypes.ContentType    gfks.ContentTypes              3         93
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             43        52
- courses.Enrolment           courses.Enrolments             16        78
+ courses.Course              courses.Activities             42        52
+ courses.Enrolment           courses.Enrolments             15        78
  courses.Line                courses.Lines                  25        3
- courses.PriceRule           courses.PriceRules             8         2
+ courses.PriceRule           courses.PriceRules             7         3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
  dashboard.Widget            dashboard.Widgets              5         0
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
  finan.BankStatement         finan.BankStatements           16        4
- finan.BankStatementItem     finan.BankStatementItemTable   10        85
+ finan.BankStatementItem     finan.BankStatementItemTable   10        84
  finan.JournalEntry          finan.FinancialVouchers        14        0
  finan.JournalEntryItem      finan.JournalEntryItemTable    10        0
  finan.PaymentOrder          finan.PaymentOrders            15        4
@@ -95,7 +95,7 @@ The database models
  ledger.Journal              ledger.Journals                23        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
- ledger.Movement             ledger.Movements               13        478
+ ledger.Movement             ledger.Movements               13        473
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         132
  lists.List                  lists.Lists                    7         8
@@ -104,7 +104,7 @@ The database models
  notes.EventType             notes.EventTypes               8         1
  notes.Note                  notes.Notes                    17        100
  notes.NoteType              notes.NoteTypes                11        3
- products.Product            products.Products              14        4
+ products.Product            products.Products              14        5
  products.ProductCat         products.ProductCats           5         2
  sales.InvoiceItem           sales.InvoiceItems             15        156
  sales.PaperType             sales.PaperTypes               5         2
@@ -204,7 +204,7 @@ behaviour. See also :doc:`/dev/delete`.
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
 - invoicing.Tariff :
-  - PROTECT : courses.Course.tariff, courses.Enrolment.tariff, products.Product.tariff
+  - PROTECT : products.Product.tariff
 - ledger.Account :
   - CASCADE : sheets.AccountEntry.account
   - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account

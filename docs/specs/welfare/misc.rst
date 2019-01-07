@@ -7,7 +7,7 @@ Miscellaneous
 
 .. contents:: 
    :local:
-   :depth: 3
+   :depth: 2
 
 .. include:: /include/tested.rst
              
@@ -16,8 +16,6 @@ Miscellaneous
 >>> startup('lino_book.projects.mathieu.settings.doctests')
 >>> from lino.api.doctest import *
 >>> ses = rt.login('rolf')
-
-
 
 
 Build all excerpts
@@ -273,6 +271,7 @@ see it.
 - cal.MyUnconfirmedAppointments.duplicate : visible for admin 910
 - cal.OneEvent.duplicate : visible for admin 910
 - cal.OverdueAppointments.duplicate : visible for admin 910
+- cal.PlannerByDay.duplicate : visible for admin 910
 - cal.PublicEntries.duplicate : visible for nobody
 - cal.RemoteCalendars.duplicate : visible for admin 910
 - cbss.AllIdentifyPersonRequests.duplicate : visible for admin 910
@@ -371,7 +370,6 @@ see it.
 - notes.NotesByPerson.duplicate : visible for admin 910
 - notes.NotesByProject.duplicate : visible for admin 910
 - notes.NotesByType.duplicate : visible for admin 910
-- notes.NotesByX.duplicate : visible for admin 910
 - pcsw.AllClients.duplicate : visible for admin 910
 - pcsw.Clients.duplicate : visible for admin 910
 - pcsw.ClientsByNationality.duplicate : visible for admin 910

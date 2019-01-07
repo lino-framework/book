@@ -98,13 +98,14 @@ the :attr:`name <Partner.name>` field and
 not for example the street.
 
 >>> rt.show(contacts.Partners, quick_search="berg")
-==================== ================ =====
- Name                 e-mail address   ID
--------------------- ---------------- -----
- Altenberg Hans                        114
- Garage Mergelsberg                    104
-==================== ================ =====
+==================== ===== =========================== ================
+ Name                 ID    See as                      e-mail address
+-------------------- ----- --------------------------- ----------------
+ Altenberg Hans       114   Organization, **Partner**
+ Garage Mergelsberg   104   **Partner**, Person
+==================== ===== =========================== ================
 <BLANKLINE>
+
 
 Without that restriction, a user who enters "berg" in the quick search
 field would also get e.g. the following partners (because their
@@ -153,13 +154,14 @@ Quickly finding a partner using its primary key
 A special type of quick search is when the search string starts with
 "#".  In that case you get the partner with that primary key.
 
->>> rt.show(contacts.Partners, quick_search="#123")
-====================== ================ =====
- Name                   e-mail address   ID
----------------------- ---------------- -----
- Dobbelstein Dorothée                    123
-====================== ================ =====
+>>> rt.show(contacts.Partners, quick_search="#123", column_names="name phone id")
+====================== ======= =====
+ Name                   Phone   ID
+---------------------- ------- -----
+ Dobbelstein Dorothée           123
+====================== ======= =====
 <BLANKLINE>
+
 
 
 
