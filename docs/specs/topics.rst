@@ -111,6 +111,6 @@ Don't read me
 Because :class:`Topic` defines a database field :attr:`Topic.description` the
 virtual field :attr:`lino.core.model.Model.description` is hidden:
 
->>> rt.models.topics.Topic._meta.private_fields
-[lino_xl.lib.topics.models.Topic.workflow_buttons, lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.overview]
+>>> sorted(rt.models.topics.Topic._meta.private_fields, key=lambda f: str(f))
+[lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
 

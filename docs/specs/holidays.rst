@@ -159,8 +159,11 @@ datetime.date(2016, 2, 9)
 Generating events between 2016-02-09 and 2019-10-23 (max. 72).
 Reached upper date limit 2019-10-23 for 4
 
+.. Note that owner_type in below snippet depends on whether the database has
+   been prepared under Py2 or Py3
+
 >>> wanted[1]  #doctest: +ELLIPSIS
-Event(start_date=2016-02-09,owner_type=17,summary='Karneval in Kettenis',auto_type=1,priority=<Priorities.normal:30>,event_type=1,state=<EntryStates.suggested:10>)
+Event(start_date=2016-02-09,owner_type=...,summary='Karneval in Kettenis',auto_type=1,priority=<Priorities.normal:30>,event_type=1,state=<EntryStates.suggested:10>)
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
