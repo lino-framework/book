@@ -354,7 +354,7 @@ It was not possible to sort reverse on a column with a virtual field.
 Don't read me
 =============
 
-Verify the window actions of some actors (:ticket:`2784`):
+Verify that :ticket:`2784` is fixed:
 
 >>> for ba in integ.ActivityReport.get_actions():
 ...     if ba.action.is_window_action():
