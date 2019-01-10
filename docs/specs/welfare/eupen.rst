@@ -10,6 +10,7 @@ The Lino Welfare "Eupen" variant
    :local:
    :depth: 2
 
+
 .. include:: /include/tested.rst
 
 
@@ -17,7 +18,6 @@ The Lino Welfare "Eupen" variant
 >>> startup('lino_book.projects.gerd.settings.doctests')
 >>> from lino.api.doctest import *
 
-           
 Overview
 ========
 
@@ -1240,8 +1240,3 @@ Some choices lists:
 >>> demo_get('rolf', 'choices/cv/ObstaclesByPerson/property', fields, 15, **kw)
 
 
-Don't read me
-=============
-
->>> [ba for ba in rt.models.integ.ActivityReport.get_actions() if ba.action.is_window_action()]
-[<BoundAction(integ.ActivityReport, <lino.core.actions.ShowEmptyTable show ('Detail')>)>]

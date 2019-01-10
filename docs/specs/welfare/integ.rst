@@ -315,7 +315,7 @@ Contract endings by type
 
 
 Printing UsersWithClients to pdf
---------------------------------
+================================
 
 User problem report:
 
@@ -349,3 +349,16 @@ It was not possible to sort reverse on a column with a virtual field.
 >>> res = test_client.get(url, REMOTE_USER='rolf')  #doctest: -SKIP
 >>> print(res.status_code)  #doctest: -SKIP
 200
+
+
+Don't read me
+=============
+
+Verify the window actions of some actors (:ticket:`2784`):
+
+>>> for ba in integ.ActivityReport.get_actions():
+...     if ba.action.is_window_action():
+...         print(ba)
+<BoundAction(integ.ActivityReport, <lino.core.actions.ShowEmptyTable show ('D\xe9tail')>)>
+
+
