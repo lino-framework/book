@@ -44,13 +44,17 @@ Clients
 
     .. attribute:: client_state
     
-        Pointer to :class:`ClientStates`.
+        The state of this client record.
+
+        This is a pointer to :class:`ClientStates` and can have the following
+        values:
 
         >>> rt.show('clients.ClientStates')
         ======= ========== ============ =============
          value   name       text         Button text
         ------- ---------- ------------ -------------
          05      incoming   Incoming
+         07      informed   Informed
          10      newcomer   Newcomer
          20      coached    Registered
          25      inactive   Inactive
@@ -58,6 +62,7 @@ Clients
          40      refused    Abandoned
         ======= ========== ============ =============
         <BLANKLINE>
+
 
     .. attribute:: unemployed_since
 
