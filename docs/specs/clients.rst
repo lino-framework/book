@@ -49,10 +49,12 @@ Database structure
     The list of **client states**.
     
     >>> rt.show(clients.ClientStates)
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     ======= ========== ============ =============
      value   name       text         Button text
     ------- ---------- ------------ -------------
      05      incoming   Incoming
+     07      informed   Informed
      10      newcomer   Newcomer
      20      coached    Registered
      25      inactive   Inactive

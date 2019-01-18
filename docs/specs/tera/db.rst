@@ -105,7 +105,7 @@ The database models
  notes.Note                  notes.Notes                    17        100
  notes.NoteType              notes.NoteTypes                11        3
  products.Product            products.Products              14        5
- products.ProductCat         products.ProductCats           5         2
+ products.ProductCat         products.ProductCats           6         2
  sales.InvoiceItem           sales.InvoiceItems             15        156
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 25        86

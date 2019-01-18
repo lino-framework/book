@@ -46,6 +46,7 @@ Choicelists
     The list of fields in a VAT declaration.
     
 >>> rt.show(bevat.DeclarationFields)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +------+------+------+-------------------------------------------------+
 | Wert | name | Text | Beschreibung                                    |
 +======+======+======+=================================================+
@@ -97,7 +98,7 @@ Choicelists
 |      |      |      | columns 81 |br|                                 |
 |      |      |      | MvtDeclarationField Debit |br|                  |
 +------+------+------+-------------------------------------------------+
-| 82   | F82  | [82] | Auswahlmöglichkeiten |br|                       |
+| 82   | F82  | [82] | Dienstleistungen |br|                           |
 |      |      |      | columns 82 |br|                                 |
 |      |      |      | MvtDeclarationField Debit |br|                  |
 +------+------+------+-------------------------------------------------+

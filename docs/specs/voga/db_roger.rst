@@ -89,7 +89,7 @@ The database structure
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
  products.Product           products.Products              14        11
- products.ProductCat        products.ProductCats           5         5
+ products.ProductCat        products.ProductCats           6         5
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        174
  sales.PaperType            sales.PaperTypes               5         2

@@ -147,7 +147,15 @@ maintained by the Lino team:
 Related projects
 ================
 
-There are also Lino applications that are *not* covered by the book.
+There are also independent Lino applications *not* covered by the book.
+
+
+.. _amici:
+
+Lino Amici
+------------
+
+http://amici.lino-framework.org
 
 
 .. _presto:
@@ -158,12 +166,12 @@ Lino Presto
 http://presto.lino-framework.org
 
 
-.. _amici:
+.. _pronto:
 
-Lino Amici
+Lino Pronto
 ------------
 
-http://amici.lino-framework.org
+http://pronto.lino-framework.org
 
 
 .. _patrols:
@@ -194,8 +202,6 @@ Lino Sunto
 Lino Sunto is the first free (GPL) Lino application developed by
 somebody else than the author. It is hosted at    
 https://github.com/ManuelWeidmann/lino-sunto
-
-
 
 
 .. _psico:
