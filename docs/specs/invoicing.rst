@@ -53,8 +53,11 @@ indirectly defined by the :attr:`voucher_model
 >>> rt.models.invoicing.Plan.start_plan
 <lino_xl.lib.invoicing.actions.StartInvoicing start_plan ('Create invoices')>
 
+This plugin requires the :mod:`lino_xl.lib.sales` plugin.
 
-       
+>>> dd.plugins.invoicing.needs_plugins
+['lino_xl.lib.sales']
+
 
 
 
@@ -136,11 +139,22 @@ Every partner can have a sales rule.
            
     .. attribute:: partner
 
+        The partner to which this sales rule applies.
+
     .. attribute:: invoice_recipient
+
+        The partner who should get the invoices caused by this partner.
 
     .. attribute:: paper_type
 
         The default paper type to be used for invoicing.
+
+
+>>> fld = rt.models.invoicing.SalesRule._meta.get_field('invoice_recipient')
+>>> print(fld.help_text)
+The partner who should get the invoices caused by this partner.
+
+
 
 
 .. class:: SalesRules
