@@ -7,8 +7,8 @@ PY=""
 if [[ $TRAVIS_PYTHON_VERSION != 2.7 ]] ; then
    PY=".python3"
 fi
-if [ -e "requirements.${TRAVIS_BRANCH}${PY}.txt" ] ; then
-    REQ="requirements.${TRAVIS_BRANCH}${PY}.txt"
+if [ -e "requirements.${LINO_VERSION}${PY}.txt" ] ; then
+    REQ="requirements.${LINO_VERSION}${PY}.txt"
 else
     REQ="requirements${PY}.txt"
 fi
