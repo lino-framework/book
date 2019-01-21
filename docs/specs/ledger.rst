@@ -1225,6 +1225,7 @@ needed by some operation.
 
 
 >>> rt.show(ledger.AccountingPeriods)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =========== ============ ============ ============= ======= ========
  Reference   Start date   End date     Fiscal year   State   Remark
 ----------- ------------ ------------ ------------- ------- --------
@@ -1243,15 +1244,15 @@ needed by some operation.
  2017-01     01/01/2017   31/01/2017   2017          Open
  2017-02     01/02/2017   28/02/2017   2017          Open
  2017-03     01/03/2017   31/03/2017   2017          Open
+ 2017-12     01/12/2017   31/12/2017   2017          Open
 =========== ============ ============ ============= ======= ========
 <BLANKLINE>
 
 
 The *reference* of a new accounting period is computed by applying the
-voucher's entry date to the template defined in the
-:attr:`date_to_period_tpl
-<lino_xl.lib.ledger.AccountingPeriod.get_for_date>` setting.  The
-default implementation leads to the following references:
+voucher's entry date to the template defined in the :attr:`date_to_period_tpl
+<lino_xl.lib.ledger.AccountingPeriod.get_for_date>` attribute of the ledger
+plugin.  The default implementation leads to the following references:
 
 >>> print(ledger.AccountingPeriod.get_ref_for_date(i2d(19940202)))
 1994-02
@@ -1260,7 +1261,7 @@ default implementation leads to the following references:
 >>> print(ledger.AccountingPeriod.get_ref_for_date(i2d(20150401)))
 2015-04
 
-You may manually create other accounting periods. For example
+You may manually create additional accounting periods. For example
 
 - `2015-00` might stand for a fictive "opening" period before January
   2015 and after December 2014.

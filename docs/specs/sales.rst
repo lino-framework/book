@@ -1,5 +1,5 @@
 .. doctest docs/specs/sales.rst
-.. _cosi.specs.sales:
+.. _specs.sales:
 
 ============================
 ``sales`` : Product invoices
@@ -31,19 +31,16 @@ The plugin needs and automatically installs the
 :mod:`lino_xl.lib.products` plugin.
 
 It also needs and installs :mod:`lino_xl.lib.vat` (and not
-:mod:`lino_xl.lib.vatless`).  Which means that if you want product
-invoices, you cannot *not* also install the VAT framework.  If the
-site owner is not subject to VAT, you can hide the VAT fields and
-define a VAT rate of 0 for everything.
+:mod:`lino_xl.lib.vatless`).  Which means that if you want product invoices,
+you cannot *not* also install the VAT framework. If the site owner is not
+subject to VAT, you might add :mod:`lino_xl.lib.bevats` which hides most of the
+VAT functionality.
 
 >>> dd.plugins.sales.needs_plugins
 ['lino_xl.lib.products', 'lino_xl.lib.vat']
 
-This plugin is needed and extended by :mod:`lino_xl.lib.invoicing`
-which adds automatic generation of such product invoices.
-
->>> dd.plugins.invoicing.needs_plugins
-['lino_xl.lib.sales']
+This plugin may be combined with the :mod:`lino_xl.lib.invoicing` plugin which
+adds automatic generation of such product invoices.
 
 
 Product invoices
@@ -202,19 +199,6 @@ sales_account
 Sales account
 >>> products.Product._meta.get_field('sales_account')
 <django.db.models.fields.related.ForeignKey: sales_account>
-
-
-
-The invoicing address of a partner
-==================================
-
-The plugin also injects a field :attr:`invoice_recipient
-<lino.modlib.contacts.models.Partner.invoice_recipient>` to the
-:class:`contacts.Partner <lino.modlib.contacts.models.Partner>` model:
-
-.. attribute:: lino.modlib.contacts.models.Partner.invoice_recipient
-
-  The recipient of invoices (invoicing address).
 
 
 

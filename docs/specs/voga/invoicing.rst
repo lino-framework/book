@@ -720,11 +720,11 @@ Invoice recipient
 =================
 
 >>> show_fields(rt.models.contacts.Partners, 'salesrule__invoice_recipient', True)
-============================== =================== ===========================================================================
+============================== =================== =================================================================
  Internal name                  Verbose name        Help text
------------------------------- ------------------- ---------------------------------------------------------------------------
- salesrule__invoice_recipient   Invoicing address   Redirect to another partner all invoices which should go to this partner.
-============================== =================== ===========================================================================
+------------------------------ ------------------- -----------------------------------------------------------------
+ salesrule__invoice_recipient   Invoicing address   The partner who should get the invoices caused by this partner.
+============================== =================== =================================================================
 
 List of pupils who have an invoice_recipient:
 

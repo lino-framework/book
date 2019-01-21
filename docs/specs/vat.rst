@@ -44,6 +44,7 @@ Code snippets in this document are based on the
 >>> from lino.api.doctest import *
 
 
+
 Dependencies
 ============
 
@@ -192,8 +193,9 @@ VAT rules
 
     .. attribute:: vat_regime
 
-        The regime for which this rule applies. Pointer to
-        :class:`VatRegimes <lino_xl.lib.vat.choicelists.VatRegimes>`.
+        The regime for which this rule applies.
+
+        Pointer to :class:`VatRegimes`.
     
     .. attribute:: rate
     
@@ -367,8 +369,9 @@ Model mixins
                    
     .. attribute:: vat_regime
 
-        The VAT regime to be used in this document.  A pointer to
-        :class:`VatRegimes`.
+        The VAT regime to be used in this document.
+
+        A pointer to :class:`VatRegimes`.
 
 
     Adds an action:
@@ -513,19 +516,65 @@ Choicelists
 
     The VAT column of a ledger account indicates where the movements
     on this account are to be collected in VAT declarations.
+
+VAT regimes
+===========
+
+The **VAT regime** of an invoice determines how the VAT is being handled, i.e.
+whether and how it is to be paid.
+
+You can define a *default VAT regime* per partner, which causes new invoices
+created for this partner to have this VAT regime.
+
+The VAT regime does not depend on the *trade type*.  For example, when a
+partner has the regime "Intra-community", you may create an invoice for this
+partner only in journals with a trade type for which a VAT rule exists.
+
+
+>>> rt.show(vat.VatRegimes, language="de")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+====== ============== ==========================
+ Wert   name           Text
+------ -------------- --------------------------
+ 10     normal         Privatperson
+ 11     reduced        Privatperson (reduziert)
+ 20     subject        MwSt.-pflichtig
+ 25     cocontractor   Vertragspartner
+ 30     intracom       Innergemeinschaftlich
+ 31     delayed        Delay in collection
+ 40     inside         Innerhalb EU
+ 50     outside        Außerhalb EU
+ 60     exempt         Befreit von MwSt.
+ 70     de             Deutschland
+ 71     lu             Luxemburg
+====== ============== ==========================
+
+>>> rt.show(vat.VatRegimes, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+======= ============== ==========================
+ value   name           text
+------- -------------- --------------------------
+ 10      normal         Private person
+ 11      reduced        Private person (reduced)
+ 20      subject        Subject to VAT
+ 25      cocontractor   Co-contractor
+ 30      intracom       Intra-community
+ 31      delayed        Delay in collection
+ 40      inside         Inside EU
+ 50      outside        Outside EU
+ 60      exempt         Exempt
+ 70      de             Germany
+ 71      lu             Luxemburg
+======= ============== ==========================
+<BLANKLINE>
+
+
     
 
 .. class:: VatRegime
            
     Base class for choices of :class:`VatRegimes`.
     
-    The **VAT regime** of an invoice determines how the VAT is being
-    handled, i.e. whether and how it is to be paid.
-    
-    You can define a *default VAT regime* per partner.
-    
-    The VAT regime does not depend on the *trade type*.
-
     .. attribute:: item_vat
                    
         Whether unit prices are VAT included or not.
@@ -540,7 +589,12 @@ Choicelists
     .. attribute:: normal
     .. attribute:: subject
     .. attribute:: intracom
-                   
+
+    Two regimes are defined in
+
+    .. attribute:: de
+    .. attribute:: lu
+
 
 VAT declarations
 ================

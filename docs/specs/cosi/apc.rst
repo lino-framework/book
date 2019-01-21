@@ -48,27 +48,27 @@ Robin is the system administrator, he has a complete menu:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
 - Office : My Excerpts
-- Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
+- Sales : Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
 - Reports :
   - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
-  - Accounting : Debtors, Creditors
+  - Accounting : Debtors, Creditors, Accounting Report
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Office : Excerpt Types, My Text Field Templates
-  - Sales : Products, Services, Product Categories, Paper types, Flatrates
-  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
+  - Sales : Products, Services, Product Categories, Paper types
+  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms, Sheet items
 - Explorer :
   - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
   - Office : Excerpts, Text Field Templates
-  - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
-  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
+  - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
+  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups, Accounting Reports
   - SEPA : Bank accounts
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - VAT : Belgian VAT declarations, Declaration fields

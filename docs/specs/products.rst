@@ -52,9 +52,24 @@ Products
         This is a BabelField, so there will be one field for every language
         defined in :attr:`lino.core.site.Site.languages`.
 
+    .. attribute:: product_type
+
+        The type of this product.
+
+        This field may not be blank and must be an item of :class:`ProductTypes`.
+
+        The default value is set by the actor used for creating the product.
+        Some product actors don't have a default product type, in that case the
+        default value is :attr:`ProductTypes.default`.
+
+
+
     .. attribute:: cat
 
-        Pointer to :class:`ProductCat`
+        The category of this product.
+
+        This is a pointer to :class:`ProductCat`, but the selection list is
+        limited to thos categories having the same :attr:`product_type`.
 
     .. attribute:: delivery_unit
 
@@ -111,6 +126,10 @@ Konfigurierung --> Verkauf --> Produktkategorien
 
     Django model to represent a *product category*.
 
+    .. attribute:: product_type
+
+        The product type to apply to products of this category.
+
 
     >>> rt.show(products.ProductCats)
     ==== ================= =============================== ================== ================== =============
@@ -134,6 +153,14 @@ Every product type has its own menu entry.
 .. class:: ProductTypes
 
     The list of *product types*.
+
+    It should contain at least one item whose name is :Attr:`default`.
+
+    .. attribute:: default
+
+    The product type to be set on new products when they are created in an
+    actor that doesn't have a default product type.
+
 
 
     >>> rt.show(products.ProductTypes)
