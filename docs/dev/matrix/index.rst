@@ -43,7 +43,7 @@ True
 Here is our :xfile:`models.py` module. 
 We also introduce filter parameters for the `Entries` table.
 
-.. literalinclude:: ../../../lino_book/projects/watch2/models.py
+.. literalinclude:: /../../book/lino_book/projects/watch2/models.py
 
 You can play with this application as follows::
 
@@ -60,7 +60,7 @@ Note also the :file:`fixtures/demo.py` file which
 generates the demo entries 
 using :ref:`dpy`:
 
-.. literalinclude:: ../../../lino_book/projects/watch2/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/watch2/fixtures/demo.py
 
   
 

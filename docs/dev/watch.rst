@@ -39,7 +39,7 @@ We define our own subclass of `Site` for this tutorial (which is the
 recommended way except for very simple examples).  Here is the
 :xfile:`settings.py` file:
 
-.. literalinclude:: ../../lino_book/projects/watch/settings.py
+.. literalinclude:: /../../book/lino_book/projects/watch/settings.py
 
 We need to redefine the default list of user types by overriding
 :meth:`Site.setup_choicelists` because `contacts` adds a user group
@@ -48,7 +48,7 @@ We need to redefine the default list of user types by overriding
 Here is our :xfile:`models.py` module which defines the `Entry` model
 and some few startup event listeners:
 
-.. literalinclude:: ../../lino_book/projects/watch/entries/models.py
+.. literalinclude:: /../../book/lino_book/projects/watch/entries/models.py
 
 
 You can play with this application by cloning the latest development 

@@ -10,7 +10,7 @@
 
 This document describes the API of the :mod:`lino.modlib.users` plugin.  See
 also :doc:`/dev/users` for getting started with user management.  See
-:doc:`/about/auth` if you wonder why Lino replaces Django's user management and
+:doc:`/dev/about/auth` if you wonder why Lino replaces Django's user management and
 permission system.
 
 .. contents::

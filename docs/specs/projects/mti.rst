@@ -39,7 +39,7 @@ classical Django know-how: `Restaurant` inherits from `Place`, and
 inheritance
 <https://docs.djangoproject.com/en/1.11/topics/db/models/#multi-table-inheritance>`_.
 
-.. literalinclude:: ../../../lino_book/projects/mti/app/models.py
+.. literalinclude:: /../../book/lino_book/projects/mti/app/models.py
 
 >>> rt.show("app.Persons")
 ========

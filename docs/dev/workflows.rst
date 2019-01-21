@@ -76,7 +76,7 @@ choices, but have an additional method :meth:`add_transition
 <lino.core.workflows.State.button_text>`.
 
 
-.. literalinclude:: ../../lino_book/projects/workflows/entries/choicelists.py
+.. literalinclude:: /../../book/lino_book/projects/workflows/entries/choicelists.py
 
 Here is the result of above definition:
 
@@ -98,7 +98,7 @@ Defining transitions
 
 We define the transitions in a separate module:
 
-.. literalinclude:: ../../lino_book/projects/workflows/entries/workflows.py
+.. literalinclude:: /../../book/lino_book/projects/workflows/entries/workflows.py
 
 This module is being loaded at startup because its name is defined in
 the Site's :attr:`workflows_module
@@ -112,7 +112,7 @@ Note how the first argument to :meth:`add_transition
 a class.  If it is a class, then it defines an action.  Here are the
 actions used in this tutorial:
                     
-.. literalinclude:: ../../lino_book/projects/workflows/entries/actions.py
+.. literalinclude:: /../../book/lino_book/projects/workflows/entries/actions.py
 
 Defining an explicit class for transition action is useful when you
 want your application to decide at runtime whether a transition is

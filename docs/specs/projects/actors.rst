@@ -30,9 +30,9 @@ It was started as a doctest for :blogref:`20130907`.
   
 Here is the :xfile:`models.py` file we will use for this tutorial:
 
-.. literalinclude:: ../../../lino_book/projects/actors/models.py
+.. literalinclude:: /../../book/lino_book/projects/actors/models.py
                     
-.. literalinclude:: ../../../lino_book/projects/actors/desktop.py
+.. literalinclude:: /../../book/lino_book/projects/actors/desktop.py
   
 
 The `label` of an Actor

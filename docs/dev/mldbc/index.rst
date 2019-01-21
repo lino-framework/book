@@ -166,7 +166,7 @@ those on the right on a server with
 The :xfile:`settings.py` file
 -----------------------------
 
-.. literalinclude:: ../../../lino_book/projects/mldbc/settings.py
+.. literalinclude:: /../../book/lino_book/projects/mldbc/settings.py
 
 This is where you specify the :setting:`languages` setting.
 
@@ -174,7 +174,7 @@ This is where you specify the :setting:`languages` setting.
 The :xfile:`models.py` file
 ---------------------------
 
-.. literalinclude:: ../../../lino_book/projects/mldbc/models.py
+.. literalinclude:: /../../book/lino_book/projects/mldbc/models.py
 
 Note that this is the first time we use a 
 :class:`dd.ChoiceList <lino.core.choicelists.ChoiceList>`
@@ -184,7 +184,7 @@ they deserve another tutorial on their own.
 The `demo` fixture
 ------------------
 
-.. literalinclude:: ../../../lino_book/projects/mldbc/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/mldbc/fixtures/demo.py
 
 Note how the application developer doesn't know which :attr:`languages
 <lino.core.site.Site.languages>` will be set at runtime.

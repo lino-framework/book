@@ -28,7 +28,7 @@ Model definition
 
 The database structure used for the following examples is very simple:
 
-.. literalinclude:: ../../lino_book/projects/human/models.py
+.. literalinclude:: /../../book/lino_book/projects/human/models.py
 
 That is, we define a single model `Person` which just inherits
 :class:`lino.mixins.human.Human`.

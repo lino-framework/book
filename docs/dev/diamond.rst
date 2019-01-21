@@ -16,7 +16,7 @@ We have two projects for this:
 Models 1
 ========
 
-.. literalinclude:: ../../lino_book/projects/diamond/main/models.py
+.. literalinclude:: /../../book/lino_book/projects/diamond/main/models.py
 
 
 
@@ -26,7 +26,7 @@ Models 2
 The difference with variant 1 is that now we have two abstract
 parents.
 
-.. literalinclude:: ../../lino_book/projects/diamond2/main/models.py
+.. literalinclude:: /../../book/lino_book/projects/diamond2/main/models.py
 
    
 The problem

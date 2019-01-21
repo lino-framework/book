@@ -62,7 +62,7 @@ Database models
 
 Here is the :xfile:`models.py` file :
 
-.. literalinclude:: ../../../lino_book/projects/combo/models.py
+.. literalinclude:: /../../book/lino_book/projects/combo/models.py
 
 
 
@@ -83,21 +83,21 @@ Here are the other files used in this unit.
 
 The :xfile:`desktop.py` file specifies a table for every model:
 
-.. literalinclude:: ../../../lino_book/projects/combo/desktop.py
+.. literalinclude:: /../../book/lino_book/projects/combo/desktop.py
 
 The :xfile:`__init__.py` file specifies how the tables are organized
 in the main menu:
 
-.. literalinclude:: ../../../lino_book/projects/combo/__init__.py
+.. literalinclude:: /../../book/lino_book/projects/combo/__init__.py
 
 Here is the project's :xfile:`settings.py` file :
 
-.. literalinclude:: ../../../lino_book/projects/combo/settings.py
+.. literalinclude:: /../../book/lino_book/projects/combo/settings.py
 
 And finally the :file:`fixtures/demo.py` file contains the data we use
 to fill our database:
 
-.. literalinclude:: ../../../lino_book/projects/combo/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/combo/fixtures/demo.py
 
 
 

@@ -20,7 +20,7 @@ fields*.
 Here is an example of a virtual table (taken from the
 :mod:`lino_book.projects.vtables` demo project):
 
-.. literalinclude:: ../../lino_book/projects/vtables/models.py
+.. literalinclude:: /../../book/lino_book/projects/vtables/models.py
 
 We can show this table in a shell session:
 

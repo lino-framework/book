@@ -2,8 +2,7 @@
 The Lino Book
 =============
 
-Welcome to the online version of the **Lino Book**, the free repository with
-technical documentation about the Lino framework.
+Welcome to the online documentation about the Lino framework.
 
 .. Rumma & Ko is `hiring people <http://www.saffre-rumma.net/jobs>`_
    to help us with our work on Lino.
@@ -12,9 +11,17 @@ technical documentation about the Lino framework.
 Sitemap
 -------
 
+
+.. toctree::
+   :maxdepth: 1
+
+   about/index
+   demos
+
 .. toctree::
    :maxdepth: 2
 
+   User's Guide <guide/index>
    Developer's Guide </user/index>
    Contributor's Guide </dev/index>
    Hoster's Guide </admin/index>
@@ -24,10 +31,11 @@ Sitemap
    about/thanks
 
 .. toctree::
-   :hidden:
+   :maxdepth: 1
 
+   community/index
+   blog
    copyright
-
 
 .. toctree::
    :hidden:

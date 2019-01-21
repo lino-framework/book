@@ -23,7 +23,7 @@ to illustrate some aspects of :doc:`/dev/gfks`.
 
 The :xfile:`models.py` file defines four database models:
 
-.. literalinclude:: ../../lino_book/projects/gfktest/lib/gfktest/models.py
+.. literalinclude:: /../../book/lino_book/projects/gfktest/lib/gfktest/models.py
 
 A `Member` is the potential owner of the other three things.
 
@@ -34,7 +34,7 @@ A `Memo` has a nullable `owner` field and thus will be cleared when we delete th
 This project also uses :mod:`lino.modlib.contenttypes`. We define this
 in our :xfile:`settings.py` module:
 
-.. literalinclude:: ../../lino_book/projects/gfktest/settings/__init__.py
+.. literalinclude:: /../../book/lino_book/projects/gfktest/settings/__init__.py
 
 
 A utility function:
@@ -140,5 +140,5 @@ Tested twice
 This tutorial project is tested twice.  Most things which we tested in
 the present document are also being tested in a plain unittest module:
 
-.. literalinclude:: ../../lino_book/projects/gfktest/test_gfk.py
+.. literalinclude:: /../../book/lino_book/projects/gfktest/test_gfk.py
 

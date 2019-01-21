@@ -20,11 +20,11 @@ We have two variants of German in :attr:`languages
 <lino.core.site.Site.languages>`: "normal" ('de') and "Belgian"
 ('de_BE'):
 
-.. literalinclude:: ../../lino_book/projects/de_BE/settings.py
+.. literalinclude:: /../../book/lino_book/projects/de_BE/settings.py
 
 The :xfile:`models.py` file defines a single model:
 
-.. literalinclude:: ../../lino_book/projects/de_BE/models.py
+.. literalinclude:: /../../book/lino_book/projects/de_BE/models.py
 
 The model inherits from :class:`BabelNamed
 <lino.utils.mldbc.mixins.BabelNamed>`.
@@ -33,7 +33,7 @@ We wrote a Python fixture with some differences between those two
 languages.
 
 
-.. literalinclude:: ../../lino_book/projects/de_BE/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/de_BE/fixtures/demo.py
    :lines: 1-14
 
 To verify whether it worked as expected, we ask Lino to show us the

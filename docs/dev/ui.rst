@@ -66,7 +66,7 @@ There are several proofs of concept for alternative user interfaces.
 Elements of a user interface
 ============================
 
-In :doc:`/about/ui` we say that Lino separates business logic and user
+In :doc:`/dev/about/ui` we say that Lino separates business logic and user
 interface.  That's a noble goal, but the question is *where exactly*
 you are going to separate.  The actual challenge is the API between
 them.

@@ -117,7 +117,7 @@ The :mod:`lino_book.projects.actions` project shows some methods of
 defining actions.  Here is the :xfile:`models.py` file used for this
 small demo project:
 
-.. literalinclude:: ../../lino_book/projects/actions/models.py
+.. literalinclude:: /../../book/lino_book/projects/actions/models.py
  
 
 >>> from lino import startup

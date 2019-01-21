@@ -30,7 +30,7 @@ We have a table of Places, some of them are Restaurants,
 some are Pubs, and some are neither Pub nor Restaurant.
 
 
-.. literalinclude:: ../../../lino_book/projects/nomti/app/models.py
+.. literalinclude:: /../../book/lino_book/projects/nomti/app/models.py
 
 
 The demo data

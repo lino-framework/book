@@ -19,7 +19,7 @@ The models of an application are defined in a file named
 :xfile:`models.py`.  Here is the :xfile:`models.py` file we are going
 to use in this tutorial:
 
-.. literalinclude:: ../../lino_book/projects/tables/models.py
+.. literalinclude:: /../../book/lino_book/projects/tables/models.py
 
 This file is defined in the :mod:`lino_book.projects.tables` demo
 project.  You can try the code snippets on this page from within a

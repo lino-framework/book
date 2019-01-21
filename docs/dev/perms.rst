@@ -22,7 +22,7 @@ permission to see a given resource or to execute a given action.  An
 application framework must provide a system for managing these
 permissions.
 
-See :doc:`/about/auth` if you wonder why Lino replaces Django's user
+See :doc:`/dev/about/auth` if you wonder why Lino replaces Django's user
 management and permission system.  Yes, this is radical. Django's
 approach for managing permissions is one of the reasons why I wrote
 Lino.  I believe that maintaining a few production sites with

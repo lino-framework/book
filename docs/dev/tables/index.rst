@@ -58,11 +58,11 @@ To illustrate this, we will have a look at the
 
 Here are the **database models**:
 
-.. literalinclude:: ../../../lino_book/projects/tables/models.py
+.. literalinclude:: /../../book/lino_book/projects/tables/models.py
 
 And here are the **tables**:
 
-.. literalinclude:: ../../../lino_book/projects/tables/desktop.py
+.. literalinclude:: /../../book/lino_book/projects/tables/desktop.py
 
 Tables can be defined either together with the database models in your
 :xfile:`models.py`, or in a separate file named :xfile:`desktop.py`.
@@ -275,7 +275,7 @@ Defining a web interface
 The last piece of the user interface is the *menu definition*, located
 in the :xfile:`__init__.py` file ot this tutorial:
 
-.. literalinclude:: ../../../lino_book/projects/tables/__init__.py
+.. literalinclude:: /../../book/lino_book/projects/tables/__init__.py
 
 Every plugin of a Lino application can define its own subclass of
 :class:`lino.core.plugin.Plugin`, and Lino instantiates these objects
@@ -308,7 +308,7 @@ Some screenshots:
 The :file:`fixtures/demo.py` file contains the data we used to fill
 our database:
 
-.. literalinclude:: ../../../lino_book/projects/tables/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/tables/fixtures/demo.py
 
 
 

@@ -122,7 +122,7 @@ The :file:`mysite/settings.py` file
 Please change the contents of your :xfile:`settings.py` to the
 following:
 
-.. literalinclude:: ../../../lino_book/projects/polls/mysite/settings.py
+.. literalinclude:: /../../book/lino_book/projects/polls/mysite/settings.py
 
 A few explanations:
 
@@ -192,7 +192,7 @@ The :file:`polls/models.py` file
 Please change the contents of your :file:`polls/models.py` to the
 following:
 
-.. literalinclude:: ../../../lino_book/projects/polls/polls/models.py
+.. literalinclude:: /../../book/lino_book/projects/polls/polls/models.py
 
 A few explanations while looking at that file:
 
@@ -217,7 +217,7 @@ The :file:`polls/desktop.py` file
 Now please create (in the same directory as your :xfile:`models.py`) a
 file named :file:`desktop.py` with the following content.
 
-.. literalinclude:: ../../../lino_book/projects/polls/polls/desktop.py
+.. literalinclude:: /../../book/lino_book/projects/polls/polls/desktop.py
 
 This file defines three **tables** for our application.  Tables are an
 important new concept in Lino.  We will learn more about them in
@@ -302,12 +302,12 @@ is easy and fun because you can write fixtures in Python.
 - Still in the same directory, create another file named ``demo.py``
   with the following content:
 
-.. literalinclude:: ../../../lino_book/projects/polls/polls/fixtures/demo1.py
+.. literalinclude:: /../../book/lino_book/projects/polls/polls/fixtures/demo1.py
 
 - If you prefer, the following code does exactly the same but has the
   advantage of being more easy to maintain:
 
-.. literalinclude:: ../../../lino_book/projects/polls/polls/fixtures/demo.py
+.. literalinclude:: /../../book/lino_book/projects/polls/polls/fixtures/demo.py
 
 - Run the following command (from your project directory) 
   to install these fixtures::
@@ -403,7 +403,7 @@ Please create a directory named :file:`mysite/config`, and in that
 directory create a file named :xfile:`admin_main.html` with the
 following content:
 
-.. literalinclude:: ../../../lino_book/projects/polls/mysite/config/admin_main.html
+.. literalinclude:: /../../book/lino_book/projects/polls/mysite/config/admin_main.html
 
 Explanations:
 
