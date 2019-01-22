@@ -173,6 +173,7 @@ exclude_patterns = [
     # 'releases/2010/*',
     # 'releases/2011/*',
     'include/*',
+    'shared/include/*',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
