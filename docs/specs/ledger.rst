@@ -222,23 +222,34 @@ redefine it completely
 Debit and credit
 ================
         
-The balance of an account
-=========================
-
-The **balance** of an account is the amount of money in that account.
-
 .. data:: DEBIT
 .. data:: CREDIT
 
-An account balance is either Debit or Credit.  We represent this
-internally as the boolean values `True` and `False`, but define two
-names :data:`DEBIT` and :data:`CREDIT` for them:
+Every movement of a financial transaction "moves" some amount either **out of**
+or **into** a given account.  For some reasons beyond the scope of this book,
+accountants didn't want to express this "direction" of a movement simply by
+using either a positive or a negative number, they wanted an explicit word for
+it and called it **debiting** and **crediting**.
+
+We represent the direction of a movement internally as the boolean values
+`True` and `False`, but define two names :data:`DEBIT` and :data:`CREDIT` for
+them:
 
 >>> from lino_xl.lib.ledger.utils import DEBIT, CREDIT
 >>> DEBIT
 False
 >>> CREDIT
 True
+
+Since it is a boolean field, some frontends might represent it as a checkbox.
+In that case remember that **checked** means credit and **not checked** means
+debit.
+
+The balance of an account
+=========================
+
+The **balance** of an account is the amount of money in that account. An
+account balance is either Debit or Credit.
 
 .. class:: Balance
            
@@ -321,6 +332,7 @@ Movements
         Virtual field showing :attr:`amount` if :attr:`dc` is CREDIT.
         
     .. attribute:: amount
+
     .. attribute:: dc
 
     .. attribute:: match
@@ -558,9 +570,10 @@ A **journal** is a named sequence of numbered *vouchers*.
         all movements.
                    
     .. attribute:: printed_name
+
     .. attribute:: dc
 
-        The primary booking direction.
+        The primary booking direction (checked means Credit, unchecked Debit).
 
         In a journal of *sales invoices* this should be *Debit*
         (checked), because a positive invoice total should be

@@ -107,8 +107,12 @@ Refer to a company. Usage example::
     I met Joe from [company 1] and we agreed...
 
 .. 
+    >>> print(rt.login('robin').parse_memo("See [company 100]."))
+    See <a href="Detail" title="Rumma &amp; Ko O&#220;">#100</a>.
+
     >>> print(rt.login().parse_memo("See [company 1]."))
     See [ERROR Company matching query does not exist. in '[company 1]' at position 4-15].
+
 
 
 .. _memo.person:
