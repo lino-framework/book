@@ -20,6 +20,9 @@ tickets and projects.
 >>> lino.startup('lino_book.projects.team.settings.demo')
 >>> from lino.api.doctest import *
 
+
+
+
 Overview
 ========
 
@@ -741,3 +744,7 @@ Screenshots
 ===========
 
 .. image:: tickets.Ticket.merge.png
+
+
+
+

@@ -6,16 +6,202 @@
 Exploring SQL activity in Lino Noi
 ==================================
 
-This document shows why Jane is so slow when displaying tickets.
-It is also a demo of
-the :func:`show_sql_queries <lino.api.doctest.show_sql_queries>`
-function.
+This document helps us to inspect and visualize some performance problems
+encountered on Jane.
+
 
 We use the :mod:`lino_book.projects.team` demo database.
     
->>> import lino
->>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
 >>> from lino.api.doctest import *
+
+Dashboard is slow after Django upgrade from 1 to 2
+==================================================
+
+>>> import sqlparse
+>>> qs = tickets.Tickets.request().get_data_iterator()
+>>> sql = str(qs.query).replace('"','')
+>>> print(sqlparse.format(sql, reindent=True, keyword_case='upper'))
+SELECT tickets_ticket.id,
+       tickets_ticket.modified,
+       tickets_ticket.created,
+       tickets_ticket.ref,
+       tickets_ticket.user_id,
+       tickets_ticket.assigned_to_id,
+       tickets_ticket.private,
+       tickets_ticket.priority,
+       tickets_ticket.closed,
+       tickets_ticket.planned_time,
+       tickets_ticket.site_id,
+       tickets_ticket.summary,
+       tickets_ticket.description,
+       tickets_ticket.upgrade_notes,
+       tickets_ticket.ticket_type_id,
+       tickets_ticket.duplicate_of_id,
+       tickets_ticket.end_user_id,
+       tickets_ticket.state,
+       tickets_ticket.deadline,
+       tickets_ticket.reporter_id,
+       tickets_ticket.waiting_for,
+       tickets_ticket.feedback,
+       tickets_ticket.standby,
+       tickets_ticket.fixed_since,
+       tickets_ticket.regular_hours,
+       tickets_ticket.extra_hours,
+       tickets_ticket.free_hours,
+       contacts_partner.id,
+       contacts_partner.email,
+       contacts_partner.language,
+       contacts_partner.url,
+       contacts_partner.phone,
+       contacts_partner.gsm,
+       contacts_partner.fax,
+       contacts_partner.country_id,
+       contacts_partner.city_id,
+       contacts_partner.zip_code,
+       contacts_partner.region_id,
+       contacts_partner.addr1,
+       contacts_partner.street_prefix,
+       contacts_partner.street,
+       contacts_partner.street_no,
+       contacts_partner.street_box,
+       contacts_partner.addr2,
+       contacts_partner.prefix,
+       contacts_partner.name,
+       contacts_partner.remarks,
+       contacts_person.partner_ptr_id,
+       contacts_person.title,
+       contacts_person.first_name,
+       contacts_person.middle_name,
+       contacts_person.last_name,
+       contacts_person.gender,
+       contacts_person.birth_date,
+       users_user.person_ptr_id,
+       users_user.modified,
+       users_user.created,
+       users_user.start_date,
+       users_user.end_date,
+       users_user.password,
+       users_user.last_login,
+       users_user.username,
+       users_user.user_type,
+       users_user.initials,
+       users_user.time_zone,
+       users_user.callme_mode,
+       users_user.verification_code,
+       users_user.user_state,
+       users_user.access_class,
+       users_user.event_type_id,
+       users_user.open_session_on_new_ticket,
+       users_user.notify_myself,
+       users_user.mail_mode,
+       users_user.github_username,
+       T7.id,
+       T7.email,
+       T7.language,
+       T7.url,
+       T7.phone,
+       T7.gsm,
+       T7.fax,
+       T7.country_id,
+       T7.city_id,
+       T7.zip_code,
+       T7.region_id,
+       T7.addr1,
+       T7.street_prefix,
+       T7.street,
+       T7.street_no,
+       T7.street_box,
+       T7.addr2,
+       T7.prefix,
+       T7.name,
+       T7.remarks,
+       T6.partner_ptr_id,
+       T6.title,
+       T6.first_name,
+       T6.middle_name,
+       T6.last_name,
+       T6.gender,
+       T6.birth_date,
+       T5.person_ptr_id,
+       T5.modified,
+       T5.created,
+       T5.start_date,
+       T5.end_date,
+       T5.password,
+       T5.last_login,
+       T5.username,
+       T5.user_type,
+       T5.initials,
+       T5.time_zone,
+       T5.callme_mode,
+       T5.verification_code,
+       T5.user_state,
+       T5.access_class,
+       T5.event_type_id,
+       T5.open_session_on_new_ticket,
+       T5.notify_myself,
+       T5.mail_mode,
+       T5.github_username,
+       T8.id,
+       T8.modified,
+       T8.created,
+       T8.ref,
+       T8.user_id,
+       T8.assigned_to_id,
+       T8.private,
+       T8.priority,
+       T8.closed,
+       T8.planned_time,
+       T8.site_id,
+       T8.summary,
+       T8.description,
+       T8.upgrade_notes,
+       T8.ticket_type_id,
+       T8.duplicate_of_id,
+       T8.end_user_id,
+       T8.state,
+       T8.deadline,
+       T8.reporter_id,
+       T8.waiting_for,
+       T8.feedback,
+       T8.standby,
+       T8.fixed_since,
+       T8.regular_hours,
+       T8.extra_hours,
+       T8.free_hours,
+       T9.id,
+       T9.email,
+       T9.language,
+       T9.url,
+       T9.phone,
+       T9.gsm,
+       T9.fax,
+       T9.country_id,
+       T9.city_id,
+       T9.zip_code,
+       T9.region_id,
+       T9.addr1,
+       T9.street_prefix,
+       T9.street,
+       T9.street_no,
+       T9.street_box,
+       T9.addr2,
+       T9.prefix,
+       T9.name,
+       T9.remarks
+FROM tickets_ticket
+LEFT OUTER JOIN users_user ON (tickets_ticket.user_id = users_user.person_ptr_id)
+LEFT OUTER JOIN contacts_person ON (users_user.person_ptr_id = contacts_person.partner_ptr_id)
+LEFT OUTER JOIN contacts_partner ON (contacts_person.partner_ptr_id = contacts_partner.id)
+LEFT OUTER JOIN users_user T5 ON (tickets_ticket.assigned_to_id = T5.person_ptr_id)
+LEFT OUTER JOIN contacts_person T6 ON (T5.person_ptr_id = T6.partner_ptr_id)
+LEFT OUTER JOIN contacts_partner T7 ON (T6.partner_ptr_id = T7.id)
+LEFT OUTER JOIN tickets_ticket T8 ON (tickets_ticket.duplicate_of_id = T8.id)
+LEFT OUTER JOIN contacts_partner T9 ON (tickets_ticket.end_user_id = T9.id)
+ORDER BY tickets_ticket.id DESC
+
 
 During startup there were two SQL queries:
 
