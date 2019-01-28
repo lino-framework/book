@@ -139,31 +139,11 @@ Einfügen in Klienten (Begleitet)
 There are a lot of data fields:
 
 >>> len(d.data.keys())
-86
+8
 
 >>> print(' '.join(sorted(d.data.keys())))
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-AgentsByClient MovementsByProject activity activityHidden age
-birth_country birth_countryHidden birth_date birth_place broker
-brokerHidden cbss_identify_person cbss_manage_access cbss_relations
-cbss_retrieve_ti_groups cbss_summary checkdata_ProblemsByOwner
-civil_state civil_stateHidden client_state client_stateHidden created
-cv_LanguageKnowledgesByPerson cvs_emitted declared_name
-disable_editing disabled_fields dupable_clients_SimilarClients email
-excerpts_ExcerptsByProject faculty facultyHidden fax first_name gender
-genderHidden gesdos_id group groupHidden gsm
-households_MembersByPerson humanlinks_LinksByHuman id id_document
-image in_belgium_since income_ag income_kg income_misc income_rente
-income_wg is_cpas is_obsolete is_senior job_agents language
-languageHidden last_name middle_name modified national_id nationality
-nationalityHidden needs_residence_permit needs_work_permit
-noble_condition notes_NotesByProject obstacles overview phone
-refusal_reason refusal_reasonHidden remarks remarks2 residence_type
-residence_typeHidden row_class seeking_since skills tim_id
-unavailable_until unavailable_why unemployed_since
-uploads_UploadsByClient work_permit_suspended_until workflow_buttons
-
-
+disabled_fields first_name gender genderHidden language languageHidden last_name national_id
 
 
 
