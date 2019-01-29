@@ -38,7 +38,7 @@ install_requires = [
 if PY2:
     install_requires.append('channels<2')
 else:
-    install_requires.append('channels')
+    install_requires.append('channels>2')
 
 SETUP_INFO = dict(
     name='lino_book',
