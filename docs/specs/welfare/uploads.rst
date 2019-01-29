@@ -350,7 +350,7 @@ Einfügen in Uploads von BRECHT Bernd (177) (Ist aktiv)
 >>> data_record_data_keys = list(rmu(d.data_record['data'].keys()))
 >>> data_record_data_keys.sort()
 >>> data_record_data_keys
-['company', 'companyHidden', 'contact_person', 'contact_personHidden', 'contact_role', 'contact_roleHidden', 'description', 'disable_editing', 'disabled_fields', 'end_date', 'file', 'id', 'needed', 'owner', 'project', 'projectHidden', 'remark', 'start_date', 'type', 'typeHidden', 'user', 'userHidden']
+['description', 'disabled_fields', 'end_date', 'file', 'type', 'typeHidden']
 
 >>> data_record_data = rmu(d.data_record['data'])
 >>> pprint(data_record_data, width=200)
