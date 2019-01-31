@@ -15,7 +15,7 @@ The :mod:`lino_xl.lib.products` plugin adds functionality for managing
    :local:
 
 .. include:: /include/tested.rst
-             
+
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')
 >>> from lino.api.doctest import *
@@ -25,7 +25,7 @@ Overview
 ========
 
 A **product** is something you can sell or buy.  The :mod:`lino_xl.lib.sales`
-plugins injects a `sales_price` field.
+plugins injects a :attr:`sales_price` field to the product model.
 
 Products can be grouped into **categories**, and every product must be of a
 given **product type**.
@@ -188,3 +188,28 @@ Every product type has its own menu entry.
      30     kg      Kg
     ====== ======= =======
     <BLANKLINE>
+
+
+Price rules
+===========
+
+Price rules can be used to define which products are available for a given
+partner, and to find a default product for a given context.
+
+.. class:: PriceFactors
+
+    A choicelist of "price factors".
+
+    This list is empty by default.  Applications can define their specific
+    price factors.  Every price factor causes a field to be injected to the
+    :class:`lino_xl.lib.contats.Partner` model.
+
+    >>> rt.show(products.PriceFactors)
+    Keine Daten anzuzeigen
+
+.. class:: PriceRules
+
+    The list of price rules.
+
+    >>> rt.show(products.PriceRules)
+    Keine Daten anzuzeigen

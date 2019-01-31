@@ -19,7 +19,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, ledger, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-80 models:
+81 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -44,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         80
+ contenttypes.ContentType   gfks.ContentTypes              3         81
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
@@ -88,6 +88,7 @@ The database structure
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
+ products.PriceRule         products.PriceRules            4         0
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           6         5
  rooms.Booking              rooms.Bookings                 23        3
@@ -121,7 +122,7 @@ behaviour. See also :doc:`/dev/delete`.
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, products.PriceRule.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Line.guest_role, system.SiteConfig.pupil_guestrole
 - cal.Room :
@@ -200,7 +201,7 @@ behaviour. See also :doc:`/dev/delete`.
 - outbox.Mail :
   - CASCADE : outbox.Attachment.mail, outbox.Recipient.mail
 - products.Product :
-  - PROTECT : cal.Room.fee, courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, sales.InvoiceItem.product
+  - PROTECT : cal.Room.fee, courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, products.PriceRule.fee, sales.InvoiceItem.product
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :

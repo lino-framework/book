@@ -67,7 +67,6 @@ The database models
  courses.Course              courses.Activities             42        52
  courses.Enrolment           courses.Enrolments             15        78
  courses.Line                courses.Lines                  25        3
- courses.PriceRule           courses.PriceRules             7         3
  courses.Slot                courses.Slots                  5         0
  courses.Topic               courses.Topics                 4         0
  dashboard.Widget            dashboard.Widgets              5         0
@@ -104,6 +103,7 @@ The database models
  notes.EventType             notes.EventTypes               8         1
  notes.Note                  notes.Notes                    17        100
  notes.NoteType              notes.NoteTypes                11        3
+ products.PriceRule          products.PriceRules            7         3
  products.Product            products.Products              14        5
  products.ProductCat         products.ProductCats           6         2
  sales.InvoiceItem           sales.InvoiceItems             15        156
@@ -151,7 +151,7 @@ behaviour. See also :doc:`/dev/delete`.
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, courses.PriceRule.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, products.PriceRule.event_type, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Enrolment.guest_role, courses.Line.guest_role
 - cal.Room :
@@ -228,7 +228,7 @@ behaviour. See also :doc:`/dev/delete`.
 - notes.NoteType :
   - PROTECT : notes.Note.type
 - products.Product :
-  - PROTECT : courses.Enrolment.option, courses.Line.fee, courses.PriceRule.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, sales.InvoiceItem.product, users.User.cash_daybook
+  - PROTECT : courses.Enrolment.option, courses.Line.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, products.PriceRule.fee, sales.InvoiceItem.product, users.User.cash_daybook
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
