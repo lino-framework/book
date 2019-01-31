@@ -1,3 +1,4 @@
+.. include:: /../docs/shared/include/defs.rst
 .. doctest docs/specs/noi/sql.rst
    
 .. _specs.noi.sql:
