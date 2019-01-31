@@ -66,6 +66,7 @@ Plugins of the Extensions library
    ledger
    notes
    office
+   orders
    phones
    polls
    products
