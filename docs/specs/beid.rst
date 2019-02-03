@@ -21,6 +21,10 @@ Belgian eID cards and storing that data in the database.
 >>> from lino.api.doctest import *
 
 
+See also unit tests in :mod:`lino_welfare.tests.test_beid`.
+
+
+
 Introduction
 ============
 
@@ -35,23 +39,20 @@ application's models.  That model is referrable as
 
 See unit tests in :mod:`lino_welfare.tests.test_beid`.
 
-.. class:: BeIdCardHolder
+.. class:: SSIN
 
-    Mixin for models which represent an eid card holder.
-    Currently only Belgian eid cards are tested.
-    Concrete subclasses must also inherit from :mod:`lino.mixins.Born`.
+    A mixin that adds two fields :attr:`national_id` and :attr:`nationality`.
+
+    You can use this mixin also when the plugin is not installed.
 
     Class attributes:
 
     .. attribute:: validate_national_id = False
-                   
+
         Whether to validate the :attr:`national_id` immediately before
         saving a record.  If this is `False`, the :attr:`national_id`
         might contain invalid values which would then cause data
         problems.
-
-
-    Database fields:
 
     .. attribute:: national_id
 
@@ -59,6 +60,8 @@ See unit tests in :mod:`lino_welfare.tests.test_beid`.
         is not validated directly because that would cause problems
         with legacy data where SSINs need manual control. See also
         :class:`BeIdCardHolderChecker`.
+
+    Database fields:
 
     .. attribute:: nationality
 
@@ -71,9 +74,64 @@ See unit tests in :mod:`lino_welfare.tests.test_beid`.
         because it is stored there as a language and gender specific
         plain text.
 
+
+.. class:: BeIdCardHolder
+
+    Mixin for models which represent an eid card holder.
+    Currently only Belgian eid cards are tested.
+    Concrete subclasses must also inherit from :mod:`lino.mixins.Born`.
+
+    Database fields:
+
+    .. attribute:: birth_country
+
+    .. attribute:: birth_place
+    .. attribute:: card_number
+    .. attribute:: card_valid_from
+    .. attribute:: card_valid_until
+
+    .. attribute:: card_type
+
+        The type of id card.
+
+        Choices are defined in :class:`BeIdCardTypes`
+
+    .. attribute:: card_issuer
+
+        The administration who issued this ID card.
+
+    .. attribute:: noble_condition
+
+        The eventual noble condition of this person.
+
+    .. method:: read_beid
+
+        Update card holder data from eID card
+
+        Read eId card and store the data on the selected holder.
+
+        This is a row action (called on a given holder).
+
+        When the selected holder has an empty `national_id`, and when
+        there is no holder yet with that `national_id` in the database,
+        then we want to update the existing holder from the card.
+
+
+    .. method:: find_by_beid
+
+        Find or create card holder from eID card
+
+        Read an eID card, then either show the existing holder or ask to
+        create a new holder.
+
+        This is a list action, usually called from a quicklink or a main
+        menu item.
+
+
     .. attribute:: image
 
         Virtual field which displays the picture.
+
            
 
 

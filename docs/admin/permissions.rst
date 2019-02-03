@@ -41,7 +41,7 @@ Discovering problems
 
   If this produces some output, you probably want to fix it::
     
-    $ find ! -group www-data -exec chgrp www-data '{}' +
+    $ sudo find ! -group www-data -exec chgrp www-data '{}' +
     
 - Show directories which don't have the `setgid flags
   <https://en.wikipedia.org/wiki/Setuid>`_ set::
@@ -50,7 +50,7 @@ Discovering problems
 
   If this produces some output, you probably want to fix it::
 
-    $ find -type d ! -perm /g=s -exec chmod g+s '{}' +
+    $ sudo find -type d ! -perm /g=s -exec chmod g+s '{}' +
 
 - Show files which are not *writable* for other group members::
     
@@ -66,7 +66,7 @@ Discovering problems
 
   If this produces some output, you probably want to fix it::
 
-    $ find ! -perm /g=r -exec chmod g+r '{}' +
+    $ sudo find ! -perm /g=r -exec chmod g+r '{}' +
 
 - Show directories which are not *executable* for other group members::
     
@@ -82,7 +82,7 @@ Discovering problems
 
   If this produces some output, you probably want to fix it::
 
-    $ find ! -perm /g=r -exec chmod g+r '{}' +
+    $ sudo find ! -perm /g=r -exec chmod g+r '{}' +
 
 More general diagnostics:
 
