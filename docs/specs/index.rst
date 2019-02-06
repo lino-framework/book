@@ -58,6 +58,7 @@ Plugins of the Extensions library
    cv
    events/index
    excerpts
+   files
    finan
    households
    humanlinks
