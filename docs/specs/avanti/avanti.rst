@@ -276,7 +276,7 @@ Clients
  cal.ConflictingEventsChecker      Check for conflicting calendar entries
  cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  cal.LongEntryChecker              Too long-lasting calendar entries
- beid.BeIdCardHolderChecker        Check for invalid SSINs
+ beid.SSINChecker                  Check for invalid SSINs
  dupable.DupableChecker            Check for missing phonetic words
  dupable.SimilarObjectsChecker     Check for similar objects
 ================================= ========================================

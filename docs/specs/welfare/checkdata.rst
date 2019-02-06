@@ -47,8 +47,8 @@ checkers.
  cal.ObsoleteEventTypeChecker            Obsolete generated calendar entries
  cal.LongEntryChecker                    Too long-lasting calendar entries
  mixins.DupableChecker                   Check for missing phonetic words
- beid.BeIdCardHolderChecker              Check for invalid SSINs
- pcsw.SSINChecker                        Check for valid identification
+ beid.SSINChecker                        Check for invalid SSINs
+ pcsw.IdentityChecker                    Check for valid identification
  coachings.ClientCoachingsChecker        Check coachings
  isip.OverlappingContractsChecker        Check for overlapping contracts
  ledger.VoucherChecker                   Check integrity of ledger vouchers

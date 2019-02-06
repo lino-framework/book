@@ -443,7 +443,7 @@ Database structure
 - properties.Property : id, name, group, type, name_fr, name_en
 - sepa.Account : id, partner, iban, bic, remark, primary, account_type, managed
 - sessions.Session : session_key, session_data, expire_date
-- system.SiteConfig : id, default_build_method, simulate_today, site_company, signer1, signer2, siner1_function, signer2_function, next_partner_id, default_event_type, site_calendar, max_auto_events, hide_events_before, client_calendar, client_guestrole, team_guestrole, prompt_calendar, propgroup_skills, propgroup_softskills, propgroup_obstacles, master_budget, system_note_type, job_office, residence_permit_upload_type, work_permit_upload_type, driving_licence_upload_type, sector, cbss_org_unit, ssdn_user_id, ssdn_email, cbss_http_username, cbss_http_password
+- system.SiteConfig : id, default_build_method, simulate_today, site_company, signer1, signer2, signer1_function, signer2_function, next_partner_id, default_event_type, site_calendar, max_auto_events, hide_events_before, client_calendar, client_guestrole, team_guestrole, prompt_calendar, propgroup_skills, propgroup_softskills, propgroup_obstacles, master_budget, system_note_type, job_office, residence_permit_upload_type, work_permit_upload_type, driving_licence_upload_type, sector, cbss_org_unit, ssdn_user_id, ssdn_email, cbss_http_username, cbss_http_password
 - tinymce.TextFieldTemplate : id, user, name, description, text
 - uploads.Upload : id, project, start_date, end_date, file, mimetype, user, owner_type, owner_id, company, contact_person, contact_role, upload_area, type, description, remark, needed
 - uploads.UploadType : id, name, upload_area, max_number, wanted, shortcut, warn_expiry_unit, warn_expiry_value, name_fr, name_en
@@ -1030,7 +1030,7 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Meine Ereignisse/Notizen : 9
 - Büro --> Meine Datenkontrollliste : 0
 - Kalender --> Meine Termine : 4
-- Kalender --> Überfällige Termine : 37
+- Kalender --> Überfällige Termine : 81
 - Kalender --> Meine unbestätigten Termine : 3
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
@@ -1157,7 +1157,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Büro --> Anhänge : 1
 - Explorer --> Büro --> Ereignisse/Notizen : 112
 - Explorer --> Büro --> Einfügetexte : 3
-- Explorer --> Kalender --> Kalendereinträge : 301
+- Explorer --> Kalender --> Kalendereinträge : 348
 - Explorer --> Kalender --> Aufgaben : 36
 - Explorer --> Kalender --> Anwesenheiten : 620
 - Explorer --> Kalender --> Abonnements : 10

@@ -35,7 +35,7 @@ checkers.
 ----------------------------------- -----------------------------------------------
  printing.CachedPrintableChecker     Check for missing target files
  countries.PlaceChecker              Check data of geographical places.
- beid.BeIdCardHolderChecker          Check for invalid SSINs
+ beid.SSINChecker                    Check for invalid SSINs
  cal.EventGuestChecker               Entries without participants
  cal.ConflictingEventsChecker        Check for conflicting calendar entries
  cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
