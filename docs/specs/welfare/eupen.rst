@@ -28,11 +28,11 @@ it was the first Lino that went into production in 2010.
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 63 plugins
-- 141 models
+- 142 models
 - 42 user roles
 - 16 user types
-- 538 views
-- 28 dialog actions
+- 539 views
+- 29 dialog actions
 <BLANKLINE>
 
 
@@ -93,7 +93,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Orte : Länder, Orte
   - Kontakte : Organisationsarten, Funktionen, Gremien, Haushaltsarten
   - Eigenschaften : Eigenschaftsgruppen, Eigenschafts-Datentypen, Fachkompetenzen, Sozialkompetenzen, Hindernisse
-  - Büro : Auszugsarten, Upload-Arten, Notizarten, Ereignisarten, Meine Einfügetexte
+  - Büro : Auszugsarten, Library volumes, Upload-Arten, Notizarten, Ereignisarten, Meine Einfügetexte
   - Kalender : Kalenderliste, Räume, Regelmäßige Ereignisse, Gastrollen, Kalendereintragsarten, Wiederholungsregeln, Externe Kalender, Tagesplanerzeilen
   - ÖSHZ : Klientenkontaktarten, Dienste, Begleitungsbeendigungsgründe, Integrationsphasen, Berufe, AG-Sperrgründe, Dispenzgründe, Hilfearten, Kategorien
   - Buchhaltung : Haushaltsartikel, Journale, Geschäftsjahre, Buchungsperioden, Zahlungsbedingungen
@@ -197,7 +197,7 @@ to explicitly override the language of :meth:`show_menu
 - Konfigurierung :
   - Orte : Länder, Orte
   - Kontakte : Organisationsarten, Funktionen, Haushaltsarten
-  - Büro : Upload-Arten, Notizarten, Ereignisarten, Meine Einfügetexte
+  - Büro : Library volumes, Upload-Arten, Notizarten, Ereignisarten, Meine Einfügetexte
   - Kalender : Kalenderliste, Räume, Regelmäßige Ereignisse, Kalendereintragsarten, Wiederholungsregeln, Externe Kalender, Tagesplanerzeilen
   - ÖSHZ : Klientenkontaktarten, Dienste, Begleitungsbeendigungsgründe, Integrationsphasen, Berufe, AG-Sperrgründe, Dispenzgründe, Hilfearten, Kategorien
   - Lebenslauf : Sprachen, Bildungsarten, Akademische Grade, Sektoren, Funktionen, Arbeitsregimes, Statuus, Vertragsdauern
@@ -412,7 +412,7 @@ Database structure
 - ledger.Account : id, ref, seqno, name, common_account, needs_partner, clearable, default_amount, name_fr, name_en, sales_allowed, purchases_allowed, wages_allowed, taxes_allowed, clearings_allowed, bank_po_allowed
 - ledger.AccountingPeriod : id, ref, start_date, end_date, state, year, remark
 - ledger.FiscalYear : id, ref, start_date, end_date, state
-- ledger.Journal : id, ref, seqno, name, build_method, template, trade_type, voucher_type, journal_group, auto_check_clearings, auto_fill_suggestions, force_sequence, account, partner, printed_name, dc, yearly_numbering, must_declare, printed_name_fr, printed_name_en, name_fr, name_en, sepa_account
+- ledger.Journal : id, ref, seqno, name, build_method, template, trade_type, voucher_type, journal_group, auto_check_clearings, auto_fill_suggestions, force_sequence, account, partner, printed_name, dc, yearly_numbering, must_declare, uploads_volume, printed_name_fr, printed_name_en, name_fr, name_en, sepa_account
 - ledger.LedgerInfo : user, entry_date
 - ledger.MatchRule : id, account, journal
 - ledger.Movement : id, project, voucher, partner, seqno, account, amount, dc, match, cleared, value_date
@@ -445,8 +445,9 @@ Database structure
 - sessions.Session : session_key, session_data, expire_date
 - system.SiteConfig : id, default_build_method, simulate_today, site_company, signer1, signer2, signer1_function, signer2_function, next_partner_id, default_event_type, site_calendar, max_auto_events, hide_events_before, client_calendar, client_guestrole, team_guestrole, prompt_calendar, propgroup_skills, propgroup_softskills, propgroup_obstacles, master_budget, system_note_type, job_office, residence_permit_upload_type, work_permit_upload_type, driving_licence_upload_type, sector, cbss_org_unit, ssdn_user_id, ssdn_email, cbss_http_username, cbss_http_password
 - tinymce.TextFieldTemplate : id, user, name, description, text
-- uploads.Upload : id, project, start_date, end_date, file, mimetype, user, owner_type, owner_id, company, contact_person, contact_role, upload_area, type, description, remark, needed
+- uploads.Upload : id, project, start_date, end_date, file, mimetype, user, owner_type, owner_id, company, contact_person, contact_role, upload_area, type, volume, library_file, description, remark, needed
 - uploads.UploadType : id, name, upload_area, max_number, wanted, shortcut, warn_expiry_unit, warn_expiry_value, name_fr, name_en
+- uploads.Volume : id, ref, root_dir, base_url, description
 - users.Authority : id, user, authorized
 - users.User : id, email, language, modified, created, start_date, end_date, password, last_login, username, user_type, initials, first_name, last_name, remarks, newcomer_consultations, newcomer_appointments, notify_myself, mail_mode, access_class, event_type, calendar, coaching_type, coaching_supervisor, newcomer_quota, partner
 - vatless.AccountInvoice : id, user, journal, entry_date, voucher_date, accounting_period, number, narration, state, voucher_ptr, project, partner, payment_term, match, bank_account, your_ref, due_date, amount
@@ -612,7 +613,7 @@ Each window layout defines a given set of fields.
 - ledger.Accounts.insert : ref, sheet_item, name, name_fr, name_en
 - ledger.Accounts.merge_row : merge_to, reason
 - ledger.FiscalYears.merge_row : merge_to, reason
-- ledger.Journals.detail : name, name_fr, name_en, ref, journal_group, voucher_type, trade_type, seqno, id, account, partner, build_method, template, dc, force_sequence, yearly_numbering, auto_fill_suggestions, auto_check_clearings, must_declare, printed_name, printed_name_fr, printed_name_en
+- ledger.Journals.detail : name, name_fr, name_en, ref, journal_group, voucher_type, trade_type, seqno, id, account, partner, build_method, template, uploads_volume, dc, force_sequence, yearly_numbering, auto_fill_suggestions, auto_check_clearings, must_declare, printed_name, printed_name_fr, printed_name_en
 - ledger.Journals.insert : ref, name, name_fr, name_en, journal_group, voucher_type
 - ledger.Journals.merge_row : merge_to, reason
 - ledger.PaymentTerms.detail : ref, months, days, end_of_month, name, name_fr, name_en, printed_text, printed_text_fr, printed_text_en
@@ -640,14 +641,17 @@ Each window layout defines a given set of fields.
 - system.SiteConfigs.detail : site_company, next_partner_id, job_office, master_budget, signer1, signer2, signer1_function, signer2_function, system_note_type, default_build_method, propgroup_skills, propgroup_softskills, propgroup_obstacles, residence_permit_upload_type, work_permit_upload_type, driving_licence_upload_type, default_event_type, prompt_calendar, hide_events_before, client_guestrole, team_guestrole, cbss_org_unit, sector, ssdn_user_id, ssdn_email, cbss_http_username, cbss_http_password
 - tinymce.TextFieldTemplates.detail : id, name, user, description, text
 - tinymce.TextFieldTemplates.insert : name, user
-- uploads.AllUploads.detail : file, user, upload_area, type, description, owner
-- uploads.AllUploads.insert : type, description, file, user
+- uploads.AllUploads.detail : file, user, volume, library_file, upload_area, type, description, owner
+- uploads.AllUploads.insert : type, description, file, volume, library_file, user
 - uploads.UploadTypes.detail : id, upload_area, shortcut, name, name_fr, name_en, warn_expiry_unit, warn_expiry_value, wanted, max_number
 - uploads.UploadTypes.insert : upload_area, name, name_fr, name_en, warn_expiry_unit, warn_expiry_value
 - uploads.Uploads.detail : user, project, id, type, description, start_date, end_date, needed, company, contact_person, contact_role, file, owner, remark
 - uploads.Uploads.insert : type, file, start_date, end_date, description
 - uploads.UploadsByClient.insert : file, type, end_date, description
 - uploads.UploadsByController.insert : file, type, end_date, description
+- uploads.Volumes.detail : ref, description, root_dir, base_url, overview
+- uploads.Volumes.insert : ref, description, root_dir, base_url
+- uploads.Volumes.merge_row : merge_to, reason
 - users.AllUsers.send_welcome_email : email, subject
 - users.Users.change_password : current, new1, new2
 - users.Users.detail : username, user_type, partner, first_name, last_name, initials, email, language, mail_mode, id, created, modified, remarks, event_type, access_class, calendar, newcomer_quota, coaching_type, coaching_supervisor, newcomer_consultations, newcomer_appointments
@@ -860,6 +864,9 @@ Each window layout is **viewable** by a given set of user types.
 - uploads.Uploads.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - uploads.UploadsByClient.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - uploads.UploadsByController.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
+- uploads.Volumes.detail : visible for 110 120 410 420 admin 910
+- uploads.Volumes.insert : visible for 110 120 410 420 admin 910
+- uploads.Volumes.merge_row : visible for admin 910
 - users.AllUsers.send_welcome_email : visible for admin 910
 - users.Users.change_password : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - users.Users.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
@@ -994,6 +1001,8 @@ Global list of all actions that have a parameter dialog.
   - **Begründung** (reason)
 - pcsw.Clients.refuse_client : Ablehnen
   (main) [visible for all]: **Ablehnungsgrund** (reason), **Bemerkung** (remark)
+- uploads.Volumes.merge_row : Fusionieren
+  (main) [visible for all]: **nach...** (merge_to), **Begründung** (reason)
 - users.AllUsers.send_welcome_email : Welcome mail
   (main) [visible for all]: **E-Mail-Adresse** (email), **Betreff** (subject)
 - users.Users.change_password : Passwort ändern
@@ -1030,7 +1039,7 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Meine Ereignisse/Notizen : 9
 - Büro --> Meine Datenkontrollliste : 0
 - Kalender --> Meine Termine : 4
-- Kalender --> Überfällige Termine : 81
+- Kalender --> Überfällige Termine : 37
 - Kalender --> Meine unbestätigten Termine : 3
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
@@ -1083,6 +1092,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Eigenschaften --> Sozialkompetenzen : 0
 - Konfigurierung --> Eigenschaften --> Hindernisse : 0
 - Konfigurierung --> Büro --> Auszugsarten : 22
+- Konfigurierung --> Büro --> Library volumes : 1
 - Konfigurierung --> Büro --> Upload-Arten : 10
 - Konfigurierung --> Büro --> Notizarten : 14
 - Konfigurierung --> Büro --> Ereignisarten : 11
@@ -1143,7 +1153,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Vollmachten : 4
 - Explorer --> System --> Benutzerarten : 16
 - Explorer --> System --> Benutzerrollen : 42
-- Explorer --> System --> Datenbankmodelle : 142
+- Explorer --> System --> Datenbankmodelle : 143
 - Explorer --> System --> Benachrichtigungen : 14
 - Explorer --> System --> Änderungen : 0
 - Explorer --> System --> All dashboard widgets : 1
@@ -1157,7 +1167,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Büro --> Anhänge : 1
 - Explorer --> Büro --> Ereignisse/Notizen : 112
 - Explorer --> Büro --> Einfügetexte : 3
-- Explorer --> Kalender --> Kalendereinträge : 348
+- Explorer --> Kalender --> Kalendereinträge : 301
 - Explorer --> Kalender --> Aufgaben : 36
 - Explorer --> Kalender --> Anwesenheiten : 620
 - Explorer --> Kalender --> Abonnements : 10

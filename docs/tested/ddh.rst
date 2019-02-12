@@ -1,21 +1,15 @@
+.. doctest docs/tested/ddh.rst
 .. _lino.tested.ddh:
 
 =============================
 Preventing accidental deletes
 =============================
 
-This document tests this functionality.
 
 
-.. to run only this test:
-
-    $ python setup.py test -s tests.DocsTests.test_ddh
-    
-    doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.docs.settings.doctests')
-    >>> from lino.api.doctest import *
+>>> from lino import startup
+>>> startup('lino_book.projects.docs.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 >>> from lino.utils.diag import analyzer
@@ -52,6 +46,8 @@ This document tests this functionality.
   - CASCADE : polls.AnswerChoice.response, polls.AnswerRemark.response
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
+- uploads.Volume :
+  - PROTECT : uploads.Upload.volume
 - users.User :
   - PROTECT : changes.Change.user, notify.Message.user, polls.Poll.user, polls.Response.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 <BLANKLINE>
