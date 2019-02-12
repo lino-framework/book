@@ -35,11 +35,11 @@ Lino Welfare *à la Châtelet* went online in 2013.
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 59 plugins
-- 133 models
+- 134 models
 - 42 user roles
 - 16 user types
-- 505 views
-- 31 dialog actions
+- 506 views
+- 32 dialog actions
 <BLANKLINE>
 
   
@@ -93,7 +93,7 @@ Romain
   - Système : Paramètres du Site, Utilisateurs, Textes d'aide
   - Endroits : Pays, Endroits
   - Contacts : Types d'organisation, Fonctions, Conseils, Types de ménage
-  - Bureau : Types d'extrait, Types de fichiers téléchargés, Types d'observation, Types d'événements, Mes Text Field Templates
+  - Bureau : Types d'extrait, Libraries de fichiers, Types de fichiers téléchargés, Types d'observation, Types d'événements, Mes Text Field Templates
   - Calendrier : Calendriers, Locaux, Évènements periodiques, Rôles de participants, Types d'entrée calendrier, Règles de récurrence, Calendriers externes, Lignes de planificateur
   - Ateliers : Savoirs de base, Topics, Timetable Slots
   - CPAS : Types de contact client, Services, Raisons d’arrêt d'intervention, Phases d'intégration, Activités, Types d'exclusion du chômage, Motifs de dispense, Types d'aide sociale, Catégories
@@ -105,7 +105,7 @@ Romain
   - Questionnaires : Listes de choix
 - Explorateur :
   - Contacts : Personnes de contact, Partenaires, Types d'adresses, Adresses, Membres du conseil, Rôles de membres de ménage, Membres de ménage, Liens de parenté, Types de parenté
-  - Système : Procurations, Types d'utilisateur, Rôles d'utilisateur, types de contenu, Notifications, Changes, All dashboard widgets, Tests de données, Problèmes de données
+  - Système : Procurations, Types d'utilisateur, Rôles d'utilisateur, Types de contenu, Notifications, Changes, All dashboard widgets, Tests de données, Problèmes de données
   - Bureau : Extraits, Fichiers téléchargés, Upload Areas, Mails envoyés, Pièces jointes, Observations, Text Field Templates
   - Calendrier : Entrées calendrier, Tâches, Présences, Abonnements, Event states, Guest states, Task states
   - Ateliers : Tests de niveau, Ateliers, Inscriptions, États Inscription, Course layouts, États Atelier
@@ -156,7 +156,7 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview()) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 59 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, office, xl, countries, contacts, appypod, humanize, users, contenttypes, gfks, notify, changes, addresses, excerpts, uploads, outbox, extensible, cal, reception, badges, boards, clients, coachings, pcsw, welfare, sales, languages, cv, integ, isip, jobs, art61, immersion, active_job_search, courses, newcomers, cbss, households, humanlinks, debts, notes, aids, polls, summaries, weasyprint, esf, beid, dashboard, export_excel, checkdata, tinymce, sessions.
-133 models:
+134 models:
 ============================== =============================== ========= =======
  Name                           Default table                   #fields   #rows
 ------------------------------ ------------------------------- --------- -------
@@ -204,7 +204,7 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
  contacts.Person                contacts.Persons                32        109
  contacts.Role                  contacts.Roles                  4         10
  contacts.RoleType              contacts.RoleTypes              6         5
- contenttypes.ContentType       gfks.ContentTypes               3         133
+ contenttypes.ContentType       gfks.ContentTypes               3         134
  countries.Country              countries.Countries             9         270
  countries.Place                countries.Places                11        78
  courses.Course                 courses.Activities              30        7
@@ -289,8 +289,9 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
  sessions.Session               sessions.SessionTable           3         ...
  system.SiteConfig              system.SiteConfigs              29        1
  tinymce.TextFieldTemplate      tinymce.TextFieldTemplates      5         2
- uploads.Upload                 uploads.Uploads                 17        11
+ uploads.Upload                 uploads.Uploads                 19        11
  uploads.UploadType             uploads.UploadTypes             11        9
+ uploads.Volume                 uploads.Volumes                 5         0
  users.Authority                users.Authorities               3         3
  users.User                     users.Users                     26        12
 ============================== =============================== ========= =======
@@ -516,14 +517,17 @@ Each window layout defines a given set of fields.
 - system.SiteConfigs.detail : site_company, next_partner_id, job_office, master_budget, signer1, signer2, signer1_function, signer2_function, system_note_type, default_build_method, propgroup_skills, propgroup_softskills, propgroup_obstacles, residence_permit_upload_type, work_permit_upload_type, driving_licence_upload_type, default_event_type, prompt_calendar, hide_events_before, client_guestrole, team_guestrole, cbss_org_unit, sector, ssdn_user_id, ssdn_email, cbss_http_username, cbss_http_password
 - tinymce.TextFieldTemplates.detail : id, name, user, description, text
 - tinymce.TextFieldTemplates.insert : name, user
-- uploads.AllUploads.detail : file, user, upload_area, type, description, owner
-- uploads.AllUploads.insert : type, description, file, user
+- uploads.AllUploads.detail : file, user, volume, library_file, upload_area, type, description, owner
+- uploads.AllUploads.insert : type, description, file, volume, library_file, user
 - uploads.UploadTypes.detail : id, upload_area, shortcut, name, name_nl, name_de, name_en, warn_expiry_unit, warn_expiry_value, wanted, max_number
 - uploads.UploadTypes.insert : upload_area, name, name_nl, name_de, name_en, warn_expiry_unit, warn_expiry_value
 - uploads.Uploads.detail : user, project, id, type, description, start_date, end_date, needed, company, contact_person, contact_role, file, owner, remark
 - uploads.Uploads.insert : type, file, start_date, end_date, description
 - uploads.UploadsByClient.insert : file, type, end_date, description
 - uploads.UploadsByController.insert : file, type, end_date, description
+- uploads.Volumes.detail : ref, description, root_dir, base_url, overview
+- uploads.Volumes.insert : ref, description, root_dir, base_url
+- uploads.Volumes.merge_row : merge_to, reason
 - users.AllUsers.send_welcome_email : email, subject
 - users.Users.change_password : current, new1, new2
 - users.Users.detail : username, user_type, partner, first_name, last_name, initials, email, language, mail_mode, id, created, modified, remarks, event_type, access_class, calendar, newcomer_quota, coaching_type, coaching_supervisor, newcomer_consultations, newcomer_appointments
@@ -724,6 +728,9 @@ Each window layout is **viewable** by a given set of user types.
 - uploads.Uploads.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - uploads.UploadsByClient.insert : visible for 100 110 120 200 210 300 400 410 420 500 510 800 admin 910
 - uploads.UploadsByController.insert : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
+- uploads.Volumes.detail : visible for 110 120 410 420 admin 910
+- uploads.Volumes.insert : visible for 110 120 410 420 admin 910
+- uploads.Volumes.merge_row : visible for admin 910
 - users.AllUsers.send_welcome_email : visible for admin 910
 - users.Users.change_password : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
 - users.Users.detail : visible for 100 110 120 200 210 220 300 400 410 420 500 510 800 admin 910
@@ -841,6 +848,8 @@ options.
   (main) [visible for all]: **Raison de refus** (reason), **Remarque** (remark)
 - polls.Polls.merge_row : Fusionner
   (main) [visible for all]: **vers...** (merge_to), **Questions** (polls_Question), **Raison** (reason)
+- uploads.Volumes.merge_row : Fusionner
+  (main) [visible for all]: **vers...** (merge_to), **Raison** (reason)
 - users.AllUsers.send_welcome_email : Welcome mail
   (main) [visible for all]: **adresse e-mail** (email), **Sujet** (subject)
 - users.Users.change_password : Changer mot de passe
@@ -920,6 +929,7 @@ Here is the output of :func:`walk_menu_items
 - Configuration --> Contacts --> Conseils : 4
 - Configuration --> Contacts --> Types de ménage : 7
 - Configuration --> Bureau --> Types d'extrait : 20
+- Configuration --> Bureau --> Libraries de fichiers : 1
 - Configuration --> Bureau --> Types de fichiers téléchargés : 10
 - Configuration --> Bureau --> Types d'observation : 14
 - Configuration --> Bureau --> Types d'événements : 11
@@ -983,7 +993,7 @@ Here is the output of :func:`walk_menu_items
 - Explorateur --> Système --> Procurations : 4
 - Explorateur --> Système --> Types d'utilisateur : 16
 - Explorateur --> Système --> Rôles d'utilisateur : 42
-- Explorateur --> Système --> types de contenu : 134
+- Explorateur --> Système --> Types de contenu : 135
 - Explorateur --> Système --> Notifications : 13
 - Explorateur --> Système --> Changes : 0
 - Explorateur --> Système --> All dashboard widgets : 1
