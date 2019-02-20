@@ -25,11 +25,11 @@ Complexity factors
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 42 plugins
-- 60 models
+- 61 models
 - 19 user roles
 - 7 user types
-- 219 views
-- 14 dialog actions
+- 220 views
+- 15 dialog actions
 <BLANKLINE>
 
 
@@ -41,7 +41,7 @@ The database models
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 42 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, excerpts, comments, changes, tickets, summaries, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, checkdata, dashboard, github, userstats, rest_framework, restful, django_mailbox, mailbox, sessions.
-60 models:
+61 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
@@ -67,7 +67,7 @@ The database models
  contacts.Person                    contacts.Persons                 27        7
  contacts.Role                      contacts.Roles                   4         0
  contacts.RoleType                  contacts.RoleTypes               4         5
- contenttypes.ContentType           gfks.ContentTypes                3         60
+ contenttypes.ContentType           gfks.ContentTypes                3         61
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -96,15 +96,16 @@ The database models
  tickets.Ticket                     tickets.Tickets                  27        116
  tickets.TicketType                 tickets.TicketTypes              5         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
- uploads.Upload                     uploads.Uploads                  9         0
+ uploads.Upload                     uploads.Uploads                  11        0
  uploads.UploadType                 uploads.UploadTypes              8         0
+ uploads.Volume                     uploads.Volumes                  5         0
  users.Authority                    users.Authorities                3         0
  users.User                         users.Users                      47        7
  userstats.UserStat                 userstats.UserStats              4         36
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1
- working.SiteSummary                working.Summaries                9        9
+ working.SiteSummary                working.Summaries                9         9
 ================================== ================================ ========= =======
 <BLANKLINE>
 

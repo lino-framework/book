@@ -70,7 +70,7 @@ Subquery expression
  cal_task                  SELECT      95
  checkdata_problem         SELECT      95
  contacts_partner          SELECT      50
- django_content_type       SELECT      12
+ django_content_type       SELECT      13
  excerpts_excerpt          SELECT      95
  invoicing_item            SELECT      95
  ledger_account            SELECT      22
@@ -88,6 +88,7 @@ Subquery expression
  sheets_partnerentry       SELECT      1
  sheets_report             SELECT      95
  topics_interest           SELECT      95
+ uploads_upload            SELECT      95
 ========================= =========== =======
 <BLANKLINE>
 

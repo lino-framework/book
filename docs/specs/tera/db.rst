@@ -16,12 +16,12 @@ Complexity factors
 
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- 44 plugins
-- 93 models
+- 45 plugins
+- 96 models
 - 22 user roles
 - 4 user types
-- 352 views
-- 26 dialog actions
+- 362 views
+- 27 dialog actions
 <BLANKLINE>
 
 
@@ -31,8 +31,8 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
-93 models:
+45 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, uploads, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+96 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -61,7 +61,7 @@ The database models
  contacts.Person             contacts.Persons               35        69
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         93
+ contenttypes.ContentType    gfks.ContentTypes              3         96
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
  courses.Course              courses.Activities             42        52
@@ -91,7 +91,7 @@ The database models
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
- ledger.Journal              ledger.Journals                23        8
+ ledger.Journal              ledger.Journals                24        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
  ledger.Movement             ledger.Movements               13        473
@@ -125,6 +125,9 @@ The database models
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2
  topics.Interest             topics.Interests               6         86
  topics.Topic                topics.Topics                  8         3
+ uploads.Upload              uploads.Uploads                11        0
+ uploads.UploadType          uploads.UploadTypes            8         0
+ uploads.Volume              uploads.Volumes                5         0
  users.Authority             users.Authorities              3         0
  users.User                  users.Users                    21        6
  vat.InvoiceItem             vat.InvoiceItemTable           9         0
@@ -171,7 +174,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, clients.ClientContact.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, invoicing.Item.generator_type, notes.Note.owner_type, sales.InvoiceItem.invoiceable_type, topics.Interest.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, checkdata.Problem.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, invoicing.Item.generator_type, notes.Note.owner_type, sales.InvoiceItem.invoiceable_type, topics.Interest.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country, tera.Client.nationality
 - countries.Place :
@@ -253,9 +256,13 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : courses.Course.procurer
 - topics.Topic :
   - PROTECT : topics.Interest.topic
+- uploads.UploadType :
+  - PROTECT : uploads.Upload.type
+- uploads.Volume :
+  - PROTECT : ledger.Journal.uploads_volume, uploads.Upload.volume
 - users.User :
   - CASCADE : ledger.LedgerInfo.user
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, sheets.Report.user, tera.Client.user, tinymce.TextFieldTemplate.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, checkdata.Problem.user, courses.Course.teacher, courses.Course.user, courses.Enrolment.user, dashboard.Widget.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, sheets.Report.user, tera.Client.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>

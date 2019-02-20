@@ -22,12 +22,13 @@ in some other form.  One such frame actor is the calendar panel,
 another one is :class:`lino.utils.report.EmptyTable`, used to display
 reports.
 
-Note: The code snippets on this page use the
-:mod:`lino_book.projects.team` demo project.
+The code snippets on this page use the :mod:`lino_book.projects.team` demo
+project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.team.settings.doctests')
 >>> from lino.api.doctest import *
+>>> from lino.core import actors, kernel
 
 
 Identifying actors
@@ -65,18 +66,16 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-234
+235
 
-Besides this complete list, actors are collected at different places
-depending on their type.
-
->>> from lino.core import actors, kernel
+The actors aren't collected only in this global list but also at different
+places depending on their type.
 
 Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-117
+118
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 

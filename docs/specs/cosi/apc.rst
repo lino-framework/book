@@ -47,7 +47,7 @@ Robin is the system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
-- Office : My Excerpts
+- Office : My Excerpts, My Uploads
 - Sales : Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
@@ -60,13 +60,13 @@ Robin is the system administrator, he has a complete menu:
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions
-  - Office : Excerpt Types, My Text Field Templates
+  - Office : Excerpt Types, Library volumes, Upload Types, My Text Field Templates
   - Sales : Products, Services, Product Categories, Price rules, Paper types
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms, Sheet items
 - Explorer :
   - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
-  - Office : Excerpts, Text Field Templates
+  - Office : Excerpts, Uploads, Upload Areas, Text Field Templates
   - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups, Accounting Reports
   - SEPA : Bank accounts

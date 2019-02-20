@@ -31,7 +31,7 @@ Site administrator
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
   - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
-  - Office : Comment Types, Upload Types, Excerpt Types
+  - Office : Comment Types, Library volumes, Upload Types, Excerpt Types
   - Clients : Client Contact types
   - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations
   - Trends : Trend areas, Trend stages
@@ -245,6 +245,9 @@ Each window is **viewable** for a given set of user types.
 - uploads.Uploads.insert : visible for teacher user coordinator secretary staff admin
 - uploads.UploadsByClient.insert : visible for user secretary staff admin
 - uploads.UploadsByController.insert : visible for teacher user coordinator secretary staff admin
+- uploads.Volumes.detail : visible for staff admin
+- uploads.Volumes.insert : visible for staff admin
+- uploads.Volumes.merge_row : visible for admin
 - users.AllUsers.send_welcome_email : visible for admin
 - users.Users.change_password : visible for teacher user auditor coordinator secretary staff admin
 - users.Users.detail : visible for teacher user auditor coordinator secretary staff admin

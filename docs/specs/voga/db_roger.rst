@@ -18,8 +18,8 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, ledger, finan, sepa, bevats, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-81 models:
+41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, uploads, ledger, finan, sepa, bevats, notes, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+82 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -44,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         81
+ contenttypes.ContentType   gfks.ContentTypes              3         82
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
@@ -73,7 +73,7 @@ The database structure
  ledger.Account             ledger.Accounts                17        27
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.FiscalYear          ledger.FiscalYears             5         7
- ledger.Journal             ledger.Journals                23        8
+ ledger.Journal             ledger.Journals                24        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
  ledger.MatchRule           ledger.MatchRules              3         16
  ledger.Movement            ledger.Movements               12        887
@@ -98,8 +98,9 @@ The database structure
  sepa.Account               sepa.Accounts                  6         25
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
- uploads.Upload             uploads.Uploads                9         0
+ uploads.Upload             uploads.Uploads                11        0
  uploads.UploadType         uploads.UploadTypes            8         0
+ uploads.Volume             uploads.Volumes                5         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         187
@@ -213,6 +214,8 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
+- uploads.Volume :
+  - PROTECT : ledger.Journal.uploads_volume, uploads.Upload.volume
 - users.User :
   - CASCADE : ledger.LedgerInfo.user
   - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, outbox.Mail.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user

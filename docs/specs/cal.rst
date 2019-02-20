@@ -58,6 +58,10 @@ The ending date field is empty. If a somae-day calendar entry  has its **ending
 time before the starting time**, the ending date is understood as the day after
 the starting date.
 
+A **room** is a place where calendar entries can happen. Applications might
+change the user label for this model e.g. to "Team" (as done in :ref:`presto`)
+if the application is not interested in physical rooms.
+
 
 
 Calendar entries
@@ -927,10 +931,18 @@ Reference
     
 .. class:: Rooms
 
-    List of rooms where calendar events can happen.
+    Basse class for all list of rooms.
+
 
 .. class:: AllRooms
+
+    List of all rooms.
+
            
+.. class:: RoomDetail
+
+    The detail layout for :class:`Rooms` and subclasses.
+
 
     
 .. class:: Subscription
