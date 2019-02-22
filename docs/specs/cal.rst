@@ -7,7 +7,7 @@
 
 .. currentmodule:: lino_xl.lib.cal
 
-The :mod:`lino_xl.lib.cal` adds calendar functionality.
+The :mod:`lino_xl.lib.cal` plugin adds calendar functionality.
 
 .. contents::
   :local:
@@ -27,21 +27,7 @@ Overview
 
 A **calendar entry** is a lapse of time to be visualized in a calendar.
 
-There are different **types of calendar entries**. The list of *calendar entry
-types* is configurable. Every entry has a field :attr:`Event.event_type` which
-points to its type. The type of a calendar entry can be used to change
-application-specific behaviour and rules. An **appointment** (french
-"Rendez-vous", german "Termin") is a calendar entry which supposes that another
-person is involved. Appointments are defined by assigning them a calendar entry
-type that has the :attr:`EventType.is_appointment` field checked.
-
-Calendar entries can have a **state** which can change according to workflow
-rules defined by the application.
-
-A calendar entry can have a list of **guests**. A guest is the fact that a
-given person is *expected to attend* or *has been present* at a given calendar
-entry. Depending on the context the guests of a calendar entry may be labelled
-"guests", "participants", "presences"...
+A calendar entry can have a list of **guests**.
 
 Lino can generate **automatic calendar entries**.  The rules for generating
 calendar entries are application-specific.  The application developer does this
@@ -51,6 +37,18 @@ The **daily planner** is a table showing an overview of calendar entries on a
 given day.  Both the rows and the columns can be configured per application or
 locally per site.
 
+A **task** is something a user plans to do.
+
+Calendar entries
+================
+
+A **calendar entry** is a lapse of time to be visualized in a calendar.
+
+An **appointment** (French "Rendez-vous", German "Termin") is a calendar entry
+which supposes that another person is involved. Appointments are defined by
+assigning them a calendar entry type that has the
+:attr:`EventType.is_appointment` field checked.
+
 An **all-day** calendar entry is one that has no starting and ending time.
 
 A **same-day** calendar entry is one that ends on the same date as it starts.
@@ -58,24 +56,17 @@ The ending date field is empty. If a somae-day calendar entry  has its **ending
 time before the starting time**, the ending date is understood as the day after
 the starting date.
 
-A **room** is a place where calendar entries can happen. Applications might
-change the user label for this model e.g. to "Team" (as done in :ref:`presto`)
-if the application is not interested in physical rooms.
-
-
-
-Calendar entries
-================
-
-A **calendar entry** is a lapse of time to be visualized in a calendar. The
-internal model name is :class:`Event` for historical reasons, but users see it
-as "Calendar entry".
-
->>> print(rt.models.cal.Event._meta.verbose_name)
-Calendar entry
-
 
 .. class:: Event
+
+    The Django model which represents a calendar entry.
+
+    The internal model name is :class:`Event` for historical reasons, but users see
+    it as "Calendar entry".
+
+    >>> print(rt.models.cal.Event._meta.verbose_name)
+    Calendar entry
+
 
     .. attribute:: start_date
 
@@ -261,16 +252,26 @@ to rules defined by the application.
 The default list of choices for this field contains the following
 values.
 
+>>> rt.show(cal.EntryStates)
+======= ============ ============ ============= =================== ======== ============= =========
+ value   name         text         Button text   Edit participants   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes                 No       No            No
+ 20      draft        Draft        ☐             Yes                 No       No            No
+ 50      took_place   Took place   ☑             Yes                 Yes      No            No
+ 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
+======= ============ ============ ============= =================== ======== ============= =========
+<BLANKLINE>
+
+
 .. class:: EntryStates
 
-    The possible states of a calendar entry.
-    Stored in the :attr:`state <lino_xl.lib.cal.Event.state>` field.
-    
-    Every choice is an instance of :class:`EntryState` and has some
-    attributes.
-    
+    The list of possible states of a calendar entry.
+
 .. class:: EntryState
            
+    Every calendar entry state is an instance of this and has some attributes.
+
     .. attribute:: edit_guests
                    
         Whether presences are editable when the entry is in this
@@ -286,24 +287,19 @@ values.
     .. attribute:: transparent
     .. attribute:: fixed
 
->>> rt.show(cal.EntryStates)
-======= ============ ============ ============= =================== ======== ============= =========
- value   name         text         Button text   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Draft        ☐             Yes                 No       No            No
- 50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
-======= ============ ============ ============= =================== ======== ============= =========
-<BLANKLINE>
 
 
 The type of a calendar entry
 ============================
 
-The :attr:`type <Event.type>` field of a *calendar entry* points to a database
-object which holds certain properties that are common to all entries of that
+Every calendar entry has a field :attr:`Event.event_type` which points to its
 type.
+
+There are different **types of calendar entries**. The list of *calendar entry
+types* is configurable via :menuselection:`Configure --> Calendar --> Calendar
+entry types`.  The type of a calendar entry can be used to change
+application-specific behaviour and rules.
+
 
 .. class:: EventType
 
@@ -469,12 +465,12 @@ A default configuration has two columns in the daily planner:
 Calendars
 =========
 
-Calendar entries can be differentiated into different "calendars".
+Calendar entries can be grouped into "calendars".
 
 
 .. class:: Calendar
 
-    the django model representing a *calendar*.
+    The django model representing a *calendar*.
 
     .. attribute:: color
    
@@ -825,13 +821,18 @@ The entry type "Internal" is marked "transparent".
 True
 
 
-The guests  of a calendar entry
-===============================
+The guests of a calendar entry
+==============================
+
+A calendar entry can have a list of **guests**. A guest is the fact that a
+given person is *expected to attend* or *has been present* at a given calendar
+entry. Depending on the context the guests of a calendar entry may be labelled
+"guests", "participants", "presences", ...
 
 
 .. class:: Guest
 
-    TODO: Rename this to "Presence".
+    The Django model representing a guest.
 
     .. attribute:: event
 
@@ -864,10 +865,6 @@ The guests  of a calendar entry
     .. attribute:: gone_since
 
         Time when the visitor left (checked out).                   
-
-
-
-        
 
 
 Every participant of a calendar entry can have a "role". For example
@@ -903,53 +900,83 @@ and the pupils.
      60      excused   No           Excused   ⚕
     ======= ========= ============ ========= =============
     <BLANKLINE>
-           
 
 
-Reference
-=========
+.. class:: UpdateGuests
+
+    See :meth:`Event.update_guests`.
+
+
+.. class:: UpdateAllGuests
+
+    See :meth:`EventGenerator.update_all_guests`.
+
+
+
+
+Remote calendars
+================
+
+A **remote calendar** is a set of calendar entries stored on another server.
+Lino periodically synchronized the local data from the remote server, and local
+modifications will be sent back to the remote calendar.
+
+The feature is not currently being used anywhere.
+
+See also :mod:`lino_xl.lib.cal.management.commands.watch_calendars`.
 
 
 .. class:: RemoteCalendar
 
-    Remote calendars will be synchronized by
-    :mod:`lino_xl.lib.cal.management.commands.watch_calendars`,
-    and local modifications will be sent back to the remote calendar.
+    Django model for representing a remote calendar.
+
+
+Rooms
+=====
+
+A **room** is location where calendar entries can happen.  For a given room you
+can see the :class:`EntriesByRoom` that happened (or will happen) there.  A
+room has a multilingual name which can be used in printouts.
+
+Applications might change the user label for this model e.g. to "Team" (as done
+in :ref:`presto`) if the application is not interested in physical rooms.
+
 
 
 .. class:: Room
 
-    A location where calendar entries can happen.  For a given Room you
-    can see the :class:`EntriesByRoom` that happened (or will happen)
-    there.  A Room has a multilingual name.
+    Django model for representing a room.
 
     .. attribute:: name
 
-        The designation of the room. This should (but is not required
-        to) be unique.
+        The designation of the room. This is not required to be unique.
 
     
 .. class:: Rooms
 
-    Basse class for all list of rooms.
+    Base class for all list of rooms.
 
 
 .. class:: AllRooms
 
-    List of all rooms.
+    Show a list of all rooms.
 
            
 .. class:: RoomDetail
 
     The detail layout for :class:`Rooms` and subclasses.
 
+Subscriptions
+=============
 
-    
+A **suscription** is when a user subscribes to a calendar.
+It corresponds to what the extensible CalendarPanel calls "Calendars"
+
+
 .. class:: Subscription
 
-    A Suscription is when a User subscribes to a Calendar.
-    It corresponds to what the extensible CalendarPanel calls "Calendars"
-    
+    Django model for representing a subscription.
+
     :user: points to the author (recipient) of this subscription
     :other_user:
     
@@ -957,10 +984,16 @@ Reference
 .. class:: SubscriptionsByUser
 .. class:: SubscriptionsByCalendar
 
+Tasks
+=====
+
+A task is when a user plans to do something (and optionally wants to get
+reminded about it).
+
+
 .. class:: Task
 
-    A Task is when a user plans to do something
-    (and optionally wants to get reminded about it).
+    Django model for representing a subscription.
 
     .. attribute:: priority
 
@@ -989,6 +1022,9 @@ Reference
 .. class:: MyTasks
 
     Shows my tasks whose start date is today or in the future.
+
+Recurrent calendar entries
+==========================
            
 .. class:: EventPolicy
 
@@ -1031,17 +1067,9 @@ Reference
 
     The list of all recurrent events (:class:`RecurrentEvent`).
     
-                
 
-.. class:: UpdateGuests
-
-    See :meth:`Event.update_guests`.
-
-           
-.. class:: UpdateAllGuests
-
-    See :meth:`EventGenerator.update_all_guests`.
-
+Miscellaneous
+==============
 
 .. class:: Events
            
@@ -1246,7 +1274,33 @@ has the following values:
 <BLANKLINE>
 
 
-Duration units can be used for aritmetic operation on durations. For
+.. class:: DurationUnits
+
+    The list of possible duration units defined by this application.
+
+    This is used as the selection list for the :attr:`duration_unit
+    <Event.duration_unit`> field of a calendar entry.
+
+    Every item is an instance of :class:`DurationUnit`.
+
+.. class:: DurationUnit
+
+    Base class for the choices in the :class:`DurationUnits`
+    choicelist.
+
+    .. method:: add_duration(unit, orig, value)
+
+        Return a date or datetime obtained by adding `value`
+        times this `unit` to the specified value `orig`.
+        Returns None is `orig` is empty.
+
+        This is intended for use as a `curried magic method` of a
+        specified list item:
+
+
+
+
+Duration units can be used for arithmetic operation on durations. For
 example:
 
 >>> from lino_xl.lib.cal.choicelists import DurationUnits
@@ -1275,26 +1329,6 @@ datetime.date(2014, 7, 1)
 >>> DurationUnits.years.add_duration(start_date, 1)
 datetime.date(2015, 4, 1)
 
-
-.. class:: DurationUnit
-           
-    Base class for the choices in the :class:`DurationUnits`
-    choicelist.
-
-    .. method:: add_duration(unit, orig, value)
-    
-        Return a date or datetime obtained by adding `value`
-        times this `unit` to the specified value `orig`.
-        Returns None is `orig` is empty.
-        
-        This is intended for use as a `curried magic method` of a
-        specified list item:
-
-
-.. class:: DurationUnits
-           
-    A list of possible values for the :attr:`duration_unit
-    <lino_xl.lib.cal.Event.duration_unit`> field of a calendar entry.
 
 Miscellaneous
 =============

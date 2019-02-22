@@ -1,6 +1,6 @@
-=============
-The Lino Book
-=============
+==================
+The Lino framework
+==================
 
 Welcome to the online documentation about the Lino framework.
 
