@@ -61,20 +61,19 @@ Rooms
 
     
 >>> show_fields(cal.Room, 'name calendar fee company')
-+---------------+--------------+---------------------------------------------------------------+
-| Internal name | Verbose name | Help text                                                     |
-+===============+==============+===============================================================+
-| name          | Designation  | The designation of the room. This should (but is not required |
-|               |              | to) be unique.                                                |
-+---------------+--------------+---------------------------------------------------------------+
-| calendar      | Calendar     | Calendar where events in this room are published.             |
-+---------------+--------------+---------------------------------------------------------------+
-| fee           | Fee          | The default fee to pay when renting this room to an external  |
-|               |              | organization.                                                 |
-+---------------+--------------+---------------------------------------------------------------+
-| company       | Responsible  | Pointer to Company.                                           |
-+---------------+--------------+---------------------------------------------------------------+
-         
++---------------+--------------+-----------------------------------------------------------------+
+| Internal name | Verbose name | Help text                                                       |
++===============+==============+=================================================================+
+| name          | Designation  | The designation of the room. This is not required to be unique. |
++---------------+--------------+-----------------------------------------------------------------+
+| calendar      | Calendar     | Calendar where events in this room are published.               |
++---------------+--------------+-----------------------------------------------------------------+
+| fee           | Fee          | The default fee to pay when renting this room to an external    |
+|               |              | organization.                                                   |
++---------------+--------------+-----------------------------------------------------------------+
+| company       | Responsible  | Pointer to Company.                                             |
++---------------+--------------+-----------------------------------------------------------------+
+
 
 The following rooms are defined in the
 :mod:`lino_book.projects.roger.settings.fixtures.voga` demo fixture.
