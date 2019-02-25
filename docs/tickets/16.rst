@@ -27,7 +27,7 @@ and "All modifications of a GPLv3 licensed products are subject
 to the GPL v3 license."
 
 One possibility is to split Lino into a BSD-licensed "kernel" 
-which does not provide any ExtJS based user interface,
+which does not provide any ExtJS based front end,
 and a GPLv3 licensed extension "Lino+" of this kernel.
 
 Applications could then be proprietary because 

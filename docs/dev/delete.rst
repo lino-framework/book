@@ -21,7 +21,7 @@ method of an actor.
 
 The :attr:`disable_delete` item in :attr:`data_record
 <lino.core.requests.ValidActionResponses.data_record>` is a "preview"
-of whether that row can be deleted or not.  The user interface may use
+of whether that row can be deleted or not.  The front end may use
 this information to disable or enable its delete button.
 
 But the :class:`DeleteSelected <lino.core.actions.DeleteSelected>`

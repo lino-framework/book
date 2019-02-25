@@ -1,12 +1,12 @@
 ==================
-The user interface
+The front end
 ==================
 
 (Needs revision. See also :doc:`/dev/rendering`.)
 
-Lino comes with an extensible collection of out-of-the-box user interfaces.
+Lino comes with an extensible collection of out-of-the-box front ends.
 
-Currently there's one serious user interface based on Sencha ExtJS and
+Currently there's one serious front end based on Sencha ExtJS and
 and another, experimental and more lightweight, based on the
 Twitter/Bootstrap library.
 
@@ -15,7 +15,7 @@ Twitter/Bootstrap library.
 UI renderer
 ===========
 
-Lino has an extensible set of user interfaces (UIs).  This means that
+Lino has an extensible set of front ends (UIs).  This means that
 you may access your Lino application in different ways.  Currently
 there is only one fully functional UI, the
 :ref:`lino.ui.extjs`.

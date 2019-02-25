@@ -8,7 +8,7 @@ Tables.
 
 A Table describes a set of tabular data independently of *user
 interface* and *medium* (paper, screen, interactive or not), but with
-all the meta-data information necessary for any user interface to
+all the meta-data information necessary for any front end to
 produce a satisfying result on any medium.  This is the theory.
 
 Your tables are subclasses of :class:`dd.Table`, and they must be

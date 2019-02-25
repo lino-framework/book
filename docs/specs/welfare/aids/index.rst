@@ -757,7 +757,7 @@ The main panel is as we designed it:
 <BLANKLINE>
 
 Let's look at the LayoutHandle (i.e. version of the Layout which has
-been "compiled" for a given user interface, in our case
+been "compiled" for a given front end, in our case
 :mod:`lino.modlib.extjs`).
 
 >>> lh = layout.get_layout_handle(dd.plugins.extjs)

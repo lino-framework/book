@@ -24,10 +24,10 @@ also apply to Lino:
   
 Lino then adds its own features to the above:
 
-- An out-of-the-box user interface.  We believe that application
+- An out-of-the-box front end.  We believe that application
   developers should *develop applications*, not waste their time
   writing html templates or css.  It is one of Lino's design goals to
-  :doc:`separate business logic and user interface <ui>`.
+  :doc:`separate business logic and front end <ui>`.
 
 - :ref:`Layouts <layouts>`:
   Lino applications use the Python language not only

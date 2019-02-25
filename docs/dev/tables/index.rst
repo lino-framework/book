@@ -18,7 +18,7 @@ arranged in rows and columns.
 
 In a Lino application you describe tables using Python classes.  These
 Python classes are a *general* description of how to lay out your data
-and can be used for different user interfaces.  The same table
+and can be used for different front ends.  The same table
 description is used to render data interactively as a grid panel or on
 a printable document as a table.
 
@@ -189,7 +189,7 @@ Using tables without a web server
 =================================
 
 An important thing with tables is that they are independent of any
-user interface. You define them once, and you can use them on the
+front end. You define them once, and you can use them on the
 console, in a script, in a testcase, in a web interface or in a GUI
 window.
 

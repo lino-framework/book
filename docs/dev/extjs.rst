@@ -7,7 +7,7 @@ Debugging generated ExtJS Javascript code
 .. xfile:: linoweb.js
 
 At server startup the :mod:`lino.modlib.extjs` (or
-:mod:`lino_extjs6.extjs`) user interface generates a series of files
+:mod:`lino_extjs6.extjs`) front end generates a series of files
 named :xfile:`lino_XXX_yy.js` which contain the client side
 application logic.  The first part of this file comes from a file
 :srcref:`lino/modlib/extjs/linoweb.js`, the second part is generated

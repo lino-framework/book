@@ -4,7 +4,7 @@
 #67 : Write a jQuery-based GUI
 ==============================
 
-The expected main advantage of a jQuery-based user interface
+The expected main advantage of a jQuery-based front end
 comparend to ExtJS is better performance. 
 ExtJS is quite heavy and makes Lino look and feel rather slow.
 

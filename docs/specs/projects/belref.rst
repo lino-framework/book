@@ -50,7 +50,7 @@ Project status
 ==============
 
 A side benefit of this project is to be our test field for the
-:mod:`lino.modlib.bootstrap3` user interface.
+:mod:`lino.modlib.bootstrap3` front end.
 
 The project itself grows very slowly because I know no single person
 who believes that this might make sense (and even I wouldn't give my
@@ -114,7 +114,7 @@ This section is currently deactivated.
 
     The JSON API of :mod:`lino.modlib.extjs` is actually not written for
     being public, that's why we have strange items like
-    ``delete_selected`` which are used by the ExtJS user interface.
+    ``delete_selected`` which are used by the ExtJS front end.
 
     So a next step might be to write an XML-based API for publishing data
     from a database, maybe SOAP or XML-RPC.

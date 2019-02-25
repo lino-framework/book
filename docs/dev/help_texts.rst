@@ -105,7 +105,7 @@ See also
 - How it all started: :blogref:`20160620`
 - :meth:`lino.core.site.Site.install_help_text`
 - :meth:`lino.core.site.Site.load_help_texts`
-- The ExtJS user interface displays help texts as tooltips
+- The ExtJS front end displays help texts as tooltips
   only when :attr:`lino.core.site.Site.use_quicklinks` is `True`.
 
 

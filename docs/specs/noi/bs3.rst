@@ -17,7 +17,7 @@ implemented in :mod:`lino_book.projects.bs3`.
 
 Provides readonly anonymous access to the data of
 :mod:`lino_book.projects.team`, using the :mod:`lino.modlib.bootstrap3`
-user interface. See also :mod:`lino_book.projects.public`
+front end. See also :mod:`lino_book.projects.public`
 
 This does not use :mod:`lino.modlib.extjs` at all.
 

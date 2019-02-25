@@ -1,32 +1,33 @@
 .. _dev.ui:
 
-===========================
-Writing new user interfaces
-===========================
+======================
+Writing new front ends
+======================
 
 Lino can have many faces
 ========================
 
-Lino is designed to have *many possible* user interfaces.  It comes
-with an extensible collection of *out-of-the-box* user interfaces.
-You can write a Lino application once and then deploy it via different
-interfaces.
+Lino is designed to have *many possible* front ends.  It comes with an
+extensible collection of *out-of-the-box* front ends. You can write a Lino
+application once and then deploy it via different interfaces.
 
-A real-world example for this is :ref:`noi` which can be deployed
-using two public UIs.  Inspect the :mod:`lino_book.projects.team` and
+A real-world example for this is :ref:`noi` which can be deployed using two
+public UIs.  Inspect the :mod:`lino_book.projects.team` and
 :mod:`lino_book.projects.bs3` demo projects.
 
 
-Alternatives
-============
+Alternative front ends
+======================
 
-There are several proofs of concept for alternative user interfaces.
+There are several proofs of concept for alternative front ends.
 
-- The :ref:`extjs6` is almost ready for production.  But it is
+- The :ref:`extjs6` front end is almost ready for production.  But it is
   currently asleep because the ExtJS library is unfortunately no
   longer free. More precisely its free community version is not
   maintained.
   
+- The :ref:`React front end <react>`  is almost ready for production.
+
 - The :ref:`OpenUI5 <specs.openui5>` project is almost ready for
   production.  OpenUI5 is developed by SAP, conceptually quite similar
   to ExtJS.
@@ -39,7 +40,7 @@ There are several proofs of concept for alternative user interfaces.
 - One might consider Lino's :class:`TextRenderer
   <lino.core.renderer.TextRenderer>` (used for writing :doc:`tested
   functional specifications </dev/doctests>`) as a special kind of
-  user interface.
+  front end.
 
 - a more lightweight web interface using some other JS framework than
   ExtJS.  e.g. `Anular <https://angular.io/>`__ or `Vue
@@ -63,39 +64,21 @@ There are several proofs of concept for alternative user interfaces.
 
   
 
-Elements of a user interface
-============================
+Elements of a front end
+=======================
 
-In :doc:`/dev/about/ui` we say that Lino separates business logic and user
-interface.  That's a noble goal, but the question is *where exactly*
-you are going to separate.  The actual challenge is the API between
-them.
+In :doc:`/dev/about/ui` we say that Lino separates business logic and front
+end.  That's a noble goal, but the question is *where exactly* you are going to
+separate.  The actual challenge is the API between them.
 
-Lino has a rather high-level API because we target a rather wide range
-of possible interfaces.  That API is still evolving and not yet very
-well documented, but the basics seem to have stabilized.  Some general
-elements of every Lino application are:
+The general elements of every Lino application are:
 
 - the **main menu** : a hierarchical representation of the
   application's functions.  In multi-user applications the main menu
   changes depending on the user permissions.
 
-- a highly customizable **grid widget** for rendering tabular data in
-  an editable way.  This description is used for **
+- a highly customizable **grid widget** for rendering tabular data.
 
 - form input using **detail windows** which can contain :ref:`slave
   tables <slave_tables>`, custom panels, ...
-
-- Context-sensitive ComboBoxes with dynamic data store.
-
-- Keyboard navigation for areas are where manual data entry is needed.
-
-- WYSIWYG rich text editor
-
-- Support for multi-lingual database content
-
-- Unlike some desktop applications Lino does *not* reimplement an
-  internal method to open several windows: users simply open several
-  browser windows.
-
 

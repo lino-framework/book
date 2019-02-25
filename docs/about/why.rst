@@ -53,7 +53,7 @@ What Lino is not:
   
 - Lino is optimized for writing applications that are used from
   **desktop computers**.  To make them usable from mobile devices you
-  must write your own user interface. Or you can wait until we
+  must write your own front end. Or you can wait until we
   finished working on a generic solution.
 
 - Lino is not yet well documented. This is the price of having a small

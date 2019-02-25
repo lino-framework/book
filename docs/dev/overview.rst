@@ -107,8 +107,6 @@ Python packages covered by the Lino Book
     - :mod:`lino_noi` (:ref:`noi`) : the application we use for
       managing our collaboration.  It's about tickets, projects, time
       tracking, votes.
-    - :mod:`lino_amici` (:ref:`amici`) : contacts, groups, personal
-      information manager
     - :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
       
     - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
@@ -140,7 +138,7 @@ maintained by the Lino team:
 - :mod:`etgen` uses ElementTree for generating HTML or XML.
 
 - :mod:`commondata` is an experimental project for storing and
-  managing common data as Python code without any user interface.
+  managing common data as Python code without any front end.
 
   
    
@@ -215,12 +213,20 @@ This project is now named :ref:`tera`.
 
 .. _extjs6:
 
-ExtJS 6
--------
+ExtJS 6 front end
+-----------------
 
 See https://github.com/lino-framework/extjs6
       
   
+
+.. _react:
+
+React front end
+---------------
+
+See https://github.com/lino-framework/react
+
 
 .. _algus:
 
@@ -236,8 +242,7 @@ a template for new Lino applications.
 manuals
 -------
 
-The `manuals <https://github.com/lino-framework/manuals>`__ repository no
-longer exists, it has been split into endocs, dedocs and frdocs.
+The `manuals <https://github.com/lino-framework/manuals>`__ repository
 
 
 

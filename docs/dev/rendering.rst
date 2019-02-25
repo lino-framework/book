@@ -1,14 +1,14 @@
 .. _ui.renderer:
 
 ========================================
-Introduction to User Interface Renderers
+Introduction to Front end Renderers
 ========================================
 
-One of Lino's design goals is to make your applications user interface
-agnostic, i.e. independent of the choice of a user interface.  
+One of Lino's design goals is to make your applications front end
+agnostic, i.e. independent of the choice of a front end.
 
 Our plan is that one day local system admins can opt to simply replace
-:mod:`lino.modlib.extjs` by another user interface (e.g. one with a
+:mod:`lino.modlib.extjs` by another front end (e.g. one with a
 less restrictive license).  For example :ref:`belref`
 (:mod:`lino_book.projects.belref`) is a Lino application which runs
 entirely on :mod:`lino.modlib.bootstrap3` and without ExtJS. The
@@ -18,19 +18,19 @@ the road is prepared, but we did not yet reach our goal, mostly
 because until now everybody is happy with ExtJS.
 
 An important side-effect of our plan is that Lino has (already now)
-another "user interface" which writes everything as text formatted in
+another "front end" which writes everything as text formatted in
 reStructuredText syntax. This is interface is heavily used for writing
 technical specifications that are being automatically tested using
 doctest.
 
-A user interface is a special plugin which has its "renderer"
+A front end is a special plugin which has its "renderer"
 (i.e. :attr:`renderer <lino.core.plugin.Plugin.renderer>` attribute
 not `None`).
 
-The default user interface is specified in 
+The default front end is specified in
 :attr:`lino.core.site.Site.default_ui`.
 
-Lino currently has three "User Interface Renderers" (not to be
+Lino currently has three "Front end Renderers" (not to be
 confused with e.g. the appy renderer):
 
 - The renderer used by :mod:`lino.modlib.bootstrap3` is defined in

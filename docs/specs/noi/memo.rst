@@ -74,7 +74,7 @@ Refer to a ticket. Usage example:
   See ``[ticket 1]``.
 
 Note that the current renderer decides how to render the link. For
-example, the default user interface :mod:`lino.modlib.extjs` (or
+example, the default front end :mod:`lino.modlib.extjs` (or
 :mod:`lino_extjs6.extjs6`, depending on our :attr:`default_ui
 <lino.core.site.Site.default_ui>` setting) will render it like this:
 
@@ -83,7 +83,7 @@ example, the default user interface :mod:`lino.modlib.extjs` (or
 >>> print(ses.parse_memo("See [ticket 1]."))
 See <a href="javascript:Lino.tickets.Tickets.detail.run(null,{ &quot;record_id&quot;: 1 })" title="F&#246;&#246; fails to bar when baz">#1</a>.
 
-While the :mod:`lino.modlib.bootstrap3` user interface will render it
+While the :mod:`lino.modlib.bootstrap3` front end will render it
 like this:
 
 >>> ses = rt.login(renderer=dd.plugins.bootstrap3.renderer)

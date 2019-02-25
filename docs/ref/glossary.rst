@@ -97,7 +97,7 @@ Glossary
     
   makeui
     A Lino-specific Django management command that 
-    writes local files needed for the user interface.
+    writes local files needed for the front end.
     See :doc:`/topics/qooxdoo`.
   
   makedocs

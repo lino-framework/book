@@ -5,9 +5,9 @@
 The OpenUI5 front-end
 =====================
 
-The :mod:`lino.modlib.openui5` plugin defines a user interface which
+The :mod:`lino.modlib.openui5` plugin defines a front end which
 uses the `OpenUI5 <https://openui5.org/>`__ JavaScript UI library and
-is meant to fully replace the :mod:`lino.modlib.extjs` user interface.
+is meant to fully replace the :mod:`lino.modlib.extjs` front end.
 
 It uses and includes a static version of the `zlib.js
 <https://github.com/imaya/zlib.js>`__ library by Imaya Yuta and the

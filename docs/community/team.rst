@@ -1,20 +1,13 @@
 .. _lino.team:
 
-=============
-The Lino Team
-=============
+=================
+Lino contributors
+=================
   
-The **Lino Team** is the group of independent humans who help making
-Lino better.
+Here is a list of independent humans who deserve being mentioned here because
+they have contributed to Lino.  Not only code contributions but also ideas and
+promotion.
 
-We have our `organization on GitHub
-<https://github.com/lino-framework>`__ which owns the different
-repositories that make up the Lino framework.
-
-The Lino Team is an informal group of co-publishers. It does neither
-generate revenue nor does it intend to make or distribute profits.
-There is no legal agreement holding its members together.
-See also :ref:`lino.copyright`.
 
 .. |br| raw:: html
 
@@ -122,6 +115,32 @@ or `GitHub <https://github.com/orgs/lino-framework/people/subha-py>`__
 or `GitHub <https://github.com/sandeez>`__
 
 
+.. rubric:: People who I didn't yet ask for permission to be mentioned here:
+
+**Paul**
+provides professional Lino hosting and promotes Lino Welfare in Belgium.
+He was Luc's employer during the first 8 years and never stopped believing in Lino.
+He works as CEO of AbAKUS.
+
+**Gerd**
+has contributed thousands of hours of testing, ideas and end-user training.
+He works as system manager for ÖSHZ Eupen.
+
+**Elmar**
+has contributed more than 20 years of trust and political support.
+He works as CEO for ÖSHZ Eupen.
+
+**Mathieu**
+has contributed more than 20 years of trust and political support.
+He works as coordinator for CPAS de Chatelet.
+
+**Alexa** has contributed more than 600 hours of volunteer work for testing and
+training.
+
+**Thierry** has provided many hours of business advice and customer analysis.
+
+
+.. Also mention Johanna, Anna  Lisa, Lydia?
 
 
 

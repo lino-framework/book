@@ -68,7 +68,7 @@ Refer to a ticket. Usage example:
   See ``[note 1]``.
 
 Note that the current renderer decides how to render the link. For
-example, the default user interface :mod:`lino.modlib.extjs` (or
+example, the default front end :mod:`lino.modlib.extjs` (or
 :mod:`lino_extjs6.extjs6`, depending on our :attr:`default_ui
 <lino.core.site.Site.default_ui>` setting) will render it like this:
 

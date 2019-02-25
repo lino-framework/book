@@ -21,7 +21,7 @@ if you call `delete()` on an object being refered by other objects,
 the refering objects will also be deleted (`on_delete=CASCADE`).
 It just adds a new piece of info to the json structure returned 
 by an element request (:func:`lino.ui.extjs.ext_ui.elem2rec_detailed`).
-The user interface (i.e. :js:func:`Lino.delete_selected`) 
+The front end (i.e. :js:func:`Lino.delete_selected`)
 is responsible for not requesting to DELETE a record 
 that has a message in `disable_delete`.
 
