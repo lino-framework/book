@@ -34,7 +34,7 @@ Lino Welfare *à la Châtelet* went online in 2013.
 
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- 59 plugins
+- 60 plugins
 - 134 models
 - 42 user roles
 - 16 user types
@@ -155,7 +155,7 @@ This is the list of models used in the Châtelet varianat of Lino Welfare:
 
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview()) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-59 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, office, xl, countries, contacts, appypod, humanize, users, contenttypes, gfks, notify, changes, addresses, excerpts, uploads, outbox, extensible, cal, reception, badges, boards, clients, coachings, pcsw, welfare, sales, languages, cv, integ, isip, jobs, art61, immersion, active_job_search, courses, newcomers, cbss, households, humanlinks, debts, notes, aids, polls, summaries, weasyprint, esf, beid, dashboard, export_excel, checkdata, tinymce, sessions.
+60 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, office, xl, countries, contacts, appypod, humanize, users, contenttypes, gfks, notify, changes, addresses, excerpts, uploads, outbox, extensible, cal, reception, badges, boards, clients, coachings, pcsw, welfare, sales, languages, cv, integ, isip, jobs, art61, immersion, active_job_search, courses, newcomers, cbss, households, humanlinks, debts, notes, aids, polls, summaries, weasyprint, esf, beid, dashboard, export_excel, checkdata, tinymce, lino_welcht, sessions.
 134 models:
 ============================== =============================== ========= =======
  Name                           Default table                   #fields   #rows
