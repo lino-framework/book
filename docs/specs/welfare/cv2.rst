@@ -14,7 +14,7 @@ Career (new version)
     >>> from lino.api.doctest import *
 
 A technical tour into the
-:mod:`lino_welfare.chatelet.lib.cv` plugin.
+:mod:`lino_welcht.lib.cv` plugin.
 
 Lino Welfare extends the standard :mod:`lino.modlib.cv` plugin 
 

@@ -27,7 +27,7 @@ This document describes the *Châtelet* variant of Lino Welfare.
 Lino Welfare *à la Châtelet* went online in 2013.
 
 - uses **internal courses**
-  (:mod:`lino_welfare.chatelet.lib.courses`, a sub-plugin
+  (:mod:`lino_welcht.lib.courses`, a sub-plugin
   of :mod:`lino_xl.lib.courses`) instead of **external courses**
   (:mod:`lino_welfare.modlib.xcourses`). And the "Courses" are labelled
   "Workshops" ("Ateliers").

@@ -6,7 +6,7 @@
 =======================
 
 This is about *internal* courses
-(:mod:`lino_welfare.chatelet.lib.courses`), not
+(:mod:`lino_welcht.lib.courses`), not
 :doc:`xcourses`.
 
 
@@ -21,7 +21,7 @@ This is about *internal* courses
 >>> from lino.api.doctest import *
 
 >>> dd.plugins.courses
-lino_welfare.chatelet.lib.courses (extends_models=['Course', 'Line', 'Enrolment'])
+lino_welcht.lib.courses (extends_models=['Course', 'Line', 'Enrolment'])
 
 We call them "workshops":
 

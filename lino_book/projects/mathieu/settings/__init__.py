@@ -5,7 +5,7 @@
 The settings.py used for building both `/docs` and `/userdocs`
 """
 
-from lino_welfare.chatelet.settings import *
+from lino_welcht.settings import *
 
 # the following line should not be active in a checked-in version
 #~ DATABASES['default']['NAME'] = ':memory:'
