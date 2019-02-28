@@ -63,7 +63,6 @@ Other
    newbies/index
    git
    /ref/index
-   py3
    logging
    linod
    design
