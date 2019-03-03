@@ -5,7 +5,14 @@ Community
 =========
 
 The **Lino community** is powered by :doc:`rumma` as long as there is no
-:doc:`lsf`. All work is published as free software under a BSD license.
+:doc:`lsf`.  All work is published as free software under a BSD license.
+You can meet individual contributors on the :doc:`humans` page.
+You can meet partner organizations on the
+:doc:`Hosting providers <hosters>`
+and
+:doc:`Development providers <developers>`
+pages.
+
 
 How to contact us:
 
@@ -30,13 +37,7 @@ How to contact us:
   GitHub <https://github.com/lino-framework>`__ which owns the different
   repositories that make up the Lino framework. See also :ref:`dev.contrib`.
 
-You can meet individual contributors on the :doc:`team` page.
-You can meet partner organizations on the
-:doc:`Hosting providers <hosters>`
-and
-:doc:`Development providers <developers>`
-pages.
-     
+
 .. _get_involved:
 
 Get involved!
@@ -125,6 +126,7 @@ its users. Trainers also write documentation for users.
     admins
     hosters
     team
+    humans
     get_involved
     structure
     rumma
