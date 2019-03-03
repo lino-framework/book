@@ -4,9 +4,8 @@
 Contributing code
 =================
 
-So you want to benefit other people by publishing your changes and
-integrating them into the related source code repository.  That's
-nice. Thank you.  At this point it is time to speak about code
+So you want to share your changes in code or docs and let other people benefit
+from your skills. That's nice. Thank you.  So it is time to speak about code
 contributions.
 
 
@@ -15,11 +14,9 @@ General workflow
 
 The general workflow for a code contribution is
 
-- Make sure that you have have the latest version (a "clean working
-  directory" for all your repositories)::
+- Make sure that you have have the latest version (a "clean working directory"
+  for all your repositories), e.g. by running :cmd:``pp git pull``.
 
-    $ pp git pull
-  
 - :doc:`Run the test suite <runtests>` in order to verify that your
   environment is correctly set up.
   
@@ -50,12 +47,7 @@ Rumma & Ko is Luc's employer, owned by Luc and his wife, so they are in fact
 the same, the difference is just the legal form.  We consider Rumma & Ko as the
 official copyright holder of the Lino framework because they are currently the
 community motor.  This seems the most reasonable formulation at the moment. We
-plan to change the copyright holder to "Lino Team" or something similar in the
-future.  But currently there is no legal person called "Lino Team".  And if
-some day we would create a legal entity for Lino, then its name would maybe not
-be "Lino Team" because there are other projects called "Lino", and they
-probably also have a "team" around them.  Possible other names for that future
-entity are *Lino Framework project* or *Lino Software Foundation*.  As long as
+plan to change the copyright holder to :doc:`/community/lsf` in the future.  As long as
 there is no legal entity to act as copyright holder, everybody must just trust
 that Rumma & Ko will manage these things before Luc dies.  We are still working
 on the details.
@@ -94,9 +86,9 @@ Bugfix
 Documentation change
 --------------------
 
-- You stumbled into some pitfall because Lino's documentation is so
-  weak.  Now we should review the docs: how can we avoid that other
-  newbies have this pitfall which caused you frustration.
+- You stumbled into some pitfall because Lino's documentation is not perfect.
+  Now we should review the docs: how can we avoid that other newbies have this
+  pitfall which caused you frustration.
 
 
 Translations

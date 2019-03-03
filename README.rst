@@ -33,5 +33,8 @@ The code repositories for the ``lino`` and ``lino_xl`` Python packages
 have no documentation tree on their own and almost no unit tests, they
 are tested and documented here.
 
+Your feedback is welcome.  Our `community page
+<http://www.lino-framework.org/community>`__ explains how to contact us.
+  
 
 

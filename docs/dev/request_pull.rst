@@ -4,9 +4,10 @@
 How to submit a pull request
 ============================
 
-The simple way would be to use the GitHub web interface as explained
+The simple way is to use the GitHub web interface as explained
 in `Creating a pull request
 <https://help.github.com/articles/creating-a-pull-request/>`_.
+We accept this way of communication.
 
 But life is not simple. Here are some thoughts about this:
 
