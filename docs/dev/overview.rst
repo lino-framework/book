@@ -21,7 +21,6 @@ Components of the Lino framework
         lino_noi;
         lino_cosi;
         lino_tera;
-        lino_care;
         lino_avanti;
     }
     
@@ -39,7 +38,8 @@ Components of the Lino framework
     { rank = same;
         "independent applications";
         lino_voga;
-        lino_welfare;
+        lino_weleup;
+        lino_welcht;
     }
     **/
 
@@ -53,23 +53,35 @@ Components of the Lino framework
 
     **/
 
+    { rank = same;
+        # applications;
+        lino_noi;
+        lino_cosi;
+        lino_tera;
+        lino_voga;
+        lino_weleup;
+        lino_welcht;
+    }
+
     lino -> atelier;
     lino_xl -> lino;
-    lino_noi -> lino_xl; 
+    lino_noi -> lino_xl;
     lino_cosi -> lino_xl; 
     lino_tera -> lino_xl;
-    lino_care -> lino_xl;
-    lino_avanti -> lino_xl;
+    # lino_avanti -> lino_xl;
     lino_voga -> lino_xl;
-    lino_welfare -> lino_xl;
-    
-    lino_book -> lino_noi; 
+    lino_weleup -> lino_welfare;
+    lino_welcht -> lino_welfare;
+
+    lino_book -> lino_noi;
     lino_book -> lino_cosi; 
-    lino_book -> lino_voga; 
-    lino_book -> lino_welfare; 
-    lino_book -> lino_tera; 
-    lino_book -> lino_care; 
-    lino_book -> lino_avanti; 
+    lino_book -> lino_voga;
+    lino_book -> lino_tera;
+    # lino_book -> lino_avanti;
+    lino_book -> lino_weleup;
+    lino_book -> lino_welcht;
+
+    lino_welfare -> lino_xl;
 
     /**
     
