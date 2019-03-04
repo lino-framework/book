@@ -31,3 +31,10 @@ pisa.Person-1.pdf
 media
 .doctrees
 tera_de/pdf
+
+# to get cypress on your machine run npm init -y; npm install cypress
+# to open ./node_modules/cypress/bin/cypress open
+cypress/*
+node_modules/*
+package.json
+
