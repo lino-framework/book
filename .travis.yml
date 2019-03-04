@@ -44,7 +44,7 @@ script:
   - python manage.py runserver -v 0 > /dev/null 2>&1 &
   - cd -
   - sleep 15
-  - npm run cy:run -- --spec tests/cypress/integration/min1/* --config video=false
+  - ./node_modules/cypress/bin/cypress run -- --spec tests/cypress/integration/min1/* --config video=false
 
 
 after_script:
