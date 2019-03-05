@@ -178,23 +178,6 @@ Lino Welfare
 .. automodule:: lino_welfare
 
 
-.. _welcht:
-
-Lino Welfare for Châtelet
--------------------------
-
-.. py2rst::
-
-  from lino_welcht import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-.. automodule:: lino_welcht
-
-
-                
-
-                
-               
 .. _commondata:
 
 The ``commondata`` packages

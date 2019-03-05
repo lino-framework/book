@@ -160,6 +160,15 @@ Related projects
 There are also independent Lino applications *not* covered by the book.
 
 
+.. _welcht:
+
+Lino Welfare Chatelet
+---------------------
+
+http://welcht.lino-framework.org
+
+
+
 .. _amici:
 
 Lino Amici
