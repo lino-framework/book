@@ -23,7 +23,7 @@ ns = setup_from_tasks(
         'docs/api/lino_book.*'],
     demo_projects=[
         'lino_book.projects.gerd',
-        'lino_book.projects.mathieu',
+        # 'lino_book.projects.mathieu',
         'lino_book.projects.roger',
         'lino_book.projects.edmund',
         'lino_book.projects.combo',
