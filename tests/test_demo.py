@@ -1,7 +1,8 @@
 from django import VERSION
 
-from lino.utils.pythontest import TestCase
 from lino import PYAFTER26
+from lino.utils.pythontest import TestCase
+
 
 class TestCase(TestCase):
     
@@ -146,6 +147,6 @@ class TestCase(TestCase):
         self.run_django_manage_test('lino_book/projects/gerd')
         
     def test_mathieu(self):
-        self.run_django_manage_test('lino_book/projects/mathieu')
+        self.run_django_manage_test('lino_welcht/demo')
         
 
