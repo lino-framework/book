@@ -128,9 +128,6 @@ lino_book.projects.docs.settings
 lino_book.projects.gerd
 lino_book.projects.gerd.settings
 lino_book.projects.gerd.tests
-lino_book.projects.mathieu
-lino_book.projects.mathieu.settings
-lino_book.projects.mathieu.tests
 lino_book.projects.estref
 lino_book.projects.estref.settings
 lino_book.projects.estref.tests
