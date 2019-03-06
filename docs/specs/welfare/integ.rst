@@ -236,7 +236,7 @@ Contract endings by type
 =============== ================ ================== =========== ===================== ================ =======
  Description     VSE Ausbildung   VSE Arbeitssuche   VSE Lehre   VSE Vollzeitstudium   VSE Sprachkurs   Total
 --------------- ---------------- ------------------ ----------- --------------------- ---------------- -------
- Alcohol
+ Ecole
  Force majeure
  Normal
  Santé
@@ -306,7 +306,7 @@ Contract endings by type
 =============== ==================== ========================== =============== ================== =========================== =======
  Description     avec remboursement   avec remboursement école   ville d'Eupen   économie sociale   économie sociale - majoré   Total
 --------------- -------------------- -------------------------- --------------- ------------------ --------------------------- -------
- Alcohol
+ Ecole
  Force majeure
  Normal
  Santé
