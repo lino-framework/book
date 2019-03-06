@@ -41,7 +41,7 @@ Configuration
 =============== ====== =============== ========= ====================
  Designation     ISIP   Job supplying   Success   Require date ended
 --------------- ------ --------------- --------- --------------------
- Alcohol         Yes    Yes             No        Yes
+ Ecole           Yes    Yes             No        Yes
  Force majeure   Yes    Yes             No        Yes
  Normal          Yes    Yes             No        No
  Santé           Yes    Yes             No        Yes
