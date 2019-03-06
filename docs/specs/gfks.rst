@@ -98,7 +98,7 @@ The ``ContentTypes`` table
 
 The :class:`ContentTypes` table shows all models defined in your application.
 
->>> rt.show(gfks.ContentTypes)  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+>>> rt.show(gfks.ContentTypes) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 ==== ================== =========================
  ID   app label          python model class name
 ---- ------------------ -------------------------
@@ -112,8 +112,7 @@ The :class:`ContentTypes` table shows all models defined in your application.
  ...
  45   notify             message
  46   changes            change
- 47   comments           comment
- 48   comments           commenttype
+ ...
  49   uploads            volume
  50   uploads            uploadtype
  51   uploads            upload
