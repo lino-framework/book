@@ -358,7 +358,7 @@ if False:  # on_rtd:
 
 from atelier.sphinxconf import interproject
 interproject.configure(
-    globals(), 'atelier etgen lino_cosi')
+    globals(), 'atelier etgen')
 
 autosummary_generate = True
 
