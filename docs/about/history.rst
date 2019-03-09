@@ -2,17 +2,23 @@
 History
 =======
 
-The history of Lino starts with TIM, a DOS-based framework written by Luc
-Saffre for writing customized database applications for small enterprises. Lino
-is the successor for TIM. TIM is over 20 years old, but Luc continues to live
-from maintaining it and giving professional support to its users.  TIM users
-have relatively wide-spread profiles, ranging from the independant craftsman
-who writes 50 invoices per year to the government agency with 30 users and
-hundreds of documents per day.
+Lino is the successor for TIM.
 
-Luc has been working on writing a successor for TIM **since the early
-1990s**.  He has done and dropped projects in C++, PHP and Java.
 
+The history of Lino starts in 1992 with TIM, a DOS-based framework used to
+write customized database applications for small enterprises.
+TIM was written by Luc Saffre for PAC Systems as copyright holder.
+
+Allthough TIM is almost 25 years old, it continues to return enough money for
+maintaining it and giving professional support to its users.  TIM users have
+relatively wide-spread profiles, ranging from the independant craftsman who
+writes 50 invoices per year to the government agency with 30 users and hundreds
+of documents per day.
+
+Luc has been working on writing a successor for TIM **since 1996**.  He has
+done and dropped projects in C++, PHP and Java.
+
+PAC Systems changed their name to AbAKUS in 2003(?).
 
 Since **August 2004** Luc is mostly working in Python. In **March 2009** he
 discovered *Django* whose database model and application server concepts seem
@@ -52,6 +58,8 @@ working for Lino as the second full-time core developer.
 In **December 2016** we started the :ref:`avanti` project.
   
 In **May 2017** we started to work on :ref:`tera`.
-   
+
+In **June 2018** we started to work on :ref:`presto`.
+
 In **November 2018** Thierry fell in love with Lino and started to help us with
 the sales work.

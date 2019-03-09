@@ -13,7 +13,7 @@ Installing a Lino development environment
 This document describes how to install a Lino **development
 environment** in order to write your own Lino applications and
 potentially contribute to the Lino project.  This differs from
-:doc:`/user/install` in that it requires you to learn some extra
+:doc:`/dev/quick/install` in that it requires you to learn some extra
 lessons about cloning repositories, installing development packages
 and manging virtual environments.
 

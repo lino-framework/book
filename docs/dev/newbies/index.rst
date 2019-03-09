@@ -1,14 +1,16 @@
-.. _dev.newbies:
+=======
+Newbies
+=======
 
-====================
-Python crash courses
-====================
+Before you start to install Lino, you should have --or learn-- some basic
+knowledge about writing code, more especially Python code, and writing it
+together with others in a free open source project.  These "basic skills" are
+beyond the scope of this book, but we want to help you with getting started by
+providing useful pointers.
 
-This section is for people who know the basics of Python but who are
-not yet experienced experts.  It quickly explains certain things you
-need to know because Lino uses them.
+.. toctree::
+   :maxdepth: 1
 
-- What is `sys.argv`  :srcref_book:`docs/dev/newbies/1.py`
-- What is `os.environ` :srcref_book:`docs/dev/newbies/2.py`
-- About class inheritance :srcref_book:`docs/dev/newbies/3.py`
-- What means "yield" :srcref_book:`docs/dev/newbies/4.py`
+   prerequisites
+   learning
+   py2lino

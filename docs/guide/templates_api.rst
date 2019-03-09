@@ -4,7 +4,7 @@ Template designer API
 
 .. How to test just this file:
 
-   $ doctest docs/user/templates_api.rst
+   $ doctest docs/dev/quick/templates_api.rst
 
 .. _tplcontext:
 
