@@ -63,12 +63,12 @@ Python code, not via a web interface.
 Apache Isis
 ===========
 
-`Apache Isis <https://isis.apache.org>`__ is a DDD framework in Java that was
-developed to fulfill the needs of a big real estate company in EU (`estatio
-<https://github.com/estatio/estatio>`__).  It is Open source and its main
-contributor appears to still be the company that created it. It's 'spirit' is
-very similar to Lino.
+`Apache Isis <https://isis.apache.org>`__ is a DDD framework in Java.
 
+An example application is `Estatio <http://www.estatio.org>`__
+which was developed to fulfill the needs of a big real estate 
+company in EU. It is Open source and its main
+contributor appears to still be the company that created it. 
 
 
 Appy framework
