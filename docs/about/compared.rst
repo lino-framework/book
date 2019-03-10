@@ -2,9 +2,13 @@
 Lino compared to other frameworks
 =================================
 
-The following projects do something similar to Lino.  If you have used
-or otherwise know one of them, please write a few sentences about
-what's different.
+The following projects do something similar to Lino.  If you have used or
+otherwise know one of them, please write a few sentences about what's
+different.
+
+.. contents::
+  :local:
+
 
 .. _tryton:
 
@@ -56,8 +60,19 @@ Lino has no "visual GUI editor".  In Lino you define all these things using
 Python code, not via a web interface.
 
 
-Lino versus Appy framework
-==========================
+Apache Isis
+===========
+
+`Apache Isis <https://isis.apache.org>`__ is a DDD framework in Java that was
+developed to fulfill the needs of a big real estate company in EU (`estatio
+<https://github.com/estatio/estatio>`__).  It is Open source and its main
+contributor appears to still be the company that created it. It's 'spirit' is
+very similar to Lino.
+
+
+
+Appy framework
+==============
 
 - `Appy framework <http://appyframework.org/>`_
 

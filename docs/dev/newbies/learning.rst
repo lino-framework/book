@@ -80,8 +80,12 @@ SQL
 Git
 ===
 
+See also :doc:`/dev/git` and :doc:`/dev/request_pull`.
+
 - `Atlassian's Git Tutorial <https://www.atlassian.com/git/tutorials>`__
 - `GitHub Help site <https://help.github.com/>`__
 - `Udemy Comprehensive Git Guide
   <https://blog.udemy.com/git-tutorial-a-comprehensive-guide/>`__
-- https://www.gitkraken.com
+- `GitKraken <https://www.gitkraken.com>`__ can help to understand things.
+
+
