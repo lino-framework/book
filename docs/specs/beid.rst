@@ -271,7 +271,7 @@ True
 Charleroi
 
 >>> img_file = Path(get_image_path(data.card_number))  #doctest: +ELLIPSIS
->>> img_file.endswith("settings/media/beid/592400976752.jpg")
+>>> img_file.endswith("/beid/592400976752.jpg")
 True
 >>> img_dir = Path(settings.MEDIA_ROOT).child('beid')
 >>> img_file.startswith(img_dir)
