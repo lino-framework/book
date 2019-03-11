@@ -7,9 +7,6 @@ Welcome to the online documentation about the Lino framework.
 .. Rumma & Ko is `hiring people <http://www.saffre-rumma.net/jobs>`_
    to help us with our work on Lino.
 
-Sitemap
-=======
-
 
 .. toctree::
    :maxdepth: 1
