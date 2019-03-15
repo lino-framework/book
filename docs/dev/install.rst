@@ -119,22 +119,30 @@ projects: Virtual environments
 <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
 where he explains what they are and why you want them.
 
+The appy package on Python 3
+============================
+
+The appy package is a bit special to install under Python 3 because the author
+is special... (e.g. he still gives support to customers whose production sites
+run on Python 2.4).  With ``pip install appy`` you would get a version that
+installs without error under Python 3, but not much more. That's why we
+recomment to get a clone of the appy-dev project and install it using ``pip
+install -e``.  Or to be short ::
+
+  $ cd ~/repositories
+  $ svn checkout https://svn.forge.pallavi.be/appy-dev
+  $ pip install -e appy-dev/dev1
 
 
 Get the sources
 ===============
 
-Don't try to install Lino using ``pip install lino`` because that
-would install some very old and obsolete version.  See :ticket:`2347`.
-If you did it before reading this warning, then simply uninstall it
-now (``pip uninstall lino``) before going on.
-
 Create a directory (e.g. :file:`repositories`) meant to hold your
 working copies of version-controlled software projects, `cd` to that
 directory and and do::
 
-  $ mkdir repositories
-  $ cd repositories
+  $ mkdir ~/repositories
+  $ cd ~/repositories
   $ git clone https://github.com/lino-framework/lino.git; \
     git clone https://github.com/lino-framework/xl.git; \
     git clone https://github.com/lino-framework/noi.git; \
@@ -146,7 +154,7 @@ directory and and do::
     git clone https://github.com/lino-framework/book.git
     
 Yes, we have a whole little collection of repositories and
-applications.  As a Lino developer you will sooner or later get in
+applications!  As a Lino developer you will sooner or later get in
 touch with these.  You don't need to dive into each of them right now
 (see :doc:`overview` if you are curious), but let's *install* them
 already now so that your environment is complete.  They are part of
@@ -184,7 +192,6 @@ by far the biggest repository)::
 or Nicola Paolucci's blog entry `How to handle big repositories with
 git
 <http://blogs.atlassian.com/2014/05/handle-big-repositories-git/>`_).
-
 
 Installation
 ============
