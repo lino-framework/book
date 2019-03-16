@@ -181,3 +181,13 @@ Choicelists
 |      |      |      | Sum of FXX FYY |br|                             |
 +------+------+------+-------------------------------------------------+
 <BLANKLINE>
+
+
+External references
+===================
+
+- `165-625-directives-2016.pdf
+  <https://finances.belgium.be/sites/default/files/downloads/165-625-directives-2016.pdf>`__
+
+- `finances.belgium.be
+  <https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_periodique>`__
