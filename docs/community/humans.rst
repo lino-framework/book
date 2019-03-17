@@ -131,7 +131,7 @@ has contributed more than 20 years of trust and political support.
 He works as CEO for ÖSHZ Eupen.
 
 **Mathieu**
-has contributed more than 20 years of trust and political support.
+has contributed more than 5 years of trust and political support.
 He works as coordinator for CPAS de Chatelet.
 
 **Alexa** has contributed more than 600 hours of volunteer work for testing and
