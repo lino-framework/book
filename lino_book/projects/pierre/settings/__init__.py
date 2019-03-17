@@ -20,6 +20,10 @@ class Site(Site):
     demo_fixtures = 'std few_countries minimal_ledger \
     furniture demo demo_bookings demo2'.split()
 
+    #def get_installed_apps(self):
+    #    yield super(Site, self).get_installed_apps()
+    #    yield 'lino_xl.lib.bevat'
+
     def setup_plugins(self):
         self.plugins.countries.configure(hide_region=False)
         self.plugins.ledger.configure(use_pcmn=True)

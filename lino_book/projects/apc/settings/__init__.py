@@ -21,6 +21,10 @@ class Site(Site):
     furniture \
     demo demo_bookings payments demo2'.split()
 
+    def get_installed_apps(self):
+        yield super(Site, self).get_installed_apps()
+        yield 'lino_xl.lib.bevat'
+
     def setup_plugins(self):
         super(Site, self).setup_plugins()
         self.plugins.countries.configure(hide_region=True)

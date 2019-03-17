@@ -26,6 +26,10 @@ class Site(Site):
     eesti furniture \
     demo demo2'.split()
 
+    def get_installed_apps(self):
+        yield super(Site, self).get_installed_apps()
+        yield 'lino_xl.lib.eevat'
+
     def setup_plugins(self):
         "See :meth:`lino.core.site.Site.setup_plugins`."
         super(Site, self).setup_plugins()

@@ -56,6 +56,7 @@ Plugins of the Extensions library
    countries
    courses
    cv
+   eevat
    events/index
    excerpts
    files
