@@ -67,6 +67,7 @@ Other
    linod
    design
    testing
+   testing_frontend
    /team/noi_intro
    memo
    bash_aliases
