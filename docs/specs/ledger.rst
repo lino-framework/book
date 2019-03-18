@@ -520,7 +520,6 @@ A **journal** is a named sequence of numbered *vouchers*.
  CSH         Caisse                    Cash                                                  (5700) Cash                     Credit
  BNK         Bestbank                  Bestbank                                              (5500) BestBank                 Credit
  MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) Cash                     Credit
- VAT         Déclarations TVA          VAT declarations                Taxes                 (4513) VAT declared             Debit
 =========== ========================= =============================== ===================== =============================== ===========================
 <BLANKLINE>
 
@@ -632,11 +631,11 @@ account, a *sales* invoice *debits* the customer's account.
  Account                       Partner    Debit       Credit      Match            Cleared
 ----------------------------- ---------- ----------- ----------- ---------------- ---------
  (4400) Suppliers              Bestbank               40,00       **PRC 1/2016**   No
- (4512) VAT deductible                    6,94                                     Yes
- (6010) Purchase of services              33,06                                    Yes
+ (6010) Purchase of services              40,00                                    Yes
                                           **40,00**   **40,00**
 ============================= ========== =========== =========== ================ =========
 <BLANKLINE>
+
 
 >>> obj = sales.VatProductInvoice.objects.order_by('id')[0]
 >>> rt.show(ledger.MovementsByVoucher, obj)
@@ -644,8 +643,7 @@ account, a *sales* invoice *debits* the customer's account.
  Account            Partner    Debit          Credit         Match            Cleared
 ------------------ ---------- -------------- -------------- ---------------- ---------
  (4000) Customers   Bestbank   2 999,85                      **SLS 1/2016**   No
- (4510) VAT due                               520,64                          Yes
- (7000) Sales                                 2 479,21                        Yes
+ (7000) Sales                                 2 999,85                        Yes
                                **2 999,85**   **2 999,85**
 ================== ========== ============== ============== ================ =========
 <BLANKLINE>
@@ -662,8 +660,8 @@ Debit
 
 
 
-Other database models
-=====================
+Ledger info
+===========
 
 .. class:: LedgerInfo
 

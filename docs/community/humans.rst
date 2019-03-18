@@ -115,7 +115,7 @@ or `GitHub <https://github.com/orgs/lino-framework/people/subha-py>`__
 or `GitHub <https://github.com/sandeez>`__
 
 
-.. rubric:: People who I didn't yet ask for permission to be mentioned here:
+.. rubric:: People whom we didn't yet ask for their permission to be mentioned here:
 
 **Paul**
 provides professional Lino hosting and promotes Lino Welfare in Belgium.
@@ -131,13 +131,17 @@ has contributed more than 20 years of trust and political support.
 He works as CEO for ÖSHZ Eupen.
 
 **Mathieu**
-has contributed more than 20 years of trust and political support.
+has contributed more than 5 years of trust and political support.
 He works as coordinator for CPAS de Chatelet.
 
 **Alexa** has contributed more than 600 hours of volunteer work for testing and
 training.
 
 **Thierry** has provided many hours of business advice and customer analysis.
+
+**Mads Michael** started using :ref:`cosi` in January 2019 as an accountant for
+:ref:`rumma_ko` and gave valuable feedback which helped to improve the
+application.
 
 
 .. Also mention Johanna, Anna  Lisa, Lydia?

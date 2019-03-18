@@ -216,7 +216,8 @@ behaviour. See also :doc:`/dev/delete`.
 - ledger.FiscalYear :
   - PROTECT : ledger.AccountingPeriod.year
 - ledger.Journal :
-  - PROTECT : invoicing.Plan.journal, ledger.MatchRule.journal, ledger.Voucher.journal
+  - CASCADE : ledger.MatchRule.journal
+  - PROTECT : invoicing.Plan.journal, ledger.Voucher.journal
 - ledger.PaymentTerm :
   - PROTECT : ana.AnaAccountInvoice.payment_term, bevats.Declaration.payment_term, contacts.Partner.payment_term, courses.Course.payment_term, sales.VatProductInvoice.payment_term, vat.VatAccountInvoice.payment_term
 - ledger.Voucher :

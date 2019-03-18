@@ -74,7 +74,7 @@ To enable desktop notifications, there are some requirements:
 
 Marking notifications as seen
 =============================
-
+doctest docs/specs/notify.rst
 In addition to sending notifications via email and as desktop
 notification, Lino displays unseen notfication messages in the
 dashboard where it also provides an action for marking individual
@@ -326,9 +326,10 @@ Local configuration
 
     
 >>> from django.conf import settings
->>> pprint(settings.CHANNEL_LAYERS)
-{'default': {'BACKEND': 'asgiref.inmemory.ChannelLayer',
-             'ROUTING': 'lino.modlib.notify.routing.channel_routing'}}
+>>> settings.CHANNEL_LAYERS['default']['BACKEND'] in ['asgiref.inmemory.ChannelLayer','channels_redis.core.RedisChannelLayer']
+True
+>>> settings.CHANNEL_LAYERS['default'].get('ROUTING','') in ['lino.modlib.notify.routing.channel_routing','']
+True
 
 
 >>> settings.SITE.use_websockets

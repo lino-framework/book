@@ -69,15 +69,24 @@ Eupen
 Châtelet
 ========
 
+Is documented separately in :ref:`welcht`.
+
+The courses, esf, art61 and immersion plugins are defined in
+:mod:`lino_welfare.modlib` but (currently) used only by :mod:`lino_welcht`.
+That's why  the specs for these plugins are in the :ref:`welcht` doctree.  But
+we want the source code of a plugin to refer to its specs.  This ref is needed
+when building the API for welfare. Which is in book. But the docs of book
+cannot refer to the docs of welcht because this would be a circular dependency.
+We definitively want the welcht docs be able to refer to the book (don't we?).
+So theoretically we should have a demo project in the book which uses these
+plugins. But theory is not always the same as reality.  Maybe one day we start
+a separate book for lino welfare... En attendant as a quick workaround we
+define the following  wrapper pages here:
+
 .. toctree::
    :maxdepth: 2
-  
-   clients_chatelet
-   chatelet
+
    art61
-   immersion
-   cv2
-   courses
    esf
-
-
+   immersion
+   courses

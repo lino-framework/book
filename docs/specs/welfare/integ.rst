@@ -19,7 +19,7 @@ Table of contents:
 .. include:: /include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.mathieu.settings.doctests')
+>>> lino.startup('lino_welcht.demo.settings.doctests')
 >>> from lino.api.doctest import *
 
 >>> ses = rt.login('robin')
@@ -41,7 +41,7 @@ Configuration
 =============== ====== =============== ========= ====================
  Designation     ISIP   Job supplying   Success   Require date ended
 --------------- ------ --------------- --------- --------------------
- Alcohol         Yes    Yes             No        Yes
+ Ecole           Yes    Yes             No        Yes
  Force majeure   Yes    Yes             No        Yes
  Normal          Yes    Yes             No        No
  Santé           Yes    Yes             No        Yes
@@ -236,7 +236,7 @@ Contract endings by type
 =============== ================ ================== =========== ===================== ================ =======
  Description     VSE Ausbildung   VSE Arbeitssuche   VSE Lehre   VSE Vollzeitstudium   VSE Sprachkurs   Total
 --------------- ---------------- ------------------ ----------- --------------------- ---------------- -------
- Alcohol
+ Ecole
  Force majeure
  Normal
  Santé
@@ -306,7 +306,7 @@ Contract endings by type
 =============== ==================== ========================== =============== ================== =========================== =======
  Description     avec remboursement   avec remboursement école   ville d'Eupen   économie sociale   économie sociale - majoré   Total
 --------------- -------------------- -------------------------- --------------- ------------------ --------------------------- -------
- Alcohol
+ Ecole
  Force majeure
  Normal
  Santé

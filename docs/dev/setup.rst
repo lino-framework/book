@@ -5,68 +5,39 @@
 How Lino applications use `setup.py`
 ====================================
 
+This document describes our trick for keeping the metadata about a Python
+package in a single place.  It does not depend on Lino and we recommend it for
+any Python project which contains a package.
 
-This document describes our trick for keeping the metadata about a
-Python package in a single place.  It does not depend on Lino and we
-recommend for any Python project which contains a package.
-
-The :xfile:`setup.py` file
-==========================
-
-
-.. xfile:: setup.py
-
-    A file named :xfile:`setup.py` is part of the `minimal structure
-    <http://python-packaging.readthedocs.io/en/latest/minimal.html>`__
-    of every Python project.  It is in the root directory of a project
-    and contains information about the project, e.g. the **version
-    number** or the **dependencies** (i.e. which other Python packages
-    must be installed when using your package). The information in
-    this file is used for running test suites, installing the project
-    in different environments, etc...
-
-
-The problem
-===========
-
-Usually the setup information is directly contained in the file
-:xfile:`setup.py`. The problem with
-this layout is that this :xfile:`setup.py` file is not available at
-runtime.
+The classical layout is to store the setup information directly in the
+:xfile:`setup.py` file of your project. The problem with this layout is that
+this :xfile:`setup.py` file is not available at runtime.
 
 For example the **version number**. You need it of course in the
-:xfile:`setup.py`, but there are quite some projects which want to
-show somehow their version.  So they need it at runtime as well.  And
-that number changes often. You don't want to store it in two different
+:xfile:`setup.py`, but there are quite some projects which want to show somehow
+their version.  So they need it at runtime as well.  And that number can change
+quickly and can be critical. You don't want to store it in two different
 places.
 
-Is there a way to have setup information both in a central place
-**and** accessible at runtime?
+Is there a way to have setup information both in a central place *and**
+accessible at runtime?
 
 It is an old problem, and e.g. `Single-sourcing the package version
 <https://packaging.python.org/guides/single-sourcing-package-version/>`__
 describes a series of answers.
 
 
-The solution
+Our solution
 ============
 
-To solve this problem, we store the setup information in a separate
-file (which we usually name :xfile:`setup_info.py`) and which we
-execute from both our :xfile:`setup.py` and our packages's main
-:xfile:`__init__.py` file.
+To solve this problem, we store the setup information in a separate file which
+we usually name :xfile:`setup_info.py` and which we load ("execute") from both
+our :xfile:`setup.py` and our packages's main :xfile:`__init__.py` file.
 
-
-.. xfile:: setup_info.py
-
-    The file which contains the information for Python's `setup.py`
-    script.
-
-So that's why the :xfile:`setup.py` of a Lino application contains
-just this::
+That's why the :xfile:`setup.py` of a package "xxyyzz" contains just this::
 
     from setuptools import setup
-    fn = 'lino/setup_info.py')
+    fn = 'xxyyzz/setup_info.py')
     exec(compile(open(fn, "rb").read(), fn, 'exec'))
     if __name__ == '__main__':
         setup(**SETUP_INFO)
@@ -84,12 +55,59 @@ equivalent to ``execfile(fn)``, except that it works in both Python 2
 and 3.
     
 
-
 Usage example:
 
->>> import lino
->>> print(lino.SETUP_INFO['description'])
+>>> from lino import SETUP_INFO
+>>> print(SETUP_INFO['description'])
 A framework for writing desktop-like web applications using Django and ExtJS
+
+>>> from lino_xl import SETUP_INFO
+>>> print(SETUP_INFO['description'])
+Lino Extensions Library
+
+Related files
+=============
+
+These are the files we are talking about here.
+
+.. xfile:: setup.py
+
+    A file named :xfile:`setup.py` is part of the `minimal structure
+    <http://python-packaging.readthedocs.io/en/latest/minimal.html>`__
+    of every Python project.  It is in the root directory of a project
+    and contains information about the project, e.g. the **version
+    number** or the **dependencies** (i.e. which other Python packages
+    must be installed when using your package). The information in
+    this file is used for running test suites, installing the project
+    in different environments, etc...
+
+
+.. xfile:: setup_info.py
+
+    The file which *actually* contains the information for Python's
+    :xfile:`setup.py` script. It is imported from both the :xfile:`setup.py`
+    and the packages's main :xfile:`__init__.py` file and usually defines a
+    global variable `SETUP_INFO`, a dict of keyword arguments to be passed to
+    the :func:`setup` function. It is located in the directory that contains
+    the main package of your project. E.g. for the :ref:`xl` project it is in
+    :file:`lino_xl/setup_info.py`.  the main package of a project is specified
+    in the :xfile:`tasks.py`.
+
+.. xfile:: README.rst
+
+    A file named ``README`` (or some variant thereof) should be in the
+    root directory of every public code repository and should contain
+    a description of your project, links to more detailed
+    documentation, ...
+
+    In Atelier projects this file is automatically generated from the
+    :ref:`long_description` by the :cmd:`inv bd`.
+
+
+.. xfile:: MANIFEST.in
+
+    TODO
+
 
 Setup information
 =================
@@ -119,30 +137,33 @@ long_description
 
 This contains the description to be published on PyPI.
 
-Lino usually inserts this in the :xfile:`api/index.rst` file of the
-docs tree.
+Some projects insert this in the :xfile:`api/index.rst` file of their docs
+tree.
 
-This is used by :cmd:`inv bd` as the source text for generating the
+This is also used by :cmd:`inv bd` as the source text for generating the
 project's :xfile:`README.rst`.
 
 
-The :xfile:`README.rst` file
-============================
+How to suggest changes to a README file
+=======================================
 
-.. xfile:: README.rst
+We assume that you have installed a development environment as explained in
+:ref:`dev.install`.
 
-    A file named ``README`` (or some variant thereof) should be in the
-    root directory of every public code repository and should contain
-    a description of your project, links to more detailed
-    documentation, ...
+Open the :xfile:`setup_info.py` file of your project and find the
+`long_description`.
 
-    In Atelier projects this file is automatically generated from the
-    :ref:`long_description` by the :cmd:`inv bd`.
+Edit its content.
 
+Run :cmd:`inv bd` in the root of the project you want to make changes.  This
+will ask you::
 
-The :xfile:`MANIFEST.in` file
-=============================
+    Overwrite /path/to/my/project/README.rst [Y,n]?
 
-.. xfile:: MANIFEST.in
+Hit ENTER.
 
-    TODO
+Open the :xfile:`README.rst` file and check that it contains your changes.
+
+Submit a pull request with the two modified files
+:xfile:`setup_info.py` and :xfile:`README.rst`.
+

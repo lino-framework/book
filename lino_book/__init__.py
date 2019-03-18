@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2002-2018 Rumma & Ko Ltd
+# Copyright 2002-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """The :mod:`lino_book` package contains a set of example projects
@@ -23,5 +23,5 @@ srcref_url = 'https://github.com/lino-framework/book/blob/master/%s'
 # doc_trees = ['docs']
 doc_trees = [ 'docs']
 intersphinx_urls = {
-    'docs': "http://docs.lino-framework.org",
+    'docs': "http://www.lino-framework.org",
 }

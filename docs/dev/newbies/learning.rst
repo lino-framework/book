@@ -20,7 +20,8 @@ Python
 - `Think Python 2e <http://greenteapress.com/wp/think-python-2e/>`__
   is an introduction to Python programming for beginners.
 
-- Mike Driscoll's `Python 201: A Tutorial on Threads <http://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/>`_
+- Mike Driscoll's `Python 201: A Tutorial on Threads
+  <http://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/>`_
 
 - We try to follow the `Django coding style
   <https://docs.djangoproject.com/en/1.11/internals/contributing/writing-code/coding-style/>`__
@@ -63,6 +64,7 @@ Sphinx
 HTML, CSS and Javascript
 ========================
 
+- `FreeCodeCamp <https://www.freecodecamp.org>`__
 - `HTML Tutorial <http://www.w3schools.com/html/>`_
 - `CSS Tutorial <http://www.w3schools.com/css/>`_
 - `Javascript Tutorial <http://www.w3schools.com/js/>`_
@@ -78,7 +80,12 @@ SQL
 Git
 ===
 
+See also :doc:`/dev/git` and :doc:`/dev/request_pull`.
+
 - `Atlassian's Git Tutorial <https://www.atlassian.com/git/tutorials>`__
 - `GitHub Help site <https://help.github.com/>`__
 - `Udemy Comprehensive Git Guide
   <https://blog.udemy.com/git-tutorial-a-comprehensive-guide/>`__
+- `GitKraken <https://www.gitkraken.com>`__ can help to understand things.
+
+

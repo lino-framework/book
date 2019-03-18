@@ -1,10 +1,11 @@
 from django import VERSION
 
-from lino.utils.pythontest import TestCase
 from lino import PYAFTER26
+from lino.utils.pythontest import TestCase
+
 
 class TestCase(TestCase):
-    
+
     def test_translate(self):
         self.run_django_manage_test('docs/dev/translate')
 
@@ -22,7 +23,7 @@ class TestCase(TestCase):
 
     # def test_pisa(self):
     #     self.run_django_manage_test('lino_book/projects/pisa')
-    
+
     # def test_de_BE(self):
     #     self.run_django_manage_test('lino_book/projects/de_BE')
 
@@ -34,7 +35,7 @@ class TestCase(TestCase):
 
     def test_auto_create(self):
         self.run_django_manage_test('lino_book/projects/auto_create')
-    
+
     def test_human(self):
         self.run_django_manage_test('lino_book/projects/human')
 
@@ -46,13 +47,13 @@ class TestCase(TestCase):
 
     # def test_watch(self):
     #     self.run_django_manage_test('lino_book/projects/watch_tutorial')
-    
+
     def test_vtables(self):
         self.run_django_manage_test('lino_book/projects/vtables')
-    
+
     def test_tables(self):
         self.run_django_manage_test('lino_book/projects/tables')
-    
+
     def test_diamond(self):
         self.run_django_manage_test('lino_book/projects/diamond')
 
@@ -68,10 +69,10 @@ class TestCase(TestCase):
 
     def test_addrloc(self):
         self.run_django_manage_test('lino_book/projects/addrloc')
-    
+
     def test_polls(self):
         self.run_django_manage_test('lino_book/projects/polls')
-        
+
     def test_polls2(self):
         self.run_django_manage_test('lino_book/projects/polls2')
 
@@ -120,7 +121,7 @@ class TestCase(TestCase):
 
     def test_bs3(self):
         self.run_django_manage_test('lino_book/projects/bs3')
-        
+
     def test_anna(self):
         self.run_django_manage_test('lino_book/projects/anna')
 
@@ -132,20 +133,15 @@ class TestCase(TestCase):
 
     def test_lydia(self):
         self.run_django_manage_test('lino_book/projects/lydia')
-        
+
     def test_nomti(self):
         self.run_django_manage_test('lino_book/projects/nomti')
-        
+
     def test_lets1(self):
         self.run_django_manage_test('lino_book/projects/lets1')
-        
+
     def test_lets2(self):
         self.run_django_manage_test('lino_book/projects/lets2')
-        
+
     def test_gerd(self):
         self.run_django_manage_test('lino_book/projects/gerd')
-        
-    def test_mathieu(self):
-        self.run_django_manage_test('lino_book/projects/mathieu')
-        
-

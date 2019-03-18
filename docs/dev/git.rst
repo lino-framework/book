@@ -1,6 +1,6 @@
-==================
-My Git cheat sheet
-==================
+================
+Basic git skills
+================
 
 .. highlight:: bash
 
@@ -166,7 +166,7 @@ Accept a pull request
 ---------------------
 
 Example: cuchac posted a pull request for a branch which he named
-``export_excel_datetime`` (on his fork of my project `lino`).
+``export_excel_datetime`` (on his fork of project `lino`).
 
 Check that there are no local changes in my repo::
 
@@ -193,7 +193,7 @@ changes::
     
 Test the changes::
     
-    $ fab test
+    $ inv test
     [localhost] local: python setup.py -q test
     ...........................................
     ----------------------------------------------------------------------

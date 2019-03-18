@@ -26,9 +26,20 @@ class Site(Site):
     eesti furniture \
     demo demo2'.split()
 
-    def setup_plugins(self):
-        "See :meth:`lino.core.site.Site.setup_plugins`."
-        super(Site, self).setup_plugins()
-        self.plugins.countries.configure(hide_region=False)
-        self.plugins.ledger.configure(use_pcmn=True)
-        self.plugins.countries.configure(country_code='EE')
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        yield ('vat', 'declaration_plugins', 'lino_xl.lib.eevat')
+        yield ('countries', 'hide_region', False)
+        yield ('countries', 'country_code', 'EE')
+        yield ('ledger', 'use_pcmn', True)
+
+    # def get_installed_apps(self):
+    #     yield super(Site, self).get_installed_apps()
+    #     yield 'lino_xl.lib.eevat'
+    #
+    # def setup_plugins(self):
+    #     "See :meth:`lino.core.site.Site.setup_plugins`."
+    #     super(Site, self).setup_plugins()
+    #     self.plugins.countries.configure(hide_region=False)
+    #     self.plugins.ledger.configure(use_pcmn=True)
+    #     self.plugins.countries.configure(country_code='EE')

@@ -8,34 +8,25 @@ Welcome to the online documentation about the Lino framework.
    to help us with our work on Lino.
 
 
-Sitemap
--------
-
-
 .. toctree::
    :maxdepth: 1
 
    about/index
-   demos
+   User's Guide <guide/index>
+   community/index
+   blog
+
+Technical docs
+==============
 
 .. toctree::
    :maxdepth: 2
 
-   User's Guide <guide/index>
-   Developer's Guide </user/index>
-   Contributor's Guide </dev/index>
+   Newbie's Guide </dev/newbies/index>
+   Developer's Guide </dev/index>
    Hoster's Guide </admin/index>
    Specs </specs/index>
    API </api/index>
-   blog
-   about/thanks
-
-.. toctree::
-   :maxdepth: 1
-
-   community/index
-   blog
-   copyright
 
 .. toctree::
    :hidden:
@@ -43,3 +34,4 @@ Sitemap
    examples/polly/index
    examples/belref/index
    /tours/index
+   copyright

@@ -129,7 +129,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = "Lino"
-copyright = '2002-2018 Rumma & Ko Ltd'
+copyright = '2002-2019 Rumma & Ko Ltd'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -225,10 +225,6 @@ html_favicon = 'favicon.ico'
 # using the given strftime format.
 html_last_updated_fmt = '%b %d, %Y'
 #~ last_updated = True
-
-# If true, SmartyPants will be used to convert quotes and dashes to
-# typographically correct entities.
-#~ html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
@@ -358,7 +354,7 @@ if False:  # on_rtd:
 
 from atelier.sphinxconf import interproject
 interproject.configure(
-    globals(), 'atelier etgen lino_cosi')
+    globals(), 'atelier etgen')
 
 autosummary_generate = True
 

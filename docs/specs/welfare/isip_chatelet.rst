@@ -11,7 +11,7 @@ ISIP contracts (Chatelet)
     Doctest initialization:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.mathieu.settings.doctests')
+    >>> startup('lino_welcht.demo.settings.doctests')
     >>> from lino.api.doctest import *
 
     >>> ses = rt.login('robin')
