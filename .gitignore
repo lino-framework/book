@@ -31,3 +31,7 @@ pisa.Person-1.pdf
 media
 .doctrees
 tera_de/pdf
+
+node_modules/
+cypress/
+package.json
