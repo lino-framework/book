@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2016 Rumma & Ko Ltd
+# Copyright 2014-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -21,13 +21,11 @@ class Site(Site):
     furniture \
     demo demo_bookings payments demo2'.split()
 
-    def get_installed_apps(self):
-        yield super(Site, self).get_installed_apps()
-        yield 'lino_xl.lib.bevat'
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        yield ('vat', 'declaration_plugins', 'lino_xl.lib.bevat')
+        yield ('countries', 'hide_region', True)
+        yield ('countries', 'country_code', 'bE')
+        yield ('ledger', 'use_pcmn', True)
 
-    def setup_plugins(self):
-        super(Site, self).setup_plugins()
-        self.plugins.countries.configure(hide_region=True)
-        self.plugins.ledger.configure(use_pcmn=True)
-        self.plugins.countries.configure(country_code='BE')
 
