@@ -39,9 +39,10 @@ is marked with the :func:`dd.chooser <lino.utils.chooser>` decorator
 (which turns it into a "chooser" object) and has a name of the form
 ``<fieldname>_choices``.  Lino then analyses the signature of that
 chooser: every named positional argument must match another field of
-the model.  And Lino then does the dirty work of generating
-appropriate JavaScript and HTML code and the views which respond to
-the AJAX calls.
+the model except for `_ar` which matches to the action request on the
+actor, where it's possible to access request info such as current user.
+And Lino then does the dirty work of generating appropriate JavaScript
+and HTML code and the views which respond to the AJAX calls.
 
 
 .. _learning_combos:
