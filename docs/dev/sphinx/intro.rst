@@ -38,6 +38,8 @@ roles:
   
 - :rst:role:`meth`  to link to a method.
   Example :meth:`lino.core.model.Model.get_data_elem`
+
+.. _prosa_vs_api:
      
 Generated API docs versus prosa
 ===============================

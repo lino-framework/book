@@ -56,7 +56,6 @@ Other
 .. toctree::
    :maxdepth: 1
 
-   /todo
    /tested/index
    git
    /ref/index
@@ -64,7 +63,7 @@ Other
    linod
    design
    testing
-   testing_frontend
+   frontend_testing
    /team/noi_intro
    memo
    bash_aliases
@@ -74,7 +73,6 @@ Other
    tours
    socialauth/index
    application
-
 
 .. toctree::
    :hidden:

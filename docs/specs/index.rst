@@ -75,6 +75,7 @@ Plugins of the Extensions library
    sales
    sepa
    sheets
+   tickets
    tim2lino
    topics
    uploads
