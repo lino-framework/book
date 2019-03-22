@@ -4,17 +4,11 @@
 Community
 =========
 
-- You can read :doc:`more about the community <about>`.
-
-- You can meet individual contributors on the :doc:`humans` page.
-
-- You can meet partner organizations on the
-  :doc:`Hosting providers <hosters>`
-  and
-  :doc:`Development providers <developers>`
-  pages.
-
-
+- :doc:`about`
+- :doc:`humans`
+- :doc:`Hosting providers <hosters>`
+- :doc:`Development providers <developers>`
+- :doc:`money`
 
 
 How to contact us:
@@ -32,13 +26,14 @@ How to contact us:
   `lino-developers <http://lino-framework.org/cgi-bin/mailman/listinfo/lino-developers>`__.
 
 - If you need help or want to contribute, send an email to the team and ask for
-  an invitation to our Mattermost platform.
+  an invitation to our Zulip platform.
 
-  If you prefer communicating via GitHub, please report your issues in the
-  `book repository <https://github.com/lino-framework/book>`__.  Lino consists
-  of many repositories, and book is the main one. We have an `organization on
-  GitHub <https://github.com/lino-framework>`__ which owns the different
-  repositories that make up the Lino framework. See also :ref:`dev.contrib`.
+  Our Zulip platform is our preferred way, but if you prefer communicating via
+  GitHub, please report your issues in the `book repository
+  <https://github.com/lino-framework/book>`__.  Lino consists of many
+  repositories, and book is the main one. We have an `organization on GitHub
+  <https://github.com/lino-framework>`__ which owns the different repositories
+  that make up the Lino framework. See also :ref:`dev.contrib`.
 
 
 .. toctree::
@@ -55,6 +50,7 @@ How to contact us:
     get_involved
     structure
     rumma
+    money
     lsf
     /hosting/index
     /hosting/types

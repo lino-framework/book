@@ -16,5 +16,6 @@ We are doing our best to help the Lino community becoming a big one,
 but we have no plans of becoming *ourselves* big .  If the Lino
 community would get bigger than we can manage, we recommend that it
 should be governed by an independent organization which does not have
-any private motivation on its own.  In order to open the door for this
-evolution, we created
+any private motivation on its own.
+
+See also :doc:`money`.

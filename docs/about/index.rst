@@ -9,7 +9,6 @@ About Lino
    :maxdepth: 1
 
    what
-   /demos
    why
    name
    more

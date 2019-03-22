@@ -8,6 +8,7 @@ Lino is so cool.
 .. toctree::
    :maxdepth: 1
               
+   about/why
    about/lino_and_django
    about/auth
 

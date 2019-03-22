@@ -12,6 +12,7 @@ Welcome to the online documentation about the Lino framework.
    :maxdepth: 1
 
    about/index
+   /demos
    User's Guide <guide/index>
    community/index
    blog
