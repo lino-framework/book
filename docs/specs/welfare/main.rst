@@ -54,7 +54,7 @@ Benutzer und ihre Klienten ⏏
 Wartende Besucher ⏏
 Meine Termine  ⏏
 Meine überfälligen Termine  ⏏
-Meine Benachrichtigungen ⏏
+Meine Benachrichtigungen ✓ ⏏
 
 
 >>> test_client.force_login(rt.login('robin').user)
@@ -69,7 +69,7 @@ Users with their Clients ⏏
 Waiting visitors ⏏
 My appointments  ⏏
 My overdue appointments  ⏏
-My Notification messages ⏏
+My Notification messages ✓ ⏏
 
 
 Here is a text variant of Hubert's dashboard.
