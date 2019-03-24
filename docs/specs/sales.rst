@@ -217,7 +217,6 @@ The sales journal
  CSH         Caisse                    Cash
  BNK         Bestbank                  Bestbank
  MSC         Opérations diverses       Miscellaneous Journal Entries
- VAT         Déclarations TVA          VAT declarations                Taxes
 =========== ========================= =============================== =====================
 <BLANKLINE>
 

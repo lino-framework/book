@@ -36,7 +36,7 @@ BaseRequest.elem2rec_insert() specifies only the fields needed by the window.
 
 >>> lh = tickets.MyTickets.insert_layout.get_layout_handle(settings.SITE.kernel.default_ui)
 >>> print(" ".join([f.name for f in lh._store_fields]))
-summary ticket_type priority end_user description
+summary ticket_type priority end_user site description
 >>> ba = tickets.MyTickets.insert_action
 >>> ba
 <BoundAction(tickets.MyTickets, <lino.core.actions.ShowInsert insert ('New')>)>

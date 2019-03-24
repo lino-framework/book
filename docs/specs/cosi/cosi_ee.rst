@@ -92,6 +92,7 @@ Formatting postal addresses
 Malle Mets
 Männi tn 5-6
 86705 Sindi
+Estonia
 
 Townships in Estonia get special handling: their name is replaced by
 the town's name when a zip code is known:

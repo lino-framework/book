@@ -1026,7 +1026,6 @@ A **match rule** specifies that a movement into given account can be
  13   (4000) Customers     Miscellaneous Journal Entries (MSC)
  14   (4400) Suppliers     Miscellaneous Journal Entries (MSC)
  15   (6300) Wages         Miscellaneous Journal Entries (MSC)
- 16   (4600) Tax Offices   VAT declarations (VAT)
 ==== ==================== =====================================
 <BLANKLINE>
 

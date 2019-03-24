@@ -67,11 +67,11 @@ Robin is the system administrator, he has a complete menu:
   - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
   - Office : Excerpts, Uploads, Upload Areas, Text Field Templates
+  - VAT : Belgian VAT declarations, Declaration fields
   - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups, Accounting Reports
   - SEPA : Bank accounts
   - Financial : Bank Statements, Journal Entries, Payment Orders
-  - VAT : Belgian VAT declarations, Declaration fields
 - Site : About
 
 
