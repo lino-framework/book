@@ -144,4 +144,7 @@ class TestCase(TestCase):
         self.run_django_manage_test('lino_book/projects/lets2')
 
     def test_gerd(self):
-        self.run_django_manage_test('lino_book/projects/gerd')
+        self.run_django_manage_test('lino_welfare/projects/gerd')
+
+    def test_gerd(self):
+        self.run_django_manage_test('lino_welfare/projects/mathieu')
