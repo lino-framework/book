@@ -21,7 +21,6 @@ real world.
    liina
    lydia
    adg
-   gerd
 
 Examples used by a tutorial:
 

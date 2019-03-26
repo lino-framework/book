@@ -36,9 +36,9 @@ remind this time.  In :ref:`welfare` they are called "workshops", in
 See also
 :doc:`/specs/voga/courses`,
 :doc:`/specs/avanti/courses`,
-:doc:`/specs/welfare/courses`,
-and
 :doc:`/specs/tera/courses`
+and :ref:`welfare`.
+
 
 Examples in this document use the :mod:`lino_book.projects.min9` demo
 project.

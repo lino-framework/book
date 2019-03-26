@@ -165,19 +165,6 @@ Lino Voga
 .. automodule:: lino_voga
 
 
-.. _welfare:
-
-Lino Welfare
-------------
-
-.. py2rst::
-
-  from lino_welfare import SETUP_INFO
-  print(SETUP_INFO['long_description'])
-
-.. automodule:: lino_welfare
-
-
 .. _commondata:
 
 The ``commondata`` packages

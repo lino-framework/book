@@ -159,6 +159,13 @@ Related projects
 
 There are also independent Lino applications *not* covered by the book.
 
+.. _welfare:
+
+Lino Welfare
+---------------------
+
+http://welfare.lino-framework.org
+
 
 .. _welcht:
 
@@ -167,6 +174,12 @@ Lino Welfare Chatelet
 
 http://welcht.lino-framework.org
 
+.. _weleup:
+
+Lino Welfare Eupen
+---------------------
+
+http://weleup.lino-framework.org
 
 
 .. _amici:

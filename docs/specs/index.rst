@@ -103,7 +103,6 @@ technical documentation is provided and maintained by the Lino core team.
    care
    projects/min
    voga/index
-   welfare/index
 
 
 Topic guides

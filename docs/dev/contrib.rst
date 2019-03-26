@@ -17,7 +17,7 @@ General workflow
 The general workflow for a code contribution is
 
 - Make sure that you have have the latest version (a "clean working directory"
-  for all your repositories), e.g. by running :cmd:``pp git pull``.
+  for all your repositories), e.g. by running :cmd:`pp git pull` (see :cmd:`pp`).
 
 - :doc:`Run the test suite <runtests>` in order to verify that your
   environment is correctly set up.
