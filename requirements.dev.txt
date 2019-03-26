@@ -8,8 +8,8 @@
 -e git+https://github.com/lino-framework/cosi.git#egg=lino_cosi
 -e git+https://github.com/lino-framework/voga.git#egg=lino_voga
 # -e git+https://github.com/lino-framework/presto.git#egg=lino_presto
--e git+https://github.com/lino-framework/welfare.git#egg=lino_welfare
--e git+https://github.com/lino-framework/welcht.git#egg=lino_welcht
+# -e git+https://github.com/lino-framework/welfare.git#egg=lino_welfare
+# -e git+https://github.com/lino-framework/welcht.git#egg=lino_welcht
 -e git+https://github.com/lino-framework/avanti.git#egg=lino_avanti
 -e git+https://github.com/lino-framework/vilma.git#egg=lino_vilma
 -e git+https://github.com/lino-framework/care.git#egg=lino_care
