@@ -1,4 +1,5 @@
 .. include:: /shared/include/defs.rst
+.. _guide.backups:
 
 =====================
 Managing your backups
