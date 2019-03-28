@@ -1,9 +1,9 @@
 .. doctest docs/specs/contacts.rst
 .. _specs.contacts:
 
-=======================
-The ``contacts`` plugin
-=======================
+================================
+``contacts`` : Managing contacts
+================================
 
 .. currentmodule:: lino_xl.lib.contacts
                    
@@ -87,6 +87,126 @@ Functions
 <BLANKLINE>
      
 
+Partners
+========
+
+A **Partner** is any physical or moral person for which you want to
+keep contact data (address, phone numbers, ...).
+
+A partner can act as the recipient of a sales invoice, as the sender of an
+incoming purchases invoice, ...
+
+A partner has at least a name and usually also an "official" address.
+
+Predefined subclasses of Partners are :class:`Person` for physical
+persons and :class:`Company` for companies, organisations and any
+kind of non-formal Partners.
+
+
+
+.. class:: Partner
+
+    The Django model used to represent a *partner*.
+
+    .. attribute:: name
+
+        The full name of this partner. Used for alphabetic sorting.
+
+        Subclasses may hide this field and fill it automatically,
+        e.g. saving a :class:`Person` will automatically set her
+        `name` field to "last_name, first_name".
+
+    .. attribute:: prefix
+
+        An optional name prefix. For organisations this is inserted
+        before the name, for persons this is inserted between first
+        name and last name.
+
+        See :meth:`lino.mixins.human.Human.get_last_name_prefix`.
+
+    .. attribute:: email
+
+        The primary email address.
+
+    .. attribute:: phone
+
+        The primary phone number.
+
+        Note that Lino does not ignore formatting characters in phone numbers
+        when searching.  For example, if you enter "087/12.34.56" as a phone
+        number, then a search for phone number containing "1234" will *not*
+        find it.
+
+    .. attribute:: gsm
+
+        The primary mobile phone number.
+
+    .. attribute:: language
+
+        The language to use when communicating with this partner.
+
+    .. attribute:: purchase_account
+
+        The general account to suggest as default value in purchase
+        invoices from this partner.
+
+        This field exists only when :mod:`lino_xl.lib.ledger` is
+        installed.  It is defined as the
+        :attr:`invoice_account_field_name
+        <lino_xl.lib.ledger.TradeType.invoice_account_field_name>`
+        for :attr:`TradeTypes.purchases
+        <lino_xl.lib.ledger.TradeTypes.purchases>`.
+
+    Two fields exist only when :mod:`lino_xl.lib.vat` is installed:
+
+    .. attribute:: vat_regime
+
+        The default VAT regime to use on invoices for this partner.
+
+    .. attribute:: vat_id
+
+        The national VAT identification number of this partner.
+
+
+Persons
+=======
+
+.. class:: Persons
+
+    Shows all persons.
+
+.. class:: Person
+
+    A physical person and an individual human being.
+    See also :ref:`lino.tutorial.human`.
+
+    .. attribute:: name
+    .. attribute:: first_name
+    .. attribute:: last_name
+
+
+Organizations
+=============
+
+.. class:: Company
+.. class:: Companies
+
+    An **organisation**.  The verbose name is "Organization" while the
+    internal name is "Company" because the latter easier to type and
+    for historical reasons.
+
+    .. attribute:: type
+
+        Pointer to the :class:`CompanyType`.
+
+    .. attribute:: name
+    .. attribute:: street
+    .. attribute:: gsm
+    .. attribute:: phone
+
+        These fields (and some others) are defined in the base model
+        :class:`Partner`, they are what companies and persons have in
+        common.
 
 
 
@@ -200,9 +320,6 @@ Exporting contacts as vcard files
     <lino_xl.lib.contacts.Plugin.use_vcard_export>` set to `True`.
 
 
-
-
-
 Reference
 =========
 
@@ -230,6 +347,9 @@ Reference
 
         
 
+User roles
+==========
+
 .. class:: SimpleContactsUser
 
    A user who has access to basic contacts functionality.
@@ -241,105 +361,17 @@ Reference
 .. class:: ContactsStaff
 
    A user who can configure contacts functionality.
+
+Filtering partners
+==================
    
 .. class:: PartnerEvents
 
     A choicelist of observable partner events.
 
-           
-.. class:: Partner
-           
-    A Partner is any physical or moral person for which you want to
-    keep contact data (address, phone numbers, ...).
+Other models
+============
 
-    A :class:`Partner` can act as the recipient of a sales invoice, as
-    the sender of an incoming purchases invoice, ...
-
-    A Partner has at least a name and usually also an "official" address.
-
-    Predefined subclasses of Partners are :class:`Person` for physical
-    persons and :class:`Company` for companies, organisations and any
-    kind of non-formal Partners.
-
-    .. attribute:: name
-
-        The full name of this partner. Used for alphabetic sorting.
-
-        Subclasses may hide this field and fill it automatically,
-        e.g. saving a :class:`Person` will automatically set her
-        `name` field to "last_name, first_name".
-
-    .. attribute:: prefix
-
-        An optional name prefix. For organisations this is inserted
-        before the name, for persons this is inserted between first
-        name and last name.
-
-        See :meth:`lino.mixins.human.Human.get_last_name_prefix`.
-
-    .. attribute:: email
-
-        The primary email address.
-
-    .. attribute:: phone
-
-        The primary phone number.
-
-        Note that Lino does not ignore formatting characters in phone numbers
-        when searching.  For example, if you enter "087/12.34.56" as a phone
-        number, then a search for phone number containing "1234" will *not*
-        find it.
-
-    .. attribute:: gsm
-
-        The primary mobile phone number.
-
-    .. attribute:: language
-
-        The language to use when communicating with this partner.
-
-    .. attribute:: purchase_account
-
-        The general account to suggest as default value in purchase
-        invoices from this partner.
-
-        This field exists only when :mod:`lino_xl.lib.ledger` is
-        installed.  It is defined as the
-        :attr:`invoice_account_field_name
-        <lino_xl.lib.ledger.TradeType.invoice_account_field_name>`
-        for :attr:`TradeTypes.purchases
-        <lino_xl.lib.ledger.TradeTypes.purchases>`.
-           
-.. class:: Persons
-
-    Shows all persons.
-           
-.. class:: Person
-
-    A physical person and an individual human being.
-    See also :ref:`lino.tutorial.human`.
-
-
-.. class:: Company
-.. class:: Companies
-
-    An **organisation**.  The verbose name is "Organization" while the
-    internal name is "Company" because the latter easier to type and
-    for historical reasons.
-
-    .. attribute:: type
-    
-        Pointer to the :class:`CompanyType`.
-
-    .. attribute:: name
-    .. attribute:: street
-    .. attribute:: gsm
-    .. attribute:: phone
-
-        These fields (and some others) are defined in the base model
-        :class:`Partner`, they are what companies and persons have in
-        common.
-        
 .. class:: CompanyTypes
 .. class:: CompanyType
 
