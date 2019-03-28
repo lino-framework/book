@@ -40,7 +40,7 @@ uses them both and extends the "library" version of tickets:
 lino_xl.lib.working
 
 >>> dd.plugins.tickets
-lino_noi.lib.tickets (extends_models=['Ticket'])
+lino_noi.lib.tickets (extends_models=['Ticket', 'Site'])
 
 >>> dd.plugins.working.needs_plugins
 ['lino_noi.lib.noi', 'lino_noi.lib.tickets', 'lino.modlib.summaries']
