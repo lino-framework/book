@@ -231,36 +231,77 @@ The sales journal
  14/2017               11/03/2017   17/03/2017   da Vinci David                      465,96                           **Registered**
  13/2017               10/03/2017   09/03/2017   di Rupo Didier                      639,92                           **Registered**
  12/2017               09/03/2017   07/04/2017   Radermacher Jean                    3 599,71                         **Registered**
- 11/2017               08/03/2017   31/03/2017   Radermacher Inge                    726,00                           **Registered**
+ 11/2017               08/03/2017   31/03/2017   Radermacher Inge                    600,00                           **Registered**
  10/2017               07/03/2017   04/06/2017   Radermacher Hedi                    525,00                           **Registered**
  9/2017                14/02/2017   14/04/2017   Radermacher Hans                    951,82                           **Registered**
  8/2017                13/02/2017   14/03/2017   Radermacher Guido                   2 349,81                         **Registered**
  7/2017                12/02/2017   21/02/2017   Radermacher Fritz                   1 599,92                         **Registered**
  6/2017                11/02/2017   20/02/2017   Radermacher Fritz                   990,00                           **Registered**
- 5/2017                10/02/2017   16/02/2017   Radermacher Edgard                  338,68                           **Registered**
+ 5/2017                10/02/2017   16/02/2017   Radermacher Edgard                  279,90                           **Registered**
  4/2017                09/02/2017   08/02/2017   Radermacher Daniela                 1 199,85                         **Registered**
  3/2017                08/02/2017   09/03/2017   Radermacher Christian               3 319,78                         **Registered**
  2/2017                07/02/2017   28/02/2017   Radermacher Berta                   535,00                           **Registered**
  1/2017                07/01/2017   06/04/2017   Radermacher Alfons                  280,00                           **Registered**
- 57/2016               10/12/2016   07/02/2017   Emonts-Gast Erna                    822,57                           **Registered**
+ 57/2016               10/12/2016   07/02/2017   Emonts-Gast Erna                    679,81                           **Registered**
  56/2016               09/12/2016   07/01/2017   Emontspool Erwin                    2 039,82                         **Registered**
- ...
+ 55/2016               08/12/2016   17/12/2016   Emonts Erich                        2 999,85                         **Registered**
+ 54/2016               07/12/2016   13/12/2016   Meier Marie-Louise                  770,00                           **Registered**
+ 53/2016               11/11/2016   10/11/2016   Mießen Michael                      465,96                           **Registered**
+ 52/2016               10/11/2016   09/12/2016   Meessen Melissa                     639,92                           **Registered**
+ 51/2016               09/11/2016   30/11/2016   Malmendier Marc                     3 599,71                         **Registered**
+ 50/2016               08/11/2016   05/02/2017   Leffin Josefine                     600,00                           **Registered**
+ 49/2016               07/11/2016   05/01/2017   Lazarus Line                        525,00                           **Registered**
+ 48/2016               12/10/2016   10/11/2016   Laschet Laura                       951,82                           **Registered**
+ 47/2016               11/10/2016   09/11/2016   Laschet Laura                       2 349,81                         **Registered**
+ 46/2016               10/10/2016   19/10/2016   Lambertz Guido                      1 599,92                         **Registered**
+ 45/2016               09/10/2016   15/10/2016   Kaivers Karl                        990,00                           **Registered**
+ 44/2016               08/10/2016   07/10/2016   Jousten Jan                         279,90                           **Registered**
+ 43/2016               07/10/2016   05/11/2016   Jonas Josef                         1 199,85                         **Registered**
+ 42/2016               14/09/2016   30/09/2016   Johnen Johann                       3 319,78                         **Registered**
+ 41/2016               13/09/2016   11/12/2016   Jacobs Jacqueline                   535,00                           **Registered**
+ 40/2016               12/09/2016   10/11/2016   Jansen Jérémy                       280,00                           **Registered**
+ 39/2016               11/09/2016   09/11/2016   Jansen Jérémy                       679,81                           **Registered**
+ 38/2016               10/09/2016   09/10/2016   Ingels Irene                        2 039,82                         **Registered**
+ 37/2016               09/09/2016   18/09/2016   Hilgers Henri                       2 999,85                         **Registered**
+ 36/2016               08/09/2016   14/09/2016   Hilgers Hildegard                   770,00                           **Registered**
+ 35/2016               07/09/2016   06/09/2016   Groteclaes Gregory                  465,96                           **Registered**
+ 34/2016               07/08/2016   05/09/2016   Gernegroß Germaine                  639,92                           **Registered**
+ 33/2016               10/07/2016   31/07/2016   Faymonville Luc                     3 599,71                         **Registered**
+ 32/2016               09/07/2016   06/10/2016   Engels Edgar                        600,00                           **Registered**
+ 31/2016               08/07/2016   05/09/2016   Emonts Daniel                       525,00                           **Registered**
+ 30/2016               07/07/2016   05/08/2016   Evers Eberhart                      951,82                           **Registered**
+ 29/2016               11/06/2016   20/06/2016   Evertz Bernd                        2 349,81                         **Registered**
+ 28/2016               10/06/2016   16/06/2016   Ernst Berta                         1 599,92                         **Registered**
+ 27/2016               09/06/2016   08/06/2016   Dobbelstein Dorothée                990,00                           **Registered**
+ 26/2016               08/06/2016   07/07/2016   Dobbelstein-Demeulenaere Dorothée   279,90                           **Registered**
+ 25/2016               07/06/2016   30/06/2016   Demeulenaere Dorothée               1 199,85                         **Registered**
+ 24/2016               12/05/2016   09/08/2016   Dericum Daniel                      3 319,78                         **Registered**
+ 23/2016               11/05/2016   08/08/2016   Dericum Daniel                      535,00                           **Registered**
+ 22/2016               10/05/2016   08/07/2016   Chantraine Marc                     280,00                           **Registered**
+ 21/2016               09/05/2016   07/06/2016   Charlier Ulrike                     679,81                           **Registered**
+ 20/2016               08/05/2016   17/05/2016   Collard Charlotte                   2 039,82                         **Registered**
+ 19/2016               07/05/2016   13/05/2016   Bastiaensen Laurent                 2 999,85                         **Registered**
+ 18/2016               14/04/2016   13/04/2016   Ausdemwald Alfons                   770,00                           **Registered**
+ 17/2016               13/04/2016   12/05/2016   Altenberg Hans                      465,96                           **Registered**
+ 16/2016               12/04/2016   30/04/2016   Arens Annette                       639,92                           **Registered**
+ 15/2016               11/04/2016   30/04/2016   Arens Annette                       3 599,71                         **Registered**
+ 14/2016               10/04/2016   08/07/2016   Arens Andreas                       600,00                           **Registered**
+ 13/2016               09/04/2016   07/06/2016   Auto École Verte                    525,00                           **Registered**
  12/2016               08/04/2016   07/05/2016   Moulin Rouge                        951,82                           **Registered**
  11/2016               07/04/2016   16/04/2016   Reinhards Baumschule                2 349,81                         **Registered**
  10/2016               07/03/2016   13/03/2016   Bernd Brechts Bücherladen           1 599,92                         **Registered**
- 9/2016                10/02/2016   09/02/2016   Hans Flott & Co                     1 197,90                         **Registered**
+ 9/2016                10/02/2016   09/02/2016   Hans Flott & Co                     990,00                           **Registered**
  8/2016                09/02/2016   09/03/2016   Van Achter NV                       279,90                           **Registered**
  7/2016                08/02/2016   29/02/2016   Donderweer BV                       1 199,85                         **Registered**
- 6/2016                07/02/2016   06/05/2016   Garage Mergelsberg                  4 016,93                         **Registered**
+ 6/2016                07/02/2016   06/05/2016   Garage Mergelsberg                  3 319,78                         **Registered**
  5/2016                11/01/2016   10/03/2016   Bäckerei Schmitz                    535,00                           **Registered**
  4/2016                10/01/2016   08/02/2016   Bäckerei Mießen                     280,00                           **Registered**
  3/2016                09/01/2016   18/01/2016   Bäckerei Ausdemwald                 679,81                           **Registered**
  2/2016                08/01/2016   14/01/2016   Rumma & Ko OÜ                       2 039,82                         **Registered**
  1/2016                07/01/2016   06/01/2016   Bestbank                            2 999,85                         **Registered**
- **Total (72 rows)**                                                                 **98 409,82**
+ **Total (72 rows)**                                                                 **95 304,60**
 ===================== ============ ============ =================================== ================= ============== ================
 <BLANKLINE>
-
 
 >>> mt = contenttypes.ContentType.objects.get_for_model(sales.VatProductInvoice).id
 >>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=20)

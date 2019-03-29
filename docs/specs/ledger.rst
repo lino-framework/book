@@ -1007,26 +1007,26 @@ A **match rule** specifies that a movement into given account can be
 *cleared* using a given journal.
 
 >>> ses.show(ledger.MatchRules)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==== ==================== =====================================
- ID   Account              Journal
----- -------------------- -------------------------------------
- 1    (4000) Customers     Sales invoices (SLS)
- 2    (4000) Customers     Sales credit notes (SLC)
- 3    (4400) Suppliers     Purchase invoices (PRC)
- 4    (4000) Customers     Bestbank Payment Orders (PMO)
- 5    (4400) Suppliers     Bestbank Payment Orders (PMO)
- 6    (6300) Wages         Bestbank Payment Orders (PMO)
- 7    (4000) Customers     Cash (CSH)
- 8    (4400) Suppliers     Cash (CSH)
- 9    (6300) Wages         Cash (CSH)
- 10   (4000) Customers     Bestbank (BNK)
- 11   (4400) Suppliers     Bestbank (BNK)
- 12   (6300) Wages         Bestbank (BNK)
- 13   (4000) Customers     Miscellaneous Journal Entries (MSC)
- 14   (4400) Suppliers     Miscellaneous Journal Entries (MSC)
- 15   (6300) Wages         Miscellaneous Journal Entries (MSC)
-==== ==================== =====================================
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+==== ================== =====================================
+ ID   Account            Journal
+---- ------------------ -------------------------------------
+ 1    (4000) Customers   Sales invoices (SLS)
+ 2    (4000) Customers   Sales credit notes (SLC)
+ 3    (4400) Suppliers   Purchase invoices (PRC)
+ 4    (4000) Customers   Bestbank Payment Orders (PMO)
+ 5    (4400) Suppliers   Bestbank Payment Orders (PMO)
+ 6    (6300) Wages       Bestbank Payment Orders (PMO)
+ 7    (4000) Customers   Cash (CSH)
+ 8    (4400) Suppliers   Cash (CSH)
+ 9    (6300) Wages       Cash (CSH)
+ 10   (4000) Customers   Bestbank (BNK)
+ 11   (4400) Suppliers   Bestbank (BNK)
+ 12   (6300) Wages       Bestbank (BNK)
+ 13   (4000) Customers   Miscellaneous Journal Entries (MSC)
+ 14   (4400) Suppliers   Miscellaneous Journal Entries (MSC)
+ 15   (6300) Wages       Miscellaneous Journal Entries (MSC)
+==== ================== =====================================
 <BLANKLINE>
 
 For example a payment order can be used to clear an open suppliers
@@ -1071,31 +1071,72 @@ booked to this account.  The tax office is a debtor because we had
 more VAT deductible (sales) than VAT due (purchases).
 
 >>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =================================== ========== ===============
  Partner                             ID         Balance
 ----------------------------------- ---------- ---------------
  Bestbank                            100        2 382,15
- Mehrwertsteuer-Kontrollamt Eupen    192        7 010,27
- Hans Flott & Co                     108        1 197,90
+ Hans Flott & Co                     108        990,00
  Van Achter NV                       107        279,90
  Bernd Brechts Bücherladen           109        1 599,92
- Garage Mergelsberg                  105        1 885,73
+ Garage Mergelsberg                  105        1 188,58
  Ausdemwald Alfons                   116        770,00
  Reinhards Baumschule                110        2 349,81
  Arens Annette                       114        4 239,63
- ...
+ Moulin Rouge                        111        951,82
+ Altenberg Hans                      115        465,96
+ Bastiaensen Laurent                 117        2 999,85
+ Collard Charlotte                   118        2 039,82
+ Auto École Verte                    112        525,00
+ Charlier Ulrike                     119        679,81
+ Dobbelstein Dorothée                124        990,00
+ Ernst Berta                         125        1 599,92
+ Evertz Bernd                        126        2 349,81
+ Demeulenaere Dorothée               122        1 199,85
+ Dobbelstein-Demeulenaere Dorothée   123        279,90
+ Arens Andreas                       113        600,00
+ Chantraine Marc                     120        280,00
+ Faymonville Luc                     130        3 599,71
+ Evers Eberhart                      127        951,82
+ Dericum Daniel                      121        3 854,78
+ Emonts Daniel                       128        525,00
+ Gernegroß Germaine                  131        639,92
+ Groteclaes Gregory                  132        465,96
+ Hilgers Hildegard                   133        770,00
+ Hilgers Henri                       134        2 999,85
+ Johnen Johann                       138        3 319,78
+ Engels Edgar                        129        600,00
+ Jousten Jan                         140        279,90
+ Ingels Irene                        135        2 039,82
+ Kaivers Karl                        141        990,00
+ Lambertz Guido                      142        1 599,92
+ Jonas Josef                         139        1 199,85
+ Jansen Jérémy                       136        959,81
+ Laschet Laura                       143        3 301,63
+ Mießen Michael                      148        465,96
+ Malmendier Marc                     146        3 599,71
+ Meessen Melissa                     147        639,92
+ Jacobs Jacqueline                   137        535,00
+ Meier Marie-Louise                  149        770,00
+ Emonts Erich                        150        2 999,85
+ Lazarus Line                        144        525,00
+ Emontspool Erwin                    151        2 039,82
+ Leffin Josefine                     145        600,00
+ Emonts-Gast Erna                    152        679,81
+ Radermacher Daniela                 156        1 199,85
+ Radermacher Edgard                  157        279,90
+ Radermacher Fritz                   158        2 589,92
  Radermacher Berta                   154        535,00
  Radermacher Christian               155        3 319,78
  di Rupo Didier                      164        639,92
  Radermacher Guido                   159        2 349,81
  da Vinci David                      165        1 235,96
- Radermacher Inge                    162        726,00
+ Radermacher Inge                    162        600,00
  Radermacher Alfons                  153        280,00
  Radermacher Jean                    163        3 599,71
  Radermacher Hans                    160        951,82
  Radermacher Hedi                    161        525,00
- **Total (62 rows)**                 **8421**   **97 936,71**
+ **Total (61 rows)**                 **8229**   **87 821,22**
 =================================== ========== ===============
 <BLANKLINE>
 
