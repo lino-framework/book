@@ -1,16 +1,14 @@
 .. doctest docs/specs/countries.rst
 .. _book.specs.countries:
 
-======================
-Countries
-======================
+====================================
+``countries`` : Countries and cities
+====================================
 
 .. currentmodule:: lino_xl.lib.countries
 
-This document describes the functionality implemented by the
-:mod:`lino_xl.lib.countries` module.
-See also :mod:`lino_xl.lib.statbel.countries`.
-
+The :mod:`lino_xl.lib.countries` plugin defines models and choicelists for
+managing names of geographical places.
 
 .. contents::
    :local:
@@ -22,18 +20,101 @@ See also :mod:`lino_xl.lib.statbel.countries`.
 >>> startup('lino_book.projects.min9.settings.doctests')
 >>> from lino.api.doctest import *
 
+See also :mod:`lino_xl.lib.statbel.countries`.
 
-Models
-======
+
+Overview
+========
+
+A **country** (aka *nation*) is a geographic region with a national government.
+A **place** is any other type of named geographic region.
+
+
+Countries
+=========
 
 .. class:: Country
            
-    A "country" or "nation".
+    Django model to represent a *country*.
+
+
+
+    .. attribute:: name
+
+        The designation of this country.
+
+        This is a babel field.
+
+    .. attribute:: isocode
+
+        The two-letter code for this country as defined by ISO 3166-1.
+        For countries that no longer exist it may be a 4-letter code.
+
+    .. attribute:: short_code
+
+        A short abbreviation for regional usage. Obsolete.
+
+    .. attribute:: iso3
+
+        The three-letter code for this country as defined by ISO 3166-1.
+
+    .. method:: allowed_city_types()
+
+        Return the place types that are used in this country.
+
+        Return all place types for countries without a country driver (see
+        :class:`CountryDrivers`).
+
+
+.. class:: Countries
+
+    The table of all countries.
+
+Places
+======
            
 .. class:: Place
 
-    Any kind of named geographic region (except those who have an entry
-    in :class:`Country`.
+    Django model to represent a *place*.
+
+    Inherits from :class:`lino.mixins.sequenced.Hierarchical`.
+
+
+    .. attribute:: parent
+
+        The superordinate geographic place of which this place is a part.
+
+    .. attribute:: country
+
+        The country this place is in.
+
+    .. attribute:: zip_code
+
+    .. attribute:: type
+
+        The type of this place (whether it's a city. a village, a province...)
+
+        This contains one of the items in :class:`PlaceTypes`.
+        The list of choices may be limited depending on the country.
+
+
+    .. attribute:: show_type
+
+    .. method:: get_choices_text
+
+        Extends the default behaviour (which would simply diplay this
+        city in the current language) by also adding the name in other
+        languages and the type between parentheses.
+
+.. class:: Places
+
+    The table of known geographical places.
+    A geographical place can be a city, a town, a suburb,
+    a province, a lake... any named geographic entity,
+    except for countries because these have their own table.
+
+Place types
+===========
 
 .. class:: PlaceTypes
 
@@ -346,3 +427,11 @@ rows after applying limit (5 instead of 36 in below example):
 4430 Ans
 9310 Baardegem
 36 rows
+
+Data checkers
+=============
+
+.. class:: PlaceChecker
+
+    The name of a geographical place should not consist of only digits.
+

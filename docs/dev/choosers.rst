@@ -2,6 +2,8 @@
 Introduction to choosers
 ========================
 
+Yet to be written.
+
 See :mod:`lino_book.projects.choosers`.
 
 Example of choosers on a ChoiceListField are 
