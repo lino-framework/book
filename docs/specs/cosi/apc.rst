@@ -6,12 +6,12 @@
 The apc demo project
 ====================
 
-..  doctest init:
+.. include:: /include/tested.rst
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.apc.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> ses = rt.login('robin')
+>>> from lino import startup
+>>> startup('lino_book.projects.apc.settings.doctests')
+>>> from lino.api.doctest import *
+>>> ses = rt.login('robin')
 
 Implementation details
 ======================
@@ -67,8 +67,8 @@ Robin is the system administrator, he has a complete menu:
   - System : content types, Authorities, User types, User roles
   - Contacts : Contact Persons, Partners
   - Office : Excerpts, Uploads, Upload Areas, Text Field Templates
+  - Sales : Price factors, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
   - VAT : Belgian VAT declarations, Declaration fields
-  - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups, Accounting Reports
   - SEPA : Bank accounts
   - Financial : Bank Statements, Journal Entries, Payment Orders

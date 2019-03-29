@@ -5,11 +5,11 @@
 User types
 =============
 
-.. doctest init:
+.. include:: /include/tested.rst
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
+>>> import lino
+>>> lino.startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 System administrator
@@ -50,7 +50,7 @@ users.UserTypes.admin:900
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
-  - Sales : VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
+  - Sales : Price factors, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Office : Uploads, Upload Areas, Notes, Outgoing Mails, Attachments, Excerpts
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - Financial : Bank Statements, Journal Entries, Payment Orders
@@ -92,7 +92,7 @@ Monique is a secretary.
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
   - Activities : Activities, Enrolments
-  - Sales : Invoices, VAT rules, Sales invoices
+  - Sales : Price factors, Invoices, VAT rules, Sales invoices
   - VAT : Special Belgian VAT declarations, Declaration fields
 - Site : About
 
@@ -122,7 +122,7 @@ Marianne is a "simple user".
   - Sales : Flatrates
 - Explorer :
   - Contacts : Partners
-  - Sales : Invoices, VAT rules, Sales invoices
+  - Sales : Price factors, Invoices, VAT rules, Sales invoices
   - VAT : Special Belgian VAT declarations, Declaration fields
 - Site : About
 

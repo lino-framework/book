@@ -42,8 +42,7 @@ national implementations for their VAT declarations.  Currently we have:
 
 
 
-Code snippets in this document are based on the
-:mod:`lino_book.projects.apc` demo.
+.. include:: /include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')

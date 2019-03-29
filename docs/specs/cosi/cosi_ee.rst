@@ -6,14 +6,11 @@ Estonia
 The Estonian version of :ref:`cosi` imports every place in Estonia
 from :mod:`commondata.ee`.
 
-.. to test only this document:
-   
-    $ python setup.py test -s tests.SpecsTests.test_cosi_ee
-   
-    doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.cosi_ee.settings.demo')
-    >>> from lino.api.shell import *
+.. include:: /include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.cosi_ee.settings.demo')
+>>> from lino.api.shell import *
 
 >>> ses = rt.login("rando")
 >>> dd.translation.activate('et')
@@ -83,6 +80,17 @@ Lino and :mod:`commondata.ee` again agree with this:
 Formatting postal addresses
 ---------------------------
 
+
+The country is being printed in the address, depends on the
+:attr:`country_code <Plugin.country_code>` setting.
+
+>>> dd.plugins.countries.country_code
+'EE'
+>>> dd.plugins.countries.get_my_country()
+Country #EE ('Estonia')
+
+
+
 >>> eesti = countries.Country.objects.get(isocode="EE")
 >>> sindi = countries.Place.objects.get(name="Sindi")
 >>> p = contacts.Person(first_name="Malle", last_name="Mets", 
@@ -92,7 +100,6 @@ Formatting postal addresses
 Malle Mets
 Männi tn 5-6
 86705 Sindi
-Estonia
 
 Townships in Estonia get special handling: their name is replaced by
 the town's name when a zip code is known:

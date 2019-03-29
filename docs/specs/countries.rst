@@ -1,27 +1,27 @@
+.. doctest docs/specs/countries.rst
 .. _book.specs.countries:
 
 ======================
 Countries
 ======================
 
-..  $ doctest docs/specs/countries.rst
-
-..  doctest initialization:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.min9.settings.doctests')
-    >>> from lino.api.doctest import *
+.. currentmodule:: lino_xl.lib.countries
 
 This document describes the functionality implemented by the
 :mod:`lino_xl.lib.countries` module.
 See also :mod:`lino_xl.lib.statbel.countries`.
 
-.. currentmodule:: lino_xl.lib.countries
-                   
+
 .. contents::
    :local:
    :depth: 2
            
+.. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
+>>> from lino.api.doctest import *
+
 
 Models
 ======
