@@ -1,3 +1,8 @@
+# Copyright 2008-2017 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
+"""
+See :doc:`/dev/choosers`.
+"""
 from lino.ad import Plugin
 
 
