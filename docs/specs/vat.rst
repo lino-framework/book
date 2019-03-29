@@ -26,13 +26,19 @@ deprecated.  The modules :mod:`lino_xl.lib.vatless` and
 :mod:`lino_xl.lib.vat` can theoretically both be installed though
 obviously this wouldn't make sense.
 
-Applications using this plugin will probably also install one of the
-national implementations for their VAT declarations
-(:mod:`lino_xl.lib.bevat`, :mod:`lino_xl.lib.bevats`, ...)
-
 See also :class:`lino_xl.lib.vat.Plugin` for configuration options
 and the :mod:`lino_xl.lib.vat.utils` module contains some utility
 functions.
+
+Declaration plugins
+===================
+
+Applications using this plugin will probably also install one of the
+national implementations for their VAT declarations.  Currently we have:
+
+- :mod:`lino_xl.lib.bevat`
+- :mod:`lino_xl.lib.bevats`
+- :mod:`lino_xl.lib.eevat`
 
 
 
@@ -42,17 +48,6 @@ Code snippets in this document are based on the
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')
 >>> from lino.api.doctest import *
-
-
-
-Dependencies
-============
-
-This plugin also requires :mod:`lino_xl.lib.countries` and
-:mod:`lino_xl.lib.ledger`.
-
->>> dd.plugins.vat.needs_plugins     
-['lino_xl.lib.countries']
 
 
 Fixtures

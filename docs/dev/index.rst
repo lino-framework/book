@@ -73,6 +73,7 @@ Other
    tours
    socialauth/index
    application
+   choosers
 
 .. toctree::
    :hidden:
