@@ -1,3 +1,5 @@
+.. _dev.choosers:
+
 ========================
 Introduction to choosers
 ========================
