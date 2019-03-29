@@ -5,7 +5,8 @@ Introduction to choosers
 ========================
 
 
-The :mod:`lino_book.projects.chooser` demo project.
+Examples in this document use the :mod:`lino_book.projects.chooser` demo
+project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.chooser.settings')
