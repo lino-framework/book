@@ -1,99 +1,6 @@
-"""
-
-Module lino.utils.choosers
---------------------------
-
-You instantiate a Chooser by specifying a model and a fieldname. 
-The fieldname must be the name of a field that has been defined in your model.
-A Chooser for a field FOO on a model will look whether the model defines a class method FOO_choices().
-
-Preparation
-===========
-
-Create some countries and some cities:
-  
-  >>> be = Country(name='Belgium')
-  >>> be.save()
-  >>> fr = Country(name='France')
-  >>> fr.save()
-  >>> brussels = City(country=be,name='Brussels')
-  >>> brussels.save()
-  >>> eupen = City(country=be,name='Eupen')
-  >>> eupen.save()
-  >>> paris = City(country=fr,name='Paris')
-  >>> paris.save()
-  >>> lyon = City(country=fr,name='Lyon')
-  >>> lyon.save()
-  
-(Intermezzo to test `obj2str()`:)
-
-  >>> print obj2str(be)
-  Country(id=1,name='Belgium')
-  >>> print obj2str(paris)
-  City(id=3,name='Paris',country=<Country: France>)
-  
-The `choosers` needs initialization:
-
-  >>> choosers.discover()  
-  
-Situation 1 
-===========
-
-A Contact has ForeignKey fields to Country and City. 
-In an entry form for a Contact you want only the cities of that country when selecting a city.
-
-How to use a Chooser on a ForeignKey:
-
-  >>> from lino.core.utils import get_field
-  >>> city = Contact.get_chooser_for_field('city')
-  >>> [str(o) for o in city.get_choices(country=be)]
-  [u'Brussels', u'Eupen']
-  
-  >>> [str(o) for o in city.get_choices(country=fr)]
-  [u'Lyon', u'Paris']
-  >>> [str(o) for o in city.get_choices()]
-  [u'Brussels', u'Eupen', u'Lyon', u'Paris']
-  
-There is no method `country_choices`, so `Contact.country` has no Chooser:
-  
-  >>> print Contact.get_chooser_for_field('country')
-  None
-
-  
-Situation 2
-===========
-
-How to use a Chooser on a field with choices:
-
-  >>> food = Contact.get_chooser_for_field('food')
-  
-  >>> [str(o) for o in food.get_choices()]
-  [u'Potato', u'Vegetable', u'Meat', u'Fish']
-  
-  >>> [str(o) for o in food.get_choices(year_in_school='FR')]
-  [u'Potato']
-
-  >>> [str(o) for o in food.get_choices(year_in_school='SR')]
-  [u'Potato', u'Vegetable', u'Meat', u'Fish']
-
-
-Special cases
-=============
-
-Note that `Chooser.get_choices()` ignores any unused keyword arguments:
-  
-  >>> [str(o) for o in city.get_choices(country=be,foo=1,bar=True,baz='7')]
-  [u'Brussels', u'Eupen']
-
-  
-  
-
-"""
 
 from django.db import models
-from lino.api import dd, rt
-from lino.utils import choosers
-from lino.api.dd import obj2str
+from lino.api import dd, _
 
 YEAR_IN_SCHOOL_CHOICES = (
     ('FR', 'Freshman'),
@@ -112,19 +19,24 @@ MENU = [
 ]
 
 
-from django.utils.encoding import python_2_unicode_compatible
-
-
-@python_2_unicode_compatible
+@dd.python_2_unicode_compatible
 class Country(dd.Model):
+    class Meta(object):
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
+
     name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
 
 
-@python_2_unicode_compatible
+@dd.python_2_unicode_compatible
 class City(dd.Model):
+    class Meta(object):
+        verbose_name = _("City")
+        verbose_name_plural = _("Cities")
+
     name = models.CharField(max_length=20)
     country = dd.ForeignKey(Country)
 
@@ -132,25 +44,29 @@ class City(dd.Model):
         return self.name
 
 
-@python_2_unicode_compatible
+@dd.python_2_unicode_compatible
 class Contact(dd.Model):
+    class Meta(object):
+        verbose_name = _("Contact")
+        verbose_name_plural = _("Contacts")
+
     name = models.CharField(max_length=20)
-    country = dd.ForeignKey(Country)
-    city = dd.ForeignKey(City)
+    country = dd.ForeignKey(Country, blank=True, null=True)
+    city = dd.ForeignKey(City, blank=True, null=True)
     year_in_school = models.CharField(
-        max_length=2, choices=YEAR_IN_SCHOOL_CHOICES)
-    food = models.CharField(max_length=20)
+        max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, blank=True)
+    food = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return self.name
 
-    @classmethod
+    @dd.chooser()
     def city_choices(cls, country):
         if country is not None:
             return country.city_set.order_by('name')
         return cls.city.field.remote_field.model.objects.order_by('name')
 
-    @classmethod
+    @dd.chooser(simple_values=True)
     def food_choices(cls, year_in_school):
         food = []
         for name, reserved_for in MENU:
@@ -161,3 +77,25 @@ class Contact(dd.Model):
 
 class Contacts(dd.Table):
     model = Contact
+
+
+class Countries(dd.Table):
+    model = Country
+    detail_layout = """name id
+    CitiesByCountry
+    """
+
+class Cities(dd.Table):
+    model = City
+    detail_layout = """name country id
+    ContactsByCity
+    """
+
+
+class CitiesByCountry(Cities):
+    master_key = "country"
+
+
+class ContactsByCity(Contacts):
+    master_key = "city"
+    column_names = "name year_in_school food *"

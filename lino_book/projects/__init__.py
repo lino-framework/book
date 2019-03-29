@@ -27,6 +27,7 @@ Examples used by a tutorial:
 .. autosummary::
    :toctree:
 
+   chooser
    min1
    mti
    nomti
