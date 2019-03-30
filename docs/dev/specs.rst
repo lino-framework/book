@@ -25,32 +25,5 @@ There should be at least one specs page for every plugin. Every page ideally
 explains all technical and functional aspects about a given plugin or topic.
 If some functionality is covered by another specs page, it refers to these.
 
-Specs template
-==============
-
-Here is an example about how a specs file should ideally be structures::
-
-    .. doctest docs/specs/foo/bar.rst
-    .. _nickname.specs.bar:
-
-    ======================================
-    ``bar`` :
-    ======================================
-
-    The :mod:`lino_nickname.lib.bar` plugin adds support for managing foos and
-    bars.
-
-    .. currentmodule:: lino_nickname.lib.bar
-
-    .. contents::
-       :depth: 2
-       :local:
-
-    .. include:: /../docs/shared/include/tested.rst
-
-    >>> from lino import startup
-    >>> startup('lino_nickname.projects.foo.settings.doctests')
-    >>> from lino.api.doctest import *
-
 
 

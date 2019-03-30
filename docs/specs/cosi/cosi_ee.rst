@@ -10,7 +10,7 @@ from :mod:`commondata.ee`.
 
 >>> import lino
 >>> lino.startup('lino_book.projects.cosi_ee.settings.demo')
->>> from lino.api.shell import *
+>>> from lino.api.doctest import *
 
 >>> ses = rt.login("rando")
 >>> dd.translation.activate('et')
@@ -84,7 +84,7 @@ Formatting postal addresses
 The country is being printed in the address, depends on the
 :attr:`country_code <Plugin.country_code>` setting.
 
->>> dd.plugins.countries.country_code
+>>> rmu(dd.plugins.countries.country_code)
 'EE'
 >>> dd.plugins.countries.get_my_country()
 Country #EE ('Estonia')
