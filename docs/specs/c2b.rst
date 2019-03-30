@@ -1,6 +1,6 @@
-=========================================
-Customer to Bank communication using SEPA
-=========================================
+==============================================
+``c2b``: Export SEPA CustomerToBank statements
+==============================================
 
 The first and currently only C2B application implemented in Lino are
 **payment orders**. A payment order is when you ask your bank to

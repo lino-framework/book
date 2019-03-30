@@ -1,23 +1,25 @@
 .. doctest docs/specs/cv.rst
 .. _lino.tested.cv:
 
-==================================
-The Career plugin
-==================================
+================================================
+``cv`` : Managing career-related data of clients
+================================================
 
-The :mod:`lino_xl.lib.cv` plugin adds functionality to manage
-career-related information about a client which can be used for
-example to generate a CV.
+.. currentmodule:: lino_xl.lib.cv
 
-.. doctest init:
+The :mod:`lino_xl.lib.cv` plugin adds functionality for managing career-related
+information about a client which can be used for example to generate a CV (a
+*curriculum vitae*).
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.max.settings.demo')
-    >>> from lino.api.doctest import *
-
-.. contents:: 
+.. contents::
+   :depth: 1
    :local:
-   :depth: 2
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.max.settings.demo')
+>>> from lino.api.doctest import *
 
 
 >>> UserTypes = rt.models.users.UserTypes

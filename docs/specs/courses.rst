@@ -1,31 +1,40 @@
 .. doctest docs/specs/courses.rst
 .. _specs.courses:
 
-======================================
-The  :mod:`lino_xl.lib.courses` plugin
-======================================
+==============================
+``courses`` : Managing courses
+==============================
+
+.. currentmodule:: lino_xl.lib.courses
 
 The :mod:`courses <lino_xl.lib.courses>` plugin adds functionality for
 managing "courses".
 
-A **course** is when a "teacher" meets more or less regularily with a
-group of "pupils".  The pupils can be any model (e.g. a
-:class:`contacts.Person <lino_xl.lib.contacts.Person>`).  For each
-pupil it creates an **enrolment**.  It can automatically generate
-calendar entries for the meetings of a course according to recurrency
-rules.  It helps with managing schedule exceptions and manual date
-changes.  It can fill the guests or participants of the meetings, and
-the teacher can register their presence.  Courses can be grouped into
-*course lines* (series), series into *topics*.
-
-
-.. currentmodule:: lino_xl.lib.courses
 
 .. contents::
-  :local:
+   :depth: 1
+   :local:
 
-About this document
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+What is a course?
 ===================
+
+A **course** is when a "teacher" meets more or less regularily with a group of
+"pupils".  The pupils can be any model (e.g. a :class:`contacts.Person
+<lino_xl.lib.contacts.Person>`).  When a pupil participates in a course, we
+create an **enrolment**.
+
+A course can automatically generate calendar entries for the meetings of that
+course according to recurrency rules.  It helps with managing these meetings:
+schedule exceptions and manual date changes.  It can fill the guests or
+participants of the meetings, and the teacher can register their presence.
+Courses can be grouped into course lines* (series), series into *topics*.
 
 The internal name "courses" is for historic reasons.  There was a time
 when I planned to rename "courses" to "activities".  Some table names
@@ -40,26 +49,10 @@ See also
 and :ref:`welfare`.
 
 
-Examples in this document use the :mod:`lino_book.projects.min9` demo
-project.
-
->>> from lino import startup
->>> startup('lino_book.projects.min9.settings.doctests')
->>> from lino.api.doctest import *
-
-
-
 The ``Course`` model
 ====================
 
 .. class:: Course
-
-    A Course is a group of pupils that regularily meet with a given
-    teacher in a given room to speak about a given subject.
-
-    Every meeting is a *calendar entry*, and the course itself is a
-    *calendar entry generator*, i.e. it has functionality for managing
-    these meetings.
 
     Database fields:
 

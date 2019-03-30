@@ -1,25 +1,30 @@
 .. doctest docs/specs/excerpts.rst
 .. _xl.specs.excerpts:
 
-==================
-Database excerpts
-==================
+===============================
+``excerpts``: Database excerpts
+===============================
 
-.. How to test only this document:
+.. currentmodul:: lino_xl.lib.excerpts
 
-     $ python setup.py test -s tests.SpecsTests.test_printing
+The :mod:`lino_xl.lib.excerpts` adds the notion of *database excerpts*.
 
-   Initialize doctest:
+Read also :doc:`printing`.
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.max.settings.doctests')
-    >>> from lino.api.shell import *
-    >>> from lino.api.doctest import *
+.. contents::
+   :depth: 1
+   :local:
 
+.. include:: /../docs/shared/include/tested.rst
 
-While the basics about printing out of a Lino application are
-described in :doc:`printing`, many Lino applications also use
-:mod:`lino_xl.lib.excerpts`.
+>>> from lino import startup
+>>> startup('lino_book.projects.max.settings.doctests')
+>>> from lino.api.shell import *
+>>> from lino.api.doctest import *
+
+What is a database excerpt?
+===========================
+
 
 A **database excerpt** is a database object which represents the fact
 that a given user has requested a printable document at a given

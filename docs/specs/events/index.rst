@@ -1,9 +1,9 @@
 .. doctest docs/specs/events.rst
 .. _book.specs.events:
 
-=================================
-The ``lino_xl.lib.events`` plugin
-=================================
+===================================================
+``events`` : Generating a static calendar of events
+===================================================
 
 ..  doctest init:
     

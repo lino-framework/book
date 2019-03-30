@@ -1,29 +1,27 @@
 .. doctest docs/specs/coachings.rst
 .. _specs.coachings:
 
-========================
-The ``coachings`` plugin
-========================
-
-..
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-
-
-The :mod:`lino_xl.lib.coachings` plugin adds functionality for
-managing "coachings".  A coaching is when a "coach" (a system user)
-engages in regular, structured conversation with a "client".  It is
-currently used in :ref:`welfare` only.
-
-
-.. contents::
-  :local:
-
-
+==================================
+``coachings`` : Managing coachings
+==================================
 
 .. currentmodule:: lino_xl.lib.coachings
-                   
+
+The :mod:`lino_xl.lib.coachings` plugin adds functionality for managing
+"coachings".  A coaching is when a "coach" (a system user) engages in regular,
+structured conversation with a "client".  It is currently used in
+:ref:`welfare` only.
+
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+
 
 Coachings
 =========

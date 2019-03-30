@@ -67,7 +67,6 @@ Plugins of the Extensions library
    finan
    households
    humanlinks
-   iban
    invoicing
    ledger
    notes
@@ -119,6 +118,7 @@ Topic guides
    human
    printing
    holidays
+   iban
 
 
 Technical stuff

@@ -1,18 +1,22 @@
 .. doctest docs/specs/iban.rst
 .. _specs.iban:
 
-===========================
-IBAN numbers in Lino Così
-===========================
-
-..  doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.apc.settings.demo')
-    >>> from lino.api.doctest import *
+===================
+Adding IBAN numbers
+===================
 
 This document describes the concepts implemented by the
 :mod:`lino_xl.lib.sepa` plugin.
+
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.apc.settings.demo')
+>>> from lino.api.doctest import *
 
 The following snippet tests whether all the fictuve IBAN samples are
 detected as valid by `localflavor`:

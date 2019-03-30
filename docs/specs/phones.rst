@@ -1,28 +1,29 @@
 .. _specs.phones:
 
-====================================================
-Contact details (Multiple phone numbers per partner)
-====================================================
+=================================================================
+``phones`` : Multiple phone numbers per partner (Contact details)
+=================================================================
 
-..  to test only this document:
+.. currentmodule:: lino_xl.lib.phones
 
-    $ doctest docs/specs/phones.rst
+The :mod:`lino_xl.lib.phones` plugin adds functionality to handle multiple
+phone numbers, email addresses etc ("contact details") per partner. When this
+plugin is installed, your application can show a "Contact Details" panel per
+partner instead of the four fields `phone`, `gsm`, `email` and `url`.
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.liina.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> from django.db.models import Q
 
-Overview
-========
 
-The :mod:`lino_xl.lib.phones` plugin adds models and methods to handle
-multiple phone numbers, email addresses etc ("contact details") per
-partner.
+.. contents::
+   :depth: 1
+   :local:
 
-When this plugin is installed, your application usually has a "Contact
-Details" panel per :class:`Partner <lino_xl.lib.contacts.Partner>`
-instead of the four fields `phone`, `gsm`, `email` and `url`.
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.liina.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
+
 
 Demo data
 =========
@@ -56,8 +57,6 @@ Demo data
 Reference
 =========
     
-.. currentmodule:: lino_xl.lib.phones
-
 .. class:: ContactDetailType
 
      .. attribute:: field_name

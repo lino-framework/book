@@ -1,28 +1,26 @@
 .. doctest docs/specs/clients.rst
 .. _specs.clients:
 
-========================
-The ``clients`` plugin
-========================
+================================================
+``clients`` : Manage clients and client contacts
+================================================
 
-..
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> from django.db.models import Q
-
+.. currentmodule:: lino_xl.lib.clients
 
 The :mod:`lino_xl.lib.clients` plugin adds the notions of clients and
 client contacts.
 
-
 .. contents::
-  :local:
+   :depth: 1
+   :local:
 
+.. include:: /../docs/shared/include/tested.rst
 
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db.models import Q
 
-.. currentmodule:: lino_xl.lib.clients
-                   
 
 Database structure
 ==================
@@ -90,6 +88,7 @@ Database structure
 
 
            
+.. class:: ClientContacts
 .. class:: ClientContact
 
 
@@ -117,8 +116,9 @@ Database structure
         The role of the contact person in the organization.
 
            
+.. class:: ClientContactTypes
 .. class:: ClientContactType
-           
+
     A **client contact type** is the type or "role" which must be
     specified for a given :class:`ClientContact`.
 
@@ -127,8 +127,15 @@ Database structure
     Whether persons of this type can be used as doctor of a refund
     confirmation. Injected by :mod:`lino_welfare.modlib.aids`.
 
+
+.. class:: PartnersByClientContactType
+
+
 Known contact types
 ====================
+
+.. class:: KnownContactType
+.. class:: KnownContactTypes
 
 The clients plugin also adds a choicelist of **known contact types**.
 
@@ -169,18 +176,12 @@ database:
     
 
     
-.. class:: KnownContactType
-.. class:: KnownContactTypes
 
-           
 Configuration
 =============
 
-.. class:: Plugin
+:attr:`lino_xl.lib.clients.Plugin.client_model`
 
-    .. attribute:: client_model = 'contacts.Person'
-
-       The model to which :attr:`ClientContact.client` points to.
 
 
 
