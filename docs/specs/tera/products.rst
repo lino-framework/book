@@ -9,7 +9,7 @@ The :mod:`lino_xl.lib.products` plugin is called "Fees" in Lino Tera
 because here we don't produce anything, we just sell services.
 
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')

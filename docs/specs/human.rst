@@ -16,7 +16,7 @@ It uses the demo database in :mod:`lino_book.projects.human`.
    :local:
 
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
              
 >>> import lino
 >>> lino.startup('lino_book.projects.human.settings')

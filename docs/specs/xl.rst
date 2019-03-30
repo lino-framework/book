@@ -17,7 +17,7 @@ It also adds some utilities.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.doctests')

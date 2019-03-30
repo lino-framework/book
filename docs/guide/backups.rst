@@ -1,4 +1,4 @@
-.. include:: /shared/include/defs.rst
+.. include:: /../docs/shared/include/defs.rst
 .. _guide.backups:
 
 =====================

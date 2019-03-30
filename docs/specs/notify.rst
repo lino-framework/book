@@ -14,7 +14,7 @@ application.
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
    
 >>> import lino
 >>> lino.startup('lino_book.projects.chatter.settings.demo')

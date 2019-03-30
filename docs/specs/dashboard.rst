@@ -20,7 +20,7 @@ items* of an application are *hard-coded* and *apply to all users*.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.team.settings.doctests')

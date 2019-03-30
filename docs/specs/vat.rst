@@ -42,7 +42,7 @@ national implementations for their VAT declarations.  Currently we have:
 
 
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')

@@ -15,7 +15,7 @@ The ``topics`` plugin in :ref:`tera`
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
              
 >>> import lino
 >>> lino.startup('lino_book.projects.lydia.settings.doctests')

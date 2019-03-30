@@ -13,7 +13,7 @@ tickets and projects.
 
 .. currentmodule:: lino_xl.lib.tickets
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.team.settings.demo')

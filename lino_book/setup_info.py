@@ -145,6 +145,7 @@ lino_book.projects.20100206
 lino_book.projects.20100212
 lino_book.projects.20121124
 lino_book.projects.chooser
+lino_book.projects.chooser.fixtures
 lino_book.projects.example
 lino_book.projects.properties
 lino_book.projects.quantityfield

@@ -6,7 +6,7 @@ Estonia
 The Estonian version of :ref:`cosi` imports every place in Estonia
 from :mod:`commondata.ee`.
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.cosi_ee.settings.demo')

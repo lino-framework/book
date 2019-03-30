@@ -14,7 +14,7 @@ The :mod:`lino_xl.lib.cal` plugin adds calendar functionality.
 
 
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.adg.settings.demo')

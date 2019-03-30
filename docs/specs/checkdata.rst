@@ -21,7 +21,7 @@ message* which is assigned to a *responsible user*.
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min9.settings.doctests')

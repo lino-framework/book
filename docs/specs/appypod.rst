@@ -17,7 +17,7 @@ See also the user documentation in :ref:`lino.admin.appypod`.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')

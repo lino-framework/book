@@ -16,7 +16,7 @@ searches across all tables of the application.
    :local:
 
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 
 >>> from lino import startup

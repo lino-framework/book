@@ -11,7 +11,7 @@ manipulating *Belgian national identification numbers*.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> # lino.startup('lino.projects.std.settings_test')

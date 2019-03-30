@@ -15,7 +15,7 @@ fields or inherit from the :class:`Controllable` mixin.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min9.settings.doctests')

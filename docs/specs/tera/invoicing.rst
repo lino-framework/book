@@ -19,7 +19,7 @@ in :mod:`lino_xl.lib.invoicing`.
    :local:
    :depth: 2
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')

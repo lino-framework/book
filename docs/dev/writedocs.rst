@@ -6,12 +6,11 @@ Writing documentation
 
 The Lino documentation is written in Sphinx.
 
-The audience of Lino documentation range from end-users to trainers,
-consultants, application developers, hosting prviders to core
-developers.
+The audience of Lino documentation ranges from end-users to trainers,
+consultants, application developers, hosting providers to core developers.
 
-All this documentation is published in code repositories as free
-content under the same licence as the source code.
+All this documentation is published in code repositories as free content under
+the same licence as the source code.
 
 
 .. toctree::
@@ -24,3 +23,4 @@ content under the same licence as the source code.
    help_texts
    specs
    manuals
+   shared

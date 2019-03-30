@@ -13,7 +13,7 @@ extends :mod:`lino_xl.lib.tickets` to make it collaborate with :mod:`lino_noi.li
 
 .. currentmodule:: lino_noi.lib.tickets
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.team.settings.demo')

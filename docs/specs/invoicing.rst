@@ -20,7 +20,7 @@ and :doc:`accounting`.  See also :doc:`/specs/voga/invoicing`.
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
              
 >>> from lino import startup
 >>> startup('lino_book.projects.roger.settings.demo')

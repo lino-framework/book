@@ -14,7 +14,7 @@ The :mod:`lino_xl.lib.products` plugin adds functionality for managing
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')

@@ -1,6 +1,3 @@
-.. _tested_docs:
-
-
 Tested documents
 ================
 

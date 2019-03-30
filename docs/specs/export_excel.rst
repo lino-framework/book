@@ -15,7 +15,7 @@ to every grid view.
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
              
 >>> from lino import startup
 >>> startup('lino_book.projects.min3.settings.doctests')

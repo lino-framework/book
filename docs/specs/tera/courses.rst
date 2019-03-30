@@ -21,7 +21,7 @@ indipendent clients who share a common interest).
 .. currentmodule:: lino_tera.lib.courses
                    
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')

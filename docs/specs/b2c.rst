@@ -16,7 +16,7 @@ be similar but are not tested.
    :depth: 1
    :local:
       
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 
 Code examples in this document use the

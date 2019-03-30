@@ -8,6 +8,10 @@ Lino Specs
 This section contains :doc:`technical specifications </dev/specs>` for the
 modules of the Lino framework maintained by the Lino team.
 
+It has individual subsections for every Lino application maintained by the Lino
+team.  It also has general topic guides and plugin descriptions for
+functionalities that are shared among several applications.
+
 
 Core plugins
 ============

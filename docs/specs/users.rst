@@ -16,7 +16,7 @@ permission system.
 .. contents::
   :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 
 >>> from lino import startup

@@ -15,7 +15,7 @@ virtual tables and choicelists, but no database models. See also :doc:`search`
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.team.settings.doctests')

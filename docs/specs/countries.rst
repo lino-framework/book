@@ -14,7 +14,7 @@ managing names of geographical places.
    :local:
    :depth: 2
            
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min9.settings.doctests')

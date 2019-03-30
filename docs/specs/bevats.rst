@@ -18,7 +18,7 @@ to be used by organizations who don't need to introduce "normal"
    :depth: 1
    :local:
 
-.. include:: /include/tested.rst
+.. include:: /../docs/shared/include/tested.rst
 
 
 Code snippets in this document are based on the
