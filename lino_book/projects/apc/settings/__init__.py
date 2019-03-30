@@ -25,7 +25,7 @@ class Site(Site):
         yield super(Site, self).get_plugin_configs()
         yield ('vat', 'declaration_plugins', 'lino_xl.lib.bevat')
         yield ('countries', 'hide_region', True)
-        yield ('countries', 'country_code', 'bE')
+        yield ('countries', 'country_code', 'BE')
         yield ('ledger', 'use_pcmn', True)
 
 
