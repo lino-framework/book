@@ -144,17 +144,33 @@ Konfigurierung --> Verkauf --> Produktkategorien
 Product types
 =============
 
-Products can be diffentiated by their "type".
+Products can be differentiated by their "type".
 Types cannot be edited by the
 user.  But every product type can have a layout on its own.
 Every product type has its own menu entry.
 
 
+.. class:: ProductType
+
+    .. attribute:: text
+
+        The verbose name of this product type.
+
+        This string is used for the menu entries in :menuselection:`Configure
+        --> Products`.
+
+    .. attribute:: table_name
+
+        The name of the table to use for displaying a list of products with this type.
+
 .. class:: ProductTypes
 
     The list of *product types*.
 
-    It should contain at least one item whose name is :Attr:`default`.
+    It should contain at least one item whose name is :attr:`default`.
+
+    For each item of this list the plugin adds one menu entry to the
+    :menuselection:`Configure` menu.
 
     .. attribute:: default
 

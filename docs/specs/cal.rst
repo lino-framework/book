@@ -68,6 +68,10 @@ the starting date.
     Calendar entry
 
 
+    If a calendar entry has a type (:attr:`event_type`) and if that type has a
+    default duration (:attr:`EventTypedefault_duration`), Lino will change the
+    :attr:`end_time` of an entry when the :attr:`start_date`  is changed.
+
     .. attribute:: start_date
 
         The starting date of this entry.  May not be empty.
@@ -84,6 +88,7 @@ the starting date.
 
         The ending time.  If this is before the starting time, and no ending date
         is given, the entry ends the day after.
+
 
     .. attribute:: summary
 
@@ -289,7 +294,7 @@ values.
 
 
 
-The type of a calendar entry
+Calendar entry types
 ============================
 
 Every calendar entry has a field :attr:`Event.event_type` which points to its
@@ -305,6 +310,14 @@ application-specific behaviour and rules.
 
     Django model representing a *calendar entry type*. The possible value of
     the :attr:`Event.type` field.
+
+    .. attribute:: default_duration
+
+        An optional default duration for entries of this type.
+
+        If this field is set, Lino will help with entering
+        :attr:`Event.end_time` and :attr:`Event.start_date` of an calendar
+        entries.
 
     .. attribute:: event_label
 
@@ -359,15 +372,26 @@ application-specific behaviour and rules.
 
     The list of entry types defined on this site.
 
+    This is usually filled in the ``std`` demo fixture of the application.
+
+    >>> rt.show(cal.EventTypes)
+    =========== =============== ================== ================== ================ ============= ===================== =================
+     Reference   Designation     Designation (de)   Designation (fr)   Planner column   Appointment   Automatic presences   Locks all rooms
+    ----------- --------------- ------------------ ------------------ ---------------- ------------- --------------------- -----------------
+                 First contact   First contact      First contact                       Yes           No                    No
+                 Holidays        Feiertage          Jours fériés       External         No            No                    Yes
+                 Internal        Intern             Interne            Internal         Yes           No                    No
+                 Lesson          Lesson             Lesson                              Yes           No                    No
+                 Meeting         Versammlung        Réunion            External         Yes           No                    No
+    =========== =============== ================== ================== ================ ============= ===================== =================
+    <BLANKLINE>
+
 
 The daily planner
 =================
 
+The daily planner is a table shows an overview on all events of a day.
 
-.. class:: DailyPlanner
-
-    The virtual table used to render the daily planner.
-           
 >>> rt.show(cal.DailyPlanner)
 ============ ========== ===============
  Time range   External   Internal
@@ -377,6 +401,10 @@ The daily planner
  *All day*
 ============ ========== ===============
 <BLANKLINE>
+
+.. class:: DailyPlanner
+
+    The virtual table used to render the daily planner.
 
 
 .. >>> dd.today()
@@ -1437,4 +1465,30 @@ Data checkers
 
     Check whether the given subscription exists. If not, create it.
 
+
+Default duration and start time
+===============================
+
+>>> fld = cal.EventType._meta.get_field('default_duration')
+>>> fld.to_python("1:00")
+Duration('1:00')
+>>> fld = cal.Event._meta.get_field('start_time')
+>>> fld.to_python("1:00")
+datetime.time(1, 0)
+
+>>> et = cal.EventType.objects.get(planner_column=cal.PlannerColumns.internal)
+>>> et.default_duration
+Duration('0:30')
+
+>>> entry = cal.Event(start_time="8:00", event_type=et)
+>>> entry.full_clean()
+>>> entry.end_time
+datetime.time(8, 30)
+
+>>> entry = cal.Event(start_time="23:55", event_type=et)
+>>> entry.full_clean()
+>>> entry.start_time
+>>> entry.end_time
+datetime.time(8, 30)
+>>> entry.end_date
 
