@@ -1,5 +1,5 @@
 .. doctest docs/dev/quantities.rst
-b.. _book.dev.quantities:
+.. _book.dev.quantities:
 
 ==========
 Quantities
