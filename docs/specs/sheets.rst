@@ -7,15 +7,17 @@
 
 .. currentmodule:: lino_xl.lib.sheets
                    
-The :mod:`lino_xl.lib.sheets` plugin adds
-an annual financial report:
-three types of account balances (general, partner and analytical)
-as well as the *Balance sheet* and the *Income statement*.
+The :mod:`lino_xl.lib.sheets` plugin adds an annual financial report: three
+types of account balances (general, partner and analytical) as well as the
+*Balance sheet* and the *Income statement*.
 
 You should have read :doc:`ledger` before reading this document.
 
-Examples in this document use the :mod:`lino_book.projects.lydia`
-demo project.
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.demo')
@@ -24,12 +26,6 @@ demo project.
 >>> translation.activate('en')
 >>> from lino_xl.lib.ledger.utils import DCLABELS
 
-
-Table of contents:
-
-.. contents::
-   :depth: 1
-   :local:
 
 
 
@@ -186,20 +182,21 @@ The Accounting Report
  **1 Assets**                                               13 195,76   10 361,07                  2 834,69
  ** 10 Current assets**                                     13 195,76   10 361,07                  2 834,69
  1000 Customers receivable                                  13 195,76   10 361,07                  2 834,69
- **2 Passiva**                                              27 057,68   55 597,39   28 539,71
- ** 20 Liabilities**                                        27 057,68   55 597,39   28 539,71
+ **2 Passiva**                                              30 393,54   55 597,39   25 203,85
+ ** 20 Liabilities**                                        30 393,54   55 597,39   25 203,85
  2000 Suppliers payable                                     22 044,44   27 556,94   5 512,50
- 2010 Taxes payable                                         178,24      475,70      297,46
+ 2010 Taxes payable                                         3 514,10    475,70                     3 038,40
  2020 Banks                                                             5 520,31    5 520,31
  2030 Current transfers                                     4 835,00    22 044,44   17 209,44
- **6 Expenses**                                             27 854,40                              27 854,40
+ **6 Expenses**                                             24 518,54                              24 518,54
  6000 Cost of sales                                         6 714,00                               6 714,00
- 6100 Operating expenses                                    17 620,40                              17 620,40
- 6200 Other expenses                                        3 520,00                               3 520,00
+ 6100 Operating expenses                                    14 668,19                              14 668,19
+ 6200 Other expenses                                        3 136,35                               3 136,35
  **7 Revenues**                                             480,00      13 670,00   13 190,00
  7000 Net sales                                             480,00      13 670,00   13 190,00
 =========================== ============== =============== =========== =========== ============== =============
 <BLANKLINE>
+
 
 
 >>> ses = rt.login("robin")
@@ -208,48 +205,49 @@ The Accounting Report
 ======================================= ============== =============== =========== =========== ============== =============
  Description                             Debit before   Credit before   Debit       Credit      Credit after   Debit after
 --------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
- **4 Commercial assets & liabilities**                                  40 253,44   60 438,15   20 184,71
+ **4 Commercial assets & liabilities**                                  43 589,30   60 438,15   16 848,85
  4000 Customers                                                         13 195,76   10 361,07                  2 834,69
  4300 Pending Payment Orders                                            4 835,00    22 044,44   17 209,44
  4400 Suppliers                                                         22 044,44   27 556,94   5 512,50
  4510 VAT due                                                           178,24      297,46      119,22
+ 4512 VAT deductible                                                    3 335,86                               3 335,86
  4600 Tax Offices                                                                   178,24      178,24
  **5 Financial assets & liabilities**                                               5 520,31    5 520,31
  5500 BestBank                                                                      5 520,31    5 520,31
- **6 Expenses**                                                         27 854,40                              27 854,40
- ** 60 Operation costs**                                                27 854,40                              27 854,40
- 6010 Purchase of services                                              17 620,40                              17 620,40
- 6020 Purchase of investments                                           3 520,00                               3 520,00
+ **6 Expenses**                                                         24 518,54                              24 518,54
+ ** 60 Operation costs**                                                24 518,54                              24 518,54
+ 6010 Purchase of services                                              14 668,19                              14 668,19
+ 6020 Purchase of investments                                           3 136,35                               3 136,35
  6040 Purchase of goods                                                 6 714,00                               6 714,00
  **7 Revenues**                                                         480,00      13 670,00   13 190,00
  7000 Sales                                                             480,00      2 730,00    2 250,00
  7010 Sales on therapies                                                            10 940,00   10 940,00
 ======================================= ============== =============== =========== =========== ============== =============
 <BLANKLINE>
-============================ ============== =============== =========== ======== ============== =============
- Description                  Debit before   Credit before   Debit       Credit   Credit after   Debit after
----------------------------- -------------- --------------- ----------- -------- -------------- -------------
- **1 Operation costs**                                       6 350,18                            6 350,18
- 1100 Wages                                                  559,50                              559,50
- 1200 Transport                                              1 421,70                            1 421,70
- 1300 Training                                               3 683,98                            3 683,98
- 1400 Other costs                                            685,00                              685,00
- **2 Administrative costs**                                  10 475,16                           10 475,16
- 2100 Secretary wages                                        1 729,40                            1 729,40
- 2110 Manager wages                                          4 559,48                            4 559,48
- 2200 Transport                                              3 642,18                            3 642,18
- 2300 Training                                               544,10                              544,10
- **3 Investments**                                           1 404,50                            1 404,50
- 3000 Investment                                             1 404,50                            1 404,50
- **4 Project 1**                                             4 510,78                            4 510,78
- 4100 Wages                                                  3 569,48                            3 569,48
- 4200 Transport                                              439,80                              439,80
- 4300 Training                                               501,50                              501,50
- **5 Project 2**                                             5 113,78                            5 113,78
- 5100 Wages                                                  1 342,80                            1 342,80
- 5200 Transport                                              3 483,58                            3 483,58
- 5300 Other costs                                            287,40                              287,40
-============================ ============== =============== =========== ======== ============== =============
+============================ ============== =============== ========== ======== ============== =============
+ Description                  Debit before   Credit before   Debit      Credit   Credit after   Debit after
+---------------------------- -------------- --------------- ---------- -------- -------------- -------------
+ **1 Operation costs**                                       5 578,62                           5 578,62
+ 1100 Wages                                                  490,10                             490,10
+ 1200 Transport                                              1 421,70                           1 421,70
+ 1300 Training                                               3 093,54                           3 093,54
+ 1400 Other costs                                            573,28                             573,28
+ **2 Administrative costs**                                  9 175,90                           9 175,90
+ 2100 Secretary wages                                        1 659,56                           1 659,56
+ 2110 Manager wages                                          4 004,11                           4 004,11
+ 2200 Transport                                              3 044,86                           3 044,86
+ 2300 Training                                               467,37                             467,37
+ **3 Investments**                                           1 404,50                           1 404,50
+ 3000 Investment                                             1 404,50                           1 404,50
+ **4 Project 1**                                             3 843,84                           3 843,84
+ 4100 Wages                                                  3 013,68                           3 013,68
+ 4200 Transport                                              398,17                             398,17
+ 4300 Training                                               431,99                             431,99
+ **5 Project 2**                                             4 515,68                           4 515,68
+ 5100 Wages                                                  1 342,80                           1 342,80
+ 5200 Transport                                              2 927,99                           2 927,99
+ 5300 Other costs                                            244,89                             244,89
+============================ ============== =============== ========== ======== ============== =============
 <BLANKLINE>
 ==================================================== ============== =============== ======== ======== ============== =============
  Description                                          Debit before   Credit before   Debit    Credit   Credit after   Debit after
@@ -319,10 +317,10 @@ No data to display
  **1 Assets**                            2 834,69
  ** 10 Current assets**                  2 834,69
  1000 Customers receivable               2 834,69
- **2 Passiva**               28 539,71
- ** 20 Liabilities**         28 539,71
+ **2 Passiva**               25 203,85
+ ** 20 Liabilities**         25 203,85
  2000 Suppliers payable      5 512,50
- 2010 Taxes payable          297,46
+ 2010 Taxes payable
  2020 Banks                  5 520,31
  2030 Current transfers      17 209,44
 =========================== =========== ==========
@@ -330,14 +328,17 @@ No data to display
 ========================= =========== ===========
  Description               Expenses    Revenues
 ------------------------- ----------- -----------
- **6 Expenses**            27 854,40
+ **6 Expenses**            24 518,54
  6000 Cost of sales        6 714,00
- 6100 Operating expenses   17 620,40
- 6200 Other expenses       3 520,00
+ 6100 Operating expenses   14 668,19
+ 6200 Other expenses       3 136,35
  **7 Revenues**                        13 190,00
  7000 Net sales                        13 190,00
 ========================= =========== ===========
 <BLANKLINE>
+
+
+
 
 
 
@@ -364,9 +365,8 @@ And the expanded accounting equation is:
 ...         return 0
 ...     return e.new_balance().value(e.item.dc)
 
-TODO: the following test are skipped, we must first automatically
-generate the profit/loss booking so that the expenses and revenues are
-balanced.
+TODO: the following tests are skipped, we must first automatically generate the
+profit/loss booking so that the expenses and revenues are balanced.
 
 >>> assets = val(sheets.CommonItems.assets)
 >>> liabilities = val(sheets.CommonItems.liabilities)
@@ -378,7 +378,7 @@ balanced.
 >>> print(assets)
 2834.69
 >>> print(liabilities)
-28539.71
+25203.85
 >>> print(capital)  #doctest: +SKIP
 -9354.40
 >>> print(liabilities+capital)  #doctest: +SKIP
@@ -386,9 +386,9 @@ balanced.
 >>> print(passiva)  #doctest: +SKIP
 13836.75
 >>> print(expenses)
-27854.40
+24518.54
 >>> print(revenues)  #doctest: +SKIP
-27854.40
+24518.54
     
 Accounts on the left side of the equation (Assets and Expenses) are
 normally DEBITed and have DEBIT balances.  That's what the :attr:`dc

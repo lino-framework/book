@@ -1747,3 +1747,15 @@ The following failed before 20181016:
 
 >>> demo_get('robin', url + "&sort=credit&dir=DESC", *args)
 
+
+Templates
+=========
+
+.. xfile:: payment_reminder.body.html
+
+  Defines the body text of a payment reminder.
+
+.. xfile:: base.weasy.html
+.. xfile:: payment_reminder.weasy.html
+
+  Defines the body text of a payment reminder.

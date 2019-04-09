@@ -23,7 +23,7 @@ class Site(Site):
 
     def get_plugin_configs(self):
         yield super(Site, self).get_plugin_configs()
-        yield ('vat', 'declaration_plugins', 'lino_xl.lib.bevat')
+        yield ('vat', 'declaration_plugin', 'lino_xl.lib.bevat')
         yield ('countries', 'hide_region', True)
         yield ('countries', 'country_code', 'BE')
         yield ('ledger', 'use_pcmn', True)

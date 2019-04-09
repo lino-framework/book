@@ -1,14 +1,11 @@
+.. doctest docs/dev/hello/index.rst
 .. _lino.tutorial.hello:
 
 =============================
 Your first local Lino project
 =============================
 
-.. to test just this doc:
-
-    $ doctest docs/dev/hello/index.rst
-
-   doctest init::
+.. doctest init::
 
     >>> from atelier.sheller import Sheller
     >>> shell = Sheller('docs/dev/hello')
@@ -130,10 +127,10 @@ Django project, it is just one command to type::
 
     $ python manage.py prep
 
-That is, you run the :manage:`prep` management command that
-comes with every Lino application.
-
-It will ask you::
+The :manage:`prep` command is a `custom django-admin command
+<https://docs.djangoproject.com/en/1.9/howto/custom-management-commands/>`_
+provided by Lino.  It is just a thin wrapper which calls :manage:`initdb` with
+the application's :ref:`demo_fixtures` as argument. It will ask you::
 
     INFO Started manage.py prep (using settings) --> PID 28463
     We are going to flush your database (.../default.db).
@@ -149,7 +146,7 @@ The output that follows should look like this:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF
 `initdb std demo demo2` started on database .../hello/default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, bootstrap3, cal, contacts, countries, export_excel, extjs, gfks, jinja, lino, office, printing, staticfiles, system, users, xl
+  Synchronize unmigrated apps: about, bootstrap3, cal, checkdata, contacts, countries, export_excel, extjs, gfks, jinja, lino, office, printing, staticfiles, system, users, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
@@ -165,6 +162,7 @@ Synchronizing apps without migrations:
     Creating table contacts_roletype
     Creating table contacts_role
     Creating table gfks_helptext
+    Creating table checkdata_problem
     Creating table cal_dailyplannerrow
     Creating table cal_remotecalendar
     Creating table cal_room

@@ -49,7 +49,7 @@ Course #1 ('001 Greece 2014')
  Name                          Address                       Participant Type   Section   LFV   CKK   Raviva   Mitglied bis
 ----------------------------- ----------------------------- ------------------ --------- ----- ----- -------- --------------
  Hans Altenberg (MEL)          Aachener Straße, 4700 Eupen   Member                       Yes   No    No       31/12/2015
- Bernd Brecht (ME)             Germany                       Member                       No    No    No       31/12/2015
+ Bernd Brecht (ME)             Aachen, Germany               Member                       No    No    No       31/12/2015
  Jacqueline Jacobs (ME)        Fränzel, 4700 Eupen           Helper                       No    No    No       31/12/2016
  Christian Radermacher (MEL)   4730 Raeren                   Non-member                   Yes   No    No       31/12/2015
 ============================= ============================= ================== ========= ===== ===== ======== ==============

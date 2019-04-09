@@ -23,7 +23,7 @@ users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Uploads, My Notes, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
 - Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
@@ -33,29 +33,30 @@ users.UserTypes.admin:900
   - VAT : VAT declarations (VAT)
 - Reports :
   - Activities : Status Report
-  - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Sales : Due invoices, Sales invoice journal
   - Accounting : Debtors, Creditors
+  - VAT : Purchase journal, Intra-Community purchases, Intra-Community sales
 - Configure :
-  - System : Site Parameters, Users, Help Texts
+  - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Fees : Fees, Fee categories
   - Sales : Paper types, Flatrates
-  - Office : Library volumes, Upload Types, Note Types, Event Types, Excerpt Types
+  - Office : Note Types, Event Types, Excerpt Types, Library volumes, Upload Types
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
-  - System : Authorities, User types, User roles, content types, Data checkers, Data problems, Changes
+  - System : Authorities, User types, User roles, Data checkers, Data problems, Changes, content types
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
-  - Sales : Price factors, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
-  - Office : Uploads, Upload Areas, Notes, Outgoing Mails, Attachments, Excerpts
-  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
+  - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
-  - VAT : Special Belgian VAT declarations, Declaration fields
+  - Office : Notes, Outgoing Mails, Attachments, Excerpts, Uploads, Upload Areas
+  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
+  - VAT : Special Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
 - Site : About
 
 
@@ -67,7 +68,7 @@ Monique is a secretary.
 >>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Uploads, My Notes, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
@@ -77,8 +78,9 @@ Monique is a secretary.
   - VAT : VAT declarations (VAT)
 - Reports :
   - Activities : Status Report
-  - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Sales : Due invoices, Sales invoice journal
   - Accounting : Debtors, Creditors
+  - VAT : Purchase journal, Intra-Community purchases, Intra-Community sales
 - Configure :
   - System : Site Parameters, Help Texts
   - Places : Countries, Places
@@ -88,12 +90,12 @@ Monique is a secretary.
   - Fees : Fees, Fee categories
   - Sales : Flatrates
 - Explorer :
-  - System : content types, Data checkers, Data problems, Changes
+  - System : Data checkers, Data problems, Changes, content types
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
   - Activities : Activities, Enrolments
-  - Sales : Price factors, Invoices, VAT rules, Sales invoices
-  - VAT : Special Belgian VAT declarations, Declaration fields
+  - Sales : Price factors, Sales invoices
+  - VAT : Special Belgian VAT declarations, Declaration fields, Invoices, VAT rules
 - Site : About
 
 
@@ -105,7 +107,7 @@ Marianne is a "simple user".
 >>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Uploads, My Notes, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
@@ -115,15 +117,16 @@ Marianne is a "simple user".
   - VAT : VAT declarations (VAT)
 - Reports :
   - Activities : Status Report
-  - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
+  - Sales : Due invoices, Sales invoice journal
   - Accounting : Debtors, Creditors
+  - VAT : Purchase journal, Intra-Community purchases, Intra-Community sales
 - Configure :
   - Activities : Activity types, Instructor Types, Participant Types
   - Sales : Flatrates
 - Explorer :
   - Contacts : Partners
-  - Sales : Price factors, Invoices, VAT rules, Sales invoices
-  - VAT : Special Belgian VAT declarations, Declaration fields
+  - Sales : Price factors, Sales invoices
+  - VAT : Special Belgian VAT declarations, Declaration fields, Invoices, VAT rules
 - Site : About
 
 >>> rt.login('tom').show_menu()

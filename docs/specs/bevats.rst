@@ -7,10 +7,10 @@
 
 .. currentmodule:: lino_xl.lib.bevats
 
-The :mod:`lino_xl.lib.bevats` plugin
-adds functionality for handling **Special** Belgian VAT declarations
-to be used by organizations who don't need to introduce "normal"
-:doc:`bevat` but a simplified version, described e.g. `here
+The :mod:`lino_xl.lib.bevats` plugin adds functionality for handling
+**Special** Belgian VAT declarations to be used by organizations who don't need
+to introduce "normal" VAT declarations (:doc:`bevat`) but may declare only
+purchases. See e.g. `here
 <https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_speciale>`__.
 
 
@@ -19,10 +19,6 @@ to be used by organizations who don't need to introduce "normal"
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-
-
-Code snippets in this document are based on the
-:mod:`lino_book.projects.lydia` demo.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.lydia.settings.doctests')
@@ -40,102 +36,90 @@ Installing this plugin will automatically install
 The choice lists for VAT regimes and VAT columns are reduced compared
 to those defined in :doc:`bevat`:
 
-.. class:: VatRegimes
+>>> rt.show('vat.VatRegimes')
+======= =============== ==================== ========== ============== ==========
+ value   name            text                 VAT area   Needs VAT id   item VAT
+------- --------------- -------------------- ---------- -------------- ----------
+ 10      normal          Not subject to VAT              No             Yes
+ 20      subject         Subject to VAT       National   Yes            Yes
+ 30      intracom        Intracom services    EU         Yes            Yes
+ 35      intracom_supp   Intracom supplies    EU         Yes            Yes
+======= =============== ==================== ========== ============== ==========
+<BLANKLINE>
 
-    The :mod:`lino_xl.lib.betvats` plugin redefines the list of VAT
-    regimes:
 
-    >>> rt.show('vat.VatRegimes')
-    ======= =============== ====================
-     value   name            text
-    ------- --------------- --------------------
-     10      normal          Not subject to VAT
-     20      subject         Subject to VAT
-     30      intracom        Intracom services
-     35      intracom_supp   Intracom supplies
-    ======= =============== ====================
-    <BLANKLINE>
+>>> rt.show('vat.VatColumns')
+======= ============================== ========================= ================================
+ value   text                           Common account            Account
+------- ------------------------------ ------------------------- --------------------------------
+ 54      VAT due                        VAT due                   (4510) VAT due
+ 55      VAT returnable                 VAT returnable            (4511) VAT returnable
+ 59      VAT deductible                 VAT deductible            (4512) VAT deductible
+ 71      Purchase of ware               Purchase of goods         (6040) Purchase of goods
+ 72      Purchase of new vehicles       Purchase of investments   (6020) Purchase of investments
+ 73      Purchase of excised products
+ 75      Purchase of services           Purchase of services      (6010) Purchase of services
+ 76      Other purchase
+======= ============================== ========================= ================================
+<BLANKLINE>
 
-.. class:: VatColumns
 
-    The :mod:`lino_xl.lib.betvats` plugin redefines the list of VAT
-    columns:
+>>> rt.show('bevats.DeclarationFields')  #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
++-------+------+------+--------------------------------------------+
+| value | name | text | Description                                |
++=======+======+======+============================================+
+| 71    | F71  | [71] | Intracom supplies |br|                     |
+|       |      |      | columns 71 |br|                            |
+|       |      |      | MvtDeclarationField Debit |br|             |
++-------+------+------+--------------------------------------------+
+| 72    | F72  | [72] | New vehicles |br|                          |
+|       |      |      | columns 72 |br|                            |
+|       |      |      | MvtDeclarationField Debit |br|             |
++-------+------+------+--------------------------------------------+
+| 73    | F73  | [73] | Excised products |br|                      |
+|       |      |      | columns 73 |br|                            |
+|       |      |      | MvtDeclarationField Debit |br|             |
++-------+------+------+--------------------------------------------+
+| 75    | F75  | [75] | Intracom services |br|                     |
+|       |      |      | columns 75 |br|                            |
+|       |      |      | MvtDeclarationField Debit |br|             |
++-------+------+------+--------------------------------------------+
+| 76    | F76  | [76] | Other operations |br|                      |
+|       |      |      | columns 76 |br|                            |
+|       |      |      | MvtDeclarationField Debit |br|             |
++-------+------+------+--------------------------------------------+
+| 77    | F77  | [77] | Credit notes on 71, 72, 73 and 75 |br|     |
+|       |      |      | columns 71 72 73 75 |br|                   |
+|       |      |      | MvtDeclarationField Credit only |br|       |
++-------+------+------+--------------------------------------------+
+| 78    | F78  | [78] | Credit notes on 76 |br|                    |
+|       |      |      | columns 76 |br|                            |
+|       |      |      | MvtDeclarationField Debit only |br|        |
++-------+------+------+--------------------------------------------+
+| 80    | F80  | [80] | Due VAT for 71...76 |br|                   |
+|       |      |      | columns 54 |br|                            |
+|       |      |      | MvtDeclarationField Credit |br|            |
++-------+------+------+--------------------------------------------+
+| 81    | F81  | [81] | Miscellaneous corrections due |br|         |
+|       |      |      | WritableDeclarationField Credit |br|       |
++-------+------+------+--------------------------------------------+
+| 82    | F82  | [82] | Miscellaneous corrections returnable |br|  |
+|       |      |      | WritableDeclarationField Debit |br|        |
++-------+------+------+--------------------------------------------+
+| 83    | F83  | [83] | Total to pay |br|                          |
+|       |      |      | SumDeclarationField Credit |br|            |
+|       |      |      | Sum of F80 F81 F82 |br|                    |
++-------+------+------+--------------------------------------------+
+<BLANKLINE>
 
-    >>> rt.show('vat.VatColumns')
-    ======= ====== ==============================
-     value   name   text
-    ------- ------ ------------------------------
-     54             VAT due
-     71             Purchase of ware
-     72             Purchase of new vehicles
-     73             Purchase of excised products
-     75             Purchase of services
-     76             Other purchase
-    ======= ====== ==============================
-    <BLANKLINE>
-
-.. class:: DeclarationFields
-      
-    >>> rt.show('bevats.DeclarationFields')  #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
-    +-------+------+------+--------------------------------------------+
-    | value | name | text | Description                                |
-    +=======+======+======+============================================+
-    | 71    | F71  | [71] | Intracom supplies |br|                     |
-    |       |      |      | columns 71 |br|                            |
-    |       |      |      | MvtDeclarationField Debit |br|             |
-    +-------+------+------+--------------------------------------------+
-    | 72    | F72  | [72] | New vehicles |br|                          |
-    |       |      |      | columns 72 |br|                            |
-    |       |      |      | MvtDeclarationField Debit |br|             |
-    +-------+------+------+--------------------------------------------+
-    | 73    | F73  | [73] | Excised products |br|                      |
-    |       |      |      | columns 73 |br|                            |
-    |       |      |      | MvtDeclarationField Debit |br|             |
-    +-------+------+------+--------------------------------------------+
-    | 75    | F75  | [75] | Intracom services |br|                     |
-    |       |      |      | columns 75 |br|                            |
-    |       |      |      | MvtDeclarationField Debit |br|             |
-    +-------+------+------+--------------------------------------------+
-    | 76    | F76  | [76] | Other operations |br|                      |
-    |       |      |      | columns 76 |br|                            |
-    |       |      |      | MvtDeclarationField Debit |br|             |
-    +-------+------+------+--------------------------------------------+
-    | 77    | F77  | [77] | Credit notes on 71, 72, 73 and 75 |br|     |
-    |       |      |      | columns 71 72 73 75 |br|                   |
-    |       |      |      | MvtDeclarationField Credit only |br|       |
-    +-------+------+------+--------------------------------------------+
-    | 78    | F78  | [78] | Credit notes on 76 |br|                    |
-    |       |      |      | columns 76 |br|                            |
-    |       |      |      | MvtDeclarationField Debit only |br|        |
-    +-------+------+------+--------------------------------------------+
-    | 80    | F80  | [80] | Due VAT for 71...76 |br|                   |
-    |       |      |      | columns 54 |br|                            |
-    |       |      |      | MvtDeclarationField Credit |br|            |
-    +-------+------+------+--------------------------------------------+
-    | 81    | F81  | [81] | Miscellaneous corrections due |br|         |
-    |       |      |      | WritableDeclarationField Credit |br|       |
-    +-------+------+------+--------------------------------------------+
-    | 82    | F82  | [82] | Miscellaneous corrections returnable |br|  |
-    |       |      |      | WritableDeclarationField Debit |br|        |
-    +-------+------+------+--------------------------------------------+
-    | 83    | F83  | [83] | Total to pay |br|                          |
-    |       |      |      | SumDeclarationField Credit |br|            |
-    |       |      |      | Sum of F80 F81 F82 |br|                    |
-    +-------+------+------+--------------------------------------------+
-    <BLANKLINE>
-    
 
 Intracommunal purchases
 =======================
 
-The :mod:`lino_book.projects.lydia` demo is also an example of an
-organization which has a VAT id but is not subject to VAT
-declaration. This means for them that if they buy goods or services
-from other EU member states, they will pay themselves the VAT in their
-own country. The provider does not write any VAT on their invoice, but
-the customer computes that VAT based on their national rate and then
-introduces a special kind of VAT declaration and pays that VAT
-directly to the tax collector agency.
+When an organizations with special VAT buys goods or services from other EU
+member states, the provider does not write any VAT on their invoice. But the
+organization computes that VAT for their VAT declaration based on their
+national rate and declares it as due to the VAT office of their own country.
 
 Here is an example of such an invoice:
 
@@ -200,8 +184,8 @@ On screen you can see:
 ...    if v:
 ...        print("[{}] {} : {}".format(fld.value, fld.help_text, v))
 [71] Intracom supplies : 1341.90
-[72] New vehicles : 703.80
-[75] Intracom services : 3524.08
+[72] New vehicles : 626.83
+[75] Intracom services : 2933.69
 [80] Due VAT for 71...76 : 59.57
 [83] Total to pay : 59.57
 
@@ -214,13 +198,13 @@ table for that period:
 -------------------------
 Intra-Community purchases
 -------------------------
-==================== =============== ======== =================== ================= =========== =================
- Invoice              Partner         VAT id   VAT regime          Total excl. VAT   VAT         Total incl. VAT
--------------------- --------------- -------- ------------------- ----------------- ----------- -----------------
- *PRC 6/2015*         Donderweer BV            Intracom services   118,52            24,88       143,40
- *PRC 7/2015*         Van Achter NV            Intracom supplies   165,21            34,69       199,90
- **Total (2 rows)**                                                **283,73**        **59,57**   **343,30**
-==================== =============== ======== =================== ================= =========== =================
+==================== =============== ================ =================== ================= =========== =================
+ Invoice              Partner         VAT id           VAT regime          Total excl. VAT   VAT         Total incl. VAT
+-------------------- --------------- ---------------- ------------------- ----------------- ----------- -----------------
+ *PRC 6/2015*         Donderweer BV   NL957996364B01   Intracom services   118,52            24,88       143,40
+ *PRC 7/2015*         Van Achter NV   NL336548370B01   Intracom supplies   165,21            34,69       199,90
+ **Total (2 rows)**                                                        **283,73**        **59,57**   **343,30**
+==================== =============== ================ =================== ================= =========== =================
 <BLANKLINE>
 
 
@@ -237,15 +221,14 @@ And these are the movements generated by our declaration:
 ==================== ================================== =========== =========== ================ =========
 <BLANKLINE>
 
-A declaration in general moves the sum of all those little amounts of
-due VAT in account 4510 into another account, which means that now we
-have no more "due VAT to declare" but now we have a "debth towards the
-tax office".  From that point on a VAT declaration behaves and is
-handled like a purchase invoice which needs to get paid in
-time. That will be described in :doc:`finan`.
+A declaration in general moves the sum of all those little amounts of due VAT
+in account 4510 into another account, which means that now we have no more "due
+VAT" to declare but now we have a "debth towards the tax office".  From that
+point on a VAT declaration behaves and is handled like a purchase invoice which
+needs to get paid in time. That will be described in :doc:`finan`.
 
-We can verify that the VAT declaration did the correct sum by looking
-at the history of 4510 of that month:
+We can verify that the VAT declaration did the correct sum by looking at the
+history of 4510 for that month:
 
 >>> acc = ledger.Account.get_by_ref("4510")
 >>> rt.show(ledger.MovementsByAccount, acc,

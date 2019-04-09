@@ -18,7 +18,6 @@ class Site(Site):
     # minimal_ledger euvatrates
     # demo voga demo2""".split()
     demo_fixtures = """std
-    few_countries few_cities
     minimal_ledger
     demo voga demo2""".split()
 

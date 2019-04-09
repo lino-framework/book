@@ -28,4 +28,3 @@ specifications. One of their goal is to get tested.
    print_labels
    pupils
    db_roger
-   vat

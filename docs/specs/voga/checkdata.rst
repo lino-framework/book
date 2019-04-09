@@ -5,17 +5,16 @@
 Checking for data problems in Lino Voga
 =======================================
 
-..  doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.edmund.settings.doctests')
-    >>> from lino.api.doctest import *
-
-
-Lino Voga offers some functionality for managing data
-problems.
+Lino Voga offers some functionality for managing data problems.
 
 See also :ref:`book.specs.checkdata`.
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.edmund.settings.doctests')
+>>> from lino.api.doctest import *
+
 
 Data checkers available in Lino Voga
 ====================================
@@ -30,6 +29,7 @@ checkers.
     
 
 >>> rt.show(checkdata.Checkers)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =================================== ===============================================
  value                               text
 ----------------------------------- -----------------------------------------------
@@ -42,10 +42,10 @@ checkers.
  cal.LongEntryChecker                Too long-lasting calendar entries
  ledger.VoucherChecker               Check integrity of ledger vouchers
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
+ vat.VatColumnsChecker               Check VAT columns configuration.
  finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
 =================================== ===============================================
 <BLANKLINE>
-
 
 Showing all problems
 ====================

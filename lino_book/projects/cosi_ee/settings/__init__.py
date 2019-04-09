@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2017 Rumma & Ko Ltd
+# Copyright 2014-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 
@@ -19,16 +19,19 @@ from lino_cosi.lib.cosi.settings import *
 
 class Site(Site):
     languages = 'en et'
-    # demo_fixtures = 'std all_countries minimal_ledger euvatrates \
-    # eesti furniture \
-    # demo demo2'.split()
+
     demo_fixtures = 'std all_countries minimal_ledger \
     eesti furniture \
-    demo demo2'.split()
+    demo demo_bookings demo2'.split()
+
+    #demo_fixtures = 'std few_countries minimal_ledger \
+    #furniture \
+    #demo demo_bookings payments demo2'.split()
+
 
     def get_plugin_configs(self):
         yield super(Site, self).get_plugin_configs()
-        yield ('vat', 'declaration_plugins', 'lino_xl.lib.eevat')
+        yield ('vat', 'declaration_plugin', 'lino_xl.lib.eevat')
         yield ('countries', 'hide_region', False)
         yield ('countries', 'country_code', 'EE')
         yield ('ledger', 'use_pcmn', True)

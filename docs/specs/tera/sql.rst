@@ -1,3 +1,4 @@
+
 .. doctest docs/specs/tera/sql.rst
 .. _specs.tera.sql:
 
@@ -59,24 +60,24 @@ Subquery expression
 >>> reset_sql_queries()
 >>> obj.run_update_plan(ses)
 >>> show_sql_summary()
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
 ========================= =========== =======
  table                     stmt_type   count
 ------------------------- ----------- -------
-                           INSERT      95
-                           UNKNOWN     99
+                           INSERT      96
+                           UNKNOWN     100
  ana_account               SELECT      22
- cal_event                 SELECT      95
- cal_task                  SELECT      95
- checkdata_problem         SELECT      95
+ cal_event                 SELECT      96
+ cal_task                  SELECT      96
+ checkdata_problem         SELECT      96
  contacts_partner          SELECT      50
  django_content_type       SELECT      13
- excerpts_excerpt          SELECT      95
- invoicing_item            SELECT      95
- ledger_account            SELECT      22
+ excerpts_excerpt          SELECT      96
+ invoicing_item            SELECT      96
+ ledger_account            SELECT      23
  ledger_accountingperiod   SELECT      2
- notes_note                SELECT      95
- sales_invoiceitem         SELECT      95
+ notes_note                SELECT      96
+ sales_invoiceitem         SELECT      96
  sheets_accountentry       DELETE      1
  sheets_accountentry       SELECT      7
  sheets_anaaccountentry    DELETE      1
@@ -86,11 +87,13 @@ Subquery expression
  sheets_itementry          SELECT      9
  sheets_partnerentry       DELETE      1
  sheets_partnerentry       SELECT      1
- sheets_report             SELECT      95
- topics_interest           SELECT      95
- uploads_upload            SELECT      95
+ sheets_report             SELECT      96
+ topics_interest           SELECT      96
+ uploads_upload            SELECT      96
 ========================= =========== =======
 <BLANKLINE>
+
+
 
 TODO: above output shows some bug with parsing the statements, and
 then we must explain why there are so many select statements in

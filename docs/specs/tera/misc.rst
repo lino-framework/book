@@ -109,8 +109,8 @@ Voucher types
  finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
  finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
  ana.InvoicesByJournal                  Analytic invoice (ana.InvoicesByJournal)
- vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
  bevats.DeclarationsByJournal           Special Belgian VAT declaration (bevats.DeclarationsByJournal)
+ vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
 =============================== ====== ================================================================
 <BLANKLINE>
 

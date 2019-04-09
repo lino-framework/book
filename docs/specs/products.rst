@@ -180,12 +180,12 @@ Every product type has its own menu entry.
 
 
     >>> rt.show(products.ProductTypes)
-    ====== ========== ==================
-     Wert   name       Text
-    ------ ---------- ------------------
-     100    default    Produkte
-     200    services   Dienstleistungen
-    ====== ========== ==================
+    ====== ========== ================== ===================
+     Wert   name       Text               Table name
+    ------ ---------- ------------------ -------------------
+     100    default    Produkte           products.Products
+     200    services   Dienstleistungen   products.Services
+    ====== ========== ================== ===================
     <BLANKLINE>
 
 

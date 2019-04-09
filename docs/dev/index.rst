@@ -30,6 +30,7 @@ Special topics
    /tutorials/input_mask/index
 
 
+
 Drafts
 ======
    
@@ -74,6 +75,7 @@ Other
    socialauth/index
    application
    choosers
+   demo_fixtures
 
 .. toctree::
    :hidden:

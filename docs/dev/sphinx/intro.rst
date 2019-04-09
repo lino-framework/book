@@ -24,12 +24,11 @@ book), use the `\:ref\:
 <http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-ref>`__
 role.
 
-
 To link to a Python object that is part of Lino, use the following
 roles:
 
 - :rst:role:`mod` to link to a module.  e.g. :mod:`lino.core.actions`
-  
+
 - :rst:role:`func` to link to a function
   e.g. :func:`lino.utils.join_words`
      
@@ -38,6 +37,13 @@ roles:
   
 - :rst:role:`meth`  to link to a method.
   Example :meth:`lino.core.model.Model.get_data_elem`
+
+
+Some sphinx roles defined in :mod:`lino.sphinxcontrib.base`:
+
+- :rst:fixture:`demo` to link to a fixture name.  e.g. :fixture:`demo`
+- :rst:manage:`prep` to link to a admin command.  e.g. :manage:`prep`
+
 
 .. _prosa_vs_api:
      

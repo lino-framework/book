@@ -13,24 +13,19 @@ class Site(Site):
 
     # default_ui = 'lino_extjs6.extjs6'
 
-    title = "Lino Voga à la Roger"
+    title = "Lino Voga for Roger"
     languages = "en de fr"
 
-    # demo_fixtures = """std few_countries minimal_ledger euvatrates
-    # demo voga demo_bookings payments demo2 checkdata""".split()
-    demo_fixtures = """std few_countries minimal_ledger 
+    demo_fixtures = """std minimal_ledger 
     demo voga demo_bookings payments demo2 checkdata""".split()
 
-    def setup_plugins(self):
-        """
-        Change the default value of certain plugin settings.
-       
-        """
-        super(Site, self).setup_plugins()
-        self.plugins.countries.configure(hide_region=True)
-        self.plugins.countries.configure(country_code='BE')
-        self.plugins.ledger.configure(start_year=2014)
-        self.plugins.ledger.configure(use_pcmn=True)
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        yield ('countries', 'hide_region', True)
+        yield ('countries', 'country_code', 'BE')
+        yield ('vat', 'declaration_plugin', 'lino_xl.lib.bevats')
+        yield ('ledger', 'use_pcmn', True)
+        yield ('ledger', 'start_year', 2014)
 
     def get_apps_modifiers(self, **kw):
         kw = super(Site, self).get_apps_modifiers(**kw)

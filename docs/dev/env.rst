@@ -226,15 +226,13 @@ Not much tested. Read and follow at your own risk.
 Here is how to quickly install the Lino SDK into a new virtualenv::
 
   $ cd ~/repositories
-  $ chmod +x book/docs/dev/install_dev_projects.sh
-  $ book/docs/dev/install_dev_projects.sh
+  $ sh book/docs/dev/install_dev_projects.sh
 
 Automated way for cloning and installing the code repositories::
 
   $ cd ~/repositories
   $ wget https://raw.githubusercontent.com/lino-framework/book/master/docs/dev/install_dev_projects.sh
-  $ chmod +x install_dev_projects.sh
-  $ ./install_dev_projects.sh
+  $ sh install_dev_projects.sh
 
 
 How to switch to the development version of Atelier

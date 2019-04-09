@@ -64,11 +64,16 @@ function install_them_all {
     install amici lino-framework amici
     install book lino-framework book
     install ext6 lino-framework extjs6
+    install openui5 lino-framework openui5
+    install react lino-framework react
 
     # the following are needed e.g. to build Luc's blog
     install welfare lino-framework welfare
+    install weleup lino-framework weleup
+    install welcht lino-framework welcht
     install algus lino-framework algus
     install presto lino-framework presto
+    install pronto lino-framework pronto
     install patrols lsaffre lino-patrols
     install logos lsaffre lino-logos
     install eid lino-framework eidreader

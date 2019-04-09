@@ -5,58 +5,294 @@
 ``vat`` : Adding VAT (Value-added tax) functionality
 ====================================================
 
-Table of contents:
+.. currentmodule:: lino_xl.lib.vat
+
+The :mod:`lino_xl.lib.vat` plugin adds functionality for handling sales and
+purchase invoices in a context where the site operator is subject to
+value-added tax (VAT).
 
 .. contents::
    :depth: 1
    :local:
 
-Overview
+See also
 ========
 
-.. currentmodule:: lino_xl.lib.vat
+Applications using this plugin will probably also install at least one of the
+national implementations for their VAT declarations.  Currently we have three
+declaration plugins:
 
-The :mod:`lino_xl.lib.vat` plugin adds functionality for handling
-incoming and outgoing invoices in a context where the site operator is
-subject to value-added tax (VAT).
+- :doc:`bevat` (Belgium standard)
+- :doc:`bevats` (Belgium simplified)
+- :doc:`eevat` (Estonia)
 
-Applications to be used only outside the European Union might use
-:mod:`lino_xl.lib.vatless` instead.  Though this plugin might become
-deprecated.  The modules :mod:`lino_xl.lib.vatless` and
-:mod:`lino_xl.lib.vat` can theoretically both be installed though
-obviously this wouldn't make sense.
-
-See also :class:`lino_xl.lib.vat.Plugin` for configuration options
-and the :mod:`lino_xl.lib.vat.utils` module contains some utility
-functions.
-
-Declaration plugins
-===================
-
-Applications using this plugin will probably also install one of the
-national implementations for their VAT declarations.  Currently we have:
-
-- :mod:`lino_xl.lib.bevat`
-- :mod:`lino_xl.lib.bevats`
-- :mod:`lino_xl.lib.eevat`
-
-
+Accounting applications to be used by site operators who don't care about VAT
+might use :mod:`lino_xl.lib.vatless` instead (though this plugin might become
+deprecated).  The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat`
+can theoretically both be installed though obviously this wouldn't make sense.
 
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
->>> startup('lino_book.projects.apc.settings.doctests')
+>>> startup('lino_book.projects.pierre.settings.doctests')
 >>> from lino.api.doctest import *
 
-
-Fixtures
+Overview
 ========
 
-The demo fixtures :mod:`novat <lino_xl.lib.vat.fixtures.novat>` and
-:mod:`euvatrates <lino_xl.lib.vat.fixtures.euvatrates>` are mutually
-exclusive (should not be used both) and must be loaded before any
-`demo` fixture (because otherwise :mod:`lino_xl.lib.vat.fixtures.demo`
-would not find any VAT regimes to assign to partners).
+The VAT plugin defines some subtle concepts:
+
+`VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
+rate** to apply for a given operation.
+
+`VAT areas`_ are used to group countries into groups where similar VAT regimes
+are available.
+
+
+VAT regimes
+===========
+
+A **VAT regime** must be assigned to each voucher and may optionally be
+assigned to each partner.
+
+The *VAT regime of a voucher* influences how the VAT for this voucher is being
+handled, e.g. which VAT rates are available and whether and how VAT is to be
+declared and paid towards the national VAT office.
+
+The *VAT regime of a partner* is used as the default value for all vouchers
+with this partner.  When you define a *default VAT regime* per partner, any new
+voucher created for this partner will have this VAT regime.  Existing vouchers
+are not changed when you change this field.
+
+The available VAT regimes vary depending on which VAT declaration plugin is
+installed.  See also `Available VAT regimes`_. The list below is when no
+declaration module is installed, so we have only one default regime.
+
+>>> rt.show(vat.VatRegimes, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+======= ======== ======== ========== ============== ==========
+ value   name     text     VAT area   Needs VAT id   item VAT
+------- -------- -------- ---------- -------------- ----------
+ 10      normal   Normal              No             Yes
+======= ======== ======== ========== ============== ==========
+<BLANKLINE>
+
+Note that the VAT regime does not depend on the *trade type*.  For example,
+when a partner has the regime "Intra-community", this regime is used for both
+sales and purchase invoices with this partner.  The difference between sales
+and purchases is defined by the `VAT rules`_, not by the regime.
+
+.. class:: VatRegime
+
+    Base class for the items of :class:`VatRegimes`.  Each VAT regime is an
+    instance of this and has two properties:
+
+    .. attribute:: vat_area
+
+        In which *VAT area* this regime is available.  See :class:`VatAreas`.
+
+    .. attribute:: item_vat
+
+        Whether unit prices are VAT included or not.
+
+    .. attribute:: needs_vat_id
+
+        Whether this VAT regime requires that partner to have a
+        :attr:`vat_id`.
+
+.. class:: VatRegimes
+
+    The global list of *VAT regimes*.  Each item of this list is an instance of
+    :class:`VatRegime`.
+
+    Three VAT regimes are considered standard minimum:
+
+    .. attribute:: normal
+    .. attribute:: subject
+    .. attribute:: intracom
+
+    Two additional regimes are defined in :mod:`lino_xl.lib.bevat`:
+
+    .. attribute:: de
+    .. attribute:: lu
+
+
+VAT classes
+===========
+
+A **VAT class** is assigned to each product and to each item of a simple
+account invoice.  The VAT class specifies how that product or invoice item
+behaves regarding to VAT, especially it influences the available rates. You can
+sell or purchase a same product to different partners using different VAT
+regimes.
+
+>>> rt.show(vat.VatClasses, language="en")
+======= ========= ==================
+ value   name      text
+------- --------- ------------------
+ 0       exempt    Exempt from VAT
+ 1       reduced   Reduced VAT rate
+ 2       normal    Normal VAT rate
+======= ========= ==================
+<BLANKLINE>
+
+A VAT class is a direct or indirect property of a trade object (e.g. a Product)
+which
+
+determines the VAT *rate* to be used.  It does not contain the actual
+rate because this still varies depending on your country, the time and type of
+the operation, and possibly other factors.
+
+
+.. class:: VatClasses
+
+    The global list of VAT classes.
+
+    Default classes are:
+
+    .. attribute:: exempt
+
+    .. attribute:: reduced
+
+    .. attribute:: normal
+
+
+VAT rules
+=========
+
+A **VAT rule** defines which VAT rate to apply and which account to use for a
+given combination of regime, class and trade type.
+
+The available VAT rules vary depending on which VAT declaration plugin is
+installed. The list below is when no declaration module is installed, so we
+have only one default rule with no condition and zero rate.
+
+>>> rt.show(vat.VatRules, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
++-------+--------------+
+| value | Description  |
++=======+==============+
+| 1     | Rate 0       |
+|       | Book to None |
++-------+--------------+
+<BLANKLINE>
+
+
+.. class:: VatRule
+
+    A rule which defines how VAT is to be handled for a given invoice
+    item.
+
+    Example data see :mod:`lino_xl.lib.vat.fixtures.euvatrates`.
+
+    Database fields:
+
+    .. attribute:: seqno
+
+       The sequence number.
+
+    .. attribute:: country
+    .. attribute:: vat_class
+
+    .. attribute:: vat_regime
+
+        The regime for which this rule applies.
+
+        Pointer to :class:`VatRegimes`.
+
+    .. attribute:: rate
+
+        The VAT rate to be applied. Note that a VAT rate of 20 percent is
+        stored as `0.20` (not `20`).
+
+    .. attribute:: can_edit
+
+        Whether the VAT amount can be modified by the user. This applies
+        only for documents with :attr:`VatDocument.edit_totals` set
+        to `False`.
+
+    .. attribute:: vat_account
+
+        The general account where VAT is to be booked.
+
+    .. attribute:: vat_returnable
+
+        Whether VAT is "returnable" (i.e. not to be paid to or by the
+        partner). Returnable VAT, unlike normal VAT, does not increase
+        the total amount of the voucher and causes an additional
+        movement into the :attr:`vat_returnable_account`.
+
+    .. attribute:: vat_returnable_account
+
+        Where to book returnable VAT. If VAT is returnable and this
+        field is empty, then VAT will be added to the base account.
+
+
+    .. classmethod:: get_vat_rule(cls, trade_type, vat_regime,
+                     vat_class=None, country=None, date=None)
+
+        Return the VAT rule to be applied for the given criteria.
+
+        Lino loops through all rules (ordered by their :attr:`seqno`)
+        and returns the first object which matches.
+
+.. class:: VatRules
+
+    The table of all :class:`VatRule` objects.
+
+    This table is accessible via :menuselection:`Explorer --> VAT --> VAT rules`.
+
+    >>> show_menu_path(vat.VatRules, language='en')
+    Explorer --> VAT --> VAT rules
+
+
+
+VAT areas
+=========
+
+A **VAT area** is a group of countries for which same VAT rules apply in the
+the country of the site owner.
+
+>>> rt.show(vat.VatAreas, language="en")
+======= =============== ===============
+ value   name            text
+------- --------------- ---------------
+ 10      national        National
+ 20      eu              EU
+ 30      international   International
+======= =============== ===============
+<BLANKLINE>
+
+
+The plugin property :attr:`eu_country_codes
+<lino_xl.lib.vat.Plugin.eu_country_codes>` defines which countries are
+considered part of the EU.
+
+So the :attr:`country <lino_xl.lib.contacts.Partner.country>` field of a
+partner indirectly influences which `VAT regimes`_ are available this partner.
+
+Available VAT regimes
+=====================
+
+The declaration plugin controls which VAT regimes are available for selection
+on a partner or on a voucher.
+
+The list of available VAT regimes for a partner depends on the VAT area and on
+whether the partner has a VAT id or not.
+
+.. function:: get_vat_regime_choices(country=None, vat_id=None):
+
+    Used for the choosers of the :attr:`vat_regime` field of a partner and a
+    voucher.
+
+
+.. class:: VatAreas
+
+    The global list of VAT areas.
+
+    .. classmethod:: get_for_country(cls, country)
+
+        Return the VatArea instance for this country.
 
 
 Simple account invoices
@@ -105,6 +341,25 @@ Simple account invoices
 
 
 
+Utilites
+========
+
+>>> from lino_xl.lib.vat.utils import add_vat, remove_vat
+
+>>> add_vat(100, 21)
+121.0
+
+>>> remove_vat(121, 21)
+100.0
+
+>>> add_vat(10, 21)
+12.1
+
+>>> add_vat(1, 21)
+1.21
+
+
+
 
 Intracom sales and purchases
 ============================
@@ -113,134 +368,28 @@ The plugin defines two reports accessible via the
 :menuselection:`Reports --> Accounting` menu and integrated in the
 printout of a VAT declaration:
 
+.. TODO:  why do the tables span all periods?
+
 .. class:: IntracomSales
            
-    Show a list of all sales invoices whose :attr:`vat_regime` is
-    intra-Community.
+    Show a list of all sales invoices whose VAT regime is Intra-Community.
     
->>> rt.show(vat.IntracomSales)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-====================== =========================== ============= ======================= =================== ============ ===================
- Rechnung               Partner                     MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
----------------------- --------------------------- ------------- ----------------------- ------------------- ------------ -------------------
- *SLS 2/2014*           Rumma & Ko OÜ               EE100588749   Innergemeinschaftlich   1 685,80            354,02       2 039,82
- *SLS 10/2014*          Bernd Brechts Bücherladen                 Innergemeinschaftlich   1 322,25            277,67       1 599,92
- **Total (2 Zeilen)**                                                                     **3 008,05**        **631,69**   **3 639,74**
-====================== =========================== ============= ======================= =================== ============ ===================
-<BLANKLINE>
-
 .. class:: IntracomPurchases
 
-    Show a list of all purchase invoices whose :attr:`vat_regime` is
-    intra-Community.
-    
->>> rt.show(vat.IntracomPurchases)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======================= =============== ============= ======================= =================== ============ ===================
- Rechnung                Partner         MwSt.-Nr.     MwSt.-Regime            Total zzgl. MwSt.   MwSt.        Total inkl. MwSt.
------------------------ --------------- ------------- ----------------------- ------------------- ------------ -------------------
- *PRC 2/2014*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 2/2015*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   119,67              25,13        144,80
- *PRC 9/2014*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- *PRC 9/2015*            Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,59              24,91        143,50
- *PRC 16/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
- *PRC 16/2015*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,03              24,57        141,60
- *PRC 23/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
- *PRC 30/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
- *PRC 37/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 44/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- *PRC 51/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   118,52              24,88        143,40
- *PRC 58/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,44              24,66        142,10
- *PRC 65/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   115,87              24,33        140,20
- *PRC 72/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   116,78              24,52        141,30
- *PRC 79/2014*           Rumma & Ko OÜ   EE100588749   Innergemeinschaftlich   117,35              24,65        142,00
- **Total (15 Zeilen)**                                                         **1 761,34**        **369,86**   **2 131,20**
-======================= =============== ============= ======================= =================== ============ ===================
-<BLANKLINE>
+    Show a list of all purchase invoices whose VAT regime is Intra-Community.
 
 .. class:: IntracomInvoices
 
     Common base class for :class:`IntracomSales` and
     :class:`IntracomPurchases`
 
+>>> rt.show(vat.IntracomSales, language='en')
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+No data to display
 
-
-VAT rules
-=========
-
-
-.. class:: VatRule
-
-    A rule which defines how VAT is to be handled for a given invoice
-    item.
-
-    Example data see :mod:`lino_xl.lib.vat.fixtures.euvatrates`.
-
-    Database fields:
-
-    .. attribute:: seqno
-
-       The sequence number.
-                   
-    .. attribute:: country
-    .. attribute:: vat_class
-
-    .. attribute:: vat_regime
-
-        The regime for which this rule applies.
-
-        Pointer to :class:`VatRegimes`.
-    
-    .. attribute:: rate
-    
-        The VAT rate to be applied. Note that a VAT rate of 20 percent is
-        stored as `0.20` (not `20`).
-
-    .. attribute:: can_edit
-
-        Whether the VAT amount can be modified by the user. This applies
-        only for documents with :attr:`VatDocument.edit_totals` set
-        to `False`.
-
-    .. attribute:: vat_account
-
-        The general account where VAT is to be booked.
-
-    .. attribute:: vat_returnable
-
-        Whether VAT is "returnable" (i.e. not to be paid to or by the
-        partner). Returnable VAT, unlike normal VAT, does not increase
-        the total amount of the voucher and causes an additional
-        movement into the :attr:`vat_returnable_account`.
-
-    .. attribute:: vat_returnable_account
-
-        Where to book returnable VAT. If VAT is returnable and this
-        field is empty, then VAT will be added to the base account.
-
-
-    .. classmethod:: get_vat_rule(cls, trade_type, vat_regime,
-                     vat_class=None, country=None, date=None)
-
-        Return the VAT rule to be applied for the given criteria.
-        
-        Lino loops through all rules (ordered by their :attr:`seqno`)
-        and returns the first object which matches.
-
-.. class:: VatRules
-           
-    The table of all :class:`VatRule` objects.
-    
-    Accessible via :menuselection:`Explorer --> VAT --> VAT rules`.
-
-    >>> show_menu_path(vat.VatRules)
-    Explorer --> Verkauf --> MwSt-Regeln
-
->>> vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
-Decimal('0.21')
-
->>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
-Decimal('0.21')
+>>> rt.show(vat.IntracomPurchases, language='en')
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+No data to display
 
 
 
@@ -446,62 +595,8 @@ Model mixins
 
 
 
-                
-Choicelists
+VAT columns
 ===========
-
-.. class:: VatAreas
-
-    The global list of VAT areas.
-
-    A VAT area is a geographical area of countries for which same VAT
-    rules apply.
-
-    >>> rt.show(vat.VatAreas)
-    ====== =============== ===============
-     Wert   name            Text
-    ------ --------------- ---------------
-     10     national        National
-     20     eu              EU
-     30     international   International
-    ====== =============== ===============
-    <BLANKLINE>
-    
-
-    .. classmethod:: get_for_country(cls, country)
-                     
-        Return the VatArea instance for this country.
-
-        >>> print(dd.plugins.countries.country_code)
-        BE
-        
-        >>> vat.VatAreas.get_for_country(countries.Country(isocode='NL'))
-        <VatAreas.eu:20>
-   
-        >>> vat.VatAreas.get_for_country(countries.Country(isocode='BE'))
-        <VatAreas.national:10>
-    
-        >>> vat.VatAreas.get_for_country(countries.Country(isocode='US'))
-        <VatAreas.international:30>
-
-.. class:: VatClasses
-
-    The global list of VAT classes.
-
-    A VAT class is a direct or indirect property of a trade object
-    (e.g. a Product) which determines the VAT *rate* to be used.  It
-    does not contain the actual rate because this still varies
-    depending on your country, the time and type of the operation, and
-    possibly other factors.
-
-    Default classes are:
-
-    .. attribute:: exempt
-
-    .. attribute:: reduced
-
-    .. attribute:: normal
-
 
 .. class:: VatColumns
 
@@ -510,84 +605,6 @@ Choicelists
 
     The VAT column of a ledger account indicates where the movements
     on this account are to be collected in VAT declarations.
-
-VAT regimes
-===========
-
-The **VAT regime** of an invoice determines how the VAT is being handled, i.e.
-whether and how it is to be paid.
-
-You can define a *default VAT regime* per partner, which causes new invoices
-created for this partner to have this VAT regime.
-
-The VAT regime does not depend on the *trade type*.  For example, when a
-partner has the regime "Intra-community", you may create an invoice for this
-partner only in journals with a trade type for which a VAT rule exists.
-
-
->>> rt.show(vat.VatRegimes, language="de")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-====== ============== ==========================
- Wert   name           Text
------- -------------- --------------------------
- 10     normal         Privatperson
- 11     reduced        Privatperson (reduziert)
- 20     subject        MwSt.-pflichtig
- 25     cocontractor   Vertragspartner
- 30     intracom       Innergemeinschaftlich
- 31     delayed        Delay in collection
- 40     inside         Innerhalb EU
- 50     outside        Außerhalb EU
- 60     exempt         Befreit von MwSt.
- 70     de             Deutschland
- 71     lu             Luxemburg
-====== ============== ==========================
-
->>> rt.show(vat.VatRegimes, language="en")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======= ============== ==========================
- value   name           text
-------- -------------- --------------------------
- 10      normal         Private person
- 11      reduced        Private person (reduced)
- 20      subject        Subject to VAT
- 25      cocontractor   Co-contractor
- 30      intracom       Intra-community
- 31      delayed        Delay in collection
- 40      inside         Inside EU
- 50      outside        Outside EU
- 60      exempt         Exempt
- 70      de             Germany
- 71      lu             Luxemburg
-======= ============== ==========================
-<BLANKLINE>
-
-
-    
-
-.. class:: VatRegime
-           
-    Base class for choices of :class:`VatRegimes`.
-    
-    .. attribute:: item_vat
-                   
-        Whether unit prices are VAT included or not.
-
-.. class:: VatRegimes
-
-    The global list of *VAT regimes*.  Each item is an instance of
-    :class:`VatRegime`.
-
-    Three regimes are considered standard minimum:
-
-    .. attribute:: normal
-    .. attribute:: subject
-    .. attribute:: intracom
-
-    Two regimes are defined in
-
-    .. attribute:: de
-    .. attribute:: lu
 
 
 VAT declarations
@@ -642,3 +659,12 @@ VAT declarations
 
 .. class:: DeclarationFieldsBase           
            
+Configuration
+=============
+
+See also :class:`lino_xl.lib.vat.Plugin` for configuration options
+and the :mod:`lino_xl.lib.vat.utils` module contains some utility
+functions.
+
+
+

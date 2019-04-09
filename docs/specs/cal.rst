@@ -1469,10 +1469,17 @@ Data checkers
 Default duration and start time
 ===============================
 
+Note the difference between a DurationField and a TimeField:
+
 >>> fld = cal.EventType._meta.get_field('default_duration')
+>>> fld.__class__
+<class 'lino.core.fields.DurationField'>
 >>> fld.to_python("1:00")
 Duration('1:00')
+
 >>> fld = cal.Event._meta.get_field('start_time')
+>>> fld.__class__
+<class 'lino.core.fields.TimeField'>
 >>> fld.to_python("1:00")
 datetime.time(1, 0)
 
@@ -1480,15 +1487,23 @@ datetime.time(1, 0)
 >>> et.default_duration
 Duration('0:30')
 
->>> entry = cal.Event(start_time="8:00", event_type=et)
+So when we create an entry which starts at 8:00, Lino will automaticallt set
+end_time to 8:30
+
+>>> entry = cal.Event(start_date=dd.today(), start_time="8:00", event_type=et)
 >>> entry.full_clean()
 >>> entry.end_time
 datetime.time(8, 30)
 
->>> entry = cal.Event(start_time="23:55", event_type=et)
+It works also across midnight:
+
+>>> entry = cal.Event(start_date=dd.today(), start_time="23:55", event_type=et)
 >>> entry.full_clean()
 >>> entry.start_time
+datetime.time(23, 55)
 >>> entry.end_time
-datetime.time(8, 30)
+datetime.time(0, 25)
+>>> entry.start_date
+datetime.date(2017, 2, 15)
 >>> entry.end_date
 

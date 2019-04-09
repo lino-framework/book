@@ -5,6 +5,11 @@
 Database structure in Lino Tera
 ===============================
 
+.. contents::
+   :local:
+   :depth: 2
+
+.. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
 >>> lino.startup('lino_book.projects.lydia.settings.doctests')
@@ -31,7 +36,7 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-45 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, vat, sales, cal, invoicing, weasyprint, uploads, ledger, sepa, finan, bevats, ana, sheets, topics, notes, excerpts, appypod, export_excel, checkdata, tinymce, tera, teams, lists, sessions.
+45 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, weasyprint, uploads, ledger, bevats, checkdata, vat, sales, cal, invoicing, sepa, finan, ana, sheets, topics, notes, excerpts, appypod, export_excel, tinymce, tera, teams, lists, sessions.
 96 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
@@ -44,7 +49,7 @@ The database models
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
  cal.Event                   cal.OneEvent                   25        353
  cal.EventPolicy             cal.EventPolicies              19        6
- cal.EventType               cal.EventTypes                 21        5
+ cal.EventType               cal.EventTypes                 22        5
  cal.Guest                   cal.Guests                     7         280
  cal.GuestRole               cal.GuestRoles                 6         2
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
@@ -94,7 +99,7 @@ The database models
  ledger.Journal              ledger.Journals                24        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
- ledger.Movement             ledger.Movements               13        473
+ ledger.Movement             ledger.Movements               13        483
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         132
  lists.List                  lists.Lists                    7         8
@@ -111,7 +116,7 @@ The database models
  sales.VatProductInvoice     sales.Invoices                 25        86
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
- sheets.AccountEntry         sheets.AccountEntryTable       7         16
+ sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
  sheets.ItemEntry            sheets.ItemEntryTable          7         15

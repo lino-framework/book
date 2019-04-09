@@ -9,7 +9,12 @@ class Site(Site):
     # ignore_dates_after = datetime.date(2019, 05, 22)
     the_demo_date = datetime.date(2015, 3, 12)
 
-    def setup_plugins(self):
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        yield ('ledger', 'start_year', 2014)
+
+
+    def unused_setup_plugins(self):
         """
         Change the default value of certain plugin settings.
 

@@ -5,16 +5,16 @@
 User types in Lino Avanti
 =========================
 
-.. doctest init:
-
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-
 .. contents::
   :local:
 
-    
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+
+
 
 Site administrator
 ==================
@@ -23,22 +23,22 @@ Site administrator
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : Calendar, My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
-- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Absence control
 - Configure :
-  - System : Site Parameters, Users, Help Texts
+  - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
   - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
   - Office : Comment Types, Library volumes, Upload Types, Excerpt Types
   - Clients : Client Contact types
-  - Career : Languages, Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations
+  - Career : Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations, Languages
   - Trends : Trend areas, Trend stages
   - Polls : Choice Sets
   - Activities : Topics, Timetable Slots
 - Explorer :
-  - System : Authorities, User types, User roles, content types, Notification messages, Changes, Phonetic words, Data checkers, Data problems, All dashboard widgets
+  - System : Authorities, User types, User roles, Notification messages, Changes, Phonetic words, All dashboard widgets, content types, Data checkers, Data problems
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Office : Comments, Uploads, Upload Areas, Excerpts
@@ -59,7 +59,7 @@ users.UserTypes.coordinator:400
 
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Office : My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Office : My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
   
@@ -74,7 +74,7 @@ users.UserTypes.secretary:410
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
-- Office : My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Office : My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
   - Contacts : Partners
@@ -90,7 +90,7 @@ Social worker
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
-- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, Data problems assigned to me, My Excerpts
+- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Course planning, Absence control
 - Configure :

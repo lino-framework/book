@@ -54,24 +54,25 @@ Robin is the system administrator, he has a complete menu:
   - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - VAT : VAT declarations (VAT)
 - Reports :
-  - Sales : Purchase journal, Intra-Community purchases, Intra-Community sales, Due invoices, Sales invoice journal
-  - Accounting : Debtors, Creditors, Accounting Report
+  - Sales : Due invoices, Sales invoice journal
+  - Accounting : Accounting Report, Debtors, Creditors
+  - VAT : Purchase journal, Intra-Community purchases, Intra-Community sales
 - Configure :
-  - System : Site Parameters, Help Texts, Users
+  - System : Help Texts, Users, Site Parameters
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Office : Excerpt Types, Library volumes, Upload Types, My Text Field Templates
   - Sales : Products, Services, Product Categories, Price rules, Paper types
-  - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms, Sheet items
+  - Accounting : Sheet items, Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
-  - System : content types, Authorities, User types, User roles
+  - System : content types, Authorities, User types, User roles, Data checkers, Data problems
   - Contacts : Contact Persons, Partners
   - Office : Excerpts, Uploads, Upload Areas, Text Field Templates
-  - Sales : Price factors, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules, Sales invoices, Sales invoice items
-  - VAT : Belgian VAT declarations, Declaration fields
-  - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups, Accounting Reports
+  - Sales : Price factors, Sales invoices, Sales invoice items
   - SEPA : Bank accounts
   - Financial : Bank Statements, Journal Entries, Payment Orders
+  - Accounting : Accounting Reports, Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
+  - VAT : Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
 - Site : About
 
 

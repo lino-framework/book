@@ -5,23 +5,24 @@
 Lino Noi Overview
 =================
 
-.. doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
-
-
-
-.. contents::
-  :local:
-
-     
 The goal of Lino Noi is managing **tickets** (problems reported by
 customers or other users) and registering the **time** needed by
 developers or other users to work on these tickets.
 It is then possible to publish **service reports**.
 It is also used for managing agile development projects.
+
+
+
+.. contents::
+   :local:
+   :depth: 2
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
+
 
 
 Ticket management is not Worktime tracking
@@ -43,7 +44,7 @@ lino_xl.lib.working
 lino_noi.lib.tickets (extends_models=['Ticket', 'Site'])
 
 >>> dd.plugins.working.needs_plugins
-['lino_noi.lib.noi', 'lino_noi.lib.tickets', 'lino.modlib.summaries']
+['lino_noi.lib.noi', 'lino_noi.lib.tickets', 'lino.modlib.summaries', 'lino.modlib.checkdata']
 
 >>> dd.plugins.tickets.needs_plugins
 ['lino_xl.lib.excerpts', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']

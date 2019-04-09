@@ -108,6 +108,8 @@ the following variant of above code **would not work**::
 Configuring plugins
 ===================
 
+.. currentmodule:: lino.core.site
+
 Plugins can have **attributes** for holding configurable options.
 
 Examples of configurable plugin attributes:
@@ -117,21 +119,33 @@ Examples of configurable plugin attributes:
 
 The values of plugin attributes can be configured at three levels.
 
-As the **plugin developer** you specify a hard-coded default value.
+As a **plugin developer** you specify a hard-coded default value.
 
-As an **application developer** you can specify *in your application*
-that you want to configure certain plugin attributes by overriding the
-:meth:`setup_plugins <lino.core.site.Site.setup_plugins>` method of
+As an **application developer** you can specify default values in your
+application* by overriding the
+:meth:`Site.get_plugin_configs` or the
+:meth:`Site.setup_plugins` method of
 your Site class.  For example::
 
-    from lino_book.projects.std.settings import Site
+    class Site(Site):
+
+        def get_plugin_configs(self):
+            yield super(Site, self).get_plugin_configs()
+            yield ('countries', 'country_code', 'BE')
+            yield ('contacts', 'hide_region', True)
+
+The old style works also::
 
     class Site(Site):
 
         def setup_plugins(self):
             super(Site, self).setup_plugins()
             self.plugins.countries.configure(country_code='BE')
+            self.plugins.contacts.configure(hide_region=True)
 
+Note that :meth:`Site.setup_plugins` is called *after*
+:meth:`Site.get_plugin_configs`. This can cause unexpected behaviour when you
+mix both methods.
 
 As a **system administrator** you can override these configuration
 defaults in your project's :xfile:`settings.py` using one of the
@@ -140,30 +154,24 @@ following methods:
 - by overriding the Site class as described above for application
   developers
 
-- using the :func:`configure_plugin <lino.core.site.configure_plugin>`
-  function.
-
-  For example, if you want to set the :attr:`country_code
-  <lino_xl.lib.countries.Plugin.country_code>` of
-  :mod:`lino_xl.lib.countries` to `'DE'`::
-
-    from lino_cosi.projects.apc.settings import *
-    configure_plugin('countries', country_code='DE')
-    SITE = Site(globals())
-
 - by setting the value directly after instantiation of your
   :setting:`SITE` object.
 
-Beware the pitfall: :func:`configure_plugin
-<lino.core.site.configure_plugin>` must be called *before* the
+Another (deprecated) method is by using the :func:`configure_plugin` function.
+For example::
+
+    from lino_cosi.lib.cosi.settings import *
+    configure_plugin('countries', country_code='BE')
+    SITE = Site(globals())
+
+Beware the pitfall: :func:`configure_plugin` must be called *before* the
 :setting:`SITE` has been instantiated, otherwise *they will be ignored
 silently*.  (It is not easy to prevent accidental calls to it *after*
 Site initialization because there are scenarios where you want to
 instantiate several `Site` objects.)
 
-Keep in mind that you can indeed never be sure that your
-:setting:`SITE` instance is actually being used. A local system admin
-can always decide to import your :xfile:`settings.py` module and the
-reinstantiate your `Site` class another time. That's part of our game
-and we don't want it to be forbidden.
+Keep in mind that you can indeed never be sure that your :setting:`SITE`
+instance is actually being used. A local system admin can always decide to
+import your :xfile:`settings.py` module and to re-instantiate your `Site` class
+another time. That's part of our game and we don't want it to be forbidden.
 

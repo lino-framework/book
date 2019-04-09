@@ -1,15 +1,15 @@
-.. doctest docs/specs/voga/db_roger.rst
+.. dt docs/specs/voga/db_roger.rst
 .. _voga.specs.db_roger:
 
 ===============================
 Database structure in Lino Voga
 ===============================
 
-.. doctest init:
+.. include:: /../docs/shared/include/tested.rst
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
+>>> import lino
+>>> lino.startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
 
 
 The database structure
@@ -18,7 +18,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, vat, sales, invoicing, weasyprint, uploads, ledger, finan, sepa, bevats, notes, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
 82 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -28,7 +28,7 @@ The database structure
  cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
  cal.Event                  cal.OneEvent                   23        1161
  cal.EventPolicy            cal.EventPolicies              19        6
- cal.EventType              cal.EventTypes                 21        9
+ cal.EventType              cal.EventTypes                 22        9
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 5         3
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
@@ -76,7 +76,7 @@ The database structure
  ledger.Journal             ledger.Journals                24        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
  ledger.MatchRule           ledger.MatchRules              3         16
- ledger.Movement            ledger.Movements               12        887
+ ledger.Movement            ledger.Movements               12        1000
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         268
  lists.List                 lists.Lists                    7         8
@@ -95,7 +95,7 @@ The database structure
  sales.InvoiceItem          sales.InvoiceItems             15        174
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 25        97
- sepa.Account               sepa.Accounts                  6         25
+ sepa.Account               sepa.Accounts                  6         26
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0

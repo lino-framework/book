@@ -43,7 +43,7 @@ datetime.date(2015, 5, 22)
  Hans Altenberg (MEL)                     Aachener Straße, 4700 Eupen       Member                          Yes   No    No       31/12/2015
  Annette Arens (MEC)                      Alter Malmedyer Weg, 4700 Eupen   Helper                          No    Yes   No       31/12/2015
  Laurent Bastiaensen (ME)                 Am Berg, 4700 Eupen               Non-member                      No    No    No       31/12/2015
- Bernd Brecht (ME)                        Germany                           Member                          No    No    No       31/12/2015
+ Bernd Brecht (ME)                        Aachen, Germany                   Member                          No    No    No       31/12/2015
  Ulrike Charlier (ME)                     Auenweg, 4700 Eupen               Helper                          No    No    No       31/12/2015
  Dorothée Demeulenaere (ME)               Auf'm Rain, 4700 Eupen            Non-member                      No    No    No       31/12/2016
  ...
