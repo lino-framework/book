@@ -22,9 +22,9 @@ Applications using this plugin will probably also install at least one of the
 national implementations for their VAT declarations.  Currently we have three
 declaration plugins:
 
-- :doc:`bevat` (Belgium standard)
-- :doc:`bevats` (Belgium simplified)
-- :doc:`eevat` (Estonia)
+- :doc:`bevat`
+- :doc:`bevats`
+- :doc:`eevat`
 
 Accounting applications to be used by site operators who don't care about VAT
 might use :mod:`lino_xl.lib.vatless` instead (though this plugin might become
@@ -137,11 +137,9 @@ regimes.
 <BLANKLINE>
 
 A VAT class is a direct or indirect property of a trade object (e.g. a Product)
-which
-
-determines the VAT *rate* to be used.  It does not contain the actual
-rate because this still varies depending on your country, the time and type of
-the operation, and possibly other factors.
+and influences the VAT rate to be used.  It does not contain the actual rate
+because this still varies depending on your country, the time and type of the
+operation, and possibly other factors.
 
 
 .. class:: VatClasses
@@ -219,7 +217,7 @@ have only one default rule with no condition and zero rate.
 
         Whether VAT is "returnable" (i.e. not to be paid to or by the
         partner). Returnable VAT, unlike normal VAT, does not increase
-        the total amount of the voucher and causes an additional
+        the total amount of the voucher but causes an additional
         movement into the :attr:`vat_returnable_account`.
 
     .. attribute:: vat_returnable_account
