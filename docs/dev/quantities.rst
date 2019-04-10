@@ -110,6 +110,12 @@ A :class:`Duration` expresses a duration in `hours:minutes`.
 >>> print(Duration('0:01') * 6000)
 100:00
 
+>>> print(2 * Duration('1:30'))
+3:00
+>>> print(30 * Duration('0:20'))
+10:00
+
+
 >>> print(Duration('1:55') + Duration('0:05'))
 2:00
 >>> print(Duration('1:55') + Duration('0:10'))
@@ -235,7 +241,7 @@ need to convert this to a decimal value ('0.33'):
 >>> hourly_rate = Decimal('60.00')
 
 >>> print(hourly_rate * Duration('0:20'))
-20.00000000000000000000000000
+20:00
 
 >>> print(hourly_rate * Decimal('0.33'))
 19.8000
@@ -269,18 +275,19 @@ Decimal('33.00')
 >>> Decimal("100.00") * Percentage("33%")
 Decimal('33.0000')
 
-
 Multiplying a percentage with a decimal yields a percentage:
 
 >>> Percentage('5%') * 3
 Percentage('15.00%')
 
-When adding decimals to a percentage, the decimal must have its real value, not
+When adding decimals to a percentage, the decimal must have the real value, not
 the number of percents:
 
 >>> Percentage('5%') + Decimal('0.03')
 Percentage('8.00%')
 
+>>> Decimal('0.03') + Percentage('5%')
+Percentage('8.00%')
 
 
 
