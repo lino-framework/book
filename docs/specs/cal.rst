@@ -69,7 +69,7 @@ the starting date.
 
 
     If a calendar entry has a type (:attr:`event_type`) and if that type has a
-    default duration (:attr:`EventTypedefault_duration`), Lino will change the
+    default duration (:attr:`EventType.default_duration`), Lino will change the
     :attr:`end_time` of an entry when the :attr:`start_date`  is changed.
 
     .. attribute:: start_date
@@ -313,11 +313,13 @@ application-specific behaviour and rules.
 
     .. attribute:: default_duration
 
-        An optional default duration for entries of this type.
+        An optional default duration for calendar entries of this type.
 
         If this field is set, Lino will help with entering
         :attr:`Event.end_time` and :attr:`Event.start_date` of an calendar
-        entries.
+        entries by changing the :attr:`end_time` of an entry when the
+        :attr:`start_date` is changed (and the :attr:`start_time` when the
+        :attr:`end_date`)
 
     .. attribute:: event_label
 
@@ -325,9 +327,9 @@ application-specific behaviour and rules.
            
     .. attribute:: is_appointment
 
-        Whether entries of this type are considered as "appointments"
-        (i.e. whose time and place have been agreed upon with other
-        users or external parties).
+        Whether entries of this type are considered "appointments" (i.e. whose
+        time and place have been agreed upon with other users or external
+        parties).
 
         Certain tables show only entries whose type has the
         `is_appointment` field checked.  See :attr:`show_appointments
