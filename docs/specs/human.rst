@@ -9,7 +9,6 @@ About Humans
 
 This document explains some basic things about humans (as the
 :mod:`lino.mixins.human` module sees them).
-It uses the demo database in :mod:`lino_book.projects.human`.
 
 .. contents::
    :depth: 1
@@ -22,9 +21,15 @@ It uses the demo database in :mod:`lino_book.projects.human`.
 >>> lino.startup('lino_book.projects.human.settings')
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
+>>> from lino_book.projects.human.models import Person
+>>> from lino.modlib.system.choicelists import Genders
+>>> from django.utils import translation
 
-Model definition
-================
+
+Database definition
+===================
+
+This tutorial uses the demo database in :mod:`lino_book.projects.human`.
 
 The database structure used for the following examples is very simple:
 
@@ -33,15 +38,6 @@ The database structure used for the following examples is very simple:
 That is, we define a single model `Person` which just inherits
 :class:`lino.mixins.human.Human`.
 
-
-.. 
-  >>> from lino_book.projects.human.models import Person
-  >>> from lino.modlib.system.choicelists import Genders
-  >>> from django.utils import translation
-
-
-Database fields
----------------
 
 The `Human` mixin defines four database fields: `first_name`,
 `middle_name`, `last_name` and `gender`.
@@ -58,7 +54,7 @@ field.
 
 
 Parsing names
--------------
+=============
 
 >>> from lino.mixins.human import name2kw
 
@@ -152,9 +148,9 @@ ValidationError: ...Cannot find first and last name in "Foo"']
 
 
 Salutation
-----------
+==========
 
-The default `__unicode__` method of a Human includes 
+The default :meth:`__str__` method of a Human includes
 the "salutation" which indicates the gender:
 
 >>> print(Person(first_name="John", last_name="Smith", gender=Genders.male))
@@ -197,9 +193,9 @@ Herr Jean Dupont
 
 
 The full name
--------------
+=============
 
-Calling `unicode` on a person actually returns the same as the property `full_name`:
+Calling `str` on a person actually returns the same as the property `full_name`:
 
 >>> print(p)
 Mr Jean Dupont
@@ -245,7 +241,7 @@ Herrn Jean Dupont
 
 
 Uppercase last name
--------------------
+===================
 
 In France it is usual to print the last name with captial letters.
 
@@ -273,7 +269,7 @@ M. Jean Dupont
 
 
 The title of a human
---------------------
+====================
 
 The :attr:`title` field of a human is for specifying a `title
 <https://en.wikipedia.org/wiki/Title>`__ such as "Dr." or "PhD".
@@ -294,7 +290,7 @@ In :mod:`lino_xl.lib.contacts` this is covered by the
 
 
 The `mf` method
----------------
+===============
 
 The :meth:`mf <lino.mixins.human.Human.mf>` method of a Human
 is useful in document templates when you want to generate texts 
@@ -327,7 +323,7 @@ He or she
 
 
 The `strip_name_prefix` function
---------------------------------
+================================
 
 >>> from lino.mixins.human import strip_name_prefix
 >>> strip_name_prefix("Vandenberg")
@@ -353,7 +349,7 @@ The `strip_name_prefix` function
 
 
 Age
----
+===
 
 The :class:`lino.mixins.humans.Born` mixin adds a database field
 :attr:`birth_date`.
@@ -378,7 +374,7 @@ Here we go.
 >>> test("2002-04-05")
 16 years
 
-When you are 16 and your birthday is tomorrow, then today you are
+When your birthday is tomorrow and you get 17 years old, then today you are
 still 16:
 
 >>> test("2002-06-12")
@@ -389,16 +385,17 @@ For children younger than 5 years Lino adds the number of months:
 >>> test("2018-03-01")
 0 years 3 months
 
->>> with translation.override('de'):
-...    test("2018-03-01")
-0 Jahre 3 Monate
-
 Lino respects the singular forms:
 
 >>> test("2017-05-01")
 1 year 1 month
 
-... even in other languages:
+
+The age is translated text:
+
+>>> with translation.override('de'):
+...    test("2018-03-01")
+0 Jahre 3 Monate
 
 >>> with translation.override('de'):
 ...    test("2017-05-01")
@@ -406,3 +403,15 @@ Lino respects the singular forms:
 >>> with translation.override('fr'):
 ...    test("2017-05-01")
 1 an 1 mois
+
+Edge case
+=========
+
+Steve reported the problem that Lino says 35 years as age of a person whose
+birth date is 10.04.1984 when today is 04.04.1984. Which is wrong.  The person
+will get 35 only in 6 days.  So today she is 34:
+
+>>> settings.SITE.the_demo_date = datetime.date(2019,4,4)
+>>> test("1984-04-10")
+34 years
+
