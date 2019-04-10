@@ -9,7 +9,8 @@
 
 The :mod:`lino_xl.lib.vat` plugin adds functionality for handling sales and
 purchase invoices in a context where the site operator is subject to
-value-added tax (VAT).
+value-added tax (VAT).  It also installs a framework for handling VAT
+declaratations.
 
 .. contents::
    :depth: 1
@@ -47,6 +48,9 @@ rate** to apply for a given operation.
 
 `VAT areas`_ are used to group countries into groups where similar VAT regimes
 are available.
+
+It also `Simple account invoices`_ are a voucher type which can be used in
+simple accounting applications.
 
 
 VAT regimes
@@ -291,6 +295,28 @@ whether the partner has a VAT id or not.
     .. classmethod:: get_for_country(cls, country)
 
         Return the VatArea instance for this country.
+
+Why differentiate between VAT regimes and VAT classes?
+======================================================
+
+You might ask why we use two sets of categories for specifying the VAT rate.
+Some other accounting programs do not have two different categories for the
+subtle difference between "exempt" and "0%", they have just a category "VAT
+rate" which you can set per invoice item (and a default value per provider).
+
+The problem with this simplified vision is that at least for Belgian VAT
+declarations there is a big difference between having 0% of VAT because the
+provider is a private person and having 0% of VAT because you are buying post
+stamps or flight tickets (which are exempt from VAT).
+
+Another thing to consider is that in Lino we want to be able to have partners
+who are both a provider and a customer.  Their VAT regime remains the same for
+both trade types (sales and purchase) while the default VAT class to use in
+invoice items depends on the account or the product.
+
+.. Consider e.g. an invoice from an airline company where you buy tickets (VAT 0%)
+   and some additional service (VAT 20%). Or an invoice from some other company
+   where you buy post stamps (0%), books (9%) and additional service (20%).
 
 
 Simple account invoices
