@@ -195,6 +195,7 @@ table for that period:
        
 >>> pv = dict(start_period=dcl.start_period, end_period=dcl.end_period)
 >>> rt.show(vat.IntracomPurchases, param_values=pv, header_level=2)
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
 -------------------------
 Intra-Community purchases
 -------------------------

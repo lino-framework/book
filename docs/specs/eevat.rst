@@ -161,7 +161,7 @@ Intracom
 
 
 >>> rt.show(vat.IntracomSales)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
 ==================== =========================== ================ ================= ================= ============== =================
  Invoice              Partner                     VAT id           VAT regime        Total excl. VAT   VAT            Total incl. VAT
 -------------------- --------------------------- ---------------- ----------------- ----------------- -------------- -----------------
