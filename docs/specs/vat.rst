@@ -368,6 +368,10 @@ Simple account invoices
 Utilites
 ========
 
+
+The :mod:`lino_xl.lib.vat.utils` module contains some utility functions.
+
+
 >>> from lino_xl.lib.vat.utils import add_vat, remove_vat
 
 >>> add_vat(100, 21)
@@ -392,7 +396,6 @@ The plugin defines two reports accessible via the
 :menuselection:`Reports --> Accounting` menu and integrated in the
 printout of a VAT declaration:
 
-.. TODO:  why do the tables span all periods?
 
 .. class:: IntracomSales
            
@@ -406,6 +409,8 @@ printout of a VAT declaration:
 
     Common base class for :class:`IntracomSales` and
     :class:`IntracomPurchases`
+
+These reports areempty when you have no national declaration plugin installed:
 
 >>> rt.show(vat.IntracomSales, language='en')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -624,7 +629,6 @@ VAT columns
 
 .. class:: VatColumns
 
-                   
     The global list of VAT columns.
 
     The VAT column of a ledger account indicates where the movements
@@ -634,16 +638,18 @@ VAT columns
 VAT declarations
 ================
 
+A **VAT declaration** is when a company declares to its government
+how much sales and purchases they've done during a given period.
+
+A VAT declaration is a computed summary of ledger movements in an
+**observed period**, but it is also itself a ledger voucher which
+generates new movements in its own period.
+
+
 .. class:: VatDeclaration
 
     Abstract base class for VAT declarations.
 
-    A **VAT declaration** is when a company declares to its government
-    how much sales and purchases they've done during a given period.
-
-    A VAT declaration is a computed summary of ledger movements in an
-    **observed period**, but it is also itself a ledger voucher which
-    generates new movements in its own period.
 
     :class:`lino_xl.lib.sepa.Payable`
     :class:`lino_xl.lib.ledger.Voucher`
@@ -686,9 +692,6 @@ VAT declarations
 Configuration
 =============
 
-See also :class:`lino_xl.lib.vat.Plugin` for configuration options
-and the :mod:`lino_xl.lib.vat.utils` module contains some utility
-functions.
-
+See also :class:`lino_xl.lib.vat.Plugin` for configuration options.
 
 
