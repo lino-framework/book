@@ -1,4 +1,5 @@
-.. doctest docs/specs/noi/db.rst
+..
+
 .. _noi.specs.db:
 
 ===========================
@@ -28,7 +29,7 @@ Complexity factors
 - 61 models
 - 19 user roles
 - 7 user types
-- 220 views
+- 222 views
 - 15 dialog actions
 <BLANKLINE>
 
@@ -93,7 +94,7 @@ The database models
  tickets.Link                       tickets.Links                    4         1
  tickets.Site                       tickets.Sites                    11        3
  tickets.Subscription               tickets.Subscriptions            4         4
- tickets.Ticket                     tickets.Tickets                  27        116
+ tickets.Ticket                     tickets.Tickets                  28        116
  tickets.TicketType                 tickets.TicketTypes              5         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
  uploads.Upload                     uploads.Uploads                  11        0

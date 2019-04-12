@@ -66,6 +66,7 @@ query.
 >>> qs = tickets.Tickets.request().get_data_iterator()
 >>> sql = str(qs.query).replace('"','')
 >>> print(sqlparse.format(sql, reindent=True, keyword_case='upper'))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 SELECT tickets_ticket.id,
        tickets_ticket.modified,
        tickets_ticket.created,
@@ -90,6 +91,7 @@ SELECT tickets_ticket.id,
        tickets_ticket.feedback,
        tickets_ticket.standby,
        tickets_ticket.fixed_since,
+       tickets_ticket.last_commenter_id,
        tickets_ticket.regular_hours,
        tickets_ticket.extra_hours,
        tickets_ticket.free_hours,
@@ -211,6 +213,7 @@ SELECT tickets_ticket.id,
        T8.feedback,
        T8.standby,
        T8.fixed_since,
+       T8.last_commenter_id,
        T8.regular_hours,
        T8.extra_hours,
        T8.free_hours,
@@ -304,6 +307,7 @@ tickets.Ticket.feedback
 tickets.Ticket.fixed_since
 tickets.Ticket.free_hours
 tickets.Ticket.id
+tickets.Ticket.last_commenter
 tickets.Ticket.modified
 tickets.Ticket.planned_time
 tickets.Ticket.priority

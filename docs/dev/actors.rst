@@ -66,7 +66,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-235
+237
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -75,7 +75,7 @@ Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-118
+120
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 

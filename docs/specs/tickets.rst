@@ -648,46 +648,52 @@ This is a list of the parameters you can use for filterings tickets.
 
 >>> show_fields(tickets.AllTickets, all=True)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-+-----------------+-----------------+------------------------------------------------------------------+
-| Internal name   | Verbose name    | Help text                                                        |
-+=================+=================+==================================================================+
-| user            | Author          | The author. The user who reported this ticket to the database    |
-|                 |                 | and is responsible for managing it.                              |
-+-----------------+-----------------+------------------------------------------------------------------+
-| end_user        | End user        | Only rows concerning this end user.                              |
-+-----------------+-----------------+------------------------------------------------------------------+
-| assigned_to     | Assigned_to     | Only tickets with this user assigned.                            |
-+-----------------+-----------------+------------------------------------------------------------------+
-| not_assigned_to | Not assigned to | Only that this user is not assigned to.                          |
-+-----------------+-----------------+------------------------------------------------------------------+
-| interesting_for | Interesting for | Only tickets interesting for this partner.                       |
-+-----------------+-----------------+------------------------------------------------------------------+
-| site            | Site            | Select a site if you want to see only tickets for this site.     |
-+-----------------+-----------------+------------------------------------------------------------------+
-| has_site        | Has site        | Show only (or hide) tickets which have a site assigned.          |
-+-----------------+-----------------+------------------------------------------------------------------+
-| state           | State           | Only rows having this state.                                     |
-+-----------------+-----------------+------------------------------------------------------------------+
-| priority        | Priority        | Only rows having this priority.                                  |
-+-----------------+-----------------+------------------------------------------------------------------+
-| show_assigned   | Assigned        | Show only (or hide) tickets that are assigned to somebody.       |
-+-----------------+-----------------+------------------------------------------------------------------+
-| show_active     | Active          | Show only (or hide) tickets which are active (i.e. state is Talk |
-|                 |                 | or ToDo).                                                        |
-+-----------------+-----------------+------------------------------------------------------------------+
-| show_todo       | To do           | Show only (or hide) tickets which are todo (i.e. state is New    |
-|                 |                 | or ToDo).                                                        |
-+-----------------+-----------------+------------------------------------------------------------------+
-| show_private    | Private         | Show only (or hide) tickets that are marked private.             |
-+-----------------+-----------------+------------------------------------------------------------------+
-| start_date      | Date from       | Start of observed date range                                     |
-+-----------------+-----------------+------------------------------------------------------------------+
-| end_date        | until           | End of observed date range                                       |
-+-----------------+-----------------+------------------------------------------------------------------+
-| observed_event  | Observed event  |                                                                  |
-+-----------------+-----------------+------------------------------------------------------------------+
-| has_ref         | Has reference   |                                                                  |
-+-----------------+-----------------+------------------------------------------------------------------+
++--------------------+--------------------+-----------------------------------------------------------------------+
+| Internal name      | Verbose name       | Help text                                                             |
++====================+====================+=======================================================================+
+| user               | Author             | The author. The user who reported this ticket to the database         |
+|                    |                    | and is responsible for managing it.                                   |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| end_user           | End user           | Only rows concerning this end user.                                   |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| assigned_to        | Assigned_to        | Only tickets with this user assigned.                                 |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| not_assigned_to    | Not assigned to    | Only that this user is not assigned to.                               |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| interesting_for    | Interesting for    | Only tickets interesting for this partner.                            |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| site               | Site               | Select a site if you want to see only tickets for this site.          |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| has_site           | Has site           | Show only (or hide) tickets which have a site assigned.               |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| state              | State              | Only rows having this state.                                          |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| priority           | Priority           | Only rows having this priority.                                       |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| show_assigned      | Assigned           | Show only (or hide) tickets that are assigned to somebody.            |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| show_active        | Active             | Show only (or hide) tickets which are active (i.e. state is Talk      |
+|                    |                    | or ToDo).                                                             |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| show_todo          | To do              | Show only (or hide) tickets which are todo (i.e. state is New         |
+|                    |                    | or ToDo).                                                             |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| show_private       | Private            | Show only (or hide) tickets that are marked private.                  |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| start_date         | Date from          | Start of observed date range                                          |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| end_date           | until              | End of observed date range                                            |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| observed_event     | Observed event     |                                                                       |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| has_ref            | Has reference      |                                                                       |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| last_commenter     | Commented Last     | Only tickets that have this use commenting last.                      |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| not_last_commenter | Not Commented Last | Only tickets where this use is not the last commenter.                |
++--------------------+--------------------+-----------------------------------------------------------------------+
+| subscriber         | Site Subscriber    | Limit tickets to tickets that have a site this user is subscribed to. |
++--------------------+--------------------+-----------------------------------------------------------------------+
 
 
 
