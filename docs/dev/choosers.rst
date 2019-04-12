@@ -4,6 +4,7 @@
 Introduction to choosers
 ========================
 
+:ref:`lino.dev.combo`
 
 Examples in this document use the :mod:`lino_book.projects.chooser` demo
 project.
@@ -21,8 +22,8 @@ You instantiate a chooser by specifying a model and a fieldname.
 The fieldname must be the name of a field that has been defined in your model.
 A chooser for a field FOO on a model will look whether the model defines a class method FOO_choices().
 
-Situation 1
-===========
+Choosers on ForeignKey fields
+=============================
 
 A Contact has ForeignKey fields to Country and City.
 In an entry form for a Contact you want only the cities of that country when selecting a city.
@@ -46,10 +47,12 @@ There is no method `country_choices`, so `Contact.country` has no Chooser:
 None
 
 
-Situation 2
-===========
+Char field choosers
+===================
 
-How to use a Chooser on a field with choices:
+How to make and use a chooser on a char-field, to limit the valid values:
+
+.. literalinclude:: /../../book/lino_book/projects/chooser/food.py
 
 >>> food = chooser.Contact.get_chooser_for_field('food')
 
@@ -59,9 +62,28 @@ How to use a Chooser on a field with choices:
 >>> [str(o) for o in food.get_choices(year_in_school='FR')]
 ['Potato']
 
->>> [str(o) for o in food.get_choices(year_in_school='SR')]
-['Potato', 'Vegetable', 'Meat', 'Fish']
+>>> [str(o) for o in food.get_choices(year_in_school='SO')]
+['Potato', 'Vegetable']
 
+Choosers that depend on current user
+====================================
+
+Sometimes you require the current user to determine the choices for a field.
+To do this include a "ar" parameter to your chooser method. ::
+
+.. literalinclude:: /../../book/lino_book/projects/chooser/ar_chooser.py
+
+>>> ses = rt.login("robin")
+... #doctest: +SKIP
+>>> [str(o) for o in food.get_choices(ar=ses)]
+... #doctest: +SKIP
+['Potato', 'Vegetable']
+
+Not that this example doesn't work in our choices demo as there are no users.
+This tests assumes that the user model has a year_in_school field.
+
+This use case would be required if users are submitting what food they want
+to eat during the week on a separate table.
 
 Special cases
 =============
