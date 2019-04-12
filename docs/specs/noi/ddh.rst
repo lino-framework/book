@@ -77,7 +77,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : uploads.Upload.volume
 - users.User :
   - CASCADE : tickets.Subscription.user
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>
