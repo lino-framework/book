@@ -196,6 +196,16 @@ There are many tables used to show lists of tickets.
 
 .. class:: TicketsToTalk
 
+.. class:: TicketsNeedingFeedback
+
+    Shows tickets of sites that you are subscribed to which are in state Talk
+    where you are not the last commenter, includes tickets with no comments.
+
+.. class:: MyTicketsNeedingFeedback
+
+    Shows tickets of sites that you are subscribed to which are in state Talk
+    where you are the last commenter.
+
 .. class:: UnassignedTickets
 .. class:: ActiveTickets
 
