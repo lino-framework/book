@@ -23,9 +23,9 @@ tickets and projects.
 Overview
 ========
 
-A **Ticket** is a concrete question or problem formulated by a user.
-The user may be a system user or an end user represented by a system
-user.  It is the smallest unit of work.
+A **ticket** is a concrete question or problem formulated by a user. The user
+may be a system user or an end user represented by a system user.  It is the
+smallest unit of work.
 
 A **site** is a place where work is being done. Zulip calls it "stream", Slack
 calls it "Channel" A site can be anything your team uses for grouping their
@@ -48,6 +48,10 @@ Tickets
 
     The Django model used to represent a *ticket*.
 
+    A ticket has the following database fields.
+
+    Different relations to users:
+
     .. attribute:: user
 
         The author. The user who reported this ticket to the database
@@ -57,21 +61,7 @@ Tickets
 
         The end user who is asking for help.
 
-    .. attribute:: state
-
-        The state of this ticket. See :class:`TicketStates
-        <lino_xl.lib.tickets.choicelists.TicketStates>`
-
-    .. attribute:: waiting_for
-
-        What to do next. An unformatted one-line text which describes
-        what this ticket is waiting for.
-
-    .. attribute:: upgrade_notes
-
-        A formatted text field meant for writing instructions for the
-        hoster's site administrator when doing an upgrade where this
-        ticket is being deployed.
+    Descriptive fields:
 
     .. attribute:: description
 
@@ -82,6 +72,23 @@ Tickets
 
         The description can contain *memo commands* defined by the
         application.
+
+    .. attribute:: upgrade_notes
+
+        A formatted text field meant for writing instructions for the
+        hoster's site administrator when doing an upgrade where this
+        ticket is being deployed.
+
+
+    .. attribute:: state
+
+        The state of this ticket. See :class:`TicketStates
+        <lino_xl.lib.tickets.choicelists.TicketStates>`
+
+    .. attribute:: waiting_for
+
+        What to do next. An unformatted one-line text which describes
+        what this ticket is waiting for.
 
     .. attribute:: duplicate_of
 
@@ -327,23 +334,6 @@ In a default configuration it defines the following choices:
  50      closed      Closed     ☑             No
  60      cancelled   Refused    ☒             No
 ======= =========== ========== ============= ========
-<BLANKLINE>
-
-Above table in German:
-
->>> rt.show(tickets.TicketStates, language="de")
-====== =========== =============== ============= =======
- Wert   name        Text            Button text   Aktiv
------- ----------- --------------- ------------- -------
- 10     new         Neu             ⛶             Ja
- 15     talk        Besprechen      ☎             Ja
- 20     opened      Offen           ☉             Ja
- 22     started     Gestartet       ⚒             Ja
- 30     sleeping    Schläft         ☾             Nein
- 40     ready       Bereit          ☐             Ja
- 50     closed      Abgeschlossen   ☑             Nein
- 60     cancelled   Abgelehnt       ☒             Nein
-====== =========== =============== ============= =======
 <BLANKLINE>
 
 There is also a "modern" series of symbols, which can be enabled
@@ -727,4 +717,24 @@ Plugin configuration
 
 
 
+
+Other languages
+===============
+
+The ticket states in German:
+
+>>> rt.show(tickets.TicketStates, language="de")
+====== =========== =============== ============= =======
+ Wert   name        Text            Button text   Aktiv
+------ ----------- --------------- ------------- -------
+ 10     new         Neu             ⛶             Ja
+ 15     talk        Besprechen      ☎             Ja
+ 20     opened      Offen           ☉             Ja
+ 22     started     Gestartet       ⚒             Ja
+ 30     sleeping    Schläft         ☾             Nein
+ 40     ready       Bereit          ☐             Ja
+ 50     closed      Abgeschlossen   ☑             Nein
+ 60     cancelled   Abgelehnt       ☒             Nein
+====== =========== =============== ============= =======
+<BLANKLINE>
 

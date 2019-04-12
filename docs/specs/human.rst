@@ -354,54 +354,77 @@ Age
 The :class:`lino.mixins.humans.Born` mixin adds a database field
 :attr:`birth_date`.
 
-Before showing some examples, we must set :attr:`the_demo_date
-<lino.core.site.Site.the_demo_date>` in order to have reproduceable
-test cases:
+For the following examples, we will set :attr:`the_demo_date
+<lino.core.site.Site.the_demo_date>` in order to have reproducible test cases.
+At the end of this page we will need to restore the demo date to its original
+value, which is `None`:
 
->>> import datetime
->>> settings.SITE.the_demo_date = datetime.date(2018, 6, 11)
+>>> print(settings.SITE.the_demo_date)
+None
 
 We define a utility function for our tests:
 
->>> def test(birth_date):
+>>> def test(birth_date, today):
+...    settings.SITE.the_demo_date = i2d(today)
 ...    p = Person(birth_date=birth_date)
 ...    p.full_clean()
 ...    print(p.age)
-
+...    settings.SITE.the_demo_date = None
 
 Here we go.
 
->>> test("2002-04-05")
+A person born on April 5, 2002 was 16 years old on June 11, 2018:
+
+>>> test("2002-04-05", 20180611)
 16 years
 
-When your birthday is tomorrow and you get 17 years old, then today you are
-still 16:
+When you get 16 years old tomorrow, then today you are still 15:
 
->>> test("2002-06-12")
+>>> test("2002-04-05", 20180404)  # WRONG RESULT. Should be 15
 16 years
+
+You start being 16 on your birthday.
+
+>>> test("2002-04-05", 20180405)
+16 years
+
+The leap year bug: each leap year causes one day of difference. In our case the
+leap years are 2004, 2008 and 2012 and 2016, so Lino starts saying 16 4 days
+before your birthday:
+
+>>> test("2002-04-05", 20180403)  # WRONG RESULT. Should be 15
+16 years
+>>> test("2002-04-05", 20180402)  # WRONG RESULT. Should be 15
+16 years
+>>> test("2002-04-05", 20180401)  # WRONG RESULT. Should be 15
+16 years
+>>> test("2002-04-05", 20180331)
+15 years
+
+
 
 For children younger than 5 years Lino adds the number of months:
 
->>> test("2018-03-01")
+>>> test("2018-03-01", 20180611)
 0 years 3 months
 
 Lino respects the singular forms:
 
->>> test("2017-05-01")
+>>> test("2017-05-01", 20180611)
 1 year 1 month
 
 
 The age is translated text:
 
 >>> with translation.override('de'):
-...    test("2018-03-01")
+...    test("2018-03-01", 20180611)
 0 Jahre 3 Monate
 
 >>> with translation.override('de'):
-...    test("2017-05-01")
+...    test("2017-05-01", 20180611)
 1 Jahr 1 Monat
 >>> with translation.override('fr'):
-...    test("2017-05-01")
+...    test("2017-05-01", 20180611)
 1 an 1 mois
 
 Edge case
@@ -411,7 +434,7 @@ Steve reported the problem that Lino says 35 years as age of a person whose
 birth date is 10.04.1984 when today is 04.04.1984. Which is wrong.  The person
 will get 35 only in 6 days.  So today she is 34:
 
->>> settings.SITE.the_demo_date = datetime.date(2019,4,4)
->>> test("1984-04-10")
+>>> test("1984-04-10", 20190404)
 34 years
+
 
