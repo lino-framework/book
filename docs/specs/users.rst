@@ -364,6 +364,12 @@ Mixins
         A pointer to :class:`lino.modlib.users.models.User`.
         
     
+.. class:: StartPlan
+
+    .. attribute:: update_after_start
+
+        Whether to run :meth:`Plan.update_plan` after starting the plan.
+
 .. class:: UserPlan
 
     Mixin for anything that represents some plan of a given user on a
