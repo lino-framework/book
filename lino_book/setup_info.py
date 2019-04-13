@@ -12,33 +12,35 @@ PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
 install_requires = [
-        'Sphinx', 'lino', 'selenium','mock',
-        'pisa', 'django-wkhtmltopdf',
-        'django-iban', 'metafone',
-        'djangorestframework', 'bleach', 'radicale==1.1.2',
-        'icalendar',
-        'vobject',
-        # 'eidreader',
-        'social-auth-app-django',
-        'lino_cosi',
-        'lino_noi',
-        'lino_voga',
-        'lino_welfare',
-        'requests_mock',
-        'lino_care',
-        'lino_vilma',
-        'lino_avanti',
-        'lino_tera',
-        'lino_amici',
-        'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
-        'mock', 'sqlparse',
-        'django-mailbox@git+https://github.com/cylonoven/django-mailbox'
-    ]
+    'Sphinx', 'lino', 'selenium', 'mock',
+    'pisa', 'django-wkhtmltopdf',
+    'django-iban', 'metafone',
+    'djangorestframework', 'bleach', 'radicale==1.1.2',
+    'icalendar',
+    'vobject',
+    # 'eidreader',
+    'social-auth-app-django',
+    'lino_cosi',
+    'lino_noi',
+    'lino_voga',
+    'lino_welfare',
+    'requests_mock',
+    'lino_care',
+    'lino_vilma',
+    'lino_avanti',
+    'lino_tera',
+    'lino_amici',
+    'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
+    'mock', 'sqlparse',
+    'django-mailbox@git+https://github.com/cylonoven/django-mailbox'
+]
 
 if PY2:
     install_requires.append('channels<2')
+    install_requires.append('asgiref~=1.1')
 else:
     install_requires.append('channels>=2.0.0')
+    install_requires.append('asgiref~=3.0')
     install_requires.append('channels_redis')
 
 SETUP_INFO = dict(
@@ -54,7 +56,7 @@ SETUP_INFO = dict(
     author='Luc Saffre',
     author_email='luc@lino-framework.org',
     url="http://www.lino-framework.org",
-    #~ test_suite = 'lino_book.projects',
+    # ~ test_suite = 'lino_book.projects',
     test_suite='tests',
     classifiers="""\
   Programming Language :: Python
@@ -283,8 +285,6 @@ lino_book.projects.workflows.entries
 """.splitlines() if n])
 
 
-
-
 SETUP_INFO.update(message_extractors={
     'lino': [
         ('**/sandbox/**',        'ignore', None),
@@ -293,9 +293,8 @@ SETUP_INFO.update(message_extractors={
         ('**/linoweb.js',        'jinja2', None),
         #~ ('**.js',                'javascript', None),
         ('**/config/**.html', 'jinja2', None),
-        #~ ('**/templates/**.txt',  'genshi', {
-        #~ 'template_class': 'genshi.template:TextTemplate'
-        #~ })
+        # ~ ('**/templates/**.txt',  'genshi', {
+        # ~ 'template_class': 'genshi.template:TextTemplate'
+        # ~ })
     ],
 })
-
