@@ -5,7 +5,7 @@ The Python serializer
 
 The :mod:`lino.utils.dpy` module defines Lino's **Python serializer
 and deserializer**, which is used for :doc:`writing and loading demo
-data </dev/dumpy/index>`, :doc:`making backups </dev/dump2py>` and
+data </dev/pyfixtures/index>`, :doc:`making backups </dev/dump2py>` and
 :doc:`migrating </dev/datamig>` databases.
 
 Concept and implementation is one of the important concepts which Lino

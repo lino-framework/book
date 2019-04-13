@@ -21,7 +21,7 @@ your work environment and running demo projects.  We are ready to dive
    table_summaries
    vtables
    initdb
-   dumpy/index
+   pyfixtures/index
    perms
    users
    settings

@@ -12,8 +12,9 @@ application-specific demo data.  It performs an initialization of the database,
 replacing all data by default data loaded from the specified fixtures.
 
 This command removes *all existing tables* from the database (not only Django
-tables), then runs Django's `migrate` to create all tables, and finnaly runs
-Django's `loaddata` command to load the specified fixtures.
+tables), then runs Django's :manage: `migrate` to create all tables, and
+finally runs Django's :manage:`loaddata` command to load the specified
+fixtures.
 
 For example the command
 
@@ -36,4 +37,4 @@ changes to the database structure.  We assume that nobody will ever
 let a Lino application and some other application share the same
 database.
 
-See also the :manage:`prep` command.
+See also the :manage:`prep` command and :doc:`demo_fixtures`.

@@ -10,10 +10,10 @@ Fixtures can be defined by several files in different directories.
 Read more about this in the `Django documentation
 <https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_.
 
-Lino adds the concept of **demo fixtures**. These are a predefined set
-of fixture names to be specified by the application developer in the
-:attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` attribute.
-The `min1` application has the following value for this attribute:
+Lino uses this to define the concept of **demo fixtures**. These are a
+predefined set of fixture names to be specified by the application developer in
+the :attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` attribute. The
+`min1` application has the following value for this attribute:
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.demo')
@@ -26,14 +26,17 @@ This means that the :manage:`prep` command (in a
 
   $ python manage.py initdb std demo demo2
 
-The difference is that with :manage:`prep`, you don't need to know the list of
-demo fixtures when invoking the command. The default list of demo fixtures to
-load for initializing a "clean" standard demo database can be long and
-difficult to remember, and (more importantly) which can change when an
-application evolves.  System administrators usually don't *want* to know such
-details. As a future application developer you can learn more about them in
+The difference between :manage:`initdb` and :manage:`prep` is that with
+:manage:`prep`, you don't need to know the list of demo fixtures when invoking
+the command. The default list of demo fixtures to load for initializing a
+"clean" standard demo database can be long and difficult to remember, and (more
+importantly) which can change when an application evolves.  System
+administrators usually don't *want* to know such details. As a future
+application developer you can learn more about them in
 :ref:`lino.tutorial.writing_fixtures`.
 
+Note that in Lino we usually don't write fixtures in XML or JSON but
+:doc:`write them in Python </dev/pyfixtures/index>`.
 
 The loading phases of demo fixtures
 ===================================

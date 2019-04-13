@@ -368,7 +368,7 @@ is easy and fun because you can write fixtures in Python.
     because `initdb` does nothing when database is `:memory:`.
     
 You might now want to read more about :doc:`Python fixtures
-</dev/dumpy/index>` or Lino's special approach for :doc:`migrating
+</dev/pyfixtures/index>` or Lino's special approach for :doc:`migrating
 data </dev/datamig>`...  or simply stay with us and learn by doing!
 
   

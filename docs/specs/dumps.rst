@@ -238,7 +238,7 @@ Verify that the newly created dump is as expected:
 Error messages
 ==============
 
-Here we try to call :manage:`dumpy` in some invalid ways, just to
+Here we try to call :manage:`dump2y` in some invalid ways, just to
 demonstrate the possible error messages.
 
 >>> shell("python manage_a.py dump2py")
