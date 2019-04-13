@@ -7,13 +7,13 @@ python:
 
 env:
   global:
-   secure: oAd/tAioTs5vDkc/muFDQ+klJ6zSCxMGdVUY7GBRWh8FjhU2AFXFLZAtqdWMutJoq8uBn4wvmVkbgJjzEm7QIJTkAErhdGv1yPIlsie1jifGDU7ZXCeyrZINHv0SaoG6dDPJR7dZAbBhR8JPOj1V1KsWuVBhHPKSD68oUm+hrh0m9kZf99hGKGY9BM/wEytVFaG8rA2QYgrbcpXrKlG8sjmYw2KiHK1EO+sstejev2Ry7rDL0wuV5BUK8yjZ5hG+6IDHZCVXV5jyMwbq/ztKELfBBxZrTJk+o1O69XTkSMethaAyGh/IoedcDdiSyuyyr4CFYh1fGikptd51GKWinPrV8HCz9Ya0aBzzAlsODcNJC1CoosyyZO1J3giNsZsz+NesxgbBYWq7nZAHkCT3l8oVXQkHc405yQ4+8RNfUIS3kERyPYTnBgnU1mR0BNoG90BGhUYO3E+q7TDF+sTvshRvxNmehyIOpWcinU7knFs7qjVVecSZGLhp5n/3UScb7jtttKyjf9IhNpbKWwkzji2UnGgcdwTBFjDpSdIqlNhZR6KZb1+6Z6uRIR7dXLcOhek5bdlbCeeTTDyDZlEa2JIdK4TVLU7+5QyRNwyZ3foS6hh5N4cIp9g/5uTiBq7uC2Y8Ky0LRx7nvYIge55IV+V0GcZ4qJFTz7aTKeiJI4A=
-  matrix:  
-   - LINO_VERSION=dev
-   - LINO_VERSION=stable
+    secure: oAd/tAioTs5vDkc/muFDQ+klJ6zSCxMGdVUY7GBRWh8FjhU2AFXFLZAtqdWMutJoq8uBn4wvmVkbgJjzEm7QIJTkAErhdGv1yPIlsie1jifGDU7ZXCeyrZINHv0SaoG6dDPJR7dZAbBhR8JPOj1V1KsWuVBhHPKSD68oUm+hrh0m9kZf99hGKGY9BM/wEytVFaG8rA2QYgrbcpXrKlG8sjmYw2KiHK1EO+sstejev2Ry7rDL0wuV5BUK8yjZ5hG+6IDHZCVXV5jyMwbq/ztKELfBBxZrTJk+o1O69XTkSMethaAyGh/IoedcDdiSyuyyr4CFYh1fGikptd51GKWinPrV8HCz9Ya0aBzzAlsODcNJC1CoosyyZO1J3giNsZsz+NesxgbBYWq7nZAHkCT3l8oVXQkHc405yQ4+8RNfUIS3kERyPYTnBgnU1mR0BNoG90BGhUYO3E+q7TDF+sTvshRvxNmehyIOpWcinU7knFs7qjVVecSZGLhp5n/3UScb7jtttKyjf9IhNpbKWwkzji2UnGgcdwTBFjDpSdIqlNhZR6KZb1+6Z6uRIR7dXLcOhek5bdlbCeeTTDyDZlEa2JIdK4TVLU7+5QyRNwyZ3foS6hh5N4cIp9g/5uTiBq7uC2Y8Ky0LRx7nvYIge55IV+V0GcZ4qJFTz7aTKeiJI4A=
+  matrix:
+    - LINO_VERSION=dev
+    - LINO_VERSION=stable
 
 before_install:
-  - # sudo add-apt-repository -y ppa:libreoffice/ppa
+  -  # sudo add-apt-repository -y ppa:libreoffice/ppa
   - sudo apt-get install -y swig
   - sudo apt-get install -y graphviz
   - sudo apt-get install redis-server ; redis-server &
@@ -28,19 +28,20 @@ install:
   - bash install_requirements.sh
   - npm init -y
   - npm install cypress
-#  - pip install Django==$DJANGO
-#  - if [[ $TRAVIS_PYTHON_VERSION != 2.7 ]]; then pip install -r requirements.python3.txt; else pip install -r requirements.txt;  fi
-#  - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
-  - pip install .
+  #  - pip install Django==$DJANGO
+  #  - if [[ $TRAVIS_PYTHON_VERSION != 2.7 ]]; then pip install -r requirements.python3.txt; else pip install -r requirements.txt;  fi
+  #  - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
+  - python setup.py install_egg_info
+  - pip install -e .
   - pip freeze
-  
+
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - # if [[ $TRAVIS_BRANCH == 'python3' || $TRAVIS_PYTHON_VERSION == 2.7 ]]; then inv prep test; else exit 0; fi;
-  - # inv prep test
+  -  # if [[ $TRAVIS_BRANCH == 'python3' || $TRAVIS_PYTHON_VERSION == 2.7 ]]; then inv prep test; else exit 0; fi;
+  -  # inv prep test
   - inv cov --no-html
-  - # E2E testing with team
+  -  # E2E testing with team
   - cd lino_book/projects/min1/
   - python manage.py prep --noinput
   - python manage.py runserver -v 0 > /dev/null 2>&1 &
@@ -48,9 +49,7 @@ script:
   - sleep 15
   - ./node_modules/cypress/bin/cypress run -- --spec tests/cypress/integration/min1/* --config video=false
 
-
 after_script:
   - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
   - if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by repo `basename $(git rev-parse --show-toplevel)` commit `git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
   - coveralls
-
