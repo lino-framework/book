@@ -40,6 +40,7 @@ script:
   - mkdir $LINO_CACHE_ROOT
   -  # if [[ $TRAVIS_BRANCH == 'python3' || $TRAVIS_PYTHON_VERSION == 2.7 ]]; then inv prep test; else exit 0; fi;
   -  # inv prep test
+  - rm -R .eggs
   - inv cov --no-html
   -  # E2E testing with team
   - cd lino_book/projects/min1/
