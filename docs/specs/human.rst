@@ -380,8 +380,8 @@ A person born on April 5, 2002 was 16 years old on June 11, 2018:
 
 When you get 16 years old tomorrow, then today you are still 15:
 
->>> test("2002-04-05", 20180404)  # WRONG RESULT. Should be 15
-16 years
+>>> test("2002-04-05", 20180404)
+15 years
 
 You start being 16 on your birthday.
 
@@ -392,12 +392,12 @@ The leap year bug: each leap year causes one day of difference. In our case the
 leap years are 2004, 2008 and 2012 and 2016, so Lino starts saying 16 4 days
 before your birthday:
 
->>> test("2002-04-05", 20180403)  # WRONG RESULT. Should be 15
-16 years
->>> test("2002-04-05", 20180402)  # WRONG RESULT. Should be 15
-16 years
->>> test("2002-04-05", 20180401)  # WRONG RESULT. Should be 15
-16 years
+>>> test("2002-04-05", 20180403)
+15 years
+>>> test("2002-04-05", 20180402)
+15 years
+>>> test("2002-04-05", 20180401)
+15 years
 >>> test("2002-04-05", 20180331)
 15 years
 
