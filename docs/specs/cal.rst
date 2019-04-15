@@ -389,10 +389,25 @@ application-specific behaviour and rules.
     <BLANKLINE>
 
 
+Calendar views
+==============
+
+.. class:: DailyView
+
+    Shows a calendar navigator with a configurable daily view.
+
+.. class:: WeeklyView
+
+    Shows a calendar navigator with a configurable weekly view.
+
+.. class:: MonthlyView
+
+    Shows a calendar navigator with a configurable monthly view.
+
 The daily planner
 =================
 
-The daily planner is a table shows an overview on all events of a day.
+The daily planner is a table that shows an overview on all events of a day.
 
 >>> rt.show(cal.DailyPlanner)
 ============ ========== ===============
