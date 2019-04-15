@@ -27,13 +27,13 @@ Usage examples
 
     Implementation of Summary Table
 
-:mod:`lino_xl.lib.tickets`.
+:mod:`lino_xl.lib.tickets`
 
     Implementation of :ref:`summary_fields`.
 
-`European Social Fund <welfare.lino-framework.org/specs/welcht/esf.html>`_.
+`European Social Fund <welfare.lino-framework.org/specs/esf.html>`_
 
-    The most advanced use of this module. Is a summary table used to calculate
+    The most advanced use of summaries. Is a summary table used to calculate
     yearly and monthly worked time with clients based on meeting type and various
     other rules.
 
