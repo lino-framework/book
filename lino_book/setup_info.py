@@ -39,8 +39,8 @@ if PY2:
     install_requires.append('channels<2')
     install_requires.append('asgiref~=1.1')
 else:
-    install_requires.append('channels>=2.0.0')
-    install_requires.append('asgiref~=3.0')
+    install_requires.append('channels')
+    install_requires.append('asgiref')
     install_requires.append('channels_redis')
 
 SETUP_INFO = dict(
