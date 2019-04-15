@@ -5,7 +5,7 @@
 .. currentmodule:: lino.modlib.summaries
 
 The :mod:`lino.modlib.summaries` plugin installs a framework for defining
-summary fields and summary tables.  A summary table is a table with summary
+:ref:`summary_fields` and summary tables.  A summary table is a table with summary
 fields.
 
 A summary field is a readonly and otherwise regular database field whose value
@@ -20,9 +20,59 @@ a daily :manage:`linod` task which does the same.
 Users also get a button :guilabel:`∑` on each model for which there are slave
 summaries.
 
-Usage examples: :doc:`userstats` :mod:`lino_xl.lib.tickets` and
-:mod:`lino_welfare.modlib.esf`.
+Usage examples
+--------------
 
+:doc:`userstats`
+
+    Implementation of Summary Table
+
+:mod:`lino_xl.lib.tickets`.
+
+    Implementation of :ref:`summary_fields`.
+
+`European Social Fund <welfare.lino-framework.org/specs/welcht/esf.html>`_.
+
+    The most advanced use of this module. Is a summary table used to calculate
+    yearly and monthly worked time with clients based on meeting type and various
+    other rules.
+
+.. _summary_fields:
+
+Summary fields
+==============
+
+Another use of this module is to create summary fields.
+
+Example: Client has two date fields `active_from` and `active_until`
+whose value is automatically computed based on all contracts with that client.
+They are not virtual fields because we want to sort and filter
+on them, and because their values aren't so very dynamic, they
+are the start and end date of the currently active contract.
+
+Also it is likely required to update :meth:`reset_summary_data`
+if the field type doesn't support a value of 0
+
+The application must declare them as summary fields by defining::
+
+  class Client(Summarized, ...):
+
+      def reset_summary_data(self):
+          self.active_from = None
+          self.active_untill = None
+
+      def get_summary_collectors(self):
+          yield (self.update_active_from, Contracts.objects.filter(client=self).orderby("start_date")[0:1])
+          yield (self.update_active_until, Contracts.objects.filter(client=self).orderby("end_date")[0:1])
+
+      def update_active_from(self, obj):
+          self.active_from = obj.start_date
+
+      def update_active_untill(self, obj):
+          self.active_untill = obj.end_date
+
+Note that when a new contract is added the client's `active_from` and
+`active_untill` fields are not updated unless you run: `Client.compute_summary_values()`
 
 The ``Summarized`` model mixin
 ================================
@@ -36,9 +86,9 @@ The ``Summarized`` model mixin
         Set this to True if all instances of this model should be considered
         temporary data to be deleted by :manage:`checksummaries`.
 
-    .. method:: compute_results
+    .. attribute:: compute_results
 
-        Update all the summary fields on this database object.
+        Action for updating all the summary fields on this database object.
 
     .. method:: reset_summary_data
 
@@ -49,6 +99,11 @@ The ``Summarized`` model mixin
         Reset summary data fields (:meth:`reset_summary_data`), for
         every collector (:meth:`get_summary_collectors`) loop over its
         database objects and collect data, then save this record.
+
+    .. method:: update_for_filter
+
+        Runs :meth:`compute_summary_values` on a a filtered queryset
+        based on keyword arguments.
 
     .. method:: get_summary_collectors
 
