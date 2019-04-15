@@ -177,7 +177,7 @@ Clients
      ABDALLA Aádil (120)         Registered   950201 001-38         August-Thonnar-Str., 4700 Eupen   22 years                            120
      ABDELRAHMAN Aáqil (133)     Ended        870305 001-48         Euregiostraße, 4700 Eupen         29 years                            133
      ABDOU Abeer (143)           Ended        800828 002-21         Heidberg, 4700 Eupen              36 years                            143
-     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       43 years                            159
+     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159
      ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166
      ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149
      ARSHUN Aloyoshenká (135)    Ended        850424 001-25         Gewerbestraße, 4700 Eupen         31 years                            135
