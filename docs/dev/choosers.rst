@@ -69,7 +69,7 @@ Choosers that depend on current user
 ====================================
 
 Sometimes you require the current user to determine the choices for a field.
-To do this include a "ar" parameter to your chooser method. ::
+To do this include a "ar" parameter to your chooser method:
 
 .. literalinclude:: /../../book/lino_book/projects/chooser/ar_chooser.py
 
