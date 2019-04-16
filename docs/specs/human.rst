@@ -2,13 +2,14 @@
 .. _lino.specs.human:
 .. _lino.tutorial.human:
 
-============
-About Humans
-============
+===================
+The ``Human`` mixin
+===================
 
+.. currentmodule:: lino.mixins.human
 
-This document explains some basic things about humans (as the
-:mod:`lino.mixins.human` module sees them).
+This document explains the :class:`lino.mixins.human.Human` model mixin.
+See also :doc:`born`.
 
 .. contents::
    :depth: 1
@@ -26,8 +27,8 @@ This document explains some basic things about humans (as the
 >>> from django.utils import translation
 
 
-Database definition
-===================
+Database structure
+==================
 
 This tutorial uses the demo database in :mod:`lino_book.projects.human`.
 
@@ -39,18 +40,21 @@ That is, we define a single model `Person` which just inherits
 :class:`lino.mixins.human.Human`.
 
 
-The `Human` mixin defines four database fields: `first_name`,
+The :class:`Human` mixin defines four database fields: `first_name`,
 `middle_name`, `last_name` and `gender`.
 
 All these fields may be blank (except if your application changed that
 rule using :func:`lino.core.inject.update_field`).
 
+Gender
+======
+
 The `gender` field (a pointer to the
-:class:`lino.modlib.system.choicelists.Genders` choicelist) designates
-the sex of that person which can be either "male" or "female" (or
-"unknown"). Applications which handle additional information like
-"homosexual" or "transgendered" should do this in a separate database
-field.
+:class:`lino.modlib.system.choicelists.Genders` choicelist) designates the sex
+of that person which can be either "male" or "female" (or "unknown").
+Applications which handle additional information like "homosexual" or
+"transgendered" should add a separate database field (at least if they want to
+use `the `mf` method`_).
 
 
 Parsing names
@@ -141,9 +145,6 @@ True
 Traceback (most recent call last):
 ...
 ValidationError: ...Cannot find first and last name in "Foo"']
-
-
-
 
 
 
@@ -346,95 +347,5 @@ The `strip_name_prefix` function
 
 >>> strip_name_prefix("Nemard")
 'NEMARD'
-
-
-Age
-===
-
-The :class:`lino.mixins.humans.Born` mixin adds a database field
-:attr:`birth_date`.
-
-For the following examples, we will set :attr:`the_demo_date
-<lino.core.site.Site.the_demo_date>` in order to have reproducible test cases.
-At the end of this page we will need to restore the demo date to its original
-value, which is `None`:
-
->>> print(settings.SITE.the_demo_date)
-None
-
-We define a utility function for our tests:
-
->>> def test(birth_date, today):
-...    settings.SITE.the_demo_date = i2d(today)
-...    p = Person(birth_date=birth_date)
-...    p.full_clean()
-...    print(p.age)
-...    settings.SITE.the_demo_date = None
-
-Here we go.
-
-A person born on April 5, 2002 was 16 years old on June 11, 2018:
-
->>> test("2002-04-05", 20180611)
-16 years
-
-When you get 16 years old tomorrow, then today you are still 15:
-
->>> test("2002-04-05", 20180404)
-15 years
-
-You start being 16 on your birthday.
-
->>> test("2002-04-05", 20180405)
-16 years
-
-The leap year bug: each leap year causes one day of difference. In our case the
-leap years are 2004, 2008 and 2012 and 2016, so Lino starts saying 16 4 days
-before your birthday:
-
->>> test("2002-04-05", 20180403)
-15 years
->>> test("2002-04-05", 20180402)
-15 years
->>> test("2002-04-05", 20180401)
-15 years
->>> test("2002-04-05", 20180331)
-15 years
-
-
-
-For children younger than 5 years Lino adds the number of months:
-
->>> test("2018-03-01", 20180611)
-0 years 3 months
-
-Lino respects the singular forms:
-
->>> test("2017-05-01", 20180611)
-1 year 1 month
-
-
-The age is translated text:
-
->>> with translation.override('de'):
-...    test("2018-03-01", 20180611)
-0 Jahre 3 Monate
-
->>> with translation.override('de'):
-...    test("2017-05-01", 20180611)
-1 Jahr 1 Monat
->>> with translation.override('fr'):
-...    test("2017-05-01", 20180611)
-1 an 1 mois
-
-Edge case
-=========
-
-Steve reported the problem that Lino says 35 years as age of a person whose
-birth date is 10.04.1984 when today is 04.04.1984. Which is wrong.  The person
-will get 35 only in 6 days.  So today she is 34:
-
->>> test("1984-04-10", 20190404)
-34 years
 
 

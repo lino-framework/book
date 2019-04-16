@@ -31,7 +31,7 @@ Usage examples
 
     Implementation of :ref:`summary_fields`.
 
-`European Social Fund <welfare.lino-framework.org/specs/esf.html>`_
+`European Social Fund <http://welfare.lino-framework.org/specs/esf.html>`_
 
     The most advanced use of summaries. Is a summary table used to calculate
     yearly and monthly worked time with clients based on meeting type and various
