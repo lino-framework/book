@@ -248,7 +248,7 @@ Note that there are sessions without a duration. That's because
 ---- ----------------------------------------------- ---------- -------- --------- ----------- ------- ------
  1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Marc       welket   New       0:03
  2    `#2 (☎ Bar is not always baz) <Detail>`__       Marc       welket   Talk      9:40
- 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Marc       welket   Started   1:24
+ 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Marc       welket   Working   1:24
                                                                                     **11:07**
 ==== =============================================== ========== ======== ========= =========== ======= ======
 <BLANKLINE>

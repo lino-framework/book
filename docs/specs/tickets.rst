@@ -1,12 +1,11 @@
-.. doctest docs/specs/noi/tickets.rst
+.. doctest docs/specs/tickets.rst
 .. _xl.specs.tickets:
 
 ===============================
 ``tickets`` (Ticket management)
 ===============================
 
-The :mod:`lino_xl.lib.tickets` plugin adds functionality for managing
-tickets and projects.
+The :mod:`lino_xl.lib.tickets` plugin adds functionality for managing tickets.
 
 .. contents::
   :local:
@@ -23,26 +22,38 @@ tickets and projects.
 Overview
 ========
 
-A **ticket** is a concrete question or problem formulated by a user. The user
-may be a system user or an end user represented by a system user.  It is the
-smallest unit of work.
+A `ticket <Tickets>`_ is a concrete question, issue or problem to be handled by
+our team.  It is the smallest unit for organizing our work.
 
-A **site** is a place where work is being done. Zulip calls it "stream", Slack
-calls it "Channel" A site can be anything your team uses for grouping their
-tickets into more long-term "tasks" or "projects".
+Tickets are grouped into sites_.
 
-The *site* of a *ticket* indicates who is going to read that ticket.  All the
-subscribers of a site will get notified about every new comment.
+Users must be **subscribed** to a *site* in order to report tickets on a site.
+All the subscribers of a site will get notified about changes to a ticket. The
+*site* of a *ticket* indicates who is going to watch changes on that ticket.
 
-The *site* of a *ticket* also indicates "who is going to pay" for it.
-Lino Noi does not issue invoices, so it uses this information only for
-reporting about it and helping with the decision about whether and how
-worktime is being invoiced to the customer.
+In :ref:`noi` we use the tickets plugin in combination with :doc:`working` and
+:doc:`comments`.
+
+When :doc:`comments` is installed, subscribers of a site will get notified
+about every new comment.
+
+When :doc:`working` is installed, the *site* of a *ticket* indicates "who is
+going to pay" for it. Lino Noi does not issue invoices, so it uses this
+information only for reporting about it and helping with the decision about
+whether and how work time is being invoiced to the customer.
+
+A ticket has a **life cycle**.
+
+New tickets are typically **assigned** to nobody
+
 
 
 
 Tickets
 =======
+
+A **ticket** is a concrete question or problem formulated by a user. The user
+may be a system user or an end user represented by a system user.
 
 .. class:: Ticket
 
@@ -146,119 +157,53 @@ Tickets
         You can select only sites you are subscribed to.
 
 
-There are many tables used to show lists of tickets.
+Ticket type
+===========
 
-.. class:: Tickets
+A **ticket type**, or the type of a *ticket*, is a way to classify that ticket.
+This information may be used in service reports or statistics defined by the
+application.
 
-    Base class for all tables of tickets.
+You can configure the list of ticket types via :menuselection:`Configure -->
+Tickets --> Ticket types`.
 
-    .. attribute:: site
+..  >>> show_menu_path(tickets.TicketTypes)
+    Configure --> Tickets --> Ticket types
 
-        Select a site if you want to see only tickets for this site.
+The :fixture:`demo` fixture defines the following ticket types.
 
-    .. attribute:: show_private
-
-        Show only (or hide) tickets that are marked private.
-
-    .. attribute:: show_todo
-
-        Show only (or hide) tickets which are todo (i.e. state is New
-        or ToDo).
-
-    .. attribute:: show_active
-
-        Show only (or hide) tickets which are active (i.e. state is Talk
-        or ToDo).
-
-    .. attribute:: show_assigned
-
-        Show only (or hide) tickets that are assigned to somebody.
-
-    .. attribute:: has_site
-
-        Show only (or hide) tickets which have a site assigned.
-
-    .. attribute:: feasable_by
-
-        Show only tickets for which the given supplier is competent.
+>>> rt.show(tickets.TicketTypes)
+============= ================== ================== ================
+ Designation   Designation (de)   Designation (fr)   Reporting type
+------------- ------------------ ------------------ ----------------
+ Bugfix        Bugfix             Bugfix
+ Enhancement   Enhancement        Enhancement
+ Upgrade       Upgrade            Upgrade
+============= ================== ================== ================
+<BLANKLINE>
 
            
-.. class:: AllTickets
-
-    Shows all tickets.
-    
-.. class:: RefTickets
-           
-    Shows all tickets that have a reference.
-
-.. class:: PublicTickets
-           
-    Shows all public tickets.
-
-.. class:: TicketsToTriage
-
-    Shows tickets that need to be triaged.  Currently this is
-    equivalent to those having their state set to :attr:`new
-    <TicketStates.new>`.
-
-.. class:: TicketsToTalk
-
-.. class:: TicketsNeedingFeedback
-
-    Shows tickets of sites that you are subscribed to which are in state Talk
-    where you are not the last commenter, includes tickets with no comments.
-
-.. class:: MyTicketsNeedingFeedback
-
-    Shows tickets of sites that you are subscribed to which are in state Talk
-    where you are the last commenter.
-
-.. class:: UnassignedTickets
-.. class:: ActiveTickets
-
-    Show all tickets that are in an active state.
-
-.. class:: MyTickets
-           
-    Show all active tickets reported by me.
-
-    
-
-.. class:: TicketsByEndUser           
-.. class:: TicketsByType
-           
-.. class:: DuplicatesByTicket
-
-    Shows the tickets which are marked as duplicates of this
-    (i.e. whose `duplicate_of` field points to this ticket.
-
-
-.. class:: TicketsSummary
-
-    Abstract base class for ticket tables with a summary.
-    
-.. class:: MyTicketsToWork
-           
-    Show all active tickets assigned to me.
-
-.. class:: TicketsBySite    
-
-           
-
-Ticket types
-============
-
 .. class:: TicketType
+
+    The Django model used to represent a *ticket type*.
 
     .. attribute:: name
 
     .. attribute:: reporting_type
 
-.. class:: TicketTypes
-           
+        Which *reporting type* to use in a service report.
+        See :class:ReportingTypes`.
 
-Ticket states
-=============
+.. class:: TicketTypes
+
+    The list of all ticket types.
+
+
+Ticket state
+============
+
+The **state** of a ticket expresses in which phase of its life cycle this
+ticket is.
 
 You can see the table of ticket states in your web interface using the
 following menu command:
@@ -328,7 +273,7 @@ In a default configuration it defines the following choices:
  10      new         New        ⛶             Yes
  15      talk        Talk       ☎             Yes
  20      opened      Open       ☉             Yes
- 22      started     Started    ⚒             Yes
+ 22      working     Working    ⚒             Yes
  30      sleeping    Sleeping   ☾             No
  40      ready       Ready      ☐             Yes
  50      closed      Closed     ☑             No
@@ -361,6 +306,9 @@ block, otherwise we use the more widely supported symbols from
 Sites
 =====
 
+A **site** is a place where work is being done.  Sites can be anything your
+team uses for grouping their tickets into more long-term "tasks" or "projects".
+Zulip calls them "streams", Slack calls them "Channels".
 
 >>> rt.login("jean").show(tickets.MySites)
 ===================== ============= =============
@@ -422,7 +370,7 @@ List of tickets which have not yet been assigned to a site:
  90    No more foo when bar is gone                   Normal     **☎ Talk**
  70    'NoneType' object has no attribute 'isocode'   Normal     **☐ Ready**
  40    How can I see where bar?                       Normal     **☒ Refused**
- 20    Why is foo so bar                              Normal     **⚒ Started**
+ 20    Why is foo so bar                              Normal     **⚒ Working**
 ===== ============================================== ========== =============== ======
 <BLANKLINE>
 
@@ -484,12 +432,12 @@ Show all active tickets reported by me.
  Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__                                                                            [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__   Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__                    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                               Mathieu                                               [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                               Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__         Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal     `#57 (⛶ Irritating message when bar) <Detail>`__                                                                           [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                       Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                    Mathieu                                               [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                    Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#22 (☐ How can I see where bar?) <Detail>`__                        Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                              [✋] [■] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
 ========== ==================================================================== ============= ============== ========= ======= ====== =============================================
@@ -508,18 +456,18 @@ The :class:`TicketsBySite` panel shows all the tickets for a given site.
 ===================== ========================================================= ============== =========== ======= ====== ===============
  Priority              Ticket                                                    Planned time   Regular     Extra   Free   Workflow
 --------------------- --------------------------------------------------------- -------------- ----------- ------- ------ ---------------
- Normal                *#116 (⚒ Foo never bars)*                                                                           **⚒ Started**
+ Normal                *#116 (⚒ Foo never bars)*                                                                           **⚒ Working**
  Normal                *#115 (☉ 'NoneType' object has no attribute 'isocode')*                                             **☉ Open**
  Normal                *#114 (☎ Default account in invoices per partner)*                                                  **☎ Talk**
- Normal                *#108 (⚒ No more foo when bar is gone)*                                                             **⚒ Started**
+ Normal                *#108 (⚒ No more foo when bar is gone)*                                                             **⚒ Working**
  Normal                *#106 (☎ 'NoneType' object has no attribute 'isocode')*                                             **☎ Talk**
  Normal                *#102 (☐ Irritating message when bar)*                                                              **☐ Ready**
  Normal                *#98 (☎ Foo never bars)*                                                                            **☎ Talk**
  ...
- Normal                *#12 (⚒ Foo cannot bar)*                                                                            **⚒ Started**
+ Normal                *#12 (⚒ Foo cannot bar)*                                                                            **⚒ Working**
  Normal                *#10 (☎ Where can I find a Foo when bazing Bazes?)*                                                 **☎ Talk**
  Normal                *#6 (☐ Sell bar in baz)*                                                                            **☐ Ready**
- Normal                *#4 (⚒ Foo and bar don't baz)*                                           1:24                       **⚒ Started**
+ Normal                *#4 (⚒ Foo and bar don't baz)*                                           1:24                       **⚒ Working**
  Normal                *#2 (☎ Bar is not always baz)*                                           9:40                       **☎ Talk**
  Normal                *#1 (⛶ Föö fails to bar when baz)*                                                                  **⛶ New**
  **Total (46 rows)**                                                                            **11:04**
@@ -536,16 +484,16 @@ this:
 ===================== ==================================================================== ============== =========== ======= ====== =============================================
  Priority              Ticket                                                               Planned time   Regular     Extra   Free   Workflow
 --------------------- -------------------------------------------------------------------- -------------- ----------- ------- ------ ---------------------------------------------
- Normal                `#116 (⚒ Foo never bars) <Detail>`__                                                                           [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#116 (⚒ Foo never bars) <Detail>`__                                                                           [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal                `#114 (☎ Default account in invoices per partner) <Detail>`__                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#108 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#108 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal                `#102 (☐ Irritating message when bar) <Detail>`__                                                              [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal                `#98 (☎ Foo never bars) <Detail>`__                                                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  ...
  Normal                `#6 (☐ Sell bar in baz) <Detail>`__                                                                            [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                       [▶] **⚒ Started** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                       [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#2 (☎ Bar is not always baz) <Detail>`__                                           9:40                       [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal                `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                  [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  **Total (46 rows)**                                                                                       **11:04**
@@ -724,17 +672,126 @@ Other languages
 The ticket states in German:
 
 >>> rt.show(tickets.TicketStates, language="de")
-====== =========== =============== ============= =======
- Wert   name        Text            Button text   Aktiv
------- ----------- --------------- ------------- -------
- 10     new         Neu             ⛶             Ja
- 15     talk        Besprechen      ☎             Ja
- 20     opened      Offen           ☉             Ja
- 22     started     Gestartet       ⚒             Ja
- 30     sleeping    Schläft         ☾             Nein
- 40     ready       Bereit          ☐             Ja
- 50     closed      Abgeschlossen   ☑             Nein
- 60     cancelled   Abgelehnt       ☒             Nein
-====== =========== =============== ============= =======
+====== =========== ================ ============= =======
+ Wert   name        Text             Button text   Aktiv
+------ ----------- ---------------- ------------- -------
+ 10     new         Neu              ⛶             Ja
+ 15     talk        Besprechen       ☎             Ja
+ 20     opened      Offen            ☉             Ja
+ 22     working     In Bearbeitung   ⚒             Ja
+ 30     sleeping    Schläft          ☾             Nein
+ 40     ready       Bereit           ☐             Ja
+ 50     closed      Abgeschlossen    ☑             Nein
+ 60     cancelled   Abgelehnt        ☒             Nein
+====== =========== ================ ============= =======
 <BLANKLINE>
+
+
+
+Views reference
+===============
+
+There are many tables used to show lists of tickets.
+
+.. class:: Tickets
+
+    Base class for all tables of tickets.
+
+    .. attribute:: site
+
+        Select a site if you want to see only tickets for this site.
+
+    .. attribute:: show_private
+
+        Show only (or hide) tickets that are marked private.
+
+    .. attribute:: show_todo
+
+        Show only (or hide) tickets which are todo (i.e. state is New
+        or ToDo).
+
+    .. attribute:: show_active
+
+        Show only (or hide) tickets which are active (i.e. state is Talk
+        or ToDo).
+
+    .. attribute:: show_assigned
+
+        Show only (or hide) tickets that are assigned to somebody.
+
+    .. attribute:: has_site
+
+        Show only (or hide) tickets which have a site assigned.
+
+    .. attribute:: feasable_by
+
+        Show only tickets for which the given supplier is competent.
+
+
+.. class:: AllTickets
+
+    Shows all tickets.
+
+.. class:: RefTickets
+
+    Shows all tickets that have a reference.
+
+.. class:: PublicTickets
+
+    Shows all public tickets.
+
+.. class:: TicketsToTriage
+
+    Shows tickets that need to be triaged.  Currently this is
+    equivalent to those having their state set to :attr:`new
+    <TicketStates.new>`.
+
+.. class:: TicketsToTalk
+
+.. class:: TicketsNeedingMyFeedback
+
+    Shows tickets that are waiting for my feedback.
+
+    These are tickets in state Talk where you are not the last commenter.
+    Only tickets on sites that you are subscribed to.
+    Includes tickets with no comments.
+
+.. class:: MyTicketsNeedingFeedback
+
+    Shows tickets assigned to me and waiting for feedback from others.
+
+    Shows tickets of sites that you are subscribed to which are in state Talk
+    where you are the last commenter.
+
+.. class:: UnassignedTickets
+.. class:: ActiveTickets
+
+    Show all tickets that are in an active state.
+
+.. class:: MyTickets
+
+    Show all active tickets reported by me.
+
+
+
+.. class:: TicketsByEndUser
+.. class:: TicketsByType
+
+.. class:: DuplicatesByTicket
+
+    Shows the tickets which are marked as duplicates of this
+    (i.e. whose `duplicate_of` field points to this ticket.
+
+
+.. class:: TicketsSummary
+
+    Abstract base class for ticket tables with a summary.
+
+.. class:: MyTicketsToWork
+
+    Show all active tickets assigned to me.
+
+.. class:: TicketsBySite
+
+
 

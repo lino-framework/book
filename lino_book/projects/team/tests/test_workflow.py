@@ -74,7 +74,7 @@ class WorkflowTests(RemoteAuthTestCase):
             self.assertEqual(rv, {'success': True, 'refresh': True})
 
         check_success(ticket.mark_talk)
-        check_success(ticket.mark_started)
+        check_success(ticket.mark_working)
         check_success(ticket.mark_refused)
         check_success(ticket.mark_closed)
         check_success(ticket.mark_refused)

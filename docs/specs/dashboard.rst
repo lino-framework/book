@@ -47,7 +47,7 @@ List of available dashboard items
  lino_xl.lib.tickets.ui.MySites,
  lino_xl.lib.tickets.ui.TicketsToTriage,
  lino_xl.lib.tickets.ui.MyTicketsToWork,
- lino_xl.lib.tickets.ui.TicketsNeedingFeedback,
+ lino_xl.lib.tickets.ui.TicketsNeedingMyFeedback,
  lino_xl.lib.tickets.ui.MyTicketsNeedingFeedback,
  lino_xl.lib.working.ui.WorkedHours,
  lino.modlib.notify.models.MyMessages]
