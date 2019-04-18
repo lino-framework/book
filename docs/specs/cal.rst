@@ -1139,7 +1139,8 @@ Miscellaneous
 .. class:: EntriesByDay
            
     This table is usually labelled "Appointments today". It has no
-    "date" column because it shows events of a given date.
+    "date" column because it shows events of a given date.It is ordred
+    with increasing times.
 
     The default filter parameters are set to show only *appointments*.
 
