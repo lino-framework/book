@@ -22,31 +22,29 @@ The :mod:`lino_xl.lib.tickets` plugin adds functionality for managing tickets.
 Overview
 ========
 
-A `ticket <Tickets>`_ is a concrete question, issue or problem to be handled by
-our team.  It is the smallest unit for organizing our work.
+A `ticket <Tickets>`_ is a question, issue or problem reported by a human who
+asks us for help.  It is the smallest unit for organizing our work.
 
-Tickets are grouped into sites_.
+Users can comment on a ticket.  A ticket can get assigned to a user who "takes"
+the ticket and becomes "responsible" for working on it.  It can be reassigned
+to another user.
 
-Users must be **subscribed** to a *site* in order to report tickets on a site.
-All the subscribers of a site will get notified about changes to a ticket. The
-*site* of a *ticket* indicates who is going to watch changes on that ticket.
+Tickets are grouped into sites_. Users must be **subscribed** to a *site* in
+order to report tickets on a site. All the subscribers of a site will get
+notified about new tickets, changes and new comments to a ticket. The site* of
+a *ticket* indicates who is going to watch changes on that ticket.
 
-In :ref:`noi` we use the tickets plugin in combination with :doc:`working` and
-:doc:`comments`.
+In :ref:`noi` we use the tickets plugin in combination with
+:mod:`lino_xl.lib.working`.
 
-When :doc:`comments` is installed, subscribers of a site will get notified
-about every new comment.
+This plugins also installs :doc:`comments`.
 
-When :doc:`working` is installed, the *site* of a *ticket* indicates "who is
+When :mod:`lino_xl.lib.working` is installed, the *site* of a *ticket* indicates "who is
 going to pay" for it. Lino Noi does not issue invoices, so it uses this
 information only for reporting about it and helping with the decision about
 whether and how work time is being invoiced to the customer.
 
 A ticket has a **life cycle**.
-
-New tickets are typically **assigned** to nobody
-
-
 
 
 Tickets
@@ -155,48 +153,6 @@ may be a system user or an end user represented by a system user.
 
         The site this ticket belongs to.
         You can select only sites you are subscribed to.
-
-
-Ticket type
-===========
-
-A **ticket type**, or the type of a *ticket*, is a way to classify that ticket.
-This information may be used in service reports or statistics defined by the
-application.
-
-You can configure the list of ticket types via :menuselection:`Configure -->
-Tickets --> Ticket types`.
-
-..  >>> show_menu_path(tickets.TicketTypes)
-    Configure --> Tickets --> Ticket types
-
-The :fixture:`demo` fixture defines the following ticket types.
-
->>> rt.show(tickets.TicketTypes)
-============= ================== ================== ================
- Designation   Designation (de)   Designation (fr)   Reporting type
-------------- ------------------ ------------------ ----------------
- Bugfix        Bugfix             Bugfix
- Enhancement   Enhancement        Enhancement
- Upgrade       Upgrade            Upgrade
-============= ================== ================== ================
-<BLANKLINE>
-
-           
-.. class:: TicketType
-
-    The Django model used to represent a *ticket type*.
-
-    .. attribute:: name
-
-    .. attribute:: reporting_type
-
-        Which *reporting type* to use in a service report.
-        See :class:ReportingTypes`.
-
-.. class:: TicketTypes
-
-    The list of all ticket types.
 
 
 Ticket state
@@ -417,6 +373,48 @@ Subscriptions
            
 
 
+Ticket types
+============
+
+A **ticket type**, or the type of a *ticket*, is a way to classify that ticket.
+This information may be used in service reports or statistics defined by the
+application.
+
+You can configure the list of ticket types via :menuselection:`Configure -->
+Tickets --> Ticket types`.
+
+..  >>> show_menu_path(tickets.TicketTypes)
+    Configure --> Tickets --> Ticket types
+
+The :fixture:`demo` fixture defines the following ticket types.
+
+>>> rt.show(tickets.TicketTypes)
+============= ================== ================== ================
+ Designation   Designation (de)   Designation (fr)   Reporting type
+------------- ------------------ ------------------ ----------------
+ Bugfix        Bugfix             Bugfix
+ Enhancement   Enhancement        Enhancement
+ Upgrade       Upgrade            Upgrade
+============= ================== ================== ================
+<BLANKLINE>
+
+
+.. class:: TicketType
+
+    The Django model used to represent a *ticket type*.
+
+    .. attribute:: name
+
+    .. attribute:: reporting_type
+
+        Which *reporting type* to use in a service report.
+        See :class:ReportingTypes`.
+
+.. class:: TicketTypes
+
+    The list of all ticket types.
+
+
 
 
 Deciding what to do next
@@ -448,7 +446,8 @@ Show all active tickets reported by me.
 The backlog
 ===========
 
-The :class:`TicketsBySite` panel shows all the tickets for a given site.
+The :class:`TicketsBySite` panel shows all the tickets for a given site. It is
+a scrum backlog.
 
 >>> welket = tickets.Site.objects.get(name="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
@@ -505,14 +504,15 @@ this:
 Links between tickets
 =====================
 
-
 .. class:: Link
+.. class:: LinkType
+
 .. class:: Links
 .. class:: LinksByTicket
-.. class:: LinkType
+
 .. class:: LinkTypes
 
-    The possible values of a :class:`Link`.
+    A choicelist with the possible link types.
 
     .. attribute:: requires
 
@@ -558,7 +558,7 @@ Links between tickets
 Comments
 ========
 
-Comments are shown even to anonymous users:
+In :ref:`noi` comments are visible even to anonymous users:
 
 >>> rt.show(comments.Comments, column_names="id user owner")
 ==== ================= ================================================================
@@ -649,20 +649,7 @@ This is a list of the parameters you can use for filterings tickets.
 Plugin configuration
 ====================
 
-    
-.. class:: Plugin
-           
-    See also :class:`lino.core.plugin.Plugin`
-
-    .. attribute:: end_user_model
-    .. attribute:: site_model
-                   
-    .. attribute:: milestone_model
-
-        The model to be used for representing "milestones". Until
-        20170331 this was hard-coded to `deploy.Milestone`. Now Lino
-        Noi uses `courses.Course`.
-
+See :class:`lino_xl.lib.tickets.Plugin`.
 
 
 
