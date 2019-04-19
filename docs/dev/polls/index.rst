@@ -6,10 +6,8 @@ The Lino Polls tutorial
 =======================
 
 .. doctest init:
-    >>> import os
-    >>> os.chdir('lino_book/projects/polls')
-    >>> from lino import startup
-    >>> startup('mysite.settings')
+    >>> import lino
+    >>> lino.startup('lino_book.projects.polls.mysite.settings')
     >>> from lino.api.doctest import *
     
 
