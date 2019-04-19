@@ -7,7 +7,7 @@ The Lino Polls tutorial
 
 .. doctest init:
     >>> import lino
-    >>> lino.startup('lino_book.projects.polls.mysite.settings')
+    >>> lino.startup('lino_book.projects.polls.mysite.settings.demo')
     >>> from lino.api.doctest import *
     
 
