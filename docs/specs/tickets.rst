@@ -25,33 +25,28 @@ Overview
 A `ticket <Tickets>`_ is a question, issue or problem reported by a human who
 asks us for help.  It is the smallest unit for organizing our work.
 
-Users can comment on a ticket.  A ticket can get assigned to a user who "takes"
-the ticket and becomes "responsible" for working on it.  It can be reassigned
-to another user.
+This plugins also installs :doc:`comments`. Users can comment on a ticket.
 
 Tickets are grouped into sites_. Users must be **subscribed** to a *site* in
 order to report tickets on a site. All the subscribers of a site will get
 notified about new tickets, changes and new comments to a ticket. The site* of
 a *ticket* indicates who is going to watch changes on that ticket.
 
-In :ref:`noi` we use the tickets plugin in combination with
-:mod:`lino_xl.lib.working`.
-
-This plugins also installs :doc:`comments`.
-
-When :mod:`lino_xl.lib.working` is installed, the *site* of a *ticket* indicates "who is
-going to pay" for it. Lino Noi does not issue invoices, so it uses this
-information only for reporting about it and helping with the decision about
-whether and how work time is being invoiced to the customer.
-
-A ticket has a **life cycle**.
-
 
 Tickets
 =======
 
-A **ticket** is a concrete question or problem formulated by a user. The user
-may be a system user or an end user represented by a system user.
+A **ticket** is a concrete question or problem formulated by a human who asks
+our team to work on it and find an answer or solution.
+
+The **author** of a ticket is the user who created it.  The author can
+optionally specify an **end user**, which means that they created the ticket in
+behalf* of that external person.
+
+A ticket can be **assigned** to a given user who is "responsible" for working
+on it.  It can be reassigned to another user.  Users can "take" an unassigned
+ticket.
+
 
 .. class:: Ticket
 
@@ -63,12 +58,17 @@ may be a system user or an end user represented by a system user.
 
     .. attribute:: user
 
-        The author. The user who reported this ticket to the database
-        and is responsible for managing it.
+        The author or reporter of this ticket. The user who reported this
+        ticket to the database and is responsible for managing it.
 
     .. attribute:: end_user
 
-        The end user who is asking for help.
+        The end user who is asking for help.  This may be an external person
+        who is not registered as a system user.
+
+    .. attribute:: assigned_to
+
+        The user who has been assigned to work on this ticket.
 
     Descriptive fields:
 
@@ -82,6 +82,12 @@ may be a system user or an end user represented by a system user.
         The description can contain *memo commands* defined by the
         application.
 
+    .. attribute:: site
+
+        The site this ticket belongs to.
+        You can select only sites you are subscribed to.
+
+
     .. attribute:: upgrade_notes
 
         A formatted text field meant for writing instructions for the
@@ -89,24 +95,25 @@ may be a system user or an end user represented by a system user.
         ticket is being deployed.
 
 
-    .. attribute:: state
-
-        The state of this ticket. See :class:`TicketStates
-        <lino_xl.lib.tickets.choicelists.TicketStates>`
-
     .. attribute:: waiting_for
 
         What to do next. An unformatted one-line text which describes
         what this ticket is waiting for.
 
+    .. attribute:: state
+
+        The state of this ticket. See :class:`TicketStates`.
+
+    Relations to other tickets:
+
     .. attribute:: duplicate_of
 
-        A pointer to the ticket which is the cause of this ticket.
+        A pointer to another ticket which is regarded as the first occurence of
+        the same problem.
 
-        A ticket with a non-empty :attr:`duplicate_of` field can be
-        called a "duplicate".  The number of a duplicate is
-        theoretically higher than the number of the ticket it
-        duplicates.
+        A ticket with a non-empty :attr:`duplicate_of` field can be called a
+        "duplicate".  The number (primary key) of a duplicate is theoretically
+        higher than the number of the ticket it duplicates.
 
         The :attr:`state` of a duplicate does not automatically become
         that of the duplicated ticket.  Each ticket continues to have
@@ -116,16 +123,6 @@ may be a system user or an end user represented by a system user.
         should talk about it. And even before talking with her, I'd
         like to have a look at the code in order to estimate whether
         it is difficult or not, so I set the state of #904 to ToDo.
-
-        Wouldn't it be preferrable to replace the :attr:`duplicate_of
-        field by a :class:`LinkType
-        <lino_xl.lib.tickets.choicelists.LinkTypes>` called
-        "Duplicated/Duplicated by"?  No. We had this before and
-        preferred the field, because a field is at least one click
-        less, and because we *want* users to define a clear hiearchy
-        with a clear root ticket. You can have a group of tickets
-        which are all direct or indirect duplicates of this "root of
-        all other problems".
 
     .. attribute:: deadline
 
@@ -142,18 +139,12 @@ may be a system user or an end user represented by a system user.
 
     .. attribute:: rating
 
-        How the author rates this ticket.
+        How the author rates the work which has been done on this ticket.
 
     .. attribute:: reporting_type
 
         An indication about who is going to pay for work on this
         site.  See :class:`ReportingTypes`.
-
-    .. attribute:: site
-
-        The site this ticket belongs to.
-        You can select only sites you are subscribed to.
-
 
 Ticket state
 ============
@@ -161,101 +152,17 @@ Ticket state
 The **state** of a ticket expresses in which phase of its life cycle this
 ticket is.
 
-You can see the table of ticket states in your web interface using the
-following menu command:
+You can see which ticket states are defined on your site
+using :menuselection:`Explorer --> Tickets --> Ticket states`.
 
->>> show_menu_path(tickets.TicketStates)
-Explorer --> Tickets --> Ticket states
+..  >>> show_menu_path(tickets.TicketStates)
+    Explorer --> Tickets --> Ticket states
 
+See :class:`lino_noi.lib.tickets.TicketStates` for a real world example.
 
 .. class:: TicketStates
 
-    The choicelist of possible values for the :attr:`state
-    <Ticket.state>` of a ticket.
-
-    Default choices are:
-
-    .. attribute:: new
-
-        Somebody reported this ticket, but there was no response so
-        far.
-        The ticket needs to be triaged.
-
-    .. attribute:: talk
-
-        Some worker needs discussion with the author.  We don't yet
-        know exactly what to do with it.
-
-    .. attribute:: todo
-
-        The ticket is confirmed and we are working on it.
-        It appears in the todo list of somebody (either the assigned
-        worker, or our general todo list)
-
-    .. attribute:: testing
-
-        The ticket is theoretically done, but we want to confirm this
-        somehow, and it is not clear who should do the next step. If
-        it is clear that the author should do the testing, then you
-        should rather set the ticket to :attr:`talk`. If it is clear
-        that you (the assignee) must test it, then leave the ticket at
-        :attr:`todo`.
-
-    .. attribute:: sleeping
-
-        Waiting for some external event. We didn't decide what to do
-        with it.
-
-    .. attribute:: ready
-
-        The ticket is basically :attr:`done`, but some detail still
-        needs to be done by the :attr:`user` (e.g. testing,
-        confirmation, documentation,..)
-
-    .. attribute:: done
-
-        The ticket has been done.
-
-    .. attribute:: cancelled
-
-        It has been decided that we won't fix this ticket.
-
-In a default configuration it defines the following choices:
-
->>> rt.show(tickets.TicketStates)
-======= =========== ========== ============= ========
- value   name        text       Button text   Active
-------- ----------- ---------- ------------- --------
- 10      new         New        ⛶             Yes
- 15      talk        Talk       ☎             Yes
- 20      opened      Open       ☉             Yes
- 22      working     Working    ⚒             Yes
- 30      sleeping    Sleeping   ☾             No
- 40      ready       Ready      ☐             Yes
- 50      closed      Closed     ☑             No
- 60      cancelled   Refused    ☒             No
-======= =========== ========== ============= ========
-<BLANKLINE>
-
-There is also a "modern" series of symbols, which can be enabled
-site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
-   
-If :attr:`use_new_unicode_symbols
-<lino.core.site.Site.use_new_unicode_symbols>` is True, ticket states
-are represented using symbols from the `Miscellaneous Symbols and
-Pictographs
-<https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Pictographs>`__
-block, otherwise we use the more widely supported symbols from
-`Miscellaneous Symbols
-<https://en.wikipedia.org/wiki/Miscellaneous_Symbols>`
-`fileformat.info
-<http://www.fileformat.info/info/unicode/block/miscellaneous_symbols/list.htm>`__.
-
-            
-
-
-- :attr:`standby <lino_xl.lib.tickets.models.Ticket.standby>`
-
+    The choicelist for the :attr:`state <Ticket.state>` of a ticket.
 
 
 
@@ -265,15 +172,6 @@ Sites
 A **site** is a place where work is being done.  Sites can be anything your
 team uses for grouping their tickets into more long-term "tasks" or "projects".
 Zulip calls them "streams", Slack calls them "Channels".
-
->>> rt.login("jean").show(tickets.MySites)
-===================== ============= =============
- Site                  Description   Workflow
---------------------- ------------- -------------
- `welsch <Detail>`__                 **⛶ Draft**
-===================== ============= =============
-<BLANKLINE>
-
 
 
 .. class:: Site
@@ -313,6 +211,16 @@ List of the sites in our demo database:
 =========== ============= ======== ======== ============= ====
 <BLANKLINE>
 
+List of sites to which Jean is subscribed:
+
+>>> rt.login("jean").show(tickets.MySites)
+===================== ============= =============
+ Site                  Description   Workflow
+--------------------- ------------- -------------
+ `welsch <Detail>`__                 **⛶ Draft**
+===================== ============= =============
+<BLANKLINE>
+
 
 List of tickets which have not yet been assigned to a site:
 
@@ -328,23 +236,6 @@ List of tickets which have not yet been assigned to a site:
  40    How can I see where bar?                       Normal     **☒ Refused**
  20    Why is foo so bar                              Normal     **⚒ Working**
 ===== ============================================== ========== =============== ======
-<BLANKLINE>
-
-
-The state of a site
-===================
-
->>> rt.show(tickets.SiteStates)
-... #doctest: +REPORT_UDIFF +ELLIPSIS
-======= ========== ========== ============= =========
- value   name       text       Button text   Exposed
-------- ---------- ---------- ------------- ---------
- 10      draft      Draft      ⛶             Yes
- 20      active     Active     ⚒             Yes
- 30      stable     Stable     ☉             Yes
- 40      sleeping   Sleeping   ☾             No
- 50      closed     Closed     ☑             No
-======= ========== ========== ============= =========
 <BLANKLINE>
 
 
@@ -439,6 +330,23 @@ Show all active tickets reported by me.
  Normal     `#22 (☐ How can I see where bar?) <Detail>`__                        Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                              [✋] [■] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
 ========== ==================================================================== ============= ============== ========= ======= ====== =============================================
+<BLANKLINE>
+
+
+The state of a site
+===================
+
+>>> rt.show(tickets.SiteStates)
+... #doctest: +REPORT_UDIFF +ELLIPSIS
+======= ========== ========== ============= =========
+ value   name       text       Button text   Exposed
+------- ---------- ---------- ------------- ---------
+ 10      draft      Draft      ⛶             Yes
+ 20      active     Active     ⚒             Yes
+ 30      stable     Stable     ☉             Yes
+ 40      sleeping   Sleeping   ☾             No
+ 50      closed     Closed     ☑             No
+======= ========== ========== ============= =========
 <BLANKLINE>
 
 
@@ -651,6 +559,28 @@ Plugin configuration
 
 See :class:`lino_xl.lib.tickets.Plugin`.
 
+
+Discussions
+===========
+
+
+Should we replace the :attr:`Ticket.duplicate_of` field by a link type (an
+additional choice in :class:`LinkTypes`) called "Duplicated/Duplicated by"? No.
+We had this before and preferred the field, because a field is at least one
+click less, and because we *want* users to define a clear hierarchy with a
+clear root ticket. You can have a group of tickets which are all direct or
+indirect duplicates of this "root of all other problems".
+
+Sometimes there is nothing to do for a ticket, but it is not "sleeping" because
+it might become active at any moment when some kind of event happens. (e.g. a
+customer answers a callback, a server error occurs again). Should we introduce
+a new state "Waiting" to differentiate such tickets from those who went asleep
+due to lack of attention? Rather not. That's what "Sleeping" (also) means. A
+sleeping ticket can wake up any time. We just don't want to be reminded about
+it all the time. One challenge is that when the "trigger" occurs which would
+wake up the sleeping ticket. At that moment we don't want to create a new
+ticket just because we forgot about the sleeping one. To avoid this we must
+currently simply search in "All tickets" before creating a new one.
 
 
 Other languages

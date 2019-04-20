@@ -5,8 +5,14 @@
 ``tickets`` (Ticket management in Noi)
 ======================================
 
-The :mod:`lino_noi.lib.tickets` plugin
-extends :mod:`lino_xl.lib.tickets` to make it collaborate with :mod:`lino_noi.lib.working`.
+The :mod:`lino_noi.lib.tickets` plugin extends :mod:`lino_xl.lib.tickets` to
+make it collaborate with :mod:`lino_noi.lib.working`.
+
+In :ref:`noi` the *site* of a *ticket* also indicates "who is going to pay" for
+our work. Lino Noi uses this information when generating a service report.
+
+
+
 
 .. contents::
   :local:
@@ -75,6 +81,88 @@ Screenshots
 
 .. image:: tickets.Ticket.merge.png
 
+
+The life cycle of a ticket
+==========================
+
+In :ref:`noi` we use the following ticket states.
+
+>>> rt.show(tickets.TicketStates)
+======= =========== ========== ============= ========
+ value   name        text       Button text   Active
+------- ----------- ---------- ------------- --------
+ 10      new         New        ⛶             Yes
+ 15      talk        Talk       ☎             Yes
+ 20      opened      Open       ☉             Yes
+ 22      working     Working    ⚒             Yes
+ 30      sleeping    Sleeping   ☾             No
+ 40      ready       Ready      ☐             Yes
+ 50      closed      Closed     ☑             No
+ 60      cancelled   Refused    ☒             No
+======= =========== ========== ============= ========
+<BLANKLINE>
+
+
+.. class:: TicketStates
+
+    .. attribute:: new
+
+        Somebody reported this ticket, but there was no response yet. The
+        ticket needs to be triaged.
+
+    .. attribute:: talk
+
+        Some worker needs discussion with the author.  We don't yet
+        know exactly what to do with it.
+
+    .. attribute:: todo
+
+        The ticket is confirmed and we are working on it.
+        It appears in the todo list of somebody (either the assigned
+        worker, or our general todo list)
+
+    .. attribute:: testing
+
+        The ticket is theoretically done, but we want to confirm this
+        somehow, and it is not clear who should do the next step. If
+        it is clear that the author should do the testing, then you
+        should rather set the ticket to :attr:`talk`. If it is clear
+        that you (the assignee) must test it, then leave the ticket at
+        :attr:`todo`.
+
+    .. attribute:: sleeping
+
+        Waiting for some external event. We didn't decide what to do
+        with it.
+
+    .. attribute:: ready
+
+        The ticket is basically :attr:`done`, but some detail still
+        needs to be done by the :attr:`user` (e.g. testing,
+        confirmation, documentation,..)
+
+    .. attribute:: done
+
+        The ticket has been done.
+
+    .. attribute:: cancelled
+
+        It has been decided that we won't fix this ticket.
+
+
+There is also a "modern" series of symbols, which can be enabled
+site-wide in :attr:`lino.core.site.Site.use_new_unicode_symbols`.
+
+If :attr:`use_new_unicode_symbols
+<lino.core.site.Site.use_new_unicode_symbols>` is True, ticket states
+are represented using symbols from the `Miscellaneous Symbols and
+Pictographs
+<https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Pictographs>`__
+block, otherwise we use the more widely supported symbols from
+`Miscellaneous Symbols
+<https://en.wikipedia.org/wiki/Miscellaneous_Symbols>`
+`fileformat.info
+<http://www.fileformat.info/info/unicode/block/miscellaneous_symbols/list.htm>`__.
 
 
 
