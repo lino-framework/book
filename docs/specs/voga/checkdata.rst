@@ -33,17 +33,17 @@ checkers.
 =================================== ===============================================
  value                               text
 ----------------------------------- -----------------------------------------------
- printing.CachedPrintableChecker     Check for missing target files
- countries.PlaceChecker              Check data of geographical places.
  beid.SSINChecker                    Check for invalid SSINs
- cal.EventGuestChecker               Entries without participants
  cal.ConflictingEventsChecker        Check for conflicting calendar entries
- cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
+ cal.EventGuestChecker               Entries without participants
  cal.LongEntryChecker                Too long-lasting calendar entries
+ cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
+ countries.PlaceChecker              Check data of geographical places.
+ finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
  ledger.VoucherChecker               Check integrity of ledger vouchers
+ printing.CachedPrintableChecker     Check for missing target files
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
  vat.VatColumnsChecker               Check VAT columns configuration.
- finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
 =================================== ===============================================
 <BLANKLINE>
 
