@@ -45,15 +45,15 @@ Additional build methods:
 ============ ============ ======================
  value        name         text
 ------------ ------------ ----------------------
- latex        latex        LatexBuildMethod
- rtf          rtf          RtfBuildMethod
- xml          xml          XmlBuildMethod
- weasy2html   weasy2html   WeasyHtmlBuildMethod
- weasy2pdf    weasy2pdf    WeasyPdfBuildMethod
- appyodt      appyodt      AppyOdtBuildMethod
  appydoc      appydoc      AppyDocBuildMethod
+ appyodt      appyodt      AppyOdtBuildMethod
  appypdf      appypdf      AppyPdfBuildMethod
  appyrtf      appyrtf      AppyRtfBuildMethod
+ latex        latex        LatexBuildMethod
+ rtf          rtf          RtfBuildMethod
+ weasy2html   weasy2html   WeasyHtmlBuildMethod
+ weasy2pdf    weasy2pdf    WeasyPdfBuildMethod
+ xml          xml          XmlBuildMethod
 ============ ============ ======================
 <BLANKLINE>
 
