@@ -74,7 +74,8 @@ Other
    tours
    socialauth/index
    application
-   choosers
+   combo/index
+   combo/choosers
    demo_fixtures
 
 .. toctree::

@@ -1,15 +1,18 @@
 .. doctest docs/dev/combo/index.rst
 .. _lino.dev.combo:
 
-========================
-Introduction to choosers
-========================
+==========================
+Introduction to Comboboxes
+==========================
 
 This unit uses the :mod:`lino_book.projects.combo` project to show how
 to define dynamic lists of choices for a combobox field in a Lino
-application.  It is inspired by Vitor Freitas' blog post `How to
-Implement Dependent/Chained Dropdown List with Django
-<https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html>`__.
+application.
+
+
+All related fields and choice lists are rendered in lino using a combo box.
+This component allows for a selection of a single choice from a dropdown.
+It also supports tying of a query to filter the choices.
 
 
 .. contents::
@@ -17,8 +20,17 @@ Implement Dependent/Chained Dropdown List with Django
     :local:
 
 
-Context-sensitive comboboxes
+Filtering results
+=================
+
+Filtering is done via setting :attr:`Model.quick_search_fields`, or by overriding
+:meth:`Model.quick_search_filter`.
+
+
+Context-sensitive Comboboxes
 ============================
+
+More examples and info can be seen here :ref:`dev.choosers`
 
 The challenge is old: when you have two fields on a model (here
 `country` and `city` on the `Person` model) and you want the choices
@@ -26,22 +38,24 @@ for one of these field (here `city`) to depend on the value of the
 other field (here `country`), then you need a hack because Django has
 no built-in API for producing this behaviour.
 
-The Lino solution is simpler to use than Freitas' solution because we
-did the AJAX magics once for all behind the scenes. In Lino you simply
-define the following function on the `Person` model::
+The Lino solution is you simply define the following function on the
+`Person` model::
 
     @dd.chooser()
     def city_choices(cls, country):
         return rt.models.combo.City.objects.filter(country=country)
 
-Lino finds this method when analysing the models at startup because it
-is marked with the :func:`dd.chooser <lino.utils.chooser>` decorator
-(which turns it into a "chooser" object) and has a name of the form
-``<fieldname>_choices``.  Lino then analyses the signature of that
-chooser: every named positional argument must match another field of
-the model except for `_ar` which matches to the action request on the
-actor, where it's possible to access request info such as current user.
-And Lino then does the dirty work of generating appropriate JavaScript
+Lino finds all choosers at startup that are decorated with the
+:func:`dd.chooser <lino.utils.chooser>` decorator (which turns it into
+a "chooser" object) and has a name of the form.
+
+Lino matches it to the field using the fieldname in`<fieldname>_choices``.
+Lino matches the context related fields by positional argument named the
+same as other fields.
+`ar` is also a valid argument name for the chooser. The value will be the
+action request used in the API call. The request object can be used to
+
+Then Lino then does the dirty work of generating appropriate JavaScript
 and HTML code and the views which respond to the AJAX calls.
 
 
@@ -50,20 +64,26 @@ and HTML code and the views which respond to the AJAX calls.
 Learning Comboboxes
 -------------------
 
-When the model also defines a method `create_FOO_choice`, then the
+When the model also defines a method ``create_<fieldname>_choice``, then the
 chooser will become "learning": the ComboBox will be told to accept
 also new values, and the server will handle these cases accordingly.
 
 In the example application you can create new cities by simply typing
-them into the combobox.
+them into the combobox. ::
 
+    class Person(dd.Model):
+        ...
+        def create_city_choice(self, text):
+            """
+            Called when an unknown city name was given.
+            Try to auto-create it.
+            """
+            if self.country is not None:
+                return rt.models.countries.Place.lookup_or_create(
+                    'name', text, country=self.country)
 
-Database models
-===============
-
-Here is the :xfile:`models.py` file :
-
-.. literalinclude:: /../../book/lino_book/projects/combo/models.py
+            raise ValidationError(
+                "Cannot auto-create city %r if country is empty", text)
 
 
 
@@ -79,6 +99,10 @@ Screenshots
 
 Other files
 ===========
+
+Here is the :xfile:`models.py` file :
+
+.. literalinclude:: /../../book/lino_book/projects/combo/models.py
 
 Here are the other files used in this unit.
 
@@ -101,7 +125,6 @@ to fill our database:
 .. literalinclude:: /../../book/lino_book/projects/combo/fixtures/demo.py
 
 
-
 Exercise
 ========
 
@@ -121,15 +144,15 @@ code and see what happens.
 Discussion
 ==========
 
-The chooser concept is a very old feature and it could deserve a
-refactoring because it is not the most elegant implementation.
+This is inspired by Vitor Freitas' blog post `How to
+Implement Dependent/Chained Dropdown List with Django
+<https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html>`__.
 
-TODO: document chooser options and choosers on other fields than
+
+.. TODO: document chooser options and choosers on other fields than
 foreign keys.
-
 TODO: compare with `django-ajax-selects
 <https://github.com/crucialfelix/django-ajax-selects>`_
-
 
 Doctests
 ========

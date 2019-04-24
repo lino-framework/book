@@ -1,8 +1,8 @@
 .. _dev.choosers:
 
-========================
-Introduction to choosers
-========================
+================
+Chooser examples
+================
 
 :ref:`lino.dev.combo`
 
