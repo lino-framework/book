@@ -109,7 +109,7 @@ Decimal('0.20')
 >>> rule.vat_account
 <CommonAccounts.vat_due:4510>
 >>> rule.vat_account.get_object()
-Account #7 ('(4510) VAT due')
+Account #6 ('(4510) VAT due')
 
 This VAT is not returnable:
 
