@@ -682,13 +682,13 @@ date recurrenies:
 ======= ============= ====================
  value   name          text
 ------- ------------- --------------------
- O       once          once
  D       daily         daily
- W       weekly        weekly
- M       monthly       monthly
- Y       yearly        yearly
- P       per_weekday   per weekday
  E       easter        Relative to Easter
+ M       monthly       monthly
+ O       once          once
+ P       per_weekday   per weekday
+ W       weekly        weekly
+ Y       yearly        yearly
 ======= ============= ====================
 <BLANKLINE>
 
@@ -1309,13 +1309,13 @@ has the following values:
 ======= ========= =========
  value   name      text
 ------- --------- ---------
- s       seconds   seconds
- m       minutes   minutes
- h       hours     hours
  D       days      days
- W       weeks     weeks
  M       months    months
+ W       weeks     weeks
  Y       years     years
+ h       hours     hours
+ m       minutes   minutes
+ s       seconds   seconds
 ======= ========= =========
 <BLANKLINE>
 

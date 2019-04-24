@@ -197,17 +197,17 @@ application:
  4300    pending_po                Pending Payment Orders    Yes         (4300) Pending Payment Orders
  4400    suppliers                 Suppliers                 Yes         (4400) Suppliers
  4500    employees                 Employees                 Yes         (4500) Employees
- 4600    tax_offices               Tax Offices               Yes         (4600) Tax Offices
  4510    vat_due                   VAT due                   No          (4510) VAT due
  4511    vat_returnable            VAT returnable            No          (4511) VAT returnable
  4512    vat_deductible            VAT deductible            No          (4512) VAT deductible
  4513    due_taxes                 VAT declared              No          (4513) VAT declared
+ 4600    tax_offices               Tax Offices               Yes         (4600) Tax Offices
  4900    waiting                   Waiting account           Yes         (4900) Waiting account
  5500    best_bank                 BestBank                  No          (5500) BestBank
  5700    cash                      Cash                      No          (5700) Cash
- 6040    purchase_of_goods         Purchase of goods         No          (6040) Purchase of goods
  6010    purchase_of_services      Purchase of services      No          (6010) Purchase of services
  6020    purchase_of_investments   Purchase of investments   No          (6020) Purchase of investments
+ 6040    purchase_of_goods         Purchase of goods         No          (6040) Purchase of goods
  6300    wages                     Wages                     No          (6300) Wages
  6900    net_income                Net income                No          (6900) Net income
  7000    sales                     Sales                     No          (7000) Sales
@@ -888,15 +888,16 @@ is of one and only one trade type.
 The default list of trade types is:
 
 >>> rt.show(ledger.TradeTypes)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======= =========== ===================== ==================================== ================================================ =============================== =====================================
  value   name        text                  Main account                         Base account                                     Product account field           Invoice account field
 ------- ----------- --------------------- ------------------------------------ ------------------------------------------------ ------------------------------- -------------------------------------
- S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales account (sales_account)
- P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
- W       wages       Wages                 *(4500) Employees* (Employees)       *(6300) Wages* (Wages)
- T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)
- C       clearings   Clearings
  B       bank_po     Bank payment orders
+ C       clearings   Clearings
+ P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
+ S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales account (sales_account)
+ T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)             
+ W       wages       Wages                 *(4500) Employees* (Employees)       *(6300) Wages* (Wages)
 ======= =========== ===================== ==================================== ================================================ =============================== =====================================
 <BLANKLINE>
 

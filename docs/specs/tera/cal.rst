@@ -31,7 +31,7 @@ the days within a month in normal order.
 March 2015: *Tue 10.*☑
 February 2015: *Tue 24.*☑ *Tue 10.*☑
 January 2015: *Tue 27.*☉ *Tue 13.*☑
-Suggested : 0 ,  Scheduled : 0 ,  Took place : 4 ,  Called off : 0 ,  Missed : 1
+Suggested : 0 ,  Scheduled : 0 ,  Took place : 4 ,  Missed : 1 ,  Called off : 0
 
 
 Missed calendar entries
@@ -54,8 +54,8 @@ a day on the beach while the ⚕ reminds a drugstore.
  10      suggested    Suggested    ?             Yes                 No       No            No
  20      draft        Scheduled    ☐             Yes                 No       No            No
  50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Called off   ⚕             No                  Yes      Yes           Yes
  60      missed       Missed       ☉             No                  Yes      No            Yes
+ 70      cancelled    Called off   ⚕             No                  Yes      Yes           Yes
 ======= ============ ============ ============= =================== ======== ============= =========
 <BLANKLINE>
 
@@ -67,8 +67,8 @@ a day on the beach while the ⚕ reminds a drugstore.
  10     suggested    Vorschlag       ?             Ja                      Nein     Nein                Nein
  20     draft        Geplant         ☐             Ja                      Nein     Nein                Nein
  50     took_place   Stattgefunden   ☑             Ja                      Ja       Nein                Nein
- 70     cancelled    Abgesagt        ⚕             Nein                    Ja       Ja                  Ja
  60     missed       Verpasst        ☉             Nein                    Ja       Nein                Ja
+ 70     cancelled    Abgesagt        ⚕             Nein                    Ja       Ja                  Ja
 ====== ============ =============== ============= ======================= ======== =================== =========
 <BLANKLINE>
 
@@ -82,8 +82,8 @@ a day on the beach while the ⚕ reminds a drugstore.
  suggested    Suggested
  draft        Scheduled
  took_place   Took place   Present
- cancelled    Called off   Excused
  missed       Missed       Missing
+ cancelled    Called off   Excused
 ============ ============ =============
 <BLANKLINE>
 
@@ -152,11 +152,24 @@ The *My appointments* table also shows in the dashboard when it has no
 data to display.
 
 >>> rt.login("elmar").show_dashboard()
+... #doctest:  +REPORT_UDIFF
 -----------------------------------------------
 My appointments **New** `⏏ <My appointments>`__
 -----------------------------------------------
 <BLANKLINE>
 No data to display
+-----------------------------------
+Daily planner `⏏ <Daily planner>`__
+-----------------------------------
+<BLANKLINE>
+============ ========== ==========================
+ Time range   External   Internal
+------------ ---------- --------------------------
+ *AM*
+ *PM*                    `13:30 robin <Detail>`__
+ *All day*
+============ ========== ==========================
+<BLANKLINE>
 
 
 .. class:: Event

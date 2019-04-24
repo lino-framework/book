@@ -75,7 +75,7 @@ Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-120
+121
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
@@ -95,7 +95,7 @@ lino_xl.lib.countries.models.PlacesByPlace
 Another category are virtual tables
 
 >>> kernel.virtual_tables
-[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.cal.ui.LastWeek, lino_xl.lib.cal.ui.ComingWeek, lino_xl.lib.working.ui.WorkedHours, lino.modlib.users.desktop.UserRoles]
+[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.cal.ui.DailyView, lino_xl.lib.cal.ui.WeeklyView, lino_xl.lib.working.ui.WorkedHours, lino.modlib.users.desktop.UserRoles]
 
 Another category are choicelists
 

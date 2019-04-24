@@ -24,7 +24,7 @@ users.UserTypes.admin:900
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
+- Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Bookings, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
@@ -69,7 +69,7 @@ Monique is a secretary.
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
@@ -108,7 +108,7 @@ Marianne is a "simple user".
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
