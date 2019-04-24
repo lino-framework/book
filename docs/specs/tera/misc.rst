@@ -104,12 +104,12 @@ Voucher types
 =============================== ====== ================================================================
  value                           name   text
 ------------------------------- ------ ----------------------------------------------------------------
- sales.InvoicesByJournal                Sales invoice (sales.InvoicesByJournal)
- finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
- finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
- finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
  ana.InvoicesByJournal                  Analytic invoice (ana.InvoicesByJournal)
  bevats.DeclarationsByJournal           Special Belgian VAT declaration (bevats.DeclarationsByJournal)
+ finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
+ finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
+ finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
+ sales.InvoicesByJournal                Sales invoice (sales.InvoicesByJournal)
  vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
 =============================== ====== ================================================================
 <BLANKLINE>
