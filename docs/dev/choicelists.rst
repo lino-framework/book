@@ -67,8 +67,8 @@ Another example is the :class:`Genders
 ======= ======== ========
  value   name     text
 ------- -------- --------
- M       male     Male
  F       female   Female
+ M       male     Male
 ======= ======== ========
 <BLANKLINE>
 
@@ -139,7 +139,7 @@ database field. It must be unique because it is the analog of primary
 key.
 
 >>> [rmu(g.value) for g in Genders.objects()]
-['M', 'F']
+['F', 'M']
 
 
 The **text** is what the user sees.  It is a translatable string,
@@ -152,22 +152,22 @@ Calling :func:`str` of a choice is (usually) the same as calling
 :func:`str` on its `text` attribute:
 
 >>> [str(g) for g in Genders.objects()]
-['Male', 'Female']
+['Female', 'Male']
 
 The text of a choice depends on the current user language.
 
 >>> from django.utils import translation
 >>> with translation.override('fr'):
 ...     [str(g) for g in Genders.objects()]
-['Masculin', 'F\xe9minin']
+['F\xe9minin', 'Masculin']
 
 >>> with translation.override('de'):
 ...     [str(g) for g in Genders.objects()]
-['M\xe4nnlich', 'Weiblich']
+['Weiblich', 'M\xe4nnlich']
 
 >>> with translation.override('et'):
 ...     [str(g) for g in Genders.objects()]
-['Mees', 'Naine']
+['Naine', 'Mees']
 
 
 The text of a choice is a **translatable** string, while *value* and
@@ -204,7 +204,7 @@ to this particular choice.
 
 
 >>> rmu([g.name for g in Genders.objects()])
-['male', 'female']
+['female', 'male']
 
 >>> rmu(' '.join([d.name for d in Weekdays.objects()]))
 'monday tuesday wednesday thursday friday saturday sunday'
@@ -254,7 +254,7 @@ A ChoiceList has an `objects` method (not attribute) which returns an
 iterator over its choices:
 
 >>> print(Genders.objects())
-[<Genders.male:M>, <Genders.female:F>]
+[<Genders.female:F>, <Genders.male:M>]
 
 
 Customizing choicelists
