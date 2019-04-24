@@ -41,24 +41,24 @@ datetime.date(2017, 8, 19)
 My appointments (Managed by Robin Rood, Dates 01.08.2017 to 31.08.2017)
 =======================================================================
 =========================================== ===============================
- Calendar entry                              Workflow
+Calendar entry                              Workflow
 ------------------------------------------- -------------------------------
- `Breakfast (31.08.2017 10:20) <Detail>`__   **☑ Took place** → [☐]
- `Interview (29.08.2017 13:30) <Detail>`__   **☼ Published** → [☒] [☐]
- `Seminar (27.08.2017 09:40) <Detail>`__     **☐ Draft** → [☼] [☒]
- `Breakfast (25.08.2017 11:10) <Detail>`__   **☒ Cancelled**
- `Interview (23.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☒]
- `Seminar (21.08.2017 10:20) <Detail>`__     **☑ Took place** → [☐]
- `Breakfast (19.08.2017 13:30) <Detail>`__   **☼ Published** → [☑] [☒] [☐]
- `Interview (17.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
- `Seminar (15.08.2017 11:10) <Detail>`__     **☒ Cancelled**
- `Breakfast (13.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☑] [☒]
- `Interview (11.08.2017 10:20) <Detail>`__   **☑ Took place** → [☐]
- `Seminar (09.08.2017 13:30) <Detail>`__     **☼ Published** → [☑] [☒] [☐]
- `Breakfast (07.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
- `Interview (05.08.2017 11:10) <Detail>`__   **☒ Cancelled**
- `Seminar (03.08.2017 08:30) <Detail>`__     **? Suggested** → [☼] [☑] [☒]
- `Breakfast (01.08.2017 10:20) <Detail>`__   **☑ Took place** → [☐]
+`Breakfast (01.08.2017 10:20) <Detail>`__   **☼ Published** → [☑] [☒] [☐]
+`Seminar (03.08.2017 08:30) <Detail>`__     **? Suggested** → [☼] [☑] [☒]
+`Interview (05.08.2017 11:10) <Detail>`__   **☑ Took place** → [☐]
+`Breakfast (07.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
+`Seminar (09.08.2017 13:30) <Detail>`__     **☒ Cancelled**
+`Interview (11.08.2017 10:20) <Detail>`__   **☼ Published** → [☑] [☒] [☐]
+`Breakfast (13.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☑] [☒]
+`Seminar (15.08.2017 11:10) <Detail>`__     **☑ Took place** → [☐]
+`Interview (17.08.2017 09:40) <Detail>`__   **☐ Draft** → [☼] [☑] [☒]
+`Breakfast (19.08.2017 13:30) <Detail>`__   **☒ Cancelled**
+`Seminar (21.08.2017 10:20) <Detail>`__     **☼ Published** → [☒] [☐]
+`Interview (23.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☒]
+`Breakfast (25.08.2017 11:10) <Detail>`__   **☑ Took place** → [☐]
+`Seminar (27.08.2017 09:40) <Detail>`__     **☐ Draft** → [☼] [☒]
+`Interview (29.08.2017 13:30) <Detail>`__   **☒ Cancelled**
+`Breakfast (31.08.2017 10:20) <Detail>`__   **☼ Published** → [☒] [☐]
 =========================================== ===============================
 <BLANKLINE>
 
@@ -158,7 +158,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Wed 30/08/2017 (09:40) | **☐ Draft** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | ... | 2017-08-30 00:00:00 | 09:40:00
+Wed 02/08/2017 (13:30) | **☒ Cancelled** | 2019-04-24 13:43:28.172478 | 2017-08-02 00:00:00 | 13:30:00
 
 
 
@@ -180,7 +180,7 @@ Quand | Workflow | Créé | Date début | Heure de début
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-mer. 30/08/2017 (09:40) | **☐ Brouillon** → ` ☼  <javascript:Lino.cal.MyEntries.wf1(null,true,193,{  })>`__ ` ☒  <javascript:Lino.cal.MyEntries.wf3(null,true,193,{  })>`__ | ... | 2017-08-30 00:00:00 | 09:40:00
+mer. 02/08/2017 (13:30) | **☒ Annulé** | 2019-04-24 13:43:28.172478 | 2017-08-02 00:00:00 | 13:30:00
 
 
 
