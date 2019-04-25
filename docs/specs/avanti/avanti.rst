@@ -177,17 +177,17 @@ Clients
      ABDALLA Aádil (120)         Registered   950201 001-38         August-Thonnar-Str., 4700 Eupen   22 years                            120
      ABDELRAHMAN Aáqil (133)     Ended        870305 001-48         Euregiostraße, 4700 Eupen         29 years                            133
      ABDOU Abeer (143)           Ended        800828 002-21         Heidberg, 4700 Eupen              36 years                            143
-     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159   en
-     ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166   en
-     ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149   en
+     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159   
+     ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166   
+     ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149   
      ARSHUN Aloyoshenká (135)    Ended        850424 001-25         Gewerbestraße, 4700 Eupen         31 years                            135
      BAH Aráli (119)             Ended        970531 001-74         Am Waisenbüschchen, 4700 Eupen    19 years                            119
-     BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153   en
-     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165   en
+     BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153   
+     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165   
      CONGO Chiámáká (126)        Registered   890702 001-14         Bergstraße, 4700 Eupen            27 years                            126
      DIA Deion (137)             Ended        840519 001-64         Gospert, 4700 Eupen               32 years                            137
      FALL Dembe (145)            Ended        790923 001-61         Heidhöhe, 4700 Eupen              37 years                            145
-     KEITA Cácey (161)           Ended        730318 002-42         4730 Raeren                       43 years                            161   en
+     KEITA Cácey (161)           Ended        730318 002-42         4730 Raeren                       43 years                            161   
     =========================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
     <BLANKLINE>
 
