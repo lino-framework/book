@@ -174,6 +174,10 @@ which have a special meaning.
     This is a :class:`lino.core.choicelists.ChoiceList`.
     Every item is an instance of :class:`CommonAccount`.
 
+    This list is automatically sorted at startup because it is populated by
+    several plugins, and because the natural sorting order would be useless and
+    irritating.
+
 .. class:: CommonAccount
            
     The base class for items of ::class:`CommonAccounts`.
@@ -892,12 +896,12 @@ The default list of trade types is:
 ======= =========== ===================== ==================================== ================================================ =============================== =====================================
  value   name        text                  Main account                         Base account                                     Product account field           Invoice account field
 ------- ----------- --------------------- ------------------------------------ ------------------------------------------------ ------------------------------- -------------------------------------
- B       bank_po     Bank payment orders
- C       clearings   Clearings
- P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
  S       sales       Sales                 *(4000) Customers* (Customers)       *(7000) Sales* (Sales)                           Sales account (sales_account)
- T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)             
+ P       purchases   Purchases             *(4400) Suppliers* (Suppliers)       *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
  W       wages       Wages                 *(4500) Employees* (Employees)       *(6300) Wages* (Wages)
+ T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)   *(4513) VAT declared* (VAT declared)
+ C       clearings   Clearings
+ B       bank_po     Bank payment orders
 ======= =========== ===================== ==================================== ================================================ =============================== =====================================
 <BLANKLINE>
 
@@ -1347,17 +1351,43 @@ Payment terms
 Journal groups
 ==============
 
+.. class:: JournalGroup
+
+    .. attribute:: menu_group
+
+    The name of another plugin
+
+    For each journal group
+    there will be a menu item in the main menu.
+
+    If the journal group has a :attr:`menu_group <JournalGroup.menu_group>`,
+    then journals are added to the menu of the named plugin, otherwise to the
+    menu of the ledger plugin.
+
+
 .. class:: JournalGroups
 
     The list of possible journal groups.
 
-    This list is used to build the main menu. For each journal group
-    there will be a menu item in the main menu.
-
+    This list is used to build the main menu.
     Journals whose :attr:`journal_group <Journal.journal_group>` is
     empty will not be available through the main user menu.
+    See also :attr:`JournalGroup.menu_group`.
 
-    The default configuration has the following journal groups:
+    The default configuration defines the following journal groups:
+
+    >>> rt.show(ledger.JournalGroups)
+    ======= =========== ===========
+     value   name        text
+    ------- ----------- -----------
+     10      sales       Sales
+     20      purchases   Purchases
+     30      wages       Wages
+     40      financial   Financial
+     50      vat         VAT
+    ======= =========== ===========
+    <BLANKLINE>
+
 
     .. attribute:: sales
 
