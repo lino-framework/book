@@ -5,12 +5,14 @@
 Specific for Lino Voga à la Roger
 =================================
 
-..  doctest init:
+.. contents::
+   :local:
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
+.. include:: /../docs/shared/include/tested.rst
 
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
 
 A customized management of membership fees
 ==========================================
@@ -50,9 +52,9 @@ datetime.date(2015, 5, 22)
  Hedi Radermacher (ME)                    4730 Raeren                       Non-member                      No    No    No       31/12/2015
  Jean Radermacher (ME)                    4730 Raeren                       Member                          No    No    No       31/12/2015
  Marie-Louise Vandenmeulenbos (MEC)       Amsterdam, Netherlands            Helper                          No    Yes   No       31/12/2015
- Didier di Rupo (MS)                      4730 Raeren                       Non-member         Eynatten     No    No    No
+ Didier di Rupo (MS)                      4730 Raeren                       Non-member         Herresbach   No    No    No
  Erna Ärgerlich (ME)                      4730 Raeren                       Member                          No    No    No       31/12/2015
- Otto Östges (MCS)                        4730 Raeren                       Helper             Hauset       No    Yes   No
+ Otto Östges (MCS)                        4730 Raeren                       Helper             Eynatten     No    Yes   No
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
 <BLANKLINE>
 
