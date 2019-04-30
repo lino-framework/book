@@ -94,48 +94,6 @@ Choicelists
 |      |      |      | columns 00 01 02 03 |br|                        |
 |      |      |      | MvtDeclarationField Debit |br|                  |
 +------+------+------+-------------------------------------------------+
-| 54   | F54  | [54] | Due VAT for 01, 02 and 03 |br|                  |
-|      |      |      | columns 54 |br|                                 |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-+------+------+------+-------------------------------------------------+
-| 55   | F55  | [55] | Due VAT for 86 and 88 |br|                      |
-|      |      |      | columns 54 |br|                                 |
-|      |      |      | regimes intracom |br|                           |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-+------+------+------+-------------------------------------------------+
-| 56   | F56  | [56] | Due VAT for 87 except those covered by 57 |br|  |
-|      |      |      | columns 54 |br|                                 |
-|      |      |      | regimes cocontractor |br|                       |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-+------+------+------+-------------------------------------------------+
-| 57   | F57  | [57] | Due VAT for 87 except those covered by 57 |br|  |
-|      |      |      | columns 54 |br|                                 |
-|      |      |      | regimes delayed |br|                            |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-+------+------+------+-------------------------------------------------+
-| 59   | F59  | [59] | Deductible VAT from purchase invoices |br|      |
-|      |      |      | columns 59 |br|                                 |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-|      |      |      | Sum of F81 F82 F83 |br|                         |
-+------+------+------+-------------------------------------------------+
-| 61   | F61  | [61] | Diverse Buchungen |br|                          |
-|      |      |      | WritableDeclarationField Kredit |br|            |
-+------+------+------+-------------------------------------------------+
-| 62   | F62  | [62] | Diverse Buchungen |br|                          |
-|      |      |      | WritableDeclarationField Kredit |br|            |
-+------+------+------+-------------------------------------------------+
-| 64   | F64  | [64] | VAT on sales CN |br|                            |
-|      |      |      | columns 59 |br|                                 |
-|      |      |      | MvtDeclarationField Kredit |br|                 |
-+------+------+------+-------------------------------------------------+
-| 71   | F71  | [71] | Saldo zu zahlen |br|                            |
-|      |      |      | SumDeclarationField Kredit |br|                 |
-|      |      |      | Sum of FXX FYY |br|                             |
-+------+------+------+-------------------------------------------------+
-| 72   | F72  | [72] | Saldo zu zahlen |br|                            |
-|      |      |      | SumDeclarationField Debit |br|                  |
-|      |      |      | Sum of FXX FYY |br|                             |
-+------+------+------+-------------------------------------------------+
 | 81   | F81  | [81] | Lebenslauf |br|                                 |
 |      |      |      | columns 81 |br|                                 |
 |      |      |      | MvtDeclarationField Debit |br|                  |
@@ -172,15 +130,58 @@ Choicelists
 |      |      |      | regimes delayed |br|                            |
 |      |      |      | MvtDeclarationField Debit |br|                  |
 +------+------+------+-------------------------------------------------+
+| 54   | F54  | [54] | Due VAT for 01, 02 and 03 |br|                  |
+|      |      |      | columns 54 |br|                                 |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
++------+------+------+-------------------------------------------------+
+| 55   | F55  | [55] | Due VAT for 86 and 88 |br|                      |
+|      |      |      | columns 54 |br|                                 |
+|      |      |      | regimes intracom |br|                           |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
++------+------+------+-------------------------------------------------+
+| 56   | F56  | [56] | Due VAT for 87 except those covered by 57 |br|  |
+|      |      |      | columns 54 |br|                                 |
+|      |      |      | regimes cocontractor |br|                       |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
++------+------+------+-------------------------------------------------+
+| 57   | F57  | [57] | Due VAT for 87 except those covered by 57 |br|  |
+|      |      |      | columns 54 |br|                                 |
+|      |      |      | regimes delayed |br|                            |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
++------+------+------+-------------------------------------------------+
+| 61   | F61  | [61] | Diverse Buchungen |br|                          |
+|      |      |      | WritableDeclarationField Kredit |br|            |
++------+------+------+-------------------------------------------------+
 | XX   | FXX  | [XX] | Total of due taxes |br|                         |
 |      |      |      | SumDeclarationField Kredit |br|                 |
 |      |      |      | Sum of F54 F55 F56 F57 |br|                     |
++------+------+------+-------------------------------------------------+
+| 59   | F59  | [59] | Deductible VAT from purchase invoices |br|      |
+|      |      |      | columns 59 |br|                                 |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
+|      |      |      | Sum of F81 F82 F83 |br|                         |
++------+------+------+-------------------------------------------------+
+| 62   | F62  | [62] | Diverse Buchungen |br|                          |
+|      |      |      | WritableDeclarationField Kredit |br|            |
++------+------+------+-------------------------------------------------+
+| 64   | F64  | [64] | VAT on sales CN |br|                            |
+|      |      |      | columns 59 |br|                                 |
+|      |      |      | MvtDeclarationField Kredit |br|                 |
 +------+------+------+-------------------------------------------------+
 | YY   | FYY  | [YY] | Total of deductible taxes |br|                  |
 |      |      |      | SumDeclarationField Kredit |br|                 |
 |      |      |      | Sum of F59 F62 F64 |br|                         |
 +------+------+------+-------------------------------------------------+
+| 71   | F71  | [71] | Saldo zu zahlen |br|                            |
+|      |      |      | SumDeclarationField Kredit |br|                 |
+|      |      |      | Sum of FXX FYY |br|                             |
++------+------+------+-------------------------------------------------+
+| 72   | F72  | [72] | Saldo zu zahlen |br|                            |
+|      |      |      | SumDeclarationField Debit |br|                  |
+|      |      |      | Sum of FXX FYY |br|                             |
++------+------+------+-------------------------------------------------+
 <BLANKLINE>
+
 
 
 External references

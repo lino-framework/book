@@ -91,7 +91,7 @@ March 2017: *Wed 01.*?
 February 2016: *Wed 10.*?
 February 2015: *Wed 18.*?
 March 2014: *Wed 05.*?
-Suggested : 6 ,  Draft : 0 ,  Took place : 0 ,  Cancelled : 0 ,  Published : 0
+Suggested : 6 ,  Draft : 0 ,  Published : 0 ,  Took place : 0 ,  Cancelled : 0
 
 That range of years depends on some configuration variables:
 
@@ -140,7 +140,7 @@ We can add our own local custom holidays which depend on easter.
 
 We create a *recurrent event rule* for it, specifying :attr:`easter
 <lino.modlib.cal.choicelists.Recurrencies.easter>`.  in their
-:attr:`every_unit <lino.modlib.cal.models.RecurrentEvent.every_unit>`
+:attr:`every_unit <lino.modlib.cal.RecurrentEvent.every_unit>`
 field.
 
 >>> holidays = cal.EventType.objects.get(**dd.str2kw('name', _("Holidays")))

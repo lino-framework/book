@@ -67,11 +67,10 @@ Another example is the :class:`Genders
 ======= ======== ========
  value   name     text
 ------- -------- --------
- F       female   Female
  M       male     Male
+ F       female   Female
 ======= ======== ========
 <BLANKLINE>
-
 
 
 Accessing choicelists
@@ -139,7 +138,7 @@ database field. It must be unique because it is the analog of primary
 key.
 
 >>> [rmu(g.value) for g in Genders.objects()]
-['F', 'M']
+['M', 'F']
 
 
 The **text** is what the user sees.  It is a translatable string,
@@ -152,22 +151,22 @@ Calling :func:`str` of a choice is (usually) the same as calling
 :func:`str` on its `text` attribute:
 
 >>> [str(g) for g in Genders.objects()]
-['Female', 'Male']
+['Male', 'Female']
 
 The text of a choice depends on the current user language.
 
 >>> from django.utils import translation
 >>> with translation.override('fr'):
 ...     [str(g) for g in Genders.objects()]
-['F\xe9minin', 'Masculin']
+['Masculin', 'Féminin']
 
 >>> with translation.override('de'):
 ...     [str(g) for g in Genders.objects()]
-['Weiblich', 'M\xe4nnlich']
+['Männlich', 'Weiblich']
 
 >>> with translation.override('et'):
 ...     [str(g) for g in Genders.objects()]
-['Naine', 'Mees']
+['Mees', 'Naine']
 
 
 The text of a choice is a **translatable** string, while *value* and
@@ -204,7 +203,7 @@ to this particular choice.
 
 
 >>> rmu([g.name for g in Genders.objects()])
-['female', 'male']
+['male', 'female']
 
 >>> rmu(' '.join([d.name for d in Weekdays.objects()]))
 'monday tuesday wednesday thursday friday saturday sunday'
@@ -250,11 +249,13 @@ Because :class:`lino_xl.lib.contacts.Person` inherits from
 [Person #114 ('Mr Hans Altenberg'), Person #112 ('Mr Andreas Arens'), ...]
 
 
-A ChoiceList has an `objects` method (not attribute) which returns an
-iterator over its choices:
+A ChoiceList has an :meth:`get_list_items` method which returns an iterator
+over its choices:
 
->>> print(Genders.objects())
-[<Genders.female:F>, <Genders.male:M>]
+>>> print(Genders.get_list_items())
+[<Genders.male:M>, <Genders.female:F>]
+
+Note that :meth:`objects` is a deprecated alias for :meth:`get_list_items`.
 
 
 Customizing choicelists

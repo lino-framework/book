@@ -682,13 +682,13 @@ date recurrenies:
 ======= ============= ====================
  value   name          text
 ------- ------------- --------------------
- D       daily         daily
- E       easter        Relative to Easter
- M       monthly       monthly
  O       once          once
- P       per_weekday   per weekday
+ D       daily         daily
  W       weekly        weekly
+ M       monthly       monthly
  Y       yearly        yearly
+ P       per_weekday   per weekday
+ E       easter        Relative to Easter
 ======= ============= ====================
 <BLANKLINE>
 
@@ -1309,15 +1309,16 @@ has the following values:
 ======= ========= =========
  value   name      text
 ------- --------- ---------
- D       days      days
- M       months    months
- W       weeks     weeks
- Y       years     years
- h       hours     hours
- m       minutes   minutes
  s       seconds   seconds
+ m       minutes   minutes
+ h       hours     hours
+ D       days      days
+ W       weeks     weeks
+ M       months    months
+ Y       years     years
 ======= ========= =========
 <BLANKLINE>
+
 
 
 .. class:: DurationUnits
