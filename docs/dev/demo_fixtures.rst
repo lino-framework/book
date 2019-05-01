@@ -41,6 +41,23 @@ Note that in Lino we usually don't write fixtures in XML or JSON but
 The loading phases of demo fixtures
 ===================================
 
+We suggest to see each fixture name as a **loading phase**. It is up to the
+application developer to specify a meaningful set of loading phases in the
+:attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` setting.
+
+Our convention is to define the following loading phases::
+
+    std minimal_ledger demo demo_bookings payments demo2 checkdata
+
+:fixture:`std`
+:fixture:`minimal_ledger`
+:fixture:`demo`
+:fixture:`demo_bookings`
+:fixture:`payments`
+:fixture:`demo2`
+:fixture:`checkdata`
+
+
 The loading order of demo data is important because the fixtures of the
 :ref:`xl` are inter-dependent.  They create users, cities, journals, contacts,
 invoices, payments, reports, notifications, ...  you cannot write invoices if
@@ -55,20 +72,6 @@ plugin doesn't define a fixture of that name, it simply does nothing.
 The :attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` setting is a
 string with a space-separated list of fixture names to be loaded by
 :manage:`prep`.
-
-We suggest to see each fixture name as a loading phase. It is up to the
-application developer to specify a meaningful set of loading phases in the
-:attr:`demo_fixtures <lino.core.site.Site.demo_fixtures>` setting.
-
-Our convention is to define the phases
-
-:fixture:`std`
-:fixture:`minimum_ledger`
-:fixture:`demo`
-:fixture:`demo_bookings`
-:fixture:`payments`
-:fixture:`demo2`
-:fixture:`checkdata`
 
 .. fixture:: std
 
@@ -125,22 +128,20 @@ plugins:
 
 .. fixture:: minimal_ledger
 
-Add minimal accounting config.
+Add minimal config data.
 Should come after :fixture:`std` and before :fixture:`demo`.
 
-- :mod:`lino_xl.lib.vat.fixtures.minimal_ledger` sets VAT column for common accounts
+- :mod:`lino_xl.lib.vat` sets VAT column for common accounts
 
-- :mod:`lino_xl.lib.ledger.fixtures.minimal_ledger` adds a minimal set of
-  journals and match rules.
+- :mod:`lino_xl.lib.ledger` adds a minimal set of journals and match rules.
 
-- :mod:`lino_xl.lib.ana.fixtures.minimal_ledger` creates analytic accounts and
+- :mod:`lino_xl.lib.ana` creates analytic accounts and
   assigns one of them to each general account with :attr:`needs_ana` True
-
 
 
 .. fixture:: demo
 
-Adds basic demo data.
+Adds master demo data.
 
 - :mod:`lino.modlib.users`
   Adds fictive root users (administrators), one for
@@ -181,8 +182,9 @@ Adds basic demo data.
   another person.
 
 - :mod:`lino_xl.lib.lists`
+
 - :mod:`lino_xl.lib.groups`
-   Create some user groups and users Andy, Bert and Chloé.
+  creates some user groups and users Andy, Bert and Chloé.
 
 - :mod:`lino_xl.lib.notes`
 
@@ -194,11 +196,15 @@ Should come after :fixture:`demo`.
 
 - :mod:`lino_xl.lib.invoicing`
   creates monthly invoicing plans and executes them.
+  Starts a January 1st of :attr:`lino_xl.lib.ledger.Plugin.start_year`.
+  Stops 2 months before today (we "forgot" to run invoicing the last two months)
+  because we want to have something in our invoicing plan.
 
 - :mod:`lino_xl.lib.ledger`
   Creates fictive monthly purchase invoices.
 
 - :mod:`lino_xl.lib.sales` creates fictive monthly sales.
+
 
 .. fixture:: payments
 
@@ -218,12 +224,9 @@ Should come after :fixture:`demo_bookings`.
   statements.  Bank statements of last month are not yet entered into database
 
 
-
 .. fixture:: demo2
 
 Add final demo data.
-This fixture should always be the last in your :attr:`demo_fixtures
-<lino.core.site.Site.demo_fixtures>` setting.
 
 - :mod:`lino.modlib.users` sets password 1234 for all users.
 
@@ -256,3 +259,9 @@ This fixture should always be the last in your :attr:`demo_fixtures
 - :mod:`lino_xl.lib.excerpts.fixtures.demo2`
 
 
+.. fixture:: checkdata
+
+Should come after :fixture:`demo2`.
+
+This fixture should always be the last in your :attr:`demo_fixtures
+<lino.core.site.Site.demo_fixtures>` setting.

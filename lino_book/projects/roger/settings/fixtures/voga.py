@@ -1,20 +1,6 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2017 Rumma & Ko Ltd
-# This file is part of Lino Voga.
-#
-# Lino Voga is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Voga is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Voga.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2013-2019 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
 """
 Demo data specific for :ref:`voga`.
@@ -25,8 +11,6 @@ from __future__ import unicode_literals
 
 from builtins import range
 from builtins import str
-import logging
-logger = logging.getLogger(__name__)
 
 from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler
@@ -264,7 +248,7 @@ class Loader1(object):
         for u in Room.objects.all():
             obj = Calendar(name=str(u), color=COLORS.pop())
             yield obj
-            #~ logger.info("20131018 %s", obj)
+            #~ dd.logger.info("20131018 %s", obj)
             u.calendar = obj
             u.save()
 
