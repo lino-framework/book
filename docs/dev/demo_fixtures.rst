@@ -6,8 +6,13 @@ Demo fixtures
 
 A **fixture**, in Django, is a portion of data (a collection of data
 records in one or several tables) which can be loaded into a database.
-Fixtures can be defined by several files in different directories.
-Read more about this in the `Django documentation
+
+.. xfile:: fixtures
+
+Fixtures are defined by the files in so-called :xfile:`fixtures` directories.
+When a plugin has a subpackage named :xfile:`fixtures`, Django will discover
+this package when you run the :manage:`loaddata` command. This is standard
+Django knowledge. Read more about it in the `Django documentation
 <https://docs.djangoproject.com/en/1.9/howto/initial-data/>`_.
 
 Lino uses this to define the concept of **demo fixtures**. These are a

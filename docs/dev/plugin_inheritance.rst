@@ -1,4 +1,4 @@
-.. _app_inheritance:
+.. _plugin_inheritance:
 
 ==================
 Plugin inheritance
@@ -136,19 +136,36 @@ the parents.
 Inheriting fixtures and django-admin commands
 =============================================
 
-When you extend a plugin and want to "inherit" its fixtures, then you
-must create a fixtures package and one module for each fixture to be
-inherited from the parent, and import at least `objects` from the
-parent fixture.  For example the :mod:`lino_voga.lib.cal.fixtures`
-package contains a suite of one-line modules, one for each module in
-:mod:`lino_xl.lib.cal.fixtures`, each of which with just one `import`
-statement like this::
+When you extend a plugin that has a :xfile:`fixtures` package, then you must
+decide whether you want to inherit these fixtures.
+
+There are good chances that you actually just want to inherit them without
+changing anything. In that case you must define a **wrapper fixture** for each
+fixture you want to inherit, which imports at least `objects` from its "parent"
+fixture.
+
+For example the :xfile:`fixtures` package  of :mod:`lino_voga.lib.cal` contains
+a suite of one-line modules, one for each fixture defined by its parent, the
+:mod:`lino_xl.lib.cal` plugin.  Each of these wrapper fixtures has just one
+`import` statement like this::
 
   from lino_xl.lib.cal.fixtures.demo import objects
 
+
+There is currently no easier way to implement the default behaviour.  Keep in
+mind that your fixtures may do something else, or you may decide to not inherit
+some fixture from your parent.
+
+Beware the pitfall: when you create a new fixture in a plugin, then those who
+inherit your plugin will not automatically get notified that you added a new
+fixture and that they must create a wrapper if they want it.
+
+
+.. xfile:: management
+
 A similar approach is necessary for django-admin commands.  Django
-discovers them by checking whether the app module has a submodule
-"management" and then calling :meth:`os.listdir` on that module's
+discovers them by checking whether the plugin has a subpackage
+:xfile:`management` and then calling :meth:`os.listdir` on that module's
 "commands" subdirectory.  (See Django's
 :file:`core/management/__init__.py` file.)  So when you extent a
 plugin which has admin commands, you must create a pseudo command

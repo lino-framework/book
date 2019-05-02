@@ -15,7 +15,7 @@ it adds some more modlib plugins:
 - :mod:`lino_xl.lib.households`
 - :mod:`lino_xl.lib.pages`
 
-This is also a **usage example** of :ref:`app_inheritance` because if
+This is also a **usage example** of :ref:`plugin_inheritance` because if
 overrides the :mod:`lino_xl.lib.contacts` plugin by its own version
 ``lino.projects.min2.modlib.contacts`` (which is not included in this
 documentation tree for technical reasons, and anyway you should
