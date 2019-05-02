@@ -8,3 +8,4 @@
 .. |insert|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/add.png?raw=true
 .. |detail|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/application_form.png?raw=true
 .. |basket|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/basket.png?raw=true
+.. |money|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/money.png?raw=true
