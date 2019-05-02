@@ -13,7 +13,9 @@ database.
 
 This document describes some general aspects of invoicing and how
 applications can handle this topic.  You should have read :doc:`sales`
-and :doc:`accounting`.  See also :doc:`/specs/voga/invoicing`.
+and :doc:`accounting`.  See also 
+:doc:`/specs/voga/invoicing` and
+:doc:`/specs/tera/invoicing`.
 
 
 .. contents::
@@ -197,6 +199,8 @@ Every partner can have a sales rule.
 
 .. class:: SalesRule
            
+    The Django model used to represent a *sales rule*.
+           
     .. attribute:: partner
 
         The partner to which this sales rule applies.
@@ -221,12 +225,14 @@ The partner who should get the invoices caused by this partner.
 
 
 
-Tariffs
-=======
+Flatrates
+=========
 
-Every product can have a tariff.
+Every product can have a **flatrate**.
 
 .. class:: Tariff
+
+    The Django model used to represent a *flatrate*.
            
     .. attribute:: number_of_events
 
@@ -244,6 +250,8 @@ The invoicing plan
            
 .. class:: Plan
 
+    The Django model used to represent an *invoicing plan*.
+           
     An **invoicing plan** is a rather temporary database object which
     represents the plan of a given user to have Lino generate a series
     of invoices.
@@ -256,9 +264,13 @@ The invoicing plan
          
     .. attribute:: journal
 
-        The journal where to create invoices.  When this field is
-        empty, you can fill the plan with suggestions but cannot
-        execute the plan.
+        No longer exists. Replaced by :attr:`area`.
+
+    .. attribute:: area
+
+        The *invoicing area* of this plan. 
+
+        A pointer to :class:`Area`.
 
     .. attribute:: today
 
@@ -305,6 +317,8 @@ The invoicing plan
 
 .. class:: Item
 
+    The Django model used to represent a *item* of an *invoicing plan*.
+           
     The items of an invoicing plan are called **suggestions**.
 
     .. attribute:: plan
@@ -344,15 +358,16 @@ The invoicing plan
            
 .. class:: StartInvoicing
 
-    Base for :class:`StartInvoicingForJournal` and
-    :class:`StartInvoicingForPartner`.
+    Start an *invoicing plan* for the authenticated user.
+
+    Base for :class:`StartInvoicingForPartner`.
 
     Inherits from :class:`lino.modlib.users.StartPlan` and just
     overrides the label.
 
-.. class:: StartInvoicingForJournal
+.. class:: StartInvoicingByArea
            
-    Start an invoicing plan for this journal.
+    Start an invoicing plan for this area.
 
     This is installed onto the VouchersByJournal table of the
     VoucherType for the configured :attr:`voucher_model
@@ -381,6 +396,31 @@ The invoicing plan
 .. class:: ToggleSelection
     
     Invert selection status for all suggestions.
+           
+
+Invoicing areas
+===============
+
+An **invoicing area** is is used to classify business activities into different
+parts for which end users can start separate invoicing plans.
+
+This is used in :ref:`presto` to differentiate between activities for which 
+invoicing is often run manually based on occasional work from those that are invoiced
+monthly automatically based on regular work.  
+In :ref:`tera` they might get used to
+separate the therapy centres in different towns.
+
+The application is responsible for selecting only invoiceables that belong to
+the area of the current plan. In :ref:`presto` we do this by defining a field
+:attr:`lino_presto.lib.cal.Room.invoicing_area`.
+
+.. class:: Area
+
+    The Django model used to represent a *flatrate*.
+
+    .. attribute:: journal
+
+        The journal into which invoices are to be generated.
            
 
 
