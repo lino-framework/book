@@ -63,6 +63,7 @@ Plugins of the Extensions library
    eevat
    events/index
    excerpts
+   healthcare
    files
    finan
    households
