@@ -1,9 +1,9 @@
 .. doctest docs/specs/printing.rst
 .. _specs.printing:
 
-==================
-Printing documents
-==================
+===========================================
+``printing`` : Basic printing functionality
+===========================================
 
 ..  Initialize doctest:
 
@@ -19,12 +19,14 @@ See also :doc:`/admin/printing`.
 Lino applications can use several approaches for offering "printing
 functionality" to the end user:
 
-- :class:`Printable` adds a hard-coded "Print" button to a database
-  model.
+- :class:`Printable` adds a hard-coded "Print" button to a database model.
+
 - :doc:`excerpts` also cause a "Print" button to be added to database
-  models, but in a configurable way.
-- :mod:`lino_xl.lib.appypod` adds a button which prints the current
-  grid as a table to pdf.
+  models, but in a more configurable way.
+
+- :mod:`lino_xl.lib.appypod` adds a button to each table which prints the
+  current grid as a table to pdf.
+
 - A "report" (:mod:`lino.utils.report`) is a hard-coded sequence of
   tables and arbitrary content.
      
@@ -118,7 +120,7 @@ Model mixins
 
     .. method:: get_print_templates(self, bm, action)
                 
-        Return a list of filenames of templates for the specified
+        Return a list of file names of templates for the specified
         build method.  Returning an empty list means that this item is
         not printable.  For subclasses of :class:`SimpleBuildMethod`
         the returned list may not contain more than 1 element.
