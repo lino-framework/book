@@ -24,7 +24,7 @@ users.UserTypes.admin:900
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Bookings, Calendar
+- Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
@@ -43,7 +43,7 @@ users.UserTypes.admin:900
   - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Fees : Fees, Fee categories
-  - Sales : Paper types, Flatrates
+  - Sales : Paper types, Flatrates, Invoicing areas
   - Office : Note Types, Event Types, Excerpt Types, Library volumes, Upload Types
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
@@ -69,7 +69,7 @@ Monique is a secretary.
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Calendar
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
@@ -108,7 +108,7 @@ Marianne is a "simple user".
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner, Calendar
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :

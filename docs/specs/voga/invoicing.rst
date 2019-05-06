@@ -394,13 +394,25 @@ detail window of an enrolment shows all invoicings of that enrolment:
 ==================== ================================================== ========== ============== ============ ==================
  Sales invoice        Heading                                            Quantity   Voucher date   State        Number of events
 -------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
- SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          31/12/2013     Registered   12
- SLS 44/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          30/06/2014     Registered   12
- SLS 56/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          30/09/2014     Registered   12
- SLS 9/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          31/12/2014     Registered   12
+ SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          01/01/2014     Registered   12
+ SLS 44/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
+ SLS 56/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
+ SLS 9/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
  **Total (4 rows)**                                                      **4**                                  **48**
 ==================== ================================================== ========== ============== ============ ==================
 <BLANKLINE>
+
+.. before 20190506 the voucher_date of generated invoices was used to store the plan's max_date:
+    ==================== ================================================== ========== ============== ============ ==================
+     Sales invoice        Heading                                            Quantity   Voucher date   State        Number of events
+    -------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
+     SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          31/12/2013     Registered   12
+     SLS 44/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          30/06/2014     Registered   12
+     SLS 56/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          30/09/2014     Registered   12
+     SLS 9/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          31/12/2014     Registered   12
+     **Total (4 rows)**                                                      **4**                                  **48**
+    ==================== ================================================== ========== ============== ============ ==================
+    <BLANKLINE>
 
 
 Subscription courses
@@ -611,10 +623,10 @@ events:
 Invoicing plan
 ==============
 
-The demo database contains exactly one plan, which still holds
-information about the last invoicing run.
+The demo database contains exactly one plan, which still holds information
+about the last invoicing run.
 
->>> obj = rt.models.invoicing.Plan.objects.all()[0]
+>>> obj = rt.models.invoicing.Plan.objects.first()
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
 ==================== =================== ======================================================================== ============ ===============
  Selected             Partner             Preview                                                                  Amount       Invoice
@@ -628,7 +640,8 @@ information about the last invoicing run.
 ==================== =================== ======================================================================== ============ ===============
 <BLANKLINE>
 
-
+.. Above test would fail if the invoicing demo fixture would add three areas
+   (as the default demo does). that's why we have only one area in voga.
 
 Item descriptions
 =================
@@ -771,16 +784,16 @@ We pick one of them and look at the issued invoices:
 ===================== ===================================== ========== ============== ============ ==================
  Sales invoice         Heading                               Quantity   Voucher date   State        Number of events
 --------------------- ------------------------------------- ---------- -------------- ------------ ------------------
- SLS 9/2014            [1] Enrolment to 025C Yoga            1          31/12/2013     Registered   5
- SLS 29/2014           [2] Renewal Enrolment to 025C Yoga    1          31/01/2014     Registered   5
- SLS 34/2014           [3] Renewal Enrolment to 025C Yoga    1          31/03/2014     Registered   5
- SLS 39/2014           [4] Renewal Enrolment to 025C Yoga    1          31/05/2014     Registered   5
- SLS 42/2014           [5] Renewal Enrolment to 025C Yoga    1          30/06/2014     Registered   5
- SLS 46/2014           [6] Renewal Enrolment to 025C Yoga    1          31/07/2014     Registered   5
- SLS 52/2014           [7] Renewal Enrolment to 025C Yoga    1          30/09/2014     Registered   5
- SLS 60/2014           [8] Renewal Enrolment to 025C Yoga    1          31/10/2014     Registered   5
- SLS 65/2014           [9] Renewal Enrolment to 025C Yoga    1          30/11/2014     Registered   5
- SLS 14/2015           [10] Renewal Enrolment to 025C Yoga   1          31/01/2015     Registered   5
+ SLS 9/2014            [1] Enrolment to 025C Yoga            1          01/01/2014     Registered   5
+ SLS 29/2014           [2] Renewal Enrolment to 025C Yoga    1          01/02/2014     Registered   5
+ SLS 34/2014           [3] Renewal Enrolment to 025C Yoga    1          01/04/2014     Registered   5
+ SLS 39/2014           [4] Renewal Enrolment to 025C Yoga    1          01/06/2014     Registered   5
+ SLS 42/2014           [5] Renewal Enrolment to 025C Yoga    1          01/07/2014     Registered   5
+ SLS 46/2014           [6] Renewal Enrolment to 025C Yoga    1          01/08/2014     Registered   5
+ SLS 52/2014           [7] Renewal Enrolment to 025C Yoga    1          01/10/2014     Registered   5
+ SLS 60/2014           [8] Renewal Enrolment to 025C Yoga    1          01/11/2014     Registered   5
+ SLS 65/2014           [9] Renewal Enrolment to 025C Yoga    1          01/12/2014     Registered   5
+ SLS 14/2015           [10] Renewal Enrolment to 025C Yoga   1          01/02/2015     Registered   5
  **Total (10 rows)**                                         **10**                                 **50**
 ===================== ===================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -791,21 +804,21 @@ These invoices are not issued to the pupil but to the recipient:
 No data to display
 
 >>> rt.show('sales.InvoicesByPartner', recipient)
-===================== =========== ========= ================= ================
- Entry date            Reference   No.       Total incl. VAT   Workflow
---------------------- ----------- --------- ----------------- ----------------
- 01/02/2015            SLS         14        50,00             **Registered**
- 01/01/2015            SLS         3         48,00             **Registered**
- 01/12/2014            SLS         65        50,00             **Registered**
- 01/11/2014            SLS         60        50,00             **Registered**
- 01/10/2014            SLS         52        50,00             **Registered**
- 01/08/2014            SLS         46        50,00             **Registered**
- 01/07/2014            SLS         42        50,00             **Registered**
- 01/06/2014            SLS         39        50,00             **Registered**
- 01/04/2014            SLS         34        50,00             **Registered**
- 01/02/2014            SLS         29        50,00             **Registered**
- 01/01/2014            SLS         9         426,00            **Registered**
- **Total (11 rows)**               **393**   **924,00**
-===================== =========== ========= ================= ================
+===================== =============== ================= ================
+ Entry date            Voucher         Total incl. VAT   Workflow
+--------------------- --------------- ----------------- ----------------
+ 01/02/2015            *SLS 14/2015*   50,00             **Registered**
+ 01/01/2015            *SLS 3/2015*    48,00             **Registered**
+ 01/12/2014            *SLS 65/2014*   50,00             **Registered**
+ 01/11/2014            *SLS 60/2014*   50,00             **Registered**
+ 01/10/2014            *SLS 52/2014*   50,00             **Registered**
+ 01/08/2014            *SLS 46/2014*   50,00             **Registered**
+ 01/07/2014            *SLS 42/2014*   50,00             **Registered**
+ 01/06/2014            *SLS 39/2014*   50,00             **Registered**
+ 01/04/2014            *SLS 34/2014*   50,00             **Registered**
+ 01/02/2014            *SLS 29/2014*   50,00             **Registered**
+ 01/01/2014            *SLS 9/2014*    426,00            **Registered**
+ **Total (11 rows)**                   **924,00**
+===================== =============== ================= ================
 <BLANKLINE>
 

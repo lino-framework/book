@@ -33,6 +33,7 @@ functionality" to the end user:
 Lino has the following plugins related to printing:
 
 - :mod:`lino.modlib.printing` -- general functionality for printing 
+- :mod:`lino_xl.lib.excerpts`
 - :mod:`lino.modlib.jinja`
 
 Additional build methods:
@@ -40,7 +41,26 @@ Additional build methods:
 - :mod:`lino.modlib.weasyprint`
 - :mod:`lino_xl.lib.appypod`
 - :mod:`lino.modlib.wkhtmltopdf`
-  
+
+
+We have *build methods*, *print actions* and mixins for *printable* database
+objects.
+
+The **build method** specifies which technology is used to build the printable
+document.  This choice has influence on the required template (usually each
+build method has its specific template language) and on the produced output
+format.
+
+The **print action** is either defined manually on the model, or dynamically at
+startup when excerpts is installed.
+
+The mixins defined in :class:`lino.modlib.printing` (:class:`Printable`,
+:class:`TypedPrintable`, :class:`CachedPrintable` :class:`TypedPrintable`) are
+needed to make your database objects printable. Note that when your application
+uses :mod:`lino_xl.lib.excerpts`, you don't need to worry about their
+difference, you just inherit from :class:`Printable`.
+
+
 
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE
@@ -93,13 +113,9 @@ True
 /media/cache/appypdf/127.0.0.1/contacts.Partners.pdf
 
 
-Reference
-=========
-
-.. currentmodule:: lino.modlib.printing
 
 Model mixins
-------------
+============
 
 .. class:: Printable
 
@@ -255,7 +271,7 @@ Model mixins
         :attr:`build_method`.
 
 Utilities
----------
+=========
 
 .. class:: CachedPrintableChecker
 
@@ -282,8 +298,8 @@ Utilities
 
            
 
-Actions
--------
+Print actions
+=============
 
 .. class:: BasePrintAction
            
@@ -333,7 +349,7 @@ Actions
 
            
 Build methods
--------------
+=============
 
 .. class:: BuildMethods
 
