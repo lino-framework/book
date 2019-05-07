@@ -1,8 +1,10 @@
 .. _specs.office:
 
 ====================================
-``office`` : Adding an "Office menu"
+``office`` : Adding an "Office" menu
 ====================================
+
+.. currentmodule:: lino_xl.lib.office
 
 The :mod:`lino.modlib.office` plugin is just a menu hook for several other
 plugins.  It also defines some `user roles`_ shared by these plugins.
@@ -29,7 +31,6 @@ User roles
 
     Has access to office functionality like calendar, notes and
     uploads.
-
 
 
 .. class:: OfficeOperator
