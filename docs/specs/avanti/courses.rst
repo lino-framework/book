@@ -287,7 +287,7 @@ Presence sheet
 >>> test_client.force_login(rt.login('robin').user)
 
 >>> res = test_client.get(url)  #doctest: +ELLIPSIS
-weasy2html render <django.template.backends.jinja2.Template object at ...> -> .../cache/weasy2html/courses.Course-2.html ('en', {})
+weasy2html render ['courses/Course/presence_sheet.weasy.html'] -> .../cache/weasy2html/courses.Course-2.html ('en', {})
 
 >>> res.status_code
 200

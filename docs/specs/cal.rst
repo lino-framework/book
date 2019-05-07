@@ -392,6 +392,10 @@ application-specific behaviour and rules.
 Calendar views
 ==============
 
+.. class:: CalendarView
+
+    Base class for all calendar views (daily, weekly and monthly).
+
 .. class:: DailyView
 
     Shows a calendar navigator with a configurable daily view.

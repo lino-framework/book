@@ -22,7 +22,7 @@ Site administrator
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner
+- Calendar : Calendar, My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Absence control
@@ -59,7 +59,6 @@ users.UserTypes.coordinator:400
 
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Calendar : Daily planner
 - Office : My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
@@ -74,7 +73,7 @@ users.UserTypes.secretary:410
 >>> rt.login('sandra').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner
+- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
@@ -90,7 +89,7 @@ Social worker
 >>> rt.login('nathalie').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner
+- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Course planning, Absence control
@@ -107,7 +106,7 @@ Teacher
 
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, -, My courses given
 - Site : About
@@ -117,7 +116,7 @@ Supervisor
 
 >>> rt.login('audrey').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Daily planner
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring uploads, My Uploads
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
@@ -140,7 +139,7 @@ Each window is **viewable** for a given set of user types.
 - avanti.Clients.merge_row : visible for admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
-- cal.DailyView.detail : visible for teacher user auditor secretary staff admin
+- cal.DailyView.detail : visible for user secretary staff admin
 - cal.EntriesByProject.insert : visible for teacher user coordinator secretary staff admin
 - cal.EventTypes.detail : visible for staff admin
 - cal.EventTypes.insert : visible for staff admin
@@ -151,13 +150,14 @@ Each window is **viewable** for a given set of user types.
 - cal.GuestRoles.merge_row : visible for admin
 - cal.Guests.detail : visible for teacher user staff admin
 - cal.Guests.insert : visible for teacher user staff admin
+- cal.MonthlyView.detail : visible for user secretary staff admin
 - cal.RecurrentEvents.detail : visible for staff admin
 - cal.RecurrentEvents.insert : visible for staff admin
 - cal.Rooms.detail : visible for staff admin
 - cal.Rooms.insert : visible for staff admin
 - cal.Tasks.detail : visible for staff admin
 - cal.Tasks.insert : visible for staff admin
-- cal.WeeklyView.detail : visible for teacher user auditor secretary staff admin
+- cal.WeeklyView.detail : visible for user secretary staff admin
 - changes.Changes.detail : visible for admin
 - checkdata.Checkers.detail : visible for admin
 - checkdata.Problems.detail : visible for teacher user auditor coordinator secretary staff admin

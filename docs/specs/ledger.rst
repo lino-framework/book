@@ -1423,6 +1423,9 @@ Journal groups
     The :attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>`
     field of a journal points to an item of this.
 
+    .. method:: get_for_model()
+    .. method:: get_for_table()
+
 
            
 .. class:: VoucherType
