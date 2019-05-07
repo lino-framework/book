@@ -19,7 +19,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 41 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
-82 models:
+83 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -44,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         82
+ contenttypes.ContentType   gfks.ContentTypes              3         83
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        26
@@ -66,8 +66,9 @@ The database structure
  finan.PaymentOrder         finan.PaymentOrders            15        16
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
  gfks.HelpText              gfks.HelpTexts                 4         2
+ invoicing.Area             invoicing.Areas                6         1
  invoicing.Item             invoicing.Items                9         5
- invoicing.Plan             invoicing.Plans                7         1
+ invoicing.Plan             invoicing.Plans                8         1
  invoicing.SalesRule        invoicing.SalesRules           3         4
  invoicing.Tariff           invoicing.Tariffs              7         3
  ledger.Account             ledger.Accounts                17        27
@@ -94,7 +95,7 @@ The database structure
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        174
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 25        97
+ sales.VatProductInvoice    sales.Invoices                 27        97
  sepa.Account               sepa.Accounts                  6         26
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
@@ -174,6 +175,8 @@ behaviour. See also :doc:`/dev/delete`.
   - CASCADE : finan.JournalEntryItem.voucher
 - finan.PaymentOrder :
   - CASCADE : finan.PaymentOrderItem.voucher
+- invoicing.Area :
+  - PROTECT : invoicing.Plan.area
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
 - invoicing.Tariff :
@@ -186,7 +189,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : ledger.AccountingPeriod.year
 - ledger.Journal :
   - CASCADE : ledger.MatchRule.journal
-  - PROTECT : invoicing.Plan.journal, ledger.Voucher.journal
+  - PROTECT : invoicing.Area.journal, ledger.Voucher.journal
 - ledger.PaymentTerm :
   - PROTECT : bevats.Declaration.payment_term, contacts.Partner.payment_term, courses.Course.payment_term, sales.VatProductInvoice.payment_term, vat.VatAccountInvoice.payment_term
 - ledger.Voucher :
