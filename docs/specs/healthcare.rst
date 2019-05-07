@@ -53,15 +53,15 @@ There is usually a finite number of healthcare plans, usually each plan has a
 reference.
 
 >>> rt.show(healthcare.Plans)
-=========== =============================================== ========
- Reference   Provider                                        Remark
------------ ----------------------------------------------- --------
- Christian   Alliance nationale des mutualités chrétiennes
- Neutral     Union nationale des mutualités neutres
- Socialist   Union nationale des mutualités socialistes
- Liberal     Union nationale des Mutualités Libérales
- Libre       Union nationale des mutualités libres
-=========== =============================================== ========
+=============== =============================================== ========
+ Reference       Provider                                        Remark
+--------------- ----------------------------------------------- --------
+ Christian HIS   Alliance nationale des mutualités chrétiennes
+ Neutral HIS     Union nationale des mutualités neutres
+ Socialist HIS   Union nationale des mutualités socialistes
+ Liberal HIS     Union nationale des Mutualités Libérales
+ Libre HIS       Union nationale des mutualités libres
+=============== =============================================== ========
 <BLANKLINE>
 
 

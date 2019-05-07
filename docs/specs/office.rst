@@ -4,12 +4,11 @@
 ``office`` : Adding an "Office menu"
 ====================================
 
-Office stuff in Lino
+The :mod:`lino.modlib.office` plugin is just a menu hook for several other
+plugins.  It also defines some `user roles`_ shared by these plugins.
 
+Here is a list of plugins that consider themselves office stuff:
 
-.. toctree::
-   :maxdepth: 1
-  
 - :doc:`cal`
 - :doc:`contacts`
 - :doc:`human`
@@ -22,3 +21,33 @@ Office stuff in Lino
 - :doc:`weasyprint`
 - :doc:`uploads`
 - :doc:`holidays`
+
+User roles
+==========
+
+.. class:: OfficeUser
+
+    Has access to office functionality like calendar, notes and
+    uploads.
+
+
+
+.. class:: OfficeOperator
+
+    Can manage office functionality for other users (but not for
+    himself).
+
+    An office operator can create their own notes and uploads, but no
+    calendar entries.
+
+    For example the `lino_xl.lib.cal.OverdueAppointments` table
+    requires :class:`OfficeStaff` and is *not* available for
+    :class:`OfficeOperator`.
+
+
+.. class:: OfficeStaff
+
+    Can manage configuration of office functionality.
+
+
+

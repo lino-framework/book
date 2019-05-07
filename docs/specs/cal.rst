@@ -13,7 +13,6 @@ The :mod:`lino_xl.lib.cal` plugin adds calendar functionality.
   :local:
 
 
-
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
@@ -1530,3 +1529,17 @@ datetime.time(0, 25)
 datetime.date(2017, 2, 15)
 >>> entry.end_date
 
+
+User roles
+==========
+
+Besides the user roles defined in :mod:`lino.modlib.office` this plugins also
+defines two specific roles.
+
+.. class:: CalendarReader
+
+    Has read-only access to calendars of other users.
+
+.. class:: GuestOperator
+
+    Can see guests of calendar entries.
