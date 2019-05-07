@@ -19,14 +19,15 @@ Core plugins
 .. toctree::
    :maxdepth: 1
 
+   users
+   printing
+   comments
+   notify
    about
    search
    checkdata
    dashboard
    gfks
-   notify
-   users
-   comments
    summaries
 
 The following plugins are technically still part of the Lino core, but might be
@@ -118,7 +119,6 @@ Topic guides
    accounting
    human
    born
-   printing
    holidays
    iban
 
