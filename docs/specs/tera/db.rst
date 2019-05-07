@@ -117,7 +117,7 @@ The database models
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         2
+ sessions.Session            sessions.SessionTable          3         ...
  sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
