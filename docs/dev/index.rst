@@ -8,9 +8,9 @@ Developers's Guide
 .. toctree::
    :maxdepth: 2
               
-   /dev/about
    /dev/quick/index
    getstarted
+   /dev/about
    /dev/framework
    team
    writedocs
