@@ -15,9 +15,9 @@ doctest init:
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 41 plugins
-- 82 models
+- 83 models
 - 21 user roles
 - 5 user types
-- 312 views
+- 316 views
 - 24 dialog actions
 <BLANKLINE>

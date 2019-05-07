@@ -22,10 +22,10 @@ Complexity factors
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 45 plugins
-- 96 models
+- 98 models
 - 22 user roles
 - 4 user types
-- 363 views
+- 370 views
 - 27 dialog actions
 <BLANKLINE>
 
@@ -37,7 +37,7 @@ The database models
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 45 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, weasyprint, uploads, ledger, bevats, checkdata, vat, sales, cal, invoicing, sepa, finan, ana, sheets, topics, notes, excerpts, appypod, export_excel, tinymce, tera, teams, lists, sessions.
-96 models:
+98 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
 --------------------------- ------------------------------ --------- -------
@@ -60,16 +60,16 @@ The database models
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0
- contacts.Company            contacts.Companies             30        25
+ contacts.Company            contacts.Companies             30        30
  contacts.CompanyType        contacts.CompanyTypes          7         16
- contacts.Partner            contacts.Partners              28        100
+ contacts.Partner            contacts.Partners              28        105
  contacts.Person             contacts.Persons               35        69
  contacts.Role               contacts.Roles                 4         0
  contacts.RoleType           contacts.RoleTypes             4         5
- contenttypes.ContentType    gfks.ContentTypes              3         96
+ contenttypes.ContentType    gfks.ContentTypes              3         98
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             42        52
+ courses.Course              courses.Activities             43        52
  courses.Enrolment           courses.Enrolments             15        78
  courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
@@ -78,19 +78,21 @@ The database models
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
  finan.BankStatement         finan.BankStatements           16        4
- finan.BankStatementItem     finan.BankStatementItemTable   10        84
+ finan.BankStatementItem     finan.BankStatementItemTable   10        243
  finan.JournalEntry          finan.FinancialVouchers        14        0
  finan.JournalEntryItem      finan.JournalEntryItemTable    10        0
  finan.PaymentOrder          finan.PaymentOrders            15        4
  finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
  gfks.HelpText               gfks.HelpTexts                 4         2
- healthcare.Plan             healthcare.Plans               6         0
- healthcare.Rule             healthcare.Rules               4         0
+ healthcare.Plan             healthcare.Plans               4         5
+ healthcare.Rule             healthcare.Rules               6         0
+ healthcare.Situation        healthcare.Situations          6         0
  households.Household        households.Households          31        6
  households.Member           households.Members             14        12
  households.Type             households.Types               4         6
+ invoicing.Area              invoicing.Areas                6         3
  invoicing.Item              invoicing.Items                9         16
- invoicing.Plan              invoicing.Plans                7         1
+ invoicing.Plan              invoicing.Plans                8         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
  invoicing.Tariff            invoicing.Tariffs              7         2
  ledger.Account              ledger.Accounts                20        27
@@ -99,9 +101,9 @@ The database models
  ledger.Journal              ledger.Journals                24        8
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         16
- ledger.Movement             ledger.Movements               13        483
+ ledger.Movement             ledger.Movements               13        930
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
- ledger.Voucher              ledger.Vouchers                9         132
+ ledger.Voucher              ledger.Vouchers                9         256
  lists.List                  lists.Lists                    7         8
  lists.ListType              lists.ListTypes                4         3
  lists.Member                lists.Members                  5         0
@@ -111,11 +113,11 @@ The database models
  products.PriceRule          products.PriceRules            7         3
  products.Product            products.Products              14        5
  products.ProductCat         products.ProductCats           6         2
- sales.InvoiceItem           sales.InvoiceItems             15        156
+ sales.InvoiceItem           sales.InvoiceItems             15        372
  sales.PaperType             sales.PaperTypes               5         2
- sales.VatProductInvoice     sales.Invoices                 25        86
+ sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         ...
+ sessions.Session            sessions.SessionTable          3         2
  sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
@@ -139,6 +141,7 @@ The database models
  vat.VatAccountInvoice       vat.Invoices                   20        0
 =========================== ============================== ========= =======
 <BLANKLINE>
+
 
 
 Foreign Keys and their `on_delete` setting
@@ -175,7 +178,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : tera.Client.person_ptr
-  - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, households.Member.person, notes.Note.contact_person
+  - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, healthcare.Situation.client, households.Member.person, notes.Note.contact_person
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, clients.ClientContact.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role
 - contenttypes.ContentType :
@@ -204,11 +207,13 @@ behaviour. See also :doc:`/dev/delete`.
 - finan.PaymentOrder :
   - CASCADE : finan.PaymentOrderItem.voucher
 - healthcare.Plan :
-  - PROTECT : courses.Course.healthcare_plan, healthcare.Rule.plan
+  - PROTECT : courses.Course.healthcare_plan, healthcare.Rule.plan, healthcare.Situation.healthcare_plan
 - households.Household :
   - CASCADE : households.Member.household
 - households.Type :
   - PROTECT : households.Household.type
+- invoicing.Area :
+  - PROTECT : invoicing.Plan.area
 - invoicing.Plan :
   - PROTECT : invoicing.Item.plan
 - invoicing.Tariff :
@@ -222,7 +227,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : ledger.AccountingPeriod.year
 - ledger.Journal :
   - CASCADE : ledger.MatchRule.journal
-  - PROTECT : invoicing.Plan.journal, ledger.Voucher.journal
+  - PROTECT : invoicing.Area.journal, ledger.Voucher.journal
 - ledger.PaymentTerm :
   - PROTECT : ana.AnaAccountInvoice.payment_term, bevats.Declaration.payment_term, contacts.Partner.payment_term, courses.Course.payment_term, sales.VatProductInvoice.payment_term, vat.VatAccountInvoice.payment_term
 - ledger.Voucher :
@@ -272,5 +277,6 @@ behaviour. See also :doc:`/dev/delete`.
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>
+
 
 
