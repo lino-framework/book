@@ -23,7 +23,7 @@ environment.  But appy requires two system packages `libreoffice` and
 
   $ sudo apt-get install libreoffice python3-uno
 
-If this fails, you might try with adding the LibreOffice Fresh
+If this fails, you might try with adding the `LibreOffice Fresh
 <https://launchpad.net/~libreoffice/+archive/ubuntu/ppa>`__ PPA::
   
   $ sudo add-apt-repository ppa:libreoffice/ppa
