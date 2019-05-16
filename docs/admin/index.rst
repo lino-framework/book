@@ -42,6 +42,8 @@ Installation
     config_dirs
     xl
     oood
+    linod
+    monit
     notify
     security
     cron
@@ -91,7 +93,6 @@ Other
     using
     webdav
     install_shell_scripts
-    linod
     virtualenv
     tim2lino
     mysql_tune
