@@ -148,6 +148,7 @@ Configuration
  05      child        Child
  06      relative     Relative
  07      adopted      Adopted child
+ 08      foster       Foster-child
  10      other        Other
 ======= ============ ===================
 <BLANKLINE>
