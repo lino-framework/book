@@ -79,7 +79,7 @@ generated them:
 >>> ses = rt.login()
 >>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
 >>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
-xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-125.xml ('en', {})
+xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-249.xml ('en', {})
 
 >>> rv['success']
 True
