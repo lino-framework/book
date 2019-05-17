@@ -174,7 +174,7 @@ Estonia''')
             response = self.client.get(
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='en')
             result = self.check_json_result(
-                response, 'navinfo disable_delete data id title')
+                response, 'data disable_delete id navinfo param_values title')
             self.assertEqual(result['data']['country'], "Estonia")
             self.assertEqual(result['data']['gender'], "Male")
 
@@ -185,7 +185,7 @@ Estonia''')
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='de')
             result = self.check_json_result(
                 response,
-                'navinfo disable_delete data id title')
+                'navinfo disable_delete data id param_values title')
             self.assertEqual(result['data']['country'], "Estland")
             self.assertEqual(result['data']['gender'], "Männlich")
             #~ self.assertEqual(result['data']['disabled_fields'],['contact_ptr_id','id'])
@@ -199,7 +199,7 @@ Estonia''')
             response = self.client.get(
                 url, REMOTE_USER='root', HTTP_ACCEPT_LANGUAGE='fr')
             result = self.check_json_result(
-                response, 'navinfo disable_delete data id title')
+                response, 'navinfo disable_delete data id param_values title')
             self.assertEqual(result['data']['country'], "Estonie")
             self.assertEqual(result['data']['gender'], u"Masculin")
 
