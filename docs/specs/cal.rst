@@ -413,13 +413,13 @@ The daily planner
 The daily planner is a table that shows an overview on all events of a day.
 
 >>> rt.show(cal.DailyPlanner)
-============ ========== ===============
+============ ========== =======================================
  Time range   External   Internal
------------- ---------- ---------------
- *AM*
- *PM*                    *13:30 robin*
+------------ ---------- ---------------------------------------
  *All day*
-============ ========== ===============
+ *AM*
+ *PM*                    *13:30 Robin Rood Breakfast Internal*
+============ ========== =======================================
 <BLANKLINE>
 
 .. class:: DailyPlanner
@@ -458,9 +458,9 @@ A default configuration has two columns in the daily planner:
 ===== ============= ================== ================== ============ ==========
  No.   Designation   Designation (de)   Designation (fr)   Start time   End time
 ----- ------------- ------------------ ------------------ ------------ ----------
+ 3     All day       Ganztags           Journée entière
  1     AM            Vormittags         Avant-midi                      12:00:00
  2     PM            Nachmittags        Après-midi         12:00:00
- 3     All day       Ganztags           Journée entière
 ===== ============= ================== ================== ============ ==========
 <BLANKLINE>
 
@@ -474,26 +474,26 @@ A default configuration has two columns in the daily planner:
     ===========
     Tagesplaner
     ===========
-    =============== ======== ===============
+    =============== ======== =====================================
      Zeitabschnitt   Extern   Intern
-    --------------- -------- ---------------
-     *Vormittags*
-     *Nachmittags*            *13:30 robin*
+    --------------- -------- -------------------------------------
      *Ganztags*
-    =============== ======== ===============
+     *Vormittags*
+     *Nachmittags*            *13:30 Robin Rood Breakfast Intern*
+    =============== ======== =====================================
     <BLANKLINE>
    
     >>> rt.show(cal.DailyPlanner, language="fr", header_level=1)
     =======================
     Planificateur quotidien
     =======================
-    =================== ========= ===============
+    =================== ========= ======================================
      Time range          Externe   Interne
-    ------------------- --------- ---------------
-     *Avant-midi*
-     *Après-midi*                  *13:30 robin*
+    ------------------- --------- --------------------------------------
      *Journée entière*
-    =================== ========= ===============
+     *Avant-midi*
+     *Après-midi*                  *13:30 Robin Rood Breakfast Interne*
+    =================== ========= ======================================
     <BLANKLINE>
 
     >>> print(cal.Event.update_guests.help_text)
