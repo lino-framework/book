@@ -23,89 +23,89 @@ The database structure
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- bevats.Declaration         bevats.Declarations            28        0
- cal.Calendar               cal.Calendars                  6         0
- cal.DailyPlannerRow        cal.DailyPlannerRows           7         0
- cal.Event                  cal.OneEvent                   23        0
- cal.EventPolicy            cal.EventPolicies              19        0
- cal.EventType              cal.EventTypes                 22        0
+ bevats.Declaration         bevats.Declarations            28        15
+ cal.Calendar               cal.Calendars                  6         8
+ cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
+ cal.Event                  cal.OneEvent                   23        1161
+ cal.EventPolicy            cal.EventPolicies              19        6
+ cal.EventType              cal.EventTypes                 22        9
  cal.Guest                  cal.Guests                     6         0
- cal.GuestRole              cal.GuestRoles                 5         0
- cal.RecurrentEvent         cal.RecurrentEvents            21        0
+ cal.GuestRole              cal.GuestRoles                 5         3
+ cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
- cal.Room                   cal.AllRooms                   11        0
- cal.Subscription           cal.Subscriptions              4         0
+ cal.Room                   cal.AllRooms                   11        7
+ cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         0
- contacts.Company           contacts.Companies             26        0
- contacts.CompanyType       contacts.CompanyTypes          7         0
- contacts.Partner           contacts.Partners              24        0
- contacts.Person            contacts.Persons               41        0
+ checkdata.Problem          checkdata.Problems             6         20
+ contacts.Company           contacts.Companies             26        31
+ contacts.CompanyType       contacts.CompanyTypes          7         16
+ contacts.Partner           contacts.Partners              24        103
+ contacts.Person            contacts.Persons               41        72
  contacts.Role              contacts.Roles                 4         0
- contacts.RoleType          contacts.RoleTypes             4         0
+ contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         83
- countries.Country          countries.Countries            6         0
- countries.Place            countries.Places               9         0
- courses.Course             courses.Activities             33        0
+ countries.Country          countries.Countries            6         8
+ countries.Place            countries.Places               9         78
+ courses.Course             courses.Activities             33        26
  courses.CourseType         courses.CourseTypes            5         0
- courses.Enrolment          courses.Enrolments             17        0
- courses.Line               courses.Lines                  25        0
- courses.Pupil              courses.Pupils                 50        0
- courses.PupilType          courses.PupilTypes             5         0
+ courses.Enrolment          courses.Enrolments             17        95
+ courses.Line               courses.Lines                  25        10
+ courses.Pupil              courses.Pupils                 50        35
+ courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               43        0
- courses.TeacherType        courses.TeacherTypes           5         0
- courses.Topic              courses.Topics                 4         0
+ courses.Teacher            courses.Teachers               43        9
+ courses.TeacherType        courses.TeacherTypes           5         4
+ courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        0
- finan.BankStatement        finan.BankStatements           16        0
- finan.BankStatementItem    finan.BankStatementItemTable   10        0
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
+ finan.BankStatement        finan.BankStatements           16        21
+ finan.BankStatementItem    finan.BankStatementItemTable   10        142
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
- finan.PaymentOrder         finan.PaymentOrders            15        0
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
- gfks.HelpText              gfks.HelpTexts                 4         0
- invoicing.Area             invoicing.Areas                6         0
- invoicing.Item             invoicing.Items                9         0
- invoicing.Plan             invoicing.Plans                8         0
- invoicing.SalesRule        invoicing.SalesRules           3         0
- invoicing.Tariff           invoicing.Tariffs              7         0
- ledger.Account             ledger.Accounts                17        0
- ledger.AccountingPeriod    ledger.AccountingPeriods       7         0
- ledger.FiscalYear          ledger.FiscalYears             5         0
- ledger.Journal             ledger.Journals                24        0
+ finan.PaymentOrder         finan.PaymentOrders            15        16
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
+ gfks.HelpText              gfks.HelpTexts                 4         2
+ invoicing.Area             invoicing.Areas                6         1
+ invoicing.Item             invoicing.Items                9         5
+ invoicing.Plan             invoicing.Plans                8         1
+ invoicing.SalesRule        invoicing.SalesRules           3         4
+ invoicing.Tariff           invoicing.Tariffs              7         3
+ ledger.Account             ledger.Accounts                17        27
+ ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
+ ledger.FiscalYear          ledger.FiscalYears             5         7
+ ledger.Journal             ledger.Journals                24        8
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
- ledger.MatchRule           ledger.MatchRules              3         0
- ledger.Movement            ledger.Movements               12        0
- ledger.PaymentTerm         ledger.PaymentTerms            11        0
- ledger.Voucher             ledger.Vouchers                9         0
- lists.List                 lists.Lists                    7         0
- lists.ListType             lists.ListTypes                4         0
+ ledger.MatchRule           ledger.MatchRules              3         16
+ ledger.Movement            ledger.Movements               12        1000
+ ledger.PaymentTerm         ledger.PaymentTerms            11        8
+ ledger.Voucher             ledger.Vouchers                9         268
+ lists.List                 lists.Lists                    7         8
+ lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
- notes.EventType            notes.EventTypes               8         0
- notes.Note                 notes.Notes                    16        0
- notes.NoteType             notes.NoteTypes                11        0
+ notes.EventType            notes.EventTypes               8         1
+ notes.Note                 notes.Notes                    16        100
+ notes.NoteType             notes.NoteTypes                11        3
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
  products.PriceRule         products.PriceRules            4         0
- products.Product           products.Products              14        0
- products.ProductCat        products.ProductCats           6         0
- rooms.Booking              rooms.Bookings                 23        0
- sales.InvoiceItem          sales.InvoiceItems             15        0
- sales.PaperType            sales.PaperTypes               5         0
- sales.VatProductInvoice    sales.Invoices                 27        0
- sepa.Account               sepa.Accounts                  6         0
+ products.Product           products.Products              14        11
+ products.ProductCat        products.ProductCats           6         5
+ rooms.Booking              rooms.Bookings                 23        3
+ sales.InvoiceItem          sales.InvoiceItems             15        174
+ sales.PaperType            sales.PaperTypes               5         2
+ sales.VatProductInvoice    sales.Invoices                 27        97
+ sepa.Account               sepa.Accounts                  6         26
  sessions.Session           sessions.SessionTable          3         0
- system.SiteConfig          system.SiteConfigs             11        0
+ system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0
  uploads.UploadType         uploads.UploadTypes            8         0
  uploads.Volume             uploads.Volumes                5         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    18        0
- vat.InvoiceItem            vat.InvoiceItemTable           9         0
- vat.VatAccountInvoice      vat.Invoices                   20        0
+ users.User                 users.Users                    18        6
+ vat.InvoiceItem            vat.InvoiceItemTable           9         187
+ vat.VatAccountInvoice      vat.Invoices                   20        119
 ========================== ============================== ========= =======
 <BLANKLINE>
 
