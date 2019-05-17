@@ -54,7 +54,7 @@ The database models
  cal.GuestRole               cal.GuestRoles                 6         2
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
  cal.RemoteCalendar          cal.RemoteCalendars            7         0
- cal.Room                    cal.Rooms                      8         0
+ cal.Room                    cal.Rooms                      9         0
  cal.Subscription            cal.Subscriptions              4         0
  cal.Task                    cal.Tasks                      19        0
  checkdata.Problem           checkdata.Problems             6         0
@@ -117,7 +117,7 @@ The database models
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         ...
+ sessions.Session            sessions.SessionTable          3         2
  sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
