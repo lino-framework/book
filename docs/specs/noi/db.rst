@@ -54,7 +54,7 @@ The database models
  cal.GuestRole                      cal.GuestRoles                   5         0
  cal.RecurrentEvent                 cal.RecurrentEvents              21        15
  cal.RemoteCalendar                 cal.RemoteCalendars              7         0
- cal.Room                           cal.Rooms                        8         0
+ cal.Room                           cal.Rooms                        9         0
  cal.Subscription                   cal.Subscriptions                4         0
  cal.Task                           cal.Tasks                        18        0
  changes.Change                     changes.Changes                  10        0
@@ -83,7 +83,7 @@ The database models
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         0
  notify.Message                     notify.Messages                  11        7
- sessions.Session                   sessions.SessionTable            3        ...
+ sessions.Session                   sessions.SessionTable            3         1
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0
