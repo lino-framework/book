@@ -158,7 +158,7 @@ When | Workflow | Created | Start date | Start time
 
 >>> print(' | '.join([str(cell.value) for cell in rows[1]]))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-Wed 02/08/2017 (13:30) | **☒ Cancelled** | 2019-05-18 23:51:56.994000 | 2017-08-02 00:00:00 | 13:30:00
+Wed 02/08/2017 (13:30) | **☒ Cancelled** | ... | 2017-08-02 00:00:00 | 13:30:00
 
 
 
