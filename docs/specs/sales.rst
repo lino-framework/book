@@ -311,7 +311,7 @@ The sales journal
 >>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> # res.content
->>> r = check_json_result(res, "navinfo data disable_delete id title")
+>>> r = check_json_result(res, "navinfo data disable_delete id param_values title")
 >>> print(r['title'])
 Sales invoices (SLS) » SLS 20/2016
 

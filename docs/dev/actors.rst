@@ -66,7 +66,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-238
+242
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -95,14 +95,14 @@ lino_xl.lib.countries.models.PlacesByPlace
 Another category are virtual tables
 
 >>> kernel.virtual_tables
-[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.cal.ui.DailyView, lino_xl.lib.cal.ui.WeeklyView, lino_xl.lib.working.ui.WorkedHours, lino.modlib.users.desktop.UserRoles]
+[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.cal.ui.DailyView, lino_xl.lib.cal.ui.WeeklyView, lino_xl.lib.cal.ui.MonthlyPlanner, lino_xl.lib.cal.ui.MonthlyView, lino_xl.lib.working.ui.WorkedHours, lino.modlib.users.desktop.UserRoles]
 
 Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
-34
+36
 >>> list(sorted(kernel.CHOICELISTS.items()))[6]
-('cal.PlannerColumns', lino_xl.lib.cal.choicelists.PlannerColumns)
+('cal.GuestStates', lino_xl.lib.cal.choicelists.GuestStates)
 
 >>> for a in kernel.CHOICELISTS.values():
 ...    if a not in actors.actors_list:

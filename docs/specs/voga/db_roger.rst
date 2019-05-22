@@ -33,7 +33,7 @@ The database structure
  cal.GuestRole              cal.GuestRoles                 5         3
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
- cal.Room                   cal.AllRooms                   10        7
+ cal.Room                   cal.AllRooms                   11        7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
  changes.Change             changes.Changes                10        0
@@ -57,7 +57,7 @@ The database structure
  courses.Teacher            courses.Teachers               43        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
- excerpts.Excerpt           excerpts.Excerpts              11        ...
+ excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        142
@@ -97,7 +97,7 @@ The database structure
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 27        97
  sepa.Account               sepa.Accounts                  6         26
- sessions.Session           sessions.SessionTable          3         ...
+ sessions.Session           sessions.SessionTable          3         1
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0
  uploads.UploadType         uploads.UploadTypes            8         0

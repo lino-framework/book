@@ -22,7 +22,7 @@ Site administrator
 >>> rt.login('robin').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
+- Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Absence control
@@ -73,7 +73,7 @@ users.UserTypes.secretary:410
 >>> rt.login('sandra').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
@@ -89,7 +89,7 @@ Social worker
 >>> rt.login('nathalie').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
-- Calendar : Calendar, My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
+- Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Course planning, Absence control
