@@ -143,6 +143,10 @@ directory and and do::
 
   $ mkdir ~/repositories
   $ cd ~/repositories
+  $ git clone https://github.com/lino-framework/book.git
+  $ . book/docs/dev/install_dev_projects.sh
+
+..
   $ git clone https://github.com/lino-framework/lino.git; \
     git clone https://github.com/lino-framework/xl.git; \
     git clone https://github.com/lino-framework/noi.git; \
@@ -150,9 +154,12 @@ directory and and do::
     git clone https://github.com/lino-framework/care.git; \
     git clone https://github.com/lino-framework/vilma.git; \
     git clone https://github.com/lino-framework/avanti.git; \
-    git clone https://github.com/lino-framework/tera.git; \
-    git clone https://github.com/lino-framework/book.git
-    
+    git clone https://github.com/lino-framework/tera.git
+
+
+
+
+This process takes some time.
 Yes, we have a whole little collection of repositories and
 applications!  As a Lino developer you will sooner or later get in
 touch with these.  You don't need to dive into each of them right now

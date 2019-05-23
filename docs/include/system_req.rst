@@ -5,11 +5,6 @@
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 .. _git: http://git-scm.com/downloads
 
-#.  Lino theoretically works under **Python 3**, but we currently
-    still recommend **Python 2**.  If you just want it to work, then
-    choose Python 2. Otherwise consider giving it a try under Python 3
-    and report your experiences.
-
 #.  You need at least 500MB of RAM.  How to see how much memory you
     have::
 
