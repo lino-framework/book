@@ -157,17 +157,16 @@ directory and and do::
     git clone https://github.com/lino-framework/tera.git
 
 
-
-
 This process takes some time.
 Yes, we have a whole little collection of repositories and
-applications!  As a Lino developer you will sooner or later get in
-touch with these.  You don't need to dive into each of them right now
-(see :doc:`overview` if you are curious), but let's *install* them
-already now so that your environment is complete.  They are part of
-this book because it would be difficult to explain Lino without having
-some serious examples.  They are part of the Lino SDK because we also
-use them for running test suites.
+applications!  You don't need to dive into each of them right now, but you must at least *install* them
+so that your environment is complete.
+They are part of the Lino SDK because we also use them for running test suites.
+They are part of the Lino book because it would be difficult to explain Lino without having
+some serious examples.
+As a Lino developer you will sooner or later get in
+touch with these. See :doc:`overview` if you are curious.
+
 
 You should now have nine directories called :file:`lino`, :file:`xl`,
 :file:`noi`, ... and :file:`book` in your :file:`~/repositories`
