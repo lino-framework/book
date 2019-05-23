@@ -91,9 +91,9 @@ Screenshots
 ===========
 
 .. image:: 1.png
-           
+
 .. image:: 2.png
-           
+
 .. image:: 3.png
 
 
@@ -150,19 +150,19 @@ Implement Dependent/Chained Dropdown List with Django
 
 
 .. TODO: document chooser options and choosers on other fields than
-foreign keys.
-TODO: compare with `django-ajax-selects
-<https://github.com/crucialfelix/django-ajax-selects>`_
+   foreign keys.
+   TODO: compare with `django-ajax-selects
+   <https://github.com/crucialfelix/django-ajax-selects>`_
 
 Doctests
 ========
 
 The remaining samples are here in order to test the project.
-  
+
 >>> from lino import startup
 >>> startup('lino_book.projects.combo.settings')
 >>> from lino.api.doctest import *
-    
+
 >>> rt.show('combo.Cities')
 ==== ========= ==========
  ID   Country   name
@@ -177,4 +177,3 @@ The remaining samples are here in order to test the project.
  8    Estonia   Vigala
 ==== ========= ==========
 <BLANKLINE>
-
