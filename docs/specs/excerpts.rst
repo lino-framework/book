@@ -5,7 +5,7 @@
 ``excerpts``: Database excerpts
 ===============================
 
-.. currentmodul:: lino_xl.lib.excerpts
+.. currentmodule:: lino_xl.lib.excerpts
 
 The :mod:`lino_xl.lib.excerpts` adds the notion of *database excerpts*.
 
@@ -40,7 +40,7 @@ Usage
 =====
 - add lino_xl.lib.excerpts to your
   :meth:`lino.core.Site.get_installed_apps`.
-- Add the virtual field `printed` 
+- Add the virtual field `printed`
 
 Lino does not automatically add an action per model to make the
 excerpt history visible from a model. If you want this, add yourself
@@ -58,10 +58,10 @@ your own subclass of one of them) to the :attr:`detail_layout
 <lino.core.actors.Actor.detail_layout>`.
 
 In addition to the main template, excerpt types can specify a **body
-template**. 
-Before rendering the main template, Lino 
+template**.
+Before rendering the main template, Lino
 When the main template is being rendered, it has a context
-variable ``body`` which 
+variable ``body`` which
 
 As a :class:`SiteAdmin <lino.core.roles.SiteAdmin>` user (and when
 :mod:`lino.modlib.davlink` is installed) you can easily modify the
@@ -76,7 +76,7 @@ then you must use the `Configuration` menu:
 - :menuselection:`Configuration --> Excerpt types`
 
 
-Lino has a main template named :xfile:`excerpts/Default.odt` which is 
+Lino has a main template named :xfile:`excerpts/Default.odt` which is
 
 
 Excerpts
@@ -141,14 +141,14 @@ menu commands:
 
         Return the address of the :attr:`recipient` of this excerpt.
 
-           
-           
+
+
 .. class:: ExcerptDetail
 
 .. class:: Excerpts
-           
+
     Base class for all tables on :class:`Excerpt`.
-    
+
 .. class:: AllExcerpts
 .. class:: MyExcerpts
 
@@ -162,7 +162,7 @@ menu commands:
 
     Only used if :attr:`lino.core.site.Site.project_model` is set.
 
-    
+
 Excerpt types
 =============
 
@@ -186,7 +186,7 @@ is an *excerpt type*.
     The type of an excerpt. Every excerpt has a mandatory field
     :attr:`Excerpt.excerpt_type` which points to an :class:`ExcerptType`
     instance.
-    
+
     .. attribute:: name
 
         The designation of this excerpt type.
@@ -201,7 +201,7 @@ is an *excerpt type*.
         See :attr:`lino.modlib.printing.mixins.PrintableType.build_method`.
 
     .. attribute:: template
- 
+
         The main template to be used when printing an excerpt of this type.
 
     .. attribute:: body_template
@@ -221,8 +221,8 @@ is an *excerpt type*.
         See also :class:`Shortcuts`.
         See also :class:`lino_xl.lib.excerpts.choicelists.Shortcuts`.
 
-    
-.. class:: ExcerptTypes    
+
+.. class:: ExcerptTypes
 
     Displays all rows of :class:`ExcerptType`.
 
@@ -233,7 +233,7 @@ Model mixins
 .. class:: Certifiable
 
     Any model which inherits from this mixin becomes "certifiable".
-    
+
     That is:
 
       - it has a :attr:`printed_by` field and a corresponding virtual
@@ -272,9 +272,9 @@ Model mixins
       <https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ForeignKey.on_delete>`__
       set to ``SET_NULL``.
 
-           
+
     .. method:: on_duplicate(self, ar, master)
-                  
+
         After duplicating e.g. a budget which had been printed, we don't
         want the duplicate point to the same
         excerpt. :meth:`lino.mixins.duplicable.Duplicable.on_duplicate`.
@@ -295,12 +295,12 @@ Model mixins
               return 'date user title'
 
     .. method:: def get_excerpt_title(self)
-                
+
         A string to be used in templates as the title of the
         certifying document.
 
     .. method:: get_excerpt_templates(self, bm)
-                
+
         Return either `None` or a list of template names to be used
         when printing an excerpt controlled by this object.
 
@@ -322,14 +322,14 @@ Model mixins
         The text to print as title in confirmations.
         One field for every :attr:`language <lino.core.site.Site.language>`.
         If this is empty, then :attr:`name` is used.
-        
+
 
 Shortcuts
 =========
 
 .. class:: Shortcut
 .. class:: Shortcuts
-           
+
     A choicelists of **excerpt shortcut fields**.  An excerpt shortcut
     field is a virtual display field with actions for quickly
     managing, from a given database object, the excerpt for this
@@ -339,7 +339,7 @@ Shortcuts
     :func:`set_excerpts_actions`.
 
 
-           
+
 
 
 Templates
@@ -361,7 +361,7 @@ Fields
 Actions
 =======
 
-.. class:: CreateExcerpt           
+.. class:: CreateExcerpt
 
     Create an excerpt in order to print this data record.
 
@@ -371,11 +371,11 @@ Actions
     Clear any previously generated printable document.  Mark this
     object as not printed. A subsequent call to print will generate a
     new cache file.
-    
+
 
 Signal handlers
 ===============
-    
+
 .. function:: set_excerpts_actions
 
     A receiver for the :data:`lino.core.signals.pre_analyze` signal.
@@ -391,13 +391,12 @@ Signal handlers
     :xfile:`TermsConditions.odt` or as a :xfile:`final
     report.body.html`.
 
-              
+
 .. function:: post_init_excerpt
-              
+
     This is called for every new Excerpt object and it sets certain
     default values.
 
     For the default language, note that the :attr:`owner` overrides
     the :attr:`recipient`. This rule is important e.g. for printing
     aid confirmations in Lino Welfare.
-
