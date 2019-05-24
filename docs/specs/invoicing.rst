@@ -1,4 +1,5 @@
 .. doctest docs/specs/invoicing.rst
+.. _xl.specs.invoicing:
 .. _cosi.specs.invoicing:
 
 ======================================
