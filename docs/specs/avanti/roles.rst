@@ -340,3 +340,23 @@ But auditors see only the pupil's number and place:
 
 
 
+Teachers can see the names of their pupils, but must not see all the clients in
+the database.  Accordingly they cannot create new enrolments or new presences
+since this would require them to specify a client in the combobox (which would
+show all clients). OTHO a teacher *can*  edit other fields on these records
+(e.g. change the workflow or write a remark).  Since we cannot make the whoe
+record read-only, we disable the fields.
+
+>>> ar = rt.login("laura")
+>>> "pupil" in courses.Enrolment.objects.first().disabled_fields(ar)
+True
+>>> "partner" in cal.Guest.objects.first().disabled_fields(ar)
+True
+
+For a coordinator these fields are not disabled:
+
+>>> ar = rt.login("sandra")
+>>> "pupil" in courses.Enrolment.objects.first().disabled_fields(ar)
+False
+>>> "partner" in cal.Guest.objects.first().disabled_fields(ar)
+False
