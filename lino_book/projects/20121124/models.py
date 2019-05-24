@@ -31,7 +31,7 @@ and some sessions:
 Get the sum of the prices of all sessions for each ticket:
 
 >>> qs = Ticket.objects.annotate(pricesum=models.Sum('sessions__price'))
->>> print [t.pricesum for t in qs]
+>>> print([t.pricesum for t in qs])
 [Decimal('2.25'), None]
 
 
