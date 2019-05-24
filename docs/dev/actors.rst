@@ -1,6 +1,6 @@
 .. doctest docs/dev/actors.rst
 .. _dev.actors:
-   
+
 ======================
 Introduction to actors
 ======================
@@ -101,7 +101,7 @@ Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
 36
->>> list(sorted(kernel.CHOICELISTS.items()))[6]
+>>> rmu(list(sorted(kernel.CHOICELISTS.items()))[6])
 ('cal.GuestStates', lino_xl.lib.cal.choicelists.GuestStates)
 
 >>> for a in kernel.CHOICELISTS.values():
@@ -115,7 +115,7 @@ And a last category are what we call "frames":
 [lino.modlib.about.models.About, lino_xl.lib.extensible.models.CalendarPanel]
 
 
-       
+
 
 To instantiate or not to instantiate?
 =====================================
@@ -142,5 +142,3 @@ The output will be::
 
 We might decide one day that Lino creates an automatic singleton
 instance for each Actor at startup.
-
-
