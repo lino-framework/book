@@ -999,6 +999,13 @@ in :ref:`presto`) if the application is not interested in physical rooms.
 
         The designation of the room. This is not required to be unique.
 
+    .. attribute:: display_color
+
+        The color to use when displaying entries in this room in the calendar
+        view.
+
+        See :class:`DisplayColors`.
+
     
 .. class:: Rooms
 
@@ -1273,6 +1280,36 @@ Miscellaneous
     .. attribute:: max_date
 
         Don't generate calendar entries beyond this date.
+
+Display colors
+==============
+
+.. class:: DisplayColors
+
+    A list of colors to be specified for displaying.
+
+>>> rt.show(cal.DisplayColors)
+========= ========= =========
+ value     name      text
+--------- --------- ---------
+ White     White     White
+ Silver    Silver    Silver
+ Gray      Gray      Gray
+ Black     Black     Black
+ Red       Red       Red
+ Maroon    Maroon    Maroon
+ Yellow    Yellow    Yellow
+ Olive     Olive     Olive
+ Lime      Lime      Lime
+ Green     Green     Green
+ Aqua      Aqua      Aqua
+ Teal      Teal      Teal
+ Blue      Blue      Blue
+ Navy      Navy      Navy
+ Fuchsia   Fuchsia   Fuchsia
+ Purple    Purple    Purple
+========= ========= =========
+<BLANKLINE>
 
 The days of the week
 =====================
