@@ -269,7 +269,7 @@ System admins can see the full names:
 >>> rt.login('rolf').show('courses.EnrolmentsByCourse', obj, show_links=True)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ================= ========================================== ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
- ID                Date of request   Client                                     Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
+ ID                Date of request   Participant                                Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ----------------- ----------------- ------------------------------------------ -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `31 <Detail>`__   30/01/2017        `ARNOLD Alexei (129) <Detail>`__           Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `25 <Detail>`__   03/02/2017        `ABDELNOUR Aámir (125) <Detail>`__         Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
@@ -289,7 +289,7 @@ click on a name to see any detail.
 >>> rt.login('laura').show('courses.EnrolmentsByCourse', obj, show_links=True)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ================= =============================== ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
- ID                Date of request   Client                          Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
+ ID                Date of request   Participant                     Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ----------------- ----------------- ------------------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `31 <Detail>`__   30/01/2017        *ARNOLD Alexei (129)*           Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `25 <Detail>`__   03/02/2017        *ABDELNOUR Aámir (125)*         Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
@@ -306,7 +306,7 @@ click on a name to see any detail.
 >>> rt.login('martina').show('courses.EnrolmentsByCourse', obj, show_links=True)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ================= =============================== ======== ============= =========== ======== ===== ========= ======== ============== ==================================================
- ID                Date of request   Client                          Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
+ ID                Date of request   Participant                     Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ----------------- ----------------- ------------------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- --------------------------------------------------
  `31 <Detail>`__   30/01/2017        *ARNOLD Alexei (129)*           Male                   No          No       No    No                 25,00          **Confirmed** → [Cancelled] [Requested] [Trying]
  `25 <Detail>`__   03/02/2017        *ABDELNOUR Aámir (125)*         Male                   No          No       No    No                                **Requested** → [Confirm] [Cancelled] [Trying]
@@ -325,7 +325,7 @@ But auditors see only the pupil's number and place:
 >>> rt.login('audrey').show('courses.EnrolmentsByCourse', obj, show_links=True)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ================= ================= ==================== ======== ============= =========== ======== ===== ========= ======== ============== ===============
- ID                Date of request   Client               Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
+ ID                Date of request   Participant          Gender   Nationality   Childcare   School   Bus   Evening   Remark   Missing rate   Workflow
 ----------------- ----------------- -------------------- -------- ------------- ----------- -------- ----- --------- -------- -------------- ---------------
  `31 <Detail>`__   30/01/2017        *(129) from Eupen*   Male                   No          No       No    No                 25,00          **Confirmed**
  `25 <Detail>`__   03/02/2017        *(125) from Eupen*   Male                   No          No       No    No                                **Requested**

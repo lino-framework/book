@@ -122,11 +122,11 @@ where he explains what they are and why you want them.
 The appy package on Python 3
 ============================
 
-The appy package is a bit special to install under Python 3 because the author
+The appy package is a bit special to install under Python 3 because its author
 is special... (e.g. he still gives support to customers whose production sites
 run on Python 2.4).  With ``pip install appy`` you would get a version that
 installs without error under Python 3, but not much more. That's why we
-recomment to get a clone of the appy-dev project and install it using ``pip
+recommend to get a clone of the appy-dev project and install it using ``pip
 install -e``.  Or to be short ::
 
   $ cd ~/repositories

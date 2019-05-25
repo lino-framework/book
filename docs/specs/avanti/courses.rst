@@ -397,7 +397,7 @@ Liste der Einschreibungen mit hoher Abwesenheitsrate zwecks Kontrolle durch den 
 
 >>> rt.login("romain").show(courses.DitchingEnrolments)
 ============== ========================== ============================== =================
- Missing rate   Client                     Activity                       Primary coach
+ Missing rate   Participant                Activity                       Primary coach
 -------------- -------------------------- ------------------------------ -----------------
  29,17          ABDO Aásim (138)           Alphabetisation (16/01/2017)   Romain Raffault
  29,17          ABID Abdul Báásid (162)    Alphabetisation (16/01/2017)   Romain Raffault

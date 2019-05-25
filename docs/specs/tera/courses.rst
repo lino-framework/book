@@ -44,7 +44,7 @@ The detail view of a therapy
   - (general_1): **Reference** (ref), **Designation** (name), **Invoice recipient** (partner), **Invoiceable fee** (invoiceable_fee)
   - (general_2): **Manager** (user), **Therapist** (teacher), **Dossier type** (line)
   - (general_3): **ID** (id), **Print** (print_actions), **Workflow** (workflow_buttons)
-  - **Participants** (EnrolmentsByCourse) [visible for secretary therapist admin]
+  - **Enrolments** (EnrolmentsByCourse) [visible for secretary therapist admin]
 - **Therapy** (therapy):
   - (therapy_1): **Therapy domain** (therapy_domain), **Procurer** (procurer), **Mandatory** (mandatory), **Translator type** (translator_type)
   - (therapy_2): **Healthcare plan** (healthcare_plan), **Ending reason** (ending_reason)
