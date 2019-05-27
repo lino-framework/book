@@ -12,19 +12,19 @@ env:
     - dist: trusty
       os: linux
       sudo: required
-      LINO_VERSION=dev
+      LINO_VERSION: dev
     - dist: trusty
       os: linux
       sudo: required
-      LINO_VERSION=stable
+      LINO_VERSION: stable
     - dist: xenial
       os: linux
       sudo: required
-      LINO_VERSION=dev
+      LINO_VERSION: dev
     - dist: xenial
       os: linux
       sudo: required
-      LINO_VERSION=stable
+      LINO_VERSION: stable
 
 before_install:
   -  # sudo add-apt-repository -y ppa:libreoffice/ppa
