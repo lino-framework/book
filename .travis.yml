@@ -11,7 +11,7 @@ env:
   matrix:
     - LINO_VERSION=dev
     - LINO_VERSION=stable
-    include:
+  include:
     - dist: trusty
       os: linux
       sudo: required
