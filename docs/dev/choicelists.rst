@@ -5,6 +5,8 @@
 Introduction to choicelists
 ===========================
 
+.. currentmodule:: lino.core.choicelists
+
 .. contents::
     :depth: 1
     :local:
@@ -14,27 +16,25 @@ Overview
 
 
 Whenever in *plain Django* you use a `choices` attribute on a database
-field, in Lino you probably prefer using a :class:`ChoiceList
-<lino.core.choicelists.ChoiceList>` instead.
+field, in Lino you probably prefer using a :class:`ChoiceList` instead.
 
-A :class:`ChoiceList <lino.core.choicelists.ChoiceList>` is a constant
-ordered in-memory list of choices.  Each of these choices has a
-"value", a "text" and a optionally a "name".  The `text` of a choice
-is usually translatable.
+A :class:`ChoiceList` is an ordered in-memory list of choices.  Each of these
+choices has a "value", a "text" and a optionally a "name".  The `text` of a
+choice is what the user sees.  It is usually translatable.  The `value` is what
+is stored in the database.  The `name` can be used to refer to a given choice
+from programmatically.
 
-You can use a choicelist for much more than filling the
-:attr:`choices` attribute of a database field.  You can display a
-choicelist as a table using :meth:`show
-<lino.core.requests.BaseRequest.show>`.  You can refer to individual
-items programmatically using their :attr:`name`.  You can subclass the
-choices and add application logic.
+You can use a choicelist for much more than filling the :attr:`choices`
+attribute of a database field.  You can display a choicelist as a table (using
+:meth:`show <lino.core.requests.BaseRequest.show>` in a doctest or by adding it
+to the main menu).  You can refer to individual items programmatically using
+their :attr:`name`.  You can subclass the choices and add application logic.
 
 
 Examples
 ========
 
-For the examples in this document we use the
-:mod:`lino_book.projects.min2` project.
+The examples in this document use the :mod:`lino_book.projects.min2` project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min2.settings.demo')
@@ -57,7 +57,6 @@ choices, one for each day of the week.
  7       sunday      Sunday
 ======= =========== ===========
 <BLANKLINE>
-
 
 Another example is the :class:`Genders
 <lino.modlib.system.choicelists.Genders>` choicelist defined in the
@@ -267,6 +266,16 @@ child application or locally by the system administrator.
 
 See :attr:`workflows_module <lino.core.site.Site.workflows_module>`
 and :attr:`user_types_module <lino.core.site.Site.user_types_module>`.
+
+Sorting choicelists
+===================
+
+Lino displays the choices of a choicelist in a combobox in their natural order
+of how they have been added to the list.
+
+You can explicitly call :meth:`Choicelist.sort` to sort them. This makes sense
+e.g. in :mod:`lino_presto.lib.ledger` where we add a new journal group "Orders"
+which we want to come before any other journal groups.
       
 Miscellaneous
 =============
