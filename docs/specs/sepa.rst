@@ -10,7 +10,7 @@ several bank accounts.
 
 The name ``sepa`` is actually irritating because this plugin won't do
 any SEPA transfer. Maybe rename it to ``iban``? OTOH it is needed by
-the SEPA modules :mod:`lino_cosi.lib.b2c` and
+the SEPA modules :mod:`lino_xl.lib.b2c` and
 :mod:`lino_cosi.lib.c2b`.
 
 It requires the :mod:`lino_xl.lib.ledger` plugin.
@@ -40,12 +40,12 @@ It requires the :mod:`lino_xl.lib.ledger` plugin.
 
         A virtual field which displays the date of the last imported
         statement for this account. Clicking on this date will open
-        the `B2C account <lino_cosi.lib.b2c.models.Account>` with same
+        the `B2C account <lino_xl.lib.b2c.models.Account>` with same
         IBAN number.
 
         This field is empty when no B2C Account exists.
 
-        Available only when :mod:`lino_cosi.lib.b2c` is installed as
+        Available only when :mod:`lino_xl.lib.b2c` is installed as
         well.
 
 

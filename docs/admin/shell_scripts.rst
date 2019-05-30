@@ -38,7 +38,7 @@ your system environment.
 .. xfile:: import_sepa.sh
 
     Import bank statements to Lino (for applications that use
-    :mod:`lino_cosi.lib.b2c`).
+    :mod:`lino_xl.lib.b2c`).
     
     Installation notes:
     

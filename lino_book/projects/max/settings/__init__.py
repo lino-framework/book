@@ -63,6 +63,7 @@ class Site(Site):
         yield 'lino_xl.lib.bevat'
         yield 'lino_xl.lib.sales'
         yield 'lino_xl.lib.invoicing'
+        yield 'lino_xl.lib.b2c'
         yield 'lino_xl.lib.deploy'
         yield 'lino_xl.lib.working'
         yield 'lino_xl.lib.skills'
@@ -83,7 +84,7 @@ class Site(Site):
         # yield 'lino_welfare.modlib.badges'
         # yield 'lino_welfare.modlib.welfare'
         # yield 'lino_welfare.modlib.pcsw'
-        # yield 'lino_cosi.lib.b2c'
+        # yield 'lino_xl.lib.b2c'
         # yield 'lino_welfare.modlib.integ'
         # yield 'lino_welfare.modlib.isip'
         # yield 'lino_welfare.modlib.jobs'
@@ -97,9 +98,12 @@ class Site(Site):
         # yield 'lino_welfare.modlib.esf'
         # yield 'lino_welfare.modlib.dupable_clients'
 
-    def setup_plugins(self):
-        super(Site, self).setup_plugins()
-        self.plugins.countries.configure(country_code='BE')
+
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        yield ('b2c', 'import_statements_path', self.project_dir.child('sepa_in'))
+        yield ('countries', 'country_code', 'BE')
+
 
     def do_site_startup(self):
         # lino_xl.lib.reception requires some workflow to be imported

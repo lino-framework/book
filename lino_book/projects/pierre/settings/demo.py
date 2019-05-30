@@ -10,7 +10,7 @@ class Site(Site):
     
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
-        yield 'lino_cosi.lib.b2c'
+        yield 'lino_xl.lib.b2c'
     
 SITE = Site(globals())
 DEBUG = True
