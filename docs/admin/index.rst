@@ -25,7 +25,7 @@ About hosting Lino
 
    about
    workflow
-   testing
+   preview
 
 
 

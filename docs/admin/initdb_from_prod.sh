@@ -24,12 +24,12 @@ doit media
 echo PART2 : DUMP A SNAPSHOT OF $OLD
 cd $OLD
 . env/bin/activate
-python manage.py dump2py -o snapshot2testing
+python manage.py dump2py -o snapshot2preview
 
 
 echo PART3 : RESTORE SNAPSHOT TO $NEW
 cd $NEW
 . env/bin/activate
-python manage.py run $OLD/snapshot2testing/restore2testing.py --noinput
+python manage.py run $OLD/snapshot2preview/restore2preview.py --noinput
 
 echo initdb_from_prod.sh finished `date` >> $LOGFILE
