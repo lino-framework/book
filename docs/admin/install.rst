@@ -74,7 +74,7 @@ The umask is used to mask (disable) certain file permissions from
 any new file created by a given user. See :doc:`umask` for more
 detailed information.
            
-  
+
 
 Lino directory structure
 ========================
@@ -82,31 +82,30 @@ Lino directory structure
 At the end of this document you will have the following recommenced
 directory structure on your Lino production server::
 
-    /usr/local/src/
-    └── lino
+    /usr/local/lino/
+    ├── __init__.py
+    ├── lino_local.py # Site-wide settings
+    └── prod_sites/
         ├── __init__.py
-        ├── lino_local.py # Site-wide settings
-        └── prod_sites/
-            ├── __init__.py
-            ├── prj1 # Site directory
-            │   ├── __init__.py
-            │   ├── env/ # Virtual environment
-            │   │   ├─── bin
-            │   │   └─── ...
-            │   ├── repositories/ # Lino git-repositories
-            │   │   ├─── lino
-            │   │   ├─── xl
-            │   │   ├─── noi
-            │   │   └─── ...
-            │   ├── log/ -> /var/log/lino/prj1/
-            │   ├── manage.py
-            │   ├── media/
-            │   ├── settings.py # Site specific settings
-            │   ├── static/
-            │   ├── wsgi.py
-            │   └── ...
-            └── prj2
-                ├─── ...
+        ├── prj1 # Site directory
+        │   ├── __init__.py
+        │   ├── env/ # Virtual environment
+        │   │   ├─── bin
+        │   │   └─── ...
+        │   ├── repositories/ # Lino git-repositories
+        │   │   ├─── lino
+        │   │   ├─── xl
+        │   │   ├─── noi
+        │   │   └─── ...
+        │   ├── log/ -> /var/log/lino/prj1/
+        │   ├── manage.py
+        │   ├── media/
+        │   ├── settings.py # Site specific settings
+        │   ├── static/
+        │   ├── wsgi.py
+        │   └── ...
+        └── prj2
+            ├─── ...
                 └─── ...
 
 This structure is recommended even if you have only one Lino site on
@@ -121,40 +120,6 @@ same virtual environment.
    configuration files contained in this guide. Ensure that the above
    directory structure is maintained.
 
-
-Create a project directory
-==========================
-
-First create the main :file:`prod_sites` folder::
-
-    $ sudo mkdir -p /usr/local/src/lino/prod_sites/
-    $ cd /usr/local/src/lino/prod_sites/
-
-Create the project folder for your first site, in this example we
-shall use :file:`prj1`::
-
-    $ mkdir prj1
-    $ cd prj1
-
-
-Set up a Python environment
-===========================
-
-Create a new Python environment in you project directory::
-
-        $ sudo apt install virtualenv
-        $ virtualenv --python=python2 env
-
-*Activate* this environment by typing::
-
-        $ . env/bin/activate
-
-Afterwards update the new environment's pip and setuptools to the
-latest version::
-
-        $ pip install -U pip
-        $ pip install -U setuptools
-    
 
 Some useful additions to your shell
 ===================================
@@ -176,97 +141,10 @@ directory and activate its Python environment::
   
 
     
-Get the sources
-===============
+Run the :xfile:`startsite.sh` script
+====================================
 
-Create a directory :file:`repositories` to hold your working copies of
-version-controlled software projects and then clone these projects.
-
-  $ go prj1
-  $ mkdir repositories
-  $ cd repositories
-  $ git clone https://github.com/lino-framework/lino.git
-  $ git clone https://github.com/lino-framework/xl.git
-  $ git clone https://github.com/lino-framework/MYAPP.git
-
-Replace ``MYAPP`` by the name of the Lino application
-you want to install.
-
-The `lino` repository contains general Lino core code.  The `xl`
-repository contains the :ref:`Lino extension library <xl>` used by
-most Lino applications.
-
-Now you are ready to "install" Lino, i.e. to tell your Python
-environment where the source file are, so that you can import them
-from within any Python program::
-
-  $ pip install -e lino
-  $ pip install -e xl
-  $ pip install -e MYAPP
-
-
-More Debian packages
-====================
-
-Some Debian packages and why you might need them::
-
-    $ sudo apt install apache2 libapache2-mod-wsgi
-
-This will automatically install Apache 
-(packages apache2 apache2-doc apache2-mpm-prefork libexpat1...)
-
-If MySQL is your database backend::
-
-    $ sudo apt install mysql-server
-    $ sudo apt install libmysqlclient-dev
-    $ sudo apt install python-dev
-    $ sudo apt install libffi-dev libssl-dev
-    $ sudo apt install mysql-server
-    
-Install the mysql client into your project's virtualenv::
-  
-    $ pip install mysqlclient
-
-If you prefer PostgreSQL::
-
-    $ sudo apt install postgresql
-    
-Install the PostgreSQL client into your project's virtualenv::
-  
-    $ pip install psycopg2
-
-For more info on how to setup a user and database see
-:doc:`mysql_install` and :doc:`pgsql_install`.
-     
-
-.. _lino.admin.site_module:
-
-    
-Configuring site-wide default settings
-======================================
-
-Lino applications (unlike Django projects) have a hook for specifying
-site-wide default values for their Django settings.
-
-As root, in your :file:`/usr/local/src/lino` the directory create a
-empty :xfile:`__init__.py` file::
-
-  $ sudo touch /usr/local/src/lino/__init__.py
-
-In that directory, create our :file:`lino_local.py` file that contains
-the site-wide configuration::
-  
-  $ sudo nano /usr/local/src/lino/lino_local.py
-
-Paste the following content into that file:
-
-.. literalinclude:: mypy/lino_local.py
-
-Adapt that content to your site.
-
-This will be your :xfile:`lino_local.py` file.
-
-More about this in :ref:`lino.site_module`.
+See :doc:`startsite`.
 
 
 Project directories
@@ -314,14 +192,6 @@ If you plan to use Django's MySQL backend, see :doc:`mysql_install`.
 
 Follow the Django documentation at `Get your database running
 <https://docs.djangoproject.com/en/1.11/topics/install/#get-your-database-running>`__
-
-
-
-Activate file logging
-=====================
-
-See :doc:`/admin/logging`.
-
 
 
 Initialize the database
@@ -375,57 +245,12 @@ The output should be something like this::
    exceptions to this rule, but we can ignore them for the moment.)
 
 
-Setting up Apache2
-==================
-
-The following is an example of a apache config for our :file:`prj1`
-site.
-
-This example is setup for a single Lino site, if you plan to host more
-than one Lino site we advise you to move your static files to
-:file:`/usr/local/src/lino/static/` and to update the config
-accordingly.
-
-
-  .. literalinclude:: mypy/prj1/apache2/apache.conf
-
-Do the following in order to activate the site with Apache::
-
-    $ sudo nano /etc/apache2/sites-available/prj1.conf
-    $ sudo a2ensite prj1.conf
-    $ sudo a2dissite 000-default
-    $ sudo a2enmod wsgi
-    $ sudo service apache2 restart
-
-Apache also needs write access to the media folder of each site.::
-
-    $ sudo chown www-data /usr/local/src/lino/prod_sites/prj1/media/
-
-Now you should be able to navigate to your domain and see a barebones
-lino-app.
-
 
 From here
 =========
 
-From here you should edit your settings.py file to import a different
-:xfile:`settings.py` module from another repo.
+From here you may edit your :xfile:`settings.py` file to import a different
+settings module from another repo.
 
 Return to the index for more information :doc:`mysql_install`.
-
-Install TinyMCE language packs
-==============================
-
-(Needs revision)
-
-If you plan to use Lino in other languages than English, you must 
-manually install language packs for TinyMCE from
-http://tinymce.moxiecode.com/i18n/index.php?ctrl=lang&act=download&pr_id=1
-
-Simplified instructions for a language pack containing 
-my personal selection (de, fr, nl and et)::
-
-  # cd /usr/share/tinymce/www
-  # wget http://tim.lino-framework.org/dl/tmp/tinymce_language_pack.zip
-  # unzip tinymce_language_pack.zip
 

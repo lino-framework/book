@@ -97,6 +97,7 @@ Other
     tim2lino
     mysql_tune
     du
+    startsite
 
     
  

@@ -2,12 +2,12 @@ alias ll='ls -al'
 alias a='. env/bin/activate'
 
 function pywhich() {
-  python -c "import $1; print $1.__file__"
+  python -c "import $1; print($1.__file__)"
 }
 
 # find another name if your team also uses golang
 function go() {
-    for BASE in /usr/local/python/prod_sites
+    for BASE in /usr/local/lino/prod_sites
     do
       if [ -d $BASE/$1 ] ; then
         cd $BASE/$1;
