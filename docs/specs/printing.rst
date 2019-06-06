@@ -8,7 +8,7 @@
 ..  Initialize doctest:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.max.settings.doctests')
+    >>> startup('lino_book.projects.min9.settings.doctests')
     >>> from lino.api.shell import *
     >>> from lino.api.doctest import *
 
@@ -296,6 +296,22 @@ Utilities
     might want to have at least that timestamp in order to search for
     the lost file.
 
+
+.. function:: weekdays(d)
+
+    Yield a series of five dates, starting at the given date which should be a
+    Monday.
+
+    Utility function available in the default printable context.
+
+    TODO: move this to lino_xl.lib.cal and let plugins add items to the
+    printable context.
+
+    >>> from lino.modlib.printing.models import weekdays
+    >>> list(weekdays(i2d(20190603)))
+    [datetime.date(2019, 6, 3), datetime.date(2019, 6, 4), datetime.date(2019, 6, 5), datetime.date(2019, 6, 6), datetime.date(2019, 6, 7)]
+
+
            
 
 Print actions
@@ -446,4 +462,5 @@ Build methods
     Generates .pdf files from .html templates.
     Requires `pisa <https://pypi.python.org/pypi/pisa>`_.
     Usage example see :mod:`lino_book.projects.pisa`.
+
 
