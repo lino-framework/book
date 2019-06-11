@@ -59,7 +59,7 @@ Usage example:
 
 >>> from lino import SETUP_INFO
 >>> print(SETUP_INFO['description'])
-A framework for writing desktop-like web applications using Django and ExtJS
+A framework for writing desktop-like web applications using Django and ExtJS or React
 
 >>> from lino_xl import SETUP_INFO
 >>> print(SETUP_INFO['description'])
