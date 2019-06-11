@@ -28,7 +28,7 @@ Special topics
    watch
    matrix/index
    /tutorials/input_mask/index
-   bleaching
+   bleach
 
 
 

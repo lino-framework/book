@@ -15,6 +15,7 @@ Welcome to the online documentation about the Lino framework.
    /demos
    User's Guide <guide/index>
    community/index
+   changes/index
    blog
 
 Technical docs
