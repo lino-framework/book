@@ -1,9 +1,9 @@
 .. include:: /../docs/shared/include/defs.rst
 .. _lino.changes.2018:
 
-====================
-Changes 2018 in Lino
-====================
+====
+2018
+====
 
 
 .. contents::

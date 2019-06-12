@@ -2,9 +2,9 @@
 .. _lino.changes.2019:
 .. _xl.changes.2019:
 
-===============================
-API changes 2019 in Lino and XL
-===============================
+====
+2019
+====
 
 .. Note: Changes are grouped by date. Every new day gives a new
    heading. If a release deserves separate release notes, we create a separate
