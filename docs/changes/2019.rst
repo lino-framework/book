@@ -18,8 +18,11 @@
 2019-06-11
 ==========
 
-Changed the API for using **bleached** text fields. 
-See :attr`lino.core.fields.RichTextField.bleached`.
+Changed the API for using **bleached** text fields. See
+:attr:`lino.core.site.Site.textfield_bleached` and the :attr:`bleached
+<lino.core.fields.RichTextField.bleached>` attribute of a
+:class:`lino.core.fields.RichTextField`.
+
 
 
 2019-06-06
