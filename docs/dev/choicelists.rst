@@ -39,7 +39,7 @@ The examples in this document use the :mod:`lino_book.projects.min2` project.
 >>> from lino import startup
 >>> startup('lino_book.projects.min2.settings.demo')
 >>> from lino.api.doctest import *
-    
+
 For example Lino's calendar plugin (:mod:`lino_xl.lib.cal`) defines a
 choicelist :class:`Weekdays <lino_xl.lib.cal.Weekdays>` which has 7
 choices, one for each day of the week.
@@ -157,11 +157,11 @@ The text of a choice depends on the current user language.
 >>> from django.utils import translation
 >>> with translation.override('fr'):
 ...     [str(g) for g in Genders.objects()]
-['Masculin', 'Féminin']
+['Masculin', 'F\xe9minin']
 
 >>> with translation.override('de'):
 ...     [str(g) for g in Genders.objects()]
-['Männlich', 'Weiblich']
+['M\xe4nnlich', 'Weiblich']
 
 >>> with translation.override('et'):
 ...     [str(g) for g in Genders.objects()]

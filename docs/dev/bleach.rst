@@ -78,7 +78,7 @@ You can configure which HTML tags are allowed by changing the
 :attr:`bleach_allowed_tags <lino.core.site.Site.bleach_allowed_tags>` site
 attribute.
 
->>> settings.SITE.bleach_allowed_tags
+>>> rmu(settings.SITE.bleach_allowed_tags)
 ['a', 'b', 'i', 'em', 'ul', 'ol', 'li', 'strong', 'p', 'br', 'span', 'pre', 'def', 'table', 'th', 'tr', 'td', 'thead', 'tfoot', 'tbody']
 
 
