@@ -1,6 +1,7 @@
 .. _lino.coming:
 .. _book.changes:
 .. _lino.changes:
+.. _xl.changes:
 
 ===========
 API changes

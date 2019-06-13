@@ -13,8 +13,8 @@ Welcome to the online documentation about the Lino framework.
 
    about/index
    /demos
-   User's Guide <guide/index>
    community/index
+   User's Guide <guide/index>
    changes/index
    blog
 
@@ -26,7 +26,7 @@ Technical docs
 
    Newbie's Guide </dev/newbies/index>
    Developer's Guide </dev/index>
-   Hoster's Guide </admin/index>
+   Administrator's Guide </admin/index>
    Specs </specs/index>
    API </api/index>
 

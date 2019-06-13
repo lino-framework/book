@@ -2,6 +2,9 @@
 Types of hosting
 ================
 
+Content moved to the :doc:`/admin/index`.
+
+
 There are three types of Lino hosting:
   
 - in case of **basic hosting** the hoster is *not reponsible* for

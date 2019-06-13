@@ -4,4 +4,4 @@
 The Lino team
 =================
 
-Content moved to :doc:`humans`.
+Content moved to  http://community.lino-framework.org

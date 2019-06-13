@@ -4,36 +4,45 @@
 Community
 =========
 
-- :doc:`about`
-- :doc:`humans`
-- :doc:`Hosting providers <hosters>`
-- :doc:`Development providers <developers>`
-- :doc:`money`
+The Lino community has its own dedicated website. See
+http://community.lino-framework.org
 
 
-How to contact us:
+.. _get_involved:
 
-- Send an email to
-  ``team`` at ``lino-framework.org``
-  (your mail will be forwarded to the members of the `Lino team at Rumma & Ko <https://saffre-rumma.net/team/>`__)
+Get involved!
+=============
 
-- For non-technical and commercial information about Lino
-  please contact `Rumma & Ko <http://www.saffre-rumma.net>`__
+Here are some profiles of people we happily welcome.
 
-- Subscribe to one of our mailing lists:
-  `news <http://lino-framework.org/cgi-bin/mailman/listinfo/news>`__
-  or
-  `lino-developers <http://lino-framework.org/cgi-bin/mailman/listinfo/lino-developers>`__.
+Individuals:
 
-- If you need help or want to contribute, send an email to the team and ask for
-  an invitation to our Zulip platform.
+- **Python developers** -- consider whether Lino is the right tool
+  for one of your projects.
 
-  Our Zulip platform is our preferred way, but if you prefer communicating via
-  GitHub, please report your issues in the `book repository
-  <https://github.com/lino-framework/book>`__.  Lino consists of many
-  repositories, and book is the main one. We have an `organization on GitHub
-  <https://github.com/lino-framework>`__ which owns the different repositories
-  that make up the Lino framework. See also :ref:`dev.contrib`.
+- **System administrators** -- consider installing a Lino application
+  for your employer.
+
+- **Everybody** -- consider learning one or several Lino applications
+  in order to help as a consultant, trainer or analyst.
+
+Organizations:
+
+- **IT solution providers** -- Consider becoming a
+  Lino representative.  Tell other people about Lino.  Show the
+  :ref:`demos` to other people and help them analyze whether they need
+  a Lino application.
+  Set up your own demo server.
+  We help you with planning your projects.
+
+- **Internet hosting providers** -- Consider becoming a Lino
+  Lino hosting provider.
+
+- **Software houses** -- Consider adding Lino to your portfolio of
+  technologies.  If you already have Django experience, your learning effort will
+  be small.
+
+
 
 
 .. toctree::
