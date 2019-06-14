@@ -356,6 +356,9 @@ from atelier.sphinxconf import interproject
 interproject.configure(
     globals(), 'atelier etgen')
 
+
+intersphinx_mapping['cg'] = ('http://community.lino-framework.org/', None)
+
 autosummary_generate = True
 
 #~ nitpicky = True # use -n in Makefile instead

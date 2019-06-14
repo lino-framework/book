@@ -4,7 +4,7 @@
 Preview sites
 ======================
 
-This document explains why and how to set up and use a separate preview site
+This document explains why and how to set up and use a separate :term:`preview site`
 and manage releases for bigger Lino production sites with many users.  See also
 :doc:`/admin/upgrade` for one-step upgrades on smaller sites.  See
 :doc:`/dev/datamig` for technical background information.
@@ -12,17 +12,6 @@ and manage releases for bigger Lino production sites with many users.  See also
 
 .. contents::
   :local:
-
-What is a preview site?
-=======================
-
-A preview site is a copy of a production site as it would look using
-the newest version of Lino.  It is made available to end-users so they
-can preview and test their coming version before an upgrade.
-
-The primary goal of such a setup is to help the local Lino community
-to discuss about new features and to reduce stress caused by
-unexpected results after an upgrade.
 
 
 General infrastructure
