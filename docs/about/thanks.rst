@@ -4,8 +4,8 @@ Thanks to
 Publications
 ------------
 
-Here is a list of other publications who are at least partially being 
-distributed with Lino.
+Here is a list of publications of other authors that are at least partially
+being distributed with Lino.
 
 - :srcref:`/lino/modlib/extjs/static/extjs/Ext.ux.form.DateTime.js` :
   Copyright (c) 2008, Ing. Jozef Sakáloš.
@@ -52,54 +52,3 @@ distributed with Lino.
   <http://jtauber.com/blog/2006/02/13/bug_fix_to_python_unicode_collation_algorithm/>`_
   
   
-.. _people:
-
-People
-------
-
-Here is a list of people to whom we owe thanks.
-The list has not yet been systematically checked for completeness.
-
-- Alexa for constructive end-user feedback
-
-- Alicia for constructive end-user feedback
-
-- Andreas for competent consultation on Lino Così and marketing
-  questions.
-
-- Elmar for sustaining Lino on the political level
-
-- Gerd for long-term partnership and lots of ideas for both the
-  framework itself and Lino Welfare.
-
-- Hamza for ideas and code contributions
-  
-- Hubert for constructive end-user feedback
-
-- Hugh for constructive feedback on web design and philosophical
-  questions.  
-
-- Joe for advice, analysis and code contributions
-
-- Johanna for constructive end-user feedback
-  
-- Lydia for constructive end-user feedback
-  
-- Manuel for partnership and input on technologies, web design, and
-  marketing
-
-- Melanie B and Melanie L for constructive end-user feedback
-
-- Merike for feedback on technical and infrastructural questions.
-
-- Otto for feedback on technical questions.
-
-- Ralf for competent feedback on marketing questions 
-
-- Roger for lots of ideas on marketing and Lino Voga
-
-- Sven for analysis, testing and lots of ideas on Lino Voga
-
-- Tonis for ideas and code contributions
-
-- Tanel for ideas on marketing

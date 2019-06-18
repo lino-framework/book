@@ -48,18 +48,4 @@ Organizations:
 .. toctree::
     :hidden:
 
-    about
-    vocabulary
     /about/thanks
-    developers
-    admins
-    hosters
-    team
-    humans
-    get_involved
-    structure
-    rumma
-    money
-    lsf
-    /hosting/index
-    /hosting/types
