@@ -9,6 +9,16 @@ different.
 .. contents::
   :local:
 
+.. _plain_django:
+
+Plain Django
+============
+
+From the technological point of view, Lino applications are *just Django**
+projects combined to an ExtJS or React front end.  People who know how to host
+a Django project can also host a Lino application.
+
+
 
 .. _tryton:
 
