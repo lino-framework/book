@@ -10,10 +10,37 @@
    heading. If a release deserves separate release notes, we create a separate
    document and this file will have a link to it.
 
-
-
 .. contents::
   :local:
+
+2019-06-20
+==========
+
+When filtering the calendar view on
+:attr:`lino_xl.lib.cal.Events.presence_guest`, Lino now also shows holiday type
+entries (i.e. entries whose :attr:`all_rooms
+<lino_xl.lib.cal.EventType.all_rooms>` is checked).
+
+The :attr:`lino_xl.lib.cal.Event.max_days` field can now be 0 to say that you
+don't want any check.
+
+Multi-day events must be shown on every day of their date range.  Lino didn't
+yet handle them correctly
+
+Added a field :attr:`lino_xl.lib.cal.EventType.fill_presences` because not
+all events should automatically fill their presences
+(:class:`lino_xl.lib.cal.Guest`). When
+:attr:`lino_xl.lib.cal.EntryStates.edit_guests` is True, Lino also removes
+unwanted guests each time you hit the save button. But for example in
+:ref:`presto` when registering a absence day  or a worker, the list of
+suggested guests is usually empty (because the project is empty), and we
+don't want Lino to remove any manually added guests.
+
+The :fixture:`std` fixture for :mod:`lino_xl.lib.cal`  now adds a new entry
+type "Absence" with this configuration. The :fixture:`demo2` fixture adds
+some "absences for private reasons", some of them several days.
+
+
 
 2019-06-11
 ==========

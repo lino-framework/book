@@ -5,16 +5,16 @@
 General overview of Lino Avanti
 ===============================
 
-..  doctest init:
-
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-
-The goal of Lino Avanti is 
-
 .. contents::
-  :local:
+   :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> from lino.api.doctest import *
+
+
 
 Miscellaneous
 =============
@@ -58,26 +58,29 @@ The following checks whether the dashboard displays for user robin:
 Here is a text variant of Robin's dashboard.
 
 >>> rt.login('robin').show_dashboard()
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_CDIFF +ELLIPSIS -SKIP
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS -SKIP
 -----------------------------------------------
 My appointments **New** `⏏ <My appointments>`__
 -----------------------------------------------
 <BLANKLINE>
-=========================================== ======== ===============================
- Calendar entry                              Client   Workflow
-------------------------------------------- -------- -------------------------------
- `Breakfast (15.02.2017 13:30) <Detail>`__            **☐ Draft** → [☑] [☒]
- `Seminar (17.02.2017 10:20) <Detail>`__              **? Suggested** → [☐] [☑] [☒]
- `Interview (19.02.2017 08:30) <Detail>`__            **☒ Cancelled** → [☐] [☑]
- `Breakfast (21.02.2017 11:10) <Detail>`__            **☑ Took place** → [☐] [☒]
- `Seminar (23.02.2017 09:40) <Detail>`__              **☐ Draft** → [☑] [☒]
- `Interview (25.02.2017 13:30) <Detail>`__            **? Suggested** → [☐] [☑] [☒]
- `Breakfast (27.02.2017 10:20) <Detail>`__            **☒ Cancelled** → [☐] [☑]
- `Seminar (01.03.2017 08:30) <Detail>`__              **☑ Took place** → [☐] [☒]
- `Interview (03.03.2017 11:10) <Detail>`__            **☐ Draft** → [☑] [☒]
- `Breakfast (05.03.2017 09:40) <Detail>`__            **? Suggested** → [☐] [☑] [☒]
- `Seminar (07.03.2017 13:30) <Detail>`__              **☒ Cancelled** → [☐] [☑]
-=========================================== ======== ===============================
+====================================================== ======== ===============================
+ Calendar entry                                         Client   Workflow
+------------------------------------------------------ -------- -------------------------------
+ `Breakfast (15.02.2017 13:30) <Detail>`__                       **☐ Draft** → [☑] [☒]
+ `Absent for private reasons (16.02.2017) <Detail>`__            **☑ Took place** → [☐] [☒]
+ `Seminar (17.02.2017 10:20) <Detail>`__                         **? Suggested** → [☐] [☑] [☒]
+ `Absent for private reasons (19.02.2017) <Detail>`__            **☐ Draft** → [☑] [☒]
+ `Interview (19.02.2017 08:30) <Detail>`__                       **☒ Cancelled** → [☐] [☑]
+ `Breakfast (21.02.2017 11:10) <Detail>`__                       **☑ Took place** → [☐] [☒]
+ `Absent for private reasons (22.02.2017) <Detail>`__            **? Suggested** → [☐] [☑] [☒]
+ `Seminar (23.02.2017 09:40) <Detail>`__                         **☐ Draft** → [☑] [☒]
+ `Interview (25.02.2017 13:30) <Detail>`__                       **? Suggested** → [☐] [☑] [☒]
+ `Breakfast (27.02.2017 10:20) <Detail>`__                       **☒ Cancelled** → [☐] [☑]
+ `Seminar (01.03.2017 08:30) <Detail>`__                         **☑ Took place** → [☐] [☒]
+ `Interview (03.03.2017 11:10) <Detail>`__                       **☐ Draft** → [☑] [☒]
+ `Breakfast (05.03.2017 09:40) <Detail>`__                       **? Suggested** → [☐] [☑] [☒]
+ `Seminar (07.03.2017 13:30) <Detail>`__                         **☒ Cancelled** → [☐] [☑]
+====================================================== ======== ===============================
 <BLANKLINE>
 ---------------------------------------------------------------
 My overdue appointments **New** `⏏ <My overdue appointments>`__
@@ -112,13 +115,13 @@ My unconfirmed appointments **New** `⏏ <My unconfirmed appointments>`__
 Daily planner `⏏ <Daily planner>`__
 -----------------------------------
 <BLANKLINE>
-============ ========== ==================================================
- Time range   External   Internal
------------- ---------- --------------------------------------------------
- *All day*
+============ ============================================================== ==================================================
+ Time range   External                                                       Internal
+------------ -------------------------------------------------------------- --------------------------------------------------
+ *All day*    `Rolf Rompen Absent for private reasons Absences <Detail>`__
  *AM*
- *PM*                    `13:30 Robin Rood Breakfast Internal <Detail>`__
-============ ========== ==================================================
+ *PM*                                                                        `13:30 Robin Rood Breakfast Internal <Detail>`__
+============ ============================================================== ==================================================
 <BLANKLINE>
 ---------------------------------------------------------------
 My Notification messages **✓** `⏏ <My Notification messages>`__

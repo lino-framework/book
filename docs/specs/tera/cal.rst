@@ -5,16 +5,21 @@
 Calendar in Lino Tera
 =====================
 
-.. doctest init
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.lydia.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> from django.db import models
-
-
 This document describes the :mod:`lino_tera.lib.cal` plugin which extends
 :mod:`lino_xl.lib.cal` for Tera.
+
+
+.. contents::
+   :local:
+   :depth: 2
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.doctests')
+>>> from lino.api.doctest import *
+>>> from django.db import models
+
 
 .. currentmodule:: lino_tera.lib.cal
 
@@ -121,6 +126,7 @@ Calendar entry types
 =========== ======================== ================== ======================== ================ ============= ===================== =================
  Reference   Designation              Designation (de)   Designation (fr)         Planner column   Appointment   Automatic presences   Locks all rooms
 ----------- ------------------------ ------------------ ------------------------ ---------------- ------------- --------------------- -----------------
+             Absences                 Absences           Absences                 External         Yes           No                    No
              Group meeting            Gruppengespräch    Group meeting                             Yes           No                    No
              Holidays                 Feiertage          Jours fériés             External         No            No                    Yes
              Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                   No
@@ -135,13 +141,13 @@ Daily planner
 =============
 
 >>> rt.show(cal.DailyPlanner)
-============ ========== =======================================
- Time range   External   Internal
------------- ---------- ---------------------------------------
- *All day*
+============ =================================================== =======================================
+ Time range   External                                            Internal
+------------ --------------------------------------------------- ---------------------------------------
+ *All day*    *Rolf Rompen Absent for private reasons Absences*
  *AM*
- *PM*                    *13:30 Robin Rood Breakfast Internal*
-============ ========== =======================================
+ *PM*                                                             *13:30 Robin Rood Breakfast Internal*
+============ =================================================== =======================================
 <BLANKLINE>
 
 
@@ -162,13 +168,13 @@ No data to display
 Daily planner `⏏ <Daily planner>`__
 -----------------------------------
 <BLANKLINE>
-============ ========== ==================================================
- Time range   External   Internal
------------- ---------- --------------------------------------------------
- *All day*
+============ ============================================================== ==================================================
+ Time range   External                                                       Internal
+------------ -------------------------------------------------------------- --------------------------------------------------
+ *All day*    `Rolf Rompen Absent for private reasons Absences <Detail>`__
  *AM*
- *PM*                    `13:30 Robin Rood Breakfast Internal <Detail>`__
-============ ========== ==================================================
+ *PM*                                                                        `13:30 Robin Rood Breakfast Internal <Detail>`__
+============ ============================================================== ==================================================
 <BLANKLINE>
 
 

@@ -47,9 +47,9 @@ The database models
  bevats.Declaration          bevats.Declarations            28        3
  cal.Calendar                cal.Calendars                  6         1
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
- cal.Event                   cal.OneEvent                   25        353
+ cal.Event                   cal.OneEvent                   25        363
  cal.EventPolicy             cal.EventPolicies              19        6
- cal.EventType               cal.EventTypes                 22        5
+ cal.EventType               cal.EventTypes                 23        6
  cal.Guest                   cal.Guests                     7         280
  cal.GuestRole               cal.GuestRoles                 6         2
  cal.RecurrentEvent          cal.RecurrentEvents            21        15
@@ -117,7 +117,7 @@ The database models
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         1
+ sessions.Session            sessions.SessionTable          3         ...
  sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25

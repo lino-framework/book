@@ -336,7 +336,9 @@ application-specific behaviour and rules.
 
     .. attribute:: max_days
 
-        The maximal number of days allowed as duration.
+        The maximal number of days allowed as duration. 0 means no limit.
+
+        If this is 1, Lino will set :attr:`end_date` to `None`.
 
         See also :class:`LongEntryChecker`
 
@@ -355,7 +357,7 @@ application-specific behaviour and rules.
 
     .. attribute:: force_guest_states
 
-        Whether guest states should be forced to those defined by the
+        Whether presence states should be forced to those defined by the
         entry state.
 
         This will have an effect only if the application programmer
@@ -369,6 +371,12 @@ application-specific behaviour and rules.
         sets all guests to "Present".  See :doc:`tera/cal` for a usage
         example.
 
+    .. attribute:: fill_presences
+
+        Whether presences should be automatically filled for entries of this
+        type.
+
+
 .. class:: EventTypes
 
     The list of entry types defined on this site.
@@ -379,6 +387,7 @@ application-specific behaviour and rules.
     =========== =============== ================== ================== ================ ============= ===================== =================
      Reference   Designation     Designation (de)   Designation (fr)   Planner column   Appointment   Automatic presences   Locks all rooms
     ----------- --------------- ------------------ ------------------ ---------------- ------------- --------------------- -----------------
+                 Absences        Absences           Absences           External         Yes           No                    No
                  First contact   First contact      First contact                       Yes           No                    No
                  Holidays        Feiertage          Jours fériés       External         No            No                    Yes
                  Internal        Intern             Interne            Internal         Yes           No                    No
@@ -413,14 +422,15 @@ The daily planner
 The daily planner is a table that shows an overview on all events of a day.
 
 >>> rt.show(cal.DailyPlanner)
-============ ========== =======================================
- Time range   External   Internal
------------- ---------- ---------------------------------------
- *All day*
+============ =================================================== =======================================
+ Time range   External                                            Internal
+------------ --------------------------------------------------- ---------------------------------------
+ *All day*    *Rolf Rompen Absent for private reasons Absences*
  *AM*
- *PM*                    *13:30 Robin Rood Breakfast Internal*
-============ ========== =======================================
+ *PM*                                                             *13:30 Robin Rood Breakfast Internal*
+============ =================================================== =======================================
 <BLANKLINE>
+
 
 .. class:: DailyPlanner
 
@@ -474,26 +484,26 @@ A default configuration has two columns in the daily planner:
     ===========
     Tagesplaner
     ===========
-    =============== ======== =====================================
-     Zeitabschnitt   Extern   Intern
-    --------------- -------- -------------------------------------
-     *Ganztags*
+    =============== =================================================== =====================================
+     Zeitabschnitt   Extern                                              Intern
+    --------------- --------------------------------------------------- -------------------------------------
+     *Ganztags*      *Rolf Rompen Absent for private reasons Absences*
      *Vormittags*
-     *Nachmittags*            *13:30 Robin Rood Breakfast Intern*
-    =============== ======== =====================================
+     *Nachmittags*                                                       *13:30 Robin Rood Breakfast Intern*
+    =============== =================================================== =====================================
     <BLANKLINE>
-   
+
     >>> rt.show(cal.DailyPlanner, language="fr", header_level=1)
     =======================
     Planificateur quotidien
     =======================
-    =================== ========= ======================================
-     Time range          Externe   Interne
-    ------------------- --------- --------------------------------------
-     *Journée entière*
+    =================== =================================================== ======================================
+     Time range          Externe                                             Interne
+    ------------------- --------------------------------------------------- --------------------------------------
+     *Journée entière*   *Rolf Rompen Absent for private reasons Absences*
      *Avant-midi*
-     *Après-midi*                  *13:30 Robin Rood Breakfast Interne*
-    =================== ========= ======================================
+     *Après-midi*                                                            *13:30 Robin Rood Breakfast Interne*
+    =================== =================================================== ======================================
     <BLANKLINE>
 
     >>> print(cal.Event.update_guests.help_text)
@@ -776,13 +786,15 @@ Every 2nd month
 ==== =============== ================== ==================
  ID   Designation     Designation (de)   Designation (fr)
 ---- --------------- ------------------ ------------------
- 4    First contact   First contact      First contact
- 1    Holidays        Feiertage          Jours fériés
- 3    Internal        Intern             Interne
- 5    Lesson          Lesson             Lesson
- 2    Meeting         Versammlung        Réunion
+ 1    Absences        Absences           Absences
+ 5    First contact   First contact      First contact
+ 2    Holidays        Feiertage          Jours fériés
+ 4    Internal        Intern             Interne
+ 6    Lesson          Lesson             Lesson
+ 3    Meeting         Versammlung        Réunion
 ==== =============== ================== ==================
 <BLANKLINE>
+
 
 >>> obj.event_type = cal.EventType.objects.get(id=1)
 >>> obj.max_events = 5
@@ -864,8 +876,10 @@ Transparent events
 
 The entry type "Internal" is marked "transparent".
 
->>> internal = cal.EventType.objects.get(id=3)
->>> internal.transparent
+>>> obj = cal.EventType.objects.get(id=4)
+>>> obj
+EventType #4 ('Internal')
+>>> obj.transparent
 True
 
 
@@ -1141,6 +1155,32 @@ Miscellaneous
         An appointment is an event whose *event type* has
         :attr:`appointment <EventType.appointment>` checked.
 
+    .. attribute:: presence_guest
+
+        Show only entries that have a presence for the specified guest.
+
+    .. attribute:: project
+
+        Show only entries assigned to this project, where project is defined by
+        :attr:`lino.core.site.Site.project_model`.
+
+    .. attribute:: assigned_to
+
+        Show only entries assigned to this user.
+
+    .. attribute:: observed_event
+
+    .. attribute:: event_type
+
+        Show only entries having this type.
+
+    .. attribute:: state
+
+        Show only entries having this state.
+
+    .. attribute:: user
+
+        Show only entries having this user as author.
 
 .. class:: ConflictingEvents
 

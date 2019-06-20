@@ -134,7 +134,7 @@ Adding a local moving feast
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
-   161
+   171
 
 We can add our own local custom holidays which depend on easter.
 
@@ -163,8 +163,8 @@ Reached upper date limit 2019-10-23 for 4
    been prepared under Py2 or Py3
 
 >>> wanted[1]  #doctest: +ELLIPSIS
-Event(start_date=2016-02-09,owner_type=...,summary='Karneval in Kettenis',auto_type=1,priority=<Priorities.normal:30>,event_type=1,state=<EntryStates.suggested:10>)
+Event(start_date=2016-02-09,owner_type=...,summary='Karneval in Kettenis',auto_type=1,priority=<Priorities.normal:30>,event_type=2,state=<EntryStates.suggested:10>)
 
 .. verify that no events have actually been saved:
    >>> cal.Event.objects.count()
-   161
+   171

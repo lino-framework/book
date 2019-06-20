@@ -112,8 +112,8 @@ plugins:
 
 - :mod:`lino_xl.lib.households` adds some household member roles.
 
-- :mod:`lino_xl.lib.cal` installs standard values for :mod:`lino_xl.lib.cal`, including a
-  demo set of holidays.  (TODO: make them more configurable.)
+- :mod:`lino_xl.lib.cal` installs standard calendar entry types, including a
+  set of holidays.  (TODO: make them more configurable.)
   The default value of
   :attr:`lino.modlib.system.SiteConfig.hide_events_before` is set to
   January 1st (of the current year when demo_date is after April and of
@@ -247,7 +247,7 @@ Add final demo data.
   creates some accounting reports (one per year).
 
 - :mod:`lino_xl.lib.cal`
-  generates 60 fictive calendar entries.
+  generates 60 fictive appointments and 10 absences "for private reasons".
 
 - :mod:`lino_xl.lib.phones`
   runs :meth:`propagate_contact_details` for each partner.

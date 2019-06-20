@@ -74,14 +74,15 @@ System --> Data problems` to see them.
 
 >>> rt.show(checkdata.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= ======================================= =========================================================== ========================================
-Responsible       Database object                         Message                                                     Checker
------------------ --------------------------------------- ----------------------------------------------------------- ----------------------------------------
-Robin Rood        *All Souls' Day (31.10.2014)*           Event conflicts with Petit-déjeuner (31.10.2014 10:20).     Check for conflicting calendar entries
-Robin Rood        *Armistice with Germany (11.11.2014)*   Event conflicts with Seminar (11.11.2014 11:10).            Check for conflicting calendar entries
-Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*     Event conflicts with All Souls' Day (31.10.2014).           Check for conflicting calendar entries
-Robin Rood        *Seminar (11.11.2014 11:10)*            Event conflicts with Armistice with Germany (11.11.2014).   Check for conflicting calendar entries
-================= ======================================= =========================================================== ========================================
+================= ======================================= =============================================================== ========================================
+ Responsible       Database object                         Message                                                         Checker
+----------------- --------------------------------------- --------------------------------------------------------------- ----------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*           Event conflicts with 3 other events.                            Check for conflicting calendar entries
+ Robin Rood        *All Saints' Day (01.11.2014)*          Event conflicts with Absent for private reasons (30.10.2014).   Check for conflicting calendar entries
+ Robin Rood        *Armistice with Germany (11.11.2014)*   Event conflicts with Seminar (11.11.2014 11:10).                Check for conflicting calendar entries
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*     Event conflicts with All Souls' Day (31.10.2014).               Check for conflicting calendar entries
+ Robin Rood        *Seminar (11.11.2014 11:10)*            Event conflicts with Armistice with Germany (11.11.2014).       Check for conflicting calendar entries
+================= ======================================= =============================================================== ========================================
 <BLANKLINE>
 
 
@@ -97,15 +98,17 @@ of selecting the :class:`ConflictingEventsChecker
 >>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(checkdata.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ======================================= ===========================================================
-Responsible       Database object                         Message
------------------ --------------------------------------- -----------------------------------------------------------
-Robin Rood        *All Souls' Day (31.10.2014)*           Event conflicts with Petit-déjeuner (31.10.2014 10:20).
-Robin Rood        *Armistice with Germany (11.11.2014)*   Event conflicts with Seminar (11.11.2014 11:10).
-Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*     Event conflicts with All Souls' Day (31.10.2014).
-Robin Rood        *Seminar (11.11.2014 11:10)*            Event conflicts with Armistice with Germany (11.11.2014).
-================= ======================================= ===========================================================
+================= ======================================= ===============================================================
+ Responsible       Database object                         Message
+----------------- --------------------------------------- ---------------------------------------------------------------
+ Robin Rood        *All Souls' Day (31.10.2014)*           Event conflicts with 3 other events.
+ Robin Rood        *All Saints' Day (01.11.2014)*          Event conflicts with Absent for private reasons (30.10.2014).
+ Robin Rood        *Armistice with Germany (11.11.2014)*   Event conflicts with Seminar (11.11.2014 11:10).
+ Romain Raffault   *Petit-déjeuner (31.10.2014 10:20)*     Event conflicts with All Souls' Day (31.10.2014).
+ Robin Rood        *Seminar (11.11.2014 11:10)*            Event conflicts with Armistice with Germany (11.11.2014).
+================= ======================================= ===============================================================
 <BLANKLINE>
+
 
 See also :doc:`cal` and :doc:`holidays`.
 
@@ -117,8 +120,8 @@ The :mod:`lino.modlib.checkdata` module provides a Django admin
 command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
-Found 4 and fixed 0 data problems in Calendar entries.
-Done 5 checkers, found 4 and fixed 0 problems.
+Found 5 and fixed 0 data problems in Calendar entries.
+Done 5 checkers, found 5 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -143,8 +146,8 @@ line using::
 
 
 >>> call_command('checkdata', 'cal.')
-Found 4 and fixed 0 data problems in Calendar entries.
-Done 1 checkers, found 4 and fixed 0 problems.
+Found 5 and fixed 0 data problems in Calendar entries.
+Done 1 checkers, found 5 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):

@@ -49,7 +49,7 @@ The database models
  cal.DailyPlannerRow                cal.DailyPlannerRows             7         3
  cal.Event                          cal.OneEvent                     26        113
  cal.EventPolicy                    cal.EventPolicies                19        6
- cal.EventType                      cal.EventTypes                   22        3
+ cal.EventType                      cal.EventTypes                   23        4
  cal.Guest                          cal.Guests                       6         0
  cal.GuestRole                      cal.GuestRoles                   5         0
  cal.RecurrentEvent                 cal.RecurrentEvents              21        15
@@ -83,7 +83,7 @@ The database models
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         0
  notify.Message                     notify.Messages                  11        7
- sessions.Session                   sessions.SessionTable            3         1
+ sessions.Session                   sessions.SessionTable            3         ...
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0

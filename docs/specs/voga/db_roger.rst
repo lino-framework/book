@@ -1,4 +1,4 @@
-.. dt docs/specs/voga/db_roger.rst
+.. doctest docs/specs/voga/db_roger.rst
 .. _voga.specs.db_roger:
 
 ===============================
@@ -26,9 +26,9 @@ The database structure
  bevats.Declaration         bevats.Declarations            28        15
  cal.Calendar               cal.Calendars                  6         8
  cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
- cal.Event                  cal.OneEvent                   23        1161
+ cal.Event                  cal.OneEvent                   23        1171
  cal.EventPolicy            cal.EventPolicies              19        6
- cal.EventType              cal.EventTypes                 22        9
+ cal.EventType              cal.EventTypes                 23        10
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 5         3
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
@@ -37,7 +37,7 @@ The database structure
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         20
+ checkdata.Problem          checkdata.Problems             6         21
  contacts.Company           contacts.Companies             26        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              24        103
@@ -57,7 +57,7 @@ The database structure
  courses.Teacher            courses.Teachers               43        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
- excerpts.Excerpt           excerpts.Excerpts              11        0
+ excerpts.Excerpt           excerpts.Excerpts              11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        142
@@ -97,7 +97,7 @@ The database structure
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 27        97
  sepa.Account               sepa.Accounts                  6         26
- sessions.Session           sessions.SessionTable          3         1
+ sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0
  uploads.UploadType         uploads.UploadTypes            8         0
