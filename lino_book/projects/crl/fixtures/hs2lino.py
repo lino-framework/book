@@ -118,7 +118,7 @@ def ADR_id(cIdAdr):
     #~ assert [cIdAdr:-3] == '000'
     try:
         return 199000 + int(cIdAdr)
-    except ValueError, e:
+    except ValueError as e:
         return None
 
 

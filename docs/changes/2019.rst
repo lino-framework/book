@@ -33,7 +33,10 @@ invoice_recipient>])" when opening the detail of a client in presto.
 
 Released Lino 19.6.2 to PyPI.
 
-Fixed a bug in lino.core.model.Model.failure
+Fixed a bug in lino.core.model.Model which caused a failure of tst suites
+
+Added a new data checker :class:`lino.modlib.system.BleachChecker`.
+
 
 
 2019-06-20

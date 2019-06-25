@@ -281,6 +281,7 @@ Clients
  dupable.DupableChecker            Check for missing phonetic words
  dupable.SimilarObjectsChecker     Check for similar objects
  printing.CachedPrintableChecker   Check for missing target files
+ system.BleachChecker              Find unbleached html content
 ================================= ========================================
 <BLANKLINE>
     

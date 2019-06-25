@@ -56,6 +56,7 @@ checkers.
  countries.PlaceChecker            Check data of geographical places.
  mixins.DupableChecker             Check for missing phonetic words
  printing.CachedPrintableChecker   Check for missing target files
+ system.BleachChecker              Find unbleached html content
 ================================= ==================================================
 <BLANKLINE>
 
@@ -121,7 +122,7 @@ command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
 Found 5 and fixed 0 data problems in Calendar entries.
-Done 5 checkers, found 5 and fixed 0 problems.
+Done 6 checkers, found 5 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -141,6 +142,7 @@ line using::
  countries.PlaceChecker            Check data of geographical places.
  mixins.DupableChecker             Check for missing phonetic words
  printing.CachedPrintableChecker   Check for missing target files
+ system.BleachChecker              Find unbleached html content
 ================================= ==================================================
 <BLANKLINE>
 

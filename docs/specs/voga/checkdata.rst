@@ -43,6 +43,7 @@ checkers.
  ledger.VoucherChecker               Check integrity of ledger vouchers
  printing.CachedPrintableChecker     Check for missing target files
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
+ system.BleachChecker                Find unbleached html content
  vat.VatColumnsChecker               Check VAT columns configuration.
 =================================== ===============================================
 <BLANKLINE>
