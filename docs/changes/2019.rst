@@ -13,6 +13,16 @@
 .. contents::
   :local:
 
+2019-06-25
+==========
+
+Added a new table :class:`lino_xl.lib.cal.EntriesByGuest` for :ticket:`3090`.
+
+New method :meth:`lino.core.dbtables.Table.after_create_instance`.
+
+Lino now supports a slave table whose
+:attr:`lino.core.actors.Actor.master_key` is a remote field.
+
 2019-06-20
 ==========
 

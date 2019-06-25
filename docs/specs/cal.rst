@@ -1263,7 +1263,7 @@ Miscellaneous
     The default table of presences.
            
 .. class:: GuestsByEvent
-.. class:: GuestsByPartner
+
 .. class:: GuestsByRole
 .. class:: MyPresences
            
@@ -1307,7 +1307,27 @@ Miscellaneous
     
         Usage examples see :ref:`book.specs.cal`.
 
-           
+
+
+.. class:: GuestsByPartner
+
+    Show the calendar entries having this partner as a guest.
+
+    This might get deprecated some day.  You probably prefer :class:`EntriesByGuest`.
+
+
+.. class:: EntriesByGuest
+
+    Show the calendar entries having this partner as a guest.
+
+    Similar to :class:`GuestsByPartner`, but EntriesByGuest can be used to
+    create a new calendar entry.  It also makes sure that the new entry has at
+    least one guest, namely the partner who is the master. Because otherwise,
+    if the user creates an entry and forgets to manually add our master as a
+    guest, they would not see the new entry.
+
+
+
 .. class:: Reservation
 
     Base class for :class:`lino_xl.lib.rooms.models.Booking` and
