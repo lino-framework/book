@@ -23,6 +23,8 @@ New method :meth:`lino.core.dbtables.Table.after_create_instance`.
 Lino now supports a slave table whose
 :attr:`lino.core.actors.Actor.master_key` is a remote field.
 
+Released Lino 19.6.1 and XL 19.6.0 to PyPI.
+
 2019-06-20
 ==========
 
