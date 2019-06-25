@@ -140,6 +140,7 @@ Each window is **viewable** for a given set of user types.
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
 - cal.DailyView.detail : visible for user secretary staff admin
+- cal.EntriesByGuest.insert : visible for teacher user coordinator secretary staff admin
 - cal.EntriesByProject.insert : visible for teacher user coordinator secretary staff admin
 - cal.EventTypes.detail : visible for staff admin
 - cal.EventTypes.insert : visible for staff admin
