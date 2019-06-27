@@ -13,7 +13,7 @@
 .. contents::
   :local:
 
-2019-06-26
+2019-06-27
 ==========
 
 Some general optimizations for :ticket:`3091`: Layout of
@@ -35,6 +35,10 @@ True.  Added ``<div>`` to the default value of
 :attr:`lino.core.site.Site.bleach_allowed_tags`.
 
 Released Lino 19.6.3 and XL 19.6.1 to PyPI.
+
+Added the notion of "suggesters" to the memo parser.  See
+:doc:`/specs/noi/memo` for examples.  This will be used by the react front-end
+to configure auto-completion suggestions (:ticket:`3041`).
 
 
 2019-06-25

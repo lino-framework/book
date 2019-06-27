@@ -207,4 +207,30 @@ Let's also check whether the produced text is valid:
 <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a> (Föö fails to bar when baz)
 
 
-      
+Suggesters
+==========
+
+There are two suggesters in :ref:`noi`:  when the user types a "#", they get a
+list of tickets. When they type a "@", they get a list with all users.
+
+Every site instance has its global memo parser:
+
+>>> mp = settings.SITE.kernel.memo_parser
+
+>>> mp.suggesters.keys()
+dict_keys(['@', '#'])
+
+>>> len(list(mp.suggesters['#'].get_suggestions()))
+116
+
+>>> list(mp.suggesters['#'].get_suggestions("12"))
+[(12, '#12 (⚒ Foo cannot bar)')]
+
+>>> list(mp.suggesters['#'].get_suggestions("why"))
+[(20, '#20 (⚒ Why is foo so bar)'), (29, '#29 (☾ Why is foo so bar)'), (38, '#38 (☐ Why is foo so bar)'), (47, '#47 (☑ Why is foo so bar)'), (56, '#56 (☒ Why is foo so bar)'), (65, '#65 (⛶ Why is foo so bar)'), (74, '#74 (☎ Why is foo so bar)'), (83, '#83 (☉ Why is foo so bar)'), (92, '#92 (⚒ Why is foo so bar)'), (101, '#101 (☾ Why is foo so bar)'), (110, '#110 (☐ Why is foo so bar)')]
+
+>>> list(mp.suggesters['@'].get_suggestions(""))
+[('jean', 'Jean'), ('luc', 'Luc'), ('marc', 'Marc'), ('mathieu', 'Mathieu'), ('robin', 'Robin Rood'), ('rolf', 'Rolf Rompen'), ('romain', 'Romain Raffault')]
+
+>>> list(mp.suggesters['@'].get_suggestions("ma"))
+[('marc', 'Marc'), ('mathieu', 'Mathieu'), ('romain', 'Romain Raffault')]
