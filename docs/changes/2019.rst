@@ -13,6 +13,16 @@
 .. contents::
   :local:
 
+2019-06-28
+==========
+
+Fixed :ticket:`861`. Lino now automatically rebuilds the JavaScript files
+(:xfile:`linoweb.js`) when a :class:`lino_xl.lib.ledger.Journal` has been
+modified using the web interface.  This is needed so that changes become
+visible in the menu.  Note that you still need to reload the browser page in
+order to actually refresh the menu.
+
+
 2019-06-27
 ==========
 
