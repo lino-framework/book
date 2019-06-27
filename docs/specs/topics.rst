@@ -72,10 +72,31 @@ Database models
     Django model representing a *topic*.
     
     .. attribute:: ref
+
+        The reference.
+
+        See :attr:`lino.mixins.ref.StructuredReferrable.ref`
+
     .. attribute:: name
+
+        The designation in different languages.
+
+    .. attribute:: description_text
+
+        Rich text field for a longer multi-line description.
+
     .. attribute:: description
+
+        Virtual field which includes the formatted structured reference and the
+        :attr:`description_text`.
+
+        See :attr:`lino.mixins.ref.StructuredReferrable.description`
+
     .. attribute:: topic_group
-    
+
+        Deprecated. Don't use.
+
+
 .. class:: Topics
 .. class:: AllTopics
 .. class:: TopicsByGroup
@@ -112,5 +133,6 @@ Because :class:`Topic` defines a database field :attr:`Topic.description` the
 virtual field :attr:`lino.core.model.Model.description` is hidden:
 
 >>> sorted(rt.models.topics.Topic._meta.private_fields, key=lambda f: str(f))
-[lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
+[lino_xl.lib.topics.models.Topic.description, lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
+
 

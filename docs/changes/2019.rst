@@ -13,6 +13,28 @@
 .. contents::
   :local:
 
+2019-06-26
+==========
+
+Some general optimizations for :ticket:`3091`: Layout of
+:class:`lino_xl.lib.cal.EntriesByProject` and
+:class:`lino_xl.lib.orders.EnrolmentsByWorker`. Some German translations and ui
+labels.
+
+Lino now checks for a database field hiding a previously virtual field of same
+name and raises a ChangedAPI exception when this happens. Added a demo project
+and a documentation page which tests it: :ref:`dev.ovfields`.
+
+The field :class:`lino_xl.lib.topics.Topic.description` was an example of above
+pitfall and has been renamed to
+:class:`lino_xl.lib.topics.Topic.description_text`.  This change requires a
+database migration.
+
+Changed the default value for :attr:`lino.core.site.Site.textfield_bleached` to
+True.  Added ``<div>`` to the default value of
+:attr:`lino.core.site.Site.bleach_allowed_tags`.
+
+
 2019-06-25
 ==========
 

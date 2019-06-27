@@ -273,6 +273,7 @@ lino_book.projects.sendchanges
 lino_book.projects.tables
 lino_book.projects.tables.fixtures
 lino_book.projects.vtables
+lino_book.projects.vfields
 lino_book.projects.edmund
 lino_book.projects.edmund.settings
 lino_book.projects.edmund.settings.fixtures

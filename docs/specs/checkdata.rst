@@ -122,7 +122,7 @@ command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
 Found 5 and fixed 0 data problems in Calendar entries.
-Done 6 checkers, found 5 and fixed 0 problems.
+Done 18 checks, found 5 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -149,7 +149,7 @@ line using::
 
 >>> call_command('checkdata', 'cal.')
 Found 5 and fixed 0 data problems in Calendar entries.
-Done 1 checkers, found 5 and fixed 0 problems.
+Done 1 check, found 5 and fixed 0 problems.
 
 >>> call_command('checkdata', 'foo')
 Traceback (most recent call last):
