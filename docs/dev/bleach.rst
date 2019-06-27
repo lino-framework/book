@@ -90,7 +90,7 @@ You can configure locally which HTML tags are allowed by changing the
 attribute.
 
 >>> rmu(settings.SITE.bleach_allowed_tags)
-['a', 'b', 'i', 'em', 'ul', 'ol', 'li', 'strong', 'p', 'br', 'span', 'pre', 'def', 'table', 'th', 'tr', 'td', 'thead', 'tfoot', 'tbody']
+['a', 'b', 'i', 'em', 'ul', 'ol', 'li', 'strong', 'p', 'br', 'span', 'pre', 'def', 'div', 'table', 'th', 'tr', 'td', 'thead', 'tfoot', 'tbody']
 
 
 How to bleach existing unbleached data

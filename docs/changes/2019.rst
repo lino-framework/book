@@ -34,6 +34,8 @@ Changed the default value for :attr:`lino.core.site.Site.textfield_bleached` to
 True.  Added ``<div>`` to the default value of
 :attr:`lino.core.site.Site.bleach_allowed_tags`.
 
+Released Lino 19.6.3 and XL 19.6.1 to PyPI.
+
 
 2019-06-25
 ==========
