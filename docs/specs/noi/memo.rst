@@ -229,7 +229,7 @@ dict_keys(['@', '#'])
 >>> list(mp.suggesters['#'].get_suggestions("why"))
 [(20, '#20 (⚒ Why is foo so bar)'), (29, '#29 (☾ Why is foo so bar)'), (38, '#38 (☐ Why is foo so bar)'), (47, '#47 (☑ Why is foo so bar)'), (56, '#56 (☒ Why is foo so bar)'), (65, '#65 (⛶ Why is foo so bar)'), (74, '#74 (☎ Why is foo so bar)'), (83, '#83 (☉ Why is foo so bar)'), (92, '#92 (⚒ Why is foo so bar)'), (101, '#101 (☾ Why is foo so bar)'), (110, '#110 (☐ Why is foo so bar)')]
 
->>> list(mp.suggesters['@'].get_suggestions(""))
+>>> list(mp.suggesters['@'].get_suggestions())
 [('jean', 'Jean'), ('luc', 'Luc'), ('marc', 'Marc'), ('mathieu', 'Mathieu'), ('robin', 'Robin Rood'), ('rolf', 'Rolf Rompen'), ('romain', 'Romain Raffault')]
 
 >>> list(mp.suggesters['@'].get_suggestions("ma"))
