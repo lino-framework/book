@@ -162,7 +162,7 @@ worked that day. This is a convenient way to continue some work you
 started some days ago.
 
 .. 
-    Find the users who worked on more than one mission:
+    Find the users who worked on more than one site:
     >>> for u in users.User.objects.all():
     ...     qs = tickets.Site.objects.filter(tickets_by_site__sessions_by_ticket__user=u).distinct()
     ...     if qs.count() > 1:
