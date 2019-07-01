@@ -32,35 +32,35 @@ Journals
 
 
 >>> rt.show(ledger.Accounts)
-=========== ================================= ================================= =================================
- Reference   Designation                       Designation (de)                  Designation (fr)
------------ --------------------------------- --------------------------------- ---------------------------------
- 1000        Net income (loss)                 Net income (loss)                 Net income (loss)
- 4           Commercial assets & liabilities   Commercial assets & liabilities   Commercial assets & liabilities
- 4000        Customers                         Kunden                            Clients
- 4300        Pending Payment Orders            Offene Zahlungsaufträge           Ordres de paiement ouverts
- 4400        Suppliers                         Lieferanten                       Fournisseurs
- 4500        Employees                         Angestellte                       Employés
- 4510        VAT due                           Geschuldete Mehrwertsteuer        TVA dûe
- 4511        VAT returnable                    Rückzahlbare Mehrwertsteuer       TVA à retourner
- 4512        VAT deductible                    Abziehbare Mehrwertsteuer         TVA déductible
- 4513        VAT declared                      Deklarierte Mehrwertsteuer        TVA déclarée
- 4600        Tax Offices                       Steuerämter                       Tax Offices
- 4900        Waiting account                   Wartekonto                        Waiting account
- 5           Financial assets & liabilities    Financial assets & liabilities    Financial assets & liabilities
- 5500        BestBank                          BestBank                          BestBank
- 5700        Cash                              Kasse                             Caisse
- 6           Expenses                          Ausgaben                          Dépenses
- 60          Operation costs                   Diplome                           Operation costs
- 6010        Purchase of services              Einkäufe von Dienstleistungen     Achats de services
- 6020        Purchase of investments           Investierungskäufe                Achats d'investissement
- 6040        Purchase of goods                 Wareneinkäufe                     Achats de marchandises
- 61          Wages                             Löhne und Gehälter                Salaires
- 6300        Wages                             Löhne und Gehälter                Salaires
- 6900        Net income                        Net income                        Net income
- 7           Revenues                          Revenues                          Revenues
- 7000        Sales                             Verkauf                           Ventes
- 7310        Membership fees                   Membership fees                   Membership fees
- 7900        Net loss                          Net loss                          Net loss
-=========== ================================= ================================= =================================
+======================================= =============== =========== ===========
+ Description                             Needs partner   Clearable   Reference
+--------------------------------------- --------------- ----------- -----------
+ 1000 Net income (loss)                  Yes             Yes         1000
+ **4 Commercial assets & liabilities**   No              No          4
+ 4000 Customers                          Yes             Yes         4000
+ 4300 Pending Payment Orders             Yes             Yes         4300
+ 4400 Suppliers                          Yes             Yes         4400
+ 4500 Employees                          Yes             Yes         4500
+ 4510 VAT due                            No              No          4510
+ 4511 VAT returnable                     No              No          4511
+ 4512 VAT deductible                     No              No          4512
+ 4513 VAT declared                       No              No          4513
+ 4600 Tax Offices                        Yes             Yes         4600
+ 4900 Waiting account                    Yes             Yes         4900
+ **5 Financial assets & liabilities**    No              No          5
+ 5500 BestBank                           No              No          5500
+ 5700 Cash                               No              No          5700
+ **6 Expenses**                          No              No          6
+ ** 60 Operation costs**                 No              No          60
+ 6010 Purchase of services               No              No          6010
+ 6020 Purchase of investments            No              No          6020
+ 6040 Purchase of goods                  No              No          6040
+ ** 61 Wages**                           No              No          61
+ 6300 Wages                              No              No          6300
+ 6900 Net income                         No              No          6900
+ **7 Revenues**                          No              No          7
+ 7000 Sales                              No              No          7000
+ 7310 Membership fees                    Yes             No          7310
+ 7900 Net loss                           No              No          7900
+======================================= =============== =========== ===========
 <BLANKLINE>

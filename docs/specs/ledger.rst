@@ -1377,17 +1377,18 @@ Journal groups
     The default configuration defines the following journal groups:
 
     >>> rt.show(ledger.JournalGroups)
-    ======= =========== ===========
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+    ======= =========== ============================
      value   name        text
-    ------- ----------- -----------
+    ------- ----------- ----------------------------
      10      sales       Sales
      20      purchases   Purchases
      30      wages       Wages
      40      financial   Financial
      50      vat         VAT
-    ======= =========== ===========
+     60      misc        Miscellaneous transactions
+    ======= =========== ============================
     <BLANKLINE>
-
 
     .. attribute:: sales
 
