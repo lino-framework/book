@@ -13,12 +13,21 @@
 .. contents::
   :local:
 
+2019-07-01
+==========
+
+Reviewed the "license" field of all projects to use "BSD-2-Clause" (an `SPDX
+identifier <https://spdx.org/licenses/>`__).
+
+Released Lino 19.7.0 and XL 19.7.0 to PyPI.
+
+
 2019-06-29
 ==========
 
 New method :meth:`lino.core.actors.Actor.get_navinfo`.
 
-:class: `lino_xl.lib.cal.CalendarView` navigation now also works using the
+:class:`lino_xl.lib.cal.CalendarView` navigation now also works using the
 buttons in the toolbar.
 
 
