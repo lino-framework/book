@@ -474,6 +474,48 @@ Class reference
 .. class:: WorkedHours
 
 
+Summaries
+=========
+
+.. class:: SiteSummary
+
+    An automatically generated record with yearly summary data about a site.
+
+.. class:: SummariesBySite
+
+    Shows the summary records for a given site.
+
+.. class:: UserSummary
+
+    An automatically generated record with monthly summary data about a user.
+
+.. class:: SummariesByUser
+
+    Shows the summary records for a given user.
+
+>>> rt.show(working.SiteSummaries, exclude=dict(regular_hours=""))
+... #doctest: -REPORT_UDIFF
+==== ====== ======= ======== ================ ================== ========= ======= ======
+ ID   Year   Month   Site     Active tickets   Inactive tickets   Regular   Extra   Free
+---- ------ ------- -------- ---------------- ------------------ --------- ------- ------
+ 3    2015           welket   0                0                  11:04
+==== ====== ======= ======== ================ ================== ========= ======= ======
+<BLANKLINE>
+
+
+>>> rt.show(working.UserSummaries, exclude=dict(regular_hours=""))
+... #doctest: -REPORT_UDIFF
+===== ====== ======= ========= ========= ======= ======
+ ID    Year   Month   User      Regular   Extra   Free
+----- ------ ------- --------- --------- ------- ------
+ 29    2015   5       Jean      2:28      1:30
+ 65    2015   5       Luc       4:31      0:37
+ 137   2015   5       Mathieu   4:05      0:05    2:18
+===== ====== ======= ========= ========= ======= ======
+<BLANKLINE>
+
+
+
 Don't read me
 =============
 

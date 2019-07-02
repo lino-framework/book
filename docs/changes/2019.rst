@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-07-02
+==========
+
+In :mod:`lino_xl.working` we have a new model
+:class:`lino_xl.working.UserSummary`.  Similar to SiteSummary, but per user
+instead of per site and monthly instead of yearly.
+
 2019-07-01
 ==========
 
