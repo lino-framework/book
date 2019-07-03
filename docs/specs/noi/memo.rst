@@ -236,3 +236,9 @@ A suggester always returns a maximum of 5 suggestions:
 
 >>> list(mp.suggesters['@'].get_suggestions("ma"))
 [('marc', 'Marc'), ('mathieu', 'Mathieu'), ('romain', 'Romain Raffault')]
+
+>>> mp.suggesters['#'].get_object("1")
+Ticket #1 ('#1 (⛶ Föö fails to bar when baz)')
+
+>>> mp.parse("#1")
+'<a href="Detail">#1 (&#9974; F&#246;&#246; fails to bar when baz)</a>'
