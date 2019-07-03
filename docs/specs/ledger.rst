@@ -514,17 +514,18 @@ A **journal** is a named sequence of numbered *vouchers*.
 >>> ses.show(ledger.Journals,
 ...     column_names="ref name trade_type account dc")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=========== ========================= =============================== ===================== =============================== ===========================
- Reference   Designation               Designation (en)                Trade type            Account                         Primary booking direction
------------ ------------------------- ------------------------------- --------------------- ------------------------------- ---------------------------
- SLS         Factures vente            Sales invoices                  Sales                                                 Credit
- SLC         Sales credit notes        Sales credit notes              Sales                                                 Debit
- PRC         Factures achat            Purchase invoices               Purchases                                             Debit
- PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders   (4300) Pending Payment Orders   Debit
- CSH         Caisse                    Cash                                                  (5700) Cash                     Credit
- BNK         Bestbank                  Bestbank                                              (5500) BestBank                 Credit
- MSC         Opérations diverses       Miscellaneous Journal Entries                         (5700) Cash                     Credit
-=========== ========================= =============================== ===================== =============================== ===========================
+=========== ============================ ============================ ===================== =============================== ===========================
+ Reference   Designation                  Designation (en)             Trade type            Account                         Primary booking direction
+----------- ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
+ SLS         Factures vente               Sales invoices               Sales                                                 Credit
+ SLC         Sales credit notes           Sales credit notes           Sales                                                 Debit
+ PRC         Factures achat               Purchase invoices            Purchases                                             Debit
+ PMO         Bestbank Payment Orders      Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
+ CSH         Caisse                       Cash                                               (5700) Cash                     Credit
+ BNK         Bestbank                     Bestbank                                           (5500) BestBank                 Credit
+ MSC         Miscellaneous transactions   Miscellaneous transactions                         (5700) Cash                     Credit
+ SAL         Salaries                     Salaries                                           (5700) Cash                     Credit
+=========== ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
 
            
@@ -1013,9 +1014,9 @@ A **match rule** specifies that a movement into given account can be
 
 >>> ses.show(ledger.MatchRules)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-==== ================== =====================================
+==== ================== ==================================
  ID   Account            Journal
----- ------------------ -------------------------------------
+---- ------------------ ----------------------------------
  1    (4000) Customers   Sales invoices (SLS)
  2    (4000) Customers   Sales credit notes (SLC)
  3    (4400) Suppliers   Purchase invoices (PRC)
@@ -1028,10 +1029,13 @@ A **match rule** specifies that a movement into given account can be
  10   (4000) Customers   Bestbank (BNK)
  11   (4400) Suppliers   Bestbank (BNK)
  12   (6300) Wages       Bestbank (BNK)
- 13   (4000) Customers   Miscellaneous Journal Entries (MSC)
- 14   (4400) Suppliers   Miscellaneous Journal Entries (MSC)
- 15   (6300) Wages       Miscellaneous Journal Entries (MSC)
-==== ================== =====================================
+ 13   (4000) Customers   Miscellaneous transactions (MSC)
+ 14   (4400) Suppliers   Miscellaneous transactions (MSC)
+ 15   (6300) Wages       Miscellaneous transactions (MSC)
+ 16   (4000) Customers   Salaries (SAL)
+ 17   (4400) Suppliers   Salaries (SAL)
+ 18   (6300) Wages       Salaries (SAL)
+==== ================== ==================================
 <BLANKLINE>
 
 For example a payment order can be used to clear an open suppliers

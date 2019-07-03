@@ -98,9 +98,9 @@ The database models
  ledger.Account              ledger.Accounts                20        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
- ledger.Journal              ledger.Journals                24        8
+ ledger.Journal              ledger.Journals                24        9
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
- ledger.MatchRule            ledger.MatchRules              3         16
+ ledger.MatchRule            ledger.MatchRules              3         19
  ledger.Movement             ledger.Movements               13        930
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         256

@@ -51,8 +51,10 @@ Robin is the system administrator, he has a complete menu:
 - Sales : Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
-  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
+  - Wages : Salaries (SAL)
+  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
+  - Miscellaneous transactions : Miscellaneous transactions (MSC)
 - Reports :
   - Sales : Due invoices, Sales invoice journal
   - Accounting : Accounting Report, Debtors, Creditors

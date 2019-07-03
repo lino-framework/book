@@ -207,17 +207,18 @@ The sales journal
 =================
 
 >>> rt.show('ledger.Journals', column_names="ref name trade_type")
-=========== ========================= =============================== =====================
- Reference   Designation               Designation (en)                Trade type
------------ ------------------------- ------------------------------- ---------------------
- SLS         Factures vente            Sales invoices                  Sales
- SLC         Sales credit notes        Sales credit notes              Sales
- PRC         Factures achat            Purchase invoices               Purchases
- PMO         Bestbank Payment Orders   Bestbank Payment Orders         Bank payment orders
- CSH         Caisse                    Cash
- BNK         Bestbank                  Bestbank
- MSC         Opérations diverses       Miscellaneous Journal Entries
-=========== ========================= =============================== =====================
+=========== ============================ ============================ =====================
+ Reference   Designation                  Designation (en)             Trade type
+----------- ---------------------------- ---------------------------- ---------------------
+ SLS         Factures vente               Sales invoices               Sales
+ SLC         Sales credit notes           Sales credit notes           Sales
+ PRC         Factures achat               Purchase invoices            Purchases
+ PMO         Bestbank Payment Orders      Bestbank Payment Orders      Bank payment orders
+ CSH         Caisse                       Cash
+ BNK         Bestbank                     Bestbank
+ MSC         Miscellaneous transactions   Miscellaneous transactions
+ SAL         Salaries                     Salaries
+=========== ============================ ============================ =====================
 <BLANKLINE>
 
 
@@ -312,8 +313,9 @@ The sales journal
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> # res.content
 >>> r = check_json_result(res, "navinfo data disable_delete id param_values title")
->>> print(r['title'])
-Sales invoices (SLS) » SLS 20/2016
+>>> print(r['title']) #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+<a ...>Sales invoices (SLS)</a> » SLS 20/2016
+
 
 
 IllegalText: The <text:section> element does not allow text

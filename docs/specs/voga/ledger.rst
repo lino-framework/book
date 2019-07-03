@@ -16,18 +16,19 @@ Journals
 
 >>> ses = settings.SITE.login('robin')
 >>> ses.show(ledger.Journals, column_names="ref name trade_type account dc")
-=========== =============================== ========================= ========================= ===================== =============================== ===========================
- Reference   Designation                     Designation (de)          Designation (fr)          Trade type            Account                         Primary booking direction
------------ ------------------------------- ------------------------- ------------------------- --------------------- ------------------------------- ---------------------------
- SLS         Sales invoices                  Verkaufsrechnungen        Factures vente            Sales                                                 Credit
- SLC         Sales credit notes              Gutschriften Verkauf      Sales credit notes        Sales                                                 Debit
- PRC         Purchase invoices               Einkaufsrechnungen        Factures achat            Purchases                                             Debit
- PMO         Bestbank Payment Orders         Bestbank Payment Orders   Bestbank Payment Orders   Bank payment orders   (4300) Pending Payment Orders   Debit
- CSH         Cash                            Kasse                     Caisse                                          (5700) Cash                     Credit
- BNK         Bestbank                        Bestbank                  Bestbank                                        (5500) BestBank                 Credit
- MSC         Miscellaneous Journal Entries   Diverse Buchungen         Opérations diverses                             (5700) Cash                     Credit
- VAT         VAT declarations                MwSt.-Erklärungen         Déclarations TVA          Taxes                 (4513) VAT declared             Debit
-=========== =============================== ========================= ========================= ===================== =============================== ===========================
+=========== ============================ ============================ ============================ ===================== =============================== ===========================
+ Reference   Designation                  Designation (de)             Designation (fr)             Trade type            Account                         Primary booking direction
+----------- ---------------------------- ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
+ SLS         Sales invoices               Verkaufsrechnungen           Factures vente               Sales                                                 Credit
+ SLC         Sales credit notes           Gutschriften Verkauf         Sales credit notes           Sales                                                 Debit
+ PRC         Purchase invoices            Einkaufsrechnungen           Factures achat               Purchases                                             Debit
+ PMO         Bestbank Payment Orders      Bestbank Payment Orders      Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
+ CSH         Cash                         Kasse                        Caisse                                             (5700) Cash                     Credit
+ BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
+ MSC         Miscellaneous transactions   Miscellaneous transactions   Miscellaneous transactions                         (5700) Cash                     Credit
+ SAL         Salaries                     Salaries                     Salaries                                           (5700) Cash                     Credit
+ VAT         VAT declarations             MwSt.-Erklärungen            Déclarations TVA             Taxes                 (4513) VAT declared             Debit
+=========== ============================ ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
 
 

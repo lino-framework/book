@@ -66,7 +66,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-244
+247
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -75,12 +75,12 @@ Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-121
+122
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
 >>> len(kernel.slave_tables)
-49
+50
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 
@@ -142,3 +142,30 @@ The output will be::
 
 We might decide one day that Lino creates an automatic singleton
 instance for each Actor at startup.
+
+.. _dev.actors.sums:
+
+Showing, hiding and formatting sums
+===================================
+
+.. currentmodule:: lino.core.actors
+
+Lino automatically assumes that you want a sum for every numeric field.
+Sometimes this is now waht you want.  In that case you can say::
+
+    MyModel.set_widget_option('year", show_sum=False)
+
+
+When a table has at least one column with a sum, Lino adds a "totals" line when
+printing the table.  The first empty column in that line will receive a text
+"Total (9 rows)".  That text is customizable by overriding
+:meth:`Actor.get_sum_text`.
+
+If you don't want that text to appear in the first empty column, you can
+specify a value for :attr:`Actor.sum_text_column`.  Usage example:  the first
+screenshot below is without :attr:`sum_text_column`, the second is with
+:attr:`sum_text_column` set to 2:
+
+.. image:: sum_text_column_a.png
+.. image:: sum_text_column_b.png
+
