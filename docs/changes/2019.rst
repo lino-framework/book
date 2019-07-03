@@ -13,6 +13,14 @@
 .. contents::
   :local:
 
+2019-07-03
+==========
+
+Minor optimizations for :ticket:`3101`.
+
+Released Lino 19.7.1 and XL 19.7.1 to PyPI.
+
+
 2019-07-02
 ==========
 
@@ -27,6 +35,12 @@ Reviewed the "license" field of all projects to use "BSD-2-Clause" (an `SPDX
 identifier <https://spdx.org/licenses/>`__).
 
 Released Lino 19.7.0 and XL 19.7.0 to PyPI.
+
+Optimized the columns layout of :class:`lino_xl.lib.ledger.Accounts`.
+
+Added a journal group "Miscellaneous transactions" to the default
+configuration (:class:`lino_xl.lib.ledger.JournalGroups`).
+
 
 
 2019-06-29
