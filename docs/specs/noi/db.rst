@@ -59,7 +59,7 @@ The database models
  cal.Task                           cal.Tasks                        18        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                10        14
+ comments.Comment                   comments.Comments                10        84
  comments.CommentType               comments.CommentTypes            4         0
  contacts.Company                   contacts.Companies               22        5
  contacts.CompanyType               contacts.CompanyTypes            7         16

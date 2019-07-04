@@ -13,6 +13,48 @@
 .. contents::
   :local:
 
+2019-07-04
+==========
+
+.. currentmodule:: lino_xl.lib.ledger
+
+The duplicate action didn't work on registered vouchers (:class:`Voucher`). And the
+and the general behaviour after duplicating a voucher was irritating.
+
+Now the :attr:`number <Voucher.number>` is set to the next
+available number and :attr:`entry_date <Voucher.entry_date>`
+to today.
+
+General changes for all duplicate actions: The
+:class:`lino.mixins.duplicable.Duplicate` action now calls :meth:`full_clean`
+on the newly created copy. And it is now readonly (e.g. also callable on a
+registered voucher).
+
+.. currentmodule:: lino_xl.lib.vat
+
+In :class:`InvoicesByJournal` the grid layout was still using
+:attr:`voucher_date <lino_xl.lib.ledger.Voucher.voucher_date>` instead of
+:attr:`entry_date <lino_xl.lib.ledger.Voucher..entry_date>`.  The default behaviour in
+:ref:`cosi` is to use only entry_date because this is what counts for accounting.
+
+.. currentmodule:: lino_xl.lib.finan
+
+Added an :class:`UploadsByController <lino.modlib.uploads.UploadsByController>`
+panel to the detail layout of :class:`BankStatement`.
+
+The :fixture:`std` fixture of :mod:`lino_xl.lib.ledger` now creates an upload
+type "source document". Note that :data:`UPLOADTYPE_SOURCE_DOCUMENT
+<lino_xl.lib.ledger.UPLOADTYPE_SOURCE_DOCUMENT>` is 4 in order to avoid
+duplicate keys in :ref:`weleup`.
+
+Optimizations in :mod:`lino.utils.memo`: Fixed a error occuring when there were
+no suggesters defined. The parser now makes a pattern clickable without adding
+the full text and with setting a title for the link so that the text is shown
+when the mouse hovers over the link.
+
+
+
+
 2019-07-03
 ==========
 

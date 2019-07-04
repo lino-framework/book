@@ -241,4 +241,22 @@ A suggester always returns a maximum of 5 suggestions:
 Ticket #1 ('#1 (⛶ Föö fails to bar when baz)')
 
 >>> mp.parse("#1")
-'<a href="Detail">#1 (&#9974; F&#246;&#246; fails to bar when baz)</a>'
+'<a href="Detail" title="#1 (&#9974; F&#246;&#246; fails to bar when baz)">#1</a>'
+
+
+Bleaching
+=========
+
+Comments a being bleached by default.
+
+Check whether content has been bleached
+
+>>> print(comments.Comment.objects.filter(body="o:OfficeDocumentSettings").first())
+None
+
+>>> obj  = comments.Comment.objects.filter(body__contains="and follow your welcome messages").first()
+>>> print(obj.body_preview)
+breaking  (...)
+
+Above comments were created by the :fixture:`demo2` fixture of
+:mod:`lino.modlib.comments`.

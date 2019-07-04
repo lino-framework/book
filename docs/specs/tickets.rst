@@ -469,9 +469,10 @@ Comments
 In :ref:`noi` comments are visible even to anonymous users:
 
 >>> rt.show(comments.Comments, column_names="id user owner")
-==== ================= ================================================================
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+==== ================= ===================================================================
  ID   Author            Controlled by
----- ----------------- ----------------------------------------------------------------
+---- ----------------- -------------------------------------------------------------------
  1    Jean              `#1 (⛶ Föö fails to bar when baz) <Detail>`__
  2    Luc               `#2 (☎ Bar is not always baz) <Detail>`__
  3    Marc              `#3 (☉ Baz sucks) <Detail>`__
@@ -486,8 +487,16 @@ In :ref:`noi` comments are visible even to anonymous users:
  12   Romain Raffault   `#12 (⚒ Foo cannot bar) <Detail>`__
  13   Rolf Rompen       `#13 (☾ Bar cannot foo) <Detail>`__
  14   Robin Rood        `#14 (☐ Bar cannot baz) <Detail>`__
-==== ================= ================================================================
+ 15   Jean              `#15 (☑ Bars have no foo) <Detail>`__
+ ...
+ 80   Marc              `#80 (☒ Foo never bars) <Detail>`__
+ 81   Mathieu           `#81 (⛶ No more foo when bar is gone) <Detail>`__
+ 82   Romain Raffault   `#82 (☎ Cannot delete foo) <Detail>`__
+ 83   Rolf Rompen       `#83 (☉ Why is foo so bar) <Detail>`__
+ 84   Robin Rood        `#84 (⚒ Irritating message when bar) <Detail>`__
+==== ================= ===================================================================
 <BLANKLINE>
+
 
 
 >>> obj = tickets.Ticket.objects.get(pk=2)

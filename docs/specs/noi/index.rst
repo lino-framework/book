@@ -34,6 +34,7 @@ This section contains specs for :ref:`noi`.
     stars
     sql
     cal
+    suggesters
    
 
 

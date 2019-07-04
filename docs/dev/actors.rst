@@ -80,7 +80,7 @@ and "generic slave tables":
 lino.modlib.system.models.SiteConfigs
 
 >>> len(kernel.slave_tables)
-50git
+50
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 

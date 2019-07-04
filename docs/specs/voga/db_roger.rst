@@ -100,7 +100,7 @@ The database structure
  sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0
- uploads.UploadType         uploads.UploadTypes            8         0
+ uploads.UploadType         uploads.UploadTypes            8         1
  uploads.Volume             uploads.Volumes                5         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    18        6
