@@ -40,14 +40,14 @@ Comments
     
 .. class:: Comment
            
-    A **comment** is a short text which some user writes about some
-    other database object. It has no recipient.
+    A **comment** is a short text which some user writes about some database
+    object. It has no recipient.
 
     .. attribute:: body
 
         The full body text of your comment.
 
-    .. attribute:: body_preview
+    .. attribute:: short_preview
 
         The first paragraph of your :attr:`body`.
 
@@ -188,7 +188,7 @@ The preview of a comment
 
 Usage examples:
 
->>> from lino.utils.soup import truncate_comment
+>>> from lino.modlib.memo.mixins import truncate_comment
 
 >>> print(truncate_comment('<h1 style="color: #5e9ca0;">Styled comment <span style="color: #2b2301;">pasted from word!</span> </h1>'))
 Styled comment pasted from word! 

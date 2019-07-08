@@ -1,13 +1,28 @@
-.. doctest docs/dev/memo.rst
+.. doctest docs/specs/memo.rst
 .. _dev.memo:
 
-===============
-The memo parser
-===============
+==========================
+``memo`` : The memo parser
+==========================
 
-Lino has a simple built-in markup language called "memo".
+The :mod:`lino.modlib.memo` plugin adds application-specific markup to
+:doc:`text fields </dev/textfield>` .
+
+One facet of this plugin is a simple built-in markup language called "memo". A
+**memo markup command** is a fragment of text between square brackets (of the
+form ``[foo bar baz]``)
+
+Another facet are **suggesters**. A suggester is when you define that a
+"trigger text" will pop up a list of suggestions for auto-completion.  For
+example ``#`` commonly refers to a topic or a ticket, or ``@`` refers to
+another user or person.
+
+
+that will be "rendered" (converted into another fragment)
+when your description text is being displayed at certain places.
+
+
 A concrete real-world specification is in :doc:`/specs/noi/memo`
-Source code is in :mod:`lino.utils.memo`.
 
 
 .. contents::
@@ -22,19 +37,17 @@ Source code is in :mod:`lino.utils.memo`.
 >>> from lino.api.doctest import *
 
 
-memo is a simple markup parser that expands "commands" found in an input
-string to produce a resulting output string.  Commands are in the form
-``[KEYWORD ARGS]``.  The caller defines itself all commands, there are
-no predefined commands.
+Basic usage
+===========
 
-
-
-Usage example
-=============
+The :class:`lino.modlib.memo.parser.Parser` is a simple markup parser that
+expands "commands" found in an input string to produce a resulting output
+string.  Commands are in the form ``[KEYWORD ARGS]``.  The caller defines
+itself all commands, there are no predefined commands.
 
 Instantiate a parser:
 
->>> from lino.utils.memo import Parser
+>>> from lino.modlib.memo.parser import Parser
 >>> p = Parser()
 
 We declare a "command handler" function `url2html` and register it:
@@ -160,14 +173,15 @@ Execution flow statements like `[if ...]` and `[endif ...]` or ``[for
 The ``[=expression]`` form
 ==========================
 
-Instantiate a new parser with and without a context:
-
->>> print(p.parse('''\
-... The answer is [=a*a*5-a].''', a=3))
-The answer is 42.
 
 >>> print(p.parse('''<ul>[="".join(['<li>%s</li>' % (i+1) for i in range(5)])]</ul>'''))
 <ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul>
 
+You can specify a run-time context:
+
+>>> ctx = { 'a': 3 }
+>>> print(p.parse('''\
+... The answer is [=a*a*5-a].''', context=ctx))
+The answer is 42.
 
 

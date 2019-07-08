@@ -24,7 +24,7 @@ Complexity factors
 
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- 42 plugins
+- 43 plugins
 - 62 models
 - 19 user roles
 - 7 user types
@@ -40,7 +40,7 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, excerpts, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, rest_framework, restful, django_mailbox, mailbox, sessions.
+43 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, excerpts, memo, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, rest_framework, restful, django_mailbox, mailbox, sessions.
 62 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
@@ -59,7 +59,7 @@ The database models
  cal.Task                           cal.Tasks                        18        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                10        84
+ comments.Comment                   comments.Comments                11        84
  comments.CommentType               comments.CommentTypes            4         0
  contacts.Company                   contacts.Companies               22        5
  contacts.CompanyType               contacts.CompanyTypes            7         16

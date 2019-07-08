@@ -222,7 +222,7 @@ The default value for :attr:`verbose_name_plural
 is being used on a single model (which is the case for most workflows), the
 text is now "{} states" where {} is the model's verbose name.
 
-:meth:`lino.utils.memo.Parser.register_django_model` now says an understandable
+:meth:`lino.modlib.memo.parser.Parser.register_django_model` now says an understandable
 error message "Duplicate renderer for %s" when an application tries to redefine
 another renderer on the same model.
 

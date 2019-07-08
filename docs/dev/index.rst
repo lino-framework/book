@@ -51,6 +51,7 @@ Drafts
    oui5
    inject_field
    repair
+   textfield
 
 
 Other
@@ -68,7 +69,6 @@ Other
    testing
    frontend_testing
    /team/noi_intro
-   memo
    bash_aliases
    diamond
    analysis

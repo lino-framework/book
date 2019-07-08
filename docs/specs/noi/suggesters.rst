@@ -19,7 +19,7 @@ Compare the :fixture:`demo2` fixture of :mod:`lino.modlib.comments`.
 >>> from lino.api.doctest import *
 
 
->>> mp = settings.SITE.kernel.memo_parser
+>>> mp = settings.SITE.plugins.memo.parser
 >>> sorted(mp.suggesters.keys())
 ['#', '@']
 

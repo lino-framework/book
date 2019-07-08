@@ -12,19 +12,12 @@ Memo commands in Lino Noi
 
 The :attr:`description <lino_xl.lib.tickets.Ticket.description>` of a
 ticket and the text of a comment (:mod:`short_text
-<lino.modlib.comments.Comment.short_text>`) are rich HTML text fields
-which can contain simple HTML formatting like links, tables, headers,
-enumerations.
+<lino.modlib.comments.Comment.short_text>`) are
+:doc:`rich text fields </dev/textfield>`.
 
-And additionally they can contain :mod:`memo markup commands
-<lino.utils.memo>`.
+And additionally they can contain memo markup commands (see
+:doc:`/specs/memo`).
 
-A memo markup command is a fragment of text between square brackets
-which will be "rendered" (converted into another fragment) when your
-description text is being displayed at certain places.
-
-of the form ``[foo bar baz]``. These
-memo commands are going to
 
 
 Lino Noi `memo` command reference
@@ -106,7 +99,7 @@ Refer to a company. Usage example::
 
     I met Joe from [company 1] and we agreed...
 
-.. 
+..
     >>> print(rt.login('robin').parse_memo("See [company 100]."))
     See <a href="Detail" title="Rumma &amp; Ko O&#220;">#100</a>.
 
@@ -136,7 +129,7 @@ Refer to a Python object.
 Usage examples:
 
 - ``[py lino]``
-- ``[py lino.utils.memo]``
+- ``[py lino.modlib.memo.parser]``
 - ``[py lino_xl.lib.tickets.models.Ticket]``
 - ``[py lino_xl.lib.tickets.models.Ticket tickets.Ticket]``
   
@@ -215,7 +208,7 @@ list of tickets. When they type a "@", they get a list with all users.
 
 Every site instance has its global memo parser:
 
->>> mp = settings.SITE.kernel.memo_parser
+>>> mp = dd.plugins.memo.parser
 
 >>> mp.suggesters.keys()
 dict_keys(['@', '#'])
@@ -240,7 +233,7 @@ A suggester always returns a maximum of 5 suggestions:
 >>> mp.suggesters['#'].get_object("1")
 Ticket #1 ('#1 (⛶ Föö fails to bar when baz)')
 
->>> mp.parse("#1")
+>>> mp.parse("#1", ar)
 '<a href="Detail" title="#1 (&#9974; F&#246;&#246; fails to bar when baz)">#1</a>'
 
 
@@ -255,7 +248,7 @@ Check whether content has been bleached
 None
 
 >>> obj  = comments.Comment.objects.filter(body__contains="and follow your welcome messages").first()
->>> print(obj.body_preview)
+>>> print(obj.short_preview)
 breaking  (...)
 
 Above comments were created by the :fixture:`demo2` fixture of

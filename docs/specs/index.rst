@@ -29,6 +29,7 @@ Core plugins
    dashboard
    gfks
    summaries
+   memo
 
 The following plugins are technically still part of the Lino core, but might be
 moved to :mod:`lino_xl` some day:

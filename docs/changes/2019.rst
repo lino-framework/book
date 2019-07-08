@@ -13,6 +13,28 @@
 .. contents::
   :local:
 
+2019-07-08
+==========
+
+The new plugin :mod:`lino.modlib.memo` regroups functionality which until now
+was dispersed in :mod:`lino.mixins.bleached`, :mod:`lino.utils.memo` and
+:mod:`lino.utils.soup`.
+
+The :class:`lino.mixins.bleached.BleachedPreviewBody` model mixin has been
+replaced by :class:`lino.modlib.memo.Previewable`.
+
+.. currentmodule:: lino.modlib.comments
+
+In :mod:`lino.modlib.comments`, :class:`Comment` needs a database migration
+because instead of a single field :attr:`body_preview` it now has two fields
+:attr:`short_preview <Comment.short_preview>` and
+:attr:`full_preview <Comment.full_preview>`.
+
+The :mod:`lino_xl.lib.notes` plugin also requires :mod:`lino.modlib.memo`, but
+the changes don't need a data migration because it uses just the parser, not
+:class:`Previewable <lino.modlib.memo.Previewable>`.
+
+
 2019-07-04
 ==========
 
@@ -47,11 +69,12 @@ type "source document". Note that :data:`UPLOADTYPE_SOURCE_DOCUMENT
 <lino_xl.lib.ledger.UPLOADTYPE_SOURCE_DOCUMENT>` is 4 in order to avoid
 duplicate keys in :ref:`weleup`.
 
-Optimizations in :mod:`lino.utils.memo`: Fixed a error occuring when there were
+Optimizations in :mod:`lino.modlib.memo.parser`: Fixed a error occuring when there were
 no suggesters defined. The parser now makes a pattern clickable without adding
 the full text and with setting a title for the link so that the text is shown
 when the mouse hovers over the link.
 
+Released Lino 19.7.2 and XL 19.7.2 to PyPI.
 
 
 

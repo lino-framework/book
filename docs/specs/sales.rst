@@ -37,7 +37,7 @@ subject to VAT, you might add :mod:`lino_xl.lib.bevats` which hides most of the
 VAT functionality.
 
 >>> dd.plugins.sales.needs_plugins
-['lino_xl.lib.products', 'lino_xl.lib.vat']
+['lino.modlib.memo', 'lino_xl.lib.products', 'lino_xl.lib.vat']
 
 This plugin may be combined with the :mod:`lino_xl.lib.invoicing` plugin which
 adds automatic generation of such product invoices.
