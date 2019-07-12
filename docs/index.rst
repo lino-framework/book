@@ -14,7 +14,6 @@ Welcome to the online documentation about the Lino framework.
    about/index
    /demos
    community/index
-   User's Guide <guide/index>
    changes/index
    blog
 
@@ -24,7 +23,7 @@ Technical docs
 .. toctree::
    :maxdepth: 2
 
-   Newbie's Guide </dev/newbies/index>
+   User's Guide <guide/index>
    Developer's Guide </dev/index>
    Administrator's Guide </admin/index>
    Specs </specs/index>

@@ -36,6 +36,8 @@ as root or by monit. The script outputs some readable information about what it
 is doing. If something is not perfect, it reports what is wrong and then sets
 its exit status to non-zero.
 
+Example content::
+
     #! bin/bash
     set -e  # exit on error
     echo -n "Checking supervisor status: "
@@ -44,15 +46,22 @@ its exit status to non-zero.
 
 
 
+.. xfile:: /etc/monit/monitrc
+
+The system-wide monit configuration file.
+
+Maintenance
+===========
+
+You can say :command:`monit status` at any moment.
+
 
 Weblinks
 ========
 
-https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-monit
-https://www.tecmint.com/how-to-install-and-setup-monit-linux-process-and-services-monitoring-program/
-https://tutorialinux.com/monitor-all-the-things-with-monit/
-
-monit documentation
-<https://mmonit.com/monit/documentation/monit.html>
+- https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-monit
+- https://www.tecmint.com/how-to-install-and-setup-monit-linux-process-and-services-monitoring-program/
+- https://tutorialinux.com/monitor-all-the-things-with-monit/
+- `monit documentation <https://mmonit.com/monit/documentation/monit.html>`__
 
 

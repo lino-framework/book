@@ -23,6 +23,17 @@ The :attr:`front_end <lino.modlib.memo.Plugin.front_end>` setting of the
 :mod:`lino.modlib.memo` plugin is now ready for beta testing on a site with two
 web front ends.
 
+Internal changes (to be changed in :ref:`react`) : The :attr:`plugin` attribute
+of :class:`lino.core.renderer.Renderer` has been renamed to :attr:`front_end
+<lino.core.renderer.Renderer.front_end>`. The :meth:`get_detail_url` method has
+been moved from :class:`lino.core.renderer.Renderer` to
+:class:`lino.core.plugin.Plugin`. The :class:`MailRenderer` class in
+:mod:`lino.core.renderer` has been removed because it was no longer needed. The
+:attr:`lino.core.site.Site.mobile_server_url` is no longer used and has been
+removed. Compare `commit
+<https://github.com/lino-framework/lino/commit/30897e2628f54ae6a010819b5a7c5edd513b364e>`__
+for details.
+
 
 2019-07-08
 ==========

@@ -1,13 +1,15 @@
 .. _lino.dev:
 
-===================
-Developers's Guide
-===================
+=================
+Developer's Guide
+=================
 
 
 .. toctree::
    :maxdepth: 2
               
+   newbies/prerequisites
+   newbies/index
    /dev/quick/index
    getstarted
    /dev/about
