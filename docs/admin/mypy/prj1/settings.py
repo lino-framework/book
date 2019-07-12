@@ -7,7 +7,7 @@ logging.getLogger('weasyprint').setLevel("ERROR") # see #1462
 
 class Site(Site):
     title = "Lino@prj1"
-    server_url = "https://prj1.mydomain.com"
+    # server_url = "https://prj1.mydomain.com"
     
 SITE = Site(globals())
 

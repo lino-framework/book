@@ -13,6 +13,17 @@
 .. contents::
   :local:
 
+2019-07-12
+==========
+
+Lino now uses the `BASE <https://www.w3schools.com/tags/tag_base.asp>`__ tag
+when sending notification emails.
+
+The :attr:`front_end <lino.modlib.memo.Plugin.front_end>` setting of the
+:mod:`lino.modlib.memo` plugin is now ready for beta testing on a site with two
+web front ends.
+
+
 2019-07-08
 ==========
 

@@ -17,6 +17,7 @@ Developers's Guide
    deploy
 
 
+
 Special topics
 ==============
 
@@ -28,7 +29,6 @@ Special topics
    watch
    matrix/index
    /tutorials/input_mask/index
-   bleach
    ovfields/index
 
 
@@ -49,9 +49,7 @@ Drafts
    style
    extjs
    oui5
-   inject_field
    repair
-   textfield
 
 
 Other

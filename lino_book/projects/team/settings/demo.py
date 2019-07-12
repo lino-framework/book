@@ -30,6 +30,16 @@ class Site(Site):
     # default_ui = 'lino.modlib.bootstrap3'
     # default_ui = 'lino_openui5.openui5'
 
+    # def get_installed_apps(self):
+    #     yield super(Site, self).get_installed_apps()
+    #     yield 'lino_react.react'
+
+    def get_plugin_configs(self):
+        for i in super(Site, self).get_plugin_configs():
+            yield i
+        yield ('excerpts', 'responsible_user', 'jean')
+        # yield ('memo', 'front_end', 'react')
+
     def setup_plugins(self):
         """Change the default value of certain plugin settings.
 
@@ -42,7 +52,7 @@ class Site(Site):
         super(Site, self).setup_plugins()
         # self.plugins.social_auth.configure(
         #     backends=['social_core.backends.github.GithubOAuth2'])
-        self.plugins.excerpts.configure(responsible_user='jean')
+        # self.plugins.excerpts.configure(responsible_user='jean')
         if False:
             self.plugins.mailbox.add_mailbox(
                 'mbox', "Luc's aaa mailbox", 

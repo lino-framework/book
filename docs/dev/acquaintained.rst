@@ -39,3 +39,9 @@ Getting acquaintained
    disabled_fields
    workflows
    startup
+
+   bleach
+   textfield
+   story
+   etree
+   inject_field
