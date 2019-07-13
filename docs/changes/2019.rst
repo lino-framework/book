@@ -40,7 +40,8 @@ for details.
 
 The new plugin :mod:`lino.modlib.memo` regroups functionality which until now
 was dispersed in :mod:`lino.mixins.bleached`, :mod:`lino.utils.memo` and
-:mod:`lino.utils.soup`.
+:mod:`lino.utils.soup`.  Instead of saying ``SITE.kernel.memo_parser`` you now
+say ``SITE.plugins.memo.parser``.
 
 The :class:`lino.mixins.bleached.BleachedPreviewBody` model mixin has been
 replaced by :class:`lino.modlib.memo.Previewable`.

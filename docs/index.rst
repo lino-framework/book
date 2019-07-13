@@ -14,20 +14,27 @@ Welcome to the online documentation about the Lino framework.
    about/index
    /demos
    community/index
-   changes/index
    blog
 
-Technical docs
-==============
+Guides
+======
 
 .. toctree::
    :maxdepth: 2
 
    User's Guide <guide/index>
    Developer's Guide </dev/index>
-   Administrator's Guide </admin/index>
+   Hoster's Guide </admin/index>
+
+References
+==========
+
+.. toctree::
+   :maxdepth: 2
+
    Specs </specs/index>
    API </api/index>
+   changes/index
 
 .. toctree::
    :hidden:
