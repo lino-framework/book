@@ -1,11 +1,9 @@
+.. _lino.quick.start:
 .. _lino.user.start:
 
 ===============
 Getting started
 ===============
-
-We presume that you have read the `Lino User's Guide
-<http://guide.lino-framework.org>`__.
 
 
 .. toctree::
