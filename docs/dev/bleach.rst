@@ -55,7 +55,6 @@ this is only the default value.
 The application developer can force bleaching to be activated or not for a
 specific field by explicitly saying a :attr:`bleached
 <lino.core.fields.RichTextfield.bleached>` argument when declaring the field.
-In this case
 
 
 

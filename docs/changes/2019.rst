@@ -13,6 +13,14 @@
 .. contents::
   :local:
 
+2019-07-18
+==========
+
+Added a new method :meth:`lino.core.plugin.Plugin.get_requirements`.
+Added a new admin command :manage:`configure`.
+Both to be used by :cmd:`getlino configure` (:ticket:`3036`).
+
+
 2019-07-12
 ==========
 

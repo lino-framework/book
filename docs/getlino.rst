@@ -25,23 +25,22 @@ ask any question::
 
    $ sudo getlino configure --batch
 
-Your answers will be stored in the system-wide getlino config file.
-
-To actually install everything according to your configfile, run :cmd:`getlino
-setup`::
-
-   $ sudo getlino setup
+Your answers will be stored in the system-wide getlino config file, and the
+server will be configured according to your config file.
 
 Now install a first site (this time you don't need to be root anymore)::
 
-   $ getlino startsite
+   $ getlino startsite appname prjname [options]
 
 The script will ask you some questions:
 
-- The project name or internal name of this Lino site. We recommend lower-case
-  only and no "-" or "_", maybe a number.  Examples:  foo, foo2, mysite, first,
+- appname is the Lino application to run
 
-- Which application to run
+- prjname is the internal name, it must be unique for this Lino server. We
+  recommend lower-case only and no "-" or "_", maybe a number.  Examples:  foo,
+  foo2, mysite, first,
+
+
 
 
 Install a Lino development environment
@@ -53,7 +52,6 @@ setup`::
    $ . path/to/virtualenv/bin/activate
    $ sudo pip3 install getlino
    $ sudo getlino configure
-   $ sudo getlino setup
 
 
 
@@ -74,3 +72,60 @@ This will create the docker image and use the current getlino.py script (It
 will not install getlino from pip servers ) , so be sure the also update your
 getlino.py local file.
 
+
+
+.. command:: getlino configure
+
+::
+
+    Usage: getlino.py configure [OPTIONS]
+
+          Edit and/or create a configuration file and     set up this machine to
+          become a Lino production server     according to the configuration
+          file.
+
+    Options:
+      --batch / --no-batch            Whether to run in batch mode, i.e. without
+                                      asking any questions.  Don't use this on a
+                                      machine that is already being used.
+      --projects-root TEXT            Base directory for Lino sites
+      --backups-root TEXT             Base directory for backups
+      --log-root TEXT                 Base directory for log files
+      --usergroup TEXT                User group for files to be shared with the
+                                      web server
+      --supervisor-dir TEXT           Directory for supervisor config files
+      --db-engine [pgsql|mysql|sqlite]
+                                      Default database engine for new sites.
+      --env-dir TEXT                  Default virtualenv directory for new sites
+      --repos-dir TEXT                Default repositories directory for new sites
+      --appy / --no-appy              Whether this server provides appypod and
+                                      LibreOffice
+      --redis / --no-redis            Whether this server provides redis
+      --devtools / --no-devtools      Whether this server provides developer tools
+                                      (build docs and run tests)
+      --admin-name TEXT               The full name of the server maintainer
+      --admin-email TEXT              The email address of the server maintainer
+      --help                          Show this message and exit.
+
+
+.. command:: getlino startsite
+
+::
+
+    Usage: getlino.py startsite [OPTIONS] APPNAME PRJNAME
+
+      Create a new Lino site.
+
+      Arguments:
+
+      APPNAME : The application to run on the new site.
+
+      PRJNAME : The project name for the new site.
+
+    Options:
+      --batch / --no-batch  Whether to run in batch mode, i.e. without asking any
+                            questions.  Don't use this on a machine that is
+                            already being used.
+      --dev / --no-dev      Whether to use development version of the application
+      --server_url TEXT     The URL where this site is published
+      --help                Show this message and exit.
