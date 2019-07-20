@@ -17,7 +17,7 @@ class Site(Site):
     project_name = 'lino_xl_max'
 
     project_model = 'contacts.Person'
-    use_websockets = True
+    # use_websockets = True
 
     # languages = 'en de fr'
     languages = 'en de fr et nl pt-br es'

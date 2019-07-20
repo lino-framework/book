@@ -41,6 +41,7 @@ True
 True
 >>> ar.actor
 lino_xl.lib.tickets.ui.Tickets
+>>> ar.request = 123
 >>> html = A.get_table_summary(obj, ar)
 >>> print(tostring(html))  #doctest: +SKIP
 <div class="htmlText"><p><a href="javascript:Lino.tickets.Tickets.start_session(null,true,1,{  })" style="text-decoration:none">&#9654;</a></p><p>Total 0:00 hours.</p><p>Active sessions: <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 1 })">Jean since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,1,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 5 })">Luc since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,5,{  })" style="text-decoration:none">&#9632;</a></span>, <span><a href="javascript:Lino.working.SessionsByTicket.detail.run(null,{ &quot;record_id&quot;: 9 })">Mathieu since 09:00:00</a> <a href="javascript:Lino.working.Sessions.end_session(null,true,9,{  })" style="text-decoration:none">&#9632;</a></span></p></div>

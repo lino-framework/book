@@ -15,7 +15,9 @@ install_requires = [
     'Sphinx', 'lino', 'selenium', 'mock',
     'pisa', 'django-wkhtmltopdf',
     'django-iban', 'metafone',
-    'djangorestframework', 'bleach', 'radicale==1.1.2',
+    'djangorestframework',
+    # 'bleach',  installed by inv prep
+    'radicale==1.1.2',
     'icalendar',
     'vobject',
     # 'eidreader',
@@ -35,13 +37,14 @@ install_requires = [
     'django-mailbox@git+https://github.com/cylonoven/django-mailbox'
 ]
 
-if PY2:
-    install_requires.append('channels<2')
-    install_requires.append('asgiref~=1.1')
-else:
-    install_requires.append('channels')
-    install_requires.append('asgiref')
-    install_requires.append('channels_redis')
+# now handled by :manage:`configure`:
+# if PY2:
+#     install_requires.append('channels<2')
+#     install_requires.append('asgiref~=1.1')
+# else:
+#     install_requires.append('channels')
+#     install_requires.append('asgiref')
+#     install_requires.append('channels_redis')
 
 SETUP_INFO = dict(
     name='lino_book',

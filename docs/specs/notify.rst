@@ -324,16 +324,25 @@ well.
 Local configuration
 ===================
 
-    
+.. setting:: CHANNEL_LAYERS
+
+This plugin inspects some process parameters in order to automagically set a
+default value for the :setting:`CHANNEL_LAYERS` setting.
+
 >>> from django.conf import settings
+>>> from lino.core.utils import is_devserver
+>>> is_devserver()
+True
+>>> settings.SITE.use_websockets
+True
+
+
 >>> settings.CHANNEL_LAYERS['default']['BACKEND'] in ['asgiref.inmemory.ChannelLayer','channels_redis.core.RedisChannelLayer']
 True
 >>> settings.CHANNEL_LAYERS['default'].get('ROUTING','') in ['lino.modlib.notify.routing.channel_routing','']
 True
 
 
->>> settings.SITE.use_websockets
-True
 
 How to configure locally on a production site::
 

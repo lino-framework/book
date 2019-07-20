@@ -66,15 +66,28 @@ Refer to a ticket. Usage example:
 
   See ``[ticket 1]``.
 
-Note that the current renderer decides how to render the link. For
-example, the default front end :mod:`lino.modlib.extjs` (or
-:mod:`lino_extjs6.extjs6`, depending on our :attr:`default_ui
-<lino.core.site.Site.default_ui>` setting) will render it like this:
+Note that URI of the link is quite a complex topic and depends on the context.
+
+For example, the site's front end (specfied in the :attr:`default_ui
+<lino.core.site.Site.default_ui>` setting) has a word to say.
+
+When this is :mod:`lino.modlib.extjs`, then we also get a different URL
+depending on whether ar.request is set or not: when calling it e.g. from
+:meth:`send_summary_emails <lino_xl.lib.notify.Message.send_summary_emails>`
+(ar.request is None), we want a "permalink" or URI for usage in a "https:".
+Otherwise we want a "javascript:..." URI.
 
 >>> ses = rt.login('robin',
 ...     renderer=settings.SITE.kernel.default_ui.renderer)
+
+>>> ses.request = 123  # not a reql request object, but enough to fool Lino
 >>> print(ses.parse_memo("See [ticket 1]."))
 See <a href="javascript:Lino.tickets.Tickets.detail.run(null,{ &quot;record_id&quot;: 1 })" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+>>> ses.request = None
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="/api/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
 
 While the :mod:`lino.modlib.bootstrap3` front end will render it
 like this:

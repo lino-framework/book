@@ -11,7 +11,6 @@ Generating HTML
     >>> startup('lino_book.projects.polly.settings.demo')
     >>> from lino.api.doctest import *
 
-
 This describes some Lino-specific usage of the
 :mod:`etgen.html` module.
 
@@ -29,6 +28,6 @@ This describes some Lino-specific usage of the
 >>> obj = ar.user
 >>> e = ar.obj2html(obj, txt)
 >>> print(tostring(e))
-<a href="javascript:Lino.users.Users.detail.run(null,{ &quot;record_id&quot;: 1 })"><b>foo</b></a>
+<a href="/api/users/Users/1"><b>foo</b></a>
 
 

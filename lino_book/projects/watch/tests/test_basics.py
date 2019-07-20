@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Rumma & Ko Ltd
+# Copyright 2017-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Basic tests.
@@ -22,6 +22,7 @@ from __future__ import unicode_literals
 from __future__ import print_function
 
 from django.utils import six
+from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
 
@@ -40,7 +41,7 @@ class QuickTest(RemoteAuthTestCase):
         rt.models.users.User(
             username="robin", user_type=UserTypes.admin).save()
         
-        ses = rt.login('robin', renderer=TestRenderer())
+        ses = rt.login('robin', renderer=TestRenderer(settings.SITE.kernel.default_ui))
 
         s = ses.show('changes.Changes')
         self.assertEqual(s, "No data to display")
@@ -61,11 +62,11 @@ class QuickTest(RemoteAuthTestCase):
                      column_names="id type master object diff")
         # print(s)
         expected = """\
-==== ============= ========== ===================== ===============================================
- ID   Change Type   Master     Object                Changes
----- ------------- ---------- --------------------- -----------------------------------------------
- 1    Create        *My pub*   `My pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= ========== ===================== ===============================================
+==== ============= ========== ========================================== ===============================================
+ ID   Change Type   Master     Object                                     Changes
+---- ------------- ---------- ------------------------------------------ -----------------------------------------------
+ 1    Create        *My pub*   `My pub </api/contacts/Companies/100>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= ========== ========================================== ===============================================
 """
         
         self.assertEqual(s, expected)
@@ -79,12 +80,12 @@ class QuickTest(RemoteAuthTestCase):
         output = ses.show('changes.Changes', column_names="id type master object diff")
         # print(output)
         expected = """\
-==== ============= =========== ====================== ===============================================
- ID   Change Type   Master      Object                 Changes
----- ------------- ----------- ---------------------- -----------------------------------------------
- 2    Update        *Our pub*   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= =========== ====================== ===============================================
+==== ============= =========== =========================================== ===============================================
+ ID   Change Type   Master      Object                                      Changes
+---- ------------- ----------- ------------------------------------------- -----------------------------------------------
+ 2    Update        *Our pub*   `Our pub </api/contacts/Companies/100>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub </api/contacts/Companies/100>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== =========================================== ===============================================
 """
         self.assertEqual(output, expected)
 
@@ -96,28 +97,19 @@ class QuickTest(RemoteAuthTestCase):
         if six.PY2:
             self.assertEqual(
                 res.message, 'Entry "Entry object" has been created.')
-            expected = """\
-==== ============= =========== =========================== ===============================================
- ID   Change Type   Master      Object                      Changes
----- ------------- ----------- --------------------------- -----------------------------------------------
- 3    Create        *Our pub*   `Entry object <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
- 2    Update        *Our pub*   `Our pub <Detail>`__        name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   `Our pub <Detail>`__        Company(id=100,name='My pub',partner_ptr=100)
-==== ============= =========== =========================== ===============================================
-"""
         else:
             self.assertEqual(
                 res.message, 'Entry "Entry object (1)" has been created.')
-            expected = """\
-==== ============= =========== =============================== ===============================================
- ID   Change Type   Master      Object                          Changes
----- ------------- ----------- ------------------------------- -----------------------------------------------
- 3    Create        *Our pub*   `Entry object (1) <Detail>`__   Entry(id=1,user=1,subject='test',company=100)
- 2    Update        *Our pub*   `Our pub <Detail>`__            name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   `Our pub <Detail>`__            Company(id=100,name='My pub',partner_ptr=100)
-==== ============= =========== =============================== ===============================================
-"""
 
+        expected = """\
+==== ============= =========== =============================================== ===============================================
+ ID   Change Type   Master      Object                                          Changes
+---- ------------- ----------- ----------------------------------------------- -----------------------------------------------
+ 3    Create        *Our pub*   `Entry object (1) </api/entries/Entries/1>`__   Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   `Our pub </api/contacts/Companies/100>`__       name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub </api/contacts/Companies/100>`__       Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== =============================================== ===============================================
+"""
 
         output = ses.show('changes.Changes',
                      column_names="id type master object diff")
@@ -155,14 +147,14 @@ Are you sure ?""")
         
 
         expected = """\
-==== ============= =========== ====================== ===============================================
- ID   Change Type   Master      Object                 Changes
----- ------------- ----------- ---------------------- -----------------------------------------------
- 4    Delete        *Our pub*                          Entry(id=1,user=1,subject='test',company=100)
- 3    Create        *Our pub*                          Entry(id=1,user=1,subject='test',company=100)
- 2    Update        *Our pub*   `Our pub <Detail>`__   name : 'My pub' --> 'Our pub'
- 1    Create        *Our pub*   `Our pub <Detail>`__   Company(id=100,name='My pub',partner_ptr=100)
-==== ============= =========== ====================== ===============================================
+==== ============= =========== =========================================== ===============================================
+ ID   Change Type   Master      Object                                      Changes
+---- ------------- ----------- ------------------------------------------- -----------------------------------------------
+ 4    Delete        *Our pub*                                               Entry(id=1,user=1,subject='test',company=100)
+ 3    Create        *Our pub*                                               Entry(id=1,user=1,subject='test',company=100)
+ 2    Update        *Our pub*   `Our pub </api/contacts/Companies/100>`__   name : 'My pub' --> 'Our pub'
+ 1    Create        *Our pub*   `Our pub </api/contacts/Companies/100>`__   Company(id=100,name='My pub',partner_ptr=100)
+==== ============= =========== =========================================== ===============================================
 """
         output = ses.show('changes.Changes',
                      column_names="id type master object diff")
@@ -227,20 +219,20 @@ Are you sure ?""")
         # Of course these change records are now considered broken GFKs:
 
         expected = """\
-===================== ================= ============================================================= ========
- Database model        Database object   Message                                                       Action
---------------------- ----------------- ------------------------------------------------------------- --------
- `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
- `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
- `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
- `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
- `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
- `Change <Detail>`__   `#1 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
- `Change <Detail>`__   `#2 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
- `Change <Detail>`__   `#3 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
- `Change <Detail>`__   `#4 <Detail>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
- `Change <Detail>`__   `#5 <Detail>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
-===================== ================= ============================================================= ========
+================================================ ================================= ============================================================= ========
+ Database model                                   Database object                   Message                                                       Action
+------------------------------------------------ --------------------------------- ------------------------------------------------------------- --------
+ `Change </api/contenttypes/ContentTypes/14>`__   `#1 </api/changes/Changes/1>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#2 </api/changes/Changes/2>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#3 </api/changes/Changes/3>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#4 </api/changes/Changes/4>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#5 </api/changes/Changes/5>`__   Invalid primary key 100 for contacts.Partner in `master_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#1 </api/changes/Changes/1>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#2 </api/changes/Changes/2>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#3 </api/changes/Changes/3>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#4 </api/changes/Changes/4>`__   Invalid primary key 1 for entries.Entry in `object_id`        clear
+ `Change </api/contenttypes/ContentTypes/14>`__   `#5 </api/changes/Changes/5>`__   Invalid primary key 100 for contacts.Company in `object_id`   clear
+================================================ ================================= ============================================================= ========
 """
         output = ses.show('gfks.BrokenGFKs')
         # print(output)

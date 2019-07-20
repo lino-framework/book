@@ -13,6 +13,22 @@
 .. contents::
   :local:
 
+2019-07-19
+==========
+
+Support creating multiple rows with a single POST after submitting an insert
+form (for :ticket:`3122`).
+
+The :manage:`configure` command didn't show the output of the subcommands.
+Fixed.
+
+The :meth:`get_requirements <lino.core.plugin.Plugin.get_requirements>` of
+:mod:`lino_xl.lib.mailbox` and :mod:`lino_xl.lib.appypod` check whether the
+appy or django_mailbox package is already installed before requiring it. To
+support the use case when a developer has a clone of the appy or django_mailbox
+sources and uses this version. I
+
+
 2019-07-18
 ==========
 
