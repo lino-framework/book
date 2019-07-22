@@ -9,28 +9,44 @@ testing purposes. When finished, it will help to install Lino to your computer.
 
 If you just want to quickly try a Lino, read :doc:`/dev/quick/install`.
 
+You must install getlino into the system-wide Python::
+
+   $ sudo pip3 install getlino
+
+You might prefer the development version::
+
+   $ cd /path/to/projects/base
+   $ git clone git@github.com:lino-framework/getlino.git
+   $ sudo pip3 install -e .
+
 
 Configure a virgin Debian system as a Lino production server
 ============================================================
 
-Get root permissions, install getlino into the system-wide Python, then run
-:cmd:`getlino configure`::
+You simply run :cmd:`getlino configure` as root::
 
-   $ sudo pip3 install getlino
-   $ sudo getlino configure
+   $ sudo getlino.py configure
 
 This will ask you some questions about the general layout of this Lino server.
-You can answer ENTER if your don't care. You can also instruct getlino to not
-ask any question::
+You can answer ENTER if your don't care.
 
-   $ sudo getlino configure --batch
+You can also instruct getlino to not ask any question::
+
+   $ sudo getlino.py configure --batch
+
+But please use the ``--batch`` option only when you really know that you want
+it (e.g. in a Dockerfile).
 
 Your answers will be stored in the system-wide getlino config file, and the
 server will be configured according to your config file.
 
 Now install a first site (this time you don't need to be root anymore)::
 
-   $ getlino startsite appname prjname [options]
+   $ sudo getlino -H startsite appname prjname [options]
+
+The ``-H`` option instructs sudo to use your home directory for caching its
+downloads.  You will appreciate this only when you run the command a second
+time.
 
 The script will ask you some questions:
 
@@ -40,7 +56,16 @@ The script will ask you some questions:
   recommend lower-case only and no "-" or "_", maybe a number.  Examples:  foo,
   foo2, mysite, first,
 
+Notes
+=====
 
+When you maintain a Lino server, then you don't want to decide for each new
+site which database engine to use. You decide this once for all during
+:cmd:`getlino configure`. In general, `apt-get install` is called only during
+:cmd:`getlino configure`, never during :cmd:`getlino startsite`. If you have a
+server with some mysql sites and exceptionally want to install a site with
+postgres, you simply call :cmd:`getlino configure` before calling
+:cmd:`getlino startsite`.
 
 
 Install a Lino development environment
@@ -58,7 +83,6 @@ setup`::
 
 Combining getlino and Docker
 ============================
-
 
 
 The `getlino <https://github.com/lino-framework/getlino>`__ repository contains a

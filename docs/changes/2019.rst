@@ -13,10 +13,12 @@
 .. contents::
   :local:
 
-2019-07-12
+2019-07-22
 ==========
 
 Released version 19.7.3 of Lino and XL to PyPI.
+
+Fixed: :manage:`configure` failed when appy was needed but not yet installed.
 
 2019-07-19
 ==========
