@@ -40,9 +40,9 @@ it (e.g. in a Dockerfile).
 Your answers will be stored in the system-wide getlino config file, and the
 server will be configured according to your config file.
 
-Now install a first site (this time you don't need to be root anymore)::
+Now install a first site::
 
-   $ sudo getlino -H startsite appname prjname [options]
+   $ sudo -H getlino.py startsite appname prjname [options]
 
 The ``-H`` option instructs sudo to use your home directory for caching its
 downloads.  You will appreciate this only when you run the command a second
