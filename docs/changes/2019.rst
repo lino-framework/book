@@ -13,6 +13,11 @@
 .. contents::
   :local:
 
+2019-07-12
+==========
+
+Released version 19.7.3 of Lino and XL to PyPI.
+
 2019-07-19
 ==========
 

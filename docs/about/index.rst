@@ -13,19 +13,6 @@ is one which is tailor-made to your needs.  A **framework** means that Lino is
 used by developers who write and maintain applications for their employer or
 their customers.
 
-Primary **target users** of Lino applications are organizations who need a
-customized application and do not have their own in-house developer. Such
-organisations are traditionally doomed to agree to some level of vendor
-lock-in. Lino applications avoid vendor lock-in because both the source code
-and documentation are published under a :term:`permissive Free Software
-license`.
-
-The advantage of Lino versus other frameworks is a **reduced total cost of
-ownership**. Most parts of a *development project* become easier and cheaper for
-the :term:`site operator`. This includes analysis, writing a prototype, adapting your
-application to changed needs and long-term maintenance. Lino applications are
-"more reliable and maintainable than MS-Access for cheaper than SAP".
-
 The Lino framework is based on FOSS technologies like `Python
 <https://www.python.org/>`__, `Django <https://www.djangoproject.com/>`__
 `React <https://reactjs.org/>`__, `Sencha ExtJS
