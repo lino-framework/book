@@ -13,6 +13,11 @@
 .. contents::
   :local:
 
+2019-07-23
+==========
+
+Released version 19.7.4 of XL to PyPI. (needed for testing :ref:`getlino`).
+
 2019-07-22
 ==========
 
