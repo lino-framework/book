@@ -7,7 +7,7 @@ Hoster's Guide
 ==============
 
 This part of the documentation is for :term:`server administrators <server
-maintainer>`  who set up or maintain a server which hosts one or several Lino
+administrator>`  who set up or maintain a server which hosts one or several Lino
 production sites.
 
 The approaches described in this document are not mandatory. Hosting a
