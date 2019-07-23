@@ -6,7 +6,7 @@
 Hoster's Guide
 ==============
 
-This part of the documentation is for :term:`server maintainers <server
+This part of the documentation is for :term:`server administrators <server
 maintainer>`  who set up or maintain a server which hosts one or several Lino
 production sites.
 
@@ -36,6 +36,7 @@ Installation
 .. toctree::
     :maxdepth: 2
 
+    getlino
     install
     media
     mysql_install

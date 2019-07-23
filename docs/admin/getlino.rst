@@ -4,10 +4,13 @@
 The ``getlino`` package
 =======================
 
-The :mod:`getlino` package is still work in progress, so use it only for
-testing purposes. When finished, it will help to install Lino to your computer.
+The :mod:`getlino` package greatly helps with installing Lino to your computer.
+But it is still work in progress, so use it only for testing purposes.
 
 If you just want to quickly try a Lino, read :doc:`/dev/quick/install`.
+
+Installing getlino
+==================
 
 You must install getlino into the system-wide Python::
 
@@ -15,20 +18,25 @@ You must install getlino into the system-wide Python::
 
 You might prefer the development version::
 
-   $ cd /path/to/projects/base
+   $ sudo pip3 install -e git+https://github.com/lino-framework/getlino.git#egg=getlino
+
+Or, if you have installed a development environment, you can install your own
+local clone::
+
+   $ cd ~/repositories
    $ git clone git@github.com:lino-framework/getlino.git
-   $ sudo pip3 install -e .
+   $ sudo pip3 install -e getlino
 
 
-Configure a virgin Debian system as a Lino production server
-============================================================
+Turn a virgin Debian system into a Lino production server
+=========================================================
 
 You simply run :cmd:`getlino configure` as root::
 
    $ sudo getlino.py configure
 
 This will ask you some questions about the general layout of this Lino server.
-You can answer ENTER if your don't care.
+You can answer ENTER to each of them if your don't care.
 
 You can also instruct getlino to not ask any question::
 
@@ -44,8 +52,8 @@ Now install a first site::
 
    $ sudo -H getlino.py startsite appname prjname [options]
 
-The ``-H`` option instructs sudo to use your home directory for caching its
-downloads.  You will appreciate this only when you run the command a second
+The ``-H`` option instructs :cmd:`sudo` to use your home directory for caching
+its downloads.  You will appreciate this when you run the command a second
 time.
 
 The script will ask you some questions:
@@ -72,7 +80,7 @@ Install a Lino development environment
 ======================================
 
 Install getlino into your default Python environment, then run :cmd:`getlino
-setup`::
+configure`::
 
    $ . path/to/virtualenv/bin/activate
    $ sudo pip3 install getlino
@@ -127,8 +135,8 @@ getlino.py local file.
       --redis / --no-redis            Whether this server provides redis
       --devtools / --no-devtools      Whether this server provides developer tools
                                       (build docs and run tests)
-      --admin-name TEXT               The full name of the server maintainer
-      --admin-email TEXT              The email address of the server maintainer
+      --admin-name TEXT               The full name of the server administrator
+      --admin-email TEXT              The email address of the server administrator
       --help                          Show this message and exit.
 
 

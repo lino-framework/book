@@ -15,7 +15,6 @@ Welcome to the online documentation about the Lino framework.
    /demos
    community/index
    blog
-   getlino
 
 Guides
 ======
