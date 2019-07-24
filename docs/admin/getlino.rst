@@ -161,3 +161,13 @@ getlino.py local file.
       --dev / --no-dev      Whether to use development version of the application
       --server_url TEXT     The URL where this site is published
       --help                Show this message and exit.
+
+
+.. _ss:
+
+The ``startsite`` template
+==========================
+
+The `cookiecutter-startsite
+<https://github.com/lino-framework/cookiecutter-startsite>`__ project contains
+a cookiecutter template used by :cmd:`getlino startsite`.

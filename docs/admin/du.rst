@@ -11,8 +11,8 @@ These are just my personal notes. No warranty whatsoever.
     :depth: 1
 
 
-Manually diagnose
-=================
+Diagnose
+========
 
 Manually see the overall disk usage::
 
@@ -23,7 +23,32 @@ Manually see the overall disk usage::
     tmpfs           5.0M  4.0K  5.0M   1% /run/lock
     tmpfs           820M     0  820M   0% /run/shm
 
-Install `ncdu <https://dev.yorhel.nl/ncdu>`_
+
+Find the guilty
+===============
+
+Use `ncdu <https://dev.yorhel.nl/ncdu>`_
+
+Show all directories which have more than a GB::
+
+  $ du ~ -h | grep '[0-9\.]\+G'
+
+Show all subdirectories and their size (sorted by size)::
+
+  $ du -h -d1 | sort -h
+
+
+The ``-s`` or ``--summarize`` option means "only the specified directories, no subdirs"
+
+  $ du -sh ~/*
+
+Thanks to `Tracking down where disk space has gone
+<http://unix.stackexchange.com/questions/125429/tracking-down-where-disk-space-has-gone-on-linux>`_
+and `How To Find Large Files and Directories in Unix
+<https://www.unixtutorial.org/find-large-files-and-directories>`__ for hints.
+
+
+
 
 
 Automated diagnose
@@ -46,21 +71,6 @@ Clean up the cache of the packet manager::
   $ sudo apt-get clean
 
 
-Find the guilty
-===============
-
-Show all directories which have more than a GB::
-
-  $ du ~ -h | grep '[0-9\.]\+G'
-
-(thanks to `Tracking down where disk space has gone
-<http://unix.stackexchange.com/questions/125429/tracking-down-where-disk-space-has-gone-on-linux>`_)
-
-Show all subdirectories and their size::
-
-  $ du -h -d1
-
-  
 
 Cleaning the packaging system
 =============================
