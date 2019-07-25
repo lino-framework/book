@@ -1,29 +1,35 @@
+.. _admin.auth:
+
 Authentication
 ==============
 
-
-
-Lino defines some configuration settings for easily switching 
+Lino defines some configuration settings for easily switching
 between different commonly-used authentication methods.
-In other words, 
-Lino automatically decides which authentication method to 
-use and installs the required middleware
-depending on your :xfile:`settings.py` file.
 
-You may override these out-of-the-box methods by 
-specifying the :setting:`auth_middleware` setting. 
-If this is not empty, the logic described here does not apply.
+In other words, Lino automatically decides which authentication method to use
+and installs the required middleware depending on your :xfile:`settings.py`
+file.
 
-- If :setting:`user_model` is `None`, 
+You may override these out-of-the-box methods by specifying the
+:setting:`auth_middleware` setting. If this is not empty, the logic described
+below does not apply.
+
+
+- If :attr:`user_model <lino.core.site.Site.user_model>` is `None`,
   there's no authentication and `request.user` is always 
   an :class:`AnonymousUser <lino.core.perms.AnonymousUser>` instance.
+
+- :attr:`user_model <lino.core.site.Site.user_model>` is set automatically when
+  :mod:`lino.modlib.users` is installed.
   
-Otherwise, :setting:`user_model` 
-can be either 'auth.User' or 'auth.User' (the latter is not tested). 
-In both cases we have two more possibilities:
+- Otherwise, :attr:`user_model <lino.core.site.Site.user_model>`
+  can be either ``'users.User'`` or ``'auth.User'`` (the latter is not tested).
+
+When :attr:`user_model <lino.core.site.Site.user_model>` is set, we have two
+more possibilities:
 
 - If :setting:`remote_user_header` 
-  contains some value, your application will use 
+  contains some value, your application will be using
   `HTTP authentication`_
   
 - If :setting:`remote_user_header` is `None`, 
