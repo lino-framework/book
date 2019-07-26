@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-07-25
+==========
+
+Maybe fixed :ticket:`2986` (Automatic browser update fails when using a permalink)
+
+delete p.lv
+
 2019-07-23
 ==========
 
