@@ -29,7 +29,10 @@ local clone::
 
 
 
+The :cmd:`getlino configure` command
+====================================
 
+.. program:: getlino configure
 
 
 You simply run :cmd:`getlino configure` as root::
@@ -39,30 +42,27 @@ You simply run :cmd:`getlino configure` as root::
 This will ask you some questions about the general layout of this Lino server.
 You can answer ENTER to each of them if your don't care.
 
-
-In a Lino development environment you will probably specify your default work virtual environment
-as :option:`--shared_env`.
-
-
+In a Lino development environment you will probably specify your default work
+virtual environment as :option:`--shared-env`.
 
 You can also instruct getlino to not ask any question::
 
    $ sudo getlino.py configure --batch
 
-But please use the ``--batch`` option only when you really know that you want
+You should use the :option:`--batch` option only when you really know that you want
 it (e.g. in a Dockerfile).
 
 Your answers will be stored in the system-wide getlino config file, and the
 server will be configured according to your config file.
 
-.. program:: getlino configure
-
-The :cmd:`getlino configure` command
-====================================
 
 .. command:: getlino configure
 
     Options:
+
+    .. option:: --batch
+
+        Don't ask anything. Assume yes to all questions.
 
     .. option:: --https
 
@@ -78,6 +78,10 @@ The :cmd:`getlino configure` command
         sustainable.
 
 
+
+    .. option:: --shared-env PATH
+
+        Full path to your default virtualenv.
 
     .. option:: --server-domain NAME
 
@@ -122,6 +126,8 @@ The :cmd:`getlino configure` command
 The :cmd:`getlino startsite` command
 ====================================
 
+.. program:: getlino startsite
+
 Usage::
 
    $ sudo -H getlino.py startsite appname prjname [options]
@@ -139,8 +145,6 @@ The script will ask you some questions:
   foo2, mysite, first,
 
 
-
-.. program:: getlino startsite
 
 .. command:: getlino startsite
 
