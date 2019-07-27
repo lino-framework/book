@@ -17,12 +17,11 @@ multilingual database content <mldbc>`.  This tutorial explains what
 it is.
 
 Note that we are **not** talking about Internationalization (i18n)
-here.  *Internationalization* is when the *user interface* is in
+here.  *Internationalization* is when the *front end* can speak
 different languages.  Lino has nothing to add to the existing Django
 techniques about `Internationalization
 <https://docs.djangoproject.com/en/1.11/topics/i18n/>`__, that's why we
-deliberately didn't translate the user interface in this tutorial.
-
+deliberately didn't translate the fron end in this tutorial.
 
 
 When to use BabelFields
@@ -194,6 +193,15 @@ all the languages, but that's just because we are simplifying.
 In reality you can do it as sophisticated as you want, 
 reading the content from different sources.
 
+BabelFields and migrations
+==========================
+
+BabelFields cause the database structure to change when a server administrator
+changes the :attr:`languages <lino.core.site.Site.languages` setting of a site.
+That's not migratable by the application developer.  You might create a set of
+local migrations in that case.  But the easier way is to simply use the slower
+:doc:`Lino approach for data migrations </dev/datamig>` in the rare cases when
+you change the language distribution of a site.
 
 
 Related work

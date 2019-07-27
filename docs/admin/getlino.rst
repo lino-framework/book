@@ -64,7 +64,7 @@ server will be configured according to your config file.
 
         Don't ask anything. Assume yes to all questions.
 
-    .. option:: --shared-env PATH
+    .. option:: --shared-env
 
         Full path to your default virtualenv.
 
@@ -76,6 +76,10 @@ server will be configured according to your config file.
 
         If this is empty and a site requests a development version, this will
         be stored in a directory below the virtualenv dir.
+
+    .. option:: --projects-root
+
+        The root directory for sites on this server.
 
     .. option:: --webdav
 

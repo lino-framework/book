@@ -11,3 +11,4 @@ See also:
 
 - The :doc:`/dev/mldbc/index` tutorial
 - The :attr:`languages <lino.core.site.Site.languages>` setting
+- :doc:`/dev/datamig`

@@ -271,12 +271,21 @@ The `algus <https://github.com/lino-framework/algus>`__ repository is
 a template for new Lino applications.
 
 
+.. _cg:
+
+Community Guide
+---------------
+
+The `cg <https://github.com/lino-framework/cg>`__ repository.
+
+
 .. _manuals:
 
 manuals
 -------
 
-The `manuals <https://github.com/lino-framework/manuals>`__ repository
+Obsolete. The `manuals <https://github.com/lino-framework/manuals>`__
+repository no longer exists.
 
 
 
