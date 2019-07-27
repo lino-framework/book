@@ -64,6 +64,35 @@ server will be configured according to your config file.
 
         Don't ask anything. Assume yes to all questions.
 
+    .. option:: --shared-env PATH
+
+        Full path to your default virtualenv.
+
+    .. option:: --repositories-root PATH
+
+        Full path to your shared repositories root.  This is where getlino
+        should clone repositories of packages to be used in editable mode
+        ("development version").
+
+        If this is empty and a site requests a development version, this will
+        be stored in a directory below the virtualenv dir.
+
+    .. option:: --webdav
+
+        Whether new sites should have webdav.
+
+    .. option:: --env-link
+
+        Name of subdir or link to virtualenv.
+
+    .. option:: --repositories-link
+
+        Name of subdir or link to repositories.
+
+    .. option:: --server-domain NAME
+
+        Fully qualified domain name of this server.  Default is 'localhost'.
+
     .. option:: --https
 
         Whether this server provides secure http.
@@ -78,14 +107,6 @@ server will be configured according to your config file.
         sustainable.
 
 
-
-    .. option:: --shared-env PATH
-
-        Full path to your default virtualenv.
-
-    .. option:: --server-domain NAME
-
-        Fully qualified domain name of this server.  Default is 'localhost'.
 
 
 ::
