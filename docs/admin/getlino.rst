@@ -85,6 +85,10 @@ server will be configured according to your config file.
 
         Name of subdir or link to virtualenv.
 
+    .. option:: --local-prefix
+
+        The local prefix.
+
     .. option:: --repositories-link
 
         Name of subdir or link to repositories.
