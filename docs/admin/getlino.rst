@@ -38,7 +38,7 @@ The :cmd:`getlino configure` command
 
 You simply run :cmd:`getlino configure` as root::
 
-   $ sudo getlino.py configure
+   $ sudo getlino configure
 
 This will ask you some questions about the general layout of this Lino server.
 You can answer ENTER to each of them if your don't care.
@@ -48,7 +48,7 @@ virtual environment as :option:`--shared-env`.
 
 You can also instruct getlino to not ask any question::
 
-   $ sudo getlino.py configure --batch
+   $ sudo getlino configure --batch
 
 You should use the :option:`--batch` option only when you really know that you want
 it (e.g. in a Dockerfile).
@@ -128,8 +128,8 @@ server will be configured according to your config file.
 
 >>> from atelier.sheller import Sheller
 >>> shell = Sheller()
->>> shell('getlino.py configure --help')
-Usage: getlino.py configure [OPTIONS]
+>>> shell('getlino configure --help')
+Usage: getlino configure [OPTIONS]
 <BLANKLINE>
       Edit and/or create a configuration file and     set up this machine to
       become a Lino production server     according to the configuration
@@ -183,7 +183,7 @@ The :cmd:`getlino startsite` command
 
 Usage::
 
-   $ sudo -H getlino.py startsite appname prjname [options]
+   $ sudo -H getlino startsite appname prjname [options]
 
 The ``-H`` option instructs :cmd:`sudo` to use your home directory for caching
 its downloads.  You will appreciate this when you run the command a second
@@ -211,11 +211,11 @@ The script will ask you some questions:
 
         Usage example::
 
-            $ getlino.py startsite avanti mysite --dev-repos "lino xl"
+            $ getlino startsite avanti mysite --dev-repos "lino xl"
 
 
->>> shell('getlino.py startsite --help')
-Usage: getlino.py startsite [OPTIONS] APPNAME PRJNAME
+>>> shell('getlino startsite --help')
+Usage: getlino startsite [OPTIONS] APPNAME PRJNAME
 <BLANKLINE>
   Create a new Lino site.
 <BLANKLINE>
@@ -265,6 +265,7 @@ postgres, you simply call :cmd:`getlino configure` before calling
 Combining getlino and Docker
 ============================
 
+(needs revision)
 
 The `getlino <https://github.com/lino-framework/getlino>`__ repository contains a
 :xfile:`Dockerfile` which you
@@ -276,4 +277,15 @@ docker build -t getlino .
 This will create the docker image and use the current getlino.py script (It
 will not install getlino from pip servers ) , so be sure the also update your
 getlino.py local file.
+
+
+
+Tests
+=====
+
+
+>>> from getlino.utils import APPNAMES
+>>> print(APPNAMES)
+['noi', 'voga', 'cosi', 'avanti', 'amici', 'presto', 'weleup', 'welcht', 'min2']
+
 
