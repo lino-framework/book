@@ -12,7 +12,7 @@ PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
 install_requires = [
-    'Sphinx', 'getlino', 'lino', 'selenium', 'mock',
+    'Sphinx', 'lino', 'selenium', 'mock',
     'pisa', 'django-wkhtmltopdf',
     'django-iban', 'metafone',
     'djangorestframework',

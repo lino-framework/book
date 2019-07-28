@@ -280,12 +280,4 @@ getlino.py local file.
 
 
 
-Tests
-=====
-
-
->>> from getlino.utils import APPNAMES
->>> print(APPNAMES)
-['noi', 'voga', 'cosi', 'avanti', 'amici', 'presto', 'weleup', 'welcht', 'min2']
-
 
