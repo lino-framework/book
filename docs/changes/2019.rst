@@ -13,6 +13,11 @@
 .. contents::
   :local:
 
+2019-07-28
+==========
+Added wrapper action for daily calender view to allow for evnet inserting. 
+
+
 2019-07-25
 ==========
 
