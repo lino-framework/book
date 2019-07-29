@@ -6,12 +6,19 @@ The ``getlino`` package
 =======================
 
 The :mod:`getlino` package greatly helps with installing Lino to your computer.
-But it is still work in progress, so use it only for testing purposes.
+But it is still work in progress, so use it only for testing purposes. If you
+just want to quickly try a Lino, read :doc:`/dev/quick/install`.
 
-If you just want to quickly try a Lino, read :doc:`/dev/quick/install`.
+To install a production server, you need a Debian machine and a user account
+which has permission to run ``sudo``.
+
+You can also use getlino to simply configure a development environment. In that
+case you don't need root privileges.
+
 
 Installing getlino
 ==================
+
 
 You must install getlino into the system-wide Python::
 
@@ -43,8 +50,8 @@ You simply run :cmd:`getlino configure` as root::
 This will ask you some questions about the general layout of this Lino server.
 You can answer ENTER to each of them if your don't care.
 
-In a Lino development environment you will probably specify your default work
-virtual environment as :option:`--shared-env`.
+On a development server you will probably specify your default work virtual
+environment as :option:`--shared-env`.
 
 You can also instruct getlino to not ask any question::
 
@@ -59,11 +66,26 @@ server will be configured according to your config file.
 
 .. command:: getlino configure
 
+    Configure this machine as a :term:`Lino server`.  This is required before
+    you can run :cmd:`startsite`.
+
+    potentially includes
+    the installation of system packages and their configuration.
+
+    Create or update a Lino server configuration file and then set up this
+    machine to become a Lino production server according to the configuration
+    file.
+
     Options:
 
     .. option:: --batch
 
-        Don't ask anything. Assume yes to all questions.
+        Run in batch mode, i.e. without asking any questions.
+        Assume yes to all questions.
+
+    .. option:: --asroot
+
+        Whether you have root permissions and want to install system packages.
 
     .. option:: --shared-env
 
@@ -89,7 +111,6 @@ server will be configured according to your config file.
         a site says ``from lino_local.settings import *``, and the
         :xfile:`manage.py` sets :setting:`DJANGO_SETTINGS_MODULE` to
         ``'lino_local.mysite1.settings'``.
-
 
 
     .. option:: --webdav
@@ -126,20 +147,7 @@ server will be configured according to your config file.
         <https://www.dynu.com/DynamicDNS/IPUpdateClient/Linux>`__.
 
 
->>> from atelier.sheller import Sheller
->>> shell = Sheller()
->>> shell('getlino configure --help')
-Usage: getlino configure [OPTIONS]
-<BLANKLINE>
-      Edit and/or create a configuration file and     set up this machine to
-      become a Lino production server     according to the configuration
-      file.
-<BLANKLINE>
-Options:
-  --batch / --no-batch            Whether to run in batch mode, i.e. without
-                                  asking any questions.  Don't use this on a
-                                  machine that is already being used.
-  --prod / --no-prod              Whether this is a production server
+..
   --projects-root TEXT            Base directory for Lino sites
   --local-prefix TEXT             Prefix for for local server-wide importable
                                   packages
@@ -200,9 +208,23 @@ The script will ask you some questions:
 
 .. command:: getlino startsite
 
+    Create a new Lino site.
+
+    Usage: getlino startsite [OPTIONS] APPNAME PRJNAME
+
+    Arguments:
+
+    APPNAME : The application to run on the new site.
+
+    SITENAME : The name for the new site.
+
     .. option:: --batch
 
         Don't ask anything. Assume yes to all questions.
+
+    .. option:: --asroot
+
+        Whether you have root permissions and want to install system packages.
 
     .. option:: --dev-repos
 
@@ -212,26 +234,6 @@ The script will ask you some questions:
         Usage example::
 
             $ getlino startsite avanti mysite --dev-repos "lino xl"
-
-
->>> shell('getlino startsite --help')
-Usage: getlino startsite [OPTIONS] APPNAME PRJNAME
-<BLANKLINE>
-  Create a new Lino site.
-<BLANKLINE>
-  Arguments:
-<BLANKLINE>
-  APPNAME : The application to run on the new site.
-<BLANKLINE>
-  SITENAME : The name for the new site.
-<BLANKLINE>
-Options:
-  --batch / --no-batch  Whether to run in batch mode, i.e. without asking any
-                        questions.  Don't use this on a machine that is
-                        already being used.
-  --dev-repos TEXT      List of packages for which to install development
-                        version
-  --help                Show this message and exit.
 
 
 
