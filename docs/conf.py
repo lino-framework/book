@@ -354,7 +354,7 @@ if False:  # on_rtd:
 
 from atelier.sphinxconf import interproject
 interproject.configure(
-    globals(), 'atelier etgen')
+    globals(), 'atelier etgen getlino')
 
 
 intersphinx_mapping['cg'] = ('http://community.lino-framework.org/', None)
@@ -391,5 +391,3 @@ inheritance_graph_attrs.update(size='"48.0, 64.0"')
 inheritance_graph_attrs.update(fontsize=14, ratio='compress')
 
 suppress_warnings = ['image.nonlocal_uri']
-
-
