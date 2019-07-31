@@ -100,7 +100,7 @@ The :ref:`Lino Polls tutorial <lino.tutorial.polls>` shows the simplest form of
 defining an action by adding the :func:`action <lino.core.actions.action>`
 decorator to a method.
 
-Using a custom class::
+The following two approaches are equivalent. Using a custom class::
 
     class MyAction(dd.Action):
 
@@ -119,6 +119,8 @@ Using a decorator::
             # do something...
 
 
+The difference becomes visible e.g. when you have several similar actions and
+want them to inherit from a common base class.
 
 
 Example project

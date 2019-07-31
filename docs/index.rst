@@ -8,6 +8,8 @@ Welcome to the online documentation about the Lino framework.
    to help us with our work on Lino.
 
 
+Non-technical
+=============
 .. toctree::
    :maxdepth: 1
 
@@ -15,22 +17,16 @@ Welcome to the online documentation about the Lino framework.
    /demos
    community/index
    blog
+   User's Guide <guide/index>
 
-Guides
-======
+Technical docs
+==============
 
 .. toctree::
    :maxdepth: 2
 
-   User's Guide <guide/index>
    Developer's Guide </dev/index>
    Hoster's Guide </admin/index>
-
-References
-==========
-
-.. toctree::
-   :maxdepth: 2
 
    Specs </specs/index>
    API </api/index>

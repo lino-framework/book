@@ -3,9 +3,9 @@
 .. _lino.changes:
 .. _xl.changes:
 
-===========
-API changes
-===========
+=======
+Changes
+=======
 
 API changes in the :mod:`lino` and :mod:`lino_xl` packages.
 
@@ -20,4 +20,3 @@ API changes in the :mod:`lino` and :mod:`lino_xl` packages.
    one of these applications.  We provide automatic database migration
    to future versions only for applications with at least one
    registered production site.
-

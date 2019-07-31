@@ -13,6 +13,16 @@
 .. contents::
   :local:
 
+2019-07-31
+==========
+
+New feature in :mod:`lino_xl.lib.ledger` : :ref:`internal_clearings`
+(:ticket:`3106`).
+
+Fixed :ticket:`3135` (:class:`RecentComments <lino.modlib.comments.RecentComments>` is empty).
+
+Released XL 19.7.6 and Lino 19.7.5 to PyPI.
+
 2019-07-30
 ==========
 
