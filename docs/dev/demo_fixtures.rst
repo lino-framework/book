@@ -101,11 +101,10 @@ plugins:
 - :mod:`lino_xl.lib.deploy`
 - :mod:`lino_xl.lib.pages`
 
-- :mod:`lino_xl.lib.ledger` creates some *payment terms* and
-  an *account* for every item of
-  :class:`CommonAccounts <lino_xl.lib.ledger.CommonAccounts>`, creating a minimal
+- :mod:`lino_xl.lib.ledger` creates some *payment terms*.
+  Creates an *account* for every item of
+  :class:`CommonAccounts <lino_xl.lib.ledger.CommonAccounts>`, which results in a minimal
   accounts chart.
-
 
 - :mod:`lino_xl.lib.sheets`
   creates common sheet items and assigns them to their accounts.
@@ -119,8 +118,6 @@ plugins:
   January 1st (of the current year when demo_date is after April and of
   the previous year when demo_date is before April).
   See also :ref:`xl.specs.holidays`.
-
-- :mod:`lino_xl.lib.ledger` creates some common payment terms.
 
 - :mod:`lino_xl.lib.sales` creates some common paper types.
 

@@ -27,5 +27,4 @@ class Site(Site):
         yield ('countries', 'hide_region', True)
         yield ('countries', 'country_code', 'BE')
         yield ('ledger', 'use_pcmn', True)
-
-
+        yield ('ledger', 'worker_model', 'contacts.Person')

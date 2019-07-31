@@ -15,13 +15,12 @@ The apc demo project
 
 Implementation details
 ======================
-    
+
 >>> print(settings.SETTINGS_MODULE)
 lino_book.projects.apc.settings.doctests
 
 >>> print(' '.join([lng.name for lng in settings.SITE.languages]))
 de fr en
-    
 
 The demo database contains 69 persons and 23 companies.
 
@@ -43,7 +42,7 @@ The application menu
 
 Robin is the system administrator, he has a complete menu:
 
->>> ses = rt.login('robin') 
+>>> ses = rt.login('robin')
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
@@ -87,13 +86,77 @@ Database structure
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS +SKIP
 
 
+.. _internal_clearings:
+
+Internal clearings
+==================
+
+An **internal clearing** is when an employee acts as a temporary cashier by
+paying purchase invoices or taking money for sales invoices.  Lino
+
+When a site has a non-empty :attr:`worker_model
+<lino_xl.lib.ledger.Plugin.worker_model>`,  Lino adds a field :attr:`worker
+<lino_xl.lib.ledger.PaymentTerm.worker>` to each payment term.
+
+When an invoice is registered with a payment term having a :attr:`worker
+<lino_xl.lib.ledger.PaymentTerm.worker>`, Lino will book two additional
+movements: one which cleans the debit (credit) on the customer (provider) by
+booking back the total amount, and a second to book the invoiced amount as a
+debit or credit on the worker (using the :attr:`main_account
+<lino_xl.lib.ledger.TradeType.main_account>` for :attr:`TradeTypes.wages
+<lino_xl.lib.ledger.TradeTypes.wages>`).
+
+
+>>> rt.show(ledger.PaymentTerms, language="en", column_names="ref name_en months days worker")
+==================== ======================================= ======== ========= =================
+ Reference            Designation (en)                        Months   Days      Worker
+-------------------- --------------------------------------- -------- --------- -----------------
+ 07                   Payment seven days after invoice date   0        7
+ 10                   Payment ten days after invoice date     0        10
+ 30                   Payment 30 days after invoice date      0        30
+ 60                   Payment 60 days after invoice date      0        60
+ 90                   Payment 90 days after invoice date      0        90
+ EOM                  Payment end of month                    0        0
+ P30                  Prepayment 30%                          0        30
+ PIA                  Payment in advance                      0        0
+ robin                Cash Robin                              0        0         Mr Robin Dubois
+ **Total (9 rows)**                                           **0**    **227**
+==================== ======================================= ======== ========= =================
+<BLANKLINE>
+
+>>> dd.plugins.ledger.worker_model
+<class 'lino_xl.lib.contacts.models.Person'>
+
+And as we can see, our worker Robin owes us 9784,48 € because he took money for
+7 sales invoices:
+
+>>> robin = dd.plugins.ledger.worker_model.objects.get(first_name="Robin")
+>>> rt.show(ledger.MovementsByPartner, master_instance=robin)
+**7 offene Bewegungen (9784.48 €)**
+>>> rt.show(ledger.MovementsByPartner, master_instance=robin, nosummary=True)
+========== =============== ===================================================== ============== ======== ================= ===========
+ Valuta     Beleg           Beschreibung                                          Debit          Kredit   Match             Beglichen
+---------- --------------- ----------------------------------------------------- -------------- -------- ----------------- -----------
+ 08.03.15   *SLS 11/2015*   *(4550) Internal clearings* / *Radermacher Inge*      600,00                  **SLS 11/2015**   Nein
+ 07.01.15   *SLS 1/2015*    *(4550) Internal clearings* / *Radermacher Alfons*    280,00                  **SLS 1/2015**    Nein
+ 07.11.14   *SLS 49/2014*   *(4550) Internal clearings* / *Lazarus Line*          525,00                  **SLS 49/2014**   Nein
+ 10.09.14   *SLS 38/2014*   *(4550) Internal clearings* / *Ingels Irene*          2 039,82                **SLS 38/2014**   Nein
+ 11.06.14   *SLS 29/2014*   *(4550) Internal clearings* / *Evertz Bernd*          2 349,81                **SLS 29/2014**   Nein
+ 07.05.14   *SLS 19/2014*   *(4550) Internal clearings* / *Bastiaensen Laurent*   2 999,85                **SLS 19/2014**   Nein
+ 10.02.14   *SLS 9/2014*    *(4550) Internal clearings* / *Hans Flott & Co*       990,00                  **SLS 9/2014**    Nein
+                            **Saldo 9784.48 (7 Bewegungen)**                      **9 784,48**
+========== =============== ===================================================== ============== ======== ================= ===========
+<BLANKLINE>
+
+
+
 Miscellaneous
 =============
 
 Person #115 is not a Partner
 ----------------------------
 
-Person #115 (u'Altenberg Hans') is not a Partner (master_key 
+Person #115 (u'Altenberg Hans') is not a Partner (master_key
 is <django.db.models.fields.related.ForeignKey: partner>)
 
 >>> url = '/bs3/contacts/Person/115'
@@ -126,15 +189,15 @@ This demo database contains exactly 48 entries:
 >>> print(len(result['rows']))
 15
 
-The 15 is because Lino has a hard-coded default value of  
+The 15 is because Lino has a hard-coded default value of
 returning only 15 rows when no limit has been specified.
 
-In versions after :blogref:`20130903` you can change that limit 
-for a given table by overriding the 
+In versions after :blogref:`20130903` you can change that limit
+for a given table by overriding the
 :attr:`preview_limit <lino.core.tables.AbstractTable.preview_limit>`
 parameter of your table definition.
-Or you can change it globally for all your tables 
-by setting the 
+Or you can change it globally for all your tables
+by setting the
 :attr:`preview_limit <ad.Site.preview_limit>`
 Site attribute to either `None` or some bigger value.
 
@@ -165,11 +228,3 @@ and the same request now returns all 49 data rows:
 >>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
 49
-
-
-
-
-
-
-
-

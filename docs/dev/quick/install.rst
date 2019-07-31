@@ -11,17 +11,17 @@ site you will read :doc:`/admin/install`.
 
 Basically you open a terminal and type::
 
-    $ virtualenv env
+    $ virtualenv -p python3 env
     $ . env/bin/activate
     $ pip install lino_cosi
 
 Then create a local project::
-    
+
     $ mkdir mylino
     $ touch mylino/__init__.py
     $ nano mylino/settings.py
 
-Add the following  content to your :xfile:`settings.py` file::
+Paste the following content into your :xfile:`settings.py` file::
 
     from lino_cosi.lib.cosi.settings import *
     SITE = Site(globals())
@@ -33,12 +33,9 @@ Tell Django and Python to use your settings::
     $ export PYTHONPATH=.
 
 Then initialize and populate the demo database::
-  
+
     $ django-admin prep
 
 And finally we launch a development server::
-  
+
     $ django-admin runserver
-
-    
-

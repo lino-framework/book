@@ -12,7 +12,7 @@ the :func:`show_sql_queries <lino.api.doctest.show_sql_queries>`
 function.
 
 We use the :mod:`lino_book.projects.lydia` demo database.
-    
+
 >>> import lino
 >>> lino.startup('lino_book.projects.lydia.settings.demo')
 >>> from lino.api.doctest import *
@@ -22,7 +22,7 @@ Startup
 
 During startup there are a few SQL queries:
 
->>> show_sql_queries() 
+>>> show_sql_queries()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 SELECT excerpts_excerpttype.id, excerpts_excerpttype.name, excerpts_excerpttype.build_method, excerpts_excerpttype.template, excerpts_excerpttype.attach_to_email, excerpts_excerpttype.email_template, excerpts_excerpttype.certifying, excerpts_excerpttype.remark, excerpts_excerpttype.body_template, excerpts_excerpttype.content_type_id, excerpts_excerpttype.primary, excerpts_excerpttype.backward_compat, excerpts_excerpttype.print_recipient, excerpts_excerpttype.print_directly, excerpts_excerpttype.shortcut, excerpts_excerpttype.name_de, excerpts_excerpttype.name_fr FROM excerpts_excerpttype ORDER BY excerpts_excerpttype.id ASC
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ...
@@ -60,7 +60,7 @@ Subquery expression
 >>> reset_sql_queries()
 >>> obj.run_update_plan(ses)
 >>> show_sql_summary()
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF -SKIP
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 ========================= =========== =======
  table                     stmt_type   count
 ------------------------- ----------- -------
@@ -74,7 +74,7 @@ Subquery expression
  django_content_type       SELECT      13
  excerpts_excerpt          SELECT      96
  invoicing_item            SELECT      96
- ledger_account            SELECT      23
+ ledger_account            SELECT      24
  ledger_accountingperiod   SELECT      2
  notes_note                SELECT      96
  sales_invoiceitem         SELECT      96

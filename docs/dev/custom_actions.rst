@@ -1,5 +1,5 @@
 .. doctest docs/dev/custom_actions.rst
-   
+
 ======================
 Writing custom actions
 ======================
@@ -16,7 +16,7 @@ Examples of custom actions defined by certain libraries:
 - The :class:`Duplicate <lino.mixins.duplicable.Duplicate>` action for
   creating a copy of the current row.
 
-- In :mod:`lino.mixins.printable`: 
+- In :mod:`lino.mixins.printable`:
   :class:`DirectPrintAction <lino.mixins.printable.DirectPrintAction>`,
   :class:`CachedPrintAction <lino.mixins.printable.CachedPrintAction>`,
   :class:`ClearCacheAction <lino.mixins.printable.ClearCacheAction>`
@@ -69,12 +69,12 @@ The action method itself must have the following signature::
     def vote(self, ar, **kw):
         ...
         return ar.success(kw)
-        
+
 Where ``ar`` is an :class:`ActionRequest
 <lino.core.requests.ActionRequest>` instance that holds information
 about the web request which called the action.
 
-- :meth:`callback <lino.core.requests.BaseRequest.callback>` 
+- :meth:`callback <lino.core.requests.BaseRequest.callback>`
   and :meth:`confirm <lino.core.requests.BaseRequest.callback>`
   lets you define a dialog with the user using callbacks.
 
@@ -87,38 +87,49 @@ about the web request which called the action.
 The :func:`action` decorator
 ============================
 
-.. function:: lino.core.actions.action
+.. currentmodule:: lino.core.actions
 
-    Decorator to define custom actions.
-    
-    The decorated function will be installed as the actions's
-    :meth:`run_from_ui <Action.run_from_ui>` method.
+You can use the :func:`action` decorator to to define custom actions.
 
-    Same signature as :meth:`Action.__init__`.
-    In practice you'll possibly use:
-    :attr:`label <Action.label>`,
-    :attr:`help_text <Action.help_text>` and
-    :attr:`required_roles <lino.core.permissions.Permittable.required_roles>`.
+Any arguments you pass to the decorator are forwarded to
+:meth:`Action.__init__`. In practice you'll possibly use: :attr:`label
+<Action.label>`, :attr:`help_text <Action.help_text>` and :attr:`required_roles
+<lino.core.permissions.Permittable.required_roles>`.
 
-              
+The :ref:`Lino Polls tutorial <lino.tutorial.polls>` shows the simplest form of
+defining an action by adding the :func:`action <lino.core.actions.action>`
+decorator to a method.
 
-The :ref:`Lino Polls tutorial <lino.tutorial.polls>` shows the
-simplest form of defining an action by adding the :func:`action
-<lino.core.actions.action>` decorator to a method.
+Using a custom class::
 
-This decoratior actually turns the method into an instance of
-:class:`lino.core.actions.Action <Action>`
+    class MyAction(dd.Action):
+
+        def run_from_ui(self, ar):
+            # do something...
+
+    class MyModel(dd.Model):
+        my_action = MyAction()
+
+Using a decorator::
+
+    class MyModel(dd.Model):
+
+        @dd.action()
+        def my_action(self, ar):
+            # do something...
+
+
 
 
 Example project
 ===============
-  
+
 The :mod:`lino_book.projects.actions` project shows some methods of
 defining actions.  Here is the :xfile:`models.py` file used for this
 small demo project:
 
 .. literalinclude:: /../../book/lino_book/projects/actions/models.py
- 
+
 
 >>> from lino import startup
 >>> startup('lino_book.projects.actions.settings')
@@ -129,8 +140,8 @@ To demonstrate this, we log in and instantiate an `Moo` object:
 >>> ses = rt.login()
 >>> obj = Moo()
 
-Running an action programmatically is done using the 
-:meth:`run <lino.core.requests.BaseRequest.run>` method of your 
+Running an action programmatically is done using the
+:meth:`run <lino.core.requests.BaseRequest.run>` method of your
 session.
 
 Since `a` and `m` are defined on the Model, we can run them directly:
@@ -144,7 +155,7 @@ True
 >>> print(ses.run(obj.m)['message'])
 Called m() on Moo object
 
-This wouldn't work for `t` and `b` since these are defined on `Moos` 
+This wouldn't work for `t` and `b` since these are defined on `Moos`
 (which is only one of many possible tables on model `Moo`):
 
 >>> ses.run(obj.t)
@@ -153,7 +164,7 @@ Traceback (most recent call last):
 AttributeError: 'Moo' object has no attribute 't'
 
 So in this case we need to specify them table as the first parameter.
-And because they are row actions, we need to pass the instance as 
+And because they are row actions, we need to pass the instance as
 mandatory first argument:
 
 >>> print(ses.run(S1.t, obj)['message'])
@@ -162,7 +173,7 @@ Called t() on Moo object
 >>> print(ses.run(S1.b, obj)['message'])
 Called a() on Moo object
 
-  
+
 How to "remove" an inherited action or collected from a table
 -------------------------------------------------------------
 
@@ -181,7 +192,7 @@ Here are the actions on Moos:
  <lino.core.actions.Action t ('t')>]
 
 A subclass inherits all actions from her parent.
-When I define a second table `S1(Moos)`, then `S1` will have 
+When I define a second table `S1(Moos)`, then `S1` will have
 both actions `m` and `t`:
 
 >>> pprint([ba.action for ba in S1.get_actions()])
@@ -224,11 +235,10 @@ Examples of dialog actions:
 
 - users.Users.change_password
 
-  
+
 - pcsw.Clients.refuse_client
 - countries.Places.merge_row
-- contacts.Persons.create_household  
+- contacts.Persons.create_household
 - coachings.Coachings.create_visit
 - cal.Guests.checkin
 - lino_xl.lib.sales.VatProductInvoice.make_copy MakeCopy
-

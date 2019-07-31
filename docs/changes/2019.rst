@@ -13,9 +13,16 @@
 .. contents::
   :local:
 
+2019-07-30
+==========
+
+Released XL 19.7.5 and Lino 19.7.4 to PyPI.
+
+
 2019-07-28
 ==========
-Added wrapper action for daily calender view to allow for evnet inserting. 
+
+Added wrapper action for daily calender view to allow for event inserting.
 
 
 2019-07-25
@@ -418,7 +425,7 @@ which we don't have a unique voucher type.
 2019-05-03
 ==========
 
-Added :attr:`lino.utils.Parametrizable.use_detail_param_panel` which causes  
+Added :attr:`lino.utils.Parametrizable.use_detail_param_panel` which causes
 he params panel to be shown in the detail view.
 
 The new calendar view seems ready for a first presentation. Congratulations to
@@ -677,7 +684,7 @@ order item  is now a single-line :class:`CharField` (not a multi-line
 2019-03-29
 ==========
 
-:mod:`lino.utils.choosers` now accepts choosers on char fields 
+:mod:`lino.utils.choosers` now accepts choosers on char fields
 without a display method.
 Lino catches edge case of bad extjs code generation. Ticket #2916
 
@@ -736,8 +743,8 @@ actor info.  Used by the chooser for :attr:`lino_noi.lib.tickets.Ticket.site`
 2019-03-20
 ==========
 
-Fixed notification order on dashboard. 
-Added .dashboard-item class to divs in the dashboard. 
+Fixed notification order on dashboard.
+Added .dashboard-item class to divs in the dashboard.
 Made mark_all_seen action of MyMessages render in dashboard, and not require post-run refresh.
 
 2019-03-19
@@ -801,7 +808,7 @@ automatically)
 2019-03-15
 ==========
 
-Fixed file upload dialog not closing correctly. 
+Fixed file upload dialog not closing correctly.
 
 2019-03-14
 ==========
@@ -811,9 +818,9 @@ Added ensure_csrf_cookie decorator to all entry point views in extjs.
 2019-03-13
 ==========
 
-Added `mobile_server_url` attr to SITE, for use in sending notification emails. 
+Added `mobile_server_url` attr to SITE, for use in sending notification emails.
 Have MailRenderer generate urls using `actor.model.get_default_table().__name__` rather than `actor.model.__name__`
-Means that the url will always point to an actor rather than a model which need to be redirected to an actor. 
+Means that the url will always point to an actor rather than a model which need to be redirected to an actor.
 
 2019-03-12
 ==========
@@ -837,10 +844,10 @@ Released XL 19.3.1 to PyPI.
 2019-03-08
 ==========
 
-Added alert_eval_js responce option, which is a js string that is evaluated 
+Added alert_eval_js responce option, which is a js string that is evaluated
 after the alert dialog is closed.
 
-Added Version checking, so that the server alerts the browser when it's running 
+Added Version checking, so that the server alerts the browser when it's running
 an old version of lino.
 
 2019-03-07 (v 19.3.0)
@@ -853,9 +860,9 @@ Released XL 19.3.0 to PyPI.
 2019-03-06
 ==========
 
-Added CSS classnames to insert, detail, form and actionForm Panel for use in 
+Added CSS classnames to insert, detail, form and actionForm Panel for use in
 e2e testing.
-Also for classnames for confirmation dialogs and main-menu, and action panel 
+Also for classnames for confirmation dialogs and main-menu, and action panel
 ok + cancel buttons.
 
 2019-03-04
@@ -1031,7 +1038,7 @@ progress.
 ==========
 
 Field values for actons with paramiers no long need to be an array with a key of 'fv'.
-They now can be included in the root of the data object with the field name as the key. 
+They now can be included in the root of the data object with the field name as the key.
 
 
 
@@ -1182,5 +1189,3 @@ We released XL 19.1.0
 
 The fields :attr:`addr2` and :attr:`prefix` are now mostly hidden in forms. We
 consider them obsolete.  :mod:`lino_xl.lib.contacts`.
-
-

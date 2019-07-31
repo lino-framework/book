@@ -46,6 +46,7 @@ Journals
  4511 VAT returnable                     No              No          4511
  4512 VAT deductible                     No              No          4512
  4513 VAT declared                       No              No          4513
+ 4550 Internal clearings                 Yes             Yes         4550
  4600 Tax Offices                        Yes             Yes         4600
  4900 Waiting account                    Yes             Yes         4900
  **5 Financial assets & liabilities**    No              No          5

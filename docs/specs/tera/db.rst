@@ -95,7 +95,7 @@ The database models
  invoicing.Plan              invoicing.Plans                8         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
  invoicing.Tariff            invoicing.Tariffs              7         2
- ledger.Account              ledger.Accounts                20        27
+ ledger.Account              ledger.Accounts                20        28
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
  ledger.Journal              ledger.Journals                24        9
@@ -277,6 +277,3 @@ behaviour. See also :doc:`/dev/delete`.
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>
-
-
-

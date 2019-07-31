@@ -15,7 +15,7 @@ application.
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-   
+
 >>> import lino
 >>> lino.startup('lino_book.projects.chatter.settings.demo')
 >>> from lino.api.shell import *
@@ -64,13 +64,13 @@ To enable desktop notifications, there are some requirements:
 
 - :attr:`lino.core.site.Site.use_websockets` must be `True`
 - notifications must be properly installed on the server
-  
+
 - the user must have their browser open and have
   signed in to the Lino site
-  
+
 - the user must give their browser permission to show desktop
   notifications from the Lino site
-  
+
 
 Marking notifications as seen
 =============================
@@ -82,7 +82,7 @@ message as seen.
 
 A common caveat is that Lino does not know whether you saw the desktop
 notification or the email.  That's why all notifications remain on
-your dashboard until you tick them off explicitly.  
+your dashboard until you tick them off explicitly.
 
 - It can be disturbing to read a message again in the dasboard if you
   have just read by email or as a desktop notification.
@@ -114,7 +114,7 @@ Possible optimizations of the system:
   because Lino refreshes the whole dashboard after every click.  We
   could avoid this using javascript which sets the item to hidden
   instead of calling refresh.
-  
+
 - Add a &notify=123456" (the id of the message) to every link in the
   email so that when the user follows one of them, the message can get
   marked as seen.
@@ -135,8 +135,8 @@ Notification messages
         The recipient.
 
     .. attribute:: owner
- 
-       The database object which controls this message. 
+
+       The database object which controls this message.
 
        This may be `None`, which means that the message has no
        controller.
@@ -169,9 +169,9 @@ Notification messages
 
         The emitting user does not get notified, except when working
         as another user or when notify_myself is set.
-           
+
     .. method:: create_message(cls, user, owner=None, **kwargs)
-               
+
         Create a message unless that user has already been notified
         about that object.
 
@@ -181,24 +181,24 @@ Notification messages
         given mail_mode `mm`.
 
     .. method:: send_browser_message_for_all_users(self, user)
-                
+
         Send_message to all connected users
-        
+
     .. method:: send_browser_message(self, user)
-                
+
         Send_message to the user's browser
 
 
 .. class:: Messages
-           
+
     Base for all tables of messages.
 
 .. class:: AllMessages(Messages)
-           
+
     The gobal list of all messages.
 
 .. class:: MyMessages(Messages)
-           
+
     Shows messages emitted to me.
 
 
@@ -226,29 +226,29 @@ Change notifiers
     TODO: rename ChangeNotifier to ChangeNotifier
 
     .. method:: get_change_subject(self, ar, cw)
-                
+
         Returns the subject text of the notification message to emit.
 
         The default implementation returns a message of style
-        "{user} modified|created {object}" .  
+        "{user} modified|created {object}" .
 
         Returning None or an empty string means to suppress
         notification.
 
     .. method:: add_change_watcher(self, user)
-                
+
         Parameters:
 
         :user: The user that will be linked to this object as a change watcher.
 
-                
+
     .. method:: get_change_body(self, ar, cw)
-                
+
         Returns the body text of the notification message to emit.
 
         The default implementation returns a message of style
         "{object} has been modified by {user}" followed by a summary
-        of the changes.  
+        of the changes.
 
     .. method:: get_change_info(self, ar, cw)
         Return a list of HTML elements to be inserted into the body.
@@ -258,7 +258,7 @@ Change notifiers
         :class:`lino_xl.lib.notes.models.Note`
 
     .. method:: get_change_owner(self)
-                
+
         Return the owner of the notification to emit.
 
         The "owner" is "the database object we are talking about"
@@ -286,15 +286,15 @@ Notifying actions
     .. attribute:: notify_silent
 
     .. method:: get_notify_subject(self, ar, obj)
-                
+
         Return the default value of the `notify_subject` field.
-        
+
     .. method:: get_notify_body(self, ar, obj)
-                
+
         Return the default value of the `notify_body` field.
 
     .. method:: get_notify_owner(self, ar, obj)
-           
+
         Expected to return the :attr:`owner
         lino.modlib.notify.Message.owner>` of the message.
 
@@ -308,7 +308,7 @@ Notifying actions
         Yield a list of users to be notified.
 
         `ar` is the action request, `obj` the object on which the
-        action is running, 
+        action is running,
 
 
 A :class:`NotifyingAction` is a dialog action which potentially sends
@@ -362,7 +362,7 @@ Utility functions
 .. function:: send_pending_emails_daily()
 
 .. function:: clear_seen_messages
-              
+
     Daily task which deletes messages older than :attr:`remove_after`
     hours.
 
@@ -370,12 +370,12 @@ Choicelists
 ===========
 
 .. class:: MessageTypes
-           
+
     The list of possible choices for the `message_type` field
     of a :class:`Message`.
-              
+
 .. class:: MailModes
-           
+
     How the system should send email notifications to a user.
 
     .. attribute:: silent
@@ -389,19 +389,19 @@ Choicelists
 
 Actions
 =======
-    
+
 .. class:: MarkSeen
-           
+
    Mark this message as seen.
 
 .. class:: MarkAllSeen
-           
+
    Mark all messages as seen.
-   
+
 .. class:: ClearSeen
-           
+
    Mark this message as not yet seen.
-   
+
 
 Templates used by this plugin
 =============================
@@ -421,4 +421,3 @@ Templates used by this plugin
 
     - ``ar`` -- The action request which caused the message. a
       :class:`BaseRequest <lino.core.requests.BaseRequest>` instance.
-
