@@ -4,6 +4,8 @@
 Installing a Lino application on a production server
 ====================================================
 
+This page needs revision. Use :doc:`/getlino` instead.
+
 .. _pip: http://www.pip-installer.org/en/latest/
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 
@@ -22,11 +24,10 @@ Prerequisites
 You need shell access to a **Linux server**, i.e. a virtual or
 physical machine with a Linux operating system running in a network.
 
-We recommend a **stable Debian** as operating system.  If you prefer
-some other Linux distribution, that should be no problem. There will
-be some differences, but you probably know them.  You need a **web
-server**, **Python 2**, some database (e.g. **MySQL** or
-**PostGreSQL**) running on that server.
+We recommend a **stable Debian** as operating system.  If you prefer some other
+Linux distribution, that should be no problem. There will be some differences,
+but you probably know them.  You need a **web server**, **Python**, some
+database (e.g. **MySQL** or **PostGreSQL**) running on that server.
 
 If your customers want to access their Lino from outside of their
 intranet, then you need to setup a **domain name** and configure
@@ -43,12 +44,12 @@ System users
 ============
 
 Before you do anything on your server, create one or several users who
-will be the *maintainers* of this site::
+will be the :term:`server administrator`::
 
     $ sudo adduser joe
 
-Maintainers must be members of the `sudo` and `www-data` groups::
-  
+Server administrators must be members of the `sudo` and `www-data` groups::
+
     $ sudo adduser joe sudo
     $ sudo adduser joe www-data
 
@@ -60,20 +61,20 @@ Maintainers must be members of the `sudo` and `www-data` groups::
 All maintainers must have a umask `002` or `007` (not `022` or `077`
 as is the default value).
 
-Edit either the file :file:`~/.bashrc` of
-each user or the file :file:`/etc/bash.bashrc` (site-wide for all
-users) and add the following line at the end::
+Edit either the file :file:`~/.bashrc` of each user or the file
+:file:`/etc/bash.bashrc` (site-wide for all users) and add the following line at
+the end::
 
     umask 002
- 
-Add one line to your :file:`/etc/apache2/envvars` file::
+
+.. Add one line to your :file:`/etc/apache2/envvars` file::
 
     umask 002
 
 The umask is used to mask (disable) certain file permissions from
 any new file created by a given user. See :doc:`umask` for more
 detailed information.
-           
+
 
 
 Lino directory structure
@@ -108,17 +109,13 @@ directory structure on your Lino production server::
             ├─── ...
                 └─── ...
 
-This structure is recommended even if you have only one Lino site on
-your server because you never know whether the customer some day
-change their mind and ask e.g. for a test site as well.
+This structure is recommended even if you have only one Lino site on your server
+because you never know whether the customer some day change their mind and ask
+e.g. for a :term:`preview site` as well.
 
 It is possible to use symbolic links for the :file:`env` and
-:file:`repositories` in order to have several sites working on the
-same virtual environment.
-
-.. However please note, if you choose the use the example
-   configuration files contained in this guide. Ensure that the above
-   directory structure is maintained.
+:file:`repositories` in order to have several sites working on the same virtual
+environment.
 
 
 Some useful additions to your shell
@@ -129,7 +126,7 @@ Add the following to your system-wide :file:`/etc/bash.bashrc`:
 .. literalinclude:: bash_aliases
 
 If you want :ref:`log2syslog`, then add also this:
-                    
+
 .. literalinclude:: log2syslog
 
 After these changes you must close and reopen your terminal to
@@ -138,14 +135,6 @@ directory and activate its Python environment::
 
   $ go prj1
   $ a
-  
-
-    
-Run the :xfile:`startsite.sh` script
-====================================
-
-See :doc:`startsite`.
-
 
 Project directories
 ===================
@@ -201,7 +190,7 @@ Initialize the database
      $ go prj1
      $ python manage.py prep
 
-     
+
 Collecting static files
 =======================
 
@@ -253,4 +242,3 @@ From here you may edit your :xfile:`settings.py` file to import a different
 settings module from another repo.
 
 Return to the index for more information :doc:`mysql_install`.
-

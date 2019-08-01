@@ -25,6 +25,7 @@ Technical docs
 .. toctree::
    :maxdepth: 2
 
+   getlino
    Developer's Guide </dev/index>
    Hoster's Guide </admin/index>
 

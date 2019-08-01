@@ -4,6 +4,8 @@
 Installing Lino
 ===============
 
+This page needs revision. Use :doc:`/getlino` instead.
+
 This document explains how to install Lino on your machine in order to write
 applications.  If you prefer using the latest version, then you should rather
 follow :doc:`/dev/install`. For deploying Lino applications on a production

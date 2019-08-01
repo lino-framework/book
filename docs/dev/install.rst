@@ -5,6 +5,8 @@
 Installing a Lino development environment
 =========================================
 
+This page needs revision. Use :doc:`/getlino` instead.
+
 .. _invoke: http://www.pyinvoke.org/
 .. _atelier: http://atelier.lino-framework.org/
 .. _pycrypto: https://pypi.python.org/pypi/pycrypto
@@ -65,16 +67,16 @@ without breaking any other programs that use python).
 
 First you create a *virgin environment* using::
 
-    $ virtualenv --python=python2 ~/pythonenvs/py2
+    $ virtualenv --python=python3 ~/pythonenvs/py3
 
-You might prefer to install Python 3 here (as explained under `System
+You might prefer to install Python 2 here (as explained under `System
 requirements`_).  Actually you can install both, in that case keep in
 mind that they are separate environments and you must do the
 installation for each of them.
 
 To *activate* this environment, you type::
 
-    $ . ~/pythonenvs/py2/bin/activate
+    $ . ~/pythonenvs/py3/bin/activate
 
 The dot (``.``) is a synonym for the :cmd:`source` command. If you
 didn't know it, read the `manpage
@@ -95,7 +97,7 @@ file::
     alias p2='. ~/pythonenvs/py2/bin/activate'
     alias p3='. ~/pythonenvs/py3/bin/activate'
 
-  
+
 .. rubric:: Notes
 
 .. We chose ``env`` for our environment. You are free to choose any
@@ -192,7 +194,7 @@ submit any pull requests, then you can reduce download size by adding
 by far the biggest repository)::
 
   $ git clone --depth 1 -b master https://github.com/lino-framework/lino.git
-  
+
 (as explained in `this question on stackoverflow
 <http://stackoverflow.com/questions/1209999/using-git-to-get-just-the-latest-revision>`__
 or Nicola Paolucci's blog entry `How to handle big repositories with
@@ -271,7 +273,7 @@ How to see what's installed in your current virtualenv::
     $ pip freeze
 
 The output will be about 60 lines of text, here is an excerpt::
-  
+
     alabaster==0.7.9
     appy==0.9.4
     argh==0.26.2
@@ -299,7 +301,7 @@ You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
 a development server.  Before starting a web server on a project for
 the first time, you must initialize its database using the
 :manage:`prep` command::
-  
+
     $ cd ~/repositories/book/lino_book/projects/min1
     $ python manage.py prep
     $ python manage.py runserver
@@ -317,9 +319,6 @@ Exercises
 =========
 
 #.  Sign in and play around.
-    
+
 #.  Create some persons and organizations. Don't enter lots of data
     because we are going to throw it away soon.
-
-
-

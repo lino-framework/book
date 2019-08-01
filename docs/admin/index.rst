@@ -36,7 +36,6 @@ Installation
 .. toctree::
     :maxdepth: 2
 
-    getlino
     install
     media
     mysql_install
@@ -55,7 +54,7 @@ Maintenance
 
 .. toctree::
     :maxdepth: 2
-   
+
     settings
     snapshot
     reload_services
@@ -65,14 +64,14 @@ Maintenance
     bash_aliases
     logging
     new_site
-   
+
 
 Printing
 --------
 
 .. toctree::
     :maxdepth: 2
-   
+
     printing
     using_appy_pod
     excerpts
@@ -83,9 +82,9 @@ Other
 
 .. toctree::
     :maxdepth: 2
-   
+
     pythonpath
-   
+
     permissions
     umask
     apache_http_auth
@@ -101,13 +100,13 @@ Other
     du
     startsite
 
-    
- 
-    
+
+
+
 
 .. toctree::
     :hidden:
-       
+
     djangosite_local
     mass_hosting
     datamig

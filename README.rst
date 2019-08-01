@@ -24,7 +24,7 @@ suite with doctest-based tests for the Lino framework.
 The **Lino Book** is the central documentation tree of the Lino
 framework.  It is visible on `www.lino-framework.org
 <http://www.lino-framework.org>`__ and on `lino.readthedocs.io
-<http://lino.readthedocs.io>`__.  
+<http://lino.readthedocs.io>`__.
 
 The ``lino_book`` Python package is a collection of small example Lino
 applications used for educational and testing purposes.
@@ -35,6 +35,6 @@ are tested and documented here.
 
 Your feedback is welcome.  Our `community page
 <http://www.lino-framework.org/community>`__ explains how to contact us.
-  
+
 
 
