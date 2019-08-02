@@ -64,6 +64,8 @@ Maintenance
     bash_aliases
     logging
     new_site
+    datamig
+    djangomig
 
 
 Printing
@@ -109,7 +111,6 @@ Other
 
     djangosite_local
     mass_hosting
-    datamig
     /davlink/index
     /eidreader/index
     /java/index

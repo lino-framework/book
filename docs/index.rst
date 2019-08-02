@@ -25,9 +25,11 @@ Technical docs
 .. toctree::
    :maxdepth: 2
 
-   getlino
-   Developer's Guide </dev/index>
-   Hoster's Guide </admin/index>
+   install <getlino>
+   newbies </dev/newbies/index>
+   appdevs </dev/quick/index>
+   coredevs </dev/index>
+   hosters </admin/index>
 
    Specs </specs/index>
    API </api/index>
@@ -40,3 +42,5 @@ Technical docs
    examples/belref/index
    /tours/index
    copyright
+   /dev/quick/install
+   /dev/install

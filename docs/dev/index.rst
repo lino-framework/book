@@ -1,16 +1,13 @@
 .. _lino.dev:
 
-=================
-Developer's Guide
-=================
+======================
+Core Developer's Guide
+======================
 
 
 .. toctree::
    :maxdepth: 2
-              
-   newbies/prerequisites
-   newbies/index
-   /dev/quick/index
+
    getstarted
    /dev/about
    /dev/framework
@@ -37,14 +34,14 @@ Special topics
 
 Drafts
 ======
-   
+
 .. toctree::
    :maxdepth: 1
 
    /tutorials/tested_docs/index
    setup
    translate/index
-   
+
    userdocs
    signals
    intro
@@ -93,7 +90,7 @@ Other
    interview
    mixins
 
-  
+
 A **Lino developer** is a guy who knows the Python programming
 language and the Lino concepts so that they can use it to write an
 application.  Developers can be **volunteer** contributors,
@@ -129,6 +126,3 @@ We can differentiate developers by their *primary interest*:
 
 - **Application developers** write their own independent Lino
   applications and publish them using their preferred license.
-
-
-

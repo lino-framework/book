@@ -1,6 +1,6 @@
-=============================
-Installing Lino using getlino
-=============================
+===============
+Installing Lino
+===============
 
 This page gives an overview on how to install Lino on your computer. Follow the
 links for more details.
@@ -35,37 +35,33 @@ Create a new virtual environment, activate it, install getlino, run
   $ cd first
   $ python manage.py runserver
 
+Point your browser to http://localhost:8000
+
+
 Configure a Lino development environment
 ========================================
 
 Activate the virtual environment which you want to use for your Lino projects.
 
-  $ . path/to/my/env/bin/activate
+::
+
+  $ . path/to/my/virtualenv/bin/activate
   $ pip install getlino
   $ getlino configure --sites-base .
-  $ getlino startsite noi first --batch
+  $ getlino startsite noi first --dev-repos "lino xl noi book"
   $ cd first
   $ python manage.py runserver
 
+Point your browser to http://localhost:8000
 
+Configure a Lino production server
+==================================
 
-.. _ss:
+To make a production server you install getlino into the system-wide Python 3
+environment.
 
-The ``startsite`` template
-==========================
+   $ sudo -H pip3 install getlino
+   $ sudo -H getlino configure --sites-base .
+   $ sudo -H getlino startsite noi first --batch
 
-The `cookiecutter-startsite
-<https://github.com/lino-framework/cookiecutter-startsite>`__ project contains
-a cookiecutter template used by :cmd:`getlino startsite`.
-
-
-Notes
-=====
-
-When you maintain a Lino server, then you don't want to decide for each new
-site which database engine to use. You decide this once for all during
-:cmd:`getlino configure`. In general, `apt-get install` is called only during
-:cmd:`getlino configure`, never during :cmd:`getlino startsite`. If you have a
-server with some mysql sites and exceptionally want to install a site with
-postgres, you simply call :cmd:`getlino configure` before calling
-:cmd:`getlino startsite`.
+Point your browser to http://first.localhost
