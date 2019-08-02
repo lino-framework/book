@@ -4,12 +4,12 @@ mo = {
     "c":6
 }
 
-print type(mo)
+print(type(mo))
 
-print mo['a']
+print(mo['a'])
 
 
 import os
-print type(os.environ)
+print(type(os.environ))
 
-print os.environ['PATH']
+print(os.environ['PATH'])
