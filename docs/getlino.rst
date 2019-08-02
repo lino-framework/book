@@ -30,8 +30,8 @@ Create a new virtual environment, activate it, install getlino, run
   $ virtualenv -p python3 env
   $ . env/bin/activate
   $ pip install getlino
-  $ getlino configure --batch --sites-base .
-  $ getlino startsite noi first --batch
+  $ getlino configure --sites-base .
+  $ getlino startsite noi first
   $ cd first
   $ python manage.py runserver
 
@@ -62,6 +62,6 @@ environment.
 
    $ sudo -H pip3 install getlino
    $ sudo -H getlino configure --sites-base .
-   $ sudo -H getlino startsite noi first --batch
+   $ sudo -H getlino startsite noi first
 
 Point your browser to http://first.localhost
