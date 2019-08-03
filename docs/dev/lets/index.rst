@@ -51,7 +51,7 @@ Database structure
 
 Here is a **graphical representation** of the database structure:
 
-.. graphviz:: 
+.. graphviz::
 
    digraph foo  {
 
@@ -59,14 +59,14 @@ Here is a **graphical representation** of the database structure:
 
        node [shape=box]
        node [style=filled]
-           node [fontname="times bold", fillcolor=red]  
+           node [fontname="times bold", fillcolor=red]
               Product Member
            node [fontname="times" fillcolor=gold]  Offer  Demand
            node [fontname="times italic" fillcolor=lightblue]  Place
 
        Product -> Offer[arrowhead="inv"]
        Product -> Demand[arrowhead="inv"]
-    
+
        Offer -> Member[taillabel="provider", labelangle="-90", labeldistance="2"];
        Demand -> Member[taillabel="customer", labelangle="90", labeldistance="2"];
        Member ->  Place;
@@ -131,7 +131,7 @@ Note about many-to-many relationships
 
 There are two `many-to-many relationships
 <https://docs.djangoproject.com/en/1.11/topics/db/examples/many_to_many/>`_
-between *Member* and *Product*: 
+between *Member* and *Product*:
 
 - A given member can *offer* multiple products, and a given product
   can *be offered* by multiple members. We can call this the
@@ -142,7 +142,7 @@ between *Member* and *Product*:
   a product.
 
 Using Django's interface for `many-to-many relationships
-<https://docs.djangoproject.com/en/1.11/topics/db/examples/many_to_many/>`_, 
+<https://docs.djangoproject.com/en/1.11/topics/db/examples/many_to_many/>`_,
 we can express this as follows::
 
     providers = models.ManyToManyField(
@@ -190,7 +190,7 @@ code                            specs
 :mod:`lino_book.projects.lets1` :doc:`/specs/projects/lets1`
 :mod:`lino_book.projects.lets2` :doc:`/specs/projects/lets2`
 =============================== ===============================
-  
+
 Note the difference between "code" and "specs". The **code** directory
 contains runnable Python code and maybe application-specific
 configuration files. A copy of this would be needed on a production
@@ -198,7 +198,7 @@ site.  The **specs** is a Sphinx documentation tree and contains
 mainly :file:`.rst` files. These are not needed on a production site.
 
 Please explore these projects and try to get them running.  If you
-have installed a Lino Development environment, you can simply do::
+have installed a Lino contributor environment, you can simply do::
 
   $ go lets1
   $ python manage.py prep
@@ -229,7 +229,7 @@ given row).
         id name
         OffersByProduct DemandsByProduct
         """
-    
+
 When seeing the code on the left, you should be able to imagine
 something like the picture on the right.
 
@@ -242,19 +242,18 @@ Here are some screenshots.
 
 .. image:: a.png
     :scale: 70
-    
+
 .. image:: b.png
     :scale: 70
-    
+
 .. image:: c.png
     :scale: 70
-    
+
 .. image:: d.png
     :scale: 70
-    
+
 .. image:: e.png
     :scale: 70
-    
+
 .. image:: members_insert.png
     :scale: 30
-    

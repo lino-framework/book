@@ -63,7 +63,7 @@ Navigating between projects
 We suggest that you create a shell function named ``go`` [#f1]_ in
 your :xfile:`~/.bash_aliases` which looks like this::
 
-    function go() { 
+    function go() {
         for BASE in ~/projects ~/repositories \
             ~/repositories/book/lino_book/projects
         do
@@ -87,12 +87,12 @@ Now you should be able to do::
   $ go lino   # cd to ~/repositories/lino
   $ go hello  # cd to ~/projects/hello
   $ go min1   # cd to ~/repositories/book/lino_book/projects/min1
-    
+
 
 Configuring atelier
 ===================
 
-To get a full Lino development environment, you must tell atelier the
+To get a full Lino contributor environment, you must tell atelier the
 list of your projects. That's done in your
 :xfile:`~/.atelier/config.py` file. Create the directory and the file,
 with the following content::
@@ -115,7 +115,7 @@ advantages:
 
 - You can run the :cmd:`per_project` script (or its alias :cmd:`pp`)
   to run a given command over many projects.
-  
+
 - You can use :mod:`atelier.sphinxconf.interproject` to create
   Intersphinx links from one project's docs to the docs of another
   project.
@@ -133,10 +133,10 @@ Here are some useful aliases and functions for your
     alias p3='. ~/pythonenvs/py3/bin/activate'
     alias p2='. ~/pythonenvs/py2/bin/activate'
 
-    function pywhich() { 
+    function pywhich() {
       python -c "import $1; print($1.__file__)"
     }
-           
+
 .. command:: pywhich
 
     Shortcut to quickly show where the source code of a Python module
@@ -176,12 +176,12 @@ of Lino::
 
   $ go lino
   $ git pull
-  
+
 Run the full test suite in :ref:`book`::
 
   $ go book
   $ inv prep test
-    
+
 It happens that I type the following before leaving my computer for
 getting a cup of coffee::
 
@@ -191,14 +191,14 @@ Commit all my changes in all my projects before going to bed::
 
   $ pp inv ci
 
-If that happens after midnight::  
-  
+If that happens after midnight::
+
   $ pp inv ci --today 20161222
 
 
-  
 
-    
+
+
 .. rubric:: Footnotes
 
 .. [#f1] In case you also use the `Go <https://golang.org/>`_
@@ -213,7 +213,7 @@ Some of the demo examples use :mod:`lino_xl.lib.appypod` for producing
 printable pdf files.  To have this running, you should install the
 LibreOffice server on your system as described in :doc:`/admin/oood`.
 
-       
+
 
 Quickly installing the Lino SDK into a new virtualenv
 =====================================================
@@ -250,7 +250,7 @@ Doing this is easy:
 
 1. uninstall the PyPI version and then install the development
    version::
-  
+
     $ pip uninstall atelier
 
     $ cd ~/repositories
@@ -259,9 +259,7 @@ Doing this is easy:
 
 2. Open your :xfile:`~/.atelier/config.py`
    file and insert ``atelier`` to the list of projects::
-  
+
      ...
      names = 'atelier lino xl book noi voga presto welfare avanti extjs6'
      ...
-
-

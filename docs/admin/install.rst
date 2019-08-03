@@ -4,7 +4,8 @@
 Installing a Lino application on a production server
 ====================================================
 
-This page needs revision. Use :doc:`/getlino` instead.
+This page is obsolete.
+Read http://getlino.lino-framework.org/ instead.
 
 .. _pip: http://www.pip-installer.org/en/latest/
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
@@ -16,22 +17,6 @@ sites on a same machine.
 There are many ways to setup a Django/Lino application. For this guide
 we shall be using apache2, mysql, a site-wide Lino settings file, and
 a virtual Python environment for each site.
-
-
-Prerequisites
-=============
-
-You need shell access to a **Linux server**, i.e. a virtual or
-physical machine with a Linux operating system running in a network.
-
-We recommend a **stable Debian** as operating system.  If you prefer some other
-Linux distribution, that should be no problem. There will be some differences,
-but you probably know them.  You need a **web server**, **Python**, some
-database (e.g. **MySQL** or **PostGreSQL**) running on that server.
-
-If your customers want to access their Lino from outside of their
-intranet, then you need to setup a **domain name** and configure
-Apache to use secure HTTP.
 
 
 System requirements

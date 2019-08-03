@@ -1,6 +1,6 @@
-=================
-Lino User's Guide
-=================
+==========
+User Guide
+==========
 
 Welcome to the **Lino User's Guide**
 
@@ -13,4 +13,3 @@ Welcome to the **Lino User's Guide**
    templates_api
    /help/index
    backups
-

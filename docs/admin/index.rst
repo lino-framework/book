@@ -2,9 +2,9 @@
 .. _lino.hosters:
 .. _lino.admin:
 
-==============
-Hoster's Guide
-==============
+===================
+Administrator Guide
+===================
 
 This part of the documentation is for :term:`server administrators <server
 administrator>`  who set up or maintain a server which hosts one or several Lino

@@ -4,7 +4,8 @@
 Installing Lino
 ===============
 
-This page needs revision. Use :doc:`/getlino` instead.
+This page is obsolete.
+Read http://getlino.lino-framework.org/ instead.
 
 This document explains how to install Lino on your machine in order to write
 applications.  If you prefer using the latest version, then you should rather

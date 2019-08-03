@@ -2,10 +2,11 @@
 .. _dev.install:
 
 =========================================
-Installing a Lino development environment
+Installing a Lino contributor environment
 =========================================
 
-This page needs revision. Use :doc:`/getlino` instead.
+This page is obsolete.
+Read http://getlino.lino-framework.org/ instead.
 
 .. _invoke: http://www.pyinvoke.org/
 .. _atelier: http://atelier.lino-framework.org/

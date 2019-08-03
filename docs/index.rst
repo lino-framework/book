@@ -13,11 +13,11 @@ Non-technical
 .. toctree::
    :maxdepth: 1
 
-   about/index
+   /about/index
    /demos
-   community/index
-   blog
-   User's Guide <guide/index>
+   /community/index
+   /blog
+   User Guide </guide/index>
 
 Technical docs
 ==============
@@ -25,22 +25,22 @@ Technical docs
 .. toctree::
    :maxdepth: 2
 
-   install <getlino>
-   newbies </dev/newbies/index>
-   appdevs </dev/quick/index>
-   coredevs </dev/index>
-   hosters </admin/index>
+   Developer Guide </dev/index>
+   Contributor Guide </team/index>
+   Administrator Guide </admin/index>
 
    Specs </specs/index>
    API </api/index>
-   changes/index
+   /changes/index
 
 .. toctree::
    :hidden:
 
-   examples/polly/index
-   examples/belref/index
+   /examples/polly/index
+   /examples/belref/index
    /tours/index
-   copyright
+   /copyright
    /dev/quick/install
    /dev/install
+   /getlino
+   /dev/quick/index

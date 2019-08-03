@@ -1,9 +1,9 @@
 .. _specs:
 .. _book.specs:
 
-==========
-Lino Specs
-==========
+=====
+Specs
+=====
 
 This section contains :doc:`technical specifications </dev/specs>` for the
 modules of the Lino framework maintained by the Lino team.
@@ -126,11 +126,11 @@ Topic guides
 
 Technical stuff
 ===============
-    
+
 .. toctree::
    :maxdepth: 1
-  
-   
+
+
    invalid_requests
    projects/mti
    projects/nomti
