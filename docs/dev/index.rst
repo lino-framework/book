@@ -6,6 +6,7 @@
 Developer Guide
 ===============
 
+For installation instructions see :ref:`getlino.install.dev`.
 
 .. toctree::
     :maxdepth: 1

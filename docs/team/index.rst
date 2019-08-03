@@ -2,6 +2,16 @@
 Contributor Guide
 ======================
 
+For installation instructions see :ref:`getlino.install.contrib`.
+
+.. contents::
+    :depth: 1
+    :local:
+
+
+Basics
+======
+
 .. toctree::
    :maxdepth: 2
 

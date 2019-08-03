@@ -6,6 +6,15 @@
 Administrator Guide
 ===================
 
+For installation instructions see :ref:`getlino.install.contrib`.
+
+.. contents::
+    :depth: 1
+    :local:
+
+Basics
+======
+
 This part of the documentation is for :term:`server administrators <server
 administrator>`  who set up or maintain a server which hosts one or several Lino
 production sites.
@@ -19,7 +28,7 @@ interesting tricks or inspiration for their system by reading how we
 recommend to do it.
 
 About hosting Lino
-------------------
+==================
 
 .. toctree::
    :maxdepth: 2
@@ -30,27 +39,8 @@ About hosting Lino
 
 
 
-Installation
-------------
-
-.. toctree::
-    :maxdepth: 2
-
-    install
-    media
-    mysql_install
-    pgsql_install
-    config_dirs
-    xl
-    oood
-    linod
-    monit
-    notify
-    security
-    cron
-
 Maintenance
------------
+===========
 
 .. toctree::
     :maxdepth: 2
@@ -69,7 +59,7 @@ Maintenance
 
 
 Printing
---------
+==================
 
 .. toctree::
     :maxdepth: 2
@@ -80,7 +70,7 @@ Printing
     appy_templates
 
 Other
------
+==================
 
 .. toctree::
     :maxdepth: 2
@@ -103,6 +93,28 @@ Other
     startsite
 
 
+
+Installation (obsolete)
+=======================
+
+This section is obsolete as these things are now done automatically  in
+:ref:`getlino.install.contrib`.
+
+.. toctree::
+    :maxdepth: 2
+
+    install
+    media
+    mysql_install
+    pgsql_install
+    config_dirs
+    xl
+    oood
+    linod
+    monit
+    notify
+    security
+    cron
 
 
 
