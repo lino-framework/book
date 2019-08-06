@@ -182,10 +182,28 @@ which have a special meaning.
 .. class:: CommonAccount
 
     The base class for items of ::class:`CommonAccounts`.
+
     It defines two additional attributes:
 
     .. attribute:: clearable
+
+        Default value for :attr:`Account.clearable`.
+
     .. attribute:: needs_partner
+
+        Default value for :attr:`Account.needs_partner`.
+
+    .. method:: get_object(self)
+
+        Return the database object representing this common account.
+
+    .. method:: set_object(self, obj)
+
+        Set the cached database object representing this common account.
+
+        Called internally when :attr:`Account.common_account` is updated via web
+        interface.
+
 
 
 

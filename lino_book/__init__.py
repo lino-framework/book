@@ -13,8 +13,9 @@ used both for testing and explaining Lino framework.
 """
 
 from os.path import join, dirname
-filename = join(dirname(__file__), 'setup_info.py')
-exec(compile(open(filename, "rb").read(), filename, 'exec'))
+from .setup_info import SETUP_INFO
+# filename = join(dirname(__file__), 'setup_info.py')
+# with open(filename, "rb") as fd: exec(compile(fd.read(), filename, 'exec'))
 
 __version__ = SETUP_INFO['version']
 # intersphinx_urls = dict(docs="http://www.lino-framework.org")

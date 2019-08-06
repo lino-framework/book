@@ -13,10 +13,21 @@
 .. contents::
   :local:
 
+2019-08-06
+==========
+
+.. currentmodule:: lino_xl.lib.ledger
+
+Fixed a bug in :mod:`lino_xl.lib.ledger` : when the
+:attr:`Account.common_account` was updated via the web interface, Lino did not
+"realize" this until the server process was restarted.
+
+Added a new method :meth:`lino.core.diff.ChangeWatcher.get_old_value`.
+
 2019-08-01
 ==========
 
-Renamed  admin command :manage:`configure`to :manage:`install`.
+Renamed admin command :manage:`configure`to :manage:`install`.
 The command now calls  pip only once for all requirements.
 
 2019-07-31

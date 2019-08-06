@@ -69,7 +69,7 @@ ns = setup_from_tasks(
         'lino_book.projects.addrloc',
         'lino_openui5.projects.teamUi5',
         'lino_openui5.projects.lydiaUi5',
-        
+
         # 'lino_book/projects/diamond',
         # 'lino_book/projects/diamond2',
         # 'lino_book/projects/polls',
@@ -77,3 +77,8 @@ ns = setup_from_tasks(
         # 'lino_book/projects/sendchanges',
         # 'lino_book/projects/pisa',
     ])
+
+# import atelier
+# dp = atelier.current_project.config['demo_projects']
+# print(len(dp))
+# print(dp.index('lino_book.projects.lydia'))
