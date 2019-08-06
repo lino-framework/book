@@ -24,6 +24,16 @@ Fixed a bug in :mod:`lino_xl.lib.ledger` : when the
 
 Added a new method :meth:`lino.core.diff.ChangeWatcher.get_old_value`.
 
+:class:`lino_xl.lib.vat.InvoicesByJournal` did not display the right sorting
+order. It was using ['-id'] instead of the order defined in
+:class:`lino_xl.lib.ledger.ByJournal`. Fixed.
+
+The custom values in :mod:`lino.utils.quantities` are now  `deconstructible
+<https://docs.djangoproject.com/en/2.2/topics/migrations/#adding-a-deconstruct-method>`__.
+
+
+
+
 2019-08-01
 ==========
 

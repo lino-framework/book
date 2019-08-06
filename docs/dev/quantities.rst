@@ -32,13 +32,21 @@ Overview
 ========
 
 A **quantity** is a subclass of `Decimal` used to expresses a quantity for
-business documents.  There are three types of quantities:
+business documents.  There are two types of quantities:
 
 - A **duration** is a quantity expressed in ``hh:mm`` format.
 - A **percentage** is a quantity expressed in ``x%`` format.
-- A **fraction** is a quantity expressed as ``x/y`` format.
 
 All quantities are stored in the database as text.
+
+Note that :class:`Quantity` itself is an abstract base class for the two types
+of quantities.  You cannot instantiate that base class:
+
+>>> Quantity(123)
+Traceback (most recent call last):
+    ...
+Exception: You cannot instantiate the Quantity base class.
+
 
 
 The :func:`parse` function decides which subclass of quantity to use. It is
@@ -324,7 +332,7 @@ Decimal('1')
 You can manually change the quantity to 2, which will update the total
 price:
 
->>> i.qty = Quantity("2")
+>>> i.qty = parse("2")
 >>> i.qty_changed()
 >>> i.total_incl
 Decimal('399.98')
@@ -343,7 +351,7 @@ percent sign when printing it.  One day we might change this (:ticket:`2941`).
 
 You can manually set the quantity to 0:
 
->>> i.qty = Quantity("0")
+>>> i.qty = parse("0")
 >>> i.qty_changed()
 >>> i.total_incl
 Decimal('0.00')
@@ -369,3 +377,19 @@ Utilities
 >>> DEC2HOUR
 Decimal('0.01666666666666666666666666667')
 
+
+
+Migrations and serializing
+==========================
+
+>>> Duration("2:30") == Duration("2:30")
+True
+
+>>> Duration("2:30") != Duration("2:30")
+False
+
+Quantities have a `custom deconstruct method
+<https://docs.djangoproject.com/en/2.2/topics/migrations/#adding-a-deconstruct-method>`__:
+
+>>> Duration("2:30").deconstruct()
+('lino.utils.quantities.Duration', '2:30', {})
