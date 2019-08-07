@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-08-07
+==========
+
+:attr:`use_linod <lino.core.site.Site.use_linod>` did not yet automatically
+cause :manage:`install` to install the schedule package.
+
+
 2019-08-06
 ==========
 
@@ -30,8 +37,6 @@ order. It was using ['-id'] instead of the order defined in
 
 The custom values in :mod:`lino.utils.quantities` are now  `deconstructible
 <https://docs.djangoproject.com/en/2.2/topics/migrations/#adding-a-deconstruct-method>`__.
-
-
 
 
 2019-08-01
