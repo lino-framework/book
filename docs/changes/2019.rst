@@ -19,6 +19,7 @@
 :attr:`use_linod <lino.core.site.Site.use_linod>` did not yet automatically
 cause :manage:`install` to install the schedule package.
 
+Released XL 19.8.0 and Lino 19.8.0 to PyPI.
 
 2019-08-06
 ==========
