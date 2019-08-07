@@ -65,7 +65,7 @@ Subquery expression
  table                     stmt_type   count
 ------------------------- ----------- -------
                            INSERT      96
-                           UNKNOWN     100
+                           UNKNOWN     4
  ana_account               SELECT      22
  cal_event                 SELECT      96
  cal_task                  SELECT      96

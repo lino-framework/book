@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2017 Rumma & Ko Ltd
+# Copyright 2014-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """Defines and instantiates a demo version of Lino Noi."""
 
@@ -14,7 +14,8 @@ class Site(Site):
 
     languages = "en de fr"
     # readonly = True
-    
+
+    use_linod = True
     # use_ipdict = True
     # use_websockets = True
     social_auth_backends = [
@@ -55,7 +56,7 @@ class Site(Site):
         # self.plugins.excerpts.configure(responsible_user='jean')
         if False:
             self.plugins.mailbox.add_mailbox(
-                'mbox', "Luc's aaa mailbox", 
+                'mbox', "Luc's aaa mailbox",
                 '/home/luc/.thunderbird/luc/Mail/Local Folders/aaa')
 
 
