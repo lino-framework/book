@@ -2,12 +2,24 @@
 Contributor Guide
 ======================
 
-For installation instructions see :ref:`getlino.install.contrib`.
-
 .. contents::
     :depth: 1
     :local:
 
+
+.. _lino.dev.start:
+
+Get started
+=============
+
+For installation instructions see :ref:`getlino.install.contrib`.
+
+.. toctree::
+   :maxdepth: 2
+
+   /dev/install
+   /dev/hello/index
+   /dev/env
 
 Basics
 ======
@@ -15,9 +27,8 @@ Basics
 .. toctree::
    :maxdepth: 2
 
-   /dev/getstarted
-   /dev/about
-   /dev/framework
+   /dev/pull
+   /dev/projects
    /dev/team
    /dev/writedocs
    /dev/deploy

@@ -1,30 +1,21 @@
-==================
-The Lino framework
-==================
-
-Welcome to the online documentation about the Lino framework.
-
-.. Rumma & Ko is `hiring people <http://www.saffre-rumma.net/jobs>`_
-   to help us with our work on Lino.
-
-
-Non-technical
 =============
-.. toctree::
-   :maxdepth: 1
+The Lino book
+=============
 
-   /about/index
-   /demos
-   /community/index
-   /blog
-   User Guide </guide/index>
+Welcome to the Lino book, the technical documentation about the :term:`Lino
+framework`. For non-technical documentation about Lino see the :ref:`cg`.
 
-Technical docs
-==============
 
 .. toctree::
    :maxdepth: 2
 
+   /dev/about
+   /dev/framework
+
+   /demos
+   /blog
+
+   User Guide </guide/index>
    Developer Guide </dev/index>
    Contributor Guide </team/index>
    Administrator Guide </admin/index>
@@ -41,6 +32,7 @@ Technical docs
    /tours/index
    /copyright
    /dev/quick/install
-   /dev/install
    /getlino
    /dev/quick/index
+   /dev/getstarted
+   /community/index

@@ -15,7 +15,7 @@ Components of the Lino framework
        "independent applications" ->
        applications -> framework -> utilities;
     }
-   
+
     { rank = same;
         applications;
         lino_noi;
@@ -23,7 +23,7 @@ Components of the Lino framework
         lino_tera;
         lino_avanti;
     }
-    
+
     { rank = same;
         utilities;
         atelier;
@@ -66,7 +66,7 @@ Components of the Lino framework
     lino -> atelier;
     lino_xl -> lino;
     lino_noi -> lino_xl;
-    lino_cosi -> lino_xl; 
+    lino_cosi -> lino_xl;
     lino_tera -> lino_xl;
     # lino_avanti -> lino_xl;
     lino_voga -> lino_xl;
@@ -74,7 +74,7 @@ Components of the Lino framework
     lino_welcht -> lino_welfare;
 
     lino_book -> lino_noi;
-    lino_book -> lino_cosi; 
+    lino_book -> lino_cosi;
     lino_book -> lino_voga;
     lino_book -> lino_tera;
     # lino_book -> lino_avanti;
@@ -84,10 +84,10 @@ Components of the Lino framework
     lino_welfare -> lino_xl;
 
     /**
-    
+
     commondata -> atelier;
     lino_book -> commondata;
-    
+
     lino_voga -> lino_cosi;
     lino_welfare -> lino_cosi;
     **/
@@ -102,25 +102,25 @@ Python packages covered by the Lino Book
   includes the standard plugin library (:mod:`lino.modlib`) for adding
   basic features like system users, a notification framework,
   comments, printing, ...
-  
+
 - :mod:`lino_xl` is an "extended" plugin collection used by many Lino
   applications: contacts, countries, calendar, accounting, groupware,
   etc. \ .  See :doc:`xl`.
-       
+
 - The :mod:`lino_book` package contains the source code of what you
   are reading right now, a collection of demo projects and examples
   (:mod:`lino_book.projects`), and the big test suite for the whole
   Lino framework.  The book package is not published on PyPI because
   that would make no sense.  You use it by cloning the repository from
   GitHub.
-  
+
 - Lino applications covered by the Lino Book:
-  
+
     - :mod:`lino_noi` (:ref:`noi`) : the application we use for
       managing our collaboration.  It's about tickets, projects, time
       tracking, votes.
     - :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
-      
+
     - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
     - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
     - :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
@@ -152,8 +152,8 @@ maintained by the Lino team:
 - :mod:`commondata` is an experimental project for storing and
   managing common data as Python code without any front end.
 
-  
-   
+
+
 Related projects
 ================
 
@@ -232,7 +232,7 @@ Lino Sunto
 ----------
 
 Lino Sunto is the first free (GPL) Lino application developed by
-somebody else than the author. It is hosted at    
+somebody else than the author. It is hosted at
 https://github.com/ManuelWeidmann/lino-sunto
 
 
@@ -243,7 +243,7 @@ Lino Psico
 
 This project is now named :ref:`tera`.
 
-  
+
 
 .. _extjs6:
 
@@ -251,8 +251,8 @@ ExtJS 6 front end
 -----------------
 
 See https://github.com/lino-framework/extjs6
-      
-  
+
+
 
 .. _react:
 
@@ -266,17 +266,9 @@ See https://github.com/lino-framework/react
 
 Algus
 -----
-  
+
 The `algus <https://github.com/lino-framework/algus>`__ repository is
 a template for new Lino applications.
-
-
-.. _cg:
-
-Community Guide
----------------
-
-The `cg <https://github.com/lino-framework/cg>`__ repository.
 
 
 .. _manuals:
@@ -286,6 +278,3 @@ manuals
 
 Obsolete. The `manuals <https://github.com/lino-framework/manuals>`__
 repository no longer exists.
-
-
-

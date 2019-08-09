@@ -4,13 +4,14 @@ Lino design goals
 
 We thought that now is the right moment to explain to you as a developer why
 Lino is so cool.
-   
+
 .. toctree::
    :maxdepth: 1
-              
+
    about/why
    about/lino_and_django
    about/auth
+   /about/compared
 
 .. toctree::
    :maxdepth: 1
@@ -21,5 +22,3 @@ Lino is so cool.
    about/think_python
    about/ui
    ui
-
-

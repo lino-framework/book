@@ -14,10 +14,9 @@ different.
 Plain Django
 ============
 
-From the technological point of view, Lino applications are *just Django**
-projects combined to an ExtJS or React front end.  People who know how to host
-a Django project can also host a Lino application.
-
+From the technological point of view, Lino applications are *just Django*
+projects combined to an ExtJS or React front end.  People who know how to host a
+Django project can also host a Lino application.
 
 
 .. _tryton:
@@ -37,12 +36,12 @@ Several technical differences could be mentioned:
 
 - Odoo requires Postgresql as a DBMS while Lino could be used with any
   DBMS supported by Django.
-  
+
 - Odoo addons or Odoo applications (equivalents of plugins in Lino)
   must be written in the Odoo logic while Lino applications can use
   any Django packages. Which means that Lino is backed by a bigger
   community.
-  
+
 - Odoo until now has not yet started to support Python 3 and has no
   clear plan to do so.
 
@@ -76,15 +75,12 @@ Apache Isis
 `Apache Isis <https://isis.apache.org>`__ is a DDD framework in Java.
 
 An example application is `Estatio <http://www.estatio.org>`__
-which was developed to fulfill the needs of a big real estate 
+which was developed to fulfill the needs of a big real estate
 company in EU. It is Open source and its main
-contributor appears to still be the company that created it. 
+contributor appears to still be the company that created it.
 
 
 Appy framework
 ==============
 
 - `Appy framework <http://appyframework.org/>`_
-
-  
-

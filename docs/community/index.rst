@@ -1,5 +1,3 @@
-.. _community:
-
 =========
 Community
 =========

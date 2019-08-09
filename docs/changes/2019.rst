@@ -13,6 +13,16 @@
 .. contents::
   :local:
 
+2019-08-09
+==========
+
+Two optimizations (:ticket:`3159`) in :mod:`lino_xl.lib.ledger` and
+:mod:`lino_xl.lib.vat`:
+User can now **manually edit the VAT amount** in  account invoices.
+Added a new field :attr:`lino_xl.lib.ledger.Account.vat_class`.
+
+
+
 2019-08-07
 ==========
 

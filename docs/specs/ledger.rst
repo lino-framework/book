@@ -114,6 +114,10 @@ Accounts
         documents to be detailed or not (i.e. one contra entry for
         every item or a single contra entry per voucher.
 
+    .. attribute:: vat_class
+
+        The default VAT class to use for transactions on this account.
+
     .. attribute:: default_amount
 
         The default amount to book in bank statements or journal
