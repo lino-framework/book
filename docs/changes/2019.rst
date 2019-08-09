@@ -21,6 +21,11 @@ Two optimizations (:ticket:`3159`) in :mod:`lino_xl.lib.ledger` and
 User can now **manually edit the VAT amount** in  account invoices.
 Added a new field :attr:`lino_xl.lib.ledger.Account.vat_class`.
 
+:manage:`migrate` failed e.g. in :ref:`welfare` because e.g. the default value
+of a database field was a callable which accesses
+:attr:`lino.core.site.Site.site_config`.  Fixed.
+
+Released XL 19.8.1 and Lino 19.8.1 to PyPI.
 
 
 2019-08-07
