@@ -16,12 +16,37 @@ declaratations.
    :depth: 1
    :local:
 
-See also
+Overview
 ========
 
-Applications using this plug-in will probably also install at least one of the
-national implementations for their VAT declarations.  Currently we have three
-declaration plug-ins:
+The VAT plug-in defines the following concepts:
+
+- `VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
+  rate** to apply for a given operation.
+
+- `VAT areas`_ are used to group countries into groups where similar VAT regimes
+  are available.
+
+- `Accounting invoices`_ are a voucher type which can be used in simple accounting
+  applications.
+
+When using this plugin, you must also specify one of the `national VAT
+implementations`_.
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.pierre.settings.doctests')
+>>> from lino.api.doctest import *
+
+National VAT implementations
+============================
+
+Applications using this plug-in must specify the **national implementations**
+for their VAT declarations by setting the :attr:`declaration_plugin
+<lino_xl.lib.vat.Plugin.declaration_plugin>` plugin attribute.
+
+Currently we have three declaration plug-ins:
 
 - :doc:`bevat`
 - :doc:`bevats`
@@ -32,25 +57,7 @@ might use :mod:`lino_xl.lib.vatless` instead (though this plug-in might become
 deprecated).  The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat`
 can theoretically both be installed though obviously this wouldn't make sense.
 
-.. include:: /../docs/shared/include/tested.rst
 
->>> from lino import startup
->>> startup('lino_book.projects.pierre.settings.doctests')
->>> from lino.api.doctest import *
-
-Overview
-========
-
-The VAT plug-in defines some subtle concepts:
-
-`VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
-rate** to apply for a given operation.
-
-`VAT areas`_ are used to group countries into groups where similar VAT regimes
-are available.
-
-`Account invoices`_ are a voucher type which can be used in simple accounting
-applications.
 
 
 VAT regimes
@@ -124,11 +131,10 @@ and purchases is defined by the `VAT rules`_, not by the regime.
 VAT classes
 ===========
 
-A **VAT class** is assigned to each product and to each item of a simple
-account invoice.  The VAT class specifies how that product or invoice item
-behaves regarding to VAT, especially it influences the available rates. You can
-sell or purchase a same product to different partners using different VAT
-regimes.
+A **VAT class** is assigned to each product and to each item of an  accounting
+invoice.  The VAT class specifies how that product or invoice item behaves
+regarding to VAT, especially it influences the available rates. You can sell or
+purchase a same product to different partners using different VAT regimes.
 
 >>> rt.show(vat.VatClasses, language="en")
 ======= ========= ==================
@@ -241,6 +247,8 @@ have only one default rule with no condition and zero rate.
     >>> show_menu_path(vat.VatRules, language='en')
     Explorer --> VAT --> VAT rules
 
+    This table is filled by
+
 
 
 VAT areas
@@ -295,8 +303,9 @@ Why differentiate between VAT regimes and VAT classes?
 
 You might ask why we use two sets of categories for specifying the VAT rate.
 Some other accounting programs do not have two different categories for the
-subtle difference between "exempt" and "0%", they have just a category "VAT
-rate" which you can set per invoice item (and a default value per provider).
+subtle difference between "exempt from VAT" and "VAT 0%", they have just a
+category "VAT rate" which you can set per invoice item (and a default value per
+provider).
 
 The problem with this simplified vision is that at least for Belgian VAT
 declarations there is a big difference between having 0% of VAT because the
@@ -317,24 +326,26 @@ Accounting invoices
 ===================
 
 An **accounting invoice** is an invoice for which the user enters just the bare
-accounts and amounts.    This voucher type is typically used to store incoming
-purchase invoices, and it does not usually produce a printable document.
+accounts and amounts.  They are stored using the :class:`VatAccountInvoice`
+model as voucher type.  They are typically used to store incoming purchase
+invoices, and they do no not usually produce a printable document.
 
 If you also need products, quantities and discounts, use a journal having
-:class:`VatProductInvoice <lino_xl.lib.sales.VatProductInvoice>` as voucher type instead.
+:class:`VatProductInvoice <lino_xl.lib.sales.VatProductInvoice>` as voucher type
+instead.
 
-Note that while this is typically used to store incoming purchase invoices,
+Accounting invoices are typically used to store incoming purchase invoices, but
 exceptions in both directions are possible: (1) purchase invoices can be stored
 using :class:`VatProductInvoice <lino_xl.lib.sales.VatProductInvoice>` if stock
-management is important, or (2) outgoing sales invoice can have been created
-using some external tool and are entered into Lino just for the general ledger.
+management is important, or (2) outgoing sales invoice can be stored as
+:class:`VatAccountInvoice` because they have been created using some external
+tool and are entered into Lino just for the general ledger.
 
 There are two database models:
 
 .. class:: VatAccountInvoice
 
-    Django model for representing  *accounting invoices*.
-
+    Django model for storing  *accounting invoices*.
 
 .. class:: InvoiceItem
 

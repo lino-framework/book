@@ -29,9 +29,8 @@ environment variable defined, and then type:
 
 >>> from django.conf import settings
 
-This will pass. But as soon as you want to actually *read* some
-attribute of `settings`, you will get an `ImproperlyConfigured`
-exception:
+This will pass. But as soon as you want to actually access some attribute of
+``settings``, you will get an `ImproperlyConfigured` exception:
 
 >>> print(settings.DEBUG)  #doctest: +IGNORE_EXCEPTION_DETAIL
 Traceback (most recent call last):

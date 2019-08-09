@@ -31,42 +31,49 @@ demo project.
 Overview
 ========
 
-A **ledger** is a book in which the monetary transactions of a
-business are posted in the form of debits and credits (from `1
+A **ledger** is a book in which the monetary transactions of a business are
+posted in the form of debits and credits (from `1
 <http://www.thefreedictionary.com/ledger>`__).
 
 In Lino, the ledger is implemented by three database models:
 
-- A **movement** is an atomic "transfer" of a given *amount* of money
-  from (or to) a given *account* on a given date.  It is just a
-  *conceptual* transfer, not a cash or bank transfer.
+- A **movement** is an atomic "transfer" of a given *amount* of money from (or
+  to) a given *account* at a given date.  It is just a *conceptual* transfer,
+  not a cash or bank transfer. Moving money *from* (out of) an account is called
+  "to debit", moving money *to* an account is called "to credit".
 
-  Moving money *from* (out of) an account is called "to debit", moving
-  money *to* an account is called "to credit".
-
-- Movements are never created individually but by registering a
-  **voucher**.  Examples of *vouchers* include invoices, bank
-  statements, or payment orders.
-
-  A *voucher* is any document which serves as legal proof for a
-  **ledger transaction**.  A ledger transaction consists of *at least
-  two* movements, and the sum of *debited* money in these movements
-  must equal the sum of *credited* money.
+- Movements are never created individually but by registering a **voucher**.
+  Examples of *vouchers* include invoices, bank statements, or payment orders. A
+  *voucher* is any document which serves as legal proof for a **ledger
+  transaction**.  A ledger transaction consists of *at least two* movements
+  whose sum of *debited* money  must equal the sum of *credited* money.
 
   Vouchers are stored in the database using some subclass of the
-  :class:`Voucher` model. Note that the voucher model is never being
-  used directly.
+  :class:`Voucher` model. The voucher model is never being used directly
+  despite the fact that it is a concrete model.
 
 - When a voucher is registered, it receives a sequence number in a
   :class:`Journal`.  A journal is a series of vouchers, numbered
   sequentially and in chronological order.
 
-There are some secondary models and choicelists:
+There are some secondary models and choice lists:
 
-- Each ledger movement happens in a given **fiscal year**.
-  MatchRule, LedgerInfo
+- Each ledger movement happens in a given **accounting period** (usually a
+  month) which itself is part of a given **fiscal year**.
 
-And then there are many subtle ways for looking at this data.
+- A **match rule** specifies that a movement into given account can
+  be cleared using a given journal.
+
+- The **payment term** of an invoice (:class:`PaymentTerm`) is a convention on how the
+  invoice should be paid.
+
+- The ledger plug-in defines a list of **voucher types** which is filled by
+  plug-ins like :mod:`lino_xl.lib.vat`, :mod:`lino_xl.lib.sales` or
+  :mod:`lino_xl.lib.vat` who define some subclass of :class:`Voucher` and use it
+  for registering one or several voucher types.
+
+
+And then there are many views for looking at this data.
 
 - :class:`GeneralAccountsBalance`, :class:`CustomerAccountsBalance` and
   :class:`SupplierAccountsBalance`
@@ -555,6 +562,8 @@ A **journal** is a named sequence of numbered *vouchers*.
 
 .. class:: Journal
 
+    Django model used to store *journals*. See Overview_.
+
     **Fields:**
 
     .. attribute:: ref
@@ -694,7 +703,7 @@ Ledger info
 
 .. class:: LedgerInfo
 
-    A little model which holds ledger specific information per user.
+    Django model used to store ledger specific information per user.
 
     .. attribute:: user
 
@@ -708,14 +717,15 @@ Ledger info
 
     .. classmethod:: get_by_user(self, user)
 
+        Returns the ledger info entry for a given user.
+
 
 Match rules
 ===========
 
 .. class:: MatchRule
 
-    A **match rule** specifies that a movement into given account can
-    be cleared using a given journal.
+    Django model used to store *match rules*.
 
 
 Payment terms
@@ -724,8 +734,7 @@ Payment terms
 
 .. class:: PaymentTerm
 
-    The **payment term** of an invoice is a convention on how the
-    invoice should be paid.
+    Django model used to store *payment terms*.
 
     The following fields define the default value for `due_date`:
 
@@ -1443,11 +1452,13 @@ Journal groups
 
     .. attribute:: closed
 
+Voucher types
+=============
 
 .. class:: VoucherTypes
 
-    A list of the voucher types available in this application. Items
-    are instances of :class:VoucherType`.
+    The list of voucher types available in this application. Each items
+    is an instances of :class:VoucherType`.
 
     The :attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>`
     field of a journal points to an item of this.
