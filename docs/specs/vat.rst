@@ -19,16 +19,16 @@ declaratations.
 See also
 ========
 
-Applications using this plugin will probably also install at least one of the
+Applications using this plug-in will probably also install at least one of the
 national implementations for their VAT declarations.  Currently we have three
-declaration plugins:
+declaration plug-ins:
 
 - :doc:`bevat`
 - :doc:`bevats`
 - :doc:`eevat`
 
 Accounting applications to be used by site operators who don't care about VAT
-might use :mod:`lino_xl.lib.vatless` instead (though this plugin might become
+might use :mod:`lino_xl.lib.vatless` instead (though this plug-in might become
 deprecated).  The modules :mod:`lino_xl.lib.vatless` and :mod:`lino_xl.lib.vat`
 can theoretically both be installed though obviously this wouldn't make sense.
 
@@ -41,7 +41,7 @@ can theoretically both be installed though obviously this wouldn't make sense.
 Overview
 ========
 
-The VAT plugin defines some subtle concepts:
+The VAT plug-in defines some subtle concepts:
 
 `VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
 rate** to apply for a given operation.
@@ -49,8 +49,8 @@ rate** to apply for a given operation.
 `VAT areas`_ are used to group countries into groups where similar VAT regimes
 are available.
 
-It also `Simple account invoices`_ are a voucher type which can be used in
-simple accounting applications.
+`Account invoices`_ are a voucher type which can be used in simple accounting
+applications.
 
 
 VAT regimes
