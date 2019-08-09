@@ -108,7 +108,10 @@ SOCIAL_AUTH_MEDIAWIKI_SECRET = '8041055fcd16333fa242b346e0ae52133fd2ee14'
 SOCIAL_AUTH_MEDIAWIKI_URL = 'https://meta.wikimedia.org/w/index.php'
 SOCIAL_AUTH_MEDIAWIKI_CALLBACK = 'oob'
 
-# Add ldap authentication
+# Add ldap authentication. Requires  Hamza's fork of django_auth_ldap.
+# temporary installation instructions:
+# $ apt-get install build-essential python3-dev python2.7-dev libldap2-dev libsasl2-dev slapd ldap-utils lcov valgrind
+# $ pip install -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
 import ldap
 from django_auth_ldap.config import LDAPSearch, LDAPGroupType,GroupOfNamesType,LDAPSearchUnion,GroupOfUniqueNamesType
 
