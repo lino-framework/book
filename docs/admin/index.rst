@@ -6,14 +6,6 @@
 Administrator Guide
 ===================
 
-For installation instructions see :ref:`getlino.install.contrib`.
-
-.. contents::
-    :depth: 1
-    :local:
-
-Basics
-======
 
 This part of the documentation is for :term:`server administrators <server
 administrator>`  who set up or maintain a server which hosts one or several Lino
@@ -27,6 +19,17 @@ of approaches.  But even experienced Django hosters might find
 interesting tricks or inspiration for their system by reading how we
 recommend to do it.
 
+
+.. contents::
+    :depth: 1
+    :local:
+
+
+Installation
+============
+
+See :ref:`getlino.install.admin`.
+
 About hosting Lino
 ==================
 
@@ -36,7 +39,6 @@ About hosting Lino
    about
    workflow
    preview
-
 
 
 Maintenance
