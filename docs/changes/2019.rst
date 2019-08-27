@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-08-27
+==========
+
+Bugfix :ticket:`3171`  :mod:`lino_xl.lib.courses` says "Course matching query
+does not exist" on enrolmenmt without course.
+
+
 2019-08-09
 ==========
 
