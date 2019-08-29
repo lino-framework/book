@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-08-29
+==========
+
+New feature :ticket:`3175` : The :class:`lino.modlib.about.About` dialog now
+shows the "complexity factors", which now includes the number of active user
+accounts. 
+
 2019-08-27
 ==========
 
