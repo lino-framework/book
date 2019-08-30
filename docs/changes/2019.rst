@@ -18,7 +18,7 @@
 
 New feature :ticket:`3175` : The :class:`lino.modlib.about.About` dialog now
 shows the "complexity factors", which now includes the number of active user
-accounts. 
+accounts.
 
 2019-08-27
 ==========
@@ -216,7 +216,7 @@ panel to the detail layout of :class:`BankStatement`.
 The :fixture:`std` fixture of :mod:`lino_xl.lib.ledger` now creates an upload
 type "source document". Note that :data:`UPLOADTYPE_SOURCE_DOCUMENT
 <lino_xl.lib.ledger.UPLOADTYPE_SOURCE_DOCUMENT>` is 4 in order to avoid
-duplicate keys in :ref:`weleup`.
+duplicate keys in :ref:`welfare` (weleup).
 
 Optimizations in :mod:`lino.modlib.memo.parser`: Fixed a error occuring when there were
 no suggesters defined. The parser now makes a pattern clickable without adding
