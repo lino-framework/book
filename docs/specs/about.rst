@@ -24,6 +24,22 @@ virtual tables and choicelists, but no database models. See also :doc:`search`
 Which means that code snippets in this document are tested using the
 :mod:`lino_book.projects.team` demo project.
 
+Information about the site
+==========================
+
+.. class:: About
+
+    A dialog window which displays some information about the site.
+
+    Versions of used third-party libraries.
+
+    Time stamps of source code.
+
+    **Complexity factors:** Some numbers which express the complexity of this
+    site.  These numbers can be used for computing the membership fee.
+    See http://community.lino-framework.org/membership.html
+
+
 Time zones
 ==========
 
@@ -47,7 +63,7 @@ This list is usually populated in the local :attr:`workflows_module
 
     # don't forget to import the default workflows:
     from lino_noi.lib.noi.workflows import *
-    
+
     from lino.modlib.about import TimeZones
     TimeZones.clear()
     add = TimeZones.add_item
@@ -74,6 +90,3 @@ This list is usually populated in the local :attr:`workflows_module
         string), :attr:`default` is a choice object whose :attr:`text`
         is the same as the string and which has an attribute
         :attr:`tzinfo` which contains the time zone info object.
-
-
-

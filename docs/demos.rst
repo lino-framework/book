@@ -4,10 +4,10 @@
 Demo sites
 ==========
 
-This page lists some examples of Lino applications.  These demo
-databases contain fictive data.  All names of persons are generated.
-You may edit according to the user permissions, but any changes will
-be lost each time we reinitialize the demo data.
+This page lists the currently available demo sites.  All demo databases contain
+fictive data.  All names of persons are generated. You may edit according to the
+user permissions, but any changes will be lost each time we reinitialize the
+demo data.
 
 .. _belref: http://belref.lino-framework.org
 .. _demo1: http://demo1.lino-framework.org
@@ -51,6 +51,6 @@ Experimental:
   prototype for the SacredPy project)
 - polly-demo_ : Official online demo of :ref:`polly`
 
-.. removed:  
-    
+.. removed:
+
   - demo3_ : Official online demo of :ref:`presto`.
