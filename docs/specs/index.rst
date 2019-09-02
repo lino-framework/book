@@ -144,7 +144,7 @@ Technical stuff
    de_BE
    gfktest
    dumps
-   migrations
+   migrate
    ajax
    dpy
    jsgen

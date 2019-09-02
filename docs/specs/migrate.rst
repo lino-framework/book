@@ -1,4 +1,4 @@
-go .. doctest docs/specs/migrate.rst
+.. doctest docs/specs/migrate.rst
 .. _book.specs.migrate:
 
 =========================
