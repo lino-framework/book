@@ -126,13 +126,21 @@ Lino Psico
 
 Old name of :ref:`tera`.
 
+.. _sunto:
+
+Lino Sunto
+----------
+
+Lino Sunto is the first free (GPL) Lino application developed by
+somebody else than the author. It is hosted at
+https://github.com/ManuelWeidmann/lino-sunto
+
 
 .. _welfare:
 
 Lino Welfare
 ------------
 
-Some parts of the book refer to this for historical reasons.
 See http://welfare.lino-framework.org
 
 .. _presto:
@@ -140,8 +148,14 @@ See http://welfare.lino-framework.org
 Lino Presto
 ------------
 
-Some parts of the book refer to this for historical reasons.
 See http://presto.lino-framework.org
+
+.. _pronto:
+
+Lino Pronto
+------------
+
+See http://pronto.lino-framework.org
 
 .. _patrols:
 

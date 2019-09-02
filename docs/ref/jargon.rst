@@ -2,7 +2,6 @@ Jargon
 =============
 
 
-
 .. _pk:
 
 primary key
@@ -25,7 +24,7 @@ See `Django docs
 Internal Server Error
 ---------------------
 
-When an exception occurs that is not catched, then Lino behaves like 
+When an exception occurs that is not catched, then Lino behaves like
 any Django application and return a HTTP return code 500.
 
 
@@ -35,7 +34,7 @@ System administrator
 --------------------
 
 A system administrator is a person who installs an existing Lino application.
-He or she doesn't need to write Python code except for the :xfile:`settings.py` 
+He or she doesn't need to write Python code except for the :xfile:`settings.py`
 file.
 
 .. _dev:
@@ -43,7 +42,5 @@ file.
 Lino application developer
 --------------------------
 
-A Lino application developer is a Python programmer who uses Lino while 
+A Lino application developer is a Python programmer who uses Lino while
 writing his own application.
-
-
