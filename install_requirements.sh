@@ -13,4 +13,4 @@ else
     REQ="requirements${PY}.txt"
 fi
 echo "installing ${REQ}"
-pip install -r ${REQ} --trusted-host svn.forge.pallavi.be
+pip install --trusted-host svn.forge.pallavi.be -r ${REQ}
