@@ -5,6 +5,10 @@
 """The :mod:`lino_book` package contains a set of example projects
 used both for testing and explaining Lino framework.
 
+It is not published on PyPI because that would make no sense.  You use it by
+cloning the repository from GitHub (which is done automatically by
+:ref:`getlino`).
+
 .. autosummary::
    :toctree:
 

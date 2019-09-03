@@ -16,6 +16,8 @@ functionalities that are shared among several applications.
 Core plugins
 ============
 
+The following plugins are part of the :mod:`lino.modlib`:
+
 .. toctree::
    :maxdepth: 1
 
@@ -30,9 +32,10 @@ Core plugins
    gfks
    summaries
    memo
+   modlib
 
-The following plugins are technically still part of the Lino core, but might be
-moved to :mod:`lino_xl` some day:
+The following plugins are currently still part of the :mod:`lino.modlib` but
+might be moved to :mod:`lino_xl` some day:
 
 .. toctree::
    :maxdepth: 1

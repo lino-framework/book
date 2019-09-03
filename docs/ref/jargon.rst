@@ -33,14 +33,84 @@ any Django application and return a HTTP return code 500.
 System administrator
 --------------------
 
-A system administrator is a person who installs an existing Lino application.
-He or she doesn't need to write Python code except for the :xfile:`settings.py`
-file.
+See :term:`system administrator`.
 
 .. _dev:
 
-Lino application developer
---------------------------
+Lino application programmer
+---------------------------
 
-A Lino application developer is a Python programmer who uses Lino while
-writing his own application.
+See :term:`application programmer`.
+
+.. _manuals:
+
+manuals
+-------
+
+Obsolete. The `manuals <https://github.com/lino-framework/manuals>`__
+repository no longer exists.
+
+.. _algus:
+
+Algus
+-----
+
+The `algus <https://github.com/lino-framework/algus>`__ repository is a template
+for new Lino applications.  The algus project is not really maintained and now
+partly replaced by :ref:`getlino`.
+
+
+.. _psico:
+
+Lino Psico
+----------
+
+Old name of :ref:`tera`.
+
+.. _sunto:
+
+Lino Sunto
+----------
+
+Lino Sunto is the first free (GPL) Lino application developed by
+somebody else than the author. It is hosted at
+https://github.com/ManuelWeidmann/lino-sunto
+
+
+.. _welfare:
+
+Lino Welfare
+------------
+
+A :term:`plugin library` based on the :term:`Extensions Library` and adding
+new concepts that are specific to the work of Belgian social centres.
+
+See http://welfare.lino-framework.org
+
+.. _presto:
+
+Lino Presto
+------------
+
+See http://presto.lino-framework.org
+
+.. _pronto:
+
+Lino Pronto
+------------
+
+See http://pronto.lino-framework.org
+
+.. _patrols:
+
+Lino Patrols
+------------
+
+See http://patrols.lino-framework.org
+
+.. _logos:
+
+Lino Logos
+----------
+See :ref:``
+See http://logos.lino-framework.org

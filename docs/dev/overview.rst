@@ -4,31 +4,29 @@
 Components of the Lino framework
 ================================
 
-
 General framework repositories
 ==============================
 
 - The core of the framework is in a package called :mod:`lino` which
-  includes the standard plugin library (:mod:`lino.modlib`) for adding
-  basic features like system users, a notification framework,
-  comments, printing, ...
+  includes the :doc:`/specs/modlib`.
 
-- :mod:`lino_xl` is an "extended" :term:`plugin library` used by many Lino
-  applications.  See :doc:`xl`.
+- The :mod:`lino_xl` package contains the :doc:`xl`.
+
+- The :mod:`getlino` package contains the Lino installer. See :ref:`getlino`.
 
 - The :mod:`lino_book` package contains the source code of what you
   are reading right now, a collection of demo projects and examples
   (:mod:`lino_book.projects`), and the big test suite for the whole
-  Lino framework.  The book package is not published on PyPI because
-  that would make no sense.  You use it by cloning the repository from
-  GitHub (which is done automatically by :ref:`getlino`).
+  Lino framework.
 
 
 Lino applications
 =================
 
-Some Lino applications have the privilege of being documented within the
-:ref:`Lino Book <book>`.
+Here is a directory of all known :term:`Lino applications <Lino application>`.
+
+Some Lino applications have the privilege of having their technical
+documentation in the :ref:`Lino Book <book>`.
 
 - :mod:`lino_noi` (:ref:`noi`) : the application we use for
   managing our collaboration.  It's about tickets, projects and working time.
@@ -39,18 +37,17 @@ Some Lino applications have the privilege of being documented within the
 - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
 - :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
 
-Other Lino applications are more independent in that they have their own
-documentation tree, demo projects and technical specs:
+Some other Lino applications have their own technical documentation, demo projects
+and technical specs:
 
-- `Lino Welfare <http://welfare.lino-framework.org>`_
-- `Lino Welfare Chatelet <http://welcht.lino-framework.org>`_
-- `Lino Welfare Eupen <http://weleup.lino-framework.org>`_
 - `Lino Amici <http://amici.lino-framework.org>`_
 - `Lino Presto <http://presto.lino-framework.org>`_
 - `Lino Pronto <http://pronto.lino-framework.org>`_
+- `Lino Welfare <http://welfare.lino-framework.org>`_ currently has two
+  variants named `Chatelet <http://welcht.lino-framework.org>`_
+  `Eupen <http://weleup.lino-framework.org>`_.
 - `Lino Patrols <http://patrols.lino-framework.org/>`_ (fell asleep before going to production)
 - `Lino Logos <http://logos.lino-framework.org/>`_ (fell asleep before going to production)
-
 - `Lino Sunto <https://github.com/ManuelWeidmann/lino-sunto>`_ is the first Lino
   application developed by somebody else than the author.
 
@@ -92,86 +89,6 @@ See https://github.com/lino-framework/extjs6
 
 Note that this front end is discontinued in favour of the more feature-complete
 :ref:`react` front end.
-
-
-Miscellaneous
-=============
-
-.. _algus:
-
-Algus
------
-
-The `algus <https://github.com/lino-framework/algus>`__ repository is a template
-for new Lino applications.  The algus project is not really maintained and now
-partly replaced by :ref:`getlino`.
-
-
-Historic names
-==============
-
-.. _manuals:
-
-manuals
--------
-
-Obsolete. The `manuals <https://github.com/lino-framework/manuals>`__
-repository no longer exists.
-
-
-.. _psico:
-
-Lino Psico
-----------
-
-Old name of :ref:`tera`.
-
-.. _sunto:
-
-Lino Sunto
-----------
-
-Lino Sunto is the first free (GPL) Lino application developed by
-somebody else than the author. It is hosted at
-https://github.com/ManuelWeidmann/lino-sunto
-
-
-.. _welfare:
-
-Lino Welfare
-------------
-
-See http://welfare.lino-framework.org
-
-.. _presto:
-
-Lino Presto
-------------
-
-See http://presto.lino-framework.org
-
-.. _pronto:
-
-Lino Pronto
-------------
-
-See http://pronto.lino-framework.org
-
-.. _patrols:
-
-Lino Patrols
-------------
-
-Some parts of the book refer to this for historical reasons.
-See http://patrols.lino-framework.org
-
-.. _logos:
-
-Lino Logos
-----------
-
-Some parts of the book refer to this for historical reasons.
-See http://logos.lino-framework.org
 
 
 Overview diagram
@@ -233,6 +150,7 @@ Overview diagram
         tera;
         avanti;
         voga;
+        logos
         weleup;
         welcht;
         amici;
@@ -240,6 +158,7 @@ Overview diagram
 
     lino -> atelier;
     xl -> lino;
+    logos -> lino;
     noi -> xl;
     cosi -> xl;
     tera -> xl;
