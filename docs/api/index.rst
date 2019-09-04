@@ -17,24 +17,16 @@ The ``lino`` package
 .. automodule:: lino
 
 
-.. _xl:
-
-The Lino Extensions Library
-===========================
-
-.. py2rst::
-
-  import lino_xl
-  print(lino_xl.SETUP_INFO['long_description'])
+The ``lino-xl`` package
+=======================
 
 .. automodule:: lino_xl
 
 
-
 .. _book:
 
-The Lino Book
-=============
+The ``lino-book`` package
+=========================
 
 .. py2rst::
 
