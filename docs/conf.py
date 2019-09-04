@@ -54,7 +54,7 @@ help_texts_builder_targets = {
     'lino_cosi.': 'lino_cosi.lib.cosi',
     'lino_care.': 'lino_care.lib.care',
     'lino_voga.': 'lino_voga.lib.voga',
-    'lino_welfare.': 'lino_welfare.modlib.welfare',
+    # 'lino_welfare.': 'lino_welfare.modlib.welfare',
 }
 
 if False:
@@ -326,7 +326,7 @@ extlinks.update({
     'extjs': ('http://www.sencha.com/deploy/dev/docs/?class=%s', ''),
     'extux': ('http://extjs-ux.org/ext-docs/?class=%s', ''),
     'djangoticket': (
-        'http://code.djangoproject.com/ticket/%s', 'Django ticket #'),
+        'https://code.djangoproject.com/ticket/%s', 'Django ticket #'),
     'welfare': ('http://welfare.lino-framework.org%s.html', ''),
     # 'welfareticket': (
     #     'http://welfare.lino-framework.org/tickets/%s.html', ''),
@@ -336,8 +336,6 @@ extlinks.update({
     #     'http://welfare-userman.lino-framework.org/fr%s.html', ''),
 })
 
-
-# intersphinx_mapping = {}
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # if on_rtd:
@@ -354,8 +352,7 @@ if False:  # on_rtd:
 
 from atelier.sphinxconf import interproject
 interproject.configure(
-    globals(), 'atelier etgen getlino')
-
+    globals(), 'atelier etgen getlino lino lino_xl')
 
 intersphinx_mapping['cg'] = ('http://community.lino-framework.org/', None)
 

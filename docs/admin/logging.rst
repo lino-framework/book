@@ -8,7 +8,7 @@ This document explains everything you need to know about logging for
 Lino applications.
 
 We presume that you have read the Django's doc about `Logging
-<https://docs.djangoproject.com/en/1.11/topics/logging/>`__.
+<https://docs.djangoproject.com/en/2.2/topics/logging/>`__.
 
 
 The Lino application log

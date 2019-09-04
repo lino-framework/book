@@ -23,7 +23,7 @@ is run by :manage:`loaddata` and loads fixtures into the database.
 Basic idea:
 
 When a Lino application starts up, it sets your `SERIALIZATION_MODULES
-<https://docs.djangoproject.com/en/1.11/ref/settings/#serialization-modules>`_
+<https://docs.djangoproject.com/en/2.2/ref/settings/#serialization-modules>`_
 setting to `{"py" : "lino.utils.dpy"}`.  This tells Django to
 associate the `.py` ending to the :class:`lino.utils.dpy.Deserializer`
 class when loading ("deserializing") fixtures.

@@ -3,7 +3,7 @@
 
 `values_list()` returns an uncomplete QuerySet when called on a 
 QuerySet that is ordered by a column defined using 
-`QuerySet.extra() <http://docs.djangoproject.com/en/1.11/ref/models/querysets/#extra>`_.
+`QuerySet.extra() <http://docs.djangoproject.com/en/2.2/ref/models/querysets/#extra>`_.
 
 For example, the following QuerySet works as expected::
 

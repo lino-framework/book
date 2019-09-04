@@ -4,7 +4,7 @@ GenericForeignKey fields
 
 The `GenericForeignKey` field (GFK) is a great feature provided by
 Django's `django.contrib.contenttypes
-<https://docs.djangoproject.com/en/1.11/ref/contrib/contenttypes/>`_
+<https://docs.djangoproject.com/en/2.2/ref/contrib/contenttypes/>`_
 module. While a normal `ForeignKey` field can point to a database
 object *of a given model*, a `GenericForeignKey` can point to a
 database object *of any model*.

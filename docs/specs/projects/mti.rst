@@ -37,7 +37,7 @@ Here is the :xfile:`models.py` file used for this example.  This is
 classical Django know-how: `Restaurant` inherits from `Place`, and
 `Place` is *not* abstract.  That's what Django calls `multi table
 inheritance
-<https://docs.djangoproject.com/en/1.11/topics/db/models/#multi-table-inheritance>`_.
+<https://docs.djangoproject.com/en/2.2/topics/db/models/#multi-table-inheritance>`_.
 
 .. literalinclude:: /../../book/lino_book/projects/mti/app/models.py
 

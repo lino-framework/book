@@ -25,7 +25,7 @@ to become understandably confused by Django's usage of the word
 'app'."  But to be honest: Django is *simply wrong* at this point.  It
 says "application" where it should say "plugin" or "module". Things
 like `django.contrib.contenttypes
-<https://docs.djangoproject.com/en/1.11/ref/contrib/contenttypes/>`_
+<https://docs.djangoproject.com/en/2.2/ref/contrib/contenttypes/>`_
 are not what normal people would call an "application", they are
 rather "plugins" or "modules".
 
@@ -45,7 +45,7 @@ Too much work for "just a vocabulary" problem.
    Django developer.  Unfortunately, the Django developers did not
    know about these considerations when the worked on version
    1.7. That's why they continue to speak about `Applications
-   <https://docs.djangoproject.com/en/1.11/ref/applications/>`_,
+   <https://docs.djangoproject.com/en/2.2/ref/applications/>`_,
    ignoring our vocabulary problem.
 
 The "only" problem with this vocabulary problem is that it leaves us

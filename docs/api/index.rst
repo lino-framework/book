@@ -9,20 +9,10 @@ This section has been automatically generated from the source code.
 .. contents::
     :depth: 2
     :local:
-       
 
-.. _lino:
 
-The Lino core
-=============
-
-The **Lino Core** is the bare minimum you need to write a Lino
-applicaton.
-
-.. py2rst::
-
-  import lino
-  print(lino.SETUP_INFO['long_description'])
+The ``lino`` package
+====================
 
 .. automodule:: lino
 
@@ -40,7 +30,7 @@ The Lino Extensions Library
 .. automodule:: lino_xl
 
 
-                
+
 .. _book:
 
 The Lino Book
@@ -76,7 +66,7 @@ Lino Noi
 
 
 .. automodule:: lino_noi
-                
+
 
 .. _cosi:
 
@@ -90,7 +80,7 @@ Lino Così
 
 
 .. automodule:: lino_cosi
-                
+
 
 .. _avanti:
 
@@ -104,7 +94,7 @@ Lino Avanti
 
 
 .. automodule:: lino_avanti
-                
+
 
 
 .. _vilma:
@@ -119,7 +109,7 @@ Lino Vilma
 
 
 .. automodule:: lino_vilma
-                
+
 
 
 .. _care:
@@ -134,7 +124,7 @@ Lino Care
 
 
 .. automodule:: lino_care
-                
+
 
 
 .. _tera:
@@ -149,7 +139,7 @@ Lino Tera
 
 
 .. automodule:: lino_tera
-                
+
 
 .. _faggio:
 .. _voga:
@@ -177,12 +167,9 @@ The ``commondata`` packages
 - https://github.com/lsaffre/commondata-eg
 
 .. automodule:: commondata
-                
+
 .. automodule:: commondata.be
-                
+
 .. automodule:: commondata.ee
-                
+
 .. automodule:: commondata.eg
-                
-
-

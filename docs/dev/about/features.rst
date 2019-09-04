@@ -43,7 +43,7 @@ Lino then adds its own features to the above:
   
 - Lino includes :ref:`dpy`, a great alternative to `Django's built-in
   migration system
-  <https://docs.djangoproject.com/en/1.11/topics/migrations/>`_ to
+  <https://docs.djangoproject.com/en/2.2/topics/migrations/>`_ to
   manage your :ref:`database migrations <datamig>`.
   
 - Lino comes with a nice way for handling :ref:`polymorphism`.

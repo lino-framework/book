@@ -125,7 +125,7 @@ user interaction. Attention:
 
 Note that in plain Django you can achieve some of the above things by
 using `GenericRelation
-<https://docs.djangoproject.com/en/1.11/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation>`_
+<https://docs.djangoproject.com/en/2.2/ref/contrib/contenttypes/#django.contrib.contenttypes.fields.GenericRelation>`_
 fields.  That is, if we define a GenericRelation from Member to every
 model which potentially points to it.  In our case three
 GenericRelation objects. 

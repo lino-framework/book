@@ -11,7 +11,7 @@ sites will migrate their data.
 Data migration is a complex topic. Django needed until version 1.7
 before they adapted a default method to automating these tasks (see
 `Migrations
-<https://docs.djangoproject.com/en/1.11/topics/migrations/>`_).
+<https://docs.djangoproject.com/en/2.2/topics/migrations/>`_).
 
 Lino suggests to use :doc:`Python dumps <dump2py>` as a different
 approach for doing database migrations.  **Advantages** of migrations

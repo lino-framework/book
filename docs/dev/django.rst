@@ -9,7 +9,7 @@ The :xfile:`manage.py` file in every demo project is the standard
 Django interface for running a so-called **administrative task**, also
 known as **admin command** or **management command**. If you did't
 know that, please read `django-admin.py and manage.py
-<https://docs.djangoproject.com/en/1.11/ref/django-admin/>`_.
+<https://docs.djangoproject.com/en/2.2/ref/django-admin/>`_.
 
 Here are some standard Django admin commands that you should know.
 
@@ -18,13 +18,13 @@ Here are some standard Django admin commands that you should know.
 
     Start an interactive Python session on the application defined by
     the :xfile:`settings.py` file.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#shell>`__
+    <https://docs.djangoproject.com/en/2.2/ref/django-admin/#shell>`__
 
 .. management_command:: runserver
                         
     Start a web server which "runs" the application defined by the
     :xfile:`settings.py`.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#runserver>`__
+    <https://docs.djangoproject.com/en/2.2/ref/django-admin/#runserver>`__
                         
 
 .. management_command:: dumpdata
@@ -33,7 +33,7 @@ Here are some standard Django admin commands that you should know.
     stream.  Serialization formats include *json* or *xml*.  The
     default will write to `stdout`, but you usually redirect this into
     a file.  See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#dumpdata>`__
+    <https://docs.djangoproject.com/en/2.2/ref/django-admin/#dumpdata>`__
     
     With a Lino application you will probably prefer
     :manage:`dump2py`.
@@ -46,7 +46,7 @@ Here are some standard Django admin commands that you should know.
     re-run all migrations, you should drop and recreate the database
     and then run :manage:`migrate` instead.  See the `Django
     documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#flush>`__
+    <https://docs.djangoproject.com/en/2.2/ref/django-admin/#flush>`__
     
     With a Lino application you will probably prefer :manage:`initdb`
     or :manage:`prep`.
@@ -56,7 +56,7 @@ Here are some standard Django admin commands that you should know.
 
     Loads the contents of the named fixtures into the database.
     See the `Django documentation
-    <https://docs.djangoproject.com/en/1.11/ref/django-admin/#loaddata>`__.
+    <https://docs.djangoproject.com/en/2.2/ref/django-admin/#loaddata>`__.
     
     With a Lino application you will probably prefer :manage:`initdb`
     or :manage:`prep`.

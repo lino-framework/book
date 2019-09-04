@@ -61,7 +61,7 @@ and generated files::
 ---------------------------------------------------------------------------
 
 This means that `autosummary
-<http://www.sphinx-doc.org/en/master/ext/autosummary.html>`__ (which
+<http://www.sphinx-doc.org/en/master/usage/extensions/autosummary.html>`__ (which
 in turn needs `autodoc
 <http://www.sphinx-doc.org/en/master/ext/autodoc.html>`__) has a
 problem to import the module

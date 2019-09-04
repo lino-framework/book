@@ -92,9 +92,9 @@ Related problems:
     Also zwei zusätzlichen Requests für jede Zeile. 
     Einer für beide Felder würde reichen. 
     Noch besser wäre natürlich gar keiner:
-    https://docs.djangoproject.com/en/1.11/ref/models/querysets/#annotate
-    https://docs.djangoproject.com/en/1.11/topics/db/managers/
-    https://docs.djangoproject.com/en/1.11/topics/db/aggregation/
+    https://docs.djangoproject.com/en/2.2/ref/models/querysets/#annotate
+    https://docs.djangoproject.com/en/2.2/topics/db/managers/
+    https://docs.djangoproject.com/en/2.2/topics/db/aggregation/
 
 
 

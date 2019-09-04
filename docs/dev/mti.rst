@@ -5,7 +5,7 @@ Multi-table inheritance
 =======================
 
 Django's `Multi-table inheritance
-<http://docs.djangoproject.com/en/1.11/topics/db/models/#multi-table-inheritance>`__
+<http://docs.djangoproject.com/en/2.2/topics/db/models/#multi-table-inheritance>`__
 (MTI) is a great feature to map 
 `Polymorphism 
 <http://stackoverflow.com/questions/45621/how-do-you-deal-with-polymorphism-in-a-database>`_.

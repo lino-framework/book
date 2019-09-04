@@ -107,7 +107,7 @@ commands when designing templates.
 
 - :class:`PisaBuildMethod` and :class:`LatexBuildMethod` use 
   `Django's template engine
-  <http://docs.djangoproject.com/en/1.11/topics/templates/>`_ whose 
+  <http://docs.djangoproject.com/en/2.2/topics/templates/>`_ whose 
   template commands look for example like 
   ``{% if instance.has_family %}yes{% else %}no{% endif %}``
   or

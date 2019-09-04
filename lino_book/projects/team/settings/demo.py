@@ -112,8 +112,8 @@ SOCIAL_AUTH_MEDIAWIKI_CALLBACK = 'oob'
 # temporary installation instructions:
 # $ apt-get install build-essential python3-dev python2.7-dev libldap2-dev libsasl2-dev slapd ldap-utils lcov valgrind
 # $ pip install -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
-import ldap
-from django_auth_ldap.config import LDAPSearch, LDAPGroupType,GroupOfNamesType,LDAPSearchUnion,GroupOfUniqueNamesType
+# import ldap
+# from django_auth_ldap.config import LDAPSearch, LDAPGroupType,GroupOfNamesType,LDAPSearchUnion,GroupOfUniqueNamesType
 
 AUTHENTICATION_BACKENDS.append("django_auth_ldap.backend.LDAPBackend")
 

@@ -5,7 +5,7 @@ Use a MySQL database
 If you decided to use MySQL as database engine, then here is a cheat
 sheet for quickly doing so.  No warranty.  See also the Django
 documentation at `MySQL notes
-<https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-notes>`__
+<https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-notes>`__
 
 .. contents:: Table of contents
     :local:
@@ -33,7 +33,7 @@ Install the mysql client into your project's virtualenv::
 
 Note that we recommended `mysql-python` before but modified this to
 `mysqlclient` in accordance with `Django
-<https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-db-api-drivers>`__.
+<https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-db-api-drivers>`__.
 
 Users
 =====

@@ -54,14 +54,14 @@ Glossary
     
   remote field
     We sometimes use this term for 
-    `field lookups that refer to a joined model    <https://docs.djangoproject.com/en/1.11/topics/db/queries/#lookups-that-span-relationships>`__.
+    `field lookups that refer to a joined model    <https://docs.djangoproject.com/en/2.2/topics/db/queries/#lookups-that-span-relationships>`__.
     For example in a `Table` on a model `Invoice` that has a 
     ForeignKey `customer` to `Partner`, 
     then you can add a column `customer__city`. 
     
     
   field lookups
-    See https://docs.djangoproject.com/en/1.11/topics/db/queries/#field-lookups  
+    See https://docs.djangoproject.com/en/2.2/topics/db/queries/#field-lookups  
     
   GC
     Grid Configuration. 
@@ -93,7 +93,7 @@ Glossary
 
   loaddata
     one of Django's standard management commands.
-    See `Django docs <http://docs.djangoproject.com/en/1.11/ref/django-admin/#loaddata-fixture-fixture>`_
+    See `Django docs <http://docs.djangoproject.com/en/2.2/ref/django-admin/#loaddata-fixture-fixture>`_
     
   makeui
     A Lino-specific Django management command that 
