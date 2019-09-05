@@ -13,6 +13,15 @@
 .. contents::
   :local:
 
+2019-09-05
+==========
+
+Disabled tidy error checking in :mod:`lino.utils.html2xhtml` because Tidy 5.6
+also reports warnings as errors.
+
+Released :ref:`lino` version 19.9.0.
+
+
 2019-09-04
 ==========
 
