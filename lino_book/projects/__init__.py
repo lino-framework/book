@@ -4,7 +4,7 @@ derivated work.
 
 See :doc:`/dev/projects` which explains how to try them.
 
-Usage examples of real-world :term:`Lino applications`:
+Usage examples of real-world :term:`Lino applications <Lino application>`:
 
 
 .. autosummary::
