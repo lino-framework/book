@@ -15,7 +15,7 @@ This document describes the :mod:`lino_avanti.lib.avanti` plugin.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -24,27 +24,27 @@ Clients
 =======
 
 .. class:: Client(lino.core.model.Model)
-           
+
     A **client** is a person using our services.
 
     .. attribute:: translator_type
-                   
+
         Which type of translator is needed with this client.
-                   
+
         See also :class:`TranslatorTypes`
-        
+
     .. attribute:: professional_state
-                   
+
         The professional situation of this client.
 
         See also :class:`ProfessionalStates`
-                   
+
     .. attribute:: overview
 
         A panel with general information about this client.
 
     .. attribute:: client_state
-    
+
         The state of this client record.
 
         This is a pointer to :class:`ClientStates` and can have the following
@@ -80,7 +80,7 @@ Clients
     .. attribute:: city
 
        The place (village or municipality) where this client lives.
-       
+
        This is a pointer to a
        :class:`lino_xl.lib.countries.Place`.
 
@@ -90,11 +90,11 @@ Clients
        equal to :attr:`city`, except when :attr:`city` is a *village*
        and has a parent which is a *municipality* (which causes that
        place to be returned).
-           
+
 .. class:: ClientDetail
 
 .. class:: Clients
-           
+
     Base class for most lists of clients.
 
     .. attribute:: client_state
@@ -163,8 +163,8 @@ Clients
 | event_policy      | Recurrency policy      |                                                              |
 +-------------------+------------------------+--------------------------------------------------------------+
 
-   
-           
+
+
 .. class:: MyClients(Clients)
 
     Shows all clients having me as primary coach. Shows all client states.
@@ -177,17 +177,17 @@ Clients
      ABDALLA Aádil (120)         Registered   950201 001-38         August-Thonnar-Str., 4700 Eupen   22 years                            120
      ABDELRAHMAN Aáqil (133)     Ended        870305 001-48         Euregiostraße, 4700 Eupen         29 years                            133
      ABDOU Abeer (143)           Ended        800828 002-21         Heidberg, 4700 Eupen              36 years                            143
-     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159   
-     ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166   
-     ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149   
+     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159
+     ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166
+     ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149
      ARSHUN Aloyoshenká (135)    Ended        850424 001-25         Gewerbestraße, 4700 Eupen         31 years                            135
      BAH Aráli (119)             Ended        970531 001-74         Am Waisenbüschchen, 4700 Eupen    19 years                            119
-     BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153   
-     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165   
+     BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153
+     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165
      CONGO Chiámáká (126)        Registered   890702 001-14         Bergstraße, 4700 Eupen            27 years                            126
      DIA Deion (137)             Ended        840519 001-64         Gospert, 4700 Eupen               32 years                            137
      FALL Dembe (145)            Ended        790923 001-61         Heidhöhe, 4700 Eupen              37 years                            145
-     KEITA Cácey (161)           Ended        730318 002-42         4730 Raeren                       43 years                            161   
+     KEITA Cácey (161)           Ended        730318 002-42         4730 Raeren                       43 years                            161
     =========================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
     <BLANKLINE>
 
@@ -199,7 +199,7 @@ Clients
 
 
 .. class:: EndingReason(lino.core.model.Model)
-          
+
 >>> rt.show('avanti.EndingReasons')
 ==== ======================== ========================== ========================
  ID   Designation              Designation (de)           Designation (fr)
@@ -214,7 +214,7 @@ Clients
 <BLANKLINE>
 
 .. class:: Category(BabelDesignated)
-           
+
 >>> rt.show('avanti.Categories')
 ==== =============================== =============================== ===============================
  ID   Designation                     Designation (de)                Designation (fr)
@@ -233,7 +233,7 @@ Clients
 
     List of choices for the :attr:`Client.translator_type` field of a
     client.
-    
+
     >>> rt.show(rt.models.avanti.TranslatorTypes, language="de")
     ====== ====== ==========
      Wert   name   Text
@@ -243,13 +243,13 @@ Clients
      30            Privat
     ====== ====== ==========
     <BLANKLINE>
-    
+
 
 .. class:: ProfessionalStates
 
     List of choices for the :attr:`Client.professional_state` field of
     a client.
-    
+
     >>> rt.show(rt.models.avanti.ProfessionalStates, language="de")
     ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
     ====== ====== ================================
@@ -284,4 +284,3 @@ Clients
  system.BleachChecker              Find unbleached html content
 ================================= ========================================
 <BLANKLINE>
-    

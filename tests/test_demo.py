@@ -104,6 +104,9 @@ class TestCase(TestCase):
     def test_babel_tutorial(self):
         self.run_django_manage_test("lino_book/projects/babel_tutorial")
 
+    def test_migs(self):
+        self.run_django_manage_test("lino_book/projects/migs")
+
     def test_min1(self):
         self.run_django_manage_test("lino_book/projects/min1")
 
@@ -128,8 +131,8 @@ class TestCase(TestCase):
     def test_liina(self):
         self.run_django_manage_test('lino_book/projects/liina')
 
-    def test_adg(self):
-        self.run_django_manage_test('lino_book/projects/adg')
+    def test_avanti1(self):
+        self.run_django_manage_test('lino_book/projects/avanti1')
 
     def test_lydia(self):
         self.run_django_manage_test('lino_book/projects/lydia')

@@ -11,7 +11,7 @@ User types in Lino Avanti
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -49,7 +49,7 @@ Site administrator
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states, Reminders
 - Site : About
 
-  
+
 
 Coordinator
 ===========
@@ -62,7 +62,7 @@ users.UserTypes.coordinator:400
 - Office : My expiring uploads, My Uploads, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
-  
+
 
 Secretary
 =========

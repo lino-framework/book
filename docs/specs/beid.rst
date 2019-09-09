@@ -17,7 +17,7 @@ Belgian eID cards and storing that data in the database.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -35,7 +35,7 @@ application's models.  That model is referrable as
 
 >>> dd.plugins.beid.holder_model
 <class 'lino_avanti.lib.avanti.models.Client'>
-      
+
 
 See unit tests in :mod:`lino_welfare.tests.test_beid`.
 
@@ -132,7 +132,7 @@ See unit tests in :mod:`lino_welfare.tests.test_beid`.
 
         Virtual field which displays the picture.
 
-           
+
 
 
 ID card types
@@ -162,16 +162,16 @@ ID card types
     A list of Belgian identity card types.
 
     We didn't yet find any official reference document.
-    
+
     The eID applet returns a field `documentType` which contains a
     numeric code.  For example 1 is for "Belgian citizen", 6 for "Kids
     card",...
-    
+
     The eID viewer, when saving a card as xml file, doesn't save these
     values nowhere, it saves a string equivalent (1 becomes
     "belgian_citizen", 6 becomes "kids_card", 17 becomes
     "foreigner_f", 16 becomes "foreigner_e_plus",...
-    
+
     Sources:
 
     - [1] `kuleuven.be <https://securehomes.esat.kuleuven.be/~decockd/wiki/bin/view.cgi/EidForums/ForumEidCards0073>`__
@@ -181,22 +181,22 @@ ID card types
 
 
     Excerpts from [1]:
-    
+
     - Johan: A document type of 7 is used for bootstrap cards -- What
       is a bootstrap card (maybe some kind of test card?)  Danny: A
       bootstrap card was an eID card that was used in the early start
       of the eID card introduction to bootstrap the computers at the
       administration. This type is no longer issued.
-    
+
     - Johan: A document type of 8 is used for a
       "habilitation/machtigings" card -- Is this for refugees or
       asylum seekers? Danny: A habilitation/machtigings card was aimed
       at civil servants. This type is also no longer used.
 
-           
+
 Residence types
 ===============
-    
+
 >>> rt.show(beid.ResidenceTypes)
 ======= ====== ========================
  value   name   text
@@ -209,7 +209,7 @@ Residence types
 
 
 .. class:: ResidenceTypes
-           
+
     The list of Belgian resident registers
     (Einwohnerregister, Registre de résidents).
 
@@ -235,7 +235,7 @@ Residence types
 
     Belgian NISSes are stored including the formatting characters (see
     :mod:`lino.utils.ssin`) in order to guarantee uniqueness.
-           
+
 
 
 

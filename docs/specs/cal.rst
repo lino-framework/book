@@ -16,7 +16,7 @@ The :mod:`lino_xl.lib.cal` plugin adds calendar functionality.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
->>> startup('lino_book.projects.adg.settings.demo')
+>>> startup('lino_book.projects.avanti1.settings.demo')
 >>> from lino.api.doctest import *
 
 
@@ -144,7 +144,7 @@ the starting date.
          <lino_xl.lib.cal.ConflictingEvents>` table for this event.
 
     .. method:: update_guests
-                
+
         Populate or update the list of participants for this calendar
         entry according to the suggestions.
 
@@ -162,20 +162,20 @@ the starting date.
 
         Create or update all other automatic calendar entries of this
         series.
-                
+
     .. method:: show_today
 
     .. method:: get_conflicting_events(self)
-                
+
         Return a QuerySet of calendar entries that conflict with this one.
         Must work also when called on an unsaved instance.
         May return None to indicate an empty queryset.
         Applications may override this to add specific conditions.
-        
+
     .. method:: has_conflicting_events(self)
-                
+
         Whether this entry has any conflicting entries.
-        
+
         This is roughly equivalent to asking whether
         :meth:`get_conflicting_events()` returns more than 0 events.
 
@@ -183,42 +183,42 @@ the starting date.
         at the same time.
 
     .. method:: suggest_guests(self)
-           
+
         Yield the list of unsaved :class:`Guest` instances to be added
         to this calendar entry.
 
         This method is called from :meth:`update_guests`.
 
     .. method:: get_event_summary(self, ar)
-                
+
         How this event should be summarized in contexts where possibly
         another user is looking (i.e. currently in invitations of
         guests, or in the extensible calendar panel).
 
     .. method:: before_ui_save(self, ar)
-       
+
         Mark the entry as "user modified" by setting a default state.
         This is important because EventGenerators may not modify any
         user-modified Events.
 
     .. method:: auto_type_changed(self, ar)
-       
+
         Called when the number of this automatically generated entry
         (:attr:`auto_type` ) has changed.
 
         The default updates the summary.
-        
+
 
     .. method:: get_calendar(self)
-                
+
         Returns the :class:`Calendar` which contains this entry, or
         None if no subscription is found.
-        
+
         Needed for ext.ensible calendar panel.
 
         The default implementation returns None.
         Override this if your app uses Calendars.
-       
+
 >>> show_fields(rt.models.cal.Event,
 ...     'start_date start_time end_date end_time user summary description event_type state')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -273,20 +273,20 @@ values.
     The list of possible states of a calendar entry.
 
 .. class:: EntryState
-           
+
     Every calendar entry state is an instance of this and has some attributes.
 
     .. attribute:: edit_guests
-                   
+
         Whether presences are editable when the entry is in this
         state.
-        
+
     .. attribute:: guest_state
 
         Force the given guest state for all guests when an entry is
         set to this state and when
         :attr:`EventType.force_guest_states` is True.
-        
+
     .. attribute:: noauto
     .. attribute:: transparent
     .. attribute:: fixed
@@ -323,7 +323,7 @@ application-specific behaviour and rules.
     .. attribute:: event_label
 
         Default text for summary of new entries.
-           
+
     .. attribute:: is_appointment
 
         Whether entries of this type are considered "appointments" (i.e. whose
@@ -442,11 +442,11 @@ The daily planner is a table that shows an overview on all events of a day.
 
 
 .. class:: PlannerColumns
-           
+
     A choicelist that defines the columns to appear in the daily
     planner. This list can be modified locally.
-    
-    
+
+
 A default configuration has two columns in the daily planner:
 
 >>> rt.show(cal.PlannerColumns)
@@ -460,7 +460,7 @@ A default configuration has two columns in the daily planner:
 
 
 .. class:: DailyPlannerRow
-           
+
     A database object that represents one row of the daily planner.
     The default configuration has "AM", "PM" and "All day".
 
@@ -531,11 +531,11 @@ Calendar entries can be grouped into "calendars".
     The django model representing a *calendar*.
 
     .. attribute:: color
-   
+
         The color to use for entries of this calendar (in
         :mod:`lino_xl.lib.extensible`).
-   
-               
+
+
 .. class:: Calendars
 
 >>> rt.show(cal.Calendars)
@@ -608,7 +608,7 @@ generated. These fields are implemented by another mixin named
 recurrence set is something that specifies which calendar events
 should get generated.
 
-    
+
 
 .. class:: EventGenerator
 
@@ -621,14 +621,14 @@ should get generated.
 
         Update the presence lists of all calendar events generated by
         this.
-    
+
     .. method:: do_update_events
-                
+
         Create or update the automatic calendar entries controlled by
         this generator.
 
         This is the :guilabel:` ⚡ ` button.
-                
+
         See :class:`UpdateEntries`.
 
     .. method:: get_wanted_auto_events(self, ar)
@@ -642,14 +642,14 @@ should get generated.
         If an event has been manually moved to another date, all
         subsequent events adapt to the new rythm (except those which
         have themselves been manually modified).
-                        
+
     .. method:: care_about_conflicts(self, we)
-                
+
         Whether this event generator should try to resolve conflicts
         (in :meth:`resolve_conflicts`)
 
     .. method:: resolve_conflicts(self, we, ar, rset, until)
-                
+
         Check whether given entry `we` conflicts with other entries
         and move it to a new date if necessary. Returns (a) the
         entry's :attr:`start_date` if there is no conflict, (b) the
@@ -660,11 +660,11 @@ should get generated.
         `ar` is the action request who asks for this.  `rset` is the
         :class:`RecurrenceSet`.
 
-           
+
 
 
 .. class:: UpdateEntries
-           
+
     Generate or update the automatic events controlled by this object.
 
     This action is installed as
@@ -677,7 +677,7 @@ should get generated.
     This is installed as
     :attr:`update_events <Event.update_events>` on :class:`Event`.
 
-      
+
 The generated calendar entries are "controlled" by their generator
 (their :attr:`owner <Event.owner>` field points to the generator) and
 have a non-empty :attr:`Event.auto_type` field.
@@ -707,7 +707,7 @@ date recurrenies:
 
 
 .. class:: Recurrencies
-           
+
     List of possible choices for a 'recurrency' field.
 
     Note that a recurrency (an item of this choicelist) is also a
@@ -756,7 +756,7 @@ In :mod:`lino_book.projects.min2` we have a database model
 to generate holidays.  See also :ref:`xl.specs.holidays`.
 
 We are going to use this model for demonstrating some more features
-(which it inherits from :class:`RecurrenceSet` and 
+(which it inherits from :class:`RecurrenceSet` and
 :class:`EventGenerator`)
 
 
@@ -809,7 +809,7 @@ Every 2nd month
 03/01/2017
 07/03/2017
 
-Note that above dates are not exactly every 2 months because 
+Note that above dates are not exactly every 2 months because
 
 - they are only on Tuesdays
 - Lino also avoids conflicts with existing events
@@ -912,35 +912,35 @@ entry. Depending on the context the guests of a calendar entry may be labelled
 
         The state of this presence.  See :class:`GuestStates`.
 
-        
+
     The following three fields are injected by the
     :mod:`reception <lino_xl.lib.reception>` plugin:
 
     .. attribute:: waiting_since
-                   
+
         Time when the visitor arrived (checked in).
-       
+
     .. attribute:: busy_since
 
         Time when the visitor was received by agent.
-                   
+
     .. attribute:: gone_since
 
-        Time when the visitor left (checked out).                   
+        Time when the visitor left (checked out).
 
 
 Every participant of a calendar entry can have a "role". For example
 in a class meeting you might want to differentiate between the teacher
 and the pupils.
-        
+
 .. class:: GuestRole
-           
+
     The role of a guest expresses what the partner is going to do there.
-    
+
 .. class:: GuestRoles
 
     Global table of guest roles.
-           
+
 .. class:: GuestStates
 
     Global choicelist of possible guest states.
@@ -950,7 +950,7 @@ and the pupils.
 
     The actual content can be redefined by other apps,
     e.g. :mod:`lino_xl.lib.reception`.
-    
+
 
     >>> rt.show(cal.GuestStates)
     ======= ========= ============ ========= =============
@@ -1020,7 +1020,7 @@ in :ref:`presto`) if the application is not interested in physical rooms.
 
         See :class:`DisplayColors`.
 
-    
+
 .. class:: Rooms
 
     Base class for all list of rooms.
@@ -1030,7 +1030,7 @@ in :ref:`presto`) if the application is not interested in physical rooms.
 
     Show a list of all rooms.
 
-           
+
 .. class:: RoomDetail
 
     The detail layout for :class:`Rooms` and subclasses.
@@ -1048,7 +1048,7 @@ It corresponds to what the extensible CalendarPanel calls "Calendars"
 
     :user: points to the author (recipient) of this subscription
     :other_user:
-    
+
 .. class:: Subscriptions
 .. class:: SubscriptionsByUser
 .. class:: SubscriptionsByCalendar
@@ -1075,7 +1075,7 @@ reminded about it).
         The state of this Task. one of :class:`TaskStates`.
 
 .. class:: TaskStates
-        
+
     Possible values for the state of a :class:`Task`. The list of
     choices for the :attr:`Task.state` field.
 
@@ -1085,16 +1085,16 @@ reminded about it).
     Global table of all tasks for all users.
 
 .. class:: TasksByUser
-           
+
     Shows the list of tasks for this user.
-           
+
 .. class:: MyTasks
 
     Shows my tasks whose start date is today or in the future.
 
 Recurrent calendar entries
 ==========================
-           
+
 .. class:: EventPolicy
 
     A **recurrency policy** is a rule used for generating automatic
@@ -1107,16 +1107,16 @@ Recurrent calendar entries
 .. class:: EventPolicies
 
     Global table of all possible recurrencly policies.
-           
+
 .. class:: RecurrentEvent
 
     A **recurring event** describes a series of recurrent calendar
     entries.
-    
+
     .. attribute:: name
 
         See :attr:`lino.utils.mldbc.mixins.BabelNamed.name`.
-    
+
     .. attribute:: every_unit
 
         Inherited from :attr:`RecurrentSet.every_unit
@@ -1128,20 +1128,20 @@ Recurrent calendar entries
     .. attribute:: description
 
     .. method:: care_about_conflicts(self, we)
-                
+
         Recurrent events don't care about conflicts. A holiday won't move
         just because some other event has been created before on that date.
 
 .. class:: RecurrentEvents
 
     The list of all recurrent events (:class:`RecurrentEvent`).
-    
+
 
 Miscellaneous
 ==============
 
 .. class:: Events
-           
+
     Table which shows all calendar events.
 
     Filter parameters:
@@ -1184,10 +1184,10 @@ Miscellaneous
 
 .. class:: ConflictingEvents
 
-    Shows events conflicting with this one (the master).           
+    Shows events conflicting with this one (the master).
 
 .. class:: EntriesByDay
-           
+
     This table is usually labelled "Appointments today". It has no
     "date" column because it shows events of a given date.It is ordred
     with increasing times.
@@ -1195,9 +1195,9 @@ Miscellaneous
     The default filter parameters are set to show only *appointments*.
 
 .. class:: EntriesByRoom
-           
+
     Displays the calendar entries at a given :class:`Room`.
-           
+
 .. class:: EntriesByController
 
     Shows the calendar entries controlled by this database object.
@@ -1207,15 +1207,15 @@ Miscellaneous
     especially the entries which were automatically generated.
 
 .. class:: EntriesByProject
-           
+
 .. class:: OneEvent
-           
+
     Show a single calendar event.
-           
+
 .. class:: MyEntries
 
     Table of appointments for which I am responsible.
-           
+
     Table which shows today's and all future appointments of the
     requesting user.  The default filter parameters are set to show
     only appointments.
@@ -1224,17 +1224,17 @@ Miscellaneous
 
     Like :class:`MyEntries`, but only today.
 
-.. class:: MyAssignedEvents    
-    
+.. class:: MyAssignedEvents
+
     The table of calendar entries which are *assigned* to me.  That
     is, whose :attr:`Event.assigned_to` field refers to the requesting
     user.
 
     This table also causes a :term:`welcome message` "X events have been
     assigned to you" in case it is not empty.
-    
+
 .. class:: OverdueAppointments
-           
+
     Shows **overdue appointments**, i.e. appointments whose date is
     over but who are still in a nonstable state.
 
@@ -1244,10 +1244,10 @@ Miscellaneous
 .. class:: MyOverdueAppointments
 
     Like OverdueAppointments, but only for myself.
-    
-          
+
+
 .. class:: MyUnconfirmedAppointments
-           
+
     Shows my appointments in the near future which are in suggested or
     draft state.
 
@@ -1256,17 +1256,17 @@ Miscellaneous
     in the parameters panel.
 
     The state filter (draft or suggested) cannot be removed.
-    
-           
+
+
 .. class:: Guests
 
     The default table of presences.
-           
+
 .. class:: GuestsByEvent
 
 .. class:: GuestsByRole
 .. class:: MyPresences
-           
+
     Shows all my presences in calendar events, independently of their
     state.
 
@@ -1274,7 +1274,7 @@ Miscellaneous
 
     Received invitations waiting for my feedback (accept or reject).
 
-           
+
 .. class:: RecurrenceSet
 
     Mixin for models that express a set of repeating calendar events.
@@ -1290,7 +1290,7 @@ Miscellaneous
     .. attribute:: max_events
 
         Maximum number of calendar entries to generate.
-        
+
     .. attribute:: monday
     .. attribute:: tuesday
     .. attribute:: wednesday
@@ -1304,7 +1304,7 @@ Miscellaneous
 
         A virtual field returning the textual formulation of the
         weekdays where the recurrence occurs.
-    
+
         Usage examples see :ref:`book.specs.cal`.
 
 
@@ -1336,7 +1336,7 @@ Miscellaneous
     Inherits from both :class:`EventGenerator` and :class:`RecurrenceSet`.
 
     .. attribute:: room
-                   
+
     .. attribute:: max_date
 
         Don't generate calendar entries beyond this date.
@@ -1375,7 +1375,7 @@ The days of the week
 =====================
 
 .. class:: Weekdays
-           
+
     A choicelist with the seven days of a week.
 
 >>> rt.show(cal.Weekdays)
@@ -1393,8 +1393,8 @@ The days of the week
 <BLANKLINE>
 
 
-.. data:: WORKDAYS    
-           
+.. data:: WORKDAYS
+
     The five workdays of the week (Monday to Friday).
 
 
@@ -1483,7 +1483,7 @@ Miscellaneous
 .. class:: AccessClasses
 
     The sitewide list of access classes.
-           
+
 .. class:: ShowEntriesByDay
 
     Show all calendar events of the same day.
@@ -1504,18 +1504,18 @@ Miscellaneous
 
 Plugin configuration
 ====================
-    
+
 
 .. class:: Plugin
-    
+
 
     .. attribute:: partner_model
 
         The model to use as the guest of a presence.
-        
+
     .. attribute:: ignore_dates_before
-           
-        Ignore dates before the given date.  
+
+        Ignore dates before the given date.
 
         Default value is `None`, meaning "no limit".
 
@@ -1524,7 +1524,7 @@ Plugin configuration
         this is not editable through the web interface.
 
     .. attribute:: ignore_dates_after
-           
+
         Ignore dates after the given date.  This should never be `None`.
         Default value is 5 years after :meth:`today
         <lino.core.site.Site.today>`.
@@ -1542,7 +1542,7 @@ Most calendar functionality requires
     Can read public calendar entries. This is a kind of minimal
     calendar functionality which can be given to anonymous users,
     as done e.g. by :ref:`vilma`.
-        
+
 .. class:: GuestOperator
 
     Can see presences and guests of a calendar entry.
@@ -1568,7 +1568,7 @@ Data checkers
     Check for entries which last longer than the maximum number of
     days allowed by their type.
 
-.. class:: EventGuestChecker           
+.. class:: EventGuestChecker
 
     Check for calendar entries without participants.
 
@@ -1579,7 +1579,7 @@ Data checkers
 
 
 
-    
+
 .. function:: check_subscription(user, calendar)
 
     Check whether the given subscription exists. If not, create it.

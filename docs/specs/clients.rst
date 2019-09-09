@@ -17,7 +17,7 @@ client contacts.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
@@ -41,11 +41,11 @@ Database structure
 
         Pointer to ClientStates
 
-           
+
 .. class:: ClientStates
-           
+
     The list of **client states**.
-    
+
     >>> rt.show(clients.ClientStates)
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     ======= ========== ============ =============
@@ -60,8 +60,8 @@ Database structure
      40      refused    Abandoned
     ======= ========== ============ =============
     <BLANKLINE>
-    
-    
+
+
 .. class:: ClientEvents
 
     The list of **observable client events**.
@@ -77,17 +77,17 @@ Database structure
     <BLANKLINE>
 
     .. attribute:: created
-                   
+
         Select clients whose record has been *created* during the observed
         period.
-                   
+
     .. attribute:: modified
-                   
+
         The choice for :class:`ClientEvents` which selects clients whose
         main record has been *modified* during the observed period.
 
 
-           
+
 .. class:: ClientContacts
 .. class:: ClientContact
 
@@ -100,7 +100,7 @@ Database structure
         The :class:`Client`.
 
     .. attribute:: type
-    
+
         The type of contact. Pointer to :class:`ClientContactType`.
 
     .. attribute:: company
@@ -108,14 +108,14 @@ Database structure
         The organization.
 
     .. attribute:: contact_person
-    
+
         The contact person in the organization.
 
     .. attribute:: contact_role
-    
+
         The role of the contact person in the organization.
 
-           
+
 .. class:: ClientContactTypes
 .. class:: ClientContactType
 
@@ -173,9 +173,9 @@ database:
  Best School                         CONTEH Armáni (134)
 ================== ================ ========================= =========
 <BLANKLINE>
-    
 
-    
+
+
 
 Configuration
 =============
@@ -193,7 +193,7 @@ into models of other plugins.
 
 .. currentmodule:: lino.modlib
 
-    
+
 .. class:: contacts.Partner
     :noindex:
 

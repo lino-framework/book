@@ -6,7 +6,7 @@ Runs some tests about reading eID cards.
 
 You can run only these tests by issuing::
 
-  $ go adg
+  $ go avanti1
   $ python manage.py test tests.test_beid
 
 """
@@ -47,10 +47,10 @@ class BeIdTests(RemoteAuthTestCase):
         from django.conf import settings
         from lino.modlib.users.choicelists import UserTypes
         from lino.api.shell import countries, avanti, users
-        
+
         # is it the right settings module?
         self.assertEqual(os.environ['DJANGO_SETTINGS_MODULE'],
-                         'lino_book.projects.adg.settings.demo')
+                         'lino_book.projects.avanti1.settings.demo')
 
         self.assertEqual(settings.MIDDLEWARE, (
             'django.middleware.common.CommonMiddleware',
@@ -69,7 +69,7 @@ class BeIdTests(RemoteAuthTestCase):
         self.client.force_login(u)
         be = countries.Country(name="Belgium", isocode="BE")
         be.save()
-        
+
         Holder = dd.plugins.beid.holder_model
         kw = dict()
         # kw.update(card_number="123456789")
@@ -97,7 +97,7 @@ class BeIdTests(RemoteAuthTestCase):
 
         uuid = 'beid_test_1'
         simulate_eidreader(uuid)
-        
+
         url = '/api/avanti/Clients'
         post_data = dict()
         # post_data.update(
@@ -111,7 +111,7 @@ class BeIdTests(RemoteAuthTestCase):
             url, post_data,
             REMOTE_USER='robin',
             HTTP_ACCEPT_LANGUAGE='en')
-        
+
         result = self.check_json_result(response, 'alert success message')
         self.assertEqual(result['success'], False)
         expected = ("Sorry, I cannot handle that case: Cannot create "
@@ -130,19 +130,19 @@ class BeIdTests(RemoteAuthTestCase):
         dlg = []
         expected = """\
 Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :\
-<br/>Birth date : '' -> 1968-06-01 
-<br/>Birth place : '' -> 'Mons' 
-<br/>Country : None -> Country #BE ('Belgium') 
-<br/>Gender : None -> <Genders.male:M> 
-<br/>ID card valid from : None -> 2016-02-06 
-<br/>Locality : None -> Place #1 ('Helsinki') 
-<br/>Street : '' -> 'Estland' 
-<br/>Zip code : '' -> '1262' 
-<br/>eID card issuer : '' -> 'Helsinki' 
-<br/>eID card number : '' -> '592382784772' 
-<br/>eID card type : None -> <BeIdCardTypes.belgian_citizen:01> 
+<br/>Birth date : '' -> 1968-06-01
+<br/>Birth place : '' -> 'Mons'
+<br/>Country : None -> Country #BE ('Belgium')
+<br/>Gender : None -> <Genders.male:M>
+<br/>ID card valid from : None -> 2016-02-06
+<br/>Locality : None -> Place #1 ('Helsinki')
+<br/>Street : '' -> 'Estland'
+<br/>Zip code : '' -> '1262'
+<br/>eID card issuer : '' -> 'Helsinki'
+<br/>eID card number : '' -> '592382784772'
+<br/>eID card type : None -> <BeIdCardTypes.belgian_citizen:01>
 <br/>until : None -> 2026-02-06"""
-        
+
 # Click OK to apply the following changes for JEFFIN Jean (100) :\
 # <br/>Locality : None -> Place #1 ('Tallinn')
 # <br/>Gender : None -> <Genders.male:M>
@@ -156,14 +156,14 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :\
 # <br/>Birth date : '' -> 1968-06-01
 # <br/>eID card number : '' -> '592345678901'
 # <br/>Zip code : '' -> '1418'
-        
+
         dlg.append((expected, 'yes'))
         dlg.append((
             'Client "JEFFIN Jean-Jacques (100)" has been saved.',
             None))
         self.check_callback_dialog(
             self.client.post, 'robin', url, dlg, post_data)
-        
+
         obj = avanti.Client.objects.get(id=100)
         # addr = addresses.Address.objects.get(partner=obj)
         self.assertEqual(obj.city.name, "Helsinki")
@@ -200,7 +200,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         # national_id fields.
 
         Holder.validate_national_id = False
-        
+
         ssin.parse_ssin('68060105329')
         obj.national_id = "68060105329"
         obj.first_name = "Jean Jacques"
@@ -240,7 +240,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         s = ar.to_rst()
         # print(s)
         self.assertEqual(s, "\n")
-        
+
         # Last attempt for this card. No similar person exists. Create
         # new client from eid.
 
@@ -264,7 +264,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
 
         # when eidreader is not installed on client, there will be no
         # incoming POST and therefore we will have a timeout.
-        post_data['uuid'] = 'foo'  # 
+        post_data['uuid'] = 'foo'  #
         response = self.client.post(
             url, post_data,
             REMOTE_USER='robin',
@@ -275,12 +275,12 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
             'alert success message')
         self.assertEqual(result['success'], False)
         self.assertEqual(result['message'], "Abandoned after 1 seconds")
-        
+
         dd.plugins.beid.eidreader_timeout = 15
 
         uuid = 'beid_test_0'
         simulate_eidreader(uuid)
-        
+
         post_data['uuid'] = uuid
         response = self.client.post(
             url, post_data,
@@ -292,14 +292,14 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
             'alert success message')
         self.assertEqual(result['success'], False)
         self.assertEqual(result['message'], "No card data found: Could not find any reader with a card inserted")
-        
-        
-        
+
+
+
         if True:
             # skip the following tests because we don't yet have
             # test data for the Python eidreader.
             return
-    
+
         # next card. a foreigner card with incomplete birth date
 
         post_data.update(card_data=readfile('beid_tests_2.txt'))
@@ -344,6 +344,3 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         self.assertEqual(result['success'], True)
         expected = "Create new client Jean Dupont : Are you sure?"
         self.assertEqual(result['message'], expected)
-
-
-

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2018 Rumma & Ko Ltd
+# Copyright 2009-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
@@ -12,7 +12,7 @@ PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
 install_requires = [
-    'Sphinx', 'getlino', 
+    'Sphinx', 'getlino',
     'lino', 'selenium', 'mock',
     'pisa', 'django-wkhtmltopdf',
     'django-iban', 'metafone',
@@ -165,8 +165,26 @@ lino_book.projects.max.settings
 lino_book.projects.chatter
 lino_book.projects.chatter.settings
 lino_book.projects.chatter.tests
+lino_book.projects.migs
+lino_book.projects.migs.settings
+lino_book.projects.migs.settings.fixtures
+lino_book.projects.migs.migrations
+lino_book.projects.migs.tests
 lino_book.projects.min1
 lino_book.projects.min1.settings
+lino_book.projects.min1.migrations
+lino_book.projects.min1.migrations.about
+lino_book.projects.min1.migrations.bootstrap3
+lino_book.projects.min1.migrations.contacts
+lino_book.projects.min1.migrations.countries
+lino_book.projects.min1.migrations.extjs
+lino_book.projects.min1.migrations.jinja
+lino_book.projects.min1.migrations.lino
+lino_book.projects.min1.migrations.office
+lino_book.projects.min1.migrations.printing
+lino_book.projects.min1.migrations.system
+lino_book.projects.min1.migrations.users
+lino_book.projects.min1.migrations.xl
 lino_book.projects.min2
 lino_book.projects.min2.settings
 lino_book.projects.min2.tests
@@ -187,10 +205,10 @@ lino_book.projects.min9.tests
 lino_book.projects.apc
 lino_book.projects.apc.settings
 lino_book.projects.apc.tests
-lino_book.projects.adg
-lino_book.projects.adg.settings
-lino_book.projects.adg.settings.fixtures
-lino_book.projects.adg.tests
+lino_book.projects.avanti1
+lino_book.projects.avanti1.settings
+lino_book.projects.avanti1.settings.fixtures
+lino_book.projects.avanti1.tests
 lino_book.projects.cosi_ee
 lino_book.projects.cosi_ee.settings
 lino_book.projects.pierre

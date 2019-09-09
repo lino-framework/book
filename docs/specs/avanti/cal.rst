@@ -8,15 +8,19 @@ Calendar functions in Lino Avanti
 This document describes how the :mod:`lino_xl.lib.cal` is being used
 in :ref:`avanti`.
 
-..  doctest init:
-
-    >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
-    >>> from lino.api.doctest import *
-
 
 .. contents::
   :local:
+
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+
 
 .. currentmodule:: lino_avanti.lib.cal
 
@@ -81,7 +85,7 @@ In Avanti there is a state "exused" but we removed the transition it:
  wf4           ☒              Cancelled    Cancelled      suggested draft took_place
 ============= ============== ============ ============== ================================
 
-     
+
 
 >>> base = '/choices/cal/Guests/partner'
 >>> show_choices("rolf", base + '?query=') #doctest: +ELLIPSIS
@@ -123,7 +127,7 @@ In :ref:`avanti` we record and analyze why pupils have been missing.
 .. class:: AbsenceReasons
 
     The table of possible absence reasons.
-    
+
     Accessible via :menuselection:`Configure --> Calendar --> Absence
     reasons`.
 
@@ -140,10 +144,8 @@ In :ref:`avanti` we record and analyze why pupils have been missing.
      4    Unjustified          Unberechtigt               Unjustified
     ==== ==================== ========================== ====================
     <BLANKLINE>
-   
-   
+
+
 .. class:: AbsenceReason
 
    .. attribute:: name
-
-                  

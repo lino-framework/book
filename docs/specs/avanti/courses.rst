@@ -15,7 +15,7 @@ This document specifies how activities are being used in
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -29,7 +29,7 @@ Activities
 ==========
 
 .. class:: Course
-           
+
     Same as :class:`lino_xl.lib.courses.Course`.
 
 
@@ -37,7 +37,7 @@ Enrolments
 ==========
 
 .. class:: EnrolmentsByCourse
-           
+
     Same as :class:`lino_xl.lib.courses.EnrolmentsByCourse` but adds
     the gender of the pupil (a remote field) and the enrolment
     options.
@@ -46,7 +46,7 @@ Enrolments
 
     Inherits from :class:`lino_xl.lib.courses.Enrolment` but adds four
     specific "enrolment options":
-           
+
     .. attribute:: needs_childcare
 
         Whether this pupil has small children to care about.
@@ -72,8 +72,8 @@ Enrolments
 .. class:: PresencesByEnrolment
 
     Shows the presences of this pupil for this course.
-    
-     
+
+
 Topics
 ======
 
@@ -208,15 +208,15 @@ Reminders
     A **reminder** is when a coaching worker sends a written letter to
     a client reminding him or her that they have a problme with their
     presences.
-    
+
 .. class:: Reminders
 
     The table of all reminders.
-   
+
 .. class:: RemindersByPupil
 
     Shows all reminders that have been issued for this pupil.
-    
+
     This is an example of :ref:`remote_master`.
 
 
@@ -235,10 +235,10 @@ Reminders
      90      cancelled   Cancelled
     ======= =========== =========== =============
     <BLANKLINE>
-           
-    
+
+
 .. class:: EnrolmentChecker
-           
+
     Checks for the following data problems:
 
     - :message:`More than 2 times absent.`
@@ -252,9 +252,9 @@ Templates
 .. xfile:: courses/Enrolment/Default.odt
 
    Prints an "Integration Course Agreement".
-   
+
 .. xfile:: courses/Reminder/Default.odt
-           
+
    Prints a reminder to be sent to the client.
 
 
@@ -365,19 +365,19 @@ Missing rates
      Adds an action to update the missing rates of all enrolments.
 
      .. method:: update_missing_rates(self)
-                 
+
         Calculate the missing rates for all enrolments of this course.
 
         This action is automatically performed for all courses once
         per day in the evening.  Users can run it manually by clicking
         the ☉ button on a course.
-        
+
         >>> print(courses.Course.update_missing_rates.button_text)
          ☉ 
-                 
+
         >>> print(courses.Course.update_missing_rates.label)
         Update missing rates
-        
+
         >>> print(courses.Course.update_missing_rates.help_text)
         Calculate the missing rates for all enrolments of this course.
 

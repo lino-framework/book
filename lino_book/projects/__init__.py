@@ -4,8 +4,7 @@ derivated work.
 
 See :doc:`/dev/projects` which explains how to try them.
 
-Examples of localized Lino applications which are being used in the
-real world.
+Usage examples of real-world :term:`Lino applications`:
 
 
 .. autosummary::
@@ -20,7 +19,7 @@ real world.
    anna
    liina
    lydia
-   adg
+   avanti1
 
 Examples used by a tutorial:
 
@@ -76,5 +75,3 @@ Sleeping:
    i18n
 
 """
-
-

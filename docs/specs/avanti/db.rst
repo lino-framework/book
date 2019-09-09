@@ -8,7 +8,7 @@ Database structure of Lino Avanti
 .. doctest init:
 
     >>> import lino
-    >>> lino.startup('lino_book.projects.adg.settings.doctests')
+    >>> lino.startup('lino_book.projects.avanti1.settings.doctests')
     >>> from lino.api.doctest import *
 
 This document describes the database structure.
@@ -38,6 +38,3 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
-
-
-

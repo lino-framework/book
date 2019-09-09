@@ -19,7 +19,7 @@ structured conversation with a "client".  It is currently used in
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.adg.settings.doctests')
+>>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -41,32 +41,32 @@ Coachings
     .. attribute:: start_date
     .. attribute:: primary
     .. attribute:: ending
-           
+
 .. class:: Coachings
-           
+
     The :class:`Coachings` table in a clients detail.
 
 .. class:: CoachingsByClient
 .. class:: CoachingsByUser
-           
+
 
 Coachables
 ==========
-           
+
 .. class:: Coachable
 
     Base class for coachable client. The model specified as
     :attr:`client_model <Plugin.client_model>` must implement this.
 
     .. method:: get_coachings(self, period=None, *args, **flt)
-                
+
         Return a queryset with the coachings of this client. If
         `period` is not `None`, it must be a tuple of two date
         objects. Any additional arguments are applied as filter of the
         queryset.
 
     .. method:: get_primary_coach(self)
-                
+
         Return the one and only primary coach of this client (or
         `None` if there's less or more than one).
 
@@ -85,10 +85,10 @@ Coachables
         <lino_xl.lib.coachings.CoachingType.does_integ>` set to
         `True`..
 
-        
+
 Coaching types
 ==============
-           
+
 .. class:: CoachingType
 
     The **type** of a coaching can be used for expressing different
@@ -105,14 +105,14 @@ Coaching types
         meetings (see
         :meth:`lino_xl.lib.coaching.Coachable.setup_auto_event`)
 
-           
+
 .. class:: CoachingTypes
 
-           
+
 
 Coaching endings
 ================
-           
+
 .. class:: CoachingEnding
 
    A **Coaching termination reason** expresses why a coaching has been
@@ -122,24 +122,24 @@ Coaching endings
 
     A list of reasons expressing why a coaching was ended.
 
-           
-           
+
+
 Miscellaneous
 =============
 
 
 .. class:: CoachingsUser
-           
+
     A user who has access to basic coachings functionality.
 
 
 .. class:: CoachingsStaff
-   
+
     A user who can configure coachings functionality.
 
 .. class:: ClientChecker
 .. class:: ClientCoachingsChecker
-   
+
     Coached clients should not be obsolete.  Only coached clients
     should have active coachings.
 
@@ -162,5 +162,3 @@ into models of other plugins.
     .. attribute:: coaching_supervisor
 
         Notify me when a coach has been assigned.
-
-    
