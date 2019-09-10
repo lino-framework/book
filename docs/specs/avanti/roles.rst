@@ -43,7 +43,7 @@ Site administrator
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Office : Comments, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts, Known contact types
-  - Career : language knowledges, Trainings, Studies, Job Experiences
+  - Career : Language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states, Reminders

@@ -18,6 +18,22 @@ I wrote it primarily to reproduce and test the
 "NameError / global name 'dd' is not defined"
 on :blogref:`20130311`.
 
+.. flush the database to remove data from a previous test run
+
+    >>> from django.core.management import call_command
+    >>> call_command('initdb', interactive=False)
+    Operations to perform:
+      Synchronize unmigrated apps: about, auto_create, bootstrap3, extjs, jinja, lino, staticfiles
+      Apply all migrations: (none)
+    Synchronizing apps without migrations:
+      Creating tables...
+        Creating table auto_create_tag
+        Running deferred SQL...
+    Running migrations:
+      No migrations to apply.
+
+
+
 We define a single simple model and a handler for the auto_create signal:
 
 .. literalinclude:: models.py

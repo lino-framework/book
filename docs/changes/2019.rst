@@ -13,6 +13,21 @@
 .. contents::
   :local:
 
+2019-09-10
+==========
+
+Some extensions for :ref:`avanti` (:ticket:`2274`)
+
+- New option :attr:`lino_xl.lib.cv.Plugin.with_language_history`. If this is
+  True, Lino adds a field  :attr:`LanguageKnowledge.obervation_date` and allows
+  multiple entries per `(person, language)`. This can be used to record a
+  history of the evolution of a person's language knowledge.
+- Renamed the demo project :mod:`lino_book.projects.adg` to :mod:`lino_book.projects.avanti1`.
+- Reviewed the :xfile:`avanti/Client/final_report.body.html` template and started using it.
+
+- The :fixture:`few_languages` demo fixture for :mod:`lino.modlib.languages` now also
+  sets the :attr:`lino.modlib.languages.Language.iso2` field.
+
 2019-09-05
 ==========
 

@@ -284,3 +284,65 @@ Clients
  system.BleachChecker              Find unbleached html content
 ================================= ========================================
 <BLANKLINE>
+
+
+Career
+======
+
+Language knowledges
+===================
+
+Avanti adds an entry date to the language knowledge table of a client.
+There can be multiple entries per language and client.
+Because we want to report whether knowledge changed after attending a course.
+
+Some example cases:
+
+>>> client = rt.models.avanti.Client.objects.get(pk=120)
+>>> rt.show('cv.LanguageKnowledgesByPerson', client, nosummary=True)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+========== =============== ============ ============ ============================= ============= ============
+ Language   Mother tongue   Spoken       Written      CEF level                     Certificate   Entry date
+---------- --------------- ------------ ------------ ----------------------------- ------------- ------------
+ Dutch      No              a bit        moderate     A2+ (basic language skills)   No            05/02/2017
+ Dutch      No              moderate     quite well   A2 (basic language skills)    No            12/01/2016
+ German     No              quite well   very well    A1+ (basic language skills)   No            12/01/2016
+ French     Yes                                                                     No            12/01/2016
+========== =============== ============ ============ ============================= ============= ============
+<BLANKLINE>
+
+
+>>> client = rt.models.avanti.Client.objects.get(pk=121)
+>>> rt.show('cv.LanguageKnowledgesByPerson', client, nosummary=True)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+========== =============== ======== ========= =========== ============= ============
+ Language   Mother tongue   Spoken   Written   CEF level   Certificate   Entry date
+---------- --------------- -------- --------- ----------- ------------- ------------
+ Estonian   Yes                                            No            12/01/2016
+========== =============== ======== ========= =========== ============= ============
+<BLANKLINE>
+
+
+>>> client = rt.models.avanti.Client.objects.get(pk=122)
+>>> rt.show('cv.LanguageKnowledgesByPerson', client, nosummary=True, language="de")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+============= =============== ============== ============== ================================== ============ =================
+ Sprache       Muttersprache   Wort           Schrift        CEF-Kategorie                      Zertifikat   Erfassungsdatum
+------------- --------------- -------------- -------------- ---------------------------------- ------------ -----------------
+ Deutsch       Nein            gar nicht      ein bisschen   A1 (Elementare Sprachverwendung)   Nein         05.02.17
+ Deutsch       Nein            ein bisschen   mittelmäßig    A0 (Elementare Sprachverwendung)   Nein         12.01.16
+ Französisch   Ja                                                                               Nein         12.01.16
+============= =============== ============== ============== ================================== ============ =================
+<BLANKLINE>
+
+The end user usually sees the summary of language knowledges , which shows the
+CEF level of the languages defined in :attr:`lino.core.site.Site.languages`,
+and only the most recent CEF level.  For above client the CEF level for German
+is A1 (not A0):
+
+>>> rt.show('cv.LanguageKnowledgesByPerson', client, language="de")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+en: ---
+de: A1
+fr: ---
+Muttersprachen: Französisch
