@@ -26,7 +26,7 @@ Dependencies
 
 Installing this plugin will automatically install :mod:`lino_xl.lib.vat`.
 
->>> dd.plugins.bevat.needs_plugins     
+>>> dd.plugins.bevat.needs_plugins
 ['lino_xl.lib.vat']
 
 
@@ -34,17 +34,67 @@ Models and actors reference
 ===========================
 
 .. class:: Declaration
-           
-    A VAT declaration. 
+
+    Django model to represent a Belgian :term:`VAT declaration`.
 
 
-Choicelists
-===========
+
+VAT rules
+=========
+
+>>> rt.show(vat.VatRules, language="en")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
++-------+-------------------------------------------------------+
+| value | Description                                           |
++=======+=======================================================+
+| 1     | Rate 0.21                                             |
+|       | When Purchases, National, Normal VAT rate             |
+|       | Book to VAT deductible                                |
++-------+-------------------------------------------------------+
+| 2     | Rate 0.07                                             |
+|       | When Purchases, National, Reduced VAT rate            |
+|       | Book to VAT deductible                                |
++-------+-------------------------------------------------------+
+| 3     | Rate 0.21                                             |
+|       | When Purchases, Intra-community, EU, Normal VAT rate  |
+|       | Book to VAT deductible                                |
+|       | Returnable to VAT returnable                          |
++-------+-------------------------------------------------------+
+| 4     | Rate 0.07                                             |
+|       | When Purchases, Intra-community, EU, Reduced VAT rate |
+|       | Book to VAT deductible                                |
+|       | Returnable to VAT returnable                          |
++-------+-------------------------------------------------------+
+| 5     | Rate 0.00                                             |
+|       | When Sales, Intra-community, EU, Normal VAT rate      |
+|       | Book to None                                          |
++-------+-------------------------------------------------------+
+| 6     | Rate 0.00                                             |
+|       | When Sales, Intra-community, EU, Reduced VAT rate     |
+|       | Book to None                                          |
++-------+-------------------------------------------------------+
+| 7     | Rate 0.21                                             |
+|       | When Sales, Normal VAT rate                           |
+|       | Book to VAT due                                       |
++-------+-------------------------------------------------------+
+| 8     | Rate 0.07                                             |
+|       | When Sales, Reduced VAT rate                          |
+|       | Book to VAT due                                       |
++-------+-------------------------------------------------------+
+| 9     | Rate 0                                                |
+|       | Book to None                                          |
++-------+-------------------------------------------------------+
+<BLANKLINE>
+
+
+
+VAT declaration
+===============
 
 .. class:: DeclarationFields
-           
+
     The list of fields in a VAT declaration.
-    
+
 >>> rt.show(bevat.DeclarationFields)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +------+------+------+-------------------------------------------------+

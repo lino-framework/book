@@ -219,15 +219,17 @@ have only one default rule with no condition and zero rate.
 
     .. attribute:: vat_returnable
 
-        Whether VAT is "returnable" (i.e. not to be paid to or by the
-        partner). Returnable VAT, unlike normal VAT, does not increase
+        Whether VAT is returnable.
+        Returnable VAT does not increase
         the total amount of the voucher but causes an additional
         movement into the :attr:`vat_returnable_account`.
+        See `About returnable VAT`_.
 
     .. attribute:: vat_returnable_account
 
-        Where to book returnable VAT. If VAT is returnable and this
-        field is empty, then VAT will be added to the base account.
+        Where to book returnable VAT. If this field is empty and
+        :attr:`vat_returnable` is `True`, then VAT will be added to the base
+        account. See `About returnable VAT`_.
 
 
     .. classmethod:: get_vat_rule(cls, trade_type, vat_regime,
@@ -734,8 +736,8 @@ An electricity invoice of 94,88 €.  Only 35% of the total amount is
 deductible.
 
 - Manually enter 94.88 in :attr:`VatProductInvoice.total_incl`. Lino fills one
-  invoice item. The general account of this item is either the providers
-  `purchase_account` or (if that field is empty)
+  invoice item. The general account of this item is either the provider's
+  :attr:`purchase_account` or (if that field is empty)
   :attr:`lino_xl.lib.ledger.CommonAccounts.waiting`.
 
 - Change the amount of the invoice item (:attr:`total_incl
@@ -750,3 +752,25 @@ deductible.
   the other amounts of that line. Since account ``600020`` has :attr:`vat_class`
   set to :attr:`exempt<lino_xl.lib.vat.VatClasses.exempt>`, the other amounts
   are set to blank.
+
+
+About returnable VAT
+====================
+
+.. glossary::
+
+  VAT declaration
+
+    A voucher that expresses the fact that we submitted a VAT declaration to the
+    national tax office.
+
+  Returnable VAT
+
+    A VAT amount in an invoice that is not to be paid to (or by) the
+    partner but must be declared in the VAT declaration.
+
+    Returnable VAT, unlike normal VAT, does not increase the total amount of the
+    voucher but causes an additional movement into the account configured as
+    "VAT returnable" (a :term:`common account`).
+
+    See also :attr:`vat_returnable_account <VatRule.vat_returnable_account>`.

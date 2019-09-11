@@ -11,7 +11,7 @@ General functionality for automatically generating invoices is defined
 in :mod:`lino_xl.lib.invoicing`.
 
 
-.. contents:: 
+.. contents::
    :local:
    :depth: 2
 
@@ -58,7 +58,7 @@ places:
 - on every *partner* (generate invoices for this partner)
 - on every *course* (generate invoices for all enrolments of this
   course)
-- on every *journal* which supports automatic invoice generation. 
+- on every *journal* which supports automatic invoice generation.
 
 >>> rt.models.contacts.Partner.start_invoicing
 <lino_xl.lib.invoicing.actions.StartInvoicingForPartner start_invoicing ('Create invoices')>
@@ -437,7 +437,7 @@ The items of automatically generated invoices have a
 :xfile:`courses/Enrolment/item_description.html` template and can be
 complex and application specific.
 
-See the :xfile:`config/courses/Enrolment/item_description.html` file 
+See the :xfile:`config/courses/Enrolment/item_description.html` file
 in :mod:`lino_voga.lib.voga`.
 
 
@@ -490,24 +490,25 @@ for each of these items:
 >>> def fmt(obj):
 ...     enr = obj.invoiceable
 ...     # avoid initdb_demo after change in item_description.html:
-...     enr.setup_invoice_item(obj) 
+...     enr.setup_invoice_item(obj)
 ...     print(u"--- Invoice #{0} for enrolment #{1} ({2}):".format(
 ...         obj.voucher.number, enr.id, enr))
 ...     print(u"Title: {0}".format(obj.title))
-...     print("Start date: " + dd.fds(obj.invoiceable.start_date))
+...     print("Start date: {}".format(dd.fds(obj.invoiceable.start_date)).strip())
 ...     if enr.start_date:
 ...       missed_events = enr.course.events_by_course().filter(
 ...         start_date__lte=enr.start_date)
 ...       # if missed_events.count() == 0: return
 ...       missed_events = ', '.join([dd.fds(o.start_date) for o in missed_events])
-...       print("Missed events: {0}".format(missed_events))
+...       print("Missed events: {0}".format(missed_events).strip())
 ...     print("Description:")
 ...     print(noblanklines(obj.description))
 
 
 And run it:
 
->>> for o in qs2: fmt(o)  #doctest: +REPORT_UDIFF
+>>> for o in qs2: fmt(o)
+... #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
 --- Invoice #5 for enrolment #12 (018 SV (Self-defence) / Dorothée Demeulenaere (ME)):
 Title: Enrolment to 018 SV (Self-defence)
 Start date: 18/03/2015
@@ -516,7 +517,7 @@ Description:
 Time: Every Friday 18:00-19:00.
 Fee: 20€.
 Scheduled dates:
-20/03/2015, 27/03/2015, 10/04/2015, 17/04/2015, 
+20/03/2015, 27/03/2015, 10/04/2015, 17/04/2015,
 --- Invoice #5 for enrolment #14 (019 SV (Self-defence) / Dorothée Demeulenaere (ME)):
 Title: Enrolment to 019 SV (Self-defence)
 Start date: 21/04/2015
@@ -533,7 +534,7 @@ Description:
 Time: Every Thursday 11:00-12:00.
 Fee: 80€.
 Scheduled dates:
-30/07/2015, 06/08/2015, 13/08/2015, 20/08/2015, 27/08/2015, 03/09/2015, 10/09/2015, 17/09/2015, 
+30/07/2015, 06/08/2015, 13/08/2015, 20/08/2015, 27/08/2015, 03/09/2015, 10/09/2015, 17/09/2015,
 --- Invoice #8 for enrolment #21 (017 Rücken (Swimming) / Daniel Emonts (MES)):
 Title: Enrolment to 017 Rücken (Swimming)
 Start date: 29/08/2015
@@ -542,25 +543,25 @@ Description:
 Time: Every Thursday 13:30-14:30.
 Fee: 80€.
 Scheduled dates:
-03/09/2015, 10/09/2015, 17/09/2015, 
+03/09/2015, 10/09/2015, 17/09/2015,
 --- Invoice #13 for enrolment #40 (012 Rücken (Swimming) / Karl Kaivers (ME)):
 Title: Enrolment to 012 Rücken (Swimming)
 Start date: 26/07/2015
-Missed events: 
+Missed events:
 Description:
 Time: Every Monday 11:00-12:00.
 Fee: 80€.
 Scheduled dates:
-21/03/2016, 04/04/2016, 11/04/2016, 18/04/2016, 25/04/2016, 02/05/2016, 09/05/2016, 23/05/2016, 30/05/2016, 06/06/2016, 
+21/03/2016, 04/04/2016, 11/04/2016, 18/04/2016, 25/04/2016, 02/05/2016, 09/05/2016, 23/05/2016, 30/05/2016, 06/06/2016,
 --- Invoice #14 for enrolment #42 (013 Rücken (Swimming) / Laura Laschet (ME)):
 Title: Enrolment to 013 Rücken (Swimming)
 Start date: 29/08/2015
-Missed events: 
+Missed events:
 Description:
 Time: Every Monday 13:30-14:30.
 Fee: 80€.
 Scheduled dates:
-21/03/2016, 04/04/2016, 11/04/2016, 18/04/2016, 25/04/2016, 02/05/2016, 09/05/2016, 23/05/2016, 30/05/2016, 06/06/2016, 
+21/03/2016, 04/04/2016, 11/04/2016, 18/04/2016, 25/04/2016, 02/05/2016, 09/05/2016, 23/05/2016, 30/05/2016, 06/06/2016,
 --- Invoice #15 for enrolment #47 (005 comp (First Steps) / Josefine Leffin (MEL)):
 Title: Enrolment to 005 comp (First Steps)
 Start date: 02/04/2014
@@ -569,7 +570,7 @@ Description:
 Time: Every Friday 13:30-15:00.
 Fee: 20€.
 Scheduled dates:
-04/04/2014, 11/04/2014, 25/04/2014, 02/05/2014, 09/05/2014, 16/05/2014, 
+04/04/2014, 11/04/2014, 25/04/2014, 02/05/2014, 09/05/2014, 16/05/2014,
 --- Invoice #18 for enrolment #61 (001 Greece 2014 / Christian Radermacher (MEL)):
 Title: Enrolment to 001 Greece 2014
 Start date: 29/08/2014
@@ -585,7 +586,7 @@ Description:
 Time: Every Monday 13:30-15:00.
 Fee: 20€.
 Scheduled dates:
-07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014, 12/05/2014, 19/05/2014, 
+07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014, 12/05/2014, 19/05/2014,
 --- Invoice #26 for enrolment #89 (014 Rücken (Swimming) / Lisa Lahm (MS)):
 Title: Enrolment to 014 Rücken (Swimming)
 Start date: 26/07/2015
@@ -594,7 +595,7 @@ Description:
 Time: Every Tuesday 11:00-12:00.
 Fee: 80€.
 Scheduled dates:
-28/07/2015, 04/08/2015, 11/08/2015, 18/08/2015, 25/08/2015, 01/09/2015, 08/09/2015, 15/09/2015, 22/09/2015, 
+28/07/2015, 04/08/2015, 11/08/2015, 18/08/2015, 25/08/2015, 01/09/2015, 08/09/2015, 15/09/2015, 22/09/2015,
 
 Let's have a closer look at one of above invoicings.
 
@@ -658,7 +659,7 @@ Here is an overview of the different cases of item descriptions.
 >>> cases = set()
 >>> for i in qs:
 ...     e = i.invoiceable
-...     k = (e.places == 1, e.start_date is None, 
+...     k = (e.places == 1, e.start_date is None,
 ...         e.course.start_time is None,
 ...         e.start_date is None,
 ...         e.option_id is None,
@@ -668,23 +669,23 @@ Here is an overview of the different cases of item descriptions.
 ...     print("=== {} ===".format(k))
 ...     fmt(i)
 ...     cases.add(k)
-...  #doctest: +REPORT_UDIFF
+...  #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
 === (True, True, True, True, True, True, <Recurrencies.once:O>) ===
 --- Invoice #1 for enrolment #1 (001 Greece 2014 / Hans Altenberg (MEL)):
 Title: Enrolment to 001 Greece 2014
-Start date: 
+Start date:
 Description:
 Date: 14/08/2014-20/08/2014.
 Fee: Journeys.
 === (True, True, False, True, True, True, <Recurrencies.weekly:W>) ===
 --- Invoice #2 for enrolment #4 (004 comp (First Steps) / Laurent Bastiaensen (ME)):
 Title: Enrolment to 004 comp (First Steps)
-Start date: 
+Start date:
 Description:
 Time: Every Wednesday 17:30-19:00.
 Fee: 20€.
 Scheduled dates:
-19/03/2014, 26/03/2014, 02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014, 
+19/03/2014, 26/03/2014, 02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014,
 === (True, False, False, False, True, False, <Recurrencies.weekly:W>) ===
 --- Invoice #3 for enrolment #5 (007C WWW (Internet for beginners) / Ulrike Charlier (ME)):
 Title: [1] Enrolment to 007C WWW (Internet for beginners)
@@ -697,7 +698,7 @@ Your start date: 08/11/2014.
 === (True, True, False, True, True, False, <Recurrencies.weekly:W>) ===
 --- Invoice #3 for enrolment #6 (009C BT (Belly dancing) / Ulrike Charlier (ME)):
 Title: [1] Enrolment to 009C BT (Belly dancing)
-Start date: 
+Start date:
 Description:
 Time: Every Wednesday 19:00-20:00.
 Fee: 64€/12 hours.
@@ -710,11 +711,11 @@ Description:
 Time: Every Friday 18:00-19:00.
 Fee: 20€.
 Scheduled dates:
-20/03/2015, 27/03/2015, 10/04/2015, 17/04/2015, 
+20/03/2015, 27/03/2015, 10/04/2015, 17/04/2015,
 === (False, True, True, True, True, True, <Recurrencies.once:O>) ===
 --- Invoice #11 for enrolment #31 (001 Greece 2014 / Jacqueline Jacobs (ME)):
 Title: Enrolment to 001 Greece 2014
-Start date: 
+Start date:
 Description:
 Places used: 2.
 Date: 14/08/2014-20/08/2014.
@@ -804,21 +805,20 @@ These invoices are not issued to the pupil but to the recipient:
 No data to display
 
 >>> rt.show('sales.InvoicesByPartner', recipient)
-===================== =============== ================= ================
- Entry date            Voucher         Total incl. VAT   Workflow
---------------------- --------------- ----------------- ----------------
- 01/02/2015            *SLS 14/2015*   50,00             **Registered**
- 01/01/2015            *SLS 3/2015*    48,00             **Registered**
- 01/12/2014            *SLS 65/2014*   50,00             **Registered**
- 01/11/2014            *SLS 60/2014*   50,00             **Registered**
- 01/10/2014            *SLS 52/2014*   50,00             **Registered**
- 01/08/2014            *SLS 46/2014*   50,00             **Registered**
- 01/07/2014            *SLS 42/2014*   50,00             **Registered**
- 01/06/2014            *SLS 39/2014*   50,00             **Registered**
- 01/04/2014            *SLS 34/2014*   50,00             **Registered**
- 01/02/2014            *SLS 29/2014*   50,00             **Registered**
- 01/01/2014            *SLS 9/2014*    426,00            **Registered**
+===================== =============== ============== ================
+ Entry date            Voucher         Total to pay   Workflow
+--------------------- --------------- -------------- ----------------
+ 01/02/2015            *SLS 14/2015*   50,00          **Registered**
+ 01/01/2015            *SLS 3/2015*    48,00          **Registered**
+ 01/12/2014            *SLS 65/2014*   50,00          **Registered**
+ 01/11/2014            *SLS 60/2014*   50,00          **Registered**
+ 01/10/2014            *SLS 52/2014*   50,00          **Registered**
+ 01/08/2014            *SLS 46/2014*   50,00          **Registered**
+ 01/07/2014            *SLS 42/2014*   50,00          **Registered**
+ 01/06/2014            *SLS 39/2014*   50,00          **Registered**
+ 01/04/2014            *SLS 34/2014*   50,00          **Registered**
+ 01/02/2014            *SLS 29/2014*   50,00          **Registered**
+ 01/01/2014            *SLS 9/2014*    426,00         **Registered**
  **Total (11 rows)**                   **924,00**
-===================== =============== ================= ================
+===================== =============== ============== ================
 <BLANKLINE>
-
