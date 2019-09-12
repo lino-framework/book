@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-09-11
+==========
+
+Changes in several accounting modules  (:mod:`ledger <lino_xl.lib.ledger>`,
+:mod:`vat <lino_xl.lib.vat>`, :mod:`eevat <lino_xl.lib.eevat>`,
+:mod:`bevat<lino_xl.lib.bevat>`) to fix :ticket:`3192` and :ticket:`2847`.
+
 2019-09-10
 ==========
 
