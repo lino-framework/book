@@ -54,11 +54,12 @@ Users
 .. For the first project on your site create a user ``django`` which you
   can reuse for all projects::
 
-    $ mysql -u root -p
+    $ sudo mysql -u root -p
     mysql> create user 'django'@'localhost' identified by 'my cool password';
 
 To see all users defined on the site::
 
+    $ sudo mysql -u root -p
     mysql> select host, user, password from mysql.user;
     +-----------+------------------+------------------------------+
     | host      | user             | password                     |
@@ -75,6 +76,7 @@ To see all users defined on the site::
 
 How to change the password of an existing user::
 
+    $ sudo mysql -u root -p
     mysql> set password for PRJNAME@localhost = password('my cool password');
 
 
@@ -92,6 +94,7 @@ Databases
 
 See which databases are installed on this server::
 
+    $ sudo mysql -u root -p
     mysql> show databases;
 
 
@@ -114,12 +117,37 @@ See which databases are installed on this server::
 Deleting a site
 ===============
 
+What to do when you created a site and then changed your mind and want to delete
+it again?
+
+Or when :cmd:`getlino startsite` successfully creates the database and user, but
+then fails for some reason? You can simply overwrite an existing site by running
+:cmd:`getlino startsite` again, but mysql or pgsql will try to create a new
+database and user of same name, and of course they will fail. The easiest
+workaround is to manually delete both the user and the database before running
+:cmd:`getlino startsite` again.
+
 Here is how to manually delete a database and user ``prjname``::
 
-  $ mysql -u root -p
+  $ sudo mysql -u root -p
   mysql> drop database prjname;
   mysql> drop user prjname@localhost;
 
+
+Resetting the root password
+===========================
+
+In case you forgot the mysql root password (but have root access to the server)::
+
+  $ sudo service mysql stop
+  $ sudo mysqld_safe --skip-grant-tables &
+  $ mysql
+  mysql> UPDATE mysql.user set password=password('My cool password') where user='root';
+  mysql> flush privileges;
+  mysql> exit;
+
+  $ sudo mysqladmin -u root -p shutdown
+  $ sudo service mysql restart
 
 Notes about certain MySQL configuration settings
 ================================================
