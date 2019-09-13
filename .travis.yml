@@ -23,7 +23,7 @@ before_install:
   - sudo apt-get install redis-server ; redis-server &
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
-  - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' &
+  - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' --headless  &
 
 install:
   - pip install -U setuptools
