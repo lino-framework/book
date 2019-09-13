@@ -18,6 +18,15 @@
 
 Released XL 19.9.1.
 
+Fixed :ticket:`3183` : When entering the :attr:`vat_regime
+<lino_xl.lib.contacts.Partner.vat_regime>` of a partner with empty :attr:`vat_id
+<lino_xl.lib.contacts.Partner.vat_id>`, Lino did not show regimes having
+:attr:`needs_vat_id <lino_xl.lib.vat.VatRegime.needs_vat_id>` set. This was
+irritating because users who didn't know about this subtle rule had no chance to
+understand why. Lino now shows these regimes also when there is no VAT id, but
+complains :message:`Cannot use VAT regime X for partner without VAT id` when you
+try to save a document for that regime and that partner.
+
 2019-09-11
 ==========
 
