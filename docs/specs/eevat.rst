@@ -140,24 +140,20 @@ and a partner located in the United States will be in the "International" area.
 >>> ee = countries.Country(isocode='EE')
 >>> vat.VatAreas.get_for_country(ee)
 <VatAreas.national:10>
->>> list(rt.models.vat.get_vat_regime_choices(ee, None))
-[<VatRegimes.normal:10>, <VatRegimes.exempt:60>]
 
->>> list(rt.models.vat.get_vat_regime_choices(ee, "EE123456789"))
+>>> list(rt.models.vat.get_vat_regime_choices(ee))
 [<VatRegimes.normal:10>, <VatRegimes.subject:20>, <VatRegimes.cocontractor:25>, <VatRegimes.exempt:60>]
 
 >>> nl = countries.Country(isocode='NL')
 >>> vat.VatAreas.get_for_country(nl)
 <VatAreas.eu:20>
->>> list(rt.models.vat.get_vat_regime_choices(nl, None))
-[<VatRegimes.normal:10>, <VatRegimes.exempt:60>]
->>> list(rt.models.vat.get_vat_regime_choices(nl, "NL123456789"))
+>>> list(rt.models.vat.get_vat_regime_choices(nl))
 [<VatRegimes.normal:10>, <VatRegimes.intracom:30>, <VatRegimes.exempt:60>]
 
 >>> us = countries.Country(isocode='US')
 >>> vat.VatAreas.get_for_country(countries.Country(isocode='US'))
 <VatAreas.international:30>
->>> list(rt.models.vat.get_vat_regime_choices(us, None))
+>>> list(rt.models.vat.get_vat_regime_choices(us))
 [<VatRegimes.normal:10>, <VatRegimes.outside:50>, <VatRegimes.exempt:60>]
 
 
