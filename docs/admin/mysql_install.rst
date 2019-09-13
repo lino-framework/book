@@ -1,23 +1,35 @@
-====================
-Use a MySQL database
-====================
+.. _mysql.cheat_sheet:
 
-If you decided to use MySQL as database engine, then here is a cheat
-sheet for quickly doing so.  No warranty.  See also the Django
+=================
+MySQL cheat sheet
+=================
+
+If you use MySQL as database engine, then here is a cheat sheet for some routine
+situations that you might want to get into.  No warranty.  See also the Django
 documentation at `MySQL notes
 <https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-notes>`__
 
 .. contents:: Table of contents
     :local:
     :depth: 1
-            
-
 
 
 Installation
 ============
 
-Install mysql on your site::
+To install the server, run :cmd:`getlino configure` with :option:`getlino
+configure --db-engine`.  This will install either mariadb (Debian) or mysql
+(Ubuntu).
+
+Every subsequent :cmd:`getlino startsite` run will
+
+- install the `mysqlclient` Python package into the site's virtualenv.
+- create a database named PRJNAME
+- create a user PRJNAME with a password and grant all privileges to that user
+- set :setting:`DATABASES` in your :xfile:`settings.py`
+
+
+.. Install mysql on your site::
 
     $ sudo apt install mysql-server
     $ sudo apt install libmysqlclient-dev
@@ -27,20 +39,21 @@ Install mysql on your site::
 
     $ sudo mysql_secure_installation
 
-Install the mysql client into your project's virtualenv::
+.. Install the mysql client into your project's virtualenv::
 
     $ pip install mysqlclient
 
-Note that we recommended `mysql-python` before but modified this to
-`mysqlclient` in accordance with `Django
-<https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-db-api-drivers>`__.
+  Note that we recommended `mysql-python` before but modified this to
+  `mysqlclient` in accordance with `Django
+  <https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-db-api-drivers>`__.
 
 Users
 =====
-    
-For the first project on your site create a user ``django`` which you
-can reuse for all projects::
-    
+
+
+.. For the first project on your site create a user ``django`` which you
+  can reuse for all projects::
+
     $ mysql -u root -p
     mysql> create user 'django'@'localhost' identified by 'my cool password';
 
@@ -60,17 +73,17 @@ To see all users defined on the site::
     6 rows in set (0.00 sec)
 
 
-Here is how to change the password of an existing user::
+How to change the password of an existing user::
 
-    mysql> set password for 'django'@'localhost' = password('my cool password');
+    mysql> set password for PRJNAME@localhost = password('my cool password');
 
 
 Databases
 =========
 
-For each new project you must create a database and grant permissions
-to ``django``::
-    
+.. For each new project you must create a database and grant permissions
+  to ``django``::
+
     $ mysql -u root -p
     mysql> create database mysite charset 'utf8';
     mysql> grant all on mysite.* to django with grant option;
@@ -82,21 +95,30 @@ See which databases are installed on this server::
     mysql> show databases;
 
 
-And then of course you set DATABASES in your :xfile:`settings.py` 
-file::
+.. And then of course you set DATABASES in your :xfile:`settings.py`
+  file::
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql', 
-            'NAME': 'mysite',                     
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mysite',
             # The following settings are not used with sqlite3:
             'USER': 'django',
             'PASSWORD': 'my cool password',
-            'HOST': '',                      
-            'PORT': '',                      
+            'HOST': '',
+            'PORT': '',
         }
     }
 
+
+Deleting a site
+===============
+
+Here is how to manually delete a database and user ``prjname``::
+
+  $ mysql -u root -p
+  mysql> drop database prjname;
+  mysql> drop user prjname@localhost;
 
 
 Notes about certain MySQL configuration settings
