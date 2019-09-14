@@ -13,6 +13,16 @@
 .. contents::
   :local:
 
+2019-09-14
+==========
+
+Fixed a bug in :class:`lino_xl.lib.cv.LanguageKnowledge` which caused a
+TypeError :message:`'>' not supported between instances of 'NoneType' and 'str'`
+when CEF Level was empty.
+
+Released XL 19.9.2.
+
+
 2019-09-12
 ==========
 
@@ -230,8 +240,11 @@ replaced by :class:`lino.modlib.memo.Previewable`.
 
 In :mod:`lino.modlib.comments`, :class:`Comment` needs a database migration
 because instead of a single field :attr:`body_preview` it now has two fields
-:attr:`short_preview <Comment.short_preview>` and
-:attr:`full_preview <Comment.full_preview>`.
+:attr:`short_preview <Comment.short_preview>` and :attr:`full_preview
+<Comment.full_preview>`. Simply delete the following line in the definition of
+the :func:`create_comments_comment` function of the :xfile:`restore.py` file::
+
+    kw.update(body_preview=body_preview)
 
 The :mod:`lino_xl.lib.notes` plugin also requires :mod:`lino.modlib.memo`, but
 the changes don't need a data migration because it uses just the parser, not

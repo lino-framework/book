@@ -18,7 +18,13 @@ the id of an existing Company, creating a Person caused Lino to overwrite the
 data of the company instead of noticing the problem.
 
 (20181226) Removed the pisa build method for printable documents. :ref:`cosi`
-now uses :mod:`lino_xl.lib.weasyprint` as the default build method.
+now uses :mod:`lino_xl.lib.weasyprint` as the default build method. You will get
+an error at the data migration if there are objects (e.g. calendar entries)
+pointing to this print method. In that you can probably simply deactivate the
+following line in :func:`create_cal_event`::
+
+    kw.update(build_method=build_method)
+
 
 Released :ref:`cosi` 18.12.1
 
@@ -339,4 +345,3 @@ There were many changes... we just didn't collect descriptions of them yet.
 
 - 20180522 Fixed :ticket:`2395` (Unknown callback
   -9223363281463807000).
-
