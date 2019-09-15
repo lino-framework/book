@@ -13,6 +13,17 @@
 .. contents::
   :local:
 
+2019-09-15
+==========
+
+When using :term:`returnable VAT`, the :attr:`total_vat` field is now always
+empty and the :attr:`total_incl` field does not include the VAT.  This is valid
+per invoice item and per invoice. The :attr:`total_incl` field is labelled
+"Total to pay" also on items.  The amount of retturnable VAT is computed only
+when the invoice is registered.
+
+Released XL 19.9.3.
+
 2019-09-14
 ==========
 
