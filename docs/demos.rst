@@ -24,6 +24,13 @@ demo data.
 .. _team: http://team.lino-framework.org/
 
 
+New demo sites:
+
+- https://cosi-ee-react.new.lino-framework.org
+- https://cosi-ee-extjs.new.lino-framework.org
+- https://team.new.lino-framework.org
+- https://team-react.new.lino-framework.org
+
 Of general interest:
 
 - demo1_ shows the "Polls" application developed in the
