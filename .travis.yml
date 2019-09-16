@@ -23,7 +23,6 @@ before_install:
   - sudo apt-get install redis-server ; redis-server &
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
-  - sudo libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' --headless  &
 
 install:
   - pip install -U setuptools
@@ -38,6 +37,7 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
+  - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' --headless  &
 
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
