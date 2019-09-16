@@ -37,7 +37,7 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
-  - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' --headless  &
+  - libreoffice --headless --accept="socket,host=127.0.0.1,port=8100;urp;"  &
 
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
