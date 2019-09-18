@@ -16,10 +16,10 @@
 2019-09-18
 ==========
 
-Fixed a bug in :mod:`lino_xl.lib.phones` :  The datachecker failed with
-MultipleObjectsReturned when a same partner had multiple contact detail entries
-marked as primary. Now it creates a message  "Multiple primary items for <type>"
-in that case.
+Fixed a bug in :mod:`lino_xl.lib.phones` which caused :manage:`checkdata` to
+fail when a same partner had multiple contact detail entries marked as primary
+(MultipleObjectsReturned). Now it creates a message "Multiple primary items for
+<type>".
 
 Released XL 19.9.4.
 
