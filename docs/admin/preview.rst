@@ -4,10 +4,10 @@
 Preview sites
 ======================
 
-This document explains why and how to set up and use a separate :term:`preview site`
-and manage releases for bigger Lino production sites with many users.  See also
-:doc:`/admin/upgrade` for one-step upgrades on smaller sites.  See
-:doc:`/dev/datamig` for technical background information.
+This document explains why and how to set up and use a separate :term:`preview
+site` to manage releases on bigger Lino :term:`production sites <production
+site>`.  See also :doc:`/admin/upgrade` for one-step upgrades on smaller sites.
+See :doc:`/dev/datamig` for technical background information.
 
 
 .. contents::
@@ -17,23 +17,31 @@ and manage releases for bigger Lino production sites with many users.  See also
 General infrastructure
 ======================
 
-A preview site is implemented as a subdomain with its own project
-directory, Python environment and database.
+A preview site is a separate :term:`Lino site` with its own subdomain, its own
+project directory, Python environment and database. But that data is just a
+mirror of another site, usually the :term:`production site`.
 
-You give your project directories **neutral code names** that are like
-"anna", "berta", "claudia"... (not "old", "new", "testlino" or
-"prod").
+A same :term:`site operator` will have a a series of sites, one in "production"
+state and maybe another in "preview" state.  Every site has its "life cycle" :
+it typically starts as a "preview" site, then becomes the "production" site, and
+maybe afterwards remains alive for some time as the "old" site.
 
-Keep all your projects under a common root directory,
-e.g. :file:`/usr/local/lino`.
+Remember that virtual environments cannot change their name. So please give your
+project directories neutral names like "mdg1", "mdg2", "mdg3". **Do not** call
+them not "preview", "old", "new", "testing" or "prod".
 
-In that directory you have the real project directories ("anna",
-"berta", "claudia"), and two symbolic links ``prod`` and ``preview``.
+..
 
-You will have **two vhosts on your web server**, one for production
-and one for preview.  Each vhost should refer to their project
-directory using the symbolic links so that you can switch easily which
-project is being served as which site.
+  Keep all your projects under a common root directory,
+  e.g. :file:`/usr/local/lino`.
+
+  In that directory you have the real project directories ("anna",
+  "berta", "claudia"), and two symbolic links ``prod`` and ``preview``.
+
+  You will have **two vhosts on your web server**, one for production
+  and one for preview.  Each vhost should refer to their project
+  directory using the symbolic links so that you can switch easily which
+  project is being served as which site.
 
 
 Setting up a preview site
@@ -53,18 +61,18 @@ a new preview site.
 
   Create a file :xfile:`restore2preview.py` in the production snapshot
   as a copy of the :xfile:`restore.py` file.
-  
-- In the bfoo directory:    
+
+- In the bfoo directory:
 
 - Let the :xfile:`log` directory point to a different directory::
 
       $ rm log
       $ mkdir /var/log/lino/bfoo
-      $ ln -s /var/log/lino/bfoo log    
+      $ ln -s /var/log/lino/bfoo log
 
 - Have a deep look at all the following files in the preview project
   and replace afoo with bfoo where needed:
-  
+
   :xfile:`settings.py`,
   :xfile:`manage.py`
   :xfile:`wsgi.py`
@@ -77,13 +85,13 @@ a new preview site.
   one with virtualenv.  Activate the new env.
   Run pull.sh to update repositories.
   Install Lino from repositories.
-  
+
 - Create the new database in mysql or pg
 
 - Run :xfile:`pull.sh`
 
 - Run collectstatic
-  
+
 - Run :xfile:`initdb_from_prod.sh` and adapt
   :xfile:`restore2preview.py` where needed.
 - Add a vhost to make the preview site accessible to end-users
@@ -100,7 +108,7 @@ the preview site::
 
     $ go preview
     $ ./initdb_from_prod.sh
-    
+
 Upgrade attempts
 ================
 
@@ -134,7 +142,19 @@ maintain it until the preview site has become production.
 The :xfile:`initdb_from_prod.sh` script creates a snapshot of
 production and then restores that snapshot to preview. It also mirrors
 media files from prod to preview.
-           
+
 
 .. literalinclude:: initdb_from_prod.sh
 
+
+
+Troubleshooting
+===============
+
+- rsync: failed to set times on "...": Operation not permitted (1)
+
+  rsync tries to change the timestamps of directories because that helps
+  detecting changes.  But that doesn't work when the file owner is different
+  from the user who runs the migration script. Because it's not allowed to
+  change the timestamp of a file you don't own, even when you have write
+  permission. --> That's why we use the ``--omit-dir-times`` option.
