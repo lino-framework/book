@@ -13,6 +13,15 @@
 .. contents::
   :local:
 
+2019-09-19
+==========
+
+:meth:`lino.utils.diag.Analyzer.show_window_fields` no longer shows dummy
+fields.
+
+Released Lino 19.9.4.
+
+
 2019-09-18
 ==========
 
@@ -22,7 +31,6 @@ fail when a same partner had multiple contact detail entries marked as primary
 <type>".
 
 Released XL 19.9.4.
-
 
 2019-09-15
 ==========
