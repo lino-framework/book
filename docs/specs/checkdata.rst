@@ -54,6 +54,7 @@ checkers.
  cal.LongEntryChecker              Too long-lasting calendar entries
  cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  countries.PlaceChecker            Check data of geographical places.
+ memo.PreviewableChecker           Check for previewables needing update
  mixins.DupableChecker             Check for missing phonetic words
  printing.CachedPrintableChecker   Check for missing target files
  system.BleachChecker              Find unbleached html content
@@ -144,6 +145,7 @@ line using::
  cal.LongEntryChecker              Too long-lasting calendar entries
  cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
  countries.PlaceChecker            Check data of geographical places.
+ memo.PreviewableChecker           Check for previewables needing update
  mixins.DupableChecker             Check for missing phonetic words
  printing.CachedPrintableChecker   Check for missing target files
  system.BleachChecker              Find unbleached html content

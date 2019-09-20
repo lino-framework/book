@@ -26,6 +26,15 @@ False. Not sure whether this is good. To be observed.  Maybe this is application
 specific. Changed the default value for :attr:`EventType.fill_presences` from
 True to False.
 
+Fixed :ticket:`3211` ('DueMovement' object has no attribute
+'get_detail_action').
+
+Released XL 19.9.5.
+
+Fixed :ticket:`3213` (DataChecker to check/update body_preview) : added a new
+:class:`PreviewableChecker <lino.modlib.memo.PreviewableChecker>`.
+
+
 
 2019-09-19
 ==========

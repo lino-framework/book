@@ -280,6 +280,7 @@ Clients
  countries.PlaceChecker            Check data of geographical places.
  dupable.DupableChecker            Check for missing phonetic words
  dupable.SimilarObjectsChecker     Check for similar objects
+ memo.PreviewableChecker           Check for previewables needing update
  printing.CachedPrintableChecker   Check for missing target files
  system.BleachChecker              Find unbleached html content
 ================================= ========================================

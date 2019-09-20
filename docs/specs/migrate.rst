@@ -10,7 +10,7 @@ This verifies whether Lino is able to make and use migrations created by Django 
 >>> from atelier.sheller import Sheller
 >>> shell = Sheller("lino_book/projects/migs")
 >>> shell("./clean.sh")
-<BLANKLINE>
+Removed migrations and database.
 
 >>> shell("python manage.py makemigrations")
 ... #doctest: +ELLIPSIS
@@ -24,4 +24,4 @@ Running migrations:
   Applying ...
 
 >>> shell("./clean.sh")
-<BLANKLINE>
+Removed migrations and database.

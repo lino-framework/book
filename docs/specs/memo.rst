@@ -5,6 +5,8 @@
 ``memo`` : The memo parser
 ==========================
 
+.. currentmodule:: lino.modlib.memo
+
 The :mod:`lino.modlib.memo` plugin adds application-specific markup to
 :doc:`text fields </dev/textfield>` .
 
@@ -16,7 +18,6 @@ Another facet are **suggesters**. A suggester is when you define that a
 "trigger text" will pop up a list of suggestions for auto-completion.  For
 example ``#`` commonly refers to a topic or a ticket, or ``@`` refers to
 another user or person.
-
 
 that will be "rendered" (converted into another fragment)
 when your description text is being displayed at certain places.
@@ -184,4 +185,51 @@ You can specify a run-time context:
 ... The answer is [=a*a*5-a].''', context=ctx))
 The answer is 42.
 
+The :class:`Previewable` mixin
+==============================
 
+
+
+Technical reference
+===================
+
+.. function:: truncate_comment(html_str, max_p_len=None)
+
+    Return a shortened preview of a html string, containing at most one
+    paragraph with at most `max_p_len` characters.
+
+    :html_str: the raw string of html
+    :max_p_len: max number of characters in the paragraph.
+
+    See usage examples in :doc:`/specs/comments`.
+
+.. function:: rich_text_to_elems(ar, description)
+
+    A RichTextField can contain HTML markup or plain text.
+
+.. function:: body_subject_to_elems(ar, title, description)
+
+    Convert the given `title` and `description` to a list of HTML
+    elements.
+
+    Used by :mod:`lino.modlib.notify` and by :mod:`lino_xl.lib.sales`
+
+.. class:: Previewable
+
+  Adds three rich text fields (:class:`lino.core.fields.RichTextField`):
+
+  .. attribute:: body
+
+    An editable text body.
+
+  .. attribute:: short_preview
+
+    A read-only short preview of :attr:`body`.
+
+  .. attribute:: full_preview
+
+    A read-only full preview of :attr:`body`.
+
+.. class:: PreviewableChecker
+
+  Check for previewables needing update.

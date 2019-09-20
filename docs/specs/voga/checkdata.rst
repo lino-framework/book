@@ -23,10 +23,10 @@ In the web interface you can select :menuselection:`Explorer -->
 System --> Data checkers` to see a table of all available
 checkers.
 
-.. 
+..
     >>> show_menu_path(checkdata.Checkers)
     Explorer --> System --> Data checkers
-    
+
 
 >>> rt.show(checkdata.Checkers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -41,6 +41,7 @@ checkers.
  countries.PlaceChecker              Check data of geographical places.
  finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
  ledger.VoucherChecker               Check integrity of ledger vouchers
+ memo.PreviewableChecker             Check for previewables needing update
  printing.CachedPrintableChecker     Check for missing target files
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
  system.BleachChecker                Find unbleached html content

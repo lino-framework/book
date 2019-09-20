@@ -4,9 +4,9 @@
 Data migrations à la Lino
 =========================
 
-As the maintainer of a database application that is being used on one
-or several production sites you must care about how these production
-sites will migrate their data.
+As the maintainer of a database application that is being used on one or several
+:term:`production site` you will care about how these production sites will
+migrate their data.
 
 Data migration is a complex topic. Django needed until version 1.7
 before they adapted a default method to automating these tasks (see
@@ -84,5 +84,3 @@ When your application runs on more than one production site, you will
 prefer writing a migrator.
 
 TODO: write detailed docs
-
-
