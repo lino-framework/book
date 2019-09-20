@@ -131,38 +131,38 @@ PRC 6/2015
 How the data has been entered:
 
 >>> rt.show(ana.ItemsByInvoice, obj)
-============================= ============= ==================== ================= ================= =========== ==============
- Account                       Description   Analytical account   VAT class         Total excl. VAT   VAT         Total to pay
------------------------------ ------------- -------------------- ----------------- ----------------- ----------- --------------
- (6040) Purchase of goods                    (3000) Investment    Normal VAT rate   50,50             10,60       61,10
- (6010) Purchase of services                 (4100) Wages         Normal VAT rate   68,02             14,28       82,30
- **Total (2 rows)**                                                                 **118,52**        **24,88**   **143,40**
-============================= ============= ==================== ================= ================= =========== ==============
+============================= ============= ==================== ================= ================= ===== ==============
+ Account                       Description   Analytical account   VAT class         Total excl. VAT   VAT   Total to pay
+----------------------------- ------------- -------------------- ----------------- ----------------- ----- --------------
+ (6040) Purchase of goods                    (3000) Investment    Normal VAT rate   61,10                   61,10
+ (6010) Purchase of services                 (4100) Wages         Normal VAT rate   82,30                   82,30
+ **Total (2 rows)**                                                                 **143,40**              **143,40**
+============================= ============= ==================== ================= ================= ===== ==============
 <BLANKLINE>
 
 Totals computed by Lino:
 
 >>> print(obj.total_base)
-118.52
+143.40
 >>> print(obj.total_vat)
 0.00
 >>> print(obj.total_incl)
-118.52
+143.40
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
 ============================= =============== ============ ============ ================ =========
  Account                       Partner         Debit        Credit       Match            Cleared
 ----------------------------- --------------- ------------ ------------ ---------------- ---------
- (4400) Suppliers              Donderweer BV                118,52       **PRC 6/2015**   Yes
- (4510) VAT due                                             24,88                         Yes
- (6010) Purchase of services                   82,30                                      Yes
- (6040) Purchase of goods                      61,10                                      Yes
-                                               **143,40**   **143,40**
+ (4400) Suppliers              Donderweer BV                143,40       **PRC 6/2015**   Yes
+ (4510) VAT due                                             30,11                         Yes
+ (6010) Purchase of services                   99,58                                      Yes
+ (6040) Purchase of goods                      73,93                                      Yes
+                                               **173,51**   **173,51**
 ============================= =============== ============ ============ ================ =========
 <BLANKLINE>
 
-This invoice says that we had **143,40 €** of costs, **118,52 €** of
-which to be paid to the supplier and **24,88 €** to be paid as VAT to
+This invoice says that we had **173,51 €** of costs, **143,40 €** of
+which to be paid to the supplier and **30,11 €** to be paid as VAT to
 the tax office.
 
 Note that our invoice is in January 2015.
@@ -182,12 +182,13 @@ Here are the VAT declarations in our demo database:
 ==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
  No.                  Entry date   Start period   End period   Accounting period   [80]         [81]   [82]   [83]         Workflow
 -------------------- ------------ -------------- ------------ ------------------- ------------ ------ ------ ------------ ----------------
- 3/2015               28/03/2015   2015-03                     2015-03             59,21                      59,21        **Registered**
- 2/2015               28/02/2015   2015-02                     2015-02             59,46                      59,46        **Registered**
- 1/2015               31/01/2015   2015-01                     2015-01             59,57                      59,57        **Registered**
- **Total (3 rows)**                                                                **178,24**                 **178,24**
+ 3/2015               28/03/2015   2015-03                     2015-03             71,65                      71,65        **Registered**
+ 2/2015               28/02/2015   2015-02                     2015-02             71,95                      71,95        **Registered**
+ 1/2015               31/01/2015   2015-01                     2015-01             72,09                      72,09        **Registered**
+ **Total (3 rows)**                                                                **215,69**                 **215,69**
 ==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
 <BLANKLINE>
+
 
 There is usually one declaration per accounting period.
 Let's look at the declaration of our period.
@@ -200,11 +201,11 @@ On screen you can see:
 ...    v = getattr(dcl, fld.name)
 ...    if v:
 ...        print("[{}] {} : {}".format(fld.value, fld.help_text, v))
-[71] Intracom supplies : 1341.90
-[72] New vehicles : 626.83
-[75] Intracom services : 2933.69
-[80] Due VAT for 71...76 : 59.57
-[83] Total to pay : 59.57
+[71] Intracom supplies : 1354.73
+[72] New vehicles : 668.81
+[75] Intracom services : 2950.97
+[80] Due VAT for 71...76 : 72.09
+[83] Total to pay : 72.09
 
 When you print the declaration, Lino also includes the
 :class:`IntracomPurchases <lino_xl.lib.vat.IntracomPurchases>`
@@ -212,16 +213,15 @@ table for that period:
 
 >>> pv = dict(start_period=dcl.start_period, end_period=dcl.end_period)
 >>> rt.show(vat.IntracomPurchases, param_values=pv, header_level=2)
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
 -------------------------
 Intra-Community purchases
 -------------------------
 ==================== =============== ================ =================== ================= ===== ==============
  Invoice              Partner         VAT id           VAT regime          Total excl. VAT   VAT   Total to pay
 -------------------- --------------- ---------------- ------------------- ----------------- ----- --------------
- *PRC 6/2015*         Donderweer BV   NL957996364B01   Intracom services   118,52                  118,52
- *PRC 7/2015*         Van Achter NV   NL336548370B01   Intracom supplies   165,21                  165,21
- **Total (2 rows)**                                                        **283,73**              **283,73**
+ *PRC 6/2015*         Donderweer BV   NL957996364B01   Intracom services   143,40                  143,40
+ *PRC 7/2015*         Van Achter NV   NL336548370B01   Intracom supplies   199,90                  199,90
+ **Total (2 rows)**                                                        **343,30**              **343,30**
 ==================== =============== ================ =================== ================= ===== ==============
 <BLANKLINE>
 
@@ -231,10 +231,10 @@ And these are the movements generated by our declaration:
 ==================== ================================== =========== =========== ================ =========
  Account              Partner                            Debit       Credit      Match            Cleared
 -------------------- ---------------------------------- ----------- ----------- ---------------- ---------
- (4510) VAT due                                          24,88                                    Yes
- (4510) VAT due                                          34,69                                    Yes
- (4600) Tax Offices   Mehrwertsteuer-Kontrollamt Eupen               59,57       **VAT 1/2015**   No
-                                                         **59,57**   **59,57**
+ (4510) VAT due                                          30,11                                    Yes
+ (4510) VAT due                                          41,98                                    Yes
+ (4600) Tax Offices   Mehrwertsteuer-Kontrollamt Eupen               72,09       **VAT 1/2015**   No
+                                                         **72,09**   **72,09**
 ==================== ================================== =========== =========== ================ =========
 <BLANKLINE>
 
@@ -253,11 +253,11 @@ history of 4510 for that month:
 ============ ============== ==================================== =========== =========== =======
  Value date   Voucher        Description                          Debit       Credit      Match
 ------------ -------------- ------------------------------------ ----------- ----------- -------
- 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   24,88
- 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   34,69
- 09/01/2015   *PRC 7/2015*   *Van Achter NV*                                  34,69
- 08/01/2015   *PRC 6/2015*   *Donderweer BV*                                  24,88
-                             **Balance 0.00 (4 movements)**       **59,57**   **59,57**
+ 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   30,11
+ 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   41,98
+ 09/01/2015   *PRC 7/2015*   *Van Achter NV*                                  41,98
+ 08/01/2015   *PRC 6/2015*   *Donderweer BV*                                  30,11
+                             **Balance 0.00 (4 movements)**       **72,09**   **72,09**
 ============ ============== ==================================== =========== =========== =======
 <BLANKLINE>
 

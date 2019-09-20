@@ -63,7 +63,7 @@ Robin is the system administrator, he has a complete menu:
   - Places : Countries, Places
   - Contacts : Organization types, Functions
   - Office : Excerpt Types, Library volumes, Upload Types, My Text Field Templates
-  - Sales : Products, Services, Product Categories, Price rules, Paper types
+  - Sales : Products, Product Categories, Price rules, Paper types
   - Accounting : Sheet items, Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : content types, Authorities, User types, User roles, Data checkers, Data problems

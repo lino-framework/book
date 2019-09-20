@@ -17,7 +17,7 @@ System administrator
 
 Robin is a system administrator, he has a complete menu:
 
->>> ses = rt.login('robin') 
+>>> ses = rt.login('robin')
 >>> ses.user.user_type
 users.UserTypes.admin:900
 >>> ses.show_menu()
@@ -51,7 +51,7 @@ users.UserTypes.admin:900
 - Explorer :
   - System : Authorities, User types, User roles, Data checkers, Data problems, Changes, content types
   - Contacts : Contact Persons, Partners, List memberships
-  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
   - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Financial : Bank Statements, Journal Entries, Payment Orders
@@ -62,7 +62,7 @@ users.UserTypes.admin:900
 - Site : About
 
 
-Monique is a secretary.   
+Monique is a secretary.
 
 >>> print(rt.login('monique').user.user_type)
 200 (Secretary)
@@ -96,7 +96,7 @@ Monique is a secretary.
 - Explorer :
   - System : Data checkers, Data problems, Changes, content types
   - Contacts : Contact Persons, Partners, List memberships
-  - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Presences, Entry states, Presence states, Task states
   - Activities : Activities, Enrolments
   - Sales : Price factors, Sales invoices
   - VAT : Special Belgian VAT declarations, Declaration fields, Invoices, VAT rules

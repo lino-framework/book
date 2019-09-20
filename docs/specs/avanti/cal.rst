@@ -34,12 +34,11 @@ in :ref:`avanti`.
 Calendar workflow
 =================
 
-It's almost :mod:`lino_xl.lib.cal.workflows.voga`, except that we
-removed the transition it.
+It's almost :mod:`lino_xl.lib.cal.workflows.voga`, except that we removed the
+transition (...).
 
-In existing data (until June 2018) they differentiate between
-"excused" and "absent".  In August 2018 we decided to no longer do
-this differentiation.
+In existing data (until June 2018) we differentiate between "excused" and
+"absent".  In August 2018 we decided to no longer do this differentiation.
 
 >>> rt.show(cal.GuestStates)
 ======= ========= ============ ========= =============
@@ -52,7 +51,7 @@ this differentiation.
 ======= ========= ============ ========= =============
 <BLANKLINE>
 
-In Avanti there is a state "exused" but we removed the transition it:
+In Avanti there is a presence state "excused":
 
 >>> show_workflow(cal.GuestStates.workflow_actions)
 ============= ============== =========== ============== =========================
@@ -65,15 +64,16 @@ In Avanti there is a state "exused" but we removed the transition it:
 
 
 >>> rt.show(cal.EntryStates)
-======= ============ ============ ============= =================== ======== ============= =========
- value   name         text         Button text   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Draft        ☐             Yes                 No       No            No
- 50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
-======= ============ ============ ============= =================== ======== ============= =========
+======= ============ ============ ============= ============= ======== ============= =========
+ value   name         text         Button text   Fill guests   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes           No       No            No
+ 20      draft        Draft        ☐             Yes           No       No            No
+ 50      took_place   Took place   ☑             No            Yes      No            No
+ 70      cancelled    Cancelled    ☒             No            Yes      Yes           Yes
+======= ============ ============ ============= ============= ======== ============= =========
 <BLANKLINE>
+
 
 >>> show_workflow(cal.EntryStates.workflow_actions)
 ============= ============== ============ ============== ================================

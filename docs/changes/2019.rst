@@ -13,6 +13,20 @@
 .. contents::
   :local:
 
+2019-09-20
+==========
+
+.. currentmodule:: lino_xl.lib.cal
+
+Fixed :ticket:`3210` (Amici removes participants of my meeting). Changed "Edit
+participants" to "Fill guests" (in :class:`EntryStates`) Renamed
+:attr:`EntryState.edit_guests` to :attr:`EntryState.fill_guests` Changed the
+:attr:`EntryState.fill_guests` for :attr:`EntryStates.took_place` from True to
+False. Not sure whether this is good. To be observed.  Maybe this is application
+specific. Changed the default value for :attr:`EventType.fill_presences` from
+True to False.
+
+
 2019-09-19
 ==========
 
@@ -447,7 +461,7 @@ yet handle them correctly
 Added a field :attr:`lino_xl.lib.cal.EventType.fill_presences` because not
 all events should automatically fill their presences
 (:class:`lino_xl.lib.cal.Guest`). When
-:attr:`lino_xl.lib.cal.EntryStates.edit_guests` is True, Lino also removes
+:attr:`lino_xl.lib.cal.EntryState.fill_guests` is True, Lino also removes
 unwanted guests each time you hit the save button. But for example in
 :ref:`presto` when registering a absence day  or a worker, the list of
 suggested guests is usually empty (because the project is empty), and we

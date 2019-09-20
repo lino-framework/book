@@ -177,12 +177,13 @@ have only one default rule with no condition and zero rate.
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-+-------+--------------+
-| value | Description  |
-+=======+==============+
-| 1     | Rate 0       |
-|       | Book to None |
-+-------+--------------+
++-------+------------------+
+| value | Description      |
++=======+==================+
+| 1     | VAT rule 1:      |
+|       | apply 0 %        |
+|       | and book to None |
++-------+------------------+
 <BLANKLINE>
 
 

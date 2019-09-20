@@ -37,7 +37,7 @@ The database structure
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
  changes.Change             changes.Changes                10        0
- checkdata.Problem          checkdata.Problems             6         21
+ checkdata.Problem          checkdata.Problems             6         22
  contacts.Company           contacts.Companies             26        31
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              24        103

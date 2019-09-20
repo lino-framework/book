@@ -6,7 +6,7 @@
 ===============================================
 
 .. currentmodule:: lino_xl.lib.sheets
-                   
+
 The :mod:`lino_xl.lib.sheets` plugin adds an annual financial report: three
 types of account balances (general, partner and analytical) as well as the
 *Balance sheet* and the *Income statement*.
@@ -30,8 +30,8 @@ You should have read :doc:`ledger` before reading this document.
 
 
 .. class:: SheetTypes
-           
-    The global list of **sheet types** . 
+
+    The global list of **sheet types** .
 
     >>> rt.show(sheets.SheetTypes, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -67,13 +67,13 @@ You should have read :doc:`ledger` before reading this document.
         https://en.wikipedia.org/wiki/Balance_sheet
 
     .. attribute:: results
-           
+
         https://en.wikipedia.org/wiki/Statement_of_comprehensive_income#Requirements_of_IFRS
-           
-    
+
+
 .. class:: CommonItems
 
-    The global list of **common sheet items** . 
+    The global list of **common sheet items** .
 
     >>> rt.show(sheets.CommonItems, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -107,25 +107,25 @@ You should have read :doc:`ledger` before reading this document.
      7900    net_loss          Net loss                    Income statement   Credit   (7900) Net loss
     ======= ================= =========================== ================== ======== ==================================
     <BLANKLINE>
-    
+
 
     Every item of this list is an instance of :class:`CommonItem`.
 
 .. class:: CommonItem
 
     .. attribute:: value
-                   
+
          Corresponds to the :attr:`ref` field in :class:`Item`
-         
+
     .. attribute:: dc
     .. attribute:: sheet
 
-    
+
 .. class:: Item
 
     In this table the uer can configure their local list of items for
     both sheet types.
-           
+
     >>> rt.show(sheets.Items, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     =========== =========================== =========================== =========================== ================== =================== ===========================
@@ -158,13 +158,13 @@ You should have read :doc:`ledger` before reading this document.
      7900        Net loss                    Net loss                    Net loss                    Income statement   Credit              Net loss
     =========== =========================== =========================== =========================== ================== =================== ===========================
     <BLANKLINE>
-    
+
 
     In the demo database this list is an unchanged copy of :class:`CommonItems`.
 
 The Accounting Report
 =====================
-    
+
 .. class:: Report
 .. class:: AccountEntry
 .. class:: PartnerEntry
@@ -173,7 +173,7 @@ The Accounting Report
 
     An **entry** is the computed value of given *item* for a given
     report.
-    
+
 >>> rpt = sheets.Report.objects.get(pk=1)
 >>> rt.show(sheets.ItemEntriesByReport, rpt)
 =========================== ============== =============== =========== =========== ============== =============
@@ -182,16 +182,16 @@ The Accounting Report
  **1 Assets**                                               21 066,89   18 647,45                  2 419,44
  ** 10 Current assets**                                     21 066,89   18 647,45                  2 419,44
  1000 Customers receivable                                  21 066,89   18 647,45                  2 419,44
- **2 Passiva**                                              30 393,54   63 872,64   33 479,10
- ** 20 Liabilities**                                        30 393,54   63 872,64   33 479,10
- 2000 Suppliers payable                                     22 044,44   27 556,94   5 512,50
- 2010 Taxes payable                                         3 514,10    475,70                     3 038,40
+ **2 Passiva**                                              30 668,67   64 507,70   33 839,03
+ ** 20 Liabilities**                                        30 668,67   64 507,70   33 839,03
+ 2000 Suppliers payable                                     22 282,12   27 854,40   5 572,28
+ 2010 Taxes payable                                         3 551,55    575,62                     2 975,93
  2020 Banks                                                             13 795,56   13 795,56
- 2030 Current transfers                                     4 835,00    22 044,44   17 209,44
- **6 Expenses**                                             24 518,54                              24 518,54
- 6000 Cost of sales                                         6 714,00                               6 714,00
- 6100 Operating expenses                                    14 668,19                              14 668,19
- 6200 Other expenses                                        3 136,35                               3 136,35
+ 2030 Current transfers                                     4 835,00    22 282,12   17 447,12
+ **6 Expenses**                                             24 878,47                              24 878,47
+ 6000 Cost of sales                                         6 777,94                               6 777,94
+ 6100 Operating expenses                                    14 753,13                              14 753,13
+ 6200 Other expenses                                        3 347,40                               3 347,40
  **7 Revenues**                                             1 440,00    22 490,00   21 050,00
  7000 Net sales                                             1 440,00    22 490,00   21 050,00
 =========================== ============== =============== =========== =========== ============== =============
@@ -199,142 +199,141 @@ The Accounting Report
 
 
 
-
 >>> ses = rt.login("robin")
 >>> ses.show_story(rpt.get_story(ses))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======================================= ============== =============== =========== =========== ============== =============
-  Description                             Debit before   Credit before   Debit       Credit      Credit after   Debit after
+ Description                             Debit before   Credit before   Debit       Credit      Credit after   Debit after
 --------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
-  **4 Commercial assets & liabilities**                                  51 460,43   68 724,53   17 264,10
-  4000 Customers                                                         21 066,89   18 647,45                  2 419,44
-  4300 Pending Payment Orders                                            4 835,00    22 044,44   17 209,44
-  4400 Suppliers                                                         22 044,44   27 556,94   5 512,50
-  4510 VAT due                                                           178,24      297,46      119,22
-  4512 VAT deductible                                                    3 335,86                               3 335,86
-  4600 Tax Offices                                                                   178,24      178,24
-  **5 Financial assets & liabilities**                                               13 795,56   13 795,56
-  5500 BestBank                                                                      13 795,56   13 795,56
-  **6 Expenses**                                                         24 518,54                              24 518,54
-  ** 60 Operation costs**                                                24 518,54                              24 518,54
-  6010 Purchase of services                                              14 668,19                              14 668,19
-  6020 Purchase of investments                                           3 136,35                               3 136,35
-  6040 Purchase of goods                                                 6 714,00                               6 714,00
-  **7 Revenues**                                                         1 440,00    22 490,00   21 050,00
-  7000 Sales                                                             1 440,00    2 730,00    1 290,00
-  7010 Sales on therapies                                                            19 760,00   19 760,00
+ **4 Commercial assets & liabilities**                                  51 735,56   69 359,59   17 624,03
+ 4000 Customers                                                         21 066,89   18 647,45                  2 419,44
+ 4300 Pending Payment Orders                                            4 835,00    22 282,12   17 447,12
+ 4400 Suppliers                                                         22 282,12   27 854,40   5 572,28
+ 4510 VAT due                                                           215,69      359,93      144,24
+ 4512 VAT deductible                                                    3 335,86                               3 335,86
+ 4600 Tax Offices                                                                   215,69      215,69
+ **5 Financial assets & liabilities**                                               13 795,56   13 795,56
+ 5500 BestBank                                                                      13 795,56   13 795,56
+ **6 Expenses**                                                         24 878,47                              24 878,47
+ ** 60 Operation costs**                                                24 878,47                              24 878,47
+ 6010 Purchase of services                                              14 753,13                              14 753,13
+ 6020 Purchase of investments                                           3 347,40                               3 347,40
+ 6040 Purchase of goods                                                 6 777,94                               6 777,94
+ **7 Revenues**                                                         1 440,00    22 490,00   21 050,00
+ 7000 Sales                                                             1 440,00    2 730,00    1 290,00
+ 7010 Sales on therapies                                                            19 760,00   19 760,00
 ======================================= ============== =============== =========== =========== ============== =============
 <BLANKLINE>
 ============================ ============== =============== ========== ======== ============== =============
-  Description                  Debit before   Credit before   Debit      Credit   Credit after   Debit after
+ Description                  Debit before   Credit before   Debit      Credit   Credit after   Debit after
 ---------------------------- -------------- --------------- ---------- -------- -------------- -------------
-  **1 Operation costs**                                       5 578,62                           5 578,62
-  1100 Wages                                                  490,10                             490,10
-  1200 Transport                                              1 421,70                           1 421,70
-  1300 Training                                               3 093,54                           3 093,54
-  1400 Other costs                                            573,28                             573,28
-  **2 Administrative costs**                                  9 175,90                           9 175,90
-  2100 Secretary wages                                        1 659,56                           1 659,56
-  2110 Manager wages                                          4 004,11                           4 004,11
-  2200 Transport                                              3 044,86                           3 044,86
-  2300 Training                                               467,37                             467,37
-  **3 Investments**                                           1 404,50                           1 404,50
-  3000 Investment                                             1 404,50                           1 404,50
-  **4 Project 1**                                             3 843,84                           3 843,84
-  4100 Wages                                                  3 013,68                           3 013,68
-  4200 Transport                                              398,17                             398,17
-  4300 Training                                               431,99                             431,99
-  **5 Project 2**                                             4 515,68                           4 515,68
-  5100 Wages                                                  1 342,80                           1 342,80
-  5200 Transport                                              2 927,99                           2 927,99
-  5300 Other costs                                            244,89                             244,89
+ **1 Operation costs**                                       5 650,27                           5 650,27
+ 1100 Wages                                                  502,66                             502,66
+ 1200 Transport                                              1 438,58                           1 438,58
+ 1300 Training                                               3 135,75                           3 135,75
+ 1400 Other costs                                            573,28                             573,28
+ **2 Administrative costs**                                  9 260,64                           9 260,64
+ 2100 Secretary wages                                        1 672,64                           1 672,64
+ 2110 Manager wages                                          4 020,87                           4 020,87
+ 2200 Transport                                              3 086,97                           3 086,97
+ 2300 Training                                               480,16                             480,16
+ **3 Investments**                                           1 434,36                           1 434,36
+ 3000 Investment                                             1 434,36                           1 434,36
+ **4 Project 1**                                             3 958,28                           3 958,28
+ 4100 Wages                                                  3 073,46                           3 073,46
+ 4200 Transport                                              440,15                             440,15
+ 4300 Training                                               444,67                             444,67
+ **5 Project 2**                                             4 574,92                           4 574,92
+ 5100 Wages                                                  1 359,79                           1 359,79
+ 5200 Transport                                              2 970,24                           2 970,24
+ 5300 Other costs                                            244,89                             244,89
 ============================ ============== =============== ========== ======== ============== =============
 <BLANKLINE>
 ==================================================== ============== =============== ========== ========== ============== =============
-  Description                                          Debit before   Credit before   Debit      Credit     Credit after   Debit after
+ Description                                          Debit before   Credit before   Debit      Credit     Credit after   Debit after
 ---------------------------------------------------- -------------- --------------- ---------- ---------- -------------- -------------
-  `Mr Hans Altenberg <Detail>`__                                                      1 085,00   1 097,10   12,10
-  `Mr Andreas Arens <Detail>`__                                                       541,20     539,45                    1,75
-  `Mrs Annette Arens <Detail>`__                                                      1 330,00   1 192,00                  138,00
-  `Mr Alfons Ausdemwald <Detail>`__                                                   620,00     620,00
-  `Auto École Verte <Detail>`__                                                       500,00     500,00
-  `Mr Laurent Bastiaensen <Detail>`__                                                 711,72     711,72
-  `Bernd Brechts Bücherladen <Detail>`__                                              620,00     620,00
-  `Bäckerei Ausdemwald <Detail>`__                                                    360,00     360,00
-  `Bäckerei Mießen <Detail>`__                                                        440,00     440,00
-  `Bäckerei Schmitz <Detail>`__                                                       160,00     160,00
-  `Mr Marc Chantraine <Detail>`__                                                     1 190,00   540,00                    650,00
-  `Mrs Ulrike Charlier <Detail>`__                                                    1 020,00   540,00                    480,00
-  `Mrs Charlotte Collard <Detail>`__                                                  840,00     540,00                    300,00
-  `Mrs Dorothée Demeulenaere <Detail>`__                                              1 524,15   844,30                    679,85
-  `Mr Denis Denon <Detail>`__                                                         1 623,60   1 623,60
-  `Mr Daniel Dericum <Detail>`__                                                      160,00                               160,00
-  `Mrs Dorothée Dobbelstein-Demeulenaere <Detail>`__                                  540,60     540,60
-  `Donderweer BV <Detail>`__                                                          320,00     320,00
-  `Mr Erich Emonts <Detail>`__                                                        255,00     255,00
-  `Mr Erwin Emontspool <Detail>`__                                                    630,00     630,00
-  `Garage Mergelsberg <Detail>`__                                                     605,00     605,00
-  `Mr Gregory Groteclaes <Detail>`__                                                  300,01     300,01
-  `Hans Flott & Co <Detail>`__                                                        350,00     350,00
-  `Mr Henri Hilgers <Detail>`__                                                       540,00     540,06     0,06
-  `Mr Josef Jonas <Detail>`__                                                         240,70     240,70
-  `Mr Karl Kaivers <Detail>`__                                                        541,20     541,20
-  `Mr Marc Malmendier <Detail>`__                                                     300,70     300,70
-  `Mr Mark Martelaer <Detail>`__                                                      630,00     630,00
-  `Moulin Rouge <Detail>`__                                                           450,00     450,00
-  `Mrs Daniela Radermacher <Detail>`__                                                286,11     284,11                    2,00
-  `Mr Edgard Radermacher <Detail>`__                                                  541,20     541,20
-  `Mr Rik Radermecker <Detail>`__                                                     240,70     220,70                    20,00
-  `Reinhards Baumschule <Detail>`__                                                   280,00     280,00
-  `Rumma & Ko OÜ <Detail>`__                                                          450,00     450,00
-  `Van Achter NV <Detail>`__                                                          300,00     300,00
-  `Mr David da Vinci <Detail>`__                                                      540,00     540,00
+ `Mr Hans Altenberg <Detail>`__                                                      1 085,00   1 097,10   12,10
+ `Mr Andreas Arens <Detail>`__                                                       541,20     539,45                    1,75
+ `Mrs Annette Arens <Detail>`__                                                      1 330,00   1 192,00                  138,00
+ `Mr Alfons Ausdemwald <Detail>`__                                                   620,00     620,00
+ `Auto École Verte <Detail>`__                                                       500,00     500,00
+ `Mr Laurent Bastiaensen <Detail>`__                                                 711,72     711,72
+ `Bernd Brechts Bücherladen <Detail>`__                                              620,00     620,00
+ `Bäckerei Ausdemwald <Detail>`__                                                    360,00     360,00
+ `Bäckerei Mießen <Detail>`__                                                        440,00     440,00
+ `Bäckerei Schmitz <Detail>`__                                                       160,00     160,00
+ `Mr Marc Chantraine <Detail>`__                                                     1 190,00   540,00                    650,00
+ `Mrs Ulrike Charlier <Detail>`__                                                    1 020,00   540,00                    480,00
+ `Mrs Charlotte Collard <Detail>`__                                                  840,00     540,00                    300,00
+ `Mrs Dorothée Demeulenaere <Detail>`__                                              1 524,15   844,30                    679,85
+ `Mr Denis Denon <Detail>`__                                                         1 623,60   1 623,60
+ `Mr Daniel Dericum <Detail>`__                                                      160,00                               160,00
+ `Mrs Dorothée Dobbelstein-Demeulenaere <Detail>`__                                  540,60     540,60
+ `Donderweer BV <Detail>`__                                                          320,00     320,00
+ `Mr Erich Emonts <Detail>`__                                                        255,00     255,00
+ `Mr Erwin Emontspool <Detail>`__                                                    630,00     630,00
+ `Garage Mergelsberg <Detail>`__                                                     605,00     605,00
+ `Mr Gregory Groteclaes <Detail>`__                                                  300,01     300,01
+ `Hans Flott & Co <Detail>`__                                                        350,00     350,00
+ `Mr Henri Hilgers <Detail>`__                                                       540,00     540,06     0,06
+ `Mr Josef Jonas <Detail>`__                                                         240,70     240,70
+ `Mr Karl Kaivers <Detail>`__                                                        541,20     541,20
+ `Mr Marc Malmendier <Detail>`__                                                     300,70     300,70
+ `Mr Mark Martelaer <Detail>`__                                                      630,00     630,00
+ `Moulin Rouge <Detail>`__                                                           450,00     450,00
+ `Mrs Daniela Radermacher <Detail>`__                                                286,11     284,11                    2,00
+ `Mr Edgard Radermacher <Detail>`__                                                  541,20     541,20
+ `Mr Rik Radermecker <Detail>`__                                                     240,70     220,70                    20,00
+ `Reinhards Baumschule <Detail>`__                                                   280,00     280,00
+ `Rumma & Ko OÜ <Detail>`__                                                          450,00     450,00
+ `Van Achter NV <Detail>`__                                                          300,00     300,00
+ `Mr David da Vinci <Detail>`__                                                      540,00     540,00
 ==================================================== ============== =============== ========== ========== ============== =============
 <BLANKLINE>
 ================================== ============== =============== =========== =========== ============== =============
-  Description                        Debit before   Credit before   Debit       Credit      Credit after   Debit after
+ Description                        Debit before   Credit before   Debit       Credit      Credit after   Debit after
 ---------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
-  `Bäckerei Ausdemwald <Detail>`__                                  568,80      709,00      140,20
-  `Bäckerei Mießen <Detail>`__                                      2 407,80    3 010,00    602,20
-  `Bäckerei Schmitz <Detail>`__                                     4 802,60    6 005,00    1 202,40
-  `Donderweer BV <Detail>`__                                        468,61      585,96      117,35
-  `Garage Mergelsberg <Detail>`__                                   12 970,32   16 210,90   3 240,58
-  `Rumma & Ko OÜ <Detail>`__                                        163,00      205,50      42,50
-  `Van Achter NV <Detail>`__                                        663,31      830,58      167,27
+ `Bäckerei Ausdemwald <Detail>`__                                  568,80      709,00      140,20
+ `Bäckerei Mießen <Detail>`__                                      2 407,80    3 010,00    602,20
+ `Bäckerei Schmitz <Detail>`__                                     4 802,60    6 005,00    1 202,40
+ `Donderweer BV <Detail>`__                                        567,00      709,00      142,00
+ `Garage Mergelsberg <Detail>`__                                   12 970,32   16 210,90   3 240,58
+ `Rumma & Ko OÜ <Detail>`__                                        163,00      205,50      42,50
+ `Van Achter NV <Detail>`__                                        802,60      1 005,00    202,40
 ================================== ============== =============== =========== =========== ============== =============
 <BLANKLINE>
 No data to display
 =============================================== ============== =============== ======= ======== ============== =============
-  Description                                     Debit before   Credit before   Debit   Credit   Credit after   Debit after
+ Description                                     Debit before   Credit before   Debit   Credit   Credit after   Debit after
 ----------------------------------------------- -------------- --------------- ------- -------- -------------- -------------
-  `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                          178,24   178,24
+ `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                          215,69   215,69
 =============================================== ============== =============== ======= ======== ============== =============
 <BLANKLINE>
 No data to display
 No data to display
 =========================== =========== ==========
-  Description                 Activa      Passiva
+ Description                 Activa      Passiva
 --------------------------- ----------- ----------
-  **1 Assets**                            2 419,44
-  ** 10 Current assets**                  2 419,44
-  1000 Customers receivable               2 419,44
-  **2 Passiva**               33 479,10
-  ** 20 Liabilities**         33 479,10
-  2000 Suppliers payable      5 512,50
-  2010 Taxes payable
-  2020 Banks                  13 795,56
-  2030 Current transfers      17 209,44
+ **1 Assets**                            2 419,44
+ ** 10 Current assets**                  2 419,44
+ 1000 Customers receivable               2 419,44
+ **2 Passiva**               33 839,03
+ ** 20 Liabilities**         33 839,03
+ 2000 Suppliers payable      5 572,28
+ 2010 Taxes payable
+ 2020 Banks                  13 795,56
+ 2030 Current transfers      17 447,12
 =========================== =========== ==========
 <BLANKLINE>
 ========================= =========== ===========
-  Description               Expenses    Revenues
+ Description               Expenses    Revenues
 ------------------------- ----------- -----------
-  **6 Expenses**            24 518,54
-  6000 Cost of sales        6 714,00
-  6100 Operating expenses   14 668,19
-  6200 Other expenses       3 136,35
-  **7 Revenues**                        21 050,00
-  7000 Net sales                        21 050,00
+ **6 Expenses**            24 878,47
+ 6000 Cost of sales        6 777,94
+ 6100 Operating expenses   14 753,13
+ 6200 Other expenses       3 347,40
+ **7 Revenues**                        21 050,00
+ 7000 Net sales                        21 050,00
 ========================= =========== ===========
 <BLANKLINE>
 
@@ -353,7 +352,7 @@ The basic `Accounting Equation
 <https://en.wikipedia.org/wiki/Accounting_equation>`_ states:
 
   Assets = Liabilities + Capital
- 
+
 And the expanded accounting equation is:
 
     Assets + Expenses = Liabilities + Equity + Revenue
@@ -379,7 +378,7 @@ profit/loss booking so that the expenses and revenues are balanced.
 >>> print(assets)
 2419.44
 >>> print(liabilities)
-33479.10
+33839.03
 >>> print(capital)  #doctest: +SKIP
 -9354.40
 >>> print(liabilities+capital)  #doctest: +SKIP
@@ -387,10 +386,10 @@ profit/loss booking so that the expenses and revenues are balanced.
 >>> print(passiva)  #doctest: +SKIP
 13836.75
 >>> print(expenses)
-24518.54
+24878.47
 >>> print(revenues)  #doctest: +SKIP
 24518.54
-    
+
 Accounts on the left side of the equation (Assets and Expenses) are
 normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
 <CommonItem.dc>` attribute means:
@@ -413,24 +412,24 @@ Asset         \+    \−
 Liability     \−    \+
 Income        \−    \+
 Expense       \+    \−
-Equity        \−     \+      
+Equity        \−     \+
 ============= ===== ======
-  
+
 The equivalent in Lino is:
 
 >>> for t in sheets.CommonItems.get_list_items():
 ... #doctest: +NORMALIZE_WHITESPACE
 ...   if len(t.value) <= 2:
 ...     print("%-2s|%-15s|%-6s" % (t.value, t, DCLABELS[t.dc]))
-1 |Assets         |Debit 
-10|Current assets |Debit 
-11|Non-current assets|Debit 
+1 |Assets         |Debit
+10|Current assets |Debit
+11|Non-current assets|Debit
 2 |Passiva        |Credit
 20|Liabilities    |Credit
 21|Own capital    |Credit
-6 |Expenses       |Debit 
+6 |Expenses       |Debit
 7 |Revenues       |Credit
-      
+
 
 
 TODO
@@ -449,37 +448,37 @@ TODO
     | CLASSE 5 : Placements de trésorerie et valeurs disponibles
     | CLASSE 6 : Charges
     | CLASSE 7 : Produits
-    
+
   explain the differences and how to solve this.
-  
-  See also 
+
+  See also
 
   - http://code.gnucash.org/docs/help/acct-types.html
   - http://www.futureaccountant.com/accounting-process/study-notes/financial-accounting-account-types.php
-  
 
-- A Liability is Capital acquired from others. 
+
+- A Liability is Capital acquired from others.
   Both together is what French accountants call *passif*.
-  
-  The accounting equation "Assets = Liabilities + Capital" 
+
+  The accounting equation "Assets = Liabilities + Capital"
   in French is simply:
 
       Actif = Passif
-      
-  I found an excellent definition of these two terms at 
+
+  I found an excellent definition of these two terms at
   `plancomptable.com <http://www.plancomptable.com/titre-II/titre-II.htm>`_:
 
-  - Un actif est un élément identifiable du patrimoine ayant une 
-    valeur économique positive pour l’entité, c’est-à-dire un élément 
-    générant une ressource que l’entité contrôle du fait d’événements 
+  - Un actif est un élément identifiable du patrimoine ayant une
+    valeur économique positive pour l’entité, c’est-à-dire un élément
+    générant une ressource que l’entité contrôle du fait d’événements
     passés et dont elle attend des avantages économiques futurs.
-  
-  - Un passif est un élément du patrimoine ayant une valeur 
-    économique négative pour l'entité, c'est-à-dire une obligation de 
-    l'entité à l'égard d'un tiers dont il est probable ou certain 
-    qu'elle provoquera une sortie des ressources au bénéfice de ce 
-    tiers, sans contrepartie au moins équivalente attendue de celui-ci. 
-  
+
+  - Un passif est un élément du patrimoine ayant une valeur
+    économique négative pour l'entité, c'est-à-dire une obligation de
+    l'entité à l'égard d'un tiers dont il est probable ou certain
+    qu'elle provoquera une sortie des ressources au bénéfice de ce
+    tiers, sans contrepartie au moins équivalente attendue de celui-ci.
+
 
 Some vocabulary
 

@@ -44,46 +44,55 @@ VAT rules
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-+-------+-------------------------------------------------------+
-| value | Description                                           |
-+=======+=======================================================+
-| 1     | Rate 0.21                                             |
-|       | When Purchases, National, Normal VAT rate             |
-|       | Book to VAT deductible                                |
-+-------+-------------------------------------------------------+
-| 2     | Rate 0.07                                             |
-|       | When Purchases, National, Reduced VAT rate            |
-|       | Book to VAT deductible                                |
-+-------+-------------------------------------------------------+
-| 3     | Rate 0.21                                             |
-|       | When Purchases, Intra-community, EU, Normal VAT rate  |
-|       | Book to VAT deductible                                |
-|       | Returnable to VAT returnable                          |
-+-------+-------------------------------------------------------+
-| 4     | Rate 0.07                                             |
-|       | When Purchases, Intra-community, EU, Reduced VAT rate |
-|       | Book to VAT deductible                                |
-|       | Returnable to VAT returnable                          |
-+-------+-------------------------------------------------------+
-| 5     | Rate 0.00                                             |
-|       | When Sales, Intra-community, EU, Normal VAT rate      |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
-| 6     | Rate 0.00                                             |
-|       | When Sales, Intra-community, EU, Reduced VAT rate     |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
-| 7     | Rate 0.21                                             |
-|       | When Sales, Normal VAT rate                           |
-|       | Book to VAT due                                       |
-+-------+-------------------------------------------------------+
-| 8     | Rate 0.07                                             |
-|       | When Sales, Reduced VAT rate                          |
-|       | Book to VAT due                                       |
-+-------+-------------------------------------------------------+
-| 9     | Rate 0                                                |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
++-------+------------------------------------------------------------+
+| value | Description                                                |
++=======+============================================================+
+| 1     | VAT rule 1:                                                |
+|       | if (Purchases, National, Normal VAT rate) then             |
+|       | apply 0.21 %                                               |
+|       | and book to VAT deductible                                 |
++-------+------------------------------------------------------------+
+| 2     | VAT rule 2:                                                |
+|       | if (Purchases, National, Reduced VAT rate) then            |
+|       | apply 0.07 %                                               |
+|       | and book to VAT deductible                                 |
++-------+------------------------------------------------------------+
+| 3     | VAT rule 3:                                                |
+|       | if (Purchases, Intra-community, EU, Normal VAT rate) then  |
+|       | apply 0.21 %                                               |
+|       | and book to VAT deductible                                 |
+|       | (return to VAT returnable)                                 |
++-------+------------------------------------------------------------+
+| 4     | VAT rule 4:                                                |
+|       | if (Purchases, Intra-community, EU, Reduced VAT rate) then |
+|       | apply 0.07 %                                               |
+|       | and book to VAT deductible                                 |
+|       | (return to VAT returnable)                                 |
++-------+------------------------------------------------------------+
+| 5     | VAT rule 5:                                                |
+|       | if (Sales, Intra-community, EU, Normal VAT rate) then      |
+|       | apply 0.00 %                                               |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
+| 6     | VAT rule 6:                                                |
+|       | if (Sales, Intra-community, EU, Reduced VAT rate) then     |
+|       | apply 0.00 %                                               |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
+| 7     | VAT rule 7:                                                |
+|       | if (Sales, Normal VAT rate) then                           |
+|       | apply 0.21 %                                               |
+|       | and book to VAT due                                        |
++-------+------------------------------------------------------------+
+| 8     | VAT rule 8:                                                |
+|       | if (Sales, Reduced VAT rate) then                          |
+|       | apply 0.07 %                                               |
+|       | and book to VAT due                                        |
++-------+------------------------------------------------------------+
+| 9     | VAT rule 9:                                                |
+|       | apply 0 %                                                  |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
 <BLANKLINE>
 
 

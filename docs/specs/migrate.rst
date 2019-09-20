@@ -5,14 +5,12 @@
 Django migrations in Lino
 =========================
 
-..  doctest init:
-    >>> from atelier.sheller import Sheller
-    >>> shell = Sheller("lino_book/projects/migs")
-    >>> shell("./clean.sh")
-    <BLANKLINE>
-
 This verifies whether Lino is able to make and use migrations created by Django admin commands.
 
+>>> from atelier.sheller import Sheller
+>>> shell = Sheller("lino_book/projects/migs")
+>>> shell("./clean.sh")
+<BLANKLINE>
 
 >>> shell("python manage.py makemigrations")
 ... #doctest: +ELLIPSIS

@@ -52,46 +52,55 @@ VAT rules
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-+-------+-------------------------------------------------------+
-| value | Description                                           |
-+=======+=======================================================+
-| 1     | Rate 0.20                                             |
-|       | When Purchases, National, Normal VAT rate             |
-|       | Book to VAT deductible                                |
-+-------+-------------------------------------------------------+
-| 2     | Rate 0.09                                             |
-|       | When Purchases, National, Reduced VAT rate            |
-|       | Book to VAT deductible                                |
-+-------+-------------------------------------------------------+
-| 3     | Rate 0.20                                             |
-|       | When Purchases, Intra-community, EU, Normal VAT rate  |
-|       | Book to VAT deductible                                |
-|       | Returnable to VAT returnable                          |
-+-------+-------------------------------------------------------+
-| 4     | Rate 0.09                                             |
-|       | When Purchases, Intra-community, EU, Reduced VAT rate |
-|       | Book to VAT deductible                                |
-|       | Returnable to VAT returnable                          |
-+-------+-------------------------------------------------------+
-| 5     | Rate 0.00                                             |
-|       | When Sales, Intra-community, EU, Normal VAT rate      |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
-| 6     | Rate 0.00                                             |
-|       | When Sales, Intra-community, EU, Reduced VAT rate     |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
-| 7     | Rate 0.09                                             |
-|       | When Sales, Reduced VAT rate                          |
-|       | Book to VAT due                                       |
-+-------+-------------------------------------------------------+
-| 8     | Rate 0.20                                             |
-|       | When Sales, Normal VAT rate                           |
-|       | Book to VAT due                                       |
-+-------+-------------------------------------------------------+
-| 9     | Rate 0                                                |
-|       | Book to None                                          |
-+-------+-------------------------------------------------------+
++-------+------------------------------------------------------------+
+| value | Description                                                |
++=======+============================================================+
+| 1     | VAT rule 1:                                                |
+|       | if (Purchases, National, Normal VAT rate) then             |
+|       | apply 0.20 %                                               |
+|       | and book to VAT deductible                                 |
++-------+------------------------------------------------------------+
+| 2     | VAT rule 2:                                                |
+|       | if (Purchases, National, Reduced VAT rate) then            |
+|       | apply 0.09 %                                               |
+|       | and book to VAT deductible                                 |
++-------+------------------------------------------------------------+
+| 3     | VAT rule 3:                                                |
+|       | if (Purchases, Intra-community, EU, Normal VAT rate) then  |
+|       | apply 0.20 %                                               |
+|       | and book to VAT deductible                                 |
+|       | (return to VAT returnable)                                 |
++-------+------------------------------------------------------------+
+| 4     | VAT rule 4:                                                |
+|       | if (Purchases, Intra-community, EU, Reduced VAT rate) then |
+|       | apply 0.09 %                                               |
+|       | and book to VAT deductible                                 |
+|       | (return to VAT returnable)                                 |
++-------+------------------------------------------------------------+
+| 5     | VAT rule 5:                                                |
+|       | if (Sales, Intra-community, EU, Normal VAT rate) then      |
+|       | apply 0.00 %                                               |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
+| 6     | VAT rule 6:                                                |
+|       | if (Sales, Intra-community, EU, Reduced VAT rate) then     |
+|       | apply 0.00 %                                               |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
+| 7     | VAT rule 7:                                                |
+|       | if (Sales, Reduced VAT rate) then                          |
+|       | apply 0.09 %                                               |
+|       | and book to VAT due                                        |
++-------+------------------------------------------------------------+
+| 8     | VAT rule 8:                                                |
+|       | if (Sales, Normal VAT rate) then                           |
+|       | apply 0.20 %                                               |
+|       | and book to VAT due                                        |
++-------+------------------------------------------------------------+
+| 9     | VAT rule 9:                                                |
+|       | apply 0 %                                                  |
+|       | and book to None                                           |
++-------+------------------------------------------------------------+
 <BLANKLINE>
 
 
@@ -184,61 +193,61 @@ Intracom
 ===================== ================= ================ ================= ================= ===== ===============
  Invoice               Partner           VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
 --------------------- ----------------- ---------------- ----------------- ----------------- ----- ---------------
- *PRC 4/2015*          Bäckerei Mießen   BE7336627818     Intra-community   999,92                  999,92
- *PRC 4/2016*          Bäckerei Mießen   BE7336627818     Intra-community   1 010,83                1 010,83
- *PRC 4/2017*          Bäckerei Mießen   BE7336627818     Intra-community   1 022,00                1 022,00
- *PRC 7/2015*          Donderweer BV     NL211892074B01   Intra-community   166,58                  166,58
- *PRC 7/2016*          Donderweer BV     NL211892074B01   Intra-community   169,17                  169,17
- *PRC 7/2017*          Donderweer BV     NL211892074B01   Intra-community   172,00                  172,00
- *PRC 11/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 000,42                1 000,42
- *PRC 11/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 011,00                1 011,00
- *PRC 11/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 019,92                1 019,92
- *PRC 14/2015*         Donderweer BV     NL211892074B01   Intra-community   167,08                  167,08
- *PRC 14/2016*         Donderweer BV     NL211892074B01   Intra-community   169,33                  169,33
- *PRC 14/2017*         Donderweer BV     NL211892074B01   Intra-community   169,92                  169,92
- *PRC 18/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 000,83                1 000,83
- *PRC 18/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 012,00                1 012,00
- *PRC 18/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 020,42                1 020,42
- *PRC 21/2015*         Donderweer BV     NL211892074B01   Intra-community   167,50                  167,50
- *PRC 21/2016*         Donderweer BV     NL211892074B01   Intra-community   170,33                  170,33
- *PRC 21/2017*         Donderweer BV     NL211892074B01   Intra-community   170,42                  170,42
- *PRC 25/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 001,00                1 001,00
- *PRC 25/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 009,92                1 009,92
- *PRC 28/2015*         Donderweer BV     NL211892074B01   Intra-community   167,67                  167,67
- *PRC 28/2016*         Donderweer BV     NL211892074B01   Intra-community   168,25                  168,25
- *PRC 32/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 002,00                1 002,00
- *PRC 32/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 010,42                1 010,42
- *PRC 35/2015*         Donderweer BV     NL211892074B01   Intra-community   168,67                  168,67
- *PRC 35/2016*         Donderweer BV     NL211892074B01   Intra-community   168,75                  168,75
- *PRC 39/2015*         Bäckerei Mießen   BE7336627818     Intra-community   999,92                  999,92
- *PRC 39/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 010,83                1 010,83
- *PRC 42/2015*         Donderweer BV     NL211892074B01   Intra-community   166,58                  166,58
- *PRC 42/2016*         Donderweer BV     NL211892074B01   Intra-community   169,17                  169,17
- *PRC 46/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 000,42                1 000,42
- *PRC 46/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 011,00                1 011,00
- *PRC 49/2015*         Donderweer BV     NL211892074B01   Intra-community   167,08                  167,08
- *PRC 49/2016*         Donderweer BV     NL211892074B01   Intra-community   169,33                  169,33
- *PRC 53/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 000,83                1 000,83
- *PRC 53/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 012,00                1 012,00
- *PRC 56/2015*         Donderweer BV     NL211892074B01   Intra-community   167,50                  167,50
- *PRC 56/2016*         Donderweer BV     NL211892074B01   Intra-community   170,33                  170,33
- *PRC 60/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 001,00                1 001,00
- *PRC 60/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 009,92                1 009,92
- *PRC 63/2015*         Donderweer BV     NL211892074B01   Intra-community   167,67                  167,67
- *PRC 63/2016*         Donderweer BV     NL211892074B01   Intra-community   168,25                  168,25
- *PRC 67/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 002,00                1 002,00
- *PRC 67/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 010,42                1 010,42
- *PRC 70/2015*         Donderweer BV     NL211892074B01   Intra-community   168,67                  168,67
- *PRC 70/2016*         Donderweer BV     NL211892074B01   Intra-community   168,75                  168,75
- *PRC 74/2015*         Bäckerei Mießen   BE7336627818     Intra-community   999,92                  999,92
- *PRC 74/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 010,83                1 010,83
- *PRC 77/2015*         Donderweer BV     NL211892074B01   Intra-community   166,58                  166,58
- *PRC 77/2016*         Donderweer BV     NL211892074B01   Intra-community   169,17                  169,17
- *PRC 81/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 000,42                1 000,42
- *PRC 81/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 011,00                1 011,00
- *PRC 84/2015*         Donderweer BV     NL211892074B01   Intra-community   167,08                  167,08
- *PRC 84/2016*         Donderweer BV     NL211892074B01   Intra-community   169,33                  169,33
- **Total (54 rows)**                                                        **31 752,35**           **31 752,35**
+ *PRC 4/2015*          Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 4/2016*          Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 4/2017*          Bäckerei Mießen   BE7336627818     Intra-community   1 226,40                1 226,40
+ *PRC 7/2015*          Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 7/2016*          Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 7/2017*          Donderweer BV     NL211892074B01   Intra-community   206,40                  206,40
+ *PRC 11/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 11/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
+ *PRC 11/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 223,90                1 223,90
+ *PRC 14/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 14/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
+ *PRC 14/2017*         Donderweer BV     NL211892074B01   Intra-community   203,90                  203,90
+ *PRC 18/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 18/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
+ *PRC 18/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 224,50                1 224,50
+ *PRC 21/2015*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 21/2016*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
+ *PRC 21/2017*         Donderweer BV     NL211892074B01   Intra-community   204,50                  204,50
+ *PRC 25/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 25/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
+ *PRC 28/2015*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 28/2016*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
+ *PRC 32/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 32/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
+ *PRC 35/2015*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 35/2016*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
+ *PRC 39/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 39/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 42/2015*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 42/2016*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 46/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 46/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
+ *PRC 49/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 49/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
+ *PRC 53/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 53/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
+ *PRC 56/2015*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 56/2016*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
+ *PRC 60/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 60/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
+ *PRC 63/2015*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 63/2016*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
+ *PRC 67/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 67/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
+ *PRC 70/2015*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 70/2016*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
+ *PRC 74/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 74/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 77/2015*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 77/2016*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 81/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 81/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
+ *PRC 84/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 84/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
+ **Total (54 rows)**                                                        **38 102,80**           **38 102,80**
 ===================== ================= ================ ================= ================= ===== ===============
 <BLANKLINE>
 
@@ -304,33 +313,34 @@ A purchases invoice with :term:`Returnable VAT`:
 PRC 21/2017
 >>> rt.show('vat.ItemsByInvoice', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================================ ============= ================= ================= =========== ==============
- Account                          Description   VAT class         Total excl. VAT   VAT         Total to pay
--------------------------------- ------------- ----------------- ----------------- ----------- --------------
- (6020) Purchase of investments                 Normal VAT rate   170,42            34,08       204,50
- **Total (1 rows)**                                               **170,42**        **34,08**   **204,50**
-================================ ============= ================= ================= =========== ==============
+================================ ============= ================= ================= ===== ==============
+ Account                          Description   VAT class         Total excl. VAT   VAT   Total to pay
+-------------------------------- ------------- ----------------- ----------------- ----- --------------
+ (6020) Purchase of investments                 Normal VAT rate   204,50                  204,50
+ **Total (1 rows)**                                               **204,50**              **204,50**
+================================ ============= ================= ================= ===== ==============
 <BLANKLINE>
+
 
 >>> rt.show('ledger.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 ================================ =============== ============ ============ ================= =========
  Account                          Partner         Debit        Credit       Match             Cleared
 -------------------------------- --------------- ------------ ------------ ----------------- ---------
- (4400) Suppliers                 Donderweer BV                170,42       **PRC 21/2017**   No
- (4511) VAT returnable                            34,08                                       Yes
- (4512) VAT deductible                                         34,08                          Yes
- (6020) Purchase of investments                   170,42                                      Yes
-                                                  **204,50**   **204,50**
+ (4400) Suppliers                 Donderweer BV                204,50       **PRC 21/2017**   No
+ (4511) VAT returnable                            40,90                                       Yes
+ (4512) VAT deductible                                         40,90                          Yes
+ (6020) Purchase of investments                   204,50                                      Yes
+                                                  **245,40**   **245,40**
 ================================ =============== ============ ============ ================= =========
 <BLANKLINE>
 
 >>> print(invoice.total_base)
-170.42
+204.50
 >>> print(invoice.total_vat)
 0.00
 >>> print(invoice.total_incl)
-170.42
+204.50
 
 Note that intracom sales invoices have no :term:`returnable VAT` because they
 don't have any VAT at all:

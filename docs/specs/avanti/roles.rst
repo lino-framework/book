@@ -40,7 +40,7 @@ Site administrator
 - Explorer :
   - System : Authorities, User types, User roles, Notification messages, Changes, Phonetic words, All dashboard widgets, content types, Data checkers, Data problems
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
-  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
   - Office : Comments, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts, Known contact types
   - Career : Language knowledges, Trainings, Studies, Job Experiences

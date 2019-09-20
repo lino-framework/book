@@ -6,7 +6,7 @@
 ===================================================
 
 .. currentmodule:: lino_xl.lib.products
-                   
+
 The :mod:`lino_xl.lib.products` plugin adds functionality for managing
 "products".
 
@@ -84,30 +84,22 @@ Products
 .. class:: Products
 
     >>> rt.show(products.Products)
-    ==== ================== ================== ================== =========== ===============
-     ID   Bezeichnung        Bezeichnung (fr)   Bezeichnung (en)   Kategorie   Verkaufspreis
-    ---- ------------------ ------------------ ------------------ ----------- ---------------
-     2    Stuhl aus Holz     Chaise en bois     Wooden chair       Möbel       99,99
-     4    Stuhl aus Metall   Chaise en métal    Metal chair        Möbel       79,99
-     1    Tisch aus Holz     Table en bois      Wooden table       Möbel       199,99
-     3    Tisch aus Metall   Table en métal     Metal table        Möbel       129,99
-                                                                               **509,96**
-    ==== ================== ================== ================== =========== ===============
+    ==== ================================================================ ================================================================ ================================================================ ================= ===============
+     ID   Bezeichnung                                                      Bezeichnung (fr)                                                 Bezeichnung (en)                                                 Kategorie         Verkaufspreis
+    ---- ---------------------------------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------- ----------------- ---------------
+     9    Bildbearbeitung und Unterhalt Website                            Traitement d'images et maintenance site existant                 Image processing and website content maintenance                 Website-Hosting   25,00
+     6    EDV Konsultierung & Unterhaltsarbeiten                           ICT Consultation & maintenance                                   IT consultation & maintenance                                    Website-Hosting   30,00
+     8    Programmierung                                                   Programmation                                                    Programming                                                      Website-Hosting   40,00
+     7    Server software installation, configuration and administration   Server software installation, configuration and administration   Server software installation, configuration and administration   Website-Hosting   35,00
+     2    Stuhl aus Holz                                                   Chaise en bois                                                   Wooden chair                                                     Möbel             99,99
+     4    Stuhl aus Metall                                                 Chaise en métal                                                  Metal chair                                                      Möbel             79,99
+     1    Tisch aus Holz                                                   Table en bois                                                    Wooden table                                                     Möbel             199,99
+     3    Tisch aus Metall                                                 Table en métal                                                   Metal table                                                      Möbel             129,99
+     5    Website-Hosting 1MB/Monat                                        Hébergement 1MB/mois                                             Website hosting 1MB/month                                        Website-Hosting   3,99
+                                                                                                                                                                                                                               **643,95**
+    ==== ================================================================ ================================================================ ================================================================ ================= ===============
     <BLANKLINE>
 
-.. class:: Services
-
-    >>> rt.show(products.Services)
-    ================================================================ ================================================================ ================================================================ ===============
-     Bezeichnung                                                      Bezeichnung (fr)                                                 Bezeichnung (en)                                                 Sales account
-    ---------------------------------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------- ---------------
-     Bildbearbeitung und Unterhalt Website                            Traitement d'images et maintenance site existant                 Image processing and website content maintenance
-     EDV Konsultierung & Unterhaltsarbeiten                           ICT Consultation & maintenance                                   IT consultation & maintenance
-     Programmierung                                                   Programmation                                                    Programming
-     Server software installation, configuration and administration   Server software installation, configuration and administration   Server software installation, configuration and administration
-     Website-Hosting 1MB/Monat                                        Hébergement 1MB/mois                                             Website hosting 1MB/month
-    ================================================================ ================================================================ ================================================================ ===============
-    <BLANKLINE>
 
 Product categories
 ==================
@@ -132,12 +124,12 @@ Konfigurierung --> Verkauf --> Produktkategorien
 
 
     >>> rt.show(products.ProductCats)
-    ==== ================= =============================== ================== ================== =============
-     ID   Bezeichnung       Bezeichnung (fr)                Bezeichnung (en)   Product type       description
-    ---- ----------------- ------------------------------- ------------------ ------------------ -------------
+    ==== ================= =============================== ================== ============== =============
+     ID   Bezeichnung       Bezeichnung (fr)                Bezeichnung (en)   Product type   description
+    ---- ----------------- ------------------------------- ------------------ -------------- -------------
      1    Möbel             Meubles                         Furniture          Produkte
-     2    Website-Hosting   Hébergement de sites Internet   Website Hosting    Dienstleistungen
-    ==== ================= =============================== ================== ================== =============
+     2    Website-Hosting   Hébergement de sites Internet   Website Hosting    Produkte
+    ==== ================= =============================== ================== ============== =============
     <BLANKLINE>
 
 
@@ -180,12 +172,11 @@ Every product type has its own menu entry.
 
 
     >>> rt.show(products.ProductTypes)
-    ====== ========== ================== ===================
-     Wert   name       Text               Table name
-    ------ ---------- ------------------ -------------------
-     100    default    Produkte           products.Products
-     200    services   Dienstleistungen   products.Services
-    ====== ========== ================== ===================
+    ====== ========= ========== ===================
+     Wert   name      Text       Table name
+    ------ --------- ---------- -------------------
+     100    default   Produkte   products.Products
+    ====== ========= ========== ===================
     <BLANKLINE>
 
 

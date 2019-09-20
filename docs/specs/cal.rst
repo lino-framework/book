@@ -257,14 +257,14 @@ The default list of choices for this field contains the following
 values.
 
 >>> rt.show(cal.EntryStates)
-======= ============ ============ ============= =================== ======== ============= =========
- value   name         text         Button text   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Draft        ☐             Yes                 No       No            No
- 50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
-======= ============ ============ ============= =================== ======== ============= =========
+======= ============ ============ ============= ============= ======== ============= =========
+ value   name         text         Button text   Fill guests   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes           No       No            No
+ 20      draft        Draft        ☐             Yes           No       No            No
+ 50      took_place   Took place   ☑             No            Yes      No            No
+ 70      cancelled    Cancelled    ☒             No            Yes      Yes           Yes
+======= ============ ============ ============= ============= ======== ============= =========
 <BLANKLINE>
 
 
@@ -276,10 +276,14 @@ values.
 
     Every calendar entry state is an instance of this and has some attributes.
 
-    .. attribute:: edit_guests
+    .. attribute:: fill_guests
 
-        Whether presences are editable when the entry is in this
-        state.
+        Whether the presences of an entry in this state are filled in
+        automatically.  If this is True (and if the entry type's
+        :attr:`fill_presences` is True as well), the presences cannot be
+        modified manually by the used.
+
+        TODO: rename this to fill_presences
 
     .. attribute:: guest_state
 
@@ -287,22 +291,41 @@ values.
         set to this state and when
         :attr:`EventType.force_guest_states` is True.
 
-    .. attribute:: noauto
     .. attribute:: transparent
+
+        Whether an entry in this state is considered transparent, i.e. dos not
+        conflict with other entries at the same moment.
+
     .. attribute:: fixed
 
+        Whether an entry in this state is considered "stable" when
+        differentiating between "stable" and "pending" entries.
+
+        This does not influence editability of the entry.
+
+        See :attr:`EventEvents.stable` and :attr:`EventEvents.pending`.
+
+    .. attribute:: noauto
+
+        Whether switching to this state will clear the entry's :attr:`auto_type`
+        field, i.e. it is no longer considered an automatically generated entry,
+        IOW it "escapes" from its entry generator.
+
+    .. attribute:: edit_guests
+
+        Old name for :attr:`fill_guests`.
 
 
 Calendar entry types
-============================
+====================
 
 Every calendar entry has a field :attr:`Event.event_type` which points to its
 type.
 
 There are different **types of calendar entries**. The list of *calendar entry
 types* is configurable via :menuselection:`Configure --> Calendar --> Calendar
-entry types`.  The type of a calendar entry can be used to change
-application-specific behaviour and rules.
+entry types`.  The type of a calendar entry can be used to change behaviour and
+rules.
 
 
 .. class:: EventType
@@ -373,8 +396,12 @@ application-specific behaviour and rules.
 
     .. attribute:: fill_presences
 
-        Whether presences should be automatically filled for entries of this
-        type.
+        Whether guests should be automatically filled for calendar entries of
+        this type.
+
+    .. attribute:: fill_guests
+
+        Planned name for :attr:`fill_presences`.
 
 
 .. class:: EventTypes
@@ -390,7 +417,7 @@ application-specific behaviour and rules.
                  Absences        Absences           Absences           External         Yes           No                    No
                  First contact   First contact      First contact                       Yes           No                    No
                  Holidays        Feiertage          Jours fériés       External         No            No                    Yes
-                 Internal        Intern             Interne            Internal         Yes           No                    No
+                 Internal        Intern             Interne            Internal         No            No                    No
                  Lesson          Lesson             Lesson                              Yes           No                    No
                  Meeting         Versammlung        Réunion            External         Yes           No                    No
     =========== =============== ================== ================== ================ ============= ===================== =================
@@ -422,13 +449,13 @@ The daily planner
 The daily planner is a table that shows an overview on all events of a day.
 
 >>> rt.show(cal.DailyPlanner)
-============ =================================================== =======================================
+============ =================================================== ==========
  Time range   External                                            Internal
------------- --------------------------------------------------- ---------------------------------------
+------------ --------------------------------------------------- ----------
  *All day*    *Rolf Rompen Absent for private reasons Absences*
- *AM*
- *PM*                                                             *13:30 Robin Rood Breakfast Internal*
-============ =================================================== =======================================
+ *AM*         *08:30 Romain Raffault Rencontre Meeting*
+ *PM*
+============ =================================================== ==========
 <BLANKLINE>
 
 
@@ -484,26 +511,26 @@ A default configuration has two columns in the daily planner:
     ===========
     Tagesplaner
     ===========
-    =============== =================================================== =====================================
+    =============== =================================================== ========
      Zeitabschnitt   Extern                                              Intern
-    --------------- --------------------------------------------------- -------------------------------------
+    --------------- --------------------------------------------------- --------
      *Ganztags*      *Rolf Rompen Absent for private reasons Absences*
-     *Vormittags*
-     *Nachmittags*                                                       *13:30 Robin Rood Breakfast Intern*
-    =============== =================================================== =====================================
+     *Vormittags*    *08:30 Romain Raffault Rencontre Versammlung*
+     *Nachmittags*
+    =============== =================================================== ========
     <BLANKLINE>
 
     >>> rt.show(cal.DailyPlanner, language="fr", header_level=1)
     =======================
     Planificateur quotidien
     =======================
-    =================== =================================================== ======================================
+    =================== =================================================== =========
      Time range          Externe                                             Interne
-    ------------------- --------------------------------------------------- --------------------------------------
+    ------------------- --------------------------------------------------- ---------
      *Journée entière*   *Rolf Rompen Absent for private reasons Absences*
-     *Avant-midi*
-     *Après-midi*                                                            *13:30 Robin Rood Breakfast Interne*
-    =================== =================================================== ======================================
+     *Avant-midi*        *08:30 Romain Raffault Rencontre Réunion*
+     *Après-midi*
+    =================== =================================================== =========
     <BLANKLINE>
 
     >>> print(cal.Event.update_guests.help_text)
@@ -974,6 +1001,47 @@ and the pupils.
     See :meth:`EventGenerator.update_all_guests`.
 
 
+Presence lists
+==============
+
+To introduce the problem:
+
+- :manage:`runserver` in :mod:`lino_book.projects.avanti1` and sign in as robin.
+- create a calendar entry, leave it in draft mode
+- Note that you cannot manually enter a guest in the presences list.
+
+This is a situation where we want Lino to automatically keep the list of guests
+synchronized with the "suggested guests" for this meeting.  For example in
+:ref:`avanti` when we have a course with participants (enrolments), and we have
+generated a series of calendar entries having their suggested guests filled
+already, and now one participant cancels their enrolment.  We want Lino to
+update all participants of meetings that are still in draft state.  The issue is
+that Lino doesn't correctly differentiate between those two situations:
+
+- manually enter and manage the list of guests
+
+- fill guests automatically and keep it synchronized with the guests suggested
+  by the entry generator.
+
+Lino should not let me manually create a guest when the entry is in "fill
+guests" mode.
+
+The :attr:`Event.update_guests` action is always called in the
+:meth:`Event.after_ui_save` method.  That's okay, but in our case the action
+obviously comes to the conclusion that we do want to update our guests. More
+precisely the event state obviously has :attr:`EntryState.edit_guests` set to
+False, and the entry type has :attr:`fill_presences` set to True.  The solution
+is to simply set
+
+- The :meth:`Event.can_edit_guests_manually` method which encapsulates this
+  condition.
+- That method is now also used to decide whether the presences lists can be
+  modified manually.
+
+Note the difference between "guest" and "presence". The model name is currently
+still :class:`cal.Guest`, but this should be renamed to :class:`cal.Presence`.
+Because the "guest" is actually the field of a presence which points to the
+person who is the guest.
 
 
 Remote calendars

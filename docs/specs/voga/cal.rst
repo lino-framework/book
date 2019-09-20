@@ -24,15 +24,16 @@ The following workflow of calendar entries and guests (presences) are
 defined in :mod:`lino_voga.lib.cal.workflows`.
 
 >>> rt.show(cal.EntryStates)
-======= ============ ============ ============= =================== ======== ============= =========
- value   name         text         Button text   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Draft        ☐             Yes                 No       No            No
- 50      took_place   Took place   ☑             Yes                 Yes      No            No
- 70      cancelled    Cancelled    ☒             No                  Yes      Yes           Yes
-======= ============ ============ ============= =================== ======== ============= =========
+======= ============ ============ ============= ============= ======== ============= =========
+ value   name         text         Button text   Fill guests   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes           No       No            No
+ 20      draft        Draft        ☐             Yes           No       No            No
+ 50      took_place   Took place   ☑             No            Yes      No            No
+ 70      cancelled    Cancelled    ☒             No            Yes      Yes           Yes
+======= ============ ============ ============= ============= ======== ============= =========
 <BLANKLINE>
+
 
 >>> rt.show(cal.GuestStates)
 ======= ========= ============ ========= =============
@@ -59,7 +60,7 @@ Rooms
         The default fee to pay when renting this room to an external
         organization.
 
-    
+
 >>> show_fields(cal.Room, 'name calendar fee company')
 +---------------+--------------+-----------------------------------------------------------------+
 | Internal name | Verbose name | Help text                                                       |

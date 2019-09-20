@@ -53,28 +53,28 @@ a day on the beach while the ⚕ reminds a drugstore.
 
 
 >>> rt.show(cal.EntryStates)
-======= ============ ============ ============= =================== ======== ============= =========
- value   name         text         Button text   Edit participants   Stable   Transparent   No auto
-------- ------------ ------------ ------------- ------------------- -------- ------------- ---------
- 10      suggested    Suggested    ?             Yes                 No       No            No
- 20      draft        Scheduled    ☐             Yes                 No       No            No
- 50      took_place   Took place   ☑             Yes                 Yes      No            No
- 60      missed       Missed       ☉             No                  Yes      No            Yes
- 70      cancelled    Called off   ⚕             No                  Yes      Yes           Yes
-======= ============ ============ ============= =================== ======== ============= =========
+======= ============ ============ ============= ============= ======== ============= =========
+ value   name         text         Button text   Fill guests   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes           No       No            No
+ 20      draft        Scheduled    ☐             Yes           No       No            No
+ 50      took_place   Took place   ☑             No            Yes      No            No
+ 60      missed       Missed       ☉             No            Yes      No            Yes
+ 70      cancelled    Called off   ⚕             No            Yes      Yes           Yes
+======= ============ ============ ============= ============= ======== ============= =========
 <BLANKLINE>
 
 
 >>> rt.show(cal.EntryStates, language="de")
-====== ============ =============== ============= ======================= ======== =================== =========
- Wert   name         Text            Button text   Teilnehmer bearbeiten   Stabil   nicht blockierend   No auto
------- ------------ --------------- ------------- ----------------------- -------- ------------------- ---------
- 10     suggested    Vorschlag       ?             Ja                      Nein     Nein                Nein
- 20     draft        Geplant         ☐             Ja                      Nein     Nein                Nein
- 50     took_place   Stattgefunden   ☑             Ja                      Ja       Nein                Nein
- 60     missed       Verpasst        ☉             Nein                    Ja       Nein                Ja
- 70     cancelled    Abgesagt        ⚕             Nein                    Ja       Ja                  Ja
-====== ============ =============== ============= ======================= ======== =================== =========
+====== ============ =============== ============= ================= ======== =================== =========
+ Wert   name         Text            Button text   Gäste ausfüllen   Stabil   nicht blockierend   No auto
+------ ------------ --------------- ------------- ----------------- -------- ------------------- ---------
+ 10     suggested    Vorschlag       ?             Ja                Nein     Nein                Nein
+ 20     draft        Geplant         ☐             Ja                Nein     Nein                Nein
+ 50     took_place   Stattgefunden   ☑             Nein              Ja       Nein                Nein
+ 60     missed       Verpasst        ☉             Nein              Ja       Nein                Ja
+ 70     cancelled    Abgesagt        ⚕             Nein              Ja       Ja                  Ja
+====== ============ =============== ============= ================= ======== =================== =========
 <BLANKLINE>
 
 
@@ -130,7 +130,7 @@ Calendar entry types
              Group meeting            Gruppengespräch    Group meeting                             Yes           No                    No
              Holidays                 Feiertage          Jours fériés             External         No            No                    Yes
              Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                   No
-             Internal                 Intern             Interne                  Internal         Yes           No                    No
+             Internal                 Intern             Interne                  Internal         No            No                    No
              Meeting                  Versammlung        Réunion                  External         Yes           No                    No
 =========== ======================== ================== ======================== ================ ============= ===================== =================
 <BLANKLINE>
@@ -141,13 +141,13 @@ Daily planner
 =============
 
 >>> rt.show(cal.DailyPlanner)
-============ =================================================== =======================================
+============ =================================================== ==========
  Time range   External                                            Internal
------------- --------------------------------------------------- ---------------------------------------
+------------ --------------------------------------------------- ----------
  *All day*    *Rolf Rompen Absent for private reasons Absences*
- *AM*
- *PM*                                                             *13:30 Robin Rood Breakfast Internal*
-============ =================================================== =======================================
+ *AM*         *08:30 Romain Raffault Rencontre Meeting*
+ *PM*
+============ =================================================== ==========
 <BLANKLINE>
 
 
@@ -168,13 +168,13 @@ No data to display
 Daily planner `⏏ <Daily planner>`__
 -----------------------------------
 <BLANKLINE>
-============ ============================================================== ==================================================
+============ ============================================================== ==========
  Time range   External                                                       Internal
------------- -------------------------------------------------------------- --------------------------------------------------
+------------ -------------------------------------------------------------- ----------
  *All day*    `Rolf Rompen Absent for private reasons Absences <Detail>`__
- *AM*
- *PM*                                                                        `13:30 Robin Rood Breakfast Internal <Detail>`__
-============ ============================================================== ==================================================
+ *AM*         `08:30 Romain Raffault Rencontre Meeting <Detail>`__
+ *PM*
+============ ============================================================== ==========
 <BLANKLINE>
 
 
@@ -184,4 +184,3 @@ Daily planner `⏏ <Daily planner>`__
     .. attribute:: amount
 
         The amount perceived during this appointment.
-
