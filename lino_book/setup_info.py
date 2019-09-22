@@ -168,8 +168,6 @@ lino_book.projects.chatter.tests
 lino_book.projects.migs
 lino_book.projects.migs.settings
 lino_book.projects.migs.settings.fixtures
-lino_book.projects.migs.migrations
-lino_book.projects.migs.tests
 lino_book.projects.min1
 lino_book.projects.min1.settings
 lino_book.projects.min1.migrations

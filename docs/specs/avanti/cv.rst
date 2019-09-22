@@ -1,11 +1,11 @@
-.. doctest docs/specs/avanti/cal.rst
-.. _avanti.specs.cal:
+.. doctest docs/specs/avanti/cv.rst
+.. _avanti.specs.cv:
 
 =================================
-Calendar functions in Lino Avanti
+CV functions in Lino Avanti
 =================================
 
-This document describes how standard calendar functionality is being extended by
+This document describes how standard CV functionality is being extended by
 :ref:`avanti`.
 
 
@@ -20,15 +20,15 @@ This document describes how standard calendar functionality is being extended by
 >>> from lino.api.doctest import *
 
 
-Lino Avanti defines a plugin :mod:`lino_avanti.lib.cal`  which inherits from
-:mod:`lino_xl.lib.cal`.
+Lino Avanti defines a plugin :mod:`lino_avanti.lib.cv`  which inherits from
+:mod:`lino_xl.lib.cv`.
 
 
-.. currentmodule:: lino_avanti.lib.cal
+.. currentmodule:: lino_avanti.lib.cv
 
-.. class:: Guest
+.. class:: Study
 
-    .. attribute:: absence_reason
+    .. attribute::
 
         Why the pupil was absent.  Choices for this field are defined
         in :class:`AbsenceReasons`.

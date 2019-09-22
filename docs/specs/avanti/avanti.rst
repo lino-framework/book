@@ -302,14 +302,14 @@ Some example cases:
 >>> client = rt.models.avanti.Client.objects.get(pk=120)
 >>> rt.show('cv.LanguageKnowledgesByPerson', client, nosummary=True)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-========== =============== ============ ============ ============================= ============= ============
- Language   Mother tongue   Spoken       Written      CEF level                     Certificate   Entry date
----------- --------------- ------------ ------------ ----------------------------- ------------- ------------
- Dutch      No              a bit        moderate     A2+ (basic language skills)   No            05/02/2017
- Dutch      No              moderate     quite well   A2 (basic language skills)    No            12/01/2016
- German     No              quite well   very well    A1+ (basic language skills)   No            12/01/2016
- French     Yes                                                                     No            12/01/2016
-========== =============== ============ ============ ============================= ============= ============
+========== =============== ============ ============ =========== ============= ============
+ Language   Mother tongue   Spoken       Written      CEF level   Certificate   Entry date
+---------- --------------- ------------ ------------ ----------- ------------- ------------
+ Dutch      No              a bit        moderate     A2+         No            05/02/2017
+ Dutch      No              moderate     quite well   A2          No            12/01/2016
+ German     No              quite well   very well    A1+         No            12/01/2016
+ French     Yes                                                   No            12/01/2016
+========== =============== ============ ============ =========== ============= ============
 <BLANKLINE>
 
 
@@ -327,13 +327,13 @@ Some example cases:
 >>> client = rt.models.avanti.Client.objects.get(pk=122)
 >>> rt.show('cv.LanguageKnowledgesByPerson', client, nosummary=True, language="de")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============= =============== ============== ============== ================================== ============ =================
- Sprache       Muttersprache   Wort           Schrift        CEF-Kategorie                      Zertifikat   Erfassungsdatum
-------------- --------------- -------------- -------------- ---------------------------------- ------------ -----------------
- Deutsch       Nein            gar nicht      ein bisschen   A1 (Elementare Sprachverwendung)   Nein         05.02.17
- Deutsch       Nein            ein bisschen   mittelmäßig    A0 (Elementare Sprachverwendung)   Nein         12.01.16
- Französisch   Ja                                                                               Nein         12.01.16
-============= =============== ============== ============== ================================== ============ =================
+============= =============== ============== ============== =============== ============ =================
+ Sprache       Muttersprache   Wort           Schrift        CEF-Kategorie   Zertifikat   Erfassungsdatum
+------------- --------------- -------------- -------------- --------------- ------------ -----------------
+ Deutsch       Nein            gar nicht      ein bisschen   A1              Nein         05.02.17
+ Deutsch       Nein            ein bisschen   mittelmäßig    A0              Nein         12.01.16
+ Französisch   Ja                                                            Nein         12.01.16
+============= =============== ============== ============== =============== ============ =================
 <BLANKLINE>
 
 The end user usually sees the summary of language knowledges , which shows the
@@ -343,7 +343,7 @@ is A1 (not A0):
 
 >>> rt.show('cv.LanguageKnowledgesByPerson', client, language="de")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-en: ---
+en: Ohne Angabe
 de: A1
-fr: ---
+fr: Ohne Angabe
 Muttersprachen: Französisch

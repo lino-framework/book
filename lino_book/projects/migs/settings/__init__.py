@@ -21,7 +21,7 @@ class Site(Site):
 
     workflows_module = 'lino_book.projects.migs.workflows'
 
-    migrations_package = 'lino_book.projects.migs.migrations'
+    # migrations_package = 'lino_book.projects.migs.migrations'
 
     def get_installed_apps(self):
         # add lino.modlib.restful to the std list of plugins

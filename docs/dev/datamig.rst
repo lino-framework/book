@@ -12,36 +12,35 @@ Data migration is a complex topic. Django needed until version 1.7
 before they adapted a default method to automating these tasks (see
 `Migrations
 <https://docs.djangoproject.com/en/2.2/topics/migrations/>`_).
+:doc:`migrate` describes how to use Django migrations on a :term:`Lino site`.
 
-Lino suggests to use :doc:`Python dumps <dump2py>` as a different
-approach for doing database migrations.  **Advantages** of migrations
-à la Lino:
+But Lino also offers a very different approach for doing database migrations,
+which basically makes a  :doc:`Python dump <dump2py>` with the old code and then
+restores this dump with the new code.
+
+**Advantages** of migrations à la Lino:
 
 - They make the process of deploying applications and upgrading
-  production sites simpler and more transparent.  As the responsible
-  adminstrator of a Lino production site, you will simply :doc:`write
+  production sites simpler and more transparent.  As a :term:`site maintainer`
+  you will simply :doc:`write
   a Python dump </dev/dump2py>` *before* upgrading (using the old
   version), and then load that dump *after* upgrading (with the new
   version). See :doc:`/admin/upgrade` for details.
-
-- They work also when you use Lino's :doc:`inject_field
-  <inject_field>` or :ref:`BabelField <mldbc>` features.
 
 - They can help in situations where you would need a magician. For
   example your users accidentally deleted a bunch of data from their
   database and they don't have a recent backup.
   See :doc:`repair` for an example.
 
-Despite these advantages you might still want to use the Django
-approach because Lino migrations have one inevitable **disadvantage**:
-they are slower than :manage:`migrate`. Users must stop working in
-your application during that time.  There are systems where half an
-hour downtime for an upgrade is not acceptable.  Rule of thumb: If
+Despite these advantages you might still want to use the Django approach because
+Lino migrations have one inevitable **disadvantage**: they are slower than
+Django migrations. Users cannot use the site during that time. There are systems
+where half an hour downtime for an upgrade is not acceptable. Rule of thumb: If
 your application uses either the :doc:`inject_field <inject_field>` or
-:ref:`BabelField <mldbc>` features (or if it uses a plugin which uses
-them), then Django migrations won't work.  If your site *does* need to
-use Django migrations, then you cannot use :doc:`inject_field
-<inject_field>` and :ref:`BabelField <mldbc>`.
+:ref:`BabelField <mldbc>` features (or if it uses a plugin which uses them),
+then Django migrations won't work.  If your site *does* need to use Django
+migrations, then you cannot use :doc:`inject_field <inject_field>` and
+:ref:`BabelField <mldbc>`.
 
 
 General strategy for managing data migrations

@@ -13,6 +13,12 @@
 .. contents::
   :local:
 
+2019-09-21
+==========
+
+Fixed 'AnswersByQuestionRow' object has no attribute 'get_detail_action'.
+
+
 2019-09-20
 ==========
 
