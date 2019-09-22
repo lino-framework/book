@@ -8,11 +8,11 @@ As the maintainer of a database application that is being used on one or several
 :term:`production site` you will care about how these production sites will
 migrate their data.
 
-Data migration is a complex topic. Django needed until version 1.7
-before they adapted a default method to automating these tasks (see
-`Migrations
+Data migration is a complex topic. Django needed until version 1.7 before they
+adapted a default method to automating these tasks (see `Migrations
 <https://docs.djangoproject.com/en/2.2/topics/migrations/>`_).
-:doc:`migrate` describes how to use Django migrations on a :term:`Lino site`.
+:doc:`/specs/migrate` describes how to use Django migrations on a :term:`Lino
+site`.
 
 But Lino also offers a very different approach for doing database migrations,
 which basically makes a  :doc:`Python dump <dump2py>` with the old code and then
