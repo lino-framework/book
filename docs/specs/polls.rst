@@ -17,52 +17,63 @@ adds database models and functionality for managing polls.
 >>> lino.startup('lino_book.projects.polly.settings.demo')
 >>> from lino.api.doctest import *
 
-                   
+
 
 Overview
 ========
 
-A :class:`Poll` is a collection of :class:`Questions <Question>` which
-we want to ask repeatedly to different people. Each Question has a
-*question text* and a :class:`ChoiceSet`, i.e. a stored ordered set of
-possible choices.
+A :class:`Poll` is a series  of :class:`Questions <Question>` which we want to
+ask repeatedly to different people. Each Question has a *question text* and a
+:class:`ChoiceSet`, i.e. a stored ordered set of possible choices.
 
 A :class:`Response` is when somebody answers to a `Poll`.  A response
 has a user (the guiy who asked and/or entered the data) and the
 partner (the guy who answered).
 
-The virtual table :class:`AnswersByResponse` then combines the answers
-which are stored in the database as a set of :class:`AnswerChoices
-<AnswerChoice>`, each of which represents a given Choice selected by
-the questioned person for a given `Question` of the `Poll`.  If the
-Question is *multiple choice*, then there may be more than one
+The answers themselves  are stored in the database as a set of
+:class:`AnswerChoices <AnswerChoice>` objects, each of which represents a given
+Choice selected by the questioned person for a given `Question` of the `Poll`.
+If the Question is *multiple choice*, then there may be more than one
 `AnswerChoice` per `Question`.  A `Response` can also contain a set of
-`AnswerRemarks`, each of with represents a remark written by the
-responding person for a given question.
+`AnswerRemarks`, each of with represents a remark written by the responding
+person for a given question.
+
+The detail view of a Response will usually contain two different slave tables
+showing the answers:
+
+- The :class:`AnswersByResponseEditor` summary shows one row per question (also
+  those that have not been answered) and one column for each response of the
+  same poll for this partner.  The answers for this response are editable unless
+  the response is registered. The answers of other responses are never editable.
+
+- The :class:`AnswersByResponsePrint` summary shows one row per answered
+  question and the answer given in this response.  It is designed to get
+  printed.
+
 
 Model reference
 ===============
 
 
 .. class:: Poll
-           
+
     A series of questions.
 
 .. class:: Polls
-           
+
 .. class:: AllPolls
-           
+
     Show all polls of all users.
 
 
 .. class:: Question
-    
+
     A question of a poll.
 
     .. attribute:: number
 
        The number of this question within this poll.
-       
+
     .. attribute:: poll
 
     .. attribute:: title
@@ -76,9 +87,9 @@ Model reference
 .. class:: QuestionsByPoll
 
 
-    
+
 .. class:: ChoiceSet
-           
+
 .. class:: ChoiceSets
 
 .. class:: Choice
@@ -88,14 +99,14 @@ Model reference
 .. class:: Choices
 .. class:: ChoicesBySet
 
-.. class:: Response           
-           
+.. class:: Response
+
     .. attribute:: poll
     .. attribute:: date
     .. attribute:: state
     .. attribute:: remark
     .. attribute:: partner
-                   
+
     .. attribute:: toggle_choice
 
        See :class:`ToggleChoice`
@@ -110,15 +121,15 @@ Model reference
     summary of all responses for a that partner using a bullet list
     grouped by poll.
 
-           
+
 .. class:: AnswerChoice
-           
+
     .. attribute:: response
     .. attribute:: question
     .. attribute:: choice
-           
+
 .. class:: AnswerRemark
-           
+
     .. attribute:: response
     .. attribute:: question
     .. attribute:: remark
@@ -126,8 +137,11 @@ Model reference
 Answers by response
 ===================
 
+.. class:: AnswersByResponseBase
+.. class:: AnswersByResponsePrint
+.. class:: AnswersByResponseEditor
 .. class:: AnswersByResponse
-           
+
     The table used for answering to a poll. This is a virtual table
     and its rows are volatile :class:`AnswersByResponseRow` instances.
 
@@ -137,9 +151,9 @@ Answers by response
         this question, eventually (if editing is permitted) together with
         buttons to modify the selection.
 
-          
+
 .. class:: AnswersByResponseRow
-           
+
     Volatile object to represent the one and only answer to a given
     question in a given response.
 
@@ -147,24 +161,24 @@ Answers by response
     this.
 
 .. class:: AnswerRemarkField
-           
+
     An editable virtual field.
 
 Answers by question
 ===================
 
 .. class:: AnswersByQuestion
-    
+
     The rows of this table are volatile :class:`AnswersByQuestionRow`
     instances.
 
 
 .. class:: AnswersByQuestionRow
-           
+
     Volatile object to represent a row of :class:`AnswersByQuestion`.
 
 .. class:: PollResult
-           
+
     Shows a summay of responses to this poll.
 
 
@@ -173,11 +187,11 @@ Roles
 =====
 
 .. class:: PollsUser
-           
+
     A user who has access to polls functionality.
 
 .. class:: PollsStaff
-           
+
     A user who manages configuration of polls functionality.
 
 
@@ -188,15 +202,15 @@ Actions
 =======
 
 .. class:: ToggleChoice
-           
+
     Toggle the given choice for the given question in this response.
-    
-           
+
+
 Choicelists
 ===========
 
 .. class:: PollStates
-           
+
     The list of possible states of a :class:`Poll`.
 
     >>> rt.show(polls.PollStates)
@@ -208,11 +222,11 @@ Choicelists
      30      closed   Closed
     ======= ======== ======== =============
     <BLANKLINE>
-    
+
 .. class:: ResponseStates
-           
+
     The list of possible states of a :class:`Response`.
-    
+
     >>> rt.show(polls.ResponseStates)
     ======= ============ ============ =============
      value   name         text         Button text
@@ -221,7 +235,7 @@ Choicelists
      20      registered   Registered
     ======= ============ ============ =============
     <BLANKLINE>
-    
+
 Example fixtures
 ================
 
@@ -241,8 +255,9 @@ lino_book.projects.polly.settings.demo
 >>> print(obj)
 Robin Rood's response to Participant feedback
 
->>> rt.login(obj.user.username).show(polls.AnswersByResponse, obj)
-Question 23/10/2014 
+>>> rt.login(obj.user.username).show(polls.AnswersByResponseEditor, obj)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
+Question 23/10/2014
 <BLANKLINE>
 1) There was enough to eat. **1** **2** **3** **4** **5** (**Remark**)
 <BLANKLINE>
@@ -254,7 +269,7 @@ Question 23/10/2014
 
 
 >>> mt = contenttypes.ContentType.objects.get_for_model(obj.__class__).id
->>> url = '/api/polls/AnswersByResponse?rp=ext-comp-1351&fmt=json&mt=%d&mk=%d' % (mt, pk)
+>>> url = '/api/polls/AnswersByResponseEditor?rp=ext-comp-1351&fmt=json&mt=%d&mk=%d' % (mt, pk)
 >>> test_client.force_login(obj.user)
 >>> res = test_client.get(url, REMOTE_USER=obj.user.username)
 
@@ -294,10 +309,10 @@ The 2 is the id of the Response we are acting on:
 Response #2 ("Robin Rood's response to Participant feedback")
 
 
-"fv" stands for "field values". 
-It refers to the two `parameters` of the 
+"fv" stands for "field values".
+It refers to the two `parameters` of the
 :class:`lino.modlib.polls.models.ToggleChoice` action.
-The 9 is the id of a `polls.Question`, 
+The 9 is the id of a `polls.Question`,
 the 17 is the id of a `polls.Choice`.
 
 
@@ -315,5 +330,3 @@ Question #9 ('1) There was enough to eat.')
 
 >>> polls.Choice.objects.get(pk=17)
 Choice #17 ('1')
-
-

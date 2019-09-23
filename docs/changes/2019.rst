@@ -13,6 +13,24 @@
 .. contents::
   :local:
 
+2019-09-23
+==========
+
+A series of changes for :ref:`avanti` (:ticket:`2274`):
+
+.. currentmodule:: lino_xl.lib.cv
+
+Changes in :mod:`lino_xl.lib.cv`:
+:attr:`BiographyOwner.language_knowledge` now also shows whether there is a certificate or not.
+The :class:`CefLevel` choicelist now shows only the values (A0, A1, ...) and no longer their textual descriptions.
+Changes in :xfile:`final_report.body.html`.
+
+.. currentmodule:: lino_xl.lib.polls
+
+Change in :mod:`lino_xl.lib.polls`: New table :class:`AnswersByResponsePrint` is
+now shown in the detail of a response.
+
+
 2019-09-21
 ==========
 
