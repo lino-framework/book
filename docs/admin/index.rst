@@ -30,6 +30,12 @@ Installation
 
 See :ref:`getlino.install.admin`.
 
+.. toctree::
+   :maxdepth: 2
+
+   multiple_frontends
+
+
 About hosting Lino
 ==================
 

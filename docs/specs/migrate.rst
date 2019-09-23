@@ -6,14 +6,13 @@ Django migrations on a Lino site
 ================================
 
 Lino applications cannot deliver out-of-the-box Django migrations because the
-database schema of a Lino site also depends on local settings.
+database schema of a Lino site also depends on local settings. For example the
+:class:`languages <lino.core.site.Site.languages>` setting affects your database
+structure.  Or you may locally disable a plugin.  Or some plugin options can
+cause the structure to change.
 
-For example the :class:`languages <lino.core.site.Site.languages>` setting
-affects your database structure.  Or you may locally disable a plugin.  Or some
-plugin options can cause the structure to change.
-
-Which just means that you also must always run :manage:`makemigrations`
-before running :manage:`migrate`.
+Which just means that you must always run :manage:`makemigrations` before
+running :manage:`migrate`.
 
 The :xfile:`migrations` directory
 =================================
@@ -154,7 +153,7 @@ settings file), so the :xfile:`migrations` directory is under the
 ... #doctest: +ELLIPSIS
 /.../lino_book/projects/migs/settings
 
-TODO: write tests to show a site upgrade.
+TODO: write tests to show a :term:`site upgrade` using Django migrations.
 
 .. tidy up before leaving:
 
