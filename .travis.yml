@@ -23,9 +23,7 @@ before_install:
   - sudo apt-get install redis-server ; redis-server &
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
-  - sudo lsof -i -P -n | grep LISTEN
   - libreoffice --accept="socket,host=localhost,port=8100;urp;" &
-  - sudo lsof -i -P -n | grep LISTEN
 
 install:
   - pip install -U setuptools
@@ -40,21 +38,14 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
-  - sudo lsof -i -P -n | grep LISTEN
-  - libreoffice --accept="socket,host=localhost,port=8100;urp;" &
-  - sudo lsof -i -P -n | grep LISTEN
-
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
   -  # if [[ $TRAVIS_BRANCH == 'python3' || $TRAVIS_PYTHON_VERSION == 2.7 ]]; then inv prep test; else exit 0; fi;
   -  # inv prep test
   - rm -rf .eggs
-  - sudo lsof -i -P -n | grep LISTEN
   - inv install
-  - sudo lsof -i -P -n | grep LISTEN
   - inv cov --no-html
-  - sudo lsof -i -P -n | grep LISTEN
   -  # E2E testing with team
   - cd lino_book/projects/min1/
   - #python manage.py prep --noinput
