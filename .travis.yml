@@ -19,12 +19,12 @@ before_install:
   - sudo apt-get update -y
   - sudo apt-get upgrade -y
   - sudo apt-get install -y swig
-  - sudo apt-get install -y graphviz
+  - sudo apt-get install -y graphviz  
   - sudo apt-get install redis-server ; redis-server &
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
   - sudo lsof -i -P -n | grep LISTEN
-  - libreoffice --headless --accept="socket,host=127.0.0.1,port=8100;urp;"  &
+  - libreoffice --accept="socket,host=127.0.0.1,port=8100;urp;" &
   - sudo lsof -i -P -n | grep LISTEN
 
 install:
@@ -40,6 +40,9 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
+  - sudo lsof -i -P -n | grep LISTEN
+  - libreoffice --accept="socket,host=127.0.0.1,port=8100;urp;" &
+  - sudo lsof -i -P -n | grep LISTEN
 
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
