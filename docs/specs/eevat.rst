@@ -172,19 +172,15 @@ Intracom
 
 >>> rt.show(vat.IntracomSales)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
-==================== =========================== ================ ================= ================= ===== ===============
+==================== =========================== ================ ================= ================= ===== ==============
  Invoice              Partner                     VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
--------------------- --------------------------- ---------------- ----------------- ----------------- ----- ---------------
- *SLS 4/2015*         Bäckerei Mießen             BE7336627818     Intra-community   280,00                  280,00
- *SLS 7/2015*         Donderweer BV               NL211892074B01   Intra-community   1 199,85                1 199,85
- *SLS 10/2015*        Bernd Brechts Bücherladen   DE529665130      Intra-community   1 599,92                1 599,92
- *SLS 13/2015*        Auto École Verte            FR74229232671    Intra-community   525,00                  525,00
- *SLS 47/2016*        Bäckerei Mießen             BE7336627818     Intra-community   600,00                  600,00
- *SLS 50/2016*        Donderweer BV               NL211892074B01   Intra-community   465,96                  465,96
- *SLS 53/2016*        Bernd Brechts Bücherladen   DE529665130      Intra-community   2 039,82                2 039,82
- *SLS 57/2016*        Auto École Verte            FR74229232671    Intra-community   3 319,78                3 319,78
- **Total (8 rows)**                                                                  **10 030,33**           **10 030,33**
-==================== =========================== ================ ================= ================= ===== ===============
+-------------------- --------------------------- ---------------- ----------------- ----------------- ----- --------------
+ *SLS 4/2018*         Bäckerei Mießen             BE7336627818     Intra-community   280,00                  280,00
+ *SLS 7/2018*         Donderweer BV               NL211892074B01   Intra-community   1 199,85                1 199,85
+ *SLS 10/2018*        Bernd Brechts Bücherladen   DE529665130      Intra-community   1 599,92                1 599,92
+ *SLS 13/2018*        Auto École Verte            FR74229232671    Intra-community   525,00                  525,00
+ **Total (4 rows)**                                                                  **3 604,77**            **3 604,77**
+==================== =========================== ================ ================= ================= ===== ==============
 <BLANKLINE>
 
 
@@ -193,64 +189,45 @@ Intracom
 ===================== ================= ================ ================= ================= ===== ===============
  Invoice               Partner           VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
 --------------------- ----------------- ---------------- ----------------- ----------------- ----- ---------------
- *PRC 4/2015*          Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 4/2016*          Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
- *PRC 4/2017*          Bäckerei Mießen   BE7336627818     Intra-community   1 226,40                1 226,40
- *PRC 7/2015*          Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 7/2016*          Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
- *PRC 7/2017*          Donderweer BV     NL211892074B01   Intra-community   206,40                  206,40
- *PRC 11/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 11/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
- *PRC 11/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 223,90                1 223,90
- *PRC 14/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- *PRC 14/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
- *PRC 14/2017*         Donderweer BV     NL211892074B01   Intra-community   203,90                  203,90
- *PRC 18/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
- *PRC 18/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
- *PRC 18/2017*         Bäckerei Mießen   BE7336627818     Intra-community   1 224,50                1 224,50
- *PRC 21/2015*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
- *PRC 21/2016*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
- *PRC 21/2017*         Donderweer BV     NL211892074B01   Intra-community   204,50                  204,50
- *PRC 25/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
- *PRC 25/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
- *PRC 28/2015*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
- *PRC 28/2016*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
- *PRC 32/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
- *PRC 32/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
- *PRC 35/2015*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
- *PRC 35/2016*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
- *PRC 39/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 39/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
- *PRC 42/2015*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 42/2016*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
- *PRC 46/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 46/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
- *PRC 49/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- *PRC 49/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
- *PRC 53/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
- *PRC 53/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
- *PRC 56/2015*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
- *PRC 56/2016*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
- *PRC 60/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
- *PRC 60/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
- *PRC 63/2015*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
- *PRC 63/2016*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
- *PRC 67/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
- *PRC 67/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
- *PRC 70/2015*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
- *PRC 70/2016*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
- *PRC 74/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 74/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
- *PRC 77/2015*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 77/2016*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
- *PRC 81/2015*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 81/2016*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
- *PRC 84/2015*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- *PRC 84/2016*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
- **Total (54 rows)**                                                        **38 102,80**           **38 102,80**
+ *PRC 4/2018*          Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 4/2019*          Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 7/2018*          Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 7/2019*          Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 11/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 11/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
+ *PRC 14/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 14/2019*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
+ *PRC 18/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 18/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
+ *PRC 21/2018*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 21/2019*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
+ *PRC 25/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 25/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
+ *PRC 28/2018*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 28/2019*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
+ *PRC 32/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 32/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
+ *PRC 35/2018*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 35/2019*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
+ *PRC 39/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 39/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 42/2018*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 42/2019*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 46/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 49/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 53/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 56/2018*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 60/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 63/2018*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 67/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 70/2018*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 74/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 77/2018*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 81/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 84/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
+ **Total (36 rows)**                                                        **25 316,80**           **25 316,80**
 ===================== ================= ================ ================= ================= ===== ===============
 <BLANKLINE>
-
 
 
 External references
@@ -308,61 +285,63 @@ Returnable VAT
 
 A purchases invoice with :term:`Returnable VAT`:
 
->>> invoice = rt.models.vat.VatAccountInvoice.objects.get(id=189)
+>>> invoice = rt.models.vat.VatAccountInvoice.objects.get(number=4, accounting_period__year__ref='2018')
 >>> print(invoice)
-PRC 21/2017
+PRC 4/2018
 >>> rt.show('vat.ItemsByInvoice', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================================ ============= ================= ================= ===== ==============
- Account                          Description   VAT class         Total excl. VAT   VAT   Total to pay
--------------------------------- ------------- ----------------- ----------------- ----- --------------
- (6020) Purchase of investments                 Normal VAT rate   204,50                  204,50
- **Total (1 rows)**                                               **204,50**              **204,50**
-================================ ============= ================= ================= ===== ==============
+========================== ============= ================= ================= ===== ==============
+ Account                    Description   VAT class         Total excl. VAT   VAT   Total to pay
+-------------------------- ------------- ----------------- ----------------- ----- --------------
+ (6040) Purchase of goods                 Normal VAT rate   1 199,90                1 199,90
+ **Total (1 rows)**                                         **1 199,90**            **1 199,90**
+========================== ============= ================= ================= ===== ==============
 <BLANKLINE>
 
 
 >>> rt.show('ledger.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================================ =============== ============ ============ ================= =========
- Account                          Partner         Debit        Credit       Match             Cleared
--------------------------------- --------------- ------------ ------------ ----------------- ---------
- (4400) Suppliers                 Donderweer BV                204,50       **PRC 21/2017**   No
- (4511) VAT returnable                            40,90                                       Yes
- (4512) VAT deductible                                         40,90                          Yes
- (6020) Purchase of investments                   204,50                                      Yes
-                                                  **245,40**   **245,40**
-================================ =============== ============ ============ ================= =========
+========================== ================= ============== ============== ================ =========
+ Account                    Partner           Debit          Credit         Match            Cleared
+-------------------------- ----------------- -------------- -------------- ---------------- ---------
+ (4400) Suppliers           Bäckerei Mießen                  1 199,90       **PRC 4/2018**   Yes
+ (4511) VAT returnable                        239,98                                         Yes
+ (4512) VAT deductible                                       239,98                          Yes
+ (6040) Purchase of goods                     1 199,90                                       Yes
+                                              **1 439,88**   **1 439,88**
+========================== ================= ============== ============== ================ =========
 <BLANKLINE>
 
+
 >>> print(invoice.total_base)
-204.50
+1199.90
 >>> print(invoice.total_vat)
 0.00
 >>> print(invoice.total_incl)
-204.50
+1199.90
 
-Note that intracom sales invoices have no :term:`returnable VAT` because they
-don't have any VAT at all:
+Note that above is for purchases only. Intracom *sales* invoices have no
+:term:`returnable VAT` because they don't have any VAT at all:
 
->>> invoice = rt.models.sales.VatProductInvoice.objects.get(id=199)
+>>> invoice = rt.models.sales.VatProductInvoice.objects.get(number=4, accounting_period__year__ref='2018')
 >>> invoice.vat_regime
 <VatRegimes.intracom:30>
 
 >>> rt.show('ledger.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================== =========================== ============== ============== ================= =========
- Account            Partner                     Debit          Credit         Match             Cleared
------------------- --------------------------- -------------- -------------- ----------------- ---------
- (4000) Customers   Bernd Brechts Bücherladen   1 599,92                      **SLS 10/2015**   No
- (7000) Sales                                                  1 599,92                         Yes
-                                                **1 599,92**   **1 599,92**
-================== =========================== ============== ============== ================= =========
+================== ================= ============ ============ ================ =========
+ Account            Partner           Debit        Credit       Match            Cleared
+------------------ ----------------- ------------ ------------ ---------------- ---------
+ (4000) Customers   Bäckerei Mießen   280,00                    **SLS 4/2018**   Yes
+ (7000) Sales                                      280,00                        Yes
+                                      **280,00**   **280,00**
+================== ================= ============ ============ ================ =========
 <BLANKLINE>
 
+
 >>> print(invoice.total_base)
-1599.92
+280.00
 >>> print(invoice.total_vat)
 0.00
 >>> print(invoice.total_incl)
-1599.92
+280.00

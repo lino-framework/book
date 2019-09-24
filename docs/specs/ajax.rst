@@ -62,7 +62,7 @@ will do the following AJAX call to get its data:
 
 >>> url = '/api/sales/InvoicesByJournal'
 >>> url += "?start=0&limit=25&fmt=json&rp=ext-comp-1135"
->>> url += "&pv=1&pv=&pv=&pv=&mt=24&mk=1"
+>>> url += "&pv=1&pv=&pv=&pv=&pv=&mt=24&mk=1"
 >>> res = test_client.get(url, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
 >>> res.status_code
 200
@@ -101,10 +101,10 @@ You have no permission to see this resource.
 
 The above URL is usually issued as an AJAX call.
 
-Lino recognizes AJAX calls 
+Lino recognizes AJAX calls
 by the extra HTTP header `HTTP_X_REQUESTED_WITH`
 having the value ``XMLHttpRequest``.
-For this simulation 
+For this simulation
 we must say this explicitly to Django's test client.
 
 >>> res = test_client.get(url, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
@@ -121,4 +121,3 @@ request without modifications." (`w3.org
 400
 >>> print(res.content.decode())
 PermissionDenied: As 000 (Anonym) you have no permission to run this action.
-
