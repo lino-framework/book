@@ -726,6 +726,34 @@ A **journal** is a named sequence of numbered *vouchers*.
 
         Added by :doc:`sepa`.
 
+
+.. class:: Journals
+
+  List of all Journals. Accessible via :menuselection:`Configure --> Accounting
+  --> Journals`.
+
+.. class:: JournalsOverview
+
+    The list of all Journals shown in the dashboard.
+
+    >>> rt.show(ledger.JournalsOverview)
+    ================================== ========= =========== ============ ============ ==========
+     Description                        Total     This year   This month   Unfinished   Warnings
+    ---------------------------------- --------- ----------- ------------ ------------ ----------
+     Sales invoices (SLS)               **72**    **15**      **6**
+     Sales credit notes (SLC)
+     Purchase invoices (PRC)            **105**   **21**      **7**
+     Bestbank Payment Orders (PMO)
+     Cash (CSH)
+     Bestbank (BNK)
+     Miscellaneous transactions (MSC)
+     Salaries (SAL)
+     **Total (8 rows)**                 **177**   **36**      **13**       **0**
+    ================================== ========= =========== ============ ============ ==========
+    <BLANKLINE>
+
+
+
 Debit or credit
 ===============
 
