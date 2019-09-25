@@ -736,6 +736,11 @@ A **journal** is a named sequence of numbered *vouchers*.
 
     The list of all Journals shown in the dashboard.
 
+    This is used as the primary dashboard item in :ref:`cosi`. It gives an idea
+    of how much data is in the database, and it adds links for quickly opening a
+    journal (which is after all one of the frequent actions in an accounting
+    application).
+
     >>> rt.show(ledger.JournalsOverview)
     ================================== ========= =========== ============ ============ ==========
      Description                        Total     This year   This month   Unfinished   Warnings

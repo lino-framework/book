@@ -30,5 +30,6 @@ echo PART3 : RESTORE SNAPSHOT TO $NEW
 cd $NEW
 . env/bin/activate
 python manage.py run snapshot2preview/restore2preview.py --noinput
+python manage.py collectstatic --noinput
 
 echo initdb_from_prod.sh finished `date` >> $LOGFILE

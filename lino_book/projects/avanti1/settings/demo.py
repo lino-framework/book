@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2017 Rumma & Ko Ltd
+# Copyright 2017-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """Defines and instantiates a demo version of a Lino Avanti Site."""
 
@@ -12,7 +12,6 @@ class Site(Site):
 
     the_demo_date = datetime.date(2017, 2, 15)
     languages = "en de fr"
-    with_language_history = True
 
 
 SITE = Site(globals())

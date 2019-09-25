@@ -13,6 +13,33 @@
 .. contents::
   :local:
 
+2019-09-25
+==========
+
+- Fixed :ticket:`3225` (saving a locked row does not unlock it)
+
+- Action preprocessors (the optional function given by
+  :attr:`lino.core.actions.Action.preprocessor`) can now optionally add an
+  attribute ``timeout`` to the returned object to ask Lino to wait
+  before sending the action's AJAX call.
+  This is used by :class:`lino_xl.lib.beid.BeIdReadCardAction` and
+  :class:`lino_xl.lib.beid.FindByBeIdAction` to make sure (or rather probable)
+  that eidreader has done its work before the action runs on the server. This is
+  needed to fix :ticket:`3225` which occurs when nginx is running with a single
+  worker process.
+
+
+2019-09-24
+==========
+
+Released Lino XL 19.9.6 and Lino 19.9.1
+for the :term:`site upgrade` of the :ref:`avanti` preview site.
+
+The :meth:`lino.core.site.Site.setup_logging` method now sets the level of
+Django's ``django.utils.autoreload`` logger to  ``INFO`` (to avoid the problem
+reported on `30554 <https://code.djangoproject.com/ticket/30554>`_).
+
+
 2019-09-23
 ==========
 
@@ -34,7 +61,7 @@ now shown in the detail of a response.
 2019-09-21
 ==========
 
-Fixed 'AnswersByQuestionRow' object has no attribute 'get_detail_action'.
+Fixed :message:`'AnswersByQuestionRow' object has no attribute 'get_detail_action'`.
 
 
 2019-09-20
