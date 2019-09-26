@@ -13,6 +13,34 @@
 .. contents::
   :local:
 
+2019-09-26
+==========
+
+:ticket:`3212` (Summary view for RecentComments) :
+:class:`lino.modlib.comments.RecentComments` now has a summary view that looks
+much better in the dashboard.  And it no longer stops displaying comments
+modified in the future. This is useful when you modify a comment in a demo
+database.
+
+This change caused a series of changes and optimizations:
+
+- Fixed a bug in :class:`lino.modlib.memo.Previewable` which caused it to not
+  use the :attr:`default_ui <lino.core.site.Site.default_ui>` when
+  :attr:`lino.modlib.memo.Plugin.front_end` is `None`.
+
+- When a :class:`BaseRequest <lino.core.requests.BaseRequest>` is spawned from a
+  parent, it now inherits the :attr:`request
+  <lino.core.requests.BaseRequest.request>` attribute (i.e. the incoming Django
+  HTTP request that caused the action request). This is needed so that
+  subrequests can decide whether to generate links using "javascript:" or not.
+  When displaying links in a comment on the exts dashboard, we prefer them to
+  remain under the same url.
+
+- The :fixture:`demo2` fixture for :mod:`lino.modlib.comments` generates a series
+  of fictive comments.  But until now they all had the real timestamp when the
+  :manage:`prep` command was run.  Now they have a fictive demo date and time.
+
+
 2019-09-25
 ==========
 

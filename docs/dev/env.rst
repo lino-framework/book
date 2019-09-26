@@ -76,7 +76,7 @@ your :xfile:`~/.bash_aliases` which looks like this::
         return -1
     }
 
-This adds a new shell command :command:`go` to your terminal:
+This adds a new shell command :cmd:`go` to your terminal:
 
 .. command:: go
 
