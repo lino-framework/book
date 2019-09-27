@@ -41,9 +41,9 @@ Models
         <lino.modlib.users.utils.AnonymousUser.authenticated>`.
 
    Fields:
-                   
+
     .. attribute:: username
-    
+
         Must be unique and cannot be empty.
 
     .. attribute:: initials
@@ -97,7 +97,7 @@ Models
         or the :attr:`username`.
 
     .. method:: def get_row_permission(self, ar, state, ba)
-                
+
         Only system managers may edit other users.
         See also :meth:`disabled_fields`.
 
@@ -107,28 +107,28 @@ Models
 
     .. attribute:: end_date
     .. attribute:: start_date
-    
+
         The site administrator can optionally specify a date when a
         user started or stopped to be active.
-        
+
         If :attr:`start_date` is given, then the user cannot sign in
         before that date.  If :attr:`end_date` is given, then the user
         cannot sign in after that date.
-        
+
         These fields are used for :doc:`userstats`.
 
-           
+
 .. class:: Authority
 
     An **authority** is when a user gives another user the right to
     "represent" them.
-   
+
     .. attribute:: user
 
         The user who gives the right of representation. author of this
         authority
 
-    .. attribute:: authorized 
+    .. attribute:: authorized
 
         The user who gets the right to represent the author
 
@@ -137,15 +137,15 @@ Tables
 ======
 
 .. class:: Users
-           
+
     Base class for all user tables.
 
 .. class:: AllUsers
-           
+
     Shows the list of all users on this site.
 
 .. class:: UsersOverview
-           
+
 
     A variant of :class:`Users` showing only active users and only some
     fields.  This is used on demo sites in :xfile:`admin_main.html` to
@@ -158,7 +158,7 @@ User types
 .. class:: UserTypes
 
     The list of user types available in this application.
-    
+
     You can see the user types available in your application via
     :menuselection:`Explorer --> System --> User Types`.
 
@@ -170,7 +170,7 @@ User types
 
     .. attribute:: admin
 
-           
+
 .. class:: UserType
 
     Base class for all user types.
@@ -203,7 +203,7 @@ User roles and their usage
 ==========================
 
 .. class:: UserRoles
-           
+
 This virtual table shows a list of user roles used in this application
 and which user type has them.
 
@@ -238,7 +238,7 @@ permissions are given to which user type.
 
 .. _current_user_type:
 
-                
+
 The current user type
 =====================
 
@@ -247,7 +247,7 @@ This is used by :mod:`lino.utils.jsgen`, i.e. when generating the
 
 
 
-           
+
 Plugin configuration
 ====================
 
@@ -260,7 +260,7 @@ Plugin configuration
         Whether this site offers :ref:`online registration
         <online_registration>` of new users.
 
-           
+
 
 Roles
 =====
@@ -272,7 +272,7 @@ Roles
 
 
 .. class:: AuthorshipTaker
-           
+
     Somebody who can help others by running :class:`TakeAuthorship`
     action.
 
@@ -283,7 +283,7 @@ Actions
 .. class:: SendWelcomeMail
 
     Send a welcome mail to this user.
-           
+
 
 .. class:: ChangePassword
 
@@ -307,9 +307,9 @@ Actions
 
     Open a window which asks for username and password and which
     authenticates as this user when submitted.
-           
+
 .. class:: SignOut
-           
+
     Sign out the current user and return to the welcome screen for
     anonymous visitors.
 
@@ -348,7 +348,7 @@ Mixins
         No longer used. The name of the field that defines the author
         of this object.
 
-           
+
 
 .. class:: UserAuthored
 
@@ -362,8 +362,8 @@ Mixins
 
         The author of this object.
         A pointer to :class:`lino.modlib.users.models.User`.
-        
-    
+
+
 .. class:: StartPlan
 
     .. attribute:: update_after_start
@@ -372,38 +372,44 @@ Mixins
 
 .. class:: UserPlan
 
-    Mixin for anything that represents some plan of a given user on a
-    given day.  The mixin makes sure that there is only one instance
-    per user.  This instance is considered of low value and to be
-    reused frequently.
+    Mixin for anything that represents a "plan" of a given user on a given day.
+
+    What a "plan" means, depends on the inheriting child.  Usage examples are an
+    invoicing plan (:class:`lino_xl.lib.invoicing.Plan`) or an accounting report
+    ():class:`lino_xl.ledger.Report`).
+
+    The mixin makes sure that there is only one database instance per user. A
+    plan is considered a low value database object to be reused frequently.
 
     Inherits from :class:`UserAuthored`.
 
-    Usage examples: :class:`lino_xl.lib.invoicing.Plan`,
-    :class:`lino_xl.ledger.Report`.
-
     .. attribute:: user
 
-         The user who manages this plan.
-         
+         The user who owns and uses this plan.
+
     .. attribute:: today
 
          This date of this plan.  This is automatically set to today
          each time the plan is called or updated.
-         
+
     .. attribute:: update_plan_button
+
+    .. method:: run_start_plan(self, user)
+
+        Return the database object for this plan and user.
+        or create
 
     .. method:: update_plan(self, ar)
 
         Implementing models should provide this method.
 
-    
+
 .. class:: UpdatePlan
 
-    Build a new list of suggestions.    
+    Build a new list of suggestions.
     This will remove all current suggestions.
-           
-           
+
+
 
 
 
@@ -415,4 +421,3 @@ Verify whether the help_text of the change_password action is set:
 >>> ba = rt.models.users.Users.get_action_by_name('change_password')
 >>> print(ba.action.help_text)
 Change the password of this user.
-

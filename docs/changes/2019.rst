@@ -13,6 +13,23 @@
 .. contents::
   :local:
 
+2019-09-27
+==========
+
+.. currentmodule:: lino_xl.lib.sheets
+
+:meth:`lino.modlib.users.UserPlan.run_start_plan` didn't like it when it found
+more than one instances of a plan for a given user.  Now it simply deletes all
+existing reports all in that case.  In :mod:`lino_book.projects.cosi_ee` it said
+:message:`MultipleObjectsReturned: get() returned more than one Report -- it
+returned 2!` (:ticket:`3232`).
+
+Fixed a bug in :mod:`lino_xl.lib.sheets` : the
+:attr:`allow_cascaded_delete <lino.core.model.Model.allow_cascaded_delete>` of
+the report items weren't set correctly. When you inadvertently try to delete a
+partner who is mentioned in an accounting report, you want Lino to refuse your
+action (not to remove the entry from the report).
+
 2019-09-26
 ==========
 

@@ -174,8 +174,8 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner, sheets.PartnerEntry.partner
-  - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, courses.Course.partner, households.Household.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner
+  - PROTECT : ana.AnaAccountInvoice.partner, bevats.Declaration.partner, clients.ClientContact.client, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, sheets.PartnerEntry.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : tera.Client.person_ptr
   - PROTECT : cal.Guest.partner, cal.Room.contact_person, clients.ClientContact.contact_person, contacts.Role.person, courses.Enrolment.pupil, courses.Line.contact_person, excerpts.Excerpt.contact_person, healthcare.Situation.client, households.Member.person, notes.Note.contact_person
@@ -219,8 +219,7 @@ behaviour. See also :doc:`/dev/delete`.
 - invoicing.Tariff :
   - PROTECT : products.Product.tariff
 - ledger.Account :
-  - CASCADE : sheets.AccountEntry.account
-  - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
+  - PROTECT : ana.InvoiceItem.account, finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, sheets.AccountEntry.account, vat.InvoiceItem.account
 - ledger.AccountingPeriod :
   - PROTECT : bevats.Declaration.end_period, bevats.Declaration.start_period, ledger.Voucher.accounting_period, sheets.Report.end_period, sheets.Report.start_period
 - ledger.FiscalYear :
@@ -253,10 +252,9 @@ behaviour. See also :doc:`/dev/delete`.
 - sepa.Account :
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
 - sheets.Item :
-  - CASCADE : sheets.ItemEntry.item
-  - PROTECT : ledger.Account.sheet_item
+  - PROTECT : ledger.Account.sheet_item, sheets.ItemEntry.item
 - sheets.Report :
-  - PROTECT : sheets.AccountEntry.report, sheets.AnaAccountEntry.report, sheets.ItemEntry.report, sheets.PartnerEntry.report
+  - CASCADE : sheets.AccountEntry.report, sheets.AnaAccountEntry.report, sheets.ItemEntry.report, sheets.PartnerEntry.report
 - teams.Team :
   - PROTECT : courses.Course.team, users.User.team
 - tera.Client :
