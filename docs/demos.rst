@@ -24,12 +24,17 @@ demo data.
 .. _team: http://team.lino-framework.org/
 
 
-New demo sites:
+Screen casts :
 
-- https://cosi-ee-react.new.lino-framework.org
-- https://cosi-ee-extjs.new.lino-framework.org
-- https://team.new.lino-framework.org
-- https://team-react.new.lino-framework.org
+- `Lino Così, das kleine Buchhaltungsprogramm <https://youtu.be/yT3FEuCEFWU>`__
+
+Demo sites:
+
+- Lino Così : `ExtJS <https://cosi-ee-extjs.new.lino-framework.org>`__ / `React <https://cosi-ee-react.new.lino-framework.org>`__
+- Lino Noi : `ExtJS <https://team.new.lino-framework.org>`__ / `React <https://team-react.new.lino-framework.org>`__
+
+
+The remaining demos are rather old.
 
 Of general interest:
 

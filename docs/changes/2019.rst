@@ -13,6 +13,21 @@
 .. contents::
   :local:
 
+2019-09-30
+==========
+
+:class:`lino_xl.lib.polls.AnswersByResponsePrint` no longer forgets to print
+entries that have only a remark.
+
+:meth:`lino.core.requests.BaseRequest.show` has a new optional keyword argument
+`display_mode` which can be used to ask a summary for a table that does not show
+as summary by default.
+
+
+The three tables based on :class:`lino_xl.lib.cv.HistoryByPerson` now have a new
+kind of summary view which displays them as a bullet list where each item
+includes the field names.
+
 2019-09-27
 ==========
 
