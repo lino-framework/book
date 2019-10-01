@@ -38,6 +38,8 @@ Examples used by a tutorial:
    dumps
    combo
    polly
+   polls
+   polls2
    watch
    watch2
    workflows

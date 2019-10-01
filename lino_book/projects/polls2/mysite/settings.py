@@ -7,6 +7,8 @@ class Site(Site):
 
     demo_fixtures = "demo demo2"
 
+    project_name = "pools2_mysite"  # avoid name clash when LINO_CACHE_ROOT is set
+
     def get_installed_apps(self):
         yield 'polls'
         yield 'lino.modlib.users'
