@@ -4,5 +4,7 @@ import sys
 
 if __name__ == "__main__":
     os.environ["DJANGO_SETTINGS_MODULE"] = "mysite.settings"
+    #Set the LINO_CACHE_ROOT to use an different value than others demo projects (polls)
+    os.environ["LINO_CACHE_ROOT"] = os.path.expanduser("~")
     from django.core.management import execute_from_command_line
     execute_from_command_line(sys.argv)
