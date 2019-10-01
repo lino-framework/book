@@ -13,6 +13,15 @@
 .. contents::
   :local:
 
+2019-10-01
+==========
+
+Fixed a :message:`NameError: name 'unicode' is not defined` in
+:mod:`lino_xl.lib.outbox`.
+
+Released versions 19.10.0 of Lino and XL.
+
+
 2019-09-30
 ==========
 
