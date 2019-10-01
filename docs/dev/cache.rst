@@ -2,61 +2,65 @@
 About cached temporary data
 ===========================
 
-When you run a Lino application, Lino needs a place for storing
-temporary files like the SQLite database file, static files and
-dynamically generated files of miscellaneous types like `.js`, `.pdf`,
-`.xls`.
+When you run a Lino application, Lino needs a place for storing temporary files
+like the SQLite database file, static files and dynamically generated files of
+miscellaneous types like `.js`, `.pdf`, `.xls`.
 
-In a normal development environment this is simply below the project
-directory, and those cache files are simply listed in the
-:xfile:`.gitignore` file.  In certain environments it is not possible
-to write to the code repository.
+In a normal development environment this is simply below the project directory,
+and those cache files are simply listed in the :xfile:`.gitignore` file.
+
+But e.g. on :ref:`travis` it is not allowed to write to the code repository.
 
 In such situations you create an empty directory where you have write
-permission, and then set the :envvar:`LINO_CACHE_ROOT` environment
-variable to point to it.
+permission, and then set the :envvar:`LINO_CACHE_ROOT` environment variable to
+point to it.
 
-The safest place for this directory is below your virtual
-environment::
+The safest place for this directory is below your virtual environment::
 
   $ cd ~/virtualenvs/a
   $ mkdir lino_cache
 
-And then to add the following line to your
-:file:`~/virtualenvs/a/bin/activate` script::
+And then to add the following line to your :file:`~/virtualenvs/a/bin/activate`
+script::
 
    export LINO_CACHE_ROOT=$VIRTUAL_ENV/lino_cache
 
-Don't forget to re-run the script in order to activate these changes.
-You can verify whether the variable is set using this command::
+Don't forget to re-run the script in order to activate these changes. You can
+verify whether the variable is set using this command::
 
     $ set | grep LINO
 
 
 .. envvar:: LINO_CACHE_ROOT
 
-If an environment variable :envvar:`LINO_CACHE_ROOT` is set, then the
-cached data of demo projects (e.g. the :xfile:`default.db` files and
-the :xfile:`media` directories) are not written into the file tree of
-the source code repository but below the given directory.  See
-:attr:`atelier.invlib.env.demo_projects`.
+If an environment variable :envvar:`LINO_CACHE_ROOT` is set, then the cached
+data of a Lino project (e.g. the :xfile:`default.db` files and the
+:xfile:`media` directory) are not written into the file tree of the source code
+repository but below the given directory.
 
-For example you can add the following line to your :file:`.bashrc`
-file::
+For example you can add the following line to your :file:`.bashrc` file::
 
   export LINO_CACHE_ROOT=/home/luc/tmp/cache
 
 Note that the path should be absolute and without a ``~``.
 
 
+When you use a :envvar:`LINO_CACHE_ROOT` it can happen that the names of your
+demo projects clash.  In that case you can manually set a  different
+:attr:`project_name <lino.core.site.Site.project_name>`
+
+See also :attr:`lino.core.site.Site.cache_dir`.
+
+
 When to update your static files
 ================================
 
-Lino comes with over 4000 static files, and together they take about
-50 MB of hard disk storage. To manage them, it uses Django's
-`staticfiles
-<https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/>`_ app
-which provides the :manage:`collectstatic` command.
+(This section is probably obsolete. Don't read.)
+
+Lino comes with over 4000 static files, and together they take about 50 MB of
+hard disk storage. To manage them, it uses Django's `staticfiles
+<https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/>`_ app which
+provides the :manage:`collectstatic` command.
 
 .. management_command :: collectstatic
 
@@ -75,22 +79,22 @@ server automatically serves them at the location defined in
 Lino automatically sets :setting:`STATIC_ROOT` to a directory named
 :file:`collectstatic` under your :envvar:`LINO_CACHE_ROOT`.
 
-As we said in :doc:`hello/index`, before you can see your
-first Lino application running in a web server on your machine, you
-must run Django's :manage:`collectstatic` command::
+As we said in :doc:`hello/index`, before you can see your first Lino application
+running in a web server on your machine, you must run Django's
+:manage:`collectstatic` command::
 
     $ python manage.py collectstatic
 
 Theoretically you need to do this only for your first local Lino
 project, but you should run :manage:`collectstatic` again:
 
-- after a Lino upgrade 
+- after a Lino upgrade
 - when you changed your :envvar:`LINO_CACHE_ROOT`
 - if you use a plugin with static files for the first time
 
 The following built-in plugins have static files:
 
-- :mod:`lino.modlib.lino`
+- :mod:`lino`
 - :mod:`lino.modlib.extjs`
 - :mod:`lino.modlib.extensible`
 - :mod:`lino.modlib.bootstrap3`
@@ -100,7 +104,6 @@ The following built-in plugins have static files:
 
 You can run the :manage:`collectstatic` command as often as you want.
 So if you are in doubt, just run it again.
-
 
 
 Site settings
@@ -150,4 +153,3 @@ Some Django settings related to this topic:
 
     Used e.g. by :mod:`lino.utils.media` :mod:`lino.modlib.extjs` and
     :mod:`lino.mixins.printable`.
-

@@ -45,7 +45,7 @@ Django:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS
-`initdb std demo demo2 checksummaries` started on database .../book/lino_book/projects/migs/settings/default.db.
+`initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: about, appypod, bootstrap3, cal, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extensible, extjs, gfks, github, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions
@@ -76,7 +76,7 @@ but in a different way.  Django now considers all Lino plugins as "migrated":
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS
-`initdb std demo demo2 checksummaries` started on database /.../lino_book/projects/migs/settings/default.db.
+`initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: staticfiles
   Apply all migrations: cal, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
