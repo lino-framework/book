@@ -131,6 +131,10 @@ lino_book.projects.polls
 lino_book.projects.polls.polls
 lino_book.projects.polls.polls.fixtures
 lino_book.projects.polls.mysite
+lino_book.projects.polls2
+lino_book.projects.polls2.polls
+lino_book.projects.polls2.polls.fixtures
+lino_book.projects.polls2.mysite
 lino_book.projects.polly
 lino_book.projects.polly.settings
 lino_book.projects.polly.tests
