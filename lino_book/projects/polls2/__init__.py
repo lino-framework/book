@@ -1,1 +1,1 @@
-"""See :doc:`/dev/polls/index.rst`."""
+"""See :doc:`/dev/polls/index`."""
