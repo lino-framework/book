@@ -4,7 +4,7 @@ from lino.projects.std.settings import *
 class Site(Site):
 
     title = "Cool Polls"
-    project_name = "Polls"
+    project_name = "My First Polls"
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
