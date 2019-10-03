@@ -19,3 +19,4 @@
 -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
 # git+https://github.com/khchine5/django-mailbox.git#egg=django-mailbox
 # git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
+-e git+https://github.com/lino-framework/eidreader.git#egg=eidreader  # required to build the book.
