@@ -169,12 +169,12 @@ def country2kw(row, kw):
                 zip_code__exact=zip_code,
             )
             kw.update(city=city)
-        except Place.DoesNotExist, e:
+        except Place.DoesNotExist as e:
             city = Place(zip_code=zip_code, name=zip_code, country=country)
             city.save()
             kw.update(city=city)
             #~ logger.warning("%s-%s : %s",row['PAYS'],row['CP'],e)
-        except Place.MultipleObjectsReturned, e:
+        except Place.MultipleObjectsReturned as e:
             dblogger.warning("%s-%s : %s", row['PAYS'], row['CP'], e)
 
 
@@ -207,20 +207,20 @@ def pxs2person(row, person):
         try:
             person.health_insurance = Company.objects.get(
                 pk=ADR_id(row['IDMUT']))
-        except ValueError, e:
+        except ValueError as e:
             dblogger.warning(u"%s : invalid health_insurance %r",
                              obj2str(person), row['IDMUT'])
-        except Company.DoesNotExist, e:
+        except Company.DoesNotExist as e:
             dblogger.warning(u"%s : health_insurance %s not found",
                              obj2str(person), row['IDMUT'])
 
     if row['APOTHEKE']:
         try:
             person.pharmacy = Company.objects.get(pk=int(row['APOTHEKE']))
-        except ValueError, e:
+        except ValueError as e:
             dblogger.warning(u"%s : invalid pharmacy %r",
                              obj2str(person), row['APOTHEKE'])
-        except Company.DoesNotExist, e:
+        except Company.DoesNotExist as e:
             dblogger.warning(u"%s : pharmacy %s not found",
                              obj2str(person), row['APOTHEKE'])
 
@@ -242,7 +242,7 @@ def try_full_clean(i):
     while True:
         try:
             i.full_clean()
-        except ValidationError, e:
+        except ValidationError as e:
             if not hasattr(e, 'message_dict'):
                 raise
             for k in e.message_dict.keys():
