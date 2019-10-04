@@ -24,7 +24,6 @@ demo project:
 >>> dd.plugins.sales
 lino_voga.lib.sales
 
-
 Here are all our sales invoices:
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref('SLS')
@@ -58,19 +57,8 @@ Here are all our sales invoices:
 ===================== ============ ============ =================================== =============== ============== ================
 <BLANKLINE>
 
-The :class:`lino_xl.lib.sales.DueInvoices` table shows a list of
-invoices that aren't (completeley) paid.  The following ones are there
-obviously due to a payment difference.
-
->>> rt.show(sales.DueInvoices)
-==================== =========== ======= ============== ============== ================ ================
- Due date             Reference   No.     Partner        Total to pay   Balance before   Balance to pay
--------------------- ----------- ------- -------------- -------------- ---------------- ----------------
- 01/04/2015           SLS         3       Engels Edgar   48,00                           0,72
- **Total (1 rows)**               **3**                  **48,00**                       **0,72**
-==================== =========== ======= ============== ============== ================ ================
-<BLANKLINE>
-
+The :class:`lino_xl.lib.sales.DueInvoices` table shows a list of invoices that
+aren't (completeley) paid.  Example see :doc:`/specs/cosi/apc`.
 
 Printing invoices
 =================
@@ -97,8 +85,6 @@ Your printable document (filename sales.VatProductInvoice-125.pdf) should now op
 
 Note that this test should fail if you run the test suite without a
 LibreOffice server running.
-
-
 
 
 >>> rt.show(invoicing.SalesRules)

@@ -12,6 +12,7 @@ It has individual subsections for every Lino application maintained by the Lino
 team.  It also has general topic guides and plugin descriptions for
 functionalities that are shared among several applications.
 
+.. _specs.core:
 
 Core plugins
 ============
@@ -45,6 +46,8 @@ might be moved to :mod:`lino_xl` some day:
    ssin
    export_excel
    tinymce
+
+.. _specs.xl:
 
 Plugins of the Extensions library
 =================================

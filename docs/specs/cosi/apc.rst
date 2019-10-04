@@ -134,18 +134,18 @@ And as we can see, our worker Robin owes us 9784,48 € because he took money fo
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin)
 **7 offene Bewegungen (9784.48 €)**
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin, nosummary=True)
-========== =============== ===================================================== ============== ======== ================= ===========
- Valuta     Beleg           Beschreibung                                          Debit          Kredit   Match             Beglichen
----------- --------------- ----------------------------------------------------- -------------- -------- ----------------- -----------
- 08.03.15   *SLS 11/2015*   *(4550) Internal clearings* / *Radermacher Inge*      600,00                  **SLS 11/2015**   Nein
- 07.01.15   *SLS 1/2015*    *(4550) Internal clearings* / *Radermacher Alfons*    280,00                  **SLS 1/2015**    Nein
- 07.11.14   *SLS 49/2014*   *(4550) Internal clearings* / *Lazarus Line*          525,00                  **SLS 49/2014**   Nein
- 10.09.14   *SLS 38/2014*   *(4550) Internal clearings* / *Ingels Irene*          2 039,82                **SLS 38/2014**   Nein
- 11.06.14   *SLS 29/2014*   *(4550) Internal clearings* / *Evertz Bernd*          2 349,81                **SLS 29/2014**   Nein
- 07.05.14   *SLS 19/2014*   *(4550) Internal clearings* / *Bastiaensen Laurent*   2 999,85                **SLS 19/2014**   Nein
- 10.02.14   *SLS 9/2014*    *(4550) Internal clearings* / *Hans Flott & Co*       990,00                  **SLS 9/2014**    Nein
-                            **Saldo 9784.48 (7 Bewegungen)**                      **9 784,48**
-========== =============== ===================================================== ============== ======== ================= ===========
+========== =============== ====================================================================== ============== ======== ================= ===========
+ Valuta     Beleg           Beschreibung                                                           Debit          Kredit   Match             Beglichen
+---------- --------------- ---------------------------------------------------------------------- -------------- -------- ----------------- -----------
+ 08.03.15   *SLS 11/2015*   *(4550) Internal clearings* | *Radermacher Inge* | *Dubois Robin*      600,00                  **SLS 11/2015**   Nein
+ 07.01.15   *SLS 1/2015*    *(4550) Internal clearings* | *Radermacher Alfons* | *Dubois Robin*    280,00                  **SLS 1/2015**    Nein
+ 07.11.14   *SLS 49/2014*   *(4550) Internal clearings* | *Lazarus Line* | *Dubois Robin*          525,00                  **SLS 49/2014**   Nein
+ 10.09.14   *SLS 38/2014*   *(4550) Internal clearings* | *Ingels Irene* | *Dubois Robin*          2 039,82                **SLS 38/2014**   Nein
+ 11.06.14   *SLS 29/2014*   *(4550) Internal clearings* | *Evertz Bernd* | *Dubois Robin*          2 349,81                **SLS 29/2014**   Nein
+ 07.05.14   *SLS 19/2014*   *(4550) Internal clearings* | *Bastiaensen Laurent* | *Dubois Robin*   2 999,85                **SLS 19/2014**   Nein
+ 10.02.14   *SLS 9/2014*    *(4550) Internal clearings* | *Hans Flott & Co* | *Dubois Robin*       990,00                  **SLS 9/2014**    Nein
+                            **Saldo 9784.48 (7 Bewegungen)**                                       **9 784,48**
+========== =============== ====================================================================== ============== ======== ================= ===========
 <BLANKLINE>
 
 
@@ -228,3 +228,28 @@ and the same request now returns all 49 data rows:
 >>> result = json.loads(res.content.decode('utf-8'))
 >>> print(len(result['rows']))
 49
+
+This site shows a series of due sales invoices
+(:class:`lino_xl.lib.sales.DueInvoices`).
+
+>>> rt.show(sales.DueInvoices)
+===================== =========== ========= ===================== =============== ================ ================
+ Due date              Reference   No.       Partner               Total to pay    Balance before   Balance to pay
+--------------------- ----------- --------- --------------------- --------------- ---------------- ----------------
+ 09/02/2014            SLS         9         Hans Flott & Co       990,00
+ 06/05/2014            SLS         19        Bastiaensen Laurent   2 999,85
+ 10/06/2014            SLS         29        Evertz Bernd          2 349,81
+ 09/09/2014            SLS         38        Ingels Irene          2 039,82
+ 06/11/2014            SLS         49        Lazarus Line          525,00
+ 06/01/2015            SLS         1         Radermacher Alfons    280,00
+ 18/02/2015            SLS         4         Radermacher Daniela   1 199,85                         59,99
+ 07/03/2015            SLS         11        Radermacher Inge      600,00
+ 08/03/2015            SLS         12        Radermacher Jean      4 355,65                         4 355,65
+ 16/03/2015            SLS         13        di Rupo Didier        639,92                           639,92
+ 20/03/2015            SLS         14        da Vinci David        465,96                           465,96
+ 21/03/2015            SLS         15        da Vinci David        770,00          465,96           770,00
+ 05/04/2015            SLS         10        Radermacher Hedi      525,00                           525,00
+ 13/05/2015            SLS         8         Radermacher Guido     2 349,81                         2 349,81
+ **Total (14 rows)**               **232**                         **20 090,67**   **465,96**       **9 166,33**
+===================== =========== ========= ===================== =============== ================ ================
+<BLANKLINE>

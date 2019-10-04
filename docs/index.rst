@@ -10,15 +10,14 @@ framework`. For non-technical documentation about Lino see the :ref:`cg`.
    :maxdepth: 2
 
    /dev/about
-   /dev/framework
 
    /demos
    /blog
 
-   User Guide </guide/index>
    Developer Guide </dev/index>
    Contributor Guide </team/index>
    Administrator Guide </admin/index>
+   User Guide </guide/index>
 
    Specs </specs/index>
    API </api/index>
@@ -36,3 +35,4 @@ framework`. For non-technical documentation about Lino see the :ref:`cg`.
    /dev/quick/index
    /dev/getstarted
    /community/index
+   /dev/framework

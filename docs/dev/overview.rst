@@ -10,7 +10,7 @@ General framework repositories
 - The core of the framework is in a package called :mod:`lino` which
   includes the :doc:`/specs/modlib`.
 
-- The :mod:`lino_xl` package contains the :doc:`xl`.
+- The :mod:`lino_xl` package contains the :ref:`xl`.
 
 - The :mod:`getlino` package contains the Lino installer. See :ref:`getlino`.
 

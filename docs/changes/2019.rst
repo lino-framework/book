@@ -13,6 +13,20 @@
 .. contents::
   :local:
 
+2019-10-03
+==========
+
+Fixed :ticket:`3248` (NameError: name 'force_text' is not defined).
+
+
+2019-10-02
+==========
+
+Moved callback management into a separate module :mod:`lino.core.callbacks`. One
+benefit is that the code is organized in a better way. The main goal is to get
+callbacks also work when running under nginx with multiple threads
+(:ticket:`3228`).
+
 2019-10-01
 ==========
 
@@ -31,7 +45,6 @@ entries that have only a remark.
 :meth:`lino.core.requests.BaseRequest.show` has a new optional keyword argument
 `display_mode` which can be used to ask a summary for a table that does not show
 as summary by default.
-
 
 The three tables based on :class:`lino_xl.lib.cv.HistoryByPerson` now have a new
 kind of summary view which displays them as a bullet list where each item

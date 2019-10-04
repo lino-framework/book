@@ -17,21 +17,33 @@
 This document describes what we call **financial vouchers** as
 implemented by the :mod:`lino_xl.lib.finan` plugin.
 
-There are three kinds of financial vouchers:
-
-- *bank statements* are these documents you receive from your bank and
-  which shows the activities on your account.
- 
-- A *payment order* is a document where you ask your bank to pay some
-  money to somebody else.
-  
-- a *journal entry* is when you move money around internally, for your
-  own acounting. For example...
-
-It is based on the following other specifications:
+This document is based on the following other specifications:
 
 - :ref:`cosi.specs.accounting`
 - :ref:`cosi.specs.ledger`
+
+There are three kinds of financial vouchers:
+
+.. glossary::
+
+  Bank statement
+
+    A voucher you receive from your bank and which reports the transactions
+    that occurred on a given bank account during a given period.
+
+  Payment order
+
+    A voucher you send to your bank asking them to execute a series of payments
+    (outgoing transactions) to third-party partners from a given bank account.
+
+    See `About payment orders`_.
+
+  Journal entry
+
+    A voucher where you declare that you move money around internally, for your
+    own accounting.
+
+    French: "operations diverse"
 
 Table of contents:
 
@@ -44,19 +56,46 @@ Table of contents:
 
 .. currentmodule:: lino_xl.lib.finan
 
+About payment orders
+====================
+
+To configure a journal of :term:`payment orders <payment order>`, you set the following fields:
+
+- :attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>` should be
+  :attr:`lino_xl.lib.ledger.VoucherTypes.bank_po`
+
+- :attr:`partner <lino_xl.lib.ledger.Journal.partner>` ("Organization") should
+  point to your bank.
+
+- :attr:`dc <lino_xl.lib.ledger.Journal.dc>` (Primary booking direction) should
+  be DEBIT.
+
+- :attr:`account <lino_xl.lib.ledger.Journal.account>` should be the
+  :term:`ledger account` marked as :attr:`CommonAccounts.pending_po
+  <lino_xl.lib.ledger.CommonAccounts.pending_po>`.
+
+A payment order clears the invoices it asks to pay.  Which means for example
+that a provider might tell you that some invoice isn't yet paid, although your
+MovementsByPartner says that it is paid. The explanation for this difference is
+simply that the payment order hasn't yet been fully executed by your or their
+bank.
+
+Lino books the **sum of a payment order** into a single counter-movement that
+will *debit* your bank's partner account.  Your bank becomes a creditor (you owe
+them the sum of the payments) and you expect this amount to be cleared by an
+expense in a :term:`bank statement` which confirms that the bank executed your
+payment order.
 
 Database models
 ===============
 
 .. class:: JournalEntry
-           
-    This is the model for "journal entries" ("operations diverses").
+
+    Django model to represent a :term:`journal entry`.
 
 .. class:: BankStatement
 
-    A **bank statement** is a document issued by the bank, which
-    reports all transactions which occured on a given account during a
-    given period.
+    Django model to represent a :term:`bank statement`.
 
     .. attribute:: balance1
 
@@ -67,18 +106,17 @@ Database models
         The new (or end) balance.
 
 .. class:: PaymentOrder
-           
-    A **payment order** is when a user instructs a bank to execute a
-    series of outgoing transactions from a given bank account.
+
+    Django model to represent a :term:`payment order`.
 
     .. attribute:: entry_date
 
         The date of the ledger entry.
-        
+
     .. attribute:: execution_date
 
         The execution date of payment order. If this is empty, Lino
-        assumes the :attr:`entry_date` when writing the 
+        assumes the :attr:`entry_date` when writing the
         :xfile:`pain_001.xml` file.
 
     .. attribute:: total
@@ -88,25 +126,24 @@ Database models
 
 
 .. class:: JournalEntryItem
-           
-    An item of a :class:`JournalEntry`.
+
+    Django model to represent an individual item of a :term:`journal entry`.
 
 .. class:: BankStatementItem
-           
-    An item of a :class:`BankStatement`.
+
+    Django model to represent an individual item of a :term:`bank statement`.
 
 .. class:: PaymentOrderItem
 
-    An item of a :class:`PaymentOrder`.
-    
+    Django model to represent an individual item of a :term:`payment order`.
+
 
 Model mixins
 ============
 
-.. class:: FinancialVoucher    
+.. class:: FinancialVoucher
 
     Base class for all financial vouchers:
-    :class:`Grouper`,
     :class:`JournalEntry`,
     :class:`PaymentOrder` and
     :class:`BankStatement`.
@@ -128,9 +165,9 @@ Model mixins
 .. class:: DatedFinancialVoucher
     A :class:`FinancialVoucher` whose items have a :attr:`date` field.
 
-    
+
 .. class:: FinancialVoucherItem
-    
+
     The base class for the items of all types of financial vouchers
     (:class:`FinancialVoucher`).
 
@@ -147,7 +184,7 @@ Model mixins
     .. attribute:: partner
 
         The partner account to be used in the primary booking.
-    
+
         In Lino Welfare this field is optional and used only for
         transactions whose *recipient* is different from the *client*.
         When empty, Lino will book to the **client**
@@ -187,12 +224,12 @@ Model mixins
 
         The value date of this item.
 
-           
+
 Plugin configuration
 ====================
 
 .. class:: Plugin
-      
+
 
     This :class:`Plugin <lino.core.plugin.Plugin>` class adds some
     entries to the Explorer menu.  It contains the following
@@ -219,39 +256,39 @@ Plugin configuration
             ...
             SITE.plugins.finan.suggest_future_vouchers = True
 
-           
+
 Tables
 ======
 
 .. class:: FinancialVouchers
-           
+
     Base class for the default tables of all other financial voucher
     types (:class:`JournalEntries` , :class:`PaymentOrders` and
     :class:`BankStatements`).
 
 .. class:: JournalEntries
-           
+
 .. class:: PaymentOrders
-           
+
     The base table of all tables on :class:`PaymentOrder`.
-    
+
 .. class:: BankStatements
 
     The base table of all tables on :class:`BankStatement`.
-           
+
 
 .. class:: ItemsByVoucher
-           
+
     The base table of all tables which display the items of a given
     voucher.
 
 .. class:: ItemsByJournalEntry
 .. class:: ItemsByPaymentOrder
 .. class:: ItemsByBankStatement
-    
-           
+
+
 .. class:: SuggestionsByVoucher
-           
+
     Shows the suggested items for a given voucher, with a button to
     fill them into the current voucher.
 
@@ -267,36 +304,36 @@ Tables
     <lino_xl.lib.ledger.utils.DueMovement>` object.
 
 .. class:: SuggestionsByJournalEntry
-           
-    A :class:`SuggestionsByVoucher` table for a :class:`JournalEntry`.
-    
-.. class:: SuggestionsByPaymentOrder
-           
-    A :class:`SuggestionsByVoucher` table for a :class:`PaymentOrder`.
-    
-.. class:: SuggestionsByBankStatement
-           
-    A :class:`SuggestionsByVoucher` table for a :class:`BankStatement`.
-    
 
-.. class:: SuggestionsByVoucherItem    
+    A :class:`SuggestionsByVoucher` table for a :class:`JournalEntry`.
+
+.. class:: SuggestionsByPaymentOrder
+
+    A :class:`SuggestionsByVoucher` table for a :class:`PaymentOrder`.
+
+.. class:: SuggestionsByBankStatement
+
+    A :class:`SuggestionsByVoucher` table for a :class:`BankStatement`.
+
+
+.. class:: SuggestionsByVoucherItem
 
     Displays the payment suggestions for a given voucher *item*, with
     a button to fill them into the current item (creating additional
     items if more than one suggestion was selected).
 
-    
-    
+
+
 .. class:: SuggestionsByJournalEntryItem
 
 .. class:: SuggestionsByPaymentOrderItem
-           
+
     A :class:`SuggestionsByVoucherItem` table for a
     :class:`PaymentOrderItem`.
 
 
 .. class:: SuggestionsByBankStatementItem
-           
+
     A :class:`SuggestionsByVoucherItem` table for a
     :class:`BankStatementItem`.
 
@@ -305,12 +342,12 @@ Actions
 
 
 .. class:: ShowSuggestions
-           
+
     Show suggested items for this voucher.
 
 .. class:: SuggestionsByVoucher
 
-.. class:: FillSuggestionsToVoucher           
+.. class:: FillSuggestionsToVoucher
 
     Fill selected suggestions from a SuggestionsByVoucher table into a
     financial voucher.
@@ -318,18 +355,17 @@ Actions
     This creates one voucher item for each selected row.
 
 .. class:: FillSuggestionsToVoucherItem
-           
+
     Fill the selected suggestions as items to the voucher. The *first*
     selected suggestion does not create a new item but replaces the
     item for which it was called.
-    
+
 
 Template files
 ==============
-    
+
 .. xfile:: pain_001.xml
 
    Used for writing a SEPA payment initiation.
 
    :file:`finan/PaymentOrder/pain_001.xml`
-        

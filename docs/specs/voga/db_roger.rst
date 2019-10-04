@@ -60,7 +60,7 @@ The database structure
  excerpts.Excerpt           excerpts.Excerpts              11        ...
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        142
+ finan.BankStatementItem    finan.BankStatementItemTable   10        164
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
@@ -76,8 +76,8 @@ The database structure
  ledger.FiscalYear          ledger.FiscalYears             5         7
  ledger.Journal             ledger.Journals                24        9
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
- ledger.MatchRule           ledger.MatchRules              3         19
- ledger.Movement            ledger.Movements               12        1000
+ ledger.MatchRule           ledger.MatchRules              3         23
+ ledger.Movement            ledger.Movements               12        926
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         268
  lists.List                 lists.Lists                    7         8

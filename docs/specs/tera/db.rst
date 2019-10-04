@@ -78,11 +78,11 @@ The database models
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
  finan.BankStatement         finan.BankStatements           16        4
- finan.BankStatementItem     finan.BankStatementItemTable   10        243
+ finan.BankStatementItem     finan.BankStatementItemTable   10        261
  finan.JournalEntry          finan.FinancialVouchers        14        0
  finan.JournalEntryItem      finan.JournalEntryItemTable    10        0
  finan.PaymentOrder          finan.PaymentOrders            15        4
- finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        40
+ finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        28
  gfks.HelpText               gfks.HelpTexts                 4         2
  healthcare.Plan             healthcare.Plans               4         5
  healthcare.Rule             healthcare.Rules               6         0
@@ -100,8 +100,8 @@ The database models
  ledger.FiscalYear           ledger.FiscalYears             5         6
  ledger.Journal              ledger.Journals                24        9
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
- ledger.MatchRule            ledger.MatchRules              3         19
- ledger.Movement             ledger.Movements               13        930
+ ledger.MatchRule            ledger.MatchRules              3         23
+ ledger.Movement             ledger.Movements               13        900
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         256
  lists.List                  lists.Lists                    7         8
@@ -122,7 +122,7 @@ The database models
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
  sheets.ItemEntry            sheets.ItemEntryTable          7         15
- sheets.PartnerEntry         sheets.PartnerEntryTable       8         44
+ sheets.PartnerEntry         sheets.PartnerEntryTable       8         45
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2

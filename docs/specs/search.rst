@@ -103,16 +103,18 @@ The following request caused problems before 20180920 (:ticket:`2544`
 SiteSearch fails when it finds a name containing "&")
 
 >>> rt.show('about.SiteSearch', quick_search="rumma")
-================================ =================================
- Description                      Matches
--------------------------------- ---------------------------------
- *Rumma & Ko OÜ* (Partner)        name:**Rumma** & Ko OÜ
- *Rumma & Ko OÜ* (Organization)   name:**Rumma** & Ko OÜ
- *SLS 1/2015* (Sales invoice)     partner__name:**Rumma** & Ko OÜ
- *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
- *Row # 5* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
- *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
- *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
- *Row # 1* (Payment Order item)   partner__name:**Rumma** & Ko OÜ
-================================ =================================
+================================== =================================
+ Description                        Matches
+---------------------------------- ---------------------------------
+ *Rumma & Ko OÜ* (Partner)          name:**Rumma** & Ko OÜ
+ *Rumma & Ko OÜ* (Organization)     name:**Rumma** & Ko OÜ
+ *SLS 1/2015* (Sales invoice)       partner__name:**Rumma** & Ko OÜ
+ *Row # 70* (Bank Statement item)   partner__name:**Rumma** & Ko OÜ
+ *Row # 21* (Bank Statement item)   partner__name:**Rumma** & Ko OÜ
+ *Row # 2* (Bank Statement item)    partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *Row # 1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+================================== =================================
 <BLANKLINE>
