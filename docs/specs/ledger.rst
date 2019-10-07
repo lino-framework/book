@@ -1201,7 +1201,7 @@ Match rules
 A **match rule** specifies that a movement into given account can be
 *cleared* using a given journal.
 
-You can configure match rules either in the :term:`detail view` of a journal or
+You can configure match rules either in the detail view of a journal or
 globally via :menuselection:`Explorer --> Accounting --> Match rules`.
 
 This demo site has the following match rules:
