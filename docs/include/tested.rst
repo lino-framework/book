@@ -1,5 +1,3 @@
-A tested document
-=================
 
 This document is part of the Lino test suite and has been tested using
 doctest.  You can re-play the instructions on this page in the demo

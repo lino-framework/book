@@ -13,6 +13,12 @@
 .. contents::
   :local:
 
+2019-10-08
+==========
+
+New database field :attr:`lino_xl.lib.cal.RecurrenceSet.positions`.  Fixes
+:ticket:`3225`.
+
 2019-10-03
 ==========
 

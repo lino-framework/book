@@ -27,11 +27,11 @@ The database structure
  cal.Calendar               cal.Calendars                  6         8
  cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
  cal.Event                  cal.OneEvent                   23        1171
- cal.EventPolicy            cal.EventPolicies              19        6
+ cal.EventPolicy            cal.EventPolicies              20        6
  cal.EventType              cal.EventTypes                 23        10
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 5         3
- cal.RecurrentEvent         cal.RecurrentEvents            21        16
+ cal.RecurrentEvent         cal.RecurrentEvents            22        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
  cal.Room                   cal.AllRooms                   11        7
  cal.Subscription           cal.Subscriptions              4         35
@@ -47,7 +47,7 @@ The database structure
  contenttypes.ContentType   gfks.ContentTypes              3         83
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
- courses.Course             courses.Activities             33        26
+ courses.Course             courses.Activities             34        26
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        95
  courses.Line               courses.Lines                  25        10
@@ -92,7 +92,7 @@ The database structure
  products.PriceRule         products.PriceRules            4         0
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           6         5
- rooms.Booking              rooms.Bookings                 23        3
+ rooms.Booking              rooms.Bookings                 24        3
  sales.InvoiceItem          sales.InvoiceItems             15        174
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 27        97

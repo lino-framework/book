@@ -859,7 +859,6 @@ Every 2nd Tuesday
 >>> print(obj.weekdays_text)
 Every 2nd month
 
-
 >>> rt.show(cal.EventTypes, column_names="id name")
 ==== =============== ================== ==================
  ID   Designation     Designation (de)   Designation (fr)
@@ -910,7 +909,6 @@ Event #1 ("New Year's Day (01.01.2013)")
 28/10/2012
 28/12/2012
 28/02/2013
-
 
 
 
@@ -1405,7 +1403,27 @@ Miscellaneous
     .. attribute:: end_time
 
     .. attribute:: every
+
+        The frequency of periodic iteration: daily, weekly, monthly or yearly.
+
     .. attribute:: every_unit
+
+        The interval between each periodic iteration.
+
+        For example, when :attr:`every` is yearly, an :attr:`every_unit` of 2
+        means once every two years. The default value is 1.
+
+    .. attribute:: positions
+
+        Space-separated list of one or several positions within the recurrency cycle.
+
+        Each position is a positive or negative integer expressing which
+        occurrence is to be taken from the recurrency period. For example if
+        :attr:`positions` is `-1` and :attr:`every_unit` is monthly, we get the
+        last day of every month.
+
+        Inspired by `dateutil.rrule <https://dateutil.readthedocs.io/en/stable/rrule.html>`_.
+
     .. attribute:: max_events
 
         Maximum number of calendar entries to generate.
@@ -1759,3 +1777,47 @@ defines two specific roles.
 .. class:: GuestOperator
 
     Can see guests of calendar entries.
+
+
+etpos
+========
+
+The :attr:`RecurrenceSet.positions` field allows to specify rules like "every
+last Friday of the month".
+
+The following examples use a utility function:
+
+>>> def show(obj, today):
+...     print(obj.weekdays_text)
+...     for i in range(5):
+...         x = obj.get_next_suggested_date(None, today)
+...         print(dd.fdf(x))
+...         today = x
+
+Every last Friday of the month:
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.friday = True
+>>> obj.positions = "-1"
+>>> obj.every_unit = cal.Recurrencies.monthly
+>>> show(obj, i2d(20191001))
+Every last Friday of the month
+Friday, 25 October 2019
+Friday, 29 November 2019
+Friday, 27 December 2019
+Friday, 31 January 2020
+Friday, 28 February 2020
+
+The first and third Wednesday of every month:
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.wednesday = True
+>>> obj.positions = "1 3"
+>>> obj.every_unit = cal.Recurrencies.monthly
+>>> show(obj, i2d(20191001))
+Every first and third Wednesday of the month
+Wednesday, 2 October 2019
+Wednesday, 16 October 2019
+Wednesday, 6 November 2019
+Wednesday, 20 November 2019
+Wednesday, 4 December 2019

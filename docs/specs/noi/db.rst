@@ -48,11 +48,11 @@ The database models
  cal.Calendar                       cal.Calendars                    6         1
  cal.DailyPlannerRow                cal.DailyPlannerRows             7         3
  cal.Event                          cal.OneEvent                     26        113
- cal.EventPolicy                    cal.EventPolicies                19        6
+ cal.EventPolicy                    cal.EventPolicies                20        6
  cal.EventType                      cal.EventTypes                   23        4
  cal.Guest                          cal.Guests                       6         0
  cal.GuestRole                      cal.GuestRoles                   5         0
- cal.RecurrentEvent                 cal.RecurrentEvents              21        15
+ cal.RecurrentEvent                 cal.RecurrentEvents              22        15
  cal.RemoteCalendar                 cal.RemoteCalendars              7         0
  cal.Room                           cal.Rooms                        9         0
  cal.Subscription                   cal.Subscriptions                4         0
@@ -109,5 +109,3 @@ The database models
  working.UserSummary                working.UserSummaries            7         252
 ================================== ================================ ========= =======
 <BLANKLINE>
-
-

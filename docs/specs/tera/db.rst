@@ -48,11 +48,11 @@ The database models
  cal.Calendar                cal.Calendars                  6         1
  cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
  cal.Event                   cal.OneEvent                   25        363
- cal.EventPolicy             cal.EventPolicies              19        6
+ cal.EventPolicy             cal.EventPolicies              20        6
  cal.EventType               cal.EventTypes                 23        6
  cal.Guest                   cal.Guests                     7         280
  cal.GuestRole               cal.GuestRoles                 6         2
- cal.RecurrentEvent          cal.RecurrentEvents            21        15
+ cal.RecurrentEvent          cal.RecurrentEvents            22        15
  cal.RemoteCalendar          cal.RemoteCalendars            7         0
  cal.Room                    cal.Rooms                      9         0
  cal.Subscription            cal.Subscriptions              4         0
@@ -69,7 +69,7 @@ The database models
  contenttypes.ContentType    gfks.ContentTypes              3         98
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78
- courses.Course              courses.Activities             43        52
+ courses.Course              courses.Activities             44        52
  courses.Enrolment           courses.Enrolments             15        78
  courses.Line                courses.Lines                  25        3
  courses.Slot                courses.Slots                  5         0
