@@ -8,9 +8,28 @@
 .. currentmodule:: lino_xl.lib.coachings
 
 The :mod:`lino_xl.lib.coachings` plugin adds functionality for managing
-"coachings".  A coaching is when a "coach" (a system user) engages in regular,
-structured conversation with a "client".  It is currently used in
-:ref:`welfare` only.
+"coachings". It is currently used in :ref:`welfare` only.
+
+
+.. glossary::
+
+  Coaching
+
+    When a given site user engages as "coach" in regular, structured
+    conversation with a given "client" during a given period.
+
+    (German "Begleitung", French "intervention")
+
+    For example in :ref:`welfare` that user is a social assistant.
+
+  Coaching type
+
+    The "type" of a coaching.  In :ref:`welfare` this is named a "Service".
+
+    Can be used for expressing different types of responsibilities. For example
+    in :ref:`welfare` they differentiate "General Social Service"
+    "Integration Service" and "Debt mediation".
+
 
 .. contents::
    :depth: 1
@@ -28,11 +47,7 @@ Coachings
 
 .. class:: Coaching
 
-    A Coaching ("Begleitung" in German and "intervention" in French)
-    is when a given client is being coached by a given user during a
-    given period.
-
-    For example in :ref:`welfare` that user is a social assistant.
+    Django model to represent a :term:`coaching`.
 
     .. attribute:: user
     .. attribute:: client
@@ -40,13 +55,22 @@ Coachings
     .. attribute:: end_date
     .. attribute:: start_date
     .. attribute:: primary
+
+      Whether this coaching is primary.   Enabling this field will automatically
+      make the other coachings non-primary.
+
+      See `The primary coach`_
+
     .. attribute:: ending
 
 .. class:: Coachings
 
-    The :class:`Coachings` table in a clients detail.
+    A table showing a set of coachings.
 
 .. class:: CoachingsByClient
+
+    The :class:`Coachings` table in a clients detail.
+
 .. class:: CoachingsByUser
 
 
@@ -91,10 +115,7 @@ Coaching types
 
 .. class:: CoachingType
 
-    The **type** of a coaching can be used for expressing different
-    types of responsibilities. For example in :ref:`welfare` they
-    differentiate between "General Social Service" and "Integration
-    Service".
+    Django model to represent a :term:`coaching`.
 
     .. attribute:: does_integ
 
@@ -162,3 +183,20 @@ into models of other plugins.
     .. attribute:: coaching_supervisor
 
         Notify me when a coach has been assigned.
+
+
+The primary coach
+=================
+
+Every client should have a **primary coach**.  This is the main responsible
+coach for that client.
+
+Lino verifies that there's at most one primary coach per client. When you check
+the :attr:`primary <Coaching.primary>`  field of one coaching, Lino
+automatically unchecks it on any other coachings of that client.
+
+Reality is even a bit more complicated: when :attr:`multiple_primary_coachings
+<lino_xl.lib.coachings.Plugin.multiple_primary_coachings>` is set to True, the
+uniqueness of the primary coaching is no longer just per client but per client
+and :term:`coaching type`. As a result you can have multiple primary coachings
+per client.

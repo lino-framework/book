@@ -13,6 +13,18 @@
 .. contents::
   :local:
 
+2019-10-11
+==========
+
+New plugin setting :attr:`multiple_primary_coachings
+<lino_xl.lib.coachings.Plugin.multiple_primary_coachings>` for
+:mod:`lino_xl.lib.coachings`.  When this is set to True, the uniqueness of the
+primary coaching is no longer just per client but per client and :term:`coaching
+type`. As a result you can have multiple primary coachings per client.
+:ticket:`3137`
+
+
+
 2019-10-08
 ==========
 
