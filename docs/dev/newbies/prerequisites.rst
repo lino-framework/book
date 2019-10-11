@@ -5,11 +5,6 @@ Before reading this guide
 Before reading this guide, you should have (or acquire) some basic knowledge
 about writing Python programs in a free open source project.
 
-Here is a list of things you should know as a Lino developer. These "basic
-skills" are not part of this book, but we try to help you with getting started
-by providing useful pointers in the :doc:`/dev/newbies/index`.
-
-
 Python
 ======
 
@@ -22,7 +17,7 @@ example
 - what's a decorator
 - when and how to use subprocesses and threads
 - what are the following standard modules used for:
-  `datetime`,  `sys`,  `os`, `re`,  `decimal`,  `logging`, ... 
+  `datetime`,  `sys`,  `os`, `re`,  `decimal`,  `logging`, ...
 - the major differences between Python 2 and 3
 
 Django
@@ -54,7 +49,7 @@ Sphinx
 ======
 
 Documentation about Lino is written using `Sphinx
-<http://sphinx-doc.org>`_.  
+<http://sphinx-doc.org>`_.
 
 - You should know how Sphinx works and why we use it to write Lino
   documentation.  See :doc:`/dev/builddocs` for the first steps.
@@ -94,4 +89,3 @@ don't usually need to write SQL yourself when using Lino, but it is of course
 important to understand the concepts behind a database. And on a production
 server you will have to deal with database servers like MySQL or PostgreSQL
 when doing database snapshots or running migrations.
-
