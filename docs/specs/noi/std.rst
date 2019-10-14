@@ -62,10 +62,10 @@ javascript:Lino.working.Sessions.end_session(null,false,9,{  })
 
 
 >>> for lnk in links:
-...    print(lnk['href'])
+...    print(lnk['href'])  #doctest: +ELLIPSIS
 /api/working/Sessions/1
-javascript:Lino.working.Sessions.end_session(null,false,1,{  })
+javascript:Lino.working.Sessions.end_session(null,false,1,{...})
 /api/working/Sessions/5
-javascript:Lino.working.Sessions.end_session(null,false,5,{  })
+javascript:Lino.working.Sessions.end_session(null,false,5,{...})
 /api/working/Sessions/9
-javascript:Lino.working.Sessions.end_session(null,false,9,{  })
+javascript:Lino.working.Sessions.end_session(null,false,9,{...})

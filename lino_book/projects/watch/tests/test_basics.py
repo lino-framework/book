@@ -26,7 +26,7 @@ from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
 
-
+from lino.core.callbacks import popCallBack, applyCallbackChoice
 class QuickTest(RemoteAuthTestCase):
 
     # fixtures = ['demo', 'demo2']
@@ -138,9 +138,11 @@ Are you sure ?""")
         
         
         # We answer "yes":
-
-        url = "/callbacks/{0}/yes".format(res['xcallback']['id'])
-        res = self.get_json_dict('robin', url, {})
+        applyCallbackChoice(res, data, "yes")
+        # url = "/callbacks/{0}/yes".format(res['xcallback']['id'])
+        # print(data)
+        res = self.get_json_dict('robin', url, data)
+        # print(res)
         # r = test_client.get(url)
         self.assertEqual(res.success, True)
         self.assertEqual(res.record_deleted, True)
@@ -195,9 +197,9 @@ Are you sure ?""")
         url = '/api/contacts/Companies/100'
         data = dict(an='delete_selected', sr=100)
         res = self.get_json_dict('robin', url, data)
-        
-        url = "/callbacks/{0}/yes".format(res.xcallback['id'])
-        self.get_json_dict('robin', url, {})
+        applyCallbackChoice(res, data, "yes")
+        # url = "/callbacks/{0}/yes".format(res.xcallback['id'])
+        self.get_json_dict('robin', url, data)
         
         expected = """\
 ==== ============= ======== ======== ================================================
