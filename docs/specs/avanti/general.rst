@@ -65,7 +65,7 @@ interface correctly shows the summary.
 
 
 >>> rt.login('robin').show_dashboard()
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS -SKIP
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_NDIFF -ELLIPSIS -SKIP
 -----------------------------------------------
 My appointments **New** `⏏ <My appointments>`__
 -----------------------------------------------
@@ -130,16 +130,32 @@ Daily planner `⏏ <Daily planner>`__
  *PM*
 ============ ============================================================== ==========
 <BLANKLINE>
+-----------------------------------------------
+Recent comments **New** `⏏ <Recent comments>`__
+-----------------------------------------------
+<BLANKLINE>
+`3 hours ago <Detail>`__ by `robin <Detail>`__ about `BEK-MURZIN Agápiiá (160) <Detail>`__ : Two paragraphs of plain text. (...)
+`3 hours ago <Detail>`__ by `rolf <Detail>`__ about `BASKOV Anstice (156) <Detail>`__ : Some plain text.
+`3 hours ago <Detail>`__ by `romain <Detail>`__ about `BASHMAKOV Agáfoniká (153) <Detail>`__ :  (...)
+`3 hours ago <Detail>`__ by `laura <Detail>`__ about `BARTOSZEWICZ Agáfokliiá (146) <Detail>`__ : breaking  (...)
+`3 hours ago <Detail>`__ by `sandra <Detail>`__ about `BARDZECKI Agáfiyá (144) <Detail>`__ : Lorem ipsum  dolor sit amet, consectetur adipiscing elit. Donec interdum dictum erat. Fusce condimentum erat a pulvinar ultricies. (...)
+`3 hours ago <Detail>`__ by `nathalie <Detail>`__ about `BALLO Armáni (179) <Detail>`__ : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus felis nisi, eu pellentesque lorem lobortis non. Aenean non sodales neque, vitae venenatis lectus. In eros dui, gravida et dolor at, pellentesque hendrerit magna. Quisque vel lectus dictum, rhoncus massa feugiat, condimentum sem. Donec elit nisl, placerat vitae imperdiet eget, hendrerit nec quam. Ut elementum ligula vitae odio efficitur rhoncus. Duis in blandit neque. Sed dictum mollis volutpat. Morbi at est et nisi euismod viverra. Nulla quis lacus vitae ante sollicitudin tincidunt. Donec nec enim in leo vulputate ultrices. Suspendisse potenti. Ut elit nibh, porta ut enim ac, convallis molestie risus. Praesent consectetur lacus lacus, in faucibus justo fringilla vel. (...)
+`3 hours ago <Detail>`__ by `martina <Detail>`__ about `BAH Aráli (119) <Detail>`__ :
+Who What Done?
+<BLANKLINE>
+Him Bar  
+Her Foo the Bar x**
+Them Floop the pig
+ x
+<BLANKLINE>
+`3 hours ago <Detail>`__ by `audrey <Detail>`__ about `BA Abá (113) <Detail>`__ : Styled comment pasted from word!
+`3 hours ago <Detail>`__ by `robin <Detail>`__ about `ASTAFUROV Agáfiiá (175) <Detail>`__ : Two paragraphs of plain text. (...)
+`3 hours ago <Detail>`__ by `rolf <Detail>`__ about `ARTEMIEVA Aloyshá (139) <Detail>`__ : Some plain text.
 ---------------------------------------------------------------
 My Notification messages **✓** `⏏ <My Notification messages>`__
 ---------------------------------------------------------------
 <BLANKLINE>
-=========================== ==================================== ============== ==========
- Created                     Subject                              Message Type   Workflow
---------------------------- ------------------------------------ -------------- ----------
- 2017-02-15 05:48:00+00:00   The database has been initialized.   System event   [✓]
-=========================== ==================================== ============== ==========
-<BLANKLINE>
+[✓]15/02/2017 05:48 The database has been initialized.
 ----------------------------
 Status Report `⏏ <Detail>`__
 ----------------------------
