@@ -57,6 +57,13 @@ The following checks whether the dashboard displays for user robin:
 
 Here is a text variant of Robin's dashboard.
 
+
+TODO: The following fails because RecentComments is no longer empty. But it
+seems that the text version of show_dashboard ignores the display_mode because
+here it shows the tabular view while it should show the summary.  The web
+interface correctly shows the summary.
+
+
 >>> rt.login('robin').show_dashboard()
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS -SKIP
 -----------------------------------------------
