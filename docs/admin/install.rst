@@ -4,36 +4,57 @@
 Installing a Lino application on a production server
 ====================================================
 
-This page is obsolete.
-Read http://getlino.lino-framework.org/ instead.
-
 .. _pip: http://www.pip-installer.org/en/latest/
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 
-Here is a system of files and conventions which we suggest to use when
-hosting a Lino production site.  It suits well for having multiple
-sites on a same machine.
-
-There are many ways to setup a Django/Lino application. For this guide
-we shall be using apache2, mysql, a site-wide Lino settings file, and
-a virtual Python environment for each site.
+Here is a set of  conventions which we suggest to use when setting up a Lino
+:term:`production server`.
 
 
 System requirements
 ===================
 
-.. include:: /include/system_req.rst
+We recommend a **stable Debian** as operating system.  Currently this means
+Debian 10 "Buster".
 
+You need at least 2 GB of disk space.
+
+You need at least 500MB of RAM.  How to see how much memory you have::
+
+    $ free -h
+
+
+Getting access to a Linux machine
+==================================
+
+A :term:`production server` is  a **Linux machine**,
+i.e. a virtual or physical machine with a Linux operating system running in a
+network.
+
+As the  :term:`site maintainer` you need shell access to that machine.
 
 System users
 ============
 
+If the :term:`server provider` wants to keep root access for themselves, they must
+create a new :term:`site maintainer` account for you as.
+
+Ceate a user for each :term:`site maintainer` and install sudo::
+
+  # apt-get install sudo
+  # adduser joe
+  # adduser joe sudo
+  # adduser joe www-data
+
+And of course grant access to that new account, e.g. by creating the user's
+:file:`.ssh/authorized_keys` file with the maintainer's public ssh key.
+
 Before you do anything on your server, create one or several users who
-will be the :term:`server administrator`::
+will be the :term:`site maintainer`::
 
     $ sudo adduser joe
 
-Server administrators must be members of the `sudo` and `www-data` groups::
+Site maintainers must be members of the `sudo` and `www-data` groups::
 
     $ sudo adduser joe sudo
     $ sudo adduser joe www-data
@@ -43,8 +64,8 @@ Server administrators must be members of the `sudo` and `www-data` groups::
 - `useradd` is a native binary compiled with the system, while
   `adduser` is a perl script which uses `useradd` in back-end.
 
-All maintainers must have a umask `002` or `007` (not `022` or `077`
-as is the default value).
+All maintainers must have a umask `002` or `007` (not `022` or `077` as is the
+default value).
 
 Edit either the file :file:`~/.bashrc` of each user or the file
 :file:`/etc/bash.bashrc` (site-wide for all users) and add the following line at
@@ -52,47 +73,109 @@ the end::
 
     umask 002
 
-.. Add one line to your :file:`/etc/apache2/envvars` file::
+The umask is used to mask (disable) certain file permissions from any new file
+created by a given user. See :doc:`umask` for more detailed information.
 
-    umask 002
+.. _getlino.install.prod:
+.. _getlino.install.admin:
 
-The umask is used to mask (disable) certain file permissions from
-any new file created by a given user. See :doc:`umask` for more
-detailed information.
+Configure a Lino production server
+==================================
 
+Install getlino into a shared virtual environment outside of your home::
+
+    $ sudo mkdir /usr/local/lino/shared/env
+    $ cd /usr/local/lino/shared/env
+    $ sudo chown root:www-data .
+    $ sudo chmod g+ws .
+    $ virtualenv -p python3 master
+    $ . master/bin/activate
+    $ pip install getlino
+
+Run :cmd:`getlino configure` as root::
+
+   $ sudo env PATH=$PATH getlino configure
+
+The ``env PATH=$PATH`` is needed to work around the controversial Debian feature
+of overriding the :envvar:`PATH` for security reasons (`source
+<https://stackoverflow.com/questions/257616/why-does-sudo-change-the-path>`__).
+
+Install a first site.  You will do the following for every new site on your
+server.
+
+   $ sudo env PATH=$PATH getlino startsite noi first
+
+Point your browser to http://first.localhost
+
+.. program:: getlino configure
+
+If your customers want to access their Lino from outside of their intranet, then
+you need to setup a domain name and add the :option:`--https` option in above
+command line.
+
+.. _getlino.install.demo:
+
+Configure a Lino demo server
+============================
+
+Warning : This is the deeper Python jungle. Don't try this before you have
+installed a few contributor environments and production servers.
+
+Run :cmd:`getlino configure` as root::
+
+   $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/master --clone
+
+.. program:: getlino configure
+
+That is, you say :option:`--clone` and create a :option:`--shared-env`.
+
+You may create other shared envs by changing the branch and clone another set of
+repositories::
+
+   $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/stable --clone --branch stable
+
+.. program:: getlino startsite
+
+Specify :option:`--shared-env` when creating demo sites::
+
+   $ sudo -H env PATH=$PATH getlino startsite noi first --shared-env /usr/local/lino/shared/stable
+   $ sudo -H env PATH=$PATH getlino startsite tera second --shared-env /usr/local/lino/shared/master
 
 
 Lino directory structure
 ========================
 
+TODO: review
+
 At the end of this document you will have the following recommenced
 directory structure on your Lino production server::
 
     /usr/local/lino/
-    ├── __init__.py
-    ├── lino_local.py # Site-wide settings
-    └── prod_sites/
+    │
+    ├── shared/
+    │   ├── settings.py   # shared Django settings
+    │   ├── master/ # a shared virtualenv named "master"
+    │   │   ├── repositories/ # git repositories used by master
+    │   │   │   ├─── lino
+    │   │   │   ├─── xl
+    │   │   │   ├─── noi
+    │   │   │   └─── ...
+    │   └── ...
+    └── lino_local/
         ├── __init__.py
-        ├── prj1 # Site directory
+        ├── prj1 # project directory of site "prj1"
         │   ├── __init__.py
-        │   ├── env/ # Virtual environment
-        │   │   ├─── bin
-        │   │   └─── ...
-        │   ├── repositories/ # Lino git-repositories
-        │   │   ├─── lino
-        │   │   ├─── xl
-        │   │   ├─── noi
-        │   │   └─── ...
+        │   ├── settings.py  # Site specific settings
+        │   ├── env/ # either a link to some shared virtualenv, or a subdir with a site-specific virtualenv
         │   ├── log/ -> /var/log/lino/prj1/
         │   ├── manage.py
         │   ├── media/
-        │   ├── settings.py # Site specific settings
         │   ├── static/
         │   ├── wsgi.py
         │   └── ...
         └── prj2
             ├─── ...
-                └─── ...
+            └─── ...
 
 This structure is recommended even if you have only one Lino site on your server
 because you never know whether the customer some day change their mind and ask
@@ -114,9 +197,9 @@ If you want :ref:`log2syslog`, then add also this:
 
 .. literalinclude:: log2syslog
 
-After these changes you must close and reopen your terminal to
-activate them. You can now do the following to quickly cd to a project
-directory and activate its Python environment::
+After these changes you must close and reopen your terminal to activate them.
+You can now do the following to quickly cd to a project directory and activate
+its Python environment::
 
   $ go prj1
   $ a

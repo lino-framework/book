@@ -7,7 +7,7 @@ function pywhich() {
 
 # find another name if your team also uses golang
 function go() {
-    for BASE in /usr/local/lino/prod_sites
+    for BASE in /usr/local/lino/lino_local
     do
       if [ -d $BASE/$1 ] ; then
         cd $BASE/$1;
@@ -17,4 +17,3 @@ function go() {
     echo Oops: no project $1
     return -1
 }
-

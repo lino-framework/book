@@ -1,6 +1,6 @@
-======================
+=================
 Contributor Guide
-======================
+=================
 
 .. contents::
     :depth: 1
@@ -12,13 +12,10 @@ Contributor Guide
 Get started
 =============
 
-For installation instructions see :ref:`getlino.install.contrib`.
-
 .. toctree::
    :maxdepth: 2
 
-   /dev/install
-   /dev/hello/index
+   install/index
    /dev/env
 
 Basics

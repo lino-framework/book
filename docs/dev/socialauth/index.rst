@@ -13,7 +13,7 @@ A working example
 =================
 
 A working example is in the :mod:`lino_book.projects.team` demo
-project.  If you have the :doc:`Lino developer environment </dev/install>`
+project.  If you have the :doc:`Lino developer environment </dev/install/index>`
 installed, you can test the social auth functionality on your machine
 by doing::
 
@@ -29,14 +29,14 @@ google-plus facebook mediawiki**.):
     :width: 80 %
 
     The Lino Team main page for anonymous users.
-            
+
 
 
 Click on **github**. This will lead you to the GitHub website:
 
 .. figure:: socialauth2.png
     :width: 80 %
-            
+
     Github asking your permission to authenticate you at the "Lino
     auth tester" app
 
@@ -59,7 +59,7 @@ Here is how the confirmation page looks on Facebook:
 
 .. figure:: 20171215b.png
     :width: 80 %
-            
+
     Facebook asking your permission to authenticate you at the "Lino
     authentication" app
 
@@ -68,7 +68,7 @@ Or on WikiMedia:
 
 .. figure:: 20180731b.png
     :width: 80 %
-            
+
     WikiMedia asking your permission to authenticate you at the
     "Social Auth Tester" app
 
@@ -77,7 +77,7 @@ This works out of the box because we did the work of creating
 applications on GitHub, Google+, Facebook and WikiMedia.  Details
 about how to do that see below.
 
-           
+
 How it works
 ============
 
@@ -145,7 +145,7 @@ You must then store these in your :xfile:`settings.py`. For example::
 
     SOCIAL_AUTH_GITHUB_KEY = '...'
     SOCIAL_AUTH_GITHUB_SECRET = '...'
-  
+
 The client secrets of these applications we used for this toturial
 aren't really secret anymore since they are stored in the
 :xfile:`settings.py` of the team demo project (more exactly `here
@@ -161,7 +161,7 @@ Exercises
 
 - Note that your user type is "user" and that you cannot change this.
   Only administrators can change the user type.
-  
+
 - Sign out. Note that your user name is now listed below **This demo
   site has 7 users:**. This list does not show on a real site, it is
   there because :attr:`is_demo_site
@@ -171,7 +171,7 @@ Exercises
   GitHub. You can not sign in using the
   :class:`lino.modlib.users.SignIn` dialog window because you have no
   password set.
-  
+
 - Sign in as robin (an administrator) and merge two users.
 
 
@@ -181,8 +181,8 @@ for you, based on miscellaneous criteria (and
 :attr:`social_auth_backends
 <lino.core.site.Site.social_auth_backends>` is only one of them).
 
-  
-  
+
+
 
 User's friends
 ==============
@@ -219,7 +219,7 @@ have the following things done:
 
 Run the web interface on your machine and log in via Google+ as
 described in `A working example`_.
- 
+
 Run the following script from the :mod:`lino_book.projects.team`
 project directory::
 
@@ -227,5 +227,3 @@ project directory::
 
 The script uses the Google People API alongside with the credentials
 captured during the user logging via GooglePlus.
-
-

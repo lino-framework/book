@@ -11,59 +11,33 @@ Your first local Lino project
     >>> shell = Sheller('docs/dev/hello')
 
 
-In this tutorial we are going to create a *local* Lino project,
-i.e. something that exists only on your machine.
-
-We suppose that you have installed Lino itself as described in
-:doc:`/dev/install`.
-
+In this tutorial we are going to have a deeper look at what happened
+when you installed Lino as described in :doc:`/dev/install/index`.
 
 .. contents::
     :depth: 1
     :local:
 
-       
+
 Project directories
 ===================
 
-A **project directory** is a directory which defines a runnable Django
-project.  It contains the files necessary for that specific instance
-of a given Lino application.
+.. xfile::  ~/lino/lino_local
 
-Until now (in :doc:`/dev/install`) you have been using some of the
-project directories defined in the Lino Book, and you used them
-directly from within the code repository.
+This is your **projects root**, which will hold all the Lino sites on your
+computer.  Lino project directories are not very big, and you will hopefully
+create many such projects and want to keep a backup of them.
 
-Now we will create our first project directory of our own.
+.. xfile::  ~/lino/lino_local/first
 
-As a first step, create an empty directory::
+The project directory of the first site you created in
+:doc:`/dev/install/index`.
 
-    $ mkdir ~/projects
+A **project directory** is a directory that contains a runnable Django project.
+It contains the files necessary for that specific instance of a given Lino
+application.
 
-This is your **projects root**, which will hold all your Lino projects
-on your computer.  Lino project directories are not very big, and you
-will hopefully create many such projects and want to keep a backup of
-them.
 
-You can choose another name, just keep in mind that our examples are
-based on this choice.
-
-Now create an empty directory in your projects root which will become
-your first *project directory*::
-
-    $ mkdir ~/projects/hello
-
-Got to that directory::
-  
-    $ cd ~/projects/hello
-
-Create an empty file :xfile:`__init__.py` in this directory in order
-to make it usable as a Python package::
-
-    $ touch __init__.py
-
-Create two other files :xfile:`settings.py` and :xfile:`manage.py` in
-this directory as described hereafter.
 
 The ``settings.py`` file
 ========================
@@ -82,7 +56,7 @@ Explanations:
     We import these settings directly into our global namespace using
     the wildcard ``*``. This is necessary because that's how Django
     wants settings.
-   
+
 #.  Then comes the important trick which turns your Django project
     into a Lino application::
 
@@ -98,7 +72,7 @@ You might add ``DEBUG = True`` or other settings of your choice
 *after* these two lines, but it is not necessary here.
 
 More about this in :doc:`/dev/settings`.
-    
+
 
 The ``manage.py`` file
 =======================
@@ -205,9 +179,9 @@ Now you can invoke :manage:`runserver` to start the development
 server::
 
   $ python manage.py runserver
-  
-which should output something like::  
-  
+
+which should output something like::
+
   Validating models...
   0 errors found
   Django version 1.4.5, using settings 'hello.settings'
@@ -218,10 +192,9 @@ And then point your web browser to http://127.0.0.1:8000 and you
 should see something like this:
 
 .. image:: hello1.png
-           
+
 Congratulations! Enjoy the first Lino application that exists only on
 your machine!
-
 
 
 Visualizing database content from the command-line
@@ -269,14 +242,13 @@ Or you can see the list of countries:
 Exercises
 =========
 
-Yes, it looks the same as the one you saw in the previous chapter. But
-read on. You can now play around by changing things in your project.
+You can now play around by changing things in your project.
 
 #.  In your :file:`settings.py` file, replace
     :mod:`lino_book.projects.min2` by :mod:`lino_book.projects.liina`.
     Run :command:`python manage.py prep` followed by :command:`python
     manage.py runserver`. Log in and play around.
-  
+
 #.  Same as previous, but with :mod:`lino_book.projects.chatter`
 
 #.  Write three descriptions in LibreOffice `.odt` format, one for
@@ -284,11 +256,9 @@ read on. You can now play around by changing things in your project.
     the features, what functionalities are missing. Use screenshots.
     Use a language which can be understood by non-programmers.  Send
     these documents to your mentor.
-    
+
 #.  Read the documentation about the following Site attributes and
     try to change them:
 
     - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
     - :attr:`languages <lino.core.site.Site.languages>`
-
-

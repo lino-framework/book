@@ -9,20 +9,20 @@ framework`. For non-technical documentation about Lino see the :ref:`cg`.
 .. toctree::
    :maxdepth: 2
 
-   /dev/about
    welcome
+   /dev/about
    /demos
-   /blog
 
-   /dev/newbies/index
    Developer Guide </dev/index>
    Contributor Guide </team/index>
    Administrator Guide </admin/index>
    User Guide </guide/index>
+   /dev/newbies/index
 
    Specs </specs/index>
    API </api/index>
    /changes/index
+   /blog
 
 .. toctree::
    :hidden:
@@ -31,10 +31,8 @@ framework`. For non-technical documentation about Lino see the :ref:`cg`.
    /examples/belref/index
    /tours/index
    /copyright
-   /dev/quick/install
-   /getlino
-   /dev/quick/index
    /dev/getstarted
    /community/index
    /dev/framework
    /dev/startproject
+   /install/index

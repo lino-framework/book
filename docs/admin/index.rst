@@ -19,39 +19,41 @@ of approaches.  But even experienced Django hosters might find
 interesting tricks or inspiration for their system by reading how we
 recommend to do it.
 
-
 .. contents::
     :depth: 1
     :local:
 
 
+
 Installation
 ============
 
-See :ref:`getlino.install.admin`.
-
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 1
 
-   multiple_frontends
+    install
+    multiple_frontends
+    media
+    mysql_install
+    pgsql_install
+    config_dirs
+    xl
+    oood
+    linod
+    monit
+    notify
+    security
+    cron
+    postfix
 
 
-About hosting Lino
-==================
-
-.. toctree::
-   :maxdepth: 2
-
-   about
-   workflow
-   preview
 
 
 Maintenance
 ===========
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     settings
     snapshot
@@ -62,15 +64,16 @@ Maintenance
     bash_aliases
     logging
     new_site
-    datamig
     djangomig
+    preview
+    datamig
 
 
 Printing
 ==================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     printing
     using_appy_pod
@@ -81,7 +84,7 @@ Other
 ==================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     pythonpath
 
@@ -100,29 +103,6 @@ Other
     du
     startsite
 
-
-
-Installation (obsolete)
-=======================
-
-This section is obsolete as these things are now done automatically  in
-:ref:`getlino.install.contrib`.
-
-.. toctree::
-    :maxdepth: 2
-
-    install
-    media
-    mysql_install
-    pgsql_install
-    config_dirs
-    xl
-    oood
-    linod
-    monit
-    notify
-    security
-    cron
 
 
 

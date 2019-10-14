@@ -21,25 +21,37 @@ The :mod:`lino.modlib.comments` plugin adds a framework for handling comments.
 Overview
 ========
 
-A **comment** is something one user wants to share with "whoever is
-interested".  A comment has no "recipient" .  When you submit a comment, Lino
-notifies all users that registered their interest in the topic.
+.. glossary::
 
-A comment is always "about" something. This is represented by the :attr:`owner`
-field. You can consider the  :attr:`owner` as the "topic" of a thread comments.
-This field is a Generic Foreign Key, i.e. users can basically comment on any
-database object.  It is however the application developer who decides where
-comments can be created and how they are being displayed.
+  Comment
 
-Comments have no workflow management nor rating merchanism etc. As in the real
-world it is the user's responsibility to think before they say something.
+    A **comment** is a written text that one user wants to share with "whoever
+    is interested". A comment has no "recipient" but is always "about"
+    something, a topic.  When you submit a comment, Lino notifies all users who
+    registered their interest in the topic.  All comments about the same topic
+    form a discussion thread. Comments are stored in the :class:`Comment`
+    database model.
+
+    Comments have no workflow management nor rating mechanism etc. As in the
+    real world it is the user's responsibility to think before they say
+    something.
+
+  Commentable topic
+
+    The application developer decides which database models can serve as topics
+    for commenting by having these database models inherit from the
+    :class:`Commentable` mixin.
+
+  Commenting group
+
+    A group of users who discuss with each other using comments.
 
 
 Comments
 ========
-    
+
 .. class:: Comment
-           
+
     A **comment** is a short text which some user writes about some database
     object. It has no recipient.
 
@@ -54,12 +66,19 @@ Comments
     .. attribute:: user
 
         The author of the comment.
-        
+
     .. attribute:: owner
+
+        The *topic* this comment is about. This field is a Generic Foreign Key, i.e. users can
+        basically comment on any database object.  It is however the application
+        developer who decides where comments can be created and how they are being
+        displayed.
+
+
 
         A generic foreign key to the commentable database object to
         which this comment relates.
-        
+
     .. attribute:: published
 
         When this comment has been published. A timestamp.
@@ -68,32 +87,32 @@ Comments
 
 
     .. attribute:: show_published
-                   
+
         Whether to show only (un)published comments, independently of
         the publication date.
-   
+
     .. attribute:: start_date
     .. attribute:: end_date
 
-       The date range to filter. 
-           
+       The date range to filter.
+
     .. attribute:: observed_event
 
        Which event (created, modified or published) to consider when
        applying the date range given by :attr:`start_date` and
        :attr:`end_date`.
-       
+
     .. method:: as_li(cls, self, ar)
-                
+
         Return this comment for usage in a list item as a string with
         HTML tags.
 
 
 .. class:: AllComments
-           
+
 .. class:: MyComments
-.. class:: MyPendingComments        
-          
+.. class:: MyPendingComments
+
 .. class:: RecentComments
     Shows the comments for a given database object.
 
@@ -101,20 +120,20 @@ Comments
 
 
     .. method:: get_table_summary(cls, obj, ar)
-                
+
         The :meth:`summary view
         <lino.core.actors.Actor.get_table_summary>` for this table.
 
 .. class:: CommentsByX
 .. class:: CommentsByType
 .. class:: CommentsByRFC
-           
+
     Shows the comments for a given database object.
 
     .. attribute:: slave_summary
 
     .. method:: get_table_summary(cls, obj, ar)
-                
+
         The :meth:`summary view
         <lino.core.actors.Actor.get_table_summary>` for this table.
 
@@ -125,10 +144,10 @@ Comments
 
     The choicelist with selections for
     :attr:`Comments.observed_event`.
-           
+
 .. class:: PublishComment
     Publish this comment.
-           
+
 .. class:: PublishAllComments
     Publish all comments.
 
@@ -138,18 +157,18 @@ Comment types
 =============
 
 .. class:: CommentType
-           
+
     The :class:`CommentType` model is not being used in production,
     one day we will probably remove it.
 
-            
+
 .. class:: CommentTypes
-           
+
     The table with all existing comment types.
 
     This usually is accessible via the `Configure` menu.
 
-           
+
 Commentable
 ===========
 
@@ -173,12 +192,19 @@ Commentable
         This is automatically called when a comment has been created
         or modified.
 
-           
+    .. method:: get_comment_group(self)
+
+        Return either `None` or a database object that represents the :term:`commenting group`
+        where this comment is being done.
+
+        If not None, the object must have a field :attr:`ref` which will be
+        shown in the summary of :class:`RecentComments`.
+
 
 Utilities
 =========
 
-.. function:: comments_by_owner        
+.. function:: comments_by_owner
 
 
 
@@ -191,7 +217,8 @@ Usage examples:
 >>> from lino.modlib.memo.mixins import truncate_comment
 
 >>> print(truncate_comment('<h1 style="color: #5e9ca0;">Styled comment <span style="color: #2b2301;">pasted from word!</span> </h1>'))
-Styled comment pasted from word! 
+... #doctest: +NORMALIZE_WHITESPACE
+Styled comment pasted from word!
 
 >>> print(truncate_comment('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>', 30))
 Lorem ipsum dolor sit amet, co...
@@ -211,5 +238,3 @@ Some plain text.
 
 >>> print(truncate_comment('Two paragraphs of plain text.\n\n\nHere is the second paragraph.'))
 Two paragraphs of plain text. (...)
-
-              

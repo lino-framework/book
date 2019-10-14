@@ -7,7 +7,7 @@ Django 1.7 complains about clashing fields
 .. to test only this document:
 
     $ python setup.py test -s tests.DocsTests.test_e006
-    
+
     doctest init:
 
     >>> from lino import startup
@@ -19,7 +19,7 @@ with Django 1.8).
 
 How to reproduce it:
 
-- Get the latest development version of Lino (see :doc:`/dev/install`).
+- Get the latest development version of Lino (see :doc:`/dev/install/index`).
 
 - In your copy of file :srcref:`lino/setup_info.py`, change
   `install_requires=['django<1.7'...` to
@@ -52,7 +52,7 @@ in :mod:`lino_book.projects.min2.modlib.contacts`.
 The following diagram shows the structure for `Person` (for `Company`
 it is analog):
 
-.. graphviz:: 
+.. graphviz::
 
    digraph foo  {
 
@@ -66,7 +66,7 @@ it is analog):
 
 It might be useful to understand
 :mod:`lino_book.projects.diamond`,
-:mod:`lino_book.projects2.diamond`,     
+:mod:`lino_book.projects2.diamond`,
 and the code of :mod:`lino.core.inject`
 before working on this problem.
 

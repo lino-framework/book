@@ -145,6 +145,15 @@ Here are some useful aliases and functions for your
     This is useful e.g. when you are having troubles with your virtual
     environments.
 
+
+.. We chose ``env`` for our environment. You are free to choose any
+   other name for your new environment, but we recommend this
+   convention because it is being used also on production servers.
+   Note that :xfile:`env` might be a *symbolic-link* pointing to some
+   shared environment folder.
+
+
+
 Usage examples
 ==============
 

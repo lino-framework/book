@@ -142,7 +142,7 @@ A minor release because
 
 - Some classes changed their place while working on :ticket:`39`
 
-- `/dev/install` is getting better. I am working on it for
+- `/dev/install/index` is getting better. I am working on it for
   :ticket:`40`.
 
 Version 1.6.15 (released 2014-12-12)
@@ -384,5 +384,3 @@ Version 1.6.5 (released :blogref:`20130422`)
     :hidden:
 
     marked_changes
-
-
