@@ -24,26 +24,11 @@ Basics
 .. toctree::
    :maxdepth: 2
 
-   /dev/pull
    /dev/projects
+   /team/pull_request
    /dev/team
    /dev/writedocs
    /dev/deploy
-
-
-
-Special topics
-==============
-
-.. toctree::
-   :maxdepth: 1
-
-   /specs/projects/mti
-   /specs/projects/nomti
-   /dev/watch
-   /dev/matrix/index
-   /tutorials/input_mask/index
-   /dev/ovfields/index
 
 
 
@@ -110,5 +95,5 @@ Other
 
    /team/setup
    /team/tools
-   /team/pull_request
+   /dev/pull
    /team/deploy_prod

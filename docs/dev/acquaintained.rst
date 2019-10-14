@@ -33,7 +33,7 @@ Getting acquaintained
    rendering
    mti
    combo/index
-   
+
    online
    site_config
    disabled_fields
@@ -45,3 +45,10 @@ Getting acquaintained
    story
    etree
    inject_field
+
+   /specs/projects/mti
+   /specs/projects/nomti
+   /dev/watch
+   /dev/matrix/index
+   /tutorials/input_mask/index
+   /dev/ovfields/index

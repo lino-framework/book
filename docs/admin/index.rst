@@ -45,6 +45,7 @@ Installation
     security
     cron
     postfix
+    mailman
 
 
 
