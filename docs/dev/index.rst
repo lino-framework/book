@@ -7,10 +7,8 @@ Developer Guide
 ===============
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
-    install/index
-    /dev/hello/index
-    /dev/polls/index
+    /dev/getstarted
     /dev/diving
     /dev/acquaintained

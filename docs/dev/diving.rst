@@ -4,14 +4,14 @@
 Diving into Lino
 ================
 
-Until now we deliberately remained outside of the real code because
-first things first.  But now you hopefully feel self-confident about
-your work environment and running demo projects.  We are ready to dive
-*into* Lino.
+Until now we deliberately remained outside of the real code because first things
+first.  But now you hopefully feel confident in your developer environment and
+with running demo projects.  We are ready to dive *into* Lino.
 
 .. toctree::
    :maxdepth: 1
 
+   /dev/intro
    models
    tables/index
    layouts/index
@@ -29,3 +29,4 @@ your work environment and running demo projects.  We are ready to dive
    quantities
    menu
    virtualfields
+   /dev/polls/index

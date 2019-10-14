@@ -43,8 +43,6 @@ Drafts
    /dev/translate/index
 
    /dev/userdocs
-   /dev/signals
-   /dev/intro
    /dev/style
    /dev/extjs
    /dev/oui5

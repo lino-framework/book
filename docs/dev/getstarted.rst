@@ -2,4 +2,10 @@
 Getting started
 ===============
 
-Content moved to :ref:`lino.dev.start`.
+In this section we are going to install Lino on your machine and explore it.
+
+.. toctree::
+    :maxdepth: 1
+
+    install/index
+    /dev/hello/index

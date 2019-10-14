@@ -31,7 +31,6 @@ framework`. For non-technical documentation about Lino see the :ref:`cg`.
    /examples/belref/index
    /tours/index
    /copyright
-   /dev/getstarted
    /community/index
    /dev/framework
    /dev/startproject
