@@ -301,7 +301,7 @@ The first of them displays a "1":
 And clicking on it would run the following Javascript code:
 
 >>> print(links[0].get('href'))
-javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",false,2,{ "fv": [ 9, 17 ] })
+javascript:Lino.polls.Responses.toggle_choice("ext-comp-1351",false,2,{ "base_params": { "mk": 2, "mt": 10 }, "field_values": { "choice": "1", "choiceHidden": 17, "question": "1) There was enough to eat.", "questionHidden": 9 }, "fv": [ 9, 17 ], "param_values": { "state": null, "stateHidden": null, "user": null, "userHidden": null } })
 
 The 2 is the id of the Response we are acting on:
 
