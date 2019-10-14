@@ -37,7 +37,8 @@ We accept this way of communication.
 Using :cmd:`git request-pull`
 =============================
 
-Here are some thoughts about this:
+The problem with using GitHub pull requests is that this approach partly relies
+on :term:`proprietary software`. Some more thoughts about this:
 
 - `How to make pull requests *without* a github account?
   <http://stackoverflow.com/questions/9630774/how-to-make-pull-requests-without-a-github-account>`__
@@ -50,7 +51,7 @@ Here are some thoughts about this:
 - The `git request-pull <https://git-scm.com/docs/git-request-pull>`__
   command.
 
-The following would be our recommended way of making pull requests.
+So the following would be our recommended way of making pull requests.
 
 Preparation:
 
@@ -61,9 +62,8 @@ Preparation:
   are going to work on.
 
 - Change the `remote` of your local copy so that it points to your
-  fork. Add an *upstram* remote. Setup your git credentials.  (TODO:
+  fork.  Add an *upstram* remote. Setup your git credentials.  (TODO:
   explain more details)
-
 
 For each request:
 
@@ -80,7 +80,7 @@ Pushing directly to master branch?
 ==================================
 
 Hell is when people push directly to master branch.
-That's at least what  `this
+That's at least what `this
 thread on Reddit
 <https://www.reddit.com/r/ProgrammerHumor/comments/dh87ae/dante_would_be_proud/>`__
 suggests. The resulting discussion is interesting.
