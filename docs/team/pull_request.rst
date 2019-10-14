@@ -1,4 +1,4 @@
-.. _dev.request_pull:
+.. _team.howto.submit:
 
 ============================
 How to submit a pull request
@@ -32,6 +32,7 @@ in `Creating a pull request
 We accept this way of communication.
 
 
+.. _dev.request_pull:
 
 Using :cmd:`git request-pull`
 =============================
