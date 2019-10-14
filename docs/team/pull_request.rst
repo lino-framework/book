@@ -79,19 +79,16 @@ For each request:
 Pushing directly to master branch?
 ==================================
 
-Hell is when people push directly to master branch.
-That's at least what `this
+Hell is when people push directly to master branch. That's at least what `this
 thread on Reddit
 <https://www.reddit.com/r/ProgrammerHumor/comments/dh87ae/dante_would_be_proud/>`__
-suggests. The resulting discussion is interesting.
-Obviously there are
-different religious schools about the topic.
+suggests. The resulting discussion is interesting. Obviously there are different
+religious schools about the topic. Well-educated project managers seem to be
+horrified and ask "Who lets people push to master without a pull request and
+code review?", but others have obviously been in that "hell", and they report
+quite positive things about it:
 
-Some quotes of the comments:
-
-- Who lets people push to master without a pull request and code review?
-
-  It depends on what the workflow for git is. If you CI/CD deploys to production
+- It depends on what the workflow for git is. If you CI/CD deploys to production
   on a push to master, well you shouldn't push to master obviously. If "master"
   is the bleeding edge branch that may be broken from time to time, then it's
   not that big of a big deal. For example, Google does it that way in Flutter.
@@ -99,6 +96,6 @@ Some quotes of the comments:
   things.". After testing, master gets merged into "dev", then "beta", then
   "stable".
 
-  We push to master in my current role and I have in all my jobs for the last
+- We push to master in my current role and I have in all my jobs for the last
   10+ years. We do ci/cd, feature toggles and automated testing. Pairing is how
   we do code reviews. Honestly nothing wrong with it 🙂
