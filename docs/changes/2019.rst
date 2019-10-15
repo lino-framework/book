@@ -13,6 +13,37 @@
 .. contents::
   :local:
 
+2019-10-15
+==========
+
+Fixed a TypeError :message:`__str__ returned non-string (type __proxy__)`
+occuring e.g. when showing the detail of a
+:class:`lino_xl.lib.excerpts.Excerpt`.
+
+The templates  :xfile:`excerpts/base.weasy.html` and
+:xfile:`weasyprint/base.weasy.html` have been optimized. New ``bottomleft`` and
+``bottomright`` blocks are expected to contain the `content` property for their
+respective element.
+
+:meth:`lino.core.requests.BaseRequest.get_printable_context` adds a new function
+:func:`activate_language` to set the language for the remaining part of the
+template.
+
+New method :class:`lino_xl.lib.clients.KnownContactType.get_contacts` (i.e. get
+them all, not just one) is now used instead of
+:class:`lino_xl.lib.clients.KnownContactType.get_contact`.
+
+Summary layout of :class:`lino_xl.lib.cv.HistoryByPerson` was not very readable:
+added a colon behind each field label, and the field value is now  bold. Fixed a
+bug in that same summary which inserted an empty bullet at the beginning of the
+list.
+
+
+2019-10-14
+==========
+
+New approach for handling callbacks on nginx with multiple worker processes.
+
 2019-10-11
 ==========
 

@@ -140,29 +140,37 @@ Known contact types
 The clients plugin also adds a choicelist of **known contact types**.
 
 >>> rt.show(clients.KnownContactTypes)
-======= =================== ========================== ==========================
- value   name                text                       Client Contact type
-------- ------------------- -------------------------- --------------------------
- 10      health_insurance    Health insurance           Health insurance
- 20      school              School                     School
- 30      pharmacy            Pharmacy                   Pharmacy
- 40      general_assistant   General social assistant   General social assistant
- 50      integ_assistant     Integration assistant      Integration assistant
- 60      work_consultant     Work consultant            Work consultant
-======= =================== ========================== ==========================
+======= ================== ================================== ==================================
+ value   name               text                               Client Contact type
+------- ------------------ ---------------------------------- ----------------------------------
+ 10      health_insurance   Health insurance                   Health insurance
+ 20      school             School                             School
+ 30      pharmacy           Pharmacy                           Pharmacy
+ 40      social_center      Public Center for Social Welfare   Public Center for Social Welfare
+ 60      work_consultant    Work consultant                    Work consultant
+======= ================== ================================== ==================================
 <BLANKLINE>
 
-A *known contact type* is a named pointer to a corresponding *client
-contact type* object in the database.  The object may exist or not.
-We need this if we want to programmatically work with a given client
-contact type.  Since contact types are database objects, it can be
-anything or nothing for a given site. By using known contact type we
-can access them.
+A *known contact type* is a named pointer to a corresponding *client contact
+type* object in the database.  The database object itself may exist or not. This
+enables us to programmatically work with a given client contact type. Since
+contact types are database objects, it can be anything or nothing for a given
+site. By using known contact type we can access them.
 
-For example here are the client contacts of type "school" in our demo
-database:
+For example here are the partners having  the client contact type "school":
 
 >>> obj = clients.KnownContactTypes.school.get_object()
+>>> rt.show(clients.PartnersByClientContactType, obj)
+================== ===== ================================
+ Name               ID    See as
+------------------ ----- --------------------------------
+ Best School        184   **Partner**, Person, Household
+ Favourite School   183   **Partner**, Person, Household
+================== ===== ================================
+<BLANKLINE>
+
+Here are the actual client contacts of that type:
+
 >>> rt.login('robin').show(clients.ClientContactsByType, obj)
 ================== ================ ========================= =========
  Organization       Contact person   Client                    Remarks
@@ -176,13 +184,10 @@ database:
 
 
 
-
 Configuration
 =============
 
-:attr:`lino_xl.lib.clients.Plugin.client_model`
-
-
+See :attr:`lino_xl.lib.clients.Plugin`
 
 
 Injects
