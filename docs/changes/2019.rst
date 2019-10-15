@@ -38,6 +38,7 @@ added a colon behind each field label, and the field value is now  bold. Fixed a
 bug in that same summary which inserted an empty bullet at the beginning of the
 list.
 
+I released Lino, XL and Avanti.
 
 2019-10-14
 ==========
