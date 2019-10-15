@@ -33,27 +33,6 @@ learn about :ref:`Working in a UNIX shell <learning.unix>`.
     :local:
 
 
-Concepts
-========
-
-.. glossary::
-
-  virtualenv
-
-    A virtual Python environment. See :ref:`lino.dev.env`
-
-  Developer environment
-
-    A set of tools configured on the desktop computer of a Lino developer who
-    wants to develop their own :term:`Lino application`.
-
-  Contributor environment
-
-    An extended :term:`developer environment` suitable for developers who plan
-    to potentially contribute to the :term:`Lino framework`.  A bit more work to
-    install, but more future-proof.
-
-
 .. _lino.dev.env:
 
 Set up a virtual Python environment
