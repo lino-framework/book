@@ -1,12 +1,36 @@
-=====================================
-Using the Postfix mail transfer agent
-=====================================
+.. _admin.postfix:
+
+===================
+Postfix cheat sheet
+===================
+
+Postfix is a mail transfer agent (MTA). We recommend it over exim4 (which is the Debian favourite)
 
 Installing Postfix is easy::
 
   $ sudo apt install postfix
 
-But you need to understand how to answer the installation options.
+This will automatically uninstall exim4.
+
+You need to understand how to answer the installation options.
+
+Using a relay host for outgoing mail
+====================================
+
+A **smart host** or **relay host** is a third-party server that accepts outgoing
+mails from your server and cares about forwarding them to their final
+destination.
+
+Some server providers have a free mail relay host for the virtual machines they
+provide.  In that case you simply need to know the name of that host.
+
+Otherwise you can register an account for
+a third-party SMTP service like Mailgun
+and configure your postfix
+to use it as smarthost.
+`Mailgun <https://www.mailgun.com/smtp/free-smtp-service/free-open-smtp-relay/>`__
+gives you 10000 free emails every month.
+
 
 Without relay host
 ===================
@@ -24,32 +48,6 @@ you.  You will see messages like the following in your
   554-gmx.net (mxgmx116) Nemesis ESMTP Service not available
   554-No SMTP service 554-Bad DNS PTR resource record.
   554 For explanation visit http://postmaster.gmx.com/en/error-messages?ip=167.114.229.225&c=rdns
-
-
-With relay host
-===============
-
-A **smart host** or **relay host** is a third-party server that accepts outgoing
-mails from your server and cares about forwarding them to their final
-destination.
-
-Using a relay host for outgoing mail
-====================================
-
-Some server providers provide a free mail relay host for the virtual machines
-they provide.  In that case you simply need to know the name of that host.
-
-Please also read
-https://www.mailgun.com/smtp/free-smtp-service/free-open-smtp-relay/
-
-Register an account for on mailgun and configure your postfix with mailgun as
-smarthost.
-
-The web interface for mailman is less urgent
-than the lists themselves, so please start with postfix. You can send mails to
-test@LF for testing (this list contains only me at the moment ("sudo
-list_members test"). Try to add yourself using the mm command-line interface)
-
 
 
 
