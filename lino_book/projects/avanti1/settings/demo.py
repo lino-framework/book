@@ -13,6 +13,10 @@ class Site(Site):
     the_demo_date = datetime.date(2017, 2, 15)
     languages = "en de fr"
 
+    def get_plugin_configs(self):
+        for i in super(Site, self).get_plugin_configs():
+            yield i
+        yield ('beid', 'simulate_eidreader_path', self.project_dir.child('simulate_eidreader'))
 
 SITE = Site(globals())
 

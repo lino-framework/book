@@ -102,7 +102,7 @@ Examples:
 >>> from lino.utils.ssin import generate_ssin
 
 >>> n = generate_ssin(datetime.date(1968, 6, 1), Genders.male, 53)
->>> print (n)
+>>> print(n)
 680601 053-29
 >>> ssin_validator(n)
 
@@ -110,8 +110,13 @@ The sequence number is optional and the default value depends on
 the gender.  For boys it is 1, for girls 2.
 
 >>> n = generate_ssin(datetime.date(2002, 4, 5),Genders.female)
->>> print (n)
+>>> print(n)
 020405 002=44
+>>> ssin_validator(n)
+
+>>> n = generate_ssin(datetime.date(1968, 7, 21), Genders.male, 13)
+>>> print(n)
+680721 013-58
 >>> ssin_validator(n)
 
 
