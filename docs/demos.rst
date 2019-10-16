@@ -30,8 +30,8 @@ Screen casts :
 
 Demo sites:
 
-- Lino Così : `ExtJS <https://cosi-ee-extjs.new.lino-framework.org>`__ / `React <https://cosi-ee-react.new.lino-framework.org>`__
-- Lino Noi : `ExtJS <https://team.new.lino-framework.org>`__ / `React <https://team-react.new.lino-framework.org>`__
+- Lino Così : `ExtJS <https://cosi-ee-extjs.lino-framework.org>`__ / `React <https://cosi-ee-react.lino-framework.org>`__
+- Lino Noi : `ExtJS <https://team.lino-framework.org>`__ / `React <https://team-react.lino-framework.org>`__
 
 
 The remaining demos are rather old.
