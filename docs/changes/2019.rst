@@ -13,6 +13,20 @@
 .. contents::
   :local:
 
+2019-10-19
+==========
+
+Fixed a typo bug in :mod:`lino_xl.lib.cal` that caused :message:`NameError: name
+'cls' is not defined` e.g. when showing the detail of a :class:`cal.Guest`.
+
+2019-10-18
+==========
+
+Fixed callbacks for beidreader (:ticket:`3269`)
+
+Released Lino and XL to PyPI
+
+
 2019-10-16
 ==========
 
@@ -46,7 +60,7 @@ added a colon behind each field label, and the field value is now  bold. Fixed a
 bug in that same summary which inserted an empty bullet at the beginning of the
 list.
 
-I released Lino, XL and Avanti.
+Released Lino, XL and Avanti to PyPI.
 
 2019-10-14
 ==========
