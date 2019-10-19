@@ -261,7 +261,6 @@ True
 
 
 >>> from lino_xl.lib.beid.views import read_card_data_from_file
->>> from lino_xl.lib.beid.actions import get_image_path
 >>> from unipath import Path
 >>> fn = "tests/beid/20190311.json"
 >>> data = read_card_data_from_file(fn)
@@ -270,7 +269,7 @@ True
 >>> print(data.issuing_municipality)
 Charleroi
 
->>> img_file = Path(get_image_path(data.card_number))  #doctest: +ELLIPSIS
+>>> img_file = Path(rt.models.avanti.Client.card_number_to_image_path(data.card_number))  #doctest: +ELLIPSIS
 >>> img_file.endswith("/beid/592400976752.jpg")
 True
 >>> img_dir = Path(settings.MEDIA_ROOT).child('beid')
@@ -280,7 +279,7 @@ True
 >>> settings.SITE.makedirs_if_missing(img_dir)
 >>> kwargs = rt.models.avanti.Client.find_by_beid.card2client(data)
 >>> img_file.remove()
->>> img_dir.rmdir()
+>>> # img_dir.rmdir()
 
 
 >>> fn = "tests/beid/nocard.json"
