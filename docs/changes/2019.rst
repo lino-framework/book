@@ -19,10 +19,16 @@
 Fixed a typo bug in :mod:`lino_xl.lib.cal` that caused :message:`NameError: name
 'cls' is not defined` e.g. when showing the detail of a :class:`cal.Guest`.
 
+:class:`lino.modlib.system.Lockable` now uses a database field instead of an
+in-memory dict in order to be usable on a multi-process site (:ticket:`3277`).
+
+Released Lino to PyPI
+
+
 2019-10-18
 ==========
 
-Fixed callbacks for beidreader (:ticket:`3269`)
+Fixed callbacks for  :mod:`lino_xl.lib.beid` actions (:ticket:`3269`)
 
 Released Lino and XL to PyPI
 

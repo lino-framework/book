@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2018 Rumma & Ko Ltd
+# Copyright 2014-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Runs some tests about reading eID cards.
@@ -95,6 +95,13 @@ class BeIdTests(RemoteAuthTestCase):
             result = self.check_json_result(response, 'success message')
             self.assertEqual(result, {'message': 'OK', 'success': True})
 
+        # The following tests are based on an older simulation system developed
+        # before simulate_eidreader_path was developed. TODO: convert them to
+        # simulate_eidreader_path. En attendant we simply disable
+        # simulate_eidreader_path here. Works as well.
+        save_path = dd.plugins.beid.simulate_eidreader_path
+        dd.plugins.beid.simulate_eidreader_path = None
+        
         uuid = 'beid_test_1'
         simulate_eidreader(uuid)
 
@@ -112,7 +119,9 @@ class BeIdTests(RemoteAuthTestCase):
             REMOTE_USER='robin',
             HTTP_ACCEPT_LANGUAGE='en')
 
-        result = self.check_json_result(response, 'alert success message')
+        # result = self.check_json_result(response, 'alert success message')
+        result = self.check_json_result(response)
+        # raise Exception(repr(result))
         self.assertEqual(result['success'], False)
         expected = ("Sorry, I cannot handle that case: Cannot create "
                     "new client because there is already a person named "
@@ -344,3 +353,5 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :<br/>Firs
         self.assertEqual(result['success'], True)
         expected = "Create new client Jean Dupont : Are you sure?"
         self.assertEqual(result['message'], expected)
+
+        dd.plugins.beid.simulate_eidreader_path = save_path
