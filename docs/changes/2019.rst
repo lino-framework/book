@@ -13,6 +13,11 @@
 .. contents::
   :local:
 
+2019-10-21
+==========
+
+Fixed a failure in presto caused by changes in :mod:`lino_xl.lib.beid`.
+
 2019-10-19
 ==========
 
