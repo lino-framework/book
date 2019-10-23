@@ -71,6 +71,7 @@ Plugins of the Extensions library
    eevat
    events/index
    excerpts
+   groups
    healthcare
    files
    finan

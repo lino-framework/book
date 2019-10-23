@@ -48,6 +48,8 @@ def tickets_objects():
     # Topic = rt.models.topics.Topic
     TT = rt.models.tickets.TicketType
     Ticket = rt.models.tickets.Ticket
+    Group = rt.models.groups.Group
+    Membership = rt.models.groups.Membership
     # Competence = rt.models.tickets.Competence
     # Interest = rt.models.topics.Interest
     Milestone = dd.plugins.tickets.milestone_model
@@ -57,7 +59,7 @@ def tickets_objects():
     Site = dd.plugins.tickets.site_model
     Link = rt.models.tickets.Link
     LinkTypes = rt.models.tickets.LinkTypes
-    Subscription = rt.models.tickets.Subscription
+    # Subscription = rt.models.tickets.Subscription
     #EntryType = rt.models.blogs.EntryType
     #Entry = rt.models.blogs.Entry
     # Star = rt.models.stars.Star
@@ -67,7 +69,7 @@ def tickets_objects():
     cons = UserTypes.consultant
     dev = UserTypes.developer
     end_user = UserTypes.user
-    
+
     yield create_user("marc", UserTypes.user)
     yield create_user("mathieu", cons)
     yield create_user("luc", dev)
@@ -82,10 +84,14 @@ def tickets_objects():
                       if t.has_required_roles([Reporter])]
     REPORTERS = Cycler(User.objects.filter(user_type__in=reporter_types))
 
+    yield named(Group, _("Developers"))
+    yield named(Group, _("Managers"))
+    yield named(Group, _("Front-end team"))
+
     yield named(TT, _("Bugfix"))
     yield named(TT, _("Enhancement"))
     yield named(TT, _("Upgrade"))
-    
+
     # sprint = named(Line, _("Sprint"))
     # yield sprint
 
@@ -99,17 +105,18 @@ def tickets_objects():
 
     # TOPICS = Cycler(Topic.objects.all())
     RTYPES = Cycler(ReportingTypes.objects())
+    GROUPS = Cycler(Group.objects.all())
 
     for name in "welket welsch pypi".split():
         obj = Company(name=name)
         yield obj
         yield Site(
-            name=name, company=obj, reporting_type=RTYPES.pop())
+            name=name, company=obj, reporting_type=RTYPES.pop(), group=GROUPS.pop())
 
     COMPANIES = Cycler(Company.objects.all())
-    
+
     yield Company(name="Saffre-Rumma")
-    
+
     # for u in Company.objects.exclude(name="pypi"):
     #     for i in range(3):
     #         yield Interest(owner=u, topic=TOPICS.pop())
@@ -166,18 +173,18 @@ def tickets_objects():
             yield Milestone(**kw)
     # yield Milestone(site=SITES.pop(), expected=dd.today())
     # yield Milestone(project=PROJECTS.pop(), expected=dd.today())
-    
+
     SITES = Cycler(Site.objects.all())
-    
+
     TicketStates = rt.models.tickets.TicketStates
     TSTATES = Cycler(TicketStates.objects())
-    
+
     # Vote = rt.models.votes.Vote
     # VoteStates = rt.models.votes.VoteStates
     # VSTATES = Cycler(VoteStates.objects())
 
     num = [0]
-    
+
     def ticket(summary, **kwargs):
         num[0] += 1
         u = REPORTERS.pop()
@@ -222,7 +229,7 @@ def tickets_objects():
                  description="""<p>Linking to [ticket 1] and to
                  [url http://luc.lino-framework.org/blog/2015/0923.html blog].</p>
                  """)
- 
+
     yield ticket("Bar cannot baz")
     yield ticket("Bars have no foo")
     yield ticket("How to get bar from foo")
@@ -257,7 +264,7 @@ def tickets_objects():
                     milestone=MILESTONES.pop(), ticket=t,
                     wish_type=WTYPES.pop())
 
-    
+
     yield Link(
         type=LinkTypes.requires,
         parent=Ticket.objects.get(pk=1),
@@ -266,23 +273,23 @@ def tickets_objects():
     # yield EntryType(**dd.str2kw('name', _('Release note')))
     # yield EntryType(**dd.str2kw('name', _('Feature')))
     # yield EntryType(**dd.str2kw('name', _('Upgrade instruction')))
-    
+
     # ETYPES = Cycler(EntryType.objects.all())
     # TIMES = Cycler('12:34', '8:30', '3:45', '6:02')
     #blogger = USERS.pop()
-    
+
     # def entry(offset, title, body, **kwargs):
     #     kwargs['user'] = blogger
     #     kwargs['entry_type'] = ETYPES.pop()
     #     kwargs['pub_date'] = dd.today(offset)
     #     kwargs['pub_time'] = TIMES.pop()
     #     return Entry(title=title, body=body, **kwargs)
-    
+
     # yield entry(-3, "Hello, world!", "This is our first blog entry.")
     # e = entry(-2, "Hello again", "Our second blog entry is about [ticket 1]")
     # yield e
     # yield Interest(owner=e, topic=TOPICS.pop())
-    
+
     # e = entry(-1, "Our third entry", """\
     # Yet another blog entry about [ticket 1] and [ticket 2].
     # This entry has two taggings""")
@@ -293,7 +300,8 @@ def tickets_objects():
     for u in User.objects.all():
         if u.user_type.has_required_roles([Reporter]):
             if not u.user_type.has_required_roles([TicketsStaff]):
-                yield Subscription(site=SITES.pop(), user=u, primary=True)
+                yield Membership(group=GROUPS.pop(), user=u)
+                # yield Subscription(site=SITES.pop(), user=u, primary=True)
 
 def working_objects():
     # was previously in working
@@ -387,7 +395,7 @@ def skills_objects():
                 yield Competence(
                     user=u, faculty=SKILLS.pop(),
                     end_user=END_USERS.pop())
-            
+
     for i, t in enumerate(
             dd.plugins.skills.demander_model.objects.all()):
         yield Demand(demander=t, skill=SKILLS.pop())

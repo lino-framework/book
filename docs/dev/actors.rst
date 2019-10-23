@@ -66,7 +66,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-247
+253
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -75,12 +75,12 @@ Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-122
+126
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
 >>> len(kernel.slave_tables)
-50
+52
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 
@@ -168,4 +168,3 @@ screenshot below is without :attr:`sum_text_column`, the second is with
 
 .. image:: sum_text_column_a.png
 .. image:: sum_text_column_b.png
-

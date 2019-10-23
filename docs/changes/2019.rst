@@ -13,6 +13,19 @@
 .. contents::
   :local:
 
+2019-10-23
+==========
+
+.. currentmodule:: lino_xl.lib.groups
+
+Some changes for :ticket:`3284`: The :fixture:`demo` fixture of
+:mod:`lino_xl.lib.groups` now adds first names for every user because otherwise
+Lino complains when users.Users inherits from `contacts.Person`.  In
+:mod:`lino_xl.lib.groups` the :attr:`Membership.user` field is now labeled
+"User" instead of "Author", and the model now has a detail layout and an insert
+layout (e.g. :class:`MembersByGroup` now has a insert button)
+
+
 2019-10-21
 ==========
 
