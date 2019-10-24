@@ -60,17 +60,17 @@ Users
 To see all users defined on the site::
 
     $ sudo mysql -u root -p
-    mysql> select host, user, password from mysql.user;
-    +-----------+------------------+------------------------------+
-    | host      | user             | password                     |
-    +-----------+------------------+------------------------------+
-    | localhost | root             | 6FD6D9512034462391B7154E5ADF |
-    | 127.0.0.1 | root             | 6FD6D9512034462391B7154E5ADF |
-    | localhost |                  |                              |
-    | localhost | debian-sys-maint | A14910957D8F261196A210B4C82F |
-    | localhost | django           | 42214E1C5E6EF5119DD86A2A2F8C |
-    | %         | django           | 42214E1C5E6EF5119DD86A2A2F8C |
-    +-----------+------------------+------------------------------+
+    mysql> select host, user from mysql.user;
+    +-----------+------------------+
+    | host      | user             |
+    +-----------+------------------+
+    | localhost | root             |
+    | 127.0.0.1 | root             |
+    | localhost |                  |
+    | localhost | debian-sys-maint |
+    | localhost | django           |
+    | %         | django           |
+    +-----------+------------------+
     6 rows in set (0.00 sec)
 
 
@@ -78,6 +78,7 @@ How to change the password of an existing user::
 
     $ sudo mysql -u root -p
     mysql> set password for PRJNAME@localhost = password('my cool password');
+
 
 
 Databases
