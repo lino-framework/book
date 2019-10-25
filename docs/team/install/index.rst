@@ -70,7 +70,7 @@ Set shared permissions in your default :term:`virtualenv`::
       $ sudo chown root:www-data .
       $ sudo chmod g+ws .
 
-Otherwise it might happen that nginx compiles a :xfile:``.pyc` file that you
+Otherwise it might happen that nginx compiles a :xfile:`.pyc` file that you
 cannot modify afterwards.
 
 Run :cmd:`getlino configure` and :cmd:`getlino startsite` as root (remember
