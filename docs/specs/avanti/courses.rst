@@ -73,6 +73,23 @@ Enrolments
 
     Shows the presences of this pupil for this course.
 
+Filling the guest list of a calendar entry
+==========================================
+
+>>> rt.show('cal.EntryStates')
+======= ============ ============ ============= ============= ======== ============= =========
+ value   name         text         Button text   Fill guests   Stable   Transparent   No auto
+------- ------------ ------------ ------------- ------------- -------- ------------- ---------
+ 10      suggested    Suggested    ?             Yes           No       No            No
+ 20      draft        Draft        ☐             Yes           No       No            No
+ 50      took_place   Took place   ☑             No            Yes      No            No
+ 70      cancelled    Cancelled    ☒             No            Yes      Yes           Yes
+======= ============ ============ ============= ============= ======== ============= =========
+<BLANKLINE>
+
+
+>>> cal.EntryStates.suggested.fill_guests
+True
 
 Topics
 ======

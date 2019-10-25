@@ -46,7 +46,7 @@ following areas:
 ======= ========== ========== ==================
 <BLANKLINE>
 
-    
+
 
 Pupils and teachers
 ===================
@@ -123,26 +123,26 @@ Enrolments
 ==========
 
 >>> rt.show('courses.EnrolmentStates')
-======= =========== =========== =============
- value   name        text        Button text
-------- ----------- ----------- -------------
- 10      requested   Requested
- 11      trying      Trying
- 20      confirmed   Confirmed
- 30      cancelled   Cancelled
-======= =========== =========== =============
+======= =========== =========== ============= ============= ==============
+ value   name        text        Button text   invoiceable   Uses a place
+------- ----------- ----------- ------------- ------------- --------------
+ 10      requested   Requested                 No            No
+ 11      trying      Trying                    No            Yes
+ 20      confirmed   Confirmed                 Yes           Yes
+ 30      cancelled   Cancelled                 No            No
+======= =========== =========== ============= ============= ==============
 <BLANKLINE>
 
 
 >>> rt.show('courses.EnrolmentStates', language="de")
-====== =========== =========== =============
- Wert   name        Text        Button text
------- ----------- ----------- -------------
- 10     requested   Angefragt
- 11     trying      Test
- 20     confirmed   Bestätigt
- 30     cancelled   Storniert
-====== =========== =========== =============
+====== =========== =========== ============= ============== =====================
+ Wert   name        Text        Button text   Fakturierbar   Besetzt einen Platz
+------ ----------- ----------- ------------- -------------- ---------------------
+ 10     requested   Angefragt                 Nein           Nein
+ 11     trying      Test                      Nein           Ja
+ 20     confirmed   Bestätigt                 Ja             Ja
+ 30     cancelled   Storniert                 Nein           Nein
+====== =========== =========== ============= ============== =====================
 <BLANKLINE>
 
 
@@ -165,7 +165,7 @@ this limit is reached. Here is a user statement about this:
 
     Also im Prinzip nehmen wir bei den Computerkursen maximal 10 Leute
     an. Da wir aber überall über 12 Geräte verfügen, können wir immer
-    im Bedarfsfall um 2 Personen aufstocken. Also bei PC-Kursen setzen 
+    im Bedarfsfall um 2 Personen aufstocken. Also bei PC-Kursen setzen
     wir das Maximum immer auf 12. Als Regel gilt dann, dass wir immer nur
     10 annehmen, aber falls unbedingt erforderlich auf 12 gehen
     können.
@@ -195,7 +195,7 @@ There are two Yoga courses:
 >>> obj = courses.Line.objects.get(pk=10)
 >>> obj
 Line #10 ('Yoga')
-        
+
 >>> rt.show(rt.models.courses.CoursesByLine, obj)
 ============= ============== ================== ============= ====================
  Activity      When           Room               Times         Instructor
@@ -210,7 +210,7 @@ Line #10 ('Yoga')
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
 >>> demo_get('robin',
-...          'api/courses/CoursesByLine', json_fields, 3, 
+...          'api/courses/CoursesByLine', json_fields, 3,
 ...          mt=mt, mk=obj.pk, **kw)
 
 
@@ -402,5 +402,3 @@ Presence sheet
 The **presence sheet** of a course is a printable document where
 course instructors can manually record the presences of the
 participants for every event.
-
-

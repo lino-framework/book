@@ -30,6 +30,7 @@ class Site(Site):
     # default_ui = 'lino_extjs6.extjs6'
     # default_ui = 'lino.modlib.bootstrap3'
     # default_ui = 'lino_openui5.openui5'
+    # default_ui = 'lino_react.react'
 
     # def get_installed_apps(self):
     #     yield super(Site, self).get_installed_apps()

@@ -94,7 +94,7 @@ The ``Course`` model
         Number of confirmed places.
 
 
-           
+
 .. class:: Courses
 
     Base table for all activities.
@@ -113,15 +113,15 @@ The ``Course`` model
 
     .. attribute:: state
 
-         
+
 
 .. class:: MyCourses
-           
+
     Show the courses authored by me (i.e. where I am the responsible
     manager).  Compare :class:`MyCoursesGiven`.
 
 .. class:: MyCoursesGiven
-           
+
     Show the courses given by me (i.e. where I am the teacher).
     Compare :class:`MyCourses`.
 
@@ -132,11 +132,11 @@ The ``Course`` model
     all courses without teacher.
 
 .. class:: CoursesByLine
-           
+
     Show the courses per course line.
-    
+
 .. class:: CoursesByTopic
-           
+
     Shows the courses of a given topic.
 
 
@@ -144,7 +144,7 @@ The ``Enrolment`` model
 =======================
 
 .. class:: Enrolment
-           
+
     An **enrolment** is when a given pupil plans to participate in a
     given course.
 
@@ -156,7 +156,7 @@ The ``Enrolment`` model
     .. attribute:: end_date
     .. attribute:: state
 
-        One of :class:`lino_xl.lib.courses.choicelists.EnrolmentStates`.
+        One of :class:`lino_xl.lib.courses.EnrolmentStates`.
 
     .. attribute:: places
     .. attribute:: option
@@ -168,27 +168,27 @@ The ``Enrolment`` model
         participant.
 
 .. class:: Enrolments
-           
+
     Base class for all tables that show :class:`Enrolment`.
 
 .. class:: AllEnrolments
-           
+
     Show global list of all enrolments.
-    
+
 .. class:: PendingRequestedEnrolments
-           
+
     Show all requested enrolments.
 
 .. class:: PendingConfirmedEnrolments
-           
+
     Show all confirmed enrolments.
 
 .. class:: EnrolmentsByPupil
-           
+
     Show all enrolments of a given pupil.
-    
+
 .. class:: EnrolmentsByCourse
-           
+
     Show the enrolments of a this course.
 
 
@@ -201,14 +201,53 @@ Notes about automatic calendar entry generation:
 
 - Marking an automatically generated event as "Cancelled" will not
   create a replacement event.
-    
+
+
+Enrolment workflow
+==================
+
+The state of an enrolment can be one of the following:
+
+>>> rt.show('courses.EnrolmentStates')
+======= =========== =========== ============= ==============
+ value   name        text        invoiceable   Uses a place
+------- ----------- ----------- ------------- --------------
+ 10      requested   Requested   No            No
+ 11      trying      Trying      No            Yes
+ 20      confirmed   Confirmed   Yes           Yes
+ 30      cancelled   Cancelled   No            No
+======= =========== =========== ============= ==============
+<BLANKLINE>
+
+
+.. class:: EnrolmentStates
+
+    The list of possible states of an enrolment.
+
+    The default implementation has the following values:
+
+    .. attribute:: requested
+    .. attribute:: confirmed
+    .. attribute:: cancelled
+
+        The enrolment was cancelled before it even started.
+
+    .. attribute:: ended
+
+        The enrolment was was successfully ended.
+
+    .. attribute:: abandoned
+
+        The enrolment was abandoned.
+
+
 
 
 The ``Slot`` model
 ==================
 
 .. class:: Slot
-    
+
 The ``Line`` model
 ==================
 
@@ -248,8 +287,8 @@ The ``Line`` model
         application defines several variants of
         :class:`EnrolmentsByPupil`.
 
-           
-    
+
+
 Course areas
 ============
 
@@ -274,16 +313,16 @@ The default configuration contains only one choice:
 Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
 .. class:: CourseAreas
-           
+
     The global choicelist of course areas.  Every choice is an
     instance of :class:`CourseArea`.
-        
+
 .. class:: CourseArea
 
     .. attribute:: courses_table
 
         Which table to use for showing courses in this course area.
-        
+
 
 The state of a course
 =====================
@@ -301,16 +340,16 @@ The state of a course
 
 
 .. class:: CourseStates
-           
+
    .. attribute:: draft
    .. attribute:: active
    .. attribute:: inactive
    .. attribute:: closed
 
-               
+
 Every course state has itself some additional attributes that are used
 to group them at certain places.
-   
+
 .. class:: CourseState
 
    .. attribute:: is_editable
@@ -335,15 +374,15 @@ application.
 
 TODO: Write a tutorial about redefining choicelists.
 
-               
-               
+
+
 
 Actions
 =======
 
 .. class:: ConfirmAllEnrolments
-    
-        
+
+
 
 
 Plugin configuration
@@ -353,12 +392,12 @@ Plugin configuration
 
     .. attribute:: teacher_model = 'contacts.Person'
     .. attribute:: pupil_model = 'contacts.Person'
-           
+
     .. attribute:: pupil_name_fields = "pupil__name"
 
     The value to use as :attr:`quick_search_fields
     <lino.core.model.Model.quick_search_fields>` for
-    :class:`Enrolment`. 
+    :class:`Enrolment`.
 
     Note that this remains a text string while
     :attr:`quick_search_fields
@@ -376,6 +415,3 @@ For example :ref:`voga.presence_sheet`.
 
     The template used for printing a presence sheet of an activity
     (both versions pdf and html)
-
-
-
