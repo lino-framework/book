@@ -108,15 +108,15 @@ The :class:`ContentTypes` table shows all models defined in your application.
  4    excerpts           excerpttype
  5    excerpts           excerpt
  6    countries          country
- 7    countries          place
  ...
- 45   notify             message
  46   changes            change
- ...
- 49   uploads            volume
- 50   uploads            uploadtype
- 51   uploads            upload
- 52   sessions           session
+ 47   comments           commenttype
+ 48   comments           comment
+ 49   comments           mention
+ 50   uploads            volume
+ 51   uploads            uploadtype
+ 52   uploads            upload
+ 53   sessions           session
 ==== ================== =========================
 <BLANKLINE>
 
@@ -181,7 +181,7 @@ List of models which inherit from :class:`Controllable
 <lino.modlib.gfks.mixins.Controllable>`:
 
 >>> print(' '.join([fmn(m) for m in rt.models_by_base(Controllable)]))
-cal.Event cal.Task checkdata.Problem comments.Comment excerpts.Excerpt notes.Note notify.Message uploads.Upload
+cal.Event cal.Task checkdata.Problem comments.Comment comments.Mention excerpts.Excerpt notes.Note notify.Message uploads.Upload
 
 >>> obj = contacts.Person.objects.all()[0]
 >>> d = gfk2lookup(notes.Note.owner, obj)

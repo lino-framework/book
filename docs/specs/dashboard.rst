@@ -34,7 +34,7 @@ Which means that code snippets in this document are tested using the
 List of available dashboard items
 =================================
 
->>> user = rt.models.users.User.objects.get(username="robin")         
+>>> user = rt.models.users.User.objects.get(username="robin")
 >>> pprint(list(settings.SITE.get_dashboard_items(user)))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 [lino_xl.lib.cal.ui.MyTasks,
@@ -50,15 +50,16 @@ List of available dashboard items
  lino_xl.lib.tickets.ui.TicketsNeedingMyFeedback,
  lino_xl.lib.tickets.ui.MyTicketsNeedingFeedback,
  lino_xl.lib.working.ui.WorkedHours,
- lino.modlib.notify.models.MyMessages]
+ lino.modlib.notify.models.MyMessages,
+ lino_xl.lib.groups.models.MyGroups]
 
- 
+
 As long as a user didn't populate their dashboard, the list ist empty
 and they will get all the dashboard items provided by the application.
 
 .. figure:: /specs/noi/dashboard1.png
    :width: 80 %
-            
+
    Dashboard preferences (empty)
 
 Click the :guilabel:`⚡` button in order to populate the table.
@@ -66,7 +67,7 @@ Click the :guilabel:`⚡` button in order to populate the table.
 
 .. figure:: /specs/noi/dashboard2.png
    :width: 80 %
-            
+
    Dashboard preferences (populated)
 
 Now you can hide individual items and change their order.

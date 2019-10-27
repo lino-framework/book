@@ -44,10 +44,10 @@ native Django plugins (contenttypes, sessions, staticfiles) are managed by
 Django:
 
 >>> shell("python manage.py prep --noinput")
-... #doctest: +ELLIPSIS
+... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 `initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extensible, extjs, gfks, github, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
+  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extensible, extjs, gfks, github, groups, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
 ...
@@ -56,7 +56,8 @@ Running migrations:
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
 ...
-Installed 488 object(s) from 17 fixture(s)
+Updating summary data for User summaries ...
+Installed 429 object(s) from 19 fixture(s)
 
 Tidy up:
 
@@ -75,17 +76,17 @@ When Django migrations are enabled, the :manage:`prep` command does the same,
 but in a different way.  Django now considers all Lino plugins as "migrated":
 
 >>> shell("python manage.py prep --noinput")
-... #doctest: +ELLIPSIS
+... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 `initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: staticfiles
-  Apply all migrations: cal, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
+  Apply all migrations: cal, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, groups, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
 Synchronizing apps without migrations:
   Creating tables...
     Running deferred SQL...
 Running migrations:
   ...
-Installed 488 object(s) from 17 fixture(s)
+Installed 429 object(s) from 19 fixture(s)
 
 
 >>> from lino import startup
@@ -121,6 +122,7 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'extjs': 'lino_book.projects.migs.settings.migrations.extjs',
  'gfks': 'lino_book.projects.migs.settings.migrations.gfks',
  'github': 'lino_book.projects.migs.settings.migrations.github',
+ 'groups': 'lino_book.projects.migs.settings.migrations.groups',
  'jinja': 'lino_book.projects.migs.settings.migrations.jinja',
  'lino': 'lino_book.projects.migs.settings.migrations.lino',
  'lists': 'lino_book.projects.migs.settings.migrations.lists',

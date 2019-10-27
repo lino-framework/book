@@ -209,14 +209,14 @@ Enrolment workflow
 The state of an enrolment can be one of the following:
 
 >>> rt.show('courses.EnrolmentStates')
-======= =========== =========== ============= ==============
- value   name        text        invoiceable   Uses a place
-------- ----------- ----------- ------------- --------------
- 10      requested   Requested   No            No
- 11      trying      Trying      No            Yes
- 20      confirmed   Confirmed   Yes           Yes
- 30      cancelled   Cancelled   No            No
-======= =========== =========== ============= ==============
+======= =========== =========== ============= ============= ==============
+ value   name        text        Button text   invoiceable   Uses a place
+------- ----------- ----------- ------------- ------------- --------------
+ 10      requested   Requested                 No            No
+ 11      trying      Trying                    No            Yes
+ 20      confirmed   Confirmed                 Yes           Yes
+ 30      cancelled   Cancelled                 No            No
+======= =========== =========== ============= ============= ==============
 <BLANKLINE>
 
 
