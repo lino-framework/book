@@ -83,6 +83,6 @@ Point your browser to http://first.localhost
 
 .. rubric:: Pitfalls
 
-  When using nginx and you want to restart it, you must restart *supervisor*
-  (not nginx) because the wsgi process of the site is running there. nginx
-  itself usually doesn't need to be restarted.
+When using nginx and you want to restart it, you must restart *supervisor*
+(not nginx) because the wsgi process of the site is running there. nginx
+itself usually doesn't need to be restarted.
