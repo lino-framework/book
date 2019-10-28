@@ -86,7 +86,7 @@ The database models
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         0
  notify.Message                     notify.Messages                  11        7
- sessions.Session                   sessions.SessionTable            3         12
+ sessions.Session                   sessions.SessionTable            3         ...
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0
@@ -94,7 +94,7 @@ The database models
  social_django.UserSocialAuth       users.SocialAuths                5         0
  system.SiteConfig                  system.SiteConfigs               9         1
  tickets.Link                       tickets.Links                    4         1
- tickets.Site                       tickets.Sites                    14        3
+ tickets.Site                       tickets.Sites                    15        3
  tickets.Subscription               tickets.Subscriptions            4         0
  tickets.Ticket                     tickets.Tickets                  28        116
  tickets.TicketType                 tickets.TicketTypes              5         3
