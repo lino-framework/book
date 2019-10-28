@@ -13,6 +13,19 @@
 .. contents::
   :local:
 
+2019-10-28
+==========
+
+Database changes in :mod:`lino_xl.lib.tickets`.
+
+2019-10-24
+==========
+
+Database changes for
+:ticket:`3108` (Report when a ticket or user is mentioned in a comment)
+in :mod:`lino.modlib.comments` : new model
+:class:`lino.modlib.comments.Mention`.
+
 2019-10-23
 ==========
 
