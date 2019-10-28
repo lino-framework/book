@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2018 Rumma & Ko Ltd
+# Copyright 2015-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 from __future__ import unicode_literals
@@ -18,6 +18,7 @@ from lino.utils.mldbc import babel_named as named
 from lino.modlib.users.utils import create_user
 
 from lino_xl.lib.working.choicelists import ReportingTypes
+from lino_xl.lib.tickets.choicelists import SiteStates
 
 from lino_xl.lib.tickets.roles import Reporter, TicketsStaff
 
@@ -34,17 +35,12 @@ def vote(user, ticket, state, **kw):
         vote.state = s
     return vote
 
-def objects():
-    yield tickets_objects()
-    yield working_objects()
-    # yield skills_objects()
-    # yield votes_objects()
-
 
 def tickets_objects():
     # was previously in tickets
     User = rt.models.users.User
     Company = rt.models.contacts.Company
+    Person = rt.models.contacts.Person
     # Topic = rt.models.topics.Topic
     TT = rt.models.tickets.TicketType
     Ticket = rt.models.tickets.Ticket
@@ -78,8 +74,8 @@ def tickets_objects():
     # USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(
         username__in='mathieu luc jean'.split()))
-    END_USERS = Cycler(User.objects.filter(
-        user_type=rt.models.users.UserTypes.user))
+    # END_USERS = Cycler(User.objects.filter(
+    #     user_type=rt.models.users.UserTypes.user))
     reporter_types = [t for t in UserTypes.get_list_items()
                       if t.has_required_roles([Reporter])]
     REPORTERS = Cycler(User.objects.filter(user_type__in=reporter_types))
@@ -106,15 +102,24 @@ def tickets_objects():
     # TOPICS = Cycler(Topic.objects.all())
     RTYPES = Cycler(ReportingTypes.objects())
     GROUPS = Cycler(Group.objects.all())
+    PERSONS = Cycler(Person.objects.order_by("id"))
+    COMPANIES = Cycler(Company.objects.order_by("id"))
+    end_users = []
 
-    for name in "welket welsch pypi".split():
-        obj = Company(name=name)
-        yield obj
-        yield Site(
-            name=name, company=obj, reporting_type=RTYPES.pop(), group=GROUPS.pop())
-
-    COMPANIES = Cycler(Company.objects.all())
-
+    for ref in "welket welsch pypi".split():
+        kw = dict(ref=ref, reporting_type=RTYPES.pop(), group=GROUPS.pop(), state=SiteStates.active)
+        if ref == "pypi":
+            kw.update(name=ref)
+        else:
+            obj = COMPANIES.pop()
+            eu = PERSONS.pop()
+            end_users.append(eu)
+            yield rt.models.contacts.Role(person=eu, company=obj)
+            kw.update(company=obj)
+            kw.update(name=str(obj))
+            kw.update(contact_person=eu)
+        yield Site(**kw)
+    END_USERS  = Cycler(end_users)
     yield Company(name="Saffre-Rumma")
 
     # for u in Company.objects.exclude(name="pypi"):
@@ -301,6 +306,7 @@ def tickets_objects():
         if u.user_type.has_required_roles([Reporter]):
             if not u.user_type.has_required_roles([TicketsStaff]):
                 yield Membership(group=GROUPS.pop(), user=u)
+                yield Membership(group=GROUPS.pop(), user=u)
                 # yield Subscription(site=SITES.pop(), user=u, primary=True)
 
 def working_objects():
@@ -358,7 +364,8 @@ def working_objects():
                     break
 
     ServiceReport = rt.models.working.ServiceReport
-    welket = Company.objects.get(name="welket")
+    # welket = Company.objects.get(name="welket")
+    welket = rt.models.tickets.Site.objects.get(ref="welket").company
     yield ServiceReport(
         start_date=dd.today(-90), interesting_for=welket)
 
@@ -407,3 +414,10 @@ def votes_objects():
     yield vote('mathieu', 1, 'candidate')
     yield vote('luc', 1, 'candidate')
     yield vote('jean', 2, 'assigned')
+
+
+def objects():
+    yield tickets_objects()
+    yield working_objects()
+    # yield skills_objects()
+    # yield votes_objects()

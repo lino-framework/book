@@ -58,6 +58,7 @@ the detail window of a ticket.
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin], **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
+- **Mentions** (comments_CommentsByMentioned) [visible for user consultant hoster developer senior admin]
 <BLANKLINE>
 
 
@@ -163,6 +164,3 @@ block, otherwise we use the more widely supported symbols from
 <https://en.wikipedia.org/wiki/Miscellaneous_Symbols>`
 `fileformat.info
 <http://www.fileformat.info/info/unicode/block/miscellaneous_symbols/list.htm>`__.
-
-
-

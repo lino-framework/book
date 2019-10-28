@@ -192,37 +192,38 @@ Zulip calls them "streams", Slack calls them "Channels".
     .. attribute:: watcher
     .. attribute:: show_exposed
     .. attribute:: state
-           
+
 .. class:: MySites
 
     Shows the sites for which I have a subscription.
 
     Sleeping and closed sites are not shown by default.
-    
+
 List of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
-=========== ============= ======== ======== ============= ====
- Reference   Designation   Client   Remark   Workflow      ID
------------ ------------- -------- -------- ------------- ----
-             pypi          pypi              **⛶ Draft**   3
-             welket        welket            **⛶ Draft**   1
-             welsch        welsch            **⛶ Draft**   2
-=========== ============= ======== ======== ============= ====
+=========== ===================== ===================== ======== ============== ====
+ Reference   Designation           Client                Remark   Workflow       ID
+----------- --------------------- --------------------- -------- -------------- ----
+ pypi        pypi                                                 **⚒ Active**   3
+ welket      Rumma & Ko OÜ         Rumma & Ko OÜ                  **⚒ Active**   1
+ welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald            **⚒ Active**   2
+=========== ===================== ===================== ======== ============== ====
 <BLANKLINE>
 
-List of sites to which Jean is subscribed:
+List of sites to which Jean is "subscribed" (i.e. that are assigned to a team
+where Jean is member):
 
 >>> rt.login("jean").show(tickets.MySites)
-===================== ============= =============
+===================== ============= ==============
  Site                  Description   Workflow
---------------------- ------------- -------------
- `welsch <Detail>`__                 **⛶ Draft**
-===================== ============= =============
+--------------------- ------------- --------------
+ `welket <Detail>`__                 **⚒ Active**
+ `welsch <Detail>`__                 **⚒ Active**
+===================== ============= ==============
 <BLANKLINE>
 
-
-List of tickets which have not yet been assigned to a site:
+List of tickets that have not yet been assigned to a site:
 
 >>> pv = dict(has_site=dd.YesNo.no)
 >>> rt.show(tickets.AllTickets, param_values=pv)
@@ -231,18 +232,30 @@ List of tickets which have not yet been assigned to a site:
  ID    Summary                                        Priority   Workflow        Site
 ----- ---------------------------------------------- ---------- --------------- ------
  110   Why is foo so bar                              Normal     **☐ Ready**
+ 108   No more foo when bar is gone                   Normal     **⚒ Working**
+ 100   Cannot delete foo                              Normal     **⚒ Working**
+ 94    How can I see where bar?                       Normal     **☐ Ready**
  90    No more foo when bar is gone                   Normal     **☎ Talk**
+ 80    Foo never bars                                 Normal     **☒ Refused**
  70    'NoneType' object has no attribute 'isocode'   Normal     **☐ Ready**
+ 66    Irritating message when bar                    Normal     **☎ Talk**
+ 60    Default account in invoices per partner        Normal     **⚒ Working**
+ 52    'NoneType' object has no attribute 'isocode'   Normal     **⚒ Working**
+ 50    Misc optimizations in Baz                      Normal     **☎ Talk**
  40    How can I see where bar?                       Normal     **☒ Refused**
+ 38    Why is foo so bar                              Normal     **☐ Ready**
+ 30    Irritating message when bar                    Normal     **☐ Ready**
+ 24    Default account in invoices per partner        Normal     **☒ Refused**
  20    Why is foo so bar                              Normal     **⚒ Working**
+ 10    Where can I find a Foo when bazing Bazes?      Normal     **☎ Talk**
 ===== ============================================== ========== =============== ======
 <BLANKLINE>
 
 
 Subscriptions
 =============
-           
-           
+
+
 .. class:: Subscription
 
     The Django model representing a *subscription*.
@@ -250,18 +263,18 @@ Subscriptions
     .. attribute:: site
 
         The site.
-                   
+
     .. attribute:: user
 
         The user.
-                   
+
     .. attribute:: primary
 
         Whether this is the primary subscription of this user.
 
-        Checking this field will automatically uncheck any 
+        Checking this field will automatically uncheck any
         previous primary subscriptions.
-           
+
 
 
 Ticket types
@@ -324,7 +337,7 @@ Show all active tickets reported by me.
  Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                               Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__         Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal     `#57 (⛶ Irritating message when bar) <Detail>`__                                                                           [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                       Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                       Jean                                                  [▶] **☎ Talk** → [☾] [☉] [☐] [☒]
  Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                    Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#22 (☐ How can I see where bar?) <Detail>`__                        Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
@@ -357,29 +370,41 @@ The backlog
 The :class:`TicketsBySite` panel shows all the tickets for a given site. It is
 a scrum backlog.
 
->>> welket = tickets.Site.objects.get(name="welket")
+>>> welket = tickets.Site.objects.get(ref="welket")
 >>> rt.show(tickets.TicketsBySite, welket)
 ... #doctest: +REPORT_UDIFF -SKIP +ELLIPSIS +NORMALIZE_WHITESPACE
-===================== ========================================================= ============== =========== ======= ====== ===============
- Priority              Ticket                                                    Planned time   Regular     Extra   Free   Workflow
---------------------- --------------------------------------------------------- -------------- ----------- ------- ------ ---------------
- Normal                *#116 (⚒ Foo never bars)*                                                                           **⚒ Working**
- Normal                *#115 (☉ 'NoneType' object has no attribute 'isocode')*                                             **☉ Open**
- Normal                *#114 (☎ Default account in invoices per partner)*                                                  **☎ Talk**
- Normal                *#108 (⚒ No more foo when bar is gone)*                                                             **⚒ Working**
- Normal                *#106 (☎ 'NoneType' object has no attribute 'isocode')*                                             **☎ Talk**
- Normal                *#102 (☐ Irritating message when bar)*                                                              **☐ Ready**
- Normal                *#98 (☎ Foo never bars)*                                                                            **☎ Talk**
- ...
- Normal                *#12 (⚒ Foo cannot bar)*                                                                            **⚒ Working**
- Normal                *#10 (☎ Where can I find a Foo when bazing Bazes?)*                                                 **☎ Talk**
- Normal                *#6 (☐ Sell bar in baz)*                                                                            **☐ Ready**
- Normal                *#4 (⚒ Foo and bar don't baz)*                                           1:24                       **⚒ Working**
- Normal                *#2 (☎ Bar is not always baz)*                                           9:40                       **☎ Talk**
- Normal                *#1 (⛶ Föö fails to bar when baz)*                                                                  **⛶ New**
- **Total (46 rows)**                                                                            **11:04**
-===================== ========================================================= ============== =========== ======= ====== ===============
+===================== ========================================================= ============== ========== ======= ====== ===============
+ Priority              Ticket                                                    Planned time   Regular    Extra   Free   Workflow
+--------------------- --------------------------------------------------------- -------------- ---------- ------- ------ ---------------
+ Normal                *#115 (☉ 'NoneType' object has no attribute 'isocode')*                                            **☉ Open**
+ Normal                *#114 (☎ Default account in invoices per partner)*                                                 **☎ Talk**
+ Normal                *#106 (☎ 'NoneType' object has no attribute 'isocode')*                                            **☎ Talk**
+ Normal                *#97 (⛶ 'NoneType' object has no attribute 'isocode')*                                             **⛶ New**
+ Normal                *#91 (☉ Cannot delete foo)*                                                                        **☉ Open**
+ Normal                *#84 (⚒ Irritating message when bar)*                                                              **⚒ Working**
+ Normal                *#82 (☎ Cannot delete foo)*                                                                        **☎ Talk**
+ Normal                *#74 (☎ Why is foo so bar)*                                                                        **☎ Talk**
+ Normal                *#73 (⛶ Cannot delete foo)*                                                                        **⛶ New**
+ Normal                *#68 (⚒ Misc optimizations in Baz)*                                                                **⚒ Working**
+ Normal                *#67 (☉ How can I see where bar?)*                                                                 **☉ Open**
+ Normal                *#62 (☐ Foo never bars)*                                                                           **☐ Ready**
+ Normal                *#58 (☎ How can I see where bar?)*                                                                 **☎ Talk**
+ Normal                *#49 (⛶ How can I see where bar?)*                                                                 **⛶ New**
+ Normal                *#44 (⚒ Foo never bars)*                                                                           **⚒ Working**
+ Normal                *#43 (☉ 'NoneType' object has no attribute 'isocode')*                                             **☉ Open**
+ Normal                *#42 (☎ Default account in invoices per partner)*                                                  **☎ Talk**
+ Normal                *#36 (⚒ No more foo when bar is gone)*                                                             **⚒ Working**
+ Normal                *#25 (⛶ 'NoneType' object has no attribute 'isocode')*                                             **⛶ New**
+ Normal                *#19 (☉ Cannot delete foo)*                                                                        **☉ Open**
+ Normal                *#18 (☎ No more foo when bar is gone)*                                                             **☎ Talk**
+ Normal                *#14 (☐ Bar cannot baz)*                                                                           **☐ Ready**
+ Normal                *#12 (⚒ Foo cannot bar)*                                                                           **⚒ Working**
+ Normal                *#4 (⚒ Foo and bar don't baz)*                                           1:24                      **⚒ Working**
+ Normal                *#1 (⛶ Föö fails to bar when baz)*                                                                 **⛶ New**
+ **Total (25 rows)**                                                                            **1:24**
+===================== ========================================================= ============== ========== ======= ====== ===============
 <BLANKLINE>
+
 
 Note that the above table shows no state change actions in the
 `Workflow` column.  That's because in this doctest it is being
@@ -388,24 +413,27 @@ this:
 
 >>> rt.login("robin").show(tickets.TicketsBySite, welket)
 ... #doctest: +REPORT_UDIFF -SKIP +ELLIPSIS +NORMALIZE_WHITESPACE
-===================== ==================================================================== ============== =========== ======= ====== =============================================
- Priority              Ticket                                                               Planned time   Regular     Extra   Free   Workflow
---------------------- -------------------------------------------------------------------- -------------- ----------- ------- ------ ---------------------------------------------
- Normal                `#116 (⚒ Foo never bars) <Detail>`__                                                                           [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
- Normal                `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
- Normal                `#114 (☎ Default account in invoices per partner) <Detail>`__                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#108 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
- Normal                `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#102 (☐ Irritating message when bar) <Detail>`__                                                              [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal                `#98 (☎ Foo never bars) <Detail>`__                                                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+===================== ==================================================================== ============== ========== ======= ====== =============================================
+ Priority              Ticket                                                               Planned time   Regular    Extra   Free   Workflow
+--------------------- -------------------------------------------------------------------- -------------- ---------- ------- ------ ---------------------------------------------
+ Normal                `#115 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal                `#114 (☎ Default account in invoices per partner) <Detail>`__                                                 [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__                                            [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#97 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal                `#91 (☉ Cannot delete foo) <Detail>`__                                                                        [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  ...
- Normal                `#6 (☐ Sell bar in baz) <Detail>`__                                                                            [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                       [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
- Normal                `#2 (☎ Bar is not always baz) <Detail>`__                                           9:40                       [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                  [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
- **Total (46 rows)**                                                                                       **11:04**
-===================== ==================================================================== ============== =========== ======= ====== =============================================
+ Normal                `#36 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#25 (⛶ 'NoneType' object has no attribute 'isocode') <Detail>`__                                             [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal                `#19 (☉ Cannot delete foo) <Detail>`__                                                                        [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
+ Normal                `#18 (☎ No more foo when bar is gone) <Detail>`__                                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
+ Normal                `#14 (☐ Bar cannot baz) <Detail>`__                                                                           [▶] **☐ Ready** → [☎] [☑] [☒]
+ Normal                `#12 (⚒ Foo cannot bar) <Detail>`__                                                                           [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                      [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
+ Normal                `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                 [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ **Total (25 rows)**                                                                                       **1:24**
+===================== ==================================================================== ============== ========== ======= ====== =============================================
 <BLANKLINE>
+
 
 
 
@@ -425,11 +453,11 @@ Links between tickets
     .. attribute:: requires
 
         The parent ticket requires the child ticket.
-    
+
     .. attribute:: triggers
 
         The parent ticket triggers the child ticket.
-    
+
     .. attribute:: deploys
 
         The parent ticket is a deployment which deploys the child ticket.
@@ -468,41 +496,58 @@ Comments
 
 In :ref:`noi` comments are visible even to anonymous users:
 
->>> rt.show(comments.Comments, column_names="id user owner")
+>>> rt.show(comments.Comments, column_names="id user owner short_preview", limit=10)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-==== ================= ===================================================================
- ID   Author            Controlled by
----- ----------------- -------------------------------------------------------------------
- 1    Jean              `#1 (⛶ Föö fails to bar when baz) <Detail>`__
- 2    Luc               `#2 (☎ Bar is not always baz) <Detail>`__
- 3    Marc              `#3 (☉ Baz sucks) <Detail>`__
- 4    Mathieu           `#4 (⚒ Foo and bar don't baz) <Detail>`__
- 5    Romain Raffault   `#5 (☾ Cannot create Foo) <Detail>`__
- 6    Rolf Rompen       `#6 (☐ Sell bar in baz) <Detail>`__
- 7    Robin Rood        `#7 (☑ No Foo after deleting Bar) <Detail>`__
- 8    Jean              `#8 (☒ Is there any Bar in Foo?) <Detail>`__
- 9    Luc               `#9 (⛶ Foo never matches Bar) <Detail>`__
- 10   Marc              `#10 (☎ Where can I find a Foo when bazing Bazes?) <Detail>`__
- 11   Mathieu           `#11 (☉ Class-based Foos and Bars?) <Detail>`__
- 12   Romain Raffault   `#12 (⚒ Foo cannot bar) <Detail>`__
- 13   Rolf Rompen       `#13 (☾ Bar cannot foo) <Detail>`__
- 14   Robin Rood        `#14 (☐ Bar cannot baz) <Detail>`__
- 15   Jean              `#15 (☑ Bars have no foo) <Detail>`__
- ...
- 80   Marc              `#80 (☒ Foo never bars) <Detail>`__
- 81   Mathieu           `#81 (⛶ No more foo when bar is gone) <Detail>`__
- 82   Romain Raffault   `#82 (☎ Cannot delete foo) <Detail>`__
- 83   Rolf Rompen       `#83 (☉ Why is foo so bar) <Detail>`__
- 84   Robin Rood        `#84 (⚒ Irritating message when bar) <Detail>`__
-==== ================= ===================================================================
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| ID | Author          | Controlled by    | Preview                                                                        |
++====+=================+==================+================================================================================+
+| 1  | Jean            | *Developers*     | Styled comment pasted from word!                                               |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 2  | Luc             | *Managers*       | Who| What| Done?                                                               |
+|    |                 |                  | ---|---|---                                                                    |
+|    |                 |                  | Him| Bar|                                                                      |
+|    |                 |                  | Her| Foo the Bar|  **x**                                                       |
+|    |                 |                  | Them| Floop the pig                                                            |
+|    |                 |                  | | x                                                                            |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 3  | Marc            | *Front-end team* | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus felis     |
+|    |                 |                  | nisi, eu pellentesque lorem lobortis non. Aenean non sodales neque, vitae      |
+|    |                 |                  | venenatis lectus. In eros dui, gravida et dolor at, pellentesque hendrerit     |
+|    |                 |                  | magna. Quisque vel lectus dictum, rhoncus massa feugiat, condimentum sem.      |
+|    |                 |                  | Donec elit nisl, placerat vitae imperdiet eget, hendrerit nec quam. Ut         |
+|    |                 |                  | elementum ligula vitae odio efficitur rhoncus. Duis in blandit neque. Sed      |
+|    |                 |                  | dictum mollis volutpat. Morbi at est et nisi euismod viverra. Nulla quis lacus |
+|    |                 |                  | vitae ante sollicitudin tincidunt. Donec nec enim in leo vulputate ultrices.   |
+|    |                 |                  | Suspendisse potenti. Ut elit nibh, porta ut enim ac, convallis molestie risus. |
+|    |                 |                  | Praesent consectetur lacus lacus, in faucibus justo fringilla vel. (...)       |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 4  | Mathieu         | *Developers*     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum dictum |
+|    |                 |                  | erat. Fusce condimentum erat a pulvinar ultricies. (...)                       |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 5  | Romain Raffault | *Managers*       | breaking (...)                                                                 |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 6  | Rolf Rompen     | *Front-end team* | (...)                                                                          |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 7  | Robin Rood      | *Developers*     | Some plain text.                                                               |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 8  | Jean            | *Managers*       | Two paragraphs of plain text. (...)                                            |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 9  | Luc             | *Front-end team* | Styled comment pasted from word!                                               |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
+| 10 | Marc            | *Developers*     | Who| What| Done?                                                               |
+|    |                 |                  | ---|---|---                                                                    |
+|    |                 |                  | Him| Bar|                                                                      |
+|    |                 |                  | Her| Foo the Bar|  **x**                                                       |
+|    |                 |                  | Them| Floop the pig                                                            |
+|    |                 |                  | | x                                                                            |
++----+-----------------+------------------+--------------------------------------------------------------------------------+
 <BLANKLINE>
-
 
 
 >>> obj = tickets.Ticket.objects.get(pk=2)
 >>> rt.login('luc').show(comments.CommentsByRFC, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<p><b>Write comment</b></p><ul><li><a ...>...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a ...>⁜</a><div id="comment-2"><p>Very confidential comment</p></div></li></ul>
+<p><b>Write comment</b></p><ul><li><a ...>...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a ...>⁜</a><div id="comment-86"><p>Very confidential comment</p></div></li></ul>
 
 
 
@@ -718,6 +763,3 @@ There are many tables used to show lists of tickets.
     Show all active tickets assigned to me.
 
 .. class:: TicketsBySite
-
-
-

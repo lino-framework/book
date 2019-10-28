@@ -1,6 +1,6 @@
 .. include:: /../docs/shared/include/defs.rst
 .. doctest docs/specs/noi/sql.rst
-   
+
 .. _specs.noi.sql:
 
 ==================================
@@ -12,7 +12,7 @@ encountered on Jane.
 
 
 We use the :mod:`lino_book.projects.team` demo database.
-    
+
 >>> from lino import startup
 >>> startup('lino_book.projects.team.settings.demo')
 >>> from lino.api.doctest import *
@@ -258,7 +258,7 @@ SELECT django_content_type.id, django_content_type.app_label, django_content_typ
 
 
 Now we do a single request to :class:`Tickets`. And look at all the
-SQL that poor Django must do in order to return a single row. 
+SQL that poor Django must do in order to return a single row.
 
 >>> reset_sql_queries()
 >>> r = demo_get('robin','api/tickets/Tickets', fmt='json')
@@ -276,7 +276,7 @@ SQL that poor Django must do in order to return a single row.
  table             stmt_type   count
 ----------------- ----------- -------
  django_session    SELECT      1
- tickets_site      SELECT      14
+ tickets_site      SELECT      13
  tickets_ticket    SELECT      2
  users_user        SELECT      1
  working_session   SELECT      15
@@ -323,6 +323,3 @@ tickets.Ticket.ticket_type
 tickets.Ticket.upgrade_notes
 tickets.Ticket.user
 tickets.Ticket.waiting_for
-
-    
-

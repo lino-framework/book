@@ -29,7 +29,7 @@ behaviour. See also :doc:`/dev/delete`.
 - cal.Room :
   - PROTECT : cal.Event.room
 - comments.Comment :
-  - PROTECT : comments.Comment.reply_to
+  - PROTECT : comments.Comment.reply_to, comments.Mention.comment
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
 - contacts.Company :
@@ -45,7 +45,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, checkdata.Problem.owner_type, comments.Comment.owner_type, comments.Mention.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notify.Message.owner_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, countries.Place.country
 - countries.Place :
@@ -60,6 +60,8 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : excerpts.Excerpt.excerpt_type
 - github.Repository :
   - PROTECT : github.Commit.repository
+- groups.Group :
+  - PROTECT : groups.Membership.group, tickets.Site.group
 - lists.List :
   - PROTECT : lists.Member.list
 - lists.ListType :
@@ -77,7 +79,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : uploads.Upload.volume
 - users.User :
   - CASCADE : tickets.Subscription.user, working.UserSummary.master
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, comments.Mention.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, groups.Group.user, groups.Membership.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>

@@ -7,7 +7,7 @@ Work time tracking
 ==================
 
 .. currentmodule:: lino_xl.lib.working
-     
+
 The :mod:`lino_xl.lib.working` adds functionality for managing work
 time tracking.
 
@@ -130,38 +130,22 @@ Worked hours
  Description                   Worked tickets    Regular    Extra      Free   Total
 ----------------------------- ----------------- ---------- ---------- ------ ----------
  `Sat 23/05/2015 <Detail>`__   `#1 <Detail>`__   0:01                         0:01
- `Fri 22/05/2015 <Detail>`__   `#2 <Detail>`__   2:18                         2:18
+ `Fri 22/05/2015 <Detail>`__   `#2 <Detail>`__              2:18              2:18
  `Thu 21/05/2015 <Detail>`__                                                  0:00
  `Wed 20/05/2015 <Detail>`__   `#3 <Detail>`__              1:30              1:30
  `Tue 19/05/2015 <Detail>`__   `#4 <Detail>`__   0:10                         0:10
  `Mon 18/05/2015 <Detail>`__                                                  0:00
  `Sun 17/05/2015 <Detail>`__                                                  0:00
- **Total (7 rows)**                              **2:29**   **1:30**          **3:59**
+ **Total (7 rows)**                              **0:11**   **3:48**          **3:59**
 ============================= ================= ========== ========== ====== ==========
 <BLANKLINE>
-
-.. before 20190103:
-
-    ====================================== ========== ========== ====== ==========
-     Description                            Regular    Extra      Free   Total
-    -------------------------------------- ---------- ---------- ------ ----------
-     **Sat 23/05/2015** (`#1 <Detail>`__)   0:01                         0:01
-     **Fri 22/05/2015** (`#2 <Detail>`__)   2:18                         2:18
-     **Thu 21/05/2015**                                                  0:00
-     **Wed 20/05/2015** (`#3 <Detail>`__)              1:30              1:30
-     **Tue 19/05/2015** (`#4 <Detail>`__)   0:10                         0:10
-     **Mon 18/05/2015**                                                  0:00
-     **Sun 17/05/2015**                                                  0:00
-     **Total (7 rows)**                     **2:29**   **1:30**          **3:59**
-    ====================================== ========== ========== ====== ==========
-    <BLANKLINE>
 
 
 In the "description" column you see a list of the tickets on which you
 worked that day. This is a convenient way to continue some work you
 started some days ago.
 
-.. 
+..
     Find the users who worked on more than one site:
     >>> for u in users.User.objects.all():
     ...     qs = tickets.Site.objects.filter(tickets_by_site__sessions_by_ticket__user=u).distinct()
@@ -225,7 +209,7 @@ A service report currently contains three tables:
 
 
 >>> obj.interesting_for
-Partner #108 ('welket')
+Partner #100 ('Rumma & Ko OÜ')
 
 >>> rt.show(working.SessionsByReport, obj)
 ... #doctest: -REPORT_UDIFF +SKIP
@@ -243,14 +227,13 @@ Note that there are sessions without a duration. That's because
 
 >>> rt.show(working.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
-==== =============================================== ========== ======== ========= =========== ======= ======
- ID   Ticket                                          End user   Site     State     Regular     Extra   Free
----- ----------------------------------------------- ---------- -------- --------- ----------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Marc       welket   New       0:03
- 2    `#2 (☎ Bar is not always baz) <Detail>`__       Marc       welket   Talk      9:40
- 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Marc       welket   Working   1:24
-                                                                                    **11:07**
-==== =============================================== ========== ======== ========= =========== ======= ======
+==== =============================================== =============== ======== ========= ========== ======= ======
+ ID   Ticket                                          End user        Site     State     Regular    Extra   Free
+---- ----------------------------------------------- --------------- -------- --------- ---------- ------- ------
+ 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Arens Andreas   welket   New       0:03
+ 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Arens Andreas   welket   Working   1:24
+                                                                                         **1:27**
+==== =============================================== =============== ======== ========= ========== ======= ======
 <BLANKLINE>
 
 
@@ -292,9 +275,9 @@ Class reference
 
 .. class:: Plugin
 .. class:: SessionType
-           
+
     The type of a :class:`Session`.
-    
+
 .. class:: Session
 
     Django model representing a **work session**.
@@ -318,7 +301,7 @@ Class reference
     .. attribute:: end_time
 
         The time (in `hh:mm`) when the worker stopped to work.
-        
+
         An empty :attr:`end_time` means that the user is still busy
         with that session, the session is not yet closed.
 
@@ -326,7 +309,7 @@ Class reference
 
 
     .. attribute:: break_time
-    
+
        The time (in `hh:mm`) to remove from the duration resulting
        from the difference between :attr:`start_time` and
        :attr:`end_time`.
@@ -338,13 +321,13 @@ Class reference
        on the ticket.
 
     .. attribute:: site_ref
-                   
+
 
 
 .. class:: Sessions
-           
+
 .. class:: SessionsByTicket
-           
+
     The "Sessions" panel in the detail of a ticket.
 
     .. attribute:: slave_summary
@@ -352,68 +335,68 @@ Class reference
         This panel shows:
 
 .. class:: MySessions
-           
+
 .. class:: MySessionsByDate
 
-           
+
 .. class:: StartTicketSession
-           
+
     Start a session on this ticket.
 
 .. class:: EndTicketSession
-           
+
     Close this session, i.e. stop working it for now.
 
     Common base for :class:`EndThisSession` and
     :class:`EndTicketSession`.
 
-    
+
 .. class:: EndTicketSession
-           
-    End your running session on this ticket. 
-    
+
+    End your running session on this ticket.
+
 .. class:: EndThisSession
-           
+
     Close this session, i.e. stop working on that ticket now.
 
-           
+
 
 .. class:: Workable
-           
-    Base class for things that workers can work on. 
+
+    Base class for things that workers can work on.
 
     The model specified in :attr:`ticket_model <Plugin.ticket_model>`
     must be a subclass of this.
-    
+
     For example, in :ref:`noi` tickets are workable.
 
     .. method:: is_workable_for
-                
+
         Return True if the given user can start a *work session* on
         this object.
 
-                
+
     .. method:: on_worked
-                
+
         This is automatically called when a *work session* has been
         created or modified.
 
-                
+
     .. method:: start_session
 
         See :class:`StartTicketSession`.
-        
+
     .. method:: end_session
 
         See :class:`EndTicketSession`.
-        
-           
+
+
 .. class:: ServiceReport
 
     The Django model representing a *service report*.
 
     Database fields:
-    
+
     .. attribute:: user
 
         This can be empty and will then show the working time of all
@@ -422,33 +405,33 @@ Class reference
     .. attribute:: start_date
     .. attribute:: end_date
 
-                   
+
     .. attribute:: interesting_for
 
         Show only tickets on sites assigned to this partner.
-        
+
     .. attribute:: ticket_state
 
         Show only tickets having this state.
-        
+
     .. attribute:: printed
-                   
+
         See :attr:`lino_xl.lib.exerpts.Certifiable.printed`
 
-           
+
 .. class:: SessionsByReport
 .. class:: TicketsReport
 .. class:: SitesByReport
-           
+
      The list of tickets mentioned in a service report.
-     
+
 .. class:: WorkersByReport
 
-           
+
 .. class:: ShowMySessionsByDay
-           
+
     Show all sessions on the same day.
-    
+
 
 
 .. class:: TicketHasSessions
@@ -458,19 +441,19 @@ Class reference
 
     This is added as item to :class:`lino_xl.lib.tickets.TicketEvents`.
 
-           
+
 .. class:: ProjectHasSessions
-           
+
     Select only projects for which there has been at least one session
     during the given period.
 
     This is added as item to :class:`lino_xl.lib.tickets.ProjectEvents`.
-    
+
 .. class:: Worker
 
     A user who is candidate for working on a ticket.
 
-           
+
 .. class:: WorkedHours
 
 
@@ -498,7 +481,7 @@ Summaries
 ==== ====== ======= ======== ================ ================== ========= ======= ======
  ID   Year   Month   Site     Active tickets   Inactive tickets   Regular   Extra   Free
 ---- ------ ------- -------- ---------------- ------------------ --------- ------- ------
- 3    2015           welket   0                0                  11:04
+ 3    2015           welket   0                0                  1:24
 ==== ====== ======= ======== ================ ================== ========= ======= ======
 <BLANKLINE>
 
@@ -508,12 +491,11 @@ Summaries
 ===== ====== ======= ========= ========= ======= ======
  ID    Year   Month   User      Regular   Extra   Free
 ----- ------ ------- --------- --------- ------- ------
- 29    2015   5       Jean      2:28      1:30
- 65    2015   5       Luc       4:31      0:37
- 137   2015   5       Mathieu   4:05      0:05    2:18
+ 29    2015   5       Jean      0:10      3:48
+ 65    2015   5       Luc       1:02      4:06
+ 137   2015   5       Mathieu   0:12      3:58    2:18
 ===== ====== ======= ========= ========= ======= ======
 <BLANKLINE>
-
 
 
 Don't read me

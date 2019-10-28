@@ -41,7 +41,7 @@ Site administrator
   - System : Authorities, User types, User roles, Notification messages, Changes, Phonetic words, All dashboard widgets, content types, Data checkers, Data problems
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
-  - Office : Comments, Uploads, Upload Areas, Excerpts
+  - Office : Comments, Mentions, Uploads, Upload Areas, Excerpts
   - Clients : Client Contacts, Known contact types
   - Career : Language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
@@ -168,6 +168,7 @@ Each window is **viewable** for a given set of user types.
 - comments.Comments.detail : visible for user staff admin
 - comments.Comments.insert : visible for user staff admin
 - comments.CommentsByRFC.insert : visible for user staff admin
+- comments.Mentions.detail : visible for staff admin
 - contacts.Companies.detail : visible for user secretary staff admin
 - contacts.Companies.insert : visible for user secretary staff admin
 - contacts.Companies.merge_row : visible for admin
