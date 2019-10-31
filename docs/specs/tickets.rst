@@ -202,14 +202,15 @@ Zulip calls them "streams", Slack calls them "Channels".
 List of the sites in our demo database:
 
 >>> rt.show(tickets.Sites)
-=========== ===================== ===================== ======== ============== ====
- Reference   Designation           Client                Remark   Workflow       ID
------------ --------------------- --------------------- -------- -------------- ----
- pypi        pypi                                                 **⚒ Active**   3
- welket      Rumma & Ko OÜ         Rumma & Ko OÜ                  **⚒ Active**   1
- welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald            **⚒ Active**   2
-=========== ===================== ===================== ======== ============== ====
+=========== ===================== ===================== ================ ======== ============== ====
+ Reference   Designation           Client                Contact person   Remark   Workflow       ID
+----------- --------------------- --------------------- ---------------- -------- -------------- ----
+ pypi        pypi                                                                  **⚒ Active**   3
+ welket      Rumma & Ko OÜ         Rumma & Ko OÜ         Andreas Arens             **⚒ Active**   1
+ welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald   Annette Arens             **⚒ Active**   2
+=========== ===================== ===================== ================ ======== ============== ====
 <BLANKLINE>
+
 
 List of sites to which Jean is "subscribed" (i.e. that are assigned to a team
 where Jean is member):

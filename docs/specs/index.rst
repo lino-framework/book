@@ -91,6 +91,7 @@ Plugins of the Extensions library
    tickets
    tim2lino
    topics
+   trends
    uploads
    userstats
    vat
