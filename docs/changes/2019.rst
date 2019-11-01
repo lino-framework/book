@@ -13,6 +13,35 @@
 .. contents::
   :local:
 
+2019-10-31
+==========
+
+The :meth:`BaseRequest.set_confirm_answer` is now being inherited to child
+requests.
+
+
+2019-10-31
+==========
+
+The :attr:`server_status` field in :class:`lino.modlib.about.About` has been
+removed because it was showing just the number of pending dialog threads which
+no longer applies since 20191014 and now caused an error.
+
+.. currentmodule:: lino_xl.lib.trends
+
+New feature in :mod:`lino_xl.lib.trends`: When the new checkbox
+:attr:`TrendStage.subject_column` is checked, Lino will add a virtual field to
+the :attr:`Plugin.subject_model` which shows the date of the first
+:class:`TrendEvent` of this stage for this client.  The columns are not visible
+by default but the end user can activate them.
+
+.. currentmodule:: lino.core.fields
+
+Above change required a new minor feature in :mod:`lino.core.fields`: Virtual
+fields aren't normally used as wildcard data elements. The new attribute
+:attr:`VirtualField.wildcard_data_elem`. makes it possible to define virtual
+fields that are used as wildcard data elements.
+
 2019-10-28
 ==========
 
