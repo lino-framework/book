@@ -7,22 +7,21 @@ User management à la Lino
 
 This document explains how to get started with Lino's user management
 system.
-See :doc:`/dev/users` 
+See :doc:`/specs/users`
 for a more detailed documentation of the :mod:`lino.modlib.users`
 plugin.
-
-..  doctests initialization:
-    
-    >>> from lino import startup
-    >>> startup('lino_book.projects.min1.settings.demo')
-    >>> from lino.api.doctest import *
 
 .. contents::
     :depth: 1
     :local:
 
+.. include:: /../docs/shared/include/tested.rst
 
- 
+>>> from lino import startup
+>>> startup('lino_book.projects.min1.settings.demo')
+>>> from lino.api.doctest import *
+
+
 Creating a root user
 ====================
 
@@ -77,5 +76,3 @@ field :guilabel:`Current password` empty.
 >>> rv = ses.run(u.change_password, action_param_values=values)
 >>> print(rv['message'])
 New password has been set for test.
-
-

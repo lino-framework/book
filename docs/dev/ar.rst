@@ -10,14 +10,32 @@ Using action requests
    $ doctest docs/dev/ar.rst
 
 
-An action request is when a given user asks to run a given action of a
-given actor.
+.. glossary::
 
-Action requests are instances of the :class:`BaseRequest
-<lino.core.requests.BaseRequest>` class or one of its subclasses
-(:class:`ActorRequest<lino.core.requests.ActorRequest>`
-:class:`ActionRequest<lino.core.requests.ActionRequest>`
-:class:`TableRequest<lino.core.tablerequest.TableRequest>`.
+  Model instance
+
+    Django word for what we use to call a :term:`database object`.
+
+  Database object
+
+    The Python representation of a row in a database table.
+    Also known as :term:`model instance` in Django.
+
+  Action request
+
+    When a given user asks to run a given action of a given actor.
+
+    Action requests are instances of the :class:`BaseRequest
+    <lino.core.requests.BaseRequest>` class or one of its subclasses
+    (:class:`ActorRequest<lino.core.requests.ActorRequest>`
+    :class:`ActionRequest<lino.core.requests.ActionRequest>`
+    :class:`TableRequest<lino.core.tablerequest.TableRequest>`.
+
+  Instance action
+
+    An action that has been bound to a given :term:`database object`.
+
+
 
 The traditional variable name for action requests in application code
 and method signatures is ``ar``.  Except for the plain `BaseRequest`
@@ -31,9 +49,9 @@ provides the application with methods to communicate with the user.
 
 But there are exceptions to this approximaton.
 
-- :meth:`show <lino.core.requests.BaseRequest.show>` 
+- :meth:`show <lino.core.requests.BaseRequest.show>`
 
-- :meth:`set_response <lino.core.requests.BaseRequest.set_response>` 
+- :meth:`set_response <lino.core.requests.BaseRequest.set_response>`
 
 - :meth:`ba.request_from <lino.core.boundaction.BoundAction.request_from>`
 - :meth:`lino.core.request.get_permission`

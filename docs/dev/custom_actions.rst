@@ -1,4 +1,5 @@
 .. doctest docs/dev/custom_actions.rst
+.. _dev.custom_actions:
 
 ======================
 Writing custom actions

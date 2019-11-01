@@ -1,4 +1,5 @@
 .. doctest docs/specs/voga/voga.rst
+.. _voga.specs.voga:
 .. _voga.tested.voga:
 
 ====
@@ -47,7 +48,7 @@ en
 Printable documents
 -------------------
 
-We take a sales invoice, clear the cache, ask Lino to print it and 
+We take a sales invoice, clear the cache, ask Lino to print it and
 check whether we get the expected response.
 
 >>> ses = rt.login("robin")
@@ -61,7 +62,7 @@ True
 >>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
 appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-135.pdf
 
->>> print(rv['success']) 
+>>> print(rv['success'])
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 /media/cache/appypdf/sales.VatProductInvoice-135.pdf
@@ -87,7 +88,5 @@ True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 Your printable document (<a href="/media/cache/appypdf/cal.Event-100.pdf">cal.Event-100.pdf</a>) should now open in a new browser window. If it doesn't, please ask your system administrator.
 
-Note that this test should fail if you run the test suite without a 
+Note that this test should fail if you run the test suite without a
 LibreOffice server running.
-
-
