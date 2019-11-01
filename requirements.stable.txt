@@ -1,3 +1,4 @@
+-e git+https://github.com/lino-framework/eidreader.git#egg=eidreader
 -e git+https://github.com/lino-framework/noi.git#egg=lino_noi
 -e git+https://github.com/lino-framework/cosi.git#egg=lino_cosi
 -e git+https://github.com/lino-framework/voga.git#egg=lino_voga
