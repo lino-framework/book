@@ -30,3 +30,4 @@ with running demo projects.  We are ready to dive *into* Lino.
    menu
    virtualfields
    /dev/polls/index
+   screencasts
