@@ -13,11 +13,15 @@
 .. contents::
   :local:
 
-2019-10-31
+2019-11-01
 ==========
 
 The :meth:`BaseRequest.set_confirm_answer` is now being inherited to child
 requests.
+
+The dashboard in :ref:`react` now issues separated Ajax requests for each
+dashboard item. New attribute
+:attr:`lino.core.renderer.Renderer.hide_dashboard_items`.
 
 
 2019-10-31
