@@ -38,7 +38,7 @@ List of available dashboard items
 >>> pprint(list(settings.SITE.get_dashboard_items(user)))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 [lino_xl.lib.cal.ui.MyTasks,
- <lino.core.dashboard.ActorItem object at ...>,
+ <class 'lino.core.dashboard.ActorItem'>(cal.MyEntries,header_level=2,min_count=None),
  lino_xl.lib.cal.ui.MyOverdueAppointments,
  lino_xl.lib.cal.ui.MyUnconfirmedAppointments,
  lino_xl.lib.cal.ui.DailyPlanner,
