@@ -1,8 +1,8 @@
 =============
-The Lino book
+The Lino Book
 =============
 
-Welcome to the Lino book, the technical documentation about the :term:`Lino
+Welcome to the Lino Book, the technical documentation about the :term:`Lino
 framework`. For non-technical documentation about Lino see the :ref:`cg`.
 
 
