@@ -13,6 +13,14 @@
 .. contents::
   :local:
 
+
+2019-11-02
+==========
+
+Release to PyPI : lino lino-xl lino-welfare lino-weleup lino-react
+
+lino-avanti
+
 2019-11-01
 ==========
 

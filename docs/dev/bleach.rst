@@ -10,7 +10,6 @@ Bleaching means to remove all unknown tags when saving the content of a
 :class:`RichHtmlField <lino.core.fields.RichHtmlField>`.
 
 
-
 .. contents::
    :local:
    :depth: 2
@@ -19,7 +18,7 @@ Bleaching means to remove all unknown tags when saving the content of a
 
 >>> import os
 >>> from lino import startup
->>> startup('lino_book.projects.min1.settings.doctests')
+>>> startup('lino_book.projects.min2.settings.doctests')
 >>> from lino.api.doctest import *
 
 
@@ -115,3 +114,60 @@ To bleach all existing data, you can say::
 
   $ django-admin checkdata system.BleachChecker --fix
 
+
+Tests
+=====
+
+Here are some tests to verify whether bleaching does what we want.
+
+Which models have bleachable fields?
+
+>>> checker = checkdata.Checkers.get_by_value('system.BleachChecker')
+>>> lst = [str(m) for m in checker.get_checkable_models()]
+>>> print('\n'.join(sorted(lst)))
+<class 'lino.modlib.gfks.models.HelpText'>
+<class 'lino_xl.lib.cal.models.Calendar'>
+<class 'lino_xl.lib.cal.models.Event'>
+<class 'lino_xl.lib.cal.models.EventType'>
+<class 'lino_xl.lib.cal.models.RecurrentEvent'>
+<class 'lino_xl.lib.cal.models.Room'>
+<class 'lino_xl.lib.cal.models.Task'>
+
+
+>>> def test(desc):
+...     obj = cal.Room(description=desc)
+...     print(list(obj.fields_to_bleach()))
+
+>>> test("")
+[]
+
+Lino bleaches only content that starts with a "<", not e.g. reSTructuredText:
+
+>>> test("A *greatly* **formatted** text: \n\n- one \n\n -two")
+[]
+
+Bleaching will "normalize" the html content:
+
+>>> test("<p>One<br>two")
+[(<lino.core.fields.RichTextField: description>, '<p>One<br>two', '<p>One<br>two</p>')]
+
+>>> test("<pre>")
+[(<lino.core.fields.RichTextField: description>, '<pre>', '<pre></pre>')]
+>>> test("<pre>\n</pre>")
+[(<lino.core.fields.RichTextField: description>, '<pre>\n</pre>', '<pre></pre>')]
+
+
+This is valid HTML for Lino:
+
+>>> test("<pre></pre>")
+[]
+>>> test("<p>Foo</p>")
+[]
+
+Some edge cases that Lino won't touch because it doesn't recognize them as HTML
+and therefore doesn't bleach them:
+
+>>> test("One<br>two")
+[]
+>>> test("One<br>two</p>")
+[]
