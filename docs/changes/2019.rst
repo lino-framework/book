@@ -13,6 +13,11 @@
 .. contents::
   :local:
 
+2019-11-02
+==========
+
+Added :attr:`Lino.core.actions.Action.react_icon_name`. Used first rather than 
+icon_name. 
 
 2019-11-02
 ==========
