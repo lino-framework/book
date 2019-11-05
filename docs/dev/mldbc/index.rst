@@ -16,12 +16,12 @@ One feature of Lino is its built-in support for :ref:`single-table
 multilingual database content <mldbc>`.  This tutorial explains what
 it is.
 
-Note that we are **not** talking about Internationalization (i18n)
-here.  *Internationalization* is when the *front end* can speak
-different languages.  Lino has nothing to add to the existing Django
-techniques about `Internationalization
-<https://docs.djangoproject.com/en/2.2/topics/i18n/>`__, that's why we
-deliberately didn't translate the fron end in this tutorial.
+Note that we are **not** talking about Internationalization (i18n) here.
+*Internationalization* is when the :term:`front end` can speak different
+languages. Lino has nothing to add to the existing Django techniques about
+`Internationalization <https://docs.djangoproject.com/en/2.2/topics/i18n/>`__,
+that's why we deliberately didn't add :mod:`lino.modlib.users` and front end
+translation in this tutorial.
 
 
 When to use BabelFields
@@ -47,26 +47,24 @@ same in French and in English.  They need a Products table like this:
   | Keyboard         | Clavier          | Accessories |  4.95 | 5  |
   +------------------+------------------+-------------+-------+----+
 
-Now imagine that your application is being used not only in Canada but
-also in the United States.  Of course, your US customers don't want to
-have a "useless" column for the French designation of their products.
+Now imagine that your application is being used not only in Canada but also in
+the United States.  Your US customers don't want to have a "useless" column for
+the French designation of their products.
 
-This is where you want multi-lingual database content.
-
-In that case you would simply
+This is where you want multi-lingual database content. In that case you would
+simply
 
 - use :class:`BabelCharField <lino.utils.mldbc.fields.BabelCharField>`
-  instead of Django's `CharField` for every translatable field and
+  instead of Django's :class:`CharField` for every translatable field and
 
-- set the :attr:`languages <lino.core.site.Site.languages>` attribute
-  to ``"en"`` for US customers and to ``"en fr"`` for Canadian
-  customers.
+- set the :attr:`languages <lino.core.site.Site.languages>` attribute to
+  ``"en"`` for your US customer and to ``"en fr"`` for your Canadian customer.
 
 An example
 ==========
 
-If you have installed a :term:`contributor environment`
-(see:ref:`contrib.install`), then you can run the following examples on your
+If you have installed a :term:`contributor environment` (see
+:ref:`contrib.install`), then you can run the following examples on your
 computer.
 
 
@@ -201,12 +199,13 @@ reading the content from different sources.
 BabelFields and migrations
 ==========================
 
-BabelFields cause the database structure to change when a server administrator
-changes the :attr:`languages <lino.core.site.Site.languages` setting of a site.
-That's not migratable by the application developer.  You might create a set of
-local migrations in that case.  But the easier way is to simply use the slower
-:doc:`Lino approach for data migrations </dev/datamig>` in the rare cases when
-you change the language distribution of a site.
+BabelFields cause the database structure to change when a :term:`site
+maintainer` locally changes the :attr:`languages
+<lino.core.site.Site.languages>` setting of a :term:`Lino site`.
+
+That's why the :term:`application carrier` cannot provide Django migrations for
+their product.
+See :doc:`/dev/datamig` and :doc:`/specs/migrate`.
 
 
 Related work
