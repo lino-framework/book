@@ -5,7 +5,7 @@
 Setting up a Lino contributor environment
 =========================================
 
-We assume you have already :doc:`/dev/install/index`. and that you decided to
+We assume you have already :doc:`/dev/install/index` and that you decided to
 extend your developer environment into a :term:`contributor environment`. As a
 contributor you have a local clone of the Lino code repositories because you are
 going to do local modifications and submit pull requests.

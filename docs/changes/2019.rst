@@ -17,9 +17,12 @@
 2019-11-02
 ==========
 
-Release to PyPI : lino lino-xl lino-welfare lino-weleup lino-react
+.. Release to PyPI : lino lino-xl lino-welfare lino-weleup lino-react lino-avanti
 
-lino-avanti
+
+We started to publish :ref:`react` as a package on PyPI. Version 19.11.1 might
+work, but we didn't yet test it. 
+
 
 2019-11-01
 ==========

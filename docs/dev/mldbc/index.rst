@@ -65,14 +65,19 @@ In that case you would simply
 An example
 ==========
 
+If you have installed a :term:`contributor environment`
+(see:ref:`contrib.install`), then you can run the following examples on your
+computer.
+
+
 Go to :mod:`lino_book.projects.mldbc`::
 
    $ go mldbc
 
 Make sure that the demo database is initialized::
-   
+
    $ python manage.py prep
-   
+
 
 Using the shell
 ---------------
@@ -110,57 +115,57 @@ Here is how we got the above table:
 
 
 
-
 Using the web interface
 -----------------------
-
-Note: If you have a development version of Lino, then you can run
-directly from the Lino source repository:
 
 .. code-block:: bash
 
   $ go mldbc
   $ python manage.py prep
   $ python manage.py runserver
-  Creating test database for alias 'default'...
-  INFO Analyzing models...
-  INFO Loading ~/snapshots/lino/lino/docs/tutorials/mldbc/fixtures/demo.py...
-  Installed 6 object(s) from 1 fixture(s)
-  Validating models...
+  Analyzing Tables...
+  Analyze 0 slave tables...
+  Discovering choosers for model fields...
+  Analyzing Tables...
+  Analyze 0 slave tables...
+  Discovering choosers for model fields...
+  Watching for file changes with StatReloader
+  Performing system checks...
 
-  0 errors found
-  Django version 1.6.8, using settings 'mldbc.settings'
-  Development server is running at http://127.0.0.1:8000/
-  Quit the server with CTRL-BREAK.  
- 
+  System check identified no issues (0 silenced).
+  November 05, 2019 - 07:32:06
+  Django version 2.2.6, using settings 'lino_book.projects.mldbc.settings'
+  Starting development server at http://127.0.0.1:8000/
+  Quit the server with CONTROL-C.
+
 
 Screenshots
 -----------
 
-The screenshots on the left have been taken on a server with 
+The screenshots on the left have been taken on a server with
 ``languages = ['en']``,
-those on the right on a server with 
+those on the right on a server with
 ``languages = ['de','fr']``.
 
 
 .. image:: babel1a.jpg
     :scale: 50
-    
+
 .. image:: babel1b.jpg
     :scale: 50
-    
+
 .. image:: babel2a.jpg
     :scale: 50
-    
+
 .. image:: babel2b.jpg
     :scale: 50
-    
+
 .. image:: babel3a.jpg
     :scale: 50
-    
+
 .. image:: babel3b.jpg
     :scale: 50
-    
+
 
 The :xfile:`settings.py` file
 -----------------------------
@@ -175,7 +180,7 @@ The :xfile:`models.py` file
 
 .. literalinclude:: /../../book/lino_book/projects/mldbc/models.py
 
-Note that this is the first time we use a 
+Note that this is the first time we use a
 :class:`dd.ChoiceList <lino.core.choicelists.ChoiceList>`
 they deserve another tutorial on their own.
 
@@ -188,9 +193,9 @@ The `demo` fixture
 Note how the application developer doesn't know which :attr:`languages
 <lino.core.site.Site.languages>` will be set at runtime.
 
-Of course the fixture above supposes a single person who knows 
-all the languages, but that's just because we are simplifying. 
-In reality you can do it as sophisticated as you want, 
+Of course the fixture above supposes a single person who knows
+all the languages, but that's just because we are simplifying.
+In reality you can do it as sophisticated as you want,
 reading the content from different sources.
 
 BabelFields and migrations
