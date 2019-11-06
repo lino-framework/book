@@ -35,10 +35,10 @@ Every subsequent :cmd:`getlino startsite` run will
 - Run the :manage:`install` command to install additional dynamic dependencies.
 
 If you run :cmd:`getlino startsite` with a given database engine and then
-manually change the :settings:`DATABASES` setting of your site, you must
-yourself care about installing the corresponding Python package. Lino's
-:manage:`install` command cannot automatically install the Python package for
-the database engine. This is explicitly done by :cmd:`getlino startsite`.
+manually change the :setting:`DATABASES` setting of your site, you must yourself
+care about installing the corresponding Python package. Lino's :manage:`install`
+command cannot automatically install the Python package for the database engine.
+This is explicitly done by :cmd:`getlino startsite`.
 
 
 
