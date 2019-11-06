@@ -31,12 +31,10 @@ Installation
 .. toctree::
     :maxdepth: 1
 
+    root
     install
+    dbengine
     multiple_frontends
-    media
-    mysql_install
-    pgsql_install
-    config_dirs
     xl
     oood
     linod
@@ -80,6 +78,7 @@ Printing
     using_appy_pod
     excerpts
     appy_templates
+    config_dirs
 
 Other
 ==================
@@ -115,3 +114,5 @@ Other
     /davlink/index
     /eidreader/index
     /java/index
+    attic
+    media

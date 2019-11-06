@@ -5,47 +5,14 @@ MySQL cheat sheet
 =================
 
 If you use MySQL as database engine, then here is a cheat sheet for some routine
-situations that you might want to get into.  No warranty.  See also the Django
-documentation at `MySQL notes
+situations that you might want to get into.  See also the Django documentation
+at `MySQL notes
 <https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-notes>`__
 
 .. contents:: Table of contents
     :local:
     :depth: 1
 
-
-Installation
-============
-
-To install the server, run :cmd:`getlino configure` with :option:`getlino
-configure --db-engine`.  This will install either mariadb (Debian) or mysql
-(Ubuntu).
-
-Every subsequent :cmd:`getlino startsite` run will
-
-- install the `mysqlclient` Python package into the site's virtualenv.
-- create a database named PRJNAME
-- create a user PRJNAME with a password and grant all privileges to that user
-- set :setting:`DATABASES` in your :xfile:`settings.py`
-
-
-.. Install mysql on your site::
-
-    $ sudo apt install mysql-server
-    $ sudo apt install libmysqlclient-dev
-    $ sudo apt install python-dev
-    $ sudo apt install libffi-dev libssl-dev
-    $ sudo apt install mysql-server
-
-    $ sudo mysql_secure_installation
-
-.. Install the mysql client into your project's virtualenv::
-
-    $ pip install mysqlclient
-
-  Note that we recommended `mysql-python` before but modified this to
-  `mysqlclient` in accordance with `Django
-  <https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-db-api-drivers>`__.
 
 Users
 =====
@@ -84,12 +51,11 @@ How to change the password of an existing user::
 Databases
 =========
 
-.. For each new project you must create a database and grant permissions
-  to ``django``::
+How getlino creates a database and grants permissions::
 
     $ mysql -u root -p
-    mysql> create database mysite charset 'utf8';
-    mysql> grant all on mysite.* to django with grant option;
+    mysql> create database DBNAME charset 'utf8';
+    mysql> grant all on mysite.* to DBUSER with grant option;
     mysql> quit;
 
 
