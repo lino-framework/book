@@ -13,11 +13,17 @@
 .. contents::
   :local:
 
+2019-11-06
+==========
+
+:meth:`lino_xl.lib.addresses.AddressOwner.get_primary_address` now returns None if
+MultipleObjectsReturned (instead of raising a server error).
+
 2019-11-02
 ==========
 
-Added :attr:`Lino.core.actions.Action.react_icon_name`. Used first rather than 
-icon_name. 
+Added :attr:`Lino.core.actions.Action.react_icon_name`. Used first rather than
+icon_name.
 
 2019-11-02
 ==========
@@ -26,7 +32,7 @@ icon_name.
 
 
 We started to publish :ref:`react` as a package on PyPI. Version 19.11.1 might
-work, but we didn't yet test it. 
+work, but we didn't yet test it.
 
 
 2019-11-01

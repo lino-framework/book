@@ -4,28 +4,27 @@
 Running a LibreOffice server
 ============================
 
-When your Lino applicaton uses :mod:`lino_xl.lib.appypod`, then you
-need to have a LibreOffice server running so that the users of your
-site can print documents.
+Read :doc:`appy` before reading this page.
 
-This is because :mod:`lino_xl.lib.appypod` uses `appy.pod
+This page is probably useless because getlino does these things automatically.
+
+The :mod:`lino_xl.lib.appypod` plugin uses `appy.pod
 <http://appyframework.org/pod.html>`_ which in turn uses `python3-uno
 <https://packages.debian.org/de/sid/python3-uno>`__ to connect to a
 `LibreOffice` server.
 
-Installation
-============
-
 `appy.pod` is part of the ``appy`` Python package and was
 automatically installed together with Lino into your Python
-environment.  But appy requires two system packages `libreoffice` and
-`python3-uno` which must be installed using something like this::
+environment.
+
+But appy requires two system packages `libreoffice` and `python3-uno` which must
+be installed using something like this::
 
   $ sudo apt-get install libreoffice python3-uno
 
 If this fails, you might try with adding the `LibreOffice Fresh
 <https://launchpad.net/~libreoffice/+archive/ubuntu/ppa>`__ PPA::
-  
+
   $ sudo add-apt-repository ppa:libreoffice/ppa
   $ sudo apt update
   $ sudo apt upgrade
@@ -72,7 +71,7 @@ also used for :doc:`linod`):
     $ sudo systemctl enable supervisor
 
 
-.. 
+..
     Vic Vijayakumar has written such a
     script, and for convenience the Lino repository contains a copy of it
     :file:`/bash/openoffice-headless`.
@@ -93,29 +92,7 @@ also used for :doc:`linod`):
 
         $ sudo chmod 755 /etc/init.d/openoffice-headless
 
-    - Finally, run ``update-rc.d`` to have the daemon 
+    - Finally, run ``update-rc.d`` to have the daemon
       automatically start when the server boots::
 
         $ sudo update-rc.d openoffice-headless defaults
-
-
-Setting ``appy_params``
-=======================
-
-If you have Python 3 installed under :file:`/usr/bin/python3`, then
-you don't need to read this section.  Otherwise you must set your
-:attr:`appy_params <lino.core.site.Site.appy_params>` to point to your
-`python3` executable, e.g. by specifying in your
-:xfile:`settings.py`::
-
-  SITE.appy_params.update(pythonWithUnoPath='/usr/bin/python3')
-
-This is because Lino runs under Python **2** while `python-uno` needs
-Python **3**.  To resolve that conflict, `appy.pod` has this
-configuration option which causes it to run its UNO call in a
-subprocess with Python 3.
-
-If you don't want to do this again and again for every Lino site on
-your machine, then you should put this to your :xfile:`lino_local.py`
-file.
-

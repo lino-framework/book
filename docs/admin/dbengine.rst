@@ -24,7 +24,7 @@ The latter is less secure but convenient on a server having all sites owned by a
 same :term:`site operator`.
 
 On a server with a shared database user you must also specify a
-:option:`db-password` for :cmd:`getlino configure`.
+:option:`--db-password`.
 
 Every subsequent :cmd:`getlino startsite` run will
 

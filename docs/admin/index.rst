@@ -34,12 +34,11 @@ Installation
     root
     install
     dbengine
+    appy
     multiple_frontends
-    xl
-    oood
     linod
     monit
-    notify
+    certbot
     security
     cron
     postfix
@@ -102,6 +101,8 @@ Other
     mysql_tune
     du
     startsite
+    oood
+    notify
 
 
 
@@ -116,3 +117,4 @@ Other
     /java/index
     attic
     media
+    xl

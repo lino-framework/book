@@ -55,6 +55,7 @@ Plugins of the Extensions library
 .. toctree::
    :maxdepth: 1
 
+   addresses
    ana
    appypod
    b2c
