@@ -7,12 +7,12 @@ Components of the Lino framework
 General framework repositories
 ==============================
 
-- The :mod:`lino` package contains the core of the framework and 
+- The :mod:`lino` package contains the core of the framework and
   includes the :doc:`/specs/modlib`.
 
-- The :mod:`lino_xl` package contains the :ref:`xl`.
-
 - The :mod:`getlino` package contains the Lino installer. See :ref:`getlino`.
+
+- The :mod:`lino_xl` package contains the :ref:`xl`.
 
 - The :mod:`lino_book` package contains the source code of what you
   are reading right now, a collection of demo projects and examples
@@ -40,25 +40,33 @@ documentation in the :ref:`Lino Book <book>`.
 Some other Lino applications have their own technical documentation, demo projects
 and technical specs:
 
-- `Lino Amici <http://amici.lino-framework.org>`_
-- `Lino Presto <http://presto.lino-framework.org>`_
-- `Lino Pronto <http://pronto.lino-framework.org>`_
-- `Lino Welfare <http://welfare.lino-framework.org>`_ currently has two
-  variants named `Chatelet <http://welcht.lino-framework.org>`_
+- `Lino Amici <http://amici.lino-framework.org>`_ is a contacts manager for families.
+
+- `Lino Presto <http://presto.lino-framework.org>`_ is an application developed
+  for a service provider in Eupen. Group calendar, team management, monthly
+  invoicings. No accounting.
+
+- `Lino Pronto <http://pronto.lino-framework.org>`_ is an application developed
+  for a provider with delivery notes and with accounting. Not yet uses in production.
+
+- `Lino Welfare <http://welfare.lino-framework.org>`_ is a :term:`plugin library`
+  for Belgian Public Social Welfare Centres, currently used by two applications
+  `Chatelet <http://welcht.lino-framework.org>`_ and
   `Eupen <http://weleup.lino-framework.org>`_.
-- `Lino Patrols <http://patrols.lino-framework.org/>`_ (fell asleep before going to production)
-- `Lino Logos <http://logos.lino-framework.org/>`_ (fell asleep before going to production)
-- `Lino Sunto <https://github.com/ManuelWeidmann/lino-sunto>`_ is the first Lino
-  application developed by somebody else than the author.
+
+- Some applications fell asleep before going to production: `Lino Patrols
+  <http://patrols.lino-framework.org/>`_,  `Lino Logos
+  <http://logos.lino-framework.org/>`_ and `Lino Sunto
+  <https://github.com/ManuelWeidmann/lino-sunto>`_ (the latter was the first
+  Lino application developed by somebody else than the author).
 
 
 Utilities maintained by the :ref:`lsf`
 ======================================
 
-Some projects which might be useful to non-Lino Python projects are
-not covered in the Lino Book because they are actually not at all
-related to Lino, except that Lino depends on them and that they are
-maintained by the Lino team:
+Some packages that might be useful to non-Lino Python projects are not covered
+in the Lino Book because they are actually not at all related to Lino, except
+that Lino depends on them and that they are maintained by the Lino team:
 
 - :mod:`atelier` is a collection of utilities (subpackages
   :mod:`projects <atelier.projects>`, :mod:`invlib <atelier.invlib>` and

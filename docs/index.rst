@@ -5,6 +5,14 @@ The Lino Book
 Welcome to the Lino Book, the technical documentation about the :term:`Lino
 framework`. For non-technical documentation about Lino see the :ref:`cg`.
 
+This website is meant to be read like a book, in sequence. Use the "next" and
+"previous" links for navigation.
+
+This book should be interesting and understandable for any motivated developer
+with at least basic knowledge.  But it is also *work in progress* and we count
+on you as a reader to help us. Please let us know whenever you stumble over a
+section that does not seem to satisfy the goal of this book.
+
 
 .. toctree::
    :maxdepth: 2
