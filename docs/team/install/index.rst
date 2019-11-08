@@ -18,7 +18,7 @@ Run getlino to clone Lino repositories
 
 Run :cmd:`getlino configure` with :option:`--clone` and :option:`--devtools`::
 
-  $ getlino configure --clone --devtools
+  $ getlino configure --clone --devtools --redis
 
 Note that getlino uses the configuration values you specified during
 :doc:`/dev/install/index`.
