@@ -2,8 +2,6 @@
 Welcome
 =======
 
-This is the technical documentation about the :term:`Lino framework`.
-
 The Lino community welcomes both experienced and newbie Python developers.
 
 Volunteer contributors contact us because they want to

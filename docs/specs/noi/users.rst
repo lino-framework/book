@@ -1,0 +1,224 @@
+.. doctest docs/specs/noi/users.rst
+.. _noi.specs.user:
+
+======================================
+``users`` (User management in Noi)
+======================================
+
+.. currentmodule:: lino_noi.lib.users
+
+The :mod:`lino_noi.lib.users` plugin extends :mod:`lino_xl.lib.online.users` for
+Lino Noi.
+
+
+.. contents::
+  :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> import lino
+>>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
+
+
+User types
+==========
+
+A default Lino Noi site has the following user types:
+
+>>> rt.show(users.UserTypes)
+======= ============ ==================
+ value   name         text
+------- ------------ ------------------
+ 000     anonymous    Anonymous
+ 100     user         User
+ 200     consultant   Consultant
+ 300     hoster       Hoster
+ 400     developer    Developer
+ 490     senior       Senior developer
+ 900     admin        Administrator
+======= ============ ==================
+<BLANKLINE>
+
+
+A **user** is somebody who uses some part of the software being
+developed by the team. This is usually the contact person of a
+customer.
+
+A **consultant** is an intermediate agent between end-users and the
+team.
+
+A **hoster** is a special kind of customer who installs and maintains
+servers where Lino applications run.
+
+A **developer** is somebody who works on tickets by doing code
+changes.
+
+A **senior** is a developer who additionaly can triage tickets.
+
+Here is a list of user types of those who can work on tickets:
+
+>>> from lino_xl.lib.working.roles import Worker
+>>> UserTypes = rt.models.users.UserTypes
+>>> [p.name for p in UserTypes.items()
+...     if p.has_required_roles([Worker])]
+['consultant', 'hoster', 'developer', 'senior', 'admin']
+
+And here are those who don't work:
+
+>>> [p.name for p in UserTypes.items()
+...    if not p.has_required_roles([Worker])]
+['anonymous', 'user']
+
+
+Users
+=====
+
+>>> rt.show('users.UsersOverview')
+========== ======================== ==========
+ Username   User type                Language
+---------- ------------------------ ----------
+ jean       490 (Senior developer)   en
+ luc        400 (Developer)          en
+ marc       100 (User)               en
+ mathieu    200 (Consultant)         en
+ robin      900 (Administrator)      en
+ rolf       900 (Administrator)      de
+ romain     900 (Administrator)      fr
+========== ======================== ==========
+<BLANKLINE>
+
+
+
+
+User roles and permissions
+==========================
+
+Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
+
+>>> rt.show(users.UserRoles)
+======================== ===== ===== ===== ===== ===== ===== =====
+ Name                     000   100   200   300   400   490   900
+------------------------ ----- ----- ----- ----- ----- ----- -----
+ cal.CalendarReader       ☑
+ comments.CommentsStaff                                 ☑     ☑
+ comments.CommentsUser          ☑     ☑     ☑     ☑     ☑     ☑
+ contacts.ContactsStaff                                       ☑
+ contacts.ContactsUser                ☑     ☑     ☑     ☑     ☑
+ core.SiteUser                  ☑     ☑     ☑     ☑     ☑     ☑
+ courses.CoursesUser                  ☑     ☑     ☑     ☑     ☑
+ excerpts.ExcerptsStaff                                 ☑     ☑
+ excerpts.ExcerptsUser                ☑     ☑     ☑     ☑     ☑
+ office.OfficeStaff                                           ☑
+ office.OfficeUser              ☑     ☑     ☑     ☑     ☑     ☑
+ tickets.Reporter               ☑     ☑     ☑     ☑     ☑     ☑
+ tickets.Searcher         ☑     ☑     ☑     ☑     ☑     ☑     ☑
+ tickets.TicketsStaff                                         ☑
+ tickets.Triager                                        ☑     ☑
+ users.Helper                         ☑     ☑     ☑     ☑     ☑
+ votes.VotesStaff                                             ☑
+ votes.VotesUser                ☑     ☑     ☑     ☑     ☑     ☑
+ working.Worker                       ☑     ☑     ☑     ☑     ☑
+======================== ===== ===== ===== ===== ===== ===== =====
+<BLANKLINE>
+
+The following shows a list of all windows in :ref:`noi`  and who can see them:
+
+>>> print(analyzer.show_window_permissions())
+- about.About.show : visible for all
+- cal.Calendars.detail : visible for admin
+- cal.Calendars.insert : visible for admin
+- cal.DailyView.detail : visible for user consultant hoster developer senior admin
+- cal.EntriesByGuest.insert : visible for user consultant hoster developer senior admin
+- cal.EventTypes.detail : visible for admin
+- cal.EventTypes.insert : visible for admin
+- cal.EventTypes.merge_row : visible for admin
+- cal.Events.detail : visible for admin
+- cal.Events.insert : visible for admin
+- cal.GuestRoles.detail : visible for admin
+- cal.GuestRoles.merge_row : visible for admin
+- cal.Guests.detail : visible for nobody
+- cal.Guests.insert : visible for nobody
+- cal.MonthlyView.detail : visible for user consultant hoster developer senior admin
+- cal.RecurrentEvents.detail : visible for admin
+- cal.RecurrentEvents.insert : visible for admin
+- cal.Rooms.detail : visible for admin
+- cal.Rooms.insert : visible for admin
+- cal.Tasks.detail : visible for admin
+- cal.Tasks.insert : visible for admin
+- cal.WeeklyView.detail : visible for user consultant hoster developer senior admin
+- changes.Changes.detail : visible for admin
+- checkdata.Checkers.detail : visible for admin
+- checkdata.Problems.detail : visible for user consultant hoster developer senior admin
+- comments.CommentTypes.detail : visible for senior admin
+- comments.CommentTypes.insert : visible for senior admin
+- comments.Comments.detail : visible for user consultant hoster developer senior admin
+- comments.Comments.insert : visible for user consultant hoster developer senior admin
+- comments.CommentsByRFC.insert : visible for user consultant hoster developer senior admin
+- comments.Mentions.detail : visible for senior admin
+- contacts.Companies.detail : visible for consultant hoster developer senior admin
+- contacts.Companies.insert : visible for consultant hoster developer senior admin
+- contacts.Companies.merge_row : visible for admin
+- contacts.Partners.merge_row : visible for admin
+- contacts.Persons.detail : visible for consultant hoster developer senior admin
+- contacts.Persons.insert : visible for consultant hoster developer senior admin
+- contacts.Persons.merge_row : visible for admin
+- countries.Countries.detail : visible for admin
+- countries.Countries.insert : visible for admin
+- countries.Places.detail : visible for admin
+- excerpts.ExcerptTypes.detail : visible for senior admin
+- excerpts.ExcerptTypes.insert : visible for senior admin
+- excerpts.Excerpts.detail : visible for consultant hoster developer senior admin
+- gfks.ContentTypes.detail : visible for admin
+- github.Commits.detail : visible for user consultant hoster developer senior admin
+- github.Repositories.detail : visible for admin
+- github.Repositories.insert : visible for admin
+- groups.Groups.detail : visible for user consultant hoster developer senior admin
+- groups.Groups.insert : visible for user consultant hoster developer senior admin
+- groups.Groups.merge_row : visible for admin
+- groups.Memberships.detail : visible for user consultant hoster developer senior admin
+- groups.Memberships.insert : visible for user consultant hoster developer senior admin
+- lists.Lists.detail : visible for consultant hoster developer senior admin
+- lists.Lists.insert : visible for consultant hoster developer senior admin
+- lists.Lists.merge_row : visible for admin
+- mailbox.Mailboxes.detail : visible for user consultant hoster developer senior admin
+- mailbox.Mailboxes.insert : visible for user consultant hoster developer senior admin
+- mailbox.MessageAttachments.detail : visible for user consultant hoster developer senior admin
+- mailbox.Messages.detail : visible for user consultant hoster developer senior admin
+- system.SiteConfigs.detail : visible for admin
+- tickets.Links.detail : visible for admin
+- tickets.Sites.detail : visible for user consultant hoster developer senior admin
+- tickets.Sites.insert : visible for user consultant hoster developer senior admin
+- tickets.Sites.merge_row : visible for admin
+- tickets.TicketTypes.detail : visible for admin
+- tickets.Tickets.detail : visible for all
+- tickets.Tickets.insert : visible for user consultant hoster developer senior admin
+- tickets.Tickets.merge_row : visible for admin
+- tinymce.TextFieldTemplates.detail : visible for admin
+- tinymce.TextFieldTemplates.insert : visible for admin
+- uploads.UploadTypes.detail : visible for admin
+- uploads.UploadTypes.insert : visible for admin
+- uploads.Uploads.detail : visible for user consultant hoster developer senior admin
+- uploads.Uploads.insert : visible for user consultant hoster developer senior admin
+- uploads.UploadsByController.insert : visible for user consultant hoster developer senior admin
+- uploads.Volumes.detail : visible for admin
+- uploads.Volumes.insert : visible for admin
+- uploads.Volumes.merge_row : visible for admin
+- users.AllUsers.send_welcome_email : visible for admin
+- users.NewUsers.send_welcome_email : visible for admin
+- users.OtherUsers.detail : visible for user consultant hoster developer senior admin
+- users.Register.insert : visible for user consultant hoster developer senior admin
+- users.Users.change_password : visible for user consultant hoster developer senior admin
+- users.Users.detail : visible for user consultant hoster developer senior admin
+- users.Users.insert : visible for user consultant hoster developer senior admin
+- users.Users.merge_row : visible for admin
+- users.Users.verify : visible for user consultant hoster developer senior admin
+- users.UsersOverview.sign_in : visible for all
+- working.ServiceReports.detail : visible for consultant hoster developer senior admin
+- working.ServiceReports.insert : visible for consultant hoster developer senior admin
+- working.Sessions.detail : visible for consultant hoster developer senior admin
+- working.Sessions.insert : visible for consultant hoster developer senior admin
+- working.SiteSummaries.detail : visible for user consultant hoster developer senior admin
+- working.UserSummaries.detail : visible for user consultant hoster developer senior admin
+- working.WorkedHours.detail : visible for user consultant hoster developer senior admin
+<BLANKLINE>

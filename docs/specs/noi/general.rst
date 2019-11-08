@@ -35,7 +35,7 @@ But :mod:`lino_xl.lib.tickets` is an independent plugin which might be
 reused by other applicaton that have no worktime tracking.  Lino Noi
 uses them both and extends the "library" version of tickets:
 
-- :mod:`lino_noi.lib.tickets` 
+- :mod:`lino_noi.lib.tickets`
 
 >>> dd.plugins.working
 lino_xl.lib.working
@@ -49,74 +49,6 @@ lino_noi.lib.tickets (extends_models=['Ticket', 'Site'])
 >>> dd.plugins.tickets.needs_plugins
 ['lino_xl.lib.excerpts', 'lino.modlib.comments', 'lino.modlib.changes', 'lino_noi.lib.noi']
 
-
-
-User types
-==========
-
-A default Lino Noi site has the following user types:
-
->>> rt.show(users.UserTypes)
-======= ============ ==================
- value   name         text
-------- ------------ ------------------
- 000     anonymous    Anonymous
- 100     user         User
- 200     consultant   Consultant
- 300     hoster       Hoster
- 400     developer    Developer
- 490     senior       Senior developer
- 900     admin        Administrator
-======= ============ ==================
-<BLANKLINE>
-
-
-A **user** is somebody who uses some part of the software being
-developed by the team. This is usually the contact person of a
-customer.
-
-A **consultant** is an intermediate agent between end-users and the
-team.
-
-A **hoster** is a special kind of customer who installs and maintains
-servers where Lino applications run.
-
-A **developer** is somebody who works on tickets by doing code
-changes.
-
-A **senior** is a developer who additionaly can triage tickets.
-
-Here is a list of user types of those who can work on tickets:
-
->>> from lino_xl.lib.working.roles import Worker
->>> UserTypes = rt.models.users.UserTypes
->>> [p.name for p in UserTypes.items()
-...     if p.has_required_roles([Worker])]
-['consultant', 'hoster', 'developer', 'senior', 'admin']
-
-And here are those who don't work:
-
->>> [p.name for p in UserTypes.items()
-...    if not p.has_required_roles([Worker])]
-['anonymous', 'user']
-
-
-Users
-=====
-
->>> rt.show('users.UsersOverview')
-========== ======================== ==========
- Username   User type                Language
----------- ------------------------ ----------
- jean       490 (Senior developer)   en
- luc        400 (Developer)          en
- marc       100 (User)               en
- mathieu    200 (Consultant)         en
- robin      900 (Administrator)      en
- rolf       900 (Administrator)      de
- romain     900 (Administrator)      fr
-========== ======================== ==========
-<BLANKLINE>
 
 
 Countries
@@ -153,7 +85,7 @@ Lino Noi and Scrum
 - Usually there is at least one ticket per site for planning and
   discussion.
 - Every backlog item is registered as a ticket on that site
-- The detail view of a site is the equivalent of a backlog  
+- The detail view of a site is the equivalent of a backlog
 
 >>> show_fields(system.SiteConfig)
 ... #doctest: +REPORT_UDIFF

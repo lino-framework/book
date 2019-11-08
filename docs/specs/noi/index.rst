@@ -25,7 +25,7 @@ This section contains specs for :ref:`noi`.
     bs3
     export_excel
     mailbox
-    
+
     projects
     faculties
     votes
@@ -35,11 +35,12 @@ This section contains specs for :ref:`noi`.
     sql
     cal
     suggesters
-   
+    users
+
 
 
 .. currentmodule:: lino_noi.lib.noi
-                   
+
 .. module:: lino_noi.lib.noi.workflows
 
 The default :attr:`workflows_module
@@ -47,5 +48,3 @@ The default :attr:`workflows_module
 
 This workflow requires that both :mod:`lino_xl.lib.tickets` and
 :mod:`lino_xl.lib.votes` are installed.
-           
-            
