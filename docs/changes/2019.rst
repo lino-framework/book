@@ -13,6 +13,12 @@
 .. contents::
   :local:
 
+2019-11-07
+==========
+
+The title of insert windows is no longer e.g. "Insert into All Tickets" but
+simply "New Ticket". Thanks to Amber who had the idea. :ticket:`3327`. 
+
 2019-11-06
 ==========
 
