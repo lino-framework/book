@@ -228,10 +228,32 @@ Mr Aleksándr Alvang is
 
 
 
+
+Let's use  the :func:`get_json_soup <lino.api.doctest.get_json_soup>` function to analyze
+
+>>> soup = get_json_soup('rolf', 'avanti/Clients/178', 'households_MembersByPerson')
+>>> links = soup.find_all('a')
+>>> len(links)
+6
+
+>>> print(links[4].string)
+Bestehendem Haushalt beitreten
+>>> print(links[4].get('href'))
+... #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+javascript:Lino.households.MembersByPerson.insert.run(null,{ "base_params": { "person": 178 },
+"data_record": { "data": { "disabled_fields": { "birth_date": true, "first_name": true,
+"gender": true, "last_name": true }, "household": null, "householdHidden": null, "person":
+"ALVANG Aleks\u00e1ndr (178)", "personHidden": 178, "primary": false, "role": "Kind", 
+"roleHidden": "05" }, "phantom": true, "title": "Mitglied erstellen" }, "param_values": {
+"aged_from": null, "aged_to": null, "end_date": null, "gender": null, "genderHidden": null,
+"start_date": null }, "record_id": null })
+
+
+
 Don't read on
 =============
 
-The following covers a problem that occured 20181023 and was detected
+The following covers a problem that occurred 20181023 and was detected
 by welfare but not yet by book.
 
 >>> print(p.id)
@@ -261,7 +283,7 @@ by welfare but not yet by book.
 
 
 Table reference
-===============1
+===============
 
 .. class:: Households
 .. class:: HouseholdsByType

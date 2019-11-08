@@ -347,3 +347,30 @@ en: Ohne Angabe
 de: A1
 fr: Ohne Angabe
 Muttersprachen: Französisch
+
+
+
+Creating a new client
+=====================
+
+
+>>> ses = rt.login("romain")
+>>> url = '/api/avanti/MyClients/-99999?an=insert&fmt=json'
+>>> test_client.force_login(ses.user)
+>>> res = test_client.get(url)
+>>> res.status_code
+200
+>>> d = AttrDict(json.loads(res.content))
+>>> rmu(sorted(d.keys()))
+... #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
+['data', 'phantom', 'title']
+>>> d.phantom
+True
+>>> print(d.title)
+Nouveau Bénéficiaire
+
+
+The dialog window has 6 data fields:
+
+>>> sorted(d.data.keys())  #doctest: +NORMALIZE_WHITESPACE
+['disabled_fields', 'email', 'first_name', 'gender', 'genderHidden', 'last_name']

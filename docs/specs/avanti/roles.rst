@@ -14,6 +14,20 @@ User types in Lino Avanti
 >>> lino.startup('lino_book.projects.avanti1.settings.doctests')
 >>> from lino.api.doctest import *
 
+>>> rt.show('users.UsersOverview')
+========== ===================== ==========
+ Username   User type             Language
+---------- --------------------- ----------
+ audrey     300 (Auditor)         en
+ laura      100 (Teacher)         en
+ martina    400 (Coordinator)     en
+ nathalie   200 (Social worker)   en
+ robin      900 (Administrator)   en
+ rolf       900 (Administrator)   de
+ romain     900 (Administrator)   fr
+ sandra     410 (Secretary)       en
+========== ===================== ==========
+<BLANKLINE>
 
 
 Site administrator
