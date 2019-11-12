@@ -13,11 +13,24 @@
 .. contents::
   :local:
 
+2019-11-12
+==========
+
+Fixed :ticket:`3333` (Unable to create comments with invalid @user or #ticket).
+
+
+2019-11-11
+==========
+
+Release to PyPI : lino lino-xl lino-welfare lino-weleup lino-react lino-avanti
+
+
+
 2019-11-07
 ==========
 
 The title of insert windows is no longer e.g. "Insert into All Tickets" but
-simply "New Ticket". Thanks to Amber who had the idea. :ticket:`3327`. 
+simply "New Ticket". Thanks to Amber who had the idea. :ticket:`3327`.
 
 2019-11-06
 ==========
@@ -33,9 +46,6 @@ icon_name.
 
 2019-11-02
 ==========
-
-.. Release to PyPI : lino lino-xl lino-welfare lino-weleup lino-react lino-avanti
-
 
 We started to publish :ref:`react` as a package on PyPI. Version 19.11.1 might
 work, but we didn't yet test it.
