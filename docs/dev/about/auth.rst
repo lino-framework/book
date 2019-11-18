@@ -35,9 +35,7 @@ As a side effect, Lino's approach brings a solution for an old
 limitation of Django's approach which provides no means for defining
 instance-specific permissions.
 
-This design decision comes of cours at a high price : application code
-developed for the Lino framework don't work in plain Django, and
-applications for Django need a wrapper for making them useable in
-Lino. Also they cannot easily be mixed together. Though there are
-excaptions, e.g. :mod:`django.contrib.sessions`.
-
+This design decision of course has a price : application code developed for the
+Lino framework won't work in plain Django, and applications for Django need a
+wrapper for making them usable in Lino. Also they cannot easily be mixed
+together. Though there are exceptions, e.g. :mod:`django.contrib.sessions`.

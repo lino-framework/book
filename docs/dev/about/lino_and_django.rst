@@ -14,22 +14,19 @@ only choice [#ui]_.  Here are the **under the hood** differences between Lino
 and Django.
 
 - Lino adds the concept of an central :doc:`application object
-  </dev/application>` while Django is a radically decentralized
-  approach. We believe that without such a central place it is not
-  possible --or at least not fun and not efficient-- to maintain
-  complex software projects.
+  </dev/application>` while Django is a radically decentralized approach. We
+  believe that without such a central place it is not possible -or at least not
+  efficient- to maintain complex software projects.
 
 - Lino is a replacement for `Django's admin interface
-  <http://docs.djangoproject.com/en/2.2/ref/contrib/admin>`__.  I
-  believe that `django.contrib.admin` is not a usable base for writing
-  a set of reusable complex customized database applications.  It has
-  obviously not been designed for these.
- 
+  <http://docs.djangoproject.com/en/2.2/ref/contrib/admin>`__ which has
+  obviously not been designed as a base for writing collections of reusable
+  customized database applications.
+
 - In Lino we opted to replace Django's database-stored user groups and
-  permissions system by a system which uses pure Python code
-  objects. We believe that Lino's approach is more suitable for
-  defining and maintaining complex applications.  That's why Lino
-  replaces `django.contrib.auth
+  permissions system by a system that uses pure Python code objects. We believe
+  that Lino's approach is more suitable for defining and maintaining complex
+  applications.  That's why Lino replaces `django.contrib.auth
   <https://docs.djangoproject.com/en/2.2/ref/contrib/auth/>`__ by
   :mod:`lino.modlib.users`.
 
@@ -39,12 +36,12 @@ and Django.
   the wrong place" and forces application developers to write
   redundant code. Lino replaces Django's forms by the concept of
   :doc:`layouts </dev/layouts/index>`.
-  
+
 - Lino suggests (but doesn't enfore) to use its own system for
   :doc:`database migrations </dev/datamig>` instead of Django's default
   `Migrations
   <https://docs.djangoproject.com/en/2.2/topics/migrations/>`_ system.
-  
+
 - Lino prefers Jinja2 templates over the `default Django engine
   <https://docs.djangoproject.com/en/2.2/topics/templates/>`_ to
   generate its own stuff.  For the plain Django part of your
@@ -53,11 +50,13 @@ and Django.
 - Lino adds concepts like Actions, Choosers, ChoiceLists, Workflows,
   multi-lingual database content, generating printable documents, ...
 
-- Higher level solutions for common features like
-  :mod:`lino.modlib.changes`, `lino_xl.lib.excerpts`, ...
+- High level features like
+  :mod:`lino.modlib.comments`,
+  :mod:`lino.modlib.changes`,
+  :mod:`lino_xl.lib.excerpts`,
+  :mod:`lino.modlib.summaries`, ...
 
 
 .. rubric:: Footnotes
 
-.. [#ui] See :doc:`ui`. 
-
+.. [#ui] See :doc:`ui`.
