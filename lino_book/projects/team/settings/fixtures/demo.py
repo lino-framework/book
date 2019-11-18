@@ -62,14 +62,16 @@ def tickets_objects():
     # Tagging = rt.models.blogs.Tagging
     # Line = rt.models.courses.Line
     List = rt.models.lists.List
-    cons = UserTypes.consultant
-    dev = UserTypes.developer
-    end_user = UserTypes.user
 
-    yield create_user("marc", UserTypes.user)
-    yield create_user("mathieu", cons)
+
+    customer = UserTypes.customer
+    contributor = UserTypes.contributor
+    dev = UserTypes.developer
+
+    yield create_user("marc", customer)
+    yield create_user("mathieu", contributor)
     yield create_user("luc", dev)
-    yield create_user("jean", UserTypes.senior)
+    yield create_user("jean", dev)
 
     # USERS = Cycler(User.objects.all())
     WORKERS = Cycler(User.objects.filter(

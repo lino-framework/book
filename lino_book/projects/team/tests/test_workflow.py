@@ -49,11 +49,11 @@ class WorkflowTests(RemoteAuthTestCase):
                        language="en")
         anna = create(User, username='anna',
                       first_name="Anna",
-                      user_type=UserTypes.user,
+                      user_type=UserTypes.customer,
                       language="en")
         berta = create(User, username='berta',
                        first_name="Berta",
-                       user_type=UserTypes.user,
+                       user_type=UserTypes.customer,
                        language="en")
         # meeting = create(Meeting, name="Test")
         # sprints = create(Line, name="Sprints")
