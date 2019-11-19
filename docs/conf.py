@@ -353,7 +353,9 @@ if False:  # on_rtd:
 from atelier.sphinxconf import interproject
 interproject.configure(
     globals(), 'atelier etgen getlino eidreader lino lino_xl',
-    cg=('http://community.lino-framework.org/', None))
+    cg=('http://community.lino-framework.org/', None),
+    django=('http://docs.djangoproject.com/en/dev/', 'http://docs.djangoproject.com/en/dev/_objects/'),
+    sphinx=('http://www.sphinx-doc.org/en/master/', None))
 
 #intersphinx_mapping['cg'] = ('http://community.lino-framework.org/', None)
 

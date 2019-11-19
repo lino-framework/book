@@ -26,9 +26,10 @@ The primitive way
 =================
 
 Help texts can be defined and maintained by the  :term:`application developer`
-by setting the :attr:`help_text` attribute of a field, :attr:`actor
-<lino.core.actors.Actor.help_text>` or :attr:`action
-<lino.core.actions.Action.help_text>`.  As a developer you should wrap that
+by setting the :attr:`help_text` attribute of a
+:attr:`field <django.db.models.Field.help_text>`, 
+:attr:`actor <lino.core.actors.Actor.help_text>`
+or :attr:`action <lino.core.actions.Action.help_text>`.  As a developer you should wrap that
 string into :func:`gettext` to have it translatable.  Fictive example::
 
     from lino.api import dd, _
