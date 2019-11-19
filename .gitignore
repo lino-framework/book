@@ -38,3 +38,6 @@ cypress/*
 node_modules/*
 package.json
 
+.tox/
+*.lock
+
