@@ -31,10 +31,10 @@ roles:
 
 - :rst:role:`func` to link to a function
   e.g. :func:`lino.utils.join_words`
-     
+
 - :rst:role:`class`  to link to a class.
   Example :class:`lino.core.model.Model`
-  
+
 - :rst:role:`meth`  to link to a method.
   Example :meth:`lino.core.model.Model.get_data_elem`
 
@@ -46,25 +46,30 @@ Some sphinx roles defined in :mod:`lino.sphinxcontrib.base`:
 
 
 .. _prosa_vs_api:
-     
+
 Generated API docs versus prosa
 ===============================
 
-The Lino book contains "API docs" and "Specifications".  These are two
-fundamentally different beasts.  The main difference is that API docs
-are automatically generated using autodoc which extracts the
-docstrings from source code while the Specifications are written in
-prosa style.
-  
-Plugins generally cannot be documented using autodoc because they are
-extensible and because Django would refuse to import two variants of a
-same plugin within a same Sphinx build process.  So prosa style is
-needed for plugins.
+The Lino book contains "API docs" and "Specifications".  These are two very
+different beasts.  The main difference is that API docs are automatically
+generated using autodoc which extracts the docstrings from source code while the
+Specifications are written in prosa style.
 
-Prosa style documentation has the advantage of being more readable
-since the author can decide about the documents' structure.  The
-challenge with prosa style is that it needs extra care when some code
-changes.
+Plugins generally cannot be documented using autodoc because they are extensible
+and because Django would refuse to import two variants of a same plugin within a
+same Sphinx build process.  So :term:`prosa style` is preferred for documenting
+plugins.
+
+.. glossary::
+
+  prosa style
+
+    When documentation is written by a human, not generated using autodoc.
+
+
+Prosa style documentation has the advantage of being more readable since the
+author can decide about the documents' structure.  The challenge with prosa
+style is that it needs extra care when some code changes.
 
 When referring to Django application code, there is an additional
 thing to know: many plugins are documented using *prosa* style instead
@@ -86,7 +91,7 @@ This is valid not only for models but also for
 - user roles, e.g. :class:`lino.modlib.users.Helper`
 - other plugin classes, e.g.
   :class:`lino.modlib.users.UserType`
-  
-  
+
+
 Of course above works only for plugins that have been converted to
 prosa style (:ticket:`1869`).

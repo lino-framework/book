@@ -4,27 +4,35 @@
 Help Texts
 ==========
 
-Help texts are the short explanations to be displayed as tooltips when
-the user hovers over a form field, menu item, or toolbar button.
+.. glossary::
 
-The challenge with help texts is that they must be helpful to
-end-users, up-to-date and translated.
+  Help text
+
+    A short explanation to be displayed as tooltip when the user hovers over a
+    form field, a menu item, or a toolbar button.
+
+Help texts should be
+(1) helpful to the :term:`end user`,
+(2) translated and
+(3) maintainable.  Lino provides several approaches for reaching these
+goals.
 
 .. contents::
    :local:
    :depth: 2
 
 
-Introduction
-============
+The primitive way
+=================
 
-Help texts can be simply defined and maintained by the application
-developer by setting the :attr:`help_text` attribute of a database
-field, :attr:`actor <lino.core.actors.Actor.help_text>` or
-:attr:`action <lino.core.actions.Action.help_text>`.  You should wrap
-that string into :func:`gettext` to have it translatable.  Fictive
-example::
-      
+Help texts can be defined and maintained by the  :term:`application developer`
+by setting the :attr:`help_text` attribute of a field, :attr:`actor
+<lino.core.actors.Actor.help_text>` or :attr:`action
+<lino.core.actions.Action.help_text>`.  As a developer you should wrap that
+string into :func:`gettext` to have it translatable.  Fictive example::
+
+    from lino.api import dd, _
+
     class MyModel(dd.Model):
         """MyModel is an important example."""
 
@@ -34,35 +42,65 @@ example::
     question about life, the universe and everything.
     """))
 
-Help texts can be customized locally per site by the users using
-:class:`HelpText <lino.modlib.system.HelpText>` table.  This feature
-exists but is not seriously used in reality.
-       
-For bigger projects we recommend to use the :mod:`help_texts_extractor
-<lino.sphinxcontrib.help_texts_extractor>` module which delegates help
-text authoring and maintenance to the documentation author.
-
-The help text extractor is a Sphinx extension which extracts help
-texts from your Sphinx documentation to a :xfile:`help_texts.py` file
-which Lino will load at startup.
-
-With help text extractor you write the help texts in your
-documentation using prosa style::
+Help texts can be customized locally per site by the end users as
+:term:`customized help text`.  This feature is not being used seriously on any
+known :term:`production site`.
 
 
-    .. class:: MyModel
-               
-        MyModel is an important example.
+The help texts extractor
+========================
 
-        .. attribute:: universe
+In bigger projects we want to differentiate between application development and
+authoring of :term:`end user` documentation. That's why  the :term:`application
+developer` can delegate help text maintenance to the documentation maintainer.
 
-            The first field contains an optional answer to the
-            question about life, the universe and everything.
+This is where we use the :term:`help texts extractor`.
+
+.. glossary::
+
+  help texts extractor
+
+    A Sphinx extension that extracts help texts from your Sphinx documentation
+    to :xfile:`help_texts.py` files, which Lino will load at startup.
+
+With the :term:`help texts extractor` you write the help texts in your
+documentation using :term:`prosa style`::
+
+  .. class:: MyModel
+
+      MyModel is an important example.
+
+      .. attribute:: universe
+
+          The first field contains an optional answer to the
+          question about life, the universe and everything.
+
+          This field is a simple char field. Blabla more documentation.
 
 
-Advantages:
+How it works
+============
 
-- Better readability.
+When you run :cmd:`inv bd` on a Sphinx doctree that has
+:mod:`help_texts_extractor <lino.sphinxcontrib.help_texts_extractor>` installed,
+Sphinx takes the first paragraph of every object description in your Sphinx
+documentation and write it to a :xfile:`help_texts.py` file.
+
+Note that only the *first* paragraph of the content of every :rst:dir:`class`
+and :rst:dir:`attribute` directive is taken as help text, and that any
+formatting and links are removed.
+
+After having extracted help texts, the application developer can run :cmd:`inv
+mm` and start translating them.
+
+Lino will load these :xfile:`help_texts.py`  files at startup and "inject" them
+to the fields, actions and actors as if they had been defined by the application
+code.
+
+Advantages
+==========
+
+- Better readability, better maintainability.
 
 - As an application developer you don't need to worry about Python
   syntax consideration when editing your help text
@@ -70,28 +108,28 @@ Advantages:
 - Same source is used for both the docs and the user interface. You
   don't need to write (and maintain) these texts twice.
 
-Note that only the *first* paragraph of the content of every
-:rst:dir:`class` and :rst:dir:`attribute` directive is taken as help
-text, and that any links are being removed.
-
-Note also that any formatting is removed.
-
 
 The :xfile:`help_texts.py` file
 ===============================
 
 .. xfile:: help_texts.py
 
-The :xfile:`help_texts.py` file contains object descriptions to be
-installed as the `help_text` attribute of certain UI widgets (actions,
-database fields, ...)
+The :xfile:`help_texts.py` file contains object descriptions to be installed as
+the `help_text` attribute of certain UI widgets: actors, actions and database
+fields.
 
 It is automatically generated when a full build is being done.
 
-When a Lino :class:`Site <lino.core.site.Site>` initializes, it looks
-for a file named :xfile:`help_texts.py` in every plugin directory.  If
-such a file exists, Lino imports it and expects it to contain a
-:class:`dict` of the form::
+Note that this is done only when *all* pages of the doctree were built, i.e.
+when you ran :cmd:`inv clean` before running :cmd:`inv bd`.
+
+Note that the :term:`help texts extractor` needs to be configured properly: see
+the :envvar:`help_texts_builder_targets` variable in the :xfile:`conf.py` of the
+book.
+
+When a Lino :class:`Site <lino.core.site.Site>` initializes, it looks for a file
+named :xfile:`help_texts.py` in every plugin directory.  If such a file exists,
+Lino imports it and expects it to contain a :class:`dict` of the form::
 
     from lino.api import _
     help_texts = {
@@ -103,13 +141,16 @@ See also
 ========
 
 - How it all started: :blogref:`20160620`
+
 - :meth:`lino.core.site.Site.install_help_text`
+
 - :meth:`lino.core.site.Site.load_help_texts`
+
 - The ExtJS front end displays help texts as tooltips
   only when :attr:`lino.core.site.Site.use_quicklinks` is `True`.
 
 
-       
+
 Using help texts
 ================
 
@@ -164,6 +205,7 @@ specifications using the :func:`show_fields
 +---------------+----------------------------+-----------------------------------------------------------------+
 
 
+
 Don't read on
 =============
 
@@ -172,4 +214,3 @@ Don't read on
 >>> x = dict(tooltip=_("""This is a "foo", IOW a bar."""))
 >>> print(py2js(x))
 { "tooltip": "This is a \"foo\", IOW a bar." }
-

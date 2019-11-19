@@ -131,12 +131,53 @@ The :class:`ContentTypes` table shows all models defined in your application.
 
         Display a clickable list of all MTI parents, i.e. base models
 
-Customizable help texts
-=======================
+Customized help texts
+=====================
+
+.. glossary::
+
+  Customized help text
+
+    A :term:`help text` that has been locally overridden. It is stored in the
+    database and loaded at startup.  It can be modified by an :term:`end user`
+    with appropriate permissions.
 
 .. class:: HelpText
 
-    A custom help text to be displayed for a given field.
+    Django model to represent a :term:`customized help text`.
+
+
+>>> rt.show('gfks.HelpTexts', language="en")
+========== =========================== ========================================================== ==== ===========
+ Field      Verbose name                HelpText                                                   ID   Model
+---------- --------------------------- ---------------------------------------------------------- ---- -----------
+ field      Field (database field)      The name of the field.                                     1    Help Text
+ language   Language (database field)   Die Sprache, in der Dokumente ausgestellt werden sollen.   2    Partner
+========== =========================== ========================================================== ==== ===========
+<BLANKLINE>
+
+
+The language field of a partner is actually defined in
+:class:`lino.mixins.Contactable`.
+
+>>> fld = rt.models.contacts.Partner._meta.get_field('language')
+>>> for m in fld.model.__mro__:
+...    if 'language' in m.__dict__:
+...         print(m)
+<class 'lino.mixins.Contactable'>
+
+These custom help texts are currently not being used. The field has the help
+text defined by its prosa doc (:attr:`lino_xl.lib.contacts.Partner.language`):
+
+>>> print(fld.help_text)  #doctest: +NORMALIZE_WHITESPACE
+The language to use when communicating with this partner.
+
+That text is currently not translated to German:
+
+>>> with translation.override("de"):
+...     print(fld.help_text)  #doctest: +NORMALIZE_WHITESPACE
+The language to use when communicating with this partner.
+
 
 Broken GFKs
 ===========
