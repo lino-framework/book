@@ -13,11 +13,16 @@
 .. contents::
   :local:
 
+2019-11-21
+==========
+
+Fixed :ticket:`2001` (When I have changed my password, Lino says OK, but then it
+says "Database problem" and I need to re-login)
+
 2019-11-12
 ==========
 
 Fixed :ticket:`3333` (Unable to create comments with invalid @user or #ticket).
-
 
 2019-11-11
 ==========
