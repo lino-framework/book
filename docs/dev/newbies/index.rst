@@ -13,3 +13,4 @@ started by providing useful pointers.
    prerequisites
    learning
    py2lino
+   kids
