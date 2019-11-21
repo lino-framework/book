@@ -19,7 +19,7 @@ before_install:
   - sudo apt-get update -y
   - sudo apt-get upgrade -y
   - sudo apt-get install -y swig
-  - sudo apt-get install -y graphviz  
+  - sudo apt-get install -y graphviz
   - sudo apt-get install redis-server ; redis-server &
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
@@ -45,6 +45,7 @@ script:
   -  # inv prep test
   - rm -rf .eggs
   - inv install
+  - inv prep
   - inv cov --no-html
   -  # E2E testing with team
   - cd lino_book/projects/min1/
