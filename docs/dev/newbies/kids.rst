@@ -16,5 +16,23 @@ Turtle
 tkinter
 
 - See also `the official tkinter docs <https://docs.python.org/3.3/library/tkinter.html>`__
+
+- A "Hello world" program using tkinter: :srcref_book:`docs/dev/newbies/gui1.py`
+
+  This uses the "grid" layout method. The widgets are arranged by placing them in a cell of the grid.
+  The button spans over two cells. Numbering starts with 0 and in the top left corner.
+
+  +------+------+------+
+  |      | col0 | col1 |
+  +------+------+------+
+  | row0 |  L1  |  E1  |
+  +------+------+------+
+  | row1 |   B         |
+  +------+------+------+
+
+
+- The "number guessing game" using tkinter: :srcref_book:`docs/dev/newbies/gui2.py`
+
+  `Comprehensive list of events <https://effbot.org/tkinterbook/tkinter-events-and-bindings.htm>`__
+
 - See also http://www.tutorialspoint.com/python/python_gui_programming.htm
-- Hello world with tkinter: :srcref_book:`docs/dev/newbies/gui1.py`
