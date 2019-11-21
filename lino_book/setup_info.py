@@ -52,7 +52,7 @@ SETUP_INFO = dict(
     author_email='luc@lino-framework.org',
     url="http://www.lino-framework.org",
     # ~ test_suite = 'lino_book.projects',
-    test_suite='tests',
+    # test_suite='tests',
     classifiers="""\
   Programming Language :: Python
   Programming Language :: Python :: 2
