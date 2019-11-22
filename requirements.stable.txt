@@ -1,1 +1,1 @@
-# -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
+-r requirements-include.txt

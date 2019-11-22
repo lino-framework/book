@@ -1,3 +1,5 @@
+-r requirements-include.txt
+
 -e git+https://github.com/lino-framework/lino.git#egg=lino
 -e git+https://github.com/lino-framework/xl.git#egg=lino_xl
 -e git+https://github.com/lino-framework/noi.git#egg=lino_noi
@@ -8,5 +10,4 @@
 -e git+https://github.com/lino-framework/care.git#egg=lino_care
 -e git+https://github.com/lino-framework/tera.git#egg=lino_tera
 -e git+https://github.com/lino-framework/openui5.git#egg=lino_openui5
-# -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
 -e git+https://github.com/lino-framework/eidreader.git#egg=eidreader

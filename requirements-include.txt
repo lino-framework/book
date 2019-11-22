@@ -1,0 +1,7 @@
+# to following are added here so that we don't need to run inv install:
+bleach
+odfpy
+schedule
+social-auth-app-django
+svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
+git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap

@@ -1,3 +1,5 @@
+-r requirements-include.txt
+
 -e ../lino
 -e ../xl
 -e ../noi
