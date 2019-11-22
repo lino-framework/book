@@ -37,7 +37,6 @@ install:
   #  - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
   - python setup.py install_egg_info
   - pip install -e .
-  - pip install tox-travis
   - pip freeze
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
@@ -46,10 +45,9 @@ script:
   -  # inv prep test
   - rm -rf .eggs
   - inv install
-  - inv prep
+  - inv prep test
   - #inv cov --no-html
-  - tox
-  -  # E2E testing with team
+  - # E2E testing with team  TODO: move the following to the tests of the min1 project
   - cd lino_book/projects/min1/
   - #python manage.py prep --noinput
   - python manage.py runserver -v 0 > /dev/null 2>&1 &

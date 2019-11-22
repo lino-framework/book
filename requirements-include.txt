@@ -1,7 +1,12 @@
-# to following are added here so that we don't need to run inv install:
+# The following are added here so that we don't need to run inv install.
+# This should be the same as the compiled output of "inv install -l".
 bleach
 odfpy
 schedule
 social-auth-app-django
+
+# appy is given by `inv install -l` only if it is not yet installed:
 svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
+
+# ldap support is not yet given by `inv install`:
 git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
