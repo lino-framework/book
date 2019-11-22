@@ -88,8 +88,10 @@ class Person(Person, Partner, DupablePerson):
         verbose_name_plural = _("Persons")
         #~ ordering = ['last_name','first_name']
 
-    def get_queryset(self, ar):
-        return self.model.objects.select_related('country', 'city')
+    @classmethod
+    def get_queryset(cls, user):
+        qs = super(Person, cls).get_queryset(user)
+        return qs.select_related('country', 'city')
 
     def get_print_language(self):
         "Used by DirectPrintAction"
