@@ -1,0 +1,14 @@
+-e ../lino
+-e ../xl
+-e ../noi
+-e ../cosi
+-e ../voga
+-e ../avanti
+-e ../vilma
+-e ../care
+-e ../tera
+-e ../openui5
+-e ../cd
+-e ../be
+-e ../ee
+-e ../eg

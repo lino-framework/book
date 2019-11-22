@@ -1,9 +1,1 @@
--e git+https://github.com/lino-framework/eidreader.git#egg=eidreader
--e git+https://github.com/lino-framework/noi.git#egg=lino_noi
--e git+https://github.com/lino-framework/cosi.git#egg=lino_cosi
--e git+https://github.com/lino-framework/voga.git#egg=lino_voga
--e git+https://github.com/lino-framework/avanti.git#egg=lino_avanti
--e git+https://github.com/lino-framework/vilma.git#egg=lino_vilma
--e git+https://github.com/lino-framework/care.git#egg=lino_care
--e git+https://github.com/lino-framework/tera.git#egg=lino_tera
--e git+https://github.com/lino-framework/openui5.git#egg=lino_openui5
+# -e git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
