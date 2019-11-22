@@ -1,3 +1,0 @@
--e svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
--r requirements.dev.txt
-radicale

@@ -13,15 +13,16 @@ PY3 = sys.version_info[0] == 3
 
 install_requires = [
     'Sphinx', 'getlino',
-    'lino', 'selenium', 'mock',
+    'lino_xl', 'selenium', 'mock',
     'pisa', 'django-wkhtmltopdf',
     'django-iban', 'metafone',
     'djangorestframework',
     # 'bleach',  installed by inv prep
-    'radicale==1.1.2',
+    # 'radicale==1.1.2',
+    'radicale',
     'icalendar',
     'vobject',
-    # 'eidreader',
+    'eidreader',   # required to build the book.
     'social-auth-app-django',
     'lino_cosi',
     'lino_noi',
@@ -35,7 +36,8 @@ install_requires = [
     'lino_amici',
     'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
     'mock', 'sqlparse',
-    'django-mailbox@git+https://github.com/cylonoven/django-mailbox'
+    'django-mailbox@git+https://github.com/cylonoven/django-mailbox',
+    'django-auth-ldap@git+https://github.com/khchine5/django-auth-ldap'
 ]
 
 SETUP_INFO = dict(
