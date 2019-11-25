@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-11-25
+==========
+
+- New database field :attr:`lino_xl.lib.tickets.Site.private`.
+- AnonymousUser.is_anonymous
+- New method :meth:`lino.modlib.comments.Commentable.add_comments_filter`
+
 2019-11-21
 ==========
 

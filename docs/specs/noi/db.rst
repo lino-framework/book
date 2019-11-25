@@ -27,8 +27,8 @@ Complexity factors
 - 44 plugins
 - 65 models
 - 19 user roles
-- 7 user types
-- 242 views
+- 5 user types
+- 241 views
 - 16 dialog actions
 <BLANKLINE>
 
@@ -81,7 +81,7 @@ The database models
  github.Commit                      github.Commits                   14        0
  github.Repository                  github.Repositories              4         0
  groups.Group                       groups.Groups                    8         3
- groups.Membership                  groups.Memberships               4         8
+ groups.Membership                  groups.Memberships               4         2
  lists.List                         lists.Lists                      7         8
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         0
@@ -94,7 +94,7 @@ The database models
  social_django.UserSocialAuth       users.SocialAuths                5         0
  system.SiteConfig                  system.SiteConfigs               9         1
  tickets.Link                       tickets.Links                    4         1
- tickets.Site                       tickets.Sites                    15        3
+ tickets.Site                       tickets.Sites                    16        5
  tickets.Subscription               tickets.Subscriptions            4         0
  tickets.Ticket                     tickets.Tickets                  28        116
  tickets.TicketType                 tickets.TicketTypes              5         3
@@ -103,12 +103,12 @@ The database models
  uploads.UploadType                 uploads.UploadTypes              8         0
  uploads.Volume                     uploads.Volumes                  5         0
  users.Authority                    users.Authorities                3         0
- users.User                         users.Users                      47        7
+ users.User                         users.AllUsers                   47        7
  userstats.UserStat                 userstats.UserStats              4         36
  working.ServiceReport              working.ServiceReports           10        1
  working.Session                    working.Sessions                 14        13
  working.SessionType                working.SessionTypes             4         1
- working.SiteSummary                working.SiteSummaries            9         9
+ working.SiteSummary                working.SiteSummaries            9         15
  working.UserSummary                working.UserSummaries            7         252
 ================================== ================================ ========= =======
 <BLANKLINE>

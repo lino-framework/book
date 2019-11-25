@@ -418,6 +418,6 @@ doctests
 
 Verify whether the help_text of the change_password action is set:
 
->>> ba = rt.models.users.Users.get_action_by_name('change_password')
+>>> ba = rt.models.users.AllUsers.get_action_by_name('change_password')
 >>> print(ba.action.help_text)
 Change the password of this user.

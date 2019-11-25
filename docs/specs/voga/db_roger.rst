@@ -103,7 +103,7 @@ The database structure
  uploads.UploadType         uploads.UploadTypes            8         1
  uploads.Volume             uploads.Volumes                5         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    18        6
+ users.User                 users.AllUsers                 18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         187
  vat.VatAccountInvoice      vat.Invoices                   20        119
 ========================== ============================== ========= =======

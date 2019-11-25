@@ -12,9 +12,11 @@ Installing a Lino developer environment
 .. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _Debian: http://www.debian.org/
 
-This document describes how to install a Lino :term:`developer environment`  on
-your computer.   For installing Lino on a :term:`production server` you should
-read :doc:`/admin/install`.
+This document describes how to install a Lino :term:`developer environment` on
+your computer.  This is the easiest way to get started. You might later evolve
+into a *contributing* developer as described in :doc:`/team/install/index`. For
+installing Lino on a :term:`production server` you should read
+:doc:`/admin/install`.
 
 This document is written for Debian_ and derived distributions. Other Linuxes
 should be pretty similar.  On proprietary operating systems you might encounter
@@ -47,9 +49,8 @@ also developing other things with Python you might require different packages
 than what Lino uses, and there is the chance of version or dependency conflicts.
 
 Also if you wish to remove Lino from your system you only need to remove the
-source files and the virtual environment (rather than trying to remove Lino's
-dependencies from the system environment without breaking any other programs
-that use python).
+virtual environment rather than trying to remove Lino's dependencies from the
+system environment without breaking any other programs that use python.
 
 Where to put your :term:`virtualenv`:
 
@@ -106,6 +107,13 @@ default **default environment**  by adding the following line to your
 
   . ~/lino/env/bin/activate
 
+You will also instruct your favourite code editor to use this default
+environment when doing syntax checks or finding definitions etc.  For example in
+Atom you say :menuselection:`Edit --> Preferences --> Packages` select the
+settings of the python-tools plugin and set the :guilabel:`Path to Python
+directory` field to  :file:`~/lino/env/bin`
+
+
 .. You want a quick way to activate your Lino python environment, you
   can add an alias to your :xfile:`.bashrc` or :xfile:`.bash_aliases`
   file::
@@ -116,7 +124,7 @@ default **default environment**  by adding the following line to your
 Run getlino
 ===========
 
-Make sure your Lino environment is activated and then install getlino is via
+Make sure your default environment is activated and then install getlino via
 pip::
 
   $ pip install getlino

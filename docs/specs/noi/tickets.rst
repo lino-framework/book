@@ -49,16 +49,16 @@ the detail window of a ticket.
       - (general1b_2): **Assigned to** (assigned_to), **Private** (private)
       - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
       - (general1b_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
-      - **Sessions** (working_SessionsByTicket) [visible for consultant hoster developer senior admin]
-  - **Comments** (comments_CommentsByRFC) [visible for user consultant hoster developer senior admin]
+      - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
+  - **Comments** (comments_CommentsByRFC) [visible for customer contributor developer admin]
 - **More** (more):
   - (more_1):
     - (more1):
       - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for senior admin], **Uploads** (uploads_UploadsByController) [visible for user consultant hoster developer senior admin]
-- **Mentions** (comments_CommentsByMentioned) [visible for user consultant hoster developer senior admin]
+  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Uploads** (uploads_UploadsByController) [visible for customer contributor developer admin]
+- **Mentions** (comments_CommentsByMentioned) [visible for customer contributor developer admin]
 <BLANKLINE>
 
 

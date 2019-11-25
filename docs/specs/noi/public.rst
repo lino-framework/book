@@ -32,13 +32,13 @@ The home page:
 >>> soup = BeautifulSoup(res.content, 'lxml')
 >>> links = soup.find_all('a')
 >>> len(links)
-137
+51
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
 /?ul=fr
 >>> print(links[2].get('href'))
-/ticket/116
+/ticket/115
 
 
 >>> res = test_client.get('/ticket/13/')

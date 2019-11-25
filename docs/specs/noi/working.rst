@@ -187,7 +187,7 @@ Service reports
 A **service report** is a document used in various discussions with
 a stakeholder.
 It reports about the working time invested during a given date range.
-This reportIt can serve as a base for writing invoices.
+This report can serve as a base for writing invoices.
 
 It can be addressed to a recipient (a user) and in that case will
 consider only the tickets for which this user has specified interest.
@@ -223,9 +223,12 @@ Partner #100 ('Rumma & Ko OÜ')
 ==================== ============ ========== ============ ================== ========== ======= ======
 <BLANKLINE>
 
-Note that there are sessions without a duration. That's because
+Note that sessions on #1 have actually no duration because they are active. But
+in the report they are shown with one minute. That's a bug (TODO: fix it). But
+it's not an urgent bug because that's not any normal situation (you are not
+going to write reports for a date range when there are still active session).
 
->>> rt.show(working.TicketsByReport, obj)
+>>> rt.login("robin").show(working.TicketsByReport, obj)
 ... #doctest: -REPORT_UDIFF
 ==== =============================================== =============== ======== ========= ========== ======= ======
  ID   Ticket                                          End user        Site     State     Regular    Extra   Free
@@ -235,7 +238,6 @@ Note that there are sessions without a duration. That's because
                                                                                          **1:27**
 ==== =============================================== =============== ======== ========= ========== ======= ======
 <BLANKLINE>
-
 
 
 

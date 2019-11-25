@@ -21,7 +21,7 @@ Miscellaneous
 
 List of demo users:
 
->>> rt.show(rt.models.users.Users)
+>>> rt.show(rt.models.users.AllUsers)
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ========== ===================== ============ ===========
  Username   User type             First name   Last name

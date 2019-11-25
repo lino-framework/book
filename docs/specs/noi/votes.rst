@@ -1,21 +1,22 @@
+.. doctest docs/specs/noi/votes.rst
 .. _specs.noi.votes:
 
 ================
 The votes module
 ================
 
-.. How to test only this document:
+doctest init:
 
-    $ python setup.py test -s tests.SpecsTests.test_votes
-    
-    doctest init:
-    >>> import lino
-    >>> lino.startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
+>>> import lino
+>>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
 
 
 The :mod:`lino_xl.lib.votes` module adds the concept of "votes" to an
 application. This document describes how this looks in :ref:`noi`.
+
+This plugin is currently not used anywhere.
+
 
 .. contents::
   :local:
@@ -150,10 +151,11 @@ Here are some examples for different users.
 <BLANKLINE>
 
 Note that Luc is not a triager, that's why he does not have an
-[Assigned] action of other people's tickets.
+[Assigned] action on other people's tickets.
 
 >>> from lino_xl.lib.tickets.roles import Triager
 >>> rt.login('luc').user.user_type.has_required_roles([Triager])
+... #doctest: -REPORT_UDIFF +SKIP
 False
 
 
@@ -185,4 +187,3 @@ The :class:`Votable` mixin
 
 A **votable**, in :ref:`noi`, is a ticket. But the module is designed
 to be reusable in other contexts.
-

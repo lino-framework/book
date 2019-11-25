@@ -200,6 +200,13 @@ Commentable
         If not None, the object must have a field :attr:`ref` which will be
         shown in the summary of :class:`RecentComments`.
 
+    .. method:: add_comments_filter(cls, qs, user):
+
+        Override this class method to define your own privacy settings.
+        Default behaviour is that comments are visible only to real users (not to anonymous).
+        Usage example in :class:`lino_noi.lib.tickets.Ticket`
+
+
 
 Utilities
 =========

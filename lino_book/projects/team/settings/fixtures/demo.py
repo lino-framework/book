@@ -108,9 +108,9 @@ def tickets_objects():
     COMPANIES = Cycler(Company.objects.order_by("id"))
     end_users = []
 
-    for ref in "welket welsch pypi".split():
+    for ref in "welket welsch pypi docs bugs".split():
         kw = dict(ref=ref, reporting_type=RTYPES.pop(), group=GROUPS.pop(), state=SiteStates.active)
-        if ref == "pypi":
+        if ref in ("pypi", "docs", "bugs"):
             kw.update(name=ref)
         else:
             obj = COMPANIES.pop()
@@ -120,6 +120,7 @@ def tickets_objects():
             kw.update(company=obj)
             kw.update(name=str(obj))
             kw.update(contact_person=eu)
+            kw.update(private=True)
         yield Site(**kw)
     END_USERS  = Cycler(end_users)
     yield Company(name="Saffre-Rumma")
@@ -201,7 +202,7 @@ def tickets_objects():
             state=TSTATES.pop())
         if num[0] % 2:
             kwargs.update(site=SITES.pop())
-        if num[0] % 4:
+        if not num[0] % 9:
             kwargs.update(private=True)
         else:
             kwargs.update(private=False)
@@ -306,10 +307,7 @@ def tickets_objects():
 
     for u in User.objects.all():
         if u.user_type.has_required_roles([Reporter]):
-            if not u.user_type.has_required_roles([TicketsStaff]):
-                yield Membership(group=GROUPS.pop(), user=u)
-                yield Membership(group=GROUPS.pop(), user=u)
-                # yield Subscription(site=SITES.pop(), user=u, primary=True)
+            yield Membership(group=GROUPS.pop(), user=u)
 
 def working_objects():
     # was previously in working

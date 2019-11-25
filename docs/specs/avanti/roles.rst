@@ -266,10 +266,10 @@ Each window is **viewable** for a given set of user types.
 - uploads.Volumes.detail : visible for staff admin
 - uploads.Volumes.insert : visible for staff admin
 - uploads.Volumes.merge_row : visible for admin
+- users.AllUsers.change_password : visible for admin
+- users.AllUsers.detail : visible for admin
+- users.AllUsers.insert : visible for admin
 - users.AllUsers.send_welcome_email : visible for admin
-- users.Users.change_password : visible for teacher user auditor coordinator secretary staff admin
-- users.Users.detail : visible for teacher user auditor coordinator secretary staff admin
-- users.Users.insert : visible for teacher user coordinator secretary staff admin
 - users.UsersOverview.sign_in : visible for all
 <BLANKLINE>
 

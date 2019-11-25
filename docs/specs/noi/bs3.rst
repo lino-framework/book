@@ -27,7 +27,7 @@ This does not use :mod:`lino.modlib.extjs` at all.
 
 .. The following was used to reproduce :ticket:`960`:
 
-    >>> res = test_client.get('/tickets/Ticket/13')
+    >>> res = test_client.get('/tickets/Ticket/15')
     >>> res.status_code
     200
 
@@ -40,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-32
+40
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -48,7 +48,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> print(links[2].get('href'))
 #
 
->>> res = test_client.get('/tickets/Ticket/13')
+>>> res = test_client.get('/tickets/Ticket/15')
 >>> res.status_code
 200
 >>> soup = BeautifulSoup(res.content, "lxml")
@@ -62,7 +62,7 @@ Tickets are rendered using plain bootstrap HTML:
 
 >>> print(soup.get_text(' ', strip=True))
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
-Tickets Sign in — Home en de fr Tickets All tickets Site About #13 (Bar cannot foo) << < > >> State: Sleeping 
+Tickets Sign in — Home en de fr Tickets All tickets Site About #15 (Bars have no foo) << < > >> State: Closed
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Rolf Rompen Site: welket (Private content) This is Lino Noi ... using ...
+(last update ...) Created ... by Jean Site: pypi This is Lino Noi ... using ...
