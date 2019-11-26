@@ -4,6 +4,11 @@
 Screen casts
 ============
 
+All the screen casts below are also in the `Lino developer sessions
+<https://www.youtube.com/playlist?list=PL5qugrzfIhI9G53OMI2Zb8Ao2wNCiPeXX>`__
+playlist on YouTube.
+
+
 2019-10-21 Luc's first developer screencast
 ===========================================
 
@@ -28,3 +33,15 @@ It has three parts.
   `part 1 </data/videos/vokoscreen-2019-10-23_05-56-03.mp4>`__
   `part 2 </data/videos/vokoscreen-2019-10-23_07-33-49.mp4>`__
   `part 3 </data/videos/vokoscreen-2019-10-23_08-33-38.mp4>`__
+
+
+2019-11-25 Watch Luc adapting the doctests in book after changes for #3313
+==========================================================================
+
+- `10:53 <https://youtu.be/LAbY1qb_IR4>`_
+- `12:38 <https://youtu.be/zhQ4NY1Do94>`_
+- `13:03 <https://youtu.be/SBf1qY_0YGI>`_
+- `18:51 <https://youtu.be/tjYqdWIUXJA>`_
+- `19:27 <https://youtu.be/gh_iCjz6jnk>`_
+- `21:53 <https://youtu.be/xg2rx4AUNjc>`_
+- `22:45 <https://youtu.be/Lb2BUMTepGQ>`_
