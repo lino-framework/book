@@ -213,7 +213,7 @@ For example to see the list of users, you can write::
 
 The output should be as follows:
 
->>> shell("python manage.py show users.Users")
+>>> shell("python manage.py show users.AllUsers")
 ... #doctest: +ELLIPSIS
 ========== ===================== ============ ===========
  Username   User type             First name   Last name

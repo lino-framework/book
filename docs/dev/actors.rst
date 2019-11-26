@@ -75,7 +75,7 @@ Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
 >>> len(kernel.master_tables)
-127
+126
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 

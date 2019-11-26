@@ -22,10 +22,9 @@ Overview
 **Lino Care** is for organizations who help people caring for each
 other.
 
-
-A Lino Care site maintains a catalog of **skills**.  This is a
-classification of "services or things" that are offered by the
-persons and organisations registered as contacts.
+A Lino Care site maintains a catalog of **skills**.  This is a classification of
+"services or things" that are offered by the persons and organisations
+registered as contacts.
 
 
 Demo users
@@ -34,10 +33,9 @@ Demo users
 As an **administrator** you can (additionally to the above) also
 create new users, change the catalog of skills, ...
 
-The demo database has a set of **fictive users**. Let's introduce
-them:
+The demo database has a set of fictive users. Let's introduce them:
 
->>> rt.show('users.Users')
+>>> rt.show('users.AllUsers')
 ========== ===================== ============ ===========
  Username   User type             First name   Last name
 ---------- --------------------- ------------ -----------
@@ -109,4 +107,3 @@ Miscellaneous
 >>> c = rt.models.checkdata.Checkers.get_by_value('phones.ContactDetailsOwnerChecker')
 >>> list(c.get_checkable_models())
 [<class 'lino_xl.lib.contacts.models.Partner'>]
-

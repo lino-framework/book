@@ -41,7 +41,7 @@ the basic unit for defining permissions.
 
 - Every user has a set of roles.
 - Every resource (table or action) has a set of *required* roles.
-  
+
 User roles are class objects which represent conditions for getting
 permission to access the functionalities of the application.  Lino
 comes with a few built-in user roles which are defined in
@@ -53,7 +53,7 @@ A real-world application can define *many* user roles. For example
 here is an inheritance diagram of the roles used by :ref:`noi`:
 
 .. inheritance-diagram:: lino_noi.lib.noi.user_types
-                         
+
 And if you think this diagram is complex, then don't look at the
 following one (that of :ref:`welfare`)...
 
@@ -81,7 +81,7 @@ This is done by populating the :class:`UserTypes
 Each user type is basically not much more than a user-friendly *name*
 and a storable *value* given to a selected user role.  Here is the
 default list of user types, defined in :mod:`lino.core.user_types`:
-        
+
 >>> rt.show(users.UserTypes)
 ======= =========== ===============
  value   name        text
@@ -119,7 +119,7 @@ we prefer to call them **user types**. The web interface already calls
 them "types", but it will take some time to change all internal names
 from "profile" to "type".
 
->>> rt.show('users.Users', column_names="username user_type")
+>>> rt.show('users.AllUsers', column_names="username user_type")
 ========== =====================
  Username   User type
 ---------- ---------------------

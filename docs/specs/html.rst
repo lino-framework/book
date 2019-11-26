@@ -27,7 +27,8 @@ This describes some Lino-specific usage of the
 >>> ar = rt.login('robin', renderer=settings.SITE.kernel.default_renderer)
 >>> obj = ar.user
 >>> e = ar.obj2html(obj, txt)
+
+You now have an ElementTree object. 
+
 >>> print(tostring(e))
-<a href="/api/users/Users/1"><b>foo</b></a>
-
-
+<a href="/api/users/AllUsers/1"><b>foo</b></a>

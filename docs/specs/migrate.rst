@@ -35,10 +35,18 @@ Let's use the :mod:`lino_book.projects.migs` project to play with migrations.
 
 We begin with Django migrations disabled:
 
+>>> shell("cat clean.sh")
+#!/usr/bin/env bash
+set -e
+rm -rf settings/migrations
+rm -f settings/default.db
+#touch migrations/__init__.py
+echo "Removed migrations and database."
+
 >>> shell("./clean.sh")
 Removed migrations and database.
 
-The :manage:`prep` command works also when Django migrations are disabled.' In
+The :manage:`prep` command works also when Django migrations are disabled. In
 this context Django considers all Lino plugins as "unmigrated".  Only some
 native Django plugins (contenttypes, sessions, staticfiles) are managed by
 Django:
@@ -50,14 +58,17 @@ Operations to perform:
   Synchronize unmigrated apps: about, appypod, bootstrap3, cal, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extensible, extjs, gfks, github, groups, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
-...
+  Creating tables...
+    Creating table system_siteconfig
+    ...
 Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
+Loading data from ...
 ...
 Updating summary data for User summaries ...
-Installed 509 object(s) from 19 fixture(s)
+Installed 507 object(s) from 19 fixture(s)
 
 Tidy up:
 
@@ -86,7 +97,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   ...
-Installed 509 object(s) from 19 fixture(s)
+Installed 507 object(s) from 19 fixture(s)
 
 
 >>> from lino import startup
