@@ -26,7 +26,7 @@ before_install:
   - libreoffice --accept="socket,host=localhost,port=8100;urp;" &
 
 install:
-  - pip install -U setuptools
+  - pip install -U setuptools unittest2
   - pip install coveralls
   - pip install -U pip
   - pip install -r requirements.${REQ_VERSION}.txt
