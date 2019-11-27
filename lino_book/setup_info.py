@@ -37,7 +37,6 @@ install_requires = [
     'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
     'mock', 'sqlparse',
     'django-mailbox@git+https://github.com/cylonoven/django-mailbox',
-    'django-auth-ldap@git+https://github.com/khchine5/django-auth-ldap'
 ]
 
 SETUP_INFO = dict(
