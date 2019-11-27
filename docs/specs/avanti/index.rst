@@ -19,3 +19,4 @@ This section contains specs specific to :ref:`avanti`.
    courses
    cal
    cv
+   comments

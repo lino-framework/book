@@ -179,7 +179,8 @@ Commentable
 
 .. class:: Commentable
 
-    Mixin for models that can be subject to comments.
+    Mixin for models whose instances can be :term:`discussion topic` of
+    comments.
 
     .. method:: get_rfc_description(self, ar)
 
