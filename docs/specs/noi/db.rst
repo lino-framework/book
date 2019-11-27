@@ -26,7 +26,7 @@ Complexity factors
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 44 plugins
 - 65 models
-- 19 user roles
+- 20 user roles
 - 5 user types
 - 241 views
 - 16 dialog actions
@@ -59,7 +59,7 @@ The database models
  cal.Task                           cal.Tasks                        18        0
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                11        168
+ comments.Comment                   comments.Comments                12        168
  comments.CommentType               comments.CommentTypes            4         0
  comments.Mention                   comments.Mentions                7         0
  contacts.Company                   contacts.Companies               22        14
@@ -80,8 +80,8 @@ The database models
  gfks.HelpText                      gfks.HelpTexts                   4         3
  github.Commit                      github.Commits                   14        0
  github.Repository                  github.Repositories              4         0
- groups.Group                       groups.Groups                    8         3
- groups.Membership                  groups.Memberships               4         2
+ groups.Group                       groups.Groups                    7         3
+ groups.Membership                  groups.Memberships               4         7
  lists.List                         lists.Lists                      7         8
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         0

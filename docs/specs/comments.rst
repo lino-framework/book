@@ -25,16 +25,24 @@ Overview
 
   Comment
 
-    A **comment** is a written text that one user wants to share with "whoever
-    is interested". A comment has no "recipient" but is always "about"
-    something, a topic.  When you submit a comment, Lino notifies all users who
-    registered their interest in the topic.  All comments about the same topic
-    form a discussion thread. Comments are stored in the :class:`Comment`
-    database model.
+    A written text that one user wants to share with others.
 
-    Comments have no workflow management nor rating mechanism etc. As in the
-    real world it is the user's responsibility to think before they say
-    something.
+    A comment is always "about" something, called the :term:`discussion topic`.
+
+    A comment has no "recipient". When you submit a comment, Lino notifies all
+    users who registered their interest in the :term:`discussion topic`.
+
+    A comment can be a *reply* to another comments. All comments replying directly
+    or indirectly to a given comment are called a *discussion thread*.
+
+    Comments are stored in the :class:`Comment` database model.
+
+    Comments have no workflow management nor rating mechanism etc. It is the
+    author's responsibility to think before they write something.
+
+  Discussion topic
+
+    The database object that is the "topic" of a comment.
 
   Commentable topic
 
@@ -52,8 +60,7 @@ Comments
 
 .. class:: Comment
 
-    A **comment** is a short text which some user writes about some database
-    object. It has no recipient.
+    Django model to represent a :term:`comment`.
 
     .. attribute:: body
 
@@ -69,15 +76,13 @@ Comments
 
     .. attribute:: owner
 
-        The *topic* this comment is about. This field is a Generic Foreign Key, i.e. users can
-        basically comment on any database object.  It is however the application
-        developer who decides where comments can be created and how they are being
-        displayed.
+        The *topic* this comment is about. This field is a Generic Foreign Key,
+        i.e. users can basically comment on any database object.  It is however
+        the :term:`application developer` who decides where comments can be
+        created and how they are being displayed.
 
-
-
-        A generic foreign key to the commentable database object to
-        which this comment relates.
+        The :attr:`owner` of a comment is always an instance of a subclass of
+        :class:`Commentable`.
 
     .. attribute:: published
 
@@ -200,11 +205,27 @@ Commentable
         If not None, the object must have a field :attr:`ref` which will be
         shown in the summary of :class:`RecentComments`.
 
-    .. method:: add_comments_filter(cls, qs, user):
+    .. method:: get_comments_filter(cls, user):
 
-        Override this class method to define your own privacy settings.
-        Default behaviour is that comments are visible only to real users (not to anonymous).
-        Usage example in :class:`lino_noi.lib.tickets.Ticket`
+        Return the filter to be added when a given user requests comments about
+        commentables of this type.
+
+        Return `None` to not add any filter.  Otherwise the return value should
+        be a :class:`django.db.models.Q` object.
+
+        Default behaviour is that public comments are visible even to anonymous
+        while private comments are visible only to their author and to
+        :class:`PrivateCommentsReader`.
+
+        You can override this class method to define your own privacy settings.
+
+        Usage example in
+        :class:`lino_xl.lib.groups.Group` and
+        :class:`lino_xl.lib.tickets.Ticket`.
+
+        If you override this method, you probably want to define a
+        :class:`django.contrib.contenttypes.fields.GenericRelation` on your Commentable
+        in order to write filter conditions based on the owner of the comment.
 
 
 

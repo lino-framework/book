@@ -89,8 +89,8 @@ class Person(Person, Partner, DupablePerson):
         #~ ordering = ['last_name','first_name']
 
     @classmethod
-    def get_queryset(cls, user):
-        qs = super(Person, cls).get_queryset(user)
+    def get_user_queryset(cls, user):
+        qs = super(Person, cls).get_user_queryset(user)
         return qs.select_related('country', 'city')
 
     def get_print_language(self):
@@ -221,4 +221,3 @@ class Companies(Companies):
 
 Partners.set_detail_layout(PartnerDetail())
 Companies.set_detail_layout(CompanyDetail())
-

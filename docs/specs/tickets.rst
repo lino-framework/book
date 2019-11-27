@@ -14,8 +14,8 @@ The :mod:`lino_xl.lib.tickets` plugin adds functionality for managing tickets.
 
 .. include:: /../docs/shared/include/tested.rst
 
->>> import lino
->>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
 >>> from lino.api.doctest import *
 
 
@@ -479,66 +479,6 @@ Links between tickets
  1    Requires          #1 (⛶ Föö fails to bar when baz)   #2 (☎ Bar is not always baz)
 ==== ================= ================================== ==============================
 <BLANKLINE>
-
-
-Comments
-========
-
-Comments in :ref:`noi` are visible even to anonymous users. At least those on a
-public ticket.
-
->>> rt.show(comments.Comments, column_names="id user owner short_preview", limit=10)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| ID | Author          | Controlled by    | Preview                                                                        |
-+====+=================+==================+================================================================================+
-| 1  | Jean            | *Developers*     | Styled comment pasted from word!                                               |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 2  | Luc             | *Managers*       | Who| What| Done?                                                               |
-|    |                 |                  | ---|---|---                                                                    |
-|    |                 |                  | Him| Bar|                                                                      |
-|    |                 |                  | Her| Foo the Bar|  **x**                                                       |
-|    |                 |                  | Them| Floop the pig                                                            |
-|    |                 |                  | | x                                                                            |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 3  | Marc            | *Front-end team* | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus felis     |
-|    |                 |                  | nisi, eu pellentesque lorem lobortis non. Aenean non sodales neque, vitae      |
-|    |                 |                  | venenatis lectus. In eros dui, gravida et dolor at, pellentesque hendrerit     |
-|    |                 |                  | magna. Quisque vel lectus dictum, rhoncus massa feugiat, condimentum sem.      |
-|    |                 |                  | Donec elit nisl, placerat vitae imperdiet eget, hendrerit nec quam. Ut         |
-|    |                 |                  | elementum ligula vitae odio efficitur rhoncus. Duis in blandit neque. Sed      |
-|    |                 |                  | dictum mollis volutpat. Morbi at est et nisi euismod viverra. Nulla quis lacus |
-|    |                 |                  | vitae ante sollicitudin tincidunt. Donec nec enim in leo vulputate ultrices.   |
-|    |                 |                  | Suspendisse potenti. Ut elit nibh, porta ut enim ac, convallis molestie risus. |
-|    |                 |                  | Praesent consectetur lacus lacus, in faucibus justo fringilla vel. (...)       |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 4  | Mathieu         | *Developers*     | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum dictum |
-|    |                 |                  | erat. Fusce condimentum erat a pulvinar ultricies. (...)                       |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 5  | Romain Raffault | *Managers*       | breaking (...)                                                                 |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 6  | Rolf Rompen     | *Front-end team* | (...)                                                                          |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 7  | Robin Rood      | *Developers*     | Some plain text.                                                               |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 8  | Jean            | *Managers*       | Two paragraphs of plain text. (...)                                            |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 9  | Luc             | *Front-end team* | Styled comment pasted from word!                                               |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-| 10 | Marc            | *Developers*     | Who| What| Done?                                                               |
-|    |                 |                  | ---|---|---                                                                    |
-|    |                 |                  | Him| Bar|                                                                      |
-|    |                 |                  | Her| Foo the Bar|  **x**                                                       |
-|    |                 |                  | Them| Floop the pig                                                            |
-|    |                 |                  | | x                                                                            |
-+----+-----------------+------------------+--------------------------------------------------------------------------------+
-<BLANKLINE>
-
-
->>> obj = tickets.Ticket.objects.get(pk=2)
->>> rt.login('luc').show(comments.CommentsByRFC, obj)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-<p><b>Write comment</b></p><ul><li><a ...>...</a> by <a href="Detail">Luc</a> [<b> Reply </b>] <a ...>⁜</a><div id="comment-86"><p>Very confidential comment</p></div></li></ul>
 
 
 

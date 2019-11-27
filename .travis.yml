@@ -24,6 +24,9 @@ before_install:
   - sudo apt-get install -y tidy libreoffice python3-uno
   - sudo apt install libgconf-2-4 # Required for cypress with Ubuntu 16.04
   - libreoffice --accept="socket,host=localhost,port=8100;urp;" &
+  # Trying to understand func=xmlSecCheckVersionExt:file=xmlsec.c:line=188:obj=unknown:subj=unknown:error=19:invalid version:mode=abi compatible;expected minor version=2;real minor version=2;expected subminor version=25;real subminor version=26
+  # https://bugs.documentfoundation.org/show_bug.cgi?id=118373
+  - libreoffice --version
 
 install:
   - pip install -U setuptools

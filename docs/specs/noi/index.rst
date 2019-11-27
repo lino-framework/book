@@ -14,6 +14,7 @@ This section contains specs for :ref:`noi`.
     general
     tickets
     working
+    comments
     smtpd
     hosts
     as_pdf

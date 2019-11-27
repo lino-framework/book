@@ -21,58 +21,7 @@ Lino Noi.
 >>> from lino.api.doctest import *
 
 
-User types
-==========
-
-A default Lino Noi site has the following user types:
-
->>> rt.show(users.UserTypes)
-======= ============= ===============
- value   name          text
-------- ------------- ---------------
- 000     anonymous     Anonymous
- 100     customer      Customer
- 200     contributor   Contributor
- 400     developer     Developer
- 900     admin         Administrator
-======= ============= ===============
-<BLANKLINE>
-
-
-A **user** is somebody who uses some part of the software being
-developed by the team. This is usually the contact person of a
-customer.
-
-A **consultant** is an intermediate agent between end-users and the
-team.
-
-A **hoster** is a special kind of customer who installs and maintains
-servers where Lino applications run.
-
-A **developer** is somebody who works on tickets by doing code
-changes.
-
-A **senior** is a developer who additionaly can triage tickets.
-
-Here is a list of user types of those who can work on tickets:
-
->>> from lino_xl.lib.working.roles import Worker
->>> UserTypes = rt.models.users.UserTypes
->>> [p.name for p in UserTypes.items()
-...     if p.has_required_roles([Worker])]
-['contributor', 'developer', 'admin']
-
-And here are those who don't work:
-
->>> [p.name for p in UserTypes.items()
-...    if not p.has_required_roles([Worker])]
-['anonymous', 'customer']
-
-
-Users
-=====
-
-These are the users of this demo site.
+Here are the users of the demo site.
 
 >>> rt.show('users.UsersOverview')
 ========== ===================== ==========
@@ -89,37 +38,86 @@ These are the users of this demo site.
 <BLANKLINE>
 
 
+User types
+==========
+
+A :ref:`noi` site has the following user types:
+
+>>> rt.show(users.UserTypes)
+======= ============= ===============
+ value   name          text
+------- ------------- ---------------
+ 000     anonymous     Anonymous
+ 100     customer      Customer
+ 200     contributor   Contributor
+ 400     developer     Developer
+ 900     admin         Administrator
+======= ============= ===============
+<BLANKLINE>
+
+
+A **customer** is somebody who uses some part of the software being developed by
+the team. This is usually the contact person of a customer.
+
+A **contributor** can submit tickets, work on them and discuss with other team
+members.  But does not see confidential data.
+
+A **developer** is a trusted contributor who can do almost everything except
+managing other users.
+
+Here is a list of user types of those who can work on tickets:
+
+>>> from lino_xl.lib.working.roles import Worker
+>>> UserTypes = rt.models.users.UserTypes
+>>> [p.name for p in UserTypes.items()
+...     if p.has_required_roles([Worker])]
+['contributor', 'developer', 'admin']
+
+And here are those who don't work:
+
+>>> [p.name for p in UserTypes.items()
+...    if not p.has_required_roles([Worker])]
+['anonymous', 'customer']
+
+
 User roles and permissions
 ==========================
 
 Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
 
 >>> rt.show(users.UserRoles)
-======================== ===== ===== ===== ===== =====
- Name                     000   100   200   400   900
------------------------- ----- ----- ----- ----- -----
- cal.CalendarReader       ☑
- comments.CommentsStaff                     ☑     ☑
- comments.CommentsUser          ☑     ☑     ☑     ☑
- contacts.ContactsStaff                           ☑
- contacts.ContactsUser                ☑     ☑     ☑
- core.SiteUser                  ☑     ☑     ☑     ☑
- courses.CoursesUser                  ☑     ☑     ☑
- excerpts.ExcerptsStaff                     ☑     ☑
- excerpts.ExcerptsUser                ☑     ☑     ☑
- office.OfficeStaff                               ☑
- office.OfficeUser              ☑     ☑     ☑     ☑
- tickets.Reporter               ☑     ☑     ☑     ☑
- tickets.Searcher         ☑     ☑     ☑     ☑     ☑
- tickets.TicketsStaff                       ☑     ☑
- tickets.Triager                            ☑     ☑
- users.Helper                         ☑     ☑     ☑
- votes.VotesStaff                                 ☑
- votes.VotesUser                ☑     ☑     ☑     ☑
- working.Worker                       ☑     ☑     ☑
-======================== ===== ===== ===== ===== =====
+================================ ===== ===== ===== ===== =====
+ Name                             000   100   200   400   900
+-------------------------------- ----- ----- ----- ----- -----
+ cal.CalendarReader               ☑
+ comments.CommentsStaff                             ☑     ☑
+ comments.CommentsUser                  ☑     ☑     ☑     ☑
+ comments.PrivateCommentsReader                     ☑     ☑
+ contacts.ContactsStaff                                   ☑
+ contacts.ContactsUser                        ☑     ☑     ☑
+ core.SiteUser                          ☑     ☑     ☑     ☑
+ courses.CoursesUser                          ☑     ☑     ☑
+ excerpts.ExcerptsStaff                             ☑     ☑
+ excerpts.ExcerptsUser                        ☑     ☑     ☑
+ office.OfficeStaff                                       ☑
+ office.OfficeUser                      ☑     ☑     ☑     ☑
+ tickets.Reporter                       ☑     ☑     ☑     ☑
+ tickets.Searcher                 ☑     ☑     ☑     ☑     ☑
+ tickets.TicketsStaff                               ☑     ☑
+ tickets.Triager                                    ☑     ☑
+ users.Helper                                 ☑     ☑     ☑
+ votes.VotesStaff                                         ☑
+ votes.VotesUser                        ☑     ☑     ☑     ☑
+ working.Worker                               ☑     ☑     ☑
+================================ ===== ===== ===== ===== =====
 <BLANKLINE>
 
+
+
+
+
+Users
+=====
 
 The following shows a list of all windows in :ref:`noi`  and who can see them:
 

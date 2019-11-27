@@ -202,10 +202,10 @@ def tickets_objects():
             state=TSTATES.pop())
         if num[0] % 2:
             kwargs.update(site=SITES.pop())
-        if not num[0] % 9:
+        if num[0] % 4 == 0:
             kwargs.update(private=True)
-        else:
-            kwargs.update(private=False)
+        # else:
+        #     kwargs.update(private=False)
         if u.user_type.has_required_roles([Worker]):
             if num[0] % 5:
                 kwargs.update(end_user=END_USERS.pop())

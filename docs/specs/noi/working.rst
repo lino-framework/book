@@ -102,21 +102,14 @@ Some sessions are on private tickets:
 >>> from django.db.models import Q
 >>> rt.show(working.Sessions, column_names="ticket user duration", filter=Q(ticket__private=True))
 ... #doctest: -REPORT_UDIFF
-================================== ========= ===========
- Ticket                             Worker    Duration
----------------------------------- --------- -----------
- #1 (⛶ Föö fails to bar when baz)   Jean
- #1 (⛶ Föö fails to bar when baz)   Luc
- #1 (⛶ Föö fails to bar when baz)   Mathieu
- #2 (☎ Bar is not always baz)       Jean      2:18
- #2 (☎ Bar is not always baz)       Luc       3:29
- #2 (☎ Bar is not always baz)       Mathieu   3:53
- #3 (☉ Baz sucks)                   Jean      1:30
- #3 (☉ Baz sucks)                   Luc       0:37
- #3 (☉ Baz sucks)                   Mathieu   0:05
- #5 (☾ Cannot create Foo)           Mathieu   2:18
- **Total (10 rows)**                          **14:10**
-================================== ========= ===========
+============================== ========= ==========
+ Ticket                         Worker    Duration
+------------------------------ --------- ----------
+ #4 (⚒ Foo and bar don't baz)   Mathieu   0:12
+ #4 (⚒ Foo and bar don't baz)   Jean      0:10
+ #4 (⚒ Foo and bar don't baz)   Luc       1:02
+ **Total (3 rows)**                       **1:24**
+============================== ========= ==========
 <BLANKLINE>
 
 

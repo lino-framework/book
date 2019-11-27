@@ -21,8 +21,8 @@ our work. Lino Noi uses this information when generating a service report.
 
 .. include:: /../docs/shared/include/tested.rst
 
->>> import lino
->>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
 >>> from lino.api.doctest import *
 
 

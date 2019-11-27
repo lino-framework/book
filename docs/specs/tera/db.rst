@@ -126,7 +126,7 @@ The database models
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2
- tera.Client                 tera.Clients                   46        58
+ tera.Client                 tera.Clients                   45        58
  tera.LifeMode               tera.LifeModes                 4         0
  tera.Procurer               tera.Procurers                 4         0
  tinymce.TextFieldTemplate   tinymce.TextFieldTemplates     5         2

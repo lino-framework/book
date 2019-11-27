@@ -109,4 +109,4 @@ to make it possible).
 True
 >>> msg = ar.response['message']
 >>> print(tostring(msg))
-<div class="htmlText"><p>Are you sure you want to merge #1 (⛶ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies, 3 Sessions, 1 Comments <b>will get reassigned.</b></li><li>#1 (⛶ Föö fails to bar when baz) will be deleted</li></ul></div>
+<div class="htmlText"><p>Are you sure you want to merge #1 (⛶ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies, 3 Sessions, 8 Comments <b>will get reassigned.</b></li><li>#1 (⛶ Föö fails to bar when baz) will be deleted</li></ul></div>
