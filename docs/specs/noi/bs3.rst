@@ -40,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-40
+65
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -56,13 +56,13 @@ Tickets are rendered using plain bootstrap HTML:
 
 >>> links = soup.find_all('a')
 >>> len(links)
-30
+32
 >>> print(links[0].get('href'))
 /?ul=en
 
 >>> print(soup.get_text(' ', strip=True))
 ... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF +ELLIPSIS
-Tickets Sign in — Home en de fr Tickets All tickets Site About #15 (Bars have no foo) << < > >> State: Closed
+Tickets Sign in — Home en de fr Tickets All tickets Office Recent comments Site About #15 (Bars have no foo) << < > >> State: Closed
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Jean Site: pypi This is Lino Noi ... using ...
+(last update ...) Created ... by Jean Site: pypi Styled comment pasted ... This is Lino Noi ... using ...

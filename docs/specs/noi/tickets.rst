@@ -50,7 +50,7 @@ the detail window of a ticket.
       - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
       - (general1b_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
       - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
-  - **Comments** (comments_CommentsByRFC) [visible for customer contributor developer admin]
+  - **Comments** (comments_CommentsByRFC)
 - **More** (more):
   - (more_1):
     - (more1):
@@ -58,7 +58,7 @@ the detail window of a ticket.
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Uploads** (uploads_UploadsByController) [visible for customer contributor developer admin]
-- **Mentions** (comments_CommentsByMentioned) [visible for customer contributor developer admin]
+- **Mentions** (comments_CommentsByMentioned)
 <BLANKLINE>
 
 

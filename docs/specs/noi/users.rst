@@ -90,6 +90,7 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  Name                             000   100   200   400   900
 -------------------------------- ----- ----- ----- ----- -----
  cal.CalendarReader               ☑
+ comments.CommentsReader          ☑     ☑     ☑     ☑     ☑
  comments.CommentsStaff                             ☑     ☑
  comments.CommentsUser                  ☑     ☑     ☑     ☑
  comments.PrivateCommentsReader                     ☑     ☑
@@ -111,6 +112,7 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  working.Worker                               ☑     ☑     ☑
 ================================ ===== ===== ===== ===== =====
 <BLANKLINE>
+
 
 
 
