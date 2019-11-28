@@ -133,7 +133,7 @@ In order to test whether the file is really okay, we load it using
 >>> from openpyxl import load_workbook
 >>> wb = load_workbook(filename=p)
 
->>> print(wb.get_sheet_names()[0])
+>>> print(wb.sheetnames[0])
 My appointments (Managed by Rol
 
 >>> ws = wb.active
