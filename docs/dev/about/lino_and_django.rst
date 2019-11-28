@@ -9,7 +9,7 @@ A first an most visible difference with plain Django projects is that
 your Lino applications have an out-of-the box **front end**.  You
 don't not need to write any URLconf, HTML, CSS nor Javascript.
 
-But Lino is more than a front end. In fact the current fron end is not even the
+But Lino is more than a front end. In fact the current front end is not even the
 only choice [#ui]_.  Here are the **under the hood** differences between Lino
 and Django.
 
@@ -20,15 +20,13 @@ and Django.
 
 - Lino is a replacement for `Django's admin interface
   <http://docs.djangoproject.com/en/2.2/ref/contrib/admin>`__ which has
-  obviously not been designed as a base for writing collections of reusable
-  customized database applications.
+  obviously not been designed as a base for writing and maintaining collections
+  of reusable customized database applications.
 
-- In Lino we opted to replace Django's database-stored user groups and
-  permissions system by a system that uses pure Python code objects. We believe
-  that Lino's approach is more suitable for defining and maintaining complex
-  applications.  That's why Lino replaces `django.contrib.auth
-  <https://docs.djangoproject.com/en/2.2/ref/contrib/auth/>`__ by
-  :mod:`lino.modlib.users`.
+- Lino replaces Django's database-stored user groups and
+  permissions system by a system that uses pure Python code objects.
+  This approach is more suitable for defining and maintaining complex
+  applications.
 
 - Lino doesn't use `django.forms
   <https://docs.djangoproject.com/en/2.2/ref/forms/>`__ because they
@@ -50,7 +48,7 @@ and Django.
 - Lino adds concepts like Actions, Choosers, ChoiceLists, Workflows,
   multi-lingual database content, generating printable documents, ...
 
-- High level features like
+- Lino comes with a set of high level features like
   :mod:`lino.modlib.comments`,
   :mod:`lino.modlib.changes`,
   :mod:`lino_xl.lib.excerpts`,

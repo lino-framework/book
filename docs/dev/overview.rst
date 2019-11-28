@@ -61,7 +61,7 @@ and technical specs:
   Lino application developed by somebody else than the author).
 
 
-Utilities maintained by the :ref:`lsf`
+Utilities maintained by the Lino team
 ======================================
 
 Some packages that might be useful to non-Lino Python projects are not covered

@@ -4,6 +4,19 @@ Welcome
 
 The Lino community welcomes both experienced and newbie Python developers.
 
+Give us your feedback or to ask for help. Ways to contact us:
+
+- Submit an issue on our `GitHub page <https://github.com/lino-framework>`__
+  (submit to the `book repository
+  <https://github.com/lino-framework/book/issues>`_ if you can't
+  decide which repository is the right one).
+
+- Subscribe to the `developers@lino-framework.org mailing list
+  <https://lino-framework.org/cgi-bin/mailman/listinfo/lino-developers>`__
+  and send an email.
+
+- Contact one of the team directly: https://saffre-rumma.net/team/
+
 Volunteer contributors contact us because they want to
 
 - gain experience with working in an open-source software project
