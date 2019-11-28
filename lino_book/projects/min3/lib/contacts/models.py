@@ -29,7 +29,7 @@ PartnerDetail.contact_box = dd.Panel("""
     """, label=_("Contact"))
 
 
-@dd.python_2_unicode_compatible
+
 class Person(Person, Commentable):
     
     class Meta(Person.Meta):

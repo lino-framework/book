@@ -12,7 +12,7 @@ from lino.modlib.users.mixins import UserAuthored
 
 # contacts = dd.resolve_app('contacts')
 
-@dd.python_2_unicode_compatible
+
 class Company(dd.Model):
     class Meta:
         verbose_name = _("Company")

@@ -1,12 +1,11 @@
 import datetime
 from django.utils import timezone
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 
 from lino.api import dd
 
 
-@python_2_unicode_compatible
+
 class Question(dd.Model):
     question_text = models.CharField("Question text", max_length=200)
     pub_date = models.DateTimeField('Date published', default=dd.today)
@@ -15,17 +14,17 @@ class Question(dd.Model):
         help_text="Whether this poll should not be shown in the main window.",
         default=False)
     description = models.TextField('Description', blank=True)
-    
+
     class Meta:
         verbose_name = 'Question'
         verbose_name_plural = 'Questions'
-    
+
     def __str__(self):
         return self.question_text
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
-    
+
     def results_overview(self):
         lst = []
         total_votes = self.choice_set.aggregate(models.Sum('votes'))['votes__sum']
@@ -38,7 +37,7 @@ class Question(dd.Model):
         return s
 
 
-@python_2_unicode_compatible
+
 class Choice(dd.Model):
     question = dd.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField("Choice text", max_length=200)
@@ -64,5 +63,3 @@ class Choice(dd.Model):
             msg += "\nDo you still want to vote for it?"
             return ar.confirm(yes, msg)
         return yes(ar)
-
-

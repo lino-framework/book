@@ -5,7 +5,7 @@ from lino.utils import join_elems
 from etgen.html import E
 from lino.mixins.polymorphic import Polymorphic
 
-@dd.python_2_unicode_compatible
+
 class Place(dd.Model):
     name = models.CharField(max_length=200)
 
@@ -13,7 +13,7 @@ class Place(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Member(Polymorphic):
     name = models.CharField(max_length=200)
     place = dd.ForeignKey(Place, blank=True, null=True)
@@ -32,7 +32,7 @@ class Supplier(Member):
     supplier_remark = models.CharField(max_length=200, blank=True)
     
 
-@dd.python_2_unicode_compatible
+
 class Product(dd.Model):
     name = models.CharField(max_length=200)
 
@@ -63,7 +63,7 @@ class Product(dd.Model):
         return E.p(*items)
 
 
-@dd.python_2_unicode_compatible
+
 class Offer(dd.Model):
     supplier = dd.ForeignKey(Supplier)
     product = dd.ForeignKey(Product)
@@ -73,7 +73,7 @@ class Offer(dd.Model):
         return "%s offered by %s" % (self.product, self.supplier)
 
 
-@dd.python_2_unicode_compatible
+
 class Demand(dd.Model):
     customer = dd.ForeignKey(Customer)
     product = dd.ForeignKey(Product)

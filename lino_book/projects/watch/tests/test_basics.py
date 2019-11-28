@@ -21,7 +21,7 @@ or::
 from __future__ import unicode_literals
 from __future__ import print_function
 
-from django.utils import six
+import six
 from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase

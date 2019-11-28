@@ -16,7 +16,7 @@ With revision 11066, the following doctest fails::
 >>> p1 = Place(name='Demon Dogs')
 >>> p1.save()
 
-# Create a Restaurant from this Place. 
+# Create a Restaurant from this Place.
 >>> r = Restaurant(place=p1, serves_hot_dogs=True)
 >>> r.save()
 >>> r
@@ -27,10 +27,7 @@ With revision 11066, the following doctest fails::
 from django.db import models
 
 
-from django.utils.encoding import python_2_unicode_compatible
 
-
-@python_2_unicode_compatible
 class Place(models.Model):
     name = models.CharField(max_length=50)
 

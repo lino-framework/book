@@ -33,6 +33,7 @@ install:
   - pip install coveralls
   - pip install -U pip
   - pip install -r requirements.${REQ_VERSION}.txt
+  - pip install -U --pre django  # temporarily to test the release candidate
   - npm init -y
   - npm install cypress
   #  - pip install Django==$DJANGO

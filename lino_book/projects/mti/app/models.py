@@ -6,21 +6,19 @@ from builtins import str
 from lino.api import dd
 from django.db import models
 from lino.mixins.polymorphic import Polymorphic
-from django.utils.encoding import python_2_unicode_compatible
 
 
-@python_2_unicode_compatible
 class Person(models.Model):
-        
+
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
 
 
-@python_2_unicode_compatible
+
 class Place(Polymorphic):
-        
+
     name = models.CharField(max_length=50)
     owners = models.ManyToManyField(Person)
 
@@ -30,9 +28,9 @@ class Place(Polymorphic):
             ', '.join([str(o) for o in self.owners.all()]))
 
 
-@python_2_unicode_compatible
+
 class Restaurant(Place):
-        
+
     serves_hot_dogs = models.BooleanField(default=False)
     cooks = models.ManyToManyField(Person)
 
@@ -43,9 +41,9 @@ class Restaurant(Place):
             ', '.join([str(o) for o in self.cooks.all()]))
 
 
-@python_2_unicode_compatible
+
 class Visit(models.Model):
-        
+
     allow_cascaded_delete = ['place']
     person = dd.ForeignKey(Person)
     place = dd.ForeignKey(Place)
@@ -56,9 +54,9 @@ class Visit(models.Model):
             self.purpose, self.person, self.place.name)
 
 
-@python_2_unicode_compatible
+
 class Meal(models.Model):
-        
+
     allow_cascaded_delete = ['restaurant']
     person = dd.ForeignKey(Person)
     restaurant = dd.ForeignKey(Restaurant)
@@ -67,5 +65,3 @@ class Meal(models.Model):
     def __str__(self):
         return "%s eats %s at %s" % (
             self.person, self.what, self.restaurant.name)
-
-

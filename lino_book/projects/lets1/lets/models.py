@@ -5,7 +5,7 @@ from etgen.html import E
 from lino.core.actors import qs2summary
 
 
-@dd.python_2_unicode_compatible
+
 class Place(dd.Model):
     name = models.CharField(max_length=200)
 
@@ -13,7 +13,7 @@ class Place(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Member(dd.Model):
     name = models.CharField(max_length=200)
     place = dd.ForeignKey(Place, blank=True, null=True)
@@ -23,7 +23,7 @@ class Member(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Product(dd.Model):
     name = models.CharField(max_length=200)
 
@@ -50,7 +50,7 @@ class Product(dd.Model):
         return qs2summary(ar, self.customers.all())
 
 
-@dd.python_2_unicode_compatible
+
 class Offer(dd.Model):
     provider = dd.ForeignKey(Member)
     product = dd.ForeignKey(Product)
@@ -60,7 +60,7 @@ class Offer(dd.Model):
         return "%s offered by %s" % (self.product, self.provider)
 
 
-@dd.python_2_unicode_compatible
+
 class Demand(dd.Model):
     customer = dd.ForeignKey(Member)
     product = dd.ForeignKey(Product)

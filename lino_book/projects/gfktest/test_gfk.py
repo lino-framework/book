@@ -8,7 +8,7 @@
 from __future__ import unicode_literals
 from builtins import str
 # from lino.utils.test import DocTest
-from django.utils import six
+import six
 
 from lino.utils.djangotest import WebIndexTestCase
 

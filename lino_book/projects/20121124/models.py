@@ -49,17 +49,16 @@ The above example raises the following Exception::
 
 The same exception comes when I use Django development trunk revision 17942.
 
-- `Value conversions of aggregate return values -- is float conversion really required? 
+- `Value conversions of aggregate return values -- is float conversion really required?
   <https://groups.google.com/forum/?fromgroups=#!topic/django-developers/6HQlh2t1j4M>`_
 
 """
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
 from lino.api import dd
 
-@python_2_unicode_compatible
+
 class Ticket(models.Model):
     name = models.CharField(max_length=200)
 
@@ -67,7 +66,7 @@ class Ticket(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
+
 class Session(models.Model):
     ticket = dd.ForeignKey(Ticket, related_name="sessions")
     time = models.TimeField()

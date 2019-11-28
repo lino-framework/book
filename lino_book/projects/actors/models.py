@@ -1,7 +1,7 @@
 from django.db import models
 from lino.api import dd
 
-@dd.python_2_unicode_compatible
+
 class PartnerType(dd.Model):
     name = models.CharField("Name", max_length=20)
     

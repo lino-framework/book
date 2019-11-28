@@ -391,6 +391,9 @@ Signal handlers
     :xfile:`TermsConditions.odt` or as a :xfile:`final
     report.body.html`.
 
+    When the database does not yet exist (e.g. during :manage:`prep`), it simply
+    ignores that situation silently and does not define the print actions. 
+
 
 .. function:: post_init_excerpt
 

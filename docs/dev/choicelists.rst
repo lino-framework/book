@@ -61,7 +61,7 @@ choices, one for each day of the week.
 Another example is the :class:`Genders
 <lino.modlib.system.choicelists.Genders>` choicelist defined in the
 :mod:`lino.modlib.system` plugin.
- 
+
 >>> rt.show('system.Genders')
 ======= ======== ========
  value   name     text
@@ -242,7 +242,7 @@ The :class:`lino.mixins.human.Human` mixin uses the :class:`Genders
 Because :class:`lino_xl.lib.contacts.Person` inherits from
 :class:`Human`, you can use this when you want to select all men:
 
->>> Person = rt.models.contacts.Person       
+>>> Person = rt.models.contacts.Person
 >>> list(Person.objects.filter(gender=Genders.male))
 ... # doctest: +ELLIPSIS
 [Person #114 ('Mr Hans Altenberg'), Person #112 ('Mr Andreas Arens'), ...]
@@ -276,7 +276,7 @@ of how they have been added to the list.
 You can explicitly call :meth:`Choicelist.sort` to sort them. This makes sense
 e.g. in :mod:`lino_presto.lib.ledger` where we add a new journal group "Orders"
 which we want to come before any other journal groups.
-      
+
 Miscellaneous
 =============
 
@@ -296,6 +296,35 @@ False
 
 
 
+Seeing all choicelists in your application
+==========================================
 
+>>> from lino.core.kernel import choicelist_choices
+>>> pprint(choicelist_choices())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+[('about.TimeZones', 'about.TimeZones (Time zones)'),
+ ('cal.AccessClasses', 'cal.AccessClasses'),
+ ('cal.DisplayColors', 'cal.DisplayColors'),
+ ('cal.DurationUnits', 'cal.DurationUnits'),
+ ('cal.EntryStates', 'cal.EntryStates (Entry states)'),
+ ('cal.EventEvents', 'cal.EventEvents (Observed events)'),
+ ('cal.GuestStates', 'cal.GuestStates (Presence states)'),
+ ('cal.PlannerColumns', 'cal.PlannerColumns'),
+ ('cal.Recurrencies', 'cal.Recurrencies'),
+ ('cal.ReservationStates', 'cal.ReservationStates (States)'),
+ ('cal.TaskStates', 'cal.TaskStates (Task states)'),
+ ('cal.Weekdays', 'cal.Weekdays'),
+ ('cal.YearMonths', 'cal.YearMonths'),
+ ('checkdata.Checkers', 'checkdata.Checkers (Data checkers)'),
+ ('contacts.CivilStates', 'contacts.CivilStates (Civil states)'),
+ ('contacts.PartnerEvents', 'contacts.PartnerEvents (Observed events)'),
+ ('countries.PlaceTypes', 'countries.PlaceTypes'),
+ ('printing.BuildMethods', 'printing.BuildMethods'),
+ ('system.Genders', 'system.Genders'),
+ ('system.PeriodEvents', 'system.PeriodEvents (Observed events)'),
+ ('system.YesNo', 'system.YesNo (Yes or no)'),
+ ('users.UserTypes', 'users.UserTypes (User types)'),
+ ('xl.Priorities', 'xl.Priorities (Priorities)')]
 
-
+The :attr:`lino_xl.lib.properties.PropType.choicelist` field uses this function
+for its choices.

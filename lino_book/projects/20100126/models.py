@@ -13,7 +13,7 @@ The following works only if you have issue 10808 solved:
   >>> INV = Invoice.create_journal("INV",name="Invoices")
   >>> print INV.create_document()
   INV#1 (1)
-  
+
 
 """
 
@@ -49,10 +49,7 @@ def get_doctype(cl):
     return None
 
 
-from django.utils.encoding import python_2_unicode_compatible
 
-
-@python_2_unicode_compatible
 class Journal(models.Model):
 
     id = models.CharField(max_length=4, primary_key=True)
@@ -92,7 +89,7 @@ def DocumentRef(**kw):
     return models.IntegerField(**kw)
 
 
-@python_2_unicode_compatible
+
 class JournaledAbstractDocument(AbstractDocument):
 
     journal = JournalRef()

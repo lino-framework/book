@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from lino.api import dd, rt
@@ -13,7 +12,7 @@ class A(dd.Action):
         return ar.success("Called a() on %s" % obj)
 
 
-@python_2_unicode_compatible
+
 class Moo(dd.Model):
     a = A()
 

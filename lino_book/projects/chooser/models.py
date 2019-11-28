@@ -5,7 +5,7 @@ from lino.api import dd, _
 from lino_book.projects.chooser.food import year_in_school, food_choices, food
 
 
-@dd.python_2_unicode_compatible
+
 class Country(dd.Model):
     class Meta(object):
         verbose_name = _("Country")
@@ -17,7 +17,7 @@ class Country(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class City(dd.Model):
     class Meta(object):
         verbose_name = _("City")
@@ -30,7 +30,7 @@ class City(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Contact(dd.Model):
     class Meta(object):
         verbose_name = _("Contact")

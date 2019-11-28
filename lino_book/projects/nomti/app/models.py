@@ -8,7 +8,7 @@ from django.db import models
 from lino.api import dd
 
 
-@dd.python_2_unicode_compatible
+
 class Person(dd.Model):
     
     name = models.CharField(max_length=50)
@@ -17,7 +17,7 @@ class Person(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Place(dd.Model):
         
     name = models.CharField(max_length=50)
@@ -51,7 +51,7 @@ class Place(dd.Model):
             return None
 
 
-@dd.python_2_unicode_compatible
+
 class Bar(dd.Model):
     
     place = dd.OneToOneField(Place)
@@ -63,7 +63,7 @@ class Bar(dd.Model):
         return "%s (no alcohol)" % self.place.name
 
 
-@dd.python_2_unicode_compatible
+
 class Restaurant(dd.Model):
         
     place = dd.OneToOneField(Place)
@@ -75,7 +75,7 @@ class Restaurant(dd.Model):
             self.place.name,
             ','.join([str(o) for o in self.cooks.all()]))
     
-@dd.python_2_unicode_compatible
+
 class Visit(models.Model):
         
     allow_cascaded_delete = ['place']
@@ -88,7 +88,7 @@ class Visit(models.Model):
             self.purpose, self.person, self.place.name)
 
 
-@dd.python_2_unicode_compatible
+
 class Meal(models.Model):
     allow_cascaded_delete = ['restaurant']
     person = dd.ForeignKey(Person)

@@ -44,7 +44,7 @@ from django.db import models
 from lino.api import dd
 
 
-@dd.python_2_unicode_compatible
+
 class Item(dd.Model):
     name = models.CharField(max_length=50)
     qty = dd.QuantityField(default='1')

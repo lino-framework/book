@@ -25,8 +25,8 @@ A `Concise Reference Label`
 class CrlField(models.CharField):
 
     """A field that contains a Concise Reference Label.
-CRL fields need to be sorted using pure ASCII sequence. 
-Since this is not a database-transparent feature in Django, 
+CRL fields need to be sorted using pure ASCII sequence.
+Since this is not a database-transparent feature in Django,
 we store these strings as their hexadecimal representation.
     """
 
@@ -39,7 +39,7 @@ we store these strings as their hexadecimal representation.
         defaults.update(kw)
         models.CharField.__init__(self, *args, **defaults)
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, connection, context=None):
         return CRL(hex2str(value)) if value else ''
 
     def to_python(self, value):

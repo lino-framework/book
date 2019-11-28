@@ -4,7 +4,7 @@ from lino.api import dd
 from lino.core.gfks import GenericForeignKey
 
 
-@dd.python_2_unicode_compatible
+
 class Member(dd.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200, blank=True)
@@ -13,7 +13,7 @@ class Member(dd.Model):
         return self.name
 
 
-@dd.python_2_unicode_compatible
+
 class Comment(dd.Model):
     allow_cascaded_delete = ['owner']
     owner_type = dd.ForeignKey(ContentType)
@@ -25,7 +25,7 @@ class Comment(dd.Model):
         return '%s object' % (self.__class__.__name__)
 
 
-@dd.python_2_unicode_compatible
+
 class Note(dd.Model):
     owner_type = dd.ForeignKey(ContentType)
     owner_id = models.PositiveIntegerField()
@@ -36,7 +36,7 @@ class Note(dd.Model):
         return '%s object' % (self.__class__.__name__)
 
 
-@dd.python_2_unicode_compatible
+
 class Memo(dd.Model):
     owner_type = dd.ForeignKey(ContentType, blank=True, null=True)
     owner_id = models.PositiveIntegerField(blank=True, null=True)
