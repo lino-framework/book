@@ -87,6 +87,7 @@ Plugins of the Extensions library
    phones
    polls
    products
+   properties
    sales
    sepa
    sheets
