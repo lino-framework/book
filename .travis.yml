@@ -30,7 +30,7 @@ before_install:
 
 install:
   - pip install -U setuptools
-  - pip install coveralls
+  # - pip install coveralls
   - pip install -U pip
   - pip install -r requirements.${REQ_VERSION}.txt
   - pip install -U --pre django  # temporarily to test the release candidate
@@ -42,6 +42,7 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
+  
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
@@ -62,4 +63,4 @@ script:
 after_script:
   - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
   - if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by repo `basename $(git rev-parse --show-toplevel)` commit `git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
-  - coveralls
+  # - coveralls
