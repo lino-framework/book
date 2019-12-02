@@ -29,8 +29,8 @@ users.UserTypes.admin:900
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
-  - Wages : Salaries (SAL)
-  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK)
+  - Wages : Paychecks (SAL)
+  - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
   - Miscellaneous transactions : Miscellaneous transactions (MSC)
 - Reports :
@@ -76,8 +76,8 @@ Monique is a secretary.
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
-  - Wages : Salaries (SAL)
-  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK)
+  - Wages : Paychecks (SAL)
+  - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
   - Miscellaneous transactions : Miscellaneous transactions (MSC)
 - Reports :
@@ -117,8 +117,8 @@ Marianne is a "simple user".
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
 - Accounting :
   - Purchases : Purchase invoices (PRC)
-  - Wages : Salaries (SAL)
-  - Financial : Bestbank Payment Orders (PMO), Cash (CSH), Bestbank (BNK)
+  - Wages : Paychecks (SAL)
+  - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
   - Miscellaneous transactions : Miscellaneous transactions (MSC)
 - Reports :

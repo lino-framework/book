@@ -211,16 +211,15 @@ The sales journal
  Reference   Designation                  Designation (en)             Trade type
 ----------- ---------------------------- ---------------------------- ---------------------
  SLS         Factures vente               Sales invoices               Sales
- SLC         Sales credit notes           Sales credit notes           Sales
+ SLC         Notes de crédit vente        Sales credit notes           Sales
  PRC         Factures achat               Purchase invoices            Purchases
- PMO         Bestbank Payment Orders      Bestbank Payment Orders      Bank payment orders
- CSH         Caisse                       Cash
+ PMO         Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders
+ CSH         Livre de caisse              Cash book
  BNK         Bestbank                     Bestbank
- MSC         Miscellaneous transactions   Miscellaneous transactions
- SAL         Salaries                     Salaries
+ MSC         Opérations diverses          Miscellaneous transactions
+ SAL         Fiches de paie               Paychecks
 =========== ============================ ============================ =====================
 <BLANKLINE>
-
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
 >>> rt.show('sales.InvoicesByJournal', jnl)

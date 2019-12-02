@@ -1,4 +1,3 @@
-
 .. doctest docs/specs/tera/sql.rst
 .. _specs.tera.sql:
 
@@ -30,7 +29,7 @@ SELECT django_content_type.id, django_content_type.app_label, django_content_typ
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 75 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 73 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 74 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 51 LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 50 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 84 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 21 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 16 LIMIT 21

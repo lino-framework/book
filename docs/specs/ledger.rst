@@ -111,6 +111,29 @@ Some more concepts:
 
     Usually (but not always) same as a calendar month.
 
+  Invoice
+
+    A :term:`voucher` sent to or received from a business partner, showing a
+    list of goods or services, their price, and the amount due.
+
+  Paycheck
+
+    A :term:`voucher` sent to each employee every month, detailing the amount of the
+    salary or wage and resulting tax and other legal transactions.
+
+  Bank statement
+
+    A :term:`voucher` received from the bank, showing all transactions on a given
+    account during a given date range.
+
+  Cash book
+
+    A :term:`journal` of all transactions in a given cash box.
+
+    The transactions are grouped into **cash statements**, which are similar to
+    a :term:`bank statement`, but issued internally and potentially to be signed
+    by a responsible person.
+
 
 There are some secondary models and choice lists:
 
@@ -637,7 +660,8 @@ When you deregister a voucher, all :term:`movements <ledger movement>` are delet
 Journals
 ========
 
-A **journal** is a named sequence of numbered *vouchers*.
+Here is the list of all :term:`journals <journal>`.
+
 
 >>> ses.show(ledger.Journals,
 ...     column_names="ref name trade_type account dc")
@@ -646,20 +670,20 @@ A **journal** is a named sequence of numbered *vouchers*.
  Reference   Designation                  Designation (en)             Trade type            Account                         Primary booking direction
 ----------- ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
  SLS         Factures vente               Sales invoices               Sales                                                 Credit
- SLC         Sales credit notes           Sales credit notes           Sales                                                 Debit
+ SLC         Notes de crédit vente        Sales credit notes           Sales                                                 Debit
  PRC         Factures achat               Purchase invoices            Purchases                                             Debit
- PMO         Bestbank Payment Orders      Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
- CSH         Caisse                       Cash                                               (5700) Cash                     Credit
+ PMO         Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
+ CSH         Livre de caisse              Cash book                                          (5700) Cash                     Credit
  BNK         Bestbank                     Bestbank                                           (5500) BestBank                 Credit
- MSC         Miscellaneous transactions   Miscellaneous transactions                         (5700) Cash                     Credit
- SAL         Salaries                     Salaries                                           (5700) Cash                     Credit
+ MSC         Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit
+ SAL         Fiches de paie               Paychecks                                          (5700) Cash                     Credit
 =========== ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
 
 
 .. class:: Journal
 
-    Django model used to store *journals*. See Overview_.
+    Django model used to represent a :term:`journal`.
 
     **Fields:**
 
@@ -760,22 +784,21 @@ A **journal** is a named sequence of numbered *vouchers*.
     journal (which is after all one of the frequent actions in an accounting
     application).
 
-    >>> rt.show(ledger.JournalsOverview)
-    ================================== ========= =========== ============ ============ ==========
-     Description                        Total     This year   This month   Unfinished   Warnings
-    ---------------------------------- --------- ----------- ------------ ------------ ----------
-     Sales invoices (SLS)               **72**    **15**      **6**
-     Sales credit notes (SLC)
-     Purchase invoices (PRC)            **105**   **21**      **7**
-     Bestbank Payment Orders (PMO)
-     Cash (CSH)
-     Bestbank (BNK)
-     Miscellaneous transactions (MSC)
-     Salaries (SAL)
-     **Total (8 rows)**                 **177**   **36**      **13**       **0**
-    ================================== ========= =========== ============ ============ ==========
+    >>> rt.login("robin").show(ledger.JournalsOverview)
+    ======================================================== ========= =========== ============ ============ ==========
+     Description                                              Total     This year   This month   Unfinished   Warnings
+    -------------------------------------------------------- --------- ----------- ------------ ------------ ----------
+     Sales invoices (SLS) / **New Invoice**                   **72**    **15**      **6**
+     Sales credit notes (SLC) / **New Credit note**
+     Purchase invoices (PRC) / **New Invoice**                **105**   **21**      **7**
+     Bestbank Payment Orders (PMO) / **New Payment order**
+     Cash book (CSH) / **New Cash statement**
+     Bestbank (BNK) / **New Bank statement**
+     Miscellaneous transactions (MSC) / **New Transaction**
+     Paychecks (SAL) / **New Paycheck**
+     **Total (8 rows)**                                       **177**   **36**      **13**       **0**
+    ======================================================== ========= =========== ============ ============ ==========
     <BLANKLINE>
-
 
 
 Debit or credit
@@ -1217,10 +1240,10 @@ This demo site has the following match rules:
  4    (4000) Customers                Bestbank Payment Orders (PMO)
  5    (4400) Suppliers                Bestbank Payment Orders (PMO)
  6    (6300) Wages                    Bestbank Payment Orders (PMO)
- 7    (4000) Customers                Cash (CSH)
- 8    (4400) Suppliers                Cash (CSH)
- 9    (6300) Wages                    Cash (CSH)
- 10   (4300) Pending Payment Orders   Cash (CSH)
+ 7    (4000) Customers                Cash book (CSH)
+ 8    (4400) Suppliers                Cash book (CSH)
+ 9    (6300) Wages                    Cash book (CSH)
+ 10   (4300) Pending Payment Orders   Cash book (CSH)
  11   (4000) Customers                Bestbank (BNK)
  12   (4400) Suppliers                Bestbank (BNK)
  13   (6300) Wages                    Bestbank (BNK)
@@ -1229,10 +1252,10 @@ This demo site has the following match rules:
  16   (4400) Suppliers                Miscellaneous transactions (MSC)
  17   (6300) Wages                    Miscellaneous transactions (MSC)
  18   (4300) Pending Payment Orders   Miscellaneous transactions (MSC)
- 19   (4000) Customers                Salaries (SAL)
- 20   (4400) Suppliers                Salaries (SAL)
- 21   (6300) Wages                    Salaries (SAL)
- 22   (4300) Pending Payment Orders   Salaries (SAL)
+ 19   (4000) Customers                Paychecks (SAL)
+ 20   (4400) Suppliers                Paychecks (SAL)
+ 21   (6300) Wages                    Paychecks (SAL)
+ 22   (4300) Pending Payment Orders   Paychecks (SAL)
 ==== =============================== ==================================
 <BLANKLINE>
 

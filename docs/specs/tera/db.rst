@@ -76,7 +76,7 @@ The database models
  courses.Topic               courses.Topics                 4         0
  dashboard.Widget            dashboard.Widgets              5         0
  excerpts.Excerpt            excerpts.Excerpts              12        0
- excerpts.ExcerptType        excerpts.ExcerptTypes          17        10
+ excerpts.ExcerptType        excerpts.ExcerptTypes          17        9
  finan.BankStatement         finan.BankStatements           16        4
  finan.BankStatementItem     finan.BankStatementItemTable   10        261
  finan.JournalEntry          finan.FinancialVouchers        14        0
