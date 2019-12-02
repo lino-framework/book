@@ -33,7 +33,6 @@ install:
   # - pip install coveralls
   - pip install -U pip
   - pip install -r requirements.${REQ_VERSION}.txt
-  - pip install -U --pre django  # temporarily to test the release candidate
   - npm init -y
   - npm install cypress
   #  - pip install Django==$DJANGO
@@ -42,7 +41,7 @@ install:
   - python setup.py install_egg_info
   - pip install -e .
   - pip freeze
-  
+
 script:
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT

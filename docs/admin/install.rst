@@ -31,9 +31,16 @@ Run :cmd:`getlino configure` as root::
 
    $ sudo env PATH=$PATH getlino configure
 
+For details see the documentation about :ref:`getlino`.
+
 The ``env PATH=$PATH`` is needed to work around the controversial Debian feature
 of overriding the :envvar:`PATH` for security reasons (`source
 <https://stackoverflow.com/questions/257616/why-does-sudo-change-the-path>`__).
+
+If your customers want to access their Lino from outside of their intranet, then
+you need to setup a domain name and add the ``--https`` option in above
+command line.
+
 
 Install a first site.  You will do the following for every new site on your
 server.
@@ -41,12 +48,6 @@ server.
    $ sudo env PATH=$PATH getlino startsite noi first
 
 Point your browser to http://first.localhost
-
-.. program:: getlino configure
-
-If your customers want to access their Lino from outside of their intranet, then
-you need to setup a domain name and add the :option:`--https` option in above
-command line.
 
 
 Some useful additions to your shell
@@ -80,18 +81,14 @@ Run :cmd:`getlino configure` as root::
 
    $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/master --clone
 
-.. program:: getlino configure
+That is, you tell getlino to clone all repositories and to create a shared :term:`virtualenv`.
 
-That is, you say :option:`--clone` and create a :option:`--shared-env`.
-
-You may create other shared envs by changing the branch and clone another set of
-repositories::
+You may create other shared virtualenvs by changing the branch and clone another
+set of repositories::
 
    $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/stable --clone --branch stable
 
-.. program:: getlino startsite
-
-Specify :option:`--shared-env` when creating demo sites::
+Specify ``--shared-env`` when creating demo sites::
 
    $ sudo -H env PATH=$PATH getlino startsite noi first --shared-env /usr/local/lino/shared/stable
    $ sudo -H env PATH=$PATH getlino startsite tera second --shared-env /usr/local/lino/shared/master

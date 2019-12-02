@@ -2,13 +2,10 @@
 Selecting the database engine
 =============================
 
-.. program:: getlino configure
-
-To select a database server, run :cmd:`getlino configure` with
-:option:`--db-engine`. This option has currently three choices: mysql,
-postgresql or sqlite3.  The default value is either mysql (when running as root)
-or sqlite3 otherwise. mysql will install either mariadb (Debian) or mysql
-(Ubuntu).
+To select a database server, run :ref:`getlino configure <getlino>` with option
+``--db-engine``. This option has currently three choices: mysql, postgresql or
+sqlite3.  The default value is either mysql (when running as root) or sqlite3
+otherwise. mysql will install either mariadb (Debian) or mysql (Ubuntu).
 
 For mysql and postgresql you *may* additionally specify a db-port, a db-user and
 db-password.
@@ -18,13 +15,13 @@ Shared database user
 The db-user and db-password will not be used directly, but they will be stored
 as the default values for all subsequent calls to :cmd:`getlino startsite`.
 
-If :option:`--db-user` is empty, :cmd:`getlino startsite` will create a new user for each
+If ``--db-user`` is empty, :cmd:`getlino startsite` will create a new user for each
 new site.  If it is not empty, all sites will share the same database username.
 The latter is less secure but convenient on a server having all sites owned by a
 same :term:`site operator`.
 
 On a server with a shared database user you must also specify a
-:option:`--db-password` for :cmd:`getlino configure`.
+``--db-password`` for :cmd:`getlino configure`.
 
 Every subsequent :cmd:`getlino startsite` run will
 

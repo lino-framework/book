@@ -124,25 +124,23 @@ directory` field to  :file:`~/lino/env/bin`
 Run getlino
 ===========
 
-Make sure your default environment is activated and then install getlino via
-pip::
+Make sure your default environment is activated and then install :ref:`getlino`
+via pip::
 
   $ pip install getlino
 
-For other ways of installing getlino see :ref:`getlino.install`.
-
-Run :cmd:`getlino configure`::
+Then run :cmd:`getlino configure`::
 
   $ getlino configure
 
-It asks a lot of questions, but you can hit ENTER for each of them. If it asks a
-``[y or n]`` question, should read it and understand it before you hit :kbd:`y`.
-For details about each question see the documentation about :cmd:`getlino
-configure`.
+It asks a lot of questions, but you can hit ENTER for each of them.
 
-Warning : getlino overwrites certain configuration files without making a backup
-copy.  Read twice before you hit :kbd:`y`!
+Warning :
+when getlino asks a ``[y or n]`` question, you should read it and understand it before you hit :kbd:`y`.
+getlino overwrites certain configuration files without making a backup copy.
+Read twice before you hit :kbd:`y`!
 
+For details about each question see the documentation about :ref:`getlino`.
 
 Your first Lino site
 ====================
@@ -245,3 +243,33 @@ In case you didn't know: Python's `-m
 <https://docs.python.org/2/using/cmdline.html#cmdoption-m>`_
 command-line switch instructs it to just *import* the specified module
 (here :mod:`lino.hello`) and then to return to the command line.
+
+
+Concepts
+========
+
+.. glossary::
+
+  virtualenv
+
+    A virtual Python environment.
+
+  Developer environment
+
+    A set of tools configured on the desktop computer of a Lino developer who
+    wants to develop their own :term:`Lino application`.
+
+  Contributor environment
+
+    An extended :term:`developer environment` suitable for developers who plan
+    to potentially contribute to the :term:`Lino framework`.  A bit more work to
+    install, but more future-proof.
+
+  Production server
+
+    A dedicated server designed to host one or several :term:`production sites
+    <production site>`.
+
+  Demo server
+
+    A dedicated server designed to host a series of demo sites.

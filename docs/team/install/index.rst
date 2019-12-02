@@ -14,11 +14,11 @@ going to do local modifications and submit pull requests.
 Run getlino to clone Lino repositories
 ======================================
 
-.. program:: getlino configure
-
-Run :cmd:`getlino configure` with :option:`--clone` and :option:`--devtools`::
+Run :cmd:`getlino` with the following options::
 
   $ getlino configure --clone --devtools --redis
+
+For details see the documentation about :ref:`getlino`.
 
 Note that getlino uses the configuration values you specified during
 :doc:`/dev/install/index`.

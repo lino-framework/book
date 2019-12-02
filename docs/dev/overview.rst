@@ -10,7 +10,7 @@ General framework repositories
 - The :mod:`lino` package contains the core of the framework and
   includes the :doc:`/specs/modlib`.
 
-- The :mod:`getlino` package contains the Lino installer. See :ref:`getlino`.
+- The :ref:`getlino` package contains the Lino installer. See :ref:`getlino`.
 
 - The :mod:`lino_xl` package contains the :ref:`xl`.
 
@@ -78,6 +78,16 @@ that Lino depends on them and that they are maintained by the Lino team:
   managing common data as Python code without any front end.
 
 
+.. _getlino:
+
+getlino, the Lino installer
+---------------------------
+
+See https://getlino.lino-framework.org
+
+
+
+
 Alternative front ends
 ======================
 
@@ -106,51 +116,6 @@ Overview diagram
 
    digraph foo {
 
-    /**
-    {
-       node [shape=plaintext, fontsize=16];
-       documentation ->
-       "independent applications" ->
-       applications -> framework -> utilities;
-    }
-
-    { rank = same;
-        applications;
-        lino_noi;
-        lino_cosi;
-        lino_tera;
-        lino_avanti;
-    }
-
-    { rank = same;
-        utilities;
-        atelier;
-        commondata;
-    }
-
-    { rank = same;
-        documentation;
-        lino_book;
-    }
-
-    { rank = same;
-        "independent applications";
-        lino_voga;
-        lino_weleup;
-        lino_welcht;
-    }
-    **/
-
-    /**
-
-    { rank = same;
-        framework;
-        lino;
-        lino_xl;
-    }
-
-    **/
-
     { rank = same;
         # applications;
         noi;
@@ -158,21 +123,21 @@ Overview diagram
         tera;
         avanti;
         voga;
-        logos
         weleup;
         welcht;
         amici;
+        ciao;
     }
 
     lino -> atelier;
     xl -> lino;
-    logos -> lino;
     noi -> xl;
     cosi -> xl;
     tera -> xl;
     avanti -> xl;
     voga -> xl;
     amici -> xl;
+    ciao -> xl;
     weleup -> welfare;
     welcht -> welfare;
 
@@ -185,5 +150,11 @@ Overview diagram
     # book -> welcht;
 
     welfare -> xl;
+
+    getlino -> book;
+    getlino -> amici;
+    getlino -> ciao;
+    getlino -> weleup;
+    getlino -> welcht;
 
    }

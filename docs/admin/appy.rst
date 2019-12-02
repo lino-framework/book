@@ -8,7 +8,7 @@ When at least one :term:`Lino site` of a server uses :mod:`lino_xl.lib.appypod`,
 then the server must have a LibreOffice service running so that the users of
 your site can print documents.
 
-You say this using the :option:`getlino configure --appy` option.
+You say this using the :cmd:`getlino configure --appy` option.
 
 For background information see :doc:`oood`.
 
