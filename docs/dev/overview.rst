@@ -110,6 +110,7 @@ See https://github.com/lino-framework/extjs6
 Note that this front end is discontinued in favour of the more feature-complete
 :ref:`react` front end.
 
+.. _dev.overview.diagram:
 
 Overview diagram
 ================
