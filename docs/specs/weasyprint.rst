@@ -85,46 +85,29 @@ The template defines the following blocks:
 Weasyprint templates defined by other plugins
 =============================================
 
-- :mod:`lino_xl.lib.excerpts` --
-  :xfile:`excerpts/base.weasy.html` (inherits from :xfile:`weasyprint/base.weasy.html`)
-
-- :mod:`lino_xl.lib.sheets` --
-  :xfile:`sheets/Report/default.weasy.html`
-
 - :mod:`lino_xl.lib.bevats` --
   :xfile:`bevats/Declaration/default.weasy.html`
 
-- :mod:`lino_xl.lib.lists` --
-  :xfile:`lists/List/list_members.weasy.html`
+  In demo project lydia, go to :menuselection:`Accounting --> VAT Declarations`
+  and print one of them.
 
 - :mod:`lino_xl.lib.courses` --
   :xfile:`courses/Course/presence_sheet.weasy.html`
 
+  In demo project roger, open the detail view of some course and click on one of
+  the `Presence sheet` links.
+
 - :mod:`lino_xl.lib.ledger` --
   :xfile:`contacts/Partner/payment_reminder.weasy.html`
 
+- :mod:`lino_xl.lib.lists` --
+  :xfile:`lists/List/list_members.weasy.html`
+
+- :mod:`lino_xl.lib.sheets` --
+  :xfile:`sheets/Report/default.weasy.html`
+
 - :mod:`lino_xl.lib.working` --
   :xfile:`working/ServiceReport/default.weasy.html`
-
-- :ref:`welfare` also uses it.
-
-
-Warnings about Cairo and Pango
-==============================
-
-This plugin installs a warnings filter for the `cffi.model` module in
-order to get rid of a disturbing warning :message:`There are known
-rendering problems with Cairo <= 1.14.0` and :message:`@font-face
-support needs Pango >= 1.38` issued by weasyprint.
-
-.. (Probably obsolete:) They should also add `'cairocffi<0.7'` (see
-   :ticket:`1119`) or install it using pip::
-
-      $ pip install 'cairocffi<0.7' weasyprint
-
-
-Weasyprint templates included with the :ref:`xl`
-================================================
 
 Here is a list of the weasy templates included with the :ref:`xl`:
 
@@ -144,5 +127,19 @@ Here is a list of the weasy templates included with the :ref:`xl`:
 ./lib/sheets/config/sheets/Report/default.weasy.html
 ./lib/working/config/working/ServiceReport/default.weasy.html
 
-- bevats.Declaration.default : demo project lydia, go to Accounting VAT Declarations and print one of them.
-- courses.Course.presence_sheet : demo project roger, go to 
+
+Note also that :mod:`lino_xl.lib.excerpts` contains the
+:xfile:`excerpts/base.weasy.html` template, which inherits from
+:xfile:`weasyprint/base.weasy.html`.
+
+
+For other usage examples see the specs of :ref:`welfare`.
+
+
+Warnings about Cairo and Pango
+==============================
+
+This plugin installs a warnings filter for the `cffi.model` module in
+order to get rid of a disturbing warning :message:`There are known
+rendering problems with Cairo <= 1.14.0` and :message:`@font-face
+support needs Pango >= 1.38` issued by weasyprint.

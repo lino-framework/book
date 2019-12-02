@@ -35,12 +35,14 @@ documentation in the :ref:`Lino Book <book>`.
 - :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
 - :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration parcours
 - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
-- :mod:`lino_vilma` (:ref:`vilma`) : Shared Contact management for local communities
+- :mod:`lino_vilma` (:ref:`vilma`) : Shared contact management for local communities
 
 Some other Lino applications have their own technical documentation, demo projects
 and technical specs:
 
 - `Lino Amici <http://amici.lino-framework.org>`_ is a contacts manager for families.
+
+- `Lino Ciao <http://ciao.lino-framework.org>`_ is a meetings manager.
 
 - `Lino Presto <http://presto.lino-framework.org>`_ is an application developed
   for a service provider in Eupen. Group calendar, team management, monthly
