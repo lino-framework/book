@@ -121,3 +121,28 @@ support needs Pango >= 1.38` issued by weasyprint.
    :ticket:`1119`) or install it using pip::
 
       $ pip install 'cairocffi<0.7' weasyprint
+
+
+Weasyprint templates included with the :ref:`xl`
+================================================
+
+Here is a list of the weasy templates included with the :ref:`xl`:
+
+>>> import lino_xl
+>>> from os.path import dirname
+>>> from atelier.sheller import Sheller
+>>> shell = Sheller(dirname(lino_xl.__file__))
+>>> shell("find -name '*.weasy.html' | sort")
+./lib/bevats/config/bevats/Declaration/default.weasy.html
+./lib/courses/config/courses/Course/presence_sheet.weasy.html
+./lib/excerpts/config/excerpts/base.weasy.html
+./lib/ledger/config/contacts/Partner/payment_reminder.weasy.html
+./lib/lists/config/lists/List/list_members.weasy.html
+./lib/orders/config/orders/Order/base.weasy.html
+./lib/orders/config/orders/Order/default.weasy.html
+./lib/sales/config/sales/VatProductInvoice/default.weasy.html
+./lib/sheets/config/sheets/Report/default.weasy.html
+./lib/working/config/working/ServiceReport/default.weasy.html
+
+- bevats.Declaration.default : demo project lydia, go to Accounting VAT Declarations and print one of them.
+- courses.Course.presence_sheet : demo project roger, go to 

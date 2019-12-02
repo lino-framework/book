@@ -18,7 +18,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, memo, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+42 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, memo, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
 83 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -58,7 +58,7 @@ The database structure
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        ...
- excerpts.ExcerptType       excerpts.ExcerptTypes          17        15
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        14
  finan.BankStatement        finan.BankStatements           16        21
  finan.BankStatementItem    finan.BankStatementItemTable   10        164
  finan.JournalEntry         finan.FinancialVouchers        14        0

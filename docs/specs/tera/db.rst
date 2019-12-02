@@ -36,7 +36,7 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-46 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, courses, users, dashboard, office, xl, countries, contacts, households, clients, healthcare, products, memo, weasyprint, uploads, ledger, bevats, checkdata, vat, sales, cal, invoicing, sepa, finan, ana, sheets, topics, notes, excerpts, appypod, export_excel, tinymce, tera, teams, lists, sessions.
+46 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, excerpts, courses, users, dashboard, countries, contacts, households, clients, healthcare, products, memo, checkdata, weasyprint, uploads, ledger, bevats, vat, sales, cal, invoicing, sepa, finan, ana, sheets, topics, notes, appypod, export_excel, tinymce, tera, teams, lists, sessions.
 98 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows

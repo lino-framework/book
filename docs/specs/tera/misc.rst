@@ -6,7 +6,7 @@
 Lino Tera : miscellaneous
 =========================
 
-.. contents:: 
+.. contents::
    :local:
    :depth: 2
 
@@ -153,3 +153,20 @@ van Veen Vincent
 Ärgerlich Erna
 Õunapuu Õie
 Östges Otto
+
+
+>>> rt.show("excerpts.ExcerptTypes")
+======================================================== ========= ============ ==================== ====================== ==================== ===================== ============================= ===============
+ Model                                                    Primary   Certifying   Designation          Designation (de)       Designation (fr)     Print method          Template                      Body template
+-------------------------------------------------------- --------- ------------ -------------------- ---------------------- -------------------- --------------------- ----------------------------- ---------------
+ *bevats.Declaration (Special Belgian VAT declaration)*   Yes       Yes          VAT declaration      MwSt.-Erklärung        VAT declaration      WeasyPdfBuildMethod   default.weasy.html
+ *contacts.Partner (Partner)*                             No        No           Payment reminder     Zahlungserinnerung     Rappel de paiement   WeasyPdfBuildMethod   payment_reminder.weasy.html
+ *contacts.Person (Person)*                               No        No           Terms & conditions   Nutzungsbestimmungen   Terms & conditions   AppyPdfBuildMethod    TermsConditions.odt
+ *courses.Enrolment (Enrolment)*                          Yes       Yes          Enrolment            Einschreibung          Inscription
+ *finan.BankStatement (Bank Statement)*                   Yes       Yes          Bank Statement       Kontoauszug            Bank Statement
+ *finan.JournalEntry (Journal Entry)*                     Yes       Yes          Journal Entry        Diverse Buchung        Journal Entry
+ *finan.PaymentOrder (Payment Order)*                     Yes       Yes          Payment Order        Zahlungsauftrag        Payment Order
+ *sales.VatProductInvoice (Sales invoice)*                Yes       Yes          Sales invoice        Verkaufsrechnung       Sales invoice
+ *sheets.Report (Accounting Report)*                      Yes       Yes          Accounting Report    Buchhaltungsbericht    Accounting Report    WeasyPdfBuildMethod
+======================================================== ========= ============ ==================== ====================== ==================== ===================== ============================= ===============
+<BLANKLINE>
