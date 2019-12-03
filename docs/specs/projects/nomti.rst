@@ -2,15 +2,14 @@
 Is MTI a bad thing?
 ===================
 
-If you believe that multi-table inheritance "is a bad thing" (`Two
-scoops of Django <https://django.2scoops.org/>`_), then this example
+If you believe that multi-table inheritance "is a bad thing", then this example
 shows how you would solve the same real-world problem as
 :mod:`lino_book.projects.mti` by using OneToOneFields instead of MTI.
 
 
 .. how to test just this document:
     $ python setup.py test -s tests.SpecsTests.test_projects_nomti
-    
+
     doctest init:
     >>> from lino import startup
     >>> startup('lino_book.projects.nomti.settings')
@@ -26,7 +25,7 @@ The database models
 
 Here is the :file:`models.py` file used for this example.
 
-We have a table of Places, some of them are Restaurants, 
+We have a table of Places, some of them are Restaurants,
 some are Pubs, and some are neither Pub nor Restaurant.
 
 
@@ -85,5 +84,3 @@ Here are the **Persons** who act in our story:
  10   Catch Restaurant (ceo=Ernie,owners=Fred)                  No                `Anne <Detail>`__
 ==== ========================================================= ================= ===================
 <BLANKLINE>
-
-

@@ -41,7 +41,7 @@ install_requires = [
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='18.11.0',
+    version='19.12.0',
     install_requires=install_requires,
     # dependency_links=[
     #     'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],

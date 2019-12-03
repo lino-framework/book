@@ -38,12 +38,11 @@ The ``lino-book`` package
 
 .. _lino.apps:
 
-Maintained Lino applications
-============================
+Lino applications covered by the book
+=====================================
 
-The following Lino applications are maintained by the Lino team and
-form an integral part of the project. Besides being independant
-applications, they also serve for testing purposes.
+The following Lino applications have their specs in the Lino book and form an
+integral part of the project because they also serve for testing purposes.
 
 
 .. _noi:

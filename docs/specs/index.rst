@@ -6,11 +6,16 @@ Specs
 =====
 
 This section contains :doc:`technical specifications </dev/specs>` for the
-modules of the Lino framework maintained by the Lino team.
+components of the :term:`Lino framework` that are covered by the book.
 
-It has individual subsections for every Lino application maintained by the Lino
-team.  It also has general topic guides and plugin descriptions for
-functionalities that are shared among several applications.
+.. contents::
+   :depth: 1
+   :local:
+
+
+.. It has individual subsections for each Lino application maintained by the Lino
+   team.  It also has general topic guides and plugin descriptions for
+   functionalities that are shared among several applications.
 
 .. _specs.core:
 
