@@ -163,7 +163,7 @@ users.UserTypes.admin:900
 Defining required roles
 =======================
 
-The application programmer specifies which roles are required for a
+The :term:`application developer` specifies which roles are required for a
 given resource.
 
 Where "resource" is one of the following:

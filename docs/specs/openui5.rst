@@ -1,11 +1,15 @@
-.. doctest docs/specs/openui5.rst 
+.. doctest docs/specs/openui5.rst
 .. _specs.openui5:
 
 =====================
 The OpenUI5 front-end
 =====================
 
-The :mod:`lino.modlib.openui5` plugin defines a front end which
+Note: This page is deprecated because the :ref:`openui5` for Lino isn't
+currently maintained.
+
+
+The :mod:`lino_openui5` package defines a front end which
 uses the `OpenUI5 <https://openui5.org/>`__ JavaScript UI library and
 is meant to fully replace the :mod:`lino.modlib.extjs` front end.
 
@@ -59,7 +63,7 @@ project.
 >>> lino.startup('lino_openui5.projects.teamUi5.settings.demo')
 >>> from lino.api.doctest import *
 
-Define a utility function:                   
+Define a utility function:
 
 >>> def soupyfiy(url, Print=False):
 ...     r = test_client.get(url)

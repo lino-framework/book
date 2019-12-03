@@ -146,7 +146,6 @@ Technical stuff
 .. toctree::
    :maxdepth: 1
 
-
    invalid_requests
    projects/mti
    projects/nomti
@@ -154,7 +153,6 @@ Technical stuff
    projects/lets2
    projects/belref
    projects/actors
-   openui5
    uitests
    i18n
    de_BE
@@ -165,3 +163,8 @@ Technical stuff
    dpy
    jsgen
    html
+
+.. toctree::
+   :hidden:
+
+   openui5

@@ -17,7 +17,6 @@ stumble over a section that does not satisfy the goal of this book.
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    welcome
    /dev/about
@@ -33,4 +32,9 @@ stumble over a section that does not satisfy the goal of this book.
    API </api/index>
    /changes/index
    /blog
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
    /oldstuff

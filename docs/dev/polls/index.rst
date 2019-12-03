@@ -11,7 +11,7 @@ The Lino Polls tutorial
     >>> sys.path.append('.')
     >>> lino.startup('lino_book.projects.polls.mysite.settings')
     >>> from lino.api.doctest import *
-    
+
 
 In this tutorial we are going to convert the "Polls" application from
 Django's tutorial into a Lino application. This will illustrate some
@@ -57,19 +57,19 @@ Two remarks before diving into above documents:
   it, just be aware that with Lino you won't need many things
   explained there.
 
-Summary of what you should have done::  
+Summary of what you should have done::
 
     $ cd ~/projects
     $ django-admin startproject mysite
     $ cd mysite
     $ python manage.py startapp polls
-    $ e polls/views.py 
+    $ e polls/views.py
     $ e polls/urls.py
     $ e mysite/urls.py
     $ e mysite/settings.py
     $ e polls/models.py
     $ python manage.py migrate
-    
+
 
 We now leave the Django philosophy and continue "the Lino way" of
 writing web applications.
@@ -161,12 +161,12 @@ A few explanations:
     <lino.core.site.Site.get_installed_apps>` method.  Our example
     does the equivalent of ``INSTALLED_APPS = ['polls']``, except for
     the fact that Lino automagically adds some more apps.
-    
+
 #.  The **main menu** of a Lino application is defined in the
     :meth:`setup_menu <lino.core.site.Site.setup_menu>` method.  At
     least in the simplest case.  We will come back on this in
     :doc:`/dev/menu`.
-    
+
 Lino uses some tricks to make Django settings modules more pleasant to
 work with, especially if you maintain Lino sites for several
 customers. We will come back to this in :doc:`/dev/settings` and
@@ -197,9 +197,9 @@ following:
 A few explanations while looking at that file:
 
 - The :mod:`lino.api.dd` module is a shortcut to most Lino extensions
-  used by application programmers in their :xfile:`models.py` modules.
-  `dd` stands for "data definition".
-  
+  used by :term:`application developers <application developer>` in their :xfile:`models.py` modules.
+  ``dd`` stands for "data definition".
+
 - :class:`dd.Model <lino.core.model.Model>` is an optional (but
   recommended) wrapper around Django's Model class.  For this tutorial
   you could use Django's `models.Model` as well, but in general we
@@ -231,7 +231,7 @@ another tutorial :ref:`lino.tutorial.tables`.  For now just note that
   We call it a :ref:`slave table <slave_tables>` because it *depends*
   on its "master" (the given question instance).
 
-  
+
 Changing the database structure
 -------------------------------
 
@@ -273,7 +273,7 @@ The output should be::
     Running migrations:
       Rendering model states... DONE
       Applying polls.0001_initial... OK
-  
+
 
 ..
     >>> from django.core.management import call_command
@@ -309,7 +309,7 @@ is easy and fun because you can write fixtures in Python.
 
 .. literalinclude:: /../../book/lino_book/projects/polls/polls/fixtures/demo.py
 
-- Run the following command (from your project directory) 
+- Run the following command (from your project directory)
   to install these fixtures::
 
     $ python manage.py initdb demo
@@ -329,7 +329,7 @@ is easy and fun because you can write fixtures in Python.
     Installed 13 object(s) from 1 fixture(s)
 
 .. the following is tested, but not rendered to HTML:
-   
+
     >>> call_command('initdb', 'demo', interactive=False, verbosity=0)
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     Loading data from .../projects/polls/polls/fixtures/demo.py
@@ -341,9 +341,9 @@ is easy and fun because you can write fixtures in Python.
      2    Do you like Django?              ...        00:00:00   No
      3    Do you like ExtJS?               ...        00:00:00   No
     ==== ================================ ===================== ========
-    <BLANKLINE>   
-    
-    >>> call_command('initdb', 'demo1', interactive=False, verbosity=0) 
+    <BLANKLINE>
+
+    >>> call_command('initdb', 'demo1', interactive=False, verbosity=0)
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     Loading data from .../projects/polls/polls/fixtures/demo1.py
     >>> rt.show('polls.Questions')  #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -354,9 +354,9 @@ is easy and fun because you can write fixtures in Python.
      2    Do you like Django?              ...        00:00:00   No
      3    Do you like ExtJS?               ...        00:00:00   No
     ==== ================================ ===================== ========
-    <BLANKLINE>   
-    
-    
+    <BLANKLINE>
+
+
     >>> # test_client.get("123")
     >>> walk_menu_items()
     - Polls --> Questions : 4
@@ -366,12 +366,12 @@ is easy and fun because you can write fixtures in Python.
     TODO: above snippet should show 5 questions (4+1 for the phantom
     row) and 11 choices. It seems that everything is duplicated
     because `initdb` does nothing when database is `:memory:`.
-    
+
 You might now want to read more about :doc:`Python fixtures
 </dev/pyfixtures/index>` or Lino's special approach for :doc:`migrating
 data </dev/datamig>`...  or simply stay with us and learn by doing!
 
-  
+
 Starting the web interface
 --------------------------
 
@@ -379,7 +379,7 @@ Now we are ready to start the development web server on our project::
 
   $ cd ~/mypy/mysite
   $ python manage.py runserver
-  
+
 and point your browser to http://127.0.0.1:8000/ to see your first
 Lino application running. It should look something like this:q
 
@@ -420,7 +420,7 @@ Explanations:
   because the former hard-wires the location of the `polls` plugin.
   If you do it the plain Django way, you are going to miss
   :doc:`plugin inheritence </dev/plugin_inheritance>`.
-    
+
 - If `objects`, `filter()` and `order_by()` are new to you, then
   please read the `Making queries
   <https://docs.djangoproject.com/en/2.2/topics/db/queries>`__ chapter
@@ -457,30 +457,30 @@ easiest but also the most primitive way of bringing content to the
 main window.  In real world applications you will probably use
 dashboard items as described in :doc:`/dev/admin_main`.
 
-After clicking on a vote, here is the `vote` method 
+After clicking on a vote, here is the `vote` method
 of our `Choice` model in action:
 
 .. image:: polls2.jpg
     :scale: 50
-    
-    
-After selecting :menuselection:`Polls --> Questions` in the main menu, 
+
+
+After selecting :menuselection:`Polls --> Questions` in the main menu,
 Lino opens that table in a **grid window**:
-    
+
 .. image:: polls3.jpg
     :scale: 50
-    
-Every table can be displayed in a **grid window**, a tabular 
-representation with common functionality such as sorting, 
-setting column filters, editing individual cells, 
+
+Every table can be displayed in a **grid window**, a tabular
+representation with common functionality such as sorting,
+setting column filters, editing individual cells,
 and a context menu.
-  
+
 After double-clicking on a row in the previous screen, Lino shows the
 **detail window** on that Question:
 
 .. image:: polls4.jpg
     :scale: 50
-    
+
 This window has been designed by the following code in your
 :file:`desktop.py` file::
 
@@ -493,7 +493,7 @@ This window has been designed by the following code in your
 Yes, nothing else. To add a detail window to a table, you simply add a
 :attr:`detail_layout <lino.core.actors.Actor.detail_layout>` attribute
 to the Table's class definition.
-    
+
   **Exercise**: comment out above lines in your code and observe how
   the application's behaviour changes.
 
@@ -504,13 +504,13 @@ but double-clicking on a cell of a Choice will start cell editing.
 Note that you can still edit an individual cell of a Question in a
 grid window by pressing the :kbd:`F2` key.
 
-  
+
 After clicking the :guilabel:`New` button, you can admire an **Insert
 Window**:
 
 .. image:: polls5.jpg
     :scale: 50
-    
+
 This window layout is defined by the following :attr:`insert_layout
 <lino.core.actors.Actor.insert_layout>` attribute::
 
@@ -518,14 +518,14 @@ This window layout is defined by the following :attr:`insert_layout
     question
     hidden
     """
-    
+
 See :doc:`/tutorials/layouts` for more explanations.
 
 After clicking the :guilabel:`[html]` button:
 
 .. image:: polls6.jpg
     :scale: 50
-    
+
 
 Exercises
 ---------
@@ -555,5 +555,3 @@ In this tutorial we followed the first two chapters of the Django
 Tutorial, then converted their result into a Lino application.  We
 learned more about python fixtures, tables, actions, layouts and
 menus.
-
-

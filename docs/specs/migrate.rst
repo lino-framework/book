@@ -104,7 +104,7 @@ Installed 507 object(s) from 19 fixture(s)
 >>> startup("lino_book.projects.migs.settings.demo")
 >>> from lino.api.doctest import *
 
-The :term:`application programmer` can see whether Django migrations are enabled
+The :term:`application developer` can see whether Django migrations are enabled
 or not by looking at the
 :class:`migrations_package <lino.core.site.Site.migrations_package>` site attribute.
 

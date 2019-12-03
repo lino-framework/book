@@ -26,32 +26,22 @@ Volunteer contributors contact us because they want to
 
 We differentiate three profiles of readers.
 
-.. glossary::
+- As a :term:`site administrator` you want to run some existing :term:`Lino
+  application` in a reliable way on a :term:`production server`. This is
+  documented in the :doc:`Administrator Guide </admin/index>`.
 
-  Application developer
+- As an :term:`application developer` you use Lino to write your own Lino
+  application. You should read the :doc:`Developer Guide </dev/index>`.
+  You are welcome to contribute to the :term:`Lino community` by reporting about
+  your successes and failures, and suggesting changes and new features,
+  regardless of whether you publish your own work as :term:`free <free
+  software>` or :term:`proprietary <proprietary software>` software.
 
-    As an **application developer** you use Lino to write your own Lino
-    application. For yourself, for your customer or for your employer. You maybe
-    do this as an independent professional and potentially publish your work
-    using your preferred license as :term:`free <free software>` or
-    :term:`proprietary <proprietary software>` software. You are welcome to
-    contribute to the :term:`Lino community` by reporting about your successes
-    and failures, and suggesting changes and new features. You should read the
-    :doc:`Developer Guide </dev/index>`.
-
-  Contributing developer
-
-    As a **contributing developer** you know more than a simple developer.
-    After having read the :doc:`Developer Guide </dev/index>`, you want to help us to make Lino better.
-    You contribute to the project by testing general framework features,
-    discussing changes and new features, submitting pull requests, ...
-    This is documented in the :doc:`Contributor Guide </team/index>`.
-
-  Site administrator
-
-    As a **site administrator** you want to run some :term:`Lino application`
-    in a reliable way on a :term:`production server`.
-    This is documented in the :doc:`Administrator Guide </admin/index>`.
+- As a :term:`contributing developer` you want to help us
+  to make Lino better by submitting pull requests.
+  You should also read the :doc:`Developer Guide </dev/index>`,
+  but you need to know more than a simple developer:
+  you must also read the :doc:`Contributor Guide </team/index>`.
 
 If several profiles match your motivations, we recommend the above reading
 order.

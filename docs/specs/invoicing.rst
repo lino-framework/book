@@ -14,7 +14,7 @@ database.
 
 This document describes some general aspects of invoicing and how
 applications can handle this topic.  You should have read :doc:`sales`
-and :doc:`accounting`.  See also 
+and :doc:`accounting`.  See also
 :doc:`/specs/voga/invoicing` and
 :doc:`/specs/tera/invoicing`.
 
@@ -24,7 +24,7 @@ and :doc:`accounting`.  See also
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-             
+
 >>> from lino import startup
 >>> startup('lino_book.projects.roger.settings.demo')
 >>> from lino.api.doctest import *
@@ -68,7 +68,7 @@ The ``InvoiceGenerator`` model mixin
     Mixin for things that can generate invoices.
 
     An invoice generator must produce a series of **invoiceable events** (the
-    application programmer must implement a method :meth:`get_invoiceable_events`).
+    :term:`application developer` must implement a method :meth:`get_invoiceable_events`).
     These events can be instances of any model, but the generator's
     :meth:`get_invoiceable_event_formatter` must understand them.
 
@@ -106,13 +106,13 @@ The ``InvoiceGenerator`` model mixin
 
         To be implemented by subclasses.  Return the product to put
         into the invoice item.
-                
+
        >>> obj = rt.models.courses.Enrolment.objects.all()[0]
        >>> print(obj.get_invoiceable_product())
        Journeys
 
     .. method:: get_invoiceable_qty(self)
-                
+
         To be implemented by subclasses.  Return the quantity to put
         into the invoice item.
 
@@ -126,7 +126,7 @@ The ``InvoiceGenerator`` model mixin
         overridden by subclasses.
 
     The mixin adds the following methods to the model:
-        
+
     .. attribute:: invoicings
 
         A simple `GenericRelation
@@ -135,7 +135,7 @@ The ``InvoiceGenerator`` model mixin
 
         This is preferred over :meth:`get_invoicings`.
 
-           
+
     .. method:: get_invoicings(**kwargs)
 
         Get a queryset with the invoicings which point to this
@@ -194,9 +194,9 @@ Sales rules
 Every partner can have a sales rule.
 
 .. class:: SalesRule
-           
+
     The Django model used to represent a *sales rule*.
-           
+
     .. attribute:: partner
 
         The partner to which this sales rule applies.
@@ -229,7 +229,7 @@ Every product can have a **flatrate**.
 .. class:: Tariff
 
     The Django model used to represent a *flatrate*.
-           
+
     .. attribute:: number_of_events
 
         Number of calendar events paid per invoicing.
@@ -237,17 +237,17 @@ Every product can have a **flatrate**.
     .. attribute:: min_asset
 
         Minimum quantity required to trigger an invoice.
-    
-           
+
+
 
 
 The invoicing plan
 ==================
-           
+
 .. class:: Plan
 
     The Django model used to represent an *invoicing plan*.
-           
+
     An **invoicing plan** is a rather temporary database object which
     represents the plan of a given user to have Lino generate a series
     of invoices.
@@ -257,14 +257,14 @@ The invoicing plan
     .. attribute:: user
 
          The user who manages this plan.
-         
+
     .. attribute:: journal
 
         No longer exists. Replaced by :attr:`area`.
 
     .. attribute:: area
 
-        The *invoicing area* of this plan. 
+        The *invoicing area* of this plan.
 
         A pointer to :class:`Area`.
 
@@ -300,7 +300,7 @@ The invoicing plan
         items.
 
     .. method:: fill_plan(ar)
-                
+
         Add items to this plan, one for each invoice to generate.
 
         This also groups the invoiceables by their invoiceable
@@ -314,13 +314,13 @@ The invoicing plan
 .. class:: Item
 
     The Django model used to represent a *item* of an *invoicing plan*.
-           
+
     The items of an invoicing plan are called **suggestions**.
 
     .. attribute:: plan
     .. attribute:: partner
     .. attribute:: preview
-    
+
         A textual preview of the invoiceable items to be included in
         the invoice.
 
@@ -341,7 +341,7 @@ The invoicing plan
     .. attribute:: number_of_invoiceables
 
     .. method:: create_invoice(ar):
-           
+
         Create the invoice corresponding to this item of the plan.
 
 
@@ -351,7 +351,7 @@ The invoicing plan
 .. class:: Items
 .. class:: ItemsByPlan
 .. class:: InvoicingsByInvoiceable
-           
+
 .. class:: StartInvoicing
 
     Start an *invoicing plan* for the authenticated user.
@@ -362,7 +362,7 @@ The invoicing plan
     overrides the label.
 
 .. class:: StartInvoicingByArea
-           
+
     Start an invoicing plan for this area.
 
     This is installed onto the VouchersByJournal table of the
@@ -370,29 +370,29 @@ The invoicing plan
     <lino_xl.lib.invoicing.Plugin.voucher_model>` as
     `start_invoicing`.
 
-           
+
 .. class:: StartInvoicingForPartner
-           
+
     Start an invoicing plan for this partner.
 
     This is installed onto the :class:`contacts.Partner
     <lino_xl.lib.contacts.Partner>` model as `start_invoicing`.
 
-    
+
 .. class:: ExecutePlan
-           
+
    Execute this invoicing plan.
    Create an invoice for each selected suggestion.
 
-           
+
 .. class:: ExecuteItem
-           
+
     Create an invoice for this suggestion.
 
 .. class:: ToggleSelection
-    
+
     Invert selection status for all suggestions.
-           
+
 
 Invoicing areas
 ===============
@@ -400,9 +400,9 @@ Invoicing areas
 An **invoicing area** is is used to classify business activities into different
 parts for which end users can start separate invoicing plans.
 
-This is used in :ref:`presto` to differentiate between activities for which 
+This is used in :ref:`presto` to differentiate between activities for which
 invoicing is often run manually based on occasional work from those that are invoiced
-monthly automatically based on regular work.  
+monthly automatically based on regular work.
 In :ref:`tera` they might get used to
 separate the therapy centres in different towns.
 
@@ -426,7 +426,7 @@ field :attr:`lino_presto.lib.cal.Room.invoicing_area`.
     .. attribute:: journal
 
         The journal into which invoices are to be generated.
-           
+
 
 
 Manually editing automatically generated invoices
@@ -438,5 +438,3 @@ Resetting title and description of a generated invoice item
 When the user sets `title` of an automatically generated invoice
 item to an empty string, then Lino restores the default value for
 both title and description
-
-    

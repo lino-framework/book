@@ -94,7 +94,7 @@ Glossary
     generator`.
 
     The rules for generating automatic calendar entries are
-    application-specific.  The :term:`application programmer` does this by
+    application-specific.  The :term:`application developer` does this by
     defining one or several :term:`calendar generators <calendar generator>`.
 
   Calendar generator
@@ -434,7 +434,7 @@ rules.
         Whether presence states should be forced to those defined by the
         entry state.
 
-        This will have an effect only if the application programmer
+        This will have an effect only if the :term:`application developer`
         has defined a mapping from entry state to the guest state by
         setting :attr:`EntryState.guest_state` for at least one entry
         state.

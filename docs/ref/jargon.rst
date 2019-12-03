@@ -1,5 +1,6 @@
+======
 Jargon
-=============
+======
 
 
 .. _pk:
@@ -28,20 +29,6 @@ When an exception occurs that is not catched, then Lino behaves like
 any Django application and return a HTTP return code 500.
 
 
-.. _admin:
-
-System administrator
---------------------
-
-See :term:`system administrator`.
-
-.. _dev:
-
-Lino application programmer
----------------------------
-
-See :term:`application programmer`.
-
 .. _manuals:
 
 manuals
@@ -65,7 +52,7 @@ partly replaced by :ref:`getlino`.
 Lino Psico
 ----------
 
-Old name of :ref:`tera`.
+An early name for :ref:`tera`.
 
 .. _sunto:
 

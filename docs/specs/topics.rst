@@ -6,7 +6,7 @@
 =========================================
 
 .. currentmodule:: lino_xl.lib.topics
-                   
+
 The :mod:`lino_xl.lib.topics` plugin adds the notions of "topics" and
 "interests" of a "partner" in a topic.
 
@@ -15,7 +15,7 @@ The :mod:`lino_xl.lib.topics` plugin adds the notions of "topics" and
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-             
+
 >>> import lino
 >>> lino.startup('lino_book.projects.lydia.settings.doctests')
 >>> from lino.api.doctest import *
@@ -46,7 +46,7 @@ topic is interesting.
 
 A site administrator can see a global list of all interests.
 This might be useful e.g. for exporting the data.
-           
+
 >>> show_menu_path(topics.AllInterests)
 Explorer --> Topics --> Interests
 
@@ -54,7 +54,7 @@ Explorer --> Topics --> Interests
 Partner
 =======
 
-The application programmer can decide what a "partner" means for the
+The :term:`application developer` can decide what a "partner" means for the
 topics plugin by setting the :attr:`Plugin.partner_model`.
 
 For example in :ref:`tera` the "partner" who can be interested in a
@@ -68,9 +68,9 @@ Database models
 ===============
 
 .. class:: Topic
-           
+
     Django model representing a *topic*.
-    
+
     .. attribute:: ref
 
         The reference.
@@ -105,25 +105,25 @@ Database models
 .. class:: Interest
 
     Django model representing an *interest*.
-    
+
     .. attribute:: owner
     .. attribute:: topic
     .. attribute:: remark
-               
+
 .. class:: Interests
 .. class:: InterestsByTopic
-           
+
 
 .. class:: TopicGroup
 
     This model is deprecated.  We use the Topic.ref for structuring
     topics.
-           
-           
+
+
 .. class:: TopicGroups
-           
+
     Currently not used.
-           
+
 
 Don't read me
 =============
@@ -134,5 +134,3 @@ virtual field :attr:`lino.core.model.Model.description` is hidden:
 
 >>> sorted(rt.models.topics.Topic._meta.private_fields, key=lambda f: str(f))
 [lino_xl.lib.topics.models.Topic.description, lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
-
-

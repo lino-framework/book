@@ -4,6 +4,9 @@
 Openui5 and Lino
 ================
 
+Note: This page is deprecated because the :ref:`openui5` for Lino
+isn't currently maintained.
+
 Lino is designed to work independent of its front end. The front end
 could be extjs or html or text.
 
@@ -70,14 +73,14 @@ Because of this it's needed to classify actions into a few categories.
 
   #. simple actions:
      Actions that require no parameters and are run on a set of records.
-     
+
   #. Param actions: Actions that open a window which contains fields
      that are required for the action to be run, an example being the
      merge action
-     
+
   #. Insert actions:
      Actions that opens a window for the insertion of a new record.
-     
+
      They are similar to parameter actions in that they open a popup
      window before actually executing.  The main difference is that
      the fields of an insert action are those of the table while in a
@@ -91,18 +94,18 @@ Because of this it's needed to classify actions into a few categories.
   #. Routing actions :
      Actions that change the view to focus on another view.
      An example being the grid and detail actions.
-     
+
      These actions seem like they ought to be used to generate xml
      views, ATM they are only being used as reference to generate
      views, rather than haveing the action itself have methods that
      generate the views.
-    
+
   #. Dialog actions:
-     
+
      Actions which open a dialog to display some data.  An example
      being the site's about action, which opens a dalog containing the
      details about the lino-site.
-     
+
 
 Main Dashboard
 --------------
@@ -172,6 +175,3 @@ In edit mode, they would swtich to editable fields, with only limited
 options for actions, (save, cancel).
 
 Both systems have upsides and downsides.
-
-
-

@@ -17,11 +17,9 @@ There are currently only two realistic choices for the front end:
 by step). The `Demo sites <http://www.lino-framework.org/demos.html>`__ page
 shows both front ends for some applications.
 
-.. A real-world example for this is :ref:`noi` which can be deployed using two
-   public UIs.  Inspect the :mod:`lino_book.projects.team` and
-   :mod:`lino_book.projects.bs3` demo projects.
-
-The :ref:`React front end <react>` is almost ready for production.
+The :ref:`React front end <react>` is already used in production on several
+sites.  But there are more conservative customers who still prefer the clasic
+front end.  Both front ends are currently maintained.
 
 
 
@@ -30,14 +28,13 @@ Alternative front ends
 
 There are several proofs of concept for alternative front ends.
 
-- The :ref:`extjs6` front end is almost ready for production.  But it is
-  currently asleep because the ExtJS library is unfortunately no
-  longer free. More precisely its free community version is not
-  maintained.
+- The :ref:`extjs6` front end was almost ready for production but went asleep
+  because the ExtJS library is unfortunately no longer free. More precisely its
+  free community version is not maintained.
 
-- The :ref:`OpenUI5 <specs.openui5>` project is almost ready for
-  production.  OpenUI5 is developed by SAP, conceptually quite similar
-  to ExtJS.
+- The :ref:`OpenUI5 <specs.openui5>` project was almost ready for production but
+  went asleep when we discovered :ref:`react`. OpenUI5 is developed by SAP,
+  conceptually quite similar to ExtJS.
 
 - The :mod:`lino.modlib.bootstrap3` web interface optimized for
   read-only access and publication of complex data (something like

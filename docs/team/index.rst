@@ -45,7 +45,6 @@ Drafts
    /dev/userdocs
    /dev/style
    /dev/extjs
-   /dev/oui5
    /dev/repair
 
 
@@ -74,24 +73,3 @@ Other
    /dev/combo/index
    /dev/combo/choosers
    /dev/demo_fixtures
-
-.. toctree::
-   :hidden:
-
-   /dev/fields
-   /dev/ad
-   /dev/dd
-   /dev/rt
-   /tutorials/index
-   /dev/ml/index
-   /dev/interview
-   /dev/mixins
-
-
-.. toctree::
-   :hidden:
-
-   /team/setup
-   /team/tools
-   /dev/pull
-   /team/deploy_prod

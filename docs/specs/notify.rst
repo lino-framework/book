@@ -202,8 +202,8 @@ Notification messages
     Shows messages emitted to me.
 
 
-Application programmers need to understand the different meanings of
-"subject" and "body":
+As an :term:`application developer` you should understand the different
+meanings of "subject" and "body":
 
 - The body is expected to be a
   self-sufficient and complete description of the event.
