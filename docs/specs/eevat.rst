@@ -345,3 +345,41 @@ Note that above is for purchases only. Intracom *sales* invoices have no
 0.00
 >>> print(invoice.total_incl)
 280.00
+
+
+Invoices covered by a declaration
+=================================
+
+The detail view of a VAT declarations has two slave tables that show the
+invoices covered by this declaration.
+
+>>> obj = eevat.Declaration.objects.get(accounting_period__ref="2019-05")
+>>> print(obj)
+VAT 5/2019
+
+>>> rt.show(vat.PurchasesByDeclaration, master_instance=obj)
+==================== ===================== ================ ================= ================= =========== ==============
+ Invoice              Partner               VAT id           VAT regime        Total excl. VAT   VAT         Total to pay
+-------------------- --------------------- ---------------- ----------------- ----------------- ----------- --------------
+ *PRC 29/2019*        Bestbank              EE4391498123     Private person    34,17             6,83        41,00
+ *PRC 30/2019*        Rumma & Ko OÜ         EE100588749      Subject to VAT    119,50            23,90       143,40
+ *PRC 31/2019*        Bäckerei Ausdemwald   BE2206624259     Private person    608,30                        608,30
+ *PRC 32/2019*        Bäckerei Mießen       BE7336627818     Intra-community   1 212,50                      1 212,50
+ *PRC 33/2019*        Bäckerei Schmitz      BE8204648930     Exempt            3 274,78                      3 274,78
+ *PRC 34/2019*        Garage Mergelsberg    BE4498652125     Private person    143,50                        143,50
+ *PRC 35/2019*        Donderweer BV         NL211892074B01   Intra-community   202,50                        202,50
+ **Total (7 rows)**                                                            **5 595,25**      **30,73**   **5 625,98**
+==================== ===================== ================ ================= ================= =========== ==============
+<BLANKLINE>
+
+>>> rt.show(vat.SalesByDeclaration, master_instance=obj)
+==================== ==================== ======== ================ ================= ============== ==============
+ Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT            Total to pay
+-------------------- -------------------- -------- ---------------- ----------------- -------------- --------------
+ *SLS 21/2019*        Dmitriev Eva-Liisa            Exempt           3 319,78          663,95         3 983,73
+ *SLS 22/2019*        Nikitin Einar                 Private person   999,88            199,97         1 199,85
+ *SLS 23/2019*        Mölder Elmar                  Exempt           279,90            55,98          335,88
+ *SLS 24/2019*        Jegorov Eve                   Private person   825,00            165,00         990,00
+ **Total (4 rows)**                                                  **5 424,56**      **1 084,90**   **6 509,46**
+==================== ==================== ======== ================ ================= ============== ==============
+<BLANKLINE>

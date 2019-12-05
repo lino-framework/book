@@ -153,7 +153,7 @@ You should have read :doc:`ledger` before reading this document.
      6100        Operating expenses          Operating expenses          Operating expenses          Income statement   Debit               Operating expenses
      6200        Other expenses              Other expenses              Other expenses              Income statement   Debit               Other expenses
      6900        Net income                  Net income                  Net income                  Income statement   Debit               Net income
-     7           Revenues                    Einnahmen                   Revenues                    Income statement   Credit              Revenues
+     7           Revenues                    Einnahmen                   Revenus                     Income statement   Credit              Revenues
      7000        Net sales                   Net sales                   Net sales                   Income statement   Credit              Net sales
      7900        Net loss                    Net loss                    Net loss                    Income statement   Credit              Net loss
     =========== =========================== =========================== =========================== ================== =================== ===========================

@@ -213,9 +213,9 @@ table for that period:
 
 >>> pv = dict(start_period=dcl.start_period, end_period=dcl.end_period)
 >>> rt.show(vat.IntracomPurchases, param_values=pv, header_level=2)
--------------------------
-Intra-Community purchases
--------------------------
+-----------------------------------
+Intra-Community purchases (2015-01)
+-----------------------------------
 ==================== =============== ================ =================== ================= ===== ==============
  Invoice              Partner         VAT id           VAT regime          Total excl. VAT   VAT   Total to pay
 -------------------- --------------- ---------------- ------------------- ----------------- ----- --------------

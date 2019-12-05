@@ -13,6 +13,14 @@
 .. contents::
   :local:
 
+2019-12-05
+==========
+
+Two new tables :class:`PurchasesByDeclaration` and :class:`SalesByDeclaration`
+in :mod:`lino_xl.lib.vat`.  These are included in the :class:`VatDeclaration`
+detail view of :mod:`lino_xl.lib.eevat` (other national plugins will follow).
+
+
 2019-11-25
 ==========
 

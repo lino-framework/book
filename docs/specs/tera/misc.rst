@@ -163,9 +163,9 @@ van Veen Vincent
  *contacts.Partner (Partner)*                             No        No           Payment reminder     Zahlungserinnerung     Rappel de paiement   WeasyPdfBuildMethod   payment_reminder.weasy.html
  *contacts.Person (Person)*                               No        No           Terms & conditions   Nutzungsbestimmungen   Terms & conditions   AppyPdfBuildMethod    TermsConditions.odt
  *courses.Enrolment (Enrolment)*                          Yes       Yes          Enrolment            Einschreibung          Inscription
- *finan.BankStatement (Bank Statement)*                   Yes       Yes          Bank Statement       Kontoauszug            Bank Statement
- *finan.JournalEntry (Journal Entry)*                     Yes       Yes          Journal Entry        Diverse Buchung        Journal Entry
- *finan.PaymentOrder (Payment Order)*                     Yes       Yes          Payment Order        Zahlungsauftrag        Payment Order
+ *finan.BankStatement (Bank Statement)*                   Yes       Yes          Bank Statement       Kontoauszug            Extrait de compte
+ *finan.JournalEntry (Journal Entry)*                     Yes       Yes          Journal Entry        Diverse Buchung        Opération diverse
+ *finan.PaymentOrder (Payment Order)*                     Yes       Yes          Payment Order        Zahlungsauftrag        Ordre de paiement
  *sales.VatProductInvoice (Sales invoice)*                Yes       Yes          Sales invoice        Verkaufsrechnung       Sales invoice
  *sheets.Report (Accounting Report)*                      Yes       Yes          Accounting Report    Buchhaltungsbericht    Accounting Report    WeasyPdfBuildMethod
 ======================================================== ========= ============ ==================== ====================== ==================== ===================== ============================= ===============

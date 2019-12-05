@@ -1839,26 +1839,32 @@ Model mixins
 
 .. class:: PeriodRange
 
-    Model mixin for objects that consider, cover or observe a range of
-    *accounting periods*.
+    Model mixin for objects that cover a range of :term:`accounting periods
+    <accounting period>`.
 
     .. attribute:: start_period
 
-       The period which marks the beginning of the range to
-       consider.
+       The period which marks the beginning of the range to cover.
 
     .. attribute:: end_period
 
        Leave empty if you want only one period (specified in
        :attr:`start_period`). If this is non-empty, all periods
-       between and including these two are to be considered.
+       between and including these two are covered.
 
 
 .. class:: PeriodRangeObservable
 
-    Model mixin for objects that can be filtered by a range of
-    *accounting periods*. This adds two fields start_period and
-    end_period to the parameter fields.
+    Model mixin for objects that can be filtered by a range of :term:`accounting
+    periods <accounting period>`. This adds two parameter fields
+    :attr:`start_period` and :attr:`end_period` to every table on this model.
+
+    Class attribute:
+
+    .. attribute:: observable_period_field = 'accounting_period'
+
+        The name of the database field on the observed model to use for
+        filtering.
 
 
 .. class:: ItemsByVoucher

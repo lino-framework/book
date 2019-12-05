@@ -403,6 +403,28 @@ The :mod:`lino_xl.lib.vat.utils` module contains some utility functions.
 
 
 
+Showing the invoices covered by a VAT declaration
+=================================================
+
+The plugin defines two tables that show the invoices covered by a VAT
+declaration, IOW the invoices that have contributed to the numbers in the
+declaration.
+
+
+.. class:: SalesByDeclaration
+
+    Show a list of all sales invoices whose VAT regime is Intra-Community.
+
+.. class:: PurchasesByDeclaration
+
+    Show a list of all purchase invoices whose VAT regime is Intra-Community.
+
+.. class:: VatInvoices
+
+    Common base class for :class:`SalesByDeclaration` and
+    :class:`PurchasesByDeclaration`
+
+
 
 Intracom sales and purchases
 ============================
@@ -425,7 +447,7 @@ printout of a VAT declaration:
     Common base class for :class:`IntracomSales` and
     :class:`IntracomPurchases`
 
-These reports areempty when you have no national declaration plugin installed:
+These reports are empty when you have no national declaration plugin installed:
 
 >>> rt.show(vat.IntracomSales, language='en')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
