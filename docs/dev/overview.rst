@@ -4,13 +4,16 @@
 Components of the Lino framework
 ================================
 
+The Lino framework consists of about 30 repositories, which are currently hosted
+on GitHub under https://github.com/lino-framework.
+
 General framework repositories
 ==============================
 
 - The :mod:`lino` package contains the core of the framework and
   includes the :doc:`/specs/modlib`.
 
-- The :ref:`getlino` package contains the Lino installer. See :ref:`getlino`.
+- The :mod:`getlino` package contains the Lino installer.
 
 - The :mod:`lino_xl` package contains the :ref:`xl`.
 
@@ -37,7 +40,7 @@ documentation in the :ref:`Lino Book <book>`.
 - :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
 - :mod:`lino_vilma` (:ref:`vilma`) : Shared contact management for local communities
 
-Some other Lino applications have their own technical documentation, demo projects
+Newer Lino applications have their own technical documentation, demo projects
 and technical specs:
 
 - `Lino Amici <http://amici.lino-framework.org>`_ is a contacts manager for families.
@@ -77,16 +80,18 @@ that Lino depends on them and that they are maintained by the Lino team:
 - :mod:`etgen` uses ElementTree for generating HTML or XML.
 
 - :mod:`commondata` is an experimental project for storing and
-  managing common data as Python code without any front end.
+  maintaining common data as Python code without any front end.
 
 
 .. _getlino:
 
-getlino, the Lino installer
----------------------------
+getlino
+-------
+
+The :ref:`getlino` package is the Lino installer, a small Python script that
+installs Lino in different contexts.
 
 See https://getlino.lino-framework.org
-
 
 
 
