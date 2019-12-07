@@ -203,7 +203,7 @@ The Accounting Report
 >>> ses.show_story(rpt.get_story(ses))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======================================= ============== =============== =========== =========== ============== =============
- Description                             Debit before   Credit before   Debit       Credit      Credit after   Debit after
+ Account                                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
 --------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
  **4 Commercial assets & liabilities**                                  63 616,84   69 430,27   5 813,43
  4000 Customers                                                         21 072,13   18 718,13                  2 354,00
@@ -225,7 +225,7 @@ The Accounting Report
 ======================================= ============== =============== =========== =========== ============== =============
 <BLANKLINE>
 ============================ ============== =============== ========== ======== ============== =============
- Description                  Debit before   Credit before   Debit      Credit   Credit after   Debit after
+ Account                      Debit before   Credit before   Debit      Credit   Credit after   Debit after
 ---------------------------- -------------- --------------- ---------- -------- -------------- -------------
  **1 Operation costs**                                       5 650,27                           5 650,27
  1100 Wages                                                  502,66                             502,66
@@ -250,7 +250,7 @@ The Accounting Report
 ============================ ============== =============== ========== ======== ============== =============
 <BLANKLINE>
 ==================================================== ============== =============== ========== ========== ============== =============
- Description                                          Debit before   Credit before   Debit      Credit     Credit after   Debit after
+ Partner                                              Debit before   Credit before   Debit      Credit     Credit after   Debit after
 ---------------------------------------------------- -------------- --------------- ---------- ---------- -------------- -------------
  `Mr Hans Altenberg <Detail>`__                                                      1 085,40   1 085,40
  `Mr Andreas Arens <Detail>`__                                                       540,00     540,00
@@ -291,7 +291,7 @@ The Accounting Report
 ==================================================== ============== =============== ========== ========== ============== =============
 <BLANKLINE>
 ================================== ============== =============== =========== =========== ============== =============
- Description                        Debit before   Credit before   Debit       Credit      Credit after   Debit after
+ Partner                            Debit before   Credit before   Debit       Credit      Credit after   Debit after
 ---------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
  `Bäckerei Ausdemwald <Detail>`__                                  568,80      709,00      140,20
  `Bäckerei Mießen <Detail>`__                                      2 407,80    3 010,00    602,20
@@ -304,14 +304,14 @@ The Accounting Report
 <BLANKLINE>
 No data to display
 =============================================== ============== =============== ======= ======== ============== =============
- Description                                     Debit before   Credit before   Debit   Credit   Credit after   Debit after
+ Partner                                         Debit before   Credit before   Debit   Credit   Credit after   Debit after
 ----------------------------------------------- -------------- --------------- ------- -------- -------------- -------------
  `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                          215,69   215,69
 =============================================== ============== =============== ======= ======== ============== =============
 <BLANKLINE>
 No data to display
 ======================= ============== =============== =========== =========== ============== =============
- Description             Debit before   Credit before   Debit       Credit      Credit after   Debit after
+ Partner                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
 ----------------------- -------------- --------------- ----------- ----------- -------------- -------------
  `Bestbank <Detail>`__                                  16 711,04   22 282,12   5 571,08
 ======================= ============== =============== =========== =========== ============== =============

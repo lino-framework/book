@@ -383,3 +383,27 @@ VAT 5/2019
  **Total (4 rows)**                                                  **5 424,56**      **1 084,90**   **6 509,46**
 ==================== ==================== ======== ================ ================= ============== ==============
 <BLANKLINE>
+
+Here is the content of the other fields in the detail of that declaration:
+
+>>> # rt.login("robin").show_detail(obj)
+>>> print(py2rst(obj))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+(main):
+- **Info** (info):
+  - (info_1): **Start period** (start_period): 2019-05, **End period** (end_period), **Entry date** (entry_date): 04/05/2019, **Accounting period** (accounting_period): 2019-05
+  - **Movements** (MovementsByVoucher): No data to display
+- **Values** (values):
+  - (values_1): **Partner** (partner): Maksu- ja Tolliamet, **Author** (user): Robin Rood, **Workflow** (workflow_buttons): **Registered**
+  - (values_2):
+    - (c1): **[1]** (F1): , **[2]** (F2): , **[3]** (F3): 5 424,56, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 5 424,56, **[321]** (F321): 5 424,56
+    - (c2): **[4]** (F4): 1 084,90, **[41]** (F41): -283,00, **[5]** (F5): , **[51]** (F51): , **[52]** (F52): , **[53]** (F53): , **[54]** (F54): 252,27
+    - (c3): **[6]** (F6): , **[61]** (F61): , **[7]** (F7): , **[71]** (F71):
+    - (c4): **[8]** (F8): , **[9]** (F9): , **[10]** (F10): , **[11]** (F11): , **[12]** (F12): , **[13]** (F13):
+  - (values_3):
+    - **VAT sales** (vat.SalesByDeclaration)
+    - **VAT purchases** (vat.PurchasesByDeclaration)
+<BLANKLINE>
+
+TODO: The values are not yet correct because the declaration fields aren't yet
+configured correctly.

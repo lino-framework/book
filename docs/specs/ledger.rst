@@ -285,8 +285,6 @@ which have a special meaning.
         interface.
 
 
-
-
 Here is the standard list of common accounts in a :ref:`cosi`
 application:
 
@@ -315,12 +313,39 @@ application:
  6300    wages                     Wages                     No          (6300) Wages
  6900    net_income                Net income                No          (6900) Net income
  7000    sales                     Sales                     No          (7000) Sales
- 7900    net_loss                  Net loss                  No          (7900) Net loss
+ 7900    net_loss                  Net loss                  No
 ======= ========================= ========================= =========== ================================
 <BLANKLINE>
 
-Lino applications can add specific items to that list or potentially
-redefine it completely
+Lino applications can add specific items to that list or potentially redefine it
+completely.
+
+Keep in mind that common accounts are no database objects.   See them rather as
+a list of configuration values. They are just a list of named pointers to
+actual database objects.
+
+For example you might want to know how many sales operations are in your
+database:
+
+>>> obj = ledger.CommonAccounts.sales.get_object()
+>>> obj
+Account #20 ('(7000) Sales')
+>>> ledger.Movement.objects.filter(account=obj).count()
+72
+
+A common account neither requires nor makes sure that its database object
+exists. For example the common account "Net loss" has no database object in the
+accounts chart pointing to it.  The above trick won't work for counting the
+number of net loss operations:
+
+>>> obj = ledger.CommonAccounts.net_loss.get_object()
+>>> obj
+MissingAccount(<CommonAccounts.net_loss:7900>)
+>>> ledger.Movement.objects.filter(account=obj).count()
+Traceback (most recent call last):
+...
+TypeError: Field 'id' expected a number but got MissingAccount(<CommonAccounts.net_loss:7900>).
+
 
 
 Debit and credit
@@ -1104,16 +1129,16 @@ The default list of trade types is:
 
 >>> rt.show(ledger.TradeTypes)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-======= =========== ===================== ========================================================== ================================================ =============================== =====================================
- value   name        text                  Main account                                               Base account                                     Product account field           Invoice account field
-------- ----------- --------------------- ---------------------------------------------------------- ------------------------------------------------ ------------------------------- -------------------------------------
- S       sales       Sales                 *(4000) Customers* (Customers)                             *(7000) Sales* (Sales)                           Sales account (sales_account)
- P       purchases   Purchases             *(4400) Suppliers* (Suppliers)                             *(6040) Purchase of goods* (Purchase of goods)                                   Purchase account (purchase_account)
- W       wages       Wages                 *(4500) Employees* (Employees)                             *(6300) Wages* (Wages)
- T       taxes       Taxes                 *(4600) Tax Offices* (Tax Offices)                         *(4513) VAT declared* (VAT declared)
- C       clearings   Clearings             *(4550) Internal clearings* (Internal clearings)
- B       bank_po     Bank payment orders   *(4300) Pending Payment Orders* (Pending Payment Orders)
-======= =========== ===================== ========================================================== ================================================ =============================== =====================================
+======= =========== ===================== ======================================================== ============================================== =============================== =====================================
+ value   name        text                  Main account                                             Base account                                   Product account field           Invoice account field
+------- ----------- --------------------- -------------------------------------------------------- ---------------------------------------------- ------------------------------- -------------------------------------
+ S       sales       Sales                 (4000) Customers (Customers)                             (7000) Sales (Sales)                           Sales account (sales_account)
+ P       purchases   Purchases             (4400) Suppliers (Suppliers)                             (6040) Purchase of goods (Purchase of goods)                                   Purchase account (purchase_account)
+ W       wages       Wages                 (4500) Employees (Employees)                             (6300) Wages (Wages)
+ T       taxes       Taxes                 (4600) Tax Offices (Tax Offices)                         (4513) VAT declared (VAT declared)
+ C       clearings   Clearings             (4550) Internal clearings (Internal clearings)
+ B       bank_po     Bank payment orders   (4300) Pending Payment Orders (Pending Payment Orders)
+======= =========== ===================== ======================================================== ============================================== =============================== =====================================
 <BLANKLINE>
 
 

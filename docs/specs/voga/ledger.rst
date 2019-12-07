@@ -33,6 +33,7 @@ Journals
 
 
 >>> rt.show(ledger.Accounts)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ======================================= =============== =========== ===========
  Description                             Needs partner   Clearable   Reference
 --------------------------------------- --------------- ----------- -----------
@@ -63,6 +64,5 @@ Journals
  **7 Revenues**                          No              No          7
  7000 Sales                              No              No          7000
  7310 Membership fees                    Yes             No          7310
- 7900 Net loss                           No              No          7900
 ======================================= =============== =========== ===========
 <BLANKLINE>
