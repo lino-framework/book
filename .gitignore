@@ -34,7 +34,8 @@ tera_de/pdf
 
 # to get cypress on your machine run npm init -y; npm install cypress
 # to open ./node_modules/cypress/bin/cypress open
-cypress/*
+**/cypress/*
+!**/cypress/integration/
 node_modules/*
 package.json
 

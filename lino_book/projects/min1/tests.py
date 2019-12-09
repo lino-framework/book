@@ -18,6 +18,9 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils import translation
+from atelier.test import TestCase
+import subprocess, os
+import unittest
 
 from lino.api import dd, rt
 from lino.modlib.users.choicelists import UserTypes
@@ -27,6 +30,7 @@ from lino_xl.lib.contacts import models as contacts
 
 Genders = dd.Genders
 
+CYPRESS = "../../../node_modules/cypress/bin/cypress"
 
 class QuickTest(RemoteAuthTestCase):
 
@@ -300,3 +304,15 @@ Estonia''')
             self.fail("Expected ValidationError")
         except ValidationError:
             pass
+
+@unittest.skipIf(not os.path.exists(CYPRESS),
+                     "Cypress is not installed")
+class CypressTest(TestCase):
+    def setUp(self):
+        self.process = subprocess.Popen(["python", "manage.py", "runserver"])
+
+    def tearDown(self):
+        self.process.terminate()
+
+    def test_cypress(self):
+        self.run_subprocess('{} run -C ../../../cypress.json -s cypress/integration/min1/* --config video=false'.format(CYPRESS).split())

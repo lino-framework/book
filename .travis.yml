@@ -54,10 +54,10 @@ script:
   - # E2E testing with team  TODO: move the following to the tests of the min1 project
   - cd lino_book/projects/min1/
   - #python manage.py prep --noinput
-  - python manage.py runserver -v 0 > /dev/null 2>&1 &
-  - cd -
-  - sleep 15
-  - ./node_modules/cypress/bin/cypress run -- --spec tests/cypress/integration/min1/* --config video=false
+  - #python manage.py runserver -v 0 > /dev/null 2>&1 &
+  - #cd -
+  - #sleep 15
+  - #./node_modules/cypress/bin/cypress run -- --spec tests/cypress/integration/min1/* --config video=false
 
 after_script:
   - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
