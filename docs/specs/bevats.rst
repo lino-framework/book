@@ -53,8 +53,8 @@ to those defined in :doc:`bevat`:
  value   text                           Common account            Account
 ------- ------------------------------ ------------------------- --------------------------------
  54      VAT due                        VAT due                   (4510) VAT due
- 55      VAT returnable                 VAT returnable            (4511) VAT returnable
- 59      VAT deductible                 VAT deductible            (4512) VAT deductible
+ 55      VAT returnable                 VAT returnable            (4530) VAT returnable
+ 59      VAT deductible                 VAT deductible            (4520) VAT deductible
  71      Purchase of ware               Purchase of goods         (6040) Purchase of goods
  72      Purchase of new vehicles       Purchase of investments   (6020) Purchase of investments
  73      Purchase of excised products
@@ -62,6 +62,7 @@ to those defined in :doc:`bevat`:
  76      Other purchase
 ======= ============================== ========================= ================================
 <BLANKLINE>
+
 
 
 >>> rt.show('bevats.DeclarationFields')  #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
@@ -131,13 +132,13 @@ PRC 6/2015
 How the data has been entered:
 
 >>> rt.show(ana.ItemsByInvoice, obj)
-============================= ============= ==================== ================= ================= ===== ==============
- Account                       Description   Analytical account   VAT class         Total excl. VAT   VAT   Total to pay
------------------------------ ------------- -------------------- ----------------- ----------------- ----- --------------
- (6040) Purchase of goods                    (3000) Investment    Normal VAT rate   61,10                   61,10
- (6010) Purchase of services                 (4100) Wages         Normal VAT rate   82,30                   82,30
- **Total (2 rows)**                                                                 **143,40**              **143,40**
-============================= ============= ==================== ================= ================= ===== ==============
+============================= ============= ==================== =========================== ================= ===== ==============
+ Account                       Description   Analytical account   VAT class                   Total excl. VAT   VAT   Total to pay
+----------------------------- ------------- -------------------- --------------------------- ----------------- ----- --------------
+ (6040) Purchase of goods                    (3000) Investment    Goods at reduced VAT rate   61,10                   61,10
+ (6010) Purchase of services                 (4100) Wages         Goods exempt from VAT       82,30                   82,30
+ **Total (2 rows)**                                                                           **143,40**              **143,40**
+============================= ============= ==================== =========================== ================= ===== ==============
 <BLANKLINE>
 
 Totals computed by Lino:
@@ -150,20 +151,20 @@ Totals computed by Lino:
 143.40
 
 >>> rt.show(ledger.MovementsByVoucher, obj)
-============================= =============== ============ ============ ================ =========
- Account                       Partner         Debit        Credit       Match            Cleared
------------------------------ --------------- ------------ ------------ ---------------- ---------
- (4400) Suppliers              Donderweer BV                143,40       **PRC 6/2015**   Yes
- (4510) VAT due                                             30,11                         Yes
- (6010) Purchase of services                   99,58                                      Yes
- (6040) Purchase of goods                      73,93                                      Yes
-                                               **173,51**   **173,51**
-============================= =============== ============ ============ ================ =========
+============================= =============== ============ ============ =========================== ================ =========
+ Account                       Partner         Debit        Credit       VAT class                   Match            Cleared
+----------------------------- --------------- ------------ ------------ --------------------------- ---------------- ---------
+ (4100) Suppliers              Donderweer BV                143,40                                   **PRC 6/2015**   Yes
+ (4510) VAT due                                             4,28         Goods at reduced VAT rate                    Yes
+ (6010) Purchase of services                   82,30                     Goods exempt from VAT                        Yes
+ (6040) Purchase of goods                      65,38                     Goods at reduced VAT rate                    Yes
+                                               **147,68**   **147,68**
+============================= =============== ============ ============ =========================== ================ =========
 <BLANKLINE>
 
-This invoice says that we had **173,51 €** of costs, **143,40 €** of
-which to be paid to the supplier and **30,11 €** to be paid as VAT to
-the tax office.
+
+This invoice says that we had **147,68 €** of costs, **143,40 €** of which to be
+paid to the supplier and **4,28 €** to be paid as VAT to the tax office.
 
 Note that our invoice is in January 2015.
 
@@ -182,10 +183,10 @@ Here are the VAT declarations in our demo database:
 ==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
  No.                  Entry date   Start period   End period   Accounting period   [80]         [81]   [82]   [83]         Workflow
 -------------------- ------------ -------------- ------------ ------------------- ------------ ------ ------ ------------ ----------------
- 3/2015               28/03/2015   2015-03                     2015-03             71,65                      71,65        **Registered**
- 2/2015               28/02/2015   2015-02                     2015-02             71,95                      71,95        **Registered**
- 1/2015               31/01/2015   2015-01                     2015-01             72,09                      72,09        **Registered**
- **Total (3 rows)**                                                                **215,69**                 **215,69**
+ 3/2015               28/03/2015   2015-03                     2015-03             16,88                      16,88        **Registered**
+ 2/2015               28/02/2015   2015-02                     2015-02             42,11                      42,11        **Registered**
+ 1/2015               31/01/2015   2015-01                     2015-01             46,26                      46,26        **Registered**
+ **Total (3 rows)**                                                                **105,25**                 **105,25**
 ==================== ============ ============== ============ =================== ============ ====== ====== ============ ================
 <BLANKLINE>
 
@@ -197,15 +198,13 @@ Let's look at the declaration of our period.
 
 On screen you can see:
 
->>> for fld in bevats.DeclarationFields.get_list_items():
-...    v = getattr(dcl, fld.name)
-...    if v:
-...        print("[{}] {} : {}".format(fld.value, fld.help_text, v))
-[71] Intracom supplies : 1354.73
-[72] New vehicles : 668.81
-[75] Intracom services : 2950.97
-[80] Due VAT for 71...76 : 72.09
-[83] Total to pay : 72.09
+>>> dcl.print_declared_values()
+[71] Intracom supplies : 1346.18
+[72] New vehicles : 738.65
+[75] Intracom services : 3489.16
+[80] Due VAT for 71...76 : 46.26
+[83] Total to pay : 46.26
+
 
 When you print the declaration, Lino also includes the
 :class:`IntracomPurchases <lino_xl.lib.vat.IntracomPurchases>`
@@ -228,15 +227,16 @@ Intra-Community purchases (2015-01)
 And these are the movements generated by our declaration:
 
 >>> rt.show('ledger.MovementsByVoucher', dcl)
-==================== ================================== =========== =========== ================ =========
- Account              Partner                            Debit       Credit      Match            Cleared
--------------------- ---------------------------------- ----------- ----------- ---------------- ---------
- (4510) VAT due                                          30,11                                    Yes
- (4510) VAT due                                          41,98                                    Yes
- (4600) Tax Offices   Mehrwertsteuer-Kontrollamt Eupen               72,09       **VAT 1/2015**   No
-                                                         **72,09**   **72,09**
-==================== ================================== =========== =========== ================ =========
+==================== ================================== =========== =========== =========================== ================ =========
+ Account              Partner                            Debit       Credit      VAT class                   Match            Cleared
+-------------------- ---------------------------------- ----------- ----------- --------------------------- ---------------- ---------
+ (4500) Tax Offices   Mehrwertsteuer-Kontrollamt Eupen               46,26                                   **VAT 1/2015**   No
+ (4510) VAT due                                          4,28                    Goods at reduced VAT rate                    Yes
+ (4510) VAT due                                          41,98                   Services                                     Yes
+                                                         **46,26**   **46,26**
+==================== ================================== =========== =========== =========================== ================ =========
 <BLANKLINE>
+
 
 A declaration in general moves the sum of all those little amounts of due VAT
 in account 4510 into another account, which means that now we have no more "due
@@ -253,14 +253,13 @@ history of 4510 for that month:
 ============ ============== ==================================== =========== =========== =======
  Value date   Voucher        Description                          Debit       Credit      Match
 ------------ -------------- ------------------------------------ ----------- ----------- -------
- 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   30,11
+ 31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   4,28
  31/01/2015   *VAT 1/2015*   *Mehrwertsteuer-Kontrollamt Eupen*   41,98
  09/01/2015   *PRC 7/2015*   *Van Achter NV*                                  41,98
- 08/01/2015   *PRC 6/2015*   *Donderweer BV*                                  30,11
-                             **Balance 0.00 (4 movements)**       **72,09**   **72,09**
+ 08/01/2015   *PRC 6/2015*   *Donderweer BV*                                  4,28
+                             **Balance 0.00 (4 movements)**       **46,26**   **46,26**
 ============ ============== ==================================== =========== =========== =======
 <BLANKLINE>
-
 
 
 Reference

@@ -44,57 +44,62 @@ VAT rules
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-+-------+------------------------------------------------------------+
-| value | Description                                                |
-+=======+============================================================+
-| 1     | VAT rule 1:                                                |
-|       | if (Purchases, National, Normal VAT rate) then             |
-|       | apply 0.21 %                                               |
-|       | and book to VAT deductible                                 |
-+-------+------------------------------------------------------------+
-| 2     | VAT rule 2:                                                |
-|       | if (Purchases, National, Reduced VAT rate) then            |
-|       | apply 0.07 %                                               |
-|       | and book to VAT deductible                                 |
-+-------+------------------------------------------------------------+
-| 3     | VAT rule 3:                                                |
-|       | if (Purchases, Intra-community, EU, Normal VAT rate) then  |
-|       | apply 0.21 %                                               |
-|       | and book to VAT deductible                                 |
-|       | (return to VAT returnable)                                 |
-+-------+------------------------------------------------------------+
-| 4     | VAT rule 4:                                                |
-|       | if (Purchases, Intra-community, EU, Reduced VAT rate) then |
-|       | apply 0.07 %                                               |
-|       | and book to VAT deductible                                 |
-|       | (return to VAT returnable)                                 |
-+-------+------------------------------------------------------------+
-| 5     | VAT rule 5:                                                |
-|       | if (Sales, Intra-community, EU, Normal VAT rate) then      |
-|       | apply 0.00 %                                               |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
-| 6     | VAT rule 6:                                                |
-|       | if (Sales, Intra-community, EU, Reduced VAT rate) then     |
-|       | apply 0.00 %                                               |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
-| 7     | VAT rule 7:                                                |
-|       | if (Sales, Normal VAT rate) then                           |
-|       | apply 0.21 %                                               |
-|       | and book to VAT due                                        |
-+-------+------------------------------------------------------------+
-| 8     | VAT rule 8:                                                |
-|       | if (Sales, Reduced VAT rate) then                          |
-|       | apply 0.07 %                                               |
-|       | and book to VAT due                                        |
-+-------+------------------------------------------------------------+
-| 9     | VAT rule 9:                                                |
-|       | apply 0 %                                                  |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
++-------+---------------------------------------------------------------------+
+| value | Description                                                         |
++=======+=====================================================================+
+| 1     | VAT rule 1:                                                         |
+|       | if (Purchases, National, Services) then                             |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT deductible                                          |
++-------+---------------------------------------------------------------------+
+| 2     | VAT rule 2:                                                         |
+|       | if (Purchases, Intra-community, EU, Services) then                  |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT deductible                                          |
+|       | (return to VAT returnable)                                          |
++-------+---------------------------------------------------------------------+
+| 3     | VAT rule 3:                                                         |
+|       | if (Sales, Services) then                                           |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT due                                                 |
++-------+---------------------------------------------------------------------+
+| 4     | VAT rule 4:                                                         |
+|       | if (Purchases, National, Goods at normal VAT rate) then             |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT deductible                                          |
++-------+---------------------------------------------------------------------+
+| 5     | VAT rule 5:                                                         |
+|       | if (Purchases, Intra-community, EU, Goods at normal VAT rate) then  |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT deductible                                          |
+|       | (return to VAT returnable)                                          |
++-------+---------------------------------------------------------------------+
+| 6     | VAT rule 6:                                                         |
+|       | if (Sales, Goods at normal VAT rate) then                           |
+|       | apply 0.21 %                                                        |
+|       | and book to VAT due                                                 |
++-------+---------------------------------------------------------------------+
+| 7     | VAT rule 7:                                                         |
+|       | if (Purchases, National, Goods at reduced VAT rate) then            |
+|       | apply 0.07 %                                                        |
+|       | and book to VAT deductible                                          |
++-------+---------------------------------------------------------------------+
+| 8     | VAT rule 8:                                                         |
+|       | if (Purchases, Intra-community, EU, Goods at reduced VAT rate) then |
+|       | apply 0.07 %                                                        |
+|       | and book to VAT deductible                                          |
+|       | (return to VAT returnable)                                          |
++-------+---------------------------------------------------------------------+
+| 9     | VAT rule 9:                                                         |
+|       | if (Sales, Goods at reduced VAT rate) then                          |
+|       | apply 0.07 %                                                        |
+|       | and book to VAT due                                                 |
++-------+---------------------------------------------------------------------+
+| 10    | VAT rule 10:                                                        |
+|       | apply 0 %                                                           |
+|       | and book to None                                                    |
++-------+---------------------------------------------------------------------+
 <BLANKLINE>
-
 
 
 VAT declaration

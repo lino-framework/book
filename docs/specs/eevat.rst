@@ -42,72 +42,207 @@ VAT regimes
  20      subject        Subject to VAT    National        Yes            Yes
  25      cocontractor   Co-contractor     National        Yes            Yes
  30      intracom       Intra-community   EU              Yes            Yes
+ 40      tax_free       Tax-free                          No             Yes
  50      outside        Outside EU        International   No             Yes
  60      exempt         Exempt                            No             No
 ======= ============== ================= =============== ============== ==========
 <BLANKLINE>
+
 
 VAT rules
 =========
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-+-------+------------------------------------------------------------+
-| value | Description                                                |
-+=======+============================================================+
-| 1     | VAT rule 1:                                                |
-|       | if (Purchases, National, Normal VAT rate) then             |
-|       | apply 0.20 %                                               |
-|       | and book to VAT deductible                                 |
-+-------+------------------------------------------------------------+
-| 2     | VAT rule 2:                                                |
-|       | if (Purchases, National, Reduced VAT rate) then            |
-|       | apply 0.09 %                                               |
-|       | and book to VAT deductible                                 |
-+-------+------------------------------------------------------------+
-| 3     | VAT rule 3:                                                |
-|       | if (Purchases, Intra-community, EU, Normal VAT rate) then  |
-|       | apply 0.20 %                                               |
-|       | and book to VAT deductible                                 |
-|       | (return to VAT returnable)                                 |
-+-------+------------------------------------------------------------+
-| 4     | VAT rule 4:                                                |
-|       | if (Purchases, Intra-community, EU, Reduced VAT rate) then |
-|       | apply 0.09 %                                               |
-|       | and book to VAT deductible                                 |
-|       | (return to VAT returnable)                                 |
-+-------+------------------------------------------------------------+
-| 5     | VAT rule 5:                                                |
-|       | if (Sales, Intra-community, EU, Normal VAT rate) then      |
-|       | apply 0.00 %                                               |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
-| 6     | VAT rule 6:                                                |
-|       | if (Sales, Intra-community, EU, Reduced VAT rate) then     |
-|       | apply 0.00 %                                               |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
-| 7     | VAT rule 7:                                                |
-|       | if (Sales, Reduced VAT rate) then                          |
-|       | apply 0.09 %                                               |
-|       | and book to VAT due                                        |
-+-------+------------------------------------------------------------+
-| 8     | VAT rule 8:                                                |
-|       | if (Sales, Normal VAT rate) then                           |
-|       | apply 0.20 %                                               |
-|       | and book to VAT due                                        |
-+-------+------------------------------------------------------------+
-| 9     | VAT rule 9:                                                |
-|       | apply 0 %                                                  |
-|       | and book to None                                           |
-+-------+------------------------------------------------------------+
++-------+-------------------------------------------------------------------------+
+| value | Description                                                             |
++=======+=========================================================================+
+| 1     | VAT rule 1:                                                             |
+|       | if (Exempt) then                                                        |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 2     | VAT rule 2:                                                             |
+|       | if (Purchases, Intra-community, EU, Services) then                      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 3     | VAT rule 3:                                                             |
+|       | if (Sales, Intra-community, EU, Services) then                          |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 4     | VAT rule 4:                                                             |
+|       | if (Purchases, Co-contractor, National, Services) then                  |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 5     | VAT rule 5:                                                             |
+|       | if (Sales, Co-contractor, National, Services) then                      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 6     | VAT rule 6:                                                             |
+|       | if (Purchases, Intra-community, EU, Goods at normal VAT rate) then      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 7     | VAT rule 7:                                                             |
+|       | if (Sales, Intra-community, EU, Goods at normal VAT rate) then          |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 8     | VAT rule 8:                                                             |
+|       | if (Purchases, Co-contractor, National, Goods at normal VAT rate) then  |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 9     | VAT rule 9:                                                             |
+|       | if (Sales, Co-contractor, National, Goods at normal VAT rate) then      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 10    | VAT rule 10:                                                            |
+|       | if (Purchases, Intra-community, EU, Real estate) then                   |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 11    | VAT rule 11:                                                            |
+|       | if (Sales, Intra-community, EU, Real estate) then                       |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 12    | VAT rule 12:                                                            |
+|       | if (Purchases, Co-contractor, National, Real estate) then               |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 13    | VAT rule 13:                                                            |
+|       | if (Sales, Co-contractor, National, Real estate) then                   |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 14    | VAT rule 14:                                                            |
+|       | if (Purchases, Intra-community, EU, Vehicles) then                      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 15    | VAT rule 15:                                                            |
+|       | if (Sales, Intra-community, EU, Vehicles) then                          |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 16    | VAT rule 16:                                                            |
+|       | if (Purchases, Co-contractor, National, Vehicles) then                  |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 17    | VAT rule 17:                                                            |
+|       | if (Sales, Co-contractor, National, Vehicles) then                      |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 18    | VAT rule 18:                                                            |
+|       | if (Purchases, Intra-community, EU, Goods at reduced VAT rate) then     |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 19    | VAT rule 19:                                                            |
+|       | if (Sales, Intra-community, EU, Goods at reduced VAT rate) then         |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 20    | VAT rule 20:                                                            |
+|       | if (Purchases, Co-contractor, National, Goods at reduced VAT rate) then |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT deductible                                              |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 21    | VAT rule 21:                                                            |
+|       | if (Sales, Co-contractor, National, Goods at reduced VAT rate) then     |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT due                                                     |
+|       | (return to VAT returnable)                                              |
++-------+-------------------------------------------------------------------------+
+| 22    | VAT rule 22:                                                            |
+|       | if (Purchases, National, Services) then                                 |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
++-------+-------------------------------------------------------------------------+
+| 23    | VAT rule 23:                                                            |
+|       | if (Sales, Services) then                                               |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
++-------+-------------------------------------------------------------------------+
+| 24    | VAT rule 24:                                                            |
+|       | if (Purchases, National, Goods at normal VAT rate) then                 |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
++-------+-------------------------------------------------------------------------+
+| 25    | VAT rule 25:                                                            |
+|       | if (Sales, Goods at normal VAT rate) then                               |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
++-------+-------------------------------------------------------------------------+
+| 26    | VAT rule 26:                                                            |
+|       | if (Purchases, National, Real estate) then                              |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
++-------+-------------------------------------------------------------------------+
+| 27    | VAT rule 27:                                                            |
+|       | if (Sales, Real estate) then                                            |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
++-------+-------------------------------------------------------------------------+
+| 28    | VAT rule 28:                                                            |
+|       | if (Purchases, National, Vehicles) then                                 |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT deductible                                              |
++-------+-------------------------------------------------------------------------+
+| 29    | VAT rule 29:                                                            |
+|       | if (Sales, Vehicles) then                                               |
+|       | apply 0.20 %                                                            |
+|       | and book to VAT due                                                     |
++-------+-------------------------------------------------------------------------+
+| 30    | VAT rule 30:                                                            |
+|       | if (Purchases, National, Goods at reduced VAT rate) then                |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT deductible                                              |
++-------+-------------------------------------------------------------------------+
+| 31    | VAT rule 31:                                                            |
+|       | if (Sales, Goods at reduced VAT rate) then                              |
+|       | apply 0.09 %                                                            |
+|       | and book to VAT due                                                     |
++-------+-------------------------------------------------------------------------+
+| 32    | VAT rule 32:                                                            |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
 <BLANKLINE>
 
 
 For example here is the rule that applies when selling a normal product to a
 private person:
 
->>> rule = vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal)
+>>> rule = vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods)
 
 The Estonian VAT rate is 20%:
 
@@ -116,7 +251,7 @@ Decimal('0.20')
 >>> rule.vat_account
 <CommonAccounts.vat_due:4510>
 >>> rule.vat_account.get_object()
-Account #6 ('(4510) VAT due')
+Account #7 ('(4510) VAT due')
 
 This VAT is not returnable:
 
@@ -124,7 +259,7 @@ This VAT is not returnable:
 False
 >>> rule.vat_returnable_account
 
->>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.normal).rate
+>>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods).rate
 Decimal('0.20')
 
 Note that returnable VAT is used only in purchase invoices, not in sales.  In a
@@ -151,19 +286,19 @@ and a partner located in the United States will be in the "International" area.
 <VatAreas.national:10>
 
 >>> list(rt.models.vat.get_vat_regime_choices(ee))
-[<VatRegimes.normal:10>, <VatRegimes.subject:20>, <VatRegimes.cocontractor:25>, <VatRegimes.exempt:60>]
+[<VatRegimes.normal:10>, <VatRegimes.subject:20>, <VatRegimes.cocontractor:25>, <VatRegimes.tax_free:40>, <VatRegimes.exempt:60>]
 
 >>> nl = countries.Country(isocode='NL')
 >>> vat.VatAreas.get_for_country(nl)
 <VatAreas.eu:20>
 >>> list(rt.models.vat.get_vat_regime_choices(nl))
-[<VatRegimes.normal:10>, <VatRegimes.intracom:30>, <VatRegimes.exempt:60>]
+[<VatRegimes.normal:10>, <VatRegimes.intracom:30>, <VatRegimes.tax_free:40>, <VatRegimes.exempt:60>]
 
 >>> us = countries.Country(isocode='US')
 >>> vat.VatAreas.get_for_country(countries.Country(isocode='US'))
 <VatAreas.international:30>
 >>> list(rt.models.vat.get_vat_regime_choices(us))
-[<VatRegimes.normal:10>, <VatRegimes.outside:50>, <VatRegimes.exempt:60>]
+[<VatRegimes.normal:10>, <VatRegimes.tax_free:40>, <VatRegimes.outside:50>, <VatRegimes.exempt:60>]
 
 
 Intracom
@@ -172,73 +307,51 @@ Intracom
 
 >>> rt.show(vat.IntracomSales)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
-==================== =========================== ================ ================= ================= ===== ==============
- Invoice              Partner                     VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
--------------------- --------------------------- ---------------- ----------------- ----------------- ----- --------------
- *SLS 4/2018*         Bäckerei Mießen             BE7336627818     Intra-community   280,00                  280,00
- *SLS 7/2018*         Donderweer BV               NL211892074B01   Intra-community   1 199,85                1 199,85
- *SLS 10/2018*        Bernd Brechts Bücherladen   DE529665130      Intra-community   1 599,92                1 599,92
- *SLS 13/2018*        Auto École Verte            FR74229232671    Intra-community   525,00                  525,00
- **Total (4 rows)**                                                                  **3 604,77**            **3 604,77**
-==================== =========================== ================ ================= ================= ===== ==============
+==================== ================= ================ ================= ================= ===== ==============
+ Invoice              Partner           VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
+-------------------- ----------------- ---------------- ----------------- ----------------- ----- --------------
+ *SLS 4/2018*         Bäckerei Mießen   BE7336627818     Intra-community   280,00                  280,00
+ *SLS 8/2018*         Van Achter NV     NL634943207B01   Intra-community   1 939,82                1 939,82
+ *SLS 12/2018*        Moulin Rouge      FR14406028064    Intra-community   2 013,88                2 013,88
+ **Total (3 rows)**                                                        **4 233,70**            **4 233,70**
+==================== ================= ================ ================= ================= ===== ==============
 <BLANKLINE>
 
 
 >>> rt.show(vat.IntracomPurchases)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-===================== ================= ================ ================= ================= ===== ===============
- Invoice               Partner           VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
---------------------- ----------------- ---------------- ----------------- ----------------- ----- ---------------
- *PRC 4/2018*          Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 4/2019*          Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
- *PRC 7/2018*          Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 7/2019*          Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
- *PRC 11/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 11/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,20                1 213,20
- *PRC 14/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- *PRC 14/2019*         Donderweer BV     NL211892074B01   Intra-community   203,20                  203,20
- *PRC 18/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
- *PRC 18/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 214,40                1 214,40
- *PRC 21/2018*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
- *PRC 21/2019*         Donderweer BV     NL211892074B01   Intra-community   204,40                  204,40
- *PRC 25/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
- *PRC 25/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 211,90                1 211,90
- *PRC 28/2018*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
- *PRC 28/2019*         Donderweer BV     NL211892074B01   Intra-community   201,90                  201,90
- *PRC 32/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
- *PRC 32/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 212,50                1 212,50
- *PRC 35/2018*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
- *PRC 35/2019*         Donderweer BV     NL211892074B01   Intra-community   202,50                  202,50
- *PRC 39/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 39/2019*         Bäckerei Mießen   BE7336627818     Intra-community   1 213,00                1 213,00
- *PRC 42/2018*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 42/2019*         Donderweer BV     NL211892074B01   Intra-community   203,00                  203,00
- *PRC 46/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 49/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- *PRC 53/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,00                1 201,00
- *PRC 56/2018*         Donderweer BV     NL211892074B01   Intra-community   201,00                  201,00
- *PRC 60/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 201,20                1 201,20
- *PRC 63/2018*         Donderweer BV     NL211892074B01   Intra-community   201,20                  201,20
- *PRC 67/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 202,40                1 202,40
- *PRC 70/2018*         Donderweer BV     NL211892074B01   Intra-community   202,40                  202,40
- *PRC 74/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 199,90                1 199,90
- *PRC 77/2018*         Donderweer BV     NL211892074B01   Intra-community   199,90                  199,90
- *PRC 81/2018*         Bäckerei Mießen   BE7336627818     Intra-community   1 200,50                1 200,50
- *PRC 84/2018*         Donderweer BV     NL211892074B01   Intra-community   200,50                  200,50
- **Total (36 rows)**                                                        **25 316,80**           **25 316,80**
-===================== ================= ================ ================= ================= ===== ===============
+===================== ================= ============== ================= ================= ===== ===============
+ Invoice               Partner           VAT id         VAT regime        Total excl. VAT   VAT   Total to pay
+--------------------- ----------------- -------------- ----------------- ----------------- ----- ---------------
+ *PRC 4/2018*          Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
+ *PRC 4/2019*          Bäckerei Mießen   BE7336627818   Intra-community   1 213,00                1 213,00
+ *PRC 11/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
+ *PRC 11/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 213,20                1 213,20
+ *PRC 18/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,00                1 201,00
+ *PRC 18/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 214,40                1 214,40
+ *PRC 25/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,20                1 201,20
+ *PRC 25/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 211,90                1 211,90
+ *PRC 32/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 202,40                1 202,40
+ *PRC 32/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 212,50                1 212,50
+ *PRC 39/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
+ *PRC 39/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 213,00                1 213,00
+ *PRC 46/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
+ *PRC 53/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,00                1 201,00
+ *PRC 60/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,20                1 201,20
+ *PRC 67/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 202,40                1 202,40
+ *PRC 74/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
+ *PRC 81/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
+ **Total (18 rows)**                                                      **21 688,40**           **21 688,40**
+===================== ================= ============== ================= ================= ===== ===============
 <BLANKLINE>
 
 
 External references
 ===================
 
-- `165-625-directives-2016.pdf
-  <https://finances.belgium.be/sites/default/files/downloads/165-625-directives-2016.pdf>`__
-
-- `finances.belgium.be
-  <https://finances.belgium.be/fr/entreprises/tva/declaration/declaration_periodique>`__
-
+- https://www.emta.ee/et/ariklient/tulu-kulu-kaive-kasum/kaibemaksuseaduse-selgitused/maksustamisperiood-ja
+- https://www.riigiteataja.ee/aktilisa/1060/1201/7010/Lisa%201.pdf#
+- https://www.emta.ee/et/ariklient/tulu-kulu-kaive-kasum/kaibedeklaratsiooni-esitamine/kaibedeklaratsiooni-tehniline
 
 Other languages
 ===============
@@ -253,30 +366,35 @@ Other languages
  20     subject        MwSt.-pflichtig         National        Ja             Ja
  25     cocontractor   Vertragspartner         National        Ja             Ja
  30     intracom       Innergemeinschaftlich   EU              Ja             Ja
+ 40     tax_free       Tax-free                                Nein           Ja
  50     outside        Außerhalb EU            International   Nein           Ja
  60     exempt         Befreit von MwSt.                       Nein           Nein
 ====== ============== ======================= =============== ============== ==========
 <BLANKLINE>
 
 
->>> rt.show(vat.VatClasses, language="de")
-====== ========= ====================
- Wert   name      Text
------- --------- --------------------
- 0      exempt    Ohne MWSt
- 1      reduced   Reduced VAT rate
- 2      normal    Normaler MwSt-Satz
-====== ========= ====================
+>>> rt.show(vat.VatClasses, language="et")
+======= ============= ===========================
+ value   nimi          text
+------- ------------- ---------------------------
+ 010     goods         Goods at normal VAT rate
+ 020     reduced       Goods at reduced VAT rate
+ 030     exempt        Goods exempt from VAT
+ 100     services      Teenused
+ 200     investments   Investeeringud
+ 210     real_estate   Real estate
+ 220     vehicles      Vehicles
+======= ============= ===========================
 <BLANKLINE>
 
->>> rt.show(vat.VatAreas, language="de")
-====== =============== ===============
- Wert   name            Text
------- --------------- ---------------
- 10     national        National
- 20     eu              EU
- 30     international   International
-====== =============== ===============
+>>> rt.show(vat.VatAreas, language="et")
+======= =============== ===============
+ value   nimi            text
+------- --------------- ---------------
+ 10      national        National
+ 20      eu              EU
+ 30      international   International
+======= =============== ===============
 <BLANKLINE>
 
 
@@ -285,31 +403,31 @@ Returnable VAT
 
 A purchases invoice with :term:`Returnable VAT`:
 
->>> invoice = rt.models.vat.VatAccountInvoice.objects.get(number=4, accounting_period__year__ref='2018')
+>>> invoice = vat.VatAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom).first()
 >>> print(invoice)
 PRC 4/2018
 >>> rt.show('vat.ItemsByInvoice', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-========================== ============= ================= ================= ===== ==============
- Account                    Description   VAT class         Total excl. VAT   VAT   Total to pay
--------------------------- ------------- ----------------- ----------------- ----- --------------
- (6040) Purchase of goods                 Normal VAT rate   1 199,90                1 199,90
- **Total (1 rows)**                                         **1 199,90**            **1 199,90**
-========================== ============= ================= ================= ===== ==============
+========================== ============= ============= ================= ===== ==============
+ Account                    Description   VAT class     Total excl. VAT   VAT   Total to pay
+-------------------------- ------------- ------------- ----------------- ----- --------------
+ (6040) Purchase of goods                 Real estate   1 199,90                1 199,90
+ **Total (1 rows)**                                     **1 199,90**            **1 199,90**
+========================== ============= ============= ================= ===== ==============
 <BLANKLINE>
 
 
 >>> rt.show('ledger.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-========================== ================= ============== ============== ================ =========
- Account                    Partner           Debit          Credit         Match            Cleared
--------------------------- ----------------- -------------- -------------- ---------------- ---------
- (4400) Suppliers           Bäckerei Mießen                  1 199,90       **PRC 4/2018**   Yes
- (4511) VAT returnable                        239,98                                         Yes
- (4512) VAT deductible                                       239,98                          Yes
- (6040) Purchase of goods                     1 199,90                                       Yes
+========================== ================= ============== ============== ============= ================ =========
+ Account                    Partner           Debit          Credit         VAT class     Match            Cleared
+-------------------------- ----------------- -------------- -------------- ------------- ---------------- ---------
+ (4100) Suppliers           Bäckerei Mießen                  1 199,90                     **PRC 4/2018**   Yes
+ (4520) VAT deductible                                       239,98         Real estate                    Yes
+ (4530) VAT returnable                        239,98                        Real estate                    Yes
+ (6040) Purchase of goods                     1 199,90                      Real estate                    Yes
                                               **1 439,88**   **1 439,88**
-========================== ================= ============== ============== ================ =========
+========================== ================= ============== ============== ============= ================ =========
 <BLANKLINE>
 
 
@@ -329,13 +447,15 @@ Note that above is for purchases only. Intracom *sales* invoices have no
 
 >>> rt.show('ledger.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-================== ================= ============ ============ ================ =========
- Account            Partner           Debit        Credit       Match            Cleared
------------------- ----------------- ------------ ------------ ---------------- ---------
- (4000) Customers   Bäckerei Mießen   280,00                    **SLS 4/2018**   Yes
- (7000) Sales                                      280,00                        Yes
-                                      **280,00**   **280,00**
-================== ================= ============ ============ ================ =========
+======================= ================= ============ ============ =========== ================ =========
+ Account                 Partner           Debit        Credit       VAT class   Match            Cleared
+----------------------- ----------------- ------------ ------------ ----------- ---------------- ---------
+ (4000) Customers        Bäckerei Mießen   280,00                                **SLS 4/2018**   Yes
+ (4510) VAT due                            56,00                     Services                     Yes
+ (4530) VAT returnable                                  56,00        Services                     Yes
+ (7000) Sales                                           280,00       Services                     Yes
+                                           **336,00**   **336,00**
+======================= ================= ============ ============ =========== ================ =========
 <BLANKLINE>
 
 
@@ -361,30 +481,52 @@ VAT 5/2019
 ==================== ===================== ================ ================= ================= =========== ==============
  Invoice              Partner               VAT id           VAT regime        Total excl. VAT   VAT         Total to pay
 -------------------- --------------------- ---------------- ----------------- ----------------- ----------- --------------
- *PRC 29/2019*        Bestbank              EE4391498123     Private person    34,17             6,83        41,00
- *PRC 30/2019*        Rumma & Ko OÜ         EE100588749      Subject to VAT    119,50            23,90       143,40
+ *PRC 29/2019*        Bestbank              EE4391498123     Private person    37,61             3,39        41,00
+ *PRC 30/2019*        Rumma & Ko OÜ         EE100588749      Subject to VAT    129,75            13,65       143,40
  *PRC 31/2019*        Bäckerei Ausdemwald   BE2206624259     Private person    608,30                        608,30
  *PRC 32/2019*        Bäckerei Mießen       BE7336627818     Intra-community   1 212,50                      1 212,50
- *PRC 33/2019*        Bäckerei Schmitz      BE8204648930     Exempt            3 274,78                      3 274,78
- *PRC 34/2019*        Garage Mergelsberg    BE4498652125     Private person    143,50                        143,50
- *PRC 35/2019*        Donderweer BV         NL211892074B01   Intra-community   202,50                        202,50
- **Total (7 rows)**                                                            **5 595,25**      **30,73**   **5 625,98**
+ *PRC 33/2019*        Bäckerei Schmitz      BE8204648930     Tax-free          3 274,78                      3 274,78
+ *PRC 34/2019*        Garage Mergelsberg    BE4498652125     Exempt            143,50                        143,50
+ *PRC 35/2019*        Donderweer BV         NL211892074B01   Private person    202,50                        202,50
+ **Total (7 rows)**                                                            **5 608,94**      **17,04**   **5 625,98**
 ==================== ===================== ================ ================= ================= =========== ==============
 <BLANKLINE>
 
 >>> rt.show(vat.SalesByDeclaration, master_instance=obj)
-==================== ==================== ======== ================ ================= ============== ==============
- Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT            Total to pay
--------------------- -------------------- -------- ---------------- ----------------- -------------- --------------
- *SLS 21/2019*        Dmitriev Eva-Liisa            Exempt           3 319,78          663,95         3 983,73
- *SLS 22/2019*        Nikitin Einar                 Private person   999,88            199,97         1 199,85
- *SLS 23/2019*        Mölder Elmar                  Exempt           279,90            55,98          335,88
- *SLS 24/2019*        Jegorov Eve                   Private person   825,00            165,00         990,00
- **Total (4 rows)**                                                  **5 424,56**      **1 084,90**   **6 509,46**
-==================== ==================== ======== ================ ================= ============== ==============
+==================== ==================== ======== ================ ================= ============ ==============
+ Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT          Total to pay
+-------------------- -------------------- -------- ---------------- ----------------- ------------ --------------
+ *SLS 21/2019*        Dmitriev Eva-Liisa            Private person   1 680,57          333,31       2 013,88
+ *SLS 22/2019*        Nikitin Einar                 Tax-free         1 624,88          324,97       1 949,85
+ *SLS 23/2019*        Mölder Elmar                  Exempt           831,82                         831,82
+ *SLS 24/2019*        Jegorov Eve                   Private person   870,83            174,17       1 045,00
+ **Total (4 rows)**                                                  **5 008,10**      **832,45**   **5 840,55**
+==================== ==================== ======== ================ ================= ============ ==============
 <BLANKLINE>
 
-Here is the content of the other fields in the detail of that declaration:
+
+Here is the content of the fields in the detail of that declaration:
+
+>>> obj.print_declared_values()
+[1] 20% määraga maksustatavad toimingud ja tehingud : 4994.10
+[3] 0% määraga maksustatavad toimingud ja tehingud, sh : 2456.70
+[32] 2) kauba eksport, sh : 2456.70
+[321] 1) käibemaksutagastusega müük reisijale : 1624.88
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 832.45
+[41] Impordilt tasumisele kuuluv käibemaks : -242.50
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 225.46
+[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 242.50
+[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
+[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
+[6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1343.65
+[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 1343.65
+[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 1343.65
+[8] Maksuvaba käive : 62.90
+[9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3555.69
+[12] Tasumisele kuuluv käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
+[13] Enammakstud käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
+
+Here is another way to see the content of the fields in the detail of that declaration:
 
 >>> # rt.login("robin").show_detail(obj)
 >>> print(py2rst(obj))
@@ -396,14 +538,12 @@ Here is the content of the other fields in the detail of that declaration:
 - **Values** (values):
   - (values_1): **Partner** (partner): Maksu- ja Tolliamet, **Author** (user): Robin Rood, **Workflow** (workflow_buttons): **Registered**
   - (values_2):
-    - (c1): **[1]** (F1): , **[2]** (F2): , **[3]** (F3): 5 424,56, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 5 424,56, **[321]** (F321): 5 424,56
-    - (c2): **[4]** (F4): 1 084,90, **[41]** (F41): -283,00, **[5]** (F5): , **[51]** (F51): , **[52]** (F52): , **[53]** (F53): , **[54]** (F54): 252,27
-    - (c3): **[6]** (F6): , **[61]** (F61): , **[7]** (F7): , **[71]** (F71):
-    - (c4): **[8]** (F8): , **[9]** (F9): , **[10]** (F10): , **[11]** (F11): , **[12]** (F12): , **[13]** (F13):
+    - (c1): **[1]** (F1): 4 994,10, **[2]** (F2): , **[3]** (F3): 2 456,70, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 2 456,70, **[321]** (F321): 1 624,88
+    - (c2): **[4]** (F4): 832,45, **[41]** (F41): -242,50, **[5]** (F5): 225,46, **[51]** (F51): 242,50, **[52]** (F52): , **[53]** (F53): 242,50, **[54]** (F54): 242,50
+    - (c3): **[6]** (F6): 1 343,65, **[61]** (F61): , **[7]** (F7): 1 343,65, **[71]** (F71): 1 343,65
+    - (c4): **[8]** (F8): 62,90, **[9]** (F9): 3 555,69, **[10]** (F10): , **[11]** (F11): , **[12]** (F12): 815,41, **[13]** (F13): 815,41
   - (values_3):
     - **VAT sales** (vat.SalesByDeclaration)
     - **VAT purchases** (vat.PurchasesByDeclaration)
+- **Declared movements** (vat.MovementsByDeclaration)
 <BLANKLINE>
-
-TODO: The values are not yet correct because the declaration fields aren't yet
-configured correctly.

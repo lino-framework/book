@@ -295,15 +295,15 @@ application:
 ------- ------------------------- ------------------------- ----------- --------------------------------
  1000    net_income_loss           Net income (loss)         Yes         (1000) Net income (loss)
  4000    customers                 Customers                 Yes         (4000) Customers
+ 4100    suppliers                 Suppliers                 Yes         (4100) Suppliers
+ 4200    employees                 Employees                 Yes         (4200) Employees
  4300    pending_po                Pending Payment Orders    Yes         (4300) Pending Payment Orders
- 4400    suppliers                 Suppliers                 Yes         (4400) Suppliers
- 4500    employees                 Employees                 Yes         (4500) Employees
+ 4500    tax_offices               Tax Offices               Yes         (4500) Tax Offices
  4510    vat_due                   VAT due                   No          (4510) VAT due
- 4511    vat_returnable            VAT returnable            No          (4511) VAT returnable
- 4512    vat_deductible            VAT deductible            No          (4512) VAT deductible
  4513    due_taxes                 VAT declared              No          (4513) VAT declared
- 4550    clearings                 Internal clearings        Yes         (4550) Internal clearings
- 4600    tax_offices               Tax Offices               Yes         (4600) Tax Offices
+ 4520    vat_deductible            VAT deductible            No          (4520) VAT deductible
+ 4530    vat_returnable            VAT returnable            No          (4530) VAT returnable
+ 4800    clearings                 Internal clearings        Yes         (4800) Internal clearings
  4900    waiting                   Waiting account           Yes         (4900) Waiting account
  5500    best_bank                 BestBank                  No          (5500) BestBank
  5700    cash                      Cash                      No          (5700) Cash
@@ -331,7 +331,7 @@ database:
 >>> obj
 Account #20 ('(7000) Sales')
 >>> ledger.Movement.objects.filter(account=obj).count()
-72
+92
 
 A common account neither requires nor makes sure that its database object
 exists. For example the common account "Net loss" has no database object in the
@@ -528,15 +528,15 @@ partner owes us money.
 
 >>> obj = rt.models.contacts.Partner.objects.get(pk=125)
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj)
-**1 open movements (1599.92 €)**
+**1 open movements (11.20 €)**
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj, nosummary=True)
-============ =============== =================================== ============== ======== ================= =========
- Value date   Voucher         Description                         Debit          Credit   Match             Cleared
------------- --------------- ----------------------------------- -------------- -------- ----------------- ---------
- 10/06/2016   *SLS 28/2016*   *(4000) Customers*                  1 599,92                **SLS 28/2016**   No
-                              **Balance 1599.92 (1 movements)**   **1 599,92**
-============ =============== =================================== ============== ======== ================= =========
+============ =============== ================================= =========== ======== ================= =========
+ Value date   Voucher         Description                       Debit       Credit   Match             Cleared
+------------ --------------- --------------------------------- ----------- -------- ----------------- ---------
+ 10/06/2016   *SLS 28/2016*   *(4000) Customers*                11,20                **SLS 28/2016**   No
+                              **Balance 11.20 (1 movements)**   **11,20**
+============ =============== ================================= =========== ======== ================= =========
 <BLANKLINE>
 
 
@@ -834,26 +834,27 @@ account, a *sales* invoice *debits* the customer's account.
 
 >>> obj = vat.VatAccountInvoice.objects.order_by('id')[0]
 >>> rt.show(ledger.MovementsByVoucher, obj)
-============================= ========== =========== =========== ================ =========
- Account                       Partner    Debit       Credit      Match            Cleared
------------------------------ ---------- ----------- ----------- ---------------- ---------
- (4400) Suppliers              Bestbank               40,00       **PRC 1/2016**   No
- (6010) Purchase of services              40,00                                    Yes
+============================= ========== =========== =========== ========================== ================ =========
+ Account                       Partner    Debit       Credit      VAT class                  Match            Cleared
+----------------------------- ---------- ----------- ----------- -------------------------- ---------------- ---------
+ (4100) Suppliers              Bestbank               40,00                                  **PRC 1/2016**   No
+ (6010) Purchase of services              40,00                   Goods at normal VAT rate                    Yes
                                           **40,00**   **40,00**
-============================= ========== =========== =========== ================ =========
+============================= ========== =========== =========== ========================== ================ =========
 <BLANKLINE>
 
 
 >>> obj = sales.VatProductInvoice.objects.order_by('id')[0]
 >>> rt.show(ledger.MovementsByVoucher, obj)
-================== ========== ============== ============== ================ =========
- Account            Partner    Debit          Credit         Match            Cleared
------------------- ---------- -------------- -------------- ---------------- ---------
- (4000) Customers   Bestbank   2 999,85                      **SLS 1/2016**   No
- (7000) Sales                                 2 999,85                        Yes
+================== ========== ============== ============== =========== ================ =========
+ Account            Partner    Debit          Credit         VAT class   Match            Cleared
+------------------ ---------- -------------- -------------- ----------- ---------------- ---------
+ (4000) Customers   Bestbank   2 999,85                                  **SLS 1/2016**   No
+ (7000) Sales                                 2 999,85       Services                     Yes
                                **2 999,85**   **2 999,85**
-================== ========== ============== ============== ================ =========
+================== ========== ============== ============== =========== ================ =========
 <BLANKLINE>
+
 
 So the balance of a supplier's account (when open) is usually on the
 *credit* side (they gave us money) while a customer's balance is
@@ -1133,10 +1134,10 @@ The default list of trade types is:
  value   name        text                  Main account                                             Base account                                   Product account field           Invoice account field
 ------- ----------- --------------------- -------------------------------------------------------- ---------------------------------------------- ------------------------------- -------------------------------------
  S       sales       Sales                 (4000) Customers (Customers)                             (7000) Sales (Sales)                           Sales account (sales_account)
- P       purchases   Purchases             (4400) Suppliers (Suppliers)                             (6040) Purchase of goods (Purchase of goods)                                   Purchase account (purchase_account)
- W       wages       Wages                 (4500) Employees (Employees)                             (6300) Wages (Wages)
- T       taxes       Taxes                 (4600) Tax Offices (Tax Offices)                         (4513) VAT declared (VAT declared)
- C       clearings   Clearings             (4550) Internal clearings (Internal clearings)
+ P       purchases   Purchases             (4100) Suppliers (Suppliers)                             (6040) Purchase of goods (Purchase of goods)                                   Purchase account (purchase_account)
+ W       wages       Wages                 (4200) Employees (Employees)                             (6300) Wages (Wages)
+ T       taxes       Taxes                 (4500) Tax Offices (Tax Offices)                         (4513) VAT declared (VAT declared)
+ C       clearings   Clearings             (4800) Internal clearings (Internal clearings)
  B       bank_po     Bank payment orders   (4300) Pending Payment Orders (Pending Payment Orders)
 ======= =========== ===================== ======================================================== ============================================== =============================== =====================================
 <BLANKLINE>
@@ -1261,28 +1262,29 @@ This demo site has the following match rules:
 ---- ------------------------------- ----------------------------------
  1    (4000) Customers                Sales invoices (SLS)
  2    (4000) Customers                Sales credit notes (SLC)
- 3    (4400) Suppliers                Purchase invoices (PRC)
+ 3    (4100) Suppliers                Purchase invoices (PRC)
  4    (4000) Customers                Bestbank Payment Orders (PMO)
- 5    (4400) Suppliers                Bestbank Payment Orders (PMO)
+ 5    (4100) Suppliers                Bestbank Payment Orders (PMO)
  6    (6300) Wages                    Bestbank Payment Orders (PMO)
  7    (4000) Customers                Cash book (CSH)
- 8    (4400) Suppliers                Cash book (CSH)
+ 8    (4100) Suppliers                Cash book (CSH)
  9    (6300) Wages                    Cash book (CSH)
  10   (4300) Pending Payment Orders   Cash book (CSH)
  11   (4000) Customers                Bestbank (BNK)
- 12   (4400) Suppliers                Bestbank (BNK)
+ 12   (4100) Suppliers                Bestbank (BNK)
  13   (6300) Wages                    Bestbank (BNK)
  14   (4300) Pending Payment Orders   Bestbank (BNK)
  15   (4000) Customers                Miscellaneous transactions (MSC)
- 16   (4400) Suppliers                Miscellaneous transactions (MSC)
+ 16   (4100) Suppliers                Miscellaneous transactions (MSC)
  17   (6300) Wages                    Miscellaneous transactions (MSC)
  18   (4300) Pending Payment Orders   Miscellaneous transactions (MSC)
  19   (4000) Customers                Paychecks (SAL)
- 20   (4400) Suppliers                Paychecks (SAL)
+ 20   (4100) Suppliers                Paychecks (SAL)
  21   (6300) Wages                    Paychecks (SAL)
  22   (4300) Pending Payment Orders   Paychecks (SAL)
 ==== =============================== ==================================
 <BLANKLINE>
+
 
 For example a :term:`payment order` can be used to pay wages and suppliers
 invoices or (less frequently) to send back money that a customer had paid too
@@ -1294,7 +1296,7 @@ much:
  Account
 ------------------
  (4000) Customers
- (4400) Suppliers
+ (4100) Suppliers
  (6300) Wages
 ==================
 <BLANKLINE>
@@ -1331,69 +1333,69 @@ more VAT deductible (sales) than VAT due (purchases).
  Partner                             ID         Balance
 ----------------------------------- ---------- ---------------
  Bestbank                            100        2 382,15
- Hans Flott & Co                     108        990,00
- Van Achter NV                       107        279,90
- Bernd Brechts Bücherladen           109        1 599,92
- Garage Mergelsberg                  105        1 188,58
- Ausdemwald Alfons                   116        770,00
- Reinhards Baumschule                110        2 349,81
- Arens Annette                       114        4 239,63
- Moulin Rouge                        111        951,82
- Altenberg Hans                      115        465,96
- Bastiaensen Laurent                 117        2 999,85
- Collard Charlotte                   118        2 039,82
- Auto École Verte                    112        525,00
- Charlier Ulrike                     119        679,81
- Dobbelstein Dorothée                124        990,00
- Ernst Berta                         125        1 599,92
- Evertz Bernd                        126        2 349,81
- Demeulenaere Dorothée               122        1 199,85
- Dobbelstein-Demeulenaere Dorothée   123        279,90
- Arens Andreas                       113        600,00
- Chantraine Marc                     120        280,00
- Faymonville Luc                     130        3 599,71
- Evers Eberhart                      127        951,82
- Dericum Daniel                      121        3 854,78
- Emonts Daniel                       128        525,00
- Gernegroß Germaine                  131        639,92
- Groteclaes Gregory                  132        465,96
- Hilgers Hildegard                   133        770,00
- Hilgers Henri                       134        2 999,85
- Johnen Johann                       138        3 319,78
- Engels Edgar                        129        600,00
- Jousten Jan                         140        279,90
- Ingels Irene                        135        2 039,82
- Kaivers Karl                        141        990,00
- Lambertz Guido                      142        1 599,92
- Jonas Josef                         139        1 199,85
- Jansen Jérémy                       136        959,81
- Laschet Laura                       143        3 301,63
+ Hans Flott & Co                     108        815,96
+ Van Achter NV                       107        1 939,82
+ Bernd Brechts Bücherladen           109        320,00
+ Ausdemwald Alfons                   116        3 319,78
+ Reinhards Baumschule                110        548,50
+ Arens Annette                       114        1 245,00
+ Moulin Rouge                        111        2 013,88
+ Altenberg Hans                      115        140,60
+ Bastiaensen Laurent                 117        1 199,85
+ Collard Charlotte                   118        279,90
+ Auto École Verte                    112        1 949,85
+ Charlier Ulrike                     119        990,00
+ Dobbelstein Dorothée                124        834,00
+ Ernst Berta                         125        11,20
+ Evertz Bernd                        126        2 299,81
+ Demeulenaere Dorothée               122        59,85
+ Dobbelstein-Demeulenaere Dorothée   123        580,00
+ Arens Andreas                       113        831,82
+ Chantraine Marc                     120        239,20
+ Faymonville Luc                     130        562,50
+ Evers Eberhart                      127        1 955,78
+ Dericum Daniel                      121        5 365,23
+ Emonts Daniel                       128        450,00
+ Gernegroß Germaine                  131        1 599,92
+ Groteclaes Gregory                  132        2 349,81
+ Hilgers Hildegard                   133        951,82
+ Hilgers Henri                       134        525,00
+ Johnen Johann                       138        419,90
+ Engels Edgar                        129        670,00
+ Jousten Jan                         140        489,20
+ Ingels Irene                        135        600,00
+ Kaivers Karl                        141        4 005,35
+ Lambertz Guido                      142        1 039,92
+ Jonas Josef                         139        600,00
+ Jansen Jérémy                       136        2 940,42
+ Laschet Laura                       143        1 119,81
  Mießen Michael                      148        465,96
  Malmendier Marc                     146        3 599,71
  Meessen Melissa                     147        639,92
- Jacobs Jacqueline                   137        535,00
+ Jacobs Jacqueline                   137        1 719,81
  Meier Marie-Louise                  149        770,00
- Emonts Erich                        150        2 999,85
- Lazarus Line                        144        525,00
- Emontspool Erwin                    151        2 039,82
- Leffin Josefine                     145        600,00
- Emonts-Gast Erna                    152        679,81
- Radermacher Daniela                 156        1 199,85
- Radermacher Edgard                  157        279,90
- Radermacher Fritz                   158        2 589,92
- Radermacher Berta                   154        535,00
- Radermacher Christian               155        3 319,78
- di Rupo Didier                      164        639,92
- Radermacher Guido                   159        2 349,81
- da Vinci David                      165        1 235,96
- Radermacher Inge                    162        600,00
- Radermacher Alfons                  153        280,00
- Radermacher Jean                    163        3 599,71
- Radermacher Hans                    160        951,82
- Radermacher Hedi                    161        525,00
- **Total (61 rows)**                 **8229**   **87 821,22**
+ Emonts Erich                        150        448,50
+ Lazarus Line                        144        375,00
+ Emontspool Erwin                    151        1 613,92
+ Leffin Josefine                     145        310,20
+ Emonts-Gast Erna                    152        3 149,71
+ Radermacher Daniela                 156        21,00
+ Radermacher Edgard                  157        2 799,82
+ Radermacher Fritz                   158        1 999,71
+ Radermacher Berta                   154        645,00
+ Radermacher Christian               155        719,60
+ di Rupo Didier                      164        280,00
+ Radermacher Guido                   159        740,00
+ da Vinci David                      165        1 645,16
+ Radermacher Inge                    162        2 039,82
+ Radermacher Alfons                  153        31,92
+ Radermacher Jean                    163        679,81
+ Radermacher Hans                    160        494,80
+ Radermacher Hedi                    161        2 999,85
+ **Total (60 rows)**                 **8124**   **75 835,05**
 =================================== ========== ===============
 <BLANKLINE>
+
 
 
 
@@ -1406,12 +1408,12 @@ debts for partner 116 from above list:
 Partner #116 ('Ausdemwald Alfons')
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ============ ========================== ==========
- Due date             Balance      Debts                      Payments
--------------------- ------------ -------------------------- ----------
- 13/04/2016           770,00       `SLS 18/2016 <Detail>`__
- **Total (1 rows)**   **770,00**
-==================== ============ ========================== ==========
+==================== ============== ========================== ==========
+ Due date             Balance        Debts                      Payments
+-------------------- -------------- -------------------------- ----------
+ 13/04/2016           3 319,78       `SLS 18/2016 <Detail>`__
+ **Total (1 rows)**   **3 319,78**
+==================== ============== ========================== ==========
 <BLANKLINE>
 
 This shows that the partner received one sales invoice and did a
@@ -1429,12 +1431,14 @@ send us a purchase invoice (which we did not yet pay).
 --------------------- --------- ---------------
  Rumma & Ko OÜ         101       91,38
  Bäckerei Ausdemwald   102       8 368,19
- Donderweer BV         106       1 821,15
+ Donderweer BV         106       1 521,15
  Bäckerei Mießen       103       17 771,00
  Bäckerei Schmitz      104       48 194,90
- **Total (5 rows)**    **516**   **76 246,62**
+ Garage Mergelsberg    105       1 021,04
+ **Total (6 rows)**    **621**   **76 967,66**
 ===================== ========= ===============
 <BLANKLINE>
+
 
 Partner 101 from above list is both a supplier and a customer:
 

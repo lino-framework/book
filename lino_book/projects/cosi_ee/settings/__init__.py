@@ -20,8 +20,11 @@ class Site(Site):
     languages = 'en et'
 
     demo_fixtures = 'std all_countries minimal_ledger \
-    eesti furniture \
-    demo demo_bookings payments demo2'.split()
+    eesti furniture demo demo_bookings payments demo2'.split()
+
+    # temporary:
+    # demo_fixtures = 'std all_countries minimal_ledger \
+    # furniture demo demo_bookings demo2'.split()
 
     #demo_fixtures = 'std few_countries minimal_ledger \
     #furniture \

@@ -119,20 +119,20 @@ class Loader1(object):
 
         product = Instantiator(
             'products.Product', "sales_price cat name",
-            vat_class=VatClasses.normal).build
+            vat_class=VatClasses.services).build
         yield product("20", self.course_fees, "20€")
         yield product("48", self.course_fees, "48€/8 hours", tariff=t8)
         # yield p
         # yield Tariff(product=p, number_of_events=8, min_asset=2)
-        
+
         yield product("64", self.course_fees, "64€/12 hours", tariff=t12)
         # yield p
         # yield Tariff(product=p, number_of_events=12, min_asset=4)
-            
+
         yield product("50", self.course_fees, "50€/5 hours", tariff=t5)
         # yield p
         # yield Tariff(product=p, number_of_events=5, min_asset=1)
-        
+
         yield product("80", self.course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
@@ -163,7 +163,7 @@ class Loader1(object):
         #  fr="Excursions",
         #  en="Excursions",
         yield self.excursions
-        
+
         self.hikes = event_type(
             max_days=60, **dd.str2kw('name', _("Hikes")))
         # de="Wanderungen",

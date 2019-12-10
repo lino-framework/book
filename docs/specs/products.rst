@@ -83,22 +83,27 @@ Products
 
 .. class:: Products
 
-    >>> rt.show(products.Products)
-    ==== ================================================================ ================================================================ ================================================================ ================= ===============
-     ID   Bezeichnung                                                      Bezeichnung (fr)                                                 Bezeichnung (en)                                                 Kategorie         Verkaufspreis
-    ---- ---------------------------------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------- ----------------- ---------------
-     9    Bildbearbeitung und Unterhalt Website                            Traitement d'images et maintenance site existant                 Image processing and website content maintenance                 Website-Hosting   25,00
-     6    EDV Konsultierung & Unterhaltsarbeiten                           ICT Consultation & maintenance                                   IT consultation & maintenance                                    Website-Hosting   30,00
-     8    Programmierung                                                   Programmation                                                    Programming                                                      Website-Hosting   40,00
-     7    Server software installation, configuration and administration   Server software installation, configuration and administration   Server software installation, configuration and administration   Website-Hosting   35,00
-     2    Stuhl aus Holz                                                   Chaise en bois                                                   Wooden chair                                                     Möbel             99,99
-     4    Stuhl aus Metall                                                 Chaise en métal                                                  Metal chair                                                      Möbel             79,99
-     1    Tisch aus Holz                                                   Table en bois                                                    Wooden table                                                     Möbel             199,99
-     3    Tisch aus Metall                                                 Table en métal                                                   Metal table                                                      Möbel             129,99
-     5    Website-Hosting 1MB/Monat                                        Hébergement 1MB/mois                                             Website hosting 1MB/month                                        Website-Hosting   3,99
-                                                                                                                                                                                                                               **643,95**
-    ==== ================================================================ ================================================================ ================================================================ ================= ===============
-    <BLANKLINE>
+  Base class for all tables of products.
+
+
+>>> rt.show(products.Products, )
+==== ================================================================ ================================================================ ================================================================ ================= ===============
+ ID   Bezeichnung                                                      Bezeichnung (fr)                                                 Bezeichnung (en)                                                 Kategorie         Verkaufspreis
+---- ---------------------------------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------------- ----------------- ---------------
+ 9    Bildbearbeitung und Unterhalt Website                            Traitement d'images et maintenance site existant                 Image processing and website content maintenance                 Website-Hosting   25,00
+ 10   Book                                                             Book                                                             Book                                                             Sonstige          29,90
+ 6    EDV Konsultierung & Unterhaltsarbeiten                           ICT Consultation & maintenance                                   IT consultation & maintenance                                    Website-Hosting   30,00
+ 8    Programmierung                                                   Programmation                                                    Programming                                                      Website-Hosting   40,00
+ 7    Server software installation, configuration and administration   Server software installation, configuration and administration   Server software installation, configuration and administration   Website-Hosting   35,00
+ 11   Stamp                                                            Stamp                                                            Stamp                                                            Sonstige          1,40
+ 2    Stuhl aus Holz                                                   Chaise en bois                                                   Wooden chair                                                     Möbel             99,99
+ 4    Stuhl aus Metall                                                 Chaise en métal                                                  Metal chair                                                      Möbel             79,99
+ 1    Tisch aus Holz                                                   Table en bois                                                    Wooden table                                                     Möbel             199,99
+ 3    Tisch aus Metall                                                 Table en métal                                                   Metal table                                                      Möbel             129,99
+ 5    Website-Hosting 1MB/Monat                                        Hébergement 1MB/mois                                             Website hosting 1MB/month                                        Website-Hosting   3,99
+                                                                                                                                                                                                                           **675,25**
+==== ================================================================ ================================================================ ================================================================ ================= ===============
+<BLANKLINE>
 
 
 Product categories
@@ -129,6 +134,7 @@ Konfigurierung --> Verkauf --> Produktkategorien
     ---- ----------------- ------------------------------- ------------------ -------------- -------------
      1    Möbel             Meubles                         Furniture          Produkte
      2    Website-Hosting   Hébergement de sites Internet   Website Hosting    Produkte
+     3    Sonstige          Autre                           Other              Produkte
     ==== ================= =============================== ================== ============== =============
     <BLANKLINE>
 

@@ -131,20 +131,30 @@ and purchases is defined by the `VAT rules`_, not by the regime.
 VAT classes
 ===========
 
-A **VAT class** is assigned to each product and to each item of an  accounting
-invoice.  The VAT class specifies how that product or invoice item behaves
-regarding to VAT, especially it influences the available rates. You can sell or
-purchase a same product to different partners using different VAT regimes.
+A **VAT class** is the type of a trade object to be differentiated in the VAT
+declaration.  For example in Estonia the VAT office wants to know, in one field
+of your declaration, how much money you spend for buying "vehicles" and in
+another field how much you spent for "real estate" objects.  In Belgium both
+vehicles and real estate objects are considered together as "investments".
+
+A **VAT class** is assigned to each item of an invoice.  The VAT class can
+influence the available VAT rates. You can sell or purchase a same product to
+different partners using different VAT regimes.
 
 >>> rt.show(vat.VatClasses, language="en")
-======= ========= ==================
- value   name      text
-------- --------- ------------------
- 0       exempt    Exempt from VAT
- 1       reduced   Reduced VAT rate
- 2       normal    Normal VAT rate
-======= ========= ==================
+======= ============= ===========================
+ value   name          text
+------- ------------- ---------------------------
+ 010     goods         Goods at normal VAT rate
+ 020     reduced       Goods at reduced VAT rate
+ 030     exempt        Goods exempt from VAT
+ 100     services      Services
+ 200     investments   Investments
+ 210     real_estate   Real estate
+ 220     vehicles      Vehicles
+======= ============= ===========================
 <BLANKLINE>
+
 
 A VAT class is a direct or indirect property of a trade object (e.g. a Product)
 and influences the VAT rate to be used.  It does not contain the actual rate
@@ -797,3 +807,14 @@ About returnable VAT
     "VAT returnable" (a :term:`common account`).
 
     See also :attr:`vat_returnable_account <VatRule.vat_returnable_account>`.
+
+The VAT columns checker
+=======================
+
+.. class:: VatColumnsChecker
+
+  Check VAT columns configuration.
+
+This is an unbound data checker
+(:attr:`lino.modlib.checkdata.Checker.model` is `None`), i.e. the messages aren't bound to a particular
+database object.
