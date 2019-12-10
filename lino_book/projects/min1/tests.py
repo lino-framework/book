@@ -19,6 +19,8 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils import translation
 from atelier.test import TestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.core.management import call_command
 import subprocess, os
 import unittest
 
@@ -307,12 +309,21 @@ Estonia''')
 
 @unittest.skipIf(not os.path.exists(CYPRESS),
                      "Cypress is not installed")
-class CypressTest(TestCase):
-    def setUp(self):
-        self.process = subprocess.Popen(["python", "manage.py", "runserver"])
+class CypressTest(StaticLiveServerTestCase):
 
-    def tearDown(self):
-        self.process.terminate()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        call_command('prep', interactive=False, verbosity=0)
 
     def test_cypress(self):
-        self.run_subprocess('{} run -C ../../../cypress.json -s cypress/integration/min1/* --config video=false'.format(CYPRESS).split())
+        print(self.live_server_url)
+        os.environ.update({
+            #'CYPRESS_HOST':self.live_server_url,
+            #'cypress_api_server':self.live_server_url,
+            'cypress_baseUrl':self.live_server_url
+        })
+        command = '{} run -C ../../../cypress.json -s cypress/integration/min1/* --config video=false'.format(CYPRESS,self.live_server_url)
+        print(command)
+        p = subprocess.Popen(command.split())
+        out, err = p.communicate()
