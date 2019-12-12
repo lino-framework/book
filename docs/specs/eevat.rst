@@ -417,7 +417,7 @@ PRC 4/2018
 <BLANKLINE>
 
 
->>> rt.show('ledger.MovementsByVoucher', invoice)
+>>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 ========================== ================= ============== ============== ============= ================ =========
  Account                    Partner           Debit          Credit         VAT class     Match            Cleared
@@ -445,7 +445,7 @@ Note that above is for purchases only. Intracom *sales* invoices have no
 >>> invoice.vat_regime
 <VatRegimes.intracom:30>
 
->>> rt.show('ledger.MovementsByVoucher', invoice)
+>>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 ======================= ================= ============ ============ =========== ================ =========
  Account                 Partner           Debit        Credit       VAT class   Match            Cleared
@@ -508,6 +508,7 @@ VAT 5/2019
 Here is the content of the fields in the detail of that declaration:
 
 >>> obj.print_declared_values()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 [1] 20% määraga maksustatavad toimingud ja tehingud : 4994.10
 [3] 0% määraga maksustatavad toimingud ja tehingud, sh : 2456.70
 [32] 2) kauba eksport, sh : 2456.70
@@ -523,8 +524,7 @@ Here is the content of the fields in the detail of that declaration:
 [71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 1343.65
 [8] Maksuvaba käive : 62.90
 [9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3555.69
-[12] Tasumisele kuuluv käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
-[13] Enammakstud käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
 
 Here is another way to see the content of the fields in the detail of that declaration:
 
@@ -541,7 +541,7 @@ Here is another way to see the content of the fields in the detail of that decla
     - (c1): **[1]** (F1): 4 994,10, **[2]** (F2): , **[3]** (F3): 2 456,70, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 2 456,70, **[321]** (F321): 1 624,88
     - (c2): **[4]** (F4): 832,45, **[41]** (F41): -242,50, **[5]** (F5): 225,46, **[51]** (F51): 242,50, **[52]** (F52): , **[53]** (F53): 242,50, **[54]** (F54): 242,50
     - (c3): **[6]** (F6): 1 343,65, **[61]** (F61): , **[7]** (F7): 1 343,65, **[71]** (F71): 1 343,65
-    - (c4): **[8]** (F8): 62,90, **[9]** (F9): 3 555,69, **[10]** (F10): , **[11]** (F11): , **[12]** (F12): 815,41, **[13]** (F13): 815,41
+    - (c4): **[8]** (F8): 62,90, **[9]** (F9): 3 555,69, **[10]** (F10): , **[11]** (F11): , **[13]** (F13): 815,41
   - (values_3):
     - **VAT sales** (vat.SalesByDeclaration)
     - **VAT purchases** (vat.PurchasesByDeclaration)

@@ -833,7 +833,7 @@ The "PCSD" rule: A *purchase* invoice *credits* the supplier's
 account, a *sales* invoice *debits* the customer's account.
 
 >>> obj = vat.VatAccountInvoice.objects.order_by('id')[0]
->>> rt.show(ledger.MovementsByVoucher, obj)
+>>> rt.show(vat.MovementsByVoucher, obj)
 ============================= ========== =========== =========== ========================== ================ =========
  Account                       Partner    Debit       Credit      VAT class                  Match            Cleared
 ----------------------------- ---------- ----------- ----------- -------------------------- ---------------- ---------
@@ -845,7 +845,7 @@ account, a *sales* invoice *debits* the customer's account.
 
 
 >>> obj = sales.VatProductInvoice.objects.order_by('id')[0]
->>> rt.show(ledger.MovementsByVoucher, obj)
+>>> rt.show(vat.MovementsByVoucher, obj)
 ================== ========== ============== ============== =========== ================ =========
  Account            Partner    Debit          Credit         VAT class   Match            Cleared
 ------------------ ---------- -------------- -------------- ----------- ---------------- ---------

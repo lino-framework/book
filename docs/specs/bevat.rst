@@ -236,11 +236,7 @@ VAT declaration
 |      |      |      | SumDeclarationField Kredit |br|                 |
 |      |      |      | Sum of F59 F62 F64 |br|                         |
 +------+------+------+-------------------------------------------------+
-| 71   | F71  | [71] | Saldo zu zahlen |br|                            |
-|      |      |      | SumDeclarationField Kredit |br|                 |
-|      |      |      | Sum of FXX FYY |br|                             |
-+------+------+------+-------------------------------------------------+
-| 72   | F72  | [72] | Saldo zu zahlen |br|                            |
+| 72   | F72  | [72] | Total to pay (+) or to return (-) |br|          |
 |      |      |      | SumDeclarationField Debit |br|                  |
 |      |      |      | Sum of FXX FYY |br|                             |
 +------+------+------+-------------------------------------------------+
