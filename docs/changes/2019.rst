@@ -13,11 +13,16 @@
 .. contents::
   :local:
 
+2019-12-13
+==========
+
+Release to PyPI : version 19.12.0 of lino, lino-xl and lino-cosi.
+
+
 2019-12-12
 ==========
 
-More subtle changes in :mod:`lino_xl.lib.vat` and the three national VAT
-plugins.
+More changes in :mod:`lino_xl.lib.vat` and the three national VAT plugins.
 
 
 2019-12-05
