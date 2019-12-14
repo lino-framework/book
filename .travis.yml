@@ -50,6 +50,7 @@ script:
   - rm -rf .eggs
   - inv install
   - inv prep test
+  - inv bd
   - #inv cov --no-html
   - # E2E testing with team  TODO: move the following to the tests of the min1 project
   - cd lino_book/projects/min1/

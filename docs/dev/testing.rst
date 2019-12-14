@@ -15,7 +15,7 @@ suggestions for testing your applications.
    demotests
    doctests
    migtests
-
+   cypress
 
 .. _travis:
 
