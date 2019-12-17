@@ -61,7 +61,6 @@ Other
    /dev/linod
    /dev/design
    /dev/testing
-   /dev/frontend_testing
    /team/noi_intro
    /dev/bash_aliases
    /dev/diamond
