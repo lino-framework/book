@@ -12,14 +12,16 @@ function.
 
 We use the :mod:`lino_book.projects.lydia` demo database.
 
->>> import lino
->>> lino.startup('lino_book.projects.lydia.settings.demo')
+>>> from lino import startup
+>>> startup('lino_book.projects.lydia.settings.demo')
 >>> from lino.api.doctest import *
 
 Startup
 =======
 
-During startup there are a few SQL queries:
+During startup there are a few SQL queries caused by
+:func:`lino_xl.lib.excerpts.models.set_excerpts_actions`, which is called during
+startup as a :data:`lino.core.signals.pre_analyze` handler:
 
 >>> show_sql_queries()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -37,21 +39,19 @@ SELECT django_content_type.id, django_content_type.app_label, django_content_typ
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 72 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 70 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 71 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 50 LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 84 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 21 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 16 LIMIT 21
 
-Above statements are caused by
-:func:`lino_xl.lib.excerpts.models.set_excerpts_actions`, which is called during
-startup as a :data:`lino.core.signals.pre_analyze` handler.
+TODO: explain why `django_content_type.id` is not always the same.
 
 >>> reset_sql_queries()
 
 .. _specs.tera.sql.AccountingReport:
 
 
-Now we run some action and look at the resulting.
+Now we run some action and look at the SQL queries resulting from it.
 
 We run the :meth:`run_update_plan` action of an accounting report
 (:class:`sheets.Report <lino_xl.lib.sheets.Report>`).  You might want
@@ -97,7 +97,6 @@ Subquery expression
  uploads_upload            SELECT      97
 ========================= =========== =======
 <BLANKLINE>
-
 
 
 TODO: above output shows some bug with parsing the statements, and
