@@ -8,18 +8,61 @@
 .. currentmodule:: lino_xl.lib.vat
 
 The :mod:`lino_xl.lib.vat` plug-in adds functionality for handling sales and
-purchase invoices in a context where the site operator is subject to
-value-added tax (VAT).  It also installs a framework for handling VAT
-declaratations.
+purchase invoices in a context where the :term:`site operator` is subject to
+value-added tax (VAT).  It provides a framework for handling VAT declarations.
+When using this plugin, you will probably also install one of the `national VAT
+implementations`_.
+
 
 .. contents::
    :depth: 1
    :local:
 
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.pierre.settings.doctests')
+>>> from lino.api.doctest import *
+
+
 Overview
 ========
 
-The VAT plug-in defines the following concepts:
+The VAT plug in defines the following concepts:
+
+.. glossary::
+
+  VAT regime
+
+    Specifies how the VAT for this voucher is being handled, e.g. which VAT
+    rates are available and whether and how and when VAT is to be declared and
+    paid to the national VAT office.
+
+  VAT class
+
+    The nature of a trade object to be differentiated in the VAT declaration.
+
+    For example most countries differentiate between "goods" and "services".
+    Other common VAT classes are "investments" or "vehicles".
+
+    The list of available VAT classes is defined by your national VAT plugin.
+    For example in Estonia the VAT office wants to know, in one field of your
+    declaration, how much money you spend for buying "vehicles" and in another
+    field how much you spent for "real estate" objects, while in Belgium both
+    vehicles and real estate objects are considered together as "investments".
+
+  VAT rule
+
+    A rule that defines which VAT rate to apply and which account to use for a
+    given combination of regime, class and trade type. The available VAT rules
+    vary depending on which VAT declaration plugin is installed.
+
+  VAT declaration
+
+    A voucher that expresses the fact that the :term:`site operator` submitted a
+    VAT declaration to their national tax office.
+
 
 - `VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
   rate** to apply for a given operation.
@@ -30,14 +73,8 @@ The VAT plug-in defines the following concepts:
 - `Accounting invoices`_ are a voucher type which can be used in simple accounting
   applications.
 
-When using this plugin, you must also specify one of the `national VAT
-implementations`_.
 
-.. include:: /../docs/shared/include/tested.rst
 
->>> from lino import startup
->>> startup('lino_book.projects.pierre.settings.doctests')
->>> from lino.api.doctest import *
 
 National VAT implementations
 ============================
@@ -63,12 +100,8 @@ can theoretically both be installed though obviously this wouldn't make sense.
 VAT regimes
 ===========
 
-A **VAT regime** must be assigned to each voucher and may optionally be
+A :term:`VAT regime` must be assigned to each voucher and may optionally be
 assigned to each partner.
-
-The *VAT regime of a voucher* influences how the VAT for this voucher is being
-handled, e.g. which VAT rates are available and whether and how VAT is to be
-declared and paid towards the national VAT office.
 
 The *VAT regime of a partner* is used as the default value for all vouchers
 with this partner.  When you define a *default VAT regime* per partner, any new
@@ -131,13 +164,7 @@ and purchases is defined by the `VAT rules`_, not by the regime.
 VAT classes
 ===========
 
-A **VAT class** is the type of a trade object to be differentiated in the VAT
-declaration.  For example in Estonia the VAT office wants to know, in one field
-of your declaration, how much money you spend for buying "vehicles" and in
-another field how much you spent for "real estate" objects.  In Belgium both
-vehicles and real estate objects are considered together as "investments".
-
-A **VAT class** is assigned to each item of an invoice.  The VAT class can
+A :term:`VAT class` is assigned to each item of an invoice.  The VAT class can
 influence the available VAT rates. You can sell or purchase a same product to
 different partners using different VAT regimes.
 
@@ -178,12 +205,8 @@ operation, and possibly other factors.
 VAT rules
 =========
 
-A **VAT rule** defines which VAT rate to apply and which account to use for a
-given combination of regime, class and trade type.
-
-The available VAT rules vary depending on which VAT declaration plugin is
-installed. The list below is when no declaration module is installed, so we
-have only one default rule with no condition and zero rate.
+When no national declaration module is installed, we have only one default
+:term:`VAT rule` with no condition and zero rate.
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -688,19 +711,20 @@ VAT columns
 VAT declarations
 ================
 
-A **VAT declaration** is when a company declares to its government
-how much sales and purchases they've done during a given period.
+A **VAT declaration** is a voucher that expresses that a corporation declares to
+its government how much sales and purchases they've done during a given period.
 
-A VAT declaration is a computed summary of ledger movements in an
-**observed period**, but it is also itself a ledger voucher which
-generates new movements in its own period.
+A VAT declaration is a computed summary of ledger movements in an **observed
+period** or range of periods.  The voucher itself is a ledger voucher that
+generates new movements in its own **period of declration**, which is different
+from the observed period range.
 
 
 .. class:: VatDeclaration
 
     Abstract base class for VAT declarations.
 
-
+    Inherits from
     :class:`lino_xl.lib.sepa.Payable`
     :class:`lino_xl.lib.ledger.Voucher`
     :class:`lino_xl.lib.excerpts.Certifiable`
@@ -716,16 +740,58 @@ generates new movements in its own period.
         As a side effect this updates values in the computed fields of
         this declaration.
 
+
+Declaration fields
+==================
+
+Defining the declaration fields is responsibility of each national
+implementation plugin. But every individual field in every VAT declaration of
+every country is an instance of one of the following three classes:
+
+.. class:: MvtDeclarationField
+
+  A declaration field to be computed by analyzing the *ledger movements*.
+
+.. class:: WritableDeclarationField
+
+  A declaration field to be entered manually by the end user.
+
+.. class:: SumDeclarationField
+
+  A declaration field that computes the sum of its *observed fields*.
+
+
+All these three declaration field classes have a common ancestor
+:class:`DeclarationField`.
+
 .. class:: DeclarationField
 
-    Base class for all fields of VAT declarations.
+    Base class for all declaration fields.
+
+    It is not instantiated directly but by using one of its subclasses
+
+    .. attribute:: editable
+
+      Whether the value of this field is to be manually entered by the end user.
+
+      Most fields are not editable, i.e. computed.
 
     .. attribute:: both_dc
-    .. attribute:: editable
+
+      Whether the value of this field is to be manually entered by the end user.
+
     .. attribute:: fieldnames
 
-       An optional space-separated list of names of other declaration
-       fields to be observed by this field.
+       An optional space-separated list of names of *observed fields*, i.e.
+       other declaration fields to be observed by this field.   If a field name
+       is prefixed by a "-", the observed field will additionally be *inverted*.
+
+       This is used only by sum fields.  The values of all observed fields will
+       be added, except inverted fields whose value will be subtracted.
+
+       Note that the booking direction (D or C) also counts. So if the observing
+       sum field is DEBIT, observed CREDIT fields will automatically be
+       subtracted (i.e. you must not prefix them with a "-").
 
     .. attribute:: vat_regimes
     .. attribute:: vat_classes
@@ -734,10 +800,19 @@ generates new movements in its own period.
     .. attribute:: exclude_vat_regimes
     .. attribute:: exclude_vat_classes
     .. attribute:: exclude_vat_columns
+
+
     .. attribute:: is_payable
+
+        Whether the value of this field represents an amount to be paid to the
+        tax office.
 
 
 .. class:: DeclarationFieldsBase
+
+  .. method:: add_mvt_field
+  .. method:: add_sum_field
+  .. method:: add_writable_field
 
 Configuration
 =============
@@ -748,14 +823,14 @@ See also :class:`lino_xl.lib.vat.Plugin` for configuration options.
 Fill invoice items based on voucher's total
 ===========================================
 
-In a VatAccountInvoice users may edit the total amount of the invoice in order
-to have Lino assist them for filling invoice items based on this amount.
+In a VatAccountInvoice, end users may edit the total amount of the invoice in
+order to have Lino assist them for filling invoice items based on this amount.
 
 
 Manually editing the VAT amount of invoice items
 ================================================
 
-Users can manually edit any amount of an invoice item.
+End users can manually edit any amount of an invoice item.
 
 When you enter a :attr:`total_incl <InvoiceItem.total_incl>`, Lino automatically
 computes the :attr:`total_base <InvoiceItem.total_base>`  and :attr:`total_vat
@@ -791,11 +866,6 @@ About returnable VAT
 ====================
 
 .. glossary::
-
-  VAT declaration
-
-    A voucher that expresses the fact that we submitted a VAT declaration to the
-    national tax office.
 
   Returnable VAT
 

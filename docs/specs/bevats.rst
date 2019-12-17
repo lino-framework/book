@@ -109,7 +109,7 @@ to those defined in :doc:`bevat`:
 +-------+------+------+--------------------------------------------+
 | 83    | F83  | [83] | Total to pay (+) or to return (-) |br|     |
 |       |      |      | SumDeclarationField Credit |br|            |
-|       |      |      | Sum of F80 F81 F82 |br|                    |
+|       |      |      | = F80 + F81 + F82 |br|                     |
 +-------+------+------+--------------------------------------------+
 <BLANKLINE>
 

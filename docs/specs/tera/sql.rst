@@ -34,15 +34,15 @@ SELECT excerpts_excerpttype.id, excerpts_excerpttype.name, excerpts_excerpttype.
   excerpts_excerpttype.print_directly, excerpts_excerpttype.shortcut,
   excerpts_excerpttype.name_de, excerpts_excerpttype.name_fr FROM excerpts_excerpttype
 ORDER BY excerpts_excerpttype.id ASC
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 46 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 10 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 72 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 70 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 71 LIMIT 21
 SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 84 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 21 LIMIT 21
-SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = 16 LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
+SELECT django_content_type.id, django_content_type.app_label, django_content_type.model FROM django_content_type WHERE django_content_type.id = ... LIMIT 21
 
 TODO: explain why `django_content_type.id` is not always the same.
 
