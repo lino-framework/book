@@ -124,6 +124,7 @@ Users
 The following shows a list of all windows in :ref:`noi`  and who can see them:
 
 >>> print(analyzer.show_window_permissions())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - about.About.show : visible for all
 - cal.Calendars.detail : visible for admin
 - cal.Calendars.insert : visible for admin
@@ -180,6 +181,8 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - lists.Lists.detail : visible for contributor developer admin
 - lists.Lists.insert : visible for contributor developer admin
 - lists.Lists.merge_row : visible for admin
+- lists.Members.detail : visible for contributor developer admin
+- lists.MembersByPartner.insert : visible for contributor developer admin
 - mailbox.Mailboxes.detail : visible for customer contributor developer admin
 - mailbox.Mailboxes.insert : visible for customer contributor developer admin
 - mailbox.MessageAttachments.detail : visible for customer contributor developer admin

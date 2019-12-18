@@ -48,14 +48,28 @@ In Lino Voga we differentiate the following subclasses of Partner:
 Partner lists
 =============
 
-The demo database currently contains no data about partner lists.
+Members of partner lists in the demo database.
 
 >>> rt.show(lists.Members)
-No data to display
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+===== ===== ======================== =================================== ========
+ ID    No.   Partner List             Partner                             Remark
+----- ----- ------------------------ ----------------------------------- --------
+ 1     1     Announcements            Bestbank
+ 2     2     Weekly newsletter        Rumma & Ko OÜ
+ 3     3     General discussion       Bäckerei Ausdemwald
+ 4     4     Beginners forum          Bäckerei Mießen
+ ...
+ 101   101   Developers forum         AA Neudorf
+ 102   102   PyCon 2014               Nisperter Schützenverein
+ 103   103   Free Software Day 2014   Mehrwertsteuer-Kontrollamt Eupen
+===== ===== ======================== =================================== ========
+<BLANKLINE>
+
 
 >>> from django.utils.http import urlquote
 >>> url = '/api/lists/Members?'
->>> url += 'limit=10&start=0&fmt=json&'
+>>> url += 'limit=20&start=0&fmt=json&'
 >>> url += "filter=" + urlquote('[{"type":"string","value":"3","field":"list"}]')
 >>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
@@ -64,7 +78,6 @@ No data to display
 
 >>> d = json.loads(res.content.decode())
 >>> d['count']
-1
->>> d['rows'][0]
+14
+>>> d['rows'][13]
 [None, None, None, None, None, None, None, None, None, None, None, None, None]
-

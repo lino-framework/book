@@ -241,6 +241,8 @@ Each window is **viewable** for a given set of user types.
 - lists.Lists.detail : visible for user secretary staff admin
 - lists.Lists.insert : visible for user secretary staff admin
 - lists.Lists.merge_row : visible for admin
+- lists.Members.detail : visible for user secretary staff admin
+- lists.MembersByPartner.insert : visible for user secretary staff admin
 - polls.AnswerRemarks.detail : visible for user staff admin
 - polls.AnswerRemarks.insert : visible for user staff admin
 - polls.ChoiceSets.detail : visible for staff admin

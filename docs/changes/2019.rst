@@ -13,6 +13,17 @@
 .. contents::
   :local:
 
+2019-12-17
+==========
+
+Bugfix : The Estonian VAT declaration (:mod:`lino_xl.lib.eevat`)  didn't yet
+handle Intracom purchases correctly.
+
+New feature : national VAT implementations can now prefix observed fields of a
+VAT declaration field (:attr:`lino_xl.lib.vat.DeclarationField.fieldnames`) with
+a "-" to indicate that the field is "inverted".
+
+
 2019-12-16
 ==========
 

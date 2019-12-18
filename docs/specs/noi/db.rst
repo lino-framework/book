@@ -84,7 +84,7 @@ The database models
  groups.Membership                  groups.Memberships               4         7
  lists.List                         lists.Lists                      7         8
  lists.ListType                     lists.ListTypes                  4         3
- lists.Member                       lists.Members                    5         0
+ lists.Member                       lists.Members                    5         90
  notify.Message                     notify.Messages                  11        7
  sessions.Session                   sessions.SessionTable            3         ...
  social_django.Association          social_django.AssociationTable   7         0

@@ -82,7 +82,7 @@ The database structure
  ledger.Voucher             ledger.Vouchers                9         268
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
- lists.Member               lists.Members                  5         0
+ lists.Member               lists.Members                  5         103
  notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
