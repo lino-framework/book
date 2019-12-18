@@ -21,7 +21,8 @@ The :class:`lino_xl.lib.lists.MembersByList` table has two new
 :class:`lino_xl.lib.lists.MembersByPartner` is now in summary display mode, and
 list memberships now have a detail window.
 
-Released XL 19.12.1 to PyPI.
+Released XL 19.12.1 to PyPI (immediately followed by 19.12.2 because 19.12.1 had
+an oops bug).
 
 
 2019-12-17
