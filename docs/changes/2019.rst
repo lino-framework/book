@@ -16,8 +16,6 @@
 2019-12-18
 ==========
 
-Fixed :ticket:`3412` : in :ref:`amici` we now have a detail window for
-partners.
 The :class:`lino_xl.lib.lists.MembersByList` table has two new
 (virtual) columns "Address" and "Contact details".
 :class:`lino_xl.lib.lists.MembersByPartner` is now in summary display mode, and
