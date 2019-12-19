@@ -86,6 +86,7 @@ Plugins of the Extensions library
    humanlinks
    invoicing
    ledger
+   lists
    notes
    office
    orders
