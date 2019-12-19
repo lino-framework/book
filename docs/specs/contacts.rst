@@ -7,7 +7,7 @@
 ================================
 
 .. currentmodule:: lino_xl.lib.contacts
-                   
+
 The :mod:`lino_xl.lib.contacts` plugin adds functionality for managing
 contacts.  It adss the concept of **partner** with two specializations
 **person** and **organization**.  Also adds **roles** of a person in
@@ -18,7 +18,7 @@ an organization.
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-             
+
 >>> import lino
 >>> lino.startup('lino_book.projects.min1.settings.doctests')
 >>> from lino.api.doctest import *
@@ -31,18 +31,18 @@ Database structure
 This plugin defines the following database models.
 
 .. image:: contacts.png
-           
+
 - The main models are :class:`Person` and :class:`Company` and their
   common base :class:`Partner`.  The :class:`Partner` model is *not
   abstract*, i.e. you can see a table where persons organizations are
   together.
-  
+
 - A :class:`Role` is when a given person has a given function in a
   given company.
 
 - A :class:`RoleType` ("Function") where you can configure the
   available functions.
-  
+
 - A :class:`CompanyType` model can be used to classify companies.
 
 
@@ -53,10 +53,10 @@ This plugin adds the following menu entries:
 
 - :menuselection:`Contacts --> Persons`
 - :menuselection:`Contacts --> Organizations`
-  
+
 - :menuselection:`Configuration --> Contacts --> Functions`
 - :menuselection:`Configuration --> Contacts --> Organization types`
-  
+
 - :menuselection:`Explorer --> Contacts --> Partners`
 - :menuselection:`Explorer --> Contacts --> Roles`
 
@@ -66,7 +66,7 @@ Dependencies
 
 This plugin needs :mod:`lino_xl.lib.countries` and
 :mod:`lino.modlib.system`.
-           
+
 This plugin is being extended by :ref:`welfare` in
 :mod:`lino_welfare.modlib.contacts` or by :ref:`voga` in
 :mod:`lino_voga.modlib.contacts`.
@@ -86,7 +86,7 @@ Functions
  5    President     Präsident          Président
 ==== ============= ================== =====================
 <BLANKLINE>
-     
+
 
 Partners
 ========
@@ -329,12 +329,12 @@ Reference
     .. attribute:: region_label
 
         The `verbose_name` of the `region` field.
-           
+
     .. attribute:: with_roles_history
 
         Whether to define two additional fields
         :attr:`Role.start_date` and :attr:`Role.end_date`.
-        
+
     .. attribute:: use_vcard_export
 
         Whether Lino should provide a button for exporting contact
@@ -346,7 +346,7 @@ Reference
 
               pip install vobject
 
-        
+
 
 User roles
 ==========
@@ -358,14 +358,14 @@ User roles
 .. class:: ContactsUser
 
    A user who has access to full contacts functionality.
-   
+
 .. class:: ContactsStaff
 
    A user who can configure contacts functionality.
 
 Filtering partners
 ==================
-   
+
 .. class:: PartnerEvents
 
     A choicelist of observable partner events.
@@ -377,7 +377,7 @@ Other models
 .. class:: CompanyType
 
     A type of organization. Used by :attr:`Company.type` field.
-           
+
 .. class:: RoleType
 
     A **function** (:class:`RoleType`) is what a given :class:`Person`
@@ -386,13 +386,13 @@ Other models
     TODO: rename "RoleType" to "Function" or "ContactType".
 
     .. attribute:: name
-    
+
         A translatable designation. Used e.g. in document templates
         for contracts.
 
-           
+
 .. class:: Role
-           
+
     A **role** is when a given **person** exercises a given
     **function** (:class:`ContactType`) in a given **organization**.
 
@@ -403,27 +403,29 @@ Other models
     .. attribute:: type
 
         The function of this person in this organization.
-    
+
     .. attribute:: person
 
         The person having this role in this organization.
-    
+
+        This is a learning foreign key. See `Automatically creating contact persons`_
+
     .. attribute:: start_date
 
         When this person started to exercise this function in this
         organization.
-                   
+
         This is a dummy field when :attr:`Plugin.with_roles_history`
         is `False`.
-        
+
     .. attribute:: end_date
 
         When this person stopped to exercise this function in this
         organization.
-                   
+
         This is a dummy field when :attr:`Plugin.with_roles_history`
         is `False`.
-        
+
 
 .. class:: ContactRelated
 
@@ -472,7 +474,7 @@ Other models
     :attr:`company` or a private :attr:`person` (if no :attr:`company`
     specified), but not a combination of both.
 
-           
+
 .. class:: PartnerDocument
 
     Deprecated.
@@ -485,13 +487,13 @@ Other models
 Print templates
 ===============
 
-           
+
 .. xfile:: contacts/Person/TermsConditions.odt
 
     Prints a "Terms & Conditions" document to be used by organisations
     who need a signed permission from their clients for storing their
     contact data.  The default content may be localized.
-    
+
 
 Civil state
 ===========
@@ -514,10 +516,10 @@ Civil state
 
 
 .. class:: CivilStates
-           
+
     The global list of **civil states** that a person can have.  The
     field pointing to this list is usually named :attr:`civil_state`.
-    
+
     Usage examples are
     :class:`lino_welfare.modlib.pcsw.models.Client>` and
     :class:`lino_tera.lib.tera.Client>` and
@@ -591,4 +593,29 @@ Civil state
     `wikipedia.org <https://en.wikipedia.org/wiki/Cohabitation>`__
 
 
+Automatically creating contact persons
+======================================
 
+The :attr:`Role.person` field
+in the :class:`RolesByCompany` table
+is a :term:`Learning foreignkey field`:
+if you type the name of a person that
+does not yet exist in the database, Lino creates it silently.
+
+Some examples of how the name is parsed when creating a person:
+
+>>> pprint(rt.models.contacts.Person.parse_to_dict("joe smith"))
+{'first_name': 'Joe', 'last_name': 'Smith'}
+
+>>> pprint(rt.models.contacts.Person.parse_to_dict("Joe W. Smith"))
+{'first_name': 'Joe W.', 'last_name': 'Smith'}
+
+>>> pprint(rt.models.contacts.Person.parse_to_dict("Joe"))
+Traceback (most recent call last):
+...
+django.core.exceptions.ValidationError: ['Cannot find first and last name in "Joe"']
+
+>>> pprint(rt.models.contacts.Person.parse_to_dict("Guido van Rossum"))
+{'first_name': 'Guido', 'last_name': 'van Rossum'}
+
+The algorithm has already some basic intelligence but plenty of growing potential...

@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-12-19
+==========
+
+The :attr:`lino_xl.lib.contacts.Role.person` field is now a :term:`learning
+foreignkey field`.
+
+
 2019-12-18
 ==========
 

@@ -7,7 +7,7 @@ Let's start by explaining to you as a developer why Lino is so cool.
 .. toctree::
    :maxdepth: 1
 
-   overview
+   /about/overview
    about/why
    about/lino_and_django
    about/auth

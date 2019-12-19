@@ -85,22 +85,47 @@ This tests assumes that the user model has a year_in_school field.
 This use case would be required if users are submitting what food they want
 to eat during the week on a separate table.
 
+Learning foreignkey fields
+==========================
+
+.. glossary::
+
+  Learning foreignkey field
+
+    The :term:`application developer` can turn any foreign key field that has a
+    chooser into a learning foreign key by defining a :meth:`create_FOO_choice`
+    method on the model.
+
+Examples:
+
+The :attr:`city <lino_xl.lib.countries.CountryCity.city>` field of the address
+of a :class:`lino_xl.lib.countries.CountryCity` (e.g. of a partner). When you
+specify a country and then discover that the city does not yet exist, you simply
+leave the "invalid" city name in the combobox (Lino accepts it) and save the
+partner. Lino will then silently create a city of that name.
+
+
+Or the :attr:`lino_xl.lib.contacts.Role.person` field.  You can see the new
+feature in every application with contacts.  For example
+:mod:`lino_book.projects.min1`. In the detail of a company, you have the
+:class:`RolesByCompany <lino_xl.lib.contacts.RolesByCompany>` slave table. In
+the Person column of that table you can type the name of a person that does
+not yet exist in the database.  Lino will create it silently, and you can then
+click on the pointer to edit more information.
+
+
+
+
 Special cases
 =============
 
 Note that `Chooser.get_choices()` ignores any unused keyword arguments:
 
->>> [str(o) for o in city.get_choices(country=be,foo=1,bar=True,baz='7')]
+>>> [str(o) for o in city.get_choices(country=be, foo=1, bar=True, baz='7')]
 ['Brussels', 'Eupen', 'Gent']
-
-
 
 
 Examples of choosers on a ChoiceListField are
 
 - :attr:`lino_xl.lib.countries.Place.type`
 - :attr:`lino_xl.lib.contacts.Partner.vat_regime`
-
-
-
-

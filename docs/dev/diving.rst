@@ -11,12 +11,14 @@ with running demo projects.  We are ready to dive *into* Lino.
 .. toctree::
    :maxdepth: 1
 
-   /dev/intro
    models
    tables/index
    layouts/index
-   choicelists
    actions
+   menu
+   nutshell
+
+   choicelists
    slave_tables
    table_summaries
    vtables
@@ -27,7 +29,6 @@ with running demo projects.  We are ready to dive *into* Lino.
    settings
    admin_main
    quantities
-   menu
    virtualfields
    /dev/polls/index
    screencasts
