@@ -13,7 +13,7 @@ managing names of geographical places.
 .. contents::
    :local:
    :depth: 2
-           
+
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
@@ -34,7 +34,7 @@ Countries
 =========
 
 .. class:: Country
-           
+
     Django model to represent a *country*.
 
 
@@ -72,7 +72,7 @@ Countries
 
 Places
 ======
-           
+
 .. class:: Place
 
     Django model to represent a *place*.
@@ -154,24 +154,24 @@ Place types
 
     - http://en.wikipedia.org/wiki/List_of_subnational_entities
 
-           
-           
+
+
 Model mixins
 ============
 
 .. class:: CountryCity
-           
+
     Model mixin that adds two fields `country` and `city` and defines
     a context-sensitive chooser for `city`, a `create_city_choice`
     method, ...
 
     .. attribute:: country
-                   
+
     .. attribute:: zip_code
-    
+
     .. attribute:: city
-    
-        The locality, i.e. usually a village, city or town. 
+
+        The locality, i.e. usually a village, city or town.
 
         The choicelist for this field shows only places returned by
         :meth:`lino_xl.lib.countries.Place.get_cities`.
@@ -193,36 +193,42 @@ The AddressLocation mixin
     A mixin for models which contain a postal address location.
 
     .. attribute:: addr1
-                   
+
        Address line before street
-       
+
     .. attribute:: street_prefix
 
        Text to print before name of street, but to ignore for sorting.
-       
+
     .. attribute:: street
 
        Name of street, without house number.
-                   
+
     .. attribute:: street_no
 
        House number.
-       
+
     .. attribute:: street_box
 
         Text to print after street number on the same line.
-                   
+
     .. attribute:: addr2
 
         Address line to print below street line.
-    
+
     .. attribute:: addess_column
 
         Virtual field which returns the location as a comma-separated
         one-line string.
 
+    .. method:: get_primary_address(self)
+
+        Return the primary address of this partner.
+
+        Returns either `None` or an instance of :class:`AddressLocation`.
+
     .. method:: address_location(self, linesep="\n")
-        
+
         Return the plain text postal address location part.  Lines are
         separated by `linesep` which defaults to ``"\\n"``.
 
@@ -230,32 +236,35 @@ The AddressLocation mixin
         country is not :attr:`my_country
         <lino_xl.lib.countries.Plugin.my_country>`)
 
-        For example:
 
-        >>> be = countries.Country.objects.get(isocode="BE")
-        >>> ee = countries.Country.objects.get(isocode="EE")
-        >>> tpl = u"{name}\n{addr}"
 
-        >>> obj = contacts.Company.objects.filter(country=be)[0]
-        >>> print(tpl.format(name=obj.name, addr=obj.address_location()))
-        Bäckerei Ausdemwald
-        Vervierser Straße 45
-        4700 Eupen
+Examples
+========
 
-        >>> obj = contacts.Company.objects.filter(country=ee)[0]
-        >>> print(tpl.format(name=obj.name, addr=obj.address_location()))
-        Rumma & Ko OÜ
-        Uus tn 1
-        Vigala vald
-        78003 Rapla maakond
-        Estonia
+>>> be = countries.Country.objects.get(isocode="BE")
+>>> ee = countries.Country.objects.get(isocode="EE")
+>>> tpl = u"{name}\n{addr}"
 
-    
+>>> obj = contacts.Company.objects.filter(country=be)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Bäckerei Ausdemwald
+Vervierser Straße 45
+4700 Eupen
+
+>>> obj = contacts.Company.objects.filter(country=ee)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Rumma & Ko OÜ
+Uus tn 1
+Vigala vald
+78003 Rapla maakond
+Estonia
+
+
 Utilities
 =========
 
 .. class:: CountryDriver
-.. class:: CountryDrivers           
+.. class:: CountryDrivers
 
 >>> rt.show(countries.Countries)
 ============================= ================== ================================= ==========
@@ -434,4 +443,3 @@ Data checkers
 .. class:: PlaceChecker
 
     The name of a geographical place should not consist of only digits.
-

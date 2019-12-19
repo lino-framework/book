@@ -18,8 +18,8 @@ is installed, your application gets a "Manage addresses" button per partner.
 
 .. include:: /../docs/shared/include/tested.rst
 
->>> import lino
->>> lino.startup('lino_book.projects.min9.settings.doctests')
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
@@ -124,6 +124,21 @@ Reference
 
   Shows all addresses in the database.
 
+  Filter parameters:
+
+  .. attribute:: partner
+
+    Show only addresses of the given partner in :attr:`Address.partner`.
+
+  .. attribute:: place
+
+    Show only addresses having the given place in :attr:`Address.city`.
+
+  .. attribute:: address_type
+
+    Show only addresses having the given type.
+
+
 .. class:: AddressesByPartner
 
   Shows all addresses of this partner.
@@ -132,8 +147,43 @@ Reference
 
     Base class for the "addressee" of any address.
 
+    .. method:: get_primary_address()
+
+      Return the primary address of this address owner.  If the owner has no
+      direct address, look up the "address parent" and return its primary
+      address.
+
+    .. method:: get_address_by_type(address_type)
+
 .. class:: AddressTypes
+
+    A choicelist with all available address types.
+
+    >>> rt.show(addresses.AddressTypes)
+    ======= ============ ====================
+     value   name         text
+    ------- ------------ --------------------
+     01      official     Official address
+     02      unverified   Unverified address
+     03      declared     Declared address
+     04      reference    Reference address
+     98      obsolete     Obsolete
+     99      other        Other
+    ======= ============ ====================
+    <BLANKLINE>
+
 .. class:: DataSources
+
+    A choicelist with all available data sources.
+
+    >>> rt.show(addresses.DataSources)
+    ======= ========== ==================
+     value   name       text
+    ------- ---------- ------------------
+     01      manually   Manually entered
+     02      eid        Read from eID
+    ======= ========== ==================
+    <BLANKLINE>
 
 .. class:: AddressOwnerChecker
 
