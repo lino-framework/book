@@ -13,6 +13,15 @@
 .. contents::
   :local:
 
+2019-12-20
+==========
+
+The new :attr:`lino.core.model.Model.disable_create_choice` attribute can be
+used to disable automatic creation from a :term:`learning foreignkey field`.
+
+Released Lino 19.12.2 to PyPI because
+
+
 2019-12-19
 ==========
 

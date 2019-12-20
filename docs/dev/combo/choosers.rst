@@ -113,7 +113,8 @@ the Person column of that table you can type the name of a person that does
 not yet exist in the database.  Lino will create it silently, and you can then
 click on the pointer to edit more information.
 
-
+You can disable a :term:`learning foreignkey field` by setting the
+:attr:`lino.core.model.Model.disable_create_choice` model attribute to `True`.
 
 
 Special cases
