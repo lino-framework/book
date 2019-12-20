@@ -35,7 +35,6 @@ project.
 >>> from lino import startup
 >>> startup('lino_book.projects.team.settings.doctests')
 >>> from lino.api.doctest import *
->>> from django.db.models import Q
 
 
 Identifying actors
@@ -81,6 +80,7 @@ places depending on their type.
 Database tables are subdivided into "master tables", "slave tables"
 and "generic slave tables":
 
+>>> from lino.core import kernel
 >>> len(kernel.master_tables)
 126
 >>> kernel.master_tables[0]
