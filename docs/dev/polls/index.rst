@@ -184,7 +184,7 @@ customers. We will come back to this in :doc:`/dev/settings` and
      'lino.modlib.jinja',
      'lino.modlib.bootstrap3',
      'lino.modlib.extjs',
-     'polls')
+     'lino_book.projects.polls.polls')
 
 
 The :file:`polls/models.py` file
