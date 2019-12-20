@@ -4,45 +4,42 @@
 Introduction to plugins
 =======================
 
-Besides the :class:`Site <lino.core.site.Site>` class (which
-encapsules what *Lino* calls an :doc:`application <application>`),
-Lino defines the :class:`Plugin <lino.core.plugin.Plugin>` class which
-extends what *Django* calls an "application".
+A **plugin** is a Python package that can be "installed" by a :term:`Lino
+application`. It encapsulates a set of *functionality* designed to be
+potentially used in more than on application.
 
-The :class:`Plugin <lino.core.plugin.Plugin>` class is comparable to
-Django's `AppConfig
-<https://docs.djangoproject.com/en/2.2/ref/applications/>`_ class, but
-has some advantages over Django's approach which makes that they are
-the preferred way.
+A Lino plugin corresponds to what *Django* calls an "application". Lino's
+:class:`Plugin <lino.core.plugin.Plugin>` class is comparable to Django's
+`AppConfig <https://docs.djangoproject.com/en/2.2/ref/applications/>`_ class,
+but has some additional features, which makes that they are the preferred way.
 
 .. contents::
   :local:
 
-What is a plugin?
-=================
-
-A plugin is a Python package which can be yielded by
-:meth:`get_installed_apps <lino.core.site.Site.get_installed_apps>`.
-
-A plugin encapsulates a limited set of **functionality** designed to
-be potentially used in more than on application.
+Usage overview
+==============
 
 A plugin can define database models, actors, actions, fixtures,
 template files, javascript snippets, and metadata.  None of these
 components are mandatory.
 
-The **metadata** about a plugin (configuration values, menu commands,
-dependencies, ...) is specified by defining a subclass of
-:class:`Plugin <lino.core.plugin.Plugin>` in the :xfile:`__init__.py`
-file of your plugin.
+The :term:`application developer` defines which plugins to install in the
+application's :meth:`get_installed_apps
+<lino.core.site.Site.get_installed_apps>` method.
+
+The plugin developer defines a plugin in the :xfile:`__init__.py` file of the
+package.  Lino expects this file to define a class named ``Plugin``, which
+inherits from the abstract base :class:`Plugin <lino.core.plugin.Plugin>` class.
+Your :class:`Plugin <lino.core.plugin.Plugin>` class holds the **metadata**
+about your plugin: configuration values, menu commands, dependencies, ...
 
 Here is a fictive example::
 
     from lino.api import ad, _
-    
+
     class Plugin(ad.Plugin):
         verbose_name = _("Better calendar")
-        extends = 'lino.modlib.cal'
+        extends = 'lino_xl.lib.cal'
         needs_plugins  = ['lino_xl.lib.contacts']
 
         def setup_main_menu(self, site, user_type, m):
@@ -65,10 +62,10 @@ And last but not least, a plugin can **extend** another plugin by
 specifying its name in :attr:`extends_models
 <lino.core.plugin.Plugin.extends_models>`.  This is explained in
 :doc:`plugin_inheritance`.
-      
+
 .. _dev.accessing.plugins:
 
-   
+
 Accessing plugins
 =================
 
@@ -79,8 +76,8 @@ Django developers are used to code like this::
     def print_foo(pk=1):
         print(Foo.objects.get(pk=pk))
 
-In Lino we recommend to use the :attr:`rt.models <lino.api.rt.models>`
-dict as follows::
+In Lino we prefer to use the :attr:`rt.models <lino.api.rt.models>` dict as
+follows::
 
     from lino.api import rt
 
@@ -88,11 +85,11 @@ dict as follows::
         Foo = rt.models.myapp.Foo
         print(Foo.objects.get(pk=pk))
 
-At least if you want to use :doc:`plugin_inheritance`. One of the
-basic reasons for using plugins is that users of some plugin can
-extend it and use their extension instead of the original plugin.
-Which means that the plugin developer does not know (and does not
-*want* to know) where the model classes are actually defined.
+This approach has the advantage of providing :doc:`plugin_inheritance`. One of
+the basic reasons for using plugins is that users of some plugin can extend it
+and use their extension instead of the original plugin. Which means that the
+plugin developer does not know (and does not *want* to know) where the model
+classes are actually defined.
 
 Note that :attr:`rt.models <lino.api.rt.models>` is populated only
 *after* having imported the models. So you cannot use it at the
@@ -114,7 +111,7 @@ Plugins can have **attributes** for holding configurable options.
 
 Examples of configurable plugin attributes:
 
-- :attr:`lino_xl.lib.countries.Plugin.country_code` 
+- :attr:`lino_xl.lib.countries.Plugin.country_code`
 - :attr:`lino_xl.lib.contacts.Plugin.hide_region`
 
 The values of plugin attributes can be configured at three levels.
@@ -174,4 +171,3 @@ Keep in mind that you can indeed never be sure that your :setting:`SITE`
 instance is actually being used. A local system admin can always decide to
 import your :xfile:`settings.py` module and to re-instantiate your `Site` class
 another time. That's part of our game and we don't want it to be forbidden.
-

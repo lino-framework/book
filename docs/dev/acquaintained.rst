@@ -11,7 +11,6 @@ Getting acquaintained
    warning
    lets/index
    site
-   plugins
    i18n
    datamig
    dump2py
@@ -33,6 +32,8 @@ Getting acquaintained
    rendering
    mti
    combo/index
+   chooser2
+   learningfk
 
    online
    site_config

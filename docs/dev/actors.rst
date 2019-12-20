@@ -22,13 +22,20 @@ in some other form.  One such frame actor is the calendar panel,
 another one is :class:`lino.utils.report.EmptyTable`, used to display
 reports.
 
+
+.. contents::
+   :depth: 1
+   :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
 The code snippets on this page use the :mod:`lino_book.projects.team` demo
 project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.team.settings.doctests')
 >>> from lino.api.doctest import *
->>> from lino.core import actors, kernel
+>>> from django.db.models import Q
 
 
 Identifying actors

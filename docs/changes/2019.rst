@@ -17,7 +17,7 @@
 ==========
 
 The new :attr:`lino.core.model.Model.disable_create_choice` attribute can be
-used to disable automatic creation from a :term:`learning foreignkey field`.
+used to disable automatic creation from a :term:`learning foreign key` field.
 
 Released Lino 19.12.2 to PyPI because
 
@@ -26,7 +26,7 @@ Released Lino 19.12.2 to PyPI because
 ==========
 
 The :attr:`lino_xl.lib.contacts.Role.person` field is now a :term:`learning
-foreignkey field`.
+foreign key` field.
 
 Released XL 19.12.3 to PyPI.
 

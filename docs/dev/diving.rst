@@ -8,6 +8,9 @@ Until now we deliberately remained outside of the real code because first things
 first.  But now you hopefully feel confident in your developer environment and
 with running demo projects.  We are ready to dive *into* Lino.
 
+The vital basics
+================
+
 .. toctree::
    :maxdepth: 1
 
@@ -18,6 +21,22 @@ with running demo projects.  We are ready to dive *into* Lino.
    menu
    nutshell
 
+More practical
+==============
+
+.. toctree::
+   :maxdepth: 1
+
+   screencasts
+   /dev/polls/index
+
+More basics
+===========
+
+.. toctree::
+   :maxdepth: 1
+
+   plugins
    choicelists
    slave_tables
    table_summaries
@@ -30,5 +49,3 @@ with running demo projects.  We are ready to dive *into* Lino.
    admin_main
    quantities
    virtualfields
-   /dev/polls/index
-   screencasts

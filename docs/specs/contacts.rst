@@ -592,13 +592,14 @@ Civil state
     <http://www4.gouv.qc.ca/EN/Portail/Citoyens/Evenements/separation-divorce/Pages/separation-fait.aspx>`__,
     `wikipedia.org <https://en.wikipedia.org/wiki/Cohabitation>`__
 
+.. _specs.contacts.learningfk:
 
 Automatically creating contact persons
 ======================================
 
 The :attr:`Role.person` field
 in the :class:`RolesByCompany` table
-is a :term:`Learning foreignkey field`:
+is a :term:`Learning foreign key` field:
 if you type the name of a person that
 does not yet exist in the database, Lino creates it silently.
 
