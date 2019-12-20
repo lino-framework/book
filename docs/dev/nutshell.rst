@@ -2,11 +2,11 @@
 Lino in a nutshell
 ==================
 
-Models describe how the data is structured in the database.  Tables and layouts
-describe how it is structured on the screen or paper.  Actions describe what the
-end user can do with the data besides editing it.  User types are
-a way to classify end users in order to grant them different sets of
-permissions.
+Let's look back at what we have learned so far.
+
+Models describe how the data is structured in the database.
+Tables and layouts describe how it is structured on the screen or paper.
+Actions describe what the end user can do with the data besides editing it.
 
 A "model" is the Django word for a database table.  A model is a Python class
 that defines a collection of "fields". For each Python data type (integer,
@@ -73,9 +73,8 @@ Many actions are defined automatically, but you can write custom actions.  Examp
     def publish_book(self):
         # do something
 
-The Menu describes describes how the tables of your application are presented to
-the end user.  Instead of letting each plugin register its models to the admin
-site, you let it register tables to the main menu.
+The **application menu** describes how the tables of your application are
+presented to the end user.
 
 Example code::
 

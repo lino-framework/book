@@ -21,7 +21,6 @@ plugin.
 >>> startup('lino_book.projects.min1.settings.demo')
 >>> from lino.api.doctest import *
 
-
 Creating a root user
 ====================
 

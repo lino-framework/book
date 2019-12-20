@@ -49,3 +49,4 @@ More basics
    admin_main
    quantities
    virtualfields
+   xlmenu

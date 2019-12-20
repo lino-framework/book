@@ -2,16 +2,9 @@
 .. _dev.permissions:
 .. _permissions:
 
-===========
-Permissions
-===========
-
-
-..  Doctest initialization:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.min9.settings.demo')
-    >>> from lino.api.doctest import *
+===========================
+Introduction to permissions
+===========================
 
 
 As soon as a database application is used by more than one user, we
@@ -30,6 +23,17 @@ applications like :ref:`welfare` or :ref:`voga` would be a hell if I
 had implemented them using Django.  Permission management is complex.
 Lino doesn't turn it into something simple, but it brings light into
 the dark...
+
+.. contents::
+    :depth: 1
+    :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.min9.settings.demo')
+>>> from lino.api.doctest import *
+
 
 
 
@@ -73,10 +77,13 @@ But imagine they would get, for each user group, a multiple-choice
 combobox with all available roles from above examples! They would get
 crazy.
 
-That's why we have **user types**.  The application sdeveloper defines
-a meaningful *subset of all available roles* for her application.
+That's why we have **user types**.  The application developer defines
+a meaningful *subset of all available roles* for their application.
 This is done by populating the :class:`UserTypes
 <lino.modlib.users.choicelists.UserTypes>` choicelist.
+
+User types are a way to classify end users in order to grant them different sets
+of permissions.
 
 Each user type is basically not much more than a user-friendly *name*
 and a storable *value* given to a selected user role.  Here is the

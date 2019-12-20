@@ -9,6 +9,6 @@ Developer Guide
 .. toctree::
     :maxdepth: 2
 
-    /dev/getstarted
-    /dev/diving
-    /dev/acquaintained
+    getstarted
+    diving
+    acquaintained

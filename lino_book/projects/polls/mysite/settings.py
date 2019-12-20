@@ -8,7 +8,8 @@ class Site(Site):
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
-        yield 'polls'
+        # yield 'polls'
+        yield 'lino_book.projects.polls.polls'
 
     def setup_menu(self, user_type, main):
         super(Site, self).setup_menu(user_type, main)

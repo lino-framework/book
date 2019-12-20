@@ -1,58 +1,42 @@
+.. doctest docs/dev/menu.rst
 .. _dev.menu:
 
-=============
-The menu tree
-=============
+====================
+The application menu
+====================
 
-As we have seen, a description of a database application contains
-models, tables, layouts and :doc:`actions <actions>`.  But one
-important piece is missing: the **main menu**.
+As we have seen, a :term:`Lino application` contains :doc:`models <models>`,
+:doc:`tables <tables/index>`, :doc:`layouts <layouts/index>` and :doc:`actions <actions>`.
+But one important piece is missing: the *application menu*.
 
-The main menu defines how the different functionalities of an
-application should be presented to the user.
-
-The application developer must decide how to organize the different
-actors and actions of her application into a "menu structure".
-
-This menu structure defines another level of grouping (into menu
-groups).
-
-Standard items of a main menu
-=============================
-
-:meth:`lino.core.site.Site.setup_menu`
-:attr:`lino.core.site.Site.top_level_menus`
+The **application menu** specifies how the different functionalities of an
+application are structured when presenting them to the user. There is only one
+application menu per application, but each user will see only the parts to which
+they have access permission.
 
 
-The Main menu
--------------
+.. contents::
+   :depth: 1
+   :local:
 
-setup_main_menu
+A simple application menu
+=========================
 
-.. _config_menu:
+For simple applications you can define the complete menu by overriding the
+:meth:`lino.core.site.Site.setup_menu` method of your application.
 
-The Configuration menu
-----------------------
+An example for this approach is in :ref:`dev.polls.settings`.  Let's have a look
+at this application.
 
-setup_config_menu
+>>> from lino import startup
+>>> startup('lino_book.projects.polls.mysite.settings')
+>>> from lino.api.doctest import *
 
-The Explorer menu
------------------
+You have seen the application menu in a browser window. But you can also show it
+in a documentation page:
 
-setup_explorer_menu
- 
-.. _menu.groups:
+>>> rt.login('robin').show_menu()
+- Site : About
+- Polls : Questions, Choices
 
-
-Introduction to menu groups
-===========================
-
-The different installed apps (identified by their `app_label`) are one
-way to group your database models into different "modules".  But this
-grouping almost never exactly matches how the users would modularize
-their application.
-
-
-TODO: write more about it.
-
-
+See also :doc:`xlmenu`.

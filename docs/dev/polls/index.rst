@@ -116,6 +116,8 @@ show you in this tutorial.
 And in the following sections we are going to **modify** the files
 :file:`mysite/settings.py` and :file:`polls/models.py`.
 
+.. _dev.polls.settings:
+
 The :file:`mysite/settings.py` file
 -----------------------------------
 
@@ -164,8 +166,7 @@ A few explanations:
 
 #.  The **main menu** of a Lino application is defined in the
     :meth:`setup_menu <lino.core.site.Site.setup_menu>` method.  At
-    least in the simplest case.  We will come back on this in
-    :doc:`/dev/menu`.
+    least in the simplest case.  More about this in :doc:`/dev/menu`.
 
 Lino uses some tricks to make Django settings modules more pleasant to
 work with, especially if you maintain Lino sites for several
