@@ -26,11 +26,17 @@ house).
 Overview
 =========
 
-A **household** is a group of humans who live together in a same house.
+.. glossary::
 
-A **household membership** is the fact that a given person is (or has been)
-part of a given household.
+  Household
 
+    A group of :term:`natural persons <natural person>` who live together in a
+    same house.
+
+  Household membership
+
+    The fact that a given :term:`natural person` is (or has been) part of a given
+    :term:`household`.
 
 
 
@@ -42,6 +48,9 @@ This plugin collaborates with :mod:`lino_xl.lib.humanlinks`.
 This plugin is extended by :ref:`welfare` in
 :mod:`lino_welfare.modlib.households`.
 
+The detail layout of a household changes depending on whether
+:mod:`lino_xl.lib.addresses` and :mod:`lino_xl.lib.phones` are also installed.
+
 
 
 Households
@@ -51,9 +60,10 @@ Households
 A household is a subclass of :class:`lino_xl.lib.contacts.Partner`.
 
 
+
 .. class:: Household
 
-    Django model to represent a household.
+    Django model to represent a :term:`household`.
 
     .. attribute:: type
 
@@ -243,7 +253,7 @@ Bestehendem Haushalt beitreten
 javascript:Lino.households.MembersByPerson.insert.run(null,{ "base_params": { "person": 178 },
 "data_record": { "data": { "disabled_fields": { "birth_date": true, "first_name": true,
 "gender": true, "last_name": true }, "household": null, "householdHidden": null, "person":
-"ALVANG Aleks\u00e1ndr (178)", "personHidden": 178, "primary": false, "role": "Kind", 
+"ALVANG Aleks\u00e1ndr (178)", "personHidden": 178, "primary": false, "role": "Kind",
 "roleHidden": "05" }, "phantom": true, "title": "Mitglied erstellen" }, "param_values": {
 "aged_from": null, "aged_to": null, "end_date": null, "gender": null, "genderHidden": null,
 "start_date": null }, "record_id": null })

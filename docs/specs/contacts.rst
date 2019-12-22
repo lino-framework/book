@@ -25,6 +25,20 @@ an organization.
 >>> from django.db.models import Q
 
 
+Overview
+=========
+
+.. glossary::
+
+    Natural person
+
+      Represented by :class:`Person`.
+
+    Legal person
+
+      Represented by :class:`Organization`.
+
+
 Database structure
 ==================
 

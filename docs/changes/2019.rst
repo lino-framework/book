@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+2019-12-22
+==========
+
+The :mod:`lino_xl.lib.households` now provides a usable
+:class:`HouseholdDetail` when :mod:`lino_xl.lib.addresses` and
+:mod:`lino_xl.lib.phones` are also installed.
+
 2019-12-20
 ==========
 
