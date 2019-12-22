@@ -1779,8 +1779,8 @@ defines two specific roles.
     Can see guests of calendar entries.
 
 
-etpos
-========
+positions
+=========
 
 The :attr:`RecurrenceSet.positions` field allows to specify rules like "every
 last Friday of the month".
@@ -1810,7 +1810,7 @@ Friday, 28 February 2020
 
 The first and third Wednesday of every month:
 
->>> obj = cal.RecurrentEvent()
+>>> obj = cal.RecurrentEvent(name="Test")
 >>> obj.wednesday = True
 >>> obj.positions = "1 3"
 >>> obj.every_unit = cal.Recurrencies.monthly
@@ -1821,3 +1821,16 @@ Wednesday, 16 October 2019
 Wednesday, 6 November 2019
 Wednesday, 20 November 2019
 Wednesday, 4 December 2019
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.friday = True
+>>> obj.monday = True
+>>> obj.positions = "2"
+>>> obj.every_unit = cal.Recurrencies.monthly
+>>> show(obj, i2d(20191213))
+Every second Monday and Friday of the month
+Monday, 6 January 2020
+Friday, 7 February 2020
+Friday, 6 March 2020
+Monday, 6 April 2020
+Monday, 4 May 2020

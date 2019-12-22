@@ -20,6 +20,10 @@ The :mod:`lino_xl.lib.households` now provides a usable
 :class:`HouseholdDetail` when :mod:`lino_xl.lib.addresses` and
 :mod:`lino_xl.lib.phones` are also installed.
 
+Bugfix :ticket:`3429` TypeError: must be str, not __proxy__ (on a recurrent
+event with non-empty :attr:`lino_xl.lib.cal.RecurrenceSet.positions` field and
+occurring on more than one weekday.
+
 2019-12-20
 ==========
 
