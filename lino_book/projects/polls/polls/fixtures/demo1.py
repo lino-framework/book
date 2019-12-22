@@ -1,4 +1,4 @@
-from polls.models import Question, Choice
+from lino_book.projects.polls.polls.models import Question, Choice
 
 
 def objects():
@@ -20,4 +20,3 @@ def objects():
     yield Choice(choice_text="Yes", question=p)
     yield Choice(choice_text="No", question=p)
     yield Choice(choice_text="Not yet decided", question=p)
-

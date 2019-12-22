@@ -22,8 +22,7 @@ house).
 >>> lino.startup('lino_book.projects.avanti1.settings.demo')
 >>> from lino.api.doctest import *
 
-
-Overview
+Concepts
 =========
 
 .. glossary::
@@ -37,6 +36,7 @@ Overview
 
     The fact that a given :term:`natural person` is (or has been) part of a given
     :term:`household`.
+
 
 
 

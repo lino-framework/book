@@ -63,11 +63,11 @@ Summary of what you should have done::
     $ django-admin startproject mysite
     $ cd mysite
     $ python manage.py startapp polls
-    $ e polls/views.py
-    $ e polls/urls.py
-    $ e mysite/urls.py
-    $ e mysite/settings.py
-    $ e polls/models.py
+    $ nano polls/views.py
+    $ nano polls/urls.py
+    $ nano mysite/urls.py
+    $ nano mysite/settings.py
+    $ nano polls/models.py
     $ python manage.py migrate
 
 

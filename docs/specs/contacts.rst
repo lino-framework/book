@@ -25,16 +25,20 @@ an organization.
 >>> from django.db.models import Q
 
 
-Overview
+Glossary
 =========
 
 .. glossary::
 
     Natural person
 
+      A really existing person with a first and last name.
+
       Represented by :class:`Person`.
 
     Legal person
+
+      A corporation, company or organization.
 
       Represented by :class:`Organization`.
 

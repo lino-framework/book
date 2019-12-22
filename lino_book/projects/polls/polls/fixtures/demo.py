@@ -1,4 +1,4 @@
-from polls.models import Question, Choice
+from lino_book.projects.polls.polls.models import Question, Choice
 
 DATA = """
 What is your preferred colour? | Blue | Red | Yellow | other
