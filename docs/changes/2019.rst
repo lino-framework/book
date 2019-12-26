@@ -14,10 +14,21 @@
   :local:
 
 
+2019-12-26
+==========
+
+.. currentmodule:: lino_xl.lib.vat
+
+Fixed a bug in :mod:`lino_xl.lib.vat` that caused Lino to not compute correctly
+a  :class:`DeclarationField` with a condition on
+:attr:`DeclarationField.vat_classes` which mentioned only vat classes to be
+*excluded* (i.e. prefixed with an "!").  Same for
+:attr:`DeclarationField.vat_columns` and :attr:`DeclarationField.vat_regimes`.
+
 2019-12-25
 ==========
 
-Fixed a subtle bug that might have been the cause for :ticket:`3178`. 
+Fixed a subtle bug that might have been the cause for :ticket:`3178`.
 
 
 2019-12-22
