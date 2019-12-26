@@ -509,7 +509,7 @@ Here is the content of the fields in the detail of that declaration:
 
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-[1] 20% määraga maksustatavad toimingud ja tehingud : 4994.10
+[1] 20% määraga maksustatavad toimingud ja tehingud : 2537.40
 [3] 0% määraga maksustatavad toimingud ja tehingud, sh : 2456.70
 [32] 2) kauba eksport, sh : 2456.70
 [321] 1) käibemaksutagastusega müük reisijale : 1624.88
@@ -520,8 +520,8 @@ Here is the content of the fields in the detail of that declaration:
 [53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
 [54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
 [6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1343.65
-[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 1343.65
-[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 1343.65
+[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 131.15
+[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 131.15
 [8] Maksuvaba käive : 62.90
 [9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3555.69
 [13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
@@ -538,9 +538,9 @@ Here is another way to see the content of the fields in the detail of that decla
 - **Values** (values):
   - (values_1): **Partner** (partner): Maksu- ja Tolliamet, **Author** (user): Robin Rood, **Workflow** (workflow_buttons): **Registered**
   - (values_2):
-    - (c1): **[1]** (F1): 4 994,10, **[2]** (F2): , **[3]** (F3): 2 456,70, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 2 456,70, **[321]** (F321): 1 624,88
+    - (c1): **[1]** (F1): 2 537,40, **[2]** (F2): , **[3]** (F3): 2 456,70, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 2 456,70, **[321]** (F321): 1 624,88
     - (c2): **[4]** (F4): 832,45, **[41]** (F41): 242,50, **[5]** (F5): 225,46, **[51]** (F51): 242,50, **[52]** (F52): , **[53]** (F53): 242,50, **[54]** (F54): 242,50
-    - (c3): **[6]** (F6): 1 343,65, **[61]** (F61): , **[7]** (F7): 1 343,65, **[71]** (F71): 1 343,65
+    - (c3): **[6]** (F6): 1 343,65, **[61]** (F61): , **[7]** (F7): 131,15, **[71]** (F71): 131,15
     - (c4): **[8]** (F8): 62,90, **[9]** (F9): 3 555,69, **[10]** (F10): , **[11]** (F11): , **[13]** (F13): 815,41
   - (values_3):
     - **VAT sales** (vat.SalesByDeclaration)
