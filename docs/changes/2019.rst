@@ -13,6 +13,13 @@
 .. contents::
   :local:
 
+
+2019-12-25
+==========
+
+Fixed a subtle bug that might have been the cause for :ticket:`3178`. 
+
+
 2019-12-22
 ==========
 
