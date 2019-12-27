@@ -19,6 +19,13 @@
 
 Release Lino 19.12.3 and XL 19.12.5 to PyPI.
 
+XL 19.12.5 fixed one bug but introduced another: register_voucher() is now being
+called after state change, so the side effect of updating the fields of a VAT
+declaration was no longer saved. Fixed.
+
+Release XL 19.12.6 to PyPI.
+
+
 2019-12-26
 ==========
 
