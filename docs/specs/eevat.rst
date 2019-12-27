@@ -53,7 +53,7 @@ VAT rules
 =========
 
 >>> rt.show(vat.VatRules, language="en")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +-------+-------------------------------------------------------------------------+
 | value | Description                                                             |
 +=======+=========================================================================+
@@ -70,9 +70,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 3     | VAT rule 3:                                                             |
 |       | if (Sales, Intra-community, EU, Services) then                          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 4     | VAT rule 4:                                                             |
 |       | if (Purchases, Co-contractor, National, Services) then                  |
@@ -82,9 +81,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 5     | VAT rule 5:                                                             |
 |       | if (Sales, Co-contractor, National, Services) then                      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 6     | VAT rule 6:                                                             |
 |       | if (Purchases, Intra-community, EU, Goods at normal VAT rate) then      |
@@ -94,9 +92,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 7     | VAT rule 7:                                                             |
 |       | if (Sales, Intra-community, EU, Goods at normal VAT rate) then          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 8     | VAT rule 8:                                                             |
 |       | if (Purchases, Co-contractor, National, Goods at normal VAT rate) then  |
@@ -106,9 +103,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 9     | VAT rule 9:                                                             |
 |       | if (Sales, Co-contractor, National, Goods at normal VAT rate) then      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 10    | VAT rule 10:                                                            |
 |       | if (Purchases, Intra-community, EU, Real estate) then                   |
@@ -118,9 +114,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 11    | VAT rule 11:                                                            |
 |       | if (Sales, Intra-community, EU, Real estate) then                       |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 12    | VAT rule 12:                                                            |
 |       | if (Purchases, Co-contractor, National, Real estate) then               |
@@ -130,9 +125,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 13    | VAT rule 13:                                                            |
 |       | if (Sales, Co-contractor, National, Real estate) then                   |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 14    | VAT rule 14:                                                            |
 |       | if (Purchases, Intra-community, EU, Vehicles) then                      |
@@ -142,9 +136,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 15    | VAT rule 15:                                                            |
 |       | if (Sales, Intra-community, EU, Vehicles) then                          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 16    | VAT rule 16:                                                            |
 |       | if (Purchases, Co-contractor, National, Vehicles) then                  |
@@ -154,9 +147,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 17    | VAT rule 17:                                                            |
 |       | if (Sales, Co-contractor, National, Vehicles) then                      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 18    | VAT rule 18:                                                            |
 |       | if (Purchases, Intra-community, EU, Goods at reduced VAT rate) then     |
@@ -166,9 +158,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 19    | VAT rule 19:                                                            |
 |       | if (Sales, Intra-community, EU, Goods at reduced VAT rate) then         |
-|       | apply 0.09 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 20    | VAT rule 20:                                                            |
 |       | if (Purchases, Co-contractor, National, Goods at reduced VAT rate) then |
@@ -178,9 +169,8 @@ VAT rules
 +-------+-------------------------------------------------------------------------+
 | 21    | VAT rule 21:                                                            |
 |       | if (Sales, Co-contractor, National, Goods at reduced VAT rate) then     |
-|       | apply 0.09 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 22    | VAT rule 22:                                                            |
 |       | if (Purchases, National, Services) then                                 |
@@ -573,15 +563,13 @@ Note that above is for purchases only. Intracom *sales* invoices have no
 
 >>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======================= ================= ============ ============ =========== ================ =========
- Account                 Partner           Debit        Credit       VAT class   Match            Cleared
------------------------ ----------------- ------------ ------------ ----------- ---------------- ---------
- (4000) Customers        Bäckerei Mießen   280,00                                **SLS 4/2018**   Yes
- (4510) VAT due                            56,00                     Services                     Yes
- (4530) VAT returnable                                  56,00        Services                     Yes
- (7000) Sales                                           280,00       Services                     Yes
-                                           **336,00**   **336,00**
-======================= ================= ============ ============ =========== ================ =========
+================== ================= ============ ============ =========== ================ =========
+ Account            Partner           Debit        Credit       VAT class   Match            Cleared
+------------------ ----------------- ------------ ------------ ----------- ---------------- ---------
+ (4000) Customers   Bäckerei Mießen   280,00                                **SLS 4/2018**   Yes
+ (7000) Sales                                      280,00       Services                     Yes
+                                      **280,00**   **280,00**
+================== ================= ============ ============ =========== ================ =========
 <BLANKLINE>
 
 

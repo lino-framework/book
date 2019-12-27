@@ -25,6 +25,8 @@ VAT declaration was no longer saved. Fixed.
 
 Released XL 19.12.6 to PyPI.
 
+Discovered and fixed another bug in the Estonian VAT declaration: a sales
+intracom invoice must not generate any movement with a VAT amount.
 
 2019-12-26
 ==========
