@@ -13,6 +13,19 @@ The apc demo project
 >>> from lino.api.doctest import *
 >>> ses = rt.login('robin')
 
+
+>>> print(analyzer.show_complexity_factors())
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- 32 plugins
+- 52 models
+- 13 user roles
+- 3 user types
+- 185 views
+- 14 dialog actions
+<BLANKLINE>
+
+
+
 Implementation details
 ======================
 
