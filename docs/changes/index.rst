@@ -12,6 +12,7 @@ API changes in the :mod:`lino` and :mod:`lino_xl` packages.
 .. toctree::
    :maxdepth: 1
 
+   2020
    2019
    2018
    old
