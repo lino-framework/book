@@ -17,4 +17,4 @@
 2020-01-01
 ==========
 
-Released to PyPI : lino-react 20.1.0 and lino-amici 20.1.0
+Released to PyPI : lino-react 20.1.0, lino-amici 20.1.0, XL 20.1.0
