@@ -14,6 +14,11 @@
   :local:
 
 
+2020-01-02
+==========
+
+New field :attr:`lino_xl.lib.ledger.Journal.preliminary`.
+
 2020-01-01
 ==========
 

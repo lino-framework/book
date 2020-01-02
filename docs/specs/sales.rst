@@ -217,6 +217,7 @@ The sales journal
  CSH         Livre de caisse              Cash book
  BNK         Bestbank                     Bestbank
  MSC         Opérations diverses          Miscellaneous transactions
+ PRE         Preliminary transactions     Preliminary transactions
  SAL         Fiches de paie               Paychecks
 =========== ============================ ============================ =====================
 <BLANKLINE>

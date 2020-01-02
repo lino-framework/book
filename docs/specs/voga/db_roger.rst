@@ -74,9 +74,9 @@ The database structure
  ledger.Account             ledger.Accounts                18        27
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.FiscalYear          ledger.FiscalYears             5         7
- ledger.Journal             ledger.Journals                24        9
+ ledger.Journal             ledger.Journals                25        10
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
- ledger.MatchRule           ledger.MatchRules              3         23
+ ledger.MatchRule           ledger.MatchRules              3         27
  ledger.Movement            ledger.Movements               12        899
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         268

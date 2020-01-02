@@ -78,11 +78,11 @@ The database models
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        9
  finan.BankStatement         finan.BankStatements           16        4
- finan.BankStatementItem     finan.BankStatementItemTable   10        261
- finan.JournalEntry          finan.FinancialVouchers        14        0
- finan.JournalEntryItem      finan.JournalEntryItemTable    10        0
+ finan.BankStatementItem     finan.BankStatementItemTable   10        263
+ finan.JournalEntry          finan.FinancialVouchers        14        1
+ finan.JournalEntryItem      finan.JournalEntryItemTable    10        4
  finan.PaymentOrder          finan.PaymentOrders            15        4
- finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        28
+ finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        29
  gfks.HelpText               gfks.HelpTexts                 4         2
  healthcare.Plan             healthcare.Plans               4         5
  healthcare.Rule             healthcare.Rules               6         0
@@ -98,12 +98,12 @@ The database models
  ledger.Account              ledger.Accounts                21        27
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
- ledger.Journal              ledger.Journals                24        9
+ ledger.Journal              ledger.Journals                25        10
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
- ledger.MatchRule            ledger.MatchRules              3         23
- ledger.Movement             ledger.Movements               13        894
+ ledger.MatchRule            ledger.MatchRules              3         27
+ ledger.Movement             ledger.Movements               13        901
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
- ledger.Voucher              ledger.Vouchers                9         256
+ ledger.Voucher              ledger.Vouchers                9         257
  lists.List                  lists.Lists                    7         8
  lists.ListType              lists.ListTypes                4         3
  lists.Member                lists.Members                  5         105
@@ -122,7 +122,7 @@ The database models
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25
  sheets.ItemEntry            sheets.ItemEntryTable          7         15
- sheets.PartnerEntry         sheets.PartnerEntryTable       8         45
+ sheets.PartnerEntry         sheets.PartnerEntryTable       8         47
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2

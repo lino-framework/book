@@ -66,7 +66,7 @@ Robin is the system administrator, he has a complete menu:
   - Wages : Paychecks (SAL)
   - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
-  - Miscellaneous transactions : Miscellaneous transactions (MSC)
+  - Miscellaneous transactions : Miscellaneous transactions (MSC), Preliminary transactions (PRE)
 - Reports :
   - Sales : Due invoices, Sales invoice journal
   - Accounting : Accounting Report, Debtors, Creditors
@@ -246,23 +246,24 @@ This site shows a series of due sales invoices
 (:class:`lino_xl.lib.sales.DueInvoices`).
 
 >>> rt.show(sales.DueInvoices)
-===================== =========== ========= ===================== =============== ================ ================
- Due date              Reference   No.       Partner               Total to pay    Balance before   Balance to pay
---------------------- ----------- --------- --------------------- --------------- ---------------- ----------------
- 09/02/2014            SLS         9         Hans Flott & Co       815,96
- 06/05/2014            SLS         19        Bastiaensen Laurent   1 199,85
- 10/06/2014            SLS         29        Evertz Bernd          2 299,81
- 09/09/2014            SLS         38        Ingels Irene          600,00
- 06/11/2014            SLS         49        Lazarus Line          375,00
- 06/01/2015            SLS         1         Radermacher Alfons    31,92
- 18/02/2015            SLS         4         Radermacher Daniela   21,00                            1,05
- 07/03/2015            SLS         11        Radermacher Inge      2 039,82
- 08/03/2015            SLS         12        Radermacher Jean      822,57                           822,57
- 16/03/2015            SLS         13        di Rupo Didier        280,00                           280,00
- 20/03/2015            SLS         14        da Vinci David        535,00                           535,00
- 21/03/2015            SLS         15        da Vinci David        1 110,16        535,00           1 110,16
- 05/04/2015            SLS         10        Radermacher Hedi      2 999,85                         2 999,85
- 13/05/2015            SLS         8         Radermacher Guido     740,00                           740,00
- **Total (14 rows)**               **232**                         **13 870,94**   **535,00**       **6 488,63**
-===================== =========== ========= ===================== =============== ================ ================
+===================== =========== ========= ======================= =============== ================ ================
+ Due date              Reference   No.       Partner                 Total to pay    Balance before   Balance to pay
+--------------------- ----------- --------- ----------------------- --------------- ---------------- ----------------
+ 09/02/2014            SLS         9         Hans Flott & Co         815,96
+ 06/05/2014            SLS         19        Bastiaensen Laurent     1 199,85
+ 10/06/2014            SLS         29        Evertz Bernd            2 299,81
+ 09/09/2014            SLS         38        Ingels Irene            600,00
+ 06/11/2014            SLS         49        Lazarus Line            375,00
+ 06/01/2015            SLS         1         Radermacher Alfons      31,92
+ 14/02/2015            SLS         3         Radermacher Christian   719,60                           35,98
+ 28/02/2015            SLS         9         Radermacher Hans        564,04                           169,21
+ 07/03/2015            SLS         11        Radermacher Inge        2 039,82
+ 08/03/2015            SLS         12        Radermacher Jean        822,57                           822,57
+ 16/03/2015            SLS         13        di Rupo Didier          280,00                           280,00
+ 20/03/2015            SLS         14        da Vinci David          535,00                           535,00
+ 21/03/2015            SLS         15        da Vinci David          1 110,16        535,00           1 110,16
+ 05/04/2015            SLS         10        Radermacher Hedi        2 999,85                         2 999,85
+ 12/04/2015            SLS         7         Radermacher Fritz       240,00                           240,00
+ **Total (15 rows)**               **239**                           **14 633,58**   **535,00**       **6 192,77**
+===================== =========== ========= ======================= =============== ================ ================
 <BLANKLINE>
