@@ -14,10 +14,17 @@
   :local:
 
 
+2020-01-03
+==========
+
+Released :ref:`care` 20.1.0 and :ref:`book` 20.1.0 just to get the :ref:`travis` builds green. 
+Released :ref:`xl` 20.1.1 for :ref:`cosi`.
+
 2020-01-02
 ==========
 
-New field :attr:`lino_xl.lib.ledger.Journal.preliminary`.
+New field :attr:`lino_xl.lib.ledger.Journal.preliminary`, and
+:mod:`lino_xl.lib.vat` now ignores :term:`preliminary transactions`.
 
 2020-01-01
 ==========
