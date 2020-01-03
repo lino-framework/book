@@ -63,170 +63,174 @@ VAT rules
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 2     | VAT rule 2:                                                             |
+|       | if (Outside EU) then                                                    |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 3     | VAT rule 3:                                                             |
 |       | if (Purchases, Intra-community, EU, Services) then                      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 3     | VAT rule 3:                                                             |
+| 4     | VAT rule 4:                                                             |
 |       | if (Sales, Intra-community, EU, Services) then                          |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 4     | VAT rule 4:                                                             |
+| 5     | VAT rule 5:                                                             |
 |       | if (Purchases, Co-contractor, National, Services) then                  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 5     | VAT rule 5:                                                             |
+| 6     | VAT rule 6:                                                             |
 |       | if (Sales, Co-contractor, National, Services) then                      |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 6     | VAT rule 6:                                                             |
+| 7     | VAT rule 7:                                                             |
 |       | if (Purchases, Intra-community, EU, Goods at normal VAT rate) then      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 7     | VAT rule 7:                                                             |
+| 8     | VAT rule 8:                                                             |
 |       | if (Sales, Intra-community, EU, Goods at normal VAT rate) then          |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 8     | VAT rule 8:                                                             |
+| 9     | VAT rule 9:                                                             |
 |       | if (Purchases, Co-contractor, National, Goods at normal VAT rate) then  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 9     | VAT rule 9:                                                             |
+| 10    | VAT rule 10:                                                            |
 |       | if (Sales, Co-contractor, National, Goods at normal VAT rate) then      |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 10    | VAT rule 10:                                                            |
+| 11    | VAT rule 11:                                                            |
 |       | if (Purchases, Intra-community, EU, Real estate) then                   |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 11    | VAT rule 11:                                                            |
+| 12    | VAT rule 12:                                                            |
 |       | if (Sales, Intra-community, EU, Real estate) then                       |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 12    | VAT rule 12:                                                            |
+| 13    | VAT rule 13:                                                            |
 |       | if (Purchases, Co-contractor, National, Real estate) then               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 13    | VAT rule 13:                                                            |
+| 14    | VAT rule 14:                                                            |
 |       | if (Sales, Co-contractor, National, Real estate) then                   |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 14    | VAT rule 14:                                                            |
+| 15    | VAT rule 15:                                                            |
 |       | if (Purchases, Intra-community, EU, Vehicles) then                      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 15    | VAT rule 15:                                                            |
+| 16    | VAT rule 16:                                                            |
 |       | if (Sales, Intra-community, EU, Vehicles) then                          |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 16    | VAT rule 16:                                                            |
+| 17    | VAT rule 17:                                                            |
 |       | if (Purchases, Co-contractor, National, Vehicles) then                  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 17    | VAT rule 17:                                                            |
+| 18    | VAT rule 18:                                                            |
 |       | if (Sales, Co-contractor, National, Vehicles) then                      |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 18    | VAT rule 18:                                                            |
+| 19    | VAT rule 19:                                                            |
 |       | if (Purchases, Intra-community, EU, Goods at reduced VAT rate) then     |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 19    | VAT rule 19:                                                            |
+| 20    | VAT rule 20:                                                            |
 |       | if (Sales, Intra-community, EU, Goods at reduced VAT rate) then         |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 20    | VAT rule 20:                                                            |
+| 21    | VAT rule 21:                                                            |
 |       | if (Purchases, Co-contractor, National, Goods at reduced VAT rate) then |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 21    | VAT rule 21:                                                            |
+| 22    | VAT rule 22:                                                            |
 |       | if (Sales, Co-contractor, National, Goods at reduced VAT rate) then     |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-| 22    | VAT rule 22:                                                            |
+| 23    | VAT rule 23:                                                            |
 |       | if (Purchases, National, Services) then                                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 23    | VAT rule 23:                                                            |
+| 24    | VAT rule 24:                                                            |
 |       | if (Sales, Services) then                                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 24    | VAT rule 24:                                                            |
+| 25    | VAT rule 25:                                                            |
 |       | if (Purchases, National, Goods at normal VAT rate) then                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 25    | VAT rule 25:                                                            |
+| 26    | VAT rule 26:                                                            |
 |       | if (Sales, Goods at normal VAT rate) then                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 26    | VAT rule 26:                                                            |
+| 27    | VAT rule 27:                                                            |
 |       | if (Purchases, National, Real estate) then                              |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 27    | VAT rule 27:                                                            |
+| 28    | VAT rule 28:                                                            |
 |       | if (Sales, Real estate) then                                            |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 28    | VAT rule 28:                                                            |
+| 29    | VAT rule 29:                                                            |
 |       | if (Purchases, National, Vehicles) then                                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 29    | VAT rule 29:                                                            |
+| 30    | VAT rule 30:                                                            |
 |       | if (Sales, Vehicles) then                                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 30    | VAT rule 30:                                                            |
+| 31    | VAT rule 31:                                                            |
 |       | if (Purchases, National, Goods at reduced VAT rate) then                |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 31    | VAT rule 31:                                                            |
+| 32    | VAT rule 32:                                                            |
 |       | if (Sales, Goods at reduced VAT rate) then                              |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 32    | VAT rule 32:                                                            |
+| 33    | VAT rule 33:                                                            |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-<BLANKLINE>
 
 
 For example here is the rule that applies when selling a normal product to a
@@ -274,19 +278,19 @@ VAT declaration
 +=======+======+=======+====================================================================================================================================================================================================+
 | 1     | F1   | [1]   | 20% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                               |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
-|       |      |       | regimes !cocontractor !exempt !intracom !tax_free |br|                                                                                                                                             |
+|       |      |       | regimes normal subject |br|                                                                                                                                                                        |
 |       |      |       | classes goods services |br|                                                                                                                                                                        |
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 2     | F2   | [2]   | 9% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                                |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
-|       |      |       | regimes !cocontractor !exempt !intracom !tax_free |br|                                                                                                                                             |
+|       |      |       | regimes normal subject |br|                                                                                                                                                                        |
 |       |      |       | classes reduced |br|                                                                                                                                                                               |
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 3     | F3   | [3]   | 0% määraga maksustatavad toimingud ja tehingud, sh |br|                                                                                                                                            |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
-|       |      |       | regimes cocontractor exempt intracom tax_free |br|                                                                                                                                                 |
+|       |      |       | regimes !normal !subject |br|                                                                                                                                                                      |
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 31    | F31  | [31]  | 1) kauba ühendusesisene käive ja teise liikmesriigi maksukohustuslasele / piiratud maksukohustuslasele osutatud teenuste käive kokku, sh |br|                                                      |
