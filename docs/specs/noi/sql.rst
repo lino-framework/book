@@ -1,6 +1,5 @@
-.. include:: /../docs/shared/include/defs.rst
 .. doctest docs/specs/noi/sql.rst
-
+.. include:: /../docs/shared/include/defs.rst
 .. _specs.noi.sql:
 
 ==================================
@@ -10,6 +9,11 @@ Exploring SQL activity in Lino Noi
 This document helps us to inspect and visualize some performance problems
 encountered on Jane.
 
+
+.. contents::
+  :local:
+
+.. include:: /../docs/shared/include/tested.rst
 
 We use the :mod:`lino_book.projects.team` demo database.
 
@@ -217,26 +221,33 @@ SELECT tickets_ticket.id,
        T9.regular_hours,
        T9.extra_hours,
        T9.free_hours,
-       T10.id,
-       T10.email,
-       T10.language,
-       T10.url,
-       T10.phone,
-       T10.gsm,
-       T10.fax,
-       T10.country_id,
-       T10.city_id,
-       T10.zip_code,
-       T10.region_id,
-       T10.addr1,
-       T10.street_prefix,
-       T10.street,
-       T10.street_no,
-       T10.street_box,
-       T10.addr2,
-       T10.prefix,
-       T10.name,
-       T10.remarks
+       T11.id,
+       T11.email,
+       T11.language,
+       T11.url,
+       T11.phone,
+       T11.gsm,
+       T11.fax,
+       T11.country_id,
+       T11.city_id,
+       T11.zip_code,
+       T11.region_id,
+       T11.addr1,
+       T11.street_prefix,
+       T11.street,
+       T11.street_no,
+       T11.street_box,
+       T11.addr2,
+       T11.prefix,
+       T11.name,
+       T11.remarks,
+       T10.partner_ptr_id,
+       T10.title,
+       T10.first_name,
+       T10.middle_name,
+       T10.last_name,
+       T10.gender,
+       T10.birth_date
 FROM tickets_ticket
 INNER JOIN tickets_site ON (tickets_ticket.site_id = tickets_site.id)
 LEFT OUTER JOIN users_user ON (tickets_ticket.user_id = users_user.person_ptr_id)
@@ -246,11 +257,11 @@ LEFT OUTER JOIN users_user T6 ON (tickets_ticket.assigned_to_id = T6.person_ptr_
 LEFT OUTER JOIN contacts_person T7 ON (T6.person_ptr_id = T7.partner_ptr_id)
 LEFT OUTER JOIN contacts_partner T8 ON (T7.partner_ptr_id = T8.id)
 LEFT OUTER JOIN tickets_ticket T9 ON (tickets_ticket.duplicate_of_id = T9.id)
-LEFT OUTER JOIN contacts_partner T10 ON (tickets_ticket.end_user_id = T10.id)
+LEFT OUTER JOIN contacts_person T10 ON (tickets_ticket.end_user_id = T10.partner_ptr_id)
+LEFT OUTER JOIN contacts_partner T11 ON (T10.partner_ptr_id = T11.id)
 WHERE (tickets_ticket.private = FALSE
        AND tickets_site.private = FALSE)
 ORDER BY tickets_ticket.id DESC
-
 
 During startup there were two SQL queries:
 

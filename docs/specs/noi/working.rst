@@ -222,12 +222,12 @@ it's not an urgent bug because that's not any normal situation (you are not
 going to write reports for a date range when there are still active session).
 
 >>> rt.login("robin").show(working.TicketsByReport, obj)
-... #doctest: -REPORT_UDIFF
+... #doctest: -REPORT_NDIFF +NORMALIZE_WHITESPACE
 ==== =============================================== =============== ======== ========= ========== ======= ======
  ID   Ticket                                          End user        Site     State     Regular    Extra   Free
 ---- ----------------------------------------------- --------------- -------- --------- ---------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Arens Andreas   welket   New       0:03
- 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Arens Andreas   welket   Working   1:24
+ 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Andreas Arens   welket   New       0:03
+ 4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Andreas Arens   welket   Working   1:24
                                                                                          **1:27**
 ==== =============================================== =============== ======== ========= ========== ======= ======
 <BLANKLINE>
