@@ -1,14 +1,14 @@
 .. include:: /../docs/shared/include/defs.rst
 .. _lino.changes.2020:
 .. _xl.changes.2020:
+.. _book.changes.2020:
 
 ====
 2020
 ====
 
-.. Note: Changes are grouped by date. Every new day gives a new
-   heading. If a release deserves separate release notes, we create a separate
-   document and this file will have a link to it.
+This is the 2020 :term:`change log` for :ref:`book`.
+General information about how to read and maintain this document in :ref:`dev.changes`.
 
 .. contents::
   :local:
@@ -17,8 +17,11 @@
 2020-01-03
 ==========
 
-Released :ref:`care` 20.1.0 and :ref:`book` 20.1.0 just to get the :ref:`travis` builds green. 
+Released :ref:`care` 20.1.0 and :ref:`book` 20.1.0 just to get the :ref:`travis` builds green.
 Released :ref:`xl` 20.1.1 for :ref:`cosi`.
+
+More bugfixes in :mod:`lino_xl.lib.eevat` : Sales invoices to
+:attr:`lino_xl.lib.eevat.VatRegimes.outside` weren't handled correctly.
 
 2020-01-02
 ==========

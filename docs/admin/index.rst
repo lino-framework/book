@@ -3,9 +3,8 @@
 .. _lino.admin:
 
 ===================
-Administrator Guide
+Hosting Guide
 ===================
-
 
 This part of the documentation is for :term:`server administrators <server
 administrator>`  who set up or maintain a server which hosts one or several Lino
@@ -33,6 +32,7 @@ Installation
 
     root
     install
+    install_demo
     dbengine
     appy
     multiple_frontends

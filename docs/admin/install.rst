@@ -1,3 +1,5 @@
+.. _getlino.install.prod:
+.. _getlino.install.admin:
 .. _lino.admin.install:
 
 ======================================
@@ -10,9 +12,6 @@ Installing Lino on a production server
 Here is a set of conventions which we suggest to use as a :term:`site
 maintainer` when setting up a Lino :term:`production server`.
 
-
-.. _getlino.install.prod:
-.. _getlino.install.admin:
 
 Configure a Lino production server
 ==================================
@@ -67,28 +66,3 @@ its Python environment::
 
   $ go prj1
   $ a
-
-
-.. _getlino.install.demo:
-
-Configure a Lino demo server
-============================
-
-Warning : This is the deeper Python jungle. Don't try this before you have
-installed a few contributor environments and production servers.
-
-Run :cmd:`getlino configure` as root::
-
-   $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/master --clone
-
-That is, you tell getlino to clone all repositories and to create a shared :term:`virtualenv`.
-
-You may create other shared virtualenvs by changing the branch and clone another
-set of repositories::
-
-   $ sudo -H env PATH=$PATH getlino configure --shared-env /usr/local/lino/shared/stable --clone --branch stable
-
-Specify ``--shared-env`` when creating demo sites::
-
-   $ sudo -H env PATH=$PATH getlino startsite noi first --shared-env /usr/local/lino/shared/stable
-   $ sudo -H env PATH=$PATH getlino startsite tera second --shared-env /usr/local/lino/shared/master

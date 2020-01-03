@@ -2,6 +2,11 @@
 .. _lino.changes.2019:
 .. _xl.changes.2019:
 
+This is the 2019 :term:`change log` for :ref:`book`.
+General information about how to read and maintain this document in :ref:`dev.changes`.
+
+
+
 ====
 2019
 ====
