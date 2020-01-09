@@ -1,10 +1,8 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2009-2019 Rumma & Ko Ltd
+# Copyright 2009-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 # python setup.py test -s tests.test_misc.PackagesTests
-
-from __future__ import unicode_literals
 
 import sys
 
@@ -34,6 +32,7 @@ install_requires = [
     'lino_avanti',
     'lino_tera',
     'lino_amici',
+    'lino_openui5',
     'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
     'mock', 'sqlparse',
     'django-mailbox@git+https://github.com/cylonoven/django-mailbox',
@@ -41,7 +40,7 @@ install_requires = [
 
 SETUP_INFO = dict(
     name='lino_book',
-    version='19.12.0',
+    version='20.1.0',
     install_requires=install_requires,
     # dependency_links=[
     #     'git+https://github.com/cylonoven/django-mailbox.git#egg=django_mailbox'],

@@ -2,6 +2,11 @@
 .. _lino.changes.2019:
 .. _xl.changes.2019:
 
+This is the 2019 :term:`change log` for :ref:`book`.
+General information about how to read and maintain this document in :ref:`dev.changes`.
+
+
+
 ====
 2019
 ====
@@ -14,10 +19,24 @@
   :local:
 
 
+2019-12-30
+==========
+
+New plugin configuration parameter :attr:`lino_xl.lib.cal.Plugin.demo_absences`.
+
 2019-12-27
 ==========
 
 Release Lino 19.12.3 and XL 19.12.5 to PyPI.
+
+XL 19.12.5 fixed one bug but introduced another: :meth:`register_voucher` is now
+being called after state change, so the side effect of updating the fields of a
+VAT declaration was no longer saved. Fixed.
+
+Released XL 19.12.6 to PyPI.
+
+Discovered and fixed a bug in :mod:`lino_xl.lib.eevat`: a sales intracom invoice
+must not generate any movement with a VAT amount.
 
 2019-12-26
 ==========
@@ -34,7 +53,6 @@ a  :class:`DeclarationField` with a condition on
 ==========
 
 Fixed a subtle bug that might have been the cause for :ticket:`3178`.
-
 
 2019-12-22
 ==========

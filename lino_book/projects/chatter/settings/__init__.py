@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2017 Rumma & Ko Ltd
+# Copyright 2017-2019 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -20,9 +20,10 @@ class Site(Site):
 
     languages = 'en'
 
+    default_ui = "lino_react.react"
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.users'
         yield 'lino.modlib.notify'
         yield 'lino_xl.lib.groups'
-        

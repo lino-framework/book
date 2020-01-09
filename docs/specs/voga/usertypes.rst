@@ -32,7 +32,7 @@ users.UserTypes.admin:900
   - Wages : Paychecks (SAL)
   - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
-  - Miscellaneous transactions : Miscellaneous transactions (MSC)
+  - Miscellaneous transactions : Miscellaneous transactions (MSC), Preliminary transactions (PRE)
 - Reports :
   - Activities : Status Report
   - Sales : Due invoices, Sales invoice journal
@@ -79,7 +79,7 @@ Monique is a secretary.
   - Wages : Paychecks (SAL)
   - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
-  - Miscellaneous transactions : Miscellaneous transactions (MSC)
+  - Miscellaneous transactions : Miscellaneous transactions (MSC), Preliminary transactions (PRE)
 - Reports :
   - Activities : Status Report
   - Sales : Due invoices, Sales invoice journal
@@ -120,7 +120,7 @@ Marianne is a "simple user".
   - Wages : Paychecks (SAL)
   - Financial : Bestbank Payment Orders (PMO), Cash book (CSH), Bestbank (BNK)
   - VAT : VAT declarations (VAT)
-  - Miscellaneous transactions : Miscellaneous transactions (MSC)
+  - Miscellaneous transactions : Miscellaneous transactions (MSC), Preliminary transactions (PRE)
 - Reports :
   - Activities : Status Report
   - Sales : Due invoices, Sales invoice journal

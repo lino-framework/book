@@ -5,11 +5,14 @@
 Deletion handlers in Lino Noi
 =============================
 
-..  doctest init:
+.. contents::
+  :local:
 
-    >>> import lino
-    >>> lino.startup('lino_book.projects.team.settings.doctests')
-    >>> from lino.api.doctest import *
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
 
 
 Here is a list of foreign keys in :ref:`noi` and their on_delete
@@ -38,10 +41,10 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr
-  - PROTECT : lists.Member.partner, tickets.Ticket.end_user, working.ServiceReport.interesting_for
+  - PROTECT : lists.Member.partner, working.ServiceReport.interesting_for
 - contacts.Person :
   - CASCADE : users.User.person_ptr
-  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Site.contact_person, working.ServiceReport.contact_person
+  - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Site.contact_person, tickets.Ticket.end_user, working.ServiceReport.contact_person
 - contacts.RoleType :
   - PROTECT : cal.Event.contact_role, cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, tickets.Site.contact_role, working.ServiceReport.contact_role
 - contenttypes.ContentType :

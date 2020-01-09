@@ -24,7 +24,7 @@ stumble over a section that does not satisfy the goal of this book.
 
    Developer Guide </dev/index>
    Contributor Guide </team/index>
-   Administrator Guide </admin/index>
+   Hoster Guide </admin/index>
    User Guide </guide/index>
    /dev/newbies/index
 

@@ -16,6 +16,7 @@ Journals
 
 >>> ses = settings.SITE.login('robin')
 >>> ses.show(ledger.Journals, column_names="ref name trade_type account dc")
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =========== ============================ ============================ ============================ ===================== =============================== ===========================
  Reference   Designation                  Designation (de)             Designation (fr)             Trade type            Account                         Primary booking direction
 ----------- ---------------------------- ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
@@ -26,6 +27,7 @@ Journals
  CSH         Cash book                    Kassenbuch                   Livre de caisse                                    (5700) Cash                     Credit
  BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Miscellaneous transactions   Miscellaneous transactions   Opérations diverses                                (5700) Cash                     Credit
+ PRE         Preliminary transactions     Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
  SAL         Paychecks                    Lohnscheine                  Fiches de paie                                     (5700) Cash                     Credit
  VAT         VAT declarations             MwSt.-Erklärungen            Déclarations TVA             Taxes                 (4513) VAT declared             Debit
 =========== ============================ ============================ ============================ ===================== =============================== ===========================

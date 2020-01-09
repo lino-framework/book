@@ -177,6 +177,7 @@ VAT declaration
 +------+------+------+-------------------------------------------------+
 | 85   | F85  | [85] | CN purchases on other operations |br|           |
 |      |      |      | columns 81 82 83 |br|                           |
+|      |      |      | regimes !delayed !intracom |br|                 |
 |      |      |      | MvtDeclarationField Kredit |br|                 |
 +------+------+------+-------------------------------------------------+
 | 86   | F86  | [86] | IC purchases and ABC sales |br|                 |
@@ -196,6 +197,7 @@ VAT declaration
 +------+------+------+-------------------------------------------------+
 | 54   | F54  | [54] | Due VAT for 01, 02 and 03 |br|                  |
 |      |      |      | columns 54 |br|                                 |
+|      |      |      | regimes !cocontractor !delayed !intracom |br|   |
 |      |      |      | MvtDeclarationField Kredit |br|                 |
 +------+------+------+-------------------------------------------------+
 | 55   | F55  | [55] | Due VAT for 86 and 88 |br|                      |

@@ -53,7 +53,7 @@ VAT rules
 =========
 
 >>> rt.show(vat.VatRules, language="en")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 +-------+-------------------------------------------------------------------------+
 | value | Description                                                             |
 +=======+=========================================================================+
@@ -63,180 +63,174 @@ VAT rules
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 | 2     | VAT rule 2:                                                             |
+|       | if (Outside EU) then                                                    |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 3     | VAT rule 3:                                                             |
 |       | if (Purchases, Intra-community, EU, Services) then                      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 3     | VAT rule 3:                                                             |
-|       | if (Sales, Intra-community, EU, Services) then                          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 4     | VAT rule 4:                                                             |
+|       | if (Sales, Intra-community, EU, Services) then                          |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 5     | VAT rule 5:                                                             |
 |       | if (Purchases, Co-contractor, National, Services) then                  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 5     | VAT rule 5:                                                             |
-|       | if (Sales, Co-contractor, National, Services) then                      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 6     | VAT rule 6:                                                             |
+|       | if (Sales, Co-contractor, National, Services) then                      |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 7     | VAT rule 7:                                                             |
 |       | if (Purchases, Intra-community, EU, Goods at normal VAT rate) then      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 7     | VAT rule 7:                                                             |
-|       | if (Sales, Intra-community, EU, Goods at normal VAT rate) then          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 8     | VAT rule 8:                                                             |
+|       | if (Sales, Intra-community, EU, Goods at normal VAT rate) then          |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 9     | VAT rule 9:                                                             |
 |       | if (Purchases, Co-contractor, National, Goods at normal VAT rate) then  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 9     | VAT rule 9:                                                             |
-|       | if (Sales, Co-contractor, National, Goods at normal VAT rate) then      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 10    | VAT rule 10:                                                            |
+|       | if (Sales, Co-contractor, National, Goods at normal VAT rate) then      |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 11    | VAT rule 11:                                                            |
 |       | if (Purchases, Intra-community, EU, Real estate) then                   |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 11    | VAT rule 11:                                                            |
-|       | if (Sales, Intra-community, EU, Real estate) then                       |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 12    | VAT rule 12:                                                            |
+|       | if (Sales, Intra-community, EU, Real estate) then                       |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 13    | VAT rule 13:                                                            |
 |       | if (Purchases, Co-contractor, National, Real estate) then               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 13    | VAT rule 13:                                                            |
-|       | if (Sales, Co-contractor, National, Real estate) then                   |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 14    | VAT rule 14:                                                            |
+|       | if (Sales, Co-contractor, National, Real estate) then                   |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 15    | VAT rule 15:                                                            |
 |       | if (Purchases, Intra-community, EU, Vehicles) then                      |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 15    | VAT rule 15:                                                            |
-|       | if (Sales, Intra-community, EU, Vehicles) then                          |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 16    | VAT rule 16:                                                            |
+|       | if (Sales, Intra-community, EU, Vehicles) then                          |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 17    | VAT rule 17:                                                            |
 |       | if (Purchases, Co-contractor, National, Vehicles) then                  |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 17    | VAT rule 17:                                                            |
-|       | if (Sales, Co-contractor, National, Vehicles) then                      |
-|       | apply 0.20 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 18    | VAT rule 18:                                                            |
+|       | if (Sales, Co-contractor, National, Vehicles) then                      |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 19    | VAT rule 19:                                                            |
 |       | if (Purchases, Intra-community, EU, Goods at reduced VAT rate) then     |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 19    | VAT rule 19:                                                            |
-|       | if (Sales, Intra-community, EU, Goods at reduced VAT rate) then         |
-|       | apply 0.09 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 20    | VAT rule 20:                                                            |
+|       | if (Sales, Intra-community, EU, Goods at reduced VAT rate) then         |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 21    | VAT rule 21:                                                            |
 |       | if (Purchases, Co-contractor, National, Goods at reduced VAT rate) then |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 |       | (return to VAT returnable)                                              |
 +-------+-------------------------------------------------------------------------+
-| 21    | VAT rule 21:                                                            |
-|       | if (Sales, Co-contractor, National, Goods at reduced VAT rate) then     |
-|       | apply 0.09 %                                                            |
-|       | and book to VAT due                                                     |
-|       | (return to VAT returnable)                                              |
-+-------+-------------------------------------------------------------------------+
 | 22    | VAT rule 22:                                                            |
+|       | if (Sales, Co-contractor, National, Goods at reduced VAT rate) then     |
+|       | apply 0 %                                                               |
+|       | and book to None                                                        |
++-------+-------------------------------------------------------------------------+
+| 23    | VAT rule 23:                                                            |
 |       | if (Purchases, National, Services) then                                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 23    | VAT rule 23:                                                            |
+| 24    | VAT rule 24:                                                            |
 |       | if (Sales, Services) then                                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 24    | VAT rule 24:                                                            |
+| 25    | VAT rule 25:                                                            |
 |       | if (Purchases, National, Goods at normal VAT rate) then                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 25    | VAT rule 25:                                                            |
+| 26    | VAT rule 26:                                                            |
 |       | if (Sales, Goods at normal VAT rate) then                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 26    | VAT rule 26:                                                            |
+| 27    | VAT rule 27:                                                            |
 |       | if (Purchases, National, Real estate) then                              |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 27    | VAT rule 27:                                                            |
+| 28    | VAT rule 28:                                                            |
 |       | if (Sales, Real estate) then                                            |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 28    | VAT rule 28:                                                            |
+| 29    | VAT rule 29:                                                            |
 |       | if (Purchases, National, Vehicles) then                                 |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 29    | VAT rule 29:                                                            |
+| 30    | VAT rule 30:                                                            |
 |       | if (Sales, Vehicles) then                                               |
 |       | apply 0.20 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 30    | VAT rule 30:                                                            |
+| 31    | VAT rule 31:                                                            |
 |       | if (Purchases, National, Goods at reduced VAT rate) then                |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT deductible                                              |
 +-------+-------------------------------------------------------------------------+
-| 31    | VAT rule 31:                                                            |
+| 32    | VAT rule 32:                                                            |
 |       | if (Sales, Goods at reduced VAT rate) then                              |
 |       | apply 0.09 %                                                            |
 |       | and book to VAT due                                                     |
 +-------+-------------------------------------------------------------------------+
-| 32    | VAT rule 32:                                                            |
+| 33    | VAT rule 33:                                                            |
 |       | apply 0 %                                                               |
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
-<BLANKLINE>
 
 
 For example here is the rule that applies when selling a normal product to a
@@ -267,6 +261,132 @@ sales invoice to an intracom partner, there is simply no VAT to be generated.
 IOW even for services and good for which national customers must pay VAT
 (because their VAT class is normal or reduced but not exempt), the VAT rule
 specifies a rate of 0.
+
+
+
+VAT declaration
+===============
+
+.. class:: DeclarationFields
+
+    The list of fields in a VAT declaration.
+
+>>> rt.show(eevat.DeclarationFields)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| value | name | text  | Description                                                                                                                                                                                        |
++=======+======+=======+====================================================================================================================================================================================================+
+| 1     | F1   | [1]   | 20% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                               |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes normal subject |br|                                                                                                                                                                        |
+|       |      |       | classes goods services |br|                                                                                                                                                                        |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2     | F2   | [2]   | 9% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                                |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes normal subject |br|                                                                                                                                                                        |
+|       |      |       | classes reduced |br|                                                                                                                                                                               |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 3     | F3   | [3]   | 0% määraga maksustatavad toimingud ja tehingud, sh |br|                                                                                                                                            |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes !normal !subject |br|                                                                                                                                                                      |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 31    | F31  | [31]  | 1) kauba ühendusesisene käive ja teise liikmesriigi maksukohustuslasele / piiratud maksukohustuslasele osutatud teenuste käive kokku, sh |br|                                                      |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes cocontractor intracom |br|                                                                                                                                                                 |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 311   | F311 | [311] | 1) kauba ühendusesisene käive |br|                                                                                                                                                                 |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes intracom |br|                                                                                                                                                                              |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 32    | F32  | [32]  | 2) kauba eksport, sh |br|                                                                                                                                                                          |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes exempt tax_free |br|                                                                                                                                                                       |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 321   | F321 | [321] | 1) käibemaksutagastusega müük reisijale |br|                                                                                                                                                       |
+|       |      |       | columns 10 |br|                                                                                                                                                                                    |
+|       |      |       | regimes tax_free |br|                                                                                                                                                                              |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 4     | F4   | [4]   | Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) |br|                                                                                                                                              |
+|       |      |       | columns 40 |br|                                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 41    | F41  | [41]  | Impordilt tasumisele kuuluv käibemaks |br|                                                                                                                                                         |
+|       |      |       | columns 41 |br|                                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 5     | F5   | [5]   | Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh |br|                                                                                                                         |
+|       |      |       | columns 50 |br|                                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 51    | F51  | [51]  | 1) impordilt tasutud või tasumisele kuuluv käibemaks |br|                                                                                                                                          |
+|       |      |       | columns 50 |br|                                                                                                                                                                                    |
+|       |      |       | regimes intracom |br|                                                                                                                                                                              |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 52    | F52  | [52]  | 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks |br|                                                                                                                               |
+|       |      |       | columns 50 |br|                                                                                                                                                                                    |
+|       |      |       | classes real_estate |br|                                                                                                                                                                           |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 53    | F53  | [53]  | 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks |br|                          |
+|       |      |       | columns 50 |br|                                                                                                                                                                                    |
+|       |      |       | classes vehicles |br|                                                                                                                                                                              |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 54    | F54  | [54]  | 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks |br|                       |
+|       |      |       | columns 50 |br|                                                                                                                                                                                    |
+|       |      |       | classes vehicles |br|                                                                                                                                                                              |
+|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 6     | F6   | [6]   | Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh |br|                                                                                            |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 61    | F61  | [61]  | 1) kauba ühendusesisene soetamine |br|                                                                                                                                                             |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | regimes intracom |br|                                                                                                                                                                              |
+|       |      |       | classes goods |br|                                                                                                                                                                                 |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 7     | F7   | [7]   | Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh |br|                                                                                                                   |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | regimes !intracom |br|                                                                                                                                                                             |
+|       |      |       | classes !goods |br|                                                                                                                                                                                |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 71    | F71  | [71]  | 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) |br|                                                                             |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | regimes !intracom |br|                                                                                                                                                                             |
+|       |      |       | classes !goods |br|                                                                                                                                                                                |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 8     | F8   | [8]   | Maksuvaba käive |br|                                                                                                                                                                               |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | classes exempt |br|                                                                                                                                                                                |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 9     | F9   | [9]   | Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus |br|  |
+|       |      |       | columns 61 |br|                                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 10    | F10  | [10]  | Täpsustused (-) |br|                                                                                                                                                                               |
+|       |      |       | WritableDeclarationField Credit |br|                                                                                                                                                               |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 11    | F11  | [11]  | Täpsustused (+) |br|                                                                                                                                                                               |
+|       |      |       | WritableDeclarationField Debit |br|                                                                                                                                                                |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 13    | F13  | [13]  | Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) |br|                                                                                  |
+|       |      |       | SumDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | = F4 + F41 + F5 + F10 + F11 |br|                                                                                                                                                                   |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<BLANKLINE>
 
 
 Available VAT regimes
@@ -447,15 +567,13 @@ Note that above is for purchases only. Intracom *sales* invoices have no
 
 >>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======================= ================= ============ ============ =========== ================ =========
- Account                 Partner           Debit        Credit       VAT class   Match            Cleared
------------------------ ----------------- ------------ ------------ ----------- ---------------- ---------
- (4000) Customers        Bäckerei Mießen   280,00                                **SLS 4/2018**   Yes
- (4510) VAT due                            56,00                     Services                     Yes
- (4530) VAT returnable                                  56,00        Services                     Yes
- (7000) Sales                                           280,00       Services                     Yes
-                                           **336,00**   **336,00**
-======================= ================= ============ ============ =========== ================ =========
+================== ================= ============ ============ =========== ================ =========
+ Account            Partner           Debit        Credit       VAT class   Match            Cleared
+------------------ ----------------- ------------ ------------ ----------- ---------------- ---------
+ (4000) Customers   Bäckerei Mießen   280,00                                **SLS 4/2018**   Yes
+ (7000) Sales                                      280,00       Services                     Yes
+                                      **280,00**   **280,00**
+================== ================= ============ ============ =========== ================ =========
 <BLANKLINE>
 
 

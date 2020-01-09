@@ -1,0 +1,43 @@
+.. include:: /../docs/shared/include/defs.rst
+.. _lino.changes.2020:
+.. _xl.changes.2020:
+.. _book.changes.2020:
+
+====
+2020
+====
+
+This is the 2020 :term:`change log` for :ref:`book`.
+General information about how to read and maintain this document in :ref:`dev.changes`.
+
+.. contents::
+  :local:
+
+2020-01-09
+==========
+
+The ShowInsert action now has a more specific help text.
+
+:class:`lino_xl.lib.ledger.JournalsOverview` has now display_mode "summary".
+
+Released :ref:`xl` 20.1.2' for :ref:`cosi`.
+
+2020-01-03
+==========
+
+Released :ref:`care` 20.1.0 and :ref:`book` 20.1.0 just to get the :ref:`travis` builds green.
+Released :ref:`xl` 20.1.1 for :ref:`cosi`.
+
+More bugfixes in :mod:`lino_xl.lib.eevat` : Sales invoices to
+:attr:`lino_xl.lib.eevat.VatRegimes.outside` weren't handled correctly.
+
+2020-01-02
+==========
+
+New field :attr:`lino_xl.lib.ledger.Journal.preliminary`, and
+:mod:`lino_xl.lib.vat` now ignores :term:`preliminary transactions`.
+
+2020-01-01
+==========
+
+Released to PyPI : lino-react 20.1.0, lino-amici 20.1.0, XL 20.1.0

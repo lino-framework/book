@@ -109,7 +109,8 @@ Some more concepts:
 
   Accounting period
 
-    Usually (but not always) same as a calendar month.
+    The month or quarter into which a given transaction is booked.
+    Usually the same as the calendar month of the voucher's entry date.
 
   Invoice
 
@@ -133,6 +134,24 @@ Some more concepts:
     The transactions are grouped into **cash statements**, which are similar to
     a :term:`bank statement`, but issued internally and potentially to be signed
     by a responsible person.
+
+  Preliminary transactions
+
+    Transactions that happened before the accounting period they are recorded
+    for. They are part of the opening balance, but not to be considered as part
+    of the actual accounting period's history.
+
+    They are used to enter any relevant account activity of a corporation that
+    has been booked using another software and/or database.
+
+    Note that opening entries, i.e. transactions made at the start of an
+    organization as part of the foundation process, are are not preliminary.
+
+    In Lino, you create them in a dedicated journal that has its
+    :attr:`preliminary <Journal.preliminary>` field checked.
+
+
+
 
 
 There are some secondary models and choice lists:
@@ -377,8 +396,8 @@ debit.
 The balance of an account
 =========================
 
-The **balance** of an account is the amount of money in that account. An
-account balance is either Debit or Credit.
+The **balance** of an account is the amount of money in that account.
+An account balance is either Debit or Credit.
 
 .. class:: Balance
 
@@ -599,14 +618,12 @@ Vouchers
 
     .. attribute:: accounting_period
 
-        The accounting period to which this entry is to be assigned
-        to.  The default value is determined from :attr:`entry_date`.
+        The :term:`accounting period` to use when booking this voucher.
+        The default value is determined from :attr:`entry_date`.
 
         If user changes this field, the :attr:`number` gets
         re-computed because it might change depending on the fiscal
         year of the accounting period.
-
-        """
 
 
     .. attribute:: narration
@@ -615,6 +632,15 @@ Vouchers
         this journal entry.
 
     .. attribute:: number_with_year
+
+      A text like "2019-12".
+
+    .. attribute:: toggle_state
+
+        Toggle between "registered" and "draft" state.
+
+        A one-click action to quickly toggle between the two the most-used
+        states of a voucher.
 
 
     .. method:: do_and_clear(func, do_clear)
@@ -701,6 +727,7 @@ Here is the list of all :term:`journals <journal>`.
  CSH         Livre de caisse              Cash book                                          (5700) Cash                     Credit
  BNK         Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit
+ PRE         Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
  SAL         Fiches de paie               Paychecks                                          (5700) Cash                     Credit
 =========== ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
@@ -727,11 +754,15 @@ Here is the list of all :term:`journals <journal>`.
 
     .. attribute:: yearly_numbering
 
-        Whether the
-        :attr:`number<lino_xl.lib.ledger.models.Voucher.number>` of
+        Whether the :attr:`number <lino_xl.lib.ledger.Voucher.number>` of
         vouchers should restart at 1 every year.
 
     .. attribute:: force_sequence
+
+    .. attribute:: preliminary
+
+        Whether transactions in this journal are considered :term:`preliminary
+        <preliminary transactions>`.
 
     .. attribute:: account
 
@@ -810,6 +841,19 @@ Here is the list of all :term:`journals <journal>`.
     application).
 
     >>> rt.login("robin").show(ledger.JournalsOverview)
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+    **72 Sales invoices (SLS)** **⊕**
+    **0 Sales credit notes (SLC)** **⊕**
+    **105 Purchase invoices (PRC)** **⊕**
+    **0 Bestbank Payment Orders (PMO)** **⊕**
+    **0 Cash book (CSH)** **⊕**
+    **0 Bestbank (BNK)** **⊕**
+    **0 Miscellaneous transactions (MSC)** **⊕**
+    **1 Preliminary transactions (PRE)** **⊕**
+    **0 Paychecks (SAL)** **⊕**
+
+    >>> rt.login("robin").show(ledger.JournalsOverview, nosummary=True)
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     ======================================================== ========= =========== ============ ============ ==========
      Description                                              Total     This year   This month   Unfinished   Warnings
     -------------------------------------------------------- --------- ----------- ------------ ------------ ----------
@@ -820,8 +864,9 @@ Here is the list of all :term:`journals <journal>`.
      Cash book (CSH) / **New Cash statement**
      Bestbank (BNK) / **New Bank statement**
      Miscellaneous transactions (MSC) / **New Transaction**
+     Preliminary transactions (PRE) / **New Transaction**     **1**
      Paychecks (SAL) / **New Paycheck**
-     **Total (8 rows)**                                       **177**   **36**      **13**       **0**
+     **Total (9 rows)**                                       **178**   **36**      **13**       **0**
     ======================================================== ========= =========== ============ ============ ==========
     <BLANKLINE>
 
@@ -1278,12 +1323,17 @@ This demo site has the following match rules:
  16   (4100) Suppliers                Miscellaneous transactions (MSC)
  17   (6300) Wages                    Miscellaneous transactions (MSC)
  18   (4300) Pending Payment Orders   Miscellaneous transactions (MSC)
- 19   (4000) Customers                Paychecks (SAL)
- 20   (4100) Suppliers                Paychecks (SAL)
- 21   (6300) Wages                    Paychecks (SAL)
- 22   (4300) Pending Payment Orders   Paychecks (SAL)
+ 19   (4000) Customers                Preliminary transactions (PRE)
+ 20   (4100) Suppliers                Preliminary transactions (PRE)
+ 21   (6300) Wages                    Preliminary transactions (PRE)
+ 22   (4300) Pending Payment Orders   Preliminary transactions (PRE)
+ 23   (4000) Customers                Paychecks (SAL)
+ 24   (4100) Suppliers                Paychecks (SAL)
+ 25   (6300) Wages                    Paychecks (SAL)
+ 26   (4300) Pending Payment Orders   Paychecks (SAL)
 ==== =============================== ==================================
 <BLANKLINE>
+
 
 
 For example a :term:`payment order` can be used to pay wages and suppliers
@@ -1332,6 +1382,7 @@ more VAT deductible (sales) than VAT due (purchases).
 =================================== ========== ===============
  Partner                             ID         Balance
 ----------------------------------- ---------- ---------------
+ Niederau Eupen AG                   190        100,00
  Bestbank                            100        2 382,15
  Hans Flott & Co                     108        815,96
  Van Achter NV                       107        1 939,82
@@ -1392,7 +1443,7 @@ more VAT deductible (sales) than VAT due (purchases).
  Radermacher Jean                    163        679,81
  Radermacher Hans                    160        494,80
  Radermacher Hedi                    161        2 999,85
- **Total (60 rows)**                 **8124**   **75 835,05**
+ **Total (61 rows)**                 **8314**   **75 935,05**
 =================================== ========== ===============
 <BLANKLINE>
 
@@ -1429,13 +1480,14 @@ send us a purchase invoice (which we did not yet pay).
 ===================== ========= ===============
  Partner               ID        Balance
 --------------------- --------- ---------------
+ Leffin Electronics    191       50,00
  Rumma & Ko OÜ         101       91,38
  Bäckerei Ausdemwald   102       8 368,19
  Donderweer BV         106       1 521,15
  Bäckerei Mießen       103       17 771,00
  Bäckerei Schmitz      104       48 194,90
  Garage Mergelsberg    105       1 021,04
- **Total (6 rows)**    **621**   **76 967,66**
+ **Total (7 rows)**    **812**   **77 017,66**
 ===================== ========= ===============
 <BLANKLINE>
 
