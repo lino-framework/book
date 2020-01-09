@@ -13,14 +13,14 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
-2020-01-08
+2020-01-09
 ==========
 
 The ShowInsert action now has a more specific help text.
 
 :class:`lino_xl.lib.ledger.JournalsOverview` has now display_mode "summary".
 
-.. not yet Released :ref:`xl` 20.1.2' for :ref:`cosi`.
+Released :ref:`xl` 20.1.2' for :ref:`cosi`.
 
 2020-01-03
 ==========
