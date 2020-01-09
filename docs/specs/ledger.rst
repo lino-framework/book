@@ -842,6 +842,18 @@ Here is the list of all :term:`journals <journal>`.
 
     >>> rt.login("robin").show(ledger.JournalsOverview)
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+    **72 Sales invoices (SLS)** **⊕**
+    **0 Sales credit notes (SLC)** **⊕**
+    **105 Purchase invoices (PRC)** **⊕**
+    **0 Bestbank Payment Orders (PMO)** **⊕**
+    **0 Cash book (CSH)** **⊕**
+    **0 Bestbank (BNK)** **⊕**
+    **0 Miscellaneous transactions (MSC)** **⊕**
+    **1 Preliminary transactions (PRE)** **⊕**
+    **0 Paychecks (SAL)** **⊕**
+
+    >>> rt.login("robin").show(ledger.JournalsOverview, nosummary=True)
+    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
     ======================================================== ========= =========== ============ ============ ==========
      Description                                              Total     This year   This month   Unfinished   Warnings
     -------------------------------------------------------- --------- ----------- ------------ ------------ ----------
