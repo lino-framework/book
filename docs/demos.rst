@@ -30,9 +30,10 @@ Screen casts :
 
 Demo sites:
 
-- Lino Così : `ExtJS <https://cosi-ee-extjs.lino-framework.org>`__ / `React <https://cosi-ee-react.lino-framework.org>`__
-- Lino Noi : `ExtJS <https://team.lino-framework.org>`__ / `React <https://team-react.lino-framework.org>`__
+We currently have two demos of larger lino apps.
 
+- Lino Così : `Accounting software using ExtJS front-end <https://cosi1e.lino-framework.org>`__
+- Lino Noi : ``Ticket and team management using a React front-end <https://noi1r.lino-framework.org>`__
 
 The remaining demos are rather old.
 
