@@ -20,7 +20,10 @@ The ShowInsert action now has a more specific help text.
 
 :class:`lino_xl.lib.ledger.JournalsOverview` has now display_mode "summary".
 
-Released :ref:`xl` 20.1.2' for :ref:`cosi`.
+Released :ref:`xl` 20.1.2.
+
+More bugfixes in :mod:`lino_xl.lib.eevat` and :mod:`lino_xl.lib.vat`.
+
 
 2020-01-03
 ==========

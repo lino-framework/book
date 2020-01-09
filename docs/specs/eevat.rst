@@ -276,17 +276,37 @@ VAT declaration
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | value | name | text  | Description                                                                                                                                                                                        |
 +=======+======+=======+====================================================================================================================================================================================================+
-| 1     | F1   | [1]   | 20% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                               |
+| 1a    | F1a  | [1a]  | 20% määraga maksustatavad müügid |br|                                                                                                                                                              |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
 |       |      |       | regimes normal subject |br|                                                                                                                                                                        |
 |       |      |       | classes goods services |br|                                                                                                                                                                        |
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 2     | F2   | [2]   | 9% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                                |
+| 1b    | F1b  | [1b]  | 20% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt |br|                                                                                                                              |
+|       |      |       | columns 60 61 |br|                                                                                                                                                                                 |
+|       |      |       | regimes intracom |br|                                                                                                                                                                              |
+|       |      |       | classes goods services |br|                                                                                                                                                                        |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1     | F1   | [1]   | 20% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                               |
+|       |      |       | SumDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | = 1a + 1b |br|                                                                                                                                                                                     |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2a    | F2a  | [2a]  | 9% määraga maksustatavad müügid |br|                                                                                                                                                               |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
 |       |      |       | regimes normal subject |br|                                                                                                                                                                        |
 |       |      |       | classes reduced |br|                                                                                                                                                                               |
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2b    | F2b  | [2b]  | 9% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt |br|                                                                                                                               |
+|       |      |       | columns 60 61 |br|                                                                                                                                                                                 |
+|       |      |       | regimes intracom |br|                                                                                                                                                                              |
+|       |      |       | classes reduced |br|                                                                                                                                                                               |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                    |
++-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2     | F2   | [2]   | 9% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                                |
+|       |      |       | SumDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | = 2a + 2b |br|                                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 3     | F3   | [3]   | 0% määraga maksustatavad toimingud ja tehingud, sh |br|                                                                                                                                            |
 |       |      |       | columns 10 |br|                                                                                                                                                                                    |
@@ -384,7 +404,7 @@ VAT declaration
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 13    | F13  | [13]  | Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) |br|                                                                                  |
 |       |      |       | SumDeclarationField Credit |br|                                                                                                                                                                    |
-|       |      |       | = F4 + F41 + F5 + F10 + F11 |br|                                                                                                                                                                   |
+|       |      |       | = 4 + 41 - 5 + 10 - 11 |br|                                                                                                                                                                        |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 <BLANKLINE>
 
@@ -627,6 +647,7 @@ Here is the content of the fields in the detail of that declaration:
 
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+[1a] 20% määraga maksustatavad müügid : 2537.40
 [1] 20% määraga maksustatavad toimingud ja tehingud : 2537.40
 [3] 0% määraga maksustatavad toimingud ja tehingud, sh : 2456.70
 [32] 2) kauba eksport, sh : 2456.70
@@ -642,26 +663,29 @@ Here is the content of the fields in the detail of that declaration:
 [71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 131.15
 [8] Maksuvaba käive : 62.90
 [9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3555.69
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 815.41
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 849.49
 
-Here is another way to see the content of the fields in the detail of that declaration:
 
->>> # rt.login("robin").show_detail(obj)
->>> print(py2rst(obj))
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-(main):
-- **Info** (info):
-  - (info_1): **Start period** (start_period): 2019-05, **End period** (end_period), **Entry date** (entry_date): 04/05/2019, **Accounting period** (accounting_period): 2019-05
-  - **Movements** (MovementsByVoucher): No data to display
-- **Values** (values):
-  - (values_1): **Partner** (partner): Maksu- ja Tolliamet, **Author** (user): Robin Rood, **Workflow** (workflow_buttons): **Registered**
-  - (values_2):
-    - (c1): **[1]** (F1): 2 537,40, **[2]** (F2): , **[3]** (F3): 2 456,70, **[31]** (F31): , **[311]** (F311): , **[32]** (F32): 2 456,70, **[321]** (F321): 1 624,88
-    - (c2): **[4]** (F4): 832,45, **[41]** (F41): 242,50, **[5]** (F5): 225,46, **[51]** (F51): 242,50, **[52]** (F52): , **[53]** (F53): 242,50, **[54]** (F54): 242,50
-    - (c3): **[6]** (F6): 1 343,65, **[61]** (F61): , **[7]** (F7): 131,15, **[71]** (F71): 131,15
-    - (c4): **[8]** (F8): 62,90, **[9]** (F9): 3 555,69, **[10]** (F10): , **[11]** (F11): , **[13]** (F13): 815,41
-  - (values_3):
-    - **VAT sales** (vat.SalesByDeclaration)
-    - **VAT purchases** (vat.PurchasesByDeclaration)
-- **Declared movements** (vat.MovementsByDeclaration)
-<BLANKLINE>
+The 2018-11 VAT declaration has values in both fields 1a and 1b:
+
+>>> obj = eevat.Declaration.objects.get(accounting_period__ref="2018-11")
+>>> obj.print_declared_values()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+[1a] 20% määraga maksustatavad müügid : 845.77
+[1b] 20% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt : 1199.90
+[1] 20% määraga maksustatavad toimingud ja tehingud : 2045.67
+[3] 0% määraga maksustatavad toimingud ja tehingud, sh : 4273.52
+[32] 2) kauba eksport, sh : 4273.52
+[321] 1) käibemaksutagastusega müük reisijale : 673.81
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 271.50
+[41] Impordilt tasumisele kuuluv käibemaks : 239.98
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 209.76
+[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 239.98
+[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : -6.67
+[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : -10.07
+[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : -10.07
+[6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1328.42
+[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 61.10
+[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 61.10
+[9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3517.41
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 301.72

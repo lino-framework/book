@@ -789,9 +789,8 @@ All these three declaration field classes have a common ancestor
        This is used only by sum fields.  The values of all observed fields will
        be added, except inverted fields whose value will be subtracted.
 
-       Note that the booking direction (D or C) also counts. So if the observing
-       sum field is DEBIT, observed CREDIT fields will automatically be
-       subtracted (i.e. you must not prefix them with a "-").
+       Note that the booking direction (D or C) of the observed fields is
+       ignored when computing the sum.
 
     .. attribute:: vat_regimes
     .. attribute:: vat_classes
