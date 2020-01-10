@@ -232,36 +232,44 @@ VAT rules
 |       | and book to None                                                        |
 +-------+-------------------------------------------------------------------------+
 
-
-For example here is the rule that applies when selling a normal product to a
-private person:
+The normal Estonian VAT rate is 20%.  For example here is the rule that applies
+when selling a normal product to a private person:
 
 >>> rule = vat.VatRules.get_vat_rule(vat.VatAreas.national, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods)
-
-The Estonian VAT rate is 20%:
-
 >>> rule.rate
 Decimal('0.20')
 >>> rule.vat_account
 <CommonAccounts.vat_due:4510>
 >>> rule.vat_account.get_object()
 Account #7 ('(4510) VAT due')
+>>> rule.vat_returnable_account is None
+True
 
-This VAT is not returnable:
+Or selling a normal product to a company outside of Europe:
 
->>> rule.vat_returnable
-False
->>> rule.vat_returnable_account
-
->>> vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods).rate
+>>> rule = vat.VatRules.get_vat_rule(vat.VatAreas.international, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods)
+>>> rule.rate
 Decimal('0.20')
+>>> rule.vat_account
+<CommonAccounts.vat_due:4510>
+>>> rule.vat_returnable_account is None
+True
+
+Or selling a normal product to a company in another country of the European Union:
+
+>>> rule = vat.VatRules.get_vat_rule(vat.VatAreas.eu, ledger.TradeTypes.sales, vat.VatRegimes.normal, vat.VatClasses.goods)
+>>> rule.rate
+Decimal('0.20')
+>>> rule.vat_account
+<CommonAccounts.vat_due:4510>
+>>> rule.vat_returnable_account is None
+True
 
 Note that returnable VAT is used only in purchase invoices, not in sales.  In a
-sales invoice to an intracom partner, there is simply no VAT to be generated.
-IOW even for services and good for which national customers must pay VAT
-(because their VAT class is normal or reduced but not exempt), the VAT rule
+sales invoice to an intra-community partner, there is simply no VAT to be
+generated. IOW even for services and goods for which national customers must pay
+VAT (because their VAT class is normal or reduced but not exempt), the VAT rule
 specifies a rate of 0.
-
 
 
 VAT declaration
@@ -579,7 +587,7 @@ PRC 4/2018
 >>> print(invoice.total_incl)
 1199.90
 
-Note that above is for purchases only. Intracom *sales* invoices have no
+Note that above is for purchases only. Intra-Community *sales* invoices have no
 :term:`returnable VAT` because they don't have any VAT at all:
 
 >>> invoice = rt.models.sales.VatProductInvoice.objects.get(number=4, accounting_period__year__ref='2018')
