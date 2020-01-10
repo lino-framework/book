@@ -13,6 +13,12 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-10
+==========
+
+Changes in :mod:`lino_xl.lib.ledger` and :mod:`lino_xl.lib.vat`. Fix booking
+direction of returnable VAT.
+
 2020-01-09
 ==========
 
