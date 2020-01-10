@@ -253,11 +253,9 @@ When no national declaration module is installed, we have only one default
 
     .. attribute:: vat_returnable
 
-        Whether VAT is returnable.
-        Returnable VAT does not increase
-        the total amount of the voucher but causes an additional
-        movement into the :attr:`vat_returnable_account`.
-        See `About returnable VAT`_.
+        Whether VAT is returnable. Returnable VAT does not increase the total
+        amount of the voucher, it causes an additional movement into the
+        :attr:`vat_returnable_account`. See `About returnable VAT`_.
 
     .. attribute:: vat_returnable_account
 

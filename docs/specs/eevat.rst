@@ -283,7 +283,7 @@ VAT declaration
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1b    | F1b  | [1b]  | 20% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt |br|                                                                                                                              |
-|       |      |       | columns 60 61 |br|                                                                                                                                                                                 |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
 |       |      |       | regimes intracom |br|                                                                                                                                                                              |
 |       |      |       | classes goods services |br|                                                                                                                                                                        |
 |       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
@@ -299,10 +299,10 @@ VAT declaration
 |       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 2b    | F2b  | [2b]  | 9% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt |br|                                                                                                                               |
-|       |      |       | columns 60 61 |br|                                                                                                                                                                                 |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
 |       |      |       | regimes intracom |br|                                                                                                                                                                              |
 |       |      |       | classes reduced |br|                                                                                                                                                                               |
-|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 2     | F2   | [2]   | 9% määraga maksustatavad toimingud ja tehingud |br|                                                                                                                                                |
 |       |      |       | SumDeclarationField Credit |br|                                                                                                                                                                    |
@@ -343,27 +343,27 @@ VAT declaration
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 5     | F5   | [5]   | Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh |br|                                                                                                                         |
 |       |      |       | columns 50 |br|                                                                                                                                                                                    |
-|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 51    | F51  | [51]  | 1) impordilt tasutud või tasumisele kuuluv käibemaks |br|                                                                                                                                          |
 |       |      |       | columns 50 |br|                                                                                                                                                                                    |
 |       |      |       | regimes intracom |br|                                                                                                                                                                              |
-|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 52    | F52  | [52]  | 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks |br|                                                                                                                               |
 |       |      |       | columns 50 |br|                                                                                                                                                                                    |
 |       |      |       | classes real_estate |br|                                                                                                                                                                           |
-|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 53    | F53  | [53]  | 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks |br|                          |
 |       |      |       | columns 50 |br|                                                                                                                                                                                    |
 |       |      |       | classes vehicles |br|                                                                                                                                                                              |
-|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 54    | F54  | [54]  | 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks |br|                       |
 |       |      |       | columns 50 |br|                                                                                                                                                                                    |
 |       |      |       | classes vehicles |br|                                                                                                                                                                              |
-|       |      |       | MvtDeclarationField Credit |br|                                                                                                                                                                    |
+|       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 6     | F6   | [6]   | Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh |br|                                                                                            |
 |       |      |       | columns 60 |br|                                                                                                                                                                                    |
@@ -393,7 +393,8 @@ VAT declaration
 |       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 9     | F9   | [9]   | Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus |br|  |
-|       |      |       | columns 61 |br|                                                                                                                                                                                    |
+|       |      |       | columns 60 |br|                                                                                                                                                                                    |
+|       |      |       | classes !goods !real_estate !services !vehicles |br|                                                                                                                                               |
 |       |      |       | MvtDeclarationField Debit |br|                                                                                                                                                                     |
 +-------+------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 10    | F10  | [10]  | Täpsustused (-) |br|                                                                                                                                                                               |
@@ -653,8 +654,8 @@ Here is the content of the fields in the detail of that declaration:
 [32] 2) kauba eksport, sh : 2456.70
 [321] 1) käibemaksutagastusega müük reisijale : 1624.88
 [4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 832.45
-[41] Impordilt tasumisele kuuluv käibemaks : 242.50
-[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 225.46
+[41] Impordilt tasumisele kuuluv käibemaks : -242.50
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 259.54
 [51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 242.50
 [53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
 [54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
@@ -662,9 +663,8 @@ Here is the content of the fields in the detail of that declaration:
 [7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 131.15
 [71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 131.15
 [8] Maksuvaba käive : 62.90
-[9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3555.69
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 849.49
-
+[9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 62.90
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 330.41
 
 The 2018-11 VAT declaration has values in both fields 1a and 1b:
 
@@ -678,14 +678,13 @@ The 2018-11 VAT declaration has values in both fields 1a and 1b:
 [32] 2) kauba eksport, sh : 4273.52
 [321] 1) käibemaksutagastusega müük reisijale : 673.81
 [4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 271.50
-[41] Impordilt tasumisele kuuluv käibemaks : 239.98
-[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 209.76
+[41] Impordilt tasumisele kuuluv käibemaks : -239.98
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 270.20
 [51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 239.98
-[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : -6.67
-[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : -10.07
-[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : -10.07
+[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : 6.67
+[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 10.07
+[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 10.07
 [6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1328.42
 [7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 61.10
 [71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 61.10
-[9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 3517.41
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 301.72
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : -238.68

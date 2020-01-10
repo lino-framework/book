@@ -220,12 +220,12 @@ VAT declaration
 +------+------+------+-------------------------------------------------+
 | XX   | FXX  | [XX] | Total of due taxes |br|                         |
 |      |      |      | SumDeclarationField Kredit |br|                 |
-|      |      |      | = F54 + F55 + F56 + F57 |br|                    |
+|      |      |      | = 54 + 55 + 56 + 57 |br|                        |
 +------+------+------+-------------------------------------------------+
 | 59   | F59  | [59] | Deductible VAT from purchase invoices |br|      |
 |      |      |      | columns 59 |br|                                 |
 |      |      |      | MvtDeclarationField Kredit |br|                 |
-|      |      |      | = F81 + F82 + F83 |br|                          |
+|      |      |      | = 81 + 82 + 83 |br|                             |
 +------+------+------+-------------------------------------------------+
 | 62   | F62  | [62] | Diverse Buchungen |br|                          |
 |      |      |      | WritableDeclarationField Kredit |br|            |
@@ -236,11 +236,11 @@ VAT declaration
 +------+------+------+-------------------------------------------------+
 | YY   | FYY  | [YY] | Total of deductible taxes |br|                  |
 |      |      |      | SumDeclarationField Kredit |br|                 |
-|      |      |      | = F59 + F62 + F64 |br|                          |
+|      |      |      | = 59 + 62 + 64 |br|                             |
 +------+------+------+-------------------------------------------------+
 | 72   | F72  | [72] | Total to pay (+) or to return (-) |br|          |
 |      |      |      | SumDeclarationField Debit |br|                  |
-|      |      |      | = FXX + FYY |br|                                |
+|      |      |      | = XX + YY |br|                                  |
 +------+------+------+-------------------------------------------------+
 <BLANKLINE>
 
