@@ -128,7 +128,6 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - about.About.show : visible for all
 - cal.Calendars.detail : visible for admin
 - cal.Calendars.insert : visible for admin
-- cal.DailyView.detail : visible for customer contributor developer admin
 - cal.EntriesByGuest.insert : visible for customer contributor developer admin
 - cal.EventTypes.detail : visible for admin
 - cal.EventTypes.insert : visible for admin
@@ -139,14 +138,15 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - cal.GuestRoles.merge_row : visible for admin
 - cal.Guests.detail : visible for nobody
 - cal.Guests.insert : visible for nobody
-- cal.MonthlyView.detail : visible for customer contributor developer admin
 - cal.RecurrentEvents.detail : visible for admin
 - cal.RecurrentEvents.insert : visible for admin
 - cal.Rooms.detail : visible for admin
 - cal.Rooms.insert : visible for admin
 - cal.Tasks.detail : visible for admin
 - cal.Tasks.insert : visible for admin
-- cal.WeeklyView.detail : visible for customer contributor developer admin
+- calview.DailyView.detail : visible for customer contributor developer admin
+- calview.MonthlyView.detail : visible for customer contributor developer admin
+- calview.WeeklyView.detail : visible for customer contributor developer admin
 - changes.Changes.detail : visible for admin
 - checkdata.Checkers.detail : visible for admin
 - checkdata.Problems.detail : visible for customer contributor developer admin

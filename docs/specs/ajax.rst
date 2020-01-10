@@ -120,4 +120,4 @@ request without modifications." (`w3.org
 >>> res.status_code
 400
 >>> print(res.content.decode())
-PermissionDenied: As 000 (Anonym) you have no permission to run this action.
+PermissionDenied: As 000 (Anonym) you have no view permission for this action.

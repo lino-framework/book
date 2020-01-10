@@ -20,7 +20,7 @@ class Site(Site):
     #     super(Site, self).setup_plugins()
     #     self.plugins.comments.configure(
     #         commentable_model='contacts.Partner')
-        
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         # yield 'lino.modlib.users'
@@ -34,7 +34,8 @@ class Site(Site):
         # yield 'lino_xl.lib.projects'
         yield 'lino_xl.lib.humanlinks'
         yield 'lino_xl.lib.households'
-        yield 'lino_xl.lib.extensible'
+        yield 'lino_xl.lib.calview'
+        # yield 'lino_xl.lib.extensible'
         yield 'lino_xl.lib.pages'
         yield 'lino.modlib.export_excel'
         yield 'lino_xl.lib.dupable_partners'

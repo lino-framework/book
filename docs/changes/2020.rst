@@ -19,6 +19,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
 Changes in :mod:`lino_xl.lib.ledger` and :mod:`lino_xl.lib.vat`. Fix booking
 direction of returnable VAT.
 
+Done :ticket:`3459` (Move calendar view from "cal" to a separate plugin
+:mod:`lino_xl.lib.calview`). One consequence for data migration: DailyPlannerRow
+has moved from cal to calview
+
+
 2020-01-09
 ==========
 

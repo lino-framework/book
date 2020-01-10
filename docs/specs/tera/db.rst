@@ -21,7 +21,7 @@ Complexity factors
 
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- 46 plugins
+- 47 plugins
 - 98 models
 - 22 user roles
 - 4 user types
@@ -36,7 +36,7 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-46 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, excerpts, courses, users, dashboard, countries, contacts, households, clients, healthcare, products, memo, checkdata, weasyprint, uploads, ledger, bevats, vat, sales, cal, invoicing, sepa, finan, ana, sheets, topics, notes, appypod, export_excel, tinymce, tera, teams, lists, sessions.
+47 apps: lino, staticfiles, about, ipdict, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, excerpts, courses, users, dashboard, countries, contacts, households, clients, healthcare, products, memo, checkdata, weasyprint, uploads, ledger, bevats, vat, sales, cal, calview, invoicing, sepa, finan, ana, sheets, topics, notes, appypod, export_excel, tinymce, tera, teams, lists, sessions.
 98 models:
 =========================== ============================== ========= =======
  Name                        Default table                  #fields   #rows
@@ -46,7 +46,6 @@ The database models
  ana.InvoiceItem             ana.InvoiceItemTable           10        55
  bevats.Declaration          bevats.Declarations            28        3
  cal.Calendar                cal.Calendars                  6         1
- cal.DailyPlannerRow         cal.DailyPlannerRows           7         3
  cal.Event                   cal.OneEvent                   25        363
  cal.EventPolicy             cal.EventPolicies              20        6
  cal.EventType               cal.EventTypes                 23        6
@@ -57,6 +56,7 @@ The database models
  cal.Room                    cal.Rooms                      9         0
  cal.Subscription            cal.Subscriptions              4         0
  cal.Task                    cal.Tasks                      19        0
+ calview.DailyPlannerRow     calview.DailyPlannerRows       7         3
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0
@@ -117,7 +117,7 @@ The database models
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         ...
+ sessions.Session            sessions.SessionTable          3         0
  sheets.AccountEntry         sheets.AccountEntryTable       7         17
  sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
  sheets.Item                 sheets.Items                   9         25

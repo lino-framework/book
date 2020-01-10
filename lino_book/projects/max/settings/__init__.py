@@ -50,6 +50,7 @@ class Site(Site):
         yield 'lino_xl.lib.outbox'
         yield 'lino_xl.lib.cal'
         yield 'lino_xl.lib.courses'
+        yield 'lino_xl.lib.calview'
         yield 'lino_xl.lib.extensible'
         yield 'lino_xl.lib.reception'
         yield 'lino_xl.lib.excerpts'
@@ -79,7 +80,7 @@ class Site(Site):
 
         yield 'lino.modlib.tinymce'
         yield 'lino.modlib.export_excel'
-        
+
         # yield 'lino_welfare.modlib.debts'
         # yield 'lino_welfare.modlib.badges'
         # yield 'lino_welfare.modlib.welfare'
@@ -109,4 +110,3 @@ class Site(Site):
         # lino_xl.lib.reception requires some workflow to be imported
         from lino_xl.lib.cal.workflows import feedback
         super(Site, self).do_site_startup()
-

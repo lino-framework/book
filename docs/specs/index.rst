@@ -69,6 +69,7 @@ Plugins of the Extensions library
    bevats
    c2b
    cal
+   calview
    clients
    coachings
    contacts

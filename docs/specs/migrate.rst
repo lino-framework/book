@@ -55,7 +55,7 @@ Django:
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
 `initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extensible, extjs, gfks, github, groups, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
+  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, calview, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extjs, gfks, github, groups, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
@@ -68,7 +68,7 @@ Running migrations:
 Loading data from ...
 ...
 Updating summary data for User summaries ...
-Installed 600 object(s) from 20 fixture(s)
+Installed 600 object(s) from 21 fixture(s)
 
 Tidy up:
 
@@ -91,13 +91,13 @@ but in a different way.  Django now considers all Lino plugins as "migrated":
 `initdb std demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: staticfiles
-  Apply all migrations: cal, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, groups, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
+  Apply all migrations: cal, calview, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, groups, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
 Synchronizing apps without migrations:
   Creating tables...
     Running deferred SQL...
 Running migrations:
   ...
-Installed 600 object(s) from 20 fixture(s)
+Installed 600 object(s) from 21 fixture(s)
 
 
 >>> from lino import startup
@@ -120,6 +120,7 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'appypod': 'lino_book.projects.migs.settings.migrations.appypod',
  'bootstrap3': 'lino_book.projects.migs.settings.migrations.bootstrap3',
  'cal': 'lino_book.projects.migs.settings.migrations.cal',
+ 'calview': 'lino_book.projects.migs.settings.migrations.calview',
  'changes': 'lino_book.projects.migs.settings.migrations.changes',
  'checkdata': 'lino_book.projects.migs.settings.migrations.checkdata',
  'comments': 'lino_book.projects.migs.settings.migrations.comments',
@@ -129,7 +130,6 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'django_mailbox': 'lino_book.projects.migs.settings.migrations.django_mailbox',
  'excerpts': 'lino_book.projects.migs.settings.migrations.excerpts',
  'export_excel': 'lino_book.projects.migs.settings.migrations.export_excel',
- 'extensible': 'lino_book.projects.migs.settings.migrations.extensible',
  'extjs': 'lino_book.projects.migs.settings.migrations.extjs',
  'gfks': 'lino_book.projects.migs.settings.migrations.gfks',
  'github': 'lino_book.projects.migs.settings.migrations.github',

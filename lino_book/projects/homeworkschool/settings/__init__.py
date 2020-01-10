@@ -48,8 +48,9 @@ class Site(Site):
         yield 'lino_xl.lib.households'
         yield 'lino_xl.lib.notes'
         yield 'lino.modlib.uploads'
-        yield 'lino_xl.lib.extensible'
         yield 'lino_xl.lib.cal'
+        yield 'lino_xl.lib.calview'
+        # yield 'lino_xl.lib.extensible'
         yield 'lino_xl.lib.outbox'
         yield 'lino_xl.lib.pages'
 
@@ -61,4 +62,3 @@ class Site(Site):
 
         yield 'lino.modlib.courses'
         yield 'lino_book.projects.homeworkschool'
-

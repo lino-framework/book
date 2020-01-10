@@ -18,14 +18,13 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, memo, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+42 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, memo, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, calview, wkhtmltopdf, appypod, changes, sessions.
 83 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
  bevats.Declaration         bevats.Declarations            28        15
  cal.Calendar               cal.Calendars                  6         8
- cal.DailyPlannerRow        cal.DailyPlannerRows           7         3
  cal.Event                  cal.OneEvent                   23        1171
  cal.EventPolicy            cal.EventPolicies              20        6
  cal.EventType              cal.EventTypes                 23        10
@@ -36,6 +35,7 @@ The database structure
  cal.Room                   cal.AllRooms                   11        7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
+ calview.DailyPlannerRow    calview.DailyPlannerRows       7         3
  changes.Change             changes.Changes                10        0
  checkdata.Problem          checkdata.Problems             6         22
  contacts.Company           contacts.Companies             26        31

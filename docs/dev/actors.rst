@@ -72,7 +72,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-258
+255
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -82,7 +82,7 @@ and "generic slave tables":
 
 >>> from lino.core import kernel
 >>> len(kernel.master_tables)
-126
+124
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
@@ -101,8 +101,12 @@ lino_xl.lib.countries.models.PlacesByPlace
 
 Another category are virtual tables
 
->>> kernel.virtual_tables
-[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs, lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.cal.ui.DailyView, lino_xl.lib.cal.ui.WeeklyView, lino_xl.lib.cal.ui.MonthlyPlanner, lino_xl.lib.cal.ui.MonthlyView, lino_xl.lib.working.ui.WorkedHours, lino.modlib.users.desktop.UserRoles]
+>>> kernel.virtual_tables  #doctest: +NORMALIZE_WHITESPACE
+[lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs,
+lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.calview.ui.DailyView,
+lino_xl.lib.calview.ui.WeeklyView, lino_xl.lib.calview.ui.MonthlyPlanner,
+lino_xl.lib.calview.ui.MonthlyView, lino_xl.lib.working.ui.WorkedHours,
+lino.modlib.users.desktop.UserRoles]
 
 Another category are choicelists
 
@@ -119,7 +123,7 @@ Another category are choicelists
 And a last category are what we call "frames":
 
 >>> kernel.frames_list
-[lino.modlib.about.models.About, lino_xl.lib.extensible.models.CalendarPanel]
+[lino.modlib.about.models.About]
 
 
 

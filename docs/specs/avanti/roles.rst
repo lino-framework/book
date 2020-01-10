@@ -44,7 +44,7 @@ Site administrator
   - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
-  - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Planner rows, Absence reasons
+  - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Absence reasons, Planner rows
   - Office : Comment Types, Library volumes, Upload Types, Excerpt Types
   - Clients : Client Contact types
   - Career : Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations, Languages
@@ -153,7 +153,6 @@ Each window is **viewable** for a given set of user types.
 - avanti.Clients.merge_row : visible for admin
 - cal.Calendars.detail : visible for staff admin
 - cal.Calendars.insert : visible for staff admin
-- cal.DailyView.detail : visible for user secretary staff admin
 - cal.EntriesByGuest.insert : visible for teacher user coordinator secretary staff admin
 - cal.EntriesByProject.insert : visible for teacher user coordinator secretary staff admin
 - cal.EventTypes.detail : visible for staff admin
@@ -165,14 +164,15 @@ Each window is **viewable** for a given set of user types.
 - cal.GuestRoles.merge_row : visible for admin
 - cal.Guests.detail : visible for teacher user staff admin
 - cal.Guests.insert : visible for teacher user staff admin
-- cal.MonthlyView.detail : visible for user secretary staff admin
 - cal.RecurrentEvents.detail : visible for staff admin
 - cal.RecurrentEvents.insert : visible for staff admin
 - cal.Rooms.detail : visible for staff admin
 - cal.Rooms.insert : visible for staff admin
 - cal.Tasks.detail : visible for staff admin
 - cal.Tasks.insert : visible for staff admin
-- cal.WeeklyView.detail : visible for user secretary staff admin
+- calview.DailyView.detail : visible for user secretary staff admin
+- calview.MonthlyView.detail : visible for user secretary staff admin
+- calview.WeeklyView.detail : visible for user secretary staff admin
 - changes.Changes.detail : visible for admin
 - checkdata.Checkers.detail : visible for admin
 - checkdata.Problems.detail : visible for teacher user auditor coordinator secretary staff admin

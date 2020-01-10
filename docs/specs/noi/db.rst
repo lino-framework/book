@@ -28,7 +28,7 @@ Complexity factors
 - 65 models
 - 21 user roles
 - 5 user types
-- 241 views
+- 238 views
 - 16 dialog actions
 <BLANKLINE>
 
@@ -40,13 +40,12 @@ The database models
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-44 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, extensible, excerpts, memo, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, groups, rest_framework, restful, django_mailbox, mailbox, sessions.
+44 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, calview, excerpts, memo, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, groups, rest_framework, restful, django_mailbox, mailbox, sessions.
 65 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
  cal.Calendar                       cal.Calendars                    6         1
- cal.DailyPlannerRow                cal.DailyPlannerRows             7         3
  cal.Event                          cal.OneEvent                     26        113
  cal.EventPolicy                    cal.EventPolicies                20        6
  cal.EventType                      cal.EventTypes                   23        4
@@ -57,6 +56,7 @@ The database models
  cal.Room                           cal.Rooms                        9         0
  cal.Subscription                   cal.Subscriptions                4         0
  cal.Task                           cal.Tasks                        18        0
+ calview.DailyPlannerRow            calview.DailyPlannerRows         7         3
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
  comments.Comment                   comments.Comments                12        168
@@ -86,7 +86,7 @@ The database models
  lists.ListType                     lists.ListTypes                  4         3
  lists.Member                       lists.Members                    5         90
  notify.Message                     notify.Messages                  11        7
- sessions.Session                   sessions.SessionTable            3         ...
+ sessions.Session                   sessions.SessionTable            3         6
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0
