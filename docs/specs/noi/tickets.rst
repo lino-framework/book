@@ -57,7 +57,7 @@ the detail window of a ticket.
       - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
       - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Uploads** (uploads_UploadsByController) [visible for customer contributor developer admin]
+  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Files** (uploads_UploadsByController) [visible for customer contributor developer admin]
 - **Mentions** (comments_CommentsByMentioned)
 <BLANKLINE>
 

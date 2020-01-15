@@ -523,27 +523,28 @@ Other languages
 
 
 >>> rt.show(vat.VatClasses, language="et")
-======= ============= ===========================
+======= ============= ============================
  value   nimi          text
-------- ------------- ---------------------------
- 010     goods         Goods at normal VAT rate
- 020     reduced       Goods at reduced VAT rate
- 030     exempt        Goods exempt from VAT
+------- ------------- ----------------------------
+ 010     goods         Kaup tavalise KM määraga
+ 020     reduced       Kaup vähendatud KM määraga
+ 030     exempt        Kaup ilma käibemaksuta
  100     services      Teenused
  200     investments   Investeeringud
- 210     real_estate   Real estate
- 220     vehicles      Vehicles
-======= ============= ===========================
+ 210     real_estate   Kinnisvara
+ 220     vehicles      Sõidukid
+======= ============= ============================
 <BLANKLINE>
 
+
 >>> rt.show(vat.VatAreas, language="et")
-======= =============== ===============
+======= =============== ==============
  value   nimi            text
-------- --------------- ---------------
- 10      national        National
- 20      eu              EU
- 30      international   International
-======= =============== ===============
+------- --------------- --------------
+ 10      national        Riiklik
+ 20      eu              Euroopa Liit
+ 30      international   Liiduväline
+======= =============== ==============
 <BLANKLINE>
 
 

@@ -2,14 +2,17 @@
 Setting up a Lino production server
 ===================================
 
-A :term:`production server` is  a *Linux machine*, i.e. a virtual or physical
-machine with a Linux operating system running in a network.
+A :term:`production server` is a virtual or physical machine running a Linux
+operating system and connected to a network.
 
-The :term:`server provider` is responsible for keeping root access to the server
-and creating user accounts for each :term:`site maintainer`.
+The :term:`server provider` is responsible for installing and maintaining that
+machine. He holds root access to the server and creates user accounts with sudo
+rights for each :term:`site maintainer`. He configures secure remote shell
+access (SSH) to that machine for each site maintainer.
 
-The :term:`site maintainer` needs shell access to that machine in order to
-install Lino-specific system packages.
+The :term:`site maintainer` is responsible for installing and maintaining any
+specific system packages required by Lino as well as the Lino source code and
+configuration.
 
 
 System requirements

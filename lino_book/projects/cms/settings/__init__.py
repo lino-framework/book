@@ -13,11 +13,12 @@ class Site(Site):
 
     verbose_name = "Lino CMS"
     version = "0.1"
-    author = 'Luc Saffre'
+    author = 'Rumma & Ko OÜ'
     author_email = 'luc@lino-framework.org'
 
-    default_ui = 'lino_xl.lib.pages'
-    admin_ui = 'lino.modlib.extjs'
+    default_ui = 'lino_react.react'
+    # default_ui = 'lino_xl.lib.pages'
+    # admin_ui = 'lino.modlib.extjs'
 
     languages = 'en de fr'
 
@@ -31,8 +32,10 @@ class Site(Site):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.gfks'
         yield 'lino.modlib.extjs'
-        yield 'lino.modlib.bootstrap3'
+        yield 'lino.modlib.memo'
+        # yield 'lino.modlib.bootstrap3'
         yield 'lino.modlib.users'
+        yield 'lino.modlib.publisher'
         yield 'lino_xl.lib.countries'
         yield 'lino_xl.lib.contacts'
         #~ yield 'lino_xl.lib.outbox'
@@ -40,5 +43,3 @@ class Site(Site):
         # yield 'lino.modlib.tickets'
         yield 'lino_xl.lib.pages'
         # yield 'lino_book.projects.cms'
-
-

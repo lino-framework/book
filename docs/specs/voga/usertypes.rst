@@ -23,7 +23,7 @@ users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Files
 - Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar view
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
@@ -56,7 +56,7 @@ users.UserTypes.admin:900
   - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
-  - Office : Notes, Outgoing Mails, Attachments, Excerpts, Uploads, Upload Areas
+  - Office : Notes, Outgoing Mails, Attachments, Excerpts, Files, Upload Areas
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : Special Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
 - Site : About
@@ -70,7 +70,7 @@ Monique is a secretary.
 >>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Files
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
@@ -111,7 +111,7 @@ Marianne is a "simple user".
 >>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Uploads
+- Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Files
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines
 - Sales : Create invoices, Sales invoices (SLS), Sales credit notes (SLC)
