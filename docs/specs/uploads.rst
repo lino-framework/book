@@ -21,13 +21,27 @@ The :mod:`lino.modliblib.uploads` plugin adds functionality for managing
 >>> from lino.api.doctest import *
 
 
+.. glossary::
+
+  Upload file
+
+    A file that has been uploaded (or *should* or *might* be uploaded).
+
+  Upload type
+
+    The type of an upload file.
+
+  Upload area
+
+    A group of upload types that are being displayed in a given upload panel.
+
 
 Uploads
 =======
 
 .. class:: Upload
 
-    Django model representing an upload.
+    Django model representing an :term:`upload file`.
 
     .. attribute:: type
 
@@ -80,7 +94,7 @@ Uploads
 Upload areas
 ============
 
-The application developper can define **upload areas**.  Every upload area has
+The application developer can define **upload areas**.  Every upload area has
 its list of upload types.  The default has only one upload area.
 
 >>> rt.show(uploads.UploadAreas)
@@ -99,7 +113,7 @@ Upload types
 
 .. class:: UploadType
 
-    The type of an upload.
+    Django model representing an :term:`upload type`.
 
     .. attribute:: shortcut
 
@@ -130,7 +144,7 @@ UploadController
 Upload shortcuts
 ================
 
-The application developper can define **upload shortcuts**.  Every upload
+The application developer can define **upload shortcuts**.  Every upload
 shortcut will create an **upload shortcut field**, a virtual field with a set
 of actions for quickly uploading or viewing uploads of a particular type for a
 given database object.
@@ -149,16 +163,13 @@ Usage:
   `shortcut` field to "Foos".
 
 
-
-
 - Upload a file from your PC to the server.
 - Open the uploaded file in a new browser window
 
 
 .. class:: Shortcuts
 
-    The list of upload shortcut fields which have been declared on this
-    Site.
+    The list of available upload shortcut fields in this application.
 
 >>> rt.show(uploads.Shortcuts)
 No data to display

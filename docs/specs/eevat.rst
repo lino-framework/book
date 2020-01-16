@@ -509,7 +509,7 @@ Other languages
 >>> rt.show(vat.VatRegimes, language="de")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 ====== ============== ======================= =============== ============== ==========
- Wert   name           Text                    VAT area        Needs VAT id   item VAT
+ Wert   name           Text                    MWSt-Zone       Needs VAT id   item VAT
 ------ -------------- ----------------------- --------------- -------------- ----------
  10     normal         Privatperson                            Nein           Ja
  20     subject        MwSt.-pflichtig         National        Ja             Ja

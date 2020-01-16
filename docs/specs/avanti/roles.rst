@@ -37,7 +37,7 @@ Site administrator
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
-- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Files, My Excerpts, Data problems assigned to me
+- Office : My Comments, Recent comments, My Notification messages, My expiring upload files, My Upload files, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Pending requested enrolments, Pending confirmed enrolments, Course planning, Absence control
 - Configure :
@@ -45,7 +45,7 @@ Site administrator
   - Places : Countries, Places
   - Contacts : Organization types, Functions, Categories, Ending reasons, Household Types, List Types
   - Calendar : Calendars, Rooms, Recurring events, Guest roles, Calendar entry types, Recurrency policies, Remote Calendars, Absence reasons, Planner rows
-  - Office : Comment Types, Library volumes, Upload Types, Excerpt Types
+  - Office : Comment Types, Library volumes, Upload types, Excerpt Types
   - Clients : Client Contact types
   - Career : Education Types, Education Levels, Job Sectors, Job Functions, Work Regimes, Statuses, Contract Durations, Languages
   - Trends : Trend areas, Trend stages
@@ -55,7 +55,7 @@ Site administrator
   - System : Authorities, User types, User roles, Notification messages, Changes, Phonetic words, All dashboard widgets, content types, Data checkers, Data problems
   - Contacts : Contact Persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
-  - Office : Comments, Mentions, Files, Upload Areas, Excerpts
+  - Office : Comments, Mentions, Upload files, Upload areas, Excerpts
   - Clients : Client Contacts, Known contact types
   - Career : Language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
@@ -73,7 +73,7 @@ users.UserTypes.coordinator:400
 
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
-- Office : My expiring uploads, My Files, My Excerpts, Data problems assigned to me
+- Office : My expiring upload files, My Upload files, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Site : About
 
@@ -88,7 +88,7 @@ users.UserTypes.secretary:410
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
-- Office : My Notification messages, My expiring uploads, My Files, My Excerpts, Data problems assigned to me
+- Office : My Notification messages, My expiring upload files, My Upload files, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
   - Contacts : Partners
@@ -104,7 +104,7 @@ Social worker
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar view
-- Office : My Comments, Recent comments, My Notification messages, My expiring uploads, My Files, My Excerpts, Data problems assigned to me
+- Office : My Comments, Recent comments, My Notification messages, My expiring upload files, My Upload files, My Excerpts, Data problems assigned to me
 - Polls : My Polls, My Responses
 - Activities : My Activities, Activities, -, Activity lines, Course planning, Absence control
 - Configure :
@@ -121,7 +121,7 @@ Teacher
 >>> rt.login('laura').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
-- Office : My Notification messages, My expiring uploads, My Files
+- Office : My Notification messages, My expiring upload files, My Upload files
 - Activities : My Activities, -, My courses given
 - Site : About
 
@@ -131,7 +131,7 @@ Supervisor
 >>> rt.login('audrey').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
-- Office : My Notification messages, My expiring uploads, My Files
+- Office : My Notification messages, My expiring upload files, My Upload files
 - Activities : My Activities, Activities, -, Activity lines, Course planning
 - Explorer :
   - Contacts : Clients
