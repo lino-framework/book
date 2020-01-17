@@ -13,6 +13,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-17
+==========
+
+Released lino-book 20.1.1 to make it installable via pip. 
+
 2020-01-10
 ==========
 
