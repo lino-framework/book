@@ -35,7 +35,6 @@ install_requires = [
     'lino_openui5',
     'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
     'mock', 'sqlparse',
-    'django-mailbox@git+https://github.com/cylonoven/django-mailbox',
 ]
 
 SETUP_INFO = dict(

@@ -10,3 +10,5 @@ svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
 
 # ldap support is not yet given by `inv install`:
 git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
+
+django-mailbox@git+https://github.com/cylonoven/django-mailbox
