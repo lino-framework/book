@@ -13,10 +13,26 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-18
+==========
+
+Released to PyPI : lino 20.1.0 and xl 20.1.3
+
+Don't use get_head_lines for notify (Lino 26c8a9c11)
+
 2020-01-17
 ==========
 
-Released lino-book 20.1.1 to make it installable via pip. 
+Released lino-book 20.1.1 to make it installable via pip.
+
+Changed the designation "Uploads" to "Upload files".
+
+2020-01-15
+==========
+
+New plugin :mod:`lino.modlib.publisher`.
+
+Changes in :mod:`lino.modlib.notify`.
 
 2020-01-10
 ==========
