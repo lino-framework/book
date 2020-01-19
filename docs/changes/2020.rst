@@ -20,6 +20,12 @@ Released to PyPI : lino 20.1.0 and xl 20.1.3
 
 Don't use get_head_lines for notify (Lino 26c8a9c11)
 
+Fixed :ticket:`3470` (Lino sets wrong booking direction in suggested bank
+statement item) and  :ticket:`3471` (Deleting a voucher item does not refresh
+the grid).
+
+ItemsByVoucher now uses default display_mode for financial vouchers.
+
 2020-01-17
 ==========
 
