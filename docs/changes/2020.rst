@@ -26,6 +26,9 @@ the grid).
 
 ItemsByVoucher now uses default display_mode for financial vouchers.
 
+Fixed :ticket:`3473` (eevat declaration doesn't generate movements).
+Added an exception "SumDeclarationField may not be payable" to avoid the pitfall.
+
 2020-01-17
 ==========
 

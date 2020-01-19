@@ -101,7 +101,7 @@ The database models
  ledger.Journal              ledger.Journals                25        10
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         27
- ledger.Movement             ledger.Movements               13        901
+ ledger.Movement             ledger.Movements               13        900
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         257
  lists.List                  lists.Lists                    7         8
