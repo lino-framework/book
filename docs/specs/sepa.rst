@@ -60,35 +60,3 @@ It requires the :mod:`lino_xl.lib.ledger` plugin.
 .. class:: BankAccount
 
     Defines a field :attr:`bank_account` and its chooser.
-
-.. class:: Payable
-
-    Mixin for models that represent *payable transactions*.  To be combined
-    with some mixin which defines a field `partner`.
-
-    A **payable transaction** is a transaction that is expected to cause a
-    payment.
-
-    .. attribute:: your_ref
-
-    .. attribute:: due_date
-
-    .. attribute:: payment_term
-
-        See :attr:`lino_xl.lib.ledger.mixins.PartnerRelated.payment_term`
-
-    .. attribute:: title
-
-       A char field with a description for this transaction.
-
-    .. method:: get_payable_sums_dict(self)
-
-        To be implemented by subclasses.  Expected to return a dict which maps
-        4-tuples `(acc_tuple, project, vat_class, vat_regime)` to the payable
-        amount. `acc_tuple` is itself a tuple `(general_account,
-        analytic_account)`, `vat_class` is a :class:`lino_xl.lib.vat.VatClasses`
-        choice and `vat_regime` a :class:`lino_xl.lib.vat.VatRegimes` choice.
-
-    .. method:: get_wanted_movements(self)
-
-        Implements :meth:`lino_xl.lib.ledger.Voucher.get_wanted_movements`.

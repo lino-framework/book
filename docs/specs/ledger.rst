@@ -75,6 +75,13 @@ In Lino, the ledger is implemented by three database models:
     accounts are used as the target of :term:`ledger movements <ledger
     movement>`.
 
+  Payable transaction
+
+    A transaction that is expected to cause a payment by a partner.
+
+    For example sales invoices, purchase invoices, VAT declarations are payable
+    transactions.
+
 
 
 Some more concepts:
@@ -88,7 +95,8 @@ Some more concepts:
     for which the sum of *debited* money equals the sum of *credited* money.
 
     A transaction always happens at a given date and in a given
-    :term:`accounting period` which itself is part of a given **fiscal year**.
+    :term:`accounting period` which itself is part of a given :term:`fiscal
+    year`.
 
   Database object
 
@@ -101,8 +109,12 @@ Some more concepts:
 
   Fiscal year
 
-    Usually (but not always) same as a calendar year.  A sequence of
-    :term:`accounting periods <accounting period>` covered by an annual report.
+    A sequence of consecutive :term:`accounting periods <accounting period>`
+    covered by an annual business activity report.
+
+    This usually corresponds to a calendar year. But not always. Exceptions may
+    be companies having a shifted annual report or transitional periods.
+
     When the annual report has been published (declared to the national tax
     office), the fiscal year should be closed to prevent accidental changes in
     the ledger of that year.
@@ -1954,6 +1966,36 @@ Model mixins
         Pointer to the "project". This field exists only if the
         :attr:`project_model <Plugin.project_model>` setting is
         nonempty.
+
+.. class:: Payable
+
+    Model mixin for objects that represent a :term:`payable transaction`.
+
+    Inherits from :class:`PartnerRelated`.
+
+    .. attribute:: your_ref
+
+    .. attribute:: due_date
+
+    .. attribute:: payment_term
+
+        See :attr:`lino_xl.lib.ledger.mixins.PartnerRelated.payment_term`
+
+    .. attribute:: title
+
+       A char field with a description for this transaction.
+
+    .. method:: get_payable_sums_dict(self)
+
+        To be implemented by subclasses.  Expected to return a dict which maps
+        4-tuples `(acc_tuple, project, vat_class, vat_regime)` to the payable
+        amount. `acc_tuple` is itself a tuple `(general_account,
+        analytic_account)`, `vat_class` is a :class:`lino_xl.lib.vat.VatClasses`
+        choice and `vat_regime` a :class:`lino_xl.lib.vat.VatRegimes` choice.
+
+    .. method:: get_wanted_movements(self)
+
+        Implements :meth:`lino_xl.lib.ledger.Voucher.get_wanted_movements`.
 
 
 .. class:: PeriodRange
