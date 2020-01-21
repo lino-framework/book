@@ -111,8 +111,8 @@ SiteSearch fails when it finds a name containing "&")
  *SLS 1/2015* (Sales invoice)       partner__name:**Rumma** & Ko OÜ
  *BNK 1:71* (Bank Statement item)   partner__name:**Rumma** & Ko OÜ
  *PMO 1:2* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
- *PMO 2:1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
- *PMO 3:1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
- *PMO 4:1* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *PMO 2:2* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *PMO 3:2* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
+ *PMO 4:2* (Payment Order item)     partner__name:**Rumma** & Ko OÜ
 ================================== =================================
 <BLANKLINE>

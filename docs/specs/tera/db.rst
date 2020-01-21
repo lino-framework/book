@@ -82,7 +82,7 @@ The database models
  finan.JournalEntry          finan.FinancialVouchers        14        1
  finan.JournalEntryItem      finan.JournalEntryItemTable    10        4
  finan.PaymentOrder          finan.PaymentOrders            15        4
- finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        29
+ finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        32
  gfks.HelpText               gfks.HelpTexts                 4         2
  healthcare.Plan             healthcare.Plans               4         5
  healthcare.Rule             healthcare.Rules               6         0
@@ -100,8 +100,8 @@ The database models
  ledger.FiscalYear           ledger.FiscalYears             5         6
  ledger.Journal              ledger.Journals                25        10
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
- ledger.MatchRule            ledger.MatchRules              3         27
- ledger.Movement             ledger.Movements               13        900
+ ledger.MatchRule            ledger.MatchRules              3         33
+ ledger.Movement             ledger.Movements               13        911
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.Vouchers                9         257
  lists.List                  lists.Lists                    7         8

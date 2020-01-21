@@ -82,8 +82,8 @@ Robin is the system administrator, he has a complete menu:
   - System : content types, Authorities, User types, User roles, Data checkers, Data problems
   - Contacts : Contact Persons, Partners
   - Office : Excerpts, Upload files, Upload areas, Text Field Templates
-  - Sales : Price factors, Sales invoices, Sales invoice items
   - SEPA : Bank accounts
+  - Sales : Price factors, Sales invoices, Sales invoice items
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - Accounting : Accounting Reports, Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
@@ -255,15 +255,15 @@ This site shows a series of due sales invoices
  09/09/2014            SLS         38        Ingels Irene            600,00
  06/11/2014            SLS         49        Lazarus Line            375,00
  06/01/2015            SLS         1         Radermacher Alfons      31,92
- 14/02/2015            SLS         3         Radermacher Christian   719,60                           35,98
- 28/02/2015            SLS         9         Radermacher Hans        564,04                           169,21
+ 14/02/2015            SLS         3         Radermacher Christian   719,60                           719,60
  07/03/2015            SLS         11        Radermacher Inge        2 039,82
- 08/03/2015            SLS         12        Radermacher Jean        822,57                           822,57
+ 08/03/2015            SLS         12        Radermacher Jean        679,81                           679,81
  16/03/2015            SLS         13        di Rupo Didier          280,00                           280,00
  20/03/2015            SLS         14        da Vinci David          535,00                           535,00
  21/03/2015            SLS         15        da Vinci David          1 110,16        535,00           1 110,16
  05/04/2015            SLS         10        Radermacher Hedi        2 999,85                         2 999,85
- 12/04/2015            SLS         7         Radermacher Fritz       240,00                           240,00
- **Total (15 rows)**               **239**                           **14 633,58**   **535,00**       **6 192,77**
+ 11/04/2015            SLS         6         Radermacher Fritz       1 759,71                         527,91
+ 12/04/2015            SLS         7         Radermacher Fritz       240,00          1 759,71         -4,80
+ **Total (15 rows)**               **236**                           **15 686,49**   **2 294,71**     **6 847,53**
 ===================== =========== ========= ======================= =============== ================ ================
 <BLANKLINE>

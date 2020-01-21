@@ -109,8 +109,8 @@ voucher created for this partner will have this VAT regime.  Existing vouchers
 are not changed when you change this field.
 
 The available VAT regimes vary depending on which VAT declaration plugin is
-installed.  See also `Available VAT regimes`_. The list below is when no
-declaration module is installed, so we have only one default regime.
+installed.  See also `Available VAT regimes`_. When no declaration module is
+installed, we have only one default regime.
 
 >>> rt.show(vat.VatRegimes, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE

@@ -456,42 +456,122 @@ Intracom
 
 >>> rt.show(vat.IntracomSales)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
-==================== ================= ================ ================= ================= ===== ==============
- Invoice              Partner           VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
--------------------- ----------------- ---------------- ----------------- ----------------- ----- --------------
- *SLS 4/2018*         Bäckerei Mießen   BE7336627818     Intra-community   280,00                  280,00
- *SLS 8/2018*         Van Achter NV     NL634943207B01   Intra-community   1 939,82                1 939,82
- *SLS 12/2018*        Moulin Rouge      FR14406028064    Intra-community   2 013,88                2 013,88
- **Total (3 rows)**                                                        **4 233,70**            **4 233,70**
-==================== ================= ================ ================= ================= ===== ==============
+===================== =========================== ================ ================= ================= ===== ===============
+ Invoice               Partner                     VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
+--------------------- --------------------------- ---------------- ----------------- ----------------- ----- ---------------
+ *SLS 3/2018*          Bäckerei Ausdemwald         BE2206624259     Intra-community   679,81                  679,81
+ *SLS 4/2018*          Bäckerei Mießen             BE7336627818     Intra-community   280,00                  280,00
+ *SLS 5/2018*          Bäckerei Schmitz            BE8204648930     Intra-community   535,00                  535,00
+ *SLS 6/2018*          Garage Mergelsberg          BE4498652125     Intra-community   1 110,16                1 110,16
+ *SLS 7/2018*          Donderweer BV               NL211892074B01   Intra-community   1 499,85                1 499,85
+ *SLS 8/2018*          Van Achter NV               NL634943207B01   Intra-community   1 939,82                1 939,82
+ *SLS 9/2018*          Hans Flott & Co             DE141548977      Intra-community   815,96                  815,96
+ *SLS 10/2018*         Bernd Brechts Bücherladen   DE529665130      Intra-community   320,00                  320,00
+ *SLS 11/2018*         Reinhards Baumschule        DE575791208      Intra-community   548,50                  548,50
+ *SLS 12/2018*         Moulin Rouge                FR14406028064    Intra-community   2 013,88                2 013,88
+ *SLS 13/2018*         Auto École Verte            FR74229232671    Intra-community   1 949,85                1 949,85
+ **Total (11 rows)**                                                                  **11 692,83**           **11 692,83**
+===================== =========================== ================ ================= ================= ===== ===============
 <BLANKLINE>
 
 
 >>> rt.show(vat.IntracomPurchases)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-===================== ================= ============== ================= ================= ===== ===============
- Invoice               Partner           VAT id         VAT regime        Total excl. VAT   VAT   Total to pay
---------------------- ----------------- -------------- ----------------- ----------------- ----- ---------------
- *PRC 4/2018*          Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
- *PRC 4/2019*          Bäckerei Mießen   BE7336627818   Intra-community   1 213,00                1 213,00
- *PRC 11/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
- *PRC 11/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 213,20                1 213,20
- *PRC 18/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,00                1 201,00
- *PRC 18/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 214,40                1 214,40
- *PRC 25/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,20                1 201,20
- *PRC 25/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 211,90                1 211,90
- *PRC 32/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 202,40                1 202,40
- *PRC 32/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 212,50                1 212,50
- *PRC 39/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
- *PRC 39/2019*         Bäckerei Mießen   BE7336627818   Intra-community   1 213,00                1 213,00
- *PRC 46/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
- *PRC 53/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,00                1 201,00
- *PRC 60/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 201,20                1 201,20
- *PRC 67/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 202,40                1 202,40
- *PRC 74/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 199,90                1 199,90
- *PRC 81/2018*         Bäckerei Mießen   BE7336627818   Intra-community   1 200,50                1 200,50
- **Total (18 rows)**                                                      **21 688,40**           **21 688,40**
-===================== ================= ============== ================= ================= ===== ===============
+===================== ===================== ================ ================= ================= ===== ===============
+ Invoice               Partner               VAT id           VAT regime        Total excl. VAT   VAT   Total to pay
+--------------------- --------------------- ---------------- ----------------- ----------------- ----- ---------------
+ *PRC 3/2018*          Bäckerei Ausdemwald   BE2206624259     Intra-community   603,60                  603,60
+ *PRC 4/2018*          Bäckerei Mießen       BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 5/2018*          Bäckerei Schmitz      BE8204648930     Intra-community   3 241,68                3 241,68
+ *PRC 6/2018*          Garage Mergelsberg    BE4498652125     Intra-community   143,40                  143,40
+ *PRC 7/2018*          Donderweer BV         NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 10/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   602,30                  602,30
+ *PRC 11/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 12/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 242,38                3 242,38
+ *PRC 13/2018*         Garage Mergelsberg    BE4498652125     Intra-community   142,10                  142,10
+ *PRC 14/2018*         Donderweer BV         NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 17/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   600,40                  600,40
+ *PRC 18/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 19/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 243,78                3 243,78
+ *PRC 20/2018*         Garage Mergelsberg    BE4498652125     Intra-community   140,20                  140,20
+ *PRC 21/2018*         Donderweer BV         NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 24/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   601,50                  601,50
+ *PRC 25/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 26/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 242,48                3 242,48
+ *PRC 27/2018*         Garage Mergelsberg    BE4498652125     Intra-community   141,30                  141,30
+ *PRC 28/2018*         Donderweer BV         NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 31/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   602,20                  602,20
+ *PRC 32/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 33/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 240,58                3 240,58
+ *PRC 34/2018*         Garage Mergelsberg    BE4498652125     Intra-community   142,00                  142,00
+ *PRC 35/2018*         Donderweer BV         NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 38/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   603,60                  603,60
+ *PRC 39/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 40/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 241,68                3 241,68
+ *PRC 41/2018*         Garage Mergelsberg    BE4498652125     Intra-community   143,40                  143,40
+ *PRC 42/2018*         Donderweer BV         NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 45/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   602,30                  602,30
+ *PRC 46/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 47/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 242,38                3 242,38
+ *PRC 48/2018*         Garage Mergelsberg    BE4498652125     Intra-community   142,10                  142,10
+ *PRC 49/2018*         Donderweer BV         NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 52/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   600,40                  600,40
+ *PRC 53/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 201,00                1 201,00
+ *PRC 54/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 243,78                3 243,78
+ *PRC 55/2018*         Garage Mergelsberg    BE4498652125     Intra-community   140,20                  140,20
+ *PRC 56/2018*         Donderweer BV         NL211892074B01   Intra-community   201,00                  201,00
+ *PRC 59/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   601,50                  601,50
+ *PRC 60/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 201,20                1 201,20
+ *PRC 61/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 242,48                3 242,48
+ *PRC 62/2018*         Garage Mergelsberg    BE4498652125     Intra-community   141,30                  141,30
+ *PRC 63/2018*         Donderweer BV         NL211892074B01   Intra-community   201,20                  201,20
+ *PRC 66/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   602,20                  602,20
+ *PRC 67/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 202,40                1 202,40
+ *PRC 68/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 240,58                3 240,58
+ *PRC 69/2018*         Garage Mergelsberg    BE4498652125     Intra-community   142,00                  142,00
+ *PRC 70/2018*         Donderweer BV         NL211892074B01   Intra-community   202,40                  202,40
+ *PRC 73/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   603,60                  603,60
+ *PRC 74/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 199,90                1 199,90
+ *PRC 75/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 241,68                3 241,68
+ *PRC 76/2018*         Garage Mergelsberg    BE4498652125     Intra-community   143,40                  143,40
+ *PRC 77/2018*         Donderweer BV         NL211892074B01   Intra-community   199,90                  199,90
+ *PRC 80/2018*         Bäckerei Ausdemwald   BE2206624259     Intra-community   602,30                  602,30
+ *PRC 81/2018*         Bäckerei Mießen       BE7336627818     Intra-community   1 200,50                1 200,50
+ *PRC 82/2018*         Bäckerei Schmitz      BE8204648930     Intra-community   3 242,38                3 242,38
+ *PRC 83/2018*         Garage Mergelsberg    BE4498652125     Intra-community   142,10                  142,10
+ *PRC 84/2018*         Donderweer BV         NL211892074B01   Intra-community   200,50                  200,50
+ *PRC 3/2019*          Bäckerei Ausdemwald   BE2206624259     Intra-community   606,40                  606,40
+ *PRC 4/2019*          Bäckerei Mießen       BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 5/2019*          Bäckerei Schmitz      BE8204648930     Intra-community   3 276,18                3 276,18
+ *PRC 6/2019*          Garage Mergelsberg    BE4498652125     Intra-community   141,60                  141,60
+ *PRC 7/2019*          Donderweer BV         NL211892074B01   Intra-community   203,00                  203,00
+ *PRC 10/2019*         Bäckerei Ausdemwald   BE2206624259     Intra-community   607,50                  607,50
+ *PRC 11/2019*         Bäckerei Mießen       BE7336627818     Intra-community   1 213,20                1 213,20
+ *PRC 12/2019*         Bäckerei Schmitz      BE8204648930     Intra-community   3 274,88                3 274,88
+ *PRC 13/2019*         Garage Mergelsberg    BE4498652125     Intra-community   142,70                  142,70
+ *PRC 14/2019*         Donderweer BV         NL211892074B01   Intra-community   203,20                  203,20
+ *PRC 17/2019*         Bäckerei Ausdemwald   BE2206624259     Intra-community   608,20                  608,20
+ *PRC 18/2019*         Bäckerei Mießen       BE7336627818     Intra-community   1 214,40                1 214,40
+ *PRC 19/2019*         Bäckerei Schmitz      BE8204648930     Intra-community   3 272,98                3 272,98
+ *PRC 20/2019*         Garage Mergelsberg    BE4498652125     Intra-community   143,40                  143,40
+ *PRC 21/2019*         Donderweer BV         NL211892074B01   Intra-community   204,40                  204,40
+ *PRC 24/2019*         Bäckerei Ausdemwald   BE2206624259     Intra-community   609,60                  609,60
+ *PRC 25/2019*         Bäckerei Mießen       BE7336627818     Intra-community   1 211,90                1 211,90
+ *PRC 26/2019*         Bäckerei Schmitz      BE8204648930     Intra-community   3 274,08                3 274,08
+ *PRC 27/2019*         Garage Mergelsberg    BE4498652125     Intra-community   144,80                  144,80
+ *PRC 28/2019*         Donderweer BV         NL211892074B01   Intra-community   201,90                  201,90
+ *PRC 31/2019*         Bäckerei Ausdemwald   BE2206624259     Intra-community   608,30                  608,30
+ *PRC 32/2019*         Bäckerei Mießen       BE7336627818     Intra-community   1 212,50                1 212,50
+ *PRC 33/2019*         Bäckerei Schmitz      BE8204648930     Intra-community   3 274,78                3 274,78
+ *PRC 34/2019*         Garage Mergelsberg    BE4498652125     Intra-community   143,50                  143,50
+ *PRC 35/2019*         Donderweer BV         NL211892074B01   Intra-community   202,50                  202,50
+ *PRC 38/2019*         Bäckerei Ausdemwald   BE2206624259     Intra-community   606,40                  606,40
+ *PRC 39/2019*         Bäckerei Mießen       BE7336627818     Intra-community   1 213,00                1 213,00
+ *PRC 40/2019*         Bäckerei Schmitz      BE8204648930     Intra-community   3 276,18                3 276,18
+ *PRC 41/2019*         Garage Mergelsberg    BE4498652125     Intra-community   141,60                  141,60
+ *PRC 42/2019*         Donderweer BV         NL211892074B01   Intra-community   203,00                  203,00
+ **Total (90 rows)**                                                            **97 305,14**           **97 305,14**
+===================== ===================== ================ ================= ================= ===== ===============
 <BLANKLINE>
 
 
@@ -555,38 +635,41 @@ A purchases invoice with :term:`Returnable VAT`:
 
 >>> invoice = vat.VatAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom).first()
 >>> print(invoice)
-PRC 4/2018
+PRC 3/2018
 >>> rt.show('vat.ItemsByInvoice', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-========================== ============= ============= ================= ===== ==============
- Account                    Description   VAT class     Total excl. VAT   VAT   Total to pay
--------------------------- ------------- ------------- ----------------- ----- --------------
- (6040) Purchase of goods                 Real estate   1 199,90                1 199,90
- **Total (1 rows)**                                     **1 199,90**            **1 199,90**
-========================== ============= ============= ================= ===== ==============
+================================ ============= ============= ================= ===== ==============
+ Account                          Description   VAT class     Total excl. VAT   VAT   Total to pay
+-------------------------------- ------------- ------------- ----------------- ----- --------------
+ (6010) Purchase of services                    Services      201,20                  201,20
+ (6020) Purchase of investments                 Investments   402,40                  402,40
+ **Total (2 rows)**                                           **603,60**              **603,60**
+================================ ============= ============= ================= ===== ==============
 <BLANKLINE>
+
 
 
 >>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-========================== ================= ============== ============== ============= ================ =========
- Account                    Partner           Debit          Credit         VAT class     Match            Cleared
--------------------------- ----------------- -------------- -------------- ------------- ---------------- ---------
- (4100) Suppliers           Bäckerei Mießen                  1 199,90                     **PRC 4/2018**   Yes
- (4520) VAT deductible                                       239,98         Real estate                    Yes
- (4530) VAT returnable                        239,98                        Real estate                    Yes
- (6040) Purchase of goods                     1 199,90                      Real estate                    Yes
-                                              **1 439,88**   **1 439,88**
-========================== ================= ============== ============== ============= ================ =========
+================================ ===================== ============ ============ ============= ================ =========
+ Account                          Partner               Debit        Credit       VAT class     Match            Cleared
+-------------------------------- --------------------- ------------ ------------ ------------- ---------------- ---------
+ (4100) Suppliers                 Bäckerei Ausdemwald                603,60                     **PRC 3/2018**   Yes
+ (4520) VAT deductible                                  40,24                     Services                       Yes
+ (4530) VAT returnable                                               40,24        Services                       Yes
+ (6010) Purchase of services                            201,20                    Services                       Yes
+ (6020) Purchase of investments                         402,40                    Investments                    Yes
+                                                        **643,84**   **643,84**
+================================ ===================== ============ ============ ============= ================ =========
 <BLANKLINE>
 
 
 >>> print(invoice.total_base)
-1199.90
+603.60
 >>> print(invoice.total_vat)
 0.00
 >>> print(invoice.total_incl)
-1199.90
+603.60
 
 Note that above is for purchases only. Intra-Community *sales* invoices have no
 :term:`returnable VAT` because they don't have any VAT at all:
@@ -629,13 +712,13 @@ VAT 5/2019
 ==================== ===================== ================ ================= ================= =========== ==============
  Invoice              Partner               VAT id           VAT regime        Total excl. VAT   VAT         Total to pay
 -------------------- --------------------- ---------------- ----------------- ----------------- ----------- --------------
- *PRC 29/2019*        Bestbank              EE4391498123     Private person    37,61             3,39        41,00
+ *PRC 29/2019*        Bestbank              EE4391498123     Subject to VAT    37,61             3,39        41,00
  *PRC 30/2019*        Rumma & Ko OÜ         EE100588749      Subject to VAT    129,75            13,65       143,40
- *PRC 31/2019*        Bäckerei Ausdemwald   BE2206624259     Private person    608,30                        608,30
+ *PRC 31/2019*        Bäckerei Ausdemwald   BE2206624259     Intra-community   608,30                        608,30
  *PRC 32/2019*        Bäckerei Mießen       BE7336627818     Intra-community   1 212,50                      1 212,50
- *PRC 33/2019*        Bäckerei Schmitz      BE8204648930     Tax-free          3 274,78                      3 274,78
- *PRC 34/2019*        Garage Mergelsberg    BE4498652125     Exempt            143,50                        143,50
- *PRC 35/2019*        Donderweer BV         NL211892074B01   Private person    202,50                        202,50
+ *PRC 33/2019*        Bäckerei Schmitz      BE8204648930     Intra-community   3 274,78                      3 274,78
+ *PRC 34/2019*        Garage Mergelsberg    BE4498652125     Intra-community   143,50                        143,50
+ *PRC 35/2019*        Donderweer BV         NL211892074B01   Intra-community   202,50                        202,50
  **Total (7 rows)**                                                            **5 608,94**      **17,04**   **5 625,98**
 ==================== ===================== ================ ================= ================= =========== ==============
 <BLANKLINE>
@@ -645,10 +728,10 @@ VAT 5/2019
  Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT          Total to pay
 -------------------- -------------------- -------- ---------------- ----------------- ------------ --------------
  *SLS 21/2019*        Dmitriev Eva-Liisa            Private person   1 680,57          333,31       2 013,88
- *SLS 22/2019*        Nikitin Einar                 Tax-free         1 624,88          324,97       1 949,85
- *SLS 23/2019*        Mölder Elmar                  Exempt           831,82                         831,82
+ *SLS 22/2019*        Nikitin Einar                 Private person   1 624,88          324,97       1 949,85
+ *SLS 23/2019*        Mölder Elmar                  Private person   693,18            138,64       831,82
  *SLS 24/2019*        Jegorov Eve                   Private person   870,83            174,17       1 045,00
- **Total (4 rows)**                                                  **5 008,10**      **832,45**   **5 840,55**
+ **Total (4 rows)**                                                  **4 869,46**      **971,09**   **5 840,55**
 ==================== ==================== ======== ================ ================= ============ ==============
 <BLANKLINE>
 
@@ -657,23 +740,22 @@ Here is the content of the fields in the detail of that declaration:
 
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-[1a] 20% määraga maksustatavad müügid : 2537.40
-[1] 20% määraga maksustatavad toimingud ja tehingud : 2537.40
-[3] 0% määraga maksustatavad toimingud ja tehingud, sh : 2456.70
-[32] 2) kauba eksport, sh : 2456.70
-[321] 1) käibemaksutagastusega müük reisijale : 1624.88
-[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 832.45
-[41] Impordilt tasumisele kuuluv käibemaks : -242.50
-[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 259.54
-[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 242.50
+[1a] 20% määraga maksustatavad müügid : 4855.46
+[1] 20% määraga maksustatavad toimingud ja tehingud : 4855.46
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 971.09
+[41] Impordilt tasumisele kuuluv käibemaks : -989.77
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 1006.81
+[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 989.77
+[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : 80.78
 [53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
 [54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 242.50
 [6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1343.65
-[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 131.15
-[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 131.15
+[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 68.25
+[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 68.25
 [8] Maksuvaba käive : 62.90
 [9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 62.90
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 330.41
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : -1025.49
+
 
 And these are the movements generated by our declaration:
 
@@ -681,11 +763,11 @@ And these are the movements generated by our declaration:
 ======================= ===================== ============== ============== ================ =========
  Account                 Partner               Debit          Credit         Match            Cleared
 ----------------------- --------------------- -------------- -------------- ---------------- ---------
- (4500) Tax Offices      Maksu- ja Tolliamet                  815,41         **VAT 5/2019**   No
- (4510) VAT due                                832,45                                         Yes
- (4520) VAT deductible                                        259,54                          Yes
- (4530) VAT returnable                         242,50                                         Yes
-                                               **1 074,95**   **1 074,95**
+ (4500) Tax Offices      Maksu- ja Tolliamet                  954,05         **VAT 5/2019**   Yes
+ (4510) VAT due                                971,09                                         Yes
+ (4520) VAT deductible                                        1 006,81                        Yes
+ (4530) VAT returnable                         989,77                                         Yes
+                                               **1 960,86**   **1 960,86**
 ======================= ===================== ============== ============== ================ =========
 <BLANKLINE>
 
@@ -695,34 +777,31 @@ The 2018-11 VAT declaration has values in both fields 1a and 1b:
 >>> obj = eevat.Declaration.objects.get(accounting_period__ref="2018-11")
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-[1a] 20% määraga maksustatavad müügid : 845.77
+[1a] 20% määraga maksustatavad müügid : 4233.83
 [1b] 20% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt : 1199.90
-[1] 20% määraga maksustatavad toimingud ja tehingud : 2045.67
-[3] 0% määraga maksustatavad toimingud ja tehingud, sh : 4273.52
-[32] 2) kauba eksport, sh : 4273.52
-[321] 1) käibemaksutagastusega müük reisijale : 673.81
-[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 271.50
-[41] Impordilt tasumisele kuuluv käibemaks : -239.98
-[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 270.20
-[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 239.98
-[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : 6.67
-[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 10.07
-[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 10.07
+[1] 20% määraga maksustatavad toimingud ja tehingud : 5433.73
+[2a] 9% määraga maksustatavad müügid : 274.31
+[2] 9% määraga maksustatavad toimingud ja tehingud : 274.31
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 871.45
+[41] Impordilt tasumisele kuuluv käibemaks : -312.98
+[5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 343.20
+[51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 312.98
+[52] 2) põhivara soetamiselt tasutud või tasumisele kuuluv käibemaks : 14.89
+[53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 22.29
+[54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 22.29
 [6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1328.42
-[7] Muu kauba soetamine ja teenuse saamine, mida maksustatakse käibemaksuga, sh : 61.10
-[71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 61.10
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : -238.68
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 215.27
 
 Here again the movements generated by this declaration:
 
 >>> rt.show('ledger.MovementsByVoucher', obj)
-======================= ===================== ============ ============ ================= =========
- Account                 Partner               Debit        Credit       Match             Cleared
------------------------ --------------------- ------------ ------------ ----------------- ---------
- (4500) Tax Offices      Maksu- ja Tolliamet                241,28       **VAT 11/2018**   No
- (4510) VAT due                                271,50                                      Yes
- (4520) VAT deductible                                      270,20                         Yes
- (4530) VAT returnable                         239,98                                      Yes
-                                               **511,48**   **511,48**
-======================= ===================== ============ ============ ================= =========
+======================= ===================== ============== ============== ================= =========
+ Account                 Partner               Debit          Credit         Match             Cleared
+----------------------- --------------------- -------------- -------------- ----------------- ---------
+ (4500) Tax Offices      Maksu- ja Tolliamet                  841,23         **VAT 11/2018**   Yes
+ (4510) VAT due                                871,45                                          Yes
+ (4520) VAT deductible                                        343,20                           Yes
+ (4530) VAT returnable                         312,98                                          Yes
+                                               **1 184,43**   **1 184,43**
+======================= ===================== ============== ============== ================= =========
 <BLANKLINE>

@@ -182,16 +182,16 @@ The Accounting Report
  **1 Assets**                                               21 172,95   18 497,91                  2 675,04
  ** 10 Current assets**                                     21 172,95   18 497,91                  2 675,04
  1000 Customers receivable                                  21 172,95   18 497,91                  2 675,04
- **2 Passiva**                                              52 280,15   52 754,65   474,50
- ** 20 Liabilities**                                        52 280,15   52 754,65   474,50
+ **2 Passiva**                                              53 100,63   52 893,74                  206,89
+ ** 20 Liabilities**                                        53 100,63   52 893,74                  206,89
  2000 Suppliers payable                                     22 332,12   27 904,40   5 572,28
- 2010 Taxes payable                                         1 544,98    264,36                     1 280,62
- 2020 Banks                                                 6 070,93    2 253,77                   3 817,16
- 2030 Current transfers                                     22 332,12   22 332,12
- **6 Expenses**                                             26 563,78                              26 563,78
- 6000 Cost of sales                                         6 731,07                               6 731,07
- 6100 Operating expenses                                    16 250,61                              16 250,61
- 6200 Other expenses                                        3 582,10                               3 582,10
+ 2010 Taxes payable                                         2 132,40    286,92                     1 845,48
+ 2020 Banks                                                 6 187,46    2 253,77                   3 933,69
+ 2030 Current transfers                                     22 448,65   22 448,65
+ **6 Expenses**                                             26 115,45                              26 115,45
+ 6000 Cost of sales                                         6 285,79                               6 285,79
+ 6100 Operating expenses                                    16 261,89                              16 261,89
+ 6200 Other expenses                                        3 567,77                               3 567,77
  **7 Revenues**                                             1 440,00    22 490,00   21 050,00
  7000 Net sales                                             1 440,00    22 490,00   21 050,00
 =========================== ============== =============== =========== =========== ============== =============
@@ -204,20 +204,20 @@ The Accounting Report
 ======================================= ============== =============== =========== =========== ============== =============
  Account                                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
 --------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
- **4 Commercial assets & liabilities**                                  67 382,17   68 998,79   1 616,62
+ **4 Commercial assets & liabilities**                                  68 086,12   69 137,88   1 051,76
  4000 Customers                                                         21 172,95   18 497,91                  2 675,04
  4100 Suppliers                                                         22 332,12   27 904,40   5 572,28
- 4300 Pending Payment Orders                                            22 332,12   22 332,12
- 4500 Tax Offices                                                                   105,25      105,25
- 4510 VAT due                                                           105,25      159,11      53,86
- 4520 VAT deductible                                                    1 439,73                               1 439,73
- **5 Financial assets & liabilities**                                   6 070,93    2 253,77                   3 817,16
- 5500 BestBank                                                          6 070,93    2 253,77                   3 817,16
- **6 Expenses**                                                         26 563,78                              26 563,78
- ** 60 Operation costs**                                                26 563,78                              26 563,78
- 6010 Purchase of services                                              16 250,61                              16 250,61
- 6020 Purchase of investments                                           3 582,10                               3 582,10
- 6040 Purchase of goods                                                 6 731,07                               6 731,07
+ 4300 Pending Payment Orders                                            22 448,65   22 448,65
+ 4500 Tax Offices                                                       116,53      116,53
+ 4510 VAT due                                                           116,53      170,39      53,86
+ 4520 VAT deductible                                                    1 899,34                               1 899,34
+ **5 Financial assets & liabilities**                                   6 187,46    2 253,77                   3 933,69
+ 5500 BestBank                                                          6 187,46    2 253,77                   3 933,69
+ **6 Expenses**                                                         26 115,45                              26 115,45
+ ** 60 Operation costs**                                                26 115,45                              26 115,45
+ 6010 Purchase of services                                              16 261,89                              16 261,89
+ 6020 Purchase of investments                                           3 567,77                               3 567,77
+ 6040 Purchase of goods                                                 6 285,79                               6 285,79
  **7 Revenues**                                                         1 440,00    22 490,00   21 050,00
  7000 Sales                                                             1 440,00    2 730,00    1 290,00
  7010 Sales on therapies                                                            19 760,00   19 760,00
@@ -226,20 +226,20 @@ The Accounting Report
 ============================ ============== =============== =========== ======== ============== =============
  Account                      Debit before   Credit before   Debit       Credit   Credit after   Debit after
 ---------------------------- -------------- --------------- ----------- -------- -------------- -------------
- **1 Operation costs**                                       5 750,42                            5 750,42
- 1100 Wages                                                  533,34                              533,34
- 1200 Transport                                              1 438,58                            1 438,58
+ **1 Operation costs**                                       5 744,49                            5 744,49
+ 1100 Wages                                                  531,36                              531,36
+ 1200 Transport                                              1 434,63                            1 434,63
  1300 Training                                               3 128,42                            3 128,42
  1400 Other costs                                            650,08                              650,08
- **2 Administrative costs**                                  10 300,47                           10 300,47
- 2100 Secretary wages                                        1 729,40                            1 729,40
- 2110 Manager wages                                          4 350,14                            4 350,14
+ **2 Administrative costs**                                  10 080,82                           10 080,82
+ 2100 Secretary wages                                        1 520,72                            1 520,72
+ 2110 Manager wages                                          4 336,29                            4 336,29
  2200 Transport                                              3 671,17                            3 671,17
- 2300 Training                                               549,76                              549,76
- **3 Investments**                                           1 408,78                            1 408,78
- 3000 Investment                                             1 408,78                            1 408,78
- **4 Project 1**                                             4 552,76                            4 552,76
- 4100 Wages                                                  3 569,48                            3 569,48
+ 2300 Training                                               552,64                              552,64
+ **3 Investments**                                           1 200,31                            1 200,31
+ 3000 Investment                                             1 200,31                            1 200,31
+ **4 Project 1**                                             4 538,48                            4 538,48
+ 4100 Wages                                                  3 555,20                            3 555,20
  4200 Transport                                              481,78                              481,78
  4300 Training                                               501,50                              501,50
  **5 Project 2**                                             4 551,35                            4 551,35
@@ -304,17 +304,17 @@ The Accounting Report
 =============================================== ============== =============== =========== =========== ============== =============
 <BLANKLINE>
 No data to display
-=============================================== ============== =============== ======= ======== ============== =============
- Partner                                         Debit before   Credit before   Debit   Credit   Credit after   Debit after
------------------------------------------------ -------------- --------------- ------- -------- -------------- -------------
- `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                          105,25   105,25
-=============================================== ============== =============== ======= ======== ============== =============
+=============================================== ============== =============== ======== ======== ============== =============
+ Partner                                         Debit before   Credit before   Debit    Credit   Credit after   Debit after
+----------------------------------------------- -------------- --------------- -------- -------- -------------- -------------
+ `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                  116,53   116,53
+=============================================== ============== =============== ======== ======== ============== =============
 <BLANKLINE>
 No data to display
 ======================= ============== =============== =========== =========== ============== =============
  Partner                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
 ----------------------- -------------- --------------- ----------- ----------- -------------- -------------
- `Bestbank <Detail>`__                                  22 332,12   22 332,12
+ `Bestbank <Detail>`__                                  22 448,65   22 448,65
 ======================= ============== =============== =========== =========== ============== =============
 <BLANKLINE>
 =========================== ========== ==========
@@ -323,8 +323,8 @@ No data to display
  **1 Assets**                           2 675,04
  ** 10 Current assets**                 2 675,04
  1000 Customers receivable              2 675,04
- **2 Passiva**               474,50
- ** 20 Liabilities**         474,50
+ **2 Passiva**
+ ** 20 Liabilities**
  2000 Suppliers payable      5 572,28
  2010 Taxes payable
  2020 Banks
@@ -334,10 +334,10 @@ No data to display
 ========================= =========== ===========
  Description               Expenses    Revenues
 ------------------------- ----------- -----------
- **6 Expenses**            26 563,78
- 6000 Cost of sales        6 731,07
- 6100 Operating expenses   16 250,61
- 6200 Other expenses       3 582,10
+ **6 Expenses**            26 115,45
+ 6000 Cost of sales        6 285,79
+ 6100 Operating expenses   16 261,89
+ 6200 Other expenses       3 567,77
  **7 Revenues**                        21 050,00
  7000 Net sales                        21 050,00
 ========================= =========== ===========
@@ -366,7 +366,8 @@ And the expanded accounting equation is:
 ...     return e.new_balance().value(e.item.dc)
 
 TODO: the following tests are skipped, we must first automatically generate the
-profit/loss booking so that the expenses and revenues are balanced.
+profit/loss booking (:ticket:`3476`) so that the expenses and revenues are
+balanced.
 
 >>> assets = val(sheets.CommonItems.assets)
 >>> liabilities = val(sheets.CommonItems.liabilities)
@@ -378,7 +379,7 @@ profit/loss booking so that the expenses and revenues are balanced.
 >>> print(assets)
 2675.04
 >>> print(liabilities)
-474.50
+-206.89
 >>> print(capital)  #doctest: +SKIP
 -9354.40
 >>> print(liabilities+capital)  #doctest: +SKIP
@@ -386,7 +387,7 @@ profit/loss booking so that the expenses and revenues are balanced.
 >>> print(passiva)  #doctest: +SKIP
 13836.75
 >>> print(expenses)
-26563.78
+26115.45
 >>> print(revenues)  #doctest: +SKIP
 24518.54
 

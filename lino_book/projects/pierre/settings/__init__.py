@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2017 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 
@@ -7,8 +7,6 @@
 Default settings for a :ref:`cosi` site "à la Pierre".
 
 """
-
-from __future__ import unicode_literals
 
 from lino_cosi.lib.cosi.settings import *
 
@@ -24,9 +22,10 @@ class Site(Site):
     #    yield super(Site, self).get_installed_apps()
     #    yield 'lino_xl.lib.bevat'
 
-    def setup_plugins(self):
-        self.plugins.countries.configure(hide_region=False)
-        self.plugins.ledger.configure(use_pcmn=True)
-        self.plugins.countries.configure(country_code='BE')
-        super(Site, self).setup_plugins()
-
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        # yield ('vat', 'declaration_plugin', 'lino_xl.lib.bevat')
+        yield ('countries', 'hide_region', True)
+        yield ('countries', 'country_code', 'BE')
+        yield ('ledger', 'use_pcmn', True)
+        # yield ('ledger', 'worker_model', 'contacts.Person')

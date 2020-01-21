@@ -64,7 +64,7 @@ The database structure
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        112
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        127
  gfks.HelpText              gfks.HelpTexts                 4         2
  invoicing.Area             invoicing.Areas                6         1
  invoicing.Item             invoicing.Items                9         5
@@ -76,8 +76,8 @@ The database structure
  ledger.FiscalYear          ledger.FiscalYears             5         7
  ledger.Journal             ledger.Journals                25        10
  ledger.LedgerInfo          ledger.LedgerInfoTable         2         0
- ledger.MatchRule           ledger.MatchRules              3         27
- ledger.Movement            ledger.Movements               12        892
+ ledger.MatchRule           ledger.MatchRules              3         33
+ ledger.Movement            ledger.Movements               12        939
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         268
  lists.List                 lists.Lists                    7         8

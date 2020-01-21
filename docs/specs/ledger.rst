@@ -1348,7 +1348,7 @@ A **match rule** specifies that a movement into given account can be
 You can configure match rules either in the detail view of a journal or
 globally via :menuselection:`Explorer --> Accounting --> Match rules`.
 
-This demo site has the following match rules:
+The demo database has the following match rules:
 
 >>> ses.show(ledger.MatchRules)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -1360,29 +1360,36 @@ This demo site has the following match rules:
  3    (4100) Suppliers                Purchase invoices (PRC)
  4    (4000) Customers                Bestbank Payment Orders (PMO)
  5    (4100) Suppliers                Bestbank Payment Orders (PMO)
- 6    (6300) Wages                    Bestbank Payment Orders (PMO)
- 7    (4000) Customers                Cash book (CSH)
- 8    (4100) Suppliers                Cash book (CSH)
- 9    (6300) Wages                    Cash book (CSH)
- 10   (4300) Pending Payment Orders   Cash book (CSH)
- 11   (4000) Customers                Bestbank (BNK)
- 12   (4100) Suppliers                Bestbank (BNK)
- 13   (6300) Wages                    Bestbank (BNK)
- 14   (4300) Pending Payment Orders   Bestbank (BNK)
- 15   (4000) Customers                Miscellaneous transactions (MSC)
- 16   (4100) Suppliers                Miscellaneous transactions (MSC)
- 17   (6300) Wages                    Miscellaneous transactions (MSC)
- 18   (4300) Pending Payment Orders   Miscellaneous transactions (MSC)
- 19   (4000) Customers                Preliminary transactions (PRE)
- 20   (4100) Suppliers                Preliminary transactions (PRE)
- 21   (6300) Wages                    Preliminary transactions (PRE)
- 22   (4300) Pending Payment Orders   Preliminary transactions (PRE)
- 23   (4000) Customers                Paychecks (SAL)
- 24   (4100) Suppliers                Paychecks (SAL)
- 25   (6300) Wages                    Paychecks (SAL)
- 26   (4300) Pending Payment Orders   Paychecks (SAL)
+ 6    (4500) Tax Offices              Bestbank Payment Orders (PMO)
+ 7    (6300) Wages                    Bestbank Payment Orders (PMO)
+ 8    (4000) Customers                Cash book (CSH)
+ 9    (4100) Suppliers                Cash book (CSH)
+ 10   (4500) Tax Offices              Cash book (CSH)
+ 11   (6300) Wages                    Cash book (CSH)
+ 12   (4300) Pending Payment Orders   Cash book (CSH)
+ 13   (4000) Customers                Bestbank (BNK)
+ 14   (4100) Suppliers                Bestbank (BNK)
+ 15   (4500) Tax Offices              Bestbank (BNK)
+ 16   (6300) Wages                    Bestbank (BNK)
+ 17   (4300) Pending Payment Orders   Bestbank (BNK)
+ 18   (4000) Customers                Miscellaneous transactions (MSC)
+ 19   (4100) Suppliers                Miscellaneous transactions (MSC)
+ 20   (4500) Tax Offices              Miscellaneous transactions (MSC)
+ 21   (6300) Wages                    Miscellaneous transactions (MSC)
+ 22   (4300) Pending Payment Orders   Miscellaneous transactions (MSC)
+ 23   (4000) Customers                Preliminary transactions (PRE)
+ 24   (4100) Suppliers                Preliminary transactions (PRE)
+ 25   (4500) Tax Offices              Preliminary transactions (PRE)
+ 26   (6300) Wages                    Preliminary transactions (PRE)
+ 27   (4300) Pending Payment Orders   Preliminary transactions (PRE)
+ 28   (4000) Customers                Paychecks (SAL)
+ 29   (4100) Suppliers                Paychecks (SAL)
+ 30   (4500) Tax Offices              Paychecks (SAL)
+ 31   (6300) Wages                    Paychecks (SAL)
+ 32   (4300) Pending Payment Orders   Paychecks (SAL)
 ==== =============================== ==================================
 <BLANKLINE>
+
 
 
 
@@ -1392,13 +1399,14 @@ much:
 
 >>> jnl = ledger.Journal.objects.get(ref="PMO")
 >>> rt.show(ledger.MatchRulesByJournal, jnl)
-==================
+====================
  Account
-------------------
+--------------------
  (4000) Customers
  (4100) Suppliers
+ (4500) Tax Offices
  (6300) Wages
-==================
+====================
 <BLANKLINE>
 
 Or a sales invoice can be used to clear another sales invoice:
