@@ -267,3 +267,44 @@ This site shows a series of due sales invoices
  **Total (15 rows)**               **236**                           **15 686,49**   **2 294,71**     **6 847,53**
 ===================== =========== ========= ======================= =============== ================ ================
 <BLANKLINE>
+
+
+
+>>> show_choicelists()
+=========================== ================= ======================= ============================ ====================
+ name                        preferred_width   de                      fr                           en
+--------------------------- ----------------- ----------------------- ---------------------------- --------------------
+ about.TimeZones             4                 Zeitzonen               Zeitzonen                    Time zones
+ bevat.DeclarationFields     4                 Declaration fields      Declaration fields           Declaration fields
+ checkdata.Checkers          45                Datentests              Tests de données             Data checkers
+ contacts.CivilStates        27                Zivilstände             Etats civils                 Civil states
+ contacts.PartnerEvents      18                Beobachtungskriterien   Évènements observés          Observed events
+ countries.PlaceTypes        16                None                    None                         None
+ excerpts.Shortcuts          4                 Excerpt shortcuts       Excerpt shortcuts            Excerpt shortcuts
+ ledger.CommonAccounts       29                Gemeinkonten            Comptes communs              Common accounts
+ ledger.JournalGroups        26                Journalgruppen          Groupes de journaux          Journal groups
+ ledger.PeriodStates         14                Zustände                États                        States
+ ledger.TradeTypes           18                Handelsarten            Types de commerce            Trade types
+ ledger.VoucherStates        14                Zustände Beleg          États Beleg                  Voucher states
+ ledger.VoucherTypes         55                Belegarten              Types de pièce               Voucher types
+ printing.BuildMethods       20                None                    None                         None
+ products.DeliveryUnits      5                 Delivery units          Delivery units               Delivery units
+ products.PriceFactors       4                 Price factors           Price factors                Price factors
+ products.ProductTypes       8                 Product types           Product types                Product types
+ sheets.CommonItems          25                Common sheet item       Common sheet item            Common sheet item
+ sheets.SheetTypes           16                Sheet types             Sheet types                  Sheet types
+ system.Genders              8                 None                    None                         None
+ system.PeriodEvents         9                 Beobachtungskriterien   Évènements observés          Observed events
+ system.YesNo                12                Ja oder Nein            Oui ou non                   Yes or no
+ uploads.Shortcuts           4                 Upload shortcuts        Upload shortcuts             Upload shortcuts
+ uploads.UploadAreas         7                 Upload-Bereiche         Domaines de téléchargement   Upload areas
+ users.UserTypes             21                Benutzerarten           Types d'utilisateur          User types
+ vat.DeclarationFieldsBase   4                 Declaration fields      Declaration fields           Declaration fields
+ vat.VatAreas                13                MWSt-Zonen              Zones TVA                    VAT areas
+ vat.VatClasses              31                MwSt.-Klassen           Classes TVA                  VAT classes
+ vat.VatColumns              39                MWSt-Kolonnen           MWSt-Kolonnen                VAT columns
+ vat.VatRegimes              24                MwSt.-Regimes           MwSt.-Regimes                VAT regimes
+ vat.VatRules                181               MwSt-Regeln             MwSt-Regeln                  VAT rules
+ xl.Priorities               8                 Prioritäten             Priorités                    Priorities
+=========================== ================= ======================= ============================ ====================
+<BLANKLINE>

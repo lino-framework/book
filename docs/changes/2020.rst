@@ -13,6 +13,14 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-22
+==========
+
+Fixed a bug that caused :attr:`lino.core.choicelists.ChoiceList.preferred_width`
+to be 4 for all choicelists. Wrote a new doctest utility
+:func:`lino.api.doctest.show_choicelists` so that application maintainers can
+easily cover these in their specs.  Usage example is :ref:`specs.cosi.apc`.
+
 2020-01-18
 ==========
 
