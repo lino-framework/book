@@ -10,17 +10,20 @@ on GitHub under https://github.com/lino-framework.
 General framework repositories
 ==============================
 
-- The :mod:`lino` package contains the core of the framework and
-  includes the :doc:`/specs/modlib`.
+- The :mod:`lino` package contains the core of the framework and includes the
+  :doc:`/specs/modlib`, a :term:`plugin library` with basic features like system
+  users, notifications, comments, printing and others. These features are
+  included in most real-world Lino applications.
+
+- The :mod:`lino_xl` package contains the :ref:`xl`,
+  a collection of plugins used by many Lino applications.
 
 - The :mod:`getlino` package contains the Lino installer.
 
-- The :mod:`lino_xl` package contains the :ref:`xl`.
-
-- The :mod:`lino_book` package contains the source code of what you
-  are reading right now, a collection of demo projects and examples
-  (:mod:`lino_book.projects`), and the big test suite for the whole
-  Lino framework.
+- The :mod:`lino_book` package contains the source code of what you are reading
+  right now, *plus* a collection of **demo projects and examples**
+  (see :mod:`lino_book.projects`), *plus* the big test suite for the Lino
+  framework.
 
 
 Lino applications
@@ -28,17 +31,20 @@ Lino applications
 
 Here is a directory of all known :term:`Lino applications <Lino application>`.
 
-Some Lino applications have the privilege of having their technical
-documentation in the :ref:`Lino Book <book>`.
+Some applications have the privilege of having their technical documentation in
+the :ref:`Lino Book <book>`.  This is because explaining a framework is
+difficult without examples, and because we thought that applications that are
+actually being used in reality are more interesting than a theoretic collection
+of demo projects.
 
-- :mod:`lino_noi` (:ref:`noi`) : the application we use for
+- :ref:`noi` (:mod:`lino_noi`) is the application we use for
   managing our collaboration.  It's about tickets, projects and working time.
-- :mod:`lino_cosi` (:ref:`cosi`) : a simple accounting application.
-- :mod:`lino_voga` (:ref:`voga`) : courses, invoicing, accounting
-- :mod:`lino_tera` (:ref:`tera`) : therapies, invoicing, accounting
-- :mod:`lino_avanti` (:ref:`avanti`) : Belgian integration parcours
-- :mod:`lino_care` (:ref:`care`) : Shared contacts and skills management for people who care
-- :mod:`lino_vilma` (:ref:`vilma`) : Shared contact management for local communities
+- :ref:`cosi` (:mod:`lino_cosi`) a simple accounting application.
+- :ref:`voga` (:mod:`lino_voga`) is about organizing courses, registering participants, invoicing, accounting
+- :ref:`tera` (:mod:`lino_tera`) is about therapies, invoicing, accounting
+- :ref:`avanti` (:mod:`lino_avanti`) is used Belgian to manage immigrants with their integration parcours
+- :ref:`care` (:mod:`lino_care`) : Shared contacts and skills management for people who care
+- :ref:`vilma` (:mod:`lino_vilma`) : Shared contact management for local communities
 
 Newer Lino applications have their own technical documentation, demo projects
 and technical specs:
