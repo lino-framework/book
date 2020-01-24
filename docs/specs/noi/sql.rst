@@ -308,6 +308,7 @@ To verify whether the slave summary panels are being computed:
 lino_noi.lib.tickets.models.Ticket.created_natural
 lino_noi.lib.tickets.models.Ticket.mobile_item
 lino_noi.lib.tickets.models.Ticket.overview
+lino_noi.lib.tickets.models.Ticket.quick_assign_to
 lino_noi.lib.tickets.models.Ticket.workflow_buttons
 tickets.Ticket.assigned_to
 tickets.Ticket.closed

@@ -46,7 +46,7 @@ the detail window of a ticket.
       - **Description** (description)
     - (general1b):
       - (general1b_1): **Author** (user), **End user** (end_user)
-      - (general1b_2): **Assigned to** (assigned_to), **Private** (private)
+      - (general1b_2): **Assign to** (quick_assign_to), **Private** (private)
       - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
       - (general1b_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
       - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
@@ -55,7 +55,7 @@ the detail window of a ticket.
   - (more_1):
     - (more1):
       - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
-      - (more1_2): **State** (state), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
+      - (more1_2): **State** (state), **Assigned to** (assigned_to), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
 - **Mentions** (comments_CommentsByMentioned)
