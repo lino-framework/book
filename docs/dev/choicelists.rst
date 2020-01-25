@@ -5,43 +5,42 @@
 Introduction to choicelists
 ===========================
 
+A **choice list** is an ordered in-memory list of *choices*.
+Each choice has a *value*, a *text* and a optionally a *name*.
+The **value** of a choice is what is stored in the database.
+The **text** is what the user sees.  It is usually translatable.
+The **name** can be used to refer to a given choice from program code.
+
+Whenever in *plain Django* you use a `choices` attribute on a database
+field, in Lino you probably prefer using a :class:`ChoiceList` instead.
+
+You can use a choicelist for much more than filling the :attr:`choices`
+attribute of a database field.  You can display a choicelist as a table (using
+:meth:`show <lino.core.requests.BaseRequest.show>` in a doctest or by adding it
+to the main menu).  You can refer to individual choices programmatically using
+their :attr:`name`.  You can subclass the choices and add application logic.
+
+
 .. currentmodule:: lino.core.choicelists
 
 .. contents::
     :depth: 1
     :local:
 
-Overview
-========
-
-
-Whenever in *plain Django* you use a `choices` attribute on a database
-field, in Lino you probably prefer using a :class:`ChoiceList` instead.
-
-A :class:`ChoiceList` is an ordered in-memory list of choices.  Each of these
-choices has a "value", a "text" and a optionally a "name".  The `text` of a
-choice is what the user sees.  It is usually translatable.  The `value` is what
-is stored in the database.  The `name` can be used to refer to a given choice
-from programmatically.
-
-You can use a choicelist for much more than filling the :attr:`choices`
-attribute of a database field.  You can display a choicelist as a table (using
-:meth:`show <lino.core.requests.BaseRequest.show>` in a doctest or by adding it
-to the main menu).  You can refer to individual items programmatically using
-their :attr:`name`.  You can subclass the choices and add application logic.
-
-
-Examples
-========
+.. include:: /../docs/shared/include/tested.rst
 
 The examples in this document use the :mod:`lino_book.projects.min2` project.
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min2.settings.demo')
 >>> from lino.api.doctest import *
+>>> from django.utils import translation
+
+Examples
+========
 
 For example Lino's calendar plugin (:mod:`lino_xl.lib.cal`) defines a
-choicelist :class:`Weekdays <lino_xl.lib.cal.Weekdays>` which has 7
+choicelist :class:`Weekdays <lino_xl.lib.cal.Weekdays>`, which has 7
 choices, one for each day of the week.
 
 >>> rt.show('cal.Weekdays')
@@ -76,8 +75,8 @@ Accessing choicelists
 =====================
 
 ChoiceLists are **actors**.
-Like every actor, choicelists are **never instantiated**. They are
-just the class object itself and as such globally available
+Like every actor, choicelists are **never instantiated**.
+They are just the class object itself and as such globally available
 
 You can either import them or use :data:`lino.api.rt.models` to access
 them (see :ref:`dev.accessing.plugins` for the difference):
@@ -98,7 +97,7 @@ True
 
 
 You can also write code that dynamically resolves a string of type
-`app_label.ListName` to resolve them:
+```app_label.ListName`` to resolve them:
 
 >>> rt.models.resolve('cal.Weekdays') is Weekdays
 True
@@ -130,15 +129,14 @@ Accessing individual choices
 Each row of a choicelist is a **choice**, more precisely an instance
 of :class:`lino.core.choicelists.Choice` or a subclass thereof.
 
-Each Choice has a "value", a "text" and a (optionally) "name".
+Each choice has a "value", a "text" and (optionally) a "name".
 
 The **value** is what gets stored when this choice is assigned to a
 database field. It must be unique because it is the analog of primary
 key.
 
->>> [rmu(g.value) for g in Genders.objects()]
+>>> [g.value for g in Genders.objects()]
 ['M', 'F']
-
 
 The **text** is what the user sees.  It is a translatable string,
 implemented using Django's i18n machine:
@@ -154,7 +152,6 @@ Calling :func:`str` of a choice is (usually) the same as calling
 
 The text of a choice depends on the current user language.
 
->>> from django.utils import translation
 >>> with translation.override('fr'):
 ...     [str(g) for g in Genders.objects()]
 ['Masculin', 'F\xe9minin']
@@ -201,12 +198,11 @@ to this particular choice.
 <Genders.male:M>
 
 
->>> rmu([g.name for g in Genders.objects()])
+>>> [g.name for g in Genders.objects()]
 ['male', 'female']
 
->>> rmu(' '.join([d.name for d in Weekdays.objects()]))
-'monday tuesday wednesday thursday friday saturday sunday'
-
+>>> [d.name for d in Weekdays.objects()]
+['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
 
 Choicelist fields
@@ -224,12 +220,11 @@ follows::
 This adds a database field whose value is an instance of
 :class:`lino.core.choicelists.Choice`.
 
-A choicelist field is like a :class:`ForeignKey` field, but instead of
-pointing to a database object it points to a :class:`Choice`.  For the
-underlying database it is actually a `CharField` which contains the
-`value` (not the `name`) of its choice.
-
-
+A choicelist field is similar to a :class:`ForeignKey` field in that it uses a
+:doc:`combo box </dev/combo/index>` as widget, but instead of pointing to a
+database object it points to a :class:`Choice`.  For the underlying database it
+is actually a `CharField` which contains the `value` (not the `name`) of its
+choice.
 
 
 The :class:`lino.mixins.human.Human` mixin uses the :class:`Genders

@@ -146,9 +146,11 @@ Should come after :fixture:`std` and before :fixture:`demo`.
 Adds master demo data.
 
 - :mod:`lino.modlib.users`
-  Adds fictive root users (administrators), one for
+  adds fictive root users (administrators), one for
   each language.  These names are being used by the online demo
   sites.
+  We are trying to sound realistic without actually hitting any real
+  person.
 
 - :mod:`lino_xl.lib.humanlinks` creates two fictive families (Hubert & Gaby
   Frisch-Frogemuth with their children and grand-children).

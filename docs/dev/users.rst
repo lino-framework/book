@@ -24,11 +24,11 @@ plugin.
 Creating a root user
 ====================
 
-The most Linoish way to create a root user (or a set of demo users) is
-to run :manage:`prep`.  This will reset the database to a
-virgin state and then load all your demo data, which includes
-:mod:`lino.modlib.users.fixtures.demo_users` (except if you changed
-your :attr:`lino.core.site.Site.demo_fixtures`).
+The most Linoish way to create a root user (or a set of demo users) is to run
+:manage:`prep`.  This will reset the database to a virgin state and then load
+the :fixture:`demo` fixture, which will create our well-known demo users Robin,
+Rolf, Romain, Rando, Rik, Ronaldo ... depending on your
+:attr:`lino.core.site.Site.languages`.
 
 If you don't want to reset your database, then you can write a script
 and run it with :manage:`run`. For example::
@@ -49,23 +49,28 @@ and the account therefore cannot be used to log in.  If you create
 a new user manually using the web interface, you must click their
 :class:`ChangePassword` action and set their password.
 
->>> try:
-...     users.User.objects.get(username="test").delete()
-... except users.User.DoesNotExist:
-...    pass
+.. # tidy up
+  >>> try:
+  ...     users.User.objects.get(username="test").delete()
+  ... except users.User.DoesNotExist:
+  ...    pass
+
+
 >>> u = users.User(username="test")
+>>> u.full_clean()
 >>> u.save()
->>> print(not u.has_usable_password() and six.PY3)
+
+Since we didn't set a `password`, Django stores a "non usable" password, and the
+:meth:`User.check_password` method returns `False`:
+
+>>> u.password  #doctest: +ELLIPSIS
+'!...'
+>>> u.check_password('')
 False
 
-
-The `password` field is empty, and the :meth:`User.check_password`
-method returns `False`:
-
->>> rmu(u.password)
-''
->>> print(u.check_password(''))
+>>> u.has_usable_password()
 False
+
 
 When setting the password for a newly created user, leave the
 field :guilabel:`Current password` empty.
@@ -75,3 +80,7 @@ field :guilabel:`Current password` empty.
 >>> rv = ses.run(u.change_password, action_param_values=values)
 >>> print(rv['message'])
 New password has been set for test.
+
+Note that a site administrator (a user having the
+:class:`lino.core.roles.SiteAdmin` role) never needs to specify the current
+password when setting a new password for any user.

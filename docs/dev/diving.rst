@@ -18,8 +18,43 @@ The vital basics
    tables/index
    layouts/index
    actions
+   plugins
    menu
    nutshell
+
+More basics
+===========
+
+.. toctree::
+   :maxdepth: 1
+
+   choicelists
+   slave_tables
+   initdb
+   pyfixtures/index
+   users
+   perms
+   settings
+   admin_main
+   quantities
+   xlmenu
+
+Widgets
+=======
+
+.. toctree::
+   :maxdepth: 1
+
+   combo/index
+   textfield
+   chooser2
+   learningfk
+   workflows
+   radiobuttons
+   virtualfields
+   table_summaries
+   vtables
+
 
 More practical
 ==============
@@ -29,24 +64,3 @@ More practical
 
    screencasts
    /dev/polls/index
-
-More basics
-===========
-
-.. toctree::
-   :maxdepth: 1
-
-   plugins
-   choicelists
-   slave_tables
-   table_summaries
-   vtables
-   initdb
-   pyfixtures/index
-   perms
-   users
-   settings
-   admin_main
-   quantities
-   virtualfields
-   xlmenu

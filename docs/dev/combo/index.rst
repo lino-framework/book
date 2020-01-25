@@ -1,9 +1,12 @@
 .. doctest docs/dev/combo/index.rst
 .. _lino.dev.combo:
 
-==========================
-Introduction to Comboboxes
-==========================
+===========================
+Introduction to Combo boxes
+===========================
+
+A **combo box** is a widget used to edit a field that can have a number of
+choices.  See also :doc:`/dev/radiobuttons`.
 
 This unit uses the :mod:`lino_book.projects.combo` project to show how
 to define dynamic lists of choices for a combobox field in a Lino

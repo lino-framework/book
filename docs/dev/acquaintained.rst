@@ -31,18 +31,13 @@ Getting acquaintained
    cache
    rendering
    mti
-   combo/index
-   chooser2
-   learningfk
 
    online
    site_config
    disabled_fields
-   workflows
    startup
 
    bleach
-   textfield
    story
    etree
    inject_field
