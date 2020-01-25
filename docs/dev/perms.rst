@@ -6,23 +6,13 @@
 Introduction to permissions
 ===========================
 
-
-As soon as a database application is used by more than one user, we
-usually need to speak about **permissions**.  For example, a system
-administrator can see certain resources which a simple user should not
-get to see.  The application must check whether a given user has
-permission to see a given resource or to execute a given action.  An
-application framework must provide a system for managing these
-permissions.
-
-See :doc:`/dev/about/auth` if you wonder why Lino replaces Django's user
-management and permission system.  Yes, this is radical. Django's
-approach for managing permissions is one of the reasons why I wrote
-Lino.  I believe that maintaining a few production sites with
-applications like :ref:`welfare` or :ref:`voga` would be a hell if I
-had implemented them using Django.  Permission management is complex.
-Lino doesn't turn it into something simple, but it brings light into
-the dark...
+As soon as a database application is used by more than one user, we usually need
+to speak about **permissions**.  For example, a :term:`site administrator` can
+see certain resources that a simple :term:`end user` should not get to see.  The
+application must check whether a given user has permission to see a given
+resource or to execute a given action.  An application framework must provide a
+system for managing these permissions. Lino replaces Django's user management
+and permission system (see :doc:`/dev/about/auth` if you wonder why).
 
 .. contents::
     :depth: 1
@@ -46,12 +36,11 @@ the basic unit for defining permissions.
 - Every user has a set of roles.
 - Every resource (table or action) has a set of *required* roles.
 
-User roles are class objects which represent conditions for getting
-permission to access the functionalities of the application.  Lino
-comes with a few built-in user roles which are defined in
-:mod:`lino.core.roles`.  Every plugin may define its own user roles
-which must be subclasses of these builtin roles.  And of course a role
-can inherit from one or several other roles.
+User roles are class objects that represent conditions for getting permission to
+access the functionalities of the application.  Lino comes with a few built-in
+user roles that are defined in :mod:`lino.core.roles`.  Every plugin may define
+its own user roles which must be subclasses of these builtin roles.  A role can
+inherit from one or several other roles.
 
 A real-world application can define *many* user roles. For example
 here is an inheritance diagram of the roles used by :ref:`noi`:
@@ -136,6 +125,32 @@ from "profile" to "type".
 ========== =====================
 <BLANKLINE>
 
+Relation between user roles and user types
+==========================================
+
+There is a built-in virtual table that shows an overview of which roles are
+contained for each user type.  This table can be helpful for documenting the
+permissions granted to each user type.
+
+>>> rt.show(users.UserRoles)
+======================== ===== ===== =====
+ Name                     000   100   900
+------------------------ ----- ----- -----
+ cal.GuestOperator              ☑     ☑
+ comments.CommentsStaff               ☑
+ comments.CommentsUser          ☑     ☑
+ contacts.ContactsStaff               ☑
+ contacts.ContactsUser          ☑     ☑
+ excerpts.ExcerptsStaff               ☑
+ excerpts.ExcerptsUser          ☑     ☑
+ notes.NotesStaff                     ☑
+ notes.NotesUser                ☑     ☑
+ office.OfficeStaff                   ☑
+ office.OfficeUser              ☑     ☑
+ polls.PollsAdmin                     ☑
+ polls.PollsUser                ☑     ☑
+======================== ===== ===== =====
+<BLANKLINE>
 
 Accessing permissions from within your code
 ===========================================

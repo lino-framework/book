@@ -9,15 +9,15 @@ permission system.  See :doc:`/dev/perms` for an introduction to
 Lino's permission system.  See :doc:`/dev/users` for getting started
 with user management.
 
-In Lino we opted to replace Django's database-stored user groups and
-permissions system by a system which uses pure Python code objects.
-While Django stores permissions as rows in the database, in Lino they
-are entirely defined by the application code as class-based user
-roles.
+In Lino we opted to replace Django's database-stored user groups and permissions
+system by a system which uses pure Python code objects. While Django stores
+permissions as rows in the database, in Lino they are entirely defined by the
+application code as class-based user roles.
 
-Defining, granting and managing permissions can become a hell when
-you maintain a complex application which runs on different sites,
-with different variants, different versions.
+Defining, granting and managing permissions can become a hell when you maintain
+a complex application that runs on different sites, with different variants,
+different versions. Permission management is complex. Lino doesn't turn it into
+something simple, but it brings light into the dark...
 
 We believe that a purely code-based approach is more suitable than
 information stored in a database because
