@@ -13,12 +13,17 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-27
+==========
+
+Released to PyPI : lino 20.1.1 and xl 20.1.4 (because amici, presto etc are
+failing on travis).
+
 2020-01-24
 ==========
 
 :func:`show_complexity_factors` no longer counts actions with
 :attr:`no_params_window`.
-
 
 
 2020-01-22
