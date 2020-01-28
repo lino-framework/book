@@ -163,9 +163,6 @@ Some more concepts:
     :attr:`preliminary <Journal.preliminary>` field checked.
 
 
-
-
-
 There are some secondary models and choice lists:
 
 
@@ -174,12 +171,6 @@ There are some secondary models and choice lists:
 
 - The **payment term** of an invoice (:class:`PaymentTerm`) is a convention on how the
   invoice should be paid.
-
-- The ledger plug-in defines a list of **voucher types** which is filled by
-  plug-ins like :mod:`lino_xl.lib.vat`, :mod:`lino_xl.lib.sales` or
-  :mod:`lino_xl.lib.vat` who define some subclass of :class:`Voucher` and use it
-  for registering one or several voucher types.
-
 
 And then there are many views for looking at this data.
 
@@ -631,7 +622,12 @@ Vouchers
 
     .. attribute:: state
 
-        The workflow state of this voucher. Choices are defined in
+        The workflow state of this voucher.
+
+        This field is defined by the implementing voucher class, which depends
+        on the journal's voucher type.
+
+        Choices are defined in
         :class:`VoucherStates`
 
     .. attribute:: journal
@@ -1435,77 +1431,75 @@ office.  Bestbank is a debtor because pending payment orders are
 booked to this account.  The tax office is a debtor because we had
 more VAT deductible (sales) than VAT due (purchases).
 
->>> ses.show(ledger.Debtors, column_names="partner partner_id balance")
+>>> ses.show(ledger.Debtors, column_names="due_date partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=================================== ========== ===============
- Partner                             ID         Balance
------------------------------------ ---------- ---------------
- Niederau Eupen AG                   190        100,00
- Bestbank                            100        2 382,15
- Hans Flott & Co                     108        815,96
- Van Achter NV                       107        1 939,82
- Bernd Brechts Bücherladen           109        320,00
- Ausdemwald Alfons                   116        3 319,78
- Reinhards Baumschule                110        548,50
- Arens Annette                       114        1 245,00
- Moulin Rouge                        111        2 013,88
- Altenberg Hans                      115        140,60
- Bastiaensen Laurent                 117        1 199,85
- Collard Charlotte                   118        279,90
- Auto École Verte                    112        1 949,85
- Charlier Ulrike                     119        990,00
- Dobbelstein Dorothée                124        834,00
- Ernst Berta                         125        11,20
- Evertz Bernd                        126        2 299,81
- Demeulenaere Dorothée               122        59,85
- Dobbelstein-Demeulenaere Dorothée   123        580,00
- Arens Andreas                       113        831,82
- Chantraine Marc                     120        239,20
- Faymonville Luc                     130        562,50
- Evers Eberhart                      127        1 955,78
- Dericum Daniel                      121        5 365,23
- Emonts Daniel                       128        450,00
- Gernegroß Germaine                  131        1 599,92
- Groteclaes Gregory                  132        2 349,81
- Hilgers Hildegard                   133        951,82
- Hilgers Henri                       134        525,00
- Johnen Johann                       138        419,90
- Engels Edgar                        129        670,00
- Jousten Jan                         140        489,20
- Ingels Irene                        135        600,00
- Kaivers Karl                        141        4 005,35
- Lambertz Guido                      142        1 039,92
- Jonas Josef                         139        600,00
- Jansen Jérémy                       136        2 940,42
- Laschet Laura                       143        1 119,81
- Mießen Michael                      148        465,96
- Malmendier Marc                     146        3 599,71
- Meessen Melissa                     147        639,92
- Jacobs Jacqueline                   137        1 719,81
- Meier Marie-Louise                  149        770,00
- Emonts Erich                        150        448,50
- Lazarus Line                        144        375,00
- Emontspool Erwin                    151        1 613,92
- Leffin Josefine                     145        310,20
- Emonts-Gast Erna                    152        3 149,71
- Radermacher Daniela                 156        21,00
- Radermacher Edgard                  157        2 799,82
- Radermacher Fritz                   158        1 999,71
- Radermacher Berta                   154        645,00
- Radermacher Christian               155        719,60
- di Rupo Didier                      164        280,00
- Radermacher Guido                   159        740,00
- da Vinci David                      165        1 645,16
- Radermacher Inge                    162        2 039,82
- Radermacher Alfons                  153        31,92
- Radermacher Jean                    163        679,81
- Radermacher Hans                    160        494,80
- Radermacher Hedi                    161        2 999,85
- **Total (61 rows)**                 **8314**   **75 935,05**
-=================================== ========== ===============
+===================== =================================== ========== ===============
+ Due date              Partner                             ID         Balance
+--------------------- ----------------------------------- ---------- ---------------
+ 01/01/2016            Niederau Eupen AG                   190        100,00
+ 03/01/2016            Bestbank                            100        2 382,15
+ 09/02/2016            Van Achter NV                       107        1 939,82
+ 10/02/2016            Hans Flott & Co                     108        815,96
+ 07/03/2016            Bernd Brechts Bücherladen           109        320,00
+ 07/04/2016            Reinhards Baumschule                110        548,50
+ 08/04/2016            Moulin Rouge                        111        2 013,88
+ 09/04/2016            Auto École Verte                    112        1 949,85
+ 10/04/2016            Arens Andreas                       113        831,82
+ 11/04/2016            Arens Annette                       114        1 245,00
+ 13/04/2016            Altenberg Hans                      115        140,60
+ 14/04/2016            Ausdemwald Alfons                   116        3 319,78
+ 07/05/2016            Bastiaensen Laurent                 117        1 199,85
+ 08/05/2016            Collard Charlotte                   118        279,90
+ 09/05/2016            Charlier Ulrike                     119        990,00
+ 10/05/2016            Chantraine Marc                     120        239,20
+ 11/05/2016            Dericum Daniel                      121        5 365,23
+ 07/06/2016            Demeulenaere Dorothée               122        59,85
+ 08/06/2016            Dobbelstein-Demeulenaere Dorothée   123        580,00
+ 09/06/2016            Dobbelstein Dorothée                124        834,00
+ 10/06/2016            Ernst Berta                         125        11,20
+ 11/06/2016            Evertz Bernd                        126        2 299,81
+ 07/07/2016            Evers Eberhart                      127        1 955,78
+ 08/07/2016            Emonts Daniel                       128        450,00
+ 09/07/2016            Engels Edgar                        129        670,00
+ 10/07/2016            Faymonville Luc                     130        562,50
+ 07/08/2016            Gernegroß Germaine                  131        1 599,92
+ 07/09/2016            Groteclaes Gregory                  132        2 349,81
+ 08/09/2016            Hilgers Hildegard                   133        951,82
+ 09/09/2016            Hilgers Henri                       134        525,00
+ 10/09/2016            Ingels Irene                        135        600,00
+ 11/09/2016            Jansen Jérémy                       136        2 940,42
+ 13/09/2016            Jacobs Jacqueline                   137        1 719,81
+ 14/09/2016            Johnen Johann                       138        419,90
+ 07/10/2016            Jonas Josef                         139        600,00
+ 08/10/2016            Jousten Jan                         140        489,20
+ 09/10/2016            Kaivers Karl                        141        4 005,35
+ 10/10/2016            Lambertz Guido                      142        1 039,92
+ 11/10/2016            Laschet Laura                       143        1 119,81
+ 07/11/2016            Lazarus Line                        144        375,00
+ 08/11/2016            Leffin Josefine                     145        310,20
+ 09/11/2016            Malmendier Marc                     146        3 599,71
+ 10/11/2016            Meessen Melissa                     147        639,92
+ 11/11/2016            Mießen Michael                      148        465,96
+ 07/12/2016            Meier Marie-Louise                  149        770,00
+ 08/12/2016            Emonts Erich                        150        448,50
+ 09/12/2016            Emontspool Erwin                    151        1 613,92
+ 10/12/2016            Emonts-Gast Erna                    152        3 149,71
+ 07/01/2017            Radermacher Alfons                  153        31,92
+ 07/02/2017            Radermacher Berta                   154        645,00
+ 08/02/2017            Radermacher Christian               155        719,60
+ 09/02/2017            Radermacher Daniela                 156        21,00
+ 10/02/2017            Radermacher Edgard                  157        2 799,82
+ 11/02/2017            Radermacher Fritz                   158        1 999,71
+ 13/02/2017            Radermacher Guido                   159        740,00
+ 14/02/2017            Radermacher Hans                    160        494,80
+ 07/03/2017            Radermacher Hedi                    161        2 999,85
+ 08/03/2017            Radermacher Inge                    162        2 039,82
+ 09/03/2017            Radermacher Jean                    163        679,81
+ 10/03/2017            di Rupo Didier                      164        280,00
+ 11/03/2017            da Vinci David                      165        1 645,16
+ **Total (61 rows)**                                       **8314**   **75 935,05**
+===================== =================================== ========== ===============
 <BLANKLINE>
-
-
 
 
 The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows
@@ -1520,7 +1514,7 @@ Partner #116 ('Ausdemwald Alfons')
 ==================== ============== ========================== ==========
  Due date             Balance        Debts                      Payments
 -------------------- -------------- -------------------------- ----------
- 13/04/2016           3 319,78       `SLS 18/2016 <Detail>`__
+ 14/04/2016           3 319,78       `SLS 18/2016 <Detail>`__
  **Total (1 rows)**   **3 319,78**
 ==================== ============== ========================== ==========
 <BLANKLINE>
@@ -1541,10 +1535,10 @@ send us a purchase invoice (which we did not yet pay).
  Leffin Electronics    191       50,00
  Rumma & Ko OÜ         101       91,38
  Bäckerei Ausdemwald   102       8 368,19
- Donderweer BV         106       1 521,15
  Bäckerei Mießen       103       17 771,00
  Bäckerei Schmitz      104       48 194,90
  Garage Mergelsberg    105       1 021,04
+ Donderweer BV         106       1 521,15
  **Total (7 rows)**    **812**   **77 017,66**
 ===================== ========= ===============
 <BLANKLINE>
@@ -1558,22 +1552,22 @@ Partner 101 from above list is both a supplier and a customer:
 ===================== ============ ========================= ==========================
  Due date              Balance      Debts                     Payments
 --------------------- ------------ ------------------------- --------------------------
- 10/01/2016            -141,30                                `PRC 2/2016 <Detail>`__
- 14/01/2016            2 039,82     `SLS 2/2016 <Detail>`__
- 10/02/2016            -142,00                                `PRC 9/2016 <Detail>`__
- 10/03/2016            -143,40                                `PRC 16/2016 <Detail>`__
- 10/04/2016            -142,10                                `PRC 23/2016 <Detail>`__
- 10/05/2016            -140,20                                `PRC 30/2016 <Detail>`__
- 10/06/2016            -141,30                                `PRC 37/2016 <Detail>`__
- 10/07/2016            -142,00                                `PRC 44/2016 <Detail>`__
- 10/08/2016            -143,40                                `PRC 51/2016 <Detail>`__
- 10/09/2016            -142,10                                `PRC 58/2016 <Detail>`__
- 10/10/2016            -140,20                                `PRC 65/2016 <Detail>`__
- 10/11/2016            -141,30                                `PRC 72/2016 <Detail>`__
- 10/12/2016            -142,00                                `PRC 79/2016 <Detail>`__
- 10/01/2017            -144,80                                `PRC 2/2017 <Detail>`__
- 10/02/2017            -143,50                                `PRC 9/2017 <Detail>`__
- 10/03/2017            -141,60                                `PRC 16/2017 <Detail>`__
+ 04/01/2016            -141,30                                `PRC 2/2016 <Detail>`__
+ 08/01/2016            2 039,82     `SLS 2/2016 <Detail>`__
+ 04/02/2016            -142,00                                `PRC 9/2016 <Detail>`__
+ 04/03/2016            -143,40                                `PRC 16/2016 <Detail>`__
+ 04/04/2016            -142,10                                `PRC 23/2016 <Detail>`__
+ 04/05/2016            -140,20                                `PRC 30/2016 <Detail>`__
+ 04/06/2016            -141,30                                `PRC 37/2016 <Detail>`__
+ 04/07/2016            -142,00                                `PRC 44/2016 <Detail>`__
+ 04/08/2016            -143,40                                `PRC 51/2016 <Detail>`__
+ 04/09/2016            -142,10                                `PRC 58/2016 <Detail>`__
+ 04/10/2016            -140,20                                `PRC 65/2016 <Detail>`__
+ 04/11/2016            -141,30                                `PRC 72/2016 <Detail>`__
+ 04/12/2016            -142,00                                `PRC 79/2016 <Detail>`__
+ 04/01/2017            -144,80                                `PRC 2/2017 <Detail>`__
+ 04/02/2017            -143,50                                `PRC 9/2017 <Detail>`__
+ 04/03/2017            -141,60                                `PRC 16/2017 <Detail>`__
  **Total (16 rows)**   **-91,38**
 ===================== ============ ========================= ==========================
 <BLANKLINE>
@@ -1781,18 +1775,25 @@ Journal groups
 Voucher types
 =============
 
+The ledger plugin defines a list of **voucher types**, a choicelist that is
+populated by other plugins like :mod:`lino_xl.lib.vat`, :mod:`lino_xl.lib.sales`
+or :mod:`lino_xl.lib.orders` who define some subclass of :class:`Voucher` and
+then must "register" that model to be used by one or several voucher types.
+
+Every :term:`journal` must have its voucher type, configured in the journal's
+:attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>` field.  Several
+journals may share a same voucher type.  The voucher type of a journal must not
+change as long as the journal has at least one voucher.
+
+
 .. class:: VoucherTypes
 
-    The list of voucher types available in this application. Each items
-    is an instances of :class:VoucherType`.
+    The list of voucher types available in this application.
 
-    The :attr:`voucher_type <lino_xl.lib.ledger.Journal.voucher_type>`
-    field of a journal points to an item of this.
+    Each item is an instances of :class:`VoucherType`.
 
     .. method:: get_for_model()
     .. method:: get_for_table()
-
-
 
 .. class:: VoucherType
 
@@ -1801,13 +1802,8 @@ Voucher types
     The **voucher type** defines the database model used to store
     vouchers of this type (:attr:`model`).
 
-    But it can be more complex: actually the voucher type is defined
-    by its :attr:`table_class`, i.e. application developers can define
-    more than one *voucher type* per model by providing alternative
-    tables (views) for it.
-
-    Every Lino Cosi application has its own global list of voucher
-    types defined in the :class:`VoucherTypes` choicelist.
+    In more complex cases the :term:`application developer` can define more than
+    one *voucher type* per model by providing alternative tables (views) for it.
 
     .. attribute:: model
 
@@ -1826,7 +1822,7 @@ Voucher types
 
     Base class for items of :class:`VoucherStates`.
 
-    .. attribute:: editable
+    .. attribute:: is_editable
 
         Whether a voucher in this state is editable.
 
@@ -1837,6 +1833,17 @@ Voucher types
 
     In a default configuration, vouchers can be :attr:`draft`,
     :attr:`registered`, :attr:`cancelled` or :attr:`signed`.
+
+    >>> rt.show(ledger.VoucherStates)
+    ======= ============ ============ =============
+     value   name         text         Button text
+    ------- ------------ ------------ -------------
+     10      draft        Draft
+     20      registered   Registered
+     30      signed       Signed
+     40      cancelled    Cancelled
+    ======= ============ ============ =============
+    <BLANKLINE>
 
     .. attribute:: draft
 

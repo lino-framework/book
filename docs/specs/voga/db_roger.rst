@@ -79,7 +79,7 @@ The database structure
  ledger.MatchRule           ledger.MatchRules              3         33
  ledger.Movement            ledger.Movements               12        939
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
- ledger.Voucher             ledger.Vouchers                9         268
+ ledger.Voucher             ledger.AllVouchers             8         268
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         103

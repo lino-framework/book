@@ -28,7 +28,7 @@ Complexity factors
 - 30 user roles
 - 8 user types
 - 301 views
-- 23 dialog actions
+- 18 dialog actions
 <BLANKLINE>
 
 The database models

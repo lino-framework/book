@@ -25,7 +25,7 @@ Complexity factors
 - 98 models
 - 22 user roles
 - 4 user types
-- 375 views
+- 374 views
 - 27 dialog actions
 <BLANKLINE>
 
@@ -103,7 +103,7 @@ The database models
  ledger.MatchRule            ledger.MatchRules              3         33
  ledger.Movement             ledger.Movements               13        911
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
- ledger.Voucher              ledger.Vouchers                9         257
+ ledger.Voucher              ledger.AllVouchers             8         257
  lists.List                  lists.Lists                    7         8
  lists.ListType              lists.ListTypes                4         3
  lists.Member                lists.Members                  5         105

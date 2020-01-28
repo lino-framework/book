@@ -20,7 +20,7 @@ The apc demo project
 - 52 models
 - 13 user roles
 - 3 user types
-- 185 views
+- 184 views
 - 14 dialog actions
 <BLANKLINE>
 
@@ -271,6 +271,7 @@ This site shows a series of due sales invoices
 
 
 >>> show_choicelists()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =========================== ================= ======================= ============================ ====================
  name                        preferred_width   de                      fr                           en
 --------------------------- ----------------- ----------------------- ---------------------------- --------------------
@@ -285,7 +286,7 @@ This site shows a series of due sales invoices
  ledger.JournalGroups        26                Journalgruppen          Groupes de journaux          Journal groups
  ledger.PeriodStates         14                Zustände                États                        States
  ledger.TradeTypes           18                Handelsarten            Types de commerce            Trade types
- ledger.VoucherStates        14                Zustände Beleg          États Beleg                  Voucher states
+ ledger.VoucherStates        14                Belegzustände           Belegzustände                Voucher states
  ledger.VoucherTypes         55                Belegarten              Types de pièce               Voucher types
  printing.BuildMethods       20                None                    None                         None
  products.DeliveryUnits      5                 Delivery units          Delivery units               Delivery units
