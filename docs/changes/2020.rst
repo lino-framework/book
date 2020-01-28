@@ -13,6 +13,14 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-01-28
+==========
+
+New feature: every voucher model can now define its own workflow rules. This
+change required the workflow state field of vouchers to move from the Voucher
+model to the implementing MTI child models. This requires manual changes in the
+:xfile:`restore.py` file when migrating existing data.
+
 2020-01-27
 ==========
 
