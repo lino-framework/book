@@ -20,7 +20,7 @@ The apc demo project
 - 52 models
 - 13 user roles
 - 3 user types
-- 184 views
+- 183 views
 - 14 dialog actions
 <BLANKLINE>
 

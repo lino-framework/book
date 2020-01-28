@@ -391,15 +391,15 @@ detail window of an enrolment shows all invoicings of that enrolment:
 >>> obj = courses.Enrolment.objects.get(pk=67)
 >>> rt.show('invoicing.InvoicingsByGenerator', obj)
 ... #doctest: +REPORT_UDIFF
-==================== ================================================== ========== ============== ============ ==================
- Sales invoice        Heading                                            Quantity   Voucher date   State        Number of events
--------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
- SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          01/01/2014     Registered   12
- SLS 44/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
- SLS 56/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
- SLS 9/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
- **Total (4 rows)**                                                      **4**                                  **48**
-==================== ================================================== ========== ============== ============ ==================
+==================== ================================================== ========== ============== =============== ==================
+ Sales invoice        Heading                                            Quantity   Voucher date   Voucher state   Number of events
+-------------------- -------------------------------------------------- ---------- -------------- --------------- ------------------
+ SLS 20/2014          [1] Enrolment to 009C BT (Belly dancing)           1          01/01/2014     Registered      12
+ SLS 44/2014          [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered      12
+ SLS 56/2014          [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered      12
+ SLS 9/2015           [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered      12
+ **Total (4 rows)**                                                      **4**                                     **48**
+==================== ================================================== ========== ============== =============== ==================
 <BLANKLINE>
 
 .. before 20190506 the voucher_date of generated invoices was used to store the plan's max_date:
@@ -782,21 +782,21 @@ We pick one of them and look at the issued invoices:
 
 >>> e = rt.models.courses.Enrolment.objects.get(id=28)
 >>> rt.show('invoicing.InvoicingsByGenerator', e)
-===================== ===================================== ========== ============== ============ ==================
- Sales invoice         Heading                               Quantity   Voucher date   State        Number of events
---------------------- ------------------------------------- ---------- -------------- ------------ ------------------
- SLS 9/2014            [1] Enrolment to 025C Yoga            1          01/01/2014     Registered   5
- SLS 29/2014           [2] Renewal Enrolment to 025C Yoga    1          01/02/2014     Registered   5
- SLS 34/2014           [3] Renewal Enrolment to 025C Yoga    1          01/04/2014     Registered   5
- SLS 39/2014           [4] Renewal Enrolment to 025C Yoga    1          01/06/2014     Registered   5
- SLS 42/2014           [5] Renewal Enrolment to 025C Yoga    1          01/07/2014     Registered   5
- SLS 46/2014           [6] Renewal Enrolment to 025C Yoga    1          01/08/2014     Registered   5
- SLS 52/2014           [7] Renewal Enrolment to 025C Yoga    1          01/10/2014     Registered   5
- SLS 60/2014           [8] Renewal Enrolment to 025C Yoga    1          01/11/2014     Registered   5
- SLS 65/2014           [9] Renewal Enrolment to 025C Yoga    1          01/12/2014     Registered   5
- SLS 14/2015           [10] Renewal Enrolment to 025C Yoga   1          01/02/2015     Registered   5
- **Total (10 rows)**                                         **10**                                 **50**
-===================== ===================================== ========== ============== ============ ==================
+===================== ===================================== ========== ============== =============== ==================
+ Sales invoice         Heading                               Quantity   Voucher date   Voucher state   Number of events
+--------------------- ------------------------------------- ---------- -------------- --------------- ------------------
+ SLS 9/2014            [1] Enrolment to 025C Yoga            1          01/01/2014     Registered      5
+ SLS 29/2014           [2] Renewal Enrolment to 025C Yoga    1          01/02/2014     Registered      5
+ SLS 34/2014           [3] Renewal Enrolment to 025C Yoga    1          01/04/2014     Registered      5
+ SLS 39/2014           [4] Renewal Enrolment to 025C Yoga    1          01/06/2014     Registered      5
+ SLS 42/2014           [5] Renewal Enrolment to 025C Yoga    1          01/07/2014     Registered      5
+ SLS 46/2014           [6] Renewal Enrolment to 025C Yoga    1          01/08/2014     Registered      5
+ SLS 52/2014           [7] Renewal Enrolment to 025C Yoga    1          01/10/2014     Registered      5
+ SLS 60/2014           [8] Renewal Enrolment to 025C Yoga    1          01/11/2014     Registered      5
+ SLS 65/2014           [9] Renewal Enrolment to 025C Yoga    1          01/12/2014     Registered      5
+ SLS 14/2015           [10] Renewal Enrolment to 025C Yoga   1          01/02/2015     Registered      5
+ **Total (10 rows)**                                         **10**                                    **50**
+===================== ===================================== ========== ============== =============== ==================
 <BLANKLINE>
 
 These invoices are not issued to the pupil but to the recipient:

@@ -25,7 +25,7 @@ Complexity factors
 - 98 models
 - 22 user roles
 - 4 user types
-- 374 views
+- 373 views
 - 27 dialog actions
 <BLANKLINE>
 
