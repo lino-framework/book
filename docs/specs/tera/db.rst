@@ -56,7 +56,7 @@ The database models
  cal.Room                    cal.Rooms                      9         0
  cal.Subscription            cal.Subscriptions              4         0
  cal.Task                    cal.Tasks                      19        0
- calview.DailyPlannerRow     calview.DailyPlannerRows       7         3
+ calview.DailyPlannerRow     calview.DailyPlannerRows       7         2
  checkdata.Problem           checkdata.Problems             6         0
  clients.ClientContact       clients.ClientContacts         7         0
  clients.ClientContactType   clients.ClientContactTypes     5         0

@@ -3,9 +3,6 @@
 The base settings module for :mod:`lino_book.projects.roger`.
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
 from lino_voga.lib.voga.settings import *
 
 
@@ -16,7 +13,7 @@ class Site(Site):
     title = "Lino Voga for Roger"
     languages = "en de fr"
 
-    demo_fixtures = """std minimal_ledger 
+    demo_fixtures = """std minimal_ledger
     demo voga demo_bookings payments demo2 checkdata""".split()
 
     def get_plugin_configs(self):

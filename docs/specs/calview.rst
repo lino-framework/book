@@ -93,11 +93,11 @@ A default configuration has two columns in the daily planner:
 ===== ============= ================== ================== ============ ==========
  No.   Designation   Designation (de)   Designation (fr)   Start time   End time
 ----- ------------- ------------------ ------------------ ------------ ----------
- 3     All day       Ganztags           Journée entière
  1     AM            Vormittags         Avant-midi                      12:00:00
  2     PM            Nachmittags        Après-midi         12:00:00
 ===== ============= ================== ================== ============ ==========
 <BLANKLINE>
+
 
 
 .. Tested translations:

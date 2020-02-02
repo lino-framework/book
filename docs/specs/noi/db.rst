@@ -56,7 +56,7 @@ The database models
  cal.Room                           cal.Rooms                        9         0
  cal.Subscription                   cal.Subscriptions                4         0
  cal.Task                           cal.Tasks                        18        0
- calview.DailyPlannerRow            calview.DailyPlannerRows         7         3
+ calview.DailyPlannerRow            calview.DailyPlannerRows         7         2
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
  comments.Comment                   comments.Comments                12        168

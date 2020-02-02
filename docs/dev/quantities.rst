@@ -393,3 +393,22 @@ Quantities have a `custom deconstruct method
 
 >>> Duration("2:30").deconstruct()
 ('lino.utils.quantities.Duration', ('2:30',), {})
+
+
+Using durations with format
+===========================
+
+Duration doesn't override the :meth:`str.__format__`  method, so when inserting
+a duration into a string with :meth:`format` you probably want to call
+:func:`str` on the value because otherwise the duration will be formatted like a
+Decimal.
+
+>>> d = Duration("1:30")
+>>> "{}".format(d)
+'1.500000000000000000000000000'
+
+
+>>> "{}".format(str(d))
+'1:30'
+>>> "{:>7}".format(str(d))
+'   1:30'

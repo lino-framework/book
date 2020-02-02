@@ -101,17 +101,17 @@ Voucher types
 =============
 
 >>> rt.show(ledger.VoucherTypes)
-=============================== ====== ================================================================
- value                           name   text
-------------------------------- ------ ----------------------------------------------------------------
- ana.InvoicesByJournal                  Analytic invoice (ana.InvoicesByJournal)
- bevats.DeclarationsByJournal           Special Belgian VAT declaration (bevats.DeclarationsByJournal)
- finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)
- finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)
- finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)
- sales.InvoicesByJournal                Sales invoice (sales.InvoicesByJournal)
- vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)
-=============================== ====== ================================================================
+=============================== ====== ================================================================ ======================================================
+ value                           name   text                                                             Model
+------------------------------- ------ ---------------------------------------------------------------- ------------------------------------------------------
+ ana.InvoicesByJournal                  Analytic invoice (ana.InvoicesByJournal)                         <class 'lino_xl.lib.ana.models.AnaAccountInvoice'>
+ bevats.DeclarationsByJournal           Special Belgian VAT declaration (bevats.DeclarationsByJournal)   <class 'lino_xl.lib.bevats.models.Declaration'>
+ finan.BankStatementsByJournal          Bank Statement (finan.BankStatementsByJournal)                   <class 'lino_xl.lib.finan.models.BankStatement'>
+ finan.JournalEntriesByJournal          Journal Entry (finan.JournalEntriesByJournal)                    <class 'lino_xl.lib.finan.models.JournalEntry'>
+ finan.PaymentOrdersByJournal           Payment Order (finan.PaymentOrdersByJournal)                     <class 'lino_xl.lib.finan.models.PaymentOrder'>
+ sales.InvoicesByJournal                Sales invoice (sales.InvoicesByJournal)                          <class 'lino_xl.lib.sales.models.VatProductInvoice'>
+ vat.InvoicesByJournal                  Invoice (vat.InvoicesByJournal)                                  <class 'lino_xl.lib.vat.models.VatAccountInvoice'>
+=============================== ====== ================================================================ ======================================================
 <BLANKLINE>
 
 

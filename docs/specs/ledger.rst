@@ -1835,14 +1835,14 @@ change as long as the journal has at least one voucher.
     :attr:`registered`, :attr:`cancelled` or :attr:`signed`.
 
     >>> rt.show(ledger.VoucherStates)
-    ======= ============ ============ =============
-     value   name         text         Button text
-    ------- ------------ ------------ -------------
-     10      draft        Draft
-     20      registered   Registered
-     30      signed       Signed
-     40      cancelled    Cancelled
-    ======= ============ ============ =============
+    ======= ============ ============ ==========
+     value   name         text         Editable
+    ------- ------------ ------------ ----------
+     10      draft        Draft        Yes
+     20      registered   Registered   No
+     30      signed       Signed       No
+     40      cancelled    Cancelled    No
+    ======= ============ ============ ==========
     <BLANKLINE>
 
     .. attribute:: draft

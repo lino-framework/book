@@ -35,7 +35,7 @@ The database structure
  cal.Room                   cal.AllRooms                   11        7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
- calview.DailyPlannerRow    calview.DailyPlannerRows       7         3
+ calview.DailyPlannerRow    calview.DailyPlannerRows       7         2
  changes.Change             changes.Changes                10        0
  checkdata.Problem          checkdata.Problems             6         22
  contacts.Company           contacts.Companies             26        31
