@@ -1,10 +1,10 @@
 .. doctest docs/dev/languages.rst
-   
+
 ===========================
 The languages of a ``Site``
 ===========================
 
-.. This document is part of the Lino test suite. 
+.. This document is part of the Lino test suite.
 
 The :attr:`languages <lino.core.site.Site.languages>` attribute of a
 :class:`Site <lino.core.site.Site>` specifies the language
@@ -35,8 +35,6 @@ language.
 
 .. currentmodule:: lino.core.site
 
->>> from __future__ import print_function
->>> from __future__ import unicode_literals
 >>> from django.utils import translation
 >>> from lino.core.site import TestSite as Site
 >>> import json
@@ -100,6 +98,36 @@ LanguageInfo(django_code='en-us', name='en_US', index=0, suffix='')
 >>> site.language_dict['fr']
 LanguageInfo(django_code='fr', name='fr', index=1, suffix='_fr')
 
->>> print(json.dumps(site.django_settings['LANGUAGES']))  #doctest: +ELLIPSIS
-[["de", "German"], ["fr", "French"]]
+>>> pprint(site.django_settings['LANGUAGES'])  #doctest: +ELLIPSIS
+[('de', 'German'), ('fr', 'French')]
 
+Note that Lino automatically sets :setting:`USE_L10N` to `True` when you specify
+:attr:`languages <lino.core.site.Site.languages>`.
+
+>>> site.django_settings['USE_L10N']
+True
+>>> pprint(site.django_settings['LANGUAGE_CODE'])
+'en-us'
+
+When you leave :attr:`languages <lino.core.site.Site.languages>` at its default
+value `None`, Lino will set the default language "en" at startup. But there is a
+difference between `None` and "en": `None` will cause :setting:`USE_L10N` to be
+False because this is what we want when we don't worry about languages.
+
+Lino's default language is "en" and not "en-us" because Django has no entry in
+:setting:`LANGUAGES` for this language code, and because we also reduce the
+:setting:`LANGUAGES` setting to the languages that are needed. Django 3.0.3
+system check complained with "(translation.E004) You have provided a value for
+the LANGUAGE_CODE setting that is not in the LANGUAGES setting."
+
+>>> site = Site()
+>>> print(site.languages)
+(LanguageInfo(django_code='en', name='en', index=0, suffix=''),)
+>>> pprint(site.django_settings['LANGUAGES'])
+[('en', 'English')]
+
+>>> 'USE_L10N' in site.django_settings
+False
+
+>>> 'LANGUAGE_CODE' in site.django_settings
+False
