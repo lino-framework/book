@@ -201,7 +201,7 @@ Here are the Django settings that Lino will override:
                     'lino.modlib.jinja',
                     'lino.modlib.bootstrap3',
                     'lino.modlib.extjs'),
- 'LANGUAGES': [],
+ 'LANGUAGES': [('en', 'English')],
  'LOCALE_PATHS': (),
  'LOGIN_REDIRECT_URL': '/',
  'LOGIN_URL': '/accounts/login/',
