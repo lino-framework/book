@@ -75,6 +75,8 @@ class TestCase(TestCase):
         # Project = rt.models.tickets.Project
         Site = rt.models.tickets.Site
         Subscription = rt.models.tickets.Subscription
+        Group = rt.models.groups.Group
+        Membership = rt.models.groups.Membership
         # Vote = rt.models.votes.Vote
         # Star = rt.models.stars.Star
         Message = rt.models.notify.Message
@@ -90,8 +92,11 @@ class TestCase(TestCase):
             email="aline@example.com", language='fr',
             user_type=UserTypes.admin)
 
-        foo = create(Site, name="Foo")
-        create(Subscription, site=foo, user=aline)
+        aline_group = create(Group, name="My Group")
+        foo = create(Site, name="Foo",group=aline_group)
+        create(Membership, group=aline_group, user=aline)
+        create(Membership, group=aline_group, user=robin)
+        #create(Subscription, site=foo, user=aline)
 
         obj = create(
             Ticket, summary="Save the world, après moi le déluge",
@@ -158,7 +163,7 @@ To: aline@example.com
 Subject: [Django] Robin a comment? #1 (? Save the world, apr?s moi le d?luge)
 <html><head><base href="http://127.0.0.1:8000/" target="_blank"></head><body>
 (22/12/2016 19:45)
-Robin a comment? <a href="/api/tickets/Tickets/1" title="Save the world, apr&#232;s moi le d&#233;luge">#1</a> (Save the world, apr?s moi le d?luge):<br>I don't agree (#foobar).
+Robin a comment? <a href="/#/api/tickets/Tickets/1" title="Save the world, apr&#232;s moi le d&#233;luge">#1</a> (Save the world, apr?s moi le d?luge):<br>I don't agree (#foobar).
 </body></html>
 """
         self.assertEquivalent(expected, out)
