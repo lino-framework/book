@@ -33,17 +33,21 @@ class DDHTests(RemoteAuthTestCase):
         from lino.modlib.users.choicelists import UserTypes
         Ticket = rt.models.tickets.Ticket
         User = rt.models.users.User
-        Subscription = rt.models.tickets.Subscription
+        #Subscription = rt.models.tickets.Subscription
+        Group = rt.models.groups.Group
+        Membership = rt.models.groups.Membership
         Site = rt.models.tickets.Site
         # ContentType = rt.models.contenttypes.ContentType
         # ct_Ticket = ContentType.objects.get_for_model(Ticket)
 
-        site = create(Site, name='project')
         robin = create(User, username='robin',
                        first_name="Robin",
                        user_type=UserTypes.admin,
                        language="en")
-        create(Subscription, site=site, user=robin)
+        robin_group = create(Group, name="My Group")
+        site = create(Site, name='project',group=robin_group)
+        #create(Subscription, site=site, user=robin)
+        create(Membership, group=robin_group, user=robin)
 
         def createit():
             return create(Ticket, summary="Test", user=robin, site=site)
@@ -67,14 +71,15 @@ class DDHTests(RemoteAuthTestCase):
                 "because 1 Tickets refer to it.")
 
         
-        self.assertEqual(Subscription.objects.count(), 1)
+        self.assertEqual(Membership.objects.count(), 1)
         self.assertEqual(Ticket.objects.count(), 1)
 
         # when we have deleted the ticket, deleting the user works
         # because the subscription is deleted in cascade:
         
         ticket.delete()
+        #robin_group.delete()
         robin.delete()
-        self.assertEqual(Subscription.objects.count(), 0)
+        self.assertEqual(Membership.objects.count(), 0)
         self.assertEqual(Ticket.objects.count(), 0)
         self.assertEqual(User.objects.count(), 0)
