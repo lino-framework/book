@@ -68,7 +68,7 @@ The database models
  contacts.Person                    contacts.Persons                 27        76
  contacts.Role                      contacts.Roles                   4         2
  contacts.RoleType                  contacts.RoleTypes               4         10
- contenttypes.ContentType           gfks.ContentTypes                3         65
+ contenttypes.ContentType           gfks.ContentTypes                3         64
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0
@@ -95,7 +95,6 @@ The database models
  system.SiteConfig                  system.SiteConfigs               9         1
  tickets.Link                       tickets.Links                    4         1
  tickets.Site                       tickets.Sites                    16        5
- tickets.Subscription               tickets.Subscriptions            4         0
  tickets.Ticket                     tickets.Tickets                  28        116
  tickets.TicketType                 tickets.TicketTypes              5         3
  tinymce.TextFieldTemplate          tinymce.TextFieldTemplates       5         2
