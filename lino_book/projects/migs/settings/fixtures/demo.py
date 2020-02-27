@@ -57,7 +57,9 @@ def tickets_objects():
     Site = dd.plugins.tickets.site_model
     Link = rt.models.tickets.Link
     LinkTypes = rt.models.tickets.LinkTypes
-    Subscription = rt.models.tickets.Subscription
+    #Subscription = rt.models.tickets.Subscription
+    Group = rt.models.groups.Group
+    Membership = rt.models.groups.Membership
     #EntryType = rt.models.blogs.EntryType
     #Entry = rt.models.blogs.Entry
     # Star = rt.models.stars.Star
@@ -289,10 +291,12 @@ def tickets_objects():
     # yield Interest(owner=e, topic=TOPICS.pop())
     # yield Interest(owner=e, topic=TOPICS.pop())
 
+    group = Group(name="Developers",site=SITES.pop())
+    group.save()
     for u in User.objects.all():
         if u.user_type.has_required_roles([Reporter]):
             if not u.user_type.has_required_roles([TicketsStaff]):
-                yield Subscription(site=SITES.pop(), user=u, primary=True)
+                yield Membership(user=u, group=group)
 
 def working_objects():
     # was previously in working
