@@ -64,7 +64,8 @@ behaviour. See also :doc:`/dev/delete`.
 - github.Repository :
   - PROTECT : github.Commit.repository
 - groups.Group :
-  - PROTECT : groups.Membership.group, tickets.Site.group
+  - CASCADE : groups.Membership.group
+  - PROTECT : tickets.Site.group
 - lists.List :
   - PROTECT : lists.Member.list
 - lists.ListType :
@@ -81,8 +82,8 @@ behaviour. See also :doc:`/dev/delete`.
 - uploads.Volume :
   - PROTECT : uploads.Upload.volume
 - users.User :
-  - CASCADE : working.UserSummary.master
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, comments.Mention.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, groups.Group.user, groups.Membership.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
+  - CASCADE : groups.Membership.user, working.UserSummary.master
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, chat.ChatGroup.user, chat.ChatGroupMember.user, chat.ChatMessage.user, chat.ChatProps.user, checkdata.Problem.user, comments.Comment.user, comments.Mention.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, groups.Group.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - working.SessionType :
   - PROTECT : working.Session.session_type
 <BLANKLINE>
