@@ -41,7 +41,7 @@ The database models
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 44 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, calview, excerpts, memo, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, groups, rest_framework, restful, django_mailbox, mailbox, sessions.
-65 models:
+64 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
