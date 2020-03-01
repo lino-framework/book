@@ -68,7 +68,7 @@ The database models
  contacts.Person                    contacts.Persons                 27        76
  contacts.Role                      contacts.Roles                   4         2
  contacts.RoleType                  contacts.RoleTypes               4         10
- contenttypes.ContentType           gfks.ContentTypes                3         68
+ contenttypes.ContentType           gfks.ContentTypes                3         64
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0

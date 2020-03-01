@@ -82,7 +82,7 @@ and "generic slave tables":
 
 >>> from lino.core import kernel
 >>> len(kernel.master_tables)
-122
+121
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
