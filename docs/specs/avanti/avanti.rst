@@ -374,3 +374,8 @@ The dialog window has 6 data fields:
 
 >>> sorted(d.data.keys())  #doctest: +NORMALIZE_WHITESPACE
 ['disabled_fields', 'email', 'first_name', 'gender', 'genderHidden', 'last_name']
+
+
+>>> fld = avanti.Clients.parameters['observed_event']
+>>> rt.show(fld.choicelist, language="en")
+No data to display

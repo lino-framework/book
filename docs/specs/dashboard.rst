@@ -16,7 +16,6 @@ items quite intelligently: they don't appear if the table contains no
 data or if the user has no permission to see it.  But the *dashboard
 items* of an application are *hard-coded* and *apply to all users*.
 
-
 .. contents::
   :local:
 

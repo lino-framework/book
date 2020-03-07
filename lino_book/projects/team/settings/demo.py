@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2019 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """Defines and instantiates a demo version of Lino Noi."""
 
@@ -14,6 +14,7 @@ class Site(Site):
 
     languages = "en de fr"
     # readonly = True
+    catch_layout_exceptions = False
 
     use_linod = True
     # use_ipdict = True

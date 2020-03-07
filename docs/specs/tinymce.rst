@@ -8,7 +8,7 @@
 .. currentmodule:: lino.modlib.tinymce
 
 The :mod:`lino.modlib.tinymce` plugin activates usage of the TinyMCE editor for
-HTML text fields (:class:lino.core.fields.RichTextField`) instead of the
+HTML text fields (:class:`lino.core.fields.RichTextField`) instead of the
 built-in `Ext.form.HtmlEditor` editor that comes with ExtJS.
 
 .. contents::
@@ -96,9 +96,9 @@ to fill the list of available templates.
 200
 >>> print(response.content.decode())
 ... #doctest: +NORMALIZE_WHITESPACE
-var tinyMCETemplateList = [ 
-[ "hello", "/tinymce/templates/notes/MyNotes/69/body/1", "Inserts 'Hello, world!'" ], 
-[ "mfg", "/tinymce/templates/notes/MyNotes/69/body/2", "None" ] 
+var tinyMCETemplateList = [
+[ "hello", "/tinymce/templates/notes/MyNotes/69/body/1", "Inserts 'Hello, world!'" ],
+[ "mfg", "/tinymce/templates/notes/MyNotes/69/body/2", "None" ]
 ];
 
 >>> url = "/tinymce/templates/notes/MyNotes/69/body/1"
@@ -108,4 +108,3 @@ var tinyMCETemplateList = [
 >>> print(response.content.decode())
 ... #doctest: +NORMALIZE_WHITESPACE
 <div>Hello, world!</div>
-

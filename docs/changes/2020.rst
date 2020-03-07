@@ -13,6 +13,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-02-04
+==========
+
+Released to PyPI : react
+
 2020-01-28
 ==========
 
