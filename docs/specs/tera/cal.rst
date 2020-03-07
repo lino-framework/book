@@ -140,7 +140,7 @@ Calendar entry types
 Daily planner
 =============
 
->>> rt.show(calview.DailyPlanner)
+>>> rt.show(calview.DailySlave)
 ============ =================================================== ==========
  Time range   External                                            Internal
 ------------ --------------------------------------------------- ----------

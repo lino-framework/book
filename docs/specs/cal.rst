@@ -75,13 +75,12 @@ Glossary
 
     Something a user plans to do.
 
-
   Daily planner
 
     A table showing a calendar overview for a given day.  Both the rows and the
     columns can be configured per application or locally per site.
 
-    See :class:`DailyPlanner`.
+    See :class:`DailySlave`.
 
   My calendar entries
 

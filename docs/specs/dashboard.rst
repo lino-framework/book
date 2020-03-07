@@ -40,7 +40,7 @@ List of available dashboard items
  <class 'lino.core.dashboard.ActorItem'>(cal.MyEntries,header_level=2,min_count=None),
  lino_xl.lib.cal.ui.MyOverdueAppointments,
  lino_xl.lib.cal.ui.MyUnconfirmedAppointments,
- lino_xl.lib.calview.ui.DailyPlanner,
+ lino_xl.lib.calview.ui.DailySlave,
  lino.modlib.comments.ui.RecentComments,
  lino_xl.lib.tickets.ui.MyTickets,
  lino_xl.lib.tickets.ui.MySites,

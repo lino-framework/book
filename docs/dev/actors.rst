@@ -103,7 +103,7 @@ Another category are virtual tables
 
 >>> kernel.virtual_tables  #doctest: +NORMALIZE_WHITESPACE
 [lino.modlib.about.models.SiteSearch, lino.modlib.gfks.models.BrokenGFKs,
-lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.calview.ui.MonthlyPlanner,
+lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.calview.ui.MonthlySlave,
 lino_xl.lib.calview.ui.DailyView, lino_xl.lib.calview.ui.WeeklyView,
 lino_xl.lib.calview.ui.MonthlyView, lino_xl.lib.working.ui.WorkedHours,
 lino.modlib.users.desktop.UserRoles]
