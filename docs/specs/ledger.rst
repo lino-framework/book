@@ -1812,9 +1812,8 @@ change as long as the journal has at least one voucher.
 
     .. attribute:: table_class
 
-        Must be a table on :attr:`model` and with `master_key` set to
-        the
-        :attr:`journal<lino_xl.lib.ledger.models.Voucher.journal>`.
+        Must be a table on :attr:`model` having :attr:`master_key` set to
+        the :term:`journal`.
 
 
 
@@ -2056,6 +2055,71 @@ Model mixins
     :mod:`lino_xl.lib.vat`,
     :mod:`lino_xl.lib.vatless`,
     :mod:`lino_xl.lib.ana`, ...
+
+
+.. _has_open_movements:
+
+Filtering partners regarding ledger movements
+=============================================
+
+The ledger plugin adds a choice
+:attr:`has_open_movements <lino_xl.lib.contacts.PartnerEvents.has_open_movements>`
+to  the
+:attr:`observed_events <lino_xl.lib.contacts.Partners.observed_events>`
+parameter field
+of the :class:`lino_xl.lib.contacts.Partners` table.
+
+Show only companies that have at least one open ledger movement:
+
+>>> pv = dict(observed_event=rt.models.contacts.PartnerEvents.has_open_movements)
+>>> rt.login("robin").show(contacts.Companies, param_values=pv)
+... #doctest: -REPORT_UDIFF +ELLIPSIS
+=========================== ===================================================== ============================ ======= ===== ===== ==========
+ Name                        Address                                               e-mail address               Phone   GSM   ID    Language
+--------------------------- ----------------------------------------------------- ---------------------------- ------- ----- ----- ----------
+ Auto École Verte            rue de Mon Désert 12, 54000  Nancy, France                                                       112
+ Bernd Brechts Bücherladen   Brienner Straße 18, 80333 Aachen, Germany                                                        109
+ Bestbank                                                                                                                     100
+ Bäckerei Ausdemwald         Vervierser Straße 45, 4700 Eupen                                                                 102
+ Bäckerei Mießen             Gospert 103, 4700 Eupen                                                                          103
+ Bäckerei Schmitz            Aachener Straße 53, 4700 Eupen                                                                   104
+ Donderweer BV               Edisonstraat 12, 4816 AR Breda, Netherlands                                                      106
+ Garage Mergelsberg          Hauptstraße 13, 4730 Raeren                                                                      105
+ Hans Flott & Co             Niendorfer Weg 532, 22453 Hamburg, Germany                                                       108
+ Leffin Electronics          Schilsweg 80, 4700 Eupen                              info@leffin-electronics.be                 191
+ Moulin Rouge                Boulevard de Clichy 82, 75018 Paris, France                                                      111
+ Niederau Eupen AG           Herbesthaler Straße 134, 4700 Eupen                                                              190
+ Reinhards Baumschule        Segelfliegerdamm 123, 12487  Berlin, Germany                                                     110
+ Rumma & Ko OÜ               Uus tn 1, Vigala vald, 78003 Rapla maakond, Estonia                                              101
+ Van Achter NV               Hazeldonk 2, 4836 LG Breda, Netherlands                                                          107
+=========================== ===================================================== ============================ ======= ===== ===== ==========
+<BLANKLINE>
+
+
+>>> settings.SITE.the_demo_date
+datetime.date(2017, 3, 12)
+
+>>> pv['start_date'] = i2d(20161231)
+>>> rt.login("robin").show(contacts.Companies, param_values=pv)
+... #doctest: -REPORT_UDIFF +ELLIPSIS
+===================== ===================================================== ================ ======= ===== ===== ==========
+ Name                  Address                                               e-mail address   Phone   GSM   ID    Language
+--------------------- ----------------------------------------------------- ---------------- ------- ----- ----- ----------
+ Bestbank                                                                                                   100
+ Bäckerei Ausdemwald   Vervierser Straße 45, 4700 Eupen                                                     102
+ Bäckerei Mießen       Gospert 103, 4700 Eupen                                                              103
+ Bäckerei Schmitz      Aachener Straße 53, 4700 Eupen                                                       104
+ Donderweer BV         Edisonstraat 12, 4816 AR Breda, Netherlands                                          106
+ Garage Mergelsberg    Hauptstraße 13, 4730 Raeren                                                          105
+ Rumma & Ko OÜ         Uus tn 1, Vigala vald, 78003 Rapla maakond, Estonia                                  101
+===================== ===================================================== ================ ======= ===== ===== ==========
+<BLANKLINE>
+
+
+>>> pv['start_date'] = i2d(20171231)
+>>> rt.login("robin").show(contacts.Companies, param_values=pv)
+... #doctest: -REPORT_UDIFF +ELLIPSIS
+No data to display
 
 
 Utilities

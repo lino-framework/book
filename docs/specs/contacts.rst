@@ -208,7 +208,6 @@ Organizations
 =============
 
 .. class:: Company
-.. class:: Companies
 
     An **organisation**.  The verbose name is "Organization" while the
     internal name is "Company" because the latter easier to type and
@@ -227,6 +226,9 @@ Organizations
         :class:`Partner`, they are what companies and persons have in
         common.
 
+.. class:: Companies
+
+  Base table for all tables showing companies.
 
 
 Quick search
@@ -387,6 +389,11 @@ Filtering partners
 .. class:: PartnerEvents
 
     A choicelist of observable partner events.
+
+    .. attribute:: has_open_movements
+
+      See :ref:`has_open_movements` in :ref:`xl.specs.ledger`.
+      This choice exists only when :mod:`lino_xl.lib.ledger` is installed.
 
 Other models
 ============
