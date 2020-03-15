@@ -16,7 +16,7 @@ General information about how to read and maintain this document in :ref:`dev.ch
 2020-03-15
 ==========
 
-Released to PyPI : lino
+Released to PyPI : lino lino-xl
 
 Fix ImportError: cannot import name 'ZERO_DURATION' from 'lino.utils.quantities'
 
