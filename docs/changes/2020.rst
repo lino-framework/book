@@ -13,6 +13,42 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-03-15
+==========
+
+Released to PyPI : lino
+
+Fix ImportError: cannot import name 'ZERO_DURATION' from 'lino.utils.quantities'
+
+2020-03-10
+==========
+
+The :attr:`has_open_movements
+<lino_xl.lib.contacts.PartnerEvents.has_open_movements>`  choice to the
+:attr:`observed_events <lino_xl.lib.contacts.Partners.observed_events>`
+parameter field of the :class:`lino_xl.lib.contacts.Partners` table didn't work
+and was not tested. Fixed it and added test coverage in :ref:`xl.specs.ledger`.
+
+2020-03-07
+==========
+
+New method :meth:`lino.core.tablerequest.TableRequest.gen_insert_button` is a
+generalized and no longer hackerish implementation of the hackerish solution
+used in the calview monthly view until now.
+
+When the label of a table is None, the ExtJS front-end now
+suppresses the header of the grid panel (including the "open in own window"
+button).  This is used by the slave tables in the detail layouts of the
+calendar views. But note that you cannot simply set ``label = None`` on the
+actor because that default value is overridden by the model's
+:attr:`verbose_name_plural`. So to get an actor without label you be more
+explicit and say::
+
+    @classmethod
+    def get_actor_label(cls):
+        return None
+
+
 2020-02-04
 ==========
 
