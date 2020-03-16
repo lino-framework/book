@@ -217,14 +217,13 @@ Organizations
 
         Pointer to the :class:`CompanyType`.
 
+    The following fields are defined in the base model :class:`Partner`, they
+    are what companies and persons have in common:
+
     .. attribute:: name
     .. attribute:: street
     .. attribute:: gsm
     .. attribute:: phone
-
-        These fields (and some others) are defined in the base model
-        :class:`Partner`, they are what companies and persons have in
-        common.
 
 .. class:: Companies
 
