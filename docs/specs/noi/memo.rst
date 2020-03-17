@@ -46,13 +46,13 @@ Usage examples:
     See <a href="http://www.example.com" target="_blank">http://www.example.com</a>.
     >>> print(ses.parse_memo("See [url http://www.example.com example]."))
     See <a href="http://www.example.com" target="_blank">example</a>.
-    
+
     >>> print(ses.parse_memo("""See [url https://www.example.com
     ... another example]."""))
     See <a href="https://www.example.com" target="_blank">another example</a>.
 
     A possible situation is that you forgot the space:
-    
+
     >>> print(ses.parse_memo("See [urlhttp://www.example.com]."))
     See [urlhttp://www.example.com].
 
@@ -62,46 +62,9 @@ Usage examples:
 ticket
 ======
 
-Refer to a ticket. Usage example: 
+Refer to a ticket. Usage example:
 
   See ``[ticket 1]``.
-
-Note that URI of the link is quite a complex topic and depends on the context.
-
-For example, the site's front end (specfied in the :attr:`default_ui
-<lino.core.site.Site.default_ui>` setting) has a word to say.
-
-When this is :mod:`lino.modlib.extjs`, then we also get a different URL
-depending on whether ar.request is set or not: when calling it e.g. from
-:meth:`send_summary_emails <lino_xl.lib.notify.Message.send_summary_emails>`
-(ar.request is None), we want a "permalink" or URI for usage in a "https:".
-Otherwise we want a "javascript:..." URI.
-
->>> ses = rt.login('robin',
-...     renderer=settings.SITE.kernel.default_ui.renderer)
-
->>> ses.request = 123  # not a reql request object, but enough to fool Lino
->>> print(ses.parse_memo("See [ticket 1]."))
-See <a href="javascript:Lino.tickets.Tickets.detail.run(null,{ &quot;record_id&quot;: 1 })" title="F&#246;&#246; fails to bar when baz">#1</a>.
-
->>> ses.request = None
->>> print(ses.parse_memo("See [ticket 1]."))
-See <a href="/api/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
-
-
-While the :mod:`lino.modlib.bootstrap3` front end will render it
-like this:
-
->>> ses = rt.login(renderer=dd.plugins.bootstrap3.renderer)
->>> print(ses.parse_memo("See [ticket 1]."))
-See <a href="/bs3/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
-
-Or the plain text renderer will render:
-
->>> ses = rt.login()
->>> print(ses.parse_memo("See [ticket 1]."))
-See <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a>.
-
 
 .. _memo.company:
 
@@ -145,45 +108,45 @@ Usage examples:
 - ``[py lino.modlib.memo.parser]``
 - ``[py lino_xl.lib.tickets.models.Ticket]``
 - ``[py lino_xl.lib.tickets.models.Ticket tickets.Ticket]``
-  
-..  
+
+..
     >>> ses = rt.login()
     >>> print(ses.parse_memo("[py lino]."))
     <a href="https://github.com/lino-framework/lino/blob/master/lino/__init__.py" target="_blank">lino</a>.
-    
+
     >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket]."))
     <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">lino_xl.lib.tickets.models.Ticket</a>.
-    
+
     >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket.foo]."))
     <a href="Error in Python code (type object 'Ticket' has no attribute 'foo')" target="_blank">lino_xl.lib.tickets.models.Ticket.foo</a>.
-    
+
     >>> print(ses.parse_memo("[py lino_xl.lib.tickets.models.Ticket Ticket]."))
     <a href="https://github.com/lino-framework/xl/blob/master/lino_xl/lib/tickets/models.py" target="_blank">Ticket</a>.
 
     Non-breaking spaces are removed from command text:
-    
+
     >>> print(ses.parse_memo(u"[py lino]."))
     <a href="https://github.com/lino-framework/lino/blob/master/lino/__init__.py" target="_blank">lino</a>.
 
 
-.. 
+..
     >>> from lino.utils.diag import analyzer
     >>> print(analyzer.show_memo_commands())
     ... #doctest: +NORMALIZE_WHITESPACE
     <BLANKLINE>
-    - [company ...] : 
+    - [company ...] :
       Insert a reference to the specified database object.
     <BLANKLINE>
       The first argument is mandatory and specifies the primary key.
       All remaining arguments are used as the text of the link.
     <BLANKLINE>
-    - [person ...] : 
+    - [person ...] :
       Insert a reference to the specified database object.
     <BLANKLINE>
       The first argument is mandatory and specifies the primary key.
       All remaining arguments are used as the text of the link.
     <BLANKLINE>
-    - [ticket ...] : 
+    - [ticket ...] :
       Insert a reference to the specified database object.
     <BLANKLINE>
       The first argument is mandatory and specifies the primary key.
@@ -266,3 +229,56 @@ breaking  (...)
 
 Above comments were created by the :fixture:`demo2` fixture of
 :mod:`lino.modlib.comments`.
+
+.. _permalink_uris:
+
+Permalink URIs
+==============
+
+Note that the URI of the link depends on the context.
+
+Of course it depends on the site's front end (specfied in the :attr:`default_ui
+<lino.core.site.Site.default_ui>` setting). But when the front end is
+:mod:`lino.modlib.extjs`, then we also get a different URL depending on whether
+:attr:`lino.core.requests.BaseRequest.permalink_uris` is set or not: Usually we
+want a "javascript:..." URI because we don't want the page to reload when
+executing an action.
+
+For example when calling it e.g. from :meth:`send_summary_emails
+<lino_xl.lib.notify.Message.send_summary_emails>`, we want a "permalink" whose
+URI also works in the recipients email client where the JS application isn't yet
+loaded. In that case we must explicitly set
+:attr:`lino.core.requests.BaseRequest.permalink_uris` to True.
+
+>>> ses = rt.login('robin',
+...     renderer=settings.SITE.kernel.default_renderer)
+
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="javascript:Lino.tickets.Tickets.detail.run(null,{ &quot;record_id&quot;: 1 })" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+>>> ses.permalink_uris = True
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="/api/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+While the :mod:`lino.modlib.bootstrap3` front end will render it
+like this:
+
+>>> ses = rt.login(renderer=dd.plugins.bootstrap3.renderer)
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="/bs3/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+When using this front end, the :attr:`permalink_uris
+<lino.core.requests.BaseRequest.permalink_uris>` parameter has no effect:
+
+>>> ses.permalink_uris = True
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="/bs3/tickets/Tickets/1" title="F&#246;&#246; fails to bar when baz">#1</a>.
+
+Or the plain text renderer will render:
+
+>>> ses = rt.login()
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a>.
+>>> ses.permalink_uris = True
+>>> print(ses.parse_memo("See [ticket 1]."))
+See <a href="Detail" title="F&#246;&#246; fails to bar when baz">#1</a>.

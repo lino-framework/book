@@ -12,12 +12,11 @@ In :ref:`noi` the *site* of a *ticket* also indicates "who is going to pay" for
 our work. Lino Noi uses this information when generating a service report.
 
 
+.. currentmodule:: lino_noi.lib.tickets
 
 
 .. contents::
   :local:
-
-.. currentmodule:: lino_noi.lib.tickets
 
 .. include:: /../docs/shared/include/tested.rst
 

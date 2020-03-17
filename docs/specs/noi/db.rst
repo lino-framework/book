@@ -33,6 +33,21 @@ Complexity factors
 <BLANKLINE>
 
 
+
+Dependencies
+============
+
+>>> dd.is_installed('products')
+False
+
+>>> dd.plugins.tickets
+lino_noi.lib.tickets (extends_models=['Ticket', 'Site'])
+
+>>> dd.plugins.working
+lino_xl.lib.working
+
+
+
 The database models
 ===================
 
