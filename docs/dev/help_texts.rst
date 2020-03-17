@@ -52,8 +52,8 @@ user>` as :term:`customized help text`.  This feature is not being used
 seriously on any known :term:`production site`.
 
 
-The help texts extractor
-========================
+Using the help texts extractor
+==============================
 
 In bigger projects we want to differentiate between application development and
 authoring of :term:`end user` documentation. That's why the :term:`application
@@ -67,6 +67,8 @@ This is where we use the :term:`help texts extractor`.
 
     A Sphinx extension that extracts help texts from your Sphinx documentation
     to :xfile:`help_texts.py` files, which Lino will load at startup.
+
+.. rubric:: Writing the help texts
 
 With the :term:`help texts extractor` you write the help texts in your
 documentation using :term:`prosa style`::
@@ -82,25 +84,52 @@ documentation using :term:`prosa style`::
 
           This field is a simple char field. Blabla more documentation.
 
+Write help texts so that extractor can find them
 
-How it works
-============
+Note that only the *first* paragraph of the content of every :rst:dir:`class`
+and :rst:dir:`attribute` directive is taken as help text, and that any
+formatting and links are removed.
+
+.. rubric:: Extracting the help texts
 
 When you run :cmd:`inv bd` on a Sphinx doctree that has
 :mod:`help_texts_extractor <lino.sphinxcontrib.help_texts_extractor>` installed,
 Sphinx takes the first paragraph of every object description in your Sphinx
 documentation and writes it to a :xfile:`help_texts.py` file.
 
-Note that only the *first* paragraph of the content of every :rst:dir:`class`
-and :rst:dir:`attribute` directive is taken as help text, and that any
-formatting and links are removed.
+Configure the :term:`help texts extractor`  in the :xfile:`conf.py` of your
+doctree by adding :mod:`lino.sphinxcontrib.help_texts_extractor` to your
+``extensions`` and defining a :envvar:`help_texts_builder_targets` setting.  For
+example::
+
+    extensions += ['lino.sphinxcontrib.help_texts_extractor']
+    help_texts_builder_targets = {
+        'lino_algus.': 'lino_algus.lib.algus'
+    }
+
+
+.. rubric:: Translate help texts
 
 After having extracted help texts, the application developer can run :cmd:`inv
 mm` and start translating them.
 
+.. rubric:: Loading help texts at startup
+
 Lino will load these :xfile:`help_texts.py`  files at startup and "inject" them
 to the fields, actions and actors as if they had been defined by the application
 code.
+
+More precisely, when a Lino :class:`Site <lino.core.site.Site>` initializes, it
+looks for a file named :xfile:`help_texts.py` in every plugin directory.  If
+such a file exists, Lino imports it and expects it to contain a :class:`dict` of
+the form::
+
+    from lino.api import _
+    help_texts = {
+        'foo': _("A foo is a bar without baz.")
+    }
+
+
 
 Advantages
 ==========
@@ -127,18 +156,12 @@ The file is generated only by a *full build*, i.e. when *all* pages of the
 doctree were built. If you want to be sure, you must run :cmd:`inv clean` before
 running :cmd:`inv bd`.  So in practice you will say :cmd:`inv clean -b bd`
 
-Note that the :term:`help texts extractor` needs to be configured properly: see
-the :envvar:`help_texts_builder_targets` variable in the :xfile:`conf.py` of the
-:ref:`book` project.
 
-When a Lino :class:`Site <lino.core.site.Site>` initializes, it looks for a file
-named :xfile:`help_texts.py` in every plugin directory.  If such a file exists,
-Lino imports it and expects it to contain a :class:`dict` of the form::
+.. envvar:: help_texts_builder_targets
 
-    from lino.api import _
-    help_texts = {
-        'foo': _("A foo is a bar without baz.")
-    }
+  A setting in the :xfile:`conf.py` of your doctree.  A dictionary mapping
+  beginnings of module names to the full name of the Python package where the
+  :xfile:`help_texts.py` is to be written.
 
 
 See also
@@ -155,8 +178,8 @@ See also
 
 
 
-Using help texts
-================
+Accessing help texts from your code
+===================================
 
 >>> import lino
 >>> lino.startup('lino_book.projects.min2.settings.doctests')
