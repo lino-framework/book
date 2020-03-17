@@ -14,8 +14,8 @@ On the backup server, we create a user named "mirror" and a ssh key pair::
     $ mkdir /mnt/disk/snapshots_collection/.ssh
     $ ssh-keygen -t rsa -b 4096 -C "mirror@example.com"
 
-When the prompt ask for where to store the key, we need to choose the home
-directory of the mirror user::
+By default, this will generate the ssh key file in /home/you/.ssh/id_rsa.
+When the prompt ask for where to store the key, we need to choose the home directory of the mirror user. ::
 
     $ Enter file in which to save the key (/home/hamza/.ssh/id_rsa): /mnt/disk/snapshots_collection/.ssh/id_rsa
 
@@ -33,13 +33,7 @@ We need also to fix permission issues::
 
     $ sudo chown -R mirror:mirror /home/mirror/.ssh
 
-By default, this will generate the ssh key file in /home/you/.ssh/id_rsa. Then,
-we need to add this to the authorized_keys of the lino host server::
-
-    $ cat ~/.ssh/id_rsa.pub | ssh username@myawesomelinosite.com 'cat >> ~/.ssh/authorized_keys'
-
-If we are using monit , we can add a check about old snapshots (more than one
-day)::
+If we are using monit , we can add a check about old snapshots (more than one day)::
 
     $ #/bin/bash
     $ # designed to run as cron job
