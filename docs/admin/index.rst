@@ -55,6 +55,7 @@ Maintenance
 
     settings
     snapshot
+    backup
     reload_services
     upgrade
     env
