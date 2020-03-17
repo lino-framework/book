@@ -44,16 +44,19 @@ string into :func:`gettext` to have it translatable.  Fictive example::
     question about life, the universe and everything.
     """))
 
-Help texts can be customized locally per site by the end users as
-:term:`customized help text`.  This feature is not being used seriously on any
-known :term:`production site`.
+Having help texts maintained by the end users
+=============================================
+
+Help texts can be customized locally per site by the :term:`end users <end
+user>` as :term:`customized help text`.  This feature is not being used
+seriously on any known :term:`production site`.
 
 
 The help texts extractor
 ========================
 
 In bigger projects we want to differentiate between application development and
-authoring of :term:`end user` documentation. That's why  the :term:`application
+authoring of :term:`end user` documentation. That's why the :term:`application
 developer` can delegate help text maintenance to the documentation maintainer.
 
 This is where we use the :term:`help texts extractor`.
@@ -86,7 +89,7 @@ How it works
 When you run :cmd:`inv bd` on a Sphinx doctree that has
 :mod:`help_texts_extractor <lino.sphinxcontrib.help_texts_extractor>` installed,
 Sphinx takes the first paragraph of every object description in your Sphinx
-documentation and write it to a :xfile:`help_texts.py` file.
+documentation and writes it to a :xfile:`help_texts.py` file.
 
 Note that only the *first* paragraph of the content of every :rst:dir:`class`
 and :rst:dir:`attribute` directive is taken as help text, and that any
@@ -117,17 +120,16 @@ The :xfile:`help_texts.py` file
 .. xfile:: help_texts.py
 
 The :xfile:`help_texts.py` file contains object descriptions to be installed as
-the `help_text` attribute of certain UI widgets: actors, actions and database
-fields.
+:term:`help texts <help text>` of user interface widgets.  The file is
+automatically generated from the documentation.
 
-It is automatically generated when a full build is being done.
-
-Note that this is done only when *all* pages of the doctree were built, i.e.
-when you ran :cmd:`inv clean` before running :cmd:`inv bd`.
+The file is generated only by a *full build*, i.e. when *all* pages of the
+doctree were built. If you want to be sure, you must run :cmd:`inv clean` before
+running :cmd:`inv bd`.  So in practice you will say :cmd:`inv clean -b bd`
 
 Note that the :term:`help texts extractor` needs to be configured properly: see
 the :envvar:`help_texts_builder_targets` variable in the :xfile:`conf.py` of the
-book.
+:ref:`book` project.
 
 When a Lino :class:`Site <lino.core.site.Site>` initializes, it looks for a file
 named :xfile:`help_texts.py` in every plugin directory.  If such a file exists,
