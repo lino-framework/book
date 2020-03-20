@@ -16,7 +16,7 @@ to every grid view.
    :local:
 
 .. include:: /../docs/shared/include/tested.rst
-             
+
 >>> from lino import startup
 >>> startup('lino_book.projects.min3.settings.doctests')
 >>> from lino.api.doctest import *
@@ -37,9 +37,9 @@ datetime.date(2017, 8, 19)
 >>> pv = dict(start_date=i2d(20170801), end_date=i2d(20170831))
 >>> rt.login('robin').show(cal.MyEntries, param_values=pv, header_level=1)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-=======================================================================
-My appointments (Managed by Robin Rood, Dates 01.08.2017 to 31.08.2017)
-=======================================================================
+=============================================================================
+My appointments (Responsible user Robin Rood, Dates 01.08.2017 to 31.08.2017)
+=============================================================================
 =========================================== ===============================
  Calendar entry                              Workflow
 ------------------------------------------- -------------------------------
@@ -61,6 +61,7 @@ My appointments (Managed by Robin Rood, Dates 01.08.2017 to 31.08.2017)
  `Breakfast (31.08.2017 10:20) <Detail>`__   **☼ Published** → [☒] [☐]
 =========================================== ===============================
 <BLANKLINE>
+
 
 
 Building the file
@@ -122,7 +123,7 @@ The action performed without error.
 But does the file exist?
 
 >>> from unipath import Path
->>> p = Path(settings.MEDIA_ROOT, 
+>>> p = Path(settings.MEDIA_ROOT,
 ...    'cache', 'appyxlsx', '127.0.0.1', 'cal.MyEntries.xlsx')
 >>> p.exists()
 True
@@ -134,11 +135,11 @@ In order to test whether the file is really okay, we load it using
 >>> wb = load_workbook(filename=p)
 
 >>> print(wb.sheetnames[0])
-My appointments (Managed by Rol
+My appointments (Responsible us
 
 >>> ws = wb.active
 >>> print(ws.title)
-My appointments (Managed by Rol
+My appointments (Responsible us
 
 
 Note that long titles are truncated because Excel does not support
@@ -173,7 +174,7 @@ Unicode
 >>> wb = load_workbook(filename=p)
 >>> ws = wb.active
 >>> print(ws.title)
-Mes rendez-vous (Traité par Rol
+Mes rendez-vous (Utilisateur re
 
 >>> rows = list(ws.rows)
 >>> print(' | '.join([cell.value for cell in rows[0]]))
@@ -200,7 +201,7 @@ More queries
 
 The following failed with :message:`ValueError: Cannot convert
 1973-07-21 to Excel` until 20161014:
-    
+
 >>> url = "/api/contacts/Persons?an=export_excel"
 >>> url += "&cw=123&cw=185&cw=129&cw=64&cw=64&cw=34&cw=64&cw=129&cw=129&cw=123&cw=123&cw=70&cw=123&cw=129&cw=129&cw=129&cw=70&cw=70&cw=129&cw=129&cw=366&cw=129&cw=129&cw=129&cw=129&cw=58&cw=76&cw=185&cw=185&cw=185&cw=185"
 >>> url += "&ch=&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=true&ch=false&ch=true&ch=true&ch=true&ch=true&ch=true"
@@ -208,4 +209,3 @@ The following failed with :message:`ValueError: Cannot convert
 >>> url += "&name=0&&pv=&pv=&pv=&pv="
 >>> test_client.get(url, REMOTE_USER='robin').status_code
 200
-
