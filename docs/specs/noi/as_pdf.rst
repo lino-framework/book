@@ -1,26 +1,25 @@
+.. doctest docs/specs/noi/as_pdf.rst
 .. _noi.specs.as_pdf:
 
 =================
 Printing tables
 =================
 
-
-.. How to test only this document:
-
-    $ python setup.py test -s tests.SpecsTests.test_as_pdf
-    
-    doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
-
-
-This document describes and tests the print to pdf function.
+This document just tests the print to pdf function.
 
 
 .. contents::
   :local:
+
+.. include:: /../docs/shared/include/tested.rst
+
+
+>>> from lino import startup
+>>> startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
+
+
+>>> # rt.login('robin').show('tickets.ActiveTickets')
 
 >>> settings.SITE.appy_params.update(raiseOnError=True)
 >>> test_client.force_login(rt.login('robin').user)
@@ -32,8 +31,8 @@ This document describes and tests the print to pdf function.
 ...     assert result['success']
 ...     print(result['open_url'])
 
->>> mytest("tickets/TicketsToDo")  #doctest: +SKIP
-/media/cache/appypdf/127.0.0.1/tickets.TicketsToDo.pdf
+>>> mytest("tickets/ActiveTickets")
+/media/cache/appypdf/127.0.0.1/tickets.ActiveTickets.pdf
 
->>> mytest("tickets/AllTickets")  #doctest: +SKIP
+>>> mytest("tickets/AllTickets")
 /media/cache/appypdf/127.0.0.1/tickets.AllTickets.pdf
