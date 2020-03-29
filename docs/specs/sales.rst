@@ -206,21 +206,21 @@ Sales account
 The sales journal
 =================
 
+The pierre demo site has no VAT declarations, no purchase journals, no financial
+journals, just a single sales journal.
+
 >>> rt.show('ledger.Journals', column_names="ref name trade_type")
-=========== ============================ ============================ =====================
- Reference   Designation                  Designation (en)             Trade type
------------ ---------------------------- ---------------------------- ---------------------
- SLS         Factures vente               Sales invoices               Sales
- SLC         Notes de crédit vente        Sales credit notes           Sales
- PRC         Factures achat               Purchase invoices            Purchases
- PMO         Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders
- CSH         Livre de caisse              Cash book
- BNK         Bestbank                     Bestbank
- MSC         Opérations diverses          Miscellaneous transactions
- PRE         Preliminary transactions     Preliminary transactions
- SAL         Fiches de paie               Paychecks
-=========== ============================ ============================ =====================
+=========== ================ ================== ============
+ Reference   Designation      Designation (en)   Trade type
+----------- ---------------- ------------------ ------------
+ SLS         Factures vente   Sales invoices     Sales
+=========== ================ ================== ============
 <BLANKLINE>
+
+Invoices are sorted by number and year.  The entry date should normally never
+"go back".  Lino supports exceptional situations, e.g. starting to issue
+invoices at a given number and entering a series of sales invoices from a legacy
+system afterwards.
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
 >>> rt.show('sales.InvoicesByJournal', jnl)
@@ -228,20 +228,22 @@ The sales journal
 ===================== ============ ============ =================================== =============== ============== ================
  No.                   Entry date   Due date     Partner                             Total to pay    Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- --------------- -------------- ----------------
- 15/2017               12/03/2017   18/03/2017   da Vinci David                      1 110,16                       **Registered**
- 14/2017               11/03/2017   17/03/2017   da Vinci David                      535,00                         **Registered**
- 13/2017               10/03/2017   09/03/2017   di Rupo Didier                      280,00                         **Registered**
- 12/2017               09/03/2017   07/04/2017   Radermacher Jean                    679,81                         **Registered**
- 11/2017               08/03/2017   31/03/2017   Radermacher Inge                    2 039,82                       **Registered**
- 10/2017               07/03/2017   04/06/2017   Radermacher Hedi                    2 999,85                       **Registered**
- 9/2017                14/02/2017   14/04/2017   Radermacher Hans                    494,80                         **Registered**
+ 15/2017               12/03/2017   18/03/2017   van Veen Vincent                    1 110,16                       **Registered**
+ 14/2017               11/03/2017   17/03/2017   van Veen Vincent                    535,00                         **Registered**
  ...
- 6/2016                07/02/2016   06/05/2016   Garage Mergelsberg                  1 110,16                       **Registered**
- 5/2016                11/01/2016   10/03/2016   Bäckerei Schmitz                    535,00                         **Registered**
- 4/2016                10/01/2016   08/02/2016   Bäckerei Mießen                     280,00                         **Registered**
- 3/2016                09/01/2016   18/01/2016   Bäckerei Ausdemwald                 679,81                         **Registered**
- 2/2016                08/01/2016   14/01/2016   Rumma & Ko OÜ                       2 039,82                       **Registered**
- 1/2016                07/01/2016   06/01/2016   Bestbank                            2 999,85                       **Registered**
+ 4/2017                09/02/2017   08/02/2017   Radermacher Edgard                  21,00                          **Registered**
+ 3/2017                08/02/2017   09/03/2017   Radermacher Daniela                 719,60                         **Registered**
+ 2/2017                07/02/2017   28/02/2017   Radermacher Christian               645,00                         **Registered**
+ 1/2017                07/01/2017   06/04/2017   Radermacher Berta                   31,92                          **Registered**
+ 57/2016               10/12/2016   07/02/2017   Radermacher Alfons                  3 149,71                       **Registered**
+ 56/2016               09/12/2016   07/01/2017   Emonts-Gast Erna                    1 613,92                       **Registered**
+ 55/2016               08/12/2016   17/12/2016   Emontspool Erwin                    448,50                         **Registered**
+ ...
+ 5/2016                11/01/2016   10/03/2016   Garage Mergelsberg                  535,00                         **Registered**
+ 4/2016                10/01/2016   08/02/2016   Bäckerei Schmitz                    280,00                         **Registered**
+ 3/2016                09/01/2016   18/01/2016   Bäckerei Mießen                     679,81                         **Registered**
+ 2/2016                08/01/2016   14/01/2016   Bäckerei Ausdemwald                 2 039,82                       **Registered**
+ 1/2016                07/01/2016   06/01/2016   Rumma & Ko OÜ                       2 999,85                       **Registered**
  **Total (72 rows)**                                                                 **82 597,39**
 ===================== ============ ============ =================================== =============== ============== ================
 <BLANKLINE>

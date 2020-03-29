@@ -19,7 +19,7 @@ indipendent clients who share a common interest).
 
 
 .. currentmodule:: lino_tera.lib.courses
-                   
+
 
 .. include:: /../docs/shared/include/tested.rst
 
@@ -57,10 +57,7 @@ The detail view of a therapy
 - **Invoicing** (invoicing_2) [visible for secretary therapist admin]:
   - **Invoicings** (invoicing.InvoicingsByGenerator) [visible for secretary admin]
   - **Existing excerpts** (excerpts_ExcerptsByProject)
-- **More** (more):
-  - **Division** (team)
-  - **Remark** (remark)
-  - **Tasks** (cal.TasksByProject) [visible for secretary therapist admin]
+- **More** (more): **Division** (team), **Remark** (remark), **Tasks** (cal_TasksByProject) [visible for secretary therapist admin]
 <BLANKLINE>
 
 

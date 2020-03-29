@@ -18,14 +18,25 @@ Table of contents:
    :depth: 1
    :local:
 
-Examples in this document use the :mod:`lino_book.projects.pierre`
-demo project.
+Examples in this document use the :mod:`lino_book.projects.apc` demo project.
 
 >>> from lino import startup
->>> startup('lino_book.projects.pierre.settings.demo')
+>>> startup('lino_book.projects.apc.settings.demo')
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
+
+List of partners who are both supplier and customer and have open movements:
+
+>>> from lino_xl.lib.ledger.choicelists import TradeTypes
+>>> def has_mvt(obj, tt):
+...     qs = ledger.Movement.objects.filter(partner=obj, cleared=False, voucher__journal__trade_type=tt)
+...     return qs.count()
+>>> for p in contacts.Partner.objects.all():
+...     if has_mvt(p, TradeTypes.purchases) and has_mvt(p, TradeTypes.sales):
+...         print(p.pk, p)
+
+
 
 
 Overview
@@ -447,7 +458,7 @@ Movements
 
 .. class:: Movement
 
-    Represents an accounting movement in the ledger.  See Overview_.
+    Django model used to represent a :term:`ledger movement`
 
     .. attribute:: value_date
 
@@ -524,7 +535,9 @@ Movements
 
 .. class:: Movements
 
-    The base table for all tables working on :class:`Movement`.
+    The base table for all tables having :term:`ledger movements <ledger
+    movement>` as rows.
+
     Defines filtering parameters and general behaviour.
 
     .. attribute:: start_period
@@ -586,17 +599,23 @@ The summary of :class:`MovementsByPartner` shows a *balance*. A negative number
 means that we owe money to this partner, a positive number means that this
 partner owes us money.
 
->>> obj = rt.models.contacts.Partner.objects.get(pk=125)
+For example David da Vinci has 4 open invoices:
+
+>>> obj = rt.models.contacts.Person.objects.get(pk=165)
+>>> obj
+Person #165 ('Mr David da Vinci')
+
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj)
-**1 open movements (11.20 €)**
+**2 open movements (1645.16 €)**
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj, nosummary=True)
-============ =============== ================================= =========== ======== ================= =========
- Value date   Voucher         Description                       Debit       Credit   Match             Cleared
------------- --------------- --------------------------------- ----------- -------- ----------------- ---------
- 10/06/2016   *SLS 28/2016*   *(4000) Customers*                11,20                **SLS 28/2016**   No
-                              **Balance 11.20 (1 movements)**   **11,20**
-============ =============== ================================= =========== ======== ================= =========
+============ =============== ======================================= ============== ======== ================= =========
+ Value date   Voucher         Description                             Debit          Credit   Match             Cleared
+------------ --------------- --------------------------------------- -------------- -------- ----------------- ---------
+ 12/03/2015   *SLS 15/2015*   *(4000) Customers* | *da Vinci David*   1 110,16                **SLS 15/2015**   No
+ 11/03/2015   *SLS 14/2015*   *(4000) Customers* | *da Vinci David*   535,00                  **SLS 14/2015**   No
+                              **Balance 1645.16 (2 movements)**       **1 645,16**
+============ =============== ======================================= ============== ======== ================= =========
 <BLANKLINE>
 
 
@@ -605,15 +624,16 @@ Vouchers
 
 .. class:: Voucher
 
-    A Voucher is a document that represents a monetary transaction.
-
-    A voucher is never instantiated using this base model but using
-    one of its subclasses. Examples of subclassed are sales.Invoice,
-    vat.AccountInvoice (or vatless.AccountInvoice), finan.Statement
-    etc...
+    Django model used to represent a :term:`voucher`.
 
     This model is *not* abstract so that :class:`Movement` can have a
     ForeignKey to a Voucher.
+
+    A voucher is never instantiated using this base model but using one of its
+    subclasses. Examples of subclasses are :class:`lino_xl.lib.sales.Invoice`,
+    :class:`lino_xl.lib.vat.AccountInvoice` (or
+    :class:`lino_xl.lib.vatless.AccountInvoice`),
+    :class:`lino_xl.lib.finan.Statement` etc...
 
     When the partner of an empty voucher has a purchase account, Lino
     automatically creates a voucher item using this account with empty
@@ -763,19 +783,20 @@ Here is the list of all :term:`journals <journal>`.
 >>> ses.show(ledger.Journals,
 ...     column_names="ref name trade_type account dc")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=========== ============================ ============================ ===================== =============================== ===========================
- Reference   Designation                  Designation (en)             Trade type            Account                         Primary booking direction
------------ ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
- SLS         Factures vente               Sales invoices               Sales                                                 Credit
- SLC         Notes de crédit vente        Sales credit notes           Sales                                                 Debit
- PRC         Factures achat               Purchase invoices            Purchases                                             Debit
- PMO         Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
- CSH         Livre de caisse              Cash book                                          (5700) Cash                     Credit
- BNK         Bestbank                     Bestbank                                           (5500) BestBank                 Credit
- MSC         Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit
- PRE         Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
- SAL         Fiches de paie               Paychecks                                          (5700) Cash                     Credit
-=========== ============================ ============================ ===================== =============================== ===========================
+=========== ============================ ============================ ============================ ===================== =============================== ===========================
+ Reference   Designation                  Designation (fr)             Designation (en)             Trade type            Account                         Primary booking direction
+----------- ---------------------------- ---------------------------- ---------------------------- --------------------- ------------------------------- ---------------------------
+ SLS         Verkaufsrechnungen           Factures vente               Sales invoices               Sales                                                 Credit
+ SLC         Gutschriften Verkauf         Notes de crédit vente        Sales credit notes           Sales                                                 Debit
+ PRC         Einkaufsrechnungen           Factures achat               Purchase invoices            Purchases                                             Debit
+ PMO         Zahlungsaufträge             Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
+ CSH         Kassenbuch                   Livre de caisse              Cash book                                          (5700) Cash                     Credit
+ BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
+ MSC         Miscellaneous transactions   Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit
+ PRE         Preliminary transactions     Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
+ SAL         Lohnscheine                  Fiches de paie               Paychecks                                          (5700) Cash                     Credit
+ VAT         MwSt.-Erklärungen            Déclarations TVA             VAT declarations             Taxes                 (4513) VAT declared             Debit
+=========== ============================ ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
 
 
@@ -891,12 +912,13 @@ Here is the list of all :term:`journals <journal>`.
     **72 Sales invoices (SLS)** **⊕**
     **0 Sales credit notes (SLC)** **⊕**
     **105 Purchase invoices (PRC)** **⊕**
-    **0 Bestbank Payment Orders (PMO)** **⊕**
+    **14 Bestbank Payment Orders (PMO)** **⊕**
     **0 Cash book (CSH)** **⊕**
-    **0 Bestbank (BNK)** **⊕**
+    **14 Bestbank (BNK)** **⊕**
     **0 Miscellaneous transactions (MSC)** **⊕**
     **1 Preliminary transactions (PRE)** **⊕**
     **0 Paychecks (SAL)** **⊕**
+    **14 VAT declarations (VAT)** **⊕**
 
     >>> rt.login("robin").show(ledger.JournalsOverview, nosummary=True)
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -906,13 +928,14 @@ Here is the list of all :term:`journals <journal>`.
      Sales invoices (SLS) / **New Invoice**                   **72**    **15**      **6**
      Sales credit notes (SLC) / **New Credit note**
      Purchase invoices (PRC) / **New Invoice**                **105**   **21**      **7**
-     Bestbank Payment Orders (PMO) / **New Payment order**
+     Bestbank Payment Orders (PMO) / **New Payment order**    **14**    **2**
      Cash book (CSH) / **New Cash statement**
-     Bestbank (BNK) / **New Bank statement**
+     Bestbank (BNK) / **New Bank statement**                  **14**    **2**
      Miscellaneous transactions (MSC) / **New Transaction**
      Preliminary transactions (PRE) / **New Transaction**     **1**
      Paychecks (SAL) / **New Paycheck**
-     **Total (9 rows)**                                       **178**   **36**      **13**       **0**
+     VAT declarations (VAT) / **New VAT declaration**         **14**    **2**
+     **Total (10 rows)**                                      **220**   **42**      **13**       **0**
     ======================================================== ========= =========== ============ ============ ==========
     <BLANKLINE>
 
@@ -928,8 +951,9 @@ account, a *sales* invoice *debits* the customer's account.
 ============================= ========== =========== =========== ========================== ================ =========
  Account                       Partner    Debit       Credit      VAT class                  Match            Cleared
 ----------------------------- ---------- ----------- ----------- -------------------------- ---------------- ---------
- (4100) Suppliers              Bestbank               40,00                                  **PRC 1/2016**   No
- (6010) Purchase of services              40,00                   Goods at normal VAT rate                    Yes
+ (4100) Suppliers              Bestbank               40,00                                  **PRC 1/2014**   Yes
+ (4520) VAT deductible                    6,94                    Goods at normal VAT rate                    Yes
+ (6010) Purchase of services              33,06                   Goods at normal VAT rate                    Yes
                                           **40,00**   **40,00**
 ============================= ========== =========== =========== ========================== ================ =========
 <BLANKLINE>
@@ -940,8 +964,9 @@ account, a *sales* invoice *debits* the customer's account.
 ================== ========== ============== ============== =========== ================ =========
  Account            Partner    Debit          Credit         VAT class   Match            Cleared
 ------------------ ---------- -------------- -------------- ----------- ---------------- ---------
- (4000) Customers   Bestbank   2 999,85                                  **SLS 1/2016**   No
- (7000) Sales                                 2 999,85       Services                     Yes
+ (4000) Customers   Bestbank   2 999,85                                  **SLS 1/2014**   Yes
+ (4510) VAT due                               520,64         Services                     Yes
+ (7000) Sales                                 2 479,21       Services                     Yes
                                **2 999,85**   **2 999,85**
 ================== ========== ============== ============== =========== ================ =========
 <BLANKLINE>
@@ -1383,6 +1408,7 @@ The demo database has the following match rules:
  30   (4500) Tax Offices              Paychecks (SAL)
  31   (6300) Wages                    Paychecks (SAL)
  32   (4300) Pending Payment Orders   Paychecks (SAL)
+ 33   (4500) Tax Offices              VAT declarations (VAT)
 ==== =============================== ==================================
 <BLANKLINE>
 
@@ -1422,133 +1448,81 @@ Debtors
 =======
 
 **Debtors** are partners who received credit from us and therefore are
-in debt towards us. The most common debtors are customers,
-i.e. partners who received a sales invoice from us and did not yet pay
-that invoice.
+in debt towards us.
 
-Two debtors in the list below are not customers: Bestbank and the tax
-office.  Bestbank is a debtor because pending payment orders are
-booked to this account.  The tax office is a debtor because we had
-more VAT deductible (sales) than VAT due (purchases).
+The most common debtors are customers, i.e. partners who received a sales
+invoice from us and did not yet pay that invoice.
+
+There can be debtors who are not customers.  For example a bank or a tax office.
+A bank is a debtor when pending payment orders are booked to this account.  A
+tax office is a debtor when we had more VAT deductible (sales) than VAT due
+(purchases).
 
 >>> ses.show(ledger.Debtors, column_names="due_date partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-===================== =================================== ========== ===============
- Due date              Partner                             ID         Balance
---------------------- ----------------------------------- ---------- ---------------
- 01/01/2016            Niederau Eupen AG                   190        100,00
- 03/01/2016            Bestbank                            100        2 382,15
- 09/02/2016            Van Achter NV                       107        1 939,82
- 10/02/2016            Hans Flott & Co                     108        815,96
- 07/03/2016            Bernd Brechts Bücherladen           109        320,00
- 07/04/2016            Reinhards Baumschule                110        548,50
- 08/04/2016            Moulin Rouge                        111        2 013,88
- 09/04/2016            Auto École Verte                    112        1 949,85
- 10/04/2016            Arens Andreas                       113        831,82
- 11/04/2016            Arens Annette                       114        1 245,00
- 13/04/2016            Altenberg Hans                      115        140,60
- 14/04/2016            Ausdemwald Alfons                   116        3 319,78
- 07/05/2016            Bastiaensen Laurent                 117        1 199,85
- 08/05/2016            Collard Charlotte                   118        279,90
- 09/05/2016            Charlier Ulrike                     119        990,00
- 10/05/2016            Chantraine Marc                     120        239,20
- 11/05/2016            Dericum Daniel                      121        5 365,23
- 07/06/2016            Demeulenaere Dorothée               122        59,85
- 08/06/2016            Dobbelstein-Demeulenaere Dorothée   123        580,00
- 09/06/2016            Dobbelstein Dorothée                124        834,00
- 10/06/2016            Ernst Berta                         125        11,20
- 11/06/2016            Evertz Bernd                        126        2 299,81
- 07/07/2016            Evers Eberhart                      127        1 955,78
- 08/07/2016            Emonts Daniel                       128        450,00
- 09/07/2016            Engels Edgar                        129        670,00
- 10/07/2016            Faymonville Luc                     130        562,50
- 07/08/2016            Gernegroß Germaine                  131        1 599,92
- 07/09/2016            Groteclaes Gregory                  132        2 349,81
- 08/09/2016            Hilgers Hildegard                   133        951,82
- 09/09/2016            Hilgers Henri                       134        525,00
- 10/09/2016            Ingels Irene                        135        600,00
- 11/09/2016            Jansen Jérémy                       136        2 940,42
- 13/09/2016            Jacobs Jacqueline                   137        1 719,81
- 14/09/2016            Johnen Johann                       138        419,90
- 07/10/2016            Jonas Josef                         139        600,00
- 08/10/2016            Jousten Jan                         140        489,20
- 09/10/2016            Kaivers Karl                        141        4 005,35
- 10/10/2016            Lambertz Guido                      142        1 039,92
- 11/10/2016            Laschet Laura                       143        1 119,81
- 07/11/2016            Lazarus Line                        144        375,00
- 08/11/2016            Leffin Josefine                     145        310,20
- 09/11/2016            Malmendier Marc                     146        3 599,71
- 10/11/2016            Meessen Melissa                     147        639,92
- 11/11/2016            Mießen Michael                      148        465,96
- 07/12/2016            Meier Marie-Louise                  149        770,00
- 08/12/2016            Emonts Erich                        150        448,50
- 09/12/2016            Emontspool Erwin                    151        1 613,92
- 10/12/2016            Emonts-Gast Erna                    152        3 149,71
- 07/01/2017            Radermacher Alfons                  153        31,92
- 07/02/2017            Radermacher Berta                   154        645,00
- 08/02/2017            Radermacher Christian               155        719,60
- 09/02/2017            Radermacher Daniela                 156        21,00
- 10/02/2017            Radermacher Edgard                  157        2 799,82
- 11/02/2017            Radermacher Fritz                   158        1 999,71
- 13/02/2017            Radermacher Guido                   159        740,00
- 14/02/2017            Radermacher Hans                    160        494,80
- 07/03/2017            Radermacher Hedi                    161        2 999,85
- 08/03/2017            Radermacher Inge                    162        2 039,82
- 09/03/2017            Radermacher Jean                    163        679,81
- 10/03/2017            di Rupo Didier                      164        280,00
- 11/03/2017            da Vinci David                      165        1 645,16
- **Total (61 rows)**                                       **8314**   **75 935,05**
-===================== =================================== ========== ===============
+==================== ======================= ========== ===============
+ Due date             Partner                 ID         Balance
+-------------------- ----------------------- ---------- ---------------
+ 10/02/2014           Dubois Robin            179        7 362,36
+ 08/02/2015           Radermacher Christian   155        719,60
+ 11/02/2015           Radermacher Fritz       158        523,11
+ 07/03/2015           Radermacher Hedi        161        2 999,85
+ 09/03/2015           Radermacher Jean        163        679,81
+ 10/03/2015           di Rupo Didier          164        280,00
+ 11/03/2015           da Vinci David          165        1 645,16
+ **Total (7 rows)**                           **1145**   **14 209,89**
+==================== ======================= ========== ===============
 <BLANKLINE>
 
+The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows one row
+per uncleared invoice, and a list of --usually partial-- payments per invoice.
+For example here is the detail of the debts for partner 165 from above list:
 
-The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows
-one row per uncleared invoice. For example here is the detail of the
-debts for partner 116 from above list:
-
->>> obj = contacts.Partner.objects.get(pk=116)
+>>> obj = contacts.Partner.objects.get(pk=165)
 >>> obj
-Partner #116 ('Ausdemwald Alfons')
+Partner #165 ('da Vinci David')
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
 ==================== ============== ========================== ==========
  Due date             Balance        Debts                      Payments
 -------------------- -------------- -------------------------- ----------
- 14/04/2016           3 319,78       `SLS 18/2016 <Detail>`__
- **Total (1 rows)**   **3 319,78**
+ 11/03/2015           535,00         `SLS 14/2015 <Detail>`__
+ 12/03/2015           1 110,16       `SLS 15/2015 <Detail>`__
+ **Total (2 rows)**   **1 645,16**
 ==================== ============== ========================== ==========
 <BLANKLINE>
 
-This shows that the partner received one sales invoice and did a
-partial payment on the same day.
 
-
-**Creditors** are partners hwo gave us credit, IOW to whom we owe
+**Creditors** are partners who gave us credit, IOW to whom we owe
 money.  The most common creditors are providers, i.e. partners who
 send us a purchase invoice (which we did not yet pay).
 
 >>> ses.show(ledger.Creditors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-===================== ========= ===============
+===================== ========= ==============
  Partner               ID        Balance
---------------------- --------- ---------------
- Leffin Electronics    191       50,00
- Rumma & Ko OÜ         101       91,38
- Bäckerei Ausdemwald   102       8 368,19
- Bäckerei Mießen       103       17 771,00
- Bäckerei Schmitz      104       48 194,90
- Garage Mergelsberg    105       1 021,04
- Donderweer BV         106       1 521,15
- **Total (7 rows)**    **812**   **77 017,66**
-===================== ========= ===============
+--------------------- --------- --------------
+ Bestbank              100       42,90
+ Rumma & Ko OÜ         101       141,60
+ Bäckerei Ausdemwald   102       608,20
+ Bäckerei Mießen       103       1 214,40
+ Bäckerei Schmitz      104       3 272,98
+ Garage Mergelsberg    105       143,40
+ Donderweer BV         106       204,40
+ **Total (7 rows)**    **721**   **5 627,88**
+===================== ========= ==============
 <BLANKLINE>
 
 
-Partner 101 from above list is both a supplier and a customer:
+(Currently not tested because the only example is a sales invoice for 101 in
+2014-01 which is already paid. need to adapt some fixture to getmore cases)
+Partner 101 from above list is both a supplier and a customer: Note that most
+numbers in above table are negative. A purchase invoice is a *credit* received
+from the provider, and we asked a list of *debts* by partner.
 
 >>> obj = contacts.Partner.objects.get(pk=101)
 >>> ses.show(ledger.DebtsByPartner, obj)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF +SKIP
 ===================== ============ ========================= ==========================
  Due date              Balance      Debts                     Payments
 --------------------- ------------ ------------------------- --------------------------
@@ -1572,8 +1546,6 @@ Partner 101 from above list is both a supplier and a customer:
 ===================== ============ ========================= ==========================
 <BLANKLINE>
 
-Note that most numbers in above table are negative. A purchase invoice is a
-*credit* received from the provider, and we asked a list of *debts* by partner.
 
 
 Fiscal years
@@ -1604,26 +1576,26 @@ with 5 years starting from :attr:`start_year
 
 
 >>> dd.plugins.ledger.start_year
-2016
+2014
 
 >>> dd.today()
-datetime.date(2017, 3, 12)
+datetime.date(2015, 3, 12)
 
 >>> dd.today().year + 5
-2022
+2020
 
 >>> rt.show(ledger.FiscalYears)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 =========== ============ ============ =======
  Reference   Start date   End date     State
 ----------- ------------ ------------ -------
+ 2014        01/01/2014   31/12/2014   Open
+ 2015        01/01/2015   31/12/2015   Open
  2016        01/01/2016   31/12/2016   Open
  2017        01/01/2017   31/12/2017   Open
  2018        01/01/2018   31/12/2018   Open
  2019        01/01/2019   31/12/2019   Open
  2020        01/01/2020   31/12/2020   Open
- 2021        01/01/2021   31/12/2021   Open
- 2022        01/01/2022   31/12/2022   Open
 =========== ============ ============ =======
 <BLANKLINE>
 
@@ -1642,22 +1614,22 @@ needed by some operation.
 =========== ============ ============ ============= ======= ========
  Reference   Start date   End date     Fiscal year   State   Remark
 ----------- ------------ ------------ ------------- ------- --------
- 2016-01     01/01/2016   31/01/2016   2016          Open
- 2016-02     01/02/2016   29/02/2016   2016          Open
- 2016-03     01/03/2016   31/03/2016   2016          Open
- 2016-04     01/04/2016   30/04/2016   2016          Open
- 2016-05     01/05/2016   31/05/2016   2016          Open
- 2016-06     01/06/2016   30/06/2016   2016          Open
- 2016-07     01/07/2016   31/07/2016   2016          Open
- 2016-08     01/08/2016   31/08/2016   2016          Open
- 2016-09     01/09/2016   30/09/2016   2016          Open
- 2016-10     01/10/2016   31/10/2016   2016          Open
- 2016-11     01/11/2016   30/11/2016   2016          Open
- 2016-12     01/12/2016   31/12/2016   2016          Open
- 2017-01     01/01/2017   31/01/2017   2017          Open
- 2017-02     01/02/2017   28/02/2017   2017          Open
- 2017-03     01/03/2017   31/03/2017   2017          Open
- 2017-12     01/12/2017   31/12/2017   2017          Open
+ 2014-01     01/01/2014   31/01/2014   2014          Open
+ 2014-02     01/02/2014   28/02/2014   2014          Open
+ 2014-03     01/03/2014   31/03/2014   2014          Open
+ 2014-04     01/04/2014   30/04/2014   2014          Open
+ 2014-05     01/05/2014   31/05/2014   2014          Open
+ 2014-06     01/06/2014   30/06/2014   2014          Open
+ 2014-07     01/07/2014   31/07/2014   2014          Open
+ 2014-08     01/08/2014   31/08/2014   2014          Open
+ 2014-09     01/09/2014   30/09/2014   2014          Open
+ 2014-10     01/10/2014   31/10/2014   2014          Open
+ 2014-11     01/11/2014   30/11/2014   2014          Open
+ 2014-12     01/12/2014   31/12/2014   2014          Open
+ 2015-01     01/01/2015   31/01/2015   2015          Open
+ 2015-02     01/02/2015   28/02/2015   2015          Open
+ 2015-03     01/03/2015   31/03/2015   2015          Open
+ 2015-12     01/12/2015   31/12/2015   2015          Open
 =========== ============ ============ ============= ======= ========
 <BLANKLINE>
 
@@ -1687,21 +1659,21 @@ Payment terms
 =============
 
 >>> rt.show('ledger.PaymentTerms')
-==================== ======================================= ======================================= ======== ========= ==============
- Reference            Designation                             Designation (en)                        Months   Days      End of month
--------------------- --------------------------------------- --------------------------------------- -------- --------- --------------
- 07                   Payment seven days after invoice date   Payment seven days after invoice date   0        7         No
- 10                   Payment ten days after invoice date     Payment ten days after invoice date     0        10        No
- 30                   Payment 30 days after invoice date      Payment 30 days after invoice date      0        30        No
- 60                   Payment 60 days after invoice date      Payment 60 days after invoice date      0        60        No
- 90                   Payment 90 days after invoice date      Payment 90 days after invoice date      0        90        No
- EOM                  Payment end of month                    Payment end of month                    0        0         Yes
- P30                  Prepayment 30%                          Prepayment 30%                          0        30        No
- PIA                  Payment in advance                      Payment in advance                      0        0         No
- **Total (8 rows)**                                                                                   **0**    **227**
-==================== ======================================= ======================================= ======== ========= ==============
+==================== ==================================== ==================================== ======================================= ======== ========= ============== =================
+ Reference            Designation                          Designation (fr)                     Designation (en)                        Months   Days      End of month   Worker
+-------------------- ------------------------------------ ------------------------------------ --------------------------------------- -------- --------- -------------- -----------------
+ 07                   Zahlung sieben Tage Rechnungsdatum   Zahlung sieben Tage Rechnungsdatum   Payment seven days after invoice date   0        7         No
+ 10                   Zahlung zehn Tage Rechnungsdatum     Zahlung zehn Tage Rechnungsdatum     Payment ten days after invoice date     0        10        No
+ 30                   Zahlung 30 Tage Rechnungsdatum       Zahlung 30 Tage Rechnungsdatum       Payment 30 days after invoice date      0        30        No
+ 60                   Zahlung 60 Tage Rechnungsdatum       Zahlung 60 Tage Rechnungsdatum       Payment 60 days after invoice date      0        60        No
+ 90                   Zahlung 90 Tage Rechnungsdatum       Zahlung 90 Tage Rechnungsdatum       Payment 90 days after invoice date      0        90        No
+ EOM                  Zahlung Monatsende                   Zahlung Monatsende                   Payment end of month                    0        0         Yes
+ P30                  Anzahlung 30%                        Anzahlung 30%                        Prepayment 30%                          0        30        No
+ PIA                  Vorauszahlung                        Vorauszahlung                        Payment in advance                      0        0         No
+ robin                Cash Robin                           Cash Robin                           Cash Robin                              0        0         No             Mr Robin Dubois
+ **Total (9 rows)**                                                                                                                     **0**    **227**
+==================== ==================================== ==================================== ======================================= ======== ========= ============== =================
 <BLANKLINE>
-
 
 
 
@@ -2074,32 +2046,25 @@ Show only companies that have at least one open ledger movement:
 >>> pv = dict(observed_event=rt.models.contacts.PartnerEvents.has_open_movements)
 >>> rt.login("robin").show(contacts.Companies, param_values=pv)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
-=========================== ===================================================== ============================ ======= ===== ===== ==========
- Name                        Address                                               e-mail address               Phone   GSM   ID    Language
---------------------------- ----------------------------------------------------- ---------------------------- ------- ----- ----- ----------
- Auto École Verte            rue de Mon Désert 12, 54000  Nancy, France                                                       112
- Bernd Brechts Bücherladen   Brienner Straße 18, 80333 Aachen, Germany                                                        109
- Bestbank                                                                                                                     100
- Bäckerei Ausdemwald         Vervierser Straße 45, 4700 Eupen                                                                 102
- Bäckerei Mießen             Gospert 103, 4700 Eupen                                                                          103
- Bäckerei Schmitz            Aachener Straße 53, 4700 Eupen                                                                   104
- Donderweer BV               Edisonstraat 12, 4816 AR Breda, Netherlands                                                      106
- Garage Mergelsberg          Hauptstraße 13, 4730 Raeren                                                                      105
- Hans Flott & Co             Niendorfer Weg 532, 22453 Hamburg, Germany                                                       108
- Leffin Electronics          Schilsweg 80, 4700 Eupen                              info@leffin-electronics.be                 191
- Moulin Rouge                Boulevard de Clichy 82, 75018 Paris, France                                                      111
- Niederau Eupen AG           Herbesthaler Straße 134, 4700 Eupen                                                              190
- Reinhards Baumschule        Segelfliegerdamm 123, 12487  Berlin, Germany                                                     110
- Rumma & Ko OÜ               Uus tn 1, Vigala vald, 78003 Rapla maakond, Estonia                                              101
- Van Achter NV               Hazeldonk 2, 4836 LG Breda, Netherlands                                                          107
-=========================== ===================================================== ============================ ======= ===== ===== ==========
+===================== ===================================================== ================ ======= ===== ===== ==========
+ Name                  Address                                               e-mail address   Phone   GSM   ID    Language
+--------------------- ----------------------------------------------------- ---------------- ------- ----- ----- ----------
+ Bestbank                                                                                                   100
+ Bäckerei Ausdemwald   Vervierser Straße 45, 4700 Eupen                                                     102
+ Bäckerei Mießen       Gospert 103, 4700 Eupen                                                              103
+ Bäckerei Schmitz      Aachener Straße 53, 4700 Eupen                                                       104
+ Donderweer BV         Edisonstraat 12, 4816 AR Breda, Netherlands                                          106
+ Garage Mergelsberg    Hauptstraße 13, 4730 Raeren                                                          105
+ Rumma & Ko OÜ         Uus tn 1, Vigala vald, 78003 Rapla maakond, Estonia                                  101
+===================== ===================================================== ================ ======= ===== ===== ==========
 <BLANKLINE>
 
 
->>> settings.SITE.the_demo_date
-datetime.date(2017, 3, 12)
 
->>> pv['start_date'] = i2d(20161231)
+>>> settings.SITE.the_demo_date
+datetime.date(2015, 3, 12)
+
+>>> pv['start_date'] = i2d(20141231)
 >>> rt.login("robin").show(contacts.Companies, param_values=pv)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
 ===================== ===================================================== ================ ======= ===== ===== ==========
@@ -2116,7 +2081,7 @@ datetime.date(2017, 3, 12)
 <BLANKLINE>
 
 
->>> pv['start_date'] = i2d(20171231)
+>>> pv['start_date'] = i2d(20151231)
 >>> rt.login("robin").show(contacts.Companies, param_values=pv)
 ... #doctest: -REPORT_UDIFF +ELLIPSIS
 No data to display
@@ -2285,9 +2250,21 @@ reversed field.  The :attr:`Movement.credit` field is an example:
 >>> rmu(ledger.Movement.get_data_elem('credit').sortable_by)
 ['-amount', 'value_date']
 
->>> par = contacts.Partner.objects.get(pk=122)
->>> url = "api/ledger/MovementsByPartner?fmt=json&mk=122&mt=17"
->>> args = ('count rows no_data_text success title param_values', 1)
+>>> par = contacts.Partner.objects.get(pk=109)
+>>> rt.show(ledger.MovementsByPartner, par, nosummary=True)
+============ =============== ================================================== ============ ============ ================= =========
+ Value date   Voucher         Description                                        Debit        Credit       Match             Cleared
+------------ --------------- -------------------------------------------------- ------------ ------------ ----------------- ---------
+ 21/04/2014   *BNK 4/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                16,00        **SLS 10/2014**   Yes
+ 21/03/2014   *BNK 3/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                304,00       **SLS 10/2014**   Yes
+ 07/03/2014   *SLS 10/2014*   *(4000) Customers*                                 320,00                    **SLS 10/2014**   Yes
+                              **Balance 0.00 (3 movements)**                     **320,00**   **320,00**
+============ =============== ================================================== ============ ============ ================= =========
+<BLANKLINE>
+
+>>> mt = contenttypes.ContentType.objects.get_for_model(par.__class__).pk
+>>> url = "api/ledger/MovementsByPartner?fmt=json&mk={}&mt={}".format(par.pk, mt)
+>>> args = ('count rows no_data_text success title param_values', 3)
 >>> demo_get('robin', url + "&sort=credit&dir=ASC", *args)
 
 The following failed before 20181016:

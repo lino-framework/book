@@ -706,35 +706,42 @@ datetime.date(2017, 4, 16)
 Recurrent events
 ================
 
-In :mod:`lino_book.projects.min2` we have a database model
-:class:`RecurrentEvent <lino_xl.lib.cal.RecurrentEvent>` used
-to generate holidays.  See also :ref:`xl.specs.holidays`.
+This plugin defines a database model :class:`RecurrentEvent
+<lino_xl.lib.cal.RecurrentEvent>` used for example to generate holidays.  See
+also :ref:`xl.specs.holidays`.
 
-We are going to use this model for demonstrating some more features
-(which it inherits from :class:`RecurrenceSet` and
-:class:`EventGenerator`)
+We are going to use this model for demonstrating some more features (which it
+inherits from :class:`RecurrenceSet` and :class:`EventGenerator`).
+
+>>> def demo(every_unit, **kwargs):
+...     kwargs.setdefault('start_date', i2d(20160628))
+...     kwargs.update(every_unit=cal.Recurrencies.get_by_name(every_unit))
+...     obj = cal.RecurrentEvent(**kwargs)
+...     for lng in 'en', 'de', 'fr':
+...         with translation.override(lng):
+...             print(obj.weekdays_text)
 
 
->>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
->>> isinstance(obj, cal.RecurrenceSet)
-True
->>> isinstance(obj, cal.EventGenerator)
-True
->>> obj.tuesday = True
->>> obj.every_unit = cal.Recurrencies.weekly
->>> print(obj.weekdays_text)
+>>> demo('weekly', tuesday=True)  #doctest: +NORMALIZE_WHITESPACE
 Every Tuesday
+Jeden Dienstag
+Chaque Mardi
 
->>> obj.every
-1
+>>> demo('weekly', tuesday=True, every=2)
+Every second Tuesday
+Jeden zweiten Dienstag
+Chaque deuxième Mardi
 
->>> obj.every = 2
->>> print(obj.weekdays_text)
-Every 2nd Tuesday
+>>> demo('weekly', tuesday=True, every=9)
+Every ninth Tuesday
+Jeden neunten Dienstag
+Chaque neuvième Mardi
 
->>> obj.every_unit = cal.Recurrencies.monthly
->>> print(obj.weekdays_text)
-Every 2nd month
+>>> demo('monthly', every=2)
+Every 2 months
+Alle 2 Monate
+Tous les 2 mois
+
 
 >>> rt.show(cal.EventTypes, column_names="id name")
 ==== =============== ================== ==================
@@ -749,7 +756,15 @@ Every 2nd month
 ==== =============== ================== ==================
 <BLANKLINE>
 
+>>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
+>>> isinstance(obj, cal.RecurrenceSet)
+True
+>>> isinstance(obj, cal.EventGenerator)
+True
 
+>>> obj.tuesday = True
+>>> obj.every = 2
+>>> obj.every_unit = cal.Recurrencies.monthly
 >>> obj.event_type = cal.EventType.objects.get(id=1)
 >>> obj.max_events = 5
 
@@ -1664,7 +1679,9 @@ last Friday of the month".
 The following examples use a utility function:
 
 >>> def show(obj, today):
-...     print(obj.weekdays_text)
+...     for lng in ('en', 'de', 'fr'):
+...         with translation.override(lng):
+...             print(obj.weekdays_text)
 ...     for i in range(5):
 ...         x = obj.get_next_suggested_date(None, today)
 ...         print(dd.fdf(x))
@@ -1678,6 +1695,8 @@ Every last Friday of the month:
 >>> obj.every_unit = cal.Recurrencies.monthly
 >>> show(obj, i2d(20191001))
 Every last Friday of the month
+Jeden letzten Freitag des Monats
+Chaque dernier Vendredi du mois
 Friday, 25 October 2019
 Friday, 29 November 2019
 Friday, 27 December 2019
@@ -1692,6 +1711,8 @@ The first and third Wednesday of every month:
 >>> obj.every_unit = cal.Recurrencies.monthly
 >>> show(obj, i2d(20191001))
 Every first and third Wednesday of the month
+Jeden ersten und dritten Mittwoch des Monats
+Chaque premier et troisième Mercredi du mois
 Wednesday, 2 October 2019
 Wednesday, 16 October 2019
 Wednesday, 6 November 2019
@@ -1705,8 +1726,22 @@ Wednesday, 4 December 2019
 >>> obj.every_unit = cal.Recurrencies.monthly
 >>> show(obj, i2d(20191213))
 Every second Monday and Friday of the month
+Jeden zweiten Montag und Freitag des Monats
+Chaque deuxième Lundi et Vendredi du mois
 Monday, 6 January 2020
 Friday, 7 February 2020
 Friday, 6 March 2020
 Monday, 6 April 2020
 Monday, 4 May 2020
+
+>>> obj.positions = "-2"
+>>> obj.monday = False
+>>> show(obj, i2d(20191213))
+Every second last Friday of the month
+Jeden zweitletzten Freitag des Monats
+Chaque avant-dernier Vendredi du mois
+Friday, 20 December 2019
+Friday, 24 January 2020
+Friday, 21 February 2020
+Friday, 20 March 2020
+Friday, 17 April 2020
