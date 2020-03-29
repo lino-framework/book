@@ -9,3 +9,4 @@
 .. |detail|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/application_form.png?raw=true
 .. |basket|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/basket.png?raw=true
 .. |money|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/money.png?raw=true
+.. |print|  image:: https://github.com/lino-framework/lino/blob/master/lino/static/images/mjames/printer.png?raw=true
