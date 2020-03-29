@@ -1,7 +1,9 @@
-# The following are added here so that we don't need to run inv install.
-# This should be the same as the compiled output of "inv install -l".
+# The following are added here so that we don't need to run inv install. This
+# should be the same as the compiled output of "python manage.py install -l" in
+# all demo projects.
 bleach
 odfpy
+num2words
 schedule
 social-auth-app-django
 
@@ -11,4 +13,5 @@ svn+https://svn.forge.pallavi.be/appy-dev/dev1#egg=appy
 # ldap support is not yet given by `inv install`:
 git+https://github.com/khchine5/django-auth-ldap.git#egg=django-auth-ldap
 
+# compare with lino_xl.lib.mailbox
 django-mailbox@git+https://github.com/cylonoven/django-mailbox
