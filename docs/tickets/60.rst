@@ -45,7 +45,7 @@ Observations
   If the partner itself is a person, this field 
   usually remains empty.
 
-- A Contact Person is a Person that has a given Role in a given Company.
+- A Contact person is a Person that has a given Role in a given Company.
   
 - Persons can have different Roles in different Companies, and 
   different contact information 

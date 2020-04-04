@@ -7,9 +7,10 @@
 
 .. currentmodule:: lino.modlib.system
 
-The :mod:`lino.modlib.system` plugin  defines some "system features", especially
-the :class:`SiteConfig` model. It is automatically installed with every Lino
-application.
+The :mod:`lino.modlib.system` plugin defines some system features that are
+automatically installed with every Lino application.
+
+It especially provides the :class:`SiteConfig` model.
 
 
 .. contents::
@@ -26,6 +27,69 @@ Code snippets in this document are tested using the
 >>> from lino.api.doctest import *
 
 
+Editable site parameters
+========================
+
+Lino provides a standard method for defining persistent site parameters that are
+editable by :term:`end users <end user>` (at least for those who have access
+permission).
+
+.. class:: SiteConfig
+
+    A singleton database object used to store persistent site parameters.
+
+    This model has exactly one instance, which is accessible as the
+    :attr:`settings.SITE.site_config <lino.core.site.Site.site_config>`
+    property.
+
+    .. attribute:: default_build_method
+
+        The default build method to use when rendering printable documents.
+
+        If this field is empty, Lino uses the value found in
+        :attr:`lino.core.site.Site.default_build_method`.
+
+    .. attribute:: simulate_today
+
+        A constant user-defined date to be substituted as current
+        system date.
+
+        This should be empty except in situations such as *a
+        posteriori* data entry in a prototype.
+
+    .. attribute:: site_company
+
+        The :term:`site owner`, i.e. the :term:`legal person` that operates this
+        :term:`Lino site`.  This can be used e.g. when printing your address in
+        documents or reports.  Or newly created partners inherit the country of
+        the site owner.
+
+        If no plugin named 'contacts' is installed, then this is a
+        dummy field, which always contains `None`.
+
+    .. attribute:: hide_events_before
+
+        If this is not empty, any calendar events before that date are
+        being hidden in certain places.
+
+        For example OverdueEvents, EntriesByController, ...
+
+        Injected by :mod:`lino_xl.lib.cal`.
+
+.. class:: SiteConfigManager
+
+    Always return the cached instance which holds the one and only
+    database instance.
+
+    This is to avoid the following situation:
+
+    - User 1 opens the :menuselection:`Configure --> System--> System
+      Parameters` dialog
+    - User 2 creates a new Person (which increases `next_partner_id`)
+    - User 1 clicks on `Save`.
+
+    `next_partner_id` may not get overwritten by its old value when
+    User 1 clicks "Save".
 
 .. class:: Lockable
 
@@ -52,63 +116,6 @@ Code snippets in this document are tested using the
     The table used to present the :class:`SiteConfig` row in a Detail form.
 
     See also :meth:`lino.core.site.Site.get_site_config`.
-
-.. class:: SiteConfig
-
-    A singleton database object used to store persistent site parameters.
-
-    This model has exactly one instance, which is accessible by application code
-    as the :attr:`settings.SITE.site_config <lino.core.site.Site.site_config>`
-    property.
-
-    .. attribute:: default_build_method
-
-        The default build method to use when rendering printable documents.
-
-        If this field is empty, Lino uses the value found in
-        :attr:`lino.core.site.Site.default_build_method`.
-
-    .. attribute:: simulate_today
-
-        A constant user-defined date to be substituted as current
-        system date.
-
-        This should be empty except in situations such as *a
-        posteriori* data entry in a prototype.
-
-    .. attribute:: site_company
-
-        The organisation who runs this site.  This is used e.g. when
-        printing your address in certain documents or reports.  Or
-        newly created partners inherit the country of the site owner.
-
-        If no plugin named 'contacts' is intalled, then this is a
-        dummy field which always contains `None`.
-
-
-    .. attribute:: hide_events_before
-
-        If this is not empty, any calendar events before that date are
-        being hidden in certain places.
-
-        For example OverdueEvents, EntriesByController, ...
-
-        Injected by :mod:`lino_xl.lib.cal`.
-
-.. class:: SiteConfigManager
-
-    Always return the cached instance which holds the one and only
-    database instance.
-
-    This is to avoid the following situation:
-
-    - User 1 opens the :menuselection:`Configure --> System--> System
-      Parameters` dialog
-    - User 2 creates a new Person (which increases `next_partner_id`)
-    - User 1 clicks on `Save`.
-
-    `next_partner_id` may not get overwritten by its old value when
-    User 1 clicks "Save".
 
 
 

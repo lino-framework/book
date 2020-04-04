@@ -34,7 +34,7 @@ The :mod:`lino_book.projects.min1` has the following menu:
   - Places : Countries, Places
 - Explorer :
   - System : Authorities, User types, User roles
-  - Contacts : Contact Persons, Partners
+  - Contacts : Contact persons, Partners
 - Site : About
 
 This menu is *not* defined by overriding the :meth:`setup_menu

@@ -50,7 +50,7 @@ users.UserTypes.admin:900
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : Authorities, User types, User roles, Data checkers, Data problems, Changes, content types
-  - Contacts : Contact Persons, Partners, List memberships
+  - Contacts : Contact persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
   - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
@@ -95,7 +95,7 @@ Monique is a secretary.
   - Sales : Flatrates
 - Explorer :
   - System : Data checkers, Data problems, Changes, content types
-  - Contacts : Contact Persons, Partners, List memberships
+  - Contacts : Contact persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Entry states, Presence states, Task states
   - Activities : Activities, Enrolments
   - Sales : Price factors, Sales invoices

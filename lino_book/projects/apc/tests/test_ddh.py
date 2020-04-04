@@ -99,7 +99,7 @@ class DDHTests(RemoteAuthTestCase):
             ref="VKR", name="VKR",
             voucher_type=VoucherTypes.get_for_model(Invoice),
             journal_group=JournalGroups.sales)
-        
+
         pe, pa = createit()
 
         def check_vetos(obj, msg):
@@ -120,7 +120,7 @@ class DDHTests(RemoteAuthTestCase):
         # Having an invoice does not prevent from removing the Person
         # child of the partner.
         #
-        
+
         invoice = create_row(Invoice, partner=pa, journal=VKR)
         self.assertEqual(Partner.objects.count(), 1)
         self.assertEqual(Person.objects.count(), 1)
@@ -141,7 +141,7 @@ class DDHTests(RemoteAuthTestCase):
         pe, pa = createit()
         co = create_row(Company, name="Test")
         create_row(Role, company=co, person=pe)
-        msg = "[u'Cannot delete Partner Doe John because 1 Contact Persons refer to it.']"
+        msg = "[u'Cannot delete Partner Doe John because 1 Contact persons refer to it.']"
         if six.PY2:
             msg = "[u'Kann Partner Doe John nicht l\\xf6schen weil 1 Kontaktpersonen darauf verweisen.']"
         else:
@@ -151,4 +151,3 @@ class DDHTests(RemoteAuthTestCase):
             self.fail("Expected ValidationError")
         except ValidationError as e:
             self.assertEqual(msg, str(e))
-

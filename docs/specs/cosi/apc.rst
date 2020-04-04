@@ -80,7 +80,7 @@ Robin is the system administrator, he has a complete menu:
   - Accounting : Sheet items, Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : content types, Authorities, User types, User roles, Data checkers, Data problems
-  - Contacts : Contact Persons, Partners
+  - Contacts : Contact persons, Partners
   - Office : Excerpts, Upload files, Upload areas, Text Field Templates
   - SEPA : Bank accounts
   - Sales : Price factors, Sales invoices, Sales invoice items

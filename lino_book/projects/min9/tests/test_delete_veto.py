@@ -4,7 +4,7 @@
 
 
 """This module contains tests that are run on a demo database without
-any fixture. 
+any fixture.
 
 You can run only these tests by issuing::
 
@@ -106,13 +106,13 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(res.status_code, 200)
         res = AttrDict(json.loads(res.content))
         # print(res)
-        expected = '<div class="htmlText"><p>Are you sure you want to merge John Doe into Johny Doe?</p><ul><li>1 Contact Persons, 1 Presences <b>will get reassigned.</b></li><li>John Doe will be deleted</li></ul></div>'
+        expected = '<div class="htmlText"><p>Are you sure you want to merge John Doe into Johny Doe?</p><ul><li>1 Contact persons, 1 Presences <b>will get reassigned.</b></li><li>John Doe will be deleted</li></ul></div>'
         self.assertEqual(res.message, expected)
         self.assertEqual(res.success, True)
         self.assertEqual(res.close_window, True)
         self.assertEqual(res.xcallback['buttons'], {'yes': 'Yes', 'no': 'No'})
         self.assertEqual(res.xcallback['title'], "Confirmation")
-        
+
         url = "/callbacks/{}/yes".format(res.xcallback['id'])
         res = self.client.get(url, REMOTE_USER='root')
         self.assertEqual(res.status_code, 200)
@@ -180,4 +180,3 @@ class QuickTest(RemoteAuthTestCase):
         except PodError as e:
             pass
             #~ self.assertEqual(str(e), PodError: Extension of result file is "pdf".
-

@@ -68,7 +68,7 @@ Running migrations:
 Loading data from ...
 ...
 Updating summary data for User summaries ...
-Installed 767 object(s) from 21 fixture(s)
+Installed 744 object(s) from 19 fixture(s)
 
 Tidy up:
 
@@ -97,7 +97,7 @@ Synchronizing apps without migrations:
     Running deferred SQL...
 Running migrations:
   ...
-Installed 767 object(s) from 21 fixture(s)
+Installed 744 object(s) from 19 fixture(s)
 
 
 >>> from lino import startup

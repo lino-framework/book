@@ -77,12 +77,12 @@ The database models
  comments.Comment                   comments.Comments                12        168
  comments.CommentType               comments.CommentTypes            4         0
  comments.Mention                   comments.Mentions                7         0
- contacts.Company                   contacts.Companies               22        14
- contacts.CompanyType               contacts.CompanyTypes            7         32
- contacts.Partner                   contacts.Partners                20        90
+ contacts.Company                   contacts.Companies               22        13
+ contacts.CompanyType               contacts.CompanyTypes            7         16
+ contacts.Partner                   contacts.Partners                20        89
  contacts.Person                    contacts.Persons                 27        76
- contacts.Role                      contacts.Roles                   4         2
- contacts.RoleType                  contacts.RoleTypes               4         10
+ contacts.Role                      contacts.Roles                   4         5
+ contacts.RoleType                  contacts.RoleTypes               5         5
  contenttypes.ContentType           gfks.ContentTypes                3         64
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
@@ -91,15 +91,15 @@ The database models
  django_mailbox.Message             mailbox.Messages                 15        7
  django_mailbox.MessageAttachment   mailbox.MessageAttachments       4         1
  excerpts.Excerpt                   excerpts.Excerpts                11        3
- excerpts.ExcerptType               excerpts.ExcerptTypes            17        3
- gfks.HelpText                      gfks.HelpTexts                   4         3
+ excerpts.ExcerptType               excerpts.ExcerptTypes            17        2
+ gfks.HelpText                      gfks.HelpTexts                   4         2
  github.Commit                      github.Commits                   14        0
  github.Repository                  github.Repositories              4         0
  groups.Group                       groups.Groups                    7         3
  groups.Membership                  groups.Memberships               4         7
  lists.List                         lists.Lists                      7         8
  lists.ListType                     lists.ListTypes                  4         3
- lists.Member                       lists.Members                    5         90
+ lists.Member                       lists.Members                    5         89
  notify.Message                     notify.Messages                  11        7
  sessions.Session                   sessions.SessionTable            3         ...
  social_django.Association          social_django.AssociationTable   7         0

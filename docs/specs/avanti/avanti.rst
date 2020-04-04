@@ -183,7 +183,7 @@ Clients
      ARSHUN Aloyoshenká (135)    Ended        850424 001-25         Gewerbestraße, 4700 Eupen         31 years                            135
      BAH Aráli (119)             Ended        970531 001-74         Am Waisenbüschchen, 4700 Eupen    19 years                            119
      BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153
-     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165
+     BERENDT Antoshá (165)       Ended        700602 001-93         Amsterdam, Netherlands            46 years                            165
      CONGO Chiámáká (126)        Registered   890702 001-14         Bergstraße, 4700 Eupen            27 years                            126
      DIA Deion (137)             Ended        840519 001-64         Gospert, 4700 Eupen               32 years                            137
      FALL Dembe (145)            Ended        790923 001-61         Heidhöhe, 4700 Eupen              37 years                            145

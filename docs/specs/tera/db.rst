@@ -64,8 +64,8 @@ The database models
  contacts.CompanyType        contacts.CompanyTypes          7         16
  contacts.Partner            contacts.Partners              28        105
  contacts.Person             contacts.Persons               35        69
- contacts.Role               contacts.Roles                 4         0
- contacts.RoleType           contacts.RoleTypes             4         5
+ contacts.Role               contacts.Roles                 4         3
+ contacts.RoleType           contacts.RoleTypes             5         5
  contenttypes.ContentType    gfks.ContentTypes              3         98
  countries.Country           countries.Countries            6         8
  countries.Place             countries.Places               9         78

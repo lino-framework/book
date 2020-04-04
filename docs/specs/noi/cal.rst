@@ -22,7 +22,7 @@ The :mod:`lino_noi.lib.cal` adds calendar functionality.
 
 >>> ses = rt.login('jean')
 >>> cal.Task(user=ses.get_user())
-Task(user=188,priority=<Priorities.normal:30>,state=<TaskStates.todo:10>)
+Task(user=187,priority=<Priorities.normal:30>,state=<TaskStates.todo:10>)
 
 
 Don't read me

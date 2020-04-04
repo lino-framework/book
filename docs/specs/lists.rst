@@ -82,9 +82,10 @@ lists.
  65    da Vinci David                                  4730 Raeren
  73    Radermecker Rik                                 Amsterdam, Netherlands
  81    Jeanémart Jérôme                                Paris, France
- 89    Jean
+ 89    Saffre-Rumma
 ===== =========================== ======== ========== ===================================================== ================ =====
 <BLANKLINE>
+
 
 The quick search field of a members list looks in the partner names and the
 membership remark.

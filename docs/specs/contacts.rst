@@ -8,10 +8,9 @@
 
 .. currentmodule:: lino_xl.lib.contacts
 
-The :mod:`lino_xl.lib.contacts` plugin adds functionality for managing
-contacts.  It adss the concept of **partner** with two specializations
-**person** and **organization**.  Also adds **roles** of a person in
-an organization.
+The :mod:`lino_xl.lib.contacts` plugin adds functionality for managing contacts.
+It adds the concepts of "partners", "persons", "organizations" and "contact
+roles".
 
 .. contents::
    :depth: 1
@@ -24,25 +23,6 @@ an organization.
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
-
-Glossary
-=========
-
-.. glossary::
-
-    Natural person
-
-      A really existing person with a first and last name.
-
-      Represented by :class:`Person`.
-
-    Legal person
-
-      A corporation, company or organization.
-
-      Represented by :class:`Organization`.
-
-
 Database structure
 ==================
 
@@ -51,18 +31,15 @@ This plugin defines the following database models.
 .. image:: contacts.png
 
 - The main models are :class:`Person` and :class:`Company` and their
-  common base :class:`Partner`.  The :class:`Partner` model is *not
-  abstract*, i.e. you can see a table where persons organizations are
-  together.
-
-- A :class:`Role` is when a given person has a given function in a
-  given company.
+  common base :class:`Partner`.
 
 - A :class:`RoleType` ("Function") where you can configure the
   available functions.
 
-- A :class:`CompanyType` model can be used to classify companies.
+- A :class:`CompanyType` model can be used to classify :term:`organizations <organization>`.
 
+
+TODO: rename "RoleType" to "Function" or "ContactType"?
 
 Menu entries
 ============
@@ -76,64 +53,126 @@ This plugin adds the following menu entries:
 - :menuselection:`Configuration --> Contacts --> Organization types`
 
 - :menuselection:`Explorer --> Contacts --> Partners`
-- :menuselection:`Explorer --> Contacts --> Roles`
+- :menuselection:`Explorer --> Contacts --> Contact persons`
 
 
 Dependencies
 ============
 
-This plugin needs :mod:`lino_xl.lib.countries` and
-:mod:`lino.modlib.system`.
+This plugin needs :mod:`lino_xl.lib.countries` and :mod:`lino.modlib.system`.
 
 This plugin is being extended by :ref:`welfare` in
 :mod:`lino_welfare.modlib.contacts` or by :ref:`voga` in
 :mod:`lino_voga.modlib.contacts`.
 
-
-Functions
-=========
-
->>> rt.show(contacts.RoleTypes)
-==== ============= ================== =====================
- ID   Designation   Designation (de)   Designation (fr)
----- ------------- ------------------ ---------------------
- 1    Manager       Geschäftsführer    Gérant
- 2    Director      Direktor           Directeur
- 3    Secretary     Sekretär           Secrétaire
- 4    IT Manager    EDV-Manager        Gérant informatique
- 5    President     Präsident          Président
-==== ============= ================== =====================
-<BLANKLINE>
-
-
-Partners
+Concepts
 ========
 
-A **Partner** is any physical or moral person for which you want to
-keep contact data (address, phone numbers, ...).
+A :term:`partner` can act as the recipient of a sales invoice, as the sender of
+an incoming purchases invoice, ... A partner has at least a name and usually
+also an address. A partner is never "just a partner", it is always either a
+(natural) :term:`person` or an :term:`organization`.
 
-A partner can act as the recipient of a sales invoice, as the sender of an
-incoming purchases invoice, ...
+.. glossary::
 
-A partner has at least a name and usually also an "official" address.
+    Partner
 
-Predefined subclasses of Partners are :class:`Person` for physical
-persons and :class:`Company` for companies, organisations and any
-kind of non-formal Partners.
+      Any :term:`person` or :term:`organization` for which you want to keep
+      contact data like postal address, phone number, etc. Represented by
+      :class:`Partner`.
 
+    Person
+
+      A natural human person with a gender, first and last name. Represented by
+      the :class:`Person` model. See also :ref:`lino.tutorial.human`.
+
+    Organization
+
+      A corporation, company, organization, family or any other potential
+      :term:`partner` that is *not* a :term:`person`. Represented by the
+      :class:`Company` model.
+
+A :term:`contact person` is when a given *person* exercises a given *function*
+in a given *organization*. A :term:`function` is what a given :term:`person` can
+exercise in a given :term:`organization`.
+
+.. glossary::
+
+    Contact person
+
+      The fact that a given :term:`person` exercises a given function
+      within a given :term:`organization`. Represented by :class:`Role`.
+
+    Contact function
+
+      A function that a person can exercise in an organization.
+      Represented by :class:`RoleType`.
+
+    Signer function
+
+      A :term:`contact function` that has :attr:`can_sign <RoleType.can_sign>`
+      set to True.
+
+      A contact person exercising a signer function is allowed to sign business
+      documents. See :meth:`Partner.get_signers`.
+
+The demo database defines the following :term:`contact functions <contact
+function>`:
+
+>>> rt.show(contacts.RoleTypes)
+==== ============= ================== ===================== ====================
+ ID   Designation   Designation (de)   Designation (fr)      Authorized to sign
+---- ------------- ------------------ --------------------- --------------------
+ 1    CEO           Geschäftsführer    Gérant                Yes
+ 2    Director      Direktor           Directeur             Yes
+ 3    Secretary     Sekretär           Secrétaire            No
+ 4    IT manager    EDV-Manager        Gérant informatique   No
+ 5    President     Präsident          Président             Yes
+==== ============= ================== ===================== ====================
+<BLANKLINE>
+
+The site operator
+=================
+
+When this plugin is installed, the :term:`site manager` usually creates a
+:class:`Company` that represents the :term:`site operator`, and have the field
+:attr:`SiteConfig.site_company` point to it.
+
+>>> siteop = settings.SITE.site_config.site_company
+>>> siteop.__class__
+<class 'lino_xl.lib.contacts.models.Company'>
+
+>>> print(siteop)
+Rumma & Ko OÜ
+
+>>> for obj in siteop.get_signers():
+...     print("{}, {}".format(obj.person.get_full_name(), obj.type))
+Mr Otto Östges, CEO
+
+Models and views
+================
 
 
 .. class:: Partner
 
-    The Django model used to represent a *partner*.
+    The Django model used to represent a :term:`partner`.
+
+    The contacts plugin defines two subclasses of :class:`Partner`:
+    :class:`Person` and :class:`Company`. Applications can define other
+    subclasses for :class:`Partner`. On the other hand, the :class:`Partner`
+    model is *not abstract*, i.e. you can see a table where persons and
+    organizations are together.  This is useful e.g. in accounting reports where
+    all partners are handled equally, without making a difference between
+    natural an legal persons.
+
 
     .. attribute:: name
 
         The full name of this partner. Used for alphabetic sorting.
 
-        Subclasses may hide this field and fill it automatically,
-        e.g. saving a :class:`Person` will automatically set her
-        `name` field to "last_name, first_name".
+        Subclasses may hide this field and fill it automatically, e.g. saving a
+        :class:`Person` will automatically set the :attr:`name` field to
+        `<last_name>, <first_name>`.
 
     .. attribute:: prefix
 
@@ -169,12 +208,10 @@ kind of non-formal Partners.
         The general account to suggest as default value in purchase
         invoices from this partner.
 
-        This field exists only when :mod:`lino_xl.lib.ledger` is
-        installed.  It is defined as the
-        :attr:`invoice_account_field_name
-        <lino_xl.lib.ledger.TradeType.invoice_account_field_name>`
-        for :attr:`TradeTypes.purchases
-        <lino_xl.lib.ledger.TradeTypes.purchases>`.
+        This field exists only when :mod:`lino_xl.lib.ledger` is installed,
+        which uses it as the :attr:`invoice_account_field_name
+        <lino_xl.lib.ledger.TradeType.invoice_account_field_name>` for
+        :attr:`TradeTypes.purchases <lino_xl.lib.ledger.TradeTypes.purchases>`.
 
     Two fields exist only when :mod:`lino_xl.lib.vat` is installed:
 
@@ -187,31 +224,36 @@ kind of non-formal Partners.
         The national VAT identification number of this partner.
 
 
-Persons
-=======
+.. class:: Person
+
+    Django model used to represent a :term:`person'.
+
+    .. attribute:: first_name
+    .. attribute:: last_name
+    .. attribute:: gender
+
+    .. attribute:: name
+
+        The full name of this person, used for sorting.
+
+        Lino hides this field for persons and sets it automatically to
+        `<last_name>, <first_name>`.
+
+
+
 
 .. class:: Persons
 
     Shows all persons.
 
-.. class:: Person
 
-    A physical person and an individual human being.
-    See also :ref:`lino.tutorial.human`.
-
-    .. attribute:: name
-    .. attribute:: first_name
-    .. attribute:: last_name
-
-
-Organizations
-=============
 
 .. class:: Company
 
-    An **organisation**.  The verbose name is "Organization" while the
-    internal name is "Company" because the latter easier to type and
-    for historical reasons.
+    Django model used to represent an :term:`organization'.
+
+    The verbose name is "Organization" while the internal name is "Company"
+    because that's easier to type and for historical reasons.
 
     .. attribute:: type
 
@@ -225,9 +267,73 @@ Organizations
     .. attribute:: gsm
     .. attribute:: phone
 
+    .. method:: get_signers(today=None)
+
+        Return an iterable over the :term:`contact persons <contact person>` who
+        can sign business documents (i.e. exercise a :term:`signer function`)
+        for this organization.
+
+        If `today` is specified and :attr:`with_roles_history
+        <lino_xl.lib.contacts.Plugin.with_roles_history>` is `True`, return only
+        the contact persons that were exercising a :term:`signer function` at
+        the given date.
+
+        :term:`contact person` represents
+        a person that signs contracts, invoices or other business documents for the
+        :term:`site operator`.
+
+
 .. class:: Companies
 
   Base table for all tables showing companies.
+
+
+.. class:: Role
+
+    The Django model used to represent a :term:`contact person`.
+
+    .. attribute:: company
+
+        The organization where this person has this role.
+
+    .. attribute:: type
+
+        The function of this person in this organization.
+
+    .. attribute:: person
+
+        The person having this role in this organization.
+
+        This is a learning foreign key. See `Automatically creating contact persons`_
+
+    .. attribute:: start_date
+
+        When this person started to exercise this function in this
+        organization.
+
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+
+    .. attribute:: end_date
+
+        When this person stopped to exercise this function in this
+        organization.
+
+        This is a dummy field when :attr:`Plugin.with_roles_history`
+        is `False`.
+
+.. class:: RoleType
+
+    The Django model used to represent a :term:`contact function`.
+
+    .. attribute:: name
+
+        A translatable designation. Used e.g. in document templates
+        for contracts.
+
+    .. attribute:: can_sign
+
+        Whether this is a :term:`signer function`.
 
 
 Quick search
@@ -340,32 +446,6 @@ Exporting contacts as vcard files
     <lino_xl.lib.contacts.Plugin.use_vcard_export>` set to `True`.
 
 
-Reference
-=========
-
-.. class:: Plugin
-
-    .. attribute:: region_label
-
-        The `verbose_name` of the `region` field.
-
-    .. attribute:: with_roles_history
-
-        Whether to define two additional fields
-        :attr:`Role.start_date` and :attr:`Role.end_date`.
-
-    .. attribute:: use_vcard_export
-
-        Whether Lino should provide a button for exporting contact
-        data as a vcf file.
-
-        If you set this to `True`, then you must install `vobject
-        <http://eventable.github.io/vobject/>`__ into your Python
-        environment::
-
-              pip install vobject
-
-
 
 User roles
 ==========
@@ -402,54 +482,9 @@ Other models
 
     A type of organization. Used by :attr:`Company.type` field.
 
-.. class:: RoleType
 
-    A **function** (:class:`RoleType`) is what a given :class:`Person`
-    can be in a given :class:`Company`.
-
-    TODO: rename "RoleType" to "Function" or "ContactType".
-
-    .. attribute:: name
-
-        A translatable designation. Used e.g. in document templates
-        for contracts.
-
-
-.. class:: Role
-
-    A **role** is when a given **person** exercises a given
-    **function** (:class:`ContactType`) in a given **organization**.
-
-    .. attribute:: company
-
-        The organization where this person has this role.
-
-    .. attribute:: type
-
-        The function of this person in this organization.
-
-    .. attribute:: person
-
-        The person having this role in this organization.
-
-        This is a learning foreign key. See `Automatically creating contact persons`_
-
-    .. attribute:: start_date
-
-        When this person started to exercise this function in this
-        organization.
-
-        This is a dummy field when :attr:`Plugin.with_roles_history`
-        is `False`.
-
-    .. attribute:: end_date
-
-        When this person stopped to exercise this function in this
-        organization.
-
-        This is a dummy field when :attr:`Plugin.with_roles_history`
-        is `False`.
-
+Model mixins
+============
 
 .. class:: ContactRelated
 
