@@ -90,7 +90,7 @@ The database models
  django_mailbox.Mailbox             mailbox.Mailboxes                6         1
  django_mailbox.Message             mailbox.Messages                 15        7
  django_mailbox.MessageAttachment   mailbox.MessageAttachments       4         1
- excerpts.Excerpt                   excerpts.Excerpts                11        3
+ excerpts.Excerpt                   excerpts.Excerpts                11        2
  excerpts.ExcerptType               excerpts.ExcerptTypes            17        2
  gfks.HelpText                      gfks.HelpTexts                   4         2
  github.Commit                      github.Commits                   14        0

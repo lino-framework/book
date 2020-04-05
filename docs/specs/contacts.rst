@@ -147,7 +147,7 @@ Rumma & Ko OÜ
 
 >>> for obj in siteop.get_signers():
 ...     print("{}, {}".format(obj.person.get_full_name(), obj.type))
-Mr Otto Östges, CEO
+Mrs Erna Ärgerlich, CEO
 
 Models and views
 ================
