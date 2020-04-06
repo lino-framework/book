@@ -29,12 +29,11 @@ Concepts
 
   Household
 
-    A group of :term:`natural persons <natural person>` who live together in a
-    same house.
+    A group of :term:`persons <person>` who live together in a same house.
 
   Household membership
 
-    The fact that a given :term:`natural person` is (or has been) part of a given
+    The fact that a given :term:`person` is (or has been) part of a given
     :term:`household`.
 
 

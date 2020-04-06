@@ -59,13 +59,15 @@ permission).
 
     .. attribute:: site_company
 
-        The :term:`site owner`, i.e. the :term:`legal person` that operates this
-        :term:`Lino site`.  This can be used e.g. when printing your address in
-        documents or reports.  Or newly created partners inherit the country of
-        the site owner.
+        The :term:`site operator`, i.e. the legal person that operates this
+        :term:`Lino site`.
+
+        This can be used e.g. when printing your address in documents or
+        reports.  Or newly created partners inherit the country of the site
+        operator.
 
         If no plugin named 'contacts' is installed, then this is a
-        dummy field, which always contains `None`.
+        dummy field and always contains `None`.
 
     .. attribute:: hide_events_before
 

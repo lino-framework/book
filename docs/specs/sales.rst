@@ -31,10 +31,10 @@ The plugin needs and automatically installs the
 :mod:`lino_xl.lib.products` plugin.
 
 It also needs and installs :mod:`lino_xl.lib.vat` (and not
-:mod:`lino_xl.lib.vatless`).  Which means that if you want product invoices,
-you cannot *not* also install the VAT framework. If the site owner is not
-subject to VAT, you might add :mod:`lino_xl.lib.bevats` which hides most of the
-VAT functionality.
+:mod:`lino_xl.lib.vatless`).  Which means that if you want product invoices, you
+cannot *not* also install the VAT framework. If the :term:`site operator`  is
+not subject to VAT, you might add :mod:`lino_xl.lib.bevats` which hides most of
+the VAT functionality.
 
 >>> dd.plugins.sales.needs_plugins
 ['lino.modlib.memo', 'lino_xl.lib.products', 'lino_xl.lib.vat']

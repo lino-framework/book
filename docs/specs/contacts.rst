@@ -83,25 +83,49 @@ also an address. A partner is never "just a partner", it is always either a
 
     Person
 
-      A natural human person with a gender, first and last name. Represented by
-      the :class:`Person` model. See also :ref:`lino.tutorial.human`.
+      A natural human person with a gender, first and last name.
+      See also :ref:`lino.tutorial.human`.
+
+      You can see the persons in your database via :menulabel:`Contacts -->
+      Persons`.  They are stored using the :class:`Person` database model.
+
+      ..
+        >>> show_menu_path('contacts.Persons')
+        Contacts --> Persons
+
 
     Organization
 
       A corporation, company, organization, family or any other potential
-      :term:`partner` that is *not* a :term:`person`. Represented by the
-      :class:`Company` model.
+      :term:`partner` that is *not* a :term:`person`.
+
+      You can see the organizations in your database via :menulabel:`Contacts
+      --> Organizations`. They are stored using the :class:`Company` database
+      model.
+
+      ..
+        >>> show_menu_path('contacts.Companies')
+        Contacts --> Organizations
+
+
 
 A :term:`contact person` is when a given *person* exercises a given *function*
-in a given *organization*. A :term:`function` is what a given :term:`person` can
-exercise in a given :term:`organization`.
+in a given *organization*. A :term:`contact function` is what a given
+:term:`person` can exercise in a given :term:`organization`.
 
 .. glossary::
 
     Contact person
 
       The fact that a given :term:`person` exercises a given function
-      within a given :term:`organization`. Represented by :class:`Role`.
+      within a given :term:`organization`.
+
+      The :guilabel:`Contact persons` panel of an organization's :term:`detail
+      view` shows the contact persons of this organization. The :guilabel:`Is
+      contact for` panel of a person's :term:`detail view` shows the
+      organizations where this person exercises a function.
+
+      Contact person entries are stored using the :class:`Role` database model.
 
     Contact function
 

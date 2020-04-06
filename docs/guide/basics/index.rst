@@ -41,6 +41,28 @@ You can edit your **user settings** by selecting :guilabel:`My
 settings` from the User menu in the upper right corner.  Some
 application also provide a quick link :guilabel:`[My settings]`.
 
+
+.. glossary::
+
+  Grid view
+
+    A window that shows a number of rows and columns in a grid, like a
+    spreadsheet.
+
+  Detail view
+
+    A window that shows one database row at a time. Comparable to a form, but
+    potentially containing tabs and :term:`slave panels <slave panel>`.
+
+  Slave panel
+
+    A panel that displays a slave table, i.e. data that is *related* to the
+    current row but stored in a separate database table.    See
+    :ref:`slave_panels`
+
+
+
+
 Grid windows
 ============
 
@@ -54,7 +76,7 @@ you can navigate and edit that data.
 - Hit :kbd:`Enter` or **double click** on a row of a grid window opens
   a *detail window* on that row (if that table has a detail view
   defined).
-  
+
 - On some cells of a grid you can hit :kbd:`F2` in order to edit that
   cell.
 
@@ -93,7 +115,7 @@ is good to know for several reasons:
 Site parameters
 ===============
 
- 
+
 Many Lino applications have a menu command :menuselection:`Configure
 --> System --> Site parameters`, usually available only to system
 administrators.

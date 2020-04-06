@@ -288,8 +288,8 @@ When no national declaration module is installed, we have only one default
 VAT areas
 =========
 
-A **VAT area** is a group of countries for which same VAT rules apply in the
-the country of the site owner.
+A **VAT area** is a group of countries for which same VAT rules apply in the the
+country of the :term:`site operator` .
 
 >>> rt.show(vat.VatAreas, language="en")
 ======= =============== ===============

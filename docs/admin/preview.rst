@@ -47,8 +47,8 @@ them not "preview", "old", "new", "testing" or "prod".
 Setting up a preview site
 =========================
 
-Each time the site owner asked for an upgrade, you start by setting up
-a new preview site.
+When the :term:`site operator` asks for an upgrade, you start by setting up a
+new preview site.
 
 - Copy the current production project directory to a new directory::
 

@@ -12,11 +12,17 @@ understand the difference between free beer and free speech.
 As an **inhouse developer** (i.e. you write a Lino application for your
 employer) you simply replace "customer" by "employer".
 
-By contributing as a volunteer you will learn how to use Lino without paying
-for your teachers.  You get full support by the core developers for free.  We
-have a fundamental motivation for helping you with getting started your
-business because building a sustainable open community is an important part of
-our mission.
+As a **volunteer contributor** you will learn how to write business applications
+without paying for your teachers.  You get full support by the core developers
+for free.  We have a fundamental motivation for helping you with getting started
+your business because building a sustainable open community is an important part
+of our mission. Volunteer contributors contact us because they want to
+
+- gain experience with working in an open-source software project
+- increase their chances on the job market
+- find a job at a :term:`Lino service provider <service provider>`
+- start their own company as a :term:`Lino service provider <service provider>`
+
 
 Lino is not a solution for everything. But for the kind of projects it is
 designed for we believe that you and your customers will be more satisfied with
