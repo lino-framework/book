@@ -4,17 +4,16 @@
 Think Python
 ============
 
-When using Lino, you should understand a fundamental design choice of
-the Lino framework: we believe that database structure, screen layouts
-and business logic should be written *in plain Python*, and not in
-some additional text file format like XML, or using a visual GUI
-editor.
+Lino is a tool for experienced professional Python developers. We believe that
+database structure, screen layouts and business logic should be written *in
+plain Python*, and not in some additional text file format like XML, or using a
+visual GUI editor.
 
 Yes, this requires you to know Python before you can see a result.
 
-The advantage is better maintainability and reusability.  This choice
-is important when it comes to maintaining complex database
-applications in a sustainable way.
+The advantage is better maintainability and re-usability.  This choice is
+important when it comes to maintaining complex database applications in a
+sustainable way.
 
 Rob Galanakis explains a similar opinion in `GeoCities and the Qt
 Designer

@@ -7,6 +7,12 @@ Why should a developer choose Lino?
 As a professional Python developer you may ask why it would be worth to use Lino
 as your framework for writing applications for your customers.
 
+There are so many application frameworks out there!  Does the Lino project make
+sense? Good question. For the fundamental answer see :ref:`lino.vision`.
+
+Here are some more concrete consideration that might help you to find your own
+answer.
+
 As an **independent developer** you can use the Lino framework for making
 money. You write and maintain a Lino application for your customers, and they
 pay you for your service. Lino is free software, but most people nowadays
@@ -25,7 +31,6 @@ of our mission. Volunteer contributors contact us because they want to
 - increase their chances on the job market
 - find a job at a :term:`Lino service provider <service provider>`
 - start their own company as a :term:`Lino service provider <service provider>`
-
 
 Lino is not a solution for everything. But for the kind of projects it is
 designed for we believe that you and your customers will be more satisfied with
