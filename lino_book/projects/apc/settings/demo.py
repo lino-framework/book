@@ -9,7 +9,7 @@ class Site(Site):
     the_demo_date = datetime.date(2015, 3, 12)
 
     # default_ui = "lino.modlib.extjs"
-    # default_ui = "lino_react.react"
+    default_ui = "lino_react.react"
 
     def get_plugin_configs(self):
         yield super(Site, self).get_plugin_configs()

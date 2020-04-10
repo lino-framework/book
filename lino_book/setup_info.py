@@ -33,6 +33,7 @@ install_requires = [
     'lino_tera',
     'lino_amici',
     'lino_openui5',
+    'lino-react'
     'commondata', 'commondata.be', 'commondata.ee', 'commondata.eg',
     'mock', 'sqlparse',
 ]

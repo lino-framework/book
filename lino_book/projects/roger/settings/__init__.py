@@ -8,13 +8,18 @@ from lino_voga.lib.voga.settings import *
 
 class Site(Site):
 
-    # default_ui = 'lino_extjs6.extjs6'
+    default_ui = 'lino_react.react'
 
     title = "Lino Voga for Roger"
     languages = "en de fr"
 
     demo_fixtures = """std minimal_ledger
     demo voga demo_bookings payments demo2 checkdata""".split()
+
+
+    def get_installed_apps(self):
+        yield super(Site, self).get_installed_apps()
+        yield 'lino.modlib.publisher'
 
     def get_plugin_configs(self):
         yield super(Site, self).get_plugin_configs()
