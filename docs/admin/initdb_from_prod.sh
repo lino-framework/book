@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2016-2019 Rumma & Ko Ltd
+# Copyright 2016-2020 Rumma & Ko Ltd
 # initialize this project latest production snapshot
 
 set -e

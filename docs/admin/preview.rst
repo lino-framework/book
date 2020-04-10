@@ -1,13 +1,13 @@
 .. _hosting.preview:
 
-======================
-Preview sites
-======================
+=========================
+Installing a preview site
+=========================
 
-This document explains why and how to set up and use a separate :term:`preview
-site` to manage releases on bigger Lino :term:`production sites <production
-site>`.  See also :doc:`/admin/upgrade` for one-step upgrades on smaller sites.
-See :doc:`/dev/datamig` for technical background information.
+This document explains why and how to set up and use a :term:`preview site` to
+manage releases on bigger Lino :term:`production sites <production site>`.  See
+also :doc:`/admin/upgrade` for one-step upgrades on smaller sites. See
+:doc:`/dev/datamig` for technical background information.
 
 
 .. contents::
@@ -31,7 +31,6 @@ project directories neutral names like "mdg1", "mdg2", "mdg3". **Do not** call
 them not "preview", "old", "new", "testing" or "prod".
 
 ..
-
   Keep all your projects under a common root directory,
   e.g. :file:`/usr/local/lino`.
 
@@ -70,7 +69,7 @@ new preview site.
       $ mkdir /var/log/lino/bfoo
       $ ln -s /var/log/lino/bfoo log
 
-- Have a deep look at all the following files in the preview project
+- Have a look at all the following files in the preview project
   and replace afoo with bfoo where needed:
 
   :xfile:`settings.py`,
@@ -102,9 +101,8 @@ new preview site.
 Synchronizing the preview site
 ==============================
 
-During the preparation phase you run every night a script that
-synchoronizes the preview site, i.e. migrates the production data to
-the preview site::
+During the preparation phase you run repeatedly a script that synchronizes the
+preview site, i.e. migrates the production data to the preview site::
 
     $ go preview
     $ ./initdb_from_prod.sh
@@ -124,37 +122,3 @@ During the upgrade attempt users must test whether everything works as
 expected.  They must be aware that their changes during this time
 might get lost in case they decide to cancel the attempt, and that
 they will remain if the attempt succeeds.
-
-
-Scripts
-=======
-
-.. xfile:: restore2preview.py
-
-The file :xfile:`restore2preview.py` is in the :xfile:`snapshot` of
-your production project and used by the
-:xfile:`initdb_from_prod.sh` script.  You create it as a copy
-of the :xfile:`restore.py` file.  You will modify it as needed and
-maintain it until the preview site has become production.
-
-.. xfile:: initdb_from_prod.sh
-
-The :xfile:`initdb_from_prod.sh` script creates a snapshot of
-production and then restores that snapshot to preview. It also mirrors
-media files from prod to preview.
-
-
-.. literalinclude:: initdb_from_prod.sh
-
-
-
-Troubleshooting
-===============
-
-- rsync: failed to set times on "...": Operation not permitted (1)
-
-  rsync tries to change the timestamps of directories because that helps
-  detecting changes.  But that doesn't work when the file owner is different
-  from the user who runs the migration script. Because it's not allowed to
-  change the timestamp of a file you don't own, even when you have write
-  permission. --> That's why we use the ``--omit-dir-times`` option.

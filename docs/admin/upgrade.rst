@@ -25,7 +25,7 @@ are more sophisticated approach on sites with many users.  See also
 - Stop any services that might want to write to the database (web server,
   supervisor)::
 
-    $ sudo service apache2 stop
+    $ sudo service apache2 stop  # not needed when the server runs nginx
     $ sudo service supervisor stop
 
 - Run :xfile:`make_snapshot.sh` to make a snapshot of your database::
@@ -46,47 +46,7 @@ are more sophisticated approach on sites with many users.  See also
 
     $ python manage.py collectstatic
 
-That's all **if there is no change in the database structure**. But if
-there was (or if you don't know whether there was) some change which
-requires a data migration, then you must continue:
-
-- Restore the snapshot::
-
-    $ python manage.py run snapshot/restore.py
-
-Note that a :xfile:`restore.py` can take considerable time depending
-on the size of your database.  So if you *believe* but are not
-absolutely sure there was *no change* in the database structure, then
-you can check whether you need to run :xfile:`restore.py` by doing a
-second temporary snapshot and then comparing their :xfile:`restore.py`
-files.  If nothing has changed, then you don't need to run it::
-
-    $ python manage.py dump2py -o t
-    $ diff snapshot/restore.py t/restore.py
-
-
-- Stop the web server and supervisor (or whatever is appropriate on your site)::
-
-    $ sudo service apache2 stop
-    $ sudo service supervisor stop
-
-
-- Make a snapshot of your database::
-
-    $ ./make_snapshot.sh
-
-  See :doc:`/admin/snapshot` for details.
-
-- Update the source code::
-
-    $ ./pull.sh
-
-- Run the :manage:`collectstatic` command::
-
-    $ python manage.py collectstatic
-
-  This step can often be skipped if there were no changes in the
-  static files.
+  This step can be skipped if there were no changes in the static files.
 
 That's all **if there is no change in the database structure**. But if
 there was (or if you don't know whether there was) some change which
@@ -105,7 +65,6 @@ files.  If nothing has changed, then you don't need to run it::
 
     $ python manage.py dump2py -o t
     $ diff snapshot/restore.py t/restore.py
-
 
 - Start the web server and supervisor::
 

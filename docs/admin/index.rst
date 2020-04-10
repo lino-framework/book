@@ -65,6 +65,7 @@ Maintenance
     new_site
     djangomig
     preview
+    move
     datamig
 
 
@@ -104,6 +105,7 @@ Other
     startsite
     oood
     notify
+    mirror
 
 
 
