@@ -19,7 +19,7 @@ echo PART2 : MIRROR MEDIA FILES AND SNAPSHOT
 OPTS="-a --verbose --delete --delete-excluded --delete-during --times --omit-dir-times --log-file $LOGFILE"
 
 function doit {
-    nice rsync $OPTS $OLD/$1 $NEW/$1
+    nice rsync $OPTS $OLD/$1 $NEW/
 }
 
 doit media
