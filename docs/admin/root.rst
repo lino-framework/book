@@ -1,29 +1,31 @@
 ===================================
-Setting up a Lino production server
+Providing a Lino server
 ===================================
 
-A :term:`production server` is a virtual or physical machine running a Linux
-operating system and connected to a network.
+A :term:`Lino server` is a virtual or physical machine used to run one or
+several :term:`Lino sites <Lino site>`. It must have a Linux operating system
+and be connected to a network. A :term:`server provider` is responsible for
+installing and maintaining that machine.
 
-The :term:`server provider` is responsible for installing and maintaining that
-machine. He holds root access to the server and creates user accounts with sudo
-rights for each :term:`site maintainer`. He configures secure remote shell
-access (SSH) to that machine for each site maintainer.
-
-The :term:`site maintainer` is responsible for installing and maintaining any
-specific system packages required by Lino as well as the Lino source code and
-configuration.
-
+The :term:`server provider` holds root access to the server and creates user
+accounts with sudo rights for each :term:`site maintainer`. He configures secure
+remote shell access (SSH) to that machine for each site maintainer. He is *not*
+responsible for installing and maintaining specific system packages, Lino source
+code and configuration (these are the job of the :term:`site maintainers <site
+maintainer>`).
 
 System requirements
 ===================
 
-We recommend a **stable Debian** as operating system.  Currently this means
-Debian 10 "Buster".
+We recommend a `stable Debian <https://www.debian.org/releases/stable/>`__ as
+operating system.  Currently this means Debian 10 "Buster".
 
-You need at least 2 GB of disk space.
+You need at least 10 GB of disk space. You can see how much disk space you have
+by saying::
 
-You need at least 500MB of RAM.  How to see how much memory you have::
+    $ df -h
+
+You need at least 2GB of RAM.  How to see how much memory you have::
 
     $ free -h
 
@@ -35,7 +37,7 @@ The system should have installed the `sudo` package::
 
   # apt-get install sudo
 
-Create a use account for a  :term:`site maintainer`, e.g. ``joe``::
+Create a user account for a :term:`site maintainer`, e.g. ``joe``::
 
   # adduser joe
 
@@ -62,5 +64,6 @@ created by a given user. See :doc:`umask` for more detailed information.
 Grant SSH access to a site maintainer
 =====================================
 
-Finally grant SSH access to that new account, e.g. by creating the user's
-:file:`.ssh/authorized_keys` file with the maintainer's public ssh key.
+Finally the :term:`server provider` must grant SSH access to that new account,
+e.g. by creating the user's :file:`.ssh/authorized_keys` file with the
+maintainer's public ssh key.

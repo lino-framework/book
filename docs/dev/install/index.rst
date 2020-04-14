@@ -264,12 +264,3 @@ Concepts
     An extended :term:`developer environment` suitable for developers who plan
     to potentially contribute to the :term:`Lino framework`.  A bit more work to
     install, but more future-proof.
-
-  Production server
-
-    A dedicated server designed to host one or several :term:`production sites
-    <production site>`.
-
-  Demo server
-
-    A dedicated server designed to host a series of demo sites.

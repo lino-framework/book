@@ -2,15 +2,15 @@
 .. _getlino.install.admin:
 .. _lino.admin.install:
 
-======================================
-Installing Lino on a production server
-======================================
+===================================
+Setting up a Lino production server
+===================================
 
 .. _pip: http://www.pip-installer.org/en/latest/
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 
-Here is a set of conventions which we suggest to use as a :term:`site
-maintainer` when setting up a Lino :term:`production server`.
+Here is a set of conventions we suggest to use as a :term:`site maintainer` when
+setting up a Lino :term:`production server`.
 
 
 Configure a Lino production server

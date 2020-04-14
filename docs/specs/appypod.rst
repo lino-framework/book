@@ -1,6 +1,6 @@
 .. doctest docs/specs/appypod.rst
 .. _xl.specs.appypod:
-   
+
 =============================================================
 ``appypod`` : Generate printable documents from odt templates
 =============================================================
@@ -54,8 +54,6 @@ deprecated) :class:`PisaBuildMethod
 - Templates are `.odt` files (not `.html`), meaning that end-users
   dare to edit them more easily.
 
-
-
 Build methods
 =============
 
@@ -63,25 +61,25 @@ Build methods
 
     Base class for Build Methods that use `.odt` templates designed
     for :term:`appy.pod`.
-    
+
 .. class:: AppyOdtBuildMethod
 
     Generates .odt files from .odt templates.
-    
+
     This method doesn't require OpenOffice nor the
     Python UNO bridge installed
     (except in some cases like updating fields).
 
-.. class:: AppyPdfBuildMethod    
-           
+.. class:: AppyPdfBuildMethod
+
     Generates .pdf files from .odt templates.
 
 .. class:: AppyRtfBuildMethod
 
     Generates .rtf files from .odt templates.
-    
+
 .. class:: AppyDocBuildMethod
-           
+
     Generates .doc files from .odt templates.
 
 
@@ -97,7 +95,7 @@ also adds a :class:`PrintLabelsAction
 <lino_xl.lib.appypod.mixins.PrintLabelsAction>`.
 
 .. class:: PrintTableAction
-           
+
     Show this table as a pdf document.
 
 .. class:: PortraitPrintTableAction
@@ -132,7 +130,7 @@ also adds a :class:`PrintLabelsAction
                         _("only valid recipients"),default=False
                     )
 
-                
+
 
 Templates
 =========
@@ -157,7 +155,7 @@ The Appy renderer
 
 .. class:: AppyRenderer
 
-    The extended `appy.pod.renderer` used by Lino.           
+    The extended `appy.pod.renderer` used by Lino.
 
     A subclass of :class:`appy.pod.renderer.Renderer` (not of
     :class:`lino.core.renderer.Renderer`.
@@ -165,21 +163,21 @@ The Appy renderer
     .. method:: restify_func(self, text)
     .. method:: insert_jinja(self, template)
     .. method:: insert_html(self, html)
-         
+
         Insert a chunk of HTML (not XHTML) provided as a string or as an
         etree element.
 
         This is the function that gets called when a template contains a
         ``do text from html(...)`` statement.
-        
+
     .. method:: insert_story(self, story)
     .. method:: insert_table(self, ar)
-                
+
         This is the function that gets called when a template contains a
         ``do text from table(...)`` statement.
-        
+
     .. method:: story2odt(self, story, *args, **kwargs)
-                
+
         Yield a sequence of ODT chunks (as utf8 encoded strings).
 
 How tables are rendered using appypod
@@ -188,7 +186,7 @@ How tables are rendered using appypod
 We chose a simple Lino table request and then have a look how such a
 request is being rendered into a pdf document using appypod.
 
-   
+
 >>> from lxml import etree
 >>> from unipath import Path
 >>> import tempfile
@@ -239,7 +237,7 @@ empty, except for headers and footers and a comment which says::
 
 Background information about this syntax in the `appy.pod docs
 <http://appyframework.org/podWritingTemplates.html>`__.
-  
+
 This command uses the :func:`table` function to insert a chunk of
 ODF XML.
 
@@ -324,3 +322,19 @@ Related projects
     See https://lxml.de/
 
 
+The ``appy_params`` setting
+===========================
+
+.. envvar:: pythonWithUnoPath
+
+This setting was needed on sites where Lino ran under Python **2** while
+`python-uno` needed Python **3**.  To resolve that conflict, `appy.pod` has this
+configuration option which caused it to run its UNO call in a subprocess with
+Python 3.
+
+If you have Python 3 installed under :file:`/usr/bin/python3`, then you don't
+need to read on.  Otherwise you must set your :attr:`appy_params
+<lino.core.site.Site.appy_params>` to point to your `python3` executable, e.g.
+by specifying in your :xfile:`settings.py`::
+
+  SITE.appy_params.update(pythonWithUnoPath='/usr/bin/python3')

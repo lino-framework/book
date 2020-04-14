@@ -22,8 +22,6 @@ recommend to do it.
     :depth: 1
     :local:
 
-
-
 Installation
 ============
 
@@ -33,17 +31,15 @@ Installation
     root
     install
     install_demo
+    backup
     dbengine
     appy
     multiple_frontends
-    linod
-    monit
     certbot
     security
     cron
     postfix
     mailman
-    backup
 
 
 
@@ -55,7 +51,6 @@ Maintenance
 
     settings
     snapshot
-    backup
     reload_services
     upgrade
     env
@@ -88,7 +83,8 @@ Other
     :maxdepth: 1
 
     pythonpath
-
+    linod
+    monit
     permissions
     umask
     apache_http_auth
