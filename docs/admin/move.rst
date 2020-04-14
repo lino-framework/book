@@ -42,9 +42,17 @@ Procedure
   then delete all data in the database on the new site and
   replace it with the data that has been copied from the old production site.
 
-- You might need to edit the file :xfile:`restore2preview.py`,  e.g.  if S2 has
-  a newer version of the application. Of course you must edit this file *on the
-  old server*, as it will be mirrored to the new server.
+- The :xfile:`restore.py` (third part of your :xfile:`initdb_from_prod.sh`
+  script) might gives error messages e.g. when S2 has a newer version of the
+  application and no migrators have been defined by the :term:`application
+  developer`.
+
+  In that case you should ask support of the :term:`application developer`
+  because it's their job to specify the details of what happens during the data
+  migration (as documented in :ref:`lino.datamig`). When you get instructions to
+  manually edit the :xfile:`restore2preview.py` file, then keep in mind that you
+  must --of course-- edit this file *on the old server*, as it will be mirrored
+  to the new server.
 
 - Restart the Lino services on the new server and check whether it now has a
   copy of the production data. Take care to check whether uploaded files

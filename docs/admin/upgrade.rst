@@ -48,23 +48,33 @@ are more sophisticated approach on sites with many users.  See also
 
   This step can be skipped if there were no changes in the static files.
 
-That's all **if there is no change in the database structure**. But if
-there was (or if you don't know whether there was) some change which
-requires a data migration, then you must continue:
-
 - Restore the snapshot::
 
     $ python manage.py run snapshot/restore.py
 
-Note that a :xfile:`restore.py` can take considerable time depending
-on the size of your database.  So if you *believe* but are not
-absolutely sure there was *no change* in the database structure, then
-you can check whether you need to run :xfile:`restore.py` by doing a
-second temporary snapshot and then comparing their :xfile:`restore.py`
-files.  If nothing has changed, then you don't need to run it::
+  You can skip this if you are sure that there is no change in the database structure.
 
-    $ python manage.py dump2py -o t
-    $ diff snapshot/restore.py t/restore.py
+  You can run :xfile:`restore.py` also "just in case", it doesn't do any harm when
+  there were no changes in the database structure.
+
+  Running :xfile:`restore.py` just in case does no harm, **but** it can take
+  much time for a bigger database.  After all this command drops all database
+  tables, re-creates them, and then fills every single data row into it. So
+  instead of running :xfile:`restore.py` "just in case" you might prefer check
+  whether you need to run it::
+
+      $ python manage.py dump2py -o t
+      $ diff snapshot/restore.py t/restore.py
+
+  That is, you make a second temporary snapshot (which takes much less time than
+  restoring it) and then compare their :xfile:`restore.py` files.  If nothing
+  has changed (i.e. :cmd:`diff` gives no output), then you don't need to run the
+  :xfile:`restore.py`.
+
+  In case the :xfile:`restore.py` gives error messages, you need to ask support
+  from the :term:`application developer` because it's their job to specify the
+  details of what happens during the data migration by providing migrators (as
+  documented in  :ref:`lino.datamig`).
 
 - Start the web server and supervisor::
 
