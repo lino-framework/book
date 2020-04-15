@@ -9,7 +9,7 @@ we have a cheat sheet for it. There have been long debates on what (if any)
 should be the default MTA for Debian (`more
 <https://wiki.debian.org/Debate/DefaultMTA>`__).
 
-Installing Postfix is easy::
+Installing Postfix on Debian is easy::
 
   $ sudo apt install postfix
 
@@ -111,3 +111,7 @@ Delete all queued mail::
 Delete deferred mail queue messages::
 
   $ sudo postsuper -d ALL deferred
+
+
+Managing user accounts
+======================

@@ -30,14 +30,6 @@ Django settings.  For introductive texts see :doc:`/dev/settings`,
 
     See http://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-.. setting:: EMAIL_SUBJECT_PREFIX
-
-    See `Django docs
-    <https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-EMAIL_SUBJECT_PREFIX>`__
-
-    Lino also uses this in :mod:`lino.modlib.notify`.
-
-
 .. setting:: FIXTURE_DIRS
 
     See `Django docs

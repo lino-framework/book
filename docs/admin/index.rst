@@ -7,7 +7,7 @@ Hosting Guide
 ===================
 
 This part of the documentation is for :term:`server administrators <server
-administrator>`  who set up or maintain a server which hosts one or several Lino
+administrator>` who set up or maintain a server that hosts one or several Lino
 production sites.
 
 The approaches described in this document are not mandatory. Hosting a
@@ -31,9 +31,10 @@ Installation
     root
     install
     install_demo
+    appy
     backup
     dbengine
-    appy
+    email
     multiple_frontends
     certbot
     security
