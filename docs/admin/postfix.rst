@@ -26,12 +26,19 @@ The configuration is then stored in a file
 Using a relay host for outgoing mail
 ====================================
 
+"Internet with smarthost"
+
 A **smart host** or **relay host** is a third-party server that accepts outgoing
 mails from your server and cares about forwarding them to their final
 destination.
 
 Some server providers have a free mail relay host for the virtual machines they
 provide.  In that case you simply need to know the name of that host.
+
+If the relay host requires a username and password::
+
+  $ sudo nano /etc/postfix/sasl_passwd
+  $ sudo postmap /etc/postfix/sasl_passwd
 
 Or you can register an account for
 a third-party SMTP service like Mailgun
@@ -111,7 +118,3 @@ Delete all queued mail::
 Delete deferred mail queue messages::
 
   $ sudo postsuper -d ALL deferred
-
-
-Managing user accounts
-======================

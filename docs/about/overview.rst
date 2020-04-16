@@ -13,10 +13,10 @@ General framework repositories
 - The :mod:`lino` package contains the core of the framework and includes the
   :doc:`/specs/modlib`, a :term:`plugin library` with basic features like system
   users, notifications, comments, printing and others. These features are
-  included in most real-world Lino applications.
+  included in most real-world :term:`Lino applications <Lino application>`.
 
 - The :mod:`lino_xl` package contains the :ref:`xl`,
-  a collection of plugins used by many Lino applications.
+  a collection of plugins used by many :term:`Lino applications <Lino application>`.
 
 - The :mod:`getlino` package contains the Lino installer.
 
@@ -31,8 +31,8 @@ Lino applications
 
 Here is a directory of all known :term:`Lino applications <Lino application>`.
 
-Some applications have the privilege of having their technical documentation in
-the :ref:`Lino Book <book>`.  This is because explaining a framework is
+Some applications have the privilege of having their technical documentation
+here in the :ref:`Lino Book <book>`.  This is because explaining a framework is
 difficult without examples, and because we thought that applications that are
 actually being used in reality are more interesting than a theoretic collection
 of demo projects.

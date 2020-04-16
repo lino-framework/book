@@ -1,12 +1,11 @@
+.. _admin.libreoffice:
 .. _admin.oood:
 
 ============================
 Running a LibreOffice server
 ============================
 
-Read :doc:`appy` before reading this page.
-
-This page is probably useless because getlino does these things automatically.
+This page is obsolete because getlino does these things automatically.
 
 The :mod:`lino_xl.lib.appypod` plugin uses `appy.pod
 <http://appyframework.org/pod.html>`_ which in turn uses `python3-uno

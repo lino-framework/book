@@ -66,7 +66,7 @@ if False:
 
 # General information about the project.
 project = "The Lino Book"
-copyright = '2002-2019 Rumma & Ko Ltd'
+copyright = '2002-2020 Rumma & Ko Ltd'
 from lino_book import SETUP_INFO
 release = SETUP_INFO['version']
 version = '.'.join(release.split('.')[:2])
