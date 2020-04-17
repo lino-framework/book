@@ -6,7 +6,7 @@ The Lino Book includes a collection of :term:`demo projects <demo project>`.
 
 .. glossary::
 
-  Demo project
+  demo project
 
     A Django project that can be run out of the box from a source repository
     after installing the :doc:`developer environment </dev/install/index>`).

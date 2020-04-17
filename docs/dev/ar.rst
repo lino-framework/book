@@ -12,16 +12,16 @@ Using action requests
 
 .. glossary::
 
-  Model instance
+  model instance
 
     Django word for what we use to call a :term:`database object`.
 
-  Database object
+  database object
 
     The Python representation of a row in a database table.
     Also known as :term:`model instance` in Django.
 
-  Action request
+  action request
 
     When a given user asks to run a given action of a given actor.
 
@@ -31,7 +31,7 @@ Using action requests
     :class:`ActionRequest<lino.core.requests.ActionRequest>`
     :class:`TableRequest<lino.core.tablerequest.TableRequest>`.
 
-  Instance action
+  instance action
 
     An action that has been bound to a given :term:`database object`.
 

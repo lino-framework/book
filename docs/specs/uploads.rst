@@ -23,15 +23,15 @@ The :mod:`lino.modliblib.uploads` plugin adds functionality for managing
 
 .. glossary::
 
-  Upload file
+  upload file
 
     A file that has been uploaded (or *should* or *might* be uploaded).
 
-  Upload type
+  upload type
 
     The type of an upload file.
 
-  Upload area
+  upload area
 
     A group of upload types that are being displayed in a given upload panel.
 

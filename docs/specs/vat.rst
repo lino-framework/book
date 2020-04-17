@@ -864,7 +864,7 @@ About returnable VAT
 
 .. glossary::
 
-  Returnable VAT
+  returnable VAT
 
     A VAT amount in an invoice that is not to be paid to (or by) the
     partner but must be declared in the VAT declaration.

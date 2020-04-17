@@ -44,17 +44,17 @@ application also provide a quick link :guilabel:`[My settings]`.
 
 .. glossary::
 
-  Grid view
+  grid view
 
     A window that shows a number of rows and columns in a grid, like a
     spreadsheet.
 
-  Detail view
+  detail view
 
     A window that shows one database row at a time. Comparable to a form, but
     potentially containing tabs and :term:`slave panels <slave panel>`.
 
-  Slave panel
+  slave panel
 
     A panel that displays a slave table, i.e. data that is *related* to the
     current row but stored in a separate database table.    See

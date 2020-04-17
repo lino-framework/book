@@ -290,7 +290,7 @@ autosummary_generate = True
 
 # http://sphinx.pocoo.org/theming.html
 
-# html_theme = "classic"
+# html_theme = "sizzle"
 # html_theme_options = dict(collapsiblesidebar=True, externalrefs=True)
 
 todo_include_todos = True

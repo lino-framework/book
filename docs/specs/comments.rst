@@ -23,7 +23,7 @@ Overview
 
 .. glossary::
 
-  Comment
+  comment
 
     A written text that one user wants to share with others.
 
@@ -40,17 +40,17 @@ Overview
     Comments have no workflow management nor rating mechanism etc. It is the
     author's responsibility to think before they write something.
 
-  Discussion topic
+  discussion topic
 
     The database object that is the "topic" of a comment.
 
-  Commentable topic
+  commentable database model
 
     The application developer decides which database models can serve as topics
     for commenting by having these database models inherit from the
     :class:`Commentable` mixin.
 
-  Commenting group
+  commenting group
 
     A group of users who discuss with each other using comments.
 

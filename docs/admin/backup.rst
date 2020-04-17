@@ -9,6 +9,7 @@ Each customer who wants to use our service must create a user "mirror" on their
 server that we will use to connect to their server::
 
     $ sudo adduser mirror
+    $ sudo adduser mirror www-data
     $ sudo -u mirror mkdir /home/mirror/.ssh/
 
 The customer must also have a daily snapshot cron job (:doc:`snapshot`) and
@@ -22,7 +23,7 @@ server `example.com`.
 
 On the backup server, we create a user named "mirror" and a ssh key pair::
 
-    $ sudo useradd -d /mnt/disk/mirror/ mirror
+    $ sudo adduser -d /mnt/disk/mirror/ mirror
     $ mkdir /mnt/disk/mirror/.ssh
     $ ssh-keygen -t rsa -b 4096 -C "mirror@example.com"
 

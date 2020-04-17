@@ -254,12 +254,12 @@ Concepts
 
     A virtual Python environment.
 
-  Developer environment
+  developer environment
 
     A set of tools configured on the desktop computer of a Lino developer who
     wants to develop their own :term:`Lino application`.
 
-  Contributor environment
+  contributor environment
 
     An extended :term:`developer environment` suitable for developers who plan
     to potentially contribute to the :term:`Lino framework`.  A bit more work to

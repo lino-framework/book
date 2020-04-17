@@ -12,8 +12,8 @@ differentiate three profiles of readers.
 
   You are welcome to contribute to the :term:`Lino community` by reporting about
   your successes and failures, and suggesting changes and new features,
-  regardless of whether you publish your own work as :term:`free <free
-  software>` or :term:`proprietary <proprietary software>` software.
+  regardless of whether you publish your own work as :term:`free <Free
+  Software>` or :term:`proprietary <proprietary software>` software.
 
 - As a :term:`contributing developer` you want to help us to make Lino better by
   submitting pull requests. You should also read the :doc:`Developer Guide

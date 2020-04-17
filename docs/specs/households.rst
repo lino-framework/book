@@ -27,11 +27,11 @@ Concepts
 
 .. glossary::
 
-  Household
+  household
 
     A group of :term:`persons <person>` who live together in a same house.
 
-  Household membership
+  household membership
 
     The fact that a given :term:`person` is (or has been) part of a given
     :term:`household`.

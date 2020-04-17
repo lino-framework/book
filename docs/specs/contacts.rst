@@ -75,13 +75,13 @@ also an address. A partner is never "just a partner", it is always either a
 
 .. glossary::
 
-    Partner
+    partner
 
       Any :term:`person` or :term:`organization` for which you want to keep
       contact data like postal address, phone number, etc. Represented by
       :class:`Partner`.
 
-    Person
+    person
 
       A natural human person with a gender, first and last name.
       See also :ref:`lino.tutorial.human`.
@@ -94,7 +94,7 @@ also an address. A partner is never "just a partner", it is always either a
         Contacts --> Persons
 
 
-    Organization
+    organization
 
       A corporation, company, organization, family or any other potential
       :term:`partner` that is *not* a :term:`person`.
@@ -115,7 +115,7 @@ in a given *organization*. A :term:`contact function` is what a given
 
 .. glossary::
 
-    Contact person
+    contact person
 
       The fact that a given :term:`person` exercises a given function
       within a given :term:`organization`.
@@ -127,12 +127,12 @@ in a given *organization*. A :term:`contact function` is what a given
 
       Contact person entries are stored using the :class:`Role` database model.
 
-    Contact function
+    contact function
 
       A function that a person can exercise in an organization.
       Represented by :class:`RoleType`.
 
-    Signer function
+    signer function
 
       A :term:`contact function` that has :attr:`can_sign <RoleType.can_sign>`
       set to True.
@@ -682,7 +682,7 @@ Automatically creating contact persons
 
 The :attr:`Role.person` field
 in the :class:`RolesByCompany` table
-is a :term:`Learning foreign key` field:
+is a :term:`learning foreign key` field:
 if you type the name of a person that
 does not yet exist in the database, Lino creates it silently.
 

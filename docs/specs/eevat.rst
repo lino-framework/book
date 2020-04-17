@@ -631,7 +631,7 @@ Other languages
 Returnable VAT
 ==============
 
-A purchases invoice with :term:`Returnable VAT`:
+A purchases invoice with :term:`returnable VAT`:
 
 >>> invoice = vat.VatAccountInvoice.objects.filter(vat_regime=vat.VatRegimes.intracom).first()
 >>> print(invoice)

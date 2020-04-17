@@ -13,7 +13,7 @@ The :mod:`lino_xl.lib.coachings` plugin adds functionality for managing
 
 .. glossary::
 
-  Coaching
+  coaching
 
     When a given site user engages as "coach" in regular, structured
     conversation with a given "client" during a given period.
@@ -22,7 +22,7 @@ The :mod:`lino_xl.lib.coachings` plugin adds functionality for managing
 
     For example in :ref:`welfare` that user is a social assistant.
 
-  Coaching type
+  coaching type
 
     The "type" of a coaching.  In :ref:`welfare` this is named a "Service".
 

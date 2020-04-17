@@ -7,7 +7,7 @@ Help Texts
 
 .. glossary::
 
-  Help text
+  help text
 
     A short explanation to be displayed as tooltip when the user hovers over a
     form field, a menu item, or a toolbar button.

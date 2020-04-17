@@ -27,12 +27,12 @@ Overview
 
 .. glossary::
 
-  Users group
+  users group
 
     A named entity that holds a list of :term:`user memberships <user
     membership>`.
 
-  User membership
+  user membership
 
     The fact that a given user is member of a given :term:`users group`.
 

@@ -136,7 +136,7 @@ Customized help texts
 
 .. glossary::
 
-  Customized help text
+  customized help text
 
     A :term:`help text` that has been locally overridden. It is stored in the
     database and loaded at startup.  It can be modified by an :term:`end user`

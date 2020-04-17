@@ -13,11 +13,11 @@ The :file:`docs/changes` directory of a Lino application contains:
 
 .. glossary::
 
-  Change log
+  change log
 
     A document that lists the changes in a given application in chronological order.
 
-  Release notes
+  release notes
 
     A document that describes the changes in given version of a given application.
 

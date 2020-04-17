@@ -6,55 +6,55 @@
 ``finan`` : Bank, cash and miscellaneous journal entries
 =============================================================================
 
-.. doctest init:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.pierre.settings.doctests')
-    >>> from lino.api.doctest import *
-    >>> ses = rt.login("robin")
-    >>> translation.activate('en')
-
 This document describes what we call **financial vouchers** as
 implemented by the :mod:`lino_xl.lib.finan` plugin.
+
+.. contents::
+   :depth: 1
+   :local:
+
+.. currentmodule:: lino_xl.lib.finan
+
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.pierre.settings.doctests')
+>>> from lino.api.doctest import *
+>>> ses = rt.login("robin")
+>>> translation.activate('en')
 
 This document is based on the following other specifications:
 
 - :ref:`cosi.specs.accounting`
 - :ref:`cosi.specs.ledger`
 
+Vocabulary
+==========
+
 There are three kinds of financial vouchers:
 
 .. glossary::
 
-  Bank statement
+  bank statement
 
     A voucher you receive from your bank and which reports the transactions
     that occurred on a given bank account during a given period.
 
-  Payment order
+  payment order
 
     A voucher you send to your bank asking them to execute a series of payments
     (outgoing transactions) to third-party partners from a given bank account.
 
     See `About payment orders`_.
 
-  Journal entry
+  journal entry
 
     A voucher where you declare that you move money around internally, for your
     own accounting.
 
     French: "operations diverse"
 
-Table of contents:
-
-
-.. contents::
-   :depth: 1
-   :local:
-
-
-
-.. currentmodule:: lino_xl.lib.finan
 
 About payment orders
 ====================

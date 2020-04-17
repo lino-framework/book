@@ -10,7 +10,7 @@ The :term:`application developer` can turn any foreign key field into a
 
 .. glossary::
 
-  Learning foreign key
+  learning foreign key
 
     A foreign key that can "learn", i.e. add new items to its list of
     choices.
