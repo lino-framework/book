@@ -47,13 +47,13 @@ The daily planner
 The daily planner is a table that shows an overview on all events of a day.
 
 >>> rt.show(calview.DailyPlanner)
-============ =================================================== ==========
- Time range   External                                            Internal
------------- --------------------------------------------------- ----------
- *All day*    *Rolf Rompen Absent for private reasons Absences*
- *AM*         *08:30 Romain Raffault Rencontre Meeting*
+============ ===================================== ==========
+ Time range   External                              Internal
+------------ ------------------------------------- ----------
+ *All day*    *☐ rolf Absent for private reasons*
+ *AM*         *08:30☑ romain Rencontre*
  *PM*
-============ =================================================== ==========
+============ ===================================== ==========
 <BLANKLINE>
 
 
@@ -109,26 +109,26 @@ A default configuration has two columns in the daily planner:
     ===========
     Tagesplaner
     ===========
-    =============== =================================================== ========
-     Zeitabschnitt   Extern                                              Intern
-    --------------- --------------------------------------------------- --------
-     *Ganztags*      *Rolf Rompen Absent for private reasons Absences*
-     *Vormittags*    *08:30 Romain Raffault Rencontre Versammlung*
+    =============== ===================================== ========
+     Zeitabschnitt   Extern                                Intern
+    --------------- ------------------------------------- --------
+     *Ganztags*      *☐ rolf Absent for private reasons*
+     *Vormittags*    *08:30☑ romain Rencontre*
      *Nachmittags*
-    =============== =================================================== ========
+    =============== ===================================== ========
     <BLANKLINE>
 
     >>> rt.show(calview.DailyPlanner, language="fr", header_level=1)
     =======================
     Planificateur quotidien
     =======================
-    =================== =================================================== =========
-     Time range          Externe                                             Interne
-    ------------------- --------------------------------------------------- ---------
-     *Journée entière*   *Rolf Rompen Absent for private reasons Absences*
-     *Avant-midi*        *08:30 Romain Raffault Rencontre Réunion*
+    =================== ===================================== =========
+     Time range          Externe                               Interne
+    ------------------- ------------------------------------- ---------
+     *Journée entière*   *☐ rolf Absent for private reasons*
+     *Avant-midi*        *08:30☑ romain Rencontre*
      *Après-midi*
-    =================== =================================================== =========
+    =================== ===================================== =========
     <BLANKLINE>
 
     >>> print(cal.Event.update_guests.help_text)

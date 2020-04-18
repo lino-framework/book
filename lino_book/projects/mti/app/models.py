@@ -1,8 +1,6 @@
-# Copyright 2010-2017 Rumma & Ko Ltd
+# Copyright 2010-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
-from __future__ import unicode_literals
-from builtins import str
 from lino.api import dd
 from django.db import models
 from lino.mixins.polymorphic import Polymorphic
@@ -23,6 +21,8 @@ class Place(Polymorphic):
     owners = models.ManyToManyField(Person)
 
     def __str__(self):
+        if self.pk is None:
+            return self.name
         return "%s (owners=%s)" % (
             self.name,
             ', '.join([str(o) for o in self.owners.all()]))
@@ -35,6 +35,8 @@ class Restaurant(Place):
     cooks = models.ManyToManyField(Person)
 
     def __str__(self):
+        if self.pk is None:
+            return self.name
         return "%s (owners=%s, cooks=%s)" % (
             self.name,
             ', '.join([str(o) for o in self.owners.all()]),

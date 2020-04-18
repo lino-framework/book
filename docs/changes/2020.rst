@@ -13,6 +13,12 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+
+2020-04-18
+==========
+
+Added a new observable date range :class:`lino.mixins.periods.Weekly`.  
+
 2020-03-15
 ==========
 

@@ -21,15 +21,29 @@ Using action requests
     The Python representation of a row in a database table.
     Also known as :term:`model instance` in Django.
 
+  action
+
+    Something a user can request to do.  Actions are visible to the :term:`end
+    users <end user>` as menu items, toolbar buttons or clickable chunks of text
+    at arbitrary places.
+
   action request
 
-    When a given user asks to run a given action of a given actor.
+    A volatile object representing the fact that a user actually clicked on
+    "that button", i.e. requested to run a given action on a given set of
+    database rows.
 
     Action requests are instances of the :class:`BaseRequest
     <lino.core.requests.BaseRequest>` class or one of its subclasses
-    (:class:`ActorRequest<lino.core.requests.ActorRequest>`
-    :class:`ActionRequest<lino.core.requests.ActionRequest>`
-    :class:`TableRequest<lino.core.tablerequest.TableRequest>`.
+    (:class:`ActorRequest <lino.core.requests.ActorRequest>`
+    :class:`ActionRequest <lino.core.requests.ActionRequest>`
+    :class:`TableRequest <lino.core.tablerequest.TableRequest>`.
+
+  window action
+
+    An :term:`action` that will open a dialog window to ask for action
+    parameters.  The dialog window is a form with fields.
+    See :ref:`window_actions`.
 
   instance action
 

@@ -23,15 +23,15 @@ Glossary
   WebDAV
     See :doc:`/davlink/index`
 
-  Tups
+  tups
      The machine that served the `saffre-rumma.net`
      domain until 2010
-     when it was replaced by :term:`Mops`.
+     when it was replaced by :term:`mops`.
 
-  Mops
+  mops
      The machine that is serving the `saffre-rumma.net` domain.
 
-  Jana
+  jana
      An internal virtual Debian server on our LAN used for testing.
 
   DSBE
