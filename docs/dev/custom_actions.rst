@@ -120,8 +120,18 @@ Using a decorator::
             # do something...
 
 
-The difference becomes visible e.g. when you have several similar actions and
-want them to inherit from a common base class.
+In above case (and in some real cases) it might look tedious and redundant to
+define an action class and then instantiate it on the model. But in general we
+recommend this more verbose approach.  We use the primitive approach (just a
+method on the model) only in very simple cases.
+
+The advantages become visible e.g. when you have several similar actions and
+want them to inherit from a common base class. Or we can reuse a same action
+class on different models (most standard actions like
+:class:`lino.core.actions.ShowInsert` do this). Or we have actions where we use
+instances of a same class with different instance values (e.g. the
+:class:`lino.core.actions.ShowSlaveTable` action).   Also an explicit separate
+class it is syntactically more readable.
 
 
 Example project

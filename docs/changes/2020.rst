@@ -17,7 +17,9 @@ General information about how to read and maintain this document in :ref:`dev.ch
 2020-04-18
 ==========
 
-Added a new observable date range :class:`lino.mixins.periods.Weekly`.  
+Added a new observable date range :class:`lino.mixins.periods.Weekly`.
+
+Released Lino 20.4.1 and XL 20.4.2.
 
 2020-03-15
 ==========

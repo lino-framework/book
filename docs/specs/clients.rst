@@ -54,6 +54,7 @@ Database structure
      05      incoming   Incoming
      07      informed   Informed
      10      newcomer   Newcomer
+     15      equal      Equal
      20      coached    Registered
      25      inactive   Inactive
      30      former     Ended

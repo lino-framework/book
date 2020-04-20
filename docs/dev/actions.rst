@@ -4,8 +4,7 @@
 Introduction to actions
 =======================
 
-This section tries to explain everything you need to know about
-actions.
+This section tries to explain everything you need to know about actions.
 
 .. contents::
     :depth: 1
