@@ -915,8 +915,8 @@ and the pupils.
     Possible values for the state of a participation. The list of
     choices for the :attr:`Guest.state` field.
 
-    The actual content can be redefined by other apps,
-    e.g. :mod:`lino_xl.lib.reception`.
+    The actual content can be redefined by other plugins, e.g.
+    :mod:`lino_xl.lib.reception`.
 
 
     >>> rt.show(cal.GuestStates)
@@ -1533,29 +1533,7 @@ Miscellaneous
 Plugin configuration
 ====================
 
-
-.. class:: Plugin
-
-
-    .. attribute:: partner_model
-
-        The model to use as the guest of a presence.
-
-    .. attribute:: ignore_dates_before
-
-        Ignore dates before the given date.
-
-        Default value is `None`, meaning "no limit".
-
-        Unlike :attr:`hide_events_before
-        <lino.modlib.system.SiteConfig.hide_events_before>`
-        this is not editable through the web interface.
-
-    .. attribute:: ignore_dates_after
-
-        Ignore dates after the given date.  This should never be `None`.
-        Default value is 5 years after :meth:`today
-        <lino.core.site.Site.today>`.
+See :class:`Plugin`.
 
 
 User roles

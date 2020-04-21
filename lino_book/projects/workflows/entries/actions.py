@@ -21,18 +21,19 @@ class FinishEntry(StartEntry):
     label = _("Finish")
     required_states = 'new started'
     help_text = _("Inherts from StartEntry and thus is not allowed when company, body or subject is empty.")
-        
+
 
 class WakeupEntry(dd.ChangeStateAction, NotifyingAction):
-    label = _("Wake up")
-    required_states = 'sleeping'
+    label = _("Reopen")
+    # label = _("Wake up")
+    # required_states = 'sleeping'
     # in our example, waking up an antry will send a notification
 
     def get_notify_recipients(self, ar, obj):
+        if not obj.state.name in ('done', 'cancelled'):
+            return
         for u in rt.models.users.User.objects.all():
             yield (u, u.mail_mode)
 
     def get_notify_subject(self, ar, obj):
         return _("Entry %s has been reactivated!") % obj
-            
-

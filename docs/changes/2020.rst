@@ -14,6 +14,22 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-04-21
+==========
+
+Lino no longer allows several transitions for a same target state. Every state
+of a workflow can have at most one "transition" action for entering this state.
+This change imposes more discipline for application developers when designing a
+workflow definition. It has the advantage that you can now access the transition
+of a given state in order to change its configuration.  For example
+:ref:`presto` uses this to change the
+:class:`lino_xl.lib.cal.MarkEventTookPlace` transition. Added a new attribute
+:class:`lino.core.workflows.State.transition` and a new exception "Tried to add
+another transition to <state name>".  The :mod:`lino_book.projects.workflows`
+demo project is an example of an application that had to be adapted to this new
+limitation.
+
+
 2020-04-18
 ==========
 
