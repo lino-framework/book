@@ -141,13 +141,13 @@ Daily planner
 =============
 
 >>> rt.show(calview.DailySlave)
-============ ===================================== ==========
- Time range   External                              Internal
------------- ------------------------------------- ----------
- *All day*    *☐ rolf Absent for private reasons*
- *AM*         *08:30? romain Rencontre*
+============ ====================================== ==========
+ Time range   External                               Internal
+------------ -------------------------------------- ----------
+ *All day*    * ☐ rolf Absent for private reasons*
+ *AM*         *08:30 ? romain Rencontre*
  *PM*
-============ ===================================== ==========
+============ ====================================== ==========
 <BLANKLINE>
 
 
@@ -168,14 +168,15 @@ No data to display
 Daily planner `⏏ <Daily planner>`__
 -----------------------------------
 <BLANKLINE>
-============ ================================================ ==========
- Time range   External                                         Internal
------------- ------------------------------------------------ ----------
- *All day*    `☐ rolf Absent for private reasons <Detail>`__
- *AM*         `08:30? romain Rencontre <Detail>`__
+============ ================================================= ==========
+ Time range   External                                          Internal
+------------ ------------------------------------------------- ----------
+ *All day*    ` ☐ rolf Absent for private reasons <Detail>`__
+ *AM*         `08:30 ? romain Rencontre <Detail>`__
  *PM*
-============ ================================================ ==========
+============ ================================================= ==========
 <BLANKLINE>
+
 
 
 
