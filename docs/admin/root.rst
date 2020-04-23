@@ -30,16 +30,19 @@ You need at least 2GB of RAM.  How to see how much memory you have::
     $ free -h
 
 
-Creating system users
-=====================
-
 The system should have installed the `sudo` package::
 
   # apt-get install sudo
 
+Creating a system user
+======================
+
 Create a user account for a :term:`site maintainer`, e.g. ``joe``::
 
-  # adduser joe --disabled-password
+  # adduser joe
+
+Agree upon a password with the maintainer who is going to use this account.  The
+maintainer can later change their password using :cmd:`passwd`.
 
 Site maintainers must be members of the `sudo` and `www-data` groups::
 

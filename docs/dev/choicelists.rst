@@ -298,13 +298,13 @@ Seeing all choicelists in your application
 >>> pprint(choicelist_choices())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 [('about.TimeZones', 'about.TimeZones (Time zones)'),
- ('cal.AccessClasses', 'cal.AccessClasses'),
- ('cal.DisplayColors', 'cal.DisplayColors'),
+ ('cal.AccessClasses', 'cal.AccessClasses (Access classes)'),
+ ('cal.DisplayColors', 'cal.DisplayColors (Display colors)'),
  ('cal.DurationUnits', 'cal.DurationUnits'),
  ('cal.EntryStates', 'cal.EntryStates (Entry states)'),
  ('cal.EventEvents', 'cal.EventEvents (Observed events)'),
  ('cal.GuestStates', 'cal.GuestStates (Presence states)'),
- ('cal.PlannerColumns', 'cal.PlannerColumns'),
+ ('cal.PlannerColumns', 'cal.PlannerColumns (Planner columns)'),
  ('cal.Recurrencies', 'cal.Recurrencies'),
  ('cal.ReservationStates', 'cal.ReservationStates (States)'),
  ('cal.TaskStates', 'cal.TaskStates (Task states)'),

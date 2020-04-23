@@ -51,7 +51,7 @@ users.UserTypes.admin:900
 - Explorer :
   - System : Authorities, User types, User roles, Data checkers, Data problems, Changes, content types
   - Contacts : Contact persons, Partners, List memberships
-  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states, Planner columns, Access classes, Display colors
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
   - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
   - Financial : Bank Statements, Journal Entries, Payment Orders
@@ -96,7 +96,7 @@ Monique is a secretary.
 - Explorer :
   - System : Data checkers, Data problems, Changes, content types
   - Contacts : Contact persons, Partners, List memberships
-  - Calendar : Calendar entries, Presences, Entry states, Presence states, Task states
+  - Calendar : Calendar entries, Presences, Entry states, Presence states, Task states, Planner columns, Access classes, Display colors
   - Activities : Activities, Enrolments
   - Sales : Price factors, Sales invoices
   - VAT : Special Belgian VAT declarations, Declaration fields, Invoices, VAT rules

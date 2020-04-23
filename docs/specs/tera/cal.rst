@@ -126,7 +126,7 @@ Calendar entry types
 =========== ======================== ================== ======================== ================ ============= ===================== =================
  Reference   Designation              Designation (de)   Designation (fr)         Planner column   Appointment   Automatic presences   Locks all rooms
 ----------- ------------------------ ------------------ ------------------------ ---------------- ------------- --------------------- -----------------
-             Absences                 Absences           Absences                 External         Yes           No                    No
+             Absences                 Abwesenheiten      Absences                 External         Yes           No                    No
              Group meeting            Gruppengespräch    Group meeting                             Yes           No                    No
              Holidays                 Feiertage          Jours fériés             External         No            No                    Yes
              Individual appointment   Einzelgespräch     Individual appointment                    Yes           Yes                   No

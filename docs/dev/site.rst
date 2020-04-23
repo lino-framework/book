@@ -63,7 +63,7 @@ settings.  Including for example :setting:`INSTALLED_APPS` and
 >>> SITE = Site(pseudoglobals)
 >>> sorted(pseudoglobals.keys())
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATICFILES_DIRS', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
+['AUTHENTICATION_BACKENDS', 'AUTH_USER_MODEL', 'DATABASES', 'FIXTURE_DIRS', 'INSTALLED_APPS', 'LANGUAGES', 'LANGUAGE_CODE', 'LOCALE_PATHS', 'LOGIN_REDIRECT_URL', 'LOGIN_URL', 'LOGOUT_REDIRECT_URL', 'MEDIA_ROOT', 'MEDIA_URL', 'MIDDLEWARE', 'ROOT_URLCONF', 'SERIALIZATION_MODULES', 'STATIC_ROOT', 'STATIC_URL', 'TEMPLATES', 'USE_L10N']
 
 Note that Lino writes to your settings module's global namespace only
 while the Site class gets *instantiated*.  So if for some reason you
@@ -184,8 +184,7 @@ Here are the Django settings that Lino will override:
 ['SECRET_KEY', 'DATABASES', 'SERIALIZATION_MODULES', 'LANGUAGES',
 'INSTALLED_APPS', 'MEDIA_ROOT', 'ROOT_URLCONF', 'MEDIA_URL', 'STATIC_ROOT',
 'STATIC_URL', 'TEMPLATES', 'MIDDLEWARE', 'AUTHENTICATION_BACKENDS', 'LOGIN_URL',
-'LOGIN_REDIRECT_URL', 'LOGOUT_REDIRECT_URL', 'FIXTURE_DIRS', 'LOCALE_PATHS',
-'STATICFILES_DIRS']
+'LOGIN_REDIRECT_URL', 'LOGOUT_REDIRECT_URL', 'FIXTURE_DIRS', 'LOCALE_PATHS']
 
 >>> from pprint import pprint
 >>> from atelier.utils import rmu
@@ -209,13 +208,12 @@ Here are the Django settings that Lino will override:
  'MEDIA_ROOT': Path('.../core/media'),
  'MEDIA_URL': '/media/',
  'MIDDLEWARE': ('django.middleware.common.CommonMiddleware',
-                        'lino.core.auth.middleware.NoUserMiddleware',
-                        'lino.utils.ajax.AjaxExceptionResponse'),
+                'lino.core.auth.middleware.NoUserMiddleware',
+                'lino.utils.ajax.AjaxExceptionResponse'),
  'ROOT_URLCONF': 'lino.core.urls',
  'SECRET_KEY': '20227',
  'SERIALIZATION_MODULES': {'py': 'lino.utils.dpy'},
- 'STATICFILES_DIRS': (),
- 'STATIC_ROOT': Path('...static'),
+ 'STATIC_ROOT': Path('...static_root'),
  'STATIC_URL': '/static/',
  'TEMPLATES': [{'APP_DIRS': True,
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',

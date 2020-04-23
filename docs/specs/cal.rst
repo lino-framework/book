@@ -464,7 +464,7 @@ rules.
     =========== =============== ================== ================== ================ ============= ===================== =================
      Reference   Designation     Designation (de)   Designation (fr)   Planner column   Appointment   Automatic presences   Locks all rooms
     ----------- --------------- ------------------ ------------------ ---------------- ------------- --------------------- -----------------
-                 Absences        Absences           Absences           External         Yes           No                    No
+                 Absences        Abwesenheiten      Absences           External         Yes           No                    No
                  First contact   First contact      First contact                       Yes           No                    No
                  Holidays        Feiertage          Jours fériés       External         No            No                    Yes
                  Internal        Intern             Interne            Internal         No            No                    No
@@ -747,7 +747,7 @@ Tous les 2 mois
 ==== =============== ================== ==================
  ID   Designation     Designation (de)   Designation (fr)
 ---- --------------- ------------------ ------------------
- 1    Absences        Absences           Absences
+ 1    Absences        Abwesenheiten      Absences
  5    First contact   First contact      First contact
  2    Holidays        Feiertage          Jours fériés
  4    Internal        Intern             Interne
@@ -755,6 +755,7 @@ Tous les 2 mois
  3    Meeting         Versammlung        Réunion
 ==== =============== ================== ==================
 <BLANKLINE>
+
 
 >>> obj = cal.RecurrentEvent(start_date=i2d(20160628))
 >>> isinstance(obj, cal.RecurrenceSet)
