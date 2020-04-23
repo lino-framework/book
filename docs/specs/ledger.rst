@@ -54,7 +54,7 @@ In Lino, the ledger is implemented by three database models:
 
     Any document that serves as legal proof for a :term:`ledger transaction` in
     the ledger. Examples of vouchers include invoices, bank statements, or
-    payment orders.
+    payment orders, VAT declarations, ...
 
     Vouchers are stored in the database using some subclass of the
     :class:`Voucher` model. The voucher model is never being used directly
@@ -630,10 +630,18 @@ Vouchers
     ForeignKey to a Voucher.
 
     A voucher is never instantiated using this base model but using one of its
-    subclasses. Examples of subclasses are :class:`lino_xl.lib.sales.Invoice`,
-    :class:`lino_xl.lib.vat.AccountInvoice` (or
-    :class:`lino_xl.lib.vatless.AccountInvoice`),
-    :class:`lino_xl.lib.finan.Statement` etc...
+    subclasses.
+
+
+    >>> pprint(rt.models_by_base(ledger.Voucher))
+    [<class 'lino_xl.lib.bevat.models.Declaration'>,
+     <class 'lino_xl.lib.finan.models.BankStatement'>,
+     <class 'lino_xl.lib.finan.models.JournalEntry'>,
+     <class 'lino_xl.lib.finan.models.PaymentOrder'>,
+     <class 'lino_xl.lib.ledger.models.Voucher'>,
+     <class 'lino_xl.lib.sales.models.VatProductInvoice'>,
+     <class 'lino_xl.lib.vat.models.VatAccountInvoice'>]
+
 
     When the partner of an empty voucher has a purchase account, Lino
     automatically creates a voucher item using this account with empty
@@ -745,6 +753,24 @@ Vouchers
 Registering a voucher
 =====================
 
+A :term:`voucher` is always in one of the three states "Draft", "Registered" or
+"Cancelled". "Registering a voucher" means to change it status from "Draft" to
+"Registered".
+
+When a voucher is registered, it receives a sequence number in its
+:term:`journal` and Lino generates the :term:`movements <ledger movement>`
+according to the data in the voucher.
+
+A registered voucher cannot be edited or deleted.
+
+You can **deregister** a voucher at any moment (except when you lack permission
+for this actions, or when the voucher is in a :term:`fiscal year` that has been
+closed).
+
+When you deregister a voucher, all :term:`movements <ledger movement>` are deleted.
+
+
+
 
 .. class:: RegistrableVoucher
 
@@ -755,35 +781,28 @@ Registering a voucher
     A one-click action to quickly toggle between the two the most-used
     states of a voucher.
 
+    >>> finan.BankStatement.toggle_state.help_text
+    'Toggle between "registered" and "draft" state.'
+
   .. attribute:: hide_editable_number
 
     We usually don't want to see the number of a voucher in an editable state
     because that number may change. We prefer to see the primary key prefixed
-    with a hash to indicate that the voucher is not registered.  But sometimes
-    (e.g. in :mod:`lino_xl.lib.orders`) we want to disable this feature. NB we
-    might simply override :meth:`__str__`, but maybe this feature will be used
-    in other contexts as well.
+    with a hash to indicate that the voucher is not registered.  But e.g. in
+    :mod:`lino_xl.lib.orders` we want to disable this feature.
+
+    NB we might simply override :meth:`__str__`, but maybe this feature will be
+    used in other contexts as well.
 
 
-A :term:`voucher` is always in one of the three states "Draft", "Registered" or
-"Cancelled". "Registering a voucher" means to change it status from "Draft" to
-"Registered".
 
 The state of a voucher is stored in a field :attr:`voucher_state
 <lino_xl.lib.ledger.Voucher.voucher_state>`. The available states and the rules
 for changing the state are called the workflow.
 
-When a voucher is registered, it receives a sequence number in its
-:term:`journal` and Lino generates the :term:`movements <ledger movement>` according to
-the data in the voucher.
+.. class:: ToggleState
 
-A registered voucher cannot be edited or deleted.
-
-You can **deregister** a voucher at any moment (unless its :term:`fiscal year`
-is archived).
-
-When you deregister a voucher, all :term:`movements <ledger movement>` are deleted.
-
+    The action behind :attr:`RegistrableVoucher.toggle_state`.
 
 
 Journals
@@ -1102,10 +1121,6 @@ Accounting periods
 Actors
 ======
 
-
-.. class:: Journals
-
-   The default table showing all instances of :class:`Journal`.
 
 .. class:: ByJournal
 
@@ -2311,10 +2326,3 @@ Note that the journal must also have an :attr:`account` with
 :attr:`Account.needs_partner` enabled in order to prevent Lino from generating
 detailed counter-entries (one per item). Clearing a payment order makes sense
 only when the counter-entry is  the sum of all movements.
-
-
-
-
-.. class:: ToggleState
-
-    The action behind :attr:  :attr:`RegistrableVoucher.toggle_state`
