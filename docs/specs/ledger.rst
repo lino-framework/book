@@ -701,14 +701,6 @@ Vouchers
 
       A text like "2019-12".
 
-    .. attribute:: toggle_state
-
-        Toggle between "registered" and "draft" state.
-
-        A one-click action to quickly toggle between the two the most-used
-        states of a voucher.
-
-
     .. method:: do_and_clear(func, do_clear)
 
         Delete all movements of this voucher, then run the given
@@ -752,6 +744,26 @@ Vouchers
 
 Registering a voucher
 =====================
+
+
+.. class:: RegistrableVoucher
+
+  .. attribute:: toggle_state
+
+    Toggle between "registered" and "draft" state.
+
+    A one-click action to quickly toggle between the two the most-used
+    states of a voucher.
+
+  .. attribute:: hide_editable_number
+
+    We usually don't want to see the number of a voucher in an editable state
+    because that number may change. We prefer to see the primary key prefixed
+    with a hash to indicate that the voucher is not registered.  But sometimes
+    (e.g. in :mod:`lino_xl.lib.orders`) we want to disable this feature. NB we
+    might simply override :meth:`__str__`, but maybe this feature will be used
+    in other contexts as well.
+
 
 A :term:`voucher` is always in one of the three states "Draft", "Registered" or
 "Cancelled". "Registering a voucher" means to change it status from "Draft" to
@@ -2299,3 +2311,10 @@ Note that the journal must also have an :attr:`account` with
 :attr:`Account.needs_partner` enabled in order to prevent Lino from generating
 detailed counter-entries (one per item). Clearing a payment order makes sense
 only when the counter-entry is  the sum of all movements.
+
+
+
+
+.. class:: ToggleState
+
+    The action behind :attr:  :attr:`RegistrableVoucher.toggle_state`
