@@ -150,6 +150,18 @@ Daily planner
 ============ ====================================== ==========
 <BLANKLINE>
 
+When you are logged in, the calendar entries are clickable:
+
+>>> rt.login("robin").show(calview.DailySlave)
+============ ================================================= ==========
+ Time range   External                                          Internal
+------------ ------------------------------------------------- ----------
+ *All day*    ` ☐ rolf Absent for private reasons <Detail>`__
+ *AM*         `08:30 ? romain Rencontre <Detail>`__
+ *PM*
+============ ================================================= ==========
+<BLANKLINE>
+
 
 My appointments
 ===============

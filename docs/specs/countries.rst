@@ -8,7 +8,8 @@
 .. currentmodule:: lino_xl.lib.countries
 
 The :mod:`lino_xl.lib.countries` plugin defines models and choicelists for
-managing names of geographical places.
+managing names of countries, provinces, cities and villages, with spcial focus
+on their usage in postal addresses.
 
 .. contents::
    :local:
@@ -23,248 +24,26 @@ managing names of geographical places.
 See also :mod:`lino_xl.lib.statbel.countries`.
 
 
-Overview
-========
+Countries and places
+====================
 
-A **country** (aka *nation*) is a geographic region with a national government.
-A **place** is any other type of named geographic region.
+This plugin classifies geographical regions into two database models:
+"countries" and "cities". It is not interested in bigger areas than countries
+like continents (for these you would write another plugin).
 
+.. glossary::
 
-Countries
-=========
+  country
 
-.. class:: Country
+    A geographic region with a national government.
 
-    Django model to represent a *country*.
+  place
 
+    Any named geographic region that is not a :term:`country`.
 
-
-    .. attribute:: name
-
-        The designation of this country.
-
-        This is a babel field.
-
-    .. attribute:: isocode
-
-        The two-letter code for this country as defined by ISO 3166-1.
-        For countries that no longer exist it may be a 4-letter code.
-
-    .. attribute:: short_code
-
-        A short abbreviation for regional usage. Obsolete.
-
-    .. attribute:: iso3
-
-        The three-letter code for this country as defined by ISO 3166-1.
-
-    .. method:: allowed_city_types()
-
-        Return the place types that are used in this country.
-
-        Return all place types for countries without a country driver (see
-        :class:`CountryDrivers`).
-
-
-.. class:: Countries
-
-    The table of all countries.
-
-Places
-======
-
-.. class:: Place
-
-    Django model to represent a *place*.
-
-    Inherits from :class:`lino.mixins.sequenced.Hierarchical`.
-
-
-    .. attribute:: parent
-
-        The superordinate geographic place of which this place is a part.
-
-    .. attribute:: country
-
-        The country this place is in.
-
-    .. attribute:: zip_code
-
-    .. attribute:: type
-
-        The type of this place (whether it's a city. a village, a province...)
-
-        This contains one of the items in :class:`PlaceTypes`.
-        The list of choices may be limited depending on the country.
-
-
-    .. attribute:: show_type
-
-    .. method:: get_choices_text
-
-        Extends the default behaviour (which would simply diplay this
-        city in the current language) by also adding the name in other
-        languages and the type between parentheses.
-
-.. class:: Places
-
-    The table of known geographical places.
-    A geographical place can be a city, a town, a suburb,
-    a province, a lake... any named geographic entity,
-    except for countries because these have their own table.
-
-Place types
-===========
-
-.. class:: PlaceTypes
-
-    A choicelist of possible place types.
-
-    >>> rt.show(countries.PlaceTypes)
-    ======= ============== ================
-     value   name           text
-    ------- -------------- ----------------
-     10                     Member State
-     11                     Division
-     12                     Region
-     13                     Community
-     14                     Territory
-     20      county         County
-     21      province       Province
-     22                     Shire
-     23                     Subregion
-     24                     Department
-     25                     Arrondissement
-     26                     Prefecture
-     27      district       District
-     28                     Sector
-     50      city           City
-     51      town           Town
-     52      municipality   Municipality
-     54      parish         Parish
-     55      township       Township
-     56      quarter        Quarter
-     61      borough        Borough
-     62      smallborough   Small borough
-     70      village        Village
-    ======= ============== ================
-    <BLANKLINE>
-
-    Sources used:
-
-    - http://en.wikipedia.org/wiki/List_of_subnational_entities
-
-
-
-Model mixins
-============
-
-.. class:: CountryCity
-
-    Model mixin that adds two fields `country` and `city` and defines
-    a context-sensitive chooser for `city`, a `create_city_choice`
-    method, ...
-
-    .. attribute:: country
-
-    .. attribute:: zip_code
-
-    .. attribute:: city
-
-        The locality, i.e. usually a village, city or town.
-
-        The choicelist for this field shows only places returned by
-        :meth:`lino_xl.lib.countries.Place.get_cities`.
-
-        This is a pointer to :class:`Place`.
-        The internal name `city` is for historical reasons.
-
-.. class:: CountryRegionCity
-
-    Adds a `region` field to a :class:`CountryCity`.
-
-.. _tutorials.addrloc:
-
-The AddressLocation mixin
-=========================
-
-.. class:: AddressLocation
-
-    A mixin for models which contain a postal address location.
-
-    .. attribute:: addr1
-
-       Address line before street
-
-    .. attribute:: street_prefix
-
-       Text to print before name of street, but to ignore for sorting.
-
-    .. attribute:: street
-
-       Name of street, without house number.
-
-    .. attribute:: street_no
-
-       House number.
-
-    .. attribute:: street_box
-
-        Text to print after street number on the same line.
-
-    .. attribute:: addr2
-
-        Address line to print below street line.
-
-    .. attribute:: addess_column
-
-        Virtual field which returns the location as a comma-separated
-        one-line string.
-
-    .. method:: get_primary_address(self)
-
-        Return the primary address of this partner.
-
-        Returns either `None` or an instance of :class:`AddressLocation`.
-
-    .. method:: address_location(self, linesep="\n")
-
-        Return the plain text postal address location part.  Lines are
-        separated by `linesep` which defaults to ``"\\n"``.
-
-        The country is displayed only for foreigners (i.e. whose
-        country is not :attr:`my_country
-        <lino_xl.lib.countries.Plugin.my_country>`)
-
-
-
-Examples
-========
-
->>> be = countries.Country.objects.get(isocode="BE")
->>> ee = countries.Country.objects.get(isocode="EE")
->>> tpl = u"{name}\n{addr}"
-
->>> obj = contacts.Company.objects.filter(country=be)[0]
->>> print(tpl.format(name=obj.name, addr=obj.address_location()))
-Bäckerei Ausdemwald
-Vervierser Straße 45
-4700 Eupen
-
->>> obj = contacts.Company.objects.filter(country=ee)[0]
->>> print(tpl.format(name=obj.name, addr=obj.address_location()))
-Rumma & Ko OÜ
-Uus tn 1
-Vigala vald
-78003 Rapla maakond
-Estonia
-
-
-Utilities
-=========
-
-.. class:: CountryDriver
-.. class:: CountryDrivers
+Both tables, countries and places, are to be maintained by the :term:`site
+operator`.  There are several demo fixtures, some with quite complete lists, but
+these fixtures don't claim to be complete or fully up to date.
 
 >>> rt.show(countries.Countries)
 ============================= ================== ================================= ==========
@@ -366,6 +145,244 @@ Utilities
 ============= ======================== ==================== ==================== ============== ========== ====================
 <BLANKLINE>
 
+
+.. class:: Country
+
+    Django model to represent a :term:`country`.
+
+    .. attribute:: name
+
+        The designation of this country.
+
+        This is a babel field.
+
+    .. attribute:: isocode
+
+        The two-letter code for this country as defined by ISO 3166-1.
+        For countries that no longer exist it may be a 4-letter code.
+
+    .. attribute:: short_code
+
+        A short abbreviation for regional usage. Obsolete.
+
+    .. attribute:: iso3
+
+        The three-letter code for this country as defined by ISO 3166-1.
+
+    .. method:: allowed_city_types()
+
+        Return the place types that are used in this country.
+
+        Return all place types for countries without a country driver (see
+        :class:`CountryDrivers`).
+
+
+.. class:: Place
+
+    Django model to represent a *place*.
+
+    Inherits from :class:`lino.mixins.sequenced.Hierarchical`.
+
+
+    .. attribute:: parent
+
+        The superordinate geographic place of which this place is a part.
+
+    .. attribute:: country
+
+        The country this place is in.
+
+    .. attribute:: zip_code
+
+    .. attribute:: type
+
+        The type of this place (whether it's a city. a village, a province...)
+
+        This contains one of the items in :class:`PlaceTypes`.
+        The list of choices may be limited depending on the country.
+
+
+    .. attribute:: show_type
+
+    .. method:: get_choices_text
+
+        Extends the default behaviour (which would simply diplay this
+        city in the current language) by also adding the name in other
+        languages and the type between parentheses.
+
+.. class:: Countries
+
+    The table of all countries.
+
+.. class:: Places
+
+    The table of known geographical places.
+    A geographical place can be a city, a town, a suburb,
+    a province, a lake... any named geographic entity,
+    except for countries because these have their own table.
+
+
+
+
+Place types
+===========
+
+.. class:: PlaceTypes
+
+    A choicelist of possible place types.
+
+    >>> rt.show(countries.PlaceTypes)
+    ======= ============== ================
+     value   name           text
+    ------- -------------- ----------------
+     10                     Member State
+     11                     Division
+     12                     Region
+     13                     Community
+     14                     Territory
+     20      county         County
+     21      province       Province
+     22                     Shire
+     23                     Subregion
+     24                     Department
+     25                     Arrondissement
+     26                     Prefecture
+     27      district       District
+     28                     Sector
+     50      city           City
+     51      town           Town
+     52      municipality   Municipality
+     54      parish         Parish
+     55      township       Township
+     56      quarter        Quarter
+     61      borough        Borough
+     62      smallborough   Small borough
+     70      village        Village
+    ======= ============== ================
+    <BLANKLINE>
+
+    Sources used:
+
+    - http://en.wikipedia.org/wiki/List_of_subnational_entities
+
+
+
+Model mixins
+============
+
+.. class:: CountryCity
+
+    Model mixin that adds two fields `country` and `city` and defines
+    a context-sensitive chooser for `city`, a `create_city_choice`
+    method, ...
+
+    .. attribute:: country
+
+    .. attribute:: zip_code
+
+    .. attribute:: city
+
+        The locality, i.e. usually a village, city or town.
+
+        The choicelist for this field shows only places returned by
+        :meth:`lino_xl.lib.countries.Place.get_cities`.
+
+        This is a pointer to :class:`Place`.
+        The internal name `city` is for historical reasons.
+
+    .. attribute:: municipality
+
+        The municipality, i.e. either the :attr:`city` or a parent of it.
+
+        See Municipality_ below.
+
+.. class:: CountryRegionCity
+
+    Adds a `region` field to a :class:`CountryCity`.
+
+.. _tutorials.addrloc:
+
+The AddressLocation mixin
+=========================
+
+.. class:: AddressLocation
+
+    A mixin for models than contain a postal address location.
+
+    .. attribute:: addr1
+
+       Address line before street
+
+    .. attribute:: street_prefix
+
+       Text to print before name of street, but to ignore for sorting.
+
+    .. attribute:: street
+
+       Name of street, without house number.
+
+    .. attribute:: street_no
+
+       House number.
+
+    .. attribute:: street_box
+
+        Text to print after street number on the same line.
+
+    .. attribute:: addr2
+
+        Address line to print below street line.
+
+    .. attribute:: addess_column
+
+        Virtual field which returns the location as a comma-separated
+        one-line string.
+
+    .. method:: get_primary_address(self)
+
+        Return the primary address of this partner.
+
+        Returns either `None` or an instance of :class:`AddressLocation`.
+
+    .. method:: address_location(self, linesep="\n")
+
+        Return the plain text postal address location part.  Lines are
+        separated by `linesep` which defaults to ``"\\n"``.
+
+        The country is displayed only for foreigners (i.e. whose
+        country is not :attr:`my_country
+        <lino_xl.lib.countries.Plugin.my_country>`)
+
+
+
+Examples
+========
+
+>>> be = countries.Country.objects.get(isocode="BE")
+>>> ee = countries.Country.objects.get(isocode="EE")
+>>> tpl = u"{name}\n{addr}"
+
+>>> obj = contacts.Company.objects.filter(country=be)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Bäckerei Ausdemwald
+Vervierser Straße 45
+4700 Eupen
+
+>>> obj = contacts.Company.objects.filter(country=ee)[0]
+>>> print(tpl.format(name=obj.name, addr=obj.address_location()))
+Rumma & Ko OÜ
+Uus tn 1
+Vigala vald
+78003 Rapla maakond
+Estonia
+
+
+Utilities
+=========
+
+.. class:: CountryDriver
+.. class:: CountryDrivers
+
 >>> rt.show(countries.PlaceTypes)
 ======= ============== ================
  value   name           text
@@ -443,3 +460,10 @@ Data checkers
 .. class:: PlaceChecker
 
     The name of a geographical place should not consist of only digits.
+
+
+Municipality
+============
+
+The countries plugin provides a way to handle groups of places that have a
+common parent called their "municipality".

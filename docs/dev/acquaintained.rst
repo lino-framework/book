@@ -22,6 +22,7 @@ Getting acquaintained
    custom_actions
    action_parameters
    gfks
+   remote_fields
    /tutorials/layouts
    delete
    mldbc/index
