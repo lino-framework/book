@@ -34,7 +34,7 @@ the generated files::
 
   $ firefox docs/.build/html/index.html
 
-Or jump directly to your local copy of this page:  
+Or jump directly to your local copy of this page:
 
   $ firefox docs/.build/html/team/builddocs.html
 
@@ -70,6 +70,10 @@ problem to import the module
 Indeed you can verify that importing this module in a normal Python
 session will fail:
 
+.. Make sure that DJANGO_SETTINGS_MODULE isn't set because otherwise Django
+   raises another exception:
+
+   >>> import os ; del os.environ['DJANGO_SETTINGS_MODULE']
 
 >>> import lino_book.projects.team.tests.test_notify  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):
@@ -81,7 +85,7 @@ because :envvar:`DJANGO_SETTINGS_MODULE` is not set.  That's related
 to an oddness of Django (one of its well-known and widely accepted
 oddnesses): you cannot simply import a module that imports
 :mod:`django` when that environment variable is not set.
-        
+
 Note that the :file:`docs/conf.py` contains (among others) the
 following lines::
 
@@ -92,7 +96,7 @@ This calls the :func:`lino.sphinxcontrib.configure` function which
 basically does exactly what we need here: it sets the
 :envvar:`DJANGO_SETTINGS_MODULE` to
 :mod:`lino_book.projects.max.settings.doctests`.
-     
+
 So Sphinx uses the :mod:`lino_book.projects.max` project when
 generating the docs.
 
@@ -109,9 +113,7 @@ was not able to import::
 
     import lino_book.projects.team.tests.test_notify
 
-What happens now?
-
-
+Now you should see the traceback that is getting swallowed by autodoc.
 
 
 
@@ -132,13 +134,13 @@ Read more about the markup used by Sphinx in `reStructuredText Primer
 <http://sphinx-doc.org/rest.html>`_.
 Also `The build configuration file <http://sphinx-doc.org/config.html>`_.
 
-  
+
 
 Let's play
 ==========
 
-Let's play a bit:  
-  
+Let's play a bit:
+
 Open the source file of this page::
 
   $  nano docs/team/builddocs.rst
