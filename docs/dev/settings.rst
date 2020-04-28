@@ -27,6 +27,11 @@ To illustrate this, let's open a Python session in an environment with
 Django installed but *without* any :envvar:`DJANGO_SETTINGS_MODULE`
 environment variable defined, and then type:
 
+.. Make sure that DJANGO_SETTINGS_MODULE isn't set because otherwise Django
+   raises another exception:
+
+   >>> import os ; del os.environ['DJANGO_SETTINGS_MODULE']
+
 >>> from django.conf import settings
 
 This will pass. But as soon as you want to actually access some attribute of
