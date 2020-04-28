@@ -49,7 +49,9 @@ script:
   -  # inv prep test
   - rm -rf .eggs
   - inv install
+  - python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - inv prep test
+  - python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - inv bd
   - #inv cov --no-html
   - # E2E testing with team  TODO: move the following to the tests of the min1 project
