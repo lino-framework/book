@@ -28,6 +28,7 @@ class Site(Site):
         yield ('vat', 'declaration_plugin', 'lino_xl.lib.bevats')
         yield ('ledger', 'use_pcmn', True)
         yield ('ledger', 'start_year', 2014)
+        yield ('react', 'url_prefix', 'admin')
 
     def get_apps_modifiers(self, **kw):
         kw = super(Site, self).get_apps_modifiers(**kw)
