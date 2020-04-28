@@ -73,7 +73,7 @@ session will fail:
 .. Make sure that DJANGO_SETTINGS_MODULE isn't set because otherwise Django
    raises another exception:
 
-   >>> import os ; del os.environ['DJANGO_SETTINGS_MODULE']
+   >>> import os ; u = os.environ.pop('DJANGO_SETTINGS_MODULE', None)
 
 >>> import lino_book.projects.team.tests.test_notify  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):

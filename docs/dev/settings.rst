@@ -30,7 +30,7 @@ environment variable defined, and then type:
 .. Make sure that DJANGO_SETTINGS_MODULE isn't set because otherwise Django
    raises another exception:
 
-   >>> import os ; del os.environ['DJANGO_SETTINGS_MODULE']
+   >>> import os ; u = os.environ.pop('DJANGO_SETTINGS_MODULE', None)
 
 >>> from django.conf import settings
 
