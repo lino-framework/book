@@ -41,7 +41,7 @@ That's why the :xfile:`setup.py` of a package "xxyyzz" contains just this::
     exec(compile(open(fn, "rb").read(), fn, 'exec'))
     if __name__ == '__main__':
         setup(**SETUP_INFO)
-    
+
 And the :file:`__init__.py` file of the main module contains this::
 
     from os.path import join, dirname
@@ -53,7 +53,7 @@ And the :file:`__init__.py` file of the main module contains this::
 Note that ``exec(compile(open(fn, "rb").read(), fn, 'exec'))`` is
 equivalent to ``execfile(fn)``, except that it works in both Python 2
 and 3.
-    
+
 
 Usage example:
 
@@ -108,6 +108,10 @@ These are the files we are talking about here.
 
     TODO
 
+.. xfile:: test_packages.py
+
+    A file in the test suite of a repository that runs :meth:`run_packages_test
+    <atelier.test.TestCase.run_packages_test>`.
 
 Setup information
 =================
@@ -166,4 +170,3 @@ Open the :xfile:`README.rst` file and check that it contains your changes.
 
 Submit a pull request with the two modified files
 :xfile:`setup_info.py` and :xfile:`README.rst`.
-

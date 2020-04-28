@@ -10,41 +10,53 @@ Remote fields
 >>> from lino import startup
 >>> startup('lino_book.projects.apc.settings.doctests')
 >>> from lino.api.doctest import *
+>>> from django.db.models import Q
 >>> translation.activate("en")
+
+
+Django has lookups that span relationships
+==========================================
 
 Let's say you want to see your sales invoices to clients in Eupen.
 
-In plain Django you can do the following:
+For this you can do the following:
 
 >>> eupen = countries.Place.objects.get(name="Eupen")
 >>> qs = sales.VatProductInvoice.objects.filter(partner__city=eupen)
 >>> qs.count()
 44
 
-This is documented in `Lookups that span relationships
+This is plain Django, documented in `Lookups that span relationships
 <https://docs.djangoproject.com/en/3.0/topics/db/queries/#lookups-that-span-relationships>`__.
 
 Lino extends this idea by allowing to specify layout elements using this syntax.
 
->>> sales.Invoices.column_names
-'id entry_date partner total_incl user *'
+For example if you want, in your :class:`sales.Invoices` table, a column showing
+the city of the partner of each invoice,  you can simply specify
+``partner__city`` as a field name in your :attr:`column_names
+<lino.core.actors.tables.AbstractTable.column_names>`.
 
->>> from django.db.models import Q
 >>> rt.show(sales.Invoices,
-...   column_names="id partner partner__city total_incl",
-...   filter=Q(partner__city=eupen), limit=5)
-===== ==================== ============ ==============
- ID    Partner              Locality     Total to pay
------ -------------------- ------------ --------------
- 159   Meier Marie-Louise   4700 Eupen   770,00
- 158   Mießen Michael       4700 Eupen   465,96
- 157   Meessen Melissa      4700 Eupen   639,92
- 156   Malmendier Marc      4700 Eupen   3 599,71
- 155   Leffin Josefine      4700 Eupen   310,20
-                                         **5 785,79**
-===== ==================== ============ ==============
+...   column_names="id partner partner__city total_incl", limit=5)
+===== ================== ============= ==============
+ ID    Partner            Locality      Total to pay
+----- ------------------ ------------- --------------
+ 177   da Vinci David     4730 Raeren   1 110,16
+ 176   da Vinci David     4730 Raeren   535,00
+ 175   di Rupo Didier     4730 Raeren   280,00
+ 174   Radermacher Jean   4730 Raeren   679,81
+ 173   Radermacher Inge   4730 Raeren   2 039,82
+                                        **4 644,79**
+===== ================== ============= ==============
 <BLANKLINE>
 
+Usage examples in parameter layouts:
+
+- :meth:`lino_xl.lib.orders.Order.get_simple_parameters` defines 'journal__room'
+  as actor parameter.
+
+- :ref:`presto` adds a parameter field ``project__municipality`` to its
+  :class:`cal.AllEntries` table
 
 
 catch_layout_exceptions
@@ -97,3 +109,10 @@ raises an exception:
 Traceback (most recent call last):
   ...
 Exception: lino.core.layouts.ColumnsLayout on lino_xl.lib.sales.models.Invoices has no data element 'partner.city'
+
+
+Notes
+=====
+
+Note that Lino's :class:`lino.core.fields.RemoteField` has nothing to do with
+Django's :attr:`remote_field` of a FK field.
