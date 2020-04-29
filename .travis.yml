@@ -52,7 +52,7 @@ script:
   - export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - inv prep test
   - export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
-  - inv bd
+  - export SPHINXOPTS=-j 1 ; inv bd
   - #inv cov --no-html
   - # E2E testing with team  TODO: move the following to the tests of the min1 project
   - # cd lino_book/projects/min1/

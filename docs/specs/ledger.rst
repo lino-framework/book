@@ -749,6 +749,14 @@ Vouchers
         document (Invoice, PaymentOrder, BankStatement, ...) by
         calling this method.
 
+.. rubric:: Class inheritance diagram
+
+.. inheritance-diagram:: lino_xl.lib.ledger.models.Voucher
+    :parts: 1
+    :top-classes: lino.core.model.Model
+
+
+
 
 Registering a voucher
 =====================
@@ -969,6 +977,15 @@ Here is the list of all :term:`journals <journal>`.
      **Total (10 rows)**                                      **220**   **42**      **13**       **0**
     ======================================================== ========= =========== ============ ============ ==========
     <BLANKLINE>
+
+
+.. rubric:: Class inheritance diagram
+
+.. inheritance-diagram:: lino_xl.lib.ledger.models.Journal
+    :parts: 1
+    :top-classes: lino.core.model.Model
+
+
 
 
 Debit or credit
