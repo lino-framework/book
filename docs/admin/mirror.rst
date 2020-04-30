@@ -4,12 +4,15 @@
 Mirroring a Lino site
 =====================
 
-This document explains two scripts that are used by :doc:`preview` and by
-:doc:`move`.
-
-Mirroring means that you routinely repeatedly copy "everything" from one Lino
+To **mirror** a :term:`Lino site` means that you copy "everything" from one Lino
 site to another site. The other site might be either on the same server or on
-another server.
+another server.  If the other site runs a newer version of the application, this
+process will also do data migration.
+
+This document explains two scripts that are referred to in two other documents,
+:doc:`preview` and :doc:`move`.
+
+
 
 .. contents::
   :local:
@@ -27,8 +30,11 @@ maintain it until the preview site has become production.
 
 The :xfile:`initdb_from_prod.sh` script creates a snapshot of production and
 then restores that snapshot to preview. It also mirrors media files from prod to
-preview. You create it in the project root of the target site, with the
-following content, and manually adapt it manually as needed:
+preview.
+
+The :term:`site maintainer` must manually create this file in the project root
+of the target site, with the following content, and manually adapt it manually
+as needed:
 
 .. literalinclude:: initdb_from_prod.sh
 

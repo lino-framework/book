@@ -7,9 +7,9 @@ Move a Lino site to a new server
 This document explains the following situation: you have a running
 :term:`production site` on a server S1 and you want to move that site to a new
 server S2.  You have installed S2 as described in :doc:`install`, so you have
-the same application running on both servers, maybe different versions. S2 has
-fictive demo data while S2 has confidential production data. You now want to
-copy the data from S1 to S2.
+the same application running on both servers, maybe a newer version on S2.
+S1 has confidential production data while S2 has fictive demo data.
+You now want to copy the data from S1 to S2, migrating it on the fly as needed.
 
 Procedure
 =========
@@ -18,7 +18,10 @@ Procedure
   production site::
 
     $ go prod
-    $ python manage.py dump2py snapshot2preview
+    $ python manage.py dump2py -o snapshot2preview
+
+  The ``-o`` option is not needed the first time, but you are likely to run this
+  procedure several times (see `General workflow`_ below).
 
 - Create the file :xfile:`restore2preview.py`, which initially is just a copy of
   the  :xfile:`restore.py` created by the :xfile:`make_snapshot.sh`::
@@ -65,7 +68,7 @@ When your manual tests pass, you inform the :term:`site operator` that it's now
 their turn to test the new server.  There are chances that they will find more
 problems.
 
-After fixing the problems, you can simply run the procedure again (make a
+After fixing the problems, you can simply run the procedure again (create a
 :file:`snapshot2preview` on S1 and then run  :xfile:`initdb_from_prod.sh` on
 S2). When no more problems are detected and the :term:`site operator` decided to
 actually move, you will run it a last time to synchronize their latest data
