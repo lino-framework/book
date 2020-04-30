@@ -5,14 +5,12 @@ Mirroring a Lino site
 =====================
 
 To **mirror** a :term:`Lino site` means that you copy "everything" from one Lino
-site to another site. The other site might be either on the same server or on
-another server.  If the other site runs a newer version of the application, this
-process will also do data migration.
+site to another site.  The other site might be either on the same server or on
+another server.  If the other site runs a newer version of the application,
+mirroring also includes :term:`data migration`. "Everything" means database
+content, uploaded files, local configuration files (but the details may vary).
 
-This document explains two scripts that are referred to in two other documents,
-:doc:`preview` and :doc:`move`.
-
-
+Mirroring is referred to in two other documents, :doc:`preview` and :doc:`move`.
 
 .. contents::
   :local:
@@ -20,11 +18,11 @@ This document explains two scripts that are referred to in two other documents,
 
 .. xfile:: restore2preview.py
 
-The file :xfile:`restore2preview.py` is in the :xfile:`snapshot` of
-your production project and used by the
-:xfile:`initdb_from_prod.sh` script.  You create it as a copy
-of the :xfile:`restore.py` file.  You will modify it as needed and
-maintain it until the preview site has become production.
+The file :xfile:`restore2preview.py` is in the :xfile:`snapshot` of your
+production project and used by the :xfile:`initdb_from_prod.sh` script.
+
+You create this file as a copy of the :xfile:`restore.py` file.  You will modify
+it as needed and maintain it until the preview site has become production.
 
 .. xfile:: initdb_from_prod.sh
 
@@ -32,9 +30,8 @@ The :xfile:`initdb_from_prod.sh` script creates a snapshot of production and
 then restores that snapshot to preview. It also mirrors media files from prod to
 preview.
 
-The :term:`site maintainer` must manually create this file in the project root
-of the target site, with the following content, and manually adapt it manually
-as needed:
+You create this file in the project root of the target site, with the following
+content, and manually adapt it manually as needed:
 
 .. literalinclude:: initdb_from_prod.sh
 
