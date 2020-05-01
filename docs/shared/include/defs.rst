@@ -1,3 +1,4 @@
+.. |gear|  image:: /../docs/shared/images/buttons/gear.png
 .. |flash|  image:: /../docs/shared/images/buttons/flash.png
 .. |insert_old|  image:: /../docs/shared/images/buttons/insert.png
 .. |eject|  image:: /../docs/shared/images/buttons/eject.png

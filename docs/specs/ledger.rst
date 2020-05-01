@@ -109,10 +109,6 @@ Some more concepts:
     :term:`accounting period` which itself is part of a given :term:`fiscal
     year`.
 
-  database object
-
-    An entry in the database, represented by a "model instance".
-
   common account
 
     A well-known account for which the :term:`site manager` must configure

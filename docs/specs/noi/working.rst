@@ -151,7 +151,8 @@ started some days ago.
     Render this table to HTML in order to reproduce :ticket:`523`:
 
     >>> url = "/api/working/WorkedHours?"
-    >>> url += "_dc=1583295523012&cw=398&cw=398&cw=76&cw=76&cw=76&cw=76&cw=281&cw=76&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ci=detail_link&ci=worked_tickets&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=description&ci=day_number&name=0&pv=188&pv=&pv=&pv=&lv=1583294270.8095002&an=show_as_html&sr="
+    >>> #url += "_dc=1583295523012&cw=398&cw=398&cw=76&cw=76&cw=76&cw=76&cw=281&cw=76&ch=&ch=&ch=&ch=&ch=&ch=&ch=true&ch=true&ci=detail_link&ci=worked_tickets&ci=vc0&ci=vc1&ci=vc2&ci=vc3&ci=description&ci=day_number&name=0&pv=188&pv=&pv=&pv=&lv=1583294270.8095002&an=show_as_html&sr="
+    >>> url += "an=show_as_html"
     >>> test_client.force_login(rt.login('jean').user)
     >>> res = test_client.get(url, REMOTE_USER="jean")
     >>> json.loads(res.content.decode()) == {'open_url': '/bs3/working/WorkedHours?limit=15', 'success': True}

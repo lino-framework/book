@@ -4,6 +4,21 @@
 About virtual fields
 ====================
 
+.. glossary::
+
+  database field
+
+    A regular Django model field. CharField, ForeignKey, IntegerField,
+    TextField, BooleanField, etc.
+
+  virtual field
+
+    A data element whose value isn't stored in the database but computed on the
+    fly each time we want to see it.  For example the :attr:`age
+    <lino.mixins.humans.Human.age>` of a person is usually computed from the
+    :attr:`birth_data <lino.mixins.humans.Human.birth_data>`. It wouldn't make
+    sense to store this number in the database.
+
 Recipes
 =======
 
@@ -23,7 +38,7 @@ Define a **virtual field on a table**::
         return obj
 
 (Taken from :class:`lino_xl.lib.polls.PollResult`)
-  
+
 Reference
 =========
 
@@ -44,7 +59,7 @@ Some edge cases
 
 A cool example is in :mod:`lino_welfare.modlib.pcsw.models` where we
 have::
-  
+
     dd.update_field(Client, 'overview', verbose_name=None)
 
 This is special because :class:`Client` is abstract at this place\
@@ -53,7 +68,3 @@ field.  the overview field is
 
 .. [#f1] Note that actually it is abstract only in eupen, not in
          chatelet. But that's another cool thing.
-
-
-             
-   

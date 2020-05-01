@@ -1,3 +1,4 @@
+.. doctest docs/dev/layouts/index.rst
 .. _layouts:
 
 =======================
@@ -9,23 +10,28 @@ Introduction to layouts
 A **layout** is a description of how to visually arrange the fields and
 other data elements in an entry form or a table.
 
-Layouts are one of Lino's important features which it adds to the
-Django framework.  They provide a way to design forms using the Python
-language and independently of the chosen renderer.  Their concept and
-implementation is fully Luc's work, and we didn't yet find a similar
-approach in any other framework.
+Layouts are one of Lino's important features, which it adds to the Django
+framework.  They provide a way to design forms using the Python language and
+independently of the chosen :term:`front end`.
 
 
 .. contents::
     :depth: 2
     :local:
 
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.lets1.settings')
+>>> from lino.api.doctest import *
+>>> ses = rt.login('robin')
+
 
 
 The columns of a table
 ======================
 
-The simplest occurence of layouts is the :attr:`column_names
+The simplest occurrence of layouts is the :attr:`column_names
 <lino.core.tables.AbstractTable.column_names>` attribute of a table,
 used to define which fields should be displayed as the columns of that
 table.
@@ -36,18 +42,18 @@ Code example (from :doc:`/dev/lets/index`)::
         ...
         column_names = 'id name providers customers'
         ...
-    
+
 Result:
 
 .. image:: products.png
   :scale: 40 %
-  
+
 
 
 The layout of a detail window
 =============================
-    
-The next usage of layouts is the **detail window**, i.e. the window
+
+Another frequent usage of layouts is the :term:`detail window`, i.e. the window
 used to display one table row at a time.
 
 You define a detail window by setting the :attr:`detail_layout
@@ -61,8 +67,8 @@ example::
         id name place email
         OffersByMember DemandsByMember
         """
-    
-Result:    
+
+Result:
 
 .. image:: ../lets/b.png
   :scale: 50 %
@@ -91,14 +97,14 @@ example::
         name place
         email
         """
-    
-Result:    
+
+Result:
 
 .. image:: ../lets/members_insert.png
   :scale: 50 %
 
 
-   
+
 
 Where layouts are being used
 ============================
@@ -108,10 +114,10 @@ contain layouts:
 
 - :attr:`column_names <lino.core.tables.AbstractTable.column_names>`
   contains an instance of  :class:`ColumnsLayout`
-- :attr:`detail_layout <lino.core.actors.Actor.detail_layout>` 
-  contains an instance of :class:`DetailLayout` 
+- :attr:`detail_layout <lino.core.actors.Actor.detail_layout>`
+  contains an instance of :class:`DetailLayout`
 - :attr:`insert_layout <lino.core.actors.Actor.insert_layout>`
-  contains an instance of :class:`InsertLayout` 
+  contains an instance of :class:`InsertLayout`
 
 There are two other places where Lino uses layouts:
 
@@ -119,9 +125,9 @@ There are two other places where Lino uses layouts:
   :attr:`params_layout <lino.core.actors.Actor.params_layout>` attribute
   and containing an instance of :class:`ParamsLayout`.  See :doc:`/dev/parameters`.
 
-- The optional *parameter dialog* of a custom action, specified as the
+- The optional *action dialog* of a custom action, specified as the
   :attr:`params_layout <lino.core.actions.Action.params_layout>`
-  attribut and containing an instance of
+  attribute of an action and containing an instance of
   :class:`ActionParamsLayout`). See :doc:`/dev/action_parameters`.
 
 Data elements
@@ -136,15 +142,10 @@ The **data elements** of a normal layout (:class:`ColumnsLayout`,
 - panels_ (see below)
 
 :class:`ParamsLayout` are special but similar: their data elements
-refer to the *actor parameters* (defined as the :attr:`parameters
-<lino.core.actors.Actor.parameters>` attribute of their :class:`Actor
-<lino.core.actors.Actor>`).
+refer to the :term:`actor parameters <actor parameter>`.
 
 And the data elements of an :class:`ActionParamsLayout`
-refer to the *action parameters* 
-(defined as the :attr:`parameters
-<lino.core.actions.Action.parameters>` attribute of their :class:`Action
-<lino.core.actions.Action>`).
+refer to the :term:`action parameters <action parameter>`.
 
 
 
@@ -177,7 +178,7 @@ Writing layouts as classes
 ==========================
 
 In more complex situations it may be preferrable or even necessary to
-define your own layout class.  
+define your own layout class.
 
 You do this by subclassing :class:`DetaiLayout`.  For example::
 
@@ -216,33 +217,47 @@ their template contains at least one newline character or not.
 
 Indentation doesn't matter.
 
-If the `main` panel of a :class:`FormLayout` is horizontal, 
-ExtJS will render the Layout using as a tabbed main panel. 
-If you want a horizontal main panel instead, just insert 
+If the `main` panel of a :class:`FormLayout` is horizontal,
+ExtJS will render the Layout using as a tabbed main panel.
+If you want a horizontal main panel instead, just insert
 a newline somewhere in your main's template. Example::
 
 
   class NoteLayout(dd.FormLayout):
       left = """
-      date type subject 
+      date type subject
       person company
       body
       """
-      
+
       right = """
       uploads.UploadsByController
       cal.TasksByController
       """
-      
+
       # the following will create a tabbed main panel:
-      
+
       main = "left:60 right:30"
-      
+
       # to avoid a tabbed main panel, specify:
       main = """
       left:60 right:30
       """
 
+
+Glossary
+========
+
+.. glossary::
+
+  detail layout
+
+    The layout of a :term:`detail window`.
+    See `The layout of a detail window`_
+
+  column layout
+
+    The string that specifies how `The columns of a table`_ are laid out.
 
 See also
 ========
@@ -250,4 +265,3 @@ See also
 - :doc:`/tutorials/layouts`
 - :ref:`lino.tutorial.polls`.
 - :mod:`lino.core.layouts`
- 

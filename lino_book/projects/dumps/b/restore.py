@@ -31,7 +31,7 @@ if settings.USE_TZ:
 else:
     def dt(*args):
         return datetime(*args)
-        
+
 def new_content_type_id(m):
     if m is None: return m
     ct = settings.SITE.models.contenttypes.ContentType.objects.get_for_model(m)
@@ -39,10 +39,10 @@ def new_content_type_id(m):
     return ct.pk
 
 def pmem():
-    # Thanks to https://stackoverflow.com/questions/938733/total-memory-used-by-python-process    
+    # Thanks to https://stackoverflow.com/questions/938733/total-memory-used-by-python-process
     process = psutil.Process(os.getpid())
     print(process.memory_info().rss)
-    
+
 def execfile(fn, *args):
     logger.info("Execute file %s ...", fn)
     six.exec_(compile(open(fn, "rb").read(), fn, 'exec'), *args)
@@ -54,7 +54,7 @@ def bv2kw(fieldname, values):
     Needed if `Site.languages` changed between dumpdata and loaddata
     """
     return settings.SITE.babelkw(fieldname, en=values[0],de=values[1],fr=values[2])
-    
+
 dumps_Foo = resolve_model("dumps.Foo")
 
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     parser.add_argument('--noinput', dest='interactive',
         action='store_false', default=True,
         help="Don't ask for confirmation before flushing the database.")
-    parser.add_argument('--quick', dest='quick', 
+    parser.add_argument('--quick', dest='quick',
         action='store_true',default=False,
         help='Do not call full_clean() on restored instances.')
 

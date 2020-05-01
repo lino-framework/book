@@ -83,11 +83,13 @@ you can navigate and edit that data.
 - Note the grid's **toolbar** where you have the quick search field
   and a series of buttons for navigating or running actions.
 
+.. image:: toolbar.png
+
 Detail windows
 ==============
 
-While a grid window displays multiple rows of some table, a **detail
-window** displays one row at a time.
+While a grid window displays multiple rows of some table, a :term:`detail
+window` displays one row at a time.
 
 
 .. _slave_panels:

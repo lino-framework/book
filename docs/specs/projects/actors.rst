@@ -1,3 +1,4 @@
+.. doctest docs/specs/projects/actors.rst
 .. _specs.projects.actors:
 
 ======================
@@ -5,40 +6,34 @@ The label of the actor
 ======================
 
 
-..  To test only this document, run::
+This document describes the :mod:`lino_book.projets.actors` demo project, which
+shows different ways of specifying the label of an actor.
 
-       $ doctest docs/specs/projects/actors.rst
-
-    doctest init:
-    >>> from lino import startup
-    >>> startup('lino_book.projects.actors.settings')
-    >>> from lino.api.doctest import *
-    >>> globals().update(rt.models.actors.__dict__)
+.. contents::
+   :local:
+   :depth: 2
 
 
-This document describes the :mod:`lino_book.projets.actors` demo
-project which shows different ways of specifying the label of an
-actor.
+>>> from lino import startup
+>>> startup('lino_book.projects.actors.settings')
+>>> from lino.api.doctest import *
+>>> globals().update(rt.models.actors.__dict__)
+
 
 It was started as a doctest for :blogref:`20130907`.
 
 
-.. contents::
-   :local:
-   :depth: 2   
-
-  
 Here is the :xfile:`models.py` file we will use for this tutorial:
 
 .. literalinclude:: /../../book/lino_book/projects/actors/models.py
-                    
+
 .. literalinclude:: /../../book/lino_book/projects/actors/desktop.py
-  
+
 
 The `label` of an Actor
 -----------------------
 
-If a Table has no explicit `label` attribute, then it 
+If a Table has no explicit `label` attribute, then it
 takes the verbose_name_plural meta option of the model:
 
 >>> print(Partners.label)
@@ -51,7 +46,7 @@ You may specify an explicit constant `label` attribute:
 >>> print(FunnyPersons.label)
 Funny persons
 
-In versions after :blogref:`20130907` this explicit label attribute 
+In versions after :blogref:`20130907` this explicit label attribute
 is also inherited to subclasses:
 
 >>> print(MyFunnyPersons.label)
