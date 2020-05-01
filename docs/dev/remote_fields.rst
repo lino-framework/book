@@ -28,7 +28,7 @@ For this you can do the following:
 >>> qs.count()
 44
 
-Above code is equivalent (but much more efficient) to the following code::
+Above code is equivalent (but much more efficient) to the following code:
 
 >>> len([invoice for invoice in sales.VatProductInvoice.objects.all()
 ...    if invoice.partner.city == eupen])

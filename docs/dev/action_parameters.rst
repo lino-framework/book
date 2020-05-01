@@ -34,9 +34,14 @@ action is actually executed. The fields of this dialog window are called
 
   dialog action
 
-    An action that has :term:`parameters <action parameter>` to be entered by
-    the :term:`end user` in a dialog window before the action itself is being
-    run.
+    An action that opens a dialog window where the :term:`end user`  can specify
+    :term:`action parameters <action parameter>`  before actually running the
+    action.
+
+    An :class:`lino.core.actions.Action` is a :term:`dialog action` if it has
+    :attr:`lino.core.actions.Action.parameters` defined and
+    :attr:`lino.core.actions.Action.no_params_window` has not been enabled.
+
 
 The merge action is an example of an action with parameters.  When you
 click the merge button on a ticket, Lino reacts by popping up a dialog

@@ -50,6 +50,10 @@ This button is available only on tables that do have parameters.
 
   parameter panel
 
+    A panel used to enter :term:`actor parameters <actor parameter>` of an
+    actor. In ExtJS it expands or collapses by clicking the |gear| button in the
+    toolbar.
+
   simple actor parameter
 
     An :term:`actor parameter` that maps to a given database field. For example

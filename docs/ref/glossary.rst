@@ -53,14 +53,6 @@ Glossary
     Context-sensitive ComboBox.
     See :mod:`lino.utils.choices`.
 
-  remote field
-    We sometimes use this term for
-    `field lookups that refer to a joined model    <https://docs.djangoproject.com/en/2.2/topics/db/queries/#lookups-that-span-relationships>`__.
-    For example in a `Table` on a model `Invoice` that has a
-    ForeignKey `customer` to `Partner`,
-    then you can add a column `customer__city`.
-
-
   field lookups
     See https://docs.djangoproject.com/en/2.2/topics/db/queries/#field-lookups
 
@@ -128,17 +120,6 @@ Glossary
   master instance
 
     The database object that acts as master of a :term:`slave table`.
-
-  dialog action
-
-    A dialog action is an action which opens a window where the user
-    can specify "action parameters" before actually running the
-    action.
-
-    An :class:`lino.core.actions.Action` is a dialog action if it has
-    :attr:`lino.core.actions.Action.parameters` defined and
-    :attr:`lino.core.actions.Action.no_params_window` has not been enabled.
-
 
   detail window
 

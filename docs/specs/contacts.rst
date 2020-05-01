@@ -86,7 +86,7 @@ also an address. A partner is never "just a partner", it is always either a
       A natural human person with a gender, first and last name.
       See also :ref:`lino.tutorial.human`.
 
-      You can see the persons in your database via :menulabel:`Contacts -->
+      You can see the persons in your database via :menuselection:`Contacts -->
       Persons`.  They are stored using the :class:`Person` database model.
 
       ..
@@ -99,9 +99,9 @@ also an address. A partner is never "just a partner", it is always either a
       A corporation, company, organization, family or any other potential
       :term:`partner` that is *not* a :term:`person`.
 
-      You can see the organizations in your database via :menulabel:`Contacts
-      --> Organizations`. They are stored using the :class:`Company` database
-      model.
+      You can see the organizations in your database via
+      :menuselection:`Contacts --> Organizations`. They are stored using the
+      :class:`Company` database model.
 
       ..
         >>> show_menu_path('contacts.Companies')
@@ -250,7 +250,7 @@ Models and views
 
 .. class:: Person
 
-    Django model used to represent a :term:`person'.
+    Django model used to represent a :term:`person`.
 
     .. attribute:: first_name
     .. attribute:: last_name
@@ -274,7 +274,7 @@ Models and views
 
 .. class:: Company
 
-    Django model used to represent an :term:`organization'.
+    Django model used to represent an :term:`organization`.
 
     The verbose name is "Organization" while the internal name is "Company"
     because that's easier to type and for historical reasons.
