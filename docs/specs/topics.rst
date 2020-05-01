@@ -32,8 +32,8 @@ topic.
 Users can see a panel "Interests" (:class:`InterestsByPartner`) in the
 detail window of a partner.
 
-They can a row in that panel to specify that this partner is intersted
-in a topic.  They can open the panel in a window to delete interests.
+They can add a row in that panel to specify that this partner is interested in a
+topic.  They can open the panel in a window to delete interests.
 
 A site administrator can configure the list of available topics.
 
@@ -133,4 +133,4 @@ Because :class:`Topic` defines a database field :attr:`Topic.description` the
 virtual field :attr:`lino.core.model.Model.description` is hidden:
 
 >>> sorted(rt.models.topics.Topic._meta.private_fields, key=lambda f: str(f))
-[lino_xl.lib.topics.models.Topic.description, lino_xl.lib.topics.models.Topic.mobile_item, lino_xl.lib.topics.models.Topic.name_column, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
+[lino_xl.lib.topics.models.Topic.description, lino_xl.lib.topics.models.Topic.name_column, lino_xl.lib.topics.models.Topic.overview, lino_xl.lib.topics.models.Topic.workflow_buttons]
