@@ -364,15 +364,17 @@ Links between tickets
 
 >>> rt.show(tickets.LinkTypes)
 ... #doctest: +REPORT_UDIFF
-======= =========== ===========
- value   name        text
-------- ----------- -----------
- 10      requires    Requires
- 20      triggers    Triggers
- 30      suggests    Suggests
- 40      obsoletes   Obsoletes
-======= =========== ===========
+======= ============ ============
+ value   name         text
+------- ------------ ------------
+ 10      requires     Requires
+ 20      triggers     Triggers
+ 30      suggests     Suggests
+ 40      obsoletes    Obsoletes
+ 50      duplicates   Duplicates
+======= ============ ============
 <BLANKLINE>
+
 
 
 

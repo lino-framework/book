@@ -42,7 +42,7 @@ the detail window of a ticket.
       - (general1a_1): **Summary** (summary), **ID** (id)
       - (general1a_2): **Site** (site), **Ticket type** (ticket_type)
       - **Workflow** (workflow_buttons)
-      - **Description** (description)
+      - **Dependencies** (tickets_LinksByTicket) [visible for developer admin]
     - (general1b):
       - (general1b_1): **Author** (user), **End user** (end_user)
       - (general1b_2): **Assign to** (quick_assign_to), **Private** (private)
@@ -56,7 +56,7 @@ the detail window of a ticket.
       - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
       - (more1_2): **State** (state), **Assigned to** (assigned_to), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Resolution** (upgrade_notes), **Dependencies** (tickets_LinksByTicket) [visible for developer admin], **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
+  - (more_2): **Resolution** (upgrade_notes), **Description** (description), **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
 - **Mentions** (comments_CommentsByMentioned)
 <BLANKLINE>
 

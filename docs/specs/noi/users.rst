@@ -189,6 +189,7 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - mailbox.Messages.detail : visible for customer contributor developer admin
 - system.SiteConfigs.detail : visible for admin
 - tickets.Links.detail : visible for developer admin
+- tickets.Links.insert : visible for developer admin
 - tickets.Sites.detail : visible for customer contributor developer admin
 - tickets.Sites.insert : visible for customer contributor developer admin
 - tickets.Sites.merge_row : visible for admin
@@ -196,6 +197,7 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - tickets.Tickets.detail : visible for all
 - tickets.Tickets.insert : visible for customer contributor developer admin
 - tickets.Tickets.merge_row : visible for admin
+- tickets.Tickets.spawn_ticket : visible for all
 - tinymce.TextFieldTemplates.detail : visible for admin
 - tinymce.TextFieldTemplates.insert : visible for admin
 - uploads.UploadTypes.detail : visible for admin

@@ -62,12 +62,15 @@ when you confirm this window.
 <django.db.models.fields.CharField: reason>
 
 
-How to get the layout elements of an action parameter window,
+How to get the layout elements of an action parameter window.
+
+You need the front end.
 
 >>> ui = settings.SITE.kernel.default_ui
 >>> ui
 lino.modlib.extjs (media_name=ext-3.3.1)
 
+This will give you a layout handle:
 
 >>> lh = action.params_layout.get_layout_handle(ui)
 >>> lh #doctest: +ELLIPSIS
@@ -93,9 +96,12 @@ You can **walk** over the elements of a panel:
 ...        print("{} {}".format(e.name, e.__class__.__name__))
 merge_to ForeignKeyElement
 merge_to_ct Wrapper
+tickets_Link BooleanFieldElement
+tickets_Link_ct Wrapper
 reason CharFieldElement
 reason_ct Wrapper
 main ActionParamsPanel
+
 
 
 Calling a parameter action programmatically
@@ -112,7 +118,7 @@ names of the parameter fields:
 >>> ar = ba.request_from(ses, action_param_values=pv)
 Traceback (most recent call last):
 ...
-Exception: Invalid key 'foo' in action_param_values of tickets.AllTickets request (possible keys are ['merge_to', 'reason'])
+Exception: Invalid key 'foo' in action_param_values of tickets.AllTickets request (possible keys are ['merge_to', 'reason', 'tickets_Link'])
 
 Lino does not validate the values when calling it programmatically.
 For example `merge_to` should be a Ticket instance.
@@ -121,7 +127,7 @@ But here we specify an integer value instead, and Lino does not complain:
 >>> pv = dict(merge_to=1, reason="test")
 >>> ar = ba.request_from(ses, action_param_values=pv)
 >>> ar.action_param_values
-{'merge_to': 1, 'reason': 'test'}
+{'merge_to': 1, 'reason': 'test', 'tickets_Link': False}
 
 Basically the following should work as well. (But nobody ever asked us
 to make it possible).
@@ -136,7 +142,7 @@ to make it possible).
 True
 >>> msg = ar.response['message']
 >>> print(tostring(msg))
-<div class="htmlText"><p>Are you sure you want to merge #1 (⛶ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies, 3 Sessions, 8 Comments <b>will get reassigned.</b></li><li>#1 (⛶ Föö fails to bar when baz) will be deleted</li></ul></div>
+<div class="htmlText"><p>Are you sure you want to merge #1 (⛶ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies <b>will be deleted.</b></li><li>3 Sessions, 8 Comments <b>will get reassigned.</b></li><li>#1 (⛶ Föö fails to bar when baz) will be deleted</li></ul></div>
 
 
 
@@ -194,7 +200,9 @@ Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
 - tickets.Sites.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Site summaries** (working_SiteSummary), **Reason** (reason)
 - tickets.Tickets.merge_row : Merge
-  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
+  (main) [visible for all]: **into...** (merge_to), **Dependencies** (tickets_Link), **Reason** (reason)
+- tickets.Tickets.spawn_ticket : Spawn child ticket
+  (main) [visible for all]: **Dependency type** (link_type), **Summary** (ticket_summary)
 - uploads.Volumes.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - users.AllUsers.change_password : Change password
