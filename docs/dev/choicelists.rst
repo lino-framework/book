@@ -29,12 +29,92 @@ their :attr:`name`.  You can subclass the choices and add application logic.
 
 .. include:: /../docs/shared/include/tested.rst
 
-The examples in this document use the :mod:`lino_book.projects.min2` project.
+The examples in this document use the :mod:`lino_book.projects.max` project.
 
 >>> from lino import startup
->>> startup('lino_book.projects.min2.settings.demo')
+>>> startup('lino_book.projects.max.settings.demo')
 >>> from lino.api.doctest import *
 >>> from django.utils import translation
+
+Defining your own ChoiceList
+============================
+
+>>> from lino.api import _
+>>> class MyColors(dd.ChoiceList):
+...     verbose_name_plural = _("My colors")
+>>> MyColors.add_item('01', _("Red"), 'red')
+<core.MyColors.red:01>
+>>> MyColors.add_item('02', _("Green"), 'green')
+<core.MyColors.green:02>
+
+`add_item` takes at least 2 and optionally a third positional argument:
+
+- The first argument (`value`) is used to store this Choice in a database.
+- The second argument (`text`) is what the user sees. It should be translatable.
+- The optional third argument (`names`) is used to install this choice as a class
+  attribute on its ChoiceList.
+
+The `value` must be a string (or `None`, but that's a special usage).
+
+>>> MyColors.add_item(3, _("Blue"), 'blue')
+Traceback (most recent call last):
+...
+Exception: value must be a string
+
+Lino protects you from accidentally adding a choice with the same value of an
+existing choice.
+
+>>> MyColors.add_item("02", _("Blue"), 'blue')
+Traceback (most recent call last):
+...
+Exception: Duplicate value '02' in core.MyColors.
+
+Lino protects you from accidentally adding duplicate entries.
+
+>>> MyColors.add_item("03", _("Blue"), 'green')
+Traceback (most recent call last):
+...
+Exception: An attribute named 'green' is already defined in MyColors
+
+>>> MyColors.add_item("03", _("Blue"), 'verbose_name_plural')
+Traceback (most recent call last):
+...
+Exception: An attribute named 'verbose_name_plural' is already defined in MyColors
+
+You may give multiple names (synonyms) to a choice by specifying them as a
+space-separated list of names. In that case the first name will be the default
+name.
+
+>>> MyColors.add_item("03", _("Blue"), 'blue blau bleu')
+<core.MyColors.blue:03>
+
+>>> MyColors.blue is MyColors.blau
+True
+
+.. hack: the MyColors choicelist is not actually part of the application
+  because we defined only in this doctest. But we can simulate an after-startup
+  in order to show the table.
+
+  >>> MyColors.class_init()
+  >>> MyColors.init_layouts()
+  >>> MyColors.after_site_setup(settings.SITE)
+  True
+
+>>> rt.show(MyColors)
+======= ================ =======
+ value   name             text
+------- ---------------- -------
+ 01      red              Red
+ 02      green            Green
+ 03      blue blau bleu   Blue
+======= ================ =======
+<BLANKLINE>
+
+The items are sorted by their order of creation, not by their value.
+This is visible e.g. in :class:`lino_xl.lib.cal.DurationUnits`.
+
+
+
 
 Examples
 ========
@@ -192,10 +272,10 @@ class attributes on its choicelist so that application code can refer
 to this particular choice.
 
 >>> Weekdays.monday
-<Weekdays.monday:1>
+<cal.Weekdays.monday:1>
 
 >>> Genders.male
-<Genders.male:M>
+<system.Genders.male:M>
 
 
 >>> [g.name for g in Genders.objects()]
@@ -240,17 +320,23 @@ Because :class:`lino_xl.lib.contacts.Person` inherits from
 >>> Person = rt.models.contacts.Person
 >>> list(Person.objects.filter(gender=Genders.male))
 ... # doctest: +ELLIPSIS
-[Person #114 ('Mr Hans Altenberg'), Person #112 ('Mr Andreas Arens'), ...]
+[Person #201 ('Mr Albert Adam'), Person #205 ('Mr Ilja Adam'), ...]
 
+Here is a list of all male first names in our contacts database:
+
+>>> sorted({p.first_name for p in Person.objects.filter(gender=Genders.male)})
+['Albert', 'Alfons', 'Andreas', 'Bernd', 'Bruno', 'Christian', 'Daniel', 'David', 'Denis', 'Dennis', 'Didier', 'Eberhart', 'Edgar', 'Edgard', 'Emil', 'Erich', 'Erwin', 'Fritz', 'Gregory', 'Guido', 'Hans', 'Henri', 'Hubert', 'Ilja', 'Jan', 'Jean', 'Johann', 'Josef', 'Jérémy', 'Jérôme', 'Karl', 'Kevin', 'Lars', 'Laurent', 'Luc', 'Ludwig', 'Marc', 'Mark', 'Michael', 'Otto', 'Paul', 'Peter', 'Philippe', 'Rik', 'Robin', 'Vincent']
+
+The same for the ladies:
+
+>>> sorted({p.first_name for p in Person.objects.filter(gender=Genders.female)})
+['Alice', 'Annette', 'Berta', 'Charlotte', 'Clara', 'Daniela', 'Dora', 'Dorothée', 'Erna', 'Eveline', 'Françoise', 'Gaby', 'Germaine', 'Hedi', 'Hildegard', 'Inge', 'Irene', 'Irma', 'Jacqueline', 'Josefine', 'Laura', 'Line', 'Lisa', 'Marie-Louise', 'Melba', 'Melissa', 'Monique', 'Noémie', 'Odette', 'Pascale', 'Paula', 'Petra', 'Ulrike', 'Õie']
 
 A ChoiceList has an :meth:`get_list_items` method which returns an iterator
 over its choices:
 
 >>> print(Genders.get_list_items())
-[<Genders.male:M>, <Genders.female:F>]
-
-Note that :meth:`objects` is a deprecated alias for :meth:`get_list_items`.
-
+[<system.Genders.male:M>, <system.Genders.female:F>]
 
 Customizing choicelists
 =======================
@@ -298,6 +384,9 @@ Seeing all choicelists in your application
 >>> pprint(choicelist_choices())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 [('about.TimeZones', 'about.TimeZones (Time zones)'),
+ ('addresses.AddressTypes', 'addresses.AddressTypes (Address types)'),
+ ('addresses.DataSources', 'addresses.DataSources (Data sources)'),
+ ('bevat.DeclarationFields', 'bevat.DeclarationFields (Declaration fields)'),
  ('cal.AccessClasses', 'cal.AccessClasses (Access classes)'),
  ('cal.DisplayColors', 'cal.DisplayColors (Display colors)'),
  ('cal.DurationUnits', 'cal.DurationUnits'),
@@ -310,16 +399,83 @@ Seeing all choicelists in your application
  ('cal.TaskStates', 'cal.TaskStates (Task states)'),
  ('cal.Weekdays', 'cal.Weekdays'),
  ('cal.YearMonths', 'cal.YearMonths'),
+ ('calview.Planners', 'calview.Planners'),
+ ('changes.ChangeTypes', 'changes.ChangeTypes (Change Types)'),
  ('checkdata.Checkers', 'checkdata.Checkers (Data checkers)'),
+ ('comments.CommentEvents', 'comments.CommentEvents (Observed events)'),
+ ('concepts.LinkTypes', 'concepts.LinkTypes (Link Types)'),
  ('contacts.CivilStates', 'contacts.CivilStates (Civil states)'),
  ('contacts.PartnerEvents', 'contacts.PartnerEvents (Observed events)'),
  ('countries.PlaceTypes', 'countries.PlaceTypes'),
+ ('courses.CourseAreas', 'courses.CourseAreas (Course layouts)'),
+ ('courses.CourseStates', 'courses.CourseStates (Activity states)'),
+ ('courses.EnrolmentStates', 'courses.EnrolmentStates (Enrolment states)'),
+ ('cv.CefLevel', 'cv.CefLevel (CEF levels)'),
+ ('cv.EducationEntryStates', 'cv.EducationEntryStates'),
+ ('cv.HowWell', 'cv.HowWell'),
+ ('deploy.WishTypes', 'deploy.WishTypes (Wish types)'),
+ ('excerpts.Shortcuts', 'excerpts.Shortcuts (Excerpt shortcuts)'),
+ ('households.MemberDependencies',
+  'households.MemberDependencies (Household Member Dependencies)'),
+ ('households.MemberRoles', 'households.MemberRoles (Household member roles)'),
+ ('humanlinks.LinkTypes', 'humanlinks.LinkTypes (Parency types)'),
+ ('ledger.CommonAccounts', 'ledger.CommonAccounts (Common accounts)'),
+ ('ledger.JournalGroups', 'ledger.JournalGroups (Journal groups)'),
+ ('ledger.PeriodStates', 'ledger.PeriodStates (States)'),
+ ('ledger.TradeTypes', 'ledger.TradeTypes (Trade types)'),
+ ('ledger.VoucherStates', 'ledger.VoucherStates (Voucher states)'),
+ ('ledger.VoucherTypes', 'ledger.VoucherTypes (Voucher types)'),
+ ('notes.SpecialTypes', 'notes.SpecialTypes (Special note types)'),
+ ('notify.MailModes', 'notify.MailModes (Notification modes)'),
+ ('notify.MessageTypes', 'notify.MessageTypes (Message Types)'),
+ ('outbox.RecipientTypes', 'outbox.RecipientTypes'),
+ ('phones.ContactDetailTypes',
+  'phones.ContactDetailTypes (Contact detail types)'),
+ ('polls.PollStates', 'polls.PollStates (Poll states)'),
+ ('polls.ResponseStates', 'polls.ResponseStates (Response states)'),
+ ('postings.PostingStates', 'postings.PostingStates (Posting states)'),
  ('printing.BuildMethods', 'printing.BuildMethods'),
+ ('products.DeliveryUnits', 'products.DeliveryUnits (Delivery units)'),
+ ('products.PriceFactors', 'products.PriceFactors (Price factors)'),
+ ('products.ProductTypes', 'products.ProductTypes (Product types)'),
+ ('properties.DoYouLike', 'properties.DoYouLike'),
+ ('properties.HowWell', 'properties.HowWell'),
  ('system.Genders', 'system.Genders'),
  ('system.PeriodEvents', 'system.PeriodEvents (Observed events)'),
  ('system.YesNo', 'system.YesNo (Yes or no)'),
+ ('tickets.LinkTypes', 'tickets.LinkTypes (Dependency types)'),
+ ('tickets.SiteStates', 'tickets.SiteStates (Site states)'),
+ ('tickets.TicketEvents', 'tickets.TicketEvents (Observed events)'),
+ ('tickets.TicketStates', 'tickets.TicketStates (Ticket states)'),
+ ('uploads.Shortcuts', 'uploads.Shortcuts (Upload shortcuts)'),
+ ('uploads.UploadAreas', 'uploads.UploadAreas (Upload areas)'),
  ('users.UserTypes', 'users.UserTypes (User types)'),
+ ('vat.DeclarationFieldsBase',
+  'vat.DeclarationFieldsBase (Declaration fields)'),
+ ('vat.VatAreas', 'vat.VatAreas (VAT areas)'),
+ ('vat.VatClasses', 'vat.VatClasses (VAT classes)'),
+ ('vat.VatColumns', 'vat.VatColumns (VAT columns)'),
+ ('vat.VatRegimes', 'vat.VatRegimes (VAT regimes)'),
+ ('vat.VatRules', 'vat.VatRules (VAT rules)'),
+ ('votes.Ratings', 'votes.Ratings (Ratings)'),
+ ('votes.VoteEvents', 'votes.VoteEvents (Observed events)'),
+ ('votes.VoteStates', 'votes.VoteStates (Vote states)'),
+ ('working.ReportingTypes', 'working.ReportingTypes (Reporting types)'),
  ('xl.Priorities', 'xl.Priorities (Priorities)')]
 
 The :attr:`lino_xl.lib.properties.PropType.choicelist` field uses this function
 for its choices.
+
+
+
+ChoiceListField
+===============
+
+Example on how to use a ChoiceList in your model::
+
+  from django.db import models
+  from lino.modlib.properties.models import HowWell
+
+  class KnownLanguage(models.Model):
+      spoken = HowWell.field(verbose_name=_("spoken"))
+      written = HowWell.field(verbose_name=_("written"))

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2019 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Runs some tests about reading eID cards.
@@ -10,9 +10,6 @@ You can run only these tests by issuing::
   $ python manage.py test tests.test_beid
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
 
 import os
 import json
@@ -101,7 +98,7 @@ class BeIdTests(RemoteAuthTestCase):
         # simulate_eidreader_path here. Works as well.
         save_path = dd.plugins.beid.simulate_eidreader_path
         dd.plugins.beid.simulate_eidreader_path = None
-        
+
         uuid = 'beid_test_1'
         simulate_eidreader(uuid)
 
@@ -142,14 +139,14 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :\
 <br/>Birth date : '' -> 1968-06-01
 <br/>Birth place : '' -> 'Mons'
 <br/>Country : None -> Country #BE ('Belgium')
-<br/>Gender : None -> <Genders.male:M>
+<br/>Gender : None -> <system.Genders.male:M>
 <br/>ID card valid from : None -> 2016-02-06
 <br/>Locality : None -> Place #1 ('Helsinki')
 <br/>Street : '' -> 'Estland'
 <br/>Zip code : '' -> '1262'
 <br/>eID card issuer : '' -> 'Helsinki'
 <br/>eID card number : '' -> '592382784772'
-<br/>eID card type : None -> <BeIdCardTypes.belgian_citizen:01>
+<br/>eID card type : None -> <beid.BeIdCardTypes.belgian_citizen:01>
 <br/>until : None -> 2026-02-06"""
 
 # Click OK to apply the following changes for JEFFIN Jean (100) :\

@@ -361,10 +361,10 @@ For example you can retrieve a list of course states that are to be
 considered "exposed" (:attr:`Courses.show_exposed`):
 
 >>> courses.CourseStates.filter(is_exposed=True)
-[<CourseStates.draft:10>, <CourseStates.active:20>]
+[<courses.CourseStates.draft:10>, <courses.CourseStates.active:20>]
 
 >>> courses.CourseStates.filter(is_exposed=False)
-[<CourseStates.inactive:30>, <CourseStates.closed:40>]
+[<courses.CourseStates.inactive:30>, <courses.CourseStates.closed:40>]
 
 As an application developer you can redefine the items of
 :class:`CourseStates` in order to adapt it to the needs of your

@@ -430,10 +430,10 @@ Village
 
 
 >>> countries.CountryDrivers.BE.city_types
-[<PlaceTypes.city:50>, <PlaceTypes.municipality:52>, <PlaceTypes.village:70>]
+[<countries.PlaceTypes.city:50>, <countries.PlaceTypes.municipality:52>, <countries.PlaceTypes.village:70>]
 
 >>> countries.CountryDrivers.BE.region_types
-[<PlaceTypes.province:21>]
+[<countries.PlaceTypes.province:21>]
 
 Reproducing #2079
 =================

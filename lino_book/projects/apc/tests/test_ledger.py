@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2018 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 
 """This module contains tests that are run on a demo database without
-any fixture. 
+any fixture.
 
 You can run only these tests by issuing::
 
@@ -13,11 +13,7 @@ You can run only these tests by issuing::
 
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
 from lino.api.shell import dd, ledger, settings
-
 from lino.utils.djangotest import RemoteAuthTestCase
 
 
@@ -31,11 +27,10 @@ class QuickTest(RemoteAuthTestCase):
         obj.full_clean()
         obj.save()
         self.assertEqual(obj.ref, '2015')
-        
+
         obj = ledger.AccountingPeriod()
         obj.full_clean()
         self.assertEqual(
             str(obj),
             'AccountingPeriod(start_date=2015-03-01,'
-            'state=<PeriodStates.open:10>,year=1)')
-
+            'state=<ledger.PeriodStates.open:10>,year=1)')

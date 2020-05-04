@@ -369,11 +369,11 @@ number of net loss operations:
 
 >>> obj = ledger.CommonAccounts.net_loss.get_object()
 >>> obj
-MissingAccount(<CommonAccounts.net_loss:7900>)
+MissingAccount(<ledger.CommonAccounts.net_loss:7900>)
 >>> ledger.Movement.objects.filter(account=obj).count()
 Traceback (most recent call last):
 ...
-TypeError: Field 'id' expected a number but got MissingAccount(<CommonAccounts.net_loss:7900>).
+TypeError: Field 'id' expected a number but got MissingAccount(<ledger.CommonAccounts.net_loss:7900>).
 
 
 

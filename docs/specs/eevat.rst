@@ -239,7 +239,7 @@ when selling a normal product to a private person:
 >>> rule.rate
 Decimal('0.20')
 >>> rule.vat_account
-<CommonAccounts.vat_due:4510>
+<ledger.CommonAccounts.vat_due:4510>
 >>> rule.vat_account.get_object()
 Account #7 ('(4510) VAT due')
 >>> rule.vat_returnable_account is None
@@ -251,7 +251,7 @@ Or selling a normal product to a company outside of Europe:
 >>> rule.rate
 Decimal('0.20')
 >>> rule.vat_account
-<CommonAccounts.vat_due:4510>
+<ledger.CommonAccounts.vat_due:4510>
 >>> rule.vat_returnable_account is None
 True
 
@@ -261,7 +261,7 @@ Or selling a normal product to a company in another country of the European Unio
 >>> rule.rate
 Decimal('0.20')
 >>> rule.vat_account
-<CommonAccounts.vat_due:4510>
+<ledger.CommonAccounts.vat_due:4510>
 >>> rule.vat_returnable_account is None
 True
 
@@ -432,22 +432,22 @@ and a partner located in the United States will be in the "International" area.
 
 >>> ee = countries.Country(isocode='EE')
 >>> vat.VatAreas.get_for_country(ee)
-<VatAreas.national:10>
+<vat.VatAreas.national:10>
 
 >>> list(rt.models.vat.get_vat_regime_choices(ee))
-[<VatRegimes.normal:10>, <VatRegimes.subject:20>, <VatRegimes.cocontractor:25>, <VatRegimes.tax_free:40>, <VatRegimes.exempt:60>]
+[<vat.VatRegimes.normal:10>, <vat.VatRegimes.subject:20>, <vat.VatRegimes.cocontractor:25>, <vat.VatRegimes.tax_free:40>, <vat.VatRegimes.exempt:60>]
 
 >>> nl = countries.Country(isocode='NL')
 >>> vat.VatAreas.get_for_country(nl)
-<VatAreas.eu:20>
+<vat.VatAreas.eu:20>
 >>> list(rt.models.vat.get_vat_regime_choices(nl))
-[<VatRegimes.normal:10>, <VatRegimes.intracom:30>, <VatRegimes.tax_free:40>, <VatRegimes.exempt:60>]
+[<vat.VatRegimes.normal:10>, <vat.VatRegimes.intracom:30>, <vat.VatRegimes.tax_free:40>, <vat.VatRegimes.exempt:60>]
 
 >>> us = countries.Country(isocode='US')
 >>> vat.VatAreas.get_for_country(countries.Country(isocode='US'))
-<VatAreas.international:30>
+<vat.VatAreas.international:30>
 >>> list(rt.models.vat.get_vat_regime_choices(us))
-[<VatRegimes.normal:10>, <VatRegimes.tax_free:40>, <VatRegimes.outside:50>, <VatRegimes.exempt:60>]
+[<vat.VatRegimes.normal:10>, <vat.VatRegimes.tax_free:40>, <vat.VatRegimes.outside:50>, <vat.VatRegimes.exempt:60>]
 
 
 Intracom
@@ -676,7 +676,7 @@ Note that above is for purchases only. Intra-Community *sales* invoices have no
 
 >>> invoice = rt.models.sales.VatProductInvoice.objects.get(number=4, accounting_period__year__ref='2018')
 >>> invoice.vat_regime
-<VatRegimes.intracom:30>
+<vat.VatRegimes.intracom:30>
 
 >>> rt.show('vat.MovementsByVoucher', invoice)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE

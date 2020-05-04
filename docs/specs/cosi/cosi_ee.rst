@@ -108,7 +108,7 @@ the town's name when a zip code is known:
 >>> print(city)
 Kesklinn
 >>> city.type
-<PlaceTypes.township:55>
+<countries.PlaceTypes.township:55>
 >>> p = contacts.Person(first_name="Kati", last_name="Kask", 
 ...     street="Tartu mnt", street_no="71", street_box="-5", 
 ...     zip_code="10115", country=eesti, city=city)
@@ -121,7 +121,7 @@ And yet another rule for countryside addresses:
 
 >>> city = countries.Place.objects.get(name="Vana-Vigala")
 >>> city.type
-<PlaceTypes.village:70>
+<countries.PlaceTypes.village:70>
 >>> p = contacts.Person(first_name="Kati", last_name="Kask", 
 ...     street="Hirvepargi", street_no="123", 
 ...     zip_code="78003", country=eesti, city=city)

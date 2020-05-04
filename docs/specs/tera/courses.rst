@@ -113,7 +113,7 @@ Every course line knows which its layout.
 Some course tables have a fixed course layout, some don't.
 
 >>> courses.LifeGroups._course_area
-<CourseAreas.life_groups:LG>
+<courses.CourseAreas.life_groups:LG>
 
 >>> print(courses.AllActivities._course_area)
 None

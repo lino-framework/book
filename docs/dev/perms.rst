@@ -161,7 +161,7 @@ Just some examples...
 >>> UserTypes = rt.models.users.UserTypes
 
 >>> UserTypes.admin
-users.UserTypes.admin:900
+<users.UserTypes.admin:900>
 
 >>> UserTypes.admin.role  #doctest: +ELLIPSIS
 <lino_xl.lib.xl.user_types.SiteAdmin object at ...>
@@ -174,7 +174,7 @@ False
 
 >>> robin = users.User.objects.get(username='robin')
 >>> robin.user_type  #doctest: +ELLIPSIS
-users.UserTypes.admin:900
+<users.UserTypes.admin:900>
 
 >>> robin.user_type.role  #doctest: +ELLIPSIS
 <lino_xl.lib.xl.user_types.SiteAdmin object at ...>

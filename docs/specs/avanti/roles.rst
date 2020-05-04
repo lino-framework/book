@@ -69,7 +69,7 @@ Coordinator
 ===========
 
 >>> rt.login('martina').user.user_type
-users.UserTypes.coordinator:400
+<users.UserTypes.coordinator:400>
 
 >>> rt.login('martina').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
@@ -82,7 +82,7 @@ Secretary
 =========
 
 >>> rt.login('sandra').user.user_type
-users.UserTypes.secretary:410
+<users.UserTypes.secretary:410>
 
 >>> rt.login('sandra').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP

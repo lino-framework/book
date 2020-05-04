@@ -52,11 +52,11 @@ Concepts
 
 >>> a = UserTypes.admin
 >>> a
-users.UserTypes.admin:900
+<users.UserTypes.admin:900>
 
 >>> u = UserTypes.user
 >>> u
-users.UserTypes.user:100
+<users.UserTypes.user:100>
 
 >>> AllLanguageKnowledges.required_roles == {cv.CareerStaff}
 True

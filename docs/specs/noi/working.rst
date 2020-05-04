@@ -199,7 +199,7 @@ A service report currently contains three tables:
 
 >>> obj = working.ServiceReport.objects.get(pk=1)
 >>> obj.printed_by.build_method
-<BuildMethods.weasy2html:weasy2html>
+<printing.BuildMethods.weasy2html:weasy2html>
 
 
 >>> obj.interesting_for

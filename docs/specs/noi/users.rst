@@ -44,16 +44,21 @@ User types
 A :ref:`noi` site has the following user types:
 
 >>> rt.show(users.UserTypes)
-======= ============= ===============
- value   name          text
-------- ------------- ---------------
- 000     anonymous     Anonymous
- 100     customer      Customer
- 200     contributor   Contributor
- 400     developer     Developer
- 900     admin         Administrator
-======= ============= ===============
+======= =============== ===============
+ value   name            text
+------- --------------- ---------------
+ 000     anonymous       Anonymous
+ 100     customer user   Customer
+ 200     contributor     Contributor
+ 400     developer       Developer
+ 900     admin           Administrator
+======= =============== ===============
 <BLANKLINE>
+
+Note that "Customer" has two internal names.
+
+>>> users.UserTypes.customer is users.UserTypes.user
+True
 
 
 A **customer** is somebody who uses some part of the software being developed by
@@ -75,9 +80,9 @@ Here is a list of user types of those who can work on tickets:
 
 And here are those who don't work:
 
->>> [p.name for p in UserTypes.items()
+>>> [p for p in UserTypes.get_list_items()
 ...    if not p.has_required_roles([Worker])]
-['anonymous', 'customer']
+[<users.UserTypes.anonymous:000>, <users.UserTypes.customer:100>]
 
 
 User roles and permissions

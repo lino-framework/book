@@ -670,14 +670,14 @@ Here is an overview of the different cases of item descriptions.
 ...     fmt(i)
 ...     cases.add(k)
 ...  #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
-=== (True, True, True, True, True, True, <Recurrencies.once:O>) ===
+=== (True, True, True, True, True, True, <cal.Recurrencies.once:O>) ===
 --- Invoice #1 for enrolment #1 (001 Greece 2014 / Hans Altenberg (MEL)):
 Title: Enrolment to 001 Greece 2014
 Start date:
 Description:
 Date: 14/08/2014-20/08/2014.
 Fee: Journeys.
-=== (True, True, False, True, True, True, <Recurrencies.weekly:W>) ===
+=== (True, True, False, True, True, True, <cal.Recurrencies.weekly:W>) ===
 --- Invoice #2 for enrolment #4 (004 comp (First Steps) / Laurent Bastiaensen (ME)):
 Title: Enrolment to 004 comp (First Steps)
 Start date:
@@ -686,7 +686,7 @@ Time: Every Wednesday 17:30-19:00.
 Fee: 20€.
 Scheduled dates:
 19/03/2014, 26/03/2014, 02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014,
-=== (True, False, False, False, True, False, <Recurrencies.weekly:W>) ===
+=== (True, False, False, False, True, False, <cal.Recurrencies.weekly:W>) ===
 --- Invoice #3 for enrolment #5 (007C WWW (Internet for beginners) / Ulrike Charlier (ME)):
 Title: [1] Enrolment to 007C WWW (Internet for beginners)
 Start date: 08/11/2014
@@ -695,14 +695,14 @@ Description:
 Time: Every Wednesday 17:30-19:00.
 Fee: 48€/8 hours.
 Your start date: 08/11/2014.
-=== (True, True, False, True, True, False, <Recurrencies.weekly:W>) ===
+=== (True, True, False, True, True, False, <cal.Recurrencies.weekly:W>) ===
 --- Invoice #3 for enrolment #6 (009C BT (Belly dancing) / Ulrike Charlier (ME)):
 Title: [1] Enrolment to 009C BT (Belly dancing)
 Start date:
 Description:
 Time: Every Wednesday 19:00-20:00.
 Fee: 64€/12 hours.
-=== (True, False, False, False, True, True, <Recurrencies.weekly:W>) ===
+=== (True, False, False, False, True, True, <cal.Recurrencies.weekly:W>) ===
 --- Invoice #5 for enrolment #12 (018 SV (Self-defence) / Dorothée Demeulenaere (ME)):
 Title: Enrolment to 018 SV (Self-defence)
 Start date: 18/03/2015
@@ -712,7 +712,7 @@ Time: Every Friday 18:00-19:00.
 Fee: 20€.
 Scheduled dates:
 20/03/2015, 27/03/2015, 10/04/2015, 17/04/2015,
-=== (False, True, True, True, True, True, <Recurrencies.once:O>) ===
+=== (False, True, True, True, True, True, <cal.Recurrencies.once:O>) ===
 --- Invoice #11 for enrolment #31 (001 Greece 2014 / Jacqueline Jacobs (ME)):
 Title: Enrolment to 001 Greece 2014
 Start date:
@@ -720,7 +720,7 @@ Description:
 Places used: 2.
 Date: 14/08/2014-20/08/2014.
 Fee: Journeys.
-=== (True, False, True, False, True, True, <Recurrencies.once:O>) ===
+=== (True, False, True, False, True, True, <cal.Recurrencies.once:O>) ===
 --- Invoice #18 for enrolment #61 (001 Greece 2014 / Christian Radermacher (MEL)):
 Title: Enrolment to 001 Greece 2014
 Start date: 29/08/2014
