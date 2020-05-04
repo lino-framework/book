@@ -165,8 +165,3 @@ Technical stuff
    dpy
    jsgen
    html
-
-.. toctree::
-   :hidden:
-
-   openui5

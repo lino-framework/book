@@ -263,7 +263,7 @@ The local site admin can adapt above list to the site's needs. He also
 defines a default reporting type:
 
 >>> dd.plugins.working.default_reporting_type
-<ReportingTypes.regular:10>
+<working.ReportingTypes.regular:10>
 
 
 Class reference
