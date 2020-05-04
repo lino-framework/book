@@ -67,8 +67,8 @@ ns = setup_from_tasks(
         'lino_book.projects.de_BE',
         'lino_book.projects.auto_create',
         'lino_book.projects.addrloc',
-        'lino_openui5.projects.teamUi5',
-        'lino_openui5.projects.lydiaUi5',
+        # 'lino_openui5.projects.teamUi5',
+        # 'lino_openui5.projects.lydiaUi5',
 
         # 'lino_book/projects/diamond',
         # 'lino_book/projects/diamond2',

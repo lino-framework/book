@@ -61,8 +61,7 @@ How getlino creates a database and grants permissions::
 
 See which databases are installed on this server::
 
-    $ sudo mysql -u root -p
-    mysql> show databases;
+    $ sudo mysql -u root -p -e "show databases;"
 
 
 .. And then of course you set DATABASES in your :xfile:`settings.py`

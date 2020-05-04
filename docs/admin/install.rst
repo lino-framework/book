@@ -12,23 +12,44 @@ Setting up a Lino production server
 Here is a set of conventions we suggest to use as a :term:`site maintainer` when
 setting up a Lino :term:`production server`.
 
+Set up a master environment
+===========================
 
-Install getlino and run ``getlino configure``
-=============================================
+If you are the first :term:`site maintainers <site maintainer>` on this
+:term:`production server`, you must set up the :term:`master environment`.
 
-Install :mod:`getlino` into a shared virtual environment outside of your home::
+.. glossary::
+
+  master environment
+
+    A virtualenv to be used as default virtualenv for all :term:`site
+    maintainers <site maintainer>` on this :term:`production server`.  It mainly
+    contains :ref:`getlino`.
+
+The :term:`master environment` should be outside of your home::
 
     $ sudo mkdir /usr/local/lino/shared/env
     $ cd /usr/local/lino/shared/env
     $ sudo chown root:www-data .
     $ sudo chmod g+ws .
     $ virtualenv -p python3 master
-    $ . master/bin/activate
+    $ . /usr/local/lino/shared/env/master/bin/activate
+
+Add the following line to your :xfile:`.bashrc`::
+
+    . /usr/local/lino/shared/env/master/bin/activate
+
+
+Install getlino and run ``getlino configure``
+=============================================
+
+Install :mod:`getlino` into the :term:`master environment`::
+
     $ pip install getlino
 
 Run :cmd:`getlino configure` as root::
 
-   $ sudo env PATH=$PATH getlino configure --appy --https
+   $ sudo env PATH=$PATH getlino configure --no-clone --appy --https
 
 The ``env PATH=$PATH`` is needed to work around the controversial Debian feature
 of overriding the :envvar:`PATH` for security reasons (`source

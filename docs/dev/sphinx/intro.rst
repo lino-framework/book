@@ -101,17 +101,49 @@ prosa style (:ticket:`1869`).
 
 .. The following tries to reproduce :ticket:`3614`, which occurred only on :ref:`travis`.
 
-  >>> from lino import startup
-  >>> startup('lino_book.projects.max.settings.demo')
-  >>> # from lino.api.doctest import *
+    >>> from lino import startup
+    >>> startup('lino_book.projects.max.settings.demo')
+    20200504 add users.UserTypes anonymous 000 (Anonymous)
+    20200504 add users.UserTypes user 100 (User)
+    20200504 add users.UserTypes admin 900 (Administrator)
 
-  >>> import lino.core.user_types
-  >>> import lino_xl.lib.xl.user_types
-  >>> import lino_book.projects.anna.user_types
-  >>> import lino_noi.lib.noi.user_types
-  >>> import lino_cosi.lib.cosi.user_types
-  >>> import lino_avanti.lib.avanti.user_types
-  >>> import lino_vilma.lib.vilma.user_types
-  >>> import lino_voga.lib.voga.user_types
-  >>> import lino_tera.lib.tera.user_types
-  >>> import lino_care.lib.care.user_types
+    >>> # from lino.api.doctest import *
+
+    >>> import lino.core.user_types
+    20200504 clear users.UserTypes anonymous 000 (Anonymous)
+    20200504 clear users.UserTypes user 100 (User)
+    20200504 clear users.UserTypes admin 900 (Administrator)
+    20200504 add users.UserTypes anonymous 000 (Anonymous)
+    20200504 add users.UserTypes user 100 (User)
+    20200504 add users.UserTypes admin 900 (Administrator)
+    >>> import lino_book.projects.anna.user_types
+    20200504 clear users.UserTypes anonymous 000 (Anonymous)
+    20200504 clear users.UserTypes user 100 (User)
+    20200504 clear users.UserTypes admin 900 (Administrator)
+    20200504 add users.UserTypes anonymous 000 (Anonymous)
+    20200504 add users.UserTypes user 100 (User)
+    20200504 add users.UserTypes connector 500 (Connector)
+    20200504 add users.UserTypes admin 900 (Administrator)
+    >>> import lino_noi.lib.noi.user_types
+    20200504 clear users.UserTypes anonymous 000 (Anonymous)
+    20200504 clear users.UserTypes user 100 (User)
+    20200504 clear users.UserTypes connector 500 (Connector)
+    20200504 clear users.UserTypes admin 900 (Administrator)
+    20200504 add users.UserTypes anonymous 000 (Anonymous)
+    20200504 add users.UserTypes customer 100 (Customer)
+    20200504 add users.UserTypes contributor 200 (Contributor)
+    20200504 add users.UserTypes developer 400 (Developer)
+    20200504 add users.UserTypes admin 900 (Administrator)
+    >>> import lino_cosi.lib.cosi.user_types
+    20200504 clear users.UserTypes anonymous 000 (Anonymous)
+    20200504 clear users.UserTypes customer 100 (Customer)
+    20200504 clear users.UserTypes contributor 200 (Contributor)
+    20200504 clear users.UserTypes developer 400 (Developer)
+    20200504 clear users.UserTypes admin 900 (Administrator)
+    20200504 add users.UserTypes anonymous 000 (Anonymous)
+    20200504 add users.UserTypes admin 900 (Administrator)
+    >>> import lino_avanti.lib.avanti.user_types
+    >>> import lino_vilma.lib.vilma.user_types
+    >>> import lino_voga.lib.voga.user_types
+    >>> import lino_tera.lib.tera.user_types
+    >>> import lino_care.lib.care.user_types
