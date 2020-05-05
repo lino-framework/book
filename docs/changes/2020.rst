@@ -14,6 +14,13 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-05-04
+==========
+
+Released Lino 20.5.1 and XL 20.4.2. With several internal optimizations that
+caused the test suites of book, presto, amici and welfare to fail.
+
+
 2020-04-21
 ==========
 
