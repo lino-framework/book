@@ -13,6 +13,10 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-05-13
+==========
+
+Fixed :ticket:`3637` (can only concatenate str (not "__proxy__") to str).
 
 2020-05-04
 ==========
