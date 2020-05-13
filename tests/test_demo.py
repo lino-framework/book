@@ -110,6 +110,9 @@ class TestCase(TestCase):
     def test_min2(self):
         self.run_django_manage_test("lino_book/projects/min2")
 
+    def test_min9(self):
+        self.run_django_manage_test("lino_book/projects/min9")
+
     def test_apc(self):
         self.run_django_manage_test('lino_book/projects/apc')
 
@@ -133,6 +136,9 @@ class TestCase(TestCase):
 
     def test_lydia(self):
         self.run_django_manage_test('lino_book/projects/lydia')
+
+    def test_roger(self):
+        self.run_django_manage_test('lino_book/projects/roger')
 
     def test_nomti(self):
         self.run_django_manage_test('lino_book/projects/nomti')

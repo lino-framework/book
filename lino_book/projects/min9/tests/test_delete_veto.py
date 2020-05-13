@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2017 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 
@@ -8,23 +8,21 @@ any fixture.
 
 You can run only these tests by issuing::
 
-  $ cd lino_book/projects/min2
-  $ python manage.py test
+  $ cd lino_book/projects/min9
+  $ python manage.py test tests.test_delete_veto
 
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
-import logging
-logger = logging.getLogger(__name__)
+import logging ; logger = logging.getLogger(__name__)
 
 from atelier.utils import AttrDict
 import json
 
 from lino.api.shell import *
-
+from pprint import pprint
+from lino.utils.instantiator import create_row as create
 from lino.utils.djangotest import RemoteAuthTestCase
+from lino.utils.jsgen import py2js
 
 
 class QuickTest(RemoteAuthTestCase):
@@ -66,22 +64,22 @@ class QuickTest(RemoteAuthTestCase):
         s = contacts.RolesByCompany.request(o1).to_rst()
         # print('\n'+s)
         self.assertEqual(s, """\
-========== ==============
- Person     Contact Role
----------- --------------
+========== ==========
+ Person     Function
+---------- ----------
  John Doe
-========== ==============
+========== ==========
 
 """)
 
         s = contacts.RolesByCompany.request(o2).to_rst()
         # print('\n'+s)
         self.assertEqual(s, """\
-=========== ==============
- Person      Contact Role
------------ --------------
+=========== ==========
+ Person      Function
+----------- ----------
  Johny Doe
-=========== ==============
+=========== ==========
 
 """)
         # ba = contacts.Persons.get_action_by_name('merge_row')
@@ -106,14 +104,20 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(res.status_code, 200)
         res = AttrDict(json.loads(res.content))
         # print(res)
-        expected = '<div class="htmlText"><p>Are you sure you want to merge John Doe into Johny Doe?</p><ul><li>1 Contact persons, 1 Presences <b>will get reassigned.</b></li><li>John Doe will be deleted</li></ul></div>'
+        expected = '<div class="htmlText"><p>Are you sure you want to merge John Doe into Johny Doe?</p><ul><li>1 Presences, 1 Contact persons <b>will get reassigned.</b></li><li>John Doe will be deleted</li></ul></div>'
         self.assertEqual(res.message, expected)
         self.assertEqual(res.success, True)
         self.assertEqual(res.close_window, True)
-        self.assertEqual(res.xcallback['buttons'], {'yes': 'Yes', 'no': 'No'})
+        self.assertEqual(res.xcallback['buttons'], [['yes', 'Yes'], ['no', 'No']])
         self.assertEqual(res.xcallback['title'], "Confirmation")
 
-        url = "/callbacks/{}/yes".format(res.xcallback['id'])
+        pprint(res.xcallback)
+        cbid = res.xcallback['id']
+        cbid = py2js(res.xcallback['id'])
+        print(cbid)
+        # cbid = json.loads(cbid)
+        url = "/callbacks/{}/yes".format(cbid)
+        print(url)
         res = self.client.get(url, REMOTE_USER='root')
         self.assertEqual(res.status_code, 200)
         res = AttrDict(json.loads(res.content))

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017-2018 Rumma & Ko Ltd
+# Copyright 2017-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Tests about how Lino computes whether there are still available
@@ -13,9 +13,6 @@ To run just this test::
 
 """
 
-from __future__ import unicode_literals
-
-from builtins import str
 from lino.api import rt
 from lino.api.shell import courses
 from lino.api.shell import users
@@ -24,15 +21,7 @@ from django.conf import settings
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
 from lino.modlib.users.choicelists import UserTypes
-
 from lino.utils.instantiator import create_row as create
-
-# def create(model, **kwargs):
-#     obj = model(**kwargs)
-#     obj.full_clean()
-#     obj.save()
-#     return obj
-    
 
 class QuickTest(RemoteAuthTestCase):
     maxDiff = None
@@ -46,7 +35,7 @@ class QuickTest(RemoteAuthTestCase):
         EnrolmentStates = rt.models.courses.EnrolmentStates
         EventType = rt.models.cal.EventType
 
-        
+
         # room = create(cal.Room, name="First Room")
         lesson = create(EventType, name="Lesson", event_label="Lesson")
         line = create(Line, name="First Line", event_type=lesson)
@@ -90,7 +79,7 @@ class QuickTest(RemoteAuthTestCase):
         # 2016-01-01 : 3 participants
         # 2016-05-01 : bert leaves. 2 participants
         # 2016-06-01 : claire starts. 3 participants
-        
+
         ENR(anna, i2d(20160101))
         ENR(bert, i2d(20160101), end_date=i2d(20160501))
         ENR(claire, i2d(20160601))
@@ -101,13 +90,13 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(obj.get_free_places(i2d(20160301)), 0)
         self.assertEqual(obj.get_free_places(i2d(20160531)), 1)
         self.assertEqual(obj.get_free_places(i2d(20161231)), 0)
-        
+
         #self.assertEqual(enr.get_confirm_veto(None), '')
 
         # 20180731 the default value for the enrolment state was a
         # string which became an EnrolmentStates choice only during
         # full_clean().  Now this case is being resolved in
         # ChoiceListField.__init__().
-        
+
         enr = Enrolment(course=obj, pupil=anna)
         self.assertEqual(enr.state, EnrolmentStates.requested)
