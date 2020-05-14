@@ -1,19 +1,16 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2017 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """Tests about generating automatic events of a course.  Look at the
 source code!
 
 To run just this test::
 
-  $ cd go roger
-  $ python manage.py test
+  $ go roger
+  $ python manage.py test tests.test_faggio
 
 """
 
-from __future__ import unicode_literals
-
-from builtins import str
 from lino.api.shell import cal
 from lino.api.shell import courses
 from lino.api.shell import users
@@ -29,14 +26,14 @@ def create(model, **kwargs):
     obj.full_clean()
     obj.save()
     return obj
-    
+
 
 class QuickTest(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
         # Create a room, event type, series and a course
-        
+
         room = create(cal.Room, name="First Room")
         lesson = create(cal.EventType, name="Lesson", event_label="Lesson")
         line = create(courses.Line, name="First Line", event_type=lesson)
@@ -63,17 +60,17 @@ class QuickTest(RemoteAuthTestCase):
 
         # utility function which runs update_events and checks whether
         # info_message and output of cal.EntriesByController are as
-        # expected:        
+        # expected:
         def check_update(obj, msg1, msg2):
             res = ses.run(obj.do_update_events)
             self.assertEqual(res['success'], True)
             print(res['info_message'])
-            self.assertEqual(res['info_message'].strip(), msg1.strip())
+            self.assertEquivalent(res['info_message'].strip(), msg1.strip())
             ar = ses.spawn(cal.EntriesByController, master_instance=obj)
             s = ar.to_rst(column_names="when_text state summary", nosummary=True)
             # print(s)
-            self.assertEqual(s.strip(), msg2.strip())
-            
+            self.assertEquivalent(s.strip(), msg2.strip())
+
         # Run do_update_events a first time
         check_update(obj, """
 Update Events for Activity #1...
@@ -88,17 +85,17 @@ Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 13/01/2014   Suggested   Lesson 1
- Mon 20/01/2014   Suggested   Lesson 2
- Mon 27/01/2014   Suggested   Lesson 3
- Mon 03/02/2014   Suggested   Lesson 4
  Mon 10/02/2014   Suggested   Lesson 5
+ Mon 03/02/2014   Suggested   Lesson 4
+ Mon 27/01/2014   Suggested   Lesson 3
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 13/01/2014   Suggested   Lesson 1
 ================ =========== ===================
 """)
-        
+
         # Decrease max_events and check whether the superfluous events
         # get removed.
-        
+
         obj.max_events = 3
         check_update(obj, """
 Update Events for Activity #1...
@@ -107,12 +104,12 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 3).
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 13/01/2014   Suggested   Lesson 1
- Mon 20/01/2014   Suggested   Lesson 2
  Mon 27/01/2014   Suggested   Lesson 3
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 13/01/2014   Suggested   Lesson 1
 ================ =========== ===================
 """)
-        
+
         # Run do_update_events for 5 events a second time
         obj.max_events = 5
         check_update(obj, """
@@ -124,15 +121,15 @@ Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 13/01/2014   Suggested   Lesson 1
- Mon 20/01/2014   Suggested   Lesson 2
- Mon 27/01/2014   Suggested   Lesson 3
- Mon 03/02/2014   Suggested   Lesson 4
  Mon 10/02/2014   Suggested   Lesson 5
+ Mon 03/02/2014   Suggested   Lesson 4
+ Mon 27/01/2014   Suggested   Lesson 3
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 13/01/2014   Suggested   Lesson 1
 ================ =========== ===================
 """)
 
-        
+
         # Now we want to skip the 2nd event.  We click on "Move next"
         # on this event. Lino then moves all subsequent events
         # accordingly.
@@ -170,11 +167,11 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 13/01/2014   Suggested   Lesson 1
- Mon 27/01/2014   Draft       Lesson 2
- Mon 03/02/2014   Suggested   Lesson 3
- Mon 10/02/2014   Suggested   Lesson 4
  Mon 17/02/2014   Suggested   Lesson 5
+ Mon 10/02/2014   Suggested   Lesson 4
+ Mon 03/02/2014   Suggested   Lesson 3
+ Mon 27/01/2014   Draft       Lesson 2
+ Mon 13/01/2014   Suggested   Lesson 1
 ================ =========== ===================
 """)
 
@@ -196,7 +193,7 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
         expected = """\
 Update Events for National Day...
 Generating events between 2014-02-03 and 2020-05-22 (max. 72).
-Reached upper date limit 2020-05-22
+Reached upper date limit 2020-05-22 for 7
 Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
 Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
 Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
@@ -214,19 +211,19 @@ Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0
 ================ ===========
  When             State
 ---------------- -----------
- Mon 03/02/2014   Suggested
- Tue 03/02/2015   Suggested
- Wed 03/02/2016   Suggested
- Fri 03/02/2017   Suggested
- Sat 03/02/2018   Suggested
- Sun 03/02/2019   Suggested
  Mon 03/02/2020   Suggested
+ Sun 03/02/2019   Suggested
+ Sat 03/02/2018   Suggested
+ Fri 03/02/2017   Suggested
+ Wed 03/02/2016   Suggested
+ Tue 03/02/2015   Suggested
+ Mon 03/02/2014   Suggested
 ================ ===========
 
 """)
 
-        # the national day is now conflicting with our Lesson 3:
-        ce = ar[0]
+        # the national day 2014 is now conflicting with our Lesson 3:
+        ce = ar[6]
         self.assertEqual(ce.summary, "National Day")
         self.assertEqual(ce.start_date.year, 2014)
         ar = ses.spawn(
@@ -250,7 +247,7 @@ Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-Lesson 4 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring event #1 National Day')]>, moving to 2014-02-10. 
+Lesson 4 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring event #1 National Day')]>, moving to 2014-02-10.
 Update presences for Activity #1 Lesson 1 : 0 created, 0 unchanged, 0 deleted.
 Update presences for Activity #1 Lesson 2 : 0 created, 0 unchanged, 0 deleted.
 Update presences for Activity #1 Lesson 3 : 0 created, 0 unchanged, 0 deleted.
@@ -261,18 +258,18 @@ Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 13/01/2014   Suggested   Lesson 1
- Mon 20/01/2014   Suggested   Lesson 2
- Mon 27/01/2014   Suggested   Lesson 3
- Mon 10/02/2014   Suggested   Lesson 4
  Mon 17/02/2014   Suggested   Lesson 5
+ Mon 10/02/2014   Suggested   Lesson 4
+ Mon 27/01/2014   Suggested   Lesson 3
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 13/01/2014   Suggested   Lesson 1
 ================ =========== ===================
 """)
 
         # we move the first lesson one week down and check whether
         # remaining entries get adapted. We manually set the state to
         # draft (this is automatically done when using the web ui).
-        
+
         e = cal.Event.objects.get(event_type=lesson, auto_type=1)
         e.start_date = i2d(20140120)
         e.state = cal.EntryStates.draft
@@ -282,21 +279,21 @@ Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-27 and 2020-05-22 (max. 5).
-Lesson 3 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring event #1 National Day')]>, moving to 2014-02-10. 
+Lesson 3 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring event #1 National Day')]>, moving to 2014-02-10.
 0 row(s) have been updated.
         """, """
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
- Mon 20/01/2014   Draft       Lesson 1
- Mon 27/01/2014   Suggested   Lesson 2
- Mon 10/02/2014   Suggested   Lesson 3
- Mon 17/02/2014   Suggested   Lesson 4
  Mon 24/02/2014   Suggested   Lesson 5
+ Mon 17/02/2014   Suggested   Lesson 4
+ Mon 10/02/2014   Suggested   Lesson 3
+ Mon 27/01/2014   Suggested   Lesson 2
+ Mon 20/01/2014   Draft       Lesson 1
 ================ =========== ===================
 """)
 
-        # we cancel the third lesson and see whether Lino adds a 
+        # we cancel the third lesson and see whether Lino adds a
 
         e = cal.Event.objects.get(event_type=lesson, auto_type=3)
         e.state = cal.EntryStates.cancelled

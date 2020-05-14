@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2014-2016 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test certain aspects of `lino_xl.lib.addresses`.
@@ -7,22 +7,10 @@
 This module is part of the Lino test suite. You can test only this
 module by issuing either::
 
-  $ go min2
+  $ go min9
   $ python manage.py test tests.test_addresses
 
-or::
-
-  $ go lino
-  $ python setup.py test -s tests.ProjectsTests.test_min2
-
-
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
-
-import logging
-logger = logging.getLogger(__name__)
 
 from lino.core.gfks import gfk2lookup
 from lino.api import rt
@@ -57,14 +45,14 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(Address.ADDRESS_FIELDS, set([
             'city', 'street_box', 'region', 'street_no',
             'street', 'addr2', 'addr1', 'country', 'zip_code']))
-        
+
         def assert_check(obj, expected):
             qs = Problem.objects.filter(**gfk2lookup(Problem.owner, obj))
             got = '\n'.join([p.message for p in qs])
             self.assertEqual(got, expected)
 
         obj = create(Company, name="Owner with empty address")
-        obj.check_data(ar, fix=False)
+        obj.check_data.run_from_code(ar, fix=False)
         assert_check(obj, '')
         obj.delete()
 
@@ -77,14 +65,14 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(Address.objects.count(), 0)
 
         assert_check(doe, '')  # No problems yet since not checked
-        doe.check_data(ar, fix=False)
+        doe.check_data.run_from_code(ar, fix=False)
         assert_check(
             doe, '(\u2605) Owner with address, but no address record.')
 
         addr = doe.get_primary_address()
         self.assertEqual(addr, None)
 
-        doe.check_data(ar, fix=True)
+        doe.check_data.run_from_code(ar, fix=True)
         assert_check(doe, '')  # problem has been fixed
         addr = doe.get_primary_address()
         self.assertEqual(Address.objects.count(), 1)
@@ -97,7 +85,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(addr, None)
         self.assertEqual(Address.objects.count(), 1)
 
-        doe.check_data(ar, fix=False)
+        doe.check_data.run_from_code(ar, fix=False)
         assert_check(doe, '(\u2605) Unique address is not marked primary.')
 
         Address.objects.all().delete()
@@ -105,11 +93,11 @@ class QuickTest(RemoteAuthTestCase):
         addr = doe.get_primary_address()
         self.assertEqual(addr, None)
 
-        doe.check_data(ar, fix=False)
+        doe.check_data.run_from_code(ar, fix=False)
         assert_check(
             doe, '(\u2605) Owner with address, but no address record.')
 
-        doe.check_data(ar, fix=True)
+        doe.check_data.run_from_code(ar, fix=True)
         assert_check(doe, '')  # problem has been fixed
 
         # next problem : owner differs from primary address
@@ -118,20 +106,21 @@ class QuickTest(RemoteAuthTestCase):
         doe.full_clean()
         self.assertEqual(doe.city, None)
         doe.save()
-        doe.check_data(ar, fix=False)
+        doe.check_data.run_from_code(ar, fix=False)
         self.assertEqual(Address.objects.count(), 1)
         assert_check(
             doe, "Primary address differs from owner address "
             "(city:Eupen->None, zip_code:4700->).")
+            # "(city:Eupen->None, zip_code:4700->).")
         # Lino does repair this automatically since we don't know
         # which data is correct.
-        doe.check_data(ar, fix=True)
+        doe.check_data.run_from_code(ar, fix=True)
         self.assertEqual(Address.objects.count(), 1)
         self.assertEqual(doe.city, None)
         addr = doe.get_primary_address()
         self.assertEqual(addr.city, eupen)
         self.assertEqual(addr.primary, True)
-        
+
         # next problem: multiple primary address.
         # recover from previous test.
         doe.city = eupen
@@ -143,5 +132,5 @@ class QuickTest(RemoteAuthTestCase):
         addr.id = None
         addr.save()
         self.assertEqual(Address.objects.count(), 2)
-        doe.check_data(ar, fix=False)
+        doe.check_data.run_from_code(ar, fix=False)
         assert_check(doe, "Multiple primary addresses.")

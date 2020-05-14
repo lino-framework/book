@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2014-2015 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test some things which happen when a database object is deleted.
@@ -7,15 +7,8 @@
 This module is part of the Lino test suite. You can test only this
 module by issuing either::
 
-  $ go min2
-  $ python manage.py test
-  $ python manage.py test tests.test_min2.QuickTest.test_dupable
-
-or::
-
-  $ go book
-  $ python setup.py test -s tests.ProjectsTests.test_min2
-
+  $ go min9
+  $ python manage.py test tests.test_min2
 
 When I delete a database object, Lino also deletes those objects who
 are related through a GenericForeignKey.
@@ -31,9 +24,6 @@ owner. We want Lino to tell us "Cannot delete this record because
 other database objects are referring to it".
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
 
 from lino.api import rt
 
@@ -61,11 +51,13 @@ class QuickTest(RemoteAuthTestCase):
         for M in rt.models_by_base(Controllable):
             found.append(full_model_name(M))
         expected = """cal.Event cal.Task
+        checkdata.Problem
         comments.Comment
+        comments.Mention
         excerpts.Excerpt
         notes.Note
         notify.Message
-        checkdata.Problem
+        uploads.Upload
         """.split()
         self.assertEqual(found, expected)
 
@@ -119,16 +111,16 @@ class QuickTest(RemoteAuthTestCase):
 
         note.delete()
         self.assertEqual(Excerpt.objects.count(), 0)
-        self.assertEqual(ExcerptType.objects.count(), 1)
+        self.assertEqual(ExcerptType.objects.count(), 4)
 
     def test_dupable(self):
-        
+
         Company = rt.models.contacts.Company
         Person = rt.models.contacts.Person
         DupableWord = rt.models.dupable_partners.Word
 
         bernard = create(Person, first_name="Bernard", last_name="Bodard")
-        
+
         self.assertEqual(Person.objects.count(), 1)
         self.assertEqual(bernard.dupable_words.count(), 2)
         self.assertEqual(DupableWord.objects.count(), 2)

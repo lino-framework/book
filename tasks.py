@@ -23,6 +23,8 @@ ns = setup_from_tasks(
         # 'lino_book.projects.gerd',
         # 'lino_book.projects.mathieu',
         # 'lino_welcht.demo',
+        'lino_book.projects.polls',
+        'lino_book.projects.polls2',
         'lino_book.projects.roger',
         'lino_book.projects.edmund',
         'lino_book.projects.combo',
@@ -72,8 +74,6 @@ ns = setup_from_tasks(
 
         # 'lino_book/projects/diamond',
         # 'lino_book/projects/diamond2',
-        # 'lino_book/projects/polls',
-        # 'lino_book/projects/polls2',
         # 'lino_book/projects/sendchanges',
         # 'lino_book/projects/pisa',
     ])

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2015 Rumma & Ko Ltd
+# Copyright 2015-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test certain aspects of `birth_date`.
@@ -7,19 +7,11 @@
 This module is part of the Lino test suite. You can test only this
 module by issuing either::
 
-  $ go min2
+  $ go min9
   $ python manage.py test tests.test_birth_date
-
-or::
-
-  $ go lino
-  $ python setup.py test -s tests.ProjectsTests.test_min2
 
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
 
 from lino.api import rt
 
@@ -82,7 +74,7 @@ class QuickTest(RemoteAuthTestCase):
         # print(s)
         self.assertEquivalent("""
 
-        John is Father of *Mary* (4 years) Father of *Joseph* (5
+        John is Father of *Mary* (4 years 8 months) Father of *Joseph* (5
         years) """, s)
 
         # Create relationship as **Father**/**Son** **Adoptive
@@ -95,8 +87,8 @@ class QuickTest(RemoteAuthTestCase):
             s = ar.to_rst()
             # print(s)
             self.assertEquivalent("""
-            
-            John ist Vater von *Mary* (4 Jahre) Vater von *Joseph* (5
+
+            John ist Vater von *Mary* (4 Jahre 8 Monate) Vater von *Joseph* (5
             Jahre) """, s)
 
             # Beziehung erstellen als **Vater**/**Sohn**
@@ -111,7 +103,7 @@ class QuickTest(RemoteAuthTestCase):
             # print(s)
             self.assertEquivalent(u"""
 
-            John est Père de *Mary* (4 ans) Père de *Joseph* (5
+            John est Père de *Mary* (4 ans 8 mois) Père de *Joseph* (5
             ans) """, s)
 
             # Créer lien de parenté en tant que **Père**/**Fils** **Père
@@ -125,7 +117,7 @@ class QuickTest(RemoteAuthTestCase):
         html = LinksByHuman.get_table_summary(father, ar)
         s = tostring(html)
         self.assertEqual(s[:5], '<div>')
-        
+
     def test_02(self):
         """Was written for :ticket:`488` (Kann Person nicht mehr von
         Organisation entfernen (delete mti child with siblings)).
@@ -154,4 +146,3 @@ class QuickTest(RemoteAuthTestCase):
 
         # the following failed before #488 was fixed:
         delete_child(as_partner, Company)
-

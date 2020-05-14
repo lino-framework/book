@@ -18,6 +18,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
 
 Fixed :ticket:`3637` (can only concatenate str (not "__proxy__") to str).
 
+WebIndexTestCase now
+(1) runs on the populated demo data (and no longer on an empty database created by the django test runner)
+(2) checks several variants of `test_urls`
+(3) tests them for each user (unless :attr:`lino.core.site.Site.user_model` is None)
+
 2020-05-04
 ==========
 
