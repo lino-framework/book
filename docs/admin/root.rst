@@ -55,22 +55,24 @@ is a perl script which uses `useradd` in back-end.
 All maintainers must have a umask `002` or `007` (not `022` or `077` as is the
 default value).
 
-Edit either the file :file:`~/.bashrc` of each maintainer or the file
-:file:`/etc/bash.bashrc` (site-wide for all users) and add the following line at
-the end::
+Edit the file :file:`/etc/bash.bashrc` (site-wide for all users)::
+
+    # nano /etc/bash.bashrc
+
+And add the following line at the end::
 
     umask 002
 
-The umask is used to mask (disable) certain file permissions from any new file
-created by a given user. See :doc:`umask` for more detailed information.
-
+The :cmd:`umask` command is used to mask (disable) certain file permissions from
+any new file created by a given user. See :doc:`umask` for more detailed
+information.
 
 Finally the :term:`server provider` must grant SSH access to that new account
 by creating the user's :file:`.ssh/authorized_keys` file with the
 maintainer's public ssh key::
 
 
-  $ sudo su - joe
+  # su - joe
   $ mkdir .ssh
   $ chmod 700 .ssh
   $ touch .ssh/authorized_keys
@@ -78,7 +80,8 @@ maintainer's public ssh key::
   $ cat >> .ssh/authorized_keys
 
 Paste the maintainer's public key to the terminal.  Press :kbd:`ENTER` to add at
-least one newline.  Press :kbd:`Ctrl+D`
+least one newline.  Press :kbd:`Ctrl+D` to say you're finished with pasting
+content.
 
-The :xfile:`.ssh` directory should have permissions set to ``700`` to restrict
-access so that only the owner can read, write, or open it.
+Note that the :xfile:`.ssh` directory should have permissions set to ``700`` to
+restrict access so that only the owner can read, write, or open it.
