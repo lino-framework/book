@@ -50,7 +50,8 @@ List of available dashboard items
  lino_xl.lib.tickets.ui.MyTicketsNeedingFeedback,
  lino_xl.lib.working.ui.WorkedHours,
  lino.modlib.notify.models.MyMessages,
- lino_xl.lib.groups.models.MyGroups]
+ lino_xl.lib.groups.models.MyGroups,
+ lino_xl.lib.ledger.ui.JournalsOverview]
 
 
 As long as a user didn't populate their dashboard, the list ist empty

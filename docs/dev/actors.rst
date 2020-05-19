@@ -72,13 +72,13 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-260
+351
 
 Some of the actors are abstract, i.e. they are used as base classes for other
 actors:
 
 >>> len([a for a in actors.actors_list if a.abstract])
-24
+32
 
 The actors aren't collected only in this global list but also at different
 places depending on their type.
@@ -88,17 +88,17 @@ slave tables":
 
 >>> from lino.core import kernel
 >>> len(kernel.master_tables)
-121
+155
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 
 >>> len(kernel.slave_tables)
-55
+78
 >>> kernel.slave_tables[0]
 lino_xl.lib.countries.models.PlacesByPlace
 
 >>> list(sorted(kernel.generic_slaves.values(), key=str))
-[lino_xl.lib.cal.ui.EntriesByController, lino_xl.lib.cal.ui.TasksByController, lino.modlib.changes.models.ChangesByMaster, lino.modlib.changes.models.ChangesByObject, lino.modlib.checkdata.models.ProblemsByOwner, lino.modlib.comments.ui.CommentsByRFC, lino.modlib.comments.ui.MentionsByOwner, lino_xl.lib.excerpts.models.ExcerptsByOwner, lino.modlib.gfks.models.HelpTextsByModel, lino.modlib.uploads.models.UploadsByController]
+[lino_xl.lib.cal.ui.EntriesByController, lino_xl.lib.cal.ui.TasksByController, lino.modlib.changes.models.ChangesByMaster, lino.modlib.changes.models.ChangesByObject, lino.modlib.checkdata.models.ProblemsByOwner, lino.modlib.comments.ui.CommentsByRFC, lino.modlib.comments.ui.MentionsByOwner, lino_xl.lib.excerpts.models.ExcerptsByOwner, lino.modlib.gfks.models.HelpTextsByModel, lino_xl.lib.invoicing.models.InvoicingsByGenerator, lino.modlib.uploads.models.UploadsByController]
 
 >>> for a in kernel.generic_slaves.values():
 ...    assert a not in kernel.slave_tables
@@ -112,12 +112,15 @@ Another category are virtual tables
 lino.modlib.gfks.models.BrokenGFKsByModel, lino_xl.lib.calview.ui.MonthlySlave,
 lino_xl.lib.calview.ui.DailyView, lino_xl.lib.calview.ui.WeeklyView,
 lino_xl.lib.calview.ui.MonthlyView, lino_xl.lib.working.ui.WorkedHours,
-lino.modlib.users.desktop.UserRoles]
+lino_xl.lib.ledger.ui.ExpectedMovements, lino_xl.lib.ledger.ui.DebtsByAccount,
+lino_xl.lib.ledger.ui.DebtsByPartner, lino_xl.lib.ledger.ui.Debtors,
+lino_xl.lib.ledger.ui.Creditors, lino.modlib.users.desktop.UserRoles,
+lino_xl.lib.vat.desktop.VouchersByPartner]
 
 Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
-37
+52
 >>> list(sorted(kernel.CHOICELISTS.items()))[6]
 ('cal.GuestStates', lino_xl.lib.cal.choicelists.GuestStates)
 
@@ -129,7 +132,7 @@ Another category are choicelists
 And a last category are what we call "frames":
 
 >>> kernel.frames_list
-[lino.modlib.about.models.About]
+[lino.modlib.about.models.About, lino_xl.lib.ledger.ui.Situation]
 
 
 

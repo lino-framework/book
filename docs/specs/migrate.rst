@@ -53,22 +53,26 @@ Django:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-`initdb std demo demo2 checksummaries` started on database .../default.db.
+`initdb std minimal_ledger demo demo2 checksummaries` started on database /home/luc/work/book/lino_book/projects/migs/settings/default.db.
 Operations to perform:
-  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, calview, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extjs, gfks, github, groups, jinja, lino, lists, mailbox, memo, noi, notify, office, printing, rest_framework, restful, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, weasyprint, working, xl
+  Synchronize unmigrated apps: about, appypod, bootstrap3, cal, calview, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extjs, gfks, github, groups, invoicing, jinja, ledger, lino, lists, mailbox, memo, noi, notify, office, printing, products, rest_framework, restful, sales, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, vat, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions
 Synchronizing apps without migrations:
   Creating tables...
     Creating table system_siteconfig
     ...
+    Running deferred SQL...
 Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying contenttypes.0002_remove_content_type_name... OK
   Applying sessions.0001_initial... OK
 Loading data from ...
 ...
+Updating summary data for Tickets ...
+Updating summary data for User Statistics ...
+Updating summary data for Site summaries ...
 Updating summary data for User summaries ...
-Installed 744 object(s) from 19 fixture(s)
+Installed 980 object(s) from 26 fixture(s)
 
 Tidy up:
 
@@ -88,16 +92,16 @@ but in a different way.  Django now considers all Lino plugins as "migrated":
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-`initdb std demo demo2 checksummaries` started on database .../default.db.
+`initdb std minimal_ledger demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: staticfiles
-  Apply all migrations: cal, calview, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, groups, lists, notify, sessions, system, tickets, tinymce, uploads, users, userstats, working
+  Apply all migrations: cal, calview, changes, checkdata, comments, contacts, contenttypes, countries, dashboard, django_mailbox, excerpts, gfks, github, groups, invoicing, ledger, lists, notify, products, sales, sessions, system, tickets, tinymce, uploads, users, userstats, vat, working
 Synchronizing apps without migrations:
   Creating tables...
     Running deferred SQL...
 Running migrations:
   ...
-Installed 744 object(s) from 19 fixture(s)
+Installed 980 object(s) from 26 fixture(s)
 
 
 >>> from lino import startup
@@ -134,7 +138,9 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'gfks': 'lino_book.projects.migs.settings.migrations.gfks',
  'github': 'lino_book.projects.migs.settings.migrations.github',
  'groups': 'lino_book.projects.migs.settings.migrations.groups',
+ 'invoicing': 'lino_book.projects.migs.settings.migrations.invoicing',
  'jinja': 'lino_book.projects.migs.settings.migrations.jinja',
+ 'ledger': 'lino_book.projects.migs.settings.migrations.ledger',
  'lino': 'lino_book.projects.migs.settings.migrations.lino',
  'lists': 'lino_book.projects.migs.settings.migrations.lists',
  'mailbox': 'lino_book.projects.migs.settings.migrations.mailbox',
@@ -143,8 +149,10 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'notify': 'lino_book.projects.migs.settings.migrations.notify',
  'office': 'lino_book.projects.migs.settings.migrations.office',
  'printing': 'lino_book.projects.migs.settings.migrations.printing',
+ 'products': 'lino_book.projects.migs.settings.migrations.products',
  'rest_framework': 'lino_book.projects.migs.settings.migrations.rest_framework',
  'restful': 'lino_book.projects.migs.settings.migrations.restful',
+ 'sales': 'lino_book.projects.migs.settings.migrations.sales',
  'smtpd': 'lino_book.projects.migs.settings.migrations.smtpd',
  'summaries': 'lino_book.projects.migs.settings.migrations.summaries',
  'system': 'lino_book.projects.migs.settings.migrations.system',
@@ -153,6 +161,7 @@ plugin) and sets the :setting:`MIGRATION_MODULES` setting.
  'uploads': 'lino_book.projects.migs.settings.migrations.uploads',
  'users': 'lino_book.projects.migs.settings.migrations.users',
  'userstats': 'lino_book.projects.migs.settings.migrations.userstats',
+ 'vat': 'lino_book.projects.migs.settings.migrations.vat',
  'weasyprint': 'lino_book.projects.migs.settings.migrations.weasyprint',
  'working': 'lino_book.projects.migs.settings.migrations.working',
  'xl': 'lino_book.projects.migs.settings.migrations.xl'}

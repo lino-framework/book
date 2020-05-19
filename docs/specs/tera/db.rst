@@ -162,7 +162,7 @@ behaviour. See also :doc:`/dev/delete`.
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, products.PriceRule.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, products.PriceRule.selector, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Enrolment.guest_role, courses.Line.guest_role
 - cal.Room :

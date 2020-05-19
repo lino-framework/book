@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2015-2017 Rumma & Ko Ltd
+# Copyright 2015-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test some calendar functionalities-
@@ -7,24 +7,12 @@
 This module is part of the Lino test suite. You can test only this
 module by issuing either::
 
-  $ go min2
-  $ python manage.py test
-  $ python manage.py test tests.test_cal.QuickTest
-
-or::
-
-  $ go lino
-  $ python setup.py test -s tests.ProjectsTests.test_min2
-
-
+  $ go min9
+  $ python manage.py test tests.test_cal
 
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
 from lino.api import dd, rt
-
 from lino.utils.djangotest import RemoteAuthTestCase
 
 
@@ -47,7 +35,7 @@ class QuickTest(RemoteAuthTestCase):
         # ba.request_from(ses).run_from_ui(ses)
         self.assertEqual(sorted(resp.keys()), [
             'close_window', 'data_record', 'detail_handler_name',
-            'info_message', 'message', 'refresh_all', 'rows', 'success'])
+            'info_message', 'message', 'navinfo', 'rows', 'success'])
 
         # self.assertEqual(resp['data_record'].keys(), None)
 
@@ -61,6 +49,3 @@ class QuickTest(RemoteAuthTestCase):
         msg = 'Calendar entry "{0}" has been created.'.format(obj)
         self.assertEqual(resp['message'], msg)
         # self.assertEqual(msg, None)
-
-        
-        

@@ -195,6 +195,16 @@ Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
   (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - groups.Groups.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Group memberships** (groups_Membership), **Reason** (reason)
+- ledger.AccountingPeriods.merge_row : Merge
+  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
+- ledger.Accounts.merge_row : Merge
+  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
+- ledger.FiscalYears.merge_row : Merge
+  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
+- ledger.Journals.merge_row : Merge
+  (main) [visible for all]: **into...** (merge_to), **Match rules** (ledger_MatchRule), **Reason** (reason)
+- ledger.PaymentTerms.merge_row : Merge
+  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - lists.Lists.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - tickets.Sites.merge_row : Merge

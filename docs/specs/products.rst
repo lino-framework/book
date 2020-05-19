@@ -24,11 +24,37 @@ The :mod:`lino_xl.lib.products` plugin adds functionality for managing
 Overview
 ========
 
-A **product** is something you can sell or buy.  The :mod:`lino_xl.lib.sales`
-plugins injects a :attr:`sales_price` field to the product model.
+.. glossary::
 
-Products can be grouped into **categories**, and every product must be of a
-given **product type**.
+  product
+
+    Something you can trade (i.e. sell or buy).
+
+    The :mod:`lino_xl.lib.sales` plugins injects a :attr:`sales_price` field to
+    the product model.
+
+    Products can be grouped into :term:`categories <product category>`, and every
+    product must be of a given :term:`product type`.
+
+  product category
+
+    A group of products that fit together.
+
+    The list of product categories of a site can be modified by its :term:`end
+    users <end user>` (provided they have access rights).
+
+  product type
+
+    A hard-coded name for the nature or type of a set of products.
+
+    Used for example to differentiate between "Services" and "Goods".
+
+    The detail layout of a product can vary depending on its type, but not
+    depending on its category.
+
+    Every application has its specific list of product types.
+    This list can be locally modified by the :term:`site maintainer`
+
 
 The difference between the *category* and
 the *type* of a product is that end-users can edit the former while the latter
@@ -219,6 +245,21 @@ partner, and to find a default product for a given context.
 
     >>> rt.show(products.PriceFactors)
     Keine Daten anzuzeigen
+
+.. class:: PriceRule
+
+  .. attribute:: fee
+
+    The product to which this rule applies.
+
+  .. attribute:: selector
+
+    Either `None` or an additional selector for this price rule.
+
+    When given, this must be an instance of :attr:`lino_xl.lib.products.Plugin.fee_selector`.
+
+  Every price rule also has one automatic field for each price factor.
+
 
 .. class:: PriceRules
 

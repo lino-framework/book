@@ -105,8 +105,10 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  courses.CoursesUser                          ☑     ☑     ☑
  excerpts.ExcerptsStaff                             ☑     ☑
  excerpts.ExcerptsUser                        ☑     ☑     ☑
+ ledger.LedgerStaff                                       ☑
  office.OfficeStaff                                       ☑
  office.OfficeUser                      ☑     ☑     ☑     ☑
+ products.ProductsStaff                                   ☑
  tickets.Reporter                       ☑     ☑     ☑     ☑
  tickets.Searcher                 ☑     ☑     ☑     ☑     ☑
  tickets.TicketsStaff                               ☑     ☑
@@ -117,10 +119,6 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  working.Worker                               ☑     ☑     ☑
 ================================ ===== ===== ===== ===== =====
 <BLANKLINE>
-
-
-
-
 
 
 Users
@@ -183,6 +181,19 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - groups.Groups.merge_row : visible for admin
 - groups.Memberships.detail : visible for customer contributor developer admin
 - groups.Memberships.insert : visible for customer contributor developer admin
+- invoicing.Plans.detail : visible for admin
+- invoicing.SalesRules.detail : visible for admin
+- ledger.AccountingPeriods.merge_row : visible for admin
+- ledger.Accounts.detail : visible for admin
+- ledger.Accounts.insert : visible for admin
+- ledger.Accounts.merge_row : visible for admin
+- ledger.FiscalYears.merge_row : visible for admin
+- ledger.Journals.detail : visible for admin
+- ledger.Journals.insert : visible for admin
+- ledger.Journals.merge_row : visible for admin
+- ledger.PaymentTerms.detail : visible for admin
+- ledger.PaymentTerms.merge_row : visible for admin
+- ledger.Situation.show : visible for admin
 - lists.Lists.detail : visible for contributor developer admin
 - lists.Lists.insert : visible for contributor developer admin
 - lists.Lists.merge_row : visible for admin
@@ -192,6 +203,13 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - mailbox.Mailboxes.insert : visible for customer contributor developer admin
 - mailbox.MessageAttachments.detail : visible for customer contributor developer admin
 - mailbox.Messages.detail : visible for customer contributor developer admin
+- products.ProductCats.detail : visible for admin
+- products.Products.detail : visible for admin
+- products.Products.insert : visible for admin
+- sales.InvoiceItems.detail : visible for admin
+- sales.InvoiceItems.insert : visible for admin
+- sales.Invoices.detail : visible for admin
+- sales.Invoices.insert : visible for admin
 - system.SiteConfigs.detail : visible for admin
 - tickets.Links.detail : visible for developer admin
 - tickets.Links.insert : visible for developer admin
@@ -223,6 +241,9 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - users.OtherUsers.detail : visible for customer contributor developer admin
 - users.Register.insert : visible for customer contributor developer admin
 - users.UsersOverview.sign_in : visible for all
+- vat.Invoices.detail : visible for admin
+- vat.Invoices.insert : visible for admin
+- vat.InvoicesByJournal.insert : visible for admin
 - working.ServiceReports.detail : visible for contributor developer admin
 - working.ServiceReports.insert : visible for contributor developer admin
 - working.Sessions.detail : visible for contributor developer admin
