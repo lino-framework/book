@@ -121,7 +121,7 @@ The database models
  sales.InvoiceItem                  sales.InvoiceItems               15        0
  sales.PaperType                    sales.PaperTypes                 5         2
  sales.VatProductInvoice            sales.Invoices                   27        0
- sessions.Session                   sessions.SessionTable            3         7
+ sessions.Session                   sessions.SessionTable            3         ...
  social_django.Association          social_django.AssociationTable   7         0
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0

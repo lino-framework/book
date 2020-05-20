@@ -241,7 +241,7 @@ behaviour. See also :doc:`/dev/delete`.
 - notes.NoteType :
   - PROTECT : notes.Note.type
 - products.Product :
-  - PROTECT : courses.Enrolment.option, courses.Line.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, products.PriceRule.fee, sales.InvoiceItem.product, users.User.cash_daybook
+  - PROTECT : courses.Enrolment.option, courses.Line.fee, healthcare.Rule.client_fee, healthcare.Rule.provider_fee, products.PriceRule.product, sales.InvoiceItem.product, users.User.cash_daybook
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :

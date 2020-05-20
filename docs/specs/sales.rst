@@ -5,10 +5,12 @@
 ``sales`` : Product invoices
 ============================
 
-A **product invoice** is an invoice whose rows usually refer to a
-*product* (which indirectly maps to a ledger account according to
-configurable rules).  This is in contrast to *account invoices* whose
-rows directly point to ledger accounts and don't need any products.
+.. glossary::
+
+  trade document
+
+    A voucher that has a partner as recipient and one or several "rows" or
+    "items", each of which usually refers to a :term:`product`.
 
 Snippets in this document are tested on the
 :mod:`lino_book.projects.pierre` demo project.

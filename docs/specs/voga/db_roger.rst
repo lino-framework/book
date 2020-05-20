@@ -206,7 +206,7 @@ behaviour. See also :doc:`/dev/delete`.
 - outbox.Mail :
   - CASCADE : outbox.Attachment.mail, outbox.Recipient.mail
 - products.Product :
-  - PROTECT : cal.Room.fee, courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, products.PriceRule.fee, sales.InvoiceItem.product
+  - PROTECT : cal.Room.fee, courses.Course.fee, courses.Enrolment.fee, courses.Enrolment.option, courses.Line.fee, products.PriceRule.product, sales.InvoiceItem.product
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :

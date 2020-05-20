@@ -91,7 +91,7 @@ behaviour. See also :doc:`/dev/delete`.
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - products.Product :
-  - PROTECT : products.PriceRule.fee, sales.InvoiceItem.product
+  - PROTECT : products.PriceRule.product, sales.InvoiceItem.product
 - products.ProductCat :
   - PROTECT : products.Product.cat
 - sales.PaperType :

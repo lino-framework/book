@@ -32,9 +32,9 @@ There are several proofs of concept for alternative front ends.
   because the ExtJS library is unfortunately no longer free. More precisely its
   free community version is not maintained.
 
-- The :ref:`OpenUI5 <specs.openui5>` project was almost ready for production but
-  went asleep when we discovered :ref:`react`. OpenUI5 is developed by SAP,
-  conceptually quite similar to ExtJS.
+- OpenUI5 is developed by SAP, conceptually quite similar to ExtJS.  We
+  developed the :mod:`lino_openui5` front end, which was almost ready for
+  production, but stopped this project when we discovered :ref:`react`.
 
 - The :mod:`lino.modlib.bootstrap3` web interface optimized for
   read-only access and publication of complex data (something like
@@ -47,7 +47,7 @@ There are several proofs of concept for alternative front ends.
   front end.
 
 - a more lightweight web interface using some other JS framework than
-  ExtJS.  e.g. `Anular <https://angular.io/>`__ or `Vue
+  ExtJS.  e.g. `Angular <https://angular.io/>`__ or `Vue
   <https://github.com/vuejs/ui>`__
 
 - A console UI using `ncurses
@@ -61,7 +61,7 @@ There are several proofs of concept for alternative front ends.
   <https://en.wikipedia.org/wiki/PyQt>`_.
   There is a first prototype of the :manage:`qtclient` command.
 
-  Something similar could be done for `wxWidgets
+- Something similar could be done for `wxWidgets
   <https://en.wikipedia.org/wiki/WxWidgets>`_.
 
 - Support OData to provide an XML or JSON based HTTP interface.

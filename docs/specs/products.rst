@@ -28,7 +28,9 @@ Overview
 
   product
 
-    Something you can trade (i.e. sell or buy).
+    Something you can trade (e.g. sell, buy, rent) in an item of a :term:`trade
+    document`. Mostly a name and a price. It can be material (a good) or
+    immaterial (a service).
 
     The :mod:`lino_xl.lib.sales` plugins injects a :attr:`sales_price` field to
     the product model.
@@ -45,7 +47,7 @@ Overview
 
   product type
 
-    A hard-coded name for the nature or type of a set of products.
+    A name for the nature or type of a set of products.
 
     Used for example to differentiate between "Services" and "Goods".
 
@@ -53,14 +55,32 @@ Overview
     depending on its category.
 
     Every application has its specific list of product types.
-    This list can be locally modified by the :term:`site maintainer`
+    This list can be locally modified by the :term:`site maintainer`.
 
+    Rule of thumb: product **categories** can get edited by end users while
+    product **types** are hard-coded by the application developer.
 
-The difference between the *category* and
-the *type* of a product is that end-users can edit the former while the latter
-are to be provided by the application developer.
+  price factor
 
+    A property of a partner that may influence the price of certain products.
 
+    The list of price factors is meant to be defined by the :term:`application
+    developer`. Changing it locally would also require changes in the some
+    layouts.  Changes to this list may require a database migration because
+    every price factor causes a field to be injected to the
+    :class:`lino_xl.lib.contats.Partner` model.
+
+  price rules
+
+    A set of rules that specify which product to use for a given :term:`price
+    selector` and a given set of price factors.
+
+  price selector
+
+    A database object used to specify "what is being sold" in price rules.
+
+    In :ref:`voga` and :ref:`presto` we use  the :term:`calendar entry type` as
+    price selector,  in :ref:`noi` the :class:`lino_xl.lib.working.SessionType`.
 
 
 Products
@@ -88,8 +108,6 @@ Products
         Some product actors don't have a default product type, in that case the
         default value is :attr:`ProductTypes.default`.
 
-
-
     .. attribute:: cat
 
         The category of this product.
@@ -105,6 +123,12 @@ Products
 
         The VAT class.  Injected by :mod:`lino_xl.lib.vat`. If that plugin is
         not installed, :attr:`vat_class` is a dummy field.
+
+
+    .. method:: get_ruled_price(self, partner, selector)
+
+        Return the product to use for this partner and this selector according
+        to the :term:`price rules`.
 
 
 .. class:: Products
@@ -233,30 +257,35 @@ Price rules
 ===========
 
 Price rules can be used to define which products are available for a given
-partner, and to find a default product for a given context.
+partner, and optionally to find a default product for a given :term:`price
+selector`.
 
 .. class:: PriceFactors
 
-    A choicelist of "price factors".
+    The choicelist of :term:`price factors <price factor>`.
 
-    This list is empty by default.  Applications can define their specific
-    price factors.  Every price factor causes a field to be injected to the
-    :class:`lino_xl.lib.contats.Partner` model.
+    This list is empty by default.  See :ref:`tera` or :ref:`presto` for
+    examples of applications that use price factors.
 
     >>> rt.show(products.PriceFactors)
     Keine Daten anzuzeigen
 
 .. class:: PriceRule
 
-  .. attribute:: fee
+  .. attribute:: seqno
 
-    The product to which this rule applies.
+    The sequence number of this rule. Lino loops over price rules in this order
+    and returns the first one that applies.
+
+  .. attribute:: product
+
+    The product to use for getting the price when this rule applies.
 
   .. attribute:: selector
 
     Either `None` or an additional selector for this price rule.
 
-    When given, this must be an instance of :attr:`lino_xl.lib.products.Plugin.fee_selector`.
+    When given, this must be an instance of :attr:`lino_xl.lib.products.Plugin.price_selector`.
 
   Every price rule also has one automatic field for each price factor.
 
