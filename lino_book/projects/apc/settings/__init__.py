@@ -1,13 +1,11 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2019 Rumma & Ko Ltd
+# Copyright 2014-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
 Default settings for a :ref:`cosi` "à la APC".
 
 """
-
-from __future__ import unicode_literals
 
 from lino_cosi.lib.cosi.settings import *
 

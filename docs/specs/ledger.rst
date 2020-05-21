@@ -60,8 +60,6 @@ In Lino, the ledger is implemented by three database models:
     :class:`Voucher` model. The voucher model is never being used directly
     despite the fact that it is a concrete model.
 
-  account invoice
-
   journal
 
     A series of sequentially numbered :term:`vouchers <ledger voucher>`.
@@ -141,17 +139,17 @@ Some more concepts:
 
   product invoice
 
-    An :term:`invoice` which is also a :term:`trade document`, i.e. which
-    generates :term:`ledger movements <ledger movement>` when it is registered.
-    Each :term:`product` mentioned in the items indirectly maps to a
-    :term:`ledger account` according to configurable rules.
+    An :term:`invoice` that is also a :term:`trade document`, i.e. the items of
+    which point to a :term:`product`.
+
+    Each :term:`product` mentioned in the items maps to a :term:`ledger account`
+    according to configurable rules.
 
   account invoice
 
-    An :term:`invoice`
-    whose rows directly point to ledger accounts and don't
-    mention any :term:`product`.
-    This is in contrast to an :term:`product invoice`.
+    An :term:`invoice` where each row points directly to ledger accounts and
+    doesn't mention any :term:`product`. This is in contrast to an
+    :term:`product invoice`.
 
     In a default :ref:`cosi` site, purchase invoices are implemented as
     :term:`account invoices <account invoice>` while sales invoices are
@@ -623,15 +621,15 @@ For example David da Vinci has 4 open invoices:
 Person #165 ('Mr David da Vinci')
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj)
-**2 open movements (1645.16 €)**
+**2 open movements (1946.43 €)**
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj, nosummary=True)
 ============ =============== ======================================= ============== ======== ================= =========
  Value date   Voucher         Description                             Debit          Credit   Match             Cleared
 ------------ --------------- --------------------------------------- -------------- -------- ----------------- ---------
- 12/03/2015   *SLS 15/2015*   *(4000) Customers* | *da Vinci David*   1 110,16                **SLS 15/2015**   No
- 11/03/2015   *SLS 14/2015*   *(4000) Customers* | *da Vinci David*   535,00                  **SLS 14/2015**   No
-                              **Balance 1645.16 (2 movements)**       **1 645,16**
+ 12/03/2015   *SLS 15/2015*   *(4000) Customers* | *da Vinci David*   1 299,08                **SLS 15/2015**   No
+ 11/03/2015   *SLS 14/2015*   *(4000) Customers* | *da Vinci David*   647,35                  **SLS 14/2015**   No
+                              **Balance 1946.43 (2 movements)**       **1 946,43**
 ============ =============== ======================================= ============== ======== ================= =========
 <BLANKLINE>
 
@@ -647,7 +645,7 @@ Vouchers
     ForeignKey to a Voucher.
 
     A voucher is never instantiated using this base model but using one of its
-    subclasses.
+    subclasses.  Here are the voucher subclasses available in :ref:`cosi`:
 
     >>> pprint(rt.models_by_base(ledger.Voucher))
     [<class 'lino_xl.lib.bevat.models.Declaration'>,
@@ -1027,12 +1025,13 @@ account, a *sales* invoice *debits* the customer's account.
 ================== ========== ============== ============== =========== ================ =========
  Account            Partner    Debit          Credit         VAT class   Match            Cleared
 ------------------ ---------- -------------- -------------- ----------- ---------------- ---------
- (4000) Customers   Bestbank   2 999,85                                  **SLS 1/2014**   Yes
- (4510) VAT due                               520,64         Services                     Yes
- (7000) Sales                                 2 479,21       Services                     Yes
-                               **2 999,85**   **2 999,85**
+ (4000) Customers   Bestbank   3 629,82                                  **SLS 1/2014**   Yes
+ (4510) VAT due                               629,97         Services                     Yes
+ (7000) Sales                                 2 999,85       Services                     Yes
+                               **3 629,82**   **3 629,82**
 ================== ========== ============== ============== =========== ================ =========
 <BLANKLINE>
+
 
 
 So the balance of a supplier's account (when open) is usually on the
@@ -1522,14 +1521,14 @@ tax office is a debtor when we had more VAT deductible (sales) than VAT due
 ==================== ======================= ========== ===============
  Due date             Partner                 ID         Balance
 -------------------- ----------------------- ---------- ---------------
- 10/02/2014           Dubois Robin            179        7 362,36
- 08/02/2015           Radermacher Christian   155        719,60
- 11/02/2015           Radermacher Fritz       158        523,11
- 07/03/2015           Radermacher Hedi        161        2 999,85
- 09/03/2015           Radermacher Jean        163        679,81
- 10/03/2015           di Rupo Didier          164        280,00
- 11/03/2015           da Vinci David          165        1 645,16
- **Total (7 rows)**                           **1145**   **14 209,89**
+ 10/02/2014           Dubois Robin            179        8 908,45
+ 08/02/2015           Radermacher Christian   155        853,97
+ 11/02/2015           Radermacher Fritz       158        632,96
+ 07/03/2015           Radermacher Hedi        161        3 629,82
+ 09/03/2015           Radermacher Jean        163        822,57
+ 10/03/2015           di Rupo Didier          164        338,80
+ 11/03/2015           da Vinci David          165        1 946,43
+ **Total (7 rows)**                           **1145**   **17 133,00**
 ==================== ======================= ========== ===============
 <BLANKLINE>
 
@@ -1545,9 +1544,9 @@ Partner #165 ('da Vinci David')
 ==================== ============== ========================== ==========
  Due date             Balance        Debts                      Payments
 -------------------- -------------- -------------------------- ----------
- 11/03/2015           535,00         `SLS 14/2015 <Detail>`__
- 12/03/2015           1 110,16       `SLS 15/2015 <Detail>`__
- **Total (2 rows)**   **1 645,16**
+ 11/03/2015           647,35         `SLS 14/2015 <Detail>`__
+ 12/03/2015           1 299,08       `SLS 15/2015 <Detail>`__
+ **Total (2 rows)**   **1 946,43**
 ==================== ============== ========================== ==========
 <BLANKLINE>
 
@@ -2314,10 +2313,10 @@ reversed field.  The :attr:`Movement.credit` field is an example:
 ============ =============== ================================================== ============ ============ ================= =========
  Value date   Voucher         Description                                        Debit        Credit       Match             Cleared
 ------------ --------------- -------------------------------------------------- ------------ ------------ ----------------- ---------
- 21/04/2014   *BNK 4/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                16,00        **SLS 10/2014**   Yes
- 21/03/2014   *BNK 3/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                304,00       **SLS 10/2014**   Yes
- 07/03/2014   *SLS 10/2014*   *(4000) Customers*                                 320,00                    **SLS 10/2014**   Yes
-                              **Balance 0.00 (3 movements)**                     **320,00**   **320,00**
+ 21/04/2014   *BNK 4/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                19,36        **SLS 10/2014**   Yes
+ 21/03/2014   *BNK 3/2014*    *(4000) Customers* | *Bernd Brechts Bücherladen*                367,84       **SLS 10/2014**   Yes
+ 07/03/2014   *SLS 10/2014*   *(4000) Customers*                                 387,20                    **SLS 10/2014**   Yes
+                              **Balance 0.00 (3 movements)**                     **387,20**   **387,20**
 ============ =============== ================================================== ============ ============ ================= =========
 <BLANKLINE>
 

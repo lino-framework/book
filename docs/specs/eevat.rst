@@ -35,17 +35,17 @@ VAT regimes
 
 >>> rt.show(vat.VatRegimes, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======= ============== ================= =============== ============== ==========
- value   name           text              VAT area        Needs VAT id   item VAT
-------- -------------- ----------------- --------------- -------------- ----------
- 10      normal         Private person                    No             Yes
- 20      subject        Subject to VAT    National        Yes            Yes
- 25      cocontractor   Co-contractor     National        Yes            Yes
- 30      intracom       Intra-community   EU              Yes            Yes
- 40      tax_free       Tax-free                          No             Yes
- 50      outside        Outside EU        International   No             Yes
- 60      exempt         Exempt                            No             No
-======= ============== ================= =============== ============== ==========
+======= ============== ================= =============== ==============
+ value   name           text              VAT area        Needs VAT id
+------- -------------- ----------------- --------------- --------------
+ 10      normal         Private person                    No
+ 20      subject        Subject to VAT    National        Yes
+ 25      cocontractor   Co-contractor     National        Yes
+ 30      intracom       Intra-community   EU              Yes
+ 40      tax_free       Tax-free                          No
+ 50      outside        Outside EU        International   No
+ 60      exempt         Exempt                            No
+======= ============== ================= =============== ==============
 <BLANKLINE>
 
 
@@ -588,17 +588,17 @@ Other languages
 
 >>> rt.show(vat.VatRegimes, language="de")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-====== ============== ======================= =============== ============== ==========
- Wert   name           Text                    MWSt-Zone       Needs VAT id   item VAT
------- -------------- ----------------------- --------------- -------------- ----------
- 10     normal         Privatperson                            Nein           Ja
- 20     subject        MwSt.-pflichtig         National        Ja             Ja
- 25     cocontractor   Vertragspartner         National        Ja             Ja
- 30     intracom       Innergemeinschaftlich   EU              Ja             Ja
- 40     tax_free       Tax-free                                Nein           Ja
- 50     outside        Außerhalb EU            International   Nein           Ja
- 60     exempt         Befreit von MwSt.                       Nein           Nein
-====== ============== ======================= =============== ============== ==========
+====== ============== ======================= =============== ==============
+ Wert   name           Text                    MWSt-Zone       Needs VAT id
+------ -------------- ----------------------- --------------- --------------
+ 10     normal         Privatperson                            Nein
+ 20     subject        MwSt.-pflichtig         National        Ja
+ 25     cocontractor   Vertragspartner         National        Ja
+ 30     intracom       Innergemeinschaftlich   EU              Ja
+ 40     tax_free       Tax-free                                Nein
+ 50     outside        Außerhalb EU            International   Nein
+ 60     exempt         Befreit von MwSt.                       Nein
+====== ============== ======================= =============== ==============
 <BLANKLINE>
 
 
@@ -724,15 +724,15 @@ VAT 5/2019
 <BLANKLINE>
 
 >>> rt.show(vat.SalesByDeclaration, master_instance=obj)
-==================== ==================== ======== ================ ================= ============ ==============
- Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT          Total to pay
--------------------- -------------------- -------- ---------------- ----------------- ------------ --------------
- *SLS 21/2019*        Dmitriev Eva-Liisa            Private person   1 680,57          333,31       2 013,88
- *SLS 22/2019*        Nikitin Einar                 Private person   1 624,88          324,97       1 949,85
- *SLS 23/2019*        Mölder Elmar                  Private person   693,18            138,64       831,82
- *SLS 24/2019*        Jegorov Eve                   Private person   870,83            174,17       1 045,00
- **Total (4 rows)**                                                  **4 869,46**      **971,09**   **5 840,55**
-==================== ==================== ======== ================ ================= ============ ==============
+==================== ==================== ======== ================ ================= ============== ==============
+ Invoice              Partner              VAT id   VAT regime       Total excl. VAT   VAT            Total to pay
+-------------------- -------------------- -------- ---------------- ----------------- -------------- --------------
+ *SLS 21/2019*        Dmitriev Eva-Liisa            Private person   2 013,88          399,97         2 413,85
+ *SLS 22/2019*        Nikitin Einar                 Private person   1 949,85          389,97         2 339,82
+ *SLS 23/2019*        Mölder Elmar                  Private person   831,82            166,36         998,18
+ *SLS 24/2019*        Jegorov Eve                   Private person   1 045,00          209,00         1 254,00
+ **Total (4 rows)**                                                  **5 840,55**      **1 165,30**   **7 005,85**
+==================== ==================== ======== ================ ================= ============== ==============
 <BLANKLINE>
 
 
@@ -740,9 +740,9 @@ Here is the content of the fields in the detail of that declaration:
 
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-[1a] 20% määraga maksustatavad müügid : 4855.46
-[1] 20% määraga maksustatavad toimingud ja tehingud : 4855.46
-[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 971.09
+[1a] 20% määraga maksustatavad müügid : 5826.55
+[1] 20% määraga maksustatavad toimingud ja tehingud : 5826.55
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 1165.30
 [41] Impordilt tasumisele kuuluv käibemaks : -989.77
 [5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 1006.81
 [51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 989.77
@@ -754,7 +754,7 @@ Here is the content of the fields in the detail of that declaration:
 [71] 1) erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete soetamine (KMS § 41¹) : 68.25
 [8] Maksuvaba käive : 62.90
 [9] Erikorra alusel maksustatava kinnisasja, metallijäätmete, väärismetalli ja metalltoodete käive (KMS § 411) ning teises liikmesriigis paigaldatava või kokkupandava kauba maksustatav väärtus : 62.90
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : -1025.49
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : -831.28
 
 
 And these are the movements generated by our declaration:
@@ -763,11 +763,11 @@ And these are the movements generated by our declaration:
 ======================= ===================== ============== ============== ================ =========
  Account                 Partner               Debit          Credit         Match            Cleared
 ----------------------- --------------------- -------------- -------------- ---------------- ---------
- (4500) Tax Offices      Maksu- ja Tolliamet                  954,05         **VAT 5/2019**   Yes
- (4510) VAT due                                971,09                                         Yes
+ (4500) Tax Offices      Maksu- ja Tolliamet                  1 148,26       **VAT 5/2019**   Yes
+ (4510) VAT due                                1 165,30                                       Yes
  (4520) VAT deductible                                        1 006,81                        Yes
  (4530) VAT returnable                         989,77                                         Yes
-                                               **1 960,86**   **1 960,86**
+                                               **2 155,07**   **2 155,07**
 ======================= ===================== ============== ============== ================ =========
 <BLANKLINE>
 
@@ -777,12 +777,12 @@ The 2018-11 VAT declaration has values in both fields 1a and 1b:
 >>> obj = eevat.Declaration.objects.get(accounting_period__ref="2018-11")
 >>> obj.print_declared_values()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-[1a] 20% määraga maksustatavad müügid : 4233.83
+[1a] 20% määraga maksustatavad müügid : 5080.59
 [1b] 20% määraga maksustatavad ostud liikmesriigi maksukohustuslaselt : 1199.90
-[1] 20% määraga maksustatavad toimingud ja tehingud : 5433.73
-[2a] 9% määraga maksustatavad müügid : 274.31
-[2] 9% määraga maksustatavad toimingud ja tehingud : 274.31
-[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 871.45
+[1] 20% määraga maksustatavad toimingud ja tehingud : 6280.49
+[2a] 9% määraga maksustatavad müügid : 299.00
+[2] 9% määraga maksustatavad toimingud ja tehingud : 299.00
+[4] Käibemaks kokku (20% lahtrist 1 + 9% lahtrist 2) : 1043.02
 [41] Impordilt tasumisele kuuluv käibemaks : -312.98
 [5] Kokku sisendkäibemaksusumma, mis on seadusega lubatud maha arvata, sh : 343.20
 [51] 1) impordilt tasutud või tasumisele kuuluv käibemaks : 312.98
@@ -790,7 +790,7 @@ The 2018-11 VAT declaration has values in both fields 1a and 1b:
 [53] 3) ettevõtluses (100%) kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 22.29
 [54] 4) osaliselt ettevõtluses kasutatava sõiduauto soetamiselt ja sellisesõiduauto tarbeks kaupade soetamiselt ja teenuste saamiselttasutud või tasumisele kuuluv käibemaks : 22.29
 [6] Kauba ühendusesisene soetamine ja teise liikmesriigi maksukohustuslaselt saadud teenused kokku, sh : 1328.42
-[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 215.27
+[13] Tasumisele kuuluv(+) või enammakstud (-) käibemaks (lahter 4 + lahter 41 - lahter 5 + lahter 10 - lahter 11) : 386.84
 
 Here again the movements generated by this declaration:
 
@@ -798,10 +798,10 @@ Here again the movements generated by this declaration:
 ======================= ===================== ============== ============== ================= =========
  Account                 Partner               Debit          Credit         Match             Cleared
 ----------------------- --------------------- -------------- -------------- ----------------- ---------
- (4500) Tax Offices      Maksu- ja Tolliamet                  841,23         **VAT 11/2018**   Yes
- (4510) VAT due                                871,45                                          Yes
+ (4500) Tax Offices      Maksu- ja Tolliamet                  1 012,80       **VAT 11/2018**   Yes
+ (4510) VAT due                                1 043,02                                        Yes
  (4520) VAT deductible                                        343,20                           Yes
  (4530) VAT returnable                         312,98                                          Yes
-                                               **1 184,43**   **1 184,43**
+                                               **1 356,00**   **1 356,00**
 ======================= ===================== ============== ============== ================= =========
 <BLANKLINE>

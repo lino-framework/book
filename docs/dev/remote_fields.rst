@@ -51,14 +51,15 @@ the city of the partner of each invoice,  you can simply specify
 ===== ================== ============= ==============
  ID    Partner            Locality      Total to pay
 ----- ------------------ ------------- --------------
- 177   da Vinci David     4730 Raeren   1 110,16
- 176   da Vinci David     4730 Raeren   535,00
- 175   di Rupo Didier     4730 Raeren   280,00
- 174   Radermacher Jean   4730 Raeren   679,81
- 173   Radermacher Inge   4730 Raeren   2 039,82
-                                        **4 644,79**
+ 177   da Vinci David     4730 Raeren   1 299,08
+ 176   da Vinci David     4730 Raeren   647,35
+ 175   di Rupo Didier     4730 Raeren   338,80
+ 174   Radermacher Jean   4730 Raeren   822,57
+ 173   Radermacher Inge   4730 Raeren   2 468,18
+                                        **5 575,98**
 ===== ================== ============= ==============
 <BLANKLINE>
+
 
 .. glossary::
 

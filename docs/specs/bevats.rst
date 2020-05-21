@@ -37,14 +37,14 @@ The choice lists for VAT regimes and VAT columns are reduced compared
 to those defined in :doc:`bevat`:
 
 >>> rt.show('vat.VatRegimes')
-======= =============== ==================== ========== ============== ==========
- value   name            text                 VAT area   Needs VAT id   item VAT
-------- --------------- -------------------- ---------- -------------- ----------
- 10      normal          Not subject to VAT              No             Yes
- 20      subject         Subject to VAT       National   Yes            Yes
- 30      intracom        Intracom services    EU         Yes            Yes
- 35      intracom_supp   Intracom supplies    EU         Yes            Yes
-======= =============== ==================== ========== ============== ==========
+======= =============== ==================== ========== ==============
+ value   name            text                 VAT area   Needs VAT id
+------- --------------- -------------------- ---------- --------------
+ 10      normal          Not subject to VAT              No
+ 20      subject         Subject to VAT       National   Yes
+ 30      intracom        Intracom services    EU         Yes
+ 35      intracom_supp   Intracom supplies    EU         Yes
+======= =============== ==================== ========== ==============
 <BLANKLINE>
 
 

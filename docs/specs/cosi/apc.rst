@@ -145,22 +145,21 @@ And as we can see, our worker Robin owes us 9784,48 € because he took money fo
 
 >>> robin = dd.plugins.ledger.worker_model.objects.get(first_name="Robin")
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin)
-**7 offene Bewegungen (7362.36 €)**
+**7 offene Bewegungen (8908.45 €)**
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin, nosummary=True)
 ========== =============== ====================================================================== ============== ======== ================= ===========
  Valuta     Beleg           Beschreibung                                                           Debit          Kredit   Match             Beglichen
 ---------- --------------- ---------------------------------------------------------------------- -------------- -------- ----------------- -----------
- 08.03.15   *SLS 11/2015*   *(4800) Internal clearings* | *Radermacher Inge* | *Dubois Robin*      2 039,82                **SLS 11/2015**   Nein
- 07.01.15   *SLS 1/2015*    *(4800) Internal clearings* | *Radermacher Alfons* | *Dubois Robin*    31,92                   **SLS 1/2015**    Nein
- 07.11.14   *SLS 49/2014*   *(4800) Internal clearings* | *Lazarus Line* | *Dubois Robin*          375,00                  **SLS 49/2014**   Nein
- 10.09.14   *SLS 38/2014*   *(4800) Internal clearings* | *Ingels Irene* | *Dubois Robin*          600,00                  **SLS 38/2014**   Nein
- 11.06.14   *SLS 29/2014*   *(4800) Internal clearings* | *Evertz Bernd* | *Dubois Robin*          2 299,81                **SLS 29/2014**   Nein
- 07.05.14   *SLS 19/2014*   *(4800) Internal clearings* | *Bastiaensen Laurent* | *Dubois Robin*   1 199,85                **SLS 19/2014**   Nein
- 10.02.14   *SLS 9/2014*    *(4800) Internal clearings* | *Hans Flott & Co* | *Dubois Robin*       815,96                  **SLS 9/2014**    Nein
-                            **Saldo 7362.36 (7 Bewegungen)**                                       **7 362,36**
+ 08.03.15   *SLS 11/2015*   *(4800) Internal clearings* | *Radermacher Inge* | *Dubois Robin*      2 468,18                **SLS 11/2015**   Nein
+ 07.01.15   *SLS 1/2015*    *(4800) Internal clearings* | *Radermacher Alfons* | *Dubois Robin*    38,62                   **SLS 1/2015**    Nein
+ 07.11.14   *SLS 49/2014*   *(4800) Internal clearings* | *Lazarus Line* | *Dubois Robin*          453,75                  **SLS 49/2014**   Nein
+ 10.09.14   *SLS 38/2014*   *(4800) Internal clearings* | *Ingels Irene* | *Dubois Robin*          726,00                  **SLS 38/2014**   Nein
+ 11.06.14   *SLS 29/2014*   *(4800) Internal clearings* | *Evertz Bernd* | *Dubois Robin*          2 782,77                **SLS 29/2014**   Nein
+ 07.05.14   *SLS 19/2014*   *(4800) Internal clearings* | *Bastiaensen Laurent* | *Dubois Robin*   1 451,82                **SLS 19/2014**   Nein
+ 10.02.14   *SLS 9/2014*    *(4800) Internal clearings* | *Hans Flott & Co* | *Dubois Robin*       987,31                  **SLS 9/2014**    Nein
+                            **Saldo 8908.45 (7 Bewegungen)**                                       **8 908,45**
 ========== =============== ====================================================================== ============== ======== ================= ===========
 <BLANKLINE>
-
 
 
 Miscellaneous
@@ -249,25 +248,24 @@ This site shows a series of due sales invoices
 ===================== =========== ========= ======================= =============== ================ ================
  Due date              Reference   No.       Partner                 Total to pay    Balance before   Balance to pay
 --------------------- ----------- --------- ----------------------- --------------- ---------------- ----------------
- 09/02/2014            SLS         9         Hans Flott & Co         815,96
- 06/05/2014            SLS         19        Bastiaensen Laurent     1 199,85
- 10/06/2014            SLS         29        Evertz Bernd            2 299,81
- 09/09/2014            SLS         38        Ingels Irene            600,00
- 06/11/2014            SLS         49        Lazarus Line            375,00
- 06/01/2015            SLS         1         Radermacher Alfons      31,92
- 14/02/2015            SLS         3         Radermacher Christian   719,60                           719,60
- 07/03/2015            SLS         11        Radermacher Inge        2 039,82
- 08/03/2015            SLS         12        Radermacher Jean        679,81                           679,81
- 16/03/2015            SLS         13        di Rupo Didier          280,00                           280,00
- 20/03/2015            SLS         14        da Vinci David          535,00                           535,00
- 21/03/2015            SLS         15        da Vinci David          1 110,16        535,00           1 110,16
- 05/04/2015            SLS         10        Radermacher Hedi        2 999,85                         2 999,85
- 11/04/2015            SLS         6         Radermacher Fritz       1 759,71                         527,91
- 12/04/2015            SLS         7         Radermacher Fritz       240,00          1 759,71         -4,80
- **Total (15 rows)**               **236**                           **15 686,49**   **2 294,71**     **6 847,53**
+ 09/02/2014            SLS         9         Hans Flott & Co         987,31
+ 06/05/2014            SLS         19        Bastiaensen Laurent     1 451,82
+ 10/06/2014            SLS         29        Evertz Bernd            2 782,77
+ 09/09/2014            SLS         38        Ingels Irene            726,00
+ 06/11/2014            SLS         49        Lazarus Line            453,75
+ 06/01/2015            SLS         1         Radermacher Alfons      38,62
+ 14/02/2015            SLS         3         Radermacher Christian   853,97                           853,97
+ 07/03/2015            SLS         11        Radermacher Inge        2 468,18
+ 08/03/2015            SLS         12        Radermacher Jean        822,57                           822,57
+ 16/03/2015            SLS         13        di Rupo Didier          338,80                           338,80
+ 20/03/2015            SLS         14        da Vinci David          647,35                           647,35
+ 21/03/2015            SLS         15        da Vinci David          1 299,08        647,35           1 299,08
+ 05/04/2015            SLS         10        Radermacher Hedi        3 629,82                         3 629,82
+ 11/04/2015            SLS         6         Radermacher Fritz       2 129,25                         638,77
+ 12/04/2015            SLS         7         Radermacher Fritz       290,40          2 129,25         -5,81
+ **Total (15 rows)**               **236**                           **18 919,69**   **2 776,60**     **8 224,55**
 ===================== =========== ========= ======================= =============== ================ ================
 <BLANKLINE>
-
 
 
 >>> show_choicelists()

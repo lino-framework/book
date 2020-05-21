@@ -37,7 +37,7 @@ The VAT plug in defines the following concepts:
 
     Specifies how the VAT for this voucher is being handled, e.g. which VAT
     rates are available and whether and how and when VAT is to be declared and
-    paid to the national VAT office.
+    paid to the national VAT office.  See `VAT regimes`_.
 
   VAT class
 
@@ -52,26 +52,21 @@ The VAT plug in defines the following concepts:
     field how much you spent for "real estate" objects, while in Belgium both
     vehicles and real estate objects are considered together as "investments".
 
-  VAT rule
+  VAT rules
 
-    A rule that defines which VAT rate to apply and which account to use for a
-    given combination of regime, class and trade type. The available VAT rules
-    vary depending on which VAT declaration plugin is installed.
+    A set of rules that defines which VAT rate to apply and which account to use
+    for a given combination of regime, class and trade type. The available VAT
+    rules vary depending on which VAT declaration plugin is installed.
 
   VAT declaration
 
-    A voucher that expresses the fact that the :term:`site operator` submitted a
-    VAT declaration to their national tax office.
+    A :term:`ledger voucher` that expresses the fact that the :term:`site
+    operator` submitted a VAT declaration to their tax office.
 
+  VAT area
 
-- `VAT regimes`_, `VAT classes`_, and `VAT rules`_ decide about the **VAT
-  rate** to apply for a given operation.
-
-- `VAT areas`_ are used to group countries into groups where similar VAT regimes
-  are available.
-
-- `Accounting invoices`_ are a voucher type which can be used in simple accounting
-  applications.
+    A group of countries having same :term:`VAT rules <VAT rule>` in the country
+    of the :term:`site operator`.  See `VAT areas`_.
 
 
 
@@ -114,17 +109,17 @@ installed, we have only one default regime.
 
 >>> rt.show(vat.VatRegimes, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-======= ======== ======== ========== ============== ==========
- value   name     text     VAT area   Needs VAT id   item VAT
-------- -------- -------- ---------- -------------- ----------
- 10      normal   Normal              No             Yes
-======= ======== ======== ========== ============== ==========
+======= ======== ======== ========== ==============
+ value   name     text     VAT area   Needs VAT id
+------- -------- -------- ---------- --------------
+ 10      normal   Normal              No
+======= ======== ======== ========== ==============
 <BLANKLINE>
 
-Note that the VAT regime does not depend on the *trade type*.  For example,
-when a partner has the regime "Intra-community", this regime is used for both
-sales and purchase invoices with this partner.  The difference between sales
-and purchases is defined by the `VAT rules`_, not by the regime.
+Note that the :term:`VAT regime` has nothing to do with the :term:`trade type`.
+For example, when a partner has the regime "Intra-community", this regime is
+used for both sales and purchase invoices with this partner.  The difference
+between sales and purchases is defined by the `VAT rules`_, not by the regime.
 
 .. class:: VatRegime
 
@@ -133,11 +128,13 @@ and purchases is defined by the `VAT rules`_, not by the regime.
 
     .. attribute:: vat_area
 
-        In which *VAT area* this regime is available.  See :class:`VatAreas`.
+        In which :term:`VAT area` this regime is available.
 
     .. attribute:: item_vat
 
         Whether unit prices are VAT included or not.
+        No longer used. See :attr:`Plugin.item_vat` instead.
+
 
     .. attribute:: needs_vat_id
 
@@ -288,8 +285,19 @@ When no national declaration module is installed, we have only one default
 VAT areas
 =========
 
-A **VAT area** is a group of countries for which same VAT rules apply in the the
-country of the :term:`site operator` .
+When your business is located, e.g. in Belgium and you buy goods or services
+from France, Germany and the Netherlands,  then these countries are called
+"intra community". Certain VAT rules apply for all intra-community countries.
+We don't want to repeat them for each country. That's why we have VAT areas.
+
+A :term:`VAT area` is a group of countries for which same VAT rules apply in
+the country of the :term:`site operator` .
+
+     are used to group countries into groups where similar VAT regimes
+  are available.
+
+    See :class:`VatAreas`.
+
 
 >>> rt.show(vat.VatAreas, language="en")
 ======= =============== ===============
@@ -356,34 +364,39 @@ invoice items depends on the account or the product.
    where you buy post stamps (0%), books (9%) and additional service (20%).
 
 
-Accounting invoices
+Account invoices
 ===================
 
-An **accounting invoice** is an invoice for which the user enters just the bare
-accounts and amounts.  They are stored using the :class:`VatAccountInvoice`
-model as voucher type.  They are typically used to store incoming purchase
-invoices, and they do no not usually produce a printable document.
+An :term:`account invoice` is an invoice for which the user enters just the bare
+accounts and amounts. The :mod:`lino_xl.lib.vat` plugin defines a VAT-capable
+implementation of :term:`account invoices <account invoice>`. They are typically
+used to store incoming purchase invoices, and they do no not usually produce a
+printable document.
 
 If you also need products, quantities and discounts, use a journal having
 :class:`VatProductInvoice <lino_xl.lib.sales.VatProductInvoice>` as voucher type
 instead.
 
-Accounting invoices are typically used to store incoming purchase invoices, but
+Account invoices are typically used to store incoming purchase invoices, but
 exceptions in both directions are possible: (1) purchase invoices can be stored
 using :class:`VatProductInvoice <lino_xl.lib.sales.VatProductInvoice>` if stock
 management is important, or (2) outgoing sales invoice can be stored as
 :class:`VatAccountInvoice` because they have been created using some external
 tool and are entered into Lino just for the general ledger.
 
+It is one of the most basic voucher types, which can be used even in  accounting
+applications that don't have :mod:`lino_xl.lib.sales`.
+
+
 There are two database models:
 
 .. class:: VatAccountInvoice
 
-    Django model for storing  *accounting invoices*.
+    Django model for storing :term:`account invoices <account invoice>`.
 
 .. class:: InvoiceItem
 
-    Django model for representing items of *accounting invoices*.
+    Django model for representing items of an :term:`account invoice`.
 
 There are several views:
 
