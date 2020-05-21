@@ -13,6 +13,23 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-05-21
+==========
+
+The `item_vat` option (whether we want to include VAT in the price of the items
+of an invoice) no longer depends on the :term:`VAT regime` but is configurable
+as a new plugin attribute :attr:`lino_xl.lib.vat.Plugin.item_vat`
+
+Released xl and cosi to PyPI.
+
+2020-05-20
+==========
+
+Changes in the :class:`lino_xl.lib.products.PriceRule` model) require a database
+migration: Field :attr:`event_type` has been renamed to :attr:`lino_xl.lib.products.PriceRule.selector`.
+Field :attr:`fee` has been renamed to :attr:`lino_xl.lib.products.PriceRule.product`.
+
+
 2020-05-13
 ==========
 

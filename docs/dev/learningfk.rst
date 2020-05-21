@@ -15,6 +15,10 @@ The :term:`application developer` can turn any foreign key field into a
     A foreign key that can "learn", i.e. add new items to its list of
     choices.
 
+  learning chooser
+
+    The chooser associated to a :term:`learning foreign key`.
+
 .. contents::
    :depth: 1
    :local:
@@ -54,3 +58,14 @@ the Person column of that table you can type the name of a person that does
 not yet exist in the database.  Lino will create it silently, and you can then
 click on the pointer to edit more information.
 Some examples in :ref:`specs.contacts.learningfk`.
+
+
+Implementation details
+======================
+
+When a method is decorated with the chooser decorator, Lino creates a
+:class:`lino.utils.choosers.Chooser` instance. The  :attr:`can_create_choice
+<lino.utils.choosers.Chooser.can_create_choice>` attribute of this instance will
+automatically be set to `True` when the field's model also has a method named
+:meth:`create_FOO_choice <lino.core.model.Model.create_FOO_choice>`
+(`FOO` being the field name).
