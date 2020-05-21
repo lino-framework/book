@@ -188,6 +188,11 @@ Some more concepts:
     In Lino, you create them in a dedicated journal that has its
     :attr:`preliminary <Journal.preliminary>` field checked.
 
+  trade type
+
+    The type of a trade operation. For example "sales" and "purchases" are the
+    most common trade types.  But we can also have "salaries", "taxes", ...  See
+    `Trade types`_
 
 There are some secondary models and choice lists:
 
@@ -1296,9 +1301,9 @@ Actors
 Trade types
 ===========
 
-The **trade type** is one of the basic properties of every ledger
-operation which involves an external partner.  Every partner movement
-is of one and only one trade type.
+The :term:`trade type` is one of the basic properties of every ledger operation
+that involves an external partner.  Every movement involving a partner is of one
+and only one trade type.
 
 The default list of trade types is:
 

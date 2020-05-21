@@ -65,10 +65,18 @@ The VAT plug in defines the following concepts:
 
   VAT area
 
-    A group of countries having same :term:`VAT rules <VAT rule>` in the country
+    A group of countries having same :term:`VAT rules` in the country
     of the :term:`site operator`.  See `VAT areas`_.
 
+  national declaration module
 
+    The module that implements a given national VAT configuration.
+
+    Every :term:`Lino site` has at most one :term:`national declaration module`,
+    which corresponds to the country where the :term:`site operator` is
+    registered.
+
+    Specified by :attr:`lino_xl.lib.vat.Plugin.declaration_plugin`.
 
 
 National VAT implementations
@@ -202,8 +210,8 @@ operation, and possibly other factors.
 VAT rules
 =========
 
-When no national declaration module is installed, we have only one default
-:term:`VAT rule` with no condition and zero rate.
+When no :term:`national declaration module` is installed, we have only one default
+:term:`VAT rule <VAT rules>` with no condition and zero rate.
 
 >>> rt.show(vat.VatRules, language="en")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -291,13 +299,12 @@ from France, Germany and the Netherlands,  then these countries are called
 We don't want to repeat them for each country. That's why we have VAT areas.
 
 A :term:`VAT area` is a group of countries for which same VAT rules apply in
-the country of the :term:`site operator` .
+the country of the :term:`site operator`.
 
-     are used to group countries into groups where similar VAT regimes
-  are available.
+VAT areas are used to group countries into groups where similar VAT regimes
+are available.
 
-    See :class:`VatAreas`.
-
+The :class:`VatAreas` choice list contains the list of available VAT areas.
 
 >>> rt.show(vat.VatAreas, language="en")
 ======= =============== ===============
@@ -315,7 +322,7 @@ The plugin property :attr:`eu_country_codes
 considered part of the EU.
 
 So the :attr:`country <lino_xl.lib.contacts.Partner.country>` field of a
-partner indirectly influences which `VAT regimes`_ are available this partner.
+partner influences which `VAT regimes`_ are available for this partner.
 
 Available VAT regimes
 =====================
@@ -323,8 +330,8 @@ Available VAT regimes
 The declaration plugin controls which VAT regimes are available for selection
 on a partner or on a voucher.
 
-The list of available VAT regimes for a partner depends on the VAT area and on
-whether the partner has a VAT id or not.
+The list of available VAT regimes for a partner depends on the :term:`VAT area`
+and on whether the partner has a VAT id or not.
 
 .. function:: get_vat_regime_choices(country=None, vat_id=None):
 
@@ -334,11 +341,11 @@ whether the partner has a VAT id or not.
 
 .. class:: VatAreas
 
-    The global list of VAT areas.
+    The global list of :term:`VAT areas <VAT area>`.
 
     .. classmethod:: get_for_country(cls, country)
 
-        Return the VatArea instance for this country.
+        Return the :term:`VAT area` for this country.
 
 Why differentiate between VAT regimes and VAT classes?
 ======================================================
