@@ -1,18 +1,53 @@
-=================================
+.. doctest docs/admin/config_dirs.rst
+.. _config_dirs:
+
+=======================================
+Introduction to ``config``  directories
+=======================================
+
+
+.. contents::
+    :depth: 2
+    :local:
+
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.confdirs.settings')
+>>> from lino.api.doctest import *
+
+
 The local configuration directory
 =================================
 
-The **local configuration directory** is a directory on a :term:`Lino site` that
-contains template files used by Lino when printing invoices, contracts or any
-document.
+.. glossary::
+
+  local configuration directory
+
+    A :xfile:`config` directory on a :term:`Lino site` that contains locally
+    customized template files.
+
+
+How to make local print templates editable by end users
+=======================================================
+
+Some end users want to be able to configure themselves certain templates.
+
+First step : make a local copy of the relevant templates::
+
+  $ go mysite
+  $ cp -a env/lib/python3.6/site-packages/lino_xl/lib/sales/config .
+
+Second step: make the local config directory accessible to the end user via SSH
+or WebDAV or any other method.
+
 
 .. xfile:: config
 
-The local configuration directory is always named :xfile:`config` and is always
-a subdirectory of the :attr:`cache_dir <lino.core.site.Site.cache_dir>`. Lino
-does not create this directory automatically. If you want to use local
-templates, the :term:`site maintainer` must create that directory and make sure
-that the Lino web server process has write permission to it.
+Lino has a concept of configuration directories that are a bit like Django's
+`templates` directories.
+
 
 Creating a desktop link to the local configuration directory
 ============================================================
@@ -25,7 +60,13 @@ they can easily access the configuration directory using their GUI
 file manager.
 
 The directory to be shared is the :xfile:`config` subdirectory of the
-*project directory*.
+:attr:`cache_dir <lino.core.site.Site.cache_dir>`,
+which usually is the same as the *project directory* for production sites.
+
+Lino does not create this directory automatically. If you want to use local
+templates, the :term:`site maintainer` must create that directory and make sure
+that the Lino web server process has write permission to it.
+
 
 If the template manager has an **Ubuntu desktop** with the default
 files manager, then it is easy:

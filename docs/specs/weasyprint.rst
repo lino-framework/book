@@ -31,11 +31,13 @@ project.
 
 See also :doc:`printing`.
 
+
+
 Build methods
 =============
 
 This plugin defines no models, it just adds two build methods to your the global
-list of build methods ():class:`lino.modlib.printing.BuildMethods`).
+list of build methods (:class:`lino.modlib.printing.BuildMethods`).
 
 
 .. currentmodule:: lino.modlib.weasyprint
@@ -65,12 +67,8 @@ Templates
 Defines the general HTML page to be included by every template.
 This is meant to be included by the actual templates.
 
-Source code: https://github.com/lino-framework/lino/blob/master/lino/modlib/weasyprint/config/weasyprint/base.weasy.html
-
-You can automagically add a logo to all your weasyprint documents by adding a
-local :xfile:`config` directory with a subdirectory :file:`weasyprint`
-containing a file named :file:`logo.jpg`.  The logo will get printed in the top
-left area of every page (unless you change the template).
+Source code:
+https://github.com/lino-framework/lino/blob/master/lino/modlib/weasyprint/config/weasyprint/base.weasy.html
 
 The template defines the following blocks:
 
@@ -123,13 +121,13 @@ Here is a list of the weasy templates included with the :ref:`xl`:
 ./lib/lists/config/lists/List/list_members.weasy.html
 ./lib/orders/config/orders/Order/base.weasy.html
 ./lib/orders/config/orders/Order/default.weasy.html
+./lib/sales/config/sales/VatProductInvoice/base.weasy.html
 ./lib/sales/config/sales/VatProductInvoice/default.weasy.html
 ./lib/sheets/config/sheets/Report/default.weasy.html
 ./lib/working/config/working/ServiceReport/default.weasy.html
 
-
-Note also that :mod:`lino_xl.lib.excerpts` contains the
-:xfile:`excerpts/base.weasy.html` template, which inherits from
+Note that `excerpts`, `orders` and `sales` have their own
+:file:`FOO/base.weasy.html` template, which inherits from  the main base
 :xfile:`weasyprint/base.weasy.html`.
 
 
@@ -143,3 +141,100 @@ This plugin installs a warnings filter for the `cffi.model` module in
 order to get rid of a disturbing warning :message:`There are known
 rendering problems with Cairo <= 1.14.0` and :message:`@font-face
 support needs Pango >= 1.38` issued by weasyprint.
+
+
+.. _specs.weasyprint.logo:
+
+How to customize your logo in the header or footer
+==================================================
+
+This section explains how headers and footers are configured in
+:mod:`lino.modlib.weasyprint` templates (and how you can customize them).
+
+You can automagically add a logo to all your weasyprint documents by adding a
+local :xfile:`config` directory with a subdirectory :file:`weasyprint`
+containing a file named :file:`logo.jpg`.   The logo will get printed in the top
+right area of every page (unless you change the template).
+
+How it all works
+================
+
+What happens when I print an invoice?
+
+When Lino starts up, it finds the :term:`excerpt type` for sales invoices  (more
+precisely the :class:`sales.VatProductInvoice
+<lino_xl.lib.sales.VatProductInvoice>` model) and therefore installs the print
+action on that model. This is why you a have a print button per invoice.
+
+The :term:`excerpt type` tells Lino which :term:`build method` you want to use
+for building your printable document. The default build method is ``weasypdf``.
+
+When we know the build method, we can compute the name of the template to use.
+This name is a combination
+of ``sales/VatProductInvoice`` (the plugin and model name) and
+``default.weasy.html`` (the default template filename for weasypdf when
+:class:`lino_xl.lib.excerpts.ExcerptType.template` is empty).
+
+Lino now searches for a file named :xfile:`sales/VatProductInvoice/default.weasy.html`.
+This file can exist under any :xfile:`config` directory.
+If you have a local :xfile:`config` directory, this is searched first.
+Otherwise Lino uses a default file from the source code directory.
+More about config directories in :doc:`/admin/config_dirs`.
+
+Now look at the default :xfile:`sales/VatProductInvoice/default.weasy.html`
+template file.  The first line is::
+
+  {%- extends "weasyprint/base.weasy.html" -%}
+
+Which means that Lino first loads yet another template, called
+:xfile:`weasyprint/base.weasy.html`.
+
+
+How weasyprint templates work
+=============================
+
+The weasyprint template uses the CSS @-rules
+`@page <https://www.quackit.com/css/at-rules/css_page_at-rule.cfm>`__ and
+`@bottom-right
+<https://www.quackit.com/css/at-rules/css_bottom-right_at-rule.cfm>`__,
+which
+define styles to apply to individual pages when printing the document.
+That is, they are used to apply styles for *paged media* only,
+not for continuous media like a browser window.
+
+List of all ``page-margin`` properties:
+https://www.quackit.com/css/at-rules/css_page-margin_properties_list.cfm
+
+Setting the height attribute in HTML is called a "presentational hint"
+and it's now recommended not to use them and use CSS instead.
+Presentational hints are ignored by WeasyPrint by default,
+but you can handle them using the --presentational-hints CLI parameter.
+https://github.com/Kozea/WeasyPrint/issues/872
+
+Lino currently doesn't use arbitrary "complex" HTML in headers and footers (as
+`documented here
+<https://weasyprint.readthedocs.io/en/latest/tips-tricks.html#include-header-and-footer-of-arbitrary-complexity-in-a-pdf>`__).
+The standard system with at-rules works well for us.
+
+It contains pseudo-elements for styling the first page as well as the
+left and right margins of the page.
+
+It can contain something like this::
+
+  <style type="text/css">
+  @page {
+      @top-right {
+        height: 20mm;
+        padding: 0px;
+        text-align: right;
+        content: url(file://{{logo_file}});
+      }
+  </style>
+
+More readings:
+
+- https://www.qhmit.com/css/at-rules/
+- https://www.quackit.com/css/properties/css_content.cfm
+- https://stackoverflow.com/questions/39941967/generate-pdf-with-weasyprint-having-common-header-footer-and-pagination
+- https://github.com/Kozea/WeasyPrint/blob/gh-pages/samples/invoice/invoice.css
+- https://gist.github.com/pikhovkin/5642563 complex headers

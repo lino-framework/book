@@ -25,7 +25,6 @@ The apc demo project
 <BLANKLINE>
 
 
-
 Implementation details
 ======================
 
@@ -307,3 +306,8 @@ This site shows a series of due sales invoices
  xl.Priorities               8                 Prioritäten             Priorités                    Priorities
 =========================== ================= ======================= ============================ ====================
 <BLANKLINE>
+
+Verify whether :ticket:`3657` is fixed:
+
+>>> print(rt.find_config_file("logo.jpg", "weasyprint"))  #doctest: +ELLIPSIS
+/.../lino_book/projects/apc/settings/config/weasyprint/logo.jpg

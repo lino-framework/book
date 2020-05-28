@@ -4,7 +4,7 @@ Files
 .. xfile:: media/cache/wsdl
 
   See :blogref:`20120508`.
-  
+
 .. xfile:: models.py
 
 Every Django app usually has a file `models.py`.  See `How to write
@@ -35,16 +35,10 @@ definitions.
 
 This is the directory where Lino expects certain subdirs.
 
-.. xfile:: config
-
-Lino has a concept of configuration directories that are a bit like 
-Django's `templates` directories.
-See :mod:`lino.utils.config`.
-
 .. xfile:: .po
 
-:xfile:`.po` files are gettext catalogs. 
-They contain chunks of English text as they appear in Lino, 
+:xfile:`.po` files are gettext catalogs.
+They contain chunks of English text as they appear in Lino,
 together with their translation into a given language.
 See :doc:`/dev/translate/index`.
 
@@ -56,5 +50,4 @@ These are obsolete synonyms for :xfile:`linoweb.js`.
 
 .. xfile:: .weasy.html
 
-An input template used by :mod:`lino.modlib.weasyprint`. 
-
+An input template used by :mod:`lino.modlib.weasyprint`.

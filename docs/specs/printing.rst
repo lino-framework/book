@@ -43,12 +43,22 @@ Additional build methods:
 - :mod:`lino.modlib.wkhtmltopdf`
 
 
+.. glossary::
+
+  printable document
+
+    A document, usually in `.pdf` format, that is meant to be printed on paper.
+
+  build method
+
+    The technology to use for building a printable document.
+
 We have *build methods*, *print actions* and mixins for *printable* database
 objects.
 
-The **build method** specifies which technology is used to build the printable
-document. This choice has influence on the required template (usually each build
-method has its specific template language) and on the produced output format.
+The :term:`build method` specifies both the required **template format**
+(usually each build method has its specific template language) and the format of
+the **produced output** file.
 
 >>> rt.show(printing.BuildMethods)  #doctest: +NORMALIZE_WHITESPACE
 ============ ============ ======================

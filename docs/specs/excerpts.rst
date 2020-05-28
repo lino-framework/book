@@ -25,21 +25,35 @@ Read also :doc:`printing`.
 What is a database excerpt?
 ===========================
 
+End users should know what a "database excerpt" is. They can see a history of
+these database excerpts using the following menu commands:
 
-A **database excerpt** is a database object which represents the fact
-that a given user has requested a printable document at a given
-moment.  Lino keeps all these requests in a global database table
-defined by the :class:`Excerpt` model.
+- :menuselection:`Office --> My excerpts`
+- :menuselection:`Explorer --> All excerpts`
 
-Users can see a :attr:`printed` a history of
-their database excerpts.
+.. glossary::
+
+  database excerpt
+
+    A database object that represents the fact that a given user has requested a
+    given printable document at a given moment.  Lino stores all these requests
+    in a database table defined by the :class:`Excerpt` model.
+
+End users can see a history of their printouts in :menuselection:`Office --> My
+excerpts`.
+
+When the end user clicks on a print button, Lino actually creates a database
+excerpt and then prints this excerpt.
+
 
 .. currentmodule:: lino_xl.lib.excerpts
 
 Usage
 =====
+
 - add lino_xl.lib.excerpts to your
   :meth:`lino.core.Site.get_installed_apps`.
+
 - Add the virtual field `printed`
 
 Lino does not automatically add an action per model to make the
@@ -79,24 +93,10 @@ then you must use the `Configuration` menu:
 Lino has a main template named :xfile:`excerpts/Default.odt` which is
 
 
-Excerpts
-========
-
-A **database excerpt** is a database object which represents the fact
-that a given user has requested a printable document at a given
-moment.  Lino keeps all these requests in a global database table
-defined by the :class:`Excerpt` model.
-
-Users can see a history of these database excerpts using the following
-menu commands:
-
-- :menuselection:`Office --> My excerpts`
-- :menuselection:`Explorer --> All excerpts`
 
 .. class:: Excerpt
 
-    A printable document that describes some aspect of the current
-    situation.
+    A printable document that describes some aspect of the current situation.
 
     .. attribute:: excerpt_type
 
@@ -166,14 +166,19 @@ menu commands:
 Excerpt types
 =============
 
-Lino also has a table of **excerpt types** where the system
-administrator can configure which types of database excerpts are
-available on a site. You can see this list via
+Lino also has a table of **excerpt types** where the system administrator can
+configure which types of database excerpts are available on a site. You can see
+this list via :menuselection:`Configuration --> Excerpt types`.
 
-- :menuselection:`Configuration --> Excerpt types`
+.. glossary::
 
-The detailed structure of this table is documented on the
-:mod:`excerpts.ExcerptType <lino_xl.lib.excerpts.models.ExcerptType>`
+  excerpt type
+
+    A configuration database object that specifies that a print button should
+    appear for a given model.
+
+
+The detailed structure of this table is documented on the :class:`ExcerptType`
 model.
 
 When a Lino process starts up, it automatically reads this table and
@@ -307,8 +312,8 @@ Model mixins
 .. class:: ExcerptTitle
 
     Mixin for models like
-    :class:`lino_welfare.modlib.aids.models.AidType` and
-    :class:`lino_xl.lib.courses.models.Line`.
+    :class:`lino_welfare.modlib.aids.AidType` and
+    :class:`lino_xl.lib.courses.Line`.
 
     .. attribute:: name
 
@@ -327,19 +332,21 @@ Model mixins
 Shortcuts
 =========
 
+.. glossary::
+
+  excerpt shortcut field
+
+    A virtual display field with actions for quickly managing, for a given
+    database object, its excerpt of a given type.
+
+
 .. class:: Shortcut
 .. class:: Shortcuts
 
-    A choicelists of **excerpt shortcut fields**.  An excerpt shortcut
-    field is a virtual display field with actions for quickly
-    managing, from a given database object, the excerpt for this
-    object of a given type.
+    A choicelists of :term:`excerpt shortcut fields <excerpt shortcut field>`.
 
     These virtual fields are being installed during pre_analyze by
     :func:`set_excerpts_actions`.
-
-
-
 
 
 Templates
@@ -392,7 +399,7 @@ Signal handlers
     report.body.html`.
 
     When the database does not yet exist (e.g. during :manage:`prep`), it simply
-    ignores that situation silently and does not define the print actions. 
+    ignores that situation silently and does not define the print actions.
 
 
 .. function:: post_init_excerpt

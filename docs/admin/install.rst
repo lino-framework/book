@@ -15,8 +15,8 @@ setting up a Lino :term:`production server`.
 Set up a master environment
 ===========================
 
-If you are the first :term:`site maintainers <site maintainer>` on this
-:term:`production server`, you must set up the :term:`master environment`.
+If you are the first :term:`site maintainer` on this :term:`server <production
+server>`, you must set up the :term:`master environment`.
 
 .. glossary::
 
@@ -67,6 +67,18 @@ appyodt method does not require a LO service). You say this using the
 :doc:`oood`.
 
 For details see the documentation about :ref:`getlino`.
+
+Check :xfile:`/etc/aliases`
+===========================
+
+Every production server should be able to send emails to its maintainers, e.g.
+to notify them when a cron job fails.
+
+::
+
+  $ sudo apt install sendmail
+  $ sudo nano /etc/aliases   # add your email address
+  $ sudo newaliases
 
 
 Install your first site
