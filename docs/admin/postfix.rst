@@ -22,6 +22,19 @@ See below for explanations about how to answer them.
 The configuration is then stored in a file
 :xfile:`/etc/postfix/main.cf`, which you can modify afterwards.
 
+See the `postfix documentation <http://www.postfix.org/postconf.5.html>`__ about the parameters in
+this file.
+
+Notes about parameters used on a typical Lino server:
+
+- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.
+  Otherwise see `Using a relay host for outgoing mail`_
+- relay_domains
+- myhostname
+- myorigin
+- mydomain
+- mydestination
+
 
 Using a relay host for outgoing mail
 ====================================
@@ -94,6 +107,18 @@ Here is what status should say::
 
   Dec 12 12:01:59 my-host-name systemd[1]: Starting Postfix Mail Transport Agent...
   Dec 12 12:01:59 my-host-name systemd[1]: Started Postfix Mail Transport Agent.
+
+Sending tesdt mails
+===================
+
+To quickly see the value of a given parameter, type::
+
+  $ sudo postconf -d | grep mydomain"
+
+How to send a simple mail for testing the mail system::
+
+  $ mail -s "some test" joe@example.com mike@example.com
+
 
 
 Inspect the mail queue
