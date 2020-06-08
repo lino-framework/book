@@ -23,7 +23,7 @@ from pprint import pprint
 from lino.utils.instantiator import create_row as create
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils.jsgen import py2js
-
+from urllib.parse import urlencode
 
 class QuickTest(RemoteAuthTestCase):
 
@@ -111,14 +111,12 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(res.xcallback['buttons'], [['yes', 'Yes'], ['no', 'No']])
         self.assertEqual(res.xcallback['title'], "Confirmation")
 
-        pprint(res.xcallback)
+        # pprint(res.xcallback)
         cbid = res.xcallback['id']
-        cbid = py2js(res.xcallback['id'])
-        print(cbid)
-        # cbid = json.loads(cbid)
-        url = "/callbacks/{}/yes".format(cbid)
-        print(url)
-        res = self.client.get(url, REMOTE_USER='root')
+        # add callback uid adn choice into request and send again.
+        url += "&" + urlencode({"xcallback__" + cbid: "yes"})
+
+        res = self.client.get(url,  REMOTE_USER='root')
         self.assertEqual(res.status_code, 200)
         res = AttrDict(json.loads(res.content))
         # print(res)
