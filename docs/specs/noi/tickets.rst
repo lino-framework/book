@@ -49,7 +49,7 @@ the detail window of a ticket.
       - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
       - (general1b_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
       - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
-  - **Comments** (comments_CommentsByRFC)
+  - **Comments** (comments.CommentsByRFC)
 - **More** (more):
   - (more_1):
     - (more1):
