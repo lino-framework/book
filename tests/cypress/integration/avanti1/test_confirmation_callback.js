@@ -23,7 +23,7 @@ describe('Connecting ...', function () {
         cy.get(".x-combo-list-item:nth-child(2)").click();  //male
         cy.get(".l-InsertFormPanel button").click().wait(1000); //submit
         //cy.get('div:contains("Yes")').click().wait(1000); //submit
-        if (cy.get(".l-confirmation").length > 0) {
+        if (cy.get('body').find(".l-confirmation").length) {
             cy.get(".l-confirmation button:nth(1)").click({force:true});
         }
     });
@@ -38,7 +38,7 @@ describe('Connecting ...', function () {
         cy.get('.l-InsertFormPanel input[name="gender"]+img').click(); open
         cy.get(".x-combo-list-item:nth-child(2)").click();  //male
         cy.get(".l-InsertFormPanel button").click().wait(1000); //submit
-        if (cy.get(".l-confirmation").length > 0) {
+        if (cy.get('body').find(".l-confirmation").length) {
             cy.get(".l-confirmation button:nth(1)").click({force:true});
         }
 
