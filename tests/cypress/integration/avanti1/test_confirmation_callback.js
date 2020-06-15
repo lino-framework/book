@@ -59,7 +59,7 @@ describe('Connecting ...', function () {
         // cy.get('.l-InsertFormPanel input[name="gender"]+img').click();// open
         // cy.get(".x-combo-list-item:nth-child(2)").click(); // male
         // cy.get(".l-InsertFormPanel button").click().wait(1000); //submit
-        cy.get(".x-toolbar-cell input[type='text']").type("FooFoo").wait(1000); //submit
+        cy.get(".x-toolbar-cell input[type='text']:first").type("FooFoo").wait(1000); //submit
 
         // const text_initial_record_count = cy.get("div[class='xtb-text']").text();
         // const initial_record_count = parseInt(text_initial_record_count.split(" ")[text_initial_record_count.length - 1]);
