@@ -85,7 +85,18 @@ See unit tests in :mod:`lino_welfare.tests.test_beid`.
 
     .. attribute:: birth_country
 
+    .. attribute:: nationality_text
+
+      The nationality in plain text as it was on the eid card. For a French
+      citizen the value on the eid card can be "Français", "Française", "Frans",
+      "Franzose", "Französin", "French" depending on the sex and the issuing
+      municipality.  This field is just informative, Lino does not automatically
+      map it to the :attr:`nationality` field.
+
     .. attribute:: birth_place
+
+      The birth place in plain text as it was on the eid card.
+
     .. attribute:: card_number
     .. attribute:: card_valid_from
     .. attribute:: card_valid_until

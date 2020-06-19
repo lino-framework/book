@@ -85,3 +85,25 @@ content.
 
 Note that the :xfile:`.ssh` directory should have permissions set to ``700`` to
 restrict access so that only the owner can read, write, or open it.
+
+The hostname
+============
+
+Every server has a "hostname", a relatively short "nickname" to designate it.
+The hostname is not the same as the FQDN.
+
+How to change the hostname of a Lino server::
+
+  $ sudo hostnamectl set-hostname newname
+
+If you use `mailutils
+<http://mailutils.org/manual/html_node/configuration.html>`__, you must also check
+your :file:`/etc/mail/local-host-names` file.
+
+If that file doesn't exist, try::
+
+  $ mail --show-config-options | grep SYSCONFDIR
+  SYSCONFDIR=/etc 	- System configuration directory
+
+Which means that actually the config files are in :file:`/etc/main`. And one of
+them, :file:`/etc/mail/local-host-names` contains my default ``From`` header.

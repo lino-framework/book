@@ -142,6 +142,7 @@ Click OK to apply the following changes for JEFFIN Jean-Jacques (100) :\
 <br/>Gender : None -> <system.Genders.male:M>
 <br/>ID card valid from : None -> 2016-02-06
 <br/>Locality : None -> Place #1 ('Helsinki')
+<br/>Nationality (text) : '' -> 'Belgier'
 <br/>Street : '' -> 'Estland'
 <br/>Zip code : '' -> '1262'
 <br/>eID card issuer : '' -> 'Helsinki'

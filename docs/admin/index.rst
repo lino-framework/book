@@ -39,8 +39,7 @@ Installation
     certbot
     security
     cron
-    postfix
-    mailman
+    mail
 
 
 

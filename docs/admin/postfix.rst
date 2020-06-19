@@ -4,85 +4,75 @@
 Postfix cheat sheet
 ===================
 
-**Postfix** is a mail transfer agent (MTA). We recommend it over exim4 just because
+**Postfix** is a mail transfer agent (MTA). We prefer it over exim4 just because
 we have a cheat sheet for it. There have been long debates on what (if any)
-should be the default MTA for Debian (`more
+should be the default MTA for a Debian system (`more
 <https://wiki.debian.org/Debate/DefaultMTA>`__).
+
+
+Installation
+============
 
 Installing Postfix on Debian is easy::
 
-  $ sudo apt install postfix
+  $ sudo apt install libsasl2-modules postfix
 
 This will automatically uninstall exim4.
 
-.. xfile:: /etc/postfix/main.cf
+Installing postfix will start by asking you to select the **configuration
+type**. Choose "Internet site".  See below for other choices.
 
-Installing postfix will ask you a few important questions.
-See below for explanations about how to answer them.
+It will then ask for your "mail name", this is the fully qualified domain name
+of your server.
+
+
+Configuration type
+==================
+
+Installing postfix will start by asking you to select the mail server
+**configuration type** that best meets your needs.
+
+- Internet site:  Mail is sent and received directly using SMTP.
+
+- Internet with smarthost: Mail is received directly using SMTP or by running a
+  utility such as fetchmail. Outgoing mail is sent using a smarthost.
+
+- Satellite system:
+  All mail is sent to another machine, called a 'smarthost', for delivery.
+
 The configuration is then stored in a file
 :xfile:`/etc/postfix/main.cf`, which you can modify afterwards.
 
-See the `postfix documentation <http://www.postfix.org/postconf.5.html>`__ about the parameters in
-this file.
+For laudate we had to activate (uncomment) the ``smtps`` entry in
+:xfile:`/etc/postfix/master.cf`.
+
+
+.. xfile:: /etc/postfix/main.cf
+
+This is the main configuration file for postfix. See the `postfix documentation
+<http://www.postfix.org/postconf.5.html>`__ about the syntax and meaning of the
+parameters in this file.
 
 Notes about parameters used on a typical Lino server:
 
-- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.
-  Otherwise see `Using a relay host for outgoing mail`_
+- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.  
 - relay_domains
 - myhostname
 - myorigin
 - mydomain
 - mydestination
 
+Using a relay host
+==================
 
-Using a relay host for outgoing mail
-====================================
+Set the name of the relay host in the ``relayhost`` parameter::
 
-"Internet with smarthost"
-
-A **smart host** or **relay host** is a third-party server that accepts outgoing
-mails from your server and cares about forwarding them to their final
-destination.
-
-Some server providers have a free mail relay host for the virtual machines they
-provide.  In that case you simply need to know the name of that host.
+  relayhost = relay.ovh.com
 
 If the relay host requires a username and password::
 
   $ sudo nano /etc/postfix/sasl_passwd
   $ sudo postmap /etc/postfix/sasl_passwd
-
-Or you can register an account for
-a third-party SMTP service like Mailgun
-and configure your postfix
-to use it as smarthost.
-`Mailgun <https://www.mailgun.com/smtp/free-smtp-service/free-open-smtp-relay/>`__
-gives you 10000 free emails every month.
-
-Or you can configure postfix `without relay host`_ as described hereafter.
-
-Without relay host
-===================
-
-To run your own mail server, you need a static IP address and a fully qualified
-domain name pointing to it.  There can be only one postfix per IP address. Make
-sure that the **Reverse DNS** of your IP address is configured correctly.  While
-DNS maps a domain name to an IP address, reverse DNS maps an IP address to a
-domain name.  It is a way of publicly declaring that your server at that IP
-address is responding to your domain name. The provider of your server is the
-owner of the IP address and they usually have a means for you to tell them the
-Reverse DNS.
-
-Without a reverse DNS the SMTP servers of your recipients are likely to refuse
-to talk with your server.  You will see messages like the following in your
-:file:`/var/log/mail.log` file::
-
-  Oct 16 07:06:16 yourhostname postfix/smtp[28516]: 570517A73:
-  host mx01.emig.gmx.net[212.227.17.5] refused to talk to me:
-  554-gmx.net (mxgmx116) Nemesis ESMTP Service not available
-  554-No SMTP service 554-Bad DNS PTR resource record.
-  554 For explanation visit http://postmaster.gmx.com/en/error-messages?ip=167.114.229.225&c=rdns
 
 Here is our suggestion for your :xfile:`/etc/postfix/main.cf` file::
 
@@ -94,7 +84,6 @@ Here is our suggestion for your :xfile:`/etc/postfix/main.cf` file::
   mynetworks_style = host
   relay_domains =
   inet_interfaces = all
-
 
 Here is what status should say::
 
@@ -108,12 +97,12 @@ Here is what status should say::
   Dec 12 12:01:59 my-host-name systemd[1]: Starting Postfix Mail Transport Agent...
   Dec 12 12:01:59 my-host-name systemd[1]: Started Postfix Mail Transport Agent.
 
-Sending tesdt mails
-===================
+Diagnostic tips and tricks
+==========================
 
 To quickly see the value of a given parameter, type::
 
-  $ sudo postconf -d | grep mydomain"
+  $ sudo postconf | grep mydomain
 
 How to send a simple mail for testing the mail system::
 
@@ -143,3 +132,16 @@ Delete all queued mail::
 Delete deferred mail queue messages::
 
   $ sudo postsuper -d ALL deferred
+
+
+Common problems when running your own mail server
+=================================================
+
+:message:`550 Email blocked` means that the recipient's mail server refuses to
+accept an incoming mail because the sender's mail server is blacklisted.
+
+To see whether your server is blacklisted, you can ask
+http://multirbl.valli.org/lookup/
+
+For some nice examples of why blacklisting is needed, see  `bobcares.com
+<https://bobcares.com/blog/550-email-blocked/>`__.

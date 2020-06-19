@@ -20,3 +20,4 @@ This section contains specs specific to :ref:`avanti`.
    cal
    cv
    comments
+   uploads
