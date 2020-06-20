@@ -128,12 +128,12 @@ class QuickTest(RemoteAuthTestCase):
         s = contacts.Roles.request().to_rst()
         # print('\n'+s)
         self.assertEqual(s, """\
-==== ============== =========== ==============
- ID   Contact Role   Person      Organisation
----- -------------- ----------- --------------
- 1                   Johny Doe   Example
- 2                   Johny Doe   Example
-==== ============== =========== ==============
+==== ========== =========== ==============
+ ID   Function   Person      Organisation
+---- ---------- ----------- --------------
+ 1               Johny Doe   Example
+ 2               Johny Doe   Example
+==== ========== =========== ==============
 
 """)
 
@@ -141,9 +141,9 @@ class QuickTest(RemoteAuthTestCase):
         # print('\n'+s)
         self.assertEqual(s, """\
 =========== ====== ============= ======== ================================
- Partner     Role   Workflow      Remark   Calendar entry
+ Person      Role   Workflow      Remark   Calendar entry
 ----------- ------ ------------- -------- --------------------------------
- Doe Johny          **Invited**            Calendar entry #1 (23.10.2014)
+ Johny Doe          **Invited**            Calendar entry #1 (23.10.2014)
 =========== ====== ============= ======== ================================
 
 """)
