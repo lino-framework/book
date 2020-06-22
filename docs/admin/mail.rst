@@ -50,6 +50,17 @@ address and a fully qualified domain name pointing to it. There can be only one
 mail server per IP address. You must care about `Reverse DNS`_, `SPF`_, `DMARC`_
 and `DKIM`_.
 
+
+Quick instructions
+==================
+
+Add the following TXT record to your zone file::
+
+  .mydomain.org v=spf1 mx ~all
+  .mydomain.org v=DMARC1; p=reject; ruf=mailto:postmaster@mydomain.org
+  mail._domainkey.mydomain.org v=DKIM1; h=sha256; k=rsa; t=y; p=<<PASTEME>>
+
+
 Reverse DNS
 ===========
 
@@ -70,56 +81,13 @@ declares publicly the FQDN that points to this address.
 
 You can use :cmd:`dig` to do a DNS lookup, and  :cmd:`dig -x` to do a reverse
 DNS lookup. :cmd:`dig laudate.ee` gives me `95.217.218.29` and :cmd:`dig -x
-95.217.218.29` gives me `laudate.ee`::
+95.217.218.29` gives me `mail.laudate.ee`.
 
-  $ dig laudate.ee
-  ; <<>> DiG 9.11.3-1ubuntu1.12-Ubuntu <<>> laudate.ee
-  ;; global options: +cmd
-  ;; Got answer:
-  ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58844
-  ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
-
-  ;; OPT PSEUDOSECTION:
-  ; EDNS: version: 0, flags:; udp: 65494
-  ;; QUESTION SECTION:
-  ;laudate.ee.			IN	A
-
-  ;; ANSWER SECTION:
-  laudate.ee.		3600	IN	A	95.217.218.29
-
-  ;; Query time: 12 msec
-  ;; SERVER: 127.0.0.53#53(127.0.0.53)
-  ;; WHEN: Wed Jun 10 17:03:36 EEST 2020
-  ;; MSG SIZE  rcvd: 55
-
-  $ dig -x 95.217.218.29
-
-  ; <<>> DiG 9.11.3-1ubuntu1.12-Ubuntu <<>> -x 95.217.218.29
-  ;; global options: +cmd
-  ;; Got answer:
-  ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 26604
-  ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
-
-  ;; OPT PSEUDOSECTION:
-  ; EDNS: version: 0, flags:; udp: 65494
-  ;; QUESTION SECTION:
-  ;29.218.217.95.in-addr.arpa.	IN	PTR
-
-  ;; ANSWER SECTION:
-  29.218.217.95.in-addr.arpa. 72562 IN	PTR	mail.laudate.ee.
-
-  ;; Query time: 6 msec
-  ;; SERVER: 127.0.0.53#53(127.0.0.53)
-  ;; WHEN: Wed Jun 10 17:06:59 EEST 2020
-  ;; MSG SIZE  rcvd: 84
-
-
-But why does it say ``mail.laudate.ee`` instead of simply ``laudate.ee``? Both
-FQDN resolve to the same IP address because we configured a wildcard in the zone
-file. It seems that the `mail` subdomain (or sometimes `smtp` or `mx`) is
-general practice.  It makes sense to have your mail server on a different
-machine than your application.  Already for security reasons. Also in order to
-be scalable.
+Why ``mail.laudate.ee`` instead of simply ``laudate.ee``? Both FQDN resolve to
+the same IP address when we configured a wildcard in the zone file. It seems
+that the `mail` subdomain (or sometimes `smtp` or `mx`) is general practice.  It
+makes sense to have your mail server on a different machine than your
+application.  Already for security reasons. Also in order to be scalable.
 
 Note : the domain given by the MX record (the FQDN of our mail server) needs to
 have its separate A record. Just a CNAME is not enough for a mail server.
