@@ -51,16 +51,6 @@ mail server per IP address. You must care about `Reverse DNS`_, `SPF`_, `DMARC`_
 and `DKIM`_.
 
 
-Quick instructions
-==================
-
-Add the following TXT record to your zone file::
-
-  .mydomain.org v=spf1 mx ~all
-  .mydomain.org v=DMARC1; p=reject; ruf=mailto:postmaster@mydomain.org
-  mail._domainkey.mydomain.org v=DKIM1; h=sha256; k=rsa; t=y; p=<<PASTEME>>
-
-
 Reverse DNS
 ===========
 

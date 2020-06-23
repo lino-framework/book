@@ -13,6 +13,16 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-06-22
+==========
+
+- Fixed :ticket:`3698` : When using :func:`lino.core.inject.inject_field` on a model, Lino did not
+  reset the field cache of the MTI children of that model.  This turned out to
+  be necessary in some situations.
+
+- :func:`lino.api.doctest.show_choicelists` now also shows the number of items in each choicelist.
+
+
 2020-06-06
 ==========
 
