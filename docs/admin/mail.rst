@@ -203,6 +203,10 @@ It might take some time for changes to propagate.  Restart the services::
   $ sudo service opendkim start
   $ sudo service postfix restart
 
+
+Testing
+-------
+
 Check whether propagation is done::
 
   $ dig mail._domainkey.mydomain.org txt
@@ -215,9 +219,6 @@ This should returnsomething like::
   mydomain.org.	3600	IN	TXT	"v=DKIM1; h=sha256; k=rsa; t=y;    p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApfLOzbgeQgyTvEe8xSBCzB8+Uj+Y9uy3/Ivf1aV3A78pDxW2XbjXV5bKmyLH8NncOfbm/T1W6Xs/8b6MidvH2u1wGvOVL8zU/Ghatr8OvAHr1Bn45KkEcAFNeUhOew2i9EVoRuHAc5Lqo0i0e1oL1WTz+I3rh1yXEIfP0Tr5jA" "ryEbiQExzXsEKh+SpV2gWFsUKlZY+gEycTjB   CvYrzukoFWUc5u5xmM2I6ndQoAUAUXgv3tuXw36Fql2eVidFUIJNUKXWF+AuK/NmZmGNTxOLIADi9zX7HuYAsVRfr4b+qSknBF54dfvBhV6gEN1t2DFxKBL5UHZXCbQXBikBmISwIDAQAB"
   mydomain.org.	3600	IN	TXT	"v=DMARC1; p=reject; ruf=mailto:postmaster@mydomain.org"
 
-You can also use http://www.protodave.com/tools/dkim-key-checker/
-
-https://tools.sparkpost.com/dkim
 
 Or you can use :cmd:`opendkim-testkey`::
 
@@ -228,11 +229,54 @@ Or you can use :cmd:`opendkim-testkey`::
   opendkim-testkey: multiple DNS replies for 'mydomain.org'
 
 
-Now try to send an email to <autorespond+dkim@dk.elandsys.com>
 
+Now try to send an email and confirm it's being signed
 
+<autorespond+dkim@dk.elandsys.com>
 
+You can also use http://www.protodave.com/tools/dkim-key-checker/
 
+or https://tools.sparkpost.com/dkim
+
+One good method to test is using swaks::
+
+  swaks -t check-auth2@verifier.port25.com -f user@mydomain.org --server localhost
+
+This will send a test email, and then get a reply with dkim and dmark information.
+If you don't have a pop3 or imap server configured you can add this line in your your /etc/aliases to have postfix
+forward mail to another server for this name.::
+
+  sudo echo "user: myaddress@otherserver.net" >> /etc/aliases
+  # Also update the alias map and restart postfix
+  sudo newaliases; sudo service postfix restart
+
+Issues
+------
+
+8891@localhost: garbage after numerical service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This was an odd error. On one server the inet socket connection worked fine, on the other server this error was logged by smtpd every time it sent.
+I wasn't able to find the source for this issue. But the solution to use a file based socket.
+However the default settings for file socket connection gives file not find errors.
+
+The correct settings for postfix and opendkim for a file socket connection:::
+
+    #/etc/opendkim.conf
+    umask           002
+    Socket			local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
+    #/etc/default/opendkim
+    Socket=local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
+    #/etc/postfix/main.cf
+    smtpd_milters = local:/var/spool/opendkim/opendkim.sock
+
+The reason for /var/spool/postfix for opendkim is that postfix things that is / when looking for the file.
+For this solution you also need to create that path and do some permission work.::
+
+    sudo mkdir -p /var/spool/postfix/var/spool/opendkim/
+    sudo chown opendkim:opendkim /var/spool/postfix/var/spool/opendkim/
+    sudo adduser postfix opendkim
+
+That will allow postfix to use the socket file.
 
 
 Diagnostic tips and tricks
