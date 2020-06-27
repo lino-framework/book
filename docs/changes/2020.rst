@@ -13,6 +13,12 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-06-27
+==========
+
+Lino has a new admin command :manage:`passwd`.
+
+
 2020-06-22
 ==========
 

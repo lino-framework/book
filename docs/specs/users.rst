@@ -18,21 +18,53 @@ permission system.
 
 .. include:: /../docs/shared/include/tested.rst
 
+Code examples in this document use the :mod:`lino_book.projects.min1` demo
+project:
 
 >>> from lino import startup
 >>> startup('lino_book.projects.min1.settings.doctests')
 >>> from lino.api.doctest import *
 
-Which means that code examples in this document use the
-:mod:`lino_book.projects.min1` demo project.
+Concepts
+========
+
+.. glossary::
+
+  user
+
+    A human person who can sign in on this site.
+
+  user type
+
+    The type of a :term:`user`, mostly used to determine the permissions granted
+    to this user. See `User types`_.
+
+  authority
+
+    The fact that one user gives another user the right to "represent" them,
+    i.e. to act in their name.
 
 
-Models
-======
+Users
+=====
+
+.. class:: Users
+
+    Base class for all tables of :class:`User`.
+
+.. class:: AllUsers
+
+    Shows the list of all users on this site.
+
+.. class:: UsersOverview
+
+    A variant of :class:`Users` showing only active users and only some
+    fields.  This is used on demo sites in :xfile:`admin_main.html` to
+    display the list of available users.
 
 .. class:: User
 
-    Represents a user of this site.
+    Django model used to represent a :term:`user`.
 
     .. attribute:: authenticated
 
@@ -79,8 +111,8 @@ Models
     .. attribute:: person
 
         A virtual read-only field which returns the :class:`Person
-        <lino_xl.lib.contacts.models.Person>` MTI child of the
-        :attr:`partner` (if it exists) and otherwise `None`.
+        <lino_xl.lib.contacts.Person>` MTI child of the :attr:`partner` (if it
+        exists) and otherwise `None`.
 
     .. attribute:: last_login
 
@@ -117,11 +149,12 @@ Models
 
         These fields are used for :doc:`userstats`.
 
+Authorities : let other users work in your name
+===============================================
 
 .. class:: Authority
 
-    An **authority** is when a user gives another user the right to
-    "represent" them.
+    Django model used to represent a :term:`authority`.
 
     .. attribute:: user
 
@@ -132,24 +165,6 @@ Models
 
         The user who gets the right to represent the author
 
-
-Tables
-======
-
-.. class:: Users
-
-    Base class for all user tables.
-
-.. class:: AllUsers
-
-    Shows the list of all users on this site.
-
-.. class:: UsersOverview
-
-
-    A variant of :class:`Users` showing only active users and only some
-    fields.  This is used on demo sites in :xfile:`admin_main.html` to
-    display the list of available users.
 
 
 User types
@@ -174,6 +189,7 @@ User types
 .. class:: UserType
 
     Base class for all user types.
+    Any instance if this represents a possible :term:`user type`.
 
     .. attribute:: role
 
