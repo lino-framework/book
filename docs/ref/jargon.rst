@@ -81,6 +81,13 @@ Lino Presto
 
 See http://presto.lino-framework.org
 
+.. _amici:
+
+Lino Amici
+------------
+
+See http://amici.lino-framework.org
+
 .. _pronto:
 
 Lino Pronto
