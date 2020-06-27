@@ -18,6 +18,9 @@ General information about how to read and maintain this document in :ref:`dev.ch
 
 Lino has a new admin command :manage:`passwd`.
 
+Six releases to PyPI (all with version 20.6.0) : Lino, XL, :ref:`presto`,
+:ref:`amici`, :ref:`avanti` and :ref:`react`.
+
 
 2020-06-22
 ==========
