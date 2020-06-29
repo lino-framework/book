@@ -13,6 +13,16 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-06-29
+==========
+
+.. currentmodule:: lino_xl.lib.uploads
+
+Last changes in :mod:`lino_xl.lib.uploads`:  :class:`MyExpiringUploads` is now a
+dashboard item. Two new settings :attr:`Plugin.expiring_start` and
+:attr:`Plugin.expiring_end`.
+
+
 2020-06-27
 ==========
 

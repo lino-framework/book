@@ -26,8 +26,17 @@ This plugin requires the :mod:`lino_xl.lib.clients` plugin.
 >>> from lino.api.doctest import *
 
 Although this plugin requires the :mod:`lino_xl.lib.clients` plugin, it does not
-handle this dependency automatically.  This is because making it automatic would
-cause changes in the menu item ordering in welfare.
+declare this dependency because making it automatic would
+cause changes in the menu item ordering in :ref:`welfare`.
+
+The plugin has two custom settings:
+
+>>> dd.plugins.uploads.expiring_start
+-30
+>>> dd.plugins.uploads.expiring_end
+365
+
+These are the default values for the :class:`MyExpiringUploads`  table
 
 >>> dd.plugins.uploads.needs_plugins
 []
@@ -43,3 +52,32 @@ cause changes in the menu item ordering in welfare.
 
 >>> dd.plugins.clients.demo_coach
 'nathalie'
+
+
+Extended uploads
+================
+
+.. class:: Upload
+
+    Extends :class:`lino.modlib.uploads.Upload` by adding some fields.
+
+    .. attribute:: needed
+
+    .. attribute:: start_date
+
+    .. attribute:: end_date
+
+
+
+
+My expiring upload files
+========================
+
+When you want Lino to remind you when some important document (e.g. a driving
+licence) is going to expire, then you should store the document's expiry date in
+the  :attr:`Upload.end_date` field and check the :attr:`Upload.needed` field.
+
+.. class:: MyExpiringUploads
+
+    Shows the upload files that are marked as :attr:`Upload.needed` and whose
+    :attr:`Upload.end_date` is within a given period.

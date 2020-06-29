@@ -9,8 +9,8 @@
 
 The :mod:`lino.modlib.uploads` plugin adds functionality for managing "uploads".
 
-The :mod:`lino_xl.lib.uploads` plugin extends :mod:`lino.modlib.uploads` as
-described in :doc:`/specs/avanti/uploads`.
+The :mod:`lino_xl.lib.uploads` plugin, which extends :mod:`lino.modlib.uploads`,
+is  described separately in :doc:`/specs/avanti/uploads`.
 
 .. contents::
    :depth: 1
