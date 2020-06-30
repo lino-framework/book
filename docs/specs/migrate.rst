@@ -53,7 +53,7 @@ Django:
 
 >>> shell("python manage.py prep --noinput")
 ... #doctest: +ELLIPSIS +REPORT_UDIFF +NORMALIZE_WHITESPACE
-`initdb std minimal_ledger demo demo2 checksummaries` started on database /home/luc/work/book/lino_book/projects/migs/settings/default.db.
+`initdb std minimal_ledger demo demo2 checksummaries` started on database .../default.db.
 Operations to perform:
   Synchronize unmigrated apps: about, appypod, bootstrap3, cal, calview, changes, checkdata, comments, contacts, countries, dashboard, django_mailbox, excerpts, export_excel, extjs, gfks, github, groups, invoicing, jinja, ledger, lino, lists, mailbox, memo, noi, notify, office, printing, products, rest_framework, restful, sales, smtpd, staticfiles, summaries, system, tickets, tinymce, uploads, users, userstats, vat, weasyprint, working, xl
   Apply all migrations: contenttypes, sessions

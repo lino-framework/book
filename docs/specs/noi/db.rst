@@ -126,7 +126,7 @@ The database models
  social_django.Code                 social_django.CodeTable          5         0
  social_django.Nonce                social_django.NonceTable         4         0
  social_django.Partial              social_django.PartialTable       6         0
- social_django.UserSocialAuth       users.SocialAuths                5         0
+ social_django.UserSocialAuth       users.SocialAuths                ...       0
  system.SiteConfig                  system.SiteConfigs               9         1
  tickets.Link                       tickets.Links                    4         1
  tickets.Site                       tickets.Sites                    16        5
