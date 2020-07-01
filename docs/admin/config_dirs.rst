@@ -52,14 +52,14 @@ Site config dirs are search before plugin config dirs.
 
 >>> for cd in settings.SITE.confdirs.config_dirs:
 ...     print(cd.name, cd.writeable)  #doctest: +ELLIPSIS
-/.../book/lino_book/projects/confdirs/config True
-/.../xl/lino_xl/lib/contacts/config False
-/.../lino/lino/modlib/users/config False
-/.../lino/lino/modlib/printing/config False
-/.../lino/lino/modlib/extjs/config False
-/.../lino/lino/modlib/bootstrap3/config False
-/.../lino/lino/modlib/jinja/config False
-/.../lino/lino/config False
+/.../lino_book/projects/confdirs/config True
+/.../lino_xl/lib/contacts/config False
+/.../lino/modlib/users/config False
+/.../lino/modlib/printing/config False
+/.../lino/modlib/extjs/config False
+/.../lino/modlib/bootstrap3/config False
+/.../lino/modlib/jinja/config False
+/.../lino/config False
 
 
 The local configuration directory
