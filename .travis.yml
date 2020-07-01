@@ -53,4 +53,4 @@ script:
   - inv prep test
   - # export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - export SPHINXOPTS="-j 1" ; inv bd
-  - # bash ./travis/e2e_tests.sh
+  - bash ./travis/e2e_tests.sh
