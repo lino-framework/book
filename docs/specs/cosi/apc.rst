@@ -311,3 +311,23 @@ Verify whether :ticket:`3657` is fixed:
 
 >>> print(rt.find_config_file("logo.jpg", "weasyprint"))  #doctest: +ELLIPSIS
 /.../lino_book/projects/apc/settings/config/weasyprint/logo.jpg
+
+
+>>> for cd in settings.SITE.confdirs.config_dirs:
+...     print(cd.name, cd.writeable)  #doctest: +ELLIPSIS
+/.../lino_book/projects/apc/settings/config True
+/.../lino_xl/lib/sheets/config False
+/.../lino_xl/lib/finan/config False
+/.../lino_xl/lib/sales/config False
+/.../lino_xl/lib/sepa/config False
+/.../lino_xl/lib/ledger/config False
+/.../lino/modlib/tinymce/config False
+/.../lino/modlib/weasyprint/config False
+/.../lino_xl/lib/excerpts/config False
+/.../lino_xl/lib/contacts/config False
+/.../lino/modlib/users/config False
+/.../lino/modlib/printing/config False
+/.../lino/modlib/extjs/config False
+/.../lino/modlib/bootstrap3/config False
+/.../lino/modlib/jinja/config False
+/.../lino/config False

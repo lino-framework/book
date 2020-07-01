@@ -5,6 +5,8 @@
 Introduction to ``config``  directories
 =======================================
 
+Lino has a concept of configuration directories that are a bit like Django's
+`templates` directories.
 
 .. contents::
     :depth: 2
@@ -13,21 +15,60 @@ Introduction to ``config``  directories
 
 .. include:: /../docs/shared/include/tested.rst
 
+>>> import os ; os.environ.pop('LINO_CACHE_ROOT', None) # disable for this doctest
 >>> from lino import startup
 >>> startup('lino_book.projects.confdirs.settings')
 >>> from lino.api.doctest import *
+
+Concepts
+========
+
+.. xfile:: config
+
+  A directory named ``config`` that is collected at startup into a list of
+  directories to be searched when looking for configuration files.
+
+.. glossary::
+
+  plugin configuration directory
+
+    A :xfile:`config` directory in the source directory of a plugin.
+
+  site configuration directory
+
+    A :xfile:`config` directory in the project directory of a :term:`Lino site`.
+
+  local configuration directory
+
+    A :term:`site configuration directory` that contains locally
+    customized template files.
+
+
+Site config dirs are search before plugin config dirs.
+
+>>> settings.SITE.confdirs  #doctest: +ELLIPSIS
+<lino.utils.config.ConfigDirCache object at ...>
+
+>>> for cd in settings.SITE.confdirs.config_dirs:
+...     print(cd.name, cd.writeable)  #doctest: +ELLIPSIS
+/.../book/lino_book/projects/confdirs/config True
+/.../xl/lino_xl/lib/contacts/config False
+/.../lino/lino/modlib/users/config False
+/.../lino/lino/modlib/printing/config False
+/.../lino/lino/modlib/extjs/config False
+/.../lino/lino/modlib/bootstrap3/config False
+/.../lino/lino/modlib/jinja/config False
+/.../lino/lino/config False
 
 
 The local configuration directory
 =================================
 
-.. glossary::
+All configuration directories are read-only (maintained by the :term:`application
+developer`) except one: the :term:`local configuration directory`.
 
-  local configuration directory
-
-    A :xfile:`config` directory on a :term:`Lino site` that contains locally
-    customized template files.
-
+>>> rt.find_config_file('admin_main.html')  #doctest: +ELLIPSIS
+'.../lino_book/projects/confdirs/config/admin_main.html'
 
 How to make local print templates editable by end users
 =======================================================
@@ -41,12 +82,6 @@ First step : make a local copy of the relevant templates::
 
 Second step: make the local config directory accessible to the end user via SSH
 or WebDAV or any other method.
-
-
-.. xfile:: config
-
-Lino has a concept of configuration directories that are a bit like Django's
-`templates` directories.
 
 
 Creating a desktop link to the local configuration directory
@@ -109,3 +144,11 @@ Implementation details
 
 - :attr:`lino.core.site.Site.cache_dir`
 - :mod:`lino.utils.config`
+
+The :mod:`lino_book.projects.apc` demo project has a site config dir.
+This is our demo case of a local config dir.
+When the
+apc tests were run on travis (i.e. :envvar:`LINO_CACHE_ROOT` is set), Lino
+forgot to add the apc site's config dir to its list of config dirs.  Another
+problem was that these "non-local site config dirs" (for which apc on travis is
+the only example) must come before the plugin config dirs. See :xfile:`config`.
