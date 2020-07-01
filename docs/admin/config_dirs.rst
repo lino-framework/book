@@ -15,7 +15,8 @@ Lino has a concept of configuration directories that are a bit like Django's
 
 .. include:: /../docs/shared/include/tested.rst
 
->>> import os ; os.environ.pop('LINO_CACHE_ROOT', None) # disable for this doctest
+>>> import os
+>>> os.environ['LINO_CACHE_ROOT'] = '' # disable for this doctest
 >>> from lino import startup
 >>> startup('lino_book.projects.confdirs.settings')
 >>> from lino.api.doctest import *
