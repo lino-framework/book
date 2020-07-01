@@ -37,8 +37,7 @@ tera_de/pdf
 **/cypress/*
 !**/cypress/integration/
 node_modules/*
-# package.json
+package.json
 
 .tox/
 *.lock
-

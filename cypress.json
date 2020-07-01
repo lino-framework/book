@@ -2,5 +2,4 @@
   "baseUrl": "http://127.0.0.1:8000",
   "integrationFolder": "tests/cypress/integration",
   "watchForFileChanges": false
-
 }

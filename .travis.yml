@@ -49,20 +49,8 @@ script:
   -  # inv prep test
   - rm -rf .eggs
   - inv install
-  - export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
+  - # export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - inv prep test
-  - export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
+  - # export DJANGO_SETTINGS_MODULE=lino_book.projects.max.settings.doctests ; python -c "import django; django.setup() ; import lino_vilma.lib.vilma.user_types"
   - export SPHINXOPTS="-j 1" ; inv bd
-  - #inv cov --no-html
-  - # E2E testing with team  TODO: move the following to the tests of the min1 project
-  - cd lino_book/projects/avanti1/
-  - python manage.py prep --noinput
-  - python manage.py runserver -v 0 > /dev/null 2>&1 &
-  - cd -
-  - sleep 15
-  - ./node_modules/cypress/bin/cypress run -- --spec tests/cypress/integration/avanti1/* --config video=false
-
-after_script:
-  - wget https://raw.githubusercontent.com/lino-framework/lino/master/bash/trigger_build.sh
-  - if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then bash trigger_build.sh "lino-framework/react" "Auto test triggered by repo `basename $(git rev-parse --show-toplevel)` commit `git rev-parse HEAD`" "$TRAVIS_API_TOKEN"; fi
-  # - coveralls
+  - # bash ./travis/e2e_tests.sh

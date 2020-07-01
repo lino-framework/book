@@ -18,9 +18,9 @@ describe('Connecting ...', function () {
         cy.get('.l-mainmenu button:first').click(); //Contacts
         cy.get("a[class='x-menu-item']").eq(2).click().wait("@getData"); //People
         cy.get("button[class=' x-btn-text x-tbar-add']").click({force: true}).log("Insert").wait("@getData");
-        cy.get('.l-InsertFormPanel input[name="first_name"]').type("A").wait(20);
-        cy.get('.l-InsertFormPanel input[name="last_name"]').type("BarBar").wait(20);
-        cy.get('.l-InsertFormPanel input[name="email"]').type("FooBar@Foobar.com").wait(20);
+        cy.get('.l-InsertFormPanel input[name="first_name"]').type("Alfred", {parseSpecialCharSequences:false}).wait(20);
+        cy.get('.l-InsertFormPanel input[name="last_name"]').type("BarBar", {parseSpecialCharSequences:false}).wait(20);
+        cy.get('.l-InsertFormPanel input[name="email"]').type("FooBar@Foobar.com", {parseSpecialCharSequences:false}).wait(20);
         cy.get('.l-InsertFormPanel input[name="gender"]+img').click();
         cy.get(".x-combo-list-item:nth-child(2)").click();  //male
         cy.get(".l-InsertFormPanel button").click().wait("@getData"); //submit
@@ -36,9 +36,9 @@ describe('Connecting ...', function () {
         cy.get('.l-mainmenu button:first').click(); //Contacts
         cy.get("a[class='x-menu-item']").eq(2).click().wait(20); //People
         cy.get("button[class=' x-btn-text x-tbar-add']").click({force: true}).log("Insert").wait(100);
-        cy.get('.l-InsertFormPanel input[name="first_name"]').type("A").wait(20);
-        cy.get('.l-InsertFormPanel input[name="last_name"]').type("BarBar").wait(20);
-        cy.get('.l-InsertFormPanel input[name="email"]').type("FooBar@Foobar.com").wait(20);
+        cy.get('.l-InsertFormPanel input[name="first_name"]').type("Alfred", {parseSpecialCharSequences:false}).wait(20);
+        cy.get('.l-InsertFormPanel input[name="last_name"]').type("BarBar", {parseSpecialCharSequences:false}).wait(20);
+        cy.get('.l-InsertFormPanel input[name="email"]').type("FooBar@Foobar.com", {parseSpecialCharSequences:false}).wait(20);
         cy.get('.l-InsertFormPanel input[name="gender"]+img').click();
         cy.get(".x-combo-list-item:nth-child(2)").click();  //male
         cy.get(".l-InsertFormPanel button").click().wait(1000); //submit
