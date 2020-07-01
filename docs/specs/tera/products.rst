@@ -16,12 +16,12 @@ because here we don't produce anything, we just sell services.
 >>> from lino.api.doctest import *
 
 
-.. currentmodule:: lino_tera.lib.products     
+.. currentmodule:: lino_tera.lib.products
 
 Fees
 ====
 
->>> rt.show(products.Products)
+>>> rt.show(products.Products)  #doctest: +REPORT_UDIFF
 ==================== ================== ==================== ============= ============= ===========================
  Designation          Designation (de)   Designation (fr)     Flatrate      Sales price   Sales account
 -------------------- ------------------ -------------------- ------------- ------------- ---------------------------
