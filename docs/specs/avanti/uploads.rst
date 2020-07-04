@@ -61,12 +61,16 @@ Extended uploads
 
     Extends :class:`lino.modlib.uploads.Upload` by adding some fields.
 
-    .. attribute:: needed
-
     .. attribute:: start_date
 
     .. attribute:: end_date
 
+      Date until which the original document is valid.
+
+    .. attribute:: needed
+
+      Whether the responsible user should be reminded when validity of this
+      upload reaches its end.
 
 
 

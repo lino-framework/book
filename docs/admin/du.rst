@@ -11,8 +11,8 @@ These are just my personal notes. No warranty whatsoever.
     :depth: 1
 
 
-Diagnose
-========
+Built-in diagnose
+=================
 
 Manually see the overall disk usage::
 
@@ -24,19 +24,13 @@ Manually see the overall disk usage::
     tmpfs           820M     0  820M   0% /run/shm
 
 
-Find the guilty
-===============
-
-Use `ncdu <https://dev.yorhel.nl/ncdu>`_
-
-Show all directories which have more than a GB::
+Show all directories that have more than a GB::
 
   $ du ~ -h | grep '[0-9\.]\+G'
 
 Show all subdirectories and their size (sorted by size)::
 
   $ du -h -d1 | sort -h
-
 
 The ``-s`` or ``--summarize`` option means "only the specified directories, no subdirs"
 
@@ -48,7 +42,19 @@ and `How To Find Large Files and Directories in Unix
 <https://www.unixtutorial.org/find-large-files-and-directories>`__ for hints.
 
 
+Visual tools
+============
 
+Baobab::
+
+  $ sudo apt install baobab
+  $ baobab
+
+Duc::
+
+  $ sudo apt install duc
+  $ duc index /usr
+  $ duc gui /usr
 
 
 Automated diagnose
@@ -75,7 +81,7 @@ Clean up the cache of the packet manager::
 Cleaning the packaging system
 =============================
 
-To erase downloaded archive files:: 
+To erase downloaded archive files::
 
     $ sudo apt-get clean
 
@@ -98,5 +104,5 @@ How much disk space does each database use?
 ===========================================
 
 MySQL::
-  
+
     $ sudo du -h /var/lib/mysql/

@@ -13,6 +13,44 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-07-04
+==========
+
+.. currentmodule:: lino_xl.lib.uploads
+
+Optimization for :ticket:`3695`: :attr:`Upload.needed` is now also included in
+the insert window.
+
+Released XL 20.7.1 to PyPi.
+
+
+
+2020-07-02
+==========
+
+Released to PyPI (all with version 20.7.0) : Lino, XL, Avanti.
+
+2020-07-01
+==========
+
+Added a new method :meth:`lino.core.requests.BaseRequest.clear_cached_status`.
+
+.. currentmodule:: lino_xl.lib.polls
+
+Fixed a bug in :class:`AnswersByResponse` that caused remarks to always be
+stored next to the first question of a poll. Fixed a bug that made it impossible
+to edit the "My remark" field in :class:`AnswersByResponseEditor`.
+
+2020-06-30
+===========
+
+When :envvar:`LINO_CACHE_ROOT` is set (e.g. on :ref:`travis`), Lino forgot to
+add the :term:`site configuration directory` to its list of config dirs. Another
+problem was that these "non-local site config dirs" (for example
+:mod:`lino_book.projects.apc` when run on travis) must come before the plugin
+config dirs.
+
+
 2020-06-29
 ==========
 
@@ -21,7 +59,6 @@ General information about how to read and maintain this document in :ref:`dev.ch
 Last changes in :mod:`lino_xl.lib.uploads`:  :class:`MyExpiringUploads` is now a
 dashboard item. Two new settings :attr:`Plugin.expiring_start` and
 :attr:`Plugin.expiring_end`.
-
 
 2020-06-27
 ==========
