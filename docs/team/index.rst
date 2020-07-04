@@ -72,3 +72,4 @@ Other
    /dev/combo/index
    /dev/combo/choosers
    /dev/demo_fixtures
+   nginx
