@@ -247,6 +247,15 @@ Models and views
 
         The national VAT identification number of this partner.
 
+.. class:: Partners
+
+  .. attribute:: detail_layout
+
+      The :term:`detail layout` of the Partners table is not set by default.
+      Especially accounting applications will set it to ``'contacts.PartnerDetail'``.
+
+      That's because the Partners view that shows companies and persons merged
+      together is useful only for certain accounting reports.
 
 .. class:: Person
 
