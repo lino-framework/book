@@ -172,24 +172,21 @@ Clients
 
     >>> rt.login('robin').show('avanti.MyClients')
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    =========================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
-     Name                        State        National ID     GSM   Address                           Age        e-mail address   Phone   ID    Contact language
-    --------------------------- ------------ --------------- ----- --------------------------------- ---------- ---------------- ------- ----- ------------------
-     ABDALLA Aádil (120)         Registered   950201 001-38         August-Thonnar-Str., 4700 Eupen   22 years                            120
-     ABDELRAHMAN Aáqil (133)     Ended        870305 001-48         Euregiostraße, 4700 Eupen         29 years                            133
-     ABDOU Abeer (143)           Ended        800828 002-21         Heidberg, 4700 Eupen              36 years                            143
-     ABED Abdul Báári (159)      Ended        740221 001-64         4730 Raeren                       42 years                            159
-     ABOUD Ahláám (166)          Ended        690627 002-97         4730 Raeren                       47 years                            166
-     ANKUNDINOV Aleksi (149)     Ended        911030 001-13         4730 Raeren                       25 years                            149
-     ARSHUN Aloyoshenká (135)    Ended        850424 001-25         Gewerbestraße, 4700 Eupen         31 years                            135
-     BAH Aráli (119)             Ended        970531 001-74         Am Waisenbüschchen, 4700 Eupen    19 years                            119
-     BASHMAKOV Agáfoniká (153)   Ended        761207 002-13         4730 Raeren                       40 years                            153
-     BERENDT Antoshá (165)       Ended        700602 001-93         4730 Raeren                       46 years                            165
-     CONGO Chiámáká (126)        Registered   890702 001-14         Bergstraße, 4700 Eupen            27 years                            126
-     DIA Deion (137)             Ended        840519 001-64         Gospert, 4700 Eupen               32 years                            137
-     FALL Dembe (145)            Ended        790923 001-61         Heidhöhe, 4700 Eupen              37 years                            145
-     KEITA Cácey (161)           Ended        730318 002-42         4730 Raeren                       43 years                            161
-    =========================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
+    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
+     Name                            State        National ID     GSM   Address                           Age        e-mail address   Phone   ID    Contact language
+    ------------------------------- ------------ --------------- ----- --------------------------------- ---------- ---------------- ------- ----- ------------------
+     ABDALLAH Aáish (127)            Registered   920417 001-91         Bellmerin, 4700 Eupen             24 years                            127
+     ABDO Aásim (138)                Registered   831201 001-50         Gülcherstraße, 4700 Eupen         33 years                            138
+     ABDULLAH Afááf (155)            Ended        760102 002-86         4730 Raeren                       41 years                            155
+     ABOUD Ahláám (166)              Ended        690627 002-97         4730 Raeren                       47 years                            166
+     ARENT Afánásiiá (124)           Ended        891219 002-23         Bergkapellstraße, 4700 Eupen      27 years                            124
+     ASTAFUROV Agáfiiá (175)         Registered   820120 002-60         Aachen, Germany                   35 years                            175
+     BARTOSZEWICZ Agáfokliiá (146)   Ended        781018 002-02         Herbesthaler Straße, 4700 Eupen   38 years                            146
+     BERENDT Antoshá (165)           Ended        700602 001-93         4730 Raeren                       46 years                            165
+     CONTEE Chike (131)              Registered   870822 001-58         Edelstraße, 4700 Eupen            29 years                            131
+     DIOP Ashánti (142)              Registered   810214 002-32         Habsburgerweg, 4700 Eupen         36 years                            142
+     JALLOH Diállo (158)             Registered   740810 001-48         4730 Raeren                       42 years                            158
+    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
     <BLANKLINE>
 
 

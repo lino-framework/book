@@ -23,6 +23,10 @@ the insert window.
 
 Released XL 20.7.1 to PyPi.
 
+2020-07-02
+==========
+
+Reactivated the :xfile:`weasyprint/top-right.jpg` feature
 
 
 2020-07-02

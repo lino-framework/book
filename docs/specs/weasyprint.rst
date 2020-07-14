@@ -61,51 +61,59 @@ list of build methods (:class:`lino.modlib.printing.BuildMethods`).
 Templates
 =========
 
-
 .. xfile:: weasyprint/base.weasy.html
 
-Defines the general HTML page to be included by every template.
-This is meant to be included by the actual templates.
+  The **base template**. Defines the general HTML and CSS and block definitions
+  to be used by every weasyprint template. See the `source code
+  <https://github.com/lino-framework/lino/blob/master/lino/modlib/weasyprint/config/weasyprint/base.weasy.html>`__.
 
-Source code:
-https://github.com/lino-framework/lino/blob/master/lino/modlib/weasyprint/config/weasyprint/base.weasy.html
+Actual templates use the base template by starting adding the following line::
 
-The template defines the following blocks:
+  {%- extends "weasyprint/base.weasy.html" -%}
 
-- pagesize
-- bottomright
-- bottomleft
-- header
-- intro
-- main
+.. _specs.weasyprint.examples:
 
+Examples of weasyprint templates
+================================
 
-Weasyprint templates defined by other plugins
-=============================================
+Here is a list of weasyprint templates that use the base template. You can use
+them as examples for your own work.  We also use this list for manual end-user
+testing.
 
-- :mod:`lino_xl.lib.bevats` --
-  :xfile:`bevats/Declaration/default.weasy.html`
+- In demo project :mod:`lino_book.projects.apc`, go to :menuselection:`Sales --> Invoices` and print one
+  of them. (template :xfile:`sales/VatProductInvoice/default.weasy.html` in
+  :mod:`lino_xl.lib.sales`)
 
-  In demo project lydia, go to :menuselection:`Accounting --> VAT Declarations`
+- In demo project :mod:`lino_book.projects.lydia`, go to :menuselection:`Accounting --> VAT Declarations`
   and print one of them.
+  (template :xfile:`bevats/Declaration/default.weasy.html` in :mod:`lino_xl.lib.bevats`)
 
-- :mod:`lino_xl.lib.courses` --
-  :xfile:`courses/Course/presence_sheet.weasy.html`
+- In demo project :mod:`lino_book.projects.lydia`, go to :menuselection:`Reports --> Accounting -->
+  Debtors`, click on one of the partners, then click :guilabel:`Print`.
+  (template :xfile:`contacts/Partner/payment_reminder.weasy.html` in
+  :mod:`lino_xl.lib.ledger`)
 
-  In demo project roger, open the detail view of some course and click on one of
-  the `Presence sheet` links.
+- In demo project :mod:`lino_book.projects.lydia`, go to :menuselection:`Contacts --> Partner lists`,
+  double-cick on one of them to open the detail window, and then click "Members"
+  or "Members (HTML)" in the `Print` field.
+  (template :mod:`lino_xl.lib.lists` in
+  :xfile:`lists/List/list_members.weasy.html`)
 
-- :mod:`lino_xl.lib.ledger` --
-  :xfile:`contacts/Partner/payment_reminder.weasy.html`
+- In demo project :mod:`lino_book.projects.lydia`, go to :menuselection:`Reports --> Accounting -->
+  Accounting report`, then click the print button (template
+  :xfile:`sheets/Report/default.weasy.html` in :mod:`lino_xl.lib.sheets`).
 
-- :mod:`lino_xl.lib.lists` --
-  :xfile:`lists/List/list_members.weasy.html`
-
-- :mod:`lino_xl.lib.sheets` --
-  :xfile:`sheets/Report/default.weasy.html`
+- In demo project :mod:`lino_book.projects.roger`, open the detail view of some course and click on one of
+  the `Presence sheet` links. Try several date ranges and options.
+  (template :xfile:`courses/Course/presence_sheet.weasy.html` in :mod:`lino_xl.lib.courses`)
 
 - :mod:`lino_xl.lib.working` --
   :xfile:`working/ServiceReport/default.weasy.html`
+
+- In demo project :mod:`lino_book.projects.avanti1`, go to some client and click
+  the print button. (template :xfile:`avanti/Client/final_report.weasy.html` in
+  :mod:`lino_avanti.lib.clients`)
+
 
 Here is a list of the weasy templates included with the :ref:`xl`:
 
@@ -127,12 +135,10 @@ Here is a list of the weasy templates included with the :ref:`xl`:
 ./lib/working/config/working/ServiceReport/default.weasy.html
 
 Note that `excerpts`, `orders` and `sales` have their own
-:file:`FOO/base.weasy.html` template, which inherits from  the main base
+:file:`FOO/base.weasy.html` templates, which inherit from the main base
 :xfile:`weasyprint/base.weasy.html`.
 
-
 For other usage examples see the specs of :ref:`welfare`.
-
 
 Warnings about Cairo and Pango
 ==============================
@@ -148,13 +154,40 @@ support needs Pango >= 1.38` issued by weasyprint.
 How to customize your logo in the header or footer
 ==================================================
 
-This section explains how headers and footers are configured in
-:mod:`lino.modlib.weasyprint` templates (and how you can customize them).
+You can add a logo to all your weasyprint documents by adding a local
+:xfile:`config` directory with a subdirectory :file:`weasyprint`,  and then
+*either* a file named :file:`top-right.jpg`, *or* a file named
+:file:`header.jpg`.
 
-You can automagically add a logo to all your weasyprint documents by adding a
-local :xfile:`config` directory with a subdirectory :file:`weasyprint`
-containing a file named :file:`logo.jpg`.   The logo will get printed in the top
-right area of every page (unless you change the template).
+.. xfile:: weasyprint/header.jpg
+
+.. xfile:: weasyprint/top-right.jpg
+
+  When a config file of that name exists, the logo will get printed in the top
+  right area of every page (unless you override the template).
+  Additionally, this file causes the page margins of all documents to change:
+  margin: 15mm; margin-top: 35mm;
+
+The base template defines the following blocks, which you can override in your
+child template.
+
+- pagesize : either "portrait" or "landscape"
+
+- header : printed on every page. The default implementation checks whether a
+  file :xfile:`weasyprint/header.jpg` exists.
+
+- footer : the default implementation prints the address of the
+  :attr:`SiteConfig.site_company`, the page number and print time.
+
+- intro
+
+- main
+
+- bottomright
+- bottomleft
+
+
+
 
 How it all works
 ================

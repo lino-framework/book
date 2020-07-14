@@ -248,47 +248,47 @@ The Accounting Report
  5300 Other costs                                            249,49                              249,49
 ============================ ============== =============== =========== ======== ============== =============
 <BLANKLINE>
-==================================================== ============== =============== ========== ========== ============== =============
- Partner                                              Debit before   Credit before   Debit      Credit     Credit after   Debit after
----------------------------------------------------- -------------- --------------- ---------- ---------- -------------- -------------
- `Mr Hans Altenberg <Detail>`__                                                      1 086,20   846,20                    240,00
- `Mr Andreas Arens <Detail>`__                                                       540,00     540,00
- `Mrs Annette Arens <Detail>`__                                                      1 332,83   1 332,80                  0,03
- `Mr Alfons Ausdemwald <Detail>`__                                                   620,00     620,00
- `Auto École Verte <Detail>`__                                                       500,00     500,00
- `Mr Laurent Bastiaensen <Detail>`__                                                 711,20     570,20                    141,00
- `Bernd Brechts Bücherladen <Detail>`__                                              620,00     620,00
- `Bäckerei Ausdemwald <Detail>`__                                                    360,00     360,00
- `Bäckerei Mießen <Detail>`__                                                        440,00     440,00
- `Bäckerei Schmitz <Detail>`__                                                       160,00     160,00
- `Mr Marc Chantraine <Detail>`__                                                     1 190,00   540,00                    650,00
- `Mrs Ulrike Charlier <Detail>`__                                                    1 020,60   540,60                    480,00
- `Mrs Charlotte Collard <Detail>`__                                                  840,00     540,00                    300,00
- `Mrs Dorothée Demeulenaere <Detail>`__                                              1 523,80   843,80                    680,00
- `Mr Denis Denon <Detail>`__                                                         1 620,00   1 620,00
- `Mr Daniel Dericum <Detail>`__                                                      160,00                               160,00
- `Mrs Dorothée Dobbelstein-Demeulenaere <Detail>`__                                  540,00     540,00
- `Donderweer BV <Detail>`__                                                          320,00     320,00
- `Mr Erich Emonts <Detail>`__                                                        255,00     255,00
- `Mr Erwin Emontspool <Detail>`__                                                    630,60     630,60
- `Garage Mergelsberg <Detail>`__                                                     605,00     605,00
- `Mr Gregory Groteclaes <Detail>`__                                                  301,10     301,00                    0,10
- `Hans Flott & Co <Detail>`__                                                        350,00     350,00
- `Mr Henri Hilgers <Detail>`__                                                       540,00     540,00
- `Mr Josef Jonas <Detail>`__                                                         240,70     240,70
- `Mr Karl Kaivers <Detail>`__                                                        541,20     541,20
- `Leffin Electronics <Detail>`__                                                     100,00     100,00
- `Mr Marc Malmendier <Detail>`__                                                     300,46     298,75                    1,71
- `Mr Mark Martelaer <Detail>`__                                                      630,00     630,00
- `Moulin Rouge <Detail>`__                                                           450,00     427,50                    22,50
- `Mrs Daniela Radermacher <Detail>`__                                                285,96     286,20     0,24
- `Mr Edgard Radermacher <Detail>`__                                                  540,00     540,00
- `Mr Rik Radermecker <Detail>`__                                                     241,10     241,10
- `Reinhards Baumschule <Detail>`__                                                   280,00     280,00
- `Rumma & Ko OÜ <Detail>`__                                                          450,00     450,00
- `Van Achter NV <Detail>`__                                                          306,00     306,00
- `Mr David da Vinci <Detail>`__                                                      541,20     541,26     0,06
-==================================================== ============== =============== ========== ========== ============== =============
+================================================ ============== =============== ========== ========== ============== =============
+ Partner                                          Debit before   Credit before   Debit      Credit     Credit after   Debit after
+------------------------------------------------ -------------- --------------- ---------- ---------- -------------- -------------
+ `Altenberg Hans <Detail>`__                                                     1 086,20   846,20                    240,00
+ `Arens Andreas <Detail>`__                                                      540,00     540,00
+ `Arens Annette <Detail>`__                                                      1 332,83   1 332,80                  0,03
+ `Ausdemwald Alfons <Detail>`__                                                  620,00     620,00
+ `Auto École Verte <Detail>`__                                                   500,00     500,00
+ `Bastiaensen Laurent <Detail>`__                                                711,20     570,20                    141,00
+ `Bernd Brechts Bücherladen <Detail>`__                                          620,00     620,00
+ `Bäckerei Ausdemwald <Detail>`__                                                360,00     360,00
+ `Bäckerei Mießen <Detail>`__                                                    440,00     440,00
+ `Bäckerei Schmitz <Detail>`__                                                   160,00     160,00
+ `Chantraine Marc <Detail>`__                                                    1 190,00   540,00                    650,00
+ `Charlier Ulrike <Detail>`__                                                    1 020,60   540,60                    480,00
+ `Collard Charlotte <Detail>`__                                                  840,00     540,00                    300,00
+ `Demeulenaere Dorothée <Detail>`__                                              1 523,80   843,80                    680,00
+ `Denon Denis <Detail>`__                                                        1 620,00   1 620,00
+ `Dericum Daniel <Detail>`__                                                     160,00                               160,00
+ `Dobbelstein-Demeulenaere Dorothée <Detail>`__                                  540,00     540,00
+ `Donderweer BV <Detail>`__                                                      320,00     320,00
+ `Emonts Erich <Detail>`__                                                       255,00     255,00
+ `Emontspool Erwin <Detail>`__                                                   630,60     630,60
+ `Garage Mergelsberg <Detail>`__                                                 605,00     605,00
+ `Groteclaes Gregory <Detail>`__                                                 301,10     301,00                    0,10
+ `Hans Flott & Co <Detail>`__                                                    350,00     350,00
+ `Hilgers Henri <Detail>`__                                                      540,00     540,00
+ `Jonas Josef <Detail>`__                                                        240,70     240,70
+ `Kaivers Karl <Detail>`__                                                       541,20     541,20
+ `Leffin Electronics <Detail>`__                                                 100,00     100,00
+ `Malmendier Marc <Detail>`__                                                    300,46     298,75                    1,71
+ `Martelaer Mark <Detail>`__                                                     630,00     630,00
+ `Moulin Rouge <Detail>`__                                                       450,00     427,50                    22,50
+ `Radermacher Daniela <Detail>`__                                                285,96     286,20     0,24
+ `Radermacher Edgard <Detail>`__                                                 540,00     540,00
+ `Radermecker Rik <Detail>`__                                                    241,10     241,10
+ `Reinhards Baumschule <Detail>`__                                               280,00     280,00
+ `Rumma & Ko OÜ <Detail>`__                                                      450,00     450,00
+ `Van Achter NV <Detail>`__                                                      306,00     306,00
+ `da Vinci David <Detail>`__                                                     541,20     541,26     0,06
+================================================ ============== =============== ========== ========== ============== =============
 <BLANKLINE>
 =============================================== ============== =============== =========== =========== ============== =============
  Partner                                         Debit before   Credit before   Debit       Credit      Credit after   Debit after

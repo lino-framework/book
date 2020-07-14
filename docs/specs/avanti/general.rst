@@ -19,24 +19,6 @@ General overview of Lino Avanti
 Miscellaneous
 =============
 
-List of demo users:
-
->>> rt.show(rt.models.users.AllUsers)
-... #doctest: +NORMALIZE_WHITESPACE -REPORT_UDIFF
-========== ===================== ============ ===========
- Username   User type             First name   Last name
----------- --------------------- ------------ -----------
- audrey     300 (Auditor)
- laura      100 (Teacher)         Laura        Lieblig
- martina    400 (Coordinator)
- nathalie   200 (Social worker)
- robin      900 (Administrator)   Robin        Rood
- rolf       900 (Administrator)   Rolf         Rompen
- romain     900 (Administrator)   Romain       Raffault
- sandra     410 (Secretary)
-========== ===================== ============ ===========
-<BLANKLINE>
-
 
 >>> dd.plugins.beid.holder_model
 <class 'lino_avanti.lib.avanti.models.Client'>

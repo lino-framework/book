@@ -1,13 +1,11 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2017 Rumma & Ko Ltd
+# Copyright 2017-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """General demo data for Lino Avanti.
 
 - Course providers and courses
 
 """
-
-from __future__ import unicode_literals
 
 # from django.conf import settings
 # from lino.utils import mti
@@ -116,6 +114,7 @@ def objects():
                partner=laura)
 
     yield User(username="nathalie", user_type=UserTypes.user)
+    yield User(username="nelly", user_type=UserTypes.user)
     yield User(username="audrey", user_type=UserTypes.auditor)
     yield User(username="martina", user_type=UserTypes.coordinator)
     yield User(username="sandra", user_type=UserTypes.secretary)

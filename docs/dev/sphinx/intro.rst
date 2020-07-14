@@ -97,21 +97,3 @@ This is valid not only for models but also for
 
 Of course above works only for plugins that have been converted to
 prosa style (:ticket:`1869`).
-
-
-.. The following tries to reproduce :ticket:`3614`, which occurred only on :ref:`travis`.
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.max.settings.demo')
-
-    >>> # from lino.api.doctest import *
-
-    >>> import lino.core.user_types
-    >>> import lino_book.projects.anna.user_types
-    >>> import lino_noi.lib.noi.user_types
-    >>> import lino_cosi.lib.cosi.user_types
-    >>> import lino_avanti.lib.avanti.user_types
-    >>> import lino_vilma.lib.vilma.user_types
-    >>> import lino_voga.lib.voga.user_types
-    >>> import lino_tera.lib.tera.user_types
-    >>> import lino_care.lib.care.user_types

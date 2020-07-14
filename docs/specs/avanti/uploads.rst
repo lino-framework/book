@@ -29,29 +29,103 @@ Although this plugin requires the :mod:`lino_xl.lib.clients` plugin, it does not
 declare this dependency because making it automatic would
 cause changes in the menu item ordering in :ref:`welfare`.
 
-The plugin has two custom settings:
+The plugin has two custom settings, which are the default values for the
+:class:`MyExpiringUploads` table:
 
 >>> dd.plugins.uploads.expiring_start
 -30
 >>> dd.plugins.uploads.expiring_end
 365
 
-These are the default values for the :class:`MyExpiringUploads`  table
-
->>> dd.plugins.uploads.needs_plugins
-[]
-
->>> rt.login(dd.plugins.clients.demo_coach).show("uploads.MyExpiringUploads")
-==================== ================== ================== ============= ============ ============= ========
- Client               Upload type        Description        Uploaded by   Valid from   Valid until   Needed
--------------------- ------------------ ------------------ ------------- ------------ ------------- --------
- ABAD Aábdeen (114)   Residence permit   Residence permit   nathalie                   10/02/2018    Yes
- ABAD Aábdeen (114)   Work permit        Work permit        nathalie                   10/02/2018    Yes
-==================== ================== ================== ============= ============ ============= ========
-<BLANKLINE>
+The demo_coach is the user who uploaded all demo uploads.
 
 >>> dd.plugins.clients.demo_coach
 'nathalie'
+
+We have two social workers Nathalie and Nelly.
+
+>>> rt.show("users.AllUsers")
+========== ===================== ============ ===========
+ Username   User type             First name   Last name
+---------- --------------------- ------------ -----------
+ audrey     300 (Auditor)
+ laura      100 (Teacher)         Laura        Lieblig
+ martina    400 (Coordinator)
+ nathalie   200 (Social worker)
+ nelly      200 (Social worker)
+ robin      900 (Administrator)   Robin        Rood
+ rolf       900 (Administrator)   Rolf         Rompen
+ romain     900 (Administrator)   Romain       Raffault
+ sandra     410 (Secretary)
+========== ===================== ============ ===========
+<BLANKLINE>
+
+>>> rt.login('robin').show("uploads.Uploads", column_names="id user project project__user end_date needed")
+==== ============= ====================== ================= ============= ========
+ ID   Uploaded by   Client                 Primary coach     Valid until   Needed
+---- ------------- ---------------------- ----------------- ------------- --------
+ 10   nathalie      ABDALLAH Aáish (127)   Robin Rood        22/03/2018    Yes
+ 9    nathalie      ABDALLAH Aáish (127)   Robin Rood        22/03/2018    No
+ 8    nathalie      ABDALLA Aádil (120)    Rolf Rompen       12/03/2018    No
+ 7    nathalie      ABDALLA Aádil (120)    Rolf Rompen       12/03/2018    No
+ 6    nathalie      ABBASI Aáishá (118)    Romain Raffault   02/03/2018    No
+ 5    nathalie      ABBASI Aáishá (118)    Romain Raffault   02/03/2018    No
+ 4    nathalie      ABBAS Aábid (115)      nelly             20/02/2018    Yes
+ 3    nathalie      ABBAS Aábid (115)      nelly             20/02/2018    Yes
+ 2    nathalie      ABAD Aábdeen (114)     nathalie          10/02/2018    Yes
+ 1    nathalie      ABAD Aábdeen (114)     nathalie          10/02/2018    Yes
+==== ============= ====================== ================= ============= ========
+<BLANKLINE>
+
+Note that uploads #4 and #3 were not uploaded by the client's primary coach.
+
+>>> obj = rt.models.uploads.Upload.objects.get(pk=3)
+>>> rec = rt.login("nathalie").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> print(rec['disable_delete'])
+None
+
+Nelly (another social worker) and Sandra (secretary) can also modify the upload
+
+>>> rec = rt.login("nelly").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> print(rec['disable_delete'])
+None
+>>> rec = rt.login("sandra").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> print(rec['disable_delete'])
+None
+
+But laura (a teacher) cannot edit them:
+
+>>> rec = rt.login("laura").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> print(rec['disable_delete'])
+You have no permission to delete this row.
+
+Note about security. You might wonder why Sandra is able to see data that she
+isn't allow to see:
+
+>>> print(rec['data']['project'])
+ABBAS Aábid (115)
+
+This is *not* a security issue because we are at the command line interface
+where access rights are not verified.  If Sandra would do a manual AJAX call,
+she would not be able to see data that she isn't allow to see. Here is the proof:
+
+>>> test_client.force_login(rt.login("laura").user)
+>>> url = "/api/avanti/Clients?fmt=json&&limit=23&start=0"
+>>> test_client.get(url)  #doctest: +ELLIPSIS
+Forbidden (Permission denied): /api/avanti/Clients
+Traceback (most recent call last):
+...
+django.core.exceptions.PermissionDenied: As 100 (Teacher) you have no view permission for this action.
+<HttpResponseForbidden status_code=403, "text/html; charset=utf-8">
+
+>>> url = "/api/avanti/uploads.UploadsByClient?fmt=json&&limit=23&start=0&mt=31&mk=114"
+>>> test_client.get(url)  #doctest: +ELLIPSIS
+Not Found: /api/avanti/uploads.UploadsByClient
+<HttpResponseNotFound status_code=404, "text/html">
+
+
+
+
 
 
 Extended uploads
@@ -85,3 +159,13 @@ the  :attr:`Upload.end_date` field and check the :attr:`Upload.needed` field.
 
     Shows the upload files that are marked as :attr:`Upload.needed` and whose
     :attr:`Upload.end_date` is within a given period.
+
+
+>>> rt.login(dd.plugins.clients.demo_coach).show("uploads.MyExpiringUploads")
+==================== ================== ================== ============= ============ ============= ========
+ Client               Upload type        Description        Uploaded by   Valid from   Valid until   Needed
+-------------------- ------------------ ------------------ ------------- ------------ ------------- --------
+ ABAD Aábdeen (114)   Residence permit   Residence permit   nathalie                   10/02/2018    Yes
+ ABAD Aábdeen (114)   Work permit        Work permit        nathalie                   10/02/2018    Yes
+==================== ================== ================== ============= ============ ============= ========
+<BLANKLINE>

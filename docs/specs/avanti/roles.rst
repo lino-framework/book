@@ -22,6 +22,7 @@ User types in Lino Avanti
  laura      100 (Teacher)         en
  martina    400 (Coordinator)     en
  nathalie   200 (Social worker)   en
+ nelly      200 (Social worker)   en
  robin      900 (Administrator)   en
  rolf       900 (Administrator)   de
  romain     900 (Administrator)   fr

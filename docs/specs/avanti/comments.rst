@@ -49,29 +49,30 @@ There is only one :class:`Commentable` thing in :ref:`avanti`: the client.
 Tests
 =====
 
-The demo database contains 96 comments, and they are all private.
+The demo database contains 108 comments, and they are all private.
 
 >>> rt.models.comments.Comment.objects.all().count()
-96
+108
 >>> rt.models.comments.Comment.objects.filter(private=True).count()
-96
+108
 
 Robin can see them all.
 
 >>> rt.login("robin").show(comments.Comments,
 ...     column_names="id user owner", limit=6)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-==== ================= =================================
- ID   Author            Topic
----- ----------------- ---------------------------------
- 1    audrey            `ABAD Aábdeen (114) <Detail>`__
- 2    martina           `ABAD Aábdeen (114) <Detail>`__
- 3    nathalie          `ABAD Aábdeen (114) <Detail>`__
- 4    sandra            `ABAD Aábdeen (114) <Detail>`__
- 5    Laura Lieblig     `ABAD Aábdeen (114) <Detail>`__
- 6    Romain Raffault   `ABAD Aábdeen (114) <Detail>`__
-==== ================= =================================
+==== =============== =================================
+ ID   Author          Topic
+---- --------------- ---------------------------------
+ 1    audrey          `ABAD Aábdeen (114) <Detail>`__
+ 2    martina         `ABAD Aábdeen (114) <Detail>`__
+ 3    nathalie        `ABAD Aábdeen (114) <Detail>`__
+ 4    nelly           `ABAD Aábdeen (114) <Detail>`__
+ 5    sandra          `ABAD Aábdeen (114) <Detail>`__
+ 6    Laura Lieblig   `ABAD Aábdeen (114) <Detail>`__
+==== =============== =================================
 <BLANKLINE>
+
 
 Anonymous users don't see any comment:
 
@@ -89,11 +90,11 @@ Nathalie sees only her comments:
  ID   Author     Topic
 ---- ---------- ----------------------------------------
  3    nathalie   `ABAD Aábdeen (114) <Detail>`__
- 11   nathalie   `ABBASI Aáishá (118) <Detail>`__
- 19   nathalie   `ABDOO Aátif (177) <Detail>`__
- 27   nathalie   `ABEZGAUZ Adrik (112) <Detail>`__
- 35   nathalie   `ABOOD Abdul Fáttááh (163) <Detail>`__
- 43   nathalie   `ARSHAN Afimiá (132) <Detail>`__
+ 12   nathalie   `ABBASI Aáishá (118) <Detail>`__
+ 21   nathalie   `ABDOU Abeer (143) <Detail>`__
+ 30   nathalie   `ABOOD Abdul Fáttááh (163) <Detail>`__
+ 39   nathalie   `ALEKSANDROV Akim (116) <Detail>`__
+ 48   nathalie   `ASTAFUROV Agáfiiá (175) <Detail>`__
 ==== ========== ========================================
 <BLANKLINE>
 
@@ -106,5 +107,5 @@ Nathalie sees only her comments:
 
 >>> rt.login("nathalie").show(comments.RecentComments)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-`... <Detail>`__ by *nathalie* about `ABAD Aábdeen (114) <Detail>`__ : Lorem
+`... <Detail>`__ by *nathalie* about `ABDELRAHMAN Aáqil (133) <Detail>`__ : 
 ...

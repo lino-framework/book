@@ -157,11 +157,12 @@ existing events.
 ================= ============ =============== ========== =========== =============
  Activity line     Start date   Instructor      Author     When        Times
 ----------------- ------------ --------------- ---------- ----------- -------------
- Alphabetisation   16/01/2017   Laura Lieblig   sandra     Every day   18:00-20:00
+ Alphabetisation   16/01/2017   Laura Lieblig   nelly      Every day   18:00-20:00
  Alphabetisation   16/01/2017   Laura Lieblig   nathalie   Every day   14:00-17:00
  Alphabetisation   16/01/2017   Laura Lieblig   martina    Every day   09:00-12:00
 ================= ============ =============== ========== =========== =============
 <BLANKLINE>
+
 
 
 >>> rt.login('laura').show('courses.MyCoursesGiven')
@@ -416,16 +417,15 @@ Liste der Einschreibungen mit hoher Abwesenheitsrate zwecks Kontrolle durch den 
 ============== ========================== ============================== =================
  Missing rate   Participant                Activity                       Primary coach
 -------------- -------------------------- ------------------------------ -----------------
- 29,17          ABDO Aásim (138)           Alphabetisation (16/01/2017)   Romain Raffault
  29,17          ABID Abdul Báásid (162)    Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ABBAS Aábid (115)          Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ABDELLA Aákif (128)        Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ABDULLA Abbáás (152)       Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ALTUKHOV Adleshá (117)     Alphabetisation (16/01/2017)   Romain Raffault
- 25,00          ARNOLD Alexei (129)        Alphabetisation (16/01/2017)   Romain Raffault
+ 29,17          ARSHUN Aloyoshenká (135)   Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          ABBASI Aáishá (118)        Alphabetisation (16/01/2017)   Romain Raffault
  25,00          BEK-MURZIN Agápiiá (160)   Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          CISSE Chátá (150)          Alphabetisation (16/01/2017)   Romain Raffault
+ 25,00          FOFANA Denzel (147)        Alphabetisation (16/01/2017)   Romain Raffault
 ============== ========================== ============================== =================
 <BLANKLINE>
+
 
 
 Clients with more than one enrolment
@@ -440,12 +440,12 @@ Clients with more than one enrolment
 >>> rt.show(courses.EnrolmentsByPupil, obj, header_level=4)
 Enrolments in Activities of ABAD Aábdeen (114) (Also Cancelled)
 ===============================================================
-================= ============================== =============== ======== ===============
- Date of request   Activity                       Author          Remark   Workflow
------------------ ------------------------------ --------------- -------- ---------------
- 13/02/2017        Alphabetisation (16/01/2017)   Laura Lieblig            **Requested**
- 13/02/2017        Alphabetisation (16/01/2017)   martina                  **Trying**
-================= ============================== =============== ======== ===============
+================= ============================== ======== ======== ===============
+ Date of request   Activity                       Author   Remark   Workflow
+----------------- ------------------------------ -------- -------- ---------------
+ 13/02/2017        Alphabetisation (16/01/2017)   nelly             **Requested**
+ 13/02/2017        Alphabetisation (16/01/2017)   sandra            **Trying**
+================= ============================== ======== ======== ===============
 <BLANKLINE>
 
 Note that missing rates are also computed for non-confirmed
