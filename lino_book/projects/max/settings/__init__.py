@@ -44,8 +44,8 @@ class Site(Site):
         yield 'lino_xl.lib.polls'
         yield 'lino_xl.lib.lists'
 
-        # yield 'lino_xl.lib.clients'
-        yield 'lino.modlib.uploads'
+        yield 'lino_xl.lib.clients'
+        yield 'lino_xl.lib.uploads'
         yield 'lino.modlib.notify'
         yield 'lino_xl.lib.notes'
         yield 'lino_xl.lib.outbox'

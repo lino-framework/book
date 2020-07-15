@@ -24,8 +24,8 @@ autosummary_generate = True
 
 from atelier.sphinxconf import interproject
 interproject.configure(globals(), 'atelier etgen',
-    book=('http://www.lino-framework.org', None),
-    cg=('http://community.lino-framework.org/', None))
+    book=('https://www.lino-framework.org', None),
+    cg=('https://community.lino-framework.org/', None))
 
 # from importlib import import_module
 # for n in 'atelier lino'.split():
@@ -165,12 +165,12 @@ if False:
 
     #~ todo_include_todos = True
 
-extlinks.update({
-    'djangoticket': (
-        'http://code.djangoproject.com/ticket/%s', 'Django ticket #'),
-})
-extlinks.update(
-    ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
+# extlinks.update({
+#     'djangoticket': (
+#         'http://code.djangoproject.com/ticket/%s', 'Django ticket #'),
+# })
+# extlinks.update(
+#     ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
 
 # extensions += ['lino.sphinxcontrib.help_texts_extractor']
 # help_texts_builder_targets = {

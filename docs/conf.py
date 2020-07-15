@@ -278,11 +278,11 @@ if False:  # on_rtd:
 from atelier.sphinxconf import interproject
 interproject.configure(
     globals(), 'atelier etgen eidreader getlino lino lino_xl',
-    cg=('http://community.lino-framework.org/', None),
-    django=('http://docs.djangoproject.com/en/dev/', 'http://docs.djangoproject.com/en/dev/_objects/'),
-    sphinx=('http://www.sphinx-doc.org/en/master/', None))
+    cg=('https://community.lino-framework.org/', None),
+    django=('https://docs.djangoproject.com/en/dev/', 'http://docs.djangoproject.com/en/dev/_objects/'),
+    sphinx=('https://www.sphinx-doc.org/en/master/', None))
 
-#intersphinx_mapping['cg'] = ('http://community.lino-framework.org/', None)
+#intersphinx_mapping['cg'] = ('https://community.lino-framework.org/', None)
 
 autosummary_generate = True
 
