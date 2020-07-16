@@ -13,6 +13,15 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-07-16
+==========
+
+Several bug fixes.
+
+Released the following packages to PyPI:
+:ref:`lino` 20.7.1, :ref:`xl` 20.7.2, :ref:`tera` 20.7.0, :ref:`openui5` 20.7.0.
+
+
 2020-07-04
 ==========
 
