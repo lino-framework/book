@@ -68,9 +68,14 @@ Users
 
     .. attribute:: authenticated
 
+        No longer used. See as :attr:`is_authenticated`.
+
+    .. attribute:: is_authenticated
+
         This is always `True`.  Compare with
         :attr:`AnonymousUser.authenticated
         <lino.modlib.users.utils.AnonymousUser.authenticated>`.
+
 
    Fields:
 
