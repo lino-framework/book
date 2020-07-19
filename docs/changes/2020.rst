@@ -13,6 +13,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-07-20
+==========
+
+Release to PyPI : lino 20.7.3 (just removed three dependencies, no functional changes)
+
 2020-07-17
 ==========
 
