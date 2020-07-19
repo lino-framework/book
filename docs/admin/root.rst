@@ -1,18 +1,34 @@
-===================================
+=======================
 Providing a Lino server
-===================================
+=======================
 
-A :term:`Lino server` is a virtual or physical machine used to run one or
-several :term:`Lino sites <Lino site>`. It must have a Linux operating system
-and be connected to a network. A :term:`server provider` is responsible for
-installing and maintaining that machine.
+As a :term:`server provider` you are responsible for installing and maintaining
+a :term:`Lino server`, i.e. a virtual or physical machine used to run one or
+several :term:`Lino sites <Lino site>`. A Lino server runs a Linux operating
+system and must be connected to a network.
 
 The :term:`server provider` holds root access to the server and creates user
-accounts with sudo rights for each :term:`site maintainer`. He configures secure
-remote shell access (SSH) to that machine for each site maintainer. He is *not*
-responsible for installing and maintaining specific system packages, Lino source
-code and configuration (these are the job of the :term:`site maintainers <site
-maintainer>`).
+accounts with sudo rights for each :term:`site maintainer`.  He configures
+secure remote shell access (SSH) to that machine for each site maintainer.  He
+provides support to the site maintainers.
+
+The :term:`server provider` is *not* responsible for installing and maintaining
+specific system packages, Lino source code and configuration (these are the job
+of the :term:`site maintainers <site maintainer>`).
+
+The :term:`server provider` is *not* responsible for giving :term:`end-user
+support` to the site export
+
+Where to get a virtual server
+=============================
+
+If you don't have your own in-house hardware or dedicated server, you can get a
+Virtual Private Server from many providers. Here is a list of VPS providers we
+have tested:
+
+- https://www.ovh.ie/order/vps   3€/month
+- https://www.hetzner.com/cloud  2.89€/month
+- https://mochahost.com/vps.php  6.94€/month (Up to 50% OFF)
 
 System requirements
 ===================
@@ -20,15 +36,17 @@ System requirements
 We recommend a `stable Debian <https://www.debian.org/releases/stable/>`__ as
 operating system.  Currently this means Debian 10 "Buster".
 
-You need at least 10 GB of disk space. You can see how much disk space you have
+**One CPU** should be enough for a site with a few dozens of users.
+
+You need **at least 10 GB of disk space**. You can see how much disk space you have
 by saying::
 
     $ df -h
 
-You need at least 2GB of RAM.  How to see how much memory you have::
+We recommend **at least 2GB of RAM** (because we didn't yet test production
+sites with less).  How to see how much memory you have::
 
     $ free -h
-
 
 The system should have installed the `sudo` package::
 
@@ -37,7 +55,7 @@ The system should have installed the `sudo` package::
 Creating a system user
 ======================
 
-Create a user account for a :term:`site maintainer`, e.g. ``joe``::
+Create a user account for every :term:`site maintainer`, e.g. ``joe``::
 
   # adduser joe
 

@@ -12,3 +12,5 @@ Developer Guide
     getstarted
     diving
     acquaintained
+    testing
+    internals

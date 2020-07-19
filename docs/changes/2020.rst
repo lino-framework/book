@@ -13,6 +13,21 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-07-17
+==========
+
+Released to PyPI : welfare, weleup and welcht
+
+Fixed two bugs:
+:ticket:`3715` ("IndexError: list index out of range" after deleting from detail window)
+and
+:ticket:`3714` (After saying No to Apply beid changes to client? Lino seems to apply them nevertheless.)
+
+Released to PyPI : Lino and XL
+
+Released to PyPI : avanti (should fix a failure in getlino test suite: Exception: Problem installing fixture '/home/lino/lino/lino_local/avanti1/env/repositories/xl/lino_xl/lib/uploads/fixtures/demo2.py': 'nathalie' : no such user)
+
+
 2020-07-16
 ==========
 

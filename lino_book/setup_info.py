@@ -15,6 +15,9 @@ install_requires = [
     'pisa', 'django-wkhtmltopdf',
     'django-iban', 'metafone',
     'djangorestframework',
+    'docutils',
+    'beautifulsoup4',
+    'reportlab',
     # 'bleach',  installed by inv prep
     # 'radicale==1.1.2',
     'radicale',

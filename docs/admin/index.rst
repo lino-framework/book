@@ -22,8 +22,8 @@ recommend to do it.
     :depth: 1
     :local:
 
-Installation
-============
+Running Lino on a full server
+=============================
 
 .. toctree::
     :maxdepth: 1
@@ -41,7 +41,13 @@ Installation
     cron
     mail
 
+Running Lino on PythonAnywhere
+==============================
 
+.. toctree::
+    :maxdepth: 1
+
+    pyanywhere
 
 Maintenance
 ===========

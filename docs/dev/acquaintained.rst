@@ -10,7 +10,6 @@ Getting acquaintained
 
    warning
    lets/index
-   site
    i18n
    datamig
    dump2py
@@ -36,7 +35,6 @@ Getting acquaintained
    online
    site_config
    disabled_fields
-   startup
 
    bleach
    story
@@ -49,4 +47,3 @@ Getting acquaintained
    /dev/matrix/index
    /tutorials/input_mask/index
    /dev/ovfields/index
-   /dev/signals
