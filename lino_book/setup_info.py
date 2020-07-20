@@ -11,7 +11,7 @@ PY3 = sys.version_info[0] == 3
 
 install_requires = [
     'atelier',
-    # 'Sphinx', 
+    # 'Sphinx',
     'getlino',
     'lino_xl', 'selenium', 'mock',
     'pisa', 'django-wkhtmltopdf',
@@ -30,7 +30,7 @@ install_requires = [
     'lino_cosi',
     'lino_noi',
     'lino_voga',
-    'lino_welfare',
+    # 'lino_welfare',
     'requests_mock',
     'lino_care',
     'lino_vilma',
