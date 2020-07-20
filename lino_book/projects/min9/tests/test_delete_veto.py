@@ -15,7 +15,7 @@ You can run only these tests by issuing::
 
 import logging ; logger = logging.getLogger(__name__)
 
-from atelier.utils import AttrDict
+from lino.utils import AttrDict
 import json
 
 from lino.api.shell import *

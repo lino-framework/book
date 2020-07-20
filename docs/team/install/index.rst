@@ -5,11 +5,14 @@
 Setting up a Lino contributor environment
 =========================================
 
-We assume you have already :doc:`/dev/install/index` and that you decided to
-extend your developer environment into a :term:`contributor environment`. As a
-contributor you have a local clone of the Lino code repositories because you are
-going to do local modifications and submit pull requests.
+We assume you have already :doc:`installed a developer environment
+</dev/install/index>` and that you now want to extend your it into a
+:term:`contributor environment`.
 
+The main new thing is that as a contributor you have a local clone of the Lino
+code repositories because you are going to do local modifications and submit
+pull requests.  Getlino does the tedious work of cloning and installing them
+into your virtualenv as editable (with `pip install -e`).
 
 Run getlino to clone Lino repositories
 ======================================
@@ -20,7 +23,12 @@ Run :cmd:`getlino` with the following options::
 
 For details see the documentation about :ref:`getlino`.
 
-Note that getlino uses the configuration values you specified during
+TODO: This won't uninstall Lino packages that were previously installed from
+PyPI in non-editable mode (when you were still a developer environment). So you
+must probably pip uninstall them manually.
+
+Note that getlino overrides only the configuration values you specified at the
+command line, otherwise it uses those you specified during
 :doc:`/dev/install/index`.
 
 Try one of the demo projects::

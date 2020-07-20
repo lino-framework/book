@@ -12,8 +12,8 @@ You can run only this test as follows::
   $ python setup.py test -s tests.test_appy_pod
 
 """
-from __future__ import print_function
-import six
+# from __future__ import print_function
+# import six
 import os
 import os.path
 from os.path import join, dirname, abspath, exists
@@ -31,7 +31,8 @@ PARAMS.update(raiseOnError=True)
 
 MYDIR = abspath(dirname(__file__))
 
-from distutils.version import StrictVersion as V
+# from distutils.version import StrictVersion as V
+from setuptools.version import parse as V
 
 
 class RaiseExceptionTest(unittest.TestCase):

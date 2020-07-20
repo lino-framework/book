@@ -17,6 +17,7 @@ Getting acquaintained
    actors
    parameters
    ar
+   querysets
    html
    custom_actions
    action_parameters

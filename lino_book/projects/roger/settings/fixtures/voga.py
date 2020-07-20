@@ -15,7 +15,7 @@ from builtins import str
 from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler
 from django.conf import settings
-from atelier.utils import date_offset
+from lino.utils import date_offset
 from lino.api import dd, rt, _
 from lino.utils.mldbc import babeld
 

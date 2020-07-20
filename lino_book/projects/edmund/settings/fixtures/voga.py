@@ -18,7 +18,7 @@ from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-from atelier.utils import date_offset
+from lino.utils import date_offset
 from lino.api import dd, rt
 
 DEMO_REF_DATE = i2d(20140101)
