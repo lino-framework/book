@@ -32,7 +32,7 @@ PARAMS.update(raiseOnError=True)
 MYDIR = abspath(dirname(__file__))
 
 # from distutils.version import StrictVersion as V
-from setuptools.version import parse as V
+# from pkg_resources import parse_version as V
 
 
 class RaiseExceptionTest(unittest.TestCase):

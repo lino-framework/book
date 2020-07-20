@@ -18,6 +18,9 @@ General information about how to read and maintain this document in :ref:`dev.ch
 
 Release to PyPI : lino 20.7.3 (just removed three dependencies, no functional changes)
 
+Release to PyPI : lino 20.7.4, atelier, getlino, xl, avanti, tera, presto
+(several subtle changes, see blog)
+
 2020-07-17
 ==========
 
