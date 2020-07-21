@@ -25,7 +25,6 @@ General framework repositories
   (see :mod:`lino_book.projects`), *plus* the big test suite for the Lino
   framework.
 
-
 Lino applications
 =================
 
@@ -33,8 +32,8 @@ Here is a directory of all known :term:`Lino applications <Lino application>`.
 
 Some applications have the privilege of having their technical documentation
 here in the :ref:`Lino Book <book>`.  This is because explaining a framework is
-difficult without examples, and because we thought that applications that are
-actually being used in reality are more interesting than a theoretic collection
+difficult without examples, and because we thought that an application which is
+actually being used in reality is more interesting than a theoretic collection
 of demo projects.
 
 - :ref:`noi` (:mod:`lino_noi`) is the application we use for
@@ -51,8 +50,6 @@ and technical specs:
 
 - `Lino Amici <http://amici.lino-framework.org>`_ is a contacts manager for families.
 
-- `Lino Ciao <http://ciao.lino-framework.org>`_ is a meetings manager.
-
 - `Lino Presto <http://presto.lino-framework.org>`_ is an application developed
   for a service provider in Eupen. Group calendar, team management, monthly
   invoicings. No accounting.
@@ -65,7 +62,8 @@ and technical specs:
   `Chatelet <http://welcht.lino-framework.org>`_ and
   `Eupen <http://weleup.lino-framework.org>`_.
 
-- Some applications fell asleep before going to production: `Lino Patrols
+- Some applications fell asleep before going to production:  `Lino Ciao
+  <http://ciao.lino-framework.org>`_,  `Lino Patrols
   <http://patrols.lino-framework.org/>`_,  `Lino Logos
   <http://logos.lino-framework.org/>`_ and `Lino Sunto
   <https://github.com/ManuelWeidmann/lino-sunto>`_ (the latter was the first
@@ -79,12 +77,12 @@ Some packages that might be useful to non-Lino Python projects are not covered
 in the Lino Book because they are actually not at all related to Lino, except
 that Lino depends on them and that they are maintained by the Lino team:
 
-- :mod:`rstgen` is a library to generate reSTructuredText snippets
+- :mod:`atelier` is a minimalist "development framework", including a project
+  management a suite of invoke commands and a set of Sphinx extensions.
 
-- :mod:`atelier` is a collection of utilities (subpackages
-  :mod:`projects <atelier.projects>`, and :mod:`invlib <atelier.invlib>`)
+- :mod:`rstgen` is a library to generate reSTructuredText snippets.
 
-- :mod:`etgen` uses ElementTree for generating HTML or XML.
+- :mod:`etgen` is used for generating HTML or XML via ElementTree.
 
 - :mod:`commondata` is an experimental project for storing and
   maintaining common data as Python code without any front end.
