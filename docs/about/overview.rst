@@ -156,7 +156,8 @@ Overview diagram
         ciao;
     }
 
-    lino -> atelier;
+    etgen -> rstgen;
+    lino -> etgen;
     xl -> lino;
     noi -> xl;
     cosi -> xl;
@@ -164,7 +165,6 @@ Overview diagram
     avanti -> xl;
     voga -> xl;
     amici -> xl;
-    ciao -> xl;
     weleup -> welfare;
     welcht -> welfare;
 
@@ -177,11 +177,5 @@ Overview diagram
     # book -> welcht;
 
     welfare -> xl;
-
-    getlino -> book;
-    getlino -> amici;
-    getlino -> ciao;
-    getlino -> weleup;
-    getlino -> welcht;
 
    }
