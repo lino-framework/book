@@ -5,7 +5,7 @@
 Introduction to ``config``  directories
 =======================================
 
-Lino has a concept of configuration directories that are a bit like Django's
+Lino has a concept of **configuration directories** that are a bit like Django's
 `templates` directories.
 
 .. contents::
@@ -23,6 +23,10 @@ Lino has a concept of configuration directories that are a bit like Django's
 
 Concepts
 ========
+
+The :attr:`settings.SITE.confdirs <lino.core.site.Site.confdirs>` attribute
+holds a singleton instance of :class:`lino.utils.config.ConfigDirCache`, which
+is the registry for config directories. It is initialized once at startup.
 
 .. xfile:: config
 
@@ -45,7 +49,7 @@ Concepts
     customized template files.
 
 
-Site config dirs are search before plugin config dirs.
+Site config dirs are searched before plugin config dirs.
 
 >>> settings.SITE.confdirs  #doctest: +ELLIPSIS
 <lino.utils.config.ConfigDirCache object at ...>

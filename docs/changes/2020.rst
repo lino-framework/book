@@ -13,6 +13,16 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-07-21
+==========
+
+Fixed two exceptions caused by a calendar entry with an :attr:`auto_type` but no
+:attr:`owner` (which is a checkdata problem because this case doesn't occur
+theoretically). The checkdata message "Has auto_type but no owner." is now
+fixable, it fixes the problem by setting the auto_type to None in that case.
+
+Released :ref:`xl` to PyPI.
+
 2020-07-20
 ==========
 
