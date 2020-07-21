@@ -79,9 +79,10 @@ Some packages that might be useful to non-Lino Python projects are not covered
 in the Lino Book because they are actually not at all related to Lino, except
 that Lino depends on them and that they are maintained by the Lino team:
 
+- :mod:`rstgen` is a library to generate reSTructuredText snippets
+
 - :mod:`atelier` is a collection of utilities (subpackages
-  :mod:`projects <atelier.projects>`, :mod:`invlib <atelier.invlib>` and
-  :mod:`rstgen <atelier.rstgen>`)
+  :mod:`projects <atelier.projects>`, and :mod:`invlib <atelier.invlib>`)
 
 - :mod:`etgen` uses ElementTree for generating HTML or XML.
 
