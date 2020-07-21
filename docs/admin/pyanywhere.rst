@@ -7,14 +7,18 @@ Running Lino on PythonAnywhere
 .. note::
 
   The following does not yet work because we hit the 512 MB limit of a free PA
-  account.  But we are working on it.
+  account.
 
 PythonAnywhere is limited: There is no sudo command and you cannot select
 another operating system than Ubuntu 16.04.6.  And then you get only 512 MB of
-disk space a free PA account.
+disk space on a free PA account.
+
+But even then it works... almost. Here we go:
 
 Open an account on `PythonAnywhere
 <https://www.pythonanywhere.com/user/lsaffre/>`__.
+
+Create a MySQL database.
 
 Open a bash console and type::
 
@@ -39,11 +43,11 @@ Open a bash console and type::
   This is getlino version 20.7.3 running on Ubuntu 16.04.6 LTS.
   Create a new Lino voga site into /home/lsaffre/lino/lino_local/voga1
   User credentials (for mysql on localhost:):
-  - user name [voga1]:
-  - user password [5YYU5ODzgjQ]:
+  - user name [voga1]: <enter your username from database tab>
+  - user password [5YYU5ODzgjQ]: <enter your password from database tab>
   - port [3306]:
-  - host name [localhost]:
-  Shared virtualenv []:
+  - host name [localhost]: <enter your hostname from database tab>
+  Shared virtualenv [/home/lsaffre/env]:
   Site's secret key [tqHrw8CaoaMTik7yAwDUuVDmYis]:
   OK to create /home/lsaffre/lino/lino_local/voga1 with above options? [y or n]
   Create virtualenv in /home/lsaffre/lino/lino_local/voga1/env [y or n] Yes
@@ -62,3 +66,17 @@ Open a bash console and type::
        |████████████████████████████████| 98 kB 2.7 MB/s
   Collecting Django
     Downloading Django-3.0.8-py3-none-any.whl (7.5 MB)
+  ...
+  ERROR: Failed building wheel for lino
+  ...
+  ERROR: Could not install packages due to an EnvironmentError: [Errno 122] Disk quota exceeded
+
+Voilà. That's where we get stuck. Yes, a Lino site needs more than 512MB of disk
+space.  We might check whether that disk usage can be reduced, and we did
+already some work, but we decided to stop here because (a) at the moment we have
+no more ideas about how to save more disk space would and (b) PythonAnywhere has
+serious limitations (e.g. cannot choose another OS or another database engine,
+cannot install system packages) and (c) a paying PA site with 5GB of disk space
+costs $12 per month, which is more expensive than simply getting a full Debian
+virtual private server. So why should we invest more time into this (other than
+technical curiosity)?
