@@ -107,15 +107,16 @@ Lino does not create this directory automatically. If you want to use local
 templates, the :term:`site maintainer` must create that directory and make sure
 that the Lino web server process has write permission to it.
 
-
-If the template manager has an **Ubuntu desktop** with the default
-files manager, then it is easy:
+If the template manager has an **Ubuntu desktop** with the default files
+manager, then it is easy (`docs
+<https://help.ubuntu.com/stable/ubuntu-help/nautilus-connect.html.en>`__):
 
 - Open *Files* manager
 - Select :menuselection:`File --> Connect to server`
 - As the Server Address type something like::
 
     sftp://admin@123.456.78.90/path/to/mysite/config
+
 
 Otherwise consult the documentation of your file manager.  If appropriate you
 might write instructions and contribute them so that we can add them here.
