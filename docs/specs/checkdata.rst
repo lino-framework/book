@@ -10,12 +10,16 @@
 The :mod:`lino.modlib.checkdata` plugin adds support for defining
 application-level integrity tests using **data checkers**.
 
-A **data checker** is a piece of code which tests for application-specific
-"soft" database integrity problems.  Where "soft" means that it is not detected
-by the database engine because it requires application intelligence to detect.
+.. glossary::
 
-When a data checker finds a problem, then it issues a *problem
-message* which is assigned to a *responsible user*.
+  data checker
+
+    a piece of code that tests for "soft" database integrity problems.  Where
+    "soft" means that it is not detected by the database engine because it
+    requires application intelligence to detect.
+
+When a data checker finds a problem, then it issues a *problem message*, which
+is assigned to a *responsible user*.
 
 .. contents::
    :depth: 1
@@ -161,3 +165,25 @@ Done 1 check, found 7 and fixed 0 problems.
 Traceback (most recent call last):
 ...
 Exception: No checker matches ('foo',)
+
+
+Language of checkdata messages
+==============================
+
+Every detected checkdata problem is stored in the database in the language of
+the responsible user. A possible pitfall with this is the following example.
+
+The checkdata message "Similar clients" appeared in English and not in the
+language of the responsible user. That was because the checker did this::
+
+  msg = _("Similar clients: {clients}").format(
+      clients=', '.join([str(i) for i in lst]))
+  yield (False, msg)
+
+The correct way is like this::
+
+  msg = format_lazy(_("Similar clients: {clients}"),
+      clients=', '.join([str(i) for i in lst]))
+  yield (False, msg)
+
+See :doc:`/dev/i18n` for details.

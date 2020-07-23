@@ -5,15 +5,10 @@ Internationalization
 
 An introduction to translatable strings.
 
-..  You can test only this document by issuing:
 
-      $ python setup.py test -s tests.DocsTests.test_i18n
-
-    Doctest initialization:
-
-    >>> from lino import startup
-    >>> startup('lino_book.projects.docs.settings.demo')
-    >>> from lino.api.shell import *
+>>> from lino import startup
+>>> startup('lino_book.projects.docs.settings.demo')
+>>> from lino.api.shell import *
 
 Django uses the gettext system for providing internationalization.
 
@@ -56,13 +51,17 @@ But Django has a lazy version of :func:`ugettext`
 ...     print(str(s))
 Januar
 
-    
-.. With Django until 1.6 we had a strange behaviour (but the following
-   snippet would fail in newer Django versions and therefore is not
-   tested anymore)::
+This is also the version you get when you say::
 
-    >> with translation.override('de'):
-    ...     print(s)  #doctest: +ELLIPSIS
-    <django.utils.functional.__proxy__ object at ...>
+  from lino.api import _
 
+A lazy translation returned by :func:`ugettext_lazy` is actually not a string,
+it is rather an object that *will* be translated when needed.
 
+>>> from django.utils.translation import ugettext_lazy
+>>> from django.utils.translation import ugettext
+
+>>> ugettext("January").__class__
+<class 'str'>
+>>> ugettext_lazy("January").__class__
+<class 'django.utils.functional.lazy.<locals>.__proxy__'>
