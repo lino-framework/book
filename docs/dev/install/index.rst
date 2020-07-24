@@ -52,15 +52,8 @@ Also if you wish to remove Lino from your system you only need to remove the
 virtual environment rather than trying to remove Lino's dependencies from the
 system environment without breaking any other programs that use python.
 
-Where to put your :term:`virtualenv`:
-
-- In a :term:`developer environment` we suggest
-  :file:`~/lino/env` as your *default environment*.
-
-- On a :term:`production server` we suggest :file:`/usr/local/lino/shared/master` or
-  :file:`/usr/local/lino/shared/stable`.
-
-How to create a new virtual environment and activate it::
+In a :term:`developer environment` we suggest
+:file:`~/lino/env` as your *default environment*. So here we go::
 
   $ sudo apt-get install python3-pip
   $ mkdir ~/lino
@@ -76,8 +69,8 @@ didn't know it, read the `manpage
 After creating a new environment, you should always update `pip` and
 `setuptools` to the latest version::
 
-        $ pip install -U pip
-        $ pip install -U setuptools
+  $ pip install -U pip
+  $ pip install -U setuptools
 
 .. rubric:: Did you know?
 
@@ -131,7 +124,7 @@ via pip::
 
 Then run :cmd:`getlino configure`::
 
-  $ getlino configure
+  $ getlino configure  --no-devtools
 
 It asks a lot of questions, but you can hit ENTER for each of them.
 

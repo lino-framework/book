@@ -87,7 +87,7 @@ behaviour. See also :doc:`/dev/delete`.
   - CASCADE : ledger.Movement.voucher
   - PROTECT : sales.VatProductInvoice.voucher_ptr, vat.VatAccountInvoice.voucher_ptr
 - lists.List :
-  - PROTECT : lists.Member.list
+  - CASCADE : lists.Member.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - products.Product :
@@ -119,3 +119,18 @@ behaviour. See also :doc:`/dev/delete`.
 - working.SessionType :
   - PROTECT : products.PriceRule.selector, working.Session.session_type
 <BLANKLINE>
+
+
+
+Deleting
+========
+
+>>> d = get_json_dict('robin', "contacts/Persons/167", an='delete_selected', sr=167)
+>>> print(d['message'])
+Cannot delete Partner Östges Otto because 1 List memberships refer to it.
+
+>>> d = get_json_dict('robin', "lists/Lists/1", an='delete_selected', sr=1)
+>>> print(d['message'])
+You are about to delete 1 Partner List
+(Announcements)
+as well as all related volatile records (12 List memberships). Are you sure?

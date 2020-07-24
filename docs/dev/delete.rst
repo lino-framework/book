@@ -34,6 +34,4 @@ The :meth:`lino.utils.diag.Analyzer.show_foreign_keys` can help to
 find examples for writing tests. It is used in specs like
 :ref:`noi.specs.ddh` or :ref:`voga.specs.db_roger`.
 
-
-
-
+Examples see :doc:`/specs/noi/ddh`.

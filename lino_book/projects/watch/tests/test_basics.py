@@ -10,23 +10,14 @@ module by issuing either::
   $ go watch
   $ python manage.py test tests.test_basics
 
-or::
-
-  $ go lino
-  $ python setup.py test -s tests.ProjectsTests.test_watch
-
-
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
-import six
 from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
-
 from lino.core.callbacks import popCallBack, applyCallbackChoice
+
+
 class QuickTest(RemoteAuthTestCase):
 
     # fixtures = ['demo', 'demo2']
@@ -36,16 +27,15 @@ class QuickTest(RemoteAuthTestCase):
 
         from lino.api import rt
         from lino.core.renderer import TestRenderer
-        
-        UserTypes = rt.models.users.UserTypes        
+
+        UserTypes = rt.models.users.UserTypes
         rt.models.users.User(
             username="robin", user_type=UserTypes.admin).save()
-        
+
         ses = rt.login('robin', renderer=TestRenderer(settings.SITE.kernel.default_ui))
 
         s = ses.show('changes.Changes')
         self.assertEqual(s, "No data to display")
-
 
         rr = rt.models.contacts.Companies.required_roles
         self.assertTrue(ses.user.user_type.role.satisfies_requirement(rr))
@@ -68,9 +58,9 @@ class QuickTest(RemoteAuthTestCase):
  1    Create        *My pub*   `My pub </api/contacts/Companies/100>`__   Company(id=100,name='My pub',partner_ptr=100)
 ==== ============= ========== ========================================== ===============================================
 """
-        
+
         self.assertEqual(s, expected)
-        
+
         url = '/api/contacts/Companies/100'
         data = "an=submit_detail&name=Our%20pub"
         res = self.put_json_dict('robin', url, data)
@@ -94,12 +84,8 @@ class QuickTest(RemoteAuthTestCase):
         url = '/api/entries/Entries'
         data = dict(an='submit_insert', subject='test', companyHidden=100)
         res = self.post_json_dict('robin', url, data)
-        if six.PY2:
-            self.assertEqual(
-                res.message, 'Entry "Entry object" has been created.')
-        else:
-            self.assertEqual(
-                res.message, 'Entry "Entry object (1)" has been created.')
+        self.assertEqual(
+            res.message, 'Entry "Entry object (1)" has been created.')
 
         expected = """\
 ==== ============= =========== =============================================== ===============================================
@@ -115,28 +101,19 @@ class QuickTest(RemoteAuthTestCase):
                      column_names="id type master object diff")
         # print(output)
         self.assertEqual(output, expected)
-        
-        
+
+
         # Now we delete the entry:
 
         url = '/api/entries/Entries/1'
         data = dict(an='delete_selected', sr=1)
         res = self.get_json_dict('robin', url, data)
-        if six.PY2:
-            self.assertEqual(
+        self.assertEqual(
             res.message, """\
-You are about to delete 1 Entry:
-Entry object
-Are you sure ?""")
-        else:
-            self.assertEqual(
-                res.message, """\
-You are about to delete 1 Entry:
-Entry object (1)
-Are you sure ?""")
+You are about to delete 1 Entry
+(Entry object (1)). Are you sure?""")
 
-        
-        
+
         # We answer "yes":
         applyCallbackChoice(res, data, "yes")
         # url = "/callbacks/{0}/yes".format(res['xcallback']['id'])
@@ -146,7 +123,6 @@ Are you sure ?""")
         # r = test_client.get(url)
         self.assertEqual(res.success, True)
         self.assertEqual(res.record_deleted, True)
-        
 
         expected = """\
 ==== ============= =========== =========================================== ===============================================
@@ -200,7 +176,7 @@ Are you sure ?""")
         applyCallbackChoice(res, data, "yes")
         # url = "/callbacks/{0}/yes".format(res.xcallback['id'])
         self.get_json_dict('robin', url, data)
-        
+
         expected = """\
 ==== ============= ======== ======== ================================================
  ID   Change Type   Master   Object   Changes
@@ -216,7 +192,7 @@ Are you sure ?""")
                      column_names="id type master object diff")
         # print(output)
         self.assertEqual(output, expected)
-        
+
 
         # Of course these change records are now considered broken GFKs:
 
@@ -239,7 +215,7 @@ Are you sure ?""")
         output = ses.show('gfks.BrokenGFKs')
         # print(output)
         self.assertEqual(output, expected)
-        
+
         # There open questions regarding these change records:
 
         # - Do we really never want to remove them? Do we really want a nullable
@@ -249,4 +225,3 @@ Are you sure ?""")
         # - Should :meth:`get_broken_generic_related
         #   <lino.core.kernel.Kernel.get_broken_generic_related>` suggest to
         #   "clear" nullable GFK fields?
-
