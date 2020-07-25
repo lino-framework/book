@@ -14,3 +14,4 @@ started by providing useful pointers.
    learning
    py2lino
    kids
+   editor
