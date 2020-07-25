@@ -149,6 +149,7 @@ True
 Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
 
 >>> show_dialog_actions()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - tickets.ActiveTickets.quick_assign_to_action : Assign to
   (main) [visible for all]: **User** (assign_to), **Comment** (comment)
 - tickets.AllTickets.quick_assign_to_action : Assign to
@@ -206,7 +207,7 @@ Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
 - ledger.PaymentTerms.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - lists.Lists.merge_row : Merge
-  (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
+  (main) [visible for all]: **into...** (merge_to), **List memberships** (lists_Member), **Reason** (reason)
 - tickets.Sites.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Site summaries** (working_SiteSummary), **Reason** (reason)
 - tickets.Tickets.merge_row : Merge

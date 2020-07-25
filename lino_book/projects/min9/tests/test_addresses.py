@@ -43,7 +43,7 @@ class QuickTest(RemoteAuthTestCase):
         eupen = Place.objects.get(name="Eupen")
         ar = rt.models.contacts.Companies.request()
         self.assertEqual(Address.ADDRESS_FIELDS, set([
-            'city', 'street_box', 'region', 'street_no',
+            'city', 'street_prefix', 'street_box', 'region', 'street_no',
             'street', 'addr2', 'addr1', 'country', 'zip_code']))
 
         def assert_check(obj, expected):

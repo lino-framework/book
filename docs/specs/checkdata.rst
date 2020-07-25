@@ -8,18 +8,8 @@
 .. currentmodule:: lino.modlib.checkdata
 
 The :mod:`lino.modlib.checkdata` plugin adds support for defining
-application-level integrity tests using **data checkers**.
+application-level integrity tests.
 
-.. glossary::
-
-  data checker
-
-    a piece of code that tests for "soft" database integrity problems.  Where
-    "soft" means that it is not detected by the database engine because it
-    requires application intelligence to detect.
-
-When a data checker finds a problem, then it issues a *problem message*, which
-is assigned to a *responsible user*.
 
 .. contents::
    :depth: 1
@@ -35,13 +25,62 @@ is assigned to a *responsible user*.
 Which means that code snippets in this document are tested using the
 :mod:`lino_book.projects.min9` demo project.
 
+Overview
+========
+
+A :term:`data problem` is a database integrity problem that is not visible by
+the DBMS because detecting it requires higher business intelligence.  Some data
+problems can be fixed automatically, others need human interaction.  Lino
+provides a framework for managing and handling these problems in different ways.
+
+The application developer defines the rules for detecting data problems by
+writing :term:`data checkers <data checker>`.
+
+Examples of data checkers are:
+
+- :class:`lino_xl.lib.countries.models.PlaceChecker`
+- :class:`lino_xl.lib.beid.mixins.BeIdCardHolderChecker`
+- :class:`lino_xl.lib.addresses.mixins.AddressOwnerChecker`
+- :class:`lino.mixins.dupable.DupableChecker`
+- :class:`lino_welfare.modlib.pcsw.models.SSINChecker`
+- :class:`lino_welfare.modlib.pcsw.models.ClientCoachingsChecker`
+- :class:`lino_welfare.modlib.isip.mixins.OverlappingContractsChecker`
+- :class:`lino_welfare.modlib.dupable_clients.models.SimilarClientsChecker`
+
+Lino automatically adds a button "Update data problems" on objects for which
+there is at least one :term:`data checker` available.
+
+The application developer can also add a :class:`ProblemsByOwner`
+table to the :term:`detail layout` of any model.
+
+
+.. glossary::
+
+  data checker
+
+    A piece of code that tests for "soft" database integrity problems.  Where
+    "soft" means that it is not detected by the database engine because it
+    requires application intelligence to detect. Data checkers are either
+    attached to a given model or not. If they are not attached to a model, they
+    are called **unbound checkers**.
+
+    Lino has different ways to run these checkers.  When a data checker finds a
+    problem, Lino creates a :term:`problem message`.
+
+  problem message
+
+    A message that describes one or several data problems detected in a given
+    database object. Problem messages are themselves database objects, but
+    considered temporary data and may be updated automatically without user
+    confirmation.
+    Each problem message is assigned to a *responsible user*.
+
 
 Data checkers
 =============
 
-In the web interface you can select :menuselection:`Explorer -->
-System --> Data checkers` to see a table of all available
-checkers.
+In the web interface you can select :menuselection:`Explorer --> System --> Data
+checkers` to see a table of all available checkers.
 
 ..
     >>> show_menu_path(checkdata.Checkers)
@@ -69,14 +108,14 @@ checkers.
 Showing all problems
 ====================
 
-The demo database deliberately contains some data problems.
 In the web interface you can select :menuselection:`Explorer -->
-System --> Data problems` to see them.
+System --> Data problems` to see all problems.
 
 ..
     >>> show_menu_path(checkdata.AllProblems)
     Explorer --> System --> Data problems
 
+The demo database deliberately contains some data problems.
 
 >>> rt.show(checkdata.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -98,10 +137,9 @@ System --> Data problems` to see them.
 Filtering data problems
 =======================
 
-The user can set the table parameters e.g. to see only problems of a
-given type ("checker"). The following snippet simulates the situation
-of selecting the :class:`ConflictingEventsChecker
-<lino_xl.lib.cal.models.ConflictingEventsChecker>`.
+The user can set the table parameters e.g. to see only problems of a given type
+("checker"). The following snippet simulates the situation of selecting the
+:class:`ConflictingEventsChecker <lino_xl.lib.cal.ConflictingEventsChecker>`.
 
 >>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(checkdata.ProblemsByChecker, chk)
@@ -121,7 +159,6 @@ of selecting the :class:`ConflictingEventsChecker
 
 
 See also :doc:`cal` and :doc:`holidays`.
-
 
 Running the :command:`checkdata` command
 ========================================
@@ -187,3 +224,109 @@ The correct way is like this::
   yield (False, msg)
 
 See :doc:`/dev/i18n` for details.
+
+.. class:: Problem
+
+  Django model used to store a :term:`problem message`.
+
+  .. attribute:: checker
+
+     The :class:`Checker <lino.modlib.checkdata.Checker>` that reported this
+     problem.
+
+  .. attribute:: message
+
+     The message text. This is a concatenation of all messages that
+     were yielded by the :attr:`checker`.
+
+  .. attribute:: user
+
+     The :class:`user <lino.modlib.users.User>` responsible for fixing this
+     problem.
+
+     This field is being filled by the :meth:`get_responsible_user
+     <lino.modlib.checkdata.Checker.get_responsible_user>`
+     method of the :attr:`checker`.
+
+
+.. class:: Problems
+
+    The base table for :term:`problem message` objects.
+
+
+.. class:: Checkers
+
+    The list of data checkers known by this application.
+
+    This was the first use case of a :class:`ChoiceList
+    <lino.core.choicelists.ChoiceList>` with a :attr:`detail_layout
+    <lino.core.actors.Actor.detail_layout>`.
+
+
+
+.. class:: Checker
+
+  Base class for all :term:`data checkers <data checker>`.
+
+  .. attribute:: model
+
+    The model to be checked.  If this is a string, Lino will resolve it at startup.
+
+    If this is an abstract model, :meth:`get_checkable_models`  will
+    potentially yield more than one model.
+
+    If this is `None`, the checker is unbound, i.e. the problem messages will
+    not be bound to a particular database object.
+
+    You might also define your own
+    :meth:`get_checkable_models` method.
+
+  .. classmethod:: check_instance(cls, *args, **kwargs)
+
+    Run :meth:`get_checkdata_problems` on this checker for the given database
+    object.
+
+  .. method:: get_checkable_models(self)
+
+    Return a list of the models to check.
+
+    The default implementation uses the :attr:`model`.
+
+  .. classmethod:: activate(cls)
+
+    Creates an instance of this class and adds it as a choice to the
+    :class:`Checkers` choicelist.
+
+    Application developers must call this on their subclass in order to
+    "register" or "activate" it.
+
+  .. method:: update_problems(self, obj=None, delete=True, fix=False)
+
+    Update the :term:`problem messages <problem message>` of this checker for
+    the specified object.
+
+    ``obj`` is `None` on unbound checkers.
+
+    When `delete` is False, the caller is responsible for deleting any existing
+    objects.
+
+  .. method:: get_checkdata_problems(self, obj, fix=False)
+
+    Return or yield a series of `(fixable, message)` tuples, each describing a
+    data problem. `fixable` is a boolean saying whether this problem can be
+    automatically fixed. And if `fix` is `True`, this method is also responsible
+    for fixing it.
+
+  .. method:: get_responsible_user(self, obj)
+
+    The site user to be considered responsible for problems detected by this
+    checker on the given database object `obj`. This will be stored in
+    :attr:`user <lino.modlib.checkdata.Problem.user>`.
+
+    The given `obj` is an instance of :attr:`model`, unless for unbound
+    checkers (i.e. whose :attr:`model` is `None`).
+
+    The default implementation returns the *main checkdata
+    responsible* defined for this site (see
+    :attr:`responsible_user
+    <lino.modlib.checkdata.Plugin.responsible_user>`).

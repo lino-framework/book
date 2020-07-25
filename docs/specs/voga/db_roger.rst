@@ -196,7 +196,7 @@ behaviour. See also :doc:`/dev/delete`.
   - CASCADE : ledger.Movement.voucher
   - PROTECT : bevats.Declaration.voucher_ptr, finan.BankStatement.voucher_ptr, finan.JournalEntry.voucher_ptr, finan.PaymentOrder.voucher_ptr, sales.VatProductInvoice.voucher_ptr, vat.VatAccountInvoice.voucher_ptr
 - lists.List :
-  - PROTECT : lists.Member.list
+  - CASCADE : lists.Member.list
 - lists.ListType :
   - PROTECT : lists.List.list_type
 - notes.EventType :
