@@ -30,6 +30,15 @@ Basics
    /dev/writedocs
    /dev/deploy
 
+Testing
+=======
+
+.. toctree::
+   :maxdepth: 2
+
+   /dev/testing
+   mtsuite
+
 
 
 Drafts
@@ -60,7 +69,6 @@ Other
    /dev/logging
    /dev/linod
    /dev/design
-   /dev/testing
    /team/noi_intro
    /dev/bash_aliases
    /dev/diamond

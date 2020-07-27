@@ -8,7 +8,7 @@ LINO_SRC = Path(lino.__file__).parent.parent + '/'
 
 
 class LinoTestCase(TestCase):
-    django_settings_module = "lino_book.projects.max.settings.demo"
+    django_settings_module = "lino_book.projects.min2.settings.demo"
     project_root = Path(__file__).parent.parent
 
 
@@ -43,7 +43,7 @@ class UtilsTests(LinoTestCase):
 
     def test_odsreader(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/odsreader.py')
-    
+
     # def test_choicelists(self):
     #     self.run_simple_doctests(LINO_SRC+'lino/core/choicelists.py')
 
@@ -61,5 +61,3 @@ class UtilsTests(LinoTestCase):
 
     def test_cycler(self):
         self.run_simple_doctests(LINO_SRC+'lino/utils/cycler.py')
-
-

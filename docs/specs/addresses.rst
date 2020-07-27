@@ -10,7 +10,7 @@
 The :mod:`lino_xl.lib.addresses` plugin adds functionality and models to handle
 multiple addresses per :term:`partner`.  When this plugin is installed, your
 application gets a "Manage addresses" button in the :attr:`overview` field of a
-partner.
+partner.  See also :ref:`team.mt.addresses`.
 
 
 .. contents::
@@ -24,26 +24,32 @@ partner.
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
-These are the address fields:
+.. glossary::
 
->>> sorted(addresses.Address.ADDRESS_FIELDS)
-['addr1', 'addr2', 'city', 'country', 'region', 'street', 'street_box', 'street_no', 'street_prefix', 'zip_code']
+  address fields
 
-The partner's address fields contain a copy of the partner's primary address
+    The database fields that make up a postal address. Here they are:
 
-Manual testing instructions
-===========================
+    >>> sorted(addresses.Address.ADDRESS_FIELDS)
+    ['addr1', 'addr2', 'city', 'country', 'region', 'street', 'street_box', 'street_no', 'street_prefix', 'zip_code']
 
-Directly edit the address fields of a partner. The primary address should get
-updated accordingly.
+    Each partner object has these address fields, and each :term:`address
+    record` has them.  The address fields of a partner always contain a copy of
+    the partner's :term:`primary address`.
 
-Open the `Manage addresses` window and edit some address. Close the window and
-check that the overview field has been updated correctly:
+  address record
 
-- edit the primary address
-- make another address primary
-- editing a non-primary address should not update the partner
+    One of possibly many addresses of a given partner.
+    Stored using the :class:`Address` model.
+    Implements :class:`lino.utils.addressable.Addressable`.
 
+    Inherits fields from :class:`lino_xl.lib.countries.CountryRegionCity`
+    (country, region, city. zip_code) and
+    :class:`lino_xl.lib.contacts.AddresssLocation` (street, street_no, ...).
+
+  primary address
+
+    The address that is used as the primary address of a given partner.
 
 
 Examples
@@ -132,10 +138,7 @@ Reference
 
 .. class:: Address
 
-    Inherits fields from
-    :class:`lino_xl.lib.countries.CountryRegionCity` (country, region,
-    city. zip_code) and :class:`lino_xl.lib.contacts.AddresssLocation`
-    (street, street_no, ...)
+    Django model to represent and address record.
 
     .. attribute:: partner
 
@@ -240,6 +243,13 @@ is needed.
 
     Checks for the data problems described below.
 
+Here is a utility function used to describe and test the possible data problems
+and how Lino handles them.  The remaining part of this section will call this
+function over and over again.  For each test it creates a partner and a list of
+addresses, then runs the data checker to detect problems, then prints the
+problem message and a summary of the database content after fixing them before
+cleaning up the database.  Most addresses have just a street name to simplify
+things.
 
 >>> from lino_xl.lib.contacts.utils import street2kw
 >>> checker = rt.models.addresses.AddressOwnerChecker.self
@@ -273,7 +283,7 @@ is needed.
 foo
 - primary foo
 
-When the :class:`Partner` has some non-empty address field and  there is no
+When the partner has some non-empty address field and there is no
 :class:`Address` object that matches this address, Lino fixes this by creating
 an address record from these.
 
@@ -291,7 +301,6 @@ be marked as primary, mark it as primary and return it.
 (*) Unique address is not marked primary.
 foo
 - primary foo
-
 
 Multiple primary addresses are not allowed.  If one of them matches the partner,
 Lino can fix it by removing primary from the others:
