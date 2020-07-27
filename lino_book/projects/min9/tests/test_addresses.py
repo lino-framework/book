@@ -5,10 +5,14 @@
 """Test certain aspects of `lino_xl.lib.addresses`.
 
 This module is part of the Lino test suite. You can test only this
-module by issuing either::
+module by issuing::
 
   $ go min9
   $ python manage.py test tests.test_addresses
+
+This test unit is deprecated. All cases covered here (and many more) are also
+covered by `doctest docs/specs/addresses.rst`.
+
 
 """
 
@@ -67,7 +71,7 @@ class QuickTest(RemoteAuthTestCase):
         assert_check(doe, '')  # No problems yet since not checked
         doe.check_data.run_from_code(ar, fix=False)
         assert_check(
-            doe, '(\u2605) Owner with address, but no address record.')
+            doe, '(\u2605) Primary address is missing.')
 
         addr = doe.get_primary_address()
         self.assertEqual(addr, None)
@@ -95,7 +99,7 @@ class QuickTest(RemoteAuthTestCase):
 
         doe.check_data.run_from_code(ar, fix=False)
         assert_check(
-            doe, '(\u2605) Owner with address, but no address record.')
+            doe, '(\u2605) Primary address is missing.')
 
         doe.check_data.run_from_code(ar, fix=True)
         assert_check(doe, '')  # problem has been fixed
@@ -109,14 +113,10 @@ class QuickTest(RemoteAuthTestCase):
         doe.check_data.run_from_code(ar, fix=False)
         self.assertEqual(Address.objects.count(), 1)
         assert_check(
-            doe, "Primary address differs from owner address "
-            "(city:Eupen->None, zip_code:4700->).")
-            # "(city:Eupen->None, zip_code:4700->).")
-        # Lino does repair this automatically since we don't know
-        # which data is correct.
+            doe, "(\u2605) Must sync address to owner.")
         doe.check_data.run_from_code(ar, fix=True)
         self.assertEqual(Address.objects.count(), 1)
-        self.assertEqual(doe.city, None)
+        self.assertEqual(doe.city, eupen)
         addr = doe.get_primary_address()
         self.assertEqual(addr.city, eupen)
         self.assertEqual(addr.primary, True)

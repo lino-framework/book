@@ -24,12 +24,13 @@ class Site(Site):
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         # yield 'lino.modlib.users'
-        yield 'lino_xl.lib.excerpts'
         yield 'lino_book.projects.min9.modlib.contacts'
+        yield 'lino_xl.lib.excerpts'
         yield 'lino_xl.lib.addresses'
+        yield 'lino_xl.lib.phones'
         yield 'lino_xl.lib.reception'
         yield 'lino_xl.lib.courses'
-        # yield 'lino.modlib.sepa'
+        yield 'lino_xl.lib.sepa'
         yield 'lino_xl.lib.notes'
         # yield 'lino_xl.lib.projects'
         yield 'lino_xl.lib.humanlinks'

@@ -102,21 +102,24 @@ The :class:`ContentTypes` table shows all models defined in your application.
 ==== ================== =========================
  ID   app label          python model class name
 ---- ------------------ -------------------------
- 1    system             siteconfig
- 2    contenttypes       contenttype
- 3    gfks               helptext
- 4    excerpts           excerpttype
- 5    excerpts           excerpt
- 6    countries          country
+ 1    countries          country
+ 2    countries          place
+ 3    system             siteconfig
+ 4    contacts           companytype
+ 5    contacts           roletype
+ 6    contacts           role
+ 7    contacts           partner
+ 8    contacts           person
+ 9    contacts           company
+ 10   contenttypes       contenttype
+ 11   gfks               helptext
  ...
- 46   changes            change
- 47   comments           commenttype
- 48   comments           comment
- 49   comments           mention
- 50   uploads            volume
- 51   uploads            uploadtype
- 52   uploads            upload
- 53   sessions           session
+ 59   notify             message
+ 60   changes            change
+ 61   comments           commenttype
+ 62   comments           comment
+ 63   comments           mention
+ 64   sessions           session
 ==== ================== =========================
 <BLANKLINE>
 
@@ -129,7 +132,8 @@ The :class:`ContentTypes` table shows all models defined in your application.
 
     .. attribute:: base_classes
 
-        Display a clickable list of all MTI parents, i.e. base models
+        Display a clickable list of all MTI parents, i.e. non-abstract base
+        models.
 
 Customized help texts
 =====================
@@ -151,11 +155,10 @@ Customized help texts
 ========== =========================== ========================================================== ==== ===========
  Field      Verbose name                HelpText                                                   ID   Model
 ---------- --------------------------- ---------------------------------------------------------- ---- -----------
- field      Field (database field)      The name of the field.                                     1    Help Text
- language   Language (database field)   Die Sprache, in der Dokumente ausgestellt werden sollen.   2    Partner
+ language   Language (database field)   Die Sprache, in der Dokumente ausgestellt werden sollen.   1    Partner
+ field      Field (database field)      The name of the field.                                     2    Help Text
 ========== =========================== ========================================================== ==== ===========
 <BLANKLINE>
-
 
 The language field of a partner is actually defined in
 :class:`lino.mixins.Contactable`.
@@ -211,8 +214,9 @@ Fields
 The :func:`gfk2lookup` function
 ===============================
 
-The :func:`gfk2lookup <lino.core.gfks.gfk2lookup>` function is mostly
-internal use, but occasionally you might want to use it.
+The :func:`gfk2lookup <lino.core.gfks.gfk2lookup>` function is mostly for
+internal use, but occasionally you might want to use it in your application
+code.
 
 >>> from lino.core.utils import full_model_name as fmn
 >>> from lino.core.gfks import gfk2lookup
@@ -226,12 +230,8 @@ cal.Event cal.Task checkdata.Problem comments.Comment comments.Mention excerpts.
 
 >>> obj = contacts.Person.objects.all()[0]
 >>> d = gfk2lookup(notes.Note.owner, obj)
->>> d['owner_type']
-<ContentType: Person>
->>> d['owner_id']
-201
-
-{'owner_type': <ContentType: Person>, 'owner_id': 201}
+>>> pprint(d)
+{'owner_id': 211, 'owner_type': <ContentType: Person>}
 
 If the object has a non-integer primary key, then it cannot be target
 of a GFK.  In this case we filter only on the content type because

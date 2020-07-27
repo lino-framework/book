@@ -6,8 +6,6 @@
 The `models` module for `lino.projects.min2.modlib.contacts`.
 """
 
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import format_lazy
 
@@ -45,7 +43,7 @@ class PartnerDetail(PartnerDetail):
 
     general = dd.Panel("""
     overview:20 general2:20 general3:40
-    reception.AppointmentsByPartner comments.CommentsByRFC
+    sepa.AccountsByPartner comments.CommentsByRFC
     """, label=_("General"))
 
     general2 = """
@@ -74,7 +72,7 @@ class PartnerDetail(PartnerDetail):
 
     misc = dd.Panel("""
     created modified
-    changes.ChangesByMaster
+    changes.ChangesByMaster checkdata.ProblemsByOwner
     """, label=_("Miscellaneous"))
 
 
@@ -108,7 +106,7 @@ class PersonDetail(PersonDetail):
     general = dd.Panel("""
     overview:20 general2:40 general3:40
     contacts.RolesByPerson:20 households.MembersByPerson:40 \
-    humanlinks.LinksByHuman
+    humanlinks.LinksByHuman reception.AppointmentsByPartner
     """, label=_("General"))
 
     general2 = """

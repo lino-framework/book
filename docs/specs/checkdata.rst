@@ -8,7 +8,9 @@
 .. currentmodule:: lino.modlib.checkdata
 
 The :mod:`lino.modlib.checkdata` plugin adds support for defining
-application-level integrity tests.
+application-level data integrity tests. It provides a Django admin command named
+:manage:`checkdata`.
+
 
 
 .. contents::
@@ -28,24 +30,13 @@ Which means that code snippets in this document are tested using the
 Overview
 ========
 
-A :term:`data problem` is a database integrity problem that is not visible by
-the DBMS because detecting it requires higher business intelligence.  Some data
-problems can be fixed automatically, others need human interaction.  Lino
-provides a framework for managing and handling these problems in different ways.
+A :term:`data problem` is an issue with database integrity that is not detected
+by the DBMS because seeing it requires higher business intelligence.  Some data
+issues can be fixed automatically, others need human interaction.  Lino provides
+a framework for managing and handling data problems in different ways.
 
 The application developer defines the rules for detecting data problems by
 writing :term:`data checkers <data checker>`.
-
-Examples of data checkers are:
-
-- :class:`lino_xl.lib.countries.models.PlaceChecker`
-- :class:`lino_xl.lib.beid.mixins.BeIdCardHolderChecker`
-- :class:`lino_xl.lib.addresses.mixins.AddressOwnerChecker`
-- :class:`lino.mixins.dupable.DupableChecker`
-- :class:`lino_welfare.modlib.pcsw.models.SSINChecker`
-- :class:`lino_welfare.modlib.pcsw.models.ClientCoachingsChecker`
-- :class:`lino_welfare.modlib.isip.mixins.OverlappingContractsChecker`
-- :class:`lino_welfare.modlib.dupable_clients.models.SimilarClientsChecker`
 
 Lino automatically adds a button "Update data problems" on objects for which
 there is at least one :term:`data checker` available.
@@ -56,24 +47,27 @@ table to the :term:`detail layout` of any model.
 
 .. glossary::
 
+  data problem
+
+    A "soft" database integrity problem, which is not detected by the database
+    engine because it requires application intelligence to detect.
+
   data checker
 
-    A piece of code that tests for "soft" database integrity problems.  Where
-    "soft" means that it is not detected by the database engine because it
-    requires application intelligence to detect. Data checkers are either
-    attached to a given model or not. If they are not attached to a model, they
-    are called **unbound checkers**.
+    A piece of code that tests for :term:`data problems <data problem>`.
 
-    Lino has different ways to run these checkers.  When a data checker finds a
-    problem, Lino creates a :term:`problem message`.
+    Data checkers are usually attached to a given database model. If they are
+    not attached to a model, they are called **unbound checkers**. Lino has
+    different ways to run these checkers.  When a data checker finds a problem,
+    Lino creates a :term:`problem message`.
 
   problem message
 
-    A message that describes one or several data problems detected in a given
-    database object. Problem messages are themselves database objects, but
-    considered temporary data and may be updated automatically without user
-    confirmation.
-    Each problem message is assigned to a *responsible user*.
+    A message that describes one or several :term:`data problems <data problem>`
+    detected in a given database object. Problem messages are themselves
+    database objects, but considered temporary data and may be updated
+    automatically without user confirmation. Each problem message is assigned to
+    a *responsible user*.
 
 
 Data checkers
@@ -88,28 +82,64 @@ checkers` to see a table of all available checkers.
 
 >>> rt.show(checkdata.Checkers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================================= ==================================================
- value                             text
---------------------------------- --------------------------------------------------
- addresses.AddressOwnerChecker     Check for missing or non-primary address records
- cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.EventGuestChecker             Entries without participants
- cal.LongEntryChecker              Too long-lasting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
- countries.PlaceChecker            Check data of geographical places.
- memo.PreviewableChecker           Check for previewables needing update
- mixins.DupableChecker             Check for missing phonetic words
- printing.CachedPrintableChecker   Check for missing target files
- system.BleachChecker              Find unbleached html content
-================================= ==================================================
+=================================== ========================================================
+ value                               text
+----------------------------------- --------------------------------------------------------
+ addresses.AddressOwnerChecker       Check for missing or non-primary address records
+ cal.ConflictingEventsChecker        Check for conflicting calendar entries
+ cal.EventGuestChecker               Entries without participants
+ cal.LongEntryChecker                Too long-lasting calendar entries
+ cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
+ countries.PlaceChecker              Check data of geographical places.
+ ledger.VoucherChecker               Check integrity of ledger vouchers
+ memo.PreviewableChecker             Check for previewables needing update
+ mixins.DupableChecker               Check for missing phonetic words
+ phones.ContactDetailsOwnerChecker   Check for mismatches between contact details and owner
+ printing.CachedPrintableChecker     Check for missing target files
+ system.BleachChecker                Find unbleached html content
+=================================== ========================================================
 <BLANKLINE>
 
 
-Showing all problems
-====================
+The :class:`lino_xl.lib.countries.PlaceChecker` class is a simple example of how
+to write a data checker::
+
+  from lino.api import _
+  from lino.modlib.checkdata.choicelists import Checker
+
+  class PlaceChecker(Checker):
+      model = 'countries.Place'
+      verbose_name = _("Check data of geographical places.")
+
+      def get_checkdata_problems(self, obj, fix=False):
+          if obj.name.isdigit():
+              yield (False, _("Name contains only digits."))
+
+  PlaceChecker.activate()
+
+..
+  >>> print(rt.models.countries.PlaceChecker.verbose_name)
+  Check data of geographical places.
+
+
+More examples of data checkers we recommend to explore:
+
+- :class:`lino_xl.lib.countries.PlaceChecker`
+- :class:`lino_xl.lib.beid.mixins.BeIdCardHolderChecker`
+- :class:`lino_xl.lib.addresses.AddressOwnerChecker`
+- :class:`lino.mixins.dupable.DupableChecker`
+- :class:`lino_welfare.modlib.pcsw.models.SSINChecker`
+- :class:`lino_welfare.modlib.pcsw.models.ClientCoachingsChecker`
+- :class:`lino_welfare.modlib.isip.mixins.OverlappingContractsChecker`
+- :class:`lino_welfare.modlib.dupable_clients.models.SimilarClientsChecker`
+
+
+
+Showing all data problems
+=========================
 
 In the web interface you can select :menuselection:`Explorer -->
-System --> Data problems` to see all problems.
+System --> data problems` to see all problems.
 
 ..
     >>> show_menu_path(checkdata.AllProblems)
@@ -163,12 +193,10 @@ See also :doc:`cal` and :doc:`holidays`.
 Running the :command:`checkdata` command
 ========================================
 
-The :mod:`lino.modlib.checkdata` module provides a Django admin
-command named :manage:`checkdata`.
 
 >>> call_command('checkdata')
 Found 7 and fixed 0 data problems in Calendar entries.
-Done 18 checks, found 7 and fixed 0 problems.
+Done 20 checks, found 7 and fixed 0 problems.
 
 You can see the list of all available checkers also from the command
 line using::
@@ -176,21 +204,23 @@ line using::
     $ python manage.py checkdata --list
 
 >>> call_command('checkdata', list=True)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================================= ==================================================
- value                             text
---------------------------------- --------------------------------------------------
- addresses.AddressOwnerChecker     Check for missing or non-primary address records
- cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.EventGuestChecker             Entries without participants
- cal.LongEntryChecker              Too long-lasting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete generated calendar entries
- countries.PlaceChecker            Check data of geographical places.
- memo.PreviewableChecker           Check for previewables needing update
- mixins.DupableChecker             Check for missing phonetic words
- printing.CachedPrintableChecker   Check for missing target files
- system.BleachChecker              Find unbleached html content
-================================= ==================================================
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+=================================== ========================================================
+ value                               text
+----------------------------------- --------------------------------------------------------
+ addresses.AddressOwnerChecker       Check for missing or non-primary address records
+ cal.ConflictingEventsChecker        Check for conflicting calendar entries
+ cal.EventGuestChecker               Entries without participants
+ cal.LongEntryChecker                Too long-lasting calendar entries
+ cal.ObsoleteEventTypeChecker        Obsolete generated calendar entries
+ countries.PlaceChecker              Check data of geographical places.
+ ledger.VoucherChecker               Check integrity of ledger vouchers
+ memo.PreviewableChecker             Check for previewables needing update
+ mixins.DupableChecker               Check for missing phonetic words
+ phones.ContactDetailsOwnerChecker   Check for mismatches between contact details and owner
+ printing.CachedPrintableChecker     Check for missing target files
+ system.BleachChecker                Find unbleached html content
+=================================== ========================================================
 <BLANKLINE>
 
 
