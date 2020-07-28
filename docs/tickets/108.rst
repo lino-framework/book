@@ -4,10 +4,9 @@
 #108: Internationalize demo fixtures
 ====================================
 
-In :doc:`/dev/translate/index` we discovered that some demo fixtures
-used by :ref:`cosi` fail when the default language (the first code
-specified in :attr:`lino.core.site.Site.languages`) is something else than `en`,
-`de` or `fr`.
+Some demo fixtures used by :ref:`cosi` fail when the default language (the first
+code specified in :attr:`lino.core.site.Site.languages`) is something else than
+`en`, `de` or `fr`.
 
 If you set :attr:`lino.core.site.Site.languages` to ``"es en"`` and run
 :manage:`prep`, you get::
@@ -25,4 +24,3 @@ For example :mod:`lino_xl.lib.contacts.fixtures.std`.
 Pages referring to this:
 
 .. refstothis::
-

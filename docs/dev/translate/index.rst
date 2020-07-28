@@ -4,22 +4,29 @@ Instructions for translators
 
 Here is how your can help translating Lino into your own language.
 
+Before starting to translate,  you must have :doc:`installed a contributor
+environment </team/install/index>` of Lino.
+
+
+
 Overview
 --------
 
-You are going to edit a series of :xfile:`.po` files which are part of the code
-repositories of Lino.  Each Lino repository has its own series of :xfile:`.po`
-files.  Their place is given bei the :attr:`locale_dir` keyword
-atelier.invlib import setup_from_tasks
+You are going to edit a series of :xfile:`.po` files which are part of the Lino
+source code.  Each Lino repository has its own series of :xfile:`.po` files.
+Their place is given by the :attr:`locale_dir` setting (see
+:ref:`atelier.prjconf`). Here are some examples:
+
+- :ref:`lino` : lino/locale
+- :ref:`xl` : lino_xl/lib/xl/locale
+- :ref:`noi` : lino_noi/lib/noi/locale
+- :ref:`cosi` : lino_cosi/lib/cosi/locale
+- etc.
 
 
-
-
-
-
-To edit these :xfile:`.po` files you will be using either your preferred plain
-text editor or a tool like Poedit_.  We recommend the latter. On Debian you
-install it with :cmd:`apt-get install poedit`.
+To edit these :xfile:`.po` files you can use either your preferred :doc:`text
+editor </dev/newbies/editor>` or a tool like Poedit_.  We recommend the latter.
+On Debian you install it with :cmd:`apt-get install poedit`.
 
 .. _Poedit: http://www.poedit.net
 
@@ -27,20 +34,11 @@ install it with :cmd:`apt-get install poedit`.
 Set up a site
 -------------
 
-Before starting to translate, you must set up a site (a Django
-project) on which you can see your work while you are evolving. You
-cannot simply translate all those messages and then believe that they
+During translation you will use the demo sites to see your work while you are
+evolving. You cannot simply translate all those messages and believe that they
 are correct.
 
-
-- We suppose that you have installed the :ref:`development version
-  <lino.dev.install>` of Lino.
-
-- We suppose that :mod:`lino_book.projects.min1` is the application you
-  want to translate.
-
-- And let's say for example that you want to translate them to
-  *Spanish*.
+Let's say for example that you want to translate to *Spanish*.
 
 Go to your local project directory::
 
@@ -51,26 +49,26 @@ looks as follows:
 
 .. literalinclude:: settings.py
 
-That is, you specify your own language distribution, consisting of
-English as first language and Spanish (your language) as second. See
-:attr:`lino.core.site.Site.languages` for details.  Note that the first language
-cannot currently be Spanish because the demo fixtures would fail
+That is, you specify your own language distribution (in the
+:attr:`lino.core.site.Site.languages` setting) consisting of English as first
+language and Spanish (your language) as second. The first language cannot
+currently be your language because the demo fixtures would fail
 (:srcref:`docs/tickets/108`).
 
-If your language is not yet covered for Lino, then you must `Create a
-demo user for your language`_ before going on.
+If your language is not yet covered for Lino, then you must `Create a demo user
+for your language`_ before going on.
 
 Initialize the demo database::
 
   $ python manage.py prep
 
 
-Run your rdevelopment server
+Run your development server
 ----------------------------
-
 
 Run the development server on the demo database::
 
+  $ go min9
   $ python manage.py runserver
 
 Point your browser to view the application. Log in as the Spanish user.

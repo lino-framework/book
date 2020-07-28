@@ -52,14 +52,19 @@ Also if you wish to remove Lino from your system you only need to remove the
 virtual environment rather than trying to remove Lino's dependencies from the
 system environment without breaking any other programs that use python.
 
-In a :term:`developer environment` we suggest
-:file:`~/lino/env` as your *default environment*. So here we go::
+Before using virtualenvs, we must install the feature:
 
-  $ sudo apt-get install python3-pip
-  $ mkdir ~/lino
-  $ cd ~/lino
-  $ virtualenv -p python3 env
-  $ . env/bin/activate
+.. code-block:: console
+
+  $ sudo apt-get install python3-venv
+
+In a :term:`developer environment` we suggest :file:`~/lino/env` as your
+*default environment*. So here we go:
+
+.. code-block:: console
+
+  $ python3 -m venv ~/lino/env
+  $ source ~/lino/env/bin/activate
 
 The dot (``.``) is a synonym for the :cmd:`source` command. If you
 didn't know it, read the `manpage
@@ -69,8 +74,15 @@ didn't know it, read the `manpage
 After creating a new environment, you should always update `pip` and
 `setuptools` to the latest version::
 
-  $ pip install -U pip
-  $ pip install -U setuptools
+  $ pip install -U pip setuptools
+  Collecting pip
+    Using cached https://files.pythonhosted.org/packages/43/84/23ed6a1796480a6f1a2d38f2802901d078266bda38388954d01d3f2e821d/pip-20.1.1-py2.py3-none-any.whl
+  Collecting setuptools
+    Downloading https://files.pythonhosted.org/packages/8e/11/9e10f1cad4518cb307b484c255cae61e97f05b82f6d536932b1714e01b47/setuptools-49.2.0-py3-none-any.whl (789kB)
+      100% |████████████████████████████████| 798kB 1.1MB/s
+  Installing collected packages: pip, setuptools
+    ...
+  Successfully installed pip-20.1.1 setuptools-49.2.0
 
 .. rubric:: Did you know?
 
@@ -89,30 +101,24 @@ projects: Virtual environments
 <https://www.caktusgroup.com/blog/2016/11/03/managing-multiple-python-projects-virtual-environments/>`__
 where he explains what they are and why you want them.
 
+.. _dev.default_venv:
 
 Set your default virtualenv
 ===========================
 
-As a developer you probably don't want to type ``. ~/env/bin/activate`` each
-time you open a new terminal with :kbd:`Ctrl+Alt+T`.  So you should set your
-default **default environment**  by adding the following line to your
-:file:`~/.bashrc` file::
+As a developer you probably don't want to type ``source
+~/lino/env/bin/activate`` each time you open a new terminal with
+:kbd:`Ctrl+Alt+T`.  So you should set your default **default environment**  by
+adding the following line to your :file:`~/.bashrc` file::
 
-  . ~/lino/env/bin/activate
+  source ~/lino/env/bin/activate
 
-You will also instruct your favourite code editor to use this default
-environment when doing syntax checks or finding definitions etc.  For example in
-Atom you say :menuselection:`Edit --> Preferences --> Packages` select the
-settings of the python-tools plugin and set the :guilabel:`Path to Python
-directory` field to  :file:`~/lino/env/bin`
+You will also instruct your favourite :doc:`code editor </dev/newbies/editor>`
+to use this default environment when doing syntax checks or finding definitions
+etc.  For example in :ref:`atom` you say :menuselection:`Edit --> Preferences
+--> Packages` select the settings of the python-tools plugin and set the
+:guilabel:`Path to Python directory` field to  :file:`~/lino/env/bin`
 
-
-.. You want a quick way to activate your Lino python environment, you
-  can add an alias to your :xfile:`.bashrc` or :xfile:`.bash_aliases`
-  file::
-
-    alias p2='. ~/pythonenvs/py2/bin/activate'
-    alias p3='. ~/pythonenvs/py3/bin/activate'
 
 Run getlino
 ===========
@@ -122,16 +128,22 @@ via pip::
 
   $ pip install getlino
 
+Note: In case you have used getlino on your machine before (maybe another
+virtualenv, but the same machine), then you might want to delete your
+configuration file before going on::
+
+  rm ~/.getlino.conf
+
 Then run :cmd:`getlino configure`::
 
-  $ getlino configure  --no-devtools
+  $ getlino configure --no-devtools
 
-It asks a lot of questions, but you can hit ENTER for each of them.
+It asks a lot of questions, but you should hit :kbd:`ENTER` for each of them.
 
-Warning :
-when getlino asks a ``[y or n]`` question, you should read it and understand it before you hit :kbd:`y`.
-getlino overwrites certain configuration files without making a backup copy.
-Read twice before you hit :kbd:`y`!
+Warning : when getlino does not react to :kbd:`ENTER` but asks a ``[y or n]``
+question, you should read it and understand it before you hit :kbd:`y`. getlino
+overwrites certain configuration files without making a backup copy. Read twice
+before you hit :kbd:`y`!
 
 For details about each question see the documentation about :ref:`getlino`.
 
@@ -144,9 +156,8 @@ Run :cmd:`getlino startsite` to create a first site::
 
 Run :manage:`runserver`::
 
-  $ cd ~/lino/sites/first
+  $ cd ~/lino/lino_local/first
   $ python manage.py runserver
-
 
 Now start your browser, point it to http://127.0.0.1:8000/ and you
 should see something like this:

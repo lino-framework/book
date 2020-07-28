@@ -39,7 +39,13 @@ Testing
    /dev/testing
    mtsuite
 
+Internationalization
+====================
 
+.. toctree::
+   :maxdepth: 1
+
+   /dev/translate/index
 
 Drafts
 ======
@@ -47,16 +53,21 @@ Drafts
 .. toctree::
    :maxdepth: 1
 
-   /dev/setup
-   /dev/translate/index
-
    /dev/style
    /dev/extjs
    /dev/repair
 
+Internals
+=========
+
+.. toctree::
+   :maxdepth: 1
+
+   /dev/setup
+
 
 Other
------
+=====
 
 .. toctree::
    :maxdepth: 1

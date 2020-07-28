@@ -111,7 +111,7 @@ class QuickTest(RemoteAuthTestCase):
 
         note.delete()
         self.assertEqual(Excerpt.objects.count(), 0)
-        self.assertEqual(ExcerptType.objects.count(), 4)
+        self.assertEqual(ExcerptType.objects.count(), 5)
 
     def test_dupable(self):
 

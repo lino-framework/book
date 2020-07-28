@@ -5,33 +5,55 @@
 Setting up a Lino contributor environment
 =========================================
 
-We assume you have already :doc:`installed a developer environment
-</dev/install/index>` and that you now want to extend your it into a
-:term:`contributor environment`.
+We assume that you have :doc:`installed a developer environment
+</dev/install/index>` and now want to convert it into a :term:`contributor
+environment`.
 
-The main new thing is that as a contributor you have a local clone of the Lino
-code repositories because you are going to do local modifications and submit
-pull requests.  Getlino does the tedious work of cloning and installing them
-into your virtualenv as editable (with `pip install -e`).
+The main new thing as a contributor is that you have a local clone of each Lino
+code repository because you are going to do local modifications and submit pull
+requests.  Getlino does the tedious work of cloning and installing them as
+editable (with `pip install -e`) into your virtualenv.
 
 Run getlino to clone Lino repositories
 ======================================
 
-Run :cmd:`getlino` with the following options::
+We are going to throw away your developer virtualenv
+and replace it by a new one.
+
+.. code-block:: console
+
+  $ mv ~/lino/env ~/lino/old_env
+  $ python3 -m venv ~/lino/env
+  $ source ~/lino/env/bin/activate
+  $ pip install -U pip setuptools
+
+Note that after moving a virtualenv to another directory you cannot use it
+anymore. Python virtualenvs are not designed to support renaming.  But you may
+rename it back to its old name in case you want to go back.
+
+You are now in a new virgin Python virtualenv.  You can say :cmd:`pip freeze` to
+verify.
+
+Note that this virgin virtualenv is now your :ref:`default virtualenv
+<dev.default_venv>`.
+
+In case you have used getlino on your machine before (maybe another virtualenv,
+but the same machine), then you might want to delete your configuration file
+before going on::
+
+  rm ~/.getlino.conf
+
+Run :cmd:`getlino` with the following options:
+
+.. code-block:: console
 
   $ getlino configure --clone --devtools --redis
 
 For details see the documentation about :ref:`getlino`.
 
-TODO: This won't uninstall Lino packages that were previously installed from
-PyPI in non-editable mode (when you were still a developer environment). So you
-must probably pip uninstall them manually.
+Try one of the demo projects:
 
-Note that getlino overrides only the configuration values you specified at the
-command line, otherwise it uses those you specified during
-:doc:`/dev/install/index`.
-
-Try one of the demo projects::
+.. code-block:: console
 
   $ cd ~/lino/env/repositories/book/lino_book/projects/team
   $ python manage.py prep
@@ -39,22 +61,19 @@ Try one of the demo projects::
 
 Point your browser to http://localhost:8000
 
-Note that :manage:`prep` is needed only once per demo project in order to create
-the database.
+You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run a
+development server.  Before starting a development server on a project for the
+first time, you must initialize its database using the :manage:`prep` command.
 
+You can run the :manage:`prep` command for all demo projects by going to the
+root directory of the book project and saying :cmd:`inv prep`:
 
-Running your first Lino site
-============================
+.. code-block:: console
 
-You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run
-a development server.  Before starting a web server on a project for
-the first time, you must initialize its database using the
-:manage:`prep` command::
-
-    $ cd ~/repositories/book/lino_book/projects/min1
-    $ python manage.py prep
-    $ python manage.py runserver
-
+Note the difference between :cmd:`inv prep` and the :manage:`prep` command.
+:cmd:`inv prep` runs the :manage:`prep` command for each demo project of a
+repository.  The demo projects of a repository are declared in the
+:xfile:`tasks.py` file.
 
 Exercises
 =========
