@@ -7,12 +7,19 @@ Here is how your can help translating Lino into your own language.
 Overview
 --------
 
-You are going to edit a series of :xfile:`.po` files which are part of
-the code repositories of Lino.
+You are going to edit a series of :xfile:`.po` files which are part of the code
+repositories of Lino.  Each Lino repository has its own series of :xfile:`.po`
+files.  Their place is given bei the :attr:`locale_dir` keyword
+atelier.invlib import setup_from_tasks
 
-To edit these :xfile:`.po` files you will be using either your
-preferred plain text editor or a tool like Poedit_.  We recommend the
-latter. On Debian you install it with ``apt-get install poedit``.
+
+
+
+
+
+To edit these :xfile:`.po` files you will be using either your preferred plain
+text editor or a tool like Poedit_.  We recommend the latter. On Debian you
+install it with :cmd:`apt-get install poedit`.
 
 .. _Poedit: http://www.poedit.net
 
@@ -27,7 +34,7 @@ are correct.
 
 
 - We suppose that you have installed the :ref:`development version
-  <lino.dev.install>` of Lino.  
+  <lino.dev.install>` of Lino.
 
 - We suppose that :mod:`lino_book.projects.min1` is the application you
   want to translate.
@@ -81,7 +88,7 @@ is a Lino demo site."
 
 Now you must locate these strings in the :file:`.po` file.
 
-Open another terminal window and go to the Lino repository. 
+Open another terminal window and go to the Lino repository.
 
   $ cd ~/repositories/lino
 
@@ -157,7 +164,7 @@ Trucs et astuces
 Voici un pitfall: la traduction du string suivant::
 
   msgid "%(person)s has been unregistered from %(course)s"
-  
+
 ne doit pas être::
 
   msgstr "%(personne)s a été désinscrit du %(cours)"
@@ -166,9 +173,9 @@ mais bien::
 
   msgstr "%(person)s a été désinscrit du %(course)s"
 
-C.-à-d. les mots-clés entre parenthèses sont des variables, 
+C.-à-d. les mots-clés entre parenthèses sont des variables,
 et il *ne faut pas* les modifier.
 
-À noter également que le ``s`` derrière la parenthèse ne sera pas 
-imprimé mais est obligatoire 
+À noter également que le ``s`` derrière la parenthèse ne sera pas
+imprimé mais est obligatoire
 (il indique à Python qu'il s'agit d'un remplacement de type `string`).

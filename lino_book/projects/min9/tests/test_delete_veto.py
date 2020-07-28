@@ -84,7 +84,7 @@ class QuickTest(RemoteAuthTestCase):
 """)
         # ba = contacts.Persons.get_action_by_name('merge_row')
         # self.assertEqual(ba, '')
-        utpl = "/api/contacts/Persons/{0}?fv={1}&fv=&fv=false&fv=fff&an=merge_row"
+        utpl = "/api/contacts/Persons/{0}?fv={1}&fv=&fv=&fv=&fv=false&fv=fff&an=merge_row"
         url = utpl.format(p1.pk, p1.pk)
         res = self.client.get(url, REMOTE_USER='root')
         self.assertEqual(res.status_code, 200)

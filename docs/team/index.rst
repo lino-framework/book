@@ -47,11 +47,9 @@ Drafts
 .. toctree::
    :maxdepth: 1
 
-   /tutorials/tested_docs/index
    /dev/setup
    /dev/translate/index
 
-   /dev/userdocs
    /dev/style
    /dev/extjs
    /dev/repair
