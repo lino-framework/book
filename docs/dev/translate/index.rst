@@ -1,3 +1,5 @@
+.. _dev.translate:
+
 ============================
 Instructions for translators
 ============================
