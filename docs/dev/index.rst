@@ -11,6 +11,7 @@ Developer Guide
 
     getstarted
     diving
+    myapp
     acquaintained
     testing
     internals

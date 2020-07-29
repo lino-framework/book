@@ -49,7 +49,23 @@ Run :cmd:`getlino` with the following options:
 
   $ getlino configure --clone --devtools --redis
 
-For details see the documentation about :ref:`getlino`.
+.. For details see the documentation about :ref:`getlino`.
+
+This will also install the :ref:`Lino Book <book>` project.  That's a special
+project.  It is not an application, and it is not released on PyPI. It makes
+sense only for contributors.  It contains the main test suite for Lino. It
+contains a lot of demo projects.  Some of these  demo projects require
+additional Python packages. The easiest way to get them installed all at once is
+to say:
+
+.. code-block:: console
+
+  $ go book
+  $ pip install -r requirements-include.txt
+
+You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run a
+development server.  Before starting a development server on a project for the
+first time, you must initialize its database using the :manage:`prep` command.
 
 Try one of the demo projects:
 
@@ -61,24 +77,15 @@ Try one of the demo projects:
 
 Point your browser to http://localhost:8000
 
-You can now ``cd`` to any subdir of :mod:`lino_book.projects` and run a
-development server.  Before starting a development server on a project for the
-first time, you must initialize its database using the :manage:`prep` command.
-
 You can run the :manage:`prep` command for all demo projects by going to the
 root directory of the book project and saying :cmd:`inv prep`:
 
 .. code-block:: console
 
+  $ go book
+  $ inv prep
+
 Note the difference between :cmd:`inv prep` and the :manage:`prep` command.
 :cmd:`inv prep` runs the :manage:`prep` command for each demo project of a
 repository.  The demo projects of a repository are declared in the
 :xfile:`tasks.py` file.
-
-Exercises
-=========
-
-#.  Sign in and play around.
-
-#.  Create some persons and organizations. Don't enter lots of data
-    because we are going to throw it away soon.

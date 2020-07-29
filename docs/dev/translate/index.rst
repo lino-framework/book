@@ -19,10 +19,10 @@ source code.  Each Lino repository has its own series of :xfile:`.po` files.
 Their place is given by the :attr:`locale_dir` setting (see
 :ref:`atelier.prjconf`). Here are some examples:
 
-- :ref:`lino` : lino/locale
-- :ref:`xl` : lino_xl/lib/xl/locale
-- :ref:`noi` : lino_noi/lib/noi/locale
-- :ref:`cosi` : lino_cosi/lib/cosi/locale
+- :mod:`lino` : lino/locale
+- :mod:`lino_xl` : lino_xl/lib/xl/locale
+- :mod:`lino_noi` : lino_noi/lib/noi/locale
+- :mod:`lino_cosi` : lino_cosi/lib/cosi/locale
 - etc.
 
 
