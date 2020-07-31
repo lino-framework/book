@@ -52,6 +52,7 @@ The system should have installed the `sudo` package::
 
   # apt-get install sudo
 
+
 Creating a system user
 ======================
 
@@ -103,6 +104,13 @@ content.
 
 Note that the :xfile:`.ssh` directory should have permissions set to ``700`` to
 restrict access so that only the owner can read, write, or open it.
+
+Disabling password authentication
+=================================
+
+In your :file:`/etc/ssh/sshd_config` make sure that ``PasswordAuthentication``
+is set to ``no``.
+
 
 The hostname
 ============

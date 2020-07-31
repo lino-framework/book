@@ -45,9 +45,9 @@ As the application developer you choose one of the following usages:
 Healthcare plans
 ================
 
-A **healthcare plan** is a method that can be chosen by private persons for
-their health insurance.  Depending on national laws the provider can be either
-a public institution or a private company.
+A **healthcare plan** is a method that can be chosen by natural persons for
+their health insurance.  Depending on national laws the provider can be either a
+public institution or a private company.
 
 There is usually a finite number of healthcare plans, usually each plan has a
 reference.
@@ -170,4 +170,3 @@ Weblinks
 https://www.diabetes-online.de/a/krankenkasse-oder-krankenversicherung-grosser-unterschied-1785479
 https://www.french-connect.com/147-sante-en-belgique-qu-est-ce-qu-une-intervention-majoree-et-un-statut-omnio.html
 http://socialsante.wallonie.be/surendettement/citoyen/?q=node/434
-

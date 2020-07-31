@@ -15,7 +15,6 @@ clients is going to expire.
 This plugin requires the :mod:`lino_xl.lib.clients` plugin.
 
 
-
 .. contents::
   :local:
 
@@ -80,22 +79,22 @@ We have two social workers Nathalie and Nelly.
 Note that uploads #4 and #3 were not uploaded by the client's primary coach.
 
 >>> obj = rt.models.uploads.Upload.objects.get(pk=3)
->>> rec = rt.login("nathalie").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> rec = rt.login("nathalie").spawn(uploads.UploadsByProject).elem2rec_detailed(obj)
 >>> print(rec['disable_delete'])
 None
 
 Nelly (another social worker) and Sandra (secretary) can also modify the upload
 
->>> rec = rt.login("nelly").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> rec = rt.login("nelly").spawn(uploads.UploadsByProject).elem2rec_detailed(obj)
 >>> print(rec['disable_delete'])
 None
->>> rec = rt.login("sandra").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> rec = rt.login("sandra").spawn(uploads.UploadsByProject).elem2rec_detailed(obj)
 >>> print(rec['disable_delete'])
 None
 
 But laura (a teacher) cannot edit them:
 
->>> rec = rt.login("laura").spawn(uploads.UploadsByClient).elem2rec_detailed(obj)
+>>> rec = rt.login("laura").spawn(uploads.UploadsByProject).elem2rec_detailed(obj)
 >>> print(rec['disable_delete'])
 You have no permission to delete this row.
 
@@ -118,9 +117,9 @@ Traceback (most recent call last):
 django.core.exceptions.PermissionDenied: As 100 (Teacher) you have no view permission for this action.
 <HttpResponseForbidden status_code=403, "text/html; charset=utf-8">
 
->>> url = "/api/avanti/uploads.UploadsByClient?fmt=json&&limit=23&start=0&mt=31&mk=114"
+>>> url = "/api/avanti/uploads.UploadsByProject?fmt=json&&limit=23&start=0&mt=31&mk=114"
 >>> test_client.get(url)  #doctest: +ELLIPSIS
-Not Found: /api/avanti/uploads.UploadsByClient
+Not Found: /api/avanti/uploads.UploadsByProject
 <HttpResponseNotFound status_code=404, "text/html">
 
 

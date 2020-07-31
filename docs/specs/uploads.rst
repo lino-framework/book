@@ -10,7 +10,7 @@
 The :mod:`lino.modlib.uploads` plugin adds functionality for managing "uploads".
 
 The :mod:`lino_xl.lib.uploads` plugin, which extends :mod:`lino.modlib.uploads`,
-is  described separately in :doc:`/specs/avanti/uploads`.
+is described separately in :doc:`/specs/avanti/uploads`.
 
 .. contents::
    :depth: 1
@@ -77,7 +77,7 @@ Uploads
     by uploads type.
 
     Note that this also works on
-    :class:`lino_welfare.modlib.uploads.models.UploadsByClient`
+    :class:`lino_welfare.modlib.uploads.models.UploadsByProject`
     and their subclasses for the different `_upload_area`.
 
 
@@ -160,10 +160,11 @@ Usage:
       from lino.modlib.uploads.choicelists import add_shortcut as add
       add('contacts.Person', 'uploaded_foos', _("Foos"))
 
+- Make the ``uploaded_foos`` field visible in some detail layout.
+
 - Using the web interface, select :menuselection:`Configure --> Office
   --> Upload types`, create an upload type named "Foo" and set its
   `shortcut` field to "Foos".
-
 
 - Upload a file from your PC to the server.
 - Open the uploaded file in a new browser window
