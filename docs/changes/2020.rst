@@ -13,6 +13,15 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-08-04
+==========
+
+Auto-fill ref field using custom rule : The :attr:`ref` field of a client in
+:ref:`avanti` ("Legacy file number") can now automatically find the next
+available reference number.  The current solution is hard-coded and just enough
+to satisfy the customer's requirement. Not yet sure whether it makes sense to
+generalize this feature.
+
 2020-07-21
 ==========
 

@@ -19,13 +19,46 @@ This document describes the :mod:`lino_avanti.lib.avanti` plugin.
 >>> from lino.api.doctest import *
 
 
+Overview
+========
+
+A **client** is a person using our services.
+
+
+The legacy file number
+======================
+
+>>> other_client = avanti.Client.objects.get(pk=116)
+>>> def update_other(ref):
+...     other_client.ref = ref
+...     other_client.full_clean()
+...     other_client.save()
+
+>>> update_other(None) # tidy up from previous test run
+
+>>> def test(ref):
+...     obj = avanti.Client(ref=ref, name="x")
+...     obj.full_clean()
+...     print(obj.ref)
+
+>>> test("ip 1")
+IP 1001
+
+>>> update_other("IP 4010")
+
+>>> test("ip 4")
+IP 4011
+
+>>> test("ip")
+IP 4011
+
+>>> update_other(None) # tidy up for the following tests
+
 
 Clients
 =======
 
 .. class:: Client(lino.core.model.Model)
-
-    A **client** is a person using our services.
 
     .. attribute:: translator_type
 
@@ -172,9 +205,9 @@ Clients
 
     >>> rt.login('robin').show('avanti.MyClients')
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
-     Name                            State        National ID     GSM   Address                           Age        e-mail address   Phone   ID    Contact language
-    ------------------------------- ------------ --------------- ----- --------------------------------- ---------- ---------------- ------- ----- ------------------
+    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ====================
+     Name                            State        National ID     GSM   Address                           Age        e-mail address   Phone   ID    Legacy file number
+    ------------------------------- ------------ --------------- ----- --------------------------------- ---------- ---------------- ------- ----- --------------------
      ABDALLAH Aáish (127)            Registered   920417 001-91         Bellmerin, 4700 Eupen             24 years                            127
      ABDO Aásim (138)                Registered   831201 001-50         Gülcherstraße, 4700 Eupen         33 years                            138
      ABDULLAH Afááf (155)            Ended        760102 002-86         4730 Raeren                       41 years                            155
@@ -186,7 +219,7 @@ Clients
      CONTEE Chike (131)              Registered   870822 001-58         Edelstraße, 4700 Eupen            29 years                            131
      DIOP Ashánti (142)              Registered   810214 002-32         Habsburgerweg, 4700 Eupen         36 years                            142
      JALLOH Diállo (158)             Registered   740810 001-48         4730 Raeren                       42 years                            158
-    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ==================
+    =============================== ============ =============== ===== ================================= ========== ================ ======= ===== ====================
     <BLANKLINE>
 
 
