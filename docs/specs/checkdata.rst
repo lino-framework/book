@@ -23,6 +23,8 @@ application-level data integrity tests. It provides a Django admin command named
 >>> startup('lino_book.projects.min9.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.core.management import call_command
+>>> from atelier.sheller import Sheller
+>>> shell = Sheller("lino_book/projects/min9")
 
 Which means that code snippets in this document are tested using the
 :mod:`lino_book.projects.min9` demo project.
@@ -232,6 +234,20 @@ Done 1 check, found 7 and fixed 0 problems.
 Traceback (most recent call last):
 ...
 Exception: No checker matches ('foo',)
+
+The ``--prune`` option instructs checkdata to remove all existing error messages
+before running the tests.  This makes the operation quicker on sites with many
+existing data problem messages. Don't use this in combination with a filter
+because `--prune` removes *all* messages, not only those that you ask to
+rebuild.
+
+>>> shell("python manage.py checkdata --prune")
+Prune 7 existing messages...
+Found 7 and fixed 0 data problems in Calendar entries.
+Done 20 checks, found 7 and fixed 0 problems.
+
+NB the above example uses :mod:`atelier.sheller` instead of :mod:`call_command
+<django.core.management.call_command>`. 
 
 
 Language of checkdata messages
