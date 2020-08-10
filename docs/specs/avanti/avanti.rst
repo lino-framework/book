@@ -28,6 +28,16 @@ A **client** is a person using our services.
 The legacy file number
 ======================
 
+Dossiernummern:
+
+- wenn du "ip6" eintippst, macht er daraus "IP 6901" (wenn "IP 6900" die letzte Dossiernummer ist, die mit "IP 6" beginnt.
+- du kannst jederzeit auch im Schnellsuche-Feld "ip 6900" eintippen
+- wenn du "ip 1234" einzippst (also die Dossiernummer selber eine vierstellige Zahl angibst), dann lässt Lino diese Nummer stehen.
+- ob du "ip" oder "IP" eintippst, ist egal, Lino macht daraus immer "IP".
+- Auch das Leerzeichen kannst du beim Eintippen sparen, das setzt Lino automatisch rein.
+- wenn die Dossiernummer nicht mit "ip" beginnt, lässt Lino sie unverändert
+
+
 >>> other_client = avanti.Client.objects.get(pk=116)
 >>> def update_other(ref):
 ...     other_client.ref = ref

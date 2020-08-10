@@ -112,3 +112,8 @@ its Python environment::
 
   $ go prj1
   $ a
+
+To activate a hourly health check::
+
+  $ sudo ln -s /usr/local/bin/healthcheck.sh /etc/cron.hourly/
+  

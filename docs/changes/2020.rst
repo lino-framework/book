@@ -13,6 +13,20 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+
+2020-08-07
+==========
+
+Released to PyPI : :mod:`lino_presto` 20.8.0.
+
+2020-08-05
+==========
+
+Released to PyPI : :mod:`lino` 20.8.0, :mod:`lino_xl` 20.8.0, :mod:`lino_avanti`
+20.8.0
+
+Released to PyPI : :mod:`lino_openui5` 20.8.0
+
 2020-08-04
 ==========
 
