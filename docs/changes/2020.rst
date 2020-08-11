@@ -14,6 +14,15 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-08-11
+==========
+
+Fixed :ticket:`3745` (Lino says "partner: cannot be null" when trying to create
+a person).
+
+Released to PyPI : :mod:`lino_xl` 20.8.1, 
+
+
 2020-08-10
 ==========
 
