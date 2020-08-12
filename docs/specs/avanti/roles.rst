@@ -265,7 +265,6 @@ Each window is **viewable** for a given set of user types.
 - uploads.Uploads.detail : visible for teacher user auditor coordinator secretary staff admin
 - uploads.Uploads.insert : visible for teacher user coordinator secretary staff admin
 - uploads.UploadsByController.insert : visible for teacher user coordinator secretary staff admin
-- uploads.UploadsByProject.insert : visible for user secretary staff admin
 - uploads.Volumes.detail : visible for staff admin
 - uploads.Volumes.insert : visible for staff admin
 - uploads.Volumes.merge_row : visible for admin

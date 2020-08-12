@@ -10,12 +10,13 @@ module by issuing::
   $ go min9
   $ python manage.py test tests.test_addresses
 
-This test unit is deprecated. All cases covered here (and many more) are also
-covered by `doctest docs/specs/addresses.rst`.
+This test unit has some tests that are now covered by `doctest
+docs/specs/addresses.rst`.
 
 
 """
 
+from django.conf import settings
 from lino.core.gfks import gfk2lookup
 from lino.api import rt
 
@@ -44,6 +45,26 @@ class QuickTest(RemoteAuthTestCase):
         Address = rt.models.addresses.Address
         Place = rt.models.countries.Place
         Problem = rt.models.checkdata.Problem
+
+        # reproduce #3745 (Lino says "partner: cannot be null" when trying to create a person):
+        # (happened only when site_company was filled)
+
+        obj = Company(name="Minimal Corp", country_id="BE")
+        obj.full_clean()
+        obj.save()
+        settings.SITE.site_config.update(site_company=obj)
+        url = "/api/contacts/Persons"
+        data = dict(an='submit_insert', first_name='Tom', last_name='Test',
+            genderHidden='M', gender='Male',
+            languageHidden='en', language='English')
+        resp = self.post_json_dict("robin", url, data)
+        self.assertEqual(resp.message, 'Person "Mr Tom Test" has been created.')
+        self.assertEqual(resp.success, True)
+        # remove site_company:
+        settings.SITE.site_config.update(site_company=None)
+        Address.objects.all().delete()
+        obj.delete()
+
         eupen = Place.objects.get(name="Eupen")
         ar = rt.models.contacts.Companies.request()
         self.assertEqual(Address.ADDRESS_FIELDS, set([
@@ -66,6 +87,10 @@ class QuickTest(RemoteAuthTestCase):
         doe = create(Company, name="Owner with address", city=eupen)
 
         self.assertEqual(Company.objects.count(), 1)
+        self.assertEqual(Address.objects.count(), 1)
+
+        # manually delete the primary address record
+        Address.objects.all().delete()
         self.assertEqual(Address.objects.count(), 0)
 
         assert_check(doe, '')  # No problems yet since not checked

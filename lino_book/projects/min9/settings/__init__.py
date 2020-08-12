@@ -50,11 +50,9 @@ class Site(Site):
         yield 'lino.modlib.comments'
         yield 'lino.modlib.uploads'
 
-    # def setup_actions(self):
-    #     super(Site, self).setup_actions()
-    #     partners = self.modules.contacts
-    #     from lino.core.merge import MergeAction
-    #     for m in (partners.Person, partners.Organisation):
-    #         m.define_action(merge_row=MergeAction(m))
-
-    # migration_module = 'lino_book.projects.min9.db_migrations'
+    def get_plugin_configs(self):
+        """
+        Change the default value of certain plugin settings.
+        """
+        yield super(Site, self).get_plugin_configs()
+        yield ('countries', 'country_code', 'BE')
