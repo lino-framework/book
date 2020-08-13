@@ -25,13 +25,6 @@ implemented by the :mod:`lino_avanti.lib.courses` plugin which extends
 
 .. currentmodule:: lino_avanti.lib.courses
 
-Activities
-==========
-
-.. class:: Course
-
-    Same as :class:`lino_xl.lib.courses.Course`.
-
 
 Enrolments
 ==========
@@ -381,6 +374,7 @@ Missing rates
 .. class:: Course
 
      Adds an action to update the missing rates of all enrolments.
+     Otherwise same as :class:`lino_xl.lib.courses.Course`.
 
      .. method:: update_missing_rates(self)
 
