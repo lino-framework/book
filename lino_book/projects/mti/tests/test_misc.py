@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Rumma & Ko Ltd
+# Copyright 2017-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Test some functionalities-
@@ -17,9 +17,6 @@ or::
   $ python setup.py test -s tests.ProjectsTests.test_mti
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
 
 from django.core.exceptions import ValidationError
 
@@ -63,7 +60,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(
             str(lst),
             "[Restaurant #1 ('First (owners=Alfred, Bert, cooks=Claude, Dirk)')]")
-        
+
         x = list(Place.objects.all())
         self.assertEqual(
             str(x),
@@ -85,7 +82,7 @@ class QuickTest(RemoteAuthTestCase):
         class object without deleting parent class object?
         <http://stackoverflow.com/questions/9439730>`__).  That's why we wrote
         the :func:`delete_child` function.
-        Here is how to "reduce" a Restaurant to a `Place` by 
+        Here is how to "reduce" a Restaurant to a `Place` by
         calling the :func:`delete_child` function:
 
         """
@@ -116,7 +113,7 @@ class QuickTest(RemoteAuthTestCase):
         The :func:`insert_child` function
         ----------------------------------
 
-        The opposite operation, "promoting a simple Place to a Restaurant", 
+        The opposite operation, "promoting a simple Place to a Restaurant",
         is done using :func:`insert_child`.
 
         from lino.utils.mti import insert_child
@@ -152,17 +149,17 @@ class QuickTest(RemoteAuthTestCase):
                 str(e), "['A Person cannot be parent for a Restaurant']")
 
         """
-        The :class:`EnableChild` virtual field 
+        The :class:`EnableChild` virtual field
         --------------------------------------
 
-        This section shows how the :class:`EnableChild` virtual field is being 
+        This section shows how the :class:`EnableChild` virtual field is being
         used by Lino, and thus is Lino-specific.
 
 
         After the above examples our database looks like this:
 
         """
-         
+
         x = list(Person.objects.all())
         self.assertEqual(
             str(x),
@@ -212,7 +209,7 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
         except Restaurant.DoesNotExist:
             pass
 
-        # And finally, rather to explain why Restaurants sometimes 
+        # And finally, rather to explain why Restaurants sometimes
         # close and later reopen:
 
         bert = Person.objects.get(pk=2)
@@ -235,7 +232,7 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
         # Related objects
         # ---------------
 
-        # Now let's have a more detailed look at what happens to the related 
+        # Now let's have a more detailed look at what happens to the related
         # objects (Person, Visit and Meal).
 
         # Bert, the owner of Restaurant #2 does two visits:
@@ -250,8 +247,8 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
 
         # Claude and Dirk, now workless, still go to eat in restaurants:
 
-        Meal(what="Fish",person=Person.objects.get(pk=3),restaurant=second).save()
-        Meal(what="Meat",person=Person.objects.get(pk=4),restaurant=second).save()
+        Meal(what="Fish", person=Person.objects.get(pk=3), restaurant=second).save()
+        Meal(what="Meat", person=Person.objects.get(pk=4), restaurant=second).save()
         x = list(second.meal_set.all())
         self.assertEqual(
             str(x),
@@ -269,7 +266,7 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
             self.fail("Expected DoesNotExist")
         except Restaurant.DoesNotExist:
             pass
-        
+
         # Note that `Meal` has :attr:`allow_cascaded_delete
         # <lino.core.model.Model.allow_cascaded_delete>` set to
         # `['restaurant']`, otherwise the above code would have raised a
@@ -316,19 +313,19 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
         obj = create_mti_child(Place, 3, Restaurant)
 
         # The return value is technically a normal model instance,
-        # but whose `save` and `full_clean` methods have been 
-        # patched: `full_clean` is overridden to do nothing, 
-        # and `save` will call a "raw" save to avoid the 
+        # but whose `save` and `full_clean` methods have been
+        # patched: `full_clean` is overridden to do nothing,
+        # and `save` will call a "raw" save to avoid the
         # need of a proper Place instance for that Restaurant.
         # The only thing you can do with it is to save it:
 
         obj.save()
 
-        # The `save` and `full_clean` methods are the only methods that 
-        # will be called by 
+        # The `save` and `full_clean` methods are the only methods that
+        # will be called by
         # :class:`lino.utils.dpy.Deserializer`.
 
-        # To test whether :func:`create_mti_child` did her job, 
+        # To test whether :func:`create_mti_child` did her job,
         # we must re-read an instance:
 
         obj = Restaurant.objects.get(pk=3)
@@ -351,9 +348,3 @@ Second (owners=Bert) -> Second (owners=Bert, cooks=Claude, Dirk)
         ow.save()
         obj = Restaurant.objects.get(id=4)
         self.assertEqual(obj.name, "A new name")
-
-
-
-
-
-

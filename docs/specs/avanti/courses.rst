@@ -432,7 +432,7 @@ Clients with more than one enrolment
 ====================================
 
 >>> from django.db.models import Count
->>> qs = rt.models.avanti.Client.objects.all()
+>>> qs = rt.models.avanti.Client.objects.order_by('name').all()
 >>> qs = qs.annotate(
 ...     ecount=Count('enrolments_by_pupil'))
 >>> qs = qs.filter(ecount__gt=1)

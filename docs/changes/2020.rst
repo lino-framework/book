@@ -14,13 +14,20 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-08-12
+==========
+
+Fix an issue when using the recently released version 3.1 of Django: we must now
+import :class:`FieldDoesNotExist` from :mod:`django.core.exceptions` (no longer
+from :mod:`django.db.models.fields`).
+
 2020-08-11
 ==========
 
-Fixed :ticket:`3745` (Lino says "partner: cannot be null" when trying to create
+Fix :ticket:`3745` (Lino says "partner: cannot be null" when trying to create
 a person).
 
-Released to PyPI : :mod:`lino_xl` 20.8.1, 
+Released to PyPI : :mod:`lino_xl` 20.8.1,
 
 
 2020-08-10

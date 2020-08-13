@@ -271,8 +271,8 @@ LEFT OUTER JOIN contacts_partner T8 ON (T7.partner_ptr_id = T8.id)
 LEFT OUTER JOIN tickets_ticket T9 ON (tickets_ticket.duplicate_of_id = T9.id)
 LEFT OUTER JOIN contacts_person T10 ON (tickets_ticket.end_user_id = T10.partner_ptr_id)
 LEFT OUTER JOIN contacts_partner T11 ON (T10.partner_ptr_id = T11.id)
-WHERE (tickets_ticket.private = FALSE
-       AND tickets_site.private = FALSE)
+WHERE (NOT tickets_ticket.private
+       AND NOT tickets_site.private)
 ORDER BY tickets_ticket.id DESC
 
 During startup there were two SQL queries:
