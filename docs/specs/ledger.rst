@@ -2202,7 +2202,7 @@ Utilities
          negative.
 
     :flt: Optional filter arguments to give to Django's `filter()
-          <https://docs.djangoproject.com/en/dev/ref/models/querysets/#filter>`_
+          <https://docs.djangoproject.com/en/3.1/ref/models/querysets/#filter>`_
           method in order to specifiy which :class:`Movement` objects
           to consider.
 

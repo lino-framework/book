@@ -640,7 +640,7 @@ order. It was using ['-id'] instead of the order defined in
 :class:`lino_xl.lib.ledger.ByJournal`. Fixed.
 
 The custom values in :mod:`lino.utils.quantities` are now  `deconstructible
-<https://docs.djangoproject.com/en/2.2/topics/migrations/#adding-a-deconstruct-method>`__.
+<https://docs.djangoproject.com/en/3.1/topics/migrations/#adding-a-deconstruct-method>`__.
 
 
 2019-08-01
@@ -1097,7 +1097,7 @@ Removed a hack which caused side effects when trying to sort a choicelist with
 lazy items). The :meth:`lino.core.choicelists.ChoiceList.add_item_lazy` method
 now specifies `weak=False` for the receiver (as explained in the docs for
 `Signal.connect
-<https://docs.djangoproject.com/en/2.2/topics/signals/#django.dispatch.Signal.connect>`__)
+<https://docs.djangoproject.com/en/3.1/topics/signals/#django.dispatch.Signal.connect>`__)
 instead of storing the wrapper function itself.
 
 

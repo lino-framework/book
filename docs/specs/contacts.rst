@@ -197,6 +197,7 @@ Models and views
         Subclasses may hide this field and fill it automatically, e.g. saving a
         :class:`Person` will automatically set the :attr:`name` field to
         `<last_name>, <first_name>`.
+        
 
     .. attribute:: prefix
 

@@ -10,47 +10,6 @@ Using action requests
    $ doctest docs/dev/ar.rst
 
 
-.. glossary::
-
-  model instance
-
-    Django word for what we use to call a :term:`database object`.
-
-  database object
-
-    The Python object representing a row in a database table.
-    Also known as :term:`model instance` in Django.
-
-  action
-
-    Something a user can request to do.  Actions are visible to the :term:`end
-    users <end user>` as menu items, toolbar buttons or clickable chunks of text
-    at arbitrary places.
-
-  action request
-
-    A volatile object representing the fact that a user actually clicked on
-    "that button", i.e. requested to run a given action on a given set of
-    database rows.
-
-    Action requests are instances of the :class:`BaseRequest
-    <lino.core.requests.BaseRequest>` class or one of its subclasses
-    (:class:`ActorRequest <lino.core.requests.ActorRequest>`
-    :class:`ActionRequest <lino.core.requests.ActionRequest>`
-    :class:`TableRequest <lino.core.tablerequest.TableRequest>`.
-
-  window action
-
-    An :term:`action` that will open a dialog window to ask for action
-    parameters.  The dialog window is a form with fields.
-    See :ref:`window_actions`.
-
-  instance action
-
-    An action that has been bound to a given :term:`database object`.
-
-
-
 The traditional variable name for action requests in application code
 and method signatures is ``ar``.  Except for the plain `BaseRequest`
 instance returned by :func:`rt.login <lino.api.rt.login>` which is

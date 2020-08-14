@@ -20,12 +20,12 @@ Checklist
   order to activate general security features.
 
 - Consider enabling `HTTP Strict Transport Security
-  <https://docs.djangoproject.com/en/2.2/ref/middleware/#http-strict-transport-security>`__ by setting
+  <https://docs.djangoproject.com/en/3.1/ref/middleware/#http-strict-transport-security>`__ by setting
   :setting:`SECURE_HSTS_SECONDS` to a non-zero integer value.
 
 - If you want users to sign in each time after having closed their
   browser sessions, set `SESSION_EXPIRE_AT_BROWSER_CLOSE
-  <https://docs.djangoproject.com/en/2.2/ref/settings/#session-expire-at-browser-close>`__
+  <https://docs.djangoproject.com/en/3.1/ref/settings/#session-expire-at-browser-close>`__
   to `True`.
 
 Notes
@@ -36,4 +36,4 @@ Lino does not yet support CSRF protection (:ticket:`2389`).
 See also
 ========
 
-- https://docs.djangoproject.com/en/2.2/topics/security/
+- https://docs.djangoproject.com/en/3.1/topics/security/

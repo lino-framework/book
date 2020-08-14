@@ -59,7 +59,7 @@ When to update your static files
 
 Lino comes with over 4000 static files, and together they take about 50 MB of
 hard disk storage. To manage them, it uses Django's `staticfiles
-<https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/>`_ app which
+<https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/>`_ app which
 provides the :manage:`collectstatic` command.
 
 .. management_command :: collectstatic
@@ -68,7 +68,7 @@ provides the :manage:`collectstatic` command.
     files to a central place where the web server will find them.
     This is standard Django know-how.  See the documentation about the
     `staticfiles
-    <https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/>`_
+    <https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/>`_
     app.
 
 Django applications expect static files to be stored in a central
@@ -129,7 +129,7 @@ Some Django settings related to this topic:
 
     The root directory where static files are to be collected when the
     `collectstatic` command is run.  See `Django doc
-    <https://docs.djangoproject.com/en/2.2/ref/settings/#std:setting-STATIC_ROOT>`__.
+    <https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-STATIC_ROOT>`__.
 
     This is not needed as long as you work on a development server
     because the developement server serves static files automagically.

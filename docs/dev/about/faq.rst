@@ -37,7 +37,7 @@ or copy and paste them from some other project.
 Lino applications are much more out-of-the-box.
 For example you don't need to write a single html template
 and you don't need to `design your URLs
-<https://docs.djangoproject.com/en/2.2/topics/http/urls/>`_
+<https://docs.djangoproject.com/en/3.1/topics/http/urls/>`_
 because we've done this work for you.
 Of course you are less flexible. Letting others do some work
 always means that you trust them to make certain decisions.

@@ -164,7 +164,7 @@ A table can defined attributes like :attr:`filter
 <lino.core.tables.AbstractTable.filter>` and :attr:`order_by
 <lino.core.tables.AbstractTable.order_by>` which you know from Django's
 `QuerySet API
-<https://docs.djangoproject.com/en/2.2/ref/models/querysets/>`_.
+<https://docs.djangoproject.com/en/3.1/ref/models/querysets/>`_.
 
 A table is like a grid widget, 
 it has attributes like :attr:`column_names

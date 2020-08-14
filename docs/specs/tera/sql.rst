@@ -57,7 +57,7 @@ We run the :meth:`run_update_plan` action of an accounting report
 (:class:`sheets.Report <lino_xl.lib.sheets.Report>`).  You might want
 to read the Django documentation about `Using aggregates within a
 Subquery expression
-<https://docs.djangoproject.com/en/2.2/ref/models/expressions/#using-aggregates-within-a-subquery-expression>`__.
+<https://docs.djangoproject.com/en/3.1/ref/models/expressions/#using-aggregates-within-a-subquery-expression>`__.
 
 >>> ses = rt.login("robin")
 >>> obj = rt.models.sheets.Report.objects.get(pk=1)

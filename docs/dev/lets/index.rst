@@ -130,7 +130,7 @@ Note about many-to-many relationships
 =====================================
 
 There are two `many-to-many relationships
-<https://docs.djangoproject.com/en/2.2/topics/db/examples/many_to_many/>`_
+<https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_
 between *Member* and *Product*:
 
 - A given member can *offer* multiple products, and a given product
@@ -142,7 +142,7 @@ between *Member* and *Product*:
   a product.
 
 Using Django's interface for `many-to-many relationships
-<https://docs.djangoproject.com/en/2.2/topics/db/examples/many_to_many/>`_,
+<https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_,
 we can express this as follows::
 
     providers = models.ManyToManyField(
@@ -164,7 +164,7 @@ create an automatic, "invisible", additional model, with two
 ForeignKey fields.  But in most real-life situations you anyway want
 to define what Django calls "`extra fields on many-to-many
 relationships
-<https://docs.djangoproject.com/en/2.2/topics/db/models/#intermediary-manytomany>`_",
+<https://docs.djangoproject.com/en/3.1/topics/db/models/#intermediary-manytomany>`_",
 and thus you must explicitly name that "intermediate model" of your
 ManyToManyField.  That's why we don't use ManyToManyField and
 recommend instead to always define an explicit intermediate models for

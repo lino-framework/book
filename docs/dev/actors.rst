@@ -6,15 +6,7 @@ Introduction to actors
 ======================
 
 *Tables* and *choicelists* have certain things in common.  When we
-refer to them in general, then we call them **actors**.
-
-An alternative name for "Actor" might have been "Resource" or "View",
-but these words are already being used very often, so in Lino we
-called them *actors*.
-
-An **actor** is a globally known unique object that offers *actions*.
-Almost every incoming web request in a Lino application requests
-execution of a given *action* on a given *actor*.
+refer to them in general, then we call them :term:`actors <actor>`.
 
 The most common type of actors are *tables*.  But not all actors are
 tables.  Another type of actors are *frames* which display some data

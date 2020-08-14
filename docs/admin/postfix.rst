@@ -43,8 +43,8 @@ Installing postfix will start by asking you to select the mail server
 The configuration is then stored in a file
 :xfile:`/etc/postfix/main.cf`, which you can modify afterwards.
 
-For laudate we had to activate (uncomment) the ``smtps`` entry in
-:xfile:`/etc/postfix/master.cf`.
+You might want to activate (uncomment) the ``smtps`` entry in
+in :xfile:`/etc/postfix/master.cf`.
 
 
 .. xfile:: /etc/postfix/main.cf
@@ -55,7 +55,7 @@ parameters in this file.
 
 Notes about parameters used on a typical Lino server:
 
-- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.  
+- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.
 - relay_domains
 - myhostname
 - myorigin
@@ -76,13 +76,13 @@ If the relay host requires a username and password::
 
 Here is our suggestion for your :xfile:`/etc/postfix/main.cf` file::
 
-  myhostname = mail.myname.org
+  myhostname = mail.example.com
   myorigin = /etc/mailname
   mydestination = $myhostname localhost.$mydomain localhost $mydomain
-  relayhost =
+  relayhost =  # where to send all outgoing mail
   mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
   mynetworks_style = host
-  relay_domains =
+  relay_domains =  # fqdn for which you accept incoming mail
   inet_interfaces = all
 
 Here is what status should say::

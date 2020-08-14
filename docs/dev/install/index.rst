@@ -19,10 +19,11 @@ installing Lino on a :term:`production server` you should read
 :doc:`/admin/install`.
 
 This document is written for Debian_ and derived distributions. Other Linuxes
-should be pretty similar.  On proprietary operating systems you might encounter
-problems that are not documented here because some dependencies are more
-difficult to install on these systems.  Lino itself has no specific OS
-requirements.
+should be pretty similar.  Lino itself has no specific OS requirements, but on
+proprietary operating systems you might encounter problems that are not
+documented here because some dependencies are more difficult to install on these
+systems.  If you are using Windows as your primary OS, we recommend to switch to
+Ubuntu before going on.
 
 This document assumes you are familiar with the Linux shell at least for basic
 file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`, file
@@ -108,7 +109,7 @@ Set your default virtualenv
 
 As a developer you probably don't want to type ``source
 ~/lino/env/bin/activate`` each time you open a new terminal with
-:kbd:`Ctrl+Alt+T`.  So you should set your default **default environment**  by
+:kbd:`Ctrl+Alt+T`.  So you should set your :term:`default environment`  by
 adding the following line to your :file:`~/.bashrc` file::
 
   source ~/lino/env/bin/activate
@@ -138,14 +139,15 @@ Then run :cmd:`getlino configure`::
 
   $ getlino configure --no-devtools
 
-It asks a lot of questions, but you should hit :kbd:`ENTER` for each of them.
+It asks a lot of questions, but you can hit :kbd:`ENTER` for each of them.
 
 Warning : when getlino does not react to :kbd:`ENTER` but asks a ``[y or n]``
-question, you should read it and understand it before you hit :kbd:`y`. getlino
-overwrites certain configuration files without making a backup copy. Read twice
-before you hit :kbd:`y`!
+question, then you should read it and understand it before you hit :kbd:`y`.
+getlino overwrites certain configuration files without making a backup copy.
+Read twice before you hit :kbd:`y`!
 
-For details about each question see the documentation about :ref:`getlino`.
+For details about each question or if something doesn't work as expected, see
+the documentation about :ref:`getlino`.
 
 Your first Lino site
 ====================
@@ -257,6 +259,11 @@ Concepts
   virtualenv
 
     A virtual Python environment.
+
+  default environment
+
+    The default :term:`virtualenv` you use when developing.
+    See :ref:`dev.default_venv`
 
   developer environment
 

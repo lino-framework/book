@@ -10,7 +10,7 @@ potentially used in more than on application.
 
 A Lino plugin corresponds to what *Django* calls an "application". Lino's
 :class:`Plugin <lino.core.plugin.Plugin>` class is comparable to Django's
-`AppConfig <https://docs.djangoproject.com/en/2.2/ref/applications/>`_ class,
+`AppConfig <https://docs.djangoproject.com/en/3.1/ref/applications/>`_ class,
 but has some additional features, which makes that they are the preferred way.
 
 .. contents::

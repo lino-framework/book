@@ -29,7 +29,7 @@ and Django.
   applications.
 
 - Lino doesn't use `django.forms
-  <https://docs.djangoproject.com/en/2.2/ref/forms/>`__ because they
+  <https://docs.djangoproject.com/en/3.1/ref/forms/>`__ because they
   are not needed.  We believe that this API is "somehow hooked into
   the wrong place" and forces application developers to write
   redundant code. Lino replaces Django's forms by the concept of
@@ -38,10 +38,10 @@ and Django.
 - Lino suggests (but doesn't enfore) to use its own system for
   :doc:`database migrations </dev/datamig>` instead of Django's default
   `Migrations
-  <https://docs.djangoproject.com/en/2.2/topics/migrations/>`_ system.
+  <https://docs.djangoproject.com/en/3.1/topics/migrations/>`_ system.
 
 - Lino prefers Jinja2 templates over the `default Django engine
-  <https://docs.djangoproject.com/en/2.2/topics/templates/>`_ to
+  <https://docs.djangoproject.com/en/3.1/topics/templates/>`_ to
   generate its own stuff.  For the plain Django part of your
   application you can use the system of your choice.
 

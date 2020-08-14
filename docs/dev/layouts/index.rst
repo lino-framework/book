@@ -7,7 +7,7 @@ Introduction to layouts
 
 .. currentmodule:: lino.core.layouts
 
-A **layout** is a description of how to visually arrange the fields and
+A :term:`layout` is a description of how to visually arrange the fields and
 other data elements in an entry form or a table.
 
 Layouts are one of Lino's important features, which it adds to the Django

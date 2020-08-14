@@ -141,7 +141,7 @@ The database backend of your choice is not automatically installed.
 If you plan to use Django's MySQL backend, see :doc:`mysql_install`.
 
 Follow the Django documentation at `Get your database running
-<https://docs.djangoproject.com/en/2.2/topics/install/#get-your-database-running>`__
+<https://docs.djangoproject.com/en/3.1/topics/install/#get-your-database-running>`__
 
 
 
@@ -162,4 +162,4 @@ How to install mysql on your site::
 
   Note that we recommended `mysql-python` before but modified this to
   `mysqlclient` in accordance with `Django
-  <https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-db-api-drivers>`__.
+  <https://docs.djangoproject.com/en/3.1/ref/databases/#mysql-db-api-drivers>`__.

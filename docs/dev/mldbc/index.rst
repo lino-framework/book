@@ -19,7 +19,7 @@ it is.
 Note that we are **not** talking about Internationalization (i18n) here.
 *Internationalization* is when the :term:`front end` can speak different
 languages. Lino has nothing to add to the existing Django techniques about
-`Internationalization <https://docs.djangoproject.com/en/2.2/topics/i18n/>`__,
+`Internationalization <https://docs.djangoproject.com/en/3.1/topics/i18n/>`__,
 that's why we deliberately didn't add :mod:`lino.modlib.users` and front end
 translation in this tutorial.
 

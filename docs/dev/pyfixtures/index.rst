@@ -33,7 +33,7 @@ Introduction
 You know that a *fixture* is a collection of data records in one or
 several tables which can be loaded into a database.  Django's
 `Providing initial data for models
-<https://docs.djangoproject.com/en/2.2/howto/initial-data/>`__ article
+<https://docs.djangoproject.com/en/3.1/howto/initial-data/>`__ article
 says that "fixtures can be written as XML, YAML, or JSON documents".
 Well, Lino adds another format to this list: Python.
 

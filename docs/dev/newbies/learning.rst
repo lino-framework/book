@@ -24,7 +24,7 @@ Python
   <http://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/>`_
 
 - We try to follow the `Django coding style
-  <https://docs.djangoproject.com/en/2.2/internals/contributing/writing-code/coding-style/>`__
+  <https://docs.djangoproject.com/en/3.1/internals/contributing/writing-code/coding-style/>`__
 
 - `Python Debugging With Pdb
   <https://realpython.com/python-debugging-pdb>`__ by Nathan Jennings.

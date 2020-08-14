@@ -7,7 +7,7 @@ MySQL cheat sheet
 If you use MySQL as database engine, then here is a cheat sheet for some routine
 situations that you might want to get into.  See also the Django documentation
 at `MySQL notes
-<https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-notes>`__
+<https://docs.djangoproject.com/en/3.1/ref/databases/#mysql-notes>`__
 
 .. contents:: Table of contents
     :local:
@@ -18,11 +18,10 @@ Users
 =====
 
 
-.. For the first project on your site create a user ``django`` which you
-  can reuse for all projects::
+How to create a mysql user::
 
     $ sudo mysql -u root -p
-    mysql> create user 'django'@'localhost' identified by 'my cool password';
+    mysql> create user 'DBUSER'@'localhost' identified by 'my cool password';
 
 To see all users defined on the site::
 
@@ -44,7 +43,7 @@ To see all users defined on the site::
 How to change the password of an existing user::
 
     $ sudo mysql -u root -p
-    mysql> set password for PRJNAME@localhost = password('my cool password');
+    mysql> set password for DBUSER@localhost = password('another cool password');
 
 
 

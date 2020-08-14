@@ -9,7 +9,7 @@ Files
 
 Every Django app usually has a file `models.py`.  See `How to write
 reusable apps
-<https://docs.djangoproject.com/en/2.2/intro/reusable-apps/>`_
+<https://docs.djangoproject.com/en/3.1/intro/reusable-apps/>`_
 
 
 .. xfile:: urls.py

@@ -389,7 +389,7 @@ True
 False
 
 Quantities have a `custom deconstruct method
-<https://docs.djangoproject.com/en/2.2/topics/migrations/#adding-a-deconstruct-method>`__:
+<https://docs.djangoproject.com/en/3.1/topics/migrations/#adding-a-deconstruct-method>`__:
 
 >>> Duration("2:30").deconstruct()
 ('lino.utils.quantities.Duration', ('2:30',), {})

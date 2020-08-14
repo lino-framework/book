@@ -140,7 +140,7 @@ which defines two settings SITE_ID and a "Site" model.
 
 After reading once more the official documentation about 
 `the sites framework
-<https://docs.djangoproject.com/en/2.2/ref/contrib/sites/>`__
+<https://docs.djangoproject.com/en/3.1/ref/contrib/sites/>`__
 and `Chapter 16 of the Django Book
 <http://www.djangobook.com/en/2.0/chapter16.html>`__,
 I dare now to say: 

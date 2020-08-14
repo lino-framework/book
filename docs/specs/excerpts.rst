@@ -274,7 +274,7 @@ Model mixins
       not `None`.
 
       Note that this field is a nullable ForeignKey with `on_delete
-      <https://docs.djangoproject.com/en/2.2/ref/models/fields/#django.db.models.ForeignKey.on_delete>`__
+      <https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.ForeignKey.on_delete>`__
       set to ``SET_NULL``.
 
 

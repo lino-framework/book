@@ -54,7 +54,7 @@ Glossary
     See :mod:`lino.utils.choices`.
 
   field lookups
-    See https://docs.djangoproject.com/en/2.2/topics/db/queries/#field-lookups
+    See https://docs.djangoproject.com/en/3.1/topics/db/queries/#field-lookups
 
   GC
     Grid Configuration.

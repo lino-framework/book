@@ -14,6 +14,11 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-08-14
+==========
+
+The duplicate action is again visible for every user, not only for experts (users having :class:`lino.core.roles.Expert`)
+
 2020-08-12
 ==========
 

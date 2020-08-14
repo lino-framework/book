@@ -33,7 +33,7 @@ Django settings.  For introductive texts see :doc:`/dev/settings`,
 .. setting:: FIXTURE_DIRS
 
     See `Django docs
-    <https://docs.djangoproject.com/en/2.2/ref/settings/#fixture-dirs>`_
+    <https://docs.djangoproject.com/en/3.1/ref/settings/#fixture-dirs>`_
 
 
 .. setting:: LOGGING
@@ -50,7 +50,7 @@ unchanged, you can configure your logging preferences using the
     LOGGING = dict(filename=None, level='DEBUG')
 
 You don't *need* to use Lino's logging config. In that case, refer to
-https://docs.djangoproject.com/en/2.2/ref/settings/#logging-config
+https://docs.djangoproject.com/en/3.1/ref/settings/#logging-config
 
 
 .. setting:: USE_L10N
@@ -70,10 +70,10 @@ See http://docs.djangoproject.com/en/2.2/ref/settings/#language-code
 .. setting:: MIDDLEWARE_CLASSES
 
     Lino still uses `MIDDLEWARE_CLASSES
-    <https://docs.djangoproject.com/en/2.2/ref/settings/#middleware-classes>`__
+    <https://docs.djangoproject.com/en/3.1/ref/settings/#middleware-classes>`__
     instead of :setting:`MIDDLEWARE`.  One day we will `upgrade all
     Lino middleware to the new middleware style
-    <https://docs.djangoproject.com/en/2.2/topics/http/middleware/#upgrading-middleware>`_.
+    <https://docs.djangoproject.com/en/3.1/topics/http/middleware/#upgrading-middleware>`_.
 
 .. setting:: LANGUAGES
 
@@ -91,14 +91,14 @@ This is set to the value of your :class:`Site <lino.core.site.Site>`\
 (which itself defaults to :mod:`lino.core.urls`).
 
 See `URL dispatcher
-<https://docs.djangoproject.com/en/2.2/topics/http/urls/>`_ section of
+<https://docs.djangoproject.com/en/3.1/topics/http/urls/>`_ section of
 the Django documentation.
 
 
 .. setting:: INSTALLED_APPS
 
 See `Django docs
-<https://docs.djangoproject.com/en/2.2/ref/settings/#installed-apps>`__.
+<https://docs.djangoproject.com/en/3.1/ref/settings/#installed-apps>`__.
 
 In a Lino application you set your :setting:`INSTALLED_APPS` indirectly by
 overriding the :meth:`get_installed_apps
@@ -114,7 +114,7 @@ See :blogref:`20100716`
 .. setting:: SERIALIZATION_MODULES
 
 See `Django docs
-<https://docs.djangoproject.com/en/2.2/ref/settings/#serialization-modules>`__.
+<https://docs.djangoproject.com/en/3.1/ref/settings/#serialization-modules>`__.
 
 
 
