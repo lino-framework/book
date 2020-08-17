@@ -29,7 +29,8 @@ before_install:
   - libreoffice --version
 
 install:
-  - pip install -U "setuptools<49.2"  # avoid UserWarning
+  - # pip install -U "setuptools<49.2"  # avoid UserWarning by 49.2.0
+  - pip install -U "setuptools"  # avoid UserWarning
   - pip install -U pip
   - pip install -r requirements.${REQ_VERSION}.txt
   - npm init -y

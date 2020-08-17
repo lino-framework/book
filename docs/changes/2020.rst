@@ -14,17 +14,29 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-08-15
+==========
+
+Released to PyPI : :mod:`lino` 20.8.1.
+
+
 2020-08-14
 ==========
 
 The duplicate action is again visible for every user, not only for experts (users having :class:`lino.core.roles.Expert`)
 
+Adapted :mod:`lino.sphinxcontrib.help_texts_extractor` to a change in Sphinx
+that caused the :xfile:`help_text.py` files to not get updated any more:  the
+:class:`sphinx.addnodes.desc_signature` node now stores the name of the
+described object now in the "ids" attribute instead of "names". I didn't
+understand every detail but it seems to work again.
+
+
 2020-08-12
 ==========
 
-Fix an issue when using the recently released version 3.1 of Django: we must now
-import :class:`FieldDoesNotExist` from :mod:`django.core.exceptions` (no longer
-from :mod:`django.db.models.fields`).
+Fix some issues using the recently released version 3.1 of Django (e.g.
+ImportError: cannot import name 'FieldDoesNotExist')
 
 2020-08-11
 ==========

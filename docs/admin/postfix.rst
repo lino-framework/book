@@ -19,47 +19,39 @@ Installing Postfix on Debian is easy::
 
 This will automatically uninstall exim4.
 
-Installing postfix will start by asking you to select the **configuration
-type**. Choose "Internet site".  See below for other choices.
+The configuration is less easy. Installing postfix will start by asking you to
+select the **configuration type**. Choose "Internet site".
 
 It will then ask for your "mail name", this is the fully qualified domain name
-of your server.
+of your server, without any special subdomain, i.e. just the name after the
+``@`` of an email address for which you want to manage emails.
 
+Your answers are then stored in a file :xfile:`/etc/postfix/main.cf`, which you
+will probably continue to modify afterwards (see below).
 
-Configuration type
-==================
+There is another config file, :xfile:`/etc/postfix/master.cf`.
+You should activate (uncomment) the ``smtps`` entry in this file if you plan to use an ssh certificate.
 
-Installing postfix will start by asking you to select the mail server
-**configuration type** that best meets your needs.
-
-- Internet site:  Mail is sent and received directly using SMTP.
-
-- Internet with smarthost: Mail is received directly using SMTP or by running a
-  utility such as fetchmail. Outgoing mail is sent using a smarthost.
-
-- Satellite system:
-  All mail is sent to another machine, called a 'smarthost', for delivery.
-
-The configuration is then stored in a file
-:xfile:`/etc/postfix/main.cf`, which you can modify afterwards.
-
-You might want to activate (uncomment) the ``smtps`` entry in
-in :xfile:`/etc/postfix/master.cf`.
-
+The ``main.cf`` configuration file
+==================================
 
 .. xfile:: /etc/postfix/main.cf
 
 This is the main configuration file for postfix. See the `postfix documentation
 <http://www.postfix.org/postconf.5.html>`__ about the syntax and meaning of the
-parameters in this file.
+parameters in this file. Summary of the most common parameters:
 
-Notes about parameters used on a typical Lino server:
+- relayhost : Empty when this server speaks directly to the smtp servers of the
+  recipients. Otherwise the name of a relay host.  See `Using a relay host`_.
 
-- relayhost : Empty when this server speaks directly to the smtp servers of the recipients.
-- relay_domains
-- myhostname
+- relay_domains :
+
+- mydomain : ``example.com`` (the "mail name" you specified during configuration)
+
+- myhostname : ``mail.$mydomain`` (the FQDN of the mail server, which in our case
+  points to the same machine as the one where our web server is running)
+
 - myorigin
-- mydomain
 - mydestination
 
 Using a relay host
@@ -100,14 +92,22 @@ Here is what status should say::
 Diagnostic tips and tricks
 ==========================
 
+How to see which version of postfix is running::
+
+  $ sudo postconf mail_version
+  mail_version = 3.4.10
+
 To quickly see the value of a given parameter, type::
+
+  $ sudo postconf mydomain
+
+To see a list of all parameters and their values::
 
   $ sudo postconf | grep mydomain
 
-How to send a simple mail for testing the mail system::
+Send a simple mail for testing the mail system::
 
   $ mail -s "some test" joe@example.com mike@example.com
-
 
 
 Inspect the mail queue

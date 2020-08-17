@@ -1,0 +1,10 @@
+{% extends "!footer.html" %}
+
+{%- block extrafooter %}
+<a href="https://raw.github.com/lino-framework/book/master/docs/{{ pagename|e }}.rst"
+       rel="nofollow">Source code</a>.
+<a href="https://www.lino-framework.org/{{ pagename|e }}.html">Online Link</a>.
+
+Share on <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.lino-framework.org/{{ pagename|e }}.html" target="_blank">
+Facebook</a> or <a href="http://twitter.com/share" target="_blank">Twitter</a>.
+{% endblock extrafooter %}
