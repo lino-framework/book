@@ -125,8 +125,7 @@ Clients
 
        The place (village or municipality) where this client lives.
 
-       This is a pointer to a
-       :class:`lino_xl.lib.countries.Place`.
+       See :attr:`lino_xl.lib.contacts.Partner.city`.
 
     .. attribute:: municipality
 
@@ -134,6 +133,7 @@ Clients
        equal to :attr:`city`, except when :attr:`city` is a *village*
        and has a parent which is a *municipality* (which causes that
        place to be returned).
+
 
 .. class:: ClientDetail
 
@@ -151,62 +151,64 @@ Clients
 
    This table is visible for Explorer who can also export it.
 
-   For privacy reasons this table shows only a very limited set of
-   fields. For example the names are hidden. OTOH it includes the
-   :attr:`municipality <lino_avanti.lib.avanti.Client.municipality>`
-   virtual field.
+   This table shows only a very limited set of fields because e.g. an auditor
+   may not see all data for privacy reasons. For example the names are hidden.
+   OTOH it includes the :attr:`municipality
+   <lino_avanti.lib.avanti.Client.municipality>` virtual field.
 
 
 >>> show_columns(avanti.AllClients, all=True)
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
-+-------------------+------------------------+--------------------------------------------------------------+
-| Internal name     | Verbose name           | Help text                                                    |
-+===================+========================+==============================================================+
-| client_state      | State                  | The state of this client record.                             |
-+-------------------+------------------------+--------------------------------------------------------------+
-| starting_reason   | Starting reason        |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| ending_reason     | Ending reason          |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| city              | Locality               | The place (village or municipality) where this client lives. |
-+-------------------+------------------------+--------------------------------------------------------------+
-| municipality      | Municipality           |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| country           | Country                |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| zip_code          | Zip code               |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| nationality       | Nationality            | The nationality. This is a pointer to                        |
-|                   |                        | countries.Country which should                               |
-|                   |                        | contain also entries for refugee statuses.                   |
-+-------------------+------------------------+--------------------------------------------------------------+
-| gender            | Gender                 | The sex of this person (male or female).                     |
-+-------------------+------------------------+--------------------------------------------------------------+
-| birth_country     | Birth country          |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| in_belgium_since  | Lives in Belgium since | Uncomplete dates are allowed, e.g.                           |
-|                   |                        | "00.00.1980" means "some day in 1980",                       |
-|                   |                        | "00.07.1980" means "in July 1980"                            |
-|                   |                        | or "23.07.0000" means "on a 23th of July".                   |
-+-------------------+------------------------+--------------------------------------------------------------+
-| needs_work_permit | Needs work permit      |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| translator_type   | Translator type        | Which type of translator is needed with this client.         |
-+-------------------+------------------------+--------------------------------------------------------------+
-| mother_tongues    | Mother tongues         |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| cef_level_de      | None                   |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| cef_level_fr      | None                   |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| cef_level_en      | None                   |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-| user              | Primary coach          | The author of this object.                                   |
-|                   |                        | A pointer to lino.modlib.users.models.User.                  |
-+-------------------+------------------------+--------------------------------------------------------------+
-| event_policy      | Recurrency policy      |                                                              |
-+-------------------+------------------------+--------------------------------------------------------------+
-
++-------------------+------------------------+-------------------------------------------------------------+
+| Internal name     | Verbose name           | Help text                                                   |
++===================+========================+=============================================================+
+| client_state      | State                  | The state of this client record.                            |
++-------------------+------------------------+-------------------------------------------------------------+
+| starting_reason   | Starting reason        |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| ending_reason     | Ending reason          |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| city              | Locality               | The locality, i.e. usually a village, city or town.         |
++-------------------+------------------------+-------------------------------------------------------------+
+| municipality      | Municipality           | The municipality where this client lives. This is basically |
+|                   |                        | equal to city, except when city is a village                |
+|                   |                        | and has a parent which is a municipality (which causes that |
+|                   |                        | place to be returned).                                      |
++-------------------+------------------------+-------------------------------------------------------------+
+| country           | Country                |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| zip_code          | Zip code               |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| nationality       | Nationality            | The nationality. This is a pointer to                       |
+|                   |                        | countries.Country which should                              |
+|                   |                        | contain also entries for refugee statuses.                  |
++-------------------+------------------------+-------------------------------------------------------------+
+| gender            | Gender                 | The sex of this person (male or female).                    |
++-------------------+------------------------+-------------------------------------------------------------+
+| birth_country     | Birth country          |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| in_belgium_since  | Lives in Belgium since | Uncomplete dates are allowed, e.g.                          |
+|                   |                        | "00.00.1980" means "some day in 1980",                      |
+|                   |                        | "00.07.1980" means "in July 1980"                           |
+|                   |                        | or "23.07.0000" means "on a 23th of July".                  |
++-------------------+------------------------+-------------------------------------------------------------+
+| needs_work_permit | Needs work permit      |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| translator_type   | Translator type        | Which type of translator is needed with this client.        |
++-------------------+------------------------+-------------------------------------------------------------+
+| mother_tongues    | Mother tongues         |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| cef_level_de      | None                   |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| cef_level_fr      | None                   |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| cef_level_en      | None                   |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
+| user              | Primary coach          | The author of this object.                                  |
+|                   |                        | A pointer to lino.modlib.users.models.User.                 |
++-------------------+------------------------+-------------------------------------------------------------+
+| event_policy      | Recurrency policy      |                                                             |
++-------------------+------------------------+-------------------------------------------------------------+
 
 
 .. class:: MyClients(Clients)
@@ -402,7 +404,7 @@ Creating a new client
 >>> res.status_code
 200
 >>> d = AttrDict(json.loads(res.content))
->>> rmu(sorted(d.keys()))
+>>> sorted(d.keys())
 ... #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 ['data', 'phantom', 'title']
 >>> d.phantom
@@ -420,3 +422,35 @@ The dialog window has 6 data fields:
 >>> fld = avanti.Clients.parameters['observed_event']
 >>> rt.show(fld.choicelist, language="en")
 No data to display
+
+
+Miscellaneous
+=============
+
+Until 20200818 the help_text of the municipality field wasn't set at all, and
+the help text of Partner.city talked about a client because it had been
+overwritten by the help text of :attr:`lino_avanti.lib.contacts.Person.city`.
+
+Compare (a) the specs (i.e. the target of the links) and (b) the help texts of
+the following fields:
+
+- :attr:`lino_avanti.lib.avanti.Client.city`
+- :attr:`lino_avanti.lib.avanti.Client.municipality`
+- :attr:`lino_avanti.lib.contacts.Person.city`
+- :attr:`lino_avanti.lib.contacts.Person.municipality`
+
+>>> print(avanti.Client._meta.get_field('municipality').help_text)
+The municipality where this client lives. This is basically
+equal to city, except when city is a village
+and has a parent which is a municipality (which causes that
+place to be returned).
+
+>>> print(contacts.Person._meta.get_field('municipality').help_text)
+The municipality, i.e. either the city or a parent of it.
+
+
+>>> print(contacts.Person._meta.get_field('city').help_text)
+The locality, i.e. usually a village, city or town.
+
+>>> print(contacts.Person._meta.get_field('city').help_text)
+The locality, i.e. usually a village, city or town.

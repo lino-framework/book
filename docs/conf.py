@@ -252,7 +252,7 @@ extlinks.update({
     'extux': ('http://extjs-ux.org/ext-docs/?class=%s', ''),
     'djangoticket': (
         'https://code.djangoproject.com/ticket/%s', 'Django ticket #'),
-    'welfare': ('http://welfare.lino-framework.org%s.html', ''),
+    'welfare': ('https://welfare.lino-framework.org%s.html', ''),
     # 'welfareticket': (
     #     'http://welfare.lino-framework.org/tickets/%s.html', ''),
     # 'welfareusermande': (
@@ -272,14 +272,14 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if False:  # on_rtd:
     for n in """python django lino xl""".split():
-        intersphinx_mapping[n] = ('http://%s.readthedocs.io/en/latest/' % n, None)
+        intersphinx_mapping[n] = ('https://%s.readthedocs.io/en/latest/' % n, None)
 
 
 from atelier.sphinxconf import interproject
 interproject.configure(
     globals(), 'atelier etgen eidreader getlino lino lino_xl',
     cg=('https://community.lino-framework.org/', None),
-    django=('https://docs.djangoproject.com/en/3.1/', 'http://docs.djangoproject.com/en/dev/_objects/'),
+    django=('https://docs.djangoproject.com/en/3.1/', 'https://docs.djangoproject.com/en/dev/_objects/'),
     sphinx=('https://www.sphinx-doc.org/en/master/', None))
 
 #intersphinx_mapping['cg'] = ('https://community.lino-framework.org/', None)

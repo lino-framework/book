@@ -84,11 +84,21 @@ documentation using :term:`prosa style`::
 
           This field is a simple char field. Blabla more documentation.
 
-Write help texts so that extractor can find them
+Write help texts so that extractor can find them.
 
 Note that only the *first* paragraph of the content of every :rst:dir:`class`
 and :rst:dir:`attribute` directive is taken as help text, and that any
 formatting and links are removed.
+
+.. currentmodule:: lino_xl.lib.contacts
+
+Help texts are stored on the field descriptor object, which in case of MTI
+children can bring a surprising behaviour.  As an example, compare the fields
+:attr:`Partner.name` and :attr:`Person.name` (in the :mod:`lino_xl.lib.contacts`
+plugin) The Sphinx docs defines documentation for both fields. Obviously we
+don't want the help text for the name field on Partner became that of the
+Person.
+
 
 .. rubric:: Extracting the help texts
 
@@ -115,9 +125,9 @@ mm` and start translating them.
 
 .. rubric:: Loading help texts at startup
 
-Lino will load these :xfile:`help_texts.py`  files at startup and "inject" them
+Lino will load these :xfile:`help_texts.py` files at startup and "inject" them
 to the fields, actions and actors as if they had been defined by the application
-code.
+source code.
 
 More precisely, when a Lino :class:`Site <lino.core.site.Site>` initializes, it
 looks for a file named :xfile:`help_texts.py` in every plugin directory.  If
@@ -141,6 +151,116 @@ Advantages
 
 - Same source is used for both the docs and the user interface. You
   don't need to write (and maintain) these texts twice.
+
+Pitfalls
+========
+
+When the database structure changes in the code and you forget to adapt the
+specs accordingly, your help texts may "disappear" without notice. You can avoid
+this by making your test suite cover the help texts.
+
+You do this by simply showing the help texts of a model or actor in your
+functional specifications using the :func:`show_fields
+<lino.api.doctest.show_fields>`  or :func:`show_columns
+<lino.api.doctests.show_columns>` function.
+
+Example:
+
+>>> import lino
+>>> lino.startup('lino_book.projects.min2.settings.doctests')
+>>> from lino.api.doctest import *
+
+>>> show_fields(contacts.Person)
++---------------+----------------------------+-----------------------------------------------------------------+
+| Internal name | Verbose name               | Help text                                                       |
++===============+============================+=================================================================+
+| email         | e-mail address             | The primary email address.                                      |
++---------------+----------------------------+-----------------------------------------------------------------+
+| language      | Language                   | The language to use when communicating with this partner.       |
++---------------+----------------------------+-----------------------------------------------------------------+
+| phone         | Phone                      | The primary phone number.                                       |
++---------------+----------------------------+-----------------------------------------------------------------+
+| gsm           | GSM                        | The primary mobile phone number.                                |
++---------------+----------------------------+-----------------------------------------------------------------+
+| city          | Locality                   | The locality, i.e. usually a village, city or town.             |
++---------------+----------------------------+-----------------------------------------------------------------+
+| addr1         | Address line before street | Address line before street                                      |
++---------------+----------------------------+-----------------------------------------------------------------+
+| street_prefix | Street prefix              | Text to print before name of street, but to ignore for sorting. |
++---------------+----------------------------+-----------------------------------------------------------------+
+| street        | Street                     | Name of street, without house number.                           |
++---------------+----------------------------+-----------------------------------------------------------------+
+| street_no     | No.                        | House number.                                                   |
++---------------+----------------------------+-----------------------------------------------------------------+
+| street_box    | Box                        | Text to print after street number on the same line.             |
++---------------+----------------------------+-----------------------------------------------------------------+
+| addr2         | Address line after street  | Address line to print below street line.                        |
++---------------+----------------------------+-----------------------------------------------------------------+
+| prefix        | Name prefix                | An optional name prefix. For organisations this is inserted     |
+|               |                            | before the name, for persons this is inserted between first     |
+|               |                            | name and last name.                                             |
++---------------+----------------------------+-----------------------------------------------------------------+
+| name          | Name                       | The full name of this partner. Used for alphabetic sorting.     |
++---------------+----------------------------+-----------------------------------------------------------------+
+| title         | Title                      | Used to specify a professional position or academic             |
+|               |                            | qualification like "Dr." or "PhD".                              |
++---------------+----------------------------+-----------------------------------------------------------------+
+| first_name    | First name                 | The first name, also known as given name.                       |
++---------------+----------------------------+-----------------------------------------------------------------+
+| middle_name   | Middle name                | A space-separated list of all middle names.                     |
++---------------+----------------------------+-----------------------------------------------------------------+
+| last_name     | Last name                  | The last name, also known as family name.                       |
++---------------+----------------------------+-----------------------------------------------------------------+
+| gender        | Gender                     | The sex of this person (male or female).                        |
++---------------+----------------------------+-----------------------------------------------------------------+
+| birth_date    | Birth date                 | Uncomplete dates are allowed, e.g.                              |
+|               |                            | "00.00.1980" means "some day in 1980",                          |
+|               |                            | "00.07.1980" means "in July 1980"                               |
+|               |                            | or "23.07.0000" means "on a 23th of July".                      |
++---------------+----------------------------+-----------------------------------------------------------------+
+| age           | Age                        | Virtual field displaying the age in years.                      |
++---------------+----------------------------+-----------------------------------------------------------------+
+| mti_navigator | See as                     | A virtual field which defines buttons for switching between the |
+|               |                            | different views.                                                |
++---------------+----------------------------+-----------------------------------------------------------------+
+| municipality  | Municipality               | The municipality, i.e. either the city or a parent of it.       |
++---------------+----------------------------+-----------------------------------------------------------------+
+
+Because the above text is now in your specifications, doctest will warn you
+whenever any of the help tests changes.
+
+When you give an actor as argument to show_fields, it will show the parameter
+fields of that actor.
+
+>>> show_fields(contacts.Persons)
+================ ================ ===============================
+ Internal name    Verbose name     Help text
+---------------- ---------------- -------------------------------
+ observed_event   Observed event   Extended filter criteria
+ start_date       Period from      Start date of observed period
+ end_date         until            End date of observed period
+================ ================ ===============================
+
+>>> show_columns(contacts.Persons)
+=============== ================ ============================
+ Internal name   Verbose name     Help text
+--------------- ---------------- ----------------------------
+ email           e-mail address   The primary email address.
+=============== ================ ============================
+
+>>> show_columns(contacts.Persons, all=True)
+================ ================ ============================
+ Internal name    Verbose name     Help text
+---------------- ---------------- ----------------------------
+ address_column   Address
+ email            e-mail address   The primary email address.
+ id               ID
+================ ================ ============================
+
+A real-world example are the specs of
+:class:`lino_avanti.lib.avanti.AllClients`, which include a call to
+:func:`lino.api.doctests.show_columns`.
+
 
 
 The :xfile:`help_texts.py` file
@@ -194,42 +314,12 @@ The full name of this partner. Used for alphabetic sorting.
 Above text is the first sentence extracted from the documentation of
 the :attr:`lino_xl.lib.contacts.Partner.name` field.
 
-You can show and test all help texts of a model or actor in functional
-specifications using the :func:`show_fields
-<lino.api.doctest.show_fields>` function:
+The following is not true::
 
->>> show_fields(rt.models.contacts.Partner)
-+---------------+----------------------------+-----------------------------------------------------------------+
-| Internal name | Verbose name               | Help text                                                       |
-+===============+============================+=================================================================+
-| email         | e-mail address             | The primary email address.                                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| language      | Language                   | The language to use when communicating with this partner.       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| phone         | Phone                      | The primary phone number.                                       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| gsm           | GSM                        | The primary mobile phone number.                                |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| city          | Locality                   | The locality, i.e. usually a village, city or town.             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| addr1         | Address line before street | Address line before street                                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_prefix | Street prefix              | Text to print before name of street, but to ignore for sorting. |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street        | Street                     | Name of street, without house number.                           |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_no     | No.                        | House number.                                                   |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_box    | Box                        | Text to print after street number on the same line.             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| addr2         | Address line after street  | Address line to print below street line.                        |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| prefix        | Name prefix                | An optional name prefix. For organisations this is inserted     |
-|               |                            | before the name, for persons this is inserted between first     |
-|               |                            | name and last name.                                             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| name          | Name                       | The full name of this partner. Used for alphabetic sorting.     |
-+---------------+----------------------------+-----------------------------------------------------------------+
+  >> fld = rt.models.contacts.Person._meta.get_field('name')
+  >> print(fld.help_text)  #doctest: +NORMALIZE_WHITESPACE
+  The full name of this person, used for sorting.
+
 
 
 

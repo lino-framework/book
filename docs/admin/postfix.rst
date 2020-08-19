@@ -4,33 +4,34 @@
 Postfix cheat sheet
 ===================
 
-**Postfix** is a mail transfer agent (MTA). We prefer it over exim4 just because
-we have a cheat sheet for it. There have been long debates on what (if any)
-should be the default MTA for a Debian system (`more
-<https://wiki.debian.org/Debate/DefaultMTA>`__).
+**Postfix** is a mail transfer agent (MTA), one of the components on a
+:doc:`mail server <mail>`.
+
+We prefer postfix over exim4 just because we have a cheat sheet for it. There
+have been long debates on what (if any) should be the default MTA for a Debian
+system (`more <https://wiki.debian.org/Debate/DefaultMTA>`__).
 
 
 Installation
 ============
 
-Installing Postfix on Debian is easy::
+Installing Postfix on Debian is easy and will automatically uninstall exim4::
 
   $ sudo apt install libsasl2-modules postfix
 
-This will automatically uninstall exim4.
-
 The configuration is less easy. Installing postfix will start by asking you to
-select the **configuration type**. Choose "Internet site".
+select the *configuration type*. Choose "Internet site".
 
 It will then ask for your "mail name", this is the fully qualified domain name
 of your server, without any special subdomain, i.e. just the name after the
-``@`` of an email address for which you want to manage emails.
+``@`` of the email addresses for which you want to manage mails.
 
-Your answers are then stored in a file :xfile:`/etc/postfix/main.cf`, which you
-will probably continue to modify afterwards (see below).
+Your answers are stored in a file :xfile:`/etc/postfix/main.cf`, which you will
+probably continue to modify afterwards (see below).
 
-There is another config file, :xfile:`/etc/postfix/master.cf`.
-You should activate (uncomment) the ``smtps`` entry in this file if you plan to use an ssh certificate.
+There is another config file, :xfile:`/etc/postfix/master.cf`. You should
+activate (uncomment) the ``smtps`` line in this file if you plan to use an ssh
+certificate.
 
 The ``main.cf`` configuration file
 ==================================
@@ -39,7 +40,7 @@ The ``main.cf`` configuration file
 
 This is the main configuration file for postfix. See the `postfix documentation
 <http://www.postfix.org/postconf.5.html>`__ about the syntax and meaning of the
-parameters in this file. Summary of the most common parameters:
+parameters in this file. Summary of the most common ones:
 
 - relayhost : Empty when this server speaks directly to the smtp servers of the
   recipients. Otherwise the name of a relay host.  See `Using a relay host`_.

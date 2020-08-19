@@ -97,9 +97,8 @@ Lino Noi and Scrum
 | simulate_today       | Simulated date       | A constant user-defined date to be substituted as current           |
 |                      |                      | system date.                                                        |
 +----------------------+----------------------+---------------------------------------------------------------------+
-| site_company         | Site owner           | The organisation who runs this site.  This is used e.g. when        |
-|                      |                      | printing your address in certain documents or reports.  Or          |
-|                      |                      | newly created partners inherit the country of the site owner.       |
+| site_company         | Site owner           | The site operator, i.e. the legal person that operates this         |
+|                      |                      | Lino site.                                                          |
 +----------------------+----------------------+---------------------------------------------------------------------+
 | next_partner_id      | Next partner id      | The next automatic id for any new partner.                          |
 +----------------------+----------------------+---------------------------------------------------------------------+

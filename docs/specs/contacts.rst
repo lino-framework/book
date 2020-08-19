@@ -194,10 +194,11 @@ Models and views
 
         The full name of this partner. Used for alphabetic sorting.
 
-        Subclasses may hide this field and fill it automatically, e.g. saving a
-        :class:`Person` will automatically set the :attr:`name` field to
-        `<last_name>, <first_name>`.
-        
+        Subclasses may hide this field and fill it automatically. For example on
+        a :class:`Person`, Lino automatically sets the :attr:`name` field to
+        `<last_name>, <first_name>`, and the field is usually hidden for end
+        users.
+
 
     .. attribute:: prefix
 
@@ -268,11 +269,7 @@ Models and views
 
     .. attribute:: name
 
-        The full name of this person, used for sorting.
-
-        Lino hides this field for persons and sets it automatically to
-        `<last_name>, <first_name>`.
-
+      See :attr:`Partner.name`.
 
 
 
