@@ -4,6 +4,26 @@
 Writing new front ends
 ======================
 
+
+Overview
+========
+
+ExtJS is the built-in primary front end for Lino. It is stable and won't change
+any more.
+
+React has the advantage that your application will me usable from a mobile
+device.  React is being used on two production sites, both of which are
+"internal", i.e. we are our own customer. We have no customer yet who is ready
+to invest into a mobile-friendly front end. They all say that they would want
+it, but they don't want to pay extra money for it...
+
+The :ref:`openui5` front end has passed the proof of concept phase, i.e. it is
+visible that it works. But it is not ready for production. There is still much
+work to do. We have no plans to continue this  front end because we focus on
+extjs  and react. But if you are willing to invest your time, then we are glad
+to support you as much as possible.
+
+
 Lino can have many faces
 ========================
 

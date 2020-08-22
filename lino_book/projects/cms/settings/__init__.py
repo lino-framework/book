@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2017 Rumma & Ko Ltd
+# Copyright 2012-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """The Django settings module for Lino CMS.
@@ -17,8 +17,9 @@ class Site(Site):
     author_email = 'luc@lino-framework.org'
 
     default_ui = 'lino_react.react'
-    # default_ui = 'lino_xl.lib.pages'
     # admin_ui = 'lino.modlib.extjs'
+    # default_ui = 'lino_openui5.openui5'
+    # default_ui = 'lino_xl.lib.pages'
 
     languages = 'en de fr'
 

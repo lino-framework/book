@@ -2,13 +2,15 @@
 About Lino
 ==========
 
-Let's start by explaining to you as a developer why Lino is so cool.
+This section explains in technical language why Lino is so cool.
+For more commercial language see :ref:`lino.why`.
 
 .. toctree::
    :maxdepth: 1
 
    /about/overview
    about/why
+   /money
    about/lino_and_django
    about/auth
    /about/compared
