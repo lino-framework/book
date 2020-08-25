@@ -1160,7 +1160,16 @@ Actors
 
 .. class:: ByJournal
 
-   Mixin for journal-based tables of vouchers.
+  Mixin for journal-based tables of vouchers.
+
+  Note that this is not explicitly marked as abstract by the :term:`application
+  developer`, but Lino knows that it is abstract because it has no model.
+
+  >>> ledger.ByJournal.abstract
+  False
+  >>> ledger.ByJournal.is_abstract()
+  True
+
 
 .. class:: Vouchers
 
