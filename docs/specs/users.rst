@@ -7,11 +7,9 @@
 
 .. currentmodule:: lino.modlib.users
 
-
-This document describes the API of the :mod:`lino.modlib.users` plugin.  See
-also :doc:`/dev/users` for getting started with user management.  See
-:doc:`/dev/about/auth` if you wonder why Lino replaces Django's user management and
-permission system.
+This document describes the :mod:`lino.modlib.users` plugin, which in Lino
+replaces :mod:`django.contrib.auth`. See also :doc:`/dev/users` for getting
+started with user management.
 
 .. contents::
   :local:
@@ -48,6 +46,14 @@ Concepts
 Users
 =====
 
+If you wonder why Lino replaces Django's user management and permission system,
+see :doc:`/dev/about/auth`.
+
+The :term:`site administrator` can optionally specify a date when a user
+started or stopped to be active.
+
+
+
 .. class:: Users
 
     Base class for all tables of :class:`User`.
@@ -73,9 +79,8 @@ Users
     .. attribute:: is_authenticated
 
         This is always `True`.  Compare with
-        :attr:`AnonymousUser.authenticated
+        :attr:`AnonymousUser.is_authenticated
         <lino.modlib.users.utils.AnonymousUser.authenticated>`.
-
 
    Fields:
 
@@ -145,14 +150,12 @@ Users
     .. attribute:: end_date
     .. attribute:: start_date
 
-        The site administrator can optionally specify a date when a
-        user started or stopped to be active.
-
         If :attr:`start_date` is given, then the user cannot sign in
         before that date.  If :attr:`end_date` is given, then the user
         cannot sign in after that date.
 
-        These fields are used for :doc:`userstats`.
+        These fields are also used for :doc:`userstats`.
+
 
 Authorities : let other users work in your name
 ===============================================
@@ -169,7 +172,6 @@ Authorities : let other users work in your name
     .. attribute:: authorized
 
         The user who gets the right to represent the author
-
 
 
 User types
@@ -442,3 +444,20 @@ Verify whether the help_text of the change_password action is set:
 >>> ba = rt.models.users.AllUsers.get_action_by_name('change_password')
 >>> print(ba.action.help_text)
 Change the password of this user.
+
+Verify whether :ticket:`3766` is fixed:
+
+>>> show_choices('robin', '/choices/users/Users/partner')
+... #doctest: +ELLIPSIS
+<br/>
+Altenberg Hans
+Arens Andreas
+...
+Õunapuu Õie
+Östges Otto
+
+>>> show_choices('robin', '/choices/users/Users/user_type')
+<br/>
+000 (000 (Anonymous))
+100 (100 (User))
+900 (900 (Administrator))
