@@ -4,8 +4,8 @@
 Making a snapshot of a Lino database
 ====================================
 
-Every hosted Lino project directory contains a file named
-:xfile:`make_snapshot.sh`.
+Every Lino project directory created with :cmd:`getlino startsite` contains a
+file named :xfile:`make_snapshot.sh`.
 
 This script makes a **snapshot** of this Lino site, i.e. an archive
 file which contains the current state of a Lino database, including:
@@ -26,4 +26,3 @@ days**, the script removes them.  This is important because
 <cron>`.  If we didn't take care of removing old snapshots, our server
 might run out of disk space some time in a far future when we long
 have forgotten that your daily job is adding a new file every day.
-

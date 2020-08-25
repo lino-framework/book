@@ -1,3 +1,5 @@
+.. _hosting.backup:
+
 =====================
 Backup and monitoring
 =====================
@@ -12,20 +14,35 @@ server that we will use to connect to their server::
     $ sudo adduser mirror www-data
     $ sudo -u mirror mkdir /home/mirror/.ssh/
 
+On our backup server we will run the following to add the ssh key pair of
+mirror@example.com to the authorized_keys of mirror@customersite.com::
+
+    $ sudo -u mirror ssh-copy-id -i ~/.ssh/id_rsa.pub mirror@customersite.com
+
+..  $ sudo -u mirror cat ~/.ssh/id_rsa.pub | ssh mirror@customersite.com 'cat >> ~/.ssh/authorized_keys'
+
 The customer must also have a daily snapshot cron job (:doc:`snapshot`) and
 communicate us the full path of the snapshot file(s) they want us to backup.
+
+
 
 Setting up the backup server
 ============================
 
 In the following examples we assume that the service is to be running on your
-server `example.com`.
+server `example.com`. Here is how we configured that server.
 
 On the backup server, we create a user named "mirror" and a ssh key pair::
 
     $ sudo adduser -d /mnt/disk/mirror/ mirror
+    $ sudo -u mirror ssh-keygen -t rsa -b 4096 -C "mirror@example.com"
+
+..  $ sudo adduser -d /mnt/disk/mirror/ mirror
     $ mkdir /mnt/disk/mirror/.ssh
     $ ssh-keygen -t rsa -b 4096 -C "mirror@example.com"
+
+
+
 
 By default, this will generate the ssh key file in /home/you/.ssh/id_rsa. When
 the prompt ask for where to store the key, we need to choose the home directory
@@ -45,11 +62,6 @@ Create an executable file :file:`collect_snapshots.sh` with this content::
   rsync --times --progress mirror@customer1:/customer1/path/to/snapshot.zip $TARGET/snapshots/customer1/
   echo customer2
   rsync --times --progress mirror@customer2:/customer2/path/to/snapshot.zip $TARGET/snapshots/customer2/
-
-Add the ssh key pair of mirror@example.com to the authorized_keys of each
-customer server::
-
-    $ cat ~/.ssh/id_rsa.pub | ssh username@customersite.com 'cat >> ~/.ssh/authorized_keys'
 
 Add a daily cron job in /etc/cron.daily::
 
