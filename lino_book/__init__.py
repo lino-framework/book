@@ -28,6 +28,6 @@ srcref_url = 'https://github.com/lino-framework/book/blob/master/%s'
 # doc_trees = ['docs']
 doc_trees = [ 'docs', 'apcdocs']
 intersphinx_urls = {
-    'docs': "http://www.lino-framework.org",
-    'apcdocs': "http://apcdocs.lino-framework.org",
+    'docs': "https://www.lino-framework.org",
+    'apcdocs': "https://apcdocs.lino-framework.org",
 }
