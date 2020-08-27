@@ -39,7 +39,7 @@ Running Lino on a full server
     certbot
     security
     cron
-    mail
+    mail/index
 
 Running Lino on PythonAnywhere
 ==============================

@@ -1,7 +1,7 @@
-.. _admin.mail:
+.. _admin.basics:
 
 ========================
-Setting up a mail server
+Mail server basics
 ========================
 
 .. glossary::
@@ -15,13 +15,6 @@ Setting up a mail server
 
     A third-party mail server that accepts outgoing mails from your :term:`mail
     server` and cares about forwarding them to their final destination.
-
-
-.. toctree::
-    :maxdepth: 1
-
-    postfix
-    mailman
 
 
 Direct HTTP versus relay host

@@ -8,9 +8,11 @@ following situations:
 - When a exception happens on the server code, we want to inform the :term:`site
   maintainer`.
 
-- The Lino application (:mod:`lino.modlib.notify`) may decide to send
-  notification mails to site users
-- An :term:`end user` may use the outbox plugin to explicitly write emails.
+- The Lino application may decide to send notification mails to site users. For
+  example all applications that use :mod:`lino.modlib.notify`.
+
+- An :term:`end user` may use the :mod:`lino.modlib.outbox` plugin to explicitly
+  write emails.
 
 
 Here are the Django settings for sending emails.

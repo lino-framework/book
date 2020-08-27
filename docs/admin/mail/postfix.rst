@@ -1,15 +1,15 @@
 .. _admin.postfix:
 
-===================
-Postfix cheat sheet
-===================
+=======
+Postfix
+=======
 
 **Postfix** is a mail transfer agent (MTA), one of the components on a
-:doc:`mail server <mail>`.
+:doc:`mail server <index>`.
 
-We prefer postfix over exim4 just because we have a cheat sheet for it. There
-have been long debates on what (if any) should be the default MTA for a Debian
-system (`more <https://wiki.debian.org/Debate/DefaultMTA>`__).
+We prefer postfix over exim4 just for historical reasons. There have been long
+debates on what (if any) should be the default MTA for a Debian system (`more
+<https://wiki.debian.org/Debate/DefaultMTA>`__).
 
 
 Installation
