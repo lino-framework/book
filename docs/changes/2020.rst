@@ -14,6 +14,13 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-08-28
+==========
+
+Fixed two issues in :mod:`lino_xl.lib.calview` for :ticket:`3769`:  "Week
+navigation causes calendar to mess up weeks" and "slave title says 'None in Week
+50 / 2019 (09 December)'"
+
 2020-08-25
 ==========
 
