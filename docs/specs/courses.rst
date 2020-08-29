@@ -7,8 +7,18 @@
 
 .. currentmodule:: lino_xl.lib.courses
 
-The :mod:`courses <lino_xl.lib.courses>` plugin adds functionality for
-managing "courses".
+The :mod:`courses <lino_xl.lib.courses>` plugin adds functionality for managing
+"activities".
+
+The internal name "courses" is for historic reasons.  We might one day rename
+the plugin to "activities".
+
+See also
+:doc:`/specs/voga/courses`,
+:doc:`/specs/avanti/courses`,
+:doc:`/specs/tera/courses`
+and :ref:`welfare`.
+
 
 
 .. contents::
@@ -22,31 +32,59 @@ managing "courses".
 >>> from lino.api.doctest import *
 
 
-What is a course?
-===================
+Definitions
+===========
 
-A **course** is when a "teacher" meets more or less regularily with a group of
-"pupils".  The pupils can be any model (e.g. a :class:`contacts.Person
-<lino_xl.lib.contacts.Person>`).  When a pupil participates in a course, we
-create an **enrolment**.
+.. glossary::
 
-A course can automatically generate calendar entries for the meetings of that
-course according to recurrency rules.  It helps with managing these meetings:
-schedule exceptions and manual date changes.  It can fill the guests or
-participants of the meetings, and the teacher can register their presence.
-Courses can be grouped into course lines* (series), series into *topics*.
+  activity
 
-The internal name "courses" is for historic reasons.  There was a time
-when I planned to rename "courses" to "activities".  Some table names
-remind this time.  In :ref:`welfare` they are called "workshops", in
-:ref:`tera` they are called "dossiers", in :ref:`voga` they are called
-"activities".
+    The fact that a given :term:`activity leader` meets more or less regularly
+    with a given group of :term:`participants <activity participant>`.
 
-See also
-:doc:`/specs/voga/courses`,
-:doc:`/specs/avanti/courses`,
-:doc:`/specs/tera/courses`
-and :ref:`welfare`.
+    In :ref:`voga` they are called "activities",
+    in :ref:`avanti` they are called "courses",
+    in :ref:`tera` they are called "dossiers",
+    in :ref:`welfare` they are called "workshops".
+
+  activity enrolment
+
+    The fact that a person has declared to participate in an activity.
+
+  activity meeting
+
+    A calendar entry that happens as part of an activity.
+
+    An activity can automatically generate calendar entries (called "meetings")
+    according to recurrency rules.  Lino helps with managing these meetings:
+    schedule exceptions and manual date changes.  It can fill the guests or
+    participants of the meetings, and the teacher can register their presence.
+    Courses can be grouped into course lines* (series), series into *topics*.
+
+  activity participant
+
+    A person who is enrolled in an activity and usually is present at every meeting.
+
+    The participants can be any database model. This is configured in
+    :attr:`Plugin.pupil_model`, for which the default value is
+    :class:`contacts.Person <lino_xl.lib.contacts.Person>`.
+
+  activity leader
+
+    The person who is usually present as leader of each meeting.
+
+    The leader can be any database model. This is configured in
+    :attr:`Plugin.teacher_model`, for which the default value is :class:`contacts.Person
+    <lino_xl.lib.contacts.Person>`.
+
+  activity line
+
+    A line --or series-- of activities.
+
+    Used to group activities into a configurable list of categories.
+
+    We chose the word "line" instead of "series" because it has a plural form.
+
 
 
 The ``Course`` model
@@ -54,16 +92,9 @@ The ``Course`` model
 
 .. class:: Course
 
+    Django database model to represent an :term:`activity`.
+
     Database fields:
-
-    .. attribute:: start_date
-
-        The start date of the first meeting to be generated.
-
-    .. attribute:: end_date
-
-        The end date *of the first meeting* to be generated.  Leave
-        this field empty if the meetings last less than one day.
 
     .. attribute:: max_date
 
@@ -72,10 +103,12 @@ The ``Course`` model
 
     .. attribute:: enrolments_until
 
+        Until when new enrolments are accepted.
+
     .. attribute:: max_places
 
         Available places. The maximum number of participants to allow
-        in this course.
+        in this activity.
 
     .. attribute:: free_places
 
@@ -92,6 +125,13 @@ The ``Course`` model
     .. attribute:: confirmed
 
         Number of confirmed places.
+
+    Inherited database fields:
+    :attr:`RecurrenceSet.start_date`
+    :attr:`RecurrenceSet.end_date`
+    :attr:`RecurrenceSet.positions`
+    :attr:`RecurrenceSet.every`
+    :attr:`RecurrenceSet.every_unit`
 
 
 
@@ -145,8 +185,7 @@ The ``Enrolment`` model
 
 .. class:: Enrolment
 
-    An **enrolment** is when a given pupil plans to participate in a
-    given course.
+    Django database model to represent an :term:`activity enrolment`.
 
     .. attribute:: course_area
     .. attribute:: course
@@ -253,11 +292,7 @@ The ``Line`` model
 
 .. class:: Line
 
-    An **activity line** (or **series**) groups courses into a
-    configurable list of categories.
-
-    We chose the word "line" instead of "series" because it has a
-    plural form (not sure whether this idea was so cool).
+    Django database model to represent an :term:`activity line`.
 
     .. attribute:: name
 

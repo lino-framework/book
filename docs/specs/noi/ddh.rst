@@ -104,7 +104,7 @@ behaviour. See also :doc:`/dev/delete`.
   - PROTECT : tickets.Ticket.site
 - tickets.Ticket :
   - CASCADE : tickets.Link.child, tickets.Link.parent
-  - PROTECT : django_mailbox.Message.ticket, github.Commit.ticket, tickets.Ticket.duplicate_of, working.Session.ticket
+  - PROTECT : django_mailbox.Message.ticket, github.Commit.ticket, tickets.CheckListItem.ticket, tickets.Ticket.duplicate_of, working.Session.ticket
 - tickets.TicketType :
   - PROTECT : tickets.Ticket.ticket_type
 - uploads.UploadType :

@@ -1290,8 +1290,15 @@ Miscellaneous
     See :ref:`specs.cal.automatic_events`.
 
     .. attribute:: start_date
-    .. attribute:: start_time
+
+        The date of the first meeting to be generated.
+
     .. attribute:: end_date
+
+        The end date *of the first meeting* to be generated.  Leave
+        this field empty if the meetings last less than one day.
+
+    .. attribute:: start_time
     .. attribute:: end_time
 
     .. attribute:: every
@@ -1307,7 +1314,8 @@ Miscellaneous
 
     .. attribute:: positions
 
-        Space-separated list of one or several positions within the recurrency cycle.
+        Space-separated list of one or several positions within the recurrency
+        cycle.
 
         Each position is a positive or negative integer expressing which
         occurrence is to be taken from the recurrency period. For example if

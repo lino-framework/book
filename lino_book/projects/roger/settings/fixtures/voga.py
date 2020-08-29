@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2019 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -7,10 +7,7 @@ Demo data specific for :ref:`voga`.
 See also :doc:`/specs/courses`.
 """
 
-from __future__ import unicode_literals
-
 from builtins import range
-from builtins import str
 
 from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler

@@ -21,6 +21,9 @@ Fixed two issues in :mod:`lino_xl.lib.calview` for :ticket:`3769`:  "Week
 navigation causes calendar to mess up weeks" and "slave title says 'None in Week
 50 / 2019 (09 December)'"
 
+Released to PyPI : :mod:`lino` 20.8.2 and :ref:`xl` 20.8.2.
+
+
 2020-08-25
 ==========
 

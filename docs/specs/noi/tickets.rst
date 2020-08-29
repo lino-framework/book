@@ -57,6 +57,7 @@ the detail window of a ticket.
       - (more1_2): **State** (state), **Assigned to** (assigned_to), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
     - **Duplicates** (DuplicatesByTicket)
   - (more_2): **Resolution** (upgrade_notes), **Description** (description), **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
+  - **Checks** (tickets.CheckListItemsByTicket) [visible for customer contributor developer admin]
 - **Mentions** (comments_CommentsByMentioned)
 <BLANKLINE>
 
