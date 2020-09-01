@@ -109,7 +109,10 @@ into three "data categories":
 Menu structure
 ==============
 
-The **main menu** should have the following structure:
+The **main menu** is another thing that you should discuss with your customer
+before even starting to write code. Let's imagine that our customer agrees with
+the following menu structure. (Again: we just *imagine* here. It's obvious that
+reality might be more complex.)
 
 - **Master**:
 
@@ -128,6 +131,8 @@ available for exchange.
 
 Note about many-to-many relationships
 =====================================
+
+Make sure that at least you, as the developer, understand the following.
 
 There are two `many-to-many relationships
 <https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_
@@ -171,17 +176,30 @@ recommend instead to always define an explicit intermediate models for
 your m2m relations.
 
 
-
 Writing a prototype
 ===================
 
 With above information you should be ready to write a "first draft" or
-"prototype".
+"prototype" or "proof of concept".
 
-For this tutorial we wrote actually *two* prototypes. In the second
-variant the members are "polymorphic": they can be either customers or
-suppliers, or both. This is an example of multi-table inheritance and
-how you can use it with Lino's :class:`Polymorphic
+For this tutorial we wrote that prototype for you. If you have installed a
+:doc:`Lino contributor environment </team/install/index>`, you can simply do::
+
+  $ go lets1
+  $ python manage.py prep
+  $ python manage.py runserver
+
+And point your browser to http://127.0.0.1:8000/
+
+Please explore these projects and try to get them running.
+
+
+The code is in :mod:`lino_book.projects.lets1`  and the specs are in
+:doc:`/specs/projects/lets1`.
+
+We have a the second variant where the members are "polymorphic": they can be
+either customers or suppliers, or both. This is an example of multi-table
+inheritance and how you can use it with Lino's :class:`Polymorphic
 <lino.mixins.polymorphic.Polymorphic>` mixin.
 
 =============================== ===============================
@@ -191,21 +209,14 @@ code                            specs
 :mod:`lino_book.projects.lets2` :doc:`/specs/projects/lets2`
 =============================== ===============================
 
-Note the difference between "code" and "specs". The **code** directory
-contains runnable Python code and maybe application-specific
-configuration files. A copy of this would be needed on a production
-site.  The **specs** is a Sphinx documentation tree and contains
-mainly :file:`.rst` files. These are not needed on a production site.
+Note the difference between "code" and "specs". The **code** directory contains
+runnable Python code and application-specific configuration files. A copy of
+this would be needed on a production site.  The **specs** is a Sphinx
+documentation tree and contains mainly :file:`.rst` files. These are not needed
+on a production site.  Their first purpose is to contain tests.
 
-Please explore these projects and try to get them running.  If you
-have installed a Lino contributor environment, you can simply do::
-
-  $ go lets1
-  $ python manage.py prep
-  $ python manage.py runserver
-
-And point your browser to http://127.0.0.1:8000/
-
+TODO: move these code bases into new repository to make things more easy to
+copy.
 
 Form layouts
 ============

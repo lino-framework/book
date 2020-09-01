@@ -9,7 +9,6 @@ Getting acquaintained
    :maxdepth: 1
 
    warning
-   lets/index
    i18n
    datamig
    dump2py
