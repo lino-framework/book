@@ -1291,11 +1291,11 @@ Miscellaneous
 
     .. attribute:: start_date
 
-        The date of the first meeting to be generated.
+        The start date of the first meeting to be generated.
 
     .. attribute:: end_date
 
-        The end date *of the first meeting* to be generated.  Leave
+        The end date of the first meeting to be generated.  Leave
         this field empty if the meetings last less than one day.
 
     .. attribute:: start_time

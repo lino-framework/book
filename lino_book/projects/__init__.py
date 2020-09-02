@@ -30,7 +30,6 @@ Examples used by a tutorial:
    min1
    mti
    nomti
-   lets1
    lets2
    actors
    actions

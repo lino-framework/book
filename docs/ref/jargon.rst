@@ -47,6 +47,16 @@ for new Lino applications.  The algus project is not really maintained and now
 partly replaced by :ref:`getlino`.
 
 
+.. _lets:
+
+Lino LETS
+---------
+
+The `Lino LETS <https://gitlab.com/lino-framework/lets>`__ repository is a full
+Lino application for didactic purposes.  User by the :ref:`lino.tutorial.lets`.
+
+
+
 .. _psico:
 
 Lino Psico

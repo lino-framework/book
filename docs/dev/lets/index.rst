@@ -194,20 +194,16 @@ And point your browser to http://127.0.0.1:8000/
 Please explore these projects and try to get them running.
 
 
-The code is in :mod:`lino_book.projects.lets1`  and the specs are in
-:doc:`/specs/projects/lets1`.
+The code and the specs are in :ref:`lets` repository.
 
-We have a the second variant where the members are "polymorphic": they can be
+
+We have a the second variant 
+:mod:`lino_book.projects.lets2`
+where the members are "polymorphic": they can be
 either customers or suppliers, or both. This is an example of multi-table
 inheritance and how you can use it with Lino's :class:`Polymorphic
 <lino.mixins.polymorphic.Polymorphic>` mixin.
 
-=============================== ===============================
-code                            specs
-=============================== ===============================
-:mod:`lino_book.projects.lets1` :doc:`/specs/projects/lets1`
-:mod:`lino_book.projects.lets2` :doc:`/specs/projects/lets2`
-=============================== ===============================
 
 Note the difference between "code" and "specs". The **code** directory contains
 runnable Python code and application-specific configuration files. A copy of
@@ -215,8 +211,7 @@ this would be needed on a production site.  The **specs** is a Sphinx
 documentation tree and contains mainly :file:`.rst` files. These are not needed
 on a production site.  Their first purpose is to contain tests.
 
-TODO: move these code bases into new repository to make things more easy to
-copy.
+TODO: move also lets2 into new repository to make things more easy to copy.
 
 Form layouts
 ============

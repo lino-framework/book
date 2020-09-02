@@ -14,6 +14,13 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-09-01
+==========
+
+:term:`Learning foreign keys <learning foreign key>` now also work in :ref:`react`.
+The :attr:`lino_xl.lib.cal.Guest.partner` field is now a :term:`learning foreign key`.
+
+
 2020-08-28
 ==========
 

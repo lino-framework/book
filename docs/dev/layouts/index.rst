@@ -14,18 +14,11 @@ Layouts are one of Lino's important features, which it adds to the Django
 framework.  They provide a way to design forms using the Python language and
 independently of the chosen :term:`front end`.
 
+Code example in this document are taken from :doc:`/dev/lets/index`.
 
 .. contents::
     :depth: 2
     :local:
-
-.. include:: /../docs/shared/include/tested.rst
-
->>> from lino import startup
->>> startup('lino_book.projects.lets1.settings')
->>> from lino.api.doctest import *
->>> ses = rt.login('robin')
-
 
 
 The columns of a table
@@ -36,7 +29,7 @@ The simplest occurrence of layouts is the :attr:`column_names
 used to define which fields should be displayed as the columns of that
 table.
 
-Code example (from :doc:`/dev/lets/index`)::
+::
 
     class Products(dd.Table):
         ...

@@ -30,8 +30,8 @@ the following elements.
 
 - A textual description of your **database structure**, i.e. the list
   of *models* (tables) to be used.  Each model has a list of
-  *fields* (properties).  
-  
+  *fields* (properties).
+
   It is important to choose meaningful names and to agree with your
   customer on the meaning of certain words which will be the
   vocabulary used in your application.
@@ -79,7 +79,7 @@ Specs are both a **visualisation of your demo data** (which you might
 show to your customer) and a **part of the test suite** of your future
 application.
 
-Example of a technical spec: :doc:`/specs/projects/lets1`
+Example of a technical spec: :ref:`lets`
 
 
 
@@ -90,4 +90,3 @@ End-user documentation
 - The **layouts** of detail forms are another thing to discuss with
   your customer during analysis, and therefore they should be part of
   a specification.
-

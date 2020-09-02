@@ -151,8 +151,6 @@ Technical stuff
    invalid_requests
    projects/mti
    projects/nomti
-   projects/lets1
-   projects/lets2
    projects/belref
    projects/actors
    uitests

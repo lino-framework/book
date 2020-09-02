@@ -38,7 +38,6 @@ ns = setup_from_tasks(
         'lino_book.projects.events',
         'lino_book.projects.max',
         'lino_book.projects.i18n',
-        'lino_book.projects.lets1',
         'lino_book.projects.lets2',
         'lino_book.projects.min1',
         'lino_book.projects.min2',

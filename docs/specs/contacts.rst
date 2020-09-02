@@ -695,18 +695,18 @@ does not yet exist in the database, Lino creates it silently.
 
 Some examples of how the name is parsed when creating a person:
 
->>> pprint(rt.models.contacts.Person.parse_to_dict("joe smith"))
+>>> pprint(rt.models.contacts.Person.choice_text_to_dict("joe smith"))
 {'first_name': 'Joe', 'last_name': 'Smith'}
 
->>> pprint(rt.models.contacts.Person.parse_to_dict("Joe W. Smith"))
+>>> pprint(rt.models.contacts.Person.choice_text_to_dict("Joe W. Smith"))
 {'first_name': 'Joe W.', 'last_name': 'Smith'}
 
->>> pprint(rt.models.contacts.Person.parse_to_dict("Joe"))
+>>> pprint(rt.models.contacts.Person.choice_text_to_dict("Joe"))
 Traceback (most recent call last):
 ...
 django.core.exceptions.ValidationError: ['Cannot find first and last name in "Joe"']
 
->>> pprint(rt.models.contacts.Person.parse_to_dict("Guido van Rossum"))
+>>> pprint(rt.models.contacts.Person.choice_text_to_dict("Guido van Rossum"))
 {'first_name': 'Guido', 'last_name': 'van Rossum'}
 
 The algorithm has already some basic intelligence but plenty of growing potential...

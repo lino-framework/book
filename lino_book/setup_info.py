@@ -245,9 +245,6 @@ lino_book.projects.anna.lib
 lino_book.projects.anna.lib.tickets
 lino_book.projects.public.settings
 lino_book.projects.public.tests
-lino_book.projects.lets1
-lino_book.projects.lets1.lets
-lino_book.projects.lets1.fixtures
 lino_book.projects.lets2
 lino_book.projects.lets2.lets
 lino_book.projects.lets2.fixtures

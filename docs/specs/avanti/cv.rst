@@ -89,7 +89,6 @@ transition for it, so it is rather invisible for the end users.
 ============= ============== ============ ============== ================================
 
 
-
 >>> base = '/choices/cal/Guests/partner'
 >>> show_choices("rolf", base + '?query=') #doctest: +ELLIPSIS
 <br/>
@@ -98,7 +97,30 @@ ABBASI Aáishá (118)
 ABDALLA Aádil (120)
 ABDALLAH Aáish (127)
 ABDELLA Aákif (128)
-...
+ABDI Aátifá (136)
+ABDO Aásim (138)
+ABDUL Abbáád (171)
+ABDULLA Abbáás (152)
+ABID Abdul Báásid (162)
+ABOOD Abdul Fáttááh (163)
+ALEKSANDROV Akim (116)
+ARNOLD Alexei (129)
+ARSHAN Afimiá (132)
+ASTAFUROV Agáfiiá (175)
+BA Abá (113)
+BARDZECKI Agáfiyá (144)
+BASKOV Anstice (156)
+BEK-MURZIN Agápiiá (160)
+BERNDT Armán (167)
+CONGO Chiámáká (126)
+CONTEE Chike (131)
+DEMEULENAERE Dorothée (121)
+DIALLO Deiondre (140)
+DIOP Ashánti (142)
+DOBBELSTEIN-DEMEULENAERE Dorothée (122)
+GUEYE Dewáyne (154)
+JALLOH Diállo (158)
+MAALOUF Cátává (168)
 
 >>> show_choices("audrey", base + '?query=') #doctest: +ELLIPSIS
 <br/>
