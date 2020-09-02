@@ -29,12 +29,27 @@ Usage
 - Define a chooser for the field by defining a :meth:`FOO_choices` method on the
   model and decorating it with :meth:`@dd.chooser <lino.core.choosers.chooser>`.
 
-- Define an instance :meth:`create_FOO_choice
-  <lino.core.model.Model.create_FOO_choice>` method on the model.
+- Define an instance method :meth:`create_FOO_choice
+  <lino.core.model.Model.create_FOO_choice>` on the model.
 
+  Example from :class:`lino_xl.lib.countries.CountryCity`::
 
-You can disable a :term:`learning foreign key` by setting the
-:attr:`lino.core.model.Model.disable_create_choice` model attribute to `True`.
+    def create_city_choice(self, text):
+        if self.country is not None:
+            return rt.models.countries.Place.lookup_or_create(
+                'name', text, country=self.country)
+
+        raise ValidationError(
+            "Cannot auto-create city %r if country is empty", text)
+
+  Example from :class:`lino_xl.lib.contacts.Person`::
+
+    def create_person_choice(self, text):
+        return rt.models.contacts.Person.create_from_choice(text)
+
+  When you use the :meth:`lino.core.model.Model.create_from_choice` method, you
+  probably want to override the model's
+  :attr:`lino.core.model.Model.choice_text_to_dict` method of the related model.
 
 
 Examples
@@ -57,6 +72,7 @@ feature in every application with contacts.  For example
 the Person column of that table you can type the name of a person that does
 not yet exist in the database.  Lino will create it silently, and you can then
 click on the pointer to edit more information.
+
 Some examples in :ref:`specs.contacts.learningfk`.
 
 
