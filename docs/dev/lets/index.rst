@@ -129,10 +129,106 @@ The **main page** (dashboard) should display a list of products
 available for exchange.
 
 
+Writing a prototype
+===================
+
+With above information you should be ready to write a "first draft" or
+"prototype" or "proof of concept".
+
+For this tutorial we wrote that prototype for you.
+The code and the docs are in :ref:`lets` repository.
+
+- code: https://gitlab.com/lino-framework/lets/-/tree/master/lino_lets
+- docs: https://gitlab.com/lino-framework/lets/-/tree/master/docs
+
+Note the difference between "code" and "specs". The **code** directory contains
+runnable Python code and application-specific configuration files. A copy of
+this would be needed on a production site.  The **specs** is a Sphinx
+documentation tree and contains mainly :file:`.rst` files. These are not needed
+on a production site.  Their first purpose is to contain tests.
+
+If you have installed a :doc:`Lino contributor environment
+</team/install/index>`, you can run the demo by saying::
+
+  $ go letsdemo
+  $ python manage.py prep
+  $ python manage.py runserver
+
+We have a the second variant
+:mod:`lino_book.projects.lets2`
+where the members are "polymorphic": they can be
+either customers or suppliers, or both. This is an example of multi-table
+inheritance and how you can use it with Lino's :class:`Polymorphic
+<lino.mixins.polymorphic.Polymorphic>` mixin.
+
+TODO: move also lets2 into new repository to make things more easy to copy.
+
+Form layouts
+============
+
+Note the `detail_layout` attributes of certain tables.  They define
+the **layout** of the **detail window** for these database models (a
+detail window is what Lino opens when the user double-clicks on a
+given row).
+
+
+.. image:: t3a-3.jpg
+  :align: right
+  :scale: 50%
+
+The detail window of a **Product** should show the data fields and
+two slave tables, one showing the the **offers** and another with
+the **demands** for this product.
+
+Here is the application code that produces the picture on the right ::
+
+    detail_layout = """
+    id name
+    OffersByProduct DemandsByProduct
+    """
+
+
+The dashboard
+=============
+
+.. image:: a.png
+    :scale: 40
+    :align: right
+
+The dashboard shows the `ActiveProducts` table. The definition of that table is
+`here <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/lib/market/ui.py#L25>`__,
+and the :meth:`get_dashboard_items <lino.core.site.Site.get_dashboard_items>` method is defined
+`here <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/lib/lets/settings.py#L51>`__)
+
+More screenshots
+=================
+
+Here are some screenshots.
+
+.. image:: b.png
+    :scale: 70
+
+.. image:: c.png
+    :scale: 70
+
+.. image:: d.png
+    :scale: 70
+
+.. image:: e.png
+    :scale: 70
+
+.. image:: members_insert.png
+    :scale: 30
+
+Writing docs about your application
+===================================
+
+- source code: https://gitlab.com/lino-framework/lets/-/tree/master/docs
+- result: https://lets.lino-framework.org
+
+
 Note about many-to-many relationships
 =====================================
-
-Make sure that at least you, as the developer, understand the following.
 
 There are two `many-to-many relationships
 <https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_
@@ -147,8 +243,8 @@ between *Member* and *Product*:
   a product.
 
 Using Django's interface for `many-to-many relationships
-<https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_,
-we can express this as follows::
+<https://docs.djangoproject.com/en/3.1/topics/db/examples/many_to_many/>`_, we
+might express this as follows::
 
     providers = models.ManyToManyField(
         'lets.Member', through='lets.Offer', related_name='offered_products')
@@ -171,95 +267,6 @@ to define what Django calls "`extra fields on many-to-many
 relationships
 <https://docs.djangoproject.com/en/3.1/topics/db/models/#intermediary-manytomany>`_",
 and thus you must explicitly name that "intermediate model" of your
-ManyToManyField.  That's why we don't use ManyToManyField and
-recommend instead to always define an explicit intermediate models for
-your m2m relations.
-
-
-Writing a prototype
-===================
-
-With above information you should be ready to write a "first draft" or
-"prototype" or "proof of concept".
-
-For this tutorial we wrote that prototype for you. If you have installed a
-:doc:`Lino contributor environment </team/install/index>`, you can simply do::
-
-  $ go lets1
-  $ python manage.py prep
-  $ python manage.py runserver
-
-And point your browser to http://127.0.0.1:8000/
-
-Please explore these projects and try to get them running.
-
-
-The code and the specs are in :ref:`lets` repository.
-
-
-We have a the second variant 
-:mod:`lino_book.projects.lets2`
-where the members are "polymorphic": they can be
-either customers or suppliers, or both. This is an example of multi-table
-inheritance and how you can use it with Lino's :class:`Polymorphic
-<lino.mixins.polymorphic.Polymorphic>` mixin.
-
-
-Note the difference between "code" and "specs". The **code** directory contains
-runnable Python code and application-specific configuration files. A copy of
-this would be needed on a production site.  The **specs** is a Sphinx
-documentation tree and contains mainly :file:`.rst` files. These are not needed
-on a production site.  Their first purpose is to contain tests.
-
-TODO: move also lets2 into new repository to make things more easy to copy.
-
-Form layouts
-============
-
-Note the `detail_layout` attributes of certain tables.  They define
-the **layout** of the **detail window** for these database models (a
-detail window is what Lino opens when the user double-clicks on a
-given row).
-
-
-.. textimage:: t3a-3.jpg
-    :scale: 50%
-
-    The detail window of a **Product** should show the data fields and
-    two slave tables, one showing the the **offers** and another with
-    the **demands** for this product.
-
-    Here is the code for this::
-
-        detail_layout = """
-        id name
-        OffersByProduct DemandsByProduct
-        """
-
-When seeing the code on the left, you should be able to imagine
-something like the picture on the right.
-
-
-
-The web interface
-=================
-
-Here are some screenshots.
-
-.. image:: a.png
-    :scale: 70
-
-.. image:: b.png
-    :scale: 70
-
-.. image:: c.png
-    :scale: 70
-
-.. image:: d.png
-    :scale: 70
-
-.. image:: e.png
-    :scale: 70
-
-.. image:: members_insert.png
-    :scale: 30
+ManyToManyField.  That's why we
+prefer to define an explicit intermediate model for
+each m2m relation instead of using ManyToManyField.  Less magic, easier to extend.

@@ -43,8 +43,7 @@ Algus
 -----
 
 The `algus <https://github.com/lino-framework/algus>`__ repository is a template
-for new Lino applications.  The algus project is not really maintained and now
-partly replaced by :ref:`getlino`.
+for new Lino applications.
 
 
 .. _lets:
@@ -52,8 +51,11 @@ partly replaced by :ref:`getlino`.
 Lino LETS
 ---------
 
-The `Lino LETS <https://gitlab.com/lino-framework/lets>`__ repository is a full
-Lino application for didactic purposes.  User by the :ref:`lino.tutorial.lets`.
+The Lino LETS repository
+(https://gitlab.com/lino-framework/lets)
+is a full
+Lino application for didactic purposes.  Used by the :ref:`lino.tutorial.lets`.
+
 
 
 
