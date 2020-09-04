@@ -17,5 +17,6 @@ in :doc:`/dev/analysis`.
 
     step1
     step2
+    step3
     m2m
     docs

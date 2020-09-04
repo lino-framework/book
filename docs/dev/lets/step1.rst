@@ -1,8 +1,8 @@
 .. _dev.lets.step1:
 
-=============================
-Lino LETS (step 1)
-=============================
+=====================================
+Step 1 : Analysis and first prototype
+=====================================
 
 .. contents::
    :local:
@@ -11,12 +11,13 @@ Lino LETS (step 1)
 Overview
 ========
 
-The fictive application we are going to write is a website of a Local
-Exchange Trade System group (`LETS
-<http://en.wikipedia.org/wiki/Local_exchange_trading_system>`_). The
-members of that site would register the products and services they
-want to sell or to buy. The goal is to connect the providers and the
-customers.
+The fictive application we are going to write is a website of a Local Exchange
+Trade System group (`LETS
+<http://en.wikipedia.org/wiki/Local_exchange_trading_system>`_). The members of
+that site would register the products and services they want to sell or to buy.
+The goal is to connect the providers and the customers. We don't care whether
+and how transactions actually occur, neither about history... we just help them
+to find each other.
 
 .. _data_model_diagram:
 

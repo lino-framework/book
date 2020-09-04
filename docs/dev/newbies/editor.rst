@@ -15,9 +15,12 @@ Installation::
 
   $ sudo apt install atom
 
+Make sure to define a "project" by selecting :menuselection:`File --> Add
+project folder...`.
+
 Some useful keyboard shortcuts:
 
-- :kbd:`Ctrl+P` open an existing file using fuzzy file name search
+- :kbd:`Ctrl+P` open an existing file using fuzzy file name search within all files of the project.
 - :kbd:`Shfit+Ctrl+F` find (and optionally replace) a text string in all files (or in some)
 - :kbd:`Alt+Q` reflow selection
 
