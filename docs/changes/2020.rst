@@ -14,6 +14,17 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-09-04
+==========
+
+:meth:`lino.core.site.Site.setup_quicklinks` no longer searches and executes a
+global function :func:`setup_quicklinks` in each plugin, but calls the new
+plugin method :meth:`lino.core.plugin.Plugin.get_quicklinks`. The
+:meth:`Model.get_simple_parameters
+<lino.core.fields.TableRow.get_simple_parameters>` method may now return an
+iterator (or a list or a tuple) of fields names.
+
+
 2020-09-01
 ==========
 

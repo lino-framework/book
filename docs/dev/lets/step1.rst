@@ -147,14 +147,22 @@ If you have installed a :doc:`Lino contributor environment
   $ python manage.py prep
   $ python manage.py runserver
 
-We have a the second variant
-:mod:`lino_book.projects.lets2`
-where the members are "polymorphic": they can be
-either customers or suppliers, or both. This is an example of multi-table
-inheritance and how you can use it with Lino's :class:`Polymorphic
-<lino.mixins.polymorphic.Polymorphic>` mixin.
+.. We have a the second variant
+  :mod:`lino_book.projects.lets2`
+  where the members are "polymorphic": they can be
+  either customers or suppliers, or both. This is an example of multi-table
+  inheritance and how you can use it with Lino's :class:`Polymorphic
+  <lino.mixins.polymorphic.Polymorphic>` mixin.
+  TODO: move also lets2 into new repository to make things more easy to copy.
 
-TODO: move also lets2 into new repository to make things more easy to copy.
+Members
+=======
+
+For storing what the customer calls "members", we decided to use the standard
+library plugin :mod:`lino.modlib.users`.  But we extend it:
+
+- we change the verbose model name from "User" to "Member"
+- we add a field :attr:`place`, which is a pointer to our table of places.
 
 Form layouts
 ============

@@ -1,3 +1,5 @@
+.. doctest docs/dev/lets/step3.rst
+.. include:: /../docs/shared/include/defs.rst
 .. _dev.lets.step3:
 
 ==========================
@@ -18,10 +20,22 @@ To see what we changed since the previous step::
 
   $ git diff step2
 
-Not many explanations here yet. Try to understand the code changes and to ask
+Not many explanations here yet. Try to understand the code changes and ask
 questions.
 
-Maybe some helpful hints:
+Some hints:
 
-- :meth:`lino.core.model.Model.get_simple_parameters`
-- :doc:`/dev/choicelists`
+- Note that the Offers, Demands and Products tables now have a |gear| icon in
+  their toolbar. This is the main new feature. Play with it.
+
+- The :attr:`delivery_unit` field is a choicelist field. This is similar to a
+  :class:`ForeignKey`, but instead of pointing to a database row, it points to a
+  choice in a hard-coded table, which we call a choicelist.
+  See :doc:`/dev/choicelists`.
+
+- The :meth:`Model.get_simple_parameters
+  <lino.core.fields.TableRow.get_simple_parameters>` method (a class method on a
+  database model) yields the name of database fields to be used as "table
+  parameters", i.e. the fields that appear in the "parameter panel" (the panel
+  that expands and collapses when you hit the |gear| button). See
+  :doc:`/dev/parameters`.
