@@ -1,9 +1,25 @@
-=========================
-Before reading this guide
-=========================
+============================
+Before starting a mentorship
+============================
 
-Before reading this guide, you should have (or acquire) some basic knowledge
-about writing Python programs in a free open source project.
+Before reading this guide, you should have (or acquire) basic experience with
+certain topics.  This page gives an overview of what a qualified mentee should
+know. The next page will give concrete learning resources.
+
+Linux
+=====
+
+When you want to become a Lino developer, there is a first requirement that
+might sound hard for those who never tried it: you need to say goodbye to
+Windows and move on to Linux.  We don't discuss about this question, but we will
+help you with the move.
+
+Lino itself has no specific OS requirements, but on proprietary operating
+systems you are likely to encounter problems that are not our business.  For
+example some dependencies are more difficult to install on these systems.  If
+you are using Windows as your primary OS, we recommend to switch to Ubuntu
+before going on.
+
 
 Python
 ======
@@ -43,20 +59,6 @@ platform.
 - You have created a free account on GitHub and made a fork of Lino.
 - You are able to make some change in your working copy, commit your
   branch and send a pull request.
-
-
-Sphinx
-======
-
-Documentation about Lino is written using `Sphinx
-<http://sphinx-doc.org>`_.
-
-- You should know how Sphinx works and why we use it to write Lino
-  documentation.  See :doc:`/dev/builddocs` for the first steps.
-
-- You might want to use the same blogging system as Luc and to
-  document your own contributions to Lino in a :doc:`developer blog
-  </dev/devblog>`.
 
 
 The UNIX shell

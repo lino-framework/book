@@ -13,17 +13,12 @@ Installing a Lino developer environment
 .. _Debian: http://www.debian.org/
 
 This document describes how to install a Lino :term:`developer environment` on
-your computer.  This is the easiest way to get started. You might later evolve
-into a *contributing* developer as described in :doc:`/team/install/index`. For
-installing Lino on a :term:`production server` you should read
-:doc:`/admin/install`.
+your computer.  This is the easiest way to get started. You should read this
+document also if you plan to later evolve into a *contributing* developer as
+described in :doc:`/team/install/index`. 
 
 This document is written for Debian_ and derived distributions. Other Linuxes
-should be pretty similar.  Lino itself has no specific OS requirements, but on
-proprietary operating systems you might encounter problems that are not
-documented here because some dependencies are more difficult to install on these
-systems.  If you are using Windows as your primary OS, we recommend to switch to
-Ubuntu before going on.
+should be pretty similar.
 
 This document assumes you are familiar with the Linux shell at least for basic
 file operations like :cmd:`ls`, :cmd:`cp`, :cmd:`mkdir`, :cmd:`rmdir`, file

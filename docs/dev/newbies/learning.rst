@@ -10,9 +10,9 @@ Python
 ======
 
 - `Learn Python The Hard Way <http://learnpythonthehardway.org>`_
-  by Zed A. Shaw 
+  by Zed A. Shaw
 
-- `Code Academy <http://www.codecademy.com/en/tracks/python>`_
+- `Code Academy <https://www.codecademy.com/catalog/language/python>`_
 
 - `Dive Into Python <http://www.diveintopython.net>`__ ("Python from
   novice to pro") is a free Python book for experienced programmers.
@@ -28,7 +28,7 @@ Python
 
 - `Python Debugging With Pdb
   <https://realpython.com/python-debugging-pdb>`__ by Nathan Jennings.
-  
+
 
 - (in Estonian: `Programmeerimise õpik <https://programmeerimine.cs.ut.ee>`_)
 
@@ -58,7 +58,17 @@ Working in a UNIX shell
 Sphinx
 ======
 
+Documentation about Lino is written using `Sphinx <http://sphinx-doc.org>`_.
+
 - `Tutorial <http://sphinx-doc.org/tutorial.html>`_
+
+- You should know how Sphinx works and why we use it to write Lino
+  documentation.  See :doc:`/dev/builddocs` for the first steps.
+
+- You might want to use the same blogging system as Luc and to
+  document your own contributions to Lino in a :doc:`developer blog
+  </dev/devblog>`.
+
 
 
 HTML, CSS and Javascript
@@ -87,5 +97,3 @@ See also :doc:`/dev/git` and :doc:`/dev/request_pull`.
 - `Udemy Comprehensive Git Guide
   <https://blog.udemy.com/git-tutorial-a-comprehensive-guide/>`__
 - `GitKraken <https://www.gitkraken.com>`__ can help to understand things.
-
-

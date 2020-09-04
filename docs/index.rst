@@ -16,11 +16,11 @@ sure come to back to your starting point after such an excursion.
    /dev/about
    /demos
 
+   /dev/newbies/index
    Developer Guide </dev/index>
    Contributor Guide </team/index>
    Hoster Guide </admin/index>
    User Guide </guide/index>
-   /dev/newbies/index
 
    Specs </specs/index>
    API </api/index>

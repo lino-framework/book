@@ -1,6 +1,8 @@
-==============
-Newbies corner
-==============
+===========================
+Mentee Guide
+===========================
+
+We offer free support to volunteer mentees.
 
 Here is a list of things you should know as a :term:`application developer`. These
 basic skills are not part of this book, but we try to help you with getting
@@ -12,6 +14,10 @@ started by providing useful pointers.
 
    prerequisites
    learning
-   py2lino
-   kids
    editor
+   py2lino
+
+.. toctree::
+   :hidden:
+
+   kids
