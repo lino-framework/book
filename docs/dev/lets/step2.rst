@@ -20,4 +20,4 @@ To activate the code of this step in your contributor environment::
 :doc:`/dev/xlmenu`
 
 :doc:`/specs/appypod`
-:doc:`/specs/export_except`
+:doc:`/specs/export_excel`
