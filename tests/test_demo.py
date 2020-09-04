@@ -143,9 +143,6 @@ class TestCase(TestCase):
     def test_nomti(self):
         self.run_django_manage_test('lino_book/projects/nomti')
 
-    def test_lets1(self):
-        self.run_django_manage_test('lino_book/projects/lets1')
-
     def test_lets2(self):
         self.run_django_manage_test('lino_book/projects/lets2')
 

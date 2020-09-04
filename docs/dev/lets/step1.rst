@@ -190,7 +190,7 @@ The dashboard
 The dashboard shows the `ActiveProducts` table. The definition of that table is
 `here <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/lib/market/ui.py#L25>`__,
 and the :meth:`get_dashboard_items <lino.core.site.Site.get_dashboard_items>` method is defined
-`here <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/lib/lets/settings.py#L51>`__)
+`here <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/lib/lets/settings.py#L41>`__)
 
 More screenshots
 =================
