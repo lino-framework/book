@@ -18,7 +18,6 @@ The apc demo project
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 32 plugins
 - 52 models
-- 13 user roles
 - 3 user types
 - 183 views
 - 14 dialog actions

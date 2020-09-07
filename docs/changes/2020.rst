@@ -14,6 +14,13 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-09-07
+==========
+
+:meth:`lino.utils.diag.Analyzer.get_complexity_factors` no longer yields the
+number of user_roles. Because I realized that this number is meaningless for
+discussing the commercial complexity of an application.
+
 2020-09-04
 ==========
 

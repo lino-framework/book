@@ -16,7 +16,6 @@ doctest init:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 42 plugins
 - 83 models
-- 21 user roles
 - 5 user types
 - 317 views
 - 24 dialog actions

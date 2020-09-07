@@ -227,8 +227,13 @@ User roles and their usage
 
 .. class:: UserRoles
 
-This virtual table shows a list of user roles used in this application
-and which user type has them.
+Shows a list of the user roles used in this application together with the user
+type that have them.
+
+This table can help when designing the list of user types and what permissions
+each of them should have.
+
+Example:
 
 >>> rt.show(users.UserRoles)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -248,16 +253,20 @@ and which user type has them.
  office.OfficeUser              ☑     ☑
  polls.PollsAdmin                     ☑
  polls.PollsUser                ☑     ☑
+ xl.SiteAdmin                         ☑
+ xl.SiteUser                    ☑
 ======================== ===== ===== =====
 <BLANKLINE>
 
-Note that this table does not show :class:`UserRole` subclasses which
-have been defined in within the :attr:`user_types_module
-<lino.core.site.Site.user_types_module>` itself since these are just
-another hierarchy level, they are not used in any
-:attr:`roles_required` and therefore not useful for describing which
-permissions are given to which user type.
 
+
+The table doesn't show *all* user roles, only those that are "meaningful".
+
+Where meaningful means: those which are mentioned (either imported or defined)
+in the global context of the :attr:`user_types_module
+<lino.core.site.Site.user_types_module>`. We tried more "intelligent"
+approaches, but it is not trivial for Lino to guess which roles are
+"meaningful".
 
 .. _current_user_type:
 

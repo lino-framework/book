@@ -140,6 +140,16 @@ this would be needed on a production site.  The **specs** is a Sphinx
 documentation tree and contains mainly :file:`.rst` files. These are not needed
 on a production site.  Their first purpose is to contain tests.
 
+To try the examples in this tutorial on your own computer, you must install our
+code. Assuming that you have installed your :doc:`Lino developer environment
+</dev/install/index>`, open a terminal and say::
+
+  $ cd ~/lino
+  $ mkdir repositories
+  $ cd repositories
+  $ git clone https://gitlab.com/lino-framework/lets.git
+  $ pip install -e lets/
+
 If you have installed a :doc:`Lino contributor environment
 </team/install/index>`, you can run the demo by saying::
 

@@ -106,6 +106,11 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  excerpts.ExcerptsStaff                             ☑     ☑
  excerpts.ExcerptsUser                        ☑     ☑     ☑
  ledger.LedgerStaff                                       ☑
+ noi.Anonymous                    ☑
+ noi.Contributor                              ☑     ☑     ☑
+ noi.Customer                           ☑     ☑     ☑     ☑
+ noi.Developer                                      ☑     ☑
+ noi.SiteAdmin                                            ☑
  office.OfficeStaff                                       ☑
  office.OfficeUser                      ☑     ☑     ☑     ☑
  products.ProductsStaff                                   ☑
@@ -119,6 +124,7 @@ Here is the :class:`lino.modlib.users.UserRoles` table for :ref:`noi`:
  working.Worker                               ☑     ☑     ☑
 ================================ ===== ===== ===== ===== =====
 <BLANKLINE>
+
 
 
 Users

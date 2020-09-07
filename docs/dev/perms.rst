@@ -149,6 +149,8 @@ permissions granted to each user type.
  office.OfficeUser              ☑     ☑
  polls.PollsAdmin                     ☑
  polls.PollsUser                ☑     ☑
+ xl.SiteAdmin                         ☑
+ xl.SiteUser                    ☑
 ======================== ===== ===== =====
 <BLANKLINE>
 

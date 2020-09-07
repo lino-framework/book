@@ -12,10 +12,12 @@ Installing a Lino developer environment
 .. _pycrypto: https://pypi.python.org/pypi/pycrypto
 .. _Debian: http://www.debian.org/
 
+.. highlight:: console
+
 This document describes how to install a Lino :term:`developer environment` on
 your computer.  This is the easiest way to get started. You should read this
 document also if you plan to later evolve into a *contributing* developer as
-described in :doc:`/team/install/index`. 
+described in :doc:`/team/install/index`.
 
 This document is written for Debian_ and derived distributions. Other Linuxes
 should be pretty similar.
@@ -48,16 +50,12 @@ Also if you wish to remove Lino from your system you only need to remove the
 virtual environment rather than trying to remove Lino's dependencies from the
 system environment without breaking any other programs that use python.
 
-Before using virtualenvs, we must install the feature:
-
-.. code-block:: console
+Before using virtualenvs, we must install the feature::
 
   $ sudo apt-get install python3-venv
 
 In a :term:`developer environment` we suggest :file:`~/lino/env` as your
-*default environment*. So here we go:
-
-.. code-block:: console
+*default environment*. So here we go::
 
   $ python3 -m venv ~/lino/env
   $ source ~/lino/env/bin/activate
