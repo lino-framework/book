@@ -4,15 +4,17 @@
 Using Certbot/Let's encrypt with Lino
 =====================================
 
-You activate this using the ``--https`` option of :ref:`getlino configure
-<getlino>`.
+`What's Certbot? <https://certbot.eff.org/about/>`__
+
+The recommended way to activate Certbot on a :term:`Lino server` is by using the
+``--https`` option of :ref:`getlino configure <getlino>`.
 
 This option will:
 
-- install `certbot-auto` if needed
+- install `certbot` or `certbot-auto` (unless one of them is already installed)
 
-- Set up automatic certificate renewal by adding an entry to your
-  :file:`/etc/crontab` that will run :cmd:`certbot-auto renew` automatically
+- add an entry to your :file:`/etc/crontab` that will run :cmd:`certbot-auto
+  renew` automatically every 12 hours.
 
 On a Lino server with ``--https`` option, ``getlino startsite`` will
 automatically do the following.
@@ -30,11 +32,15 @@ Read the docs:
 - https://certbot.eff.org/lets-encrypt/debianbuster-nginx
 
 
+.. highlight:: console
 
-Playing around manually
-=======================
+Troubleshooting
+===============
 
-You can always run :cmd:`certbot-auto`::
+Here are some hints for playing around manually when something doesn't work as
+expected.
+
+You can run :cmd:`certbot-auto` at any moment in interactive mode::
 
   $ certbot-auto
   Requesting to rerun /usr/local/bin/certbot-auto with root privileges...
@@ -57,11 +63,11 @@ managed by certbot::
 
   $ certbot-auto certificates
 
-How to remove a certbot certificate? E.g. after moving some site to a new server, you
-should instruct certbot on the old server to no longer ask for a certificate for
-that site. --> Simply remove all related config files.
+How to remove a certbot certificate? E.g. after moving some site to a new
+server, you should instruct certbot on the old server to no longer ask for a
+certificate for that site. --> Simply remove all related config files.
 
-Manually configure a new site on your server::
+How to manually add a certificate for a new site on your server::
 
   $ certbot-auto -d www.example.com
 
@@ -71,8 +77,7 @@ You can create certificates that cover multiple domains::
   $ certbot-auto -d one.example.com -d two.example.com
 
 
-
-::
+How to install certbot using the Debian package::
 
   $ sudo apt-get install certbot python-certbot-nginx
   Reading package lists... Done
@@ -82,11 +87,12 @@ You can create certificates that cover multiple domains::
   python-certbot-nginx is already the newest version (0.31.0-1).
   0 upgraded, 0 newly installed, 0 to remove and 124 not upgraded.
 
+Messy certificates
+
 "A messy certificate is a certificate that covers a domain which is already
 covered by another certificate."
 
-How to find messy certificates?
-
+How to find them?
 
 
 Delete it::
@@ -111,13 +117,19 @@ How to see all enabled sites and the certificate they use::
   $ cd /etc/nginx/sites-enabled
   $ grep ssl_certificate_key *
 
+How to set the email address used by the ACME server for sending notifications::
 
-Maintaining the list of domains in a separate file
-==================================================
+  $ certbot-auto update_account --email postmaster@mydomain.org
 
-How to maintain the list of domains in a separate file.  Let's say you have a
-certificate named ``example.com``, and you have a lot of subdomains that you
-want to cover using that same certificate.
+
+One certificate covering many domains
+=====================================
+
+On LF we have a lot of subdomains (but no wildcard certificate). Here is how to
+maintain the list of domains for a given certificate in a separate file.
+
+Let's say you have a certificate named ``example.com``, and you have a lot of
+subdomains that you want to cover using that same certificate.
 
 Create a file named :file:`~/domains.txt` with one line per domain, each line
 starts with `-d`::

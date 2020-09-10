@@ -18,5 +18,15 @@ in :doc:`/dev/analysis`.
     step1
     step2
     step3
+    step4
     m2m
     docs
+
+Planned next steps:
+
+- adding actions
+- social auth
+- uploading images
+- i18n
+- comments
+- publisher

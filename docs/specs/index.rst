@@ -163,3 +163,4 @@ Technical stuff
    dpy
    jsgen
    html
+   getlino/index

@@ -3,6 +3,25 @@ Frequently Asked Questions
 ==========================
 
 
+**Is Lino an accounting software?**
+
+Accounting is just one functionality covered by Lino. And actually it isn't
+even yet in production anywhere. We are testing it. People usually prefer to use
+some "established" software for their accounting.
+
+**What's the main function of Lino?**
+
+It's a framework to write applications. Comparable to SAP. Or imagine a very
+generic ERP software.  Here are some functions that are currently being used on
+Lino :term:`production sites <production site>`:
+
+- Office functionality (contact management, group calendar, notes, tasks, ...)
+- Recording contracts and agreements and print them out
+- Record and maintain customized data about people and business partners
+- Generate pdf or odt documents based on database content.
+- Upload files and manage them
+
+
 **As an application developer, why should I invest time to learn yet
 another framework?**
 

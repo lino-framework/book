@@ -5,8 +5,8 @@
 Accounting stuff in Lino
 ========================
 
-This topic guide explains everything a Lino application developer needs to know
-about accounting stuff.  It will probably never be finished.
+This topic guide explains everything a Lino :term:`application developer` needs
+to know about accounting stuff.  It will never be finished.
 
     When designing an accounting package, the programmer operates as a
     mediator between people having different ideas: how it must
@@ -14,7 +14,7 @@ about accounting stuff.  It will probably never be finished.
     the tax laws. By contrast, an operating system is not limited by
     outside appearances. When designing an operating system, the
     programmer seeks the simplest harmony between machine and
-    ideas. This is why an operating system is easier to design.  
+    ideas. This is why an operating system is easier to design.
     -- Tao of programming
 
 
