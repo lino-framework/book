@@ -51,8 +51,7 @@ class Site(Site):
     #     yield 'lino_react.react'
 
     def get_plugin_configs(self):
-        for i in super(Site, self).get_plugin_configs():
-            yield i
+        yield super(Site, self).get_plugin_configs()
         yield ('excerpts', 'responsible_user', 'jean')
         # yield ('memo', 'front_end', 'react')
 

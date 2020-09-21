@@ -28,7 +28,7 @@ server>`, you must set up the :term:`master environment`.
 
 The :term:`master environment` should be outside of your home::
 
-    $ sudo mkdir /usr/local/lino/shared/env
+    $ sudo mkdir -p /usr/local/lino/shared/env
     $ cd /usr/local/lino/shared/env
     $ sudo chown root:www-data .
     $ sudo chmod g+ws .
@@ -116,4 +116,3 @@ its Python environment::
 To activate a hourly health check::
 
   $ sudo ln -s /usr/local/bin/healthcheck.sh /etc/cron.hourly/
-  

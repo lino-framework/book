@@ -2,8 +2,9 @@
 About Lino
 ==========
 
-This section explains in technical language why Lino is so cool. For more
-commercial language see :ref:`lino.why`.
+This section explains in technical language why Lino is so cool. For less
+technical language see the "About Lino" section of the `Community Guide
+<https://community.lino-framework.org/lino>`__.
 
 You can skip the whole section if you prefer to get your hands wet before making
 up your opinion.

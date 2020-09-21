@@ -41,13 +41,6 @@ Running Lino on a full server
     cron
     mail/index
 
-Running Lino on PythonAnywhere
-==============================
-
-.. toctree::
-    :maxdepth: 1
-
-    pyanywhere
 
 Maintenance
 ===========
@@ -123,3 +116,4 @@ Other
     attic
     media
     xl
+    pyanywhere

@@ -52,11 +52,13 @@ system environment without breaking any other programs that use python.
 
 Before using virtualenvs, we must install the feature::
 
-  $ sudo apt-get install python3-venv
+  $ sudo apt-get install python3-venv  # Debian
+  $ sudo dnf install python3-virtualenv  # RedHat
 
 In a :term:`developer environment` we suggest :file:`~/lino/env` as your
 *default environment*. So here we go::
 
+  $ mkdir ~/lino
   $ python3 -m venv ~/lino/env
   $ source ~/lino/env/bin/activate
 
@@ -124,9 +126,10 @@ via pip::
 
 Note: In case you have used getlino on your machine before (maybe another
 virtualenv, but the same machine), then you might want to delete your
-configuration file before going on::
+configuration files before going on::
 
-  rm ~/.getlino.conf
+  $ rm ~/.getlino.conf
+  $ sudo rm /etc/getlino/getlino.conf
 
 Then run :cmd:`getlino configure`::
 
