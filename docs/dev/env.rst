@@ -13,18 +13,21 @@ Setting up your work environment
 What is a project?
 ==================
 
-We use the word **project** for quite a lot of things. But for Lino
-developers they all have one thing in common: each project is a
-directory on your file system.  You "activate" a project by opening a
-terminal and changing to its directory. That's all. Almost all. Read
-on.
+The word **project** is used for quite a lot of things. There are many types of
+"projects".  For example a **Django project** is a directory where you can
+invoke a :manage:`runserver`.  It contains at least a :xfile:`settings.py` and
+usually a file :xfile:`manage.py`.
 
-There are different types of "projects".  A **Django project** is
-where you can invoke a :manage:`runserver`.  It contains at least a
-:xfile:`settings.py` and usually a file :xfile:`manage.py`.  For
-**Atelier**, a project must contain at least a file :xfile:`tasks.py`.
-An *Atelier project* can contain one or more *Django projects*.
+But as a Lino contributor you are using :mod:`atelier`, a minimalistic
+command-line project management tool. Atelier projects have only one thing in
+common: each project is a directory on your file system.  You "activate" a
+project by opening a terminal and changing to its directory. That's all. Almost
+all. Read on.
 
+Almost every **atelier**  project also contains at least a file
+:xfile:`tasks.py`.
+
+- One *atelier project* can contain one or more *Django projects*.
 - An atelier project usually corresponds to a public code repository
   (using Git or Mercurial). But you can have unpublished projects
   which have no repo at all.
@@ -33,24 +36,24 @@ An *Atelier project* can contain one or more *Django projects*.
 - An atelier project can have a number of Sphinx document trees
   (default is one tree named :file:`docs`).
 
-You will have different **root directories** containing projects.
-You don't want to have them all under a single top-level directory.
-We suggest the following naming conventions.
+You will have different **project base** directories containing projects. You
+might not want to have all your projects under a single top-level directory. We
+suggest the following naming conventions.
 
 .. xfile:: ~/repositories
 
-    The :file:`~/repositories` directory is your collection of code
+    The :file:`~/lino/repositories` directory is your collection of code
     repositories of projects for which you cloned a copy. We created
-    this directory in :ref:`lino.dev.install`.
+    this directory already in :ref:`lino.dev.install`.
 
 .. xfile:: ~/projects
 
     :xfile:`~/projects/` is the base directory for every new project of
-    which you are the author. You created this directory in
+    which *you* are the author. You created this directory in
     :doc:`/dev/hello/index`, and ``hello`` is your first local
     project.
 
-.. xfile:: ~/repositories/book/lino_book/projects
+.. xfile:: ~/lino/repositories/book/lino_book/projects
 
     The Lino Book comes with a set of Django demo projects maintained
     by the Lino team.  For example, ``min1`` is one of the Django
@@ -89,49 +92,12 @@ Now you should be able to do::
   $ go min1   # cd to ~/repositories/book/lino_book/projects/min1
 
 
-Configuring atelier
-===================
-
-To get a full Lino contributor environment, you must tell atelier the
-list of your projects. That's done in your
-:xfile:`~/.atelier/config.py` file. Create the directory and the file,
-with the following content::
-
-     add_project("/home/john/projects/hello")
-     names = 'lino xl book noi voga presto welfare avanti vilma tera extjs6'
-     for p in names.split():
-         add_project("/home/john/repositories/" + p)
-
-Note our use of a syntactical trick to avoid typing lots of
-apostrophes: we put the names into a single string, separated just by
-spaces. And then we call the :meth:`split` method on that string which
-splits our string on every whitspace:
-
->>> 'foo bar  baz'.split()
-['foo', 'bar', 'baz']
-
-Letting :mod:`atelier` know where your projects are has the following
-advantages:
-
-- You can run the :cmd:`per_project` script (or its alias :cmd:`pp`)
-  to run a given command over many projects.
-
-- You can use :mod:`atelier.sphinxconf.interproject` to create
-  Intersphinx links from one project's docs to the docs of another
-  project.
-
-
 Some more shell aliases
 =======================
 
-Here are some useful aliases and functions for your
-:xfile:`~/.bash_aliases`::
-
-    alias pp='per_project'
-    alias runserver='python manage.py runserver'
-    alias ci='inv ci'
-    alias p3='. ~/pythonenvs/py3/bin/activate'
-    alias p2='. ~/pythonenvs/py2/bin/activate'
+The :xfile:`.lino_bash_aliases` file  (created by getlino and which you should
+source from your :xfile:`~/.bash_aliases` or :xfile:`~/.bashrc` file) contains
+some useful aliases and functions. One of them is pywhich::
 
     function pywhich() {
       python -c "import $1; print($1.__file__)"
@@ -152,12 +118,46 @@ Here are some useful aliases and functions for your
    Note that :xfile:`env` might be a *symbolic-link* pointing to some
    shared environment folder.
 
+Configuring atelier
+===================
+
+To get a full Lino contributor environment, you must tell atelier the list of
+your projects. That's done in your :xfile:`~/.atelier/config.py` file. You must
+create this file yourself, manually::
+
+  $ mkdir ~/.atelier
+  $ nano ~/.atelier/config.py
+
+Add the following content::
+
+     add_project("/home/john/projects/hello")
+     names = 'lino xl book noi voga presto welfare avanti vilma tera extjs6'
+     for p in names.split():
+         add_project("/home/john/repositories/" + p)
+
+Note our use of a syntactical trick to avoid typing lots of
+apostrophes: we put the names into a single string, separated just by
+spaces. And then we call the :meth:`split` method on that string which
+splits our string on every whitespace:
+
+>>> 'foo bar  baz'.split()
+['foo', 'bar', 'baz']
+
+Letting :mod:`atelier` know where your projects are has the following
+advantages:
+
+- You can run the :cmd:`per_project` script (or its alias :cmd:`pp`)
+  to run a given command over many projects.
+
+- You can use :mod:`atelier.sphinxconf.interproject` to create
+  Intersphinx links from one project's docs to the docs of another
+  project.
 
 
 Usage examples
 ==============
 
-You can now play around in your development environment.
+You can now play around in your "development environment".
 
 See a list of your atelier projects::
 
@@ -185,6 +185,10 @@ of Lino::
 
   $ go lino
   $ git pull
+
+Do the same for all your cloned repositories::
+
+  $ pp git pull
 
 Run the full test suite in :ref:`book`::
 
