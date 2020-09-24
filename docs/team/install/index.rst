@@ -51,10 +51,12 @@ Run :cmd:`getlino` with the following options::
 
 .. For details see the documentation about :ref:`getlino`.
 
+It will say "The following command was not executed because you cannot sudo",
+followed by an "apt-get install" command.
+
 Add manually the following line to your :xfile:`.bashrc` file::
 
   source ~/.lino_bash_aliases
-
 
 This will also install the :ref:`Lino Book <book>` project.  That's a special
 project.  It is not an application, and it is not released on PyPI. It makes

@@ -40,11 +40,6 @@ You will have different **project base** directories containing projects. You
 might not want to have all your projects under a single top-level directory. We
 suggest the following naming conventions.
 
-.. xfile:: ~/repositories
-
-    The :file:`~/lino/repositories` directory is your collection of code
-    repositories of projects for which you cloned a copy. We created
-    this directory already in :ref:`lino.dev.install`.
 
 .. xfile:: ~/projects
 
@@ -53,7 +48,7 @@ suggest the following naming conventions.
     :doc:`/dev/hello/index`, and ``hello`` is your first local
     project.
 
-.. xfile:: ~/lino/repositories/book/lino_book/projects
+.. xfile:: ~/lino/env/repositories/book/lino_book/projects
 
     The Lino Book comes with a set of Django demo projects maintained
     by the Lino team.  For example, ``min1`` is one of the Django
@@ -276,3 +271,17 @@ Doing this is easy:
      ...
      names = 'atelier lino xl book noi voga presto welfare avanti extjs6'
      ...
+
+
+
+
+Where to store repositories
+===========================
+
+.. xfile:: repositories
+
+    A :file:`repositories` directory is a collection of code repositories of
+    projects for which we cloned a copy.
+
+    In a developer environment, this is  :file:`~/lino/env/repositories`
+    (created by getlino in :ref:`lino.dev.install`).
