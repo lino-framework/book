@@ -14,6 +14,12 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-09-25
+==========
+
+When :meth:`lino.utils.IncompleteDate.parse` could not parse a date, it no
+longer raises an error but returns `None`.
+
 2020-09-07
 ==========
 
