@@ -193,17 +193,7 @@ Run the full test suite in :ref:`book`::
 It happens that I type the following before leaving my computer for
 getting a cup of coffee::
 
-  $ pp -v inv prep test bd pd
-
-Commit all my changes in all my projects before going to bed::
-
-  $ pp inv ci
-
-If that happens after midnight::
-
-  $ pp inv ci --today 20161222
-
-
+  $ pp inv prep test bd pd
 
 
 
@@ -220,7 +210,6 @@ Have LibreOffice server running on your machine
 Some of the demo examples use :mod:`lino_xl.lib.appypod` for producing
 printable pdf files.  To have this running, you should install the
 LibreOffice server on your system as described in :doc:`/admin/oood`.
-
 
 
 Quickly installing the Lino SDK into a new virtualenv

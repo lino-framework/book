@@ -19,7 +19,7 @@ The apc demo project
 - 32 plugins
 - 52 models
 - 3 user types
-- 183 views
+- 182 views
 - 14 dialog actions
 <BLANKLINE>
 
@@ -83,7 +83,7 @@ Robin is the system administrator, he has a complete menu:
   - SEPA : Bank accounts
   - Sales : Price factors, Sales invoices, Sales invoice items
   - Financial : Bank Statements, Journal Entries, Payment Orders
-  - Accounting : Accounting Reports, Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
+  - Accounting : Accounting Reports, Common sheet items, General account balances, Analytic accounts balances, Partner balances, Sheet item entries, Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
 - Site : About
 
@@ -288,7 +288,7 @@ This site shows a series of due sales invoices
  products.DeliveryUnits      3        5                 Delivery units          Delivery units               Delivery units
  products.PriceFactors       0        4                 Price factors           Price factors                Price factors
  products.ProductTypes       1        8                 Product types           Product types                Product types
- sheets.CommonItems          25       25                Common sheet item       Common sheet item            Common sheet item
+ sheets.CommonItems          29       49                Common sheet items      Common sheet items           Common sheet items
  sheets.SheetTypes           2        16                Sheet types             Sheet types                  Sheet types
  system.Genders              2        8                 None                    None                         None
  system.PeriodEvents         3        9                 Beobachtungskriterien   Évènements observés          Observed events

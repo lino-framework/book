@@ -27,18 +27,18 @@ The following plugins are part of the :mod:`lino.modlib`:
 .. toctree::
    :maxdepth: 1
 
-   users
-   printing
-   comments
-   notify
    about
-   search
    checkdata
+   comments
    dashboard
    gfks
-   summaries
+   jinja
    memo
-   modlib
+   notify
+   printing
+   users
+   search
+   summaries
    system
 
 The following plugins are currently still part of the :mod:`lino.modlib` but
@@ -140,6 +140,7 @@ Topic guides
    born
    holidays
    iban
+   modlib
 
 
 Technical stuff

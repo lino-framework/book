@@ -290,7 +290,7 @@ The GNU mail program has its own configuration files::
   $ mail --show-config-options | grep SYSCONFDIR
   SYSCONFDIR=/etc 	- System configuration directory
 
-Which means that actually the config files are in :file:`/etc/main`. And one of
+Which means that actually the config files are in :file:`/etc/mail`. And one of
 them, :file:`/etc/mail/local-host-names` contains my default ``From`` header.
 
 .. rubric:: Which ports is my server listening on? And which service responds to

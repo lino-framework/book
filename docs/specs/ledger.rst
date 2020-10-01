@@ -431,12 +431,12 @@ The balance of an account
 =========================
 
 The **balance** of an account is the amount of money in that account.
-An account balance is either Debit or Credit.
+An account balance is either debiting or crediting.
 
 .. class:: Balance
 
     Light-weight object to represent a balance, i.e. an amount
-    together with its booking direction (debit or credit).
+    together with its booking direction (debiting or crediting).
 
     Attributes:
 
@@ -449,14 +449,30 @@ An account balance is either Debit or Credit.
         The amount of this balance when it is crediting, otherwise zero.
 
 
+>>> from lino_xl.lib.ledger.utils import Balance
+>>> b = Balance(10, 2)
+>>> b
+Balance(8,0)
+>>> print(b)
+8 DB
+>>> b.value(DEBIT)
+Decimal('8')
+
+>>> Balance(15, 23)
+Balance(0,8)
+
 A negative value on one side of the balance is automatically moved to
 the other side.
 
->>> from lino_xl.lib.ledger.utils import Balance
 >>> Balance(10, -2)
 Balance(12,0)
 
+>>> Balance(10, 2) + Balance(15, 23)
+Balance(0,0)
 
+>>> from decimal import Decimal
+>>> Balance(Decimal("12.34"), Decimal("12.33"))
+Balance(0.01,0)
 
 Database fields
 ===============

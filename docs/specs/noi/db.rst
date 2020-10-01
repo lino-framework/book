@@ -101,7 +101,7 @@ The database models
  invoicing.Plan                     invoicing.Plans                  7         0
  invoicing.SalesRule                invoicing.SalesRules             3         0
  invoicing.Tariff                   invoicing.Tariffs                7         0
- ledger.Account                     ledger.Accounts                  18        26
+ ledger.Account                     ledger.Accounts                  18        20
  ledger.AccountingPeriod            ledger.AccountingPeriods         7         0
  ledger.FiscalYear                  ledger.FiscalYears               5         9
  ledger.Journal                     ledger.Journals                  24        1

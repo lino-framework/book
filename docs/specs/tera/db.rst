@@ -24,7 +24,7 @@ Complexity factors
 - 47 plugins
 - 98 models
 - 4 user types
-- 374 views
+- 373 views
 - 27 dialog actions
 <BLANKLINE>
 
@@ -94,7 +94,7 @@ The database models
  invoicing.Plan              invoicing.Plans                8         1
  invoicing.SalesRule         invoicing.SalesRules           3         6
  invoicing.Tariff            invoicing.Tariffs              7         2
- ledger.Account              ledger.Accounts                21        27
+ ledger.Account              ledger.Accounts                21        21
  ledger.AccountingPeriod     ledger.AccountingPeriods       7         6
  ledger.FiscalYear           ledger.FiscalYears             5         6
  ledger.Journal              ledger.Journals                25        10
@@ -117,11 +117,11 @@ The database models
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
  sessions.Session            sessions.SessionTable          3         ...
- sheets.AccountEntry         sheets.AccountEntryTable       7         17
- sheets.AnaAccountEntry      sheets.AnaAcountEntries        7         20
- sheets.Item                 sheets.Items                   9         25
- sheets.ItemEntry            sheets.ItemEntryTable          7         15
- sheets.PartnerEntry         sheets.PartnerEntryTable       8         47
+ sheets.AccountEntry         sheets.AccountEntries          7         12
+ sheets.AnaAccountEntry      sheets.AnaAccountEntries       7         15
+ sheets.Item                 sheets.Items                   9         29
+ sheets.ItemEntry            sheets.ItemEntries             7         16
+ sheets.PartnerEntry         sheets.PartnerEntries          8         47
  sheets.Report               sheets.Reports                 6         1
  system.SiteConfig           system.SiteConfigs             10        1
  teams.Team                  teams.Teams                    5         2

@@ -3,6 +3,17 @@ Glossary
 ========
 
 .. glossary::
+
+  management command
+
+    See the Django docs about
+    `django-admin and manage.py¶
+    <https://docs.djangoproject.com/en/3.1/ref/django-admin/>`__
+    and
+    `Writing custom django-admin commands
+    <https://docs.djangoproject.com/en/3.1/howto/custom-management-commands/>`_
+
+.. glossary::
   :sorted:
 
   customization functions

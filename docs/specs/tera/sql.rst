@@ -69,32 +69,32 @@ Subquery expression
 ========================= =========== =======
  table                     stmt_type   count
 ------------------------- ----------- -------
-                           INSERT      99
+                           INSERT      90
                            UNKNOWN     4
- ana_account               SELECT      22
- cal_event                 SELECT      99
- cal_task                  SELECT      99
- checkdata_problem         SELECT      99
+ ana_account               SELECT      16
+ cal_event                 SELECT      90
+ cal_task                  SELECT      90
+ checkdata_problem         SELECT      90
  contacts_partner          SELECT      53
  django_content_type       SELECT      13
- excerpts_excerpt          SELECT      99
- invoicing_item            SELECT      99
- ledger_account            SELECT      25
+ excerpts_excerpt          SELECT      90
+ invoicing_item            SELECT      90
+ ledger_account            SELECT      19
  ledger_accountingperiod   SELECT      2
- notes_note                SELECT      99
- sales_invoiceitem         SELECT      99
+ notes_note                SELECT      90
+ sales_invoiceitem         SELECT      90
  sheets_accountentry       DELETE      1
- sheets_accountentry       SELECT      7
+ sheets_accountentry       SELECT      1
  sheets_anaaccountentry    DELETE      1
- sheets_anaaccountentry    SELECT      6
- sheets_item               SELECT      17
+ sheets_anaaccountentry    SELECT      1
+ sheets_item               SELECT      29
  sheets_itementry          DELETE      1
- sheets_itementry          SELECT      9
+ sheets_itementry          SELECT      2
  sheets_partnerentry       DELETE      1
  sheets_partnerentry       SELECT      1
- sheets_report             SELECT      99
- topics_interest           SELECT      99
- uploads_upload            SELECT      99
+ sheets_report             SELECT      90
+ topics_interest           SELECT      90
+ uploads_upload            SELECT      90
 ========================= =========== =======
 <BLANKLINE>
 

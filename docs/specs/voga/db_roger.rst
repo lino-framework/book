@@ -44,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               42        72
  contacts.Role              contacts.Roles                 4         3
  contacts.RoleType          contacts.RoleTypes             5         5
- contenttypes.ContentType   gfks.ContentTypes              3         83
+ contenttypes.ContentType   gfks.ContentTypes              3         84
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             34        26
@@ -71,7 +71,7 @@ The database structure
  invoicing.Plan             invoicing.Plans                8         1
  invoicing.SalesRule        invoicing.SalesRules           3         4
  invoicing.Tariff           invoicing.Tariffs              7         3
- ledger.Account             ledger.Accounts                18        27
+ ledger.Account             ledger.Accounts                18        21
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.FiscalYear          ledger.FiscalYears             5         7
  ledger.Journal             ledger.Journals                25        10
