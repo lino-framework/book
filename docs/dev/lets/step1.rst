@@ -153,7 +153,7 @@ code. Assuming that you have installed your :doc:`Lino developer environment
 If you have installed a :doc:`Lino contributor environment
 </team/install/index>`, you can run the demo by saying::
 
-  $ go letsdemo
+  $ cd ~/lino/repositories/lets/lets_demo/projects/letsdemo
   $ python manage.py prep
   $ python manage.py runserver
 
