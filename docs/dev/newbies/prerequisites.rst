@@ -3,8 +3,9 @@ Before starting a mentorship
 ============================
 
 Before reading this guide, you should have (or acquire) basic experience with
-certain topics.  This page gives an overview of what a qualified mentee should
-know. The next page will give concrete learning resources.
+certain topics.  This page gives an overview of what a perfect mentee should
+know. You don't need to be perfect. The next page will give concrete learning
+resources.
 
 Linux
 =====
