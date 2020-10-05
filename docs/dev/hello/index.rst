@@ -236,7 +236,7 @@ You can now play around by changing things in your project.
 
 #.  Same as previous, but with :mod:`lino_book.projects.chatter`
 
-#.  Write three descriptions in LibreOffice `.odt` format, one for
+#.  Write three descriptions (e.g. in LibreOffice `.odt` format), one for
     each of the applications you just saw: what it can do, what are
     the features, what functionalities are missing. Use screenshots.
     Use a language which can be understood by non-programmers.  Send
@@ -247,3 +247,24 @@ You can now play around by changing things in your project.
 
     - :attr:`is_demo_site <lino.core.site.Site.is_demo_site>`
     - :attr:`languages <lino.core.site.Site.languages>`
+
+    Hint: There are two possibilities to change Site attributes.
+    The most basic way is::
+
+      from lino_book.projects.chatter.settings import *
+      SITE = Site(globals(), title="My Lino site", is_demo_site=False, languages="en fr")
+      DEBUG = True
+
+    The recommended way on :term:`production sites <production site>` is this::
+
+      from lino_book.projects.chatter.settings import *
+
+      class Site(Site):
+          title = "My Lino site"
+          is_demo_site = False
+          languages = "en fr"
+
+      SITE = Site(globals())
+      DEBUG = True
+
+    See :doc:`/dev/settings` for more explanations.

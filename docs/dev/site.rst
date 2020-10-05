@@ -17,11 +17,15 @@ As explained in :doc:`settings` and
 :setting:`SITE` in your :ref:`settings`, and this variable must
 contain an instance of the :class:`Site` class .
 
-The :class:`Site` is the base class for representing a "Lino
-application".  This concept brings an additional level of
-encapsulation to Django.  If you knew Django before Lino, you might
-imagine the :class:`Site` *class* as a kind of a "project template".
-Read :doc:`application` if you wonder why we chose that name.
+The :class:`Site` is the base class for representing a :term:`Lino application`.
+This concept brings an additional level of encapsulation to Django.
+
+If you knew Django before Lino, you might imagine the :class:`Site` *class* as a
+kind of a "project template". Read :doc:`application` if you wonder why we chose
+that name. Django settings usually contain simple values (strings, integers, or
+lists or dictionaries thereof).  But Lino's :setting:`SITE` setting holds a
+*Python object*, which has methods that can be called by application code at
+runtime.
 
 A `Site` has attributes like :attr:`Site.verbose_name` (the "short"
 user-visible name) and the :attr:`Site.version` which are used by the
@@ -30,18 +34,13 @@ method :meth:`Site.welcome_text`.  It also defines a
 application starts up.
 
 The base :class:`Site` *class* is designed to be subclassed by the
-application developer, then imported into a local
-:xfile:`settings.py`, where a local system administrator may subclass
-it another time.
+:term:`application developer`, then imported into a local :xfile:`settings.py`,
+where a local system administrator (:term:`site maintainer`) may subclass it
+another time.
 
-A Lino application starts to "live" when such a :class:`Site` class
-gets **instantiated**.  This instance of your application is stored in
-the :setting:`SITE` variable of a local :xfile:`settings.py`.
-
-Django settings usually contain simple values (strings, integers, or
-lists or dictionaries thereof).  But Lino's :setting:`SITE` setting
-contains a *Python object* which has methods that can be called by
-application code at runtime.
+A Lino application starts to "live" when such a :class:`Site` class gets
+**instantiated**.  The instance of your application is stored in the
+:setting:`SITE` variable of a local :xfile:`settings.py`.
 
 
 
