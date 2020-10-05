@@ -93,6 +93,13 @@ Lino Presto
 
 See http://presto.lino-framework.org
 
+.. _fuori:
+
+Lino Fuori
+----------
+
+See http://fuori.lino-framework.org
+
 .. _amici:
 
 Lino Amici

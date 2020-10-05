@@ -152,7 +152,7 @@ advantages:
 Usage examples
 ==============
 
-You can now play around in your "development environment".
+You can now play around in your "environment".
 
 See a list of your atelier projects::
 
@@ -190,12 +190,25 @@ Run the full test suite in :ref:`book`::
   $ go book
   $ inv prep test
 
+Build a local copy of the html documentation :ref:`book`::
+
+  $ go book
+  $ inv bd
+
+Afterwards you can start your browser on the generated output::
+
+  $ firefox docs/.build/index.html
+
+Building the docs might not work out of the box, it is a topic of its own.  See
+:doc:`/dev/builddocs`.
+
 It happens that I type the following before leaving my computer for
 getting a cup of coffee::
 
-  $ pp inv prep test bd pd
+  $ pp inv prep test bd
 
 
+This runs in every
 
 .. rubric:: Footnotes
 

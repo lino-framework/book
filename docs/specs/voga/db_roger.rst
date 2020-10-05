@@ -18,7 +18,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, jinja, react, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, checkdata, cal, courses, products, rooms, memo, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, calview, wkhtmltopdf, appypod, changes, publisher, sessions.
+42 apps: lino, staticfiles, about, jinja, printing, system, contenttypes, gfks, memo, react, users, office, xl, countries, contacts, lists, beid, checkdata, cal, courses, products, rooms, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, calview, wkhtmltopdf, appypod, changes, publisher, sessions.
 83 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -44,7 +44,7 @@ The database structure
  contacts.Person            contacts.Persons               42        72
  contacts.Role              contacts.Roles                 4         3
  contacts.RoleType          contacts.RoleTypes             5         5
- contenttypes.ContentType   gfks.ContentTypes              3         84
+ contenttypes.ContentType   gfks.ContentTypes              3         83
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             34        26

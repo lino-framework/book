@@ -23,6 +23,7 @@ roles".
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
+
 Database structure
 ==================
 
