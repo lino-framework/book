@@ -14,7 +14,7 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
-2020-01-05
+2020-10-05
 ==========
 
 The :mod:`lino_xl.lib.courses` plugin no longer requires the
@@ -61,6 +61,11 @@ iterator (or a list or a tuple) of fields names.
 
 :term:`Learning foreign keys <learning foreign key>` now also work in :ref:`react`.
 The :attr:`lino_xl.lib.cal.Guest.partner` field is now a :term:`learning foreign key`.
+
+Moved the functions :func:`choices_response`  and :func:`choices_for_field`
+from :mod:`lino_react.react.views` to :mod:`lino.core.views` and to
+:mod:`lino.core.fields` because this was duplicated code.
+
 
 
 2020-08-28

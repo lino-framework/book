@@ -16,7 +16,6 @@ class Site(Site):
     demo_fixtures = """std minimal_ledger
     demo voga demo_bookings payments demo2 checkdata""".split()
 
-
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.publisher'

@@ -24,7 +24,7 @@ You should have read :doc:`ledger` before reading this document.
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
->>> from lino_xl.lib.ledger.utils import DCLABELS
+>>> from lino_xl.lib.ledger.choicelists import DC
 
 
 .. class:: SheetTypes
@@ -75,24 +75,24 @@ You should have read :doc:`ledger` before reading this document.
 
     >>> rt.show(sheets.CommonItems, language="en")
     ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-    ======= ================= ================================= ================== ======== =====================================
-     value   name              text                              Sheet type         D/C      Sheet item
-    ------- ----------------- --------------------------------- ------------------ -------- -------------------------------------
+    ======= ================= ================================= ================== ======== ===================================== ========
+     value   name              text                              Sheet type         D/C      Sheet item                            Mirror
+    ------- ----------------- --------------------------------- ------------------ -------- ------------------------------------- --------
      1       assets            Assets                            Balance sheet      Debit    (1) Assets
      10                        Current assets                    Balance sheet      Debit    (10) Current assets
      1000    customers         Customers receivable              Balance sheet      Debit    (1000) Customers receivable
-     1010                      Taxes receivable                  Balance sheet      Debit    (1010) Taxes receivable
-     1020                      Cash and cash equivalents         Balance sheet      Debit    (1020) Cash and cash equivalents
-     1030                      Current transfers                 Balance sheet      Debit    (1030) Current transfers
-     1090                      Other current assets              Balance sheet      Debit    (1090) Other current assets
+     1010                      Taxes receivable                  Balance sheet      Debit    (1010) Taxes receivable               2010
+     1020                      Cash and cash equivalents         Balance sheet      Debit    (1020) Cash and cash equivalents      2020
+     1030                      Current transfers                 Balance sheet      Debit    (1030) Current transfers              2030
+     1090                      Other current assets              Balance sheet      Debit    (1090) Other current assets           2090
      11                        Non-current assets                Balance sheet      Debit    (11) Non-current assets
      2       passiva           Passiva                           Balance sheet      Credit   (2) Passiva
      20      liabilities       Liabilities                       Balance sheet      Credit   (20) Liabilities
      2000    suppliers         Suppliers payable                 Balance sheet      Credit   (2000) Suppliers payable
-     2010    taxes             Taxes payable                     Balance sheet      Credit   (2010) Taxes payable
-     2020    banks             Banks                             Balance sheet      Credit   (2020) Banks
-     2030    transfers         Current transfers                 Balance sheet      Credit   (2030) Current transfers
-     2090    other             Other liabilities                 Balance sheet      Credit   (2090) Other liabilities
+     2010    taxes             Taxes payable                     Balance sheet      Credit   (2010) Taxes payable                  1010
+     2020    banks             Banks                             Balance sheet      Credit   (2020) Banks                          1020
+     2030    transfers         Current transfers                 Balance sheet      Credit   (2030) Current transfers              1030
+     2090    other             Other liabilities                 Balance sheet      Credit   (2090) Other liabilities              1090
      21      capital           Own capital                       Balance sheet      Credit   (21) Own capital
      2150    net_income_loss   Net income (loss)                 Balance sheet      Credit   (2150) Net income (loss)
      4       com_ass_lia       Commercial assets & liabilities   Balance sheet      Credit   (4) Commercial assets & liabilities
@@ -103,13 +103,12 @@ You should have read :doc:`ledger` before reading this document.
      6010    operating         Operating expenses                Income statement   Debit    (6010) Operating expenses
      6020    otherexpenses     Other expenses                    Income statement   Debit    (6020) Other expenses
      62      wages             Wages                             Income statement   Debit    (62) Wages
-     6900    net_income        Net income                        Income statement   Debit    (6900) Net income
+     6900    net_income        Net income                        Income statement   Debit    (6900) Net income                     7900
      7       revenues          Revenues                          Income statement   Credit   (7) Revenues
      7000    sales             Net sales                         Income statement   Credit   (7000) Net sales
-     7900    net_loss          Net loss                          Income statement   Credit   (7900) Net loss
-    ======= ================= ================================= ================== ======== =====================================
+     7900    net_loss          Net loss                          Income statement   Credit   (7900) Net loss                       6900
+    ======= ================= ================================= ================== ======== ===================================== ========
     <BLANKLINE>
-
 
 
     Every item of this list is an instance of :class:`CommonItem`.
@@ -184,8 +183,12 @@ The Accounting Report
     report.
 
 >>> rpt = sheets.Report.objects.get(pk=1)
+>>> print(rpt.start_period)
+2015-01
+>>> print(rpt.end_period)
+2015-12
 >>> rpt.run_update_plan(rt.login('robin'))  # temporary 20200927
->>> rt.show(sheets.ResultsEntriesByReport, rpt)
+>>> rt.show(sheets.ResultsEntriesByReport, rpt)  # doctest: -SKIP
 ========================= =========== ===========
  Description               Expenses    Revenues
 ------------------------- ----------- -----------
@@ -568,9 +571,9 @@ normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
 
 >>> translation.activate('en')
 
->>> print(DCLABELS[sheets.CommonItems.assets.dc])
+>>> print(sheets.CommonItems.assets.dc)
 Debit
->>> print(DCLABELS[sheets.CommonItems.expenses.dc])
+>>> print(sheets.CommonItems.expenses.dc)
 Debit
 
 `Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
@@ -592,7 +595,7 @@ The equivalent in Lino is:
 >>> for t in sheets.CommonItems.get_list_items():
 ... #doctest: +NORMALIZE_WHITESPACE
 ...   if len(t.value) <= 2:
-...     print("%-2s|%-15s|%-6s" % (t.value, t, DCLABELS[t.dc]))
+...     print("%-2s|%-15s|%-6s" % (t.value, t, t.dc))
 1 |Assets         |Debit
 10|Current assets |Debit
 11|Non-current assets|Debit

@@ -19,7 +19,7 @@ The apc demo project
 - 32 plugins
 - 52 models
 - 3 user types
-- 182 views
+- 183 views
 - 14 dialog actions
 <BLANKLINE>
 
@@ -143,7 +143,8 @@ And as we can see, our worker Robin owes us 9784,48 € because he took money fo
 
 >>> robin = dd.plugins.ledger.worker_model.objects.get(first_name="Robin")
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin)
-**7 offene Bewegungen (8908.45 €)**
+**7 offene Bewegungen (-8908.45 €)**
+
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin, nosummary=True)
 ========== =============== ====================================================================== ============== ======== ================= ===========
  Valuta     Beleg           Beschreibung                                                           Debit          Kredit   Match             Beglichen
@@ -279,6 +280,7 @@ This site shows a series of due sales invoices
  countries.PlaceTypes        23       16                None                    None                         None
  excerpts.Shortcuts          0        4                 Excerpt shortcuts       Excerpt shortcuts            Excerpt shortcuts
  ledger.CommonAccounts       21       29                Gemeinkonten            Comptes communs              Common accounts
+ ledger.DC                   2        6                 Booking directions      Booking directions           Booking directions
  ledger.JournalGroups        6        26                Journalgruppen          Groupes de journaux          Journal groups
  ledger.PeriodStates         2        14                Zustände                États                        States
  ledger.TradeTypes           6        18                Handelsarten            Types de commerce            Trade types

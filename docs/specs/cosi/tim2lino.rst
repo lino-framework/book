@@ -14,11 +14,12 @@ Importing from TIM
 >>> from lino_xl.lib.tim2lino.utils import TimLoader
 >>> tim = TimLoader('', 'en')
 >>> tim.dc2lino("D")
-False
+<ledger.DC.debit:D>
+
 >>> tim.dc2lino("C")
-True
+<ledger.DC.credit:C>
 
 >>> tim.dc2lino("A")
-False
+<ledger.DC.debit:D>
 >>> tim.dc2lino("E")
-True
+<ledger.DC.credit:C>

@@ -64,7 +64,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-353
+354
 
 Some of the actors are abstract, i.e. they are used as base classes for other
 actors:
@@ -112,7 +112,7 @@ lino_xl.lib.vat.desktop.VouchersByPartner]
 Another category are choicelists
 
 >>> len(kernel.CHOICELISTS)
-52
+53
 >>> list(sorted(kernel.CHOICELISTS.items()))[6]
 ('cal.GuestStates', lino_xl.lib.cal.choicelists.GuestStates)
 

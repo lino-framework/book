@@ -17,6 +17,6 @@ doctest init:
 - 42 plugins
 - 83 models
 - 5 user types
-- 317 views
+- 318 views
 - 24 dialog actions
 <BLANKLINE>

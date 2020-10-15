@@ -24,7 +24,7 @@ Complexity factors
 - 47 plugins
 - 98 models
 - 4 user types
-- 373 views
+- 374 views
 - 27 dialog actions
 <BLANKLINE>
 
@@ -77,11 +77,11 @@ The database models
  excerpts.Excerpt            excerpts.Excerpts              12        0
  excerpts.ExcerptType        excerpts.ExcerptTypes          17        9
  finan.BankStatement         finan.BankStatements           16        4
- finan.BankStatementItem     finan.BankStatementItemTable   10        263
+ finan.BankStatementItem     finan.BankStatementItemTable   9         263
  finan.JournalEntry          finan.FinancialVouchers        14        1
- finan.JournalEntryItem      finan.JournalEntryItemTable    10        4
+ finan.JournalEntryItem      finan.JournalEntryItemTable    9         4
  finan.PaymentOrder          finan.PaymentOrders            15        4
- finan.PaymentOrderItem      finan.PaymentOrderItemTable    10        32
+ finan.PaymentOrderItem      finan.PaymentOrderItemTable    9         32
  gfks.HelpText               gfks.HelpTexts                 4         2
  healthcare.Plan             healthcare.Plans               4         5
  healthcare.Rule             healthcare.Rules               6         0
@@ -100,7 +100,7 @@ The database models
  ledger.Journal              ledger.Journals                25        10
  ledger.LedgerInfo           ledger.LedgerInfoTable         2         0
  ledger.MatchRule            ledger.MatchRules              3         33
- ledger.Movement             ledger.Movements               13        911
+ ledger.Movement             ledger.Movements               12        911
  ledger.PaymentTerm          ledger.PaymentTerms            11        8
  ledger.Voucher              ledger.AllVouchers             8         257
  lists.List                  lists.Lists                    7         8

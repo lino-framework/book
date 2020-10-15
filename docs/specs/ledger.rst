@@ -404,28 +404,37 @@ TypeError: Field 'id' expected a number but got MissingAccount(<ledger.CommonAcc
 Debit and credit
 ================
 
-.. data:: DEBIT
-.. data:: CREDIT
-
 Every movement of a financial transaction "moves" some amount either **out of**
 or **into** a given account.  For some reasons beyond the scope of this book,
 accountants didn't want to express this "direction" of a movement simply by
-using either a positive or a negative number, they wanted an explicit word for
-it and called it **debiting** and **crediting**.
+saying "decrease" and "increase" and an either positive or negative number, they
+wanted an explicit word for it and called it **debiting** and **crediting**.
 
-We represent the direction of a movement internally as the boolean values
-`True` and `False`, but define two names :data:`DEBIT` and :data:`CREDIT` for
-them:
+Lino stores the amount of a crediting movement as a negative number.
 
->>> from lino_xl.lib.ledger.utils import DEBIT, CREDIT
->>> DEBIT
-False
->>> CREDIT
-True
-
-Since it is a boolean field, some frontends might represent it as a checkbox.
-In that case remember that **checked** means credit and **not checked** means
+When migrating from Lino before 20201008, keep in mind that
+that a **checked** dc field means credit and **not checked** means
 debit.
+
+.. class:: DC
+
+  A choicelist with the two values "debit" and "credit".
+
+  It can be used e.g. to express the "expected" or "normal" booking direction
+  for a journal, account or report.
+
+>>> rt.show(ledger.DC)
+======= ======== ========
+ value   name     text
+------- -------- --------
+ D       debit    Debit
+ C       credit   Credit
+======= ======== ========
+<BLANKLINE>
+
+For the following tests we import it:
+
+>>> from lino_xl.lib.ledger.choicelists import DC
 
 The balance of an account
 =========================
@@ -455,7 +464,7 @@ An account balance is either debiting or crediting.
 Balance(8,0)
 >>> print(b)
 8 DB
->>> b.value(DEBIT)
+>>> b.value(DC.debit)
 Decimal('8')
 
 >>> Balance(15, 23)
@@ -479,13 +488,17 @@ Database fields
 
 .. class:: DebitOrCreditField
 
+    After 20201008 this is replaced by :meth:`DC.field`.
+
     A field that stores the "direction" of a movement, i.e. either
     :data:`DEBIT` or :data:`CREDIT`.
 
 
 .. class:: DebitOrCreditStoreField
 
-    Uused as `lino_atomizer_class` for :class:`DebitOrCreditField`.
+    No longer used after 20201008.
+
+    Used as `lino_atomizer_class` for :class:`DebitOrCreditField`.
 
 
 Movements
@@ -642,7 +655,7 @@ For example David da Vinci has 4 open invoices:
 Person #165 ('Mr David da Vinci')
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj)
-**2 open movements (1946.43 €)**
+**2 open movements (-1946.43 €)**
 
 >>> rt.show(rt.models.ledger.MovementsByPartner, obj, nosummary=True)
 ============ =============== ======================================= ============== ======== ================= =========
@@ -1022,8 +1035,8 @@ Here is the list of all :term:`journals <journal>`.
 
 
 
-Debit or credit
-===============
+Debit or credit? The PCSD rule
+==============================
 
 The "PCSD" rule: A *purchase* invoice *credits* the supplier's
 account, a *sales* invoice *debits* the customer's account.
@@ -1059,10 +1072,9 @@ So the balance of a supplier's account (when open) is usually on the
 *credit* side (they gave us money) while a customer's balance is
 usually on the *debit* side (they owe us money).
 
->>> from lino_xl.lib.ledger.utils import DCLABELS
->>> print(DCLABELS[ledger.TradeTypes.purchases.dc])
+>>> print(ledger.TradeTypes.purchases.dc)
 Credit
->>> print(DCLABELS[ledger.TradeTypes.sales.dc])
+>>> print(ledger.TradeTypes.sales.dc)
 Debit
 
 

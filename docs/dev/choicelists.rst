@@ -424,6 +424,7 @@ Seeing all choicelists in your application
  ('households.MemberRoles', 'households.MemberRoles (Household member roles)'),
  ('humanlinks.LinkTypes', 'humanlinks.LinkTypes (Parency types)'),
  ('ledger.CommonAccounts', 'ledger.CommonAccounts (Common accounts)'),
+ ('ledger.DC', 'ledger.DC (Booking directions)'),
  ('ledger.JournalGroups', 'ledger.JournalGroups (Journal groups)'),
  ('ledger.PeriodStates', 'ledger.PeriodStates (States)'),
  ('ledger.TradeTypes', 'ledger.TradeTypes (Trade types)'),

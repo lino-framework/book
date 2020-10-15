@@ -30,40 +30,44 @@ Screen casts :
 
 Demo sites:
 
-We currently have two demos of larger lino apps.
+We currently have three demos of larger lino apps.
 
-- Lino Così : `Accounting software using ExtJS front-end <https://cosi1e.lino-framework.org>`__
-- Lino Noi : `Ticket and team management using a React front-end <https://noi1r.lino-framework.org>`__
-
-The remaining demos are rather old.
-
-Of general interest:
-
-- demo1_ shows the "Polls" application developed in the
-  :ref:`lino.tutorial.polls` tutorial. A minimal didactic Lino
-  application without authentication.
-- cosi-demo_ :    Official online demo of :ref:`cosi`.
-- roger_ :  Official online demo of :ref:`voga` à la Roger
-- team_ : Official online demo of :ref:`noi`.
-
-Specific to Belgium:
-
-- welfare-demo_ : online demo of :ref:`welfare` à la Eupen
-- welfare-demo-fr_ : online demo of :ref:`welfare` à la Châtelet
-
-Specific to Estonia:
-
-- ylle_       :   Online demo of :ref:`cosi` in Estonian
-- vtp2014_    :   Online demo of :ref:`voga` in Estonian
-
-Experimental:
-
-- belref_ : Official online demo of :ref:`belref`.
-- patrols-demo_ : Official online demo of :ref:`patrols`.
-- logos-demo_ : Official online demo of :ref:`logos` (as an early
-  prototype for the SacredPy project)
-- polly-demo_ : Official online demo of :ref:`polly`
+- `cosi1e <https://cosi1e.lino-framework.org>`__ :
+  Minimalistic accounting software :ref:`cosi` using ExtJS :term:`front end`.
+- `noi1r <https://noi1r.lino-framework.org>`__ :
+  :ref:`noi` (Ticket and team management) with :ref:`react` :term:`front end`.
+- `voga1e <https://voga1e.lino-framework.org>`__ :
+  Paying courses management :ref:`voga` using ExtJS :term:`front end`.
 
 .. removed:
+
+  The remaining demos are rather old.
+
+  Of general interest:
+
+  - demo1_ shows the "Polls" application developed in the
+    :ref:`lino.tutorial.polls` tutorial. A minimal didactic Lino
+    application without authentication.
+  - cosi-demo_ :    Official online demo of :ref:`cosi`.
+  - roger_ :  Official online demo of :ref:`voga` à la Roger
+  - team_ : Official online demo of :ref:`noi`.
+
+  Specific to Belgium:
+
+  - welfare-demo_ : online demo of :ref:`welfare` à la Eupen
+  - welfare-demo-fr_ : online demo of :ref:`welfare` à la Châtelet
+
+  Specific to Estonia:
+
+  - ylle_       :   Online demo of :ref:`cosi` in Estonian
+  - vtp2014_    :   Online demo of :ref:`voga` in Estonian
+
+  Experimental:
+
+  - belref_ : Official online demo of :ref:`belref`.
+  - patrols-demo_ : Official online demo of :ref:`patrols`.
+  - logos-demo_ : Official online demo of :ref:`logos` (as an early
+    prototype for the SacredPy project)
+  - polly-demo_ : Official online demo of :ref:`polly`
 
   - demo3_ : Official online demo of :ref:`presto`.

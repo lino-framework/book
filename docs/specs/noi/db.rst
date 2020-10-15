@@ -27,7 +27,7 @@ Complexity factors
 - 49 plugins
 - 87 models
 - 5 user types
-- 321 views
+- 322 views
 - 22 dialog actions
 <BLANKLINE>
 
@@ -107,7 +107,7 @@ The database models
  ledger.Journal                     ledger.Journals                  24        1
  ledger.LedgerInfo                  ledger.LedgerInfoTable           2         0
  ledger.MatchRule                   ledger.MatchRules                3         0
- ledger.Movement                    ledger.Movements                 12        0
+ ledger.Movement                    ledger.Movements                 11        0
  ledger.PaymentTerm                 ledger.PaymentTerms              11        8
  ledger.Voucher                     ledger.AllVouchers               8         0
  lists.List                         lists.Lists                      7         8
