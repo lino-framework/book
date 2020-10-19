@@ -33,9 +33,15 @@ create many such projects and want to keep a backup of them.
 The project directory of the first site you created in
 :doc:`/dev/install/index`.
 
-A **project directory** is a directory that contains a runnable Django project.
-It contains the files necessary for that specific instance of a given Lino
-application.
+.. glossary::
+
+  Django project directory
+
+    A directory that contains a runnable Django project. It contains the files
+    necessary for that specific instance of a given :term:`Lino application`.
+    Usually there is one :term:`Django project directory` for every :term:`Lino
+    site`. An exception to that rule is a site with more than one :term:`front
+    end`.
 
 
 

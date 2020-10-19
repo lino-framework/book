@@ -2399,3 +2399,42 @@ Note that the journal must also have an :attr:`account` with
 :attr:`Account.needs_partner` enabled in order to prevent Lino from generating
 detailed counter-entries (one per item). Clearing a payment order makes sense
 only when the counter-entry is  the sum of all movements.
+
+The :manage:`reregister` admin command
+======================================
+
+In certain exceptional situations you may want to rebuild all the :term:`ledger
+movements` on your site.  For example after the changes on 2020-10-15 (see
+:ref:`xl.changes.2020`). Or when you have changed something in your site
+configuration so that certain movements would go to other accounts than before
+(and want to apply this change to all registered vouchers).
+
+The :manage:`reregister` admin command re-registers all ledger vouchers.
+
+
+.. management_command:: reregister
+
+.. py2rst::
+
+  from lino_xl.lib.ledger.management.commands.reregister \
+      import Command
+  print(Command.help)
+
+Example run:
+
+>>> from atelier.sheller import Sheller
+>>> shell = Sheller(settings.SITE.project_dir.parent)
+>>> shell('python manage.py reregister --noinput')
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+Re-register all vouchers in journal Verkaufsrechnungen (SLS)
+Re-register all vouchers in journal Gutschriften Verkauf (SLC)
+Re-register all vouchers in journal Einkaufsrechnungen (PRC)
+Re-register all vouchers in journal Zahlungsaufträge (PMO)
+Re-register all vouchers in journal Kassenbuch (CSH)
+Re-register all vouchers in journal Bestbank (BNK)
+Re-register all vouchers in journal Miscellaneous transactions (MSC)
+Re-register all vouchers in journal Preliminary transactions (PRE)
+Re-register all vouchers in journal Lohnscheine (SAL)
+Re-register all vouchers in journal MwSt.-Erklärungen (VAT)
+220 vouchers have been re-registered.
+Check clearings for all partners

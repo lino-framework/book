@@ -12,10 +12,10 @@ User types
 >>> from lino.api.doctest import *
 
 
-System administrator
-====================
+Site administrator
+==================
 
-Robin is a system administrator, he has a complete menu:
+Robin is a :term:`site administrator`, he has a complete menu:
 
 >>> ses = rt.login('robin')
 >>> ses.user.user_type

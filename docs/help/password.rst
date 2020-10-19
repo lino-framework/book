@@ -16,10 +16,10 @@ We assume that you are signed in.
 
   .. image:: ChangePassword.png
       :scale: 50%
-                   
+
 - Fill in the three fields and confirm the dialog window.  Voilà!
 
-  
+
 Notes:
 
 - Changing your password does not cause your session to sign out. You
@@ -27,5 +27,5 @@ Notes:
   again.  Depending on the site's configuration that might happen only
   when you signed out explicitly.
 
-- System administrators can invkoke that action on any user, and they
+- A :term:`site administrator` can invoke that action on any user, and they
   can leave the :guilabel:`Current password` field empty.

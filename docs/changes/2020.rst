@@ -14,6 +14,16 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-10-15
+==========
+
+Accounting movements are no longer stored in two separate fields (one for the
+amount and another for the booking direction, debit or credit) but simply as the
+amount, and a negative amount indicates a debit.  Existing production sites must
+run :manage:`reregister` after database migration.
+
+PyPI releases: react, lino, xl, cosi, voga, tera.
+
 2020-10-05
 ==========
 
