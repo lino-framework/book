@@ -78,6 +78,8 @@ class Loader1(object):
                      vat_id="BE0123456789")
         yield we
         settings.SITE.site_config.site_company = we
+        participant = rt.models.cal.GuestRole.objects.get(id=1)
+        settings.SITE.site_config.pupil_guestrole = participant
         yield settings.SITE.site_config
 
         ProductCat = rt.models.products.ProductCat

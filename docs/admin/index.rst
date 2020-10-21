@@ -61,6 +61,8 @@ Maintenance
     preview
     move
     datamig
+    du
+    ram
 
 
 Printing
@@ -96,7 +98,6 @@ Other
     virtualenv
     tim2lino
     mysql_tune
-    du
     startsite
     oood
     notify

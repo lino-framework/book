@@ -1,10 +1,18 @@
+.. _hosting.multiple_frontends:
+
 ===================================
 Multiple front ends for a same site
 ===================================
 
-You can configure two different "web sites" which serve a same :term:`Lino site`.
+You can configure two different Django projects (web sites) to serve a same
+:term:`Lino site`. They will have different domain names and nginx
+configurations, but share the same application code and database. The
+:xfile:`settings.py` file of one of them will import the settings of the other
+one, and will basically just change the :attr:`default_ui
+<lino.core.site.Site.default_ui>` setting.
 
-Create the Lino site as usual using :cmd:`getlino startsite`.
+Create the Lino site as usual using :cmd:`getlino startsite` and selecting extjs
+as front end.
 
 In the project directory of the site, create a file named
 :file:`settings_react.py` with this content::
@@ -16,7 +24,10 @@ In the project directory of the site, create a file named
 
   x = DATABASES, SECRET_KEY
 
-  SITE = Site(globals())  # this will set new values for DATABASES and SECRET_KEY
+  # the following will set new values for DATABASES and SECRET_KEY, which we are
+  # going to restore from those we imported previously.
+
+  SITE = Site(globals())
 
   DATABASES, SECRET_KEY = x
 
@@ -30,9 +41,7 @@ Manually copy the supervisor and nginx or apache config files.
 
 No need to run a second linod.
 
-Perhaps you must install the alternative front end into the virtualenv::
+Install the alternative front end into the virtualenv::
 
   $ . env/bin/activate
   $ pip install lino_react
-
-  

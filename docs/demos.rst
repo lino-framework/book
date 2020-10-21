@@ -38,6 +38,8 @@ We currently have three demos of larger lino apps.
   :ref:`noi` (Ticket and team management) with :ref:`react` :term:`front end`.
 - `voga1e <https://voga1e.lino-framework.org>`__ :
   Paying courses management :ref:`voga` using ExtJS :term:`front end`.
+- `voga1r <https://voga1r.lino-framework.org>`__ :
+  like voga1e, but using React :term:`front end`.
 
 .. removed:
 

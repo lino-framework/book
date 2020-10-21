@@ -7,14 +7,12 @@ Start your own developer blog
 This section explains what a **developer blog** is, why you need it,
 why *we* need it, and how you do it.
 
-
-
 Getting started
 ===============
 
 The basic idea of a developer blog is that you **leave a trace** about
 what you have been doing, and that this trace is accessible at least
-to yourself.  
+to yourself.
 
 In your developer blog you report about your daily work.  Day by day.
 Using plain English language. It is your diary.
@@ -32,10 +30,7 @@ problem.  My first developer blog was a simple plain text file (one
 per month) where I noted every code change for my own reference.  It
 happens surprisingly often that I want to know why I did some change
 one year ago.  And I was often amazed about how many things both my
-customers and I were able to forgot during one year.
-
-In the beginning you should not publish your blog because every human
-has a natural shyness which would disturb your learning process.
+customers and I were able to forget during one year.
 
 Qualities of a developer blog
 =============================
@@ -54,11 +49,11 @@ to follow.  It should rather be:
 Note that these qualities are listed in order of difficulty.  Being
 *complete* is rather easy and just a question of motivation.  Staying
 *concise* without becoming incomplete takes some exercise.  And being
-*understandable* requires some talent much feedback from readers.  In
+*understandable* requires some talent and much feedback from readers.  In
 practice I just just try to be understandable at least to myself.
 
 Note also that none of these qualities is required.  Even an
-incomplete and unconsise developer blog is better than no blog at all.
+incomplete and unconcise developer blog is better than no blog at all.
 
 
 Going public
@@ -72,16 +67,15 @@ software.  You share your know-how, your experience and your learning
 also with future contributors who might want to explore why you have
 been doing things the way you did them.
 
-Before publishing your blig, make sure that you understand the usual
-rules:
+Before publishing your blog, make sure that you understand the usual rules:
 
 - Don't disclose any passwords or private data.
 - Respect other people's privacy.
 - Reference your sources of information.
 - Don't quote other author's words without naming them.
 
-A public developer blog can be the easiest way to ask for help in
-complex cases which need screenshots, links, sections etc.
+A public developer blog can be the easiest way to ask for help in complex cases
+that need screenshots, links, sections etc.
 
 
 Luc's blogging system
@@ -95,8 +89,8 @@ blog.
 You may of course use another blogging system (blogger.com,
 wordpress.com etc,), especially if you have been blogging before.
 
-Luc's developer blog is free, simple and extensible.  
-It answers well to certain requirements which we perceive as
+Luc's developer blog is free, simple and extensible.
+It answers well to certain requirements that we perceive as
 important:
 
 - A developer uses some editor for writing code, and wants to use that
@@ -108,7 +102,7 @@ important:
 - A developer should not be locked just because there is no internet
   connection available for a few hours.
 
-It is based on `Sphinx <http://sphinx-doc.org/>`_ which is the
+It is based on `Sphinx <http://sphinx-doc.org/>`_, which is the
 established standard for Python projects. This has the advantage that
 your blog has the same syntax as your docstrings.
 
@@ -130,7 +124,7 @@ You probably will soon have other documentation trees than the one
 which contains your blog. For example your first Lino application
 might have a local project name "hello", and it might have two
 documentation trees, one in English (`hello/docs`) and another in
-Spanish (`hello/docs_es`). `fab pd` would upload them to
+Spanish (`hello/docs_es`). :cmd:`inv pd` would upload them to
 `public_html/hello_docs` and `public_html/hello_docs_es` respectively.
 See :attr:`env.docs_rsync_dest <atelier.fablib.env.docs_rsync_dest>`.
 

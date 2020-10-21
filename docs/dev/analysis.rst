@@ -25,29 +25,27 @@ be a single person. But even then it is important to write function
 specs for your projects because they are part of your general project
 description and your offer to the customer.
 
-For a Lino application, the functional specification should include
-the following elements.
+The functional spec for a typical Lino application includes the following
+elements.
 
-- A textual description of your **database structure**, i.e. the list
-  of *models* (tables) to be used.  Each model has a list of
-  *fields* (properties).
+- A textual description of your **database structure**, i.e. the list of
+  *models* (tables) to be used, each having a list of *fields* (properties).
 
   It is important to choose meaningful names and to agree with your
   customer on the meaning of certain words which will be the
   vocabulary used in your application.
 
-  While vocabulary is important, a picture says more than a thousand
-  words.  There are many methodologies for visualizsing a database
-  model (`UML
+  While vocabulary is important, a picture says more than a thousand words.
+  There are many methodologies for visualizing a database model (`UML
   <https://en.wikipedia.org/wiki/Unified_Modeling_Language>`_, `IDEF1X
-  <https://en.wikipedia.org/wiki/IDEF1X>`__), but our favourite method
-  is described in the :ref:`dev.lets` tutorial.
+  <https://en.wikipedia.org/wiki/IDEF1X>`__). One of them is described in the
+  :ref:`dev.lets` tutorial.
 
 - Another thing to discuss with your customer during analysis is the
   **menu structure** and the content of the **main page** (dashboard).
 
 - On multi-user applications you also need a description of the
-  different **user types**.
+  different :term:`user types <user type>`.
 
 
 The prototype

@@ -1,18 +1,21 @@
+.. doctest docs/specs/voga/presences.rst
 .. _voga.specs.presences:
 
 =========
 Presences
 =========
 
-.. to test only this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_presences
+.. include:: /../docs/shared/include/tested.rst
 
-    >>> from lino import startup
-    >>> startup('lino_book.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
-    
-    
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.doctests')
+>>> from lino.api.doctest import *
+
+
+>>> settings.SITE.site_config.pupil_guestrole
+GuestRole #1 ('Participant')
+
 
 Filtering courses by their start/end date
 =========================================
@@ -91,4 +94,3 @@ Courses which were active on at least one day of the **period between
  25   Yoga                             Every Friday      08/11/2013
 ==== ================================ ================= ============ ==========
 <BLANKLINE>
-

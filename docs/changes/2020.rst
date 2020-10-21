@@ -14,6 +14,20 @@ General information about how to read and maintain this document in :ref:`dev.ch
   :local:
 
 
+2020-10-19
+==========
+
+Lino no longer prints a message "num2words not installed, use `python manage.py
+install` to install" at each startup  of an application that does not install
+:mod:`lino_xl.lib.cal` but imports a mixin from this plugin,  This message was
+meant to be useful, but it was suboptimal: the recommended thing to do when a
+requireed Python package seems to be missing is to run :manage:`install` (which
+will also upgrade dependencies). And then it was disturbing because it caused
+the doctests in mentori to fail.
+
+Released xl 20.10.1 to PyPI.
+
+
 2020-10-15
 ==========
 

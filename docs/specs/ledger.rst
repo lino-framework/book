@@ -2404,10 +2404,10 @@ The :manage:`reregister` admin command
 ======================================
 
 In certain exceptional situations you may want to rebuild all the :term:`ledger
-movements` on your site.  For example after the changes on 2020-10-15 (see
-:ref:`xl.changes.2020`). Or when you have changed something in your site
-configuration so that certain movements would go to other accounts than before
-(and want to apply this change to all registered vouchers).
+movements <ledger movement>` on your site.  For example after the changes on
+2020-10-15 (see :ref:`xl.changes.2020`). Or when you have changed something in
+your site configuration so that certain movements would go to other accounts
+than before (and want to apply this change to all registered vouchers).
 
 The :manage:`reregister` admin command re-registers all ledger vouchers.
 
