@@ -13,6 +13,17 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-10-22
+==========
+
+Better support for empty declaration_plugin: Adapted the :fixture:`payments`
+fixture of :mod:`lino_xl.lib.ledger` to also work when :attr:`declaration_plugin
+<lino_xl.lib.vat.Plugin.declaration_plugin>` is empty. The
+:meth:`get_installed_plugins` of the :class:`lino_voga.lib.voga.settings.Site`
+no longer yields the :mod:`lino_xl.lib.bevats` plugin (because this is done
+automatically when :attr:`declaration_plugin
+<lino_xl.lib.vat.Plugin.declaration_plugin>` is set).
+
 
 2020-10-19
 ==========

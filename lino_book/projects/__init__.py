@@ -20,6 +20,8 @@ Usage examples of real-world :term:`Lino applications <Lino application>`:
    liina
    lydia
    avanti1
+   voga1
+   roger
 
 Examples used by a tutorial:
 
