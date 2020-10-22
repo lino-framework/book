@@ -296,6 +296,7 @@ lino_book.projects.ovfields
 lino_book.projects.edmund
 lino_book.projects.edmund.settings
 lino_book.projects.edmund.settings.fixtures
+lino_book.projects.voga1
 lino_book.projects.roger
 lino_book.projects.roger.settings
 lino_book.projects.roger.settings.fixtures
