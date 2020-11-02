@@ -30,6 +30,7 @@ In the project directory of the site, create a file named
   SITE = Site(globals())
 
   DATABASES, SECRET_KEY = x
+  ALLOWED_HOSTS = ...
 
 Create a :file:`manage_react.py` file as a copy of :xfile:`manage.py`.  Modify
 the copy to point to  the :file:`settings_react.py` file.

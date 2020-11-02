@@ -22,9 +22,8 @@ automatically do the following.
 - create the nginx config file in :file:`/etc/nginx/sites-available`
 - enable the site by linking it to :file:`/etc/nginx/sites-enabled`
 - restart the nginx service
-- run certbot-auto to register the new site at certbot as being served on this
+- run :cmd:`certbot-auto` to register the new site at certbot as being served on this
   server.
-
 
 Read the docs:
 
@@ -65,7 +64,9 @@ managed by certbot::
 
 How to remove a certbot certificate? E.g. after moving some site to a new
 server, you should instruct certbot on the old server to no longer ask for a
-certificate for that site. --> Simply remove all related config files.
+certificate for that site::
+
+  $ certbot delete --certname www.example.com-0001
 
 How to manually add a certificate for a new site on your server::
 
