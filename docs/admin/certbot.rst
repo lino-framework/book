@@ -77,7 +77,6 @@ You can create certificates that cover multiple domains::
 
   $ certbot-auto -d one.example.com -d two.example.com
 
-
 How to install certbot using the Debian package::
 
   $ sudo apt-get install certbot python-certbot-nginx
@@ -88,30 +87,19 @@ How to install certbot using the Debian package::
   python-certbot-nginx is already the newest version (0.31.0-1).
   0 upgraded, 0 newly installed, 0 to remove and 124 not upgraded.
 
+
 Messy certificates
+==================
 
-"A messy certificate is a certificate that covers a domain which is already
-covered by another certificate."
-
-How to find them?
-
-
-Delete it::
-
-  $ certbot-auto delete --cert-name team.new.lino-framework.org
-  Requesting to rerun /usr/local/bin/certbot-auto with root privileges...
-  Saving debug log to /var/log/letsencrypt/letsencrypt.log
-
-  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Deleted all files relating to certificate team.new.lino-framework.org.
-  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  (master) luc@lf:/usr/bin$
-
+There are different ways to mess up certificates.  For example you can have a
+certificate that covers a domain which is already covered by another
+certificate.
 
 How to see all certificates that cover a given domain?
 
-  TODO
+::
 
+  $ certbot-auto certificates | grep mydomain.org
 
 How to see all enabled sites and the certificate they use::
 
@@ -121,6 +109,18 @@ How to see all enabled sites and the certificate they use::
 How to set the email address used by the ACME server for sending notifications::
 
   $ certbot-auto update_account --email postmaster@mydomain.org
+
+
+You can simply delete a certificate::
+
+  $ certbot-auto delete --cert-name team.new.lino-framework.org
+  Requesting to rerun /usr/local/bin/certbot-auto with root privileges...
+  Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Deleted all files relating to certificate team.new.lino-framework.org.
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  (master) luc@lf:/usr/bin$
 
 
 One certificate covering many domains

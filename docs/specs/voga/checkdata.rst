@@ -5,9 +5,9 @@
 Checking for data problems in Lino Voga
 =======================================
 
-Lino Voga offers some functionality for managing data problems.
+Lino Voga uses the :ref:`checkdata <book.specs.checkdata>` plugin for managing
+data problem messages.
 
-See also :ref:`book.specs.checkdata`.
 
 .. include:: /../docs/shared/include/tested.rst
 
@@ -23,10 +23,8 @@ In the web interface you can select :menuselection:`Explorer -->
 System --> Data checkers` to see a table of all available
 checkers.
 
-..
-    >>> show_menu_path(checkdata.Checkers)
-    Explorer --> System --> Data checkers
-
+>>> show_menu_path(checkdata.Checkers)
+Explorer --> System --> Data checkers
 
 >>> rt.show(checkdata.Checkers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -50,8 +48,12 @@ checkers.
 =================================== ===============================================
 <BLANKLINE>
 
-Showing all problems
-====================
+More information about each checker in the corresponding plugin specs  (e.g.
+:class:`beid.SSINChecker <lino_xl.lib.beid.SSINChecker>` is defined in
+:mod:`lino_xl.lib.beid` and hence documented in :doc:`/specs/beid`)
+
+Showing all data problem messages
+=================================
 
 In the web interface you can select :menuselection:`Explorer -->
 System --> Data problems` to see them.
@@ -62,31 +64,30 @@ System --> Data problems` to see them.
 
 
 >>> rt.show(checkdata.AllProblems)
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-================= =========================================== ============================================================== ========================================
- Responsible       Database object                             Message                                                        Checker
------------------ ------------------------------------------- -------------------------------------------------------------- ----------------------------------------
- Robin Rood        *Recurring event #4 Assumption of Mary*     Event conflicts with Activity #1 001  1.                       Check for conflicting calendar entries
- Robin Rood        *Recurring event #11 Ascension of Jesus*    Event conflicts with 2 other events.                           Check for conflicting calendar entries
- Robin Rood        *Recurring event #12 Pentecost*             Event conflicts with 3 other events.                           Check for conflicting calendar entries
- Tom Thess         *Interview (14.05.2015 10:20)*              Event conflicts with Recurring event #11 Ascension of Jesus.   Check for conflicting calendar entries
- Marianne Martin   *Lunch (14.05.2015 11:10)*                  Event conflicts with Recurring event #11 Ascension of Jesus.   Check for conflicting calendar entries
- Robin Rood        *First meeting (25.05.2015 13:30)*          Event conflicts with Recurring event #12 Pentecost.            Check for conflicting calendar entries
- Robin Rood        *Absent for private reasons (25.05.2015)*   Event conflicts with Recurring event #12 Pentecost.            Check for conflicting calendar entries
- Robin Rood        *Karl Kaivers (ME)*                         Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Laura Laschet (ME)*                        Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Josefine Leffin (MEL)*                     Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Marie-Louise Meier (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Alfons Radermacher (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Christian Radermacher (MEL)*               Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Edgard Radermacher (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Guido Radermacher (ME)*                    Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Hedi Radermacher (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Jean Radermacher (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Erna Ärgerlich (ME)*                       Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Jean Dupont (ME)*                          Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Marie-Louise Vandenmeulenbos (MEC)*        Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Bernd Brecht (ME)*                         Member until 2015-12-31, but no payment.                       Check membership payments
- Robin Rood        *Jérôme Jeanémart (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
-================= =========================================== ============================================================== ========================================
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
+============= =========================================== ============================================================== ========================================
+ Responsible   Database object                             Message                                                        Checker
+------------- ------------------------------------------- -------------------------------------------------------------- ----------------------------------------
+ Robin Rood    *Recurring event #4 Assumption of Mary*     Event conflicts with Activity #1 001  1.                       Check for conflicting calendar entries
+ Robin Rood    *Recurring event #11 Ascension of Jesus*    Event conflicts with Mittagessen (14.05.2015 11:10).           Check for conflicting calendar entries
+ Robin Rood    *Recurring event #12 Pentecost*             Event conflicts with 4 other events.                           Check for conflicting calendar entries
+ Rolf Rompen   *Mittagessen (14.05.2015 11:10)*            Event conflicts with Recurring event #11 Ascension of Jesus.   Check for conflicting calendar entries
+ Robin Rood    *First meeting (25.05.2015 13:30)*          Event conflicts with Recurring event #12 Pentecost.            Check for conflicting calendar entries
+ Robin Rood    *Absent for private reasons (25.05.2015)*   Event conflicts with Recurring event #12 Pentecost.            Check for conflicting calendar entries
+ Robin Rood    *Karl Kaivers (ME)*                         Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Laura Laschet (ME)*                        Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Josefine Leffin (MEL)*                     Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Marie-Louise Meier (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Alfons Radermacher (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Christian Radermacher (MEL)*               Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Edgard Radermacher (ME)*                   Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Guido Radermacher (ME)*                    Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Hedi Radermacher (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Jean Radermacher (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Erna Ärgerlich (ME)*                       Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Jean Dupont (ME)*                          Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Marie-Louise Vandenmeulenbos (MEC)*        Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Bernd Brecht (ME)*                         Member until 2015-12-31, but no payment.                       Check membership payments
+ Robin Rood    *Jérôme Jeanémart (ME)*                     Member until 2015-12-31, but no payment.                       Check membership payments
+============= =========================================== ============================================================== ========================================
 <BLANKLINE>

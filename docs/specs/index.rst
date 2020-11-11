@@ -135,6 +135,7 @@ Topic guides
 .. toctree::
    :maxdepth: 1
 
+   projects/index
    accounting
    human
    born
@@ -150,10 +151,6 @@ Technical stuff
    :maxdepth: 1
 
    invalid_requests
-   projects/mti
-   projects/nomti
-   projects/belref
-   projects/actors
    uitests
    i18n
    de_BE

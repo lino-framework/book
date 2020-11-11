@@ -304,3 +304,11 @@ Warning: No card data found: Could not find any reader with a card inserted
 Traceback (most recent call last):
 ...
 FileNotFoundError: [Errno 2] No such file or directory: 'foo'
+
+
+
+.. class:: SSINChecker
+
+  A :term:`data checker` that reports invalid SSINs.
+
+  See :doc:`/specs/ssin`.

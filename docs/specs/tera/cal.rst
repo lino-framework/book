@@ -144,11 +144,12 @@ Daily planner
 ============ ====================================== ==========
  Time range   External                               Internal
 ------------ -------------------------------------- ----------
- *All day*    * ☐ rolf Absent for private reasons*
- *AM*         *08:30 ? romain Rencontre*
+ *All day*    * ⚕ rolf Absent for private reasons*
+ *AM*         *08:30 ☑ romain Rencontre*
  *PM*
 ============ ====================================== ==========
 <BLANKLINE>
+
 
 When you are logged in, the calendar entries are clickable:
 
@@ -156,8 +157,8 @@ When you are logged in, the calendar entries are clickable:
 ============ ================================================= ==========
  Time range   External                                          Internal
 ------------ ------------------------------------------------- ----------
- *All day*    ` ☐ rolf Absent for private reasons <Detail>`__
- *AM*         `08:30 ? romain Rencontre <Detail>`__
+ *All day*    ` ⚕ rolf Absent for private reasons <Detail>`__
+ *AM*         `08:30 ☑ romain Rencontre <Detail>`__
  *PM*
 ============ ================================================= ==========
 <BLANKLINE>
@@ -183,8 +184,8 @@ Daily planner `⏏ <Daily planner>`__
 ============ ================================================= ==========
  Time range   External                                          Internal
 ------------ ------------------------------------------------- ----------
- *All day*    ` ☐ rolf Absent for private reasons <Detail>`__
- *AM*         `08:30 ? romain Rencontre <Detail>`__
+ *All day*    ` ⚕ rolf Absent for private reasons <Detail>`__
+ *AM*         `08:30 ☑ romain Rencontre <Detail>`__
  *PM*
 ============ ================================================= ==========
 <BLANKLINE>

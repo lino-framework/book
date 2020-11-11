@@ -5,16 +5,18 @@
 Calendar functionality in Lino Voga
 ===================================
 
-.. doctest initialization:
-
-   >>> from lino import startup
-   >>> startup('lino_book.projects.roger.settings.demo')
-   >>> from lino.api.doctest import *
-
 This document describes how :ref:`voga` extends the default calendar
 functions (documented separately in :ref:`book.specs.cal`).
 
 .. currentmodule:: lino_voga.lib.cal
+
+
+
+.. include:: /../docs/shared/include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_book.projects.roger.settings.demo')
+>>> from lino.api.doctest import *
 
 
 Workflow

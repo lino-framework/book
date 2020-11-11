@@ -68,7 +68,7 @@ Glossary
 
   presence
 
-    The fact that a given person is invited guest or participant to a given
+    The fact that a given person is an expected participant to a given
     :term:`calendar entry`.
 
   task
@@ -808,22 +808,25 @@ Event #1 ("New Year's Day (01.01.2013)")
 Conflicting events
 ==================
 
-The demo datebase contains two appointments on Ash Wednesday 2017.
-These conflicting calendar events are visible as data problems (see
+The demo database contains two appointments on Ash Wednesday and two on Rose
+Monday. These conflicting calendar events are visible as data problems (see
 :doc:`checkdata`).
 
 >>> chk = checkdata.Checkers.get_by_value('cal.ConflictingEventsChecker')
 >>> rt.show(checkdata.ProblemsByChecker, chk)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-================= ================================ ====================================================
- Responsible       Database object                  Message
------------------ -------------------------------- ----------------------------------------------------
- Robin Rood        *Ash Wednesday (01.03.2017)*     Event conflicts with Seminar (01.03.2017 08:30).
- Robin Rood        *Rosenmontag (27.02.2017)*       Event conflicts with Rencontre (27.02.2017 11:10).
- Romain Raffault   *Rencontre (27.02.2017 11:10)*   Event conflicts with Rosenmontag (27.02.2017).
- Robin Rood        *Seminar (01.03.2017 08:30)*     Event conflicts with Ash Wednesday (01.03.2017).
-================= ================================ ====================================================
+================= ================================= ==================================================
+ Responsible       Database object                   Message
+----------------- --------------------------------- --------------------------------------------------
+ Robin Rood        *Ash Wednesday (01.03.2017)*      Event conflicts with 2 other events.
+ Robin Rood        *Rosenmontag (27.02.2017)*        Event conflicts with 2 other events.
+ Robin Rood        *Breakfast (27.02.2017 10:20)*    Event conflicts with Rosenmontag (27.02.2017).
+ Romain Raffault   *Rencontre (27.02.2017 11:10)*    Event conflicts with Rosenmontag (27.02.2017).
+ Robin Rood        *Seminar (01.03.2017 08:30)*      Event conflicts with Ash Wednesday (01.03.2017).
+ Romain Raffault   *Evaluation (01.03.2017 09:40)*   Event conflicts with Ash Wednesday (01.03.2017).
+================= ================================= ==================================================
 <BLANKLINE>
+
 
 
 >>> obj = cal.Event.objects.get(id=123)
@@ -835,12 +838,14 @@ Ash Wednesday (01.03.2017)
  Start date   Start time   End Time   Client   Room   Responsible user
 ------------ ------------ ---------- -------- ------ ------------------
  01/03/2017   08:30:00     09:45:00                   Robin Rood
+ 01/03/2017   09:40:00     11:10:00                   Romain Raffault
 ============ ============ ========== ======== ====== ==================
 <BLANKLINE>
 
 
-Transparent events
-==================
+
+Transparent calendar entries
+============================
 
 The entry type "Internal" is marked "transparent".
 
@@ -854,9 +859,10 @@ True
 The guests of a calendar entry
 ==============================
 
-A calendar entry can have a list of **guests**. A guest is the fact that a
-given person is *expected to attend* or *has been present* at a given calendar
-entry. Depending on the context the guests of a calendar entry may be labelled
+A calendar entry can have a list of **guests** (also called presences or
+participants depending on the context). A guest is the fact that a given person
+is *expected to attend* or *has been present* at a given calendar entry.
+Depending on the context the guests of a calendar entry may be labelled
 "guests", "participants", "presences", ...
 
 
@@ -1545,24 +1551,6 @@ Plugin configuration
 See :class:`Plugin`.
 
 
-User roles
-==========
-
-Most calendar functionality requires
-:class:`lino.modlib.office.roles.OfficeUser`
-
-
-.. class:: CalendarReader
-
-    Can read public calendar entries. This is a kind of minimal
-    calendar functionality which can be given to anonymous users,
-    as done e.g. by :ref:`vilma`.
-
-.. class:: GuestOperator
-
-    Can see presences and guests of a calendar entry.
-
-
 Data checkers
 =============
 
@@ -1650,11 +1638,25 @@ defines two specific roles.
 
 .. class:: CalendarReader
 
-    Has read-only access to calendars of other users.
+    Can read public calendar entries. This is a kind of minimal
+    calendar functionality that can be given to anonymous users,
+    as done e.g. by :ref:`vilma`.
 
 .. class:: GuestOperator
 
-    Can see guests of calendar entries.
+    Can see presences and guests of a calendar entry.
+
+.. class:: GuestUser
+
+    Can manage :term:`presences <presence>`.
+
+    Usage example in :ref:`voga` where users of type `pupil` cannot create or
+    edit calendar entries, but can manage their participation in existing
+    entries.
+
+Most calendar functionality requires
+:class:`lino.modlib.office.OfficeUser`
+
 
 
 positions

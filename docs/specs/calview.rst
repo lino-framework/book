@@ -50,11 +50,12 @@ The daily planner is a table that shows an overview on all events of a day.
 ============ ====================================== ==========
  Time range   External                               Internal
 ------------ -------------------------------------- ----------
- *All day*    * ☐ rolf Absent for private reasons*
+ *All day*    * ☑ rolf Absent for private reasons*
  *AM*         *08:30 ☑ romain Rencontre*
  *PM*
 ============ ====================================== ==========
 <BLANKLINE>
+
 
 
 .. class:: DailyPlanner
@@ -112,7 +113,7 @@ A default configuration has two columns in the daily planner:
     =============== ====================================== ========
      Zeitabschnitt   Extern                                 Intern
     --------------- -------------------------------------- --------
-     *Ganztags*      * ☐ rolf Absent for private reasons*
+     *Ganztags*      * ☑ rolf Absent for private reasons*
      *Vormittags*    *08:30 ☑ romain Rencontre*
      *Nachmittags*
     =============== ====================================== ========
@@ -125,7 +126,7 @@ A default configuration has two columns in the daily planner:
     =================== ====================================== =========
      Time range          Externe                                Interne
     ------------------- -------------------------------------- ---------
-     *Journée entière*   * ☐ rolf Absent for private reasons*
+     *Journée entière*   * ☑ rolf Absent for private reasons*
      *Avant-midi*        *08:30 ☑ romain Rencontre*
      *Après-midi*
     =================== ====================================== =========

@@ -1,9 +1,6 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2015-2018 Rumma & Ko Ltd
+# Copyright 2015-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-
-from __future__ import unicode_literals
-from __future__ import print_function
 
 from lino.api import rt, dd, _
 from lino.utils import Cycler
@@ -36,13 +33,13 @@ def skills_objects():
                 yield Competence(
                     user=u, faculty=SKILLS.pop(),
                     end_user=END_USERS.pop())
-            
+
     for i, t in enumerate(
             dd.plugins.skills.demander_model.objects.all()):
         yield Demand(demander=t, skill=SKILLS.pop())
         if i % 3:
             yield Demand(demander=t, skill=SKILLS.pop())
-            
+
 
 def objects():
     return []

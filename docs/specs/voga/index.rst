@@ -11,7 +11,7 @@ specifications. One of their goal is to get tested.
 
 .. toctree::
    :maxdepth: 1
-  
+
    general
    usertypes
    voga
@@ -24,6 +24,7 @@ specifications. One of their goal is to get tested.
    sales
    checkdata
    roger
+   ivo
    partners
    print_labels
    pupils

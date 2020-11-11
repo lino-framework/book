@@ -27,6 +27,7 @@ ns = setup_from_tasks(
         'lino_book.projects.polls2',
         'lino_book.projects.voga1',
         'lino_book.projects.roger',
+        'lino_book.projects.ivo',
         'lino_book.projects.edmund',
         'lino_book.projects.combo',
         'lino_book.projects.chooser',
