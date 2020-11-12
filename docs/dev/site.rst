@@ -73,16 +73,15 @@ want to modify one of the settings, do it *after* your
 How Lino builds the :setting:`INSTALLED_APPS` setting
 =====================================================
 
-A :class:`Site` is usually meant to work for a given set of Django
-apps (i.e. what's in the :setting:`INSTALLED_APPS` setting).  It is a
-collection of apps which make up a whole.  To define this collection,
-the application developper usually overrides the
-:meth:`Site.get_installed_apps` method.
+A :class:`Site` is usually meant to work for a given set of Django apps (i.e.
+what's in the :setting:`INSTALLED_APPS` setting).  It is a collection of apps
+which make up a whole.  To define this collection, the :term:`application
+developer` usually overrides the :meth:`Site.get_installed_apps` method.
 
 Lino calls the :meth:`get_installed_apps
-<lino.core.site.Site.get_installed_apps>` method which it expects to
-yield a list of strings.  Lino then adds some more "system" apps and
-stores the resulting list into your :setting:`INSTALLED_APPS` setting.
+<lino.core.site.Site.get_installed_apps>` method, which it expects to yield a
+list of strings.  Lino then adds some more "system" apps and stores the
+resulting list into your :setting:`INSTALLED_APPS` setting.
 
 
 Other settings
