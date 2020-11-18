@@ -33,7 +33,27 @@ The following files are important
     A file in the root directory of a repository that specifies what GitLab
     CI/CD should do after each commit.
 
+    https://docs.gitlab.com/ee/ci/yaml/
+
 .. xfile:: requirements.txt
 
     A file in the root directory of a repository that  specifies additional
     requirements (to those specified in the project's :ref:`install_requires`.
+
+
+
+
+
+.. glossary::
+
+  job artifact
+
+    In a :xfile:`.gitlab-ci.yml` file, the artifacts of a job are the files and
+    directories to "attach" to a job . When the job has finished, the specified
+    files and directories are uploaded to the production server from where they
+    are available for download as a single archive via web UI or API.  They are
+    kept for 1 week be default.
+
+    A job artifact can have properties like `when` (whether to upload them only
+    on success, only when it fails, or in both cases) or `expire_in` (how long
+    to keep the artifacts).

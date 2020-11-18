@@ -1,16 +1,19 @@
 .. doctest docs/specs/noi/github.rst
 .. _specs.noi.github:
 
-=================
-The github module
-=================
+===============================
+The `github` plugin in Lino Noi
+===============================
 
-..  doctest init:
-    >>> import lino
-    >>> import datetime
-    >>> import requests_mock
-    >>> lino.startup('lino_book.projects.team.settings.demo')
-    >>> from lino.api.doctest import *
+The :mod:`lino_xl.lib.github` module is a plugin to help with tracking what was
+committed by who on what ticket.
+
+
+>>> import lino
+>>> import datetime
+>>> import requests_mock
+>>> lino.startup('lino_book.projects.team.settings.demo')
+>>> from lino.api.doctest import *
 
 
 Requirements
@@ -26,9 +29,6 @@ You might need the pyOpenssl package. install it with::
 
 How it works
 ============
-
-The :mod:`lino_xl.lib.github` module is a plugin to help with tracking what was
-committed by who on what ticket.
 
 It uses git-hub's v3 api to request all commits on the Master branch of any repository.
 It is recommended to create a o-auth token for larger repositories beacuse without it there is a limit
