@@ -43,36 +43,111 @@ Now we realized that we need to introduce some rules:
 A question coming up as a side effect: Should normal users be allowed to see
 *all* offers and *all* demands? These things are to be decided by our customer
 (the :term:`application carrier`). Let's say that the customer decided : all
-offers, but not all demands. When you create an offer, you want to go public. We
-also added a new description field per offer.
+offers, but not all demands. When you create an offer, then you want to go
+public. We also added a new `description` field per offer.
 
-Multi-user functionality has been there from the beginning in the background.
-We just didn't care. And we didn't *need* to care.  We used only one :term:`user
-type`, the system administrator, who can do everything.
+Multi-user functionality has been there from the beginning in the background. We
+just didn't care. And we didn't *need* to care (that's a feature): we used only
+one :term:`user type`, the :term:`site administrator`, who can do everything.
 
-Until now there we saw only one user named "robin" as suggested demo user in the
-web interface. But the "normal" members already existed.  You know them: Argo,
-Fred, Peter, Anne, Jaanika, Mari, Katrin and so on.   We created them in the
-demo fixture (file `lino_lets/projects/letsdemo/settings/fixtures/demo.py
+Until now we saw only one user named "robin" as suggested demo user in the web
+interface. But the "normal" members already existed.  You know them: Argo, Fred,
+Peter, Anne, Jaanika, Mari, Katrin and so on.   We created them in our demo
+fixture (file `lino_lets/projects/letsdemo/settings/fixtures/demo.py
 <https://gitlab.com/lino-framework/lets/-/blob/master/lino_lets/projects/letsdemo/settings/fixtures/demo.py>`__).
 
-Until now these members were inactive users.  Because they had an empty
-:attr:`User.user_type` field.  But now our demo fixture now sets it to
-:attr:`UserTypes.user`.
+.. highlight:: diff
 
-Now you can sign in using some other username than "robin".
+Until now these members were "inactive" users because their :attr:`user_type
+<lino.modlib.users.User.user_type>` field was empty.  But in step 4 we modified
+our demo fixture to set it to :attr:`UserTypes.user`::
 
-The :class:`UserTypes <UserTypes>` choicelist is part of the standard users
-plugin (:mod:`lino.modlib.users`) and
+  diff --git a/lino_lets/projects/letsdemo/settings/fixtures/demo.py b/lino_lets/projects/letsdemo/settings/fixtures/demo.py
+  index b1de442..b410f34 100644
+  --- a/lino_lets/projects/letsdemo/settings/fixtures/demo.py
+  +++ b/lino_lets/projects/letsdemo/settings/fixtures/demo.py
 
-We remove the :menuselection:`Contacts --> Members` menu command. Anyway it was
-a duplicate of :menuselection:`Configuration --> System --> Members`.  We
-imagine that the customer, who initially wanted this list of members in the
-Master menu, now changed their mind: since that list is not visible to normal
-users, it makes sense to have it only under the Configuration menu.  This is
-just an example of how easily customers can change their mind when developing
-has already started, simply because some new aspect emerged. This is a normal
-phenomenon.  It is not a reason to blame the customer.
+  @@ -44,6 +44,7 @@ def objects():
+       def member(name, place, email=''):
+           return User(
+               username=name.lower(), first_name=name, email=email,
+  +            user_type=rt.models.users.UserTypes.user,
+               place=findbyname(Place, place))
+
+The user type named "user" was already defined in the :class:`UserTypes
+<UserTypes>` choicelist, which is part of the standard users plugin
+(:mod:`lino.modlib.users`).  We just didn't use it until now.
+
+Because of this change you can now sign in using some other username than
+"robin".  For example, log in as `argo` and note that now you have a much
+smaller menu than when you are `robin`.
+
+We also remove the :menuselection:`Contacts --> Members` menu command by
+removing the custom :meth:`setup_menu` method::
+
+  diff --git a/lino_lets/lib/lets/settings.py b/lino_lets/lib/lets/settings.py
+  index bf738b3..14db0d1 100644
+  --- a/lino_lets/lib/lets/settings.py
+  +++ b/lino_lets/lib/lets/settings.py
+  @@ -23,8 +23,3 @@ class Site(Site):
+           # gadgets:
+           yield 'lino.modlib.export_excel'
+           yield 'lino_xl.lib.appypod'
+  -
+  -    def setup_menu(self, profile, main):
+  -        m = main.add_menu("master", _("Master"))
+  -        m.add_action('users.AllUsers')
+  -        super(Site, self).setup_menu(profile, main)
+
+Why did we do this? One reason is that anyway this list of all members (users)
+was already available via the :menuselection:`Configuration --> System -->
+Members` command, which is defined as a standard functionality in
+:mod:`lino.modlib.users`.  So we actually had two menu commands for the same
+thing.  Such a redundancy of having two commands leading to the same result can
+make sense, but for now we imagine that the customer, who initially wanted this
+list of members in the Master menu, now changed their mind: since that list is
+not visible to normal users, it makes sense to have it only under the
+Configuration menu.  This is just an example of how easily customers can change
+their mind when developing has already started, simply because some new aspect
+emerged. This is a normal phenomenon.  It is not a reason to blame the customer.
+
+Because of this change in our menu, we need to adapt the doctest in
+:file:`docs/specs/roles.rst`, which tests this menu.  In that file we also add a
+second section, which tests the menu of a normal member::
+
+  diff --git a/docs/specs/roles.rst b/docs/specs/roles.rst
+  index dc6e838..7829e24 100644
+  --- a/docs/specs/roles.rst
+  +++ b/docs/specs/roles.rst
+  @@ -23,7 +23,7 @@ Rolf is a :term:`site administrator`, he has a complete menu:
+
+   >>> ses.show_menu()
+   ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+  -- Master : Members, Products
+  +- Master : Products
+   - Market : Offers, Demands
+   - Configure :
+     - System : Members, Site Parameters
+  @@ -31,3 +31,18 @@ Rolf is a :term:`site administrator`, he has a complete menu:
+   - Explorer :
+     - System : Authorities, User types, User roles
+   - Site : About
+  +
+  +Normal members
+  +--------------
+  +
+  +Fred is a normal user, he has a limited main menu.
+  +
+  +>>> ses = rt.login('fred')
+  +>>> ses.user.user_type
+  +<users.UserTypes.user:100>
+  +
+  +>>> ses.show_menu()
+  +... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+  +- Master : Products
+  +- Market : Offers
+  +- Site : About
+
 
 Introduction to doctests
 ========================
@@ -92,53 +167,22 @@ specific set of user roles.  Every actor has a set of required user roles.
 >>> startup('lino_lets.projects.letsdemo.settings.demo')
 >>> from lino.api.doctest import *
 
->>> settings.SITE.user_types_module
-'lino.core.user_types'
-
->>> rt.show(users.UserTypes)
-======= =========== ===============
- value   name        text
-------- ----------- ---------------
- 000     anonymous   Anonymous
- 100     user        User
- 900     admin       Administrator
-======= =========== ===============
-<BLANKLINE>
-
->>> rt.show(users.UserRoles)
-================ ===== ===== =====
- Name             000   100   900
----------------- ----- ----- -----
- core.SiteAdmin               ☑
- core.SiteUser          ☑     ☑
-================ ===== ===== =====
-<BLANKLINE>
-
-
 The :class:`AllUsers` table (the actor that shows all users) requires the
-SiteAdmin role.
+:class:`lino.core.roles.SiteAdmin` role. That's what makes the
+:menuselection:`Configuration --> System --> Members` menu command (which opens
+the :class:`AllUsers` table) visible for site administrators and invisible for
+normal users.
 
->>> users.AllUsers.required_roles
-{<class 'lino.core.roles.SiteAdmin'>}
-
-That's what makes the  :menuselection:`Configuration --> System --> Members`
-menu command (which is nothing else than the :class:`AllUsers` table) visible
-for site administrators and invisible for normal users.
-
-
-In :mod:`lino_lets.lib.market` we no import the user role :class:`SiteStaff`.
-This role is what differentiates site administrators from normal users.  We set
-this as a required role for the Categories and Places tables::
+In :mod:`lino_lets.lib.market` we now import the user role :class:`SiteStaff`
+and set it as a required role for the Categories and Places tables::
 
     required_roles = dd.login_required(SiteStaff)
 
->>> market.Places.required_roles
-{<class 'lino.core.roles.SiteStaff'>}
+:class:`SiteStaff` gives a bit less rights than :class:`SiteAdmin`. The
+difference is not important at the moment (it might become important when we
+would introduce a third user type for site administrators who should not have
+permission to create new users).
 
->>> market.Categories.required_roles
-{<class 'lino.core.roles.SiteStaff'>}
-
-This was a quick crash course about permissions.
 More details in :ref:`dev.permissions`.
 
 A detail view for offers and demands

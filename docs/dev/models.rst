@@ -349,12 +349,12 @@ How your model behaves in regard to other models:
 
 Customize what happens when an instance is created:
 
-- :attr:`Model.submit_insert`
-- :attr:`Model.on_create`
-- :attr:`Model.before_ui_save`
-- :attr:`Model.after_ui_save`
-- :attr:`Model.after_ui_create`
-- :attr:`Model.get_row_permission`
+- :meth:`Model.submit_insert`
+- :meth:`Model.on_create`
+- :meth:`Model.before_ui_save`
+- :meth:`Model.after_ui_save`
+- :meth:`Model.after_ui_create`
+- :meth:`Model.get_row_permission`
 
 Some methods you will use but not override:
 

@@ -34,8 +34,8 @@ Concepts
 
   user type
 
-    The type of a :term:`user`, mostly used to determine the permissions granted
-    to this user. See `User types`_.
+    The type of a :term:`user`,  which mainly defines the user's permissions,
+    i.e. what functionalities and data they can access.  See `User types`_.
 
   authority
 
@@ -96,10 +96,8 @@ started or stopped to be active.
 
     .. attribute:: user_type
 
-        The user_type of a user is what defines her or his permissions.
-
-        Users with an empty `user_type` field are considered inactive and
-        cannot log in.
+        The :term:`user type` given to this user. Users having this field empty
+        are considered inactive and cannot log in.
 
         See also :doc:`/dev/perms`.
 
