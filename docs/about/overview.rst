@@ -5,7 +5,56 @@ Components of the Lino framework
 ================================
 
 The Lino framework consists of about 30 repositories, which are currently hosted
-on GitHub under https://github.com/lino-framework.
+on GitHub (https://github.com/lino-framework). We started to move over to GitLab
+(https://gitlab.com/lino-framework).
+
+
+.. _dev.overview.diagram:
+
+Overview diagram
+================
+
+.. graphviz::
+
+   digraph foo {
+
+    { rank = same;
+        # applications;
+        noi;
+        cosi;
+        tera;
+        avanti;
+        voga;
+        weleup;
+        welcht;
+        amici;
+        ciao;
+    }
+
+    etgen -> rstgen;
+    lino -> etgen;
+    xl -> lino;
+    noi -> xl;
+    cosi -> xl;
+    tera -> xl;
+    avanti -> xl;
+    voga -> xl;
+    amici -> xl;
+    weleup -> welfare;
+    welcht -> welfare;
+
+    book -> noi;
+    book -> cosi;
+    book -> voga;
+    book -> tera;
+    book -> avanti;
+    # book -> weleup;
+    # book -> welcht;
+
+    welfare -> xl;
+
+   }
+
 
 General framework repositories
 ==============================
@@ -129,51 +178,3 @@ A currently deprecated proof of concept for a Lino :term:`front end` that
 uses SAP's OpenUI toolkit.
 
 See https://github.com/lino-framework/openui5
-
-
-
-.. _dev.overview.diagram:
-
-Overview diagram
-================
-
-.. graphviz::
-
-   digraph foo {
-
-    { rank = same;
-        # applications;
-        noi;
-        cosi;
-        tera;
-        avanti;
-        voga;
-        weleup;
-        welcht;
-        amici;
-        ciao;
-    }
-
-    etgen -> rstgen;
-    lino -> etgen;
-    xl -> lino;
-    noi -> xl;
-    cosi -> xl;
-    tera -> xl;
-    avanti -> xl;
-    voga -> xl;
-    amici -> xl;
-    weleup -> welfare;
-    welcht -> welfare;
-
-    book -> noi;
-    book -> cosi;
-    book -> voga;
-    book -> tera;
-    book -> avanti;
-    # book -> weleup;
-    # book -> welcht;
-
-    welfare -> xl;
-
-   }

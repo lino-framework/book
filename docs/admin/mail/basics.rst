@@ -13,16 +13,12 @@ Mail server basics
 
   relay host
 
-    A third-party mail server that accepts outgoing mails from your :term:`mail
-    server` and cares about forwarding them to their final destination.
+    A mail server that accepts outgoing mails from other :term:`mail servers
+    <mail server>` and cares about delivering them to their final destination.
 
 
-Direct HTTP versus relay host
-=============================
-
-You may want to use a :term:`relay host` for your mail server.
-To do this, you must configure your MTA to use the :term:`relay host` and can
-skip the remaining things described on this page.
+Using a relay host
+==================
 
 Using a :term:`relay host` means to delegate all outgoing mail to a single
 third-party mail server that is specialized in talking to the mail servers of
@@ -38,10 +34,26 @@ Some ISPs offer a free relay host for the virtual machines they provide.
 `Mailgun <https://www.mailgun.com/smtp/free-smtp-service/free-open-smtp-relay/>`__
 gives you 10000 free emails every month.
 
+When you configure the MTA on your :term:`mail server` to use a :term:`relay
+host`, you can skip the remaining things described on this page.
+
+
+Without a relay host
+====================
+
+When you don't want to buy relay hosting service from a third party, you must
+learn how to do it yourself.
+
 To run your :term:`mail server` without a relay host, you need a static IP
 address and a fully qualified domain name pointing to it. There can be only one
 mail server per IP address. You must care about `Reverse DNS`_, `SPF`_, `DMARC`_
 and `DKIM`_.
+
+Some examples of sender guidelines:
+
+- https://www.gmx.net/mail/senderguidelines/
+- https://support.google.com/mail/answer/81126
+- https://sendersupport.olc.protection.outlook.com/pm/policies.aspx
 
 
 Reverse DNS
@@ -197,14 +209,11 @@ It might take some time for changes to propagate.  Restart the services::
   $ sudo service postfix restart
 
 
-Testing
--------
-
 Check whether propagation is done::
 
   $ dig mail._domainkey.mydomain.org txt
 
-This should returnsomething like::
+This should return something like::
 
   ;; ANSWER SECTION:
   mail._domainkey.saffre-rumma.net. 3600 IN CNAME	mydomain.org.
@@ -221,11 +230,12 @@ Or you can use :cmd:`opendkim-testkey`::
   opendkim-testkey: checking key 'mail._domainkey.mydomain.org'
   opendkim-testkey: multiple DNS replies for 'mydomain.org'
 
+Testing your configuration
+==========================
 
 
-Now try to send an email and confirm it's being signed
-
-<autorespond+dkim@dk.elandsys.com>
+You can try to send an email to <autorespond+dkim@dk.elandsys.com> and confirm
+it's being signed.
 
 You can also use http://www.protodave.com/tools/dkim-key-checker/
 
@@ -243,33 +253,9 @@ forward mail to another server for this name.::
   # Also update the alias map and restart postfix
   sudo newaliases; sudo service postfix restart
 
-Issues
-------
+Or, as explained on `abuseat.org <https://www.abuseat.org/helocheck.html>`__::
 
-8891@localhost: garbage after numerical service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This was an odd error. On one server the inet socket connection worked fine, on the other server this error was logged by smtpd every time it sent.
-I wasn't able to find the source for this issue. But the solution to use a file based socket.
-However the default settings for file socket connection gives file not find errors.
-
-The correct settings for postfix and opendkim for a file socket connection:::
-
-    #/etc/opendkim.conf
-    umask           002
-    Socket			local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
-    #/etc/default/opendkim
-    Socket=local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
-    #/etc/postfix/main.cf
-    smtpd_milters = local:/var/spool/opendkim/opendkim.sock
-
-The reason for /var/spool/postfix for opendkim is that postfix things that is / when looking for the file.
-For this solution you also need to create that path and do some permission work.::
-
-    sudo mkdir -p /var/spool/postfix/var/spool/opendkim/
-    sudo chown opendkim:opendkim /var/spool/postfix/var/spool/opendkim/
-    sudo adduser postfix opendkim
-
-That will allow postfix to use the socket file.
+  $ mail -s "test" helocheck@abuseat.org < /dev/null
 
 
 Diagnostic tips and tricks
@@ -298,8 +284,39 @@ them, :file:`/etc/mail/local-host-names` contains my default ``From`` header.
 
 Say :cmd:`nmap localhost` to see this.
 
-Common problems when running your own mail server
-=================================================
+
+Troubleshooting
+===============
+
+Some problems we had when running our own mail server and how we fixed them
+
+
+8891@localhost: garbage after numerical service
+-----------------------------------------------
+
+This was an odd error. On one server the inet socket connection worked fine, on the other server this error was logged by smtpd every time it sent.
+I wasn't able to find the source for this issue. But the solution to use a file based socket.
+However the default settings for file socket connection gives file not find errors.
+
+The correct settings for postfix and opendkim for a file socket connection:::
+
+    #/etc/opendkim.conf
+    umask           002
+    Socket			local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
+    #/etc/default/opendkim
+    Socket=local:/var/spool/postfix/var/spool/opendkim/opendkim.sock
+    #/etc/postfix/main.cf
+    smtpd_milters = local:/var/spool/opendkim/opendkim.sock
+
+The reason for /var/spool/postfix for opendkim is that postfix things that is / when looking for the file.
+For this solution you also need to create that path and do some permission work.::
+
+    sudo mkdir -p /var/spool/postfix/var/spool/opendkim/
+    sudo chown opendkim:opendkim /var/spool/postfix/var/spool/opendkim/
+    sudo adduser postfix opendkim
+
+That will allow postfix to use the socket file.
+
 
 You will see messages like the following in your :file:`/var/log/mail.log`
 file::
@@ -334,6 +351,20 @@ of your mail was invalid.
     Please visit 550-5.7.26  https://support.google.com/mail/answer/2451690
     to learn about the 550 5.7.26 DMARC initiative.
 
+
+lost connection with mail.example.com
+-------------------------------------
+
+Another problem encountered was this::
+
+  postfix/smtp[13506]:B08AC130BC: to=<rec@example.com>,
+  relay=mail.example.com[46.4.136.153]:25, delay=134801,
+  delays=134798/0.11/1.4/0.9, dsn=4.4.2,
+  status=deferred (lost connection with mail.example.com[46.4.136.153] while sending MAIL FROM)
+
+We tried open an manual connection to the server::
+
+  $ openssl s_client -connect mail.example.com:25 -starttls smtp
 
 Sources
 =======

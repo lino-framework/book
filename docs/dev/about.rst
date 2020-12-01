@@ -9,12 +9,12 @@ technical language see the "About Lino" section of the `Community Guide
 You can skip the whole section if you prefer to get your hands wet before making
 up your opinion.
 
+
 .. toctree::
    :maxdepth: 1
 
-   /about/overview
    about/why
-   /money
+   /about/overview
    about/lino_and_django
    about/auth
    /about/compared

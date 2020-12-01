@@ -74,6 +74,17 @@ $ sudo add_members -r recipients.txt test
 
 
 
+Troubleshooting
+===============
+
+The following simulates quite closely what mailman does when sending its mails.
+
+::
+
+  $ sudo apt install sendemail
+  $ dig gmx.net MX
+  $ sendemail -f mylist@abc.org -t myrcpt@gmx.net -u test -m test -s mail.ghi.org:25 -v -o tls=no
+
 Sources
 =======
 

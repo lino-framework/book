@@ -39,7 +39,6 @@ Running Lino on a full server
     certbot
     security
     cron
-    mail/index
 
 
 Maintenance
@@ -94,7 +93,6 @@ Other
     apache_webdav
     using
     webdav
-    install_shell_scripts
     virtualenv
     tim2lino
     mysql_tune
@@ -102,6 +100,7 @@ Other
     oood
     notify
     mirror
+    mail/index
 
 
 

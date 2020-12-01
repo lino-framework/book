@@ -2,40 +2,40 @@
 Welcome
 =======
 
-The Lino community welcomes both experienced and new Python developers. We
-differentiate three profiles of readers.
-
-- As an :term:`application developer` you want to use Lino for writing your own
-  Lino application. You should read the :doc:`Developer Guide </dev/index>`.
-  You write pure Python code, you don't hassle with Javascript or CSS.  Your
-  main focus is the business logic of your customer.
-
-  You are welcome to contribute to the :term:`Lino community` by reporting about
-  your successes and failures, and suggesting changes and new features,
-  regardless of whether you publish your own work as :term:`free <Free
-  Software>` or :term:`proprietary <proprietary software>` software.
-
-- As a :term:`contributing developer` you want to help us to make Lino better by
-  submitting pull requests. You should also read the :doc:`Developer Guide
-  </dev/index>` because these are your "customers", but you need to know more
-  than this. You might find yourself writing the Python code that generates the
-  React and Javascript code that makes up a Lino :term:`front end`.  This is
-  covered by the :doc:`Contributor Guide </team/index>`.
+The technical documentation about Lino is targeted at three different types of
+professional activity.
 
 - As a :term:`site administrator` you want to run some existing :term:`Lino
-  application` in a reliable way on a :term:`production server`. This is
-  documented in the :doc:`Hoster Guide </admin/index>`.
+  application` on a :term:`production server`. You don't need profound knowledge
+  of the Python language itself, but you will deal with installing Python
+  packages. This is documented in the :doc:`Hoster Guide </admin/index>`.
 
-This guide should be interesting and understandable for any motivated Python
-developer with at least basic knowledge. But please let us know whenever you
-stumble over a section that does not satisfy this noble goal. We count on you as
-a reader to help us. The mere fact of asking for help and giving feedback is
-already a contribution to making this guide better.
+- As an :term:`application developer` you want write your own Lino application
+  and focus on the business logic of your customer who wants a customized
+  database application. You will write pure Python code and learn how to use
+  Lino and its underlying framework, Django. This is documented in the
+  :doc:`Developer Guide </dev/index>`.
+
+- As a :term:`contributing developer` you want to help us to make Lino better.
+  You must understand the two other activities because these are your
+  "customers", but you need to know more than this. You might find yourself
+  writing the Python code that generates the React and Javascript code that
+  makes up a Lino :term:`front end`.  This is covered by the :doc:`Contributor
+  Guide </team/index>`.
 
 
+How to contact us
+=================
 
+The Lino book is very interesting and understandable for anybody who wants to
+learn one of these activities. At least in theory.  Please let us know when you
+stumble into a place where theory doesn't match reality. We count on you as a
+reader to help us.
 
-Ways to contact us:
+Lino is free software, it belongs to us all.  The mere fact of asking for help
+and giving feedback is already a contribution to making this guide better. The
+:term:`Lino community` thanks you in advance.
+
 
 - Submit an issue on our `GitHub page <https://github.com/lino-framework>`__
   (submit to the `book repository
@@ -46,4 +46,4 @@ Ways to contact us:
   <https://lino-framework.org/cgi-bin/mailman/listinfo/lino-developers>`__
   and send an email.
 
-- Contact one of the team directly: https://saffre-rumma.net/team/
+- Contact one of the team directly: https://www.saffre-rumma.net/team/

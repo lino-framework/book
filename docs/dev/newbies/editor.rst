@@ -4,6 +4,20 @@
 Which editor to use
 ===================
 
+Software developers spend most of their time inside a source code editor.
+
+If you haven't yet made up your choice about which editor to use, then we
+recommend to start with :ref:`atom`.  See below.
+Atom satisfies everything you need to be successful.
+Luc still uses just Atom.
+
+There are other choices, most notably PyCharm. Don't waste too much of your time
+with single-file editors like `joe
+<https://en.wikipedia.org/wiki/Joe%27s_Own_Editor>`__ or `nano
+<https://www.nano-editor.org/>`__. These are good for occasional changes in
+files on a server that you access via a terminal, but they are not designed for
+jumping back and forth in a repository with thousands of source code files.
+
 .. _atom:
 
 Atom
