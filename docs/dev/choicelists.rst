@@ -407,6 +407,7 @@ Seeing all choicelists in your application
  ('clients.KnownContactTypes',
   'clients.KnownContactTypes (Known contact types)'),
  ('comments.CommentEvents', 'comments.CommentEvents (Observed events)'),
+ ('comments.Emotions', 'comments.Emotions (Emotions)'),
  ('concepts.LinkTypes', 'concepts.LinkTypes (Link Types)'),
  ('contacts.CivilStates', 'contacts.CivilStates (Civil states)'),
  ('contacts.PartnerEvents', 'contacts.PartnerEvents (Observed events)'),

@@ -36,30 +36,30 @@ the detail window of a ticket.
 >>> print(py2rst(tickets.AllTickets.detail_layout, True))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
-- **General** (general_1):
-  - (general1_1):
-    - (general1a):
-      - (general1a_1): **Summary** (summary), **ID** (id)
-      - (general1a_2): **Site** (site), **Ticket type** (ticket_type)
-      - **Workflow** (workflow_buttons)
-      - **Dependencies** (tickets_LinksByTicket) [visible for developer admin]
-    - (general1b):
-      - (general1b_1): **Author** (user), **End user** (end_user)
-      - (general1b_2): **Assign to** (quick_assign_to), **Private** (private)
-      - (general1b_3): **Priority** (priority), **Planned time** (planned_time)
-      - (general1b_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
-      - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
-  - **Comments** (comments.CommentsByRFC)
-- **More** (more):
-  - (more_1):
-    - (more1):
-      - (more1_1): **Created** (created), **Modified** (modified), **Fixed since** (fixed_since)
-      - (more1_2): **State** (state), **Assigned to** (assigned_to), **Reference** (ref), **Duplicate of** (duplicate_of), **Deadline** (deadline)
+- **General** (general_tab_1):
+  - **None** (overview)
+  - (general2):
+    - (general2_1): **Site** (site), **End user** (end_user), **Ticket type** (ticket_type)
+    - (general2_2): **Assign to** (quick_assign_to), **Private** (private)
+    - (general2_3): **Priority** (priority), **Planned time** (planned_time), **Deadline** (deadline)
+    - (general2_4): **Regular** (regular_hours), **Extra** (extra_hours), **Free** (free_hours)
+    - **Sessions** (working_SessionsByTicket) [visible for contributor developer admin]
+  - (general3): **Workflow** (workflow_buttons), **Comments** (comments_CommentsByRFC)
+- **More** (more_tab_1):
+  - (more1): **State** (state), **Assigned to** (assigned_to), **Duplicate of** (duplicate_of), **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
+  - (more2):
+    - **Description** (description)
+    - **Resolution** (upgrade_notes)
+    - **Checks** (tickets.CheckListItemsByTicket) [visible for customer contributor developer admin]
+  - (more3):
+    - (more3_1): **ID** (id), **Reference** (ref)
+    - **Summary** (summary)
+    - (more3_3): **Author** (user), **Created** (created)
+    - (more3_4): **Modified** (modified), **Fixed since** (fixed_since)
     - **Duplicates** (DuplicatesByTicket)
-  - (more_2): **Resolution** (upgrade_notes), **Description** (description), **Upload files** (uploads_UploadsByController) [visible for customer contributor developer admin]
-  - **Checks** (tickets.CheckListItemsByTicket) [visible for customer contributor developer admin]
-- **Mentions** (comments_CommentsByMentioned)
+- **Links** (links_1): **Mentioned in** (comments_CommentsByMentioned), **Dependencies** (tickets_LinksByTicket) [visible for developer admin]
 <BLANKLINE>
+
 
 
 .. class:: Ticket
@@ -110,10 +110,10 @@ Anonymous users can see only public sites:
 =========== ===================== ===================== ================ ======== ================================ ====
  Reference   Designation           Client                Contact person   Remark   Workflow                         ID
 ----------- --------------------- --------------------- ---------------- -------- -------------------------------- ----
- bugs        bugs                                                                  **⚒ Active** → [⛶] [☉] [☾] [☑]   5
+ bugs        bugs                                                                  **⚒ Active** → [⚹] [☉] [☾] [☑]   5
  docs        docs                                                                  **⚒ Active**                     4
  pypi        pypi                                                                  **⚒ Active**                     3
- welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald   Annette Arens             **⚒ Active** → [⛶] [☉] [☾] [☑]   2
+ welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald   Annette Arens             **⚒ Active** → [⚹] [☉] [☾] [☑]   2
 =========== ===================== ===================== ================ ======== ================================ ====
 <BLANKLINE>
 
@@ -121,11 +121,11 @@ Anonymous users can see only public sites:
 =========== ===================== ===================== ================ ======== ================================ ====
  Reference   Designation           Client                Contact person   Remark   Workflow                         ID
 ----------- --------------------- --------------------- ---------------- -------- -------------------------------- ----
- bugs        bugs                                                                  **⚒ Active** → [⛶] [☉] [☾] [☑]   5
- docs        docs                                                                  **⚒ Active** → [⛶] [☉] [☾] [☑]   4
- pypi        pypi                                                                  **⚒ Active** → [⛶] [☉] [☾] [☑]   3
- welket      Rumma & Ko OÜ         Rumma & Ko OÜ         Andreas Arens             **⚒ Active** → [⛶] [☉] [☾] [☑]   1
- welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald   Annette Arens             **⚒ Active** → [⛶] [☉] [☾] [☑]   2
+ bugs        bugs                                                                  **⚒ Active** → [⚹] [☉] [☾] [☑]   5
+ docs        docs                                                                  **⚒ Active** → [⚹] [☉] [☾] [☑]   4
+ pypi        pypi                                                                  **⚒ Active** → [⚹] [☉] [☾] [☑]   3
+ welket      Rumma & Ko OÜ         Rumma & Ko OÜ         Andreas Arens             **⚒ Active** → [⚹] [☉] [☾] [☑]   1
+ welsch      Bäckerei Ausdemwald   Bäckerei Ausdemwald   Annette Arens             **⚒ Active** → [⚹] [☉] [☾] [☑]   2
 =========== ===================== ===================== ================ ======== ================================ ====
 <BLANKLINE>
 
@@ -135,7 +135,7 @@ Anonymous users can see only public sites:
 ----------- ------------- -------- ---------------- -------- -------------------------------- ----
  bugs        bugs                                             **⚒ Active**                     5
  docs        docs                                             **⚒ Active**                     4
- pypi        pypi                                             **⚒ Active** → [⛶] [☉] [☾] [☑]   3
+ pypi        pypi                                             **⚒ Active** → [⚹] [☉] [☾] [☑]   3
 =========== ============= ======== ================ ======== ================================ ====
 <BLANKLINE>
 
@@ -147,7 +147,7 @@ where Jean is member):
 =================== ============= ================================
  Site                Description   Workflow
 ------------------- ------------- --------------------------------
- `pypi <Detail>`__                 **⚒ Active** → [⛶] [☉] [☾] [☑]
+ `pypi <Detail>`__                 **⚒ Active** → [⚹] [☉] [☾] [☑]
 =================== ============= ================================
 <BLANKLINE>
 
@@ -205,17 +205,17 @@ Show all active tickets reported by me.
 ========== ==================================================================== ============= ============== ========= ======= ====== =============================================
  Priority   Ticket                                                               Assigned to   Planned time   Regular   Extra   Free   Workflow
 ---------- -------------------------------------------------------------------- ------------- -------------- --------- ------- ------ ---------------------------------------------
- Normal     `#113 (⛶ Misc optimizations in Baz) <Detail>`__                                                                            [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#113 (⚹ Misc optimizations in Baz) <Detail>`__                                                                            [✋] [▶] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal     `#106 (☎ 'NoneType' object has no attribute 'isocode') <Detail>`__   Jean                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal     `#99 (☉ No more foo when bar is gone) <Detail>`__                    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#92 (⚒ Why is foo so bar) <Detail>`__                               Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#78 (☐ Default account in invoices per partner) <Detail>`__         Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#57 (⛶ Irritating message when bar) <Detail>`__                                                                           [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#57 (⚹ Irritating message when bar) <Detail>`__                                                                           [✋] [▶] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal     `#50 (☎ Misc optimizations in Baz) <Detail>`__                       Jean                                                  [▶] **☎ Talk** → [☾] [☉] [☐] [☒]
  Normal     `#43 (☉ 'NoneType' object has no attribute 'isocode') <Detail>`__    Luc                                                   [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal     `#36 (⚒ No more foo when bar is gone) <Detail>`__                    Mathieu                                               [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal     `#22 (☐ How can I see where bar?) <Detail>`__                        Jean                                                  [▶] **☐ Ready** → [☎] [☑] [☒]
- Normal     `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                              [✋] [■] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal     `#1 (⚹ Föö fails to bar when baz) <Detail>`__                                                                              [✋] [■] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
 ========== ==================================================================== ============= ============== ========= ======= ====== =============================================
 <BLANKLINE>
 
@@ -237,7 +237,7 @@ a scrum backlog.
  Normal                `#91 (☉ Cannot delete foo) <Detail>`__                                                                        [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal                `#84 (⚒ Irritating message when bar) <Detail>`__                                                              [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#82 (☎ Cannot delete foo) <Detail>`__                                                                        [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#81 (⛶ No more foo when bar is gone) <Detail>`__                                                             [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal                `#81 (⚹ No more foo when bar is gone) <Detail>`__                                                             [✋] [▶] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal                `#74 (☎ Why is foo so bar) <Detail>`__                                                                        [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal                `#68 (⚒ Misc optimizations in Baz) <Detail>`__                                                                [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#62 (☐ Foo never bars) <Detail>`__                                                                           [▶] **☐ Ready** → [☎] [☑] [☒]
@@ -245,14 +245,14 @@ a scrum backlog.
  Normal                `#51 (☉ Default account in invoices per partner) <Detail>`__                                                  [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal                `#44 (⚒ Foo never bars) <Detail>`__                                                                           [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#42 (☎ Default account in invoices per partner) <Detail>`__                                                  [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
- Normal                `#41 (⛶ Misc optimizations in Baz) <Detail>`__                                                                [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal                `#41 (⚹ Misc optimizations in Baz) <Detail>`__                                                                [✋] [▶] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  Normal                `#36 (⚒ No more foo when bar is gone) <Detail>`__                                                             [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#18 (☎ No more foo when bar is gone) <Detail>`__                                                             [▶] **☎ Talk** → [☾] [☉] [⚒] [☐] [☑] [☒]
  Normal                `#14 (☐ Bar cannot baz) <Detail>`__                                                                           [▶] **☐ Ready** → [☎] [☑] [☒]
  Normal                `#12 (⚒ Foo cannot bar) <Detail>`__                                                                           [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
  Normal                `#11 (☉ Class-based Foos and Bars?) <Detail>`__                                                               [▶] **☉ Open** → [☾] [☎] [⚒] [☐] [☑] [☒]
  Normal                `#4 (⚒ Foo and bar don't baz) <Detail>`__                                           1:24                      [▶] **⚒ Working** → [☾] [☎] [☐] [☑] [☒]
- Normal                `#1 (⛶ Föö fails to bar when baz) <Detail>`__                                                                 [✋] [▶] **⛶ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
+ Normal                `#1 (⚹ Föö fails to bar when baz) <Detail>`__                                                                 [✋] [▶] **⚹ New** → [☾] [☎] [☉] [⚒] [☐] [☑]
  **Total (21 rows)**                                                                                       **1:24**
 ===================== ==================================================================== ============== ========== ======= ====== =============================================
 <BLANKLINE>
@@ -272,7 +272,7 @@ Links between tickets
 ==== ================= ================================== ==============================
  ID   Dependency type   Parent                             Child
 ---- ----------------- ---------------------------------- ------------------------------
- 1    Requires          #1 (⛶ Föö fails to bar when baz)   #2 (☎ Bar is not always baz)
+ 1    Requires          #1 (⚹ Föö fails to bar when baz)   #2 (☎ Bar is not always baz)
 ==== ================= ================================== ==============================
 <BLANKLINE>
 

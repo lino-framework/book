@@ -10,6 +10,7 @@
 The :mod:`lino.modlib.memo` plugin adds application-specific markup to
 :doc:`text fields </dev/textfield>` .
 
+
 One facet of this plugin is a simple built-in markup language called "memo". A
 **memo markup command** is a fragment of text between square brackets (of the
 form ``[foo bar baz]``)
@@ -188,6 +189,37 @@ The answer is 42.
 The :class:`Previewable` mixin
 ==============================
 
+Adds three datbase fields  :attr:`body <Previewable.body>`,  :attr:`body
+<Previewable.short_preview>` and :attr:`body <Previewable.full_preview>`. The
+two preview fields contain the parsed version of the body, they are read-only
+and get updated automatically when the body is updated.  :attr:`short_preview
+<Previewable.short_preview>` contains only the first paragraph and a "more"
+indication if the full preview has more.
+See also :func:`truncate_comment`
+
+>>> def test(body):
+...     com = rt.models.comments.Comment(body=body)
+...     short, full = com.get_previews()
+...     print(short)
+...     print("------")
+...     print(full)
+
+>>> test("Foo bar baz")
+Foo bar baz
+------
+Foo bar baz
+
+>>> test("<p>Foo</p><p>bar baz</p>")
+Foo (...)
+------
+<p>Foo</p><p>bar baz</p>
+
+>>> test("Foo\n\nbar baz")
+Foo (...)
+------
+Foo
+<BLANKLINE>
+bar baz
 
 
 Technical reference
@@ -195,8 +227,8 @@ Technical reference
 
 .. function:: truncate_comment(html_str, max_p_len=None)
 
-    Return a shortened preview of a html string, containing at most one
-    paragraph with at most `max_p_len` characters.
+    Return the first paragraph of a string that can be either HTML or plain
+    text, containing at most one paragraph with at most `max_p_len` characters.
 
     :html_str: the raw string of html
     :max_p_len: max number of characters in the paragraph.
@@ -205,7 +237,7 @@ Technical reference
 
 .. function:: rich_text_to_elems(ar, description)
 
-    A RichTextField can contain HTML markup or plain text.
+    A RichTextField can contain either HTML markup or plain text.
 
 .. function:: body_subject_to_elems(ar, title, description)
 

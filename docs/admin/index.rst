@@ -101,6 +101,7 @@ Other
     notify
     mirror
     mail/index
+    choicelists
 
 
 

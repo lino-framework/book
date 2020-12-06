@@ -48,7 +48,7 @@ Tests
 >>> rt.models.comments.Comment.objects.all().count()
 168
 >>> rt.models.comments.Comment.objects.filter(private=True).count()
-134
+140
 
 >>> rt.login("robin").show(comments.Comments,
 ...     column_names="id ticket__site user owner",
@@ -57,12 +57,12 @@ Tests
 ==== ======== ============= ===============================================
  ID   Site     Author        Topic
 ---- -------- ------------- -----------------------------------------------
- 83            Rolf Rompen   `Developers <Detail>`__
- 84            Robin Rood    `Managers <Detail>`__
- 85   welket   Jean          `#1 (⛶ Föö fails to bar when baz) <Detail>`__
- 86   welket   Luc           `#1 (⛶ Föö fails to bar when baz) <Detail>`__
- 87   welket   Marc          `#1 (⛶ Föö fails to bar when baz) <Detail>`__
- 88   welket   Mathieu       `#1 (⛶ Föö fails to bar when baz) <Detail>`__
+ 83            Rolf Rompen   `Front-end team <Detail>`__
+ 84            Robin Rood    `Front-end team <Detail>`__
+ 85   welket   Jean          `#1 (⚹ Föö fails to bar when baz) <Detail>`__
+ 86   welket   Luc           `#1 (⚹ Föö fails to bar when baz) <Detail>`__
+ 87   welket   Marc          `#1 (⚹ Föö fails to bar when baz) <Detail>`__
+ 88   welket   Mathieu       `#1 (⚹ Föö fails to bar when baz) <Detail>`__
 ==== ======== ============= ===============================================
 <BLANKLINE>
 
@@ -79,18 +79,24 @@ The demo database contains 168 comments, 84 about a team and 84 about a ticket.
 >>> comments.Comment.objects.filter(group=None).count()
 84
 >>> comments.Comment.objects.filter(private=False).count()
-34
+28
 
 
 >>> rt.login("marc").show(comments.RecentComments)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-`... <Detail>`__ by `rolf <Detail>`__@`pypi <Detail>`__ about `#55 <Detail>`__ : Some plain text.
+`... <Detail>`__ by **marc** in reply to **jean** about `#12 <Detail>`__@welket : Lorem ipsum ... (...)
 ...
-`... <Detail>`__ by `marc <Detail>`__@`pypi <Detail>`__ about `#45 <Detail>`__ : breaking  (...)
+`... <Detail>`__ by **robin** in reply to **romain** about `#9 <Detail>`__@bugs : Lorem ipsum dolor ... (...)
+...
+**Okay** | **✅** | **❎**
 
 
 >>> rt.show(comments.RecentComments)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-`... <Detail>`__ by *rolf*@*pypi* about `#55 <Detail>`__ : Some plain text.
+`... <Detail>`__ by **robin** in reply to **marc** about `#10 <Detail>`__ : 
+Who What Done?
+<BLANKLINE>
 ...
-`... <Detail>`__ by *luc* about `#30 <Detail>`__ : Some plain text.
+<BLANKLINE>
+`... <Detail>`__ by **romain** about `#9 <Detail>`__@bugs (2 replies) : Styled comment pasted from word!
+...

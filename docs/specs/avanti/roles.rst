@@ -183,7 +183,6 @@ Each window is **viewable** for a given set of user types.
 - comments.Comments.detail : visible for user staff admin
 - comments.Comments.insert : visible for user staff admin
 - comments.CommentsByRFC.insert : visible for user staff admin
-- comments.Mentions.detail : visible for staff admin
 - contacts.Companies.detail : visible for user secretary staff admin
 - contacts.Companies.insert : visible for user secretary staff admin
 - contacts.Companies.merge_row : visible for admin

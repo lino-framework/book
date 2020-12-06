@@ -27,7 +27,7 @@ Complexity factors
 - 49 plugins
 - 87 models
 - 5 user types
-- 322 views
+- 323 views
 - 22 dialog actions
 <BLANKLINE>
 
@@ -73,7 +73,7 @@ The database models
  calview.DailyPlannerRow            calview.DailyPlannerRows         7         2
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                12        168
+ comments.Comment                   comments.Comments                13        168
  comments.CommentType               comments.CommentTypes            4         0
  comments.Mention                   comments.Mentions                7         0
  contacts.Company                   contacts.Companies               26        13

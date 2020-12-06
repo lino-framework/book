@@ -171,60 +171,62 @@ Example:
 >>> from lino.api.doctest import *
 
 >>> show_fields(contacts.Person)
-+---------------+----------------------------+-----------------------------------------------------------------+
-| Internal name | Verbose name               | Help text                                                       |
-+===============+============================+=================================================================+
-| email         | e-mail address             | The primary email address.                                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| language      | Language                   | The language to use when communicating with this partner.       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| phone         | Phone                      | The primary phone number.                                       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| gsm           | GSM                        | The primary mobile phone number.                                |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| city          | Locality                   | The locality, i.e. usually a village, city or town.             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| addr1         | Address line before street | Address line before street                                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_prefix | Street prefix              | Text to print before name of street, but to ignore for sorting. |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street        | Street                     | Name of street, without house number.                           |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_no     | No.                        | House number.                                                   |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| street_box    | Box                        | Text to print after street number on the same line.             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| addr2         | Address line after street  | Address line to print below street line.                        |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| prefix        | Name prefix                | An optional name prefix. For organisations this is inserted     |
-|               |                            | before the name, for persons this is inserted between first     |
-|               |                            | name and last name.                                             |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| name          | Name                       | The full name of this partner. Used for alphabetic sorting.     |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| title         | Title                      | Used to specify a professional position or academic             |
-|               |                            | qualification like "Dr." or "PhD".                              |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| first_name    | First name                 | The first name, also known as given name.                       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| middle_name   | Middle name                | A space-separated list of all middle names.                     |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| last_name     | Last name                  | The last name, also known as family name.                       |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| gender        | Gender                     | The sex of this person (male or female).                        |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| birth_date    | Birth date                 | Uncomplete dates are allowed, e.g.                              |
-|               |                            | "00.00.1980" means "some day in 1980",                          |
-|               |                            | "00.07.1980" means "in July 1980"                               |
-|               |                            | or "23.07.0000" means "on a 23th of July".                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| age           | Age                        | Virtual field displaying the age in years.                      |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| mti_navigator | See as                     | A virtual field which defines buttons for switching between the |
-|               |                            | different views.                                                |
-+---------------+----------------------------+-----------------------------------------------------------------+
-| municipality  | Municipality               | The municipality, i.e. either the city or a parent of it.       |
-+---------------+----------------------------+-----------------------------------------------------------------+
++------------------+----------------------------+-----------------------------------------------------------------+
+| Internal name    | Verbose name               | Help text                                                       |
++==================+============================+=================================================================+
+| email            | e-mail address             | The primary email address.                                      |
++------------------+----------------------------+-----------------------------------------------------------------+
+| language         | Language                   | The language to use when communicating with this partner.       |
++------------------+----------------------------+-----------------------------------------------------------------+
+| phone            | Phone                      | The primary phone number.                                       |
++------------------+----------------------------+-----------------------------------------------------------------+
+| gsm              | GSM                        | The primary mobile phone number.                                |
++------------------+----------------------------+-----------------------------------------------------------------+
+| city             | Locality                   | The locality, i.e. usually a village, city or town.             |
++------------------+----------------------------+-----------------------------------------------------------------+
+| addr1            | Address line before street | Address line before street                                      |
++------------------+----------------------------+-----------------------------------------------------------------+
+| street_prefix    | Street prefix              | Text to print before name of street, but to ignore for sorting. |
++------------------+----------------------------+-----------------------------------------------------------------+
+| street           | Street                     | Name of street, without house number.                           |
++------------------+----------------------------+-----------------------------------------------------------------+
+| street_no        | No.                        | House number.                                                   |
++------------------+----------------------------+-----------------------------------------------------------------+
+| street_box       | Box                        | Text to print after street number on the same line.             |
++------------------+----------------------------+-----------------------------------------------------------------+
+| addr2            | Address line after street  | Address line to print below street line.                        |
++------------------+----------------------------+-----------------------------------------------------------------+
+| prefix           | Name prefix                | An optional name prefix. For organisations this is inserted     |
+|                  |                            | before the name, for persons this is inserted between first     |
+|                  |                            | name and last name.                                             |
++------------------+----------------------------+-----------------------------------------------------------------+
+| name             | Name                       | The full name of this partner. Used for alphabetic sorting.     |
++------------------+----------------------------+-----------------------------------------------------------------+
+| title            | Title                      | Used to specify a professional position or academic             |
+|                  |                            | qualification like "Dr." or "PhD".                              |
++------------------+----------------------------+-----------------------------------------------------------------+
+| first_name       | First name                 | The first name, also known as given name.                       |
++------------------+----------------------------+-----------------------------------------------------------------+
+| middle_name      | Middle name                | A space-separated list of all middle names.                     |
++------------------+----------------------------+-----------------------------------------------------------------+
+| last_name        | Last name                  | The last name, also known as family name.                       |
++------------------+----------------------------+-----------------------------------------------------------------+
+| gender           | Gender                     | The sex of this person (male or female).                        |
++------------------+----------------------------+-----------------------------------------------------------------+
+| birth_date       | Birth date                 | Uncomplete dates are allowed, e.g.                              |
+|                  |                            | "00.00.1980" means "some day in 1980",                          |
+|                  |                            | "00.07.1980" means "in July 1980"                               |
+|                  |                            | or "23.07.0000" means "on a 23th of July".                      |
++------------------+----------------------------+-----------------------------------------------------------------+
+| workflow_buttons | Workflow                   | List of actions that change the workflow state of this object.  |
++------------------+----------------------------+-----------------------------------------------------------------+
+| age              | Age                        | Virtual field displaying the age in years.                      |
++------------------+----------------------------+-----------------------------------------------------------------+
+| mti_navigator    | See as                     | A virtual field which defines buttons for switching between the |
+|                  |                            | different views.                                                |
++------------------+----------------------------+-----------------------------------------------------------------+
+| municipality     | Municipality               | The municipality, i.e. either the city or a parent of it.       |
++------------------+----------------------------+-----------------------------------------------------------------+
 
 Because the above text is now in your specifications, doctest will warn you
 whenever any of the help tests changes.

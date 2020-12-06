@@ -144,7 +144,7 @@ Here are some examples for different users.
 ======================================================== ===========================================================
  Description                                              Actions
 -------------------------------------------------------- -----------------------------------------------------------
- `#1 (⛶ Föö fails to bar when baz) <Detail>`__            [▶] [★] **Candidate** → [Cancelled] [Watching] [Assigned]
+ `#1 (⚹ Föö fails to bar when baz) <Detail>`__            [▶] [★] **Candidate** → [Cancelled] [Watching] [Assigned]
  `#107 (☉ Ticket 107) <Detail>`__  by `Jean <Detail>`__   [▶] [★] **Candidate** → [Cancelled] [Watching]
  `#68 (⚒ Ticket 68) <Detail>`__  by `Jean <Detail>`__     [▶] [★] **Candidate** → [Cancelled] [Watching]
 ======================================================== ===========================================================

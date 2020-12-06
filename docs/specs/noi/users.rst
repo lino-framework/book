@@ -164,7 +164,6 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - comments.Comments.detail : visible for customer contributor developer admin
 - comments.Comments.insert : visible for customer contributor developer admin
 - comments.CommentsByRFC.insert : visible for customer contributor developer admin
-- comments.Mentions.detail : visible for developer admin
 - contacts.Companies.detail : visible for contributor developer admin
 - contacts.Companies.insert : visible for contributor developer admin
 - contacts.Companies.merge_row : visible for admin

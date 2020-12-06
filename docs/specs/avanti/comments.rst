@@ -86,16 +86,16 @@ Nathalie sees only her comments:
 >>> rt.login("nathalie").show(comments.Comments,
 ...     column_names="id user owner", limit=6)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-==== ========== ========================================
+==== ========== ====================================
  ID   Author     Topic
----- ---------- ----------------------------------------
+---- ---------- ------------------------------------
  3    nathalie   `ABAD Aábdeen (114) <Detail>`__
- 12   nathalie   `ABBASI Aáishá (118) <Detail>`__
- 21   nathalie   `ABDOU Abeer (143) <Detail>`__
- 30   nathalie   `ABOOD Abdul Fáttááh (163) <Detail>`__
- 39   nathalie   `ALEKSANDROV Akim (116) <Detail>`__
- 48   nathalie   `ASTAFUROV Agáfiiá (175) <Detail>`__
-==== ========== ========================================
+ 12   nathalie   `ABBAS Aábid (115) <Detail>`__
+ 21   nathalie   `ABBASI Aáishá (118) <Detail>`__
+ 30   nathalie   `ABDALLAH Aáish (127) <Detail>`__
+ 39   nathalie   `ABDELLA Aákif (128) <Detail>`__
+ 48   nathalie   `ABDELNOUR Aámir (125) <Detail>`__
+==== ========== ====================================
 <BLANKLINE>
 
 
@@ -107,5 +107,6 @@ Nathalie sees only her comments:
 
 >>> rt.login("nathalie").show(comments.RecentComments)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-`... <Detail>`__ by *nathalie* about `ABDELRAHMAN Aáqil (133) <Detail>`__ : 
+`... <Detail>`__ by **nathalie** in reply to **martina** about `ABDULLAH Afááf (155) <Detail>`__ :
 ...
+**Okay** | **✅** | **❎**

@@ -40,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-63
+54
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
@@ -56,13 +56,17 @@ Tickets are rendered using plain bootstrap HTML:
 
 >>> links = soup.find_all('a')
 >>> len(links)
-38
+30
 >>> print(links[0].get('href'))
 /?ul=en
 
+The following is currently skipped because the demo project has some general issues.
+See :ticket:`3857`.
+For example after clicking on ticket #10 in the dashboard it says that this ticket doesn't exist.
+
 >>> print(soup.get_text(' ', strip=True))
-... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS
+... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF +ELLIPSIS +SKIP
 Tickets Sign in — Home en de fr Tickets All tickets Office Recent comments Site About #15 (Bars have no foo) << < > >> State: Closed
 <BLANKLINE>
 <BLANKLINE>
-(last update ...) Created ... by Jean Site: pypi ... Styled comment pasted ... This is Lino Noi ... using ...
+(last update ...) Created ... by Jean Site: pypi ... This is Lino Noi ... using ...

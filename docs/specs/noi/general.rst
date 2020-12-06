@@ -111,3 +111,5 @@ Lino Noi and Scrum
 | hide_events_before   | Hide events before   | If this is not empty, any calendar events before that date are      |
 |                      |                      | being hidden in certain places.                                     |
 +----------------------+----------------------+---------------------------------------------------------------------+
+| workflow_buttons     | Workflow             | List of actions that change the workflow state of this object.      |
++----------------------+----------------------+---------------------------------------------------------------------+

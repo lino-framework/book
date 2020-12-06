@@ -207,10 +207,10 @@ A suggester always returns a maximum of 5 suggestions:
 [('marc', 'Marc'), ('mathieu', 'Mathieu'), ('romain', 'Romain Raffault')]
 
 >>> mp.suggesters['#'].get_object("1")
-Ticket #1 ('#1 (⛶ Föö fails to bar when baz)')
+Ticket #1 ('#1 (⚹ Föö fails to bar when baz)')
 
 >>> mp.parse("#1", ar)
-'<a href="Detail" title="#1 (&#9974; F&#246;&#246; fails to bar when baz)">#1</a>'
+'<a href="Detail" title="#1 (&#9913; F&#246;&#246; fails to bar when baz)">#1</a>'
 
 
 Bleaching

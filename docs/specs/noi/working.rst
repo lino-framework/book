@@ -79,9 +79,9 @@ All sessions of the demo project:
 ================================== ========= ============ ============ ============ ========== ============ ========= =========== =================
  Ticket                             Worker    Start date   Start time   End Date     End Time   Break Time   Summary   Duration    Ticket #
 ---------------------------------- --------- ------------ ------------ ------------ ---------- ------------ --------- ----------- -----------------
- #1 (⛶ Föö fails to bar when baz)   Jean      23/05/2015   09:00:00                                                                `#1 <Detail>`__
- #1 (⛶ Föö fails to bar when baz)   Luc       23/05/2015   09:00:00                                                                `#1 <Detail>`__
- #1 (⛶ Föö fails to bar when baz)   Mathieu   23/05/2015   09:00:00                                                                `#1 <Detail>`__
+ #1 (⚹ Föö fails to bar when baz)   Jean      23/05/2015   09:00:00                                                                `#1 <Detail>`__
+ #1 (⚹ Föö fails to bar when baz)   Luc       23/05/2015   09:00:00                                                                `#1 <Detail>`__
+ #1 (⚹ Föö fails to bar when baz)   Mathieu   23/05/2015   09:00:00                                                                `#1 <Detail>`__
  #2 (☎ Bar is not always baz)       Jean      22/05/2015   09:00:00     22/05/2015   11:18:00                          2:18        `#2 <Detail>`__
  #2 (☎ Bar is not always baz)       Luc       22/05/2015   09:00:00     22/05/2015   12:29:00                          3:29        `#2 <Detail>`__
  #2 (☎ Bar is not always baz)       Mathieu   22/05/2015   09:00:00     22/05/2015   12:53:00                          3:53        `#2 <Detail>`__
@@ -227,7 +227,7 @@ going to write reports for a date range when there are still active session).
 ==== =============================================== =============== ======== ========= ========== ======= ======
  ID   Ticket                                          End user        Site     State     Regular    Extra   Free
 ---- ----------------------------------------------- --------------- -------- --------- ---------- ------- ------
- 1    `#1 (⛶ Föö fails to bar when baz) <Detail>`__   Andreas Arens   welket   New       0:03
+ 1    `#1 (⚹ Föö fails to bar when baz) <Detail>`__   Andreas Arens   welket   New       0:03
  4    `#4 (⚒ Foo and bar don't baz) <Detail>`__       Andreas Arens   welket   Working   1:24
                                                                                          **1:27**
 ==== =============================================== =============== ======== ========= ========== ======= ======

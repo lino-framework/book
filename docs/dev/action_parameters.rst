@@ -142,7 +142,7 @@ to make it possible).
 True
 >>> msg = ar.response['message']
 >>> print(tostring(msg))
-<div class="htmlText"><p>Are you sure you want to merge #1 (⛶ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies <b>will be deleted.</b></li><li>3 Sessions, 8 Comments <b>will get reassigned.</b></li><li>#1 (⛶ Föö fails to bar when baz) will be deleted</li></ul></div>
+<div class="htmlText"><p>Are you sure you want to merge #1 (⚹ Föö fails to bar when baz) into #2 (☎ Bar is not always baz)?</p><ul><li>1 Dependencies <b>will be deleted.</b></li><li>3 Sessions, 7 Comments <b>will get reassigned.</b></li><li>#1 (⚹ Föö fails to bar when baz) will be deleted</li></ul></div>
 
 
 
@@ -150,40 +150,6 @@ Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
 
 >>> show_dialog_actions()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- tickets.ActiveTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.AllTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.DuplicatesByTicket.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.MyTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.MyTicketsNeedingFeedback.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.MyTicketsToWork.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.PublicTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.RefTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.Tickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsByEndUser.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsBySite.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsByType.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsNeedingMyFeedback.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsToTalk.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.TicketsToTriage.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- tickets.UnassignedTickets.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
-- working.TicketsByReport.quick_assign_to_action : Assign to
-  (main) [visible for all]: **User** (assign_to), **Comment** (comment)
 - cal.EventTypes.merge_row : Merge
   (main) [visible for all]: **into...** (merge_to), **Reason** (reason)
 - cal.GuestRoles.merge_row : Merge

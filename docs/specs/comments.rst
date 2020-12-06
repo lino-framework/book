@@ -32,17 +32,14 @@ Overview
     A comment has no "recipient". When you submit a comment, Lino notifies all
     users who registered their interest in the :term:`discussion topic`.
 
-    A comment can be a *reply* to another comments. All comments replying directly
+    A comment can be a *reply* to another comment. All comments replying directly
     or indirectly to a given comment are called a *discussion thread*.
 
     Comments are stored in the :class:`Comment` database model.
 
-    Comments have no workflow management nor rating mechanism etc. It is the
-    author's responsibility to think before they write something.
-
   discussion topic
 
-    The database object that is the "topic" of a comment.
+    A database object that is the "topic" of a series of comments.
 
   commentable database model
 
@@ -62,14 +59,6 @@ Comments
 
     Django model to represent a :term:`comment`.
 
-    .. attribute:: body
-
-        The full body text of your comment.
-
-    .. attribute:: short_preview
-
-        The first paragraph of your :attr:`body`.
-
     .. attribute:: user
 
         The author of the comment.
@@ -84,9 +73,22 @@ Comments
         The :attr:`owner` of a comment is always an instance of a subclass of
         :class:`Commentable`.
 
+    .. attribute:: body
+
+        The full body text of your comment.
+
+    .. attribute:: short_preview
+
+        The first paragraph of your :attr:`body`.
+
+    .. attribute:: emotion
+
+        The emotion of this comment.
+
     .. attribute:: published
 
         When this comment has been published. A timestamp.
+
 
 .. class:: Comments
 
@@ -156,6 +158,23 @@ Comments
 .. class:: PublishAllComments
     Publish all comments.
 
+
+Emotions
+========
+
+.. class:: Emotions
+
+    The list of available values for the :attr:`Comment.emotion` field.
+
+>>> rt.show("comments.Emotions")
+========== ========== ========== =============
+ value      name       text       Button text
+---------- ---------- ---------- -------------
+ ok         ok         Okay
+ agree      agree      Agree      ✅
+ disagree   disagree   Disagree   ❎
+========== ========== ========== =============
+<BLANKLINE>
 
 
 Comment types

@@ -87,6 +87,10 @@ ticket.
         The site this ticket belongs to.
         You can select only sites you are subscribed to.
 
+    .. attribute:: ticket_type
+
+        The type of this ticket. The site administrator can configure the list
+        of available ticket types.
 
     .. attribute:: upgrade_notes
 
@@ -102,7 +106,11 @@ ticket.
 
     .. attribute:: state
 
-        The state of this ticket. See :class:`TicketStates`.
+        The workflow state of this ticket.
+
+        The list of available states (:class:`TicketStates`) is defined by the
+        :term:`application developer` but may have :doc:`local modifications
+        </admin/choicelists>`.
 
     Relations to other tickets:
 
@@ -164,7 +172,7 @@ See :class:`lino_noi.lib.tickets.TicketStates` for a real world example.
 ======= =========== ========== ============= ========
  value   name        text       Button text   Active
 ------- ----------- ---------- ------------- --------
- 10      new         New        ⛶             Yes
+ 10      new         New        ⚹             Yes
  15      talk        Talk       ☎             Yes
  20      opened      Open       ☉             Yes
  22      working     Working    ⚒             Yes
@@ -322,7 +330,7 @@ The state of a site
 ======= ========== ========== ============= =========
  value   name       text       Button text   Exposed
 ------- ---------- ---------- ------------- ---------
- 10      draft      Draft      ⛶             Yes
+ 10      draft      Draft      ⚹             Yes
  20      active     Active     ⚒             Yes
  30      stable     Stable     ☉             Yes
  40      sleeping   Sleeping   ☾             No
@@ -416,7 +424,7 @@ The ticket states in German:
 ====== =========== ================ ============= =======
  Wert   name        Text             Button text   Aktiv
 ------ ----------- ---------------- ------------- -------
- 10     new         Neu              ⛶             Ja
+ 10     new         Neu              ⚹             Ja
  15     talk        Besprechen       ☎             Ja
  20     opened      Offen            ☉             Ja
  22     working     In Bearbeitung   ⚒             Ja
