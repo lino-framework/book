@@ -27,6 +27,29 @@ You should have read :doc:`ledger` before reading this document.
 >>> from lino_xl.lib.ledger.choicelists import DC
 
 
+Vocabulary
+==========
+
+
+.. glossary::
+
+  asset
+
+    Anything of value that you *own* and that can be converted into cash.
+
+    An asset might generate revenue, or you might benefit in some way from
+    owning or using the asset.
+
+  liability
+
+    An amount of money that you *owe* to somebody else.
+
+  capital
+
+    Any asset that is human-created (?).
+
+
+
 .. class:: SheetTypes
 
     The global list of **sheet types** .

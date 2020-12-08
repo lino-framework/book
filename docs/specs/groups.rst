@@ -17,7 +17,7 @@ The :mod:`lino_xl.lib.groups` plugin adds the notions of :term:`users groups
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.team.settings.doctests')
+>>> lino.startup('lino_book.projects.noi1e.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 

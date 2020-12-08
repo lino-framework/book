@@ -13,7 +13,7 @@ Experimental interface to Team using Bootstrap and self-made URLs
 
 This document describes the :mod:`lino_book.projects.public` variant of
 :ref:`noi` which provides readonly anonymous access to the data of
-:mod:`lino_book.projects.team` using the :mod:`lino_noi.lib.public`
+:mod:`lino_book.projects.noi1e` using the :mod:`lino_noi.lib.public`
 front end.
 
 The :mod:`lino_noi.lib.public` front end is yet another way of

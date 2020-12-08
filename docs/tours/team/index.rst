@@ -9,7 +9,7 @@ A tour of the team project
 
 
 A series of screenshots to show :ref:`noi` using the
-:mod:`lino_book.projects.team` demo project.
+:mod:`lino_book.projects.noi1e` demo project.
 
 
 

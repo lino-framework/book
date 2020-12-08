@@ -14,6 +14,7 @@ Usage examples of real-world :term:`Lino applications <Lino application>`:
    pierre
    cosi_ee
    team
+   noi1r
    bs3
    public
    anna

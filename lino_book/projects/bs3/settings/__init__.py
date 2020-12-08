@@ -16,7 +16,7 @@ sessions.
 """
 
 
-from lino_book.projects.team.settings.demo import *
+from lino_book.projects.noi1e.settings.demo import *
 
 
 class Site(Site):

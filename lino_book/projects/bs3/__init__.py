@@ -3,7 +3,7 @@
 # License: BSD (see file COPYING for details)
 """
 A readonly user interface to :mod:`team
-<lino_book.projects.team>`.
+<lino_book.projects.noi1e>`.
 
 See :ref:`noi.specs.bs3`.
 

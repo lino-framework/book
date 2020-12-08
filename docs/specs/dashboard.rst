@@ -22,12 +22,12 @@ items* of an application are *hard-coded* and *apply to all users*.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
->>> lino.startup('lino_book.projects.team.settings.doctests')
+>>> lino.startup('lino_book.projects.noi1e.settings.doctests')
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
 Which means that code snippets in this document are tested using the
-:mod:`lino_book.projects.team` demo project.
+:mod:`lino_book.projects.noi1e` demo project.
 
 
 List of available dashboard items

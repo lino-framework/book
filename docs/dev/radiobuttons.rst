@@ -16,6 +16,6 @@ There are two types of radio buttons:
 
   Examples :
   The  :attr:`lino_xl.lib.tickets.Ticket.assigned_to` field
-  (visible e.g. in the :mod:`lino_book.projects.team` demo).
+  (visible e.g. in the :mod:`lino_book.projects.noi1e` demo).
   The  :attr:`lino_xl.lib.polls.AnswersByResponse.answer_buttons` field.
   (visible e.g. in the :mod:`lino_book.projects.polly` demo)

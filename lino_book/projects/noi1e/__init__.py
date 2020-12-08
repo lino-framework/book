@@ -11,7 +11,7 @@ developer teams.
    tests
   
 
-.. module:: lino_book.projects.team.urls
+.. module:: lino_book.projects.noi1e.urls
 
 Adds customized urlpatters when use_restful is True.
 

@@ -15,7 +15,7 @@ more explanations see :ref:`lino.specs.export_excel` of :ref:`book`.
     doctest init:
 
     >>> from lino import startup
-    >>> startup('lino_book.projects.team.settings.doctests')
+    >>> startup('lino_book.projects.noi1e.settings.doctests')
     >>> from lino.api.doctest import *
 
 

@@ -119,8 +119,11 @@ class TestCase(TestCase):
     def test_cosi_ee(self):
         self.run_django_manage_test('lino_book/projects/cosi_ee')
 
-    def test_team(self):
-        self.run_django_manage_test('lino_book/projects/team')
+    def test_noi1e(self):
+        self.run_django_manage_test('lino_book/projects/noi1e')
+
+    def test_noi1r(self):
+        self.run_django_manage_test('lino_book/projects/noi1r')
 
     def test_bs3(self):
         self.run_django_manage_test('lino_book/projects/bs3')

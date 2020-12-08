@@ -8,7 +8,7 @@
 import os
 os.environ.setdefault(
     'DJANGO_SETTINGS_MODULE',
-    'lino_book.projects.team.settings.demo'
+    'lino_book.projects.noi1e.settings.demo'
 )
 import django
 django.setup()

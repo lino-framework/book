@@ -21,7 +21,7 @@ from lino_noi.lib.noi.settings import *
 
 class Site(Site):
 
-    workflows_module = 'lino_book.projects.team.workflows'
+    workflows_module = 'lino_book.projects.noi1e.workflows'
 
     the_demo_date = datetime.date(2015, 5, 23)
 

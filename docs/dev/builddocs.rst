@@ -57,7 +57,7 @@ and generated files::
     $ inv clean -b
 
 
-[autosummary] failed to import u'lino_book.projects.team.tests.test_notify'
+[autosummary] failed to import u'lino_book.projects.noi1e.tests.test_notify'
 ---------------------------------------------------------------------------
 
 This means that `autosummary
@@ -65,7 +65,7 @@ This means that `autosummary
 in turn needs `autodoc
 <http://www.sphinx-doc.org/en/master/ext/autodoc.html>`__) has a
 problem to import the module
-:mod:`lino_book.projects.team.tests.test_notify`.
+:mod:`lino_book.projects.noi1e.tests.test_notify`.
 
 Indeed you can verify that importing this module in a normal Python
 session will fail:
@@ -75,7 +75,7 @@ session will fail:
 
    >>> import os ; u = os.environ.pop('DJANGO_SETTINGS_MODULE', None)
 
->>> import lino_book.projects.team.tests.test_notify  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
+>>> import lino_book.projects.noi1e.tests.test_notify  #doctest: +NORMALIZE_WHITESPACE +IGNORE_EXCEPTION_DETAIL +ELLIPSIS
 Traceback (most recent call last):
 ...
 ImproperlyConfigured: Requested setting SITE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
@@ -111,7 +111,7 @@ Let's try this::
 And in *that* Python shell you try to import the module which Sphinx
 was not able to import::
 
-    import lino_book.projects.team.tests.test_notify
+    import lino_book.projects.noi1e.tests.test_notify
 
 Now you should see the traceback that is getting swallowed by autodoc.
 

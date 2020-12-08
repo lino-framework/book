@@ -225,10 +225,12 @@ lino_book.projects.pierre.settings
 lino_book.projects.bs3
 lino_book.projects.bs3.settings
 lino_book.projects.bs3.tests
-lino_book.projects.team
-lino_book.projects.team.tests
-lino_book.projects.team.settings
-lino_book.projects.team.settings.fixtures
+lino_book.projects.noi1e
+lino_book.projects.noi1e.tests
+lino_book.projects.noi1e.settings
+lino_book.projects.noi1e.settings.fixtures
+lino_book.projects.noi1r
+lino_book.projects.noi1r.tests
 lino_book.projects.liina
 lino_book.projects.liina.tests
 lino_book.projects.liina.settings

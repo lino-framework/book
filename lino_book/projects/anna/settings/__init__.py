@@ -18,7 +18,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-# from lino_book.projects.team.settings import *
+# from lino_book.projects.noi1e.settings import *
 from lino_care.lib.care.settings import *
 from lino.api.ad import _
 

@@ -15,10 +15,10 @@ encountered on Jane.
 
 .. include:: /../docs/shared/include/tested.rst
 
-We use the :mod:`lino_book.projects.team` demo database.
+We use the :mod:`lino_book.projects.noi1e` demo database.
 
 >>> from lino import startup
->>> startup('lino_book.projects.team.settings.demo')
+>>> startup('lino_book.projects.noi1e.settings.demo')
 >>> from lino.api.doctest import *
 
 

@@ -18,7 +18,7 @@ For any table you can define a customized summary view by writing a
 
 For example the detail window of a :class:`Site
 <lino_xl.lib.tickets.Site>` in :ref:`noi` (the :mod:`team
-<lino_book.projects.team>` demo project):
+<lino_book.projects.noi1e>` demo project):
 
 .. image:: /specs/noi/tickets.SiteDetail.png
 

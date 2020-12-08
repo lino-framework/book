@@ -15,7 +15,7 @@ The :mod:`lino.modlib.comments` plugin adds a framework for handling comments.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
->>> startup('lino_book.projects.team.settings.demo')
+>>> startup('lino_book.projects.noi1e.settings.demo')
 >>> from lino.api.doctest import *
 
 Overview

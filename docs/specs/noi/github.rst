@@ -12,7 +12,7 @@ committed by who on what ticket.
 >>> import lino
 >>> import datetime
 >>> import requests_mock
->>> lino.startup('lino_book.projects.team.settings.demo')
+>>> lino.startup('lino_book.projects.noi1e.settings.demo')
 >>> from lino.api.doctest import *
 
 

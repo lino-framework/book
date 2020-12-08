@@ -12,7 +12,7 @@ Stars in Lino Noi
 
     doctest init:
     >>> import lino
-    >>> lino.startup('lino_book.projects.team.settings.demo')
+    >>> lino.startup('lino_book.projects.noi1e.settings.demo')
     >>> from lino.api.doctest import *
     >>> from pprint import pprint
 

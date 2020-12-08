@@ -7,7 +7,7 @@ Memo commands in Lino Noi
 
 
 >>> from lino import startup
->>> startup('lino_book.projects.team.settings.demo')
+>>> startup('lino_book.projects.noi1e.settings.demo')
 >>> from lino.api.doctest import *
 
 The :attr:`description <lino_xl.lib.tickets.Ticket.description>` of a

@@ -12,7 +12,7 @@ thanks to `Python Social Auth
 A working example
 =================
 
-A working example is in the :mod:`lino_book.projects.team` demo
+A working example is in the :mod:`lino_book.projects.noi1e` demo
 project.  If you have the :doc:`Lino developer environment </dev/install/index>`
 installed, you can test the social auth functionality on your machine
 by doing::
@@ -199,7 +199,7 @@ To be able to use this API, we need to install `google-api-python-client`::
 
     pip install google-api-python-client
 
-The demo :xfile:`settings.py` of :mod:`lino_book.projects.team`
+The demo :xfile:`settings.py` of :mod:`lino_book.projects.noi1e`
 have the following things done:
 
 - We added more scopes to `SOCIAL_AUTH_GOOGLE_PLUS_SCOPE`::
@@ -220,7 +220,7 @@ have the following things done:
 Run the web interface on your machine and log in via Google+ as
 described in `A working example`_.
 
-Run the following script from the :mod:`lino_book.projects.team`
+Run the following script from the :mod:`lino_book.projects.noi1e`
 project directory::
 
     python manage.py run try_people_api.py

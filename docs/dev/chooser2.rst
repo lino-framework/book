@@ -12,7 +12,7 @@ Sometimes you require the current user to determine the choices for a field.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
->>> startup('lino_book.projects.team.settings.doctests')
+>>> startup('lino_book.projects.noi1e.settings.doctests')
 >>> from lino.api.doctest import *
 
 If your chooser method needs to know the current user to determine the choices

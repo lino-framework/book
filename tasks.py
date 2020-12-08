@@ -52,7 +52,7 @@ ns = setup_from_tasks(
         'lino_book.projects.pierre',
         'lino_book.projects.cosi_ee',
         'lino_book.projects.chatter',
-        'lino_book.projects.team',
+        'lino_book.projects.noi1e',
         'lino_book.projects.avanti1',
         'lino_book.projects.anna',
         'lino_book.projects.liina',

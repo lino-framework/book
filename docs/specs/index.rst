@@ -55,7 +55,7 @@ might be moved to :mod:`lino_xl` some day:
 
 .. _specs.xl:
 
-Plugins of the Extensions library
+Plugins of the Extensions Library
 =================================
 
 .. toctree::
@@ -162,3 +162,4 @@ Technical stuff
    jsgen
    html
    getlino/index
+   react/index

@@ -34,7 +34,7 @@ page.  It is split into two files :srcref:`admin_main.html
 
 For illustration compare the content of the latter template with its
 result in the following screenshots (taken from the :mod:`team
-<lino_book.projects.team>` demo project which runs :ref:`noi`).
+<lino_book.projects.noi1e>` demo project which runs :ref:`noi`).
 
 .. figure:: /specs/noi/admin_main_000.png
    :width: 80 %

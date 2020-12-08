@@ -122,10 +122,10 @@ def main(driver):
         driver, pth, title="A tour of the team project",
         ref="team.tour", intro="""
         A series of screenshots to show :ref:`noi` using the
-        :mod:`lino_book.projects.team` demo project.
+        :mod:`lino_book.projects.noi1e` demo project.
         """).run(english_tour)
    
 if __name__ == '__main__':
-    runserver('lino_book.projects.team.settings.demo', main)
+    runserver('lino_book.projects.noi1e.settings.demo', main)
 
 

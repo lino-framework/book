@@ -20,10 +20,10 @@ It especially provides the :class:`SiteConfig` model.
 .. include:: /../docs/shared/include/tested.rst
 
 Code snippets in this document are tested using the
-:mod:`lino_book.projects.team` demo project.
+:mod:`lino_book.projects.noi1e` demo project.
 
 >>> import lino
->>> lino.startup('lino_book.projects.team.settings.doctests')
+>>> lino.startup('lino_book.projects.noi1e.settings.doctests')
 >>> from lino.api.doctest import *
 
 

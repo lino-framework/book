@@ -15,7 +15,7 @@ This document just tests the print to pdf function.
 
 
 >>> from lino import startup
->>> startup('lino_book.projects.team.settings.demo')
+>>> startup('lino_book.projects.noi1e.settings.demo')
 >>> from lino.api.doctest import *
 
 

@@ -72,10 +72,10 @@ project directory::
 
     $ python manage.py linod --list
 
-For example in the :mod:`team <lino_book.projects.team>` demo project
+For example in the :mod:`noi1e <lino_book.projects.noi1e>` demo project
 there are 7 jobs:
 
->>> shell = Sheller("lino_book/projects/team")
+>>> shell = Sheller("lino_book/projects/noi1e")
 >>> shell("python manage.py linod --list")
 ... #doctest: +ELLIPSIS
 7 scheduled jobs:

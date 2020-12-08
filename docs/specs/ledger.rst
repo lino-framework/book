@@ -112,8 +112,8 @@ Some more concepts:
 
   common account
 
-    A well-known account for which the :term:`site manager` must configure
-    a corresponding account of your accounts chart. See :class:`CommonAccounts`.
+    A well-known account for which the :term:`site manager` must configure a
+    corresponding account in your accounts chart. See :class:`CommonAccounts`.
 
   fiscal year
 
@@ -297,9 +297,10 @@ Accounts
 Common accounts
 ===============
 
-The `accounts` plugin defines a choicelist of **common accounts**
-which are used to reference the database object for certain accounts
-which have a special meaning.
+The `accounts` plugin defines a choicelist of **common accounts**, which are
+used to reference the database object for certain accounts that have a
+well-known meaning, i.e. that represent a convention of giving a name to some
+legally recognized concept.
 
 .. class:: CommonAccounts
 
