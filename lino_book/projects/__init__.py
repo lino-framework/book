@@ -6,14 +6,13 @@ See :doc:`/dev/projects` which explains how to try them.
 
 Usage examples of real-world :term:`Lino applications <Lino application>`:
 
-
 .. autosummary::
    :toctree:
 
    apc
    pierre
    cosi_ee
-   team
+   noi1e
    noi1r
    bs3
    public

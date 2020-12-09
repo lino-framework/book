@@ -4,21 +4,26 @@
 The `media` directory
 =====================
 
-The `media` directory is a subdirectory of your project directory, 
-containing symbolic links to various sets of static files which Lino
-expects to be served under the `/media/` location.
+The `media` directory is a subdirectory of your project directory,  containing
+symbolic links to various sets of files that Lino expects to be served under
+the `/media/` location.
 
-Lino manages the content of this directory more or less automatically, 
-but **only if it exists** (and if `www-data` has write permission on 
-it).
+Lino manages the content of this directory more or less automatically,  but
+**only if it exists** (and if `www-data` has write permission on  it).
 
 The *development server* will mount it automatically.
-On a *production server* you will add a line like the following 
-to your Apache config::
+On a *production server* you must configure your web server to
+serve them.  On nginx you must say something like::
+
+    location /media  {
+        alias /usr/local/lino/lino_local/myproject/media;
+    }
+
+Or under Apache you will add a line like the following::
 
   Alias /media/ /usr/local/django/myproject/media/
-  
-  
+
+
 Description of the individual `media` sub-directories:
 
 - /media/lino/ :       Lino's :srcref`/media` directory
@@ -26,16 +31,14 @@ Description of the individual `media` sub-directories:
 - /media/extensible/ : Ext.ensible library (:attr:`lino.Lino.extensible_root`)
 - /media/tinymce/ :    TinyMCE library (:attr:`lino.Lino.tinymce_root`)
 
-Lino will automatically create the following subdirectories 
+Lino will automatically create the following subdirectories
 if they don't exist:
 
 - /media/cache/ : temporary files created by Lino
 - /media/uploads/ : Uploaded files
-- /media/webdav/ : User-editable files 
+- /media/webdav/ : User-editable files
 
 There may be application-specific media subdirectories,
 for example:
 
-- /media/beid/  : image files for pcsw.models.PersonDetail    
-
-
+- /media/beid/  : image files for pcsw.models.PersonDetail
