@@ -17,15 +17,21 @@ The ``lino`` package
 .. automodule:: lino
 
 
-The ``lino-xl`` package
+The ``lino_xl`` package
 =======================
 
 .. automodule:: lino_xl
 
 
+The ``lino_react`` package
+==========================
+
+.. automodule:: lino_react
+
+
 .. _book:
 
-The ``lino-book`` package
+The ``lino_book`` package
 =========================
 
 .. py2rst::
