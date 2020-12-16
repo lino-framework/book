@@ -39,6 +39,16 @@ Define a **virtual field on a table**::
 
 (Taken from :class:`lino_xl.lib.polls.PollResult`)
 
+
+Examples of writable virtual fields:
+- :class:`lino_xl.lib.ledger.DcAmountField`
+- :attr:`lino_xl.lib.polls.AnswersByResponseEditor.remark` is a :class:`lino_xl.lib.polls.AnswerRemarkField`
+- :class:`lino_xl.lib.families.CoupleField`
+- :class:`lino_xl.lib.cal.ExtAllDayField`
+- :attr:`lino_xl.lib.excerpts.Excerpt.body_template_content` is a :class:`lino_xl.lib.excerpts.BodyTemplateContentField`
+- :class:`lino.core.mti.EnableChild`
+
+
 Reference
 =========
 

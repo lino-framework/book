@@ -45,7 +45,28 @@ Released xl 20.10.1 to PyPI.
 Accounting movements are no longer stored in two separate fields (one for the
 amount and another for the booking direction, debit or credit) but simply as the
 amount, and a negative amount indicates a debit.  Existing production sites must
-run :manage:`reregister` after database migration.
+edit their restore.py::
+
+  from lino_xl.lib.ledger.choicelists import DC
+
+  def create_ledger_journal(...):
+    if dc:
+      kw.update(dc=DC.credit)
+    else:
+      kw.update(dc=DC.debit)
+    # same change also in create_sheets_item()
+
+  def create_ledger_movement():
+    if dc: amount = -amount
+    kw.update(amount=amount)
+    #kw.update(dc=dc)  # uncomment this line
+    # same change also in create_finan_bankstatementitem
+
+It might make sense to run :manage:`reregister` after database migration.
+
+When migrating from Lino before 20201008, keep in mind that that a checked dc
+field (True) means credit and not checked (False) means debit, and that Lino now
+stores the amount of a crediting movement (dc was True) as a negative number.
 
 PyPI releases: react, lino, xl, cosi, voga, tera.
 
@@ -63,6 +84,13 @@ In :mod:`lino_xl.lib.sheets`, the reports now have columns "Balance before" and
 "Credit after".
 
 Fixed some bugs that caused the report to not show all totals.
+
+Database migration might require manual change in file :file:``/sheets_item.py`::
+
+Change "6100" to "6010" and "6200" to "6020"::
+
+  loader.save(create_sheets_item(20,'6010',['Operating expenses', '', 'Operating expenses', 'Operating expenses'],False,'R','6010',None))
+  loader.save(create_sheets_item(21,'6020',['Other expenses', '', 'Other expenses', 'Other expenses'],False,'R','6020',None))
 
 New admin command :manage:`showsettings`.
 
@@ -100,7 +128,6 @@ The :attr:`lino_xl.lib.cal.Guest.partner` field is now a :term:`learning foreign
 Moved the functions :func:`choices_response`  and :func:`choices_for_field`
 from :mod:`lino_react.react.views` to :mod:`lino.core.views` and to
 :mod:`lino.core.fields` because this was duplicated code.
-
 
 
 2020-08-28
@@ -401,9 +428,15 @@ Released to PyPI : react
 ==========
 
 New feature: every voucher model can now define its own workflow rules. This
-change required the workflow state field of vouchers to move from the Voucher
-model to the implementing MTI child models. This requires manual changes in the
-:xfile:`restore.py` file when migrating existing data.
+change required the `state` field of vouchers to move from the Voucher model to
+the implementing MTI child models. This requires manual changes in the
+:xfile:`restore.py` file when migrating existing data. One possibility is to
+simply remove the state from `create_ledger_voucher` and set all vouchers to
+"registered" by patching the :manage:`reregister` command::
+
+   # qs = cl.objects.filter(journal=jnl, state=VoucherStates.registered)
+   qs = cl.objects.filter(journal=jnl)
+
 
 2020-01-27
 ==========

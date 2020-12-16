@@ -48,7 +48,7 @@ Some standard actions
 
 .. class:: ShowDetail
 
-  Open a window with a :term:`detail view` of its actor.
+  Open the :term:`detail window` on a table actor.
 
 .. class:: ShowInsert
 

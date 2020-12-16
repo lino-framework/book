@@ -122,8 +122,8 @@ in a given *organization*. A :term:`contact function` is what a given
       within a given :term:`organization`.
 
       The :guilabel:`Contact persons` panel of an organization's :term:`detail
-      view` shows the contact persons of this organization. The :guilabel:`Is
-      contact for` panel of a person's :term:`detail view` shows the
+      window` shows the contact persons of this organization. The :guilabel:`Is
+      contact for` panel of a person's :term:`detail window` shows the
       organizations where this person exercises a function.
 
       Contact person entries are stored using the :class:`Role` database model.

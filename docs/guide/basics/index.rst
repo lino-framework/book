@@ -44,31 +44,29 @@ application also provide a quick link :guilabel:`[My settings]`.
 
 .. glossary::
 
-  grid view
+  grid window
 
     A window that shows a number of rows and columns in a grid, like a
-    spreadsheet.
+    spreadsheet. See `Grid windows`_ below.
 
-  detail view
+  detail window
 
-    A window that shows one database row at a time. Comparable to a form, but
-    potentially containing tabs and :term:`slave panels <slave panel>`.
+    A window that shows one database row at a time. See `Detail windows`_ below.
 
   slave panel
 
     A panel that displays a slave table, i.e. data that is *related* to the
-    current row but stored in a separate database table.    See
-    :ref:`slave_panels`
-
+    current row but stored in a separate database table. See
+    :ref:`slave_panels`.
 
 
 
 Grid windows
 ============
 
-Most commands of the main menu open a **grid window**.  A *grid
-window* displays some data from your database as a tabular grid where
-you can navigate and edit that data.
+Most commands of the main menu open a **grid window**.  A *grid window* displays
+some data from your database as a tabular grid where you can navigate and edit
+that data.
 
 - Hit :kbd:`Escape` or click the X in the upper right corner of the
   window to close that window and return to the home screen.

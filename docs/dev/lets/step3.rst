@@ -6,10 +6,16 @@
 Step 3 : Filtering
 ==========================
 
+In this step we will add end-user filtering using simple parameter fields.
+
+The :term:`grid window` with our products now has a new |gear| button in its
+toolbar.  Clicking on this button toggles an additional panel, the parameter
+panel, to expand or collapse. 
+
+
 - We add a new database model "Category"
 - We add some database fields (delivery_unit, price)
 - We add more demo data so that there is something to filter
-- We add end-user filtering using simple parameter fields
 
 To activate the code of this step in your contributor environment::
 

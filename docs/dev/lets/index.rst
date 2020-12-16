@@ -29,4 +29,5 @@ Planned next steps:
 - uploading images
 - i18n
 - comments
+- switching between ExtJS and React
 - publisher
