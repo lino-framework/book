@@ -187,7 +187,9 @@ Here is a list of all :term:`dialog actions <dialog action>` in :ref:`noi`:
 - users.AllUsers.merge_row : Merge
   (main) [visible for all]:
   - **into...** (merge_to)
-  - **Also reassign volatile related objects** (keep_volatiles): **Group memberships** (groups_Membership), **User summaries** (working_UserSummary)
+  - **Also reassign volatile related objects** (keep_volatiles):
+    - (keep_volatiles_1): **Reactions** (comments_Reaction), **Group memberships** (groups_Membership)
+    - **User summaries** (working_UserSummary)
   - **Reason** (reason)
 - users.AllUsers.send_welcome_email : Welcome mail
   (main) [visible for all]: **e-mail address** (email), **Subject** (subject)

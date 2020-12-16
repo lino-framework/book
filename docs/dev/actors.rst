@@ -64,7 +64,7 @@ When Lino starts up, it automatically discovers the installed plugins
 and registers each subclass of :class:`Actor` as an actor.
 
 >>> len(actors.actors_list)
-355
+356
 
 Some of the actors are abstract, i.e. they are used as base classes for other
 actors:
@@ -80,7 +80,7 @@ slave tables":
 
 >>> from lino.core import kernel
 >>> len(kernel.master_tables)
-156
+157
 >>> kernel.master_tables[0]
 lino.modlib.system.models.SiteConfigs
 

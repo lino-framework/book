@@ -109,4 +109,3 @@ Nathalie sees only her comments:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 `... <Detail>`__ by **nathalie** in reply to **martina** about `ABDULLAH Afááf (155) <Detail>`__ :
 ...
-**Okay** | **✅** | **❎**

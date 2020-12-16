@@ -32,6 +32,7 @@ behaviour. See also :doc:`/dev/delete`.
 - cal.Room :
   - PROTECT : cal.Event.room
 - comments.Comment :
+  - CASCADE : comments.Reaction.comment
   - PROTECT : comments.Comment.reply_to, comments.Mention.comment
 - comments.CommentType :
   - PROTECT : comments.Comment.comment_type
@@ -112,7 +113,7 @@ behaviour. See also :doc:`/dev/delete`.
 - uploads.Volume :
   - PROTECT : ledger.Journal.uploads_volume, uploads.Upload.volume
 - users.User :
-  - CASCADE : groups.Membership.user, ledger.LedgerInfo.user, working.UserSummary.master
+  - CASCADE : comments.Reaction.user, groups.Membership.user, ledger.LedgerInfo.user, working.UserSummary.master
   - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, checkdata.Problem.user, comments.Comment.user, comments.Mention.user, dashboard.Widget.user, excerpts.Excerpt.user, github.Commit.user, groups.Group.user, invoicing.Plan.user, ledger.Voucher.user, notify.Message.user, social_django.UserSocialAuth.user, tickets.Ticket.assigned_to, tickets.Ticket.last_commenter, tickets.Ticket.reporter, tickets.Ticket.user, tinymce.TextFieldTemplate.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user, working.ServiceReport.user, working.Session.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher

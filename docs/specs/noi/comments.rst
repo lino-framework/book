@@ -88,12 +88,11 @@ The demo database contains 168 comments, 84 about a team and 84 about a ticket.
 ...
 `... <Detail>`__ by **robin** in reply to **romain** about `#9 <Detail>`__@bugs : Lorem ipsum dolor ... (...)
 ...
-**Okay** | **✅** | **❎**
 
 
 >>> rt.show(comments.RecentComments)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-`... <Detail>`__ by **robin** in reply to **marc** about `#10 <Detail>`__ : 
+`... <Detail>`__ by **robin** in reply to **marc** about `#10 <Detail>`__ :
 Who What Done?
 <BLANKLINE>
 ...

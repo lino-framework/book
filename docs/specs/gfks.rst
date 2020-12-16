@@ -119,7 +119,8 @@ The :class:`ContentTypes` table shows all models defined in your application.
  61   comments           commenttype
  62   comments           comment
  63   comments           mention
- 64   sessions           session
+ 64   comments           reaction
+ 65   sessions           session
 ==== ================== =========================
 <BLANKLINE>
 

@@ -25,9 +25,9 @@ Complexity factors
 >>> print(analyzer.show_complexity_factors())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - 49 plugins
-- 87 models
+- 88 models
 - 5 user types
-- 323 views
+- 324 views
 - 22 dialog actions
 <BLANKLINE>
 
@@ -55,7 +55,7 @@ The database models
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 49 apps: lino, staticfiles, about, social_django, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, office, xl, countries, contacts, users, noi, cal, calview, excerpts, memo, comments, changes, tickets, summaries, checkdata, working, lists, notify, uploads, export_excel, tinymce, smtpd, weasyprint, appypod, dashboard, github, userstats, groups, products, ledger, vat, sales, invoicing, rest_framework, restful, django_mailbox, mailbox, sessions.
-87 models:
+88 models:
 ================================== ================================ ========= =======
  Name                               Default table                    #fields   #rows
 ---------------------------------- -------------------------------- --------- -------
@@ -73,16 +73,17 @@ The database models
  calview.DailyPlannerRow            calview.DailyPlannerRows         7         2
  changes.Change                     changes.Changes                  10        0
  checkdata.Problem                  checkdata.Problems               6         0
- comments.Comment                   comments.Comments                13        168
+ comments.Comment                   comments.Comments                12        168
  comments.CommentType               comments.CommentTypes            4         0
  comments.Mention                   comments.Mentions                7         0
+ comments.Reaction                  comments.Reactions               6         0
  contacts.Company                   contacts.Companies               26        13
  contacts.CompanyType               contacts.CompanyTypes            7         16
  contacts.Partner                   contacts.Partners                24        89
  contacts.Person                    contacts.Persons                 31        76
  contacts.Role                      contacts.Roles                   4         5
  contacts.RoleType                  contacts.RoleTypes               5         5
- contenttypes.ContentType           gfks.ContentTypes                3         87
+ contenttypes.ContentType           gfks.ContentTypes                3         88
  countries.Country                  countries.Countries              6         8
  countries.Place                    countries.Places                 9         78
  dashboard.Widget                   dashboard.Widgets                5         0

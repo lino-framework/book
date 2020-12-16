@@ -56,7 +56,7 @@ Site administrator
   - System : Authorities, User types, User roles, Notification messages, Changes, Phonetic words, All dashboard widgets, content types, Data checkers, Data problems
   - Contacts : Contact persons, Partners, Clients, Household member roles, Household Members, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states, Planner columns, Access classes, Display colors
-  - Office : Comments, Mentions, Upload files, Upload areas, Excerpts
+  - Office : Comments, Mentions, Reactions, Upload files, Upload areas, Excerpts
   - Clients : Client Contacts, Known contact types
   - Career : Language knowledges, Trainings, Studies, Job Experiences
   - Trends : Trend events
