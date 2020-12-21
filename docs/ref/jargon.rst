@@ -98,7 +98,8 @@ See http://presto.lino-framework.org
 Lino Mentori
 ------------
 
-See http://mentori.lino-framework.org
+See https://gitlab.com/lino-framework/mentori
+
 
 .. _amici:
 

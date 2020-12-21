@@ -13,16 +13,30 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-12-19
+==========
+
+:class:`lino_xl.lib.countries.Places` had no :attr:`insert_layout` and hence no
+|insert| button. Now it has.
+
+2020-12-17
+==========
+
+Fixed a bug in :class:`lino_xl.lib.finan.BankStatement` caused by
+misinterpreting Debit and Credit after :ticket:`3817` (see `2020-10-15`_).
+
+
+
 2020-10-22
 ==========
 
-Better support for empty declaration_plugin: Adapted the :fixture:`payments`
-fixture of :mod:`lino_xl.lib.ledger` to also work when :attr:`declaration_plugin
-<lino_xl.lib.vat.Plugin.declaration_plugin>` is empty. The
-:meth:`get_installed_plugins` of the :class:`lino_voga.lib.voga.settings.Site`
-no longer yields the :mod:`lino_xl.lib.bevats` plugin (because this is done
-automatically when :attr:`declaration_plugin
-<lino_xl.lib.vat.Plugin.declaration_plugin>` is set).
+Better support for empty :attr:`declaration_plugin
+<lino_xl.lib.vat.Plugin.declaration_plugin>` : Adapted the :fixture:`payments`
+fixture of :mod:`lino_xl.lib.ledger` to also work when this setting is empty.
+The :meth:`get_installed_plugins` of the
+:class:`lino_voga.lib.voga.settings.Site` no longer yields the
+:mod:`lino_xl.lib.bevats` plugin (because this is done automatically when
+:attr:`declaration_plugin <lino_xl.lib.vat.Plugin.declaration_plugin>` is set).
 
 
 2020-10-19
@@ -44,7 +58,7 @@ Released xl 20.10.1 to PyPI.
 
 Accounting movements are no longer stored in two separate fields (one for the
 amount and another for the booking direction, debit or credit) but simply as the
-amount, and a negative amount indicates a debit.  Existing production sites must
+amount, and a negative amount indicates a debit. Existing production sites must
 edit their restore.py::
 
   from lino_xl.lib.ledger.choicelists import DC
@@ -60,7 +74,8 @@ edit their restore.py::
     if dc: amount = -amount
     kw.update(amount=amount)
     #kw.update(dc=dc)  # uncomment this line
-    # same change also in create_finan_bankstatementitem
+
+    # same change also in create_finan_bankstatementitem, create_finan_journalentryitem, create_finan_paymentorderitem
 
 It might make sense to run :manage:`reregister` after database migration.
 
@@ -85,9 +100,8 @@ In :mod:`lino_xl.lib.sheets`, the reports now have columns "Balance before" and
 
 Fixed some bugs that caused the report to not show all totals.
 
-Database migration might require manual change in file :file:``/sheets_item.py`::
-
-Change "6100" to "6010" and "6200" to "6020"::
+Database migration might require manual change in file :file:`/sheets_item.py`
+where you should change "6100" to "6010" and "6200" to "6020"::
 
   loader.save(create_sheets_item(20,'6010',['Operating expenses', '', 'Operating expenses', 'Operating expenses'],False,'R','6010',None))
   loader.save(create_sheets_item(21,'6020',['Other expenses', '', 'Other expenses', 'Other expenses'],False,'R','6020',None))

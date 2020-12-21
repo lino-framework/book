@@ -28,7 +28,7 @@ Journals
  BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Miscellaneous transactions   Miscellaneous transactions   Opérations diverses                                (5700) Cash                     Credit
  PRE         Preliminary transactions     Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
- SAL         Paychecks                    Lohnscheine                  Fiches de paie                                     (5700) Cash                     Credit
+ SAL         Paychecks                    Lohnscheine                  Fiches de paie                                     (5700) Cash                     Debit
  VAT         VAT declarations             MwSt.-Erklärungen            Déclarations TVA             Taxes                 (4513) VAT declared             Debit
 =========== ============================ ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>

@@ -406,23 +406,42 @@ Debit and credit
 ================
 
 Every movement of a financial transaction "moves" some amount either **out of**
-or **into** a given account.  For some reasons beyond the scope of this book,
-accountants didn't want to express this "direction" of a movement simply by
-saying "decrease" and "increase" and an either positive or negative number, they
-wanted an explicit word for it and called it **debiting** and **crediting**.
+or **into** a given account.   Accountants don't want to express this
+"direction" of a movement simply by using an either positive or negative number,
+they want an explicit word for it and call it **debiting** and **crediting**. A
+*debit* entry in an account represents a transfer of value *to* that account,
+and a *credit* entry represents a transfer *from* the account.
 
-Lino stores the amount of a crediting movement as a negative number.
+By convention, Lino stores the amount of a *debiting* movement as a *negative*
+number in the database.  As an :term:`end user` you don't need to know this
+because amounts are always shown translated into "debit" or "credit".
 
-When migrating from Lino before 20201008, keep in mind that
-that a **checked** dc field means credit and **not checked** means
-debit.
+A sales invoice *debits* the customer's account (an :term:`asset`) and *credits*
+the turnover account (a :term:`revenue`). The payment of this invoice *credits*
+the customer's account and *debits* your bank account (causing its balance to
+increase because it is an :term:`asset`).
+
+A purchase invoice *credits* the supplier's account (a :term:`liability`) and
+*debits* the costs account (an :term:`expense`). The payment of this invoice
+*debits* the supplier's account and *credits* your bank account (causing its
+balance to decrease because it is an :term:`asset`).
+
+Every journal has its specific default booking direction (configured in
+:attr:`Journal.dc`). For example a (positive) amount in a sales invoice means
+the opposite direction of a (positive) amount in a purchase invoice.
+
+See also :ref:`xl.specs.sheets.accounting_eq`.
+
+When migrating from Lino before 20201008, keep in mind that that a **checked**
+:attr:`dc` field means *credit* and **not checked** means *debit*.
+
 
 .. class:: DC
 
   A choicelist with the two values "debit" and "credit".
 
   It can be used e.g. to express the "expected" or "normal" booking direction
-  for a journal, account or report.
+  for a journal, account or field in an accounting report.
 
 >>> rt.show(ledger.DC)
 ======= ======== ========
@@ -433,7 +452,7 @@ debit.
 ======= ======== ========
 <BLANKLINE>
 
-For the following tests we import it:
+For the following code examples we import it:
 
 >>> from lino_xl.lib.ledger.choicelists import DC
 
@@ -445,8 +464,8 @@ An account balance is either debiting or crediting.
 
 .. class:: Balance
 
-    Light-weight object to represent a balance, i.e. an amount
-    together with its booking direction (debiting or crediting).
+    A light-weight object to represent a balance, i.e. an amount together with
+    its booking direction (debiting or crediting).
 
     Attributes:
 
@@ -483,6 +502,7 @@ Balance(0,0)
 >>> from decimal import Decimal
 >>> Balance(Decimal("12.34"), Decimal("12.33"))
 Balance(0.01,0)
+
 
 Database fields
 ===============
@@ -881,7 +901,7 @@ Here is the list of all :term:`journals <journal>`.
  BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Miscellaneous transactions   Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit
  PRE         Preliminary transactions     Preliminary transactions     Preliminary transactions                           (5700) Cash                     Credit
- SAL         Lohnscheine                  Fiches de paie               Paychecks                                          (5700) Cash                     Credit
+ SAL         Lohnscheine                  Fiches de paie               Paychecks                                          (5700) Cash                     Debit
  VAT         MwSt.-Erklärungen            Déclarations TVA             VAT declarations             Taxes                 (4513) VAT declared             Debit
 =========== ============================ ============================ ============================ ===================== =============================== ===========================
 <BLANKLINE>
@@ -932,27 +952,29 @@ Here is the list of all :term:`journals <journal>`.
 
     .. attribute:: dc
 
-        The primary booking direction (checked means Credit, unchecked Debit).
+        The primary booking direction. Voucher items in this direction increase
+        the total amount of the voucher.
 
-        In a journal of *sales invoices* this should be *Debit*
-        (checked), because a positive invoice total should be
-        *debited* from the customer's account.
+        In a journal of *sales invoices* this should be *Credit* because a
+        positive invoice item should *credit* the turnover account (and hence
+        their sum will *debit* the *customers receivable* account).
 
-        In a journal of *purchase invoices* this should be *Credit*
-        (not checked), because a positive invoice total should be
-        *credited* to the supplier's account.
+        In a journal of *purchase invoices* this should be *Debit* because a
+        positive invoice item should *debit* the cost account (and hence their
+        sum will *credit* the *suppliers payable* account).
 
-        In a journal of *bank statements* this should be *Debit*
-        (checked), because a positive balance change should be
-        *debited* from the bank's general account.
+        In a journal of *bank statements* this should be *Credit* because a
+        crediting item (income) should increase the balance of the bank account
+        while a debiting item (expense) should decrease it.
 
-        In a journal of *payment orders* this should be *Credit* (not
-        checked), because a positive total means an "expense" and
-        should be *credited* from the journal's general account.
+        In a journal of *payment orders* this should be *Debit* because a
+        positive total means an expense to be *debited* from the *pending
+        payment orders* account (see :class:`CommonAccounts`).
 
-        In all financial vouchers, the amount of every item increases
-        the total if its direction is opposite of the primary
-        direction.
+        In a journal of *paychecks* this should be *Debit* because a positive
+        paycheck item should *debit* the wages account (and hence their sum will
+        *credit* the *employees payable* account).
+
 
     .. attribute:: auto_check_clearings
 
@@ -1554,10 +1576,9 @@ in debt towards us.
 The most common debtors are customers, i.e. partners who received a sales
 invoice from us and did not yet pay that invoice.
 
-There can be debtors who are not customers.  For example a bank or a tax office.
-A bank is a debtor when pending payment orders are booked to this account.  A
-tax office is a debtor when we had more VAT deductible (sales) than VAT due
-(purchases).
+There can be debtors who are not customers.  For example a tax office. A bank is
+a debtor when pending payment orders are booked to this account.  A tax office
+is a debtor when we had more VAT deductible (sales) than VAT due (purchases).
 
 >>> ses.show(ledger.Debtors, column_names="due_date partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -1575,8 +1596,15 @@ tax office is a debtor when we had more VAT deductible (sales) than VAT due
 ==================== ======================= ========== ===============
 <BLANKLINE>
 
+
 The :class:`DebtsByPartner <lino_xl.lib.ledger.DebtsByPartner>` shows one row
 per uncleared invoice, and a list of --usually partial-- payments per invoice.
+This table is used for both debtors and creditors, which can be useful when you
+have business partners who are both customers and providers.
+
+By convention, this list shows a debit balance as a negative number and a
+crediting balance as a positive number.
+
 For example here is the detail of the debts for partner 165 from above list:
 
 >>> obj = contacts.Partner.objects.get(pk=165)
@@ -1584,19 +1612,34 @@ For example here is the detail of the debts for partner 165 from above list:
 Partner #165 ('da Vinci David')
 >>> ses.show(ledger.DebtsByPartner, obj)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-==================== ============== ========================== ==========
- Due date             Balance        Debts                      Payments
--------------------- -------------- -------------------------- ----------
- 11/03/2015           647,35         `SLS 14/2015 <Detail>`__
- 12/03/2015           1 299,08       `SLS 15/2015 <Detail>`__
- **Total (2 rows)**   **1 946,43**
-==================== ============== ========================== ==========
+==================== =============== ========================== ==========
+ Due date             Balance         Debts                      Payments
+-------------------- --------------- -------------------------- ----------
+ 11/03/2015           -647,35         `SLS 14/2015 <Detail>`__
+ 12/03/2015           -1 299,08       `SLS 15/2015 <Detail>`__
+ **Total (2 rows)**   **-1 946,43**
+==================== =============== ========================== ==========
+<BLANKLINE>
+
+Here is an example of a provider to whom we owe money:
+
+>>> obj = contacts.Partner.objects.get(pk=101)
+>>> obj
+Partner #101 ('Rumma & Ko OÜ')
+>>> ses.show(ledger.DebtsByPartner, obj)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
+==================== ============ ======= ==========================
+ Due date             Balance      Debts   Payments
+-------------------- ------------ ------- --------------------------
+ 04/03/2015           141,60               `PRC 16/2015 <Detail>`__
+ **Total (1 rows)**   **141,60**
+==================== ============ ======= ==========================
 <BLANKLINE>
 
 
 **Creditors** are partners who gave us credit, IOW to whom we owe
 money.  The most common creditors are providers, i.e. partners who
-send us a purchase invoice (which we did not yet pay).
+sent us a purchase invoice (which we did not yet pay).
 
 >>> ses.show(ledger.Creditors, column_names="partner partner_id balance")
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF

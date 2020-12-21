@@ -35,7 +35,9 @@ Vocabulary
 
   asset
 
-    Anything of value that you *own* and that can be converted into cash.
+    Anything of value that you *own* and that can be expressed as a monetary
+    value. For example the money in your cash drawer, a positive balance on your
+    bank account, a computer, a car, a house,
 
     An asset might generate revenue, or you might benefit in some way from
     owning or using the asset.
@@ -44,9 +46,146 @@ Vocabulary
 
     An amount of money that you *owe* to somebody else.
 
+  revenue
+
+    The money you get for your business activity, e.g. for the sale of your
+    products and services.
+
+  expense
+
+    The cost of doing business.  For example the rent you pay for your office
+    room, the salaries you pay to your employees, office supplies and coffee you
+    consume while working, ...
+
   capital
 
-    Any asset that is human-created (?).
+    The money given to your business by your investors.
+
+  ownership equity
+
+    The amount of the business assets owned by the business owner.
+
+.. _xl.specs.sheets.accounting_eq:
+
+
+The Accounting Equation
+=======================
+
+The basic `Accounting Equation
+<https://en.wikipedia.org/wiki/Accounting_equation>`_ states:
+
+  Assets = Liabilities + Capital
+
+And the expanded accounting equation is:
+
+    Assets **+ Expenses** = Liabilities + Equity **+ Revenue**
+
+Accounts on the left side of the equation (Assets and Expenses) are
+normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
+<CommonItem.dc>` attribute means:
+
+>>> print(sheets.CommonItems.assets.dc)
+Debit
+>>> print(sheets.CommonItems.expenses.dc)
+Debit
+
+`Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
+Summary table of standard increasing and decreasing attributes for the
+five accounting elements:
+
+============= ===== ======
+ACCOUNT TYPE  DEBIT CREDIT
+============= ===== ======
+Asset         \+    \−
+Liability     \−    \+
+Income        \−    \+
+Expense       \+    \−
+Equity        \−     \+
+============= ===== ======
+
+The equivalent in Lino is:
+
+>>> for t in sheets.CommonItems.get_list_items():
+... #doctest: +NORMALIZE_WHITESPACE
+...   if len(t.value) <= 2:
+...     print("%-2s|%-15s|%-6s" % (t.value, t, t.dc))
+1 |Assets         |Debit
+10|Current assets |Debit
+11|Non-current assets|Debit
+2 |Passiva        |Credit
+20|Liabilities    |Credit
+21|Own capital    |Credit
+4 |Commercial assets & liabilities|Credit
+5 |Financial assets & liabilities|Credit
+6 |Expenses       |Debit
+60|Operation costs|Debit
+62|Wages          |Debit
+7 |Revenues       |Credit
+
+
+TODO: the following tests aren't yet very meaningful, we must first
+automatically generate the profit/loss booking (:ticket:`3476`) so that the
+expenses and revenues are balanced.
+
+>>> rpt = sheets.Report.objects.get(pk=1)
+>>> def getval(ci):
+...     try:
+...         e = sheets.ItemEntry.objects.get(report=rpt, item=ci.get_object())
+...     except sheets.ItemEntry.DoesNotExist:
+...         return 0
+...     return e.new_balance().value(e.item.dc)
+
+>>> assets = getval(sheets.CommonItems.assets)
+>>> liabilities = getval(sheets.CommonItems.liabilities)
+>>> capital = getval(sheets.CommonItems.capital)
+>>> passiva = getval(sheets.CommonItems.passiva)
+>>> expenses = getval(sheets.CommonItems.expenses)
+>>> revenues = getval(sheets.CommonItems.revenues)
+
+>>> print(assets)
+8454.21
+>>> print(liabilities)
+5572.28
+>>> print(capital)  #doctest: +SKIP
+-9354.40
+>>> print(liabilities+capital)  #doctest: +SKIP
+13836.75
+>>> print(passiva)  #doctest: +SKIP
+13836.75
+>>> print(expenses)
+26115.45
+>>> print(revenues)  #doctest: +SKIP
+24518.54
+
+
+
+
+Types of accounting sheets
+==========================
+
+.. glossary::
+
+  balance sheet
+
+    A summary of the financial balances of an organisation. Also called a
+    *statement of financial position*.
+
+    :term:`Assets <asset>`, :term:`liabilities <liability>` and ownership
+    equity are listed as of a specific date, such as the end of its
+    financial year.  A balance sheet is often described as a "snapshot of a
+    company's financial condition".  Of the four basic financial statements,
+    the balance sheet is the only statement that applies to a single point
+    in time of a business' calendar year.
+
+    A standard company balance sheet has three parts: assets, liabilities
+    and ownership equity. The main categories of assets are usually listed
+    first, and typically in order of liquidity. Assets are followed by the
+    liabilities. The difference between the assets and the liabilities is
+    known as equity or the net assets or the net worth or capital of the
+    company and according to the accounting equation, net worth must equal
+    assets minus liabilities.
+
+    https://en.wikipedia.org/wiki/Balance_sheet
 
 
 
@@ -65,27 +204,6 @@ Vocabulary
     <BLANKLINE>
 
     .. attribute:: balance
-
-        A **balance sheet** or *statement of financial position* is a
-        summary of the financial balances of an organisation.
-
-        Assets, liabilities and ownership equity are listed as of a
-        specific date, such as the end of its financial year.  A balance
-        sheet is often described as a "snapshot of a company's financial
-        condition".  Of the four basic financial statements, the balance
-        sheet is the only statement which applies to a single point in
-        time of a business' calendar year.
-
-        A standard company balance sheet has three parts: assets,
-        liabilities and ownership equity. The main categories of assets
-        are usually listed first, and typically in order of
-        liquidity. Assets are followed by the liabilities. The difference
-        between the assets and the liabilities is known as equity or the
-        net assets or the net worth or capital of the company and
-        according to the accounting equation, net worth must equal assets
-        minus liabilities.
-
-        https://en.wikipedia.org/wiki/Balance_sheet
 
     .. attribute:: results
 
@@ -397,241 +515,6 @@ Income statement
  7000 Net sales                        21 050,00
 ========================= =========== ===========
 <BLANKLINE>
-
-======================================= ============== =============== =========== =========== ============== =============
- Account                                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
---------------------------------------- -------------- --------------- ----------- ----------- -------------- -------------
- **4 Commercial assets & liabilities**                                  68 086,12   69 137,88   1 051,76
- 4000 Customers                                                         21 172,95   18 497,91                  2 675,04
- 4100 Suppliers                                                         22 332,12   27 904,40   5 572,28
- 4300 Pending Payment Orders                                            22 448,65   22 448,65
- 4500 Tax Offices                                                       116,53      116,53
- 4510 VAT due                                                           116,53      170,39      53,86
- 4520 VAT deductible                                                    1 899,34                               1 899,34
- **5 Financial assets & liabilities**                                   6 187,46    2 253,77                   3 933,69
- 5500 BestBank                                                          6 187,46    2 253,77                   3 933,69
- **6 Expenses**                                                         26 115,45                              26 115,45
- ** 60 Operation costs**                                                26 115,45                              26 115,45
- 6010 Purchase of services                                              16 261,89                              16 261,89
- 6020 Purchase of investments                                           3 567,77                               3 567,77
- 6040 Purchase of goods                                                 6 285,79                               6 285,79
- **7 Revenues**                                                         1 440,00    22 490,00   21 050,00
- 7000 Sales                                                             1 440,00    2 730,00    1 290,00
- 7010 Sales on therapies                                                            19 760,00   19 760,00
-======================================= ============== =============== =========== =========== ============== =============
-<BLANKLINE>
-============================ ============== =============== =========== ======== ============== =============
- Account                      Debit before   Credit before   Debit       Credit   Credit after   Debit after
----------------------------- -------------- --------------- ----------- -------- -------------- -------------
- **1 Operation costs**                                       5 744,49                            5 744,49
- 1100 Wages                                                  531,36                              531,36
- 1200 Transport                                              1 434,63                            1 434,63
- 1300 Training                                               3 128,42                            3 128,42
- 1400 Other costs                                            650,08                              650,08
- **2 Administrative costs**                                  10 080,82                           10 080,82
- 2100 Secretary wages                                        1 520,72                            1 520,72
- 2110 Manager wages                                          4 336,29                            4 336,29
- 2200 Transport                                              3 671,17                            3 671,17
- 2300 Training                                               552,64                              552,64
- **3 Investments**                                           1 200,31                            1 200,31
- 3000 Investment                                             1 200,31                            1 200,31
- **4 Project 1**                                             4 538,48                            4 538,48
- 4100 Wages                                                  3 555,20                            3 555,20
- 4200 Transport                                              481,78                              481,78
- 4300 Training                                               501,50                              501,50
- **5 Project 2**                                             4 551,35                            4 551,35
- 5100 Wages                                                  1 359,79                            1 359,79
- 5200 Transport                                              2 942,07                            2 942,07
- 5300 Other costs                                            249,49                              249,49
-============================ ============== =============== =========== ======== ============== =============
-<BLANKLINE>
-================================================ ============== =============== ========== ========== ============== =============
- Partner                                          Debit before   Credit before   Debit      Credit     Credit after   Debit after
------------------------------------------------- -------------- --------------- ---------- ---------- -------------- -------------
- `Altenberg Hans <Detail>`__                                                     1 086,20   846,20                    240,00
- `Arens Andreas <Detail>`__                                                      540,00     540,00
- `Arens Annette <Detail>`__                                                      1 332,83   1 332,80                  0,03
- `Ausdemwald Alfons <Detail>`__                                                  620,00     620,00
- `Auto École Verte <Detail>`__                                                   500,00     500,00
- `Bastiaensen Laurent <Detail>`__                                                711,20     570,20                    141,00
- `Bernd Brechts Bücherladen <Detail>`__                                          620,00     620,00
- `Bäckerei Ausdemwald <Detail>`__                                                360,00     360,00
- `Bäckerei Mießen <Detail>`__                                                    440,00     440,00
- `Bäckerei Schmitz <Detail>`__                                                   160,00     160,00
- `Chantraine Marc <Detail>`__                                                    1 190,00   540,00                    650,00
- `Charlier Ulrike <Detail>`__                                                    1 020,60   540,60                    480,00
- `Collard Charlotte <Detail>`__                                                  840,00     540,00                    300,00
- `Demeulenaere Dorothée <Detail>`__                                              1 523,80   843,80                    680,00
- `Denon Denis <Detail>`__                                                        1 620,00   1 620,00
- `Dericum Daniel <Detail>`__                                                     160,00                               160,00
- `Dobbelstein-Demeulenaere Dorothée <Detail>`__                                  540,00     540,00
- `Donderweer BV <Detail>`__                                                      320,00     320,00
- `Emonts Erich <Detail>`__                                                       255,00     255,00
- `Emontspool Erwin <Detail>`__                                                   630,60     630,60
- `Garage Mergelsberg <Detail>`__                                                 605,00     605,00
- `Groteclaes Gregory <Detail>`__                                                 301,10     301,00                    0,10
- `Hans Flott & Co <Detail>`__                                                    350,00     350,00
- `Hilgers Henri <Detail>`__                                                      540,00     540,00
- `Jonas Josef <Detail>`__                                                        240,70     240,70
- `Kaivers Karl <Detail>`__                                                       541,20     541,20
- `Leffin Electronics <Detail>`__                                                 100,00     100,00
- `Malmendier Marc <Detail>`__                                                    300,46     298,75                    1,71
- `Martelaer Mark <Detail>`__                                                     630,00     630,00
- `Moulin Rouge <Detail>`__                                                       450,00     427,50                    22,50
- `Radermacher Daniela <Detail>`__                                                285,96     286,20     0,24
- `Radermacher Edgard <Detail>`__                                                 540,00     540,00
- `Radermecker Rik <Detail>`__                                                    241,10     241,10
- `Reinhards Baumschule <Detail>`__                                               280,00     280,00
- `Rumma & Ko OÜ <Detail>`__                                                      450,00     450,00
- `Van Achter NV <Detail>`__                                                      306,00     306,00
- `da Vinci David <Detail>`__                                                     541,20     541,26     0,06
-================================================ ============== =============== ========== ========== ============== =============
-<BLANKLINE>
-=============================================== ============== =============== =========== =========== ============== =============
- Partner                                         Debit before   Credit before   Debit       Credit      Credit after   Debit after
------------------------------------------------ -------------- --------------- ----------- ----------- -------------- -------------
- `Bäckerei Ausdemwald <Detail>`__                                               568,80      709,00      140,20
- `Bäckerei Mießen <Detail>`__                                                   2 407,80    3 010,00    602,20
- `Bäckerei Schmitz <Detail>`__                                                  4 802,60    6 005,00    1 202,40
- `Donderweer BV <Detail>`__                                                     567,00      709,00      142,00
- `Garage Mergelsberg <Detail>`__                                                12 970,32   16 210,90   3 240,58
- `Rumma & Ko OÜ <Detail>`__                                                     163,00      205,50      42,50
- `Tough Thorough Thought Therapies <Detail>`__                                  50,00       50,00
- `Van Achter NV <Detail>`__                                                     802,60      1 005,00    202,40
-=============================================== ============== =============== =========== =========== ============== =============
-<BLANKLINE>
-No data to display
-=============================================== ============== =============== ======== ======== ============== =============
- Partner                                         Debit before   Credit before   Debit    Credit   Credit after   Debit after
------------------------------------------------ -------------- --------------- -------- -------- -------------- -------------
- `Mehrwertsteuer-Kontrollamt Eupen <Detail>`__                                  116,53   116,53
-=============================================== ============== =============== ======== ======== ============== =============
-<BLANKLINE>
-No data to display
-======================= ============== =============== =========== =========== ============== =============
- Partner                 Debit before   Credit before   Debit       Credit      Credit after   Debit after
------------------------ -------------- --------------- ----------- ----------- -------------- -------------
- `Bestbank <Detail>`__                                  22 448,65   22 448,65
-======================= ============== =============== =========== =========== ============== =============
-<BLANKLINE>
-=========================== ========== ==========
- Description                 Activa     Passiva
---------------------------- ---------- ----------
- **1 Assets**                           2 675,04
- ** 10 Current assets**                 2 675,04
- 1000 Customers receivable              2 675,04
- **2 Passiva**
- ** 20 Liabilities**
- 2000 Suppliers payable      5 572,28
- 2010 Taxes payable
- 2020 Banks
- 2030 Current transfers
-=========================== ========== ==========
-<BLANKLINE>
-========================= =========== ===========
- Description               Expenses    Revenues
-------------------------- ----------- -----------
- **6 Expenses**            26 115,45
- 6000 Cost of sales        6 285,79
- 6100 Operating expenses   16 261,89
- 6200 Other expenses       3 567,77
- **7 Revenues**                        21 050,00
- 7000 Net sales                        21 050,00
-========================= =========== ===========
-<BLANKLINE>
-
-
-
-The Accounting Equation
-=======================
-
-The basic `Accounting Equation
-<https://en.wikipedia.org/wiki/Accounting_equation>`_ states:
-
-  Assets = Liabilities + Capital
-
-And the expanded accounting equation is:
-
-    Assets + Expenses = Liabilities + Equity + Revenue
-
->>> rpt = sheets.Report.objects.get(pk=1)
->>> def getval(ci):
-...     try:
-...         e = sheets.ItemEntry.objects.get(report=rpt, item=ci.get_object())
-...     except sheets.ItemEntry.DoesNotExist:
-...         return 0
-...     return e.new_balance().value(e.item.dc)
-
-TODO: the following tests aren't yet very meaningful, we must first
-automatically generate the profit/loss booking (:ticket:`3476`) so that the
-expenses and revenues are balanced.
-
->>> assets = getval(sheets.CommonItems.assets)
->>> liabilities = getval(sheets.CommonItems.liabilities)
->>> capital = getval(sheets.CommonItems.capital)
->>> passiva = getval(sheets.CommonItems.passiva)
->>> expenses = getval(sheets.CommonItems.expenses)
->>> revenues = getval(sheets.CommonItems.revenues)
-
->>> print(assets)
-8454.21
->>> print(liabilities)
-5572.28
->>> print(capital)  #doctest: +SKIP
--9354.40
->>> print(liabilities+capital)  #doctest: +SKIP
-13836.75
->>> print(passiva)  #doctest: +SKIP
-13836.75
->>> print(expenses)
-26115.45
->>> print(revenues)  #doctest: +SKIP
-24518.54
-
-Accounts on the left side of the equation (Assets and Expenses) are
-normally DEBITed and have DEBIT balances.  That's what the :attr:`dc
-<CommonItem.dc>` attribute means:
-
->>> translation.activate('en')
-
->>> print(sheets.CommonItems.assets.dc)
-Debit
->>> print(sheets.CommonItems.expenses.dc)
-Debit
-
-`Wikipedia <http://en.wikipedia.org/wiki/Debits_and_credits>`_ gives a
-Summary table of standard increasing and decreasing attributes for the
-five accounting elements:
-
-============= ===== ======
-ACCOUNT TYPE  DEBIT CREDIT
-============= ===== ======
-Asset         \+    \−
-Liability     \−    \+
-Income        \−    \+
-Expense       \+    \−
-Equity        \−     \+
-============= ===== ======
-
-The equivalent in Lino is:
-
->>> for t in sheets.CommonItems.get_list_items():
-... #doctest: +NORMALIZE_WHITESPACE
-...   if len(t.value) <= 2:
-...     print("%-2s|%-15s|%-6s" % (t.value, t, t.dc))
-1 |Assets         |Debit
-10|Current assets |Debit
-11|Non-current assets|Debit
-2 |Passiva        |Credit
-20|Liabilities    |Credit
-21|Own capital    |Credit
-4 |Commercial assets & liabilities|Credit
-5 |Financial assets & liabilities|Credit
-6 |Expenses       |Debit
-60|Operation costs|Debit
-62|Wages          |Debit
-7 |Revenues       |Credit
-
 
 
 

@@ -174,6 +174,7 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - countries.Countries.detail : visible for admin
 - countries.Countries.insert : visible for admin
 - countries.Places.detail : visible for admin
+- countries.Places.insert : visible for admin
 - excerpts.ExcerptTypes.detail : visible for developer admin
 - excerpts.ExcerptTypes.insert : visible for developer admin
 - excerpts.Excerpts.detail : visible for contributor developer admin
