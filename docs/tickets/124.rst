@@ -112,7 +112,7 @@ DISCUSS
 - Alerte mail quand ajout nouvel intervenant.
 
 - Vocabulaire: dans les "Ateliers" ("courses") nous avons deux
-  "catégories" (CourseAreas):
+  "catégories" (ActivityLayouts):
 
   - basic : "Ateliers"
   - job : "Modules de détermination d'un projet socioprofessionnel"

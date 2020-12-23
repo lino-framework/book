@@ -8,7 +8,7 @@ General
 doctest init:
 
 >>> import lino
->>> lino.startup('lino_book.projects.roger.settings.doctests')
+>>> lino.startup('lino_book.projects.voga1.settings')
 >>> from lino.api.doctest import *
 
 
@@ -17,6 +17,6 @@ doctest init:
 - 42 plugins
 - 83 models
 - 6 user types
-- 318 views
+- 315 views
 - 24 dialog actions
 <BLANKLINE>

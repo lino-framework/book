@@ -613,7 +613,7 @@ def create_products_product(id, name, description, cat_id, delivery_unit, produc
     return products_Product(**kw)
 
 def create_courses_line(id, ref, name, excerpt_title, company_id, contact_person_id, contact_role_id, course_area, topic_id, description, every_unit, every, event_type_id, fee_id, guest_role_id, options_cat_id, fees_cat_id, body_template, invoicing_policy):
-#    if course_area: course_area = settings.SITE.models.courses.CourseAreas.get_by_value(course_area)
+#    if course_area: course_area = settings.SITE.models.courses.ActivityLayouts.get_by_value(course_area)
 #    if every_unit: every_unit = settings.SITE.models.cal.Recurrencies.get_by_value(every_unit)
 #    if invoicing_policy: invoicing_policy = settings.SITE.models.courses.InvoicingPolicies.get_by_value(invoicing_policy)
     kw = dict()
@@ -974,7 +974,7 @@ def create_excerpts_excerpt(id, project_id, build_time, build_method, owner_type
     return excerpts_Excerpt(**kw)
 
 def create_courses_enrolment(id, start_date, end_date, printed_by_id, user_id, course_area, course_id, pupil_id, request_date, state, places, option_id, remark, confirmation_details, tariff_id, guest_role_id):
-#    if course_area: course_area = settings.SITE.models.courses.CourseAreas.get_by_value(course_area)
+#    if course_area: course_area = settings.SITE.models.courses.ActivityLayouts.get_by_value(course_area)
 #    if state: state = settings.SITE.models.courses.EnrolmentStates.get_by_value(state)
     kw = dict()
     kw.update(id=id)

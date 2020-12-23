@@ -31,7 +31,7 @@ datetime.date(2020, 5, 22)
 >>> print(mary.user_type)
 400 (Pupil)
 >>> print(courses.Pupil.objects.get(id=mary.partner.id))
-Mary Morgan
+Mary Morgan (N)
 
 
 >>> course = rt.models.courses.Course.objects.get(id=11)

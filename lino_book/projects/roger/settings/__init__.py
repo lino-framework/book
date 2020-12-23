@@ -13,12 +13,20 @@ class Site(Site):
     title = "Lino Voga for Roger"
     languages = "en de fr"
 
+    # custom_layouts_module = "lino_book.projects.roger.settings.layouts"
+
     demo_fixtures = """std minimal_ledger
     demo voga demo_bookings payments demo2 checkdata""".split()
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.publisher'
+
+    def get_apps_modifiers(self, **kw):
+        kw = super(Site, self).get_apps_modifiers(**kw)
+        # alternative implementations:
+        kw.update(courses='lino_voga.lib.roger.courses')
+        return kw
 
     def get_plugin_configs(self):
         yield super(Site, self).get_plugin_configs()
@@ -29,9 +37,3 @@ class Site(Site):
         yield ('ledger', 'start_year', 2014)
         # yield ('react', 'url_prefix', 'admin')
         # yield ('react', 'force_url_prefix', True)
-
-    def get_apps_modifiers(self, **kw):
-        kw = super(Site, self).get_apps_modifiers(**kw)
-        # alternative implementations:
-        kw.update(courses='lino_voga.lib.roger.courses')
-        return kw

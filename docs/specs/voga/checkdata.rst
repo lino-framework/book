@@ -28,9 +28,9 @@ Explorer --> System --> Data checkers
 
 >>> rt.show(checkdata.Checkers)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-=================================== ===============================================
+=================================== ========================================================
  value                               text
------------------------------------ -----------------------------------------------
+----------------------------------- --------------------------------------------------------
  beid.SSINChecker                    Check for invalid SSINs
  cal.ConflictingEventsChecker        Check for conflicting calendar entries
  cal.EventGuestChecker               Entries without participants
@@ -41,11 +41,12 @@ Explorer --> System --> Data checkers
  finan.FinancialVoucherItemChecker   Check for invalid account/partner combination
  ledger.VoucherChecker               Check integrity of ledger vouchers
  memo.PreviewableChecker             Check for previewables needing update
+ phones.ContactDetailsOwnerChecker   Check for mismatches between contact details and owner
  printing.CachedPrintableChecker     Check for missing target files
  sepa.BankAccountChecker             Check for partner mismatches in bank accounts
  system.BleachChecker                Find unbleached html content
  vat.VatColumnsChecker               Check VAT columns configuration.
-=================================== ===============================================
+=================================== ========================================================
 <BLANKLINE>
 
 More information about each checker in the corresponding plugin specs  (e.g.

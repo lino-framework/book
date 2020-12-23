@@ -18,7 +18,7 @@ A **plugin library** is a collection of reusable plugins which are
 designed to work together. For example :mod:`lino.modlib`,
 :mod:`lino_xl.lib`, :mod:`lino_noi.lib`, :mod:`lino_voga.lib`,
 :mod:`lino_welfare.modlib`.
-     
+
 
 A simple example
 ================
@@ -55,9 +55,9 @@ of :class:`cal.Room <lino_voga.lib.cal.models.Room>`::
 
     def save(self, *args, **kwargs):
         super(Room, self). save(*args, **kwargs)
-        
+
         # add specific behaviour
-        
+
 For this to work, the *library version* of :class:`cal.Room`
 (i.e. :class:`lino_xl.lib.cal.models.Room`) must have `abstract=True`.
 
@@ -77,7 +77,7 @@ In other words: The *abstractness of certain models* in a plugin
 depends on whether the plugin is going to be extended.
 
 So how can the library version know whether the :class:`Room` model
-should be abstract or not?  
+should be abstract or not?
 
 This is why we need a central place where models modules can ask
 whether it wants a given model to be abstract or not.
@@ -114,6 +114,37 @@ importing it?  We then discovered that Django doesn't use the
 lucky to have a :class:`lino.core.site.Site` class which is being
 *instantiated* before `settings` have finished to load...
 
+.. _plugin_namespaces:
+
+Plugin namespaces
+=================
+
+Some packages in a plugin library exist only because the library wants to
+provide different variants of a same plugin.  We want them to be
+interchangeable, so they must have the same Django app_name. That's why we
+introduce and additional module level in order to differentiate them.
+
+Examples of plugin namespaces are :mod:`lino_xl.lib.statbel`,
+:mod:`lino_xl.lib.online` and :mod:`lino_voga.lib.roger`.
+
+- :mod:`lino_xl.lib.countries` and :mod:`lino_xl.lib.statbel.countries`
+- :mod:`lino.modlib.users` and :mod:`lino_xl.lib.online.users`
+- :mod:`lino_voga.lib.courses` and :mod:`lino_voga.lib.roger.courses`
+
+Application developers can easily switch from the default version of the
+countries plugin to the "statbel" version of the same plugin.  Since we don't
+add an additional plugin but replace the default version, we can use the
+:meth:`get_apps_modifiers <lino.core.site.Site.get_apps_modifiers>` method::
+
+    def get_apps_modifiers(self, **kw):
+        kw = super(Site, self).get_apps_modifiers(**kw)
+        kw.update(courses='lino_voga.lib.roger.courses')
+        return kw
+
+
+
+
+
 Overriding other things
 =======================
 
@@ -127,10 +158,8 @@ attention when doing plugin inheritance.
 The `config` directory
 ======================
 
-The `config` subdirectories are handled automatically as expected:
-Lino scans first the `config` subdirectory of the child, then those of
-the parents.
-
+The :xfile:`config` subdirectories are handled automatically as expected: Lino
+scans first the `config` subdirectory of the child, then those of the parents.
 
 
 Inheriting fixtures and django-admin commands
@@ -151,14 +180,13 @@ a suite of one-line modules, one for each fixture defined by its parent, the
 
   from lino_xl.lib.cal.fixtures.demo import objects
 
+There is currently no easier way to inherit the default behaviour.  Keep in mind
+that your fixtures may do something else, or you may decide to not inherit some
+fixture from your parent.
 
-There is currently no easier way to implement the default behaviour.  Keep in
-mind that your fixtures may do something else, or you may decide to not inherit
-some fixture from your parent.
-
-Beware the pitfall: when you create a new fixture in a plugin, then those who
-inherit your plugin will not automatically get notified that you added a new
-fixture and that they must create a wrapper if they want it.
+There is a possible pitfall: when you create a new fixture in a plugin, then the
+users of your plugin will not automatically get notified that you added a new
+fixture and that they must create a wrapper if they want it as well.
 
 
 .. xfile:: management
@@ -169,4 +197,3 @@ discovers them by checking whether the plugin has a subpackage
 "commands" subdirectory.  (See Django's
 :file:`core/management/__init__.py` file.)  So when you extent a
 plugin which has admin commands, you must create a pseudo command
-

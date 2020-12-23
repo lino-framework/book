@@ -46,13 +46,13 @@ which shows the C instances of a given A instance by saying::
     class CsByA(Cs):
         master_key = "c__b"
 
-For example :class:`lino_xl.lib.courses.CoursesByTopic` shows all
+For example :class:`lino_xl.lib.courses.ActivitiesByTopic` shows all
 courses about a given topic. But a course has no FK `topic`, so you
 cannot say ``master_key = 'topic'``. But a course does know its topic
 indirectll because it knows it's course series, and the course series
 knows its topic. So you can specify a remote field::
 
-    class CoursesByTopic(Courses):
+    class ActivitiesByTopic(Courses):
         master_key = 'line__topic'
 
         allow_create = False

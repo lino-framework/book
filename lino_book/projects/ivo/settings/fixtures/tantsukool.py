@@ -281,7 +281,7 @@ class Loader2(Loader1):
 
         Product = rt.models.products.Product
         ProductCat = rt.models.products.ProductCat
-        CourseAreas = rt.models.courses.CourseAreas
+        ActivityLayouts = rt.models.courses.ActivityLayouts
         PaymentTerm = rt.models.ledger.PaymentTerm
 
         journey_options = ProductCat(**dd.str2kw(
@@ -319,7 +319,7 @@ class Loader2(Loader1):
                       self.excursions,
                       self.journey_fee,
                       options_cat=journey_options,
-                      course_area=CourseAreas.journeys,
+                      course_area=ActivityLayouts.journeys,
                       fees_cat=self.journeys_cat,
                       **dd.str2kw('name', _("Europe")))
 

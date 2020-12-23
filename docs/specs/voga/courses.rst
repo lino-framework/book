@@ -30,13 +30,13 @@ lino_voga.lib.roger.courses (extends_models=['Pupil', 'Enrolment', 'Line'])
 (<class 'lino_voga.lib.courses.Plugin'>,)
 
 
-Course areas
-============
+Activity layouts
+================
 
-The :class:`CourseAreas` choicelist in :ref:`voga` defines the
+The :class:`ActivityLayouts` choicelist in :ref:`voga` defines the
 following areas:
 
->>> rt.show(courses.CourseAreas)
+>>> rt.show(courses.ActivityLayouts)
 ======= ========== ========== ==================
  value   name       text       Table
 ------- ---------- ---------- ------------------
@@ -187,16 +187,16 @@ The following is waiting for :ticket:`526` before it can work:
 >>> # demo_get('robin', 'choices/courses/Courses/city', 'bla', 0)
 
 
-CoursesByLine
-=============
+ActivitiesByLine
+================
 
-There are two Yoga courses:
+There are two Yoga courses, i.e. two courses in the Yoga line:
 
 >>> obj = courses.Line.objects.get(pk=10)
 >>> obj
 Line #10 ('Yoga')
 
->>> rt.show(rt.models.courses.CoursesByLine, obj)
+>>> rt.show(rt.models.courses.ActivitiesByLine, obj)
 ============= ============== ================== ============= ====================
  Activity      When           Room               Times         Instructor
 ------------- -------------- ------------------ ------------- --------------------
@@ -210,7 +210,7 @@ Line #10 ('Yoga')
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
 >>> demo_get('robin',
-...          'api/courses/CoursesByLine', json_fields, 3,
+...          'api/courses/ActivitiesByLine', json_fields, 3,
 ...          mt=mt, mk=obj.pk, **kw)
 
 
@@ -402,3 +402,11 @@ Presence sheet
 The **presence sheet** of a course is a printable document where
 course instructors can manually record the presences of the
 participants for every event.
+
+
+Item description
+================
+
+.. xfile:: courses/Enrolment/item_description.html
+
+     The template used to fill the items description.

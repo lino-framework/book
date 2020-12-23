@@ -97,7 +97,7 @@ Topics
 <BLANKLINE>
 
 >>> language_courses = courses.Topic.objects.get(pk=2)
->>> rt.show('courses.CoursesByTopic', language_courses)
+>>> rt.show('courses.ActivitiesByTopic', language_courses)
 ================================ =========== ============= ================== =========== ============= =========== ========
  Activity                         When        Times         Available places   Confirmed   Free places   Requested   Trying
 -------------------------------- ----------- ------------- ------------------ ----------- ------------- ----------- --------
@@ -109,12 +109,12 @@ Topics
 <BLANKLINE>
 
 
-API note: :class:`CoursesByTopic <lino_xl.lib.courses.CoursesByTopic>`
+API note: :class:`ActivitiesByTopic <lino_xl.lib.courses.ActivitiesByTopic>`
 is a table with a remote master key:
 
->>> courses.CoursesByTopic.master
+>>> courses.ActivitiesByTopic.master
 <class 'lino_xl.lib.courses.models.Topic'>
->>> print(courses.CoursesByTopic.master_key)
+>>> print(courses.ActivitiesByTopic.master_key)
 line__topic
 
 
@@ -356,15 +356,15 @@ Total number of cells is 13*17:
 Course layouts
 ==============
 
-The :class:`CourseAreas` choicelist in :ref:`avanti` defines only one
+The :class:`ActivityLayouts` choicelist in :ref:`avanti` defines only one
 layout.
 
->>> rt.show(courses.CourseAreas)
-======= ========= ============ =================
+>>> rt.show(courses.ActivityLayouts)
+======= ========= ============ ============================
  value   name      text         Table
-------- --------- ------------ -----------------
- C       default   Activities   courses.Courses
-======= ========= ============ =================
+------- --------- ------------ ----------------------------
+ C       default   Activities   courses.ActivitiesByLayout
+======= ========= ============ ============================
 <BLANKLINE>
 
 

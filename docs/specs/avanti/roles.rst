@@ -196,9 +196,9 @@ Each window is **viewable** for a given set of user types.
 - countries.Places.detail : visible for staff admin
 - countries.Places.insert : visible for staff admin
 - courses.Activities.detail : visible for teacher user auditor coordinator secretary staff admin
-- courses.Activities.insert : visible for teacher user coordinator secretary staff admin
-- courses.Activities.print_presence_sheet : visible for teacher user auditor coordinator secretary staff admin
-- courses.Activities.print_presence_sheet_html : visible for teacher user auditor coordinator secretary staff admin
+- courses.Activities.insert : visible for user coordinator secretary staff admin
+- courses.Activities.print_presence_sheet : visible for user auditor coordinator secretary staff admin
+- courses.Activities.print_presence_sheet_html : visible for user auditor coordinator secretary staff admin
 - courses.Enrolments.detail : visible for teacher user auditor coordinator secretary staff admin
 - courses.Enrolments.insert : visible for teacher user coordinator secretary staff admin
 - courses.EnrolmentsByCourse.insert : visible for teacher user coordinator secretary staff admin

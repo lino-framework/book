@@ -24,7 +24,7 @@ Complexity factors
 - 47 plugins
 - 98 models
 - 4 user types
-- 374 views
+- 375 views
 - 27 dialog actions
 <BLANKLINE>
 

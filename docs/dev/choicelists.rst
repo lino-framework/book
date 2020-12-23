@@ -412,7 +412,7 @@ Seeing all choicelists in your application
  ('contacts.CivilStates', 'contacts.CivilStates (Civil states)'),
  ('contacts.PartnerEvents', 'contacts.PartnerEvents (Observed events)'),
  ('countries.PlaceTypes', 'countries.PlaceTypes'),
- ('courses.CourseAreas', 'courses.CourseAreas (Course layouts)'),
+ ('courses.ActivityLayouts', 'courses.ActivityLayouts (Course layouts)'),
  ('courses.CourseStates', 'courses.CourseStates (Activity states)'),
  ('courses.EnrolmentStates', 'courses.EnrolmentStates (Enrolment states)'),
  ('cv.CefLevel', 'cv.CefLevel (CEF levels)'),

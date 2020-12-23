@@ -37,7 +37,7 @@ lino_tera.lib.courses (extends_models=['Enrolment', 'Course', 'Line'])
 The detail view of a therapy
 ============================
 
->>> print(py2rst(courses.Courses.detail_layout))
+>>> print(py2rst(courses.Activities.detail_layout))
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 (main) [visible for all]:
 - **General** (general):
@@ -74,22 +74,22 @@ therapist admin
 
 
 
-Course lines and course layouts
-===============================
+Activity lines and activity layouts
+===================================
 
-The :class:`CourseAreas` choicelist in :ref:`tera` populates
-:class:`lino_xl.lib.courses.CourseAreas` with the following course
-layouts:
+In :ref:`tera` the  :class:`lino_xl.lib.courses.ActivityLayouts` choicelist is
+populated with the following activity layouts:
 
->>> rt.show(courses.CourseAreas)
-======= ============= ====================== ====================
+>>> rt.show(courses.ActivityLayouts)
+======= ============= ====================== =====================
  value   name          text                   Table
-------- ------------- ---------------------- --------------------
+------- ------------- ---------------------- ---------------------
  IT      therapies     Individual therapies   courses.Therapies
  LG      life_groups   Life groups            courses.LifeGroups
- OG      default       Other groups           courses.Courses
-======= ============= ====================== ====================
+ OG      default       Other groups           courses.OtherGroups
+======= ============= ====================== =====================
 <BLANKLINE>
+
 
 
 While in Voga or Avanti we can have many course lines, in Lino Tera
@@ -110,17 +110,16 @@ Every course line knows which its layout.
 =========== ====================== ================== ================== ====================== ============== ===================== ===================
 <BLANKLINE>
 
-Some course tables have a fixed course layout, some don't.
+Some table views use a given fixed activity layout, some don't.
 
->>> courses.LifeGroups._course_area
-<courses.CourseAreas.life_groups:LG>
+>>> courses.LifeGroups.activity_layout
+'life_groups'
 
->>> print(courses.AllActivities._course_area)
+>>> print(courses.AllActivities.activity_layout)
 None
 
 When you are in a table with a fixed layout, your choices for the
 :attr:`Course.line` field are limited to lines of that layout.
-
 
 >>> show_choices("robin", "/choices/courses/LifeGroups/line")
 <br/>

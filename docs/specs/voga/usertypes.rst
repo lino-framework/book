@@ -5,6 +5,9 @@
 User types
 =============
 
+This page documents the user types available in Lino Voga.
+It uses the roger demo, the most complex variant.
+
 .. include:: /../docs/shared/include/tested.rst
 
 >>> import lino
@@ -50,7 +53,7 @@ Robin is a :term:`site administrator`, he has a complete menu:
   - Accounting : Accounts, Journals, Fiscal years, Accounting periods, Payment terms
 - Explorer :
   - System : Authorities, User types, User roles, Data checkers, Data problems, Changes, content types
-  - Contacts : Contact persons, Partners, List memberships
+  - Contacts : Contact persons, Partners, Contact detail types, Contact details, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Entry states, Presence states, Task states, Planner columns, Access classes, Display colors
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states
   - Sales : Price factors, Sales invoices, Sales invoice items, Invoicing plans, Sales rules
@@ -95,7 +98,7 @@ Monique is a secretary.
   - Sales : Flatrates
 - Explorer :
   - System : Data checkers, Data problems, Changes, content types
-  - Contacts : Contact persons, Partners, List memberships
+  - Contacts : Contact persons, Partners, Contact details, List memberships
   - Calendar : Calendar entries, Presences, Entry states, Presence states, Task states, Planner columns, Access classes, Display colors
   - Activities : Activities, Enrolments
   - Sales : Price factors, Sales invoices

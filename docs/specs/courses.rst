@@ -10,8 +10,10 @@
 The :mod:`courses <lino_xl.lib.courses>` plugin adds functionality for managing
 "activities".
 
-The internal name "courses" is for historic reasons.  We might one day rename
-the plugin to "activities".
+The internal name "courses" is for historic reasons.  We should one day rename
+the plugin to "activities". We didn't yet do this because we are so used with
+the old name and because a rename will require extra attention with database
+migrations.
 
 See also
 :doc:`/specs/voga/courses`,
@@ -155,7 +157,7 @@ The ``Course`` model
 
 
 
-.. class:: MyCourses
+.. class:: MyActivities
 
     Show the courses authored by me (i.e. where I am the responsible
     manager).  Compare :class:`MyCoursesGiven`.
@@ -163,7 +165,7 @@ The ``Course`` model
 .. class:: MyCoursesGiven
 
     Show the courses given by me (i.e. where I am the teacher).
-    Compare :class:`MyCourses`.
+    Compare :class:`MyActivities`.
 
     This requires the :attr:`partner` field in my user settings to
     point to me as a teacher.
@@ -171,11 +173,11 @@ The ``Course`` model
     For users whose :attr:`partner` field is empty, this list shows
     all courses without teacher.
 
-.. class:: CoursesByLine
+.. class:: ActivitiesByLine
 
     Show the courses per course line.
 
-.. class:: CoursesByTopic
+.. class:: ActivitiesByTopic
 
     Shows the courses of a given topic.
 
@@ -318,7 +320,7 @@ The ``Line`` model
 
     .. attribute:: course_area
 
-        Pointer to :class:`CourseAreas`.  This is used only when an
+        Pointer to :class:`ActivityLayouts`.  This is used only when an
         application defines several variants of
         :class:`EnrolmentsByPupil`.
 
@@ -329,30 +331,30 @@ Course areas
 
 TODO: rename "course area" to "activity layout"?
 
-The :class:`CourseAreas` choicelist is a place for defining different
+The :class:`ActivityLayouts` choicelist is a place for defining different
 layouts of courses.  The area of a course determines how this course
 is being show on screen and whether presences of the participants are
 being managed or not.
 
 The default configuration contains only one choice:
 
->>> rt.show(courses.CourseAreas)
-======= ========= ============ =================
+>>> rt.show(courses.ActivityLayouts)
+======= ========= ============ ============================
  value   name      text         Table
-------- --------- ------------ -----------------
- C       default   Activities   courses.Courses
-======= ========= ============ =================
+------- --------- ------------ ----------------------------
+ C       default   Activities   courses.ActivitiesByLayout
+======= ========= ============ ============================
 <BLANKLINE>
 
 
 Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
-.. class:: CourseAreas
+.. class:: ActivityLayouts
 
     The global choicelist of course areas.  Every choice is an
-    instance of :class:`CourseArea`.
+    instance of :class:`ActivityLayout`.
 
-.. class:: CourseArea
+.. class:: ActivityLayout
 
     .. attribute:: courses_table
 

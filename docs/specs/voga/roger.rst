@@ -123,8 +123,8 @@ Database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino, staticfiles, about, jinja, printing, system, contenttypes, gfks, memo, react, users, office, xl, countries, contacts, lists, beid, checkdata, cal, courses, products, rooms, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, calview, wkhtmltopdf, appypod, changes, publisher, sessions.
-83 models:
+43 apps: lino, staticfiles, about, jinja, printing, system, contenttypes, gfks, memo, react, users, office, xl, countries, contacts, phones, lists, beid, checkdata, cal, courses, products, rooms, excerpts, weasyprint, uploads, ledger, bevats, vat, sales, invoicing, finan, sepa, notes, outbox, voga, export_excel, calview, wkhtmltopdf, appypod, changes, publisher, sessions.
+84 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -137,7 +137,7 @@ Database structure
  cal.GuestRole              cal.GuestRoles                 5         3
  cal.RecurrentEvent         cal.RecurrentEvents            22        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
- cal.Room                   cal.AllRooms                   11        7
+ cal.Room                   cal.Rooms                      11        7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      18        0
  calview.DailyPlannerRow    calview.DailyPlannerRows       7         2
@@ -149,7 +149,7 @@ Database structure
  contacts.Person            contacts.Persons               42        72
  contacts.Role              contacts.Roles                 4         3
  contacts.RoleType          contacts.RoleTypes             5         5
- contenttypes.ContentType   gfks.ContentTypes              3         83
+ contenttypes.ContentType   gfks.ContentTypes              3         84
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             34        26
@@ -194,6 +194,7 @@ Database structure
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
+ phones.ContactDetail       phones.ContactDetails          7         18
  products.PriceRule         products.PriceRules            4         0
  products.Product           products.Products              14        11
  products.ProductCat        products.ProductCats           6         5
@@ -239,7 +240,7 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner, sepa.Account.partner
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner, phones.ContactDetail.partner, sepa.Account.partner
   - PROTECT : bevats.Declaration.partner, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : courses.Pupil.person_ptr, courses.Teacher.person_ptr
