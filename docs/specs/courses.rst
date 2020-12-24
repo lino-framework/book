@@ -89,8 +89,7 @@ Definitions
 
   activity layout
 
-    Determines how data fields and related data are to be laid out on screen. A
-    hard-coded way to differentiate and giving names to the major types of
+    A hard-coded way to differentiate and giving names to the major types of
     activities of an application. See `Activity layouts`_.
 
 
@@ -349,6 +348,11 @@ The default configuration contains only one choice:
 
 Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
+The layout of an activity can customize how data fields and related data are to
+be laid out on screen. This is done by defining a subclass of
+:class:`ActivitiesByLayout` and referring to it in the
+:attr:`ActivityLayout.courses_table`.
+
 
 .. class:: ActivityLayouts
 
@@ -357,9 +361,13 @@ Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
 
 .. class:: ActivityLayout
 
+    .. attribute:: text
+
+      The translatable designation used as menu label.
+
     .. attribute:: courses_table
 
-        Which table to use for showing activities having this layout.
+      Which table to use for showing activities having this layout.
 
 
 The state of an activity
