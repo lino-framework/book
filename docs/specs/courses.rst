@@ -87,6 +87,11 @@ Definitions
 
     We chose the word "line" instead of "series" because it has a plural form.
 
+  activity layout
+
+    Determines how data fields and related data are to be laid out on screen. A
+    hard-coded way to differentiate and giving names to the major types of
+    activities of an application. See `Activity layouts`_.
 
 
 The ``Course`` model
@@ -326,15 +331,11 @@ The ``Line`` model
 
 
 
-Course areas
-============
+Activity layouts
+================
 
-TODO: rename "course area" to "activity layout"?
-
-The :class:`ActivityLayouts` choicelist is a place for defining different
-layouts of courses.  The area of a course determines how this course
-is being show on screen and whether presences of the participants are
-being managed or not.
+The :class:`ActivityLayouts` choicelist is where the :term:`application
+developer` can define the available :term:`activity layouts <activity layout>`.
 
 The default configuration contains only one choice:
 
@@ -346,23 +347,23 @@ The default configuration contains only one choice:
 ======= ========= ============ ============================
 <BLANKLINE>
 
-
 Usage examples see :doc:`voga/courses` and :doc:`tera/courses`.
+
 
 .. class:: ActivityLayouts
 
-    The global choicelist of course areas.  Every choice is an
-    instance of :class:`ActivityLayout`.
+    The global choicelist of :term:`activity layouts <activity layout>`.  Every
+    choice is an instance of :class:`ActivityLayout`.
 
 .. class:: ActivityLayout
 
     .. attribute:: courses_table
 
-        Which table to use for showing courses in this course area.
+        Which table to use for showing activities having this layout.
 
 
-The state of a course
-=====================
+The state of an activity
+========================
 
 >>> rt.show(courses.CourseStates)
 ======= ========== ========== ========= ========== ============= =================
@@ -407,11 +408,7 @@ As an application developer you can redefine the items of
 :class:`CourseStates` in order to adapt it to the needs of your
 application.
 
-
-
 TODO: Write a tutorial about redefining choicelists.
-
-
 
 
 Actions

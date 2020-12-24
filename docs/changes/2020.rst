@@ -13,6 +13,18 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. contents::
   :local:
 
+2020-12-24
+==========
+
+:ref:`amici` : Optimize detail views of households, persons and companies
+
+2020-12-23
+==========
+
+:ref:`voga` : Remove custom :term:`activity layouts <activity layout>` from
+default settings.
+
+
 2020-12-19
 ==========
 
