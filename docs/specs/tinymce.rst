@@ -23,13 +23,16 @@ built-in `Ext.form.HtmlEditor` editor that comes with ExtJS.
 Dependencies
 ============
 
-This plugin makes sense only if :mod:`lino.modlib.extjs` is also installed. It
-also requires the :mod:`lino.modlib.office` plugin because it adds entries to
-the :menuselection`Office` menu.
+It requires the :mod:`lino.modlib.office` plugin because it adds entries to the
+:menuselection:`Office` menu.
 
 >>> dd.plugins.tinymce.needs_plugins
-['lino.modlib.office', 'lino.modlib.extjs']
+['lino.modlib.office']
 
+This plugin makes sense only if :mod:`lino.modlib.extjs` is also installed. But
+this is not a requirement, it rather means that other frond ends should disable
+it by listing it in to their :attr:`disables_plugins
+<lino.core.plugin.Plugin.disables_plugins>`.
 
 
 Configuration

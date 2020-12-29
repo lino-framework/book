@@ -10,6 +10,18 @@
 This is the 2020 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2020-12-28
+==========
+
+Fix :ref:`react` encoding problem in choicelists data.
+
+Release to PyPI: :ref:`react`
+
+2020-12-26
+==========
+
+Release to PyPI: :ref:`lino`, :ref:`xl`, :ref:`cosi`, :ref:`voga`, :ref:`amici`.
+
 2020-12-24
 ==========
 
