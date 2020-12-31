@@ -4,6 +4,8 @@
 Setting up a Lino hosting site
 ==============================
 
+The information on this page is now obsolete. Use :cmd:`getlino startsite` instead.
+
 
 Cheat sheet for setting up a new Lino site::
 
@@ -13,7 +15,7 @@ Cheat sheet for setting up a new Lino site::
 
   $ mkdir /var/log/lino/xxx
   $ go xxx
-  
+
   $ ln -s /var/log/lino/xxx log
   $ virtualenv env
   $ cp -a /usr/local/python/lino_sites/TPL/env/repositories env
@@ -27,7 +29,7 @@ Cheat sheet for setting up a new Lino site::
   $ cd /etc/supervisor/conf.d
   $ sudo cp linod_TPL.conf linod_xxx.conf
   $ nano xxx.conf  # ALT-R and replace TPL by xxx
-  
+
   $ cd /etc/apache2/sites-available
   $ sudo cp TPL.conf xxx.conf
   $ nano xxx.conf  # ALT-R and replace TPL by xxx
@@ -36,9 +38,9 @@ Cheat sheet for setting up a new Lino site::
   $ reload_services
 
 
-- TPL : some existing_site  
+- TPL : some existing_site
 - xxx : name of new site
-  
+
 
 The :file:`/usr/local/python` directory is our customized site-wide
 Python path::
@@ -56,4 +58,3 @@ The following files are the same for every project:
     if __name__ == "__main__":
         import sys ; sys.path.append('/usr/local/python')
         from lino_local import manage ; manage(__file__)
-

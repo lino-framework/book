@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Rumma & Ko Ltd
+# Copyright 2018-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """This module contains some quick tests:
@@ -10,10 +10,6 @@ You can run only these tests by issuing::
   $ python manage.py test tests.test_makecopy
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
-
 
 from lino.api import rt
 from lino.utils.djangotest import RemoteAuthTestCase
@@ -26,7 +22,7 @@ class QuickTest(object):  # skipping since MakeCopy is no longer needed.
     maxDiff = None
     # fixtures = ["std", 'demo']
     fixtures = 'std minimal_ledger'.split()
-    
+
     def test_makecopy(self):
         UserTypes = rt.models.users.UserTypes
         Partner = rt.models.contacts.Partner
@@ -54,7 +50,7 @@ class QuickTest(object):  # skipping since MakeCopy is no longer needed.
                 total_incl=123+n)
             i.full_clean()
             i.save()
-        
+
         s = ses.show('ana.ItemsByInvoice', invoice,
                      column_names="seqno account total_incl")
         # print(s)
@@ -81,4 +77,3 @@ class QuickTest(object):  # skipping since MakeCopy is no longer needed.
                      column_names="seqno account total_incl")
         # print(s)
         self.assertEqual(s, expected)
-        

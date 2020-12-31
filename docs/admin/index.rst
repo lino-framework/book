@@ -8,7 +8,7 @@ Hosting Guide
 
 This part of the documentation is for :term:`server administrators <server
 administrator>` who set up or maintain a server that hosts one or several Lino
-production sites.
+:term:`production sites <production site>`.
 
 The approaches described in this document are not mandatory. Hosting a
 Lino site is technically the same as hosting a `Django
@@ -22,8 +22,8 @@ recommend to do it.
     :depth: 1
     :local:
 
-Running Lino on a full server
-=============================
+Setting up a new Lino server
+============================
 
 .. toctree::
     :maxdepth: 1
@@ -31,14 +31,28 @@ Running Lino on a full server
     root
     install
     install_demo
-    appy
     backup
+
+Configuring a Lino site
+=======================
+
+.. toctree::
+    :maxdepth: 1
+
     dbengine
     email
     multiple_frontends
     certbot
     security
     cron
+    settings
+    snapshot
+    env
+    logging
+    linod
+    pythonpath
+    permissions
+    umask
 
 
 Maintenance
@@ -47,21 +61,24 @@ Maintenance
 .. toctree::
     :maxdepth: 1
 
-    settings
-    snapshot
     reload_services
     upgrade
-    env
     shell_scripts
-    bash_aliases
-    logging
-    new_site
     djangomig
     preview
     move
-    datamig
+    appy
+
+Monitoring and diagnostics
+==========================
+
+.. toctree::
+    :maxdepth: 1
+
+    server_diag
     du
     ram
+    monit
 
 
 Printing
@@ -71,8 +88,6 @@ Printing
     :maxdepth: 1
 
     printing
-    using_appy_pod
-    excerpts
     appy_templates
     config_dirs
 
@@ -82,11 +97,6 @@ Other
 .. toctree::
     :maxdepth: 1
 
-    pythonpath
-    linod
-    monit
-    permissions
-    umask
     apache_http_auth
     mailbox
     django_tests
@@ -118,3 +128,8 @@ Other
     media
     xl
     pyanywhere
+    new_site
+    excerpts
+    using_appy_pod
+    bash_aliases
+    datamig

@@ -1,11 +1,13 @@
 .. _hosting.backup:
 
-=====================
-Backup and monitoring
-=====================
+==========================
+Setting up a backup server
+==========================
 
-How to configure a backup and monitoring service that will monitor and backup
-the production sites of your customers.
+How to configure a backup service that will backup snapshots of the
+:term:`production sites <production site>` of your customers.
+
+.. highlight:: console
 
 Each customer who wants to use our service must create a user "mirror" on their
 server that we will use to connect to their server::

@@ -1,5 +1,6 @@
 .. doctest docs/specs/excerpts.rst
 .. _xl.specs.excerpts:
+.. _lino.admin.excerpts:
 
 ===============================
 ``excerpts``: Database excerpts
@@ -25,8 +26,8 @@ Read also :doc:`printing`.
 What is a database excerpt?
 ===========================
 
-End users should know what a "database excerpt" is. They can see a history of
-these database excerpts using the following menu commands:
+End users should know what a :term:`database excerpt` is. They can see a history
+of these database excerpts using the following menu commands:
 
 - :menuselection:`Office --> My excerpts`
 - :menuselection:`Explorer --> All excerpts`

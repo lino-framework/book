@@ -216,6 +216,7 @@ The following shows a list of all windows in :ref:`noi`  and who can see them:
 - sales.InvoiceItems.insert : visible for admin
 - sales.Invoices.detail : visible for admin
 - sales.Invoices.insert : visible for admin
+- sales.InvoicesByJournal.insert : visible for admin
 - system.SiteConfigs.detail : visible for admin
 - tickets.Links.detail : visible for developer admin
 - tickets.Links.insert : visible for developer admin

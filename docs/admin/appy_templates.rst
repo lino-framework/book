@@ -32,30 +32,31 @@ statements.
     Render the template named `template_name` using Jinja.
     The template is supposed to produce HTML markup.
 
-    I `template_name` contains no dot, then the default filename
-    extension `.body.html` is added.
+    If `template_name` contains no dot, then the default filename extension
+    :file:`.body.html` is added.
 
 
 .. function:: restify(s)
-              
+
     Render a string `s` which contains reStructuredText markup.
+
     The string is first passed to
     :func:`lino.utils.restify.restify` to convert it to XHTML,
-    then to `appy.pod`'s built in `xhtml` function.
+    then to `appy.pod`'s built-in :func:`xhtml` function.
     Without this, users would have to write each time something like::
 
         do text
         from xhtml(restify(self.body).encode('utf-8'))
 
 .. function:: html(html)
-              
+
     Render a string that is in HTML (not XHTML).
 
 .. function:: ehtml(e)
-              
+
     Render an ElementTree node
     (generated using :mod:`etgen.html`)
-    into this document. 
+    into this document.
     This is done by passing it to :mod:`lino.utils.html2odf`.
 
 .. function:: table(ar, column_names=None)`
@@ -65,5 +66,3 @@ statements.
 
         do text
         from table(ar.spawn('auth.UsersOverview'))
-
-

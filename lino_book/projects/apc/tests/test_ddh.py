@@ -17,11 +17,6 @@ Or::
 
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-from builtins import str
-import six
-
 from django.core.exceptions import ValidationError
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.api import rt
@@ -141,11 +136,8 @@ class DDHTests(RemoteAuthTestCase):
         pe, pa = createit()
         co = create_row(Company, name="Test")
         create_row(Role, company=co, person=pe)
-        msg = "[u'Cannot delete Partner Doe John because 1 Contact persons refer to it.']"
-        if six.PY2:
-            msg = "[u'Kann Partner Doe John nicht l\\xf6schen weil 1 Kontaktpersonen darauf verweisen.']"
-        else:
-            msg = "['Kann Partner Doe John nicht löschen weil 1 Kontaktpersonen darauf verweisen.']"
+        # msg = "['Cannot delete Partner Doe John because 1 Contact persons refer to it.']"
+        msg = "['Kann Partner Doe John nicht löschen weil 1 Kontaktpersonen darauf verweisen.']"
         try:
             delete_child(pa, Person)
             self.fail("Expected ValidationError")

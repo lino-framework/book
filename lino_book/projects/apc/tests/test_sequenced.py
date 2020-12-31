@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2018 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """Runs some tests about the Sequenced mixin.
@@ -10,10 +10,6 @@ You can run only these tests by issuing::
   $ python manage.py test tests.test_sequenced
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
-from builtins import str
 
 from django.core.exceptions import ValidationError
 from lino.utils.djangotest import RemoteAuthTestCase
@@ -29,7 +25,7 @@ class Tests(RemoteAuthTestCase):
         from lino.modlib.users.choicelists import UserTypes
         User = rt.models.users.User
         Account = rt.models.ledger.Account
-        
+
         Journal = rt.models.ledger.Journal
         Partner = rt.models.contacts.Partner
         Person = rt.models.contacts.Person
@@ -44,7 +40,7 @@ class Tests(RemoteAuthTestCase):
             User, username='robin',
             user_type=UserTypes.admin, language="en")
         ar = rt.login('robin')
-        
+
         a = create_row(Account, name="A")
         b = create_row(Account, name="B")
         c = create_row(Account, name="C")
@@ -52,14 +48,14 @@ class Tests(RemoteAuthTestCase):
 
         lst = [i.seqno for i in Account.objects.order_by('name')]
         self.assertEqual(lst, [1, 2, 3, 4])
-        
+
         self.assertEqual(a.seqno, 1)
         self.assertEqual(b.seqno, 2)
         self.assertEqual(c.seqno, 3)
         self.assertEqual(d.seqno, 4)
 
         response = a.move_down()
-        
+
         self.assertEqual(response, {
             'message': 'Renumbered 1 of 3 siblings.',
             'success': True,
@@ -70,9 +66,8 @@ class Tests(RemoteAuthTestCase):
 
         lst = [i.seqno for i in Account.objects.order_by('name')]
         self.assertEqual(lst, [2, 1, 3, 4])
-        
+
         lst = [i.name for i in Account.objects.order_by('seqno')]
         self.assertEqual(''.join(lst), "BACD")
-        
-        # fr = create_row(Country, isocode="FR")
 
+        # fr = create_row(Country, isocode="FR")

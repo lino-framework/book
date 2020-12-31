@@ -19,13 +19,7 @@ from django.conf import settings
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
 from lino.modlib.users.choicelists import UserTypes
-
-
-def create(model, **kwargs):
-    obj = model(**kwargs)
-    obj.full_clean()
-    obj.save()
-    return obj
+from lino.utils.instantiator import create_row as create
 
 
 class QuickTest(RemoteAuthTestCase):

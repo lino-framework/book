@@ -5,33 +5,11 @@
 The Lino Daemon
 ===============
 
-This document explains how to install :manage:`linod` as a service on
-a production server.
+This document explains why and how to use :manage:`linod`.
 
-Overview
-========
-
-A Lino application can declare background tasks. Such tasks run in the
-background, i.e. in another process than the web server. That other process runs
-the :manage:`linod` admin command.
-
-To enable the Lino Daemon, you must set :attr:`use_linod
-<lino.core.site.Site.use_linod>` to True.  This can be done by a system admin in
-a local :xfile:`settings.py` file.
-
-The :manage:`linod` command will simply do nothing as long as this is
-`False`.
-
-
-As an application developer you define background tasks using
-:func:`dd.schedule_often <lino.api.dd.schedule_often>` and
-:func:`dd.schedule_daily <lino.api.dd.schedule_daily>`.  For example the
-:func:`send_pending_emails_often <lino.modlib.notify.send_pending_emails_often>`
-and :func:`clear_seen_messages <lino.modlib.notify.clear_seen_messages>` of the
-:mod:`lino.modlib.notify` plugin.
-
-
-
+A :term:`Lino application` can declare background tasks. Such tasks run in the
+background, i.e. as a service in another process than the web server. That other
+process runs a Lino specific admin command called :manage:`linod`.
 
 .. management_command:: linod
 
@@ -41,21 +19,33 @@ On a development machine you simply run this in a separate terminal. On a
 production server we recommend to run this as a daemon via Supervisor as
 described below.
 
-This command does nothing when  :attr:`use_linod
-<lino.core.site.Site.use_linod>`  is `False`.
-
-
-
-Requires the `schedule` package
-===============================
-
-This feature requires Dan Bader's `schedule
+This feature requires `Dan Bader <https://dbader.org/about/>`__'s `schedule
 <https://github.com/dbader/schedule>`__  package, which will get installed
 automatically if you run :manage:`install`.
 
-Note the nice story of that package by its author : `In Love, War, and
-Open-Source: Never Give Up
-<https://dbader.org/blog/in-love-war-and-open-source-never-give-up>`__
+As an :term:`application developer` you define background tasks using
+:func:`dd.schedule_often <lino.api.dd.schedule_often>` and
+:func:`dd.schedule_daily <lino.api.dd.schedule_daily>`.  For example the
+:func:`send_pending_emails_often <lino.modlib.notify.send_pending_emails_often>`
+and :func:`clear_seen_messages <lino.modlib.notify.clear_seen_messages>` of the
+:mod:`lino.modlib.notify` plugin.
+
+
+
+:attr:`use_linod <lino.core.site.Site.use_linod>`
+
+To enable this feature, you must set :attr:`use_linod
+<lino.core.site.Site.use_linod>` to `True`.   This is usually done by the
+application developer, but this decision can be overridden by a system admin in
+a local :xfile:`settings.py` file. The :manage:`linod` command will simply do
+nothing when this setting is `False`.
+
+Additionally to having :attr:`use_linod <lino.core.site.Site.use_linod>` set to
+`True`, you must also start the :manage:`linod` service in order to actually
+execute the scheduled tasks.  The :cmd:`getlino configure --linod` option
+specifies that every new Lino site will automatically have a :xfile:`linod.sh`
+file in its project directory and a supervisor job that runs the
+:xfile:`linod.sh` script as a service.
 
 
 Activating the feature
@@ -66,9 +56,9 @@ Activating the feature
 >>> shell("python manage.py linod --list")
 This site does not use linod.
 
-As a system administrator you can check whether your application has
-scheduled background jobs by issuing the following command in your
-project directory::
+As a :term:`site maintainer` you can check whether your application has
+scheduled background jobs by issuing the following command in your project
+directory::
 
     $ python manage.py linod --list
 
