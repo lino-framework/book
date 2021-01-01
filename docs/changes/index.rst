@@ -4,7 +4,7 @@
 Changes
 =======
 
-API changes in the :mod:`lino` and :mod:`lino_xl` packages.
+API changes in the packages :mod:`lino`, :mod:`lino_xl` and :mod:`lino_react`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
 .. note:: Make sure to notify us if you run a :term:`production site` using
@@ -15,6 +15,7 @@ General information about how to read and maintain this document in :ref:`dev.ch
 .. toctree::
    :maxdepth: 1
 
+   2021
    2020
    2019
    2018

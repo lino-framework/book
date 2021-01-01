@@ -227,27 +227,28 @@ system afterwards.
 >>> jnl = rt.models.ledger.Journal.get_by_ref("SLS")
 >>> rt.show('sales.InvoicesByJournal', jnl)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE -REPORT_UDIFF
-===================== ============ ============ =================================== =============== ============== ================
- No.                   Entry date   Due date     Partner                             Total to pay    Subject line   Workflow
---------------------- ------------ ------------ ----------------------------------- --------------- -------------- ----------------
- 15/2017               12/03/2017   18/03/2017   van Veen Vincent                    1 110,16                       **Registered**
- 14/2017               11/03/2017   17/03/2017   van Veen Vincent                    535,00                         **Registered**
+===================== ============ =================================== ============== =============== ================
+ No.                   Entry date   Partner                             Subject line   Total to pay    Workflow
+--------------------- ------------ ----------------------------------- -------------- --------------- ----------------
+ 15/2017               12/03/2017   van Veen Vincent                                   1 110,16        **Registered**
+ 14/2017               11/03/2017   van Veen Vincent                                   535,00          **Registered**
+ 13/2017               10/03/2017   da Vinci David                                     280,00          **Registered**
  ...
- 4/2017                09/02/2017   08/02/2017   Radermacher Edgard                  21,00                          **Registered**
- 3/2017                08/02/2017   09/03/2017   Radermacher Daniela                 719,60                         **Registered**
- 2/2017                07/02/2017   28/02/2017   Radermacher Christian               645,00                         **Registered**
- 1/2017                07/01/2017   06/04/2017   Radermacher Berta                   31,92                          **Registered**
- 57/2016               10/12/2016   07/02/2017   Radermacher Alfons                  3 149,71                       **Registered**
- 56/2016               09/12/2016   07/01/2017   Emonts-Gast Erna                    1 613,92                       **Registered**
- 55/2016               08/12/2016   17/12/2016   Emontspool Erwin                    448,50                         **Registered**
+ 3/2017                08/02/2017   Radermacher Daniela                                719,60          **Registered**
+ 2/2017                07/02/2017   Radermacher Christian                              645,00          **Registered**
+ 1/2017                07/01/2017   Radermacher Berta                                  31,92           **Registered**
+ 57/2016               10/12/2016   Radermacher Alfons                                 3 149,71        **Registered**
+ 56/2016               09/12/2016   Emonts-Gast Erna                                   1 613,92        **Registered**
+ 55/2016               08/12/2016   Emontspool Erwin                                   448,50          **Registered**
  ...
- 5/2016                11/01/2016   10/03/2016   Garage Mergelsberg                  535,00                         **Registered**
- 4/2016                10/01/2016   08/02/2016   Bäckerei Schmitz                    280,00                         **Registered**
- 3/2016                09/01/2016   18/01/2016   Bäckerei Mießen                     679,81                         **Registered**
- 2/2016                08/01/2016   14/01/2016   Bäckerei Ausdemwald                 2 039,82                       **Registered**
- 1/2016                07/01/2016   06/01/2016   Rumma & Ko OÜ                       2 999,85                       **Registered**
- **Total (72 rows)**                                                                 **82 597,39**
-===================== ============ ============ =================================== =============== ============== ================
+ 6/2016                07/02/2016   Donderweer BV                                      1 110,16        **Registered**
+ 5/2016                11/01/2016   Garage Mergelsberg                                 535,00          **Registered**
+ 4/2016                10/01/2016   Bäckerei Schmitz                                   280,00          **Registered**
+ 3/2016                09/01/2016   Bäckerei Mießen                                    679,81          **Registered**
+ 2/2016                08/01/2016   Bäckerei Ausdemwald                                2 039,82        **Registered**
+ 1/2016                07/01/2016   Rumma & Ko OÜ                                      2 999,85        **Registered**
+ **Total (72 rows)**                                                                   **82 597,39**
+===================== ============ =================================== ============== =============== ================
 <BLANKLINE>
 
 

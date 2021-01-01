@@ -28,33 +28,26 @@ Here are all our sales invoices:
 
 >>> jnl = rt.models.ledger.Journal.get_by_ref('SLS')
 >>> rt.show(sales.InvoicesByJournal, jnl)  #doctest: +ELLIPSIS
-===================== ============ ============ =================================== =============== ============== ================
- No.                   Entry date   Due date     Partner                             Total to pay    Subject line   Workflow
---------------------- ------------ ------------ ----------------------------------- --------------- -------------- ----------------
- 26/2015               01/03/2015   01/03/2015   di Rupo Didier                      48,00                          **Registered**
- 25/2015               01/03/2015   31/03/2015   Radermacher Guido                   100,00                         **Registered**
- 24/2015               01/03/2015   30/04/2015   Emonts-Gast Erna                    64,00                          **Registered**
- 23/2015               01/03/2015   30/05/2015   Jacobs Jacqueline                   48,00                          **Registered**
- 22/2015               01/03/2015   31/03/2015   Evers Eberhart                      48,00                          **Registered**
- 21/2015               01/02/2015   03/03/2015   Dupont Jean                         114,00                         **Registered**
+===================== ============ =================================== ============== =============== ================
+ No.                   Entry date   Partner                             Subject line   Total to pay    Workflow
+--------------------- ------------ ----------------------------------- -------------- --------------- ----------------
+ 26/2015               01/03/2015   di Rupo Didier                                     48,00           **Registered**
+ 25/2015               01/03/2015   Radermacher Guido                                  100,00          **Registered**
+ 24/2015               01/03/2015   Emonts-Gast Erna                                   64,00           **Registered**
  ...
- 15/2014               01/01/2014   01/04/2014   Leffin Josefine                     20,00                          **Registered**
- 14/2014               01/01/2014   31/01/2014   Laschet Laura                       296,00                         **Registered**
- 13/2014               01/01/2014   08/01/2014   Kaivers Karl                        180,00                         **Registered**
- 12/2014               01/01/2014   31/01/2014   Jonas Josef                         64,00                          **Registered**
- 11/2014               01/01/2014   01/04/2014   Jacobs Jacqueline                   678,00                         **Registered**
- 10/2014               01/01/2014   08/01/2014   Hilgers Hildegard                   80,00                          **Registered**
- 9/2014                01/01/2014   01/04/2014   Engels Edgar                        426,00                         **Registered**
- 8/2014                01/01/2014   02/03/2014   Emonts Daniel                       240,00                         **Registered**
- 7/2014                01/01/2014   31/01/2014   Evers Eberhart                      48,00                          **Registered**
- 6/2014                01/01/2014   31/01/2014   Dobbelstein-Demeulenaere Dorothée   116,00                         **Registered**
- 5/2014                01/01/2014   31/01/2014   Demeulenaere Dorothée               60,00                          **Registered**
- 4/2014                01/01/2014   01/04/2014   Dericum Daniel                      80,00                          **Registered**
- 3/2014                01/01/2014   31/01/2014   Charlier Ulrike                     356,00                         **Registered**
- 2/2014                01/01/2014   08/01/2014   Bastiaensen Laurent                 20,00                          **Registered**
- 1/2014                01/01/2014   31/01/2014   Altenberg Hans                      295,00                         **Registered**
- **Total (97 rows)**                                                                 **10 401,00**
-===================== ============ ============ =================================== =============== ============== ================
+ 3/2015                01/01/2015   Engels Edgar                                       48,00           **Registered**
+ 2/2015                01/01/2015   Evers Eberhart                                     48,00           **Registered**
+ 1/2015                01/01/2015   Charlier Ulrike                                    148,00          **Registered**
+ 71/2014               01/12/2014   Dupont Jean                                        98,00           **Registered**
+ 70/2014               01/12/2014   Radermacher Hedi                                   48,00           **Registered**
+ ...
+ 5/2014                01/01/2014   Demeulenaere Dorothée                              60,00           **Registered**
+ 4/2014                01/01/2014   Dericum Daniel                                     80,00           **Registered**
+ 3/2014                01/01/2014   Charlier Ulrike                                    356,00          **Registered**
+ 2/2014                01/01/2014   Bastiaensen Laurent                                20,00           **Registered**
+ 1/2014                01/01/2014   Altenberg Hans                                     295,00          **Registered**
+ **Total (97 rows)**                                                                   **10 401,00**
+===================== ============ =================================== ============== =============== ================
 <BLANKLINE>
 
 The :class:`lino_xl.lib.sales.DueInvoices` table shows a list of invoices that

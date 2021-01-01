@@ -1,0 +1,16 @@
+.. include:: /../docs/shared/include/defs.rst
+.. _book.changes.2021:
+
+====
+2021
+====
+
+This is the 2021 :term:`change log` for :ref:`book`.
+General information about how to read and maintain this document in :ref:`dev.changes`.
+
+2021-01-01
+==========
+
+Optimized column layout of :class:`lino_xl.lib.sales.InvoicesByJournal`.
+
+Release to PyPI: :ref:`xl`.
