@@ -8,6 +8,21 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-02
+==========
+
+Fixed :ticket:`3906` (active_fields are disturbing for city and zip_code): In
+:class:`lino_xl.lib.countries.CountryCity` the fields city and zip_code are no
+longer :attr:`active_fields <lino.core.model.Model.active_fields>`.
+
+Fixed :ticket:`3905`  (Purchase invoice from private person suggests VAT) This
+was a bug in eevat and bevat.
+
+Fixed :ticket:`3907` (Cannot enter into "Expense" column of bank statement)
+
+Release to PyPI: :ref:`xl`.
+
+
 2021-01-01
 ==========
 

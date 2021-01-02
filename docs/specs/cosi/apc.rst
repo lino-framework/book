@@ -146,18 +146,18 @@ And as we can see, our worker Robin owes us 9784,48 € because he took money fo
 **7 offene Bewegungen (-8908.45 €)**
 
 >>> rt.show(ledger.MovementsByPartner, master_instance=robin, nosummary=True)
-========== =============== ====================================================================== ============== ======== ================= ===========
- Valuta     Beleg           Beschreibung                                                           Debit          Kredit   Match             Beglichen
----------- --------------- ---------------------------------------------------------------------- -------------- -------- ----------------- -----------
- 08.03.15   *SLS 11/2015*   *(4800) Internal clearings* | *Radermacher Inge* | *Dubois Robin*      2 468,18                **SLS 11/2015**   Nein
- 07.01.15   *SLS 1/2015*    *(4800) Internal clearings* | *Radermacher Alfons* | *Dubois Robin*    38,62                   **SLS 1/2015**    Nein
- 07.11.14   *SLS 49/2014*   *(4800) Internal clearings* | *Lazarus Line* | *Dubois Robin*          453,75                  **SLS 49/2014**   Nein
- 10.09.14   *SLS 38/2014*   *(4800) Internal clearings* | *Ingels Irene* | *Dubois Robin*          726,00                  **SLS 38/2014**   Nein
- 11.06.14   *SLS 29/2014*   *(4800) Internal clearings* | *Evertz Bernd* | *Dubois Robin*          2 782,77                **SLS 29/2014**   Nein
- 07.05.14   *SLS 19/2014*   *(4800) Internal clearings* | *Bastiaensen Laurent* | *Dubois Robin*   1 451,82                **SLS 19/2014**   Nein
- 10.02.14   *SLS 9/2014*    *(4800) Internal clearings* | *Hans Flott & Co* | *Dubois Robin*       987,31                  **SLS 9/2014**    Nein
+========== =============== ====================================================================== ============== ======== ============= ===========
+ Valuta     Beleg           Beschreibung                                                           Debit          Kredit   Match         Beglichen
+---------- --------------- ---------------------------------------------------------------------- -------------- -------- ------------- -----------
+ 08.03.15   *SLS 11/2015*   *(4800) Internal clearings* | *Radermacher Inge* | *Dubois Robin*      2 468,18                SLS 11/2015   Nein
+ 07.01.15   *SLS 1/2015*    *(4800) Internal clearings* | *Radermacher Alfons* | *Dubois Robin*    38,62                   SLS 1/2015    Nein
+ 07.11.14   *SLS 49/2014*   *(4800) Internal clearings* | *Lazarus Line* | *Dubois Robin*          453,75                  SLS 49/2014   Nein
+ 10.09.14   *SLS 38/2014*   *(4800) Internal clearings* | *Ingels Irene* | *Dubois Robin*          726,00                  SLS 38/2014   Nein
+ 11.06.14   *SLS 29/2014*   *(4800) Internal clearings* | *Evertz Bernd* | *Dubois Robin*          2 782,77                SLS 29/2014   Nein
+ 07.05.14   *SLS 19/2014*   *(4800) Internal clearings* | *Bastiaensen Laurent* | *Dubois Robin*   1 451,82                SLS 19/2014   Nein
+ 10.02.14   *SLS 9/2014*    *(4800) Internal clearings* | *Hans Flott & Co* | *Dubois Robin*       987,31                  SLS 9/2014    Nein
                             **Saldo 8908.45 (7 Bewegungen)**                                       **8 908,45**
-========== =============== ====================================================================== ============== ======== ================= ===========
+========== =============== ====================================================================== ============== ======== ============= ===========
 <BLANKLINE>
 
 
@@ -303,7 +303,7 @@ This site shows a series of due sales invoices
  vat.VatClasses              7        31                MwSt.-Klassen           Classes TVA                  VAT classes
  vat.VatColumns              10       39                MWSt-Kolonnen           MWSt-Kolonnen                VAT columns
  vat.VatRegimes              11       24                MwSt.-Regimes           MwSt.-Regimes                VAT regimes
- vat.VatRules                10       181               MwSt-Regeln             MwSt-Regeln                  VAT rules
+ vat.VatRules                13       182               MwSt-Regeln             MwSt-Regeln                  VAT rules
  xl.Priorities               5        8                 Prioritäten             Priorités                    Priorities
 =========================== ======== ================= ======================= ============================ ====================
 <BLANKLINE>
