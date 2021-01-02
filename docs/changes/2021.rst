@@ -15,12 +15,12 @@ Fixed :ticket:`3906` (active_fields are disturbing for city and zip_code): In
 :class:`lino_xl.lib.countries.CountryCity` the fields city and zip_code are no
 longer :attr:`active_fields <lino.core.model.Model.active_fields>`.
 
-Fixed :ticket:`3905`  (Purchase invoice from private person suggests VAT) This
-was a bug in eevat and bevat.
+Fixed :ticket:`3905` (Purchase invoice from private person suggests VAT) This
+was a bug in :mod:`lino_xl.lib.eevat` and :mod:`lino_xl.lib.bevat`.
 
 Fixed :ticket:`3907` (Cannot enter into "Expense" column of bank statement)
 
-Release to PyPI: :ref:`xl`.
+Release to PyPI: :ref:`xl` (2 versions)
 
 
 2021-01-01
