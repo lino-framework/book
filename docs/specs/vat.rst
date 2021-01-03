@@ -169,9 +169,9 @@ between sales and purchases is defined by the `VAT rules`_, not by the regime.
 VAT classes
 ===========
 
-A :term:`VAT class` is assigned to each item of an invoice.  The VAT class can
-influence the available VAT rates. You can sell or purchase a same product to
-different partners using different VAT regimes.
+A :term:`VAT class` is a direct or indirect property of a trade object (e.g. a
+Product) that influences the VAT rate to be used.   Here is the list of VAT
+classes used unless you have some local change.
 
 >>> rt.show(vat.VatClasses, language="en")
 ======= ============= ===========================
@@ -184,14 +184,17 @@ different partners using different VAT regimes.
  200     investments   Investments
  210     real_estate   Real estate
  220     vehicles      Vehicles
+ 300     vatless       Operations without VAT
 ======= ============= ===========================
 <BLANKLINE>
 
+The list of VAT classes does not contain the actual :term:`VAT rates <VAT rate>`
+because this still varies by country, and within a same country it can vary,
+e.g. depending on the date of the operation or other factors.
 
-A VAT class is a direct or indirect property of a trade object (e.g. a Product)
-and influences the VAT rate to be used.  It does not contain the actual rate
-because this still varies depending on your country, the time and type of the
-operation, and possibly other factors.
+A :term:`VAT class` is assigned to each item of an invoice.  The VAT class can
+influence the available VAT rates. You can sell or purchase a same product to
+different partners using different VAT regimes.
 
 
 .. class:: VatClasses

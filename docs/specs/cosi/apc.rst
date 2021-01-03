@@ -300,7 +300,7 @@ This site shows a series of due sales invoices
  users.UserTypes             3        21                Benutzerarten           Types d'utilisateur          User types
  vat.DeclarationFieldsBase   0        4                 Declaration fields      Declaration fields           Declaration fields
  vat.VatAreas                3        13                MWSt-Zonen              Zones TVA                    VAT areas
- vat.VatClasses              7        31                MwSt.-Klassen           Classes TVA                  VAT classes
+ vat.VatClasses              8        31                MwSt.-Klassen           Classes TVA                  VAT classes
  vat.VatColumns              10       39                MWSt-Kolonnen           MWSt-Kolonnen                VAT columns
  vat.VatRegimes              11       24                MwSt.-Regimes           MwSt.-Regimes                VAT regimes
  vat.VatRules                13       182               MwSt-Regeln             MwSt-Regeln                  VAT rules

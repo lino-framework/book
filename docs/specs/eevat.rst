@@ -639,8 +639,10 @@ Other languages
  200     investments   Investeeringud
  210     real_estate   Kinnisvara
  220     vehicles      Sõidukid
+ 300     vatless       Tehingud ilma käibemaksuta
 ======= ============= ============================
 <BLANKLINE>
+
 
 
 >>> rt.show(vat.VatAreas, language="et")

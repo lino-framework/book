@@ -18,8 +18,9 @@ to know about accounting stuff.  It will never be finished.
     -- Tao of programming
 
 
-The XL has several plugins that deal with accounting, and they are integrated
-into the general framework. Here is our suggested order of reading them:
+The :ref:`xl` has several plugins that deal with accounting, and they are
+integrated into the general framework. Here is our suggested order of reading
+them:
 
 - :doc:`ledger`
 - :doc:`finan`

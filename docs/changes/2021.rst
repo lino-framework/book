@@ -8,6 +8,15 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-03
+==========
+
+Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClasses`.
+
+Fix :ticket:`3909`. After editing the entry_date of the last voucher of the
+journal we don't want its number to increase.
+
+
 2021-01-02
 ==========
 
