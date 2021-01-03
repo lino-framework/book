@@ -33,6 +33,11 @@ The VAT plug in defines the following concepts:
 
 .. glossary::
 
+  VAT rate
+
+    The percentage to apply to a base amount in order to compute the amount of
+    VAT.
+
   VAT regime
 
     Specifies how the VAT for this voucher is being handled, e.g. which VAT
