@@ -11,20 +11,32 @@ General information about how to read and maintain this document in :ref:`dev.ch
 2021-01-03
 ==========
 
-Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClasses`.
+Fix :ticket:``. Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClasses`.
 
 Fix :ticket:`3909`. After editing the entry_date of the last voucher of the
 journal we don't want its number to increase.
 
+2021-01-05
+==========
+
+Miscellaneous minor optimizations for entering bank statements.
+:class:`finan.DatedFinancialVoucherItem` now also fills the date field from
+last_item_date. Trying to fix surprizing behaviour after
+:class:`FillSuggestionsToVoucherItem`. Ledger movements in
+:class:`ledger.MovementsByVoucher` are now ordered by :attr:`seqno`, i.e. by
+their "natural" order of creation.
+
+Fixed a typo bug in lino_xl.lib.cal that caused Lino to no show anything in
+cal.EntriesByGuest although the person was present in some calendar entry.
 
 2021-01-02
 ==========
 
-Fixed :ticket:`3906` (active_fields are disturbing for city and zip_code): In
+Fix :ticket:`3906` (active_fields are disturbing for city and zip_code). In
 :class:`lino_xl.lib.countries.CountryCity` the fields city and zip_code are no
 longer :attr:`active_fields <lino.core.model.Model.active_fields>`.
 
-Fixed :ticket:`3905` (Purchase invoice from private person suggests VAT) This
+Fix :ticket:`3905` (Purchase invoice from private person suggests VAT). This
 was a bug in :mod:`lino_xl.lib.eevat` and :mod:`lino_xl.lib.bevat`.
 
 Fixed :ticket:`3907` (Cannot enter into "Expense" column of bank statement)

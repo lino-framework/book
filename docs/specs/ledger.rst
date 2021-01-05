@@ -1069,9 +1069,9 @@ account, a *sales* invoice *debits* the customer's account.
 ============================= ========== =========== =========== ========================== ================ =========
  Account                       Partner    Debit       Credit      VAT class                  Match            Cleared
 ----------------------------- ---------- ----------- ----------- -------------------------- ---------------- ---------
- (4100) Suppliers              Bestbank               40,00                                  **PRC 1/2014**   Yes
- (4520) VAT deductible                    6,94                    Goods at normal VAT rate                    Yes
  (6010) Purchase of services              33,06                   Goods at normal VAT rate                    Yes
+ (4520) VAT deductible                    6,94                    Goods at normal VAT rate                    Yes
+ (4100) Suppliers              Bestbank               40,00                                  **PRC 1/2014**   Yes
                                           **40,00**   **40,00**
 ============================= ========== =========== =========== ========================== ================ =========
 <BLANKLINE>
@@ -1082,13 +1082,12 @@ account, a *sales* invoice *debits* the customer's account.
 ================== ========== ============== ============== =========== ================ =========
  Account            Partner    Debit          Credit         VAT class   Match            Cleared
 ------------------ ---------- -------------- -------------- ----------- ---------------- ---------
- (4000) Customers   Bestbank   3 629,82                                  **SLS 1/2014**   Yes
- (4510) VAT due                               629,97         Services                     Yes
  (7000) Sales                                 2 999,85       Services                     Yes
+ (4510) VAT due                               629,97         Services                     Yes
+ (4000) Customers   Bestbank   3 629,82                                  **SLS 1/2014**   Yes
                                **3 629,82**   **3 629,82**
 ================== ========== ============== ============== =========== ================ =========
 <BLANKLINE>
-
 
 
 So the balance of a supplier's account (when open) is usually on the
