@@ -1,9 +1,9 @@
 .. doctest docs/specs/dumps.rst
 .. _book.specs.dumps:
 
-=======================
-Python dumps by example
-=======================
+==========================
+The ``dumps`` demo project
+==========================
 
 .. If this test fails because something has changed in the expected
    dump, then you can update these dumps by running::
@@ -11,15 +11,22 @@ Python dumps by example
      $ go dumps
      $ ./init.sh
 
+
 This document shows a series of usage examples for :ref:`Python dumps <dpy>`.
 It verifies whether :ticket:`2204` (AmbiguousTimeError) is fixed, it
 demonstrates three methods of writing demo multilingual data for babel
 fields, and it demonstrates behaviour of choicelists in Python dumps.
 
+See also :doc:`/dev/datamig` and :doc:`/dev/dump2py`.
+
+
 This document uses the :mod:`lino_book.projects.dumps` demo project.
 
 >>> from atelier.sheller import Sheller
 >>> shell = Sheller("lino_book/projects/dumps")
+
+
+
 
 Database structure
 ==================

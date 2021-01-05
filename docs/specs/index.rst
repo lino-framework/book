@@ -40,6 +40,7 @@ The following plugins are part of the :mod:`lino.modlib`:
    search
    summaries
    system
+   lino
 
 The following plugins are currently still part of the :mod:`lino.modlib` but
 might be moved to :mod:`lino_xl` some day:
