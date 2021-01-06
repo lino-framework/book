@@ -16,6 +16,20 @@ Fix :ticket:``. Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClass
 Fix :ticket:`3909`. After editing the entry_date of the last voucher of the
 journal we don't want its number to increase.
 
+2021-01-06
+==========
+
+Release to PyPI: :ref:`xl` 21.1.3.
+
+More bugfixes :mod:`lino_xl.lib.finan` : The choicelist for
+FinancialVoucherItem.match didn't respect the suggest_future_vouchers settings
+and therefore always showed all matches, including those that happen in the
+future and won't get satisfied. Visible result: you select one of these matches,
+but Lino then sets the field to blank. After selecting a partner, Lino didn't
+suggest anything (because amount was 0.00, not None).
+FillSuggestionsToVoucherItem caused an additional item to be created.
+
+
 2021-01-05
 ==========
 

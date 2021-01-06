@@ -20,6 +20,7 @@ roles".
 
 >>> import lino
 >>> lino.startup('lino_book.projects.min1.settings.doctests')
+>>> from django.utils import translation
 >>> from lino.api.doctest import *
 >>> from django.db.models import Q
 
@@ -711,3 +712,20 @@ django.core.exceptions.ValidationError: ['Cannot find first and last name in "Jo
 {'first_name': 'Guido', 'last_name': 'van Rossum'}
 
 The algorithm has already some basic intelligence but plenty of growing potential...
+
+
+Don't read this
+===============
+
+>>> def show_help_text(a):
+...   print(a.help_text)
+...   with translation.override('de'):
+...     print(a.help_text)
+
+>>> lst = [contacts.Persons.insert_action.action,
+...   contacts.Companies.insert_action.action]
+>>> for a in lst: show_help_text(a)
+Open a dialog window to insert a new Person.
+Öffnet ein Dialogfenster, um einen neuen Datensatz (Person) zu erstellen.
+Open a dialog window to insert a new Organization.
+Öffnet ein Dialogfenster, um einen neuen Datensatz (Organisation) zu erstellen.

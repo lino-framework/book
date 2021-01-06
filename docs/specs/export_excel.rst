@@ -40,28 +40,30 @@ datetime.date(2017, 8, 19)
 =============================================================================
 My appointments (Responsible user Robin Rood, Dates 01.08.2017 to 31.08.2017)
 =============================================================================
-=========================================== ===========================
- Calendar entry                              Workflow
-------------------------------------------- ---------------------------
- `Breakfast (01.08.2017 10:20) <Detail>`__   **☒ Cancelled**
- `Seminar (03.08.2017 08:30) <Detail>`__     **☒ Cancelled**
- `Interview (05.08.2017 11:10) <Detail>`__   **☒ Cancelled**
- `Breakfast (07.08.2017 09:40) <Detail>`__   **☒ Cancelled**
- `Seminar (09.08.2017 13:30) <Detail>`__     **☒ Cancelled**
- `Interview (11.08.2017 10:20) <Detail>`__   **☒ Cancelled**
- `Breakfast (13.08.2017 08:30) <Detail>`__   **☒ Cancelled**
- `Seminar (15.08.2017 11:10) <Detail>`__     **☒ Cancelled**
- `Interview (17.08.2017 09:40) <Detail>`__   **☒ Cancelled**
- `Breakfast (19.08.2017 13:30) <Detail>`__   **☒ Cancelled**
- `Seminar (21.08.2017 10:20) <Detail>`__     **☐ Draft** → [☼] [☒]
- `Interview (23.08.2017 08:30) <Detail>`__   **? Suggested** → [☼] [☒]
- `Breakfast (25.08.2017 11:10) <Detail>`__   **☐ Draft** → [☼] [☒]
- `Seminar (27.08.2017 09:40) <Detail>`__     **? Suggested** → [☼] [☒]
- `Interview (29.08.2017 13:30) <Detail>`__   **☐ Draft** → [☼] [☒]
- `Breakfast (31.08.2017 10:20) <Detail>`__   **? Suggested** → [☼] [☒]
-=========================================== ===========================
+====================================================== ===========================
+ Calendar entry                                         Workflow
+------------------------------------------------------ ---------------------------
+ `Breakfast (01.08.2017 10:20) <Detail>`__              **☒ Cancelled**
+ `Seminar (03.08.2017 08:30) <Detail>`__                **☒ Cancelled**
+ `Interview (05.08.2017 11:10) <Detail>`__              **☒ Cancelled**
+ `Breakfast (07.08.2017 09:40) <Detail>`__              **☒ Cancelled**
+ `Seminar (09.08.2017 13:30) <Detail>`__                **☒ Cancelled**
+ `Interview (11.08.2017 10:20) <Detail>`__              **☒ Cancelled**
+ `Breakfast (13.08.2017 08:30) <Detail>`__              **☒ Cancelled**
+ `Seminar (15.08.2017 11:10) <Detail>`__                **☒ Cancelled**
+ `Interview (17.08.2017 09:40) <Detail>`__              **☒ Cancelled**
+ `Breakfast (19.08.2017 13:30) <Detail>`__              **☒ Cancelled**
+ `Absent for private reasons (20.08.2017) <Detail>`__   **☐ Draft** → [☼] [☒]
+ `Seminar (21.08.2017 10:20) <Detail>`__                **☐ Draft** → [☼] [☒]
+ `Absent for private reasons (23.08.2017) <Detail>`__   **? Suggested** → [☼] [☒]
+ `Interview (23.08.2017 08:30) <Detail>`__              **? Suggested** → [☼] [☒]
+ `Breakfast (25.08.2017 11:10) <Detail>`__              **☐ Draft** → [☼] [☒]
+ `Absent for private reasons (26.08.2017) <Detail>`__   **☐ Draft** → [☼] [☒]
+ `Seminar (27.08.2017 09:40) <Detail>`__                **? Suggested** → [☼] [☒]
+ `Interview (29.08.2017 13:30) <Detail>`__              **☐ Draft** → [☼] [☒]
+ `Breakfast (31.08.2017 10:20) <Detail>`__              **? Suggested** → [☼] [☒]
+====================================================== ===========================
 <BLANKLINE>
-
 
 
 Building the file
@@ -149,7 +151,7 @@ It has 5 columns and 13 rows:
 
 >>> rows = list(ws.rows)
 >>> print("{}, {}".format(len(list(ws.columns)), len(rows)))
-5, 16
+5, 19
 
 The first row contains our column headings. Which differ from those of
 the table above because our user had changed them manually:

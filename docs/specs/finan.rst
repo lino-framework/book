@@ -2,12 +2,13 @@
 .. _xl.specs.finan:
 .. _specs.cosi.finan:
 
-=============================================================================
-``finan`` : Bank, cash and miscellaneous journal entries
-=============================================================================
+==============================
+``finan`` : Financial vouchers
+==============================
 
-This document describes what we call **financial vouchers** as
-implemented by the :mod:`lino_xl.lib.finan` plugin.
+This document describes the :mod:`lino_xl.lib.finan` plugin, which introduces
+concepts like :term:`financial voucher` and :term:`booking suggestion`.
+
 
 .. contents::
    :depth: 1
@@ -19,7 +20,7 @@ implemented by the :mod:`lino_xl.lib.finan` plugin.
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
->>> startup('lino_book.projects.pierre.settings.doctests')
+>>> startup('lino_book.projects.apc.settings.doctests')
 >>> from lino.api.doctest import *
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
@@ -55,6 +56,22 @@ There are three kinds of financial vouchers:
 
     French: "operations diverse"
 
+  financial voucher
+
+    General term for the voucher types :term:`bank statement`, :term:`payment
+    order` and :term:`journal entry`.  They have certain things in common, but
+    use different database models because certain things differ.
+
+  expected movement
+
+    A :term:`ledger movement` that did not yet happen but is expected to happen.
+    For example the payment of an invoice.
+
+  booking suggestion
+
+    A suggestion to add an :term:`expected movement` to a :term:`financial voucher`.
+    See `Booking suggestions`_.
+
 
 About payment orders
 ====================
@@ -68,7 +85,7 @@ To configure a journal of :term:`payment orders <payment order>`, you set the fo
   point to your bank.
 
 - :attr:`dc <lino_xl.lib.ledger.Journal.dc>` (Primary booking direction) should
-  be DEBIT.
+  be DEBIT because each item should debit (not credit) the partner's account.
 
 - :attr:`account <lino_xl.lib.ledger.Journal.account>` should be the
   :term:`ledger account` marked as :attr:`CommonAccounts.pending_po
@@ -77,8 +94,7 @@ To configure a journal of :term:`payment orders <payment order>`, you set the fo
 A payment order clears the invoices it asks to pay.  Which means for example
 that a provider might tell you that some invoice isn't yet paid, although your
 MovementsByPartner says that it is paid. The explanation for this difference is
-simply that the payment order hasn't yet been fully executed by your or their
-bank.
+simply that the payment order hasn't yet been executed by your or their bank.
 
 Lino books the **sum of a payment order** into a single counter-movement that
 will *debit* your bank's partner account.  Your bank becomes a creditor (you owe
@@ -143,10 +159,7 @@ Model mixins
 
 .. class:: FinancialVoucher
 
-    Base class for all financial vouchers:
-    :class:`JournalEntry`,
-    :class:`PaymentOrder` and
-    :class:`BankStatement`.
+    Base class for all :term:`financial vouchers <financial voucher>`.
 
     .. attribute:: item_account
 
@@ -160,10 +173,6 @@ Model mixins
 
     .. attribute:: printed
         See :attr:`lino_xl.lib.excerpts.mixins.Certifiable.printed`
-
-
-.. class:: DatedFinancialVoucher
-    A :class:`FinancialVoucher` whose items have a :attr:`date` field.
 
 
 .. class:: FinancialVoucherItem
@@ -215,6 +224,14 @@ Model mixins
         to that invoice.
 
 
+In a :term:`bank statement` you might want to specify an individual date for
+every item.
+
+.. class:: DatedFinancialVoucher
+
+    A :class:`FinancialVoucher` whose items have a :attr:`date` field.
+
+
 .. class:: DatedFinancialVoucherItem
 
     A :class:`FinancialVoucherItem` with an additional :attr:`date`
@@ -262,11 +279,13 @@ Tables
 
 .. class:: FinancialVouchers
 
-    Base class for the default tables of all other financial voucher
+    Base class for the default tables of all financial voucher
     types (:class:`JournalEntries` , :class:`PaymentOrders` and
     :class:`BankStatements`).
 
 .. class:: JournalEntries
+
+    The base table of all tables on :class:`JournalEntry`.
 
 .. class:: PaymentOrders
 
@@ -286,6 +305,13 @@ Tables
 .. class:: ItemsByPaymentOrder
 .. class:: ItemsByBankStatement
 
+
+Booking suggestions
+===================
+
+In a financial voucher you often book transactions that are actually expected.
+When you have booked your invoices, then Lino "knows" that each invoice will
+--ideally-- lead to a payment.
 
 .. class:: SuggestionsByVoucher
 
