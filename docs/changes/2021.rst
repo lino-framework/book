@@ -8,18 +8,10 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
-2021-01-03
-==========
-
-Fix :ticket:``. Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClasses`.
-
-Fix :ticket:`3909`. After editing the entry_date of the last voucher of the
-journal we don't want its number to increase.
-
 2021-01-07
 ==========
 
-Release to PyPI: Lino 21.1.1
+Release to PyPI: Lino 21.1.1.
 
 
 2021-01-06
@@ -51,6 +43,14 @@ their "natural" order of creation.
 
 Fix a typo bug in lino_xl.lib.cal that caused Lino to no show anything in
 cal.EntriesByGuest although the person was present in some calendar entry.
+
+2021-01-03
+==========
+
+Add new item :attr:`vatless` to :class:`lino_xl.lib.vat.VatClasses`.
+
+Fix :ticket:`3909`. After editing the entry_date of the last voucher of the
+journal we don't want its number to increase.
 
 2021-01-02
 ==========
