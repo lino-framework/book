@@ -21,7 +21,7 @@ journal we don't want its number to increase.
 
 Release to PyPI: :ref:`xl` 21.1.3.
 
-More bugfixes :mod:`lino_xl.lib.finan` : The choicelist for
+Fix some bugs in :mod:`lino_xl.lib.finan` : The choicelist for
 FinancialVoucherItem.match didn't respect the suggest_future_vouchers settings
 and therefore always showed all matches, including those that happen in the
 future and won't get satisfied. Visible result: you select one of these matches,
@@ -29,6 +29,9 @@ but Lino then sets the field to blank. After selecting a partner, Lino didn't
 suggest anything (because amount was 0.00, not None).
 FillSuggestionsToVoucherItem caused an additional item to be created.
 
+Release to PyPI: :ref:`xl` 21.1.4 and Lino 21.1.0
+
+Fix :ticket:`3917` (Lino forgets the journal after saving a bank statement).
 
 2021-01-05
 ==========
@@ -40,7 +43,7 @@ last_item_date. Trying to fix surprizing behaviour after
 :class:`ledger.MovementsByVoucher` are now ordered by :attr:`seqno`, i.e. by
 their "natural" order of creation.
 
-Fixed a typo bug in lino_xl.lib.cal that caused Lino to no show anything in
+Fix a typo bug in lino_xl.lib.cal that caused Lino to no show anything in
 cal.EntriesByGuest although the person was present in some calendar entry.
 
 2021-01-02
@@ -53,7 +56,7 @@ longer :attr:`active_fields <lino.core.model.Model.active_fields>`.
 Fix :ticket:`3905` (Purchase invoice from private person suggests VAT). This
 was a bug in :mod:`lino_xl.lib.eevat` and :mod:`lino_xl.lib.bevat`.
 
-Fixed :ticket:`3907` (Cannot enter into "Expense" column of bank statement)
+Fix :ticket:`3907` (Cannot enter into "Expense" column of bank statement)
 
 Release to PyPI: :ref:`xl` (2 versions)
 
