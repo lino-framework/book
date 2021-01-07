@@ -13,6 +13,12 @@ General information about how to read and maintain this document in :ref:`dev.ch
 
 Release to PyPI: Lino 21.1.1.
 
+Optimizations: #3919 (No suggestions on clearable general account)
+:meth:`FinancialVoucherItem.account_changed` didn't collect suggestions after
+entering a clearable account.
+#3920 (Lino registers the voucher even when exception happens).
+
+
 
 2021-01-06
 ==========
