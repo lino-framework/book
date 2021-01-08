@@ -23,7 +23,7 @@ Journals
  SLS         Sales invoices               Verkaufsrechnungen           Factures vente               Sales                                                 Credit
  SLC         Sales credit notes           Gutschriften Verkauf         Notes de crédit vente        Sales                                                 Debit
  PRC         Purchase invoices            Einkaufsrechnungen           Factures achat               Purchases                                             Debit
- PMO         Bestbank Payment Orders      Zahlungsaufträge             Ordre de paiement Bestbank   Bank payment orders   (4300) Pending Payment Orders   Debit
+ PMO         Bestbank Payment Orders      Zahlungsaufträge             Ordre de paiement Bestbank   Bank payment orders   (4300) Pending Payment Orders   Credit
  CSH         Cash book                    Kassenbuch                   Livre de caisse                                    (5700) Cash                     Credit
  BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Miscellaneous transactions   Miscellaneous transactions   Opérations diverses                                (5700) Cash                     Credit

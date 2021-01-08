@@ -75,9 +75,11 @@ The following just repeats on the first payment order what has been
 done for all orders when :mod:`lino_xl.lib.finan.fixtures.demo`
 generated them:
 
->>> from unipath import Path
 >>> ses = rt.login()
->>> obj = rt.models.finan.PaymentOrder.objects.all()[0]
+>>> obj = rt.models.finan.PaymentOrder.objects.first()
+>>> obj
+PaymentOrder #250 ('PMO 1/2015')
+
 >>> rv = obj.write_xml.run_from_session(ses)  #doctest: +ELLIPSIS
 xml render <django.template.backends.jinja2.Template object at ...> -> .../media/xml/xml/finan.PaymentOrder-250.xml ('en', {})
 
@@ -89,6 +91,7 @@ True
 Let's check whether the XML file has been generated and is a valid
 SEPA payment initiation:
 
+>>> from unipath import Path
 >>> fn = Path(settings.SITE.cache_dir + rv['open_url'])
 >>> fn.exists()
 True

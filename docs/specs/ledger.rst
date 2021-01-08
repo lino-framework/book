@@ -422,9 +422,12 @@ the customer's account and *debits* your bank account (causing its balance to
 increase because it is an :term:`asset`).
 
 A purchase invoice *credits* the supplier's account (a :term:`liability`) and
-*debits* the costs account (an :term:`expense`). The payment of this invoice
-*debits* the supplier's account and *credits* your bank account (causing its
-balance to decrease because it is an :term:`asset`).
+*debits* the costs account (an :term:`expense`).  The payment of this invoice in
+the bank statement *debits* the supplier's account and *credits* your bank
+account (causing its balance to decrease because it is an :term:`asset`). If you
+use a payment order, then the payment order *debits* the supplier's account and
+*credits* your *pending payment orders* account, which the bank statement
+*debits*.
 
 Every journal has its specific default booking direction (configured in
 :attr:`Journal.dc`). For example a (positive) amount in a sales invoice means
@@ -896,7 +899,7 @@ Here is the list of all :term:`journals <journal>`.
  SLS         Verkaufsrechnungen           Factures vente               Sales invoices               Sales                                                 Credit
  SLC         Gutschriften Verkauf         Notes de crédit vente        Sales credit notes           Sales                                                 Debit
  PRC         Einkaufsrechnungen           Factures achat               Purchase invoices            Purchases                                             Debit
- PMO         Zahlungsaufträge             Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Debit
+ PMO         Zahlungsaufträge             Ordre de paiement Bestbank   Bestbank Payment Orders      Bank payment orders   (4300) Pending Payment Orders   Credit
  CSH         Kassenbuch                   Livre de caisse              Cash book                                          (5700) Cash                     Credit
  BNK         Bestbank                     Bestbank                     Bestbank                                           (5500) BestBank                 Credit
  MSC         Miscellaneous transactions   Opérations diverses          Miscellaneous transactions                         (5700) Cash                     Credit

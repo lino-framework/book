@@ -18,7 +18,7 @@ Optimizations: #3919 (No suggestions on clearable general account)
 entering a clearable account.
 #3920 (Lino registers the voucher even when exception happens).
 
-
+Release to PyPI: Lino 21.1.2 and XL 21.1.5.
 
 2021-01-06
 ==========

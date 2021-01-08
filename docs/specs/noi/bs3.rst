@@ -15,7 +15,7 @@ A read-only interface to Team using generic Bootstrap
 This document specifies the read-only public interface of Lino Noi.
 implemented in :mod:`lino_book.projects.bs3`.
 
-Provides readonly anonymous access to the data of
+Provides read-only anonymous access to the data of
 :mod:`lino_book.projects.noi1e`, using the :mod:`lino.modlib.bootstrap3`
 front end. See also :mod:`lino_book.projects.public`
 
@@ -40,7 +40,7 @@ Tickets are rendered using plain bootstrap HTML:
 >>> soup = BeautifulSoup(res.content, "lxml")
 >>> links = soup.find_all('a')
 >>> len(links)
-51
+52
 >>> print(links[0].get('href'))
 /?ul=de
 >>> print(links[1].get('href'))
