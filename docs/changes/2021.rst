@@ -8,6 +8,15 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-08
+==========
+
+Fix #3921 (Journal entry mixes up debit and credit when creating the movements).
+Fix #3924 (auto_compute_amount does not always work as expected).
+
+Release to PyPI: XL 21.1.6.
+
+
 2021-01-07
 ==========
 

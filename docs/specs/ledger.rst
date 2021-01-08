@@ -94,8 +94,6 @@ In Lino, the ledger is implemented by three database models:
     For example sales invoices, purchase invoices, VAT declarations are payable
     transactions.
 
-
-
 Some more concepts:
 
 .. glossary::
@@ -160,11 +158,6 @@ Some more concepts:
     A :term:`ledger voucher` sent to each employee every month, detailing the
     amount of the salary or wage and resulting tax and other legal transactions.
 
-  bank statement
-
-    A :term:`ledger voucher` received from the bank, showing all transactions on
-    a given account during a given date range.
-
   cash book
 
     A :term:`journal` of all transactions in a given cash box.
@@ -213,6 +206,17 @@ And then there are many views for looking at this data.
   Accessible via :menuselection:`Reports --> Ledger --> Debtors` and
   :menuselection:`Reports --> Ledger --> Creditors`
 
+
+Partner accounts
+================
+
+Some ledger accounts require an external partner
+
+needs_partner
+
+
+Account {} needs a partner
+
 Accounts
 ========
 
@@ -239,9 +243,9 @@ Accounts
 
         Whether bookings to this account need a partner specified.
 
-        For payment orders this causes the contra entry of financial
-        documents to be detailed or not (i.e. one contra entry for
-        every item or a single contra entry per voucher.
+        For :term:`payment orders <payment order>` this causes the counter entry
+        of financial documents to be detailed or not (i.e. one contra entry for
+        every item or a single counter entry per voucher.
 
     .. attribute:: vat_class
 

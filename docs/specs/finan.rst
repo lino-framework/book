@@ -39,8 +39,8 @@ There are three kinds of financial vouchers:
 
   bank statement
 
-    A voucher you receive from your bank and which reports the transactions
-    that occurred on a given bank account during a given period.
+    A :term:`ledger voucher` received from your bank and which reports the
+    transactions that occurred on a given bank account during a given period.
 
     See `Bank statements`_.
 
@@ -56,8 +56,9 @@ There are three kinds of financial vouchers:
     A voucher where you declare that you move money around internally, for your
     own accounting.
 
-    French: "operations diverse". See `Journal entries`_.
+    French: "operations diverse".
 
+    See `Journal entries`_.
 
   financial voucher
 
@@ -96,16 +97,16 @@ following fields:
   <lino_xl.lib.ledger.CommonAccounts.pending_po>`.
 
 A payment order clears the invoices it asks to pay.  Which means for example
-that a provider might tell you that some invoice isn't yet paid, although your
+that a supplier might tell you that some invoice isn't yet paid, although your
 MovementsByPartner says that it is paid. The explanation for this difference is
 simply that the payment order hasn't yet been executed by your or their bank.
 
 Lino books the **sum of a payment order** into a single counter-movement that
-will *debit* your bank's partner account.  Your bank becomes a creditor (you owe
-them the sum of the payments) and you expect this amount to be cleared by an
-expense in a :term:`bank statement` which confirms that the bank executed your
-payment order.
-
+will *debit* your bank's partner account (specified in the :attr:`partner
+<Journal.partner>` of the journal).  Your bank becomes a creditor (you owe them
+the sum of the payments) and you expect this amount to be cleared by an expense
+in a :term:`bank statement` which confirms that the bank executed your payment
+order.
 
 >>> rt.show("finan.PaymentOrdersByJournal", ledger.Journal.get_by_ref("PMO"))
 ===================== ============ =========== =============== ================ =================== ================
@@ -128,6 +129,38 @@ payment order.
  **Total (14 rows)**                            **85 647,30**
 ===================== ============ =========== =============== ================ =================== ================
 <BLANKLINE>
+
+
+.. class:: PaymentOrder
+
+    Django model to represent a :term:`payment order`.
+
+    .. attribute:: entry_date
+
+        The date of the ledger entry.
+
+    .. attribute:: execution_date
+
+        The execution date of payment order. If this is empty, Lino
+        assumes the :attr:`entry_date` when writing the
+        :xfile:`pain_001.xml` file.
+
+    .. attribute:: total
+
+        The total amount. This is automatically computed when you register
+        de voucher.
+
+
+.. class:: PaymentOrderItem
+
+    Django model to represent an individual item of a :term:`payment order`.
+
+
+.. class:: PaymentOrders
+
+    The base table of all tables on :class:`PaymentOrder`.
+
+.. class:: ItemsByPaymentOrder
 
 
 Bank statements
@@ -155,11 +188,42 @@ Bank statements
 ===================== ============ =============== =============== =================== ================
 <BLANKLINE>
 
+.. class:: BankStatement
+
+    Django model to represent a :term:`bank statement`.
+
+    .. attribute:: balance1
+
+        The old (or start) balance.
+
+    .. attribute:: balance2
+
+        The new (or end) balance.
+
+.. class:: BankStatementItem
+
+    Django model to represent an individual item of a :term:`bank statement`.
+
+
+.. class:: BankStatements
+
+    The base table of all tables on :class:`BankStatement`.
+
+
+.. class:: ItemsByBankStatement
+
+    Shows the items of a :term:`bank statement`.
+
+
+
 Cash journals
 =============
 
+Cash journals are technically the same as bank statements.
+
 >>> rt.show("finan.BankStatementsByJournal", ledger.Journal.get_by_ref("CSH"))
 No data to display
+
 
 Journal entries
 ===============
@@ -176,56 +240,23 @@ No data to display
 <BLANKLINE>
 
 
-Database models
-===============
-
 .. class:: JournalEntry
 
     Django model to represent a :term:`journal entry`.
-
-.. class:: BankStatement
-
-    Django model to represent a :term:`bank statement`.
-
-    .. attribute:: balance1
-
-        The old (or start) balance.
-
-    .. attribute:: balance2
-
-        The new (or end) balance.
-
-.. class:: PaymentOrder
-
-    Django model to represent a :term:`payment order`.
-
-    .. attribute:: entry_date
-
-        The date of the ledger entry.
-
-    .. attribute:: execution_date
-
-        The execution date of payment order. If this is empty, Lino
-        assumes the :attr:`entry_date` when writing the
-        :xfile:`pain_001.xml` file.
-
-    .. attribute:: total
-
-        The total amount. This is automatically computed when you register
-        de voucher.
-
 
 .. class:: JournalEntryItem
 
     Django model to represent an individual item of a :term:`journal entry`.
 
-.. class:: BankStatementItem
+.. class:: JournalEntries
 
-    Django model to represent an individual item of a :term:`bank statement`.
+    The base table of all tables on :class:`JournalEntry`.
 
-.. class:: PaymentOrderItem
+.. class:: ItemsByJournalEntry
 
-    Django model to represent an individual item of a :term:`payment order`.
+    Shows the items of a journal entry.
+
+
 
 
 Model mixins
@@ -357,27 +388,10 @@ Tables
     types (:class:`JournalEntries` , :class:`PaymentOrders` and
     :class:`BankStatements`).
 
-.. class:: JournalEntries
-
-    The base table of all tables on :class:`JournalEntry`.
-
-.. class:: PaymentOrders
-
-    The base table of all tables on :class:`PaymentOrder`.
-
-.. class:: BankStatements
-
-    The base table of all tables on :class:`BankStatement`.
-
-
 .. class:: ItemsByVoucher
 
     The base table of all tables which display the items of a given
     voucher.
-
-.. class:: ItemsByJournalEntry
-.. class:: ItemsByPaymentOrder
-.. class:: ItemsByBankStatement
 
 
 Booking suggestions
@@ -423,7 +437,6 @@ When you have booked your invoices, then Lino "knows" that each invoice will
     items if more than one suggestion was selected).
 
 
-
 .. class:: SuggestionsByJournalEntryItem
 
 .. class:: SuggestionsByPaymentOrderItem
@@ -437,15 +450,10 @@ When you have booked your invoices, then Lino "knows" that each invoice will
     A :class:`SuggestionsByVoucherItem` table for a
     :class:`BankStatementItem`.
 
-Actions
-=======
-
 
 .. class:: ShowSuggestions
 
     Show suggested items for this voucher.
-
-.. class:: SuggestionsByVoucher
 
 .. class:: FillSuggestionsToVoucher
 
@@ -469,3 +477,6 @@ Template files
    Used for writing a SEPA payment initiation.
 
    :file:`finan/PaymentOrder/pain_001.xml`
+
+
+.. class:: FinancialVoucherItemChecker
