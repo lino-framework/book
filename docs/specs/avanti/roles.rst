@@ -30,11 +30,62 @@ User types in Lino Avanti
 ========== ===================== ==========
 <BLANKLINE>
 
+User roles
+==========
+
+The following table shows which roles are assigned to each user type.
+
+>>> rt.show(users.UserRoles)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+================================ ===== ===== ===== ===== ===== ===== ===== =====
+ Name                             000   100   200   300   400   410   800   900
+-------------------------------- ----- ----- ----- ----- ----- ----- ----- -----
+ about.SiteSearcher                                                   ☑     ☑
+ avanti.Administrator                                                       ☑
+ avanti.Auditor                                     ☑
+ avanti.ClientsNameUser                 ☑     ☑           ☑     ☑     ☑     ☑
+ avanti.ClientsStaff                                                  ☑     ☑
+ avanti.ClientsUser                           ☑                 ☑     ☑     ☑
+ avanti.Coordinator                                       ☑
+ avanti.Secretary                                               ☑
+ avanti.SiteStaff                                                     ☑     ☑
+ avanti.SocialWorker                          ☑
+ avanti.Teacher                         ☑
+ beid.BeIdUser                                ☑                 ☑     ☑     ☑
+ cal.GuestOperator                      ☑     ☑                       ☑     ☑
+ checkdata.CheckdataUser                      ☑           ☑     ☑     ☑     ☑
+ coachings.CoachingsStaff                                             ☑     ☑
+ coachings.CoachingsUser                      ☑                       ☑     ☑
+ comments.CommentsStaff                                               ☑     ☑
+ comments.CommentsUser                        ☑                       ☑     ☑
+ comments.PrivateCommentsReader                                             ☑
+ contacts.ContactsStaff                                               ☑     ☑
+ contacts.ContactsUser                        ☑                 ☑     ☑     ☑
+ core.Explorer                                ☑     ☑                 ☑     ☑
+ core.SiteAdmin                                                             ☑
+ core.SiteUser                          ☑     ☑     ☑     ☑     ☑     ☑     ☑
+ courses.CoursesTeacher                 ☑
+ courses.CoursesUser                          ☑     ☑     ☑     ☑     ☑     ☑
+ cv.CareerStaff                                                       ☑     ☑
+ cv.CareerUser                                ☑                       ☑     ☑
+ excerpts.ExcerptsStaff                                               ☑     ☑
+ excerpts.ExcerptsUser                        ☑                 ☑     ☑     ☑
+ office.OfficeOperator                        ☑           ☑     ☑     ☑     ☑
+ office.OfficeStaff                                                   ☑     ☑
+ office.OfficeUser                      ☑     ☑     ☑           ☑     ☑     ☑
+ polls.PollsStaff                                                     ☑     ☑
+ polls.PollsUser                              ☑                       ☑     ☑
+ trends.TrendsStaff                                                   ☑     ☑
+ trends.TrendsUser                            ☑                       ☑     ☑
+================================ ===== ===== ===== ===== ===== ===== ===== =====
+<BLANKLINE>
+
+
 
 Site administrator
 ==================
 
->>> rt.login('robin').show_menu()
+>>> show_menu('robin')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, Overdue appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
@@ -72,7 +123,7 @@ Coordinator
 >>> rt.login('martina').user.user_type
 <users.UserTypes.coordinator:400>
 
->>> rt.login('martina').show_menu()
+>>> show_menu('martina')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Office : My expiring upload files, My Upload files, My Excerpts, Data problems assigned to me
 - Activities : My Activities, Activities, -, Activity lines, Course planning
@@ -85,7 +136,7 @@ Secretary
 >>> rt.login('sandra').user.user_type
 <users.UserTypes.secretary:410>
 
->>> rt.login('sandra').show_menu()
+>>> show_menu('sandra')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
@@ -101,7 +152,7 @@ Secretary
 Social worker
 =============
 
->>> rt.login('nathalie').show_menu()
+>>> show_menu('nathalie')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Contacts : Persons, Organizations, Clients, My Clients, Households, Partner Lists
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
@@ -119,7 +170,7 @@ Social worker
 Teacher
 =======
 
->>> rt.login('laura').show_menu()
+>>> show_menu('laura')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring upload files, My Upload files
@@ -129,7 +180,7 @@ Teacher
 Supervisor
 ==========
 
->>> rt.login('audrey').show_menu()
+>>> show_menu('audrey')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF -SKIP
 - Calendar : My appointments, My unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments
 - Office : My Notification messages, My expiring upload files, My Upload files

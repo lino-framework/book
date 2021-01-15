@@ -15,9 +15,12 @@ class Site(Site):
     version = "0.1"
     author = 'Rumma & Ko OÜ'
     author_email = 'luc@lino-framework.org'
+    use_auth = False
 
     default_ui = 'lino_react.react'
-    # admin_ui = 'lino.modlib.extjs'
+    # default_ui = 'lino.modlib.extjs'
+    # default_ui = 'lino.modlib.publisher'
+    # default_ui = 'lino.modlib.bootstrap3'
     # default_ui = 'lino_openui5.openui5'
     # default_ui = 'lino_xl.lib.pages'
 
@@ -25,7 +28,8 @@ class Site(Site):
 
     # project_model = 'tickets.Project'
 
-    demo_fixtures = ['std', 'demo', 'demo2', 'intro']
+    demo_fixtures = ['std', 'demo', 'demo2', 'checkdata']
+    # demo_fixtures = ['std', 'demo', 'demo2', 'intro']
 
     sidebar_width = 3
 
@@ -34,6 +38,7 @@ class Site(Site):
         yield 'lino.modlib.gfks'
         yield 'lino.modlib.extjs'
         yield 'lino.modlib.memo'
+        yield 'lino.modlib.checkdata'  # fill body_preview during prep
         # yield 'lino.modlib.bootstrap3'
         yield 'lino.modlib.users'
         yield 'lino.modlib.publisher'
@@ -44,3 +49,8 @@ class Site(Site):
         # yield 'lino.modlib.tickets'
         yield 'lino_xl.lib.pages'
         # yield 'lino_book.projects.cms'
+
+    # def get_plugin_configs(self):
+    #     yield super(Site, self).get_plugin_configs()
+    #     if self.default_ui == 'lino.modlib.bootstrap3':
+    #         yield ('bootstrap3', 'url_prefix', None)

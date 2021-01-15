@@ -10,7 +10,6 @@ class Site(Site):
     use_java = False
     # use_ipdict = True
 
-
 SITE = Site(globals())
 DEBUG = True
 

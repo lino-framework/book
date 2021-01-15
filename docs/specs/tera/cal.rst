@@ -170,26 +170,54 @@ My appointments
 The *My appointments* table also shows in the dashboard when it has no
 data to display.
 
->>> rt.login("elmar").show_dashboard()
-... #doctest:  +REPORT_UDIFF
------------------------------------------------
-My appointments **New** `⏏ <My appointments>`__
------------------------------------------------
+>>> show_dashboard("elmar", ignore_links=False)
+... #doctest:  +REPORT_UDIFF +ELLIPSIS +NORMALIZE_WHITESPACE
+Quick links: [[New note](javascript:Lino.notes.MyNotes.insert.run\(null\)
+"Open a dialog window to insert a new Note.")] [[My
+Notes](javascript:Lino.notes.MyNotes.grid.run\(null\))]
+[[Refresh](javascript:Lino.viewport.refresh\(\);)]
+<BLANKLINE>
+Hi, Elmar!
+<BLANKLINE>
+This is a Lino demo site. Try also the other [demo sites](http://lino-
+framework.org/demos.html). Your feedback is welcome to [users@lino-
+framework.org](mailto:users@lino-framework.org) or directly to the person who
+invited you. **We are running with simulated date set to Saturday, 23 May
+2015.**
+<BLANKLINE>
+## My appointments
+[![add](/static/images/mjames/add.png)](javascript:Lino.cal.MyEntries.insert.run\(null,{
+... }\)
+"Open a dialog window to insert a new Calendar entry.")
+[⏏](javascript:Lino.cal.MyEntries.grid.run\(null\) "Show this table in own
+window")
 <BLANKLINE>
 No data to display
------------------------------------
-Daily planner `⏏ <Daily planner>`__
------------------------------------
 <BLANKLINE>
-============ ================================================= ==========
- Time range   External                                          Internal
------------- ------------------------------------------------- ----------
- *All day*    ` ⚕ rolf Absent for private reasons <Detail>`__
- *AM*         `08:30 ☑ romain Rencontre <Detail>`__
- *PM*
-============ ================================================= ==========
+## Daily planner [⏏](javascript:Lino.calview.DailyPlanner.grid.run\(null\)
+"Show this table in own window")
 <BLANKLINE>
-
+Time range| External| Internal
+---|---|---
+ _All day_|
+<BLANKLINE>
+[ ⚕ rolf Absent for private
+reasons](javascript:Lino.cal.OneEvent.detail.run\(null,{ "record_id": 355 }\))
+<BLANKLINE>
+|
+<BLANKLINE>
+ _AM_|
+<BLANKLINE>
+[ 08:30 ☑ romain Rencontre](javascript:Lino.cal.OneEvent.detail.run\(null,{
+"record_id": 324 }\))
+<BLANKLINE>
+|
+<BLANKLINE>
+ _PM_|
+<BLANKLINE>
+|
+<BLANKLINE>
+<BLANKLINE>
 
 
 

@@ -8,6 +8,16 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-15
+==========
+
+.. currentmodule:: lino.api.doctest
+
+Internal changes: :func:`lino.core.dashboard.DashboardItem.render` now yields
+html chunks instead of etree elements.  :func:`show_dashboard` and
+:func:`show_menu` are now defined in :mod:`lino.api.doctest`, no longer as
+methods of a request.
+
 2021-01-08
 ==========
 
@@ -56,7 +66,7 @@ last_item_date. Trying to fix surprizing behaviour after
 :class:`ledger.MovementsByVoucher` are now ordered by :attr:`seqno`, i.e. by
 their "natural" order of creation.
 
-Fix a typo bug in lino_xl.lib.cal that caused Lino to no show anything in
+Fix a typo bug in :mod:`lino_xl.lib.cal` that caused Lino to no show anything in
 cal.EntriesByGuest although the person was present in some calendar entry.
 
 2021-01-03

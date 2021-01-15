@@ -23,7 +23,7 @@ Robin is a :term:`site administrator`, he has a complete menu:
 >>> ses = rt.login('robin')
 >>> ses.user.user_type
 <users.UserTypes.admin:900>
->>> ses.show_menu()
+>>> show_menu('robin')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Upload files
@@ -70,7 +70,7 @@ Monique is a secretary.
 >>> print(rt.login('monique').user.user_type)
 200 (Secretary)
 
->>> rt.login('monique').show_menu()
+>>> show_menu('monique')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Upload files
@@ -111,7 +111,7 @@ Marianne is a "simple user".
 >>> print(rt.login('marianne').user.user_type)
 100 (User)
 
->>> rt.login('marianne').show_menu()
+>>> show_menu('marianne')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
 - Office : Data problems assigned to me, My Notes, My Outbox, My Excerpts, My Upload files
@@ -138,7 +138,7 @@ Marianne is a "simple user".
   - VAT : Special Belgian VAT declarations, Declaration fields, Invoices, VAT rules
 - Site : About
 
->>> rt.login('tom').show_menu()
+>>> show_menu('tom')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Activities : My courses given
 - Site : About

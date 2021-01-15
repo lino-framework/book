@@ -121,7 +121,7 @@ second section, which tests the menu of a normal member::
   +++ b/docs/specs/roles.rst
   @@ -23,7 +23,7 @@ Rolf is a :term:`site administrator`, he has a complete menu:
 
-   >>> ses.show_menu()
+   >>> show_menu('robin')
    ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
   -- Master : Members, Products
   +- Master : Products
@@ -142,7 +142,7 @@ second section, which tests the menu of a normal member::
   +>>> ses.user.user_type
   +<users.UserTypes.user:100>
   +
-  +>>> ses.show_menu()
+  +>>> show_menu(ses.user.username)
   +... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
   +- Master : Products
   +- Market : Offers

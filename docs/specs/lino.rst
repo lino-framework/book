@@ -46,7 +46,7 @@ Run a Lino daemon for this :term:`site <Lino site>`. See :doc:`/admin/linod`.
 
 Run a Python script within the Django environment for this site.
 
->>> shell("django-admin run --help")
+>>> shell("django-admin run --help")  #doctest: +NORMALIZE_WHITESPACE
 usage: django-admin run [-h] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--force-color] ...
 <BLANKLINE>
 Run a Python script within the Django environment for this site.
@@ -103,7 +103,7 @@ about how to run standalone Django scripts
 
 Run 'pip install --upgrade' for all Python packages required by this site.
 
->>> shell("django-admin install --help")
+>>> shell("django-admin install --help")  #doctest: +NORMALIZE_WHITESPACE
 usage: django-admin install [-h] [--noinput] [-l] [--version] [-v {0,1,2,3}] [--settings SETTINGS] [--pythonpath PYTHONPATH] [--traceback] [--no-color] [--force-color]
 <BLANKLINE>
 Run 'pip install --upgrade' for all Python packages required by this site.

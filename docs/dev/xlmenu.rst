@@ -26,7 +26,7 @@ project.
 
 The :mod:`lino_book.projects.min1` has the following menu:
 
->>> rt.login('robin').show_menu()
+>>> show_menu('robin')
 - Contacts : Persons, Organizations
 - Configure :
   - System : Site Parameters, Users

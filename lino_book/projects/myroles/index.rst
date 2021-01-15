@@ -7,7 +7,7 @@ Local customizations to the user permissions
 .. How to test only this document:
 
     $ python setup.py test -s tests.DocsTests.test_myroles
-    
+
     doctest init:
 
     >>> from lino.api.doctest import *
@@ -59,7 +59,7 @@ imports everything from the standard module::
 In our :xfile:`settings.py` file, we set :attr:`user_types_module
 <lino.core.site.Site.user_types_module>` to the Python path of
 above file::
-    
+
     user_types_module = 'mysite.myroles'
 
 This first step should have no visible effect at all. We've just
@@ -82,7 +82,7 @@ Polls --> Polls` menu command):
 >>> u = users.User(username="user", user_type="100")
 >>> u.full_clean()
 >>> u.save()
->>> rt.login('user').show_menu()
+>>> show_menu('user')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Polls : My Polls, My Responses
 - Explorer :

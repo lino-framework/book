@@ -35,7 +35,7 @@ at this application.
 You have seen the application menu in a browser window. But you can also show it
 in a documentation page:
 
->>> rt.login('robin').show_menu()
+>>> show_menu('robin')
 - Site : About
 - Polls : Questions, Choices
 

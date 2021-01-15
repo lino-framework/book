@@ -53,8 +53,7 @@ The application menu
 
 Robin is the system administrator, he has a complete menu:
 
->>> ses = rt.login('robin')
->>> ses.show_menu()
+>>> show_menu('robin')
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations
 - Office : My Excerpts, My Upload files

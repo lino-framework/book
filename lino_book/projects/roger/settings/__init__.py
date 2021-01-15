@@ -10,7 +10,7 @@ class Site(Site):
 
     default_ui = 'lino_react.react'
 
-    title = "Lino Voga for Roger"
+    # title = "Lino Voga for Roger"
     languages = "en de fr"
 
     # custom_layouts_module = "lino_book.projects.roger.settings.layouts"

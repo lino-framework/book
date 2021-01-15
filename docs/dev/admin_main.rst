@@ -5,20 +5,47 @@
 The main window
 ===============
 
-There are several methods for specifying the content of the main
-window:
+There are several methods for specifying the content of the :term:`main window`:
 
-- define a custom :xfile:`admin_main.html` template (as we did in 
+- define a custom :xfile:`admin_main.html` template (as we did in
   :doc:`/dev/polls/index`)
 
 - override the :meth:`get_main_html
   <lino.core.site.Site.get_main_html>` method of your :class:`Site
   <lino.core.site.Site>` class to return your own chunk of html.
-    
-- use the default :xfile:`admin_main.html` template and define *quick
-  links*, *welcome messages* and *dashboard items*.
+
+- use the default :xfile:`admin_main.html` template and define :term:`quick
+  links <quick link>`, :term:`welcome messages <welcome message>` and
+  :term:`dashboard items <dashboard item>`.
 
 In practice you will probably use the latter method.
+
+.. glossary::
+
+  main window
+
+    The window that is presented to the user after signing in and before opening
+    any other window.
+
+  quick link
+
+    A shortcut link in the main window.
+
+    See `Quick links`_ below.
+
+  welcome message
+
+    A one-sentence message to inform the user about something that might be
+    worth to know after signing in.
+
+    See `Welcome messages`_ below.
+
+  dashboard item
+
+    A table or report that is considered an important entry point to be shown in
+    the main window.
+
+    See :doc:`/specs/dashboard`.
 
 
 The ``admin_main.html`` template file
@@ -38,16 +65,15 @@ result in the following screenshots (taken from the :mod:`team
 
 .. figure:: /specs/noi/admin_main_000.png
    :width: 80 %
-            
-   Main window for AnonymousUser.
 
+   Main window for AnonymousUser.
 
 .. figure:: /specs/noi/admin_main_900.png
    :width: 80 %
-   
+
    Main window for user ``robin``.
 
-  
+
 
 Quick links
 ===========
@@ -57,7 +83,7 @@ Quick links
   methods of your :class:`Site <lino.core.site.Site>` class.
 
   See usage examples in the demo projects
-  :mod:`min1 <lino_book.projects.min1>`, 
+  :mod:`min1 <lino_book.projects.min1>`,
   :mod:`min2 <lino_book.projects.min2>` and
   :mod:`min3 <lino_book.projects.min3>`.
 
@@ -79,28 +105,8 @@ developer you have several methods to define welcome messages:
 - Define a **custom welcome message** using
   :meth:`dd.add_welcome_handler
   <lino.core.site.Site.add_welcome_handler>`.
-  
+
   For example the "You are busy with..." message in :ref:`noi` is
   :mod:`lino_xl.lib.working.models`.  Or
   :mod:`lino_xl.lib.stars.models` defines the "Your stars are"
   message.
-
-
-Dashboard items
-===============
-
-How to define your application's dashboard items:
-
-- override the
-  :meth:`get_dashboard_items
-  <lino.core.site.Site.get_dashboard_items>`
-  of your :class:`Site <lino.core.site.Site>` class.
-
-- override the :meth:`get_dashboard_items
-  <lino.core.plugin.Plugin.get_dashboard_items>` of your :class:`Plugin
-  <lino.core.plugin.Plugin>` classes.
-
-Independently of how you define the dashboard items for your
-application, you can additionally opt to install the
-:mod:`lino.modlib.dashboard` plugin.
-  
