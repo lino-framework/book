@@ -13,8 +13,10 @@ General information about how to read and maintain this document in :ref:`dev.ch
 
 .. currentmodule:: lino.api.doctest
 
-Internal changes: :func:`lino.core.dashboard.DashboardItem.render` now yields
-html chunks instead of etree elements.  :func:`show_dashboard` and
+Continued on :ticket:`1162` (A CMS using Lino). The
+:mod:`lino_book.projects.cms` project now has some improvement. But it is not
+finished. Internal changes: :func:`lino.core.dashboard.DashboardItem.render` now
+yields html chunks instead of etree elements.  :func:`show_dashboard` and
 :func:`show_menu` are now defined in :mod:`lino.api.doctest`, no longer as
 methods of a request.
 

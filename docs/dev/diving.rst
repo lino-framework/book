@@ -28,6 +28,7 @@ More basics
 .. toctree::
    :maxdepth: 1
 
+   admin_main
    choicelists
    slave_tables
    initdb
@@ -35,7 +36,6 @@ More basics
    users
    perms
    settings
-   admin_main
    quantities
    xlmenu
 
