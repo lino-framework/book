@@ -27,4 +27,7 @@ class Site(Site):
         yield ('countries', 'country_code', 'BE')
         yield ('ledger', 'use_pcmn', True)
         yield ('ledger', 'worker_model', 'contacts.Person')
-        yield ('users', 'active_sessions_limit', 1)
+        # yield ('users', 'active_sessions_limit', 1)
+
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE=True
