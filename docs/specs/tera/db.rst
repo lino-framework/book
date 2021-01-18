@@ -24,7 +24,7 @@ Complexity factors
 - 47 plugins
 - 98 models
 - 4 user types
-- 375 views
+- 374 views
 - 27 dialog actions
 <BLANKLINE>
 
@@ -116,7 +116,7 @@ The database models
  sales.PaperType             sales.PaperTypes               5         2
  sales.VatProductInvoice     sales.Invoices                 27        210
  sepa.Account                sepa.Accounts                  6         31
- sessions.Session            sessions.SessionTable          3         ...
+ sessions.Session            users.Sessions                 3         ...
  sheets.AccountEntry         sheets.AccountEntries          7         12
  sheets.AnaAccountEntry      sheets.AnaAccountEntries       7         15
  sheets.Item                 sheets.Items                   9         29

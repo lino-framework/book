@@ -12,8 +12,6 @@ The :mod:`lino_noi.lib.cal` adds calendar functionality.
 .. contents::
   :local:
 
-
-
 .. include:: /../docs/shared/include/tested.rst
 
 >>> from lino import startup
@@ -32,7 +30,7 @@ Verify the window actions of some actors (:ticket:`2784`):
 
 >>> for ba in rt.models.cal.MyEntries.get_actions():
 ...     if ba.action.is_window_action():
-...         print(ba)
+...         ba
 <BoundAction(cal.MyEntries, <lino.core.actions.ShowInsert insert ('New')>)>
 <BoundAction(cal.MyEntries, <lino.core.actions.ShowDetail detail ('Detail')>)>
 <BoundAction(cal.MyEntries, <lino.core.actions.ShowTable grid>)>

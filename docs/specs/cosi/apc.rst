@@ -84,7 +84,7 @@ Robin is the system administrator, he has a complete menu:
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - Accounting : Accounting Reports, Common sheet items, General account balances, Analytic accounts balances, Partner balances, Sheet item entries, Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
-- Site : About
+- Site : About, User sessions
 
 
 Database structure

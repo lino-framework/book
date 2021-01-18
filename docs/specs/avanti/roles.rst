@@ -113,7 +113,7 @@ Site administrator
   - Trends : Trend events
   - Polls : Polls, Questions, Choices, Responses, Answer Choices, Answer Remarks
   - Activities : Activities, Enrolments, Enrolment states, Course layouts, Activity states, Reminders
-- Site : About
+- Site : About, User sessions
 
 
 

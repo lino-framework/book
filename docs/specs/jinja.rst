@@ -67,7 +67,7 @@ A functional replacement for the :manage:`diag` command.
 
 >>> shell = Sheller("lino_book/projects/apc")
 >>> shell("python manage.py status")
-... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 Plugins
 =======
 <BLANKLINE>

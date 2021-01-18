@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2014-2020 Rumma & Ko Ltd
+# Copyright 2014-2021 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Runs some tests about reading eID cards.
@@ -55,7 +55,6 @@ class BeIdTests(RemoteAuthTestCase):
             'django.contrib.sessions.middleware.SessionMiddleware',
             'lino.core.auth.middleware.AuthenticationMiddleware',
             'lino.core.auth.middleware.WithUserMiddleware',
-            'lino.core.auth.middleware.DeviceTypeMiddleware',
             'lino.core.auth.middleware.RemoteUserMiddleware',
             'lino.utils.ajax.AjaxExceptionResponse'))
 

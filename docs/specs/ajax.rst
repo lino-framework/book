@@ -47,7 +47,6 @@ django.middleware.locale.LocaleMiddleware
 django.contrib.sessions.middleware.SessionMiddleware
 lino.core.auth.middleware.AuthenticationMiddleware
 lino.core.auth.middleware.WithUserMiddleware
-lino.core.auth.middleware.DeviceTypeMiddleware
 lino.utils.ajax.AjaxExceptionResponse
 
 >>> 'django.contrib.sessions' in settings.INSTALLED_APPS

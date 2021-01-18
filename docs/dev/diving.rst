@@ -34,6 +34,7 @@ More basics
    initdb
    pyfixtures/index
    users
+   sessions
    perms
    settings
    quantities

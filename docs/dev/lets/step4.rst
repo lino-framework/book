@@ -131,7 +131,7 @@ second section, which tests the menu of a normal member::
   @@ -31,3 +31,18 @@ Rolf is a :term:`site administrator`, he has a complete menu:
    - Explorer :
      - System : Authorities, User types, User roles
-   - Site : About
+   - Site : About, User sessions
   +
   +Normal members
   +--------------
@@ -146,7 +146,7 @@ second section, which tests the menu of a normal member::
   +... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
   +- Master : Products
   +- Market : Offers
-  +- Site : About
+  +- Site : About, User sessions
 
 
 Introduction to doctests

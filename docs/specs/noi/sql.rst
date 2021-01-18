@@ -301,6 +301,8 @@ SQL that poor Django must do in order to return a single row.
 ================= =========== =======
  table             stmt_type   count
 ----------------- ----------- -------
+                   UNKNOWN     1
+                   UPDATE      1
  django_session    SELECT      1
  tickets_site      SELECT      13
  tickets_ticket    SELECT      2

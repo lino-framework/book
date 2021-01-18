@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2008-2017 Rumma & Ko Ltd
+# Copyright 2008-2021 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -12,8 +12,6 @@ To run only this test::
   $ python manage.py test
 
 """
-
-from __future__ import unicode_literals
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -47,7 +45,6 @@ class QuickTest(RemoteAuthTestCase):
                 'django.contrib.sessions.middleware.SessionMiddleware',
                 'lino.core.auth.middleware.AuthenticationMiddleware',
                 'lino.core.auth.middleware.WithUserMiddleware',
-                'lino.core.auth.middleware.DeviceTypeMiddleware',
                 'lino.core.auth.middleware.RemoteUserMiddleware',
                 'lino.utils.ajax.AjaxExceptionResponse'))
             # settings.MIDDLEWARE_CLASSES, (
@@ -61,7 +58,7 @@ class QuickTest(RemoteAuthTestCase):
         Country = rt.models.countries.Country
         Place = rt.models.countries.Place
         PlaceTypes = rt.models.countries.PlaceTypes
-        
+
         ee = create_and_get(Country,
                             isocode='EE', **dd.babelkw('name',
                                                     de="Estland",
@@ -152,7 +149,7 @@ Estonia''')
                               user_type=UserTypes.admin)
 
         """
-        disable SITE.is_imported_partner() otherwise 
+        disable SITE.is_imported_partner() otherwise
         disabled_fields may contain more than just the 'id' field.
         """
         save_iip = settings.SITE.is_imported_partner
@@ -162,7 +159,7 @@ Estonia''')
         settings.SITE.is_imported_partner = f
 
         """
-        Note that we must specify the language both in the user 
+        Note that we must specify the language both in the user
         and in HTTP_ACCEPT_LANGUAGE because...
         """
 
@@ -217,20 +214,20 @@ Estonia''')
         #~ def test03(self):
         """
         Test the following situation:
-        
+
         - User 1 opens the :menuselection:`Configure --> System--> System Parameters` dialog
         - User 2 creates a new Person (which increases next_partner_id)
         - User 1 clicks on `Save`.
-        
-        `next_partner_id` may not get overwritten 
-        
+
+        `next_partner_id` may not get overwritten
+
         """
         # User 1
         sc = settings.SITE.site_config
         self.assertEqual(sc.next_partner_id,
                          contacts.PARTNER_NUMBERS_START_AT + 2)
         sc.update(next_partner_id=12345)
-        
+
         # SiteConfigs = settings.SITE.models.system.SiteConfigs
         # elem = SiteConfigs.get_row_by_pk(None, settings.SITE.config_id)
         # self.assertEqual(elem.next_partner_id,

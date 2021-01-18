@@ -11,6 +11,7 @@ from lino_cosi.lib.cosi.settings import *
 
 
 class Site(Site):
+    # use_ipdict = True
     languages = 'de fr en'
     # demo_fixtures = 'std few_countries minimal_ledger euvatrates \
     # furniture \
@@ -26,3 +27,4 @@ class Site(Site):
         yield ('countries', 'country_code', 'BE')
         yield ('ledger', 'use_pcmn', True)
         yield ('ledger', 'worker_model', 'contacts.Person')
+        yield ('users', 'active_sessions_limit', 1)

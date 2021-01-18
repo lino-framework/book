@@ -8,6 +8,33 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-17
+==========
+
+The `ipdict.Connections` table has been reimplemented as
+:class:`lino.modlib.users.Sessions`.  It now uses :mod:`sessions <django.contrib.sessions>`
+and therefore works also on sites with very many users. It also features a
+"Kill" action to manually delete individual actions. :mod:`ipdict
+<lino.modlib.ipdict>` is no longer used to show the list of active user
+sessions.  The ipdict approach was not suitable for sites with very many users
+because it stores every connection in an in-memory `dict`.  ipdict is used only
+for detecting brute force attacks. It now removes every entry after a successful
+authentication.
+
+Internal changes: :class:`lino.core.auth.middleware.DeviceTypeMiddleware` has
+been merged into :class:`lino.core.auth.middleware.WithUserMiddleware` because
+it was inefficient to parse the request twice. :class:`BoundAction` has now a
+:meth:`__str__` method, which is used by user warnings "No permission to run X".
+Until now these warnings were irritating because the action name wasn't shown in
+the browser.
+
+2021-01-16
+==========
+
+New method :meth:`lino.modlib.ipdict.Plugin.pop_ip_record` removes an (ip
+address, username) pair from the registry, and Lino uses this when receiving the
+``user_logged_out`` signal.
+
 2021-01-15
 ==========
 
@@ -19,6 +46,10 @@ finished. Internal changes: :func:`lino.core.dashboard.DashboardItem.render` now
 yields html chunks instead of etree elements.  :func:`show_dashboard` and
 :func:`show_menu` are now defined in :mod:`lino.api.doctest`, no longer as
 methods of a request.
+
+The function :func:`lino.api.doctest.rst2menu` is now used in
+:ref:`dev.admin_main`.
+
 
 2021-01-08
 ==========

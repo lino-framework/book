@@ -23,24 +23,17 @@ project:
 >>> startup('lino_book.projects.min1.settings.doctests')
 >>> from lino.api.doctest import *
 
-Concepts
-========
 
-.. glossary::
+Menu entries
+============
 
-  user
+This plugin provides the following menu entries:
 
-    A human person who can sign in on this site.
-
-  user type
-
-    The type of a :term:`user`,  which mainly defines the user's permissions,
-    i.e. what functionalities and data they can access.  See `User types`_.
-
-  authority
-
-    The fact that one user gives another user the right to "represent" them,
-    i.e. to act in their name.
+- :menuselection:`Site --> User sessions`
+- :menuselection:`Configure --> System --> Users`
+- :menuselection:`Explorer --> System --> Authorities`
+- :menuselection:`Explorer --> System --> User roles`
+- :menuselection:`Explorer --> System --> User types`
 
 
 Users
@@ -155,23 +148,6 @@ started or stopped to be active.
         These fields are also used for :doc:`userstats`.
 
 
-Authorities : let other users work in your name
-===============================================
-
-.. class:: Authority
-
-    Django model used to represent a :term:`authority`.
-
-    .. attribute:: user
-
-        The user who gives the right of representation. author of this
-        authority
-
-    .. attribute:: authorized
-
-        The user who gets the right to represent the author
-
-
 User types
 ==========
 
@@ -266,8 +242,36 @@ in the global context of the :attr:`user_types_module
 approaches, but it is not trivial for Lino to guess which roles are
 "meaningful".
 
-.. _current_user_type:
+User sessions
+=============
 
+.. class:: Sessions
+
+  Show a list of all :term:`user sessions <user session>`.
+
+See :doc:`/dev/sessions`.
+
+
+Authorities : let other users work in your name
+===============================================
+
+.. class:: Authority
+
+    Django model used to represent a :term:`authority`.
+
+    .. attribute:: user
+
+        The user who gives the right of representation. author of this
+        authority
+
+    .. attribute:: authorized
+
+        The user who gets the right to represent the author
+
+
+
+
+.. _current_user_type:
 
 The current user type
 =====================
@@ -276,19 +280,22 @@ This is used by :mod:`lino.utils.jsgen`, i.e. when generating the
 :xfile:`linoweb.js` file for a given user type.
 
 
-
-
 Plugin configuration
 ====================
 
 .. class:: Plugin
 
-    See :doc:`/dev/plugins`.
+  .. attribute:: active_sessions_limit
 
-    .. attribute:: online_registration
+    The :term:`sessions limit` for this site. The default value `-1` means
+    that there is no limitation. Setting this to `0` will prevent any new
+    login attempt and might be useful as a temporary value before shutting
+    down a site.
 
-        Whether this site offers :ref:`online registration
-        <online_registration>` of new users.
+  .. attribute:: online_registration
+
+    Whether this site offers :ref:`online registration <online_registration>`
+    of new users.
 
 
 
@@ -345,9 +352,8 @@ Actions
 
 
 
-
-Mixins
-======
+Model mixins
+============
 
 .. class:: Authored
 
@@ -468,3 +474,28 @@ Arens Andreas
 000 (000 (Anonymous))
 100 (100 (User))
 900 (900 (Administrator))
+
+
+
+
+
+Concepts
+========
+
+The following concepts have been covered by this documentation page.
+
+.. glossary::
+
+  user
+
+    A human person who can sign in on a given site.
+
+  user type
+
+    The type of a :term:`user`,  which mainly defines the user's permissions,
+    i.e. what functionalities and data they can access.  See `User types`_.
+
+  authority
+
+    The fact that one user gives another user the right to "represent" them,
+    i.e. to act in their name.

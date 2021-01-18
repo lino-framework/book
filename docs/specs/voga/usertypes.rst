@@ -62,7 +62,7 @@ Robin is a :term:`site administrator`, he has a complete menu:
   - Office : Notes, Outgoing Mails, Attachments, Excerpts, Upload files, Upload areas
   - Accounting : Common accounts, Match rules, Vouchers, Voucher types, Movements, Trade types, Journal groups
   - VAT : Special Belgian VAT declarations, Declaration fields, VAT areas, VAT regimes, VAT classes, VAT columns, Invoices, VAT rules
-- Site : About
+- Site : About, User sessions
 
 
 Monique is a secretary.

@@ -203,7 +203,7 @@ Database structure
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 27        97
  sepa.Account               sepa.Accounts                  6         26
- sessions.Session           sessions.SessionTable          3         ...
+ sessions.Session           users.Sessions                 3         ...
  system.SiteConfig          system.SiteConfigs             11        1
  uploads.Upload             uploads.Uploads                11        0
  uploads.UploadType         uploads.UploadTypes            8         1
