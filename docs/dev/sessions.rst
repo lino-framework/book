@@ -50,6 +50,11 @@ Dangling user sessions
 User sessions can remain in the database even when the user doesn't actually
 need them any more.  We call them :term:`dangling sessions <dangling session>`.
 
+Dangling sessions can cause "false alerts" on a site with a :term:`sessions
+limit`, i.e. Lino would say "There are more than X active user sessions. Please
+try again later" although "in reality" these users aren't actively working on
+the site.
+
 Don't mix up :term:`dangling sessions <dangling session>` with **expired**
 sessions.  Sessions have a given time to live, and they *expire* after that
 time. Expired sessions are never shown in the :class:`Sessions` table and aren't
@@ -61,20 +66,17 @@ The site maintainer can configure how long Lino should remember user sessions
 with the :setting:`SESSION_COOKIE_AGE` setting. The default value for this
 setting is two weeks.
 
-Dangling sessions can cause "false alerts" on a site with a :term:`sessions
-limit`, i.e. Lino would say "There are more than X active user sessions. Please
-try again later" although "in reality" these users aren't actively working on
-the site.
-
 Dangling sessions can come because :term:`user sessions <user session>` are
 deleted only when the user logs out explicitly. When a user just closes their
 browser on one device and logs in from another device, they get a second
 session, and their first session will remain in the database. Don't expect Lino
 to remove this session automatically because after all the user might open their
-first browser again after some time and expect Lino to remember them. Other
-possible reasons for dangling sessions are browsers having the option "Delete
-cookies and site data when browser is closed", or private browser sessions.  We
-have seen situations where one user had more than 1000 dangling sessions.
+first browser again after some time and expect Lino to remember them.
+
+Other possible reasons for dangling sessions are browsers having the option
+"Delete cookies and site data when browser is closed", or private browser
+sessions.  We have seen situations where a same user had more than 1000 dangling
+sessions.
 
 To help with detecting dangling sessions, Lino adds the *Last activity* column
 in the :class:`Sessions` table.  When you see a session with last activity 4

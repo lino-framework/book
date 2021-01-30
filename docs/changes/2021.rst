@@ -8,6 +8,28 @@
 This is the 2021 :term:`change log` for :ref:`book`.
 General information about how to read and maintain this document in :ref:`dev.changes`.
 
+2021-01-29
+==========
+
+Fixed :ticket:`3948`:
+Lino didn't behave correctly when (a) no weekday at
+all was selected (which for Lino means "any weekday"), and it caused an internal
+server error when no recursion rule was found.
+This was in the :meth:`get_next_suggested_date` of a :class:`lino_xl.lib.cal.RecurrenceSet`.
+
+
+Fixed :ticket:`3946`: When a partner is :class:`lino_xl.lib.lists.Member` of
+some list, this is no longer a reason to refuse deleting the partner. When you
+confirm to delete such a partner, the list memberships now get deleted as well
+(in cascade).
+
+The title of the :class:`lino_xl.lib.contacts.RolesByPerson` slave panel was
+"Contact for of (name)", not very helpful.  Now it is "(name) is contact person
+for". Added a custom :attr:`details_of_master_template
+<lino.core.actor.Actor.details_of_master_template>`. Note that the custom
+:attr:`label`, "Contact for" is also needed for situations where the master is
+not known.
+
 2021-01-17
 ==========
 

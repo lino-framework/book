@@ -1665,16 +1665,31 @@ positions
 The :attr:`RecurrenceSet.positions` field allows to specify rules like "every
 last Friday of the month".
 
+If given, it must be a space-separated list of positive or negative integers.
+Each given integer *N* means the *N*\ th occurrence inside the frequency period.
+
+The positions field makes sense only when frequency
+(:attr:`RecurrenceSet.every_unit`) is yearly, monthly, weekly or daily. It is
+silently ignored with other frequencies. When this field is set, the value of
+:attr:`RecurrenceSet.every` is ignored.
+
 The following examples use a utility function:
 
+>>> settings.SITE.verbose_client_info_message = True
 >>> def show(obj, today):
+...     obj.name = "test"
+...     obj.full_clean()
 ...     for lng in ('en', 'de', 'fr'):
 ...         with translation.override(lng):
 ...             print(obj.weekdays_text)
+...     ses = rt.login("robin")
 ...     for i in range(5):
-...         x = obj.get_next_suggested_date(None, today)
-...         print(dd.fdf(x))
-...         today = x
+...         today = obj.get_next_suggested_date(ses, today)
+...         if today is None:
+...             break
+...         print(dd.fdf(today))
+...     if len(ses.response):
+...         print(ses.response)
 
 Every last Friday of the month:
 
@@ -1692,9 +1707,25 @@ Friday, 27 December 2019
 Friday, 31 January 2020
 Friday, 28 February 2020
 
+Every last working day of the month:
+
+>>> obj.monday = True
+>>> obj.tuesday = True
+>>> obj.wednesday = True
+>>> obj.thursday = True
+>>> show(obj, i2d(20191001))
+Every last working day of the month
+Jeden letzten Arbeitstag des Monats
+Chaque dernier jour ouvrable du mois
+Thursday, 31 October 2019
+Friday, 29 November 2019
+Tuesday, 31 December 2019
+Friday, 31 January 2020
+Friday, 28 February 2020
+
 The first and third Wednesday of every month:
 
->>> obj = cal.RecurrentEvent(name="Test")
+>>> obj = cal.RecurrentEvent()
 >>> obj.wednesday = True
 >>> obj.positions = "1 3"
 >>> obj.every_unit = cal.Recurrencies.monthly
@@ -1734,3 +1765,44 @@ Friday, 24 January 2020
 Friday, 21 February 2020
 Friday, 20 March 2020
 Friday, 17 April 2020
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.positions = "2"
+>>> obj.every_unit = cal.Recurrencies.once
+>>> show(obj, i2d(20191213))
+On Wednesday, 15 February 2017
+Am Mittwoch, 15. Februar 2017
+Le mercredi 15 février 2017
+{'info_message': "No next date when recurrency is 'once'."}
+
+Every 3 years (with Easter):
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.every_unit = cal.Recurrencies.easter
+>>> obj.positions = "2"  # silently ignored
+>>> obj.every = 3
+>>> show(obj, i2d(20191213))
+Every 3 years (with Easter)
+Alle 3 Jahre (mit Ostern)
+Tous les 3 ans (avec Pâques)
+Friday, 9 December 2022
+Friday, 12 December 2025
+Friday, 8 December 2028
+Friday, 5 December 2031
+Friday, 1 December 2034
+
+A rule that yields no date at all
+
+>>> obj = cal.RecurrentEvent()
+>>> obj.every_unit = cal.Recurrencies.daily
+>>> obj.positions = "7"
+>>> show(obj, i2d(20191213))
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+Every day
+Jeden Tag
+Chaque jour
+{'info_message': "No date matches your recursion rule({'freq': 3, 'count': 2, 'dtstart': datetime.date(2019, 12, 14), 'interval': 1, 'bysetpos': [7]})."}
+
+For example, a bysetpos of -1 if combined with a MONTHLY frequency, and a
+byweekday of (MO, TU, WE, TH, FR), will result in the last work day of every
+month.

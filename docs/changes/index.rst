@@ -4,12 +4,13 @@
 Changes
 =======
 
-API changes in the packages :mod:`lino`, :mod:`lino_xl` and :mod:`lino_react`.
-General information about how to read and maintain this document in :ref:`dev.changes`.
+This is the combined changelog for packages :mod:`lino`, :mod:`lino_xl` and
+:mod:`lino_react`.
 
-.. note:: Make sure to notify us if you run a :term:`production site` using
-   Lino.  We provide automatic database migration only for applications with at
-   least one registered production site.
+General information about how to read and maintain this document in
+:ref:`dev.changes`. Make sure to notify us if you run a :term:`production site`
+using Lino.  We provide automatic database migration only for applications with
+at least one registered production site.
 
 
 .. toctree::

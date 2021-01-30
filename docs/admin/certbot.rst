@@ -110,23 +110,28 @@ How to set the email address used by the ACME server for sending notifications::
 
   $ certbot-auto update_account --email postmaster@mydomain.org
 
+How to delete a certificate::
 
-You can simply delete a certificate::
-
-  $ certbot-auto delete --cert-name team.new.lino-framework.org
+  $ certbot-auto delete --cert-name team.mydomain.org
   Requesting to rerun /usr/local/bin/certbot-auto with root privileges...
   Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Deleted all files relating to certificate team.new.lino-framework.org.
+  Deleted all files relating to certificate team.mydomain.org.
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   (master) luc@lf:/usr/bin$
 
+How to update the domain(s) covered by a certificate::
+
+  $ certbot-auto certonly -d new.mydomain.org --cert-name old.mydomain.org
 
 One certificate covering many domains
 =====================================
 
-On LF we have a lot of subdomains (but no wildcard certificate). Here is how to
+The following is probably bad practice. It is easier to maintain an individual
+certificate for each subdomain.
+
+On LF we have a lot of subdomains, but no wildcard certificate. Here is how to
 maintain the list of domains for a given certificate in a separate file.
 
 Let's say you have a certificate named ``example.com``, and you have a lot of

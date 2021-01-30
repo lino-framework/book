@@ -8,7 +8,7 @@ Answering to invalid requests
 .. to run only this test:
 
     $ doctest docs/specs/invalid_requests.rst
-    
+
     doctest init:
 
     >>> from lino import startup
@@ -39,7 +39,7 @@ Here is a valid request:
 >>> d.count
 1
 >>> print(d.title)
-Contact for of Mr Hans Altenberg
+Mr Hans Altenberg is contact person for
 
 
 Specifying an *invalid primary key* for the master (5114 in the

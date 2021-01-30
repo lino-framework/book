@@ -41,8 +41,8 @@ behaviour. See also :doc:`/dev/delete`.
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
-  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner
-  - PROTECT : invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, lists.Member.partner, sales.VatProductInvoice.partner, vat.VatAccountInvoice.partner, working.ServiceReport.interesting_for
+  - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, invoicing.SalesRule.partner, lists.Member.partner
+  - PROTECT : invoicing.Item.partner, invoicing.Plan.partner, invoicing.SalesRule.invoice_recipient, ledger.Movement.partner, sales.VatProductInvoice.partner, vat.VatAccountInvoice.partner, working.ServiceReport.interesting_for
 - contacts.Person :
   - CASCADE : users.User.person_ptr
   - PROTECT : cal.Event.contact_person, cal.Guest.partner, cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, tickets.Site.contact_person, tickets.Ticket.end_user, working.ServiceReport.contact_person
@@ -126,9 +126,15 @@ behaviour. See also :doc:`/dev/delete`.
 Deleting
 ========
 
+>>> d = get_json_dict('robin', "contacts/Companies/100", an='delete_selected', sr=100)
+>>> print(d['message'])
+Cannot delete Partner Rumma & Ko OÜ because 1 Service Reports refer to it.
+
 >>> d = get_json_dict('robin', "contacts/Persons/167", an='delete_selected', sr=167)
 >>> print(d['message'])
-Cannot delete Partner Östges Otto because 1 List memberships refer to it.
+You are about to delete 1 Person
+(Otto Östges)
+as well as all related volatile records (1 List membership). Are you sure?
 
 >>> d = get_json_dict('robin', "lists/Lists/1", an='delete_selected', sr=1)
 >>> print(d['message'])
